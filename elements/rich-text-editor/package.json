@@ -16,7 +16,7 @@
       "hax": "src/rich-text-editor-hax.json"
     }
   },
-  "version": "2.0.5",
+  "version": "2.0.7",
   "description": "a standalone rich text editor",
   "repository": {
     "type": "git",

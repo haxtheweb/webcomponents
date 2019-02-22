@@ -220,7 +220,8 @@ let CodeEditor = Polymer({
    */
   created: function() {
     // set this ahead of it being painted into the dom
-    this.__libPath = import.meta.url + "/../../../monaco-editor/min/vs";
+    this.__libPath =
+      decodeURIComponent(import.meta.url) + "/../../../monaco-editor/min/vs";
   },
   /**
    * Ready state to tee everything up.

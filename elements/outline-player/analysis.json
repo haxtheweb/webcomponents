@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`outline-player`\nA LRN element",
+      "description": "`outline-player`",
       "summary": "",
       "path": "lib/outline-player-arrow.js",
       "properties": [
@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 44,
+              "line": 38,
               "column": 4
             },
             "end": {
-              "line": 47,
+              "line": 41,
               "column": 5
             }
           },
@@ -35,11 +35,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 48,
+              "line": 42,
               "column": 4
             },
             "end": {
-              "line": 52,
+              "line": 46,
               "column": 5
             }
           },
@@ -57,11 +57,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 53,
+              "line": 47,
               "column": 4
             },
             "end": {
-              "line": 57,
+              "line": 51,
               "column": 5
             }
           },
@@ -79,11 +79,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 58,
+              "line": 52,
               "column": 4
             },
             "end": {
-              "line": 62,
+              "line": 56,
               "column": 5
             }
           },
@@ -102,11 +102,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 63,
+              "line": 57,
               "column": 4
             },
             "end": {
-              "line": 66,
+              "line": 60,
               "column": 5
             }
           },
@@ -125,11 +125,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 69,
+              "line": 63,
               "column": 2
             },
             "end": {
-              "line": 88,
+              "line": 82,
               "column": 3
             }
           },
@@ -145,11 +145,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 93,
+              "line": 87,
               "column": 2
             },
             "end": {
-              "line": 96,
+              "line": 90,
               "column": 3
             }
           },
@@ -165,11 +165,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 101,
+              "line": 95,
               "column": 2
             },
             "end": {
-              "line": 101,
+              "line": 95,
               "column": 48
             }
           },
@@ -189,11 +189,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 106,
+              "line": 100,
               "column": 2
             },
             "end": {
-              "line": 119,
+              "line": 113,
               "column": 3
             }
           },
@@ -209,11 +209,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 124,
+              "line": 118,
               "column": 2
             },
             "end": {
-              "line": 130,
+              "line": 124,
               "column": 3
             }
           },
@@ -235,11 +235,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 9,
+          "line": 5,
           "column": 8
         },
         "end": {
-          "line": 131,
+          "line": 125,
           "column": 1
         }
       },
@@ -251,11 +251,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 44,
+              "line": 38,
               "column": 4
             },
             "end": {
-              "line": 47,
+              "line": 41,
               "column": 5
             }
           },
@@ -267,11 +267,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 48,
+              "line": 42,
               "column": 4
             },
             "end": {
-              "line": 52,
+              "line": 46,
               "column": 5
             }
           },
@@ -283,11 +283,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 53,
+              "line": 47,
               "column": 4
             },
             "end": {
-              "line": 57,
+              "line": 51,
               "column": 5
             }
           },
@@ -309,38 +309,17 @@
       "path": "outline-player.js",
       "properties": [
         {
-          "name": "manifest",
-          "type": "Object | null | undefined",
-          "description": "Manifest from haxcms-site-builder",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 282,
-              "column": 4
-            },
-            "end": {
-              "line": 284,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
-          }
-        },
-        {
           "name": "auto",
           "type": "boolean | null | undefined",
           "description": "Auto call json files",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 288,
+              "line": 279,
               "column": 4
             },
             "end": {
-              "line": 292,
+              "line": 283,
               "column": 5
             }
           },
@@ -359,11 +338,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 296,
+              "line": 287,
               "column": 4
             },
             "end": {
-              "line": 300,
+              "line": 291,
               "column": 5
             }
           },
@@ -382,11 +361,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 304,
+              "line": 295,
               "column": 4
             },
             "end": {
-              "line": 307,
+              "line": 298,
               "column": 5
             }
           },
@@ -404,11 +383,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 311,
+              "line": 302,
               "column": 4
             },
             "end": {
-              "line": 315,
+              "line": 306,
               "column": 5
             }
           },
@@ -427,11 +406,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 319,
+              "line": 310,
               "column": 4
             },
             "end": {
-              "line": 324,
+              "line": 315,
               "column": 5
             }
           },
@@ -450,11 +429,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 328,
+              "line": 319,
               "column": 4
             },
             "end": {
-              "line": 331,
+              "line": 322,
               "column": 5
             }
           },
@@ -472,11 +451,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 335,
+              "line": 326,
               "column": 4
             },
             "end": {
-              "line": 339,
+              "line": 330,
               "column": 5
             }
           },
@@ -489,23 +468,65 @@
           }
         },
         {
+          "name": "editMode",
+          "type": "boolean | null | undefined",
+          "description": "editting state for the page",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 334,
+              "column": 4
+            },
+            "end": {
+              "line": 338,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_editModeChanged\"",
+              "attributeType": "Boolean"
+            }
+          }
+        },
+        {
           "name": "activeItem",
           "type": "Object | null | undefined",
           "description": "Active item which is in JSON Outline Schema",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 343,
+              "line": 342,
               "column": 4
             },
             "end": {
-              "line": 346,
+              "line": 344,
               "column": 5
             }
           },
           "metadata": {
             "polymer": {
-              "notify": true,
+              "attributeType": "Object"
+            }
+          }
+        },
+        {
+          "name": "manifest",
+          "type": "Object | null | undefined",
+          "description": "Manifest from haxcms-site-builder",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 348,
+              "column": 4
+            },
+            "end": {
+              "line": 350,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
               "attributeType": "Object"
             }
           }
@@ -517,11 +538,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 351,
+              "line": 355,
               "column": 4
             },
             "end": {
-              "line": 355,
+              "line": 359,
               "column": 5
             }
           },
@@ -539,11 +560,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 360,
+              "line": 364,
               "column": 4
             },
             "end": {
-              "line": 363,
+              "line": 367,
               "column": 5
             }
           },
@@ -561,11 +582,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 364,
+              "line": 368,
               "column": 4
             },
             "end": {
-              "line": 367,
+              "line": 371,
               "column": 5
             }
           },
@@ -573,28 +594,6 @@
             "polymer": {
               "observer": "\"_locationChanged\"",
               "attributeType": "Object"
-            }
-          }
-        },
-        {
-          "name": "editMode",
-          "type": "boolean | null | undefined",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 368,
-              "column": 4
-            },
-            "end": {
-              "line": 372,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "observer": "\"_editModeChanged\"",
-              "attributeType": "Boolean"
             }
           }
         }
@@ -606,11 +605,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 374,
+              "line": 373,
               "column": 2
             },
             "end": {
-              "line": 383,
+              "line": 382,
               "column": 3
             }
           },
@@ -625,16 +624,36 @@
           }
         },
         {
-          "name": "ready",
-          "description": "",
+          "name": "created",
+          "description": "created life cycle",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 384,
+              "line": 386,
               "column": 2
             },
             "end": {
-              "line": 397,
+              "line": 388,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "ready",
+          "description": "ready life cycle",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 392,
+              "column": 2
+            },
+            "end": {
+              "line": 394,
               "column": 3
             }
           },
@@ -646,16 +665,36 @@
         },
         {
           "name": "attached",
-          "description": "",
+          "description": "attached life cycle",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 399,
+              "line": 398,
               "column": 2
             },
             "end": {
-              "line": 399,
-              "column": 25
+              "line": 413,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "detached",
+          "description": "detatched life cycle",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 417,
+              "column": 2
+            },
+            "end": {
+              "line": 420,
+              "column": 3
             }
           },
           "metadata": {},
@@ -670,11 +709,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 401,
+              "line": 422,
               "column": 2
             },
             "end": {
-              "line": 425,
+              "line": 446,
               "column": 3
             }
           },
@@ -694,11 +733,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 429,
+              "line": 450,
               "column": 2
             },
             "end": {
-              "line": 442,
+              "line": 463,
               "column": 3
             }
           },
@@ -718,11 +757,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 447,
+              "line": 468,
               "column": 2
             },
             "end": {
-              "line": 464,
+              "line": 485,
               "column": 3
             }
           },
@@ -746,11 +785,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 469,
+              "line": 490,
               "column": 2
             },
             "end": {
-              "line": 477,
+              "line": 498,
               "column": 3
             }
           },
@@ -773,11 +812,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 482,
+              "line": 503,
               "column": 2
             },
             "end": {
-              "line": 487,
+              "line": 508,
               "column": 3
             }
           },
@@ -794,11 +833,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 492,
+              "line": 513,
               "column": 2
             },
             "end": {
-              "line": 497,
+              "line": 518,
               "column": 3
             }
           },
@@ -815,11 +854,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 502,
+              "line": 523,
               "column": 2
             },
             "end": {
-              "line": 504,
+              "line": 525,
               "column": 3
             }
           },
@@ -839,11 +878,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 509,
+              "line": 530,
               "column": 2
             },
             "end": {
-              "line": 511,
+              "line": 532,
               "column": 3
             }
           },
@@ -863,11 +902,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 516,
+              "line": 537,
               "column": 2
             },
             "end": {
-              "line": 535,
+              "line": 556,
               "column": 3
             }
           },
@@ -887,11 +926,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 540,
+              "line": 561,
               "column": 2
             },
             "end": {
-              "line": 559,
+              "line": 580,
               "column": 3
             }
           },
@@ -914,11 +953,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 564,
+              "line": 585,
               "column": 2
             },
             "end": {
-              "line": 566,
+              "line": 587,
               "column": 3
             }
           },
@@ -939,7 +978,7 @@
           "column": 28
         },
         "end": {
-          "line": 567,
+          "line": 588,
           "column": 1
         }
       },
@@ -948,31 +987,15 @@
       "name": "OutlinePlayer",
       "attributes": [
         {
-          "name": "manifest",
-          "description": "Manifest from haxcms-site-builder",
-          "sourceRange": {
-            "start": {
-              "line": 282,
-              "column": 4
-            },
-            "end": {
-              "line": 284,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "Object | null | undefined"
-        },
-        {
           "name": "auto",
           "description": "Auto call json files",
           "sourceRange": {
             "start": {
-              "line": 288,
+              "line": 279,
               "column": 4
             },
             "end": {
-              "line": 292,
+              "line": 283,
               "column": 5
             }
           },
@@ -984,11 +1007,11 @@
           "description": "Outline JSON file name",
           "sourceRange": {
             "start": {
-              "line": 296,
+              "line": 287,
               "column": 4
             },
             "end": {
-              "line": 300,
+              "line": 291,
               "column": 5
             }
           },
@@ -1000,11 +1023,11 @@
           "description": "Outline JSON location",
           "sourceRange": {
             "start": {
-              "line": 304,
+              "line": 295,
               "column": 4
             },
             "end": {
-              "line": 307,
+              "line": 298,
               "column": 5
             }
           },
@@ -1016,11 +1039,11 @@
           "description": "acitvely selected item",
           "sourceRange": {
             "start": {
-              "line": 311,
+              "line": 302,
               "column": 4
             },
             "end": {
-              "line": 315,
+              "line": 306,
               "column": 5
             }
           },
@@ -1032,11 +1055,11 @@
           "description": "Closed status for the drawer",
           "sourceRange": {
             "start": {
-              "line": 319,
+              "line": 310,
               "column": 4
             },
             "end": {
-              "line": 324,
+              "line": 315,
               "column": 5
             }
           },
@@ -1048,11 +1071,11 @@
           "description": "Outline structured via JSON Outline Schema off the wire",
           "sourceRange": {
             "start": {
-              "line": 335,
+              "line": 326,
               "column": 4
             },
             "end": {
-              "line": 339,
+              "line": 330,
               "column": 5
             }
           },
@@ -1060,15 +1083,47 @@
           "type": "Array | null | undefined"
         },
         {
+          "name": "edit-mode",
+          "description": "editting state for the page",
+          "sourceRange": {
+            "start": {
+              "line": 334,
+              "column": 4
+            },
+            "end": {
+              "line": 338,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
           "name": "active-item",
           "description": "Active item which is in JSON Outline Schema",
           "sourceRange": {
             "start": {
-              "line": 343,
+              "line": 342,
               "column": 4
             },
             "end": {
-              "line": 346,
+              "line": 344,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined"
+        },
+        {
+          "name": "manifest",
+          "description": "Manifest from haxcms-site-builder",
+          "sourceRange": {
+            "start": {
+              "line": 348,
+              "column": 4
+            },
+            "end": {
+              "line": 350,
               "column": 5
             }
           },
@@ -1080,27 +1135,11 @@
           "description": "Set min height of outline player to fill remaining\nspace to the bottom of the browser",
           "sourceRange": {
             "start": {
-              "line": 351,
-              "column": 4
-            },
-            "end": {
               "line": 355,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined"
-        },
-        {
-          "name": "edit-mode",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 368,
               "column": 4
             },
             "end": {
-              "line": 372,
+              "line": 359,
               "column": 5
             }
           },
@@ -1143,12 +1182,6 @@
           "type": "CustomEvent",
           "name": "outline-changed",
           "description": "Fired when the `outline` property changes.",
-          "metadata": {}
-        },
-        {
-          "type": "CustomEvent",
-          "name": "active-item-changed",
-          "description": "Fired when the `activeItem` property changes.",
           "metadata": {}
         }
       ],

@@ -35,7 +35,7 @@ let HaxBody = Polymer({
       }
       .hax-context-menu {
         padding: 0;
-        margin: 0;
+        margin-left: -5000px;
         position: absolute;
         visibility: hidden;
         opacity: 0;
@@ -43,7 +43,7 @@ let HaxBody = Polymer({
         float: left;
         display: block;
         pointer-events: none;
-        transition: 0.3s all linear;
+        transition: 0.8s opacity ease-in-out, 0.8s visibility ease-in-out;
       }
       #haxinputmixer {
         z-index: 10000000;
@@ -52,6 +52,7 @@ let HaxBody = Polymer({
         visibility: visible;
         opacity: 1;
         pointer-events: all;
+        margin-left: unset;
       }
       :host #bodycontainer ::slotted(*) {
         font-family: "Noto Serif", serif;
@@ -330,8 +331,12 @@ let HaxBody = Polymer({
       window.HaxStore._tmpSelection = tmp;
       try {
         const range = window.HaxStore.getRange();
-        window.HaxStore._tmpRange = range.cloneRange();
-      } catch (e) {}
+        if (range.cloneRange) {
+          window.HaxStore._tmpRange = range.cloneRange();
+        }
+      } catch (e) {
+        console.log(e);
+      }
     });
     this.shadowRoot.querySelector("slot").addEventListener("paste", e => {
       // only perform this on a text element that is active
@@ -365,10 +370,7 @@ let HaxBody = Polymer({
             sel.addRange(newRange);
           }
         } catch (e) {
-          // try a fallback
-          if (document.selection) {
-            document.selection.createRange().text = text;
-          }
+          console.log(e);
         }
       }
     });
@@ -394,8 +396,12 @@ let HaxBody = Polymer({
       window.HaxStore._tmpSelection = tmp;
       try {
         const range = window.HaxStore.getRange();
-        window.HaxStore._tmpRange = range.cloneRange();
-      } catch (e) {}
+        if (range.cloneRange) {
+          window.HaxStore._tmpRange = range.cloneRange();
+        }
+      } catch (e) {
+        console.log(e);
+      }
     });
     this.shadowRoot.querySelector("slot").removeEventListener("paste", e => {
       // only perform this on a text element that is active
@@ -429,10 +435,7 @@ let HaxBody = Polymer({
             sel.addRange(newRange);
           }
         } catch (e) {
-          // try a fallback
-          if (document.selection) {
-            document.selection.createRange().text = text;
-          }
+          console.log(e);
         }
       }
     });
@@ -468,126 +471,104 @@ let HaxBody = Polymer({
   },
   _onKeyDown: function(e) {
     if (this.editMode && this.getAttribute("contenteditable")) {
-      let rng = window.HaxStore.getRange();
-      switch (e.key) {
-        case "Enter":
-          this.setAttribute("contenteditable", true);
-          break;
-        case "ArrowRight":
-        case "ArrowDown":
-          console.log(rng);
-          if (
-            rng.commonAncestorContainer &&
-            rng.commonAncestorContainer.nextElementSibling &&
-            this.activeNode !==
-              rng.commonAncestorContainer.nextElementSibling &&
-            typeof rng.commonAncestorContainer.nextElementSibling.focus ===
-              "function"
-          ) {
+      setTimeout(() => {
+        const rng = window.HaxStore.getRange();
+        switch (e.key) {
+          case "Tab":
             if (
-              rng.commonAncestorContainer.nextElementSibling.tagName !==
-              "HAX-BODY"
+              window.HaxStore.instance.isTextElement(this.activeContainerNode)
             ) {
-              rng.commonAncestorContainer.nextElementSibling.focus();
-              if (
-                window.HaxStore.instance.isTextElement(
-                  rng.commonAncestorContainer.nextElementSibling
-                )
-              ) {
-                this.setAttribute("contenteditable", true);
+              if (e.detail.keyboardEvent) {
+                e.detail.keyboardEvent.preventDefault();
+                e.detail.keyboardEvent.stopPropagation();
+                e.detail.keyboardEvent.stopImmediatePropagation();
+              }
+              e.preventDefault();
+              e.stopPropagation();
+              e.stopImmediatePropagation();
+              if (e.shiftKey) {
+                this._tabBackKeyPressed();
               } else {
-                this.removeAttribute("contenteditable");
+                this._tabKeyPressed();
               }
             }
-          }
-          // need to check on the parent too if this was a text node
-          else if (
-            rng.commonAncestorContainer &&
-            rng.commonAncestorContainer.parentNode &&
-            rng.commonAncestorContainer.parentNode.nextElementSibling &&
-            this.activeNode !==
-              rng.commonAncestorContainer.parentNode.nextElementSibling &&
-            typeof rng.commonAncestorContainer.parentNode.nextElementSibling
-              .focus === "function"
-          ) {
-            if (
-              rng.commonAncestorContainer.parentNode.nextElementSibling
-                .tagName !== "HAX-BODY"
-            ) {
-              rng.commonAncestorContainer.parentNode.nextElementSibling.focus();
+            break;
+          case "Enter":
+            this.setAttribute("contenteditable", true);
+            setTimeout(() => {
               if (
-                window.HaxStore.instance.isTextElement(
-                  rng.commonAncestorContainer.parentNode.nextElementSibling
-                )
+                rng.commonAncestorContainer &&
+                typeof rng.commonAncestorContainer.focus === "function"
               ) {
-                this.setAttribute("contenteditable", true);
-              } else {
-                this.removeAttribute("contenteditable");
+                rng.commonAncestorContainer.focus();
+                this.__focusLogic(rng.commonAncestorContainer);
+              }
+            }, 900);
+            break;
+          case "ArrowUp":
+          case "ArrowDown":
+          case "ArrowLeft":
+          case "ArrowRight":
+            if (
+              rng.commonAncestorContainer &&
+              this.activeNode !== rng.commonAncestorContainer &&
+              typeof rng.commonAncestorContainer.focus === "function"
+            ) {
+              if (rng.commonAncestorContainer.tagName !== "HAX-BODY") {
+                if (
+                  window.HaxStore.instance.isTextElement(
+                    rng.commonAncestorContainer
+                  )
+                ) {
+                  this.setAttribute("contenteditable", true);
+                } else {
+                  this.removeAttribute("contenteditable");
+                }
+                setTimeout(() => {
+                  rng.commonAncestorContainer.focus();
+                  this.__focusLogic(rng.commonAncestorContainer);
+                }, 900);
               }
             }
-          }
-          break;
-        case "ArrowUp":
-        case "ArrowLeft":
-          if (
-            rng.commonAncestorContainer &&
-            rng.commonAncestorContainer.previousElementSibling &&
-            this.activeNode !==
-              rng.commonAncestorContainer.previousElementSibling &&
-            typeof rng.commonAncestorContainer.previousElementSibling.focus ===
-              "function"
-          ) {
-            if (
-              rng.commonAncestorContainer.previousElementSibling.tagName !==
-              "HAX-BODY"
+            // need to check on the parent too if this was a text node
+            else if (
+              rng.commonAncestorContainer &&
+              rng.commonAncestorContainer.parentNode &&
+              this.activeNode !== rng.commonAncestorContainer.parentNode &&
+              typeof rng.commonAncestorContainer.parentNode.focus === "function"
             ) {
-              rng.commonAncestorContainer.previousElementSibling.focus();
               if (
-                window.HaxStore.instance.isTextElement(
-                  rng.commonAncestorContainer.previousElementSibling
-                )
+                rng.commonAncestorContainer.parentNode.tagName !== "HAX-BODY"
               ) {
-                this.setAttribute("contenteditable", true);
-              } else {
-                this.removeAttribute("contenteditable");
+                if (
+                  window.HaxStore.instance.isTextElement(
+                    rng.commonAncestorContainer.parentNode
+                  )
+                ) {
+                  this.setAttribute("contenteditable", true);
+                } else {
+                  this.removeAttribute("contenteditable");
+                }
+                setTimeout(() => {
+                  rng.commonAncestorContainer.parentNode.focus();
+                  this.__focusLogic(rng.commonAncestorContainer.parentNode);
+                }, 900);
               }
             }
-          } else if (
-            rng.commonAncestorContainer &&
-            rng.commonAncestorContainer.parentNode &&
-            rng.commonAncestorContainer.parentNode.previousElementSibling &&
-            this.activeNode !==
-              rng.commonAncestorContainer.parentNode.previousElementSibling &&
-            typeof rng.commonAncestorContainer.parentNode.previousElementSibling
-              .focus === "function"
-          ) {
-            if (
-              rng.commonAncestorContainer.parentNode.previousElementSibling
-                .tagName !== "HAX-BODY"
-            ) {
-              rng.commonAncestorContainer.parentNode.previousElementSibling.focus();
-              if (
-                window.HaxStore.instance.isTextElement(
-                  rng.commonAncestorContainer.parentNode.previousElementSibling
-                )
-              ) {
-                this.setAttribute("contenteditable", true);
-              } else {
-                this.removeAttribute("contenteditable");
-              }
-            }
-          }
+            break;
+        }
+      }, 100);
+      if (this.$.platecontextmenu.classList.contains("hax-active-hover")) {
+        this.__dropActiveHover();
       }
-      this.$.cecontextmenu.classList.remove("hax-active-hover");
-      this.$.textcontextmenu.classList.remove("hax-active-hover");
-      this.$.platecontextmenu.classList.remove("hax-active-hover");
     }
   },
   _onKeyPress: function(e) {
-    if (this.editMode) {
-      this.$.cecontextmenu.classList.remove("hax-active-hover");
-      this.$.textcontextmenu.classList.remove("hax-active-hover");
-      this.$.platecontextmenu.classList.remove("hax-active-hover");
+    if (
+      this.editMode &&
+      this.$.platecontextmenu.classList.contains("hax-active-hover")
+    ) {
+      this.__dropActiveHover();
     }
   },
   /**
@@ -612,7 +593,7 @@ let HaxBody = Polymer({
           e.target.parentNode.getAttribute("data-hax-ray")
         );
       }
-      if (!this.$.cecontextmenu.classList.contains("hax-active-hover")) {
+      if (!this.$.platecontextmenu.classList.contains("hax-active-hover")) {
         let normalizedEvent = dom(e);
         let local = normalizedEvent.localTarget;
         // see if the target is relevent when showing the edit menu operations
@@ -628,17 +609,23 @@ let HaxBody = Polymer({
           local.parentNode.parentNode === this.activeContainerNode ||
           local.parentNode.parentNode.parentNode === this.activeContainerNode
         ) {
-          this.$.cecontextmenu.classList.add("hax-active-hover");
-          this.$.textcontextmenu.classList.add("hax-active-hover");
-          this.$.platecontextmenu.classList.add("hax-active-hover");
+          this.__addActiveHover();
           this.__typeLock = false;
         } else {
-          this.$.cecontextmenu.classList.remove("hax-active-hover");
-          this.$.textcontextmenu.classList.remove("hax-active-hover");
-          this.$.platecontextmenu.classList.remove("hax-active-hover");
+          this.__dropActiveHover();
         }
       }
     }
+  },
+  __addActiveHover: function() {
+    this.$.cecontextmenu.classList.add("hax-active-hover");
+    this.$.textcontextmenu.classList.add("hax-active-hover");
+    this.$.platecontextmenu.classList.add("hax-active-hover");
+  },
+  __dropActiveHover: function() {
+    this.$.cecontextmenu.classList.remove("hax-active-hover");
+    this.$.textcontextmenu.classList.remove("hax-active-hover");
+    this.$.platecontextmenu.classList.remove("hax-active-hover");
   },
   /**
    * Check if part of the passed element is int he viewport
@@ -672,14 +659,18 @@ let HaxBody = Polymer({
     if (e.detail === "text") {
       // make sure text just escalates to a paragraph tag
       let p = document.createElement("p");
+      p.innerHTML = "<br/>";
       this.haxReplaceNode(this.activeNode, p, dom(this.activeNode).parentNode);
       // allow swap out to happen
       setTimeout(() => {
         // set active to this p tag
+        this.activeNode = p;
         window.HaxStore.write("activeNode", p, this);
+        this.activeContainerNode.setAttribute("contenteditable", true);
         // focus on it
         p.focus();
-      }, 50);
+        this.__focusLogic(p);
+      }, 210);
     } else {
       this.replaceElementWorkflow();
     }
@@ -1094,7 +1085,6 @@ let HaxBody = Polymer({
    */
   haxMoveGridPlate: function(direction, node, container) {
     // menu is actually in the element for render purposes
-    this.hideContextMenus();
     // support moving things multiple directions
     switch (direction) {
       case "first":
@@ -1486,10 +1476,15 @@ let HaxBody = Polymer({
         }, 200);
         break;
       case "hax-size-change":
-        this.activeNode.style.width = detail.value + "%";
-        setTimeout(() => {
-          this.positionContextMenus(this.activeNode, this.activeContainerNode);
-        }, 200);
+        if (this.activeNode) {
+          this.activeNode.style.width = detail.value + "%";
+          setTimeout(() => {
+            this.positionContextMenus(
+              this.activeNode,
+              this.activeContainerNode
+            );
+          }, 200);
+        }
         break;
       // settings button selected from hax-ce-context bar
       // which means we should skip to the settings page after
@@ -1569,12 +1564,22 @@ let HaxBody = Polymer({
    * Item has gained focus, change active element to match
    */
   _focusIn: function(e) {
+    var normalizedEvent = dom(e);
+    if (this.__focusLogic(normalizedEvent.localTarget)) {
+      e.stopPropagation();
+    }
+  },
+  /**
+   * Focus a target and update the data model to reflect this.
+   * This helps ensure that keyboard and non click based focusing
+   * registers the same as click events
+   */
+  __focusLogic: function(target) {
+    let stopProp = false;
     // only worry about these when we are in edit mode
     if (this.editMode && !this.__tabTrap) {
-      var normalizedEvent = dom(e);
-      var local = normalizedEvent.localTarget;
       var tags = window.HaxStore.instance.validTagList;
-      let containerNode = local;
+      let containerNode = target;
       let activeNode = null;
       // ensure this is valid
       if (
@@ -1624,10 +1629,12 @@ let HaxBody = Polymer({
           tags.includes(containerNode.tagName.toLowerCase()) &&
           !containerNode.classList.contains("ignore-activation")
         ) {
+          this.hideContextMenus();
+          this.activeContainerNode = containerNode;
           window.HaxStore.write("activeContainerNode", containerNode, this);
-          e.stopPropagation();
+          stopProp = true;
         } else if (containerNode.classList.contains("ignore-activation")) {
-          e.stopPropagation();
+          stopProp = true;
         }
         // test for active node changing
         if (
@@ -1635,14 +1642,17 @@ let HaxBody = Polymer({
           tags.includes(containerNode.tagName.toLowerCase()) &&
           !activeNode.classList.contains("ignore-activation")
         ) {
+          this.activeNode = activeNode;
           window.HaxStore.write("activeNode", activeNode, this);
           this.positionContextMenus(activeNode, containerNode);
-          e.stopPropagation();
+          stopProp = true;
         }
       }
     } else {
       this.__tabTrap = false;
     }
+
+    return stopProp;
   },
   /**
    * Notice the change between states for editing.
@@ -1748,7 +1758,10 @@ let HaxBody = Polymer({
       newValue != null &&
       newValue.tagName != null
     ) {
-      if (window.HaxStore.instance.isTextElement(newValue)) {
+      if (
+        window.HaxStore.instance.isTextElement(newValue) ||
+        window.HaxStore.instance.isGridPlateElement(newValue)
+      ) {
         this.setAttribute("contenteditable", true);
       } else {
         this.removeAttribute("contenteditable");
@@ -1781,7 +1794,10 @@ let HaxBody = Polymer({
       // the document
       // only hide if we change containers
       newValue.classList.add("hax-active");
-      if (window.HaxStore.instance.isTextElement(newValue)) {
+      if (
+        window.HaxStore.instance.isTextElement(newValue) ||
+        window.HaxStore.instance.isGridPlateElement(newValue)
+      ) {
         this.setAttribute("contenteditable", true);
       } else {
         this.removeAttribute("contenteditable");
@@ -1845,9 +1861,12 @@ let HaxBody = Polymer({
     // text we want to operate this way
     if (this.__activeHover) {
       menu.classList.add("hax-active-hover");
+      menu.style.marginLeft = "";
       this.__typeLock = false;
     }
-    async.microTask.run(this._keepContextVisible());
+    setTimeout(() => {
+      async.microTask.run(this._keepContextVisible());
+    }, 100);
   },
   /**
    * Simple hide / reset of whatever menu it's handed.
@@ -1858,103 +1877,83 @@ let HaxBody = Polymer({
       "hax-context-pin-top",
       "hax-context-pin-bottom"
     );
+    menu.style.left = "-100px";
   },
   /**
    * Find the next thing to tab forward to.
    */
-  _tabKeyPressed: function(e) {
-    if (this.editMode) {
-      if (e.detail.keyboardEvent) {
-        e.detail.keyboardEvent.preventDefault();
-        e.detail.keyboardEvent.stopPropagation();
-        e.detail.keyboardEvent.stopImmediatePropagation();
+  _tabKeyPressed: function() {
+    let focus = false;
+    let node = this.activeContainerNode;
+    const activeNodeTagName = this.activeContainerNode.tagName;
+    // try selection / tab block since range can cause issues
+    try {
+      let range = window.HaxStore.getRange().cloneRange();
+      var tagTest = range.commonAncestorContainer.tagName;
+      if (typeof tagTest === typeof undefined) {
+        tagTest = range.commonAncestorContainer.parentNode.tagName;
       }
-      e.preventDefault();
-      e.stopPropagation();
-      e.stopImmediatePropagation();
-      let focus = false;
-      let node = this.activeContainerNode;
-      const activeNodeTagName = this.activeContainerNode.tagName;
-      // try selection / tab block since range can cause issues
-      try {
-        let range = window.HaxStore.getRange().cloneRange();
-        var tagTest = range.commonAncestorContainer.tagName;
-        if (typeof tagTest === typeof undefined) {
-          tagTest = range.commonAncestorContainer.parentNode.tagName;
+      if (
+        ["UL", "OL", "LI"].includes(activeNodeTagName) ||
+        ["UL", "OL", "LI"].includes(tagTest)
+      ) {
+        if (this.polyfillSafe) {
+          document.execCommand("indent");
+          this.__tabTrap = true;
         }
-        if (
-          ["UL", "OL", "LI"].includes(activeNodeTagName) ||
-          ["UL", "OL", "LI"].includes(tagTest)
-        ) {
-          if (this.polyfillSafe) {
-            document.execCommand("indent");
-            if (e.detail.keyboardEvent) {
-              e.detail.keyboardEvent.preventDefault();
-              e.detail.keyboardEvent.stopPropagation();
-              e.detail.keyboardEvent.stopImmediatePropagation();
-            }
-            this.__tabTrap = true;
-          }
-        } else {
-          while (!focus) {
-            // do nothing
-            if (dom(node).nextSibling == null) {
-              focus = true;
-            } else if (dom(node).nextSibling.focus === "function") {
-              dom(node).nextSibling.focus();
-              focus = true;
-            } else {
-              node = dom(node).nextSibling;
-            }
+      } else {
+        while (!focus) {
+          // do nothing
+          if (dom(node).nextSibling == null) {
+            focus = true;
+          } else if (dom(node).nextSibling.focus === "function") {
+            dom(node).nextSibling.focus();
+            focus = true;
+          } else {
+            node = dom(node).nextSibling;
           }
         }
-      } catch (e) {}
+      }
+    } catch (e) {
+      console.log(e);
     }
   },
   /**
    * Move back through things when tab back pressed
    */
-  _tabBackKeyPressed: function(e) {
-    if (this.editMode) {
-      if (e.detail.keyboardEvent) {
-        e.detail.keyboardEvent.preventDefault();
-        e.detail.keyboardEvent.stopPropagation();
-        e.detail.keyboardEvent.stopImmediatePropagation();
+  _tabBackKeyPressed: function() {
+    let node = this.activeContainerNode;
+    const activeNodeTagName = this.activeContainerNode.tagName;
+    // try selection / tab block since range can cause issues
+    try {
+      let range = window.HaxStore.getRange().cloneRange();
+      var tagTest = range.commonAncestorContainer.tagName;
+      if (typeof tagTest === typeof undefined) {
+        tagTest = range.commonAncestorContainer.parentNode.tagName;
       }
-      e.preventDefault();
-      e.stopPropagation();
-      e.stopImmediatePropagation();
-      let node = this.activeContainerNode;
-      const activeNodeTagName = this.activeContainerNode.tagName;
-      // try selection / tab block since range can cause issues
-      try {
-        let range = window.HaxStore.getRange().cloneRange();
-        var tagTest = range.commonAncestorContainer.tagName;
-        if (typeof tagTest === typeof undefined) {
-          tagTest = range.commonAncestorContainer.parentNode.tagName;
+      if (
+        ["UL", "OL", "LI"].includes(activeNodeTagName) ||
+        ["UL", "OL", "LI"].includes(tagTest)
+      ) {
+        if (this.polyfillSafe) {
+          document.execCommand("outdent");
+          this.__tabTrap = true;
         }
-        if (
-          ["UL", "OL", "LI"].includes(activeNodeTagName) ||
-          ["UL", "OL", "LI"].includes(tagTest)
-        ) {
-          if (this.polyfillSafe) {
-            document.execCommand("outdent");
-            this.__tabTrap = true;
-          }
-        } else {
-          if (node != null) {
-            // step back ignoring hax- prefixed elements
-            while (node != null && !this._haxElementTest(node)) {
-              node = dom(node).previousSibling;
-            }
-          }
-          if (node != null) {
-            setTimeout(() => {
-              node.focus();
-            }, 50);
+      } else {
+        if (node != null) {
+          // step back ignoring hax- prefixed elements
+          while (node != null && !this._haxElementTest(node)) {
+            node = dom(node).previousSibling;
           }
         }
-      } catch (e) {}
+        if (node != null) {
+          setTimeout(() => {
+            node.focus();
+          }, 50);
+        }
+      }
+    } catch (e) {
+      console.log(e);
     }
   }
 });

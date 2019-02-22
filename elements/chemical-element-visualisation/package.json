@@ -11,7 +11,7 @@
       "js": "src/chemical-element-visualisation.js"
     }
   },
-  "version": "2.0.5",
+  "version": "2.0.7",
   "description": "Visualization of some different chemistry elements",
   "repository": {
     "type": "git",

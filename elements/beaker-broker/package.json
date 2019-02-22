@@ -16,7 +16,7 @@
       "hax": "src/beaker-broker-hax.json"
     }
   },
-  "version": "2.0.5",
+  "version": "2.0.7",
   "description": "A broker element to make working with Beaker Browser's API even easier.",
   "repository": {
     "type": "git",

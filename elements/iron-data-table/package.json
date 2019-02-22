@@ -16,7 +16,7 @@
       "hax": "src/iron-data-table-hax.json"
     }
   },
-  "version": "2.0.5",
+  "version": "2.0.7",
   "description": "Start of iron-data-table",
   "repository": {
     "type": "git",

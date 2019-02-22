@@ -315,10 +315,6 @@ Polymer({
       }
     });
     this.dispatchEvent(evt);
-    // get around initial setup state management
-    if (typeof this.__body !== typeof undefined) {
-      window.HaxStore.instance.activeHaxBody.importContent(this.__body);
-    }
     async.microTask.run(() => {
       // allow for initial setting since this editor gets injected basically
       if (typeof window.cmsSiteEditor.jsonOutlineSchema !== typeof undefined) {
@@ -411,6 +407,7 @@ Polymer({
       }
     });
     window.dispatchEvent(evt);
+    this.fire("haxcms-trigger-update", true);
   },
   /**
    * delete the page we just got
@@ -469,7 +466,7 @@ Polymer({
           duration: 0
         }
       });
-      this.dispatchEvent(evt);
+      window.dispatchEvent(evt);
     } else if (!newValue && oldValue) {
       const evt = new CustomEvent("simple-toast-show", {
         bubbles: true,
@@ -479,6 +476,7 @@ Polymer({
           duration: 3000
         }
       });
+      window.dispatchEvent(evt);
     }
   },
   /**
@@ -526,7 +524,7 @@ Polymer({
         duration: 3000
       }
     });
-    this.dispatchEvent(evt);
+    window.dispatchEvent(evt);
     this.fire("haxcms-trigger-update", true);
   },
   _handleOutlineResponse: function(e) {
@@ -539,7 +537,7 @@ Polymer({
         duration: 3000
       }
     });
-    this.dispatchEvent(evt);
+    window.dispatchEvent(evt);
     this.fire("haxcms-trigger-update", true);
   },
   _handleManifestResponse: function(e) {
@@ -570,11 +568,11 @@ Polymer({
       cancelable: true,
       detail: {
         text: data.response,
-        duration: 0,
+        duration: 5000,
         slot: content.cloneNode(true)
       }
     });
-    this.dispatchEvent(evt);
+    window.dispatchEvent(evt);
   },
   /**
    * Save page event

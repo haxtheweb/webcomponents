@@ -15,15 +15,15 @@ import "./haxcms-manifest-editor-dialog.js";
  */
 Polymer({
   _template: html`
-    <style is="custom-style">
+    <style>
       :host {
         display: block;
         position: fixed;
         right: 0;
         bottom: 0;
         opacity: 0.6;
-        transition: 0.3s all linear;
-        background-color: rgba(255, 0, 116, 1);
+        transition: 0.6s all ease-in-out;
+        background-color: var(--haxcms-color, rgba(255, 0, 116, 1));
         padding: 0px 10px;
         border-top-left-radius: 10px;
         border-left: 2px solid black;
@@ -48,8 +48,8 @@ Polymer({
         vertical-align: middle;
         line-height: 40px;
         background-color: black;
-        color: rgba(255, 0, 116, 1);
-        transition: all 0.3s linear;
+        color: var(--haxcms-color, rgba(255, 0, 116, 1));
+        transition: 0.3s all ease-in-out;
         padding: 8px;
         margin: 0;
         position: relative;
@@ -67,7 +67,7 @@ Polymer({
         border-radius: 50%;
         margin: 5px 2px 0 2px;
         background-color: rgba(0, 0, 0, 0.2);
-        transition: 0.3s all linear;
+        transition: 0.3s all ease-in-out;
       }
       paper-icon-button:hover,
       paper-icon-button:focus,
@@ -139,17 +139,20 @@ Polymer({
       id="menubutton"
       icon="icons:menu"
       on-tap="_menuButtonTap"
+      aria-label="Expand menu"
     ></paper-fab>
     <paper-fab
       id="cancelbutton"
       icon="icons:cancel"
       on-tap="_cancelButtonTap"
       hidden$="[[!editMode]]"
+      aria-label="Cancel editing"
     ></paper-fab>
     <paper-fab
       id="editbutton"
       icon="[[__editIcon]]"
       on-tap="_editButtonTap"
+      aria-label$="[[__editText]]"
     ></paper-fab>
     <div class="wrapper">
       <div class="main-title">[[activeItem.title]]</div>
@@ -157,21 +160,25 @@ Polymer({
         id="deletebutton"
         icon="icons:delete"
         on-tap="_deleteButtonTap"
+        aria-label="Delete current page"
       ></paper-icon-button>
       <paper-icon-button
         id="addbutton"
         icon="icons:add"
         on-tap="_addButtonTap"
+        aria-label="Add new page"
       ></paper-icon-button>
       <paper-icon-button
         id="outlinebutton"
         icon="icons:list"
         on-tap="_outlineButtonTap"
+        aria-label="Edit site outline"
       ></paper-icon-button>
       <paper-icon-button
         id="manifestbutton"
         icon="icons:settings"
         on-tap="_manifestButtonTap"
+        aria-label="Edit site settings"
       ></paper-icon-button>
     </div>
     <paper-tooltip for="menubutton" position="top" offset="14"
@@ -211,7 +218,6 @@ Polymer({
      */
     activeItem: {
       type: Object,
-      value: {},
       observer: "_activeItemChanged"
     },
     /**
@@ -407,13 +413,17 @@ Polymer({
    * toggle state on button tap
    */
   _manifestButtonTap: function(e) {
-    let c = document.createElement("haxcms-manifest-editor-dialog");
+    if (!this.__manifestEditor) {
+      this.__manifestEditor = document.createElement(
+        "haxcms-manifest-editor-dialog"
+      );
+    }
     const evt = new CustomEvent("simple-modal-show", {
       bubbles: true,
       cancelable: false,
       detail: {
         title: "Edit site settings",
-        elements: { content: c },
+        elements: { content: this.__manifestEditor },
         invokedBy: this.$.manifestbutton,
         clone: false
       }

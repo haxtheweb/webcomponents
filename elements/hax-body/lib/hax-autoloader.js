@@ -97,7 +97,7 @@ Polymer({
             // this delivers locally or from remote
             // @todo need to support name spacing of packages so that we
             // don't assume they are all relative to lrnwebcomponents
-            const basePath = pathFromUrl(import.meta.url);
+            const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
             import(`${basePath}../../${name}/${name}.js`)
               .then(response => {
                 // get the custom element definition we used to add that file

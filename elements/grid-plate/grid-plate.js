@@ -551,8 +551,10 @@ let GridPlate = Polymer({
     }
     // ensure arrows are correctly positioned after the move
     setTimeout(() => {
-      this.positionArrows(this.__activeItem);
-      this.__activeItem.focus();
+      if (this.__activeItem && typeof this.__activeItem.focus === "function") {
+        this.positionArrows(this.__activeItem);
+        this.__activeItem.focus();
+      }
     }, 100);
   },
 
@@ -578,9 +580,6 @@ let GridPlate = Polymer({
    * Set the target element to active
    */
   setActiveElement: function(e) {
-    var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget;
-    //this.$.up.focus();
     this.$.right.focus();
     e.preventDefault();
     e.stopPropagation();
@@ -864,8 +863,10 @@ let GridPlate = Polymer({
     }
     // position arrows / set focus in case the DOM got updated above
     setTimeout(() => {
-      this.positionArrows(this.__activeItem);
-      this.__activeItem.focus();
+      if (this.__activeItem && typeof this.__activeItem.focus === "function") {
+        this.positionArrows(this.__activeItem);
+        this.__activeItem.focus();
+      }
     }, 100);
   },
 
@@ -1013,11 +1014,14 @@ let GridPlate = Polymer({
       // delay and then set it back, re-applying all events
       setTimeout(() => {
         this.editMode = true;
-        // reposition arrows on what had active status
-        this.positionArrows(this.__activeItem);
-        // focus which then hax will kick in
-        this.__activeItem.focus();
-      }, 250);
+        if (
+          this.__activeItem &&
+          typeof this.__activeItem.focus === "function"
+        ) {
+          this.positionArrows(this.__activeItem);
+          this.__activeItem.focus();
+        }
+      }, 100);
     }
   },
 

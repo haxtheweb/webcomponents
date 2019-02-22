@@ -1,0 +1,23 @@
+{
+  "title": {
+    "name": "title",
+    "type": "String",
+    "value": "",
+    "reflectToAttribute": false,
+    "observer": false
+  },
+  "subtitle": {
+    "name": "subtitle",
+    "type": "String",
+    "value": "",
+    "reflectToAttribute": false,
+    "observer": false
+  },
+  "source": {
+    "name": "source",
+    "type": "String",
+    "value": "",
+    "reflectToAttribute": false,
+    "observer": false
+  }
+}

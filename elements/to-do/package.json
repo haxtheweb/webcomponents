@@ -16,7 +16,7 @@
       "hax": "src/to-do-hax.json"
     }
   },
-  "version": "2.0.5",
+  "version": "2.0.7",
   "description": "Start of to-do",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/hax-body-behaviors": "^2.0.5",
-    "@lrnwebcomponents/materializecss-styles": "^2.0.5",
+    "@lrnwebcomponents/materializecss-styles": "^2.0.7",
     "@lrnwebcomponents/schema-behaviors": "^2.0.5",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-button": "^3.0.0",

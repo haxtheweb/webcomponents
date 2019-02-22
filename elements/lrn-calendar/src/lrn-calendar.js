@@ -179,7 +179,7 @@ let LrnCalendar = Polymer({
    */
   created: function() {
     const name = "ical";
-    const basePath = pathFromUrl(import.meta.url);
+    const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
     const location = `${basePath}lib/ical.js/build/ical.js`;
     window.addEventListener(
       `es-bridge-${name}-loaded`,

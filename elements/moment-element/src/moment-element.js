@@ -92,7 +92,7 @@ let MomentElement = Polymer({
   ],
   created: function() {
     const name = "moment";
-    const basePath = pathFromUrl(import.meta.url);
+    const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
     const location = `${basePath}lib/moment/moment.js`;
     window.addEventListener(
       `es-bridge-${name}-loaded`,

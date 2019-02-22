@@ -19,7 +19,7 @@
   "contributors": [
     "Valentin Hristov <v.hristov@mail.ru>"
   ],
-  "version": "2.0.5",
+  "version": "2.0.7",
   "description": "A icon picker element using all the Material Design icons",
   "repository": {
     "type": "git",

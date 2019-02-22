@@ -16,7 +16,7 @@
       "hax": "src/self-check-hax.json"
     }
   },
-  "version": "2.0.5",
+  "version": "2.0.7",
   "description": "Automated conversion of self-check/",
   "repository": {
     "type": "git",
@@ -42,9 +42,9 @@
   "dependencies": {
     "@lrnwebcomponents/a11y-behaviors": "^2.0.5",
     "@lrnwebcomponents/hax-body-behaviors": "^2.0.5",
-    "@lrnwebcomponents/materializecss-styles": "^2.0.5",
+    "@lrnwebcomponents/materializecss-styles": "^2.0.7",
     "@lrnwebcomponents/schema-behaviors": "^2.0.5",
-    "@lrnwebcomponents/simple-colors": "^2.0.5",
+    "@lrnwebcomponents/simple-colors": "^2.0.7",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-card": "^3.0.0",
     "@polymer/paper-icon-button": "^3.0.1",

@@ -323,7 +323,7 @@ let WavePlayer = Polymer({
    */
   created: function() {
     const name = "wavesurfer";
-    const basePath = pathFromUrl(import.meta.url);
+    const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
     const location = `${basePath}lib/wavesurfer.js/dist/wavesurfer.js`;
     window.addEventListener(
       `es-bridge-${name}-loaded`,
@@ -413,7 +413,7 @@ let WavePlayer = Polymer({
     }
     // basic default for coverart if none
     if (this.coverart === "") {
-      const basePath = pathFromUrl(import.meta.url);
+      const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
       this.coverart = `${basePath}lib/art.jpg`;
     }
   },

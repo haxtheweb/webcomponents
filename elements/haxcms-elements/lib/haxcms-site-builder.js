@@ -184,12 +184,11 @@ let HAXCMSSiteBuilder = Polymer({
    * ready life cycle
    */
   created: function() {
+    this.__timeStamp = "";
     // attempt to set polymer passive gestures globally
     // this decreases logging and improves performance on scrolling
     setPassiveTouchGestures(true);
     window.JSONOutlineSchema.requestAvailability();
-    window.SimpleModal.requestAvailability();
-    window.SimpleToast.requestAvailability();
     window.addEventListener(
       "haxcms-trigger-update",
       this._triggerUpdatedData.bind(this)
@@ -204,12 +203,19 @@ let HAXCMSSiteBuilder = Polymer({
     );
   },
   attached: function() {
+    window.SimpleModal.requestAvailability();
+    window.SimpleToast.requestAvailability();
+    this.editorBuilder = document.createElement("haxcms-editor-builder");
     // attach editor builder after we've appended to the screen
-    document.body.appendChild(document.createElement("haxcms-editor-builder"));
+    document.body.appendChild(this.editorBuilder);
     // prep simple toast notification
     async.microTask.run(() => {
       if (window.cmsSiteEditor && this.manifest) {
         window.cmsSiteEditor.jsonOutlineSchema = this.manifest;
+      }
+      // get fresh data if not published
+      if (this.editorBuilder.getContext() !== "published") {
+        this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
       }
     });
   },
@@ -241,7 +247,7 @@ let HAXCMSSiteBuilder = Polymer({
     this.notifyPath("queryParams.page");
     // check for authoring xp by just asking for the object
     // timeout helps w/ some initial setup work
-    var time = 500;
+    var time = 2000;
     if (window.HaxStore && window.HaxStore.ready) {
       time = 10;
     }
@@ -274,12 +280,22 @@ let HAXCMSSiteBuilder = Polymer({
             let frag = document.createRange().createContextualFragment(html);
             dom(this.themeElement).appendChild(frag);
             this.fire("json-outline-schema-active-body-changed", html);
+            if (!window.HaxStore || !window.HaxStore.ready) {
+              setTimeout(() => {
+                if (
+                  window.cmsSiteEditor.instance &&
+                  window.cmsSiteEditor.haxCmsSiteEditorUIElement
+                ) {
+                  window.HaxStore.instance.activeHaxBody.importContent(html);
+                }
+              }, 2000);
+            }
           }, 50);
         });
         // if there are, dynamically import them
         if (this.manifest.metadata.dynamicElementLoader) {
           let tagsFound = this.findTagsInHTML(html);
-          const basePath = pathFromUrl(import.meta.url);
+          const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
           for (var i in tagsFound) {
             const tagName = tagsFound[i];
             if (
@@ -339,14 +355,14 @@ let HAXCMSSiteBuilder = Polymer({
    */
   _activeItemChanged: function(newValue, oldValue) {
     if (typeof newValue.id !== typeof undefined) {
-      this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
+      // get fresh data if not published
+      if (this.editorBuilder.getContext() !== "published") {
+        this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
+      }
       this.$.activecontent.generateRequest();
     }
     // we had something, now we don't. wipe out the content area of the theme
     else if (typeof newValue.id === typeof undefined) {
-      async.microTask.run(() => {
-        this.wipeSlot(this.themeElement, "*");
-      });
       // fire event w/ nothing, this is because there is no content
       this.fire("json-outline-schema-active-body-changed", null);
     }
@@ -356,8 +372,10 @@ let HAXCMSSiteBuilder = Polymer({
    * got a message that we need to update our json manifest data
    */
   _triggerUpdatedData: function(e) {
-    // append a value so we know we get fresher data
-    this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
+    // get fresh data if not published
+    if (this.editorBuilder.getContext() !== "published") {
+      this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
+    }
     this.$.manifest.generateRequest();
   },
 
@@ -365,8 +383,10 @@ let HAXCMSSiteBuilder = Polymer({
    * got a message that we need to update our page content
    */
   _triggerUpdatedPage: function(e) {
-    // append a value so we know we get fresher data
-    this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
+    // get fresh data if not published
+    if (this.editorBuilder.getContext() !== "published") {
+      this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
+    }
     this.$.activecontent.generateRequest();
   },
 
@@ -476,14 +496,13 @@ let HAXCMSSiteBuilder = Polymer({
       } else {
         // import the reference to the item dynamically, if we can
         try {
-          import(pathFromUrl(import.meta.url) + this.themeData[themeName]).then(
-            e => {
-              // add it into ourselves so it unpacks and we kick this off!
-              dom(this).appendChild(this.themeElement);
-              this.__imported[themeName] = themeName;
-              this.themeLoaded = true;
-            }
-          );
+          import(pathFromUrl(decodeURIComponent(import.meta.url)) +
+            this.themeData[themeName]).then(e => {
+            // add it into ourselves so it unpacks and we kick this off!
+            dom(this).appendChild(this.themeElement);
+            this.__imported[themeName] = themeName;
+            this.themeLoaded = true;
+          });
         } catch (err) {
           // error in the event this is a double registration
           // also strange to be able to reach this but technically possible

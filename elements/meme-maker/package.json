@@ -16,7 +16,7 @@
       "hax": "src/meme-maker-hax.json"
     }
   },
-  "version": "2.0.5",
+  "version": "2.0.7",
   "description": "Automated conversion of meme-maker/",
   "repository": {
     "type": "git",

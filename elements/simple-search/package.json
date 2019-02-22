@@ -11,7 +11,7 @@
       "js": "src/simple-search.js"
     }
   },
-  "version": "2.0.5",
+  "version": "2.0.7",
   "description": "Automated conversion of simple-search",
   "repository": {
     "type": "git",

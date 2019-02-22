@@ -16,7 +16,7 @@
       "hax": "src/paper-avatar-hax.json"
     }
   },
-  "version": "2.0.5",
+  "version": "2.0.7",
   "description": "Automated conversion of paper-avatar/",
   "repository": {
     "type": "git",

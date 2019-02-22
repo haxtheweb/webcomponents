@@ -3,7 +3,7 @@ import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/iron-pages/iron-pages.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
-import "@lrnwebcomponents/haxcms-elements/lib/haxcms-theme-behavior.js";
+import { HAXCMSThemeWiring } from "@lrnwebcomponents/haxcms-elements/lib/HAXCMSThemeWiring.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "./lib/simple-blog-listing.js";
@@ -23,7 +23,7 @@ A simple blog and associated elements
 */
 let SimpleBlog = Polymer({
   _template: html`
-    <style is="custom-style" include="simple-colors">
+    <style include="simple-colors">
       :host {
         display: block;
         font-family: "Roboto", "Noto", sans-serif;
@@ -32,7 +32,7 @@ let SimpleBlog = Polymer({
         margin: 0;
         padding: 24px;
         background-color: #fafafa;
-        font-family: Open Sans, MundoSans, helvetica neue, Arial, Helvetica,
+        font-family: "Open Sans", "MundoSans", helvetica neue, Arial, Helvetica,
           sans-serif;
         margin: 0;
         padding: 0;
@@ -106,8 +106,7 @@ let SimpleBlog = Polymer({
           position="right"
           offset="14"
           animation-delay="100"
-        >
-          Back to main site
+          >Back to listing
         </paper-tooltip>
         <simple-blog-post
           id="post"
@@ -125,7 +124,7 @@ let SimpleBlog = Polymer({
 
   is: "simple-blog",
 
-  behaviors: [SchemaBehaviors.Schema, HAXCMSBehaviors.Theme],
+  behaviors: [SchemaBehaviors.Schema],
 
   properties: {
     /**
@@ -135,38 +134,60 @@ let SimpleBlog = Polymer({
       type: Number,
       reflectToAttribute: true,
       value: 0
+    },
+    /**
+     * editting state for the page
+     */
+    editMode: {
+      type: Boolean,
+      reflectToAttribute: true
+    },
+    /**
+     * Active item which is in JSON Outline Schema
+     */
+    activeItem: {
+      type: Object
+    },
+    activeItemId: {
+      type: String
+    },
+    /**
+     * a manifest json file decoded, in JSON Outline Schema format
+     */
+    manifest: {
+      type: Object
     }
   },
-
   /**
-   * Ready life cycle
+   * created life cycle
+   */
+  created: function() {
+    this.HAXCMSThemeWiring = new HAXCMSThemeWiring(this);
+  },
+  /**
+   * ready life cycle
    */
   ready: function() {
-    this.setupHAXTheme(true, this.$.post.$.contentcontainer);
+    this.HAXCMSThemeWiring.connect(this, this.$.post.$.contentcontainer);
+  },
+  /**
+   * attached life cycle
+   */
+  attached: function() {
     // subscribe to manifest changes
-    autorun(() => {
+    this.__disposer = autorun(() => {
       this.manifest = toJS(store.routerManifest);
-    });
-    autorun(() => {
+      this.activeItemId = toJS(store.activeItem);
       this._locationChanged(store.location);
     });
-    document.body.addEventListener(
-      "haxcms-trigger-update",
-      this._dataRefreshed.bind(this)
-    );
   },
-
   /**
-   * Detatched life cycle
+   * detatched life cycle
    */
   detached: function() {
-    this.setupHAXTheme(false);
-    document.body.addEventListener(
-      "haxcms-trigger-update",
-      this._dataRefreshed.bind(this)
-    );
+    this.HAXCMSThemeWiring.disconnect(this);
+    this.__disposer();
   },
-
   /**
    * Listen for router location changes
    * @param {event} e
@@ -178,23 +199,38 @@ let SimpleBlog = Polymer({
       this.selectedPage = 0;
     } else {
       this.selectedPage = 1;
-      window.scrollTo(0, 0);
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth"
+      });
     }
   },
-
   /**
    * Reset the active item to reset state
    */
   _goBack: function(e) {
+    const prevActiveItemId = this.activeItemId;
     window.history.pushState(null, null, store.location.baseUrl);
     window.dispatchEvent(new PopStateEvent("popstate"));
-  },
-
-  /**
-   * refreshed data call
-   */
-  _dataRefreshed: function(e) {
+    // should help account for starting on a page where popstate isn't set
+    // and also generate data model mirroring
+    if (prevActiveItemId) {
+      setTimeout(() => {
+        let active = this.$.listing.shadowRoot.querySelector(
+          'simple-blog-overview[item-id="' + prevActiveItemId + '"]'
+        );
+        active.scrollIntoView(true);
+        active.focus();
+      }, 100);
+    } else {
+      window.scrollTo({
+        top: 0,
+        left: 0
+      });
+    }
     this.fire("json-outline-schema-active-item-changed", {});
+    this.selectedPage = 0;
   }
 });
 export { SimpleBlog };

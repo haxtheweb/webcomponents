@@ -1,6 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-card/paper-card.js";
 import "@lrnwebcomponents/simple-datetime/simple-datetime.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
 `simple-blog-overview`
 Overview / preview of the text of the post with title
@@ -14,17 +15,11 @@ Overview / preview of the text of the post with title
 */
 Polymer({
   _template: html`
-    <style>
+    <style includes="simple-colors">
       :host {
         display: block;
         outline: none;
         text-transform: none;
-      }
-      paper-button {
-        padding: 0;
-        margin: 0;
-        width: 100%;
-        min-width: unset;
       }
       paper-card {
         padding: 32px 16px;
@@ -46,20 +41,21 @@ Polymer({
         text-decoration: none;
         color: #333332;
       }
-      .post-excerpt {
+      .post-excerpt,
+      simple-datetime {
         letter-spacing: -0.32px;
         font-weight: 300;
         font-style: normal;
         font-size: 16px;
         line-height: 1.3;
-        color: #666665;
+        color: var(--simple-colors-default-theme-grey-10);
       }
       .post-excerpt p {
         text-transform: none;
       }
       :host([elevation="2"]) .post-excerpt,
       :host([elevation="2"]) simple-datetime {
-        color: #333335;
+        color: var(--simple-colors-default-theme-grey-12);
       }
       .post-meta {
         font-size: 14px;
@@ -75,39 +71,36 @@ Polymer({
       }
     </style>
 
-    <a href$="[[link]]" itemprop="url">
-      <paper-button>
-        <paper-card elevation="[[elevation]]">
-          <article
-            class="post"
-            itemtype="http://schema.org/BlogPosting"
-            role="article"
-          >
-            <div class="article-item">
-              <header class="post-header">
-                <h2 class="post-title" itemprop="name">[[title]]</h2>
-              </header>
-              <section class="post-excerpt" itemprop="description">
-                <p>[[description]]</p>
-              </section>
-              <div class="post-meta">
-                <simple-datetime
-                  format="M jS, Y"
-                  timestamp="[[changed]]"
-                  unix=""
-                ></simple-datetime>
-              </div>
+    <a href$="[[link]]" itemprop="url" title$="[[title]]">
+      <paper-card elevation="[[elevation]]">
+        <article
+          class="post"
+          itemtype="http://schema.org/BlogPosting"
+          role="article"
+        >
+          <div class="article-item">
+            <header class="post-header">
+              <h3 class="post-title" itemprop="name">[[title]]</h3>
+            </header>
+            <section class="post-excerpt" itemprop="description">
+              <p>[[description]]</p>
+            </section>
+            <div class="post-meta">
+              <simple-datetime
+                format="M jS, Y"
+                timestamp="[[changed]]"
+                unix=""
+              ></simple-datetime>
             </div>
-          </article>
-        </paper-card>
-      </paper-button>
+          </div>
+        </article>
+      </paper-card>
     </a>
   `,
 
   is: "simple-blog-overview",
 
   listeners: {
-    tap: "_itemTap",
     mousedown: "tapEventOn",
     mouseover: "tapEventOn",
     mouseout: "tapEventOff",
@@ -120,7 +113,8 @@ Polymer({
      * ID of this item
      */
     itemId: {
-      type: String
+      type: String,
+      reflectToAttribute: true
     },
     /**
      * Title
@@ -168,11 +162,5 @@ Polymer({
    */
   tapEventOff: function(e) {
     this.elevation = 0;
-  },
-  /**
-   * Fire an event because we got tapped.
-   */
-  _itemTap: function(e) {
-    this.fire("active-item-selected", this.itemId);
   }
 });

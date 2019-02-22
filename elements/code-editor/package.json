@@ -16,7 +16,7 @@
       "hax": "src/code-editor-hax.json"
     }
   },
-  "version": "2.0.5",
+  "version": "2.0.7",
   "description": "Data binding wrapped on top of a popular code editor",
   "repository": {
     "type": "git",

@@ -10,6 +10,7 @@ import "@polymer/iron-icons/av-icons.js";
 import "@polymer/iron-icons/device-icons.js";
 import "@polymer/iron-icons/image-icons.js";
 import "@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `haxcms-manifest-editor-dialog`
  * `Dialog for presenting an editable manifest of core settings`
@@ -20,14 +21,13 @@ import "@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js";
  */
 Polymer({
   _template: html`
-    <style is="custom-style">
+    <style>
       :host {
         display: block;
       }
       #publish {
         min-width: 100px;
         background-color: var(--haxcms-color, #ff4081);
-        color: #ffffff;
       }
       .buttons {
         margin: 8px 0 8px 0;
@@ -36,6 +36,7 @@ Polymer({
         padding: 8px 8px 32px 8px;
       }
       paper-button {
+        color: var(--simple-colors-default-theme-grey-11);
         margin: 0 5px;
       }
       iron-icon {
@@ -160,6 +161,11 @@ Polymer({
   attached: function() {
     this.$.sitecolor.addEventListener("change", this._colorChanged.bind(this));
     this.$.sitetheme.addEventListener("change", this._themeChanged.bind(this));
+    setTimeout(() => {
+      var evt = document.createEvent("UIEvents");
+      evt.initUIEvent("resize", true, false, window, 0);
+      window.dispatchEvent(evt);
+    }, 100);
   },
   /**
    * detached life cycle
@@ -201,9 +207,16 @@ Polymer({
    * Use events for real value in color area.
    */
   _colorChanged: function(e) {
-    this.set("manifest.metadata.cssVariable", e.detail.cssVariable);
+    this.set("manifest.metadata.cssVariable", e.detail.value);
     this.notifyPath("manifest.metadata.cssVariable");
-    this.set("manifest.metadata.hexCode", e.detail.hexCode);
+    this.set(
+      "manifest.metadata.hexCode",
+      SimpleColors.colors[
+        e.detail.value
+          .replace("--simple-colors-default-theme-", "")
+          .replace("-7", "")
+      ][6]
+    );
     this.notifyPath("manifest.metadata.hexCode");
   },
 

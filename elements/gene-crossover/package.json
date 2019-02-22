@@ -16,7 +16,7 @@
       "hax": "src/gene-crossover-hax.json"
     }
   },
-  "version": "2.0.5",
+  "version": "2.0.7",
   "description": "Some gene animations",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/hax-body-behaviors": "^2.0.5",
-    "@lrnwebcomponents/lrndesign-animationctrl": "^2.0.5",
+    "@lrnwebcomponents/lrndesign-animationctrl": "^2.0.7",
     "@lrnwebcomponents/paper-stepper": "^2.0.5",
     "@polymer/app-route": "^3.0.0",
     "@polymer/iron-pages": "^3.0.0",

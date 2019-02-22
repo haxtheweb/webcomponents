@@ -1,15 +1,11 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 /**
-`outline-player`
-A LRN element
-
-* @demo demo/index.html
-
-*/
+ * `outline-player`
+ * @demo demo/index.html
+ */
 Polymer({
   _template: html`
-    <style include="materializecss-styles">
+    <style>
       :host {
         display: block;
         position: relative;
@@ -38,8 +34,6 @@ Polymer({
   `,
 
   is: "outline-player-arrow",
-
-  behaviors: [MaterializeCSSBehaviors.ColorBehaviors],
 
   properties: {
     icon: {
