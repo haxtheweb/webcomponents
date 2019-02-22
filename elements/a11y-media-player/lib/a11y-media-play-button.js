@@ -198,7 +198,6 @@ class A11yMediaPlayButton extends A11yMediaPlayerBehaviors {
    */
   _buttonTap() {
     let root = this;
-    console.log("play");
     root.dispatchEvent(new CustomEvent("controls-change", { detail: this }));
   }
 }
