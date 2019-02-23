@@ -184,8 +184,14 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
     root._setPlayerHeight(aspect);
     if (root.isYoutube) {
       root._youTubeRequest();
+      document.addEventListener("timeupdate", e => {
+        if (e.detail === root.media) root._handleTimeUpdate(e);
+      });
     } else {
       root.media = root.$.html5;
+      root.media.media.addEventListener("timeupdate", e => {
+        root._handleTimeUpdate(e);
+      });
       root._addSourcesAndTracks();
     }
     root.$.transcript.setMedia(root.$.innerplayer);
@@ -196,40 +202,34 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
         this.fullscreen = screenfull.isFullscreen;
       });
     }
+    root.$.slider.addEventListener("mousedown", e => {
+      root._handleSliderStart();
+    });
+    root.$.slider.addEventListener("mouseup", e => {
+      root._handleSliderStop();
+    });
+    root.$.slider.addEventListener("keydown", e => {
+      root._handleSliderStart();
+    });
+    root.$.slider.addEventListener("keyup", e => {
+      root._handleSliderStop();
+    });
+    root.$.slider.addEventListener("blur", e => {
+      root._handleSliderStop();
+    });
   }
 
   /**
    * plays the media
    */
-  play(e) {
-    let root = this;
+  play() {
+    let root = this,
+      stopped = !(root.__playing === true);
     root.__playing = true;
-    if (e === undefined || e.detail === root.$.playbutton) {
-      // while playing, update the slider and length
-      root.__playProgress = setInterval(() => {
-        root.__elapsed =
-          root.media.getCurrentTime() > 0 ? root.media.getCurrentTime() : 0;
-        root.__duration = root.media.duration > 0 ? root.media.duration : 0;
-        root._updateCustomTracks();
-        root.__status =
-          root._getHHMMSS(root.media.getCurrentTime(), root.__duration) +
-          "/" +
-          root._getHHMMSS(root.__duration);
-        root.$.controls.setStatus(root.__status);
-        // if the video reaches the end and is not set to loop, stop
-        if (root.__elapsed === root.__duration && !root.loop) {
-          root.__playing = false;
-          clearInterval(root.__playProgress);
-        }
-
-        //updated buffered section of the slider
-        root.__buffered = root.media.getBufferedTime;
-      }, 1);
-      window.dispatchEvent(
-        new CustomEvent("a11y-player-playing", { detail: root })
-      );
-      root.media.play();
-    }
+    root.media.play();
+    window.dispatchEvent(
+      new CustomEvent("a11y-player-playing", { detail: root })
+    );
   }
 
   /**
@@ -239,9 +239,6 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
     let root = this;
     root.__playing = false;
     root.media.pause();
-
-    //stop updating the slider and length
-    clearInterval(root.__playProgress);
   }
 
   /**
@@ -266,8 +263,11 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
    * @param {float} the elepsed time, in seconds
    */
   rewind(amt) {
-    amt = amt !== undefined ? amt : 1;
-    this.seek(Math.max(this.media.getCurrentTime() - amt, 0));
+    amt = amt !== undefined ? amt : this.media.duration / 20;
+    this.__resumePlaying = this.__playing;
+    this.seek(this.media.getCurrentTime() - amt, 0);
+    if (this.__resumePlaying) this.play();
+    this.__resumePlaying = false;
   }
 
   /**
@@ -276,8 +276,11 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
    * @param {float} the elepsed time, in seconds
    */
   forward(amt) {
-    amt = amt !== undefined ? amt : 1;
-    this.seek(Math.min(this.media.getCurrentTime() + amt, this.__duration));
+    amt = amt !== undefined ? amt : this.media.duration / 20;
+    this.__resumePlaying = this.__playing;
+    this.seek(this.media.getCurrentTime() + amt);
+    if (this.__resumePlaying) this.play();
+    this.__resumePlaying = false;
   }
 
   /**
@@ -296,14 +299,6 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
       time <= seekable.end(0)
     ) {
       this.media.seek(time);
-      this.__elapsed = time;
-      this.__status =
-        this._getHHMMSS(this.media.getCurrentTime(), this.__duration) +
-        "/" +
-        this._getHHMMSS(this.__duration);
-      this.$.controls.setStatus(this.__status);
-      this._updateCustomTracks();
-      if (this.__resumePlaying) this.play();
     }
   }
 
@@ -404,9 +399,9 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
    * (needed for media-player)
    */
   _appendToPlayer(data, type) {
-    let root = this,
-      arr = typeof data === Array ? data : JSON.parse(data);
-    if (arr !== undefined && arr !== null) {
+    if (data !== undefined && data !== null && data !== []) {
+      let root = this,
+        arr = Array.isArray(data) ? data : JSON.parse(data);
       for (let i = 0; i < arr.length; i++) {
         let el = document.createElement(type);
         for (let key in arr[i]) {
@@ -500,12 +495,12 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
   _addSourcesAndTracks() {
     let root = this,
       counter = 0;
-    root.querySelectorAll("source,track").forEach(function(node) {
+    root.querySelectorAll("source,track").forEach(node => {
       root.$.html5.media.appendChild(node);
     });
     root._appendToPlayer(root.tracks, "track");
     root._appendToPlayer(root.sources, "source");
-    root.$.html5.media.textTracks.onaddtrack = function(e) {
+    root.$.html5.media.textTracks.onaddtrack = e => {
       root.hasCaptions = true;
       root.hasTranscript = !root.standAlone;
       root._getTrackData(e.track, counter++);
@@ -528,7 +523,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
         track.cues.length > 0
       ) {
         clearInterval(loadCueData);
-        let cues = Object.keys(track.cues).map(function(key) {
+        let cues = Object.keys(track.cues).map(key => {
           return {
             order: track.cues[key].id !== "" ? track.cues[key].id : key,
             seek: track.cues[key].startTime,
@@ -557,9 +552,9 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
         root.$.controls.setTracks(root.__tracks);
         root.$.transcript.setTracks(root.__tracks);
         root.push("__tracks");
-        track.oncuechange = function(e) {
+        track.oncuechange = e => {
           root.$.transcript.setActiveCues(
-            Object.keys(e.currentTarget.activeCues).map(function(key) {
+            Object.keys(e.currentTarget.activeCues).map(key => {
               return e.currentTarget.activeCues[key].id;
             })
           );
@@ -593,13 +588,21 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
     root.$.playbutton.removeAttribute("disabled");
 
     // gets and converts video duration
-    root.__duration = root.media.duration > 0 ? root.media.duration : 0;
-    root.__status =
-      root._getHHMMSS(0, root.media.duration) +
-      "/" +
-      root._getHHMMSS(root.media.duration);
-    root.$.controls.setStatus(root.__status);
+    root._setElapsedTime();
     root._getTrackData(root.$.html5.media);
+  }
+
+  /**
+   * determines if there
+   *
+   * @param {string} the url for the thumbnail image
+   * @returns {string} the string for the style attribute
+   */
+  _hidePlayButton(thumbnailSrc, isYoutube, __elapsed) {
+    return (
+      (isYoutube && thumbnailSrc === null) ||
+      !(__elapsed === undefined || __elapsed === 0)
+    );
   }
 
   /**
@@ -619,23 +622,45 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
   _handleSearchAdded(e) {
     this.search = e.detail;
   }
+
   /**
    * handles duration slider dragging with a mouse
    */
-  _handleSliderDragging(e) {
-    let root = this;
-    root._toggleSliderSeek(
-      root.$.slider.dragging,
-      root.$.slider.immediateValue
-    );
+  _handleSliderStart(e) {
+    this.__resumePlaying = !this.paused;
+    this.pause();
+    this.__seeking = true;
   }
 
   /**
-   * handles duration slider dragging with a keyboard
+   * handles duration slider dragging with a mouse
    */
-  _handleSliderKeyboard(e) {
+  _handleSliderStop(e) {
+    this.seek(this.$.slider.immediateValue);
+    this.__seeking = false;
+    if (this.__resumePlaying) {
+      this.play();
+      this.__resumePlaying = null;
+    }
+  }
+
+  /**
+   * handles time updates
+   */
+  _handleTimeUpdate(e) {
     let root = this;
-    root._toggleSliderSeek(root.$.slider.focused, root.$.slider.value);
+    //if play exceeds clip length, stop
+    if (
+      root.media.seekable !== undefined &&
+      root.media.seekable.length > 0 &&
+      root.media.seekable.end(0) <= root.media.getCurrentTime()
+    ) {
+      root.stop();
+      root.__playing = false;
+    }
+    //prevent slider and cue updates until finished seeking
+    root._updateCustomTracks();
+    root._setElapsedTime();
   }
 
   /**
@@ -651,8 +676,8 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
   _onControlsChanged(e) {
     let root = this,
       action = e.detail.action !== undefined ? e.detail.action : e.detail.id;
-    if (action === "backward") {
-      root.rewind(root.__duration / 20);
+    if (action === "backward" || action === "rewind") {
+      root.rewind();
     } else if (action === "captions") {
       root.toggleCC();
     } else if (action === "transcript" || action === "transcript-toggle") {
@@ -665,7 +690,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
         root.selectTrack(e.detail.value);
       }
     } else if (action === "forward") {
-      root.forward(root.__duration / 20);
+      root.forward();
     } else if (action === "fullscreen") {
       this.toggleTranscript(this.fullscreen);
       screenfull.toggle(root.$.outerplayer);
@@ -688,16 +713,34 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
   }
 
   /**
-   * determines if there
+   * sets duration, taking into consideration start and stop times
    *
-   * @param {string} the url for the thumbnail image
-   * @returns {string} the string for the style attribute
+   * @param {integer} seek time in seconds, optional
+   * @returns {string} status
    */
-  _hidePlayButton(thumbnailSrc, isYoutube, __elapsed) {
-    return (
-      (isYoutube && thumbnailSrc === null) ||
-      !(__elapsed === undefined || __elapsed === 0)
-    );
+  _setElapsedTime() {
+    let elapsed =
+        this.__seeking === true
+          ? this.$.slider.immediateValue
+          : this.media.getCurrentTime() > 0
+          ? this.media.getCurrentTime()
+          : 0,
+      duration = this.media.duration > 0 ? this.media.duration : 0;
+    this.__elapsed = elapsed;
+    this.__duration = duration;
+    if (this.media.seekable !== undefined && this.media.seekable.length > 0) {
+      if (this.media.seekable.start(0) !== undefined)
+        elapsed -= this.media.seekable.start(0);
+      if (this.media.seekable.end(0) !== undefined)
+        duration =
+          this.media.seekable.end(0) -
+          (this.media.seekable.start(0) !== undefined
+            ? this.media.seekable.start(0)
+            : 0);
+    }
+    this.__status =
+      this._getHHMMSS(elapsed, duration) + "/" + this._getHHMMSS(duration);
+    this.$.controls.setStatus(this.__status);
   }
 
   /**
@@ -711,22 +754,6 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
    */
   _showCustomCaptions(isYoutube, audioOnly, hasCaptions, cc) {
     return (isYoutube || audioOnly) && hasCaptions && cc;
-  }
-
-  /**
-   * handles slider seeking via mouse or keyboard
-   *
-   * @param {boolean} Is the slider currently being used to seek?
-   * @param {number} the value of the slider
-   */
-  _toggleSliderSeek(seeking, value) {
-    if (seeking) {
-      if (this.__playing) this.__resumePlaying = true;
-      this.pause();
-    } else {
-      this.seek(value);
-      this.__resumePlaying = false;
-    }
   }
 
   /**
@@ -751,7 +778,19 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
       ytUtil = window.A11yMediaYoutube.instance;
     root.disableInteractive = true;
     if (root.__playerAttached && root.__playerReady) {
-      let ytInit = function() {
+      let ytInit = () => {
+          // once metadata is ready on video set it on the media player
+          let setMetadata = () => {
+            root.__duration = root.media.duration;
+            root._setElapsedTime();
+            if (
+              root.media.seekable !== undefined &&
+              root.media.seekable.length > 0
+            ) {
+              root.$.slider.min = root.media.seekable.start(0);
+            }
+            root._addSourcesAndTracks();
+          };
           // initialize the YouTube player
           root.media = ytUtil.initYoutubePlayer({
             width: "100%",
@@ -762,22 +801,19 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
           root.$.youtube.appendChild(root.media.a);
           root.__ytAppended = true;
           root._updateCustomTracks();
+
           // youtube API doesn't immediately give length of a video
-          let int = setInterval(() => {
-            if (root.media.getDuration !== undefined) {
-              clearInterval(int);
-              root.__duration = root.media.duration = root.media.getDuration();
-              root.__status =
-                root._getHHMMSS(0, root.media.duration) +
-                "/" +
-                root._getHHMMSS(root.media.duration);
-              root.$.controls.setStatus(root.__status);
-              root.disableInteractive = !root.__interactive;
-              root._addSourcesAndTracks();
-            }
-          }, 100);
+          if (root.media.duration > 0) {
+            setMetadata();
+          } else {
+            document.addEventListener("youtube-video-metadata-loaded", e => {
+              if (e.detail === root.media) {
+                setMetadata();
+              }
+            });
+          }
         },
-        checkApi = function(e) {
+        checkApi = e => {
           if (ytUtil.apiReady) {
             document.removeEventListener("youtube-api-ready", checkApi);
             if (!root.__ytAppended) {

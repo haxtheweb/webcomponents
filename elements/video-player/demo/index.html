@@ -17,7 +17,7 @@
   <body>
     <div class="vertical-section-container centered">
       <h1>video-player Demo</h1>
-      <h2>video-player for youtube + repair to correctly normalize embed address</h2>
+      <!--h2>video-player for youtube + repair to correctly normalize embed address</h2>
       <demo-snippet>
         <template>
           <video-player source="https://www.youtube.com/watch?v=o9RypkhGqrg"></video-player>
@@ -25,9 +25,22 @@
           <video-player source="https://www.youtube.com/embed/o9RypkhGqrg"></video-player>
           <video-player source="https://youtu.be/o9RypkhGqrg"></video-player>
         </template>
+      </demo-snippet-->
+
+      <h2>video-player for youtube with timestamp</h2>
+      <demo-snippet>
+        <template>
+          <video-player source="https://www.youtube.com/watch?v=BKorP55Aqvg&t=2m44s"></video-player>
+          <video-player 
+            source="https://personal.psu.edu/lnm105/stclair.mp4#t=60,120" 
+            tracks="[{ &quot;src&quot;: &quot;samples/stclair.vtt&quot;, &quot;kind&quot;: &quot;subtitles&quot;, &quot;srclang&quot;: &quot;en&quot;, &quot;label&quot;: &quot;English&quot; }]"
+            thumbnail-src="samples/stclair.jpg">
+            <div slot="caption">This is a video caption.</div>
+          </video-player>
+        </template>
       </demo-snippet>
 
-      <h2>video-player for vimeo + repair to correctly normalize embed address</h2>
+      <!--h2>video-player for vimeo + repair to correctly normalize embed address</h2>
       <demo-snippet>
         <template>
           <video-player source="https://vimeo.com/144218562" caption="Things and stuff, is where the world is." secondary-color="#f44336"></video-player>
@@ -74,7 +87,7 @@
             <div slot="caption">This is a video caption.</div>
           </video-player>
         </template>
-      </demo-snippet> 
+      </demo-snippet--> 
     </div>
   </body>
 </html>

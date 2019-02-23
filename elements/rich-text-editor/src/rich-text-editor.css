@@ -3,6 +3,7 @@
   width: 100%;
   margin: 0;
   padding: 0;
+  z-index: 9999;
   --rich-text-editor-bg: #fafafa;
   --rich-text-editor-button-color: #444;
   --rich-text-editor-border: 1px solid #ddd;
@@ -13,6 +14,7 @@
   --rich-text-editor-button-toggled-bg: #d8d8d8;
   --rich-text-editor-button-hover-color: #000;
   --rich-text-editor-button-hover-bg: #f0f0f0;
+  --rich-text-editor-picker-border: #ccc;
   @apply --rich-text-editor;
 }
 :host([sticky]) {

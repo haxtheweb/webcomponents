@@ -46,12 +46,12 @@
 }
 
 :host #icon {
-  transform: rotate(-90deg);
+  transform: var(--simple-picker-icon-tranform,rotate(-90deg));
   transition: transform 0.25s;
 }
 
 :host([expanded]) #icon {
-  transform: rotate(0deg);
+  transform: var(--simple-picker-expanded-icon-tranform,rotate(0deg));
   transition: transform 0.25s;
 }
 
@@ -99,8 +99,16 @@
   @apply --simple-picker-option;
 }
 
-:host #sample simple-picker-option {
+:host(:not([value])) #sample simple-picker-option,
+:host([value="null"]) #sample simple-picker-option {
+  @apply --simple-picker-sample-null;
+  --simple-picker-option-label: {
+    @apply --simple-picker-sample-null-label;
+  };
+}
 
+:host #sample simple-picker-option {
+  @apply --simple-picker-sample-option;
 }
 
 :host simple-picker-option[selected] {
@@ -127,6 +135,11 @@
 :host(:not([expanded])) #collapse simple-picker-option {
   max-height: 0;
   transition: max-height 1.5s;
+}
+
+:host #collapse simple-picker-option:not([value]),
+:host #collapse simple-picker-option[value=null] {
+  @apply --simple-picker-option-null;
 }
 
 @media screen and (max-width: 600px) {

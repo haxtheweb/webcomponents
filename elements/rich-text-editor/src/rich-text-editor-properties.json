@@ -54,16 +54,7 @@
         "buttons": [
           {
             "label": "Heading",
-            "type": "rich-text-editor-block-picker",
-            "blocks": [
-              { "label": "<p>", "tag": "p" },
-              { "label": "<h1>", "tag": "h1" },
-              { "label": "<h2>", "tag": "h2" },
-              { "label": "<h3>", "tag": "h3" },
-              { "label": "<h4>", "tag": "h4" },
-              { "label": "<h5>", "tag": "h5" },
-              { "label": "<h6>", "tag": "h6" }
-            ]
+            "type": "rich-text-editor-heading-picker"
           },
           {
             "command": "bold",
@@ -147,6 +138,13 @@
             "type": "rich-text-editor-button"
           }
         ]
+      },
+      {
+        "collapsedUntil": "sm",
+        "icon": "editor:functions",
+        "label": "Insert Symbol",
+        "symbolTypes": ["symbols"],
+        "type": "rich-text-editor-symbol-picker"
       },
       {
         "collapsedUntil": "sm",

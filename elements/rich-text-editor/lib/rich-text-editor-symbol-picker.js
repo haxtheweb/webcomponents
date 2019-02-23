@@ -8,8 +8,8 @@ import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@polymer/iron-icons/editor-icons.js";
 /**
- * `rich-text-editor-emoji-picker`
- * `an emoji picker for the rich-text-editor`
+ * `rich-text-editor-symbol-picker`
+ * `a symbol picker for the rich-text-editor`
  *
  * @microcopy - language worth noting:
  *  -
@@ -17,35 +17,17 @@ import "@polymer/iron-icons/editor-icons.js";
  * @customElement
  * @polymer
  */
-class RichTextEditorEmojiPicker extends RichTextEditorPicker {
+class RichTextEditorSymbolPicker extends RichTextEditorPicker {
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      /**
-       * Emoji types types to include
-       */
-      emojiTypes: {
-        name: "emojiTypes",
-        type: "Array",
-        value: [
-          "emotions",
-          "people",
-          "nature",
-          "food",
-          "travel",
-          "activities",
-          "objects",
-          "symbols",
-          "flags"
-        ]
-      },
       /**
        * Optional icon for null value
        */
       icon: {
         name: "icon",
         type: "String",
-        value: "editor:insert-emoticon",
+        value: "editor:functions",
         readOnly: true
       },
 
@@ -55,7 +37,16 @@ class RichTextEditorEmojiPicker extends RichTextEditorPicker {
       optionsSrc: {
         name: "optionsSrc",
         type: "String",
-        value: "data/emojis.js"
+        value: "data/symbols.js"
+      },
+
+      /**
+       * Symbol types to include
+       */
+      symbolTypes: {
+        name: "symbolTypes",
+        type: "Array",
+        value: ["symbols", "math", "characters", "greek", "misc"]
       },
 
       /**
@@ -84,7 +75,7 @@ class RichTextEditorEmojiPicker extends RichTextEditorPicker {
    *
    */
   static get tag() {
-    return "rich-text-editor-emoji-picker";
+    return "rich-text-editor-symbol-picker";
   }
 
   /**
@@ -92,7 +83,7 @@ class RichTextEditorEmojiPicker extends RichTextEditorPicker {
    */
   connectedCallback() {
     super.connectedCallback();
-    const name = "emoji";
+    const name = "symbols";
     const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
     const src = this.optionsSrc;
     const location = `${basePath}${src}`;
@@ -109,8 +100,8 @@ class RichTextEditorEmojiPicker extends RichTextEditorPicker {
    */
   _setOptions() {
     let optData = [];
-    this.emojiTypes.forEach(function(type) {
-      optData = optData.concat(Object.keys(emojis[type]));
+    this.symbolTypes.forEach(function(type) {
+      optData = optData.concat(symbols[type]);
     });
     this.set(
       "options",
@@ -135,7 +126,7 @@ class RichTextEditorEmojiPicker extends RichTextEditorPicker {
   }
 }
 window.customElements.define(
-  RichTextEditorEmojiPicker.tag,
-  RichTextEditorEmojiPicker
+  RichTextEditorSymbolPicker.tag,
+  RichTextEditorSymbolPicker
 );
-export { RichTextEditorEmojiPicker };
+export { RichTextEditorSymbolPicker };

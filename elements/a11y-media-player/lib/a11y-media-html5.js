@@ -45,6 +45,13 @@ class A11yMediaHtml5 extends A11yMediaPlayerBehaviors {
         value: "video"
       },
       /*
+       * Is it disabled?
+       */
+      disabled: {
+        type: Boolean,
+        value: null
+      },
+      /*
        * iron-icon type
        */
       icon: {
@@ -59,11 +66,22 @@ class A11yMediaHtml5 extends A11yMediaPlayerBehaviors {
         value: null
       },
       /*
-       * Is it disabled?
+       * Is it paused?
        */
-      disabled: {
+      paused: {
         type: Boolean,
-        value: null
+        value: true
+      },
+      /*
+       * the seekable range of the media
+       */
+      seekable: {
+        type: Object,
+        value: {
+          length: 0,
+          start: null,
+          stop: null
+        }
       }
     };
   }
@@ -189,6 +207,7 @@ class A11yMediaHtml5 extends A11yMediaPlayerBehaviors {
    * plays the media
    */
   play() {
+    this.paused = false;
     this.media.play();
   }
 
@@ -196,6 +215,7 @@ class A11yMediaHtml5 extends A11yMediaPlayerBehaviors {
    * pauses the media
    */
   pause() {
+    this.paused = true;
     this.media.pause();
   }
 

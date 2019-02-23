@@ -193,13 +193,13 @@ class SimplePicker extends PolymerElement {
    *
    * @param {string} the option id
    */
-  _setSelectedOption(value) {
+  _setSelectedOption() {
     let sel = null;
-    if (value !== null && this.options !== undefined && this.options !== null) {
+    if (this.options !== undefined && this.options !== null) {
       this.__activeDesc = "option-0-0";
       for (var i = 0; i < this.options.length; i++) {
         for (var j = 0; j < this.options[i].length; j++) {
-          if (this.options[i][j].value === value) {
+          if (this.options[i][j].value === this.value) {
             this.__activeDesc = "option-" + i + "-" + j;
             sel = this.options[i][j];
           }

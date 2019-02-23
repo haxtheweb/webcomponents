@@ -972,11 +972,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 205,
+              "line": 206,
               "column": 6
             },
             "end": {
-              "line": 208,
+              "line": 209,
               "column": 7
             }
           },
@@ -994,11 +994,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 212,
+              "line": 213,
               "column": 6
             },
             "end": {
-              "line": 215,
+              "line": 216,
               "column": 7
             }
           },
@@ -1016,11 +1016,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 219,
+              "line": 220,
               "column": 6
             },
             "end": {
-              "line": 222,
+              "line": 223,
               "column": 7
             }
           },
@@ -1038,11 +1038,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 226,
+              "line": 227,
               "column": 6
             },
             "end": {
-              "line": 229,
+              "line": 230,
               "column": 7
             }
           },
@@ -1060,11 +1060,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 233,
+              "line": 234,
               "column": 6
             },
             "end": {
-              "line": 236,
+              "line": 237,
               "column": 7
             }
           },
@@ -1082,11 +1082,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 240,
+              "line": 241,
               "column": 6
             },
             "end": {
-              "line": 243,
+              "line": 244,
               "column": 7
             }
           },
@@ -1104,11 +1104,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 247,
+              "line": 248,
               "column": 6
             },
             "end": {
-              "line": 250,
+              "line": 251,
               "column": 7
             }
           },
@@ -3208,11 +3208,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 264,
+              "line": 265,
               "column": 2
             },
             "end": {
-              "line": 266,
+              "line": 267,
               "column": 3
             }
           },
@@ -3370,11 +3370,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 274,
+              "line": 275,
               "column": 2
             },
             "end": {
-              "line": 276,
+              "line": 277,
               "column": 3
             }
           },
@@ -3395,11 +3395,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 286,
+              "line": 287,
               "column": 2
             },
             "end": {
-              "line": 288,
+              "line": 289,
               "column": 3
             }
           },
@@ -3419,11 +3419,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 295,
+              "line": 296,
               "column": 2
             },
             "end": {
-              "line": 310,
+              "line": 311,
               "column": 3
             }
           },
@@ -3443,11 +3443,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 320,
+              "line": 321,
               "column": 2
             },
             "end": {
-              "line": 334,
+              "line": 335,
               "column": 3
             }
           },
@@ -3471,11 +3471,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 344,
+              "line": 345,
               "column": 2
             },
             "end": {
-              "line": 360,
+              "line": 361,
               "column": 3
             }
           },
@@ -3502,11 +3502,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 365,
+              "line": 366,
               "column": 2
             },
             "end": {
-              "line": 367,
+              "line": 368,
               "column": 3
             }
           },
@@ -3526,11 +3526,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 372,
+              "line": 373,
               "column": 2
             },
             "end": {
-              "line": 378,
+              "line": 379,
               "column": 3
             }
           },
@@ -4488,7 +4488,7 @@
           "column": 0
         },
         "end": {
-          "line": 379,
+          "line": 380,
           "column": 1
         }
       },
@@ -4744,11 +4744,11 @@
           "description": "status",
           "sourceRange": {
             "start": {
-              "line": 205,
+              "line": 206,
               "column": 6
             },
             "end": {
-              "line": 208,
+              "line": 209,
               "column": 7
             }
           },
@@ -4760,11 +4760,11 @@
           "description": "the selected track",
           "sourceRange": {
             "start": {
-              "line": 212,
+              "line": 213,
               "column": 6
             },
             "end": {
-              "line": 215,
+              "line": 216,
               "column": 7
             }
           },
@@ -4776,11 +4776,11 @@
           "description": "id of the selected track",
           "sourceRange": {
             "start": {
-              "line": 219,
+              "line": 220,
               "column": 6
             },
             "end": {
-              "line": 222,
+              "line": 223,
               "column": 7
             }
           },
@@ -4792,11 +4792,11 @@
           "description": "array of tracks and cues",
           "sourceRange": {
             "start": {
-              "line": 226,
+              "line": 227,
               "column": 6
             },
             "end": {
-              "line": 229,
+              "line": 230,
               "column": 7
             }
           },
@@ -4808,11 +4808,11 @@
           "description": "Range is 0 to 100. Default should not be loud enough to overpower screen readers.",
           "sourceRange": {
             "start": {
-              "line": 233,
+              "line": 234,
               "column": 6
             },
             "end": {
-              "line": 236,
+              "line": 237,
               "column": 7
             }
           },
@@ -4824,11 +4824,11 @@
           "description": "the id for the video",
           "sourceRange": {
             "start": {
-              "line": 240,
+              "line": 241,
               "column": 6
             },
             "end": {
-              "line": 243,
+              "line": 244,
               "column": 7
             }
           },
@@ -4840,11 +4840,11 @@
           "description": "the YouTube player object",
           "sourceRange": {
             "start": {
-              "line": 247,
+              "line": 248,
               "column": 6
             },
             "end": {
-              "line": 250,
+              "line": 251,
               "column": 7
             }
           },
@@ -5868,11 +5868,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 205,
+              "line": 206,
               "column": 6
             },
             "end": {
-              "line": 208,
+              "line": 209,
               "column": 7
             }
           },
@@ -5892,11 +5892,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 212,
+              "line": 213,
               "column": 6
             },
             "end": {
-              "line": 215,
+              "line": 216,
               "column": 7
             }
           },
@@ -5916,11 +5916,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 219,
+              "line": 220,
               "column": 6
             },
             "end": {
-              "line": 222,
+              "line": 223,
               "column": 7
             }
           },
@@ -5940,11 +5940,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 226,
+              "line": 227,
               "column": 6
             },
             "end": {
-              "line": 229,
+              "line": 230,
               "column": 7
             }
           },
@@ -5964,11 +5964,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 233,
+              "line": 234,
               "column": 6
             },
             "end": {
-              "line": 236,
+              "line": 237,
               "column": 7
             }
           },
@@ -5988,11 +5988,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 240,
+              "line": 241,
               "column": 6
             },
             "end": {
-              "line": 243,
+              "line": 244,
               "column": 7
             }
           },
@@ -6012,11 +6012,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 247,
+              "line": 248,
               "column": 6
             },
             "end": {
-              "line": 250,
+              "line": 251,
               "column": 7
             }
           },
@@ -8845,11 +8845,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 264,
+              "line": 265,
               "column": 2
             },
             "end": {
-              "line": 266,
+              "line": 267,
               "column": 3
             }
           },
@@ -9009,11 +9009,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 274,
+              "line": 275,
               "column": 2
             },
             "end": {
-              "line": 276,
+              "line": 277,
               "column": 3
             }
           },
@@ -9036,11 +9036,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 286,
+              "line": 287,
               "column": 2
             },
             "end": {
-              "line": 288,
+              "line": 289,
               "column": 3
             }
           },
@@ -9062,11 +9062,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 295,
+              "line": 296,
               "column": 2
             },
             "end": {
-              "line": 310,
+              "line": 311,
               "column": 3
             }
           },
@@ -9088,11 +9088,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 320,
+              "line": 321,
               "column": 2
             },
             "end": {
-              "line": 334,
+              "line": 335,
               "column": 3
             }
           },
@@ -9118,11 +9118,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 344,
+              "line": 345,
               "column": 2
             },
             "end": {
-              "line": 360,
+              "line": 361,
               "column": 3
             }
           },
@@ -9151,11 +9151,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 365,
+              "line": 366,
               "column": 2
             },
             "end": {
-              "line": 367,
+              "line": 368,
               "column": 3
             }
           },
@@ -9177,11 +9177,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 372,
+              "line": 373,
               "column": 2
             },
             "end": {
-              "line": 378,
+              "line": 379,
               "column": 3
             }
           },
@@ -10652,11 +10652,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 205,
+              "line": 206,
               "column": 6
             },
             "end": {
-              "line": 208,
+              "line": 209,
               "column": 7
             }
           },
@@ -10670,11 +10670,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 212,
+              "line": 213,
               "column": 6
             },
             "end": {
-              "line": 215,
+              "line": 216,
               "column": 7
             }
           },
@@ -10688,11 +10688,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 219,
+              "line": 220,
               "column": 6
             },
             "end": {
-              "line": 222,
+              "line": 223,
               "column": 7
             }
           },
@@ -10706,11 +10706,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 226,
+              "line": 227,
               "column": 6
             },
             "end": {
-              "line": 229,
+              "line": 230,
               "column": 7
             }
           },
@@ -10724,11 +10724,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 233,
+              "line": 234,
               "column": 6
             },
             "end": {
-              "line": 236,
+              "line": 237,
               "column": 7
             }
           },
@@ -10742,11 +10742,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 240,
+              "line": 241,
               "column": 6
             },
             "end": {
-              "line": 243,
+              "line": 244,
               "column": 7
             }
           },
@@ -10760,11 +10760,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 247,
+              "line": 248,
               "column": 6
             },
             "end": {
-              "line": 250,
+              "line": 251,
               "column": 7
             }
           },
@@ -12331,11 +12331,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 205,
+              "line": 206,
               "column": 6
             },
             "end": {
-              "line": 208,
+              "line": 209,
               "column": 7
             }
           },
@@ -12355,11 +12355,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 212,
+              "line": 213,
               "column": 6
             },
             "end": {
-              "line": 215,
+              "line": 216,
               "column": 7
             }
           },
@@ -12379,11 +12379,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 219,
+              "line": 220,
               "column": 6
             },
             "end": {
-              "line": 222,
+              "line": 223,
               "column": 7
             }
           },
@@ -12403,11 +12403,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 226,
+              "line": 227,
               "column": 6
             },
             "end": {
-              "line": 229,
+              "line": 230,
               "column": 7
             }
           },
@@ -12427,11 +12427,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 233,
+              "line": 234,
               "column": 6
             },
             "end": {
-              "line": 236,
+              "line": 237,
               "column": 7
             }
           },
@@ -12451,11 +12451,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 240,
+              "line": 241,
               "column": 6
             },
             "end": {
-              "line": 243,
+              "line": 244,
               "column": 7
             }
           },
@@ -12475,11 +12475,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 247,
+              "line": 248,
               "column": 6
             },
             "end": {
-              "line": 250,
+              "line": 251,
               "column": 7
             }
           },
@@ -15666,11 +15666,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 274,
+              "line": 275,
               "column": 2
             },
             "end": {
-              "line": 276,
+              "line": 277,
               "column": 3
             }
           },
@@ -15693,11 +15693,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 286,
+              "line": 287,
               "column": 2
             },
             "end": {
-              "line": 288,
+              "line": 289,
               "column": 3
             }
           },
@@ -15719,11 +15719,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 295,
+              "line": 296,
               "column": 2
             },
             "end": {
-              "line": 310,
+              "line": 311,
               "column": 3
             }
           },
@@ -15745,11 +15745,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 320,
+              "line": 321,
               "column": 2
             },
             "end": {
-              "line": 334,
+              "line": 335,
               "column": 3
             }
           },
@@ -15775,11 +15775,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 344,
+              "line": 345,
               "column": 2
             },
             "end": {
-              "line": 360,
+              "line": 361,
               "column": 3
             }
           },
@@ -15808,11 +15808,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 365,
+              "line": 366,
               "column": 2
             },
             "end": {
-              "line": 367,
+              "line": 368,
               "column": 3
             }
           },
@@ -15834,11 +15834,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 372,
+              "line": 373,
               "column": 2
             },
             "end": {
-              "line": 378,
+              "line": 379,
               "column": 3
             }
           },
@@ -17347,11 +17347,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 205,
+              "line": 206,
               "column": 6
             },
             "end": {
-              "line": 208,
+              "line": 209,
               "column": 7
             }
           },
@@ -17365,11 +17365,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 212,
+              "line": 213,
               "column": 6
             },
             "end": {
-              "line": 215,
+              "line": 216,
               "column": 7
             }
           },
@@ -17383,11 +17383,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 219,
+              "line": 220,
               "column": 6
             },
             "end": {
-              "line": 222,
+              "line": 223,
               "column": 7
             }
           },
@@ -17401,11 +17401,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 226,
+              "line": 227,
               "column": 6
             },
             "end": {
-              "line": 229,
+              "line": 230,
               "column": 7
             }
           },
@@ -17419,11 +17419,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 233,
+              "line": 234,
               "column": 6
             },
             "end": {
-              "line": 236,
+              "line": 237,
               "column": 7
             }
           },
@@ -17437,11 +17437,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 240,
+              "line": 241,
               "column": 6
             },
             "end": {
-              "line": 243,
+              "line": 244,
               "column": 7
             }
           },
@@ -17455,11 +17455,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 247,
+              "line": 248,
               "column": 6
             },
             "end": {
-              "line": 250,
+              "line": 251,
               "column": 7
             }
           },
@@ -19190,11 +19190,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 205,
+              "line": 206,
               "column": 6
             },
             "end": {
-              "line": 208,
+              "line": 209,
               "column": 7
             }
           },
@@ -19214,11 +19214,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 212,
+              "line": 213,
               "column": 6
             },
             "end": {
-              "line": 215,
+              "line": 216,
               "column": 7
             }
           },
@@ -19238,11 +19238,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 219,
+              "line": 220,
               "column": 6
             },
             "end": {
-              "line": 222,
+              "line": 223,
               "column": 7
             }
           },
@@ -19262,11 +19262,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 226,
+              "line": 227,
               "column": 6
             },
             "end": {
-              "line": 229,
+              "line": 230,
               "column": 7
             }
           },
@@ -19286,11 +19286,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 233,
+              "line": 234,
               "column": 6
             },
             "end": {
-              "line": 236,
+              "line": 237,
               "column": 7
             }
           },
@@ -19310,11 +19310,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 240,
+              "line": 241,
               "column": 6
             },
             "end": {
-              "line": 243,
+              "line": 244,
               "column": 7
             }
           },
@@ -19334,11 +19334,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 247,
+              "line": 248,
               "column": 6
             },
             "end": {
-              "line": 250,
+              "line": 251,
               "column": 7
             }
           },
@@ -22481,11 +22481,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 274,
+              "line": 275,
               "column": 2
             },
             "end": {
-              "line": 276,
+              "line": 277,
               "column": 3
             }
           },
@@ -22508,11 +22508,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 286,
+              "line": 287,
               "column": 2
             },
             "end": {
-              "line": 288,
+              "line": 289,
               "column": 3
             }
           },
@@ -22534,11 +22534,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 295,
+              "line": 296,
               "column": 2
             },
             "end": {
-              "line": 310,
+              "line": 311,
               "column": 3
             }
           },
@@ -22560,11 +22560,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 320,
+              "line": 321,
               "column": 2
             },
             "end": {
-              "line": 334,
+              "line": 335,
               "column": 3
             }
           },
@@ -22590,11 +22590,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 344,
+              "line": 345,
               "column": 2
             },
             "end": {
-              "line": 360,
+              "line": 361,
               "column": 3
             }
           },
@@ -22623,11 +22623,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 365,
+              "line": 366,
               "column": 2
             },
             "end": {
-              "line": 367,
+              "line": 368,
               "column": 3
             }
           },
@@ -22649,11 +22649,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 372,
+              "line": 373,
               "column": 2
             },
             "end": {
-              "line": 378,
+              "line": 379,
               "column": 3
             }
           },
@@ -24397,11 +24397,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 205,
+              "line": 206,
               "column": 6
             },
             "end": {
-              "line": 208,
+              "line": 209,
               "column": 7
             }
           },
@@ -24415,11 +24415,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 212,
+              "line": 213,
               "column": 6
             },
             "end": {
-              "line": 215,
+              "line": 216,
               "column": 7
             }
           },
@@ -24433,11 +24433,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 219,
+              "line": 220,
               "column": 6
             },
             "end": {
-              "line": 222,
+              "line": 223,
               "column": 7
             }
           },
@@ -24451,11 +24451,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 226,
+              "line": 227,
               "column": 6
             },
             "end": {
-              "line": 229,
+              "line": 230,
               "column": 7
             }
           },
@@ -24469,11 +24469,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 233,
+              "line": 234,
               "column": 6
             },
             "end": {
-              "line": 236,
+              "line": 237,
               "column": 7
             }
           },
@@ -24487,11 +24487,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 240,
+              "line": 241,
               "column": 6
             },
             "end": {
-              "line": 243,
+              "line": 244,
               "column": 7
             }
           },
@@ -24505,11 +24505,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 247,
+              "line": 248,
               "column": 6
             },
             "end": {
-              "line": 250,
+              "line": 251,
               "column": 7
             }
           },
@@ -26208,11 +26208,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 205,
+              "line": 206,
               "column": 6
             },
             "end": {
-              "line": 208,
+              "line": 209,
               "column": 7
             }
           },
@@ -26232,11 +26232,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 212,
+              "line": 213,
               "column": 6
             },
             "end": {
-              "line": 215,
+              "line": 216,
               "column": 7
             }
           },
@@ -26256,11 +26256,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 219,
+              "line": 220,
               "column": 6
             },
             "end": {
-              "line": 222,
+              "line": 223,
               "column": 7
             }
           },
@@ -26280,11 +26280,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 226,
+              "line": 227,
               "column": 6
             },
             "end": {
-              "line": 229,
+              "line": 230,
               "column": 7
             }
           },
@@ -26304,11 +26304,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 233,
+              "line": 234,
               "column": 6
             },
             "end": {
-              "line": 236,
+              "line": 237,
               "column": 7
             }
           },
@@ -26328,11 +26328,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 240,
+              "line": 241,
               "column": 6
             },
             "end": {
-              "line": 243,
+              "line": 244,
               "column": 7
             }
           },
@@ -26352,11 +26352,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 247,
+              "line": 248,
               "column": 6
             },
             "end": {
-              "line": 250,
+              "line": 251,
               "column": 7
             }
           },
@@ -26391,9 +26391,9 @@
           "defaultValue": "\"video\""
         },
         {
-          "name": "icon",
-          "type": "string | null | undefined",
-          "description": "iron-icon type",
+          "name": "disabled",
+          "type": "boolean | null | undefined",
+          "description": "Is it disabled?",
           "privacy": "public",
           "sourceRange": {
             "start": {
@@ -26407,15 +26407,15 @@
           },
           "metadata": {
             "polymer": {
-              "attributeType": "String"
+              "attributeType": "Boolean"
             }
           },
           "defaultValue": "null"
         },
         {
-          "name": "label",
+          "name": "icon",
           "type": "string | null | undefined",
-          "description": "button label",
+          "description": "iron-icon type",
           "privacy": "public",
           "sourceRange": {
             "start": {
@@ -26435,9 +26435,9 @@
           "defaultValue": "null"
         },
         {
-          "name": "disabled",
-          "type": "boolean | null | undefined",
-          "description": "Is it disabled?",
+          "name": "label",
+          "type": "string | null | undefined",
+          "description": "button label",
           "privacy": "public",
           "sourceRange": {
             "start": {
@@ -26451,10 +26451,54 @@
           },
           "metadata": {
             "polymer": {
-              "attributeType": "Boolean"
+              "attributeType": "String"
             }
           },
           "defaultValue": "null"
+        },
+        {
+          "name": "paused",
+          "type": "boolean | null | undefined",
+          "description": "Is it paused?",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 70,
+              "column": 6
+            },
+            "end": {
+              "line": 73,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "true"
+        },
+        {
+          "name": "seekable",
+          "type": "Object | null | undefined",
+          "description": "the seekable range of the media",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 77,
+              "column": 6
+            },
+            "end": {
+              "line": 84,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Object"
+            }
+          },
+          "defaultValue": "{\"length\":0,\"start\":null,\"stop\":null}"
         }
       ],
       "methods": [
@@ -26707,11 +26751,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 140,
+              "line": 158,
               "column": 2
             },
             "end": {
-              "line": 147,
+              "line": 165,
               "column": 3
             }
           },
@@ -28543,11 +28587,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 133,
+              "line": 151,
               "column": 2
             },
             "end": {
-              "line": 135,
+              "line": 153,
               "column": 3
             }
           },
@@ -28706,11 +28750,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 274,
+              "line": 275,
               "column": 2
             },
             "end": {
-              "line": 276,
+              "line": 277,
               "column": 3
             }
           },
@@ -28733,11 +28777,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 286,
+              "line": 287,
               "column": 2
             },
             "end": {
-              "line": 288,
+              "line": 289,
               "column": 3
             }
           },
@@ -28759,11 +28803,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 295,
+              "line": 296,
               "column": 2
             },
             "end": {
-              "line": 310,
+              "line": 311,
               "column": 3
             }
           },
@@ -28785,11 +28829,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 320,
+              "line": 321,
               "column": 2
             },
             "end": {
-              "line": 334,
+              "line": 335,
               "column": 3
             }
           },
@@ -28815,11 +28859,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 344,
+              "line": 345,
               "column": 2
             },
             "end": {
-              "line": 360,
+              "line": 361,
               "column": 3
             }
           },
@@ -28848,11 +28892,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 365,
+              "line": 366,
               "column": 2
             },
             "end": {
-              "line": 367,
+              "line": 368,
               "column": 3
             }
           },
@@ -28874,11 +28918,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 372,
+              "line": 373,
               "column": 2
             },
             "end": {
-              "line": 378,
+              "line": 379,
               "column": 3
             }
           },
@@ -28899,11 +28943,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 152,
+              "line": 170,
               "column": 2
             },
             "end": {
-              "line": 167,
+              "line": 185,
               "column": 3
             }
           },
@@ -28919,11 +28963,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 172,
+              "line": 190,
               "column": 2
             },
             "end": {
-              "line": 176,
+              "line": 194,
               "column": 3
             }
           },
@@ -28936,11 +28980,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 183,
+              "line": 201,
               "column": 2
             },
             "end": {
-              "line": 185,
+              "line": 203,
               "column": 3
             }
           },
@@ -28957,11 +29001,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 190,
+              "line": 208,
               "column": 2
             },
             "end": {
-              "line": 192,
+              "line": 211,
               "column": 3
             }
           },
@@ -28977,11 +29021,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 197,
+              "line": 216,
               "column": 2
             },
             "end": {
-              "line": 199,
+              "line": 219,
               "column": 3
             }
           },
@@ -28997,11 +29041,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 206,
+              "line": 226,
               "column": 2
             },
             "end": {
-              "line": 215,
+              "line": 235,
               "column": 3
             }
           },
@@ -29021,11 +29065,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 220,
+              "line": 240,
               "column": 2
             },
             "end": {
-              "line": 223,
+              "line": 243,
               "column": 3
             }
           },
@@ -29041,11 +29085,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 228,
+              "line": 248,
               "column": 2
             },
             "end": {
-              "line": 231,
+              "line": 251,
               "column": 3
             }
           },
@@ -29061,11 +29105,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 236,
+              "line": 256,
               "column": 2
             },
             "end": {
-              "line": 238,
+              "line": 258,
               "column": 3
             }
           },
@@ -29085,11 +29129,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 246,
+              "line": 266,
               "column": 2
             },
             "end": {
-              "line": 258,
+              "line": 278,
               "column": 3
             }
           },
@@ -29109,11 +29153,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 265,
+              "line": 285,
               "column": 2
             },
             "end": {
-              "line": 267,
+              "line": 287,
               "column": 3
             }
           },
@@ -29133,11 +29177,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 274,
+              "line": 294,
               "column": 2
             },
             "end": {
-              "line": 276,
+              "line": 296,
               "column": 3
             }
           },
@@ -29157,11 +29201,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 283,
+              "line": 303,
               "column": 2
             },
             "end": {
-              "line": 285,
+              "line": 305,
               "column": 3
             }
           },
@@ -29181,11 +29225,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 292,
+              "line": 312,
               "column": 2
             },
             "end": {
-              "line": 294,
+              "line": 314,
               "column": 3
             }
           },
@@ -30143,7 +30187,7 @@
           "column": 0
         },
         "end": {
-          "line": 295,
+          "line": 315,
           "column": 1
         }
       },
@@ -30424,11 +30468,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 205,
+              "line": 206,
               "column": 6
             },
             "end": {
-              "line": 208,
+              "line": 209,
               "column": 7
             }
           },
@@ -30442,11 +30486,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 212,
+              "line": 213,
               "column": 6
             },
             "end": {
-              "line": 215,
+              "line": 216,
               "column": 7
             }
           },
@@ -30460,11 +30504,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 219,
+              "line": 220,
               "column": 6
             },
             "end": {
-              "line": 222,
+              "line": 223,
               "column": 7
             }
           },
@@ -30478,11 +30522,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 226,
+              "line": 227,
               "column": 6
             },
             "end": {
-              "line": 229,
+              "line": 230,
               "column": 7
             }
           },
@@ -30496,11 +30540,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 233,
+              "line": 234,
               "column": 6
             },
             "end": {
-              "line": 236,
+              "line": 237,
               "column": 7
             }
           },
@@ -30514,11 +30558,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 240,
+              "line": 241,
               "column": 6
             },
             "end": {
-              "line": 243,
+              "line": 244,
               "column": 7
             }
           },
@@ -30532,11 +30576,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 247,
+              "line": 248,
               "column": 6
             },
             "end": {
-              "line": 250,
+              "line": 251,
               "column": 7
             }
           },
@@ -30561,8 +30605,8 @@
           "type": "string | null | undefined"
         },
         {
-          "name": "icon",
-          "description": "iron-icon type",
+          "name": "disabled",
+          "description": "Is it disabled?",
           "sourceRange": {
             "start": {
               "line": 49,
@@ -30574,11 +30618,11 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "boolean | null | undefined"
         },
         {
-          "name": "label",
-          "description": "button label",
+          "name": "icon",
+          "description": "iron-icon type",
           "sourceRange": {
             "start": {
               "line": 56,
@@ -30593,8 +30637,8 @@
           "type": "string | null | undefined"
         },
         {
-          "name": "disabled",
-          "description": "Is it disabled?",
+          "name": "label",
+          "description": "button label",
           "sourceRange": {
             "start": {
               "line": 63,
@@ -30606,7 +30650,39 @@
             }
           },
           "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "paused",
+          "description": "Is it paused?",
+          "sourceRange": {
+            "start": {
+              "line": 70,
+              "column": 6
+            },
+            "end": {
+              "line": 73,
+              "column": 7
+            }
+          },
+          "metadata": {},
           "type": "boolean | null | undefined"
+        },
+        {
+          "name": "seekable",
+          "description": "the seekable range of the media",
+          "sourceRange": {
+            "start": {
+              "line": 77,
+              "column": 6
+            },
+            "end": {
+              "line": 84,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined"
         }
       ],
       "events": [
@@ -31627,11 +31703,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 205,
+              "line": 206,
               "column": 6
             },
             "end": {
-              "line": 208,
+              "line": 209,
               "column": 7
             }
           },
@@ -31651,11 +31727,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 212,
+              "line": 213,
               "column": 6
             },
             "end": {
-              "line": 215,
+              "line": 216,
               "column": 7
             }
           },
@@ -31675,11 +31751,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 219,
+              "line": 220,
               "column": 6
             },
             "end": {
-              "line": 222,
+              "line": 223,
               "column": 7
             }
           },
@@ -31699,11 +31775,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 226,
+              "line": 227,
               "column": 6
             },
             "end": {
-              "line": 229,
+              "line": 230,
               "column": 7
             }
           },
@@ -31723,11 +31799,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 233,
+              "line": 234,
               "column": 6
             },
             "end": {
-              "line": 236,
+              "line": 237,
               "column": 7
             }
           },
@@ -31747,11 +31823,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 240,
+              "line": 241,
               "column": 6
             },
             "end": {
-              "line": 243,
+              "line": 244,
               "column": 7
             }
           },
@@ -31771,11 +31847,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 247,
+              "line": 248,
               "column": 6
             },
             "end": {
-              "line": 250,
+              "line": 251,
               "column": 7
             }
           },
@@ -34872,11 +34948,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 274,
+              "line": 275,
               "column": 2
             },
             "end": {
-              "line": 276,
+              "line": 277,
               "column": 3
             }
           },
@@ -34899,11 +34975,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 286,
+              "line": 287,
               "column": 2
             },
             "end": {
-              "line": 288,
+              "line": 289,
               "column": 3
             }
           },
@@ -34925,11 +35001,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 295,
+              "line": 296,
               "column": 2
             },
             "end": {
-              "line": 310,
+              "line": 311,
               "column": 3
             }
           },
@@ -34951,11 +35027,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 320,
+              "line": 321,
               "column": 2
             },
             "end": {
-              "line": 334,
+              "line": 335,
               "column": 3
             }
           },
@@ -34981,11 +35057,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 344,
+              "line": 345,
               "column": 2
             },
             "end": {
-              "line": 360,
+              "line": 361,
               "column": 3
             }
           },
@@ -35014,11 +35090,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 365,
+              "line": 366,
               "column": 2
             },
             "end": {
-              "line": 367,
+              "line": 368,
               "column": 3
             }
           },
@@ -35040,11 +35116,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 372,
+              "line": 373,
               "column": 2
             },
             "end": {
-              "line": 378,
+              "line": 379,
               "column": 3
             }
           },
@@ -35318,7 +35394,7 @@
               "column": 2
             },
             "end": {
-              "line": 201,
+              "line": 202,
               "column": 3
             }
           },
@@ -36272,7 +36348,7 @@
           "column": 0
         },
         "end": {
-          "line": 202,
+          "line": 203,
           "column": 1
         }
       },
@@ -36553,11 +36629,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 205,
+              "line": 206,
               "column": 6
             },
             "end": {
-              "line": 208,
+              "line": 209,
               "column": 7
             }
           },
@@ -36571,11 +36647,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 212,
+              "line": 213,
               "column": 6
             },
             "end": {
-              "line": 215,
+              "line": 216,
               "column": 7
             }
           },
@@ -36589,11 +36665,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 219,
+              "line": 220,
               "column": 6
             },
             "end": {
-              "line": 222,
+              "line": 223,
               "column": 7
             }
           },
@@ -36607,11 +36683,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 226,
+              "line": 227,
               "column": 6
             },
             "end": {
-              "line": 229,
+              "line": 230,
               "column": 7
             }
           },
@@ -36625,11 +36701,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 233,
+              "line": 234,
               "column": 6
             },
             "end": {
-              "line": 236,
+              "line": 237,
               "column": 7
             }
           },
@@ -36643,11 +36719,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 240,
+              "line": 241,
               "column": 6
             },
             "end": {
-              "line": 243,
+              "line": 244,
               "column": 7
             }
           },
@@ -36661,11 +36737,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 247,
+              "line": 248,
               "column": 6
             },
             "end": {
-              "line": 250,
+              "line": 251,
               "column": 7
             }
           },
@@ -38330,11 +38406,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 205,
+              "line": 206,
               "column": 6
             },
             "end": {
-              "line": 208,
+              "line": 209,
               "column": 7
             }
           },
@@ -38354,11 +38430,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 212,
+              "line": 213,
               "column": 6
             },
             "end": {
-              "line": 215,
+              "line": 216,
               "column": 7
             }
           },
@@ -38378,11 +38454,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 219,
+              "line": 220,
               "column": 6
             },
             "end": {
-              "line": 222,
+              "line": 223,
               "column": 7
             }
           },
@@ -38402,11 +38478,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 226,
+              "line": 227,
               "column": 6
             },
             "end": {
-              "line": 229,
+              "line": 230,
               "column": 7
             }
           },
@@ -38426,11 +38502,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 233,
+              "line": 234,
               "column": 6
             },
             "end": {
-              "line": 236,
+              "line": 237,
               "column": 7
             }
           },
@@ -38450,11 +38526,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 240,
+              "line": 241,
               "column": 6
             },
             "end": {
-              "line": 243,
+              "line": 244,
               "column": 7
             }
           },
@@ -38474,11 +38550,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 247,
+              "line": 248,
               "column": 6
             },
             "end": {
-              "line": 250,
+              "line": 251,
               "column": 7
             }
           },
@@ -41645,11 +41721,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 274,
+              "line": 275,
               "column": 2
             },
             "end": {
-              "line": 276,
+              "line": 277,
               "column": 3
             }
           },
@@ -41672,11 +41748,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 286,
+              "line": 287,
               "column": 2
             },
             "end": {
-              "line": 288,
+              "line": 289,
               "column": 3
             }
           },
@@ -41698,11 +41774,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 295,
+              "line": 296,
               "column": 2
             },
             "end": {
-              "line": 310,
+              "line": 311,
               "column": 3
             }
           },
@@ -41724,11 +41800,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 320,
+              "line": 321,
               "column": 2
             },
             "end": {
-              "line": 334,
+              "line": 335,
               "column": 3
             }
           },
@@ -41754,11 +41830,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 344,
+              "line": 345,
               "column": 2
             },
             "end": {
-              "line": 360,
+              "line": 361,
               "column": 3
             }
           },
@@ -41787,11 +41863,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 365,
+              "line": 366,
               "column": 2
             },
             "end": {
-              "line": 367,
+              "line": 368,
               "column": 3
             }
           },
@@ -41813,11 +41889,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 372,
+              "line": 373,
               "column": 2
             },
             "end": {
-              "line": 378,
+              "line": 379,
               "column": 3
             }
           },
@@ -43358,11 +43434,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 205,
+              "line": 206,
               "column": 6
             },
             "end": {
-              "line": 208,
+              "line": 209,
               "column": 7
             }
           },
@@ -43376,11 +43452,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 212,
+              "line": 213,
               "column": 6
             },
             "end": {
-              "line": 215,
+              "line": 216,
               "column": 7
             }
           },
@@ -43394,11 +43470,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 219,
+              "line": 220,
               "column": 6
             },
             "end": {
-              "line": 222,
+              "line": 223,
               "column": 7
             }
           },
@@ -43412,11 +43488,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 226,
+              "line": 227,
               "column": 6
             },
             "end": {
-              "line": 229,
+              "line": 230,
               "column": 7
             }
           },
@@ -43430,11 +43506,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 233,
+              "line": 234,
               "column": 6
             },
             "end": {
-              "line": 236,
+              "line": 237,
               "column": 7
             }
           },
@@ -43448,11 +43524,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 240,
+              "line": 241,
               "column": 6
             },
             "end": {
-              "line": 243,
+              "line": 244,
               "column": 7
             }
           },
@@ -43466,11 +43542,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 247,
+              "line": 248,
               "column": 6
             },
             "end": {
-              "line": 250,
+              "line": 251,
               "column": 7
             }
           },
@@ -45195,11 +45271,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 205,
+              "line": 206,
               "column": 6
             },
             "end": {
-              "line": 208,
+              "line": 209,
               "column": 7
             }
           },
@@ -45219,11 +45295,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 212,
+              "line": 213,
               "column": 6
             },
             "end": {
-              "line": 215,
+              "line": 216,
               "column": 7
             }
           },
@@ -45243,11 +45319,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 219,
+              "line": 220,
               "column": 6
             },
             "end": {
-              "line": 222,
+              "line": 223,
               "column": 7
             }
           },
@@ -45289,11 +45365,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 233,
+              "line": 234,
               "column": 6
             },
             "end": {
-              "line": 236,
+              "line": 237,
               "column": 7
             }
           },
@@ -45313,11 +45389,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 240,
+              "line": 241,
               "column": 6
             },
             "end": {
-              "line": 243,
+              "line": 244,
               "column": 7
             }
           },
@@ -45337,11 +45413,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 247,
+              "line": 248,
               "column": 6
             },
             "end": {
-              "line": 250,
+              "line": 251,
               "column": 7
             }
           },
@@ -48507,11 +48583,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 274,
+              "line": 275,
               "column": 2
             },
             "end": {
-              "line": 276,
+              "line": 277,
               "column": 3
             }
           },
@@ -48534,11 +48610,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 286,
+              "line": 287,
               "column": 2
             },
             "end": {
-              "line": 288,
+              "line": 289,
               "column": 3
             }
           },
@@ -48560,11 +48636,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 295,
+              "line": 296,
               "column": 2
             },
             "end": {
-              "line": 310,
+              "line": 311,
               "column": 3
             }
           },
@@ -48586,11 +48662,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 320,
+              "line": 321,
               "column": 2
             },
             "end": {
-              "line": 334,
+              "line": 335,
               "column": 3
             }
           },
@@ -48616,11 +48692,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 344,
+              "line": 345,
               "column": 2
             },
             "end": {
-              "line": 360,
+              "line": 361,
               "column": 3
             }
           },
@@ -48649,11 +48725,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 365,
+              "line": 366,
               "column": 2
             },
             "end": {
-              "line": 367,
+              "line": 368,
               "column": 3
             }
           },
@@ -48675,11 +48751,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 372,
+              "line": 373,
               "column": 2
             },
             "end": {
-              "line": 378,
+              "line": 379,
               "column": 3
             }
           },
@@ -50435,11 +50511,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 205,
+              "line": 206,
               "column": 6
             },
             "end": {
-              "line": 208,
+              "line": 209,
               "column": 7
             }
           },
@@ -50453,11 +50529,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 212,
+              "line": 213,
               "column": 6
             },
             "end": {
-              "line": 215,
+              "line": 216,
               "column": 7
             }
           },
@@ -50471,11 +50547,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 219,
+              "line": 220,
               "column": 6
             },
             "end": {
-              "line": 222,
+              "line": 223,
               "column": 7
             }
           },
@@ -50505,11 +50581,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 233,
+              "line": 234,
               "column": 6
             },
             "end": {
-              "line": 236,
+              "line": 237,
               "column": 7
             }
           },
@@ -50523,11 +50599,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 240,
+              "line": 241,
               "column": 6
             },
             "end": {
-              "line": 243,
+              "line": 244,
               "column": 7
             }
           },
@@ -50541,11 +50617,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 247,
+              "line": 248,
               "column": 6
             },
             "end": {
-              "line": 250,
+              "line": 251,
               "column": 7
             }
           },
@@ -52266,11 +52342,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 205,
+              "line": 206,
               "column": 6
             },
             "end": {
-              "line": 208,
+              "line": 209,
               "column": 7
             }
           },
@@ -52290,11 +52366,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 212,
+              "line": 213,
               "column": 6
             },
             "end": {
-              "line": 215,
+              "line": 216,
               "column": 7
             }
           },
@@ -52314,11 +52390,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 219,
+              "line": 220,
               "column": 6
             },
             "end": {
-              "line": 222,
+              "line": 223,
               "column": 7
             }
           },
@@ -52338,11 +52414,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 226,
+              "line": 227,
               "column": 6
             },
             "end": {
-              "line": 229,
+              "line": 230,
               "column": 7
             }
           },
@@ -52362,11 +52438,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 233,
+              "line": 234,
               "column": 6
             },
             "end": {
-              "line": 236,
+              "line": 237,
               "column": 7
             }
           },
@@ -52386,11 +52462,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 240,
+              "line": 241,
               "column": 6
             },
             "end": {
-              "line": 243,
+              "line": 244,
               "column": 7
             }
           },
@@ -52410,11 +52486,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 247,
+              "line": 248,
               "column": 6
             },
             "end": {
-              "line": 250,
+              "line": 251,
               "column": 7
             }
           },
@@ -55469,11 +55545,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 274,
+              "line": 275,
               "column": 2
             },
             "end": {
-              "line": 276,
+              "line": 277,
               "column": 3
             }
           },
@@ -55496,11 +55572,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 286,
+              "line": 287,
               "column": 2
             },
             "end": {
-              "line": 288,
+              "line": 289,
               "column": 3
             }
           },
@@ -55522,11 +55598,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 295,
+              "line": 296,
               "column": 2
             },
             "end": {
-              "line": 310,
+              "line": 311,
               "column": 3
             }
           },
@@ -55548,11 +55624,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 320,
+              "line": 321,
               "column": 2
             },
             "end": {
-              "line": 334,
+              "line": 335,
               "column": 3
             }
           },
@@ -55578,11 +55654,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 344,
+              "line": 345,
               "column": 2
             },
             "end": {
-              "line": 360,
+              "line": 361,
               "column": 3
             }
           },
@@ -55611,11 +55687,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 365,
+              "line": 366,
               "column": 2
             },
             "end": {
-              "line": 367,
+              "line": 368,
               "column": 3
             }
           },
@@ -55637,11 +55713,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 372,
+              "line": 373,
               "column": 2
             },
             "end": {
-              "line": 378,
+              "line": 379,
               "column": 3
             }
           },
@@ -57154,11 +57230,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 205,
+              "line": 206,
               "column": 6
             },
             "end": {
-              "line": 208,
+              "line": 209,
               "column": 7
             }
           },
@@ -57172,11 +57248,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 212,
+              "line": 213,
               "column": 6
             },
             "end": {
-              "line": 215,
+              "line": 216,
               "column": 7
             }
           },
@@ -57190,11 +57266,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 219,
+              "line": 220,
               "column": 6
             },
             "end": {
-              "line": 222,
+              "line": 223,
               "column": 7
             }
           },
@@ -57208,11 +57284,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 226,
+              "line": 227,
               "column": 6
             },
             "end": {
-              "line": 229,
+              "line": 230,
               "column": 7
             }
           },
@@ -57226,11 +57302,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 233,
+              "line": 234,
               "column": 6
             },
             "end": {
-              "line": 236,
+              "line": 237,
               "column": 7
             }
           },
@@ -57244,11 +57320,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 240,
+              "line": 241,
               "column": 6
             },
             "end": {
-              "line": 243,
+              "line": 244,
               "column": 7
             }
           },
@@ -57262,11 +57338,11 @@
           "sourceRange": {
             "file": "a11y-media-behaviors.js",
             "start": {
-              "line": 247,
+              "line": 248,
               "column": 6
             },
             "end": {
-              "line": 250,
+              "line": 251,
               "column": 7
             }
           },
@@ -64713,7 +64789,7 @@
               "column": 2
             },
             "end": {
-              "line": 140,
+              "line": 215,
               "column": 3
             }
           },
@@ -65672,7 +65748,7 @@
           "column": 0
         },
         "end": {
-          "line": 141,
+          "line": 216,
           "column": 1
         }
       },
@@ -66714,11 +66790,11 @@
           "sourceRange": {
             "file": "lib/a11y-media-behaviors.js",
             "start": {
-              "line": 205,
+              "line": 206,
               "column": 6
             },
             "end": {
-              "line": 208,
+              "line": 209,
               "column": 7
             }
           },
@@ -66738,11 +66814,11 @@
           "sourceRange": {
             "file": "lib/a11y-media-behaviors.js",
             "start": {
-              "line": 212,
+              "line": 213,
               "column": 6
             },
             "end": {
-              "line": 215,
+              "line": 216,
               "column": 7
             }
           },
@@ -66762,11 +66838,11 @@
           "sourceRange": {
             "file": "lib/a11y-media-behaviors.js",
             "start": {
-              "line": 219,
+              "line": 220,
               "column": 6
             },
             "end": {
-              "line": 222,
+              "line": 223,
               "column": 7
             }
           },
@@ -66785,11 +66861,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 634,
+              "line": 635,
               "column": 2
             },
             "end": {
-              "line": 637,
+              "line": 638,
               "column": 3
             }
           },
@@ -66806,11 +66882,11 @@
           "sourceRange": {
             "file": "lib/a11y-media-behaviors.js",
             "start": {
-              "line": 233,
+              "line": 234,
               "column": 6
             },
             "end": {
-              "line": 236,
+              "line": 237,
               "column": 7
             }
           },
@@ -66830,11 +66906,11 @@
           "sourceRange": {
             "file": "lib/a11y-media-behaviors.js",
             "start": {
-              "line": 240,
+              "line": 241,
               "column": 6
             },
             "end": {
-              "line": 243,
+              "line": 244,
               "column": 7
             }
           },
@@ -66854,11 +66930,11 @@
           "sourceRange": {
             "file": "lib/a11y-media-behaviors.js",
             "start": {
-              "line": 247,
+              "line": 248,
               "column": 6
             },
             "end": {
-              "line": 250,
+              "line": 251,
               "column": 7
             }
           },
@@ -67526,11 +67602,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 602,
+              "line": 603,
               "column": 2
             },
             "end": {
-              "line": 605,
+              "line": 606,
               "column": 3
             }
           },
@@ -67667,11 +67743,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 588,
+              "line": 589,
               "column": 2
             },
             "end": {
-              "line": 591,
+              "line": 592,
               "column": 3
             }
           },
@@ -67688,11 +67764,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 595,
+              "line": 596,
               "column": 2
             },
             "end": {
-              "line": 598,
+              "line": 599,
               "column": 3
             }
           },
@@ -67709,11 +67785,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 609,
+              "line": 610,
               "column": 2
             },
             "end": {
-              "line": 612,
+              "line": 613,
               "column": 3
             }
           },
@@ -67729,11 +67805,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 616,
+              "line": 617,
               "column": 2
             },
             "end": {
-              "line": 620,
+              "line": 621,
               "column": 3
             }
           },
@@ -67749,11 +67825,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 626,
+              "line": 627,
               "column": 2
             },
             "end": {
-              "line": 630,
+              "line": 631,
               "column": 3
             }
           },
@@ -67769,11 +67845,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 641,
+              "line": 642,
               "column": 2
             },
             "end": {
-              "line": 646,
+              "line": 647,
               "column": 3
             }
           },
@@ -68035,11 +68111,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 682,
+              "line": 683,
               "column": 2
             },
             "end": {
-              "line": 716,
+              "line": 738,
               "column": 3
             }
           },
@@ -69871,11 +69947,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 667,
+              "line": 668,
               "column": 2
             },
             "end": {
-              "line": 677,
+              "line": 678,
               "column": 3
             }
           },
@@ -70034,11 +70110,11 @@
           "sourceRange": {
             "file": "lib/a11y-media-behaviors.js",
             "start": {
-              "line": 274,
+              "line": 275,
               "column": 2
             },
             "end": {
-              "line": 276,
+              "line": 277,
               "column": 3
             }
           },
@@ -70061,11 +70137,11 @@
           "sourceRange": {
             "file": "lib/a11y-media-behaviors.js",
             "start": {
-              "line": 286,
+              "line": 287,
               "column": 2
             },
             "end": {
-              "line": 288,
+              "line": 289,
               "column": 3
             }
           },
@@ -70087,11 +70163,11 @@
           "sourceRange": {
             "file": "lib/a11y-media-behaviors.js",
             "start": {
-              "line": 295,
+              "line": 296,
               "column": 2
             },
             "end": {
-              "line": 310,
+              "line": 311,
               "column": 3
             }
           },
@@ -70113,11 +70189,11 @@
           "sourceRange": {
             "file": "lib/a11y-media-behaviors.js",
             "start": {
-              "line": 320,
+              "line": 321,
               "column": 2
             },
             "end": {
-              "line": 334,
+              "line": 335,
               "column": 3
             }
           },
@@ -70143,11 +70219,11 @@
           "sourceRange": {
             "file": "lib/a11y-media-behaviors.js",
             "start": {
-              "line": 344,
+              "line": 345,
               "column": 2
             },
             "end": {
-              "line": 360,
+              "line": 361,
               "column": 3
             }
           },
@@ -70176,11 +70252,11 @@
           "sourceRange": {
             "file": "lib/a11y-media-behaviors.js",
             "start": {
-              "line": 365,
+              "line": 366,
               "column": 2
             },
             "end": {
-              "line": 367,
+              "line": 368,
               "column": 3
             }
           },
@@ -70201,11 +70277,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 1125,
+              "line": 1129,
               "column": 2
             },
             "end": {
-              "line": 1131,
+              "line": 1135,
               "column": 3
             }
           },
@@ -70369,11 +70445,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 1229,
+              "line": 1273,
               "column": 2
             },
             "end": {
-              "line": 1231,
+              "line": 1275,
               "column": 3
             }
           },
@@ -70472,20 +70548,16 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 721,
+              "line": 743,
               "column": 2
             },
             "end": {
-              "line": 750,
+              "line": 751,
               "column": 3
             }
           },
           "metadata": {},
-          "params": [
-            {
-              "name": "e"
-            }
-          ],
+          "params": [],
           "return": {
             "type": "void"
           }
@@ -70496,11 +70568,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 755,
+              "line": 756,
               "column": 2
             },
             "end": {
-              "line": 762,
+              "line": 760,
               "column": 3
             }
           },
@@ -70516,11 +70588,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 767,
+              "line": 765,
               "column": 2
             },
             "end": {
-              "line": 770,
+              "line": 768,
               "column": 3
             }
           },
@@ -70536,11 +70608,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 775,
+              "line": 773,
               "column": 2
             },
             "end": {
-              "line": 778,
+              "line": 776,
               "column": 3
             }
           },
@@ -70556,11 +70628,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 785,
+              "line": 783,
               "column": 2
             },
             "end": {
-              "line": 788,
+              "line": 789,
               "column": 3
             }
           },
@@ -70580,11 +70652,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 795,
+              "line": 796,
               "column": 2
             },
             "end": {
-              "line": 798,
+              "line": 802,
               "column": 3
             }
           },
@@ -70604,11 +70676,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 805,
+              "line": 809,
               "column": 2
             },
             "end": {
-              "line": 825,
+              "line": 821,
               "column": 3
             }
           },
@@ -70628,11 +70700,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 832,
+              "line": 828,
               "column": 2
             },
             "end": {
-              "line": 835,
+              "line": 831,
               "column": 3
             }
           },
@@ -70652,11 +70724,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 842,
+              "line": 838,
               "column": 2
             },
             "end": {
-              "line": 846,
+              "line": 842,
               "column": 3
             }
           },
@@ -70676,11 +70748,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 853,
+              "line": 849,
               "column": 2
             },
             "end": {
-              "line": 856,
+              "line": 852,
               "column": 3
             }
           },
@@ -70700,11 +70772,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 863,
+              "line": 859,
               "column": 2
             },
             "end": {
-              "line": 866,
+              "line": 862,
               "column": 3
             }
           },
@@ -70724,11 +70796,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 873,
+              "line": 869,
               "column": 2
             },
             "end": {
-              "line": 879,
+              "line": 875,
               "column": 3
             }
           },
@@ -70748,11 +70820,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 886,
+              "line": 882,
               "column": 2
             },
             "end": {
-              "line": 890,
+              "line": 886,
               "column": 3
             }
           },
@@ -70772,11 +70844,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 897,
+              "line": 893,
               "column": 2
             },
             "end": {
-              "line": 901,
+              "line": 897,
               "column": 3
             }
           },
@@ -70796,11 +70868,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 908,
+              "line": 904,
               "column": 2
             },
             "end": {
-              "line": 916,
+              "line": 912,
               "column": 3
             }
           },
@@ -70820,11 +70892,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 923,
+              "line": 919,
               "column": 2
             },
             "end": {
-              "line": 935,
+              "line": 931,
               "column": 3
             }
           },
@@ -70847,11 +70919,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 941,
+              "line": 937,
               "column": 2
             },
             "end": {
-              "line": 952,
+              "line": 948,
               "column": 3
             }
           },
@@ -70871,11 +70943,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 962,
+              "line": 958,
               "column": 2
             },
             "end": {
-              "line": 975,
+              "line": 971,
               "column": 3
             }
           },
@@ -70902,11 +70974,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 986,
+              "line": 982,
               "column": 2
             },
             "end": {
-              "line": 1000,
+              "line": 996,
               "column": 3
             }
           },
@@ -70933,11 +71005,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 1008,
+              "line": 1004,
               "column": 2
             },
             "end": {
-              "line": 1012,
+              "line": 1008,
               "column": 3
             }
           },
@@ -70964,11 +71036,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 1017,
+              "line": 1013,
               "column": 2
             },
             "end": {
-              "line": 1030,
+              "line": 1026,
               "column": 3
             }
           },
@@ -70984,11 +71056,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 1035,
+              "line": 1031,
               "column": 2
             },
             "end": {
-              "line": 1086,
+              "line": 1082,
               "column": 3
             }
           },
@@ -71011,11 +71083,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 1091,
+              "line": 1087,
               "column": 2
             },
             "end": {
-              "line": 1101,
+              "line": 1097,
               "column": 3
             }
           },
@@ -71035,131 +71107,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 1106,
+              "line": 1102,
               "column": 2
             },
             "end": {
-              "line": 1120,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "e"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "_handleSearchAdded",
-          "description": "sets search the simple-search element",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 1136,
-              "column": 2
-            },
-            "end": {
-              "line": 1138,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "e"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "_handleSliderDragging",
-          "description": "handles duration slider dragging with a mouse",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 1142,
-              "column": 2
-            },
-            "end": {
-              "line": 1148,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "e"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "_handleSliderKeyboard",
-          "description": "handles duration slider dragging with a keyboard",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 1153,
-              "column": 2
-            },
-            "end": {
-              "line": 1156,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "e"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "_handleTranscriptScrollToggle",
-          "description": "handles transcript scroll toggle",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 1161,
-              "column": 2
-            },
-            "end": {
-              "line": 1163,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "e"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "_onControlsChanged",
-          "description": "determine which button was clicked and act accordingly",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 1168,
-              "column": 2
-            },
-            "end": {
-              "line": 1205,
+              "line": 1111,
               "column": 3
             }
           },
@@ -71179,11 +71131,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 1213,
+              "line": 1119,
               "column": 2
             },
             "end": {
-              "line": 1218,
+              "line": 1124,
               "column": 3
             }
           },
@@ -71205,8 +71157,152 @@
           }
         },
         {
-          "name": "_toggleSliderSeek",
-          "description": "handles slider seeking via mouse or keyboard",
+          "name": "_handleSearchAdded",
+          "description": "sets search the simple-search element",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 1140,
+              "column": 2
+            },
+            "end": {
+              "line": 1142,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_handleSliderStart",
+          "description": "handles duration slider dragging with a mouse",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 1147,
+              "column": 2
+            },
+            "end": {
+              "line": 1151,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_handleSliderStop",
+          "description": "handles duration slider dragging with a mouse",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 1156,
+              "column": 2
+            },
+            "end": {
+              "line": 1163,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_handleTimeUpdate",
+          "description": "handles time updates",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 1168,
+              "column": 2
+            },
+            "end": {
+              "line": 1182,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_handleTranscriptScrollToggle",
+          "description": "handles transcript scroll toggle",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 1187,
+              "column": 2
+            },
+            "end": {
+              "line": 1189,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_onControlsChanged",
+          "description": "determine which button was clicked and act accordingly",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 1194,
+              "column": 2
+            },
+            "end": {
+              "line": 1231,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_setElapsedTime",
+          "description": "sets duration, taking into consideration start and stop times",
           "privacy": "protected",
           "sourceRange": {
             "start": {
@@ -71214,21 +71310,15 @@
               "column": 2
             },
             "end": {
-              "line": 1247,
+              "line": 1262,
               "column": 3
             }
           },
           "metadata": {},
-          "params": [
-            {
-              "name": "seeking"
-            },
-            {
-              "name": "value"
-            }
-          ],
+          "params": [],
           "return": {
-            "type": "void"
+            "type": "string",
+            "desc": "status"
           }
         },
         {
@@ -71237,11 +71327,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 1255,
+              "line": 1283,
               "column": 2
             },
             "end": {
-              "line": 1260,
+              "line": 1288,
               "column": 3
             }
           },
@@ -71268,11 +71358,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 1265,
+              "line": 1293,
               "column": 2
             },
             "end": {
-              "line": 1313,
+              "line": 1350,
               "column": 3
             }
           },
@@ -71288,11 +71378,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 1318,
+              "line": 1355,
               "column": 2
             },
             "end": {
-              "line": 1343,
+              "line": 1380,
               "column": 3
             }
           },
@@ -72259,7 +72349,7 @@
           "column": 0
         },
         "end": {
-          "line": 1344,
+          "line": 1381,
           "column": 1
         }
       },
@@ -72540,11 +72630,11 @@
           "sourceRange": {
             "file": "lib/a11y-media-behaviors.js",
             "start": {
-              "line": 205,
+              "line": 206,
               "column": 6
             },
             "end": {
-              "line": 208,
+              "line": 209,
               "column": 7
             }
           },
@@ -72558,11 +72648,11 @@
           "sourceRange": {
             "file": "lib/a11y-media-behaviors.js",
             "start": {
-              "line": 212,
+              "line": 213,
               "column": 6
             },
             "end": {
-              "line": 215,
+              "line": 216,
               "column": 7
             }
           },
@@ -72576,11 +72666,11 @@
           "sourceRange": {
             "file": "lib/a11y-media-behaviors.js",
             "start": {
-              "line": 219,
+              "line": 220,
               "column": 6
             },
             "end": {
-              "line": 222,
+              "line": 223,
               "column": 7
             }
           },
@@ -72593,11 +72683,11 @@
           "description": "Optional array ouf tracks.",
           "sourceRange": {
             "start": {
-              "line": 634,
+              "line": 635,
               "column": 2
             },
             "end": {
-              "line": 637,
+              "line": 638,
               "column": 3
             }
           },
@@ -72609,11 +72699,11 @@
           "sourceRange": {
             "file": "lib/a11y-media-behaviors.js",
             "start": {
-              "line": 233,
+              "line": 234,
               "column": 6
             },
             "end": {
-              "line": 236,
+              "line": 237,
               "column": 7
             }
           },
@@ -72627,11 +72717,11 @@
           "sourceRange": {
             "file": "lib/a11y-media-behaviors.js",
             "start": {
-              "line": 240,
+              "line": 241,
               "column": 6
             },
             "end": {
-              "line": 243,
+              "line": 244,
               "column": 7
             }
           },
@@ -72645,11 +72735,11 @@
           "sourceRange": {
             "file": "lib/a11y-media-behaviors.js",
             "start": {
-              "line": 247,
+              "line": 248,
               "column": 6
             },
             "end": {
-              "line": 250,
+              "line": 251,
               "column": 7
             }
           },
@@ -73148,11 +73238,11 @@
           "description": "is YouTube?",
           "sourceRange": {
             "start": {
-              "line": 602,
+              "line": 603,
               "column": 2
             },
             "end": {
-              "line": 605,
+              "line": 606,
               "column": 3
             }
           },
@@ -73253,11 +73343,11 @@
           "description": "The default media caption if none is given.",
           "sourceRange": {
             "start": {
-              "line": 588,
+              "line": 589,
               "column": 2
             },
             "end": {
-              "line": 591,
+              "line": 592,
               "column": 3
             }
           },
@@ -73268,11 +73358,11 @@
           "description": "The media caption that displays when the page is printed.",
           "sourceRange": {
             "start": {
-              "line": 595,
+              "line": 596,
               "column": 2
             },
             "end": {
-              "line": 598,
+              "line": 599,
               "column": 3
             }
           },
@@ -73283,11 +73373,11 @@
           "description": "Optional array ouf sources.",
           "sourceRange": {
             "start": {
-              "line": 609,
+              "line": 610,
               "column": 2
             },
             "end": {
-              "line": 612,
+              "line": 613,
               "column": 3
             }
           },
@@ -73298,11 +73388,11 @@
           "description": "Is the video currently sticky, i.e. it is fixed to the corner when playing but scrolled off screen?",
           "sourceRange": {
             "start": {
-              "line": 616,
+              "line": 617,
               "column": 2
             },
             "end": {
-              "line": 620,
+              "line": 621,
               "column": 3
             }
           },
@@ -73313,11 +73403,11 @@
           "description": "When playing but scrolled off screen, to which corner does it \"stick\":\ntop-left, top-right, bottom-left, bottom-right, or none?\nDefault is \"top-right\". \"None\" disables stickiness.",
           "sourceRange": {
             "start": {
-              "line": 626,
+              "line": 627,
               "column": 2
             },
             "end": {
-              "line": 630,
+              "line": 631,
               "column": 3
             }
           },

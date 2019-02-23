@@ -105,9 +105,11 @@
 :host #slider,
 :host #controls,
 :host #outertranscript,
-:host #innertranscript,
-:host #innertranscript > * {
+:host #innertranscript {
   width: 100%;
+}
+:host #innertranscript > * {
+  width: calc(100% - 1px);
 }
 :host > *,
 :host #innerplayer,
@@ -131,7 +133,6 @@
   top: 0;
   left: 0;
   height: 100%;
-  max-height: calc(100vh - 100px);
 }
 :host #playbutton,
 :host #slider,
@@ -193,6 +194,7 @@
 }
 :host #transcript {
   flex: 1 0 150px;
+  overflow-y: scroll;
 }
 :host .sr-only {
   position: absolute;
