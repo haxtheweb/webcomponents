@@ -8,7 +8,7 @@ let pattern = /<body[^>]*>((.|[\n\r])*)<\/body>/im;
 var array_matches = pattern.exec(template);
 // now template is just the body contents
 template = array_matches[1];
-const stories = storiesOf("11", module);
+const stories = storiesOf("Collapse", module);
 stories.addDecorator(storybookBridge.withKnobs);
 stories.add("a11y-collapse", () => {
   var binding = {};
