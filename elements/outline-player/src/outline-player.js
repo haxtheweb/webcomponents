@@ -13,7 +13,6 @@ import "@lrnwebcomponents/map-menu/map-menu.js";
 import { HAXCMSThemeWiring } from "@lrnwebcomponents/haxcms-elements/lib/HAXCMSThemeWiring.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import "./lib/outline-player-arrow.js";
 
 /**
 `outline-player`
@@ -34,7 +33,6 @@ let OutlinePlayer = Polymer({
         --app-drawer-width: 300px;
         --outline-player-dark: #222222;
         --outline-player-light: #f8f8f8;
-        --outline-player-arrow-margin-top: 50px;
       }
 
       :host([closed]) {
@@ -247,20 +245,24 @@ let OutlinePlayer = Polymer({
               [[activeItem.title]]
               <div id="slotTitle"><slot name="title"></slot></div>
             </div>
-            <outline-player-arrow
+            <paper-icon-button
               id="prevpage"
               disabled="[[disablePrevPage(activeManifestIndex)]]"
               icon="icons:arrow-back"
               on-click="prevPage"
-              >Previous
-            </outline-player-arrow>
-            <outline-player-arrow
+            ></paper-icon-button>
+            <paper-tooltip for="prevpage" position="bottom" offset="14">
+              Previous
+            </paper-tooltip>
+            <paper-icon-button
               id="nextpage"
               disabled="[[disableNextPage(activeManifestIndex)]]"
               icon="icons:arrow-forward"
               on-click="nextPage"
-              >Next
-            </outline-player-arrow>
+            ></paper-icon-button>
+            <paper-tooltip for="nextpage" position="bottom" offset="14">
+              Next
+            </paper-tooltip>
           </app-toolbar>
         </app-header>
         <div id="content">
