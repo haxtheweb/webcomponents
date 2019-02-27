@@ -249,14 +249,14 @@ let OutlinePlayer = Polymer({
             </div>
             <outline-player-arrow
               id="prevpage"
-              disabled="[[disablePrevPage(__activeIndex)]]"
+              disabled="[[disablePrevPage(activeManifestIndex)]]"
               icon="icons:arrow-back"
               on-click="prevPage"
               >Previous
             </outline-player-arrow>
             <outline-player-arrow
               id="nextpage"
-              disabled="[[disableNextPage(__activeIndex)]]"
+              disabled="[[disableNextPage(activeManifestIndex)]]"
               icon="icons:arrow-forward"
               on-click="nextPage"
               >Next
@@ -274,6 +274,38 @@ let OutlinePlayer = Polymer({
 
   is: "outline-player",
   properties: {
+    /**
+     * editting state for the page
+     */
+    editMode: {
+      type: Boolean,
+      reflectToAttribute: true,
+      observer: "_editModeChanged"
+    },
+    /**
+     * Active item which is in JSON Outline Schema
+     */
+    activeItem: {
+      type: Object
+    },
+    /**
+     * Manifest from haxcms-site-builder
+     */
+    manifest: {
+      type: Object
+    },
+    /**
+     * DOM node that wraps the slot
+     */
+    contentContainer: {
+      type: Object
+    },
+    /**
+     * active manifest index, key to location in the manifest itemsarray
+     */
+    activeManifestIndex: {
+      type: Number
+    },
     /**
      * Auto call json files
      */
@@ -330,26 +362,6 @@ let OutlinePlayer = Polymer({
       observer: "_outlineChanged"
     },
     /**
-     * editting state for the page
-     */
-    editMode: {
-      type: Boolean,
-      reflectToAttribute: true,
-      observer: "_editModeChanged"
-    },
-    /**
-     * Active item which is in JSON Outline Schema
-     */
-    activeItem: {
-      type: Object
-    },
-    /**
-     * Manifest from haxcms-site-builder
-     */
-    manifest: {
-      type: Object
-    },
-    /**
      * Set min height of outline player to fill remaining
      * space to the bottom of the browser
      */
@@ -371,6 +383,62 @@ let OutlinePlayer = Polymer({
       observer: "_locationChanged"
     }
   },
+  /**
+   * disablePrevPage
+   */
+  disablePrevPage: function(index) {
+    if (index === 0) {
+      return true;
+    }
+    return false;
+  },
+  /**
+   * disableNextPage
+   */
+  disableNextPage: function(index) {
+    if (index === this.manifest.items.length - 1) {
+      return true;
+    }
+    return false;
+  },
+  /**
+   * Go back a page (if we can)
+   */
+  prevPage: function(e) {
+    this.changePage("previous");
+  },
+  /**
+   * Advance a page (if we can)
+   */
+  nextPage: function(e) {
+    this.changePage("next");
+  },
+  /**
+   * Go forward a page
+   */
+  changePage: function(direction) {
+    if (
+      direction == "next" &&
+      this.activeManifestIndex < this.manifest.items.length - 1
+    ) {
+      window.history.pushState(
+        {},
+        null,
+        this._routerManifest.items[this.activeManifestIndex + 1].location
+      );
+      window.dispatchEvent(new PopStateEvent("popstate"));
+    } else if (direction == "previous" && this.activeManifestIndex > 0) {
+      window.history.pushState(
+        {},
+        null,
+        this._routerManifest.items[this.activeManifestIndex - 1].location
+      );
+      window.dispatchEvent(new PopStateEvent("popstate"));
+    }
+  },
+  /**
+   * notice edit changed, make sure we fake a resize because of that container flyout
+   */
   _editModeChanged: function(newValue) {
     if (typeof newValue !== typeof undefined) {
       async.microTask.run(() => {
@@ -391,7 +459,8 @@ let OutlinePlayer = Polymer({
    * ready life cycle
    */
   ready: function() {
-    this.HAXCMSThemeWiring.connect(this, this.$.contentcontainer);
+    this.contentContainer = this.$.contentcontainer;
+    this.HAXCMSThemeWiring.connect(this, this.contentContainer);
   },
   /**
    * attached life cycle
@@ -498,64 +567,6 @@ let OutlinePlayer = Polymer({
   },
 
   /**
-   * disablePrevPage
-   */
-  disablePrevPage: function(index) {
-    if (index === 0) {
-      return true;
-    }
-    return false;
-  },
-
-  /**
-   * disableNextPage
-   */
-  disableNextPage: function(index) {
-    if (index === this.manifest.items.length - 1) {
-      return true;
-    }
-    return false;
-  },
-
-  /**
-   * Go back a page (if we can)
-   */
-  prevPage: function(e) {
-    this.changePage("previous");
-  },
-
-  /**
-   * Advance a page
-   */
-  nextPage: function(e) {
-    this.changePage("next");
-  },
-
-  /**
-   * Go forward a page
-   */
-  changePage: function(direction) {
-    if (
-      direction == "next" &&
-      this.__activeIndex < this.manifest.items.length - 1
-    ) {
-      window.history.pushState(
-        {},
-        null,
-        this._routerManifest.items[this.__activeIndex + 1].location
-      );
-      window.dispatchEvent(new PopStateEvent("popstate"));
-    } else if (direction == "previous" && this.__activeIndex > 0) {
-      window.history.pushState(
-        {},
-        null,
-        this._routerManifest.items[this.__activeIndex - 1].location
-      );
-      window.dispatchEvent(new PopStateEvent("popstate"));
-    }
-  },
-
-  /**
    * Selected page has changed.
    */
   _selectedPageChanged: function(newValue, oldValue) {
@@ -564,7 +575,7 @@ let OutlinePlayer = Polymer({
         const item = this.manifest.items
           .filter((d, i) => {
             if (newValue === d.id) {
-              this.__activeIndex = i;
+              this.activeManifestIndex = i;
               return d;
             }
           })

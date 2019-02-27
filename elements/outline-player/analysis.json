@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`outline-player`",
+      "description": "`outline-player-arrow`",
       "summary": "",
       "path": "lib/outline-player-arrow.js",
       "properties": [
@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 38,
+              "line": 40,
               "column": 4
             },
             "end": {
-              "line": 41,
+              "line": 43,
               "column": 5
             }
           },
@@ -35,11 +35,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 42,
+              "line": 44,
               "column": 4
             },
             "end": {
-              "line": 46,
+              "line": 48,
               "column": 5
             }
           },
@@ -49,182 +49,9 @@
             }
           },
           "defaultValue": "true"
-        },
-        {
-          "name": "sticky",
-          "type": "boolean | null | undefined",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 47,
-              "column": 4
-            },
-            "end": {
-              "line": 51,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false"
-        },
-        {
-          "name": "__isNavSticky",
-          "type": "boolean | null | undefined",
-          "description": "",
-          "privacy": "private",
-          "sourceRange": {
-            "start": {
-              "line": 52,
-              "column": 4
-            },
-            "end": {
-              "line": 56,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "observer": "\"__isNavStickyChanged\"",
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false"
-        },
-        {
-          "name": "__originalPosition",
-          "type": "number | null | undefined",
-          "description": "",
-          "privacy": "private",
-          "sourceRange": {
-            "start": {
-              "line": 57,
-              "column": 4
-            },
-            "end": {
-              "line": 60,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Number"
-            }
-          },
-          "defaultValue": "0"
         }
       ],
-      "methods": [
-        {
-          "name": "attached",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 63,
-              "column": 2
-            },
-            "end": {
-              "line": 82,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "resetPosition",
-          "description": "Reset the dynaimc positioning of the arrows.  Usefull for ajax page changes",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 87,
-              "column": 2
-            },
-            "end": {
-              "line": 90,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "__isNavStickyChanged",
-          "description": "Sticky Nav has changed",
-          "privacy": "private",
-          "sourceRange": {
-            "start": {
-              "line": 95,
-              "column": 2
-            },
-            "end": {
-              "line": 95,
-              "column": 48
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "isNavSticky"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "__calculateIsNavSticky",
-          "description": "Calculate is nav sticky",
-          "privacy": "private",
-          "sourceRange": {
-            "start": {
-              "line": 100,
-              "column": 2
-            },
-            "end": {
-              "line": 113,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "__getElementOffset",
-          "description": "Get Element Offset",
-          "privacy": "private",
-          "sourceRange": {
-            "start": {
-              "line": 118,
-              "column": 2
-            },
-            "end": {
-              "line": 124,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "element"
-            }
-          ]
-        }
-      ],
+      "methods": [],
       "staticMethods": [],
       "demos": [
         {
@@ -235,11 +62,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 5,
+          "line": 7,
           "column": 8
         },
         "end": {
-          "line": 125,
+          "line": 50,
           "column": 1
         }
       },
@@ -251,11 +78,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 38,
+              "line": 40,
               "column": 4
             },
             "end": {
-              "line": 41,
+              "line": 43,
               "column": 5
             }
           },
@@ -267,27 +94,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 42,
+              "line": 44,
               "column": 4
             },
             "end": {
-              "line": 46,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined"
-        },
-        {
-          "name": "sticky",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 47,
-              "column": 4
-            },
-            "end": {
-              "line": 51,
+              "line": 48,
               "column": 5
             }
           },
@@ -309,9 +120,9 @@
       "path": "outline-player.js",
       "properties": [
         {
-          "name": "auto",
+          "name": "editMode",
           "type": "boolean | null | undefined",
-          "description": "Auto call json files",
+          "description": "editting state for the page",
           "privacy": "public",
           "sourceRange": {
             "start": {
@@ -320,6 +131,112 @@
             },
             "end": {
               "line": 283,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_editModeChanged\"",
+              "attributeType": "Boolean"
+            }
+          }
+        },
+        {
+          "name": "activeItem",
+          "type": "Object | null | undefined",
+          "description": "Active item which is in JSON Outline Schema",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 287,
+              "column": 4
+            },
+            "end": {
+              "line": 289,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Object"
+            }
+          }
+        },
+        {
+          "name": "manifest",
+          "type": "Object | null | undefined",
+          "description": "Manifest from haxcms-site-builder",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 293,
+              "column": 4
+            },
+            "end": {
+              "line": 295,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Object"
+            }
+          }
+        },
+        {
+          "name": "contentContainer",
+          "type": "Object | null | undefined",
+          "description": "DOM node that wraps the slot",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 299,
+              "column": 4
+            },
+            "end": {
+              "line": 301,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Object"
+            }
+          }
+        },
+        {
+          "name": "activeManifestIndex",
+          "type": "number | null | undefined",
+          "description": "active manifest index, key to location in the manifest itemsarray",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 305,
+              "column": 4
+            },
+            "end": {
+              "line": 307,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Number"
+            }
+          }
+        },
+        {
+          "name": "auto",
+          "type": "boolean | null | undefined",
+          "description": "Auto call json files",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 311,
+              "column": 4
+            },
+            "end": {
+              "line": 315,
               "column": 5
             }
           },
@@ -338,11 +255,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 287,
+              "line": 319,
               "column": 4
             },
             "end": {
-              "line": 291,
+              "line": 323,
               "column": 5
             }
           },
@@ -361,11 +278,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 295,
+              "line": 327,
               "column": 4
             },
             "end": {
-              "line": 298,
+              "line": 330,
               "column": 5
             }
           },
@@ -383,11 +300,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 302,
+              "line": 334,
               "column": 4
             },
             "end": {
-              "line": 306,
+              "line": 338,
               "column": 5
             }
           },
@@ -406,11 +323,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 310,
+              "line": 342,
               "column": 4
             },
             "end": {
-              "line": 315,
+              "line": 347,
               "column": 5
             }
           },
@@ -429,11 +346,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 319,
+              "line": 351,
               "column": 4
             },
             "end": {
-              "line": 322,
+              "line": 354,
               "column": 5
             }
           },
@@ -451,11 +368,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 326,
+              "line": 358,
               "column": 4
             },
             "end": {
-              "line": 330,
+              "line": 362,
               "column": 5
             }
           },
@@ -468,81 +385,17 @@
           }
         },
         {
-          "name": "editMode",
-          "type": "boolean | null | undefined",
-          "description": "editting state for the page",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 334,
-              "column": 4
-            },
-            "end": {
-              "line": 338,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "observer": "\"_editModeChanged\"",
-              "attributeType": "Boolean"
-            }
-          }
-        },
-        {
-          "name": "activeItem",
-          "type": "Object | null | undefined",
-          "description": "Active item which is in JSON Outline Schema",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 342,
-              "column": 4
-            },
-            "end": {
-              "line": 344,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
-          }
-        },
-        {
-          "name": "manifest",
-          "type": "Object | null | undefined",
-          "description": "Manifest from haxcms-site-builder",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 348,
-              "column": 4
-            },
-            "end": {
-              "line": 350,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
-          }
-        },
-        {
           "name": "fillRemaining",
           "type": "boolean | null | undefined",
           "description": "Set min height of outline player to fill remaining\nspace to the bottom of the browser",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 355,
+              "line": 367,
               "column": 4
             },
             "end": {
-              "line": 359,
+              "line": 371,
               "column": 5
             }
           },
@@ -560,11 +413,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 364,
+              "line": 376,
               "column": 4
             },
             "end": {
-              "line": 367,
+              "line": 379,
               "column": 5
             }
           },
@@ -582,11 +435,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 368,
+              "line": 380,
               "column": 4
             },
             "end": {
-              "line": 371,
+              "line": 383,
               "column": 5
             }
           },
@@ -600,16 +453,130 @@
       ],
       "methods": [
         {
-          "name": "_editModeChanged",
-          "description": "",
-          "privacy": "protected",
+          "name": "disablePrevPage",
+          "description": "disablePrevPage",
+          "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 373,
+              "line": 388,
               "column": 2
             },
             "end": {
-              "line": 382,
+              "line": 393,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "index"
+            }
+          ]
+        },
+        {
+          "name": "disableNextPage",
+          "description": "disableNextPage",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 397,
+              "column": 2
+            },
+            "end": {
+              "line": 402,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "index"
+            }
+          ]
+        },
+        {
+          "name": "prevPage",
+          "description": "Go back a page (if we can)",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 406,
+              "column": 2
+            },
+            "end": {
+              "line": 408,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "nextPage",
+          "description": "Advance a page (if we can)",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 412,
+              "column": 2
+            },
+            "end": {
+              "line": 414,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "changePage",
+          "description": "Go forward a page",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 418,
+              "column": 2
+            },
+            "end": {
+              "line": 437,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "direction"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_editModeChanged",
+          "description": "notice edit changed, make sure we fake a resize because of that container flyout",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 441,
+              "column": 2
+            },
+            "end": {
+              "line": 450,
               "column": 3
             }
           },
@@ -629,11 +596,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 386,
+              "line": 454,
               "column": 2
             },
             "end": {
-              "line": 388,
+              "line": 456,
               "column": 3
             }
           },
@@ -649,11 +616,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 392,
+              "line": 460,
               "column": 2
             },
             "end": {
-              "line": 394,
+              "line": 463,
               "column": 3
             }
           },
@@ -669,11 +636,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 398,
+              "line": 467,
               "column": 2
             },
             "end": {
-              "line": 413,
+              "line": 481,
               "column": 3
             }
           },
@@ -689,11 +656,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 417,
+              "line": 485,
               "column": 2
             },
             "end": {
-              "line": 420,
+              "line": 488,
               "column": 3
             }
           },
@@ -709,11 +676,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 422,
+              "line": 490,
               "column": 2
             },
             "end": {
-              "line": 446,
+              "line": 514,
               "column": 3
             }
           },
@@ -733,11 +700,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 450,
+              "line": 518,
               "column": 2
             },
             "end": {
-              "line": 463,
+              "line": 531,
               "column": 3
             }
           },
@@ -757,11 +724,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 468,
+              "line": 536,
               "column": 2
             },
             "end": {
-              "line": 485,
+              "line": 553,
               "column": 3
             }
           },
@@ -785,11 +752,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 490,
+              "line": 558,
               "column": 2
             },
             "end": {
-              "line": 498,
+              "line": 566,
               "column": 3
             }
           },
@@ -807,130 +774,16 @@
           }
         },
         {
-          "name": "disablePrevPage",
-          "description": "disablePrevPage",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 503,
-              "column": 2
-            },
-            "end": {
-              "line": 508,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "index"
-            }
-          ]
-        },
-        {
-          "name": "disableNextPage",
-          "description": "disableNextPage",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 513,
-              "column": 2
-            },
-            "end": {
-              "line": 518,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "index"
-            }
-          ]
-        },
-        {
-          "name": "prevPage",
-          "description": "Go back a page (if we can)",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 523,
-              "column": 2
-            },
-            "end": {
-              "line": 525,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "e"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "nextPage",
-          "description": "Advance a page",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 530,
-              "column": 2
-            },
-            "end": {
-              "line": 532,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "e"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "changePage",
-          "description": "Go forward a page",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 537,
-              "column": 2
-            },
-            "end": {
-              "line": 556,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "direction"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
           "name": "_selectedPageChanged",
           "description": "Selected page has changed.",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 561,
+              "line": 571,
               "column": 2
             },
             "end": {
-              "line": 580,
+              "line": 590,
               "column": 3
             }
           },
@@ -953,11 +806,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 585,
+              "line": 595,
               "column": 2
             },
             "end": {
-              "line": 587,
+              "line": 597,
               "column": 3
             }
           },
@@ -978,7 +831,7 @@
           "column": 28
         },
         "end": {
-          "line": 588,
+          "line": 598,
           "column": 1
         }
       },
@@ -987,8 +840,8 @@
       "name": "OutlinePlayer",
       "attributes": [
         {
-          "name": "auto",
-          "description": "Auto call json files",
+          "name": "edit-mode",
+          "description": "editting state for the page",
           "sourceRange": {
             "start": {
               "line": 279,
@@ -1003,111 +856,15 @@
           "type": "boolean | null | undefined"
         },
         {
-          "name": "outline-file",
-          "description": "Outline JSON file name",
+          "name": "active-item",
+          "description": "Active item which is in JSON Outline Schema",
           "sourceRange": {
             "start": {
               "line": 287,
               "column": 4
             },
             "end": {
-              "line": 291,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "outline-location",
-          "description": "Outline JSON location",
-          "sourceRange": {
-            "start": {
-              "line": 295,
-              "column": 4
-            },
-            "end": {
-              "line": 298,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "selected",
-          "description": "acitvely selected item",
-          "sourceRange": {
-            "start": {
-              "line": 302,
-              "column": 4
-            },
-            "end": {
-              "line": 306,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "closed",
-          "description": "Closed status for the drawer",
-          "sourceRange": {
-            "start": {
-              "line": 310,
-              "column": 4
-            },
-            "end": {
-              "line": 315,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined"
-        },
-        {
-          "name": "outline",
-          "description": "Outline structured via JSON Outline Schema off the wire",
-          "sourceRange": {
-            "start": {
-              "line": 326,
-              "column": 4
-            },
-            "end": {
-              "line": 330,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "Array | null | undefined"
-        },
-        {
-          "name": "edit-mode",
-          "description": "editting state for the page",
-          "sourceRange": {
-            "start": {
-              "line": 334,
-              "column": 4
-            },
-            "end": {
-              "line": 338,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined"
-        },
-        {
-          "name": "active-item",
-          "description": "Active item which is in JSON Outline Schema",
-          "sourceRange": {
-            "start": {
-              "line": 342,
-              "column": 4
-            },
-            "end": {
-              "line": 344,
+              "line": 289,
               "column": 5
             }
           },
@@ -1119,11 +876,11 @@
           "description": "Manifest from haxcms-site-builder",
           "sourceRange": {
             "start": {
-              "line": 348,
+              "line": 293,
               "column": 4
             },
             "end": {
-              "line": 350,
+              "line": 295,
               "column": 5
             }
           },
@@ -1131,15 +888,143 @@
           "type": "Object | null | undefined"
         },
         {
+          "name": "content-container",
+          "description": "DOM node that wraps the slot",
+          "sourceRange": {
+            "start": {
+              "line": 299,
+              "column": 4
+            },
+            "end": {
+              "line": 301,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined"
+        },
+        {
+          "name": "active-manifest-index",
+          "description": "active manifest index, key to location in the manifest itemsarray",
+          "sourceRange": {
+            "start": {
+              "line": 305,
+              "column": 4
+            },
+            "end": {
+              "line": 307,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "number | null | undefined"
+        },
+        {
+          "name": "auto",
+          "description": "Auto call json files",
+          "sourceRange": {
+            "start": {
+              "line": 311,
+              "column": 4
+            },
+            "end": {
+              "line": 315,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "outline-file",
+          "description": "Outline JSON file name",
+          "sourceRange": {
+            "start": {
+              "line": 319,
+              "column": 4
+            },
+            "end": {
+              "line": 323,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "outline-location",
+          "description": "Outline JSON location",
+          "sourceRange": {
+            "start": {
+              "line": 327,
+              "column": 4
+            },
+            "end": {
+              "line": 330,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "selected",
+          "description": "acitvely selected item",
+          "sourceRange": {
+            "start": {
+              "line": 334,
+              "column": 4
+            },
+            "end": {
+              "line": 338,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "closed",
+          "description": "Closed status for the drawer",
+          "sourceRange": {
+            "start": {
+              "line": 342,
+              "column": 4
+            },
+            "end": {
+              "line": 347,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "outline",
+          "description": "Outline structured via JSON Outline Schema off the wire",
+          "sourceRange": {
+            "start": {
+              "line": 358,
+              "column": 4
+            },
+            "end": {
+              "line": 362,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Array | null | undefined"
+        },
+        {
           "name": "fill-remaining",
           "description": "Set min height of outline player to fill remaining\nspace to the bottom of the browser",
           "sourceRange": {
             "start": {
-              "line": 355,
+              "line": 367,
               "column": 4
             },
             "end": {
-              "line": 359,
+              "line": 371,
               "column": 5
             }
           },
