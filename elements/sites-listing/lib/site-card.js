@@ -16,7 +16,7 @@ Polymer({
     <style>
       :host {
         display: inline-flex;
-        min-width: 250px;
+        width: 250px;
       }
       :host(:focus) {
         outline: none;
