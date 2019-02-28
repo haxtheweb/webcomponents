@@ -440,7 +440,16 @@ let HAXCMSSiteBuilder = Polymer({
       }
       store.manifest = newValue;
       window.cmsSiteEditor.jsonOutlineSchema = newValue;
-      this.set("themeData", newValue.metadata.theme);
+      // only set these if the path changes
+      if (
+        this.themeData &&
+        this.themeData.path === newValue.metadata.theme.path
+      ) {
+      } else {
+        // this is a forcible set which means it'll trigger a new value each time
+        // ensure that the theme data actually DOES change or this causes unneeded state rebuilding
+        this.set("themeData", newValue.metadata.theme);
+      }
       this.fire("json-outline-schema-changed", newValue);
     }
   },

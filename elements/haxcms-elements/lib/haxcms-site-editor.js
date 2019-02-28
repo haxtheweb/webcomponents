@@ -538,7 +538,7 @@ Polymer({
       });
       this.activeItem = active;
       this.dispatchEvent(
-        new CustomEvent("haxcms-active-item-changed", {
+        new CustomEvent("json-outline-schema-active-item-changed", {
           bubbles: true,
           cancelable: true,
           detail: active
@@ -554,7 +554,10 @@ Polymer({
       }
     });
     window.dispatchEvent(evt);
+    // updates the manifest
     this.fire("haxcms-trigger-update", true);
+    // updates the page contents itself
+    this.fire("haxcms-trigger-update-page", true);
   },
   _handleOutlineResponse: function(e) {
     // trigger a refresh of the data in page
@@ -607,7 +610,7 @@ Polymer({
    * Save page event
    */
   savePage: function(e) {
-    delete this.updatePageData.details;
+    this.set("updatePageData", {});
     this.set("updatePageData.siteName", this.manifest.metadata.siteName);
     this.notifyPath("updatePageData.siteName");
     this.set(
@@ -628,7 +631,7 @@ Polymer({
    * Save page event
    */
   savePageDetails: function(e) {
-    delete this.updatePageData.body;
+    this.set("updatePageData", {});
     this.set("updatePageData.siteName", this.manifest.metadata.siteName);
     this.notifyPath("updatePageData.siteName");
     this.set("updatePageData.page", e.detail.id);
