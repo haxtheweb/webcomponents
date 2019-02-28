@@ -37,9 +37,13 @@ window.MediaBehaviors.Video = {
       var v = "";
       input = tmp[0];
       if (tmp.length == 2) {
-        let args = tmp[1].split("=");
+        let tmp2 = tmp[1].split("&"),
+          args = tmp2[0].split("="),
+          qry = Array.isArray(tmp2.shift())
+            ? tmp2.shift().join("")
+            : tmp2.shift();
         if (args[0] == "v") {
-          v = args[1];
+          v = args[1] + "?" + qry;
         }
       }
       // link to the vimeo video instead of the embed player address

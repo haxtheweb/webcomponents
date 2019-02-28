@@ -1,6 +1,6 @@
 import { storiesOf } from "@storybook/polymer";
 import * as storybookBridge from "@storybook/addon-knobs/polymer";
-import { LrnMath } from "./lrn-math.js";
+import { MathTexController } from "./lrn-math.js";
 
 // need to account for polymer goofiness when webpack rolls this up
 var template = require("raw-loader!./demo/index.html");
@@ -15,19 +15,19 @@ stories.add("lrn-math", () => {
   // start of tag for demo
   let elementDemo = `<lrn-math`;
   // mix in properties defined on the class
-  for (var key in LrnMath.properties) {
+  for (var key in MathTexController.properties) {
     // skip prototype
-    if (!LrnMath.properties.hasOwnProperty(key)) continue;
+    if (!MathTexController.properties.hasOwnProperty(key)) continue;
     // convert typed props
-    if (LrnMath.properties[key].type.name) {
+    if (MathTexController.properties[key].type.name) {
       let method = "text";
-      switch (LrnMath.properties[key].type.name) {
+      switch (MathTexController.properties[key].type.name) {
         case "Boolean":
         case "Number":
         case "Object":
         case "Array":
         case "Date":
-          method = LrnMath.properties[key].type.name.toLowerCase();
+          method = MathTexController.properties[key].type.name.toLowerCase();
           break;
         default:
           method = "text";
@@ -35,7 +35,7 @@ stories.add("lrn-math", () => {
       }
       binding[key] = storybookBridge[method](
         key,
-        LrnMath.properties[key].value
+        MathTexController.properties[key].value
       );
       // ensure ke-bab case
       let kebab = key.replace(/[A-Z\u00C0-\u00D6\u00D8-\u00DE]/g, function(

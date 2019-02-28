@@ -22,7 +22,7 @@ import "@lrnwebcomponents/simple-modal/simple-modal.js";
 Polymer({
   is: "haxcms-site-editor",
   _template: html`
-    <style is="custom-style">
+    <style>
       :host {
         display: block;
       }
@@ -201,7 +201,6 @@ Polymer({
     editMode: {
       type: Boolean,
       reflectToAttribute: true,
-      observer: "_editModeChanged",
       value: false
     },
     /**
@@ -295,6 +294,11 @@ Polymer({
       this._bodyChanged.bind(this)
     );
     window.addEventListener("haxcms-save-outline", this.saveOutline.bind(this));
+    window.addEventListener("haxcms-save-page", this.savePage.bind(this));
+    window.addEventListener(
+      "haxcms-save-page-details",
+      this.savePageDetails.bind(this)
+    );
     window.addEventListener(
       "haxcms-save-site-data",
       this.saveManifest.bind(this)
@@ -302,11 +306,6 @@ Polymer({
     window.addEventListener("haxcms-create-page", this.createPage.bind(this));
     window.addEventListener("haxcms-delete-page", this.deletePage.bind(this));
     window.addEventListener("haxcms-publish-site", this.publishSite.bind(this));
-  },
-  /**
-   * attached life cycle
-   */
-  attached: function() {
     const evt = new CustomEvent("simple-toast-show", {
       bubbles: true,
       cancelable: true,
@@ -314,11 +313,12 @@ Polymer({
         text: "You are logged in, edit tools shown."
       }
     });
-    this.dispatchEvent(evt);
-    // get around initial setup state management
-    if (typeof this.__body !== typeof undefined) {
-      window.HaxStore.instance.activeHaxBody.importContent(this.__body);
-    }
+    window.dispatchEvent(evt);
+  },
+  /**
+   * attached life cycle
+   */
+  attached: function() {
     async.microTask.run(() => {
       // allow for initial setting since this editor gets injected basically
       if (typeof window.cmsSiteEditor.jsonOutlineSchema !== typeof undefined) {
@@ -349,6 +349,11 @@ Polymer({
     window.removeEventListener(
       "haxcms-save-outline",
       this.saveOutline.bind(this)
+    );
+    window.removeEventListener("haxcms-save-page", this.savePage.bind(this));
+    window.removeEventListener(
+      "haxcms-save-page-details",
+      this.savePageDetails.bind(this)
     );
     window.removeEventListener(
       "haxcms-save-site-data",
@@ -410,6 +415,7 @@ Polymer({
       }
     });
     window.dispatchEvent(evt);
+    this.fire("haxcms-trigger-update", true);
   },
   /**
    * delete the page we just got
@@ -468,7 +474,7 @@ Polymer({
           duration: 0
         }
       });
-      this.dispatchEvent(evt);
+      window.dispatchEvent(evt);
     } else if (!newValue && oldValue) {
       const evt = new CustomEvent("simple-toast-show", {
         bubbles: true,
@@ -478,6 +484,7 @@ Polymer({
           duration: 3000
         }
       });
+      window.dispatchEvent(evt);
     }
   },
   /**
@@ -517,15 +524,36 @@ Polymer({
    * handle update responses for pages and outlines
    */
   _handlePageResponse: function(e) {
+    // page response may include the item that got updated
+    // it also may be a new path so let's ensure that's reflected
+    if (
+      typeof e.detail.location !== "undefined" &&
+      this.activeItem.location !== e.detail.location
+    ) {
+      window.location(e.detail.location);
+      window.history.pushState({}, null, e.detail.location);
+      window.dispatchEvent(new PopStateEvent("popstate"));
+      const active = this.manifest.items.find(i => {
+        return i.id === e.detail.id;
+      });
+      this.activeItem = active;
+      this.dispatchEvent(
+        new CustomEvent("haxcms-active-item-changed", {
+          bubbles: true,
+          cancelable: true,
+          detail: active
+        })
+      );
+    }
     const evt = new CustomEvent("simple-toast-show", {
       bubbles: true,
       cancelable: true,
       detail: {
         text: "Page saved!",
-        duration: 3000
+        duration: 4000
       }
     });
-    this.dispatchEvent(evt);
+    window.dispatchEvent(evt);
     this.fire("haxcms-trigger-update", true);
   },
   _handleOutlineResponse: function(e) {
@@ -538,7 +566,7 @@ Polymer({
         duration: 3000
       }
     });
-    this.dispatchEvent(evt);
+    window.dispatchEvent(evt);
     this.fire("haxcms-trigger-update", true);
   },
   _handleManifestResponse: function(e) {
@@ -569,34 +597,49 @@ Polymer({
       cancelable: true,
       detail: {
         text: data.response,
-        duration: 0,
+        duration: 5000,
         slot: content.cloneNode(true)
       }
     });
-    this.dispatchEvent(evt);
+    window.dispatchEvent(evt);
   },
   /**
-   * Edit state has changed.
+   * Save page event
    */
-  _editModeChanged: function(newValue, oldValue) {
-    // was on, now off
-    if (!newValue && oldValue) {
-      this.set("updatePageData.siteName", this.manifest.metadata.siteName);
-      this.notifyPath("updatePageData.siteName");
-      this.set(
-        "updatePageData.body",
-        window.HaxStore.instance.activeHaxBody.haxToContent()
-      );
-      this.notifyPath("updatePageData.body");
-      this.set("updatePageData.page", this.activeItem.id);
-      this.notifyPath("updatePageData.page");
-      this.set("updatePageData.jwt", this.jwt);
-      this.notifyPath("updatePageData.jwt");
-      // send the request
-      if (this.savePagePath) {
-        this.$.pageupdateajax.generateRequest();
-      }
-      this.fire("haxcms-save-page", this.activeItem);
+  savePage: function(e) {
+    delete this.updatePageData.details;
+    this.set("updatePageData.siteName", this.manifest.metadata.siteName);
+    this.notifyPath("updatePageData.siteName");
+    this.set(
+      "updatePageData.body",
+      window.HaxStore.instance.activeHaxBody.haxToContent()
+    );
+    this.notifyPath("updatePageData.body");
+    this.set("updatePageData.page", this.activeItem.id);
+    this.notifyPath("updatePageData.page");
+    this.set("updatePageData.jwt", this.jwt);
+    this.notifyPath("updatePageData.jwt");
+    // send the request
+    if (this.savePagePath) {
+      this.$.pageupdateajax.generateRequest();
+    }
+  },
+  /**
+   * Save page event
+   */
+  savePageDetails: function(e) {
+    delete this.updatePageData.body;
+    this.set("updatePageData.siteName", this.manifest.metadata.siteName);
+    this.notifyPath("updatePageData.siteName");
+    this.set("updatePageData.page", e.detail.id);
+    this.notifyPath("updatePageData.page");
+    this.set("updatePageData.details", e.detail);
+    this.notifyPath("updatePageData.details");
+    this.set("updatePageData.jwt", this.jwt);
+    this.notifyPath("updatePageData.jwt");
+    // send the request
+    if (this.savePagePath) {
+      this.$.pageupdateajax.generateRequest();
     }
   },
   /**

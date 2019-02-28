@@ -1,11 +1,13 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
+import { setPassiveTouchGestures } from "@polymer/polymer/lib/utils/settings.js";
+import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/media-behaviors/media-behaviors.js";
 import "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 import "@lrnwebcomponents/hal-9000/hal-9000.js";
-import "@polymer/iron-ajax/iron-ajax.js";
-import "@kuscamara/code-sample/code-sample.js";
+import { CodeSample } from "@lrnwebcomponents/code-sample/code-sample.js";
 import { getRange } from "./shadows-safari.js";
 import "./hax-app.js";
 import "./hax-stax.js";
@@ -386,6 +388,11 @@ Polymer({
           "h4",
           "h5",
           "h6",
+          "span",
+          "i",
+          "bold",
+          "em",
+          "strong",
           "blockquote",
           "code",
           "figure"
@@ -463,8 +470,32 @@ Polymer({
           // force this into the valid tag list so early paints will
           // correctly include the tag without filtering it out incorrectly
           this.push("validTagList", appDataResponse.autoloader[i]);
-          let loader = document.createElement(appDataResponse.autoloader[i]);
-          dom(haxAutoloader).appendChild(loader);
+          let CEname = appDataResponse.autoloader[i];
+          const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+          import(`${basePath}../../${CEname}/${CEname}.js`)
+            .then(response => {
+              // get the custom element definition we used to add that file
+              let CEClass = window.customElements.get(CEname);
+              if (typeof CEClass.getHaxProperties === "function") {
+                this.setHaxProperties(CEClass.getHaxProperties(), CEname);
+              } else if (typeof CEClass.HAXWiring === "function") {
+                this.setHaxProperties(
+                  CEClass.HAXWiring.getHaxProperties(),
+                  CEname
+                );
+              } else if (CEClass.haxProperties) {
+                this.setHaxProperties(CEClass.haxProperties, CEname);
+              } else {
+                // this is the less optimized / legacy polymer element method to inlcude
+                // this item. It's a good reason to skip on this though because you'll
+                // have a faster boot up time with newer ES6 methods then previous ones.
+                dom(haxAutoloader).appendChild(document.createElement(CEname));
+              }
+            })
+            .catch(error => {
+              /* Error handling */
+              console.log(error);
+            });
         }
       }
       // load apps automatically
@@ -637,7 +668,6 @@ Polymer({
       this._haxConsentTap.bind(this)
     );
     window.removeEventListener("paste", this._onPaste.bind(this));
-    window.removeEventListener("keypress", this._onKeyPress.bind(this));
     // fire that hax store is ready to go so now we can setup the rest
     this.fire("hax-store-ready", false);
     window.HaxStore.ready = false;
@@ -724,7 +754,6 @@ Polymer({
     window.addEventListener("hax-consent-tap", this._haxConsentTap.bind(this));
     window.addEventListener("onbeforeunload", this._onBeforeUnload.bind(this));
     window.addEventListener("paste", this._onPaste.bind(this));
-    window.addEventListener("keypress", this._onKeyPress.bind(this));
     // initialize voice commands
     this.voiceCommands = this._initVoiceCommands();
     // set this global flag so we know it's safe to start trusting data
@@ -823,151 +852,10 @@ Polymer({
     }
   },
   /**
-   * Account for return and escape to ensure they are applied nicely in context
-   */
-  _onKeyPress: function(e) {
-    const keyName = e.key;
-    // if we are editing and enter is pressed see if we should
-    // process it or inject a new p tag
-    if (
-      typeof window.HaxStore.instance.activeContainerNode !==
-        typeof undefined &&
-      keyName === "Enter" &&
-      window.HaxStore.instance.editMode &&
-      window.HaxStore.instance.activeNode !== null &&
-      window.HaxStore.instance.activeContainerNode ===
-        window.HaxStore.instance.activeNode &&
-      !window.HaxStore.instance.haxAppPicker.opened
-    ) {
-      var selection = window.HaxStore.getSelection();
-      var range = window.HaxStore.getRange().cloneRange();
-      if (e.shiftKey) {
-        e.preventDefault();
-        try {
-          if (selection.focusNode) {
-            range.setStart(selection.focusNode, range.startOffset);
-          } else {
-            range.setStart(selection.startContainer, range.startOffset);
-          }
-          // insert a br for spacing purposes because shift enter was hit
-          var frag = document.createRange().createContextualFragment("<br/>");
-          range.insertNode(frag);
-        } catch (e) {}
-      } else {
-        var nodeTest = window.HaxStore.instance.activeContainerNode;
-        if (!nodeTest) {
-          nodeTest = range.commonAncestorContainer;
-          if (typeof nodeTest === typeof undefined) {
-            nodeTest = range.commonAncestorContainer.parentNode;
-          }
-        }
-        // test if we want to touch Enter based on tag name and range
-        // we ignore Enter for our purposes when in a list
-        if (
-          this.isTextElement(nodeTest) &&
-          !["ul", "ol", "li"].includes(nodeTest.tagName.toLowerCase())
-        ) {
-          // we need to do goofy stuff for p tags since people
-          // will expect to be able to split them mid typing
-          if (range.endOffset !== this.activeContainerNode.textContent.length) {
-            e.preventDefault();
-            try {
-              if (selection.focusNode) {
-                range.setStart(selection.focusNode, range.startOffset);
-              } else {
-                range.setStart(selection.startContainer, range.startOffset);
-              }
-              // create a cloned range where it's sitting
-              // generate a completely fake element and insert it so we
-              // track it's position as a "split point"
-              var frag = document
-                .createRange()
-                .createContextualFragment(
-                  "<hax-split-point></hax-split-point>"
-                );
-              range.insertNode(frag);
-            } catch (e) {}
-            // force this to be a constant since activeNode will
-            // change mid operation but we want limit to remain
-            // as a pointer to it's position in the DOM
-            const limit = window.HaxStore.instance.activeContainerNode;
-            var node = dom(
-              window.HaxStore.instance.activeContainerNode
-            ).querySelector("hax-split-point");
-            // run a split node function as modified from stackoverflow
-            if (node != null) {
-              try {
-                this.__splitNode(node, limit);
-              } catch (e) {}
-            }
-          } else {
-            e.preventDefault();
-            window.HaxStore.instance.fire("hax-insert-content", {
-              tag: "p",
-              content: ""
-            });
-          }
-        }
-      }
-    }
-  },
-  /**
-   * Magic node splitting function
-   */
-  __splitNode: function(node, limit) {
-    // kick off activeNode so that we drop classes / cruft
-    window.HaxStore.write("activeNode", null, this);
-    // allow that to have processed...
-    setTimeout(() => {
-      // find the parent of the item we are splicing
-      var parent = limit.parentNode;
-      // get the index of this selected text way down below
-      var parentOffset = this.__getNodeIndex(parent, limit);
-      var doc = node.ownerDocument;
-      // make a fake range of these section of the DOM
-      var leftRange = doc.createRange();
-      // start it at the beginning of the element and run it to
-      // just before that place holder we are targeting
-      leftRange.setStart(parent, parentOffset);
-      leftRange.setEndBefore(node);
-      // convert this front portion into a document fragment
-      var left = leftRange.extractContents();
-      // insert this fragment just before the activeNode.
-      // This probably looks weird but effectively we copy the
-      // element in these operations and then insert the thing
-      // next to itself. The extractContents function generates
-      // a node from the part of the previous one as well as
-      // deletes what was there from the DOM. This effectively
-      // lets us take 1 element and split it into two at the
-      // cursor position as triggered by an Enter press. Insane.
-      dom(this.activeHaxBody).insertBefore(left, limit);
-      // remove the place holder
-      node.parentNode.removeChild(node);
-      // set active back to what it was, technically moved down
-      // in the document order because of above
-      window.HaxStore.write("activeNode", limit, this);
-    }, 100);
-  },
-
-  /**
-   * Get node index within a parent item so we know
-   * how far down the object to look for it's position.
-   * This is a helper with no other meaningful purpose.
-   */
-  __getNodeIndex: function(parent, node) {
-    var index = parent.childNodes.length;
-    while (index--) {
-      if (node === parent.childNodes[index]) {
-        break;
-      }
-    }
-    return index;
-  },
-
-  /**
    * Created life-cycle to ensure a single global store.
    */
   created: function() {
+    setPassiveTouchGestures(true);
     // claim the instance spot. This way we can easily
     // be referenced globally
     if (window.HaxStore.instance == null) {
@@ -1356,51 +1244,7 @@ Polymer({
       }
     };
     this.setHaxProperties(hr, "hr");
-    // code-sample, the only one we provide core definitions for
-    let codeSample = {
-      canScale: true,
-      canPosition: true,
-      canEditSource: true,
-      gizmo: {
-        title: "Code sample",
-        description: "A sample of code highlighted in the page",
-        icon: "icons:code",
-        color: "blue",
-        groups: ["Code", "Development"],
-        handles: [
-          {
-            type: "code",
-            code: ""
-          }
-        ],
-        meta: {
-          author: "kuscamara"
-        }
-      },
-      settings: {
-        quick: [],
-        configure: [
-          {
-            slot: "",
-            slotWrapper: "template",
-            slotAttributes: {
-              "preserve-content": "preserve-content"
-            },
-            title: "Source",
-            description: "The URL for this video.",
-            inputMethod: "code-editor"
-          },
-          {
-            attribute: "copy-clipboard-button",
-            title: "Copy to clipboard button",
-            description: "button in top right that says copy to clipboard",
-            inputMethod: "boolean"
-          }
-        ],
-        advanced: []
-      }
-    };
-    this.setHaxProperties(codeSample, "code-sample");
+    this.setHaxProperties(CodeSample.haxProperties, CodeSample.tag);
   },
 
   /**
@@ -1513,6 +1357,8 @@ Polymer({
       if (typeof e.detail.properties !== typeof undefined) {
         properties = e.detail.properties;
       }
+      // ensure better UX for text based operations
+      this.activeHaxBody.__activeHover = null;
       // invoke insert or replacement on body, same function so it's easier to trace
       if (e.detail.replace && e.detail.replacement) {
         let node = window.HaxStore.haxElementToNode(
@@ -1936,16 +1782,32 @@ window.HaxStore.haxElementToNode = (tag, content, properties) => {
         newNode.removeAttribute(attributeName);
       } else if (
         properties[property] != null &&
-        properties[property].constructor === Array &&
-        !frag.properties[property].readOnly
+        properties[property].constructor === Array
       ) {
-        newNode.set(attributeName, properties[property]);
+        // do nothing if we have additional data to suggest this is actually readOnly
+        // polymer / typed specific thing
+        if (
+          frag.properties &&
+          frag.properties[property] &&
+          frag.properties[property].readOnly
+        ) {
+        } else {
+          newNode.set(attributeName, properties[property]);
+        }
       } else if (
         properties[property] != null &&
-        properties[property].constructor === Object &&
-        !frag.properties[property].readOnly
+        properties[property].constructor === Object
       ) {
-        newNode.set(attributeName, properties[property]);
+        // do nothing if we have additional data to suggest this is actually readOnly
+        // polymer / typed specific thing
+        if (
+          frag.properties &&
+          frag.properties[property] &&
+          frag.properties[property].readOnly
+        ) {
+        } else {
+          newNode.set(attributeName, properties[property]);
+        }
       } else {
         newNode.setAttribute(attributeName, properties[property]);
       }
@@ -2295,25 +2157,27 @@ window.HaxStore.guessGizmo = (guess, values, skipPropMatch = false) => {
         var props = {};
         // reset match per gizmo
         var match = false;
-        for (var i = 0; i < gizmo.handles.length; i++) {
-          // WHAT!??!?!?!?!
-          if (guess === gizmo.handles[i].type || (guess === "*" && !match)) {
-            for (var property in gizmo.handles[i]) {
-              // ignore type.. but again.. WHAT?!?!?!
-              if (property !== "type") {
-                // check the values that came across to see if there's a match
-                // of any kind, we only need one but can then bind to multiple
-                if (typeof values[property] !== typeof undefined) {
-                  match = true;
-                  props[gizmo.handles[i][property]] = values[property];
+        if (gizmo.handles) {
+          for (var i = 0; i < gizmo.handles.length; i++) {
+            // WHAT!??!?!?!?!
+            if (guess === gizmo.handles[i].type || (guess === "*" && !match)) {
+              for (var property in gizmo.handles[i]) {
+                // ignore type.. but again.. WHAT?!?!?!
+                if (property !== "type") {
+                  // check the values that came across to see if there's a match
+                  // of any kind, we only need one but can then bind to multiple
+                  if (typeof values[property] !== typeof undefined) {
+                    match = true;
+                    props[gizmo.handles[i][property]] = values[property];
+                  }
                 }
               }
-            }
-            // omg... we just found a match on a property from who knows where!
-            if (match || skipPropMatch) {
-              matches.push(
-                window.HaxStore.haxElementPrototype(gizmo, props, "")
-              );
+              // omg... we just found a match on a property from who knows where!
+              if (match || skipPropMatch) {
+                matches.push(
+                  window.HaxStore.haxElementPrototype(gizmo, props, "")
+                );
+              }
             }
           }
         }

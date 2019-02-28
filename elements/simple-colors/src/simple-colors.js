@@ -14,6 +14,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
  * @polymer
  * @demo demo/index.html overview and demo
  * @demo demo/colors.html all of the colors
+ * @demo demo/contrasts.html WCAG 2.0 AA Contrasts
  * @demo demo/picker.html simple-colors-picker
  * @demo demo/extending.html extending simple-colors
  * @demo demo/variables.html using simple-colors variables
@@ -117,10 +118,6 @@ class SimpleColors extends PolymerElement {
     SimpleColors.requestAvailability();
     this.set("colors", SimpleColors.colors);
     this.set("__wcagContrast", SimpleColors.wcagContrast);
-    this.getContrasts("--simple-colors-default-theme-accent-5");
-    this.getContrasts("--simple-colors-dark-theme-grey-2", false);
-    this.getContrasts("--simple-colors-dark-theme-red-11", true);
-    this.getContrasts("--simple-colors-dark-theme-grey-1", true);
     super.connectedCallback();
   }
 

@@ -1,7 +1,7 @@
 {
   "plugins": [
     "@babel/plugin-syntax-dynamic-import",
-    "@babel/plugin-syntax-import-meta"
+    "@babel/plugin-proposal-object-rest-spread"
   ],
   "presets": [
     [
@@ -10,10 +10,5 @@
         "useBuiltIns": "entry"
       }
     ]
-  ],
-  "env": {
-    "development": {
-      "compact": false
-    }
-  }
+  ]
 }

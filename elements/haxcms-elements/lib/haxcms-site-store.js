@@ -10,6 +10,12 @@ class Store {
 
   get routerManifest() {
     const manifest = this.manifest;
+    document.body.dispatchEvent(
+      new CustomEvent("json-outline-schema-changed", {
+        bubbles: true,
+        detail: manifest
+      })
+    );
     if (manifest && typeof manifest.items !== "undefined") {
       const manifestItems = manifest.items.map(i => {
         let location = i.location

@@ -103,6 +103,8 @@ class MathTexController extends HTMLElement {
   }
 }
 
+export { MathTexController };
+
 window.customElements.define("math-tex-controller", MathTexController);
 /*
 Typesets math written in (La)TeX, using [MathJax](http://mathjax.org).

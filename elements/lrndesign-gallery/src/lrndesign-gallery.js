@@ -6,6 +6,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { LrndesignGalleryBehaviors } from "./lib/lrndesign-gallery-behaviors.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./lib/lrndesign-gallery-carousel.js";
 import "./lib/lrndesign-gallery-grid.js";
 
@@ -60,7 +61,7 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
   // render function
   static get template() {
     return html`
-      <style is="custom-style" include="simple-colors-shared-styles">
+      <style is="custom-style" include="simple-colors">
         :host {
           display: block;
         }

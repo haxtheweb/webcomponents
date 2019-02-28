@@ -36,7 +36,8 @@ let DropdownSelect = Polymer({
       }
       paper-listbox ::slotted(paper-item) {
         display: block;
-        width: 100%;
+        width: calc(100% - 32px);
+        padding: 0 16px;
         min-height: 32px;
         vertical-align: text-top;
         line-height: 32px;

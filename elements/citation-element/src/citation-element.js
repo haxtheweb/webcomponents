@@ -246,10 +246,6 @@ let CitationElement = Polymer({
             author: "creator",
             license: "license",
             accessDate: "date"
-          },
-          {
-            type: "inline",
-            text: "title"
           }
         ],
         meta: {

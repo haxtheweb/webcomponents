@@ -10,7 +10,6 @@ import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-styles/color.js";
 import "@lrnwebcomponents/paper-search/lib/paper-search-bar.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
-import "@lrnwebcomponents/haxcms-elements/lib/haxcms-theme-behavior.js";
 import "@polymer/paper-slider/paper-slider.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@polymer/app-layout/app-layout.js";

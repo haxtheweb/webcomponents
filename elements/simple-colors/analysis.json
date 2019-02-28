@@ -611,11 +611,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 31,
+              "line": 32,
               "column": 6
             },
             "end": {
-              "line": 37,
+              "line": 38,
               "column": 7
             }
           },
@@ -633,11 +633,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 41,
+              "line": 42,
               "column": 6
             },
             "end": {
-              "line": 47,
+              "line": 48,
               "column": 7
             }
           },
@@ -655,11 +655,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 56,
+              "line": 57,
               "column": 6
             },
             "end": {
-              "line": 62,
+              "line": 63,
               "column": 7
             }
           },
@@ -677,11 +677,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 95,
+              "line": 96,
               "column": 6
             },
             "end": {
-              "line": 101,
+              "line": 102,
               "column": 7
             }
           },
@@ -2781,11 +2781,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 115,
+              "line": 116,
               "column": 2
             },
             "end": {
-              "line": 124,
+              "line": 121,
               "column": 3
             }
           },
@@ -2914,11 +2914,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 139,
+              "line": 136,
               "column": 2
             },
             "end": {
-              "line": 162,
+              "line": 159,
               "column": 3
             }
           },
@@ -3881,6 +3881,10 @@
           "description": "all of the colors"
         },
         {
+          "url": "demo/contrasts.html",
+          "description": "WCAG 2.0 AA Contrasts"
+        },
+        {
           "url": "demo/picker.html",
           "description": "simple-colors-picker"
         },
@@ -3900,11 +3904,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 21,
+          "line": 22,
           "column": 0
         },
         "end": {
-          "line": 163,
+          "line": 160,
           "column": 1
         }
       },
@@ -3917,11 +3921,11 @@
           "description": "a selected accent-color: grey, red, pink, purple, etc.",
           "sourceRange": {
             "start": {
-              "line": 31,
+              "line": 32,
               "column": 6
             },
             "end": {
-              "line": 37,
+              "line": 38,
               "column": 7
             }
           },
@@ -3932,11 +3936,11 @@
           "description": "make the default theme dark?",
           "sourceRange": {
             "start": {
-              "line": 41,
+              "line": 42,
               "column": 6
             },
             "end": {
-              "line": 47,
+              "line": 48,
               "column": 7
             }
           },
@@ -3947,11 +3951,11 @@
           "description": "the colors object, eg.:\n{\n   \"grey\": [ \"#ffffff\", \"#eeeeee\", ... \"#111111\",\"#000000\" ],\n   \"red\": [ \"#ffdddd\", \"#ffaeae\", ... \"#520000\", \"#3f0000\" ],\n   ...\n}",
           "sourceRange": {
             "start": {
-              "line": 56,
+              "line": 57,
               "column": 6
             },
             "end": {
-              "line": 62,
+              "line": 63,
               "column": 7
             }
           },
@@ -4590,11 +4594,11 @@
           "sourceRange": {
             "file": "../simple-colors.js",
             "start": {
-              "line": 31,
+              "line": 32,
               "column": 6
             },
             "end": {
-              "line": 37,
+              "line": 38,
               "column": 7
             }
           },
@@ -4614,11 +4618,11 @@
           "sourceRange": {
             "file": "../simple-colors.js",
             "start": {
-              "line": 41,
+              "line": 42,
               "column": 6
             },
             "end": {
-              "line": 47,
+              "line": 48,
               "column": 7
             }
           },
@@ -4638,11 +4642,11 @@
           "sourceRange": {
             "file": "../simple-colors.js",
             "start": {
-              "line": 56,
+              "line": 57,
               "column": 6
             },
             "end": {
-              "line": 62,
+              "line": 63,
               "column": 7
             }
           },
@@ -4662,11 +4666,11 @@
           "sourceRange": {
             "file": "../simple-colors.js",
             "start": {
-              "line": 95,
+              "line": 96,
               "column": 6
             },
             "end": {
-              "line": 101,
+              "line": 102,
               "column": 7
             }
           },
@@ -4685,11 +4689,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 60,
+              "line": 59,
               "column": 6
             },
             "end": {
-              "line": 64,
+              "line": 63,
               "column": 7
             }
           },
@@ -4707,11 +4711,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 69,
+              "line": 68,
               "column": 6
             },
             "end": {
-              "line": 73,
+              "line": 72,
               "column": 7
             }
           },
@@ -4729,11 +4733,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 78,
+              "line": 77,
               "column": 6
             },
             "end": {
-              "line": 83,
+              "line": 82,
               "column": 7
             }
           },
@@ -4751,11 +4755,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 88,
+              "line": 87,
               "column": 6
             },
             "end": {
-              "line": 92,
+              "line": 91,
               "column": 7
             }
           },
@@ -4773,11 +4777,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 105,
+              "line": 104,
               "column": 6
             },
             "end": {
-              "line": 111,
+              "line": 110,
               "column": 7
             }
           },
@@ -4796,11 +4800,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 116,
+              "line": 115,
               "column": 6
             },
             "end": {
-              "line": 121,
+              "line": 120,
               "column": 7
             }
           },
@@ -4818,11 +4822,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 126,
+              "line": 125,
               "column": 6
             },
             "end": {
-              "line": 132,
+              "line": 131,
               "column": 7
             }
           },
@@ -6923,11 +6927,11 @@
           "sourceRange": {
             "file": "../simple-colors.js",
             "start": {
-              "line": 115,
+              "line": 116,
               "column": 2
             },
             "end": {
-              "line": 124,
+              "line": 121,
               "column": 3
             }
           },
@@ -7058,11 +7062,11 @@
           "sourceRange": {
             "file": "../simple-colors.js",
             "start": {
-              "line": 139,
+              "line": 136,
               "column": 2
             },
             "end": {
-              "line": 162,
+              "line": 159,
               "column": 3
             }
           },
@@ -7086,11 +7090,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 156,
+              "line": 155,
               "column": 2
             },
             "end": {
-              "line": 199,
+              "line": 198,
               "column": 3
             }
           },
@@ -7116,11 +7120,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 204,
+              "line": 203,
               "column": 2
             },
             "end": {
-              "line": 209,
+              "line": 208,
               "column": 3
             }
           },
@@ -7140,11 +7144,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 214,
+              "line": 213,
               "column": 2
             },
             "end": {
-              "line": 216,
+              "line": 215,
               "column": 3
             }
           },
@@ -7164,11 +7168,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 221,
+              "line": 220,
               "column": 2
             },
             "end": {
-              "line": 223,
+              "line": 222,
               "column": 3
             }
           },
@@ -7188,11 +7192,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 228,
+              "line": 227,
               "column": 2
             },
             "end": {
-              "line": 230,
+              "line": 229,
               "column": 3
             }
           },
@@ -8151,11 +8155,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 23,
+          "line": 22,
           "column": 0
         },
         "end": {
-          "line": 235,
+          "line": 234,
           "column": 1
         }
       },
@@ -8169,11 +8173,11 @@
           "sourceRange": {
             "file": "../simple-colors.js",
             "start": {
-              "line": 31,
+              "line": 32,
               "column": 6
             },
             "end": {
-              "line": 37,
+              "line": 38,
               "column": 7
             }
           },
@@ -8186,11 +8190,11 @@
           "sourceRange": {
             "file": "../simple-colors.js",
             "start": {
-              "line": 41,
+              "line": 42,
               "column": 6
             },
             "end": {
-              "line": 47,
+              "line": 48,
               "column": 7
             }
           },
@@ -8203,11 +8207,11 @@
           "sourceRange": {
             "file": "../simple-colors.js",
             "start": {
-              "line": 56,
+              "line": 57,
               "column": 6
             },
             "end": {
-              "line": 62,
+              "line": 63,
               "column": 7
             }
           },
@@ -8219,11 +8223,11 @@
           "description": "Optional. Sets the aria-labelledby attribute",
           "sourceRange": {
             "start": {
-              "line": 60,
+              "line": 59,
               "column": 6
             },
             "end": {
-              "line": 64,
+              "line": 63,
               "column": 7
             }
           },
@@ -8235,11 +8239,11 @@
           "description": "Is the picker disabled?",
           "sourceRange": {
             "start": {
-              "line": 69,
+              "line": 68,
               "column": 6
             },
             "end": {
-              "line": 73,
+              "line": 72,
               "column": 7
             }
           },
@@ -8251,11 +8255,11 @@
           "description": "Is it expanded?",
           "sourceRange": {
             "start": {
-              "line": 78,
+              "line": 77,
               "column": 6
             },
             "end": {
-              "line": 83,
+              "line": 82,
               "column": 7
             }
           },
@@ -8267,11 +8271,11 @@
           "description": "Optional. The label for the picker input",
           "sourceRange": {
             "start": {
-              "line": 88,
+              "line": 87,
               "column": 6
             },
             "end": {
-              "line": 92,
+              "line": 91,
               "column": 7
             }
           },
@@ -8283,11 +8287,11 @@
           "description": "An array of options for the picker, eg.: `\n[\n  {\n    \"icon\": \"editor:format-paint\",      //Optional. Used if the picker is used as an icon picker.\n    \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of the choice.\n    \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n    ...                                 //Optional. Any other properties that should be captured as part of the selected option's value\n  },...\n]`",
           "sourceRange": {
             "start": {
-              "line": 105,
+              "line": 104,
               "column": 6
             },
             "end": {
-              "line": 111,
+              "line": 110,
               "column": 7
             }
           },
@@ -8299,11 +8303,11 @@
           "description": "Show all shades instead of just main accent-colors",
           "sourceRange": {
             "start": {
-              "line": 116,
+              "line": 115,
               "column": 6
             },
             "end": {
-              "line": 121,
+              "line": 120,
               "column": 7
             }
           },
@@ -8315,11 +8319,11 @@
           "description": "The value of the option.",
           "sourceRange": {
             "start": {
-              "line": 126,
+              "line": 125,
               "column": 6
             },
             "end": {
-              "line": 132,
+              "line": 131,
               "column": 7
             }
           },
@@ -8965,11 +8969,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 31,
+              "line": 32,
               "column": 6
             },
             "end": {
-              "line": 37,
+              "line": 38,
               "column": 7
             }
           },
@@ -8989,11 +8993,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 41,
+              "line": 42,
               "column": 6
             },
             "end": {
-              "line": 47,
+              "line": 48,
               "column": 7
             }
           },
@@ -9013,11 +9017,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 56,
+              "line": 57,
               "column": 6
             },
             "end": {
-              "line": 62,
+              "line": 63,
               "column": 7
             }
           },
@@ -9037,11 +9041,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 95,
+              "line": 96,
               "column": 6
             },
             "end": {
-              "line": 101,
+              "line": 102,
               "column": 7
             }
           },
@@ -9304,11 +9308,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 100,
+              "line": 99,
               "column": 2
             },
             "end": {
-              "line": 118,
+              "line": 117,
               "column": 3
             }
           },
@@ -11140,11 +11144,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 122,
+              "line": 121,
               "column": 2
             },
             "end": {
-              "line": 124,
+              "line": 123,
               "column": 3
             }
           },
@@ -11274,11 +11278,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 139,
+              "line": 136,
               "column": 2
             },
             "end": {
-              "line": 162,
+              "line": 159,
               "column": 3
             }
           },
@@ -11302,11 +11306,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 86,
+              "line": 85,
               "column": 2
             },
             "end": {
-              "line": 88,
+              "line": 87,
               "column": 3
             }
           },
@@ -11326,11 +11330,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 93,
+              "line": 92,
               "column": 2
             },
             "end": {
-              "line": 95,
+              "line": 94,
               "column": 3
             }
           },
@@ -12289,11 +12293,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 23,
+          "line": 22,
           "column": 0
         },
         "end": {
-          "line": 129,
+          "line": 128,
           "column": 1
         }
       },
@@ -12307,11 +12311,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 31,
+              "line": 32,
               "column": 6
             },
             "end": {
-              "line": 37,
+              "line": 38,
               "column": 7
             }
           },
@@ -12324,11 +12328,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 41,
+              "line": 42,
               "column": 6
             },
             "end": {
-              "line": 47,
+              "line": 48,
               "column": 7
             }
           },
@@ -12341,11 +12345,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 56,
+              "line": 57,
               "column": 6
             },
             "end": {
-              "line": 62,
+              "line": 63,
               "column": 7
             }
           },

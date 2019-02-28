@@ -30,6 +30,7 @@
           muted$="[[muted]]"
           manifest$="[[manifest]]"
           on-media-loaded="_handleMediaLoaded"
+          ontimeupdate="_handleTimeUpdate"
           playing$="[[__playing]]"
           playback-rate$="[[playbackRate]]"
           thumbnail-src$="[[thumbnailSrc]]"
@@ -53,8 +54,6 @@
     <paper-slider id="slider"
       class="screen-only"
       max$="[[__duration]]"
-      on-dragging-changed="_handleSliderDragging"
-      on-focused-changed="_handleSliderKeyboard"
       secondary-progress$="[[__buffered]]"
       value$="[[__elapsed]]"
     >

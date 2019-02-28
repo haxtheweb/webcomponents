@@ -7,7 +7,6 @@ import "@polymer/polymer/lib/elements/dom-repeat.js";
 import { SimpleColors } from "../simple-colors.js";
 import "@lrnwebcomponents/simple-picker/simple-picker.js";
 
-export { SimpleColorsPicker };
 /**
  * `simple-colors-inspector-select`
  * `a select element for changing simple-colors attributes in demos`
@@ -234,4 +233,7 @@ class SimpleColorsPicker extends SimpleColors {
    */
   //disconnectedCallback() {}
 }
+
+export { SimpleColorsPicker };
+
 window.customElements.define(SimpleColorsPicker.tag, SimpleColorsPicker);

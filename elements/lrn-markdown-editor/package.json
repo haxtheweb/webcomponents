@@ -16,7 +16,7 @@
       "hax": "src/lrn-markdown-editor-hax.json"
     }
   },
-  "version": "2.0.4",
+  "version": "2.0.7",
   "description": "markdown editor wrapper with preview editor",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/mtz-marked-editor": "^2.0.4",
+    "@lrnwebcomponents/mtz-marked-editor": "^2.0.7",
     "@polymer/iron-icon": "^3.0.0",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/iron-pages": "^3.0.0",
@@ -52,7 +52,7 @@
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^0.2.0",
+    "@lrnwebcomponents/deduping-fix": "^2.0.5",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@webcomponents/webcomponentsjs": "2.2.4",

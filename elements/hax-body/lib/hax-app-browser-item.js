@@ -3,7 +3,6 @@ import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-image/iron-image.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 import "./hax-shared-styles.js";
 
 /**
@@ -17,7 +16,7 @@ A button on the hax-app-browser display
 */
 Polymer({
   _template: html`
-    <style include="materializecss-styles simple-colors hax-shared-styles">
+    <style include="simple-colors hax-shared-styles">
       :host {
         display: block;
       }
@@ -62,7 +61,7 @@ Polymer({
       paper-button iron-icon {
         height: 32px;
         width: 32px;
-        color: white;
+        color: var(--simple-colors-default-theme-grey-12);
         display: inline-block;
       }
       .item-title {
@@ -72,7 +71,7 @@ Polymer({
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        font-size: 10px;
+        font-size: 12px;
         line-height: 12px;
         height: 12px;
         text-align: center;
@@ -88,7 +87,7 @@ Polymer({
       id="button"
       data-voicecommand\$="select [[title]]"
       title="[[title]]"
-      class$="[[color]]"
+      class$="simple-colors-default-theme-[[color]]-4"
     >
       <div class="button-inner">
         <iron-icon icon="[[icon]]" hidden\$="[[!icon]]"></iron-icon>

@@ -6,7 +6,6 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { SimpleColors } from "../../simple-colors.js"; //import the shared styles
 import "../simple-colors-picker.js";
 
-export { simpleColorsDocsTable };
 /**
  * `simple-colors-docs-table`
  * `A tool to document of all the colors in simple-colors`
@@ -236,4 +235,7 @@ class simpleColorsDocsTable extends SimpleColors {
    */
   //disconnectedCallback() {}
 }
+
+export { simpleColorsDocsTable };
+
 window.customElements.define(simpleColorsDocsTable.tag, simpleColorsDocsTable);

@@ -1,5 +1,5 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{LrndesignGalleryBehaviors}from"./lib/lrndesign-gallery-behaviors.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import"./lib/lrndesign-gallery-carousel.js";import"./lib/lrndesign-gallery-grid.js";export{LrndesignGallery};class LrndesignGallery extends LrndesignGalleryBehaviors{static get tag(){return"lrndesign-gallery"}static get behaviors(){return[LrndesignGalleryBehaviors]}static get template(){return html`
-      <style is="custom-style" include="simple-colors-shared-styles">
+import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{LrndesignGalleryBehaviors}from"./lib/lrndesign-gallery-behaviors.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./lib/lrndesign-gallery-carousel.js";import"./lib/lrndesign-gallery-grid.js";export{LrndesignGallery};class LrndesignGallery extends LrndesignGalleryBehaviors{static get tag(){return"lrndesign-gallery"}static get behaviors(){return[LrndesignGalleryBehaviors]}static get template(){return html`
+      <style is="custom-style" include="simple-colors">
         :host {
           display: block;
         }

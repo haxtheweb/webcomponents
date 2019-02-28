@@ -633,9 +633,10 @@ let LrndesignBlockquote = Polymer({
       this.$.wrap.style.cssText = "";
       this.$.thumb.style.cssText = "";
       let style = document.createElement("style");
-      let basePath = pathFromUrl(import.meta.url);
+      let basePath = pathFromUrl(decodeURIComponent(import.meta.url));
       style.innerHTML = `@font-face {
         font-family: 'Chikarego';
+        font-display: swap;
         src: url('${basePath}lib/chikarego2-webfont.woff2') format('woff2'),
              url('${basePath}lib/chikarego2-webfont.woff') format('woff');
         font-weight: normal;

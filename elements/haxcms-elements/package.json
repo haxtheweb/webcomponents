@@ -16,7 +16,7 @@
       "hax": "src/haxcms-elements-hax.json"
     }
   },
-  "version": "2.0.4",
+  "version": "2.0.7",
   "description": "HAX CMS series of elements to provide a full on CMS",
   "repository": {
     "type": "git",
@@ -40,18 +40,18 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/beaker-broker": "^2.0.4",
-    "@lrnwebcomponents/dropdown-select": "^2.0.4",
-    "@lrnwebcomponents/hax-body": "^2.0.4",
-    "@lrnwebcomponents/hax-body-behaviors": "^2.0.4",
-    "@lrnwebcomponents/jwt-login": "^2.0.4",
-    "@lrnwebcomponents/magazine-cover": "^2.0.4",
-    "@lrnwebcomponents/map-menu": "^2.0.4",
-    "@lrnwebcomponents/simple-picker": "^2.0.4",
-    "@lrnwebcomponents/simple-icon-picker": "^2.0.4",
-    "@lrnwebcomponents/schema-behaviors": "^2.0.3",
-    "@lrnwebcomponents/simple-colors": "^2.0.4",
-    "@lrnwebcomponents/sites-listing": "^2.0.4",
+    "@lrnwebcomponents/beaker-broker": "^2.0.7",
+    "@lrnwebcomponents/dropdown-select": "^2.0.7",
+    "@lrnwebcomponents/hax-body": "^2.0.7",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.0.5",
+    "@lrnwebcomponents/jwt-login": "^2.0.7",
+    "@lrnwebcomponents/magazine-cover": "^2.0.7",
+    "@lrnwebcomponents/map-menu": "^2.0.7",
+    "@lrnwebcomponents/schema-behaviors": "^2.0.5",
+    "@lrnwebcomponents/simple-colors": "^2.0.7",
+    "@lrnwebcomponents/simple-icon-picker": "^2.0.7",
+    "@lrnwebcomponents/simple-picker": "^2.0.7",
+    "@lrnwebcomponents/sites-listing": "^2.0.7",
     "@polymer/app-layout": "^3.0.1",
     "@polymer/iron-ajax": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",
@@ -71,7 +71,7 @@
     "mobx": "^5.9.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^0.2.0",
+    "@lrnwebcomponents/deduping-fix": "^2.0.5",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@webcomponents/webcomponentsjs": "2.2.4",

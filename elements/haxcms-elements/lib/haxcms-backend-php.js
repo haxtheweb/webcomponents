@@ -35,14 +35,22 @@ Polymer({
      */
     jwtLoginLocation: {
       type: String,
-      value: window.appSettings.login
+      value: function() {
+        if (window.appSettings) {
+          return window.appSettings.login;
+        }
+      }
     },
     /**
      * Location of what endpoint to hit for logging out
      */
     jwtLogoutLocation: {
       type: String,
-      value: window.appSettings.logout
+      value: function() {
+        if (window.appSettings) {
+          return window.appSettings.logout;
+        }
+      }
     },
     /**
      * JSON Web token, it'll come from a global call if it's available
@@ -114,7 +122,8 @@ Polymer({
       // which will appear to be injecting into the page
       // but because of this approach it should be non-blocking
       try {
-        import(pathFromUrl(import.meta.url) + "haxcms-site-editor.js").then(
+        import(pathFromUrl(decodeURIComponent(import.meta.url)) +
+          "haxcms-site-editor.js").then(
           e => {
             let haxCmsSiteEditorElement = document.createElement(
               "haxcms-site-editor"

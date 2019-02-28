@@ -24,7 +24,7 @@ class SimplePicker extends PolymerElement {
     return html`
       <style>
         :host {
-          display: flex;
+          display: inline-flex;
           align-items: center;
           position: relative;
           --simple-picker-color: black;
@@ -81,12 +81,12 @@ class SimplePicker extends PolymerElement {
         }
 
         :host #icon {
-          transform: rotate(-90deg);
+          transform: var(--simple-picker-icon-tranform, rotate(-90deg));
           transition: transform 0.25s;
         }
 
         :host([expanded]) #icon {
-          transform: rotate(0deg);
+          transform: var(--simple-picker-expanded-icon-tranform, rotate(0deg));
           transition: transform 0.25s;
         }
 
@@ -135,7 +135,16 @@ class SimplePicker extends PolymerElement {
           @apply --simple-picker-option;
         }
 
+        :host(:not([value])) #sample simple-picker-option,
+        :host([value="null"]) #sample simple-picker-option {
+          @apply --simple-picker-sample-null;
+          --simple-picker-option-label: {
+            @apply --simple-picker-sample-null-label;
+          }
+        }
+
         :host #sample simple-picker-option {
+          @apply --simple-picker-sample-option;
         }
 
         :host simple-picker-option[selected] {
@@ -160,10 +169,7 @@ class SimplePicker extends PolymerElement {
         }
 
         :host #sample simple-picker-option {
-          color: var(
-            --simple-picker-active-sample-color,
-            var(--simple-picker-color)
-          );
+          color: var(--simple-picker-sample-color, var(--simple-picker-color));
           background-color: var(
             --simple-picker-sample-background-color,
             transparent
@@ -174,6 +180,11 @@ class SimplePicker extends PolymerElement {
         :host(:not([expanded])) #collapse simple-picker-option {
           max-height: 0;
           transition: max-height 1.5s;
+        }
+
+        :host #collapse simple-picker-option:not([value]),
+        :host #collapse simple-picker-option[value="null"] {
+          @apply --simple-picker-option-null;
         }
 
         @media screen and (max-width: 600px) {
@@ -206,6 +217,7 @@ class SimplePicker extends PolymerElement {
             icon$="[[__selectedOption.icon]]"
             style$="[[__selectedOption.style]]"
             title$="[[__selectedOption.alt]]"
+            title-as-html$="[[titleAsHtml]]"
           >
           </simple-picker-option>
           <span id="icon"
@@ -240,8 +252,9 @@ class SimplePicker extends PolymerElement {
                     on-set-selected-option="_handleSetSelectedOption"
                     style$="[[option.style]]"
                     tabindex="-1"
-                    title$="[[option.alt]]"
-                    value$="[[option.value]]"
+                    title="[[option.alt]]"
+                    title-as-html$="[[titleAsHtml]]"
+                    value="[[option.value]]"
                   >
                   </simple-picker-option>
                 </template>
@@ -282,6 +295,15 @@ class SimplePicker extends PolymerElement {
         type: "Boolean",
         value: false,
         reflectToAttribute: true
+      },
+
+      /**
+       * Renders html as title. (Good for titles with HTML in them.)
+       */
+      titleAsHtml: {
+        name: "titleAsHtml",
+        type: "Boolean",
+        value: false
       },
 
       /**
@@ -326,7 +348,9 @@ class SimplePicker extends PolymerElement {
       options: {
         name: "options",
         type: "Array",
-        value: [[]]
+        value: [[]],
+        notify: true,
+        observer: "_setSelectedOption"
       },
 
       /**
@@ -351,6 +375,7 @@ class SimplePicker extends PolymerElement {
         type: "Object",
         value: null,
         notify: true,
+        observer: "_setSelectedOption",
         reflectToAttribute: true
       },
 
@@ -368,8 +393,7 @@ class SimplePicker extends PolymerElement {
        */
       __selectedOption: {
         name: "_setSelectedOption",
-        type: "Object",
-        computed: "_setSelectedOption(value)"
+        type: "Object"
       }
     };
   }
@@ -443,14 +467,16 @@ class SimplePicker extends PolymerElement {
   /**
    * handles listbox click event
    */
-  _handleListboxClick(e) {
-    this._toggleListbox(!this.expanded);
+  _handleListboxEvent(e, type) {
+    this.dispatchEvent(new CustomEvent(type, { detail: this }));
+    if (type === "click") this._toggleListbox(!this.expanded);
   }
 
   /**
    * handles listbox keyboard events
    */
   _handleListboxKeydown(e) {
+    this.dispatchEvent(new CustomEvent("keydown", { detail: this }));
     let coords = this.__activeDesc.split("-"),
       rownum = parseInt(coords[1]),
       colnum = parseInt(coords[2]);
@@ -544,22 +570,24 @@ class SimplePicker extends PolymerElement {
    *
    * @param {string} the option id
    */
-  _setSelectedOption(value) {
+  _setSelectedOption() {
     let sel = null;
-    this.dispatchEvent(
-      new CustomEvent("change", { bubbles: true, detail: this })
-    );
-    if (value !== null && this.options !== undefined && this.options !== null) {
+    if (this.options !== undefined && this.options !== null) {
+      this.__activeDesc = "option-0-0";
       for (var i = 0; i < this.options.length; i++) {
         for (var j = 0; j < this.options[i].length; j++) {
-          if (this.options[i][j].value === value) {
-            this.__activeDesc = this.options[i][j].value;
+          if (this.options[i][j].value === this.value) {
+            this.__activeDesc = "option-" + i + "-" + j;
             sel = this.options[i][j];
           }
         }
       }
     }
-    return sel;
+    if (sel === null) this.value = null;
+    this.__selectedOption = sel;
+    this.dispatchEvent(
+      new CustomEvent("change", { bubbles: true, detail: this })
+    );
   }
 
   /**
@@ -587,7 +615,10 @@ class SimplePicker extends PolymerElement {
     let root = this;
     if (this.$.listbox !== undefined) {
       this.$.listbox.addEventListener("click", function(e) {
-        root._handleListboxClick(e);
+        root._handleListboxEvent(e, "click");
+      });
+      this.$.listbox.addEventListener("mousedown", function(e) {
+        root._handleListboxEvent(e, "mousedown");
       });
       this.$.listbox.addEventListener("keydown", function(e) {
         root._handleListboxKeydown(e);

@@ -193,10 +193,6 @@ let LicenseElement = Polymer({
             title: "title",
             author: "creator",
             license: "license"
-          },
-          {
-            type: "inline",
-            text: "title"
           }
         ],
         meta: {

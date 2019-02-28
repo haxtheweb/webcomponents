@@ -1,0 +1,37 @@
+{
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Code sample",
+    "description": "A sample of code highlighted in the page",
+    "icon": "icons:code",
+    "color": "blue",
+    "groups": ["Code", "Development"],
+    "meta": {
+      "author": "kuscamara"
+    }
+  },
+  "settings": {
+    "quick": [],
+    "configure": [
+      {
+        "slot": "",
+        "slotWrapper": "template",
+        "slotAttributes": {
+          "preserve-content": "preserve-content"
+        },
+        "title": "Source",
+        "description": "The URL for this video.",
+        "inputMethod": "code-editor"
+      },
+      {
+        "attribute": "copy-clipboard-button",
+        "title": "Copy to clipboard button",
+        "description": "button in top right that says copy to clipboard",
+        "inputMethod": "boolean"
+      }
+    ],
+    "advanced": []
+  }
+}

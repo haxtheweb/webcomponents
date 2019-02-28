@@ -1,6 +1,5 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/iron-ajax/iron-ajax.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/paper-spinner/paper-spinner.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@polymer/iron-icon/iron-icon.js";import"./node_modules/@polymer/paper-tooltip/paper-tooltip.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js";let CsvRender=Polymer({_template:html`
-    <style include="materializecss-styles-colors"></style>
-    <style>
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/iron-ajax/iron-ajax.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/paper-spinner/paper-spinner.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@polymer/iron-icon/iron-icon.js";import"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@polymer/paper-tooltip/paper-tooltip.js";let CsvRender=Polymer({_template:html`
+    <style include="simple-colors">
       :host {
         display: block;
       }
@@ -135,7 +134,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
     ></iron-ajax>
     <paper-spinner id="loading" active=""></paper-spinner>
     <a href="[[dataSource]]" id="download" tabindex="-1">
-      <paper-button class="grey-text"
+      <paper-button class="simple-colors-default-theme-grey-11-text"
         ><iron-icon icon="file-download"></iron-icon
       ></paper-button> </a
     ><paper-tooltip for="download" animation-delay="200" offset="14"

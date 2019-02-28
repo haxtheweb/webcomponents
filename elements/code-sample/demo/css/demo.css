@@ -1,0 +1,83 @@
+body {
+  font: caption;
+  font-size: 100%;
+  background: #E6E8E8;
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1 {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0;
+}
+
+p { font-weight: 300; }
+
+code {
+  font-family: Roboto Mono, monospace;
+}
+
+code-sample {
+  --code-sample-font-family: Roboto Mono, monospace;
+}
+
+.wrapper {
+  max-width: 800px;
+  margin: 40px auto 0;
+}
+
+.wrapper > .demo {
+  margin-bottom: 40px;
+  padding: 40px;
+  background-color: #fff;
+}
+
+.demo-text {
+  margin: 0 0 20px;
+  padding: 0 0 10px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.demo-btn {
+  font: inherit;
+  background-color: #EAEDED;
+  border: 0;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.25);
+  height: 40px;
+  padding: 0 20px;
+  border-radius: 3px;
+}
+
+.demo-btn:active {
+  background-color: #D7DBDD;
+}
+
+.title-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+.title-button h1 { margin-bottom: 0; }
+
+.center { text-align: center; }
+
+.select {
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.select span {
+   margin-right: 8px;
+}
+
+.select select {
+  font: inherit;
+}
+

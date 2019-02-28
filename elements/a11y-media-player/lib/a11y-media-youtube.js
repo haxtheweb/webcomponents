@@ -71,7 +71,7 @@ class A11yMediaYoutube extends PolymerElement {
     api.setAttribute("src", "https://www.youtube.com/iframe_api");
     api.setAttribute("type", "text/javascript");
     document.body.appendChild(api);
-    window.onYouTubeIframeAPIReady = function() {
+    window.onYouTubeIframeAPIReady = () => {
       var event = new CustomEvent("youtube-api-ready");
       root.apiReady = true;
       document.dispatchEvent(event);
@@ -88,54 +88,129 @@ class A11yMediaYoutube extends PolymerElement {
     //get unique id for each youtube iframe
     // function to create and init iframe
     let temp = "a11y-media-yt-",
-      div = document.createElement("div");
+      div = document.createElement("div"),
+      vdata = options.videoId.split(/[\?&]/),
+      vid = vdata[0],
+      start = null,
+      end = null,
+      cue = { videoId: vid };
     this.counter++;
     temp += this.counter;
     document.body.appendChild(div);
     div.setAttribute("id", temp);
-
-    let iframe = new YT.Player(temp, {
-      width: options.width,
-      height: options.height,
-      videoId: options.videoId,
-      playerVars: {
-        color: "white",
-        controls: 0,
-        autoplay: options.autoplay,
-        disablekb: 1,
-        enablejsapi: 1,
-        iv_load_policy: 3,
-        modestbranding: 1,
-        showinfo: 0,
-        rel: 0
-      }
-    });
+    let loadVideo = e => {
+        for (let i = 1; i < vdata.length; i++) {
+          let param = vdata[i].split("=");
+          if (param[0] === "t") {
+            let hh = param[1].match(/(\d)+h/),
+              mm = param[1].match(/(\d)+m/),
+              ss = param[1]
+                .replace(/\d+h/, "")
+                .replace(/\d+m/, "")
+                .replace(/s/, "")
+                .match(/(\d)+/),
+              h = hh !== null && hh.length > 1 ? parseInt(hh[1]) * 360 : 0,
+              m = mm !== null && mm.length > 1 ? parseInt(mm[1]) * 60 : 0,
+              s = ss !== null && ss.length > 1 ? parseInt(ss[1]) : 0;
+            start = parseInt(h + m + s);
+          } else if (param[0] === "start") {
+            start = parseInt(param[1]);
+          } else if (param[0] === "end") {
+            end = parseInt(param[1]);
+          }
+        }
+        if (start !== null) {
+          start = Math.max(0, start);
+          cue.startSeconds = start;
+        }
+        if (end !== null) {
+          end = start !== null ? Math.max(start, end) : Math.max(0, end);
+          cue.endSeconds = end;
+        }
+        e.target.cueVideoById(cue);
+      },
+      iframe = new YT.Player(temp, {
+        width: options.width,
+        height: options.height,
+        events: { onReady: loadVideo },
+        playerVars: {
+          color: "white",
+          controls: 0,
+          autoplay: options.autoplay,
+          disablekb: 1,
+          enablejsapi: 1,
+          iv_load_policy: 3,
+          modestbranding: 1,
+          showinfo: 0,
+          rel: 0
+        }
+      });
 
     // add methods and properties to api so that it matches HTML5 video
     iframe.tracks = [];
+    iframe.seekable = { length: 0 };
     iframe.duration = 0;
-    iframe.play = function() {
-      iframe.playVideo();
+    iframe.paused = true;
+    iframe.timeupdate;
+    iframe.play = () => {
+      if (iframe.playVideo !== undefined) iframe.playVideo();
     };
-    iframe.pause = function() {
-      iframe.pauseVideo();
+    iframe.addEventListener("onStateChange", () => {
+      iframe.paused = iframe.getPlayerState() !== 1;
+      if (iframe.paused) {
+        clearInterval(iframe.timeupdate);
+      } else {
+        iframe.timeupdate = setInterval(() => {
+          document.dispatchEvent(
+            new CustomEvent("timeupdate", { detail: iframe })
+          );
+        }, 1);
+      }
+    });
+    iframe.pause = () => {
+      if (iframe.pauseVideo !== undefined) iframe.pauseVideo();
     };
-    iframe.seek = function(time) {
-      iframe.seekTo(time);
-      iframe.pauseVideo();
-    };
-    iframe.setMute = function(mode) {
-      mode ? iframe.mute() : iframe.unMute();
-    };
-    iframe.seekable = {
-      length: 1,
-      start: function(index) {
-        return 0;
-      },
-      end: function(index) {
-        return iframe.duration;
+    iframe.seek = (time = 0) => {
+      if (iframe.seekTo !== undefined) {
+        iframe.pause();
+        iframe.seekTo(time);
+        document.dispatchEvent(
+          new CustomEvent("timeupdate", { detail: iframe })
+        );
       }
     };
+    iframe.setMute = mode => {
+      if (iframe.mute !== undefined) mode ? iframe.mute() : iframe.unMute();
+    };
+    //keep playing the video until the duration is loaded
+    let int = setInterval(() => {
+        if (iframe.playVideo !== undefined) {
+          clearInterval(int);
+          if (iframe.getDuration === undefined || iframe.duration === 0)
+            iframe.play();
+        }
+      }, 100),
+      int2 = setInterval(() => {
+        if (iframe.getDuration !== undefined && iframe.getDuration() > 0) {
+          clearInterval(int2);
+          iframe.duration = iframe.getDuration();
+          iframe.pause();
+          start = start !== null ? Math.min(start, iframe.duration) : 0;
+          end = end !== null ? Math.min(end, iframe.duration) : iframe.duration;
+          //add markers to the slider; could be used in future for interactive as well
+          iframe.seekable.length = 1;
+          iframe.seekable.start = index => {
+            return start;
+          };
+          iframe.seekable.end = index => {
+            return end;
+          };
+          iframe.seekTo(start);
+          document.dispatchEvent(
+            new CustomEvent("youtube-video-metadata-loaded", { detail: iframe })
+          );
+        }
+      }, 100);
     // return the iframe so that a11y-media-player can control it
     return iframe;
   }

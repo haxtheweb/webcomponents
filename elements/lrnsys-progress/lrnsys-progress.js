@@ -189,7 +189,9 @@ let LrnsysProgress = Polymer({
      */
     completeSound: {
       type: String,
-      value: pathFromUrl(import.meta.url) + "lib/assets/complete.mp3",
+      value:
+        pathFromUrl(decodeURIComponent(import.meta.url)) +
+        "lib/assets/complete.mp3",
       reflectToAttribute: true
     },
     /**
@@ -197,7 +199,9 @@ let LrnsysProgress = Polymer({
      */
     finishedSound: {
       type: String,
-      value: pathFromUrl(import.meta.url) + "lib/assets/finished.mp3",
+      value:
+        pathFromUrl(decodeURIComponent(import.meta.url)) +
+        "lib/assets/finished.mp3",
       reflectToAttribute: true
     },
     /**

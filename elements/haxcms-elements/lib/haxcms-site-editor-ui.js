@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-fab/paper-fab.js";
@@ -6,6 +7,8 @@ import "@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "./haxcms-outline-editor-dialog.js";
 import "./haxcms-manifest-editor-dialog.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";
+import { autorun, toJS } from "mobx";
 /**
  * `haxcms-site-editor-ui`
  * `haxcms editor element buttons that you see`
@@ -15,23 +18,31 @@ import "./haxcms-manifest-editor-dialog.js";
  */
 Polymer({
   _template: html`
-    <style is="custom-style">
+    <style>
       :host {
         display: block;
         position: fixed;
         right: 0;
         bottom: 0;
         opacity: 0.6;
-        transition: 0.3s all linear;
-        background-color: rgba(255, 0, 116, 1);
+        transition: 0.6s all ease-in-out;
+        background-color: var(--haxcms-color, rgba(255, 0, 116, 1));
         padding: 0px 10px;
         border-top-left-radius: 10px;
+        border-left: 2px solid black;
+        border-top: 2px solid black;
         min-width: 84px;
         width: 90px;
         line-height: 50px;
         height: 50px;
         z-index: 10000;
         visibility: visible;
+      }
+      :host([edit-mode]) {
+        min-width: 126px;
+      }
+      :host *[hidden] {
+        display: none;
       }
       paper-fab {
         display: inline-flex;
@@ -40,11 +51,12 @@ Polymer({
         vertical-align: middle;
         line-height: 40px;
         background-color: black;
-        color: rgba(255, 0, 116, 1);
-        transition: all 0.3s linear;
+        color: var(--haxcms-color, rgba(255, 0, 116, 1));
+        transition: 0.3s all ease-in-out;
         padding: 8px;
         margin: 0;
         position: relative;
+        @apply --shadow-elevation-8dp;
       }
       :host([painting]) {
         opacity: 0;
@@ -58,7 +70,8 @@ Polymer({
         border-radius: 50%;
         margin: 5px 2px 0 2px;
         background-color: rgba(0, 0, 0, 0.2);
-        transition: 0.3s all linear;
+        transition: 0.3s all ease-in-out;
+        @apply --shadow-elevation-8dp;
       }
       paper-icon-button:hover,
       paper-icon-button:focus,
@@ -66,14 +79,13 @@ Polymer({
         background-color: rgba(0, 0, 0, 0.4);
       }
       #editbutton,
+      #editdetails,
       #deletebutton {
         visibility: hidden;
         opacity: 0;
       }
-      #deletebutton {
-        margin-right: 20px;
-      }
       :host([page-allowed]) #editbutton,
+      :host([page-allowed]) #editdetails,
       :host([page-allowed]) #deletebutton {
         visibility: visible;
         opacity: 1;
@@ -130,40 +142,65 @@ Polymer({
       id="menubutton"
       icon="icons:menu"
       on-tap="_menuButtonTap"
+      aria-label="Expand menu"
+    ></paper-fab>
+    <paper-fab
+      id="cancelbutton"
+      icon="icons:cancel"
+      on-tap="_cancelButtonTap"
+      hidden$="[[!editMode]]"
+      aria-label="Cancel editing"
     ></paper-fab>
     <paper-fab
       id="editbutton"
       icon="[[__editIcon]]"
       on-tap="_editButtonTap"
+      aria-label$="[[__editText]]"
+    ></paper-fab>
+    <paper-fab
+      id="editdetails"
+      icon="icons:fingerprint"
+      on-tap="_editDetailsButtonTap"
+      aria-label$="Edit page details"
+    ></paper-fab>
+    <paper-fab
+      id="deletebutton"
+      icon="icons:delete"
+      on-tap="_deleteButtonTap"
+      aria-label="Delete current page"
     ></paper-fab>
     <div class="wrapper">
       <div class="main-title">[[activeItem.title]]</div>
       <paper-icon-button
-        id="deletebutton"
-        icon="icons:delete"
-        on-tap="_deleteButtonTap"
-      ></paper-icon-button>
-      <paper-icon-button
         id="addbutton"
         icon="icons:add"
         on-tap="_addButtonTap"
+        aria-label="Add new page"
       ></paper-icon-button>
       <paper-icon-button
         id="outlinebutton"
         icon="icons:list"
         on-tap="_outlineButtonTap"
+        aria-label="Edit site outline"
       ></paper-icon-button>
       <paper-icon-button
         id="manifestbutton"
         icon="icons:settings"
         on-tap="_manifestButtonTap"
+        aria-label="Edit site settings"
       ></paper-icon-button>
     </div>
     <paper-tooltip for="menubutton" position="top" offset="14"
       >Menu</paper-tooltip
     >
+    <paper-tooltip for="cancelbutton" position="top" offset="14"
+      >Cancel</paper-tooltip
+    >
     <paper-tooltip for="editbutton" position="top" offset="14"
       >[[__editText]]</paper-tooltip
+    >
+    <paper-tooltip for="editdetails" position="top" offset="14"
+      >Details</paper-tooltip
     >
     <paper-tooltip for="deletebutton" position="top" offset="14"
       >Delete</paper-tooltip
@@ -193,7 +230,6 @@ Polymer({
      */
     activeItem: {
       type: Object,
-      value: {},
       observer: "_activeItemChanged"
     },
     /**
@@ -233,7 +269,14 @@ Polymer({
       notify: true
     }
   },
-
+  attached: function() {
+    this.__disposer = autorun(() => {
+      this.manifest = toJS(store.routerManifest);
+    });
+  },
+  detached: function() {
+    this.__disposer();
+  },
   /**
    * active item changed
    */
@@ -251,6 +294,64 @@ Polymer({
   _editButtonTap: function(e) {
     this.editMode = !this.editMode;
     window.cmsSiteEditor.instance.haxCmsSiteEditorElement.editMode = this.editMode;
+    // save button shifted to edit
+    if (!this.editMode) {
+      this.fire("haxcms-save-page", this.activeItem);
+    }
+  },
+  _editDetailsButtonTap: function(e) {
+    this.__newForm = document.createElement("eco-json-schema-object");
+    let outline = window.JSONOutlineSchema.requestAvailability();
+    // get a prototype schema for an item
+    this.__newForm.schema = outline.getItemSchema("item");
+    // drop things we don't care about
+    delete this.__newForm.schema.properties.id;
+    delete this.__newForm.schema.properties.description;
+    delete this.__newForm.schema.properties.order;
+    delete this.__newForm.schema.properties.parent;
+    delete this.__newForm.schema.properties.metadata;
+    delete this.__newForm.schema.properties.details;
+    delete this.__newForm.schema.properties.indent;
+    for (var n in this.activeItem) {
+      if (typeof this.__newForm.schema.properties[n] !== "undefined") {
+        if (n === "location") {
+          this.__newForm.schema.properties[n].value = this.activeItem[n]
+            .replace("pages/", "")
+            .replace("/index.html", "");
+        } else {
+          this.__newForm.schema.properties[n].value = this.activeItem[n];
+        }
+      }
+    }
+    let b1 = document.createElement("paper-button");
+    b1.raised = true;
+    let icon = document.createElement("iron-icon");
+    icon.icon = "icons:save";
+    b1.appendChild(icon);
+    b1.appendChild(document.createTextNode("Update page"));
+    b1.style.backgroundColor = document.body.style.getPropertyValue(
+      "--haxcms-color"
+    );
+    // store reference to the form
+    b1.__form = this.__newForm;
+    b1.addEventListener("click", this._updateItem.bind(this));
+    let b2 = document.createElement("paper-button");
+    b2.appendChild(document.createTextNode("cancel"));
+    b2.setAttribute("dialog-dismiss", "dialog-dismiss");
+    let b = document.createElement("span");
+    b.appendChild(b1);
+    b.appendChild(b2);
+    const evt = new CustomEvent("simple-modal-show", {
+      bubbles: true,
+      cancelable: false,
+      detail: {
+        title: this.activeItem.title + ": edit details",
+        elements: { content: this.__newForm, buttons: b },
+        invokedBy: this.$.editdetails,
+        clone: false
+      }
+    });
+    window.dispatchEvent(evt);
   },
   /**
    * toggle menu state
@@ -258,7 +359,11 @@ Polymer({
   _menuButtonTap: function(e) {
     this.menuMode = !this.menuMode;
   },
-
+  _cancelButtonTap: function(e) {
+    this.editMode = false;
+    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.editMode = false;
+    this.fire("hax-cancel", e.detail);
+  },
   /**
    * Add button hit
    * @todo simplify this to just what's needed; no crazy options
@@ -311,7 +416,36 @@ Polymer({
     });
     this.dispatchEvent(evt);
   },
-
+  /**
+   * Fire item
+   */
+  _updateItem: function(e) {
+    var normalizedEvent = dom(e);
+    var local = normalizedEvent.localTarget;
+    var values;
+    if (!local.__form) {
+      values = local.parentNode.__form.value;
+    } else {
+      values = local.__form.value;
+    }
+    values.id = this.activeItem.id;
+    // fire event with details for saving
+    window.dispatchEvent(
+      new CustomEvent("haxcms-save-page-details", {
+        bubbles: true,
+        cancelable: true,
+        detail: values
+      })
+    );
+    // fire event to close the modal
+    window.dispatchEvent(
+      new CustomEvent("simple-modal-hide", {
+        bubbles: true,
+        cancelable: true,
+        detail: {}
+      })
+    );
+  },
   /**
    * Delete button hit, confirm they want to do this
    */
@@ -381,13 +515,17 @@ Polymer({
    * toggle state on button tap
    */
   _manifestButtonTap: function(e) {
-    let c = document.createElement("haxcms-manifest-editor-dialog");
+    if (!this.__manifestEditor) {
+      this.__manifestEditor = document.createElement(
+        "haxcms-manifest-editor-dialog"
+      );
+    }
     const evt = new CustomEvent("simple-modal-show", {
       bubbles: true,
       cancelable: false,
       detail: {
-        title: "Edit site settings",
-        elements: { content: c },
+        title: this.manifest.title + ": site details",
+        elements: { content: this.__manifestEditor },
         invokedBy: this.$.manifestbutton,
         clone: false
       }

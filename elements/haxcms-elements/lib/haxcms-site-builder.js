@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { setPassiveTouchGestures } from "@polymer/polymer/lib/utils/settings.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
@@ -7,10 +8,10 @@ import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-progress/paper-progress.js";
-import "@polymer/app-route/app-route.js";
 import { observable, decorate, computed } from "mobx";
 import { store } from "./haxcms-site-store.js";
 import "./haxcms-site-router.js";
+import "./haxcms-editor-builder.js";
 
 /**
  * `haxcms-site-builder`
@@ -21,7 +22,7 @@ import "./haxcms-site-router.js";
  * - it loads a site.json file and then utilizes this data in order to construct
  *   what theme it should load (element) in order to get everything off and running
  */
-Polymer({
+let HAXCMSSiteBuilder = Polymer({
   _template: html`
     <style>
       :host {
@@ -48,7 +49,6 @@ Polymer({
       }
     </style>
     <haxcms-site-router base-uri="[[baseURI]]"></haxcms-site-router>
-    <haxcms-editor-builder></haxcms-editor-builder>
     <paper-progress
       hidden\$="[[!loading]]"
       value="100"
@@ -109,30 +109,15 @@ Polymer({
     /**
      * Theme, used to boot a design element
      */
-    themeElementName: {
-      type: String,
-      reflectToAttribute: true,
-      observer: "_themeNameChanged"
+    themeData: {
+      type: Object,
+      observer: "_themeChanged"
     },
     /**
      * Theme, used to boot a design element
      */
     themeElement: {
       type: Object
-    },
-    /**
-     * registry to map theme names to locations
-     */
-    themeData: {
-      type: Object,
-      value: {
-        "simple-blog": "../../../@lrnwebcomponents/simple-blog/simple-blog.js",
-        "outline-player":
-          "../../../@lrnwebcomponents/outline-player/outline-player.js",
-        "lrnapp-book":
-          "../../../@lrnwebcomponents/elmsln-apps/lib/lrnapp-book/lrnapp-book.js",
-        "haxcms-dev-theme": "haxcms-dev-theme.js"
-      }
     },
     /**
      * Imported items so we can allow theme flipping dynamically
@@ -184,9 +169,11 @@ Polymer({
    * ready life cycle
    */
   created: function() {
+    this.__timeStamp = "";
+    // attempt to set polymer passive gestures globally
+    // this decreases logging and improves performance on scrolling
+    setPassiveTouchGestures(true);
     window.JSONOutlineSchema.requestAvailability();
-    window.SimpleModal.requestAvailability();
-    window.SimpleToast.requestAvailability();
     window.addEventListener(
       "haxcms-trigger-update",
       this._triggerUpdatedData.bind(this)
@@ -201,10 +188,19 @@ Polymer({
     );
   },
   attached: function() {
+    window.SimpleModal.requestAvailability();
+    window.SimpleToast.requestAvailability();
+    this.editorBuilder = document.createElement("haxcms-editor-builder");
+    // attach editor builder after we've appended to the screen
+    document.body.appendChild(this.editorBuilder);
     // prep simple toast notification
     async.microTask.run(() => {
       if (window.cmsSiteEditor && this.manifest) {
         window.cmsSiteEditor.jsonOutlineSchema = this.manifest;
+      }
+      // get fresh data if not published
+      if (this.editorBuilder.getContext() !== "published") {
+        this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
       }
     });
   },
@@ -236,8 +232,8 @@ Polymer({
     this.notifyPath("queryParams.page");
     // check for authoring xp by just asking for the object
     // timeout helps w/ some initial setup work
-    var time = 500;
-    if (window.HaxStore.ready) {
+    var time = 2000;
+    if (window.HaxStore && window.HaxStore.ready) {
       time = 10;
     }
     setTimeout(() => {
@@ -258,19 +254,65 @@ Polymer({
    */
   _activeItemContentChanged: function(newValue, oldValue) {
     if (newValue) {
+      var html = newValue;
       // only append if not empty
-      if (newValue !== null) {
+      if (html !== null) {
         this.wipeSlot(this.themeElement, "*");
-        newValue = this.encapScript(newValue);
+        html = this.encapScript(newValue);
+        // insert the content as quickly as possible, then work on the dynamic imports
         async.microTask.run(() => {
-          let frag = document.createRange().createContextualFragment(newValue);
-          dom(this.themeElement).appendChild(frag);
+          setTimeout(() => {
+            let frag = document.createRange().createContextualFragment(html);
+            dom(this.themeElement).appendChild(frag);
+            this.fire("json-outline-schema-active-body-changed", html);
+            if (!window.HaxStore || !window.HaxStore.ready) {
+              setTimeout(() => {
+                if (
+                  window.cmsSiteEditor.instance &&
+                  window.cmsSiteEditor.haxCmsSiteEditorUIElement
+                ) {
+                  window.HaxStore.instance.activeHaxBody.importContent(html);
+                }
+              }, 2000);
+            }
+          }, 50);
         });
+        // if there are, dynamically import them
+        if (this.manifest.metadata.dynamicElementLoader) {
+          let tagsFound = this.findTagsInHTML(html);
+          const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+          for (var i in tagsFound) {
+            const tagName = tagsFound[i];
+            if (
+              this.manifest.metadata.dynamicElementLoader[tagName] &&
+              !window.customElements.get(tagName)
+            ) {
+              import(`${basePath}../../../${
+                this.manifest.metadata.dynamicElementLoader[tagName]
+              }`)
+                .then(response => {
+                  //console.log(tagName + ' dynamic import');
+                })
+                .catch(error => {
+                  /* Error handling */
+                  console.log(error);
+                });
+            }
+          }
+        }
       }
-      this.fire("json-outline-schema-active-body-changed", newValue);
     }
   },
-
+  findTagsInHTML: function(html) {
+    let tags = {};
+    let tag = "";
+    var matches = html.match(/<\/(\S*?)-(\S*?)>/g);
+    for (var i in matches) {
+      tag = matches[i].replace("</", "").replace(">", "");
+      tags[tag] = tag;
+    }
+    return tags;
+  },
   /**
    * Encapsulate script and style tags correctly
    */
@@ -298,14 +340,14 @@ Polymer({
    */
   _activeItemChanged: function(newValue, oldValue) {
     if (typeof newValue.id !== typeof undefined) {
-      this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
+      // get fresh data if not published
+      if (this.editorBuilder.getContext() !== "published") {
+        this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
+      }
       this.$.activecontent.generateRequest();
     }
     // we had something, now we don't. wipe out the content area of the theme
     else if (typeof newValue.id === typeof undefined) {
-      async.microTask.run(() => {
-        this.wipeSlot(this.themeElement, "*");
-      });
       // fire event w/ nothing, this is because there is no content
       this.fire("json-outline-schema-active-body-changed", null);
     }
@@ -315,8 +357,10 @@ Polymer({
    * got a message that we need to update our json manifest data
    */
   _triggerUpdatedData: function(e) {
-    // append a value so we know we get fresher data
-    this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
+    // get fresh data if not published
+    if (this.editorBuilder.getContext() !== "published") {
+      this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
+    }
     this.$.manifest.generateRequest();
   },
 
@@ -324,9 +368,14 @@ Polymer({
    * got a message that we need to update our page content
    */
   _triggerUpdatedPage: function(e) {
-    // append a value so we know we get fresher data
-    this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
-    this.$.activecontent.generateRequest();
+    // get fresh data if not published
+    if (this.editorBuilder.getContext() !== "published") {
+      this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
+    }
+    // ensure we don't get a miss on initial load
+    if (this.activeItem.location) {
+      this.$.activecontent.generateRequest();
+    }
   },
 
   /**
@@ -343,9 +392,55 @@ Polymer({
    */
   _manifestChanged: function(newValue, oldValue) {
     if (newValue) {
+      if (!newValue.metadata.dynamicElementLoader) {
+        newValue.metadata.dynamicElementLoader = {
+          "a11y-gif-player":
+            "@lrnwebcomponents/a11y-gif-player/a11y-gif-player.js",
+          "citation-element":
+            "@lrnwebcomponents/citation-element/citation-element.js",
+          "hero-banner": "@lrnwebcomponents/hero-banner/hero-banner.js",
+          "image-compare-slider":
+            "@lrnwebcomponents/image-compare-slider/image-compare-slider.js",
+          "license-element":
+            "@lrnwebcomponents/license-element/license-element.js",
+          "lrn-aside": "@lrnwebcomponents/lrn-aside/lrn-aside.js",
+          "lrn-calendar": "@lrnwebcomponents/lrn-calendar/lrn-calendar.js",
+          "lrn-math": "@lrnwebcomponents/lrn-math/lrn-math.js",
+          "lrn-table": "@lrnwebcomponents/lrn-table/lrn-table.js",
+          "lrn-vocab": "@lrnwebcomponents/lrn-vocab/lrn-vocab.js",
+          "lrndesign-blockquote":
+            "@lrnwebcomponents/lrndesign-blockquote/lrndesign-blockquote.js",
+          "magazine-cover":
+            "@lrnwebcomponents/magazine-cover/magazine-cover.js",
+          "media-behaviors":
+            "@lrnwebcomponents/media-behaviors/media-behaviors.js",
+          "media-image": "@lrnwebcomponents/media-image/media-image.js",
+          "meme-maker": "@lrnwebcomponents/meme-maker/meme-maker.js",
+          "multiple-choice":
+            "@lrnwebcomponents/multiple-choice/multiple-choice.js",
+          "paper-audio-player":
+            "@lrnwebcomponents/paper-audio-player/paper-audio-player.js",
+          "person-testimonial":
+            "@lrnwebcomponents/person-testimonial/person-testimonial.js",
+          "place-holder": "@lrnwebcomponents/place-holder/place-holder.js",
+          "q-r": "@lrnwebcomponents/q-r/q-r.js",
+          "full-width-image":
+            "@lrnwebcomponents/full-width-image/full-width-image.js",
+          "self-check": "@lrnwebcomponents/self-check/self-check.js",
+          "simple-concept-network":
+            "@lrnwebcomponents/simple-concept-network/simple-concept-network.js",
+          "stop-note": "@lrnwebcomponents/stop-note/stop-note.js",
+          "tab-list": "@lrnwebcomponents/tab-list/tab-list.js",
+          "task-list": "@lrnwebcomponents/task-list/task-list.js",
+          "video-player": "@lrnwebcomponents/video-player/video-player.js",
+          "wave-player": "@lrnwebcomponents/wave-player/wave-player.js",
+          "wikipedia-query":
+            "@lrnwebcomponents/wikipedia-query/wikipedia-query.js"
+        };
+      }
       store.manifest = newValue;
       window.cmsSiteEditor.jsonOutlineSchema = newValue;
-      this.themeElementName = newValue.metadata.theme;
+      this.set("themeData", newValue.metadata.theme);
       this.fire("json-outline-schema-changed", newValue);
     }
   },
@@ -353,7 +448,7 @@ Polymer({
   /**
    * notice theme changes and ensure slot is rebuilt.
    */
-  _themeNameChanged: function(newValue, oldValue) {
+  _themeChanged: function(newValue, oldValue) {
     if (newValue && oldValue) {
       if (
         typeof window.cmsSiteEditor.instance.haxCmsSiteEditorElement !==
@@ -366,37 +461,29 @@ Polymer({
     }
     if (newValue) {
       this.themeLoaded = false;
-      var themeName = newValue;
-      // trap for blowing up the world ;)
-      if (typeof this.themeData[themeName] === typeof undefined) {
-        console.log(
-          "HAXCMS developer: " + themeName + " is not a valid theme name"
-        );
-        this.themeElementName = "simple-blog";
-        return false;
-      }
+      let theme = newValue;
       // wipe out what we got
       this.wipeSlot(this, "*");
       // create the 'theme' as a new element
-      this.themeElement = document.createElement(themeName);
+      this.themeElement = document.createElement(theme.element);
       // give it our manifest
       this.themeElement.manifest = this.manifest;
       // weird but definition already here so we should be able
       // to just use this without an import, it's possible..
-      if (typeof this.__imported[themeName] !== typeof undefined) {
+      if (typeof this.__imported[theme.element] !== typeof undefined) {
         dom(this).appendChild(this.themeElement);
         this.themeLoaded = true;
       } else {
         // import the reference to the item dynamically, if we can
         try {
-          import(pathFromUrl(import.meta.url) + this.themeData[themeName]).then(
-            e => {
-              // add it into ourselves so it unpacks and we kick this off!
-              dom(this).appendChild(this.themeElement);
-              this.__imported[themeName] = themeName;
-              this.themeLoaded = true;
-            }
-          );
+          import(pathFromUrl(decodeURIComponent(import.meta.url)) +
+            "../../../" +
+            newValue.path).then(e => {
+            // add it into ourselves so it unpacks and we kick this off!
+            dom(this).appendChild(this.themeElement);
+            this.__imported[theme.element] = theme.element;
+            this.themeLoaded = true;
+          });
         } catch (err) {
           // error in the event this is a double registration
           // also strange to be able to reach this but technically possible
@@ -429,3 +516,5 @@ Polymer({
     }
   }
 });
+
+export { HAXCMSSiteBuilder };

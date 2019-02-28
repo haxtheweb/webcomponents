@@ -71,8 +71,6 @@ let ResponsiveUtility = Polymer({
           e.detail.relativeToParent !== null
             ? e.detail.relativeToParent
             : true,
-        xs:
-          e.detail.xs !== undefined && e.detail.xs !== null ? e.detail.xs : 600,
         sm:
           e.detail.sm !== undefined && e.detail.sm !== null ? e.detail.sm : 900,
         md:
@@ -84,7 +82,7 @@ let ResponsiveUtility = Polymer({
             ? e.detail.lg
             : 1500,
         xl:
-          e.detail.xl !== undefined && e.detail.xl !== null ? e.detail.xl : 1800
+          e.detail.xl !== undefined && e.detail.xl !== null ? e.detail.lg : 1800
       };
       if ("ResizeObserver" in window && detail.relativeToParent === true) {
         let resize = new ResizeObserver(function() {

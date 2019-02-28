@@ -160,6 +160,7 @@ Polymer({
           component: {
             name: "a",
             properties: {
+              rel: "noopener",
               style:
                 "color: #81a3a9;font-size: 18px;top: 100vh;position: fixed;right: 0;padding: 16px;font-style: italic;",
               id: "reportghissue",

@@ -175,28 +175,35 @@ Polymer({
       ></hax-context-item-textop>
 
       <hax-context-item-textop
-        menu=""
+        menu
         slot="more"
         icon="mdextra:unlink"
         event-name="text-unlink"
         >Remove link</hax-context-item-textop
       >
       <hax-context-item-textop
-        menu=""
+        menu
         slot="more"
         icon="mdextra:subscript"
         event-name="text-subscript"
         >Subscript</hax-context-item-textop
       >
       <hax-context-item-textop
-        menu=""
+        menu
         slot="more"
         icon="mdextra:superscript"
         event-name="text-superscript"
         >Superscript</hax-context-item-textop
       >
       <hax-context-item-textop
-        menu=""
+        menu
+        slot="more"
+        icon="editor:format-underlined"
+        event-name="text-underline"
+        >Underline</hax-context-item-textop
+      >
+      <hax-context-item-textop
+        menu
         slot="more"
         icon="editor:format-strikethrough"
         event-name="text-strikethrough"

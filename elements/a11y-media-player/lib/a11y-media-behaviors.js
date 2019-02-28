@@ -200,6 +200,7 @@ class A11yMediaBehaviors extends SimpleColors {
         type: Number,
         value: 1
       },
+
       /**
        * status
        */

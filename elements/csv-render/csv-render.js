@@ -8,8 +8,8 @@ import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-spinner/paper-spinner.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 /**
  * `csv-render`
  * `Remote render a CSV file in place as an accessible table.`
@@ -24,8 +24,7 @@ import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
  */
 let CsvRender = Polymer({
   _template: html`
-    <style include="materializecss-styles-colors"></style>
-    <style>
+    <style include="simple-colors">
       :host {
         display: block;
       }
@@ -160,7 +159,7 @@ let CsvRender = Polymer({
     ></iron-ajax>
     <paper-spinner id="loading" active=""></paper-spinner>
     <a href="[[dataSource]]" id="download" tabindex="-1">
-      <paper-button class="grey-text"
+      <paper-button class="simple-colors-default-theme-grey-11-text"
         ><iron-icon icon="file-download"></iron-icon
       ></paper-button> </a
     ><paper-tooltip for="download" animation-delay="200" offset="14"

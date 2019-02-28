@@ -199,13 +199,13 @@ class AccentCard extends SimpleColors {
   static get haxProperties() {
     return {
       canEditSource: false,
-      canPosition: true,
+      canPosition: false,
       canEditSource: false,
       gizmo: {
         title: "Accent Card",
         description: "A card with optional accent styling.",
-        icon: "image:crop-landscape",
-        color: "grey",
+        icon: "chrome-reader-mode",
+        color: "light-blue",
         groups: ["Media", "Text"],
         handles: [
           {
@@ -225,6 +225,52 @@ class AccentCard extends SimpleColors {
       settings: {
         quick: [
           {
+            property: "accentColor",
+            title: "Accent Color",
+            description: "An optional accent color.",
+            inputMethod: "colorpicker",
+            icon: "editor:format-color-fill"
+          },
+          {
+            property: "dark",
+            title: "Dark Theme",
+            description: "Enable Dark Theme",
+            inputMethod: "boolean",
+            icon: "icons:invert-colors"
+          },
+          {
+            property: "horizontal",
+            title: "Horizontal",
+            description: "Horizontal orientation?",
+            inputMethod: "boolean"
+          }
+        ],
+        configure: [
+          {
+            slot: "heading",
+            title: "Heading",
+            description: "A heading for the card.",
+            inputMethod: "textfield"
+          },
+          {
+            slot: "subheading",
+            title: "Subheading",
+            description: "An optional subheading for the card.",
+            inputMethod: "textfield"
+          },
+          {
+            slot: "content",
+            title: "Content",
+            description: "Content for the card.",
+            inputMethod: "textfield"
+          },
+          {
+            slot: "footer",
+            title: "Footer",
+            description: "An optional footer for the card.",
+            inputMethod: "textfield"
+          },
+          {
             property: "imageSrc",
             title: "Image",
             description: "Optional image",
@@ -234,47 +280,46 @@ class AccentCard extends SimpleColors {
           {
             property: "accentColor",
             title: "Accent Color",
-            description: "Accent Color",
+            description: "An optional accent color.",
             inputMethod: "colorpicker",
             icon: "editor:format-color-fill"
           },
           {
             property: "dark",
             title: "Dark Theme",
-            description: "Use dark theme?",
-            inputMethod: "toggle"
+            description: "Enable Dark Theme",
+            inputMethod: "boolean",
+            icon: "icons:invert-colors"
           },
           {
             property: "horizontal",
             title: "Horizontal",
             description: "Horizontal orientation?",
-            inputMethod: "toggle"
-          }
-        ],
-        configure: [
+            inputMethod: "boolean"
+          },
           {
             property: "accentHeading",
             title: "Heading Accent",
             description: "Apply the accent color to the heading?",
-            inputMethod: "toggle"
+            inputMethod: "boolean"
           },
           {
             property: "accentBackground",
             title: "Background Accent",
             description: "Apply the accent color to the card background?",
-            inputMethod: "toggle"
+            inputMethod: "boolean"
           },
           {
             property: "noBorder",
             title: "No Border Accent",
             description: "Remove the border accent?",
-            inputMethod: "toggle"
+            inputMethod: "boolean"
           },
           {
             property: "flat",
             title: "Flat",
             description: "Remove the box shadow?",
-            inputMethod: "toggle"
+            inputMethod: "boolean"
           }
         ],
         advanced: []

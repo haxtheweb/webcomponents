@@ -1,8 +1,8 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
+import "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 
 /**
 `hax-autoloader`
@@ -24,7 +24,7 @@ Polymer({
   `,
 
   is: "hax-autoloader",
-
+  behaviors: [HAXBehaviors.PropertiesBehaviors],
   properties: {
     /**
      * List of elements processed so we don't double process
@@ -46,9 +46,7 @@ Polymer({
       // if we've got new nodes, we have to react to that
       if (info.addedNodes.length > 0) {
         async.microTask.run(() => {
-          setTimeout(() => {
-            this.processNewElements(info.addedNodes);
-          }, 10);
+          this.processNewElements(info.addedNodes);
         });
       }
     });
@@ -99,8 +97,28 @@ Polymer({
             // this delivers locally or from remote
             // @todo need to support name spacing of packages so that we
             // don't assume they are all relative to lrnwebcomponents
-            const basePath = pathFromUrl(import.meta.url);
-            import(`${basePath}../../${name}/${name}.js`);
+            const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+            import(`${basePath}../../${name}/${name}.js`)
+              .then(response => {
+                // get the custom element definition we used to add that file
+                let CEClass = window.customElements.get(name);
+                if (typeof CEClass.getHaxProperties === "function") {
+                  this.setHaxProperties(CEClass.getHaxProperties(), name);
+                } else if (typeof CEClass.HAXWiring === "function") {
+                  this.setHaxProperties(
+                    CEClass.HAXWiring.getHaxProperties(),
+                    name
+                  );
+                } else if (CEClass.haxProperties) {
+                  this.setHaxProperties(CEClass.haxProperties, name);
+                } else {
+                  console.log(`${name} didn't have hax wiring in the end`);
+                }
+              })
+              .catch(error => {
+                /* Error handling */
+                console.log(error);
+              });
           }
           this.processedList[name] = name;
         } catch (err) {

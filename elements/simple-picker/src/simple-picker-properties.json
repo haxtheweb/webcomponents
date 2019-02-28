@@ -28,6 +28,15 @@
   },
 
   /**
+   * Renders html as title. (Good for titles with HTML in them.)
+   */
+  "titleAsHtml": {
+    "name": "titleAsHtml",
+    "type": "Boolean",
+    "value": false
+  },
+
+  /**
    * Hide option labels? As color-picker or icon-picker, labels may be redundant.
    * This option would move the labels off-screen so that only screen-readers will have them.
    */
@@ -69,7 +78,9 @@
   "options": {
     "name": "options",
     "type": "Array",
-    "value": [[]]
+    "value": [[]],
+    "notify": true,
+    "observer": "_setSelectedOption"
   },
 
   /**
@@ -94,6 +105,7 @@
     "type": "Object",
     "value": null,
     "notify": true,
+    "observer": "_setSelectedOption",
     "reflectToAttribute": true
   },
 
@@ -111,7 +123,6 @@
    */
   "__selectedOption": {
     "name": "_setSelectedOption",
-    "type": "Object",
-    "computed": "_setSelectedOption(value)"
+    "type": "Object"
   }
 }

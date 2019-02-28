@@ -2,7 +2,7 @@ import { Templatizer } from "@polymer/polymer/lib/legacy/templatizer-behavior.js
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 
 var saulis = window.saulis || {};
-
+export { saulis };
 /** @polymerBehavior */
 saulis.DataTableTemplatizerBehaviorImpl = {
   properties: {

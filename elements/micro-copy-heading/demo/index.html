@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>MicroCopyHeading: micro-copy-heading Demo</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import "@lrnwebcomponents/simple-colors/simple-colors.js";
+      import '../micro-copy-heading.js';
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+    <style is="custom-style" include="demo-pages-shared-styles simple-colors">
+      html {
+        font-family: 'Roboto Slab', serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic micro-copy-heading demo</h3>
+      <demo-snippet>
+        <template>
+          <micro-copy-heading></micro-copy-heading>
+          <micro-copy-heading heading="Trust"></micro-copy-heading>
+          <micro-copy-heading heading="Trust but verify" endcap=" **"></micro-copy-heading>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

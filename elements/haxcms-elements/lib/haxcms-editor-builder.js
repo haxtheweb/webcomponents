@@ -22,10 +22,10 @@ window.cmsSiteEditor.instance = null;
 Polymer({
   is: "haxcms-editor-builder",
   /**
-   * created life cycle
+   * ready life cycle
    */
   ready: function() {
-    this.getContext();
+    this.applyContext();
   },
   attached: function() {
     window.addEventListener("hax-store-ready", this.storeReady.bind(this));
@@ -43,19 +43,20 @@ Polymer({
       // forces a nice fade in transition
       setTimeout(() => {
         window.cmsSiteEditor.haxCmsSiteEditorUIElement.painting = false;
-      }, 50);
+      }, 5);
     }
   },
   /**
    * Try to get context of what backend is powering this
    */
   getContext: function() {
-    var context = "";
-    const basePath = pathFromUrl(import.meta.url);
+    let context = "";
     // figure out the context we need to apply for where the editing creds
     // and API might come from
     if (typeof DatArchive !== typeof undefined) {
       context = "beaker";
+    } else if (window.__haxCMSContextPublished === true) {
+      context = "published";
     } else if (window.__haxCMSContextNode === true) {
       // @todo add support for node js based back end
       context = "nodejs";
@@ -63,21 +64,30 @@ Polymer({
       context = "demo";
     } else {
       context = "php";
+    }
+    return context;
+  },
+  applyContext: function() {
+    let context = this.getContext();
+    if (context === "php") {
       // append the php for global scope to show up via window
       // this is a unique case since it's server side generated in HAXCMS/PHP
       let script = document.createElement("script");
       script.src = `/haxcms-jwt.php`;
       document.documentElement.appendChild(script);
     }
-    // import and set the tag based on the context
-    window.cmsSiteEditor.tag = `haxcms-backend-${context}`;
-    // delay import slightly to ensure global scope is there
-    async.microTask.run(() => {
-      setTimeout(() => {
-        import(`${basePath}${window.cmsSiteEditor.tag}.js`);
-      }, 50);
-    });
-    return context;
+    // dynamic import if this isn't published
+    if (context !== "published") {
+      const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+      // import and set the tag based on the context
+      window.cmsSiteEditor.tag = `haxcms-backend-${context}`;
+      // delay import slightly to ensure global scope is there
+      async.microTask.run(() => {
+        setTimeout(() => {
+          import(`${basePath}${window.cmsSiteEditor.tag}.js`);
+        }, 50);
+      });
+    }
   }
 });
 

@@ -12,7 +12,8 @@
       hide-option-labels$="[[hideOptionLabels]]"
       icon$="[[__selectedOption.icon]]"
       style$="[[__selectedOption.style]]" 
-      title$="[[__selectedOption.alt]]">
+      title$="[[__selectedOption.alt]]"
+      title-as-html$="[[titleAsHtml]]">
     </simple-picker-option>
     <span id="icon"><iron-icon aria-hidden="true" icon="arrow-drop-down"></iron-icon></span>
   </div>
@@ -34,8 +35,9 @@
               on-set-selected-option="_handleSetSelectedOption"
               style$="[[option.style]]" 
               tabindex="-1"
-              title$="[[option.alt]]"
-              value$="[[option.value]]">
+              title="[[option.alt]]"
+              title-as-html$="[[titleAsHtml]]"
+              value="[[option.value]]">
             </simple-picker-option>
           </template>
         </div>
