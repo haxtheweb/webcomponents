@@ -1,0 +1,47 @@
+{
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Markdown",
+    "description": "A block of markdown content directly or remote loaded",
+    "icon": "icons:code",
+    "color": "yellow",
+    "groups": ["Block"],
+    "handles": [
+      {
+        "type": "todo:read-the-docs-for-usage"
+      }
+    ],
+    "meta": {
+      "author": "btopro",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "quick": [
+      {
+        "property": "source",
+        "title": "Source",
+        "description": "Source file for markdown",
+        "inputMethod": "textfield",
+        "icon": "icons:link"
+      }
+    ],
+    "configure": [
+      {
+        "property": "markdown",
+        "title": "Markdown",
+        "description": "Raw markdown",
+        "inputMethod": "code-editor"
+      },
+      {
+        "property": "source",
+        "title": "Source",
+        "description": "Source file for markdown",
+        "inputMethod": "textfield"
+      }
+    ],
+    "advanced": []
+  }
+}

@@ -6,6 +6,8 @@ import "@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "./haxcms-outline-editor-dialog.js";
 import "./haxcms-manifest-editor-dialog.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";
+import { autorun, toJS } from "mobx";
 /**
  * `haxcms-site-editor-ui`
  * `haxcms editor element buttons that you see`
@@ -68,6 +70,7 @@ Polymer({
         margin: 5px 2px 0 2px;
         background-color: rgba(0, 0, 0, 0.2);
         transition: 0.3s all ease-in-out;
+        @apply --shadow-elevation-8dp;
       }
       paper-icon-button:hover,
       paper-icon-button:focus,
@@ -75,6 +78,7 @@ Polymer({
         background-color: rgba(0, 0, 0, 0.4);
       }
       #editbutton,
+      #editdetails,
       #deletebutton {
         visibility: hidden;
         opacity: 0;
@@ -83,6 +87,7 @@ Polymer({
         margin-right: 20px;
       }
       :host([page-allowed]) #editbutton,
+      :host([page-allowed]) #editdetails,
       :host([page-allowed]) #deletebutton {
         visibility: visible;
         opacity: 1;
@@ -153,6 +158,12 @@ Polymer({
       icon="[[__editIcon]]"
       on-tap="_editButtonTap"
       aria-label$="[[__editText]]"
+    ></paper-fab>
+    <paper-fab
+      id="editdetails"
+      icon="icons:fingerprint"
+      on-tap="_editDetailsButtonTap"
+      aria-label$="Edit page details"
     ></paper-fab>
     <div class="wrapper">
       <div class="main-title">[[activeItem.title]]</div>
@@ -257,7 +268,14 @@ Polymer({
       notify: true
     }
   },
-
+  attached: function() {
+    this.__disposer = autorun(() => {
+      this.manifest = toJS(store.routerManifest);
+    });
+  },
+  detached: function() {
+    this.__disposer();
+  },
   /**
    * active item changed
    */
@@ -279,6 +297,48 @@ Polymer({
     if (!this.editMode) {
       this.fire("haxcms-save-page", this.activeItem);
     }
+  },
+  _editDetailsButtonTap: function(e) {
+    this.__newForm = document.createElement("eco-json-schema-object");
+    let outline = window.JSONOutlineSchema.requestAvailability();
+    // get a prototype schema for an item
+    this.__newForm.schema = outline.getItemSchema("item");
+    for (var n in this.activeItem) {
+      if (typeof this.__newForm.schema.properties[n] !== "undefined") {
+        this.__newForm.schema.properties[n].value = this.activeItem[n];
+      }
+    }
+    this.__newForm.set("values", this.activeItem);
+    // drop these for now cause we just care about title
+    delete this.__newForm.schema.properties.id;
+    delete this.__newForm.schema.properties.order;
+    delete this.__newForm.schema.properties.parent;
+    delete this.__newForm.schema.properties.metadata;
+    delete this.__newForm.schema.properties.indent;
+    let b1 = document.createElement("paper-button");
+    b1.raised = true;
+    b1.appendChild(document.createTextNode("Update"));
+    b1.style.backgroundColor = document.body.style.getPropertyValue(
+      "--haxcms-color"
+    );
+    b1.addEventListener("click", this._createNewItem.bind(this));
+    let b2 = document.createElement("paper-button");
+    b2.appendChild(document.createTextNode("cancel"));
+    b2.setAttribute("dialog-dismiss", "dialog-dismiss");
+    let b = document.createElement("span");
+    b.appendChild(b1);
+    b.appendChild(b2);
+    const evt = new CustomEvent("simple-modal-show", {
+      bubbles: true,
+      cancelable: false,
+      detail: {
+        title: this.activeItem.title + ": edit details",
+        elements: { content: this.__newForm, buttons: b },
+        invokedBy: this.$.addbutton,
+        clone: false
+      }
+    });
+    window.dispatchEvent(evt);
   },
   /**
    * toggle menu state
@@ -422,7 +482,7 @@ Polymer({
       bubbles: true,
       cancelable: false,
       detail: {
-        title: "Edit site settings",
+        title: this.manifest.title + ": site details",
         elements: { content: this.__manifestEditor },
         invokedBy: this.$.manifestbutton,
         clone: false

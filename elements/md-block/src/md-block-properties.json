@@ -1,0 +1,10 @@
+{
+  "source": {
+    "name": "source",
+    "type": "String"
+  },
+  "markdown": {
+    "name": "markdown",
+    "type": "String"
+  }
+}
