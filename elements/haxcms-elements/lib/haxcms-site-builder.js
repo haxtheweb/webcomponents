@@ -372,7 +372,10 @@ let HAXCMSSiteBuilder = Polymer({
     if (this.editorBuilder.getContext() !== "published") {
       this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
     }
-    this.$.activecontent.generateRequest();
+    // ensure we don't get a miss on initial load
+    if (this.activeItem.location) {
+      this.$.activecontent.generateRequest();
+    }
   },
 
   /**

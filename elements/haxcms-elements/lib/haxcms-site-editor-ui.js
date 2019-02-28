@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-fab/paper-fab.js";
@@ -83,9 +84,6 @@ Polymer({
         visibility: hidden;
         opacity: 0;
       }
-      #deletebutton {
-        margin-right: 20px;
-      }
       :host([page-allowed]) #editbutton,
       :host([page-allowed]) #editdetails,
       :host([page-allowed]) #deletebutton {
@@ -165,14 +163,14 @@ Polymer({
       on-tap="_editDetailsButtonTap"
       aria-label$="Edit page details"
     ></paper-fab>
+    <paper-fab
+      id="deletebutton"
+      icon="icons:delete"
+      on-tap="_deleteButtonTap"
+      aria-label="Delete current page"
+    ></paper-fab>
     <div class="wrapper">
       <div class="main-title">[[activeItem.title]]</div>
-      <paper-icon-button
-        id="deletebutton"
-        icon="icons:delete"
-        on-tap="_deleteButtonTap"
-        aria-label="Delete current page"
-      ></paper-icon-button>
       <paper-icon-button
         id="addbutton"
         icon="icons:add"
@@ -200,6 +198,9 @@ Polymer({
     >
     <paper-tooltip for="editbutton" position="top" offset="14"
       >[[__editText]]</paper-tooltip
+    >
+    <paper-tooltip for="editdetails" position="top" offset="14"
+      >Details</paper-tooltip
     >
     <paper-tooltip for="deletebutton" position="top" offset="14"
       >Delete</paper-tooltip
@@ -303,25 +304,37 @@ Polymer({
     let outline = window.JSONOutlineSchema.requestAvailability();
     // get a prototype schema for an item
     this.__newForm.schema = outline.getItemSchema("item");
-    for (var n in this.activeItem) {
-      if (typeof this.__newForm.schema.properties[n] !== "undefined") {
-        this.__newForm.schema.properties[n].value = this.activeItem[n];
-      }
-    }
-    this.__newForm.set("values", this.activeItem);
-    // drop these for now cause we just care about title
+    // drop things we don't care about
     delete this.__newForm.schema.properties.id;
+    delete this.__newForm.schema.properties.description;
     delete this.__newForm.schema.properties.order;
     delete this.__newForm.schema.properties.parent;
     delete this.__newForm.schema.properties.metadata;
+    delete this.__newForm.schema.properties.details;
     delete this.__newForm.schema.properties.indent;
+    for (var n in this.activeItem) {
+      if (typeof this.__newForm.schema.properties[n] !== "undefined") {
+        if (n === "location") {
+          this.__newForm.schema.properties[n].value = this.activeItem[n]
+            .replace("pages/", "")
+            .replace("/index.html", "");
+        } else {
+          this.__newForm.schema.properties[n].value = this.activeItem[n];
+        }
+      }
+    }
     let b1 = document.createElement("paper-button");
     b1.raised = true;
-    b1.appendChild(document.createTextNode("Update"));
+    let icon = document.createElement("iron-icon");
+    icon.icon = "icons:save";
+    b1.appendChild(icon);
+    b1.appendChild(document.createTextNode("Update page"));
     b1.style.backgroundColor = document.body.style.getPropertyValue(
       "--haxcms-color"
     );
-    b1.addEventListener("click", this._createNewItem.bind(this));
+    // store reference to the form
+    b1.__form = this.__newForm;
+    b1.addEventListener("click", this._updateItem.bind(this));
     let b2 = document.createElement("paper-button");
     b2.appendChild(document.createTextNode("cancel"));
     b2.setAttribute("dialog-dismiss", "dialog-dismiss");
@@ -334,7 +347,7 @@ Polymer({
       detail: {
         title: this.activeItem.title + ": edit details",
         elements: { content: this.__newForm, buttons: b },
-        invokedBy: this.$.addbutton,
+        invokedBy: this.$.editdetails,
         clone: false
       }
     });
@@ -403,7 +416,36 @@ Polymer({
     });
     this.dispatchEvent(evt);
   },
-
+  /**
+   * Fire item
+   */
+  _updateItem: function(e) {
+    var normalizedEvent = dom(e);
+    var local = normalizedEvent.localTarget;
+    var values;
+    if (!local.__form) {
+      values = local.parentNode.__form.value;
+    } else {
+      values = local.__form.value;
+    }
+    values.id = this.activeItem.id;
+    // fire event with details for saving
+    window.dispatchEvent(
+      new CustomEvent("haxcms-save-page-details", {
+        bubbles: true,
+        cancelable: true,
+        detail: values
+      })
+    );
+    // fire event to close the modal
+    window.dispatchEvent(
+      new CustomEvent("simple-modal-hide", {
+        bubbles: true,
+        cancelable: true,
+        detail: {}
+      })
+    );
+  },
   /**
    * Delete button hit, confirm they want to do this
    */
