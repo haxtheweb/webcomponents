@@ -217,6 +217,7 @@ class A11yMediaPlayerBehaviors extends A11yMediaBehaviors {
       responsiveSize: {
         type: String,
         notify: true,
+        value: "xs",
         reflectToAttribute: true
       },
       /**

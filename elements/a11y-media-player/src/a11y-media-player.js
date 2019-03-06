@@ -7,7 +7,6 @@ import { A11yMediaPlayerBehaviors } from "./lib/a11y-media-player-behaviors.js";
 import "@polymer/paper-slider/paper-slider.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/av-icons.js";
-import "./lib/screenfull-lib.js";
 import "./lib/a11y-media-controls.js";
 import "./lib/a11y-media-html5.js";
 import "./lib/a11y-media-play-button.js";
@@ -176,7 +175,10 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
     root.__slider = root.$.slider;
     root.__volume = root.muted ? 0 : Math.max(this.volume, 10);
     root.__resumePlaying = false;
-    root.__showFullscreen = !this.disableFullscreen && screenfull.enabled;
+    root.__showFullscreen =
+      !root.disableFullscreen &&
+      window.A11yMediaStateManager.screenfullLoaded &&
+      screenfull.enabled;
     root.__duration = 0;
     root.$.controls.setStatus(root.__status);
     root.width = root.width !== null ? root.width : "100%";
@@ -198,9 +200,10 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
 
     // handles fullscreen
     if (root.__showFullscreen) {
-      screenfull.on("change", () => {
-        this.fullscreen = screenfull.isFullscreen;
-      });
+      if (window.A11yMediaStateManager.screenfullLoaded)
+        screenfull.on("change", () => {
+          root.fullscreen = screenfull.isFullscreen;
+        });
     }
     root.$.slider.addEventListener("mousedown", e => {
       root._handleSliderStart();
@@ -691,8 +694,11 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
       }
     } else if (action === "forward") {
       root.forward();
-    } else if (action === "fullscreen") {
-      this.toggleTranscript(this.fullscreen);
+    } else if (
+      action === "fullscreen" &&
+      window.A11yMediaStateManager.screenfullLoaded
+    ) {
+      root.toggleTranscript(root.fullscreen);
       screenfull.toggle(root.$.outerplayer);
     } else if (action === "loop") {
       root.toggleLoop();

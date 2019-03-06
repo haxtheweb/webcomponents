@@ -8,7 +8,8 @@ import "./lib/a11y-collapse-icon-button.js";
 `a11y-collapse`
 An accessible expand collapse.
 
-* @demo demo/index.html
+* @demo demo/index.html Demo
+* @demo demo/accordion.html Accordion Groups
 
 @microcopy - the mental model for this element
 
@@ -54,8 +55,8 @@ let A11yCollapse = Polymer({
     <style>
       :host {
         display: block;
+        margin: var(--a11y-collapse-margin, 15px 0);
         border: var(--a11y-collapse-border, 1px solid);
-        margin: 15px 0;
         transition: all 0.5s;
         @apply --a11y-collapse;
       }
@@ -66,6 +67,12 @@ let A11yCollapse = Polymer({
         border-top: 0px solid rgba(255, 255, 255, 0);
         transition: all 0.5s ease-in-out;
         @apply --a11y-collapse-content;
+      }
+      :host(:not(:first-of-type)) {
+        border-top: var(
+          --a11y-collapse-border-between,
+          var(--a11y-collapse-border, 1px solid)
+        );
       }
       :host([disabled]) {
         opacity: 0.5;

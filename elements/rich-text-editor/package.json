@@ -41,6 +41,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/hax-body-behaviors": "latest",
+    "@lrnwebcomponents/es-global-bridge": "^2.0.5",
     "@polymer/iron-a11y-keys": "^3.0.0",
     "@polymer/iron-fit-behavior": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",

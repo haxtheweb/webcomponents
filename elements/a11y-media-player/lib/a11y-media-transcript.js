@@ -109,8 +109,8 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
     return html`
       <style is="custom-style" include="simple-colors">
         :host {
-          color: var(--a11y-media-transcript-color);
-          background-color: var(--a11y-media-transcript-bg-color);
+          color: var(--a11y-media-transcript-cue-color);
+          background-color: var(--a11y-media-transcript-cue-bg-color);
           border-left: 1px solid var(--a11y-media-transcript-bg-color);
         }
         :host([hidden]) {
@@ -279,7 +279,12 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
         "#track a11y-media-transcript-cue[active]"
       );
     root.set("activeCues", cues.slice(0));
-    if (!root.disableScroll && (cue !== null) & (cue !== undefined)) {
+    if (
+      !root.disableScroll &&
+      cue !== null &&
+      cue !== undefined &&
+      cue !== this.__activeCue
+    ) {
       //javascript scrolling from:  https://stackoverflow.com/questions/8917921/cross-browser-javascript-not-jquery-scroll-to-top-animation#answer-8918062
       let scrollingTo = function(element, to, duration) {
         if (duration <= 0) return;

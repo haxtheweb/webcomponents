@@ -205,11 +205,11 @@
   overflow: hidden;
 }
 @media screen {
-  :host([flex-layout]:not([responsive-size*="s"])) {
+  :host([flex-layout]:not([responsive-size="xs"])) {
     flex-flow: row;
     padding: 0;
   }
-  :host([flex-layout]:not([responsive-size*="s"])) #outerplayer {
+  :host([flex-layout]:not([responsive-size="xs"])) #outerplayer {
     flex: 1 0 auto;
   }
   :host #printthumb,
@@ -236,7 +236,7 @@
     right: unset;
     left: 5px;
   }
-  :host([flex-layout]:not([responsive-size*="s"])) > div {
+  :host([flex-layout]:not([responsive-size="xs"])) > div {
     width: 50%;
     flex: 1 1 auto;
   }
@@ -250,7 +250,7 @@
   :host([hide-transcript]) #outertranscript {
     display: none;
   }
-  :host(:not([no-height]):not([stacked-layout]):not([responsive-size*="s"]))
+  :host(:not([no-height]):not([stacked-layout]):not([responsive-size="xs"]))
     #transcript {
     position: absolute;
     top: 44px;
@@ -259,7 +259,7 @@
     bottom: 0;
     overflow-y: scroll;
   }
-  :host(:not([no-height]):not([stacked-layout]):not([responsive-size*="s"]))
+  :host(:not([no-height]):not([stacked-layout]):not([responsive-size="xs"]))
     #innerplayer.totop {
     position: absolute;
     top: 0;
@@ -276,7 +276,7 @@
     top: unset;
     bottom: 5px;
   }
-  :host([sticky]:not([sticky-corner="none"]):not([no-height]):not([stacked-layout]):not([responsive-size*="s"]))
+  :host([sticky]:not([sticky-corner="none"]):not([no-height]):not([stacked-layout]):not([responsive-size="xs"]))
     #controls {
     display: none;
   }

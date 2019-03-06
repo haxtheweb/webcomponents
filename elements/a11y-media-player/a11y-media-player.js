@@ -7,7 +7,6 @@ import { A11yMediaPlayerBehaviors } from "./lib/a11y-media-player-behaviors.js";
 import "@polymer/paper-slider/paper-slider.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/av-icons.js";
-import "./lib/screenfull-lib.js";
 import "./lib/a11y-media-controls.js";
 import "./lib/a11y-media-html5.js";
 import "./lib/a11y-media-play-button.js";
@@ -394,11 +393,11 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
           overflow: hidden;
         }
         @media screen {
-          :host([flex-layout]:not([responsive-size*="s"])) {
+          :host([flex-layout]:not([responsive-size="xs"])) {
             flex-flow: row;
             padding: 0;
           }
-          :host([flex-layout]:not([responsive-size*="s"])) #outerplayer {
+          :host([flex-layout]:not([responsive-size="xs"])) #outerplayer {
             flex: 1 0 auto;
           }
           :host #printthumb,
@@ -425,7 +424,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
             right: unset;
             left: 5px;
           }
-          :host([flex-layout]:not([responsive-size*="s"])) > div {
+          :host([flex-layout]:not([responsive-size="xs"])) > div {
             width: 50%;
             flex: 1 1 auto;
           }
@@ -439,7 +438,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
           :host([hide-transcript]) #outertranscript {
             display: none;
           }
-          :host(:not([no-height]):not([stacked-layout]):not([responsive-size*="s"]))
+          :host(:not([no-height]):not([stacked-layout]):not([responsive-size="xs"]))
             #transcript {
             position: absolute;
             top: 44px;
@@ -448,7 +447,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
             bottom: 0;
             overflow-y: scroll;
           }
-          :host(:not([no-height]):not([stacked-layout]):not([responsive-size*="s"]))
+          :host(:not([no-height]):not([stacked-layout]):not([responsive-size="xs"]))
             #innerplayer.totop {
             position: absolute;
             top: 0;
@@ -465,7 +464,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
             top: unset;
             bottom: 5px;
           }
-          :host([sticky]:not([sticky-corner="none"]):not([no-height]):not([stacked-layout]):not([responsive-size*="s"]))
+          :host([sticky]:not([sticky-corner="none"]):not([no-height]):not([stacked-layout]):not([responsive-size="xs"]))
             #controls {
             display: none;
           }
@@ -764,7 +763,10 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
     root.__slider = root.$.slider;
     root.__volume = root.muted ? 0 : Math.max(this.volume, 10);
     root.__resumePlaying = false;
-    root.__showFullscreen = !this.disableFullscreen && screenfull.enabled;
+    root.__showFullscreen =
+      !root.disableFullscreen &&
+      window.A11yMediaStateManager.screenfullLoaded &&
+      screenfull.enabled;
     root.__duration = 0;
     root.$.controls.setStatus(root.__status);
     root.width = root.width !== null ? root.width : "100%";
@@ -786,9 +788,10 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
 
     // handles fullscreen
     if (root.__showFullscreen) {
-      screenfull.on("change", () => {
-        this.fullscreen = screenfull.isFullscreen;
-      });
+      if (window.A11yMediaStateManager.screenfullLoaded)
+        screenfull.on("change", () => {
+          root.fullscreen = screenfull.isFullscreen;
+        });
     }
     root.$.slider.addEventListener("mousedown", e => {
       root._handleSliderStart();
@@ -1279,8 +1282,11 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
       }
     } else if (action === "forward") {
       root.forward();
-    } else if (action === "fullscreen") {
-      this.toggleTranscript(this.fullscreen);
+    } else if (
+      action === "fullscreen" &&
+      window.A11yMediaStateManager.screenfullLoaded
+    ) {
+      root.toggleTranscript(root.fullscreen);
       screenfull.toggle(root.$.outerplayer);
     } else if (action === "loop") {
       root.toggleLoop();

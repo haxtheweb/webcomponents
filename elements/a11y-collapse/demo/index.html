@@ -1,45 +1,49 @@
 <!doctype html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-
-    <title>a11y-collapse demo</title>
-
+    <title>A11yMediaPlayer: a11y-media-player Demo</title>
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
-
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script type="module">
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
       import "@polymer/iron-demo-helpers/demo-pages-shared-styles.js";
       import "@polymer/iron-demo-helpers/demo-snippet.js";
       import "../a11y-collapse.js";
       import "../lib/a11y-collapse-group.js";
     </script>
-
-    <!-- FIXME(polymer-modulizer):
-        These imperative modules that innerHTML your HTML are
-        a hacky way to be sure that any mixins in included style
-        modules are ready before any elements that reference them are
-        instantiated, otherwise the CSS @apply mixin polyfill won't be
-        able to expand the underlying CSS custom properties.
-        See: https://github.com/Polymer/polymer-modulizer/issues/154
-        -->
-    <script type="module">
-var $_documentContainer = document.createElement('div');
-$_documentContainer.setAttribute('style', 'display: none;');
-
-$_documentContainer.innerHTML = `<style is="custom-style" include="demo-pages-shared-styles">
-    </style>`;
-
-document.head.appendChild($_documentContainer);
-</script>
+  
+    <style is="custom-style" include="demo-pages-shared-styles">
+      .vertical-section-container.centered>* {
+        --demo-snippet-demo: {
+          padding: 0;
+        };
+      }
+    
+      .vertical-section-container.centered {
+        width: 100%;
+        max-width: unset !important;
+      }
+    
+      .smaller-examples {
+        max-width: 75%;
+        min-width: 400px;
+        margin: 0 auto;
+      }
+    
+      @media print {
+        demo-snippet {
+          height: unset;
+          overflow: visible;
+        }
+      }
+    </style>
   </head>
   <body>
-    <script type="module">
-var $_documentContainer = document.createElement('div');
-
-$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
-      <h3>a11y-collapse demo</h3>
+    <div class="vertical-section-container centered">
+      <h1>a11y-collapse demo</h1>
       <p>By default, the clicking the icon button triggers expand/collapse.</p>
       <demo-snippet>
         <template>
@@ -50,7 +54,7 @@ $_documentContainer.innerHTML = `<div class="vertical-section-container centered
         </template>
       </demo-snippet>
 
-      <h3>a11y-collapse demo, with accordion attribute</h3>
+      <h2>a11y-collapse demo, with accordion attribute</h2>
       <p>With the <tt>accordion</tt> attribute, the clicking anywhere on the heading triggers expand/collapse.</p>
       <demo-snippet>
         <template>
@@ -60,56 +64,6 @@ $_documentContainer.innerHTML = `<div class="vertical-section-container centered
           </a11y-collapse>
         </template>
       </demo-snippet>
-
-      <h3>a11y-collapse-group, with <tt>radio</tt> attribute</h3>
-      <p>With the <tt>radio</tt> attribute, only one item can be expanded at a time.</p>
-      <demo-snippet>
-        <template>
-          <a11y-collapse-group radio="">
-            <h2 slot="heading">Colors List</h2>
-            <a11y-collapse accordion="">
-              <p slot="heading">Purple</p>
-              <div slot="content">Blue and red make purple.</div>
-            </a11y-collapse>
-            <a11y-collapse accordion="" disabled="">
-              <p slot="heading">Green</p>
-              <div slot="content">Blue and yellow make purple.</div>
-            </a11y-collapse>
-            <a11y-collapse accordion="">
-              <p slot="heading">Orange</p>
-              <div slot="content">Yellow and red make purple.</div>
-            </a11y-collapse>
-          </a11y-collapse-group>
-        </template>
-      </demo-snippet>
-      
-      <h3>a11y-collapse-groups demo with global options</h3>
-      <p>
-        The following options can be set in the <tt>global-options</tt> attribute to apply to all a11y-collapse items in a group:
-        icon, icon-expanded, label, label-expanded, tooltip, tooltip-expanded.
-      </p>
-      <demo-snippet>
-        <template>
-          <a11y-collapse-group radio="" global-options="{&quot;icon&quot;: &quot;arrow-drop-down&quot;, &quot;tooltip&quot;: &quot;show more info&quot;, &quot;tooltipExpanded&quot;: &quot;show less info&quot;}">
-            <h2 slot="heading">Colors List</h2>
-            <a11y-collapse>
-              <p slot="heading">Purple</p>
-              <div slot="content">Blue and red make purple.</div>
-            </a11y-collapse>
-            <a11y-collapse disabled="">
-              <p slot="heading">Green</p>
-              <div slot="content">Blue and yellow make purple.</div>
-            </a11y-collapse>
-            <a11y-collapse>
-              <p slot="heading">Orange</p>
-              <div slot="content">Yellow and red make purple.</div>
-            </a11y-collapse>
-          </a11y-collapse-group>
-        </template>
-      </demo-snippet>
-    </div>`;
-
-document.body.appendChild($_documentContainer);
-</script>
+    </div>
   </body>
 </html>

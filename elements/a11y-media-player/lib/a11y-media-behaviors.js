@@ -35,6 +35,7 @@ class A11yMediaBehaviors extends SimpleColors {
        * but generally not recommended for a11y
        */
       autoplay: {
+        name: "autoplay",
         type: Boolean,
         value: false
       },
@@ -42,6 +43,7 @@ class A11yMediaBehaviors extends SimpleColors {
        * show closed captions
        */
       cc: {
+        name: "cc",
         type: Boolean,
         value: false
       },
@@ -49,6 +51,7 @@ class A11yMediaBehaviors extends SimpleColors {
        * The height of the media player.
        */
       height: {
+        name: "height",
         type: Number,
         value: null
       },
@@ -56,6 +59,7 @@ class A11yMediaBehaviors extends SimpleColors {
        * is YouTube?
        */
       isYoutube: {
+        name: "isYoutube",
         type: Boolean,
         computed: "_hasAttribute(youtubeId)"
       },
@@ -63,6 +67,7 @@ class A11yMediaBehaviors extends SimpleColors {
        * Language
        */
       lang: {
+        name: "lang",
         type: String,
         value: "en"
       },
@@ -70,6 +75,7 @@ class A11yMediaBehaviors extends SimpleColors {
        * custom localization settings
        */
       localization: {
+        name: "localization",
         type: Object,
         value: {}
       },
@@ -77,6 +83,7 @@ class A11yMediaBehaviors extends SimpleColors {
        * default localization settings
        */
       localizationDefaults: {
+        name: "localizationDefaults",
         type: Object,
         value: {
           audio: { label: "Audio" },
@@ -169,6 +176,7 @@ class A11yMediaBehaviors extends SimpleColors {
        * Loop the video?
        */
       loop: {
+        name: "loop",
         type: Boolean,
         value: false
       },
@@ -176,6 +184,7 @@ class A11yMediaBehaviors extends SimpleColors {
        * Dash.js manifest source?
        */
       manifest: {
+        name: "manifest",
         type: String,
         value: null
       },
@@ -183,6 +192,7 @@ class A11yMediaBehaviors extends SimpleColors {
        * Is audio muted?
        */
       muted: {
+        name: "muted",
         type: Boolean,
         value: false
       },
@@ -190,6 +200,7 @@ class A11yMediaBehaviors extends SimpleColors {
        * Preload the sources: auto, metadata (default), or none.
        */
       preload: {
+        name: "preload",
         type: String,
         value: "metadata"
       },
@@ -197,6 +208,7 @@ class A11yMediaBehaviors extends SimpleColors {
        * Playback rate where 1 is normal speed, 0.5 is half-speed, and 2 is double speed
        */
       playbackRate: {
+        name: "playbackRate",
         type: Number,
         value: 1
       },
@@ -205,6 +217,7 @@ class A11yMediaBehaviors extends SimpleColors {
        * status
        */
       status: {
+        name: "status",
         type: String,
         value: "loading..."
       },
@@ -212,6 +225,7 @@ class A11yMediaBehaviors extends SimpleColors {
        * the selected track
        */
       selectedTrack: {
+        name: "selectedTrack",
         type: Object,
         value: null
       },
@@ -219,6 +233,7 @@ class A11yMediaBehaviors extends SimpleColors {
        * id of the selected track
        */
       selectedTrackID: {
+        name: "selectedTrackID",
         type: Number,
         value: null
       },
@@ -226,6 +241,7 @@ class A11yMediaBehaviors extends SimpleColors {
        * array of tracks and cues
        */
       tracks: {
+        name: "tracks",
         type: Array,
         value: null
       },
@@ -233,6 +249,7 @@ class A11yMediaBehaviors extends SimpleColors {
        * Range is 0 to 100. Default should not be loud enough to overpower screen readers.
        */
       volume: {
+        name: "volume",
         type: Number,
         value: 70
       },
@@ -240,6 +257,7 @@ class A11yMediaBehaviors extends SimpleColors {
        * the id for the video
        */
       youtubeId: {
+        name: "youtubeId",
         type: String,
         value: null
       },
@@ -247,6 +265,7 @@ class A11yMediaBehaviors extends SimpleColors {
        * the YouTube player object
        */
       youTube: {
+        name: "youTube",
         type: Object,
         value: {}
       }
