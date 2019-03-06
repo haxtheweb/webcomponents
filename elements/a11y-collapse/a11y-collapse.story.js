@@ -2,36 +2,51 @@ import { storiesOf } from "@storybook/polymer";
 import * as storybookBridge from "@storybook/addon-knobs/polymer";
 import { A11yCollapse } from "./a11y-collapse.js";
 import { A11yCollapseGroup } from "./lib/a11y-collapse-group.js";
-
 /**
  * Creates a knob and adds an attribute for each property in the given element
- * @param {object} el 
+ * @param {object} the element 
+ * @param {array} properties to exclude
  * @returns {string} attributes
  */
-let setKnobsAndReturnAttributes = function(el){
+let setKnobsAndReturnAttributes = function(el,exclusions = []){
   let binding = {}, attr = '';
   for (var key in el.properties) {
-    // skip prototype
-    if (!el.properties.hasOwnProperty(key)) continue;
-    // convert typed props
-    if (el.properties[key].type.name) {
-      let method = "text", val = el.properties[key].value;
-      switch (el.properties[key].type.name) {
-        case "Boolean":
-        case "Number":
-        case "Object":
-        case "Array":
-        case "Date":
-          method = el.properties[key].type.name.toLowerCase();
-          break;
-        default:
-          method = "text";
-          break;
-      }
-      //storybook can't assign null or undefined to a text field
-      if (method === 'text') val = val !== null && val !== undefined ? val : ''; 
-      //don't include private properties
-      if(key.startsWith('__') === false && el.properties[key].type.name !== "Object") {
+    // skip prototype, private properties, objects, anything in the exclusions array, or any computed property
+    if (!el.properties.hasOwnProperty(key)) continue;    
+    let editable = key.startsWith('__') === false 
+      && exclusions.includes(key) === false 
+      && (el.properties[key].computed === undefined || el.properties[key].computed === 'undefined') 
+      && el.properties[key].readOnly !== true;
+    if (editable) {
+      let val = el.properties[key].value,
+        keyType = el.properties[key].type.name || el.properties[key].type;
+      // convert typed props
+      if (keyType) {
+        let method = keyType.toLowerCase();
+        switch (method) {
+          case "boolean":
+            method = "boolean";
+            val = val === true;
+            break;
+          case "number":
+            val = parseFloat(val);
+            break;
+          case "date":
+            break;
+          case "object":
+            method = "text";
+            val = JSON.stringify(val);
+            break;
+          case "array":
+            method = "text";
+            val = JSON.stringify(val);
+            break;
+          default:
+            method = "text";
+            val = val || '';
+            break;
+        } 
+        //storybook can't assign null or undefined to a text field
         binding[key] = storybookBridge[method](key,val);
 
         // ensure ke-bab case
@@ -41,9 +56,9 @@ let setKnobsAndReturnAttributes = function(el){
           return "-" + match.toLowerCase();
         });
         //don't include false booleans
-        if(binding[key]!==false) attr += ` ${kebab}="${binding[key]}"`;
+        if(binding[key]!==false && val !== '') attr += ` ${kebab}="${binding[key]}"`;
       }
-    }
+    } 
   }
   return attr;
 }

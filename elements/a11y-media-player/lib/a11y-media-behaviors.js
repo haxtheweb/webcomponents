@@ -36,7 +36,7 @@ class A11yMediaBehaviors extends SimpleColors {
        */
       autoplay: {
         name: "autoplay",
-        type: Boolean,
+        type: "Boolean",
         value: false
       },
       /**
@@ -44,7 +44,7 @@ class A11yMediaBehaviors extends SimpleColors {
        */
       cc: {
         name: "cc",
-        type: Boolean,
+        type: "Boolean",
         value: false
       },
       /**
@@ -52,7 +52,7 @@ class A11yMediaBehaviors extends SimpleColors {
        */
       height: {
         name: "height",
-        type: Number,
+        type: "Number",
         value: null
       },
       /**
@@ -60,7 +60,7 @@ class A11yMediaBehaviors extends SimpleColors {
        */
       isYoutube: {
         name: "isYoutube",
-        type: Boolean,
+        type: "Boolean",
         computed: "_hasAttribute(youtubeId)"
       },
       /**
@@ -68,7 +68,7 @@ class A11yMediaBehaviors extends SimpleColors {
        */
       lang: {
         name: "lang",
-        type: String,
+        type: "String",
         value: "en"
       },
       /**
@@ -76,7 +76,7 @@ class A11yMediaBehaviors extends SimpleColors {
        */
       localization: {
         name: "localization",
-        type: Object,
+        type: "Object",
         value: {}
       },
       /**
@@ -84,7 +84,7 @@ class A11yMediaBehaviors extends SimpleColors {
        */
       localizationDefaults: {
         name: "localizationDefaults",
-        type: Object,
+        type: "Object",
         value: {
           audio: { label: "Audio" },
           autoScroll: {
@@ -177,7 +177,7 @@ class A11yMediaBehaviors extends SimpleColors {
        */
       loop: {
         name: "loop",
-        type: Boolean,
+        type: "Boolean",
         value: false
       },
       /**
@@ -185,7 +185,7 @@ class A11yMediaBehaviors extends SimpleColors {
        */
       manifest: {
         name: "manifest",
-        type: String,
+        type: "String",
         value: null
       },
       /**
@@ -193,15 +193,15 @@ class A11yMediaBehaviors extends SimpleColors {
        */
       muted: {
         name: "muted",
-        type: Boolean,
+        type: "Boolean",
         value: false
       },
       /**
-       * Preload the sources: auto, metadata (default), or none.
+       * Preload the "sources": auto, metadata (default), or none.
        */
       preload: {
         name: "preload",
-        type: String,
+        type: "String",
         value: "metadata"
       },
       /**
@@ -209,7 +209,7 @@ class A11yMediaBehaviors extends SimpleColors {
        */
       playbackRate: {
         name: "playbackRate",
-        type: Number,
+        type: "Number",
         value: 1
       },
 
@@ -218,7 +218,7 @@ class A11yMediaBehaviors extends SimpleColors {
        */
       status: {
         name: "status",
-        type: String,
+        type: "String",
         value: "loading..."
       },
       /**
@@ -226,7 +226,7 @@ class A11yMediaBehaviors extends SimpleColors {
        */
       selectedTrack: {
         name: "selectedTrack",
-        type: Object,
+        type: "Object",
         value: null
       },
       /**
@@ -234,7 +234,7 @@ class A11yMediaBehaviors extends SimpleColors {
        */
       selectedTrackID: {
         name: "selectedTrackID",
-        type: Number,
+        type: "Number",
         value: null
       },
       /**
@@ -242,7 +242,7 @@ class A11yMediaBehaviors extends SimpleColors {
        */
       tracks: {
         name: "tracks",
-        type: Array,
+        type: "Array",
         value: null
       },
       /**
@@ -250,7 +250,7 @@ class A11yMediaBehaviors extends SimpleColors {
        */
       volume: {
         name: "volume",
-        type: Number,
+        type: "Number",
         value: 70
       },
       /**
@@ -258,7 +258,7 @@ class A11yMediaBehaviors extends SimpleColors {
        */
       youtubeId: {
         name: "youtubeId",
-        type: String,
+        type: "String",
         value: null
       },
       /**
@@ -266,7 +266,7 @@ class A11yMediaBehaviors extends SimpleColors {
        */
       youTube: {
         name: "youTube",
-        type: Object,
+        type: "Object",
         value: {}
       }
     };

@@ -657,6 +657,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
        * The default media caption if none is given.
        */
       mediaCaption: {
+        name: "mediaCaption",
         type: "String",
         computed: "_getMediaCaption(audioOnly,localization,mediaTitle)"
       },
@@ -664,6 +665,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
        * The media caption that displays when the page is printed.
        */
       printCaption: {
+        name: "printCaption",
         type: "String",
         computed: "_getPrintCaption(audioOnly,audioLabel,videoLabel,mediaTitle)"
       },
@@ -671,6 +673,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
        * is YouTube?
        */
       showCustomCaptions: {
+        name: "showCustomCaptions",
         type: "Boolean",
         computed: "_showCustomCaptions(isYoutube,audioOnly,hasCaptions,cc)"
       },
@@ -678,6 +681,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
        * Optional array ouf sources.
        */
       sources: {
+        name: "sources",
         type: "Array",
         value: []
       },
@@ -685,6 +689,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
        * Is the video currently sticky, i.e. it is fixed to the corner when playing but scrolled off screen?
        */
       sticky: {
+        name: "sticky",
         type: "Boolean",
         value: false,
         reflectToAttribute: true
@@ -695,6 +700,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
        * Default is "top-right". "None" disables stickiness.
        */
       stickyCorner: {
+        name: "stickyCorner",
         type: "String",
         value: "top-right",
         reflectToAttribute: true
@@ -703,6 +709,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
        * Optional array ouf tracks.
        */
       tracks: {
+        name: "tracks",
         type: "Array",
         value: []
       },
@@ -710,6 +717,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
        * Notice if the video is playing
        */
       __playing: {
+        name: "__playing",
         type: "Boolean",
         value: false,
         notify: true,
