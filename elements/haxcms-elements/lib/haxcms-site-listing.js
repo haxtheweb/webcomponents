@@ -34,7 +34,6 @@ import "@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js";
 import "@lrnwebcomponents/magazine-cover/magazine-cover.js";
-import "@lrnwebcomponents/dropdown-select/dropdown-select.js";
 import "@lrnwebcomponents/sites-listing/sites-listing.js";
 /**
  * `haxcms-site-listing`
@@ -260,11 +259,7 @@ Polymer({
         ></paper-input>
         <label for="newsitecolor">Select a color:</label>
         <simple-colors-picker id="newsitecolor"></simple-colors-picker>
-        <dropdown-select id="newsitetheme" label="Theme" value="simple-blog">
-          <paper-item value="simple-blog">Simple blog</paper-item>
-          <paper-item value="outline-player">Documentation Outline</paper-item>
-          <paper-item value="haxcms-dev-theme">DEVELOPER THEME</paper-item>
-        </dropdown-select>
+        <simple-picker id="newsitetheme" label="Theme"></simple-picker>
         <label for="newsiteicon">Select an icon:</label>
         <simple-icon-picker
           id="newsiteicon"
@@ -568,8 +563,12 @@ Polymer({
    * Use events for real value in theme.
    */
   _themeChanged: function(e) {
-    this.set("activeItem.metadata.theme", e.detail.value);
-    this.notifyPath("activeItem.metadata.theme");
+    // while not the actual spec for our theme metadata, this is the primary key
+    // so the backend can update it correctly on response
+    if (e.detail.value) {
+      this.set("activeItem.metadata.theme", e.detail.value);
+      this.notifyPath("activeItem.metadata.theme");
+    }
   },
   /**
    * Use events for real value in color area.
@@ -662,6 +661,24 @@ Polymer({
   attached: function() {
     this.__loginPath = window.appSettings.login;
     this.__logoutPath = window.appSettings.logout;
+    let themeOptions = [];
+    let firstTheme = null;
+    for (var theme in window.appSettings.themes) {
+      let item = [
+        {
+          alt: window.appSettings.themes[theme].name,
+          value: theme
+        }
+      ];
+      themeOptions.push(item);
+      if (!firstTheme) {
+        firstTheme = theme;
+      }
+    }
+    this.$.newsitetheme.options = themeOptions;
+    if (!this.$.newsitetheme.value) {
+      this.$.newsitetheme.value = firstTheme;
+    }
     this.__setConfigPath = window.appSettings.setConfigPath;
     this.__getConfigPath = window.appSettings.getConfigPath;
     this.__createNewSitePath = window.appSettings.createNewSitePath;
@@ -837,7 +854,6 @@ Polymer({
    */
   _saveConfig: function(e) {
     window.HAXCMS.config.values = this.$.settingsform.value;
-    console.log(window.HAXCMS.config.values);
     // pass along the jwt for user "session" purposes
     this.set("setConfigParams.values", {});
     this.set("setConfigParams.values", window.HAXCMS.config.values);

@@ -109,30 +109,15 @@ let HAXCMSSiteBuilder = Polymer({
     /**
      * Theme, used to boot a design element
      */
-    themeElementName: {
-      type: String,
-      reflectToAttribute: true,
-      observer: "_themeNameChanged"
+    themeData: {
+      type: Object,
+      observer: "_themeChanged"
     },
     /**
      * Theme, used to boot a design element
      */
     themeElement: {
       type: Object
-    },
-    /**
-     * registry to map theme names to locations
-     */
-    themeData: {
-      type: Object,
-      value: {
-        "simple-blog": "../../../@lrnwebcomponents/simple-blog/simple-blog.js",
-        "outline-player":
-          "../../../@lrnwebcomponents/outline-player/outline-player.js",
-        "lrnapp-book":
-          "../../../@lrnwebcomponents/elmsln-apps/lib/lrnapp-book/lrnapp-book.js",
-        "haxcms-dev-theme": "haxcms-dev-theme.js"
-      }
     },
     /**
      * Imported items so we can allow theme flipping dynamically
@@ -387,7 +372,10 @@ let HAXCMSSiteBuilder = Polymer({
     if (this.editorBuilder.getContext() !== "published") {
       this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
     }
-    this.$.activecontent.generateRequest();
+    // ensure we don't get a miss on initial load
+    if (this.activeItem.location) {
+      this.$.activecontent.generateRequest();
+    }
   },
 
   /**
@@ -452,7 +440,16 @@ let HAXCMSSiteBuilder = Polymer({
       }
       store.manifest = newValue;
       window.cmsSiteEditor.jsonOutlineSchema = newValue;
-      this.themeElementName = newValue.metadata.theme;
+      // only set these if the path changes
+      if (
+        this.themeData &&
+        this.themeData.path === newValue.metadata.theme.path
+      ) {
+      } else {
+        // this is a forcible set which means it'll trigger a new value each time
+        // ensure that the theme data actually DOES change or this causes unneeded state rebuilding
+        this.set("themeData", newValue.metadata.theme);
+      }
       this.fire("json-outline-schema-changed", newValue);
     }
   },
@@ -460,7 +457,7 @@ let HAXCMSSiteBuilder = Polymer({
   /**
    * notice theme changes and ensure slot is rebuilt.
    */
-  _themeNameChanged: function(newValue, oldValue) {
+  _themeChanged: function(newValue, oldValue) {
     if (newValue && oldValue) {
       if (
         typeof window.cmsSiteEditor.instance.haxCmsSiteEditorElement !==
@@ -473,34 +470,27 @@ let HAXCMSSiteBuilder = Polymer({
     }
     if (newValue) {
       this.themeLoaded = false;
-      var themeName = newValue;
-      // trap for blowing up the world ;)
-      if (typeof this.themeData[themeName] === typeof undefined) {
-        console.log(
-          "HAXCMS developer: " + themeName + " is not a valid theme name"
-        );
-        this.themeElementName = "simple-blog";
-        return false;
-      }
+      let theme = newValue;
       // wipe out what we got
       this.wipeSlot(this, "*");
       // create the 'theme' as a new element
-      this.themeElement = document.createElement(themeName);
+      this.themeElement = document.createElement(theme.element);
       // give it our manifest
       this.themeElement.manifest = this.manifest;
       // weird but definition already here so we should be able
       // to just use this without an import, it's possible..
-      if (typeof this.__imported[themeName] !== typeof undefined) {
+      if (typeof this.__imported[theme.element] !== typeof undefined) {
         dom(this).appendChild(this.themeElement);
         this.themeLoaded = true;
       } else {
         // import the reference to the item dynamically, if we can
         try {
           import(pathFromUrl(decodeURIComponent(import.meta.url)) +
-            this.themeData[themeName]).then(e => {
+            "../../../" +
+            newValue.path).then(e => {
             // add it into ourselves so it unpacks and we kick this off!
             dom(this).appendChild(this.themeElement);
-            this.__imported[themeName] = themeName;
+            this.__imported[theme.element] = theme.element;
             this.themeLoaded = true;
           });
         } catch (err) {

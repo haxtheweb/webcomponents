@@ -290,6 +290,30 @@ Polymer({
    */
   saveManifest: async function(e) {
     this.manifest = e.detail;
+    // limits options but makes it possible to switch core themes
+    if (typeof this.manifest.metadata.theme === "string") {
+      const themeData = {
+        "haxcms-dev-theme": {
+          element: "haxcms-dev-theme",
+          path: "@lrnwebcomponents/haxcms-elements/lib/haxcms-dev-theme.js",
+          name: "Developer theme"
+        },
+        "outline-player": {
+          element: "outline-player",
+          path: "@lrnwebcomponents/outline-player/outline-player.js",
+          name: "Outline player"
+        },
+        "simple-blog": {
+          element: "simple-blog",
+          path: "@lrnwebcomponents/simple-blog/simple-blog.js",
+          name: "Simple blog"
+        }
+      };
+      // if it's not a core theme we can't really do it
+      if (themeData[this.manifest.metadata.theme]) {
+        this.manifest.metadata.theme = themeData[this.manifest.metadata.theme];
+      }
+    }
     await this.$.beaker.write(
       "site.json",
       JSON.stringify(this.manifest, null, 2)

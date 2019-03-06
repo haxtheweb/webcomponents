@@ -13,7 +13,6 @@ import "@lrnwebcomponents/map-menu/map-menu.js";
 import { HAXCMSThemeWiring } from "@lrnwebcomponents/haxcms-elements/lib/HAXCMSThemeWiring.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import "./lib/outline-player-arrow.js";
 
 /**
 `outline-player`
@@ -34,7 +33,6 @@ let OutlinePlayer = Polymer({
         --app-drawer-width: 300px;
         --outline-player-dark: #222222;
         --outline-player-light: #f8f8f8;
-        --outline-player-arrow-margin-top: 50px;
       }
 
       :host([closed]) {
@@ -247,20 +245,24 @@ let OutlinePlayer = Polymer({
               [[activeItem.title]]
               <div id="slotTitle"><slot name="title"></slot></div>
             </div>
-            <outline-player-arrow
+            <paper-icon-button
               id="prevpage"
-              disabled="[[disablePrevPage(__activeIndex)]]"
+              disabled="[[disablePrevPage(activeManifestIndex)]]"
               icon="icons:arrow-back"
               on-click="prevPage"
-              >Previous
-            </outline-player-arrow>
-            <outline-player-arrow
+            ></paper-icon-button>
+            <paper-tooltip for="prevpage" position="bottom" offset="14">
+              Previous
+            </paper-tooltip>
+            <paper-icon-button
               id="nextpage"
-              disabled="[[disableNextPage(__activeIndex)]]"
+              disabled="[[disableNextPage(activeManifestIndex)]]"
               icon="icons:arrow-forward"
               on-click="nextPage"
-              >Next
-            </outline-player-arrow>
+            ></paper-icon-button>
+            <paper-tooltip for="nextpage" position="bottom" offset="14">
+              Next
+            </paper-tooltip>
           </app-toolbar>
         </app-header>
         <div id="content">
@@ -274,6 +276,38 @@ let OutlinePlayer = Polymer({
 
   is: "outline-player",
   properties: {
+    /**
+     * editting state for the page
+     */
+    editMode: {
+      type: Boolean,
+      reflectToAttribute: true,
+      observer: "_editModeChanged"
+    },
+    /**
+     * Active item which is in JSON Outline Schema
+     */
+    activeItem: {
+      type: Object
+    },
+    /**
+     * Manifest from haxcms-site-builder
+     */
+    manifest: {
+      type: Object
+    },
+    /**
+     * DOM node that wraps the slot
+     */
+    contentContainer: {
+      type: Object
+    },
+    /**
+     * active manifest index, key to location in the manifest itemsarray
+     */
+    activeManifestIndex: {
+      type: Number
+    },
     /**
      * Auto call json files
      */
@@ -330,26 +364,6 @@ let OutlinePlayer = Polymer({
       observer: "_outlineChanged"
     },
     /**
-     * editting state for the page
-     */
-    editMode: {
-      type: Boolean,
-      reflectToAttribute: true,
-      observer: "_editModeChanged"
-    },
-    /**
-     * Active item which is in JSON Outline Schema
-     */
-    activeItem: {
-      type: Object
-    },
-    /**
-     * Manifest from haxcms-site-builder
-     */
-    manifest: {
-      type: Object
-    },
-    /**
      * Set min height of outline player to fill remaining
      * space to the bottom of the browser
      */
@@ -371,6 +385,62 @@ let OutlinePlayer = Polymer({
       observer: "_locationChanged"
     }
   },
+  /**
+   * disablePrevPage
+   */
+  disablePrevPage: function(index) {
+    if (index === 0) {
+      return true;
+    }
+    return false;
+  },
+  /**
+   * disableNextPage
+   */
+  disableNextPage: function(index) {
+    if (index === this.manifest.items.length - 1) {
+      return true;
+    }
+    return false;
+  },
+  /**
+   * Go back a page (if we can)
+   */
+  prevPage: function(e) {
+    this.changePage("previous");
+  },
+  /**
+   * Advance a page (if we can)
+   */
+  nextPage: function(e) {
+    this.changePage("next");
+  },
+  /**
+   * Go forward a page
+   */
+  changePage: function(direction) {
+    if (
+      direction == "next" &&
+      this.activeManifestIndex < this.manifest.items.length - 1
+    ) {
+      window.history.pushState(
+        {},
+        null,
+        this._routerManifest.items[this.activeManifestIndex + 1].location
+      );
+      window.dispatchEvent(new PopStateEvent("popstate"));
+    } else if (direction == "previous" && this.activeManifestIndex > 0) {
+      window.history.pushState(
+        {},
+        null,
+        this._routerManifest.items[this.activeManifestIndex - 1].location
+      );
+      window.dispatchEvent(new PopStateEvent("popstate"));
+    }
+  },
+  /**
+   * notice edit changed, make sure we fake a resize because of that container flyout
+   */
   _editModeChanged: function(newValue) {
     if (typeof newValue !== typeof undefined) {
       async.microTask.run(() => {
@@ -391,7 +461,8 @@ let OutlinePlayer = Polymer({
    * ready life cycle
    */
   ready: function() {
-    this.HAXCMSThemeWiring.connect(this, this.$.contentcontainer);
+    this.contentContainer = this.$.contentcontainer;
+    this.HAXCMSThemeWiring.connect(this, this.contentContainer);
   },
   /**
    * attached life cycle
@@ -498,64 +569,6 @@ let OutlinePlayer = Polymer({
   },
 
   /**
-   * disablePrevPage
-   */
-  disablePrevPage: function(index) {
-    if (index === 0) {
-      return true;
-    }
-    return false;
-  },
-
-  /**
-   * disableNextPage
-   */
-  disableNextPage: function(index) {
-    if (index === this.manifest.items.length - 1) {
-      return true;
-    }
-    return false;
-  },
-
-  /**
-   * Go back a page (if we can)
-   */
-  prevPage: function(e) {
-    this.changePage("previous");
-  },
-
-  /**
-   * Advance a page
-   */
-  nextPage: function(e) {
-    this.changePage("next");
-  },
-
-  /**
-   * Go forward a page
-   */
-  changePage: function(direction) {
-    if (
-      direction == "next" &&
-      this.__activeIndex < this.manifest.items.length - 1
-    ) {
-      window.history.pushState(
-        {},
-        null,
-        this._routerManifest.items[this.__activeIndex + 1].location
-      );
-      window.dispatchEvent(new PopStateEvent("popstate"));
-    } else if (direction == "previous" && this.__activeIndex > 0) {
-      window.history.pushState(
-        {},
-        null,
-        this._routerManifest.items[this.__activeIndex - 1].location
-      );
-      window.dispatchEvent(new PopStateEvent("popstate"));
-    }
-  },
-
-  /**
    * Selected page has changed.
    */
   _selectedPageChanged: function(newValue, oldValue) {
@@ -564,7 +577,7 @@ let OutlinePlayer = Polymer({
         const item = this.manifest.items
           .filter((d, i) => {
             if (newValue === d.id) {
-              this.__activeIndex = i;
+              this.activeManifestIndex = i;
               return d;
             }
           })

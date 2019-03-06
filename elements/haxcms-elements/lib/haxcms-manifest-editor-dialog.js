@@ -10,6 +10,7 @@ import "@polymer/iron-icons/av-icons.js";
 import "@polymer/iron-icons/device-icons.js";
 import "@polymer/iron-icons/image-icons.js";
 import "@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js";
+import "@lrnwebcomponents/simple-picker/simple-picker.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `haxcms-manifest-editor-dialog`
@@ -129,28 +130,6 @@ Polymer({
    * Ready life cycle
    */
   ready: function() {
-    this.$.sitetheme.options = [
-      [
-        {
-          alt: "Simple blog site",
-          value: "simple-blog"
-        }
-      ],
-      [
-        {
-          alt: "Content outline",
-          value: "outline-player"
-        }
-      ],
-      [
-        {
-          alt: "Developer Theme",
-          value: "haxcms-dev-theme"
-        }
-      ]
-    ];
-    this.$.sitetheme.value =
-      window.cmsSiteEditor.jsonOutlineSchema.metadata.theme;
     // state issue but it can miss in timing othewise on first event
     this.set("manifest", window.cmsSiteEditor.jsonOutlineSchema);
     this.notifyPath("manifest.*");
@@ -166,6 +145,19 @@ Polymer({
       evt.initUIEvent("resize", true, false, window, 0);
       window.dispatchEvent(evt);
     }, 100);
+    let themeOptions = [];
+    for (var theme in window.appSettings.themes) {
+      let item = [
+        {
+          alt: window.appSettings.themes[theme].name,
+          value: theme
+        }
+      ];
+      themeOptions.push(item);
+    }
+    this.$.sitetheme.options = themeOptions;
+    this.$.sitetheme.value =
+      window.cmsSiteEditor.jsonOutlineSchema.metadata.theme.element;
   },
   /**
    * detached life cycle
@@ -199,8 +191,10 @@ Polymer({
    * Use events for real value in theme.
    */
   _themeChanged: function(e) {
-    this.set("manifest.metadata.theme", e.detail.value);
-    this.notifyPath("manifest.metadata.theme");
+    if (e.detail.value) {
+      this.set("manifest.metadata.theme", e.detail.value);
+      this.notifyPath("manifest.metadata.theme");
+    }
   },
 
   /**
