@@ -1,5 +1,4 @@
-import { A11yCollapse } from "./a11y-collapse.js";
-//import { A11yCollapseGroup } from "./lib/a11y-collapse-group.js";
+import { A11yCollapseGroup } from "./lib/a11y-collapse-group.js";
 import { storiesOf } from "@storybook/polymer";
 import * as storybookBridge from "@storybook/addon-knobs/polymer";
 
@@ -106,11 +105,12 @@ getSlotted = (data) => {
  * @returns {object} the slot content to wire to slots
  */
 addLiveDemo = (story) => {
-  story.demo = storiesOf(story.of, module); 
-  let storySlots = getSlotted(story.slots), 
+  console.log('addLiveDemo',story);
+  let demo = storiesOf(story.of, module), 
+    storySlots = getSlotted(story.slots), 
     storyProps = getAttributes(story.props);
-    story.demo.addDecorator(storybookBridge.withKnobs);
-    story.demo.add(story.tag, () => {
+  demo.addDecorator(storybookBridge.withKnobs);
+  demo.add(story.tag, () => {
     return `
       <h1>${story.tag}</h1>
       <${story.tag}${storyProps}${story.attr}>
@@ -120,17 +120,30 @@ addLiveDemo = (story) => {
     `;
   });
 };
+
 //add the live demo
-const A11yCollapseStory = {
+addLiveDemo({
   "of": "a11y-collapse",
-  "tag": "a11y-collapse",
-  "props": A11yCollapse.properties, 
+  "tag": "a11y-collapse-group",
+  "props": A11yCollapseGroup.properties, 
   "slots": {
-    "heading": {"name": "heading", "type": "String", "value": `Click to expand me.` },
-    "content": {"name": "content", "type": "String", "value": `Here are some details.` }
+    "slot": {
+      "name": "slot", "type": "String", "value": `
+      <h2>Secondary Colors</h2>
+      <a11y-collapse accordion>
+        <p slot="heading">Purple</p>
+        <div slot="content">Blue and red make purple.</div>
+      </a11y-collapse>
+      <a11y-collapse accordion>
+        <p slot="heading">Green</p>
+        <div slot="content">Blue and yellow make purple.</div>
+      </a11y-collapse>
+      <a11y-collapse accordion>
+        <p slot="heading">Orange</p>
+        <div slot="content">Yellow and red make purple.</div>
+      </a11y-collapse>
+    `}
   }, 
   "attr": ``,
-  "slotted": ``,
-  "demo": null
-}
-addLiveDemo(A11yCollapseStory);
+  "slotted": ``
+});
