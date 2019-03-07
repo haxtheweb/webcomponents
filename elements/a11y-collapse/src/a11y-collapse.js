@@ -142,7 +142,8 @@ let A11yCollapse = Polymer({
      * accordion-style: whole header acts as button? default is just icon.
      */
     accordion: {
-      type: Boolean,
+      name: "accordion",
+      type: "Boolean",
       value: false,
       observer: "flush",
       reflectToAttribute: true
@@ -151,7 +152,8 @@ let A11yCollapse = Polymer({
      * is disabled?
      */
     disabled: {
-      type: Boolean,
+      name: "disabled",
+      type: "Boolean",
       value: false,
       reflectToAttribute: true
     },
@@ -159,7 +161,8 @@ let A11yCollapse = Polymer({
      * icon when expanded
      */
     expanded: {
-      type: Boolean,
+      name: "expanded",
+      type: "Boolean",
       value: false,
       reflectToAttribute: true
     },
@@ -167,49 +170,56 @@ let A11yCollapse = Polymer({
      * icon for the button
      */
     icon: {
-      type: String,
-      value: "icons:expand-more"
+      name: "icon",
+      type: "String",
+      value: "icons: expand-more"
     },
     /**
      * icon when expanded
      */
     iconExpanded: {
-      type: String,
+      name: "iconExpanded",
+      type: "String",
       value: null
     },
     /**
      * label for the button
      */
     label: {
-      type: String,
+      name: "label",
+      type: "String",
       value: "expand/collapse"
     },
     /**
      * optional label for the button when expanded
      */
     labelExpanded: {
-      type: String,
+      name: "labelExpanded",
+      type: "String",
       value: null
     },
     /**
      * tooltip for the button
      */
     tooltip: {
-      type: String,
+      name: "tooltip",
+      type: "String",
       value: "toggle expand/collapse"
     },
     /**
      * optional tooltip for the button when expanded
      */
     tooltipExpanded: {
-      type: String,
+      name: "tooltipExpanded",
+      type: "String",
       value: null
     },
     /**
      * If no expanded icon is set, the default icon will rotate when expanded
      */
     __rotateIcon: {
-      type: Boolean,
+      name: "__rotateIcon",
+      type: "Boolean",
       computed: "_isRotated(expanded,iconExpanded)"
     }
   },
