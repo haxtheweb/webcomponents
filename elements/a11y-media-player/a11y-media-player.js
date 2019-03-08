@@ -764,6 +764,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
       tracks = new Array(),
       tdata = new Array(),
       selected = 0;
+    console.log(root.sources);
     root.__playerReady = true;
     root.__interactive = !root.disableInteractive;
     root.target = root.shadowRoot.querySelector("#transcript");

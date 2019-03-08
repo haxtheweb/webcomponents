@@ -1,4 +1,5 @@
 import { A11yMediaPlayer } from "./a11y-media-player.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { A11yMediaBehaviors } from "./lib/a11y-media-behaviors.js";
 import { A11yMediaPlayerBehaviors } from "./lib/a11y-media-player-behaviors.js";
 import * as enVtt from "./demo/samples/sintel-en.vtt";
@@ -8,150 +9,9 @@ import * as buellerVtt from "./demo/samples/bueller.vtt";
 import * as buellerMp3 from "./demo/samples/bueller.mp3";
 import * as stclairVtt from "./demo/samples/stclair.vtt";
 import stclairJpg from "./demo/samples/stclair.jpg";
-import { storiesOf } from "@storybook/polymer";
-import * as storybookBridge from "@storybook/addon-knobs/polymer";
+import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
-/**
- * Cleans the template html
- * @param {string} the demo html for the story
- * @param {array} array of regular expressions and replacements
- * @returns {string} the cleaned demo html for the story
- */
-let cleanHTML = (template, replacements = []) => {
-  // need to account for polymer goofiness when webpack rolls this up
-  let pattern = /<body[^>]*>((.|[\n\r])*)<\/body>/im;
-  //let demo = storiesOf("Pattern Library/Molecules/Media", module);
-  var array_matches = pattern.exec(template);
-  // now template is just the body contents
-  template = array_matches[1];
-  replacements.forEach(replacement => {
-    template = template.replace(new RegExp(replacement.find, "g"), replacement.replace);
-  });
-
-  template = template.replace(/=\\"\\"/g, "").replace(/\\"/g, '"');
-  return template;
-},
-/**
- * Creates a pattern library version based on demos
- * @param {object} story object with the following: ```
- {
-  "of": "Pattern Library/Molecules/Media",          //the path in the pattern library
-  "name": 'Video',                                  //the UI pattern name
-  "file": require("raw-loader!./demo/index.html")   //the file to use as a template
-  "replacements": [                                 //a series of replacment patterns
-    {
-      "find": "\.\/samples\/sintel-en.vtt",         //the regex pattern to find
-      "replace": enVtt                              //the replacement string
-    }
-  ]
-}
- ```
- * @returns {object} the pattern library version
- */
-addPattern = story => {
-  let template = cleanHTML(story.file, story.replacements);
-  story.demo = storiesOf(story.of, module);
-  story.demo.add(story.name, () => { return `${template}`; });
-},
-/**
- * Creates a knob and adds an attribute for each property in the given element
- * @param {object} the element
- * @param {array} an array of properties to exclude
- * @returns {string} attributes
- */
-getBindings = props => {
-  let binding = {};
-  for (var key in props) {
-    // skip prototype, private properties, objects, anything in the exclusions array, or any computed property
-    if (!props.hasOwnProperty(key)) continue;
-    let editable =
-      key.startsWith("__") === false &&
-      (props[key].computed === undefined ||
-        props[key].computed === "undefined") &&
-      props[key].readOnly !== true;
-    if (editable) {
-      let val = props[key].value,
-        keyType = props[key].type.name || props[key].type;
-      // convert typed props
-      if (keyType) {
-        let method = keyType.toLowerCase();
-        switch (method) {
-          case "boolean":
-            method = "boolean";
-            val = false;
-            break;
-          case "number":
-            val = parseFloat(val);
-            break;
-          case "date":
-            break;
-          case "object":
-            method = "text";
-            val = JSON.stringify(val);
-            break;
-          case "array":
-            method = "text";
-            val = JSON.stringify(val);
-            break;
-          default:
-            method = "text";
-            val = val || "";
-            break;
-        }
-
-        // ensure ke-bab case
-        let kebab = key.replace(/[A-Z\u00C0-\u00D6\u00D8-\u00DE]/g, function(
-          match
-        ) {
-          return "-" + match.toLowerCase();
-        });
-        binding[key] = {
-          "id": kebab,
-          "value": storybookBridge[method](key, val),
-        };
-      }
-    }
-  }
-  return binding;
-},
-/**
- * Creates slotted HTML bound to knobs for each property or slot
- * @param {object} story object with the following: ```
-{
-  "of": "a11y-collapse",                                          //the catergory this story will be under
-  "name": "a11y-collapse-group",                                   //the name of the element
-  "props": A11yCollapseGroup.properties,                          //an object with properties to bind
-  "slots": {
-    "title": { "name": "title", "type": "String", "value": ``},   //an named slot slot to bind
-    "slot": { "name": "slot", "type": "String", "value": ``}      //an unnamed slot to bind
-  }, 
-  "attr": ``,                                                     //unbound attributes
-  "slotted": ``                                                   //unbound slotted content
-}
-```
- * @returns {object} the slot content to wire to slots
- */
-addLiveDemo = (story) => {
-  story.demo = storiesOf(story.of, module);
-  story.demo.addDecorator(storybookBridge.withKnobs);
-  story.demo.add(story.name, () => {
-    story.slotted2 = ``;
-    Object.values(getBindings(story.slots)).forEach(slot => {
-      story.slotted2 += slot.id !== "slot" ? `<div slot="${slot.id}">${slot.value}</div>` : `${slot.value}`;
-    });
-    story.attr2 = ``;
-    Object.values(getBindings(story.props)).forEach(prop => {
-      if(prop.value !== false) story.attr2 += ` ${prop.id}="${prop.value}"`;
-    });
-    return `
-      <h1>${story.name}</h1>
-      <${story.name}${story.attr2}${story.attr}>
-        ${story.slotted2}
-        ${story.slotted}
-      </${story.name}>
-    `;
-  });
-};
+window.StorybookUtilities.requestAvailability();
 
 /**
  * add to the pattern library
@@ -186,9 +46,9 @@ const A11yMediaPlayerYouTubePattern = {
     {"find": "bueller.vtt", "replace": buellerVtt }
   ]
 }
-addPattern(A11yMediaPlayerAudioPattern);
-addPattern(A11yMediaPlayerVideoPattern);
-addPattern(A11yMediaPlayerYouTubePattern);
+window.StorybookUtilities.instance.addPattern(A11yMediaPlayerAudioPattern);
+window.StorybookUtilities.instance.addPattern(A11yMediaPlayerVideoPattern);
+window.StorybookUtilities.instance.addPattern(A11yMediaPlayerYouTubePattern);
 
 /**
  * add the live demo
@@ -196,21 +56,15 @@ addPattern(A11yMediaPlayerYouTubePattern);
 //combine all of the inherited properties into one object
 let allKnobs = Object.assign(
   { 
-    "accentColor": {"name": "accentColor", "type":"String", "value": "blue"}, 
+    "accentColor": {"name": "accentColor", "type":"String", "value": "blue", "options": Object.keys(SimpleColors.colors)}, 
     "dark": {"name": "dark", "type":"Boolean", "value": false}
   },
   A11yMediaPlayer.properties, A11yMediaBehaviors.properties,
   A11yMediaPlayerBehaviors.properties
 );
-allKnobs.sources.value = [{"src": "https://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4"}];
-allKnobs.tracks.value = [
-  {"src": enVtt, "srclang": "en", "label": "English"},
-  {"src": esVtt, "srclang": "es", "label": "Español"},
-  {"src": deVtt, "srclang": "de", "label": "Deutsch"}
-];
 allKnobs.crossorigin.value = "anonymous";
 //remove properties we don't want to expose
-['playing','target','search','media','selectedTrack','manifest'].forEach(prop => {
+['playing','target','search','media','selectedTrack','manifest','responsiveSize','status','selectedTrackID','flexLayout'].forEach(prop => {
   delete allKnobs[prop];
 });
 
@@ -219,8 +73,19 @@ const A11yMediaPlayerStory = {
   "of": "a11y-media-player",
   "name": "a11y-media-player",
   "props": allKnobs, 
-  "slots": {}, 
+  "slots": {
+    "slot": {
+      "name": "slot",
+      "type": "string",
+      "value": `
+        <source src="https://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
+        <track src="${enVtt}" srclang="en" label="English">
+        <track src="${esVtt}" srclang="es" label="Español">
+        <track src="${deVtt}" srclang="de" label="Deutsch">
+      `
+    }
+  }, 
   "attr": ``,
   "slotted": ``
 };
-addLiveDemo(A11yMediaPlayerStory);
+window.StorybookUtilities.instance.addLiveDemo(A11yMediaPlayerStory);
