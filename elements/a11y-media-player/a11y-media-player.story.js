@@ -56,7 +56,7 @@ window.StorybookUtilities.instance.addPattern(A11yMediaPlayerYouTubePattern);
 //combine all of the inherited properties into one object
 let allKnobs = Object.assign(
   { 
-    "accentColor": {"name": "accentColor", "type":"String", "value": "blue", "options": Object.keys(SimpleColors.colors)}, 
+    "accentColor": {"name": "accentColor", "type":"Select", "value": "blue", "options": Object.keys(SimpleColors.colors)}, 
     "dark": {"name": "dark", "type":"Boolean", "value": false}
   },
   A11yMediaPlayer.properties, A11yMediaBehaviors.properties,
@@ -64,7 +64,7 @@ let allKnobs = Object.assign(
 );
 allKnobs.crossorigin.value = "anonymous";
 //remove properties we don't want to expose
-['playing','target','search','media','selectedTrack','manifest','responsiveSize','status','selectedTrackID','flexLayout'].forEach(prop => {
+['playing','target','search','media','selectedTrack','manifest','responsiveSize','status','selectedTrackID','flexLayout','youtubeId','youTube'].forEach(prop => {
   delete allKnobs[prop];
 });
 
@@ -76,7 +76,7 @@ const A11yMediaPlayerStory = {
   "slots": {
     "slot": {
       "name": "slot",
-      "type": "string",
+      "type": "String",
       "value": `
         <source src="https://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
         <track src="${enVtt}" srclang="en" label="English">

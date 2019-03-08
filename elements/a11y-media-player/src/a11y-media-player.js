@@ -184,6 +184,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
     root.width = root.width !== null ? root.width : "100%";
     root.style.maxWidth = root.width !== null ? root.width : "100%";
     root._setPlayerHeight(aspect);
+    console.log("isYoutube", root.isYoutube);
     if (root.isYoutube) {
       root._youTubeRequest();
       document.addEventListener("timeupdate", e => {
@@ -501,6 +502,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
     root.querySelectorAll("source,track").forEach(node => {
       root.$.html5.media.appendChild(node);
     });
+    console.log("player", root, root.querySelectorAll("source,track"));
     root._appendToPlayer(root.tracks, "track");
     root._appendToPlayer(root.sources, "source");
     root.$.html5.media.textTracks.onaddtrack = e => {

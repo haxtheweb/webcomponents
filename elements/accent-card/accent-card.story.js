@@ -40,7 +40,7 @@ let props = Object.assign(
   { 
     "accentColor": {
       "name": "accentColor", 
-      "type":"String", 
+      "type": "Select", 
       "value": "light-blue", 
       "options":  Object.keys(SimpleColors.colors)
     },

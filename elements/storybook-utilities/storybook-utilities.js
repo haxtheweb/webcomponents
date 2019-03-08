@@ -74,8 +74,7 @@ export class StorybookUtilities {
           props[key].computed === "undefined") &&
         props[key].readOnly !== true;
       if (editable) {
-        console.log(key, props[key]);
-        let val = props[key].value,
+        let val = `${props[key].value}`,
           keyType = props[key].type.name || props[key].type;
         // convert typed props
         if (keyType) {
@@ -91,36 +90,50 @@ export class StorybookUtilities {
             id: kebab,
             value:
               method === "select"
-                ? storybookBridge.select(key, props[key].options || [], val)
+                ? storybookBridge.select(
+                    key,
+                    props[key].options || [],
+                    props[key].value
+                  )
                 : method === "number"
-                ? storybookBridge.number(key, parseFloat(val))
+                ? storybookBridge.number(key, parseFloat(props[key].value))
                 : method === "boolean"
                 ? storybookBridge.boolean(key, false)
                 : method === "date"
-                ? storybookBridge.date(key, new Date(val))
+                ? storybookBridge.date(key, new Date(props[key].value))
                 : method === "files"
                 ? storybookBridge.files(
                     key,
                     props[key].options || {},
-                    val || ""
+                    props[key].value || ""
                   )
                 : method === "radios"
-                ? storybookBridge.radios(key, props[key].options || {}, val)
+                ? storybookBridge.radios(
+                    key,
+                    props[key].options || {},
+                    props[key].value
+                  )
                 : method === "object"
-                ? storybookBridge.text(key, JSON.stringify(val || {}))
+                ? storybookBridge.text(
+                    key,
+                    JSON.stringify(props[key].value || {})
+                  )
                 : //storybookBridge.object(key, val || {}) :
                 method === "array"
-                ? storybookBridge.text(key, JSON.stringify(val || {}))
+                ? storybookBridge.text(
+                    key,
+                    JSON.stringify(props[key].value || {})
+                  )
                 : //storybookBridge.array(key, val || [], ',') :
                 method === "options"
                 ? storybookBridge.radios(
                     key,
                     props[key].valuesObj || {},
-                    val,
+                    props[key].value,
                     props[key].options || {}
                   )
                 : //method === "text"
-                  storybookBridge.text(key, val || "")
+                  storybookBridge.text(key, props[key].value || ``)
           };
         }
       }
@@ -147,26 +160,31 @@ export class StorybookUtilities {
   addLiveDemo(story) {
     story.demo = storiesOf(story.of, module);
     story.demo.addDecorator(storybookBridge.withKnobs);
-    story.demo.add(story.name, () => {
-      story.slotted2 = ``;
-      Object.values(this.getBindings(story.slots)).forEach(slot => {
-        story.slotted2 +=
-          slot.id !== "slot"
-            ? `<div slot="${slot.id}">${slot.value}</div>`
-            : `${slot.value}`;
-      });
-      story.attr2 = ``;
-      Object.values(this.getBindings(story.props)).forEach(prop => {
-        if (prop.value !== false) story.attr2 += ` ${prop.id}="${prop.value}"`;
-      });
-      return `
+    story.demo.add(
+      story.name,
+      () => {
+        story.slotted2 = ``;
+        Object.values(this.getBindings(story.slots)).forEach(slot => {
+          story.slotted2 +=
+            slot.id !== "slot"
+              ? `<div slot="${slot.id}">${slot.value}</div>`
+              : `${slot.value}`;
+        });
+        story.attr2 = ``;
+        Object.values(this.getBindings(story.props)).forEach(prop => {
+          if (prop.value !== false && prop.value !== "")
+            story.attr2 += ` ${prop.id}="${prop.value}"`;
+        });
+        return `
         <h1>${story.name}</h1>
         <${story.name}${story.attr2}${story.attr}>
           ${story.slotted2}
           ${story.slotted}
         </${story.name}>
       `;
-    });
+      },
+      { knobs: { escapeHTML: false } }
+    );
   }
 }
 // register global bridge on window if needed
