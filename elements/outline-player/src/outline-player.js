@@ -23,7 +23,7 @@ A LRN element
 */
 let OutlinePlayer = Polymer({
   _template: html`
-    <style include="simple-colors">
+    <style include="simple-colors hax-shared-styles">
       :host {
         --outline-player-min-height: 100vh;
         --app-drawer-width: 300px;

@@ -1,0 +1,968 @@
+{
+  "schema_version": "1.0.0",
+  "elements": [
+    {
+      "description": "",
+      "summary": "",
+      "path": "outline-player.js",
+      "properties": [
+        {
+          "name": "editMode",
+          "type": "boolean | null | undefined",
+          "description": "editting state for the page",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 310,
+              "column": 4
+            },
+            "end": {
+              "line": 314,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_editModeChanged\"",
+              "attributeType": "Boolean"
+            }
+          }
+        },
+        {
+          "name": "activeItem",
+          "type": "Object | null | undefined",
+          "description": "Active item which is in JSON Outline Schema",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 318,
+              "column": 4
+            },
+            "end": {
+              "line": 320,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Object"
+            }
+          }
+        },
+        {
+          "name": "manifest",
+          "type": "Object | null | undefined",
+          "description": "Manifest from haxcms-site-builder",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 324,
+              "column": 4
+            },
+            "end": {
+              "line": 326,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Object"
+            }
+          }
+        },
+        {
+          "name": "contentContainer",
+          "type": "Object | null | undefined",
+          "description": "DOM node that wraps the slot",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 330,
+              "column": 4
+            },
+            "end": {
+              "line": 332,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Object"
+            }
+          }
+        },
+        {
+          "name": "activeManifestIndex",
+          "type": "number | null | undefined",
+          "description": "active manifest index, key to location in the manifest itemsarray",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 336,
+              "column": 4
+            },
+            "end": {
+              "line": 338,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Number"
+            }
+          }
+        },
+        {
+          "name": "auto",
+          "type": "boolean | null | undefined",
+          "description": "Auto call json files",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 342,
+              "column": 4
+            },
+            "end": {
+              "line": 346,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "outlineFile",
+          "type": "string | null | undefined",
+          "description": "Outline JSON file name",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 350,
+              "column": 4
+            },
+            "end": {
+              "line": 354,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"outline.json\""
+        },
+        {
+          "name": "outlineLocation",
+          "type": "string | null | undefined",
+          "description": "Outline JSON location",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 358,
+              "column": 4
+            },
+            "end": {
+              "line": 361,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "selected",
+          "type": "string | null | undefined",
+          "description": "acitvely selected item",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 365,
+              "column": 4
+            },
+            "end": {
+              "line": 369,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_selectedPageChanged\"",
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "closed",
+          "type": "boolean | null | undefined",
+          "description": "Closed status for the drawer",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 373,
+              "column": 4
+            },
+            "end": {
+              "line": 378,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "_activeItemContent",
+          "type": "string | null | undefined",
+          "description": "Active item content",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 382,
+              "column": 4
+            },
+            "end": {
+              "line": 385,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_activeItemContentChanged\"",
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "outline",
+          "type": "Array | null | undefined",
+          "description": "Outline structured via JSON Outline Schema off the wire",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 389,
+              "column": 4
+            },
+            "end": {
+              "line": 393,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_outlineChanged\"",
+              "attributeType": "Array"
+            }
+          }
+        },
+        {
+          "name": "fillRemaining",
+          "type": "boolean | null | undefined",
+          "description": "Set min height of outline player to fill remaining\nspace to the bottom of the browser",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 398,
+              "column": 4
+            },
+            "end": {
+              "line": 402,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "_routerManifest",
+          "type": "Object | null | undefined",
+          "description": "Manifest that contains changes specific\nto routing.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 407,
+              "column": 4
+            },
+            "end": {
+              "line": 410,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Object"
+            }
+          },
+          "defaultValue": "{}"
+        },
+        {
+          "name": "_location",
+          "type": "Object | null | undefined",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 411,
+              "column": 4
+            },
+            "end": {
+              "line": 414,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_locationChanged\"",
+              "attributeType": "Object"
+            }
+          }
+        }
+      ],
+      "methods": [
+        {
+          "name": "disablePrevPage",
+          "description": "disablePrevPage",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 419,
+              "column": 2
+            },
+            "end": {
+              "line": 424,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "index"
+            }
+          ]
+        },
+        {
+          "name": "disableNextPage",
+          "description": "disableNextPage",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 428,
+              "column": 2
+            },
+            "end": {
+              "line": 433,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "index"
+            }
+          ]
+        },
+        {
+          "name": "prevPage",
+          "description": "Go back a page (if we can)",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 437,
+              "column": 2
+            },
+            "end": {
+              "line": 439,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "nextPage",
+          "description": "Advance a page (if we can)",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 443,
+              "column": 2
+            },
+            "end": {
+              "line": 445,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "changePage",
+          "description": "Go forward a page",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 449,
+              "column": 2
+            },
+            "end": {
+              "line": 468,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "direction"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_editModeChanged",
+          "description": "notice edit changed, make sure we fake a resize because of that container flyout",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 472,
+              "column": 2
+            },
+            "end": {
+              "line": 481,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "newValue"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "created",
+          "description": "created life cycle",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 485,
+              "column": 2
+            },
+            "end": {
+              "line": 487,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "ready",
+          "description": "ready life cycle",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 491,
+              "column": 2
+            },
+            "end": {
+              "line": 494,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "attached",
+          "description": "attached life cycle",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 498,
+              "column": 2
+            },
+            "end": {
+              "line": 512,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "detached",
+          "description": "detatched life cycle",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 516,
+              "column": 2
+            },
+            "end": {
+              "line": 519,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_locationChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 521,
+              "column": 2
+            },
+            "end": {
+              "line": 545,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "newValue"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_toggleMenu",
+          "description": "Link menu button to open and closing the side panel.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 549,
+              "column": 2
+            },
+            "end": {
+              "line": 562,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "wipeSlot",
+          "description": "Wipe slotted content",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 567,
+              "column": 2
+            },
+            "end": {
+              "line": 584,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "element"
+            },
+            {
+              "name": "slot",
+              "defaultValue": "\"*\""
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_activeItemContentChanged",
+          "description": "active item content changed.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 589,
+              "column": 2
+            },
+            "end": {
+              "line": 597,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "newValue"
+            },
+            {
+              "name": "oldValue"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_selectedPageChanged",
+          "description": "Selected page has changed.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 602,
+              "column": 2
+            },
+            "end": {
+              "line": 621,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "newValue"
+            },
+            {
+              "name": "oldValue"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "__hasTitle",
+          "description": "Determine whether we should show the title",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 626,
+              "column": 2
+            },
+            "end": {
+              "line": 628,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "outlineTitle"
+            }
+          ]
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 23,
+          "column": 28
+        },
+        "end": {
+          "line": 629,
+          "column": 1
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "OutlinePlayer",
+      "attributes": [
+        {
+          "name": "edit-mode",
+          "description": "editting state for the page",
+          "sourceRange": {
+            "start": {
+              "line": 310,
+              "column": 4
+            },
+            "end": {
+              "line": 314,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "active-item",
+          "description": "Active item which is in JSON Outline Schema",
+          "sourceRange": {
+            "start": {
+              "line": 318,
+              "column": 4
+            },
+            "end": {
+              "line": 320,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined"
+        },
+        {
+          "name": "manifest",
+          "description": "Manifest from haxcms-site-builder",
+          "sourceRange": {
+            "start": {
+              "line": 324,
+              "column": 4
+            },
+            "end": {
+              "line": 326,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined"
+        },
+        {
+          "name": "content-container",
+          "description": "DOM node that wraps the slot",
+          "sourceRange": {
+            "start": {
+              "line": 330,
+              "column": 4
+            },
+            "end": {
+              "line": 332,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined"
+        },
+        {
+          "name": "active-manifest-index",
+          "description": "active manifest index, key to location in the manifest itemsarray",
+          "sourceRange": {
+            "start": {
+              "line": 336,
+              "column": 4
+            },
+            "end": {
+              "line": 338,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "number | null | undefined"
+        },
+        {
+          "name": "auto",
+          "description": "Auto call json files",
+          "sourceRange": {
+            "start": {
+              "line": 342,
+              "column": 4
+            },
+            "end": {
+              "line": 346,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "outline-file",
+          "description": "Outline JSON file name",
+          "sourceRange": {
+            "start": {
+              "line": 350,
+              "column": 4
+            },
+            "end": {
+              "line": 354,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "outline-location",
+          "description": "Outline JSON location",
+          "sourceRange": {
+            "start": {
+              "line": 358,
+              "column": 4
+            },
+            "end": {
+              "line": 361,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "selected",
+          "description": "acitvely selected item",
+          "sourceRange": {
+            "start": {
+              "line": 365,
+              "column": 4
+            },
+            "end": {
+              "line": 369,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "closed",
+          "description": "Closed status for the drawer",
+          "sourceRange": {
+            "start": {
+              "line": 373,
+              "column": 4
+            },
+            "end": {
+              "line": 378,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "outline",
+          "description": "Outline structured via JSON Outline Schema off the wire",
+          "sourceRange": {
+            "start": {
+              "line": 389,
+              "column": 4
+            },
+            "end": {
+              "line": 393,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Array | null | undefined"
+        },
+        {
+          "name": "fill-remaining",
+          "description": "Set min height of outline player to fill remaining\nspace to the bottom of the browser",
+          "sourceRange": {
+            "start": {
+              "line": 398,
+              "column": 4
+            },
+            "end": {
+              "line": 402,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        }
+      ],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "auto-changed",
+          "description": "Fired when the `auto` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "outline-file-changed",
+          "description": "Fired when the `outlineFile` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "outline-location-changed",
+          "description": "Fired when the `outlineLocation` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "selected-changed",
+          "description": "Fired when the `selected` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "closed-changed",
+          "description": "Fired when the `closed` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "outline-changed",
+          "description": "Fired when the `outline` property changes.",
+          "metadata": {}
+        }
+      ],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "outline-player"
+    }
+  ]
+}
