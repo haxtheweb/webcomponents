@@ -54,10 +54,6 @@ Polymer({
         flex-direction: column;
       }
 
-      #title {
-        font-size: 16px;
-      }
-
       #right iron-icon {
         display: inline-block;
         color: gray;
