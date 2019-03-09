@@ -21,44 +21,52 @@ let ImageCompareSlider = Polymer({
       :host {
         display: block;
       }
-      :host .container {
+      :host #container {
+        overflow: visible;
+      }
+      :host #container,
+      :host #images,
+      :host #bottom,
+      :host #slider {
+        width: 100%;
+      }
+      :host #container,
+      :host #images {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      :host #images {
         position: relative;
       }
-      :host .container > * {
+      :host #images > * {
         left: 0;
         position: absolute;
+        width: 100%;
       }
-      :host .container > div {
+      :host #images > div {
         top: 0;
         padding: 0;
       }
       :host #top {
         overflow-x: hidden;
       }
+      :host #slider {
+        width: calc(100% - 30px);
+      }
     </style>
     <h2>[[title]]</h2>
-    <div class="container" style\$="[[styles.container]]">
-      <div id="bottom">
-        <iron-image
-          src\$="[[bottomSrc]]"
-          sizing\$="[[sizing]]"
-          style\$="[[styles.image]]"
-        ></iron-image>
+    <div id="container">
+      <div id="images" style$="padding-top: [[__imgAspect]]%;">
+        <div id="bottom">
+          <img id="bottomImg" src$="[[bottomSrc]]" />
+        </div>
+        <div id="top" style$="width: [[sliderPercent]]%;">
+          <img id="topImg" src$="[[topSrc]]" />
+        </div>
       </div>
-      <div id="top" style\$="[[styles.top]]">
-        <iron-image
-          src\$="[[topSrc]]"
-          sizing\$="[[sizing]]"
-          style\$="[[styles.image]]"
-        ></iron-image>
-      </div>
+      <paper-slider id="slider" value="50"></paper-slider>
     </div>
-    <paper-slider
-      id="slider"
-      value="50"
-      class="max-width-no-padding"
-      style\$="[[styles.slider]]"
-    ></paper-slider>
   `,
 
   is: "image-compare-slider",
@@ -96,27 +104,6 @@ let ImageCompareSlider = Polymer({
       value: "contain"
     },
     /**
-     * width of images
-     */
-    width: {
-      type: Number,
-      value: 400
-    },
-    /**
-     * height of images
-     */
-    height: {
-      type: Number,
-      value: 300
-    },
-    /**
-     * height of images
-     */
-    height: {
-      type: Number,
-      value: 300
-    },
-    /**
      * percent position of slider
      */
     sliderPercent: {
@@ -124,16 +111,11 @@ let ImageCompareSlider = Polymer({
       value: 50
     },
     /**
-     * calculated styles
+     * aspect ratio of bottom image
      */
-    styles: {
-      type: Object,
-      value: {
-        image: "width: 400px; height: 300px;",
-        slider: "width: 430px; margin: 0 -15px;",
-        container: "width: 400px; margin-bottom: 315px;",
-        top: "width: 50%;"
-      }
+    __imgAspect: {
+      type: Number,
+      computed: "_getImageAspect(topSrc)"
     }
   },
 
@@ -145,17 +127,14 @@ let ImageCompareSlider = Polymer({
     });
   },
 
-  _setStyles: function(width, height, sliderPercent) {
-    let w = this.width,
-      h = this.height,
-      sw = w + 30,
-      cmb = h + 15;
-    this.styles = {
-      image: "width: " + w + "px; height: " + h + "px;",
-      slider: "width: " + sw + "px; margin: 0 -15px;",
-      container: "width: " + w + "px; margin-bottom: " + cmb + "px;",
-      top: "width: " + this.sliderPercent + "%;"
-    };
+  /**
+   * Gets bottom image aspect ratio
+   * @param {string} the source for the bottom image (needed only to detect changes)
+   * @returns {number} aspect ratio, as percent
+   */
+  _getImageAspect: function(topSrc) {
+    let img = this.$.bottomImg;
+    return (img.height * 100) / img.width;
   },
 
   /**

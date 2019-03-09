@@ -62,11 +62,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 75,
+              "line": 83,
               "column": 4
             },
             "end": {
-              "line": 77,
+              "line": 85,
               "column": 5
             }
           },
@@ -83,11 +83,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 81,
+              "line": 89,
               "column": 4
             },
             "end": {
-              "line": 83,
+              "line": 91,
               "column": 5
             }
           },
@@ -104,11 +104,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 87,
+              "line": 95,
               "column": 4
             },
             "end": {
-              "line": 89,
+              "line": 97,
               "column": 5
             }
           },
@@ -125,11 +125,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 93,
+              "line": 101,
               "column": 4
             },
             "end": {
-              "line": 96,
+              "line": 104,
               "column": 5
             }
           },
@@ -141,59 +141,17 @@
           "defaultValue": "\"contain\""
         },
         {
-          "name": "width",
-          "type": "number | null | undefined",
-          "description": "width of images",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 100,
-              "column": 4
-            },
-            "end": {
-              "line": 103,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Number"
-            }
-          },
-          "defaultValue": "400"
-        },
-        {
-          "name": "height",
-          "type": "number | null | undefined",
-          "description": "height of images",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 107,
-              "column": 4
-            },
-            "end": {
-              "line": 110,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "defaultValue": "300"
-        },
-        {
           "name": "sliderPercent",
           "type": "number | null | undefined",
           "description": "percent position of slider",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 121,
+              "line": 108,
               "column": 4
             },
             "end": {
-              "line": 124,
+              "line": 111,
               "column": 5
             }
           },
@@ -205,26 +163,26 @@
           "defaultValue": "50"
         },
         {
-          "name": "styles",
-          "type": "Object | null | undefined",
-          "description": "calculated styles",
-          "privacy": "public",
+          "name": "__imgAspect",
+          "type": "number | null | undefined",
+          "description": "aspect ratio of bottom image",
+          "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 128,
+              "line": 115,
               "column": 4
             },
             "end": {
-              "line": 136,
+              "line": 118,
               "column": 5
             }
           },
           "metadata": {
             "polymer": {
-              "attributeType": "Object"
+              "readOnly": true,
+              "attributeType": "Number"
             }
-          },
-          "defaultValue": "{\"image\":\"width: 400px; height: 300px;\",\"slider\":\"width: 430px; margin: 0 -15px;\",\"container\":\"width: 400px; margin-bottom: 315px;\",\"top\":\"width: 50%;\"}"
+          }
         }
       ],
       "methods": [
@@ -282,11 +240,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 139,
+              "line": 121,
               "column": 2
             },
             "end": {
-              "line": 145,
+              "line": 127,
               "column": 3
             }
           },
@@ -297,33 +255,28 @@
           }
         },
         {
-          "name": "_setStyles",
-          "description": "",
+          "name": "_getImageAspect",
+          "description": "Gets bottom image aspect ratio",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 147,
+              "line": 135,
               "column": 2
             },
             "end": {
-              "line": 158,
+              "line": 138,
               "column": 3
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "width"
-            },
-            {
-              "name": "height"
-            },
-            {
-              "name": "sliderPercent"
+              "name": "topSrc"
             }
           ],
           "return": {
-            "type": "void"
+            "type": "number",
+            "desc": "aspect ratio, as percent"
           }
         },
         {
@@ -332,11 +285,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 163,
+              "line": 143,
               "column": 2
             },
             "end": {
-              "line": 224,
+              "line": 204,
               "column": 3
             }
           },
@@ -356,7 +309,7 @@
           "column": 33
         },
         "end": {
-          "line": 225,
+          "line": 205,
           "column": 1
         }
       },
@@ -405,11 +358,11 @@
           "description": "Title",
           "sourceRange": {
             "start": {
-              "line": 75,
+              "line": 83,
               "column": 4
             },
             "end": {
-              "line": 77,
+              "line": 85,
               "column": 5
             }
           },
@@ -421,11 +374,11 @@
           "description": "src for top image",
           "sourceRange": {
             "start": {
-              "line": 81,
+              "line": 89,
               "column": 4
             },
             "end": {
-              "line": 83,
+              "line": 91,
               "column": 5
             }
           },
@@ -437,11 +390,11 @@
           "description": "src for top image",
           "sourceRange": {
             "start": {
-              "line": 87,
+              "line": 95,
               "column": 4
             },
             "end": {
-              "line": 89,
+              "line": 97,
               "column": 5
             }
           },
@@ -453,11 +406,11 @@
           "description": "crop or contain",
           "sourceRange": {
             "start": {
-              "line": 93,
+              "line": 101,
               "column": 4
             },
             "end": {
-              "line": 96,
+              "line": 104,
               "column": 5
             }
           },
@@ -465,68 +418,20 @@
           "type": "string | null | undefined"
         },
         {
-          "name": "width",
-          "description": "width of images",
-          "sourceRange": {
-            "start": {
-              "line": 100,
-              "column": 4
-            },
-            "end": {
-              "line": 103,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "number | null | undefined"
-        },
-        {
-          "name": "height",
-          "description": "height of images",
-          "sourceRange": {
-            "start": {
-              "line": 107,
-              "column": 4
-            },
-            "end": {
-              "line": 110,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "number | null | undefined"
-        },
-        {
           "name": "slider-percent",
           "description": "percent position of slider",
           "sourceRange": {
             "start": {
-              "line": 121,
+              "line": 108,
               "column": 4
             },
             "end": {
-              "line": 124,
+              "line": 111,
               "column": 5
             }
           },
           "metadata": {},
           "type": "number | null | undefined"
-        },
-        {
-          "name": "styles",
-          "description": "calculated styles",
-          "sourceRange": {
-            "start": {
-              "line": 128,
-              "column": 4
-            },
-            "end": {
-              "line": 136,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "Object | null | undefined"
         }
       ],
       "events": [],

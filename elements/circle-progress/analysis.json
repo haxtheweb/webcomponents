@@ -56,7 +56,7 @@
         },
         {
           "name": "value",
-          "type": "number | null | undefined",
+          "type": "?",
           "description": "Value of circular progress bar.",
           "privacy": "public",
           "sourceRange": {
@@ -65,113 +65,83 @@
               "column": 4
             },
             "end": {
-              "line": 78,
+              "line": 79,
               "column": 5
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Number"
-            }
+            "polymer": {}
           },
           "defaultValue": "0"
         },
         {
           "name": "max",
-          "type": "number | null | undefined",
+          "type": "?",
           "description": "Maximum of value.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 83,
+              "line": 84,
               "column": 4
             },
             "end": {
-              "line": 86,
+              "line": 88,
               "column": 5
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Number"
-            }
+            "polymer": {}
           },
           "defaultValue": "100"
         },
         {
           "name": "strokeWidth",
-          "type": "number | null | undefined",
+          "type": "?",
           "description": "Stroke width of circle.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 91,
+              "line": 93,
               "column": 4
             },
             "end": {
-              "line": 94,
+              "line": 97,
               "column": 5
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Number"
-            }
+            "polymer": {}
           },
           "defaultValue": "4"
         },
         {
           "name": "angle",
-          "type": "number | null | undefined",
+          "type": "?",
           "description": "Starting angle of the progress.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 99,
+              "line": 102,
               "column": 4
             },
             "end": {
-              "line": 102,
+              "line": 106,
               "column": 5
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Number"
-            }
+            "polymer": {}
           },
           "defaultValue": "-90"
         },
         {
           "name": "_cx",
-          "type": "number | null | undefined",
+          "type": "?",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 104,
-              "column": 4
-            },
-            "end": {
-              "line": 107,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Number"
-            }
-          },
-          "defaultValue": "null"
-        },
-        {
-          "name": "_cy",
-          "type": "number | null | undefined",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 109,
+              "line": 108,
               "column": 4
             },
             "end": {
@@ -180,15 +150,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Number"
-            }
+            "polymer": {}
           },
           "defaultValue": "null"
         },
         {
-          "name": "_radius",
-          "type": "number | null | undefined",
+          "name": "_cy",
+          "type": "?",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -197,80 +165,96 @@
               "column": 4
             },
             "end": {
-              "line": 117,
+              "line": 118,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "null"
+        },
+        {
+          "name": "_radius",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 120,
+              "column": 4
+            },
+            "end": {
+              "line": 124,
               "column": 5
             }
           },
           "metadata": {
             "polymer": {
-              "readOnly": true,
-              "attributeType": "Number"
+              "readOnly": true
             }
           }
         },
         {
           "name": "_transform",
-          "type": "string | null | undefined",
+          "type": "?",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 119,
+              "line": 126,
               "column": 4
             },
             "end": {
-              "line": 122,
+              "line": 130,
               "column": 5
             }
           },
           "metadata": {
             "polymer": {
-              "readOnly": true,
-              "attributeType": "String"
+              "readOnly": true
             }
           }
         },
         {
           "name": "_dasharray",
-          "type": "number | null | undefined",
+          "type": "?",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 124,
+              "line": 132,
               "column": 4
             },
             "end": {
-              "line": 127,
+              "line": 136,
               "column": 5
             }
           },
           "metadata": {
             "polymer": {
-              "readOnly": true,
-              "attributeType": "Number"
+              "readOnly": true
             }
           }
         },
         {
           "name": "_dashoffset",
-          "type": "number | null | undefined",
+          "type": "?",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 129,
+              "line": 138,
               "column": 4
             },
             "end": {
-              "line": 132,
+              "line": 142,
               "column": 5
             }
           },
           "metadata": {
             "polymer": {
-              "readOnly": true,
-              "attributeType": "Number"
+              "readOnly": true
             }
           }
         }
@@ -677,11 +661,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 139,
+              "line": 149,
               "column": 2
             },
             "end": {
-              "line": 141,
+              "line": 151,
               "column": 3
             }
           },
@@ -698,11 +682,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 143,
+              "line": 153,
               "column": 2
             },
             "end": {
-              "line": 145,
+              "line": 155,
               "column": 3
             }
           },
@@ -725,11 +709,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 147,
+              "line": 157,
               "column": 2
             },
             "end": {
-              "line": 149,
+              "line": 159,
               "column": 3
             }
           },
@@ -752,11 +736,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 151,
+              "line": 161,
               "column": 2
             },
             "end": {
-              "line": 153,
+              "line": 163,
               "column": 3
             }
           },
@@ -779,11 +763,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 155,
+              "line": 165,
               "column": 2
             },
             "end": {
-              "line": 161,
+              "line": 171,
               "column": 3
             }
           },
@@ -803,7 +787,7 @@
           "column": 29
         },
         "end": {
-          "line": 162,
+          "line": 172,
           "column": 1
         }
       },
@@ -820,60 +804,56 @@
               "column": 4
             },
             "end": {
-              "line": 78,
+              "line": 79,
               "column": 5
             }
           },
-          "metadata": {},
-          "type": "number | null | undefined"
+          "metadata": {}
         },
         {
           "name": "max",
           "description": "Maximum of value.",
           "sourceRange": {
             "start": {
-              "line": 83,
+              "line": 84,
               "column": 4
             },
             "end": {
-              "line": 86,
+              "line": 88,
               "column": 5
             }
           },
-          "metadata": {},
-          "type": "number | null | undefined"
+          "metadata": {}
         },
         {
           "name": "stroke-width",
           "description": "Stroke width of circle.",
           "sourceRange": {
             "start": {
-              "line": 91,
+              "line": 93,
               "column": 4
             },
             "end": {
-              "line": 94,
+              "line": 97,
               "column": 5
             }
           },
-          "metadata": {},
-          "type": "number | null | undefined"
+          "metadata": {}
         },
         {
           "name": "angle",
           "description": "Starting angle of the progress.",
           "sourceRange": {
             "start": {
-              "line": 99,
+              "line": 102,
               "column": 4
             },
             "end": {
-              "line": 102,
+              "line": 106,
               "column": 5
             }
           },
-          "metadata": {},
-          "type": "number | null | undefined"
+          "metadata": {}
         }
       ],
       "events": [],
