@@ -62,11 +62,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 83,
+              "line": 67,
               "column": 4
             },
             "end": {
-              "line": 85,
+              "line": 69,
               "column": 5
             }
           },
@@ -83,19 +83,42 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 89,
+              "line": 73,
               "column": 4
             },
             "end": {
-              "line": 91,
+              "line": 76,
               "column": 5
             }
           },
           "metadata": {
             "polymer": {
+              "observer": "\"_updateAspect\"",
               "attributeType": "String"
             }
           }
+        },
+        {
+          "name": "opacity",
+          "type": "boolean | null | undefined",
+          "description": "mode for the slider: wipe",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 80,
+              "column": 4
+            },
+            "end": {
+              "line": 83,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
         },
         {
           "name": "bottomSrc",
@@ -104,83 +127,17 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 95,
+              "line": 87,
               "column": 4
             },
             "end": {
-              "line": 97,
+              "line": 89,
               "column": 5
             }
           },
           "metadata": {
             "polymer": {
               "attributeType": "String"
-            }
-          }
-        },
-        {
-          "name": "sizing",
-          "type": "string | null | undefined",
-          "description": "crop or contain",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 101,
-              "column": 4
-            },
-            "end": {
-              "line": 104,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          },
-          "defaultValue": "\"contain\""
-        },
-        {
-          "name": "sliderPercent",
-          "type": "number | null | undefined",
-          "description": "percent position of slider",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 108,
-              "column": 4
-            },
-            "end": {
-              "line": 111,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Number"
-            }
-          },
-          "defaultValue": "50"
-        },
-        {
-          "name": "__imgAspect",
-          "type": "number | null | undefined",
-          "description": "aspect ratio of bottom image",
-          "privacy": "private",
-          "sourceRange": {
-            "start": {
-              "line": 115,
-              "column": 4
-            },
-            "end": {
-              "line": 118,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": true,
-              "attributeType": "Number"
             }
           }
         }
@@ -240,11 +197,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 121,
+              "line": 92,
               "column": 2
             },
             "end": {
-              "line": 127,
+              "line": 100,
               "column": 3
             }
           },
@@ -255,28 +212,43 @@
           }
         },
         {
-          "name": "_getImageAspect",
-          "description": "Gets bottom image aspect ratio",
+          "name": "_slide",
+          "description": "updates the slider",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 135,
+              "line": 104,
               "column": 2
             },
             "end": {
-              "line": 138,
+              "line": 113,
               "column": 3
             }
           },
           "metadata": {},
-          "params": [
-            {
-              "name": "topSrc"
-            }
-          ],
+          "params": [],
           "return": {
-            "type": "number",
-            "desc": "aspect ratio, as percent"
+            "type": "void"
+          }
+        },
+        {
+          "name": "_updateAspect",
+          "description": "updates the aspect ratio",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 117,
+              "column": 2
+            },
+            "end": {
+              "line": 133,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
           }
         },
         {
@@ -285,11 +257,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 143,
+              "line": 138,
               "column": 2
             },
             "end": {
-              "line": 204,
+              "line": 199,
               "column": 3
             }
           },
@@ -309,7 +281,7 @@
           "column": 33
         },
         "end": {
-          "line": 205,
+          "line": 200,
           "column": 1
         }
       },
@@ -358,11 +330,11 @@
           "description": "Title",
           "sourceRange": {
             "start": {
-              "line": 83,
+              "line": 67,
               "column": 4
             },
             "end": {
-              "line": 85,
+              "line": 69,
               "column": 5
             }
           },
@@ -374,64 +346,48 @@
           "description": "src for top image",
           "sourceRange": {
             "start": {
-              "line": 89,
+              "line": 73,
               "column": 4
             },
             "end": {
-              "line": 91,
+              "line": 76,
               "column": 5
             }
           },
           "metadata": {},
           "type": "string | null | undefined"
+        },
+        {
+          "name": "opacity",
+          "description": "mode for the slider: wipe",
+          "sourceRange": {
+            "start": {
+              "line": 80,
+              "column": 4
+            },
+            "end": {
+              "line": 83,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
         },
         {
           "name": "bottom-src",
           "description": "src for top image",
           "sourceRange": {
             "start": {
-              "line": 95,
+              "line": 87,
               "column": 4
             },
             "end": {
-              "line": 97,
+              "line": 89,
               "column": 5
             }
           },
           "metadata": {},
           "type": "string | null | undefined"
-        },
-        {
-          "name": "sizing",
-          "description": "crop or contain",
-          "sourceRange": {
-            "start": {
-              "line": 101,
-              "column": 4
-            },
-            "end": {
-              "line": 104,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "slider-percent",
-          "description": "percent position of slider",
-          "sourceRange": {
-            "start": {
-              "line": 108,
-              "column": 4
-            },
-            "end": {
-              "line": 111,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "number | null | undefined"
         }
       ],
       "events": [],

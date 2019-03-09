@@ -19,53 +19,37 @@ let ImageCompareSlider = Polymer({
   _template: html`
     <style>
       :host {
-        display: block;
+        display: inline-flex;
+        width: 100%;
+        @apply --image-compare-slider;
+      }
+      :host > div,
+      :host #container,
+      :host #top {
+        width: 100%;
       }
       :host #container {
+        background-size: cover;
         overflow: visible;
-      }
-      :host #container,
-      :host #images,
-      :host #bottom,
-      :host #slider {
-        width: 100%;
-      }
-      :host #container,
-      :host #images {
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-      }
-      :host #images {
-        position: relative;
-      }
-      :host #images > * {
-        left: 0;
-        position: absolute;
-        width: 100%;
-      }
-      :host #images > div {
-        top: 0;
-        padding: 0;
+        @apply --image-compare-slider-container;
       }
       :host #top {
-        overflow-x: hidden;
+        background-size: auto 100%;
+        overflow: hidden;
       }
       :host #slider {
-        width: calc(100% - 30px);
+        width: calc(100% + 30px);
+        margin-left: -15px;
+        @apply --image-compare-slider-control;
       }
     </style>
-    <h2>[[title]]</h2>
-    <div id="container">
-      <div id="images" style$="padding-top: [[__imgAspect]]%;">
-        <div id="bottom">
-          <img id="bottomImg" src$="[[bottomSrc]]" />
-        </div>
-        <div id="top" style$="width: [[sliderPercent]]%;">
-          <img id="topImg" src$="[[topSrc]]" />
-        </div>
+    <div>
+      <h2>[[title]]</h2>
+      <div id="container" style$="background-image: url([[bottomSrc]]);">
+        <div id="top" style$="background-image: url([[topSrc]]);"></div>
       </div>
       <paper-slider id="slider" value="50"></paper-slider>
+      <div></div>
     </div>
   `,
 
@@ -88,53 +72,65 @@ let ImageCompareSlider = Polymer({
      * src for top image
      */
     topSrc: {
-      type: String
+      type: String,
+      observer: "_updateAspect"
+    },
+    /**
+     * mode for the slider: wipe
+     */
+    opacity: {
+      type: Boolean,
+      value: false
     },
     /**
      * src for top image
      */
     bottomSrc: {
       type: String
-    },
-    /**
-     * crop or contain
-     */
-    sizing: {
-      type: String,
-      value: "contain"
-    },
-    /**
-     * percent position of slider
-     */
-    sliderPercent: {
-      type: Number,
-      value: 50
-    },
-    /**
-     * aspect ratio of bottom image
-     */
-    __imgAspect: {
-      type: Number,
-      computed: "_getImageAspect(topSrc)"
     }
   },
 
   ready: function() {
     let root = this,
-      slider = this.$.slider;
+      slider = root.$.slider;
+    root._updateAspect();
+    root._slide();
     slider.addEventListener("immediate-value-changed", function(e) {
-      root.sliderPercent = slider.immediateValue;
+      root._slide();
     });
   },
-
   /**
-   * Gets bottom image aspect ratio
-   * @param {string} the source for the bottom image (needed only to detect changes)
-   * @returns {number} aspect ratio, as percent
+   * updates the slider
    */
-  _getImageAspect: function(topSrc) {
-    let img = this.$.bottomImg;
-    return (img.height * 100) / img.width;
+  _slide: function() {
+    let root = this,
+      slider = root.$.slider,
+      top = root.$.top;
+    if (this.opacity === false) {
+      top.style.width = slider.immediateValue + "%";
+    } else {
+      top.style.opacity = slider.immediateValue / 100;
+    }
+  },
+  /**
+   * updates the aspect ratio
+   */
+  _updateAspect: function() {
+    let root = this,
+      img = document.createElement("img"),
+      el = root.$.top,
+      getAspect = img => {
+        el.style.paddingTop = (img.height * 100) / img.width + "%";
+      };
+    root.__aspect = "75";
+    img.setAttribute("src", root.topSrc);
+    if (img.height !== undefined && img.height > 0) {
+      getAspect(img);
+    } else {
+      img.addEventListener("load", function() {
+        getAspect(img);
+      });
+    }
   },
 
   /**

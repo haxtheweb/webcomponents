@@ -25,6 +25,8 @@ window.StorybookUtilities.instance.addPattern(ImageCompareSliderPattern);
 const ImageCompareSliderProps = ImageCompareSlider.properties;
 ImageCompareSliderProps.topSrc.value = image1;
 ImageCompareSliderProps.bottomSrc.value = image2;
+ImageCompareSliderProps.style = {"type":"String", "value": `width: 400px;`};
+
 const ImageCompareSliderStory = {
   "of": "image-compare-slider",
   "name": "image-compare-slider",
