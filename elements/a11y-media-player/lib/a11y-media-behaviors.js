@@ -179,6 +179,9 @@ class A11yMediaBehaviors extends SimpleColors {
           },
           youTubeLoading: {
             label: "Ready."
+          },
+          youTubeTranscript: {
+            label: "Transcript will load once media plays."
           }
         },
         readOnly: true

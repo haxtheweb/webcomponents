@@ -89,6 +89,13 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
         value: "0"
       },
       /**
+       * the status of the transcript loading
+       */
+      status: {
+        type: String,
+        computed: "_stampLoadingStatus(disableSeek)"
+      },
+      /**
        * array of cues
        */
       tracks: {
@@ -161,7 +168,7 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
         active$="[[_isLoading(selectedTranscript, tracks)]]"
         class="transcript-from-track"
       >
-        [[_getLocal('transcript','loading')]]
+        [[status]]
       </div>
       <template id="tracks" is="dom-repeat" items="{{tracks}}" as="track">
         <div
@@ -418,9 +425,12 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
     );
   }
 
-  _stampLocal(localization, id, key) {
-    this.$[id].innerHTML = this._getLocal("transcript", key);
-    return this._getLocal("transcript", key);
+  _stampLoadingStatus(disableSeek) {
+    this.$.loading.innerHTML =
+      disableSeek === false
+        ? this._getLocal("transcript", "label")
+        : this._getLocal("youTubeTranscript", "label");
+    return this.$.loading.innerHTML;
   }
 }
 window.customElements.define(A11yMediaTranscript.tag, A11yMediaTranscript);

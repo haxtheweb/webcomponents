@@ -37,7 +37,6 @@ export { A11yMediaControls };
   hide-elapsed-time$="[[hideElapsedTime]]"    // Is elapsed time hidden?
   loop$="[[loop]]"                            // Is video on a loop?
   microcopy$="[[microcopy]]"                  // Optional customization or text and icons
-  muted$="[[muted]]"                          // Is video muted?
   responsive-size$="[[responsiveSize]]"       // The size of the player determines how controls are displayed
   volume$="[[volume]]">                       // The initial volume of the video
 </a11y-media-button>```

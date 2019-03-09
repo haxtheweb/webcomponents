@@ -8,6 +8,14 @@
     "computed": "_getMediaCaption(audioOnly,localization,mediaTitle)"
   },
   /**
+   * mute/unmute button
+   */
+  "muteUnmute": {
+    "name": "muteUnmute",
+    "type": "Object",
+    "computed": "_getMuteUnmute(muted)"
+  },
+  /**
    * The media caption that displays when the page is printed.
    */
   "printCaption": {
@@ -58,6 +66,14 @@
     "name": "tracks",
     "type": "Array",
     "value": []
+  },
+  /**
+   * play/pause button
+   */
+  "playPause": {
+    "name": "playPause",
+    "type": "Object",
+    "computed": "_getPlayPause(__playing)"
   },
   /**
    * Notice if the video is playing

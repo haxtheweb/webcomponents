@@ -455,6 +455,30 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
   }
 
   /**
+   * set play/pause button
+   *
+   * @param {boolean} Is the media muted?
+   * @param {string} label if button mutes media
+   * @param {string} icon if button mutes media
+   * @param {string} label if button unmutes media
+   * @param {string} icon if button unmutes media
+   * @returns {object} an object containing the current state of the play/pause button, eg., `{"label": "mute", "icon": "av:volume-off"}`
+   */
+  _getMuteUnmute(muted) {
+    return muted
+      ? {
+          label: this._getLocal("unmute", "label"),
+          icon: this._getLocal("unmute", "icon"),
+          action: "unmute"
+        }
+      : {
+          label: this._getLocal("mute", "label"),
+          icon: this._getLocal("mute", "icon"),
+          action: "mute"
+        };
+  }
+
+  /**
    * gets print caption
    *
    * @param {boolean} Is the player set to audio-only?
@@ -500,7 +524,6 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
     root.querySelectorAll("source,track").forEach(node => {
       root.$.html5.media.appendChild(node);
     });
-    console.log("player", root, root.querySelectorAll("source,track"));
     root._appendToPlayer(root.tracks, "track");
     root._appendToPlayer(root.sources, "source");
     root.$.html5.media.textTracks.onaddtrack = e => {
@@ -508,6 +531,30 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
       root.hasTranscript = !root.standAlone;
       root._getTrackData(e.track, counter++);
     };
+  }
+
+  /**
+   * set play/pause button
+   *
+   * @param {boolean} Is the media playing?
+   * @param {string} label if button pauses media
+   * @param {string} icon if button pauses media
+   * @param {string} label if button plays media
+   * @param {string} icon if button plays media
+   * @returns {object} an object containing the current state of the play/pause button, eg., `{"label": "Pause", "icon": "av:pause"}`
+   */
+  _getPlayPause(__playing) {
+    return __playing !== false
+      ? {
+          label: this._getLocal("pause", "label"),
+          icon: this._getLocal("pause", "icon"),
+          action: "pause"
+        }
+      : {
+          label: this._getLocal("play", "label"),
+          icon: this._getLocal("play", "icon"),
+          action: "play"
+        };
   }
 
   /**
@@ -793,7 +840,6 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
     root.disableSeek = true;
     if (root.__playerAttached && root.__playerReady) {
       let ytInit = () => {
-          root.__status = root._getLocal("youTubeLoading", "label");
           // once metadata is ready on video set it on the media player
           // initialize the YouTube player
           root.media = ytUtil.initYoutubePlayer({
@@ -801,6 +847,9 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
             height: "100%",
             videoId: root.youtubeId
           });
+          console.log("ytinit");
+          root.__status = root._getLocal("youTubeLoading", "label");
+          root.$.controls.setStatus(root.__status);
           // move the YouTube iframe to the media player's YouTube container
           root.$.youtube.appendChild(root.media.a);
           root.__ytAppended = true;

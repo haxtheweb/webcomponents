@@ -218,8 +218,7 @@ class A11yMediaPlayerBehaviors extends A11yMediaBehaviors {
        */
       muteUnmute: {
         name: "muteUnmute",
-        type: "Object",
-        computed: "_getMuteUnmute(muted,localization)"
+        type: "Object"
       },
       /**
        * Is media playing?
@@ -234,8 +233,7 @@ class A11yMediaPlayerBehaviors extends A11yMediaBehaviors {
        */
       playPause: {
         name: "playPause",
-        type: "Object",
-        computed: "_getPlayPause(playing,localization)"
+        type: "Object"
       },
       /**
        * Size of the a11y media element for responsive styling
@@ -362,54 +360,6 @@ class A11yMediaPlayerBehaviors extends A11yMediaBehaviors {
       this._testAttribute(responsiveSize, "xs") ||
       this._testAttribute(responsiveSize, "sm")
     );
-  }
-
-  /**
-   * set play/pause button
-   *
-   * @param {boolean} Is the media playing?
-   * @param {string} label if button pauses media
-   * @param {string} icon if button pauses media
-   * @param {string} label if button plays media
-   * @param {string} icon if button plays media
-   * @returns {object} an object containing the current state of the play/pause button, eg., `{"label": "Pause", "icon": "av:pause"}`
-   */
-  _getPlayPause(playing, localization) {
-    return playing
-      ? {
-          label: this._getLocal("pause", "label"),
-          icon: this._getLocal("pause", "icon"),
-          action: "pause"
-        }
-      : {
-          label: this._getLocal("play", "label"),
-          icon: this._getLocal("play", "icon"),
-          action: "play"
-        };
-  }
-
-  /**
-   * set play/pause button
-   *
-   * @param {boolean} Is the media muted?
-   * @param {string} label if button mutes media
-   * @param {string} icon if button mutes media
-   * @param {string} label if button unmutes media
-   * @param {string} icon if button unmutes media
-   * @returns {object} an object containing the current state of the play/pause button, eg., `{"label": "mute", "icon": "av:volume-off"}`
-   */
-  _getMuteUnmute(muted, localization) {
-    return muted
-      ? {
-          label: this._getLocal("unmute", "label"),
-          icon: this._getLocal("unmute", "icon"),
-          action: "unmute"
-        }
-      : {
-          label: this._getLocal("mute", "label"),
-          icon: this._getLocal("mute", "icon"),
-          action: "mute"
-        };
   }
 
   /**
