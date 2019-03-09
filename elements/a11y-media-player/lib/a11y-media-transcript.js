@@ -46,6 +46,13 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
         notify: true
       },
       /**
+       * selected transcript track id
+       */
+      disableCue: {
+        type: Boolean,
+        computed: "_areCuesDisabled(disableInteractive,disableSeek)"
+      },
+      /**
        * Language
        */
       lang: {
@@ -147,14 +154,14 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
         }
       </style>
       <a id="transcript-desc" class="sr-only" href="#bottom">
-        [[_getLocal(localization,'transcript','skip')]]
+        [[_getLocal('transcript','skip')]]
       </a>
       <div
         id="loading"
         active$="[[_isLoading(selectedTranscript, tracks)]]"
         class="transcript-from-track"
       >
-        [[_getLocal(localization,'transcript','loading')]]
+        [[_getLocal('transcript','loading')]]
       </div>
       <template id="tracks" is="dom-repeat" items="{{tracks}}" as="track">
         <div
@@ -169,7 +176,7 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
               active-cues$="[[activeCues]]"
               controls$="[[mediaId]]"
               cue$="{{cue}}"
-              disabled$="[[disableInteractive]]"
+              disabled$="[[disableCue]]"
               disable-search$="[[disableSearch]]"
               hide-timestamps$="[[hideTimestamps]]"
               on-tap="_handleCueSeek"
@@ -344,6 +351,17 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
   }
 
   /**
+   * determines if cues should be disabled
+   *
+   * @param {boolean} Is the interactive transcript mode disabled?
+   * @param {boolean} Is seeking disabled?
+   * @returns {boolean} if the cue is disabled
+   */
+  _areCuesDisabled(disableInteractive, disableSeek) {
+    return disableInteractive || disableSeek;
+  }
+
+  /**
    * gets the tab-index of cues based on whether or not interactive cues are disabled
    *
    * @param {boolean} Is the interactive transcript mode disabled?
@@ -367,7 +385,7 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
    * forwards the listener for transcript cue click to seek accordingly
    */
   _handleCueSeek(e) {
-    if (!this.disableInteractive) {
+    if (!this.disableCue) {
       this.dispatchEvent(new CustomEvent("cue-seek", { detail: e.detail }));
     }
   }
@@ -401,8 +419,8 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
   }
 
   _stampLocal(localization, id, key) {
-    this.$[id].innerHTML = this._getLocal(localization, "transcript", key);
-    return this._getLocal(localization, "transcript", key);
+    this.$[id].innerHTML = this._getLocal("transcript", key);
+    return this._getLocal("transcript", key);
   }
 }
 window.customElements.define(A11yMediaTranscript.tag, A11yMediaTranscript);

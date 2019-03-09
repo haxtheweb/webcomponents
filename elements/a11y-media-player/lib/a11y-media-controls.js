@@ -254,26 +254,26 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
         ></a11y-media-button>
         <a11y-media-button
           action="rewind"
-          disabled$="[[compactControls]]"
+          disabled$="[[disableSeek]]"
           hidden$="[[compactControls]]"
-          icon$="[[_getLocal(localization,'rewind','icon')]]"
-          label$="[[_getLocal(localization,'rewind','label')]]"
+          icon$="[[_getLocal('rewind','icon')]]"
+          label$="[[_getLocal('rewind','label')]]"
           on-tap="_onButtonTap"
         ></a11y-media-button>
         <a11y-media-button
           action="forward"
-          disabled$="[[compactControls]]"
+          disabled$="[[disableSeek]]"
           hidden$="[[compactControls]]"
-          icon$="[[_getLocal(localization,'forward','icon')]]"
-          label$="[[_getLocal(localization,'forward','label')]]"
+          icon$="[[_getLocal('forward','icon')]]"
+          label$="[[_getLocal('forward','label')]]"
           on-tap="_onButtonTap"
         ></a11y-media-button>
         <a11y-media-button
           action="restart"
-          disabled$="[[compactControls]]"
+          disabled$="[[disableSeek]]"
           hidden$="[[compactControls]]"
-          icon$="[[_getLocal(localization,'restart','icon')]]"
-          label$="[[_getLocal(localization,'restart','label')]]"
+          icon$="[[_getLocal('restart','icon')]]"
+          label$="[[_getLocal('restart','label')]]"
           on-tap="_onButtonTap"
         ></a11y-media-button>
         <div id="showvolume">
@@ -305,8 +305,8 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
           action="captions"
           disabled$="[[!hasCaptions]]"
           hidden$="[[!hasCaptions]]"
-          icon$="[[_getLocal(localization,'captions','icon')]]"
-          label$="[[_getLocal(localization,'captions','label')]]"
+          icon$="[[_getLocal('captions','icon')]]"
+          label$="[[_getLocal('captions','label')]]"
           on-tap="_onButtonTap"
           toggle$="[[cc]]"
         >
@@ -316,8 +316,8 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
           controls="transcript"
           disabled$="[[hideTranscriptButton]]"
           hidden$="[[hideTranscriptButton]]"
-          icon$="[[_getLocal(localization,'transcript','icon')]]"
-          label$="[[_getLocal(localization,'transcript','label')]]"
+          icon$="[[_getLocal('transcript','icon')]]"
+          label$="[[_getLocal('transcript','label')]]"
           on-tap="_onButtonTap"
           toggle$="[[!hideTranscript]]"
         >
@@ -326,8 +326,8 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
           action="print"
           disabled$="[[noPrinting]]"
           hidden$="[[noPrinting]]"
-          icon$="[[_getLocal(localization,'print','icon')]]"
-          label="[[_getLocal(localization,'print','label')]]"
+          icon$="[[_getLocal('print','icon')]]"
+          label="[[_getLocal('print','label')]]"
           on-tap="_handlePrintClick"
         >
         </a11y-media-button>
@@ -343,8 +343,8 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
         >
           <paper-icon-button
             action="settings"
-            alt$="[[_getLocal(localization,'settings','label')]]"
-            icon$="[[_getLocal(localization,'settings','icon')]]"
+            alt$="[[_getLocal('settings','label')]]"
+            icon$="[[_getLocal('settings','icon')]]"
             slot="dropdown-trigger"
           >
           </paper-icon-button>
@@ -352,7 +352,7 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
             <paper-item hidden$="[[!hasCaptions]]">
               <div class="setting">
                 <div class="setting-text">
-                  [[_getLocal(localization,'captions','label')]]
+                  [[_getLocal('captions','label')]]
                 </div>
                 <div class="setting-control">
                   <dropdown-select
@@ -363,7 +363,7 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
                     value
                   >
                     <paper-item value=""
-                      >[[_getLocal(localization,'captions','off')]]</paper-item
+                      >[[_getLocal('captions','off')]]</paper-item
                     >
                     <template is="dom-repeat" items="{{tracks}}" as="option">
                       <paper-item value$="{{option.value}}"
@@ -377,7 +377,7 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
             <paper-item hidden$="[[noTranscriptToggle]]">
               <div class="setting">
                 <div id="transcript-label" class="setting-text">
-                  [[_getLocal(localization,'transcript','label')]]
+                  [[_getLocal('transcript','label')]]
                 </div>
                 <div class="setting-control">
                   <paper-toggle-button
@@ -394,7 +394,7 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
             <paper-item>
               <div class="setting">
                 <div id="loop-label" class="setting-text">
-                  [[_getLocal(localization,'loop','label')]]
+                  [[_getLocal('loop','label')]]
                 </div>
                 <div class="setting-control">
                   <paper-toggle-button
@@ -408,7 +408,7 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
             <paper-item>
               <div class="setting">
                 <div id="speed-label" class="setting-text">
-                  [[_getLocal(localization,'speed','label')]]
+                  [[_getLocal('speed','label')]]
                 </div>
                 <div class="setting-control">
                   <paper-slider
@@ -429,14 +429,14 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
           </paper-listbox>
         </paper-menu-button>
         <paper-tooltip for="settings">
-          [[_getLocal(localization,'settings','label')]]
+          [[_getLocal('settings','label')]]
         </paper-tooltip>
         <template is="dom-if" if="[[fullscreenButton]]">
           <template is="dom-if" if="[[!audioNoThumb]]">
             <a11y-media-button
               action="fullscreen"
-              icon$="[[_getLocal(localization,'fullscreen','icon')]]"
-              label$="[[_getLocal(localization,'fullscreen','label')]]"
+              icon$="[[_getLocal('fullscreen','icon')]]"
+              label$="[[_getLocal('fullscreen','label')]]"
               on-tap="_onButtonTap"
               toggle$="[[fullscreen]]"
               step="1"

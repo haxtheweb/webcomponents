@@ -377,13 +377,13 @@ class A11yMediaPlayerBehaviors extends A11yMediaBehaviors {
   _getPlayPause(playing, localization) {
     return playing
       ? {
-          label: this._getLocal(localization, "pause", "label"),
-          icon: this._getLocal(localization, "pause", "icon"),
+          label: this._getLocal("pause", "label"),
+          icon: this._getLocal("pause", "icon"),
           action: "pause"
         }
       : {
-          label: this._getLocal(localization, "play", "label"),
-          icon: this._getLocal(localization, "play", "icon"),
+          label: this._getLocal("play", "label"),
+          icon: this._getLocal("play", "icon"),
           action: "play"
         };
   }
@@ -401,13 +401,13 @@ class A11yMediaPlayerBehaviors extends A11yMediaBehaviors {
   _getMuteUnmute(muted, localization) {
     return muted
       ? {
-          label: this._getLocal(localization, "unmute", "label"),
-          icon: this._getLocal(localization, "unmute", "icon"),
+          label: this._getLocal("unmute", "label"),
+          icon: this._getLocal("unmute", "icon"),
           action: "unmute"
         }
       : {
-          label: this._getLocal(localization, "mute", "label"),
-          icon: this._getLocal(localization, "mute", "icon"),
+          label: this._getLocal("mute", "label"),
+          icon: this._getLocal("mute", "icon"),
           action: "mute"
         };
   }

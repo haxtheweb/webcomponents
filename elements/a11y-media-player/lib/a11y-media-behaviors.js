@@ -48,6 +48,14 @@ class A11yMediaBehaviors extends SimpleColors {
         value: false
       },
       /**
+       * disables seeking
+       */
+      disableSeek: {
+        name: "disableSeek",
+        type: "Boolean",
+        value: false
+      },
+      /**
        * The height of the media player.
        */
       height: {
@@ -168,6 +176,9 @@ class A11yMediaBehaviors extends SimpleColors {
           },
           volume: {
             label: "Volume"
+          },
+          youTubeLoading: {
+            label: "Ready."
           }
         },
         readOnly: true
@@ -362,8 +373,9 @@ class A11yMediaBehaviors extends SimpleColors {
    * @param {string} the subkey to search for
    * @returns {string} the default value for [key][subkey], unless localization[key][subkey] exists
    */
-  _getLocal(localization, key, subkey) {
-    let local = "";
+  _getLocal(key, subkey) {
+    let local = "",
+      localization = this.localization;
     if (
       localization !== undefined &&
       localization[key] !== undefined &&

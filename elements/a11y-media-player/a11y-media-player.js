@@ -583,6 +583,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
         <paper-slider
           id="slider"
           class="screen-only"
+          disabled$="[[disableSeek]]"
           max$="[[__duration]]"
           secondary-progress$="[[__buffered]]"
           value$="[[__elapsed]]"
@@ -591,6 +592,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
         <a11y-media-controls
           id="controls"
           cc$="[[cc]]"
+          disable-seek$="[[disableSeek]]"
           fixed-height$="[[height]]"
           has-captions$="[[hasCaptions]]"
           has-transcript$="[[hasTranscript]]"
@@ -637,6 +639,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
             dark$="[[darkTranscript]]"
             disable-scroll$="[[disableScroll]]"
             disable-search$="[[disableSearch]]"
+            disable-seek$="[[disableSeek]]"
             disable-interactive$="[[disableInteractive]]"
             hide-timestamps$="[[hideTimestamps]]"
             on-cue-seek="_handleCueSeek"
@@ -765,9 +768,8 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
       tdata = new Array(),
       selected = 0;
     root.__playerReady = true;
-    root.__interactive = !root.disableInteractive;
     root.target = root.shadowRoot.querySelector("#transcript");
-    root.__status = root.loadingLabel;
+    root.__status = root._getLocal("loading", "label");
     root.__slider = root.$.slider;
     root.__volume = root.muted ? 0 : Math.max(this.volume, 10);
     root.__resumePlaying = false;
@@ -780,7 +782,6 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
     root.width = root.width !== null ? root.width : "100%";
     root.style.maxWidth = root.width !== null ? root.width : "100%";
     root._setPlayerHeight(aspect);
-    console.log("isYoutube", root.isYoutube);
     if (root.isYoutube) {
       root._youTubeRequest();
       document.addEventListener("timeupdate", e => {
@@ -1038,7 +1039,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
    * @returns {string} the media caption
    */
   _getMediaCaption(audioOnly, localization, mediaTitle) {
-    let audioLabel = this._getLocal(localization, "audio", "label"),
+    let audioLabel = this._getLocal("audio", "label"),
       hasMediaTitle =
         mediaTitle !== undefined && mediaTitle !== null && mediaTitle !== "";
     if (audioOnly && hasMediaTitle) {
@@ -1062,8 +1063,8 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
    * @returns {string} the media caption when the page is printed
    */
   _getPrintCaption(audioOnly, localization, mediaTitle) {
-    let audioLabel = this._getLocal(localization, "audio", "label"),
-      videoLabel = this._getLocal(localization, "video", "label"),
+    let audioLabel = this._getLocal("audio", "label"),
+      videoLabel = this._getLocal("video", "label"),
       hasMediaTitle =
         mediaTitle !== undefined && mediaTitle !== null && mediaTitle !== "";
     if (audioOnly && hasMediaTitle) {
@@ -1251,6 +1252,14 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
   _handleTimeUpdate(e) {
     let root = this;
     //if play exceeds clip length, stop
+    if (root.isYoutube && root.media.duration !== root.media.getDuration()) {
+      root.__duration = root.media.duration = root.media.getDuration();
+      root.disableSeek = false;
+      if (root.media.seekable !== undefined && root.media.seekable.length > 0) {
+        root.$.slider.min = root.media.seekable.start(0);
+      }
+      root._addSourcesAndTracks();
+    }
     if (
       root.media.seekable !== undefined &&
       root.media.seekable.length > 0 &&
@@ -1380,21 +1389,11 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
     window.A11yMediaYoutube.requestAvailability();
     let root = this,
       ytUtil = window.A11yMediaYoutube.instance;
-    root.disableInteractive = true;
+    root.disableSeek = true;
     if (root.__playerAttached && root.__playerReady) {
       let ytInit = () => {
+          root.__status = root._getLocal("youTubeLoading", "label");
           // once metadata is ready on video set it on the media player
-          let setMetadata = () => {
-            root.__duration = root.media.duration;
-            root._setElapsedTime();
-            if (
-              root.media.seekable !== undefined &&
-              root.media.seekable.length > 0
-            ) {
-              root.$.slider.min = root.media.seekable.start(0);
-            }
-            root._addSourcesAndTracks();
-          };
           // initialize the YouTube player
           root.media = ytUtil.initYoutubePlayer({
             width: "100%",
@@ -1405,17 +1404,6 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
           root.$.youtube.appendChild(root.media.a);
           root.__ytAppended = true;
           root._updateCustomTracks();
-
-          // youtube API doesn't immediately give length of a video
-          if (root.media.duration > 0) {
-            setMetadata();
-          } else {
-            document.addEventListener("youtube-video-metadata-loaded", e => {
-              if (e.detail === root.media) {
-                setMetadata();
-              }
-            });
-          }
         },
         checkApi = e => {
           if (ytUtil.apiReady) {

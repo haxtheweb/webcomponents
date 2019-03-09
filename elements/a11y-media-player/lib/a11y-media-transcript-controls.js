@@ -129,12 +129,12 @@ class A11yMediaTranscriptControls extends A11yMediaPlayerBehaviors {
             disabled$="[[disableSearch]]"
             hidden$="[[disableSearch]]"
             no-label-float
-            next-button-icon$="[[_getLocal(localization,'nextResult','icon')]]"
-            next-button-label$="[[_getLocal(localization,'nextResult','label')]]"
-            prev-button-icon$="[[_getLocal(localization,'prevResult','icon')]]"
-            prev-button-label$="[[_getLocal(localization,'prevResult','label')]]"
-            search-input-icon$="[[_getLocal(localization,'search','icon')]]"
-            search-input-label$="[[_getLocal(localization,'search','label')]]"
+            next-button-icon$="[[_getLocal('nextResult','icon')]]"
+            next-button-label$="[[_getLocal('nextResult','label')]]"
+            prev-button-icon$="[[_getLocal('prevResult','icon')]]"
+            prev-button-label$="[[_getLocal('prevResult','label')]]"
+            search-input-icon$="[[_getLocal('search','icon')]]"
+            search-input-label$="[[_getLocal('search','label')]]"
             target="[[target]]"
           >
           </simple-search>
@@ -143,8 +143,8 @@ class A11yMediaTranscriptControls extends A11yMediaPlayerBehaviors {
           <a11y-media-button
             id="scroll"
             controls="transcript"
-            icon="[[_getLocal(localization,'autoScroll','icon')]]"
-            label="[[_getLocal(localization,'autoScroll','label')]]"
+            icon="[[_getLocal('autoScroll','icon')]]"
+            label="[[_getLocal('autoScroll','label')]]"
             on-tap="_handleScrollClick"
             toggle$="[[!disableScroll]]"
           >
@@ -158,8 +158,8 @@ class A11yMediaTranscriptControls extends A11yMediaPlayerBehaviors {
           <a11y-media-button
             id="print"
             controls="transcript"
-            icon$="[[_getLocal(localization,'print','icon')]]"
-            label="[[_getLocal(localization,'print','label')]]"
+            icon$="[[_getLocal('print','icon')]]"
+            label="[[_getLocal('print','label')]]"
             on-tap="_handlePrintClick"
           >
           </a11y-media-button>

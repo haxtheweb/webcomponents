@@ -182,36 +182,6 @@ class A11yMediaYoutube extends PolymerElement {
     iframe.setMute = mode => {
       if (iframe.mute !== undefined) mode ? iframe.mute() : iframe.unMute();
     };
-    //keep playing the video until the duration is loaded
-    let int = setInterval(() => {
-        if (iframe.playVideo !== undefined) {
-          clearInterval(int);
-          if (iframe.getDuration === undefined || iframe.duration === 0)
-            iframe.play();
-        }
-      }, 100),
-      int2 = setInterval(() => {
-        if (iframe.getDuration !== undefined && iframe.getDuration() > 0) {
-          clearInterval(int2);
-          iframe.duration = iframe.getDuration();
-          iframe.pause();
-          start = start !== null ? Math.min(start, iframe.duration) : 0;
-          end = end !== null ? Math.min(end, iframe.duration) : iframe.duration;
-          //add markers to the slider; could be used in future for interactive as well
-          iframe.seekable.length = 1;
-          iframe.seekable.start = index => {
-            return start;
-          };
-          iframe.seekable.end = index => {
-            return end;
-          };
-          iframe.seekTo(start);
-          document.dispatchEvent(
-            new CustomEvent("youtube-video-metadata-loaded", { detail: iframe })
-          );
-        }
-      }, 100);
-    // return the iframe so that a11y-media-player can control it
     return iframe;
   }
 }
