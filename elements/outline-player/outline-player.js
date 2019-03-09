@@ -30,7 +30,7 @@ let OutlinePlayer = Polymer({
         --outline-player-dark: #222222;
         --outline-player-light: #f8f8f8;
         --outline-player-font-family: "Open Sans";
-        --outline-player-font-size: 20px;
+        --outline-player-font-size: 21;
         --outline-player-line-height: 1.5;
         display: block;
         position: relative;
@@ -38,12 +38,24 @@ let OutlinePlayer = Polymer({
         font-family: var(--outline-player-font-family);
         line-height: var(--outline-player-line-height);
         font-variant-ligatures: none;
-        font-size: var(--outline-player-font-size);
+        font-size: calc(var(--outline-player-font-size) * 0.75px);
         text-rendering: optimizelegibility;
         -webkit-font-smoothing: antialiased;
         text-decoration-skip-ink: auto;
         margin: 0px;
         background: white;
+      }
+
+      @media screen and (min-width: 600px) {
+        :host {
+          font-size: calc(var(--outline-player-font-size) * 0.8px);
+        }
+      }
+
+      @media screen and (min-width: 800px) {
+        :host {
+          font-size: calc(var(--outline-player-font-size) * 0.9px);
+        }
       }
 
       :host([closed]) {

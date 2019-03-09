@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 310,
+              "line": 322,
               "column": 4
             },
             "end": {
-              "line": 314,
+              "line": 326,
               "column": 5
             }
           },
@@ -32,48 +32,6 @@
           "name": "activeItem",
           "type": "Object | null | undefined",
           "description": "Active item which is in JSON Outline Schema",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 318,
-              "column": 4
-            },
-            "end": {
-              "line": 320,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
-          }
-        },
-        {
-          "name": "manifest",
-          "type": "Object | null | undefined",
-          "description": "Manifest from haxcms-site-builder",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 324,
-              "column": 4
-            },
-            "end": {
-              "line": 326,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
-          }
-        },
-        {
-          "name": "contentContainer",
-          "type": "Object | null | undefined",
-          "description": "DOM node that wraps the slot",
           "privacy": "public",
           "sourceRange": {
             "start": {
@@ -92,9 +50,9 @@
           }
         },
         {
-          "name": "activeManifestIndex",
-          "type": "number | null | undefined",
-          "description": "active manifest index, key to location in the manifest itemsarray",
+          "name": "manifest",
+          "type": "Object | null | undefined",
+          "description": "Manifest from haxcms-site-builder",
           "privacy": "public",
           "sourceRange": {
             "start": {
@@ -103,6 +61,48 @@
             },
             "end": {
               "line": 338,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Object"
+            }
+          }
+        },
+        {
+          "name": "contentContainer",
+          "type": "Object | null | undefined",
+          "description": "DOM node that wraps the slot",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 342,
+              "column": 4
+            },
+            "end": {
+              "line": 344,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Object"
+            }
+          }
+        },
+        {
+          "name": "activeManifestIndex",
+          "type": "number | null | undefined",
+          "description": "active manifest index, key to location in the manifest itemsarray",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 348,
+              "column": 4
+            },
+            "end": {
+              "line": 350,
               "column": 5
             }
           },
@@ -119,11 +119,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 342,
+              "line": 354,
               "column": 4
             },
             "end": {
-              "line": 346,
+              "line": 358,
               "column": 5
             }
           },
@@ -142,11 +142,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 350,
+              "line": 362,
               "column": 4
             },
             "end": {
-              "line": 354,
+              "line": 366,
               "column": 5
             }
           },
@@ -165,11 +165,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 358,
+              "line": 370,
               "column": 4
             },
             "end": {
-              "line": 361,
+              "line": 373,
               "column": 5
             }
           },
@@ -187,11 +187,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 365,
+              "line": 377,
               "column": 4
             },
             "end": {
-              "line": 369,
+              "line": 381,
               "column": 5
             }
           },
@@ -210,11 +210,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 373,
+              "line": 385,
               "column": 4
             },
             "end": {
-              "line": 378,
+              "line": 390,
               "column": 5
             }
           },
@@ -233,11 +233,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 382,
+              "line": 394,
               "column": 4
             },
             "end": {
-              "line": 385,
+              "line": 397,
               "column": 5
             }
           },
@@ -255,11 +255,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 389,
+              "line": 401,
               "column": 4
             },
             "end": {
-              "line": 393,
+              "line": 405,
               "column": 5
             }
           },
@@ -278,11 +278,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 398,
+              "line": 410,
               "column": 4
             },
             "end": {
-              "line": 402,
+              "line": 414,
               "column": 5
             }
           },
@@ -300,11 +300,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 407,
+              "line": 419,
               "column": 4
             },
             "end": {
-              "line": 410,
+              "line": 422,
               "column": 5
             }
           },
@@ -322,11 +322,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 411,
+              "line": 423,
               "column": 4
             },
             "end": {
-              "line": 414,
+              "line": 426,
               "column": 5
             }
           },
@@ -345,11 +345,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 419,
+              "line": 431,
               "column": 2
             },
             "end": {
-              "line": 424,
+              "line": 436,
               "column": 3
             }
           },
@@ -366,11 +366,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 428,
+              "line": 440,
               "column": 2
             },
             "end": {
-              "line": 433,
+              "line": 445,
               "column": 3
             }
           },
@@ -387,11 +387,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 437,
+              "line": 449,
               "column": 2
             },
             "end": {
-              "line": 439,
+              "line": 451,
               "column": 3
             }
           },
@@ -411,11 +411,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 443,
+              "line": 455,
               "column": 2
             },
             "end": {
-              "line": 445,
+              "line": 457,
               "column": 3
             }
           },
@@ -435,11 +435,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 449,
+              "line": 461,
               "column": 2
             },
             "end": {
-              "line": 468,
+              "line": 480,
               "column": 3
             }
           },
@@ -459,11 +459,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 472,
+              "line": 484,
               "column": 2
             },
             "end": {
-              "line": 481,
+              "line": 493,
               "column": 3
             }
           },
@@ -483,11 +483,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 485,
+              "line": 497,
               "column": 2
             },
             "end": {
-              "line": 487,
+              "line": 499,
               "column": 3
             }
           },
@@ -503,11 +503,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 491,
+              "line": 503,
               "column": 2
             },
             "end": {
-              "line": 494,
+              "line": 506,
               "column": 3
             }
           },
@@ -523,11 +523,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 498,
+              "line": 510,
               "column": 2
             },
             "end": {
-              "line": 512,
+              "line": 524,
               "column": 3
             }
           },
@@ -543,11 +543,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 516,
+              "line": 528,
               "column": 2
             },
             "end": {
-              "line": 519,
+              "line": 531,
               "column": 3
             }
           },
@@ -563,11 +563,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 521,
+              "line": 533,
               "column": 2
             },
             "end": {
-              "line": 545,
+              "line": 557,
               "column": 3
             }
           },
@@ -587,11 +587,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 549,
+              "line": 561,
               "column": 2
             },
             "end": {
-              "line": 562,
+              "line": 574,
               "column": 3
             }
           },
@@ -611,11 +611,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 567,
+              "line": 579,
               "column": 2
             },
             "end": {
-              "line": 584,
+              "line": 596,
               "column": 3
             }
           },
@@ -639,11 +639,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 589,
+              "line": 601,
               "column": 2
             },
             "end": {
-              "line": 597,
+              "line": 609,
               "column": 3
             }
           },
@@ -666,11 +666,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 602,
+              "line": 614,
               "column": 2
             },
             "end": {
-              "line": 621,
+              "line": 633,
               "column": 3
             }
           },
@@ -693,11 +693,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 626,
+              "line": 638,
               "column": 2
             },
             "end": {
-              "line": 628,
+              "line": 640,
               "column": 3
             }
           },
@@ -718,7 +718,7 @@
           "column": 28
         },
         "end": {
-          "line": 629,
+          "line": 641,
           "column": 1
         }
       },
@@ -731,11 +731,11 @@
           "description": "editting state for the page",
           "sourceRange": {
             "start": {
-              "line": 310,
+              "line": 322,
               "column": 4
             },
             "end": {
-              "line": 314,
+              "line": 326,
               "column": 5
             }
           },
@@ -745,38 +745,6 @@
         {
           "name": "active-item",
           "description": "Active item which is in JSON Outline Schema",
-          "sourceRange": {
-            "start": {
-              "line": 318,
-              "column": 4
-            },
-            "end": {
-              "line": 320,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "Object | null | undefined"
-        },
-        {
-          "name": "manifest",
-          "description": "Manifest from haxcms-site-builder",
-          "sourceRange": {
-            "start": {
-              "line": 324,
-              "column": 4
-            },
-            "end": {
-              "line": 326,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "Object | null | undefined"
-        },
-        {
-          "name": "content-container",
-          "description": "DOM node that wraps the slot",
           "sourceRange": {
             "start": {
               "line": 330,
@@ -791,8 +759,8 @@
           "type": "Object | null | undefined"
         },
         {
-          "name": "active-manifest-index",
-          "description": "active manifest index, key to location in the manifest itemsarray",
+          "name": "manifest",
+          "description": "Manifest from haxcms-site-builder",
           "sourceRange": {
             "start": {
               "line": 336,
@@ -804,6 +772,38 @@
             }
           },
           "metadata": {},
+          "type": "Object | null | undefined"
+        },
+        {
+          "name": "content-container",
+          "description": "DOM node that wraps the slot",
+          "sourceRange": {
+            "start": {
+              "line": 342,
+              "column": 4
+            },
+            "end": {
+              "line": 344,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined"
+        },
+        {
+          "name": "active-manifest-index",
+          "description": "active manifest index, key to location in the manifest itemsarray",
+          "sourceRange": {
+            "start": {
+              "line": 348,
+              "column": 4
+            },
+            "end": {
+              "line": 350,
+              "column": 5
+            }
+          },
+          "metadata": {},
           "type": "number | null | undefined"
         },
         {
@@ -811,11 +811,11 @@
           "description": "Auto call json files",
           "sourceRange": {
             "start": {
-              "line": 342,
+              "line": 354,
               "column": 4
             },
             "end": {
-              "line": 346,
+              "line": 358,
               "column": 5
             }
           },
@@ -827,11 +827,11 @@
           "description": "Outline JSON file name",
           "sourceRange": {
             "start": {
-              "line": 350,
+              "line": 362,
               "column": 4
             },
             "end": {
-              "line": 354,
+              "line": 366,
               "column": 5
             }
           },
@@ -843,11 +843,11 @@
           "description": "Outline JSON location",
           "sourceRange": {
             "start": {
-              "line": 358,
+              "line": 370,
               "column": 4
             },
             "end": {
-              "line": 361,
+              "line": 373,
               "column": 5
             }
           },
@@ -859,11 +859,11 @@
           "description": "acitvely selected item",
           "sourceRange": {
             "start": {
-              "line": 365,
+              "line": 377,
               "column": 4
             },
             "end": {
-              "line": 369,
+              "line": 381,
               "column": 5
             }
           },
@@ -875,11 +875,11 @@
           "description": "Closed status for the drawer",
           "sourceRange": {
             "start": {
-              "line": 373,
+              "line": 385,
               "column": 4
             },
             "end": {
-              "line": 378,
+              "line": 390,
               "column": 5
             }
           },
@@ -891,11 +891,11 @@
           "description": "Outline structured via JSON Outline Schema off the wire",
           "sourceRange": {
             "start": {
-              "line": 389,
+              "line": 401,
               "column": 4
             },
             "end": {
-              "line": 393,
+              "line": 405,
               "column": 5
             }
           },
@@ -907,11 +907,11 @@
           "description": "Set min height of outline player to fill remaining\nspace to the bottom of the browser",
           "sourceRange": {
             "start": {
-              "line": 398,
+              "line": 410,
               "column": 4
             },
             "end": {
-              "line": 402,
+              "line": 414,
               "column": 5
             }
           },
