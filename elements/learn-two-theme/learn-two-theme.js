@@ -204,12 +204,6 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
     super.nextPage(e);
   }
   /**
-   * Determine whether we should show the title
-   */
-  __hasTitle(outlineTitle) {
-    return outlineTitle ? true : false;
-  }
-  /**
    * life cycle, element is removed from the DOM
    */
   //disconnectedCallback() {}
