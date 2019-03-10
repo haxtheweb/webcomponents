@@ -1,0 +1,4 @@
+type Statement {
+  id: ID! @unique
+  data: Json!
+}
