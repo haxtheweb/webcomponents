@@ -1,24 +1,50 @@
-<style include="simple-colors hax-shared-styles"></style>
-<div id="contentcontainer">
-  <div id="slot">
-    <slot></slot>
+<custom-style>
+  <style>
+  body {
+    font-family: "Muli","Helvetica","Tahoma","Geneva","Arial",sans-serif;
+    letter-spacing: -.03rem;
+  }
+  </style>
+</custom-style>
+<style include="simple-colors"></style>
+<app-drawer-layout>
+  <app-drawer id="drawer" swipe-open="" slot="drawer">
+    <div class="header-wrapper">
+      <div class="header">
+        <a href="/">
+          <h2 class="outline-title">[[manifest.title]]</h2>
+        </a>        
+      </div>
+    </div>
+    <map-menu id="menu" selected="[[activeManifestIndex]]" manifest="[[manifest]]" active-indicator auto-scroll></map-menu>
+  </app-drawer>
+  <div>
+    <paper-icon-button 
+      id="prev"
+      noink
+      icon="icons:chevron-left"
+      disabled="[[disablePrevPage(activeManifestIndex)]]"
+      on-click="prevPage"
+      class="arrow-floats">
+    </paper-icon-button>
+    <paper-tooltip for="prev" offset="16" position="right">
+      Previous page
+    </paper-tooltip>
+    <div id="contentcontainer">
+      <div id="slot">
+        <slot></slot>
+      </div>
+    </div>
+    <paper-icon-button
+      id="next"
+      noink
+      icon="icons:chevron-right"
+      disabled="[[disableNextPage(activeManifestIndex)]]"
+      on-click="nextPage"
+      class="arrow-floats nav-next">
+    </paper-icon-button>
+    <paper-tooltip for="next" offset="16" position="left">
+      Next page
+    </paper-tooltip>
   </div>
-</div>
-<paper-icon-button 
-  id="prev"
-  icon="icons:chevron-left"
-  disabled="[[disablePrevPage(activeManifestIndex)]]"
-  on-click="prevPage">
-</paper-icon-button>
-<paper-tooltip for="prev" offset="16" position="top">
-  Previous page
-</paper-tooltip>
-<paper-icon-button
-  id="next"
-  icon="icons:chevron-right"
-  disabled="[[disableNextPage(activeManifestIndex)]]"
-  on-click="nextPage">
-</paper-icon-button>
-<paper-tooltip for="next" offset="16" position="top">
-  Next page
-</paper-tooltip>
+</app-drawer-layout>
