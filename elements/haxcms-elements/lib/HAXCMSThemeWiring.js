@@ -252,7 +252,7 @@ class HAXCMSThemeWiring {
         "haxcms-trigger-update",
         this._triggerUpdate.bind(element)
       );
-      autorun(() => {
+      this.__disposer = autorun(() => {
         this._manifestUpdate({ detail: toJS(store.routerManifest) });
       });
     }
@@ -286,6 +286,7 @@ class HAXCMSThemeWiring {
       "haxcms-trigger-update",
       this._triggerUpdate.bind(element)
     );
+    this.__disposer();
   }
   /**
    * Global edit state changed

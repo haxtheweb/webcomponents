@@ -145,7 +145,7 @@ Polymer({
     ></iron-ajax>
     <iron-ajax
       id="getconfigrequest"
-      method="POST"
+      method="GET"
       body="[[configParams]]"
       headers='{"Authorization": "Bearer [[jwt]]"}'
       content-type="application/json"
@@ -294,7 +294,7 @@ Polymer({
         ></iron-icon
         >[[activeItem.metadata.hexCode]]
         <iron-icon icon="av:web"></iron-icon>Theme:
-        [[activeItem.metadata.theme]]
+        [[activeItem.metadata.theme.name]]
         <paper-icon-button
           id="editsite"
           icon="icons:settings"

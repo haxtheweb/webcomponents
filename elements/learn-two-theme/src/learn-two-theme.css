@@ -1,0 +1,13 @@
+:host {
+  display: block;
+}
+
+:host([hidden]) {
+  display: none;
+}
+/**
+  * Hide the slotted content during edit mode. This must be here to work.
+  */
+:host([edit-mode]) #slot {
+  display: none;
+}

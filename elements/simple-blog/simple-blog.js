@@ -177,7 +177,11 @@ let SimpleBlog = Polymer({
     // subscribe to manifest changes
     this.__disposer = autorun(() => {
       this.manifest = toJS(store.routerManifest);
+    });
+    this.__disposer2 = autorun(() => {
       this.activeItemId = toJS(store.activeItem);
+    });
+    this.__disposer3 = autorun(() => {
       this._locationChanged(store.location);
     });
   },
@@ -187,12 +191,15 @@ let SimpleBlog = Polymer({
   detached: function() {
     this.HAXCMSThemeWiring.disconnect(this);
     this.__disposer();
+    this.__disposer2();
+    this.__disposer3();
   },
   /**
    * Listen for router location changes
    * @param {event} e
    */
   _locationChanged: function(location) {
+    console.log("stuff");
     if (!location || typeof location.route === "undefined") return;
     const name = location.route.name;
     if (name === "home" || name === "404") {

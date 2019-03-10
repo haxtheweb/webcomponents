@@ -53,8 +53,8 @@ class HAXCMSDevTheme extends HAXCMSTheme(PolymerElement) {
           font-size: 10px;
         }
         /**
-       * Hide the slotted content during edit mode. This must be here to work.
-       */
+         * Hide the slotted content during edit mode. This must be here to work.
+         */
         :host([edit-mode]) #slot {
           display: none;
         }

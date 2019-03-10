@@ -43,7 +43,7 @@ Polymer({
     /**
      * Subscribe to changes in the manifest
      */
-    autorun(() => {
+    this.__disposer = autorun(() => {
       this._updateRouter(store.routerManifest);
     });
     window.addEventListener(
@@ -60,6 +60,7 @@ Polymer({
       "vaadin-router-location-changed",
       this._routerLocationChanged.bind(this)
     );
+    this.__disposer();
   },
 
   /**

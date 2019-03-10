@@ -1,0 +1,24 @@
+<style include="simple-colors hax-shared-styles"></style>
+<div id="contentcontainer">
+  <div id="slot">
+    <slot></slot>
+  </div>
+</div>
+<paper-icon-button 
+  id="prev"
+  icon="icons:chevron-left"
+  disabled="[[disablePrevPage(activeManifestIndex)]]"
+  on-click="prevPage">
+</paper-icon-button>
+<paper-tooltip for="prev" offset="16" position="top">
+  Previous page
+</paper-tooltip>
+<paper-icon-button
+  id="next"
+  icon="icons:chevron-right"
+  disabled="[[disableNextPage(activeManifestIndex)]]"
+  on-click="nextPage">
+</paper-icon-button>
+<paper-tooltip for="next" offset="16" position="top">
+  Next page
+</paper-tooltip>

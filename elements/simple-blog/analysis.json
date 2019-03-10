@@ -535,17 +535,39 @@
       "path": "lib/simple-blog-footer.js",
       "properties": [
         {
+          "name": "activeManifestIndex",
+          "type": "number | null | undefined",
+          "description": "active manifest index, key to location in the manifest itemsarray",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 170,
+              "column": 4
+            },
+            "end": {
+              "line": 173,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Number"
+            }
+          },
+          "defaultValue": "-1"
+        },
+        {
           "name": "manifest",
           "type": "Object | null | undefined",
           "description": "Manifest, JSON Outline Schema object",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 138,
+              "line": 177,
               "column": 4
             },
             "end": {
-              "line": 140,
+              "line": 179,
               "column": 5
             }
           },
@@ -556,88 +578,221 @@
           }
         },
         {
-          "name": "active",
-          "type": "boolean | null | undefined",
-          "description": "active state for visual changes",
+          "name": "activeItemId",
+          "type": "string | null | undefined",
+          "description": "",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 144,
+              "line": 180,
               "column": 4
             },
             "end": {
-              "line": 148,
+              "line": 183,
               "column": 5
             }
           },
           "metadata": {
             "polymer": {
-              "attributeType": "Boolean"
+              "observer": "\"_activeItemIdChanged\"",
+              "attributeType": "String"
             }
-          },
-          "defaultValue": "false"
+          }
         }
       ],
       "methods": [
+        {
+          "name": "_activeItemIdChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 185,
+              "column": 2
+            },
+            "end": {
+              "line": 214,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "newValue"
+            },
+            {
+              "name": "oldValue"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "attached",
+          "description": "attached life cycle",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 218,
+              "column": 2
+            },
+            "end": {
+              "line": 224,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "detached",
+          "description": "detatched life cycle",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 228,
+              "column": 2
+            },
+            "end": {
+              "line": 230,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "disablePrevPage",
+          "description": "disablePrevPage",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 235,
+              "column": 2
+            },
+            "end": {
+              "line": 240,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "index"
+            }
+          ]
+        },
+        {
+          "name": "disableNextPage",
+          "description": "disableNextPage",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 244,
+              "column": 2
+            },
+            "end": {
+              "line": 249,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "index"
+            }
+          ]
+        },
+        {
+          "name": "prevPage",
+          "description": "Go back a page (if we can)",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 253,
+              "column": 2
+            },
+            "end": {
+              "line": 255,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "nextPage",
+          "description": "Advance a page (if we can)",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 259,
+              "column": 2
+            },
+            "end": {
+              "line": 261,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "changePage",
+          "description": "Go forward a page",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 265,
+              "column": 2
+            },
+            "end": {
+              "line": 298,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "direction"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
         {
           "name": "_backButtonTap",
           "description": "Fire event to unset the global activeItem.",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 154,
+              "line": 303,
               "column": 2
             },
             "end": {
-              "line": 157,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "e"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "_activate",
-          "description": "trip reflected value",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 162,
-              "column": 2
-            },
-            "end": {
-              "line": 164,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "e"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "_deactivate",
-          "description": "trip reflected value",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 169,
-              "column": 2
-            },
-            "end": {
-              "line": 171,
+              "line": 306,
               "column": 3
             }
           },
@@ -662,11 +817,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 15,
+          "line": 16,
           "column": 8
         },
         "end": {
-          "line": 172,
+          "line": 307,
           "column": 1
         }
       },
@@ -674,15 +829,31 @@
       "superclass": "HTMLElement",
       "attributes": [
         {
+          "name": "active-manifest-index",
+          "description": "active manifest index, key to location in the manifest itemsarray",
+          "sourceRange": {
+            "start": {
+              "line": 170,
+              "column": 4
+            },
+            "end": {
+              "line": 173,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "number | null | undefined"
+        },
+        {
           "name": "manifest",
           "description": "Manifest, JSON Outline Schema object",
           "sourceRange": {
             "start": {
-              "line": 138,
+              "line": 177,
               "column": 4
             },
             "end": {
-              "line": 140,
+              "line": 179,
               "column": 5
             }
           },
@@ -690,20 +861,20 @@
           "type": "Object | null | undefined"
         },
         {
-          "name": "active",
-          "description": "active state for visual changes",
+          "name": "active-item-id",
+          "description": "",
           "sourceRange": {
             "start": {
-              "line": 144,
+              "line": 180,
               "column": 4
             },
             "end": {
-              "line": 148,
+              "line": 183,
               "column": 5
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "string | null | undefined"
         }
       ],
       "events": [],
@@ -1246,7 +1417,7 @@
               "column": 2
             },
             "end": {
-              "line": 182,
+              "line": 186,
               "column": 3
             }
           },
@@ -1262,11 +1433,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 186,
+              "line": 190,
               "column": 2
             },
             "end": {
-              "line": 189,
+              "line": 195,
               "column": 3
             }
           },
@@ -1282,11 +1453,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 194,
+              "line": 200,
               "column": 2
             },
             "end": {
-              "line": 207,
+              "line": 214,
               "column": 3
             }
           },
@@ -1306,11 +1477,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 211,
+              "line": 218,
               "column": 2
             },
             "end": {
-              "line": 233,
+              "line": 240,
               "column": 3
             }
           },
@@ -1334,7 +1505,7 @@
           "column": 25
         },
         "end": {
-          "line": 234,
+          "line": 241,
           "column": 1
         }
       },

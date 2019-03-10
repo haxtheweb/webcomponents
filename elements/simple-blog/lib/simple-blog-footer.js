@@ -220,6 +220,8 @@ Polymer({
     // subscribe to manifest changes
     this.__disposer = autorun(() => {
       this.manifest = toJS(store.routerManifest);
+    });
+    this.__disposer2 = autorun(() => {
       this.activeItemId = toJS(store.activeItem);
     });
   },
@@ -228,6 +230,7 @@ Polymer({
    */
   detached: function() {
     this.__disposer();
+    this.__disposer2();
   },
 
   /**
