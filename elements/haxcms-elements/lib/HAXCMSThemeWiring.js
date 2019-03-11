@@ -74,9 +74,48 @@ export const HAXCMSTheme = function(SuperClass) {
          */
         activeManifestIndex: {
           type: Number,
-          value: -1
+          value: -1,
+          notify: true
+        },
+        /**
+         * acitvely selected item
+         */
+        selected: {
+          type: String,
+          notify: true,
+          observer: "_selectedPageChanged"
+        },
+        /**
+         * location as object
+         */
+        _location: {
+          type: Object,
+          observer: "_locationChanged"
         }
       };
+    }
+    /**
+     * Selected page has changed.
+     */
+    _selectedPageChanged(newValue, oldValue) {
+      if (typeof newValue !== typeof undefined) {
+        if (typeof this.manifest !== typeof undefined) {
+          const item = this.manifest.items
+            .filter((d, i) => {
+              if (newValue === d.id) {
+                this.activeManifestIndex = i;
+                return d;
+              }
+            })
+            .pop();
+          this.set("activeItem", item);
+          window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "smooth"
+          });
+        }
+      }
     }
     /**
      * private: Notice content container has changed
@@ -97,6 +136,31 @@ export const HAXCMSTheme = function(SuperClass) {
         this.HAXCMSThemeWiring.disconnect(this);
       }
     }
+    _locationChanged(newValue, oldValue) {
+      if (!newValue || typeof newValue.route === "undefined") return;
+      const location = newValue;
+      const name = location.route.name;
+      if (name === "home" || name === "404") {
+        // if we are on the homepage then load the first item in the manifest
+        // and set it active
+        const firstItem = this.manifest.items.find(
+          i => typeof i.id !== "undefined"
+        );
+        if (firstItem) {
+          // just update the local selected item locally. set a 500 mil second delay
+          // so that the map menu has time to rebuild.  This is a hack because of
+          // map menu.
+          setTimeout(() => {
+            this.selected = firstItem.id;
+          }, 250);
+          window.dispatchEvent(
+            new CustomEvent("json-outline-schema-active-item-changed", {
+              detail: firstItem
+            })
+          );
+        }
+      }
+    }
     /**
      * Connect state and theme wiring
      */
@@ -111,6 +175,20 @@ export const HAXCMSTheme = function(SuperClass) {
       // store disposer so we can clean up later
       this.__disposer = autorun(() => {
         this.manifest = toJS(store.routerManifest);
+      });
+      this.__disposer = autorun(() => {
+        this._location = store.location;
+      });
+      this.__disposer = autorun(() => {
+        if (store.activeItem && typeof store.activeItem !== "undefined") {
+          if (!this.selected) {
+            setTimeout(() => {
+              this.selected = store.activeItem;
+            }, 250);
+          } else {
+            this.selected = store.activeItem;
+          }
+        }
       });
     }
     /**
@@ -255,6 +333,10 @@ class HAXCMSThemeWiring {
       this.__disposer = autorun(() => {
         this._manifestUpdate({ detail: toJS(store.routerManifest) });
       });
+      // @todo may want to set this to sessionStorage instead...
+      if (window.localStorage.getItem("HAXCMSSystemData") == null) {
+        window.localStorage.setItem("HAXCMSSystemData", JSON.stringify({}));
+      }
     }
   }
   /**
