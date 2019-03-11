@@ -17,13 +17,43 @@ class Store {
       })
     );
     if (manifest && typeof manifest.items !== "undefined") {
+      let userData = JSON.parse(
+        window.localStorage.getItem("HAXCMSSystemData")
+      );
+      var accessData = {};
+      if (
+        typeof userData.manifests !== typeof undefined &&
+        typeof userData.manifests[manifest.id] !== typeof undefined &&
+        userData.manifests[manifest.id].accessData !== typeof undefined
+      ) {
+        accessData = userData.manifests[manifest.id].accessData;
+      } else {
+        if (typeof userData.manifests === typeof undefined) {
+          userData.manifests = {};
+        }
+        userData.manifests[manifest.id] = {
+          accessData: {}
+        };
+        window.localStorage.setItem(
+          "HAXCMSSystemData",
+          JSON.stringify(userData)
+        );
+      }
       const manifestItems = manifest.items.map(i => {
+        // get local storage and look for data from this to mesh up
+        let metadata = i.metadata;
+        if (typeof accessData[i.id] !== typeof undefined) {
+          metadata.accessData = accessData[i.id];
+        }
         let location = i.location
           .replace("pages/", "")
           .replace("/index.html", "");
-        return Object.assign({}, i, { location: location });
+        return Object.assign({}, i, { location: location, metadata: metadata });
       });
-      return Object.assign({}, manifest, { items: manifestItems });
+      return Object.assign({}, manifest, {
+        items: manifestItems,
+        accessData: accessData
+      });
     }
   }
 
