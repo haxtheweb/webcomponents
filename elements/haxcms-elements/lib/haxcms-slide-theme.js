@@ -117,6 +117,17 @@ class HAXCMSSlideTheme extends HAXCMSTheme(PolymerElement) {
       </div>
     `;
   }
+  /**
+   * Mix in an opened status
+   */
+  static get properties() {
+    let props = super.properties;
+    props.__pageCounter = {
+      type: Number,
+      notify: true
+    };
+    return props;
+  }
   connectedCallback() {
     super.connectedCallback();
     this.__pageCounter = 1 + this.activeManifestIndex;
