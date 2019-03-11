@@ -199,7 +199,6 @@ let SimpleBlog = Polymer({
    * @param {event} e
    */
   _locationChanged: function(location) {
-    console.log("stuff");
     if (!location || typeof location.route === "undefined") return;
     const name = location.route.name;
     if (name === "home" || name === "404") {
