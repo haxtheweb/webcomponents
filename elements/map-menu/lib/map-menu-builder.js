@@ -32,6 +32,7 @@ Polymer({
           id="[[item.id]]"
           url="[[item.location]]"
           icon="[[item.metadata.icon]]"
+          track-icon="[[item.metadata.accessData.trackIcon]]"
           active-path="[[activePath]]"
           selected="[[selected]]"
         ></map-menu-item>
