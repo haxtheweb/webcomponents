@@ -114,10 +114,13 @@ class JosBreadcrumb extends PolymerElement {
       // walk back through parent tree
       while (activeItem.parent != null) {
         activeItem = this.manifest.items.find(i => i.id == activeItem.parent);
-        items.unshift({
-          title: activeItem.title,
-          location: activeItem.location
-        });
+        // double check structure is sound
+        if (activeItem) {
+          items.unshift({
+            title: activeItem.title,
+            location: activeItem.location
+          });
+        }
       }
       for (var i in items) {
         let icon = document.createElement("iron-icon");
