@@ -470,7 +470,11 @@ let OutlinePlayer = Polymer({
   attached: function() {
     this.__disposer = autorun(() => {
       this._routerManifest = toJS(store.routerManifest);
+    });
+    this.__disposer2 = autorun(() => {
       this._location = store.location;
+    });
+    this.__disposer3 = autorun(() => {
       if (store.activeItem && typeof store.activeItem !== "undefined") {
         if (!this.selected) {
           setTimeout(() => {
@@ -488,6 +492,8 @@ let OutlinePlayer = Polymer({
   detached: function() {
     this.HAXCMSThemeWiring.disconnect(this);
     this.__disposer();
+    this.__disposer2();
+    this.__disposer3();
   },
 
   _locationChanged: function(newValue) {
