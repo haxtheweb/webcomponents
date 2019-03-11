@@ -4,11 +4,14 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@polymer/paper-button/paper-button.js";
+import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "@polymer/app-layout/app-drawer-layout/app-drawer-layout.js";
 import "@lrnwebcomponents/map-menu/map-menu.js";
+import "@lrnwebcomponents/haxcms-elements/lib/jos-breadcrumb.js";
 import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/HAXCMSThemeWiring.js";
 /**
  * `learn-two-theme`
@@ -28,6 +31,23 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
       <style>
         :host {
           display: block;
+          font-family: "Muli", "Helvetica", "Tahoma", "Geneva", "Arial",
+            sans-serif;
+          letter-spacing: -0.03rem;
+          font-weight: 400;
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          font-family: "Montserrat", "Helvetica", "Tahoma", "Geneva", "Arial",
+            sans-serif;
+          font-weight: 400;
+          text-rendering: optimizeLegibility;
+          line-height: 150%;
+          letter-spacing: 0;
         }
 
         :host([hidden]) {
@@ -39,12 +59,13 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
         }
 
         #contentcontainer {
+          background: #fafafa;
           padding: 48px 96px;
         }
 
         .header {
           background: #747474;
-          color: #fff;
+          color: #fafafa;
           text-align: center;
           padding: 0rem 1rem 2rem 1rem;
         }
@@ -53,29 +74,103 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
           color: #fafafa;
           text-decoration: none;
         }
+        .title {
+          font-family: "Montserrat", "Helvetica", "Tahoma", "Geneva", "Arial",
+            sans-serif;
+          font-size: 52px;
+          letter-spacing: -3px;
+          line-height: 78px;
+          margin-bottom: 27.2px;
+          margin-top: 13.6px;
+          text-align: center;
+          text-rendering: optimizelegibility;
+          font-weight: 100;
+        }
+        .outline-title {
+          margin: 2rem 0 0;
+          position: relative;
+          line-height: 2;
+          font-size: 1.4rem;
+        }
         map-menu {
           background-color: #383f45;
-          --map-menu-active-color: rgba(255, 255, 255, 0.9);
           color: #ffffff;
           padding: 25px 0 15px;
-          height: calc(100vh - 80px);
+          height: auto;
+          max-height: calc(100vh - 200px);
+          --map-menu-active-color: #ffffff;
           --map-menu-container: {
             padding: 0;
+            background-color: #2d3237;
+          }
+          --map-menu-item-active-item: {
+            color: #2d3237;
           }
         }
+
         map-menu::-webkit-scrollbar-track {
-          -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
+          -webkit-box-shadow: inset 0 0 4px rgba(56, 63, 69, 0.9);
           border-radius: 0;
-          background-color: #fafafa;
+          background-color: #383f45;
         }
         map-menu::-webkit-scrollbar {
-          width: 4px;
-          background-color: #fafafa;
+          width: 2px;
+          background-color: #383f45;
         }
         map-menu::-webkit-scrollbar-thumb {
-          border-radius: 2px;
-          -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
-          background-color: #444444;
+          border-radius: 1px;
+          -webkit-box-shadow: inset 0 0 4px #747474;
+          background-color: #383f45;
+        }
+        app-drawer-layout {
+          min-height: 100vh;
+          min-height: -moz-available;
+          min-height: -webkit-fill-available;
+          min-height: fill-available;
+          --app-drawer-width: 300px;
+          --app-drawer-scrim-background: rgba(80, 80, 80, 0.8);
+          --app-drawer-width: 300px;
+          --app-drawer-content-container: {
+            overflow: hidden;
+            background-color: #383f45;
+          }
+        }
+        .rss-buttons {
+          justify-content: space-evenly;
+          display: flex;
+        }
+        .rss-buttons paper-button {
+          color: white;
+          background-color: #383f45;
+          font-size: 13px;
+          margin: 0;
+        }
+        .rss-buttons paper-button:hover,
+        .rss-buttons paper-button:focus,
+        .rss-buttons paper-button:active {
+          background-color: #2d3237;
+        }
+        app-drawer {
+          box-shadow: 0 0 6px -3px var(--haxcms-color, black);
+          overflow: hidden;
+          width: 300px;
+        }
+        app-drawer-layout[narrow] #contentcontainer {
+          padding: 0 16px;
+        }
+        #menubutton,
+        #menubutton2 {
+          display: none;
+        }
+        app-drawer-layout[narrow] #menubutton {
+          display: block;
+        }
+        app-drawer-layout[narrow] #menubutton2 {
+          display: block;
+          position: absolute;
+        }
+        app-drawer-layout[narrow] .header {
+          padding: 0;
         }
 
         .arrow-floats {
@@ -83,32 +178,60 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
           position: fixed;
           top: 0;
           bottom: 0;
-          left: 254px;
-          width: 96px;
+          left: 300px;
+          width: 64px;
           height: 100vh;
-          border: none;
-          cursor: pointer;
-          display: table;
-          text-align: center;
           border-radius: 0;
-          -webkit-border-radius: 0;
-          -moz-border-radius: 0;
-          -ms-border-radius: 0;
-          -o-border-radius: 0;
-          transition: 0.2s all ease-in-out;
-          -webkit-transition: 0.2s all ease-in-out;
-          -moz-transition: 0.2s all ease-in-out;
-          -ms-transition: 0.2s all ease-in-out;
-          -o-transition: 0.2s all ease-in-out;
+          transition: 0.4s all ease-in-out;
+          transition-delay: 0.2s;
+          margin: 0;
+          padding: 0;
+          opacity: 0.8;
+          -webkit-transition: 0.4s all ease-in-out;
+          -moz-transition: 0.4s all ease-in-out;
+          -ms-transition: 0.4s all ease-in-out;
+          -o-transition: 0.4s all ease-in-out;
+        }
+        .arrow-floats iron-icon {
+          width: 64px;
+          height: 64px;
+          display: contents;
         }
         .arrow-floats:hover,
         .arrow-floats:active,
         .arrow-floats:focus {
-          background-color: rgba(0, 0, 0, 0.2);
+          opacity: 1;
+          background-color: rgba(0, 0, 0, 0.1);
         }
-        .nav-next {
+        app-drawer-layout[narrow] map-menu {
+          max-height: calc(100vh - 160px);
+        }
+        app-drawer-layout[narrow] .arrow-floats {
+          background-color: transparent !important;
+          bottom: 0;
+          top: unset;
+          width: 64px;
+          height: 64px;
+        }
+        #next {
           right: 0;
           left: unset;
+        }
+        app-drawer-layout[narrow] #prev {
+          left: unset;
+        }
+        :host([opened]) app-drawer-layout[narrow] #prev,
+        :host([opened]) app-drawer-layout[narrow] #next {
+          display: none;
+        }
+        paper-tooltip {
+          --paper-tooltip-background: #000000;
+          --paper-tooltip-opacity: 1;
+          --paper-tooltip-text-color: #ffffff;
+          --paper-tooltip-delay-in: 0;
+          --paper-tooltip: {
+            border-radius: 0;
+          }
         }
       </style>
       <custom-style>
@@ -117,55 +240,100 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
             font-family: "Muli", "Helvetica", "Tahoma", "Geneva", "Arial",
               sans-serif;
             letter-spacing: -0.03rem;
+            font-weight: 400;
+            background-color: #fafafa;
+          }
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6 {
+            font-family: "Montserrat", "Helvetica", "Tahoma", "Geneva", "Arial",
+              sans-serif;
+            font-weight: 400;
+            text-rendering: optimizeLegibility;
+            line-height: 150%;
+            letter-spacing: 0;
           }
         </style>
       </custom-style>
+      <link
+        rel="stylesheet"
+        type="text/css"
+        crossorigin="anonymous"
+        href="https://fonts.googleapis.com/css?family=Montserrat:400|Muli:300,400|Inconsolata"
+      />
       <style include="simple-colors"></style>
       <app-drawer-layout>
-        <app-drawer id="drawer" swipe-open="" slot="drawer">
+        <paper-icon-button
+          id="menubutton"
+          icon="menu"
+          on-tap="toggleDrawer"
+        ></paper-icon-button>
+        <app-drawer id="drawer" swipe-open slot="drawer" opened="{{opened}}">
+          <paper-icon-button
+            id="menubutton2"
+            icon="menu"
+            on-tap="toggleDrawer"
+          ></paper-icon-button>
           <div class="header-wrapper">
             <div class="header">
               <a href="/">
-                <h2 class="outline-title">[[manifest.title]]</h2>
+                <h1 class="outline-title">[[manifest.title]]</h1>
               </a>
             </div>
           </div>
           <map-menu
             id="menu"
-            selected="[[activeManifestIndex]]"
+            selected="[[selected]]"
             manifest="[[manifest]]"
             active-indicator
             auto-scroll
           ></map-menu>
+          <div class="rss-buttons">
+            <a tabindex="-1" href="/feed.atom">
+              <paper-button raised>
+                <iron-icon icon="communication:rss-feed"></iron-icon> Atom 1.0
+              </paper-button>
+            </a>
+            <a tabindex="-1" href="/feed.rss">
+              <paper-button raised>
+                <iron-icon icon="communication:rss-feed"></iron-icon> RSS
+              </paper-button>
+            </a>
+          </div>
         </app-drawer>
         <div>
-          <paper-icon-button
+          <paper-button
             id="prev"
             noink
-            icon="icons:chevron-left"
-            disabled="[[disablePrevPage(activeManifestIndex)]]"
             on-click="prevPage"
+            disabled$="[[disablePrevPage(activeManifestIndex)]]"
             class="arrow-floats"
           >
-          </paper-icon-button>
-          <paper-tooltip for="prev" offset="16" position="right">
+            <iron-icon icon="icons:chevron-left"> </iron-icon>
+          </paper-button>
+          <paper-tooltip for="prev" offset="8" position="right">
             Previous page
           </paper-tooltip>
           <div id="contentcontainer">
+            <jos-breadcrumb></jos-breadcrumb>
+            <h2 class="title">[[activeItem.title]]</h2>
             <div id="slot">
               <slot></slot>
             </div>
           </div>
-          <paper-icon-button
+          <paper-button
             id="next"
             noink
-            icon="icons:chevron-right"
-            disabled="[[disableNextPage(activeManifestIndex)]]"
             on-click="nextPage"
-            class="arrow-floats nav-next"
+            disabled="[[disableNextPage(activeManifestIndex)]]"
+            class="arrow-floats"
           >
-          </paper-icon-button>
-          <paper-tooltip for="next" offset="16" position="left">
+            <iron-icon icon="icons:chevron-right"></iron-icon>
+          </paper-button>
+          <paper-tooltip for="next" offset="8" position="left">
             Next page
           </paper-tooltip>
         </div>
@@ -190,6 +358,52 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
    */
   connectedCallback() {
     super.connectedCallback();
+    this.$.menu.addEventListener(
+      "active-item",
+      this.mapMenuActiveChanged.bind(this)
+    );
+  }
+  /**
+   * life cycle, element is removed from the DOM
+   */
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.$.menu.removeEventListener(
+      "active-item",
+      this.mapMenuActiveChanged.bind(this)
+    );
+  }
+  /**
+   * Mix in an opened status
+   */
+  static get properties() {
+    let props = super.properties;
+    props.opened = {
+      type: Boolean,
+      reflectToAttribute: true
+    };
+    return props;
+  }
+  /**
+   * When map menu changes let's set a track icon internal to it.
+   */
+  mapMenuActiveChanged(e) {
+    // update the UI directly
+    e.detail.trackIcon = "icons:check";
+    // now work on the user data object in the theme layer
+    let userData = JSON.parse(window.localStorage.getItem("HAXCMSSystemData"));
+    userData.manifests[this.manifest.id].accessData[e.detail.id] = {
+      timestamp: Math.floor(Date.now() / 1000),
+      trackIcon: "icons:check"
+    };
+    for (var i in this.manifest.items) {
+      if (this.manifest.items[i].id === e.detail.id) {
+        this.manifest.items[i].metadata.accessData =
+          userData.manifests[this.manifest.id].accessData[e.detail.id];
+      }
+    }
+    // save this back to the system data
+    window.localStorage.setItem("HAXCMSSystemData", JSON.stringify(userData));
   }
   /**
    * Previous page to hook into when prev is hit
@@ -203,10 +417,9 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
   nextPage(e) {
     super.nextPage(e);
   }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
+  toggleDrawer(e) {
+    this.$.drawer.toggle();
+  }
 }
 window.customElements.define(LearnTwoTheme.tag, LearnTwoTheme);
 export { LearnTwoTheme };
