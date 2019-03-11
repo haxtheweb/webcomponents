@@ -47,7 +47,7 @@
     "@ui5/webcomponents": "^0.7.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/glossary-service": "^2.0.4",
+    "@lrnwebcomponents/glossary-service": "^0.1.0",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@webcomponents/webcomponentsjs": "2.1.3",
