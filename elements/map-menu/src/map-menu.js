@@ -28,6 +28,7 @@ let MapMenu = Polymer({
         background: var(--map-menu-active-color);
         transition: all 0.3s ease-in-out;
         position: absolute;
+        @apply --map-menu-active-indicator;
       }
 
       map-menu-container {
@@ -109,8 +110,6 @@ let MapMenu = Polymer({
     "map-meu-item-hidden-check": "_mapMeuItemHiddenCheckHandler"
   },
 
-  ready: function() {},
-
   __activeItemHandler: function(e) {
     const target = e.detail;
     this.refreshActiveChildren(target);
@@ -121,9 +120,9 @@ let MapMenu = Polymer({
     const target = e.detail.target;
     const hiddenChild = e.detail.hiddenChild;
     if (action === "closed" && hiddenChild === true) {
-      this.__updateActiveIndicator(this._activeItem, 100, true);
+      this.__updateActiveIndicator(this._activeItem, 200, true);
     } else {
-      this.__updateActiveIndicator(this._activeItem, 100, false);
+      this.__updateActiveIndicator(this._activeItem, 200, false);
     }
   },
 
@@ -132,7 +131,7 @@ let MapMenu = Polymer({
    * @param {string} activeItem
    * @param {number} timeoutTime
    */
-  refreshActiveChildren: function(activeItem, timeoutTime = 100) {
+  refreshActiveChildren: function(activeItem, timeoutTime = 200) {
     const oldActiveItem = this._activeItem;
     const newActiveItem = activeItem;
 
@@ -288,7 +287,7 @@ let MapMenu = Polymer({
    */
   __updateActiveIndicator: function(
     element,
-    timeoutTime = 100,
+    timeoutTime = 200,
     hidden = false
   ) {
     // run it through to set time just to let stuff set up
