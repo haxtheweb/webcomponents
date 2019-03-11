@@ -104,7 +104,8 @@
     "skatejs": "5.2.4",
     "slim-js": "4.0.5",
     "twig": "1.13.2",
-    "marked": "0.6.1"
+    "marked": "0.6.1",
+    "lunr": "2.3.6"
   },
   "lint-staged": {
     "linters": {
