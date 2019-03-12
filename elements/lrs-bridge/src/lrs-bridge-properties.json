@@ -1,0 +1,9 @@
+{
+  "endpoint": {
+    "name": "endpoint",
+    "type": "String",
+    "value": "",
+    "reflectToAttribute": false,
+    "observer": false
+  }
+}
