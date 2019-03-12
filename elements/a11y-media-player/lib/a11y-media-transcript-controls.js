@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { A11yMediaPlayerBehaviors } from "./a11y-media-player-behaviors.js";
+import { A11yMediaBehaviors } from "./a11y-media-behaviors.js";
 import "@lrnwebcomponents/simple-search/simple-search.js";
 import "./a11y-media-button.js";
 
@@ -26,11 +26,11 @@ export { A11yMediaTranscriptControls };
   disable-search$="[[disableSearch]]"             // Disable transcript search? 
 </a11y-media-transcript-controls>```
  *
- * @extends A11yMediaPlayerBehaviors
+ * @extends A11yMediaBehaviors
  * @customElement
  * @polymer
  */
-class A11yMediaTranscriptControls extends A11yMediaPlayerBehaviors {
+class A11yMediaTranscriptControls extends A11yMediaBehaviors {
   // properties available to the custom element for data binding
   static get properties() {
     return {
@@ -54,7 +54,7 @@ class A11yMediaTranscriptControls extends A11yMediaPlayerBehaviors {
 
   //get player-specifc properties
   static get behaviors() {
-    return [A11yMediaPlayerBehaviors];
+    return [A11yMediaBehaviors];
   }
 
   //render function

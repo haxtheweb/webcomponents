@@ -64,7 +64,23 @@ let allKnobs = Object.assign(
 );
 allKnobs.crossorigin.value = "anonymous";
 //remove properties we don't want to expose
-['playing','target','search','media','selectedTrack','manifest','responsiveSize','status','selectedTrackID','flexLayout','youtubeId','youTube'].forEach(prop => {
+[
+  'flexLayout',
+  'manifest',
+  'media',
+  'muteUnmute',
+  'playing',
+  'playPause',
+  'responsiveSize',
+  'seekDisabled',
+  'selectedTrack',
+  'selectedTrackID',
+  'status',
+  'target',
+  'search',
+  'youtubeId',
+  'youTube'
+].forEach(prop => {
   delete allKnobs[prop];
 });
 

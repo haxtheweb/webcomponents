@@ -31,6 +31,16 @@ class A11yMediaBehaviors extends SimpleColors {
   static get properties() {
     return {
       /**
+       * Is this an audio file?
+       */
+      audioOnly: {
+        name: "audioOnly",
+        type: "Boolean",
+        value: false,
+        reflectToAttribute: true
+      },
+
+      /**
        * autoplay is an option,
        * but generally not recommended for a11y
        */
@@ -39,6 +49,7 @@ class A11yMediaBehaviors extends SimpleColors {
         type: "Boolean",
         value: false
       },
+
       /**
        * show closed captions
        */
@@ -47,6 +58,34 @@ class A11yMediaBehaviors extends SimpleColors {
         type: "Boolean",
         value: false
       },
+
+      /**
+       * disable transcript print button
+       */
+      disablePrintButton: {
+        name: "disablePrintButton",
+        type: "Boolean",
+        value: false
+      },
+
+      /**
+       * disable transcript search feature
+       */
+      disableSearch: {
+        name: "disableSearch",
+        type: "Boolean",
+        value: false
+      },
+
+      /**
+       * disable autoscrolling as transcript plays
+       */
+      disableScroll: {
+        name: "disableScroll",
+        type: "Boolean",
+        value: false
+      },
+
       /**
        * disables seeking
        */
@@ -55,6 +94,25 @@ class A11yMediaBehaviors extends SimpleColors {
         type: "Boolean",
         value: false
       },
+
+      /**
+       * Does the player have tracks?
+       */
+      hasCaptions: {
+        name: "hasCaptions",
+        type: "Boolean",
+        value: false
+      },
+
+      /**
+       * Does the player have an interactive transcript?
+       */
+      hasTranscript: {
+        name: "hasTranscript",
+        type: "Boolean",
+        value: false
+      },
+
       /**
        * The height of the media player.
        */
@@ -63,6 +121,7 @@ class A11yMediaBehaviors extends SimpleColors {
         type: "Number",
         value: null
       },
+
       /**
        * is YouTube?
        */
@@ -71,6 +130,7 @@ class A11yMediaBehaviors extends SimpleColors {
         type: "Boolean",
         computed: "_hasAttribute(youtubeId)"
       },
+
       /**
        * Language
        */
@@ -79,6 +139,7 @@ class A11yMediaBehaviors extends SimpleColors {
         type: "String",
         value: "en"
       },
+
       /**
        * custom localization settings
        */
@@ -87,6 +148,7 @@ class A11yMediaBehaviors extends SimpleColors {
         type: "Object",
         value: {}
       },
+
       /**
        * default localization settings
        */
@@ -186,6 +248,7 @@ class A11yMediaBehaviors extends SimpleColors {
         },
         readOnly: true
       },
+
       /**
        * Loop the video?
        */
@@ -194,6 +257,7 @@ class A11yMediaBehaviors extends SimpleColors {
         type: "Boolean",
         value: false
       },
+
       /**
        * Dash.js manifest source?
        */
@@ -202,6 +266,25 @@ class A11yMediaBehaviors extends SimpleColors {
         type: "String",
         value: null
       },
+
+      /**
+       * the media to be manipulated
+       */
+      media: {
+        name: "media",
+        type: "Object",
+        value: null
+      },
+
+      /**
+       * optional title of media (shows when printed)
+       */
+      mediaTitle: {
+        name: "mediaTitle",
+        type: "String",
+        value: ""
+      },
+
       /**
        * Is audio muted?
        */
@@ -210,6 +293,33 @@ class A11yMediaBehaviors extends SimpleColors {
         type: "Boolean",
         value: false
       },
+
+      /**
+       * Playback rate where 1 is normal speed, 0.5 is half-speed, and 2 is double speed
+       */
+      playbackRate: {
+        name: "playbackRate",
+        type: "Number",
+        value: 1
+      },
+
+      /**
+       * Is media playing?
+       */
+      playing: {
+        name: "playing",
+        type: "Boolean",
+        value: false
+      },
+
+      /**
+       * play/pause button
+       */
+      playPause: {
+        name: "playPause",
+        type: "Object"
+      },
+
       /**
        * Preload the "sources": auto, metadata (default), or none.
        */
@@ -218,13 +328,24 @@ class A11yMediaBehaviors extends SimpleColors {
         type: "String",
         value: "metadata"
       },
+
       /**
-       * Playback rate where 1 is normal speed, 0.5 is half-speed, and 2 is double speed
+       * the search tool for the transcript
        */
-      playbackRate: {
-        name: "playbackRate",
-        type: "Number",
-        value: 1
+      search: {
+        name: "search",
+        type: "Object",
+        value: null
+      },
+
+      /**
+       * Is stand-alone player (without transcript)?
+       */
+      standAlone: {
+        name: "standAlone",
+        type: "Boolean",
+        value: false,
+        reflectToAttribute: true
       },
 
       /**
@@ -252,6 +373,14 @@ class A11yMediaBehaviors extends SimpleColors {
         value: null
       },
       /**
+       * target of the controls
+       */
+      target: {
+        name: "target",
+        type: "Object",
+        value: null
+      },
+      /**
        * array of tracks and cues
        */
       tracks: {
@@ -266,6 +395,14 @@ class A11yMediaBehaviors extends SimpleColors {
         name: "volume",
         type: "Number",
         value: 70
+      },
+      /**
+       * The width of the media player.
+       */
+      width: {
+        name: "width",
+        type: "String",
+        value: null
       },
       /**
        * the id for the video

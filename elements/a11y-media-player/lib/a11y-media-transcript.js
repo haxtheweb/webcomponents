@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { A11yMediaPlayerBehaviors } from "./a11y-media-player-behaviors.js";
+import { A11yMediaBehaviors } from "./a11y-media-behaviors.js";
 import "./a11y-media-transcript-cue.js";
 
 export { A11yMediaTranscript };
@@ -28,11 +28,11 @@ export { A11yMediaTranscript };
   selected-transcript$="[[selectedTranscript]]">  // The index of the current track
 </a11y-media-transcript>```
  *
- * @extends A11yMediaPlayerBehaviors
+ * @extends A11yMediaBehaviors
  * @customElement
  * @polymer
  */
-class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
+class A11yMediaTranscript extends A11yMediaBehaviors {
   // properties available to the custom element for data binding
   static get properties() {
     return {
@@ -51,6 +51,22 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
       disableCue: {
         type: Boolean,
         computed: "_areCuesDisabled(disableInteractive,disableSeek)"
+      },
+      /**
+       * disable interactive mode that makes the transcript clickable
+       */
+      disableInteractive: {
+        name: "disableInteractive",
+        type: "Boolean",
+        value: false
+      },
+      /**
+       * show cue's start and end time
+       */
+      hideTimestamps: {
+        name: "hideTimestamps",
+        type: "Boolean",
+        value: false
       },
       /**
        * Language
@@ -115,7 +131,7 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
 
   //get player-specifc properties
   static get behaviors() {
-    return [A11yMediaPlayerBehaviors];
+    return [A11yMediaBehaviors];
   }
 
   //render function

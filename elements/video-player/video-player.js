@@ -649,6 +649,7 @@ class VideoPlayer extends PolymerElement {
    * Gets cleaned track list
    */
   _getTrackData(tracks) {
+    console.log("tracks", tracks);
     return typeof tracks === "string" ? JSON.parse(tracks) : tracks;
   }
 
@@ -673,7 +674,7 @@ class VideoPlayer extends PolymerElement {
         temp.unshift({ src: src, type: this._computeMediaType(src) });
     }
     this.__standAlone =
-      tracks === undefined || tracks === null || tracks.length;
+      tracks === undefined || tracks === null || tracks.length < 1;
     return temp;
   }
 

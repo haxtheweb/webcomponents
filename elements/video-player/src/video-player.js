@@ -146,7 +146,7 @@ class VideoPlayer extends PolymerElement {
         temp.unshift({ src: src, type: this._computeMediaType(src) });
     }
     this.__standAlone =
-      tracks === undefined || tracks === null || tracks.length;
+      tracks === undefined || tracks === null || tracks.length < 1;
     return temp;
   }
 

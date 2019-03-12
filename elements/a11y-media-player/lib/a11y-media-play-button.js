@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { A11yMediaPlayerBehaviors } from "./a11y-media-player-behaviors.js";
+import { A11yMediaBehaviors } from "./a11y-media-behaviors.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 
 export { A11yMediaPlayButton };
@@ -20,11 +20,11 @@ Custom styles:
 --a11y-play-button-bg-color: overlay background color, default is #000000
 --a11y-play-button-focus-bg-color: overlay background color, default is --a11y-play-button-bg-color```
  *
- * @extends A11yMediaPlayerBehaviors
+ * @extends A11yMediaBehaviors
  * @customElement
  * @polymer
  */
-class A11yMediaPlayButton extends A11yMediaPlayerBehaviors {
+class A11yMediaPlayButton extends A11yMediaBehaviors {
   // properties available to the custom element for data binding
   static get properties() {
     return {
@@ -62,7 +62,7 @@ class A11yMediaPlayButton extends A11yMediaPlayerBehaviors {
 
   //get player-specifc properties
   static get behaviors() {
-    return [A11yMediaPlayerBehaviors];
+    return [A11yMediaBehaviors];
   }
 
   //render function
@@ -190,7 +190,7 @@ class A11yMediaPlayButton extends A11yMediaPlayerBehaviors {
    */
   ready() {
     super.ready();
-    this.__target = this.$.button;
+    this.target = this.$.button;
   }
 
   /**

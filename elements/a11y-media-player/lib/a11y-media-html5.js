@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { A11yMediaPlayerBehaviors } from "./a11y-media-player-behaviors.js";
+import { A11yMediaBehaviors } from "./a11y-media-behaviors.js";
 
 export { A11yMediaHtml5 };
 /**
@@ -33,7 +33,7 @@ export { A11yMediaHtml5 };
  * @customElement
  * @polymer
  */
-class A11yMediaHtml5 extends A11yMediaPlayerBehaviors {
+class A11yMediaHtml5 extends A11yMediaBehaviors {
   // properties available to the custom element for data binding
   static get properties() {
     return {
@@ -43,6 +43,13 @@ class A11yMediaHtml5 extends A11yMediaPlayerBehaviors {
       controls: {
         type: String,
         value: "video"
+      },
+      /**
+       * crossorigin attribute for <video> and <audio> tags
+       */
+      crossorigin: {
+        type: "String",
+        value: null
       },
       /*
        * Is it disabled?
@@ -65,6 +72,14 @@ class A11yMediaHtml5 extends A11yMediaPlayerBehaviors {
         type: String,
         value: null
       },
+      /**
+       * the language of the media (if different from user interface language)
+       */
+      mediaLang: {
+        name: "mediaLang",
+        type: "String",
+        value: "en"
+      },
       /*
        * Is it paused?
        */
@@ -82,6 +97,15 @@ class A11yMediaHtml5 extends A11yMediaPlayerBehaviors {
           start: null,
           stop: null
         }
+      },
+      /**
+       * Source of optional thumbnail image
+       */
+      thumbnailSrc: {
+        name: "thumbnailSrc",
+        type: "String",
+        value: null,
+        reflectToAttribute: true
       }
     };
   }

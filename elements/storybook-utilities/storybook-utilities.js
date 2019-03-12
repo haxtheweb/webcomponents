@@ -64,10 +64,11 @@ export class StorybookUtilities {
    * @returns {string} attributes
    */
   getBindings(props) {
-    let binding = {};
-    for (var key in props) {
+    let binding = {},
+      keys = Object.keys(props).sort();
+    keys.forEach(key => {
       // skip prototype, private properties, objects, anything in the exclusions array, or any computed property
-      if (!props.hasOwnProperty(key)) continue;
+      //if (!props.hasOwnProperty(key)) continue;
       let editable =
         key.startsWith("__") === false &&
         (props[key].computed === undefined ||
@@ -137,7 +138,7 @@ export class StorybookUtilities {
           };
         }
       }
-    }
+    });
     return binding;
   }
   /**
@@ -157,7 +158,7 @@ export class StorybookUtilities {
   ```
    * @returns {object} the slot content to wire to slots
    */
-  addLiveDemo(story) {
+  addLiveDemo(story, escape = false) {
     story.demo = storiesOf(story.of, module);
     story.demo.addDecorator(storybookBridge.withKnobs);
     story.demo.add(
@@ -173,7 +174,7 @@ export class StorybookUtilities {
         story.attr2 = ``;
         Object.values(this.getBindings(story.props)).forEach(prop => {
           if (prop.value !== false && prop.value !== "")
-            story.attr2 += ` ${prop.id}="${prop.value}"`;
+            story.attr2 += ` ${prop.id}=${prop.value}`;
         });
         return `
         <h1>${story.name}</h1>
@@ -183,10 +184,11 @@ export class StorybookUtilities {
         </${story.name}>
       `;
       },
-      { knobs: { escapeHTML: false } }
+      { knobs: { escapeHTML: escape } }
     );
   }
 }
+
 // register global bridge on window if needed
 window.StorybookUtilities = window.StorybookUtilities || {};
 
