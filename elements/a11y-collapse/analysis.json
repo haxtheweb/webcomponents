@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 76,
+              "line": 74,
               "column": 4
             },
             "end": {
-              "line": 80,
+              "line": 78,
               "column": 5
             }
           },
@@ -35,11 +35,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 84,
+              "line": 82,
               "column": 4
             },
             "end": {
-              "line": 88,
+              "line": 86,
               "column": 5
             }
           },
@@ -57,11 +57,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 92,
+              "line": 90,
               "column": 4
             },
             "end": {
-              "line": 95,
+              "line": 93,
               "column": 5
             }
           },
@@ -79,11 +79,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 99,
+              "line": 97,
               "column": 4
             },
             "end": {
-              "line": 102,
+              "line": 100,
               "column": 5
             }
           },
@@ -101,11 +101,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 106,
+              "line": 104,
               "column": 4
             },
             "end": {
-              "line": 109,
+              "line": 107,
               "column": 5
             }
           },
@@ -123,11 +123,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 113,
+              "line": 111,
               "column": 4
             },
             "end": {
-              "line": 116,
+              "line": 114,
               "column": 5
             }
           },
@@ -146,11 +146,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 122,
+              "line": 120,
               "column": 2
             },
             "end": {
-              "line": 126,
+              "line": 124,
               "column": 3
             }
           },
@@ -166,20 +166,15 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 32,
+          "line": 30,
           "column": 8
         },
         "end": {
-          "line": 127,
+          "line": 125,
           "column": 1
         }
       },
@@ -191,11 +186,11 @@
           "description": "is disabled?",
           "sourceRange": {
             "start": {
-              "line": 76,
+              "line": 74,
               "column": 4
             },
             "end": {
-              "line": 80,
+              "line": 78,
               "column": 5
             }
           },
@@ -207,11 +202,11 @@
           "description": "icon when expanded",
           "sourceRange": {
             "start": {
-              "line": 84,
+              "line": 82,
               "column": 4
             },
             "end": {
-              "line": 88,
+              "line": 86,
               "column": 5
             }
           },
@@ -223,11 +218,11 @@
           "description": "icon for the button",
           "sourceRange": {
             "start": {
-              "line": 92,
+              "line": 90,
               "column": 4
             },
             "end": {
-              "line": 95,
+              "line": 93,
               "column": 5
             }
           },
@@ -239,11 +234,11 @@
           "description": "label for the button",
           "sourceRange": {
             "start": {
-              "line": 99,
+              "line": 97,
               "column": 4
             },
             "end": {
-              "line": 102,
+              "line": 100,
               "column": 5
             }
           },
@@ -255,11 +250,11 @@
           "description": "tooltip for the button",
           "sourceRange": {
             "start": {
-              "line": 106,
+              "line": 104,
               "column": 4
             },
             "end": {
-              "line": 109,
+              "line": 107,
               "column": 5
             }
           },
@@ -271,11 +266,11 @@
           "description": "If no expanded icon is set, the default icon will rotate when expanded",
           "sourceRange": {
             "start": {
-              "line": 113,
+              "line": 111,
               "column": 4
             },
             "end": {
-              "line": 116,
+              "line": 114,
               "column": 5
             }
           },
@@ -352,11 +347,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 77,
+              "line": 75,
               "column": 4
             },
             "end": {
-              "line": 81,
+              "line": 79,
               "column": 5
             }
           },
@@ -374,11 +369,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 85,
+              "line": 83,
               "column": 4
             },
             "end": {
-              "line": 89,
+              "line": 87,
               "column": 5
             }
           },
@@ -396,11 +391,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 93,
+              "line": 91,
               "column": 4
             },
             "end": {
-              "line": 96,
+              "line": 94,
               "column": 5
             }
           },
@@ -418,11 +413,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 100,
+              "line": 98,
               "column": 4
             },
             "end": {
-              "line": 103,
+              "line": 101,
               "column": 5
             }
           },
@@ -440,11 +435,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 107,
+              "line": 105,
               "column": 4
             },
             "end": {
-              "line": 110,
+              "line": 108,
               "column": 5
             }
           },
@@ -462,11 +457,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 114,
+              "line": 112,
               "column": 4
             },
             "end": {
-              "line": 117,
+              "line": 115,
               "column": 5
             }
           },
@@ -533,11 +528,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 123,
+              "line": 121,
               "column": 2
             },
             "end": {
-              "line": 128,
+              "line": 126,
               "column": 3
             }
           },
@@ -553,11 +548,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 133,
+              "line": 131,
               "column": 2
             },
             "end": {
-              "line": 137,
+              "line": 135,
               "column": 3
             }
           },
@@ -573,11 +568,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 143,
+              "line": 141,
               "column": 2
             },
             "end": {
-              "line": 147,
+              "line": 145,
               "column": 3
             }
           },
@@ -593,20 +588,15 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 45,
+          "line": 43,
           "column": 8
         },
         "end": {
-          "line": 148,
+          "line": 146,
           "column": 1
         }
       },
@@ -654,11 +644,11 @@
           "description": "is disabled?",
           "sourceRange": {
             "start": {
-              "line": 77,
+              "line": 75,
               "column": 4
             },
             "end": {
-              "line": 81,
+              "line": 79,
               "column": 5
             }
           },
@@ -670,11 +660,11 @@
           "description": "icon when expanded",
           "sourceRange": {
             "start": {
-              "line": 85,
+              "line": 83,
               "column": 4
             },
             "end": {
-              "line": 89,
+              "line": 87,
               "column": 5
             }
           },
@@ -686,11 +676,11 @@
           "description": "icon for the button",
           "sourceRange": {
             "start": {
-              "line": 93,
+              "line": 91,
               "column": 4
             },
             "end": {
-              "line": 96,
+              "line": 94,
               "column": 5
             }
           },
@@ -702,11 +692,11 @@
           "description": "label for the button",
           "sourceRange": {
             "start": {
-              "line": 100,
+              "line": 98,
               "column": 4
             },
             "end": {
-              "line": 103,
+              "line": 101,
               "column": 5
             }
           },
@@ -718,11 +708,11 @@
           "description": "tooltip for the button",
           "sourceRange": {
             "start": {
-              "line": 107,
+              "line": 105,
               "column": 4
             },
             "end": {
-              "line": 110,
+              "line": 108,
               "column": 5
             }
           },
@@ -734,11 +724,11 @@
           "description": "If no expanded icon is set, the default icon will rotate when expanded",
           "sourceRange": {
             "start": {
-              "line": 114,
+              "line": 112,
               "column": 4
             },
             "end": {
-              "line": 117,
+              "line": 115,
               "column": 5
             }
           },
@@ -753,6 +743,41 @@
       },
       "slots": [],
       "tagname": "a11y-collapse-icon-button"
+    },
+    {
+      "description": "`a11y-collapse`\nAn accessible expand collapse.",
+      "summary": "",
+      "path": "a11y-collapse.js",
+      "properties": [],
+      "methods": [],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/index.html",
+          "description": "demo"
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 51,
+          "column": 19
+        },
+        "end": {
+          "line": 341,
+          "column": 2
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "A11yCollapse",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": []
     },
     {
       "description": "",
@@ -815,11 +840,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 140,
+              "line": 142,
               "column": 4
             },
             "end": {
-              "line": 145,
+              "line": 148,
               "column": 5
             }
           },
@@ -838,11 +863,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 149,
+              "line": 152,
               "column": 4
             },
             "end": {
-              "line": 153,
+              "line": 157,
               "column": 5
             }
           },
@@ -860,11 +885,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 157,
+              "line": 161,
               "column": 4
             },
             "end": {
-              "line": 161,
+              "line": 166,
               "column": 5
             }
           },
@@ -882,11 +907,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 165,
+              "line": 170,
               "column": 4
             },
             "end": {
-              "line": 168,
+              "line": 174,
               "column": 5
             }
           },
@@ -895,7 +920,7 @@
               "attributeType": "String"
             }
           },
-          "defaultValue": "\"icons:expand-more\""
+          "defaultValue": "\"expand-more\""
         },
         {
           "name": "iconExpanded",
@@ -904,11 +929,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 172,
+              "line": 178,
               "column": 4
             },
             "end": {
-              "line": 175,
+              "line": 182,
               "column": 5
             }
           },
@@ -926,11 +951,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 179,
+              "line": 186,
               "column": 4
             },
             "end": {
-              "line": 182,
+              "line": 190,
               "column": 5
             }
           },
@@ -948,11 +973,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 186,
+              "line": 194,
               "column": 4
             },
             "end": {
-              "line": 189,
+              "line": 198,
               "column": 5
             }
           },
@@ -970,11 +995,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 193,
+              "line": 202,
               "column": 4
             },
             "end": {
-              "line": 196,
+              "line": 206,
               "column": 5
             }
           },
@@ -992,11 +1017,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 200,
+              "line": 210,
               "column": 4
             },
             "end": {
-              "line": 203,
+              "line": 214,
               "column": 5
             }
           },
@@ -1014,11 +1039,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 207,
+              "line": 218,
               "column": 4
             },
             "end": {
-              "line": 210,
+              "line": 222,
               "column": 5
             }
           },
@@ -1085,11 +1110,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 215,
+              "line": 227,
               "column": 2
             },
             "end": {
-              "line": 275,
+              "line": 287,
               "column": 3
             }
           },
@@ -1105,11 +1130,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 280,
+              "line": 292,
               "column": 2
             },
             "end": {
-              "line": 282,
+              "line": 294,
               "column": 3
             }
           },
@@ -1125,11 +1150,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 287,
+              "line": 299,
               "column": 2
             },
             "end": {
-              "line": 290,
+              "line": 302,
               "column": 3
             }
           },
@@ -1149,11 +1174,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 295,
+              "line": 307,
               "column": 2
             },
             "end": {
-              "line": 297,
+              "line": 309,
               "column": 3
             }
           },
@@ -1176,11 +1201,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 302,
+              "line": 314,
               "column": 2
             },
             "end": {
-              "line": 304,
+              "line": 316,
               "column": 3
             }
           },
@@ -1203,11 +1228,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 309,
+              "line": 321,
               "column": 2
             },
             "end": {
-              "line": 311,
+              "line": 323,
               "column": 3
             }
           },
@@ -1227,11 +1252,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 316,
+              "line": 328,
               "column": 2
             },
             "end": {
-              "line": 321,
+              "line": 333,
               "column": 3
             }
           },
@@ -1251,11 +1276,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 326,
+              "line": 338,
               "column": 2
             },
             "end": {
-              "line": 328,
+              "line": 340,
               "column": 3
             }
           },
@@ -1272,11 +1297,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 52,
+          "line": 51,
           "column": 27
         },
         "end": {
-          "line": 329,
+          "line": 341,
           "column": 1
         }
       },
@@ -1325,11 +1350,11 @@
           "description": "accordion-style: whole header acts as button? default is just icon.",
           "sourceRange": {
             "start": {
-              "line": 140,
+              "line": 142,
               "column": 4
             },
             "end": {
-              "line": 145,
+              "line": 148,
               "column": 5
             }
           },
@@ -1341,11 +1366,11 @@
           "description": "is disabled?",
           "sourceRange": {
             "start": {
-              "line": 149,
+              "line": 152,
               "column": 4
             },
             "end": {
-              "line": 153,
+              "line": 157,
               "column": 5
             }
           },
@@ -1357,11 +1382,11 @@
           "description": "icon when expanded",
           "sourceRange": {
             "start": {
-              "line": 157,
+              "line": 161,
               "column": 4
             },
             "end": {
-              "line": 161,
+              "line": 166,
               "column": 5
             }
           },
@@ -1373,11 +1398,11 @@
           "description": "icon for the button",
           "sourceRange": {
             "start": {
-              "line": 165,
+              "line": 170,
               "column": 4
             },
             "end": {
-              "line": 168,
+              "line": 174,
               "column": 5
             }
           },
@@ -1389,23 +1414,7 @@
           "description": "icon when expanded",
           "sourceRange": {
             "start": {
-              "line": 172,
-              "column": 4
-            },
-            "end": {
-              "line": 175,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "label",
-          "description": "label for the button",
-          "sourceRange": {
-            "start": {
-              "line": 179,
+              "line": 178,
               "column": 4
             },
             "end": {
@@ -1417,15 +1426,31 @@
           "type": "string | null | undefined"
         },
         {
-          "name": "label-expanded",
-          "description": "optional label for the button when expanded",
+          "name": "label",
+          "description": "label for the button",
           "sourceRange": {
             "start": {
               "line": 186,
               "column": 4
             },
             "end": {
-              "line": 189,
+              "line": 190,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "label-expanded",
+          "description": "optional label for the button when expanded",
+          "sourceRange": {
+            "start": {
+              "line": 194,
+              "column": 4
+            },
+            "end": {
+              "line": 198,
               "column": 5
             }
           },
@@ -1437,11 +1462,11 @@
           "description": "tooltip for the button",
           "sourceRange": {
             "start": {
-              "line": 193,
+              "line": 202,
               "column": 4
             },
             "end": {
-              "line": 196,
+              "line": 206,
               "column": 5
             }
           },
@@ -1453,11 +1478,11 @@
           "description": "optional tooltip for the button when expanded",
           "sourceRange": {
             "start": {
-              "line": 200,
+              "line": 210,
               "column": 4
             },
             "end": {
-              "line": 203,
+              "line": 214,
               "column": 5
             }
           },
@@ -1474,7 +1499,42 @@
       "tagname": "a11y-collapse"
     },
     {
-      "description": "`a11y-collapse-group`\nA LRN element",
+      "description": "`a11y-collapse-group`\nA group of a11y-collapse elements",
+      "summary": "",
+      "path": "lib/a11y-collapse-group.js",
+      "properties": [],
+      "methods": [],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/accordion.html",
+          "description": "collapse groups"
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 24,
+          "column": 24
+        },
+        "end": {
+          "line": 188,
+          "column": 2
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "A11yCollapseGroup",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": []
+    },
+    {
+      "description": "",
       "summary": "",
       "path": "lib/a11y-collapse-group.js",
       "properties": [
@@ -1528,61 +1588,17 @@
           "inheritedFrom": "SchemaBehaviors.Schema"
         },
         {
-          "name": "accordion",
-          "type": "boolean | null | undefined",
-          "description": "accordion-style: whole header of every a11y-collapse item acts as button? default is just icon.",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 54,
-              "column": 4
-            },
-            "end": {
-              "line": 58,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false"
-        },
-        {
-          "name": "disabled",
-          "type": "boolean | null | undefined",
-          "description": "is every each a11y-collapse item disabled?",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 62,
-              "column": 4
-            },
-            "end": {
-              "line": 66,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false"
-        },
-        {
           "name": "globalOptions",
           "type": "Object | null | undefined",
           "description": "an array of globalProperties to override every a11y-collapse item\nFor example, {\"icon\": \"arrow-drop-down\"} would set every item's icon to \"arrow-drop-down\"",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 71,
+              "line": 55,
               "column": 4
             },
             "end": {
-              "line": 74,
+              "line": 58,
               "column": 5
             }
           },
@@ -1600,11 +1616,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 78,
+              "line": 62,
               "column": 4
             },
             "end": {
-              "line": 81,
+              "line": 65,
               "column": 5
             }
           },
@@ -1622,11 +1638,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 85,
+              "line": 69,
               "column": 4
             },
             "end": {
-              "line": 88,
+              "line": 72,
               "column": 5
             }
           },
@@ -1693,11 +1709,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 94,
+              "line": 77,
               "column": 2
             },
             "end": {
-              "line": 104,
+              "line": 87,
               "column": 3
             }
           },
@@ -1713,11 +1729,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 109,
+              "line": 92,
               "column": 2
             },
             "end": {
-              "line": 117,
+              "line": 100,
               "column": 3
             }
           },
@@ -1737,11 +1753,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 122,
+              "line": 105,
               "column": 2
             },
             "end": {
-              "line": 126,
+              "line": 109,
               "column": 3
             }
           },
@@ -1761,11 +1777,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 131,
+              "line": 114,
               "column": 2
             },
             "end": {
-              "line": 137,
+              "line": 120,
               "column": 3
             }
           },
@@ -1785,11 +1801,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 142,
+              "line": 125,
               "column": 2
             },
             "end": {
-              "line": 154,
+              "line": 137,
               "column": 3
             }
           },
@@ -1805,11 +1821,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 159,
+              "line": 142,
               "column": 2
             },
             "end": {
-              "line": 204,
+              "line": 187,
               "column": 3
             }
           },
@@ -1821,25 +1837,21 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/accordion.html",
-          "description": "Accordion Groups"
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 24,
-          "column": 8
+          "column": 32
         },
         "end": {
-          "line": 205,
+          "line": 188,
           "column": 1
         }
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "A11yCollapseGroup",
       "attributes": [
         {
           "name": "schema-resource-i-d",
@@ -1878,47 +1890,15 @@
           "inheritedFrom": "SchemaBehaviors.Schema"
         },
         {
-          "name": "accordion",
-          "description": "accordion-style: whole header of every a11y-collapse item acts as button? default is just icon.",
-          "sourceRange": {
-            "start": {
-              "line": 54,
-              "column": 4
-            },
-            "end": {
-              "line": 58,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined"
-        },
-        {
-          "name": "disabled",
-          "description": "is every each a11y-collapse item disabled?",
-          "sourceRange": {
-            "start": {
-              "line": 62,
-              "column": 4
-            },
-            "end": {
-              "line": 66,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined"
-        },
-        {
           "name": "global-options",
           "description": "an array of globalProperties to override every a11y-collapse item\nFor example, {\"icon\": \"arrow-drop-down\"} would set every item's icon to \"arrow-drop-down\"",
           "sourceRange": {
             "start": {
-              "line": 71,
+              "line": 55,
               "column": 4
             },
             "end": {
-              "line": 74,
+              "line": 58,
               "column": 5
             }
           },
@@ -1930,11 +1910,11 @@
           "description": "is every a11y-collapse item radio button?",
           "sourceRange": {
             "start": {
-              "line": 78,
+              "line": 62,
               "column": 4
             },
             "end": {
-              "line": 81,
+              "line": 65,
               "column": 5
             }
           },

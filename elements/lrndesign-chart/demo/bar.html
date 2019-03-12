@@ -10,15 +10,34 @@
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../lrndesign-chart.js';
     </script>
-    <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style is="custom-style" include="demo-pages-shared-styles">
+    </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic lrndesign-bar demo</h3>
       <demo-snippet>
         <template>
-          <lrndesign-bar scale="ct-octave" chart-title="Sales by Quarter" chart-desc="A bar graph of sales by quarter. Each series is a salesperson."
-            data-source="bar.csv"></lrndesign-bar>
+          <lrndesign-bar scale="ct-double-octave" chart-title="Sales by Quarter" chart-desc="A bar graph of sales by quarter. Each series is a salesperson."
+          data-source="bar.csv"></lrndesign-bar>
+        </template>
+      </demo-snippet>
+      <demo-snippet>
+        <template>
+          <lrndesign-bar dark scale="ct-double-octave" chart-title="Sales by Quarter" chart-desc="A bar graph of sales by quarter. Each series is a salesperson."
+          data-source="bar.csv"></lrndesign-bar>
+        </template>
+      </demo-snippet>
+      <demo-snippet>
+        <template>
+          <lrndesign-bar accent-color="purple" scale="ct-double-octave" chart-title="Sales by Quarter" chart-desc="A bar graph of sales by quarter. Each series is a salesperson."
+          data-source="bar.csv"></lrndesign-bar>
+        </template>
+      </demo-snippet>
+      <demo-snippet>
+        <template>
+          <lrndesign-bar dark accent-color="purple" scale="ct-double-octave" chart-title="Sales by Quarter" chart-desc="A bar graph of sales by quarter. Each series is a salesperson."
+          data-source="bar.csv"></lrndesign-bar>
         </template>
       </demo-snippet>
     </div>

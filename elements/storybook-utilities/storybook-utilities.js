@@ -112,7 +112,7 @@ export class StorybookUtilities {
                 ? storybookBridge.radios(
                     key,
                     props[key].options || {},
-                    props[key].value
+                    props[key].value || ``
                   )
                 : method === "object"
                 ? storybookBridge.text(
@@ -130,7 +130,7 @@ export class StorybookUtilities {
                 ? storybookBridge.radios(
                     key,
                     props[key].valuesObj || {},
-                    props[key].value,
+                    props[key].value || ``,
                     props[key].options || {}
                   )
                 : //method === "text"

@@ -605,26 +605,100 @@
           "inheritedFrom": "ElementMixin"
         },
         {
-          "name": "chartId",
-          "type": "string | null | undefined",
-          "description": "The unique identifier of the chart.",
+          "name": "accentColor",
+          "type": "?",
+          "description": "a selected accent-color: grey, red, pink, purple, etc.",
           "privacy": "public",
           "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 54,
+              "line": 32,
               "column": 6
             },
             "end": {
-              "line": 57,
+              "line": 38,
               "column": 7
             }
           },
           "metadata": {
             "polymer": {
-              "attributeType": "String"
+              "notify": true
             }
           },
-          "defaultValue": "\"chart\""
+          "defaultValue": "\"grey\"",
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "dark",
+          "type": "?",
+          "description": "make the default theme dark?",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 42,
+              "column": 6
+            },
+            "end": {
+              "line": 48,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "defaultValue": "false",
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "colors",
+          "type": "?",
+          "description": "the colors object, eg.:\n{\n   \"grey\": [ \"#ffffff\", \"#eeeeee\", ... \"#111111\",\"#000000\" ],\n   \"red\": [ \"#ffdddd\", \"#ffaeae\", ... \"#520000\", \"#3f0000\" ],\n   ...\n}",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 57,
+              "column": 6
+            },
+            "end": {
+              "line": 63,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "false"
+            }
+          },
+          "defaultValue": "null",
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "__wcagContrast",
+          "type": "?",
+          "description": "object with information on which color combinations are WCAG 2.0AA compliant, eg: {\n   greyOnColor: { //if either the color or its contrast will be a grey\n     large: [ //if bold text >= 14pt, text >= 18pt, decorative only, or disabled\n       {\n         level: 1, //if the color is level 1\n         minLevelContrast: 7, //contrasting color should be >= 8 <=TODO\n         maxLevelContrast: 12 //contrasting color should be <= 12\n       },\n       { level: 2, minLevelContrast: 7, maxLevelContrast: 12 },\n       ...\n     ],\n     small: [ //if bold text < 14pt, or text < 18pt\n       { level: 1, minLevelContrast: 7, maxLevelContrast: 12 },\n       { level: 2, minLevelContrast: 7, maxLevelContrast: 12 },\n       ...\n     ]\n   },\n   colorOnColor: { //if neither the color nor its contrast are grey\n     large: [\n       { level: 1, minLevelContrast: 7, maxLevelContrast: 12 },\n       { level: 2, minLevelContrast: 7, maxLevelContrast: 12 },\n       ...\n     ],\n     small: [\n       { level: 1, minLevelContrast: 8, maxLevelContrast: 12 },\n       { level: 2, minLevelContrast: 8, maxLevelContrast: 12 },\n       ...\n     ]\n   }\n }",
+          "privacy": "private",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 96,
+              "column": 6
+            },
+            "end": {
+              "line": 102,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "false"
+            }
+          },
+          "defaultValue": "null",
+          "inheritedFrom": "SimpleColors"
         },
         {
           "name": "chartTitle",
@@ -633,11 +707,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 61,
+              "line": 400,
               "column": 6
             },
             "end": {
-              "line": 64,
+              "line": 403,
               "column": 7
             }
           },
@@ -655,11 +729,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 68,
+              "line": 407,
               "column": 6
             },
             "end": {
-              "line": 71,
+              "line": 410,
               "column": 7
             }
           },
@@ -673,15 +747,15 @@
         {
           "name": "scale",
           "type": "string | null | undefined",
-          "description": "Scale of the chart.",
+          "description": "The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```\nContainer class\tRatio\n.ct-square          1\n.ct-minor-second\t  15:16\n.ct-major-second\t  8:9\n.ct-minor-third\t    5:6\n.ct-major-third\t    4:5\n.ct-perfect-fourth\t3:4\n.ct-perfect-fifth\t  2:3\n.ct-minor-sixth\t    5:8\n.ct-golden-section\t1:1.618\n.ct-major-sixth\t    3:5\n.ct-minor-seventh\t  9:16\n.ct-major-seventh\t  8:15\n.ct-octave\t        1:2\n.ct-major-tenth\t    2:5\n.ct-major-eleventh\t3:8\n.ct-major-twelfth\t  1:3\n.ct-double-octave\t  1:4```",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 75,
+              "line": 432,
               "column": 6
             },
             "end": {
-              "line": 79,
+              "line": 436,
               "column": 7
             }
           },
@@ -700,11 +774,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 83,
+              "line": 440,
               "column": 6
             },
             "end": {
-              "line": 86,
+              "line": 443,
               "column": 7
             }
           },
@@ -722,11 +796,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 90,
+              "line": 447,
               "column": 6
             },
             "end": {
-              "line": 94,
+              "line": 451,
               "column": 7
             }
           },
@@ -745,11 +819,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 98,
+              "line": 455,
               "column": 6
             },
             "end": {
-              "line": 102,
+              "line": 459,
               "column": 7
             }
           },
@@ -768,11 +842,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 106,
+              "line": 463,
               "column": 6
             },
             "end": {
-              "line": 109,
+              "line": 466,
               "column": 7
             }
           },
@@ -789,11 +863,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 113,
+              "line": 470,
               "column": 6
             },
             "end": {
-              "line": 116,
+              "line": 473,
               "column": 7
             }
           },
@@ -810,11 +884,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 120,
+              "line": 477,
               "column": 6
             },
             "end": {
-              "line": 123,
+              "line": 480,
               "column": 7
             }
           },
@@ -832,11 +906,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 127,
+              "line": 484,
               "column": 6
             },
             "end": {
-              "line": 130,
+              "line": 487,
               "column": 7
             }
           },
@@ -854,11 +928,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 134,
+              "line": 491,
               "column": 6
             },
             "end": {
-              "line": 137,
+              "line": 494,
               "column": 7
             }
           },
@@ -876,11 +950,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 141,
+              "line": 498,
               "column": 6
             },
             "end": {
-              "line": 144,
+              "line": 501,
               "column": 7
             }
           },
@@ -898,11 +972,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 149,
+              "line": 506,
               "column": 6
             },
             "end": {
-              "line": 152,
+              "line": 509,
               "column": 7
             }
           },
@@ -920,11 +994,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 157,
+              "line": 514,
               "column": 6
             },
             "end": {
-              "line": 160,
+              "line": 517,
               "column": 7
             }
           },
@@ -942,11 +1016,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 164,
+              "line": 521,
               "column": 6
             },
             "end": {
-              "line": 167,
+              "line": 524,
               "column": 7
             }
           },
@@ -964,11 +1038,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 171,
+              "line": 528,
               "column": 6
             },
             "end": {
-              "line": 175,
+              "line": 532,
               "column": 7
             }
           },
@@ -1227,25 +1301,23 @@
         },
         {
           "name": "ready",
-          "description": "Stamps the element template.",
+          "description": "life cycle, element is ready",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/element-mixin.js",
             "start": {
-              "line": 608,
-              "column": 4
+              "line": 722,
+              "column": 2
             },
             "end": {
-              "line": 614,
-              "column": 5
+              "line": 731,
+              "column": 3
             }
           },
           "metadata": {},
           "params": [],
           "return": {
             "type": "void"
-          },
-          "inheritedFrom": "ElementMixin"
+          }
         },
         {
           "name": "_initializeProperties",
@@ -3069,11 +3141,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 221,
+              "line": 713,
               "column": 2
             },
             "end": {
-              "line": 226,
+              "line": 717,
               "column": 3
             }
           },
@@ -3197,16 +3269,45 @@
           "inheritedFrom": "ElementMixin"
         },
         {
+          "name": "getContrasts",
+          "description": "for a given simple-colors variable and WCAG 2.0AA-defined text size (large or small),\nreturns an array with variable names and and hex codes of WCAG 2.0AA-compliant contrasting colors, eg:\n```[\n   { \"color\": \"--simple-colors-light-theme-grey-2\", \"hex\": \"#eeeeee\" },\n   { \"color\": \"--simple-colors-light-theme-red-2\", \"hex\": \"#ffaeae\" },\n   ...\n]```",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 136,
+              "column": 2
+            },
+            "end": {
+              "line": 159,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "variable"
+            },
+            {
+              "name": "large"
+            }
+          ],
+          "return": {
+            "type": "Array"
+          },
+          "inheritedFrom": "SimpleColors"
+        },
+        {
           "name": "handleResponse",
           "description": "Convert from csv text to an array in the table function",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 231,
+              "line": 736,
               "column": 2
             },
             "end": {
-              "line": 240,
+              "line": 744,
               "column": 3
             }
           },
@@ -3222,15 +3323,15 @@
         },
         {
           "name": "_getOptions",
-          "description": "override this with specific options",
+          "description": "override this with type-specific options",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 245,
+              "line": 749,
               "column": 2
             },
             "end": {
-              "line": 247,
+              "line": 751,
               "column": 3
             }
           },
@@ -3243,11 +3344,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 252,
+              "line": 756,
               "column": 2
             },
             "end": {
-              "line": 281,
+              "line": 785,
               "column": 3
             }
           },
@@ -4196,51 +4297,98 @@
       ],
       "demos": [
         {
-          "url": "demo/line.html",
+          "url": "demo/index.html",
           "description": ""
+        },
+        {
+          "url": "demo/pie.html",
+          "description": "pie charts"
+        },
+        {
+          "url": "demo/bar.html",
+          "description": "bar charts"
+        },
+        {
+          "url": "demo/line.html",
+          "description": "line charts"
         }
       ],
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 19,
+          "line": 23,
           "column": 0
         },
         "end": {
-          "line": 449,
+          "line": 790,
           "column": 1
         }
       },
       "privacy": "public",
-      "superclass": "PolymerElement",
+      "superclass": "SimpleColors",
       "name": "LrndesignChartBehaviors",
       "attributes": [
         {
-          "name": "chart-id",
-          "description": "The unique identifier of the chart.",
+          "name": "accent-color",
+          "description": "a selected accent-color: grey, red, pink, purple, etc.",
           "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 54,
+              "line": 32,
               "column": 6
             },
             "end": {
-              "line": 57,
+              "line": 38,
               "column": 7
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 42,
+              "column": 6
+            },
+            "end": {
+              "line": 48,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "colors",
+          "description": "the colors object, eg.:\n{\n   \"grey\": [ \"#ffffff\", \"#eeeeee\", ... \"#111111\",\"#000000\" ],\n   \"red\": [ \"#ffdddd\", \"#ffaeae\", ... \"#520000\", \"#3f0000\" ],\n   ...\n}",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 57,
+              "column": 6
+            },
+            "end": {
+              "line": 63,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
         },
         {
           "name": "chart-title",
           "description": "The chart title used for accessibility.",
           "sourceRange": {
             "start": {
-              "line": 61,
+              "line": 400,
               "column": 6
             },
             "end": {
-              "line": 64,
+              "line": 403,
               "column": 7
             }
           },
@@ -4252,11 +4400,11 @@
           "description": "The chart description used for accessibility.",
           "sourceRange": {
             "start": {
-              "line": 68,
+              "line": 407,
               "column": 6
             },
             "end": {
-              "line": 71,
+              "line": 410,
               "column": 7
             }
           },
@@ -4265,14 +4413,14 @@
         },
         {
           "name": "scale",
-          "description": "Scale of the chart.",
+          "description": "The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```\nContainer class\tRatio\n.ct-square          1\n.ct-minor-second\t  15:16\n.ct-major-second\t  8:9\n.ct-minor-third\t    5:6\n.ct-major-third\t    4:5\n.ct-perfect-fourth\t3:4\n.ct-perfect-fifth\t  2:3\n.ct-minor-sixth\t    5:8\n.ct-golden-section\t1:1.618\n.ct-major-sixth\t    3:5\n.ct-minor-seventh\t  9:16\n.ct-major-seventh\t  8:15\n.ct-octave\t        1:2\n.ct-major-tenth\t    2:5\n.ct-major-eleventh\t3:8\n.ct-major-twelfth\t  1:3\n.ct-double-octave\t  1:4```",
           "sourceRange": {
             "start": {
-              "line": 75,
+              "line": 432,
               "column": 6
             },
             "end": {
-              "line": 79,
+              "line": 436,
               "column": 7
             }
           },
@@ -4284,11 +4432,11 @@
           "description": "Type of chart.",
           "sourceRange": {
             "start": {
-              "line": 83,
+              "line": 440,
               "column": 6
             },
             "end": {
-              "line": 86,
+              "line": 443,
               "column": 7
             }
           },
@@ -4300,11 +4448,11 @@
           "description": "Data as an array.",
           "sourceRange": {
             "start": {
-              "line": 90,
+              "line": 447,
               "column": 6
             },
             "end": {
-              "line": 94,
+              "line": 451,
               "column": 7
             }
           },
@@ -4316,11 +4464,11 @@
           "description": "Options as an array.",
           "sourceRange": {
             "start": {
-              "line": 98,
+              "line": 455,
               "column": 6
             },
             "end": {
-              "line": 102,
+              "line": 459,
               "column": 7
             }
           },
@@ -4332,11 +4480,11 @@
           "description": "Fixed width for the chart as a string (i.e. '100px' or '50%').",
           "sourceRange": {
             "start": {
-              "line": 106,
+              "line": 463,
               "column": 6
             },
             "end": {
-              "line": 109,
+              "line": 466,
               "column": 7
             }
           },
@@ -4348,11 +4496,11 @@
           "description": "Fixed height for the chart as a string (i.e. '100px' or '50%').",
           "sourceRange": {
             "start": {
-              "line": 113,
+              "line": 470,
               "column": 6
             },
             "end": {
-              "line": 116,
+              "line": 473,
               "column": 7
             }
           },
@@ -4364,11 +4512,11 @@
           "description": "Padding-top for chart.",
           "sourceRange": {
             "start": {
-              "line": 120,
+              "line": 477,
               "column": 6
             },
             "end": {
-              "line": 123,
+              "line": 480,
               "column": 7
             }
           },
@@ -4380,11 +4528,11 @@
           "description": "Padding-right for chart.",
           "sourceRange": {
             "start": {
-              "line": 127,
+              "line": 484,
               "column": 6
             },
             "end": {
-              "line": 130,
+              "line": 487,
               "column": 7
             }
           },
@@ -4396,11 +4544,11 @@
           "description": "Padding-bottom for chart.",
           "sourceRange": {
             "start": {
-              "line": 134,
+              "line": 491,
               "column": 6
             },
             "end": {
-              "line": 137,
+              "line": 494,
               "column": 7
             }
           },
@@ -4412,11 +4560,11 @@
           "description": "Padding-left for chart.",
           "sourceRange": {
             "start": {
-              "line": 141,
+              "line": 498,
               "column": 6
             },
             "end": {
-              "line": 144,
+              "line": 501,
               "column": 7
             }
           },
@@ -4428,11 +4576,11 @@
           "description": "Reverse data including labels, the series order as well as\nthe whole series data arrays.",
           "sourceRange": {
             "start": {
-              "line": 149,
+              "line": 506,
               "column": 6
             },
             "end": {
-              "line": 152,
+              "line": 509,
               "column": 7
             }
           },
@@ -4444,11 +4592,11 @@
           "description": "The responsive options.\n(See https://gionkunz.github.io/chartist-js/api-documentation.html.)",
           "sourceRange": {
             "start": {
-              "line": 157,
+              "line": 514,
               "column": 6
             },
             "end": {
-              "line": 160,
+              "line": 517,
               "column": 7
             }
           },
@@ -4460,11 +4608,11 @@
           "description": "Location of the CSV file.",
           "sourceRange": {
             "start": {
-              "line": 164,
+              "line": 521,
               "column": 6
             },
             "end": {
-              "line": 167,
+              "line": 524,
               "column": 7
             }
           },
@@ -4476,11 +4624,11 @@
           "description": "Raw data pulled in from the csv file.",
           "sourceRange": {
             "start": {
-              "line": 171,
+              "line": 528,
               "column": 6
             },
             "end": {
-              "line": 175,
+              "line": 532,
               "column": 7
             }
           },
@@ -4489,6 +4637,20 @@
         }
       ],
       "events": [
+        {
+          "type": "CustomEvent",
+          "name": "accent-color-changed",
+          "description": "Fired when the `accentColor` property changes.",
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "type": "CustomEvent",
+          "name": "dark-changed",
+          "description": "Fired when the `dark` property changes.",
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
+        },
         {
           "type": "CustomEvent",
           "name": "scale-changed",
@@ -5130,28 +5292,100 @@
           "inheritedFrom": "ElementMixin"
         },
         {
-          "name": "chartId",
-          "type": "string | null | undefined",
-          "description": "The unique identifier of the chart.",
+          "name": "accentColor",
+          "type": "?",
+          "description": "a selected accent-color: grey, red, pink, purple, etc.",
           "privacy": "public",
           "sourceRange": {
-            "file": "lrndesign-chart-behaviors.js",
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 54,
+              "line": 32,
               "column": 6
             },
             "end": {
-              "line": 57,
+              "line": 38,
               "column": 7
             }
           },
           "metadata": {
             "polymer": {
-              "attributeType": "String"
+              "notify": true
             }
           },
-          "defaultValue": "\"chart\"",
-          "inheritedFrom": "LrndesignChartBehaviors"
+          "defaultValue": "\"grey\"",
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "dark",
+          "type": "?",
+          "description": "make the default theme dark?",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 42,
+              "column": 6
+            },
+            "end": {
+              "line": 48,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "defaultValue": "false",
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "colors",
+          "type": "?",
+          "description": "the colors object, eg.:\n{\n   \"grey\": [ \"#ffffff\", \"#eeeeee\", ... \"#111111\",\"#000000\" ],\n   \"red\": [ \"#ffdddd\", \"#ffaeae\", ... \"#520000\", \"#3f0000\" ],\n   ...\n}",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 57,
+              "column": 6
+            },
+            "end": {
+              "line": 63,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "false"
+            }
+          },
+          "defaultValue": "null",
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "__wcagContrast",
+          "type": "?",
+          "description": "object with information on which color combinations are WCAG 2.0AA compliant, eg: {\n   greyOnColor: { //if either the color or its contrast will be a grey\n     large: [ //if bold text >= 14pt, text >= 18pt, decorative only, or disabled\n       {\n         level: 1, //if the color is level 1\n         minLevelContrast: 7, //contrasting color should be >= 8 <=TODO\n         maxLevelContrast: 12 //contrasting color should be <= 12\n       },\n       { level: 2, minLevelContrast: 7, maxLevelContrast: 12 },\n       ...\n     ],\n     small: [ //if bold text < 14pt, or text < 18pt\n       { level: 1, minLevelContrast: 7, maxLevelContrast: 12 },\n       { level: 2, minLevelContrast: 7, maxLevelContrast: 12 },\n       ...\n     ]\n   },\n   colorOnColor: { //if neither the color nor its contrast are grey\n     large: [\n       { level: 1, minLevelContrast: 7, maxLevelContrast: 12 },\n       { level: 2, minLevelContrast: 7, maxLevelContrast: 12 },\n       ...\n     ],\n     small: [\n       { level: 1, minLevelContrast: 8, maxLevelContrast: 12 },\n       { level: 2, minLevelContrast: 8, maxLevelContrast: 12 },\n       ...\n     ]\n   }\n }",
+          "privacy": "private",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 96,
+              "column": 6
+            },
+            "end": {
+              "line": 102,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "false"
+            }
+          },
+          "defaultValue": "null",
+          "inheritedFrom": "SimpleColors"
         },
         {
           "name": "chartTitle",
@@ -5161,11 +5395,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 61,
+              "line": 400,
               "column": 6
             },
             "end": {
-              "line": 64,
+              "line": 403,
               "column": 7
             }
           },
@@ -5185,11 +5419,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 68,
+              "line": 407,
               "column": 6
             },
             "end": {
-              "line": 71,
+              "line": 410,
               "column": 7
             }
           },
@@ -5204,16 +5438,16 @@
         {
           "name": "scale",
           "type": "string | null | undefined",
-          "description": "Scale of the chart.",
+          "description": "The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```\nContainer class\tRatio\n.ct-square          1\n.ct-minor-second\t  15:16\n.ct-major-second\t  8:9\n.ct-minor-third\t    5:6\n.ct-major-third\t    4:5\n.ct-perfect-fourth\t3:4\n.ct-perfect-fifth\t  2:3\n.ct-minor-sixth\t    5:8\n.ct-golden-section\t1:1.618\n.ct-major-sixth\t    3:5\n.ct-minor-seventh\t  9:16\n.ct-major-seventh\t  8:15\n.ct-octave\t        1:2\n.ct-major-tenth\t    2:5\n.ct-major-eleventh\t3:8\n.ct-major-twelfth\t  1:3\n.ct-double-octave\t  1:4```",
           "privacy": "public",
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 75,
+              "line": 432,
               "column": 6
             },
             "end": {
-              "line": 79,
+              "line": 436,
               "column": 7
             }
           },
@@ -5233,11 +5467,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 25,
+              "line": 24,
               "column": 6
             },
             "end": {
-              "line": 29,
+              "line": 28,
               "column": 7
             }
           },
@@ -5257,11 +5491,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 90,
+              "line": 447,
               "column": 6
             },
             "end": {
-              "line": 94,
+              "line": 451,
               "column": 7
             }
           },
@@ -5282,11 +5516,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 98,
+              "line": 455,
               "column": 6
             },
             "end": {
-              "line": 102,
+              "line": 459,
               "column": 7
             }
           },
@@ -5307,11 +5541,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 106,
+              "line": 463,
               "column": 6
             },
             "end": {
-              "line": 109,
+              "line": 466,
               "column": 7
             }
           },
@@ -5330,11 +5564,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 113,
+              "line": 470,
               "column": 6
             },
             "end": {
-              "line": 116,
+              "line": 473,
               "column": 7
             }
           },
@@ -5353,11 +5587,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 120,
+              "line": 477,
               "column": 6
             },
             "end": {
-              "line": 123,
+              "line": 480,
               "column": 7
             }
           },
@@ -5377,11 +5611,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 127,
+              "line": 484,
               "column": 6
             },
             "end": {
-              "line": 130,
+              "line": 487,
               "column": 7
             }
           },
@@ -5401,11 +5635,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 134,
+              "line": 491,
               "column": 6
             },
             "end": {
-              "line": 137,
+              "line": 494,
               "column": 7
             }
           },
@@ -5425,11 +5659,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 141,
+              "line": 498,
               "column": 6
             },
             "end": {
-              "line": 144,
+              "line": 501,
               "column": 7
             }
           },
@@ -5449,11 +5683,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 149,
+              "line": 506,
               "column": 6
             },
             "end": {
-              "line": 152,
+              "line": 509,
               "column": 7
             }
           },
@@ -5473,11 +5707,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 157,
+              "line": 514,
               "column": 6
             },
             "end": {
-              "line": 160,
+              "line": 517,
               "column": 7
             }
           },
@@ -5497,11 +5731,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 164,
+              "line": 521,
               "column": 6
             },
             "end": {
-              "line": 167,
+              "line": 524,
               "column": 7
             }
           },
@@ -5521,11 +5755,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 171,
+              "line": 528,
               "column": 6
             },
             "end": {
-              "line": 175,
+              "line": 532,
               "column": 7
             }
           },
@@ -5545,11 +5779,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 34,
+              "line": 33,
               "column": 6
             },
             "end": {
-              "line": 37,
+              "line": 36,
               "column": 7
             }
           },
@@ -5566,11 +5800,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 42,
+              "line": 41,
               "column": 6
             },
             "end": {
-              "line": 45,
+              "line": 44,
               "column": 7
             }
           },
@@ -5587,11 +5821,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 50,
+              "line": 49,
               "column": 6
             },
             "end": {
-              "line": 53,
+              "line": 52,
               "column": 7
             }
           },
@@ -5609,11 +5843,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 57,
+              "line": 56,
               "column": 6
             },
             "end": {
-              "line": 60,
+              "line": 59,
               "column": 7
             }
           },
@@ -5631,11 +5865,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 66,
+              "line": 65,
               "column": 6
             },
             "end": {
-              "line": 69,
+              "line": 68,
               "column": 7
             }
           },
@@ -5653,11 +5887,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 78,
+              "line": 77,
               "column": 6
             },
             "end": {
-              "line": 81,
+              "line": 80,
               "column": 7
             }
           },
@@ -5675,11 +5909,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 88,
+              "line": 87,
               "column": 6
             },
             "end": {
-              "line": 91,
+              "line": 90,
               "column": 7
             }
           },
@@ -5697,11 +5931,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 99,
+              "line": 98,
               "column": 6
             },
             "end": {
-              "line": 102,
+              "line": 101,
               "column": 7
             }
           },
@@ -5719,11 +5953,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 106,
+              "line": 105,
               "column": 6
             },
             "end": {
-              "line": 109,
+              "line": 108,
               "column": 7
             }
           },
@@ -5741,11 +5975,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 113,
+              "line": 112,
               "column": 6
             },
             "end": {
-              "line": 116,
+              "line": 115,
               "column": 7
             }
           },
@@ -5763,11 +5997,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 120,
+              "line": 119,
               "column": 6
             },
             "end": {
-              "line": 123,
+              "line": 122,
               "column": 7
             }
           },
@@ -5785,11 +6019,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 127,
+              "line": 126,
               "column": 6
             },
             "end": {
-              "line": 130,
+              "line": 129,
               "column": 7
             }
           },
@@ -5807,11 +6041,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 134,
+              "line": 133,
               "column": 6
             },
             "end": {
-              "line": 137,
+              "line": 136,
               "column": 7
             }
           },
@@ -5829,11 +6063,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 141,
+              "line": 140,
               "column": 6
             },
             "end": {
-              "line": 144,
+              "line": 143,
               "column": 7
             }
           },
@@ -5851,11 +6085,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 148,
+              "line": 147,
               "column": 6
             },
             "end": {
-              "line": 151,
+              "line": 150,
               "column": 7
             }
           },
@@ -5873,11 +6107,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 155,
+              "line": 154,
               "column": 6
             },
             "end": {
-              "line": 158,
+              "line": 157,
               "column": 7
             }
           },
@@ -5895,11 +6129,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 162,
+              "line": 161,
               "column": 6
             },
             "end": {
-              "line": 165,
+              "line": 164,
               "column": 7
             }
           },
@@ -5917,11 +6151,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 169,
+              "line": 168,
               "column": 6
             },
             "end": {
-              "line": 172,
+              "line": 171,
               "column": 7
             }
           },
@@ -5939,11 +6173,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 176,
+              "line": 175,
               "column": 6
             },
             "end": {
-              "line": 179,
+              "line": 178,
               "column": 7
             }
           },
@@ -5961,11 +6195,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 183,
+              "line": 182,
               "column": 6
             },
             "end": {
-              "line": 186,
+              "line": 185,
               "column": 7
             }
           },
@@ -5983,11 +6217,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 190,
+              "line": 189,
               "column": 6
             },
             "end": {
-              "line": 193,
+              "line": 192,
               "column": 7
             }
           },
@@ -6005,11 +6239,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 197,
+              "line": 196,
               "column": 6
             },
             "end": {
-              "line": 200,
+              "line": 199,
               "column": 7
             }
           },
@@ -6027,11 +6261,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 204,
+              "line": 203,
               "column": 6
             },
             "end": {
-              "line": 207,
+              "line": 206,
               "column": 7
             }
           },
@@ -6289,17 +6523,17 @@
         },
         {
           "name": "ready",
-          "description": "Stamps the element template.",
+          "description": "life cycle, element is ready",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/element-mixin.js",
+            "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 608,
-              "column": 4
+              "line": 722,
+              "column": 2
             },
             "end": {
-              "line": 614,
-              "column": 5
+              "line": 731,
+              "column": 3
             }
           },
           "metadata": {},
@@ -6307,7 +6541,7 @@
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "ElementMixin"
+          "inheritedFrom": "LrndesignChartBehaviors"
         },
         {
           "name": "_initializeProperties",
@@ -8130,13 +8364,12 @@
           "description": "life cycle, element is afixed to the DOM",
           "privacy": "public",
           "sourceRange": {
-            "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 221,
+              "line": 474,
               "column": 2
             },
             "end": {
-              "line": 226,
+              "line": 477,
               "column": 3
             }
           },
@@ -8144,8 +8377,7 @@
           "params": [],
           "return": {
             "type": "void"
-          },
-          "inheritedFrom": "LrndesignChartBehaviors"
+          }
         },
         {
           "name": "disconnectedCallback",
@@ -8261,17 +8493,46 @@
           "inheritedFrom": "ElementMixin"
         },
         {
+          "name": "getContrasts",
+          "description": "for a given simple-colors variable and WCAG 2.0AA-defined text size (large or small),\nreturns an array with variable names and and hex codes of WCAG 2.0AA-compliant contrasting colors, eg:\n```[\n   { \"color\": \"--simple-colors-light-theme-grey-2\", \"hex\": \"#eeeeee\" },\n   { \"color\": \"--simple-colors-light-theme-red-2\", \"hex\": \"#ffaeae\" },\n   ...\n]```",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 136,
+              "column": 2
+            },
+            "end": {
+              "line": 159,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "variable"
+            },
+            {
+              "name": "large"
+            }
+          ],
+          "return": {
+            "type": "Array"
+          },
+          "inheritedFrom": "SimpleColors"
+        },
+        {
           "name": "handleResponse",
           "description": "Convert from csv text to an array in the table function",
           "privacy": "public",
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 231,
+              "line": 736,
               "column": 2
             },
             "end": {
-              "line": 240,
+              "line": 744,
               "column": 3
             }
           },
@@ -8292,11 +8553,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 475,
+              "line": 482,
               "column": 2
             },
             "end": {
-              "line": 478,
+              "line": 485,
               "column": 3
             }
           },
@@ -8310,11 +8571,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 252,
+              "line": 756,
               "column": 2
             },
             "end": {
-              "line": 281,
+              "line": 785,
               "column": 3
             }
           },
@@ -9275,7 +9536,7 @@
           "column": 0
         },
         "end": {
-          "line": 479,
+          "line": 486,
           "column": 1
         }
       },
@@ -9284,22 +9545,55 @@
       "name": "LrndesignBar",
       "attributes": [
         {
-          "name": "chart-id",
-          "description": "The unique identifier of the chart.",
+          "name": "accent-color",
+          "description": "a selected accent-color: grey, red, pink, purple, etc.",
           "sourceRange": {
-            "file": "lrndesign-chart-behaviors.js",
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 54,
+              "line": 32,
               "column": 6
             },
             "end": {
-              "line": 57,
+              "line": 38,
               "column": 7
             }
           },
           "metadata": {},
-          "type": "string | null | undefined",
-          "inheritedFrom": "LrndesignChartBehaviors"
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 42,
+              "column": 6
+            },
+            "end": {
+              "line": 48,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "colors",
+          "description": "the colors object, eg.:\n{\n   \"grey\": [ \"#ffffff\", \"#eeeeee\", ... \"#111111\",\"#000000\" ],\n   \"red\": [ \"#ffdddd\", \"#ffaeae\", ... \"#520000\", \"#3f0000\" ],\n   ...\n}",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 57,
+              "column": 6
+            },
+            "end": {
+              "line": 63,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
         },
         {
           "name": "chart-title",
@@ -9307,11 +9601,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 61,
+              "line": 400,
               "column": 6
             },
             "end": {
-              "line": 64,
+              "line": 403,
               "column": 7
             }
           },
@@ -9325,11 +9619,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 68,
+              "line": 407,
               "column": 6
             },
             "end": {
-              "line": 71,
+              "line": 410,
               "column": 7
             }
           },
@@ -9339,15 +9633,15 @@
         },
         {
           "name": "scale",
-          "description": "Scale of the chart.",
+          "description": "The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```\nContainer class\tRatio\n.ct-square          1\n.ct-minor-second\t  15:16\n.ct-major-second\t  8:9\n.ct-minor-third\t    5:6\n.ct-major-third\t    4:5\n.ct-perfect-fourth\t3:4\n.ct-perfect-fifth\t  2:3\n.ct-minor-sixth\t    5:8\n.ct-golden-section\t1:1.618\n.ct-major-sixth\t    3:5\n.ct-minor-seventh\t  9:16\n.ct-major-seventh\t  8:15\n.ct-octave\t        1:2\n.ct-major-tenth\t    2:5\n.ct-major-eleventh\t3:8\n.ct-major-twelfth\t  1:3\n.ct-double-octave\t  1:4```",
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 75,
+              "line": 432,
               "column": 6
             },
             "end": {
-              "line": 79,
+              "line": 436,
               "column": 7
             }
           },
@@ -9360,11 +9654,11 @@
           "description": "Type of chart.",
           "sourceRange": {
             "start": {
-              "line": 25,
+              "line": 24,
               "column": 6
             },
             "end": {
-              "line": 29,
+              "line": 28,
               "column": 7
             }
           },
@@ -9377,11 +9671,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 90,
+              "line": 447,
               "column": 6
             },
             "end": {
-              "line": 94,
+              "line": 451,
               "column": 7
             }
           },
@@ -9395,11 +9689,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 98,
+              "line": 455,
               "column": 6
             },
             "end": {
-              "line": 102,
+              "line": 459,
               "column": 7
             }
           },
@@ -9413,11 +9707,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 106,
+              "line": 463,
               "column": 6
             },
             "end": {
-              "line": 109,
+              "line": 466,
               "column": 7
             }
           },
@@ -9431,11 +9725,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 113,
+              "line": 470,
               "column": 6
             },
             "end": {
-              "line": 116,
+              "line": 473,
               "column": 7
             }
           },
@@ -9449,11 +9743,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 120,
+              "line": 477,
               "column": 6
             },
             "end": {
-              "line": 123,
+              "line": 480,
               "column": 7
             }
           },
@@ -9467,11 +9761,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 127,
+              "line": 484,
               "column": 6
             },
             "end": {
-              "line": 130,
+              "line": 487,
               "column": 7
             }
           },
@@ -9485,11 +9779,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 134,
+              "line": 491,
               "column": 6
             },
             "end": {
-              "line": 137,
+              "line": 494,
               "column": 7
             }
           },
@@ -9503,11 +9797,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 141,
+              "line": 498,
               "column": 6
             },
             "end": {
-              "line": 144,
+              "line": 501,
               "column": 7
             }
           },
@@ -9521,11 +9815,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 149,
+              "line": 506,
               "column": 6
             },
             "end": {
-              "line": 152,
+              "line": 509,
               "column": 7
             }
           },
@@ -9539,11 +9833,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 157,
+              "line": 514,
               "column": 6
             },
             "end": {
-              "line": 160,
+              "line": 517,
               "column": 7
             }
           },
@@ -9557,11 +9851,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 164,
+              "line": 521,
               "column": 6
             },
             "end": {
-              "line": 167,
+              "line": 524,
               "column": 7
             }
           },
@@ -9575,11 +9869,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 171,
+              "line": 528,
               "column": 6
             },
             "end": {
-              "line": 175,
+              "line": 532,
               "column": 7
             }
           },
@@ -9592,11 +9886,11 @@
           "description": "Overriding the natural high of the chart allows you to zoom in\nor limit the charts highest displayed value.",
           "sourceRange": {
             "start": {
-              "line": 34,
+              "line": 33,
               "column": 6
             },
             "end": {
-              "line": 37,
+              "line": 36,
               "column": 7
             }
           },
@@ -9608,11 +9902,11 @@
           "description": "Overriding the natural low of the chart allows you to zoom in\nor limit the charts lowest displayed value.",
           "sourceRange": {
             "start": {
-              "line": 42,
+              "line": 41,
               "column": 6
             },
             "end": {
-              "line": 45,
+              "line": 44,
               "column": 7
             }
           },
@@ -9624,11 +9918,11 @@
           "description": "Unless low/high are explicitly set, bar chart will be\ncentered at zero by default. Set referenceValue to null to auto scale.",
           "sourceRange": {
             "start": {
-              "line": 50,
+              "line": 49,
               "column": 6
             },
             "end": {
-              "line": 53,
+              "line": 52,
               "column": 7
             }
           },
@@ -9640,11 +9934,11 @@
           "description": "Specify the distance in pixel of bars in a group.",
           "sourceRange": {
             "start": {
-              "line": 57,
+              "line": 56,
               "column": 6
             },
             "end": {
-              "line": 60,
+              "line": 59,
               "column": 7
             }
           },
@@ -9656,11 +9950,11 @@
           "description": "If set to true this property will cause the series bars\nto be stacked. Check the \"stackMode\" option\nfor further stacking options.",
           "sourceRange": {
             "start": {
-              "line": 66,
+              "line": 65,
               "column": 6
             },
             "end": {
-              "line": 69,
+              "line": 68,
               "column": 7
             }
           },
@@ -9672,11 +9966,11 @@
           "description": "If set to \"true\" this property will form a total\nfor each series point. This will also influence\nthe y-axis and the overall bounds of the chart.\nIf set to \"false\" this property will force\nthe stacked bars to draw from the zero line.\nIn stacked mode the \"seriesBarDistance\" property will have no effect.",
           "sourceRange": {
             "start": {
-              "line": 78,
+              "line": 77,
               "column": 6
             },
             "end": {
-              "line": 81,
+              "line": 80,
               "column": 7
             }
           },
@@ -9688,11 +9982,11 @@
           "description": "Inverts the axes of the bar chart in order to draw\na horizontal bar chart. Be aware that you also need\nto invert your axis settings as the Y Axis will now display\nthe labels and the X Axis the values.",
           "sourceRange": {
             "start": {
-              "line": 88,
+              "line": 87,
               "column": 6
             },
             "end": {
-              "line": 91,
+              "line": 90,
               "column": 7
             }
           },
@@ -9704,11 +9998,11 @@
           "description": "If set to true then each bar will represent a series and\nthe data array is expected to be a one dimensional array\nof data values rather than a series array of series.\nThis is useful if the bar chart should represent\na profile rather than some data over time.",
           "sourceRange": {
             "start": {
-              "line": 99,
+              "line": 98,
               "column": 6
             },
             "end": {
-              "line": 102,
+              "line": 101,
               "column": 7
             }
           },
@@ -9720,11 +10014,11 @@
           "description": "If the bar chart should add a background fill to the .ct-grids group.",
           "sourceRange": {
             "start": {
-              "line": 106,
+              "line": 105,
               "column": 6
             },
             "end": {
-              "line": 109,
+              "line": 108,
               "column": 7
             }
           },
@@ -9736,11 +10030,11 @@
           "description": "The offset of the chart drawing area to the border of the container.",
           "sourceRange": {
             "start": {
-              "line": 113,
+              "line": 112,
               "column": 6
             },
             "end": {
-              "line": 116,
+              "line": 115,
               "column": 7
             }
           },
@@ -9752,11 +10046,11 @@
           "description": "The offset of the chart drawing area to the border of the container.",
           "sourceRange": {
             "start": {
-              "line": 120,
+              "line": 119,
               "column": 6
             },
             "end": {
-              "line": 123,
+              "line": 122,
               "column": 7
             }
           },
@@ -9768,11 +10062,11 @@
           "description": "Position labels at top-left of axis?",
           "sourceRange": {
             "start": {
-              "line": 127,
+              "line": 126,
               "column": 6
             },
             "end": {
-              "line": 130,
+              "line": 129,
               "column": 7
             }
           },
@@ -9784,11 +10078,11 @@
           "description": "Position labels at top-left of axis?",
           "sourceRange": {
             "start": {
-              "line": 134,
+              "line": 133,
               "column": 6
             },
             "end": {
-              "line": 137,
+              "line": 136,
               "column": 7
             }
           },
@@ -9800,11 +10094,11 @@
           "description": "Offset X of labels for X-axis",
           "sourceRange": {
             "start": {
-              "line": 141,
+              "line": 140,
               "column": 6
             },
             "end": {
-              "line": 144,
+              "line": 143,
               "column": 7
             }
           },
@@ -9816,11 +10110,11 @@
           "description": "Offset Y of labels for X-axis",
           "sourceRange": {
             "start": {
-              "line": 148,
+              "line": 147,
               "column": 6
             },
             "end": {
-              "line": 151,
+              "line": 150,
               "column": 7
             }
           },
@@ -9832,11 +10126,11 @@
           "description": "Offset X of labels for Y-axis",
           "sourceRange": {
             "start": {
-              "line": 155,
+              "line": 154,
               "column": 6
             },
             "end": {
-              "line": 158,
+              "line": 157,
               "column": 7
             }
           },
@@ -9848,11 +10142,11 @@
           "description": "Offset Y of labels for Y-axis",
           "sourceRange": {
             "start": {
-              "line": 162,
+              "line": 161,
               "column": 6
             },
             "end": {
-              "line": 165,
+              "line": 164,
               "column": 7
             }
           },
@@ -9864,11 +10158,11 @@
           "description": "Show axis X labels?",
           "sourceRange": {
             "start": {
-              "line": 169,
+              "line": 168,
               "column": 6
             },
             "end": {
-              "line": 172,
+              "line": 171,
               "column": 7
             }
           },
@@ -9880,11 +10174,11 @@
           "description": "Show axis Y labels?",
           "sourceRange": {
             "start": {
-              "line": 176,
+              "line": 175,
               "column": 6
             },
             "end": {
-              "line": 179,
+              "line": 178,
               "column": 7
             }
           },
@@ -9896,11 +10190,11 @@
           "description": "Show axis X grid?",
           "sourceRange": {
             "start": {
-              "line": 183,
+              "line": 182,
               "column": 6
             },
             "end": {
-              "line": 186,
+              "line": 185,
               "column": 7
             }
           },
@@ -9912,11 +10206,11 @@
           "description": "Show axis Y grid?",
           "sourceRange": {
             "start": {
-              "line": 190,
+              "line": 189,
               "column": 6
             },
             "end": {
-              "line": 193,
+              "line": 192,
               "column": 7
             }
           },
@@ -9928,11 +10222,11 @@
           "description": "Use only integer values (whole numbers) for the scale steps",
           "sourceRange": {
             "start": {
-              "line": 197,
+              "line": 196,
               "column": 6
             },
             "end": {
-              "line": 200,
+              "line": 199,
               "column": 7
             }
           },
@@ -9944,11 +10238,11 @@
           "description": "Use only integer values (whole numbers) for the scale steps",
           "sourceRange": {
             "start": {
-              "line": 204,
+              "line": 203,
               "column": 6
             },
             "end": {
-              "line": 207,
+              "line": 206,
               "column": 7
             }
           },
@@ -9957,6 +10251,20 @@
         }
       ],
       "events": [
+        {
+          "type": "CustomEvent",
+          "name": "accent-color-changed",
+          "description": "Fired when the `accentColor` property changes.",
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "type": "CustomEvent",
+          "name": "dark-changed",
+          "description": "Fired when the `dark` property changes.",
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
+        },
         {
           "type": "CustomEvent",
           "name": "scale-changed",
@@ -10603,28 +10911,100 @@
           "inheritedFrom": "ElementMixin"
         },
         {
-          "name": "chartId",
-          "type": "string | null | undefined",
-          "description": "The unique identifier of the chart.",
+          "name": "accentColor",
+          "type": "?",
+          "description": "a selected accent-color: grey, red, pink, purple, etc.",
           "privacy": "public",
           "sourceRange": {
-            "file": "lrndesign-chart-behaviors.js",
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 54,
+              "line": 32,
               "column": 6
             },
             "end": {
-              "line": 57,
+              "line": 38,
               "column": 7
             }
           },
           "metadata": {
             "polymer": {
-              "attributeType": "String"
+              "notify": true
             }
           },
-          "defaultValue": "\"chart\"",
-          "inheritedFrom": "LrndesignChartBehaviors"
+          "defaultValue": "\"grey\"",
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "dark",
+          "type": "?",
+          "description": "make the default theme dark?",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 42,
+              "column": 6
+            },
+            "end": {
+              "line": 48,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "defaultValue": "false",
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "colors",
+          "type": "?",
+          "description": "the colors object, eg.:\n{\n   \"grey\": [ \"#ffffff\", \"#eeeeee\", ... \"#111111\",\"#000000\" ],\n   \"red\": [ \"#ffdddd\", \"#ffaeae\", ... \"#520000\", \"#3f0000\" ],\n   ...\n}",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 57,
+              "column": 6
+            },
+            "end": {
+              "line": 63,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "false"
+            }
+          },
+          "defaultValue": "null",
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "__wcagContrast",
+          "type": "?",
+          "description": "object with information on which color combinations are WCAG 2.0AA compliant, eg: {\n   greyOnColor: { //if either the color or its contrast will be a grey\n     large: [ //if bold text >= 14pt, text >= 18pt, decorative only, or disabled\n       {\n         level: 1, //if the color is level 1\n         minLevelContrast: 7, //contrasting color should be >= 8 <=TODO\n         maxLevelContrast: 12 //contrasting color should be <= 12\n       },\n       { level: 2, minLevelContrast: 7, maxLevelContrast: 12 },\n       ...\n     ],\n     small: [ //if bold text < 14pt, or text < 18pt\n       { level: 1, minLevelContrast: 7, maxLevelContrast: 12 },\n       { level: 2, minLevelContrast: 7, maxLevelContrast: 12 },\n       ...\n     ]\n   },\n   colorOnColor: { //if neither the color nor its contrast are grey\n     large: [\n       { level: 1, minLevelContrast: 7, maxLevelContrast: 12 },\n       { level: 2, minLevelContrast: 7, maxLevelContrast: 12 },\n       ...\n     ],\n     small: [\n       { level: 1, minLevelContrast: 8, maxLevelContrast: 12 },\n       { level: 2, minLevelContrast: 8, maxLevelContrast: 12 },\n       ...\n     ]\n   }\n }",
+          "privacy": "private",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 96,
+              "column": 6
+            },
+            "end": {
+              "line": 102,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "false"
+            }
+          },
+          "defaultValue": "null",
+          "inheritedFrom": "SimpleColors"
         },
         {
           "name": "chartTitle",
@@ -10634,11 +11014,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 61,
+              "line": 400,
               "column": 6
             },
             "end": {
-              "line": 64,
+              "line": 403,
               "column": 7
             }
           },
@@ -10658,11 +11038,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 68,
+              "line": 407,
               "column": 6
             },
             "end": {
-              "line": 71,
+              "line": 410,
               "column": 7
             }
           },
@@ -10677,16 +11057,16 @@
         {
           "name": "scale",
           "type": "string | null | undefined",
-          "description": "Scale of the chart.",
+          "description": "The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```\nContainer class\tRatio\n.ct-square          1\n.ct-minor-second\t  15:16\n.ct-major-second\t  8:9\n.ct-minor-third\t    5:6\n.ct-major-third\t    4:5\n.ct-perfect-fourth\t3:4\n.ct-perfect-fifth\t  2:3\n.ct-minor-sixth\t    5:8\n.ct-golden-section\t1:1.618\n.ct-major-sixth\t    3:5\n.ct-minor-seventh\t  9:16\n.ct-major-seventh\t  8:15\n.ct-octave\t        1:2\n.ct-major-tenth\t    2:5\n.ct-major-eleventh\t3:8\n.ct-major-twelfth\t  1:3\n.ct-double-octave\t  1:4```",
           "privacy": "public",
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 75,
+              "line": 432,
               "column": 6
             },
             "end": {
-              "line": 79,
+              "line": 436,
               "column": 7
             }
           },
@@ -10706,11 +11086,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 25,
+              "line": 24,
               "column": 6
             },
             "end": {
-              "line": 29,
+              "line": 28,
               "column": 7
             }
           },
@@ -10730,11 +11110,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 90,
+              "line": 447,
               "column": 6
             },
             "end": {
-              "line": 94,
+              "line": 451,
               "column": 7
             }
           },
@@ -10755,11 +11135,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 98,
+              "line": 455,
               "column": 6
             },
             "end": {
-              "line": 102,
+              "line": 459,
               "column": 7
             }
           },
@@ -10780,11 +11160,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 106,
+              "line": 463,
               "column": 6
             },
             "end": {
-              "line": 109,
+              "line": 466,
               "column": 7
             }
           },
@@ -10803,11 +11183,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 113,
+              "line": 470,
               "column": 6
             },
             "end": {
-              "line": 116,
+              "line": 473,
               "column": 7
             }
           },
@@ -10826,11 +11206,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 120,
+              "line": 477,
               "column": 6
             },
             "end": {
-              "line": 123,
+              "line": 480,
               "column": 7
             }
           },
@@ -10850,11 +11230,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 127,
+              "line": 484,
               "column": 6
             },
             "end": {
-              "line": 130,
+              "line": 487,
               "column": 7
             }
           },
@@ -10874,11 +11254,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 134,
+              "line": 491,
               "column": 6
             },
             "end": {
-              "line": 137,
+              "line": 494,
               "column": 7
             }
           },
@@ -10898,11 +11278,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 141,
+              "line": 498,
               "column": 6
             },
             "end": {
-              "line": 144,
+              "line": 501,
               "column": 7
             }
           },
@@ -10922,11 +11302,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 149,
+              "line": 506,
               "column": 6
             },
             "end": {
-              "line": 152,
+              "line": 509,
               "column": 7
             }
           },
@@ -10946,11 +11326,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 157,
+              "line": 514,
               "column": 6
             },
             "end": {
-              "line": 160,
+              "line": 517,
               "column": 7
             }
           },
@@ -10970,11 +11350,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 164,
+              "line": 521,
               "column": 6
             },
             "end": {
-              "line": 167,
+              "line": 524,
               "column": 7
             }
           },
@@ -10994,11 +11374,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 171,
+              "line": 528,
               "column": 6
             },
             "end": {
-              "line": 175,
+              "line": 532,
               "column": 7
             }
           },
@@ -11018,11 +11398,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 33,
+              "line": 32,
               "column": 6
             },
             "end": {
-              "line": 36,
+              "line": 35,
               "column": 7
             }
           },
@@ -11040,11 +11420,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 40,
+              "line": 39,
               "column": 6
             },
             "end": {
-              "line": 43,
+              "line": 42,
               "column": 7
             }
           },
@@ -11062,11 +11442,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 47,
+              "line": 46,
               "column": 6
             },
             "end": {
-              "line": 50,
+              "line": 49,
               "column": 7
             }
           },
@@ -11084,11 +11464,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 55,
+              "line": 54,
               "column": 6
             },
             "end": {
-              "line": 58,
+              "line": 57,
               "column": 7
             }
           },
@@ -11106,11 +11486,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 72,
+              "line": 71,
               "column": 6
             },
             "end": {
-              "line": 75,
+              "line": 74,
               "column": 7
             }
           },
@@ -11128,11 +11508,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 79,
+              "line": 78,
               "column": 6
             },
             "end": {
-              "line": 82,
+              "line": 81,
               "column": 7
             }
           },
@@ -11150,11 +11530,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 87,
+              "line": 86,
               "column": 6
             },
             "end": {
-              "line": 90,
+              "line": 89,
               "column": 7
             }
           },
@@ -11171,11 +11551,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 95,
+              "line": 94,
               "column": 6
             },
             "end": {
-              "line": 98,
+              "line": 97,
               "column": 7
             }
           },
@@ -11192,11 +11572,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 107,
+              "line": 106,
               "column": 6
             },
             "end": {
-              "line": 110,
+              "line": 109,
               "column": 7
             }
           },
@@ -11214,11 +11594,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 114,
+              "line": 113,
               "column": 6
             },
             "end": {
-              "line": 117,
+              "line": 116,
               "column": 7
             }
           },
@@ -11236,11 +11616,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 121,
+              "line": 120,
               "column": 6
             },
             "end": {
-              "line": 124,
+              "line": 123,
               "column": 7
             }
           },
@@ -11258,11 +11638,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 128,
+              "line": 127,
               "column": 6
             },
             "end": {
-              "line": 131,
+              "line": 130,
               "column": 7
             }
           },
@@ -11280,11 +11660,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 135,
+              "line": 134,
               "column": 6
             },
             "end": {
-              "line": 138,
+              "line": 137,
               "column": 7
             }
           },
@@ -11302,11 +11682,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 142,
+              "line": 141,
               "column": 6
             },
             "end": {
-              "line": 145,
+              "line": 144,
               "column": 7
             }
           },
@@ -11324,11 +11704,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 149,
+              "line": 148,
               "column": 6
             },
             "end": {
-              "line": 152,
+              "line": 151,
               "column": 7
             }
           },
@@ -11346,11 +11726,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 156,
+              "line": 155,
               "column": 6
             },
             "end": {
-              "line": 159,
+              "line": 158,
               "column": 7
             }
           },
@@ -11368,11 +11748,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 163,
+              "line": 162,
               "column": 6
             },
             "end": {
-              "line": 166,
+              "line": 165,
               "column": 7
             }
           },
@@ -11390,11 +11770,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 170,
+              "line": 169,
               "column": 6
             },
             "end": {
-              "line": 173,
+              "line": 172,
               "column": 7
             }
           },
@@ -11412,11 +11792,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 177,
+              "line": 176,
               "column": 6
             },
             "end": {
-              "line": 180,
+              "line": 179,
               "column": 7
             }
           },
@@ -11434,11 +11814,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 184,
+              "line": 183,
               "column": 6
             },
             "end": {
-              "line": 187,
+              "line": 186,
               "column": 7
             }
           },
@@ -11456,11 +11836,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 191,
+              "line": 190,
               "column": 6
             },
             "end": {
-              "line": 194,
+              "line": 193,
               "column": 7
             }
           },
@@ -11478,11 +11858,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 198,
+              "line": 197,
               "column": 6
             },
             "end": {
-              "line": 201,
+              "line": 200,
               "column": 7
             }
           },
@@ -11740,17 +12120,17 @@
         },
         {
           "name": "ready",
-          "description": "Stamps the element template.",
+          "description": "life cycle, element is ready",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/element-mixin.js",
+            "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 608,
-              "column": 4
+              "line": 722,
+              "column": 2
             },
             "end": {
-              "line": 614,
-              "column": 5
+              "line": 731,
+              "column": 3
             }
           },
           "metadata": {},
@@ -11758,7 +12138,7 @@
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "ElementMixin"
+          "inheritedFrom": "LrndesignChartBehaviors"
         },
         {
           "name": "_initializeProperties",
@@ -13581,13 +13961,12 @@
           "description": "life cycle, element is afixed to the DOM",
           "privacy": "public",
           "sourceRange": {
-            "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 221,
+              "line": 474,
               "column": 2
             },
             "end": {
-              "line": 226,
+              "line": 477,
               "column": 3
             }
           },
@@ -13595,8 +13974,7 @@
           "params": [],
           "return": {
             "type": "void"
-          },
-          "inheritedFrom": "LrndesignChartBehaviors"
+          }
         },
         {
           "name": "disconnectedCallback",
@@ -13712,17 +14090,46 @@
           "inheritedFrom": "ElementMixin"
         },
         {
+          "name": "getContrasts",
+          "description": "for a given simple-colors variable and WCAG 2.0AA-defined text size (large or small),\nreturns an array with variable names and and hex codes of WCAG 2.0AA-compliant contrasting colors, eg:\n```[\n   { \"color\": \"--simple-colors-light-theme-grey-2\", \"hex\": \"#eeeeee\" },\n   { \"color\": \"--simple-colors-light-theme-red-2\", \"hex\": \"#ffaeae\" },\n   ...\n]```",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 136,
+              "column": 2
+            },
+            "end": {
+              "line": 159,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "variable"
+            },
+            {
+              "name": "large"
+            }
+          ],
+          "return": {
+            "type": "Array"
+          },
+          "inheritedFrom": "SimpleColors"
+        },
+        {
           "name": "handleResponse",
           "description": "Convert from csv text to an array in the table function",
           "privacy": "public",
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 231,
+              "line": 736,
               "column": 2
             },
             "end": {
-              "line": 240,
+              "line": 744,
               "column": 3
             }
           },
@@ -13743,11 +14150,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 475,
+              "line": 482,
               "column": 2
             },
             "end": {
-              "line": 507,
+              "line": 514,
               "column": 3
             }
           },
@@ -13761,11 +14168,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 252,
+              "line": 756,
               "column": 2
             },
             "end": {
-              "line": 281,
+              "line": 785,
               "column": 3
             }
           },
@@ -14726,7 +15133,7 @@
           "column": 0
         },
         "end": {
-          "line": 508,
+          "line": 515,
           "column": 1
         }
       },
@@ -14735,22 +15142,55 @@
       "name": "LrndesignLine",
       "attributes": [
         {
-          "name": "chart-id",
-          "description": "The unique identifier of the chart.",
+          "name": "accent-color",
+          "description": "a selected accent-color: grey, red, pink, purple, etc.",
           "sourceRange": {
-            "file": "lrndesign-chart-behaviors.js",
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 54,
+              "line": 32,
               "column": 6
             },
             "end": {
-              "line": 57,
+              "line": 38,
               "column": 7
             }
           },
           "metadata": {},
-          "type": "string | null | undefined",
-          "inheritedFrom": "LrndesignChartBehaviors"
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 42,
+              "column": 6
+            },
+            "end": {
+              "line": 48,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "colors",
+          "description": "the colors object, eg.:\n{\n   \"grey\": [ \"#ffffff\", \"#eeeeee\", ... \"#111111\",\"#000000\" ],\n   \"red\": [ \"#ffdddd\", \"#ffaeae\", ... \"#520000\", \"#3f0000\" ],\n   ...\n}",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 57,
+              "column": 6
+            },
+            "end": {
+              "line": 63,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
         },
         {
           "name": "chart-title",
@@ -14758,11 +15198,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 61,
+              "line": 400,
               "column": 6
             },
             "end": {
-              "line": 64,
+              "line": 403,
               "column": 7
             }
           },
@@ -14776,11 +15216,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 68,
+              "line": 407,
               "column": 6
             },
             "end": {
-              "line": 71,
+              "line": 410,
               "column": 7
             }
           },
@@ -14790,15 +15230,15 @@
         },
         {
           "name": "scale",
-          "description": "Scale of the chart.",
+          "description": "The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```\nContainer class\tRatio\n.ct-square          1\n.ct-minor-second\t  15:16\n.ct-major-second\t  8:9\n.ct-minor-third\t    5:6\n.ct-major-third\t    4:5\n.ct-perfect-fourth\t3:4\n.ct-perfect-fifth\t  2:3\n.ct-minor-sixth\t    5:8\n.ct-golden-section\t1:1.618\n.ct-major-sixth\t    3:5\n.ct-minor-seventh\t  9:16\n.ct-major-seventh\t  8:15\n.ct-octave\t        1:2\n.ct-major-tenth\t    2:5\n.ct-major-eleventh\t3:8\n.ct-major-twelfth\t  1:3\n.ct-double-octave\t  1:4```",
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 75,
+              "line": 432,
               "column": 6
             },
             "end": {
-              "line": 79,
+              "line": 436,
               "column": 7
             }
           },
@@ -14811,11 +15251,11 @@
           "description": "Type of chart.",
           "sourceRange": {
             "start": {
-              "line": 25,
+              "line": 24,
               "column": 6
             },
             "end": {
-              "line": 29,
+              "line": 28,
               "column": 7
             }
           },
@@ -14828,11 +15268,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 90,
+              "line": 447,
               "column": 6
             },
             "end": {
-              "line": 94,
+              "line": 451,
               "column": 7
             }
           },
@@ -14846,11 +15286,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 98,
+              "line": 455,
               "column": 6
             },
             "end": {
-              "line": 102,
+              "line": 459,
               "column": 7
             }
           },
@@ -14864,11 +15304,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 106,
+              "line": 463,
               "column": 6
             },
             "end": {
-              "line": 109,
+              "line": 466,
               "column": 7
             }
           },
@@ -14882,11 +15322,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 113,
+              "line": 470,
               "column": 6
             },
             "end": {
-              "line": 116,
+              "line": 473,
               "column": 7
             }
           },
@@ -14900,11 +15340,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 120,
+              "line": 477,
               "column": 6
             },
             "end": {
-              "line": 123,
+              "line": 480,
               "column": 7
             }
           },
@@ -14918,11 +15358,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 127,
+              "line": 484,
               "column": 6
             },
             "end": {
-              "line": 130,
+              "line": 487,
               "column": 7
             }
           },
@@ -14936,11 +15376,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 134,
+              "line": 491,
               "column": 6
             },
             "end": {
-              "line": 137,
+              "line": 494,
               "column": 7
             }
           },
@@ -14954,11 +15394,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 141,
+              "line": 498,
               "column": 6
             },
             "end": {
-              "line": 144,
+              "line": 501,
               "column": 7
             }
           },
@@ -14972,11 +15412,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 149,
+              "line": 506,
               "column": 6
             },
             "end": {
-              "line": 152,
+              "line": 509,
               "column": 7
             }
           },
@@ -14990,11 +15430,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 157,
+              "line": 514,
               "column": 6
             },
             "end": {
-              "line": 160,
+              "line": 517,
               "column": 7
             }
           },
@@ -15008,11 +15448,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 164,
+              "line": 521,
               "column": 6
             },
             "end": {
-              "line": 167,
+              "line": 524,
               "column": 7
             }
           },
@@ -15026,11 +15466,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 171,
+              "line": 528,
               "column": 6
             },
             "end": {
-              "line": 175,
+              "line": 532,
               "column": 7
             }
           },
@@ -15043,11 +15483,11 @@
           "description": "If the line should be drawn or not.",
           "sourceRange": {
             "start": {
-              "line": 33,
+              "line": 32,
               "column": 6
             },
             "end": {
-              "line": 36,
+              "line": 35,
               "column": 7
             }
           },
@@ -15059,11 +15499,11 @@
           "description": "If the line should be drawn or not.",
           "sourceRange": {
             "start": {
-              "line": 40,
+              "line": 39,
               "column": 6
             },
             "end": {
-              "line": 43,
+              "line": 42,
               "column": 7
             }
           },
@@ -15075,11 +15515,11 @@
           "description": "If the line chart should draw an area.",
           "sourceRange": {
             "start": {
-              "line": 47,
+              "line": 46,
               "column": 6
             },
             "end": {
-              "line": 50,
+              "line": 49,
               "column": 7
             }
           },
@@ -15091,11 +15531,11 @@
           "description": "The base for the area chart that will be used\nto close the area shape (is normally 0).",
           "sourceRange": {
             "start": {
-              "line": 55,
+              "line": 54,
               "column": 6
             },
             "end": {
-              "line": 58,
+              "line": 57,
               "column": 7
             }
           },
@@ -15107,11 +15547,11 @@
           "description": "Specify if the lines should be smoothed.\nThis value can be true or false where true\nwill result in smoothing using the default\nsmoothing interpolation function Chartist.\nInterpolation.cardinal and false results in\nChartist.Interpolation.none.\nYou can also choose other smoothing /\ninterpolation functions available in the Chartist.\nInterpolation module, or write your own\ninterpolation function. Check the examples\nfor a brief description..",
           "sourceRange": {
             "start": {
-              "line": 72,
+              "line": 71,
               "column": 6
             },
             "end": {
-              "line": 75,
+              "line": 74,
               "column": 7
             }
           },
@@ -15123,11 +15563,11 @@
           "description": "If the bar chart should add a background fill to the .ct-grids group.",
           "sourceRange": {
             "start": {
-              "line": 79,
+              "line": 78,
               "column": 6
             },
             "end": {
-              "line": 82,
+              "line": 81,
               "column": 7
             }
           },
@@ -15139,11 +15579,11 @@
           "description": "Overriding the natural high of the chart allows you to zoom in\nor limit the charts highest displayed value.",
           "sourceRange": {
             "start": {
-              "line": 87,
+              "line": 86,
               "column": 6
             },
             "end": {
-              "line": 90,
+              "line": 89,
               "column": 7
             }
           },
@@ -15155,11 +15595,11 @@
           "description": "Overriding the natural low of the chart allows you to zoom in\nor limit the charts lowest displayed value.",
           "sourceRange": {
             "start": {
-              "line": 95,
+              "line": 94,
               "column": 6
             },
             "end": {
-              "line": 98,
+              "line": 97,
               "column": 7
             }
           },
@@ -15171,11 +15611,11 @@
           "description": "When set to true, the last grid line on the x-axis\nis not drawn and the chart elements will expand\nto the full available width of the chart.\nFor the last label to be drawn correctly\nyou might need to add chart padding or offset the\nlast label with a draw event handler.",
           "sourceRange": {
             "start": {
-              "line": 107,
+              "line": 106,
               "column": 6
             },
             "end": {
-              "line": 110,
+              "line": 109,
               "column": 7
             }
           },
@@ -15187,11 +15627,11 @@
           "description": "The offset of the chart drawing area to the border of the container.",
           "sourceRange": {
             "start": {
-              "line": 114,
+              "line": 113,
               "column": 6
             },
             "end": {
-              "line": 117,
+              "line": 116,
               "column": 7
             }
           },
@@ -15203,11 +15643,11 @@
           "description": "The offset of the chart drawing area to the border of the container.",
           "sourceRange": {
             "start": {
-              "line": 121,
+              "line": 120,
               "column": 6
             },
             "end": {
-              "line": 124,
+              "line": 123,
               "column": 7
             }
           },
@@ -15219,11 +15659,11 @@
           "description": "Position labels at top-left of axis?",
           "sourceRange": {
             "start": {
-              "line": 128,
+              "line": 127,
               "column": 6
             },
             "end": {
-              "line": 131,
+              "line": 130,
               "column": 7
             }
           },
@@ -15235,11 +15675,11 @@
           "description": "Position labels at top-left of axis?",
           "sourceRange": {
             "start": {
-              "line": 135,
+              "line": 134,
               "column": 6
             },
             "end": {
-              "line": 138,
+              "line": 137,
               "column": 7
             }
           },
@@ -15251,11 +15691,11 @@
           "description": "Offset X of labels for X-axis",
           "sourceRange": {
             "start": {
-              "line": 142,
+              "line": 141,
               "column": 6
             },
             "end": {
-              "line": 145,
+              "line": 144,
               "column": 7
             }
           },
@@ -15267,11 +15707,11 @@
           "description": "Offset Y of labels for X-axis",
           "sourceRange": {
             "start": {
-              "line": 149,
+              "line": 148,
               "column": 6
             },
             "end": {
-              "line": 152,
+              "line": 151,
               "column": 7
             }
           },
@@ -15283,11 +15723,11 @@
           "description": "Offset X of labels for Y-axis",
           "sourceRange": {
             "start": {
-              "line": 156,
+              "line": 155,
               "column": 6
             },
             "end": {
-              "line": 159,
+              "line": 158,
               "column": 7
             }
           },
@@ -15299,11 +15739,11 @@
           "description": "Offset Y of labels for Y-axis",
           "sourceRange": {
             "start": {
-              "line": 163,
+              "line": 162,
               "column": 6
             },
             "end": {
-              "line": 166,
+              "line": 165,
               "column": 7
             }
           },
@@ -15315,11 +15755,11 @@
           "description": "Show axis X labels?",
           "sourceRange": {
             "start": {
-              "line": 170,
+              "line": 169,
               "column": 6
             },
             "end": {
-              "line": 173,
+              "line": 172,
               "column": 7
             }
           },
@@ -15331,11 +15771,11 @@
           "description": "Show axis Y labels?",
           "sourceRange": {
             "start": {
-              "line": 177,
+              "line": 176,
               "column": 6
             },
             "end": {
-              "line": 180,
+              "line": 179,
               "column": 7
             }
           },
@@ -15347,11 +15787,11 @@
           "description": "Show axis X grid?",
           "sourceRange": {
             "start": {
-              "line": 184,
+              "line": 183,
               "column": 6
             },
             "end": {
-              "line": 187,
+              "line": 186,
               "column": 7
             }
           },
@@ -15363,11 +15803,11 @@
           "description": "Show axis Y grid?",
           "sourceRange": {
             "start": {
-              "line": 191,
+              "line": 190,
               "column": 6
             },
             "end": {
-              "line": 194,
+              "line": 193,
               "column": 7
             }
           },
@@ -15379,11 +15819,11 @@
           "description": "Use only integer values (whole numbers) for the scale steps",
           "sourceRange": {
             "start": {
-              "line": 198,
+              "line": 197,
               "column": 6
             },
             "end": {
-              "line": 201,
+              "line": 200,
               "column": 7
             }
           },
@@ -15392,6 +15832,20 @@
         }
       ],
       "events": [
+        {
+          "type": "CustomEvent",
+          "name": "accent-color-changed",
+          "description": "Fired when the `accentColor` property changes.",
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "type": "CustomEvent",
+          "name": "dark-changed",
+          "description": "Fired when the `dark` property changes.",
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
+        },
         {
           "type": "CustomEvent",
           "name": "scale-changed",
@@ -16038,28 +16492,100 @@
           "inheritedFrom": "ElementMixin"
         },
         {
-          "name": "chartId",
-          "type": "string | null | undefined",
-          "description": "The unique identifier of the chart.",
+          "name": "accentColor",
+          "type": "?",
+          "description": "a selected accent-color: grey, red, pink, purple, etc.",
           "privacy": "public",
           "sourceRange": {
-            "file": "lrndesign-chart-behaviors.js",
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 54,
+              "line": 32,
               "column": 6
             },
             "end": {
-              "line": 57,
+              "line": 38,
               "column": 7
             }
           },
           "metadata": {
             "polymer": {
-              "attributeType": "String"
+              "notify": true
             }
           },
-          "defaultValue": "\"chart\"",
-          "inheritedFrom": "LrndesignChartBehaviors"
+          "defaultValue": "\"grey\"",
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "dark",
+          "type": "?",
+          "description": "make the default theme dark?",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 42,
+              "column": 6
+            },
+            "end": {
+              "line": 48,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "defaultValue": "false",
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "colors",
+          "type": "?",
+          "description": "the colors object, eg.:\n{\n   \"grey\": [ \"#ffffff\", \"#eeeeee\", ... \"#111111\",\"#000000\" ],\n   \"red\": [ \"#ffdddd\", \"#ffaeae\", ... \"#520000\", \"#3f0000\" ],\n   ...\n}",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 57,
+              "column": 6
+            },
+            "end": {
+              "line": 63,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "false"
+            }
+          },
+          "defaultValue": "null",
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "__wcagContrast",
+          "type": "?",
+          "description": "object with information on which color combinations are WCAG 2.0AA compliant, eg: {\n   greyOnColor: { //if either the color or its contrast will be a grey\n     large: [ //if bold text >= 14pt, text >= 18pt, decorative only, or disabled\n       {\n         level: 1, //if the color is level 1\n         minLevelContrast: 7, //contrasting color should be >= 8 <=TODO\n         maxLevelContrast: 12 //contrasting color should be <= 12\n       },\n       { level: 2, minLevelContrast: 7, maxLevelContrast: 12 },\n       ...\n     ],\n     small: [ //if bold text < 14pt, or text < 18pt\n       { level: 1, minLevelContrast: 7, maxLevelContrast: 12 },\n       { level: 2, minLevelContrast: 7, maxLevelContrast: 12 },\n       ...\n     ]\n   },\n   colorOnColor: { //if neither the color nor its contrast are grey\n     large: [\n       { level: 1, minLevelContrast: 7, maxLevelContrast: 12 },\n       { level: 2, minLevelContrast: 7, maxLevelContrast: 12 },\n       ...\n     ],\n     small: [\n       { level: 1, minLevelContrast: 8, maxLevelContrast: 12 },\n       { level: 2, minLevelContrast: 8, maxLevelContrast: 12 },\n       ...\n     ]\n   }\n }",
+          "privacy": "private",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 96,
+              "column": 6
+            },
+            "end": {
+              "line": 102,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "false"
+            }
+          },
+          "defaultValue": "null",
+          "inheritedFrom": "SimpleColors"
         },
         {
           "name": "chartTitle",
@@ -16069,11 +16595,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 61,
+              "line": 400,
               "column": 6
             },
             "end": {
-              "line": 64,
+              "line": 403,
               "column": 7
             }
           },
@@ -16093,11 +16619,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 68,
+              "line": 407,
               "column": 6
             },
             "end": {
-              "line": 71,
+              "line": 410,
               "column": 7
             }
           },
@@ -16116,11 +16642,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 33,
+              "line": 32,
               "column": 6
             },
             "end": {
-              "line": 37,
+              "line": 36,
               "column": 7
             }
           },
@@ -16139,11 +16665,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 25,
+              "line": 24,
               "column": 6
             },
             "end": {
-              "line": 29,
+              "line": 28,
               "column": 7
             }
           },
@@ -16163,11 +16689,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 90,
+              "line": 447,
               "column": 6
             },
             "end": {
-              "line": 94,
+              "line": 451,
               "column": 7
             }
           },
@@ -16188,11 +16714,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 98,
+              "line": 455,
               "column": 6
             },
             "end": {
-              "line": 102,
+              "line": 459,
               "column": 7
             }
           },
@@ -16213,11 +16739,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 106,
+              "line": 463,
               "column": 6
             },
             "end": {
-              "line": 109,
+              "line": 466,
               "column": 7
             }
           },
@@ -16236,11 +16762,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 113,
+              "line": 470,
               "column": 6
             },
             "end": {
-              "line": 116,
+              "line": 473,
               "column": 7
             }
           },
@@ -16259,11 +16785,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 120,
+              "line": 477,
               "column": 6
             },
             "end": {
-              "line": 123,
+              "line": 480,
               "column": 7
             }
           },
@@ -16283,11 +16809,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 127,
+              "line": 484,
               "column": 6
             },
             "end": {
-              "line": 130,
+              "line": 487,
               "column": 7
             }
           },
@@ -16307,11 +16833,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 134,
+              "line": 491,
               "column": 6
             },
             "end": {
-              "line": 137,
+              "line": 494,
               "column": 7
             }
           },
@@ -16331,11 +16857,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 141,
+              "line": 498,
               "column": 6
             },
             "end": {
-              "line": 144,
+              "line": 501,
               "column": 7
             }
           },
@@ -16355,11 +16881,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 149,
+              "line": 506,
               "column": 6
             },
             "end": {
-              "line": 152,
+              "line": 509,
               "column": 7
             }
           },
@@ -16379,11 +16905,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 157,
+              "line": 514,
               "column": 6
             },
             "end": {
-              "line": 160,
+              "line": 517,
               "column": 7
             }
           },
@@ -16403,11 +16929,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 164,
+              "line": 521,
               "column": 6
             },
             "end": {
-              "line": 167,
+              "line": 524,
               "column": 7
             }
           },
@@ -16427,11 +16953,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 171,
+              "line": 528,
               "column": 6
             },
             "end": {
-              "line": 175,
+              "line": 532,
               "column": 7
             }
           },
@@ -16451,11 +16977,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 42,
+              "line": 41,
               "column": 6
             },
             "end": {
-              "line": 45,
+              "line": 44,
               "column": 7
             }
           },
@@ -16473,11 +16999,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 52,
+              "line": 51,
               "column": 6
             },
             "end": {
-              "line": 55,
+              "line": 54,
               "column": 7
             }
           },
@@ -16494,11 +17020,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 59,
+              "line": 58,
               "column": 6
             },
             "end": {
-              "line": 62,
+              "line": 61,
               "column": 7
             }
           },
@@ -16516,11 +17042,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 66,
+              "line": 65,
               "column": 6
             },
             "end": {
-              "line": 69,
+              "line": 68,
               "column": 7
             }
           },
@@ -16538,11 +17064,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 76,
+              "line": 75,
               "column": 6
             },
             "end": {
-              "line": 79,
+              "line": 78,
               "column": 7
             }
           },
@@ -16560,11 +17086,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 89,
+              "line": 88,
               "column": 6
             },
             "end": {
-              "line": 92,
+              "line": 91,
               "column": 7
             }
           },
@@ -16582,11 +17108,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 101,
+              "line": 100,
               "column": 6
             },
             "end": {
-              "line": 104,
+              "line": 103,
               "column": 7
             }
           },
@@ -16604,11 +17130,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 109,
+              "line": 108,
               "column": 6
             },
             "end": {
-              "line": 112,
+              "line": 111,
               "column": 7
             }
           },
@@ -16866,17 +17392,17 @@
         },
         {
           "name": "ready",
-          "description": "Stamps the element template.",
+          "description": "life cycle, element is ready",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/element-mixin.js",
+            "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 608,
-              "column": 4
+              "line": 722,
+              "column": 2
             },
             "end": {
-              "line": 614,
-              "column": 5
+              "line": 731,
+              "column": 3
             }
           },
           "metadata": {},
@@ -16884,7 +17410,7 @@
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "ElementMixin"
+          "inheritedFrom": "LrndesignChartBehaviors"
         },
         {
           "name": "_initializeProperties",
@@ -18707,13 +19233,12 @@
           "description": "life cycle, element is afixed to the DOM",
           "privacy": "public",
           "sourceRange": {
-            "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 221,
+              "line": 304,
               "column": 2
             },
             "end": {
-              "line": 226,
+              "line": 307,
               "column": 3
             }
           },
@@ -18721,8 +19246,7 @@
           "params": [],
           "return": {
             "type": "void"
-          },
-          "inheritedFrom": "LrndesignChartBehaviors"
+          }
         },
         {
           "name": "disconnectedCallback",
@@ -18838,17 +19362,46 @@
           "inheritedFrom": "ElementMixin"
         },
         {
+          "name": "getContrasts",
+          "description": "for a given simple-colors variable and WCAG 2.0AA-defined text size (large or small),\nreturns an array with variable names and and hex codes of WCAG 2.0AA-compliant contrasting colors, eg:\n```[\n   { \"color\": \"--simple-colors-light-theme-grey-2\", \"hex\": \"#eeeeee\" },\n   { \"color\": \"--simple-colors-light-theme-red-2\", \"hex\": \"#ffaeae\" },\n   ...\n]```",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 136,
+              "column": 2
+            },
+            "end": {
+              "line": 159,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "variable"
+            },
+            {
+              "name": "large"
+            }
+          ],
+          "return": {
+            "type": "Array"
+          },
+          "inheritedFrom": "SimpleColors"
+        },
+        {
           "name": "handleResponse",
           "description": "Convert from csv text to an array in the table function",
           "privacy": "public",
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 231,
+              "line": 736,
               "column": 2
             },
             "end": {
-              "line": 240,
+              "line": 744,
               "column": 3
             }
           },
@@ -18869,11 +19422,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 305,
+              "line": 312,
               "column": 2
             },
             "end": {
-              "line": 327,
+              "line": 334,
               "column": 3
             }
           },
@@ -18887,11 +19440,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 252,
+              "line": 756,
               "column": 2
             },
             "end": {
-              "line": 281,
+              "line": 785,
               "column": 3
             }
           },
@@ -19852,7 +20405,7 @@
           "column": 0
         },
         "end": {
-          "line": 328,
+          "line": 335,
           "column": 1
         }
       },
@@ -19861,22 +20414,55 @@
       "name": "LrndesignPie",
       "attributes": [
         {
-          "name": "chart-id",
-          "description": "The unique identifier of the chart.",
+          "name": "accent-color",
+          "description": "a selected accent-color: grey, red, pink, purple, etc.",
           "sourceRange": {
-            "file": "lrndesign-chart-behaviors.js",
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 54,
+              "line": 32,
               "column": 6
             },
             "end": {
-              "line": 57,
+              "line": 38,
               "column": 7
             }
           },
           "metadata": {},
-          "type": "string | null | undefined",
-          "inheritedFrom": "LrndesignChartBehaviors"
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "dark",
+          "description": "make the default theme dark?",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 42,
+              "column": 6
+            },
+            "end": {
+              "line": 48,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "colors",
+          "description": "the colors object, eg.:\n{\n   \"grey\": [ \"#ffffff\", \"#eeeeee\", ... \"#111111\",\"#000000\" ],\n   \"red\": [ \"#ffdddd\", \"#ffaeae\", ... \"#520000\", \"#3f0000\" ],\n   ...\n}",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 57,
+              "column": 6
+            },
+            "end": {
+              "line": 63,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
         },
         {
           "name": "chart-title",
@@ -19884,11 +20470,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 61,
+              "line": 400,
               "column": 6
             },
             "end": {
-              "line": 64,
+              "line": 403,
               "column": 7
             }
           },
@@ -19902,11 +20488,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 68,
+              "line": 407,
               "column": 6
             },
             "end": {
-              "line": 71,
+              "line": 410,
               "column": 7
             }
           },
@@ -19919,11 +20505,11 @@
           "description": "Scale of the chart.",
           "sourceRange": {
             "start": {
-              "line": 33,
+              "line": 32,
               "column": 6
             },
             "end": {
-              "line": 37,
+              "line": 36,
               "column": 7
             }
           },
@@ -19935,11 +20521,11 @@
           "description": "Type of chart.",
           "sourceRange": {
             "start": {
-              "line": 25,
+              "line": 24,
               "column": 6
             },
             "end": {
-              "line": 29,
+              "line": 28,
               "column": 7
             }
           },
@@ -19952,11 +20538,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 90,
+              "line": 447,
               "column": 6
             },
             "end": {
-              "line": 94,
+              "line": 451,
               "column": 7
             }
           },
@@ -19970,11 +20556,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 98,
+              "line": 455,
               "column": 6
             },
             "end": {
-              "line": 102,
+              "line": 459,
               "column": 7
             }
           },
@@ -19988,11 +20574,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 106,
+              "line": 463,
               "column": 6
             },
             "end": {
-              "line": 109,
+              "line": 466,
               "column": 7
             }
           },
@@ -20006,11 +20592,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 113,
+              "line": 470,
               "column": 6
             },
             "end": {
-              "line": 116,
+              "line": 473,
               "column": 7
             }
           },
@@ -20024,11 +20610,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 120,
+              "line": 477,
               "column": 6
             },
             "end": {
-              "line": 123,
+              "line": 480,
               "column": 7
             }
           },
@@ -20042,11 +20628,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 127,
+              "line": 484,
               "column": 6
             },
             "end": {
-              "line": 130,
+              "line": 487,
               "column": 7
             }
           },
@@ -20060,11 +20646,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 134,
+              "line": 491,
               "column": 6
             },
             "end": {
-              "line": 137,
+              "line": 494,
               "column": 7
             }
           },
@@ -20078,11 +20664,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 141,
+              "line": 498,
               "column": 6
             },
             "end": {
-              "line": 144,
+              "line": 501,
               "column": 7
             }
           },
@@ -20096,11 +20682,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 149,
+              "line": 506,
               "column": 6
             },
             "end": {
-              "line": 152,
+              "line": 509,
               "column": 7
             }
           },
@@ -20114,11 +20700,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 157,
+              "line": 514,
               "column": 6
             },
             "end": {
-              "line": 160,
+              "line": 517,
               "column": 7
             }
           },
@@ -20132,11 +20718,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 164,
+              "line": 521,
               "column": 6
             },
             "end": {
-              "line": 167,
+              "line": 524,
               "column": 7
             }
           },
@@ -20150,11 +20736,11 @@
           "sourceRange": {
             "file": "lrndesign-chart-behaviors.js",
             "start": {
-              "line": 171,
+              "line": 528,
               "column": 6
             },
             "end": {
-              "line": 175,
+              "line": 532,
               "column": 7
             }
           },
@@ -20167,11 +20753,11 @@
           "description": "Start angle of the pie chart in degrees where 0 points north.\nA higher value offsets the start angle clockwise..",
           "sourceRange": {
             "start": {
-              "line": 42,
+              "line": 41,
               "column": 6
             },
             "end": {
-              "line": 45,
+              "line": 44,
               "column": 7
             }
           },
@@ -20183,11 +20769,11 @@
           "description": "Optional total you can specify. By specifying a total value,\nthe sum of the values in the series must be this total in order\nto draw a full pie. You can use this parameter to draw only parts\nof a pie or gauge charts.",
           "sourceRange": {
             "start": {
-              "line": 52,
+              "line": 51,
               "column": 6
             },
             "end": {
-              "line": 55,
+              "line": 54,
               "column": 7
             }
           },
@@ -20199,11 +20785,11 @@
           "description": "Displays chart as donut instead of pie.",
           "sourceRange": {
             "start": {
-              "line": 59,
+              "line": 58,
               "column": 6
             },
             "end": {
-              "line": 62,
+              "line": 61,
               "column": 7
             }
           },
@@ -20215,11 +20801,11 @@
           "description": "If a label should be shown.",
           "sourceRange": {
             "start": {
-              "line": 66,
+              "line": 65,
               "column": 6
             },
             "end": {
-              "line": 69,
+              "line": 68,
               "column": 7
             }
           },
@@ -20231,11 +20817,11 @@
           "description": "Label position offset from the standard position\nwhich is half distance of the radius.\nThis value can be either positive or negative.\nPositive values will position the label away from the center.",
           "sourceRange": {
             "start": {
-              "line": 76,
+              "line": 75,
               "column": 6
             },
             "end": {
-              "line": 79,
+              "line": 78,
               "column": 7
             }
           },
@@ -20247,11 +20833,11 @@
           "description": "This option can be set to 'inside', 'outside' or 'center'.\nPositioned with 'inside' the labels will be placed on half the distance\nof the radius to the border of the Pie by respecting the 'labelOffset'.\nThe 'outside' option will place the labels at the border of the pie\nand 'center' will place the labels in the absolute center point\nof the chart. The 'center' option only makes sense\nin conjunction with the 'labelOffset' option.",
           "sourceRange": {
             "start": {
-              "line": 89,
+              "line": 88,
               "column": 6
             },
             "end": {
-              "line": 92,
+              "line": 91,
               "column": 7
             }
           },
@@ -20263,11 +20849,11 @@
           "description": "Label direction can be 'neutral', 'explode' or 'implode'.\nThe labels anchor will be positioned based on those settings\nas well as the fact if the labels are on the right or\nleft side of the center of the chart.\nUsually explode is useful when labels are positioned\nfar away from the center.",
           "sourceRange": {
             "start": {
-              "line": 101,
+              "line": 100,
               "column": 6
             },
             "end": {
-              "line": 104,
+              "line": 103,
               "column": 7
             }
           },
@@ -20279,11 +20865,11 @@
           "description": "Empty values will be ignored to avoid drawing\nunncessary slices and labels",
           "sourceRange": {
             "start": {
-              "line": 109,
+              "line": 108,
               "column": 6
             },
             "end": {
-              "line": 112,
+              "line": 111,
               "column": 7
             }
           },
@@ -20292,6 +20878,20 @@
         }
       ],
       "events": [
+        {
+          "type": "CustomEvent",
+          "name": "accent-color-changed",
+          "description": "Fired when the `accentColor` property changes.",
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "type": "CustomEvent",
+          "name": "dark-changed",
+          "description": "Fired when the `dark` property changes.",
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
+        },
         {
           "type": "CustomEvent",
           "name": "scale-changed",

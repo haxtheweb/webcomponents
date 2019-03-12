@@ -93,46 +93,12 @@
       <h2>Video example, with dark transcript and custom microcopy</h2>
       <demo-snippet>
         <template>
-          <script>
-            let es = document.getElementById('spanish'), 
-              localization = {
-                "autoScroll": { "label": "Desplazamiento Automático" },
-                "captions": { 
-                  "label": "Subtítulos", 
-                  "off": "Apagado" 
-                },
-                "audio": { "label": "Audio" },
-                "forward": { "label": "Adelante" },
-                "fullscreen": { "label": "Pantalla Completa" },
-                "loading": { "label": "Cargando..." },
-                "loop": { "label": "Lazo" },
-                "mute": { "label": "Mudo" },
-                "nextResult": { "label": "Siguiente" },
-                "pause": { "label": "Pausa" },
-                "play": { "label": "Comienzo" },
-                "prevResult": { "label": "Anterior" },
-                "print": { "label": "Impresión" },
-                "search": { "label": "Buscar la transcripción" },
-                "settings": { "label": "Referencias" },
-                "rewind": { "label": "Rebobinar" },
-                "speed": { "label": "Velocidad %" },
-                "transcript": { 
-                  "label": "Transcripción", 
-                  "loading": "Cargando la transcripción...", 
-                  "skip": "Omitir la transcripción" 
-                },
-                "unmute": { "label": "Dejar de Silenciar" },
-                "volume": { "label": "Volumen" },
-                "video": { "label": "Vídeo" }
-              };
-              es.localization = localization;
-          </script>
-          <a11y-media-player id="spanish" accent-color="orange" dark dark-transcript lang="es" ui-language="es">
+          <a11y-media-player id="spanish" accent-color="orange" dark dark-transcript lang="es">
             <source src="https://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
             <source src="https://iandevlin.github.io/mdn/video-player-with-captions/sintel-short.webm" type="video/webm">
-            <track label="Español" kind="subtitles" srclang="es" src="./samples/sintel-es.vtt" default>
-            <track label="English" kind="subtitles" srclang="en" src="./samples/sintel-en.vtt">
+            <track label="English" kind="subtitles" srclang="en" src="./samples/sintel-en.vtt" default="">
             <track label="Deutsch" kind="subtitles" srclang="de" src="./samples/sintel-de.vtt">
+            <track label="Español" kind="subtitles" srclang="es" src="./samples/sintel-es.vtt">
           </a11y-media-player>
         </template>
       </demo-snippet>

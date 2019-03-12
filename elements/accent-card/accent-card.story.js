@@ -52,6 +52,10 @@ let props = Object.assign(
   }, AccentCard.properties
 );
 props.imageSrc.value = image6;
+props.imageAlign.type = "Select";
+props.imageAlign.options = ["left","center","right"];
+props.imageValign.type = "Select";
+props.imageValign.options = ["top","center","bottom"];
 const AccentCardStory = {
   "of": "accent-card",
   "name": "accent-card",

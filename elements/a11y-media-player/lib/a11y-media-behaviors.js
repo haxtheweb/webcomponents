@@ -109,7 +109,7 @@ class A11yMediaBehaviors extends SimpleColors {
        */
       height: {
         name: "height",
-        type: Number,
+        type: String,
         value: null
       },
 

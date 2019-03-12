@@ -2,6 +2,10 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 /**
  * append and register the shared styles
+ *
+ * @polymer
+ * @customElement
+ * @see ../chartist.render.js
  */
 const styleElement = document.createElement("dom-module"),
   template = document.createElement("template");
@@ -11,6 +15,13 @@ styleElement.appendChild(html`
     .ct-label {
       fill: var(--chartist-label-color, #000);
       color: var(--chartist-label-color, #000);
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    .ct-chart-pie .ct-label {
+      fill: var(--chartist-pie-label-color, --chartist-label-color);
+      color: var(--chartist-pie-label-color, --chartist-label-color);
       font-size: 0.75rem;
       line-height: 1;
     }

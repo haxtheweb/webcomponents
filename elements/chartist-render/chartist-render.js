@@ -10,7 +10,7 @@ import "./lib/chartist-render-shared-styles";
 export { ChartistRender };
 /**
  * `chartist-render`
- * A pie chart
+ * Uses the chartist library to render a chart.
  *
  * @polymer
  * @customElement

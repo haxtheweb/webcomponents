@@ -13,5 +13,8 @@ import "./lib/lrndesign-pie.js";
  * @polymer
  * @customElement
  * @demo demo/index.html
+ * @demo demo/pie.html pie charts
+ * @demo demo/bar.html bar charts
+ * @demo demo/line.html line charts
  *
  */

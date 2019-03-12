@@ -10,25 +10,31 @@
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../lrndesign-chart.js';
     </script>
-    <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style is="custom-style" include="demo-pages-shared-styles">
+      lrndesign-pie {
+        width: 300px;
+        height: 300px;
+        display: inline-block;
+      }
+    </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic lrndesign-chart demo</h3>
       <demo-snippet>
         <template>
-          <lrndesign-bar scale="ct-square" chart-title="Sales by Quarter" chart-desc="A bar graph of sales by quarter. Each series is a salesperson."
+          <lrndesign-bar chart-title="Sales by Quarter" chart-desc="A bar graph of sales by quarter. Each series is a salesperson."
             data-source="bar.csv"></lrndesign-bar>
         </template>
       </demo-snippet>
       <demo-snippet>
         <template>
-          <lrndesign-pie scale="ct-square" chart-title="A pie chart of favorite foods" data-source="pie.csv"></lrndesign-pie>
+          <lrndesign-pie chart-title="A pie chart of favorite foods" data-source="pie.csv"></lrndesign-pie>
         </template>
       </demo-snippet>
       <demo-snippet>
         <template>
-          <lrndesign-line scale="ct-square" data-source="line.csv"></lrndesign-line>
+          <lrndesign-line data-source="line.csv"></lrndesign-line>
         </template>
       </demo-snippet>
     </div>

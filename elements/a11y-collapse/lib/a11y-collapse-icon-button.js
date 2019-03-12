@@ -6,12 +6,9 @@ import "@polymer/iron-icons/iron-icons.js";
 import "./a11y-collapse-button-styles.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 /**
-`a11y-collapse-icon-button`
-An accessible expand collapse.
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
+ * `a11y-collapse-icon-button`
+ * An accessible expand collapse.
+ * @microcopy - the mental model for this element```
   <ally-collapse-icon-button id="iconbutton" 
     expanded$="[[_setAriaExpanded(expanded)]]"
     label=""                        //The expand/collapse label. Default is "expand/collapse"
@@ -40,9 +37,12 @@ An accessible expand collapse.
 
   CSS Mixins: 
   --a11y-collapse-icon-button-icon-focus: { ... };             //sets CSS for the a11y-collapse-icon-button icon when button is focused or hovered
-
-
-*/
+```
+ * @customElement
+ * @polymer
+ * @see ../a11y-collapse.js
+ * @see ./a11y-collapse-button-styles.js
+ */
 Polymer({
   _template: html`
     <style include="a11y-collapse-button-styles">

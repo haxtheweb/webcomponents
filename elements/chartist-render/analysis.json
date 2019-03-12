@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`chartist-render`\nA pie chart",
+      "description": "`chartist-render`\nUses the chartist library to render a chart.",
       "summary": "",
       "path": "chartist-render.js",
       "properties": [
@@ -3072,7 +3072,7 @@
               "column": 2
             },
             "end": {
-              "line": 182,
+              "line": 183,
               "column": 3
             }
           },
@@ -3088,11 +3088,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 186,
+              "line": 187,
               "column": 2
             },
             "end": {
-              "line": 235,
+              "line": 247,
               "column": 3
             }
           },
@@ -3105,11 +3105,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 240,
+              "line": 252,
               "column": 2
             },
             "end": {
-              "line": 251,
+              "line": 263,
               "column": 3
             }
           },
@@ -3129,11 +3129,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 256,
+              "line": 268,
               "column": 2
             },
             "end": {
-              "line": 277,
+              "line": 289,
               "column": 3
             }
           },
@@ -3150,11 +3150,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 282,
+              "line": 294,
               "column": 2
             },
             "end": {
-              "line": 288,
+              "line": 300,
               "column": 3
             }
           },
@@ -3180,11 +3180,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 293,
+              "line": 305,
               "column": 2
             },
             "end": {
-              "line": 296,
+              "line": 308,
               "column": 3
             }
           },
@@ -4144,7 +4144,7 @@
           "column": 0
         },
         "end": {
-          "line": 297,
+          "line": 309,
           "column": 1
         }
       },

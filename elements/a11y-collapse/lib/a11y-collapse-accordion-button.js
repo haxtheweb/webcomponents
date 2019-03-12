@@ -5,8 +5,6 @@ import "@polymer/paper-tooltip/paper-tooltip.js";
 `a11y-collapse-accordion-button`
 An accessible expand collapse.
 
-* @demo demo/index.html
-
 @microcopy - the mental model for this element
 
   <a11y-collapse-accordion-button 
@@ -28,8 +26,11 @@ An accessible expand collapse.
   --a11y-collapse-heading-focus: { ... };                      //sets CSS for the a11y-collapse heading when focused or hovered
   --a11y-collapse-heading-text-focus: { ... };                 //sets CSS for the a11y-collapse heading text when focused or hovered
 
-
-*/
+ * @customElement
+ * @polymer
+ * @see ../a11y-collapse.js
+ * @see ./a11y-collapse-button-styles.js
+ */
 Polymer({
   _template: html`
     <style include="a11y-collapse-button-styles">

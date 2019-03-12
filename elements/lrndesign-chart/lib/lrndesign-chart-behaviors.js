@@ -15,19 +15,24 @@ export { LrndesignChartBehaviors };
  *
  * @polymer
  * @customElement
- * @demo demo/line.html
+ * @demo demo/index.html
+ * @demo demo/pie.html pie charts
+ * @demo demo/bar.html bar charts
+ * @demo demo/line.html line charts
  *
  */
-class LrndesignChartBehaviors extends PolymerElement {
+class LrndesignChartBehaviors extends SimpleColors {
   // render function
   static get template() {
     return html`
-      <style is="custom-style" include="simple colors">
+      <style is="custom-style" include="simple-colors">
         :host {
           display: block;
         }
         :host {
-          --chartist-label-color: var(--simple-colors-default-theme-grey-12);
+          --chartist-pie-label-color: var(
+            --simple-colors-default-theme-grey-12
+          );
           --chartist-color-1: var(--simple-colors-default-theme-red-4);
           --chartist-color-2: var(--simple-colors-default-theme-blue-4);
           --chartist-color-3: var(--simple-colors-default-theme-yellow-4);
@@ -382,6 +387,7 @@ class LrndesignChartBehaviors extends PolymerElement {
         chart-title$="[[chartTitle]]"
         chart-desc$="[[chartDesc]]"
         data$="[[data]]"
+        on-chartist-render-ready="_ready"
         options$="{{options}}"
         responsive-options$="[[responsiveOptions]]"
       ></chartist-render>
@@ -391,13 +397,6 @@ class LrndesignChartBehaviors extends PolymerElement {
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      /**
-       * The unique identifier of the chart.
-       */
-      chartId: {
-        type: String,
-        value: "chart"
-      },
       /**
        * The chart title used for accessibility.
        */
@@ -413,7 +412,25 @@ class LrndesignChartBehaviors extends PolymerElement {
         value: ""
       },
       /**
-       * Scale of the chart.
+       * The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```
+Container class	Ratio
+.ct-square          1
+.ct-minor-second	  15:16
+.ct-major-second	  8:9
+.ct-minor-third	    5:6
+.ct-major-third	    4:5
+.ct-perfect-fourth	3:4
+.ct-perfect-fifth	  2:3
+.ct-minor-sixth	    5:8
+.ct-golden-section	1:1.618
+.ct-major-sixth	    3:5
+.ct-minor-seventh	  9:16
+.ct-major-seventh	  8:15
+.ct-octave	        1:2
+.ct-major-tenth	    2:5
+.ct-major-eleventh	3:8
+.ct-major-twelfth	  1:3
+.ct-double-octave	  1:4```
        */
       scale: {
         type: String,
@@ -697,27 +714,41 @@ class LrndesignChartBehaviors extends PolymerElement {
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
-    let root = this;
     super.connectedCallback();
+    let root = this;
     this.HAXWiring = new HAXWiring();
+  }
+
+  /**
+   * life cycle, element is ready
+   */
+  ready() {
+    super.ready();
+    let root = this;
+    let checkReady = setInterval(() => {
+      if (root.__dataReady) {
+        root.$.chartist.makeChart();
+        clearInterval(checkReady);
+      }
+    }, 1);
   }
 
   /**
    * Convert from csv text to an array in the table function
    */
   handleResponse(e) {
-    let root = this;
-    let raw = root.CSVtoArray(root.rawData);
+    let root = this,
+      raw = root.CSVtoArray(root.rawData);
     root.data = {
       labels: raw[0],
-      series: raw.slice(1, raw.length)
+      series: root.type !== "pie" ? raw.slice(1, raw.length) : raw[1]
     };
     root.options = root._getOptions();
-    let chart = root.$.chartist.makeChart();
+    root.__dataReady = true;
   }
 
   /**
-   * override this with specific options
+   * override this with type-specific options
    */
   _getOptions() {
     return {};
