@@ -527,6 +527,10 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
     root._appendToPlayer(root.sources, "source");
     root.$.html5.media.textTracks.onaddtrack = e => {
       root.hasCaptions = true;
+      root.__isYouTube = root.isYouTube;
+      root.isYouTube = root.isYouTube;
+      root.isYouTube = root.__isYouTube;
+      console.log("root.hasCaptions", root.hasCaptions);
       root.hasTranscript = !root.standAlone;
       root._getTrackData(e.track, counter++);
     };
@@ -733,10 +737,10 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
     if (root.isYoutube && root.media.duration !== root.media.getDuration()) {
       root.__duration = root.media.duration = root.media.getDuration();
       root.disableSeek = false;
+      root._addSourcesAndTracks();
       if (root.media.seekable !== undefined && root.media.seekable.length > 0) {
         root.$.slider.min = root.media.seekable.start(0);
       }
-      root._addSourcesAndTracks();
     }
     if (
       root.media.seekable !== undefined &&
@@ -756,19 +760,6 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    */
   _handleTranscriptScrollToggle(e) {
     this.disableScroll = !this.disableScroll;
-  }
-
-  /**
-   * Does the player have custom CC tracks?
-   *
-   * @param {boolean} Is the media from YouTube?
-   * @param {boolean} Is the media audio only?
-   * @param {boolean} Does the media have CC tracks?
-   * @returns {boolean} Does the player have custom CC?
-   */
-  _hasCustomCaptions(isYoutube, audioOnly, hasCaptions) {
-    console.log("_showCustomCaptions", this, isYoutube, audioOnly, hasCaptions);
-    return (isYoutube || audioOnly) && hasCaptions;
   }
 
   /**
@@ -870,6 +861,15 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    * @returns {boolean} Should the player show custom CC?
    */
   _showCustomCaptions(isYoutube, audioOnly, hasCaptions, cc) {
+    console.log(
+      "_showCustomCaptions",
+      isYoutube,
+      audioOnly,
+      hasCaptions,
+      cc,
+      [],
+      (isYoutube || audioOnly) && hasCaptions && cc
+    );
     return (isYoutube || audioOnly) && hasCaptions && cc;
   }
 
@@ -903,7 +903,6 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
             height: "100%",
             videoId: root.youtubeId
           });
-          root._addSourcesAndTracks();
           root.__status = root._getLocal("youTubeLoading", "label");
           root.$.controls.setStatus(root.__status);
           // move the YouTube iframe to the media player's YouTube container
@@ -933,7 +932,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    * updates custom tracks for youTube
    */
   _updateCustomTracks() {
-    if (this._hasCustomCaptions(this.isYoutube, this.audioOnly, this.tracks)) {
+    if ((this.isYoutube || this.audioOnly) && this.hasCaptions) {
       let root = this,
         track = root.tracks[this.$.transcript.selectedTranscript],
         active = [],

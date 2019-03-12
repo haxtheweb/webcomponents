@@ -67,6 +67,16 @@
     "computed": "_getFullscreenButton(disableFullscreen,audioNoThumb)",
     "notify": true
   },
+
+  /**
+   * Does the player have tracks?
+   */
+  "hasCaptions": {
+    "name": "hasCaptions",
+    "type": "Boolean",
+    "value": false
+  },
+
   /**
    * Hide elapsed time?
    */
@@ -140,7 +150,7 @@
   "showCustomCaptions": {
     "name": "showCustomCaptions",
     "type": "Boolean",
-    "computed": "_showCustomCaptions(isYoutube,audioOnly,hasCaptions,cc)"
+    "computed": "_showCustomCaptions(isYoutube, audioOnly, hasCaptions, cc)"
   },
   /**
    * Optional array ouf sources.

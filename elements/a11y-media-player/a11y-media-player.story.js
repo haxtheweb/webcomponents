@@ -1,7 +1,6 @@
 import { A11yMediaPlayer } from "./a11y-media-player.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { A11yMediaBehaviors } from "./lib/a11y-media-behaviors.js";
-import { A11yMediaPlayerBehaviors } from "./lib/a11y-media-player-behaviors.js";
 import * as enVtt from "./demo/samples/sintel-en.vtt";
 import * as deVtt from "./demo/samples/sintel-de.vtt";
 import * as esVtt from "./demo/samples/sintel-es.vtt";
@@ -59,8 +58,7 @@ let allKnobs = Object.assign(
     "accentColor": {"name": "accentColor", "type":"Select", "value": "blue", "options": Object.keys(SimpleColors.colors)}, 
     "dark": {"name": "dark", "type":"Boolean", "value": false}
   },
-  A11yMediaPlayer.properties, A11yMediaBehaviors.properties,
-  A11yMediaPlayerBehaviors.properties
+  A11yMediaPlayer.properties, A11yMediaBehaviors.properties
 );
 allKnobs.crossorigin.value = "anonymous";
 //remove properties we don't want to expose

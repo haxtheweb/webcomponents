@@ -20,24 +20,6 @@ export { A11yMediaControls };
  * `The controls bar for the a11y-media-player.`
  *
  * @microcopy - language worth noting:
-```<a11y-media-button 
-  accent-color$="[[accentColor]]"             // Optional accent color for controls, 
-                                              // using the following materialize colors: 
-                                              // red, pink, purple, deep-purple, indigo, blue, 
-                                              // light blue, cyan, teal, green, light green, lime, 
-                                              // yellow, amber, orange, deep-orange, and brown. 
-                                              // Default is null. 
-  allow-fullscreen$="[[allowFullscreen]]"     // Allow fullscreen mode?
-  audio-only$="[[audioOnly]]"                 // Is media audio only?
-  autoplay$="[[autoplay]]"                    // Is player set to autoplay (not recommended for a11y)?
-  cc$="[[cc]]"                                // Are closed captions toggled?
-  dark$="[[dark]]"                            // Is the color scheme dark? Default is light.
-  fullscreen$="[[fullscreen]]"                // Is full screen mode toggled on?
-  loop$="[[loop]]"                            // Is video on a loop?
-  microcopy$="[[microcopy]]"                  // Optional customization or text and icons
-  responsive-size$="[[responsiveSize]]"       // The size of the player determines how controls are displayed
-  volume$="[[volume]]">                       // The initial volume of the video
-</a11y-media-button>```
  *
  * @extends A11yMediaBehaviors
  * @customElement
@@ -52,7 +34,7 @@ class A11yMediaControls extends A11yMediaBehaviors {
        */
       compactControls: {
         name: "compactControls",
-        type: "Boolean",
+        type: Boolean,
         computed: "_getCompactControls(responsiveSize)"
       },
       /**
@@ -67,7 +49,7 @@ class A11yMediaControls extends A11yMediaBehaviors {
        */
       fullscreen: {
         name: "fullscreen",
-        type: "Boolean",
+        type: Boolean,
         value: false
       },
       /**
@@ -75,16 +57,27 @@ class A11yMediaControls extends A11yMediaBehaviors {
        */
       fullscreenButton: {
         name: "fullscreenButton",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         nofity: true
       },
+
+      /**
+       * Does the player have tracks?
+       */
+      hasCaptions: {
+        name: "hasCaptions",
+        type: Boolean,
+        value: false,
+        notify: true
+      },
+
       /**
        * initially hide the transcript?
        */
       hideTranscript: {
         name: "hideTranscript",
-        type: "Boolean",
+        type: Boolean,
         value: false
       },
       /**
@@ -99,7 +92,7 @@ class A11yMediaControls extends A11yMediaBehaviors {
        */
       muteUnmute: {
         name: "muteUnmute",
-        type: "Object"
+        type: Object
       },
       /**
        * hide the print transcript feature available?
@@ -120,7 +113,7 @@ class A11yMediaControls extends A11yMediaBehaviors {
        */
       responsiveSize: {
         name: "responsiveSize",
-        type: "String",
+        type: String,
         notify: true,
         value: "xs",
         reflectToAttribute: true
@@ -608,7 +601,6 @@ class A11yMediaControls extends A11yMediaBehaviors {
    * determine which button was clicked and act accordingly
    */
   _onButtonTap(e) {
-    console.log(this.hideTranscript);
     this.dispatchEvent(
       new CustomEvent("controls-change", { detail: e.detail })
     );
@@ -655,7 +647,7 @@ class A11yMediaControls extends A11yMediaBehaviors {
    * @returns {boolean} Should transcript toggle be unavailable?
    */
   _noTranscriptToggle(standAlone, fixedHeight, hasTranscript) {
-    return standAlone || fixedHeight || hasTranscript === false ? true : false;
+    return standAlone || fixedHeight || !hasTranscript;
   }
 }
 window.customElements.define(A11yMediaControls.tag, A11yMediaControls);

@@ -12,10 +12,7 @@ export { A11yMediaPlayButton };
  * `A giant play button that overlays the media in a11y-media-player.`
  *
  * @microcopy - language worth noting:
-```<a11y-media-play-button
-  playing$="[[__playing]]"            // Is the media currently playing?
-</a11y-media-play-button>
-
+```
 Custom styles:
 --a11y-play-button-bg-color: overlay background color, default is #000000
 --a11y-play-button-focus-bg-color: overlay background color, default is --a11y-play-button-bg-color```

@@ -57,7 +57,7 @@ class A11yMediaTranscript extends A11yMediaBehaviors {
        */
       disableInteractive: {
         name: "disableInteractive",
-        type: "Boolean",
+        type: Boolean,
         value: false
       },
       /**
@@ -65,7 +65,7 @@ class A11yMediaTranscript extends A11yMediaBehaviors {
        */
       hideTimestamps: {
         name: "hideTimestamps",
-        type: "Boolean",
+        type: Boolean,
         value: false
       },
       /**

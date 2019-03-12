@@ -47,14 +47,14 @@ class A11yMediaYoutube extends PolymerElement {
        * whether or not the YouTube API is ready
        */
       apiReady: {
-        type: "Boolean",
+        type: Boolean,
         value: window.YT !== undefined
       },
       /**
        * a counter for creating unique ideas for each YouTube player container
        */
       counter: {
-        type: "Number",
+        type: Number,
         value: 0
       }
     };
