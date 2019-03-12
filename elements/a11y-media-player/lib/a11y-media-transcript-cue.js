@@ -229,7 +229,7 @@ class A11yMediaTranscriptCue extends A11yMediaBehaviors {
    */
   _handleTap(e) {
     let root = this;
-    this.dispatchEvent(new CustomEvent("tap", { detail: root.cue.seek }));
+    this.dispatchEvent(new CustomEvent("cue-seek", { detail: root.cue.seek }));
   }
 }
 window.customElements.define(

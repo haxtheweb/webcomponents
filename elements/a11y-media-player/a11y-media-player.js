@@ -644,7 +644,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
             disable-interactive$="[[disableInteractive]]"
             hide-timestamps$="[[hideTimestamps]]"
             media-id$="[[id]]"
-            on-cue-seek="_handleCueSeek"
+            on-transcript-seek="_handleTranscriptSeek"
             localization$="[[localization]]"
             search="[[search]]"
             selected-transcript$="[[__selectedTrack]]"
@@ -1413,7 +1413,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
   /**
    * handles the seek function when a transcript cue is activated
    */
-  _handleCueSeek(e) {
+  _handleTranscriptSeek(e) {
     let root = this;
     if (
       !root.standAlone &&

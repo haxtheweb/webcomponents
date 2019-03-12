@@ -148,8 +148,22 @@ class A11yMediaYoutube extends PolymerElement {
 
     // add methods and properties to api so that it matches HTML5 video
     iframe.tracks = [];
-    iframe.seekable = { length: 0 };
     iframe.duration = 0;
+    iframe.seekable = {
+      length: 1,
+      start: index => {
+        iframe.seekable.start = index => {
+          return start !== null ? start : 0;
+        };
+      },
+      end: index => {
+        iframe.seekable.end = index => {
+          return end !== null
+            ? Math.min(end, iframe.duration)
+            : iframe.duration;
+        };
+      }
+    };
     iframe.paused = true;
     iframe.timeupdate;
     iframe.play = () => {
@@ -172,11 +186,17 @@ class A11yMediaYoutube extends PolymerElement {
     };
     iframe.seek = (time = 0) => {
       if (iframe.seekTo !== undefined) {
-        iframe.pause();
         iframe.seekTo(time);
-        document.dispatchEvent(
-          new CustomEvent("timeupdate", { detail: iframe })
-        );
+        if (iframe.paused) {
+          iframe.seekupdate = setInterval(() => {
+            if (Math.abs(iframe.getCurrentTime() - time) < 1) {
+              document.dispatchEvent(
+                new CustomEvent("timeupdate", { detail: iframe })
+              );
+              clearInterval(iframe.seekupdate);
+            }
+          }, 1);
+        }
       }
     };
     iframe.setMute = mode => {

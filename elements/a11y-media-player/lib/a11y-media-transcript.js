@@ -195,7 +195,7 @@ class A11yMediaTranscript extends A11yMediaBehaviors {
               disabled$="[[disableCue]]"
               disable-search$="[[disableSearch]]"
               hide-timestamps$="[[hideTimestamps]]"
-              on-tap="_handleCueSeek"
+              on-cue-seek="_handleCueSeek"
               order$="{{cue.order}}"
               role="button"
               search="[[search]]"
@@ -391,7 +391,9 @@ class A11yMediaTranscript extends A11yMediaBehaviors {
    */
   _handleCueSeek(e) {
     if (!this.disableInteractive) {
-      this.dispatchEvent(new CustomEvent("cue-seek", { detail: e.detail }));
+      this.dispatchEvent(
+        new CustomEvent("transcript-seek", { detail: e.detail })
+      );
     }
   }
 

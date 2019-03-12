@@ -647,7 +647,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
   /**
    * handles the seek function when a transcript cue is activated
    */
-  _handleCueSeek(e) {
+  _handleTranscriptSeek(e) {
     let root = this;
     if (
       !root.standAlone &&
