@@ -59,7 +59,8 @@ export const HAXCMSTheme = function(SuperClass) {
          * a manifest json file decoded, in JSON Outline Schema format
          */
         manifest: {
-          type: Object
+          type: Object,
+          observer: "_manifestChanged"
         },
         /**
          * DOM node that wraps the slot
@@ -151,8 +152,8 @@ export const HAXCMSTheme = function(SuperClass) {
           // so that the map menu has time to rebuild.  This is a hack because of
           // map menu.
           setTimeout(() => {
-            this.selected = firstItem.id;
-          }, 250);
+            this.selected = firstItem;
+          }, 200);
           window.dispatchEvent(
             new CustomEvent("json-outline-schema-active-item-changed", {
               detail: firstItem
@@ -176,10 +177,10 @@ export const HAXCMSTheme = function(SuperClass) {
       this.__disposer = autorun(() => {
         this.manifest = toJS(store.routerManifest);
       });
-      this.__disposer = autorun(() => {
+      this.__disposer2 = autorun(() => {
         this._location = store.location;
       });
-      this.__disposer = autorun(() => {
+      this.__disposer3 = autorun(() => {
         if (store.activeItem && typeof store.activeItem !== "undefined") {
           if (!this.selected) {
             setTimeout(() => {
@@ -200,6 +201,8 @@ export const HAXCMSTheme = function(SuperClass) {
       delete this.contentContainer;
       // clean up state
       this.__disposer();
+      this.__disposer2();
+      this.__disposer3();
     }
     /**
      * Return the active item given a uuid and runs event
@@ -330,9 +333,6 @@ class HAXCMSThemeWiring {
         "haxcms-trigger-update",
         this._triggerUpdate.bind(element)
       );
-      this.__disposer = autorun(() => {
-        this._manifestUpdate({ detail: toJS(store.routerManifest) });
-      });
       // @todo may want to set this to sessionStorage instead...
       if (window.localStorage.getItem("HAXCMSSystemData") == null) {
         window.localStorage.setItem("HAXCMSSystemData", JSON.stringify({}));
@@ -368,7 +368,6 @@ class HAXCMSThemeWiring {
       "haxcms-trigger-update",
       this._triggerUpdate.bind(element)
     );
-    this.__disposer();
   }
   /**
    * Global edit state changed
@@ -417,6 +416,9 @@ class HAXCMSThemeWiring {
         detail: {}
       })
     );
+  }
+  _manifestChanged(newValue) {
+    this._manifestUpdate({ detail: newValue });
   }
   _manifestUpdate(e) {
     let newValue = e.detail;
