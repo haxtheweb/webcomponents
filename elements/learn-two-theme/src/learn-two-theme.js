@@ -11,7 +11,8 @@ import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "@polymer/app-layout/app-drawer-layout/app-drawer-layout.js";
 import "@lrnwebcomponents/map-menu/map-menu.js";
-import "@lrnwebcomponents/haxcms-elements/lib/jos-breadcrumb.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/site-breadcrumb.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/site-rss.js";
 import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/HAXCMSThemeWiring.js";
 /**
  * `learn-two-theme`
@@ -85,18 +86,6 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
     }
     // save this back to the system data
     window.localStorage.setItem("HAXCMSSystemData", JSON.stringify(userData));
-  }
-  /**
-   * Previous page to hook into when prev is hit
-   */
-  prevPage(e) {
-    super.prevPage(e);
-  }
-  /**
-   * Next page to hook into when next is hit
-   */
-  nextPage(e) {
-    super.nextPage(e);
   }
   toggleDrawer(e) {
     this.$.drawer.toggle();

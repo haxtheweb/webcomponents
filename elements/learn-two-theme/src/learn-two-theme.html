@@ -31,16 +31,8 @@
     </div>
     <map-menu id="menu" selected="[[selected]]" manifest="[[manifest]]" active-indicator auto-scroll></map-menu>
     <div class="rss-buttons">
-      <a tabindex="-1" href="/feed.atom">
-        <paper-button raised>
-          <iron-icon icon="communication:rss-feed"></iron-icon> Atom 1.0
-        </paper-button>
-      </a>
-      <a tabindex="-1" href="/feed.rss">
-        <paper-button raised>
-          <iron-icon icon="communication:rss-feed"></iron-icon> RSS
-        </paper-button>
-      </a>
+      <site-rss type="atom"></site-rss>
+      <site-rss type="rss"></site-rss>
     </div>
   </app-drawer>
   <div>
@@ -57,7 +49,7 @@
       Previous page
     </paper-tooltip>
     <div id="contentcontainer">
-      <jos-breadcrumb></jos-breadcrumb>
+      <site-breadcrumb></site-breadcrumb>
       <h2 class="title">[[activeItem.title]]</h2>
       <div id="slot">
         <slot></slot>

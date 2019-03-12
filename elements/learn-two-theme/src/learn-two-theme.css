@@ -102,17 +102,7 @@ app-drawer-layout {
   justify-content: space-evenly;
   display: flex;
 }
-.rss-buttons paper-button {
-  color: white;
-  background-color: #383F45;
-  font-size: 13px;
-  margin: 0;
-}
-.rss-buttons paper-button:hover,
-.rss-buttons paper-button:focus,
-.rss-buttons paper-button:active {
-  background-color: #2d3237;
-}
+
 app-drawer {
   box-shadow: 0 0 6px -3px var(--haxcms-color, black);
   overflow: hidden;

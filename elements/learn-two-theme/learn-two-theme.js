@@ -11,7 +11,8 @@ import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "@polymer/app-layout/app-drawer-layout/app-drawer-layout.js";
 import "@lrnwebcomponents/map-menu/map-menu.js";
-import "@lrnwebcomponents/haxcms-elements/lib/jos-breadcrumb.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/site-breadcrumb.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/site-rss.js";
 import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/HAXCMSThemeWiring.js";
 /**
  * `learn-two-theme`
@@ -139,17 +140,7 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
           justify-content: space-evenly;
           display: flex;
         }
-        .rss-buttons paper-button {
-          color: white;
-          background-color: #383f45;
-          font-size: 13px;
-          margin: 0;
-        }
-        .rss-buttons paper-button:hover,
-        .rss-buttons paper-button:focus,
-        .rss-buttons paper-button:active {
-          background-color: #2d3237;
-        }
+
         app-drawer {
           box-shadow: 0 0 6px -3px var(--haxcms-color, black);
           overflow: hidden;
@@ -292,16 +283,8 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
             auto-scroll
           ></map-menu>
           <div class="rss-buttons">
-            <a tabindex="-1" href="/feed.atom">
-              <paper-button raised>
-                <iron-icon icon="communication:rss-feed"></iron-icon> Atom 1.0
-              </paper-button>
-            </a>
-            <a tabindex="-1" href="/feed.rss">
-              <paper-button raised>
-                <iron-icon icon="communication:rss-feed"></iron-icon> RSS
-              </paper-button>
-            </a>
+            <site-rss type="atom"></site-rss>
+            <site-rss type="rss"></site-rss>
           </div>
         </app-drawer>
         <div>
@@ -318,7 +301,7 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
             Previous page
           </paper-tooltip>
           <div id="contentcontainer">
-            <jos-breadcrumb></jos-breadcrumb>
+            <site-breadcrumb></site-breadcrumb>
             <h2 class="title">[[activeItem.title]]</h2>
             <div id="slot">
               <slot></slot>
@@ -404,18 +387,6 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
     }
     // save this back to the system data
     window.localStorage.setItem("HAXCMSSystemData", JSON.stringify(userData));
-  }
-  /**
-   * Previous page to hook into when prev is hit
-   */
-  prevPage(e) {
-    super.prevPage(e);
-  }
-  /**
-   * Next page to hook into when next is hit
-   */
-  nextPage(e) {
-    super.nextPage(e);
   }
   toggleDrawer(e) {
     this.$.drawer.toggle();
