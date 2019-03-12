@@ -8,20 +8,20 @@ import "@polymer/paper-button/paper-button.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 /**
- * `haxcms-slide-theme`
- * `A simple slide playing theme`
+ * `site-breadcrumb`
+ * `A basic breadcrumb of links based on the active state in HAXcms on JSON Outline Schema`
  *
  * @customElement
  * @polymer
  * @demo demo/index.html
  */
-class JosBreadcrumb extends PolymerElement {
+class SiteBreadcrumb extends PolymerElement {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
-    return "jos-breadcrumb";
+    return "site-breadcrumb";
   }
   // render function
   static get template() {
@@ -30,7 +30,7 @@ class JosBreadcrumb extends PolymerElement {
         :host {
           display: block;
           font-size: 16px;
-          color: var(--jos-breadcrumb-color, #383f45);
+          color: var(--site-breadcrumb-color, #383f45);
         }
         #space {
           height: 24px;
@@ -38,7 +38,7 @@ class JosBreadcrumb extends PolymerElement {
         }
         a {
           height: 24px;
-          color: var(--jos-breadcrumb-color, #383f45);
+          color: var(--site-breadcrumb-color, #383f45);
           display: inline-flex;
           line-height: 24px;
           padding: 0 8px 0 0;
@@ -54,8 +54,8 @@ class JosBreadcrumb extends PolymerElement {
         paper-button:hover,
         paper-button:focus,
         paper-button:active {
-          background-color: var(--jos-breadcrumb-hover-bg, transparent);
-          color: var(--jos-breadcrumb-hover-color, #222222);
+          background-color: var(--site-breadcrumb-hover-bg, transparent);
+          color: var(--site-breadcrumb-hover-color, #222222);
         }
         span {
           margin: 0;
@@ -68,7 +68,7 @@ class JosBreadcrumb extends PolymerElement {
           height: 24px;
           width: 24px;
           padding: 0 8px 0 0;
-          color: var(--jos-breadcrumb-color, #383f45);
+          color: var(--site-breadcrumb-color, #383f45);
         }
       </style>
       <div
@@ -105,6 +105,9 @@ class JosBreadcrumb extends PolymerElement {
         this.$.space.removeChild(this.$.space.firstChild);
       }
       var activeItem = this.manifest.items.find(i => i.id == newValue);
+      if (!activeItem) {
+        return false;
+      }
       var items = [
         {
           title: activeItem.title,
@@ -159,5 +162,5 @@ class JosBreadcrumb extends PolymerElement {
     this.__disposer2();
   }
 }
-window.customElements.define(JosBreadcrumb.tag, JosBreadcrumb);
-export { JosBreadcrumb };
+window.customElements.define(SiteBreadcrumb.tag, SiteBreadcrumb);
+export { SiteBreadcrumb };
