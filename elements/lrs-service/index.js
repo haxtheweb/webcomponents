@@ -1,7 +1,8 @@
 const { ApolloServer } = require("apollo-server");
 
 const server = new ApolloServer({
-  modules: [require("./modules/statement")]
+  cors: true,
+  modules: [require("./modules/ping"), require("./modules/statement")]
 });
 
 server.listen().then(({ url, subscriptionsUrl }) => {

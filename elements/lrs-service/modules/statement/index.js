@@ -9,46 +9,46 @@ const STATEMENT_CREATED = "STATMENT_CREATED";
  * Define Schema
  */
 const typeDefs = gql`
-  scalar JSON
+  scalar Json
 
   extend type Query {
     statements: [Statement!]
-    data: JSON!
+    data: Json!
   }
 
   extend type Mutation {
-    createStatement(data: JSON!): Statement!
+    createStatement(data: Json!): Statement!
   }
 
   extend type Subscription {
-    statementCreated: String!
+    statement: Statement!
   }
 
   type Statement {
     id: ID!
-    data: JSON!
+    data: Json!
   }
 `;
 
 const resolvers = {
-  JSON: GraphQLJSON,
+  Json: GraphQLJSON,
 
   Query: {
     statements: async () => await prisma.statements()
   },
 
   Mutation: {
-    createStatement: async (_, { data }) => {
-      const statement = await prisma.createStatement({ data });
-      pubsub.publish(STATEMENT_CREATED, {
-        statmentCreated: JSON.stringify(statement)
-      });
-    }
+    createStatement: async (_, { data }) =>
+      await prisma.createStatement({ data })
   },
 
   Subscription: {
-    statmentCreated: {
-      subscribe: () => pubsub.asyncIterator(STATEMENT_CREATED)
+    statement: {
+      /**
+       * @todo
+       * Keeps returning null
+       */
+      subscribe: async () => await prisma.$subscribe.statement().node()
     }
   }
 };

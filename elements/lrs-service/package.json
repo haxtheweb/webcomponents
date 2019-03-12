@@ -1,6 +1,6 @@
 {
   "name": "@lrnwebcomponents/lrs-service",
-  "version": "2.0.7",
+  "version": "0.0.0",
   "description": "Learning Record Store Service",
   "author": "heyMP <mgp140@gmail.com>",
   "homepage": "https://github.com/elmsln/lrnwebcomponents#readme",
@@ -17,9 +17,6 @@
     "type": "git",
     "url": "git+https://github.com/elmsln/lrnwebcomponents.git"
   },
-  "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
-  },
   "bugs": {
     "url": "https://github.com/elmsln/lrnwebcomponents/issues"
   },
@@ -30,10 +27,13 @@
     "graphql-type-json": "^0.2.1"
   },
   "devDependencies": {
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.18.10",
+    "patch-package": "^6.0.5",
+    "postinstall-postinstall": "^2.0.0"
   },
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "postinstall": "patch-package"
   }
 }
