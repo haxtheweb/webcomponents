@@ -103,6 +103,15 @@
     "reflectToAttribute": true
   },
   /**
+   * initially hide the transcript?
+   */
+  "id": {
+    "name": "id",
+    "type": "String",
+    "value": null,
+    "reflectToAttribute": true
+  },
+  /**
    * The default media caption if none is given.
    */
   "mediaCaption": {

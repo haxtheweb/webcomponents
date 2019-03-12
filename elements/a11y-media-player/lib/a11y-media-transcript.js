@@ -46,13 +46,6 @@ class A11yMediaTranscript extends A11yMediaBehaviors {
         notify: true
       },
       /**
-       * selected transcript track id
-       */
-      disableCue: {
-        type: Boolean,
-        computed: "_areCuesDisabled(disableInteractive,disableSeek)"
-      },
-      /**
        * disable interactive mode that makes the transcript clickable
        */
       disableInteractive: {
@@ -374,17 +367,6 @@ class A11yMediaTranscript extends A11yMediaBehaviors {
   }
 
   /**
-   * determines if cues should be disabled
-   *
-   * @param {boolean} Is the interactive transcript mode disabled?
-   * @param {boolean} Is seeking disabled?
-   * @returns {boolean} if the cue is disabled
-   */
-  _areCuesDisabled(disableInteractive, disableSeek) {
-    return disableInteractive || disableSeek;
-  }
-
-  /**
    * gets the tab-index of cues based on whether or not interactive cues are disabled
    *
    * @param {boolean} Is the interactive transcript mode disabled?
@@ -408,7 +390,7 @@ class A11yMediaTranscript extends A11yMediaBehaviors {
    * forwards the listener for transcript cue click to seek accordingly
    */
   _handleCueSeek(e) {
-    if (!this.disableCue) {
+    if (!this.disableInteractive) {
       this.dispatchEvent(new CustomEvent("cue-seek", { detail: e.detail }));
     }
   }

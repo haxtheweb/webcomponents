@@ -167,6 +167,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
       tracks = new Array(),
       tdata = new Array(),
       selected = 0;
+    if (root.id === null) root.id = "a11y-media-player" + Date.now();
     root.__playerReady = true;
     root.target = root.shadowRoot.querySelector("#transcript");
     root.__status = root._getLocal("loading", "label");
@@ -527,10 +528,6 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
     root._appendToPlayer(root.sources, "source");
     root.$.html5.media.textTracks.onaddtrack = e => {
       root.hasCaptions = true;
-      root.__isYouTube = root.isYouTube;
-      root.isYouTube = root.isYouTube;
-      root.isYouTube = root.__isYouTube;
-      console.log("root.hasCaptions", root.hasCaptions);
       root.hasTranscript = !root.standAlone;
       root._getTrackData(e.track, counter++);
     };
@@ -861,15 +858,6 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    * @returns {boolean} Should the player show custom CC?
    */
   _showCustomCaptions(isYoutube, audioOnly, hasCaptions, cc) {
-    console.log(
-      "_showCustomCaptions",
-      isYoutube,
-      audioOnly,
-      hasCaptions,
-      cc,
-      [],
-      (isYoutube || audioOnly) && hasCaptions && cc
-    );
     return (isYoutube || audioOnly) && hasCaptions && cc;
   }
 
@@ -932,9 +920,9 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    * updates custom tracks for youTube
    */
   _updateCustomTracks() {
-    if ((this.isYoutube || this.audioOnly) && this.hasCaptions) {
+    if ((this.isYoutube || this.audioOnly) && this.__tracks) {
       let root = this,
-        track = root.tracks[this.$.transcript.selectedTranscript],
+        track = root.__tracks[this.$.transcript.selectedTranscript],
         active = [],
         caption = "";
       if (
