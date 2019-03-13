@@ -236,8 +236,8 @@ let OutlinePlayer = Polymer({
     <!-- Control the sites query paremeters -->
 
     <!-- Begin Layout -->
-    <app-drawer-layout>
-      <app-drawer id="drawer" swipe-open="" slot="drawer">
+    <app-drawer-layout narrow="{{narrow}}">
+      <app-drawer id="drawer" swipe-open="" slot="drawer" opened="{{opened}}">
         <template is="dom-if" if="[[__hasTitle(manifest.title)]]">
           <h2 class="outline-title">[[manifest.title]]</h2>
         </template>
@@ -279,6 +279,10 @@ let OutlinePlayer = Polymer({
 
   is: "outline-player",
   properties: {
+    opened: {
+      type: Boolean,
+      reflectToAttribute: true
+    },
     /**
      * editting state for the page
      */
@@ -364,6 +368,14 @@ let OutlinePlayer = Polymer({
     _location: {
       type: Object,
       observer: "_locationChanged"
+    },
+    activeId: {
+      type: String,
+      observer: "_activeIdChanged"
+    },
+    narrow: {
+      type: Boolean,
+      reflectToAttribute: true
     }
   },
   /**
@@ -400,7 +412,7 @@ let OutlinePlayer = Polymer({
       this._location = store.location;
     });
     this.__disposer2 = autorun(() => {
-      this._activeIdChanged(toJS(store.activeId));
+      this.activeId = toJS(store.activeId);
     });
     this.__disposer3 = autorun(() => {
       this.activeItem = toJS(store.activeItem);
@@ -487,6 +499,10 @@ let OutlinePlayer = Polymer({
    * active id has changed.
    */
   _activeIdChanged: function(newValue) {
+    // close menu if it's narrow and something new is picked
+    if (this.opened && this.narrow) {
+      this.$.drawer.toggle();
+    }
     window.scrollTo({
       top: 0,
       left: 0,
