@@ -15,9 +15,8 @@ import "@lrnwebcomponents/haxcms-elements/lib/theme/site-title.js";
 import "@lrnwebcomponents/haxcms-elements/lib/theme/site-breadcrumb.js";
 import "@lrnwebcomponents/haxcms-elements/lib/theme/site-rss-button.js";
 import "@lrnwebcomponents/haxcms-elements/lib/theme/site-menu.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/site-query.js";
 import "@lrnwebcomponents/haxcms-elements/lib/theme/site-menu-button.js";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";
-import { autorun, toJS } from "mobx";
 import { HAXCMSTheme } from "./HAXCMSThemeWiring.js";
 /**
  * `haxcms-dev-theme`
@@ -46,17 +45,19 @@ class HAXCMSDevTheme extends HAXCMSTheme(PolymerElement) {
           /* theme color which is dictated by the manifest */
           background-color: var(--haxcms-color, black);
         }
-        iron-list {
-          padding: 16px;
-          margin: 0 auto;
-          -webkit-box-sizing: border-box;
-          -moz-box-sizing: border-box;
-          box-sizing: border-box;
+        site-query.cardlist {
+          --site-query-iron-list: {
+            padding: 16px;
+            margin: 0 auto;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+          }
         }
         paper-card {
           width: 200px;
           color: black;
-          background-color: white;
+          background-color: blue;
           padding: 8px;
           font-size: 10px;
         }
@@ -83,6 +84,11 @@ class HAXCMSDevTheme extends HAXCMSTheme(PolymerElement) {
         }
       </style>
       <h1 style="margin:0;">HAXCMS DEVELOPMENT THEME</h1>
+      <site-query sort='{"order": "ASC"}' grid conditions='{"parent": null}'>
+        <template>
+          <li><a href$="[[item.location]]">[[item.title]]</a></li>
+        </template>
+      </site-query>
       <site-title></site-title>
       <div class="buttons">
         <site-menu-button type="prev"></site-menu-button>
@@ -116,7 +122,7 @@ class HAXCMSDevTheme extends HAXCMSTheme(PolymerElement) {
           <div id="slot"><slot></slot></div>
         </div>
       </div>
-      <iron-list id="list" items="[[manifest.items]]" grid on-tap="_itemTapped">
+      <site-query class="cardlist" grid on-tap="_itemTapped">
         <template>
           <div style="padding:8px;">
             <paper-card
@@ -140,7 +146,7 @@ class HAXCMSDevTheme extends HAXCMSTheme(PolymerElement) {
             </paper-card>
           </div>
         </template>
-      </iron-list>
+      </site-query>
       <site-menu></site-menu>
     `;
   }
