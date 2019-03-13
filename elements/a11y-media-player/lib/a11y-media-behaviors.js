@@ -35,49 +35,64 @@ class A11yMediaBehaviors extends SimpleColors {
        * but generally not recommended for a11y
        */
       autoplay: {
-        type: Boolean,
+        name: "autoplay",
+        type: "Boolean",
         value: false
       },
       /**
        * show closed captions
        */
       cc: {
-        type: Boolean,
+        name: "cc",
+        type: "Boolean",
+        value: false
+      },
+      /**
+       * disables seeking
+       */
+      disableSeek: {
+        name: "disableSeek",
+        type: "Boolean",
         value: false
       },
       /**
        * The height of the media player.
        */
       height: {
-        type: Number,
+        name: "height",
+        type: "Number",
         value: null
       },
       /**
        * is YouTube?
        */
       isYoutube: {
-        type: Boolean,
+        name: "isYoutube",
+        type: "Boolean",
         computed: "_hasAttribute(youtubeId)"
       },
       /**
        * Language
        */
       lang: {
-        type: String,
+        name: "lang",
+        type: "String",
         value: "en"
       },
       /**
        * custom localization settings
        */
       localization: {
-        type: Object,
+        name: "localization",
+        type: "Object",
         value: {}
       },
       /**
        * default localization settings
        */
       localizationDefaults: {
-        type: Object,
+        name: "localizationDefaults",
+        type: "Object",
         value: {
           audio: { label: "Audio" },
           autoScroll: {
@@ -161,6 +176,12 @@ class A11yMediaBehaviors extends SimpleColors {
           },
           volume: {
             label: "Volume"
+          },
+          youTubeLoading: {
+            label: "Ready."
+          },
+          youTubeTranscript: {
+            label: "Transcript will load once media plays."
           }
         },
         readOnly: true
@@ -169,35 +190,40 @@ class A11yMediaBehaviors extends SimpleColors {
        * Loop the video?
        */
       loop: {
-        type: Boolean,
+        name: "loop",
+        type: "Boolean",
         value: false
       },
       /**
        * Dash.js manifest source?
        */
       manifest: {
-        type: String,
+        name: "manifest",
+        type: "String",
         value: null
       },
       /**
        * Is audio muted?
        */
       muted: {
-        type: Boolean,
+        name: "muted",
+        type: "Boolean",
         value: false
       },
       /**
-       * Preload the sources: auto, metadata (default), or none.
+       * Preload the "sources": auto, metadata (default), or none.
        */
       preload: {
-        type: String,
+        name: "preload",
+        type: "String",
         value: "metadata"
       },
       /**
        * Playback rate where 1 is normal speed, 0.5 is half-speed, and 2 is double speed
        */
       playbackRate: {
-        type: Number,
+        name: "playbackRate",
+        type: "Number",
         value: 1
       },
 
@@ -205,49 +231,56 @@ class A11yMediaBehaviors extends SimpleColors {
        * status
        */
       status: {
-        type: String,
+        name: "status",
+        type: "String",
         value: "loading..."
       },
       /**
        * the selected track
        */
       selectedTrack: {
-        type: Object,
+        name: "selectedTrack",
+        type: "Object",
         value: null
       },
       /**
        * id of the selected track
        */
       selectedTrackID: {
-        type: Number,
+        name: "selectedTrackID",
+        type: "Number",
         value: null
       },
       /**
        * array of tracks and cues
        */
       tracks: {
-        type: Array,
+        name: "tracks",
+        type: "Array",
         value: null
       },
       /**
        * Range is 0 to 100. Default should not be loud enough to overpower screen readers.
        */
       volume: {
-        type: Number,
+        name: "volume",
+        type: "Number",
         value: 70
       },
       /**
        * the id for the video
        */
       youtubeId: {
-        type: String,
+        name: "youtubeId",
+        type: "String",
         value: null
       },
       /**
        * the YouTube player object
        */
       youTube: {
-        type: Object,
+        name: "youTube",
+        type: "Object",
         value: {}
       }
     };
@@ -343,8 +376,9 @@ class A11yMediaBehaviors extends SimpleColors {
    * @param {string} the subkey to search for
    * @returns {string} the default value for [key][subkey], unless localization[key][subkey] exists
    */
-  _getLocal(localization, key, subkey) {
-    let local = "";
+  _getLocal(key, subkey) {
+    let local = "",
+      localization = this.localization;
     if (
       localization !== undefined &&
       localization[key] !== undefined &&

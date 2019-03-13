@@ -7,7 +7,6 @@ import { A11yMediaPlayerBehaviors } from "./lib/a11y-media-player-behaviors.js";
 import "@polymer/paper-slider/paper-slider.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/av-icons.js";
-import "./lib/screenfull-lib.js";
 import "./lib/a11y-media-controls.js";
 import "./lib/a11y-media-html5.js";
 import "./lib/a11y-media-play-button.js";
@@ -394,11 +393,11 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
           overflow: hidden;
         }
         @media screen {
-          :host([flex-layout]:not([responsive-size*="s"])) {
+          :host([flex-layout]:not([responsive-size="xs"])) {
             flex-flow: row;
             padding: 0;
           }
-          :host([flex-layout]:not([responsive-size*="s"])) #outerplayer {
+          :host([flex-layout]:not([responsive-size="xs"])) #outerplayer {
             flex: 1 0 auto;
           }
           :host #printthumb,
@@ -425,7 +424,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
             right: unset;
             left: 5px;
           }
-          :host([flex-layout]:not([responsive-size*="s"])) > div {
+          :host([flex-layout]:not([responsive-size="xs"])) > div {
             width: 50%;
             flex: 1 1 auto;
           }
@@ -439,7 +438,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
           :host([hide-transcript]) #outertranscript {
             display: none;
           }
-          :host(:not([no-height]):not([stacked-layout]):not([responsive-size*="s"]))
+          :host(:not([no-height]):not([stacked-layout]):not([responsive-size="xs"]))
             #transcript {
             position: absolute;
             top: 44px;
@@ -448,7 +447,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
             bottom: 0;
             overflow-y: scroll;
           }
-          :host(:not([no-height]):not([stacked-layout]):not([responsive-size*="s"]))
+          :host(:not([no-height]):not([stacked-layout]):not([responsive-size="xs"]))
             #innerplayer.totop {
             position: absolute;
             top: 0;
@@ -465,7 +464,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
             top: unset;
             bottom: 5px;
           }
-          :host([sticky]:not([sticky-corner="none"]):not([no-height]):not([stacked-layout]):not([responsive-size*="s"]))
+          :host([sticky]:not([sticky-corner="none"]):not([no-height]):not([stacked-layout]):not([responsive-size="xs"]))
             #controls {
             display: none;
           }
@@ -584,6 +583,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
         <paper-slider
           id="slider"
           class="screen-only"
+          disabled$="[[disableSeek]]"
           max$="[[__duration]]"
           secondary-progress$="[[__buffered]]"
           value$="[[__elapsed]]"
@@ -592,15 +592,16 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
         <a11y-media-controls
           id="controls"
           cc$="[[cc]]"
+          disable-seek$="[[disableSeek]]"
           fixed-height$="[[height]]"
           has-captions$="[[hasCaptions]]"
           has-transcript$="[[hasTranscript]]"
           hide-transcript$="[[hideTranscript]]"
           localization$="[[localization]]"
-          muted$="[[muted]]"
+          mute-unmute="[[muteUnmute]]"
           on-controls-change="_onControlsChanged"
           on-print-transcript="_handlePrinting"
-          playing$="[[__playing]]"
+          play-pause="[[playPause]]"
           search-transcript$="[[searchTranscript]]"
           stand-alone$="[[standAlone]]"
           volume="[[__volume]]"
@@ -638,6 +639,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
             dark$="[[darkTranscript]]"
             disable-scroll$="[[disableScroll]]"
             disable-search$="[[disableSearch]]"
+            disable-seek$="[[disableSeek]]"
             disable-interactive$="[[disableInteractive]]"
             hide-timestamps$="[[hideTimestamps]]"
             on-cue-seek="_handleCueSeek"
@@ -658,13 +660,23 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
        * The default media caption if none is given.
        */
       mediaCaption: {
+        name: "mediaCaption",
         type: "String",
         computed: "_getMediaCaption(audioOnly,localization,mediaTitle)"
+      },
+      /**
+       * mute/unmute button
+       */
+      muteUnmute: {
+        name: "muteUnmute",
+        type: "Object",
+        computed: "_getMuteUnmute(muted)"
       },
       /**
        * The media caption that displays when the page is printed.
        */
       printCaption: {
+        name: "printCaption",
         type: "String",
         computed: "_getPrintCaption(audioOnly,audioLabel,videoLabel,mediaTitle)"
       },
@@ -672,6 +684,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
        * is YouTube?
        */
       showCustomCaptions: {
+        name: "showCustomCaptions",
         type: "Boolean",
         computed: "_showCustomCaptions(isYoutube,audioOnly,hasCaptions,cc)"
       },
@@ -679,6 +692,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
        * Optional array ouf sources.
        */
       sources: {
+        name: "sources",
         type: "Array",
         value: []
       },
@@ -686,6 +700,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
        * Is the video currently sticky, i.e. it is fixed to the corner when playing but scrolled off screen?
        */
       sticky: {
+        name: "sticky",
         type: "Boolean",
         value: false,
         reflectToAttribute: true
@@ -696,6 +711,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
        * Default is "top-right". "None" disables stickiness.
        */
       stickyCorner: {
+        name: "stickyCorner",
         type: "String",
         value: "top-right",
         reflectToAttribute: true
@@ -704,13 +720,23 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
        * Optional array ouf tracks.
        */
       tracks: {
+        name: "tracks",
         type: "Array",
         value: []
+      },
+      /**
+       * play/pause button
+       */
+      playPause: {
+        name: "playPause",
+        type: "Object",
+        computed: "_getPlayPause(__playing)"
       },
       /**
        * Notice if the video is playing
        */
       __playing: {
+        name: "__playing",
         type: "Boolean",
         value: false,
         notify: true,
@@ -758,13 +784,15 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
       tdata = new Array(),
       selected = 0;
     root.__playerReady = true;
-    root.__interactive = !root.disableInteractive;
     root.target = root.shadowRoot.querySelector("#transcript");
-    root.__status = root.loadingLabel;
+    root.__status = root._getLocal("loading", "label");
     root.__slider = root.$.slider;
     root.__volume = root.muted ? 0 : Math.max(this.volume, 10);
     root.__resumePlaying = false;
-    root.__showFullscreen = !this.disableFullscreen && screenfull.enabled;
+    root.__showFullscreen =
+      !root.disableFullscreen &&
+      window.A11yMediaStateManager.screenfullLoaded &&
+      screenfull.enabled;
     root.__duration = 0;
     root.$.controls.setStatus(root.__status);
     root.width = root.width !== null ? root.width : "100%";
@@ -786,9 +814,10 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
 
     // handles fullscreen
     if (root.__showFullscreen) {
-      screenfull.on("change", () => {
-        this.fullscreen = screenfull.isFullscreen;
-      });
+      if (window.A11yMediaStateManager.screenfullLoaded)
+        screenfull.on("change", () => {
+          root.fullscreen = screenfull.isFullscreen;
+        });
     }
     root.$.slider.addEventListener("mousedown", e => {
       root._handleSliderStart();
@@ -1026,7 +1055,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
    * @returns {string} the media caption
    */
   _getMediaCaption(audioOnly, localization, mediaTitle) {
-    let audioLabel = this._getLocal(localization, "audio", "label"),
+    let audioLabel = this._getLocal("audio", "label"),
       hasMediaTitle =
         mediaTitle !== undefined && mediaTitle !== null && mediaTitle !== "";
     if (audioOnly && hasMediaTitle) {
@@ -1041,6 +1070,30 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
   }
 
   /**
+   * set play/pause button
+   *
+   * @param {boolean} Is the media muted?
+   * @param {string} label if button mutes media
+   * @param {string} icon if button mutes media
+   * @param {string} label if button unmutes media
+   * @param {string} icon if button unmutes media
+   * @returns {object} an object containing the current state of the play/pause button, eg., `{"label": "mute", "icon": "av:volume-off"}`
+   */
+  _getMuteUnmute(muted) {
+    return muted
+      ? {
+          label: this._getLocal("unmute", "label"),
+          icon: this._getLocal("unmute", "icon"),
+          action: "unmute"
+        }
+      : {
+          label: this._getLocal("mute", "label"),
+          icon: this._getLocal("mute", "icon"),
+          action: "mute"
+        };
+  }
+
+  /**
    * gets print caption
    *
    * @param {boolean} Is the player set to audio-only?
@@ -1050,8 +1103,8 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
    * @returns {string} the media caption when the page is printed
    */
   _getPrintCaption(audioOnly, localization, mediaTitle) {
-    let audioLabel = this._getLocal(localization, "audio", "label"),
-      videoLabel = this._getLocal(localization, "video", "label"),
+    let audioLabel = this._getLocal("audio", "label"),
+      videoLabel = this._getLocal("video", "label"),
       hasMediaTitle =
         mediaTitle !== undefined && mediaTitle !== null && mediaTitle !== "";
     if (audioOnly && hasMediaTitle) {
@@ -1093,6 +1146,30 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
       root.hasTranscript = !root.standAlone;
       root._getTrackData(e.track, counter++);
     };
+  }
+
+  /**
+   * set play/pause button
+   *
+   * @param {boolean} Is the media playing?
+   * @param {string} label if button pauses media
+   * @param {string} icon if button pauses media
+   * @param {string} label if button plays media
+   * @param {string} icon if button plays media
+   * @returns {object} an object containing the current state of the play/pause button, eg., `{"label": "Pause", "icon": "av:pause"}`
+   */
+  _getPlayPause(__playing) {
+    return __playing !== false
+      ? {
+          label: this._getLocal("pause", "label"),
+          icon: this._getLocal("pause", "icon"),
+          action: "pause"
+        }
+      : {
+          label: this._getLocal("play", "label"),
+          icon: this._getLocal("play", "icon"),
+          action: "play"
+        };
   }
 
   /**
@@ -1238,6 +1315,14 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
   _handleTimeUpdate(e) {
     let root = this;
     //if play exceeds clip length, stop
+    if (root.isYoutube && root.media.duration !== root.media.getDuration()) {
+      root.__duration = root.media.duration = root.media.getDuration();
+      root.disableSeek = false;
+      if (root.media.seekable !== undefined && root.media.seekable.length > 0) {
+        root.$.slider.min = root.media.seekable.start(0);
+      }
+      root._addSourcesAndTracks();
+    }
     if (
       root.media.seekable !== undefined &&
       root.media.seekable.length > 0 &&
@@ -1279,8 +1364,11 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
       }
     } else if (action === "forward") {
       root.forward();
-    } else if (action === "fullscreen") {
-      this.toggleTranscript(this.fullscreen);
+    } else if (
+      action === "fullscreen" &&
+      window.A11yMediaStateManager.screenfullLoaded
+    ) {
+      root.toggleTranscript(root.fullscreen);
       screenfull.toggle(root.$.outerplayer);
     } else if (action === "loop") {
       root.toggleLoop();
@@ -1364,42 +1452,23 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
     window.A11yMediaYoutube.requestAvailability();
     let root = this,
       ytUtil = window.A11yMediaYoutube.instance;
-    root.disableInteractive = true;
+    root.disableSeek = true;
     if (root.__playerAttached && root.__playerReady) {
       let ytInit = () => {
           // once metadata is ready on video set it on the media player
-          let setMetadata = () => {
-            root.__duration = root.media.duration;
-            root._setElapsedTime();
-            if (
-              root.media.seekable !== undefined &&
-              root.media.seekable.length > 0
-            ) {
-              root.$.slider.min = root.media.seekable.start(0);
-            }
-            root._addSourcesAndTracks();
-          };
           // initialize the YouTube player
           root.media = ytUtil.initYoutubePlayer({
             width: "100%",
             height: "100%",
             videoId: root.youtubeId
           });
+          console.log("ytinit");
+          root.__status = root._getLocal("youTubeLoading", "label");
+          root.$.controls.setStatus(root.__status);
           // move the YouTube iframe to the media player's YouTube container
           root.$.youtube.appendChild(root.media.a);
           root.__ytAppended = true;
           root._updateCustomTracks();
-
-          // youtube API doesn't immediately give length of a video
-          if (root.media.duration > 0) {
-            setMetadata();
-          } else {
-            document.addEventListener("youtube-video-metadata-loaded", e => {
-              if (e.detail === root.media) {
-                setMetadata();
-              }
-            });
-          }
         },
         checkApi = e => {
           if (ytUtil.apiReady) {

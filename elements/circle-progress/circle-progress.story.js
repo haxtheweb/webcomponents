@@ -1,57 +1,36 @@
-import { storiesOf } from "@storybook/polymer";
-import * as storybookBridge from "@storybook/addon-knobs/polymer";
 import { CircleProgress } from "./circle-progress.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
-// need to account for polymer goofiness when webpack rolls this up
-var template = require("raw-loader!./demo/index.html");
-let pattern = /<body[^>]*>((.|[\n\r])*)<\/body>/im;
-var array_matches = pattern.exec(template);
-// now template is just the body contents
-template = array_matches[1];
-const stories = storiesOf("Progress", module);
-stories.addDecorator(storybookBridge.withKnobs);
-stories.add("circle-progress", () => {
-  var binding = {};
-  // start of tag for demo
-  let elementDemo = `<circle-progress`;
-  // mix in properties defined on the class
-  for (var key in CircleProgress.properties) {
-    // skip prototype
-    if (!CircleProgress.properties.hasOwnProperty(key)) continue;
-    // convert typed props
-    if (CircleProgress.properties[key].type.name) {
-      let method = "text";
-      switch (CircleProgress.properties[key].type.name) {
-        case "Boolean":
-        case "Number":
-        case "Object":
-        case "Array":
-        case "Date":
-          method = CircleProgress.properties[key].type.name.toLowerCase();
-          break;
-        default:
-          method = "text";
-          break;
-      }
-      binding[key] = storybookBridge[method](
-        key,
-        CircleProgress.properties[key].value
-      );
-      // ensure ke-bab case
-      let kebab = key.replace(/[A-Z\u00C0-\u00D6\u00D8-\u00DE]/g, function(
-        match
-      ) {
-        return "-" + match.toLowerCase();
-      });
-      elementDemo += ` ${kebab}="${binding[key]}"`;
+window.StorybookUtilities.requestAvailability();
+/**
+ * add to the pattern library
+ */
+const CircleProgressPattern = {
+  "of": "Pattern Library/Atoms/Media", 
+  "name": 'Progress Circle',
+  "file": require("raw-loader!./demo/index.html"),
+  "replacements": []
+}
+window.StorybookUtilities.instance.addPattern(CircleProgressPattern);
+
+/**
+ * add the live demo
+ */
+const CircleProgressProps = CircleProgress.properties;
+CircleProgressProps.value.value = 30;
+const CircleProgressStory = {
+  "of": "circle-progress",
+  "name": "circle-progress",
+  "props": CircleProgressProps,
+  "slots": {
+    "slot": { 
+      "name": "slot", 
+      "type": "String", 
+      "value": ``
     }
-  }
-  const innerText = storybookBridge.text("Inner contents", "Progress");
-  elementDemo += `> ${innerText}</circle-progress>`;
-  return `
-  <h1>Live demo</h1>
-  ${elementDemo}
-  <h1>Additional examples</h1>
-  ${template}
-  `;
-});
+  }, 
+  "attr": ``,
+  "slotted": ``
+};
+window.StorybookUtilities.instance.addLiveDemo(CircleProgressStory);

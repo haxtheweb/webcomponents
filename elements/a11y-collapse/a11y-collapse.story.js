@@ -1,57 +1,65 @@
-import { storiesOf } from "@storybook/polymer";
-import * as storybookBridge from "@storybook/addon-knobs/polymer";
 import { A11yCollapse } from "./a11y-collapse.js";
+import { A11yCollapseGroup } from "./lib/a11y-collapse-group.js";
+import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
-// need to account for polymer goofiness when webpack rolls this up
-var template = require("raw-loader!./demo/index.html");
-let pattern = /<body[^>]*>((.|[\n\r])*)<\/body>/im;
-var array_matches = pattern.exec(template);
-// now template is just the body contents
-template = array_matches[1];
-const stories = storiesOf("Collapse", module);
-stories.addDecorator(storybookBridge.withKnobs);
-stories.add("a11y-collapse", () => {
-  var binding = {};
-  // start of tag for demo
-  let elementDemo = `<a11y-collapse`;
-  // mix in properties defined on the class
-  for (var key in A11yCollapse.properties) {
-    // skip prototype
-    if (!A11yCollapse.properties.hasOwnProperty(key)) continue;
-    // convert typed props
-    if (A11yCollapse.properties[key].type.name) {
-      let method = "text";
-      switch (A11yCollapse.properties[key].type.name) {
-        case "Boolean":
-        case "Number":
-        case "Object":
-        case "Array":
-        case "Date":
-          method = A11yCollapse.properties[key].type.name.toLowerCase();
-          break;
-        default:
-          method = "text";
-          break;
-      }
-      binding[key] = storybookBridge[method](
-        key,
-        A11yCollapse.properties[key].value
-      );
-      // ensure ke-bab case
-      let kebab = key.replace(/[A-Z\u00C0-\u00D6\u00D8-\u00DE]/g, function(
-        match
-      ) {
-        return "-" + match.toLowerCase();
-      });
-      elementDemo += ` ${kebab}="${binding[key]}"`;
-    }
-  }
-  const innerText = storybookBridge.text("Inner contents", "11");
-  elementDemo += `> ${innerText}</a11y-collapse>`;
-  return `
-  <h1>Live demo</h1>
-  ${elementDemo}
-  <h1>Additional examples</h1>
-  ${template}
-  `;
-});
+window.StorybookUtilities.requestAvailability();
+
+/**
+ * add to the pattern library
+ */
+const A11yCollapsePattern = {
+  "of": "Pattern Library/Molecules/Layout", 
+  "name": 'Collapse',
+  "file": require("raw-loader!./demo/index.html"),
+  "replacements": []
+};
+const A11yCollapseGroupPattern = {
+  "of": "Pattern Library/Molecules/Layout", 
+  "name": 'Accordion',
+  "file": require("raw-loader!./demo/accordion.html"),
+  "replacements": []
+};
+window.StorybookUtilities.instance.addPattern(A11yCollapseGroupPattern);
+window.StorybookUtilities.instance.addPattern(A11yCollapsePattern);
+
+/**
+ * add the live demo
+ */
+const A11yCollapseStory = {
+  "of": "a11y-collapse",
+  "name": "a11y-collapse",
+  "props": A11yCollapse.properties, 
+  "slots": {
+    "heading": {"name": "heading", "type": "String", "value": `Click to expand me.` },
+    "content": {"name": "content", "type": "String", "value": `Here are some details.` }
+  }, 
+  "attr": ``,
+  "slotted": ``
+}
+const A11yCollapseGroupStory = {
+  "of": "a11y-collapse",
+  "name": "a11y-collapse-group",
+  "props": A11yCollapseGroup.properties, 
+  "slots": {
+    "slot": {
+      "name": "slot", "type": "String", "value": `
+      <h2>Secondary Colors</h2>
+      <a11y-collapse accordion>
+        <p slot="heading">Purple</p>
+        <div slot="content">Blue and red make purple.</div>
+      </a11y-collapse>
+      <a11y-collapse accordion>
+        <p slot="heading">Green</p>
+        <div slot="content">Blue and yellow make purple.</div>
+      </a11y-collapse>
+      <a11y-collapse accordion>
+        <p slot="heading">Orange</p>
+        <div slot="content">Yellow and red make purple.</div>
+      </a11y-collapse>
+    `}
+  }, 
+  "attr": ``,
+  "slotted": ``
+};
+window.StorybookUtilities.instance.addLiveDemo(A11yCollapseStory);
+window.StorybookUtilities.instance.addLiveDemo(A11yCollapseGroupStory);

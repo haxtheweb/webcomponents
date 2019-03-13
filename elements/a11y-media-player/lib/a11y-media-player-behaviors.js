@@ -27,21 +27,24 @@ class A11yMediaPlayerBehaviors extends A11yMediaBehaviors {
        */
 
       allowConcurrent: {
-        type: Boolean,
+        name: "allowConcurrent",
+        type: "Boolean",
         value: false
       },
       /**
        * Is it an audio player with no thumbnail?
        */
       audioNoThumb: {
-        type: Boolean,
+        name: "audioNoThumb",
+        type: "Boolean",
         computed: "_getAudioNoThumb(audioOnly,thumbnailSrc)"
       },
       /**
        * Is this an audio file?
        */
       audioOnly: {
-        type: Boolean,
+        name: "audioOnly",
+        type: "Boolean",
         value: false,
         reflectToAttribute: true
       },
@@ -49,14 +52,16 @@ class A11yMediaPlayerBehaviors extends A11yMediaBehaviors {
        * Use compact controls?
        */
       compactControls: {
-        type: Boolean,
+        name: "compactControls",
+        type: "Boolean",
         computed: "_getCompactControls(responsiveSize)"
       },
       /**
        * crossorigin attribute for <video> and <audio> tags
        */
       crossorigin: {
-        type: String,
+        name: "crossorigin",
+        type: "String",
         value: null,
         reflectToAttribute: true
       },
@@ -64,49 +69,56 @@ class A11yMediaPlayerBehaviors extends A11yMediaBehaviors {
        * Use dark theme on transcript? Default is false, even when player is dark.
        */
       darkTranscript: {
-        type: Boolean,
+        name: "darkTranscript",
+        type: "Boolean",
         value: false
       },
       /**
        * disable fullscreen option
        */
       disableFullscreen: {
-        type: Boolean,
+        name: "disableFullscreen",
+        type: "Boolean",
         value: false
       },
       /**
        * disable interactive mode that makes the transcript clickable
        */
       disableInteractive: {
-        type: Boolean,
+        name: "disableInteractive",
+        type: "Boolean",
         value: false
       },
       /**
        * disable transcript search feature
        */
       disableSearch: {
-        type: Boolean,
+        name: "disableSearch",
+        type: "Boolean",
         value: false
       },
       /**
        * disable autoscrolling as transcript plays
        */
       disableScroll: {
-        type: Boolean,
+        name: "disableScroll",
+        type: "Boolean",
         value: false
       },
       /**
        * disable transcript print button
        */
       disablePrintButton: {
-        type: Boolean,
+        name: "disablePrintButton",
+        type: "Boolean",
         value: false
       },
       /**
        * Determines if video and transcript are in a flex layout
        */
       flexLayout: {
-        type: Boolean,
+        name: "flexLayout",
+        type: "Boolean",
         computed:
           "_isFlexLayout(standAlone,hideTranscript,audioNoThumb,stackedLayout)",
         reflectToAttribute: true
@@ -115,14 +127,16 @@ class A11yMediaPlayerBehaviors extends A11yMediaBehaviors {
        * Is fullscreen mode?
        */
       fullscreen: {
-        type: Boolean,
+        name: "fullscreen",
+        type: "Boolean",
         value: false
       },
       /**
        * show the FullscreenButton?
        */
       fullscreenButton: {
-        type: Boolean,
+        name: "fullscreenButton",
+        type: "Boolean",
         computed: "_getFullscreenButton(disableFullscreen)",
         notify: true
       },
@@ -130,35 +144,40 @@ class A11yMediaPlayerBehaviors extends A11yMediaBehaviors {
        * Does the player have tracks?
        */
       hasCaptions: {
-        type: Boolean,
+        name: "hasCaptions",
+        type: "Boolean",
         value: false
       },
       /**
        * Does the player have an interactive transcript?
        */
       hasTranscript: {
-        type: Boolean,
+        name: "hasTranscript",
+        type: "Boolean",
         value: false
       },
       /**
        * The height of the media player.
        */
       height: {
-        type: String,
+        name: "height",
+        type: "String",
         value: null
       },
       /**
        * Hide elapsed time?
        */
       hideElapsedTime: {
-        type: Boolean,
+        name: "hideElapsedTime",
+        type: "Boolean",
         value: false
       },
       /**
        * initially hide the transcript?
        */
       hideTranscript: {
-        type: Boolean,
+        name: "hideTranscript",
+        type: "Boolean",
         value: false,
         reflectToAttribute: true
       },
@@ -166,85 +185,96 @@ class A11yMediaPlayerBehaviors extends A11yMediaBehaviors {
        * show cue's start and end time
        */
       hideTimestamps: {
-        type: Boolean,
+        name: "hideTimestamps",
+        type: "Boolean",
         value: false
       },
       /**
        * the media to be manipulated
        */
       media: {
-        type: Object,
+        name: "media",
+        type: "Object",
         value: null
       },
       /**
        * the language of the media (if different from user interface language)
        */
       mediaLang: {
-        type: String,
+        name: "mediaLang",
+        type: "String",
         value: "en"
       },
       /**
        * optional title of media (shows when printed)
        */
       mediaTitle: {
-        type: String,
+        name: "mediaTitle",
+        type: "String",
         value: ""
       },
       /**
        * mute/unmute button
        */
       muteUnmute: {
-        type: Object,
-        computed: "_getMuteUnmute(muted,localization)"
+        name: "muteUnmute",
+        type: "Object"
       },
       /**
        * Is media playing?
        */
       playing: {
-        type: Boolean,
+        name: "playing",
+        type: "Boolean",
         value: false
       },
       /**
        * play/pause button
        */
       playPause: {
-        type: Object,
-        computed: "_getPlayPause(playing,localization)"
+        name: "playPause",
+        type: "Object"
       },
       /**
        * Size of the a11y media element for responsive styling
        */
       responsiveSize: {
-        type: String,
+        name: "responsiveSize",
+        type: "String",
         notify: true,
+        value: "xs",
         reflectToAttribute: true
       },
       /**
        * the search tool for the transcript
        */
       search: {
-        type: Object,
+        name: "search",
+        type: "Object",
         value: null
       },
       /**
        * is YouTube?
        */
       showCustomCaptions: {
-        type: Boolean,
+        name: "showCustomCaptions",
+        type: "Boolean",
         computed: "_showCustomCaptions(isYoutube,audioOnly,hasCaptions,cc)"
       },
       /**
        * stacked layout instead of side-by-side?
        */
       stackedLayout: {
-        type: Boolean,
+        name: "stackedLayout",
+        type: "Boolean",
         value: false
       },
       /**
        * Is stand-alone player (without transcript)?
        */
       standAlone: {
-        type: Boolean,
+        name: "standAlone",
+        type: "Boolean",
         value: false,
         reflectToAttribute: true
       },
@@ -252,14 +282,16 @@ class A11yMediaPlayerBehaviors extends A11yMediaBehaviors {
        * target of the controls
        */
       target: {
-        type: Object,
+        name: "target",
+        type: "Object",
         value: null
       },
       /**
        * Source of optional thumbnail image
        */
       thumbnailSrc: {
-        type: String,
+        name: "thumbnailSrc",
+        type: "String",
         value: null,
         reflectToAttribute: true
       },
@@ -267,7 +299,8 @@ class A11yMediaPlayerBehaviors extends A11yMediaBehaviors {
        * The width of the media player.
        */
       width: {
-        type: String,
+        name: "width",
+        type: "String",
         value: null
       }
     };
@@ -327,54 +360,6 @@ class A11yMediaPlayerBehaviors extends A11yMediaBehaviors {
       this._testAttribute(responsiveSize, "xs") ||
       this._testAttribute(responsiveSize, "sm")
     );
-  }
-
-  /**
-   * set play/pause button
-   *
-   * @param {boolean} Is the media playing?
-   * @param {string} label if button pauses media
-   * @param {string} icon if button pauses media
-   * @param {string} label if button plays media
-   * @param {string} icon if button plays media
-   * @returns {object} an object containing the current state of the play/pause button, eg., `{"label": "Pause", "icon": "av:pause"}`
-   */
-  _getPlayPause(playing, localization) {
-    return playing
-      ? {
-          label: this._getLocal(localization, "pause", "label"),
-          icon: this._getLocal(localization, "pause", "icon"),
-          action: "pause"
-        }
-      : {
-          label: this._getLocal(localization, "play", "label"),
-          icon: this._getLocal(localization, "play", "icon"),
-          action: "play"
-        };
-  }
-
-  /**
-   * set play/pause button
-   *
-   * @param {boolean} Is the media muted?
-   * @param {string} label if button mutes media
-   * @param {string} icon if button mutes media
-   * @param {string} label if button unmutes media
-   * @param {string} icon if button unmutes media
-   * @returns {object} an object containing the current state of the play/pause button, eg., `{"label": "mute", "icon": "av:volume-off"}`
-   */
-  _getMuteUnmute(muted, localization) {
-    return muted
-      ? {
-          label: this._getLocal(localization, "unmute", "label"),
-          icon: this._getLocal(localization, "unmute", "icon"),
-          action: "unmute"
-        }
-      : {
-          label: this._getLocal(localization, "mute", "label"),
-          icon: this._getLocal(localization, "mute", "icon"),
-          action: "mute"
-        };
   }
 
   /**
