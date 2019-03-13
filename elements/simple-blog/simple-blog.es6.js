@@ -1,12 +1,18 @@
 import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@polymer/iron-pages/iron-pages.js";import"./node_modules/@polymer/paper-icon-button/paper-icon-button.js";import{HAXCMSThemeWiring}from"./node_modules/@lrnwebcomponents/haxcms-elements/lib/HAXCMSThemeWiring.js";import{store}from"./node_modules/@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";import{autorun,toJS}from"./node_modules/mobx/lib/mobx.module.js";import"./lib/simple-blog-listing.js";import"./lib/simple-blog-header.js";import"./lib/simple-blog-footer.js";import"./lib/simple-blog-post.js";let SimpleBlog=Polymer({_template:html`
+    <custom-style>
+      <style>
+        html,
+        body {
+          background-color: #fafafa;
+        }
+      </style>
+    </custom-style>
     <style include="simple-colors">
       :host {
         display: block;
         font-family: "Roboto", "Noto", sans-serif;
         -webkit-font-smoothing: antialiased;
         font-size: 14px;
-        margin: 0;
-        padding: 24px;
         background-color: #fafafa;
         font-family: "Open Sans", "MundoSans", helvetica neue, Arial, Helvetica,
           sans-serif;
@@ -65,7 +71,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
     </style>
     <iron-pages selected="[[selectedPage]]">
       <section>
-        <simple-blog-header manifest="[[manifest]]"></simple-blog-header>
+        <simple-blog-header></simple-blog-header>
         <simple-blog-listing
           id="listing"
           items="[[manifest.items]]"
@@ -82,8 +88,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
           position="right"
           offset="14"
           animation-delay="100"
-        >
-          Back to main site
+          >Back to listing
         </paper-tooltip>
         <simple-blog-post
           id="post"
@@ -97,4 +102,4 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         ></simple-blog-footer>
       </section>
     </iron-pages>
-  `,is:"simple-blog",behaviors:[SchemaBehaviors.Schema],properties:{selectedPage:{type:Number,reflectToAttribute:!0,value:0},editMode:{type:Boolean,reflectToAttribute:!0},activeItem:{type:Object},manifest:{type:Object}},created:function(){this.HAXCMSThemeWiring=new HAXCMSThemeWiring(this)},ready:function(){this.HAXCMSThemeWiring.connect(this,this.$.post.$.contentcontainer)},attached:function(){this.__disposer=autorun(()=>{this.manifest=toJS(store.routerManifest);this._locationChanged(store.location)})},detached:function(){this.HAXCMSThemeWiring.disconnect(this);this.__disposer()},_locationChanged:function(location){if(!location||"undefined"===typeof location.route)return;const name=location.route.name;if("home"===name||"404"===name){this.selectedPage=0}else{this.selectedPage=1;window.scrollTo(0,0)}},_goBack:function(e){window.history.pushState(null,null,store.location.baseUrl);window.dispatchEvent(new PopStateEvent("popstate"))}});export{SimpleBlog};
+  `,is:"simple-blog",behaviors:[SchemaBehaviors.Schema],properties:{selectedPage:{type:Number,reflectToAttribute:!0,value:0},editMode:{type:Boolean,reflectToAttribute:!0},activeItem:{type:Object},activeItemId:{type:String},manifest:{type:Object}},created:function(){this.HAXCMSThemeWiring=new HAXCMSThemeWiring(this)},ready:function(){this.HAXCMSThemeWiring.connect(this,this.$.post.$.contentcontainer)},attached:function(){this.__disposer=autorun(()=>{this.manifest=toJS(store.routerManifest)});this.__disposer2=autorun(()=>{this.activeItem=toJS(store.activeItem)});this.__disposer3=autorun(()=>{this.activeId=toJS(store.activeId)});this.__disposer4=autorun(()=>{this._locationChanged(store.location)})},detached:function(){this.HAXCMSThemeWiring.disconnect(this);this.__disposer();this.__disposer2();this.__disposer3();this.__disposer4()},_locationChanged:function(location){if(!location||"undefined"===typeof location.route)return;const name=location.route.name;if("home"===name||"404"===name){this.selectedPage=0}else{this.selectedPage=1;window.scrollTo({top:0,left:0,behavior:"smooth"})}},_goBack:function(e){const prevActiveItemId=this.activeItemId;window.history.pushState(null,null,store.location.baseUrl);window.dispatchEvent(new PopStateEvent("popstate"));if(prevActiveItemId){setTimeout(()=>{let active=this.$.listing.shadowRoot.querySelector("simple-blog-overview[item-id=\""+prevActiveItemId+"\"]");active.scrollIntoView(!0);active.focus()},100)}else{window.scrollTo({top:0,left:0})}this.fire("json-outline-schema-active-item-changed",{});this.selectedPage=0}});export{SimpleBlog};
