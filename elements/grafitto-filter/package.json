@@ -11,7 +11,7 @@
       "js": "src/grafitto-filter.js"
     }
   },
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "Start of grafitto-filter fork",
   "repository": {
     "type": "git",
@@ -38,8 +38,8 @@
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.0.5",
-    "@lrnwebcomponents/storybook-utilities": "^2.0.5",
+    "@lrnwebcomponents/deduping-fix": "^2.0.8",
+    "@lrnwebcomponents/storybook-utilities": "^2.0.8",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@polymer/iron-list": "^3.0.1",
