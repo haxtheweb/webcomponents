@@ -23,14 +23,20 @@ A simple blog and associated elements
 */
 let SimpleBlog = Polymer({
   _template: html`
+    <custom-style>
+      <style>
+        html,
+        body {
+          background-color: #fafafa;
+        }
+      </style>
+    </custom-style>
     <style include="simple-colors">
       :host {
         display: block;
         font-family: "Roboto", "Noto", sans-serif;
         -webkit-font-smoothing: antialiased;
         font-size: 14px;
-        margin: 0;
-        padding: 24px;
         background-color: #fafafa;
         font-family: "Open Sans", "MundoSans", helvetica neue, Arial, Helvetica,
           sans-serif;

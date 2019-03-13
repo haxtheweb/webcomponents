@@ -34,9 +34,6 @@ Polymer({
           padding: 0 32px;
         }
       }
-      article {
-        padding: 40px 0;
-      }
       section {
         width: 100%;
         font-family: Linux Libertine;
@@ -77,13 +74,13 @@ Polymer({
       .post-meta {
         font-family: Open Sans, MundoSans, "Helvetica Neue", Arial, Helvetica,
           sans-serif;
-        padding-top: 60px;
       }
       :host([has-image]) .post-meta {
         position: absolute;
         bottom: 80px;
         left: 30%;
         right: 30%;
+        padding-top: 60px;
         z-index: 9;
         font-family: Open Sans, MundoSans, "Helvetica Neue", Arial, Helvetica,
           sans-serif;
