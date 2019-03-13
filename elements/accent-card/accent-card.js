@@ -334,7 +334,8 @@ class AccentCard extends SimpleColors {
        * Apply accent color to card background
        */
       accentBackground: {
-        type: Boolean,
+        name: "accentBackground",
+        type: "Boolean",
         value: false,
         reflectToAttribute: true
       },
@@ -343,7 +344,8 @@ class AccentCard extends SimpleColors {
        * Apply accent color to heading
        */
       accentHeading: {
-        type: Boolean,
+        name: "accentHeading",
+        type: "Boolean",
         value: false,
         reflectToAttribute: true
       },
@@ -352,7 +354,8 @@ class AccentCard extends SimpleColors {
        * Display the card as flat (no box shadow);
        */
       flat: {
-        type: Boolean,
+        name: "flat",
+        type: "Boolean",
         value: false,
         reflectToAttribute: true
       },
@@ -361,16 +364,18 @@ class AccentCard extends SimpleColors {
        * Display the card as a horizontal layout? Default is vertical.
        */
       horizontal: {
-        type: Boolean,
+        name: "horizontal",
+        type: "Boolean",
         value: false,
         reflectToAttribute: true
       },
 
       /**
-       * Optional: The source for an image on the card
+       * "Optional": The source for an image on the card
        */
       imageSrc: {
-        type: String,
+        name: "imageSrc",
+        type: "String",
         value: null
       },
 
@@ -378,7 +383,8 @@ class AccentCard extends SimpleColors {
        * Removes the think accent border
        */
       noBorder: {
-        type: Boolean,
+        name: "noBorder",
+        type: "Boolean",
         value: false,
         reflectToAttribute: true
       },
@@ -387,7 +393,8 @@ class AccentCard extends SimpleColors {
        * The style for the image if there is an image
        */
       __backgroundStyle: {
-        type: String,
+        name: "__backgroundStyle",
+        type: "String",
         computed: "_getBackgroundStyle(imageSrc)"
       }
     };

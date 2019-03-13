@@ -3,67 +3,49 @@ import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "../a11y-collapse.js";
 /**
-`a11y-collapse-group`
-A LRN element
+ * `a11y-collapse-group`
+ * A group of a11y-collapse elements
+ * * @demo demo/accordion.html Accordion Groups
+ * @microcopy - the mental model for this element```
+<a11y-collapse-group 
+  global-options='{"prop": "value"}'     //Optional: An object that will automatica11y override and set properties for every a11y-collapse.
+  radio>                                 //Optional: radio. If true, only one item in the group can be expanded at a time.
+  <h2 slot="heading">Colors List</h2>    //Optional: Adds the slotted content above the group
+  <a11y-collapse>...</a11y-collapse>     //An a11y-collapse item. See documentation for the a11y-collapse
+</a11y-collapse-group>
 
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
- 
-  <a11y-collapse-group 
-    global-options='{"prop": "value"}'     //Optional: An object that will automatica11y override and set properties for every a11y-collapse.
-    radio>                                 //Optional: radio. If true, only one item in the group can be expanded at a time.
-    <h2 slot="heading">Colors List</h2>    //Optional: Adds the slotted content above the group
-    <a11y-collapse>...</a11y-collapse>     //An a11y-collapse item. See documentation for the a11y-collapse
-  </a11y-collapse-group>
-
-  CSS Mixins:
+CSS Mixins:
   --a11y-collapse-group                    //sets CSS for the a11y-collapse-group
   --a11y-collapse-group-heading            //sets CSS for the a11y-collapse-group heading
-
+```
 */
-Polymer({
+let A11yCollapseGroup = Polymer({
   _template: html`
     <style>
       :host {
         display: block;
+        margin: var(--a11y-collapse-group-margin, 15px 0);
+        --a11y-collapse-margin: 15px;
+
         @apply --a11y-collapse-group;
       }
       :host #heading {
         font-weight: bold;
         @apply --a11y-collapse-group-heading;
       }
-      :host .wrapper::slotted(a11y-collapse) {
-        margin: 0;
+      :host .wrapper {
         border-radius: 0;
-      }
-      :host .wrapper::slotted(a11y-collapse):not(:first-of-type) {
-        border-top: none;
+        --a11y-collapse-margin: 0;
+        --a11y-collapse-border-between: none;
       }
     </style>
-    <div class="wrapper"><slot id="heading"></slot> <slot></slot></div>
+    <div class="wrapper"><slot></slot></div>
   `,
 
   is: "a11y-collapse-group",
   behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
 
   properties: {
-    /**
-     * accordion-style: whole header of every a11y-collapse item acts as button? default is just icon.
-     */
-    accordion: {
-      type: Boolean,
-      value: false,
-      reflectToAttribute: true
-    },
-    /**
-     * is every each a11y-collapse item disabled?
-     */
-    disabled: {
-      type: Boolean,
-      value: false,
-      reflectToAttribute: true
-    },
     /**
      * an array of globalProperties to override every a11y-collapse item
      * For example, {"icon": "arrow-drop-down"} would set every item's icon to "arrow-drop-down"
@@ -87,7 +69,6 @@ Polymer({
       value: []
     }
   },
-
   /**
    * Attached to the DOM, now fire.
    */
@@ -150,7 +131,7 @@ Polymer({
       this._detachItem(e.detail);
     });
     this.set("__items", []);
-    this.notify("__items");
+    this.notifyPath("__items");
   },
 
   /**
@@ -203,3 +184,4 @@ Polymer({
     this.setHaxProperties(props);
   }
 });
+export { A11yCollapseGroup };

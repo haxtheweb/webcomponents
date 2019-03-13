@@ -94,6 +94,7 @@
     "@lrnwebcomponents/aframe-player": "^2.0.7",
     "@lrnwebcomponents/citation-element": "^2.0.7",
     "@lrnwebcomponents/deduping-fix": "^2.0.5",
+    "@lrnwebcomponents/storybook-utilities": "^2.0.5",
     "@lrnwebcomponents/hero-banner": "^2.0.7",
     "@lrnwebcomponents/image-compare-slider": "^2.0.7",
     "@lrnwebcomponents/license-element": "^2.0.7",

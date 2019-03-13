@@ -132,7 +132,9 @@ Polymer({
    * Remove lsitener.
    */
   detached: function() {
-    this.$.expand.removeEventListener("tap");
+    this.$.expand.removeEventListener("tap", function(e) {
+      root._onTap(e);
+    });
   },
 
   /**

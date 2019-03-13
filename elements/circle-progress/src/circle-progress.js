@@ -74,7 +74,8 @@ let CircleProgress = Polymer({
      * Value of circular progress bar.
      */
     value: {
-      type: Number,
+      name: "value",
+      type: "Number",
       value: 0
     },
 
@@ -82,7 +83,8 @@ let CircleProgress = Polymer({
      * Maximum of value.
      */
     max: {
-      type: Number,
+      name: "max",
+      type: "Number",
       value: 100
     },
 
@@ -90,7 +92,8 @@ let CircleProgress = Polymer({
      * Stroke width of circle.
      */
     strokeWidth: {
-      type: Number,
+      name: "strokeWidth",
+      type: "Number",
       value: 4
     },
 
@@ -98,37 +101,44 @@ let CircleProgress = Polymer({
      * Starting angle of the progress.
      */
     angle: {
-      type: Number,
+      name: "angle",
+      type: "Number",
       value: -90
     },
 
     _cx: {
-      type: Number,
+      name: "_cx",
+      type: "Number",
       value: null
     },
 
     _cy: {
-      type: Number,
+      name: "_cy",
+      type: "Number",
       value: null
     },
 
     _radius: {
-      type: Number,
+      name: "_radius",
+      type: "Number",
       computed: "_computeRadius(_cx, _cy, strokeWidth)"
     },
 
     _transform: {
-      type: String,
+      name: "_transform",
+      type: "String",
       computed: "_computeTransform(angle, _cx, _cy)"
     },
 
     _dasharray: {
-      type: Number,
+      name: "_dasharray",
+      type: "Number",
       computed: "_computeDashArray(_radius)"
     },
 
     _dashoffset: {
-      type: Number,
+      name: "_dashoffset",
+      type: "Number",
       computed: "_computeDashOffset(value, max, _dasharray)"
     }
   },

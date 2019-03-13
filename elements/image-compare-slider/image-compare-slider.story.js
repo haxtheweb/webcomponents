@@ -1,57 +1,38 @@
-import { storiesOf } from "@storybook/polymer";
-import * as storybookBridge from "@storybook/addon-knobs/polymer";
 import { ImageCompareSlider } from "./image-compare-slider.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import image1 from "./demo/images/Matterhorn01.png";
+import image2 from "./demo/images/Matterhorn02.png";
 
-// need to account for polymer goofiness when webpack rolls this up
-var template = require("raw-loader!./demo/index.html");
-let pattern = /<body[^>]*>((.|[\n\r])*)<\/body>/im;
-var array_matches = pattern.exec(template);
-// now template is just the body contents
-template = array_matches[1];
-const stories = storiesOf("Compare", module);
-stories.addDecorator(storybookBridge.withKnobs);
-stories.add("image-compare-slider", () => {
-  var binding = {};
-  // start of tag for demo
-  let elementDemo = `<image-compare-slider`;
-  // mix in properties defined on the class
-  for (var key in ImageCompareSlider.properties) {
-    // skip prototype
-    if (!ImageCompareSlider.properties.hasOwnProperty(key)) continue;
-    // convert typed props
-    if (ImageCompareSlider.properties[key].type.name) {
-      let method = "text";
-      switch (ImageCompareSlider.properties[key].type.name) {
-        case "Boolean":
-        case "Number":
-        case "Object":
-        case "Array":
-        case "Date":
-          method = ImageCompareSlider.properties[key].type.name.toLowerCase();
-          break;
-        default:
-          method = "text";
-          break;
-      }
-      binding[key] = storybookBridge[method](
-        key,
-        ImageCompareSlider.properties[key].value
-      );
-      // ensure ke-bab case
-      let kebab = key.replace(/[A-Z\u00C0-\u00D6\u00D8-\u00DE]/g, function(
-        match
-      ) {
-        return "-" + match.toLowerCase();
-      });
-      elementDemo += ` ${kebab}="${binding[key]}"`;
-    }
-  }
-  const innerText = storybookBridge.text("Inner contents", "Compare");
-  elementDemo += `> ${innerText}</image-compare-slider>`;
-  return `
-  <h1>Live demo</h1>
-  ${elementDemo}
-  <h1>Additional examples</h1>
-  ${template}
-  `;
-});
+window.StorybookUtilities.requestAvailability();
+/**
+ * add to the pattern library
+ */
+const ImageCompareSliderPattern = {
+  "of": "Pattern Library/Molecules/Media", 
+  "name": 'Image Compare',
+  "file": require("raw-loader!./demo/index.html"),
+  "replacements": [
+    {"find": "\.\/images\/Matterhorn01.png", "replace": image1 },
+    {"find": "\.\/images\/Matterhorn02.png", "replace": image2 }
+  ]
+}
+window.StorybookUtilities.instance.addPattern(ImageCompareSliderPattern);
+
+/**
+ * add the live demo
+ */
+const ImageCompareSliderProps = ImageCompareSlider.properties;
+ImageCompareSliderProps.topSrc.value = image1;
+ImageCompareSliderProps.bottomSrc.value = image2;
+ImageCompareSliderProps.style = {"type":"String", "value": `width: 400px;`};
+
+const ImageCompareSliderStory = {
+  "of": "image-compare-slider",
+  "name": "image-compare-slider",
+  "props":  ImageCompareSliderProps,
+  "slots": {}, 
+  "attr": ``,
+  "slotted": ``
+};
+window.StorybookUtilities.instance.addLiveDemo(ImageCompareSliderStory);
