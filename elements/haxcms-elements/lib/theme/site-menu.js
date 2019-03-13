@@ -57,8 +57,8 @@ class SiteMenu extends PolymerElement {
         id="menu"
         selected="[[activeId]]"
         manifest="[[routerManifest]]"
-        active-indicator
-        auto-scroll
+        active-indicator="[[!hideActiveIndicator]]"
+        auto-scroll="[[!preventAutoScroll]]"
       ></map-menu>
     `;
   }
@@ -67,6 +67,9 @@ class SiteMenu extends PolymerElement {
    */
   static get properties() {
     return {
+      /**
+       * Manifest with router / location enhancements
+       */
       routerManifest: {
         type: Object
       },
@@ -75,14 +78,26 @@ class SiteMenu extends PolymerElement {
        */
       activeId: {
         type: String
+      },
+      /**
+       * Binding for active indicator and auto scrolling
+       */
+      hideActiveIndicator: {
+        type: Boolean,
+        value: false
+      },
+      preventAutoScroll: {
+        type: Boolean,
+        value: false
       }
     };
   }
   connectedCallback() {
     super.connectedCallback();
     this.__disposer = autorun(() => {
-      this.routerManifest = toJS(store.routerManifest);
+      this.routerManifest = Object.assign({}, toJS(store.routerManifest));
     });
+    // silly but delay to ensure highlighting happens
     setTimeout(() => {
       this.__disposer2 = autorun(() => {
         this.activeId = toJS(store.activeId);
