@@ -9,7 +9,7 @@ import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-progress/paper-progress.js";
 import { observable, decorate, computed } from "mobx";
-import { store } from "./haxcms-site-store.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";
 import "./haxcms-site-router.js";
 import "./haxcms-editor-builder.js";
 

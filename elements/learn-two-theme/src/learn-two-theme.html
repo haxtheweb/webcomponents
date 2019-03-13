@@ -1,22 +1,10 @@
 <custom-style>
   <style>
-  body {
-    font-family: "Muli","Helvetica","Tahoma","Geneva","Arial",sans-serif;
-    letter-spacing: -.03rem;
-    font-weight:400;
-    background-color:#FAFAFA;
-  }
-  h1,h2,h3,h4,h5,h6 {
-    font-family:"Montserrat","Helvetica","Tahoma","Geneva","Arial",sans-serif;
-    font-weight:400;
-    text-rendering:optimizeLegibility;
-    line-height:150%;
-    letter-spacing:0
+  html,body {
+    background-color: #FAFAFA;
   }
   </style>
 </custom-style>
-<link rel="stylesheet" type="text/css" crossorigin="anonymous"
-  href="https://fonts.googleapis.com/css?family=Montserrat:400|Muli:300,400|Inconsolata" />
 <style include="simple-colors"></style>
 <app-drawer-layout>
   <paper-icon-button id="menubutton" icon="menu" on-tap="toggleDrawer"></paper-icon-button>
@@ -24,47 +12,24 @@
     <paper-icon-button id="menubutton2" icon="menu" on-tap="toggleDrawer"></paper-icon-button>
     <div class="header-wrapper">
       <div class="header">
-        <a href="/">
-          <h1 class="outline-title">[[manifest.title]]</h1>
-        </a>
+        <site-title></site-title>
       </div>
     </div>
-    <map-menu id="menu" selected="[[selected]]" manifest="[[manifest]]" active-indicator auto-scroll></map-menu>
+    <site-menu></site-menu>
     <div class="rss-buttons">
-      <site-rss type="atom"></site-rss>
-      <site-rss type="rss"></site-rss>
+      <site-rss-button type="atom"></site-rss-button>
+      <site-rss-button type="rss"></site-rss-button>
     </div>
   </app-drawer>
   <div>
-    <paper-button
-      id="prev"
-      noink
-      on-click="prevPage"
-      disabled$="[[disablePrevPage(activeManifestIndex)]]"
-      class="arrow-floats">
-      <iron-icon icon="icons:chevron-left">
-      </iron-icon>
-    </paper-button>
-    <paper-tooltip for="prev" offset="8" position="right">
-      Previous page
-    </paper-tooltip>
+    <site-menu-button type="prev"></site-menu-button>
     <div id="contentcontainer">
       <site-breadcrumb></site-breadcrumb>
-      <h2 class="title">[[activeItem.title]]</h2>
+      <site-active-title></site-active-title>
       <div id="slot">
         <slot></slot>
       </div>
     </div>
-    <paper-button
-      id="next"
-      noink
-      on-click="nextPage"
-      disabled="[[disableNextPage(activeManifestIndex)]]"
-      class="arrow-floats">
-      <iron-icon icon="icons:chevron-right"></iron-icon>
-    </paper-button>
-    <paper-tooltip for="next" offset="8" position="left">
-      Next page
-    </paper-tooltip>
+    <site-menu-button type="next"></site-menu-button>
   </div>
 </app-drawer-layout>

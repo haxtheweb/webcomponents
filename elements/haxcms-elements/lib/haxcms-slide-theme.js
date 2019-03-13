@@ -8,6 +8,10 @@ import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/site-title.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/site-menu-button.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";
+import { autorun, toJS } from "mobx";
 import { HAXCMSTheme } from "./HAXCMSThemeWiring.js";
 /**
  * `haxcms-slide-theme`
@@ -67,8 +71,22 @@ class HAXCMSSlideTheme extends HAXCMSTheme(PolymerElement) {
           line-height: 40px;
           font-size: 16px;
         }
-        .title {
-          font-size: 28px;
+        site-menu-button {
+          --site-menu-button-link: {
+            color: #ffffff;
+          }
+          --site-menu-button-button: {
+            height: 40px;
+            width: 40px;
+            padding: 0;
+            margin: 0;
+            line-height: 40px;
+          }
+          --site-menu-button-button-hover: {
+            color: yellow;
+          }
+        }
+        site-title {
           vertical-align: middle;
           display: flex;
           justify-content: center;
@@ -76,6 +94,15 @@ class HAXCMSSlideTheme extends HAXCMSTheme(PolymerElement) {
           height: 60px;
           left: 0;
           right: 0;
+          --site-title-link: {
+            text-decoration: none;
+          }
+          --site-title-heading: {
+            color: black;
+            font-size: 28px;
+            margin: 0;
+            padding: 0;
+          }
         }
         .bottom-wrapper {
           position: fixed;
@@ -84,36 +111,26 @@ class HAXCMSSlideTheme extends HAXCMSTheme(PolymerElement) {
         }
       </style>
       <div class="active-slide">
-        <h1>[[activeItem.title]]</h1>
+        <site-active-title></site-active-title>
         <div id="contentcontainer">
           <div id="slot"><slot></slot></div>
         </div>
       </div>
       <div class="bottom-wrapper">
         <div class="controls">
-          <paper-icon-button
-            id="prev"
-            icon="icons:chevron-left"
-            disabled="[[disablePrevPage(activeManifestIndex)]]"
-            on-click="prevPage"
-          >
-          </paper-icon-button>
-          <paper-tooltip for="prev" offset="16" position="top">
-            Previous slide
-          </paper-tooltip>
+          <site-menu-button
+            type="prev"
+            label="Previous"
+            position="above"
+          ></site-menu-button>
           <div>[[__pageCounter]] / [[manifest.items.length]]</div>
-          <paper-icon-button
-            id="next"
-            icon="icons:chevron-right"
-            disabled="[[disableNextPage(activeManifestIndex)]]"
-            on-click="nextPage"
-          >
-          </paper-icon-button>
-          <paper-tooltip for="next" offset="16" position="top">
-            Next slide
-          </paper-tooltip>
+          <site-menu-button
+            type="next"
+            label="Next"
+            position="above"
+          ></site-menu-button>
         </div>
-        <div class="title">[[manifest.title]]</div>
+        <site-title></site-title>
       </div>
     `;
   }
@@ -130,15 +147,13 @@ class HAXCMSSlideTheme extends HAXCMSTheme(PolymerElement) {
   }
   connectedCallback() {
     super.connectedCallback();
-    this.__pageCounter = 1 + this.activeManifestIndex;
+    this.__disposer = autorun(() => {
+      this.__pageCounter = 1 + toJS(store.activeManifestIndex);
+    });
   }
-  prevPage(e) {
-    super.prevPage(e);
-    this.__pageCounter--;
-  }
-  nextPage(e) {
-    super.nextPage(e);
-    this.__pageCounter++;
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.__disposer();
   }
 }
 window.customElements.define(HAXCMSSlideTheme.tag, HAXCMSSlideTheme);

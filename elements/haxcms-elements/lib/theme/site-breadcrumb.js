@@ -79,34 +79,14 @@ class SiteBreadcrumb extends PolymerElement {
     `;
   }
   /**
-   * Mix in an opened status
+   * Notice the change and build
    */
-  static get properties() {
-    return {
-      manifest: {
-        type: Object,
-        observer: "_manifestChanged"
-      },
-      activeItemId: {
-        type: String,
-        observer: "_activeItemIdChanged"
-      }
-    };
-  }
-  _manifestChanged(newValue, oldValue) {
-    if (newValue && oldValue) {
-      this._activeItemIdChanged(this.activeItemId);
-    }
-  }
-  _activeItemIdChanged(newValue, oldValue) {
-    if (newValue) {
+  _activeItemChanged(active) {
+    const activeItem = active;
+    if (activeItem) {
       // wipe out the slot and rebuild it
       while (this.$.space.firstChild !== null) {
         this.$.space.removeChild(this.$.space.firstChild);
-      }
-      var activeItem = this.manifest.items.find(i => i.id == newValue);
-      if (!activeItem) {
-        return false;
       }
       var items = [
         {
@@ -114,14 +94,15 @@ class SiteBreadcrumb extends PolymerElement {
           location: null
         }
       ];
+      let itemBuilder = activeItem;
       // walk back through parent tree
-      while (activeItem.parent != null) {
-        activeItem = this.manifest.items.find(i => i.id == activeItem.parent);
+      while (itemBuilder && itemBuilder.parent != null) {
+        itemBuilder = this.manifest.items.find(i => i.id == itemBuilder.parent);
         // double check structure is sound
-        if (activeItem) {
+        if (itemBuilder) {
           items.unshift({
-            title: activeItem.title,
-            location: activeItem.location
+            title: itemBuilder.title,
+            location: itemBuilder.location
           });
         }
       }
@@ -153,7 +134,7 @@ class SiteBreadcrumb extends PolymerElement {
       this.manifest = toJS(store.routerManifest);
     });
     this.__disposer2 = autorun(() => {
-      this.activeItemId = toJS(store.activeItem);
+      this._activeItemChanged(toJS(store.activeItem));
     });
   }
   disconnectedCallback() {

@@ -59,8 +59,7 @@ export const HAXCMSTheme = function(SuperClass) {
          * a manifest json file decoded, in JSON Outline Schema format
          */
         manifest: {
-          type: Object,
-          observer: "_manifestChanged"
+          type: Object
         },
         /**
          * DOM node that wraps the slot
@@ -75,16 +74,15 @@ export const HAXCMSTheme = function(SuperClass) {
          */
         activeManifestIndex: {
           type: Number,
-          value: -1,
           notify: true
         },
         /**
-         * acitvely selected item
+         * acitve item id
          */
-        selected: {
+        activeId: {
           type: String,
           notify: true,
-          observer: "_selectedPageChanged"
+          observer: "_activeIdChanged"
         },
         /**
          * location as object
@@ -98,25 +96,12 @@ export const HAXCMSTheme = function(SuperClass) {
     /**
      * Selected page has changed.
      */
-    _selectedPageChanged(newValue, oldValue) {
-      if (typeof newValue !== typeof undefined) {
-        if (typeof this.manifest !== typeof undefined) {
-          const item = this.manifest.items
-            .filter((d, i) => {
-              if (newValue === d.id) {
-                this.activeManifestIndex = i;
-                return d;
-              }
-            })
-            .pop();
-          this.set("activeItem", item);
-          window.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: "smooth"
-          });
-        }
-      }
+    _activeIdChanged(newValue) {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth"
+      });
     }
     /**
      * private: Notice content container has changed
@@ -148,17 +133,7 @@ export const HAXCMSTheme = function(SuperClass) {
           i => typeof i.id !== "undefined"
         );
         if (firstItem) {
-          // just update the local selected item locally. set a 500 mil second delay
-          // so that the map menu has time to rebuild.  This is a hack because of
-          // map menu.
-          setTimeout(() => {
-            this.selected = firstItem;
-          }, 200);
-          window.dispatchEvent(
-            new CustomEvent("json-outline-schema-active-item-changed", {
-              detail: firstItem
-            })
-          );
+          store.activeId = firstItem.id;
         }
       }
     }
@@ -176,20 +151,47 @@ export const HAXCMSTheme = function(SuperClass) {
       // store disposer so we can clean up later
       this.__disposer = autorun(() => {
         this.manifest = toJS(store.routerManifest);
+        if (typeof this.manifest.title !== typeof undefined) {
+          document.title = this.manifest.title;
+        }
+        if (
+          typeof this.manifest.metadata !== typeof undefined &&
+          typeof this.manifest.metadata.cssVariable !== typeof undefined
+        ) {
+          // json outline schema changed, allow other things to react
+          // fake way of forcing an update of these items
+          let ary = this.manifest.metadata.cssVariable
+            .replace("--simple-colors-default-theme-", "")
+            .split("-");
+          ary.pop();
+          this.accentColor = ary.join("-");
+          // set this directly instead of messing w/ accentColor
+          document.body.style.setProperty(
+            "--haxcms-color",
+            this.manifest.metadata.hexCode
+          );
+        }
       });
       this.__disposer2 = autorun(() => {
         this._location = store.location;
       });
       this.__disposer3 = autorun(() => {
-        if (store.activeItem && typeof store.activeItem !== "undefined") {
-          if (!this.selected) {
-            setTimeout(() => {
-              this.selected = store.activeItem;
-            }, 250);
-          } else {
-            this.selected = store.activeItem;
-          }
-        }
+        this.activeItem = toJS(store.activeItem);
+      });
+      this.__disposer4 = autorun(() => {
+        this.activeId = toJS(store.activeId);
+      });
+      this.__disposer5 = autorun(() => {
+        this.activeManifestIndex = toJS(store.activeManifestIndex);
+      });
+      this.__disposer6 = autorun(() => {
+        this.pageTitle = toJS(store.pageTitle);
+      });
+      this.__disposer7 = autorun(() => {
+        this.siteTitle = toJS(store.siteTitle);
+      });
+      this.__disposer8 = autorun(() => {
+        this.homeLink = toJS(store.homeLink);
       });
     }
     /**
@@ -203,27 +205,11 @@ export const HAXCMSTheme = function(SuperClass) {
       this.__disposer();
       this.__disposer2();
       this.__disposer3();
-    }
-    /**
-     * Return the active item given a uuid and runs event
-     * @param {String} activeId
-     */
-    setActiveItemFromID(activeId) {
-      let item = this.manifest.items
-        .filter((d, i) => {
-          if (activeId === d.id) {
-            return d;
-          }
-        })
-        .pop();
-      this.dispatchEvent(
-        new CustomEvent("haxcms-active-item-changed", {
-          bubbles: true,
-          cancelable: true,
-          detail: item
-        })
-      );
-      return item;
+      this.__disposer4();
+      this.__disposer5();
+      this.__disposer6();
+      this.__disposer7();
+      this.__disposer8();
     }
     /**
      * Correctly reset state and dispatch event to notify of active item change
@@ -239,73 +225,6 @@ export const HAXCMSTheme = function(SuperClass) {
         })
       );
     }
-    /**
-     * disablePrevPage
-     */
-    disablePrevPage(index) {
-      if (index === 0 || index === -1) {
-        return true;
-      }
-      return false;
-    }
-    /**
-     * disableNextPage
-     */
-    disableNextPage(index) {
-      if (index >= this.manifest.items.length - 1) {
-        return true;
-      }
-      return false;
-    }
-    /**
-     * Go back a page (if we can)
-     */
-    prevPage(e) {
-      this.changePage("previous");
-    }
-    /**
-     * Advance a page (if we can)
-     */
-    nextPage(e) {
-      this.changePage("next");
-    }
-    /**
-     * Go forward a page
-     */
-    changePage(direction) {
-      if (
-        direction == "next" &&
-        this.activeManifestIndex < this.manifest.items.length - 1
-      ) {
-        window.history.pushState(
-          {},
-          null,
-          this.manifest.items[this.activeManifestIndex + 1].location
-        );
-        window.dispatchEvent(new PopStateEvent("popstate"));
-        this.dispatchEvent(
-          new CustomEvent("haxcms-active-item-changed", {
-            bubbles: true,
-            cancelable: true,
-            detail: this.manifest.items[this.activeManifestIndex + 1]
-          })
-        );
-      } else if (direction == "previous" && this.activeManifestIndex > 0) {
-        window.history.pushState(
-          {},
-          null,
-          this.manifest.items[this.activeManifestIndex - 1].location
-        );
-        window.dispatchEvent(new PopStateEvent("popstate"));
-        this.dispatchEvent(
-          new CustomEvent("haxcms-active-item-changed", {
-            bubbles: true,
-            cancelable: true,
-            detail: this.manifest.items[this.activeManifestIndex - 1]
-          })
-        );
-      }
-    }
   };
 };
 
@@ -320,10 +239,6 @@ class HAXCMSThemeWiring {
       document.body.addEventListener(
         "haxcms-edit-mode-changed",
         this._globalEditChanged.bind(element)
-      );
-      document.body.addEventListener(
-        "json-outline-schema-changed",
-        this._manifestUpdate.bind(element)
       );
       document.body.addEventListener(
         "haxcms-active-item-changed",
@@ -357,10 +272,6 @@ class HAXCMSThemeWiring {
       this._activeItemUpdate.bind(element)
     );
     document.body.removeEventListener(
-      "json-outline-schema-changed",
-      this._manifestUpdate.bind(element)
-    );
-    document.body.removeEventListener(
       "haxcms-edit-mode-changed",
       this._globalEditChanged.bind(element)
     );
@@ -381,27 +292,22 @@ class HAXCMSThemeWiring {
   _activeItemUpdate(e) {
     let newValue = e.detail;
     if (newValue && typeof newValue.id !== typeof undefined) {
+      // dispatch to the store
+      store.activeId = newValue.id;
+      // dispatch to everything else caring
       const evt = new CustomEvent("json-outline-schema-active-item-changed", {
         bubbles: true,
         cancelable: true,
         detail: newValue
       });
       this.dispatchEvent(evt);
-      const item = this.manifest.items
-        .filter((d, i) => {
-          if (newValue.id === d.id) {
-            this.activeManifestIndex = i;
-            return d;
-          }
-        })
-        .pop();
+      // update title as a simple nicity
       if (typeof newValue.title !== typeof undefined) {
         document.title = this.manifest.title + " - " + newValue.title;
       } else {
         document.title = this.manifest.title;
       }
     } else {
-      this.activeManifestIndex = -1;
       document.title = this.manifest.title;
     }
   }
@@ -416,32 +322,6 @@ class HAXCMSThemeWiring {
         detail: {}
       })
     );
-  }
-  _manifestChanged(newValue) {
-    this._manifestUpdate({ detail: newValue });
-  }
-  _manifestUpdate(e) {
-    let newValue = e.detail;
-    if (typeof newValue.title !== typeof undefined) {
-      document.title = newValue.title;
-    }
-    if (
-      typeof newValue.metadata !== typeof undefined &&
-      typeof newValue.metadata.cssVariable !== typeof undefined
-    ) {
-      // json outline schema changed, allow other things to react
-      // fake way of forcing an update of these items
-      let ary = newValue.metadata.cssVariable
-        .replace("--simple-colors-default-theme-", "")
-        .split("-");
-      ary.pop();
-      this.accentColor = ary.join("-");
-      // set this directly instead of messing w/ accentColor
-      document.body.style.setProperty(
-        "--haxcms-color",
-        newValue.metadata.hexCode
-      );
-    }
   }
 }
 

@@ -213,6 +213,7 @@ Polymer({
    */
   _computeHasImage: function(activeItem) {
     if (
+      activeItem &&
       typeof activeItem.metadata !== typeof undefined &&
       typeof activeItem.metadata.image !== typeof undefined
     ) {

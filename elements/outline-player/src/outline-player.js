@@ -9,7 +9,8 @@ import "@polymer/app-layout/app-drawer-layout/app-drawer-layout.js";
 import "@polymer/app-layout/app-header-layout/app-header-layout.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";
-import "@lrnwebcomponents/map-menu/map-menu.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/site-menu.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/site-menu-button.js";
 import { HAXCMSThemeWiring } from "@lrnwebcomponents/haxcms-elements/lib/HAXCMSThemeWiring.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
@@ -103,7 +104,7 @@ let OutlinePlayer = Polymer({
         position: sticky;
       }
 
-      #menu {
+      site-menu {
         padding: 8px;
       }
 
@@ -197,25 +198,39 @@ let OutlinePlayer = Polymer({
       #contentcontainer h-a-x {
         margin: 0;
       }
-      map-menu {
-        height: calc(100vh - 80px);
-        --map-menu-container: {
+      site-menu {
+        height: calc(100vh - 64px);
+        color: #000000;
+        padding: 0;
+        background-color: #ffffff;
+        --site-menu-active-color: rgba(0, 0, 0, 0.1);
+        --site-menu-scrolltrack-bg-color: rgba(0, 0, 0, 0.3);
+        --site-menu-bg-shadow: rgba(0, 0, 0, 0.3);
+        --site-menu-bg-color: #fafafa;
+        --site-menu: {
           padding: 0;
+          background-color: #ffffff;
+          color: #000000;
+        }
+        --site-menu-container: {
+          padding: 0;
+          background-color: #ffffff;
+          color: #000000;
+        }
+        --site-menu-item-active-item: {
+          color: #000000;
         }
       }
-      map-menu::-webkit-scrollbar-track {
-        -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
-        border-radius: 0;
-        background-color: #fafafa;
-      }
-      map-menu::-webkit-scrollbar {
-        width: 4px;
-        background-color: #fafafa;
-      }
-      map-menu::-webkit-scrollbar-thumb {
-        border-radius: 2px;
-        -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
-        background-color: #444444;
+      site-menu-button {
+        --site-menu-button-button: {
+          border-radius: 50%;
+          background-color: rgba(0, 0, 0, 0.1);
+          height: 40px;
+          width: 40px;
+        }
+        --site-menu-button-button-hover: {
+          background-color: rgba(0, 0, 0, 0.2);
+        }
       }
     </style>
     <!-- Control the sites query paremeters -->
@@ -226,13 +241,7 @@ let OutlinePlayer = Polymer({
         <template is="dom-if" if="[[__hasTitle(manifest.title)]]">
           <h2 class="outline-title">[[manifest.title]]</h2>
         </template>
-        <map-menu
-          id="menu"
-          selected="[[selected]]"
-          manifest="[[_routerManifest]]"
-          active-indicator
-          auto-scroll
-        ></map-menu>
+        <site-menu></site-menu>
       </app-drawer>
       <app-header-layout>
         <app-header slot="header" reveals>
@@ -245,24 +254,18 @@ let OutlinePlayer = Polymer({
               [[activeItem.title]]
               <div id="slotTitle"><slot name="title"></slot></div>
             </div>
-            <paper-icon-button
-              id="prevpage"
-              disabled="[[disablePrevPage(activeManifestIndex)]]"
-              icon="icons:arrow-back"
-              on-click="prevPage"
-            ></paper-icon-button>
-            <paper-tooltip for="prevpage" position="bottom" offset="14">
-              Previous
-            </paper-tooltip>
-            <paper-icon-button
-              id="nextpage"
-              disabled="[[disableNextPage(activeManifestIndex)]]"
-              icon="icons:arrow-forward"
-              on-click="nextPage"
-            ></paper-icon-button>
-            <paper-tooltip for="nextpage" position="bottom" offset="14">
-              Next
-            </paper-tooltip>
+            <site-menu-button
+              type="prev"
+              position="bottom"
+              label="Prev"
+              raised
+            ></site-menu-button>
+            <site-menu-button
+              type="next"
+              position="bottom"
+              label="Next"
+              raised
+            ></site-menu-button>
           </app-toolbar>
         </app-header>
         <div id="content">
@@ -303,12 +306,6 @@ let OutlinePlayer = Polymer({
       type: Object
     },
     /**
-     * active manifest index, key to location in the manifest itemsarray
-     */
-    activeManifestIndex: {
-      type: Number
-    },
-    /**
      * Auto call json files
      */
     auto: {
@@ -330,14 +327,6 @@ let OutlinePlayer = Polymer({
     outlineLocation: {
       type: String,
       notify: true
-    },
-    /**
-     * acitvely selected item
-     */
-    selected: {
-      type: String,
-      notify: true,
-      observer: "_selectedPageChanged"
     },
     /**
      * Closed status for the drawer
@@ -372,70 +361,9 @@ let OutlinePlayer = Polymer({
       value: false,
       reflectToAttribute: true
     },
-    /**
-     * Manifest that contains changes specific
-     * to routing.
-     */
-    _routerManifest: {
-      type: Object,
-      value: {}
-    },
     _location: {
       type: Object,
       observer: "_locationChanged"
-    }
-  },
-  /**
-   * disablePrevPage
-   */
-  disablePrevPage: function(index) {
-    if (index === 0) {
-      return true;
-    }
-    return false;
-  },
-  /**
-   * disableNextPage
-   */
-  disableNextPage: function(index) {
-    if (index === this.manifest.items.length - 1) {
-      return true;
-    }
-    return false;
-  },
-  /**
-   * Go back a page (if we can)
-   */
-  prevPage: function(e) {
-    this.changePage("previous");
-  },
-  /**
-   * Advance a page (if we can)
-   */
-  nextPage: function(e) {
-    this.changePage("next");
-  },
-  /**
-   * Go forward a page
-   */
-  changePage: function(direction) {
-    if (
-      direction == "next" &&
-      this.activeManifestIndex < this.manifest.items.length - 1
-    ) {
-      window.history.pushState(
-        {},
-        null,
-        this._routerManifest.items[this.activeManifestIndex + 1].location
-      );
-      window.dispatchEvent(new PopStateEvent("popstate"));
-    } else if (direction == "previous" && this.activeManifestIndex > 0) {
-      window.history.pushState(
-        {},
-        null,
-        this._routerManifest.items[this.activeManifestIndex - 1].location
-      );
-      window.dispatchEvent(new PopStateEvent("popstate"));
     }
   },
   /**
@@ -469,17 +397,13 @@ let OutlinePlayer = Polymer({
    */
   attached: function() {
     this.__disposer = autorun(() => {
-      this._routerManifest = toJS(store.routerManifest);
       this._location = store.location;
-      if (store.activeItem && typeof store.activeItem !== "undefined") {
-        if (!this.selected) {
-          setTimeout(() => {
-            this.selected = store.activeItem;
-          }, 250);
-        } else {
-          this.selected = store.activeItem;
-        }
-      }
+    });
+    this.__disposer2 = autorun(() => {
+      this._activeIdChanged(toJS(store.activeId));
+    });
+    this.__disposer3 = autorun(() => {
+      this.activeItem = toJS(store.activeItem);
     });
   },
   /**
@@ -487,7 +411,8 @@ let OutlinePlayer = Polymer({
    */
   detached: function() {
     this.HAXCMSThemeWiring.disconnect(this);
-    this.__disposer();
+    this.__disposer2();
+    this.__disposer3();
   },
 
   _locationChanged: function(newValue) {
@@ -501,17 +426,7 @@ let OutlinePlayer = Polymer({
         i => typeof i.id !== "undefined"
       );
       if (firstItem) {
-        // just update the local selected item locally. set a 500 mil second delay
-        // so that the map menu has time to rebuild.  This is a hack because of
-        // map menu.
-        setTimeout(() => {
-          this.selected = firstItem.id;
-        }, 250);
-        window.dispatchEvent(
-          new CustomEvent("json-outline-schema-active-item-changed", {
-            detail: firstItem
-          })
-        );
+        store.activeId = firstItem.id;
       }
     }
   },
@@ -569,27 +484,14 @@ let OutlinePlayer = Polymer({
   },
 
   /**
-   * Selected page has changed.
+   * active id has changed.
    */
-  _selectedPageChanged: function(newValue, oldValue) {
-    if (typeof newValue !== typeof undefined) {
-      if (typeof this.manifest !== typeof undefined) {
-        const item = this.manifest.items
-          .filter((d, i) => {
-            if (newValue === d.id) {
-              this.activeManifestIndex = i;
-              return d;
-            }
-          })
-          .pop();
-        this.set("activeItem", item);
-        window.scrollTo({
-          top: 0,
-          left: 0,
-          behavior: "smooth"
-        });
-      }
-    }
+  _activeIdChanged: function(newValue) {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
   },
 
   /**

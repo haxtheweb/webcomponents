@@ -7,20 +7,20 @@ import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-icons/communication-icons.js";
 /**
- * `site-rss`
+ * `site-rss-button`
  * `A button that references RSS feeds in a standards based way`
  *
  * @customElement
  * @polymer
  * @demo demo/index.html
  */
-class SiteRSS extends PolymerElement {
+class SiteRSSButton extends PolymerElement {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
-    return "site-rss";
+    return "site-rss-button";
   }
   // render function
   static get template() {
@@ -32,6 +32,7 @@ class SiteRSS extends PolymerElement {
           color: var(--site-rss-color, #383f45);
         }
         paper-button {
+          text-transform: unset;
           color: white;
           background-color: var(--site-rss-bg-color, #383f45);
           font-size: var(--site-rss-font-size, 13px);
@@ -43,7 +44,12 @@ class SiteRSS extends PolymerElement {
           background-color: var(--site-rss-bg-active, #2d3237);
         }
       </style>
-      <a tabindex="-1" href$="[[href]]">
+      <a
+        tabindex="-1"
+        href$="[[href]]"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <paper-button raised>
           <iron-icon icon="[[icon]]"></iron-icon> [[label]]
         </paper-button>
@@ -91,5 +97,5 @@ class SiteRSS extends PolymerElement {
     }
   }
 }
-window.customElements.define(SiteRSS.tag, SiteRSS);
-export { SiteRSS };
+window.customElements.define(SiteRSSButton.tag, SiteRSSButton);
+export { SiteRSSButton };

@@ -10,6 +10,14 @@ import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-list/iron-list.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/site-active-title.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/site-title.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/site-breadcrumb.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/site-rss-button.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/site-menu.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/site-menu-button.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";
+import { autorun, toJS } from "mobx";
 import { HAXCMSTheme } from "./HAXCMSThemeWiring.js";
 /**
  * `haxcms-dev-theme`
@@ -70,22 +78,20 @@ class HAXCMSDevTheme extends HAXCMSTheme(PolymerElement) {
           display: inline-block;
           vertical-align: text-top;
         }
+        .buttons {
+          display: flex;
+        }
       </style>
       <h1 style="margin:0;">HAXCMS DEVELOPMENT THEME</h1>
-      <div>
-        <paper-button
-          disabled="[[disablePrevPage(activeManifestIndex)]]"
-          on-click="prevPage"
-          >Previous
-        </paper-button>
-        <paper-button
-          disabled="[[disableNextPage(activeManifestIndex)]]"
-          on-click="nextPage"
-          >Next
-        </paper-button>
+      <site-title></site-title>
+      <div class="buttons">
+        <site-menu-button type="prev"></site-menu-button>
+        <site-menu-button type="next"></site-menu-button>
         <paper-button id="unset" on-tap="resetActive"
           >Unset activeItem</paper-button
         >
+        <site-rss-button type="atom"></site-rss-button>
+        <site-rss-button type="rss"></site-rss-button>
       </div>
       <div class="manifest">
         <h2>title: [[manifest.title]]</h2>
@@ -103,8 +109,9 @@ class HAXCMSDevTheme extends HAXCMSTheme(PolymerElement) {
         </div>
       </div>
       <div class="activeitem">
+        <site-breadcrumb></site-breadcrumb>
         <h2>ACTIVE ITEM</h2>
-        <div>[[activeItem.title]]</div>
+        <site-active-title></site-active-title>
         <div id="contentcontainer">
           <div id="slot"><slot></slot></div>
         </div>
@@ -126,7 +133,7 @@ class HAXCMSDevTheme extends HAXCMSTheme(PolymerElement) {
               <div class="card-actions">
                 <a tabindex="-1" href$="[[item.location]]"
                   ><paper-button data-id$="[[item.id]]"
-                    >Click to set activeItem</paper-button
+                    >Set as active</paper-button
                   ></a
                 >
               </div>
@@ -134,6 +141,7 @@ class HAXCMSDevTheme extends HAXCMSTheme(PolymerElement) {
           </div>
         </template>
       </iron-list>
+      <site-menu></site-menu>
     `;
   }
   /**
@@ -151,7 +159,6 @@ class HAXCMSDevTheme extends HAXCMSTheme(PolymerElement) {
     ) {
       // console log these so you can debug easily as you build out
       console.log(this.manifest);
-      console.log(this.setActiveItemFromID(activeId));
     }
   }
 }

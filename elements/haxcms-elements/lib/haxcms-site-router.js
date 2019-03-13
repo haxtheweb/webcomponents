@@ -56,11 +56,11 @@ Polymer({
    * Detached life cycle
    */
   detached: function() {
+    this.__disposer();
     window.removeEventListener(
       "vaadin-router-location-changed",
       this._routerLocationChanged.bind(this)
     );
-    this.__disposer();
   },
 
   /**
@@ -92,7 +92,7 @@ Polymer({
    * @param {event} e
    */
   _routerLocationChanged: function(e) {
-    //store local state
+    // store local state
     store.location = e.detail.location;
   }
 });

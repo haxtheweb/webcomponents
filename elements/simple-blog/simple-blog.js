@@ -89,7 +89,7 @@ let SimpleBlog = Polymer({
     </style>
     <iron-pages selected="[[selectedPage]]">
       <section>
-        <simple-blog-header manifest="[[manifest]]"></simple-blog-header>
+        <simple-blog-header></simple-blog-header>
         <simple-blog-listing
           id="listing"
           items="[[manifest.items]]"
@@ -179,9 +179,12 @@ let SimpleBlog = Polymer({
       this.manifest = toJS(store.routerManifest);
     });
     this.__disposer2 = autorun(() => {
-      this.activeItemId = toJS(store.activeItem);
+      this.activeItem = toJS(store.activeItem);
     });
     this.__disposer3 = autorun(() => {
+      this.activeId = toJS(store.activeId);
+    });
+    this.__disposer4 = autorun(() => {
       this._locationChanged(store.location);
     });
   },
@@ -193,6 +196,7 @@ let SimpleBlog = Polymer({
     this.__disposer();
     this.__disposer2();
     this.__disposer3();
+    this.__disposer4();
   },
   /**
    * Listen for router location changes

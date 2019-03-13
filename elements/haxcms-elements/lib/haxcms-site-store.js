@@ -2,12 +2,14 @@ import { observable, decorate, computed, autorun, action, toJS } from "mobx";
 
 class Store {
   constructor() {
-    this.manifest = null;
-    this.editMode = false;
-    this.activeItem = null;
     this.location = null;
+    this.editMode = false;
+    this.manifest = null;
+    this.activeId = null;
   }
-
+  /**
+   * The manifest but with routing mixed in
+   */
   get routerManifest() {
     const manifest = this.manifest;
     document.body.dispatchEvent(
@@ -56,24 +58,69 @@ class Store {
       });
     }
   }
-
   /**
-   * Change the active item
+   * Return the site title
    */
-  set activeItem(id) {
-    if (!this.editMode) {
-      let item = this.manifest.items.filter(item => {
-        if (item.id !== id) {
-          return false;
-        }
-        return true;
-      });
-      if (item) {
-        this.activeItem = item;
-      }
+  get siteTitle() {
+    const manifest = this.manifest;
+    if (manifest.title) {
+      return manifest.title;
+    }
+    return "";
+  }
+  /**
+   * Figure out the home page, lazily the 1st thing in the manifest
+   */
+  get homeLink() {
+    // if we are on the homepage then load the first item in the manifest and set it active
+    const firstItem = this.manifest.items.find(
+      i => typeof i.id !== "undefined"
+    );
+    if (firstItem) {
+      return firstItem.location
+        .replace("pages/", "")
+        .replace("/index.html", "");
+    } else {
+      return "/";
     }
   }
-
+  /**
+   * Get the active Item based on activeId
+   */
+  get activeItem() {
+    let item = this.findItem(this.activeId);
+    // ensure we found something, return null for consistency in data
+    if (item) {
+      return item;
+    }
+    return null;
+  }
+  /**
+   * Get the active manifest index array position
+   * -1 if not found
+   */
+  get activeManifestIndex() {
+    if (this.manifest && this.manifest.items && this.activeId) {
+      for (var index in this.manifest.items) {
+        if (this.manifest.items[index].id === this.activeId) {
+          return parseInt(index);
+        }
+      }
+    }
+    return -1;
+  }
+  /**
+   * shortcut for active page title
+   */
+  get pageTitle() {
+    if (this.activeItem) {
+      return this.activeItem.title;
+    }
+    return "";
+  }
+  /**
+   * shortcut to find an item in the manifest based on id
+   */
   findItem(id) {
     if (this.manifest && id) {
       return this.manifest.items.find(item => {
@@ -89,11 +136,16 @@ class Store {
 }
 
 decorate(Store, {
-  manifest: observable,
-  editMode: observable,
-  activeItem: observable,
-  location: observable.ref,
-  routerManifest: computed,
+  location: observable.ref, // router location in url
+  editMode: observable, // global editing state
+  manifest: observable, // JOS / manifest
+  routerManifest: computed, // router mixed in manifest w/ routes / paths
+  siteTitle: computed,
+  homeLink: computed,
+  activeId: observable, // this affects all state changes associated to activeItem
+  activeItem: computed, // active item object
+  activeManifestIndex: computed, // active array index, used for pagination
+  pageTitle: computed, // active page title
   changeActiveItem: action.bound
 });
 
@@ -106,24 +158,22 @@ export const store = new Store();
  * When location changes update activeItem
  */
 autorun(() => {
-  if (store.location) {
-    if (store.location.route) {
-      if (store.location.route.component) {
-        // get the id from the router
-        const id = store.location.route.name;
-        // make sure that we aren't in edit mode
-        if (!store.editMode) {
-          let found = store.manifest.items.filter(item => {
-            if (item.id !== id) {
-              return false;
-            }
-            return true;
-          });
-          if (found) {
-            store.activeItem = id;
-          }
-        }
+  if (
+    store.location &&
+    store.location.route &&
+    store.location.route.component
+  ) {
+    // get the id from the router
+    const id = store.location.route.name;
+    // make sure that we aren't in edit mode
+    let found = store.manifest.items.filter(item => {
+      if (item.id !== id) {
+        return false;
       }
+      return true;
+    });
+    if (found) {
+      store.activeId = id;
     }
   }
 });
@@ -133,16 +183,13 @@ autorun(() => {
  * change the page.
  */
 autorun(() => {
-  const activeItem = store.activeItem;
-  if (activeItem) {
-    const foundItem = toJS(store.findItem(activeItem));
-    if (foundItem) {
-      document.body.dispatchEvent(
-        new CustomEvent("json-outline-schema-active-item-changed", {
-          bubbles: true,
-          detail: foundItem
-        })
-      );
-    }
+  const foundItem = toJS(store.findItem(store.activeId));
+  if (foundItem) {
+    document.body.dispatchEvent(
+      new CustomEvent("json-outline-schema-active-item-changed", {
+        bubbles: true,
+        detail: foundItem
+      })
+    );
   }
 });
