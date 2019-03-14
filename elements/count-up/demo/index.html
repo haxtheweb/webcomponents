@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>CountUp: count-up Demo</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '../count-up.js';
+    </script>
+  </head>
+  <body>
+    <custom-style>
+    <style>
+      .vertical-section-container {
+        background-color: #000033;
+        justify-content: space-evenly;
+        display: flex;
+      }
+      count-up {
+        border: 2px pink solid;
+        text-align: center;
+        width: 200px;
+        font-size: 20px;
+        color: white;
+        --count-up-number: {
+          font-weight: 500;
+          font-size: 72px;
+        };
+      }
+      #one {
+        --count-up-color: red;
+      }
+      #two {
+        --count-up-color: blue;
+      }
+      #three {
+        --count-up-color: yellow;
+      }
+    </style>
+    </custom-style>
+      <h3>Basic count-up demo</h3>
+    <div class="vertical-section-container centered">
+      <count-up id="one" end="100" suffixtext="%">
+        <div slot="suffix">Free</div>
+      </count-up>
+      <count-up id="two" end="64" duration="5" suffixtext="k">
+        <div slot="suffix">Total Sites</div>
+      </count-up>
+      <count-up id="three" end="162" duration="15" suffixtext="k" noeasing>
+        <div slot="suffix">Total Users</div>
+      </count-up>
+    </div>
+    <div class="vertical-section-container centered">
+      <count-up id="one" end="100" suffixtext="%">
+        <div slot="suffix">Free</div>
+      </count-up>
+      <count-up id="two" end="64" duration="5" suffixtext="k">
+        <div slot="suffix">Total Sites</div>
+      </count-up>
+      <count-up id="three" end="162" duration="15" suffixtext="k" noeasing>
+        <div slot="suffix">Total Users</div>
+      </count-up>
+    </div>
+    <div class="vertical-section-container centered">
+      <count-up id="one" end="100" suffixtext="%">
+        <div slot="suffix">Free</div>
+      </count-up>
+      <count-up id="two" end="64" duration="5" suffixtext="k">
+        <div slot="suffix">Total Sites</div>
+      </count-up>
+      <count-up id="three" end="162" duration="15" suffixtext="k" noeasing>
+        <div slot="suffix">Total Users</div>
+      </count-up>
+    </div>
+    <div class="vertical-section-container centered">
+      <count-up id="one" end="100" suffixtext="%">
+        <div slot="suffix">Free</div>
+      </count-up>
+      <count-up id="two" end="64" duration="5" suffixtext="k">
+        <div slot="suffix">Total Sites</div>
+      </count-up>
+      <count-up id="three" end="162" duration="15" suffixtext="k" noeasing>
+        <div slot="suffix">Total Users</div>
+      </count-up>
+    </div>
+    <div class="vertical-section-container centered">
+      <count-up id="one" end="100" suffixtext="%">
+        <div slot="suffix">Free</div>
+      </count-up>
+      <count-up id="two" end="64" duration="5" suffixtext="k">
+        <div slot="suffix">Total Sites</div>
+      </count-up>
+      <count-up id="three" end="162" duration="15" suffixtext="k" noeasing>
+        <div slot="suffix">Total Users</div>
+      </count-up>
+    </div>
+    <div class="vertical-section-container centered">
+      <count-up id="one" end="100" suffixtext="%">
+        <div slot="suffix">Free</div>
+      </count-up>
+      <count-up id="two" end="64" duration="5" suffixtext="k">
+        <div slot="suffix">Total Sites</div>
+      </count-up>
+      <count-up id="three" end="162" duration="15" suffixtext="k" noeasing>
+        <div slot="suffix">Total Users</div>
+      </count-up>
+    </div>
+    <div class="vertical-section-container centered">
+      <count-up id="one" end="100" suffixtext="%">
+        <div slot="suffix">Free</div>
+      </count-up>
+      <count-up id="two" end="64" duration="5" suffixtext="k">
+        <div slot="suffix">Total Sites</div>
+      </count-up>
+      <count-up id="three" end="162" duration="15" suffixtext="k" noeasing>
+        <div slot="suffix">Total Users</div>
+      </count-up>
+    </div>
+    <div class="vertical-section-container centered">
+      <count-up id="one" end="100" suffixtext="%">
+        <div slot="suffix">Free</div>
+      </count-up>
+      <count-up id="two" end="64" duration="5" suffixtext="k">
+        <div slot="suffix">Total Sites</div>
+      </count-up>
+      <count-up id="three" end="162" duration="15" suffixtext="k" noeasing>
+        <div slot="suffix">Total Users</div>
+      </count-up>
+    </div>
+    <div class="vertical-section-container centered">
+      <count-up id="one" end="100" suffixtext="%">
+        <div slot="suffix">Free</div>
+      </count-up>
+      <count-up id="two" end="64" duration="5" suffixtext="k">
+        <div slot="suffix">Total Sites</div>
+      </count-up>
+      <count-up id="three" end="162" duration="15" suffixtext="k" noeasing>
+        <div slot="suffix">Total Users</div>
+      </count-up>
+    </div>
+    <div class="vertical-section-container centered">
+      <count-up id="one" end="100" suffixtext="%">
+        <div slot="suffix">Free</div>
+      </count-up>
+      <count-up id="two" end="64" duration="5" suffixtext="k">
+        <div slot="suffix">Total Sites</div>
+      </count-up>
+      <count-up id="three" end="162" duration="15" suffixtext="k" noeasing>
+        <div slot="suffix">Total Users</div>
+      </count-up>
+    </div>
+    <div class="vertical-section-container centered">
+      <count-up id="one" end="100" suffixtext="%">
+        <div slot="suffix">Free</div>
+      </count-up>
+      <count-up id="two" end="64" duration="5" suffixtext="k">
+        <div slot="suffix">Total Sites</div>
+      </count-up>
+      <count-up id="three" end="162" duration="15" suffixtext="k" noeasing>
+        <div slot="suffix">Total Users</div>
+      </count-up>
+    </div>
+    <div class="vertical-section-container centered">
+      <count-up id="one" end="100" suffixtext="%">
+        <div slot="suffix">Free</div>
+      </count-up>
+      <count-up id="two" end="64" duration="5" suffixtext="k">
+        <div slot="suffix">Total Sites</div>
+      </count-up>
+      <count-up id="three" end="162" duration="15" suffixtext="k" noeasing>
+        <div slot="suffix">Total Users</div>
+      </count-up>
+    </div>
+  </body>
+</html>
