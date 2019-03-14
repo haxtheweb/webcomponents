@@ -110,6 +110,15 @@ class Store {
     return -1;
   }
   /**
+   * Better for visualizing the counter
+   */
+  get activeManifestIndexCounter() {
+    if (this.activeManifestIndex !== null) {
+      return 1 + this.activeManifestIndex;
+    }
+    return 0;
+  }
+  /**
    * shortcut for active page title
    */
   get pageTitle() {
@@ -145,6 +154,7 @@ decorate(Store, {
   activeId: observable, // this affects all state changes associated to activeItem
   activeItem: computed, // active item object
   activeManifestIndex: computed, // active array index, used for pagination
+  activeManifestIndexCounter: computed, // active array index counter, used for pagination
   pageTitle: computed, // active page title
   changeActiveItem: action.bound
 });

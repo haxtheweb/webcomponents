@@ -29,13 +29,10 @@ let HAXCMSSiteBuilder = Polymer({
         display: block;
       }
       :host #slot {
-        background-color: white;
+        transition: all 0.2s ease-in-out;
+        background-color: var(--haxcms-color, white);
         opacity: 0.2;
-        transition: all 1s linear;
         visibility: hidden;
-      }
-      :host([loading]) #slot {
-        opacity: 0.8;
       }
       :host([theme-loaded]) #slot {
         opacity: 1;
@@ -44,17 +41,21 @@ let HAXCMSSiteBuilder = Polymer({
       paper-progress {
         display: block;
         width: 100%;
-        --paper-progress-active-color: rgba(255, 255, 255, 0.5);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: transparent;
+        z-index: 1000;
+        --paper-progress-active-color: var(
+          --haxcms-color,
+          rgba(255, 255, 255, 0.5)
+        );
         --paper-progress-container-color: transparent;
       }
     </style>
     <haxcms-site-router base-uri="[[baseURI]]"></haxcms-site-router>
-    <paper-progress
-      hidden\$="[[!loading]]"
-      value="100"
-      indeterminate=""
-      bottom-item=""
-    ></paper-progress>
+    <paper-progress hidden\$="[[!loading]]" indeterminate></paper-progress>
     <iron-ajax
       id="manifest"
       url="[[outlineLocation]][[file]][[__timeStamp]]"

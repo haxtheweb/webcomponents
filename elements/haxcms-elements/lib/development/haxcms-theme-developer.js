@@ -6,13 +6,15 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/HAXCMSThemeWiring.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 
-import "@lrnwebcomponents/haxcms-elements/lib/theme/site-active-title.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/site-title.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/site-breadcrumb.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/site-rss-button.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/site-menu.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/site-query.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/site-menu-button.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/active-pieces/site-active-title.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/navigation/site-breadcrumb.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/navigation/site-menu.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/navigation/site-menu-button.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/navigation/site-top-menu.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/query/site-query.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/query/site-render-query.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/site-pieces/site-rss-button.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/site-pieces/site-title.js";
 /**
  * `haxcms-dev-theme`
  * `This is a theme used to make new themes (wwaaaaaaa?)

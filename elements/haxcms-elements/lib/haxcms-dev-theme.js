@@ -4,20 +4,24 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/HAXCMSThemeWiring.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-list/iron-list.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/site-active-title.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/site-title.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/site-breadcrumb.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/site-rss-button.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/site-menu.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/site-query.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/site-menu-button.js";
-import { HAXCMSTheme } from "./HAXCMSThemeWiring.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/active-pieces/site-active-title.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/blocks/block-active-children.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/navigation/site-breadcrumb.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/navigation/site-menu.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/navigation/site-menu-button.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/navigation/site-top-menu.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/query/site-query.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/query/site-render-query.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/query/site-query-menu-slice.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/site-pieces/site-rss-button.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/site-pieces/site-title.js";
 /**
  * `haxcms-dev-theme`
  * `A theme intended as the starting point to fork from and build new themes for HAXCMS
@@ -82,13 +86,76 @@ class HAXCMSDevTheme extends HAXCMSTheme(PolymerElement) {
         .buttons {
           display: flex;
         }
+        site-top-menu {
+          --site-top-menu-bg: #37474f;
+          --site-top-menu-link-color: #ffffff;
+          --site-top-menu-indicator-color: var(--haxcms-color, #ffffff);
+          --site-top-menu-link-active-color: yellow;
+          --site-top-menu-indicator-arrow: 8px;
+        }
+        .spacing paper-button {
+          min-width: unset;
+          text-transform: unset;
+          background-color: var(--haxcms-color, #000000);
+          color: #ffffff;
+          margin: 0;
+          border-radius: 0;
+        }
+        .spacing .indent {
+          display: inline-flex;
+        }
+        .indent-1 {
+          margin: 8px;
+        }
+        .indent-2 {
+          margin: 16px;
+        }
+        .indent-3 {
+          margin: 24px;
+        }
+        .indent-4 {
+          margin: 32px;
+        }
+        .indent-5 {
+          margin: 40px;
+        }
+        .indent-6 {
+          margin: 48px;
+        }
       </style>
-      <h1 style="margin:0;">HAXCMS DEVELOPMENT THEME</h1>
-      <site-query sort='{"order": "ASC"}' grid conditions='{"parent": null}'>
+      <site-top-menu noink indicator="arrow" arrow-size="8">
+        <div slot="suffix" class="spacing">
+          <a
+            rel="noopener noreferrer"
+            target="_blank"
+            tabindex="-1"
+            href="https://github.com/elmsln/HAXcms"
+            data-title="Get it. Got it? Good."
+          >
+            <paper-button noink>Get HAXcms</paper-button>
+          </a>
+        </div>
+      </site-top-menu>
+      <site-query-menu-slice
+        result="{{__items}}"
+        start="1"
+        end="10"
+      ></site-query-menu-slice>
+      <dom-repeat items="[[__items]]">
         <template>
-          <li><a href$="[[item.location]]">[[item.title]]</a></li>
+          <div class="spacing">
+            <div class$="indent indent-[[item.indent]]"></div>
+            <a
+              data-id$="[[item.id]]"
+              class="link"
+              tabindex="-1"
+              href$="[[item.location]]"
+              ><paper-button noink="[[noink]]">[[item.title]]</paper-button></a
+            >
+          </div>
         </template>
-      </site-query>
+      </dom-repeat>
+      <h1 style="margin:0;">HAXCMS DEVELOPMENT THEME</h1>
       <site-title></site-title>
       <div class="buttons">
         <site-menu-button type="prev"></site-menu-button>
@@ -122,7 +189,7 @@ class HAXCMSDevTheme extends HAXCMSTheme(PolymerElement) {
           <div id="slot"><slot></slot></div>
         </div>
       </div>
-      <site-query class="cardlist" grid on-tap="_itemTapped">
+      <site-render-query class="cardlist" grid on-tap="_itemTapped">
         <template>
           <div style="padding:8px;">
             <paper-card
@@ -146,7 +213,7 @@ class HAXCMSDevTheme extends HAXCMSTheme(PolymerElement) {
             </paper-card>
           </div>
         </template>
-      </site-query>
+      </site-render-query>
       <site-menu></site-menu>
     `;
   }

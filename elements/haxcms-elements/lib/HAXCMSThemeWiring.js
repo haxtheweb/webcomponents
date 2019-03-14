@@ -77,6 +77,13 @@ export const HAXCMSTheme = function(SuperClass) {
           notify: true
         },
         /**
+         * active manifest index counter, adds 1 to the index; good for visuals
+         */
+        activeManifestIndexCounter: {
+          type: Number,
+          notify: true
+        },
+        /**
          * acitve item id
          */
         activeId: {
@@ -193,6 +200,11 @@ export const HAXCMSTheme = function(SuperClass) {
       this.__disposer8 = autorun(() => {
         this.homeLink = toJS(store.homeLink);
       });
+      this.__disposer9 = autorun(() => {
+        this.activeManifestIndexCounter = toJS(
+          store.activeManifestIndexCounter
+        );
+      });
     }
     /**
      * Disconnect the wiring for the theme and clean up state
@@ -210,6 +222,7 @@ export const HAXCMSTheme = function(SuperClass) {
       this.__disposer6();
       this.__disposer7();
       this.__disposer8();
+      this.__disposer9();
     }
     /**
      * Correctly reset state and dispatch event to notify of active item change

@@ -3,16 +3,14 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/HAXCMSThemeWiring.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/site-pieces/site-title.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/navigation/site-menu-button.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/site-title.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/site-menu-button.js";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";
-import { autorun, toJS } from "mobx";
-import { HAXCMSTheme } from "./HAXCMSThemeWiring.js";
 /**
  * `haxcms-slide-theme`
  * `A simple slide playing theme`
@@ -64,27 +62,40 @@ class HAXCMSSlideTheme extends HAXCMSTheme(PolymerElement) {
           background-color: rgba(0, 0, 0, 0.8);
           color: white;
           display: flex;
-          height: 40px;
+          height: 60px;
           width: 200px;
+          line-height: 60px;
           justify-content: center;
           vertical-align: middle;
-          line-height: 40px;
+          height: 60px;
           font-size: 16px;
+        }
+        .counter {
+          width: 100px;
+          justify-content: center;
+          vertical-align: middle;
+          display: inline-flex;
         }
         site-menu-button {
           --site-menu-button-link: {
             color: #ffffff;
           }
           --site-menu-button-button: {
-            height: 40px;
-            width: 40px;
+            height: 60px;
+            width: 60px;
             padding: 0;
             margin: 0;
-            line-height: 40px;
+            line-height: 60px;
           }
           --site-menu-button-button-hover: {
-            color: yellow;
+            color: var(--haxcms-color, yellow);
           }
+        }
+        site-menu-button:hover,
+        site-menu-button:focus,
+        site-menu-button:active {
+          outline: 1px dashed var(--haxcms-color, yellow);
+          outline-offset: -1px;
         }
         site-title {
           vertical-align: middle;
@@ -121,39 +132,20 @@ class HAXCMSSlideTheme extends HAXCMSTheme(PolymerElement) {
           <site-menu-button
             type="prev"
             label="Previous"
-            position="above"
+            position="top"
           ></site-menu-button>
-          <div>[[__pageCounter]] / [[manifest.items.length]]</div>
+          <div class="counter">
+            [[activeManifestIndexCounter]] / [[manifest.items.length]]
+          </div>
           <site-menu-button
             type="next"
             label="Next"
-            position="above"
+            position="top"
           ></site-menu-button>
         </div>
         <site-title></site-title>
       </div>
     `;
-  }
-  /**
-   * Mix in an opened status
-   */
-  static get properties() {
-    let props = super.properties;
-    props.__pageCounter = {
-      type: Number,
-      notify: true
-    };
-    return props;
-  }
-  connectedCallback() {
-    super.connectedCallback();
-    this.__disposer = autorun(() => {
-      this.__pageCounter = 1 + toJS(store.activeManifestIndex);
-    });
-  }
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    this.__disposer();
   }
 }
 window.customElements.define(HAXCMSSlideTheme.tag, HAXCMSSlideTheme);

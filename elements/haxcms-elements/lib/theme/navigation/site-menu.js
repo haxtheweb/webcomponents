@@ -3,9 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@lrnwebcomponents/map-menu/map-menu.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import "@lrnwebcomponents/map-menu/map-menu.js";
 /**
  * `site-menu`
  * `Menu hierarchy`

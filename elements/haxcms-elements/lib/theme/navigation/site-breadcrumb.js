@@ -3,10 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/paper-button/paper-button.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/paper-button/paper-button.js";
 /**
  * `site-breadcrumb`
  * `A basic breadcrumb of links based on the active state in HAXcms on JSON Outline Schema`

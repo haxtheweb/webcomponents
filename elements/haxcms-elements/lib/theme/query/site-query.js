@@ -3,40 +3,24 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { MutableData } from "@polymer/polymer/lib/mixins/mutable-data.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";
-import "@polymer/iron-list/iron-list.js";
 import { autorun, toJS } from "mobx";
 /**
  * `site-query`
- * `Query the JSON Outline Schema manifest list of items and render only select ones`
+ * `Query the JSON Outline Schema manifest and return a resulting array`
  *
  * @customElement
  * @polymer
  * @demo demo/index.html
  */
-class SiteQuery extends PolymerElement {
+class SiteQuery extends MutableData(PolymerElement) {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
     return "site-query";
-  }
-  // render function, this is non-visual
-  static get template() {
-    return html`
-      <style>
-        :host {
-          display: block;
-        }
-        iron-list {
-          @apply --site-query-iron-list;
-        }
-      </style>
-      <iron-list items="[[localItems]]" as="item" grid="[[grid]]">
-        <slot></slot>
-      </iron-list>
-    `;
   }
   /**
    * Props
@@ -56,18 +40,24 @@ class SiteQuery extends PolymerElement {
         type: String
       },
       /**
-       * localManifest to help illustrate this only lives here
+       * result to help illustrate this only lives here
        */
-      localItems: {
+      result: {
+        type: Array,
+        notify: true
+      },
+      __result: {
         type: Array,
         computed:
-          "_computeLocalItems(conditions, sort, routerManifest.items, activeId, forceRebuild)"
+          "_computeResult(conditions, sort, routerManifest.items, activeId, forceRebuild)",
+        observer: "_noticeResultChange"
       },
       /**
        * Conditions that can be used to slice the data differently in the manifest
        */
       conditions: {
         type: Object,
+        notify: true,
         value: {}
       },
       /**
@@ -75,6 +65,7 @@ class SiteQuery extends PolymerElement {
        */
       sort: {
         type: Object,
+        notify: true,
         value: {}
       },
       /**
@@ -82,13 +73,7 @@ class SiteQuery extends PolymerElement {
        */
       forceRebuild: {
         type: Boolean,
-        value: false
-      },
-      /**
-       * iron-list helper for this 1 flag
-       */
-      grid: {
-        type: Boolean,
+        notify: true,
         value: false
       }
     };
@@ -96,12 +81,12 @@ class SiteQuery extends PolymerElement {
   /**
    * Compute what we should present as a slice of the real deal
    */
-  _computeLocalItems(conditions, sorts, realItems, activeId, forceRebuild) {
+  _computeResult(conditions, sorts, realItems, activeId, forceRebuild) {
     // ensure no data references, clone object
     let items = Object.assign([], toJS(realItems));
     // if there are no conditions just do a 1 to 1 presentation
     if (conditions && items) {
-      // apply conditions, this will automatically filter our list
+      // apply conditions, this will automatically filter our items
       for (var i in conditions) {
         // apply the conditions in order
         items = items.filter(item => {
@@ -145,18 +130,26 @@ class SiteQuery extends PolymerElement {
     }
     return items;
   }
+  /**
+   * Try and get the value to skip dirty checks and do a full data rebind
+   */
+  _noticeResultChange(newValue) {
+    this.set("result", newValue);
+    this.notifyPath("result");
+  }
   connectedCallback() {
     super.connectedCallback();
     this.__disposer = autorun(() => {
       this.routerManifest = Object.assign({}, toJS(store.routerManifest));
     });
-    this.__disposer = autorun(() => {
+    this.__disposer2 = autorun(() => {
       this.activeId = toJS(store.activeId);
     });
   }
   disconnectedCallback() {
     super.disconnectedCallback();
     this.__disposer();
+    this.__disposer2();
   }
 }
 window.customElements.define(SiteQuery.tag, SiteQuery);

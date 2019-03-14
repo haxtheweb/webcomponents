@@ -2,6 +2,9 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import { updateStyles } from "@polymer/polymer/lib/mixins/element-mixin.js";
+import { HAXCMSThemeWiring } from "@lrnwebcomponents/haxcms-elements/lib/HAXCMSThemeWiring.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";
+import { autorun, toJS } from "mobx";
 import "@polymer/app-layout/app-header/app-header.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
@@ -9,11 +12,8 @@ import "@polymer/app-layout/app-drawer-layout/app-drawer-layout.js";
 import "@polymer/app-layout/app-header-layout/app-header-layout.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/site-menu.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/site-menu-button.js";
-import { HAXCMSThemeWiring } from "@lrnwebcomponents/haxcms-elements/lib/HAXCMSThemeWiring.js";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";
-import { autorun, toJS } from "mobx";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/navigation/site-menu.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/navigation/site-menu-button.js";
 
 /**
 `outline-player`

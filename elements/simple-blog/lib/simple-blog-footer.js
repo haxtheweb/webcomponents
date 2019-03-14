@@ -1,20 +1,16 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@polymer/paper-button/paper-button.js";
-import "@lrnwebcomponents/simple-datetime/simple-datetime.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/site-menu-button.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/navigation/site-menu-button.js";
+import "@polymer/paper-button/paper-button.js";
+import "@lrnwebcomponents/simple-datetime/simple-datetime.js";
 /**
-`simple-blog-footer`
-A simple blog and associated elements
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
- - footer of the page for blog posts relating back to the main overview page
- -
-
-*/
+ * `simple-blog-footer`
+ * `Footer to blog posts`
+ * @demo demo/index.html
+ * @microcopy - the mental model for this element
+ * - footer of the page for blog posts relating back to the main overview page
+ */
 Polymer({
   _template: html`
     <style>

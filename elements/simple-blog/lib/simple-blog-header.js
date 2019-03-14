@@ -1,21 +1,15 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/site-rss-button.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/site-pieces/site-rss-button.js";
 /**
-`simple-blog`
-A simple blog and associated elements
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
- -
- -
-
-*/
+ * `simple-blog-header`
+ * `A simple blog header to the front of the site`
+ * @demo demo/index.html
+ */
 Polymer({
   _template: html`
-    <style is="custom-style">
+    <style>
       :host {
         display: block;
       }

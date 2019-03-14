@@ -1,11 +1,11 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { HAXCMSThemeWiring } from "@lrnwebcomponents/haxcms-elements/lib/HAXCMSThemeWiring.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";
+import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/iron-pages/iron-pages.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
-import { HAXCMSThemeWiring } from "@lrnwebcomponents/haxcms-elements/lib/HAXCMSThemeWiring.js";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";
-import { autorun, toJS } from "mobx";
 import "./lib/simple-blog-listing.js";
 import "./lib/simple-blog-header.js";
 import "./lib/simple-blog-footer.js";
