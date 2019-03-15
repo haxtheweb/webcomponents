@@ -23,16 +23,11 @@ class Store {
         window.localStorage.getItem("HAXCMSSystemData")
       );
       var accessData = {};
-      if (
-        typeof userData.manifests !== typeof undefined &&
-        typeof userData.manifests[manifest.id] !== typeof undefined &&
-        userData.manifests[manifest.id].accessData !== typeof undefined
-      ) {
-        accessData = userData.manifests[manifest.id].accessData;
-      } else {
-        if (typeof userData.manifests === typeof undefined) {
-          userData.manifests = {};
-        }
+      // establish on first pass if needed
+      if (userData == null) {
+        userData = {
+          manifests: {}
+        };
         userData.manifests[manifest.id] = {
           accessData: {}
         };
@@ -40,6 +35,14 @@ class Store {
           "HAXCMSSystemData",
           JSON.stringify(userData)
         );
+      }
+      if (
+        userData &&
+        typeof userData.manifests !== typeof undefined &&
+        typeof userData.manifests[manifest.id] !== typeof undefined &&
+        userData.manifests[manifest.id].accessData !== typeof undefined
+      ) {
+        accessData = userData.manifests[manifest.id].accessData;
       }
       const manifestItems = manifest.items.map(i => {
         // get local storage and look for data from this to mesh up
@@ -128,6 +131,40 @@ class Store {
     return "";
   }
   /**
+   * shortcut for active page parent title
+   */
+  get parentTitle() {
+    if (this.manifest && this.activeItem) {
+      let tmpItem = this.manifest.items.find(
+        d => this.activeItem.parent === d.id
+      );
+      // shift up 1 if we found something
+      if (tmpItem) {
+        return tmpItem.title;
+      }
+    }
+    return "";
+  }
+  /**
+   * shortcut for active page ancestor title
+   */
+  get ancestorTitle() {
+    if (this.manifest && this.activeItem) {
+      let tmpItem = this.manifest.items.find(
+        d => this.activeItem.parent === d.id
+      );
+      // walk back up to the root
+      while (tmpItem && tmpItem.parent != null) {
+        // take the parent object of this current item
+        tmpItem = this.manifest.items.find(i => i.id == tmpItem.parent);
+      }
+      if (tmpItem) {
+        return tmpItem.title;
+      }
+    }
+    return "";
+  }
+  /**
    * shortcut to find an item in the manifest based on id
    */
   findItem(id) {
@@ -156,6 +193,8 @@ decorate(Store, {
   activeManifestIndex: computed, // active array index, used for pagination
   activeManifestIndexCounter: computed, // active array index counter, used for pagination
   pageTitle: computed, // active page title
+  parentTitle: computed, // active page parent title
+  ancestorTitle: computed, // active page ancestor title
   changeActiveItem: action.bound
 });
 
