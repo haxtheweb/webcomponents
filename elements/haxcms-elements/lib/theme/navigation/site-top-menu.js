@@ -3,9 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import "@polymer/iron-list/iron-list.js";
 import "@lrnwebcomponents/haxcms-elements/lib/theme/query/site-query.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 
@@ -202,10 +201,10 @@ class SiteTopMenu extends PolymerElement {
             }
           }
         }
+        if (this._prevEl) {
+          this._prevEl.classList.remove("active");
+        }
         if (el) {
-          if (this._prevEl) {
-            this._prevEl.classList.remove("active");
-          }
           el.classList.add("active");
           this._prevEl = el;
           if (this.indicator == "arrow") {
@@ -227,11 +226,11 @@ class SiteTopMenu extends PolymerElement {
   }
   connectedCallback() {
     super.connectedCallback();
-    // minor timing thing to ensure store has picked active
-    // needed if routes set on first paint or lifecycles miss
     this.__disposer = autorun(() => {
       this.manifest = toJS(store.manifest);
     });
+    // minor timing thing to ensure store has picked active
+    // needed if routes set on first paint or lifecycles miss
     setTimeout(() => {
       this.__disposer2 = autorun(() => {
         this.activeId = toJS(store.activeId);

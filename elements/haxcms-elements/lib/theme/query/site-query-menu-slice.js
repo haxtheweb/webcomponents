@@ -3,10 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import { SiteQuery } from "@lrnwebcomponents/haxcms-elements/lib/theme/query/site-query.js";
-import "@polymer/paper-button/paper-button.js";
 
 /**
  * `site-query-menu-slice`
@@ -26,22 +24,51 @@ class SiteQueryMenuSlice extends PolymerElement {
   }
   static get properties() {
     return {
+      /**
+       * starting level for the menu items
+       */
       start: {
-        type: Number
+        type: Number,
+        value: 1
       },
+      /**
+       * ending level for the menu items
+       */
       end: {
-        type: Number
+        type: Number,
+        value: 1000
       },
+      /**
+       * parent for the menu id
+       */
       parent: {
         type: String
       },
-      _routerManifest: {
-        type: Object
+      /**
+       * Use this boolean to force this to fix to 1 parent
+       * Otherwise it will dynamically update (default behavior)
+       */
+      fixedId: {
+        type: Boolean,
+        value: false
       },
+      /**
+       * Allow disabling the dynamic leveling
+       */
+      noDynamicLevel: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Results which can be binded to something else
+       */
       result: {
         type: Array,
         notify: true,
         computed: "_computeItems(start, end, parent, _routerManifest)"
+      },
+      _routerManifest: {
+        type: Object
       }
     };
   }
@@ -76,7 +103,7 @@ class SiteQueryMenuSlice extends PolymerElement {
       if (!parentFound) {
         parentFound = true;
         // support sliding scales, meaning that start / end is relative to active
-        if (item.indent >= start) {
+        if (!this.noDynamicLevel && item.indent >= start) {
           start += item.indent;
           end += item.indent;
         }
@@ -122,15 +149,19 @@ class SiteQueryMenuSlice extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     this.__disposer = autorun(() => {
-      this.parent = toJS(store.activeId);
-    });
-    this.__disposer2 = autorun(() => {
       this._routerManifest = Object.assign({}, toJS(store.routerManifest));
     });
+    if (!this.fixedId) {
+      this.__disposer2 = autorun(() => {
+        this.parent = toJS(store.activeId);
+      });
+    }
   }
   disconnectedCallback() {
     this.__disposer();
-    this.__disposer2();
+    if (!this.fixedId) {
+      this.__disposer2();
+    }
     super.disconnectedCallback();
   }
 }

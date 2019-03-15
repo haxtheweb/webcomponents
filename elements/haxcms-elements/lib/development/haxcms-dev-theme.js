@@ -4,7 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/HAXCMSThemeWiring.js";
+import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/theme/HAXCMSThemeWiring.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icons/iron-icons.js";
@@ -12,7 +12,7 @@ import "@polymer/iron-list/iron-list.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";
 import "@lrnwebcomponents/haxcms-elements/lib/theme/active-pieces/site-active-title.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/blocks/block-active-children.js";
+import "@lrnwebcomponents/haxcms-elements/lib/theme/blocks/site-children-block.js";
 import "@lrnwebcomponents/haxcms-elements/lib/theme/navigation/site-breadcrumb.js";
 import "@lrnwebcomponents/haxcms-elements/lib/theme/navigation/site-menu.js";
 import "@lrnwebcomponents/haxcms-elements/lib/theme/navigation/site-menu-button.js";
@@ -101,26 +101,11 @@ class HAXCMSDevTheme extends HAXCMSTheme(PolymerElement) {
           margin: 0;
           border-radius: 0;
         }
-        .spacing .indent {
-          display: inline-flex;
-        }
-        .indent-1 {
-          margin: 8px;
-        }
-        .indent-2 {
-          margin: 16px;
-        }
-        .indent-3 {
-          margin: 24px;
-        }
-        .indent-4 {
-          margin: 32px;
-        }
-        .indent-5 {
-          margin: 40px;
-        }
-        .indent-6 {
-          margin: 48px;
+        site-children-block {
+          --site-children-block-button-active: {
+            background-color: #37474f;
+            color: #ffffff;
+          }
         }
       </style>
       <site-top-menu noink indicator="arrow" arrow-size="8">
@@ -136,25 +121,11 @@ class HAXCMSDevTheme extends HAXCMSTheme(PolymerElement) {
           </a>
         </div>
       </site-top-menu>
-      <site-query-menu-slice
-        result="{{__items}}"
-        start="1"
-        end="10"
-      ></site-query-menu-slice>
-      <dom-repeat items="[[__items]]">
-        <template>
-          <div class="spacing">
-            <div class$="indent indent-[[item.indent]]"></div>
-            <a
-              data-id$="[[item.id]]"
-              class="link"
-              tabindex="-1"
-              href$="[[item.location]]"
-              ><paper-button noink="[[noink]]">[[item.title]]</paper-button></a
-            >
-          </div>
-        </template>
-      </dom-repeat>
+      <site-children-block
+        fixed-id
+        parent="item-14e9e811-8d92-41ee-b2f1-8248eacc3138"
+      >
+      </site-children-block>
       <h1 style="margin:0;">HAXCMS DEVELOPMENT THEME</h1>
       <site-title></site-title>
       <div class="buttons">

@@ -1,7 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { Router } from "@vaadin/router";
 import { autorun } from "mobx";
-import { store } from "./haxcms-site-store";
+import { store } from "./haxcms-site-store.js";
 
 /**
  * `haxcms-site-router`

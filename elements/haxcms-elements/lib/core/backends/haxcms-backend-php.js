@@ -123,7 +123,7 @@ Polymer({
       // but because of this approach it should be non-blocking
       try {
         import(pathFromUrl(decodeURIComponent(import.meta.url)) +
-          "haxcms-site-editor.js").then(
+          "../haxcms-site-editor.js").then(
           e => {
             let haxCmsSiteEditorElement = document.createElement(
               "haxcms-site-editor"

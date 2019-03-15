@@ -9,7 +9,7 @@ import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-progress/paper-progress.js";
 import { observable, decorate, computed } from "mobx";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";
+import { store } from "./haxcms-site-store.js";
 import "./haxcms-site-router.js";
 import "./haxcms-editor-builder.js";
 
@@ -288,7 +288,7 @@ let HAXCMSSiteBuilder = Polymer({
               this.manifest.metadata.dynamicElementLoader[tagName] &&
               !window.customElements.get(tagName)
             ) {
-              import(`${basePath}../../../${
+              import(`${basePath}../../../../${
                 this.manifest.metadata.dynamicElementLoader[tagName]
               }`)
                 .then(response => {
@@ -487,7 +487,7 @@ let HAXCMSSiteBuilder = Polymer({
         // import the reference to the item dynamically, if we can
         try {
           import(pathFromUrl(decodeURIComponent(import.meta.url)) +
-            "../../../" +
+            "../../../../" +
             newValue.path).then(e => {
             // add it into ourselves so it unpacks and we kick this off!
             dom(this).appendChild(this.themeElement);

@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/HAXCMSThemeWiring.js";
+import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/theme/HAXCMSThemeWiring.js";
 import "@lrnwebcomponents/haxcms-elements/lib/theme/navigation/site-breadcrumb.js";
 import "@lrnwebcomponents/haxcms-elements/lib/theme/active-pieces/site-active-title.js";
 import "@lrnwebcomponents/haxcms-elements/lib/theme/site-pieces/site-title.js";

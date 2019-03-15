@@ -84,7 +84,7 @@ Polymer({
       // delay import slightly to ensure global scope is there
       async.microTask.run(() => {
         setTimeout(() => {
-          import(`${basePath}${window.cmsSiteEditor.tag}.js`);
+          import(`${basePath}backends/${window.cmsSiteEditor.tag}.js`);
         }, 50);
       });
     }

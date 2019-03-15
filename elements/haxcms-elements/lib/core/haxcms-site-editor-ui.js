@@ -7,7 +7,7 @@ import "@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "./haxcms-outline-editor-dialog.js";
 import "./haxcms-manifest-editor-dialog.js";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";
+import { store } from "./haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 /**
  * `haxcms-site-editor-ui`

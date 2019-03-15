@@ -456,7 +456,7 @@
       "tagname": "simple-blog-listing"
     },
     {
-      "description": "`simple-blog`\nA simple blog and associated elements",
+      "description": "`simple-blog-header`\n`A simple blog header to the front of the site`",
       "summary": "",
       "path": "lib/simple-blog-header.js",
       "properties": [
@@ -467,11 +467,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 122,
+              "line": 116,
               "column": 4
             },
             "end": {
-              "line": 124,
+              "line": 118,
               "column": 5
             }
           },
@@ -489,11 +489,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 126,
+              "line": 120,
               "column": 2
             },
             "end": {
-              "line": 130,
+              "line": 124,
               "column": 3
             }
           },
@@ -509,11 +509,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 131,
+              "line": 125,
               "column": 2
             },
             "end": {
-              "line": 133,
+              "line": 127,
               "column": 3
             }
           },
@@ -534,11 +534,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 15,
+          "line": 9,
           "column": 8
         },
         "end": {
-          "line": 134,
+          "line": 128,
           "column": 1
         }
       },
@@ -550,11 +550,11 @@
           "description": "Manifest, JSON Outline Schema object",
           "sourceRange": {
             "start": {
-              "line": 122,
+              "line": 116,
               "column": 4
             },
             "end": {
-              "line": 124,
+              "line": 118,
               "column": 5
             }
           },
@@ -571,7 +571,7 @@
       "tagname": "simple-blog-header"
     },
     {
-      "description": "`simple-blog-footer`\nA simple blog and associated elements",
+      "description": "`simple-blog-footer`\n`Footer to blog posts`",
       "summary": "",
       "path": "lib/simple-blog-footer.js",
       "properties": [
@@ -582,11 +582,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 171,
+              "line": 167,
               "column": 4
             },
             "end": {
-              "line": 174,
+              "line": 170,
               "column": 5
             }
           },
@@ -604,11 +604,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 178,
+              "line": 174,
               "column": 4
             },
             "end": {
-              "line": 180,
+              "line": 176,
               "column": 5
             }
           },
@@ -626,11 +626,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 182,
+              "line": 178,
               "column": 2
             },
             "end": {
-              "line": 197,
+              "line": 193,
               "column": 3
             }
           },
@@ -650,11 +650,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 201,
+              "line": 197,
               "column": 2
             },
             "end": {
-              "line": 229,
+              "line": 225,
               "column": 3
             }
           },
@@ -670,11 +670,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 233,
+              "line": 229,
               "column": 2
             },
             "end": {
-              "line": 236,
+              "line": 232,
               "column": 3
             }
           },
@@ -690,11 +690,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 241,
+              "line": 237,
               "column": 2
             },
             "end": {
-              "line": 244,
+              "line": 240,
               "column": 3
             }
           },
@@ -719,11 +719,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 17,
+          "line": 13,
           "column": 8
         },
         "end": {
-          "line": 245,
+          "line": 241,
           "column": 1
         }
       },
@@ -735,11 +735,11 @@
           "description": "active manifest index, key to location in the manifest itemsarray",
           "sourceRange": {
             "start": {
-              "line": 171,
+              "line": 167,
               "column": 4
             },
             "end": {
-              "line": 174,
+              "line": 170,
               "column": 5
             }
           },
@@ -751,11 +751,11 @@
           "description": "Manifest, JSON Outline Schema object",
           "sourceRange": {
             "start": {
-              "line": 178,
+              "line": 174,
               "column": 4
             },
             "end": {
-              "line": 180,
+              "line": 176,
               "column": 5
             }
           },
