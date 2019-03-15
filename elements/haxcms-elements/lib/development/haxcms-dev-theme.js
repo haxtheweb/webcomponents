@@ -49,7 +49,7 @@ class HAXCMSDevTheme extends HAXCMSTheme(PolymerElement) {
           /* theme color which is dictated by the manifest */
           background-color: var(--haxcms-color, black);
         }
-        site-query.cardlist {
+        site-render-query.cardlist {
           --site-query-iron-list: {
             padding: 16px;
             margin: 0 auto;
