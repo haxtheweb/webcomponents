@@ -236,11 +236,25 @@ class SiteTopMenu extends PolymerElement {
         this.activeId = toJS(store.activeId);
       });
     }, 5);
+    window.addEventListener(
+      "resize",
+      () => {
+        this._activeIdChanged(this.activeId);
+      },
+      true
+    );
   }
   disconnectedCallback() {
     super.disconnectedCallback();
     this.__disposer();
     this.__disposer2();
+    window.removeEventListener(
+      "resize",
+      () => {
+        this._activeIdChanged(this.activeId);
+      },
+      true
+    );
   }
 }
 window.customElements.define(SiteTopMenu.tag, SiteTopMenu);
