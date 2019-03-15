@@ -35,7 +35,7 @@ class SiteActiveTitle extends PolymerElement {
           @apply --site-active-title-heading;
         }
       </style>
-      <h2>[[pageTitle]]</h2>
+      <h2>[[__title]]</h2>
     `;
   }
   /**
@@ -45,18 +45,58 @@ class SiteActiveTitle extends PolymerElement {
     return {
       pageTitle: {
         type: String
+      },
+      parentTitle: {
+        type: String
+      },
+      ancestorTitle: {
+        type: String
+      },
+      /**
+       * How we should obtain the parent who's children we should show
+       * options are active, parent, or ancestor
+       */
+      dynamicMethodology: {
+        type: String,
+        value: "active"
+      },
+      __title: {
+        type: String,
+        computed:
+          "_makeTitle(dynamicMethodology, pageTitle, parentTitle, ancestorTitle)"
       }
     };
+  }
+  _makeTitle(dynamicMethodology, pageTitle, parentTitle, ancestorTitle) {
+    switch (dynamicMethodology) {
+      case "above":
+        return parentTitle;
+        break;
+      case "ancestor":
+        return ancestorTitle;
+        break;
+      default:
+        return pageTitle;
+        break;
+    }
   }
   connectedCallback() {
     super.connectedCallback();
     this.__disposer = autorun(() => {
       this.pageTitle = toJS(store.pageTitle);
     });
+    this.__disposer2 = autorun(() => {
+      this.parentTitle = toJS(store.parentTitle);
+    });
+    this.__disposer3 = autorun(() => {
+      this.ancestorTitle = toJS(store.ancestorTitle);
+    });
   }
   disconnectedCallback() {
     super.disconnectedCallback();
     this.__disposer();
+    this.__disposer2();
+    this.__disposer3();
   }
 }
 window.customElements.define(SiteActiveTitle.tag, SiteActiveTitle);

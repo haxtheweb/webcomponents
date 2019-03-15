@@ -145,7 +145,7 @@ Polymer({
     ></iron-ajax>
     <iron-ajax
       id="getconfigrequest"
-      method="GET"
+      method="POST"
       body="[[configParams]]"
       headers='{"Authorization": "Bearer [[jwt]]"}'
       content-type="application/json"
@@ -857,9 +857,9 @@ Polymer({
     // pass along the jwt for user "session" purposes
     this.set("setConfigParams.values", {});
     this.set("setConfigParams.values", window.HAXCMS.config.values);
-    this.notifyPath("configParams.values.*");
+    this.notifyPath("setConfigParams.values.*");
     this.set("setConfigParams.jwt", this.jwt);
-    this.notifyPath("configParams.jwt");
+    this.notifyPath("setConfigParams.jwt");
     this.set("setConfigParams.token", this.createParams.token);
     this.notifyPath("setConfigParams.token");
 

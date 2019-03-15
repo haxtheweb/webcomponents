@@ -111,6 +111,7 @@ class SiteChildrenBlock extends PolymerElement {
       <div class="wrapper">
         <site-query-menu-slice
           result="{{__items}}"
+          dynamic-methodology="[[dynamicMethodology]]"
           start="[[start]]"
           end="[[end]]"
           parent="[[parent]]"
@@ -138,6 +139,14 @@ class SiteChildrenBlock extends PolymerElement {
   }
   static get properties() {
     return {
+      /**
+       * How we should obtain the parent who's children we should show
+       * options are direct, above, or root
+       */
+      dynamicMethodology: {
+        type: String,
+        value: "direct"
+      },
       /**
        * starting level for the menu items
        */

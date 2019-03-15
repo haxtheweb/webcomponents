@@ -45,6 +45,14 @@ class SiteQueryMenuSlice extends PolymerElement {
         type: String
       },
       /**
+       * How we should obtain the parent who's children we should show
+       * options are active, parent, or ancestor
+       */
+      dynamicMethodology: {
+        type: String,
+        value: "active"
+      },
+      /**
        * Use this boolean to force this to fix to 1 parent
        * Otherwise it will dynamically update (default behavior)
        */
@@ -65,7 +73,8 @@ class SiteQueryMenuSlice extends PolymerElement {
       result: {
         type: Array,
         notify: true,
-        computed: "_computeItems(start, end, parent, _routerManifest)"
+        computed:
+          "_computeItems(start, end, parent, dynamicMethodology, _routerManifest)"
       },
       _routerManifest: {
         type: Object
@@ -75,16 +84,37 @@ class SiteQueryMenuSlice extends PolymerElement {
   /**
    * Compute items leveraging the site query engine
    */
-  _computeItems(start, end, parent, _routerManifest) {
+  _computeItems(start, end, parent, dynamicMethodology, _routerManifest) {
     if (_routerManifest) {
       let items = [];
       let data = [];
+      let tmpItem;
       _routerManifest.items.forEach(element => {
         // find top level parents
         if (!element.parent) {
           items.push(element);
         }
       });
+      switch (dynamicMethodology) {
+        case "parent":
+          tmpItem = _routerManifest.items.find(d => parent === d.id);
+          // shift up 1 if we found something
+          if (tmpItem) {
+            parent = tmpItem.parent;
+          }
+          break;
+        case "ancestor":
+          tmpItem = _routerManifest.items.find(d => parent === d.id);
+          // walk back up to the root
+          while (tmpItem && tmpItem.parent != null) {
+            // take the parent object of this current item
+            tmpItem = _routerManifest.items.find(i => i.id == tmpItem.parent);
+          }
+          if (tmpItem) {
+            parent = tmpItem.id;
+          }
+          break;
+      }
       // Recursively find and set children
       items.forEach((item, i) => {
         this._setChildren(item, _routerManifest.items);

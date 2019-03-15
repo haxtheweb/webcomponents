@@ -10,6 +10,7 @@ import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-act
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/blocks/site-children-block.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-top-menu.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js";
 /**
@@ -28,6 +29,7 @@ class HAXCMSBasicTheme extends HAXCMSTheme(PolymerElement) {
         :host {
           display: block;
           background-color: white;
+          --haxcms-basic-theme-accent-color: var(--haxcms-color, yellow);
         }
         .container {
           margin: 24px auto;
@@ -47,7 +49,9 @@ class HAXCMSBasicTheme extends HAXCMSTheme(PolymerElement) {
           --site-top-menu-bg: #37474f;
           --site-top-menu-link-color: #ffffff;
           --site-top-menu-indicator-color: #ffffff;
-          --site-top-menu-link-active-color: yellow;
+          --site-top-menu-link-active-color: var(
+            --haxcms-basic-theme-accent-color
+          );
           --site-top-menu-indicator-arrow: 8px;
         }
         site-children-block {
@@ -56,7 +60,7 @@ class HAXCMSBasicTheme extends HAXCMSTheme(PolymerElement) {
           }
           --site-children-block-button-active: {
             background-color: #37474f;
-            color: yellow;
+            color: var(--haxcms-basic-theme-accent-color);
           }
         }
         .left-col {
@@ -67,11 +71,12 @@ class HAXCMSBasicTheme extends HAXCMSTheme(PolymerElement) {
           padding: 16px;
         }
         site-active-title {
+          display: inline-flex;
           --site-active-title-heading: {
             font-family: "Montserrat", "Helvetica", "Tahoma", "Geneva", "Arial",
               sans-serif;
             font-size: 16px;
-            line-height: 16px;
+            line-height: 32px;
             margin-bottom: 8px;
             text-rendering: optimizelegibility;
             font-weight: 600;
@@ -98,11 +103,22 @@ class HAXCMSBasicTheme extends HAXCMSTheme(PolymerElement) {
           }
         }
         .buttons {
-          margin-top: 16px;
+          margin-top: 36px;
           display: flex;
         }
         .buttons site-rss-button {
           display: inline-flex;
+        }
+        .menu-buttons {
+          display: flex;
+        }
+        site-menu-button {
+          --site-menu-button-button: {
+            color: white;
+          }
+          --site-menu-button-button-hover: {
+            color: var(--haxcms-basic-theme-accent-color);
+          }
         }
       </style>
       <site-top-menu noink indicator="arrow" arrow-size="8">
@@ -112,8 +128,16 @@ class HAXCMSBasicTheme extends HAXCMSTheme(PolymerElement) {
         <site-breadcrumb></site-breadcrumb>
         <grid-plate layout="1-3">
           <div slot="col-1" class="left-col">
-            <site-active-title></site-active-title>
-            <site-children-block></site-children-block>
+            <div class="menu-buttons">
+              <site-menu-button type="prev" position="top"></site-menu-button>
+              <site-menu-button type="next" position="top"></site-menu-button>
+            </div>
+            <site-active-title
+              dynamic-methodology="ancestor"
+            ></site-active-title>
+            <site-children-block
+              dynamic-methodology="ancestor"
+            ></site-children-block>
             <div class="buttons">
               <site-rss-button type="atom"></site-rss-button>
               <site-rss-button type="rss"></site-rss-button>
