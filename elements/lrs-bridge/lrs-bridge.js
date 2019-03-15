@@ -61,21 +61,6 @@ class LrsBridge extends PolymerElement {
     // listen for lrs-emitter events
     this.addEventListener("lrs-emitter", this._lrsEmitterHander.bind(this));
     // establish connection to the lrs
-    const pingOptions = {
-      method: "POST",
-      cors: "no-cors",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ query: "{ ping }" })
-    };
-    try {
-      fetch(this.endpoint, pingOptions)
-        .then(res => res.json())
-        .then(({ data: { ping } }) => {
-          this._endpointConnected = true;
-        });
-    } catch (error) {
-      console.error("error:", error);
-    }
   }
 
   disconnectedCallback() {
@@ -90,33 +75,39 @@ class LrsBridge extends PolymerElement {
   }
 
   recordStatement(options) {
-    const pingOptions = {
+    console.log("options:", options);
+    const query = {
       method: "POST",
       cors: "no-cors",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        query: `
-          mutation($data: Json!) {
+      body: JSON.stringify(
+        {
+          query: `
+          mutation($data: StatementCreateInput!) {
             createStatement(data: $data) {
               id
             }
           }
         `,
-        variables: {
-          data: Object.assign(
-            {},
-            {
-              actor: {
-                name: this.getUserName()
-              }
-            },
-            options
-          )
-        }
-      })
+          variables: {
+            data: {
+              data: Object.assign(
+                {},
+                {
+                  actor: {
+                    name: this.getUserName()
+                  }
+                },
+                options
+              )
+            }
+          }
+        },
+        "utf8"
+      )
     };
     try {
-      fetch(this.endpoint, pingOptions)
+      fetch(this.endpoint, query)
         .then(res => res.json())
         .then(res => {});
     } catch (error) {}
