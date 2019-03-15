@@ -7,26 +7,6 @@ var models = [
   {
     name: "Statement",
     embedded: false
-  },
-  {
-    name: "Actor",
-    embedded: false
-  },
-  {
-    name: "Verb",
-    embedded: false
-  },
-  {
-    name: "Object",
-    embedded: false
-  },
-  {
-    name: "Result",
-    embedded: false
-  },
-  {
-    name: "ResultScore",
-    embedded: false
   }
 ];
 exports.Prisma = prisma_lib_1.makePrismaClientClass({

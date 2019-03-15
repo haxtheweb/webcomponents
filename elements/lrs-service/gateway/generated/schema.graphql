@@ -2,149 +2,7 @@
 ### Do not make changes to this file directly
 
 
-type Actor {
-  id: ID!
-  mbox: String
-  name: String
-}
-
-type ActorConnection {
-  aggregate: AggregateActor!
-  edges: [ActorEdge!]!
-  pageInfo: PageInfo!
-}
-
-input ActorCreateInput {
-  mbox: String
-  name: String
-}
-
-input ActorCreateOneInput {
-  connect: ActorWhereUniqueInput
-  create: ActorCreateInput
-}
-
-type ActorEdge {
-  cursor: String!
-  node: Actor!
-}
-
-enum ActorOrderByInput {
-  createdAt_ASC
-  createdAt_DESC
-  id_ASC
-  id_DESC
-  mbox_ASC
-  mbox_DESC
-  name_ASC
-  name_DESC
-  updatedAt_ASC
-  updatedAt_DESC
-}
-
-input ActorUpdateDataInput {
-  mbox: String
-  name: String
-}
-
-input ActorUpdateInput {
-  mbox: String
-  name: String
-}
-
-input ActorUpdateManyMutationInput {
-  mbox: String
-  name: String
-}
-
-input ActorUpdateOneInput {
-  connect: ActorWhereUniqueInput
-  create: ActorCreateInput
-  delete: Boolean
-  disconnect: Boolean
-  update: ActorUpdateDataInput
-  upsert: ActorUpsertNestedInput
-}
-
-input ActorUpsertNestedInput {
-  create: ActorCreateInput!
-  update: ActorUpdateDataInput!
-}
-
-input ActorWhereInput {
-  AND: [ActorWhereInput!]
-  id: ID
-  id_contains: ID
-  id_ends_with: ID
-  id_gt: ID
-  id_gte: ID
-  id_in: [ID!]
-  id_lt: ID
-  id_lte: ID
-  id_not: ID
-  id_not_contains: ID
-  id_not_ends_with: ID
-  id_not_in: [ID!]
-  id_not_starts_with: ID
-  id_starts_with: ID
-  mbox: String
-  mbox_contains: String
-  mbox_ends_with: String
-  mbox_gt: String
-  mbox_gte: String
-  mbox_in: [String!]
-  mbox_lt: String
-  mbox_lte: String
-  mbox_not: String
-  mbox_not_contains: String
-  mbox_not_ends_with: String
-  mbox_not_in: [String!]
-  mbox_not_starts_with: String
-  mbox_starts_with: String
-  name: String
-  name_contains: String
-  name_ends_with: String
-  name_gt: String
-  name_gte: String
-  name_in: [String!]
-  name_lt: String
-  name_lte: String
-  name_not: String
-  name_not_contains: String
-  name_not_ends_with: String
-  name_not_in: [String!]
-  name_not_starts_with: String
-  name_starts_with: String
-  NOT: [ActorWhereInput!]
-  OR: [ActorWhereInput!]
-}
-
-input ActorWhereUniqueInput {
-  id: ID
-  name: String
-}
-
-type AggregateActor {
-  count: Int!
-}
-
-type AggregateObject {
-  count: Int!
-}
-
-type AggregateResult {
-  count: Int!
-}
-
-type AggregateResultScore {
-  count: Int!
-}
-
 type AggregateStatement {
-  count: Int!
-}
-
-type AggregateVerb {
   count: Int!
 }
 
@@ -157,144 +15,12 @@ scalar Json
 scalar Long
 
 type Mutation {
-  createActor(data: ActorCreateInput!): Actor!
-  createObject(data: ObjectCreateInput!): Object!
-  createResult(data: ResultCreateInput!): Result!
-  createResultScore(data: ResultScoreCreateInput!): ResultScore!
   createStatement(data: StatementCreateInput!): Statement!
-  createVerb(data: VerbCreateInput!): Verb!
-  deleteActor(where: ActorWhereUniqueInput!): Actor
-  deleteManyActors(where: ActorWhereInput): BatchPayload!
-  deleteManyObjects(where: ObjectWhereInput): BatchPayload!
-  deleteManyResults(where: ResultWhereInput): BatchPayload!
-  deleteManyResultScores(where: ResultScoreWhereInput): BatchPayload!
   deleteManyStatements(where: StatementWhereInput): BatchPayload!
-  deleteManyVerbs(where: VerbWhereInput): BatchPayload!
-  deleteObject(where: ObjectWhereUniqueInput!): Object
   deleteStatement(where: StatementWhereUniqueInput!): Statement
-  deleteVerb(where: VerbWhereUniqueInput!): Verb
-  updateActor(data: ActorUpdateInput!, where: ActorWhereUniqueInput!): Actor
-  updateManyActors(data: ActorUpdateManyMutationInput!, where: ActorWhereInput): BatchPayload!
-  updateManyObjects(data: ObjectUpdateManyMutationInput!, where: ObjectWhereInput): BatchPayload!
-  updateManyResults(data: ResultUpdateManyMutationInput!, where: ResultWhereInput): BatchPayload!
-  updateManyResultScores(data: ResultScoreUpdateManyMutationInput!, where: ResultScoreWhereInput): BatchPayload!
   updateManyStatements(data: StatementUpdateManyMutationInput!, where: StatementWhereInput): BatchPayload!
-  updateManyVerbs(data: VerbUpdateManyMutationInput!, where: VerbWhereInput): BatchPayload!
-  updateObject(data: ObjectUpdateInput!, where: ObjectWhereUniqueInput!): Object
   updateStatement(data: StatementUpdateInput!, where: StatementWhereUniqueInput!): Statement
-  updateVerb(data: VerbUpdateInput!, where: VerbWhereUniqueInput!): Verb
-  upsertActor(create: ActorCreateInput!, update: ActorUpdateInput!, where: ActorWhereUniqueInput!): Actor!
-  upsertObject(create: ObjectCreateInput!, update: ObjectUpdateInput!, where: ObjectWhereUniqueInput!): Object!
   upsertStatement(create: StatementCreateInput!, update: StatementUpdateInput!, where: StatementWhereUniqueInput!): Statement!
-  upsertVerb(create: VerbCreateInput!, update: VerbUpdateInput!, where: VerbWhereUniqueInput!): Verb!
-}
-
-type Object {
-  _id: String
-  definition: Json
-  id: ID!
-}
-
-type ObjectConnection {
-  aggregate: AggregateObject!
-  edges: [ObjectEdge!]!
-  pageInfo: PageInfo!
-}
-
-input ObjectCreateInput {
-  _id: String
-  definition: Json
-}
-
-input ObjectCreateOneInput {
-  connect: ObjectWhereUniqueInput
-  create: ObjectCreateInput
-}
-
-type ObjectEdge {
-  cursor: String!
-  node: Object!
-}
-
-enum ObjectOrderByInput {
-  _id_ASC
-  _id_DESC
-  createdAt_ASC
-  createdAt_DESC
-  definition_ASC
-  definition_DESC
-  id_ASC
-  id_DESC
-  updatedAt_ASC
-  updatedAt_DESC
-}
-
-input ObjectUpdateDataInput {
-  _id: String
-  definition: Json
-}
-
-input ObjectUpdateInput {
-  _id: String
-  definition: Json
-}
-
-input ObjectUpdateManyMutationInput {
-  _id: String
-  definition: Json
-}
-
-input ObjectUpdateOneInput {
-  connect: ObjectWhereUniqueInput
-  create: ObjectCreateInput
-  delete: Boolean
-  disconnect: Boolean
-  update: ObjectUpdateDataInput
-  upsert: ObjectUpsertNestedInput
-}
-
-input ObjectUpsertNestedInput {
-  create: ObjectCreateInput!
-  update: ObjectUpdateDataInput!
-}
-
-input ObjectWhereInput {
-  _id: String
-  _id_contains: String
-  _id_ends_with: String
-  _id_gt: String
-  _id_gte: String
-  _id_in: [String!]
-  _id_lt: String
-  _id_lte: String
-  _id_not: String
-  _id_not_contains: String
-  _id_not_ends_with: String
-  _id_not_in: [String!]
-  _id_not_starts_with: String
-  _id_starts_with: String
-  AND: [ObjectWhereInput!]
-  id: ID
-  id_contains: ID
-  id_ends_with: ID
-  id_gt: ID
-  id_gte: ID
-  id_in: [ID!]
-  id_lt: ID
-  id_lte: ID
-  id_not: ID
-  id_not_contains: ID
-  id_not_ends_with: ID
-  id_not_in: [ID!]
-  id_not_starts_with: ID
-  id_starts_with: ID
-  NOT: [ObjectWhereInput!]
-  OR: [ObjectWhereInput!]
-}
-
-input ObjectWhereUniqueInput {
-  _id: String
-  id: ID
 }
 
 type PageInfo {
@@ -305,175 +31,14 @@ type PageInfo {
 }
 
 type Query {
-  actor(where: ActorWhereUniqueInput!): Actor
-  actors(after: String, before: String, first: Int, last: Int, orderBy: ActorOrderByInput, skip: Int, where: ActorWhereInput): [Actor!]!
-  actorsConnection(after: String, before: String, first: Int, last: Int, orderBy: ActorOrderByInput, skip: Int, where: ActorWhereInput): ActorConnection!
-  object(where: ObjectWhereUniqueInput!): Object
-  objects(after: String, before: String, first: Int, last: Int, orderBy: ObjectOrderByInput, skip: Int, where: ObjectWhereInput): [Object!]!
-  objectsConnection(after: String, before: String, first: Int, last: Int, orderBy: ObjectOrderByInput, skip: Int, where: ObjectWhereInput): ObjectConnection!
-  results(after: String, before: String, first: Int, last: Int, orderBy: ResultOrderByInput, skip: Int, where: ResultWhereInput): [Result!]!
-  resultsConnection(after: String, before: String, first: Int, last: Int, orderBy: ResultOrderByInput, skip: Int, where: ResultWhereInput): ResultConnection!
-  resultScores(after: String, before: String, first: Int, last: Int, orderBy: ResultScoreOrderByInput, skip: Int, where: ResultScoreWhereInput): [ResultScore!]!
-  resultScoresConnection(after: String, before: String, first: Int, last: Int, orderBy: ResultScoreOrderByInput, skip: Int, where: ResultScoreWhereInput): ResultScoreConnection!
   statement(where: StatementWhereUniqueInput!): Statement
   statements(after: String, before: String, first: Int, last: Int, orderBy: StatementOrderByInput, skip: Int, where: StatementWhereInput): [Statement!]!
   statementsConnection(after: String, before: String, first: Int, last: Int, orderBy: StatementOrderByInput, skip: Int, where: StatementWhereInput): StatementConnection!
-  verb(where: VerbWhereUniqueInput!): Verb
-  verbs(after: String, before: String, first: Int, last: Int, orderBy: VerbOrderByInput, skip: Int, where: VerbWhereInput): [Verb!]!
-  verbsConnection(after: String, before: String, first: Int, last: Int, orderBy: VerbOrderByInput, skip: Int, where: VerbWhereInput): VerbConnection!
-}
-
-type Result {
-  completion: Boolean
-  score: ResultScore
-  success: Boolean
-}
-
-type ResultConnection {
-  aggregate: AggregateResult!
-  edges: [ResultEdge!]!
-  pageInfo: PageInfo!
-}
-
-input ResultCreateInput {
-  completion: Boolean
-  score: ResultScoreCreateOneInput
-  success: Boolean
-}
-
-input ResultCreateOneInput {
-  create: ResultCreateInput
-}
-
-type ResultEdge {
-  cursor: String!
-  node: Result!
-}
-
-enum ResultOrderByInput {
-  completion_ASC
-  completion_DESC
-  createdAt_ASC
-  createdAt_DESC
-  id_ASC
-  id_DESC
-  success_ASC
-  success_DESC
-  updatedAt_ASC
-  updatedAt_DESC
-}
-
-type ResultScore {
-  scaled: Int
-}
-
-type ResultScoreConnection {
-  aggregate: AggregateResultScore!
-  edges: [ResultScoreEdge!]!
-  pageInfo: PageInfo!
-}
-
-input ResultScoreCreateInput {
-  scaled: Int
-}
-
-input ResultScoreCreateOneInput {
-  create: ResultScoreCreateInput
-}
-
-type ResultScoreEdge {
-  cursor: String!
-  node: ResultScore!
-}
-
-enum ResultScoreOrderByInput {
-  createdAt_ASC
-  createdAt_DESC
-  id_ASC
-  id_DESC
-  scaled_ASC
-  scaled_DESC
-  updatedAt_ASC
-  updatedAt_DESC
-}
-
-input ResultScoreUpdateDataInput {
-  scaled: Int
-}
-
-input ResultScoreUpdateManyMutationInput {
-  scaled: Int
-}
-
-input ResultScoreUpdateOneInput {
-  create: ResultScoreCreateInput
-  delete: Boolean
-  disconnect: Boolean
-  update: ResultScoreUpdateDataInput
-  upsert: ResultScoreUpsertNestedInput
-}
-
-input ResultScoreUpsertNestedInput {
-  create: ResultScoreCreateInput!
-  update: ResultScoreUpdateDataInput!
-}
-
-input ResultScoreWhereInput {
-  AND: [ResultScoreWhereInput!]
-  NOT: [ResultScoreWhereInput!]
-  OR: [ResultScoreWhereInput!]
-  scaled: Int
-  scaled_gt: Int
-  scaled_gte: Int
-  scaled_in: [Int!]
-  scaled_lt: Int
-  scaled_lte: Int
-  scaled_not: Int
-  scaled_not_in: [Int!]
-}
-
-input ResultUpdateDataInput {
-  completion: Boolean
-  score: ResultScoreUpdateOneInput
-  success: Boolean
-}
-
-input ResultUpdateManyMutationInput {
-  completion: Boolean
-  success: Boolean
-}
-
-input ResultUpdateOneInput {
-  create: ResultCreateInput
-  delete: Boolean
-  disconnect: Boolean
-  update: ResultUpdateDataInput
-  upsert: ResultUpsertNestedInput
-}
-
-input ResultUpsertNestedInput {
-  create: ResultCreateInput!
-  update: ResultUpdateDataInput!
-}
-
-input ResultWhereInput {
-  AND: [ResultWhereInput!]
-  completion: Boolean
-  completion_not: Boolean
-  NOT: [ResultWhereInput!]
-  OR: [ResultWhereInput!]
-  score: ResultScoreWhereInput
-  success: Boolean
-  success_not: Boolean
 }
 
 type Statement {
-  actor: Actor
-  extensions: Json
+  data: Json!
   id: ID!
-  object: Object
-  result: Result
-  verb: Verb
 }
 
 type StatementConnection {
@@ -483,11 +48,7 @@ type StatementConnection {
 }
 
 input StatementCreateInput {
-  actor: ActorCreateOneInput
-  extensions: Json
-  object: ObjectCreateOneInput
-  result: ResultCreateOneInput
-  verb: VerbCreateOneInput
+  data: Json!
 }
 
 type StatementEdge {
@@ -498,8 +59,8 @@ type StatementEdge {
 enum StatementOrderByInput {
   createdAt_ASC
   createdAt_DESC
-  extensions_ASC
-  extensions_DESC
+  data_ASC
+  data_DESC
   id_ASC
   id_DESC
   updatedAt_ASC
@@ -507,19 +68,14 @@ enum StatementOrderByInput {
 }
 
 input StatementUpdateInput {
-  actor: ActorUpdateOneInput
-  extensions: Json
-  object: ObjectUpdateOneInput
-  result: ResultUpdateOneInput
-  verb: VerbUpdateOneInput
+  data: Json
 }
 
 input StatementUpdateManyMutationInput {
-  extensions: Json
+  data: Json
 }
 
 input StatementWhereInput {
-  actor: ActorWhereInput
   AND: [StatementWhereInput!]
   id: ID
   id_contains: ID
@@ -536,120 +92,9 @@ input StatementWhereInput {
   id_not_starts_with: ID
   id_starts_with: ID
   NOT: [StatementWhereInput!]
-  object: ObjectWhereInput
   OR: [StatementWhereInput!]
-  result: ResultWhereInput
-  verb: VerbWhereInput
 }
 
 input StatementWhereUniqueInput {
-  id: ID
-}
-
-type Verb {
-  _id: String
-  display: Json
-  id: ID!
-}
-
-type VerbConnection {
-  aggregate: AggregateVerb!
-  edges: [VerbEdge!]!
-  pageInfo: PageInfo!
-}
-
-input VerbCreateInput {
-  _id: String
-  display: Json
-}
-
-input VerbCreateOneInput {
-  connect: VerbWhereUniqueInput
-  create: VerbCreateInput
-}
-
-type VerbEdge {
-  cursor: String!
-  node: Verb!
-}
-
-enum VerbOrderByInput {
-  _id_ASC
-  _id_DESC
-  createdAt_ASC
-  createdAt_DESC
-  display_ASC
-  display_DESC
-  id_ASC
-  id_DESC
-  updatedAt_ASC
-  updatedAt_DESC
-}
-
-input VerbUpdateDataInput {
-  _id: String
-  display: Json
-}
-
-input VerbUpdateInput {
-  _id: String
-  display: Json
-}
-
-input VerbUpdateManyMutationInput {
-  _id: String
-  display: Json
-}
-
-input VerbUpdateOneInput {
-  connect: VerbWhereUniqueInput
-  create: VerbCreateInput
-  delete: Boolean
-  disconnect: Boolean
-  update: VerbUpdateDataInput
-  upsert: VerbUpsertNestedInput
-}
-
-input VerbUpsertNestedInput {
-  create: VerbCreateInput!
-  update: VerbUpdateDataInput!
-}
-
-input VerbWhereInput {
-  _id: String
-  _id_contains: String
-  _id_ends_with: String
-  _id_gt: String
-  _id_gte: String
-  _id_in: [String!]
-  _id_lt: String
-  _id_lte: String
-  _id_not: String
-  _id_not_contains: String
-  _id_not_ends_with: String
-  _id_not_in: [String!]
-  _id_not_starts_with: String
-  _id_starts_with: String
-  AND: [VerbWhereInput!]
-  id: ID
-  id_contains: ID
-  id_ends_with: ID
-  id_gt: ID
-  id_gte: ID
-  id_in: [ID!]
-  id_lt: ID
-  id_lte: ID
-  id_not: ID
-  id_not_contains: ID
-  id_not_ends_with: ID
-  id_not_in: [ID!]
-  id_not_starts_with: ID
-  id_starts_with: ID
-  NOT: [VerbWhereInput!]
-  OR: [VerbWhereInput!]
-}
-
-input VerbWhereUniqueInput {
-  _id: String
   id: ID
 }

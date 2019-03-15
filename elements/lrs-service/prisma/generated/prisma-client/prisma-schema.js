@@ -5,173 +5,7 @@ module.exports = {
     // For more information, please read the docs: https://www.prisma.io/docs/prisma-client/
 
     /* GraphQL */ `
-      type Actor {
-        id: ID!
-        name: String
-        mbox: String
-      }
-
-      type ActorConnection {
-        pageInfo: PageInfo!
-        edges: [ActorEdge]!
-        aggregate: AggregateActor!
-      }
-
-      input ActorCreateInput {
-        name: String
-        mbox: String
-      }
-
-      input ActorCreateOneInput {
-        create: ActorCreateInput
-        connect: ActorWhereUniqueInput
-      }
-
-      type ActorEdge {
-        node: Actor!
-        cursor: String!
-      }
-
-      enum ActorOrderByInput {
-        id_ASC
-        id_DESC
-        name_ASC
-        name_DESC
-        mbox_ASC
-        mbox_DESC
-        createdAt_ASC
-        createdAt_DESC
-        updatedAt_ASC
-        updatedAt_DESC
-      }
-
-      type ActorPreviousValues {
-        id: ID!
-        name: String
-        mbox: String
-      }
-
-      type ActorSubscriptionPayload {
-        mutation: MutationType!
-        node: Actor
-        updatedFields: [String!]
-        previousValues: ActorPreviousValues
-      }
-
-      input ActorSubscriptionWhereInput {
-        mutation_in: [MutationType!]
-        updatedFields_contains: String
-        updatedFields_contains_every: [String!]
-        updatedFields_contains_some: [String!]
-        node: ActorWhereInput
-        AND: [ActorSubscriptionWhereInput!]
-        OR: [ActorSubscriptionWhereInput!]
-        NOT: [ActorSubscriptionWhereInput!]
-      }
-
-      input ActorUpdateDataInput {
-        name: String
-        mbox: String
-      }
-
-      input ActorUpdateInput {
-        name: String
-        mbox: String
-      }
-
-      input ActorUpdateManyMutationInput {
-        name: String
-        mbox: String
-      }
-
-      input ActorUpdateOneInput {
-        create: ActorCreateInput
-        update: ActorUpdateDataInput
-        upsert: ActorUpsertNestedInput
-        delete: Boolean
-        disconnect: Boolean
-        connect: ActorWhereUniqueInput
-      }
-
-      input ActorUpsertNestedInput {
-        update: ActorUpdateDataInput!
-        create: ActorCreateInput!
-      }
-
-      input ActorWhereInput {
-        id: ID
-        id_not: ID
-        id_in: [ID!]
-        id_not_in: [ID!]
-        id_lt: ID
-        id_lte: ID
-        id_gt: ID
-        id_gte: ID
-        id_contains: ID
-        id_not_contains: ID
-        id_starts_with: ID
-        id_not_starts_with: ID
-        id_ends_with: ID
-        id_not_ends_with: ID
-        name: String
-        name_not: String
-        name_in: [String!]
-        name_not_in: [String!]
-        name_lt: String
-        name_lte: String
-        name_gt: String
-        name_gte: String
-        name_contains: String
-        name_not_contains: String
-        name_starts_with: String
-        name_not_starts_with: String
-        name_ends_with: String
-        name_not_ends_with: String
-        mbox: String
-        mbox_not: String
-        mbox_in: [String!]
-        mbox_not_in: [String!]
-        mbox_lt: String
-        mbox_lte: String
-        mbox_gt: String
-        mbox_gte: String
-        mbox_contains: String
-        mbox_not_contains: String
-        mbox_starts_with: String
-        mbox_not_starts_with: String
-        mbox_ends_with: String
-        mbox_not_ends_with: String
-        AND: [ActorWhereInput!]
-        OR: [ActorWhereInput!]
-        NOT: [ActorWhereInput!]
-      }
-
-      input ActorWhereUniqueInput {
-        id: ID
-        name: String
-      }
-
-      type AggregateActor {
-        count: Int!
-      }
-
-      type AggregateObject {
-        count: Int!
-      }
-
-      type AggregateResult {
-        count: Int!
-      }
-
-      type AggregateResultScore {
-        count: Int!
-      }
-
       type AggregateStatement {
-        count: Int!
-      }
-
-      type AggregateVerb {
         count: Int!
       }
 
@@ -184,50 +18,6 @@ module.exports = {
       scalar Long
 
       type Mutation {
-        createActor(data: ActorCreateInput!): Actor!
-        updateActor(
-          data: ActorUpdateInput!
-          where: ActorWhereUniqueInput!
-        ): Actor
-        updateManyActors(
-          data: ActorUpdateManyMutationInput!
-          where: ActorWhereInput
-        ): BatchPayload!
-        upsertActor(
-          where: ActorWhereUniqueInput!
-          create: ActorCreateInput!
-          update: ActorUpdateInput!
-        ): Actor!
-        deleteActor(where: ActorWhereUniqueInput!): Actor
-        deleteManyActors(where: ActorWhereInput): BatchPayload!
-        createObject(data: ObjectCreateInput!): Object!
-        updateObject(
-          data: ObjectUpdateInput!
-          where: ObjectWhereUniqueInput!
-        ): Object
-        updateManyObjects(
-          data: ObjectUpdateManyMutationInput!
-          where: ObjectWhereInput
-        ): BatchPayload!
-        upsertObject(
-          where: ObjectWhereUniqueInput!
-          create: ObjectCreateInput!
-          update: ObjectUpdateInput!
-        ): Object!
-        deleteObject(where: ObjectWhereUniqueInput!): Object
-        deleteManyObjects(where: ObjectWhereInput): BatchPayload!
-        createResult(data: ResultCreateInput!): Result!
-        updateManyResults(
-          data: ResultUpdateManyMutationInput!
-          where: ResultWhereInput
-        ): BatchPayload!
-        deleteManyResults(where: ResultWhereInput): BatchPayload!
-        createResultScore(data: ResultScoreCreateInput!): ResultScore!
-        updateManyResultScores(
-          data: ResultScoreUpdateManyMutationInput!
-          where: ResultScoreWhereInput
-        ): BatchPayload!
-        deleteManyResultScores(where: ResultScoreWhereInput): BatchPayload!
         createStatement(data: StatementCreateInput!): Statement!
         updateStatement(
           data: StatementUpdateInput!
@@ -244,19 +34,6 @@ module.exports = {
         ): Statement!
         deleteStatement(where: StatementWhereUniqueInput!): Statement
         deleteManyStatements(where: StatementWhereInput): BatchPayload!
-        createVerb(data: VerbCreateInput!): Verb!
-        updateVerb(data: VerbUpdateInput!, where: VerbWhereUniqueInput!): Verb
-        updateManyVerbs(
-          data: VerbUpdateManyMutationInput!
-          where: VerbWhereInput
-        ): BatchPayload!
-        upsertVerb(
-          where: VerbWhereUniqueInput!
-          create: VerbCreateInput!
-          update: VerbUpdateInput!
-        ): Verb!
-        deleteVerb(where: VerbWhereUniqueInput!): Verb
-        deleteManyVerbs(where: VerbWhereInput): BatchPayload!
       }
 
       enum MutationType {
@@ -269,138 +46,6 @@ module.exports = {
         id: ID!
       }
 
-      type Object {
-        id: ID!
-        _id: String
-        definition: Json
-      }
-
-      type ObjectConnection {
-        pageInfo: PageInfo!
-        edges: [ObjectEdge]!
-        aggregate: AggregateObject!
-      }
-
-      input ObjectCreateInput {
-        _id: String
-        definition: Json
-      }
-
-      input ObjectCreateOneInput {
-        create: ObjectCreateInput
-        connect: ObjectWhereUniqueInput
-      }
-
-      type ObjectEdge {
-        node: Object!
-        cursor: String!
-      }
-
-      enum ObjectOrderByInput {
-        id_ASC
-        id_DESC
-        _id_ASC
-        _id_DESC
-        definition_ASC
-        definition_DESC
-        createdAt_ASC
-        createdAt_DESC
-        updatedAt_ASC
-        updatedAt_DESC
-      }
-
-      type ObjectPreviousValues {
-        id: ID!
-        _id: String
-        definition: Json
-      }
-
-      type ObjectSubscriptionPayload {
-        mutation: MutationType!
-        node: Object
-        updatedFields: [String!]
-        previousValues: ObjectPreviousValues
-      }
-
-      input ObjectSubscriptionWhereInput {
-        mutation_in: [MutationType!]
-        updatedFields_contains: String
-        updatedFields_contains_every: [String!]
-        updatedFields_contains_some: [String!]
-        node: ObjectWhereInput
-        AND: [ObjectSubscriptionWhereInput!]
-        OR: [ObjectSubscriptionWhereInput!]
-        NOT: [ObjectSubscriptionWhereInput!]
-      }
-
-      input ObjectUpdateDataInput {
-        _id: String
-        definition: Json
-      }
-
-      input ObjectUpdateInput {
-        _id: String
-        definition: Json
-      }
-
-      input ObjectUpdateManyMutationInput {
-        _id: String
-        definition: Json
-      }
-
-      input ObjectUpdateOneInput {
-        create: ObjectCreateInput
-        update: ObjectUpdateDataInput
-        upsert: ObjectUpsertNestedInput
-        delete: Boolean
-        disconnect: Boolean
-        connect: ObjectWhereUniqueInput
-      }
-
-      input ObjectUpsertNestedInput {
-        update: ObjectUpdateDataInput!
-        create: ObjectCreateInput!
-      }
-
-      input ObjectWhereInput {
-        id: ID
-        id_not: ID
-        id_in: [ID!]
-        id_not_in: [ID!]
-        id_lt: ID
-        id_lte: ID
-        id_gt: ID
-        id_gte: ID
-        id_contains: ID
-        id_not_contains: ID
-        id_starts_with: ID
-        id_not_starts_with: ID
-        id_ends_with: ID
-        id_not_ends_with: ID
-        _id: String
-        _id_not: String
-        _id_in: [String!]
-        _id_not_in: [String!]
-        _id_lt: String
-        _id_lte: String
-        _id_gt: String
-        _id_gte: String
-        _id_contains: String
-        _id_not_contains: String
-        _id_starts_with: String
-        _id_not_starts_with: String
-        _id_ends_with: String
-        _id_not_ends_with: String
-        AND: [ObjectWhereInput!]
-        OR: [ObjectWhereInput!]
-        NOT: [ObjectWhereInput!]
-      }
-
-      input ObjectWhereUniqueInput {
-        id: ID
-        _id: String
-      }
-
       type PageInfo {
         hasNextPage: Boolean!
         hasPreviousPage: Boolean!
@@ -409,80 +54,6 @@ module.exports = {
       }
 
       type Query {
-        actor(where: ActorWhereUniqueInput!): Actor
-        actors(
-          where: ActorWhereInput
-          orderBy: ActorOrderByInput
-          skip: Int
-          after: String
-          before: String
-          first: Int
-          last: Int
-        ): [Actor]!
-        actorsConnection(
-          where: ActorWhereInput
-          orderBy: ActorOrderByInput
-          skip: Int
-          after: String
-          before: String
-          first: Int
-          last: Int
-        ): ActorConnection!
-        object(where: ObjectWhereUniqueInput!): Object
-        objects(
-          where: ObjectWhereInput
-          orderBy: ObjectOrderByInput
-          skip: Int
-          after: String
-          before: String
-          first: Int
-          last: Int
-        ): [Object]!
-        objectsConnection(
-          where: ObjectWhereInput
-          orderBy: ObjectOrderByInput
-          skip: Int
-          after: String
-          before: String
-          first: Int
-          last: Int
-        ): ObjectConnection!
-        results(
-          where: ResultWhereInput
-          orderBy: ResultOrderByInput
-          skip: Int
-          after: String
-          before: String
-          first: Int
-          last: Int
-        ): [Result]!
-        resultsConnection(
-          where: ResultWhereInput
-          orderBy: ResultOrderByInput
-          skip: Int
-          after: String
-          before: String
-          first: Int
-          last: Int
-        ): ResultConnection!
-        resultScores(
-          where: ResultScoreWhereInput
-          orderBy: ResultScoreOrderByInput
-          skip: Int
-          after: String
-          before: String
-          first: Int
-          last: Int
-        ): [ResultScore]!
-        resultScoresConnection(
-          where: ResultScoreWhereInput
-          orderBy: ResultScoreOrderByInput
-          skip: Int
-          after: String
-          before: String
-          first: Int
-          last: Int
-        ): ResultScoreConnection!
         statement(where: StatementWhereUniqueInput!): Statement
         statements(
           where: StatementWhereInput
@@ -502,224 +73,12 @@ module.exports = {
           first: Int
           last: Int
         ): StatementConnection!
-        verb(where: VerbWhereUniqueInput!): Verb
-        verbs(
-          where: VerbWhereInput
-          orderBy: VerbOrderByInput
-          skip: Int
-          after: String
-          before: String
-          first: Int
-          last: Int
-        ): [Verb]!
-        verbsConnection(
-          where: VerbWhereInput
-          orderBy: VerbOrderByInput
-          skip: Int
-          after: String
-          before: String
-          first: Int
-          last: Int
-        ): VerbConnection!
         node(id: ID!): Node
-      }
-
-      type Result {
-        completion: Boolean
-        success: Boolean
-        score: ResultScore
-      }
-
-      type ResultConnection {
-        pageInfo: PageInfo!
-        edges: [ResultEdge]!
-        aggregate: AggregateResult!
-      }
-
-      input ResultCreateInput {
-        completion: Boolean
-        success: Boolean
-        score: ResultScoreCreateOneInput
-      }
-
-      input ResultCreateOneInput {
-        create: ResultCreateInput
-      }
-
-      type ResultEdge {
-        node: Result!
-        cursor: String!
-      }
-
-      enum ResultOrderByInput {
-        completion_ASC
-        completion_DESC
-        success_ASC
-        success_DESC
-        id_ASC
-        id_DESC
-        createdAt_ASC
-        createdAt_DESC
-        updatedAt_ASC
-        updatedAt_DESC
-      }
-
-      type ResultPreviousValues {
-        completion: Boolean
-        success: Boolean
-      }
-
-      type ResultScore {
-        scaled: Int
-      }
-
-      type ResultScoreConnection {
-        pageInfo: PageInfo!
-        edges: [ResultScoreEdge]!
-        aggregate: AggregateResultScore!
-      }
-
-      input ResultScoreCreateInput {
-        scaled: Int
-      }
-
-      input ResultScoreCreateOneInput {
-        create: ResultScoreCreateInput
-      }
-
-      type ResultScoreEdge {
-        node: ResultScore!
-        cursor: String!
-      }
-
-      enum ResultScoreOrderByInput {
-        scaled_ASC
-        scaled_DESC
-        id_ASC
-        id_DESC
-        createdAt_ASC
-        createdAt_DESC
-        updatedAt_ASC
-        updatedAt_DESC
-      }
-
-      type ResultScorePreviousValues {
-        scaled: Int
-      }
-
-      type ResultScoreSubscriptionPayload {
-        mutation: MutationType!
-        node: ResultScore
-        updatedFields: [String!]
-        previousValues: ResultScorePreviousValues
-      }
-
-      input ResultScoreSubscriptionWhereInput {
-        mutation_in: [MutationType!]
-        updatedFields_contains: String
-        updatedFields_contains_every: [String!]
-        updatedFields_contains_some: [String!]
-        node: ResultScoreWhereInput
-        AND: [ResultScoreSubscriptionWhereInput!]
-        OR: [ResultScoreSubscriptionWhereInput!]
-        NOT: [ResultScoreSubscriptionWhereInput!]
-      }
-
-      input ResultScoreUpdateDataInput {
-        scaled: Int
-      }
-
-      input ResultScoreUpdateManyMutationInput {
-        scaled: Int
-      }
-
-      input ResultScoreUpdateOneInput {
-        create: ResultScoreCreateInput
-        update: ResultScoreUpdateDataInput
-        upsert: ResultScoreUpsertNestedInput
-        delete: Boolean
-        disconnect: Boolean
-      }
-
-      input ResultScoreUpsertNestedInput {
-        update: ResultScoreUpdateDataInput!
-        create: ResultScoreCreateInput!
-      }
-
-      input ResultScoreWhereInput {
-        scaled: Int
-        scaled_not: Int
-        scaled_in: [Int!]
-        scaled_not_in: [Int!]
-        scaled_lt: Int
-        scaled_lte: Int
-        scaled_gt: Int
-        scaled_gte: Int
-        AND: [ResultScoreWhereInput!]
-        OR: [ResultScoreWhereInput!]
-        NOT: [ResultScoreWhereInput!]
-      }
-
-      type ResultSubscriptionPayload {
-        mutation: MutationType!
-        node: Result
-        updatedFields: [String!]
-        previousValues: ResultPreviousValues
-      }
-
-      input ResultSubscriptionWhereInput {
-        mutation_in: [MutationType!]
-        updatedFields_contains: String
-        updatedFields_contains_every: [String!]
-        updatedFields_contains_some: [String!]
-        node: ResultWhereInput
-        AND: [ResultSubscriptionWhereInput!]
-        OR: [ResultSubscriptionWhereInput!]
-        NOT: [ResultSubscriptionWhereInput!]
-      }
-
-      input ResultUpdateDataInput {
-        completion: Boolean
-        success: Boolean
-        score: ResultScoreUpdateOneInput
-      }
-
-      input ResultUpdateManyMutationInput {
-        completion: Boolean
-        success: Boolean
-      }
-
-      input ResultUpdateOneInput {
-        create: ResultCreateInput
-        update: ResultUpdateDataInput
-        upsert: ResultUpsertNestedInput
-        delete: Boolean
-        disconnect: Boolean
-      }
-
-      input ResultUpsertNestedInput {
-        update: ResultUpdateDataInput!
-        create: ResultCreateInput!
-      }
-
-      input ResultWhereInput {
-        completion: Boolean
-        completion_not: Boolean
-        success: Boolean
-        success_not: Boolean
-        score: ResultScoreWhereInput
-        AND: [ResultWhereInput!]
-        OR: [ResultWhereInput!]
-        NOT: [ResultWhereInput!]
       }
 
       type Statement {
         id: ID!
-        actor: Actor
-        verb: Verb
-        object: Object
-        result: Result
-        extensions: Json
+        data: Json!
       }
 
       type StatementConnection {
@@ -729,11 +88,7 @@ module.exports = {
       }
 
       input StatementCreateInput {
-        actor: ActorCreateOneInput
-        verb: VerbCreateOneInput
-        object: ObjectCreateOneInput
-        result: ResultCreateOneInput
-        extensions: Json
+        data: Json!
       }
 
       type StatementEdge {
@@ -744,8 +99,8 @@ module.exports = {
       enum StatementOrderByInput {
         id_ASC
         id_DESC
-        extensions_ASC
-        extensions_DESC
+        data_ASC
+        data_DESC
         createdAt_ASC
         createdAt_DESC
         updatedAt_ASC
@@ -754,7 +109,7 @@ module.exports = {
 
       type StatementPreviousValues {
         id: ID!
-        extensions: Json
+        data: Json!
       }
 
       type StatementSubscriptionPayload {
@@ -776,15 +131,11 @@ module.exports = {
       }
 
       input StatementUpdateInput {
-        actor: ActorUpdateOneInput
-        verb: VerbUpdateOneInput
-        object: ObjectUpdateOneInput
-        result: ResultUpdateOneInput
-        extensions: Json
+        data: Json
       }
 
       input StatementUpdateManyMutationInput {
-        extensions: Json
+        data: Json
       }
 
       input StatementWhereInput {
@@ -802,10 +153,6 @@ module.exports = {
         id_not_starts_with: ID
         id_ends_with: ID
         id_not_ends_with: ID
-        actor: ActorWhereInput
-        verb: VerbWhereInput
-        object: ObjectWhereInput
-        result: ResultWhereInput
         AND: [StatementWhereInput!]
         OR: [StatementWhereInput!]
         NOT: [StatementWhereInput!]
@@ -816,148 +163,9 @@ module.exports = {
       }
 
       type Subscription {
-        actor(where: ActorSubscriptionWhereInput): ActorSubscriptionPayload
-        object(where: ObjectSubscriptionWhereInput): ObjectSubscriptionPayload
-        result(where: ResultSubscriptionWhereInput): ResultSubscriptionPayload
-        resultScore(
-          where: ResultScoreSubscriptionWhereInput
-        ): ResultScoreSubscriptionPayload
         statement(
           where: StatementSubscriptionWhereInput
         ): StatementSubscriptionPayload
-        verb(where: VerbSubscriptionWhereInput): VerbSubscriptionPayload
-      }
-
-      type Verb {
-        id: ID!
-        _id: String
-        display: Json
-      }
-
-      type VerbConnection {
-        pageInfo: PageInfo!
-        edges: [VerbEdge]!
-        aggregate: AggregateVerb!
-      }
-
-      input VerbCreateInput {
-        _id: String
-        display: Json
-      }
-
-      input VerbCreateOneInput {
-        create: VerbCreateInput
-        connect: VerbWhereUniqueInput
-      }
-
-      type VerbEdge {
-        node: Verb!
-        cursor: String!
-      }
-
-      enum VerbOrderByInput {
-        id_ASC
-        id_DESC
-        _id_ASC
-        _id_DESC
-        display_ASC
-        display_DESC
-        createdAt_ASC
-        createdAt_DESC
-        updatedAt_ASC
-        updatedAt_DESC
-      }
-
-      type VerbPreviousValues {
-        id: ID!
-        _id: String
-        display: Json
-      }
-
-      type VerbSubscriptionPayload {
-        mutation: MutationType!
-        node: Verb
-        updatedFields: [String!]
-        previousValues: VerbPreviousValues
-      }
-
-      input VerbSubscriptionWhereInput {
-        mutation_in: [MutationType!]
-        updatedFields_contains: String
-        updatedFields_contains_every: [String!]
-        updatedFields_contains_some: [String!]
-        node: VerbWhereInput
-        AND: [VerbSubscriptionWhereInput!]
-        OR: [VerbSubscriptionWhereInput!]
-        NOT: [VerbSubscriptionWhereInput!]
-      }
-
-      input VerbUpdateDataInput {
-        _id: String
-        display: Json
-      }
-
-      input VerbUpdateInput {
-        _id: String
-        display: Json
-      }
-
-      input VerbUpdateManyMutationInput {
-        _id: String
-        display: Json
-      }
-
-      input VerbUpdateOneInput {
-        create: VerbCreateInput
-        update: VerbUpdateDataInput
-        upsert: VerbUpsertNestedInput
-        delete: Boolean
-        disconnect: Boolean
-        connect: VerbWhereUniqueInput
-      }
-
-      input VerbUpsertNestedInput {
-        update: VerbUpdateDataInput!
-        create: VerbCreateInput!
-      }
-
-      input VerbWhereInput {
-        id: ID
-        id_not: ID
-        id_in: [ID!]
-        id_not_in: [ID!]
-        id_lt: ID
-        id_lte: ID
-        id_gt: ID
-        id_gte: ID
-        id_contains: ID
-        id_not_contains: ID
-        id_starts_with: ID
-        id_not_starts_with: ID
-        id_ends_with: ID
-        id_not_ends_with: ID
-        _id: String
-        _id_not: String
-        _id_in: [String!]
-        _id_not_in: [String!]
-        _id_lt: String
-        _id_lte: String
-        _id_gt: String
-        _id_gte: String
-        _id_contains: String
-        _id_not_contains: String
-        _id_starts_with: String
-        _id_not_starts_with: String
-        _id_ends_with: String
-        _id_not_ends_with: String
-        AND: [VerbWhereInput!]
-        OR: [VerbWhereInput!]
-        NOT: [VerbWhereInput!]
-      }
-
-      input VerbWhereUniqueInput {
-        id: ID
-        _id: String
       }
     `
 };
