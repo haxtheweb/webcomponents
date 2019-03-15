@@ -5,7 +5,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { MutableData } from "@polymer/polymer/lib/mixins/mutable-data.js";
 import "@polymer/iron-list/iron-list.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/query/site-query.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js";
 /**
  * `site-render-query`
  * `Render a query result as an iron-list`

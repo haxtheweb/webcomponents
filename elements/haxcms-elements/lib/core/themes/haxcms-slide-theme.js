@@ -3,9 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/theme/HAXCMSThemeWiring.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/site-pieces/site-title.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/navigation/site-menu-button.js";
+import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";

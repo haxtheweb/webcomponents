@@ -1,5 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import { HAXCMSThemeWiring } from "@lrnwebcomponents/haxcms-elements/lib/theme/HAXCMSThemeWiring.js";
+import { HAXCMSThemeWiring } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";

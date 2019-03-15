@@ -5,7 +5,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/query/site-query.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 
 /**

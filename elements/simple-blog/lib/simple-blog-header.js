@@ -1,7 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/site-pieces/site-rss-button.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js";
 /**
  * `simple-blog-header`
  * `A simple blog header to the front of the site`

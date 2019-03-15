@@ -92,7 +92,6 @@ class SiteQueryMenuSlice extends PolymerElement {
       items.forEach((item, i) => {
         this._spiderChildren(item, data, start, end, parent, false);
       });
-      console.log(data);
       return data;
     }
   }

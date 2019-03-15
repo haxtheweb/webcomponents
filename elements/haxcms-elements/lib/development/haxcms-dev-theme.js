@@ -4,24 +4,24 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/theme/HAXCMSThemeWiring.js";
+import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-list/iron-list.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/active-pieces/site-active-title.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/blocks/site-children-block.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/navigation/site-breadcrumb.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/navigation/site-menu.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/navigation/site-menu-button.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/navigation/site-top-menu.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/query/site-query.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/query/site-render-query.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/query/site-query-menu-slice.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/site-pieces/site-rss-button.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/site-pieces/site-title.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/blocks/site-children-block.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-top-menu.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-render-query.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query-menu-slice.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js";
 /**
  * `haxcms-dev-theme`
  * `A theme intended as the starting point to fork from and build new themes for HAXCMS

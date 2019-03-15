@@ -1,7 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/navigation/site-menu-button.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/simple-datetime/simple-datetime.js";
 /**

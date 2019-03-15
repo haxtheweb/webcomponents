@@ -3,15 +3,15 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/theme/HAXCMSThemeWiring.js";
+import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
 import "@lrnwebcomponents/grid-plate/grid-plate.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/active-pieces/site-active-title.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/blocks/site-children-block.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/navigation/site-breadcrumb.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/navigation/site-top-menu.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/site-pieces/site-rss-button.js";
-import "@lrnwebcomponents/haxcms-elements/lib/theme/site-pieces/site-title.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/blocks/site-children-block.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-top-menu.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js";
 /**
  * `haxcms-basic-theme`
  * `An incredibly basic theme. Great starting point for new site discussions.
@@ -108,7 +108,7 @@ class HAXCMSBasicTheme extends HAXCMSTheme(PolymerElement) {
       <site-top-menu noink indicator="arrow" arrow-size="8">
         <site-title slot="prefix" class="spacing"></site-title>
       </site-top-menu>
-      <div id="contentcontainer" class="container">
+      <div class="container">
         <site-breadcrumb></site-breadcrumb>
         <grid-plate layout="1-3">
           <div slot="col-1" class="left-col">
@@ -119,7 +119,7 @@ class HAXCMSBasicTheme extends HAXCMSTheme(PolymerElement) {
               <site-rss-button type="rss"></site-rss-button>
             </div>
           </div>
-          <div slot="col-2">
+          <div id="contentcontainer" slot="col-2">
             <div id="slot"><slot></slot></div>
           </div>
         </grid-plate>
