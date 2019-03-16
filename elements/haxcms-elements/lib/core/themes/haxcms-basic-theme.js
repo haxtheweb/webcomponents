@@ -4,15 +4,8 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
-import "@lrnwebcomponents/grid-plate/grid-plate.js";
+import { BasicTemplate } from "@lrnwebcomponents/haxcms-elements/lib/ui-components/templates/basic-template.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/blocks/site-children-block.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-top-menu.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js";
 /**
  * `haxcms-basic-theme`
  * `An incredibly basic theme. Great starting point for new site discussions.
@@ -21,9 +14,10 @@ import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js";
  * @polymer
  * @demo demo/index.html
  */
-class HAXCMSBasicTheme extends HAXCMSTheme(PolymerElement) {
+class HAXCMSBasicTheme extends HAXCMSTheme(BasicTemplate(PolymerElement)) {
   // render function
   static get template() {
+    let template = super.template;
     return html`
       <style include="simple-colors">
         :host {
@@ -84,9 +78,10 @@ class HAXCMSBasicTheme extends HAXCMSTheme(PolymerElement) {
           }
         }
         site-title {
-          position: relative;
+          left: 0;
+          margin: 0 32px;
+          position: absolute;
           overflow: hidden;
-          height: 50px;
           --site-title-link: {
             display: inline-block;
             color: #fafafa;
@@ -96,8 +91,8 @@ class HAXCMSBasicTheme extends HAXCMSTheme(PolymerElement) {
             font-family: "Montserrat", "Helvetica", "Tahoma", "Geneva", "Arial",
               sans-serif;
             font-size: 26px;
-            margin: 4px 16px 4px 0px;
-            padding: 8px 0;
+            margin: 0;
+            padding: 0;
             text-align: center;
             font-weight: 100;
           }
@@ -121,33 +116,7 @@ class HAXCMSBasicTheme extends HAXCMSTheme(PolymerElement) {
           }
         }
       </style>
-      <site-top-menu noink indicator="arrow" arrow-size="8">
-        <site-title slot="prefix" class="spacing"></site-title>
-      </site-top-menu>
-      <div class="container">
-        <site-breadcrumb></site-breadcrumb>
-        <grid-plate layout="1-3">
-          <div slot="col-1" class="left-col">
-            <div class="menu-buttons">
-              <site-menu-button type="prev" position="top"></site-menu-button>
-              <site-menu-button type="next" position="top"></site-menu-button>
-            </div>
-            <site-active-title
-              dynamic-methodology="ancestor"
-            ></site-active-title>
-            <site-children-block
-              dynamic-methodology="ancestor"
-            ></site-children-block>
-            <div class="buttons">
-              <site-rss-button type="atom"></site-rss-button>
-              <site-rss-button type="rss"></site-rss-button>
-            </div>
-          </div>
-          <div id="contentcontainer" slot="col-2">
-            <div id="slot"><slot></slot></div>
-          </div>
-        </grid-plate>
-      </div>
+      ${template}
     `;
   }
 }
