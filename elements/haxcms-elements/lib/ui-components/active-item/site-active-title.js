@@ -43,14 +43,12 @@ class SiteActiveTitle extends PolymerElement {
    */
   static get properties() {
     return {
-      pageTitle: {
-        type: String
-      },
-      parentTitle: {
-        type: String
-      },
-      ancestorTitle: {
-        type: String
+      /**
+       * Turn off the title fallback to avoid empty titles
+       */
+      noFallback: {
+        type: Boolean,
+        value: false
       },
       /**
        * How we should obtain the parent who's children we should show
@@ -70,9 +68,15 @@ class SiteActiveTitle extends PolymerElement {
   _makeTitle(dynamicMethodology, pageTitle, parentTitle, ancestorTitle) {
     switch (dynamicMethodology) {
       case "above":
+        if (parentTitle === "" && !this.noFallback) {
+          return pageTitle;
+        }
         return parentTitle;
         break;
       case "ancestor":
+        if (ancestorTitle === "" && !this.noFallback) {
+          return pageTitle;
+        }
         return ancestorTitle;
         break;
       default:
