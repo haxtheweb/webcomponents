@@ -117,6 +117,24 @@ class HAXCMSBasicTheme extends HAXCMSTheme(BasicTemplate(PolymerElement)) {
             color: var(--haxcms-basic-theme-accent-color);
           }
         }
+        site-footer {
+          padding: 32px 64px;
+          background-color: #37474f;
+        }
+        site-modal {
+          --site-modal-icon: {
+            color: white;
+          }
+          --site-modal-tooltip: {
+            --paper-tooltip-background: #000000;
+            --paper-tooltip-opacity: 1;
+            --paper-tooltip-text-color: #ffffff;
+            --paper-tooltip-delay-in: 0;
+            --paper-tooltip: {
+              border-radius: 0;
+            }
+          }
+        }
       </style>
       ${template}
     `;

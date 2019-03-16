@@ -1,10 +1,11 @@
 :host {
   display: block;
+}
+:host([debug]) {
   font-family: monospace;
   white-space: pre;
-  margin: 1em 0px;
+  margin: 16px 0px;
 }
-
 :host([hidden]) {
   display: none;
 }
