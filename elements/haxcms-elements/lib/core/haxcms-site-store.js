@@ -99,6 +99,35 @@ class Store {
     return null;
   }
   /**
+   * get theme data from manifest + activeId combo
+   */
+  get themeData() {
+    if (this.manifest) {
+      var themeData = {};
+      // this is required so better be...
+      if (this.manifest.metadata.theme) {
+        themeData = this.manifest.metadata.theme;
+      } else {
+        // fallback juuuuust to be safe...
+        themeData = {
+          "haxcms-basic-theme": {
+            element: "haxcms-basic-theme",
+            path:
+              "@lrnwebcomponents/haxcms-elements/lib/core/themes/haxcms-basic-theme.js",
+            name: "Basic theme"
+          }
+        };
+      }
+      // ooo you sneaky devil you...
+      if (this.activeItem) {
+        if (this.activeItem.metadata.theme) {
+          return this.activeItem.metadata.theme;
+        }
+      }
+      return themeData;
+    }
+  }
+  /**
    * Get the active manifest index array position
    * -1 if not found
    */
@@ -187,6 +216,7 @@ decorate(Store, {
   manifest: observable, // JOS / manifest
   routerManifest: computed, // router mixed in manifest w/ routes / paths
   siteTitle: computed,
+  themeData: computed, // get the active theme from manifest + activeId
   homeLink: computed,
   activeId: observable, // this affects all state changes associated to activeItem
   activeItem: computed, // active item object

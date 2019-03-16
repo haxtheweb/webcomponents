@@ -111,7 +111,9 @@ class SiteMenu extends PolymerElement {
   disconnectedCallback() {
     super.disconnectedCallback();
     this.__disposer();
-    this.__disposer2();
+    if (this.__disposer2) {
+      this.__disposer2();
+    }
     this.$.menu.removeEventListener(
       "active-item",
       this.mapMenuActiveChanged.bind(this)

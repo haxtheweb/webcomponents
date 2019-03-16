@@ -235,7 +235,7 @@ class SiteTopMenu extends PolymerElement {
       this.__disposer2 = autorun(() => {
         this.activeId = toJS(store.activeId);
       });
-    }, 5);
+    }, 50);
     window.addEventListener(
       "resize",
       () => {
@@ -247,7 +247,9 @@ class SiteTopMenu extends PolymerElement {
   disconnectedCallback() {
     super.disconnectedCallback();
     this.__disposer();
-    this.__disposer2();
+    if (this.__disposer2) {
+      this.__disposer2();
+    }
     window.removeEventListener(
       "resize",
       () => {

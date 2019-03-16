@@ -108,7 +108,9 @@ class HAXCMSBasicTheme extends HAXCMSTheme(BasicTemplate(PolymerElement)) {
           display: flex;
         }
         site-menu-button {
-          --site-menu-button-button: {
+          --site-menu-button-icon: {
+            width: 32px;
+            height: 32px;
             color: white;
           }
           --site-menu-button-button-hover: {

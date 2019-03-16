@@ -107,6 +107,12 @@ class HAXCMSDevTheme extends HAXCMSTheme(PolymerElement) {
             color: #ffffff;
           }
         }
+        site-menu-button {
+          --site-menu-button-icon: {
+            width: 32px;
+            height: 32px;
+          }
+        }
       </style>
       <site-top-menu noink indicator="arrow" arrow-size="8">
         <div slot="suffix" class="spacing">

@@ -1,5 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { setPassiveTouchGestures } from "@polymer/polymer/lib/utils/settings.js";
+import { updateStyles } from "@polymer/polymer/lib/mixins/element-mixin.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
@@ -8,7 +9,7 @@ import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-progress/paper-progress.js";
-import { observable, decorate, computed } from "mobx";
+import { autorun, toJS } from "mobx";
 import { store } from "./haxcms-site-store.js";
 import "./haxcms-site-router.js";
 import "./haxcms-editor-builder.js";
@@ -187,10 +188,13 @@ let HAXCMSSiteBuilder = Polymer({
       "json-outline-schema-active-item-changed",
       this._setActiveItem.bind(this)
     );
+    window.SimpleToast.requestAvailability();
   },
   attached: function() {
     window.SimpleModal.requestAvailability();
-    window.SimpleToast.requestAvailability();
+    this.__disposer = autorun(() => {
+      this.themeData = toJS(store.themeData);
+    });
     this.editorBuilder = document.createElement("haxcms-editor-builder");
     // attach editor builder after we've appended to the screen
     document.body.appendChild(this.editorBuilder);
@@ -221,8 +225,8 @@ let HAXCMSSiteBuilder = Polymer({
       "json-outline-schema-active-item-changed",
       this._setActiveItem.bind(this)
     );
+    this.__disposer();
   },
-
   /**
    * set global active item
    */
@@ -393,6 +397,9 @@ let HAXCMSSiteBuilder = Polymer({
    */
   _manifestChanged: function(newValue, oldValue) {
     if (newValue) {
+      // ensure there's a dynamicELementLoader defined
+      // @todo this could also be a place to mix in criticals
+      // that are system required yet we lazy load like grid-plate
       if (!newValue.metadata.dynamicElementLoader) {
         newValue.metadata.dynamicElementLoader = {
           "a11y-gif-player":
@@ -441,16 +448,6 @@ let HAXCMSSiteBuilder = Polymer({
       }
       store.manifest = newValue;
       window.cmsSiteEditor.jsonOutlineSchema = newValue;
-      // only set these if the path changes
-      if (
-        this.themeData &&
-        this.themeData.path === newValue.metadata.theme.path
-      ) {
-      } else {
-        // this is a forcible set which means it'll trigger a new value each time
-        // ensure that the theme data actually DOES change or this causes unneeded state rebuilding
-        this.set("themeData", newValue.metadata.theme);
-      }
       this.fire("json-outline-schema-changed", newValue);
     }
   },
@@ -461,8 +458,10 @@ let HAXCMSSiteBuilder = Polymer({
   _themeChanged: function(newValue, oldValue) {
     if (newValue && oldValue) {
       if (
+        window.cmsSiteEditor &&
+        window.cmsSiteEditor.instance &&
         typeof window.cmsSiteEditor.instance.haxCmsSiteEditorElement !==
-        typeof undefined
+          typeof undefined
       ) {
         window.cmsSiteEditor.instance.appendChild(
           window.cmsSiteEditor.instance.haxCmsSiteEditorElement
@@ -476,8 +475,6 @@ let HAXCMSSiteBuilder = Polymer({
       this.wipeSlot(this, "*");
       // create the 'theme' as a new element
       this.themeElement = document.createElement(theme.element);
-      // give it our manifest
-      this.themeElement.manifest = this.manifest;
       // weird but definition already here so we should be able
       // to just use this without an import, it's possible..
       if (typeof this.__imported[theme.element] !== typeof undefined) {
@@ -493,6 +490,7 @@ let HAXCMSSiteBuilder = Polymer({
             dom(this).appendChild(this.themeElement);
             this.__imported[theme.element] = theme.element;
             this.themeLoaded = true;
+            updateStyles();
           });
         } catch (err) {
           // error in the event this is a double registration

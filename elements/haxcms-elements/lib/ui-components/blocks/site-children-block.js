@@ -249,12 +249,14 @@ class SiteChildrenBlock extends PolymerElement {
       this.__disposer2 = autorun(() => {
         this.activeId = toJS(store.activeId);
       });
-    }, 5);
+    }, 50);
   }
   disconnectedCallback() {
     super.disconnectedCallback();
     this.__disposer();
-    this.__disposer2();
+    if (this.__disposer2) {
+      this.__disposer2();
+    }
   }
 }
 window.customElements.define(SiteChildrenBlock.tag, SiteChildrenBlock);
