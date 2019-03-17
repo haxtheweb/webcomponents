@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>ScrollButton: scroll-button Demo</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../scroll-button.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles">
+    #top {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      z-index: 10000;
+      --scroll-button-button: {
+        border-radius: 10px;
+      }
+    }
+    #btn {
+      margin: 0 auto;
+      display: flex;
+    }
+    </style>
+  </head>
+  <body>
+    <scroll-button id="btn" icon="icons:expand-more" label="Get started" position="right"></scroll-button>
+    <scroll-button id="top"></scroll-button>
+    <div class="vertical-section-container centered">
+      <h3>Basic scroll-button demo</h3>
+      <h3>Basic scroll-button demo</h3>
+      <h3>Basic scroll-button demo</h3>
+      <h3>Basic scroll-button demo</h3>
+      <h3>Basic scroll-button demo</h3>
+      <h3>Basic scroll-button demo</h3>
+      <h3>Basic scroll-button demo</h3>
+      <h3>Basic scroll-button demo</h3>
+      <h3>Basic scroll-button demo</h3>
+      <h3>Basic scroll-button demo</h3>
+      <h3>Basic scroll-button demo</h3>
+      <h3>Basic scroll-button demo</h3>
+      <h3>Basic scroll-button demo</h3>
+      <h3>Basic scroll-button demo</h3>
+      <h3>Basic scroll-button demo</h3>
+      <h3>Basic scroll-button demo</h3>
+      <h3>Basic scroll-button demo</h3>
+      <h3>Basic scroll-button demo</h3>
+      <h3>Basic scroll-button demo</h3>
+      <h3>Basic scroll-button demo</h3>
+      <h3>Basic scroll-button demo</h3>
+      <h3>Basic scroll-button demo</h3>
+      <h3>Basic scroll-button demo</h3>
+      <h3>Basic scroll-button demo</h3>
+      <h3>Basic scroll-button demo</h3>
+      <h3>Basic scroll-button demo</h3>
+      <h3 id="trg">Basic scroll-button demo</h3>
+      <demo-snippet>
+        <template>
+        </template>
+      </demo-snippet>
+    </div>
+    <script>
+      document.getElementById('btn').target = document.getElementById('trg');
+    </script>
+  </body>
+</html>
