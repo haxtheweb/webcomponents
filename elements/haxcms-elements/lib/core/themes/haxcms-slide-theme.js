@@ -5,6 +5,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-dot-indicator";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/iron-icons/iron-icons.js";
@@ -97,7 +98,7 @@ class HAXCMSSlideTheme extends HAXCMSTheme(PolymerElement) {
           outline: 1px dashed var(--haxcms-color, yellow);
           outline-offset: -1px;
         }
-        site-title {
+        .site-label-wrapper {
           vertical-align: middle;
           display: flex;
           justify-content: center;
@@ -105,6 +106,9 @@ class HAXCMSSlideTheme extends HAXCMSTheme(PolymerElement) {
           height: 60px;
           left: 0;
           right: 0;
+        }
+        site-title {
+          display: inline-flex;
           --site-title-link: {
             text-decoration: none;
           }
@@ -114,6 +118,10 @@ class HAXCMSSlideTheme extends HAXCMSTheme(PolymerElement) {
             margin: 0;
             padding: 0;
           }
+        }
+        site-dot-indicator {
+          display: inline-flex;
+          --site-dot-indicator-color: black;
         }
         .bottom-wrapper {
           position: fixed;
@@ -143,7 +151,10 @@ class HAXCMSSlideTheme extends HAXCMSTheme(PolymerElement) {
             position="top"
           ></site-menu-button>
         </div>
-        <site-title></site-title>
+        <div class="site-label-wrapper">
+          <site-title></site-title>
+          <site-dot-indicator></site-dot-indicator>
+        </div>
       </div>
     `;
   }
