@@ -101,7 +101,7 @@ let LrnIcon = Polymer({
         @apply --lrn-icon;
       }
     </style>
-    <iron-icon icon$="[[icon]]"></iron-icon>
+    <iron-icon icon$="lrn:[[icon]]"></iron-icon>
   `,
 
   is: "lrn-icon",
