@@ -10,12 +10,12 @@
       import '../lib/simple-colors-picker.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
-      #demo, #demo p {
+      .demo, .demo p {
         display: flex;
         justify-content: space-between;
         align-items: center;
       }
-      #demo label {
+      .demo label {
         margin-right: 5px;
       }
     </style>
@@ -23,14 +23,31 @@
   <body>
     <div class="vertical-section-container centered">
       <h1>simple-color-pickers demo</h1>
-      <h2>The picker types</h2>
-      <p></p>
+      <h2>Default Color Picker</h2>
       <demo-snippet>
         <template>
-          <div id="demo">
-            <p><label>CSS Variable Swatches: </label><simple-colors-picker hide-option-labels shades></simple-colors-picker></p>
-            <p><label>Acccent-Color Names: </label><simple-colors-picker value="pink"></simple-colors-picker></p>
+          <div class="demo">
+            <p><label>Acccent-Color Names: </label><simple-colors-picker id="accents" value="pink"></simple-colors-picker></p>
           </div>
+          <script>
+            document.getElementById('accents').addEventListener('change',e => {
+              if(e.detail.value !== null) alert('accent-color="'+e.detail.value+'"');
+            });
+          </script>
+        </template>
+      </demo-snippet>
+      
+      <h2>Shade Picker</h2>
+      <demo-snippet>
+        <template>
+          <div class="demo">
+            <p><label>CSS Variable Shades: </label><simple-colors-picker id="shades" hide-option-labels shades></simple-colors-picker></p>
+          </div>
+          <script>
+            document.getElementById('shades').addEventListener('change',e => {
+              if(e.detail.value !== null) alert('color: var(--'+e.detail.value+');');
+            });
+          </script>
         </template>
       </demo-snippet>
     </div>

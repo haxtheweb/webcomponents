@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>SimpleColors: Getting Started</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script type="module">
+      import '../node_modules/@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../simple-colors.js';
+      import '../lib/simple-colors-picker.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles">
+      div {
+        padding: 20px;
+        margin: 0 0 15px;
+      }
+      button {
+        color: var(--simple-colors-default-theme-grey-1);
+        border-radius: 3px;
+        padding: 3px 5px;
+        font-size: 110%;
+        cursor: pointer;
+      }
+      .box {
+        background-color: var(--simple-colors-default-theme-grey-1);
+        border: 1px solid var(--simple-colors-default-theme-grey-2);
+        display: block;
+        margin: 0 0 15px;
+        padding: 0 20px 20px;
+      }
+      simple-colors {
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h1>Getting Started</h1>
+      <p>
+        By <tt>default</tt>, simple-colors has the following 18 base colors: 
+        <tt>grey</tt>, <tt>red</tt>, <tt>pink</tt>, <tt>purple</tt>, 
+        <tt>deep-purple</tt>, <tt>indigo</tt>, <tt>blue</tt>, <tt>light-blue</tt>, 
+        <tt>cyan</tt>, <tt>teal</tt>, <tt>green</tt>, 
+        <tt></tt>light-green</tt>, <tt>lime</tt>, <tt>yellow</tt>, <tt>amber</tt>, 
+        <tt>orange</tt>, <tt>deep-orange</tt>, <tt>brown</tt>, and <tt>blue-grey</tt>. 
+        Each color has 12 shades, those shades will vary based on theme and dark. 
+      </p>
+      <h2>Dark Attribute</h2>
+      <p>
+        Your color will invert automatically when the <tt>dark</tt> 
+        attribute is set, by using the <tt>default-theme</tt> CSS variables and 
+        classes, as in 
+        <tt>--simple-colors-<em><strong>default</strong></em>-theme-red-8</tt>. 
+        Or you can use the 
+        <tt>--simple-colors-<em><strong>fixed</strong></em>-theme-red-8</tt> 
+        so that your color never inverts.
+      </p>  
+      <h2>Accent-Color Attribute</h2>
+      <p>
+        You can let the color be determined  contextually based on the 
+        <tt>accent-color</tt> attribute by using the <tt>accent</tt> 
+        CSS variables and classes, as in 
+        <tt>--simple-colors-default-theme-<em><strong>accent</strong></em>-8</tt>. 
+        Or you can specifically name a color so that color stays the same, as in 
+        <tt>--simple-colors-default-theme-<em><strong>red</strong></em>-8</tt>. 
+      </p>
+      <demo-snippet>
+        <template>
+          <style is="custom-style" include="simple-colors">
+            .box {
+              color: var(--simple-colors-default-theme-grey-12);
+              background-color: var(--simple-colors-default-theme-accent-1);
+              border: 4px solid var(--simple-colors-fixed-theme-accent-6);
+            }
+            .button {
+              background-color: var(--simple-colors-default-theme-accent-7);
+              border: 2px solid var(--simple-colors-default-theme-accent-8);
+            }
+            .button:hover {
+              background-color: var(--simple-colors-default-theme-accent-8);
+            }
+            .confirm {
+              background-color: var(--simple-colors-default-theme-blue-7);
+              border: 2px solid var(--simple-colors-default-theme-blue-8);
+            }
+            .confirm:hover {
+              background-color: var(--simple-colors-default-theme-blue-8);
+            }
+            .delete {
+              background-color: var(--simple-colors-default-theme-red-7);
+              border: 2px solid var(--simple-colors-default-theme-red-8);
+            }
+            .delete:hover {
+              background-color: var(--simple-colors-default-theme-red-8);
+            }
+          </style>
+          <simple-colors>
+            <div class="box">
+              <p class="simple-colors-default-theme-accent-7-text">A box.</p>
+              <button class="button">
+                Button
+              </button>
+              <button class="confirm">Save</button>
+              <button class="delete">Delete</button>
+            </div>
+          </simple-colors>
+          <simple-colors dark>
+            <div class="box">
+              <p class="simple-colors-default-theme-accent-7-text">
+                A box with <tt>dark</tt> attribute set.
+              </p>
+              <button class="button">
+                Button
+              </button>
+              <button class="confirm">Save</button>
+              <button class="delete">Delete</button>
+            </div>
+          </simple-colors>
+          <simple-colors accent-color="cyan">
+            <div class="box">
+              <p class="simple-colors-default-theme-accent-7-text">
+                A box with <tt>accent-color</tt> 
+                attribute set to <tt>cyan</tt>.
+              </p>
+              <button class="button">
+                Button
+              </button>
+              <button class="confirm">Save</button>
+              <button class="delete">Delete</button>
+            </div>
+          </simple-colors>
+          <simple-colors accent-color="cyan" dark>
+            <div class="box">
+              <p class="simple-colors-default-theme-accent-7-text">
+                  A box with accent-color <tt>dark</tt> attribute set and 
+                  <tt>accent-color</tt> attribute set to <tt>cyan</tt>.
+              </p>
+              <button class="button">
+                Button
+              </button>
+              <button class="confirm">Save</button>
+              <button class="delete">Delete</button>
+            </div>
+          </simple-colors>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

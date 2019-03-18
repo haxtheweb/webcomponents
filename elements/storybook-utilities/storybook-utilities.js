@@ -147,6 +147,7 @@ export class StorybookUtilities {
   {
     "of": "a11y-collapse",                                          //the catergory this story will be under
     "name": "a11y-collapse-group",                                   //the name of the element
+    "alias": "accordion",                                           //optional alias for storybook menu item
     "props": A11yCollapseGroup.properties,                          //an object with properties to bind
     "slots": {
       "title": { "name": "title", "type": "String", "value": ``},   //an named slot slot to bind
@@ -159,10 +160,11 @@ export class StorybookUtilities {
    * @returns {object} the slot content to wire to slots
    */
   addLiveDemo(story, escape = false) {
+    let alias = story.alias !== undefined ? story.alias : story.name;
     story.demo = storiesOf(story.of, module);
     story.demo.addDecorator(storybookBridge.withKnobs);
     story.demo.add(
-      story.name,
+      alias,
       () => {
         story.slotted2 = ``;
         Object.values(this.getBindings(story.slots)).forEach(slot => {
@@ -177,7 +179,7 @@ export class StorybookUtilities {
             story.attr2 += ` ${prop.id}=${prop.value}`;
         });
         return `
-        <h1>${story.name}</h1>
+        <h1>${alias}</h1>
         <${story.name}${story.attr2}${story.attr}>
           ${story.slotted2}
           ${story.slotted}

@@ -17,21 +17,26 @@
   <body>
     <div class="vertical-section-container centered">
       <h1>video-player Demo</h1>
-      <!--h2>video-player for youtube + repair to correctly normalize embed address</h2>
+      <h2>video-player for youtube + repair to correctly normalize embed address</h2>
       <demo-snippet>
         <template>
           <video-player source="https://www.youtube.com/watch?v=o9RypkhGqrg"></video-player>
-          <video-player source="https://www.youtube-nocookie.com/embed/o9RypkhGqrg"></video-player>
-          <video-player source="https://www.youtube.com/embed/o9RypkhGqrg"></video-player>
-          <video-player source="https://youtu.be/o9RypkhGqrg"></video-player>
+          <video-player dark source="https://www.youtube-nocookie.com/embed/o9RypkhGqrg"></video-player>
+          <video-player accent-color="orange" source="https://www.youtube.com/embed/o9RypkhGqrg"></video-player>
+          <video-player accent-color="orange" dark source="https://youtu.be/o9RypkhGqrg"></video-player>
         </template>
-      </demo-snippet-->
+      </demo-snippet>
 
       <h2>video-player for youtube with timestamp</h2>
       <demo-snippet>
         <template>
-          <video-player source="https://www.youtube.com/watch?v=BKorP55Aqvg&t=2m44s"></video-player>
           <video-player 
+            accent-color="red" 
+            source="https://www.youtube.com/watch?v=BKorP55Aqvg&t=2m44s">
+          </video-player>
+          <video-player 
+            accent-color="red"
+            dark 
             source="https://personal.psu.edu/lnm105/stclair.mp4#t=60,120" 
             tracks="[{ &quot;src&quot;: &quot;samples/stclair.vtt&quot;, &quot;kind&quot;: &quot;subtitles&quot;, &quot;srclang&quot;: &quot;en&quot;, &quot;label&quot;: &quot;English&quot; }]"
             thumbnail-src="samples/stclair.jpg">
@@ -40,19 +45,29 @@
         </template>
       </demo-snippet>
 
-      <!--h2>video-player for vimeo + repair to correctly normalize embed address</h2>
+      <h2>video-player for vimeo + repair to correctly normalize embed address</h2>
       <demo-snippet>
         <template>
-          <video-player source="https://vimeo.com/144218562" caption="Things and stuff, is where the world is." secondary-color="#f44336"></video-player>
-          <video-player source="https://player.vimeo.com/video/144218562"></video-player>
+          <video-player 
+            source="https://vimeo.com/144218562" 
+            caption="Things and stuff, is where the world is.">
+          </video-player>
+          <video-player
+            source="https://player.vimeo.com/video/144218562">
+          </video-player>
         </template>
       </demo-snippet>
 
       <h2>video-player for any address</h2>
       <demo-snippet>
         <template>
-          <video-player sources="[{&quot;src&quot;: &quot;https://clips.vorwaerts-gmbh.de/big_buck_bunny.webm&quot;}]"></video-player>
           <video-player 
+            accent-color="cyan" 
+            sources="[{&quot;src&quot;: &quot;https://clips.vorwaerts-gmbh.de/big_buck_bunny.webm&quot;}]">
+          </video-player>
+          <video-player 
+            accent-color="cyan" 
+            dark
             thumbnail-src="https://www.elmsln.org/sites/redesign/files/styles/square-profile-portrait/public/headshot.jpg?itok=_1HEhahr" 
             tracks="[{&quot;label&quot;:&quot;English&quot;, &quot;kind&quot;:&quot;subtitles&quot;, &quot;srclang&quot;:&quot;en&quot;, &quot;src&quot;:&quot;samples/stclair.vtt&quot; }]" 
             sources="[{ &quot;src&quot;:&quot;https://personal.psu.edu/lnm105/stclair.mp4&quot;, &quot;type&quot;:&quot;video/mp4&quot; }]">
@@ -63,8 +78,15 @@
       <h2>video-player responsive, even if width/height defined</h2>
       <demo-snippet>
         <template>
-          <video-player source="https://vimeo.com/144218562" width="400" height="200"></video-player>
-          <video-player source="https://www.youtube.com/watch?v=o9RypkhGqrg"></video-player>
+          <video-player 
+            source="https://vimeo.com/144218562" 
+            width="400" height="200">
+          </video-player>
+          <video-player
+            accent-color="light-green" 
+            dark 
+            source="https://www.youtube.com/watch?v=o9RypkhGqrg">
+          </video-player>
           <video-player source="https://sketchfab.com/models/25332df5b7174ea6a7301ff67cf0ecff/embed"></video-player>
         </template>
       </demo-snippet>
@@ -73,7 +95,12 @@
       <demo-snippet>
         <template>
           <video-player source="https://vimeo.com/144218562" not-responsive width="400" height="200"></video-player>
-          <video-player source="https://www.youtube.com/watch?v=o9RypkhGqrg" not-responsive></video-player>
+          <video-player 
+            accent-color="pink" 
+            dark
+            source="https://www.youtube.com/watch?v=o9RypkhGqrg" 
+            not-responsive>
+          </video-player>
         </template>
       </demo-snippet>
 
@@ -81,13 +108,21 @@
       <demo-snippet>
         <template>
           <video-player 
+            accent-color="deep-purple"
             source="https://personal.psu.edu/lnm105/stclair.mp4" 
             tracks="[{ &quot;src&quot;: &quot;samples/stclair.vtt&quot;, &quot;kind&quot;: &quot;subtitles&quot;, &quot;srclang&quot;: &quot;en&quot;, &quot;label&quot;: &quot;English&quot; }]"
             thumbnail-src="samples/stclair.jpg">
             <div slot="caption">This is a video caption.</div>
           </video-player>
         </template>
-      </demo-snippet--> 
+      </demo-snippet> 
+      
+      <h2>audio player with transcript</h2>
+      <demo-snippet>
+        <template>
+          <video-player accent-color="lime" dark source="./samples/bueller.mp3" tracks='[{ "src": "./samples/bueller.vtt", "kind": "subtitles", "srclang": "en", "label": "English" }]'></video-player>
+        </template>
+      </demo-snippet>
     </div>
   </body>
 </html>

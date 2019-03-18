@@ -605,29 +605,29 @@
           "inheritedFrom": "ElementMixin"
         },
         {
-          "name": "accentColor",
+          "name": "audioOnly",
           "type": "?",
-          "description": "Optional accent color for controls,\nusing the following materialize \"colors\":\nred, pink, purple, deep-purple, indigo, blue,\nlight blue, cyan, teal, green, light green, lime,\nyellow, amber, orange, deep-orange, and brown.\nDefault is null.",
+          "description": "Is the media an audio file only?",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 352,
+              "line": 348,
               "column": 2
             },
             "end": {
-              "line": 356,
+              "line": 351,
               "column": 3
             }
           },
           "metadata": {
             "polymer": {}
           },
-          "defaultValue": "null"
+          "defaultValue": "false"
         },
         {
-          "name": "crossorigin",
+          "name": "accentColor",
           "type": "?",
-          "description": "Cross origin flag for transcripts to load",
+          "description": "Optional accent color for controls,\nusing the following materialize \"colors\":\nred, pink, purple, deep-purple, indigo, blue,\nlight blue, cyan, teal, green, light green, lime,\nyellow, amber, orange, deep-orange, and brown.\nDefault is null.",
           "privacy": "public",
           "sourceRange": {
             "start": {
@@ -642,12 +642,12 @@
           "metadata": {
             "polymer": {}
           },
-          "defaultValue": "false"
+          "defaultValue": "null"
         },
         {
-          "name": "dark",
+          "name": "crossorigin",
           "type": "?",
-          "description": "Enables darker player.",
+          "description": "Cross origin flag for transcripts to load",
           "privacy": "public",
           "sourceRange": {
             "start": {
@@ -665,9 +665,9 @@
           "defaultValue": "false"
         },
         {
-          "name": "darkTranscript",
+          "name": "dark",
           "type": "?",
-          "description": "Use dark theme on transcript? Default is false, even when player is dark.",
+          "description": "Enables darker player.",
           "privacy": "public",
           "sourceRange": {
             "start": {
@@ -675,7 +675,27 @@
               "column": 2
             },
             "end": {
-              "line": 379,
+              "line": 380,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "darkTranscript",
+          "type": "?",
+          "description": "Use dark theme on transcript? Default is false, even when player is dark.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 384,
+              "column": 2
+            },
+            "end": {
+              "line": 387,
               "column": 3
             }
           },
@@ -691,11 +711,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 383,
+              "line": 391,
               "column": 2
             },
             "end": {
-              "line": 386,
+              "line": 394,
               "column": 3
             }
           },
@@ -711,11 +731,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 390,
+              "line": 398,
               "column": 2
             },
             "end": {
-              "line": 393,
+              "line": 401,
               "column": 3
             }
           },
@@ -731,11 +751,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 397,
+              "line": 405,
               "column": 2
             },
             "end": {
-              "line": 400,
+              "line": 408,
               "column": 3
             }
           },
@@ -751,11 +771,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 404,
+              "line": 412,
               "column": 2
             },
             "end": {
-              "line": 407,
+              "line": 415,
               "column": 3
             }
           },
@@ -772,11 +792,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 411,
+              "line": 419,
               "column": 2
             },
             "end": {
-              "line": 414,
+              "line": 422,
               "column": 3
             }
           },
@@ -793,11 +813,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 418,
+              "line": 426,
               "column": 2
             },
             "end": {
-              "line": 421,
+              "line": 429,
               "column": 3
             }
           },
@@ -814,11 +834,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 425,
+              "line": 433,
               "column": 2
             },
             "end": {
-              "line": 428,
+              "line": 436,
               "column": 3
             }
           },
@@ -834,11 +854,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 432,
+              "line": 440,
               "column": 2
             },
             "end": {
-              "line": 434,
+              "line": 442,
               "column": 3
             }
           },
@@ -853,11 +873,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 438,
+              "line": 446,
               "column": 2
             },
             "end": {
-              "line": 441,
+              "line": 449,
               "column": 3
             }
           },
@@ -873,11 +893,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 453,
+              "line": 461,
               "column": 2
             },
             "end": {
-              "line": 456,
+              "line": 464,
               "column": 3
             }
           },
@@ -894,11 +914,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 460,
+              "line": 468,
               "column": 2
             },
             "end": {
-              "line": 464,
+              "line": 472,
               "column": 3
             }
           },
@@ -914,11 +934,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 468,
+              "line": 476,
               "column": 2
             },
             "end": {
-              "line": 471,
+              "line": 479,
               "column": 3
             }
           },
@@ -934,11 +954,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 475,
+              "line": 483,
               "column": 2
             },
             "end": {
-              "line": 478,
+              "line": 486,
               "column": 3
             }
           },
@@ -955,11 +975,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 482,
+              "line": 490,
               "column": 2
             },
             "end": {
-              "line": 485,
+              "line": 493,
               "column": 3
             }
           },
@@ -976,11 +996,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 491,
+              "line": 499,
               "column": 2
             },
             "end": {
-              "line": 495,
+              "line": 503,
               "column": 3
             }
           },
@@ -996,11 +1016,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 505,
+              "line": 513,
               "column": 2
             },
             "end": {
-              "line": 508,
+              "line": 516,
               "column": 3
             }
           },
@@ -1016,11 +1036,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 518,
+              "line": 526,
               "column": 2
             },
             "end": {
-              "line": 521,
+              "line": 529,
               "column": 3
             }
           },
@@ -1037,11 +1057,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 525,
+              "line": 533,
               "column": 2
             },
             "end": {
-              "line": 529,
+              "line": 537,
               "column": 3
             }
           },
@@ -1057,11 +1077,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 541,
+              "line": 549,
               "column": 2
             },
             "end": {
-              "line": 544,
+              "line": 552,
               "column": 3
             }
           },
@@ -1077,11 +1097,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 548,
+              "line": 556,
               "column": 2
             },
             "end": {
-              "line": 551,
+              "line": 559,
               "column": 3
             }
           },
@@ -3180,11 +3200,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 576,
+              "line": 584,
               "column": 2
             },
             "end": {
-              "line": 580,
+              "line": 588,
               "column": 3
             }
           },
@@ -3313,11 +3333,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 585,
+              "line": 593,
               "column": 2
             },
             "end": {
-              "line": 593,
+              "line": 601,
               "column": 3
             }
           },
@@ -3337,11 +3357,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 598,
+              "line": 606,
               "column": 2
             },
             "end": {
-              "line": 600,
+              "line": 608,
               "column": 3
             }
           },
@@ -3358,11 +3378,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 605,
+              "line": 613,
               "column": 2
             },
             "end": {
-              "line": 610,
+              "line": 618,
               "column": 3
             }
           },
@@ -3382,11 +3402,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 615,
+              "line": 623,
               "column": 2
             },
             "end": {
-              "line": 627,
+              "line": 635,
               "column": 3
             }
           },
@@ -3406,11 +3426,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 632,
+              "line": 640,
               "column": 2
             },
             "end": {
-              "line": 634,
+              "line": 642,
               "column": 3
             }
           },
@@ -3427,11 +3447,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 639,
+              "line": 647,
               "column": 2
             },
             "end": {
-              "line": 659,
+              "line": 669,
               "column": 3
             }
           },
@@ -3454,11 +3474,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 664,
+              "line": 674,
               "column": 2
             },
             "end": {
-              "line": 682,
+              "line": 694,
               "column": 3
             }
           },
@@ -3475,11 +3495,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 687,
+              "line": 699,
               "column": 2
             },
             "end": {
-              "line": 709,
+              "line": 721,
               "column": 3
             }
           },
@@ -3496,11 +3516,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 714,
+              "line": 726,
               "column": 2
             },
             "end": {
-              "line": 725,
+              "line": 737,
               "column": 3
             }
           },
@@ -3517,11 +3537,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 732,
+              "line": 744,
               "column": 2
             },
             "end": {
-              "line": 770,
+              "line": 782,
               "column": 3
             }
           },
@@ -4481,7 +4501,7 @@
           "column": 0
         },
         "end": {
-          "line": 771,
+          "line": 783,
           "column": 1
         }
       },
@@ -4490,23 +4510,23 @@
       "name": "VideoPlayer",
       "attributes": [
         {
-          "name": "accent-color",
-          "description": "Optional accent color for controls,\nusing the following materialize \"colors\":\nred, pink, purple, deep-purple, indigo, blue,\nlight blue, cyan, teal, green, light green, lime,\nyellow, amber, orange, deep-orange, and brown.\nDefault is null.",
+          "name": "audio-only",
+          "description": "Is the media an audio file only?",
           "sourceRange": {
             "start": {
-              "line": 352,
+              "line": 348,
               "column": 2
             },
             "end": {
-              "line": 356,
+              "line": 351,
               "column": 3
             }
           },
           "metadata": {}
         },
         {
-          "name": "crossorigin",
-          "description": "Cross origin flag for transcripts to load",
+          "name": "accent-color",
+          "description": "Optional accent color for controls,\nusing the following materialize \"colors\":\nred, pink, purple, deep-purple, indigo, blue,\nlight blue, cyan, teal, green, light green, lime,\nyellow, amber, orange, deep-orange, and brown.\nDefault is null.",
           "sourceRange": {
             "start": {
               "line": 360,
@@ -4520,8 +4540,8 @@
           "metadata": {}
         },
         {
-          "name": "dark",
-          "description": "Enables darker player.",
+          "name": "crossorigin",
+          "description": "Cross origin flag for transcripts to load",
           "sourceRange": {
             "start": {
               "line": 368,
@@ -4535,15 +4555,30 @@
           "metadata": {}
         },
         {
-          "name": "dark-transcript",
-          "description": "Use dark theme on transcript? Default is false, even when player is dark.",
+          "name": "dark",
+          "description": "Enables darker player.",
           "sourceRange": {
             "start": {
               "line": 376,
               "column": 2
             },
             "end": {
-              "line": 379,
+              "line": 380,
+              "column": 3
+            }
+          },
+          "metadata": {}
+        },
+        {
+          "name": "dark-transcript",
+          "description": "Use dark theme on transcript? Default is false, even when player is dark.",
+          "sourceRange": {
+            "start": {
+              "line": 384,
+              "column": 2
+            },
+            "end": {
+              "line": 387,
               "column": 3
             }
           },
@@ -4554,11 +4589,11 @@
           "description": "disable interactive mode that makes the transcript clickable",
           "sourceRange": {
             "start": {
-              "line": 383,
+              "line": 391,
               "column": 2
             },
             "end": {
-              "line": 386,
+              "line": 394,
               "column": 3
             }
           },
@@ -4569,11 +4604,11 @@
           "description": "The height of the media player for non-a11y-media.",
           "sourceRange": {
             "start": {
-              "line": 390,
+              "line": 398,
               "column": 2
             },
             "end": {
-              "line": 393,
+              "line": 401,
               "column": 3
             }
           },
@@ -4584,11 +4619,11 @@
           "description": "show cue's start and end time",
           "sourceRange": {
             "start": {
-              "line": 397,
+              "line": 405,
               "column": 2
             },
             "end": {
-              "line": 400,
+              "line": 408,
               "column": 3
             }
           },
@@ -4599,11 +4634,11 @@
           "description": "Computed if this should be in an iframe or not.",
           "sourceRange": {
             "start": {
-              "line": 404,
+              "line": 412,
               "column": 2
             },
             "end": {
-              "line": 407,
+              "line": 415,
               "column": 3
             }
           },
@@ -4614,11 +4649,11 @@
           "description": "Computed if this should be in a11y-media-player.",
           "sourceRange": {
             "start": {
-              "line": 411,
+              "line": 419,
               "column": 2
             },
             "end": {
-              "line": 414,
+              "line": 422,
               "column": 3
             }
           },
@@ -4629,11 +4664,11 @@
           "description": "The type of source, i.e. \"local\", \"vimeo\", \"youtube\", etc.",
           "sourceRange": {
             "start": {
-              "line": 418,
+              "line": 426,
               "column": 2
             },
             "end": {
-              "line": 421,
+              "line": 429,
               "column": 3
             }
           },
@@ -4644,11 +4679,11 @@
           "description": "The language of the media",
           "sourceRange": {
             "start": {
-              "line": 425,
+              "line": 433,
               "column": 2
             },
             "end": {
-              "line": 428,
+              "line": 436,
               "column": 3
             }
           },
@@ -4659,11 +4694,11 @@
           "description": "Simple caption for the video",
           "sourceRange": {
             "start": {
-              "line": 432,
+              "line": 440,
               "column": 2
             },
             "end": {
-              "line": 434,
+              "line": 442,
               "column": 3
             }
           },
@@ -4674,11 +4709,11 @@
           "description": "What to preload for a11y-media-player: auto, metadata (default), or none.",
           "sourceRange": {
             "start": {
-              "line": 438,
+              "line": 446,
               "column": 2
             },
             "end": {
-              "line": 441,
+              "line": 449,
               "column": 3
             }
           },
@@ -4689,22 +4724,7 @@
           "description": "Compute if this is a sandboxed system or not",
           "sourceRange": {
             "start": {
-              "line": 453,
-              "column": 2
-            },
-            "end": {
-              "line": 456,
-              "column": 3
-            }
-          },
-          "metadata": {}
-        },
-        {
-          "name": "source",
-          "description": "Source of the video",
-          "sourceRange": {
-            "start": {
-              "line": 460,
+              "line": 461,
               "column": 2
             },
             "end": {
@@ -4715,7 +4735,7 @@
           "metadata": {}
         },
         {
-          "name": "sources",
+          "name": "source",
           "description": "Source of the video",
           "sourceRange": {
             "start": {
@@ -4723,7 +4743,22 @@
               "column": 2
             },
             "end": {
-              "line": 471,
+              "line": 472,
+              "column": 3
+            }
+          },
+          "metadata": {}
+        },
+        {
+          "name": "sources",
+          "description": "Source of the video",
+          "sourceRange": {
+            "start": {
+              "line": 476,
+              "column": 2
+            },
+            "end": {
+              "line": 479,
               "column": 3
             }
           },
@@ -4734,11 +4769,11 @@
           "description": "List of source objects",
           "sourceRange": {
             "start": {
-              "line": 475,
+              "line": 483,
               "column": 2
             },
             "end": {
-              "line": 478,
+              "line": 486,
               "column": 3
             }
           },
@@ -4749,11 +4784,11 @@
           "description": "The type of source, i.e. \"local\", \"vimeo\", \"youtube\", etc.",
           "sourceRange": {
             "start": {
-              "line": 482,
+              "line": 490,
               "column": 2
             },
             "end": {
-              "line": 485,
+              "line": 493,
               "column": 3
             }
           },
@@ -4764,11 +4799,11 @@
           "description": "When playing but scrolled off screen, to which corner does it \"stick\":\ntop-left, top-right, bottom-left, bottom-right, or none?\nDefault is \"top-right\". \"None\" disables stickiness.",
           "sourceRange": {
             "start": {
-              "line": 491,
+              "line": 499,
               "column": 2
             },
             "end": {
-              "line": 495,
+              "line": 503,
               "column": 3
             }
           },
@@ -4779,11 +4814,11 @@
           "description": "Array of text tracks\n[{\n \"src\": \"path/to/track.vtt\",\n \"label\": \"English\",\n \"srclang\": \"en\",\n \"kind\": \"subtitles\",\n}]",
           "sourceRange": {
             "start": {
-              "line": 505,
+              "line": 513,
               "column": 2
             },
             "end": {
-              "line": 508,
+              "line": 516,
               "column": 3
             }
           },
@@ -4794,22 +4829,7 @@
           "description": "Cleaned array of text tracks\n[{\n \"src\": \"path/to/track.vtt\",\n \"label\": \"English\",\n \"srclang\": \"en\",\n \"kind\": \"subtitles\",\n}]",
           "sourceRange": {
             "start": {
-              "line": 518,
-              "column": 2
-            },
-            "end": {
-              "line": 521,
-              "column": 3
-            }
-          },
-          "metadata": {}
-        },
-        {
-          "name": "thumbnail-src",
-          "description": "Source of optional thumbnail image",
-          "sourceRange": {
-            "start": {
-              "line": 525,
+              "line": 526,
               "column": 2
             },
             "end": {
@@ -4820,15 +4840,30 @@
           "metadata": {}
         },
         {
+          "name": "thumbnail-src",
+          "description": "Source of optional thumbnail image",
+          "sourceRange": {
+            "start": {
+              "line": 533,
+              "column": 2
+            },
+            "end": {
+              "line": 537,
+              "column": 3
+            }
+          },
+          "metadata": {}
+        },
+        {
           "name": "width",
           "description": "The width of the media player for non-a11y-media.",
           "sourceRange": {
             "start": {
-              "line": 541,
+              "line": 549,
               "column": 2
             },
             "end": {
-              "line": 544,
+              "line": 552,
               "column": 3
             }
           },
@@ -4839,11 +4874,11 @@
           "description": "The type of source, i.e. \"local\", \"vimeo\", \"youtube\", etc.",
           "sourceRange": {
             "start": {
-              "line": 548,
+              "line": 556,
               "column": 2
             },
             "end": {
-              "line": 551,
+              "line": 559,
               "column": 3
             }
           },

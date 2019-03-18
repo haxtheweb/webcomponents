@@ -1,5 +1,12 @@
 {
   /**
+   * Is the media an audio file only?
+   */
+  "audioOnly": {
+    "type": "Boolean",
+    "value": false
+  },
+  /**
    * Optional accent color for controls,
    * using the following materialize "colors":
    * red, pink, purple, deep-purple, indigo, blue,

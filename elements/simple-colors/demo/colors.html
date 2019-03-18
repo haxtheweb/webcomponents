@@ -3,59 +3,21 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-    <title>SimpleColors: simple-colors Demo</title>
+    <title>SimpleColors: All the Colors</title>
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script type="module">
       import '../node_modules/@polymer/iron-demo-helpers/demo-snippet.js';
-      import '../lib/demo/simple-colors-docs-table.js';
+      import '../simple-colors.js';
+      import '../lib/demo/simple-colors-swatches.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
-    <div class="vertical-section-container centered">  
-      <h1>Colors</h1>
-      <p>
-        By default, simple-colors has the following 18 base colors: grey, red, pink, 
-        purple, deep-purple, indigo, blue, light-blue, cyan, teal, green, light-green, 
-        lime, yellow, amber, orange, brown, and blue-grey. Each color has 12 shades. 
-      </p>
-      <p>
-        You can choose a specifc color or you can set let the color be determined 
-        contextually based on a custom-element's accent-color property. 
-      </p>
-      <p>The shades of each color are organized by theme. If you use the 
-        lowest numbered shades for background and the highest numbered shades for 
-        foreground, the colors will fit each theme.</p>
-
-      <h2>simple-colors-default-theme</h2>
-      <p>
-        The default theme arranges the shades based on wether or not a custom-element 
-        has the dark property set. Normally <tt>--simple-colors-default-theme-red-1</tt> would 
-        be the lightest shade of red and <tt>--simple-colors-default-theme-red-12</tt> 
-        the darkest. If the dark attribute attribute is set, the shades reverse so that 
-        <tt>--simple-colors-default-theme-red-1</tt> is the darkest and 
-        <tt>--simple-colors-default-theme-red-12</tt> is the lightest. 
-        These shading becomes inverted without having to recode every color variable.
-      </p>
-      <simple-colors-docs-table theme="default"></simple-colors-docs-table>
-
-      <h2>simple-colors-light-theme</h2>
-      <p>
-        The light theme <em>always</em> arranges the shades from lightest to darkest. 
-        So <tt>--simple-colors-default-theme-red-1</tt> would 
-        be the lightest shade of red and <tt>--simple-colors-default-theme-red-12</tt> 
-        the darkest. 
-      </p>
-      <simple-colors-docs-table theme="light"></simple-colors-docs-table>
-      
-      <h2>simple-colors-dark-theme</h2>
-      <p>
-        The dark theme <em>always</em> arranges the shades from darkest to lightest. 
-        So <tt>--simple-colors-default-theme-red-1</tt> would 
-        be the darkest shade of red and <tt>--simple-colors-default-theme-red-12</tt> 
-        the lightest. 
-      </p>
-      <simple-colors-docs-table theme="dark"></simple-colors-docs-table>
+    <div class="vertical-section-container centered">
+      <demo-snippet>
+        <h1>All the Colors</h1>
+        <simple-colors-swatches id="colors"></simple-colors-swatches>
+      </demo-snippet>
     </div>
   </body>
 </html>
