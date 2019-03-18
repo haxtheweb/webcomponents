@@ -16,11 +16,8 @@ import "./lib/simple-colors-styles.js";
  * @demo demo/index.html demo
  * @demo demo/how.html getting started
  * @demo demo/colors.html all of the colors
- * @demo demo/contrasts.html WCAG 2.0 AA Contrasts
  * @demo demo/picker.html simple-colors-picker
  * @demo demo/extending.html extending simple-colors
- * @demo demo/variables.html using simple-colors variables
- * @demo demo/classes.html using simple-colors classes
  */
 class SimpleColors extends PolymerElement {
   // render function

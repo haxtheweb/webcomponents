@@ -33,8 +33,6 @@ class simpleColorsSwatches extends SimpleColors {
           display: none;
         }
         :host simple-modal-template {
-          --simple-modal-width: 80vw;
-          --simple-modal-max-height: 50vh;
           --simple-modal-titlebar-color: var(--simple-colors-swatch-contrast);
           --simple-modal-titlebar-background: var(--simple-colors-swatch-color);
         }

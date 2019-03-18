@@ -33,8 +33,17 @@ class simpleColorsSwatchInfo extends SimpleColors {
         :host table {
           width: 100%;
           border: 1px solid black;
+          border-radius: 3px;
           border-collapse: collapse;
           margin: 0 0 15px;
+        }
+        :host table caption {
+          font-weight: bold;
+          background-color: #222;
+          color: white;
+        }
+        :host table th {
+          background-color: #e0e0e0;
         }
         :host table caption,
         :host table th,
@@ -46,6 +55,8 @@ class simpleColorsSwatchInfo extends SimpleColors {
         }
         :host table td span {
           padding: 5px; 
+          white-space: nowrap;
+          margin: 5px 0;
         }
       </style>
       <table summary="Each row represents a CSS variable or class with a description of what it does without the dark attribute and with the attribute.">
@@ -64,61 +75,43 @@ class simpleColorsSwatchInfo extends SimpleColors {
             <th scope="row">
               --simple-colors-default-theme-[[swatchName]]
             </th>
-            <td><span class="selectedBg" style$="[[bg]]">default color</span></td>
-            <td>
-              <span style$="[[inverseBg]]">inverted color</span>
-            </td>
+            <td style$="[[bg]]">default color</td>
+            <td style$="[[inverseBg]]">inverted color</td>
           </tr>
           <tr>
             <th scope="row">
               --simple-colors-fixed-theme-[[swatchName]]
             </th>
-            <td><span style$="[[bg]]">default color</span></td>
-            <td><span style$="[[bg]]">fixed color</span></td>
+            <td style$="[[bg]]">default color</td>
+            <td style$="[[bg]]">fixed color</td>
           </tr>
           <tr>
             <th scope="row">
               <tt>.simple-colors-default-theme-[[swatchName]]</tt>
             </th>
-            <td>
-              <span style$="[[bg]]">default background color</span>
-            </td>
-            <td>
-              <span style$="[[inverseBg]]">inverted background color</span>
-            </td>
+            <td style$="[[bg]]">default background color</td>
+            <td style$="[[inverseBg]]">inverted background color</td>
           </tr>
           <tr>
             <th scope="row">
               <tt>.simple-colors-fixed-theme-[[swatchName]]</tt>
             </th>
-            <td>
-              <span style$="[[bg]]">default background color</span>
-            </td>
-            <td>
-              <span style$="[[bg]]">fixed background color</span>
-            </td>
+            <td style$="[[bg]]">default background color</td>
+            <td style$="[[bg]]">fixed background color</td>
           </tr>
           <tr>
             <th scope="row">
               <tt>.simple-colors-default-theme-[[swatchName]]-text</tt>
             </th>
-            <td>
-              <span style$="[[text]]">default text color</span>
-            </td>
-            <td>
-              <span style$="[[inverseText]]">inverted text color</span>
-            </td>
+            <td style$="[[text]]">default text color</td>
+            <td style$="[[inverseText]]">inverted text color</td>
           </tr>
           <tr>
             <th scope="row">
               <tt>.simple-colors-fixed-theme-[[swatchName]]-text</tt>
             </th>
-            <td>
-              <span style$="[[text]]">default text color</span>
-            </td>
-            <td>
-              <span style$="[[text]]">fixed text color</span>
-            </td>
+            <td style$="[[text]]">default text color</td>
+            <td style$="[[text]]">fixed text color</td>
           </tr>
           <tr>
             <th scope="row">
@@ -168,12 +161,12 @@ class simpleColorsSwatchInfo extends SimpleColors {
               <th scope="row">[[color]]</th>
               <td>
                 <template is="dom-repeat" items="[[_getAa(swatchId,color)]]" as="contrast">
-                  <span>[[color]]-[[contrast]]</span>
+                  <span class="contrast" style$="[[_getContrastBg(color,contrast)]]">[[color]]-[[contrast]]</span>
                 </template>
               </td>
               <td>
                 <template is="dom-repeat" items="[[_getAaLarge(swatchId,color)]]" as="contrast">
-                  <span>[[color]]-[[contrast]]</span>
+                  <span class="contrast" style$="[[_getContrastBg(color,contrast)]]">[[color]]-[[contrast]]</span>
                 </template>
               </td>
             </tr>
@@ -251,7 +244,7 @@ class simpleColorsSwatchInfo extends SimpleColors {
       /**
        * A style where swatch color is the background-color in dark mode
        */
-      inversebBorder: {
+      inverseBorder: {
         name: "inverseBorder",
         type: "String",
         computed: "_getInverseBorder(swatchId)"
@@ -316,6 +309,10 @@ class simpleColorsSwatchInfo extends SimpleColors {
     return this._getBorder(swatchId, true);
   }
 
+  _getContrastBg(color, shade) {
+    return this._getBg(color + "_" + (parseInt(shade) - 1));
+  }
+
   _getBg(swatchId, inverse = false) {
     let colors = this._getColors(swatchId, inverse);
     return "background: " + colors[0] + "; color: " + colors[1] + ";";
@@ -326,9 +323,9 @@ class simpleColorsSwatchInfo extends SimpleColors {
     return "color: " + colors[0] + "; background: " + colors[1] + ";";
   }
 
-  _getBorder(swatchId) {
-    let colors = this._getColors(swatchId);
-    return "border: 1px solid " + colors[0] + "; padding: 3px;";
+  _getBorder(swatchId, inverse = false) {
+    let colors = this._getColors(swatchId, inverse);
+    return "border: 3px solid " + colors[0] + "; padding: 3px;";
   }
 
   _getColors(swatchId, inverse = false) {
