@@ -65,6 +65,11 @@ class SiteTopMenu extends PolymerElement {
           min-width: unset;
           @apply --site-top-menu-button;
         }
+        paper-button:hover,
+        paper-button:focus,
+        paper-button:active {
+          @apply --site-top-menu-button-hover;
+        }
         .active {
           color: var(--site-top-menu-link-active-color, #000000);
           @apply --site-top-menu-link-active;

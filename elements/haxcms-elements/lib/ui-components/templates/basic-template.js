@@ -5,6 +5,7 @@
 import { html } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/grid-plate/grid-plate.js";
 import "@polymer/iron-icons/maps-icons.js";
+import "@lrnwebcomponents/scroll-button/scroll-button.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/blocks/site-children-block.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-footer.js";
@@ -60,6 +61,7 @@ let BasicTemplate = superclass =>
           </grid-plate>
         </div>
         <site-footer></site-footer>
+        <scroll-button position="right" label="Back to top"></scroll-button>
       `;
     }
   };
