@@ -1,0 +1,35 @@
+<custom-style>
+  <style>
+  html,body {
+    background-color: #FAFAFA;
+  }
+  </style>
+</custom-style>
+<style include="simple-colors"></style>
+<app-drawer-layout>
+  <paper-icon-button id="menubutton" icon="menu" on-tap="toggleDrawer"></paper-icon-button>
+  <app-drawer id="drawer" swipe-open slot="drawer" opened="{{opened}}">
+    <paper-icon-button id="menubutton2" icon="menu" on-tap="toggleDrawer"></paper-icon-button>
+    <div class="header-wrapper">
+      <div class="header">
+        <site-title></site-title>
+      </div>
+    </div>
+    <site-menu></site-menu>
+    <div class="rss-buttons">
+      <site-rss-button type="atom"></site-rss-button>
+      <site-rss-button type="rss"></site-rss-button>
+    </div>
+  </app-drawer>
+  <div>
+    <site-menu-button type="prev"></site-menu-button>
+    <div id="contentcontainer">
+      <site-breadcrumb></site-breadcrumb>
+      <site-active-title></site-active-title>
+      <div id="slot">
+        <slot></slot>
+      </div>
+    </div>
+    <site-menu-button type="next"></site-menu-button>
+  </div>
+</app-drawer-layout>

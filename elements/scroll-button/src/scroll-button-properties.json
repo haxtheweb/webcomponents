@@ -1,0 +1,21 @@
+{
+  "target": {
+    "name": "target",
+    "type": "Object"
+  },
+  "icon": {
+    "name": "icon",
+    "type": "String",
+    "value": "icons:expand-less"
+  },
+  "label": {
+    "name": "label",
+    "type": "String",
+    "value": "Scroll to top"
+  },
+  "position": {
+    "name": "position",
+    "type": "String",
+    "value": "top"
+  }
+}

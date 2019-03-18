@@ -35,11 +35,12 @@ class JsonOutlineSchema extends HTMLElement {
     return `
 <style>:host {
   display: block;
+}
+:host([debug]) {
   font-family: monospace;
   white-space: pre;
-  margin: 1em 0px;
+  margin: 16px 0px;
 }
-
 :host([hidden]) {
   display: none;
 }
@@ -84,7 +85,7 @@ class JsonOutlineSchema extends HTMLElement {
     this.license = "by-sa";
     this.metadata = {};
     this.items = [];
-    this.__debug = false;
+    this.debug = false;
     window.JSONOutlineSchema.instance = this;
   }
   /**
@@ -314,8 +315,8 @@ class JsonOutlineSchema extends HTMLElement {
    * Allow toggling of debug mode which visualizes the outline and writes it to console.
    */
   _toggleDebug(e) {
-    this.__debug = !this.__debug;
-    this._triggerDebugPaint(this.__debug);
+    this.debug = !this.debug;
+    this._triggerDebugPaint(this.debug);
   }
   /**
    * Paint the slot in order to debug the object inside
@@ -340,13 +341,13 @@ class JsonOutlineSchema extends HTMLElement {
     }
   }
   static get observedAttributes() {
-    return ["file", "id", "title", "author", "description", "license"];
+    return ["file", "id", "title", "author", "description", "license", "debug"];
   }
 
   attributeChangedCallback(attr, oldValue, newValue) {
-    if (this.__debug) {
+    if (this.debug) {
       this.render();
-      this._triggerDebugPaint(this.__debug);
+      this._triggerDebugPaint(this.debug);
     }
   }
   get file() {
@@ -397,14 +398,24 @@ class JsonOutlineSchema extends HTMLElement {
       this.setAttribute("license", newValue);
     }
   }
+  get debug() {
+    return this.getAttribute("debug");
+  }
+  set debug(newValue) {
+    if (this.__ready && newValue) {
+      this.setAttribute("debug", newValue);
+    } else {
+      this.removeAttribute("debug");
+    }
+  }
   /**
    * Set individual key values pairs on metdata so we can notice it change
    */
   updateMetadata(key, value) {
     this.metadata[key] = value;
-    if (this.__debug) {
+    if (this.debug) {
       this.render();
-      this._triggerDebugPaint(this.__debug);
+      this._triggerDebugPaint(this.debug);
     }
   }
 
@@ -598,9 +609,9 @@ class JsonOutlineSchema extends HTMLElement {
     if (save) {
       this.items = items;
       // update if debugging is turned on
-      if (this.__debug) {
+      if (this.debug) {
         this.render();
-        this._triggerDebugPaint(this.__debug);
+        this._triggerDebugPaint(this.debug);
       }
     }
     return items;

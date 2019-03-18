@@ -36,7 +36,6 @@
     "rebuild-wcfcache": "./node_modules/.bin/gulp",
     "new": "yarn run rebuild-wcfcache && wcf element && yarn run test-suite-inject && yarn install --link-duplicates"
   },
-  
   "devDependencies": {
     "@storybook/addon-knobs": "4.1.13",
     "@open-wc/webpack": "0.1.6",
@@ -105,7 +104,9 @@
     "lit-html": "1.0.0",
     "skatejs": "5.2.4",
     "slim-js": "4.0.5",
-    "twig": "1.13.2"
+    "twig": "1.13.2",
+    "marked": "0.6.1",
+    "lunr": "2.3.6"
   },
   "lint-staged": {
     "linters": {

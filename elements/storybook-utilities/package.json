@@ -1,6 +1,6 @@
 {
   "name": "@lrnwebcomponents/storybook-utilities",
-  "version": "2.0.5",
+  "version": "2.0.8",
   "description": "A series of utilities for `story.js` files",
   "repository": {
     "type": "git",
@@ -12,8 +12,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@storybook/polymer": "^4.1.13",
-    "@storybook/addon-knobs": "^4.1.13"
+    "@storybook/addon-knobs": "^4.1.13",
+    "@storybook/polymer": "^4.1.13"
   },
   "private": false,
   "publishConfig": {

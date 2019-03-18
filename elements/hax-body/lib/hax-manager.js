@@ -145,7 +145,7 @@ Polymer({
         .add-area-content-wrapper {
           padding: 0 16px;
         }
-        .add-url-are,
+        .add-url-area,
         .add-upload-area {
           margin: 16px 0;
         }
