@@ -7,6 +7,62 @@ class Store {
     this.manifest = null;
     this.activeId = null;
   }
+  get processedItems() {}
+  /**
+   * Compute items leveraging the site query engine
+   */
+  _computeItems(start, end, parent, dynamicMethodology, _routerManifest) {
+    if (_routerManifest) {
+      let items = [];
+      let data = [];
+      let tmpItem;
+      _routerManifest.items.forEach(element => {
+        // find top level parents
+        if (!element.parent) {
+          items.push(element);
+        }
+      });
+      switch (dynamicMethodology) {
+        case "parent":
+          tmpItem = _routerManifest.items.find(d => parent === d.id);
+          // shift up 1 if we found something
+          if (tmpItem) {
+            parent = tmpItem.parent;
+          }
+          break;
+        case "ancestor":
+          tmpItem = _routerManifest.items.find(d => parent === d.id);
+          // walk back up to the root
+          while (tmpItem && tmpItem.parent != null) {
+            // take the parent object of this current item
+            tmpItem = _routerManifest.items.find(i => i.id == tmpItem.parent);
+          }
+          if (tmpItem) {
+            parent = tmpItem.id;
+          }
+          break;
+      }
+      items.forEach((item, i) => {
+        this._spiderChildren(item, data, start, end, parent, false);
+      });
+      return data;
+    }
+  }
+  /**
+   * Recursively search through a data to find children
+   * of a specified item.
+   */
+  _setChildren(item, data) {
+    // find all children
+    const children = data.filter(d => item.id === d.parent);
+    item.children = children;
+    if (item.children.length > 0) {
+      item.children.forEach(child => {
+        // recursively call itself
+        this._setChildren(child, data);
+      });
+    }
+  }
   /**
    * The manifest but with routing mixed in
    */
@@ -45,6 +101,13 @@ class Store {
         accessData = userData.manifests[manifest.id].accessData;
       }
       const manifestItems = manifest.items.map(i => {
+        let parentLocation = null;
+        let parent = manifest.items.find(d => i.parent === d.id);
+        if (parent) {
+          parentLocation = parent.location
+            .replace("pages/", "")
+            .replace("/index.html", "");
+        }
         // get local storage and look for data from this to mesh up
         let metadata = i.metadata;
         if (typeof accessData[i.id] !== typeof undefined) {
@@ -53,7 +116,15 @@ class Store {
         let location = i.location
           .replace("pages/", "")
           .replace("/index.html", "");
-        return Object.assign({}, i, { location: location, metadata: metadata });
+        return Object.assign({}, i, {
+          parentLocation: parentLocation,
+          location: location,
+          metadata: metadata
+        });
+      });
+      // build the children into a hierarchy too
+      manifestItems.forEach((item, i) => {
+        this._setChildren(item, manifestItems);
       });
       return Object.assign({}, manifest, {
         items: manifestItems,
@@ -208,12 +279,119 @@ class Store {
       return null;
     }
   }
+  /**
+   * Spider children based on criteria and return what we found
+   */
+  spiderChildren(item, data, start, end, parent, parentFound, noDynamicLevel) {
+    // see if we have the parent... or keep going
+    if (item.id === parent || parentFound) {
+      // set parent to current so it's gaurenteed to match on next one
+      if (!parentFound) {
+        parentFound = true;
+        // support sliding scales, meaning that start / end is relative to active
+        if (!noDynamicLevel && item.indent >= start) {
+          start += item.indent;
+          end += item.indent;
+        }
+      }
+      // only add on what we're between
+      if (item.indent >= start && item.indent <= end) {
+        data.push(item);
+      }
+      // we've found it. Now everyone below here should match
+      if (item.children.length > 0) {
+        item.children.forEach(child => {
+          // recursively call itself
+          this.spiderChildren(
+            child,
+            data,
+            start,
+            end,
+            parent,
+            parentFound,
+            noDynamicLevel
+          );
+        });
+      }
+    } else {
+      if (item.children.length > 0) {
+        item.children.forEach(child => {
+          // recursively call itself
+          this.spiderChildren(
+            child,
+            data,
+            start,
+            end,
+            parent,
+            parentFound,
+            noDynamicLevel
+          );
+        });
+      }
+    }
+  }
+  /**
+   * Compute items leveraging the site query engine
+   */
+  computeItems(
+    start,
+    end,
+    parent,
+    dynamicMethodology,
+    _routerManifest,
+    noDynamicLevel
+  ) {
+    if (_routerManifest) {
+      let items = [];
+      let data = [];
+      let tmpItem;
+      _routerManifest.items.forEach(element => {
+        // find top level parents
+        if (!element.parent) {
+          items.push(element);
+        }
+      });
+      switch (dynamicMethodology) {
+        case "parent":
+          tmpItem = _routerManifest.items.find(d => parent === d.id);
+          // shift up 1 if we found something
+          if (tmpItem) {
+            parent = tmpItem.parent;
+          }
+          break;
+        case "ancestor":
+          tmpItem = _routerManifest.items.find(d => parent === d.id);
+          // walk back up to the root
+          while (tmpItem && tmpItem.parent != null) {
+            // take the parent object of this current item
+            tmpItem = _routerManifest.items.find(i => i.id == tmpItem.parent);
+          }
+          if (tmpItem) {
+            parent = tmpItem.id;
+          }
+          break;
+      }
+      _routerManifest.items.forEach((item, i) => {
+        store.spiderChildren(
+          item,
+          data,
+          start,
+          end,
+          parent,
+          false,
+          noDynamicLevel
+        );
+      });
+      return data;
+    }
+  }
 }
 
 decorate(Store, {
   location: observable.ref, // router location in url
   editMode: observable, // global editing state
   manifest: observable, // JOS / manifest
+  activeItemContent: observable, // active site content, cleaned up
   routerManifest: computed, // router mixed in manifest w/ routes / paths
   siteTitle: computed,
   themeData: computed, // get the active theme from manifest + activeId

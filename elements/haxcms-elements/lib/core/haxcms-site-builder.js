@@ -1,6 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { setPassiveTouchGestures } from "@polymer/polymer/lib/utils/settings.js";
 import { updateStyles } from "@polymer/polymer/lib/mixins/element-mixin.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
@@ -176,33 +177,35 @@ let HAXCMSSiteBuilder = Polymer({
     // this decreases logging and improves performance on scrolling
     setPassiveTouchGestures(true);
     window.JSONOutlineSchema.requestAvailability();
-    window.addEventListener(
-      "haxcms-trigger-update",
-      this._triggerUpdatedData.bind(this)
-    );
-    window.addEventListener(
-      "haxcms-trigger-update-page",
-      this._triggerUpdatedPage.bind(this)
-    );
-    window.addEventListener(
-      "json-outline-schema-active-item-changed",
-      this._setActiveItem.bind(this)
-    );
-    window.SimpleToast.requestAvailability();
+    afterNextRender(this, function() {
+      window.addEventListener(
+        "haxcms-trigger-update",
+        this._triggerUpdatedData.bind(this)
+      );
+      window.addEventListener(
+        "haxcms-trigger-update-page",
+        this._triggerUpdatedPage.bind(this)
+      );
+      window.addEventListener(
+        "json-outline-schema-active-item-changed",
+        this._setActiveItem.bind(this)
+      );
+      window.SimpleToast.requestAvailability();
+    });
+  },
+  ready: function() {
+    this.__disposer = [];
+    autorun(reaction => {
+      this.themeData = toJS(store.themeData);
+      this.__disposer.push(reaction);
+    });
   },
   attached: function() {
-    window.SimpleModal.requestAvailability();
-    this.__disposer = autorun(() => {
-      this.themeData = toJS(store.themeData);
-    });
-    this.editorBuilder = document.createElement("haxcms-editor-builder");
-    // attach editor builder after we've appended to the screen
-    document.body.appendChild(this.editorBuilder);
-    // prep simple toast notification
-    async.microTask.run(() => {
-      if (window.cmsSiteEditor && this.manifest) {
-        window.cmsSiteEditor.jsonOutlineSchema = this.manifest;
-      }
+    afterNextRender(this, function() {
+      window.SimpleModal.requestAvailability();
+      this.editorBuilder = document.createElement("haxcms-editor-builder");
+      // attach editor builder after we've appended to the screen
+      document.body.appendChild(this.editorBuilder);
       // get fresh data if not published
       if (this.editorBuilder.getContext() !== "published") {
         this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
@@ -225,7 +228,9 @@ let HAXCMSSiteBuilder = Polymer({
       "json-outline-schema-active-item-changed",
       this._setActiveItem.bind(this)
     );
-    this.__disposer();
+    for (var i in this.__disposer) {
+      this.__disposer[i].dispose();
+    }
   },
   /**
    * set global active item
@@ -264,6 +269,8 @@ let HAXCMSSiteBuilder = Polymer({
       if (html !== null) {
         this.wipeSlot(this.themeElement, "*");
         html = this.encapScript(newValue);
+        // set in the store
+        store.activeItemContent = html;
         // insert the content as quickly as possible, then work on the dynamic imports
         async.microTask.run(() => {
           setTimeout(() => {
@@ -446,8 +453,17 @@ let HAXCMSSiteBuilder = Polymer({
             "@lrnwebcomponents/wikipedia-query/wikipedia-query.js"
         };
       }
+      // need to order by... order, then parent, then indent
+      newValue.items.sort((item1, item2) => {
+        if (item1.order < item2.order) {
+          return -1;
+        } else if (item1.order > item2.order) {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
       store.manifest = newValue;
-      window.cmsSiteEditor.jsonOutlineSchema = newValue;
       this.fire("json-outline-schema-changed", newValue);
     }
   },

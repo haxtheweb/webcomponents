@@ -1,4 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { autorun, toJS } from "mobx";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "@polymer/paper-input/paper-input.js";
@@ -130,9 +132,11 @@ Polymer({
    * Ready life cycle
    */
   ready: function() {
-    // state issue but it can miss in timing othewise on first event
-    this.set("manifest", window.cmsSiteEditor.jsonOutlineSchema);
-    this.notifyPath("manifest.*");
+    this.__disposer = [];
+    autorun(reaction => {
+      this.manifest = toJS(store.manifest);
+      this.__disposer.push(reaction);
+    });
   },
   /**
    * attached life cycle
@@ -156,8 +160,7 @@ Polymer({
       themeOptions.push(item);
     }
     this.$.sitetheme.options = themeOptions;
-    this.$.sitetheme.value =
-      window.cmsSiteEditor.jsonOutlineSchema.metadata.theme.element;
+    this.$.sitetheme.value = this.manifest.metadata.theme.element;
   },
   /**
    * detached life cycle
@@ -175,6 +178,9 @@ Polymer({
       "change",
       this._colorChanged.bind(this)
     );
+    for (var i in this.__disposer) {
+      this.__disposer[i].dispose();
+    }
   },
 
   /**

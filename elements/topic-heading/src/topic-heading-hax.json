@@ -1,0 +1,41 @@
+{
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Topic heading",
+    "description": "Semantic and visual meaning behind a heading break",
+    "icon": "icons:android",
+    "color": "green",
+    "groups": ["Heading"],
+    "handles": [
+      {
+        "type": "todo:read-the-docs-for-usage"
+      }
+    ],
+    "meta": {
+      "author": "btopro",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "quick": [],
+    "configure": [
+      {
+        "property": "icon",
+        "description": "",
+        "inputMethod": "iconpicker",
+        "required": false,
+        "icon": "icons:code"
+      },
+      {
+        "property": "title",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": false,
+        "icon": "icons:heading"
+      }
+    ],
+    "advanced": []
+  }
+}

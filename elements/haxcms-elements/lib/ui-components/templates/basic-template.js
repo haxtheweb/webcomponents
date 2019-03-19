@@ -15,6 +15,7 @@ import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-top-
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js";
 /**
  * `An incredibly basic template.
@@ -50,9 +51,14 @@ let BasicTemplate = superclass =>
               <site-children-block
                 dynamic-methodology="ancestor"
               ></site-children-block>
+
               <div class="buttons">
                 <site-rss-button type="atom"></site-rss-button>
                 <site-rss-button type="rss"></site-rss-button>
+                <site-print-button
+                  slot="suffix"
+                  type="ancestor"
+                ></site-print-button>
               </div>
             </div>
             <div id="contentcontainer" slot="col-2">

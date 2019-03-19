@@ -7,7 +7,6 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
 
 /**
  * `site-top-menu`
@@ -44,7 +43,8 @@ class SiteTopMenu extends PolymerElement {
         }
         .wrapper {
           display: flex;
-          justify-content: space-evenly;
+          justify-content: center;
+          justify-items: space-evenly;
           background-color: var(--site-top-menu-bg);
           @apply --site-top-menu-wrapper;
         }
@@ -107,16 +107,13 @@ class SiteTopMenu extends PolymerElement {
         :host([showindex]) .spacing .link-index {
           display: inline-flex;
         }
-        paper-tooltip {
-          @apply --site-top-menu-tooltip;
-        }
       </style>
       <div class="wrapper">
         <slot name="prefix"></slot>
         <site-query
           result="{{__items}}"
-          sort="[[sort]]"
-          conditions="[[conditions]]"
+          sort='{"order": "ASC"}'
+          conditions='{"parent": null}'
         ></site-query>
         <dom-repeat items="[[__items]]" mutable-data>
           <template>
@@ -127,20 +124,12 @@ class SiteTopMenu extends PolymerElement {
                 tabindex="-1"
                 title$="Go to [[item.title]]"
                 href$="[[item.location]]"
+                ><paper-button noink="[[noink]]"
+                  ><span class="link-index">[[humanIndex(index)]]</span
+                  ><span class="link-title">[[item.title]]</span></paper-button
+                ></a
               >
-                <paper-button id$="item-[[item.id]]" noink="[[noink]]">
-                  <span class="link-index">[[humanIndex(index)]]</span>
-                  <span class="link-title">[[item.title]]</span>
-                </paper-button>
-              </a>
             </div>
-            <paper-tooltip
-              for$="item-[[item.id]]"
-              position="[[position]]"
-              offset="14"
-            >
-              Go to [[item.title]]
-            </paper-tooltip>
           </template>
         </dom-repeat>
         <slot name="suffix"></slot>
@@ -212,28 +201,6 @@ class SiteTopMenu extends PolymerElement {
       arrowSize: {
         type: Number,
         value: 6
-      },
-      /**
-       * Allow customization of sort
-       */
-      sort: {
-        type: Object,
-        value: {
-          order: "ASC"
-        }
-      },
-      /**
-       * Allow customization of the conditions if needed
-       */
-      conditions: {
-        type: Object,
-        value: {
-          parent: null
-        }
-      },
-      position: {
-        type: String,
-        value: "bottom"
       }
     };
   }

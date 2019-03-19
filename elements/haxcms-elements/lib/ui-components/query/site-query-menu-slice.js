@@ -74,7 +74,7 @@ class SiteQueryMenuSlice extends PolymerElement {
         type: Array,
         notify: true,
         computed:
-          "_computeItems(start, end, parent, dynamicMethodology, _routerManifest)"
+          "_computeItems(start, end, parent, dynamicMethodology, _routerManifest, noDynamicLevel)"
       },
       _routerManifest: {
         type: Object
@@ -84,95 +84,23 @@ class SiteQueryMenuSlice extends PolymerElement {
   /**
    * Compute items leveraging the site query engine
    */
-  _computeItems(start, end, parent, dynamicMethodology, _routerManifest) {
+  _computeItems(
+    start,
+    end,
+    parent,
+    dynamicMethodology,
+    _routerManifest,
+    noDynamicLevel
+  ) {
     if (_routerManifest) {
-      let items = [];
-      let data = [];
-      let tmpItem;
-      _routerManifest.items.forEach(element => {
-        // find top level parents
-        if (!element.parent) {
-          items.push(element);
-        }
-      });
-      switch (dynamicMethodology) {
-        case "parent":
-          tmpItem = _routerManifest.items.find(d => parent === d.id);
-          // shift up 1 if we found something
-          if (tmpItem) {
-            parent = tmpItem.parent;
-          }
-          break;
-        case "ancestor":
-          tmpItem = _routerManifest.items.find(d => parent === d.id);
-          // walk back up to the root
-          while (tmpItem && tmpItem.parent != null) {
-            // take the parent object of this current item
-            tmpItem = _routerManifest.items.find(i => i.id == tmpItem.parent);
-          }
-          if (tmpItem) {
-            parent = tmpItem.id;
-          }
-          break;
-      }
-      // Recursively find and set children
-      items.forEach((item, i) => {
-        this._setChildren(item, _routerManifest.items);
-      });
-      items.forEach((item, i) => {
-        this._spiderChildren(item, data, start, end, parent, false);
-      });
-      return data;
-    }
-  }
-  _spiderChildren(item, data, start, end, parent, parentFound) {
-    // see if we have the parent... or keep going
-    if (item.id === parent || parentFound) {
-      // set parent to current so it's gaurenteed to match on next one
-      if (!parentFound) {
-        parentFound = true;
-        // support sliding scales, meaning that start / end is relative to active
-        if (!this.noDynamicLevel && item.indent >= start) {
-          start += item.indent;
-          end += item.indent;
-        }
-      }
-      // only add on what we're between
-      if (item.indent >= start && item.indent <= end) {
-        data.push(item);
-      }
-      // we've found it. Now everyone below here should match
-      if (item.children.length > 0) {
-        item.children.forEach(child => {
-          // recursively call itself
-          this._spiderChildren(child, data, start, end, parent, parentFound);
-        });
-      }
-    } else {
-      if (item.children.length > 0) {
-        item.children.forEach(child => {
-          // recursively call itself
-          this._spiderChildren(child, data, start, end, parent, parentFound);
-        });
-      }
-    }
-  }
-  /**
-   * Recursively search through a data to find children
-   * of a specified item.
-   * @param {object} item item of an array to search on. Passed by reference.
-   * @param {array} data linear array of the data set.
-   * @return {void}
-   */
-  _setChildren(item, data) {
-    // find all children
-    const children = data.filter(d => item.id === d.parent);
-    item.children = children;
-    if (item.children.length > 0) {
-      item.children.forEach(child => {
-        // recursively call itself
-        this._setChildren(child, data);
-      });
+      return store.computeItems(
+        start,
+        end,
+        parent,
+        dynamicMethodology,
+        _routerManifest,
+        noDynamicLevel
+      );
     }
   }
   connectedCallback() {

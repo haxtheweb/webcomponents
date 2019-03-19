@@ -66,7 +66,9 @@ class SiteQuery extends MutableData(PolymerElement) {
       sort: {
         type: Object,
         notify: true,
-        value: {}
+        value: {
+          order: "ASC"
+        }
       },
       /**
        * Boolean flag to force a repaint of what's in the item
@@ -93,6 +95,11 @@ class SiteQuery extends MutableData(PolymerElement) {
           // specialized condition for active id
           if (conditions[i] === "$activeId") {
             if (item[i] !== activeId) {
+              return false;
+            }
+            return true;
+          } else if (conditions[i] === "$firstId") {
+            if (item[i] !== items[0].id) {
               return false;
             }
             return true;

@@ -4,6 +4,9 @@
  */
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { updateStyles } from "@polymer/polymer/lib/mixins/element-mixin.js";
 /**
  * `HAXCMSTheme` mixin class to automatically apply HAXcms theme state
  * Typically an element will be extended from this and while not all,
@@ -155,55 +158,75 @@ export const HAXCMSTheme = function(SuperClass) {
           "#contentcontainer"
         );
       }
-      // store disposer so we can clean up later
-      this.__disposer = autorun(() => {
-        this.manifest = toJS(store.routerManifest);
-        if (typeof this.manifest.title !== typeof undefined) {
-          document.title = this.manifest.title;
+      this.__disposer = [];
+      afterNextRender(this, function() {
+        // edge case, we just swapped theme faster then content loaded... lol
+        if (dom(this).getEffectiveChildNodes().length === 0) {
+          let frag = document
+            .createRange()
+            .createContextualFragment(store.activeItemContent);
+          dom(this).appendChild(frag);
         }
-        if (
-          typeof this.manifest.metadata !== typeof undefined &&
-          typeof this.manifest.metadata.cssVariable !== typeof undefined
-        ) {
-          // json outline schema changed, allow other things to react
-          // fake way of forcing an update of these items
-          let ary = this.manifest.metadata.cssVariable
-            .replace("--simple-colors-default-theme-", "")
-            .split("-");
-          ary.pop();
-          this.accentColor = ary.join("-");
-          // set this directly instead of messing w/ accentColor
-          document.body.style.setProperty(
-            "--haxcms-color",
-            this.manifest.metadata.hexCode
+        updateStyles();
+        // store disposer so we can clean up later
+        autorun(reaction => {
+          this.manifest = toJS(store.routerManifest);
+          if (typeof this.manifest.title !== typeof undefined) {
+            document.title = this.manifest.title;
+          }
+          if (
+            typeof this.manifest.metadata !== typeof undefined &&
+            typeof this.manifest.metadata.cssVariable !== typeof undefined
+          ) {
+            // json outline schema changed, allow other things to react
+            // fake way of forcing an update of these items
+            let ary = this.manifest.metadata.cssVariable
+              .replace("--simple-colors-default-theme-", "")
+              .split("-");
+            ary.pop();
+            this.accentColor = ary.join("-");
+            // set this directly instead of messing w/ accentColor
+            document.body.style.setProperty(
+              "--haxcms-color",
+              this.manifest.metadata.hexCode
+            );
+          }
+          this.__disposer.push(reaction);
+        });
+        autorun(reaction => {
+          this._location = store.location;
+          this.__disposer.push(reaction);
+        });
+        autorun(reaction => {
+          this.activeItem = toJS(store.activeItem);
+          this.__disposer.push(reaction);
+        });
+        autorun(reaction => {
+          this.activeId = toJS(store.activeId);
+          this.__disposer.push(reaction);
+        });
+        autorun(reaction => {
+          this.activeManifestIndex = toJS(store.activeManifestIndex);
+          this.__disposer.push(reaction);
+        });
+        autorun(reaction => {
+          this.pageTitle = toJS(store.pageTitle);
+          this.__disposer.push(reaction);
+        });
+        autorun(reaction => {
+          this.siteTitle = toJS(store.siteTitle);
+          this.__disposer.push(reaction);
+        });
+        autorun(reaction => {
+          this.homeLink = toJS(store.homeLink);
+          this.__disposer.push(reaction);
+        });
+        autorun(reaction => {
+          this.activeManifestIndexCounter = toJS(
+            store.activeManifestIndexCounter
           );
-        }
-      });
-      this.__disposer2 = autorun(() => {
-        this._location = store.location;
-      });
-      this.__disposer3 = autorun(() => {
-        this.activeItem = toJS(store.activeItem);
-      });
-      this.__disposer4 = autorun(() => {
-        this.activeId = toJS(store.activeId);
-      });
-      this.__disposer5 = autorun(() => {
-        this.activeManifestIndex = toJS(store.activeManifestIndex);
-      });
-      this.__disposer6 = autorun(() => {
-        this.pageTitle = toJS(store.pageTitle);
-      });
-      this.__disposer7 = autorun(() => {
-        this.siteTitle = toJS(store.siteTitle);
-      });
-      this.__disposer8 = autorun(() => {
-        this.homeLink = toJS(store.homeLink);
-      });
-      this.__disposer9 = autorun(() => {
-        this.activeManifestIndexCounter = toJS(
-          store.activeManifestIndexCounter
-        );
+          this.__disposer.push(reaction);
+        });
       });
     }
     /**
@@ -214,15 +237,9 @@ export const HAXCMSTheme = function(SuperClass) {
       // remove our content container var which will disconnect the wiring
       delete this.contentContainer;
       // clean up state
-      this.__disposer();
-      this.__disposer2();
-      this.__disposer3();
-      this.__disposer4();
-      this.__disposer5();
-      this.__disposer6();
-      this.__disposer7();
-      this.__disposer8();
-      this.__disposer9();
+      for (var i in this.__disposer) {
+        this.__disposer[i].dispose();
+      }
     }
     /**
      * Correctly reset state and dispatch event to notify of active item change

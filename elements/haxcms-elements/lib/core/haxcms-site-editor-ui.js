@@ -1,5 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-fab/paper-fab.js";
@@ -270,8 +271,10 @@ Polymer({
     }
   },
   attached: function() {
-    this.__disposer = autorun(() => {
-      this.manifest = toJS(store.routerManifest);
+    afterNextRender(this, function() {
+      this.__disposer = autorun(() => {
+        this.manifest = toJS(store.routerManifest);
+      });
     });
   },
   detached: function() {

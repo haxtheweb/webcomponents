@@ -144,6 +144,20 @@ class HAXCMSBasicTheme extends HAXCMSTheme(BasicTemplate(PolymerElement)) {
             background-color: var(--site-top-menu-bg);
           }
         }
+        site-print-button {
+          --site-print-button-button: {
+            color: white;
+          }
+          --site-print-button-tooltip: {
+            --paper-tooltip-background: #000000;
+            --paper-tooltip-opacity: 1;
+            --paper-tooltip-text-color: #ffffff;
+            --paper-tooltip-delay-in: 0;
+            --paper-tooltip: {
+              border-radius: 0;
+            }
+          }
+        }
       </style>
       ${template}
     `;

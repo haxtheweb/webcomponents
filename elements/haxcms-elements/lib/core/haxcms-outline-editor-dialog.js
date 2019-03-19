@@ -1,5 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import * as async from "@polymer/polymer/lib/utils/async.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { autorun, toJS } from "mobx";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "@lrnwebcomponents/json-editor/json-editor.js";
@@ -100,28 +102,28 @@ Polymer({
       "json-outline-schema-changed",
       this.__jsonOutlineSchemaChanged.bind(this)
     );
-    this.$.editor.addEventListener("current-data-changed", e => {
-      if (e.detail.value) {
-        let outline = window.JSONOutlineSchema.requestAvailability();
-        this.set("manifest.items", e.detail.value);
-        this.notifyPath("manifest.items.*");
-        outline.items = e.detail.value;
-        this.manifestItems = JSON.stringify(e.detail.value, null, 2);
-        this.$.outline.importJsonOutlineSchemaItems();
-      }
+    afterNextRender(this, function() {
+      this.$.editor.addEventListener("current-data-changed", e => {
+        if (e.detail.value) {
+          let outline = window.JSONOutlineSchema.requestAvailability();
+          this.set("manifest.items", e.detail.value);
+          this.notifyPath("manifest.items.*");
+          outline.items = e.detail.value;
+          this.manifestItems = JSON.stringify(e.detail.value, null, 2);
+          this.$.outline.importJsonOutlineSchemaItems();
+        }
+      });
     });
   },
   /**
    * attached life cycle
    */
   attached: function() {
-    async.microTask.run(() => {
-      // state issue but it can miss in timing othewise on first event
-      if (typeof window.cmsSiteEditor.jsonOutlineSchema !== typeof undefined) {
-        this.set("manifest", window.cmsSiteEditor.jsonOutlineSchema);
-        this.notifyPath("manifest.*");
-        this.manifestItems = JSON.stringify(this.manifest.items, null, 2);
-      }
+    this.__disposer = [];
+    autorun(reaction => {
+      this.manifest = toJS(store.manifest);
+      this.manifestItems = JSON.stringify(this.manifest.items, null, 2);
+      this.__disposer.push(reaction);
     });
   },
   /**
@@ -132,6 +134,9 @@ Polymer({
       "json-outline-schema-changed",
       this.__jsonOutlineSchemaChanged.bind(this)
     );
+    for (var i in this.__disposer) {
+      this.__disposer[i].dispose();
+    }
   },
   /**
    * Switch view

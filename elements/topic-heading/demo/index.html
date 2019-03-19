@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>TopicHeading: topic-heading Demo</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '@polymer/iron-icons/av-icons.js';
+      import '../topic-heading.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles">
+      topic-heading {
+        --topic-heading-icon-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic topic-heading demo</h3>
+      <demo-snippet>
+        <template>
+          <topic-heading title="The Data Lifecycle" icon="av:videocam"></topic-heading>
+          <topic-heading title="Stages of Research Data" icon="icons:info"></topic-heading>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
