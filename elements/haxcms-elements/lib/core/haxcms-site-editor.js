@@ -4,6 +4,8 @@
  */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { autorun, toJS } from "mobx";
 import "@polymer/paper-fab/paper-fab.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-button/paper-button.js";
@@ -319,16 +321,13 @@ Polymer({
    * attached life cycle
    */
   attached: function() {
+    this.__disposer = autorun(() => {
+      this.manifest = toJS(store.manifest);
+    });
+    this.__disposer2 = autorun(() => {
+      this.activeItem = toJS(store.activeItem);
+    });
     async.microTask.run(() => {
-      // allow for initial setting since this editor gets injected basically
-      if (typeof window.cmsSiteEditor.jsonOutlineSchema !== typeof undefined) {
-        this.set("manifest", window.cmsSiteEditor.jsonOutlineSchema);
-        this.notifyPath("manifest.*");
-      }
-      if (typeof window.cmsSiteEditor.initialActiveItem !== typeof undefined) {
-        this.set("activeItem", window.cmsSiteEditor.initialActiveItem);
-        this.notifyPath("activeItem.*");
-      }
       this.updateStyles();
       if (window.HaxStore.ready) {
         let detail = {
@@ -342,6 +341,8 @@ Polymer({
    * Detatched life cycle
    */
   detached: function() {
+    this.__disposer();
+    this.__disposer2();
     window.removeEventListener(
       "hax-store-ready",
       this._storeReadyToGo.bind(this)
