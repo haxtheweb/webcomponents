@@ -82,7 +82,7 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
             sources="[[sources]]"
             title$="[[title]]"
           >
-            <slot name="description"></slot>
+            <slot></slot>
           </lrndesign-gallery-carousel>
         </template>
         <template is="dom-if" if="[[grid]]">
@@ -96,7 +96,7 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
             sources="[[sources]]"
             title$="[[title]]"
           >
-            <slot name="description"></slot>
+            <slot></slot>
           </lrndesign-gallery-grid>
         </template>
       </div>

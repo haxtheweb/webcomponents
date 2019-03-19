@@ -612,11 +612,11 @@
           "sourceRange": {
             "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 32,
+              "line": 36,
               "column": 6
             },
             "end": {
-              "line": 38,
+              "line": 42,
               "column": 7
             }
           },
@@ -636,11 +636,11 @@
           "sourceRange": {
             "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 42,
+              "line": 46,
               "column": 6
             },
             "end": {
-              "line": 48,
+              "line": 52,
               "column": 7
             }
           },
@@ -655,49 +655,24 @@
         {
           "name": "colors",
           "type": "?",
-          "description": "the colors object, eg.:\n{\n   \"grey\": [ \"#ffffff\", \"#eeeeee\", ... \"#111111\",\"#000000\" ],\n   \"red\": [ \"#ffdddd\", \"#ffaeae\", ... \"#520000\", \"#3f0000\" ],\n   ...\n}",
+          "description": "make the default theme dark?",
           "privacy": "public",
           "sourceRange": {
             "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 57,
+              "line": 56,
               "column": 6
             },
             "end": {
-              "line": 63,
+              "line": 61,
               "column": 7
             }
           },
           "metadata": {
             "polymer": {
-              "observer": "false"
+              "notify": true
             }
           },
-          "defaultValue": "null",
-          "inheritedFrom": "SimpleColors"
-        },
-        {
-          "name": "__wcagContrast",
-          "type": "?",
-          "description": "object with information on which color combinations are WCAG 2.0AA compliant, eg: {\n   greyOnColor: { //if either the color or its contrast will be a grey\n     large: [ //if bold text >= 14pt, text >= 18pt, decorative only, or disabled\n       {\n         level: 1, //if the color is level 1\n         minLevelContrast: 7, //contrasting color should be >= 8 <=TODO\n         maxLevelContrast: 12 //contrasting color should be <= 12\n       },\n       { level: 2, minLevelContrast: 7, maxLevelContrast: 12 },\n       ...\n     ],\n     small: [ //if bold text < 14pt, or text < 18pt\n       { level: 1, minLevelContrast: 7, maxLevelContrast: 12 },\n       { level: 2, minLevelContrast: 7, maxLevelContrast: 12 },\n       ...\n     ]\n   },\n   colorOnColor: { //if neither the color nor its contrast are grey\n     large: [\n       { level: 1, minLevelContrast: 7, maxLevelContrast: 12 },\n       { level: 2, minLevelContrast: 7, maxLevelContrast: 12 },\n       ...\n     ],\n     small: [\n       { level: 1, minLevelContrast: 8, maxLevelContrast: 12 },\n       { level: 2, minLevelContrast: 8, maxLevelContrast: 12 },\n       ...\n     ]\n   }\n }",
-          "privacy": "private",
-          "sourceRange": {
-            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
-            "start": {
-              "line": 96,
-              "column": 6
-            },
-            "end": {
-              "line": 102,
-              "column": 7
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "observer": "false"
-            }
-          },
-          "defaultValue": "null",
           "inheritedFrom": "SimpleColors"
         },
         {
@@ -1190,17 +1165,17 @@
         },
         {
           "name": "ready",
-          "description": "Stamps the element template.",
+          "description": "life cycle, element is ready",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/element-mixin.js",
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 608,
-              "column": 4
+              "line": 78,
+              "column": 2
             },
             "end": {
-              "line": 614,
-              "column": 5
+              "line": 80,
+              "column": 3
             }
           },
           "metadata": {},
@@ -1208,7 +1183,7 @@
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "ElementMixin"
+          "inheritedFrom": "SimpleColors"
         },
         {
           "name": "_initializeProperties",
@@ -3160,32 +3135,244 @@
           "inheritedFrom": "ElementMixin"
         },
         {
-          "name": "getContrasts",
-          "description": "for a given simple-colors variable and WCAG 2.0AA-defined text size (large or small),\nreturns an array with variable names and and hex codes of WCAG 2.0AA-compliant contrasting colors, eg:\n```[\n   { \"color\": \"--simple-colors-fixed-theme-grey-2\", \"hex\": \"#eeeeee\" },\n   { \"color\": \"--simple-colors-fixed-theme-red-2\", \"hex\": \"#ffaeae\" },\n   ...\n]```",
+          "name": "maxContrastShade",
+          "description": "returns the maximum contrast to the shade",
           "privacy": "public",
           "sourceRange": {
             "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 136,
+              "line": 88,
               "column": 2
             },
             "end": {
-              "line": 159,
+              "line": 90,
               "column": 3
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "variable"
+              "name": "shade"
+            }
+          ],
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "invertShade",
+          "description": "gets the current shade",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 98,
+              "column": 2
+            },
+            "end": {
+              "line": 100,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "shade"
+            }
+          ],
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "getColorInfo",
+          "description": "gets the color information of a given CSS variable or class",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 108,
+              "column": 2
+            },
+            "end": {
+              "line": 122,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "colorName"
+            }
+          ],
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "makeVariable",
+          "description": "returns a variable based on color name, shade, and fixed theme",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 132,
+              "column": 2
+            },
+            "end": {
+              "line": 138,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "color",
+              "defaultValue": "\"grey\""
             },
             {
-              "name": "large"
+              "name": "shade",
+              "defaultValue": "1"
+            },
+            {
+              "name": "theme",
+              "defaultValue": "\"default\""
             }
           ],
           "return": {
-            "type": "Array"
+            "type": "string",
+            "desc": "the CSS Variable"
           },
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "makeClass",
+          "description": "returns a variable based on color name, shade, and fixed theme",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 148,
+              "column": 2
+            },
+            "end": {
+              "line": 155,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "color",
+              "defaultValue": "\"grey\""
+            },
+            {
+              "name": "shade",
+              "defaultValue": "1"
+            },
+            {
+              "name": "theme",
+              "defaultValue": "\"default\""
+            },
+            {
+              "name": "suffix",
+              "defaultValue": "\"\""
+            }
+          ],
+          "return": {
+            "type": "string",
+            "desc": "the CSS class"
+          },
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "getContrastingColors",
+          "description": "for large or small text given a color and its shade,\nlists all the colors and shades that would be\nWCAG 2.0 AA-compliant for contrast",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 167,
+              "column": 2
+            },
+            "end": {
+              "line": 173,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "colorName"
+            },
+            {
+              "name": "colorShade"
+            },
+            {
+              "name": "isLarge"
+            }
+          ],
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "getContrastingShades",
+          "description": "for large or small text given a color and its shade,\nlists all the shades of another color that would be\nWCAG 2.0 AA-compliant for contrast",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 186,
+              "column": 2
+            },
+            "end": {
+              "line": 193,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "isLarge"
+            },
+            {
+              "name": "colorName"
+            },
+            {
+              "name": "colorShade"
+            },
+            {
+              "name": "contrastName"
+            }
+          ],
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "isContrastCompliant",
+          "description": "determines if two shades are WCAG 2.0 AA-compliant for contrast",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 205,
+              "column": 2
+            },
+            "end": {
+              "line": 219,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "isLarge"
+            },
+            {
+              "name": "colorName"
+            },
+            {
+              "name": "colorShade"
+            },
+            {
+              "name": "contrastName"
+            },
+            {
+              "name": "contrastShade"
+            }
+          ],
           "inheritedFrom": "SimpleColors"
         },
         {
@@ -3222,7 +3409,7 @@
               "column": 2
             },
             "end": {
-              "line": 171,
+              "line": 177,
               "column": 3
             }
           },
@@ -3235,11 +3422,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 180,
+              "line": 186,
               "column": 2
             },
             "end": {
-              "line": 214,
+              "line": 220,
               "column": 3
             }
           },
@@ -3266,11 +3453,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 222,
+              "line": 228,
               "column": 2
             },
             "end": {
-              "line": 232,
+              "line": 238,
               "column": 3
             }
           },
@@ -3291,11 +3478,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 239,
+              "line": 245,
               "column": 2
             },
             "end": {
-              "line": 246,
+              "line": 252,
               "column": 3
             }
           },
@@ -3316,11 +3503,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 254,
+              "line": 260,
               "column": 2
             },
             "end": {
-              "line": 256,
+              "line": 262,
               "column": 3
             }
           },
@@ -3342,11 +3529,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 265,
+              "line": 271,
               "column": 2
             },
             "end": {
-              "line": 267,
+              "line": 273,
               "column": 3
             }
           },
@@ -3372,11 +3559,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 276,
+              "line": 282,
               "column": 2
             },
             "end": {
-              "line": 289,
+              "line": 295,
               "column": 3
             }
           },
@@ -3400,11 +3587,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 299,
+              "line": 305,
               "column": 2
             },
             "end": {
-              "line": 309,
+              "line": 315,
               "column": 3
             }
           },
@@ -3434,11 +3621,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 317,
+              "line": 323,
               "column": 2
             },
             "end": {
-              "line": 327,
+              "line": 333,
               "column": 3
             }
           },
@@ -3458,11 +3645,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 337,
+              "line": 343,
               "column": 2
             },
             "end": {
-              "line": 339,
+              "line": 345,
               "column": 3
             }
           },
@@ -3484,11 +3671,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 344,
+              "line": 350,
               "column": 2
             },
             "end": {
-              "line": 346,
+              "line": 352,
               "column": 3
             }
           },
@@ -3501,11 +3688,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 348,
+              "line": 354,
               "column": 2
             },
             "end": {
-              "line": 352,
+              "line": 358,
               "column": 3
             }
           },
@@ -4456,7 +4643,7 @@
           "column": 0
         },
         "end": {
-          "line": 353,
+          "line": 359,
           "column": 1
         }
       },
@@ -4470,11 +4657,11 @@
           "sourceRange": {
             "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 32,
+              "line": 36,
               "column": 6
             },
             "end": {
-              "line": 38,
+              "line": 42,
               "column": 7
             }
           },
@@ -4487,11 +4674,11 @@
           "sourceRange": {
             "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 42,
+              "line": 46,
               "column": 6
             },
             "end": {
-              "line": 48,
+              "line": 52,
               "column": 7
             }
           },
@@ -4500,15 +4687,15 @@
         },
         {
           "name": "colors",
-          "description": "the colors object, eg.:\n{\n   \"grey\": [ \"#ffffff\", \"#eeeeee\", ... \"#111111\",\"#000000\" ],\n   \"red\": [ \"#ffdddd\", \"#ffaeae\", ... \"#520000\", \"#3f0000\" ],\n   ...\n}",
+          "description": "make the default theme dark?",
           "sourceRange": {
             "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 57,
+              "line": 56,
               "column": 6
             },
             "end": {
-              "line": 63,
+              "line": 61,
               "column": 7
             }
           },
@@ -4704,6 +4891,13 @@
           "type": "CustomEvent",
           "name": "dark-changed",
           "description": "Fired when the `dark` property changes.",
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "type": "CustomEvent",
+          "name": "colors-changed",
+          "description": "Fired when the `colors` property changes.",
           "metadata": {},
           "inheritedFrom": "SimpleColors"
         },
@@ -13360,11 +13554,11 @@
           "sourceRange": {
             "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 32,
+              "line": 36,
               "column": 6
             },
             "end": {
-              "line": 38,
+              "line": 42,
               "column": 7
             }
           },
@@ -13384,11 +13578,11 @@
           "sourceRange": {
             "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 42,
+              "line": 46,
               "column": 6
             },
             "end": {
-              "line": 48,
+              "line": 52,
               "column": 7
             }
           },
@@ -13403,49 +13597,24 @@
         {
           "name": "colors",
           "type": "?",
-          "description": "the colors object, eg.:\n{\n   \"grey\": [ \"#ffffff\", \"#eeeeee\", ... \"#111111\",\"#000000\" ],\n   \"red\": [ \"#ffdddd\", \"#ffaeae\", ... \"#520000\", \"#3f0000\" ],\n   ...\n}",
+          "description": "make the default theme dark?",
           "privacy": "public",
           "sourceRange": {
             "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 57,
+              "line": 56,
               "column": 6
             },
             "end": {
-              "line": 63,
+              "line": 61,
               "column": 7
             }
           },
           "metadata": {
             "polymer": {
-              "observer": "false"
+              "notify": true
             }
           },
-          "defaultValue": "null",
-          "inheritedFrom": "SimpleColors"
-        },
-        {
-          "name": "__wcagContrast",
-          "type": "?",
-          "description": "object with information on which color combinations are WCAG 2.0AA compliant, eg: {\n   greyOnColor: { //if either the color or its contrast will be a grey\n     large: [ //if bold text >= 14pt, text >= 18pt, decorative only, or disabled\n       {\n         level: 1, //if the color is level 1\n         minLevelContrast: 7, //contrasting color should be >= 8 <=TODO\n         maxLevelContrast: 12 //contrasting color should be <= 12\n       },\n       { level: 2, minLevelContrast: 7, maxLevelContrast: 12 },\n       ...\n     ],\n     small: [ //if bold text < 14pt, or text < 18pt\n       { level: 1, minLevelContrast: 7, maxLevelContrast: 12 },\n       { level: 2, minLevelContrast: 7, maxLevelContrast: 12 },\n       ...\n     ]\n   },\n   colorOnColor: { //if neither the color nor its contrast are grey\n     large: [\n       { level: 1, minLevelContrast: 7, maxLevelContrast: 12 },\n       { level: 2, minLevelContrast: 7, maxLevelContrast: 12 },\n       ...\n     ],\n     small: [\n       { level: 1, minLevelContrast: 8, maxLevelContrast: 12 },\n       { level: 2, minLevelContrast: 8, maxLevelContrast: 12 },\n       ...\n     ]\n   }\n }",
-          "privacy": "private",
-          "sourceRange": {
-            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
-            "start": {
-              "line": 96,
-              "column": 6
-            },
-            "end": {
-              "line": 102,
-              "column": 7
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "observer": "false"
-            }
-          },
-          "defaultValue": "null",
           "inheritedFrom": "SimpleColors"
         },
         {
@@ -15952,32 +16121,244 @@
           "inheritedFrom": "ElementMixin"
         },
         {
-          "name": "getContrasts",
-          "description": "for a given simple-colors variable and WCAG 2.0AA-defined text size (large or small),\nreturns an array with variable names and and hex codes of WCAG 2.0AA-compliant contrasting colors, eg:\n```[\n   { \"color\": \"--simple-colors-fixed-theme-grey-2\", \"hex\": \"#eeeeee\" },\n   { \"color\": \"--simple-colors-fixed-theme-red-2\", \"hex\": \"#ffaeae\" },\n   ...\n]```",
+          "name": "maxContrastShade",
+          "description": "returns the maximum contrast to the shade",
           "privacy": "public",
           "sourceRange": {
             "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 136,
+              "line": 88,
               "column": 2
             },
             "end": {
-              "line": 159,
+              "line": 90,
               "column": 3
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "variable"
+              "name": "shade"
+            }
+          ],
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "invertShade",
+          "description": "gets the current shade",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 98,
+              "column": 2
+            },
+            "end": {
+              "line": 100,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "shade"
+            }
+          ],
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "getColorInfo",
+          "description": "gets the color information of a given CSS variable or class",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 108,
+              "column": 2
+            },
+            "end": {
+              "line": 122,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "colorName"
+            }
+          ],
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "makeVariable",
+          "description": "returns a variable based on color name, shade, and fixed theme",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 132,
+              "column": 2
+            },
+            "end": {
+              "line": 138,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "color",
+              "defaultValue": "\"grey\""
             },
             {
-              "name": "large"
+              "name": "shade",
+              "defaultValue": "1"
+            },
+            {
+              "name": "theme",
+              "defaultValue": "\"default\""
             }
           ],
           "return": {
-            "type": "Array"
+            "type": "string",
+            "desc": "the CSS Variable"
           },
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "makeClass",
+          "description": "returns a variable based on color name, shade, and fixed theme",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 148,
+              "column": 2
+            },
+            "end": {
+              "line": 155,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "color",
+              "defaultValue": "\"grey\""
+            },
+            {
+              "name": "shade",
+              "defaultValue": "1"
+            },
+            {
+              "name": "theme",
+              "defaultValue": "\"default\""
+            },
+            {
+              "name": "suffix",
+              "defaultValue": "\"\""
+            }
+          ],
+          "return": {
+            "type": "string",
+            "desc": "the CSS class"
+          },
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "getContrastingColors",
+          "description": "for large or small text given a color and its shade,\nlists all the colors and shades that would be\nWCAG 2.0 AA-compliant for contrast",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 167,
+              "column": 2
+            },
+            "end": {
+              "line": 173,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "colorName"
+            },
+            {
+              "name": "colorShade"
+            },
+            {
+              "name": "isLarge"
+            }
+          ],
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "getContrastingShades",
+          "description": "for large or small text given a color and its shade,\nlists all the shades of another color that would be\nWCAG 2.0 AA-compliant for contrast",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 186,
+              "column": 2
+            },
+            "end": {
+              "line": 193,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "isLarge"
+            },
+            {
+              "name": "colorName"
+            },
+            {
+              "name": "colorShade"
+            },
+            {
+              "name": "contrastName"
+            }
+          ],
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "isContrastCompliant",
+          "description": "determines if two shades are WCAG 2.0 AA-compliant for contrast",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 205,
+              "column": 2
+            },
+            "end": {
+              "line": 219,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "isLarge"
+            },
+            {
+              "name": "colorName"
+            },
+            {
+              "name": "colorShade"
+            },
+            {
+              "name": "contrastName"
+            },
+            {
+              "name": "contrastShade"
+            }
+          ],
           "inheritedFrom": "SimpleColors"
         },
         {
@@ -16017,7 +16398,7 @@
               "column": 2
             },
             "end": {
-              "line": 171,
+              "line": 177,
               "column": 3
             }
           },
@@ -16032,11 +16413,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 180,
+              "line": 186,
               "column": 2
             },
             "end": {
-              "line": 214,
+              "line": 220,
               "column": 3
             }
           },
@@ -16065,11 +16446,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 222,
+              "line": 228,
               "column": 2
             },
             "end": {
-              "line": 232,
+              "line": 238,
               "column": 3
             }
           },
@@ -16092,11 +16473,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 239,
+              "line": 245,
               "column": 2
             },
             "end": {
-              "line": 246,
+              "line": 252,
               "column": 3
             }
           },
@@ -16119,11 +16500,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 254,
+              "line": 260,
               "column": 2
             },
             "end": {
-              "line": 256,
+              "line": 262,
               "column": 3
             }
           },
@@ -16147,11 +16528,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 265,
+              "line": 271,
               "column": 2
             },
             "end": {
-              "line": 267,
+              "line": 273,
               "column": 3
             }
           },
@@ -16179,11 +16560,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 276,
+              "line": 282,
               "column": 2
             },
             "end": {
-              "line": 289,
+              "line": 295,
               "column": 3
             }
           },
@@ -16209,11 +16590,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 299,
+              "line": 305,
               "column": 2
             },
             "end": {
-              "line": 309,
+              "line": 315,
               "column": 3
             }
           },
@@ -16245,11 +16626,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 317,
+              "line": 323,
               "column": 2
             },
             "end": {
-              "line": 327,
+              "line": 333,
               "column": 3
             }
           },
@@ -16271,11 +16652,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 337,
+              "line": 343,
               "column": 2
             },
             "end": {
-              "line": 339,
+              "line": 345,
               "column": 3
             }
           },
@@ -16299,11 +16680,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 344,
+              "line": 350,
               "column": 2
             },
             "end": {
-              "line": 346,
+              "line": 352,
               "column": 3
             }
           },
@@ -16318,11 +16699,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 348,
+              "line": 354,
               "column": 2
             },
             "end": {
-              "line": 352,
+              "line": 358,
               "column": 3
             }
           },
@@ -17482,11 +17863,11 @@
           "sourceRange": {
             "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 32,
+              "line": 36,
               "column": 6
             },
             "end": {
-              "line": 38,
+              "line": 42,
               "column": 7
             }
           },
@@ -17499,11 +17880,11 @@
           "sourceRange": {
             "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 42,
+              "line": 46,
               "column": 6
             },
             "end": {
-              "line": 48,
+              "line": 52,
               "column": 7
             }
           },
@@ -17512,15 +17893,15 @@
         },
         {
           "name": "colors",
-          "description": "the colors object, eg.:\n{\n   \"grey\": [ \"#ffffff\", \"#eeeeee\", ... \"#111111\",\"#000000\" ],\n   \"red\": [ \"#ffdddd\", \"#ffaeae\", ... \"#520000\", \"#3f0000\" ],\n   ...\n}",
+          "description": "make the default theme dark?",
           "sourceRange": {
             "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 57,
+              "line": 56,
               "column": 6
             },
             "end": {
-              "line": 63,
+              "line": 61,
               "column": 7
             }
           },
@@ -17738,6 +18119,13 @@
           "type": "CustomEvent",
           "name": "dark-changed",
           "description": "Fired when the `dark` property changes.",
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "type": "CustomEvent",
+          "name": "colors-changed",
+          "description": "Fired when the `colors` property changes.",
           "metadata": {},
           "inheritedFrom": "SimpleColors"
         },
@@ -18366,11 +18754,11 @@
           "sourceRange": {
             "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 32,
+              "line": 36,
               "column": 6
             },
             "end": {
-              "line": 38,
+              "line": 42,
               "column": 7
             }
           },
@@ -18390,11 +18778,11 @@
           "sourceRange": {
             "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 42,
+              "line": 46,
               "column": 6
             },
             "end": {
-              "line": 48,
+              "line": 52,
               "column": 7
             }
           },
@@ -18409,49 +18797,24 @@
         {
           "name": "colors",
           "type": "?",
-          "description": "the colors object, eg.:\n{\n   \"grey\": [ \"#ffffff\", \"#eeeeee\", ... \"#111111\",\"#000000\" ],\n   \"red\": [ \"#ffdddd\", \"#ffaeae\", ... \"#520000\", \"#3f0000\" ],\n   ...\n}",
+          "description": "make the default theme dark?",
           "privacy": "public",
           "sourceRange": {
             "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 57,
+              "line": 56,
               "column": 6
             },
             "end": {
-              "line": 63,
+              "line": 61,
               "column": 7
             }
           },
           "metadata": {
             "polymer": {
-              "observer": "false"
+              "notify": true
             }
           },
-          "defaultValue": "null",
-          "inheritedFrom": "SimpleColors"
-        },
-        {
-          "name": "__wcagContrast",
-          "type": "?",
-          "description": "object with information on which color combinations are WCAG 2.0AA compliant, eg: {\n   greyOnColor: { //if either the color or its contrast will be a grey\n     large: [ //if bold text >= 14pt, text >= 18pt, decorative only, or disabled\n       {\n         level: 1, //if the color is level 1\n         minLevelContrast: 7, //contrasting color should be >= 8 <=TODO\n         maxLevelContrast: 12 //contrasting color should be <= 12\n       },\n       { level: 2, minLevelContrast: 7, maxLevelContrast: 12 },\n       ...\n     ],\n     small: [ //if bold text < 14pt, or text < 18pt\n       { level: 1, minLevelContrast: 7, maxLevelContrast: 12 },\n       { level: 2, minLevelContrast: 7, maxLevelContrast: 12 },\n       ...\n     ]\n   },\n   colorOnColor: { //if neither the color nor its contrast are grey\n     large: [\n       { level: 1, minLevelContrast: 7, maxLevelContrast: 12 },\n       { level: 2, minLevelContrast: 7, maxLevelContrast: 12 },\n       ...\n     ],\n     small: [\n       { level: 1, minLevelContrast: 8, maxLevelContrast: 12 },\n       { level: 2, minLevelContrast: 8, maxLevelContrast: 12 },\n       ...\n     ]\n   }\n }",
-          "privacy": "private",
-          "sourceRange": {
-            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
-            "start": {
-              "line": 96,
-              "column": 6
-            },
-            "end": {
-              "line": 102,
-              "column": 7
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "observer": "false"
-            }
-          },
-          "defaultValue": "null",
           "inheritedFrom": "SimpleColors"
         },
         {
@@ -18988,17 +19351,17 @@
         },
         {
           "name": "ready",
-          "description": "Stamps the element template.",
+          "description": "life cycle, element is ready",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/element-mixin.js",
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 608,
-              "column": 4
+              "line": 78,
+              "column": 2
             },
             "end": {
-              "line": 614,
-              "column": 5
+              "line": 80,
+              "column": 3
             }
           },
           "metadata": {},
@@ -19006,7 +19369,7 @@
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "ElementMixin"
+          "inheritedFrom": "SimpleColors"
         },
         {
           "name": "_initializeProperties",
@@ -20960,32 +21323,244 @@
           "inheritedFrom": "ElementMixin"
         },
         {
-          "name": "getContrasts",
-          "description": "for a given simple-colors variable and WCAG 2.0AA-defined text size (large or small),\nreturns an array with variable names and and hex codes of WCAG 2.0AA-compliant contrasting colors, eg:\n```[\n   { \"color\": \"--simple-colors-fixed-theme-grey-2\", \"hex\": \"#eeeeee\" },\n   { \"color\": \"--simple-colors-fixed-theme-red-2\", \"hex\": \"#ffaeae\" },\n   ...\n]```",
+          "name": "maxContrastShade",
+          "description": "returns the maximum contrast to the shade",
           "privacy": "public",
           "sourceRange": {
             "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 136,
+              "line": 88,
               "column": 2
             },
             "end": {
-              "line": 159,
+              "line": 90,
               "column": 3
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "variable"
+              "name": "shade"
+            }
+          ],
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "invertShade",
+          "description": "gets the current shade",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 98,
+              "column": 2
+            },
+            "end": {
+              "line": 100,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "shade"
+            }
+          ],
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "getColorInfo",
+          "description": "gets the color information of a given CSS variable or class",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 108,
+              "column": 2
+            },
+            "end": {
+              "line": 122,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "colorName"
+            }
+          ],
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "makeVariable",
+          "description": "returns a variable based on color name, shade, and fixed theme",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 132,
+              "column": 2
+            },
+            "end": {
+              "line": 138,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "color",
+              "defaultValue": "\"grey\""
             },
             {
-              "name": "large"
+              "name": "shade",
+              "defaultValue": "1"
+            },
+            {
+              "name": "theme",
+              "defaultValue": "\"default\""
             }
           ],
           "return": {
-            "type": "Array"
+            "type": "string",
+            "desc": "the CSS Variable"
           },
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "makeClass",
+          "description": "returns a variable based on color name, shade, and fixed theme",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 148,
+              "column": 2
+            },
+            "end": {
+              "line": 155,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "color",
+              "defaultValue": "\"grey\""
+            },
+            {
+              "name": "shade",
+              "defaultValue": "1"
+            },
+            {
+              "name": "theme",
+              "defaultValue": "\"default\""
+            },
+            {
+              "name": "suffix",
+              "defaultValue": "\"\""
+            }
+          ],
+          "return": {
+            "type": "string",
+            "desc": "the CSS class"
+          },
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "getContrastingColors",
+          "description": "for large or small text given a color and its shade,\nlists all the colors and shades that would be\nWCAG 2.0 AA-compliant for contrast",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 167,
+              "column": 2
+            },
+            "end": {
+              "line": 173,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "colorName"
+            },
+            {
+              "name": "colorShade"
+            },
+            {
+              "name": "isLarge"
+            }
+          ],
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "getContrastingShades",
+          "description": "for large or small text given a color and its shade,\nlists all the shades of another color that would be\nWCAG 2.0 AA-compliant for contrast",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 186,
+              "column": 2
+            },
+            "end": {
+              "line": 193,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "isLarge"
+            },
+            {
+              "name": "colorName"
+            },
+            {
+              "name": "colorShade"
+            },
+            {
+              "name": "contrastName"
+            }
+          ],
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "isContrastCompliant",
+          "description": "determines if two shades are WCAG 2.0 AA-compliant for contrast",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 205,
+              "column": 2
+            },
+            "end": {
+              "line": 219,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "isLarge"
+            },
+            {
+              "name": "colorName"
+            },
+            {
+              "name": "colorShade"
+            },
+            {
+              "name": "contrastName"
+            },
+            {
+              "name": "contrastShade"
+            }
+          ],
           "inheritedFrom": "SimpleColors"
         },
         {
@@ -21025,7 +21600,7 @@
               "column": 2
             },
             "end": {
-              "line": 171,
+              "line": 177,
               "column": 3
             }
           },
@@ -21040,11 +21615,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 180,
+              "line": 186,
               "column": 2
             },
             "end": {
-              "line": 214,
+              "line": 220,
               "column": 3
             }
           },
@@ -21073,11 +21648,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 222,
+              "line": 228,
               "column": 2
             },
             "end": {
-              "line": 232,
+              "line": 238,
               "column": 3
             }
           },
@@ -21100,11 +21675,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 239,
+              "line": 245,
               "column": 2
             },
             "end": {
-              "line": 246,
+              "line": 252,
               "column": 3
             }
           },
@@ -21127,11 +21702,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 254,
+              "line": 260,
               "column": 2
             },
             "end": {
-              "line": 256,
+              "line": 262,
               "column": 3
             }
           },
@@ -21155,11 +21730,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 265,
+              "line": 271,
               "column": 2
             },
             "end": {
-              "line": 267,
+              "line": 273,
               "column": 3
             }
           },
@@ -21187,11 +21762,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 276,
+              "line": 282,
               "column": 2
             },
             "end": {
-              "line": 289,
+              "line": 295,
               "column": 3
             }
           },
@@ -21217,11 +21792,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 299,
+              "line": 305,
               "column": 2
             },
             "end": {
-              "line": 309,
+              "line": 315,
               "column": 3
             }
           },
@@ -21253,11 +21828,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 317,
+              "line": 323,
               "column": 2
             },
             "end": {
-              "line": 327,
+              "line": 333,
               "column": 3
             }
           },
@@ -21279,11 +21854,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 337,
+              "line": 343,
               "column": 2
             },
             "end": {
-              "line": 339,
+              "line": 345,
               "column": 3
             }
           },
@@ -21307,11 +21882,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 344,
+              "line": 350,
               "column": 2
             },
             "end": {
-              "line": 346,
+              "line": 352,
               "column": 3
             }
           },
@@ -21326,11 +21901,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 348,
+              "line": 354,
               "column": 2
             },
             "end": {
-              "line": 352,
+              "line": 358,
               "column": 3
             }
           },
@@ -22351,11 +22926,11 @@
           "sourceRange": {
             "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 32,
+              "line": 36,
               "column": 6
             },
             "end": {
-              "line": 38,
+              "line": 42,
               "column": 7
             }
           },
@@ -22368,11 +22943,11 @@
           "sourceRange": {
             "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 42,
+              "line": 46,
               "column": 6
             },
             "end": {
-              "line": 48,
+              "line": 52,
               "column": 7
             }
           },
@@ -22381,15 +22956,15 @@
         },
         {
           "name": "colors",
-          "description": "the colors object, eg.:\n{\n   \"grey\": [ \"#ffffff\", \"#eeeeee\", ... \"#111111\",\"#000000\" ],\n   \"red\": [ \"#ffdddd\", \"#ffaeae\", ... \"#520000\", \"#3f0000\" ],\n   ...\n}",
+          "description": "make the default theme dark?",
           "sourceRange": {
             "file": "../../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 57,
+              "line": 56,
               "column": 6
             },
             "end": {
-              "line": 63,
+              "line": 61,
               "column": 7
             }
           },
@@ -22623,6 +23198,13 @@
           "type": "CustomEvent",
           "name": "dark-changed",
           "description": "Fired when the `dark` property changes.",
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "type": "CustomEvent",
+          "name": "colors-changed",
+          "description": "Fired when the `colors` property changes.",
           "metadata": {},
           "inheritedFrom": "SimpleColors"
         },
@@ -23251,11 +23833,11 @@
           "sourceRange": {
             "file": "../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 32,
+              "line": 36,
               "column": 6
             },
             "end": {
-              "line": 38,
+              "line": 42,
               "column": 7
             }
           },
@@ -23275,11 +23857,11 @@
           "sourceRange": {
             "file": "../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 42,
+              "line": 46,
               "column": 6
             },
             "end": {
-              "line": 48,
+              "line": 52,
               "column": 7
             }
           },
@@ -23294,49 +23876,24 @@
         {
           "name": "colors",
           "type": "?",
-          "description": "the colors object, eg.:\n{\n   \"grey\": [ \"#ffffff\", \"#eeeeee\", ... \"#111111\",\"#000000\" ],\n   \"red\": [ \"#ffdddd\", \"#ffaeae\", ... \"#520000\", \"#3f0000\" ],\n   ...\n}",
+          "description": "make the default theme dark?",
           "privacy": "public",
           "sourceRange": {
             "file": "../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 57,
+              "line": 56,
               "column": 6
             },
             "end": {
-              "line": 63,
+              "line": 61,
               "column": 7
             }
           },
           "metadata": {
             "polymer": {
-              "observer": "false"
+              "notify": true
             }
           },
-          "defaultValue": "null",
-          "inheritedFrom": "SimpleColors"
-        },
-        {
-          "name": "__wcagContrast",
-          "type": "?",
-          "description": "object with information on which color combinations are WCAG 2.0AA compliant, eg: {\n   greyOnColor: { //if either the color or its contrast will be a grey\n     large: [ //if bold text >= 14pt, text >= 18pt, decorative only, or disabled\n       {\n         level: 1, //if the color is level 1\n         minLevelContrast: 7, //contrasting color should be >= 8 <=TODO\n         maxLevelContrast: 12 //contrasting color should be <= 12\n       },\n       { level: 2, minLevelContrast: 7, maxLevelContrast: 12 },\n       ...\n     ],\n     small: [ //if bold text < 14pt, or text < 18pt\n       { level: 1, minLevelContrast: 7, maxLevelContrast: 12 },\n       { level: 2, minLevelContrast: 7, maxLevelContrast: 12 },\n       ...\n     ]\n   },\n   colorOnColor: { //if neither the color nor its contrast are grey\n     large: [\n       { level: 1, minLevelContrast: 7, maxLevelContrast: 12 },\n       { level: 2, minLevelContrast: 7, maxLevelContrast: 12 },\n       ...\n     ],\n     small: [\n       { level: 1, minLevelContrast: 8, maxLevelContrast: 12 },\n       { level: 2, minLevelContrast: 8, maxLevelContrast: 12 },\n       ...\n     ]\n   }\n }",
-          "privacy": "private",
-          "sourceRange": {
-            "file": "../@lrnwebcomponents/simple-colors/simple-colors.js",
-            "start": {
-              "line": 96,
-              "column": 6
-            },
-            "end": {
-              "line": 102,
-              "column": 7
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "observer": "false"
-            }
-          },
-          "defaultValue": "null",
           "inheritedFrom": "SimpleColors"
         },
         {
@@ -25819,32 +26376,244 @@
           "inheritedFrom": "ElementMixin"
         },
         {
-          "name": "getContrasts",
-          "description": "for a given simple-colors variable and WCAG 2.0AA-defined text size (large or small),\nreturns an array with variable names and and hex codes of WCAG 2.0AA-compliant contrasting colors, eg:\n```[\n   { \"color\": \"--simple-colors-fixed-theme-grey-2\", \"hex\": \"#eeeeee\" },\n   { \"color\": \"--simple-colors-fixed-theme-red-2\", \"hex\": \"#ffaeae\" },\n   ...\n]```",
+          "name": "maxContrastShade",
+          "description": "returns the maximum contrast to the shade",
           "privacy": "public",
           "sourceRange": {
             "file": "../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 136,
+              "line": 88,
               "column": 2
             },
             "end": {
-              "line": 159,
+              "line": 90,
               "column": 3
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "variable"
+              "name": "shade"
+            }
+          ],
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "invertShade",
+          "description": "gets the current shade",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 98,
+              "column": 2
+            },
+            "end": {
+              "line": 100,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "shade"
+            }
+          ],
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "getColorInfo",
+          "description": "gets the color information of a given CSS variable or class",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 108,
+              "column": 2
+            },
+            "end": {
+              "line": 122,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "colorName"
+            }
+          ],
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "makeVariable",
+          "description": "returns a variable based on color name, shade, and fixed theme",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 132,
+              "column": 2
+            },
+            "end": {
+              "line": 138,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "color",
+              "defaultValue": "\"grey\""
             },
             {
-              "name": "large"
+              "name": "shade",
+              "defaultValue": "1"
+            },
+            {
+              "name": "theme",
+              "defaultValue": "\"default\""
             }
           ],
           "return": {
-            "type": "Array"
+            "type": "string",
+            "desc": "the CSS Variable"
           },
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "makeClass",
+          "description": "returns a variable based on color name, shade, and fixed theme",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 148,
+              "column": 2
+            },
+            "end": {
+              "line": 155,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "color",
+              "defaultValue": "\"grey\""
+            },
+            {
+              "name": "shade",
+              "defaultValue": "1"
+            },
+            {
+              "name": "theme",
+              "defaultValue": "\"default\""
+            },
+            {
+              "name": "suffix",
+              "defaultValue": "\"\""
+            }
+          ],
+          "return": {
+            "type": "string",
+            "desc": "the CSS class"
+          },
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "getContrastingColors",
+          "description": "for large or small text given a color and its shade,\nlists all the colors and shades that would be\nWCAG 2.0 AA-compliant for contrast",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 167,
+              "column": 2
+            },
+            "end": {
+              "line": 173,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "colorName"
+            },
+            {
+              "name": "colorShade"
+            },
+            {
+              "name": "isLarge"
+            }
+          ],
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "getContrastingShades",
+          "description": "for large or small text given a color and its shade,\nlists all the shades of another color that would be\nWCAG 2.0 AA-compliant for contrast",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 186,
+              "column": 2
+            },
+            "end": {
+              "line": 193,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "isLarge"
+            },
+            {
+              "name": "colorName"
+            },
+            {
+              "name": "colorShade"
+            },
+            {
+              "name": "contrastName"
+            }
+          ],
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "name": "isContrastCompliant",
+          "description": "determines if two shades are WCAG 2.0 AA-compliant for contrast",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/simple-colors/simple-colors.js",
+            "start": {
+              "line": 205,
+              "column": 2
+            },
+            "end": {
+              "line": 219,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "isLarge"
+            },
+            {
+              "name": "colorName"
+            },
+            {
+              "name": "colorShade"
+            },
+            {
+              "name": "contrastName"
+            },
+            {
+              "name": "contrastShade"
+            }
+          ],
           "inheritedFrom": "SimpleColors"
         },
         {
@@ -25884,7 +26653,7 @@
               "column": 2
             },
             "end": {
-              "line": 171,
+              "line": 177,
               "column": 3
             }
           },
@@ -25899,11 +26668,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 180,
+              "line": 186,
               "column": 2
             },
             "end": {
-              "line": 214,
+              "line": 220,
               "column": 3
             }
           },
@@ -25932,11 +26701,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 222,
+              "line": 228,
               "column": 2
             },
             "end": {
-              "line": 232,
+              "line": 238,
               "column": 3
             }
           },
@@ -25959,11 +26728,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 239,
+              "line": 245,
               "column": 2
             },
             "end": {
-              "line": 246,
+              "line": 252,
               "column": 3
             }
           },
@@ -25986,11 +26755,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 254,
+              "line": 260,
               "column": 2
             },
             "end": {
-              "line": 256,
+              "line": 262,
               "column": 3
             }
           },
@@ -26014,11 +26783,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 265,
+              "line": 271,
               "column": 2
             },
             "end": {
-              "line": 267,
+              "line": 273,
               "column": 3
             }
           },
@@ -26046,11 +26815,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 276,
+              "line": 282,
               "column": 2
             },
             "end": {
-              "line": 289,
+              "line": 295,
               "column": 3
             }
           },
@@ -26076,11 +26845,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 299,
+              "line": 305,
               "column": 2
             },
             "end": {
-              "line": 309,
+              "line": 315,
               "column": 3
             }
           },
@@ -26112,11 +26881,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 317,
+              "line": 323,
               "column": 2
             },
             "end": {
-              "line": 327,
+              "line": 333,
               "column": 3
             }
           },
@@ -26138,11 +26907,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 337,
+              "line": 343,
               "column": 2
             },
             "end": {
-              "line": 339,
+              "line": 345,
               "column": 3
             }
           },
@@ -26166,11 +26935,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 344,
+              "line": 350,
               "column": 2
             },
             "end": {
-              "line": 346,
+              "line": 352,
               "column": 3
             }
           },
@@ -26185,11 +26954,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 348,
+              "line": 354,
               "column": 2
             },
             "end": {
-              "line": 352,
+              "line": 358,
               "column": 3
             }
           },
@@ -27164,11 +27933,11 @@
           "sourceRange": {
             "file": "../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 32,
+              "line": 36,
               "column": 6
             },
             "end": {
-              "line": 38,
+              "line": 42,
               "column": 7
             }
           },
@@ -27181,11 +27950,11 @@
           "sourceRange": {
             "file": "../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 42,
+              "line": 46,
               "column": 6
             },
             "end": {
-              "line": 48,
+              "line": 52,
               "column": 7
             }
           },
@@ -27194,15 +27963,15 @@
         },
         {
           "name": "colors",
-          "description": "the colors object, eg.:\n{\n   \"grey\": [ \"#ffffff\", \"#eeeeee\", ... \"#111111\",\"#000000\" ],\n   \"red\": [ \"#ffdddd\", \"#ffaeae\", ... \"#520000\", \"#3f0000\" ],\n   ...\n}",
+          "description": "make the default theme dark?",
           "sourceRange": {
             "file": "../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 57,
+              "line": 56,
               "column": 6
             },
             "end": {
-              "line": 63,
+              "line": 61,
               "column": 7
             }
           },
@@ -27420,6 +28189,13 @@
           "type": "CustomEvent",
           "name": "dark-changed",
           "description": "Fired when the `dark` property changes.",
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "type": "CustomEvent",
+          "name": "colors-changed",
+          "description": "Fired when the `colors` property changes.",
           "metadata": {},
           "inheritedFrom": "SimpleColors"
         },
