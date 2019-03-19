@@ -1,5 +1,4 @@
 import { ImageCompareSlider } from "./image-compare-slider.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 import image1 from "./demo/images/Matterhorn01.png";
 import image2 from "./demo/images/Matterhorn02.png";

@@ -1,5 +1,4 @@
 import { AccentCard } from "./accent-card.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 import image1 from "./demo/images/image1.jpg";
 import image2 from "./demo/images/image2.jpg";
@@ -37,19 +36,8 @@ window.StorybookUtilities.instance.addPattern(AccentCardPattern);
  * add the live demo
  */
 let props = Object.assign(
-  { 
-    "accentColor": {
-      "name": "accentColor", 
-      "type": "Select", 
-      "value": "light-blue", 
-      "options":  Object.keys(SimpleColors.colors)
-    },
-    "dark": {
-      "name": "dark", 
-      "type":"Boolean", 
-      "value": false
-    }
-  }, AccentCard.properties
+  window.StorybookUtilities.instance.getSimpleColors("light-blue"), 
+  AccentCard.properties
 );
 props.imageSrc.value = image6;
 props.imageAlign.type = "Select";

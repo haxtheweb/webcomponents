@@ -7,8 +7,27 @@
       "path": "random-image.js",
       "properties": [
         {
+          "name": "_template",
+          "type": "Object",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 9,
+              "column": 2
+            },
+            "end": {
+              "line": 27,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
           "name": "mode",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -23,15 +42,14 @@
           },
           "metadata": {
             "polymer": {
-              "notify": true,
-              "attributeType": "String"
+              "notify": true
             }
           },
           "defaultValue": "\"\""
         },
         {
           "name": "imgSrc",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -45,14 +63,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "imgTitle",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -66,14 +82,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "imagesList",
-          "type": "Object | null | undefined",
+          "type": "Object",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -88,8 +102,7 @@
           },
           "metadata": {
             "polymer": {
-              "notify": true,
-              "attributeType": "Object"
+              "notify": true
             }
           },
           "defaultValue": "[]"
@@ -132,10 +145,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         }
       ],
       "staticMethods": [],
@@ -169,7 +179,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "img-src",
@@ -185,7 +195,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "img-title",
@@ -201,7 +211,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "images-list",
@@ -217,7 +227,7 @@
             }
           },
           "metadata": {},
-          "type": "Object | null | undefined"
+          "type": "Object"
         }
       ],
       "events": [

@@ -1,5 +1,6 @@
 import { storiesOf } from "@storybook/polymer";
 import * as storybookBridge from "@storybook/addon-knobs/polymer";
+import "@lrnwebcomponents/simple-colors/lib/simple-colors-styles.js";
 
 /**
  * Copyright 2018 The Pennsylvania State University
@@ -142,6 +143,27 @@ export class StorybookUtilities {
     return binding;
   }
   /**
+   * gets properties from simple-colors and sets up accent color as a select
+   *
+   * @param {color} optional color as the default value
+   * @returns {object} the simple colors properties
+   */
+  getSimpleColors(color = "blue") {
+    return {
+      accentColor: {
+        name: "accentColor",
+        type: "Select",
+        value: color,
+        options: Object.keys(window.SimpleColorsUtilities.colors)
+      },
+      dark: {
+        name: "dark",
+        type: "Boolean",
+        value: false
+      }
+    };
+  }
+  /**
    * Creates slotted HTML bound to knobs for each property or slot
    * @param {object} story object with the following: ```
   {
@@ -160,30 +182,38 @@ export class StorybookUtilities {
    * @returns {object} the slot content to wire to slots
    */
   addLiveDemo(story, escape = false) {
-    let alias = story.alias !== undefined ? story.alias : story.name;
+    story.alias = story.alias !== undefined ? story.alias : story.name;
+    story.before = story.before !== undefined ? story.before : ``;
+    story.after = story.after !== undefined ? story.after : ``;
+    story.attr = story.attr !== undefined ? story.attr : ``;
+    story.slotted = story.slotted !== undefined ? story.slotted : ``;
+    story.slots = story.slots !== undefined ? story.slots : {};
+    story.props = story.props !== undefined ? story.props : {};
     story.demo = storiesOf(story.of, module);
     story.demo.addDecorator(storybookBridge.withKnobs);
     story.demo.add(
-      alias,
+      story.alias,
       () => {
-        story.slotted2 = ``;
+        story.attrBindings = ``;
+        Object.values(this.getBindings(story.props)).forEach(prop => {
+          if (prop.value !== false && prop.value !== "")
+            story.attrBindings += ` ${prop.id}=${prop.value}`;
+        });
+        story.slotBindings = ``;
         Object.values(this.getBindings(story.slots)).forEach(slot => {
-          story.slotted2 +=
+          story.slotBindings +=
             slot.id !== "slot"
               ? `<div slot="${slot.id}">${slot.value}</div>`
               : `${slot.value}`;
         });
-        story.attr2 = ``;
-        Object.values(this.getBindings(story.props)).forEach(prop => {
-          if (prop.value !== false && prop.value !== "")
-            story.attr2 += ` ${prop.id}=${prop.value}`;
-        });
         return `
-        <h1>${alias}</h1>
-        <${story.name}${story.attr2}${story.attr}>
-          ${story.slotted2}
+        <h1>${story.alias}</h1>
+        ${story.before}
+        <${story.name}${story.attrBindings}${story.attr}>
+          ${story.slotBindings}
           ${story.slotted}
         </${story.name}>
+        ${story.after}
       `;
       },
       { knobs: { escapeHTML: escape } }

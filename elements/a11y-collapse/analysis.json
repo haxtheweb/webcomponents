@@ -7,134 +7,141 @@
       "path": "lib/a11y-collapse-accordion-button.js",
       "properties": [
         {
+          "name": "_template",
+          "type": "Object",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 34,
+              "column": 2
+            },
+            "end": {
+              "line": 67,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
           "name": "disabled",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "is disabled?",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 74,
+              "line": 77,
               "column": 4
             },
             "end": {
-              "line": 78,
+              "line": 81,
               "column": 5
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           },
           "defaultValue": "false"
         },
         {
           "name": "expanded",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "icon when expanded",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 82,
+              "line": 85,
               "column": 4
             },
             "end": {
-              "line": 86,
+              "line": 89,
               "column": 5
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           },
           "defaultValue": "false"
         },
         {
           "name": "icon",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "icon for the button",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 90,
+              "line": 93,
               "column": 4
             },
             "end": {
-              "line": 93,
+              "line": 96,
               "column": 5
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"icons:expand-more\""
         },
         {
           "name": "label",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "label for the button",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 97,
+              "line": 100,
               "column": 4
             },
             "end": {
-              "line": 100,
+              "line": 103,
               "column": 5
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"expand/collapse\""
         },
         {
           "name": "tooltip",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "tooltip for the button",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 104,
+              "line": 107,
               "column": 4
             },
             "end": {
-              "line": 107,
+              "line": 110,
               "column": 5
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"toggle expand/collapse\""
         },
         {
           "name": "rotated",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "If no expanded icon is set, the default icon will rotate when expanded",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 111,
+              "line": 114,
               "column": 4
             },
             "end": {
-              "line": 114,
+              "line": 117,
               "column": 5
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           },
           "defaultValue": "false"
         }
@@ -146,11 +153,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 120,
+              "line": 123,
               "column": 2
             },
             "end": {
-              "line": 124,
+              "line": 127,
               "column": 3
             }
           },
@@ -159,10 +166,7 @@
             {
               "name": "e"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         }
       ],
       "staticMethods": [],
@@ -170,11 +174,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 30,
+          "line": 33,
           "column": 8
         },
         "end": {
-          "line": 125,
+          "line": 128,
           "column": 1
         }
       },
@@ -186,96 +190,96 @@
           "description": "is disabled?",
           "sourceRange": {
             "start": {
-              "line": 74,
+              "line": 77,
               "column": 4
             },
             "end": {
-              "line": 78,
+              "line": 81,
               "column": 5
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "expanded",
           "description": "icon when expanded",
           "sourceRange": {
             "start": {
-              "line": 82,
+              "line": 85,
               "column": 4
             },
             "end": {
-              "line": 86,
+              "line": 89,
               "column": 5
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "icon",
           "description": "icon for the button",
           "sourceRange": {
             "start": {
-              "line": 90,
+              "line": 93,
               "column": 4
             },
             "end": {
-              "line": 93,
+              "line": 96,
               "column": 5
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "label",
           "description": "label for the button",
           "sourceRange": {
             "start": {
-              "line": 97,
+              "line": 100,
               "column": 4
             },
             "end": {
-              "line": 100,
+              "line": 103,
               "column": 5
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "tooltip",
           "description": "tooltip for the button",
           "sourceRange": {
             "start": {
-              "line": 104,
+              "line": 107,
               "column": 4
             },
             "end": {
-              "line": 107,
+              "line": 110,
               "column": 5
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "rotated",
           "description": "If no expanded icon is set, the default icon will rotate when expanded",
           "sourceRange": {
             "start": {
-              "line": 111,
+              "line": 114,
               "column": 4
             },
             "end": {
-              "line": 114,
+              "line": 117,
               "column": 5
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         }
       ],
       "events": [],
@@ -292,196 +296,13 @@
       "path": "lib/a11y-collapse-icon-button.js",
       "properties": [
         {
-          "name": "schemaResourceID",
-          "type": "string | null | undefined",
-          "description": "Unique Resource ID, generated when schemaMap processes.",
-          "privacy": "public",
+          "name": "_template",
+          "type": "Object",
+          "description": "",
+          "privacy": "protected",
           "sourceRange": {
-            "file": "../../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
             "start": {
-              "line": 26,
-              "column": 4
-            },
-            "end": {
-              "line": 29,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          },
-          "defaultValue": "\"\"",
-          "inheritedFrom": "SchemaBehaviors.Schema"
-        },
-        {
-          "name": "schemaMap",
-          "type": "Object | null | undefined",
-          "description": "Schema Map for this element.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
-            "start": {
-              "line": 33,
-              "column": 4
-            },
-            "end": {
               "line": 46,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "observer": "\"_schemaMapChanged\"",
-              "attributeType": "Object"
-            }
-          },
-          "defaultValue": "{\"prefix\":{\"oer\":\"http://oerschema.org/\",\"schema\":\"http://schema.org/\",\"dc\":\"http://purl.org/dc/terms/\",\"foaf\":\"http://xmlns.com/foaf/0.1/\",\"cc\":\"http://creativecommons.org/ns#\",\"bib\":\"http://bib.schema.org\"}}",
-          "inheritedFrom": "SchemaBehaviors.Schema"
-        },
-        {
-          "name": "disabled",
-          "type": "boolean | null | undefined",
-          "description": "is disabled?",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 75,
-              "column": 4
-            },
-            "end": {
-              "line": 79,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false"
-        },
-        {
-          "name": "expanded",
-          "type": "boolean | null | undefined",
-          "description": "icon when expanded",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 83,
-              "column": 4
-            },
-            "end": {
-              "line": 87,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false"
-        },
-        {
-          "name": "icon",
-          "type": "string | null | undefined",
-          "description": "icon for the button",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 91,
-              "column": 4
-            },
-            "end": {
-              "line": 94,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          },
-          "defaultValue": "\"icons:expand-more\""
-        },
-        {
-          "name": "label",
-          "type": "string | null | undefined",
-          "description": "label for the button",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 98,
-              "column": 4
-            },
-            "end": {
-              "line": 101,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          },
-          "defaultValue": "\"expand/collapse\""
-        },
-        {
-          "name": "tooltip",
-          "type": "string | null | undefined",
-          "description": "tooltip for the button",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 105,
-              "column": 4
-            },
-            "end": {
-              "line": 108,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          },
-          "defaultValue": "\"toggle expand/collapse\""
-        },
-        {
-          "name": "rotated",
-          "type": "boolean | null | undefined",
-          "description": "If no expanded icon is set, the default icon will rotate when expanded",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 112,
-              "column": 4
-            },
-            "end": {
-              "line": 115,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false"
-        }
-      ],
-      "methods": [
-        {
-          "name": "generateResourceID",
-          "description": "Generate a uinque ID",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
-            "start": {
-              "line": 51,
               "column": 2
             },
             "end": {
@@ -489,58 +310,148 @@
               "column": 3
             }
           },
-          "metadata": {},
-          "params": [],
-          "inheritedFrom": "SchemaBehaviors.Schema"
+          "metadata": {
+            "polymer": {}
+          }
         },
         {
-          "name": "_schemaMapChanged",
-          "description": "Notice the schema map has changed, reprocess attributes.",
-          "privacy": "protected",
+          "name": "disabled",
+          "type": "boolean",
+          "description": "is disabled?",
+          "privacy": "public",
           "sourceRange": {
-            "file": "../../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
             "start": {
-              "line": 72,
-              "column": 2
+              "line": 77,
+              "column": 4
             },
             "end": {
-              "line": 94,
-              "column": 3
+              "line": 81,
+              "column": 5
             }
           },
-          "metadata": {},
-          "params": [
-            {
-              "name": "newValue"
-            },
-            {
-              "name": "oldValue"
-            }
-          ],
-          "return": {
-            "type": "void"
+          "metadata": {
+            "polymer": {}
           },
-          "inheritedFrom": "SchemaBehaviors.Schema"
+          "defaultValue": "false"
         },
+        {
+          "name": "expanded",
+          "type": "boolean",
+          "description": "icon when expanded",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 85,
+              "column": 4
+            },
+            "end": {
+              "line": 89,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "icon",
+          "type": "string",
+          "description": "icon for the button",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 93,
+              "column": 4
+            },
+            "end": {
+              "line": 96,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"icons:expand-more\""
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "description": "label for the button",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 100,
+              "column": 4
+            },
+            "end": {
+              "line": 103,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"expand/collapse\""
+        },
+        {
+          "name": "tooltip",
+          "type": "string",
+          "description": "tooltip for the button",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 107,
+              "column": 4
+            },
+            "end": {
+              "line": 110,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"toggle expand/collapse\""
+        },
+        {
+          "name": "rotated",
+          "type": "boolean",
+          "description": "If no expanded icon is set, the default icon will rotate when expanded",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 114,
+              "column": 4
+            },
+            "end": {
+              "line": 117,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
+        }
+      ],
+      "methods": [
         {
           "name": "ready",
           "description": "Attached to the DOM, now fire.",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 121,
+              "line": 123,
               "column": 2
             },
             "end": {
-              "line": 126,
+              "line": 128,
               "column": 3
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "detached",
@@ -548,19 +459,16 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 131,
+              "line": 133,
               "column": 2
             },
             "end": {
-              "line": 135,
+              "line": 137,
               "column": 3
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "_onTap",
@@ -568,11 +476,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 141,
+              "line": 143,
               "column": 2
             },
             "end": {
-              "line": 145,
+              "line": 147,
               "column": 3
             }
           },
@@ -581,10 +489,7 @@
             {
               "name": "e"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         }
       ],
       "staticMethods": [],
@@ -592,11 +497,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 43,
+          "line": 45,
           "column": 8
         },
         "end": {
-          "line": 146,
+          "line": 148,
           "column": 1
         }
       },
@@ -604,136 +509,100 @@
       "superclass": "HTMLElement",
       "attributes": [
         {
-          "name": "schema-resource-i-d",
-          "description": "Unique Resource ID, generated when schemaMap processes.",
-          "sourceRange": {
-            "file": "../../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
-            "start": {
-              "line": 26,
-              "column": 4
-            },
-            "end": {
-              "line": 29,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined",
-          "inheritedFrom": "SchemaBehaviors.Schema"
-        },
-        {
-          "name": "schema-map",
-          "description": "Schema Map for this element.",
-          "sourceRange": {
-            "file": "../../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
-            "start": {
-              "line": 33,
-              "column": 4
-            },
-            "end": {
-              "line": 46,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "Object | null | undefined",
-          "inheritedFrom": "SchemaBehaviors.Schema"
-        },
-        {
           "name": "disabled",
           "description": "is disabled?",
           "sourceRange": {
             "start": {
-              "line": 75,
+              "line": 77,
               "column": 4
             },
             "end": {
-              "line": 79,
+              "line": 81,
               "column": 5
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "expanded",
           "description": "icon when expanded",
           "sourceRange": {
             "start": {
-              "line": 83,
+              "line": 85,
               "column": 4
             },
             "end": {
-              "line": 87,
+              "line": 89,
               "column": 5
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "icon",
           "description": "icon for the button",
           "sourceRange": {
             "start": {
-              "line": 91,
+              "line": 93,
               "column": 4
             },
             "end": {
-              "line": 94,
+              "line": 96,
               "column": 5
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "label",
           "description": "label for the button",
           "sourceRange": {
             "start": {
-              "line": 98,
+              "line": 100,
               "column": 4
             },
             "end": {
-              "line": 101,
+              "line": 103,
               "column": 5
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "tooltip",
           "description": "tooltip for the button",
           "sourceRange": {
             "start": {
-              "line": 105,
+              "line": 107,
               "column": 4
             },
             "end": {
-              "line": 108,
+              "line": 110,
               "column": 5
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "rotated",
           "description": "If no expanded icon is set, the default icon will rotate when expanded",
           "sourceRange": {
             "start": {
-              "line": 112,
+              "line": 114,
               "column": 4
             },
             "end": {
-              "line": 115,
+              "line": 117,
               "column": 5
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         }
       ],
       "events": [],
@@ -785,57 +654,27 @@
       "path": "a11y-collapse.js",
       "properties": [
         {
-          "name": "schemaResourceID",
-          "type": "string | null | undefined",
-          "description": "Unique Resource ID, generated when schemaMap processes.",
-          "privacy": "public",
+          "name": "_template",
+          "type": "Object",
+          "description": "",
+          "privacy": "protected",
           "sourceRange": {
-            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
             "start": {
-              "line": 26,
-              "column": 4
+              "line": 52,
+              "column": 2
             },
             "end": {
-              "line": 29,
-              "column": 5
+              "line": 132,
+              "column": 3
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          },
-          "defaultValue": "\"\"",
-          "inheritedFrom": "SchemaBehaviors.Schema"
-        },
-        {
-          "name": "schemaMap",
-          "type": "Object | null | undefined",
-          "description": "Schema Map for this element.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
-            "start": {
-              "line": 33,
-              "column": 4
-            },
-            "end": {
-              "line": 46,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "observer": "\"_schemaMapChanged\"",
-              "attributeType": "Object"
-            }
-          },
-          "defaultValue": "{\"prefix\":{\"oer\":\"http://oerschema.org/\",\"schema\":\"http://schema.org/\",\"dc\":\"http://purl.org/dc/terms/\",\"foaf\":\"http://xmlns.com/foaf/0.1/\",\"cc\":\"http://creativecommons.org/ns#\",\"bib\":\"http://bib.schema.org\"}}",
-          "inheritedFrom": "SchemaBehaviors.Schema"
+            "polymer": {}
+          }
         },
         {
           "name": "accordion",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "accordion-style: whole header acts as button? default is just icon.",
           "privacy": "public",
           "sourceRange": {
@@ -850,15 +689,14 @@
           },
           "metadata": {
             "polymer": {
-              "observer": "\"flush\"",
-              "attributeType": "Boolean"
+              "observer": "\"flush\""
             }
           },
           "defaultValue": "false"
         },
         {
           "name": "disabled",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "is disabled?",
           "privacy": "public",
           "sourceRange": {
@@ -872,15 +710,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           },
           "defaultValue": "false"
         },
         {
           "name": "expanded",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "icon when expanded",
           "privacy": "public",
           "sourceRange": {
@@ -894,15 +730,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           },
           "defaultValue": "false"
         },
         {
           "name": "icon",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "icon for the button",
           "privacy": "public",
           "sourceRange": {
@@ -916,15 +750,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"expand-more\""
         },
         {
           "name": "iconExpanded",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "icon when expanded",
           "privacy": "public",
           "sourceRange": {
@@ -938,15 +770,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "null"
         },
         {
           "name": "label",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "label for the button",
           "privacy": "public",
           "sourceRange": {
@@ -960,15 +790,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"expand/collapse\""
         },
         {
           "name": "labelExpanded",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "optional label for the button when expanded",
           "privacy": "public",
           "sourceRange": {
@@ -982,15 +810,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "null"
         },
         {
           "name": "tooltip",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "tooltip for the button",
           "privacy": "public",
           "sourceRange": {
@@ -1004,15 +830,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"toggle expand/collapse\""
         },
         {
           "name": "tooltipExpanded",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "optional tooltip for the button when expanded",
           "privacy": "public",
           "sourceRange": {
@@ -1026,15 +850,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "null"
         },
         {
           "name": "__rotateIcon",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "If no expanded icon is set, the default icon will rotate when expanded",
           "privacy": "private",
           "sourceRange": {
@@ -1049,61 +871,12 @@
           },
           "metadata": {
             "polymer": {
-              "readOnly": true,
-              "attributeType": "Boolean"
+              "readOnly": true
             }
           }
         }
       ],
       "methods": [
-        {
-          "name": "generateResourceID",
-          "description": "Generate a uinque ID",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
-            "start": {
-              "line": 51,
-              "column": 2
-            },
-            "end": {
-              "line": 68,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "inheritedFrom": "SchemaBehaviors.Schema"
-        },
-        {
-          "name": "_schemaMapChanged",
-          "description": "Notice the schema map has changed, reprocess attributes.",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
-            "start": {
-              "line": 72,
-              "column": 2
-            },
-            "end": {
-              "line": 94,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "newValue"
-            },
-            {
-              "name": "oldValue"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "SchemaBehaviors.Schema"
-        },
         {
           "name": "attached",
           "description": "Attached to the DOM, now fire.",
@@ -1119,10 +892,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "detached",
@@ -1139,10 +909,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "toggle",
@@ -1163,10 +930,7 @@
             {
               "name": "mode"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_overrideProp",
@@ -1190,10 +954,7 @@
             {
               "name": "val"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_getExpandCollapse",
@@ -1265,10 +1026,7 @@
             {
               "name": "e"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_setAriaExpanded",
@@ -1310,42 +1068,6 @@
       "name": "A11yCollapse",
       "attributes": [
         {
-          "name": "schema-resource-i-d",
-          "description": "Unique Resource ID, generated when schemaMap processes.",
-          "sourceRange": {
-            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
-            "start": {
-              "line": 26,
-              "column": 4
-            },
-            "end": {
-              "line": 29,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined",
-          "inheritedFrom": "SchemaBehaviors.Schema"
-        },
-        {
-          "name": "schema-map",
-          "description": "Schema Map for this element.",
-          "sourceRange": {
-            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
-            "start": {
-              "line": 33,
-              "column": 4
-            },
-            "end": {
-              "line": 46,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "Object | null | undefined",
-          "inheritedFrom": "SchemaBehaviors.Schema"
-        },
-        {
           "name": "accordion",
           "description": "accordion-style: whole header acts as button? default is just icon.",
           "sourceRange": {
@@ -1359,7 +1081,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "disabled",
@@ -1375,7 +1097,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "expanded",
@@ -1391,7 +1113,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "icon",
@@ -1407,7 +1129,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "icon-expanded",
@@ -1423,7 +1145,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "label",
@@ -1439,7 +1161,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "label-expanded",
@@ -1455,7 +1177,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "tooltip",
@@ -1471,7 +1193,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "tooltip-expanded",
@@ -1487,7 +1209,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         }
       ],
       "events": [],
@@ -1539,57 +1261,27 @@
       "path": "lib/a11y-collapse-group.js",
       "properties": [
         {
-          "name": "schemaResourceID",
-          "type": "string | null | undefined",
-          "description": "Unique Resource ID, generated when schemaMap processes.",
-          "privacy": "public",
+          "name": "_template",
+          "type": "Object",
+          "description": "",
+          "privacy": "protected",
           "sourceRange": {
-            "file": "../../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
             "start": {
-              "line": 26,
-              "column": 4
+              "line": 25,
+              "column": 2
             },
             "end": {
-              "line": 29,
-              "column": 5
+              "line": 45,
+              "column": 3
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          },
-          "defaultValue": "\"\"",
-          "inheritedFrom": "SchemaBehaviors.Schema"
-        },
-        {
-          "name": "schemaMap",
-          "type": "Object | null | undefined",
-          "description": "Schema Map for this element.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
-            "start": {
-              "line": 33,
-              "column": 4
-            },
-            "end": {
-              "line": 46,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "observer": "\"_schemaMapChanged\"",
-              "attributeType": "Object"
-            }
-          },
-          "defaultValue": "{\"prefix\":{\"oer\":\"http://oerschema.org/\",\"schema\":\"http://schema.org/\",\"dc\":\"http://purl.org/dc/terms/\",\"foaf\":\"http://xmlns.com/foaf/0.1/\",\"cc\":\"http://creativecommons.org/ns#\",\"bib\":\"http://bib.schema.org\"}}",
-          "inheritedFrom": "SchemaBehaviors.Schema"
+            "polymer": {}
+          }
         },
         {
           "name": "globalOptions",
-          "type": "Object | null | undefined",
+          "type": "Object",
           "description": "an array of globalProperties to override every a11y-collapse item\nFor example, {\"icon\": \"arrow-drop-down\"} would set every item's icon to \"arrow-drop-down\"",
           "privacy": "public",
           "sourceRange": {
@@ -1603,15 +1295,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
+            "polymer": {}
           },
           "defaultValue": "{}"
         },
         {
           "name": "radio",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "is every a11y-collapse item radio button?",
           "privacy": "public",
           "sourceRange": {
@@ -1625,15 +1315,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           },
           "defaultValue": "false"
         },
         {
           "name": "__items",
-          "type": "Array | null | undefined",
+          "type": "Array",
           "description": "is radio button",
           "privacy": "private",
           "sourceRange": {
@@ -1647,62 +1335,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Array"
-            }
+            "polymer": {}
           },
           "defaultValue": "[]"
         }
       ],
       "methods": [
-        {
-          "name": "generateResourceID",
-          "description": "Generate a uinque ID",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
-            "start": {
-              "line": 51,
-              "column": 2
-            },
-            "end": {
-              "line": 68,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "inheritedFrom": "SchemaBehaviors.Schema"
-        },
-        {
-          "name": "_schemaMapChanged",
-          "description": "Notice the schema map has changed, reprocess attributes.",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
-            "start": {
-              "line": 72,
-              "column": 2
-            },
-            "end": {
-              "line": 94,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "newValue"
-            },
-            {
-              "name": "oldValue"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "SchemaBehaviors.Schema"
-        },
         {
           "name": "ready",
           "description": "Attached to the DOM, now fire.",
@@ -1718,10 +1356,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "_attachItem",
@@ -1742,10 +1377,7 @@
             {
               "name": "item"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_detachItem",
@@ -1766,10 +1398,7 @@
             {
               "name": "item"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "radioToggle",
@@ -1790,10 +1419,7 @@
             {
               "name": "item"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "detached",
@@ -1810,10 +1436,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "attached",
@@ -1830,10 +1453,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         }
       ],
       "staticMethods": [],
@@ -1854,42 +1474,6 @@
       "name": "A11yCollapseGroup",
       "attributes": [
         {
-          "name": "schema-resource-i-d",
-          "description": "Unique Resource ID, generated when schemaMap processes.",
-          "sourceRange": {
-            "file": "../../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
-            "start": {
-              "line": 26,
-              "column": 4
-            },
-            "end": {
-              "line": 29,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined",
-          "inheritedFrom": "SchemaBehaviors.Schema"
-        },
-        {
-          "name": "schema-map",
-          "description": "Schema Map for this element.",
-          "sourceRange": {
-            "file": "../../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
-            "start": {
-              "line": 33,
-              "column": 4
-            },
-            "end": {
-              "line": 46,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "Object | null | undefined",
-          "inheritedFrom": "SchemaBehaviors.Schema"
-        },
-        {
           "name": "global-options",
           "description": "an array of globalProperties to override every a11y-collapse item\nFor example, {\"icon\": \"arrow-drop-down\"} would set every item's icon to \"arrow-drop-down\"",
           "sourceRange": {
@@ -1903,7 +1487,7 @@
             }
           },
           "metadata": {},
-          "type": "Object | null | undefined"
+          "type": "Object"
         },
         {
           "name": "radio",
@@ -1919,7 +1503,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         }
       ],
       "events": [],

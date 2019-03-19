@@ -10,7 +10,7 @@
           "properties": [
             {
               "name": "fileTypes",
-              "type": "Object | null | undefined",
+              "type": "Object",
               "description": "MIME type lookup for file extensions",
               "privacy": "public",
               "sourceRange": {
@@ -24,9 +24,7 @@
                 }
               },
               "metadata": {
-                "polymer": {
-                  "attributeType": "Object"
-                }
+                "polymer": {}
               }
             }
           ],
@@ -59,16 +57,13 @@
                 },
                 {
                   "name": "name",
-                  "defaultValue": "\"download\""
+                  "defaultValue": "'download'"
                 },
                 {
                   "name": "newTab",
                   "defaultValue": "true"
                 }
-              ],
-              "return": {
-                "type": "void"
-              }
+              ]
             },
             {
               "name": "downloadFromURI",
@@ -137,7 +132,7 @@
                 }
               },
               "metadata": {},
-              "type": "Object | null | undefined"
+              "type": "Object"
             }
           ],
           "events": [],

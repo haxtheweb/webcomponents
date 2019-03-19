@@ -27,7 +27,11 @@
       <demo-snippet>
         <template>
           <div class="demo">
-            <p><label>Acccent-Color Names: </label><simple-colors-picker id="accents" value="pink"></simple-colors-picker></p>
+            <p>
+              <label>Acccent-Color Names: </label>
+              <simple-colors-picker id="accents" value="pink">
+              </simple-colors-picker>
+            </p>
           </div>
           <script>
             document.getElementById('accents').addEventListener('change',e => {
@@ -41,7 +45,11 @@
       <demo-snippet>
         <template>
           <div class="demo">
-            <p><label>CSS Variable Shades: </label><simple-colors-picker id="shades" hide-option-labels shades></simple-colors-picker></p>
+            <p>
+              <label>CSS Variable Shades: </label>
+              <simple-colors-picker id="shades" hide-option-labels shades>
+              </simple-colors-picker>
+            </p>
           </div>
           <script>
             document.getElementById('shades').addEventListener('change',e => {

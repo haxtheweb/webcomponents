@@ -1,5 +1,4 @@
 import { A11yMediaPlayer } from "./a11y-media-player.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { A11yMediaBehaviors } from "./lib/a11y-media-behaviors.js";
 import * as enVtt from "./demo/samples/sintel-en.vtt";
 import * as deVtt from "./demo/samples/sintel-de.vtt";
@@ -11,7 +10,6 @@ import stclairJpg from "./demo/samples/stclair.jpg";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 window.StorybookUtilities.requestAvailability();
-
 /**
  * add to the pattern library
  */
@@ -55,10 +53,7 @@ window.StorybookUtilities.instance.addPattern(A11yMediaPlayerYouTubePattern);
 //combine all of the inherited properties into one object
 let getVideoKnobs = () => {
   let allKnobs = Object.assign(
-    { 
-      "accentColor": {"name": "accentColor", "type":"Select", "value": "blue", "options": Object.keys(SimpleColors.colors)}, 
-      "dark": {"name": "dark", "type":"Boolean", "value": false}
-    },
+    window.StorybookUtilities.instance.getSimpleColors(),
     A11yMediaPlayer.properties, A11yMediaBehaviors.properties
   );
   allKnobs.crossorigin = {value: "anonymous", "type": "Select", "options": ["anonymous","use-credentials",""]};

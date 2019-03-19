@@ -42,7 +42,7 @@ class LrndesignTimeline extends SimpleColors {
             #bbb
           );
           --lrndesign-timeline-border-print: var(
-            --simple-colors-light-theme-grey-5,
+            --simple-colors-fixed-theme-grey-5,
             #bbb
           );
           --lrndesign-timeline-accent: #000;
@@ -60,7 +60,7 @@ class LrndesignTimeline extends SimpleColors {
             #444
           );
           --lrndesign-timeline-accent-print: var(
-            --simple-colors-light-theme-accent-8,
+            --simple-colors-fixed-theme-accent-8,
             #444
           );
         }

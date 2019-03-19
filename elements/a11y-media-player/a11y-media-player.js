@@ -197,31 +197,31 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
             --simple-colors-default-theme-accent-10
           );
           --a11y-media-transcript-cue-color: var(
-            --simple-colors-light-theme-grey-12
+            --simple-colors-fixed-theme-grey-12
           );
           --a11y-media-transcript-cue-bg-color: var(
-            --simple-colors-light-theme-grey-1
+            --simple-colors-fixed-theme-grey-1
           );
           --a11y-media-transcript-active-cue-color: var(
-            --simple-colors-light-theme-grey-12
+            --simple-colors-fixed-theme-grey-12
           );
           --a11y-media-transcript-active-cue-bg-color: var(
-            --simple-colors-light-theme-accent-1
+            --simple-colors-fixed-theme-accent-1
           );
           --a11y-media-transcript-focused-cue-color: var(
-            --simple-colors-light-theme-grey-12
+            --simple-colors-fixed-theme-grey-12
           );
           --a11y-media-transcript-focused-cue-bg-color: var(
-            --simple-colors-light-theme-grey-2
+            --simple-colors-fixed-theme-grey-2
           );
           --a11y-media-transcript-match-color: var(
-            --simple-colors-light-theme-grey-1
+            --simple-colors-fixed-theme-grey-1
           );
           --a11y-media-transcript-match-bg-color: var(
-            --simple-colors-light-theme-accent-10
+            --simple-colors-fixed-theme-accent-10
           );
           --a11y-media-transcript-match-border-color: var(
-            --simple-colors-light-theme-accent-12
+            --simple-colors-fixed-theme-accent-12
           );
         }
         :host([dark]) {

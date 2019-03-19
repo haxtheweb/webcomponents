@@ -2,7 +2,6 @@
 import { VideoPlayer } from "./video-player.js";
 import { A11yMediaPlayer } from "@lrnwebcomponents/a11y-media-player/a11y-media-player.js";
 import { A11yMediaBehaviors } from "@lrnwebcomponents/a11y-media-player/lib/a11y-media-behaviors.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import * as enVtt from "./demo/samples/sintel-en.vtt";
 import * as deVtt from "./demo/samples/sintel-de.vtt";
 import * as esVtt from "./demo/samples/sintel-es.vtt";
@@ -20,10 +19,7 @@ window.StorybookUtilities.requestAvailability();
 //combine all of the inherited properties into one object
 let getVideoKnobs = () => {
   let allKnobs = Object.assign(
-    { 
-      "accentColor": {"name": "accentColor", "type":"Select", "value": "blue", "options": Object.keys(SimpleColors.colors)}, 
-      "dark": {"name": "dark", "type":"Boolean", "value": false}
-    },
+    window.StorybookUtilities.instance.getSimpleColors(), 
     A11yMediaPlayer.properties, A11yMediaBehaviors.properties
   );
   allKnobs.crossorigin = {value: "anonymous", "type": "Select", "options": ["anonymous","use-credentials",""]};

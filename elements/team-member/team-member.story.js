@@ -5,7 +5,7 @@ window.StorybookUtilities.requestAvailability();
 
 /**
  * add to the pattern library
- */
+ * /
 const TeamMemberPattern = {
   "of": "Pattern Library/Molecules/Layout", 
   "name": 'Team Member',
@@ -18,8 +18,8 @@ window.StorybookUtilities.instance.addPattern(TeamMemberPattern);
  * add the live demo
  */
 const TeamMemberStory = {
-  "of": "a11y-collapse",
-  "name": "a11y-collapse",
+  "of": "team-member",
+  "name": "team-member",
   "props": TeamMember.properties, 
   "slots": {}, 
   "attr": ``,

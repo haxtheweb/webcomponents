@@ -24,11 +24,11 @@
           "sourceRange": {
             "start": {
               "line": 17,
-              "column": 4
+              "column": 0
             },
             "end": {
               "line": 17,
-              "column": 55
+              "column": 56
             }
           },
           "privacy": "public",

@@ -7,31 +7,27 @@
       "path": "grafitto-filter.js",
       "properties": [
         {
-          "name": "mutableData",
-          "type": "boolean | null | undefined",
-          "description": "Instance-level flag for configuring the dirty-checking strategy\nfor this element.  When true, Objects and Arrays will skip dirty\nchecking, otherwise strict equality checking will be used.",
-          "privacy": "public",
+          "name": "_template",
+          "type": "Object",
+          "description": "",
+          "privacy": "protected",
           "sourceRange": {
-            "file": "../@polymer/polymer/lib/legacy/mutable-data-behavior.js",
             "start": {
-              "line": 125,
-              "column": 4
+              "line": 183,
+              "column": 2
             },
             "end": {
-              "line": 125,
-              "column": 24
+              "line": 185,
+              "column": 3
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "inheritedFrom": "OptionalMutableDataBehavior"
+            "polymer": {}
+          }
         },
         {
           "name": "items",
-          "type": "Array | null | undefined",
+          "type": "Array",
           "description": "These are the items to be filtered",
           "privacy": "public",
           "sourceRange": {
@@ -45,15 +41,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Array"
-            }
+            "polymer": {}
           },
           "defaultValue": "[]"
         },
         {
           "name": "like",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "Filter regular expression string",
           "privacy": "public",
           "sourceRange": {
@@ -67,15 +61,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"\""
         },
         {
           "name": "where",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "The filter-by field of your items array of objects",
           "privacy": "public",
           "sourceRange": {
@@ -89,15 +81,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"name\""
         },
         {
           "name": "caseSensitive",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "Enable case sensitivity when filtering",
           "privacy": "public",
           "sourceRange": {
@@ -111,15 +101,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           },
           "defaultValue": "false"
         },
         {
           "name": "as",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "How the filtered items will be passed to the light-DOM. Default `items`",
           "privacy": "public",
           "sourceRange": {
@@ -133,15 +121,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"items\""
         },
         {
           "name": "filtered",
-          "type": "Array | null | undefined",
+          "type": "Array",
           "description": "Filtered items",
           "privacy": "public",
           "sourceRange": {
@@ -157,14 +143,13 @@
           "metadata": {
             "polymer": {
               "observer": "\"_onFilter\"",
-              "readOnly": true,
-              "attributeType": "Array"
+              "readOnly": true
             }
           }
         },
         {
           "name": "f",
-          "type": "Function | null | undefined",
+          "type": "Function",
           "description": "Custom filter function, if this is provided then 'where' and 'like' are ignored",
           "privacy": "public",
           "sourceRange": {
@@ -179,143 +164,12 @@
           },
           "metadata": {
             "polymer": {
-              "notify": true,
-              "attributeType": "Function"
+              "notify": true
             }
           }
         }
       ],
       "methods": [
-        {
-          "name": "templatize",
-          "description": "Generates an anonymous `TemplateInstance` class (stored as `this.ctor`)\nfor the provided template.  This method should be called once per\ntemplate to prepare an element for stamping the template, followed\nby `stamp` to create new instances of the template.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../@polymer/polymer/lib/legacy/templatizer-behavior.js",
-            "start": {
-              "line": 99,
-              "column": 2
-            },
-            "end": {
-              "line": 108,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "template",
-              "type": "!HTMLTemplateElement",
-              "description": "Template to prepare"
-            },
-            {
-              "name": "mutableData",
-              "type": "boolean=",
-              "description": "When `true`, the generated class will skip\n  strict dirty-checking for objects and arrays (always consider them to\n  be \"dirty\"). Defaults to false."
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "Templatizer"
-        },
-        {
-          "name": "stamp",
-          "description": "Creates an instance of the template prepared by `templatize`.  The object\nreturned is an instance of the anonymous class generated by `templatize`\nwhose `root` property is a document fragment containing newly cloned\ntemplate content, and which has property accessors corresponding to\nproperties referenced in template bindings.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../@polymer/polymer/lib/legacy/templatizer-behavior.js",
-            "start": {
-              "line": 123,
-              "column": 2
-            },
-            "end": {
-              "line": 125,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "model",
-              "type": "Object=",
-              "description": "Object containing initial property values to\n  populate into the template bindings."
-            }
-          ],
-          "return": {
-            "type": "TemplateInstanceBase",
-            "desc": "Returns the created instance of\nthe template prepared by `templatize`."
-          },
-          "inheritedFrom": "Templatizer"
-        },
-        {
-          "name": "modelForElement",
-          "description": "Returns the template \"model\" (`TemplateInstance`) associated with\na given element, which serves as the binding scope for the template\ninstance the element is contained in.  A template model should be used\nto manipulate data associated with this template instance.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../@polymer/polymer/lib/legacy/templatizer-behavior.js",
-            "start": {
-              "line": 138,
-              "column": 2
-            },
-            "end": {
-              "line": 140,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "el",
-              "type": "HTMLElement",
-              "description": "Element for which to return a template model."
-            }
-          ],
-          "return": {
-            "type": "TemplateInstanceBase",
-            "desc": "Model representing the binding scope for\n  the element."
-          },
-          "inheritedFrom": "Templatizer"
-        },
-        {
-          "name": "_shouldPropertyChange",
-          "description": "Overrides `Polymer.PropertyEffects` to skip strict equality checking\nfor Objects and Arrays.\n\nPulls the value to dirty check against from the `__dataTemp` cache\n(rather than the normal `__data` cache) for Objects.  Since the temp\ncache is cleared at the end of a turn, this implementation allows\nside-effects of deep object changes to be processed by re-setting the\nsame object (using the temp cache as an in-turn backstop to prevent\ncycles due to 2-way notification).",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../@polymer/polymer/lib/legacy/mutable-data-behavior.js",
-            "start": {
-              "line": 146,
-              "column": 2
-            },
-            "end": {
-              "line": 148,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "property",
-              "type": "string",
-              "description": "Property name"
-            },
-            {
-              "name": "value",
-              "type": "*",
-              "description": "New property value"
-            },
-            {
-              "name": "old",
-              "type": "*",
-              "description": "Previous property value"
-            }
-          ],
-          "return": {
-            "type": "boolean",
-            "desc": "Whether the property should be considered a change"
-          },
-          "inheritedFrom": "OptionalMutableDataBehavior"
-        },
         {
           "name": "filter",
           "description": "Filters the items using the f function provided. Recommended when f function is provided",
@@ -331,10 +185,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "_computeFiltered",
@@ -396,10 +247,7 @@
               "type": "array",
               "description": "the filtered array to be displayed"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_decomposeWhere",
@@ -440,10 +288,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         }
       ],
       "staticMethods": [],
@@ -464,24 +309,6 @@
       "name": "GrafittoFilter",
       "attributes": [
         {
-          "name": "mutable-data",
-          "description": "Instance-level flag for configuring the dirty-checking strategy\nfor this element.  When true, Objects and Arrays will skip dirty\nchecking, otherwise strict equality checking will be used.",
-          "sourceRange": {
-            "file": "../@polymer/polymer/lib/legacy/mutable-data-behavior.js",
-            "start": {
-              "line": 125,
-              "column": 4
-            },
-            "end": {
-              "line": 125,
-              "column": 24
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined",
-          "inheritedFrom": "OptionalMutableDataBehavior"
-        },
-        {
           "name": "items",
           "description": "These are the items to be filtered",
           "sourceRange": {
@@ -495,7 +322,7 @@
             }
           },
           "metadata": {},
-          "type": "Array | null | undefined"
+          "type": "Array"
         },
         {
           "name": "like",
@@ -511,7 +338,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "where",
@@ -527,7 +354,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "case-sensitive",
@@ -543,7 +370,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "as",
@@ -559,7 +386,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "filtered",
@@ -575,7 +402,7 @@
             }
           },
           "metadata": {},
-          "type": "Array | null | undefined"
+          "type": "Array"
         },
         {
           "name": "f",
@@ -591,14 +418,14 @@
             }
           },
           "metadata": {},
-          "type": "Function | null | undefined"
+          "type": "Function"
         }
       ],
       "events": [
         {
           "type": "CustomEvent",
           "name": "filter",
-          "description": "The `filter` event is fired whenever filtering is done before populating the dom.",
+          "description": "filter",
           "metadata": {}
         },
         {
