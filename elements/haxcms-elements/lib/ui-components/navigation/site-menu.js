@@ -127,6 +127,14 @@ class SiteMenu extends PolymerElement {
     e.detail.trackIcon = "icons:check";
     // now work on the user data object in the theme layer
     let userData = JSON.parse(window.localStorage.getItem("HAXCMSSystemData"));
+    if (
+      userData.manifests &&
+      typeof userData.manifests[this.routerManifest.id] === typeof undefined
+    ) {
+      userData.manifests[this.routerManifest.id] = {
+        accessData: {}
+      };
+    }
     userData.manifests[this.routerManifest.id].accessData[e.detail.id] = {
       timestamp: Math.floor(Date.now() / 1000),
       trackIcon: "icons:check"
