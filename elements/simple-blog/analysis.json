@@ -1104,11 +1104,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 138,
+              "line": 137,
               "column": 4
             },
             "end": {
-              "line": 142,
+              "line": 141,
               "column": 5
             }
           },
@@ -1126,11 +1126,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 146,
+              "line": 145,
               "column": 4
             },
             "end": {
-              "line": 149,
+              "line": 148,
               "column": 5
             }
           },
@@ -1147,11 +1147,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 153,
+              "line": 152,
               "column": 4
             },
             "end": {
-              "line": 155,
+              "line": 154,
               "column": 5
             }
           },
@@ -1168,11 +1168,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 156,
+              "line": 155,
               "column": 4
             },
             "end": {
-              "line": 158,
+              "line": 157,
               "column": 5
             }
           },
@@ -1189,11 +1189,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 162,
+              "line": 161,
               "column": 4
             },
             "end": {
-              "line": 164,
+              "line": 163,
               "column": 5
             }
           },
@@ -1259,11 +1259,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 169,
+              "line": 168,
               "column": 2
             },
             "end": {
-              "line": 171,
+              "line": 170,
               "column": 3
             }
           },
@@ -1279,11 +1279,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 175,
+              "line": 174,
               "column": 2
             },
             "end": {
-              "line": 177,
+              "line": 176,
               "column": 3
             }
           },
@@ -1299,11 +1299,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 181,
+              "line": 180,
               "column": 2
             },
             "end": {
-              "line": 195,
+              "line": 194,
               "column": 3
             }
           },
@@ -1319,11 +1319,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 199,
+              "line": 198,
               "column": 2
             },
             "end": {
-              "line": 205,
+              "line": 204,
               "column": 3
             }
           },
@@ -1339,11 +1339,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 210,
+              "line": 209,
               "column": 2
             },
             "end": {
-              "line": 223,
+              "line": 222,
               "column": 3
             }
           },
@@ -1363,11 +1363,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 227,
+              "line": 226,
               "column": 2
             },
             "end": {
-              "line": 249,
+              "line": 248,
               "column": 3
             }
           },
@@ -1391,7 +1391,7 @@
           "column": 25
         },
         "end": {
-          "line": 250,
+          "line": 249,
           "column": 1
         }
       },
@@ -1440,11 +1440,11 @@
           "description": "The \"page\" to show (overview or blog post itself).",
           "sourceRange": {
             "start": {
-              "line": 138,
+              "line": 137,
               "column": 4
             },
             "end": {
-              "line": 142,
+              "line": 141,
               "column": 5
             }
           },
@@ -1456,11 +1456,11 @@
           "description": "editting state for the page",
           "sourceRange": {
             "start": {
-              "line": 146,
+              "line": 145,
               "column": 4
             },
             "end": {
-              "line": 149,
+              "line": 148,
               "column": 5
             }
           },
@@ -1472,11 +1472,11 @@
           "description": "Active item which is in JSON Outline Schema",
           "sourceRange": {
             "start": {
-              "line": 153,
+              "line": 152,
               "column": 4
             },
             "end": {
-              "line": 155,
+              "line": 154,
               "column": 5
             }
           },
@@ -1488,11 +1488,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 156,
+              "line": 155,
               "column": 4
             },
             "end": {
-              "line": 158,
+              "line": 157,
               "column": 5
             }
           },
@@ -1504,11 +1504,11 @@
           "description": "a manifest json file decoded, in JSON Outline Schema format",
           "sourceRange": {
             "start": {
-              "line": 162,
+              "line": 161,
               "column": 4
             },
             "end": {
-              "line": 164,
+              "line": 163,
               "column": 5
             }
           },

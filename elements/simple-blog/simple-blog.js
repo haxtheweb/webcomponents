@@ -120,10 +120,7 @@ let SimpleBlog = Polymer({
           edit-mode="[[editMode]]"
           ><slot></slot
         ></simple-blog-post>
-        <simple-blog-footer
-          id="footer"
-          manifest="[[manifest]]"
-        ></simple-blog-footer>
+        <simple-blog-footer id="footer"></simple-blog-footer>
       </section>
     </iron-pages>
   `,
