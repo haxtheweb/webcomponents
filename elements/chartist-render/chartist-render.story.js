@@ -6,7 +6,7 @@ window.StorybookUtilities.requestAvailability();
 /**
  * add the live demo
  */
-let props = ChartistRender.properties;
+const props = ChartistRender.properties;
 props.data.value = { 
   "labels": ["Bananas", "Apples", "Grapes"], 
   "series": [20, 15, 40]
@@ -18,30 +18,30 @@ props.type.value = "pie";
 props.scale.type = "select";
 props.scale.options = [
   "ct-square",
-  "ct-minor",
-  "ct-major",
-  "ct-minor",
-  "ct-major",
-  "ct-perfect",
-  "ct-perfect",
-  "ct-minor",
-  "ct-golden",
-  "ct-major",
-  "ct-minor",
-  "ct-major",
+  "ct-minor-second",
+  "ct-major-second",
+  "ct-minor-third",
+  "ct-major-third",
+  "ct-perfect-fourth",
+  "ct-perfect-fifth",
+  "ct-minor-sixth",
+  "ct-golden-section",
+  "ct-major-sixth",
+  "ct-minor-seventh",
+  "ct-major-seventh",
   "ct-octave",
-  "ct-major",
-  "ct-major",
-  "ct-major",
-  "ct-double"
+  "ct-major-tenth",
+  "ct-major-eleventh",
+  "ct-major-twelfth",
+  "ct-double-octave"
 ];
-props.scale.value = "ct-square";
+props.scale.value = "ct-major-twelfth";
 const ChartistRenderStory = {
   "of": "chartist-render",
   "name": "chartist-render",
   "props":  props,
   "slots": {}, 
-  "attr": ``,
+  "attr": ` style="width: 100%; max-width: 500px;"`,
   "slotted": ``
 };
 window.StorybookUtilities.instance.addLiveDemo(ChartistRenderStory);

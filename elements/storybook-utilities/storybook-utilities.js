@@ -98,7 +98,12 @@ export class StorybookUtilities {
                     props[key].value
                   )
                 : method === "number"
-                ? storybookBridge.number(key, parseFloat(props[key].value))
+                ? storybookBridge.number(
+                    key,
+                    props[key].value !== undefined && props[key].value !== null
+                      ? parseFloat(props[key].value)
+                      : ""
+                  )
                 : method === "boolean"
                 ? storybookBridge.boolean(key, false)
                 : method === "date"

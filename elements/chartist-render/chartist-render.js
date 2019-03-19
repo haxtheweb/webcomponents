@@ -4,7 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
+import * as Chartist from "chartist/dist/chartist.min.js";
 import "./lib/chartist-render-shared-styles";
 
 export { ChartistRender };
@@ -136,15 +136,7 @@ Container class	Ratio
    */
   connectedCallback() {
     super.connectedCallback();
-    const name = "chartist";
-    const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
-    const location = `${basePath}lib/chartist/dist/chartist.min.js`;
-    window.addEventListener(
-      `es-bridge-${name}-loaded`,
-      this._chartistLoaded.bind(this)
-    );
-    window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load(name, location);
+    this._chartistLoaded();
   }
 
   ready() {

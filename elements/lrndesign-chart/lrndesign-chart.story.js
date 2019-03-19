@@ -1,6 +1,7 @@
 import { LrndesignPie } from "./lib/lrndesign-pie.js";
 import { LrndesignLine } from "./lib/lrndesign-line.js";
 import { LrndesignBar } from "./lib/lrndesign-bar.js";
+import { LrndesignChartBehaviors } from "./lib/lrndesign-chart-behaviors.js";
 import * as BarCSV from "./demo/bar.csv";
 import * as PieCSV from "./demo/pie.csv";
 import * as LineCSV from "./demo/line.csv";
@@ -31,7 +32,7 @@ const LrndesignLinePattern = {
   "name": 'Line Chart',
   "file": require("raw-loader!./demo/line.html"),
   "replacements": [
-    {"find": "bar.csv", "replace": LineCSV }
+    {"find": "line.csv", "replace": LineCSV }
   ]
 }
 window.StorybookUtilities.instance.addPattern(LrndesignBarPattern);
@@ -41,10 +42,41 @@ window.StorybookUtilities.instance.addPattern(LrndesignLinePattern);
 /**
  * add the live demo
  */
-const colorProps = window.StorybookUtilities.instance.getSimpleColors(null), 
-  pieProps = Object.assign( props, LrndesignPie.properties ), 
-  barProps = Object.assign( props, LrndesignBar.properties ),
-  lineProps = Object.assign( props, LrndesignLine.properties );
+let getAllKnobs = (props,csv)=>{
+  let allKnobs = Object.assign( 
+    window.StorybookUtilities.instance.getSimpleColors(''),  
+    LrndesignChartBehaviors.properties, 
+    props 
+  );
+  allKnobs.dataSource.value = csv;
+  allKnobs.scale.type = "select";
+  allKnobs.scale.value = "ct-major-twelfth";
+  allKnobs.scale.options = [
+    "ct-square",
+    "ct-minor-second",
+    "ct-major-second",
+    "ct-minor-third",
+    "ct-major-third",
+    "ct-perfect-fourth",
+    "ct-perfect-fifth",
+    "ct-minor-sixth",
+    "ct-golden-section",
+    "ct-major-sixth",
+    "ct-minor-seventh",
+    "ct-major-seventh",
+    "ct-octave",
+    "ct-major-tenth",
+    "ct-major-eleventh",
+    "ct-major-twelfth",
+    "ct-double-octave"
+  ]
+  delete allKnobs.rawData;
+  return allKnobs;
+}
+const pieProps = getAllKnobs( LrndesignPie.properties, PieCSV ), 
+  barProps =  getAllKnobs( LrndesignBar.properties, BarCSV ),
+  lineProps =  getAllKnobs( LrndesignLine.properties, LineCSV );
+  console.log(PieCSV,pieProps.dataSource.value, BarCSV,barProps.dataSource.value, LineCSV,lineProps.dataSource.value );
 const LrndesignPieStory = {
   "of": "lrndesign-chart",
   "name": "lrndesign-pie",
