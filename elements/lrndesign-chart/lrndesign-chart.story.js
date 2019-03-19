@@ -76,7 +76,6 @@ let getAllKnobs = (props,csv)=>{
 const pieProps = getAllKnobs( LrndesignPie.properties, PieCSV ), 
   barProps =  getAllKnobs( LrndesignBar.properties, BarCSV ),
   lineProps =  getAllKnobs( LrndesignLine.properties, LineCSV );
-  console.log(PieCSV,pieProps.dataSource.value, BarCSV,barProps.dataSource.value, LineCSV,lineProps.dataSource.value );
 const LrndesignPieStory = {
   "of": "lrndesign-chart",
   "name": "lrndesign-pie",

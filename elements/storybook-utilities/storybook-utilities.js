@@ -76,11 +76,14 @@ export class StorybookUtilities {
           props[key].computed === "undefined") &&
         props[key].readOnly !== true;
       if (editable) {
-        let val = `${props[key].value}`,
-          keyType = props[key].type.name || props[key].type;
+        let keyType = props[key].type.name || props[key].type;
         // convert typed props
         if (keyType) {
-          let method = keyType.toLowerCase();
+          let method = keyType.toLowerCase(),
+            stringifiedVal = JSON.stringify(props[key].value || "").replace(
+              /'/g,
+              "&apos;"
+            );
           // ensure ke-bab case
           let kebab = key.replace(/[A-Z\u00C0-\u00D6\u00D8-\u00DE]/g, function(
             match
@@ -121,16 +124,10 @@ export class StorybookUtilities {
                     props[key].value || ``
                   )
                 : method === "object"
-                ? storybookBridge.text(
-                    key,
-                    JSON.stringify(props[key].value || {})
-                  )
+                ? storybookBridge.text(key, stringifiedVal || "{}")
                 : //storybookBridge.object(key, val || {}) :
                 method === "array"
-                ? storybookBridge.text(
-                    key,
-                    JSON.stringify(props[key].value || {})
-                  )
+                ? storybookBridge.text(key, stringifiedVal || "[]")
                 : //storybookBridge.array(key, val || [], ',') :
                 method === "options"
                 ? storybookBridge.radios(
@@ -202,7 +199,7 @@ export class StorybookUtilities {
         story.attrBindings = ``;
         Object.values(this.getBindings(story.props)).forEach(prop => {
           if (prop.value !== false && prop.value !== "")
-            story.attrBindings += ` ${prop.id}=${prop.value}`;
+            story.attrBindings += ` ${prop.id}='${prop.value}'`;
         });
         story.slotBindings = ``;
         Object.values(this.getBindings(story.slots)).forEach(slot => {

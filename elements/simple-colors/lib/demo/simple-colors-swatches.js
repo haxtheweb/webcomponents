@@ -105,7 +105,7 @@ class simpleColorsSwatches extends SimpleColors {
   static get properties() {
     return {
       /**
-       * Theme to demo
+       * The id of the swatch (`color_index`)
        */
       swatchId: {
         name: "swatchId",
@@ -113,7 +113,7 @@ class simpleColorsSwatches extends SimpleColors {
         value: null
       },
       /**
-       * Theme to demo
+       * The swatch name (`color-shade`)
        */
       swatchName: {
         name: "swatchName",
@@ -152,16 +152,29 @@ class simpleColorsSwatches extends SimpleColors {
     super.ready();
   }
 
+  /**
+   * gets the shade number for a hex code at a given index
+   *
+   * @param {number} index
+   * @returns {number} the shade number
+   */
   _getShade(index) {
     return parseInt(index) + 1;
   }
 
+  /**
+   * gets the hex code for the shade at a given color and index
+   *
+   * @param {string} the color name, eg. `red`
+   * @param {number} index
+   * @returns {number} the hex code
+   */
   _getHex(color, index) {
     return this.colors[color][index];
   }
 
   /**
-   * gets the current shade based on the index
+   * when a button is tapped, open the swatch info modal
    */
   _handleTap(e) {
     this.swatchId = e.path[0].getAttribute("id");
@@ -170,7 +183,10 @@ class simpleColorsSwatches extends SimpleColors {
   }
 
   /**
-   * gets the options array based on an object's keys
+   * gets the list of color names from the colors object
+   *
+   * @param {object} the colors object
+   * @returns {array} the array of color names
    */
   _getOptions(obj) {
     return Object.keys(obj);

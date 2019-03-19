@@ -99,7 +99,7 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
         <template is="dom-if" if="[[_isAttrSet(title)]]">
           <h1 id="gallery-title">[[title]]</h1>
         </template>
-        <div id="gallery-description"><slot name="description"></slot></div>
+        <div id="gallery-description"><slot></slot></div>
         <p class="sr-only">A list of thumbnail buttons items:</p>
         <div id="galleryscreen">
           <template id="screenlist" is="dom-repeat" items="[[items]]" as="item">

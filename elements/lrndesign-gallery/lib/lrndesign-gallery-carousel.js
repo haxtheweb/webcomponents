@@ -218,7 +218,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
         <template is="dom-if" if="[[_isAttrSet(title)]]">
           <h1 id="gallerytitle">[[title]]</h1>
         </template>
-        <div id="gallerydescription"><slot name="description"></slot></div>
+        <div id="gallerydescription"><slot></slot></div>
         <p class="sr-only">A carousel of items:</p>
         <div id="galleryscreen">
           <div

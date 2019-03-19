@@ -97,12 +97,10 @@ const SimpleColorsStory = {
 };
 const pickerProps = SimpleColorsPicker.properties;
 pickerProps.label.value = `Pick a color: `;
-console.log(pickerProps.label);
 const SimpleColorsPickerStory = {
   "of": "simple-colors",
   "name": "simple-colors-picker",
   "props": pickerProps
 };
-console.log(SimpleColorsPicker.properties);
 window.StorybookUtilities.instance.addLiveDemo(SimpleColorsStory);
 window.StorybookUtilities.instance.addLiveDemo(SimpleColorsPickerStory);

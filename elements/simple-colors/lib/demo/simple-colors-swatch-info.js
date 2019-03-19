@@ -184,7 +184,7 @@ class simpleColorsSwatchInfo extends SimpleColors {
   static get properties() {
     return {
       /**
-       * The swatch
+       * The id of the swatch (`color_index`)
        */
       swatchId: {
         name: "swatchId",
@@ -193,7 +193,7 @@ class simpleColorsSwatchInfo extends SimpleColors {
         reflectToAttribute: true
       },
       /**
-       * The swatch
+       * The swatch name (`color-shade`)
        */
       swatchName: {
         name: "swatchName",
@@ -218,7 +218,7 @@ class simpleColorsSwatchInfo extends SimpleColors {
         computed: "_getInverseBg(swatchId)"
       },
       /**
-       * A style where swatch color is the background-color
+       * A style where swatch color is the text color
        */
       text: {
         name: "text",
@@ -226,7 +226,7 @@ class simpleColorsSwatchInfo extends SimpleColors {
         computed: "_getText(swatchId)"
       },
       /**
-       * A style where swatch color is the background-color in dark mode
+       * A style where swatch color is the text color in dark mode
        */
       inverseText: {
         name: "inverseText",
@@ -234,7 +234,7 @@ class simpleColorsSwatchInfo extends SimpleColors {
         computed: "_getInverseText(swatchId)"
       },
       /**
-       * A style where swatch color is the background-color
+       * A style where swatch color is the border-color
        */
       border: {
         name: "border",
@@ -242,7 +242,7 @@ class simpleColorsSwatchInfo extends SimpleColors {
         computed: "_getBorder(swatchId)"
       },
       /**
-       * A style where swatch color is the background-color in dark mode
+       * A style where swatch color is the border-color in dark mode
        */
       inverseBorder: {
         name: "inverseBorder",
@@ -282,52 +282,131 @@ class simpleColorsSwatchInfo extends SimpleColors {
   }
 
   /**
-   * gets the options array based on an object's keys
+   * given a particular swatch/shade of color,
+   * returns all shades of another color that are WCAG 2.0AA-compliant
+   *
+   * @param {string} a swatch id (`color_index`)
+   * @param {string} another color's name, eg. `pink`
+   * @param {boolean} get contrasting shades that work for large text? eg. (bold && >= 14pt) || >= 18pt
+   * @returns {array} the array indexes for the contrasting shades
    */
-  _getOptions(obj) {
-    return Object.keys(obj);
-  }
-
   _getAa(swatchId, color, aaLarge = false) {
     let data = swatchId.split("_"),
       index = parseInt(data[1]);
     return this.getContrastingShades(false, data[0], index, color);
   }
+
+  /**
+   * given a particular swatch/shade of color,
+   * returns all shades of another color that are
+   * large text-WCAG 2.0AA-compliant, eg. (bold && >= 14pt) || >= 18pt
+   *
+   * @param {string} a swatch id (`color_index`)
+   * @param {string} another color's name, eg. `pink`
+   * @returns {array} the array indexes for the contrasting shades
+   */
   _getAaLarge(swatchId, color) {
     return this._getAa(swatchId, color, true);
   }
 
-  _getInverseBg(swatchId) {
-    return this._getBg(swatchId, true);
-  }
-
-  _getInverseText(swatchId) {
-    return this._getText(swatchId, true);
-  }
-
-  _getInverseBorder(swatchId) {
-    return this._getBorder(swatchId, true);
-  }
-
-  _getContrastBg(color, shade) {
-    return this._getBg(color + "_" + (parseInt(shade) - 1));
-  }
-
+  /**
+   * gets a style where swatch color is the background-color,
+   * eg. `background: var(--simple-colors-default-theme-red-11); color: var(--simple-colors-default-theme-grey-1);`
+   *
+   * @param {string} a swatch id (`color_index`)
+   * @returns {string} the style
+   */
   _getBg(swatchId, inverse = false) {
     let colors = this._getColors(swatchId, inverse);
     return "background: " + colors[0] + "; color: " + colors[1] + ";";
   }
 
-  _getText(swatchId, inverse = false) {
-    let colors = this._getColors(swatchId, inverse);
-    return "color: " + colors[0] + "; background: " + colors[1] + ";";
-  }
-
+  /**
+   * gets a style where swatch color is the border-color,
+   * eg. `border: 3px solid var(--simple-colors-default-theme-red-11);`
+   *
+   * @param {string} a swatch id (`color_index`)
+   * @returns {string} the style
+   */
   _getBorder(swatchId, inverse = false) {
     let colors = this._getColors(swatchId, inverse);
     return "border: 3px solid " + colors[0] + "; padding: 3px;";
   }
 
+  /**
+   * gets a style where swatch color is the background-color in dark mode,
+   * eg. `background: var(--simple-colors-default-theme-red-2); color: var(--simple-colors-default-theme-grey-12);`
+   *
+   * @param {string} a swatch id (`color_index`)
+   * @returns {string} the style
+   */
+  _getInverseBg(swatchId) {
+    return this._getBg(swatchId, true);
+  }
+
+  /**
+   * gets a style where swatch color is the border-color in dark mode,
+   * eg. `border: 3px solid var(--simple-colors-default-theme-red-2);`
+   *
+   * @param {string} a swatch id (`color_index`)
+   * @returns {string} the style
+   */
+  _getInverseBorder(swatchId) {
+    return this._getBorder(swatchId, true);
+  }
+
+  /**
+   * gets a style where swatch color is the text color in dark mode,
+   * eg. `background: var(--simple-colors-default-theme-grey-12); color: var(--simple-colors-default-theme-red-2);`
+   *
+   * @param {string} a swatch id (`color_index`)
+   * @returns {string} the style
+   */
+  _getInverseText(swatchId) {
+    return this._getText(swatchId, true);
+  }
+
+  /**
+   * gets the list of color names from the colors object
+   *
+   * @param {object} the colors object
+   * @returns {array} the array of color names
+   */
+  _getOptions(obj) {
+    return Object.keys(obj);
+  }
+
+  /**
+   * gets a style where swatch color is the text color,
+   * eg. `background: var(--simple-colors-default-theme-grey-1); color: var(--simple-colors-default-theme-red-11);`
+   *
+   * @param {string} a swatch id (`color_index`)
+   * @returns {string} the style
+   */
+  _getText(swatchId, inverse = false) {
+    let colors = this._getColors(swatchId, inverse);
+    return "color: " + colors[0] + "; background: " + colors[1] + ";";
+  }
+
+  /**
+   * gets a background color based on a color and a shade
+   *
+   * @param {string} a color name, eg. `red`
+   * @param  {number} the shade, eg., `11`
+   * @returns {string} the style, eg. `background: var(--simple-colors-default-theme-red-11); color: var(--simple-colors-default-theme-grey-1);`
+   */
+  _getContrastBg(color, shade) {
+    return this._getBg(color + "_" + (parseInt(shade) - 1));
+  }
+
+  /**
+   * given a swatch id, gets the color variable
+   * and a variable for the highest contrasting grey
+   *
+   * @param {string} swatchId (`color_index`)
+   * @param {boolean} inverse the color for dark mode?
+   * @returns {array} the color variables ([color, contrasting color])
+   */
   _getColors(swatchId, inverse = false) {
     let data = swatchId.split("_"),
       index = inverse ? 11 - parseInt(data[1]) : parseInt(data[1]);

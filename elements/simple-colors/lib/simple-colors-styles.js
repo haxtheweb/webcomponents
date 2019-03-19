@@ -17,7 +17,11 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 
 window.SimpleColorsUtilities = window.SimpleColorsUtilities || {};
 const utils = window.SimpleColorsUtilities;
-utils.colors = {
+/**
+ * The colors object.
+ * Each color contains an array of shades as hex codes from lightest to darkest.
+ */
+window.SimpleColorsUtilities.colors = {
   grey: [
     "#ffffff",
     "#eeeeee",
@@ -286,90 +290,82 @@ utils.colors = {
   ]
 };
 /**
- * object with information on which color combinations are WCAG 2.0AA compliant, eg: ```
+ * Object with information on which color combinations are WCAG 2.0AA compliant, eg: ```
   {
-    greyColor: { //if either the color or its contrast will be a grey
-      AALarge: [ //if bold text >= 14pt, text >= 18pt, decorative only, or disabled
-        {
-          shade: 1, //if the color is shade 1
-          min: 7, //contrasting color should be >= 8 <=TODO
-          max: 12 //contrasting color should be <= 12
+    greyColor: {          //if either the color or its contrast will be a grey
+      aaLarge: [          //if bold text >= 14pt, text >= 18pt, decorative only, or disabled
+        {                 //for the first shade of a color
+          min: 7,         //index of the lightest contrasting shade of another color
+          max: 12         //index of the darkest contrasting shade of another color
         },
-        { shade: 2, min: 7, max: 12 },
         ...
       ],
-      AA: [ ... ] //if bold text < 14pt, or text < 18pt
+      aa: [ ... ]         //if bold text < 14pt, or text < 18pt
     },
-    colorColor: { ... } //if neither the color nor its contrast are grey
+    colorColor: { ... }   //if neither the color nor its contrast are grey
   }```
 */
 const contrasts = {
   greyColor: {
-    //if either the color or its contrast will be a grey
     aaLarge: [
-      //if bold text >= 14pt, text >= 18pt, decorative only, or disabled
-      {
-        shade: 1, //if the color is shade 1
-        min: 7, //contrasting color should be >= 8 <=TODO
-        max: 12 //contrasting color should be <= 12
-      },
-      { shade: 2, min: 7, max: 12 },
-      { shade: 3, min: 7, max: 12 },
-      { shade: 4, min: 7, max: 12 },
-      { shade: 5, min: 8, max: 12 },
-      { shade: 6, min: 10, max: 12 },
-      { shade: 7, min: 1, max: 3 },
-      { shade: 8, min: 1, max: 5 },
-      { shade: 9, min: 1, max: 6 },
-      { shade: 10, min: 1, max: 6 },
-      { shade: 11, min: 1, max: 6 },
-      { shade: 12, min: 1, max: 6 }
+      { min: 7, max: 12 },
+      { min: 7, max: 12 },
+      { min: 7, max: 12 },
+      { min: 7, max: 12 },
+      { min: 8, max: 12 },
+      { min: 10, max: 12 },
+      { min: 1, max: 3 },
+      { min: 1, max: 5 },
+      { min: 1, max: 6 },
+      { min: 1, max: 6 },
+      { min: 1, max: 6 },
+      { min: 1, max: 6 }
     ],
     aa: [
       //if bold text < 14pt, or text < 18pt
-      { shade: 1, min: 7, max: 12 },
-      { shade: 2, min: 7, max: 12 },
-      { shade: 3, min: 7, max: 12 },
-      { shade: 4, min: 8, max: 12 },
-      { shade: 5, min: 8, max: 12 },
-      { shade: 6, min: 11, max: 12 },
-      { shade: 7, min: 1, max: 2 },
-      { shade: 8, min: 1, max: 7 },
-      { shade: 9, min: 1, max: 7 },
-      { shade: 10, min: 1, max: 6 },
-      { shade: 11, min: 1, max: 6 },
-      { shade: 12, min: 1, max: 6 }
+      { min: 7, max: 12 },
+      { min: 7, max: 12 },
+      { min: 7, max: 12 },
+      { min: 8, max: 12 },
+      { min: 8, max: 12 },
+      { min: 11, max: 12 },
+      { min: 1, max: 2 },
+      { min: 1, max: 7 },
+      { min: 1, max: 7 },
+      { min: 1, max: 6 },
+      { min: 1, max: 6 },
+      { min: 1, max: 6 }
     ]
   },
   colorColor: {
     //if neither the color nor its contrast are grey
     aaLarge: [
-      { shade: 1, min: 7, max: 12 },
-      { shade: 2, min: 7, max: 12 },
-      { shade: 3, min: 8, max: 12 },
-      { shade: 4, min: 9, max: 12 },
-      { shade: 5, min: 10, max: 12 },
-      { shade: 6, min: 11, max: 12 },
-      { shade: 7, min: 1, max: 2 },
-      { shade: 8, min: 1, max: 3 },
-      { shade: 9, min: 1, max: 4 },
-      { shade: 10, min: 1, max: 5 },
-      { shade: 11, min: 1, max: 6 },
-      { shade: 12, min: 1, max: 6 }
+      { min: 7, max: 12 },
+      { min: 7, max: 12 },
+      { min: 8, max: 12 },
+      { min: 9, max: 12 },
+      { min: 10, max: 12 },
+      { min: 11, max: 12 },
+      { min: 1, max: 2 },
+      { min: 1, max: 3 },
+      { min: 1, max: 4 },
+      { min: 1, max: 5 },
+      { min: 1, max: 6 },
+      { min: 1, max: 6 }
     ],
     aa: [
-      { shade: 1, min: 8, max: 12 },
-      { shade: 2, min: 8, max: 12 },
-      { shade: 3, min: 9, max: 12 },
-      { shade: 4, min: 9, max: 12 },
-      { shade: 5, min: 11, max: 12 },
-      { shade: 6, min: 12, max: 12 },
-      { shade: 7, min: 1, max: 1 },
-      { shade: 8, min: 1, max: 2 },
-      { shade: 9, min: 1, max: 4 },
-      { shade: 10, min: 1, max: 4 },
-      { shade: 11, min: 1, max: 5 },
-      { shade: 12, min: 1, max: 5 }
+      { min: 8, max: 12 },
+      { min: 8, max: 12 },
+      { min: 9, max: 12 },
+      { min: 9, max: 12 },
+      { min: 11, max: 12 },
+      { min: 12, max: 12 },
+      { min: 1, max: 1 },
+      { min: 1, max: 2 },
+      { min: 1, max: 4 },
+      { min: 1, max: 4 },
+      { min: 1, max: 5 },
+      { min: 1, max: 5 }
     ]
   }
 };
