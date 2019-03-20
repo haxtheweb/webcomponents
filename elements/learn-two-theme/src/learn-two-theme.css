@@ -119,6 +119,11 @@ app-drawer-layout {
   justify-content: space-evenly;
   display: flex;
 }
+site-print-button {
+  --site-print-button-button: {
+    color: white;
+  }
+}
 
 app-drawer {
   box-shadow: 0 0 6px -3px var(--haxcms-color, black);

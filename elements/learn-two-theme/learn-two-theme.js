@@ -8,6 +8,7 @@ import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-brea
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
@@ -159,6 +160,11 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
           justify-content: space-evenly;
           display: flex;
         }
+        site-print-button {
+          --site-print-button-button: {
+            color: white;
+          }
+        }
 
         app-drawer {
           box-shadow: 0 0 6px -3px var(--haxcms-color, black);
@@ -271,6 +277,7 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
           <div class="rss-buttons">
             <site-rss-button type="atom"></site-rss-button>
             <site-rss-button type="rss"></site-rss-button>
+            <site-print-button position="top"></site-print-button>
           </div>
         </app-drawer>
         <div>

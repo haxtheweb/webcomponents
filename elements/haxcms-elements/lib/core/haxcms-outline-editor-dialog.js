@@ -134,6 +134,16 @@ Polymer({
       "json-outline-schema-changed",
       this.__jsonOutlineSchemaChanged.bind(this)
     );
+    this.$.editor.removeEventListener("current-data-changed", e => {
+      if (e.detail.value) {
+        let outline = window.JSONOutlineSchema.requestAvailability();
+        this.set("manifest.items", e.detail.value);
+        this.notifyPath("manifest.items.*");
+        outline.items = e.detail.value;
+        this.manifestItems = JSON.stringify(e.detail.value, null, 2);
+        this.$.outline.importJsonOutlineSchemaItems();
+      }
+    });
     for (var i in this.__disposer) {
       this.__disposer[i].dispose();
     }

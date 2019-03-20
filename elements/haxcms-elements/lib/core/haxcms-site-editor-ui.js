@@ -271,14 +271,22 @@ Polymer({
     }
   },
   attached: function() {
+    this.__disposer = [];
     afterNextRender(this, function() {
-      this.__disposer = autorun(() => {
-        this.manifest = toJS(store.routerManifest);
+      autorun(reaction => {
+        this.routerManifest = toJS(store.routerManifest);
+        this.__disposer.push(reaction);
+      });
+      autorun(reaction => {
+        this.activeItem = toJS(store.activeItem);
+        this.__disposer.push(reaction);
       });
     });
   },
   detached: function() {
-    this.__disposer();
+    for (var i in this.__disposer) {
+      this.__disposer[i].dispose();
+    }
   },
   /**
    * active item changed
@@ -496,17 +504,14 @@ Polymer({
    * toggle state on button tap
    */
   _outlineButtonTap: function(e) {
-    let c = document.createElement("haxcms-outline-editor-dialog");
-    c.set(
-      "manifest",
-      window.cmsSiteEditor.instance.haxCmsSiteEditorElement.manifest
-    );
     const evt = new CustomEvent("simple-modal-show", {
       bubbles: true,
       cancelable: false,
       detail: {
         title: "Edit site outline",
-        elements: { content: c },
+        elements: {
+          content: document.createElement("haxcms-outline-editor-dialog")
+        },
         invokedBy: this.$.outlinebutton,
         clone: false
       }
@@ -527,7 +532,7 @@ Polymer({
       bubbles: true,
       cancelable: false,
       detail: {
-        title: this.manifest.title + ": site details",
+        title: this.routerManifest.title + ": site details",
         elements: { content: this.__manifestEditor },
         invokedBy: this.$.manifestbutton,
         clone: false

@@ -56,18 +56,6 @@ Polymer({
    */
   created: function() {
     document.body.addEventListener("jwt-token", this._jwtTokenFired.bind(this));
-    document.body.addEventListener(
-      "json-outline-schema-active-item-changed",
-      this.initialItem.bind(this)
-    );
-    document.body.addEventListener(
-      "json-outline-schema-changed",
-      this.initialManifest.bind(this)
-    );
-    document.body.addEventListener(
-      "json-outline-schema-active-body-changed",
-      this.initialBody.bind(this)
-    );
   },
   /**
    * detached life cycle
@@ -77,27 +65,6 @@ Polymer({
       "jwt-token",
       this._jwtTokenFired.bind(this)
     );
-    document.body.removeEventListener(
-      "json-outline-schema-active-item-changed",
-      this.initialItem.bind(this)
-    );
-    document.body.removeEventListener(
-      "json-outline-schema-changed",
-      this.initialManifest.bind(this)
-    );
-    document.body.removeEventListener(
-      "json-outline-schema-active-body-changed",
-      this.initialBody.bind(this)
-    );
-  },
-  initialItem: function(e) {
-    this.__item = e.detail;
-  },
-  initialManifest: function(e) {
-    this.__manifest = e.detail;
-  },
-  initialBody: function(e) {
-    this.__body = e.detail;
   },
   /**
    * JWT token fired, let's capture it
@@ -134,17 +101,6 @@ Polymer({
             haxCmsSiteEditorElement.publishSitePath =
               window.appSettings.publishSitePath;
             haxCmsSiteEditorElement.appStore = window.appSettings.appStore;
-            // pass along the initial state management stuff that may be missed
-            // based on timing on the initial setup
-            if (typeof this.__item !== typeof undefined) {
-              haxCmsSiteEditorElement.activeItem = this.__item;
-            }
-            if (typeof this.__manifest !== typeof undefined) {
-              haxCmsSiteEditorElement.manifest = this.__manifest;
-            }
-            if (typeof this.__body !== typeof undefined) {
-              haxCmsSiteEditorElement.__body = this.__body;
-            }
             window.cmsSiteEditor.instance.haxCmsSiteEditorElement = haxCmsSiteEditorElement;
             window.cmsSiteEditor.instance.appendTarget.appendChild(
               haxCmsSiteEditorElement

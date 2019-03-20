@@ -246,17 +246,6 @@ let HAXCMSSiteBuilder = Polymer({
     if (window.HaxStore && window.HaxStore.ready) {
       time = 10;
     }
-    setTimeout(() => {
-      if (
-        window.cmsSiteEditor.instance &&
-        window.cmsSiteEditor.haxCmsSiteEditorUIElement
-      ) {
-        window.cmsSiteEditor.haxCmsSiteEditorUIElement.set(
-          "activeItem",
-          this.activeItem
-        );
-      }
-    }, time);
   },
 
   /**
