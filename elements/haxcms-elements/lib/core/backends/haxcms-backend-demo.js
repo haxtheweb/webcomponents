@@ -88,12 +88,15 @@ Polymer({
               "haxcms-site-editor"
             );
             haxCmsSiteEditorElement.jwt = this.jwt;
+            haxCmsSiteEditorElement.method = "GET";
             haxCmsSiteEditorElement.savePagePath =
               window.appSettings.savePagePath;
             haxCmsSiteEditorElement.saveManifestPath =
               window.appSettings.saveManifestPath;
             haxCmsSiteEditorElement.saveOutlinePath =
               window.appSettings.saveOutlinePath;
+            haxCmsSiteEditorElement.getFieldsPath =
+              window.appSettings.getFieldsPath;
             haxCmsSiteEditorElement.createPagePath =
               window.appSettings.createPagePath;
             haxCmsSiteEditorElement.deletePagePath =

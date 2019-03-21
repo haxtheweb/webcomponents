@@ -35,16 +35,42 @@ class EditableOutline extends PolymerElement {
           display: none;
         }
 
+        .button-wrapper {
+          background-color: white;
+          position: absolute;
+          display: block;
+          justify-content: space-evenly;
+          @apply --editable-outline-button-wrapper;
+        }
+        @media (max-width: 1000px) {
+          .button-wrapper {
+            position: relative;
+            @apply --editable-outline-button-wrapper-mobile;
+          }
+        }
+        button {
+          height: 32px;
+          font-size: 10px;
+          margin: 0;
+          padding: 0 8px;
+        }
+
+        #outline {
+          padding-top: 44px;
+          margin: 0;
+        }
         ul,
         ol {
           font-size: 16px;
           line-height: 32px;
           padding-left: 32px;
+          @apply --editable-outline-button-list;
         }
         li {
           font-size: 16px;
           line-height: 32px;
           padding: 4px;
+          @apply --editable-outline-button-list-item;
         }
 
         li:focus,
@@ -52,28 +78,30 @@ class EditableOutline extends PolymerElement {
         li:hover {
           background-color: #eeeeee;
           outline: 1px solid #cccccc;
+          @apply --editable-outline-button-list-item-active;
         }
 
         iron-icon {
           pointer-events: none;
         }
       </style>
-      <button on-click="buttonEvents" id="down">
-        <iron-icon icon="icons:arrow-downward"></iron-icon> Move down
-      </button>
-      <button on-click="buttonEvents" id="up">
-        <iron-icon icon="icons:arrow-upward"></iron-icon> Move up
-      </button>
-      <button on-click="buttonEvents" id="outdent">
-        <iron-icon icon="editor:format-indent-decrease"></iron-icon> Outdent
-      </button>
-      <button on-click="buttonEvents" id="indent">
-        <iron-icon icon="editor:format-indent-increase"></iron-icon> Indent
-      </button>
-      <button on-click="buttonEvents" id="duplicate">
-        <iron-icon icon="icons:content-copy"></iron-icon> Duplicate structure
-      </button>
-
+      <div class="button-wrapper">
+        <button on-click="buttonEvents" id="down">
+          <iron-icon icon="icons:arrow-downward"></iron-icon> Move down
+        </button>
+        <button on-click="buttonEvents" id="up">
+          <iron-icon icon="icons:arrow-upward"></iron-icon> Move up
+        </button>
+        <button on-click="buttonEvents" id="outdent">
+          <iron-icon icon="editor:format-indent-decrease"></iron-icon> Outdent
+        </button>
+        <button on-click="buttonEvents" id="indent">
+          <iron-icon icon="editor:format-indent-increase"></iron-icon> Indent
+        </button>
+        <button on-click="buttonEvents" id="duplicate">
+          <iron-icon icon="icons:content-copy"></iron-icon> Duplicate
+        </button>
+      </div>
       <ul id="outline" contenteditable$="[[editMode]]">
         <li contenteditable="true"></li>
       </ul>
@@ -158,6 +186,7 @@ class EditableOutline extends PolymerElement {
       if (info.removedNodes.length > 0 && this.__outdent) {
         for (let i in info.removedNodes) {
           if (
+            reference &&
             info.removedNodes[i].tagName &&
             info.removedNodes[i].tagName === "LI" &&
             info.removedNodes[i].getAttribute("data-jos-id") !== null

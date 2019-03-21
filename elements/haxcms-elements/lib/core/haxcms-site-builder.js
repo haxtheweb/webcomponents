@@ -186,10 +186,6 @@ let HAXCMSSiteBuilder = Polymer({
         "haxcms-trigger-update-page",
         this._triggerUpdatedPage.bind(this)
       );
-      window.addEventListener(
-        "json-outline-schema-active-item-changed",
-        this._setActiveItem.bind(this)
-      );
       window.SimpleToast.requestAvailability();
     });
   },
@@ -210,6 +206,10 @@ let HAXCMSSiteBuilder = Polymer({
       if (this.editorBuilder.getContext() !== "published") {
         this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
       }
+      autorun(reaction => {
+        this.activeItem = toJS(store.activeItem);
+        this.__disposer.push(reaction);
+      });
     });
   },
   /**
@@ -224,30 +224,10 @@ let HAXCMSSiteBuilder = Polymer({
       "haxcms-trigger-update-page",
       this._triggerUpdatedPage.bind(this)
     );
-    window.removeEventListener(
-      "json-outline-schema-active-item-changed",
-      this._setActiveItem.bind(this)
-    );
     for (var i in this.__disposer) {
       this.__disposer[i].dispose();
     }
   },
-  /**
-   * set global active item
-   */
-  _setActiveItem: function(e) {
-    this.set("activeItem", e.detail);
-    this.notifyPath("activeItem.*");
-    this.set("queryParams.page", e.detail.id);
-    this.notifyPath("queryParams.page");
-    // check for authoring xp by just asking for the object
-    // timeout helps w/ some initial setup work
-    var time = 2000;
-    if (window.HaxStore && window.HaxStore.ready) {
-      time = 10;
-    }
-  },
-
   /**
    * React to content being loaded from a page.
    */
@@ -276,7 +256,7 @@ let HAXCMSSiteBuilder = Polymer({
                 }
               }, 2000);
             }
-          }, 50);
+          }, 5);
         });
         // if there are, dynamically import them
         if (this.manifest.metadata.dynamicElementLoader) {
@@ -340,7 +320,9 @@ let HAXCMSSiteBuilder = Polymer({
    * Active item updated, let's request the content from it
    */
   _activeItemChanged: function(newValue, oldValue) {
-    if (typeof newValue.id !== typeof undefined) {
+    if (newValue && typeof newValue.id !== typeof undefined) {
+      this.set("queryParams.page", newValue.id);
+      this.notifyPath("queryParams.page");
       // get fresh data if not published
       if (this.editorBuilder.getContext() !== "published") {
         this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
@@ -348,7 +330,7 @@ let HAXCMSSiteBuilder = Polymer({
       this.$.activecontent.generateRequest();
     }
     // we had something, now we don't. wipe out the content area of the theme
-    else if (typeof newValue.id === typeof undefined) {
+    else if (oldValue && !newValue) {
       // fire event w/ nothing, this is because there is no content
       this.fire("json-outline-schema-active-body-changed", null);
     }
@@ -495,7 +477,6 @@ let HAXCMSSiteBuilder = Polymer({
             dom(this).appendChild(this.themeElement);
             this.__imported[theme.element] = theme.element;
             this.themeLoaded = true;
-            updateStyles();
           });
         } catch (err) {
           // error in the event this is a double registration
@@ -504,6 +485,10 @@ let HAXCMSSiteBuilder = Polymer({
           this.themeLoaded = true;
         }
       }
+      // delay for theme switching to reapply the css variable associations
+      setTimeout(() => {
+        updateStyles();
+      }, 500);
     }
   },
 

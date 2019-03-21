@@ -39,8 +39,25 @@ let MinimalistTemplate = superclass =>
             <site-print-button></site-print-button>
           </div>
         </site-top-menu>
+        <header
+          class="masthead"
+          style$="background-image: url('[[activeItemFields.images.0.src]]');"
+          alt$="[[activeItemFields.images.0.alt]]"
+        >
+          <div class="overlay"></div>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-10 col-md-10 mx-auto">
+                <div class="page-heading">
+                  <h1>[[activeItemFields.title]]</h1>
+                  <h2>[[activeItemFields.subtitle]]</h2>
+                  <span class="subheading"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
         <div class="container">
-          <site-active-title></site-active-title>
           <div id="contentcontainer">
             <div id="slot"><slot></slot></div>
           </div>

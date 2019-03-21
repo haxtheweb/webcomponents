@@ -142,16 +142,6 @@ class JsonEditor extends PolymerElement {
   static get tag() {
     return "json-editor";
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
   // Observer value for changes
   _valueChanged(newValue, oldValue) {
     // try to evaluate this as json, otherwise return an error

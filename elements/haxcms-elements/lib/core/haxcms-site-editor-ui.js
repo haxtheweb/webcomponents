@@ -25,36 +25,36 @@ Polymer({
         position: fixed;
         right: 0;
         bottom: 0;
-        opacity: 0.6;
+        opacity: 0.9;
         transition: 0.6s all ease-in-out;
-        background-color: var(--haxcms-color, rgba(255, 0, 116, 1));
-        padding: 0px 10px;
+        background-color: var(--haxcms-color, white);
+        padding: 0px 8px;
         border-top-left-radius: 10px;
         border-left: 2px solid black;
         border-top: 2px solid black;
-        min-width: 84px;
-        width: 90px;
-        line-height: 50px;
-        height: 50px;
+        min-width: 68px;
+        width: 72px;
+        line-height: 36px;
+        height: 40px;
         z-index: 10000;
         visibility: visible;
       }
       :host([edit-mode]) {
-        min-width: 126px;
+        min-width: 114px;
       }
       :host *[hidden] {
         display: none;
       }
       paper-fab {
         display: inline-flex;
-        width: 40px;
-        height: 40px;
+        width: 32px;
+        height: 32px;
         vertical-align: middle;
-        line-height: 40px;
+        line-height: 36px;
         background-color: black;
-        color: var(--haxcms-color, rgba(255, 0, 116, 1));
+        color: var(--haxcms-color, white);
         transition: 0.3s all ease-in-out;
-        padding: 8px;
+        padding: 6px;
         margin: 0;
         position: relative;
         @apply --shadow-elevation-8dp;
@@ -64,20 +64,25 @@ Polymer({
         visibility: hidden;
       }
       paper-icon-button {
-        padding: 8px;
-        width: 40px;
-        min-width: 40px;
-        height: 40px;
+        padding: 6px;
+        width: 32px;
+        min-width: 32px;
+        height: 32px;
         border-radius: 50%;
-        margin: 5px 2px 0 2px;
-        background-color: rgba(0, 0, 0, 0.2);
+        margin: 3px 3px 0 3px;
+        background-color: black;
+        color: var(--haxcms-color, rgba(255, 0, 116, 1));
         transition: 0.3s all ease-in-out;
         @apply --shadow-elevation-8dp;
       }
+      paper-fab:hover,
+      paper-fab:focus,
+      paper-fab:active,
       paper-icon-button:hover,
       paper-icon-button:focus,
       paper-icon-button:active {
-        background-color: rgba(0, 0, 0, 0.4);
+        background-color: black;
+        color: white;
       }
       #editbutton,
       #editdetails,
@@ -100,12 +105,12 @@ Polymer({
         color: white;
         background-color: var(--paper-blue-500, blue) !important;
         position: absolute;
-        height: 50px;
+        height: 40px;
       }
       .wrapper {
         width: 0px;
-        height: 50px;
-        line-height: 50px;
+        height: 40px;
+        line-height: 36px;
         color: black;
         display: inline-flex;
         transition: 0.3s all ease-in-out;
@@ -115,10 +120,10 @@ Polymer({
         vertical-align: top;
       }
       :host([menu-mode]) .wrapper {
-        width: 275px;
+        width: 200px;
       }
       :host([menu-mode]) {
-        opacity: 0.8;
+        opacity: 1;
         width: unset;
       }
       :host([edit-mode][menu-mode]) #editbutton {
@@ -132,11 +137,20 @@ Polymer({
       .main-title {
         font-size: 11px;
         font-weight: bold;
-        width: 150px;
+        width: 75px;
         text-overflow: ellipsis;
         overflow: hidden;
-        line-height: 50px;
-        padding: 0 10px;
+        line-height: 36px;
+        padding: 0 8px;
+      }
+      paper-tooltip {
+        --paper-tooltip-background: #000000;
+        --paper-tooltip-opacity: 1;
+        --paper-tooltip-text-color: #ffffff;
+        --paper-tooltip-delay-in: 0;
+        --paper-tooltip: {
+          border-radius: 0;
+        }
       }
     </style>
     <paper-fab
@@ -257,7 +271,7 @@ Polymer({
     menuMode: {
       type: Boolean,
       reflectToAttribute: true,
-      value: false
+      value: true
     },
     /**
      * Manifest editing state
@@ -292,7 +306,7 @@ Polymer({
    * active item changed
    */
   _activeItemChanged: function(newValue, oldValue) {
-    if (newValue.id) {
+    if (newValue && newValue.id) {
       this.pageAllowed = true;
     } else {
       this.pageAllowed = false;
@@ -311,56 +325,11 @@ Polymer({
     }
   },
   _editDetailsButtonTap: function(e) {
-    this.__newForm = document.createElement("eco-json-schema-object");
-    let outline = window.JSONOutlineSchema.requestAvailability();
-    // get a prototype schema for an item
-    this.__newForm.schema = outline.getItemSchema("item");
-    // drop things we don't care about
-    delete this.__newForm.schema.properties.id;
-    delete this.__newForm.schema.properties.description;
-    delete this.__newForm.schema.properties.order;
-    delete this.__newForm.schema.properties.parent;
-    delete this.__newForm.schema.properties.metadata;
-    delete this.__newForm.schema.properties.details;
-    delete this.__newForm.schema.properties.indent;
-    for (var n in this.activeItem) {
-      if (typeof this.__newForm.schema.properties[n] !== "undefined") {
-        if (n === "location") {
-          this.__newForm.schema.properties[n].value = this.activeItem[n]
-            .replace("pages/", "")
-            .replace("/index.html", "");
-        } else {
-          this.__newForm.schema.properties[n].value = this.activeItem[n];
-        }
-      }
-    }
-    let b1 = document.createElement("paper-button");
-    b1.raised = true;
-    let icon = document.createElement("iron-icon");
-    icon.icon = "icons:save";
-    b1.appendChild(icon);
-    b1.appendChild(document.createTextNode("Update page"));
-    b1.style.backgroundColor = document.body.style.getPropertyValue(
-      "--haxcms-color"
-    );
-    // store reference to the form
-    b1.__form = this.__newForm;
-    b1.addEventListener("click", this._updateItem.bind(this));
-    let b2 = document.createElement("paper-button");
-    b2.appendChild(document.createTextNode("cancel"));
-    b2.setAttribute("dialog-dismiss", "dialog-dismiss");
-    let b = document.createElement("span");
-    b.appendChild(b1);
-    b.appendChild(b2);
-    const evt = new CustomEvent("simple-modal-show", {
+    var normalizedEvent = dom(e);
+    const evt = new CustomEvent("haxcms-load-page-fields", {
       bubbles: true,
       cancelable: false,
-      detail: {
-        title: this.activeItem.title + ": edit details",
-        elements: { content: this.__newForm, buttons: b },
-        invokedBy: this.$.editdetails,
-        clone: false
-      }
+      detail: normalizedEvent.localTarget
     });
     window.dispatchEvent(evt);
   },
@@ -394,7 +363,12 @@ Polymer({
     this.__newForm.schema.properties.title.value = "";
     let b1 = document.createElement("paper-button");
     b1.raised = true;
+    let icon = document.createElement("iron-icon");
+    icon.icon = "icons:add";
+    b1.appendChild(icon);
     b1.appendChild(document.createTextNode("Create page"));
+    b1.style.color = "white";
+    b1.style.backgroundColor = "#2196f3";
     b1.addEventListener("click", this._createNewItem.bind(this));
     let b2 = document.createElement("paper-button");
     b2.appendChild(document.createTextNode("cancel"));
@@ -439,7 +413,6 @@ Polymer({
     } else {
       values = local.__form.value;
     }
-    values.id = this.activeItem.id;
     // fire event with details for saving
     window.dispatchEvent(
       new CustomEvent("haxcms-save-page-details", {
@@ -466,8 +439,13 @@ Polymer({
       this.activeItem.title
     }" will be removed from the outline but its content stays on the file system.`;
     let b1 = document.createElement("paper-button");
+    let icon = document.createElement("iron-icon");
+    icon.icon = "icons:delete";
+    b1.appendChild(icon);
     b1.raised = true;
     b1.appendChild(document.createTextNode("Confirm"));
+    b1.style.color = "white";
+    b1.style.backgroundColor = "#ee0000";
     b1.addEventListener("tap", this._deleteActive.bind(this));
     let b2 = document.createElement("paper-button");
     b2.appendChild(document.createTextNode("cancel"));

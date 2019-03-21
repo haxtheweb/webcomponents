@@ -61,33 +61,33 @@ class SiteActiveTitle extends PolymerElement {
       __title: {
         type: String,
         computed:
-          "_makeTitle(dynamicMethodology, pageTitle, parentTitle, ancestorTitle)"
+          "_makeTitle(dynamicMethodology, activeTitle, parentTitle, ancestorTitle)"
       }
     };
   }
-  _makeTitle(dynamicMethodology, pageTitle, parentTitle, ancestorTitle) {
+  _makeTitle(dynamicMethodology, activeTitle, parentTitle, ancestorTitle) {
     switch (dynamicMethodology) {
       case "above":
         if (parentTitle === "" && !this.noFallback) {
-          return pageTitle;
+          return activeTitle;
         }
         return parentTitle;
         break;
       case "ancestor":
         if (ancestorTitle === "" && !this.noFallback) {
-          return pageTitle;
+          return activeTitle;
         }
         return ancestorTitle;
         break;
       default:
-        return pageTitle;
+        return activeTitle;
         break;
     }
   }
   connectedCallback() {
     super.connectedCallback();
     this.__disposer = autorun(() => {
-      this.pageTitle = toJS(store.pageTitle);
+      this.activeTitle = toJS(store.activeTitle);
     });
     this.__disposer2 = autorun(() => {
       this.parentTitle = toJS(store.parentTitle);

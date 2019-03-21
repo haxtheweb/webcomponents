@@ -31,6 +31,7 @@ class SiteMenuButton extends PolymerElement {
       <style>
         :host {
           display: block;
+          font-size: 16px;
           transition: 0.3s all ease-in-out;
         }
         :host([disabled]) {
@@ -52,6 +53,8 @@ class SiteMenuButton extends PolymerElement {
           @apply --site-menu-button-button-hover;
         }
         iron-icon {
+          display: block;
+          font-size: 16px;
           @apply --site-menu-button-icon;
         }
         paper-tooltip {

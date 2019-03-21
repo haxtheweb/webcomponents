@@ -170,6 +170,26 @@ class Store {
     return null;
   }
   /**
+   * Get the fields from the node
+   */
+  get activeItemFields() {
+    // need to have metadata to be valid so..
+    if (this.activeItem && this.activeItem.metadata) {
+      // core "fields" we'd expect
+      let fields = {
+        title: this.activeItem.title,
+        description: this.activeItem.description,
+        location: this.activeItem.location,
+        created: this.activeItem.metadata.created,
+        updated: this.activeItem.metadata.created
+      };
+      // mix in any custom field definitions
+      if (this.activeItem.metadata.fields) {
+        return Object.assign({}, fields, this.activeItem.metadata.fields);
+      }
+    }
+  }
+  /**
    * get theme data from manifest + activeId combo
    */
   get themeData() {
@@ -224,7 +244,7 @@ class Store {
   /**
    * shortcut for active page title
    */
-  get pageTitle() {
+  get activeTitle() {
     if (this.activeItem) {
       return this.activeItem.title;
     }
@@ -398,9 +418,10 @@ decorate(Store, {
   homeLink: computed,
   activeId: observable, // this affects all state changes associated to activeItem
   activeItem: computed, // active item object
+  activeItemFields: computed, // active item field values
   activeManifestIndex: computed, // active array index, used for pagination
   activeManifestIndexCounter: computed, // active array index counter, used for pagination
-  pageTitle: computed, // active page title
+  activeTitle: computed, // active page title
   parentTitle: computed, // active page parent title
   ancestorTitle: computed, // active page ancestor title
   changeActiveItem: action.bound

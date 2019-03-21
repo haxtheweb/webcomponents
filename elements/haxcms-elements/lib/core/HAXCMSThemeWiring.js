@@ -206,11 +206,15 @@ export const HAXCMSTheme = function(SuperClass) {
           this.__disposer.push(reaction);
         });
         autorun(reaction => {
+          this.activeItemFields = toJS(store.activeItemFields);
+          this.__disposer.push(reaction);
+        });
+        autorun(reaction => {
           this.activeManifestIndex = toJS(store.activeManifestIndex);
           this.__disposer.push(reaction);
         });
         autorun(reaction => {
-          this.pageTitle = toJS(store.pageTitle);
+          this.activeTitle = toJS(store.activeTitle);
           this.__disposer.push(reaction);
         });
         autorun(reaction => {

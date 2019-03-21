@@ -34,6 +34,7 @@ let OutlinePlayer = Polymer({
         --app-drawer-width: 300px;
         --outline-player-dark: #222222;
         --outline-player-light: #f8f8f8;
+        background-color: var(--outline-player-light);
       }
 
       :host([closed]) {

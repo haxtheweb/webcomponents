@@ -184,6 +184,7 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
         app-drawer-layout[narrow] #menubutton2 {
           display: block;
           position: absolute;
+          z-index: 1;
         }
         app-drawer-layout[narrow] .header {
           padding: 0;
@@ -196,7 +197,6 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
           --site-menu-button-icon: {
             width: 64px;
             height: 64px;
-            display: contents;
             color: #2d3237;
           }
           --site-menu-button-button: {

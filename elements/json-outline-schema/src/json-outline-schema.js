@@ -523,7 +523,7 @@ class JsonOutlineSchema extends HTMLElement {
    */
   itemsToNodes(items) {
     items = typeof items !== "undefined" ? items : this.items;
-    let tree = this.unflattenItems(this.items);
+    let tree = this.unflattenItems(items);
     return this.treeToNodes(tree, document.createElement("ul"));
   }
   treeToNodes(tree, appendTarget) {
