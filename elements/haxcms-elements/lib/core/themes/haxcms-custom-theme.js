@@ -5,6 +5,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import { updateStyles } from "@polymer/polymer/lib/mixins/element-mixin";
+import { stylesFromTemplate } from "@polymer/polymer/lib/utils/style-gather.js";
 import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
 // @todo load the elements this theme needs dynamically
 // we reference this but pull nothing in to get the dependency tree loaded in full
@@ -103,10 +104,16 @@ class HAXCMSCustomTheme extends HAXCMSTheme(PolymerElement) {
         ${this._css}
       </style>
       ${this._html}`;
-      this.__instance = this._stampTemplate(t);
+      const styles = stylesFromTemplate(t);
       while (this.shadowRoot.firstChild) {
         this.shadowRoot.removeChild(this.shadowRoot.firstChild);
       }
+      // add in all styles found
+      for (var i in styles) {
+        t.innerHTML = styles[i].outerHTML + t.innerHTML;
+      }
+      this.__instance = this._stampTemplate(t);
+      // now the template
       this.shadowRoot.appendChild(this.__instance);
       microTask.run(() => {
         setTimeout(() => {

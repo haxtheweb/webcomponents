@@ -48,6 +48,19 @@ class HaxschemaBuilder extends PolymerElement {
         2
       );
     }
+    // HACK to get initial paint to have the correct form
+    this.$.form.modeTab = "advanced";
+    setTimeout(() => {
+      this.$.form.modeTab = "configure";
+    }, 2000);
+  }
+  /**
+   * Force an update on code editor when this value changes
+   */
+  _haxSchemaChanged(newValue) {
+    if (newValue) {
+      this.$.code.editorValue = newValue;
+    }
   }
   /**
    * Notice code editor changes and reflect them into this element

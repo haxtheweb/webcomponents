@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0.0",
+  "metadata": {
+    "polymer": {
+      "behaviors": [
+        {
+          "description": "`MediaBehaviors.Video` provides some helper functions for working with video\nfrom multiple sources. It helps resolve a video by type and currently supports\nyoutube, vimeo, and a few other sources and helps to determine if we need\nan iframe to display the media or a local `<video>` tag.\n\nThis also provides a powerful little utility to clean up embedded\nURLs that reference popular media sources in order to make sure\nthat their embed URLs are structured correctly. This is especially\nuseful for allowing users to copy and paste links from youtube's URL\nbar yet actually transform that address into a cookie free embed that\nstrips off the related videos and other options.",
+          "summary": "",
+          "path": "media-behaviors.js",
+          "properties": [],
+          "methods": [
+            {
+              "name": "_sourceIsIframe",
+              "description": "Compute iframe or video tag for implementation.",
+              "privacy": "protected",
+              "sourceRange": {
+                "start": {
+                  "line": 21,
+                  "column": 2
+                },
+                "end": {
+                  "line": 28,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "source"
+                }
+              ]
+            },
+            {
+              "name": "cleanVideoSource",
+              "description": "Check source of the video, potentially correcting bad links.",
+              "privacy": "public",
+              "sourceRange": {
+                "start": {
+                  "line": 32,
+                  "column": 2
+                },
+                "end": {
+                  "line": 91,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "input"
+                },
+                {
+                  "name": "type"
+                }
+              ]
+            },
+            {
+              "name": "getVideoType",
+              "description": "Figure out the type of video based on source.",
+              "privacy": "public",
+              "sourceRange": {
+                "start": {
+                  "line": 95,
+                  "column": 2
+                },
+                "end": {
+                  "line": 133,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "source"
+                }
+              ]
+            }
+          ],
+          "staticMethods": [],
+          "demos": [],
+          "metadata": {},
+          "sourceRange": {
+            "start": {
+              "line": 17,
+              "column": 0
+            },
+            "end": {
+              "line": 134,
+              "column": 2
+            }
+          },
+          "privacy": "public",
+          "name": "MediaBehaviors.Video",
+          "attributes": [],
+          "events": [],
+          "styling": {
+            "cssVariables": [],
+            "selectors": []
+          },
+          "slots": []
+        }
+      ]
+    }
+  }
+}

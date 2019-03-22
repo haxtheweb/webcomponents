@@ -32,20 +32,8 @@ class HaxschemaBuilder extends PolymerElement {
         :host([hidden]) {
           display: none;
         }
-        eco-json-schema-object {
-          color: var(--hax-text-color);
-          --eco-json-schema-object-form : {
-            -ms-flex: unset;
-            -webkit-flex: unset;
-            flex: unset;
-            -webkit-flex-basis: unset;
-            flex-basis: unset;
-          }
-        }
-        #form {
-          --eco-json-schema-object-form: {
-            display: block !important;
-          }
+        code-editor {
+          height: 500px;
         }
       </style>
       <vaadin-split-layout>
@@ -54,17 +42,13 @@ class HaxschemaBuilder extends PolymerElement {
           <paper-button raised="" noink="">Add to advanced</paper-button>
           <code-editor
             id="code"
-            show-code-pen
             on-value-changed="_editorDataChanged"
-          >
-            <template>
-              [[haxSchema]]
-            </template>
-          </code-editor>
+            language="json"
+          ></code-editor>
           <json-editor
             id="json"
             label="JSON"
-            value="[[haxSchema]]"
+            value="{{haxSchema}}"
           ></json-editor>
         </div>
         <div>
@@ -141,8 +125,9 @@ class HaxschemaBuilder extends PolymerElement {
        */
       haxSchema: {
         name: "haxSchema",
-        type: "Object",
-        value: {}
+        type: "String",
+        notify: true,
+        observer: "_haxSchemaChanged"
       },
       /**
        * configure form schema to extract for whatever you wanted it for
@@ -201,6 +186,19 @@ class HaxschemaBuilder extends PolymerElement {
         null,
         2
       );
+    }
+    // HACK to get initial paint to have the correct form
+    this.$.form.modeTab = "advanced";
+    setTimeout(() => {
+      this.$.form.modeTab = "configure";
+    }, 2000);
+  }
+  /**
+   * Force an update on code editor when this value changes
+   */
+  _haxSchemaChanged(newValue) {
+    if (newValue) {
+      this.$.code.editorValue = newValue;
     }
   }
   /**

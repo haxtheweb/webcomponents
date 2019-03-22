@@ -4,8 +4,9 @@
    */
   "haxSchema": {
     "name": "haxSchema",
-    "type": "Object",
-    "value": {}
+    "type": "String",
+    "notify": true,
+    "observer": "_haxSchemaChanged"
   },
   /**
    * configure form schema to extract for whatever you wanted it for

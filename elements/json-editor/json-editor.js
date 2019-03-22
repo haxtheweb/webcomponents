@@ -112,6 +112,7 @@ class JsonEditor extends PolymerElement {
         name: "value",
         type: "String",
         value: "",
+        notify: true,
         reflectToAttribute: false,
         observer: "_valueChanged"
       },
