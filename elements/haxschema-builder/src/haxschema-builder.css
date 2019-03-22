@@ -1,0 +1,22 @@
+:host {
+  display: block;
+}
+
+:host([hidden]) {
+  display: none;
+}
+eco-json-schema-object {
+  color: var(--hax-text-color);
+  --eco-json-schema-object-form : {
+    -ms-flex: unset;
+    -webkit-flex: unset;
+    flex: unset;
+    -webkit-flex-basis: unset;
+    flex-basis: unset;
+  }
+}
+  #form {
+  --eco-json-schema-object-form: {
+    display: block !important;
+  }
+}
