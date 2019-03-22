@@ -5,6 +5,8 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-dot-indicator";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
@@ -56,13 +58,9 @@ class HAXCMSSlideTheme extends HAXCMSTheme(PolymerElement) {
         }
         .controls {
           transition: all 0.2s ease-in-out;
-          z-index: 100000;
-          position: fixed;
-          bottom: 0;
-          left: 0;
           background-color: rgba(0, 0, 0, 0.8);
           color: white;
-          display: flex;
+          display: inline-flex;
           height: 60px;
           width: 200px;
           line-height: 60px;
@@ -72,7 +70,7 @@ class HAXCMSSlideTheme extends HAXCMSTheme(PolymerElement) {
           font-size: 16px;
         }
         .counter {
-          width: 100px;
+          width: 100%;
           justify-content: center;
           vertical-align: middle;
           display: inline-flex;
@@ -99,16 +97,17 @@ class HAXCMSSlideTheme extends HAXCMSTheme(PolymerElement) {
           outline-offset: -1px;
         }
         .site-label-wrapper {
+          display: inline-flex;
           vertical-align: middle;
-          display: flex;
-          justify-content: center;
-          position: fixed;
           height: 60px;
-          left: 0;
-          right: 0;
+        }
+        site-print-button {
+          display: inline-flex;
+          margin: 8px;
         }
         site-title {
           display: inline-flex;
+          margin: 0 0 0 32px;
           --site-title-link: {
             text-decoration: none;
           }
@@ -119,18 +118,52 @@ class HAXCMSSlideTheme extends HAXCMSTheme(PolymerElement) {
             padding: 0;
           }
         }
+        site-active-title {
+          display: inline-flex;
+          padding: 0 32px;
+          margin: 0 0 0 16px;
+          border-left: 4px solid var(--haxcms-color, black);
+          --site-active-title-heading: {
+            color: black;
+            font-size: 28px;
+            margin: 0;
+            padding: 0;
+          }
+        }
         site-dot-indicator {
           display: inline-flex;
-          --site-dot-indicator-color: black;
+          padding: 0 32px;
+          border-right: 4px solid var(--haxcms-color, black);
+          --site-dot-indicator-color: var(--haxcms-color, black);
         }
         .bottom-wrapper {
+          z-index: 2;
           position: fixed;
           bottom: 0;
           height: 60px;
+          left: 0;
+          right: 0;
+        }
+        @media screen and (max-width: 900px) {
+          site-title {
+            display: none;
+          }
+        }
+        @media screen and (max-width: 800px) {
+          site-active-title {
+            display: none;
+          }
+        }
+        @media screen and (max-width: 700px) {
+          site-print-button {
+            display: none;
+          }
+          site-label-wrapper {
+            display: inline-block;
+          }
         }
       </style>
       <div class="active-slide">
-        <site-active-title></site-active-title>
         <div id="contentcontainer">
           <div id="slot"><slot></slot></div>
         </div>
@@ -152,8 +185,19 @@ class HAXCMSSlideTheme extends HAXCMSTheme(PolymerElement) {
           ></site-menu-button>
         </div>
         <div class="site-label-wrapper">
-          <site-title></site-title>
           <site-dot-indicator></site-dot-indicator>
+          <site-title></site-title>
+          <site-print-button
+            type="page"
+            label="Print slide"
+            position="top"
+          ></site-print-button>
+          <site-print-button
+            type="site"
+            label="Print All slides"
+            position="top"
+          ></site-print-button>
+          <site-active-title></site-active-title>
         </div>
       </div>
     `;

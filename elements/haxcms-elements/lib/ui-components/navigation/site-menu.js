@@ -86,9 +86,19 @@ class SiteMenu extends PolymerElement {
         type: Boolean,
         value: false
       },
+      /**
+       * prevent the automatic scrolling when items become active
+       */
       preventAutoScroll: {
         type: Boolean,
         value: false
+      },
+      /**
+       * allow for visualizing the tracking of page requests
+       */
+      trackIcon: {
+        type: String,
+        value: ""
       }
     };
   }
@@ -124,12 +134,20 @@ class SiteMenu extends PolymerElement {
    */
   mapMenuActiveChanged(e) {
     // update the UI directly
-    e.detail.trackIcon = "icons:check";
+    e.detail.trackIcon = this.trackIcon;
     // now work on the user data object in the theme layer
     let userData = JSON.parse(window.localStorage.getItem("HAXCMSSystemData"));
+    if (
+      userData.manifests &&
+      typeof userData.manifests[this.routerManifest.id] === typeof undefined
+    ) {
+      userData.manifests[this.routerManifest.id] = {
+        accessData: {}
+      };
+    }
     userData.manifests[this.routerManifest.id].accessData[e.detail.id] = {
       timestamp: Math.floor(Date.now() / 1000),
-      trackIcon: "icons:check"
+      trackIcon: this.trackIcon
     };
     for (var i in this.routerManifest.items) {
       if (this.routerManifest.items[i].id === e.detail.id) {

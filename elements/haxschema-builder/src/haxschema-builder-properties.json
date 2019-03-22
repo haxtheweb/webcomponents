@@ -1,0 +1,40 @@
+{
+  /**
+   * schema to extract for whatever you wanted it for
+   */
+  "haxSchema": {
+    "name": "haxSchema",
+    "type": "Object",
+    "value": {}
+  },
+  /**
+   * configure form schema to extract for whatever you wanted it for
+   */
+  "configureSchema": {
+    "name": "configureSchema",
+    "type": "Object",
+    "value": {}
+  },
+  /**
+   * advanced form schema to extract for whatever you wanted it for
+   */
+  "advancedSchema": {
+    "name": "advancedSchema",
+    "type": "Object",
+    "value": {}
+  },
+  /**
+   * Optional remote source to pull in
+   */
+  "source": {
+    "name": "source",
+    "type": "String"
+  },
+  /**
+   * String based value passed between the elements to stitch together
+   */
+  "value": {
+    "name": "value",
+    "type": "String"
+  }
+}

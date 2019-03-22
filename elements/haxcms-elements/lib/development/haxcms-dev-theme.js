@@ -113,6 +113,20 @@ class HAXCMSDevTheme extends HAXCMSTheme(PolymerElement) {
             height: 32px;
           }
         }
+        site-print-button {
+          --site-print-button-button: {
+            color: white;
+          }
+          --site-print-button-tooltip: {
+            --paper-tooltip-background: #000000;
+            --paper-tooltip-opacity: 1;
+            --paper-tooltip-text-color: #ffffff;
+            --paper-tooltip-delay-in: 0;
+            --paper-tooltip: {
+              border-radius: 0;
+            }
+          }
+        }
       </style>
       <site-top-menu noink indicator="arrow" arrow-size="8">
         <div slot="suffix" class="spacing">
@@ -125,6 +139,10 @@ class HAXCMSDevTheme extends HAXCMSTheme(PolymerElement) {
           >
             <paper-button noink>Get HAXcms</paper-button>
           </a>
+          <site-print-button></site-print-button>
+          <site-print-button type="parent"></site-print-button>
+          <site-print-button type="ancestor"></site-print-button>
+          <site-print-button type="site"></site-print-button>
         </div>
       </site-top-menu>
       <site-children-block

@@ -1,0 +1,28 @@
+:host {
+  display: block;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+relative-heading {
+  color: var(--topic-heading-heading-color);
+  display: inline-flex;
+  --relative-heading-heading: {
+    padding: 0;
+    margin: 0 0 16px 0;
+    @apply --topic-heading-heading;
+  }
+}
+iron-icon {
+  color: var(--topic-heading-icon-color);
+  display: inline-flex;
+  font-size: 16px;
+  height: 32px;
+  width: 32px;
+  padding: 16px;
+  line-height: 16px;
+  vertical-align: bottom;
+  @apply --topic-heading-icon;
+}

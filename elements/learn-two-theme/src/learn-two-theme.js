@@ -8,6 +8,7 @@ import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-brea
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";

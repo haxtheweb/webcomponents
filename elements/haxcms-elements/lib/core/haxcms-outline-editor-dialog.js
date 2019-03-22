@@ -1,9 +1,13 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import * as async from "@polymer/polymer/lib/utils/async.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { autorun, toJS } from "mobx";
 import "@polymer/paper-button/paper-button.js";
-import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
+import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/iron-icons/iron-icons.js";
 import "@lrnwebcomponents/json-editor/json-editor.js";
 import "@lrnwebcomponents/editable-outline/editable-outline.js";
+import "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
 /**
  * `haxcms-outline-editor-dialog`
  * `Dialog for presenting an editable outline`
@@ -18,7 +22,6 @@ Polymer({
       :host {
         display: block;
         height: 60vh;
-        width: 60vw;
       }
       .buttons {
         position: absolute;
@@ -28,28 +31,33 @@ Polymer({
         left: 0;
         right: 0;
       }
-      paper-dialog-scrollable {
-        padding-bottom: 32px;
+      #toggle {
+        float: right;
+        text-transform: unset;
+      }
+      editable-outline,
+      json-editor {
+        margin-bottom: 32px;
       }
     </style>
-    <paper-dialog-scrollable>
-      <paper-button id="toggle" on-tap="toggleView">[[viewLabel]]</paper-button>
-      <editable-outline
-        id="outline"
-        edit-mode
-        hidden$="[[viewMode]]"
-        items="[[manifest.items]]"
-      ></editable-outline>
-      <json-editor
-        id="editor"
-        label="Outline data"
-        value="[[manifestItems]]"
-        hidden$="[[!viewMode]]"
-      ></json-editor>
-    </paper-dialog-scrollable>
+    <editable-outline
+      id="outline"
+      edit-mode
+      hidden$="[[viewMode]]"
+      items="[[manifestItems]]"
+    ></editable-outline>
+    <json-editor
+      id="editor"
+      label="JSON Outline Schema items"
+      value="[[manifestItemsStatic]]"
+      hidden$="[[!viewMode]]"
+    ></json-editor>
     <div class="buttons">
       <paper-button dialog-confirm on-tap="_saveTap">Save</paper-button>
       <paper-button dialog-dismiss>Cancel</paper-button>
+      <paper-button id="toggle" on-tap="toggleView"
+        ><iron-icon icon="[[_viewIcon]]"></iron-icon>[[viewLabel]]</paper-button
+      >
     </div>
   `,
 
@@ -66,13 +74,14 @@ Polymer({
     /**
      * Outline of items in json outline schema format
      */
-    manifest: {
-      type: Object
+    manifestItems: {
+      type: Array,
+      observer: "_manifestItemsChanged"
     },
     /**
      * Stringify'ed representation of items
      */
-    manifestItems: {
+    manifestItemsStatic: {
       type: String
     },
     /**
@@ -91,47 +100,45 @@ Polymer({
       observer: "_viewModeChanged"
     }
   },
-
-  /**
-   * Ready life cycle
-   */
-  ready: function() {
-    document.body.addEventListener(
-      "json-outline-schema-changed",
-      this.__jsonOutlineSchemaChanged.bind(this)
-    );
-    this.$.editor.addEventListener("current-data-changed", e => {
-      if (e.detail.value) {
-        let outline = window.JSONOutlineSchema.requestAvailability();
-        this.set("manifest.items", e.detail.value);
-        this.notifyPath("manifest.items.*");
-        outline.items = e.detail.value;
-        this.manifestItems = JSON.stringify(e.detail.value, null, 2);
-        this.$.outline.importJsonOutlineSchemaItems();
-      }
-    });
+  _manifestItemsChanged: function(newValue) {
+    if (newValue) {
+      window.JSONOutlineSchema.requestAvailability().items = newValue;
+      this.manifestItemsStatic = JSON.stringify(newValue, null, 2);
+    }
   },
   /**
    * attached life cycle
    */
   attached: function() {
-    async.microTask.run(() => {
-      // state issue but it can miss in timing othewise on first event
-      if (typeof window.cmsSiteEditor.jsonOutlineSchema !== typeof undefined) {
-        this.set("manifest", window.cmsSiteEditor.jsonOutlineSchema);
-        this.notifyPath("manifest.*");
-        this.manifestItems = JSON.stringify(this.manifest.items, null, 2);
-      }
+    this.__disposer = [];
+    autorun(reaction => {
+      setTimeout(() => {
+        this.manifestItems = Object.assign([], toJS(store.manifest.items));
+        this.__disposer.push(reaction);
+      }, 500);
+    });
+    afterNextRender(this, function() {
+      this.$.editor.addEventListener("current-data-changed", e => {
+        if (e.detail.value) {
+          this.set("manifestItems", e.detail.value);
+          this.$.outline.importJsonOutlineSchemaItems();
+        }
+      });
     });
   },
   /**
    * detached life cycle
    */
   detached: function() {
-    document.body.removeEventListener(
-      "json-outline-schema-changed",
-      this.__jsonOutlineSchemaChanged.bind(this)
-    );
+    for (var i in this.__disposer) {
+      this.__disposer[i].dispose();
+    }
+    this.$.editor.removeEventListener("current-data-changed", e => {
+      if (e.detail.value) {
+        this.set("manifestItems", e.detail.value);
+        this.$.outline.importJsonOutlineSchemaItems();
+      }
+    });
   },
   /**
    * Switch view
@@ -144,8 +151,10 @@ Polymer({
    */
   _getViewLabel: function(mode) {
     if (mode) {
+      this._viewIcon = "icons:view-list";
       return "Outline mode";
     } else {
+      this._viewIcon = "icons:code";
       return "Developer mode";
     }
   },
@@ -157,23 +166,8 @@ Polymer({
     if (!newValue) {
       this.$.outline.importJsonOutlineSchemaItems();
     } else {
-      const items = this.$.outline.exportJsonOutlineSchemaItems();
-      this.set("manifest.items", []);
-      this.set("manifest.items", items);
-      this.notifyPath("manifest.items");
-      this.manifestItems = JSON.stringify(items, null, 2);
-    }
-  },
-  /**
-   * Global JSON Outline Schema changed, let's ensure the items are synced up here
-   */
-  __jsonOutlineSchemaChanged: function(e) {
-    if (typeof e.detail.items !== typeof undefined) {
-      this.set("manifest", []);
-      this.set("manifest", e.detail);
-      this.notifyPath("manifest.*");
-      this.manifestItems = JSON.stringify(this.manifest.items, null, 2);
-      this.$.outline.importJsonOutlineSchemaItems();
+      const items = this.$.outline.exportJsonOutlineSchemaItems(true);
+      this.set("manifestItems", items);
     }
   },
 
@@ -181,11 +175,9 @@ Polymer({
    * Save hit, send the message to push up the outline changes.
    */
   _saveTap: function(e) {
-    const items = this.$.outline.exportJsonOutlineSchemaItems();
-    this.set("manifest.items", []);
-    this.set("manifest.items", items);
-    this.notifyPath("manifest.items");
-    this.manifestItems = JSON.stringify(items, null, 2);
-    this.fire("haxcms-save-outline", items);
+    this.fire(
+      "haxcms-save-outline",
+      this.$.outline.exportJsonOutlineSchemaItems(true)
+    );
   }
 });

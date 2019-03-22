@@ -5,6 +5,8 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/paper-tooltip/paper-tooltip.js";
 /**
  * `site-title`
  * `Title of the site`
@@ -33,14 +35,29 @@ class SiteTitle extends PolymerElement {
         a {
           @apply --site-title-link;
         }
+        a:hover,
+        a:focus,
+        a:active {
+          @apply --site-title-link-hover;
+        }
         a h1 {
           text-rendering: optimizelegibility;
           @apply --site-title-heading;
         }
+        iron-icon {
+          @apply --site-title-icon;
+        }
+        paper-tooltip {
+          @apply --site-title-tooltip;
+        }
       </style>
-      <a href$="[[homeLink]]">
-        <h1>[[siteTitle]]</h1>
+      <a id="btn" href$="[[homeLink]]" title$="Go to [[siteTitle]]">
+        <iron-icon hidden$="[[!icon]]" icon="[[icon]]"></iron-icon>
+        <h1 hidden$="[[notitle]]">[[siteTitle]]</h1>
       </a>
+      <paper-tooltip for="btn" position="[[position]]" offset="14">
+        [[label]]
+      </paper-tooltip>
     `;
   }
   /**
@@ -59,22 +76,49 @@ class SiteTitle extends PolymerElement {
        */
       homeLink: {
         type: String
+      },
+      label: {
+        type: String,
+        value: "Home"
+      },
+      position: {
+        type: String,
+        value: "bottom"
+      },
+      /**
+       * optional icon
+       */
+      icon: {
+        type: String,
+        value: false
+      },
+      /**
+       * If the title should be displayed or not
+       */
+      notitle: {
+        type: Boolean,
+        reflectToAttribute: true,
+        value: false
       }
     };
   }
   connectedCallback() {
     super.connectedCallback();
-    this.__disposer = autorun(() => {
+    this.__disposer = [];
+    autorun(reaction => {
       this.siteTitle = toJS(store.siteTitle);
+      this.__disposer.push(reaction);
     });
-    this.__disposer2 = autorun(() => {
+    autorun(reaction => {
       this.homeLink = toJS(store.homeLink);
+      this.__disposer.push(reaction);
     });
   }
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.__disposer();
-    this.__disposer2();
+    for (var i in this.__disposer) {
+      this.__disposer[i].dispose();
+    }
   }
 }
 window.customElements.define(SiteTitle.tag, SiteTitle);

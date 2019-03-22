@@ -29,6 +29,10 @@ class SiteDotIndicator extends PolymerElement {
           display: block;
           --site-dot-indicator-color: white;
         }
+        ol {
+          padding-left: 0;
+          margin-left: 0;
+        }
         li {
           transition: 0.3s all ease-in-out;
           display: inline-block;
@@ -51,7 +55,7 @@ class SiteDotIndicator extends PolymerElement {
         .active {
           width: 12px;
           height: 12px;
-          margin: 0;
+          margin: 1px;
           background-color: var(--site-dot-indicator-color);
         }
       </style>

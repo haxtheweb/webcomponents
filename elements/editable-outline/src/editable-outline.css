@@ -7,15 +7,41 @@
   display: none;
 }
 
+.button-wrapper {
+  background-color: white;
+  position: absolute;
+  display: block;
+  justify-content: space-evenly;
+  @apply --editable-outline-button-wrapper;
+}
+@media (max-width: 1000px) {
+  .button-wrapper {
+    position: relative;
+    @apply --editable-outline-button-wrapper-mobile;
+  }
+}
+button {
+  height: 32px;
+  font-size: 10px;
+  margin: 0;
+  padding: 0 8px;
+}
+
+#outline {
+  padding-top: 44px;
+  margin: 0;
+}
 ul, ol {
   font-size: 16px;
   line-height: 32px;
   padding-left: 32px;
+  @apply --editable-outline-button-list;
 }
 li {
   font-size: 16px;
   line-height: 32px;
   padding: 4px;
+  @apply --editable-outline-button-list-item;
 }
 
 li:focus,
@@ -23,6 +49,7 @@ li:active,
 li:hover {
   background-color: #EEEEEE;
   outline: 1px solid #CCCCCC;
+  @apply --editable-outline-button-list-item-active;
 }
 
 iron-icon {

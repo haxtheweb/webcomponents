@@ -1,6 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { autorun, toJS } from "mobx";
 import "@polymer/paper-icon-button/paper-icon-button.js";
-import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/iron-icons/iron-icons.js";
@@ -33,9 +34,6 @@ Polymer({
       .buttons {
         margin: 8px 0 8px 0;
       }
-      paper-dialog-scrollable {
-        padding: 8px 8px 32px 8px;
-      }
       paper-button {
         color: var(--simple-colors-default-theme-grey-11);
         margin: 0 5px;
@@ -55,42 +53,40 @@ Polymer({
         );
       }
     </style>
-    <paper-dialog-scrollable>
-      <paper-input
-        id="sitetitle"
-        label="Title"
-        required=""
-        autofocus=""
-        value="[[manifest.title]]"
-      ></paper-input>
-      <paper-input
-        id="domain"
-        label="Domain"
-        value="[[manifest.metadata.domain]]"
-      ></paper-input>
-      <paper-input
-        id="sitedescription"
-        label="Description"
-        value="[[manifest.description]]"
-      ></paper-input>
-      <paper-input
-        id="siteimage"
-        label="Image"
-        value="[[manifest.metadata.image]]"
-      ></paper-input>
-      <label for="sitecolor">Select a color:</label>
-      <simple-colors-picker
-        id="sitecolor"
-        hex-code="[[manifest.metadata.hexCode]]"
-      ></simple-colors-picker>
-      <simple-picker id="sitetheme" label="Theme"> </simple-picker>
-      <label for="siteicon">Select an icon:</label>
-      <simple-icon-picker
-        id="siteicon"
-        hide-option-labels
-        value="[[manifest.metadata.icon]]"
-      ></simple-icon-picker>
-    </paper-dialog-scrollable>
+    <paper-input
+      id="sitetitle"
+      label="Title"
+      required=""
+      autofocus=""
+      value="[[manifest.title]]"
+    ></paper-input>
+    <paper-input
+      id="domain"
+      label="Domain"
+      value="[[manifest.metadata.domain]]"
+    ></paper-input>
+    <paper-input
+      id="sitedescription"
+      label="Description"
+      value="[[manifest.description]]"
+    ></paper-input>
+    <paper-input
+      id="siteimage"
+      label="Image"
+      value="[[manifest.metadata.image]]"
+    ></paper-input>
+    <label for="sitecolor">Select a color:</label>
+    <simple-colors-picker
+      id="sitecolor"
+      hex-code="[[manifest.metadata.hexCode]]"
+    ></simple-colors-picker>
+    <simple-picker id="sitetheme" label="Theme"> </simple-picker>
+    <label for="siteicon">Select an icon:</label>
+    <simple-icon-picker
+      id="siteicon"
+      hide-option-labels
+      value="[[manifest.metadata.icon]]"
+    ></simple-icon-picker>
     <div class="buttons">
       <paper-button id="save" dialog-confirm raised on-tap="_saveTap">
         <iron-icon icon="icons:save"></iron-icon>Save
@@ -130,9 +126,11 @@ Polymer({
    * Ready life cycle
    */
   ready: function() {
-    // state issue but it can miss in timing othewise on first event
-    this.set("manifest", window.cmsSiteEditor.jsonOutlineSchema);
-    this.notifyPath("manifest.*");
+    this.__disposer = [];
+    autorun(reaction => {
+      this.manifest = toJS(store.manifest);
+      this.__disposer.push(reaction);
+    });
   },
   /**
    * attached life cycle
@@ -156,8 +154,7 @@ Polymer({
       themeOptions.push(item);
     }
     this.$.sitetheme.options = themeOptions;
-    this.$.sitetheme.value =
-      window.cmsSiteEditor.jsonOutlineSchema.metadata.theme.element;
+    this.$.sitetheme.value = this.manifest.metadata.theme.element;
   },
   /**
    * detached life cycle
@@ -175,6 +172,9 @@ Polymer({
       "change",
       this._colorChanged.bind(this)
     );
+    for (var i in this.__disposer) {
+      this.__disposer[i].dispose();
+    }
   },
 
   /**

@@ -4,6 +4,9 @@
  */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { autorun, toJS } from "mobx";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@polymer/paper-fab/paper-fab.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-button/paper-button.js";
@@ -13,6 +16,7 @@ import "@lrnwebcomponents/jwt-login/jwt-login.js";
 import "@lrnwebcomponents/h-a-x/h-a-x.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
+import "@lrnwebcomponents/hax-body/lib/hax-schema-form.js";
 /**
  * `haxcms-site-editor`
  * `haxcms editor element that provides all editing capabilities`
@@ -64,21 +68,19 @@ Polymer({
         background-color: var(--paper-blue-500) !important;
       }
       h-a-x {
-        padding: 48px;
-        max-width: 1040px;
+        padding: 80px 40px;
         margin: auto;
         display: none;
       }
       :host([edit-mode]) h-a-x {
         display: block;
-        padding: 0 !important;
       }
     </style>
     <iron-ajax
       headers='{"Authorization": "Bearer [[jwt]]"}'
       id="pageupdateajax"
       url="[[savePagePath]]"
-      method="POST"
+      method="[[method]]"
       body="[[updatePageData]]"
       content-type="application/json"
       handle-as="json"
@@ -88,7 +90,7 @@ Polymer({
       headers='{"Authorization": "Bearer [[jwt]]"}'
       id="outlineupdateajax"
       url="[[saveOutlinePath]]"
-      method="POST"
+      method="[[method]]"
       body="[[updateOutlineData]]"
       content-type="application/json"
       handle-as="json"
@@ -96,9 +98,19 @@ Polymer({
     ></iron-ajax>
     <iron-ajax
       headers='{"Authorization": "Bearer [[jwt]]"}'
+      id="getfieldsajax"
+      url="[[getFieldsPath]]"
+      method="[[method]]"
+      body="[[getFieldsData]]"
+      content-type="application/json"
+      handle-as="json"
+      on-response="_handleGetFieldsResponse"
+    ></iron-ajax>
+    <iron-ajax
+      headers='{"Authorization": "Bearer [[jwt]]"}'
       id="manifestupdateajax"
       url="[[saveManifestPath]]"
-      method="POST"
+      method="[[method]]"
       body="[[updateManifestData]]"
       content-type="application/json"
       handle-as="json"
@@ -109,7 +121,7 @@ Polymer({
       id="publishajax"
       loading="{{publishing}}"
       url="[[publishSitePath]]"
-      method="POST"
+      method="[[method]]"
       body="[[publishSiteData]]"
       content-type="application/json"
       handle-as="json"
@@ -119,7 +131,7 @@ Polymer({
       headers='{"Authorization": "Bearer [[jwt]]"}'
       id="createajax"
       url="[[createPagePath]]"
-      method="POST"
+      method="[[method]]"
       body="[[createData]]"
       content-type="application/json"
       handle-as="json"
@@ -130,7 +142,7 @@ Polymer({
       headers='{"Authorization": "Bearer [[jwt]]"}'
       id="deleteajax"
       url="[[deletePagePath]]"
-      method="POST"
+      method="[[method]]"
       body="[[deleteData]]"
       content-type="application/json"
       handle-as="json"
@@ -140,6 +152,13 @@ Polymer({
     <h-a-x app-store$="[[appStore]]"></h-a-x>
   `,
   properties: {
+    /**
+     * Allow method to be overridden, useful in local testing
+     */
+    method: {
+      type: String,
+      value: "POST"
+    },
     /**
      * JSON Web token, it'll come from a global call if it's available
      */
@@ -253,6 +272,13 @@ Polymer({
       value: {}
     },
     /**
+     * data as part of the POST to the for field data
+     */
+    getFieldsData: {
+      type: Object,
+      value: {}
+    },
+    /**
      * Active item of the page being worked on, JSON outline schema item format
      */
     activeItem: {
@@ -266,6 +292,12 @@ Polymer({
     manifest: {
       type: Object,
       notify: true
+    },
+    getFieldsPath: {
+      type: String
+    },
+    getFieldsToken: {
+      type: String
     }
   },
   /**
@@ -303,6 +335,10 @@ Polymer({
       "haxcms-save-site-data",
       this.saveManifest.bind(this)
     );
+    window.addEventListener(
+      "haxcms-load-page-fields",
+      this.loadPageFields.bind(this)
+    );
     window.addEventListener("haxcms-create-page", this.createPage.bind(this));
     window.addEventListener("haxcms-delete-page", this.deletePage.bind(this));
     window.addEventListener("haxcms-publish-site", this.publishSite.bind(this));
@@ -319,16 +355,13 @@ Polymer({
    * attached life cycle
    */
   attached: function() {
+    this.__disposer = autorun(() => {
+      this.manifest = toJS(store.manifest);
+    });
+    this.__disposer2 = autorun(() => {
+      this.activeItem = toJS(store.activeItem);
+    });
     async.microTask.run(() => {
-      // allow for initial setting since this editor gets injected basically
-      if (typeof window.cmsSiteEditor.jsonOutlineSchema !== typeof undefined) {
-        this.set("manifest", window.cmsSiteEditor.jsonOutlineSchema);
-        this.notifyPath("manifest.*");
-      }
-      if (typeof window.cmsSiteEditor.initialActiveItem !== typeof undefined) {
-        this.set("activeItem", window.cmsSiteEditor.initialActiveItem);
-        this.notifyPath("activeItem.*");
-      }
       this.updateStyles();
       if (window.HaxStore.ready) {
         let detail = {
@@ -342,6 +375,8 @@ Polymer({
    * Detatched life cycle
    */
   detached: function() {
+    this.__disposer();
+    this.__disposer2();
     window.removeEventListener(
       "hax-store-ready",
       this._storeReadyToGo.bind(this)
@@ -376,12 +411,107 @@ Polymer({
       this._bodyChanged.bind(this)
     );
     window.removeEventListener(
+      "haxcms-load-page-fields",
+      this.loadPageFields.bind(this)
+    );
+    window.removeEventListener(
       "haxcms-create-page",
       this.createPage.bind(this)
     );
     window.removeEventListener(
       "haxcms-delete-page",
       this.deletePage.bind(this)
+    );
+  },
+  /**
+   * Load and display page fields
+   */
+  loadPageFields: function(e) {
+    this.__pageFieldsInvoked = e.detail;
+    // pass along the jwt for user "session" purposes
+    this.set("getFieldsData.jwt", this.jwt);
+    this.notifyPath("getFieldsData.jwt");
+    this.set("getFieldsData.token", this.getFieldsToken);
+    this.notifyPath("getFieldsData.token");
+    this.set("getFieldsData.siteName", this.manifest.metadata.siteName);
+    this.notifyPath("getFieldsData.siteName");
+    this.set("getFieldsData.page", this.activeItem.id);
+    this.notifyPath("getFieldsData.page");
+    this.$.getfieldsajax.generateRequest();
+  },
+  /**
+   * Handle getting fields response
+   */
+  _handleGetFieldsResponse: function(e) {
+    // we get back HAXSchema from the server
+    let wiring = new HAXWiring();
+    this._haxSchema = wiring.prototypeHaxProperties();
+    this._haxSchema.settings = e.detail.response.haxSchema;
+    let values = e.detail.response.values;
+    let c = document.createElement("hax-schema-form");
+    for (var key in this._haxSchema.settings) {
+      let schema = wiring.getHaxJSONSchema(key, this._haxSchema);
+      for (var i in schema.properties) {
+        if (values[i]) {
+          schema.properties[i].value = values[i];
+        }
+      }
+      c.set(key + "Schema", schema);
+    }
+    this.__fieldsForm = c;
+    let b1 = document.createElement("paper-button");
+    b1.raised = true;
+    let icon = document.createElement("iron-icon");
+    icon.icon = "icons:save";
+    b1.appendChild(icon);
+    b1.appendChild(document.createTextNode("Save fields"));
+    b1.setAttribute("dialog-confirm", "dialog-confirm");
+    b1.addEventListener("click", this._saveFieldsTap.bind(this));
+    let b2 = document.createElement("paper-button");
+    b2.appendChild(document.createTextNode("cancel"));
+    b2.setAttribute("dialog-dismiss", "dialog-dismiss");
+    let b = document.createElement("div");
+    b.style.position = "absolute";
+    b.style.bottom = 0;
+    b.style.left = 0;
+    b.style.right = 0;
+    b.style.zIndex = 1000000;
+    b.style.backgroundColor = "#ddd";
+    b.appendChild(b1);
+    b.appendChild(b2);
+    const evt = new CustomEvent("simple-modal-show", {
+      bubbles: true,
+      cancelable: false,
+      detail: {
+        title: "Edit " + store.activeTitle + " fields",
+        elements: { content: c, buttons: b },
+        invokedBy: this.__pageFieldsInvoked,
+        clone: false
+      }
+    });
+    window.dispatchEvent(evt);
+  },
+  /**
+   * Save the fields as we get tapped
+   */
+  _saveFieldsTap: function(e) {
+    let values = this.__fieldsForm.value;
+    values.id = this.activeItem.id;
+    // fire event with details for saving
+    window.dispatchEvent(
+      new CustomEvent("haxcms-save-page-details", {
+        bubbles: true,
+        cancelable: true,
+        detail: values
+      })
+    );
+    // fire event to close the modal
+    window.dispatchEvent(
+      new CustomEvent("simple-modal-hide", {
+        bubbles: true,
+        cancelable: true,
+        detail: {}
+      })
     );
   },
   /**

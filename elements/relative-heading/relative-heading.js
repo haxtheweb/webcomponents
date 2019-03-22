@@ -18,6 +18,32 @@ let RelativeHeading = Polymer({
       :host {
         display: block;
       }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        @apply --relative-heading-heading;
+      }
+      h1 {
+        @apply --relative-heading-heading1;
+      }
+      h2 {
+        @apply --relative-heading-heading2;
+      }
+      h3 {
+        @apply --relative-heading-heading3;
+      }
+      h4 {
+        @apply --relative-heading-heading4;
+      }
+      h5 {
+        @apply --relative-heading-heading5;
+      }
+      h6 {
+        @apply --relative-heading-heading6;
+      }
     </style>
     <div id="html"></div>
   `,

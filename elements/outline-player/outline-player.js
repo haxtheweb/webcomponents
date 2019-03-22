@@ -14,14 +14,14 @@ import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js";
 
 /**
-`outline-player`
-A LRN element
-
-* @demo demo/index.html
-
-*/
+ * `outline-player`
+ * `A basic outline presentation`
+ *
+ * @demo demo/index.html
+ */
 let OutlinePlayer = Polymer({
   _template: html`
     <style include="simple-colors hax-shared-styles">
@@ -34,6 +34,7 @@ let OutlinePlayer = Polymer({
         --app-drawer-width: 300px;
         --outline-player-dark: #222222;
         --outline-player-light: #f8f8f8;
+        background-color: var(--outline-player-light);
       }
 
       :host([closed]) {
@@ -266,6 +267,7 @@ let OutlinePlayer = Polymer({
               label="Next"
               raised
             ></site-menu-button>
+            <site-print-button></site-print-button>
           </app-toolbar>
         </app-header>
         <div id="content">
