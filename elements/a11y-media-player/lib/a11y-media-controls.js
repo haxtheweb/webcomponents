@@ -371,6 +371,18 @@ class A11yMediaControls extends A11yMediaBehaviors {
           on-tap="_handlePrintClick"
         >
         </a11y-media-button>
+        <template is="dom-if" if="[[fullscreenButton]]">
+          <a11y-media-button
+            action="fullscreen"
+            hidden$="[[audioNoThumb]]"
+            icon$="[[_getLocal('fullscreen','icon')]]"
+            label$="[[_getLocal('fullscreen','label')]]"
+            on-tap="_onButtonTap"
+            toggle$="[[fullscreen]]"
+            step="1"
+          >
+          </a11y-media-button>
+        </template>
         <paper-menu-button
           id="settings"
           allow-outside-scroll
@@ -471,19 +483,6 @@ class A11yMediaControls extends A11yMediaBehaviors {
         <paper-tooltip for="settings">
           [[_getLocal('settings','label')]]
         </paper-tooltip>
-        <template is="dom-if" if="[[fullscreenButton]]">
-          <template is="dom-if" if="[[!audioNoThumb]]">
-            <a11y-media-button
-              action="fullscreen"
-              icon$="[[_getLocal('fullscreen','icon')]]"
-              label$="[[_getLocal('fullscreen','label')]]"
-              on-tap="_onButtonTap"
-              toggle$="[[fullscreen]]"
-              step="1"
-            >
-            </a11y-media-button>
-          </template>
-        </template>
       </div>
     `;
   }

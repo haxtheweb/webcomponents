@@ -43,7 +43,8 @@ window.MediaBehaviors.Video = {
             ? tmp2.shift().join("")
             : tmp2.shift();
         if (args[0] == "v") {
-          v = args[1] + "?" + qry;
+          let q = qry !== undefined && qry !== "" ? "?" + qry : "";
+          v = args[1] + q;
         }
       }
       // link to the vimeo video instead of the embed player address
