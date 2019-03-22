@@ -56,10 +56,7 @@
                 {
                   "name": "bgprop"
                 }
-              ],
-              "return": {
-                "type": "void"
-              }
+              ]
             }
           ],
           "staticMethods": [],

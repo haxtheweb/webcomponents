@@ -8,13 +8,13 @@
   --lrndesign-timeline-background: #f4f4f4;
   --lrndesign-timeline-background-print: #fff;
   --lrndesign-timeline-border: var(--simple-colors-default-theme-grey-5, #bbb);
-  --lrndesign-timeline-border-print: var(--simple-colors-light-theme-grey-5, #bbb);
+  --lrndesign-timeline-border-print: var(--simple-colors-fixed-theme-grey-5, #bbb);
   --lrndesign-timeline-accent: #000;
   --lrndesign-timeline-accent-background: #fff;
   --lrndesign-timeline-accent-border: var(--simple-colors-default-theme-accent-8, #444);
   --lrndesign-timeline-header: var(--simple-colors-default-theme-accent-1, #fff);
   --lrndesign-timeline-header-accent: var(--simple-colors-default-theme-accent-8, #444);
-  --lrndesign-timeline-accent-print: var(--simple-colors-light-theme-accent-8, #444);
+  --lrndesign-timeline-accent-print: var(--simple-colors-fixed-theme-accent-8, #444);
 }
 :host([dark]){
   --lrndesign-timeline-background: #1b1b1b;
@@ -131,13 +131,13 @@
     padding: 0 20px;
     line-height: 50px;
     height: 50px;
-    color: var(--lrndesign-timeline-color);
-    background-color: var(--lrndesign-timeline-background);
-    transition: background-color 0.3s;
-  }
-  :host(:not([timeline-size="xs"])) .event[selected] .heading h2 {
     background-color: var(--lrndesign-timeline-header-accent);
     color:  var(--lrndesign-timeline-header);
+    opacity: 0.6;
+    transition: opacity 0.3s;
+  }
+  :host(:not([timeline-size="xs"])) .event[selected] .heading h2 {
+    opacity: 1;
   }
   :host(:not([timeline-size="xs"])) .event[has-media] .heading h2:after {
     content: '';

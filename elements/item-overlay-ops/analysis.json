@@ -7,266 +7,23 @@
       "path": "item-overlay-ops.js",
       "properties": [
         {
-          "name": "editMode",
-          "type": "boolean | null | undefined",
-          "description": "Edit mode whether it is shown or not",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 215,
-              "column": 4
-            },
-            "end": {
-              "line": 219,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false"
-        },
-        {
-          "name": "focused",
-          "type": "boolean | null | undefined",
-          "description": "Edit mode whether it is shown or not",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 223,
-              "column": 4
-            },
-            "end": {
-              "line": 227,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false"
-        },
-        {
-          "name": "activeTitle",
-          "type": "string | null | undefined",
-          "description": "Title to present of active option",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 231,
-              "column": 4
-            },
-            "end": {
-              "line": 233,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          }
-        },
-        {
-          "name": "activeOp",
-          "type": "string | null | undefined",
-          "description": "Active operation",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 237,
-              "column": 4
-            },
-            "end": {
-              "line": 239,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          }
-        },
-        {
-          "name": "add",
-          "type": "boolean | null | undefined",
-          "description": "Add opertaions",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 243,
-              "column": 4
-            },
-            "end": {
-              "line": 246,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false"
-        },
-        {
-          "name": "edit",
-          "type": "boolean | null | undefined",
-          "description": "Edit opertaions",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 250,
-              "column": 4
-            },
-            "end": {
-              "line": 253,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false"
-        },
-        {
-          "name": "move",
-          "type": "boolean | null | undefined",
-          "description": "Move opertaions",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 257,
-              "column": 4
-            },
-            "end": {
-              "line": 260,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false"
-        },
-        {
-          "name": "fixedHeight",
-          "type": "number | null | undefined",
-          "description": "Allow height to be defined rather than calculated",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 264,
-              "column": 4
-            },
-            "end": {
-              "line": 267,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "observer": "\"fixedHeightChanged\"",
-              "attributeType": "Number"
-            }
-          }
-        },
-        {
-          "name": "disableAutoHeight",
-          "type": "boolean | null | undefined",
-          "description": "Ability to disable height setting. Useful if using CSS vars.",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 271,
-              "column": 4
-            },
-            "end": {
-              "line": 274,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false"
-        },
-        {
-          "name": "remove",
-          "type": "boolean | null | undefined",
-          "description": "Remove opertaions",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 278,
-              "column": 4
-            },
-            "end": {
-              "line": 281,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false"
-        },
-        {
-          "name": "duplicate",
-          "type": "boolean | null | undefined",
-          "description": "Duplicate opertaions",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 285,
-              "column": 4
-            },
-            "end": {
-              "line": 288,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false"
-        },
-        {
-          "name": "__anyOp",
-          "type": "boolean | null | undefined",
+          "name": "_template",
+          "type": "Object",
           "description": "",
-          "privacy": "private",
+          "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 289,
-              "column": 4
+              "line": 18,
+              "column": 2
             },
             "end": {
-              "line": 292,
-              "column": 5
+              "line": 198,
+              "column": 3
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false"
+            "polymer": {}
+          }
         },
         {
           "name": "hostAttributes",
@@ -284,10 +41,247 @@
             }
           },
           "metadata": {
+            "polymer": {}
+          }
+        },
+        {
+          "name": "editMode",
+          "type": "boolean",
+          "description": "Edit mode whether it is shown or not",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 215,
+              "column": 4
+            },
+            "end": {
+              "line": 219,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "focused",
+          "type": "boolean",
+          "description": "Edit mode whether it is shown or not",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 223,
+              "column": 4
+            },
+            "end": {
+              "line": 227,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "activeTitle",
+          "type": "string",
+          "description": "Title to present of active option",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 231,
+              "column": 4
+            },
+            "end": {
+              "line": 233,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
+          "name": "activeOp",
+          "type": "string",
+          "description": "Active operation",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 237,
+              "column": 4
+            },
+            "end": {
+              "line": 239,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
+          "name": "add",
+          "type": "boolean",
+          "description": "Add opertaions",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 243,
+              "column": 4
+            },
+            "end": {
+              "line": 246,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "edit",
+          "type": "boolean",
+          "description": "Edit opertaions",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 250,
+              "column": 4
+            },
+            "end": {
+              "line": 253,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "move",
+          "type": "boolean",
+          "description": "Move opertaions",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 257,
+              "column": 4
+            },
+            "end": {
+              "line": 260,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "fixedHeight",
+          "type": "number",
+          "description": "Allow height to be defined rather than calculated",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 264,
+              "column": 4
+            },
+            "end": {
+              "line": 267,
+              "column": 5
+            }
+          },
+          "metadata": {
             "polymer": {
-              "readOnly": false
+              "observer": "\"fixedHeightChanged\""
             }
           }
+        },
+        {
+          "name": "disableAutoHeight",
+          "type": "boolean",
+          "description": "Ability to disable height setting. Useful if using CSS vars.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 271,
+              "column": 4
+            },
+            "end": {
+              "line": 274,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "remove",
+          "type": "boolean",
+          "description": "Remove opertaions",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 278,
+              "column": 4
+            },
+            "end": {
+              "line": 281,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "duplicate",
+          "type": "boolean",
+          "description": "Duplicate opertaions",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 285,
+              "column": 4
+            },
+            "end": {
+              "line": 288,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "__anyOp",
+          "type": "boolean",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 289,
+              "column": 4
+            },
+            "end": {
+              "line": 292,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "false"
         }
       ],
       "methods": [
@@ -306,10 +300,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "detached",
@@ -326,10 +317,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "fixedHeightChanged",
@@ -353,10 +341,7 @@
             {
               "name": "oldValue"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_windowResize",
@@ -377,10 +362,7 @@
             {
               "name": "e"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_opTap",
@@ -401,10 +383,7 @@
             {
               "name": "e"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_inFocus",
@@ -425,10 +404,7 @@
             {
               "name": "e"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_outFocus",
@@ -449,10 +425,7 @@
             {
               "name": "e"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_optionSelected",
@@ -473,10 +446,7 @@
             {
               "name": "e"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_resetActive",
@@ -493,10 +463,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         }
       ],
       "staticMethods": [],
@@ -530,7 +497,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "focused",
@@ -546,7 +513,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "active-title",
@@ -562,7 +529,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "active-op",
@@ -578,7 +545,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "add",
@@ -594,7 +561,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "edit",
@@ -610,7 +577,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "move",
@@ -626,7 +593,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "fixed-height",
@@ -642,7 +609,7 @@
             }
           },
           "metadata": {},
-          "type": "number | null | undefined"
+          "type": "number"
         },
         {
           "name": "disable-auto-height",
@@ -658,7 +625,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "remove",
@@ -674,7 +641,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "duplicate",
@@ -690,7 +657,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         }
       ],
       "events": [],

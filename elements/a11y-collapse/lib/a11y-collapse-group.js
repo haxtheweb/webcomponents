@@ -5,7 +5,6 @@ import "../a11y-collapse.js";
 /**
  * `a11y-collapse-group`
  * A group of a11y-collapse elements
- * * @demo demo/accordion.html Accordion Groups
  * @microcopy - the mental model for this element```
 <a11y-collapse-group 
   global-options='{"prop": "value"}'     //Optional: An object that will automatica11y override and set properties for every a11y-collapse.
@@ -18,7 +17,11 @@ CSS Mixins:
   --a11y-collapse-group                    //sets CSS for the a11y-collapse-group
   --a11y-collapse-group-heading            //sets CSS for the a11y-collapse-group heading
 ```
-*/
+ *
+ * @customElement
+ * @polymer
+ * @demo demo/accordion.html collapse groups
+ */
 let A11yCollapseGroup = Polymer({
   _template: html`
     <style>

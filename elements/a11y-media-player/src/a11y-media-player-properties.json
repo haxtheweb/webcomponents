@@ -1,11 +1,131 @@
 {
   /**
+   * Allow this media to play concurrently with other a11y-media-players?
+   * Default is to pause this a11y-media-player when other a11y-media-player starts playing.
+   */
+
+  "allowConcurrent": {
+    "name": "allowConcurrent",
+    "type": "Boolean",
+    "value": false
+  },
+  /**
+   * Is it an audio player with no thumbnail?
+   */
+  "audioNoThumb": {
+    "name": "audioNoThumb",
+    "type": "Boolean",
+    "computed": "_getAudioNoThumb(audioOnly,thumbnailSrc)"
+  },
+  /**
+   * Use dark theme on transcript? Default is false, even when player is dark.
+   */
+  "darkTranscript": {
+    "name": "darkTranscript",
+    "type": "Boolean",
+    "value": false
+  },
+  /**
+   * disable fullscreen option
+   */
+  "disableFullscreen": {
+    "name": "disableFullscreen",
+    "type": "Boolean",
+    "value": false
+  },
+  /**
+   * disable interactive mode that makes the transcript clickable
+   */
+  "disableInteractive": {
+    "name": "disableInteractive",
+    "type": "Boolean",
+    "value": false
+  },
+  /**
+   * Determines if video and transcript are in a flex layout
+   */
+  "flexLayout": {
+    "name": "flexLayout",
+    "type": "Boolean",
+    "computed": "_isFlexLayout(standAlone,hideTranscript,audioNoThumb,stackedLayout)",
+    "reflectToAttribute": true
+  },
+  /**
+   * Is fullscreen mode?
+   */
+  "fullscreen": {
+    "name": "fullscreen",
+    "type": "Boolean",
+    "value": false
+  },
+  /**
+   * show the FullscreenButton?
+   */
+  "fullscreenButton": {
+    "name": "fullscreenButton",
+    "type": "Boolean",
+    "computed": "_getFullscreenButton(disableFullscreen,audioNoThumb)",
+    "notify": true
+  },
+
+  /**
+   * Does the player have tracks?
+   */
+  "hasCaptions": {
+    "name": "hasCaptions",
+    "type": "Boolean",
+    "value": false
+  },
+
+  /**
+   * Hide elapsed time?
+   */
+  "hideElapsedTime": {
+    "name": "hideElapsedTime",
+    "type": "Boolean",
+    "value": false
+  },
+  /**
+   * show cue's start and end time
+   */
+  "hideTimestamps": {
+    "name": "hideTimestamps",
+    "type": "Boolean",
+    "value": false
+  },
+  /**
+   * initially hide the transcript?
+   */
+  "hideTranscript": {
+    "name": "hideTranscript",
+    "type": "Boolean",
+    "value": false,
+    "reflectToAttribute": true
+  },
+  /**
+   * initially hide the transcript?
+   */
+  "id": {
+    "name": "id",
+    "type": "String",
+    "value": null,
+    "reflectToAttribute": true
+  },
+  /**
    * The default media caption if none is given.
    */
   "mediaCaption": {
     "name": "mediaCaption",
     "type": "String",
     "computed": "_getMediaCaption(audioOnly,localization,mediaTitle)"
+  },
+  /**
+   * the language of the media (if different from user interface language)
+   */
+  "mediaLang": {
+    "name": "mediaLang",
+    "type": "String",
+    "value": "en"
   },
   /**
    * mute/unmute button
@@ -24,12 +144,22 @@
     "computed": "_getPrintCaption(audioOnly,audioLabel,videoLabel,mediaTitle)"
   },
   /**
+   * Size of the a11y media element for responsive styling
+   */
+  "responsiveSize": {
+    "name": "responsiveSize",
+    "type": "String",
+    "notify": true,
+    "value": "xs",
+    "reflectToAttribute": true
+  },
+  /**
    * is YouTube?
    */
   "showCustomCaptions": {
     "name": "showCustomCaptions",
     "type": "Boolean",
-    "computed": "_showCustomCaptions(isYoutube,audioOnly,hasCaptions,cc)"
+    "computed": "_showCustomCaptions(isYoutube, audioOnly, hasCaptions, cc)"
   },
   /**
    * Optional array ouf sources.
@@ -38,6 +168,14 @@
     "name": "sources",
     "type": "Array",
     "value": []
+  },
+  /**
+   * stacked layout instead of side-by-side?
+   */
+  "stackedLayout": {
+    "name": "stackedLayout",
+    "type": "Boolean",
+    "value": false
   },
   /**
    * Is the video currently sticky, i.e. it is fixed to the corner when playing but scrolled off screen?
@@ -57,6 +195,15 @@
     "name": "stickyCorner",
     "type": "String",
     "value": "top-right",
+    "reflectToAttribute": true
+  },
+  /**
+   * Source of optional thumbnail image
+   */
+  "thumbnailSrc": {
+    "name": "thumbnailSrc",
+    "type": "String",
+    "value": null,
     "reflectToAttribute": true
   },
   /**

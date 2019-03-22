@@ -1,7 +1,5 @@
 import { A11yMediaPlayer } from "./a11y-media-player.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { A11yMediaBehaviors } from "./lib/a11y-media-behaviors.js";
-import { A11yMediaPlayerBehaviors } from "./lib/a11y-media-player-behaviors.js";
 import * as enVtt from "./demo/samples/sintel-en.vtt";
 import * as deVtt from "./demo/samples/sintel-de.vtt";
 import * as esVtt from "./demo/samples/sintel-es.vtt";
@@ -12,7 +10,6 @@ import stclairJpg from "./demo/samples/stclair.jpg";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 window.StorybookUtilities.requestAvailability();
-
 /**
  * add to the pattern library
  */
@@ -54,25 +51,48 @@ window.StorybookUtilities.instance.addPattern(A11yMediaPlayerYouTubePattern);
  * add the live demo
  */
 //combine all of the inherited properties into one object
-let allKnobs = Object.assign(
-  { 
-    "accentColor": {"name": "accentColor", "type":"Select", "value": "blue", "options": Object.keys(SimpleColors.colors)}, 
-    "dark": {"name": "dark", "type":"Boolean", "value": false}
-  },
-  A11yMediaPlayer.properties, A11yMediaBehaviors.properties,
-  A11yMediaPlayerBehaviors.properties
-);
-allKnobs.crossorigin.value = "anonymous";
-//remove properties we don't want to expose
-['playing','target','search','media','selectedTrack','manifest','responsiveSize','status','selectedTrackID','flexLayout','youtubeId','youTube'].forEach(prop => {
-  delete allKnobs[prop];
-});
+let getVideoKnobs = () => {
+  let allKnobs = Object.assign(
+    window.StorybookUtilities.instance.getSimpleColors(),
+    A11yMediaPlayer.properties, A11yMediaBehaviors.properties
+  );
+  allKnobs.crossorigin = {value: "anonymous", "type": "Select", "options": ["anonymous","use-credentials",""]};
+  //remove properties we don't want to expose
+  [
+    'audioOnly',
+    'flexLayout',
+    'manifest',
+    'media',
+    'muteUnmute',
+    'playing',
+    'playPause',
+    'responsiveSize',
+    'seekDisabled',
+    'selectedTrack',
+    'selectedTrackID',
+    'status',
+    'target',
+    'search',
+    'youTube'
+  ].forEach(prop => {
+    delete allKnobs[prop];
+  });
+  return allKnobs;
+},
+  audioKnobs = getVideoKnobs(), 
+  videoKnobs = getVideoKnobs(), 
+  ytKnobs = getVideoKnobs();
+ytKnobs.tracks.value = [
+  {"src": buellerVtt,  "srclang": "en", "label": "English"}
+] ;
+delete ytKnobs.source;
+delete ytKnobs.sources;
+ytKnobs.youtubeId.value = "NP0mQeLWCCo";
 
-//create the story data
 const A11yMediaPlayerStory = {
   "of": "a11y-media-player",
   "name": "a11y-media-player",
-  "props": allKnobs, 
+  "props": videoKnobs, 
   "slots": {
     "slot": {
       "name": "slot",
@@ -88,4 +108,31 @@ const A11yMediaPlayerStory = {
   "attr": ``,
   "slotted": ``
 };
+const A11yMediaPlayerAudioStory = {
+  "of": "a11y-media-player",
+  "name": "a11y-media-player (Audio)",
+  "props": audioKnobs, 
+  "slots": {
+    "slot": {
+      "name": "slot",
+      "type": "String",
+      "value": `
+        <source src="${buellerMp3}" type="audio/mp3">
+        <track src="${stclairVtt}" srclang="en" label="English">
+      `
+    }
+  }, 
+  "attr": ` audio-only`,
+  "slotted": ``
+};
+const A11yMediaPlayerYTStory = {
+  "of": "a11y-media-player",
+  "name": "a11y-media-player (YouTube)",
+  "props": ytKnobs, 
+  "slots": {}, 
+  "attr": ``,
+  "slotted": ``
+};
 window.StorybookUtilities.instance.addLiveDemo(A11yMediaPlayerStory);
+window.StorybookUtilities.instance.addLiveDemo(A11yMediaPlayerAudioStory);
+window.StorybookUtilities.instance.addLiveDemo(A11yMediaPlayerYTStory);

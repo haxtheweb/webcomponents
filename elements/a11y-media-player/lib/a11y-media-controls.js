@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { A11yMediaPlayerBehaviors } from "./a11y-media-player-behaviors.js";
+import { A11yMediaBehaviors } from "./a11y-media-behaviors.js";
 import "@polymer/paper-menu-button/paper-menu-button.js";
 import "@polymer/paper-listbox/paper-listbox.js";
 import "@polymer/paper-item/paper-item.js";
@@ -20,35 +20,23 @@ export { A11yMediaControls };
  * `The controls bar for the a11y-media-player.`
  *
  * @microcopy - language worth noting:
-```<a11y-media-button 
-  accent-color$="[[accentColor]]"             // Optional accent color for controls, 
-                                              // using the following materialize colors: 
-                                              // red, pink, purple, deep-purple, indigo, blue, 
-                                              // light blue, cyan, teal, green, light green, lime, 
-                                              // yellow, amber, orange, deep-orange, and brown. 
-                                              // Default is null. 
-  allow-fullscreen$="[[allowFullscreen]]"     // Allow fullscreen mode?
-  audio-only$="[[audioOnly]]"                 // Is media audio only?
-  autoplay$="[[autoplay]]"                    // Is player set to autoplay (not recommended for a11y)?
-  cc$="[[cc]]"                                // Are closed captions toggled?
-  dark$="[[dark]]"                            // Is the color scheme dark? Default is light.    
-  disableFullscreen$="[[disableFullscreen]]"  // Is full screen mode disabled?
-  fullscreen$="[[fullscreen]]"                // Is full screen mode toggled on?
-  hide-elapsed-time$="[[hideElapsedTime]]"    // Is elapsed time hidden?
-  loop$="[[loop]]"                            // Is video on a loop?
-  microcopy$="[[microcopy]]"                  // Optional customization or text and icons
-  responsive-size$="[[responsiveSize]]"       // The size of the player determines how controls are displayed
-  volume$="[[volume]]">                       // The initial volume of the video
-</a11y-media-button>```
  *
- * @extends A11yMediaPlayerBehaviors
+ * @extends A11yMediaBehaviors
  * @customElement
  * @polymer
  */
-class A11yMediaControls extends A11yMediaPlayerBehaviors {
+class A11yMediaControls extends A11yMediaBehaviors {
   // properties available to the custom element for data binding
   static get properties() {
     return {
+      /**
+       * Use compact controls?
+       */
+      compactControls: {
+        name: "compactControls",
+        type: Boolean,
+        computed: "_getCompactControls(responsiveSize)"
+      },
       /**
        * Is the player a fixed height (iframe mode) so that theure is no transcript toggle?
        */
@@ -57,25 +45,78 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
         value: false
       },
       /**
+       * Is fullscreen mode?
+       */
+      fullscreen: {
+        name: "fullscreen",
+        type: Boolean,
+        value: false
+      },
+      /**
+       * show the FullscreenButton?
+       */
+      fullscreenButton: {
+        name: "fullscreenButton",
+        type: Boolean,
+        value: false,
+        nofity: true
+      },
+
+      /**
+       * Does the player have tracks?
+       */
+      hasCaptions: {
+        name: "hasCaptions",
+        type: Boolean,
+        value: false,
+        notify: true
+      },
+
+      /**
+       * initially hide the transcript?
+       */
+      hideTranscript: {
+        name: "hideTranscript",
+        type: Boolean,
+        value: false
+      },
+      /**
        * hide the transcript toggle menu item?
        */
       hideTranscriptButton: {
         type: Boolean,
-        computed: "_hideTranscriptButton(noTranscriptMenu,compactControls)"
+        computed: "_hideTranscriptButton(noTranscriptToggle,compactControls)"
+      },
+      /**
+       * mute/unmute button
+       */
+      muteUnmute: {
+        name: "muteUnmute",
+        type: Object
       },
       /**
        * hide the print transcript feature available?
        */
       noPrinting: {
         type: Boolean,
-        computed: "_noPrinting(standalone,fixedHeight)"
+        computed: "_noPrinting(standAlone,fixedHeight)"
       },
       /**
        * Is the transctipt toggle feature available?
        */
       noTranscriptToggle: {
         type: Boolean,
-        computed: "_noTranscriptToggle(standalone,fixedHeight,hasTranscript)"
+        computed: "_noTranscriptToggle(standAlone,fixedHeight,hasTranscript)"
+      },
+      /**
+       * Size of the a11y media element for responsive styling
+       */
+      responsiveSize: {
+        name: "responsiveSize",
+        type: String,
+        notify: true,
+        value: "xs",
+        reflectToAttribute: true
       }
     };
   }
@@ -90,7 +131,7 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
 
   //get player-specifc properties
   static get behaviors() {
-    return [A11yMediaPlayerBehaviors];
+    return [A11yMediaBehaviors];
   }
 
   //render function
@@ -318,7 +359,7 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
           icon$="[[_getLocal('transcript','icon')]]"
           label$="[[_getLocal('transcript','label')]]"
           on-tap="_onButtonTap"
-          toggle$="[[!hideTranscript]]"
+          toggle$="[[hideTranscript]]"
         >
         </a11y-media-button>
         <a11y-media-button
@@ -499,6 +540,19 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
   setTracks(tracks) {
     this.set("tracks", []);
     this.set("tracks", tracks.slice(0));
+  }
+
+  /**
+   * returns true if player is xs or sm and needs to use compact controls
+   *
+   * @param {string} the size of the player: `xs`,`sm`,`md`,`lg`, or `xl`
+   * @returns {boolean} Should the player use compact controls?
+   */
+  _getCompactControls(responsiveSize) {
+    return (
+      this._testAttribute(responsiveSize, "xs") ||
+      this._testAttribute(responsiveSize, "sm")
+    );
   }
 
   /**

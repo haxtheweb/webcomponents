@@ -7,8 +7,27 @@
       "path": "dropdown-select.js",
       "properties": [
         {
+          "name": "_template",
+          "type": "Object",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 31,
+              "column": 2
+            },
+            "end": {
+              "line": 73,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
           "name": "allowOutsideScroll",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "Set to true in order to prevent scroll from being constrained\nto the dropdown when it opens.",
           "privacy": "public",
           "sourceRange": {
@@ -22,15 +41,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           },
           "defaultValue": "false"
         },
         {
           "name": "alwaysFloatLabel",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "Set to true to always float the label.",
           "privacy": "public",
           "sourceRange": {
@@ -44,15 +61,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           },
           "defaultValue": "false"
         },
         {
           "name": "dynamicAlign",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "If true, the `horizontalAlign` and `verticalAlign` properties will\nbe considered preferences instead of strict requirements when\npositioning the dropdown and may be changed if doing so reduces\nthe area of the dropdown falling outside of `fitInto`.",
           "privacy": "public",
           "sourceRange": {
@@ -66,14 +81,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "errorMessage",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "The error message to display when invalid.",
           "privacy": "public",
           "sourceRange": {
@@ -87,14 +100,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "horizontalAlign",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "The orientation against which to align the menu dropdown\nhorizontally relative to the dropdown trigger.",
           "privacy": "public",
           "sourceRange": {
@@ -108,15 +119,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"right\""
         },
         {
           "name": "label",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "The label of the select menu",
           "privacy": "public",
           "sourceRange": {
@@ -130,15 +139,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"Select an option.\""
         },
         {
           "name": "noAnimations",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "Set to true to disable animations when opening and closing the\ndropdown.",
           "privacy": "public",
           "sourceRange": {
@@ -152,15 +159,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           },
           "defaultValue": "false"
         },
         {
           "name": "noLabelFloat",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "Set to true to disable the floating label.",
           "privacy": "public",
           "sourceRange": {
@@ -174,15 +179,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           },
           "defaultValue": "false"
         },
         {
           "name": "opened",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "True if the dropdown is open. Otherwise, false.",
           "privacy": "public",
           "sourceRange": {
@@ -196,15 +199,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           },
           "defaultValue": "false"
         },
         {
           "name": "placeholder",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "The placeholder for the dropdown.",
           "privacy": "public",
           "sourceRange": {
@@ -218,14 +219,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "restoreFocusOnClose",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "Whether focus should be restored to the dropdown when the menu closes.",
           "privacy": "public",
           "sourceRange": {
@@ -239,15 +238,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           },
           "defaultValue": "true"
         },
         {
           "name": "selectedItem",
-          "type": "Object | null | undefined",
+          "type": "Object",
           "description": "The last selected item.",
           "privacy": "public",
           "sourceRange": {
@@ -261,14 +258,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "selectedItemIndex",
-          "type": "number | null | undefined",
+          "type": "number",
           "description": "The index of the selected item",
           "privacy": "public",
           "sourceRange": {
@@ -282,15 +277,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Number"
-            }
+            "polymer": {}
           },
           "defaultValue": "null"
         },
         {
           "name": "selectedItemLabel",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "The label of the selected item",
           "privacy": "public",
           "sourceRange": {
@@ -304,15 +297,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "null"
         },
         {
           "name": "value",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "The default value",
           "privacy": "public",
           "sourceRange": {
@@ -328,15 +319,14 @@
           "metadata": {
             "polymer": {
               "notify": true,
-              "observer": "\"_valueChanged\"",
-              "attributeType": "String"
+              "observer": "\"_valueChanged\""
             }
           },
           "defaultValue": "null"
         },
         {
           "name": "verticalAlign",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "The orientation against which to align the menu dropdown\nvertically relative to the dropdown trigger.",
           "privacy": "public",
           "sourceRange": {
@@ -350,15 +340,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"top\""
         },
         {
           "name": "verticalOffset",
-          "type": "number | null | undefined",
+          "type": "number",
           "description": "Overrides the vertical offset computed in\n_computeMenuVerticalOffset.",
           "privacy": "public",
           "sourceRange": {
@@ -372,9 +360,7 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Number"
-            }
+            "polymer": {}
           }
         }
       ],
@@ -398,10 +384,7 @@
             {
               "name": "e"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_onOpen",
@@ -422,10 +405,7 @@
             {
               "name": "e"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_onClose",
@@ -446,10 +426,7 @@
             {
               "name": "e"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_setSelectedValues",
@@ -466,10 +443,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "attached",
@@ -486,10 +460,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "_valueChanged",
@@ -513,10 +484,7 @@
             {
               "name": "oldValue"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         }
       ],
       "staticMethods": [],
@@ -550,7 +518,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "always-float-label",
@@ -566,7 +534,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "dynamic-align",
@@ -582,7 +550,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "error-message",
@@ -598,7 +566,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "horizontal-align",
@@ -614,7 +582,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "label",
@@ -630,7 +598,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "no-animations",
@@ -646,7 +614,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "no-label-float",
@@ -662,7 +630,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "opened",
@@ -678,7 +646,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "placeholder",
@@ -694,7 +662,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "restore-focus-on-close",
@@ -710,7 +678,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "selected-item",
@@ -726,7 +694,7 @@
             }
           },
           "metadata": {},
-          "type": "Object | null | undefined"
+          "type": "Object"
         },
         {
           "name": "selected-item-index",
@@ -742,7 +710,7 @@
             }
           },
           "metadata": {},
-          "type": "number | null | undefined"
+          "type": "number"
         },
         {
           "name": "selected-item-label",
@@ -758,7 +726,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "value",
@@ -774,7 +742,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "vertical-align",
@@ -790,7 +758,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "vertical-offset",
@@ -806,7 +774,7 @@
             }
           },
           "metadata": {},
-          "type": "number | null | undefined"
+          "type": "number"
         }
       ],
       "events": [

@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "",
+      "description": "`chartist-render`\nUses the chartist library to render a chart.",
       "summary": "",
       "path": "chartist-render.js",
       "properties": [
@@ -13,12 +13,12 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 33,
-              "column": 4
+              "line": 39,
+              "column": 6
             },
             "end": {
-              "line": 36,
-              "column": 5
+              "line": 42,
+              "column": 7
             }
           },
           "metadata": {
@@ -35,12 +35,12 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 40,
-              "column": 4
+              "line": 46,
+              "column": 6
             },
             "end": {
-              "line": 43,
-              "column": 5
+              "line": 49,
+              "column": 7
             }
           },
           "metadata": {
@@ -53,16 +53,16 @@
         {
           "name": "scale",
           "type": "string | null | undefined",
-          "description": "The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)",
+          "description": "The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```\nContainer class\tRatio\n.ct-square          1\n.ct-minor-second\t  15:16\n.ct-major-second\t  8:9\n.ct-minor-third\t    5:6\n.ct-major-third\t    4:5\n.ct-perfect-fourth\t3:4\n.ct-perfect-fifth\t  2:3\n.ct-minor-sixth\t    5:8\n.ct-golden-section\t1:1.618\n.ct-major-sixth\t    3:5\n.ct-minor-seventh\t  9:16\n.ct-major-seventh\t  8:15\n.ct-octave\t        1:2\n.ct-major-tenth\t    2:5\n.ct-major-eleventh\t3:8\n.ct-major-twelfth\t  1:3\n.ct-double-octave\t  1:4```",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 47,
-              "column": 4
+              "line": 71,
+              "column": 6
             },
             "end": {
-              "line": 50,
-              "column": 5
+              "line": 74,
+              "column": 7
             }
           },
           "metadata": {
@@ -79,12 +79,12 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 54,
-              "column": 4
+              "line": 78,
+              "column": 6
             },
             "end": {
-              "line": 58,
-              "column": 5
+              "line": 82,
+              "column": 7
             }
           },
           "metadata": {
@@ -102,12 +102,12 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 62,
-              "column": 4
+              "line": 86,
+              "column": 6
             },
             "end": {
-              "line": 66,
-              "column": 5
+              "line": 90,
+              "column": 7
             }
           },
           "metadata": {
@@ -125,12 +125,12 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 70,
-              "column": 4
+              "line": 94,
+              "column": 6
             },
             "end": {
-              "line": 74,
-              "column": 5
+              "line": 98,
+              "column": 7
             }
           },
           "metadata": {
@@ -148,12 +148,12 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 78,
-              "column": 4
+              "line": 102,
+              "column": 6
             },
             "end": {
-              "line": 82,
-              "column": 5
+              "line": 106,
+              "column": 7
             }
           },
           "metadata": {
@@ -171,12 +171,12 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 86,
-              "column": 4
+              "line": 110,
+              "column": 6
             },
             "end": {
-              "line": 90,
-              "column": 5
+              "line": 114,
+              "column": 7
             }
           },
           "metadata": {
@@ -194,12 +194,12 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 94,
-              "column": 4
+              "line": 118,
+              "column": 6
             },
             "end": {
-              "line": 98,
-              "column": 5
+              "line": 122,
+              "column": 7
             }
           },
           "metadata": {
@@ -213,16 +213,36 @@
       ],
       "methods": [
         {
-          "name": "created",
-          "description": "created life cycle",
-          "privacy": "protected",
+          "name": "connectedCallback",
+          "description": "life cycle, element is afixed to the DOM",
+          "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 103,
+              "line": 137,
               "column": 2
             },
             "end": {
-              "line": 113,
+              "line": 149,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "ready",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 151,
+              "column": 2
+            },
+            "end": {
+              "line": 155,
               "column": 3
             }
           },
@@ -234,35 +254,15 @@
         },
         {
           "name": "_chartistLoaded",
-          "description": "",
+          "description": "determines if char is ready",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 114,
+              "line": 160,
               "column": 2
             },
             "end": {
-              "line": 119,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "attached",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 120,
-              "column": 2
-            },
-            "end": {
-              "line": 125,
+              "line": 163,
               "column": 3
             }
           },
@@ -278,11 +278,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 129,
+              "line": 167,
               "column": 2
             },
             "end": {
-              "line": 132,
+              "line": 170,
               "column": 3
             }
           },
@@ -298,11 +298,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 137,
+              "line": 175,
               "column": 2
             },
             "end": {
-              "line": 144,
+              "line": 185,
               "column": 3
             }
           },
@@ -318,11 +318,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 149,
+              "line": 189,
               "column": 2
             },
             "end": {
-              "line": 188,
+              "line": 249,
               "column": 3
             }
           },
@@ -335,11 +335,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 193,
+              "line": 254,
               "column": 2
             },
             "end": {
-              "line": 204,
+              "line": 265,
               "column": 3
             }
           },
@@ -359,11 +359,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 209,
+              "line": 270,
               "column": 2
             },
             "end": {
-              "line": 230,
+              "line": 291,
               "column": 3
             }
           },
@@ -380,11 +380,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 235,
+              "line": 296,
               "column": 2
             },
             "end": {
-              "line": 241,
+              "line": 302,
               "column": 3
             }
           },
@@ -410,11 +410,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 246,
+              "line": 307,
               "column": 2
             },
             "end": {
-              "line": 249,
+              "line": 310,
               "column": 3
             }
           },
@@ -427,20 +427,25 @@
         }
       ],
       "staticMethods": [],
-      "demos": [],
+      "demos": [
+        {
+          "url": "demo/index.html",
+          "description": ""
+        }
+      ],
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 13,
-          "column": 29
+          "line": 20,
+          "column": 0
         },
         "end": {
-          "line": 250,
+          "line": 311,
           "column": 1
         }
       },
       "privacy": "public",
-      "superclass": "HTMLElement",
+      "superclass": "PolymerElement",
       "name": "ChartistRender",
       "attributes": [
         {
@@ -448,12 +453,12 @@
           "description": "The unique identifier of the chart.",
           "sourceRange": {
             "start": {
-              "line": 33,
-              "column": 4
+              "line": 39,
+              "column": 6
             },
             "end": {
-              "line": 36,
-              "column": 5
+              "line": 42,
+              "column": 7
             }
           },
           "metadata": {},
@@ -464,12 +469,12 @@
           "description": "The type of chart:bar, line, or pie",
           "sourceRange": {
             "start": {
-              "line": 40,
-              "column": 4
+              "line": 46,
+              "column": 6
             },
             "end": {
-              "line": 43,
-              "column": 5
+              "line": 49,
+              "column": 7
             }
           },
           "metadata": {},
@@ -477,15 +482,15 @@
         },
         {
           "name": "scale",
-          "description": "The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)",
+          "description": "The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```\nContainer class\tRatio\n.ct-square          1\n.ct-minor-second\t  15:16\n.ct-major-second\t  8:9\n.ct-minor-third\t    5:6\n.ct-major-third\t    4:5\n.ct-perfect-fourth\t3:4\n.ct-perfect-fifth\t  2:3\n.ct-minor-sixth\t    5:8\n.ct-golden-section\t1:1.618\n.ct-major-sixth\t    3:5\n.ct-minor-seventh\t  9:16\n.ct-major-seventh\t  8:15\n.ct-octave\t        1:2\n.ct-major-tenth\t    2:5\n.ct-major-eleventh\t3:8\n.ct-major-twelfth\t  1:3\n.ct-double-octave\t  1:4```",
           "sourceRange": {
             "start": {
-              "line": 47,
-              "column": 4
+              "line": 71,
+              "column": 6
             },
             "end": {
-              "line": 50,
-              "column": 5
+              "line": 74,
+              "column": 7
             }
           },
           "metadata": {},
@@ -496,12 +501,12 @@
           "description": "The chart title used for accessibility.",
           "sourceRange": {
             "start": {
-              "line": 54,
-              "column": 4
+              "line": 78,
+              "column": 6
             },
             "end": {
-              "line": 58,
-              "column": 5
+              "line": 82,
+              "column": 7
             }
           },
           "metadata": {},
@@ -512,12 +517,12 @@
           "description": "The chart description used for accessibility.",
           "sourceRange": {
             "start": {
-              "line": 62,
-              "column": 4
+              "line": 86,
+              "column": 6
             },
             "end": {
-              "line": 66,
-              "column": 5
+              "line": 90,
+              "column": 7
             }
           },
           "metadata": {},
@@ -528,12 +533,12 @@
           "description": "The chart data.",
           "sourceRange": {
             "start": {
-              "line": 70,
-              "column": 4
+              "line": 94,
+              "column": 6
             },
             "end": {
-              "line": 74,
-              "column": 5
+              "line": 98,
+              "column": 7
             }
           },
           "metadata": {},
@@ -544,12 +549,12 @@
           "description": "The options available at  https://gionkunz.github.io/chartist-js/api-documentation.html.",
           "sourceRange": {
             "start": {
-              "line": 78,
-              "column": 4
+              "line": 102,
+              "column": 6
             },
             "end": {
-              "line": 82,
-              "column": 5
+              "line": 106,
+              "column": 7
             }
           },
           "metadata": {},
@@ -560,12 +565,12 @@
           "description": "The responsive options. (See https://gionkunz.github.io/chartist-js/api-documentation.html.)",
           "sourceRange": {
             "start": {
-              "line": 86,
-              "column": 4
+              "line": 110,
+              "column": 6
             },
             "end": {
-              "line": 90,
-              "column": 5
+              "line": 114,
+              "column": 7
             }
           },
           "metadata": {},
@@ -576,12 +581,12 @@
           "description": "The show data in table form as well? Default is false.",
           "sourceRange": {
             "start": {
-              "line": 94,
-              "column": 4
+              "line": 118,
+              "column": 6
             },
             "end": {
-              "line": 98,
-              "column": 5
+              "line": 122,
+              "column": 7
             }
           },
           "metadata": {},
@@ -593,8 +598,7 @@
         "cssVariables": [],
         "selectors": []
       },
-      "slots": [],
-      "tagname": "chartist-render"
+      "slots": []
     }
   ]
 }

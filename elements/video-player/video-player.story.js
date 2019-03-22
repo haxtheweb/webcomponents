@@ -1,57 +1,100 @@
-import { storiesOf } from "@storybook/polymer";
-import * as storybookBridge from "@storybook/addon-knobs/polymer";
-import { VideoPlayer } from "./video-player.js";
 
-// need to account for polymer goofiness when webpack rolls this up
-var template = require("raw-loader!./demo/index.html");
-let pattern = /<body[^>]*>((.|[\n\r])*)<\/body>/im;
-var array_matches = pattern.exec(template);
-// now template is just the body contents
-template = array_matches[1];
-const stories = storiesOf("Player", module);
-stories.addDecorator(storybookBridge.withKnobs);
-stories.add("video-player", () => {
-  var binding = {};
-  // start of tag for demo
-  let elementDemo = `<video-player`;
-  // mix in properties defined on the class
-  for (var key in VideoPlayer.properties) {
-    // skip prototype
-    if (!VideoPlayer.properties.hasOwnProperty(key)) continue;
-    // convert typed props
-    if (VideoPlayer.properties[key].type.name) {
-      let method = "text";
-      switch (VideoPlayer.properties[key].type.name) {
-        case "Boolean":
-        case "Number":
-        case "Object":
-        case "Array":
-        case "Date":
-          method = VideoPlayer.properties[key].type.name.toLowerCase();
-          break;
-        default:
-          method = "text";
-          break;
-      }
-      binding[key] = storybookBridge[method](
-        key,
-        VideoPlayer.properties[key].value
-      );
-      // ensure ke-bab case
-      let kebab = key.replace(/[A-Z\u00C0-\u00D6\u00D8-\u00DE]/g, function(
-        match
-      ) {
-        return "-" + match.toLowerCase();
-      });
-      elementDemo += ` ${kebab}="${binding[key]}"`;
-    }
-  }
-  const innerText = storybookBridge.text("Inner contents", "Player");
-  elementDemo += `> ${innerText}</video-player>`;
-  return `
-  <h1>Live demo</h1>
-  ${elementDemo}
-  <h1>Additional examples</h1>
-  ${template}
-  `;
-});
+import { VideoPlayer } from "./video-player.js";
+import { A11yMediaPlayer } from "@lrnwebcomponents/a11y-media-player/a11y-media-player.js";
+import { A11yMediaBehaviors } from "@lrnwebcomponents/a11y-media-player/lib/a11y-media-behaviors.js";
+import * as enVtt from "./demo/samples/sintel-en.vtt";
+import * as deVtt from "./demo/samples/sintel-de.vtt";
+import * as esVtt from "./demo/samples/sintel-es.vtt";
+import * as buellerVtt from "./demo/samples/bueller.vtt";
+import * as buellerMp3 from "./demo/samples/bueller.mp3";
+import * as stclairVtt from "./demo/samples/stclair.vtt";
+import stclairJpg from "./demo/samples/stclair.jpg";
+import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+
+window.StorybookUtilities.requestAvailability();
+
+/**
+ * add the live demo, only since the pattern itself is in a11y-media-player
+ */
+//combine all of the inherited properties into one object
+let getVideoKnobs = () => {
+  let allKnobs = Object.assign(
+    window.StorybookUtilities.instance.getSimpleColors(), 
+    A11yMediaPlayer.properties, A11yMediaBehaviors.properties
+  );
+  allKnobs.crossorigin = {value: "anonymous", "type": "Select", "options": ["anonymous","use-credentials",""]};
+  //remove properties we don't want to expose
+  [
+    'audioOnly',
+    'flexLayout',
+    'manifest',
+    'media',
+    'muteUnmute',
+    'playing',
+    'playPause',
+    'responsiveSize',
+    'seekDisabled',
+    'selectedTrack',
+    'selectedTrackID',
+    'status',
+    'target',
+    'search',
+    'youtubeId',
+    'youTube'
+  ].forEach(prop => {
+    delete allKnobs[prop];
+  });
+  return allKnobs;
+},
+  audioKnobs = getVideoKnobs(),
+  videoKnobs = getVideoKnobs(), 
+  ytKnobs = getVideoKnobs();
+videoKnobs.sources.value = [{
+  "src": "https://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4", 
+  "type": "video/mp4"
+}];
+videoKnobs.tracks.value = [
+  {"src": enVtt,  "srclang": "en", "label": "English"},
+  {"src": esVtt,  "srclang": "es", "label": "Español"},
+  {"src": deVtt,  "srclang": "de", "label": "Deutsch"}
+];
+videoKnobs.source = {"name": "source","value": null, "type": "String" } ;
+audioKnobs.sources.value = [{
+  "src": buellerMp3, 
+  "type": "audio/mp3"
+}];
+audioKnobs.tracks.value = [
+  {"src": buellerVtt,  "srclang": "en", "label": "English"},
+];
+ytKnobs.tracks.value = [
+  {"src": buellerVtt,  "srclang": "en", "label": "English"}
+] ;
+ytKnobs.source = {"name": "source","value": "https://www.youtube.com/watch?v=NP0mQeLWCCo", "type": "String" };
+
+const VideoPlayerStory = {
+  "of": "video-player",
+  "name": "video-player",
+  "props": videoKnobs, 
+  "slots": {}, 
+  "attr": ``,
+  "slotted": ``
+};
+const VideoPlayerAudioStory = {
+  "of": "video-player",
+  "name": "video-player (Audio)",
+  "props": audioKnobs, 
+  "slots": {}, 
+  "attr": ` audio-only="audio-only"`,
+  "slotted": ``
+};
+const VideoPlayerYTStory = {
+  "of": "video-player",
+  "name": "video-player (YouTube)",
+  "props": ytKnobs, 
+  "slots": {}, 
+  "attr": ``,
+  "slotted": ``
+};
+window.StorybookUtilities.instance.addLiveDemo(VideoPlayerStory);
+window.StorybookUtilities.instance.addLiveDemo(VideoPlayerAudioStory);
+window.StorybookUtilities.instance.addLiveDemo(VideoPlayerYTStory);

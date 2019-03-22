@@ -42,8 +42,27 @@
       "path": "select-menu.js",
       "properties": [
         {
+          "name": "_template",
+          "type": "Object",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 14,
+              "column": 2
+            },
+            "end": {
+              "line": 42,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
           "name": "label",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "The label of the select menu",
           "privacy": "public",
           "sourceRange": {
@@ -57,15 +76,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"Select an option.\""
         },
         {
           "name": "value",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "The default value",
           "privacy": "public",
           "sourceRange": {
@@ -79,15 +96,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "null"
         },
         {
           "name": "selectedIndex",
-          "type": "number | null | undefined",
+          "type": "number",
           "description": "The index of the selected item",
           "privacy": "public",
           "sourceRange": {
@@ -103,8 +118,7 @@
           "metadata": {
             "polymer": {
               "notify": true,
-              "readOnly": true,
-              "attributeType": "Number"
+              "readOnly": true
             }
           }
         }
@@ -129,10 +143,7 @@
             {
               "name": "e"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_getSelectedIndex",
@@ -183,7 +194,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "value",
@@ -199,7 +210,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "selected-index",
@@ -215,7 +226,7 @@
             }
           },
           "metadata": {},
-          "type": "number | null | undefined"
+          "type": "number"
         }
       ],
       "events": [

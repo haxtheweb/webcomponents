@@ -320,7 +320,7 @@
       "properties": [
         {
           "name": "latitude",
-          "type": "number | null | undefined",
+          "type": "number",
           "description": "Latitude of the desired location, e.g. 51.5287718",
           "privacy": "public",
           "sourceRange": {
@@ -334,14 +334,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Number"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "longitude",
-          "type": "number | null | undefined",
+          "type": "number",
           "description": "Longitude of the desired location, e.g. -0.2416798",
           "privacy": "public",
           "sourceRange": {
@@ -355,9 +353,7 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Number"
-            }
+            "polymer": {}
           }
         }
       ],
@@ -414,7 +410,7 @@
             }
           },
           "metadata": {},
-          "type": "number | null | undefined"
+          "type": "number"
         },
         {
           "name": "longitude",
@@ -430,7 +426,7 @@
             }
           },
           "metadata": {},
-          "type": "number | null | undefined"
+          "type": "number"
         }
       ],
       "events": [],
@@ -500,10 +496,7 @@
                 {
                   "name": "e"
                 }
-              ],
-              "return": {
-                "type": "void"
-              }
+              ]
             },
             {
               "name": "openInBlankTab",
@@ -524,10 +517,7 @@
                 {
                   "name": "e"
                 }
-              ],
-              "return": {
-                "type": "void"
-              }
+              ]
             },
             {
               "name": "_getContent",

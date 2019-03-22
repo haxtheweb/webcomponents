@@ -8,7 +8,7 @@
       "properties": [
         {
           "name": "selected",
-          "type": "number | null | undefined",
+          "type": "number",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -23,15 +23,14 @@
           },
           "metadata": {
             "polymer": {
-              "notify": true,
-              "attributeType": "Number"
+              "notify": true
             }
           },
           "defaultValue": "0"
         },
         {
           "name": "progressBar",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "True if a progress bar is shown instead of dots.\n\nUse a progress bar when there are many steps, or if there are\nsteps that need to be inserted during the process (based o\nresponses to earlier steps).",
           "privacy": "public",
           "sourceRange": {
@@ -45,15 +44,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           },
           "defaultValue": "false"
         },
         {
           "name": "backLabel",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "Text for the back button. Use this property to localize the element.",
           "privacy": "public",
           "sourceRange": {
@@ -67,15 +64,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"Back\""
         },
         {
           "name": "nextLabel",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "Text for the back button. Use this property to localize the element.",
           "privacy": "public",
           "sourceRange": {
@@ -89,15 +84,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"Next\""
         },
         {
           "name": "disablePrevious",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "Boolean for disabling the previous button.",
           "privacy": "public",
           "sourceRange": {
@@ -111,15 +104,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           },
           "defaultValue": "false"
         },
         {
           "name": "disableNext",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "Boolean for disabling the next button.",
           "privacy": "public",
           "sourceRange": {
@@ -133,15 +124,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           },
           "defaultValue": "false"
         },
         {
           "name": "noButtons",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "Hide back/next buttons",
           "privacy": "public",
           "sourceRange": {
@@ -155,9 +144,7 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           },
           "defaultValue": "false"
         }
@@ -178,10 +165,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "_tapNext",
@@ -198,10 +182,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "_getDisablePrevious",
@@ -297,10 +278,7 @@
             {
               "name": "e"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         }
       ],
       "staticMethods": [],
@@ -334,7 +312,7 @@
             }
           },
           "metadata": {},
-          "type": "number | null | undefined"
+          "type": "number"
         },
         {
           "name": "progress-bar",
@@ -350,7 +328,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "back-label",
@@ -366,7 +344,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "next-label",
@@ -382,7 +360,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "disable-previous",
@@ -398,7 +376,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "disable-next",
@@ -414,7 +392,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "no-buttons",
@@ -430,7 +408,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         }
       ],
       "events": [
@@ -485,7 +463,7 @@
       "properties": [
         {
           "name": "selectedValues",
-          "type": "Array | null | undefined",
+          "type": "Array",
           "description": "Indeces of the steps already selected",
           "privacy": "public",
           "sourceRange": {
@@ -500,15 +478,14 @@
           },
           "metadata": {
             "polymer": {
-              "notify": true,
-              "attributeType": "Array"
+              "notify": true
             }
           },
           "defaultValue": "[]"
         },
         {
           "name": "_selected",
-          "type": "number | null | undefined",
+          "type": "number",
           "description": "Currently selected step",
           "privacy": "protected",
           "sourceRange": {
@@ -522,9 +499,7 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Number"
-            }
+            "polymer": {}
           },
           "defaultValue": "-1"
         }
@@ -545,10 +520,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "next",
@@ -565,10 +537,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "clear",
@@ -585,10 +554,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "_onItemsChanged",
@@ -609,10 +575,7 @@
             {
               "name": "e"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         }
       ],
       "staticMethods": [],
@@ -645,7 +608,7 @@
             }
           },
           "metadata": {},
-          "type": "Array | null | undefined"
+          "type": "Array"
         }
       ],
       "events": [
@@ -670,7 +633,7 @@
       "properties": [
         {
           "name": "icon",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -684,9 +647,7 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         }
       ],
@@ -721,7 +682,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         }
       ],
       "events": [],

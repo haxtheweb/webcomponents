@@ -7,57 +7,27 @@
       "path": "aframe-player.js",
       "properties": [
         {
-          "name": "schemaResourceID",
-          "type": "string | null | undefined",
-          "description": "Unique Resource ID, generated when schemaMap processes.",
-          "privacy": "public",
+          "name": "_template",
+          "type": "Object",
+          "description": "",
+          "privacy": "protected",
           "sourceRange": {
-            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
             "start": {
-              "line": 26,
-              "column": 4
+              "line": 15,
+              "column": 2
             },
             "end": {
-              "line": 29,
-              "column": 5
+              "line": 42,
+              "column": 3
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          },
-          "defaultValue": "\"\"",
-          "inheritedFrom": "SchemaBehaviors.Schema"
-        },
-        {
-          "name": "schemaMap",
-          "type": "Object | null | undefined",
-          "description": "Schema Map for this element.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
-            "start": {
-              "line": 33,
-              "column": 4
-            },
-            "end": {
-              "line": 46,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "observer": "\"_schemaMapChanged\"",
-              "attributeType": "Object"
-            }
-          },
-          "defaultValue": "{\"prefix\":{\"oer\":\"http://oerschema.org/\",\"schema\":\"http://schema.org/\",\"dc\":\"http://purl.org/dc/terms/\",\"foaf\":\"http://xmlns.com/foaf/0.1/\",\"cc\":\"http://creativecommons.org/ns#\",\"bib\":\"http://bib.schema.org\"}}",
-          "inheritedFrom": "SchemaBehaviors.Schema"
+            "polymer": {}
+          }
         },
         {
           "name": "source",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "Source to reference for the 3D object",
           "privacy": "public",
           "sourceRange": {
@@ -71,15 +41,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"\""
         },
         {
           "name": "height",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "height of the element",
           "privacy": "public",
           "sourceRange": {
@@ -93,15 +61,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"480px\""
         },
         {
           "name": "width",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "width of the element",
           "privacy": "public",
           "sourceRange": {
@@ -115,15 +81,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"640px\""
         },
         {
           "name": "skyColor",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "Color of the sky / background.",
           "privacy": "public",
           "sourceRange": {
@@ -137,15 +101,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"#DCDCDC\""
         },
         {
           "name": "ar",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "If this is for augmented reality or not.",
           "privacy": "public",
           "sourceRange": {
@@ -159,15 +121,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           },
           "defaultValue": "false"
         },
         {
           "name": "x",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "x position for the AR element.",
           "privacy": "public",
           "sourceRange": {
@@ -181,15 +141,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"0\""
         },
         {
           "name": "y",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "y position for the AR element.",
           "privacy": "public",
           "sourceRange": {
@@ -203,15 +161,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"0\""
         },
         {
           "name": "z",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "z position for the AR element.",
           "privacy": "public",
           "sourceRange": {
@@ -225,15 +181,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"0\""
         },
         {
           "name": "position",
-          "type": "Object | null | undefined",
+          "type": "Object",
           "description": "Generate a position object when coordinates change.",
           "privacy": "public",
           "sourceRange": {
@@ -249,61 +203,12 @@
           "metadata": {
             "polymer": {
               "observer": "\"_positionChanged\"",
-              "readOnly": true,
-              "attributeType": "Object"
+              "readOnly": true
             }
           }
         }
       ],
       "methods": [
-        {
-          "name": "generateResourceID",
-          "description": "Generate a uinque ID",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
-            "start": {
-              "line": 51,
-              "column": 2
-            },
-            "end": {
-              "line": 68,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "inheritedFrom": "SchemaBehaviors.Schema"
-        },
-        {
-          "name": "_schemaMapChanged",
-          "description": "Notice the schema map has changed, reprocess attributes.",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
-            "start": {
-              "line": 72,
-              "column": 2
-            },
-            "end": {
-              "line": 94,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "newValue"
-            },
-            {
-              "name": "oldValue"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "SchemaBehaviors.Schema"
-        },
         {
           "name": "_attachDom",
           "description": "highjack shadowDom",
@@ -323,10 +228,7 @@
             {
               "name": "dom"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "attached",
@@ -343,10 +245,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "_computePosition",
@@ -400,10 +299,7 @@
             {
               "name": "position"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         }
       ],
       "staticMethods": [],
@@ -424,42 +320,6 @@
       "name": "AframePlayer",
       "attributes": [
         {
-          "name": "schema-resource-i-d",
-          "description": "Unique Resource ID, generated when schemaMap processes.",
-          "sourceRange": {
-            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
-            "start": {
-              "line": 26,
-              "column": 4
-            },
-            "end": {
-              "line": 29,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined",
-          "inheritedFrom": "SchemaBehaviors.Schema"
-        },
-        {
-          "name": "schema-map",
-          "description": "Schema Map for this element.",
-          "sourceRange": {
-            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
-            "start": {
-              "line": 33,
-              "column": 4
-            },
-            "end": {
-              "line": 46,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "Object | null | undefined",
-          "inheritedFrom": "SchemaBehaviors.Schema"
-        },
-        {
           "name": "source",
           "description": "Source to reference for the 3D object",
           "sourceRange": {
@@ -473,7 +333,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "height",
@@ -489,7 +349,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "width",
@@ -505,7 +365,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "sky-color",
@@ -521,7 +381,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "ar",
@@ -537,7 +397,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "x",
@@ -553,7 +413,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "y",
@@ -569,7 +429,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "z",
@@ -585,7 +445,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "position",
@@ -601,7 +461,7 @@
             }
           },
           "metadata": {},
-          "type": "Object | null | undefined"
+          "type": "Object"
         }
       ],
       "events": [],
