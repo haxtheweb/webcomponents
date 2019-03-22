@@ -121,14 +121,23 @@ class VideoPlayer extends PolymerElement {
   /**
    * Gets cleaned track list
    */
-  _getTrackData(tracks) {
-    return typeof tracks === "string" ? JSON.parse(tracks) : tracks;
+  _getTrackData(track, tracks) {
+    let temp = typeof tracks === "string" ? JSON.parse(tracks) : tracks;
+    if (track !== undefined && track !== null)
+      temp.push({
+        src: track,
+        srclang: this.lang,
+        label: this.lang === "en" ? "English" : this.lang,
+        kind: "subtitles"
+      });
+    console.log("_getTrackData", track, tracks, temp);
+    return temp;
   }
 
   /**
    * Gets source and added to sources list
    */
-  _getSourceData(source, sources, tracks) {
+  _getSourceData(source, sources, trackData) {
     if (typeof sources === "string") sources = JSON.parse(sources);
     let root = this,
       temp = sources.slice();
@@ -147,7 +156,8 @@ class VideoPlayer extends PolymerElement {
       }
     }
     this.__standAlone =
-      tracks === undefined || tracks === null || tracks.length < 1;
+      trackData === undefined || trackData === null || trackData.length < 1;
+    console.log("_getSourceData", this.__standAlone, trackData);
     return temp;
   }
 

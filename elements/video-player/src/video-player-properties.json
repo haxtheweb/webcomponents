@@ -159,6 +159,13 @@
     "reflectToAttribute": true
   },
   /**
+   * The url for a single subtitle track
+   */
+  "track": {
+    "type": "String",
+    "value": null
+  },
+  /**
    * Array of text tracks
    * [{
    *  "src": "path/to/track.vtt",
@@ -182,7 +189,7 @@
    */
   "trackData": {
     "type": "Array",
-    "computed": "_getTrackData(tracks)"
+    "computed": "_getTrackData(track,tracks)"
   },
   /**
    * Source of optional thumbnail image
