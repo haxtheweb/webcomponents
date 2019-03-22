@@ -69,7 +69,7 @@ const replacements = [
   {"find": "\.\/images\/thumbnails\/large\/fish.jpg", "replace": fishLarge }
 ];
 const LrndesignGalleryPattern = {
-  "of": "Pattern Library/Molecules/Layout", 
+  "of": "Pattern Library/Molecules/Media", 
   "name": 'Carousel',
   "file": require("raw-loader!./demo/index.html"),
   "replacements": replacements
@@ -79,7 +79,7 @@ window.StorybookUtilities.instance.addPattern(LrndesignGalleryPattern);
  * add to the pattern library
  */
 const LrndesignGalleryGridPattern = {
-  "of": "Pattern Library/Molecules/Layout", 
+  "of": "Pattern Library/Molecules/Media", 
   "name": 'Thumbnail Grid',
   "file": require("raw-loader!./demo/grid.html"),
   "replacements": replacements

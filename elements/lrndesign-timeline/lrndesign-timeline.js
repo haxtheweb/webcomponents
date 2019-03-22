@@ -183,13 +183,13 @@ class LrndesignTimeline extends SimpleColors {
             padding: 0 20px;
             line-height: 50px;
             height: 50px;
-            color: var(--lrndesign-timeline-color);
-            background-color: var(--lrndesign-timeline-background);
-            transition: background-color 0.3s;
-          }
-          :host(:not([timeline-size="xs"])) .event[selected] .heading h2 {
             background-color: var(--lrndesign-timeline-header-accent);
             color: var(--lrndesign-timeline-header);
+            opacity: 0.6;
+            transition: opacity 0.3s;
+          }
+          :host(:not([timeline-size="xs"])) .event[selected] .heading h2 {
+            opacity: 1;
           }
           :host(:not([timeline-size="xs"]))
             .event[has-media]
@@ -269,7 +269,7 @@ class LrndesignTimeline extends SimpleColors {
             <template
               id="repeat"
               is="dom-repeat"
-              items="[[events]]"
+              items="[[__events]]"
               as="event"
               index-as="index"
               restamp
@@ -426,6 +426,14 @@ class LrndesignTimeline extends SimpleColors {
         notify: true
       },
       /**
+       * the updated list of events
+       */
+      __events: {
+        type: "Array",
+        computed: "_updateEvents(events)",
+        notify: true
+      },
+      /**
        * the timline size, calculated by responsive utility
        */
       timelineSize: {
@@ -449,13 +457,6 @@ class LrndesignTimeline extends SimpleColors {
    */
   static get behaviors() {
     return [SimpleColors];
-  }
-
-  /**
-   * observes events array for changes
-   */
-  static get observers() {
-    return ["_updateEvents(events.*)"];
   }
   /**
    * life cycle, element is afixed to the DOM
@@ -532,14 +533,13 @@ class LrndesignTimeline extends SimpleColors {
   }
 
   /**
-   * handles the scroll on the events side
+   * gets updated event data
+   *
+   * @param {array} the raw events array
    */
-  _updateEvents(e) {
-    for (var i in e.base) {
-      for (var j in e.base[i]) {
-        this.notifyPath("events." + i + "." + j);
-      }
-    }
+  _updateEvents(events) {
+    events = typeof events === "String" ? JSON.parse(events) : events;
+    return events;
   }
 
   /**

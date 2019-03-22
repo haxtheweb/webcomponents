@@ -27,6 +27,14 @@
     "notify": true
   },
   /**
+   * the updated list of events
+   */
+  "__events": {
+    "type": "Array",
+    "computed": "_updateEvents(events)",
+    "notify": true
+  },
+  /**
    * the timline size, calculated by responsive utility
    */
   "timelineSize": {
