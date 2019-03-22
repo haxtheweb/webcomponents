@@ -42,8 +42,27 @@
       "path": "watsonlogic-parallax.js",
       "properties": [
         {
+          "name": "_template",
+          "type": "Object",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 11,
+              "column": 2
+            },
+            "end": {
+              "line": 45,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
           "name": "parallaxText",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -57,14 +76,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "parallaxImage",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -79,14 +96,13 @@
           },
           "metadata": {
             "polymer": {
-              "notify": true,
-              "attributeType": "String"
+              "notify": true
             }
           }
         },
         {
           "name": "parallaxImageHeight",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -101,8 +117,7 @@
           },
           "metadata": {
             "polymer": {
-              "notify": true,
-              "attributeType": "String"
+              "notify": true
             }
           }
         }
@@ -123,10 +138,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         }
       ],
       "staticMethods": [],
@@ -160,7 +172,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "parallax-image",
@@ -176,7 +188,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "parallax-image-height",
@@ -192,7 +204,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         }
       ],
       "events": [

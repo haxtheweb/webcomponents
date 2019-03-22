@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { A11yMediaPlayerBehaviors } from "./a11y-media-player-behaviors.js";
+import { A11yMediaBehaviors } from "./a11y-media-behaviors.js";
 
 export { A11yMediaHtml5 };
 /**
@@ -11,17 +11,7 @@ export { A11yMediaHtml5 };
  * `Loads HTML5 audio or video. `
  *
  * @microcopy - language worth noting:
-```<a11y-media-html5 
-    autoplay$="[[autoplay]]"                    // Is player set to autoplay (not recommended for a11y)?
-    cc$="[[cc]]"                                // Are closed captions toggled? 
-    height$="[[height]]"                        // The height of player
-    lang$="[[lang]]"                            // The language of the media
-    loop$="[[loop]]"                            // Is video on a loop?
-    muted$="[[muted]]"                          // Is video muted?
-    playback-rate$="[[playbackRate]]"           // The playback rate of the video
-    volume$="[[volume]]"                        // The initial volume of the video
-    width$="[[width]]">                         // The width of player
-                                                // video source and tracks 
+```<a11y-media-html5>                   
     <source src="/path/to/video.mp4" type="video/mp4">
     <source src="/path/to/video.webm" type="video/webm">
     <track label="English" kind="subtitles" srclang="en" src="path/to/subtitles/en.vtt" default>
@@ -33,7 +23,7 @@ export { A11yMediaHtml5 };
  * @customElement
  * @polymer
  */
-class A11yMediaHtml5 extends A11yMediaPlayerBehaviors {
+class A11yMediaHtml5 extends A11yMediaBehaviors {
   // properties available to the custom element for data binding
   static get properties() {
     return {
@@ -43,6 +33,13 @@ class A11yMediaHtml5 extends A11yMediaPlayerBehaviors {
       controls: {
         type: String,
         value: "video"
+      },
+      /**
+       * crossorigin attribute for <video> and <audio> tags
+       */
+      crossorigin: {
+        type: String,
+        value: null
       },
       /*
        * Is it disabled?
@@ -65,6 +62,14 @@ class A11yMediaHtml5 extends A11yMediaPlayerBehaviors {
         type: String,
         value: null
       },
+      /**
+       * the language of the media (if different from user interface language)
+       */
+      mediaLang: {
+        name: "mediaLang",
+        type: String,
+        value: "en"
+      },
       /*
        * Is it paused?
        */
@@ -82,6 +87,15 @@ class A11yMediaHtml5 extends A11yMediaPlayerBehaviors {
           start: null,
           stop: null
         }
+      },
+      /**
+       * Source of optional thumbnail image
+       */
+      thumbnailSrc: {
+        name: "thumbnailSrc",
+        type: String,
+        value: null,
+        reflectToAttribute: true
       }
     };
   }

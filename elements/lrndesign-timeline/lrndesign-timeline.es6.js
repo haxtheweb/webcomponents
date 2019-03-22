@@ -9,13 +9,13 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
   --lrndesign-timeline-background: #f4f4f4;
   --lrndesign-timeline-background-print: #fff;
   --lrndesign-timeline-border: var(--simple-colors-default-theme-grey-5, #bbb);
-  --lrndesign-timeline-border-print: var(--simple-colors-light-theme-grey-5, #bbb);
+  --lrndesign-timeline-border-print: var(--simple-colors-fixed-theme-grey-5, #bbb);
   --lrndesign-timeline-accent: #000;
   --lrndesign-timeline-accent-background: #fff;
   --lrndesign-timeline-accent-border: var(--simple-colors-default-theme-accent-8, #444);
   --lrndesign-timeline-header: var(--simple-colors-default-theme-accent-1, #fff);
   --lrndesign-timeline-header-accent: var(--simple-colors-default-theme-accent-8, #444);
-  --lrndesign-timeline-accent-print: var(--simple-colors-light-theme-accent-8, #444);
+  --lrndesign-timeline-accent-print: var(--simple-colors-fixed-theme-accent-8, #444);
 }
 :host([dark]){
   --lrndesign-timeline-background: #1b1b1b;

@@ -7,8 +7,27 @@
       "path": "pdf-browser-viewer.js",
       "properties": [
         {
+          "name": "_template",
+          "type": "Object",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 51,
+              "column": 2
+            },
+            "end": {
+              "line": 95,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
           "name": "file",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "The location of the PDF file.",
           "privacy": "public",
           "sourceRange": {
@@ -22,14 +41,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "notSupportedMessage",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "The message when browser doesn't support pdf object",
           "privacy": "public",
           "sourceRange": {
@@ -43,15 +60,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"It appears your Web browser is not configured to display PDF files. No worries, just\""
         },
         {
           "name": "notSupportedLinkMessage",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "The PDF link message when browser doesn't support pdf object",
           "privacy": "public",
           "sourceRange": {
@@ -65,15 +80,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"click here to download the PDF file.\""
         },
         {
           "name": "height",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "The height of the PDF viewer.",
           "privacy": "public",
           "sourceRange": {
@@ -87,15 +100,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"400px\""
         },
         {
           "name": "width",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "The width of the PDF viewer.",
           "privacy": "public",
           "sourceRange": {
@@ -109,15 +120,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"100%\""
         },
         {
           "name": "card",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "PDF viewer as a card with download button.",
           "privacy": "public",
           "sourceRange": {
@@ -131,15 +140,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           },
           "defaultValue": "false"
         },
         {
           "name": "downloadLabel",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "Download button label.",
           "privacy": "public",
           "sourceRange": {
@@ -153,15 +160,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"Download\""
         },
         {
           "name": "elevation",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "The z-depth of the card, from 0-5.",
           "privacy": "public",
           "sourceRange": {
@@ -175,9 +180,7 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"1\""
         }
@@ -198,10 +201,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "_download",
@@ -218,10 +218,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         }
       ],
       "staticMethods": [],
@@ -255,7 +252,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "not-supported-message",
@@ -271,7 +268,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "not-supported-link-message",
@@ -287,7 +284,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "height",
@@ -303,7 +300,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "width",
@@ -319,7 +316,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "card",
@@ -335,7 +332,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "download-label",
@@ -351,7 +348,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "elevation",
@@ -367,7 +364,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         }
       ],
       "events": [],

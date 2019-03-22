@@ -1,7 +1,6 @@
 
   
   <style is="custom-style" include="simple-colors"></style>
-  
   <div class="sr-only">[[mediaCaption]]</div>
   <div id="outerplayer">
     <div id="innerplayer">
@@ -63,15 +62,16 @@
       cc$="[[cc]]"
       disable-seek$="[[disableSeek]]"
       fixed-height$="[[height]]"
+      fullscreen$="[[fullscreen]]"
+      fullscreen-button$="[[fullscreenButton]]"
       has-captions$="[[hasCaptions]]"
       has-transcript$="[[hasTranscript]]"
       hide-transcript$="[[hideTranscript]]"
-      localization$="[[localization]]"
       mute-unmute="[[muteUnmute]]"
       on-controls-change="_onControlsChanged"
       on-print-transcript="_handlePrinting"
+      responsive-size$="[[responsiveSize]]"
       play-pause="[[playPause]]"
-      search-transcript$="[[searchTranscript]]"
       stand-alone$="[[standAlone]]"
       volume="[[__volume]]">
     </a11y-media-controls>
@@ -93,6 +93,8 @@
         disable-print-button$="[[disablePrintButton]]"
         disable-scroll$="[[disableScroll]]"
         disable-search$="[[disableSearch]]"
+        has-transcript$="[[hasTranscript]]"
+        localization$="[[localization]]"
         on-searchbar-added="_handleSearchAdded"
         on-toggle-scroll="_handleTranscriptScrollToggle"
         on-print-transcript="_handlePrinting"
@@ -106,7 +108,8 @@
         disable-seek$="[[disableSeek]]"
         disable-interactive$="[[disableInteractive]]"
         hide-timestamps$="[[hideTimestamps]]"
-        on-cue-seek="_handleCueSeek"
+        media-id$="[[id]]"
+        on-transcript-seek="_handleTranscriptSeek"
         localization$="[[localization]]"
         search="[[search]]"
         selected-transcript$="[[__selectedTrack]]">

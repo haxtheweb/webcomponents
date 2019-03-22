@@ -121,14 +121,23 @@ class VideoPlayer extends PolymerElement {
   /**
    * Gets cleaned track list
    */
-  _getTrackData(tracks) {
-    return typeof tracks === "string" ? JSON.parse(tracks) : tracks;
+  _getTrackData(track, tracks) {
+    let temp = typeof tracks === "string" ? JSON.parse(tracks) : tracks;
+    if (track !== undefined && track !== null)
+      temp.push({
+        src: track,
+        srclang: this.lang,
+        label: this.lang === "en" ? "English" : this.lang,
+        kind: "subtitles"
+      });
+    console.log("_getTrackData", track, tracks, temp);
+    return temp;
   }
 
   /**
    * Gets source and added to sources list
    */
-  _getSourceData(source, sources, tracks) {
+  _getSourceData(source, sources, trackData) {
     if (typeof sources === "string") sources = JSON.parse(sources);
     let root = this,
       temp = sources.slice();
@@ -142,11 +151,13 @@ class VideoPlayer extends PolymerElement {
     if (source !== null) {
       let src = this._computeSRC(source);
       this.sourceType = this._computeSourceType(src);
-      if (this.sourceType !== "youtube")
+      if (this.sourceType !== "youtube") {
         temp.unshift({ src: src, type: this._computeMediaType(src) });
+      }
     }
     this.__standAlone =
-      tracks === undefined || tracks === null || tracks.length;
+      trackData === undefined || trackData === null || trackData.length < 1;
+    console.log("_getSourceData", this.__standAlone, trackData);
     return temp;
   }
 
@@ -154,7 +165,8 @@ class VideoPlayer extends PolymerElement {
    * Compute media type based on source, i.e. 'audio/wav' for '.wav'
    */
   _computeMediaType(source) {
-    let audio = ["aac", "flac", "mp3", "oga", "wav"],
+    let root = this,
+      audio = ["aac", "flac", "mp3", "oga", "wav"],
       video = ["mov", "mp4", "ogv", "webm"],
       type = "",
       findType = function(text, data) {
@@ -164,8 +176,10 @@ class VideoPlayer extends PolymerElement {
             source !== undefined &&
             source !== null &&
             source.toLowerCase().indexOf("." + data[i]) > -1
-          )
+          ) {
+            if (text === "audio") root.audioOnly = true;
             type = text + "/" + data[i];
+          }
         }
       };
     findType("audio", audio);

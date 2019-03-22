@@ -5,159 +5,8 @@
       "description": "",
       "summary": "",
       "path": "lib/app-datepicker-animations.js",
-      "properties": [
-        {
-          "name": "animationTiming",
-          "type": "Object | null | undefined",
-          "description": "Defines the animation timing.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
-            "start": {
-              "line": 23,
-              "column": 4
-            },
-            "end": {
-              "line": 30,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
-          },
-          "defaultValue": "{\"duration\":500,\"easing\":\"cubic-bezier(0.4, 0, 0.2, 1)\",\"fill\":\"both\"}",
-          "inheritedFrom": "NeonAnimationBehavior"
-        },
-        {
-          "name": "isNeonAnimation",
-          "type": "boolean",
-          "description": "Can be used to determine that elements implement this behavior.\n   ",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
-            "start": {
-              "line": 37,
-              "column": 2
-            },
-            "end": {
-              "line": 37,
-              "column": 23
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          },
-          "inheritedFrom": "NeonAnimationBehavior"
-        }
-      ],
+      "properties": [],
       "methods": [
-        {
-          "name": "created",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
-            "start": {
-              "line": 45,
-              "column": 2
-            },
-            "end": {
-              "line": 51,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "NeonAnimationBehavior"
-        },
-        {
-          "name": "timingFromConfig",
-          "description": "Returns the animation timing by mixing in properties from `config` to the\ndefaults defined by the animation.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
-            "start": {
-              "line": 57,
-              "column": 2
-            },
-            "end": {
-              "line": 64,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "config"
-            }
-          ],
-          "inheritedFrom": "NeonAnimationBehavior"
-        },
-        {
-          "name": "setPrefixedProperty",
-          "description": "Sets `transform` and `transformOrigin` properties along with the prefixed\nversions.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
-            "start": {
-              "line": 70,
-              "column": 2
-            },
-            "end": {
-              "line": 80,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "node"
-            },
-            {
-              "name": "property"
-            },
-            {
-              "name": "value"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "NeonAnimationBehavior"
-        },
-        {
-          "name": "complete",
-          "description": "Called when the animation finishes.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
-            "start": {
-              "line": 85,
-              "column": 2
-            },
-            "end": {
-              "line": 85,
-              "column": 31
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "config"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "NeonAnimationBehavior"
-        },
         {
           "name": "configure",
           "description": "",
@@ -195,26 +44,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
-      "attributes": [
-        {
-          "name": "animation-timing",
-          "description": "Defines the animation timing.",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
-            "start": {
-              "line": 23,
-              "column": 4
-            },
-            "end": {
-              "line": 30,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "Object | null | undefined",
-          "inheritedFrom": "NeonAnimationBehavior"
-        }
-      ],
+      "attributes": [],
       "events": [],
       "styling": {
         "cssVariables": [],
@@ -227,159 +57,8 @@
       "description": "",
       "summary": "",
       "path": "lib/app-datepicker-animations.js",
-      "properties": [
-        {
-          "name": "animationTiming",
-          "type": "Object | null | undefined",
-          "description": "Defines the animation timing.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
-            "start": {
-              "line": 23,
-              "column": 4
-            },
-            "end": {
-              "line": 30,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
-          },
-          "defaultValue": "{\"duration\":500,\"easing\":\"cubic-bezier(0.4, 0, 0.2, 1)\",\"fill\":\"both\"}",
-          "inheritedFrom": "NeonAnimationBehavior"
-        },
-        {
-          "name": "isNeonAnimation",
-          "type": "boolean",
-          "description": "Can be used to determine that elements implement this behavior.\n   ",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
-            "start": {
-              "line": 37,
-              "column": 2
-            },
-            "end": {
-              "line": 37,
-              "column": 23
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          },
-          "inheritedFrom": "NeonAnimationBehavior"
-        }
-      ],
+      "properties": [],
       "methods": [
-        {
-          "name": "created",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
-            "start": {
-              "line": 45,
-              "column": 2
-            },
-            "end": {
-              "line": 51,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "NeonAnimationBehavior"
-        },
-        {
-          "name": "timingFromConfig",
-          "description": "Returns the animation timing by mixing in properties from `config` to the\ndefaults defined by the animation.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
-            "start": {
-              "line": 57,
-              "column": 2
-            },
-            "end": {
-              "line": 64,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "config"
-            }
-          ],
-          "inheritedFrom": "NeonAnimationBehavior"
-        },
-        {
-          "name": "setPrefixedProperty",
-          "description": "Sets `transform` and `transformOrigin` properties along with the prefixed\nversions.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
-            "start": {
-              "line": 70,
-              "column": 2
-            },
-            "end": {
-              "line": 80,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "node"
-            },
-            {
-              "name": "property"
-            },
-            {
-              "name": "value"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "NeonAnimationBehavior"
-        },
-        {
-          "name": "complete",
-          "description": "Called when the animation finishes.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
-            "start": {
-              "line": 85,
-              "column": 2
-            },
-            "end": {
-              "line": 85,
-              "column": 31
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "config"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "NeonAnimationBehavior"
-        },
         {
           "name": "configure",
           "description": "",
@@ -417,26 +96,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
-      "attributes": [
-        {
-          "name": "animation-timing",
-          "description": "Defines the animation timing.",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
-            "start": {
-              "line": 23,
-              "column": 4
-            },
-            "end": {
-              "line": 30,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "Object | null | undefined",
-          "inheritedFrom": "NeonAnimationBehavior"
-        }
-      ],
+      "attributes": [],
       "events": [],
       "styling": {
         "cssVariables": [],
@@ -451,79 +111,27 @@
       "path": "app-datepicker.js",
       "properties": [
         {
-          "name": "animationConfig",
-          "type": "Object | null | undefined",
-          "description": "Animation configuration. See README for more info.",
-          "privacy": "public",
+          "name": "_template",
+          "type": "Object",
+          "description": "",
+          "privacy": "protected",
           "sourceRange": {
-            "file": "../@polymer/neon-animation/neon-animatable-behavior.js",
             "start": {
-              "line": 25,
-              "column": 4
+              "line": 103,
+              "column": 2
             },
             "end": {
-              "line": 25,
-              "column": 35
+              "line": 819,
+              "column": 3
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
-          },
-          "inheritedFrom": "NeonAnimatableBehavior"
-        },
-        {
-          "name": "entryAnimation",
-          "type": "string | null | undefined",
-          "description": "Convenience property for setting an 'entry' animation. Do not set\n`animationConfig.entry` manually if using this. The animated node is set\nto `this` if using this property.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../@polymer/neon-animation/neon-animatable-behavior.js",
-            "start": {
-              "line": 32,
-              "column": 4
-            },
-            "end": {
-              "line": 35,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "observer": "\"_entryAnimationChanged\"",
-              "attributeType": "String"
-            }
-          },
-          "inheritedFrom": "NeonAnimatableBehavior"
-        },
-        {
-          "name": "exitAnimation",
-          "type": "string | null | undefined",
-          "description": "Convenience property for setting an 'exit' animation. Do not set\n`animationConfig.exit` manually if using this. The animated node is set\nto `this` if using this property.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../@polymer/neon-animation/neon-animatable-behavior.js",
-            "start": {
-              "line": 42,
-              "column": 4
-            },
-            "end": {
-              "line": 45,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "observer": "\"_exitAnimationChanged\"",
-              "attributeType": "String"
-            }
-          },
-          "inheritedFrom": "NeonAnimatableBehavior"
+            "polymer": {}
+          }
         },
         {
           "name": "locale",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "Set locale for the datepicker.",
           "privacy": "public",
           "sourceRange": {
@@ -537,15 +145,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"en-US\""
         },
         {
           "name": "view",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "This forcefully sets the view of the datepicker without respecting the orientation of the device.\nAvailable options: `vertical`, `horizontal`.",
           "privacy": "public",
           "sourceRange": {
@@ -559,14 +165,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "theme",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "This is used to set a theme for the datepicker. By default, the `light-theme` is applied.\nOther options are `dark-theme`, `goog-theme`.",
           "privacy": "public",
           "sourceRange": {
@@ -580,14 +184,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "firstDayOfWeek",
-          "type": "number | null | undefined",
+          "type": "number",
           "description": "First Day of the week. Numbered days: `0 (Sun)` to `6 (Sat)`.",
           "privacy": "public",
           "sourceRange": {
@@ -601,15 +203,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Number"
-            }
+            "polymer": {}
           },
           "defaultValue": "0"
         },
         {
           "name": "disableDays",
-          "type": "Array | null | undefined",
+          "type": "Array",
           "description": "Arrays of days need to be disabled for selection, numbered from\n`0 (Sun)` to `6 (Sat)`. Eg. weekends, `disable-days=\"[0, 6]\"`.",
           "privacy": "public",
           "sourceRange": {
@@ -623,15 +223,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Array"
-            }
+            "polymer": {}
           },
           "defaultValue": "[6,0]"
         },
         {
           "name": "disableDates",
-          "type": "Array | null | undefined",
+          "type": "Array",
           "description": "Array of dates need to be disabled for selection.",
           "privacy": "public",
           "sourceRange": {
@@ -645,15 +243,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Array"
-            }
+            "polymer": {}
           },
           "defaultValue": "[]"
         },
         {
           "name": "minDate",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "Minimum date for selection. Dates that are smaller than the minimum\ndate will be disabled for selection.",
           "privacy": "public",
           "sourceRange": {
@@ -667,15 +263,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"1000/00/01\""
         },
         {
           "name": "maxDate",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "Maximum date for selection. Dates that are larger than the maximum\ndate will be disabled for selection.",
           "privacy": "public",
           "sourceRange": {
@@ -689,15 +283,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"9999/99/99\""
         },
         {
           "name": "format",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "Format for the selected date. Default to `yyyy/mm/dd`. Eg. `2017/05/17`.",
           "privacy": "public",
           "sourceRange": {
@@ -711,15 +303,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"yyyy/mm/dd\""
         },
         {
           "name": "date",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "Selected date in the default format of `yyyy/mm/dd`. Eg. `2017/05/17`.",
           "privacy": "public",
           "sourceRange": {
@@ -735,14 +325,13 @@
           "metadata": {
             "polymer": {
               "notify": true,
-              "readOnly": true,
-              "attributeType": "String"
+              "readOnly": true
             }
           }
         },
         {
           "name": "inputDate",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "inputDate accepts a standard date string. It will reflect the change to update the internal.",
           "privacy": "public",
           "sourceRange": {
@@ -756,14 +345,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "noAnimation",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "If true, no animation and transition on all elements.",
           "privacy": "public",
           "sourceRange": {
@@ -777,14 +364,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "pageEntryAnimation",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "Custom animation effect property when the page enters.",
           "privacy": "public",
           "sourceRange": {
@@ -798,14 +383,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "pageExitAnimation",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "Custom animation effect when the page exits.",
           "privacy": "public",
           "sourceRange": {
@@ -819,14 +402,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "showLongDate",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "Selected date will be formatted into long date. Eg. `Fri, May 12 2017`.",
           "privacy": "public",
           "sourceRange": {
@@ -840,15 +421,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           },
           "defaultValue": "false"
         },
         {
           "name": "invalidDate",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "To indicate the input date is in an invalid format hence no date change is applied. Only use this with inputDate property.",
           "privacy": "public",
           "sourceRange": {
@@ -864,14 +443,13 @@
           "metadata": {
             "polymer": {
               "notify": true,
-              "readOnly": true,
-              "attributeType": "Boolean"
+              "readOnly": true
             }
           }
         },
         {
           "name": "autoUpdateDate",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "Auto update the `date` property when changed.",
           "privacy": "public",
           "sourceRange": {
@@ -885,15 +463,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           },
           "defaultValue": "false"
         },
         {
           "name": "alwaysResetSelectedDateOnDialogClose",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "Always reset selected date on dialog close. See https://github.com/motss/app-datepicker/issues/74.",
           "privacy": "public",
           "sourceRange": {
@@ -907,14 +483,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "_monthNames",
-          "type": "Array | null | undefined",
+          "type": "Array",
           "description": "month names, literally.",
           "privacy": "protected",
           "sourceRange": {
@@ -928,15 +502,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Array"
-            }
+            "polymer": {}
           },
           "defaultValue": "[\"January\",\"February\",\"March\",\"April\",\"May\",\"June\",\"July\",\"August\",\"September\",\"October\",\"November\",\"December\"]"
         },
         {
           "name": "_shiftedDisableDays",
-          "type": "Array | null | undefined",
+          "type": "Array",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -950,15 +522,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Array"
-            }
+            "polymer": {}
           },
           "defaultValue": "[6,0]"
         },
         {
           "name": "_activeMonthYear",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -972,14 +542,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "_shortSelectedDate",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -993,14 +561,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "_showSelectedYear",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -1014,14 +580,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "_daysOfWeek",
-          "type": "Array | null | undefined",
+          "type": "Array",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -1035,14 +599,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Array"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "_daysOfMonth",
-          "type": "Array | null | undefined",
+          "type": "Array",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -1056,14 +618,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Array"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "_listOfYears",
-          "type": "Array | null | undefined",
+          "type": "Array",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -1077,14 +637,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Array"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "_activeView",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -1098,15 +656,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"calendar\""
         },
         {
           "name": "_activeYear",
-          "type": "number | null | undefined",
+          "type": "number",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -1120,14 +676,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Number"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "_activeMonth",
-          "type": "number | null | undefined",
+          "type": "number",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -1141,14 +695,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Number"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "_isIncrementMonth",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -1162,14 +714,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "_isDecrementMonth",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -1183,14 +733,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "_selectedYear",
-          "type": "number | null | undefined",
+          "type": "number",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -1204,14 +752,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Number"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "_selectedMonth",
-          "type": "number | null | undefined",
+          "type": "number",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -1225,14 +771,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Number"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "_selectedDate",
-          "type": "number | null | undefined",
+          "type": "number",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -1246,14 +790,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Number"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "_chosenDaysOfMonth",
-          "type": "number | null | undefined",
+          "type": "number",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -1267,14 +809,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Number"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "_isListRendered",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -1288,15 +828,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           },
           "defaultValue": "false"
         },
         {
           "name": "_isSelectedDateConfirmed",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -1310,14 +848,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "_format",
-          "type": "Object | null | undefined",
+          "type": "Object",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -1331,290 +867,11 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
-          },
-          "defaultValue": "{\"y\":\"yyyy\",\"m\":\"mm\",\"d\":\"dd\",\"s1\":\"/\",\"s2\":\"/\"}"
+            "polymer": {}
+          }
         }
       ],
       "methods": [
-        {
-          "name": "_entryAnimationChanged",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../@polymer/neon-animation/neon-animatable-behavior.js",
-            "start": {
-              "line": 49,
-              "column": 2
-            },
-            "end": {
-              "line": 52,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "NeonAnimatableBehavior"
-        },
-        {
-          "name": "_exitAnimationChanged",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../@polymer/neon-animation/neon-animatable-behavior.js",
-            "start": {
-              "line": 54,
-              "column": 2
-            },
-            "end": {
-              "line": 57,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "NeonAnimatableBehavior"
-        },
-        {
-          "name": "_copyProperties",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../@polymer/neon-animation/neon-animatable-behavior.js",
-            "start": {
-              "line": 59,
-              "column": 2
-            },
-            "end": {
-              "line": 64,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "config1"
-            },
-            {
-              "name": "config2"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "NeonAnimatableBehavior"
-        },
-        {
-          "name": "_cloneConfig",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../@polymer/neon-animation/neon-animatable-behavior.js",
-            "start": {
-              "line": 66,
-              "column": 2
-            },
-            "end": {
-              "line": 70,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "config"
-            }
-          ],
-          "inheritedFrom": "NeonAnimatableBehavior"
-        },
-        {
-          "name": "_getAnimationConfigRecursive",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../@polymer/neon-animation/neon-animatable-behavior.js",
-            "start": {
-              "line": 72,
-              "column": 2
-            },
-            "end": {
-              "line": 123,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "type"
-            },
-            {
-              "name": "map"
-            },
-            {
-              "name": "allConfigs"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "NeonAnimatableBehavior"
-        },
-        {
-          "name": "getAnimationConfig",
-          "description": "An element implementing `NeonAnimationRunnerBehavior` calls this\nmethod to configure an animation with an optional type. Elements\nimplementing `NeonAnimatableBehavior` should define the property\n`animationConfig`, which is either a configuration object or a map of\nanimation type to array of configuration objects.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../@polymer/neon-animation/neon-animatable-behavior.js",
-            "start": {
-              "line": 132,
-              "column": 2
-            },
-            "end": {
-              "line": 141,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "type"
-            }
-          ],
-          "inheritedFrom": "NeonAnimatableBehavior"
-        },
-        {
-          "name": "_configureAnimations",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../@polymer/neon-animation/neon-animation-runner-behavior.js",
-            "start": {
-              "line": 21,
-              "column": 2
-            },
-            "end": {
-              "line": 80,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "configs"
-            }
-          ],
-          "inheritedFrom": "NeonAnimationRunnerBehavior"
-        },
-        {
-          "name": "_shouldComplete",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../@polymer/neon-animation/neon-animation-runner-behavior.js",
-            "start": {
-              "line": 82,
-              "column": 2
-            },
-            "end": {
-              "line": 91,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "activeEntries"
-            }
-          ],
-          "inheritedFrom": "NeonAnimationRunnerBehavior"
-        },
-        {
-          "name": "_complete",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../@polymer/neon-animation/neon-animation-runner-behavior.js",
-            "start": {
-              "line": 93,
-              "column": 2
-            },
-            "end": {
-              "line": 100,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "activeEntries"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "NeonAnimationRunnerBehavior"
-        },
-        {
-          "name": "playAnimation",
-          "description": "Plays an animation with an optional `type`.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../@polymer/neon-animation/neon-animation-runner-behavior.js",
-            "start": {
-              "line": 107,
-              "column": 2
-            },
-            "end": {
-              "line": 136,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "type",
-              "type": "string="
-            },
-            {
-              "name": "cookie",
-              "type": "!Object="
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "NeonAnimationRunnerBehavior"
-        },
-        {
-          "name": "cancelAnimation",
-          "description": "Cancels the currently running animations.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../@polymer/neon-animation/neon-animation-runner-behavior.js",
-            "start": {
-              "line": 141,
-              "column": 2
-            },
-            "end": {
-              "line": 151,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "NeonAnimationRunnerBehavior"
-        },
         {
           "name": "attached",
           "description": "",
@@ -1630,10 +887,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "_computeDaysOfMonth",
@@ -1663,10 +917,7 @@
             {
               "name": "_locale"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_computeShiftedDisableDays",
@@ -1690,10 +941,7 @@
             {
               "name": "_isDisableDays"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_incrementMonth",
@@ -1714,10 +962,7 @@
             {
               "name": "ev"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_decrementMonth",
@@ -1738,10 +983,7 @@
             {
               "name": "ev"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_computeActiveMonthYear",
@@ -1768,10 +1010,7 @@
             {
               "name": "_locale"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_computeShortSelectedDate",
@@ -1801,10 +1040,7 @@
             {
               "name": "_locale"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_computeShowSelectedYear",
@@ -1828,10 +1064,7 @@
             {
               "name": "_locale"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_chooseDaysOfMonth",
@@ -1852,10 +1085,7 @@
             {
               "name": "ev"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_isToday",
@@ -2014,10 +1244,7 @@
             {
               "name": "_locale"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_computeChosenDaysOfMonth",
@@ -2083,10 +1310,7 @@
             {
               "name": "_activeView"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_onAnimationFinish",
@@ -2107,10 +1331,7 @@
             {
               "name": "ev"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_updateListScroller",
@@ -2152,10 +1373,7 @@
             {
               "name": "ev"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_onListRendered",
@@ -2176,10 +1394,7 @@
             {
               "name": "ev"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_goCalendar",
@@ -2200,10 +1415,7 @@
             {
               "name": "ev"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_computeSeparateFormat",
@@ -2224,10 +1436,7 @@
             {
               "name": "_format"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_bindSelectedFulldate",
@@ -2278,10 +1487,7 @@
             {
               "name": "ev"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_computeShowLongDate",
@@ -2329,10 +1535,7 @@
             {
               "name": "_inputDate"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "enforceDateChange",
@@ -2349,10 +1552,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "resetDate",
@@ -2369,10 +1569,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "_shouldTabIndex",
@@ -2507,10 +1704,7 @@
             {
               "name": "_theme"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_updateDatepickerView",
@@ -2531,10 +1725,7 @@
             {
               "name": "_view"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_updateDistributedButtonInkColorCustomProp",
@@ -2558,10 +1749,7 @@
             {
               "name": "_colorCode"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         }
       ],
       "staticMethods": [],
@@ -2582,60 +1770,6 @@
       "name": "AppDatepicker",
       "attributes": [
         {
-          "name": "animation-config",
-          "description": "Animation configuration. See README for more info.",
-          "sourceRange": {
-            "file": "../@polymer/neon-animation/neon-animatable-behavior.js",
-            "start": {
-              "line": 25,
-              "column": 4
-            },
-            "end": {
-              "line": 25,
-              "column": 35
-            }
-          },
-          "metadata": {},
-          "type": "Object | null | undefined",
-          "inheritedFrom": "NeonAnimatableBehavior"
-        },
-        {
-          "name": "entry-animation",
-          "description": "Convenience property for setting an 'entry' animation. Do not set\n`animationConfig.entry` manually if using this. The animated node is set\nto `this` if using this property.",
-          "sourceRange": {
-            "file": "../@polymer/neon-animation/neon-animatable-behavior.js",
-            "start": {
-              "line": 32,
-              "column": 4
-            },
-            "end": {
-              "line": 35,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined",
-          "inheritedFrom": "NeonAnimatableBehavior"
-        },
-        {
-          "name": "exit-animation",
-          "description": "Convenience property for setting an 'exit' animation. Do not set\n`animationConfig.exit` manually if using this. The animated node is set\nto `this` if using this property.",
-          "sourceRange": {
-            "file": "../@polymer/neon-animation/neon-animatable-behavior.js",
-            "start": {
-              "line": 42,
-              "column": 4
-            },
-            "end": {
-              "line": 45,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined",
-          "inheritedFrom": "NeonAnimatableBehavior"
-        },
-        {
           "name": "locale",
           "description": "Set locale for the datepicker.",
           "sourceRange": {
@@ -2649,7 +1783,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "view",
@@ -2665,7 +1799,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "theme",
@@ -2681,7 +1815,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "first-day-of-week",
@@ -2697,7 +1831,7 @@
             }
           },
           "metadata": {},
-          "type": "number | null | undefined"
+          "type": "number"
         },
         {
           "name": "disable-days",
@@ -2713,7 +1847,7 @@
             }
           },
           "metadata": {},
-          "type": "Array | null | undefined"
+          "type": "Array"
         },
         {
           "name": "disable-dates",
@@ -2729,7 +1863,7 @@
             }
           },
           "metadata": {},
-          "type": "Array | null | undefined"
+          "type": "Array"
         },
         {
           "name": "min-date",
@@ -2745,7 +1879,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "max-date",
@@ -2761,7 +1895,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "format",
@@ -2777,7 +1911,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "date",
@@ -2793,7 +1927,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "input-date",
@@ -2809,7 +1943,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "no-animation",
@@ -2825,7 +1959,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "page-entry-animation",
@@ -2841,7 +1975,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "page-exit-animation",
@@ -2857,7 +1991,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "show-long-date",
@@ -2873,7 +2007,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "invalid-date",
@@ -2889,7 +2023,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "auto-update-date",
@@ -2905,7 +2039,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "always-reset-selected-date-on-dialog-close",
@@ -2921,7 +2055,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         }
       ],
       "events": [
@@ -2951,996 +2085,8 @@
       "path": "lib/app-datepicker-dialog.js",
       "properties": [
         {
-          "name": "sizingTarget",
-          "type": "!Element",
-          "description": "The element that will receive a `max-height`/`width`. By default it is\nthe same as `this`, but it can be set to a child element. This is useful,\nfor example, for implementing a scrolling region inside the element.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 72,
-              "column": 4
-            },
-            "end": {
-              "line": 77,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
-          },
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "fitInto",
-          "type": "Object | null | undefined",
-          "description": "The element to fit `this` into.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 82,
-              "column": 4
-            },
-            "end": {
-              "line": 82,
-              "column": 42
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
-          },
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "noOverlap",
-          "type": "boolean | null | undefined",
-          "description": "Will position the element around the positionTarget without overlapping\nit.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 88,
-              "column": 4
-            },
-            "end": {
-              "line": 88,
-              "column": 30
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "positionTarget",
-          "type": "!Element",
-          "description": "The element that should be used to position the element. If not set, it\nwill default to the parent node.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 95,
-              "column": 4
-            },
-            "end": {
-              "line": 95,
-              "column": 35
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Element"
-            }
-          },
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "horizontalAlign",
-          "type": "string | null | undefined",
-          "description": "The orientation against which to align the element horizontally\nrelative to the `positionTarget`. Possible values are \"left\", \"right\",\n\"center\", \"auto\".",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 102,
-              "column": 4
-            },
-            "end": {
-              "line": 102,
-              "column": 35
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          },
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "verticalAlign",
-          "type": "string | null | undefined",
-          "description": "The orientation against which to align the element vertically\nrelative to the `positionTarget`. Possible values are \"top\", \"bottom\",\n\"middle\", \"auto\".",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 109,
-              "column": 4
-            },
-            "end": {
-              "line": 109,
-              "column": 33
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          },
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "dynamicAlign",
-          "type": "boolean | null | undefined",
-          "description": "If true, it will use `horizontalAlign` and `verticalAlign` values as\npreferred alignment and if there's not enough space, it will pick the\nvalues which minimize the cropping.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 116,
-              "column": 4
-            },
-            "end": {
-              "line": 116,
-              "column": 33
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "horizontalOffset",
-          "type": "number | null | undefined",
-          "description": "A pixel value that will be added to the position calculated for the\ngiven `horizontalAlign`, in the direction of alignment. You can think\nof it as increasing or decreasing the distance to the side of the\nscreen given by `horizontalAlign`.\n\nIf `horizontalAlign` is \"left\" or \"center\", this offset will increase or\ndecrease the distance to the left side of the screen: a negative offset\nwill move the dropdown to the left; a positive one, to the right.\n\nConversely if `horizontalAlign` is \"right\", this offset will increase\nor decrease the distance to the right side of the screen: a negative\noffset will move the dropdown to the right; a positive one, to the left.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 132,
-              "column": 4
-            },
-            "end": {
-              "line": 132,
-              "column": 60
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "notify": true,
-              "attributeType": "Number"
-            }
-          },
-          "defaultValue": "0",
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "verticalOffset",
-          "type": "number | null | undefined",
-          "description": "A pixel value that will be added to the position calculated for the\ngiven `verticalAlign`, in the direction of alignment. You can think\nof it as increasing or decreasing the distance to the side of the\nscreen given by `verticalAlign`.\n\nIf `verticalAlign` is \"top\" or \"middle\", this offset will increase or\ndecrease the distance to the top side of the screen: a negative offset\nwill move the dropdown upwards; a positive one, downwards.\n\nConversely if `verticalAlign` is \"bottom\", this offset will increase\nor decrease the distance to the bottom side of the screen: a negative\noffset will move the dropdown downwards; a positive one, upwards.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 148,
-              "column": 4
-            },
-            "end": {
-              "line": 148,
-              "column": 58
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "notify": true,
-              "attributeType": "Number"
-            }
-          },
-          "defaultValue": "0",
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "autoFitOnAttach",
-          "type": "boolean | null | undefined",
-          "description": "Set to true to auto-fit on attach.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 153,
-              "column": 4
-            },
-            "end": {
-              "line": 153,
-              "column": 50
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false",
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "_fitInfo",
-          "type": "?Object",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 156,
-              "column": 4
-            },
-            "end": {
-              "line": 156,
-              "column": 28
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
-          },
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "_fitWidth",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 159,
-              "column": 2
-            },
-            "end": {
-              "line": 167,
-              "column": 3
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": true
-            }
-          },
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "_fitHeight",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 169,
-              "column": 2
-            },
-            "end": {
-              "line": 177,
-              "column": 3
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": true
-            }
-          },
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "_fitLeft",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 179,
-              "column": 2
-            },
-            "end": {
-              "line": 187,
-              "column": 3
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": true
-            }
-          },
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "_fitTop",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 189,
-              "column": 2
-            },
-            "end": {
-              "line": 197,
-              "column": 3
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": true
-            }
-          },
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "_defaultPositionTarget",
-          "type": "?",
-          "description": "The element that should be used to position the element,\nif no position target is configured.\n   ",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 203,
-              "column": 2
-            },
-            "end": {
-              "line": 211,
-              "column": 3
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": true
-            }
-          },
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "_localeHorizontalAlign",
-          "type": "?",
-          "description": "The horizontal align value, accounting for the RTL/LTR text direction.\n   ",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 216,
-              "column": 2
-            },
-            "end": {
-              "line": 227,
-              "column": 3
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": true
-            }
-          },
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "__shouldPosition",
-          "type": "?",
-          "description": "True if the element should be positioned instead of centered.",
-          "privacy": "private",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 233,
-              "column": 2
-            },
-            "end": {
-              "line": 235,
-              "column": 3
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": true
-            }
-          },
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "_parentResizable",
-          "type": "Object | null | undefined",
-          "description": "The closest ancestor element that implements `IronResizableBehavior`.",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
-            "start": {
-              "line": 41,
-              "column": 4
-            },
-            "end": {
-              "line": 44,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "observer": "\"_parentResizableChanged\"",
-              "attributeType": "Object"
-            }
-          },
-          "inheritedFrom": "IronResizableBehavior"
-        },
-        {
-          "name": "_notifyingDescendant",
-          "type": "boolean | null | undefined",
-          "description": "True if this element is currently notifying its descendant elements of\nresize.",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
-            "start": {
-              "line": 50,
-              "column": 4
-            },
-            "end": {
-              "line": 53,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false",
-          "inheritedFrom": "IronResizableBehavior"
-        },
-        {
-          "name": "opened",
-          "type": "boolean | null | undefined",
-          "description": "True if the overlay is currently displayed.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 29,
-              "column": 4
-            },
-            "end": {
-              "line": 30,
-              "column": 79
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "notify": true,
-              "observer": "\"_openedChanged\"",
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false",
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "canceled",
-          "type": "boolean | null | undefined",
-          "description": "True if the overlay was canceled when it was last closed.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 35,
-              "column": 4
-            },
-            "end": {
-              "line": 40,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "observer": "\"_canceledChanged\"",
-              "readOnly": true,
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false",
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "withBackdrop",
-          "type": "boolean | null | undefined",
-          "description": "Set to true to display a backdrop behind the overlay. It traps the focus\nwithin the light DOM of the overlay.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 46,
-              "column": 4
-            },
-            "end": {
-              "line": 49,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "observer": "\"_withBackdropChanged\"",
-              "attributeType": "Boolean"
-            }
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "noAutoFocus",
-          "type": "boolean | null | undefined",
-          "description": "Set to true to disable auto-focusing the overlay or child nodes with\nthe `autofocus` attribute` when the overlay is opened.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 55,
-              "column": 4
-            },
-            "end": {
-              "line": 58,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false",
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "noCancelOnEscKey",
-          "type": "boolean | null | undefined",
-          "description": "Set to true to disable canceling the overlay with the ESC key.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 63,
-              "column": 4
-            },
-            "end": {
-              "line": 66,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false",
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "noCancelOnOutsideClick",
-          "type": "boolean | null | undefined",
-          "description": "Set to true to disable canceling the overlay by clicking outside it.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 71,
-              "column": 4
-            },
-            "end": {
-              "line": 74,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false",
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "closingReason",
-          "type": "Object | null | undefined",
-          "description": "Contains the reason(s) this overlay was last closed (see\n`iron-overlay-closed`). `IronOverlayBehavior` provides the `canceled`\nreason; implementers of the behavior can provide other reasons in\naddition to `canceled`.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 82,
-              "column": 4
-            },
-            "end": {
-              "line": 86,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "restoreFocusOnClose",
-          "type": "boolean | null | undefined",
-          "description": "Set to true to enable restoring of focus when overlay is closed.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 91,
-              "column": 4
-            },
-            "end": {
-              "line": 94,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false",
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "allowClickThrough",
-          "type": "boolean | null | undefined",
-          "description": "Set to true to allow clicks to go through overlays.\nWhen the user clicks outside this overlay, the click may\nclose the overlay below.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 101,
-              "column": 4
-            },
-            "end": {
-              "line": 103,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "alwaysOnTop",
-          "type": "boolean | null | undefined",
-          "description": "Set to true to keep overlay always on top.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 108,
-              "column": 4
-            },
-            "end": {
-              "line": 110,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "scrollAction",
-          "type": "string | null | undefined",
-          "description": "Determines which action to perform when scroll outside an opened overlay\nhappens. Possible values: lock - blocks scrolling from happening, refit -\ncomputes the new position on the overlay cancel - causes the overlay to\nclose",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 118,
-              "column": 4
-            },
-            "end": {
-              "line": 120,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "_manager",
-          "type": "!IronOverlayManagerClass",
-          "description": "Shortcut to access to the overlay manager.",
-          "privacy": "private",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 127,
-              "column": 4
-            },
-            "end": {
-              "line": 130,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "_focusedChild",
-          "type": "?Node",
-          "description": "The node being focused.",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 136,
-              "column": 4
-            },
-            "end": {
-              "line": 138,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "backdropElement",
-          "type": "!Element",
-          "description": "The backdrop element.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 150,
-              "column": 2
-            },
-            "end": {
-              "line": 152,
-              "column": 3
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": true
-            }
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "_focusNode",
-          "type": "!Node",
-          "description": "Returns the node to give focus to.",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 158,
-              "column": 2
-            },
-            "end": {
-              "line": 160,
-              "column": 3
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": true
-            }
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "_focusableNodes",
-          "type": "!Array.<!Node>",
-          "description": "Array of nodes that can receive focus (overlay included), ordered by\n`tabindex`. This is used to retrieve which is the first and last focusable\nnodes in order to wrap the focus for overlays `with-backdrop`.\n\nIf you know what is your content (specifically the first and last focusable\nchildren), you can override this method to return only `[firstFocusable,\nlastFocusable];`",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 173,
-              "column": 2
-            },
-            "end": {
-              "line": 175,
-              "column": 3
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": true
-            }
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "modal",
-          "type": "boolean | null | undefined",
-          "description": "If `modal` is true, this implies `no-cancel-on-outside-click`,\n`no-cancel-on-esc-key` and `with-backdrop`.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/paper-dialog-behavior/paper-dialog-behavior.js",
-            "start": {
-              "line": 62,
-              "column": 4
-            },
-            "end": {
-              "line": 62,
-              "column": 40
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false",
-          "inheritedFrom": "PaperDialogBehavior"
-        },
-        {
-          "name": "__readied",
-          "type": "boolean | null | undefined",
-          "description": "",
-          "privacy": "private",
-          "sourceRange": {
-            "file": "../../@polymer/paper-dialog-behavior/paper-dialog-behavior.js",
-            "start": {
-              "line": 64,
-              "column": 4
-            },
-            "end": {
-              "line": 64,
-              "column": 44
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false",
-          "inheritedFrom": "PaperDialogBehavior"
-        },
-        {
-          "name": "hostAttributes",
-          "type": "Object",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/paper-dialog-behavior/paper-dialog-behavior.js",
-            "start": {
-              "line": 54,
-              "column": 2
-            },
-            "end": {
-              "line": 54,
-              "column": 54
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          },
-          "inheritedFrom": "PaperDialogBehavior"
-        },
-        {
-          "name": "animationConfig",
-          "type": "Object | null | undefined",
-          "description": "Animation configuration. See README for more info.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animatable-behavior.js",
-            "start": {
-              "line": 25,
-              "column": 4
-            },
-            "end": {
-              "line": 25,
-              "column": 35
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
-          },
-          "inheritedFrom": "NeonAnimatableBehavior"
-        },
-        {
-          "name": "entryAnimation",
-          "type": "string | null | undefined",
-          "description": "Convenience property for setting an 'entry' animation. Do not set\n`animationConfig.entry` manually if using this. The animated node is set\nto `this` if using this property.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animatable-behavior.js",
-            "start": {
-              "line": 32,
-              "column": 4
-            },
-            "end": {
-              "line": 35,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "observer": "\"_entryAnimationChanged\"",
-              "attributeType": "String"
-            }
-          },
-          "inheritedFrom": "NeonAnimatableBehavior"
-        },
-        {
-          "name": "exitAnimation",
-          "type": "string | null | undefined",
-          "description": "Convenience property for setting an 'exit' animation. Do not set\n`animationConfig.exit` manually if using this. The animated node is set\nto `this` if using this property.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animatable-behavior.js",
-            "start": {
-              "line": 42,
-              "column": 4
-            },
-            "end": {
-              "line": 45,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "observer": "\"_exitAnimationChanged\"",
-              "attributeType": "String"
-            }
-          },
-          "inheritedFrom": "NeonAnimatableBehavior"
-        },
-        {
           "name": "view",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -3954,14 +2100,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "theme",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -3975,14 +2119,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "firstDayOfWeek",
-          "type": "number | null | undefined",
+          "type": "number",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -3996,14 +2138,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Number"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "disableDays",
-          "type": "Array | null | undefined",
+          "type": "Array",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -4017,14 +2157,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Array"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "disableDates",
-          "type": "Array | null | undefined",
+          "type": "Array",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -4038,14 +2176,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Array"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "minDate",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -4059,14 +2195,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "maxDate",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -4080,14 +2214,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "format",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -4101,14 +2233,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "date",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -4124,14 +2254,13 @@
           "metadata": {
             "polymer": {
               "notify": true,
-              "readOnly": true,
-              "attributeType": "String"
+              "readOnly": true
             }
           }
         },
         {
           "name": "invalidDate",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -4147,14 +2276,13 @@
           "metadata": {
             "polymer": {
               "notify": true,
-              "readOnly": true,
-              "attributeType": "Boolean"
+              "readOnly": true
             }
           }
         },
         {
           "name": "inputDate",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -4168,14 +2296,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "showLongDate",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -4189,14 +2315,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "noAnimation",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -4210,14 +2334,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "pageEntryAnimation",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -4231,14 +2353,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "pageExitAnimation",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -4252,14 +2372,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "locale",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -4273,14 +2391,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "confirmLabel",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -4294,15 +2410,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"ok\""
         },
         {
           "name": "dismissLabel",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -4316,15 +2430,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"cancel\""
         },
         {
           "name": "alwaysResetSelectedDateOnDialogClose",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -4338,14 +2450,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "_readOnlyDate",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -4359,14 +2469,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "_readOnlyInvalidDate",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -4380,980 +2488,27 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         }
       ],
       "methods": [
         {
-          "name": "attached",
+          "name": "_alwaysResetSelectedDate",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
             "start": {
-              "line": 202,
+              "line": 84,
               "column": 2
             },
             "end": {
-              "line": 208,
+              "line": 90,
               "column": 3
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "detached",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 210,
-              "column": 2
-            },
-            "end": {
-              "line": 232,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "fit",
-          "description": "Positions and fits the element into the `fitInto` element.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 269,
-              "column": 2
-            },
-            "end": {
-              "line": 273,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "_discoverInfo",
-          "description": "Memoize information needed to position and size the target element.",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 279,
-              "column": 2
-            },
-            "end": {
-              "line": 318,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "resetFit",
-          "description": "Resets the target element's position and size constraints, and clear\nthe memoized data.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 324,
-              "column": 2
-            },
-            "end": {
-              "line": 334,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "refit",
-          "description": "Equivalent to calling `resetFit()` and `fit()`. Useful to call this after\nthe element or the `fitInto` element has been resized, or if any of the\npositioning properties (e.g. `horizontalAlign, verticalAlign`) is updated.\nIt preserves the scroll position of the sizingTarget.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 342,
-              "column": 2
-            },
-            "end": {
-              "line": 349,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "position",
-          "description": "Positions the element according to `horizontalAlign, verticalAlign`.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 354,
-              "column": 2
-            },
-            "end": {
-              "line": 415,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "constrain",
-          "description": "Constrains the size of the element to `fitInto` by setting `max-height`\nand/or `max-width`.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 421,
-              "column": 2
-            },
-            "end": {
-              "line": 451,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "_sizeDimension",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 457,
-              "column": 2
-            },
-            "end": {
-              "line": 459,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "rect"
-            },
-            {
-              "name": "positionedBy"
-            },
-            {
-              "name": "start"
-            },
-            {
-              "name": "end"
-            },
-            {
-              "name": "extent"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "__sizeDimension",
-          "description": "",
-          "privacy": "private",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 464,
-              "column": 2
-            },
-            "end": {
-              "line": 475,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "rect"
-            },
-            {
-              "name": "positionedBy"
-            },
-            {
-              "name": "start"
-            },
-            {
-              "name": "end"
-            },
-            {
-              "name": "extent"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "center",
-          "description": "Centers horizontally and vertically if not already positioned. This also\nsets `position:fixed`.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 481,
-              "column": 2
-            },
-            "end": {
-              "line": 514,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "__getNormalizedRect",
-          "description": "",
-          "privacy": "private",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 516,
-              "column": 2
-            },
-            "end": {
-              "line": 528,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "target"
-            }
-          ],
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "__getOffscreenArea",
-          "description": "",
-          "privacy": "private",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 530,
-              "column": 2
-            },
-            "end": {
-              "line": 537,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "position"
-            },
-            {
-              "name": "size"
-            },
-            {
-              "name": "fitRect"
-            }
-          ],
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "__getPosition",
-          "description": "",
-          "privacy": "private",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 540,
-              "column": 2
-            },
-            "end": {
-              "line": 685,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "hAlign"
-            },
-            {
-              "name": "vAlign"
-            },
-            {
-              "name": "size"
-            },
-            {
-              "name": "sizeNoMargins"
-            },
-            {
-              "name": "positionRect"
-            },
-            {
-              "name": "fitRect"
-            }
-          ],
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "created",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
-            "start": {
-              "line": 60,
-              "column": 2
-            },
-            "end": {
-              "line": 66,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronResizableBehavior"
-        },
-        {
-          "name": "notifyResize",
-          "description": "Can be called to manually notify a resizable and its descendant\nresizables of a resize change.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
-            "start": {
-              "line": 87,
-              "column": 2
-            },
-            "end": {
-              "line": 99,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronResizableBehavior"
-        },
-        {
-          "name": "assignParentResizable",
-          "description": "Used to assign the closest resizable ancestor to this resizable\nif the ancestor detects a request for notifications.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
-            "start": {
-              "line": 105,
-              "column": 2
-            },
-            "end": {
-              "line": 117,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "parentResizable"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronResizableBehavior"
-        },
-        {
-          "name": "stopResizeNotificationsFor",
-          "description": "Used to remove a resizable descendant from the list of descendants\nthat should be notified of a resize change.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
-            "start": {
-              "line": 123,
-              "column": 2
-            },
-            "end": {
-              "line": 130,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "target"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronResizableBehavior"
-        },
-        {
-          "name": "_subscribeIronResize",
-          "description": "Subscribe this element to listen to iron-resize events on the given target.\n\nPreferred over target.listen because the property renamer does not\nunderstand to rename when the target is not specifically \"this\"",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
-            "start": {
-              "line": 140,
-              "column": 2
-            },
-            "end": {
-              "line": 142,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "target",
-              "type": "!HTMLElement",
-              "description": "Element to listen to for iron-resize events."
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronResizableBehavior"
-        },
-        {
-          "name": "_unsubscribeIronResize",
-          "description": "Unsubscribe this element from listening to to iron-resize events on the\ngiven target.\n\nPreferred over target.unlisten because the property renamer does not\nunderstand to rename when the target is not specifically \"this\"",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
-            "start": {
-              "line": 153,
-              "column": 2
-            },
-            "end": {
-              "line": 156,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "target",
-              "type": "!HTMLElement",
-              "description": "Element to listen to for iron-resize events."
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronResizableBehavior"
-        },
-        {
-          "name": "resizerShouldNotify",
-          "description": "This method can be overridden to filter nested elements that should or\nshould not be notified by the current element. Return true if an element\nshould be notified, or false if it should not be notified.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
-            "start": {
-              "line": 167,
-              "column": 2
-            },
-            "end": {
-              "line": 169,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "element",
-              "type": "HTMLElement",
-              "description": "A candidate descendant element that\nimplements `IronResizableBehavior`."
-            }
-          ],
-          "return": {
-            "type": "boolean",
-            "desc": "True if the `element` should be notified of resize."
-          },
-          "inheritedFrom": "IronResizableBehavior"
-        },
-        {
-          "name": "_onDescendantIronResize",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
-            "start": {
-              "line": 171,
-              "column": 2
-            },
-            "end": {
-              "line": 181,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "event"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronResizableBehavior"
-        },
-        {
-          "name": "_fireResize",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
-            "start": {
-              "line": 183,
-              "column": 2
-            },
-            "end": {
-              "line": 185,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronResizableBehavior"
-        },
-        {
-          "name": "_onIronRequestResizeNotifications",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
-            "start": {
-              "line": 187,
-              "column": 2
-            },
-            "end": {
-              "line": 197,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "event"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronResizableBehavior"
-        },
-        {
-          "name": "_parentResizableChanged",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
-            "start": {
-              "line": 199,
-              "column": 2
-            },
-            "end": {
-              "line": 203,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "parentResizable"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronResizableBehavior"
-        },
-        {
-          "name": "_notifyDescendant",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
-            "start": {
-              "line": 205,
-              "column": 2
-            },
-            "end": {
-              "line": 216,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "descendant"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronResizableBehavior"
-        },
-        {
-          "name": "_requestResizeNotifications",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
-            "start": {
-              "line": 218,
-              "column": 2
-            },
-            "end": {
-              "line": 257,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronResizableBehavior"
-        },
-        {
-          "name": "_findParent",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
-            "start": {
-              "line": 259,
-              "column": 2
-            },
-            "end": {
-              "line": 271,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronResizableBehavior"
-        },
-        {
-          "name": "ready",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/paper-dialog-behavior/paper-dialog-behavior.js",
-            "start": {
-              "line": 75,
-              "column": 2
-            },
-            "end": {
-              "line": 81,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "PaperDialogBehavior"
-        },
-        {
-          "name": "toggle",
-          "description": "Toggle the opened state of the overlay.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 237,
-              "column": 2
-            },
-            "end": {
-              "line": 240,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "open",
-          "description": "Open the overlay.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 245,
-              "column": 2
-            },
-            "end": {
-              "line": 248,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "close",
-          "description": "Close the overlay.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 253,
-              "column": 2
-            },
-            "end": {
-              "line": 256,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "cancel",
-          "description": "Cancels the overlay.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 262,
-              "column": 2
-            },
-            "end": {
-              "line": 271,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "event",
-              "type": "Event=",
-              "description": "The original event"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "invalidateTabbables",
-          "description": "Invalidates the cached tabbable nodes. To be called when any of the\nfocusable content changes (e.g. a button is disabled).",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 277,
-              "column": 2
-            },
-            "end": {
-              "line": 279,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "_ensureSetup",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 281,
-              "column": 2
-            },
-            "end": {
-              "line": 288,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "_openedChanged",
-          "description": "Called when `opened` changes.",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 295,
-              "column": 2
-            },
-            "end": {
-              "line": 312,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "opened",
-              "type": "boolean="
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "_canceledChanged",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 314,
-              "column": 2
-            },
-            "end": {
-              "line": 317,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "_withBackdropChanged",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 319,
-              "column": 2
-            },
-            "end": {
-              "line": 331,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "_prepareRenderOpened",
-          "description": "tasks which must occur before opening; e.g. making the element visible.",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 337,
-              "column": 2
-            },
-            "end": {
-              "line": 353,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
+          "params": []
         },
         {
           "name": "_renderOpened",
@@ -5370,10 +2525,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "_renderClosed",
@@ -5390,901 +2542,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "_finishRenderOpened",
-          "description": "Tasks to be performed at the end of open action. Will fire\n`iron-overlay-opened`.",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 378,
-              "column": 2
-            },
-            "end": {
-              "line": 383,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "_finishRenderClosed",
-          "description": "Tasks to be performed at the end of close action. Will fire\n`iron-overlay-closed`.",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 390,
-              "column": 2
-            },
-            "end": {
-              "line": 398,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "_preparePositioning",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 400,
-              "column": 2
-            },
-            "end": {
-              "line": 404,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "_finishPositioning",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 406,
-              "column": 2
-            },
-            "end": {
-              "line": 419,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "_applyFocus",
-          "description": "Applies focus according to the opened state.",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 425,
-              "column": 2
-            },
-            "end": {
-              "line": 448,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "_onCaptureClick",
-          "description": "Cancels (closes) the overlay. Call when click happens outside the overlay.",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 455,
-              "column": 2
-            },
-            "end": {
-              "line": 459,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "event",
-              "type": "!Event"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "_onCaptureFocus",
-          "description": "Keeps track of the focused child. If withBackdrop, traps focus within\noverlay.",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 467,
-              "column": 2
-            },
-            "end": {
-              "line": 478,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "event",
-              "type": "!Event"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "_onCaptureEsc",
-          "description": "Handles the ESC key event and cancels (closes) the overlay.",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 485,
-              "column": 2
-            },
-            "end": {
-              "line": 489,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "event",
-              "type": "!Event"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "_onCaptureTab",
-          "description": "Handles TAB key events to track focus changes.\nWill wrap focus for overlays withBackdrop.",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 497,
-              "column": 2
-            },
-            "end": {
-              "line": 541,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "event",
-              "type": "!Event"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "_onIronResize",
-          "description": "Refits if the overlay is opened and not animating.",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 547,
-              "column": 2
-            },
-            "end": {
-              "line": 551,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "_onNodesChange",
-          "description": "Will call notifyResize if overlay is opened.\nCan be overridden in order to avoid multiple observers on the same node.",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 558,
-              "column": 2
-            },
-            "end": {
-              "line": 564,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "__ensureFirstLastFocusables",
-          "description": "Updates the references to the first and last focusable nodes.",
-          "privacy": "private",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 570,
-              "column": 2
-            },
-            "end": {
-              "line": 574,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "__openedChanged",
-          "description": "Tasks executed when opened changes: prepare for the opening, move the\nfocus, update the manager, render opened/closed.",
-          "privacy": "private",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 581,
-              "column": 2
-            },
-            "end": {
-              "line": 597,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "__deraf",
-          "description": "Debounces the execution of a callback to the next animation frame.",
-          "privacy": "private",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 605,
-              "column": 2
-            },
-            "end": {
-              "line": 614,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "jobname",
-              "type": "!string"
-            },
-            {
-              "name": "callback",
-              "type": "!Function",
-              "description": "Always bound to `this`"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "__updateScrollObservers",
-          "description": "",
-          "privacy": "private",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 622,
-              "column": 2
-            },
-            "end": {
-              "line": 633,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "isAttached",
-              "type": "boolean"
-            },
-            {
-              "name": "opened",
-              "type": "boolean"
-            },
-            {
-              "name": "scrollAction",
-              "type": "string="
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "__addScrollListeners",
-          "description": "",
-          "privacy": "private",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 638,
-              "column": 2
-            },
-            "end": {
-              "line": 660,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "__removeScrollListeners",
-          "description": "",
-          "privacy": "private",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 665,
-              "column": 2
-            },
-            "end": {
-              "line": 677,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "__isValidScrollAction",
-          "description": "",
-          "privacy": "private",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 684,
-              "column": 2
-            },
-            "end": {
-              "line": 687,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "scrollAction",
-              "type": "string="
-            }
-          ],
-          "return": {
-            "type": "boolean"
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "__onCaptureScroll",
-          "description": "",
-          "privacy": "private",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 692,
-              "column": 2
-            },
-            "end": {
-              "line": 714,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "event"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "__saveScrollPosition",
-          "description": "Memoizes the scroll position of the outside scrolling element.",
-          "privacy": "private",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 720,
-              "column": 2
-            },
-            "end": {
-              "line": 731,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "__restoreScrollPosition",
-          "description": "Resets the scroll position of the outside scrolling element.",
-          "privacy": "private",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 737,
-              "column": 2
-            },
-            "end": {
-              "line": 748,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "_modalChanged",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/paper-dialog-behavior/paper-dialog-behavior.js",
-            "start": {
-              "line": 83,
-              "column": 2
-            },
-            "end": {
-              "line": 106,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "modal"
-            },
-            {
-              "name": "readied"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "PaperDialogBehavior"
-        },
-        {
-          "name": "_updateClosingReasonConfirmed",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/paper-dialog-behavior/paper-dialog-behavior.js",
-            "start": {
-              "line": 108,
-              "column": 2
-            },
-            "end": {
-              "line": 111,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "confirmed"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "PaperDialogBehavior"
-        },
-        {
-          "name": "_onDialogClick",
-          "description": "Will dismiss the dialog if user clicked on an element with dialog-dismiss\nor dialog-confirm attribute.",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/paper-dialog-behavior/paper-dialog-behavior.js",
-            "start": {
-              "line": 117,
-              "column": 2
-            },
-            "end": {
-              "line": 133,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "event"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "PaperDialogBehavior"
-        },
-        {
-          "name": "_entryAnimationChanged",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animatable-behavior.js",
-            "start": {
-              "line": 49,
-              "column": 2
-            },
-            "end": {
-              "line": 52,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "NeonAnimatableBehavior"
-        },
-        {
-          "name": "_exitAnimationChanged",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animatable-behavior.js",
-            "start": {
-              "line": 54,
-              "column": 2
-            },
-            "end": {
-              "line": 57,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "NeonAnimatableBehavior"
-        },
-        {
-          "name": "_copyProperties",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animatable-behavior.js",
-            "start": {
-              "line": 59,
-              "column": 2
-            },
-            "end": {
-              "line": 64,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "config1"
-            },
-            {
-              "name": "config2"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "NeonAnimatableBehavior"
-        },
-        {
-          "name": "_cloneConfig",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animatable-behavior.js",
-            "start": {
-              "line": 66,
-              "column": 2
-            },
-            "end": {
-              "line": 70,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "config"
-            }
-          ],
-          "inheritedFrom": "NeonAnimatableBehavior"
-        },
-        {
-          "name": "_getAnimationConfigRecursive",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animatable-behavior.js",
-            "start": {
-              "line": 72,
-              "column": 2
-            },
-            "end": {
-              "line": 123,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "type"
-            },
-            {
-              "name": "map"
-            },
-            {
-              "name": "allConfigs"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "NeonAnimatableBehavior"
-        },
-        {
-          "name": "getAnimationConfig",
-          "description": "An element implementing `NeonAnimationRunnerBehavior` calls this\nmethod to configure an animation with an optional type. Elements\nimplementing `NeonAnimatableBehavior` should define the property\n`animationConfig`, which is either a configuration object or a map of\nanimation type to array of configuration objects.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animatable-behavior.js",
-            "start": {
-              "line": 132,
-              "column": 2
-            },
-            "end": {
-              "line": 141,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "type"
-            }
-          ],
-          "inheritedFrom": "NeonAnimatableBehavior"
-        },
-        {
-          "name": "_configureAnimations",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animation-runner-behavior.js",
-            "start": {
-              "line": 21,
-              "column": 2
-            },
-            "end": {
-              "line": 80,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "configs"
-            }
-          ],
-          "inheritedFrom": "NeonAnimationRunnerBehavior"
-        },
-        {
-          "name": "_shouldComplete",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animation-runner-behavior.js",
-            "start": {
-              "line": 82,
-              "column": 2
-            },
-            "end": {
-              "line": 91,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "activeEntries"
-            }
-          ],
-          "inheritedFrom": "NeonAnimationRunnerBehavior"
-        },
-        {
-          "name": "_complete",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animation-runner-behavior.js",
-            "start": {
-              "line": 93,
-              "column": 2
-            },
-            "end": {
-              "line": 100,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "activeEntries"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "NeonAnimationRunnerBehavior"
-        },
-        {
-          "name": "playAnimation",
-          "description": "Plays an animation with an optional `type`.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animation-runner-behavior.js",
-            "start": {
-              "line": 107,
-              "column": 2
-            },
-            "end": {
-              "line": 136,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "type",
-              "type": "string="
-            },
-            {
-              "name": "cookie",
-              "type": "!Object="
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "NeonAnimationRunnerBehavior"
-        },
-        {
-          "name": "cancelAnimation",
-          "description": "Cancels the currently running animations.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animation-runner-behavior.js",
-            "start": {
-              "line": 141,
-              "column": 2
-            },
-            "end": {
-              "line": 151,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "NeonAnimationRunnerBehavior"
-        },
-        {
-          "name": "_alwaysResetSelectedDate",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 84,
-              "column": 2
-            },
-            "end": {
-              "line": 90,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "_onNeonAnimationFinish",
@@ -6301,10 +2559,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "_updateReadOnlyDate",
@@ -6325,10 +2580,7 @@
             {
               "name": "_readOnlyDate"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_updateReadOnlyInvalidDate",
@@ -6349,10 +2601,7 @@
             {
               "name": "_readOnlyInvalidDate"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_updateDatepickerView",
@@ -6369,10 +2618,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         }
       ],
       "staticMethods": [],
@@ -6392,456 +2638,6 @@
       "superclass": "HTMLElement",
       "attributes": [
         {
-          "name": "sizing-target",
-          "description": "The element that will receive a `max-height`/`width`. By default it is\nthe same as `this`, but it can be set to a child element. This is useful,\nfor example, for implementing a scrolling region inside the element.",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 72,
-              "column": 4
-            },
-            "end": {
-              "line": 77,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "!Element",
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "fit-into",
-          "description": "The element to fit `this` into.",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 82,
-              "column": 4
-            },
-            "end": {
-              "line": 82,
-              "column": 42
-            }
-          },
-          "metadata": {},
-          "type": "Object | null | undefined",
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "no-overlap",
-          "description": "Will position the element around the positionTarget without overlapping\nit.",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 88,
-              "column": 4
-            },
-            "end": {
-              "line": 88,
-              "column": 30
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined",
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "position-target",
-          "description": "The element that should be used to position the element. If not set, it\nwill default to the parent node.",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 95,
-              "column": 4
-            },
-            "end": {
-              "line": 95,
-              "column": 35
-            }
-          },
-          "metadata": {},
-          "type": "!Element",
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "horizontal-align",
-          "description": "The orientation against which to align the element horizontally\nrelative to the `positionTarget`. Possible values are \"left\", \"right\",\n\"center\", \"auto\".",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 102,
-              "column": 4
-            },
-            "end": {
-              "line": 102,
-              "column": 35
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined",
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "vertical-align",
-          "description": "The orientation against which to align the element vertically\nrelative to the `positionTarget`. Possible values are \"top\", \"bottom\",\n\"middle\", \"auto\".",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 109,
-              "column": 4
-            },
-            "end": {
-              "line": 109,
-              "column": 33
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined",
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "dynamic-align",
-          "description": "If true, it will use `horizontalAlign` and `verticalAlign` values as\npreferred alignment and if there's not enough space, it will pick the\nvalues which minimize the cropping.",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 116,
-              "column": 4
-            },
-            "end": {
-              "line": 116,
-              "column": 33
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined",
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "horizontal-offset",
-          "description": "A pixel value that will be added to the position calculated for the\ngiven `horizontalAlign`, in the direction of alignment. You can think\nof it as increasing or decreasing the distance to the side of the\nscreen given by `horizontalAlign`.\n\nIf `horizontalAlign` is \"left\" or \"center\", this offset will increase or\ndecrease the distance to the left side of the screen: a negative offset\nwill move the dropdown to the left; a positive one, to the right.\n\nConversely if `horizontalAlign` is \"right\", this offset will increase\nor decrease the distance to the right side of the screen: a negative\noffset will move the dropdown to the right; a positive one, to the left.",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 132,
-              "column": 4
-            },
-            "end": {
-              "line": 132,
-              "column": 60
-            }
-          },
-          "metadata": {},
-          "type": "number | null | undefined",
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "vertical-offset",
-          "description": "A pixel value that will be added to the position calculated for the\ngiven `verticalAlign`, in the direction of alignment. You can think\nof it as increasing or decreasing the distance to the side of the\nscreen given by `verticalAlign`.\n\nIf `verticalAlign` is \"top\" or \"middle\", this offset will increase or\ndecrease the distance to the top side of the screen: a negative offset\nwill move the dropdown upwards; a positive one, downwards.\n\nConversely if `verticalAlign` is \"bottom\", this offset will increase\nor decrease the distance to the bottom side of the screen: a negative\noffset will move the dropdown downwards; a positive one, upwards.",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 148,
-              "column": 4
-            },
-            "end": {
-              "line": 148,
-              "column": 58
-            }
-          },
-          "metadata": {},
-          "type": "number | null | undefined",
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "auto-fit-on-attach",
-          "description": "Set to true to auto-fit on attach.",
-          "sourceRange": {
-            "file": "../../@polymer/iron-fit-behavior/iron-fit-behavior.js",
-            "start": {
-              "line": 153,
-              "column": 4
-            },
-            "end": {
-              "line": 153,
-              "column": 50
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined",
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "name": "opened",
-          "description": "True if the overlay is currently displayed.",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 29,
-              "column": 4
-            },
-            "end": {
-              "line": 30,
-              "column": 79
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined",
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "canceled",
-          "description": "True if the overlay was canceled when it was last closed.",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 35,
-              "column": 4
-            },
-            "end": {
-              "line": 40,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined",
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "with-backdrop",
-          "description": "Set to true to display a backdrop behind the overlay. It traps the focus\nwithin the light DOM of the overlay.",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 46,
-              "column": 4
-            },
-            "end": {
-              "line": 49,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined",
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "no-auto-focus",
-          "description": "Set to true to disable auto-focusing the overlay or child nodes with\nthe `autofocus` attribute` when the overlay is opened.",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 55,
-              "column": 4
-            },
-            "end": {
-              "line": 58,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined",
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "no-cancel-on-esc-key",
-          "description": "Set to true to disable canceling the overlay with the ESC key.",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 63,
-              "column": 4
-            },
-            "end": {
-              "line": 66,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined",
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "no-cancel-on-outside-click",
-          "description": "Set to true to disable canceling the overlay by clicking outside it.",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 71,
-              "column": 4
-            },
-            "end": {
-              "line": 74,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined",
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "closing-reason",
-          "description": "Contains the reason(s) this overlay was last closed (see\n`iron-overlay-closed`). `IronOverlayBehavior` provides the `canceled`\nreason; implementers of the behavior can provide other reasons in\naddition to `canceled`.",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 82,
-              "column": 4
-            },
-            "end": {
-              "line": 86,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "Object | null | undefined",
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "restore-focus-on-close",
-          "description": "Set to true to enable restoring of focus when overlay is closed.",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 91,
-              "column": 4
-            },
-            "end": {
-              "line": 94,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined",
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "allow-click-through",
-          "description": "Set to true to allow clicks to go through overlays.\nWhen the user clicks outside this overlay, the click may\nclose the overlay below.",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 101,
-              "column": 4
-            },
-            "end": {
-              "line": 103,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined",
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "always-on-top",
-          "description": "Set to true to keep overlay always on top.",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 108,
-              "column": 4
-            },
-            "end": {
-              "line": 110,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined",
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "scroll-action",
-          "description": "Determines which action to perform when scroll outside an opened overlay\nhappens. Possible values: lock - blocks scrolling from happening, refit -\ncomputes the new position on the overlay cancel - causes the overlay to\nclose",
-          "sourceRange": {
-            "file": "../../@polymer/iron-overlay-behavior/iron-overlay-behavior.js",
-            "start": {
-              "line": 118,
-              "column": 4
-            },
-            "end": {
-              "line": 120,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined",
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
-        {
-          "name": "modal",
-          "description": "If `modal` is true, this implies `no-cancel-on-outside-click`,\n`no-cancel-on-esc-key` and `with-backdrop`.",
-          "sourceRange": {
-            "file": "../../@polymer/paper-dialog-behavior/paper-dialog-behavior.js",
-            "start": {
-              "line": 62,
-              "column": 4
-            },
-            "end": {
-              "line": 62,
-              "column": 40
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined",
-          "inheritedFrom": "PaperDialogBehavior"
-        },
-        {
-          "name": "animation-config",
-          "description": "Animation configuration. See README for more info.",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animatable-behavior.js",
-            "start": {
-              "line": 25,
-              "column": 4
-            },
-            "end": {
-              "line": 25,
-              "column": 35
-            }
-          },
-          "metadata": {},
-          "type": "Object | null | undefined",
-          "inheritedFrom": "NeonAnimatableBehavior"
-        },
-        {
-          "name": "entry-animation",
-          "description": "Convenience property for setting an 'entry' animation. Do not set\n`animationConfig.entry` manually if using this. The animated node is set\nto `this` if using this property.",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animatable-behavior.js",
-            "start": {
-              "line": 32,
-              "column": 4
-            },
-            "end": {
-              "line": 35,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined",
-          "inheritedFrom": "NeonAnimatableBehavior"
-        },
-        {
-          "name": "exit-animation",
-          "description": "Convenience property for setting an 'exit' animation. Do not set\n`animationConfig.exit` manually if using this. The animated node is set\nto `this` if using this property.",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animatable-behavior.js",
-            "start": {
-              "line": 42,
-              "column": 4
-            },
-            "end": {
-              "line": 45,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined",
-          "inheritedFrom": "NeonAnimatableBehavior"
-        },
-        {
           "name": "view",
           "description": "",
           "sourceRange": {
@@ -6855,7 +2651,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "theme",
@@ -6871,7 +2667,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "first-day-of-week",
@@ -6887,7 +2683,7 @@
             }
           },
           "metadata": {},
-          "type": "number | null | undefined"
+          "type": "number"
         },
         {
           "name": "disable-days",
@@ -6903,7 +2699,7 @@
             }
           },
           "metadata": {},
-          "type": "Array | null | undefined"
+          "type": "Array"
         },
         {
           "name": "disable-dates",
@@ -6919,7 +2715,7 @@
             }
           },
           "metadata": {},
-          "type": "Array | null | undefined"
+          "type": "Array"
         },
         {
           "name": "min-date",
@@ -6935,7 +2731,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "max-date",
@@ -6951,7 +2747,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "format",
@@ -6967,7 +2763,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "date",
@@ -6983,7 +2779,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "invalid-date",
@@ -6999,7 +2795,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "input-date",
@@ -7015,7 +2811,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "show-long-date",
@@ -7031,7 +2827,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "no-animation",
@@ -7047,7 +2843,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "page-entry-animation",
@@ -7063,7 +2859,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "page-exit-animation",
@@ -7079,7 +2875,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "locale",
@@ -7095,7 +2891,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "confirm-label",
@@ -7111,7 +2907,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "dismiss-label",
@@ -7127,7 +2923,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "always-reset-selected-date-on-dialog-close",
@@ -7143,31 +2939,10 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         }
       ],
       "events": [
-        {
-          "type": "CustomEvent",
-          "name": "horizontal-offset-changed",
-          "description": "Fired when the `horizontalOffset` property changes.",
-          "metadata": {},
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "type": "CustomEvent",
-          "name": "vertical-offset-changed",
-          "description": "Fired when the `verticalOffset` property changes.",
-          "metadata": {},
-          "inheritedFrom": "IronFitBehavior"
-        },
-        {
-          "type": "CustomEvent",
-          "name": "opened-changed",
-          "description": "Fired when the `opened` property changes.",
-          "metadata": {},
-          "inheritedFrom": "IronOverlayBehaviorImpl"
-        },
         {
           "type": "CustomEvent",
           "name": "date-changed",
@@ -7194,8 +2969,27 @@
       "path": "demo/bind-date-to-input-date.js",
       "properties": [
         {
+          "name": "_template",
+          "type": "Object",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 5,
+              "column": 2
+            },
+            "end": {
+              "line": 40,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
           "name": "planDate",
-          "type": "Object | null | undefined",
+          "type": "Object",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -7210,11 +3004,9 @@
           },
           "metadata": {
             "polymer": {
-              "observer": "\"_planDateChanged\"",
-              "attributeType": "Object"
+              "observer": "\"_planDateChanged\""
             }
-          },
-          "defaultValue": "{\"startDate\":\"2016/12/01\",\"endDate\":\"2016/12/31\"}"
+          }
         }
       ],
       "methods": [
@@ -7233,10 +3025,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "_planDateChanged",
@@ -7260,10 +3049,7 @@
             {
               "name": "_oldv"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         }
       ],
       "staticMethods": [],
@@ -7296,7 +3082,7 @@
             }
           },
           "metadata": {},
-          "type": "Object | null | undefined"
+          "type": "Object"
         }
       ],
       "events": [],

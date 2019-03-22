@@ -16,7 +16,7 @@ export { LrndesignGalleryGrid };
  * @microcopy - language worth noting:```
 <lrndesign-gallery-grid 
   accent-color="grey"               //optional, the accent color from simple-colors; default is grey
-  dark                              //optional, if true, gallery will use the simple-colors dark theme; default is false (light-theme)
+  dark                              //optional, if true, gallery will use the simple-colors dark theme; default is false (fixed-theme)
   id="mygallery1"                   //optional, a unique id for the gallery; if true, you can use the id in anchors to access gallery items on page load
   sources="[]"                      //required, array of image sources
   sizing="contain"                  //optional, "cover" for cropping (default) or "contain" for letterboxing
@@ -99,7 +99,7 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
         <template is="dom-if" if="[[_isAttrSet(title)]]">
           <h1 id="gallery-title">[[title]]</h1>
         </template>
-        <div id="gallery-description"><slot name="description"></slot></div>
+        <div id="gallery-description"><slot></slot></div>
         <p class="sr-only">A list of thumbnail buttons items:</p>
         <div id="galleryscreen">
           <template id="screenlist" is="dom-repeat" items="[[items]]" as="item">

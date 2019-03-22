@@ -157,10 +157,16 @@ class LrndesignGalleryBehaviors extends SimpleColors {
    * @param {array}
    */
   _getAnchorData() {
-    let temp = window.location.hash.replace("#", "").split("---"),
+    let temp =
+        window.location.hash !== null && window.location.hash !== ""
+          ? window.location.hash.replace("#", "").split("---")
+          : [],
       anchorGallery = temp.length > 0 ? temp[0] : -1,
       selectedItemId = temp.length > 1 ? temp[1] : -1,
-      selectedItemIndex = this.sources.findIndex(i => i.id === selectedItemId),
+      selectedItemIndex =
+        this.sources !== null
+          ? this.sources.findIndex(i => i.id === selectedItemId)
+          : 1,
       selectedGallery = anchorGallery === this.galleryId,
       zoom = scroll && temp.length > 2 && temp[2] === "zoom";
     return {
@@ -280,7 +286,7 @@ class LrndesignGalleryBehaviors extends SimpleColors {
       temp = [];
     this.set("items", []);
     if (this.galleryId === null) this.id = "gallery-" + this._generateUUID();
-    if (sources !== undefined && sources.length > 0) {
+    if (sources !== undefined && sources !== null && sources.length > 0) {
       this._setAspectProperties(sources[0].src);
       for (var i in sources) {
         temp[i] = this._getItemData(sources[i], parseInt(i), sources.length);

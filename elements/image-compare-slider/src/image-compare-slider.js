@@ -5,16 +5,14 @@ import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@polymer/iron-image/iron-image.js";
 import "@polymer/paper-slider/paper-slider.js";
 /**
-`image-compare-slider`
-Layers images over each other with a slider interface to compare them
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
- -
- -
-
-*/
+ * `image-compare-slider`
+ * Layers images over each other with a slider interface to compare them
+ * @microcopy - the mental model for this element
+ *
+ * @customElement
+ * @polymer
+ * @demo demo/index.html
+ */
 let ImageCompareSlider = Polymer({
   _template: html`
     <style>
@@ -169,6 +167,18 @@ let ImageCompareSlider = Polymer({
             description: "The title of the element",
             inputMethod: "textfield",
             icon: "editor:title"
+          },
+          {
+            property: "opacity",
+            title: "Slider Behavior",
+            description:
+              "Do you want the slider to wipe the top image across the bottom one (default), or to adjust the opacity of the top image?",
+            inputMethod: "select",
+            options: {
+              false: "wipe across",
+              true: "adjust opacity"
+            },
+            icon: "image:compare"
           }
         ],
         configure: [

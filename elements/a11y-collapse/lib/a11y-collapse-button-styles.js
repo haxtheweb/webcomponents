@@ -7,11 +7,10 @@
  *
  * @microcopy - language worth noting:
  *  -
- *
- * @pseudoElement
+ * @customElement
  * @polymer
- * @demo demo/index.html
- * @see lib/a11y-collapse-button-styles-demo.js
+ * @see ./a11y-collapse-icon-button.js
+ * @see ./a11y-collapse-accordion-button.js
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 const styleElement = document.createElement("dom-module");

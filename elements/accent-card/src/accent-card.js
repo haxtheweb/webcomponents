@@ -18,8 +18,10 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
  * @customElement
  * @polymer
  * @demo demo/index.html demo
- * @demo demo/layout.html layout
  * @demo demo/colors.html colors
+ * @demo demo/orientation.html card orientation
+ * @demo demo/borders.html borders and shadow
+ * @demo demo/images.html image aligmnent
  * @demo demo/variables.html css variables
  */
 class AccentCard extends SimpleColors {
@@ -136,6 +138,24 @@ class AccentCard extends SimpleColors {
           background-position-y: var(--accent-card-image-y, center);
           @apply --accent-card-image;
         }
+        :host([image-align="left"]) .image {
+          background-position-x: left;
+        }
+        :host([image-align="center"]) .image {
+          background-position-x: center;
+        }
+        :host([image-align="right"]) .image {
+          background-position-x: right;
+        }
+        :host([image-valign="top"]) .image {
+          background-position-y: top;
+        }
+        :host([image-valign="center"]) .image {
+          background-position-y: center;
+        }
+        :host([image-valign="bottom"]) .image {
+          background-position-y: bottom;
+        }
         :host([horizontal]) .image {
           @apply --accent-card-image-horizontal;
         }
@@ -181,7 +201,7 @@ class AccentCard extends SimpleColors {
           @apply --accent-card-footer;
         }
       </style>
-      <section id="card">
+      <section id="card" style$="[[__customStyle]]">
         <div class="image-outer" hidden$="[[!_hasProp(imageSrc)]]">
           <div class="image" style$="[[__backgroundStyle]]"></div>
         </div>
@@ -278,6 +298,28 @@ class AccentCard extends SimpleColors {
             icon: "editor:insert-photo"
           },
           {
+            property: "imageAlign",
+            title: "imageAlign",
+            description: "Image Horizontal Alignment",
+            inputMethod: "select",
+            options: {
+              left: "left",
+              center: "center",
+              right: "right"
+            }
+          },
+          {
+            property: "imageValign",
+            title: "imageValign",
+            description: "Image Vertical Alignment",
+            inputMethod: "select",
+            options: {
+              top: "top",
+              center: "center",
+              bottom: "bottom"
+            }
+          },
+          {
             property: "accentColor",
             title: "Accent Color",
             description: "An optional accent color.",
@@ -335,7 +377,7 @@ class AccentCard extends SimpleColors {
        */
       accentBackground: {
         name: "accentBackground",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         reflectToAttribute: true
       },
@@ -345,7 +387,7 @@ class AccentCard extends SimpleColors {
        */
       accentHeading: {
         name: "accentHeading",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         reflectToAttribute: true
       },
@@ -355,7 +397,7 @@ class AccentCard extends SimpleColors {
        */
       flat: {
         name: "flat",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         reflectToAttribute: true
       },
@@ -365,8 +407,22 @@ class AccentCard extends SimpleColors {
        */
       horizontal: {
         name: "horizontal",
-        type: "Boolean",
+        type: Boolean,
         value: false,
+        reflectToAttribute: true
+      },
+
+      /**
+       * "Optional": The horizontal alignment of the image, so that:
+       * - "left" will align the left edge of the image.
+       * - "right" will align the right edge of the image.
+       * - "center" will align the center of the image
+       * - A null will allow temporary support to the deprecated CSS variables
+       */
+      imageAlign: {
+        name: "imageAlign",
+        type: String,
+        value: null,
         reflectToAttribute: true
       },
 
@@ -375,8 +431,22 @@ class AccentCard extends SimpleColors {
        */
       imageSrc: {
         name: "imageSrc",
-        type: "String",
+        type: String,
         value: null
+      },
+
+      /**
+       * "Optional": The vertical alignment of the image, so that:
+       * - "top" will align the top of edge of the image.
+       * - "bottom" will align the bottom edge of the image.
+       * - "center" will align the middle of the image.
+       * - A null will allow temporary support to the deprecated CSS variables
+       */
+      imageValign: {
+        name: "imageValign",
+        type: String,
+        value: null,
+        reflectToAttribute: true
       },
 
       /**
@@ -384,7 +454,7 @@ class AccentCard extends SimpleColors {
        */
       noBorder: {
         name: "noBorder",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         reflectToAttribute: true
       },
@@ -394,7 +464,7 @@ class AccentCard extends SimpleColors {
        */
       __backgroundStyle: {
         name: "__backgroundStyle",
-        type: "String",
+        type: String,
         computed: "_getBackgroundStyle(imageSrc)"
       }
     };

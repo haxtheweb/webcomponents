@@ -7,8 +7,27 @@
       "path": "lrndesign-contentblock.js",
       "properties": [
         {
+          "name": "_template",
+          "type": "Object",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 8,
+              "column": 2
+            },
+            "end": {
+              "line": 18,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
           "name": "title",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "Heading for this block",
           "privacy": "public",
           "sourceRange": {
@@ -22,9 +41,7 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         }
       ],
@@ -60,7 +77,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         }
       ],
       "events": [],

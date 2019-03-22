@@ -37,13 +37,6 @@ class LrndesignTimeline extends SimpleColors {
   static get behaviors() {
     return [SimpleColors];
   }
-
-  /**
-   * observes events array for changes
-   */
-  static get observers() {
-    return ["_updateEvents(events.*)"];
-  }
   /**
    * life cycle, element is afixed to the DOM
    */
@@ -119,14 +112,13 @@ class LrndesignTimeline extends SimpleColors {
   }
 
   /**
-   * handles the scroll on the events side
+   * gets updated event data
+   *
+   * @param {array} the raw events array
    */
-  _updateEvents(e) {
-    for (var i in e.base) {
-      for (var j in e.base[i]) {
-        this.notifyPath("events." + i + "." + j);
-      }
-    }
+  _updateEvents(events) {
+    events = typeof events === "String" ? JSON.parse(events) : events;
+    return events;
   }
 
   /**

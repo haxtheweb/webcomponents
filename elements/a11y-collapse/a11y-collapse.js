@@ -5,14 +5,10 @@ import "@polymer/paper-icon-button/paper-icon-button.js";
 import "./lib/a11y-collapse-accordion-button.js";
 import "./lib/a11y-collapse-icon-button.js";
 /**
-`a11y-collapse`
-An accessible expand collapse.
-
-* @demo demo/index.html Demo
-* @demo demo/accordion.html Accordion Groups
-
-@microcopy - the mental model for this element
-
+ * `a11y-collapse`
+ * An accessible expand collapse.
+ * 
+ * @microcopy - the mental model for this element```
   <a11y-collapse 
     accordion 
     disabled
@@ -47,9 +43,12 @@ An accessible expand collapse.
   --a11y-collapse-icon-rotated: { ... };           //sets CSS for the a11y-collapse icon when rotated
   --a11y-collapse-content: { ... };                //sets CSS for the a11y-collapse expanded/collapsed content
   --a11y-collapse-content-expanded: { ... };       //sets CSS for the a11y-collapse expanded/collapsed content when expanded
-
-
-*/
+```
+ *
+ * @customElement
+ * @polymer
+ * @demo demo/index.html demo
+ */
 let A11yCollapse = Polymer({
   _template: html`
     <style>
@@ -143,7 +142,7 @@ let A11yCollapse = Polymer({
      */
     accordion: {
       name: "accordion",
-      type: "Boolean",
+      type: Boolean,
       value: false,
       observer: "flush",
       reflectToAttribute: true
@@ -153,7 +152,7 @@ let A11yCollapse = Polymer({
      */
     disabled: {
       name: "disabled",
-      type: "Boolean",
+      type: Boolean,
       value: false,
       reflectToAttribute: true
     },
@@ -162,7 +161,7 @@ let A11yCollapse = Polymer({
      */
     expanded: {
       name: "expanded",
-      type: "Boolean",
+      type: Boolean,
       value: false,
       reflectToAttribute: true
     },
@@ -171,15 +170,15 @@ let A11yCollapse = Polymer({
      */
     icon: {
       name: "icon",
-      type: "String",
-      value: "icons: expand-more"
+      type: String,
+      value: "expand-more"
     },
     /**
      * icon when expanded
      */
     iconExpanded: {
       name: "iconExpanded",
-      type: "String",
+      type: String,
       value: null
     },
     /**
@@ -187,7 +186,7 @@ let A11yCollapse = Polymer({
      */
     label: {
       name: "label",
-      type: "String",
+      type: String,
       value: "expand/collapse"
     },
     /**
@@ -195,7 +194,7 @@ let A11yCollapse = Polymer({
      */
     labelExpanded: {
       name: "labelExpanded",
-      type: "String",
+      type: String,
       value: null
     },
     /**
@@ -203,7 +202,7 @@ let A11yCollapse = Polymer({
      */
     tooltip: {
       name: "tooltip",
-      type: "String",
+      type: String,
       value: "toggle expand/collapse"
     },
     /**
@@ -211,7 +210,7 @@ let A11yCollapse = Polymer({
      */
     tooltipExpanded: {
       name: "tooltipExpanded",
-      type: "String",
+      type: String,
       value: null
     },
     /**
@@ -219,7 +218,7 @@ let A11yCollapse = Polymer({
      */
     __rotateIcon: {
       name: "__rotateIcon",
-      type: "Boolean",
+      type: Boolean,
       computed: "_isRotated(expanded,iconExpanded)"
     }
   },
