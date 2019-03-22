@@ -304,9 +304,10 @@ class A11yMediaTranscript extends A11yMediaBehaviors {
     root.set("activeCues", cues.slice(0));
     if (
       !root.disableScroll &&
-      cue !== null &&
       cue !== undefined &&
-      cue !== this.__activeCue
+      cue !== null &&
+      root.activeCues !== undefined &&
+      cue.getAttribute("order") !== root.activeCues[0]
     ) {
       //javascript scrolling from:  https://stackoverflow.com/questions/8917921/cross-browser-javascript-not-jquery-scroll-to-top-animation#answer-8918062
       let scrollingTo = function(element, to, duration) {

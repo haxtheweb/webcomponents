@@ -646,7 +646,9 @@ class VideoPlayer extends PolymerElement {
    * Gets cleaned track list
    */
   _getTrackData(track, tracks) {
-    let temp = typeof tracks === "string" ? JSON.parse(tracks) : tracks;
+    console.log("_getTrackData", track, tracks, this.tracks);
+    let temp =
+      typeof tracks === "string" ? JSON.parse(tracks).slice() : tracks.slice();
     if (track !== undefined && track !== null)
       temp.push({
         src: track,
@@ -654,7 +656,6 @@ class VideoPlayer extends PolymerElement {
         label: this.lang === "en" ? "English" : this.lang,
         kind: "subtitles"
       });
-    console.log("_getTrackData", track, tracks, temp);
     return temp;
   }
 
@@ -681,7 +682,6 @@ class VideoPlayer extends PolymerElement {
     }
     this.__standAlone =
       trackData === undefined || trackData === null || trackData.length < 1;
-    console.log("_getSourceData", this.__standAlone, trackData);
     return temp;
   }
 
