@@ -78,11 +78,15 @@
         </template>
       </code-editor>
     </div>
+        <paper-button id="update">update</paper-button>
         <script defer="defer">
           document.getElementById('picker').addEventListener('change', (e) => {
             console.log(e.target.value);
             document.getElementById('code').language = e.target.value;
           });
+          document.getElementById('update').addEventListener('click', (e) => {
+              document.getElementById('code').editorValue += 'Updated content';
+            });
         </script>
   </body>
 </html>

@@ -21,160 +21,132 @@ import "@lrnwebcomponents/hax-body/lib/hax-schema-form.js";
  * @demo demo/index.html
  */
 class HaxschemaBuilder extends PolymerElement {
+  
   // render function
   static get template() {
     return html`
-      <style>
-        :host {
-          display: block;
-        }
+<style>:host {
+  display: block;
+}
 
-        :host([hidden]) {
-          display: none;
-        }
-        eco-json-schema-object {
-          color: var(--hax-text-color);
-          --eco-json-schema-object-form : {
-            -ms-flex: unset;
-            -webkit-flex: unset;
-            flex: unset;
-            -webkit-flex-basis: unset;
-            flex-basis: unset;
-          }
-        }
-        #form {
-          --eco-json-schema-object-form: {
-            display: block !important;
-          }
-        }
-      </style>
-      <vaadin-split-layout>
-        <div>
-          <paper-button raised="" noink="">Add to configure</paper-button>
-          <paper-button raised="" noink="">Add to advanced</paper-button>
-          <code-editor
-            id="code"
-            show-code-pen
-            on-value-changed="_editorDataChanged"
-          >
-            <template>
-              [[haxSchema]]
-            </template>
-          </code-editor>
-          <json-editor
-            id="json"
-            label="JSON"
-            value="[[haxSchema]]"
-          ></json-editor>
-        </div>
-        <div>
-          <hax-schema-form
-            id="form"
-            configure-schema="[[configureSchema]]"
-            advanced-schema="[[advancedSchema]]"
-            value="{{value}}"
-          ></hax-schema-form>
-        </div>
-      </vaadin-split-layout>
-    `;
+:host([hidden]) {
+  display: none;
+}
+code-editor {
+  height: 500px;
+}</style>
+<vaadin-split-layout>
+  <div>
+    <paper-button raised="" noink="">Add to configure</paper-button>
+    <paper-button raised="" noink="">Add to advanced</paper-button>
+    <code-editor id="code"  on-value-changed="_editorDataChanged" language="json"></code-editor>
+    <json-editor id="json" label="JSON" value="{{haxSchema}}"></json-editor>
+  </div>
+  <div>
+    <hax-schema-form id="form" configure-schema="[[configureSchema]]" advanced-schema="[[advancedSchema]]" value="{{value}}"></hax-schema-form>
+  </div>
+</vaadin-split-layout>`;
   }
 
   // haxProperty definition
   static get haxProperties() {
     return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Haxschema builder",
-        description: "dynamically build and visualize HAXschema",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Builder"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage"
-          }
-        ],
-        meta: {
-          author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
-      },
-      settings: {
-        quick: [
-          {
-            property: "source",
-            description: "",
-            inputMethod: "textfield",
-            required: true,
-            icon: "icons:link",
-            validationType: "url"
-          }
-        ],
-        configure: [
-          {
-            property: "haxSchema",
-            description: "",
-            inputMethod: "array",
-            required: false,
-            icon: "icons:android"
-          },
-          {
-            property: "source",
-            description: "",
-            inputMethod: "textfield",
-            required: true,
-            icon: "icons:link",
-            validationType: "url"
-          }
-        ],
-        advanced: []
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Haxschema builder",
+    "description": "dynamically build and visualize HAXschema",
+    "icon": "icons:android",
+    "color": "green",
+    "groups": ["Builder"],
+    "handles": [
+      {
+        "type": "todo:read-the-docs-for-usage"
       }
-    };
+    ],
+    "meta": {
+      "author": "btopro",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "quick": [
+      {
+        "property": "source",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": true,
+        "icon": "icons:link",
+        "validationType": "url"
+      }
+    ],
+    "configure": [
+      {
+        "property": "haxSchema",
+        "description": "",
+        "inputMethod": "array",
+        "required": false,
+        "icon": "icons:android"
+      },
+      {
+        "property": "source",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": true,
+        "icon": "icons:link",
+        "validationType": "url"
+      }
+    ],
+    "advanced": []
+  }
+}
+;
   }
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      /**
-       * schema to extract for whatever you wanted it for
-       */
-      haxSchema: {
-        name: "haxSchema",
-        type: "Object",
-        value: {}
-      },
-      /**
-       * configure form schema to extract for whatever you wanted it for
-       */
-      configureSchema: {
-        name: "configureSchema",
-        type: "Object",
-        value: {}
-      },
-      /**
-       * advanced form schema to extract for whatever you wanted it for
-       */
-      advancedSchema: {
-        name: "advancedSchema",
-        type: "Object",
-        value: {}
-      },
-      /**
-       * Optional remote source to pull in
-       */
-      source: {
-        name: "source",
-        type: "String"
-      },
-      /**
-       * String based value passed between the elements to stitch together
-       */
-      value: {
-        name: "value",
-        type: "String"
-      }
-    };
+  /**
+   * schema to extract for whatever you wanted it for
+   */
+  "haxSchema": {
+    "name": "haxSchema",
+    "type": "String",
+    "notify": true,
+    "observer": "_haxSchemaChanged"
+  },
+  /**
+   * configure form schema to extract for whatever you wanted it for
+   */
+  "configureSchema": {
+    "name": "configureSchema",
+    "type": "Object",
+    "value": {}
+  },
+  /**
+   * advanced form schema to extract for whatever you wanted it for
+   */
+  "advancedSchema": {
+    "name": "advancedSchema",
+    "type": "Object",
+    "value": {}
+  },
+  /**
+   * Optional remote source to pull in
+   */
+  "source": {
+    "name": "source",
+    "type": "String"
+  },
+  /**
+   * String based value passed between the elements to stitch together
+   */
+  "value": {
+    "name": "value",
+    "type": "String"
+  }
+}
+;
   }
 
   /**
@@ -201,6 +173,19 @@ class HaxschemaBuilder extends PolymerElement {
         null,
         2
       );
+    }
+    // HACK to get initial paint to have the correct form
+    this.$.form.modeTab = "advanced";
+    setTimeout(() => {
+      this.$.form.modeTab = "configure";
+    }, 2000);
+  }
+  /**
+   * Force an update on code editor when this value changes
+   */
+  _haxSchemaChanged(newValue) {
+    if (newValue) {
+      this.$.code.editorValue = newValue;
     }
   }
   /**

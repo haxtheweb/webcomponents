@@ -157,7 +157,7 @@ class MonacoElement extends PolymerElement {
       require(['vs/editor/editor.main'], () => {
         this.editor = monaco.editor.create(document.getElementById('container'), {
           value: this.value,
-          language: this.language,
+          language: '${this.language}',
           scrollBeyondLastLine: false,
           automaticLayout: true,
           fontSize: ${this.fontSize},

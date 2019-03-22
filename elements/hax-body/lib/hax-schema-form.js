@@ -134,7 +134,6 @@ Polymer({
      */
     modeTab: {
       type: String,
-      value: "configure",
       observer: "_editorModeChanged"
     },
     /**
