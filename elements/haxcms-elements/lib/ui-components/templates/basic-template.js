@@ -8,15 +8,21 @@ import "@polymer/iron-icons/maps-icons.js";
 import "@lrnwebcomponents/scroll-button/scroll-button.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/blocks/site-children-block.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/blocks/site-outline-block.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-footer.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-top-menu.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-dot-indicator.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-top-menu.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query-menu-slice.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-render-query.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js";
+
 /**
  * `An incredibly basic template.
  * @HTMLElement
