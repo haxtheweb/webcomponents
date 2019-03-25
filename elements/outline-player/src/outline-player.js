@@ -26,14 +26,38 @@ let OutlinePlayer = Polymer({
   _template: html`
     <style include="simple-colors hax-shared-styles">
       :host {
-        display: block;
-        font-family: libre baskerville;
-        position: relative;
-        overflow: hidden;
         --outline-player-min-height: 100vh;
         --app-drawer-width: 300px;
         --outline-player-dark: #222222;
         --outline-player-light: #f8f8f8;
+
+        --outline-player-font-family: "Open Sans";
+        --outline-player-font-size: 21;
+        --outline-player-line-height: 1.5;
+        display: block;
+        position: relative;
+        overflow: hidden;
+        font-family: var(--outline-player-font-family);
+        line-height: var(--outline-player-line-height);
+        font-variant-ligatures: none;
+        font-size: calc(var(--outline-player-font-size) * 0.75px);
+        text-rendering: optimizelegibility;
+        -webkit-font-smoothing: antialiased;
+        text-decoration-skip-ink: auto;
+        margin: 0px;
+        background: white;
+      }
+
+      @media screen and (min-width: 600px) {
+        :host {
+          font-size: calc(var(--outline-player-font-size) * 0.8px);
+        }
+      }
+
+      @media screen and (min-width: 800px) {
+        :host {
+          font-size: calc(var(--outline-player-font-size) * 0.9px);
+        }
         background-color: var(--outline-player-light);
       }
 
@@ -145,7 +169,7 @@ let OutlinePlayer = Polymer({
       app-toolbar {
         border-bottom: none;
         background-color: #ffffff;
-        box-shadow: 0 0 6px -3px var(--outline-player-dark);
+        /* box-shadow: 0 0 6px -3px var(--outline-player-dark); */
       }
       app-drawer {
         box-shadow: 0 0 6px -3px var(--outline-player-dark);
@@ -233,6 +257,22 @@ let OutlinePlayer = Polymer({
           background-color: rgba(0, 0, 0, 0.2);
         }
       }
+
+      #nav-footer {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      #slot {
+        flex: 1 1 auto;
+      }
+
+      #slot + #nav-footer {
+        margin-top: 2em;
+        display: flex;
+      }
     </style>
     <!-- Control the sites query paremeters -->
 
@@ -274,6 +314,7 @@ let OutlinePlayer = Polymer({
           <div id="contentcontainer">
             <div id="slot"><slot></slot></div>
           </div>
+          <!-- contentcontainer -->
         </div>
       </app-header-layout>
     </app-drawer-layout>

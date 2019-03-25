@@ -4,5 +4,6 @@
   "version": "2.0.8",
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "workspaces": ["elements/*", "themes/*"]
+  "workspaces": ["elements/*", "themes/*"],
+  "ignore": ["elements/glossary-term", "elements/glossary-service"]
 }

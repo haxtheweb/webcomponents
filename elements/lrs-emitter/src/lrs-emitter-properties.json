@@ -1,0 +1,23 @@
+{
+  "verb": {
+    "name": "verb",
+    "type": "String",
+    "value": "",
+    "reflectToAttribute": false,
+    "observer": false
+  },
+  "object": {
+    "name": "object",
+    "type": "String",
+    "value": "",
+    "reflectToAttribute": false,
+    "observer": false
+  },
+  "event": {
+    "name": "event",
+    "type": "String",
+    "value": "click",
+    "reflectToAttribute": false,
+    "observer": false
+  }
+}
