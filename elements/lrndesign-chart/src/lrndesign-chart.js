@@ -6,3 +6,15 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "./lib/lrndesign-bar.js";
 import "./lib/lrndesign-line.js";
 import "./lib/lrndesign-pie.js";
+
+/**
+ * `lrndesign-chart`
+ *
+ * @polymer
+ * @customElement
+ * @demo demo/index.html
+ * @demo demo/pie.html pie charts
+ * @demo demo/bar.html bar charts
+ * @demo demo/line.html line charts
+ *
+ */

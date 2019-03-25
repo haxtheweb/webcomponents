@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>AccentCard: accent-card Borders and Shadow</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../accent-card.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles">
+      accent-card {
+        display: inline-flex;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h1>accent-card Borders and Shadow</h1>
+      <demo-snippet>
+        <template>
+          <accent-card no-border>
+            <div slot="heading">Accent Card, No Border</div>
+            <div slot="content">This card has no accent border.</div>
+          </accent-card>
+          <accent-card flat>
+            <div slot="heading">Flat Accent Card (No Shadow)</div>
+            <div slot="content">This is a flat accent card. (It has no box-shadow.)</div>
+          </accent-card>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

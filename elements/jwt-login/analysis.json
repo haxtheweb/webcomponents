@@ -7,8 +7,27 @@
       "path": "jwt-login.js",
       "properties": [
         {
+          "name": "_template",
+          "type": "Object",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 13,
+              "column": 2
+            },
+            "end": {
+              "line": 27,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
           "name": "url",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "url",
           "privacy": "public",
           "sourceRange": {
@@ -22,14 +41,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "key",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "Key that contains the token in local storage",
           "privacy": "public",
           "sourceRange": {
@@ -43,15 +60,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"jwt\""
         },
         {
           "name": "jwt",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "JSON Web token to securely pass around",
           "privacy": "public",
           "sourceRange": {
@@ -66,8 +81,7 @@
           },
           "metadata": {
             "polymer": {
-              "notify": true,
-              "attributeType": "String"
+              "notify": true
             }
           }
         }
@@ -88,10 +102,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "toggleLogin",
@@ -108,10 +119,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "loginResponse",
@@ -132,10 +140,7 @@
             {
               "name": "e"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         }
       ],
       "staticMethods": [],
@@ -169,7 +174,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "key",
@@ -185,7 +190,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "jwt",
@@ -201,7 +206,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         }
       ],
       "events": [

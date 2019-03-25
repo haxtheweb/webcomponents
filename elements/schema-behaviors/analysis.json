@@ -10,7 +10,7 @@
           "properties": [
             {
               "name": "schemaResourceID",
-              "type": "string | null | undefined",
+              "type": "string",
               "description": "Unique Resource ID, generated when schemaMap processes.",
               "privacy": "public",
               "sourceRange": {
@@ -24,15 +24,13 @@
                 }
               },
               "metadata": {
-                "polymer": {
-                  "attributeType": "String"
-                }
+                "polymer": {}
               },
               "defaultValue": "\"\""
             },
             {
               "name": "schemaMap",
-              "type": "Object | null | undefined",
+              "type": "Object",
               "description": "Schema Map for this element.",
               "privacy": "public",
               "sourceRange": {
@@ -47,11 +45,9 @@
               },
               "metadata": {
                 "polymer": {
-                  "observer": "\"_schemaMapChanged\"",
-                  "attributeType": "Object"
+                  "observer": "\"_schemaMapChanged\""
                 }
-              },
-              "defaultValue": "{\"prefix\":{\"oer\":\"http://oerschema.org/\",\"schema\":\"http://schema.org/\",\"dc\":\"http://purl.org/dc/terms/\",\"foaf\":\"http://xmlns.com/foaf/0.1/\",\"cc\":\"http://creativecommons.org/ns#\",\"bib\":\"http://bib.schema.org\"}}"
+              }
             }
           ],
           "methods": [
@@ -94,10 +90,7 @@
                 {
                   "name": "oldValue"
                 }
-              ],
-              "return": {
-                "type": "void"
-              }
+              ]
             }
           ],
           "staticMethods": [],
@@ -130,7 +123,7 @@
                 }
               },
               "metadata": {},
-              "type": "string | null | undefined"
+              "type": "string"
             },
             {
               "name": "schema-map",
@@ -146,7 +139,7 @@
                 }
               },
               "metadata": {},
-              "type": "Object | null | undefined"
+              "type": "Object"
             }
           ],
           "events": [],

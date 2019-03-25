@@ -7,6 +7,7 @@ setOptions({
 });
 
 const req = require.context("../elements", true, /\.story\.js$/);
+
 function loadStories() {
   req.keys().forEach(filename => req(filename));
 }

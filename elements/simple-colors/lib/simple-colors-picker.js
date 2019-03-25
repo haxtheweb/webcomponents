@@ -147,6 +147,20 @@ class SimpleColorsPicker extends SimpleColors {
   static get behaviors() {
     return [SimpleColors];
   }
+  /**
+   * life cycle, element is afixed to the DOM
+   */
+  connectedCallback() {
+    super.connectedCallback();
+  }
+
+  /**
+   * ready state
+   */
+  ready() {
+    super.ready();
+    this.__ready = true;
+  }
 
   /**
    * gets options for the selectors
@@ -157,7 +171,7 @@ class SimpleColorsPicker extends SimpleColors {
     let options = [[]],
       theme = dark !== false ? "dark" : "default";
     if (shades === false) {
-      options = Object.keys(colors).map(key => {
+      options = Object.keys(this.colors).map(key => {
         return [
           {
             alt: key,
@@ -203,30 +217,34 @@ class SimpleColorsPicker extends SimpleColors {
    */
   _handleChange(e) {
     this.value = e.detail.value;
-    this.dispatchEvent(
-      new CustomEvent("change", { bubbles: true, detail: this })
-    );
+    if (this.__ready !== undefined)
+      this.dispatchEvent(
+        new CustomEvent("change", { bubbles: true, detail: this })
+      );
   }
 
   /**
    * handles when the picker collapses
    */
   _handleCollapse(e) {
-    this.dispatchEvent(new CustomEvent("collapse", { detail: this }));
+    if (this.__ready !== undefined)
+      this.dispatchEvent(new CustomEvent("collapse", { detail: this }));
   }
 
   /**
    * handles when the picker expands
    */
   _handleExpand(e) {
-    this.dispatchEvent(new CustomEvent("expand", { detail: this }));
+    if (this.__ready !== undefined)
+      this.dispatchEvent(new CustomEvent("expand", { detail: this }));
   }
 
   /**
    * handles when the picker's focus changes
    */
   _handleOptionFocus(e) {
-    this.dispatchEvent(new CustomEvent("option-focus", { detail: this }));
+    if (this.__ready !== undefined)
+      this.dispatchEvent(new CustomEvent("option-focus", { detail: this }));
   }
   /**
    * life cycle, element is removed from the DOM

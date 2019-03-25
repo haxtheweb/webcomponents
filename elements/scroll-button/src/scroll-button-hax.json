@@ -1,0 +1,48 @@
+{
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Scroll button",
+    "description": "button to scroll to an area or back to top",
+    "icon": "icons:android",
+    "color": "green",
+    "groups": ["Button"],
+    "handles": [
+      {
+        "type": "todo:read-the-docs-for-usage"
+      }
+    ],
+    "meta": {
+      "author": "btopro",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "quick": [],
+    "configure": [
+      {
+        "property": "target",
+        "description": "",
+        "inputMethod": "array",
+        "required": false,
+        "icon": "icons:android"
+      },
+      {
+        "property": "icon",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": false,
+        "icon": "icons:android"
+      },
+      {
+        "property": "label",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": false,
+        "icon": "icons:android"
+      }
+    ],
+    "advanced": []
+  }
+}

@@ -7,68 +7,22 @@
       "path": "word-count.js",
       "properties": [
         {
-          "name": "words",
-          "type": "number | null | undefined",
-          "description": "Words",
-          "privacy": "public",
+          "name": "_template",
+          "type": "Object",
+          "description": "",
+          "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 61,
-              "column": 4
+              "line": 10,
+              "column": 2
             },
             "end": {
-              "line": 63,
-              "column": 5
+              "line": 49,
+              "column": 3
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Number"
-            }
-          }
-        },
-        {
-          "name": "wordsPrefix",
-          "type": "string | null | undefined",
-          "description": "Prefix text.",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 67,
-              "column": 4
-            },
-            "end": {
-              "line": 70,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          },
-          "defaultValue": "\"Words:\""
-        },
-        {
-          "name": "wordsText",
-          "type": "string | null | undefined",
-          "description": "Text to output",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 74,
-              "column": 4
-            },
-            "end": {
-              "line": 78,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": true,
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         },
         {
@@ -87,8 +41,66 @@
             }
           },
           "metadata": {
+            "polymer": {}
+          }
+        },
+        {
+          "name": "words",
+          "type": "number",
+          "description": "Words",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 61,
+              "column": 4
+            },
+            "end": {
+              "line": 63,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
+          "name": "wordsPrefix",
+          "type": "string",
+          "description": "Prefix text.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 67,
+              "column": 4
+            },
+            "end": {
+              "line": 70,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "\"Words:\""
+        },
+        {
+          "name": "wordsText",
+          "type": "string",
+          "description": "Text to output",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 74,
+              "column": 4
+            },
+            "end": {
+              "line": 78,
+              "column": 5
+            }
+          },
+          "metadata": {
             "polymer": {
-              "readOnly": false
+              "readOnly": true
             }
           }
         }
@@ -109,10 +121,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "_updateWords",
@@ -129,10 +138,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "_computeWordsText",
@@ -190,7 +196,7 @@
             }
           },
           "metadata": {},
-          "type": "number | null | undefined"
+          "type": "number"
         },
         {
           "name": "words-prefix",
@@ -206,7 +212,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "words-text",
@@ -222,7 +228,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         }
       ],
       "events": [],

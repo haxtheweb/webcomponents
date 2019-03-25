@@ -1,0 +1,73 @@
+{
+  "name": "@lrnwebcomponents/learn-two-theme",
+  "wcfactory": {
+    "className": "LearnTwoTheme",
+    "customElementClass": "PolymerElement",
+    "elementName": "learn-two-theme",
+    "generator-wcfactory-version": "0.7.0",
+    "useHAX": false,
+    "useSass": false,
+    "files": {
+      "css": "src/learn-two-theme.css",
+      "scss": "src/learn-two-theme.scss",
+      "html": "src/learn-two-theme.html",
+      "js": "src/learn-two-theme.js",
+      "properties": "src/learn-two-theme-properties.json",
+      "hax": "src/learn-two-theme-hax.json"
+    }
+  },
+  "version": "2.0.8",
+  "description": "Learn2 theme for HAXcms",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+  },
+  "main": "learn-two-theme.js",
+  "module": "learn-two-theme.es6.js",
+  "umd": "learn-two-theme.umd.js",
+  "amd": "learn-two-theme.amd.js",
+  "scripts": {
+    "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/learn-two-theme/test/",
+    "start": "yarn run dev",
+    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "../../node_modules/.bin/gulp dev",
+    "serve": "polymer serve --npm --module-resolution=node --open",
+    "lighthouse": "../../node_modules/.bin/gulp lighthouse"
+  },
+  "author": {
+    "name": "btopro"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@lrnwebcomponents/haxcms-elements": "^2.0.8",
+    "@lrnwebcomponents/map-menu": "^2.0.8",
+    "@lrnwebcomponents/simple-colors": "^2.0.8",
+    "@polymer/app-layout": "^3.0.2",
+    "@polymer/paper-icon-button": "^3.0.2",
+    "@polymer/paper-tooltip": "^3.0.1",
+    "@polymer/polymer": "^3.0.5"
+  },
+  "devDependencies": {
+    "@lrnwebcomponents/deduping-fix": "0.2.0",
+    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
+    "@polymer/iron-demo-helpers": "3.0.2",
+    "@webcomponents/webcomponentsjs": "2.2.1",
+    "concurrently": "4.1.0",
+    "gulp-babel": "8.0.0",
+    "gulp-sourcemaps": "2.6.4",
+    "lodash": "4.17.11",
+    "polymer-build": "3.1.1",
+    "polymer-cli": "1.9.4",
+    "wct-browser-legacy": "1.0.2",
+    "web-animations-js": "2.3.1"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-components",
+    "html"
+  ]
+}

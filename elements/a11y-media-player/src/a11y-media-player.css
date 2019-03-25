@@ -47,15 +47,15 @@
   --a11y-media-transcript-bg-color: var(--simple-colors-default-theme-grey-1);
   --a11y-media-transcript-accent-color: var(--simple-colors-default-theme-accent-8);
   --a11y-media-transcript-faded-accent-color: var(--simple-colors-default-theme-accent-10);
-  --a11y-media-transcript-cue-color: var(--simple-colors-light-theme-grey-12);
-  --a11y-media-transcript-cue-bg-color: var(--simple-colors-light-theme-grey-1);
-  --a11y-media-transcript-active-cue-color: var(--simple-colors-light-theme-grey-12);
-  --a11y-media-transcript-active-cue-bg-color: var(--simple-colors-light-theme-accent-1);
-  --a11y-media-transcript-focused-cue-color: var(--simple-colors-light-theme-grey-12);
-  --a11y-media-transcript-focused-cue-bg-color: var(--simple-colors-light-theme-grey-2);
-  --a11y-media-transcript-match-color: var(--simple-colors-light-theme-grey-1);
-  --a11y-media-transcript-match-bg-color: var(--simple-colors-light-theme-accent-10);
-  --a11y-media-transcript-match-border-color: var(--simple-colors-light-theme-accent-12);
+  --a11y-media-transcript-cue-color: var(--simple-colors-fixed-theme-grey-12);
+  --a11y-media-transcript-cue-bg-color: var(--simple-colors-fixed-theme-grey-1);
+  --a11y-media-transcript-active-cue-color: var(--simple-colors-fixed-theme-grey-12);
+  --a11y-media-transcript-active-cue-bg-color: var(--simple-colors-fixed-theme-accent-1);
+  --a11y-media-transcript-focused-cue-color: var(--simple-colors-fixed-theme-grey-12);
+  --a11y-media-transcript-focused-cue-bg-color: var(--simple-colors-fixed-theme-grey-2);
+  --a11y-media-transcript-match-color: var(--simple-colors-fixed-theme-grey-1);
+  --a11y-media-transcript-match-bg-color: var(--simple-colors-fixed-theme-accent-10);
+  --a11y-media-transcript-match-border-color: var(--simple-colors-fixed-theme-accent-12);
 }
 :host([dark]) {
   border: 1px solid var(--simple-colors-default-theme-grey-1);
@@ -205,11 +205,11 @@
   overflow: hidden;
 }
 @media screen {
-  :host([flex-layout]:not([responsive-size*="s"])) {
+  :host([flex-layout]:not([responsive-size="xs"])) {
     flex-flow: row;
     padding: 0;
   }
-  :host([flex-layout]:not([responsive-size*="s"])) #outerplayer {
+  :host([flex-layout]:not([responsive-size="xs"])) #outerplayer {
     flex: 1 0 auto;
   }
   :host #printthumb,
@@ -236,7 +236,7 @@
     right: unset;
     left: 5px;
   }
-  :host([flex-layout]:not([responsive-size*="s"])) > div {
+  :host([flex-layout]:not([responsive-size="xs"])) > div {
     width: 50%;
     flex: 1 1 auto;
   }
@@ -250,7 +250,7 @@
   :host([hide-transcript]) #outertranscript {
     display: none;
   }
-  :host(:not([no-height]):not([stacked-layout]):not([responsive-size*="s"]))
+  :host(:not([no-height]):not([stacked-layout]):not([responsive-size="xs"]))
     #transcript {
     position: absolute;
     top: 44px;
@@ -259,7 +259,7 @@
     bottom: 0;
     overflow-y: scroll;
   }
-  :host(:not([no-height]):not([stacked-layout]):not([responsive-size*="s"]))
+  :host(:not([no-height]):not([stacked-layout]):not([responsive-size="xs"]))
     #innerplayer.totop {
     position: absolute;
     top: 0;
@@ -276,7 +276,7 @@
     top: unset;
     bottom: 5px;
   }
-  :host([sticky]:not([sticky-corner="none"]):not([no-height]):not([stacked-layout]):not([responsive-size*="s"]))
+  :host([sticky]:not([sticky-corner="none"]):not([no-height]):not([stacked-layout]):not([responsive-size="xs"]))
     #controls {
     display: none;
   }

@@ -1,0 +1,15 @@
+
+<vaadin-split-layout>
+  <div>
+    <paper-button raised="" noink="">Add to configure</paper-button>
+    <paper-button raised="" noink="">Add to advanced</paper-button>
+    <code-editor id="code"  on-value-changed="_editorDataChanged" language="json"></code-editor>
+    <json-editor id="json" label="JSON" value="{{haxSchema}}"></json-editor>
+  </div>
+  <div>
+    <hax-schema-form id="form" configure-schema="[[configureSchema]]" advanced-schema="[[advancedSchema]]" value="{{value}}"></hax-schema-form>
+  </div>
+</vaadin-split-layout>
+
+
+

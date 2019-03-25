@@ -5,13 +5,10 @@ import "@polymer/paper-icon-button/paper-icon-button.js";
 import "./lib/a11y-collapse-accordion-button.js";
 import "./lib/a11y-collapse-icon-button.js";
 /**
-`a11y-collapse`
-An accessible expand collapse.
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
-
+ * `a11y-collapse`
+ * An accessible expand collapse.
+ * 
+ * @microcopy - the mental model for this element```
   <a11y-collapse 
     accordion 
     disabled
@@ -46,16 +43,19 @@ An accessible expand collapse.
   --a11y-collapse-icon-rotated: { ... };           //sets CSS for the a11y-collapse icon when rotated
   --a11y-collapse-content: { ... };                //sets CSS for the a11y-collapse expanded/collapsed content
   --a11y-collapse-content-expanded: { ... };       //sets CSS for the a11y-collapse expanded/collapsed content when expanded
-
-
-*/
+```
+ *
+ * @customElement
+ * @polymer
+ * @demo demo/index.html demo
+ */
 let A11yCollapse = Polymer({
   _template: html`
     <style>
       :host {
         display: block;
+        margin: var(--a11y-collapse-margin, 15px 0);
         border: var(--a11y-collapse-border, 1px solid);
-        margin: 15px 0;
         transition: all 0.5s;
         @apply --a11y-collapse;
       }
@@ -66,6 +66,12 @@ let A11yCollapse = Polymer({
         border-top: 0px solid rgba(255, 255, 255, 0);
         transition: all 0.5s ease-in-out;
         @apply --a11y-collapse-content;
+      }
+      :host(:not(:first-of-type)) {
+        border-top: var(
+          --a11y-collapse-border-between,
+          var(--a11y-collapse-border, 1px solid)
+        );
       }
       :host([disabled]) {
         opacity: 0.5;
@@ -135,6 +141,7 @@ let A11yCollapse = Polymer({
      * accordion-style: whole header acts as button? default is just icon.
      */
     accordion: {
+      name: "accordion",
       type: Boolean,
       value: false,
       observer: "flush",
@@ -144,6 +151,7 @@ let A11yCollapse = Polymer({
      * is disabled?
      */
     disabled: {
+      name: "disabled",
       type: Boolean,
       value: false,
       reflectToAttribute: true
@@ -152,6 +160,7 @@ let A11yCollapse = Polymer({
      * icon when expanded
      */
     expanded: {
+      name: "expanded",
       type: Boolean,
       value: false,
       reflectToAttribute: true
@@ -160,13 +169,15 @@ let A11yCollapse = Polymer({
      * icon for the button
      */
     icon: {
+      name: "icon",
       type: String,
-      value: "icons:expand-more"
+      value: "expand-more"
     },
     /**
      * icon when expanded
      */
     iconExpanded: {
+      name: "iconExpanded",
       type: String,
       value: null
     },
@@ -174,6 +185,7 @@ let A11yCollapse = Polymer({
      * label for the button
      */
     label: {
+      name: "label",
       type: String,
       value: "expand/collapse"
     },
@@ -181,6 +193,7 @@ let A11yCollapse = Polymer({
      * optional label for the button when expanded
      */
     labelExpanded: {
+      name: "labelExpanded",
       type: String,
       value: null
     },
@@ -188,6 +201,7 @@ let A11yCollapse = Polymer({
      * tooltip for the button
      */
     tooltip: {
+      name: "tooltip",
       type: String,
       value: "toggle expand/collapse"
     },
@@ -195,6 +209,7 @@ let A11yCollapse = Polymer({
      * optional tooltip for the button when expanded
      */
     tooltipExpanded: {
+      name: "tooltipExpanded",
       type: String,
       value: null
     },
@@ -202,6 +217,7 @@ let A11yCollapse = Polymer({
      * If no expanded icon is set, the default icon will rotate when expanded
      */
     __rotateIcon: {
+      name: "__rotateIcon",
       type: Boolean,
       computed: "_isRotated(expanded,iconExpanded)"
     }

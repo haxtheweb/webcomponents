@@ -1,11 +1,11 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { HAXCMSThemeWiring } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/iron-pages/iron-pages.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
-import { HAXCMSThemeWiring } from "@lrnwebcomponents/haxcms-elements/lib/HAXCMSThemeWiring.js";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";
-import { autorun, toJS } from "mobx";
 import "./lib/simple-blog-listing.js";
 import "./lib/simple-blog-header.js";
 import "./lib/simple-blog-footer.js";
@@ -23,14 +23,20 @@ A simple blog and associated elements
 */
 let SimpleBlog = Polymer({
   _template: html`
+    <custom-style>
+      <style>
+        html,
+        body {
+          background-color: #fafafa;
+        }
+      </style>
+    </custom-style>
     <style include="simple-colors">
       :host {
         display: block;
         font-family: "Roboto", "Noto", sans-serif;
         -webkit-font-smoothing: antialiased;
         font-size: 14px;
-        margin: 0;
-        padding: 24px;
         background-color: #fafafa;
         font-family: "Open Sans", "MundoSans", helvetica neue, Arial, Helvetica,
           sans-serif;
@@ -89,7 +95,7 @@ let SimpleBlog = Polymer({
     </style>
     <iron-pages selected="[[selectedPage]]">
       <section>
-        <simple-blog-header manifest="[[manifest]]"></simple-blog-header>
+        <simple-blog-header></simple-blog-header>
         <simple-blog-listing
           id="listing"
           items="[[manifest.items]]"
@@ -114,10 +120,7 @@ let SimpleBlog = Polymer({
           edit-mode="[[editMode]]"
           ><slot></slot
         ></simple-blog-post>
-        <simple-blog-footer
-          id="footer"
-          manifest="[[manifest]]"
-        ></simple-blog-footer>
+        <simple-blog-footer id="footer"></simple-blog-footer>
       </section>
     </iron-pages>
   `,
@@ -177,7 +180,14 @@ let SimpleBlog = Polymer({
     // subscribe to manifest changes
     this.__disposer = autorun(() => {
       this.manifest = toJS(store.routerManifest);
-      this.activeItemId = toJS(store.activeItem);
+    });
+    this.__disposer2 = autorun(() => {
+      this.activeItem = toJS(store.activeItem);
+    });
+    this.__disposer3 = autorun(() => {
+      this.activeId = toJS(store.activeId);
+    });
+    this.__disposer4 = autorun(() => {
       this._locationChanged(store.location);
     });
   },
@@ -187,6 +197,9 @@ let SimpleBlog = Polymer({
   detached: function() {
     this.HAXCMSThemeWiring.disconnect(this);
     this.__disposer();
+    this.__disposer2();
+    this.__disposer3();
+    this.__disposer4();
   },
   /**
    * Listen for router location changes

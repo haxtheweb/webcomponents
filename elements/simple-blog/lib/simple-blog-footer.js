@@ -1,19 +1,16 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { autorun, toJS } from "mobx";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/simple-datetime/simple-datetime.js";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";
-import { autorun, toJS } from "mobx";
 /**
-`simple-blog-footer`
-A simple blog and associated elements
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
- - footer of the page for blog posts relating back to the main overview page
- -
-
-*/
+ * `simple-blog-footer`
+ * `Footer to blog posts`
+ * @demo demo/index.html
+ * @microcopy - the mental model for this element
+ * - footer of the page for blog posts relating back to the main overview page
+ */
 Polymer({
   _template: html`
     <style>
@@ -88,7 +85,8 @@ Polymer({
         font-weight: 400;
         text-shadow: 0 1px 16px rgba(0, 0, 0, 0.5), 0 0 1px rgba(0, 0, 0, 0.5);
       }
-      paper-button:not([disabled]) {
+      paper-button,
+      site-menu-button:not([disabled]) {
         display: block;
         text-align: center;
         letter-spacing: -0.32px;
@@ -98,18 +96,24 @@ Polymer({
         text-decoration: none;
         cursor: pointer;
         height: 44px;
-        background-color: var(--haxcms-color);
+        background-color: var(--haxcms-color, red);
         color: black;
-        vertical-align: middle;
         box-sizing: border-box;
         border-radius: none;
         line-height: 44px;
         margin: 16px 0;
         padding: 0;
+        --site-menu-button-button: {
+          height: 44px;
+          width: 100%;
+        }
       }
       paper-button:focus,
       paper-button:active,
-      paper-button:hover {
+      paper-button:hover,
+      site-menu-button:focus,
+      site-menu-button:active,
+      site-menu-button:hover {
         outline: 2px solid var(--haxcms-color);
         outline-offset: 8px;
       }
@@ -130,32 +134,25 @@ Polymer({
       ></div>
     </div>
     <div class="inner">
-      <paper-button
-        disabled="[[disableNextPage(activeManifestIndex)]]"
-        on-click="nextPage"
-        raised="[[!disableNextPage(activeManifestIndex)]]"
-      >
+      <site-menu-button type="prev" position="right" label="Previous post">
         <simple-datetime
-          hidden$="[[disableNextPage(activeManifestIndex)]]"
           format="M jS"
           timestamp="[[nextChanged]]"
           unix
-        ></simple-datetime>
-        [[nextTitle]]
-      </paper-button>
-      <paper-button
-        disabled="[[disablePrevPage(activeManifestIndex)]]"
-        on-click="prevPage"
-        raised="[[!disablePrevPage(activeManifestIndex)]]"
-      >
+          slot="suffix"
+        >
+        </simple-datetime>
+        <span slot="suffix">[[nextTitle]]</span>
+      </site-menu-button>
+      <site-menu-button type="next" position="right" label="Next post">
         <simple-datetime
-          hidden$="[[disablePrevPage(activeManifestIndex)]]"
           format="M jS"
           timestamp="[[prevChanged]]"
           unix
+          slot="prefix"
         ></simple-datetime>
-        [[prevTitle]]
-      </paper-button>
+        <span slot="prefix">[[prevTitle]]</span>
+      </site-menu-button>
       <paper-button raised on-tap="_backButtonTap">Back to list</paper-button>
       <h2 class="blog-title">[[manifest.title]]</h2>
       <h3 class="blog-description">[[manifest.description]]</h3>
@@ -170,44 +167,26 @@ Polymer({
      */
     activeManifestIndex: {
       type: Number,
-      value: -1
+      observer: "_activeManifestIndexChanged"
     },
     /**
      * Manifest, JSON Outline Schema object
      */
     manifest: {
       type: Object
-    },
-    activeItemId: {
-      type: String,
-      observer: "_activeItemIdChanged"
     }
   },
-  _activeItemIdChanged: function(newValue, oldValue) {
-    const item = this.manifest.items
-      .filter((d, i) => {
-        if (newValue === d.id) {
-          this.activeManifestIndex = i;
-          return d;
-        }
-      })
-      .pop();
-    if (!this.disablePrevPage(this.activeManifestIndex)) {
-      this.prevTitle =
-        " - " + this.manifest.items[this.activeManifestIndex - 1].title;
-      this.prevChanged = this.manifest.items[
-        this.activeManifestIndex - 1
-      ].metadata.created;
+  _activeManifestIndexChanged: function(newValue) {
+    if (this.manifest.items[newValue - 1]) {
+      this.prevTitle = " - " + this.manifest.items[newValue - 1].title;
+      this.prevChanged = this.manifest.items[newValue - 1].metadata.created;
     } else {
       this.prevTitle = "";
       this.prevChanged = "";
     }
-    if (!this.disableNextPage(this.activeManifestIndex)) {
-      this.nextTitle =
-        " - " + this.manifest.items[this.activeManifestIndex + 1].title;
-      this.nextChanged = this.manifest.items[
-        this.activeManifestIndex + 1
-      ].metadata.created;
+    if (this.manifest.items[newValue + 1]) {
+      this.nextTitle = " - " + this.manifest.items[newValue + 1].title;
+      this.nextChanged = this.manifest.items[newValue + 1].metadata.created;
     } else {
       this.nextTitle = "";
       this.nextChanged = "";
@@ -220,7 +199,29 @@ Polymer({
     // subscribe to manifest changes
     this.__disposer = autorun(() => {
       this.manifest = toJS(store.routerManifest);
-      this.activeItemId = toJS(store.activeItem);
+      if (typeof this.manifest.title !== typeof undefined) {
+        document.title = this.manifest.title;
+      }
+      if (
+        typeof this.manifest.metadata !== typeof undefined &&
+        typeof this.manifest.metadata.cssVariable !== typeof undefined
+      ) {
+        // json outline schema changed, allow other things to react
+        // fake way of forcing an update of these items
+        let ary = this.manifest.metadata.cssVariable
+          .replace("--simple-colors-default-theme-", "")
+          .split("-");
+        ary.pop();
+        this.accentColor = ary.join("-");
+        // set this directly instead of messing w/ accentColor
+        document.body.style.setProperty(
+          "--haxcms-color",
+          this.manifest.metadata.hexCode
+        );
+      }
+    });
+    this.__disposer2 = autorun(() => {
+      this.activeManifestIndex = toJS(store.activeManifestIndex);
     });
   },
   /**
@@ -228,74 +229,7 @@ Polymer({
    */
   detached: function() {
     this.__disposer();
-  },
-
-  /**
-   * disablePrevPage
-   */
-  disablePrevPage: function(index) {
-    if (index === 0 || index === -1) {
-      return true;
-    }
-    return false;
-  },
-  /**
-   * disableNextPage
-   */
-  disableNextPage: function(index) {
-    if (index >= this.manifest.items.length - 1) {
-      return true;
-    }
-    return false;
-  },
-  /**
-   * Go back a page (if we can)
-   */
-  prevPage: function(e) {
-    this.changePage("previous");
-  },
-  /**
-   * Advance a page (if we can)
-   */
-  nextPage: function(e) {
-    this.changePage("next");
-  },
-  /**
-   * Go forward a page
-   */
-  changePage: function(direction) {
-    if (
-      direction == "next" &&
-      this.activeManifestIndex < this.manifest.items.length - 1
-    ) {
-      window.history.pushState(
-        {},
-        null,
-        this.manifest.items[this.activeManifestIndex + 1].location
-      );
-      window.dispatchEvent(new PopStateEvent("popstate"));
-      this.dispatchEvent(
-        new CustomEvent("haxcms-active-item-changed", {
-          bubbles: true,
-          cancelable: true,
-          detail: this.manifest.items[this.activeManifestIndex + 1]
-        })
-      );
-    } else if (direction == "previous" && this.activeManifestIndex > 0) {
-      window.history.pushState(
-        {},
-        null,
-        this.manifest.items[this.activeManifestIndex - 1].location
-      );
-      window.dispatchEvent(new PopStateEvent("popstate"));
-      this.dispatchEvent(
-        new CustomEvent("haxcms-active-item-changed", {
-          bubbles: true,
-          cancelable: true,
-          detail: this.manifest.items[this.activeManifestIndex - 1]
-        })
-      );
-    }
+    this.__disposer2();
   },
 
   /**

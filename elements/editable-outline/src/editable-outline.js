@@ -58,6 +58,7 @@ class EditableOutline extends PolymerElement {
       if (info.removedNodes.length > 0 && this.__outdent) {
         for (let i in info.removedNodes) {
           if (
+            reference &&
             info.removedNodes[i].tagName &&
             info.removedNodes[i].tagName === "LI" &&
             info.removedNodes[i].getAttribute("data-jos-id") !== null

@@ -9,7 +9,7 @@
     <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '../a11y-media-player.js';
+      import "../a11y-media-player.js";
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
       .vertical-section-container.centered>* {
@@ -42,12 +42,12 @@
       <h1>a11y-media-player Demo</h1>
       <demo-snippet>
         <template>
-          <a11y-media-player accent-color="pink" start-seconds="2" stop-seconds="11">
+          <a11y-media-player accent-color="pink">
             <source src="https://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
             <source src="https://iandevlin.github.io/mdn/video-player-with-captions/sintel-short.webm" type="video/webm">
-            <track label="English" kind="subtitles" srclang="en" src="samples/sintel-en.vtt" default="">
-            <track label="Deutsch" kind="subtitles" srclang="de" src="samples/sintel-de.vtt">
-            <track label="Español" kind="subtitles" srclang="es" src="samples/sintel-es.vtt">
+            <track label="English" kind="subtitles" srclang="en" src="./samples/sintel-en.vtt" default="">
+            <track label="Deutsch" kind="subtitles" srclang="de" src="./samples/sintel-de.vtt">
+            <track label="Español" kind="subtitles" srclang="es" src="./samples/sintel-es.vtt">
           </a11y-media-player>
         </template>
       </demo-snippet>
@@ -55,24 +55,23 @@
       <h2>Video example, dark, with no timestamps, no interactive transcript, and no search feature</h2>
       <demo-snippet>
         <template>
-          <a11y-media-player accent-color="teal" dark="" thumbnail-src="samples/stclair.jpg" media-title="a11y-media-player demo video"
-            disable-interactive="" disable-search="" hide-timestamps="">
+          <a11y-media-player accent-color="teal" dark thumbnail-src="./samples/stclair.jpg" media-title="Video" disable-interactive disable-search hide-timestamps>
             <source src="https://personal.psu.edu/lnm105/stclair.mp4" type="video/mp4">
-            <track label="English" kind="subtitles" srclang="en" src="samples/stclair.vtt" default="">
+            <track label="English" kind="subtitles" srclang="en" src="./samples/stclair.vtt" default>
           </a11y-media-player>
         </template>
       </demo-snippet>
     
       <div class="smaller-examples">
-        <h2>Video example, standalone, with width set</h2>
+        <h2>Video example, standalone, with width set and a clip start/ stop set</h2>
         <demo-snippet>
           <template>
-            <a11y-media-player accent-color="blue" stand-alone width="350px">
+            <a11y-media-player accent-color="blue" stand-alone width="350px"  start-seconds="2" stop-seconds="11">
               <source src="https://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
               <source src="https://iandevlin.github.io/mdn/video-player-with-captions/sintel-short.webm" type="video/webm">
-              <track label="Español" kind="subtitles" srclang="es" src="samples/sintel-es.vtt" default>
-              <track label="English" kind="subtitles" srclang="en" src="samples/sintel-en.vtt">
-              <track label="Deutsch" kind="subtitles" srclang="de" src="samples/sintel-de.vtt">
+              <track label="Español" kind="subtitles" srclang="es" src="./samples/sintel-es.vtt" default>
+              <track label="English" kind="subtitles" srclang="en" src="./samples/sintel-en.vtt">
+              <track label="Deutsch" kind="subtitles" srclang="de" src="./samples/sintel-de.vtt">
             </a11y-media-player>
           </template>
         </demo-snippet>
@@ -83,9 +82,9 @@
             <a11y-media-player accent-color="yellow" dark width="480px" height="270px">
               <source src="https://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
               <source src="https://iandevlin.github.io/mdn/video-player-with-captions/sintel-short.webm" type="video/webm">
-              <track label="Español" kind="subtitles" srclang="es" src="samples/sintel-es.vtt" default>
-              <track label="English" kind="subtitles" srclang="en" src="samples/sintel-en.vtt">
-              <track label="Deutsch" kind="subtitles" srclang="de" src="samples/sintel-de.vtt">
+              <track label="Español" kind="subtitles" srclang="es" src="./samples/sintel-es.vtt" default>
+              <track label="English" kind="subtitles" srclang="en" src="./samples/sintel-en.vtt">
+              <track label="Deutsch" kind="subtitles" srclang="de" src="./samples/sintel-de.vtt">
             </a11y-media-player>
           </template>
         </demo-snippet>
@@ -94,46 +93,12 @@
       <h2>Video example, with dark transcript and custom microcopy</h2>
       <demo-snippet>
         <template>
-          <script>
-            let es = document.getElementById('spanish'), 
-              localization = {
-                "autoScroll": { "label": "Desplazamiento Automático" },
-                "captions": { 
-                  "label": "Subtítulos", 
-                  "off": "Apagado" 
-                },
-                "audio": { "label": "Audio" },
-                "forward": { "label": "Adelante" },
-                "fullscreen": { "label": "Pantalla Completa" },
-                "loading": { "label": "Cargando..." },
-                "loop": { "label": "Lazo" },
-                "mute": { "label": "Mudo" },
-                "nextResult": { "label": "Siguiente" },
-                "pause": { "label": "Pausa" },
-                "play": { "label": "Comienzo" },
-                "prevResult": { "label": "Anterior" },
-                "print": { "label": "Impresión" },
-                "search": { "label": "Buscar la transcripción" },
-                "settings": { "label": "Referencias" },
-                "rewind": { "label": "Rebobinar" },
-                "speed": { "label": "Velocidad %" },
-                "transcript": { 
-                  "label": "Transcripción", 
-                  "loading": "Cargando la transcripción...", 
-                  "skip": "Omitir la transcripción" 
-                },
-                "unmute": { "label": "Dejar de Silenciar" },
-                "volume": { "label": "Volumen" },
-                "video": { "label": "Vídeo" }
-              };
-              es.localization = localization;
-          </script>
-          <a11y-media-player id="spanish" accent-color="orange" dark dark-transcript lang="es" ui-language="es">
+          <a11y-media-player id="spanish" accent-color="orange" dark dark-transcript lang="es">
             <source src="https://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
             <source src="https://iandevlin.github.io/mdn/video-player-with-captions/sintel-short.webm" type="video/webm">
-            <track label="Español" kind="subtitles" srclang="es" src="samples/sintel-es.vtt" default="">
-            <track label="English" kind="subtitles" srclang="en" src="samples/sintel-en.vtt">
-            <track label="Deutsch" kind="subtitles" srclang="de" src="samples/sintel-de.vtt">
+            <track label="English" kind="subtitles" srclang="en" src="./samples/sintel-en.vtt" default="">
+            <track label="Deutsch" kind="subtitles" srclang="de" src="./samples/sintel-de.vtt">
+            <track label="Español" kind="subtitles" srclang="es" src="./samples/sintel-es.vtt">
           </a11y-media-player>
         </template>
       </demo-snippet>

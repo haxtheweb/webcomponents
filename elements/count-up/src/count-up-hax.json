@@ -1,0 +1,72 @@
+{
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Count up",
+    "description": "count up js wrapper with minimal styling",
+    "icon": "icons:android",
+    "color": "green",
+    "groups": ["Up"],
+    "handles": [
+      {
+        "type": "todo:read-the-docs-for-usage"
+      }
+    ],
+    "meta": {
+      "author": "btopro",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "quick": [],
+    "configure": [
+      {
+        "property": "start",
+        "description": "",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "end",
+        "description": "",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "duration",
+        "description": "",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "noeasing",
+        "description": "",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "decimalplaces",
+        "description": "",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "separator",
+        "description": "",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "decimal",
+        "description": "",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "prefix",
+        "description": "",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "suffix",
+        "description": "",
+        "inputMethod": "textfield"
+      }
+    ],
+    "advanced": []
+  }
+}

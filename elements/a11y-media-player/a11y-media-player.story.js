@@ -1,57 +1,138 @@
-import { storiesOf } from "@storybook/polymer";
-import * as storybookBridge from "@storybook/addon-knobs/polymer";
 import { A11yMediaPlayer } from "./a11y-media-player.js";
+import { A11yMediaBehaviors } from "./lib/a11y-media-behaviors.js";
+import * as enVtt from "./demo/samples/sintel-en.vtt";
+import * as deVtt from "./demo/samples/sintel-de.vtt";
+import * as esVtt from "./demo/samples/sintel-es.vtt";
+import * as buellerVtt from "./demo/samples/bueller.vtt";
+import * as buellerMp3 from "./demo/samples/bueller.mp3";
+import * as stclairVtt from "./demo/samples/stclair.vtt";
+import stclairJpg from "./demo/samples/stclair.jpg";
+import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
-// need to account for polymer goofiness when webpack rolls this up
-var template = require("raw-loader!./demo/index.html");
-let pattern = /<body[^>]*>((.|[\n\r])*)<\/body>/im;
-var array_matches = pattern.exec(template);
-// now template is just the body contents
-template = array_matches[1];
-const stories = storiesOf("11", module);
-stories.addDecorator(storybookBridge.withKnobs);
-stories.add("a11y-media-player", () => {
-  var binding = {};
-  // start of tag for demo
-  let elementDemo = `<a11y-media-player`;
-  // mix in properties defined on the class
-  for (var key in A11yMediaPlayer.properties) {
-    // skip prototype
-    if (!A11yMediaPlayer.properties.hasOwnProperty(key)) continue;
-    // convert typed props
-    if (A11yMediaPlayer.properties[key].type.name) {
-      let method = "text";
-      switch (A11yMediaPlayer.properties[key].type.name) {
-        case "Boolean":
-        case "Number":
-        case "Object":
-        case "Array":
-        case "Date":
-          method = A11yMediaPlayer.properties[key].type.name.toLowerCase();
-          break;
-        default:
-          method = "text";
-          break;
-      }
-      binding[key] = storybookBridge[method](
-        key,
-        A11yMediaPlayer.properties[key].value
-      );
-      // ensure ke-bab case
-      let kebab = key.replace(/[A-Z\u00C0-\u00D6\u00D8-\u00DE]/g, function(
-        match
-      ) {
-        return "-" + match.toLowerCase();
-      });
-      elementDemo += ` ${kebab}="${binding[key]}"`;
+window.StorybookUtilities.requestAvailability();
+/**
+ * add to the pattern library
+ */
+const A11yMediaPlayerVideoPattern = {
+  "of": "Pattern Library/Molecules/Media", 
+  "name": 'Video',
+  "file": require("raw-loader!./demo/index.html"),
+  "replacements": [
+    {"find": "\.\/samples\/sintel-en.vtt", "replace": enVtt },
+    {"find": "\.\/samples\/sintel-es.vtt", "replace": esVtt },
+    {"find": "\.\/samples\/sintel-de.vtt", "replace": deVtt },
+    {"find": "\.\/samples\/stclair.vtt", "replace": stclairVtt },
+    {"find": "\.\/samples\/stclair.jpg", "replace": stclairJpg }
+  ]
+}
+
+const A11yMediaPlayerAudioPattern = {
+  "of": "Pattern Library/Molecules/Media", 
+  "name": 'Audio',
+  "file": require("raw-loader!./demo/audio.html"),
+  "replacements": [
+    {"find": "bueller.vtt", "replace": buellerMp3 }
+  ]
+}
+
+const A11yMediaPlayerYouTubePattern = {
+  "of": "Pattern Library/Molecules/Media", 
+  "name": 'YouTube',
+  "file": require("raw-loader!./demo/youtube.html"),
+  "replacements": [
+    {"find": "bueller.vtt", "replace": buellerVtt }
+  ]
+}
+window.StorybookUtilities.instance.addPattern(A11yMediaPlayerAudioPattern);
+window.StorybookUtilities.instance.addPattern(A11yMediaPlayerVideoPattern);
+window.StorybookUtilities.instance.addPattern(A11yMediaPlayerYouTubePattern);
+
+/**
+ * add the live demo
+ */
+//combine all of the inherited properties into one object
+let getVideoKnobs = () => {
+  let allKnobs = Object.assign(
+    window.StorybookUtilities.instance.getSimpleColors(),
+    A11yMediaPlayer.properties, A11yMediaBehaviors.properties
+  );
+  allKnobs.crossorigin = {value: "anonymous", "type": "Select", "options": ["anonymous","use-credentials",""]};
+  //remove properties we don't want to expose
+  [
+    'audioOnly',
+    'flexLayout',
+    'manifest',
+    'media',
+    'muteUnmute',
+    'playing',
+    'playPause',
+    'responsiveSize',
+    'seekDisabled',
+    'selectedTrack',
+    'selectedTrackID',
+    'status',
+    'target',
+    'search',
+    'youTube'
+  ].forEach(prop => {
+    delete allKnobs[prop];
+  });
+  return allKnobs;
+},
+  audioKnobs = getVideoKnobs(), 
+  videoKnobs = getVideoKnobs(), 
+  ytKnobs = getVideoKnobs();
+ytKnobs.tracks.value = [
+  {"src": buellerVtt,  "srclang": "en", "label": "English"}
+] ;
+delete ytKnobs.source;
+delete ytKnobs.sources;
+ytKnobs.youtubeId.value = "NP0mQeLWCCo";
+
+const A11yMediaPlayerStory = {
+  "of": "a11y-media-player",
+  "name": "a11y-media-player",
+  "props": videoKnobs, 
+  "slots": {
+    "slot": {
+      "name": "slot",
+      "type": "String",
+      "value": `
+        <source src="https://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
+        <track src="${enVtt}" srclang="en" label="English">
+        <track src="${esVtt}" srclang="es" label="Español">
+        <track src="${deVtt}" srclang="de" label="Deutsch">
+      `
     }
-  }
-  const innerText = storybookBridge.text("Inner contents", "11");
-  elementDemo += `> ${innerText}</a11y-media-player>`;
-  return `
-  <h1>Live demo</h1>
-  ${elementDemo}
-  <h1>Additional examples</h1>
-  ${template}
-  `;
-});
+  }, 
+  "attr": ``,
+  "slotted": ``
+};
+const A11yMediaPlayerAudioStory = {
+  "of": "a11y-media-player",
+  "name": "a11y-media-player (Audio)",
+  "props": audioKnobs, 
+  "slots": {
+    "slot": {
+      "name": "slot",
+      "type": "String",
+      "value": `
+        <source src="${buellerMp3}" type="audio/mp3">
+        <track src="${stclairVtt}" srclang="en" label="English">
+      `
+    }
+  }, 
+  "attr": ` audio-only`,
+  "slotted": ``
+};
+const A11yMediaPlayerYTStory = {
+  "of": "a11y-media-player",
+  "name": "a11y-media-player (YouTube)",
+  "props": ytKnobs, 
+  "slots": {}, 
+  "attr": ``,
+  "slotted": ``
+};
+window.StorybookUtilities.instance.addLiveDemo(A11yMediaPlayerStory);
+window.StorybookUtilities.instance.addLiveDemo(A11yMediaPlayerAudioStory);
+window.StorybookUtilities.instance.addLiveDemo(A11yMediaPlayerYTStory);

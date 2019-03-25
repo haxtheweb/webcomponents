@@ -16,7 +16,7 @@
       "hax": "src/select-menu-hax.json"
     }
   },
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "Automated conversion of select-menu/",
   "repository": {
     "type": "git",
@@ -48,7 +48,8 @@
     "web-animations-js": "^2.3.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.0.5",
+    "@lrnwebcomponents/deduping-fix": "^2.0.8",
+    "@lrnwebcomponents/storybook-utilities": "^2.0.8",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@webcomponents/webcomponentsjs": "2.2.4",

@@ -16,7 +16,7 @@
       "hax": "src/task-list-hax.json"
     }
   },
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "Automated conversion of task-list/",
   "repository": {
     "type": "git",
@@ -40,13 +40,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^2.0.5",
-    "@lrnwebcomponents/materializecss-styles": "^2.0.7",
-    "@lrnwebcomponents/schema-behaviors": "^2.0.5",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.0.8",
+    "@lrnwebcomponents/materializecss-styles": "^2.0.8",
+    "@lrnwebcomponents/schema-behaviors": "^2.0.8",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.0.5",
+    "@lrnwebcomponents/deduping-fix": "^2.0.8",
+    "@lrnwebcomponents/storybook-utilities": "^2.0.8",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@webcomponents/webcomponentsjs": "2.2.4",

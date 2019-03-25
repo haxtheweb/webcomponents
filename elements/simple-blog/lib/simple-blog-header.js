@@ -1,18 +1,15 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { autorun, toJS } from "mobx";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js";
 /**
-`simple-blog`
-A simple blog and associated elements
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
- -
- -
-
-*/
+ * `simple-blog-header`
+ * `A simple blog header to the front of the site`
+ * @demo demo/index.html
+ */
 Polymer({
   _template: html`
-    <style is="custom-style">
+    <style>
       :host {
         display: block;
       }
@@ -81,9 +78,14 @@ Polymer({
         font-weight: 400;
       }
       .custom-links {
-        margin: 0 0 50px;
+        margin: 0 auto 36px;
         text-align: center;
         color: #ccc;
+        display: flex;
+        justify-content: center;
+      }
+      site-rss-button {
+        margin: 0 4px;
       }
     </style>
     <div class="teaserimage">
@@ -99,7 +101,10 @@ Polymer({
       ></iron-icon>
       <h1 class="blog-title">[[manifest.title]]</h1>
       <h2 class="blog-description">[[manifest.description]]</h2>
-      <div class="custom-links"></div>
+      <div class="custom-links">
+        <site-rss-button type="atom"></site-rss-button>
+        <site-rss-button type="rss"></site-rss-button>
+      </div>
     </header>
   `,
 
@@ -112,5 +117,13 @@ Polymer({
     manifest: {
       type: Object
     }
+  },
+  attached: function() {
+    this.__disposer = autorun(() => {
+      this.manifest = toJS(store.manifest);
+    });
+  },
+  detached: function() {
+    this.__disposer();
   }
 });

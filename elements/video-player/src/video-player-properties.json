@@ -1,5 +1,12 @@
 {
   /**
+   * Is the media an audio file only?
+   */
+  "audioOnly": {
+    "type": "Boolean",
+    "value": false
+  },
+  /**
    * Optional accent color for controls,
    * using the following materialize "colors":
    * red, pink, purple, deep-purple, indigo, blue,
@@ -152,6 +159,13 @@
     "reflectToAttribute": true
   },
   /**
+   * The url for a single subtitle track
+   */
+  "track": {
+    "type": "String",
+    "value": null
+  },
+  /**
    * Array of text tracks
    * [{
    *  "src": "path/to/track.vtt",
@@ -175,7 +189,7 @@
    */
   "trackData": {
     "type": "Array",
-    "computed": "_getTrackData(tracks)"
+    "computed": "_getTrackData(track,tracks)"
   },
   /**
    * Source of optional thumbnail image

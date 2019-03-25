@@ -562,24 +562,22 @@ export class HAXWiring {
                 };
                 break;
               case "select":
-                var slot = "";
-                if (typeof settings[value].options !== typeof undefined) {
-                  for (var val in settings[value].options) {
-                    slot +=
-                      '<paper-item value="' +
-                      val +
-                      '">' +
-                      settings[value].options[val] +
-                      "</paper-item>" +
-                      "\n";
-                  }
+                let options = [];
+                for (var option in settings[value].options) {
+                  let item = [
+                    {
+                      alt: settings[value].options[option],
+                      value: option
+                    }
+                  ];
+                  options.push(item);
                 }
                 props[settings[value].property].component = {
-                  name: "dropdown-select",
+                  name: "simple-picker",
                   valueProperty: "value",
-                  slot: slot,
                   properties: {
-                    required: settings[value].required
+                    required: settings[value].required,
+                    options: options
                   }
                 };
                 break;
@@ -730,24 +728,22 @@ export class HAXWiring {
                 };
                 break;
               case "select":
-                var slot = "";
-                if (typeof settings[value].options !== typeof undefined) {
-                  for (var val in settings[value].options) {
-                    slot +=
-                      '<paper-item value="' +
-                      val +
-                      '">' +
-                      settings[value].options[val] +
-                      "</paper-item>" +
-                      "\n";
-                  }
+                let options = [];
+                for (var option in settings[value].options) {
+                  let item = [
+                    {
+                      alt: settings[value].options[option],
+                      value: option
+                    }
+                  ];
+                  options.push(item);
                 }
                 props[settings[value].attribute].component = {
-                  name: "dropdown-select",
+                  name: "simple-picker",
                   valueProperty: "value",
-                  slot: slot,
                   properties: {
-                    required: settings[value].required
+                    required: settings[value].required,
+                    options: options
                   }
                 };
                 break;
@@ -858,7 +854,7 @@ export class HAXWiring {
       return props;
     };
     /**
-     * Convert input method to schedma type
+     * Convert input method to schema type
      */
     this.getHaxJSONSchemaType = inputMethod => {
       var methods = this.validHAXPropertyInputMethod();

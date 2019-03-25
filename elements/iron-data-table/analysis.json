@@ -8,7 +8,7 @@
       "properties": [
         {
           "name": "label",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -22,14 +22,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "value",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -44,14 +42,13 @@
           },
           "metadata": {
             "polymer": {
-              "notify": true,
-              "attributeType": "String"
+              "notify": true
             }
           }
         },
         {
           "name": "hidden",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -65,9 +62,7 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           }
         }
       ],
@@ -91,10 +86,7 @@
             {
               "name": "e"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         }
       ],
       "staticMethods": [],
@@ -127,7 +119,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "value",
@@ -143,7 +135,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "hidden",
@@ -159,7 +151,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         }
       ],
       "events": [
@@ -183,8 +175,27 @@
       "path": "lib/data-table-column.js",
       "properties": [
         {
+          "name": "_template",
+          "type": "Object",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 4,
+              "column": 2
+            },
+            "end": {
+              "line": 13,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
           "name": "alignRight",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "If `true`, cell contents will be aligned on the right",
           "privacy": "public",
           "sourceRange": {
@@ -198,15 +209,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           },
           "defaultValue": "false"
         },
         {
           "name": "name",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "Name of the column. This value is displayed in the header cell of the column",
           "privacy": "public",
           "sourceRange": {
@@ -220,15 +229,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"\""
         },
         {
           "name": "filterBy",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "Path to a property that will be filtered by this column. If set, a filter input\nwill be automaticelly placed on the header cell of the column.",
           "privacy": "public",
           "sourceRange": {
@@ -242,14 +249,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "filterValue",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "Filter value that will be used to filter the items using the property defined\nin `filterBy` property.",
           "privacy": "public",
           "sourceRange": {
@@ -263,14 +268,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "width",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "Minimum width of the column",
           "privacy": "public",
           "sourceRange": {
@@ -284,15 +287,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           },
           "defaultValue": "\"100px\""
         },
         {
           "name": "flex",
-          "type": "number | null | undefined",
+          "type": "number",
           "description": "Ratio of how the extra space between columns is distributed. If every cell\nhas the same `flex` value, the space will be distributed evenly.",
           "privacy": "public",
           "sourceRange": {
@@ -306,15 +307,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Number"
-            }
+            "polymer": {}
           },
           "defaultValue": "1"
         },
         {
           "name": "hidden",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "If `true`, the cells of this column will be hidden.",
           "privacy": "public",
           "sourceRange": {
@@ -328,15 +327,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           },
           "defaultValue": "false"
         },
         {
           "name": "order",
-          "type": "number | null | undefined",
+          "type": "number",
           "description": "Display order of the column in relation with the other columns.",
           "privacy": "public",
           "sourceRange": {
@@ -351,14 +348,13 @@
           },
           "metadata": {
             "polymer": {
-              "notify": true,
-              "attributeType": "Number"
+              "notify": true
             }
           }
         },
         {
           "name": "sortBy",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "Path to a property that will be sorted by this column. If set, a sorting\nindicator will be automatically placed in the header cell of this column.",
           "privacy": "public",
           "sourceRange": {
@@ -372,14 +368,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "table",
-          "type": "Object | null | undefined",
+          "type": "Object",
           "description": "Reference to the parent <iron-data-table> element.",
           "privacy": "public",
           "sourceRange": {
@@ -393,14 +387,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "headerTemplate",
-          "type": "Object | null | undefined",
+          "type": "Object",
           "description": "Template for the header cell",
           "privacy": "public",
           "sourceRange": {
@@ -415,14 +407,13 @@
           },
           "metadata": {
             "polymer": {
-              "readOnly": true,
-              "attributeType": "Object"
+              "readOnly": true
             }
           }
         },
         {
           "name": "template",
-          "type": "Object | null | undefined",
+          "type": "Object",
           "description": "Template for the row item cell",
           "privacy": "public",
           "sourceRange": {
@@ -437,8 +428,7 @@
           },
           "metadata": {
             "polymer": {
-              "readOnly": true,
-              "attributeType": "Object"
+              "readOnly": true
             }
           }
         }
@@ -469,10 +459,7 @@
             {
               "name": "value"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_alignRightChanged",
@@ -496,10 +483,7 @@
             {
               "name": "alignRight"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_nameChanged",
@@ -523,10 +507,7 @@
             {
               "name": "name"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_sortByChanged",
@@ -550,10 +531,7 @@
             {
               "name": "sortBy"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_flexChanged",
@@ -577,10 +555,7 @@
             {
               "name": "flex"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_headerTemplateChanged",
@@ -604,10 +579,7 @@
             {
               "name": "headerTemplate"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_hiddenChanged",
@@ -631,10 +603,7 @@
             {
               "name": "hidden"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_orderChanged",
@@ -658,10 +627,7 @@
             {
               "name": "order"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_templateChanged",
@@ -685,10 +651,7 @@
             {
               "name": "template"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_widthChanged",
@@ -712,10 +675,7 @@
             {
               "name": "width"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_filterByChanged",
@@ -739,10 +699,7 @@
             {
               "name": "filterBy"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_filterValueChanged",
@@ -769,10 +726,7 @@
             {
               "name": "filterBy"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         }
       ],
       "staticMethods": [],
@@ -805,7 +759,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "name",
@@ -821,7 +775,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "filter-by",
@@ -837,7 +791,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "filter-value",
@@ -853,7 +807,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "width",
@@ -869,7 +823,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "flex",
@@ -885,7 +839,7 @@
             }
           },
           "metadata": {},
-          "type": "number | null | undefined"
+          "type": "number"
         },
         {
           "name": "hidden",
@@ -901,7 +855,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "order",
@@ -917,7 +871,7 @@
             }
           },
           "metadata": {},
-          "type": "number | null | undefined"
+          "type": "number"
         },
         {
           "name": "sort-by",
@@ -933,7 +887,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "table",
@@ -949,7 +903,7 @@
             }
           },
           "metadata": {},
-          "type": "Object | null | undefined"
+          "type": "Object"
         },
         {
           "name": "header-template",
@@ -965,7 +919,7 @@
             }
           },
           "metadata": {},
-          "type": "Object | null | undefined"
+          "type": "Object"
         },
         {
           "name": "template",
@@ -981,7 +935,7 @@
             }
           },
           "metadata": {},
-          "type": "Object | null | undefined"
+          "type": "Object"
         }
       ],
       "events": [
@@ -1005,8 +959,27 @@
       "path": "lib/data-table-column-sort.js",
       "properties": [
         {
+          "name": "_template",
+          "type": "Object",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 4,
+              "column": 2
+            },
+            "end": {
+              "line": 57,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
           "name": "direction",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -1021,14 +994,13 @@
           },
           "metadata": {
             "polymer": {
-              "notify": true,
-              "attributeType": "String"
+              "notify": true
             }
           }
         },
         {
           "name": "path",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -1042,14 +1014,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "order",
-          "type": "number | null | undefined",
+          "type": "number",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -1064,14 +1034,13 @@
           },
           "metadata": {
             "polymer": {
-              "readOnly": true,
-              "attributeType": "Number"
+              "readOnly": true
             }
           }
         },
         {
           "name": "sortOrder",
-          "type": "Array | null | undefined",
+          "type": "Array",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -1085,9 +1054,7 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Array"
-            }
+            "polymer": {}
           }
         }
       ],
@@ -1138,10 +1105,7 @@
             {
               "name": "sortOrder"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_sort",
@@ -1158,10 +1122,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         }
       ],
       "staticMethods": [],
@@ -1194,7 +1155,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "path",
@@ -1210,7 +1171,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "order",
@@ -1226,7 +1187,7 @@
             }
           },
           "metadata": {},
-          "type": "number | null | undefined"
+          "type": "number"
         },
         {
           "name": "sort-order",
@@ -1242,7 +1203,7 @@
             }
           },
           "metadata": {},
-          "type": "Array | null | undefined"
+          "type": "Array"
         }
       ],
       "events": [
@@ -1267,7 +1228,7 @@
       "properties": [
         {
           "name": "expanded",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -1282,15 +1243,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           },
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
           "name": "index",
-          "type": "number | null | undefined",
+          "type": "number",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -1305,15 +1264,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Number"
-            }
+            "polymer": {}
           },
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
           "name": "item",
-          "type": "Object | null | undefined",
+          "type": "Object",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -1328,15 +1285,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
+            "polymer": {}
           },
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
           "name": "selected",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -1351,15 +1306,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           },
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
           "name": "table",
-          "type": "Object | null | undefined",
+          "type": "Object",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -1374,15 +1327,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
+            "polymer": {}
           },
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
           "name": "template",
-          "type": "Object | null | undefined",
+          "type": "Object",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -1396,14 +1347,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "_instances",
-          "type": "Array | null | undefined",
+          "type": "Array",
           "description": "singleton",
           "privacy": "protected",
           "sourceRange": {
@@ -1418,16 +1367,14 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Array"
-            }
+            "polymer": {}
           },
           "defaultValue": "[]",
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
           "name": "_forwardedParentProps",
-          "type": "Object | null | undefined",
+          "type": "Object",
           "description": "singleton",
           "privacy": "protected",
           "sourceRange": {
@@ -1442,16 +1389,14 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
+            "polymer": {}
           },
           "defaultValue": "{}",
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
           "name": "_instance",
-          "type": "Object | null | undefined",
+          "type": "Object",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -1467,15 +1412,33 @@
           },
           "metadata": {
             "polymer": {
-              "readOnly": true,
-              "attributeType": "Object"
+              "readOnly": true
             }
           },
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
+          "name": "_template",
+          "type": "Object",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 4,
+              "column": 2
+            },
+            "end": {
+              "line": 26,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
           "name": "alignRight",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -1489,14 +1452,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "column",
-          "type": "Object | null | undefined",
+          "type": "Object",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -1510,14 +1471,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "flex",
-          "type": "number | null | undefined",
+          "type": "number",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -1531,14 +1490,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Number"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "header",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -1552,14 +1509,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "hidden",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -1573,14 +1528,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "order",
-          "type": "number | null | undefined",
+          "type": "number",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -1594,14 +1547,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Number"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "width",
-          "type": "string | null | undefined",
+          "type": "string",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -1615,14 +1566,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "beforeBind",
-          "type": "Object | null | undefined",
+          "type": "Object",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -1636,104 +1585,11 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
+            "polymer": {}
           }
         }
       ],
       "methods": [
-        {
-          "name": "templatize",
-          "description": "Generates an anonymous `TemplateInstance` class (stored as `this.ctor`)\nfor the provided template.  This method should be called once per\ntemplate to prepare an element for stamping the template, followed\nby `stamp` to create new instances of the template.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/polymer/lib/legacy/templatizer-behavior.js",
-            "start": {
-              "line": 99,
-              "column": 2
-            },
-            "end": {
-              "line": 108,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "template",
-              "type": "!HTMLTemplateElement",
-              "description": "Template to prepare"
-            },
-            {
-              "name": "mutableData",
-              "type": "boolean=",
-              "description": "When `true`, the generated class will skip\n  strict dirty-checking for objects and arrays (always consider them to\n  be \"dirty\"). Defaults to false."
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "Templatizer"
-        },
-        {
-          "name": "stamp",
-          "description": "Creates an instance of the template prepared by `templatize`.  The object\nreturned is an instance of the anonymous class generated by `templatize`\nwhose `root` property is a document fragment containing newly cloned\ntemplate content, and which has property accessors corresponding to\nproperties referenced in template bindings.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/polymer/lib/legacy/templatizer-behavior.js",
-            "start": {
-              "line": 123,
-              "column": 2
-            },
-            "end": {
-              "line": 125,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "model",
-              "type": "Object=",
-              "description": "Object containing initial property values to\n  populate into the template bindings."
-            }
-          ],
-          "return": {
-            "type": "TemplateInstanceBase",
-            "desc": "Returns the created instance of\nthe template prepared by `templatize`."
-          },
-          "inheritedFrom": "Templatizer"
-        },
-        {
-          "name": "modelForElement",
-          "description": "Returns the template \"model\" (`TemplateInstance`) associated with\na given element, which serves as the binding scope for the template\ninstance the element is contained in.  A template model should be used\nto manipulate data associated with this template instance.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/polymer/lib/legacy/templatizer-behavior.js",
-            "start": {
-              "line": 138,
-              "column": 2
-            },
-            "end": {
-              "line": 140,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "el",
-              "type": "HTMLElement",
-              "description": "Element for which to return a template model."
-            }
-          ],
-          "return": {
-            "type": "TemplateInstanceBase",
-            "desc": "Model representing the binding scope for\n  the element."
-          },
-          "inheritedFrom": "Templatizer"
-        },
         {
           "name": "created",
           "description": "",
@@ -1751,9 +1607,6 @@
           },
           "metadata": {},
           "params": [],
-          "return": {
-            "type": "void"
-          },
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
@@ -1803,9 +1656,6 @@
               "name": "expanded"
             }
           ],
-          "return": {
-            "type": "void"
-          },
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
@@ -1832,9 +1682,6 @@
               "name": "index"
             }
           ],
-          "return": {
-            "type": "void"
-          },
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
@@ -1861,9 +1708,6 @@
               "name": "item"
             }
           ],
-          "return": {
-            "type": "void"
-          },
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
@@ -1890,9 +1734,6 @@
               "name": "item"
             }
           ],
-          "return": {
-            "type": "void"
-          },
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
@@ -1919,9 +1760,6 @@
               "name": "selected"
             }
           ],
-          "return": {
-            "type": "void"
-          },
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
@@ -1948,9 +1786,6 @@
               "name": "value"
             }
           ],
-          "return": {
-            "type": "void"
-          },
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
@@ -1980,9 +1815,6 @@
               "name": "value"
             }
           ],
-          "return": {
-            "type": "void"
-          },
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
@@ -2012,9 +1844,6 @@
               "name": "value"
             }
           ],
-          "return": {
-            "type": "void"
-          },
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
@@ -2032,10 +1861,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "_alignRightChanged",
@@ -2056,10 +1882,7 @@
             {
               "name": "alignRight"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_beforeBind",
@@ -2095,10 +1918,7 @@
             {
               "name": "selected"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_beforeBindHeader",
@@ -2122,10 +1942,7 @@
             {
               "name": "column"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_hiddenChanged",
@@ -2146,10 +1963,7 @@
             {
               "name": "hidden"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_orderChanged",
@@ -2170,10 +1984,7 @@
             {
               "name": "order"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_flexChanged",
@@ -2194,10 +2005,7 @@
             {
               "name": "flex"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_widthChanged",
@@ -2218,10 +2026,7 @@
             {
               "name": "width"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_columnChanged",
@@ -2245,10 +2050,7 @@
             {
               "name": "column"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_columnPathChanged",
@@ -2272,10 +2074,7 @@
             {
               "name": "column"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         }
       ],
       "staticMethods": [],
@@ -2309,7 +2108,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
@@ -2327,7 +2126,7 @@
             }
           },
           "metadata": {},
-          "type": "number | null | undefined",
+          "type": "number",
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
@@ -2345,7 +2144,7 @@
             }
           },
           "metadata": {},
-          "type": "Object | null | undefined",
+          "type": "Object",
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
@@ -2363,7 +2162,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
@@ -2381,7 +2180,7 @@
             }
           },
           "metadata": {},
-          "type": "Object | null | undefined",
+          "type": "Object",
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
@@ -2398,7 +2197,7 @@
             }
           },
           "metadata": {},
-          "type": "Object | null | undefined"
+          "type": "Object"
         },
         {
           "name": "align-right",
@@ -2414,7 +2213,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "column",
@@ -2430,7 +2229,7 @@
             }
           },
           "metadata": {},
-          "type": "Object | null | undefined"
+          "type": "Object"
         },
         {
           "name": "flex",
@@ -2446,7 +2245,7 @@
             }
           },
           "metadata": {},
-          "type": "number | null | undefined"
+          "type": "number"
         },
         {
           "name": "header",
@@ -2462,7 +2261,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "hidden",
@@ -2478,7 +2277,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "order",
@@ -2494,7 +2293,7 @@
             }
           },
           "metadata": {},
-          "type": "number | null | undefined"
+          "type": "number"
         },
         {
           "name": "width",
@@ -2510,7 +2309,7 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "string"
         },
         {
           "name": "before-bind",
@@ -2526,7 +2325,7 @@
             }
           },
           "metadata": {},
-          "type": "Object | null | undefined"
+          "type": "Object"
         }
       ],
       "events": [],
@@ -2543,8 +2342,27 @@
       "path": "lib/data-table-row.js",
       "properties": [
         {
+          "name": "_template",
+          "type": "Object",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 4,
+              "column": 2
+            },
+            "end": {
+              "line": 55,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
           "name": "beforeBind",
-          "type": "Object | null | undefined",
+          "type": "Object",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -2558,14 +2376,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "expanded",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -2579,14 +2395,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "index",
-          "type": "number | null | undefined",
+          "type": "number",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -2600,14 +2414,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Number"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "item",
-          "type": "Object | null | undefined",
+          "type": "Object",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -2621,14 +2433,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "selected",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -2642,14 +2452,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "_static",
-          "type": "Object | null | undefined",
+          "type": "Object",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -2663,11 +2471,8 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
-          },
-          "defaultValue": "{\"id\":0}"
+            "polymer": {}
+          }
         }
       ],
       "methods": [
@@ -2686,10 +2491,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "_beforeBind",
@@ -2722,10 +2524,7 @@
             {
               "name": "expanded"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         }
       ],
       "staticMethods": [],
@@ -2758,7 +2557,7 @@
             }
           },
           "metadata": {},
-          "type": "Object | null | undefined"
+          "type": "Object"
         },
         {
           "name": "expanded",
@@ -2774,7 +2573,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "index",
@@ -2790,7 +2589,7 @@
             }
           },
           "metadata": {},
-          "type": "number | null | undefined"
+          "type": "number"
         },
         {
           "name": "item",
@@ -2806,7 +2605,7 @@
             }
           },
           "metadata": {},
-          "type": "Object | null | undefined"
+          "type": "Object"
         },
         {
           "name": "selected",
@@ -2822,7 +2621,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         }
       ],
       "events": [],
@@ -2839,8 +2638,27 @@
       "path": "lib/data-table-checkbox.js",
       "properties": [
         {
+          "name": "_template",
+          "type": "Object",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 2,
+              "column": 2
+            },
+            "end": {
+              "line": 104,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
           "name": "checked",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -2855,15 +2673,14 @@
           },
           "metadata": {
             "polymer": {
-              "observer": "\"_checkedChanged\"",
-              "attributeType": "Boolean"
+              "observer": "\"_checkedChanged\""
             }
           },
           "defaultValue": "false"
         },
         {
           "name": "indeterminate",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -2878,8 +2695,7 @@
           },
           "metadata": {
             "polymer": {
-              "observer": "\"_indeterminateChanged\"",
-              "attributeType": "Boolean"
+              "observer": "\"_indeterminateChanged\""
             }
           },
           "defaultValue": "false"
@@ -2905,10 +2721,7 @@
             {
               "name": "checked"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_indeterminateChanged",
@@ -2929,10 +2742,7 @@
             {
               "name": "indeterminate"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         }
       ],
       "staticMethods": [],
@@ -2965,7 +2775,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "indeterminate",
@@ -2981,7 +2791,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         }
       ],
       "events": [],
@@ -2999,7 +2809,7 @@
       "properties": [
         {
           "name": "expanded",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -3014,15 +2824,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           },
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
           "name": "index",
-          "type": "number | null | undefined",
+          "type": "number",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -3037,15 +2845,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Number"
-            }
+            "polymer": {}
           },
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
           "name": "item",
-          "type": "Object | null | undefined",
+          "type": "Object",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -3060,15 +2866,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
+            "polymer": {}
           },
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
           "name": "selected",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -3083,15 +2887,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           },
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
           "name": "table",
-          "type": "Object | null | undefined",
+          "type": "Object",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -3106,15 +2908,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
+            "polymer": {}
           },
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
           "name": "template",
-          "type": "Object | null | undefined",
+          "type": "Object",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -3129,15 +2929,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
+            "polymer": {}
           },
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
           "name": "_instances",
-          "type": "Array | null | undefined",
+          "type": "Array",
           "description": "singleton",
           "privacy": "protected",
           "sourceRange": {
@@ -3152,16 +2950,14 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Array"
-            }
+            "polymer": {}
           },
           "defaultValue": "[]",
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
           "name": "_forwardedParentProps",
-          "type": "Object | null | undefined",
+          "type": "Object",
           "description": "singleton",
           "privacy": "protected",
           "sourceRange": {
@@ -3176,16 +2972,14 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
+            "polymer": {}
           },
           "defaultValue": "{}",
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
           "name": "_instance",
-          "type": "Object | null | undefined",
+          "type": "Object",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -3201,15 +2995,33 @@
           },
           "metadata": {
             "polymer": {
-              "readOnly": true,
-              "attributeType": "Object"
+              "readOnly": true
             }
           },
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
+          "name": "_template",
+          "type": "Object",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 3,
+              "column": 2
+            },
+            "end": {
+              "line": 12,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          }
+        },
+        {
           "name": "beforeBind",
-          "type": "Object | null | undefined",
+          "type": "Object",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -3223,104 +3035,11 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
+            "polymer": {}
           }
         }
       ],
       "methods": [
-        {
-          "name": "templatize",
-          "description": "Generates an anonymous `TemplateInstance` class (stored as `this.ctor`)\nfor the provided template.  This method should be called once per\ntemplate to prepare an element for stamping the template, followed\nby `stamp` to create new instances of the template.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/polymer/lib/legacy/templatizer-behavior.js",
-            "start": {
-              "line": 99,
-              "column": 2
-            },
-            "end": {
-              "line": 108,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "template",
-              "type": "!HTMLTemplateElement",
-              "description": "Template to prepare"
-            },
-            {
-              "name": "mutableData",
-              "type": "boolean=",
-              "description": "When `true`, the generated class will skip\n  strict dirty-checking for objects and arrays (always consider them to\n  be \"dirty\"). Defaults to false."
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "Templatizer"
-        },
-        {
-          "name": "stamp",
-          "description": "Creates an instance of the template prepared by `templatize`.  The object\nreturned is an instance of the anonymous class generated by `templatize`\nwhose `root` property is a document fragment containing newly cloned\ntemplate content, and which has property accessors corresponding to\nproperties referenced in template bindings.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/polymer/lib/legacy/templatizer-behavior.js",
-            "start": {
-              "line": 123,
-              "column": 2
-            },
-            "end": {
-              "line": 125,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "model",
-              "type": "Object=",
-              "description": "Object containing initial property values to\n  populate into the template bindings."
-            }
-          ],
-          "return": {
-            "type": "TemplateInstanceBase",
-            "desc": "Returns the created instance of\nthe template prepared by `templatize`."
-          },
-          "inheritedFrom": "Templatizer"
-        },
-        {
-          "name": "modelForElement",
-          "description": "Returns the template \"model\" (`TemplateInstance`) associated with\na given element, which serves as the binding scope for the template\ninstance the element is contained in.  A template model should be used\nto manipulate data associated with this template instance.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/polymer/lib/legacy/templatizer-behavior.js",
-            "start": {
-              "line": 138,
-              "column": 2
-            },
-            "end": {
-              "line": 140,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "el",
-              "type": "HTMLElement",
-              "description": "Element for which to return a template model."
-            }
-          ],
-          "return": {
-            "type": "TemplateInstanceBase",
-            "desc": "Model representing the binding scope for\n  the element."
-          },
-          "inheritedFrom": "Templatizer"
-        },
         {
           "name": "created",
           "description": "",
@@ -3338,9 +3057,6 @@
           },
           "metadata": {},
           "params": [],
-          "return": {
-            "type": "void"
-          },
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
@@ -3390,9 +3106,6 @@
               "name": "expanded"
             }
           ],
-          "return": {
-            "type": "void"
-          },
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
@@ -3419,9 +3132,6 @@
               "name": "index"
             }
           ],
-          "return": {
-            "type": "void"
-          },
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
@@ -3448,9 +3158,6 @@
               "name": "item"
             }
           ],
-          "return": {
-            "type": "void"
-          },
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
@@ -3477,9 +3184,6 @@
               "name": "item"
             }
           ],
-          "return": {
-            "type": "void"
-          },
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
@@ -3506,9 +3210,6 @@
               "name": "selected"
             }
           ],
-          "return": {
-            "type": "void"
-          },
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
@@ -3535,9 +3236,6 @@
               "name": "value"
             }
           ],
-          "return": {
-            "type": "void"
-          },
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
@@ -3567,9 +3265,6 @@
               "name": "value"
             }
           ],
-          "return": {
-            "type": "void"
-          },
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
@@ -3599,9 +3294,6 @@
               "name": "value"
             }
           ],
-          "return": {
-            "type": "void"
-          },
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
@@ -3619,10 +3311,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "_beforeBind",
@@ -3655,10 +3344,7 @@
             {
               "name": "expanded"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         }
       ],
       "staticMethods": [],
@@ -3692,7 +3378,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
@@ -3710,7 +3396,7 @@
             }
           },
           "metadata": {},
-          "type": "number | null | undefined",
+          "type": "number",
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
@@ -3728,7 +3414,7 @@
             }
           },
           "metadata": {},
-          "type": "Object | null | undefined",
+          "type": "Object",
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
@@ -3746,7 +3432,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
@@ -3764,7 +3450,7 @@
             }
           },
           "metadata": {},
-          "type": "Object | null | undefined",
+          "type": "Object",
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
@@ -3782,7 +3468,7 @@
             }
           },
           "metadata": {},
-          "type": "Object | null | undefined",
+          "type": "Object",
           "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
         },
         {
@@ -3799,7 +3485,7 @@
             }
           },
           "metadata": {},
-          "type": "Object | null | undefined"
+          "type": "Object"
         }
       ],
       "events": [],
@@ -3816,56 +3502,27 @@
       "path": "iron-data-table.js",
       "properties": [
         {
-          "name": "_parentResizable",
-          "type": "Object | null | undefined",
-          "description": "The closest ancestor element that implements `IronResizableBehavior`.",
+          "name": "_template",
+          "type": "Object",
+          "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
             "start": {
-              "line": 41,
-              "column": 4
+              "line": 106,
+              "column": 2
             },
             "end": {
-              "line": 44,
-              "column": 5
+              "line": 267,
+              "column": 3
             }
           },
           "metadata": {
-            "polymer": {
-              "observer": "\"_parentResizableChanged\"",
-              "attributeType": "Object"
-            }
-          },
-          "inheritedFrom": "IronResizableBehavior"
-        },
-        {
-          "name": "_notifyingDescendant",
-          "type": "boolean | null | undefined",
-          "description": "True if this element is currently notifying its descendant elements of\nresize.",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
-            "start": {
-              "line": 50,
-              "column": 4
-            },
-            "end": {
-              "line": 53,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false",
-          "inheritedFrom": "IronResizableBehavior"
+            "polymer": {}
+          }
         },
         {
           "name": "autoRefresh",
-          "type": "number | null | undefined",
+          "type": "number",
           "description": "Timeout after which the data on the currently visible page will be automatically\nrefreshed after an item has been changed through a two-way binding.",
           "privacy": "public",
           "sourceRange": {
@@ -3879,14 +3536,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Number"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "beforeCellBind",
-          "type": "Object | null | undefined",
+          "type": "Object",
           "description": "A function that is called before data is bound to a row or header cell.\nCan be used to customize the cell element depending on the data.\n#### Example:\n```js\nfunction(data, cell) {\n  cell.toggleClass('custom', data.useCustomClass);\n}\n```",
           "privacy": "public",
           "sourceRange": {
@@ -3900,14 +3555,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "beforeDetailsBind",
-          "type": "Object | null | undefined",
+          "type": "Object",
           "description": "A function that is called before data is bound to a row details element.\nCan be used to customize the element depending on the data.\n#### Example:\n```js\nfunction(data, details) {\n  details.toggleClass('custom', data.useCustomClass);\n}\n```",
           "privacy": "public",
           "sourceRange": {
@@ -3921,14 +3574,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "beforeRowBind",
-          "type": "Object | null | undefined",
+          "type": "Object",
           "description": "A function that is called before data is bound to a row.\nCan be used to customize the row element depending on the data.\n#### Example:\n```js\nfunction(data, row) {\n  row.toggleClass('custom', data.useCustomClass);\n}\n```",
           "privacy": "public",
           "sourceRange": {
@@ -3942,14 +3593,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "items",
-          "type": "Array | null | undefined",
+          "type": "Array",
           "description": "An array containing the items which will be stamped to the column template\ninstances.",
           "privacy": "public",
           "sourceRange": {
@@ -3963,14 +3612,12 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Array"
-            }
+            "polymer": {}
           }
         },
         {
           "name": "detailsEnabled",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "If `true`, tapping a row will expand the item details, if available.",
           "privacy": "public",
           "sourceRange": {
@@ -3984,15 +3631,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           },
           "defaultValue": "false"
         },
         {
           "name": "filter",
-          "type": "Array | null | undefined",
+          "type": "Array",
           "description": "An array containing path/filter value pairs that are used to filter the items",
           "privacy": "public",
           "sourceRange": {
@@ -4007,15 +3652,14 @@
           },
           "metadata": {
             "polymer": {
-              "notify": true,
-              "attributeType": "Array"
+              "notify": true
             }
           },
           "defaultValue": "[]"
         },
         {
           "name": "multiSelection",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "When `true`, multiple items may be selected at once (in this case,\n`selected` is an array of currently selected items).  When `false`,\nonly one item may be selected at a time.",
           "privacy": "public",
           "sourceRange": {
@@ -4029,15 +3673,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           },
           "defaultValue": "false"
         },
         {
           "name": "pageSize",
-          "type": "number | null | undefined",
+          "type": "number",
           "description": "Number of items fetched at a time from the datasource.",
           "privacy": "public",
           "sourceRange": {
@@ -4051,15 +3693,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Number"
-            }
+            "polymer": {}
           },
           "defaultValue": "50"
         },
         {
           "name": "selectionEnabled",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "If `true`, tapping a row will select the item.",
           "privacy": "public",
           "sourceRange": {
@@ -4073,15 +3713,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
+            "polymer": {}
           },
           "defaultValue": "false"
         },
         {
           "name": "selectedItem",
-          "type": "Object | null | undefined",
+          "type": "Object",
           "description": "This is the currently selected item, or `null`\nif no item is selected.",
           "privacy": "public",
           "sourceRange": {
@@ -4097,14 +3735,13 @@
           "metadata": {
             "polymer": {
               "notify": true,
-              "readOnly": true,
-              "attributeType": "Object"
+              "readOnly": true
             }
           }
         },
         {
           "name": "selectedItems",
-          "type": "Object | null | undefined",
+          "type": "Object",
           "description": "When `multiSelection` is true, this is an array that contains the selected items.\nIf `selectedItems.inverted` is `true`, the array contains deselected items instead.\n`selectedItems.filters` contains an array of filters that were active when the selection changed.",
           "privacy": "public",
           "sourceRange": {
@@ -4120,14 +3757,13 @@
           "metadata": {
             "polymer": {
               "notify": true,
-              "readOnly": true,
-              "attributeType": "Object"
+              "readOnly": true
             }
           }
         },
         {
           "name": "size",
-          "type": "number | null | undefined",
+          "type": "number",
           "description": "Size of the data set.",
           "privacy": "public",
           "sourceRange": {
@@ -4143,15 +3779,14 @@
           "metadata": {
             "polymer": {
               "notify": true,
-              "observer": "\"_sizeChanged\"",
-              "attributeType": "Number"
+              "observer": "\"_sizeChanged\""
             }
           },
           "defaultValue": "0"
         },
         {
           "name": "sortOrder",
-          "type": "Array | null | undefined",
+          "type": "Array",
           "description": "An array with a path/sortorder ('asc' or 'desc') pairs that are used to sort the items.",
           "privacy": "public",
           "sourceRange": {
@@ -4166,15 +3801,14 @@
           },
           "metadata": {
             "polymer": {
-              "notify": true,
-              "attributeType": "Array"
+              "notify": true
             }
           },
           "defaultValue": "[]"
         },
         {
           "name": "columns",
-          "type": "Array | null | undefined",
+          "type": "Array",
           "description": "An array of `data-table-column` elements which contain the templates\nto be stamped with items.",
           "privacy": "public",
           "sourceRange": {
@@ -4190,15 +3824,14 @@
           "metadata": {
             "polymer": {
               "notify": true,
-              "observer": "\"_columnsChanged\"",
-              "attributeType": "Array"
+              "observer": "\"_columnsChanged\""
             }
           },
           "defaultValue": "[]"
         },
         {
           "name": "dataSource",
-          "type": "Object | null | undefined",
+          "type": "Object",
           "description": "Function that provides items lazily. Receives parameters `opts`, `callback`, `err`\n\n`opts.page` Requested page index\n\n`opts.pageSize` Current page size\n\n`opts.filter` Current filter parameters\n\n`opts.sortOrder` Current sorting parameters",
           "privacy": "public",
           "sourceRange": {
@@ -4213,14 +3846,13 @@
           },
           "metadata": {
             "polymer": {
-              "notify": true,
-              "attributeType": "Object"
+              "notify": true
             }
           }
         },
         {
           "name": "_pagesLoading",
-          "type": "Array | null | undefined",
+          "type": "Array",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -4234,15 +3866,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Array"
-            }
+            "polymer": {}
           },
           "defaultValue": "[]"
         },
         {
           "name": "loading",
-          "type": "boolean | null | undefined",
+          "type": "boolean",
           "description": "`true` if the table is currently loading data from the data source.",
           "privacy": "public",
           "sourceRange": {
@@ -4257,15 +3887,14 @@
           },
           "metadata": {
             "polymer": {
-              "notify": true,
-              "attributeType": "Boolean"
+              "notify": true
             }
           },
           "defaultValue": "false"
         },
         {
           "name": "_cachedItems",
-          "type": "Array | null | undefined",
+          "type": "Array",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -4279,15 +3908,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Array"
-            }
+            "polymer": {}
           },
           "defaultValue": "[]"
         },
         {
           "name": "_cachedPages",
-          "type": "Array | null | undefined",
+          "type": "Array",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -4301,15 +3928,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Array"
-            }
+            "polymer": {}
           },
           "defaultValue": "[]"
         },
         {
           "name": "_currentPage",
-          "type": "number | null | undefined",
+          "type": "number",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -4323,15 +3948,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Number"
-            }
+            "polymer": {}
           },
           "defaultValue": "0"
         },
         {
           "name": "_expandedItems",
-          "type": "Array | null | undefined",
+          "type": "Array",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -4345,15 +3968,13 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Array"
-            }
+            "polymer": {}
           },
           "defaultValue": "[]"
         },
         {
           "name": "_this",
-          "type": "Object | null | undefined",
+          "type": "Object",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -4367,9 +3988,7 @@
             }
           },
           "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
+            "polymer": {}
           }
         }
       ],
@@ -4389,383 +4008,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "attached",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
-            "start": {
-              "line": 68,
-              "column": 2
-            },
-            "end": {
-              "line": 70,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronResizableBehavior"
-        },
-        {
-          "name": "detached",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
-            "start": {
-              "line": 72,
-              "column": 2
-            },
-            "end": {
-              "line": 81,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronResizableBehavior"
-        },
-        {
-          "name": "notifyResize",
-          "description": "Can be called to manually notify a resizable and its descendant\nresizables of a resize change.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
-            "start": {
-              "line": 87,
-              "column": 2
-            },
-            "end": {
-              "line": 99,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronResizableBehavior"
-        },
-        {
-          "name": "assignParentResizable",
-          "description": "Used to assign the closest resizable ancestor to this resizable\nif the ancestor detects a request for notifications.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
-            "start": {
-              "line": 105,
-              "column": 2
-            },
-            "end": {
-              "line": 117,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "parentResizable"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronResizableBehavior"
-        },
-        {
-          "name": "stopResizeNotificationsFor",
-          "description": "Used to remove a resizable descendant from the list of descendants\nthat should be notified of a resize change.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
-            "start": {
-              "line": 123,
-              "column": 2
-            },
-            "end": {
-              "line": 130,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "target"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronResizableBehavior"
-        },
-        {
-          "name": "_subscribeIronResize",
-          "description": "Subscribe this element to listen to iron-resize events on the given target.\n\nPreferred over target.listen because the property renamer does not\nunderstand to rename when the target is not specifically \"this\"",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
-            "start": {
-              "line": 140,
-              "column": 2
-            },
-            "end": {
-              "line": 142,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "target",
-              "type": "!HTMLElement",
-              "description": "Element to listen to for iron-resize events."
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronResizableBehavior"
-        },
-        {
-          "name": "_unsubscribeIronResize",
-          "description": "Unsubscribe this element from listening to to iron-resize events on the\ngiven target.\n\nPreferred over target.unlisten because the property renamer does not\nunderstand to rename when the target is not specifically \"this\"",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
-            "start": {
-              "line": 153,
-              "column": 2
-            },
-            "end": {
-              "line": 156,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "target",
-              "type": "!HTMLElement",
-              "description": "Element to listen to for iron-resize events."
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronResizableBehavior"
-        },
-        {
-          "name": "resizerShouldNotify",
-          "description": "This method can be overridden to filter nested elements that should or\nshould not be notified by the current element. Return true if an element\nshould be notified, or false if it should not be notified.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
-            "start": {
-              "line": 167,
-              "column": 2
-            },
-            "end": {
-              "line": 169,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "element",
-              "type": "HTMLElement",
-              "description": "A candidate descendant element that\nimplements `IronResizableBehavior`."
-            }
-          ],
-          "return": {
-            "type": "boolean",
-            "desc": "True if the `element` should be notified of resize."
-          },
-          "inheritedFrom": "IronResizableBehavior"
-        },
-        {
-          "name": "_onDescendantIronResize",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
-            "start": {
-              "line": 171,
-              "column": 2
-            },
-            "end": {
-              "line": 181,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "event"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronResizableBehavior"
-        },
-        {
-          "name": "_fireResize",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
-            "start": {
-              "line": 183,
-              "column": 2
-            },
-            "end": {
-              "line": 185,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronResizableBehavior"
-        },
-        {
-          "name": "_onIronRequestResizeNotifications",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
-            "start": {
-              "line": 187,
-              "column": 2
-            },
-            "end": {
-              "line": 197,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "event"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronResizableBehavior"
-        },
-        {
-          "name": "_parentResizableChanged",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
-            "start": {
-              "line": 199,
-              "column": 2
-            },
-            "end": {
-              "line": 203,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "parentResizable"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronResizableBehavior"
-        },
-        {
-          "name": "_notifyDescendant",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
-            "start": {
-              "line": 205,
-              "column": 2
-            },
-            "end": {
-              "line": 216,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "descendant"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronResizableBehavior"
-        },
-        {
-          "name": "_requestResizeNotifications",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
-            "start": {
-              "line": 218,
-              "column": 2
-            },
-            "end": {
-              "line": 257,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronResizableBehavior"
-        },
-        {
-          "name": "_findParent",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
-            "start": {
-              "line": 259,
-              "column": 2
-            },
-            "end": {
-              "line": 271,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "IronResizableBehavior"
+          "params": []
         },
         {
           "name": "_stopPropagation",
@@ -4786,10 +4029,7 @@
             {
               "name": "e"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "selectItem",
@@ -4809,13 +4049,10 @@
           "params": [
             {
               "name": "item",
-              "type": "(Object | number)",
+              "type": "(Object|number)",
               "description": "The item object or its index"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_selectItem",
@@ -4836,10 +4073,7 @@
             {
               "name": "item"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "deselectItem",
@@ -4859,13 +4093,10 @@
           "params": [
             {
               "name": "item",
-              "type": "(Object | number)",
+              "type": "(Object|number)",
               "description": "The item object or its index"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_deselectItem",
@@ -4886,10 +4117,7 @@
             {
               "name": "item"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_isSelected",
@@ -4930,10 +4158,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "clearSelection",
@@ -4950,10 +4175,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "_toggleSelectAll",
@@ -4970,10 +4192,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "_isSelectAllChecked",
@@ -5072,10 +4291,7 @@
             {
               "name": "sortOrder"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_sortDirectionChanged",
@@ -5096,10 +4312,7 @@
             {
               "name": "e"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_columnsChanged",
@@ -5123,10 +4336,7 @@
             {
               "name": "oldColumns"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_onColumnFilterChanged",
@@ -5147,10 +4357,7 @@
             {
               "name": "e"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_resizeCellContainers",
@@ -5167,10 +4374,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "_onHorizontalScroll",
@@ -5187,10 +4391,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "_onVerticalScroll",
@@ -5211,10 +4412,7 @@
             {
               "name": "e"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_itemsChanged",
@@ -5235,10 +4433,7 @@
             {
               "name": "items"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_itemChanged",
@@ -5259,10 +4454,7 @@
             {
               "name": "e"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_currentPageChanged",
@@ -5286,10 +4478,7 @@
             {
               "name": "page"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_isPageLoading",
@@ -5331,10 +4520,7 @@
             {
               "name": "page"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_removeLoadingPage",
@@ -5355,10 +4541,7 @@
             {
               "name": "page"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_isPageCached",
@@ -5403,10 +4586,7 @@
             {
               "name": "page"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_sizeChanged",
@@ -5430,10 +4610,7 @@
             {
               "name": "oldSize"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "clearCache",
@@ -5450,10 +4627,7 @@
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": []
         },
         {
           "name": "refreshPage",
@@ -5474,10 +4648,7 @@
             {
               "name": "page"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_updateSizeForItem",
@@ -5498,10 +4669,7 @@
             {
               "name": "event"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "expandItem",
@@ -5522,10 +4690,7 @@
             {
               "name": "item"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "collapseItem",
@@ -5546,10 +4711,7 @@
             {
               "name": "item"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_isExpanded",
@@ -5615,10 +4777,7 @@
             {
               "name": "e"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_fireEvent",
@@ -5645,10 +4804,7 @@
             {
               "name": "defaultAction"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         },
         {
           "name": "_onCheckBoxTap",
@@ -5669,10 +4825,7 @@
             {
               "name": "e"
             }
-          ],
-          "return": {
-            "type": "void"
-          }
+          ]
         }
       ],
       "staticMethods": [],
@@ -5706,7 +4859,7 @@
             }
           },
           "metadata": {},
-          "type": "number | null | undefined"
+          "type": "number"
         },
         {
           "name": "before-cell-bind",
@@ -5722,7 +4875,7 @@
             }
           },
           "metadata": {},
-          "type": "Object | null | undefined"
+          "type": "Object"
         },
         {
           "name": "before-details-bind",
@@ -5738,7 +4891,7 @@
             }
           },
           "metadata": {},
-          "type": "Object | null | undefined"
+          "type": "Object"
         },
         {
           "name": "before-row-bind",
@@ -5754,7 +4907,7 @@
             }
           },
           "metadata": {},
-          "type": "Object | null | undefined"
+          "type": "Object"
         },
         {
           "name": "items",
@@ -5770,7 +4923,7 @@
             }
           },
           "metadata": {},
-          "type": "Array | null | undefined"
+          "type": "Array"
         },
         {
           "name": "details-enabled",
@@ -5786,7 +4939,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "filter",
@@ -5802,7 +4955,7 @@
             }
           },
           "metadata": {},
-          "type": "Array | null | undefined"
+          "type": "Array"
         },
         {
           "name": "multi-selection",
@@ -5818,7 +4971,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "page-size",
@@ -5834,7 +4987,7 @@
             }
           },
           "metadata": {},
-          "type": "number | null | undefined"
+          "type": "number"
         },
         {
           "name": "selection-enabled",
@@ -5850,7 +5003,7 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         },
         {
           "name": "selected-item",
@@ -5866,7 +5019,7 @@
             }
           },
           "metadata": {},
-          "type": "Object | null | undefined"
+          "type": "Object"
         },
         {
           "name": "selected-items",
@@ -5882,7 +5035,7 @@
             }
           },
           "metadata": {},
-          "type": "Object | null | undefined"
+          "type": "Object"
         },
         {
           "name": "size",
@@ -5898,7 +5051,7 @@
             }
           },
           "metadata": {},
-          "type": "number | null | undefined"
+          "type": "number"
         },
         {
           "name": "sort-order",
@@ -5914,7 +5067,7 @@
             }
           },
           "metadata": {},
-          "type": "Array | null | undefined"
+          "type": "Array"
         },
         {
           "name": "columns",
@@ -5930,7 +5083,7 @@
             }
           },
           "metadata": {},
-          "type": "Array | null | undefined"
+          "type": "Array"
         },
         {
           "name": "data-source",
@@ -5946,7 +5099,7 @@
             }
           },
           "metadata": {},
-          "type": "Object | null | undefined"
+          "type": "Object"
         },
         {
           "name": "loading",
@@ -5962,44 +5115,44 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "boolean"
         }
       ],
       "events": [
         {
           "type": "CustomEvent",
           "name": "collapsing-item",
-          "description": "Fired when user clicks on a item to collapse it.",
+          "description": "collapsing-item",
           "metadata": {}
         },
         {
           "type": "CustomEvent",
           "name": "deselecting-all-items",
-          "description": "Fired when user clicks on the select all checkbox to deselect items.",
+          "description": "deselecting-all-items",
           "metadata": {}
         },
         {
           "type": "CustomEvent",
           "name": "deselecting-item",
-          "description": "Fired when user clicks on a item to deselect it.",
+          "description": "deselecting-item",
           "metadata": {}
         },
         {
           "type": "CustomEvent",
           "name": "expanding-item",
-          "description": "Fired when user clicks on a item to expand it.",
+          "description": "expanding-item",
           "metadata": {}
         },
         {
           "type": "CustomEvent",
           "name": "selecting-all-items",
-          "description": "Fired when user clicks on the select all checkbox to select items.",
+          "description": "selecting-all-items",
           "metadata": {}
         },
         {
           "type": "CustomEvent",
           "name": "selecting-item",
-          "description": "Fired when user clicks on a item to select it.",
+          "description": "selecting-item",
           "metadata": {}
         },
         {
@@ -6069,7 +5222,7 @@
           "properties": [
             {
               "name": "expanded",
-              "type": "boolean | null | undefined",
+              "type": "boolean",
               "description": "",
               "privacy": "public",
               "sourceRange": {
@@ -6083,14 +5236,12 @@
                 }
               },
               "metadata": {
-                "polymer": {
-                  "attributeType": "Boolean"
-                }
+                "polymer": {}
               }
             },
             {
               "name": "index",
-              "type": "number | null | undefined",
+              "type": "number",
               "description": "",
               "privacy": "public",
               "sourceRange": {
@@ -6104,14 +5255,12 @@
                 }
               },
               "metadata": {
-                "polymer": {
-                  "attributeType": "Number"
-                }
+                "polymer": {}
               }
             },
             {
               "name": "item",
-              "type": "Object | null | undefined",
+              "type": "Object",
               "description": "",
               "privacy": "public",
               "sourceRange": {
@@ -6125,14 +5274,12 @@
                 }
               },
               "metadata": {
-                "polymer": {
-                  "attributeType": "Object"
-                }
+                "polymer": {}
               }
             },
             {
               "name": "selected",
-              "type": "boolean | null | undefined",
+              "type": "boolean",
               "description": "",
               "privacy": "public",
               "sourceRange": {
@@ -6146,14 +5293,12 @@
                 }
               },
               "metadata": {
-                "polymer": {
-                  "attributeType": "Boolean"
-                }
+                "polymer": {}
               }
             },
             {
               "name": "table",
-              "type": "Object | null | undefined",
+              "type": "Object",
               "description": "",
               "privacy": "public",
               "sourceRange": {
@@ -6167,14 +5312,12 @@
                 }
               },
               "metadata": {
-                "polymer": {
-                  "attributeType": "Object"
-                }
+                "polymer": {}
               }
             },
             {
               "name": "template",
-              "type": "Object | null | undefined",
+              "type": "Object",
               "description": "",
               "privacy": "public",
               "sourceRange": {
@@ -6188,14 +5331,12 @@
                 }
               },
               "metadata": {
-                "polymer": {
-                  "attributeType": "Object"
-                }
+                "polymer": {}
               }
             },
             {
               "name": "_instances",
-              "type": "Array | null | undefined",
+              "type": "Array",
               "description": "singleton",
               "privacy": "protected",
               "sourceRange": {
@@ -6209,15 +5350,13 @@
                 }
               },
               "metadata": {
-                "polymer": {
-                  "attributeType": "Array"
-                }
+                "polymer": {}
               },
               "defaultValue": "[]"
             },
             {
               "name": "_forwardedParentProps",
-              "type": "Object | null | undefined",
+              "type": "Object",
               "description": "singleton",
               "privacy": "protected",
               "sourceRange": {
@@ -6231,15 +5370,13 @@
                 }
               },
               "metadata": {
-                "polymer": {
-                  "attributeType": "Object"
-                }
+                "polymer": {}
               },
               "defaultValue": "{}"
             },
             {
               "name": "_instance",
-              "type": "Object | null | undefined",
+              "type": "Object",
               "description": "",
               "privacy": "protected",
               "sourceRange": {
@@ -6254,8 +5391,7 @@
               },
               "metadata": {
                 "polymer": {
-                  "readOnly": true,
-                  "attributeType": "Object"
+                  "readOnly": true
                 }
               }
             }
@@ -6276,10 +5412,7 @@
                 }
               },
               "metadata": {},
-              "params": [],
-              "return": {
-                "type": "void"
-              }
+              "params": []
             },
             {
               "name": "_templatize",
@@ -6324,10 +5457,7 @@
                 {
                   "name": "expanded"
                 }
-              ],
-              "return": {
-                "type": "void"
-              }
+              ]
             },
             {
               "name": "_indexChanged",
@@ -6351,10 +5481,7 @@
                 {
                   "name": "index"
                 }
-              ],
-              "return": {
-                "type": "void"
-              }
+              ]
             },
             {
               "name": "_itemChanged",
@@ -6378,10 +5505,7 @@
                 {
                   "name": "item"
                 }
-              ],
-              "return": {
-                "type": "void"
-              }
+              ]
             },
             {
               "name": "_itemPathChanged",
@@ -6405,10 +5529,7 @@
                 {
                   "name": "item"
                 }
-              ],
-              "return": {
-                "type": "void"
-              }
+              ]
             },
             {
               "name": "_selectedChanged",
@@ -6432,10 +5553,7 @@
                 {
                   "name": "selected"
                 }
-              ],
-              "return": {
-                "type": "void"
-              }
+              ]
             },
             {
               "name": "_forwardParentProp",
@@ -6459,10 +5577,7 @@
                 {
                   "name": "value"
                 }
-              ],
-              "return": {
-                "type": "void"
-              }
+              ]
             },
             {
               "name": "_forwardInstanceProp",
@@ -6489,10 +5604,7 @@
                 {
                   "name": "value"
                 }
-              ],
-              "return": {
-                "type": "void"
-              }
+              ]
             },
             {
               "name": "_forwardInstancePath",
@@ -6519,10 +5631,7 @@
                 {
                   "name": "value"
                 }
-              ],
-              "return": {
-                "type": "void"
-              }
+              ]
             }
           ],
           "staticMethods": [],
@@ -6555,7 +5664,7 @@
                 }
               },
               "metadata": {},
-              "type": "boolean | null | undefined"
+              "type": "boolean"
             },
             {
               "name": "index",
@@ -6571,7 +5680,7 @@
                 }
               },
               "metadata": {},
-              "type": "number | null | undefined"
+              "type": "number"
             },
             {
               "name": "item",
@@ -6587,7 +5696,7 @@
                 }
               },
               "metadata": {},
-              "type": "Object | null | undefined"
+              "type": "Object"
             },
             {
               "name": "selected",
@@ -6603,7 +5712,7 @@
                 }
               },
               "metadata": {},
-              "type": "boolean | null | undefined"
+              "type": "boolean"
             },
             {
               "name": "table",
@@ -6619,7 +5728,7 @@
                 }
               },
               "metadata": {},
-              "type": "Object | null | undefined"
+              "type": "Object"
             },
             {
               "name": "template",
@@ -6635,7 +5744,7 @@
                 }
               },
               "metadata": {},
-              "type": "Object | null | undefined"
+              "type": "Object"
             }
           ],
           "events": [],
@@ -6652,7 +5761,7 @@
           "properties": [
             {
               "name": "expanded",
-              "type": "boolean | null | undefined",
+              "type": "boolean",
               "description": "",
               "privacy": "public",
               "sourceRange": {
@@ -6666,15 +5775,13 @@
                 }
               },
               "metadata": {
-                "polymer": {
-                  "attributeType": "Boolean"
-                }
+                "polymer": {}
               },
               "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
             },
             {
               "name": "index",
-              "type": "number | null | undefined",
+              "type": "number",
               "description": "",
               "privacy": "public",
               "sourceRange": {
@@ -6688,15 +5795,13 @@
                 }
               },
               "metadata": {
-                "polymer": {
-                  "attributeType": "Number"
-                }
+                "polymer": {}
               },
               "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
             },
             {
               "name": "item",
-              "type": "Object | null | undefined",
+              "type": "Object",
               "description": "",
               "privacy": "public",
               "sourceRange": {
@@ -6710,15 +5815,13 @@
                 }
               },
               "metadata": {
-                "polymer": {
-                  "attributeType": "Object"
-                }
+                "polymer": {}
               },
               "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
             },
             {
               "name": "selected",
-              "type": "boolean | null | undefined",
+              "type": "boolean",
               "description": "",
               "privacy": "public",
               "sourceRange": {
@@ -6732,15 +5835,13 @@
                 }
               },
               "metadata": {
-                "polymer": {
-                  "attributeType": "Boolean"
-                }
+                "polymer": {}
               },
               "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
             },
             {
               "name": "table",
-              "type": "Object | null | undefined",
+              "type": "Object",
               "description": "",
               "privacy": "public",
               "sourceRange": {
@@ -6754,15 +5855,13 @@
                 }
               },
               "metadata": {
-                "polymer": {
-                  "attributeType": "Object"
-                }
+                "polymer": {}
               },
               "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
             },
             {
               "name": "template",
-              "type": "Object | null | undefined",
+              "type": "Object",
               "description": "",
               "privacy": "public",
               "sourceRange": {
@@ -6776,15 +5875,13 @@
                 }
               },
               "metadata": {
-                "polymer": {
-                  "attributeType": "Object"
-                }
+                "polymer": {}
               },
               "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
             },
             {
               "name": "_instances",
-              "type": "Array | null | undefined",
+              "type": "Array",
               "description": "singleton",
               "privacy": "protected",
               "sourceRange": {
@@ -6798,16 +5895,14 @@
                 }
               },
               "metadata": {
-                "polymer": {
-                  "attributeType": "Array"
-                }
+                "polymer": {}
               },
               "defaultValue": "[]",
               "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
             },
             {
               "name": "_forwardedParentProps",
-              "type": "Object | null | undefined",
+              "type": "Object",
               "description": "singleton",
               "privacy": "protected",
               "sourceRange": {
@@ -6821,16 +5916,14 @@
                 }
               },
               "metadata": {
-                "polymer": {
-                  "attributeType": "Object"
-                }
+                "polymer": {}
               },
               "defaultValue": "{}",
               "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
             },
             {
               "name": "_instance",
-              "type": "Object | null | undefined",
+              "type": "Object",
               "description": "",
               "privacy": "protected",
               "sourceRange": {
@@ -6845,105 +5938,13 @@
               },
               "metadata": {
                 "polymer": {
-                  "readOnly": true,
-                  "attributeType": "Object"
+                  "readOnly": true
                 }
               },
               "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
             }
           ],
           "methods": [
-            {
-              "name": "templatize",
-              "description": "Generates an anonymous `TemplateInstance` class (stored as `this.ctor`)\nfor the provided template.  This method should be called once per\ntemplate to prepare an element for stamping the template, followed\nby `stamp` to create new instances of the template.",
-              "privacy": "public",
-              "sourceRange": {
-                "file": "../../@polymer/polymer/lib/legacy/templatizer-behavior.js",
-                "start": {
-                  "line": 99,
-                  "column": 2
-                },
-                "end": {
-                  "line": 108,
-                  "column": 3
-                }
-              },
-              "metadata": {},
-              "params": [
-                {
-                  "name": "template",
-                  "type": "!HTMLTemplateElement",
-                  "description": "Template to prepare"
-                },
-                {
-                  "name": "mutableData",
-                  "type": "boolean=",
-                  "description": "When `true`, the generated class will skip\n  strict dirty-checking for objects and arrays (always consider them to\n  be \"dirty\"). Defaults to false."
-                }
-              ],
-              "return": {
-                "type": "void"
-              },
-              "inheritedFrom": "Templatizer"
-            },
-            {
-              "name": "stamp",
-              "description": "Creates an instance of the template prepared by `templatize`.  The object\nreturned is an instance of the anonymous class generated by `templatize`\nwhose `root` property is a document fragment containing newly cloned\ntemplate content, and which has property accessors corresponding to\nproperties referenced in template bindings.",
-              "privacy": "public",
-              "sourceRange": {
-                "file": "../../@polymer/polymer/lib/legacy/templatizer-behavior.js",
-                "start": {
-                  "line": 123,
-                  "column": 2
-                },
-                "end": {
-                  "line": 125,
-                  "column": 3
-                }
-              },
-              "metadata": {},
-              "params": [
-                {
-                  "name": "model",
-                  "type": "Object=",
-                  "description": "Object containing initial property values to\n  populate into the template bindings."
-                }
-              ],
-              "return": {
-                "type": "TemplateInstanceBase",
-                "desc": "Returns the created instance of\nthe template prepared by `templatize`."
-              },
-              "inheritedFrom": "Templatizer"
-            },
-            {
-              "name": "modelForElement",
-              "description": "Returns the template \"model\" (`TemplateInstance`) associated with\na given element, which serves as the binding scope for the template\ninstance the element is contained in.  A template model should be used\nto manipulate data associated with this template instance.",
-              "privacy": "public",
-              "sourceRange": {
-                "file": "../../@polymer/polymer/lib/legacy/templatizer-behavior.js",
-                "start": {
-                  "line": 138,
-                  "column": 2
-                },
-                "end": {
-                  "line": 140,
-                  "column": 3
-                }
-              },
-              "metadata": {},
-              "params": [
-                {
-                  "name": "el",
-                  "type": "HTMLElement",
-                  "description": "Element for which to return a template model."
-                }
-              ],
-              "return": {
-                "type": "TemplateInstanceBase",
-                "desc": "Model representing the binding scope for\n  the element."
-              },
-              "inheritedFrom": "Templatizer"
-            },
             {
               "name": "created",
               "description": "",
@@ -6960,9 +5961,6 @@
               },
               "metadata": {},
               "params": [],
-              "return": {
-                "type": "void"
-              },
               "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
             },
             {
@@ -7010,9 +6008,6 @@
                   "name": "expanded"
                 }
               ],
-              "return": {
-                "type": "void"
-              },
               "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
             },
             {
@@ -7038,9 +6033,6 @@
                   "name": "index"
                 }
               ],
-              "return": {
-                "type": "void"
-              },
               "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
             },
             {
@@ -7066,9 +6058,6 @@
                   "name": "item"
                 }
               ],
-              "return": {
-                "type": "void"
-              },
               "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
             },
             {
@@ -7094,9 +6083,6 @@
                   "name": "item"
                 }
               ],
-              "return": {
-                "type": "void"
-              },
               "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
             },
             {
@@ -7122,9 +6108,6 @@
                   "name": "selected"
                 }
               ],
-              "return": {
-                "type": "void"
-              },
               "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
             },
             {
@@ -7150,9 +6133,6 @@
                   "name": "value"
                 }
               ],
-              "return": {
-                "type": "void"
-              },
               "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
             },
             {
@@ -7181,9 +6161,6 @@
                   "name": "value"
                 }
               ],
-              "return": {
-                "type": "void"
-              },
               "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
             },
             {
@@ -7212,9 +6189,6 @@
                   "name": "value"
                 }
               ],
-              "return": {
-                "type": "void"
-              },
               "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
             }
           ],
@@ -7248,7 +6222,7 @@
                 }
               },
               "metadata": {},
-              "type": "boolean | null | undefined",
+              "type": "boolean",
               "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
             },
             {
@@ -7265,7 +6239,7 @@
                 }
               },
               "metadata": {},
-              "type": "number | null | undefined",
+              "type": "number",
               "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
             },
             {
@@ -7282,7 +6256,7 @@
                 }
               },
               "metadata": {},
-              "type": "Object | null | undefined",
+              "type": "Object",
               "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
             },
             {
@@ -7299,7 +6273,7 @@
                 }
               },
               "metadata": {},
-              "type": "boolean | null | undefined",
+              "type": "boolean",
               "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
             },
             {
@@ -7316,7 +6290,7 @@
                 }
               },
               "metadata": {},
-              "type": "Object | null | undefined",
+              "type": "Object",
               "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
             },
             {
@@ -7333,7 +6307,7 @@
                 }
               },
               "metadata": {},
-              "type": "Object | null | undefined",
+              "type": "Object",
               "inheritedFrom": "saulis.DataTableTemplatizerBehaviorImpl"
             }
           ],

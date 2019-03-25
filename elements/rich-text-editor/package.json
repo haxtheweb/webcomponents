@@ -16,7 +16,7 @@
       "hax": "src/rich-text-editor-hax.json"
     }
   },
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "a standalone rich text editor",
   "repository": {
     "type": "git",
@@ -40,6 +40,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@lrnwebcomponents/es-global-bridge": "^2.0.5",
     "@lrnwebcomponents/hax-body-behaviors": "latest",
     "@polymer/iron-a11y-keys": "^3.0.0",
     "@polymer/iron-fit-behavior": "^3.0.1",
@@ -49,7 +50,8 @@
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.0.5",
+    "@lrnwebcomponents/deduping-fix": "^2.0.8",
+    "@lrnwebcomponents/storybook-utilities": "^2.0.8",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@webcomponents/webcomponentsjs": "2.2.3",

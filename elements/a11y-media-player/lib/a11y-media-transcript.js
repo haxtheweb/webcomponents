@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { A11yMediaPlayerBehaviors } from "./a11y-media-player-behaviors.js";
+import { A11yMediaBehaviors } from "./a11y-media-behaviors.js";
 import "./a11y-media-transcript-cue.js";
 
 export { A11yMediaTranscript };
@@ -28,11 +28,11 @@ export { A11yMediaTranscript };
   selected-transcript$="[[selectedTranscript]]">  // The index of the current track
 </a11y-media-transcript>```
  *
- * @extends A11yMediaPlayerBehaviors
+ * @extends A11yMediaBehaviors
  * @customElement
  * @polymer
  */
-class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
+class A11yMediaTranscript extends A11yMediaBehaviors {
   // properties available to the custom element for data binding
   static get properties() {
     return {
@@ -44,6 +44,22 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
         value: null,
         reflectToAttribute: true,
         notify: true
+      },
+      /**
+       * disable interactive mode that makes the transcript clickable
+       */
+      disableInteractive: {
+        name: "disableInteractive",
+        type: Boolean,
+        value: false
+      },
+      /**
+       * show cue's start and end time
+       */
+      hideTimestamps: {
+        name: "hideTimestamps",
+        type: Boolean,
+        value: false
       },
       /**
        * Language
@@ -82,6 +98,13 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
         value: "0"
       },
       /**
+       * the status of the transcript loading
+       */
+      status: {
+        type: String,
+        computed: "_stampLoadingStatus(disableSeek)"
+      },
+      /**
        * array of cues
        */
       tracks: {
@@ -101,7 +124,7 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
 
   //get player-specifc properties
   static get behaviors() {
-    return [A11yMediaPlayerBehaviors];
+    return [A11yMediaBehaviors];
   }
 
   //render function
@@ -109,8 +132,8 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
     return html`
       <style is="custom-style" include="simple-colors">
         :host {
-          color: var(--a11y-media-transcript-color);
-          background-color: var(--a11y-media-transcript-bg-color);
+          color: var(--a11y-media-transcript-cue-color);
+          background-color: var(--a11y-media-transcript-cue-bg-color);
           border-left: 1px solid var(--a11y-media-transcript-bg-color);
         }
         :host([hidden]) {
@@ -147,14 +170,14 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
         }
       </style>
       <a id="transcript-desc" class="sr-only" href="#bottom">
-        [[_getLocal(localization,'transcript','skip')]]
+        [[_getLocal('transcript','skip')]]
       </a>
       <div
         id="loading"
         active$="[[_isLoading(selectedTranscript, tracks)]]"
         class="transcript-from-track"
       >
-        [[_getLocal(localization,'transcript','loading')]]
+        [[status]]
       </div>
       <template id="tracks" is="dom-repeat" items="{{tracks}}" as="track">
         <div
@@ -169,10 +192,10 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
               active-cues$="[[activeCues]]"
               controls$="[[mediaId]]"
               cue$="{{cue}}"
-              disabled$="[[disableInteractive]]"
+              disabled$="[[disableCue]]"
               disable-search$="[[disableSearch]]"
               hide-timestamps$="[[hideTimestamps]]"
-              on-tap="_handleCueSeek"
+              on-cue-seek="_handleCueSeek"
               order$="{{cue.order}}"
               role="button"
               search="[[search]]"
@@ -279,7 +302,13 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
         "#track a11y-media-transcript-cue[active]"
       );
     root.set("activeCues", cues.slice(0));
-    if (!root.disableScroll && (cue !== null) & (cue !== undefined)) {
+    if (
+      !root.disableScroll &&
+      cue !== undefined &&
+      cue !== null &&
+      root.activeCues !== undefined &&
+      cue.getAttribute("order") !== root.activeCues[0]
+    ) {
       //javascript scrolling from:  https://stackoverflow.com/questions/8917921/cross-browser-javascript-not-jquery-scroll-to-top-animation#answer-8918062
       let scrollingTo = function(element, to, duration) {
         if (duration <= 0) return;
@@ -363,7 +392,9 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
    */
   _handleCueSeek(e) {
     if (!this.disableInteractive) {
-      this.dispatchEvent(new CustomEvent("cue-seek", { detail: e.detail }));
+      this.dispatchEvent(
+        new CustomEvent("transcript-seek", { detail: e.detail })
+      );
     }
   }
 
@@ -395,9 +426,12 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
     );
   }
 
-  _stampLocal(localization, id, key) {
-    this.$[id].innerHTML = this._getLocal(localization, "transcript", key);
-    return this._getLocal(localization, "transcript", key);
+  _stampLoadingStatus(disableSeek) {
+    this.$.loading.innerHTML =
+      disableSeek === false
+        ? this._getLocal("transcript", "label")
+        : this._getLocal("youTubeTranscript", "label");
+    return this.$.loading.innerHTML;
   }
 }
 window.customElements.define(A11yMediaTranscript.tag, A11yMediaTranscript);

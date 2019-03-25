@@ -16,7 +16,7 @@
       "hax": "src/lrndesign-gallery-hax.json"
     }
   },
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "Start of lrndesign-gallery",
   "repository": {
     "type": "git",
@@ -40,14 +40,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^2.0.5",
-    "@lrnwebcomponents/image-inspector": "^2.0.7",
-    "@lrnwebcomponents/img-pan-zoom": "^2.0.7",
-    "@lrnwebcomponents/lrnsys-button": "^2.0.7",
-    "@lrnwebcomponents/lrnsys-layout": "^2.0.7",
-    "@lrnwebcomponents/responsive-utility": "^2.0.7",
-    "@lrnwebcomponents/schema-behaviors": "^2.0.5",
-    "@lrnwebcomponents/simple-colors": "^2.0.7",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.0.8",
+    "@lrnwebcomponents/image-inspector": "^2.0.8",
+    "@lrnwebcomponents/img-pan-zoom": "^2.0.8",
+    "@lrnwebcomponents/lrnsys-button": "^2.0.8",
+    "@lrnwebcomponents/lrnsys-layout": "^2.0.8",
+    "@lrnwebcomponents/responsive-utility": "^2.0.8",
+    "@lrnwebcomponents/schema-behaviors": "^2.0.8",
+    "@lrnwebcomponents/simple-colors": "^2.0.8",
     "@polymer/iron-a11y-keys": "^3.0.0",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-icons": "^3.0.1",
@@ -61,7 +61,8 @@
     "web-animations-js": "^2.3.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.0.5",
+    "@lrnwebcomponents/deduping-fix": "^2.0.8",
+    "@lrnwebcomponents/storybook-utilities": "^2.0.8",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@webcomponents/webcomponentsjs": "2.2.4",

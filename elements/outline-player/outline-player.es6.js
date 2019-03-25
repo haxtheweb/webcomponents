@@ -1,4 +1,4 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import*as async from"./node_modules/@polymer/polymer/lib/utils/async.js";import{updateStyles}from"./node_modules/@polymer/polymer/lib/mixins/element-mixin.js";import"./node_modules/@polymer/app-layout/app-header/app-header.js";import"./node_modules/@polymer/app-layout/app-toolbar/app-toolbar.js";import"./node_modules/@polymer/app-layout/app-drawer/app-drawer.js";import"./node_modules/@polymer/app-layout/app-drawer-layout/app-drawer-layout.js";import"./node_modules/@polymer/app-layout/app-header-layout/app-header-layout.js";import"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";import"./node_modules/@lrnwebcomponents/map-menu/map-menu.js";import{HAXCMSThemeWiring}from"./node_modules/@lrnwebcomponents/haxcms-elements/lib/HAXCMSThemeWiring.js";import{store}from"./node_modules/@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";import{autorun,toJS}from"./node_modules/mobx/lib/mobx.module.js";import"./lib/outline-player-arrow.js";let OutlinePlayer=Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import*as async from"./node_modules/@polymer/polymer/lib/utils/async.js";import{updateStyles}from"./node_modules/@polymer/polymer/lib/mixins/element-mixin.js";import"./node_modules/@polymer/app-layout/app-header/app-header.js";import"./node_modules/@polymer/app-layout/app-toolbar/app-toolbar.js";import"./node_modules/@polymer/app-layout/app-drawer/app-drawer.js";import"./node_modules/@polymer/app-layout/app-drawer-layout/app-drawer-layout.js";import"./node_modules/@polymer/app-layout/app-header-layout/app-header-layout.js";import"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";import"./node_modules/@lrnwebcomponents/haxcms-elements/lib/theme/site-menu.js";import"./node_modules/@lrnwebcomponents/haxcms-elements/lib/theme/site-menu-button.js";import{HAXCMSThemeWiring}from"./node_modules/@lrnwebcomponents/haxcms-elements/lib/HAXCMSThemeWiring.js";import{store}from"./node_modules/@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";import{autorun,toJS}from"./node_modules/mobx/lib/mobx.module.js";let OutlinePlayer=Polymer({_template:html`
     <style include="simple-colors hax-shared-styles">
       :host {
         display: block;
@@ -9,7 +9,6 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         --app-drawer-width: 300px;
         --outline-player-dark: #222222;
         --outline-player-light: #f8f8f8;
-        --outline-player-arrow-margin-top: 50px;
       }
 
       :host([closed]) {
@@ -80,7 +79,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         position: sticky;
       }
 
-      #menu {
+      site-menu {
         padding: 8px;
       }
 
@@ -174,42 +173,50 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       #contentcontainer h-a-x {
         margin: 0;
       }
-      map-menu {
-        height: calc(100vh - 80px);
-        --map-menu-container: {
+      site-menu {
+        height: calc(100vh - 64px);
+        color: #000000;
+        padding: 0;
+        background-color: #ffffff;
+        --site-menu-active-color: rgba(0, 0, 0, 0.1);
+        --site-menu-scrolltrack-bg-color: rgba(0, 0, 0, 0.3);
+        --site-menu-bg-shadow: rgba(0, 0, 0, 0.3);
+        --site-menu-bg-color: #fafafa;
+        --site-menu: {
           padding: 0;
+          background-color: #ffffff;
+          color: #000000;
+        }
+        --site-menu-container: {
+          padding: 0;
+          background-color: #ffffff;
+          color: #000000;
+        }
+        --site-menu-item-active-item: {
+          color: #000000;
         }
       }
-      map-menu::-webkit-scrollbar-track {
-        -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
-        border-radius: 0;
-        background-color: #fafafa;
-      }
-      map-menu::-webkit-scrollbar {
-        width: 4px;
-        background-color: #fafafa;
-      }
-      map-menu::-webkit-scrollbar-thumb {
-        border-radius: 2px;
-        -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
-        background-color: #444444;
+      site-menu-button {
+        --site-menu-button-button: {
+          border-radius: 50%;
+          background-color: rgba(0, 0, 0, 0.1);
+          height: 40px;
+          width: 40px;
+        }
+        --site-menu-button-button-hover: {
+          background-color: rgba(0, 0, 0, 0.2);
+        }
       }
     </style>
     <!-- Control the sites query paremeters -->
 
     <!-- Begin Layout -->
-    <app-drawer-layout>
-      <app-drawer id="drawer" swipe-open="" slot="drawer">
+    <app-drawer-layout narrow="{{narrow}}">
+      <app-drawer id="drawer" swipe-open="" slot="drawer" opened="{{opened}}">
         <template is="dom-if" if="[[__hasTitle(manifest.title)]]">
           <h2 class="outline-title">[[manifest.title]]</h2>
         </template>
-        <map-menu
-          id="menu"
-          selected="[[selected]]"
-          manifest="[[_routerManifest]]"
-          active-indicator
-          auto-scroll
-        ></map-menu>
+        <site-menu></site-menu>
       </app-drawer>
       <app-header-layout>
         <app-header slot="header" reveals>
@@ -222,20 +229,18 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
               [[activeItem.title]]
               <div id="slotTitle"><slot name="title"></slot></div>
             </div>
-            <outline-player-arrow
-              id="prevpage"
-              disabled="[[disablePrevPage(__activeIndex)]]"
-              icon="icons:arrow-back"
-              on-click="prevPage"
-              >Previous
-            </outline-player-arrow>
-            <outline-player-arrow
-              id="nextpage"
-              disabled="[[disableNextPage(__activeIndex)]]"
-              icon="icons:arrow-forward"
-              on-click="nextPage"
-              >Next
-            </outline-player-arrow>
+            <site-menu-button
+              type="prev"
+              position="bottom"
+              label="Prev"
+              raised
+            ></site-menu-button>
+            <site-menu-button
+              type="next"
+              position="bottom"
+              label="Next"
+              raised
+            ></site-menu-button>
           </app-toolbar>
         </app-header>
         <div id="content">
@@ -245,4 +250,4 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         </div>
       </app-header-layout>
     </app-drawer-layout>
-  `,is:"outline-player",properties:{auto:{type:Boolean,notify:!0,value:!1},outlineFile:{type:String,value:"outline.json",notify:!0},outlineLocation:{type:String,notify:!0},selected:{type:String,notify:!0,observer:"_selectedPageChanged"},closed:{type:Boolean,notify:!0,reflectToAttribute:!0,value:!1},_activeItemContent:{type:String,observer:"_activeItemContentChanged"},outline:{type:Array,notify:!0,observer:"_outlineChanged"},editMode:{type:Boolean,reflectToAttribute:!0,observer:"_editModeChanged"},activeItem:{type:Object},manifest:{type:Object},fillRemaining:{type:Boolean,value:!1,reflectToAttribute:!0},_routerManifest:{type:Object,value:{}},_location:{type:Object,observer:"_locationChanged"}},_editModeChanged:function(newValue){if(typeof newValue!==typeof void 0){async.microTask.run(()=>{window.dispatchEvent(new Event("resize"));updateStyles()})}},created:function(){this.HAXCMSThemeWiring=new HAXCMSThemeWiring(this)},ready:function(){this.HAXCMSThemeWiring.connect(this,this.$.contentcontainer)},attached:function(){this.__disposer=autorun(()=>{this._routerManifest=toJS(store.routerManifest);this._location=store.location;if(store.activeItem&&"undefined"!==typeof store.activeItem){this.selected=store.activeItem}})},detached:function(){this.HAXCMSThemeWiring.disconnect(this);this.__disposer()},_locationChanged:function(newValue){if(!newValue||"undefined"===typeof newValue.route)return;const location=newValue,name=location.route.name;if("home"===name||"404"===name){const firstItem=this.manifest.items.find(i=>"undefined"!==typeof i.id);if(firstItem){setTimeout(()=>{this.selected=firstItem.id},500);window.dispatchEvent(new CustomEvent("json-outline-schema-active-item-changed",{detail:firstItem}))}}},_toggleMenu:function(e){this.$.drawer.toggle();this.closed=!this.$.drawer.opened;async.microTask.run(()=>{window.dispatchEvent(new Event("resize"));updateStyles()})},wipeSlot:function(element,slot="*"){if("*"===slot){while(null!==dom(element).firstChild){dom(element).removeChild(dom(element).firstChild)}}else{for(var i in dom(element).childNodes){if(typeof dom(element).childNodes[i]!==typeof void 0&&dom(element).childNodes[i].slot===slot){dom(element).removeChild(dom(element).childNodes[i])}}}},_activeItemContentChanged:function(newValue,oldValue){if(typeof newValue!==typeof void 0){this.wipeSlot(this,"*");if(null!==newValue){let frag=document.createRange().createContextualFragment(newValue);dom(this).appendChild(frag)}}},disablePrevPage:function(index){if(0===index){return!0}return!1},disableNextPage:function(index){if(index===this.manifest.items.length-1){return!0}return!1},prevPage:function(e){this.changePage("previous")},nextPage:function(e){this.changePage("next")},changePage:function(direction){if("next"==direction&&this.__activeIndex<this.manifest.items.length-1){window.history.pushState({},null,this._routerManifest.items[this.__activeIndex+1].location);window.dispatchEvent(new PopStateEvent("popstate"))}else if("previous"==direction&&0<this.__activeIndex){window.history.pushState({},null,this._routerManifest.items[this.__activeIndex-1].location);window.dispatchEvent(new PopStateEvent("popstate"))}},_selectedPageChanged:function(newValue,oldValue){if(typeof newValue!==typeof void 0){if(typeof this.manifest!==typeof void 0){const item=this.manifest.items.filter((d,i)=>{if(newValue===d.id){this.__activeIndex=i;return d}}).pop();this.set("activeItem",item);window.scrollTo({top:0,left:0,behavior:"smooth"})}}},__hasTitle:function(outlineTitle){return outlineTitle?!0:!1}});export{OutlinePlayer};
+  `,is:"outline-player",properties:{opened:{type:Boolean,reflectToAttribute:!0},editMode:{type:Boolean,reflectToAttribute:!0,observer:"_editModeChanged"},activeItem:{type:Object},manifest:{type:Object},contentContainer:{type:Object},auto:{type:Boolean,notify:!0,value:!1},outlineFile:{type:String,value:"outline.json",notify:!0},outlineLocation:{type:String,notify:!0},closed:{type:Boolean,notify:!0,reflectToAttribute:!0,value:!1},_activeItemContent:{type:String,observer:"_activeItemContentChanged"},outline:{type:Array,notify:!0,observer:"_outlineChanged"},fillRemaining:{type:Boolean,value:!1,reflectToAttribute:!0},_location:{type:Object,observer:"_locationChanged"},activeId:{type:String,observer:"_activeIdChanged"},narrow:{type:Boolean,reflectToAttribute:!0}},_editModeChanged:function(newValue){if(typeof newValue!==typeof void 0){async.microTask.run(()=>{window.dispatchEvent(new Event("resize"));updateStyles()})}},created:function(){this.HAXCMSThemeWiring=new HAXCMSThemeWiring(this)},ready:function(){this.contentContainer=this.$.contentcontainer;this.HAXCMSThemeWiring.connect(this,this.contentContainer)},attached:function(){this.__disposer=autorun(()=>{this._location=store.location});this.__disposer2=autorun(()=>{this.activeId=toJS(store.activeId)});this.__disposer3=autorun(()=>{this.activeItem=toJS(store.activeItem)})},detached:function(){this.HAXCMSThemeWiring.disconnect(this);this.__disposer2();this.__disposer3()},_locationChanged:function(newValue){if(!newValue||"undefined"===typeof newValue.route)return;const location=newValue,name=location.route.name;if("home"===name||"404"===name){const firstItem=this.manifest.items.find(i=>"undefined"!==typeof i.id);if(firstItem){store.activeId=firstItem.id}}},_toggleMenu:function(e){this.$.drawer.toggle();this.closed=!this.$.drawer.opened;async.microTask.run(()=>{window.dispatchEvent(new Event("resize"));updateStyles()})},wipeSlot:function(element,slot="*"){if("*"===slot){while(null!==dom(element).firstChild){dom(element).removeChild(dom(element).firstChild)}}else{for(var i in dom(element).childNodes){if(typeof dom(element).childNodes[i]!==typeof void 0&&dom(element).childNodes[i].slot===slot){dom(element).removeChild(dom(element).childNodes[i])}}}},_activeItemContentChanged:function(newValue,oldValue){if(typeof newValue!==typeof void 0){this.wipeSlot(this,"*");if(null!==newValue){let frag=document.createRange().createContextualFragment(newValue);dom(this).appendChild(frag)}}},_activeIdChanged:function(newValue){if(this.opened&&this.narrow){this.$.drawer.toggle()}window.scrollTo({top:0,left:0,behavior:"smooth"})},__hasTitle:function(outlineTitle){return outlineTitle?!0:!1}});export{OutlinePlayer};

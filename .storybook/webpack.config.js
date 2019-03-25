@@ -1,7 +1,11 @@
 const path = require("path");
 
 module.exports = (storybookBaseConfig, configType, defaultConfig) => {
-  defaultConfig.resolve.modules.push("node_modules");
+  defaultConfig.module.rules.push({
+    //VTT files need to be in the same place at the demo
+    test: /\.(vtt|csv)$/,
+    loader: "file-loader"
+  });
   defaultConfig.module.rules.push({
     test: [/\.js$/],
     loader: require.resolve(

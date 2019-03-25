@@ -10,10 +10,14 @@ Polymer({
     <style>
       :host {
         display: block;
+        transition: 0.2s all ease-in-out;
+        transition-delay: 0.2s;
+        --map-menu-item-height: 16px;
       }
 
       :host([active]) {
         background: var(--map-menu-active-color);
+        @apply --map-menu-item-active-item;
       }
 
       #container {
@@ -62,7 +66,7 @@ Polymer({
       /* @todo this is a hack */
       #icon iron-icon {
         display: inline-block;
-        --iron-icon-height: 16px;
+        --iron-icon-height: var(--map-menu-item-height);
         transform: translateX(10px);
       }
 
@@ -71,16 +75,14 @@ Polymer({
       }
     </style>
     <div id="container">
-      <template is="dom-if" if="[[avatarLabel]]">
-        <div id="avatarLabel">
-          <lrndesign-avatar label="[[avatarLabel]]"></lrndesign-avatar>
-        </div>
-      </template>
-      <template is="dom-if" if="[[icon]]">
-        <div id="icon"><iron-icon icon="[[icon]]"></iron-icon></div>
-      </template>
+      <div hidden$="[[!avatarLabel]]" id="avatarLabel">
+        <lrndesign-avatar label="[[avatarLabel]]"></lrndesign-avatar>
+      </div>
+      <div hidden$="[[!icon]]" id="icon">
+        <iron-icon icon="[[icon]]"></iron-icon>
+      </div>
       <div id="center">
-        <a href$="[[url]]">
+        <a tabindex="-1" href$="[[url]]">
           <paper-button id="title" noink="" role\$="[[__titleRole()]]">
             <div id="label">[[label]]</div>
             <div id="title">[[title]]</div>
@@ -88,24 +90,13 @@ Polymer({
         </a>
       </div>
       <div id="right">
-        <template is="dom-if" if="[[!opened]]">
-          <iron-icon
-            id="toggle"
-            icon="arrow-drop-down"
-            aria-role="button"
-            aria-label="expand menu"
-            tabindex="0"
-          ></iron-icon>
-        </template>
-        <template is="dom-if" if="[[opened]]">
-          <iron-icon
-            id="toggle"
-            icon="arrow-drop-up"
-            aria-role="button"
-            aria-label="collapse menu"
-            tabindex="0"
-          ></iron-icon>
-        </template>
+        <iron-icon
+          id="toggle"
+          icon="[[__collapseIcon]]"
+          aria-role="button"
+          aria-label$="[[__collapseAria]]"
+          tabindex="0"
+        ></iron-icon>
       </div>
     </div>
   `,
@@ -124,7 +115,8 @@ Polymer({
       value: ""
     },
     opened: {
-      type: Boolean
+      type: Boolean,
+      observer: "_openedChanged"
     },
     url: {
       type: String,
@@ -139,10 +131,12 @@ Polymer({
     },
     active: {
       type: Boolean,
+      reflectToAttribute: true,
       value: false
     },
     selected: {
-      type: String
+      type: String,
+      reflectToAttribute: true
     }
   },
 
@@ -152,7 +146,15 @@ Polymer({
   },
 
   observers: ["__selectedChanged(selected, id)"],
-
+  _openedChanged: function(newValue, oldValue) {
+    if (newValue) {
+      this.__collapseIcon = "arrow-drop-down";
+      this.__collapseAria = "collapse menu";
+    } else {
+      this.__collapseIcon = "arrow-drop-up";
+      this.__collapseAria = "expand menu";
+    }
+  },
   __selectedChanged: function(selected, id) {
     if (selected === id) {
       this.fire("active-item", this);

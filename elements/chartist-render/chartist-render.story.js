@@ -1,57 +1,47 @@
-import { storiesOf } from "@storybook/polymer";
-import * as storybookBridge from "@storybook/addon-knobs/polymer";
-import { ChartistRender } from "./chartist-render.js";
+import { ChartistRender } from './chartist-render.js';
+import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
-// need to account for polymer goofiness when webpack rolls this up
-var template = require("raw-loader!./demo/index.html");
-let pattern = /<body[^>]*>((.|[\n\r])*)<\/body>/im;
-var array_matches = pattern.exec(template);
-// now template is just the body contents
-template = array_matches[1];
-const stories = storiesOf("Render", module);
-stories.addDecorator(storybookBridge.withKnobs);
-stories.add("chartist-render", () => {
-  var binding = {};
-  // start of tag for demo
-  let elementDemo = `<chartist-render`;
-  // mix in properties defined on the class
-  for (var key in ChartistRender.properties) {
-    // skip prototype
-    if (!ChartistRender.properties.hasOwnProperty(key)) continue;
-    // convert typed props
-    if (ChartistRender.properties[key].type.name) {
-      let method = "text";
-      switch (ChartistRender.properties[key].type.name) {
-        case "Boolean":
-        case "Number":
-        case "Object":
-        case "Array":
-        case "Date":
-          method = ChartistRender.properties[key].type.name.toLowerCase();
-          break;
-        default:
-          method = "text";
-          break;
-      }
-      binding[key] = storybookBridge[method](
-        key,
-        ChartistRender.properties[key].value
-      );
-      // ensure ke-bab case
-      let kebab = key.replace(/[A-Z\u00C0-\u00D6\u00D8-\u00DE]/g, function(
-        match
-      ) {
-        return "-" + match.toLowerCase();
-      });
-      elementDemo += ` ${kebab}="${binding[key]}"`;
-    }
-  }
-  const innerText = storybookBridge.text("Inner contents", "Render");
-  elementDemo += `> ${innerText}</chartist-render>`;
-  return `
-  <h1>Live demo</h1>
-  ${elementDemo}
-  <h1>Additional examples</h1>
-  ${template}
-  `;
-});
+window.StorybookUtilities.requestAvailability();
+
+/**
+ * add the live demo
+ */
+const props = ChartistRender.properties;
+props.data.value = { 
+  "labels": ["Bananas", "Apples", "Grapes"], 
+  "series": [20, 15, 40]
+};
+props.chartTitle.value =`A pie chart of favorite foods`;
+props.type.type = "select";
+props.type.options = ["bar", "line", "pie"];
+props.type.value = "pie";
+props.scale.type = "select";
+props.scale.options = [
+  "ct-square",
+  "ct-minor-second",
+  "ct-major-second",
+  "ct-minor-third",
+  "ct-major-third",
+  "ct-perfect-fourth",
+  "ct-perfect-fifth",
+  "ct-minor-sixth",
+  "ct-golden-section",
+  "ct-major-sixth",
+  "ct-minor-seventh",
+  "ct-major-seventh",
+  "ct-octave",
+  "ct-major-tenth",
+  "ct-major-eleventh",
+  "ct-major-twelfth",
+  "ct-double-octave"
+];
+props.scale.value = "ct-major-twelfth";
+const ChartistRenderStory = {
+  "of": "chartist-render",
+  "name": "chartist-render",
+  "props":  props,
+  "slots": {}, 
+  "attr": ` style="width: 100%; max-width: 500px;"`,
+  "slotted": ``
+};
+window.StorybookUtilities.instance.addLiveDemo(ChartistRenderStory);

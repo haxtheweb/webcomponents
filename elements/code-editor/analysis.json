@@ -4664,11 +4664,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 85,
+              "line": 86,
               "column": 4
             },
             "end": {
-              "line": 87,
+              "line": 88,
               "column": 5
             }
           },
@@ -4685,11 +4685,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 91,
+              "line": 92,
               "column": 4
             },
             "end": {
-              "line": 95,
+              "line": 96,
               "column": 5
             }
           },
@@ -4707,11 +4707,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 99,
+              "line": 100,
               "column": 4
             },
             "end": {
-              "line": 103,
+              "line": 104,
               "column": 5
             }
           },
@@ -4729,11 +4729,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 107,
+              "line": 108,
               "column": 4
             },
             "end": {
-              "line": 110,
+              "line": 111,
               "column": 5
             }
           },
@@ -4751,7 +4751,7 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 114,
+              "line": 115,
               "column": 4
             },
             "end": {
@@ -4763,8 +4763,7 @@
             "polymer": {
               "attributeType": "String"
             }
-          },
-          "defaultValue": "\"\""
+          }
         },
         {
           "name": "value",
@@ -5060,8 +5059,8 @@
           }
         },
         {
-          "name": "ready",
-          "description": "Ready state to tee everything up.",
+          "name": "attached",
+          "description": "attached life cycle",
           "privacy": "protected",
           "sourceRange": {
             "start": {
@@ -5069,7 +5068,7 @@
               "column": 2
             },
             "end": {
-              "line": 245,
+              "line": 247,
               "column": 3
             }
           },
@@ -5085,11 +5084,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 20,
+          "line": 21,
           "column": 25
         },
         "end": {
-          "line": 246,
+          "line": 248,
           "column": 1
         }
       },
@@ -5138,11 +5137,11 @@
           "description": "Title",
           "sourceRange": {
             "start": {
-              "line": 85,
+              "line": 86,
               "column": 4
             },
             "end": {
-              "line": 87,
+              "line": 88,
               "column": 5
             }
           },
@@ -5154,11 +5153,11 @@
           "description": "Show codePen button to fork it to there to run",
           "sourceRange": {
             "start": {
-              "line": 91,
+              "line": 92,
               "column": 4
             },
             "end": {
-              "line": 95,
+              "line": 96,
               "column": 5
             }
           },
@@ -5170,11 +5169,11 @@
           "description": "Readonly setting for the editor",
           "sourceRange": {
             "start": {
-              "line": 99,
+              "line": 100,
               "column": 4
             },
             "end": {
-              "line": 103,
+              "line": 104,
               "column": 5
             }
           },
@@ -5186,11 +5185,11 @@
           "description": "Code pen data, computed based on the HTML editor",
           "sourceRange": {
             "start": {
-              "line": 107,
+              "line": 108,
               "column": 4
             },
             "end": {
-              "line": 110,
+              "line": 111,
               "column": 5
             }
           },
@@ -5202,7 +5201,7 @@
           "description": "contents of the editor",
           "sourceRange": {
             "start": {
-              "line": 114,
+              "line": 115,
               "column": 4
             },
             "end": {

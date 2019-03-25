@@ -5,6 +5,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
@@ -113,8 +114,7 @@ let CodeEditor = Polymer({
      * contents of the editor
      */
     editorValue: {
-      type: String,
-      value: ""
+      type: String
     },
     /**
      * value of the editor after the fact
@@ -224,24 +224,26 @@ let CodeEditor = Polymer({
       decodeURIComponent(import.meta.url) + "/../../../monaco-editor/min/vs";
   },
   /**
-   * Ready state to tee everything up.
+   * attached life cycle
    */
-  ready: function() {
-    // mutation observer that ensures state of hax applied correctly
-    this._observer = new FlattenedNodesObserver(this, info => {
-      // if we've got new nodes, we have to react to that
-      if (info.addedNodes.length > 0) {
-        info.addedNodes.map(node => {
-          this.updateEditorValue();
-        });
-      }
-      // if we dropped nodes via the UI (delete event basically)
-      if (info.removedNodes.length > 0) {
-        // handle removing items... not sure we need to do anything here
-        info.removedNodes.map(node => {
-          this.updateEditorValue();
-        });
-      }
+  attached: function() {
+    afterNextRender(this, function() {
+      // mutation observer that ensures state of hax applied correctly
+      this._observer = new FlattenedNodesObserver(this, info => {
+        // if we've got new nodes, we have to react to that
+        if (info.addedNodes.length > 0) {
+          info.addedNodes.map(node => {
+            this.updateEditorValue();
+          });
+        }
+        // if we dropped nodes via the UI (delete event basically)
+        if (info.removedNodes.length > 0) {
+          // handle removing items... not sure we need to do anything here
+          info.removedNodes.map(node => {
+            this.updateEditorValue();
+          });
+        }
+      });
     });
   }
 });

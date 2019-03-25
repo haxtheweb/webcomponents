@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { A11yMediaPlayerBehaviors } from "./a11y-media-player-behaviors.js";
+import { A11yMediaBehaviors } from "./a11y-media-behaviors.js";
 import "@polymer/paper-menu-button/paper-menu-button.js";
 import "@polymer/paper-listbox/paper-listbox.js";
 import "@polymer/paper-item/paper-item.js";
@@ -20,36 +20,23 @@ export { A11yMediaControls };
  * `The controls bar for the a11y-media-player.`
  *
  * @microcopy - language worth noting:
-```<a11y-media-button 
-  accent-color$="[[accentColor]]"             // Optional accent color for controls, 
-                                              // using the following materialize colors: 
-                                              // red, pink, purple, deep-purple, indigo, blue, 
-                                              // light blue, cyan, teal, green, light green, lime, 
-                                              // yellow, amber, orange, deep-orange, and brown. 
-                                              // Default is null. 
-  allow-fullscreen$="[[allowFullscreen]]"     // Allow fullscreen mode?
-  audio-only$="[[audioOnly]]"                 // Is media audio only?
-  autoplay$="[[autoplay]]"                    // Is player set to autoplay (not recommended for a11y)?
-  cc$="[[cc]]"                                // Are closed captions toggled?
-  dark$="[[dark]]"                            // Is the color scheme dark? Default is light.    
-  disableFullscreen$="[[disableFullscreen]]"  // Is full screen mode disabled?
-  fullscreen$="[[fullscreen]]"                // Is full screen mode toggled on?
-  hide-elapsed-time$="[[hideElapsedTime]]"    // Is elapsed time hidden?
-  loop$="[[loop]]"                            // Is video on a loop?
-  microcopy$="[[microcopy]]"                  // Optional customization or text and icons
-  muted$="[[muted]]"                          // Is video muted?
-  responsive-size$="[[responsiveSize]]"       // The size of the player determines how controls are displayed
-  volume$="[[volume]]">                       // The initial volume of the video
-</a11y-media-button>```
  *
- * @extends A11yMediaPlayerBehaviors
+ * @extends A11yMediaBehaviors
  * @customElement
  * @polymer
  */
-class A11yMediaControls extends A11yMediaPlayerBehaviors {
+class A11yMediaControls extends A11yMediaBehaviors {
   // properties available to the custom element for data binding
   static get properties() {
     return {
+      /**
+       * Use compact controls?
+       */
+      compactControls: {
+        name: "compactControls",
+        type: Boolean,
+        computed: "_getCompactControls(responsiveSize)"
+      },
       /**
        * Is the player a fixed height (iframe mode) so that theure is no transcript toggle?
        */
@@ -58,25 +45,78 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
         value: false
       },
       /**
+       * Is fullscreen mode?
+       */
+      fullscreen: {
+        name: "fullscreen",
+        type: Boolean,
+        value: false
+      },
+      /**
+       * show the FullscreenButton?
+       */
+      fullscreenButton: {
+        name: "fullscreenButton",
+        type: Boolean,
+        value: false,
+        nofity: true
+      },
+
+      /**
+       * Does the player have tracks?
+       */
+      hasCaptions: {
+        name: "hasCaptions",
+        type: Boolean,
+        value: false,
+        notify: true
+      },
+
+      /**
+       * initially hide the transcript?
+       */
+      hideTranscript: {
+        name: "hideTranscript",
+        type: Boolean,
+        value: false
+      },
+      /**
        * hide the transcript toggle menu item?
        */
       hideTranscriptButton: {
         type: Boolean,
-        computed: "_hideTranscriptButton(noTranscriptMenu,compactControls)"
+        computed: "_hideTranscriptButton(noTranscriptToggle,compactControls)"
+      },
+      /**
+       * mute/unmute button
+       */
+      muteUnmute: {
+        name: "muteUnmute",
+        type: Object
       },
       /**
        * hide the print transcript feature available?
        */
       noPrinting: {
         type: Boolean,
-        computed: "_noPrinting(standalone,fixedHeight)"
+        computed: "_noPrinting(standAlone,fixedHeight)"
       },
       /**
        * Is the transctipt toggle feature available?
        */
       noTranscriptToggle: {
         type: Boolean,
-        computed: "_noTranscriptToggle(standalone,fixedHeight,hasTranscript)"
+        computed: "_noTranscriptToggle(standAlone,fixedHeight,hasTranscript)"
+      },
+      /**
+       * Size of the a11y media element for responsive styling
+       */
+      responsiveSize: {
+        name: "responsiveSize",
+        type: String,
+        notify: true,
+        value: "xs",
+        reflectToAttribute: true
       }
     };
   }
@@ -91,7 +131,7 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
 
   //get player-specifc properties
   static get behaviors() {
-    return [A11yMediaPlayerBehaviors];
+    return [A11yMediaBehaviors];
   }
 
   //render function
@@ -254,26 +294,26 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
         ></a11y-media-button>
         <a11y-media-button
           action="rewind"
-          disabled$="[[compactControls]]"
+          disabled$="[[disableSeek]]"
           hidden$="[[compactControls]]"
-          icon$="[[_getLocal(localization,'rewind','icon')]]"
-          label$="[[_getLocal(localization,'rewind','label')]]"
+          icon$="[[_getLocal('rewind','icon')]]"
+          label$="[[_getLocal('rewind','label')]]"
           on-tap="_onButtonTap"
         ></a11y-media-button>
         <a11y-media-button
           action="forward"
-          disabled$="[[compactControls]]"
+          disabled$="[[disableSeek]]"
           hidden$="[[compactControls]]"
-          icon$="[[_getLocal(localization,'forward','icon')]]"
-          label$="[[_getLocal(localization,'forward','label')]]"
+          icon$="[[_getLocal('forward','icon')]]"
+          label$="[[_getLocal('forward','label')]]"
           on-tap="_onButtonTap"
         ></a11y-media-button>
         <a11y-media-button
           action="restart"
-          disabled$="[[compactControls]]"
+          disabled$="[[disableSeek]]"
           hidden$="[[compactControls]]"
-          icon$="[[_getLocal(localization,'restart','icon')]]"
-          label$="[[_getLocal(localization,'restart','label')]]"
+          icon$="[[_getLocal('restart','icon')]]"
+          label$="[[_getLocal('restart','label')]]"
           on-tap="_onButtonTap"
         ></a11y-media-button>
         <div id="showvolume">
@@ -305,8 +345,8 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
           action="captions"
           disabled$="[[!hasCaptions]]"
           hidden$="[[!hasCaptions]]"
-          icon$="[[_getLocal(localization,'captions','icon')]]"
-          label$="[[_getLocal(localization,'captions','label')]]"
+          icon$="[[_getLocal('captions','icon')]]"
+          label$="[[_getLocal('captions','label')]]"
           on-tap="_onButtonTap"
           toggle$="[[cc]]"
         >
@@ -316,21 +356,33 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
           controls="transcript"
           disabled$="[[hideTranscriptButton]]"
           hidden$="[[hideTranscriptButton]]"
-          icon$="[[_getLocal(localization,'transcript','icon')]]"
-          label$="[[_getLocal(localization,'transcript','label')]]"
+          icon$="[[_getLocal('transcript','icon')]]"
+          label$="[[_getLocal('transcript','label')]]"
           on-tap="_onButtonTap"
-          toggle$="[[!hideTranscript]]"
+          toggle$="[[hideTranscript]]"
         >
         </a11y-media-button>
         <a11y-media-button
           action="print"
           disabled$="[[noPrinting]]"
           hidden$="[[noPrinting]]"
-          icon$="[[_getLocal(localization,'print','icon')]]"
-          label="[[_getLocal(localization,'print','label')]]"
+          icon$="[[_getLocal('print','icon')]]"
+          label="[[_getLocal('print','label')]]"
           on-tap="_handlePrintClick"
         >
         </a11y-media-button>
+        <template is="dom-if" if="[[fullscreenButton]]">
+          <a11y-media-button
+            action="fullscreen"
+            hidden$="[[audioNoThumb]]"
+            icon$="[[_getLocal('fullscreen','icon')]]"
+            label$="[[_getLocal('fullscreen','label')]]"
+            on-tap="_onButtonTap"
+            toggle$="[[fullscreen]]"
+            step="1"
+          >
+          </a11y-media-button>
+        </template>
         <paper-menu-button
           id="settings"
           allow-outside-scroll
@@ -343,8 +395,8 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
         >
           <paper-icon-button
             action="settings"
-            alt$="[[_getLocal(localization,'settings','label')]]"
-            icon$="[[_getLocal(localization,'settings','icon')]]"
+            alt$="[[_getLocal('settings','label')]]"
+            icon$="[[_getLocal('settings','icon')]]"
             slot="dropdown-trigger"
           >
           </paper-icon-button>
@@ -352,7 +404,7 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
             <paper-item hidden$="[[!hasCaptions]]">
               <div class="setting">
                 <div class="setting-text">
-                  [[_getLocal(localization,'captions','label')]]
+                  [[_getLocal('captions','label')]]
                 </div>
                 <div class="setting-control">
                   <dropdown-select
@@ -363,7 +415,7 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
                     value
                   >
                     <paper-item value=""
-                      >[[_getLocal(localization,'captions','off')]]</paper-item
+                      >[[_getLocal('captions','off')]]</paper-item
                     >
                     <template is="dom-repeat" items="{{tracks}}" as="option">
                       <paper-item value$="{{option.value}}"
@@ -377,7 +429,7 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
             <paper-item hidden$="[[noTranscriptToggle]]">
               <div class="setting">
                 <div id="transcript-label" class="setting-text">
-                  [[_getLocal(localization,'transcript','label')]]
+                  [[_getLocal('transcript','label')]]
                 </div>
                 <div class="setting-control">
                   <paper-toggle-button
@@ -394,7 +446,7 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
             <paper-item>
               <div class="setting">
                 <div id="loop-label" class="setting-text">
-                  [[_getLocal(localization,'loop','label')]]
+                  [[_getLocal('loop','label')]]
                 </div>
                 <div class="setting-control">
                   <paper-toggle-button
@@ -408,7 +460,7 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
             <paper-item>
               <div class="setting">
                 <div id="speed-label" class="setting-text">
-                  [[_getLocal(localization,'speed','label')]]
+                  [[_getLocal('speed','label')]]
                 </div>
                 <div class="setting-control">
                   <paper-slider
@@ -429,21 +481,8 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
           </paper-listbox>
         </paper-menu-button>
         <paper-tooltip for="settings">
-          [[_getLocal(localization,'settings','label')]]
+          [[_getLocal('settings','label')]]
         </paper-tooltip>
-        <template is="dom-if" if="[[fullscreenButton]]">
-          <template is="dom-if" if="[[!audioNoThumb]]">
-            <a11y-media-button
-              action="fullscreen"
-              icon$="[[_getLocal(localization,'fullscreen','icon')]]"
-              label$="[[_getLocal(localization,'fullscreen','label')]]"
-              on-tap="_onButtonTap"
-              toggle$="[[fullscreen]]"
-              step="1"
-            >
-            </a11y-media-button>
-          </template>
-        </template>
       </div>
     `;
   }
@@ -500,6 +539,19 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
   setTracks(tracks) {
     this.set("tracks", []);
     this.set("tracks", tracks.slice(0));
+  }
+
+  /**
+   * returns true if player is xs or sm and needs to use compact controls
+   *
+   * @param {string} the size of the player: `xs`,`sm`,`md`,`lg`, or `xl`
+   * @returns {boolean} Should the player use compact controls?
+   */
+  _getCompactControls(responsiveSize) {
+    return (
+      this._testAttribute(responsiveSize, "xs") ||
+      this._testAttribute(responsiveSize, "sm")
+    );
   }
 
   /**

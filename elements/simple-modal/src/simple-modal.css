@@ -12,17 +12,15 @@
 }
 
 :host #dialog {
-  display: block;
-  margin: auto;
-  width: auto;
+  margin: 15px auto;
   height: auto;
+  height: var(--simple-modal-height, auto);
   z-index: 1000;
-  width: var(--simple-modal-width, 50%);
-  height: var(--simple-modal-height, 50vh);
-  min-width: var(--simple-modal-min-width, --simple-modal-width);
-  min-height: var(--simple-modal-min-height, --simple-modal-height);
-  max-width: var(--simple-modal-max-width, 100%);
-  max-height: var(--simple-modal-max-height, 75vh);
+  width: var(--simple-modal-width, auto);
+  min-width: var(--simple-modal-min-width, unset);
+  max-width: var(--simple-modal-max-width, unset);
+  min-height: var(--simple-modal-min-height, unset);
+  max-height: var(--simple-modal-max-height, unset);
   border-radius: 3px;
   @apply --simple-modal-dialog;
 }

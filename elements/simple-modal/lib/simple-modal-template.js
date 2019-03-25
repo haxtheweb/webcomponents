@@ -51,8 +51,12 @@ class SimpleModalTemplate extends PolymerElement {
       <style>
         :host {
           display: none;
-          --simple-modal-width: 50vw;
-          --simple-modal-height: 50vh;
+          --simple-modal-width: auto;
+          --simple-modal-height: auto;
+          --simple-modal-min-width: unset;
+          --simple-modal-min-height: unset;
+          --simple-modal-max-width: unset;
+          --simple-modal-max-height: unset;
           --simple-modal-titlebar-color: #444;
           --simple-modal-titlebar-background: #ddd;
           --simple-modal-header-color: #222;
@@ -120,6 +124,10 @@ class SimpleModalTemplate extends PolymerElement {
     [
       "--simple-modal-width",
       "--simple-modal-height",
+      "--simple-modal-min-width",
+      "--simple-modal-min-height",
+      "--simple-modal-max-width",
+      "--simple-modal-max-height",
       "--simple-modal-titlebar-color",
       "--simple-modal-titlebar-background",
       "--simple-modal-header-color",
