@@ -8,7 +8,7 @@ import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
 /**
- * `rich-text-editor-fields`
+ * `rich-text-editor-prompt`
  * `a picker for rich text editor (custom buttons can extend this)`
  *
  * @microcopy - language worth noting:
@@ -74,7 +74,7 @@ class RichTextEditorPrompt extends RichTextEditorButton {
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
-    return "rich-text-editor-fields";
+    return "rich-text-editor-prompt";
   }
 }
 window.customElements.define(RichTextEditorPrompt.tag, RichTextEditorPrompt);
