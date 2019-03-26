@@ -46,12 +46,12 @@
 } 
 
 :host #icon {
-  transform: var(--simple-picker-icon-tranform,rotate(-90deg));
+  transform: var(--simple-picker-icon-tranform, rotate(0deg));
   transition: transform 0.25s;
 }
 
 :host([expanded]) #icon {
-  transform: var(--simple-picker-expanded-icon-tranform,rotate(0deg));
+  transform: var(--simple-picker-expanded-icon-tranform, rotate(0deg));
   transition: transform 0.25s;
 }
 

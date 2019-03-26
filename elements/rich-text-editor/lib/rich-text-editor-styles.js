@@ -43,7 +43,7 @@ const css = html`
       }
       --a11y-collapse-content: {
         position: absolute;
-        top: 27px;
+        top: 25px;
         background: white;
       }
       --a11y-collapse-content-expanded: {

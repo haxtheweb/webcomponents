@@ -324,10 +324,10 @@ class A11yMediaControls extends A11yMediaBehaviors {
             label$="[[muteUnmute.label]]"
             on-tap="_onButtonTap"
           ></a11y-media-button>
-          <span id="volume-slider-label" class="sr-only">[[volumeLabel]]</span>
           <paper-slider
             id="volume"
             aria-labelledby="volume-slider-label"
+            label$="[[volumeLabel]]"
             min="0"
             max="100"
             on-change="_onSettingsChanged"
@@ -467,7 +467,6 @@ class A11yMediaControls extends A11yMediaBehaviors {
                     id="speed"
                     aria-labelledby="speed-label"
                     class="setting-slider"
-                    label="tracks"
                     min="0.5"
                     max="4"
                     pin

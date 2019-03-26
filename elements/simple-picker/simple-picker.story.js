@@ -6,30 +6,54 @@ window.StorybookUtilities.requestAvailability();
 /**
  * add to the pattern library 
  */
-/*const Pattern = {
-  "of": "Pattern Library/Molecules/Layout",       //Patter library path
-  "name": "Collapse"                              //Pattern name
+const SimplePickerPattern = {
+  "of": "Pattern Library/Atoms/Forms",
+  "name": "Picker",
   "file": require("raw-loader!./demo/index.html"),
   "replacements": []
 };
-window.StorybookUtilities.instance.addPattern(Pattern);*/
+window.StorybookUtilities.instance.addPattern(SimplePickerPattern);
 
 /**
  * add the live demo
  */
-/*const Story = {
-  "of": "a11y-collpase",                    //component folder
-  "name": "a11y-collpase",                  //component tag
-  "props": A11yCollapse.properties,         //component properties that will become knobs
-  "slots": {                                //slots that will become knobs
-    "heading":                              
-      {
-        "name": "heading",                  //slot name
-        "type": "String",                   //slot type
-        "value": `Click to expand me.`      //slot content
-      }
-  }, 
-  "attr": ``,                               //attributes that won't become knobs
-  "slotted": ``                             //slots that won't become knobs
+const props = SimplePicker.properties;
+props.label.value = "Pick a Font-Family";
+props.options.type = "Object";
+props.options.value = [
+  [
+    {
+      "alt": "sans-serif",              
+      "style": "font-family: sans-serif",
+      "value": "sans-serif"
+    }
+  ],[
+    {
+      "alt": "serif",
+      "style": "font-family: serif",
+      "value": "serif"
+    }
+  ],[
+    {
+      "alt": "monospace",
+      "selected": true,
+      "style": "font-family: monospace",
+      "value": "monospace"
+    }
+  ],[
+    {
+      "alt": "cursive",
+      "style": "font-family: cursive",
+      "value": "cursive"
+    }
+  ]
+];
+const SimplePickerStory = {
+  "of": "simple-picker",
+  "name": "simple-picker",
+  "props": props,
+  "slots": {}, 
+  "attr": ``, 
+  "slotted": ``
 }
-window.StorybookUtilities.instance.addLiveDemo(Story);*/
+window.StorybookUtilities.instance.addLiveDemo(SimplePickerStory);

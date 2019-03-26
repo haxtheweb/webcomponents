@@ -84,7 +84,7 @@ class SimplePicker extends PolymerElement {
         }
 
         :host #icon {
-          transform: var(--simple-picker-icon-tranform, rotate(-90deg));
+          transform: var(--simple-picker-icon-tranform, rotate(0deg));
           transition: transform 0.25s;
         }
 
