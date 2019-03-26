@@ -582,6 +582,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
           id="slider"
           class="screen-only"
           disabled$="[[disableSeek]]"
+          label="[[seekSlider.label]]"
           max$="[[__duration]]"
           secondary-progress$="[[__buffered]]"
           value$="[[__elapsed]]"

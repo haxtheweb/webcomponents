@@ -207,6 +207,9 @@ class A11yMediaBehaviors extends SimpleColors {
             label: "Search the transcript.",
             icon: "search"
           },
+          seekSlider: {
+            label: "Seek Slider"
+          },
           settings: {
             label: "Settings",
             icon: "settings"
