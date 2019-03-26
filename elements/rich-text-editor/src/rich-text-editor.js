@@ -9,6 +9,7 @@ import "./lib/rich-text-editor-button.js";
 import "./lib/rich-text-editor-more-button.js";
 import "./lib/rich-text-editor-heading-picker.js";
 import "./lib/rich-text-editor-symbol-picker.js";
+import "./lib/rich-text-editor-prompt.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/iron-icons/image-icons.js";

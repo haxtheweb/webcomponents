@@ -9,6 +9,7 @@ import "./lib/rich-text-editor-button.js";
 import "./lib/rich-text-editor-more-button.js";
 import "./lib/rich-text-editor-heading-picker.js";
 import "./lib/rich-text-editor-symbol-picker.js";
+import "./lib/rich-text-editor-prompt.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/iron-icons/image-icons.js";
@@ -44,10 +45,10 @@ class RichTextEditor extends PolymerElement {
           --rich-text-editor-button-disabled-color: #666;
           --rich-text-editor-button-disabled-bg: transparent;
           --rich-text-editor-button-toggled-color: #222;
-          --rich-text-editor-button-toggled-bg: #d8d8d8;
+          --rich-text-editor-button-toggled-bg: #ddd;
           --rich-text-editor-button-hover-color: #000;
           --rich-text-editor-button-hover-bg: #f0f0f0;
-          --rich-text-editor-picker-border: #ccc;
+          --rich-text-editor-picker-border: #fafafa;
           @apply --rich-text-editor;
         }
         :host([sticky]) {
@@ -269,7 +270,7 @@ class RichTextEditor extends PolymerElement {
                 toggledIcon: "mdextra:unlink",
                 toggledLabel: "Unink",
                 toggles: true,
-                type: "rich-text-editor-button"
+                type: "rich-text-editor-prompt"
               }
             ]
           },

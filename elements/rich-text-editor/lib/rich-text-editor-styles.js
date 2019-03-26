@@ -21,11 +21,34 @@ const css = html`
     :host([hidden]) {
       display: none;
     }
+    :host(rich-text-editor-picker),
     :host(rich-text-editor-emoji-picker),
     :host(rich-text-editor-symbol-picker) {
+      --simple-picker-icon-transform: rotate(0deg);
+      --simple-picker-expanded-icon-transform: rotate(0deg);
       --simple-picker-option: {
         width: 24px;
         max-width: 24px;
+      }
+    }
+    :host #collapse {
+      --a11y-collapse-margin: 0 3px;
+      --a11y-collapse-horizontal-padding: 10px;
+      --a11y-collapse-border: var(--rich-text-editor-bg);
+      --a11y-collapse: {
+        position: relative;
+      }
+      --a11y-collapse-icon-rotated: {
+        transform: rotate(0deg);
+      }
+      --a11y-collapse-content: {
+        position: absolute;
+        top: 27px;
+        background: white;
+      }
+      --a11y-collapse-content-expanded: {
+        border: 1px solid var(--rich-text-editor-button-color);
+        box-shadow: 0px 0px 1px #888;
       }
     }
     :host #button {
@@ -38,7 +61,8 @@ const css = html`
       border-color: var(--rich-text-editor-button-border);
       --simple-picker-color: var(--rich-text-editor-button-color);
       --simple-picker-background-color: var(--rich-text-editor-bg);
-      --simple-picker-border-color: var(--rich-text-editor-picker-border);
+      --simple-picker-sample-border-color: var(--rich-text-editor-bg);
+      --simple-picker-border-color: var(--rich-text-editor-button-color);
       --simple-picker-icon-tranform: rotate(0deg);
       --simple-picker-expanded-icon-tranform: rotate(-90deg);
       --simple-picker-option-null: {

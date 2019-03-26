@@ -77,7 +77,10 @@ class SimplePicker extends PolymerElement {
           border-radius: 2px;
           background-color: var(--simple-picker-background-color, #ddd);
           border: 1px solid
-            var(--simple-picker-border-color, var(--simple-picker-color));
+            var(
+              --simple-picker-sample-border-color,
+              var(--simple-picker-border-color, var(--simple-picker-color))
+            );
         }
 
         :host #icon {
