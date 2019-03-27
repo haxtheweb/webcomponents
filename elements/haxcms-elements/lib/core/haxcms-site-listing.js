@@ -167,7 +167,7 @@ Polymer({
       id="siteslisting"
       sites-response="{{__sitesResponse}}"
       sites="{{__sites}}"
-      data-source="[[dataSource]]"
+      data-source="[[_dataSource]]"
       edit-mode="[[editMode]]"
     ></sites-listing>
     <app-header reveals>
@@ -379,7 +379,8 @@ Polymer({
      * Data Source to power the loading of sites in JSON Outline Schema format.
      */
     dataSource: {
-      type: String
+      type: String,
+      observer: "_dataSourceChanged"
     },
     /**
      * JSON Web token
@@ -475,6 +476,11 @@ Polymer({
           this.$.add.hidden = true;
         }
       }, 100);
+    }
+  },
+  _dataSourceChanged: function(newValue) {
+    if (newValue) {
+      this._dataSource = newValue + "?" + Math.floor(Date.now() / 1000);
     }
   },
   /**
@@ -870,6 +876,7 @@ Polymer({
    */
   handleCreateResponse: function(e) {
     // update the listing data
+    this._dataSource = this.dataSource + "?" + Math.floor(Date.now() / 1000);
     this.fire("sites-listing-refresh-data", e.detail.response);
     const evt = new CustomEvent("simple-toast-show", {
       bubbles: true,
