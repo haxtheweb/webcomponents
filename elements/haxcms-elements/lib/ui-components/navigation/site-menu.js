@@ -145,6 +145,10 @@ class SiteMenu extends PolymerElement {
         accessData: {}
       };
     }
+    // edge case when switching rapidly
+    if (!userData.manifests[this.routerManifest.id].accessData) {
+      userData.manifests[this.routerManifest.id].accessData = {};
+    }
     userData.manifests[this.routerManifest.id].accessData[e.detail.id] = {
       timestamp: Math.floor(Date.now() / 1000),
       trackIcon: this.trackIcon
