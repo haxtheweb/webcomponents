@@ -14,6 +14,22 @@ import { autorun, toJS } from "mobx";
  * @polymer
  * @demo demo/index.html
  */
+// helper to use strings for index in Objects
+Object.byString = function(o, s) {
+  s = s.replace(/\[(\w+)\]/g, ".$1"); // convert indexes to properties
+  s = s.replace(/^\./, ""); // strip a leading dot
+  var a = s.split(".");
+  for (var i = 0, n = a.length; i < n; ++i) {
+    var k = a[i];
+    if (k in o) {
+      o = o[k];
+    } else {
+      return;
+    }
+  }
+  return o;
+};
+
 class SiteQuery extends MutableData(PolymerElement) {
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -49,7 +65,7 @@ class SiteQuery extends MutableData(PolymerElement) {
       __result: {
         type: Array,
         computed:
-          "_computeResult(conditions, sort, routerManifest.items, activeId, forceRebuild)",
+          "_computeResult(entityType, conditions, sort, routerManifest.items, activeId, limit, random, forceRebuild)",
         observer: "_noticeResultChange"
       },
       /**
@@ -77,15 +93,63 @@ class SiteQuery extends MutableData(PolymerElement) {
         type: Boolean,
         notify: true,
         value: false
+      },
+      /**
+       * Limit the number of results returned
+       */
+      limit: {
+        type: Number,
+        value: 0
+      },
+      /**
+       * Randomize results
+       */
+      random: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Entity to focus on
+       */
+      entityType: {
+        type: String,
+        value: "node"
       }
     };
   }
   /**
    * Compute what we should present as a slice of the real deal
    */
-  _computeResult(conditions, sorts, realItems, activeId, forceRebuild) {
+  _computeResult(
+    entityType,
+    conditions,
+    sorts,
+    realItems,
+    activeId,
+    limit,
+    random,
+    forceRebuild
+  ) {
     // ensure no data references, clone object
     let items = Object.assign([], toJS(realItems));
+    // ohhh.... boy.... let's completely alter how this thing works
+    if (entityType !== "node") {
+      let oldItems = Object.assign([], items);
+      for (var i in oldItems) {
+        // we found a match...
+        // for example maybe this is metadata.files
+        // so now you've got things files centric as opposed to item centric
+        if (typeof oldItems[i][entityType] !== typeof undefined) {
+          oldItems[i] = oldItems[i][entityType];
+          // store reference to the original item structure here
+          // this could let you do things like give me all tags
+          // then total up the unique references to those tags
+          // or to present the title of everything that has tag X
+          oldItems[i]._node = items[i];
+        }
+      }
+      items = oldItems;
+    }
     // if there are no conditions just do a 1 to 1 presentation
     if (conditions && items) {
       // apply conditions, this will automatically filter our items
@@ -104,7 +168,7 @@ class SiteQuery extends MutableData(PolymerElement) {
             }
             return true;
           } else {
-            if (item[i] !== conditions[i]) {
+            if (Object.byString(item, i) !== conditions[i]) {
               return false;
             }
             return true;
@@ -112,6 +176,8 @@ class SiteQuery extends MutableData(PolymerElement) {
         });
       }
     }
+    // @todo need to support multi-facetted sort
+    // right now this will just sort one way then undo it with another
     if (sorts) {
       for (var i in sorts) {
         items.sort((item1, item2) => {
@@ -135,6 +201,25 @@ class SiteQuery extends MutableData(PolymerElement) {
         });
       }
     }
+    // randomize the results, this would goof up the usefulness of sorts
+    if (random) {
+      items.sort((item1, item2) => {
+        if (Math.random() < Math.random()) {
+          return -1;
+        } else if (Math.random() > Math.random()) {
+          return 1;
+        } else {
+          return 0;
+        }
+      });
+    }
+    // reduce results if we need to
+    if (limit !== 0) {
+      // remove last item while there's more items then the limit
+      while (items.length > limit) {
+        items.pop();
+      }
+    }
     return items;
   }
   /**
@@ -144,6 +229,9 @@ class SiteQuery extends MutableData(PolymerElement) {
     this.set("result", newValue);
     this.notifyPath("result");
   }
+  /**
+   * Connected life cycle
+   */
   connectedCallback() {
     super.connectedCallback();
     this.__disposer = autorun(() => {
@@ -153,6 +241,9 @@ class SiteQuery extends MutableData(PolymerElement) {
       this.activeId = toJS(store.activeId);
     });
   }
+  /**
+   * Disconnected life cycle
+   */
   disconnectedCallback() {
     super.disconnectedCallback();
     this.__disposer();
