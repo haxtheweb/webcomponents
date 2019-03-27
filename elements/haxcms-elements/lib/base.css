@@ -1,46 +1,54 @@
 body,html {
   padding: 0;
   margin: 0;
-  font-size: 16px;
-  font-family: 'Noto Serif', serif;
+  font-size: var(--haxcms-base-styles-body-font-size, 16px);
+  font-family: var(--haxcms-base-styles-body-font-family, 'Noto Serif', serif);;
 }
 h1 {
-  font-size: 2.5em;
-  line-height: 2.5em;
+  font-size: var(--haxcms-base-styles-h1-font-size, 2.5em);
+  line-height: var(--haxcms-base-styles-h1-line-height, 2.5em);
 }
 h2 {
-  font-size: 2em;
+  font-size: var(--haxcms-base-styles-h2-font-size, 2em);
 }
 h3 {
-  font-size: 1.75em;
+  font-size: var(--haxcms-base-styles-h3-font-size, 1.75em);
 }
 h4 {
-  font-size: 1.5em;
+  font-size: var(--haxcms-base-styles-h4-font-size, 1.5em);
 }
-h5,h6 {
-  font-size: 1.25em;
+h5 {
+  font-size: var(--haxcms-base-styles-h5-font-size, 1.25em);  
+}
+h6 {
+  font-size: var(--haxcms-base-styles-h6-font-size, 1.25em);
 }
 p {
-  line-height: 40px;
-  min-height: 26px;
-  font-size: 24px;
+  font-size: var(--haxcms-base-styles-p-line-height, 40px);
+  font-size: var(--haxcms-base-styles-p-min-height, 26px);
+  font-size: var(--haxcms-base-styles-p-font-size, 24px);
 }
-a, a:visited, a:active {
-  color: #000;
+a {
+  color: var(--haxcms-base-styles-a-color, #000);
 }
+a:visited {
+  color: var(--haxcms-base-styles-a-color-visited, #2196f3);
+}
+a:active,
+a:focus,
 a:hover {
-  color: #2196f3;
+  color: var(--haxcms-base-styles-a-color-active, #2196f3);
 }
 ol,
 ul
 ol li,
 ul li {
-  padding-bottom: 1.5em;
-  line-height: 40px;
-  font-size: 24px;
-  max-width: 28em;
+  padding-bottom: var(--haxcms-base-styles-list-padding-bottom, 1.5em);
+  line-height: var(--haxcms-base-styles-list-line-height, 40px);
+  font-size: var(--haxcms-base-styles-list-font-size, 24px);
+  max-width: var(--haxcms-base-styles-list-max-width, 28em);
 }
 ol li:last-child,
 ul li:last-child {
-  padding-bottom: 1em;
+  padding-bottom: var(--haxcms-base-styles-list-last-child-padding-bottom, 1em);
 }
