@@ -9,6 +9,7 @@ import "@lrnwebcomponents/scroll-button/scroll-button.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/blocks/site-children-block.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/blocks/site-outline-block.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/blocks/site-recent-content-block.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-footer.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
