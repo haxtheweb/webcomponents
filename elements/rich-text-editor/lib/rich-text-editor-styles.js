@@ -34,6 +34,7 @@ const css = html`
     :host #collapse {
       --a11y-collapse-margin: 0 3px;
       --a11y-collapse-horizontal-padding: 10px;
+      --a11y-collapse-vertical-padding: 5px;
       --a11y-collapse-border: var(--rich-text-editor-bg);
       --a11y-collapse: {
         position: relative;
@@ -43,13 +44,29 @@ const css = html`
       }
       --a11y-collapse-content: {
         position: absolute;
-        top: 25px;
+        top: 26px;
         background: white;
+        z-index: 9999;
       }
       --a11y-collapse-content-expanded: {
         border: 1px solid var(--rich-text-editor-button-color);
         box-shadow: 0px 0px 1px #888;
       }
+    }
+    :host paper-tooltip {
+      z-index: 99999;
+    }
+    :host #prompt {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    :host #prompt paper-input {
+      width: 200px;
+      padding: 0;
+    }
+    :host .confirm-or-cancel {
+      min-width: 40px;
     }
     :host #button {
       text-transform: unset;

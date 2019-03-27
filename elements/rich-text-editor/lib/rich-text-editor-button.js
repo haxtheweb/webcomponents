@@ -26,21 +26,26 @@ class RichTextEditorButton extends PolymerElement {
         id="a11y"
         target="[[__a11y]]"
         keys="enter"
-        on-keys-pressed="_buttonTap">
+        on-keys-pressed="_buttonTap"
+      >
       </iron-a11y-keys>
-      <paper-button id="button"
-        disabled$="[[disabled]]" 
+      <paper-button
+        id="button"
+        disabled$="[[disabled]]"
         controls="[[controls]]"
         on-tap="_buttonTap"
         tabindex="0"
-        toggled$="[[toggled]]">
-        <iron-icon id="icon" 
+        toggled$="[[toggled]]"
+      >
+        <iron-icon
+          id="icon"
           aria-hidden
-          icon$="[[_regOrToggled(icon,toggledIcon,toggled)]]">
+          icon$="[[_regOrToggled(icon,toggledIcon,toggled)]]"
+        >
         </iron-icon>
         <span id="label" class$="[[labelStyle]]"></span>
       </paper-button>
-      <paper-tooltip id="tooltip" for="button"></paper-button>
+      <paper-tooltip id="tooltip" for="button"></paper-tooltip>
     `;
   }
 
@@ -129,6 +134,16 @@ class RichTextEditorButton extends PolymerElement {
         name: "toggled",
         type: "Boolean",
         computed: "_isToggled(selection)",
+        notify: true
+      },
+
+      /**
+       * The label for the button based on its toggled state
+       */
+      __label: {
+        name: "__label",
+        type: "String",
+        computed: "_getLabel(selection)",
         notify: true
       },
 
@@ -285,9 +300,25 @@ class RichTextEditorButton extends PolymerElement {
           ? document.queryCommandState(this.command)
           : false,
       label = this._regOrToggled(this.label, this.toggledLabel, toggled);
-    this.$.label.innerHTML = label;
-    this.$.tooltip.innerHTML = label;
+    if (this.$.label !== undefined) this.$.label.innerHTML = label;
+    if (this.$.tooltip !== undefined) this.$.tooltip.innerHTML = label;
     return toggled;
+  }
+
+  /**
+   * determine if the button is toggled
+   *
+   * @param {object} the text selection
+   * @returns {string} the label based on whether or not the button is toggled
+   *
+   */
+  _getLabel(selection) {
+    let toggled =
+        this.command !== null && this.toggles
+          ? document.queryCommandState(this.command)
+          : false,
+      label = this._regOrToggled(this.label, this.toggledLabel, toggled);
+    return label;
   }
   /**
    * Handles button tap;
