@@ -32,8 +32,11 @@ class SiteRecentContentBlock extends PolymerElement {
           padding: 10px;
           margin-top: 10px;
           --site-recent-content-block-header-color: #363533;
-          --site-recent-content-block-active-color: #e2801e;
-          --site-recent-content-block-item-link-color: #4c4c4c;
+          --site-recent-content-block-item-link-color: #363533;
+          --site-recent-content-block-active-color: var(
+            --haxcms-color,
+            #e2801e
+          );
         }
         .header h3 {
           font-size: 26px;
@@ -50,14 +53,14 @@ class SiteRecentContentBlock extends PolymerElement {
         }
         .item-heading a {
           text-decoration: none;
+          color: var(--site-recent-content-block-item-link-color);
           font-size: 16px;
           @apply --site-recent-content-block-item-link;
         }
         .item-heading a:hover,
         .item-heading a:focus,
         .item-heading a:active {
-          color: var(--site-recent-content-block-item-link-color);
-          @apply --site-recent-content-block-item-link;
+          @apply --site-recent-content-block-item-link-hover;
         }
         .active {
           color: ;
