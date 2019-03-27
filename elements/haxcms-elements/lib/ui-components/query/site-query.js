@@ -65,7 +65,7 @@ class SiteQuery extends MutableData(PolymerElement) {
       __result: {
         type: Array,
         computed:
-          "_computeResult(entityType, conditions, sort, routerManifest.items, activeId, limit, random, forceRebuild)",
+          "_computeResult(entityType, conditions, sort, routerManifest.items, activeId, limit, startIndex, random, forceRebuild)",
         observer: "_noticeResultChange"
       },
       /**
@@ -102,6 +102,13 @@ class SiteQuery extends MutableData(PolymerElement) {
         value: 0
       },
       /**
+       * Where to start returning results from
+       */
+      startIndex: {
+        type: Number,
+        value: 0
+      },
+      /**
        * Randomize results
        */
       random: {
@@ -127,6 +134,7 @@ class SiteQuery extends MutableData(PolymerElement) {
     realItems,
     activeId,
     limit,
+    startIndex,
     random,
     forceRebuild
   ) {
@@ -212,6 +220,17 @@ class SiteQuery extends MutableData(PolymerElement) {
           return 0;
         }
       });
+    }
+    // Start at this index...
+    if (startIndex !== 0 && items.length > startIndex) {
+      //start-index=5
+      // remove last item while there's more items then the limit
+      while (startIndex > 0) {
+        items.shift();
+        startIndex--;
+      }
+    } else if (items.length < startIndex) {
+      return [];
     }
     // reduce results if we need to
     if (limit !== 0) {
