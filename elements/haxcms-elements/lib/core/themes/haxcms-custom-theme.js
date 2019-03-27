@@ -3,8 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { microTask } from "@polymer/polymer/lib/utils/async.js";
-import { updateStyles } from "@polymer/polymer/lib/mixins/element-mixin";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { stylesFromTemplate } from "@polymer/polymer/lib/utils/style-gather.js";
 import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
 // @todo load the elements this theme needs dynamically
@@ -20,12 +19,6 @@ import "@lrnwebcomponents/simple-colors/simple-colors.js";
  * @demo demo/index.html
  */
 class HAXCMSCustomTheme extends HAXCMSTheme(PolymerElement) {
-  ready() {
-    this.__counter = 0;
-    super.ready();
-    this.getCSS();
-    this.getHTML();
-  }
   /**
    * Get css
    */
@@ -69,6 +62,9 @@ class HAXCMSCustomTheme extends HAXCMSTheme(PolymerElement) {
   }
   constructor() {
     super();
+    this.__counter = 0;
+    this.getCSS();
+    this.getHTML();
     window.addEventListener(
       "haxcms-custom-theme-template-ready",
       this.templateReady.bind(this)
@@ -76,11 +72,20 @@ class HAXCMSCustomTheme extends HAXCMSTheme(PolymerElement) {
   }
   connectedCallback() {
     super.connectedCallback();
+    afterNextRender(this, function() {
+      this.contentContainer = this.shadowRoot.querySelector(
+        "#contentcontainer"
+      );
+    });
   }
   // render function
   static get template() {
     return html`
-      <slot></slot>
+      <div id="contentcontainer">
+        <div id="slot">
+          <slot></slot>
+        </div>
+      </div>
     `;
   }
   templateReady(e) {
@@ -115,12 +120,6 @@ class HAXCMSCustomTheme extends HAXCMSTheme(PolymerElement) {
       this.__instance = this._stampTemplate(t);
       // now the template
       this.shadowRoot.appendChild(this.__instance);
-      microTask.run(() => {
-        setTimeout(() => {
-          this.updateStyles();
-          updateStyles();
-        }, 50);
-      });
     }
   }
 }
