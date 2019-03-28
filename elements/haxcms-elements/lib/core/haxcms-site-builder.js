@@ -210,6 +210,12 @@ let HAXCMSSiteBuilder = Polymer({
         this.activeItem = toJS(store.activeItem);
         this.__disposer.push(reaction);
       });
+      // tidy up the dom if this is there
+      if (document.getElementById("haxcmsoutdatedfallback")) {
+        document.body.removeChild(
+          document.getElementById("haxcmsoutdatedfallback")
+        );
+      }
     });
   },
   /**
