@@ -65,7 +65,7 @@ class SiteQuery extends MutableData(PolymerElement) {
       __result: {
         type: Array,
         computed:
-          "_computeResult(entityType, conditions, sort, routerManifest.items, activeId, limit, startIndex, random, forceRebuild)",
+          "_computeResult(entityType, conditions, sort, routerManifest, activeId, limit, startIndex, random, forceRebuild)",
         observer: "_noticeResultChange"
       },
       /**
@@ -131,115 +131,118 @@ class SiteQuery extends MutableData(PolymerElement) {
     entityType,
     conditions,
     sorts,
-    realItems,
+    routerManifest,
     activeId,
     limit,
     startIndex,
     random,
     forceRebuild
   ) {
-    // ensure no data references, clone object
-    let items = Object.assign([], toJS(realItems));
-    // ohhh.... boy.... let's completely alter how this thing works
-    if (entityType !== "node") {
-      let oldItems = Object.assign([], items);
-      for (var i in oldItems) {
-        // we found a match...
-        // for example maybe this is metadata.files
-        // so now you've got things files centric as opposed to item centric
-        if (typeof oldItems[i][entityType] !== typeof undefined) {
-          oldItems[i] = oldItems[i][entityType];
-          // store reference to the original item structure here
-          // this could let you do things like give me all tags
-          // then total up the unique references to those tags
-          // or to present the title of everything that has tag X
-          oldItems[i]._node = items[i];
+    if (routerManifest && routerManifest.items) {
+      // ensure no data references, clone object
+      let items = Object.assign([], toJS(routerManifest.items));
+      // ohhh.... boy.... let's completely alter how this thing works
+      if (entityType !== "node") {
+        let oldItems = Object.assign([], items);
+        for (var i in oldItems) {
+          // we found a match...
+          // for example maybe this is metadata.files
+          // so now you've got things files centric as opposed to item centric
+          if (typeof oldItems[i][entityType] !== typeof undefined) {
+            oldItems[i] = oldItems[i][entityType];
+            // store reference to the original item structure here
+            // this could let you do things like give me all tags
+            // then total up the unique references to those tags
+            // or to present the title of everything that has tag X
+            oldItems[i]._node = items[i];
+          }
+        }
+        items = oldItems;
+      }
+      // if there are no conditions just do a 1 to 1 presentation
+      if (conditions && items) {
+        // apply conditions, this will automatically filter our items
+        for (var i in conditions) {
+          // apply the conditions in order
+          items = items.filter(item => {
+            // specialized condition for active id
+            if (conditions[i] === "$activeId") {
+              if (item[i] !== activeId) {
+                return false;
+              }
+              return true;
+            } else if (conditions[i] === "$firstId") {
+              if (item[i] !== items[0].id) {
+                return false;
+              }
+              return true;
+            } else {
+              if (Object.byString(item, i) !== conditions[i]) {
+                return false;
+              }
+              return true;
+            }
+          });
         }
       }
-      items = oldItems;
-    }
-    // if there are no conditions just do a 1 to 1 presentation
-    if (conditions && items) {
-      // apply conditions, this will automatically filter our items
-      for (var i in conditions) {
-        // apply the conditions in order
-        items = items.filter(item => {
-          // specialized condition for active id
-          if (conditions[i] === "$activeId") {
-            if (item[i] !== activeId) {
-              return false;
+      // @todo need to support multi-facetted sort
+      // right now this will just sort one way then undo it with another
+      if (sorts) {
+        for (var i in sorts) {
+          items.sort((item1, item2) => {
+            if (sorts[i] === "ASC") {
+              if (item1[i] < item2[i]) {
+                return -1;
+              } else if (item1[i] > item2[i]) {
+                return 1;
+              } else {
+                return 0;
+              }
+            } else {
+              if (item1[i] > item2[i]) {
+                return -1;
+              } else if (item1[i] < item2[i]) {
+                return 1;
+              } else {
+                return 0;
+              }
             }
-            return true;
-          } else if (conditions[i] === "$firstId") {
-            if (item[i] !== items[0].id) {
-              return false;
-            }
-            return true;
-          } else {
-            if (Object.byString(item, i) !== conditions[i]) {
-              return false;
-            }
-            return true;
-          }
-        });
+          });
+        }
       }
-    }
-    // @todo need to support multi-facetted sort
-    // right now this will just sort one way then undo it with another
-    if (sorts) {
-      for (var i in sorts) {
+      // randomize the results, this would goof up the usefulness of sorts
+      if (random) {
         items.sort((item1, item2) => {
-          if (sorts[i] === "ASC") {
-            if (item1[i] < item2[i]) {
-              return -1;
-            } else if (item1[i] > item2[i]) {
-              return 1;
-            } else {
-              return 0;
-            }
+          if (Math.random() < Math.random()) {
+            return -1;
+          } else if (Math.random() > Math.random()) {
+            return 1;
           } else {
-            if (item1[i] > item2[i]) {
-              return -1;
-            } else if (item1[i] < item2[i]) {
-              return 1;
-            } else {
-              return 0;
-            }
+            return 0;
           }
         });
       }
-    }
-    // randomize the results, this would goof up the usefulness of sorts
-    if (random) {
-      items.sort((item1, item2) => {
-        if (Math.random() < Math.random()) {
-          return -1;
-        } else if (Math.random() > Math.random()) {
-          return 1;
-        } else {
-          return 0;
+      // Start at this index...
+      if (startIndex !== 0 && items.length > startIndex) {
+        //start-index=5
+        // remove last item while there's more items then the limit
+        while (startIndex > 0) {
+          items.shift();
+          startIndex--;
         }
-      });
-    }
-    // Start at this index...
-    if (startIndex !== 0 && items.length > startIndex) {
-      //start-index=5
-      // remove last item while there's more items then the limit
-      while (startIndex > 0) {
-        items.shift();
-        startIndex--;
+      } else if (items.length < startIndex) {
+        return [];
       }
-    } else if (items.length < startIndex) {
-      return [];
-    }
-    // reduce results if we need to
-    if (limit !== 0) {
-      // remove last item while there's more items then the limit
-      while (items.length > limit) {
-        items.pop();
+      // reduce results if we need to
+      if (limit !== 0) {
+        // remove last item while there's more items then the limit
+        while (items.length > limit) {
+          items.pop();
+        }
       }
+      return items;
     }
-    return items;
+    return [];
   }
   /**
    * Try and get the value to skip dirty checks and do a full data rebind

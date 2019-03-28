@@ -172,6 +172,12 @@ let HAXCMSSiteBuilder = Polymer({
    * ready life cycle
    */
   created: function() {
+    // tidy up the dom if this is there
+    if (document.getElementById("haxcmsoutdatedfallback")) {
+      document.body.removeChild(
+        document.getElementById("haxcmsoutdatedfallback")
+      );
+    }
     this.__timeStamp = "";
     // attempt to set polymer passive gestures globally
     // this decreases logging and improves performance on scrolling
@@ -210,12 +216,6 @@ let HAXCMSSiteBuilder = Polymer({
         this.activeItem = toJS(store.activeItem);
         this.__disposer.push(reaction);
       });
-      // tidy up the dom if this is there
-      if (document.getElementById("haxcmsoutdatedfallback")) {
-        document.body.removeChild(
-          document.getElementById("haxcmsoutdatedfallback")
-        );
-      }
     });
   },
   /**
@@ -380,7 +380,7 @@ let HAXCMSSiteBuilder = Polymer({
    * notice manifest changes and ensure slot is rebuilt.
    */
   _manifestChanged: function(newValue, oldValue) {
-    if (newValue) {
+    if (newValue && newValue.metadata && newValue.items) {
       // ensure there's a dynamicELementLoader defined
       // @todo this could also be a place to mix in criticals
       // that are system required yet we lazy load like grid-plate

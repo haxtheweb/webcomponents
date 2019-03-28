@@ -312,9 +312,7 @@ class HAXCMSLegacyPlayer extends PolymerElement {
       <!-- Begin Layout -->
       <app-drawer-layout narrow="{{narrow}}">
         <app-drawer id="drawer" swipe-open slot="drawer" opened="{{opened}}">
-          <template is="dom-if" if="[[__hasTitle(manifest.title)]]">
-            <h2 class="outline-title">[[manifest.title]]</h2>
-          </template>
+          <h2 class="outline-title">[[manifest.title]]</h2>
           <map-menu
             id="menu"
             selected="[[activeItem.id]]"
@@ -553,13 +551,15 @@ class HAXCMSLegacyPlayer extends PolymerElement {
   _routerLocationChanged(e) {
     // micro delay for map menu to open
     setTimeout(() => {
-      var tmpItem = this.routerManifest.items.find(
-        i => i.location == e.detail.location.route.path
-      );
-      if (tmpItem) {
-        this.set("activeItem", tmpItem);
+      if (this.routerManifest.items.find) {
+        var tmpItem = this.routerManifest.items.find(
+          i => i.location == e.detail.location.route.path
+        );
+        if (tmpItem) {
+          this.set("activeItem", tmpItem);
+        }
       }
-    }, 5);
+    }, 100);
   }
 }
 window.customElements.define(HAXCMSLegacyPlayer.tag, HAXCMSLegacyPlayer);
