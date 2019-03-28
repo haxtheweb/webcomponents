@@ -35,6 +35,8 @@ class RichTextEditorPrompt extends RichTextEditorButton {
         disabled$="[[disabled]]"
         icon="arrow-drop-down"
         label="toggle info"
+        on-collapse="_selectionFocus"
+        on-expand="_inputFocus"
         tooltip$="[[__label]]"
       >
         <div id="heading" slot="heading">
@@ -48,6 +50,7 @@ class RichTextEditorPrompt extends RichTextEditorButton {
         </div>
         <div id="prompt" slot="content">
           <paper-input
+            id="input"
             label$="[[prompt]]"
             placeholder="http://www.google.com"
             type="text"
@@ -57,9 +60,10 @@ class RichTextEditorPrompt extends RichTextEditorButton {
           <paper-button
             id="cancel"
             class="confirm-or-cancel"
-            disabled$="[[disabled]]"
             controls="[[controls]]"
+            disabled$="[[disabled]]"
             label="Cancel"
+            on-tap="_cancel"
             tabindex="0"
           >
             <iron-icon aria-hidden icon="clear"> </iron-icon>
@@ -67,9 +71,10 @@ class RichTextEditorPrompt extends RichTextEditorButton {
           <paper-button
             id="button"
             class="confirm-or-cancel"
-            disabled$="[[disabled]]"
             controls="[[controls]]"
+            disabled$="[[disabled]]"
             label="Ok"
+            on-tap="_confirm"
             tabindex="0"
           >
             <iron-icon id="icon" aria-hidden icon="done"> </iron-icon>
@@ -84,10 +89,22 @@ class RichTextEditorPrompt extends RichTextEditorButton {
   // properties available to the custom element for data binding
   static get properties() {
     return {
+      /**
+       * the text of the prompt, as in "Link href" or "Image src"
+       */
       prompt: {
         name: "prompt",
         type: "String",
         value: "Value"
+      },
+      /**
+       * wait to restore the selection while the prompt has focus?
+       */
+      __delayRestore: {
+        name: "__delayRestore",
+        type: "Boolean",
+        value: true,
+        readOnly: true
       }
     };
   }
@@ -98,6 +115,32 @@ class RichTextEditorPrompt extends RichTextEditorButton {
    */
   static get tag() {
     return "rich-text-editor-prompt";
+  }
+
+  /**
+   * life cycle, element is ready
+   */
+  ready() {
+    super.ready();
+    let root = this;
+  }
+  _inputFocus() {
+    let sel = window.getSelection(),
+      temp = this.selection;
+    console.log("_preserveSelection", sel, temp);
+    this.$.input.focus();
+  }
+  _selectionFocus() {
+    this.$.input.value = null;
+    console.log("_selectionFocus", this.$.input.value);
+  }
+  _cancel() {
+    console.log("_confirm", this.selection);
+    this.$.collapse.collapse();
+  }
+  _confirm() {
+    console.log("_confirm", this.selection, this.$.input.value);
+    this.$.collapse.collapse();
   }
 }
 window.customElements.define(RichTextEditorPrompt.tag, RichTextEditorPrompt);

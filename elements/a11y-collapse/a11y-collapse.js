@@ -163,7 +163,8 @@ let A11yCollapse = Polymer({
       name: "expanded",
       type: Boolean,
       value: false,
-      reflectToAttribute: true
+      reflectToAttribute: true,
+      observer: "_fireToggleEvents"
     },
     /**
      * icon for the button
@@ -288,6 +289,13 @@ let A11yCollapse = Polymer({
   },
 
   /**
+   * Collapses the content
+   */
+  collapse: function() {
+    this.toggle(false);
+  },
+
+  /**
    * Let the group know that this is gone.
    */
   detached: function() {
@@ -295,11 +303,30 @@ let A11yCollapse = Polymer({
   },
 
   /**
+   * Expands the content
+   */
+  expand: function() {
+    this.toggle(true);
+  },
+
+  /**
    * Toggles based on mode
    */
   toggle: function(mode) {
     this.expanded = mode !== undefined ? mode : !this.expanded;
-    this.fire("a11y-collapse-toggle", this);
+  },
+
+  /**
+   * Fires toggling events
+   */
+  _fireToggleEvents: function() {
+    this.fire("toggle", this);
+    this.fire("a11y-collapse-toggle", this); //supports legacy version
+    if (this.expanded) {
+      this.fire("expand", this);
+    } else {
+      this.fire("collapse", this);
+    }
   },
 
   /**

@@ -252,6 +252,12 @@ class RichTextEditorButton extends PolymerElement {
   ready() {
     super.ready();
     let root = this;
+    root.addEventListener("mousedown", function(e) {
+      e.preventDefault();
+    });
+    root.addEventListener("keydown", function(e) {
+      e.preventDefault();
+    });
   }
 
   /**

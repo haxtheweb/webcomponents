@@ -91,7 +91,7 @@
             "toggledIcon": "mdextra:unlink",
             "toggledLabel": "Unink",
             "toggles": true,
-            "type": "rich-text-editor-prompt"
+            "type": "rich-text-editor-link"
           }
         ]
       },

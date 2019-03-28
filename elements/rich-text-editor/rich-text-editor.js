@@ -9,7 +9,7 @@ import "./lib/rich-text-editor-button.js";
 import "./lib/rich-text-editor-more-button.js";
 import "./lib/rich-text-editor-heading-picker.js";
 import "./lib/rich-text-editor-symbol-picker.js";
-import "./lib/rich-text-editor-prompt.js";
+import "./lib/rich-text-editor-link.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/iron-icons/image-icons.js";
@@ -28,409 +28,397 @@ import "@lrnwebcomponents/md-extra-icons/md-extra-icons.js";
  * @demo demo/config.html custom configuration
  */
 class RichTextEditor extends PolymerElement {
+  
   // render function
   static get template() {
     return html`
-      <style>
-        :host {
-          display: block;
-          width: 100%;
-          margin: 0;
-          padding: 0;
-          z-index: 9999;
-          --rich-text-editor-bg: #fafafa;
-          --rich-text-editor-button-color: #444;
-          --rich-text-editor-border: 1px solid #ddd;
-          --rich-text-editor-button-border: transparent;
-          --rich-text-editor-button-disabled-color: #666;
-          --rich-text-editor-button-disabled-bg: transparent;
-          --rich-text-editor-button-toggled-color: #222;
-          --rich-text-editor-button-toggled-bg: #ddd;
-          --rich-text-editor-button-hover-color: #000;
-          --rich-text-editor-button-hover-bg: #f0f0f0;
-          --rich-text-editor-picker-border: #fafafa;
-          @apply --rich-text-editor;
-        }
-        :host([sticky]) {
-          position: sticky;
-          top: 0;
-        }
-        :host #toolbar {
-          display: flex;
-          opacity: 1;
-          margin: 0;
-          align-items: stretch;
-          flex-wrap: wrap;
-          justify-content: flex-start;
-          background-color: var(--rich-text-editor-bg);
-          border: var(--rich-text-editor-border);
-          font-size: 12px;
-          transition: all 0.5s;
-          @apply --rich-text-editor-toolbar;
-        }
-        :host #toolbar[aria-hidden] {
-          visibility: hidden;
-          opacity: 0;
-          height: 0;
-        }
-        :host #toolbar .group {
-          display: flex;
-          flex-wrap: nowrap;
-          justify-content: space-evenly;
-          align-items: stretch;
-          padding: 0 3px;
-          @apply --rich-text-editor-toolbar-group;
-        }
-        :host #toolbar .group:not(:last-of-type) {
-          margin-right: 3px;
-          border-right: var(--rich-text-editor-border);
-          @apply --rich-text-editor-toolbar-divider;
-        }
-        :host #toolbar .button {
-          display: flex;
-          flex: 0 0 auto;
-          align-items: stretch;
-          margin: 3px;
-        }
-        :host #toolbar #morebutton {
-          flex: 1 0 auto;
-          justify-content: flex-end;
-        }
+<style>:host {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  z-index: 9999;
+  --rich-text-editor-bg: #fafafa;
+  --rich-text-editor-button-color: #444;
+  --rich-text-editor-border: 1px solid #ddd;
+  --rich-text-editor-button-border: transparent;
+  --rich-text-editor-button-disabled-color: #666;
+  --rich-text-editor-button-disabled-bg: transparent;
+  --rich-text-editor-button-toggled-color: #222;
+  --rich-text-editor-button-toggled-bg: #ddd;
+  --rich-text-editor-button-hover-color: #000;
+  --rich-text-editor-button-hover-bg: #f0f0f0;
+  --rich-text-editor-picker-border: #fafafa;
+  @apply --rich-text-editor;
+}
+:host([sticky]) {
+  position: sticky;
+  top: 0;
+}
+:host #toolbar {
+  display: flex;
+  opacity: 1;
+  margin: 0;
+  align-items: stretch;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  background-color: var(--rich-text-editor-bg);
+  border: var(--rich-text-editor-border);
+  font-size: 12px;
+  transition: all 0.5s;
+  @apply --rich-text-editor-toolbar;
+} 
+:host #toolbar[aria-hidden]{
+  visibility: hidden;
+  opacity: 0;
+  height: 0;
+}
+:host #toolbar .group {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: stretch;
+  padding: 0 3px;
+  @apply --rich-text-editor-toolbar-group;
+}
+:host #toolbar .group:not(:last-of-type) {
+  margin-right: 3px;
+  border-right: var(--rich-text-editor-border);
+  @apply --rich-text-editor-toolbar-divider;
+}
+:host #toolbar .button {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: stretch;
+  margin: 3px;
+}
+:host #toolbar #morebutton {
+  flex: 1 0 auto;
+  justify-content: flex-end;
+}
 
-        :host([responsive-size="xs"]) #morebutton[collapse-max="xs"],
-        :host([responsive-size="sm"]) #morebutton[collapse-max*="s"],
-        :host([responsive-size="md"]) #morebutton:not([collapse-max*="l"]),
-        :host([responsive-size="lg"]) #morebutton:not([collapse-max="xl"]),
-        :host([responsive-size="xl"]) #morebutton,
-        :host([responsive-size="xs"])
-          #toolbar[collapsed]
-          *[collapsed-until*="m"],
-        :host([responsive-size="xs"])
-          #toolbar[collapsed]
-          *[collapsed-until*="l"],
-        :host([responsive-size="sm"])
-          #toolbar[collapsed]
-          *[collapsed-until="md"],
-        :host([responsive-size="sm"])
-          #toolbar[collapsed]
-          *[collapsed-until*="l"],
-        :host([responsive-size="md"])
-          #toolbar[collapsed]
-          *[collapsed-until*="l"],
-        :host([responsive-size="lg"])
-          #toolbar[collapsed]
-          *[collapsed-until="xl"] {
-          display: none;
-        }
-      </style>
-      <div id="toolbar" aria-hidden$="[[!controls]]" collapsed$="[[collapsed]]">
-        <rich-text-editor-more-button
-          id="morebutton"
-          class="button"
-          controls="toolbar"
-          icon="more-vert"
-          label="More buttons"
-          label-toggled="Fewer buttons"
-          toggled$="[[!collapsed]]"
-          on-tap="_toggleMore"
-        >
-        </rich-text-editor-more-button>
-      </div>
-    `;
+:host([responsive-size="xs"]) #morebutton[collapse-max="xs"],
+:host([responsive-size="sm"]) #morebutton[collapse-max*="s"],
+:host([responsive-size="md"]) #morebutton:not([collapse-max*="l"]),
+:host([responsive-size="lg"]) #morebutton:not([collapse-max="xl"]),
+:host([responsive-size="xl"]) #morebutton,
+
+:host([responsive-size="xs"]) #toolbar[collapsed] *[collapsed-until*="m"],
+:host([responsive-size="xs"]) #toolbar[collapsed] *[collapsed-until*="l"],
+:host([responsive-size="sm"]) #toolbar[collapsed] *[collapsed-until="md"],
+:host([responsive-size="sm"]) #toolbar[collapsed] *[collapsed-until*="l"],
+:host([responsive-size="md"]) #toolbar[collapsed] *[collapsed-until*="l"],
+:host([responsive-size="lg"]) #toolbar[collapsed] *[collapsed-until="xl"] {
+  display: none;
+}</style>
+<div id="toolbar" aria-hidden$="[[!controls]]" collapsed$="[[collapsed]]">
+  <rich-text-editor-more-button
+    id="morebutton"
+    class="button"
+    controls="toolbar"
+    icon="more-vert"
+    label="More buttons"
+    label-toggled="Fewer buttons"
+    toggled$="[[!collapsed]]"
+    on-tap="_toggleMore">
+  </rich-text-editor-more-button>  
+</div>`;
   }
 
   // haxProperty definition
   static get haxProperties() {
     return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Rich text-editor",
-        description: "a standalone rich text editor",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Text"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage"
-          }
-        ],
-        meta: {
-          author: "nikkimk",
-          owner: "Penn State University"
-        }
-      },
-      settings: {
-        quick: [],
-        configure: [
-          {
-            property: "title",
-            description: "",
-            inputMethod: "textfield",
-            required: false,
-            icon: "icons:android"
-          }
-        ],
-        advanced: []
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Rich text-editor",
+    "description": "a standalone rich text editor",
+    "icon": "icons:android",
+    "color": "green",
+    "groups": ["Text"],
+    "handles": [
+      {
+        "type": "todo:read-the-docs-for-usage"
       }
-    };
+    ],
+    "meta": {
+      "author": "nikkimk",
+      "owner": "Penn State University"
+    }
+  },
+  "settings": {
+    "quick": [],
+    "configure": [
+      {
+        "property": "title",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": false,
+        "icon": "icons:android"
+      }
+    ],
+    "advanced": []
+  }
+}
+;
   }
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      /**
-       * The editor buttons.
-       */
-      buttons: {
-        name: "buttons",
-        type: "Array",
-        computed: "_getButtons(config)"
-      },
-      /**
-       * The editable content, if edits are canceled.
-       */
-      canceled: {
-        name: "canceled",
-        type: "Object",
-        value: true
-      },
-      /**
-       * Is the menu collapsed.
-       */
-      collapsed: {
-        name: "collapsed",
-        type: "Boolean",
-        value: true
-      },
-      /**
-       * The button config on the toolbar.
-       */
-      config: {
-        name: "config",
-        type: "Object",
-        value: [
+  /**
+   * The editor buttons.
+   */
+  "buttons": {
+    "name": "buttons",
+    "type": "Array",
+    "computed": "_getButtons(config)"
+  },
+  /**
+   * The editable content, if edits are canceled.
+   */
+  "canceled": {
+    "name": "canceled",
+    "type": "Object",
+    "value": true
+  },
+  /**
+   * Is the menu collapsed.
+   */
+  "collapsed": {
+    "name": "collapsed",
+    "type": "Boolean",
+    "value": true
+  },
+  /**
+   * The button config on the toolbar.
+   */
+  "config": {
+    "name": "config",
+    "type": "Object",
+    "value": [
+      {
+        "label": "History",
+        "type": "button-group",
+        "buttons": [
           {
-            label: "History",
-            type: "button-group",
-            buttons: [
-              {
-                command: "undo",
-                icon: "undo",
-                label: "Undo",
-                type: "rich-text-editor-button"
-              },
-              {
-                command: "redo",
-                icon: "redo",
-                label: "Redo",
-                type: "rich-text-editor-button"
-              }
-            ]
+            "command": "undo",
+            "icon": "undo",
+            "label": "Undo",
+            "type": "rich-text-editor-button"
           },
           {
-            label: "Basic Inline Operations",
-            type: "button-group",
-            buttons: [
-              {
-                label: "Heading",
-                type: "rich-text-editor-heading-picker"
-              },
-              {
-                command: "bold",
-                icon: "editor:format-bold",
-                label: "Bold",
-                toggles: true,
-                type: "rich-text-editor-button"
-              },
-              {
-                command: "italic",
-                icon: "editor:format-italic",
-                label: "Italics",
-                toggles: true,
-                type: "rich-text-editor-button"
-              },
-              {
-                command: "removeFormat",
-                icon: "editor:format-clear",
-                label: "Erase Format",
-                type: "rich-text-editor-button"
-              }
-            ]
-          },
-          {
-            label: "Links",
-            type: "button-group",
-            buttons: [
-              {
-                command: "link",
-                icon: "link",
-                label: "Link",
-                prompt: "href",
-                toggledCommand: "unlink",
-                toggledIcon: "mdextra:unlink",
-                toggledLabel: "Unink",
-                toggles: true,
-                type: "rich-text-editor-prompt"
-              }
-            ]
-          },
-          {
-            label: "Clipboard Operations",
-            type: "button-group",
-            buttons: [
-              {
-                command: "cut",
-                icon: "content-cut",
-                label: "Cut",
-                type: "rich-text-editor-button"
-              },
-              {
-                command: "copy",
-                icon: "content-copy",
-                label: "Copy",
-                type: "rich-text-editor-button"
-              },
-              {
-                command: "paste",
-                icon: "content-paste",
-                label: "Paste",
-                type: "rich-text-editor-button"
-              }
-            ]
-          },
-          {
-            collapsedUntil: "md",
-            label: "Subscript and Superscript",
-            type: "button-group",
-            buttons: [
-              {
-                command: "subscript",
-                icon: "mdextra:subscript",
-                label: "Subscript",
-                toggles: true,
-                type: "rich-text-editor-button"
-              },
-              {
-                command: "superscript",
-                icon: "mdextra:superscript",
-                label: "Superscript",
-                toggles: true,
-                type: "rich-text-editor-button"
-              }
-            ]
-          },
-          {
-            collapsedUntil: "sm",
-            icon: "editor:functions",
-            label: "Insert Symbol",
-            symbolTypes: ["symbols"],
-            type: "rich-text-editor-symbol-picker"
-          },
-          {
-            collapsedUntil: "sm",
-            label: "Lists and Indents",
-            type: "button-group",
-            buttons: [
-              {
-                command: "insertOrderedList",
-                icon: "editor:format-list-numbered",
-                label: "Ordered List",
-                toggles: true,
-                type: "rich-text-editor-button"
-              },
-              {
-                command: "insertUnorderedList",
-                icon: "editor:format-list-bulleted",
-                label: "Unordered List",
-                toggles: true,
-                type: "rich-text-editor-button"
-              },
-              {
-                collapsedUntil: "lg",
-                command: "formatBlock",
-                commandVal: "blockquote",
-                label: "Blockquote",
-                icon: "editor:format-quote",
-                type: "rich-text-editor-button"
-              },
-              {
-                label: "Increase Indent",
-                icon: "editor:format-indent-increase",
-                event: "text-indent",
-                command: "indent",
-                type: "rich-text-editor-button"
-              },
-              {
-                label: "Decrease Indent",
-                icon: "editor:format-indent-decrease",
-                event: "text-outdent",
-                command: "outdent",
-                type: "rich-text-editor-button"
-              }
-            ]
+            "command": "redo",
+            "icon": "redo",
+            "label": "Redo",
+            "type": "rich-text-editor-button"
           }
         ]
       },
-      /**
-       * The target element's id attribute.
-       */
-      controls: {
-        name: "controls",
-        type: "String",
-        value: null
+      {
+        "label": "Basic Inline Operations",
+        "type": "button-group",
+        "buttons": [
+          {
+            "label": "Heading",
+            "type": "rich-text-editor-heading-picker"
+          },
+          {
+            "command": "bold",
+            "icon": "editor:format-bold",
+            "label": "Bold",
+            "toggles": true,
+            "type": "rich-text-editor-button"
+          },
+          {
+            "command": "italic",
+            "icon": "editor:format-italic",
+            "label": "Italics",
+            "toggles": true,
+            "type": "rich-text-editor-button"
+          },
+          {
+            "command": "removeFormat",
+            "icon": "editor:format-clear",
+            "label": "Erase Format",
+            "type": "rich-text-editor-button"
+          }
+        ]
       },
-      /**
-       * The editableElement element for the editor.
-       */
-      editableElements: {
-        name: "editableElements",
-        type: "Array",
-        value: []
+      {
+        "label": "Links",
+        "type": "button-group",
+        "buttons": [
+          {
+            "command": "link",
+            "icon": "link",
+            "label": "Link",
+            "prompt": "href",
+            "toggledCommand": "unlink",
+            "toggledIcon": "mdextra:unlink",
+            "toggledLabel": "Unink",
+            "toggles": true,
+            "type": "rich-text-editor-link"
+          }
+        ]
       },
-      /**
-       * The editableElement element for the editor.
-       */
-      editableElement: {
-        name: "editableElement",
-        type: "Object",
-        value: null
+      {
+        "label": "Clipboard Operations",
+        "type": "button-group",
+        "buttons": [
+          {
+            "command": "cut",
+            "icon": "content-cut",
+            "label": "Cut",
+            "type": "rich-text-editor-button"
+          },
+          {
+            "command": "copy",
+            "icon": "content-copy",
+            "label": "Copy",
+            "type": "rich-text-editor-button"
+          },
+          {
+            "command": "paste",
+            "icon": "content-paste",
+            "label": "Paste",
+            "type": "rich-text-editor-button"
+          }
+        ]
       },
-      /**
-       * The the size of the editor.
-       */
-      responsiveSize: {
-        name: "responsiveSize",
-        type: "String",
-        value: "xs",
-        reflectToAttribute: true
+      {
+        "collapsedUntil": "md",
+        "label": "Subscript and Superscript",
+        "type": "button-group",
+        "buttons": [
+          {
+            "command": "subscript",
+            "icon": "mdextra:subscript",
+            "label": "Subscript",
+            "toggles": true,
+            "type": "rich-text-editor-button"
+          },
+          {
+            "command": "superscript",
+            "icon": "mdextra:superscript",
+            "label": "Superscript",
+            "toggles": true,
+            "type": "rich-text-editor-button"
+          }
+        ]
       },
-      /**
-       * The current text selection.
-       */
-      savedSelection: {
-        name: "savedSelection",
-        type: "Object",
-        value: null
+      {
+        "collapsedUntil": "sm",
+        "icon": "editor:functions",
+        "label": "Insert Symbol",
+        "symbolTypes": ["symbols"],
+        "type": "rich-text-editor-symbol-picker"
       },
-      /**
-       * The current text selection.
-       */
-      selection: {
-        name: "selection",
-        type: "Object",
-        value: null
-      },
-      /**
-       * Should the toolbar stick to the top so that it is always visible.
-       */
-      sticky: {
-        name: "sticky",
-        type: "Boolean",
-        value: false,
-        reflectToAttribute: true
+      {
+        "collapsedUntil": "sm",
+        "label": "Lists and Indents",
+        "type": "button-group",
+        "buttons": [
+          {
+            "command": "insertOrderedList",
+            "icon": "editor:format-list-numbered",
+            "label": "Ordered List",
+            "toggles": true,
+            "type": "rich-text-editor-button"
+          },
+          {
+            "command": "insertUnorderedList",
+            "icon": "editor:format-list-bulleted",
+            "label": "Unordered List",
+            "toggles": true,
+            "type": "rich-text-editor-button"
+          },
+          {
+            "collapsedUntil": "lg",
+            "command": "formatBlock",
+            "commandVal": "blockquote",
+            "label": "Blockquote",
+            "icon": "editor:format-quote",
+            "type": "rich-text-editor-button"
+          },
+          {
+            "label": "Increase Indent",
+            "icon": "editor:format-indent-increase",
+            "event": "text-indent",
+            "command": "indent",
+            "type": "rich-text-editor-button"
+          },
+          {
+            "label": "Decrease Indent",
+            "icon": "editor:format-indent-decrease",
+            "event": "text-outdent",
+            "command": "outdent",
+            "type": "rich-text-editor-button"
+          }
+        ]
       }
-    };
+    ]
+  },
+  /**
+   * The target element's id attribute.
+   */
+  "controls": {
+    "name": "controls",
+    "type": "String",
+    "value": null
+  },
+  /**
+   * The editableElement element for the editor.
+   */
+  "editableElements": {
+    "name": "editableElements",
+    "type": "Array",
+    "value": []
+  },
+  /**
+   * The editableElement element for the editor.
+   */
+  "editableElement": {
+    "name": "editableElement",
+    "type": "Object",
+    "value": null
+  },
+  /**
+   * The the size of the editor.
+   */
+  "responsiveSize": {
+    "name": "responsiveSize",
+    "type": "String",
+    "value": "xs",
+    "reflectToAttribute": true
+  },
+  /**
+   * The current text selection.
+   */
+  "savedSelection": {
+    "name": "savedSelection",
+    "type": "Object",
+    "value": null
+  },
+  /**
+   * The current text selection.
+   */
+  "selection": {
+    "name": "selection",
+    "type": "Object",
+    "value": null
+  },
+  /**
+   * Should the toolbar stick to the top so that it is always visible.
+   */
+  "sticky": {
+    "name": "sticky",
+    "type": "Boolean",
+    "value": false,
+    "reflectToAttribute": true
+  }
+}
+;
   }
 
   /**
@@ -457,7 +445,7 @@ class RichTextEditor extends PolymerElement {
       })
     );
     document.designMode = "on";
-    document.addEventListener("selectionchange", function(e) {
+    document.addEventListener("selectionchange", e => {
       root.getUpdatedSelection();
     });
   }
@@ -468,7 +456,7 @@ class RichTextEditor extends PolymerElement {
   disconnectedCallback() {
     super.disconnectedCallback();
     let root = this;
-    document.removeEventListener("selectionchange", function(e) {
+    document.removeEventListener("selectionchange", e => {
       root.getUpdatedSelection();
     });
   }
@@ -519,7 +507,7 @@ class RichTextEditor extends PolymerElement {
         : root.editableElement.getSelection
         ? root.editableElement.getSelection()
         : root._getRange();
-    this.buttons.forEach(function(button) {
+    this.buttons.forEach(button => {
       button.selection = null;
       button.selection = root.selection;
     });
@@ -535,13 +523,13 @@ class RichTextEditor extends PolymerElement {
     for (let i = 0; i < this.editableElements.length; i++) {
       let item = this.editableElements[i];
       if (item[0] === editableElement) {
-        item[0].removeEventListener("click", function(e) {
+        item[0].removeEventListener("click", e => {
           root.editTarget(editableElement);
         });
-        editableElement.removeEventListener("blur", function(e) {
+        editableElement.removeEventListener("blur", e => {
           root.getUpdatedSelection();
         });
-        editableElement.removeEventListener("mouseout", function(e) {
+        editableElement.removeEventListener("mouseout", e => {
           root.getUpdatedSelection();
         });
         item[1].disconnect();
@@ -557,16 +545,16 @@ class RichTextEditor extends PolymerElement {
    */
   addEditableRegion(editableElement) {
     let root = this,
-      observer = new MutationObserver(function(e) {
+      observer = new MutationObserver(e => {
         root.getUpdatedSelection();
       });
-    editableElement.addEventListener("click", function(e) {
+    editableElement.addEventListener("click", e => {
       root.editTarget(editableElement);
     });
-    editableElement.addEventListener("blur", function(e) {
+    editableElement.addEventListener("blur", e => {
       root.getUpdatedSelection();
     });
-    editableElement.addEventListener("mouseout", function(e) {
+    editableElement.addEventListener("mouseout", e => {
       root.getUpdatedSelection();
     });
     observer.observe(editableElement, {
@@ -575,7 +563,6 @@ class RichTextEditor extends PolymerElement {
       subtree: true,
       characterData: false
     });
-    console.log(this.editableElements, editableElement);
     root.push("editableElements", [editableElement, observer]);
   }
 
@@ -592,15 +579,16 @@ class RichTextEditor extends PolymerElement {
       button[key] = child[key];
     }
     button.setAttribute("class", "button");
-    button.addEventListener("mousedown", function(e) {
+    /*button.addEventListener("mousedown", (e) => {
       e.preventDefault();
       root._preserveSelection(button);
     });
-    button.addEventListener("keydown", function(e) {
+    button.addEventListener("keydown", (e) => {
       e.preventDefault();
       root._preserveSelection(button);
-    });
-    button.addEventListener("deselect", function(e) {
+    });*/
+    button.addEventListener("deselect", e => {
+      console.log("deselect");
       root._getRange().collapse(false);
     });
     parent.appendChild(button);
@@ -627,14 +615,14 @@ class RichTextEditor extends PolymerElement {
       sizes = ["xs", "sm", "md", "lg", "xl"],
       temp = [];
     toolbar.innerHTML = "";
-    config.forEach(function(item) {
+    config.forEach(item => {
       if (item.type === "button-group") {
         let group = document.createElement("div");
         group.setAttribute("class", "group");
         if (item.collapsedUntil !== undefined && item.collapsedUntil !== null)
           group.setAttribute("collapsed-until", item.collapsedUntil);
         max = Math.max(max, sizes.indexOf(item.collapsedUntil));
-        item.buttons.forEach(function(button) {
+        item.buttons.forEach(button => {
           max = Math.max(max, sizes.indexOf(button.collapsedUntil));
           temp.push(root._addButton(button, group));
         });
@@ -671,7 +659,7 @@ class RichTextEditor extends PolymerElement {
   _preserveSelection() {
     let sel = window.getSelection(),
       temp = this.selection;
-    this.buttons.forEach(function(button) {
+    this.buttons.forEach(button => {
       button.selection = temp;
     });
     sel.removeAllRanges();
