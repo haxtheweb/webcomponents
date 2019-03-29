@@ -338,20 +338,6 @@ Polymer({
     __allowUpload: {
       type: Boolean,
       value: false
-    },
-    /**
-     * Support for JWTs if name of the JWT is used
-     */
-    appendJwt: {
-      type: String,
-      value: null
-    },
-    /**
-     * Support for other data that's generated dynamically
-     */
-    appendUploadEndPoint: {
-      type: String,
-      value: null
     }
   },
 
@@ -534,12 +520,20 @@ Polymer({
       requestEndPoint += connection.operations.add.endPoint;
     }
     // support jwt hijacking
-    if (this.appendUploadEndPoint != null) {
-      requestEndPoint += "?" + this.appendUploadEndPoint;
-    }
-    if (this.appendJwt != null) {
+    if (
+      window.HaxStore.instance.connectionRewrites.appendUploadEndPoint != null
+    ) {
       requestEndPoint +=
-        "&" + this.appendJwt + "=" + localStorage.getItem(this.appendJwt);
+        "?" + window.HaxStore.instance.connectionRewrites.appendUploadEndPoint;
+    }
+    if (window.HaxStore.instance.connectionRewrites.appendJwt != null) {
+      requestEndPoint +=
+        "&" +
+        window.HaxStore.instance.connectionRewrites.appendJwt +
+        "=" +
+        localStorage.getItem(
+          window.HaxStore.instance.connectionRewrites.appendJwt
+        );
     }
     this.$.fileupload.headers = connection.headers;
     this.$.fileupload.target = requestEndPoint;

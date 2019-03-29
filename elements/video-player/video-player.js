@@ -194,7 +194,7 @@ class VideoPlayer extends PolymerElement {
             property: "source",
             title: "Source",
             description: "The URL for this video.",
-            inputMethod: "textfield",
+            inputMethod: "haxupload",
             icon: "link",
             required: true,
             validationType: "url"

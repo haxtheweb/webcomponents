@@ -352,6 +352,13 @@ Polymer({
     },
     voiceCommands: {
       type: Object
+    },
+    /**
+     * Support for deploy specific rewriting for things like JWTs
+     */
+    connectionRewrites: {
+      type: Object,
+      value: {}
     }
   },
   /**
@@ -1108,7 +1115,7 @@ Polymer({
             attribute: "src",
             title: "Source",
             description: "The URL for this video.",
-            inputMethod: "textfield",
+            inputMethod: "haxupload",
             icon: "link",
             required: true,
             validationType: "url"
@@ -1192,7 +1199,7 @@ Polymer({
             attribute: "href",
             title: "Link",
             description: "The URL for this video.",
-            inputMethod: "textfield",
+            inputMethod: "haxupload",
             icon: "icons:link",
             required: true,
             validationType: "url"
