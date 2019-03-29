@@ -238,7 +238,7 @@ let StopNote = Polymer({
             property: "url",
             title: "URL",
             description: "Enter an external url.",
-            inputMethod: "textfield",
+            inputMethod: "haxupload",
             required: true
           },
           {

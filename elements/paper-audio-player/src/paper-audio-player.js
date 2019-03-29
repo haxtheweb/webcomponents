@@ -428,7 +428,7 @@ let PaperAudioPlayer = Polymer({
             property: "src",
             title: "Source",
             description: "The URL for this audio file.",
-            inputMethod: "textfield",
+            inputMethod: "haxupload",
             icon: "link",
             required: true,
             validationType: "url"

@@ -124,7 +124,7 @@ let LrnTable = Polymer({
             property: "csvFile",
             title: "Source",
             description: "The URL for this csv file.",
-            inputMethod: "textfield",
+            inputMethod: "haxupload",
             required: true
           },
           {

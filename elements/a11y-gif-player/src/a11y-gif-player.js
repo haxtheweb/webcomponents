@@ -215,7 +215,7 @@ let A11yGifPlayer = Polymer({
             property: "src",
             title: "Animated GIF",
             description: "The URL to your animated GIF.",
-            inputMethod: "textfield",
+            inputMethod: "haxupload",
             icon: "link",
             validationType: "url",
             required: true
@@ -224,7 +224,7 @@ let A11yGifPlayer = Polymer({
             property: "srcWithoutAnimation",
             title: "Still Image",
             description: "The URL to a still image version of your GIF.",
-            inputMethod: "textfield",
+            inputMethod: "haxupload",
             icon: "link",
             validationType: "url",
             required: true
@@ -233,7 +233,7 @@ let A11yGifPlayer = Polymer({
             property: "alt",
             title: "Alt Text",
             description: "Alternative text for the image.",
-            inputMethod: "textfield",
+            inputMethod: "alt",
             icon: "accessibility",
             required: true
           }

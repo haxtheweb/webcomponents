@@ -316,7 +316,7 @@ let MagazineCover = Polymer({
             property: "image",
             title: "Image",
             description: "The URL for the image.",
-            inputMethod: "textfield",
+            inputMethod: "haxupload",
             icon: "link",
             required: true,
             validationType: "url"
@@ -354,7 +354,7 @@ let MagazineCover = Polymer({
             property: "link",
             title: "URL",
             description: "Enter URL for your action link",
-            inputMethod: "textfield",
+            inputMethod: "haxupload",
             icon: "send"
           },
           {

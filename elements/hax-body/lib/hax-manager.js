@@ -481,7 +481,9 @@ Polymer({
       // find targets that support this type
       let targets = window.HaxStore.getHaxAppStoreTargets(type);
       // make sure we have targets
-      if (targets.length != 0) {
+      if (targets.length === 1) {
+        this._haxAppPickerSelection({ detail: targets[0] });
+      } else if (targets.length !== 0) {
         window.HaxStore.instance.haxAppPicker.presentOptions(
           targets,
           type,

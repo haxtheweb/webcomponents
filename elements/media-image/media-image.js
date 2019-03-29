@@ -205,7 +205,7 @@ let MediaImage = Polymer({
             property: "source",
             title: "Source",
             description: "The URL for the image.",
-            inputMethod: "textfield",
+            inputMethod: "haxupload",
             icon: "link",
             required: true
           },
@@ -213,7 +213,7 @@ let MediaImage = Polymer({
             property: "caption",
             title: "Caption",
             description: "A caption to describe the image usage",
-            inputMethod: "textarea",
+            inputMethod: "haxupload",
             icon: "av:call-to-action"
           },
           {

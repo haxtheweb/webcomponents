@@ -81,7 +81,7 @@ class MdBlock extends PolymerElement {
             property: "source",
             title: "Source",
             description: "Source file for markdown",
-            inputMethod: "textfield"
+            inputMethod: "haxupload"
           }
         ],
         advanced: []

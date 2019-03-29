@@ -245,7 +245,7 @@ let PersonTestimonial = Polymer({
             property: "image",
             title: "Image",
             description: "Adds image to testimonial",
-            inputMethod: "textfield",
+            inputMethod: "haxupload",
             icon: "editor:insert-photo"
           },
           {

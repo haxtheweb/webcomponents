@@ -184,21 +184,21 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
                 property: "src",
                 title: "Image Source",
                 description: "The path of the image.",
-                inputMethod: "textfield"
+                inputMethod: "haxupload"
               },
               {
                 property: "thumbnail",
                 title: "Image Thumbnail Source",
                 description:
                   "The path of an optional thumbnail version of the image.",
-                inputMethod: "textfield"
+                inputMethod: "haxupload"
               },
               {
                 property: "large",
                 title: "Image Full Size Source",
                 description:
                   "The path of an optional large version of the image for zooming.",
-                inputMethod: "textfield"
+                inputMethod: "haxupload"
               }
             ]
           }
