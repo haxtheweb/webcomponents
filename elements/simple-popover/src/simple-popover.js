@@ -4,6 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import { AbsolutePositionBehavior } from "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
 /**
  * `simple-popover`
  * `A popover alertdialog that is positioned next to a target element`
@@ -15,7 +16,7 @@ import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js
  * @polymer
  * @demo demo/index.html
  */
-class SimplePopover extends PolymerElement {
+class SimplePopover extends AbsolutePositionBehavior {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   /**
@@ -32,6 +33,11 @@ class SimplePopover extends PolymerElement {
     super.connectedCallback();
     this.HAXWiring = new HAXWiring();
     this.HAXWiring.setup(SimplePopover.haxProperties, SimplePopover.tag, this);
+  }
+
+  _showBefore(position) {
+    console.log(position, position === "top" || position === "left");
+    return position === "top" || position === "left";
   }
   /**
    * life cycle, element is removed from the DOM

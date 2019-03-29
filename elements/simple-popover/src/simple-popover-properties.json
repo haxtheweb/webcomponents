@@ -2,8 +2,11 @@
   "title": {
     "name": "title",
     "type": "String",
-    "value": "null",
-    "reflectToAttribute": false,
-    "observer": false
+    "value": null
+  },
+  "showBefore": {
+    "name": "showBefore",
+    "type": "Boolean",
+    "computed": "_showBefore(position)"
   }
 }

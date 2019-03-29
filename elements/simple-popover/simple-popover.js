@@ -4,6 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import { AbsolutePositionBehavior } from "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
 /**
  * `simple-popover`
  * `A popover alertdialog that is positioned next to a target element`
@@ -15,7 +16,7 @@ import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js
  * @polymer
  * @demo demo/index.html
  */
-class SimplePopover extends PolymerElement {
+class SimplePopover extends AbsolutePositionBehavior {
   // render function
   static get template() {
     return html`
@@ -27,9 +28,67 @@ class SimplePopover extends PolymerElement {
         :host([hidden]) {
           display: none;
         }
+        :host > * {
+          margin: 0 auto;
+        }
+        :host #after {
+          display: none;
+        }
+        :host #before {
+          display: block;
+        }
+        :host([position="top"]) #after {
+          display: block;
+        }
+        :host([position="top"]) #before {
+          display: none;
+        }
+        :host([position="left"]) #before,
+        :host([position="left"]) #middle {
+          display: inline-block;
+        }
+        :host([position="right"]) #before,
+        :host([position="right"]) #middle {
+          display: inline-block;
+        }
+        :host #before,
+        :host #after {
+          width: 0;
+          height: 0;
+          border-style: solid;
+        }
+        :host #before {
+          border-width: 0 10px 15px 10px;
+          border-color: transparent transparent black;
+        }
+        :host([position="left"]) #after {
+          border-width: 10px 0 10px 15px;
+          border-color: transparent black transparent;
+        }
+
+        :host #after {
+          border-width: 15px 10px 0 10px;
+          border-color: black transparent transparent;
+        }
+
+        :host([position="right"]) #before {
+          border-width: 10px 0105px 10px 0px;
+          border-color: transparent black transparent;
+        }
+
+        :host #middle {
+          padding: 5px;
+          color: white;
+          background-color: black;
+          border-radius: 3px;
+          min-height: 20px;
+        }
       </style>
-      <slot></slot>
-      <div>[[title]]</div>
+      <div id="before"></div>
+      <div id="middle">
+        <slot></slot>
+      </div>
+      <div id="after"></div>
     `;
   }
 
@@ -77,9 +136,12 @@ class SimplePopover extends PolymerElement {
       title: {
         name: "title",
         type: "String",
-        value: "null",
-        reflectToAttribute: false,
-        observer: false
+        value: null
+      },
+      showBefore: {
+        name: "showBefore",
+        type: "Boolean",
+        computed: "_showBefore(position)"
       }
     };
   }
@@ -98,6 +160,11 @@ class SimplePopover extends PolymerElement {
     super.connectedCallback();
     this.HAXWiring = new HAXWiring();
     this.HAXWiring.setup(SimplePopover.haxProperties, SimplePopover.tag, this);
+  }
+
+  _showBefore(position) {
+    console.log(position, position === "top" || position === "left");
+    return position === "top" || position === "left";
   }
   /**
    * life cycle, element is removed from the DOM

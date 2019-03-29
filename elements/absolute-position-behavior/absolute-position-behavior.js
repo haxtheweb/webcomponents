@@ -51,7 +51,8 @@ class AbsolutePositionBehavior extends PolymerElement {
       position: {
         type: String,
         value: "bottom",
-        observer: "updatePosition"
+        observer: "updatePosition",
+        reflectToAttribute: true
       },
       /**
        * If true, no parts of the tooltip will ever be shown offscreen.
