@@ -291,7 +291,8 @@ Polymer({
      */
     manifest: {
       type: Object,
-      notify: true
+      notify: true,
+      observer: "_manifestChanged"
     },
     getFieldsPath: {
       type: String
@@ -316,10 +317,6 @@ Polymer({
     window.addEventListener(
       "json-outline-schema-active-item-changed",
       this._newActiveItem.bind(this)
-    );
-    window.addEventListener(
-      "json-outline-schema-changed",
-      this._manifestChanged.bind(this)
     );
     window.addEventListener(
       "json-outline-schema-active-body-changed",
@@ -401,10 +398,6 @@ Polymer({
     window.removeEventListener(
       "json-outline-schema-active-item-changed",
       this._newActiveItem.bind(this)
-    );
-    window.removeEventListener(
-      "json-outline-schema-changed",
-      this._manifestChanged.bind(this)
     );
     window.removeEventListener(
       "json-outline-schema-active-body-changed",
@@ -586,7 +579,7 @@ Polymer({
    */
   _storeReadyToGo: function(event) {
     if (event.detail) {
-      window.HaxStore.instance.haxManager.appendJwt = "jwt";
+      window.HaxStore.instance.connectionRewrites.appendJwt = "jwt";
       window.HaxStore.instance.haxPanel.align = "left";
       window.HaxStore.instance.haxPanel.hidePanelOps = true;
     }
@@ -620,15 +613,12 @@ Polymer({
   /**
    * react to manifest being changed
    */
-  _manifestChanged: function(e) {
-    this.set("manifest", {});
-    this.set("manifest", e.detail);
-    this.notifyPath("manifest.*");
-    if (this.activeItem && e.detail.metadata) {
+  _manifestChanged: function(newValue) {
+    if (this.activeItem && newValue.metadata) {
       // set upload manager to point to this location in a more dynamic fashion
-      window.HaxStore.instance.haxManager.appendUploadEndPoint =
+      window.HaxStore.instance.connectionRewrites.appendUploadEndPoint =
         "siteName=" +
-        e.detail.metadata.siteName +
+        newValue.metadata.siteName +
         "&page=" +
         this.activeItem.id;
     }
@@ -646,7 +636,7 @@ Polymer({
   _activeItemChanged: function(newValue, oldValue) {
     if (newValue && this.manifest) {
       // set upload manager to point to this location in a more dynamic fashion
-      window.HaxStore.instance.haxManager.appendUploadEndPoint =
+      window.HaxStore.instance.connectionRewrites.appendUploadEndPoint =
         "siteName=" + this.manifest.metadata.siteName + "&page=" + newValue.id;
     }
   },
