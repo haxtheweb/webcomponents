@@ -100,6 +100,10 @@ export const HAXCMSTheme = function(SuperClass) {
         _location: {
           type: Object,
           observer: "_locationChanged"
+        },
+        autoScroll: {
+          type: Boolean,
+          value: false
         }
       };
     }
@@ -107,11 +111,13 @@ export const HAXCMSTheme = function(SuperClass) {
      * Selected page has changed.
      */
     _activeIdChanged(newValue) {
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: "smooth"
-      });
+      if (this.autoScroll) {
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: "smooth"
+        });
+      }
     }
     /**
      * private: Notice content container has changed
