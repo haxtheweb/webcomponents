@@ -79,27 +79,27 @@ class ActiveWhenVisible extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     // setup the intersection observer
-    this.observer = new IntersectionObserver(
-      this.handleIntersectionCallback.bind(this),
-      {
-        root: document.rootElement,
-        rootMargin: this.rootMargin,
-        threshold: this.thresholds
-      }
-    );
-    this.observer.observe(this);
+    afterNextRender(this, function() {
+      this.observer = new IntersectionObserver(
+        this.handleIntersectionCallback.bind(this),
+        {
+          root: document.rootElement,
+          rootMargin: this.rootMargin,
+          threshold: this.thresholds
+        }
+      );
+      this.observer.observe(this);
+    });
+  }
+  disconnectedCallback() {
+    super.disconnectedCallback();
   }
   /**
    * Handle this being visible
    */
   handleIntersectionCallback(entries) {
     for (let entry of entries) {
-      console.log(entry);
-      if (
-        entry.target === this &&
-        Number(entry.intersectionRatio).toFixed(2) >= this.visibleLimit
-      ) {
-        console.log(this);
+      if (Number(entry.intersectionRatio).toFixed(2) >= this.visibleLimit) {
         // now we care
         if (this.itemId) {
           let item = store.findItem(this.itemId);
@@ -109,7 +109,7 @@ class ActiveWhenVisible extends PolymerElement {
           this.isVisible = true;
           setTimeout(() => {
             this.$.a.click();
-          }, 50);
+          }, 25);
         }
       }
     }
