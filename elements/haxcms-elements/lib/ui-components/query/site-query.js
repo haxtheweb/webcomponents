@@ -65,7 +65,7 @@ class SiteQuery extends MutableData(PolymerElement) {
       __result: {
         type: Array,
         computed:
-          "_computeResult(entityType, conditions, sort, routerManifest, activeId, limit, startIndex, random, forceRebuild)",
+          "_computeResult(entity, conditions, sort, routerManifest, activeId, limit, startIndex, random, forceRebuild)",
         observer: "_noticeResultChange"
       },
       /**
@@ -118,7 +118,7 @@ class SiteQuery extends MutableData(PolymerElement) {
       /**
        * Entity to focus on
        */
-      entityType: {
+      entity: {
         type: String,
         value: "node"
       }
@@ -128,7 +128,7 @@ class SiteQuery extends MutableData(PolymerElement) {
    * Compute what we should present as a slice of the real deal
    */
   _computeResult(
-    entityType,
+    entity,
     conditions,
     sorts,
     routerManifest,
@@ -140,24 +140,60 @@ class SiteQuery extends MutableData(PolymerElement) {
   ) {
     if (routerManifest && routerManifest.items) {
       // ensure no data references, clone object
-      let items = Object.assign([], toJS(routerManifest.items));
+      var items = Object.assign([], toJS(routerManifest.items));
       // ohhh.... boy.... let's completely alter how this thing works
-      if (entityType !== "node") {
-        let oldItems = Object.assign([], items);
-        for (var i in oldItems) {
+      if (entity !== "node") {
+        var newItems = [];
+        for (var i in items) {
           // we found a match...
           // for example maybe this is metadata.files
           // so now you've got things files centric as opposed to item centric
-          if (typeof oldItems[i][entityType] !== typeof undefined) {
-            oldItems[i] = oldItems[i][entityType];
-            // store reference to the original item structure here
-            // this could let you do things like give me all tags
-            // then total up the unique references to those tags
-            // or to present the title of everything that has tag X
-            oldItems[i]._node = items[i];
+          if (typeof Object.byString(items[i], entity) !== typeof undefined) {
+            let tmp;
+            let val = Object.byString(items[i], entity);
+            if (typeof val === "object" || typeof val === "array") {
+              tmp = Object.assign([], Object.byString(items[i], entity));
+            } else {
+              tmp = val;
+            }
+            if (typeof tmp === "object" || typeof tmp === "array") {
+              for (var i in tmp) {
+                // we can push this onto objects, meaning full entities
+                // if the user queries for something weird like by title
+                // it's still valid but can't push the node onto it in the
+                // same way
+                if (typeof tmp[i] === "object" || typeof tmp[i] === "array") {
+                  // check for singular keys which could be grouped
+                  tmp[i]._node = Object.assign({}, items[i]);
+                  newItems.push(tmp[i]);
+                } else {
+                  let tmp2 = {
+                    _node: Object.assign({}, items[i]),
+                    value: tmp[i]
+                  };
+                  newItems.push(tmp2);
+                }
+              }
+            } else {
+              let tmp2 = {
+                _node: Object.assign({}, items[i]),
+                value: tmp
+              };
+              newItems.push(tmp2);
+            }
           }
         }
-        items = oldItems;
+        items = Object.assign([], newItems);
+        // group things that are the same so that nodes can be merged together
+        /*for (var i in newItems) {
+          if (newItems[i].length === 2) {
+            let tmpItemsFound = newItems.find(j => newItems[i][Object.keys(newItems[i])[0]] === j[Object.keys(newItems[i])[0]]);
+            items[i] = Object.assign({}, tmpItemsFound);
+          }
+          else {
+            items[i] = Object.assign({}, newItems[i]);
+          }
+        }*/
       }
       // if there are no conditions just do a 1 to 1 presentation
       if (conditions && items) {
@@ -167,12 +203,12 @@ class SiteQuery extends MutableData(PolymerElement) {
           items = items.filter(item => {
             // specialized condition for active id
             if (conditions[i] === "$activeId") {
-              if (item[i] !== activeId) {
+              if (Object.byString(item, i) !== activeId) {
                 return false;
               }
               return true;
             } else if (conditions[i] === "$firstId") {
-              if (item[i] !== items[0].id) {
+              if (Object.byString(item, i) !== items[0].id) {
                 return false;
               }
               return true;
@@ -191,17 +227,21 @@ class SiteQuery extends MutableData(PolymerElement) {
         for (var i in sorts) {
           items.sort((item1, item2) => {
             if (sorts[i] === "ASC") {
-              if (item1[i] < item2[i]) {
+              if (Object.byString(item1, i) < Object.byString(item2, i)) {
                 return -1;
-              } else if (item1[i] > item2[i]) {
+              } else if (
+                Object.byString(item1, i) > Object.byString(item2, i)
+              ) {
                 return 1;
               } else {
                 return 0;
               }
             } else {
-              if (item1[i] > item2[i]) {
+              if (Object.byString(item1, i) > Object.byString(item2, i)) {
                 return -1;
-              } else if (item1[i] < item2[i]) {
+              } else if (
+                Object.byString(item1, i) < Object.byString(item2, i)
+              ) {
                 return 1;
               } else {
                 return 0;
