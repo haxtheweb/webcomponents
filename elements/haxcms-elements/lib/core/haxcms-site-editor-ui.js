@@ -41,29 +41,29 @@ class HAXCMSSiteEditorUI extends PolymerElement {
           border-top-left-radius: 10px;
           border-left: 2px solid black;
           border-top: 2px solid black;
-          min-width: 68px;
+          min-width: 154px;
           width: 72px;
-          line-height: 36px;
-          height: 40px;
+          line-height: 54px;
+          height: 54px;
           z-index: 10000;
           visibility: visible;
         }
         :host([edit-mode]) {
-          min-width: 114px;
+          min-width: 154px;
         }
         :host *[hidden] {
           display: none;
         }
         paper-fab {
           display: inline-flex;
-          width: 32px;
-          height: 32px;
+          width: 48px;
+          height: 48px;
           vertical-align: middle;
-          line-height: 36px;
+          line-height: 48px;
           background-color: black;
           color: var(--haxcms-color, white);
           transition: 0.3s all ease-in-out;
-          padding: 6px;
+          padding: 8px;
           margin: 0;
           position: relative;
           @apply --shadow-elevation-8dp;
@@ -73,10 +73,10 @@ class HAXCMSSiteEditorUI extends PolymerElement {
           visibility: hidden;
         }
         paper-icon-button {
-          padding: 6px;
-          width: 32px;
-          min-width: 32px;
-          height: 32px;
+          padding: 8px;
+          width: 48px;
+          min-width: 48px;
+          height: 48px;
           border-radius: 50%;
           margin: 3px 3px 0 3px;
           background-color: black;
@@ -106,7 +106,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
           opacity: 1;
         }
         :host([edit-mode]) #editbutton {
-          width: 50px;
+          width: 60px;
           z-index: 1001;
           border-radius: 0;
           margin: 0;
@@ -114,12 +114,12 @@ class HAXCMSSiteEditorUI extends PolymerElement {
           color: white;
           background-color: var(--paper-blue-500, blue) !important;
           position: absolute;
-          height: 40px;
+          height: 54px;
         }
         .wrapper {
           width: 0px;
-          height: 40px;
-          line-height: 36px;
+          height: 54px;
+          line-height: 54px;
           color: black;
           display: inline-flex;
           transition: 0.3s all ease-in-out;
@@ -129,7 +129,15 @@ class HAXCMSSiteEditorUI extends PolymerElement {
           vertical-align: top;
         }
         :host([menu-mode]) .wrapper {
-          width: 200px;
+          width: 250px;
+        }
+        @media screen and (max-width: 600px) {
+          :host([menu-mode]) .wrapper {
+            width: 200px;
+          }
+          .active-title {
+            display: none;
+          }
         }
         :host([menu-mode]) {
           opacity: 1;
@@ -146,10 +154,10 @@ class HAXCMSSiteEditorUI extends PolymerElement {
         .active-title {
           font-size: 11px;
           font-weight: bold;
-          width: 75px;
+          width: 100px;
           text-overflow: ellipsis;
           overflow: hidden;
-          line-height: 36px;
+          line-height: 54px;
           padding: 0 8px;
         }
         paper-tooltip {
@@ -166,32 +174,32 @@ class HAXCMSSiteEditorUI extends PolymerElement {
         id="menubutton"
         icon="icons:menu"
         on-tap="_menuButtonTap"
-        aria-label="Expand menu"
+        title="Expand menu"
       ></paper-fab>
       <paper-fab
         id="cancelbutton"
         icon="icons:cancel"
         on-tap="_cancelButtonTap"
         hidden$="[[!editMode]]"
-        aria-label="Cancel editing"
+        title="Cancel editing"
       ></paper-fab>
       <paper-fab
         id="editbutton"
         icon="[[__editIcon]]"
         on-tap="_editButtonTap"
-        aria-label$="[[__editText]]"
+        title$="[[__editText]]"
       ></paper-fab>
       <paper-fab
         id="editdetails"
         icon="icons:fingerprint"
         on-tap="_editDetailsButtonTap"
-        aria-label$="Edit page details"
+        title="Edit page details"
       ></paper-fab>
       <paper-fab
         id="deletebutton"
         icon="icons:delete"
         on-tap="_deleteButtonTap"
-        aria-label="Delete current page"
+        title="Delete current page"
       ></paper-fab>
       <div class="wrapper">
         <div class="active-title">[[activeTitle]]</div>
@@ -199,19 +207,19 @@ class HAXCMSSiteEditorUI extends PolymerElement {
           id="addbutton"
           icon="icons:add"
           on-tap="_addButtonTap"
-          aria-label="Add new page"
+          title="Add new page"
         ></paper-icon-button>
         <paper-icon-button
           id="outlinebutton"
           icon="icons:list"
           on-tap="_outlineButtonTap"
-          aria-label="Edit site outline"
+          title="Edit site outline"
         ></paper-icon-button>
         <paper-icon-button
           id="manifestbutton"
           icon="icons:settings"
           on-tap="_manifestButtonTap"
-          aria-label="Edit site settings"
+          title="Edit site settings"
         ></paper-icon-button>
       </div>
       <paper-tooltip for="menubutton" position="top" offset="14"

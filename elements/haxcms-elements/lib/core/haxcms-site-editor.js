@@ -806,7 +806,7 @@ class HAXCMSSiteEditor extends PolymerElement {
       cancelable: true,
       detail: {
         text: data.response,
-        duration: 5000,
+        duration: 10000,
         slot: content.cloneNode(true)
       }
     });
