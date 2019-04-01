@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>AgencyTheme: agency-theme Demo</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../agency-theme.js';
+      import '../lib/agency-theme-band.js';
+      import '../lib/agency-theme-spotlight.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic agency-theme demo</h3>
+      <demo-snippet>
+        <template>
+          <agency-theme-band>
+            <agency-theme-spotlight image="https://picsum.photos/200/300">
+              <h2 slot="title"> hey there!</h2>
+              <p>a;osdifja osidfnasodi fsoaid f;alsidfj ;ipas f[aos jdfoisf osajdf;o uiasdf'poasj df; oiasjdf'pos jdf</p>
+            </agency-theme-spotlight>
+          </agency-theme-band>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
