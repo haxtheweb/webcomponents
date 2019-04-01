@@ -39,6 +39,7 @@ let MinimalistTemplate = superclass =>
             <site-print-button></site-print-button>
           </div>
         </site-top-menu>
+        <site-active-fields fields="{{activeItemFields}}"></site-active-fields>
         <header
           class="masthead"
           style$="background-image: url('[[activeItemFields.images.0.src]]');"

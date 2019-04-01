@@ -321,12 +321,12 @@ Polymer({
     window.cmsSiteEditor.instance.haxCmsSiteEditorElement.editMode = this.editMode;
     // save button shifted to edit
     if (!this.editMode) {
-      this.fire("haxcms-save-page", this.activeItem);
+      this.fire("haxcms-save-node", this.activeItem);
     }
   },
   _editDetailsButtonTap: function(e) {
     var normalizedEvent = dom(e);
-    const evt = new CustomEvent("haxcms-load-page-fields", {
+    const evt = new CustomEvent("haxcms-load-node-fields", {
       bubbles: true,
       cancelable: false,
       detail: normalizedEvent.localTarget
@@ -392,7 +392,7 @@ Polymer({
    * create new item
    */
   _createNewItem: function(e) {
-    const evt = new CustomEvent("haxcms-create-page", {
+    const evt = new CustomEvent("haxcms-create-node", {
       bubbles: true,
       cancelable: false,
       detail: {
@@ -415,7 +415,7 @@ Polymer({
     }
     // fire event with details for saving
     window.dispatchEvent(
-      new CustomEvent("haxcms-save-page-details", {
+      new CustomEvent("haxcms-save-node-details", {
         bubbles: true,
         cancelable: true,
         detail: values
@@ -469,7 +469,7 @@ Polymer({
    * delete active item
    */
   _deleteActive: function(e) {
-    const evt = new CustomEvent("haxcms-delete-page", {
+    const evt = new CustomEvent("haxcms-delete-node", {
       bubbles: true,
       cancelable: false,
       detail: {

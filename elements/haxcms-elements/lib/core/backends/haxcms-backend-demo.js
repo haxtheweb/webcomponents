@@ -78,7 +78,7 @@ Polymer({
   attached: function() {
     if (true) {
       // attempt to dynamically import the hax cms site editor
-      // which will appear to be injecting into the page
+      // which will appear to be injecting into the node
       // but because of this approach it should be non-blocking
       try {
         import(pathFromUrl(decodeURIComponent(import.meta.url)) +
@@ -89,18 +89,18 @@ Polymer({
             );
             haxCmsSiteEditorElement.jwt = this.jwt;
             haxCmsSiteEditorElement.method = "GET";
-            haxCmsSiteEditorElement.savePagePath =
-              window.appSettings.savePagePath;
+            haxCmsSiteEditorElement.saveNodePath =
+              window.appSettings.saveNodePath;
             haxCmsSiteEditorElement.saveManifestPath =
               window.appSettings.saveManifestPath;
             haxCmsSiteEditorElement.saveOutlinePath =
               window.appSettings.saveOutlinePath;
-            haxCmsSiteEditorElement.getFieldsPath =
-              window.appSettings.getFieldsPath;
-            haxCmsSiteEditorElement.createPagePath =
-              window.appSettings.createPagePath;
-            haxCmsSiteEditorElement.deletePagePath =
-              window.appSettings.deletePagePath;
+            haxCmsSiteEditorElement.getNodeFieldsPath =
+              window.appSettings.getNodeFieldsPath;
+            haxCmsSiteEditorElement.createNodePath =
+              window.appSettings.createNodePath;
+            haxCmsSiteEditorElement.deleteNodePath =
+              window.appSettings.deleteNodePath;
             haxCmsSiteEditorElement.publishSitePath =
               window.appSettings.publishSitePath;
             haxCmsSiteEditorElement.appStore = window.appSettings.appStore;

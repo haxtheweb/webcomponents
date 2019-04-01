@@ -22,6 +22,7 @@ Polymer({
       :host {
         display: block;
         height: 60vh;
+        min-width: 50vw;
       }
       .buttons {
         position: absolute;

@@ -189,8 +189,8 @@ let HAXCMSSiteBuilder = Polymer({
         this._triggerUpdatedData.bind(this)
       );
       window.addEventListener(
-        "haxcms-trigger-update-page",
-        this._triggerUpdatedPage.bind(this)
+        "haxcms-trigger-update-node",
+        this._triggerUpdatedNode.bind(this)
       );
       window.SimpleToast.requestAvailability();
     });
@@ -227,8 +227,8 @@ let HAXCMSSiteBuilder = Polymer({
       this._triggerUpdatedData.bind(this)
     );
     window.removeEventListener(
-      "haxcms-trigger-update-page",
-      this._triggerUpdatedPage.bind(this)
+      "haxcms-trigger-update-node",
+      this._triggerUpdatedNode.bind(this)
     );
     for (var i in this.__disposer) {
       this.__disposer[i].dispose();
@@ -327,8 +327,8 @@ let HAXCMSSiteBuilder = Polymer({
    */
   _activeItemChanged: function(newValue, oldValue) {
     if (newValue && typeof newValue.id !== typeof undefined) {
-      this.set("queryParams.page", newValue.id);
-      this.notifyPath("queryParams.page");
+      this.set("queryParams.nodeId", newValue.id);
+      this.notifyPath("queryParams.nodeId");
       // get fresh data if not published
       if (this.editorBuilder.getContext() !== "published") {
         this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
@@ -356,7 +356,7 @@ let HAXCMSSiteBuilder = Polymer({
   /**
    * got a message that we need to update our page content
    */
-  _triggerUpdatedPage: function(e) {
+  _triggerUpdatedNode: function(e) {
     // get fresh data if not published
     if (this.editorBuilder.getContext() !== "published") {
       this.__timeStamp = "?" + Math.floor(Date.now() / 1000);

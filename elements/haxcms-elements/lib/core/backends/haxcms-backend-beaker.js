@@ -53,16 +53,16 @@ Polymer({
       this.saveOutline.bind(this)
     );
     document.body.addEventListener(
-      "haxcms-save-page",
-      this.savePage.bind(this)
+      "haxcms-save-node",
+      this.saveNode.bind(this)
     );
     document.body.addEventListener(
-      "haxcms-delete-page",
-      this.deletePage.bind(this)
+      "haxcms-delete-node",
+      this.deleteNode.bind(this)
     );
     document.body.addEventListener(
-      "haxcms-create-page",
-      this.createPage.bind(this)
+      "haxcms-create-node",
+      this.createNode.bind(this)
     );
     // listen for app being selected
     document.body.addEventListener(
@@ -88,16 +88,16 @@ Polymer({
       this.saveOutline.bind(this)
     );
     document.body.removeEventListener(
-      "haxcms-save-page",
-      this.savePage.bind(this)
+      "haxcms-save-node",
+      this.saveNode.bind(this)
     );
     document.body.removeEventListener(
-      "haxcms-delete-page",
-      this.deletePage.bind(this)
+      "haxcms-delete-node",
+      this.deleteNode.bind(this)
     );
     document.body.removeEventListener(
-      "haxcms-create-page",
-      this.createPage.bind(this)
+      "haxcms-create-node",
+      this.createNode.bind(this)
     );
     // listen for app being selected
     document.body.removeEventListener(
@@ -126,7 +126,7 @@ Polymer({
   /**
    * Save page data
    */
-  savePage: async function(e) {
+  saveNode: async function(e) {
     this.activeItem = e.detail;
     // make sure this location exists
     await this.$.beaker.write(
@@ -137,7 +137,7 @@ Polymer({
       "Page updated!"
     );
     window.cmsSiteEditor.instance.haxCmsSiteEditorElement.fire(
-      "haxcms-trigger-update-page",
+      "haxcms-trigger-update-node",
       true
     );
   },
@@ -187,7 +187,7 @@ Polymer({
   /**
    * Outline save event.
    */
-  deletePage: async function(e) {
+  deleteNode: async function(e) {
     let page = e.detail.item;
     // snag global to be sure we have it set first
     this.manifest =
@@ -212,9 +212,9 @@ Polymer({
     this.fire("json-outline-schema-changed", this.manifest);
   },
   /**
-   * createPage
+   * createNode
    */
-  createPage: async function(e) {
+  createNode: async function(e) {
     let page = e.detail.values;
     // snag global to be sure we have it set first
     this.manifest =

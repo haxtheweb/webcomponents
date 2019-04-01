@@ -96,22 +96,22 @@ Polymer({
               "haxcms-site-editor"
             );
             haxCmsSiteEditorElement.jwt = this.jwt;
-            haxCmsSiteEditorElement.savePagePath =
-              window.appSettings.savePagePath;
+            haxCmsSiteEditorElement.saveNodePath =
+              window.appSettings.saveNodePath;
             haxCmsSiteEditorElement.saveManifestPath =
               window.appSettings.saveManifestPath;
             haxCmsSiteEditorElement.saveOutlinePath =
               window.appSettings.saveOutlinePath;
-            haxCmsSiteEditorElement.getFieldsPath =
-              window.appSettings.getFieldsPath;
+            haxCmsSiteEditorElement.getNodeFieldsPath =
+              window.appSettings.getNodeFieldsPath;
             haxCmsSiteEditorElement.getFieldsToken =
               window.appSettings.getFieldsToken;
             haxCmsSiteEditorElement.publishSitePath =
               window.appSettings.publishSitePath;
-            haxCmsSiteEditorElement.createPagePath =
-              window.appSettings.createPagePath;
-            haxCmsSiteEditorElement.deletePagePath =
-              window.appSettings.deletePagePath;
+            haxCmsSiteEditorElement.createNodePath =
+              window.appSettings.createNodePath;
+            haxCmsSiteEditorElement.deleteNodePath =
+              window.appSettings.deleteNodePath;
             haxCmsSiteEditorElement.appStore = window.appSettings.appStore;
             window.cmsSiteEditor.instance.haxCmsSiteEditorElement = haxCmsSiteEditorElement;
             window.cmsSiteEditor.instance.appendTarget.appendChild(

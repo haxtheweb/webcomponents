@@ -78,13 +78,13 @@ Polymer({
     </style>
     <iron-ajax
       headers='{"Authorization": "Bearer [[jwt]]"}'
-      id="pageupdateajax"
-      url="[[savePagePath]]"
+      id="nodeupdateajax"
+      url="[[saveNodePath]]"
       method="[[method]]"
-      body="[[updatePageData]]"
+      body="[[updateNodeData]]"
       content-type="application/json"
       handle-as="json"
-      on-response="_handlePageResponse"
+      on-response="_handleNodeResponse"
     ></iron-ajax>
     <iron-ajax
       headers='{"Authorization": "Bearer [[jwt]]"}'
@@ -99,7 +99,7 @@ Polymer({
     <iron-ajax
       headers='{"Authorization": "Bearer [[jwt]]"}'
       id="getfieldsajax"
-      url="[[getFieldsPath]]"
+      url="[[getNodeFieldsPath]]"
       method="[[method]]"
       body="[[getFieldsData]]"
       content-type="application/json"
@@ -130,24 +130,24 @@ Polymer({
     <iron-ajax
       headers='{"Authorization": "Bearer [[jwt]]"}'
       id="createajax"
-      url="[[createPagePath]]"
+      url="[[createNodePath]]"
       method="[[method]]"
       body="[[createData]]"
       content-type="application/json"
       handle-as="json"
       on-response="_handleCreateResponse"
-      last-response="{{__createPageResponse}}"
+      last-response="{{__createNodeResponse}}"
     ></iron-ajax>
     <iron-ajax
       headers='{"Authorization": "Bearer [[jwt]]"}'
       id="deleteajax"
-      url="[[deletePagePath]]"
+      url="[[deleteNodePath]]"
       method="[[method]]"
       body="[[deleteData]]"
       content-type="application/json"
       handle-as="json"
       on-response="_handleDeleteResponse"
-      last-response="{{__deletePageResponse}}"
+      last-response="{{__deleteNodeResponse}}"
     ></iron-ajax>
     <h-a-x app-store$="[[appStore]]"></h-a-x>
   `,
@@ -166,21 +166,21 @@ Polymer({
       type: String
     },
     /**
-     * end point for saving pages
+     * end point for saving nodes
      */
-    savePagePath: {
+    saveNodePath: {
       type: String
     },
     /**
-     * end point for create new pages
+     * end point for create new nodes
      */
-    createPagePath: {
+    createNodePath: {
       type: String
     },
     /**
-     * end point for delete pages
+     * end point for delete nodes
      */
-    deletePagePath: {
+    deleteNodePath: {
       type: String
     },
     /**
@@ -215,7 +215,7 @@ Polymer({
       type: Object
     },
     /**
-     * if the page is in an edit state or not
+     * if the node is in an edit state or not
      */
     editMode: {
       type: Boolean,
@@ -225,26 +225,26 @@ Polymer({
     /**
      * data as part of the POST to the backend
      */
-    updatePageData: {
+    updateNodeData: {
       type: Object,
       value: {}
     },
     /**
-     * delete page data
+     * delete node data
      */
     deleteData: {
       type: Object,
       value: {}
     },
     /**
-     * create new page data
+     * create new node data
      */
     createData: {
       type: Object,
       value: {}
     },
     /**
-     * create new page data
+     * create new node data
      */
     publishSiteData: {
       type: Object,
@@ -279,7 +279,7 @@ Polymer({
       value: {}
     },
     /**
-     * Active item of the page being worked on, JSON outline schema item format
+     * Active item of the node being worked on, JSON outline schema item format
      */
     activeItem: {
       type: Object,
@@ -294,7 +294,7 @@ Polymer({
       notify: true,
       observer: "_manifestChanged"
     },
-    getFieldsPath: {
+    getNodeFieldsPath: {
       type: String
     },
     getFieldsToken: {
@@ -323,21 +323,21 @@ Polymer({
       this._bodyChanged.bind(this)
     );
     window.addEventListener("haxcms-save-outline", this.saveOutline.bind(this));
-    window.addEventListener("haxcms-save-page", this.savePage.bind(this));
+    window.addEventListener("haxcms-save-node", this.saveNode.bind(this));
     window.addEventListener(
-      "haxcms-save-page-details",
-      this.savePageDetails.bind(this)
+      "haxcms-save-node-details",
+      this.saveNodeDetails.bind(this)
     );
     window.addEventListener(
       "haxcms-save-site-data",
       this.saveManifest.bind(this)
     );
     window.addEventListener(
-      "haxcms-load-page-fields",
-      this.loadPageFields.bind(this)
+      "haxcms-load-node-fields",
+      this.loadNodeFields.bind(this)
     );
-    window.addEventListener("haxcms-create-page", this.createPage.bind(this));
-    window.addEventListener("haxcms-delete-page", this.deletePage.bind(this));
+    window.addEventListener("haxcms-create-node", this.createNode.bind(this));
+    window.addEventListener("haxcms-delete-node", this.deleteNode.bind(this));
     window.addEventListener("haxcms-publish-site", this.publishSite.bind(this));
     const evt = new CustomEvent("simple-toast-show", {
       bubbles: true,
@@ -382,10 +382,10 @@ Polymer({
       "haxcms-save-outline",
       this.saveOutline.bind(this)
     );
-    window.removeEventListener("haxcms-save-page", this.savePage.bind(this));
+    window.removeEventListener("haxcms-save-node", this.saveNode.bind(this));
     window.removeEventListener(
-      "haxcms-save-page-details",
-      this.savePageDetails.bind(this)
+      "haxcms-save-node-details",
+      this.saveNodeDetails.bind(this)
     );
     window.removeEventListener(
       "haxcms-save-site-data",
@@ -404,23 +404,23 @@ Polymer({
       this._bodyChanged.bind(this)
     );
     window.removeEventListener(
-      "haxcms-load-page-fields",
-      this.loadPageFields.bind(this)
+      "haxcms-load-node-fields",
+      this.loadNodeFields.bind(this)
     );
     window.removeEventListener(
-      "haxcms-create-page",
-      this.createPage.bind(this)
+      "haxcms-create-node",
+      this.createNode.bind(this)
     );
     window.removeEventListener(
-      "haxcms-delete-page",
-      this.deletePage.bind(this)
+      "haxcms-delete-node",
+      this.deleteNode.bind(this)
     );
   },
   /**
-   * Load and display page fields
+   * Load and display node fields
    */
-  loadPageFields: function(e) {
-    this.__pageFieldsInvoked = e.detail;
+  loadNodeFields: function(e) {
+    this.__nodeFieldsInvoked = e.detail;
     // pass along the jwt for user "session" purposes
     this.set("getFieldsData.jwt", this.jwt);
     this.notifyPath("getFieldsData.jwt");
@@ -428,8 +428,8 @@ Polymer({
     this.notifyPath("getFieldsData.token");
     this.set("getFieldsData.siteName", this.manifest.metadata.siteName);
     this.notifyPath("getFieldsData.siteName");
-    this.set("getFieldsData.page", this.activeItem.id);
-    this.notifyPath("getFieldsData.page");
+    this.set("getFieldsData.nodeId", this.activeItem.id);
+    this.notifyPath("getFieldsData.nodeId");
     this.$.getfieldsajax.generateRequest();
   },
   /**
@@ -442,6 +442,8 @@ Polymer({
     this._haxSchema.settings = e.detail.response.haxSchema;
     let values = e.detail.response.values;
     let c = document.createElement("hax-schema-form");
+    // set a min width of 50 viewable
+    c.style.minWidth = "50vw";
     for (var key in this._haxSchema.settings) {
       let schema = wiring.getHaxJSONSchema(key, this._haxSchema);
       for (var i in schema.properties) {
@@ -478,7 +480,7 @@ Polymer({
       detail: {
         title: "Edit " + store.activeTitle + " fields",
         elements: { content: c, buttons: b },
-        invokedBy: this.__pageFieldsInvoked,
+        invokedBy: this.__nodeFieldsInvoked,
         clone: false
       }
     });
@@ -492,7 +494,7 @@ Polymer({
     values.id = this.activeItem.id;
     // fire event with details for saving
     window.dispatchEvent(
-      new CustomEvent("haxcms-save-page-details", {
+      new CustomEvent("haxcms-save-node-details", {
         bubbles: true,
         cancelable: true,
         detail: values
@@ -508,9 +510,9 @@ Polymer({
     );
   },
   /**
-   * create page event
+   * create node event
    */
-  createPage: function(e) {
+  createNode: function(e) {
     if (e.detail.values) {
       this.set("createData", {});
       this.set("createData", e.detail.values);
@@ -533,7 +535,7 @@ Polymer({
       bubbles: true,
       cancelable: true,
       detail: {
-        text: `Created ${this.__createPageResponse.title}!`,
+        text: `Created ${this.__createNodeResponse.title}!`,
         duration: 3000
       }
     });
@@ -541,12 +543,12 @@ Polymer({
     this.fire("haxcms-trigger-update", true);
   },
   /**
-   * delete the page we just got
+   * delete the node we just got
    */
-  deletePage: function(e) {
+  deleteNode: function(e) {
     this.set("deleteData", {});
-    this.set("deleteData.pageid", e.detail.item.id);
-    this.notifyPath("deleteData.pageid");
+    this.set("deleteData.nodeId", e.detail.item.id);
+    this.notifyPath("deleteData.nodeId");
     this.set("deleteData.siteName", this.manifest.metadata.siteName);
     this.notifyPath("deleteData.siteName");
     this.set("deleteData.jwt", this.jwt);
@@ -560,14 +562,14 @@ Polymer({
     window.dispatchEvent(evt);
   },
   /**
-   * page deleted response
+   * node deleted response
    */
   _handleDeleteResponse: function(response) {
     const evt = new CustomEvent("simple-toast-show", {
       bubbles: true,
       cancelable: true,
       detail: {
-        text: `Deleted ${this.__deletePageResponse.title}`,
+        text: `Deleted ${this.__deleteNodeResponse.title}`,
         duration: 3000
       }
     });
@@ -619,7 +621,7 @@ Polymer({
       window.HaxStore.instance.connectionRewrites.appendUploadEndPoint =
         "siteName=" +
         newValue.metadata.siteName +
-        "&page=" +
+        "&nodeId=" +
         this.activeItem.id;
     }
   },
@@ -637,14 +639,17 @@ Polymer({
     if (newValue && this.manifest) {
       // set upload manager to point to this location in a more dynamic fashion
       window.HaxStore.instance.connectionRewrites.appendUploadEndPoint =
-        "siteName=" + this.manifest.metadata.siteName + "&page=" + newValue.id;
+        "siteName=" +
+        this.manifest.metadata.siteName +
+        "&nodeId=" +
+        newValue.id;
     }
   },
   /**
-   * handle update responses for pages and outlines
+   * handle update responses for nodes and outlines
    */
-  _handlePageResponse: function(e) {
-    // page response may include the item that got updated
+  _handleNodeResponse: function(e) {
+    // node response may include the item that got updated
     // it also may be a new path so let's ensure that's reflected
     if (
       typeof e.detail.location !== "undefined" &&
@@ -676,11 +681,11 @@ Polymer({
     window.dispatchEvent(evt);
     // updates the manifest
     this.fire("haxcms-trigger-update", true);
-    // updates the page contents itself
-    this.fire("haxcms-trigger-update-page", true);
+    // updates the node contents itself
+    this.fire("haxcms-trigger-update-node", true);
   },
   _handleOutlineResponse: function(e) {
-    // trigger a refresh of the data in page
+    // trigger a refresh of the data in node
     const evt = new CustomEvent("simple-toast-show", {
       bubbles: true,
       cancelable: true,
@@ -693,7 +698,7 @@ Polymer({
     this.fire("haxcms-trigger-update", true);
   },
   _handleManifestResponse: function(e) {
-    // trigger a refresh of the data in page
+    // trigger a refresh of the data in node
     const evt = new CustomEvent("simple-toast-show", {
       bubbles: true,
       cancelable: true,
@@ -727,42 +732,42 @@ Polymer({
     window.dispatchEvent(evt);
   },
   /**
-   * Save page event
+   * Save node event
    */
-  savePage: function(e) {
-    this.set("updatePageData", {});
-    this.set("updatePageData.siteName", this.manifest.metadata.siteName);
-    this.notifyPath("updatePageData.siteName");
+  saveNode: function(e) {
+    this.set("updateNodeData", {});
+    this.set("updateNodeData.siteName", this.manifest.metadata.siteName);
+    this.notifyPath("updateNodeData.siteName");
     this.set(
-      "updatePageData.body",
+      "updateNodeData.body",
       window.HaxStore.instance.activeHaxBody.haxToContent()
     );
-    this.notifyPath("updatePageData.body");
-    this.set("updatePageData.page", this.activeItem.id);
-    this.notifyPath("updatePageData.page");
-    this.set("updatePageData.jwt", this.jwt);
-    this.notifyPath("updatePageData.jwt");
+    this.notifyPath("updateNodeData.body");
+    this.set("updateNodeData.nodeId", this.activeItem.id);
+    this.notifyPath("updateNodeData.nodeId");
+    this.set("updateNodeData.jwt", this.jwt);
+    this.notifyPath("updateNodeData.jwt");
     // send the request
-    if (this.savePagePath) {
-      this.$.pageupdateajax.generateRequest();
+    if (this.saveNodePath) {
+      this.$.nodeupdateajax.generateRequest();
     }
   },
   /**
-   * Save page event
+   * Save node event
    */
-  savePageDetails: function(e) {
-    this.set("updatePageData", {});
-    this.set("updatePageData.siteName", this.manifest.metadata.siteName);
-    this.notifyPath("updatePageData.siteName");
-    this.set("updatePageData.page", e.detail.id);
-    this.notifyPath("updatePageData.page");
-    this.set("updatePageData.details", e.detail);
-    this.notifyPath("updatePageData.details");
-    this.set("updatePageData.jwt", this.jwt);
-    this.notifyPath("updatePageData.jwt");
+  saveNodeDetails: function(e) {
+    this.set("updateNodeData", {});
+    this.set("updateNodeData.siteName", this.manifest.metadata.siteName);
+    this.notifyPath("updateNodeData.siteName");
+    this.set("updateNodeData.nodeId", e.detail.id);
+    this.notifyPath("updateNodeData.nodeId");
+    this.set("updateNodeData.details", e.detail);
+    this.notifyPath("updateNodeData.details");
+    this.set("updateNodeData.jwt", this.jwt);
+    this.notifyPath("updateNodeData.jwt");
     // send the request
-    if (this.savePagePath) {
-      this.$.pageupdateajax.generateRequest();
+    if (this.saveNodePath) {
+      this.$.nodeupdateajax.generateRequest();
     }
   },
   /**

@@ -4,6 +4,9 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
@@ -176,7 +179,7 @@ class HAXCMSSlideTheme extends HAXCMSTheme(PolymerElement) {
             position="top"
           ></site-menu-button>
           <div class="counter">
-            [[activeManifestIndexCounter]] / [[manifest.items.length]]
+            [[activeManifestIndexCounter]] / [[manifestLength]]
           </div>
           <site-menu-button
             type="next"
@@ -201,6 +204,36 @@ class HAXCMSSlideTheme extends HAXCMSTheme(PolymerElement) {
         </div>
       </div>
     `;
+  }
+  /**
+   * Connect state and theme wiring
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    this.__disposer = [];
+    afterNextRender(this, function() {
+      // store disposer so we can clean up later
+      autorun(reaction => {
+        this.manifestLength = toJS(store.routerManifest.items.length);
+        this.__disposer.push(reaction);
+      });
+      autorun(reaction => {
+        this.activeManifestIndexCounter = toJS(
+          store.activeManifestIndexCounter
+        );
+        this.__disposer.push(reaction);
+      });
+    });
+  }
+  /**
+   * Disconnect the wiring for the theme and clean up state
+   */
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    // clean up state
+    for (var i in this.__disposer) {
+      this.__disposer[i].dispose();
+    }
   }
 }
 window.customElements.define(HAXCMSSlideTheme.tag, HAXCMSSlideTheme);
