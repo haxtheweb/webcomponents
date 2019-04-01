@@ -378,14 +378,14 @@ class LrndesignTimeline extends SimpleColors {
                 property: "imagesrc",
                 title: "Event Image",
                 description: "The path of the image.",
-                inputMethod: "textfield",
+                inputMethod: "haxupload",
                 icon: "editor:title"
               },
               {
                 property: "imagealt",
                 title: "Event Image Alt Text",
                 description: "The alt text of the image (for accessibility).",
-                inputMethod: "textfield",
+                inputMethod: "alt",
                 icon: "editor:title"
               }
             ]

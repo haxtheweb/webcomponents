@@ -97,15 +97,8 @@
     "yo": "2.0.5"
   },
   "dependencies": {
-    "@polymer/iron-fit-behavior": "^3.0.1",
-    "lit-element": "2.0.1",
-    "@polymer/polymer": "3.1.0",
-    "@skatejs/renderer-lit-html": "0.2.2",
-    "lit-html": "1.0.0",
-    "skatejs": "5.2.4",
-    "slim-js": "4.0.5",
-    "twig": "1.13.2",
-    "marked": "0.6.1",
+    "fetch-ie8": "1.5.0",
+    "promise-polyfill": "8.1.0",
     "lunr": "2.3.6"
   },
   "lint-staged": {

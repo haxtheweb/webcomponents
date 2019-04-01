@@ -3,6 +3,10 @@ import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { flush } from "@polymer/polymer/lib/utils/flush.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
+import {
+  encapScript,
+  wipeSlot
+} from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import "@polymer/paper-item/paper-item.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
@@ -791,7 +795,7 @@ let HaxBody = Polymer({
     }
     // ensure they said yes
     if (status) {
-      window.HaxStore.wipeSlot(this);
+      wipeSlot(this);
     }
   },
   /**
@@ -1003,7 +1007,7 @@ let HaxBody = Polymer({
     window.HaxStore.write("activeNode", __active, this);
     window.HaxStore.write("activeContainerNode", __active, this);
     // oh one last thing. escape all script/style tags
-    content = window.HaxStore.encapScript(content);
+    content = encapScript(content);
     if (this.globalPreferences.haxDeveloperMode) {
       console.log(content);
     }
@@ -1074,9 +1078,9 @@ let HaxBody = Polymer({
     this._positionContextMenu(this.__activeContextType, container, -39, -39);
     this._positionContextMenu(this.$.platecontextmenu, container, -31, 0);
     // special case for node not matching container
-    if (!this._HTMLPrimativeTest(node) && node !== container) {
+    if (container && !this._HTMLPrimativeTest(node) && node !== container) {
       container.contentEditable = false;
-    } else if (this._HTMLPrimativeTest(container)) {
+    } else if (container && this._HTMLPrimativeTest(container)) {
       container.contentEditable = true;
     }
   },
@@ -1256,11 +1260,11 @@ let HaxBody = Polymer({
   importContent: function(html, clear = true) {
     // kill the slot of the active body, all of it
     if (clear) {
-      window.HaxStore.wipeSlot(this, "*");
+      wipeSlot(this, "*");
     }
     // pause quickly to ensure wipe goes through successfully
     setTimeout(() => {
-      html = window.HaxStore.encapScript(html);
+      html = encapScript(html);
       const validTags = window.HaxStore.instance.validTagList;
       let fragment = document.createElement("div");
       fragment.insertAdjacentHTML("beforeend", html);

@@ -124,7 +124,7 @@ class FullWidthImage extends PolymerElement {
           {
             property: "source",
             description: "",
-            inputMethod: "textfield",
+            inputMethod: "haxupload",
             required: true,
             icon: "icons:link",
             validationType: "url"

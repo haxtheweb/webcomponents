@@ -272,7 +272,7 @@ let HeroBanner = Polymer({
             property: "image",
             title: "Image",
             description: "URL of the image",
-            inputMethod: "textfield",
+            inputMethod: "haxupload",
             icon: "image:panorama"
           },
           {
@@ -307,7 +307,7 @@ let HeroBanner = Polymer({
             property: "buttonLink",
             title: "Button - Link",
             description: "Label of the button",
-            inputMethod: "textfield",
+            inputMethod: "haxupload",
             validationType: "url",
             icon: "icons:link"
           }

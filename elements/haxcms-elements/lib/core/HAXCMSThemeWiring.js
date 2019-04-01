@@ -4,6 +4,7 @@
  */
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { updateStyles } from "@polymer/polymer/lib/mixins/element-mixin.js";
@@ -50,49 +51,18 @@ export const HAXCMSTheme = function(SuperClass) {
          */
         editMode: {
           type: Boolean,
-          reflectToAttribute: true
-        },
-        /**
-         * Active item which is in JSON Outline Schema
-         */
-        activeItem: {
-          type: Object
-        },
-        /**
-         * a manifest json file decoded, in JSON Outline Schema format
-         */
-        manifest: {
-          type: Object
+          reflectToAttribute: true,
+          notify: true,
+          observer: "_editModeChanged"
         },
         /**
          * DOM node that wraps the slot
          */
         contentContainer: {
           type: Object,
+          notify: true,
           value: null,
           observer: "_contentContainerChanged"
-        },
-        /**
-         * active manifest index, key to location in the manifest itemsarray
-         */
-        activeManifestIndex: {
-          type: Number,
-          notify: true
-        },
-        /**
-         * active manifest index counter, adds 1 to the index; good for visuals
-         */
-        activeManifestIndexCounter: {
-          type: Number,
-          notify: true
-        },
-        /**
-         * acitve item id
-         */
-        activeId: {
-          type: String,
-          notify: true,
-          observer: "_activeIdChanged"
         },
         /**
          * location as object
@@ -104,14 +74,17 @@ export const HAXCMSTheme = function(SuperClass) {
       };
     }
     /**
-     * Selected page has changed.
+     * notice edit changed, make sure we fake a resize because of that container flyout
      */
-    _activeIdChanged(newValue) {
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: "smooth"
-      });
+    _editModeChanged(newValue) {
+      if (typeof newValue !== typeof undefined) {
+        microTask.run(() => {
+          // trick browser into thinking we just reized
+          window.dispatchEvent(new Event("resize"));
+          // forcibly update styles via css variables
+          updateStyles();
+        });
+      }
     }
     /**
      * private: Notice content container has changed
@@ -139,7 +112,7 @@ export const HAXCMSTheme = function(SuperClass) {
       if (name === "home" || name === "404") {
         // if we are on the homepage then load the first item in the manifest
         // and set it active
-        const firstItem = this.manifest.items.find(
+        const firstItem = store.routerManifest.items.find(
           i => typeof i.id !== "undefined"
         );
         if (firstItem) {
@@ -170,65 +143,32 @@ export const HAXCMSTheme = function(SuperClass) {
         updateStyles();
         // store disposer so we can clean up later
         autorun(reaction => {
-          this.manifest = toJS(store.routerManifest);
-          if (typeof this.manifest.title !== typeof undefined) {
-            document.title = this.manifest.title;
+          const __routerManifest = toJS(store.routerManifest);
+          if (typeof __routerManifest.title !== typeof undefined) {
+            document.title = __routerManifest.title;
           }
           if (
-            typeof this.manifest.metadata !== typeof undefined &&
-            typeof this.manifest.metadata.cssVariable !== typeof undefined
+            typeof __routerManifest.metadata !== typeof undefined &&
+            typeof __routerManifest.metadata.cssVariable !== typeof undefined
           ) {
             // json outline schema changed, allow other things to react
             // fake way of forcing an update of these items
-            let ary = this.manifest.metadata.cssVariable
+            let ary = __routerManifest.metadata.cssVariable
               .replace("--simple-colors-default-theme-", "")
               .split("-");
             ary.pop();
+            // simple colors "accent color" property
             this.accentColor = ary.join("-");
             // set this directly instead of messing w/ accentColor
             document.body.style.setProperty(
               "--haxcms-color",
-              this.manifest.metadata.hexCode
+              __routerManifest.metadata.hexCode
             );
           }
           this.__disposer.push(reaction);
         });
         autorun(reaction => {
           this._location = store.location;
-          this.__disposer.push(reaction);
-        });
-        autorun(reaction => {
-          this.activeItem = toJS(store.activeItem);
-          this.__disposer.push(reaction);
-        });
-        autorun(reaction => {
-          this.activeId = toJS(store.activeId);
-          this.__disposer.push(reaction);
-        });
-        autorun(reaction => {
-          this.activeItemFields = toJS(store.activeItemFields);
-          this.__disposer.push(reaction);
-        });
-        autorun(reaction => {
-          this.activeManifestIndex = toJS(store.activeManifestIndex);
-          this.__disposer.push(reaction);
-        });
-        autorun(reaction => {
-          this.activeTitle = toJS(store.activeTitle);
-          this.__disposer.push(reaction);
-        });
-        autorun(reaction => {
-          this.siteTitle = toJS(store.siteTitle);
-          this.__disposer.push(reaction);
-        });
-        autorun(reaction => {
-          this.homeLink = toJS(store.homeLink);
-          this.__disposer.push(reaction);
-        });
-        autorun(reaction => {
-          this.activeManifestIndexCounter = toJS(
-            store.activeManifestIndexCounter
-          );
           this.__disposer.push(reaction);
         });
       });
@@ -254,6 +194,7 @@ export const HAXCMSTheme = function(SuperClass) {
       this.dispatchEvent(
         new CustomEvent("haxcms-active-item-changed", {
           bubbles: true,
+          composed: true,
           cancelable: true,
           detail: {}
         })
@@ -331,18 +272,19 @@ class HAXCMSThemeWiring {
       // dispatch to everything else caring
       const evt = new CustomEvent("json-outline-schema-active-item-changed", {
         bubbles: true,
+        composed: true,
         cancelable: true,
         detail: newValue
       });
       this.dispatchEvent(evt);
       // update title as a simple nicity
       if (typeof newValue.title !== typeof undefined) {
-        document.title = this.manifest.title + " - " + newValue.title;
+        document.title = store.routerManifest.title + " - " + newValue.title;
       } else {
-        document.title = this.manifest.title;
+        document.title = store.routerManifest.title;
       }
     } else {
-      document.title = this.manifest.title;
+      document.title = store.routerManifest.title;
     }
   }
   /**
@@ -352,6 +294,7 @@ class HAXCMSThemeWiring {
     this.dispatchEvent(
       new CustomEvent("haxcms-active-item-changed", {
         bubbles: true,
+        composed: true,
         cancelable: true,
         detail: {}
       })

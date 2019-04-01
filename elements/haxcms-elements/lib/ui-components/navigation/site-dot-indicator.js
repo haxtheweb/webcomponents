@@ -29,6 +29,22 @@ class SiteDotIndicator extends PolymerElement {
           display: block;
           --site-dot-indicator-color: white;
         }
+        :host([sticky="left"]) {
+          position: fixed;
+          left: 8px;
+          z-index: 1000;
+          top: 25vh;
+        }
+        :host([sticky="right"]) {
+          position: fixed;
+          right: 8px;
+          z-index: 1000;
+          top: 25vh;
+        }
+        :host([sticky="left"]) ol,
+        :host([sticky="right"]) ol {
+          display: grid;
+        }
         ol {
           padding-left: 0;
           margin-left: 0;
@@ -77,6 +93,14 @@ class SiteDotIndicator extends PolymerElement {
       routerManifest: {
         type: Object,
         observer: "_routerManifestChanged"
+      },
+      sticky: {
+        type: String,
+        reflectToAttribute: true
+      },
+      scrollOnActive: {
+        type: Boolean,
+        value: false
       }
     };
   }
@@ -121,11 +145,29 @@ class SiteDotIndicator extends PolymerElement {
     this.__disposer2 = autorun(() => {
       this.activeId = toJS(store.activeId);
     });
+    if (this.scrollOnActive) {
+      this.$.list.addEventListener("click", () => {
+        this.parentElement.querySelector("#" + this.activeId).scrollIntoView({
+          behavior: "smooth",
+          block: "end",
+          inline: "nearest"
+        });
+      });
+    }
   }
   disconnectedCallback() {
     super.disconnectedCallback();
     this.__disposer();
     this.__disposer2();
+    if (this.scrollOnActive) {
+      this.$.list.removeEventListener("click", () => {
+        this.parentElement.querySelector("#" + this.activeId).scrollIntoView({
+          behavior: "smooth",
+          block: "end",
+          inline: "nearest"
+        });
+      });
+    }
   }
 }
 window.customElements.define(SiteDotIndicator.tag, SiteDotIndicator);

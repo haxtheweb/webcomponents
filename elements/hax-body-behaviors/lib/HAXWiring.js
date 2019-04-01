@@ -189,6 +189,7 @@ export class HAXWiring {
         if (tag != "" && typeof window.HaxStore === typeof undefined) {
           const evt = new CustomEvent("hax-register-properties", {
             bubbles: true,
+            composed: true,
             cancelable: true,
             detail: {
               tag: tag.toLowerCase(),
@@ -204,6 +205,7 @@ export class HAXWiring {
         ) {
           const evt = new CustomEvent("hax-register-properties", {
             bubbles: true,
+            composed: true,
             cancelable: true,
             detail: {
               tag: tag.toLowerCase(),
@@ -219,6 +221,7 @@ export class HAXWiring {
         ) {
           const evt = new CustomEvent("hax-register-properties", {
             bubbles: true,
+            composed: true,
             cancelable: true,
             detail: {
               tag: this.tagName.toLowerCase(),
@@ -369,6 +372,7 @@ export class HAXWiring {
           if (tag != "" && typeof window.HaxStore === typeof undefined) {
             const evt = new CustomEvent("hax-register-properties", {
               bubbles: true,
+              composed: true,
               cancelable: true,
               detail: {
                 tag: tag.toLowerCase(),
@@ -380,6 +384,7 @@ export class HAXWiring {
           } else if (tag != "") {
             const evt = new CustomEvent("hax-register-properties", {
               bubbles: true,
+              composed: true,
               cancelable: true,
               detail: {
                 tag: tag.toLowerCase(),
@@ -390,6 +395,7 @@ export class HAXWiring {
           } else if (typeof this.tagName !== typeof undefined) {
             const evt = new CustomEvent("hax-register-properties", {
               bubbles: true,
+              composed: true,
               cancelable: true,
               detail: {
                 tag: this.tagName.toLowerCase(),
@@ -660,7 +666,6 @@ export class HAXWiring {
                     label: settings[value].title
                   }
                 };
-                console.log(settings, settings[value]);
                 // support options array of icons to pick from
                 let opts =
                   settings[value].options !== undefined &&
@@ -678,6 +683,15 @@ export class HAXWiring {
                   properties: {
                     required: settings[value].required,
                     autoUpdateDate: true
+                  }
+                };
+                break;
+              case "haxupload":
+                props[settings[value].property].component = {
+                  name: "hax-upload-field",
+                  valueProperty: "value",
+                  properties: {
+                    formDataName: "file-upload"
                   }
                 };
                 break;
@@ -807,6 +821,15 @@ export class HAXWiring {
                   }
                 };
                 break;
+              case "haxupload":
+                props[settings[value].attribute].component = {
+                  name: "hax-upload-field",
+                  valueProperty: "value",
+                  properties: {
+                    formDataName: "file-upload"
+                  }
+                };
+                break;
             }
           } else {
             // @todo slot should support other editor types... maybe
@@ -872,6 +895,7 @@ export class HAXWiring {
           case "colorpicker":
           case "iconpicker":
           case "datepicker":
+          case "haxupload":
           case "textfield":
           case "alt":
             return "string";
@@ -896,6 +920,7 @@ export class HAXWiring {
         "textfield",
         "textarea",
         "datepicker",
+        "haxupload",
         "colorpicker",
         "iconpicker",
         "alt",

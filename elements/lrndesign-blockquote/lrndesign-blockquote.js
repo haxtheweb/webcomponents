@@ -734,7 +734,7 @@ let LrndesignBlockquote = Polymer({
             property: "image",
             title: "Image",
             description: "Picture of the author of this quote",
-            inputMethod: "textfield",
+            inputMethod: "haxupload",
             icon: "editor:short-text",
             required: false,
             validationType: "text"
@@ -770,7 +770,7 @@ let LrndesignBlockquote = Polymer({
             property: "sourceLink",
             title: "Source link",
             description: "Reference to the ",
-            inputMethod: "textfield",
+            inputMethod: "haxupload",
             icon: "editor:short-text",
             required: false,
             validationType: "url"

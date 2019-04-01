@@ -1,4 +1,4 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "@polymer/paper-icon-button/paper-icon-button.js";
@@ -21,121 +21,131 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
  *
  * @microcopy - the mental model for this element
  */
-Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: block;
+class HAXCMSManifestEditorDialog extends PolymerElement {
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   * @notice function name must be here for tooling to operate correctly
+   */
+  static get tag() {
+    return "haxcms-manifest-editor-dialog";
+  }
+  // render function
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: block;
+        }
+        #publish {
+          min-width: 100px;
+          background-color: var(--haxcms-color, #ff4081);
+        }
+        .buttons {
+          margin: 8px 0 8px 0;
+        }
+        paper-button {
+          color: var(--simple-colors-default-theme-grey-11);
+          margin: 0 5px;
+        }
+        iron-icon {
+          margin-right: 8px;
+        }
+        simple-icon-picker {
+          display: inline-flex;
+        }
+        label {
+          font-size: 14px;
+          padding-right: 5px;
+          color: var(
+            --paper-input-container-label_-_color,
+            var(
+              --paper-input-container-color,
+              var(--secondary-text-color, #000)
+            )
+          );
+        }
+      </style>
+      <paper-input
+        id="sitetitle"
+        label="Title"
+        required=""
+        autofocus=""
+        value="[[manifest.title]]"
+      ></paper-input>
+      <paper-input
+        id="domain"
+        label="Domain"
+        value="[[manifest.metadata.domain]]"
+      ></paper-input>
+      <paper-input
+        id="sitedescription"
+        label="Description"
+        value="[[manifest.description]]"
+      ></paper-input>
+      <paper-input
+        id="siteimage"
+        label="Image"
+        value="[[manifest.metadata.image]]"
+      ></paper-input>
+      <label for="sitecolor">Select a color:</label>
+      <simple-colors-picker
+        id="sitecolor"
+        hex-code="[[manifest.metadata.hexCode]]"
+      ></simple-colors-picker>
+      <simple-picker id="sitetheme" label="Theme"> </simple-picker>
+      <label for="siteicon">Select an icon:</label>
+      <simple-icon-picker
+        id="siteicon"
+        hide-option-labels
+        value="[[manifest.metadata.icon]]"
+      ></simple-icon-picker>
+      <div class="buttons">
+        <paper-button id="save" dialog-confirm raised on-tap="_saveTap">
+          <iron-icon icon="icons:save"></iron-icon>Save
+        </paper-button>
+        <paper-button id="cancel" dialog-dismiss raised>
+          <iron-icon icon="icons:cancel"></iron-icon>Cancel
+        </paper-button>
+        <paper-button id="publish" dialog-confirm on-tap="_publishTap" raised>
+          <iron-icon icon="icons:cloud-upload"></iron-icon>Publish
+        </paper-button>
+      </div>
+    `;
+  }
+  static get properties() {
+    return {
+      /**
+       * opened state of the dialog inside here
+       */
+      opened: {
+        type: Boolean,
+        notify: true
+      },
+      /**
+       * JSON Outline Schema manifest data
+       */
+      manifest: {
+        type: Object,
+        notify: true
       }
-      #publish {
-        min-width: 100px;
-        background-color: var(--haxcms-color, #ff4081);
-      }
-      .buttons {
-        margin: 8px 0 8px 0;
-      }
-      paper-button {
-        color: var(--simple-colors-default-theme-grey-11);
-        margin: 0 5px;
-      }
-      iron-icon {
-        margin-right: 8px;
-      }
-      simple-icon-picker {
-        display: inline-flex;
-      }
-      label {
-        font-size: 14px;
-        padding-right: 5px;
-        color: var(
-          --paper-input-container-label_-_color,
-          var(--paper-input-container-color, var(--secondary-text-color, #000))
-        );
-      }
-    </style>
-    <paper-input
-      id="sitetitle"
-      label="Title"
-      required=""
-      autofocus=""
-      value="[[manifest.title]]"
-    ></paper-input>
-    <paper-input
-      id="domain"
-      label="Domain"
-      value="[[manifest.metadata.domain]]"
-    ></paper-input>
-    <paper-input
-      id="sitedescription"
-      label="Description"
-      value="[[manifest.description]]"
-    ></paper-input>
-    <paper-input
-      id="siteimage"
-      label="Image"
-      value="[[manifest.metadata.image]]"
-    ></paper-input>
-    <label for="sitecolor">Select a color:</label>
-    <simple-colors-picker
-      id="sitecolor"
-      hex-code="[[manifest.metadata.hexCode]]"
-    ></simple-colors-picker>
-    <simple-picker id="sitetheme" label="Theme"> </simple-picker>
-    <label for="siteicon">Select an icon:</label>
-    <simple-icon-picker
-      id="siteicon"
-      hide-option-labels
-      value="[[manifest.metadata.icon]]"
-    ></simple-icon-picker>
-    <div class="buttons">
-      <paper-button id="save" dialog-confirm raised on-tap="_saveTap">
-        <iron-icon icon="icons:save"></iron-icon>Save
-      </paper-button>
-      <paper-button id="cancel" dialog-dismiss raised>
-        <iron-icon icon="icons:cancel"></iron-icon>Cancel
-      </paper-button>
-      <paper-button id="publish" dialog-confirm on-tap="_publishTap" raised>
-        <iron-icon icon="icons:cloud-upload"></iron-icon>Publish
-      </paper-button>
-    </div>
-  `,
-  is: "haxcms-manifest-editor-dialog",
-  properties: {
-    /**
-     * opened state of the dialog inside here
-     */
-    opened: {
-      type: Boolean,
-      notify: true
-    },
-    /**
-     * JSON Outline Schema manifest data
-     */
-    manifest: {
-      type: Object,
-      notify: true
-    }
-  },
-  created: function() {
-    window.addEventListener(
-      "json-outline-schema-changed",
-      this._manifestSet.bind(this)
-    );
-  },
+    };
+  }
   /**
    * Ready life cycle
    */
-  ready: function() {
+  ready() {
+    super.ready();
     this.__disposer = [];
     autorun(reaction => {
       this.manifest = toJS(store.manifest);
       this.__disposer.push(reaction);
     });
-  },
+  }
   /**
    * attached life cycle
    */
-  attached: function() {
+  connectedCallback() {
+    super.connectedCallback();
     this.$.sitecolor.addEventListener("change", this._colorChanged.bind(this));
     this.$.sitetheme.addEventListener("change", this._themeChanged.bind(this));
     setTimeout(() => {
@@ -155,15 +165,11 @@ Polymer({
     }
     this.$.sitetheme.options = themeOptions;
     this.$.sitetheme.value = this.manifest.metadata.theme.element;
-  },
+  }
   /**
    * detached life cycle
    */
-  detached: function() {
-    window.removeEventListener(
-      "json-outline-schema-changed",
-      this._manifestSet.bind(this)
-    );
+  disconnectedCallback() {
     this.$.sitetheme.removeEventListener(
       "change",
       this._themeChanged.bind(this)
@@ -175,32 +181,21 @@ Polymer({
     for (var i in this.__disposer) {
       this.__disposer[i].dispose();
     }
-  },
-
-  /**
-   * manifest changed globally
-   */
-  _manifestSet: function(e) {
-    if (typeof e.detail.id !== typeof undefined) {
-      this.set("manifest", e.detail);
-      this.notifyPath("manifest.*");
-    }
-  },
-
+    super.disconnectedCallback();
+  }
   /**
    * Use events for real value in theme.
    */
-  _themeChanged: function(e) {
+  _themeChanged(e) {
     if (e.detail.value) {
       this.set("manifest.metadata.theme", e.detail.value);
       this.notifyPath("manifest.metadata.theme");
     }
-  },
-
+  }
   /**
    * Use events for real value in color area.
    */
-  _colorChanged: function(e) {
+  _colorChanged(e) {
     this.set("manifest.metadata.cssVariable", e.detail.value);
     this.notifyPath("manifest.metadata.cssVariable");
     this.set(
@@ -212,19 +207,24 @@ Polymer({
       ][6]
     );
     this.notifyPath("manifest.metadata.hexCode");
-  },
-
+  }
   /**
    * Publish tap
    */
-  _publishTap: function(e) {
-    this.fire("haxcms-publish-site", this.manifest);
-  },
-
+  _publishTap(e) {
+    this.dispatchEvent(
+      new CustomEvent("haxcms-publish-site", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this.manifest
+      })
+    );
+  }
   /**
    * Save hit, send the message to push up the outline changes.
    */
-  _saveTap: function(e) {
+  _saveTap(e) {
     this.set("manifest.title", this.$.sitetitle.value);
     this.notifyPath("manifest.title");
     this.set("manifest.description", this.$.sitedescription.value);
@@ -235,6 +235,18 @@ Polymer({
     this.notifyPath("manifest.metadata.domain");
     this.set("manifest.metadata.icon", this.$.siteicon.icon);
     this.notifyPath("manifest.metadata.icon");
-    this.fire("haxcms-save-site-data", this.manifest);
+    this.dispatchEvent(
+      new CustomEvent("haxcms-save-site-data", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this.manifest
+      })
+    );
   }
-});
+}
+window.customElements.define(
+  HAXCMSManifestEditorDialog.tag,
+  HAXCMSManifestEditorDialog
+);
+export { HAXCMSManifestEditorDialog };

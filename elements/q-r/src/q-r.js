@@ -154,7 +154,7 @@ let QR = Polymer({
             property: "data",
             title: "QR data",
             description: "Source of the data for the QR code.",
-            inputMethod: "textfield",
+            inputMethod: "haxupload",
             icon: "hardware:developer-board"
           },
           {
@@ -162,7 +162,7 @@ let QR = Polymer({
             title: "Alternate title",
             description:
               "An alternate title to go to the source of the QR code.",
-            inputMethod: "textfield",
+            inputMethod: "alt",
             icon: "editor:title"
           },
           {

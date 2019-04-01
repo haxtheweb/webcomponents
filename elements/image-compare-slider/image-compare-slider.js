@@ -192,14 +192,14 @@ let ImageCompareSlider = Polymer({
             property: "bottomSrc",
             title: "Bottom image",
             description: "The base image to swipe over",
-            inputMethod: "textfield",
+            inputMethod: "haxupload",
             validationType: "url"
           },
           {
             property: "topSrc",
             title: "Top image",
             description: "The top image that swipes over",
-            inputMethod: "textfield",
+            inputMethod: "haxupload",
             validationType: "url"
           }
         ],

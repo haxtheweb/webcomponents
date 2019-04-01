@@ -1,13 +1,11 @@
 {
   "entrypoint": "demo/index.html",
-  "fragments": [],
-  "sources": ["demo/index.html"],
   "extraDependencies": [
-    "bower_components/webcomponentsjs/*.js",
     "node_modules/@webcomponents/webcomponentsjs/*.js",
     "!node_modules/@webcomponents/webcomponentsjs/gulpfile.js",
     "node_modules/@webcomponents/webcomponentsjs/bundles/*.js"
   ],
+  "sources": [],
   "builds": [
     {
       "name": "es6",
@@ -41,6 +39,8 @@
       "addServiceWorker": false
     }
   ],
+  "moduleResolution": "node",
+  "npm": true,
   "lint": {
     "rules": ["polymer-3"]
   }

@@ -7,8 +7,10 @@ import "@lrnwebcomponents/grid-plate/grid-plate.js";
 import "@polymer/iron-icons/maps-icons.js";
 import "@lrnwebcomponents/scroll-button/scroll-button.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-render-item.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/blocks/site-children-block.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/blocks/site-outline-block.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/blocks/site-recent-content-block.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-footer.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
@@ -22,6 +24,7 @@ import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-render-qu
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/magic/active-when-visible.js";
 
 /**
  * `An incredibly basic template.

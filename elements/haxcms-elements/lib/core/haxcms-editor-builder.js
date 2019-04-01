@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import "./haxcms-site-editor-ui.js";
@@ -19,21 +19,30 @@ window.cmsSiteEditor.instance = null;
  * - something called us asking to provide an authoring solution
  * - we need to decide based on environment if this supports php, beaker or none
  */
-Polymer({
-  is: "haxcms-editor-builder",
+class HAXCMSEditorBuilder extends PolymerElement {
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   * @notice function name must be here for tooling to operate correctly
+   */
+  static get tag() {
+    return "haxcms-editor-builder";
+  }
   /**
    * ready life cycle
    */
-  ready: function() {
+  ready() {
+    super.ready();
     this.applyContext();
-  },
-  attached: function() {
+  }
+  connectedCallback() {
+    super.connectedCallback();
     window.addEventListener("hax-store-ready", this.storeReady.bind(this));
-  },
-  detached: function() {
+  }
+  disconnectedCallback() {
     window.removeEventListener("hax-store-ready", this.storeReady.bind(this));
-  },
-  storeReady: function(e) {
+    super.disconnectedCallback();
+  }
+  storeReady(e) {
     // append UI element to body to avoid stack order issues
     if (!window.cmsSiteEditor.haxCmsSiteEditorUIElement) {
       window.cmsSiteEditor.haxCmsSiteEditorUIElement = document.createElement(
@@ -45,11 +54,11 @@ Polymer({
         window.cmsSiteEditor.haxCmsSiteEditorUIElement.painting = false;
       }, 5);
     }
-  },
+  }
   /**
    * Try to get context of what backend is powering this
    */
-  getContext: function() {
+  getContext() {
     let context = "";
     // figure out the context we need to apply for where the editing creds
     // and API might come from
@@ -66,8 +75,8 @@ Polymer({
       context = "php";
     }
     return context;
-  },
-  applyContext: function() {
+  }
+  applyContext() {
     let context = this.getContext();
     if (context === "php") {
       // append the php for global scope to show up via window
@@ -89,8 +98,9 @@ Polymer({
       });
     }
   }
-});
-
+}
+window.customElements.define(HAXCMSEditorBuilder.tag, HAXCMSEditorBuilder);
+export { HAXCMSEditorBuilder };
 // self append if anyone calls us into action
 window.cmsSiteEditor.requestAvailability = function(
   element = this,

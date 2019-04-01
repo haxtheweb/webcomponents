@@ -159,7 +159,7 @@ let MemeMaker = Polymer({
             property: "imageUrl",
             title: "Source",
             description: "The source url for the element this is citing.",
-            inputMethod: "textfield",
+            inputMethod: "haxupload",
             icon: "link"
           },
           {

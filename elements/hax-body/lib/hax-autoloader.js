@@ -73,6 +73,7 @@ Polymer({
           if (typeof effectiveChildren[i].getHaxProperties === "function") {
             const evt = new CustomEvent("hax-register-properties", {
               bubbles: true,
+              composed: true,
               cancelable: true,
               detail: {
                 tag: name,
@@ -85,6 +86,7 @@ Polymer({
             const evt = new CustomEvent("hax-register-properties", {
               bubbles: true,
               cancelable: true,
+              composed: true,
               detail: {
                 tag: name,
                 properties: effectiveChildren[i].HAXWiring.getHaxProperties(),

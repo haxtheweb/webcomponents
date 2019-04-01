@@ -381,14 +381,14 @@ let SelfCheck = Polymer({
             property: "image",
             title: "Image",
             description: "The image of the element",
-            inputMethod: "textfield",
+            inputMethod: "haxupload",
             validationType: "url"
           },
           {
             property: "link",
             title: "More link",
             description: "Link to additional information",
-            inputMethod: "textfield",
+            inputMethod: "haxupload",
             validationType: "url"
           },
           {

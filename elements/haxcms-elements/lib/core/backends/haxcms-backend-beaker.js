@@ -2,78 +2,94 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/beaker-broker/beaker-broker.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 /**
  * `haxcms-backend-beaker`
  * `a simple element to check for and fetch JWTs`
  *
- * @demo demo/index.html
  * @microcopy - the mental model for this element
  * - jwt - a json web token which is an encrypted security token to talk
  */
-Polymer({
-  is: "haxcms-backend-beaker",
-  _template: html`
-    <beaker-broker id="beaker"></beaker-broker>
-  `,
-  properties: {
-    /**
-     * JSON Web token, it'll come from a global call if it's available
-     */
-    jwt: {
-      type: String
-    },
-    /**
-     * Store manifest that makes up the site.
-     */
-    manifest: {
-      type: Object
-    },
-    /**
-     * Track activeItem
-     */
-    activeItem: {
-      type: Object
-    }
-  },
+class HAXCMSBackendBeaker extends PolymerElement {
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   * @notice function name must be here for tooling to operate correctly
+   */
+  static get tag() {
+    return "haxcms-backend-beaker";
+  }
+  // render function
+  static get template() {
+    return html`
+      <beaker-broker id="beaker"></beaker-broker>
+    `;
+  }
+  static get properties() {
+    return {
+      /**
+       * JSON Web token, it'll come from a global call if it's available
+       */
+      jwt: {
+        type: String
+      },
+      /**
+       * Store manifest that makes up the site.
+       */
+      manifest: {
+        type: Object
+      },
+      /**
+       * Track activeItem
+       */
+      activeItem: {
+        type: Object
+      }
+    };
+  }
   /**
    * Attached life cycle
    */
-  created: function() {
-    document.body.addEventListener("jwt-token", this._jwtTokenFired.bind(this));
-    // HAX CMS events to intercept
-    document.body.addEventListener(
-      "haxcms-save-site-data",
-      this.saveManifest.bind(this)
-    );
-    document.body.addEventListener(
-      "haxcms-save-outline",
-      this.saveOutline.bind(this)
-    );
-    document.body.addEventListener(
-      "haxcms-save-page",
-      this.savePage.bind(this)
-    );
-    document.body.addEventListener(
-      "haxcms-delete-page",
-      this.deletePage.bind(this)
-    );
-    document.body.addEventListener(
-      "haxcms-create-page",
-      this.createPage.bind(this)
-    );
-    // listen for app being selected
-    document.body.addEventListener(
-      "hax-app-picker-selection",
-      this._appPicked.bind(this)
-    );
-  },
+  constructor() {
+    super();
+    afterNextRender(this, function() {
+      document.body.addEventListener(
+        "jwt-token",
+        this._jwtTokenFired.bind(this)
+      );
+      // HAX CMS events to intercept
+      document.body.addEventListener(
+        "haxcms-save-site-data",
+        this.saveManifest.bind(this)
+      );
+      document.body.addEventListener(
+        "haxcms-save-outline",
+        this.saveOutline.bind(this)
+      );
+      document.body.addEventListener(
+        "haxcms-save-node",
+        this.saveNode.bind(this)
+      );
+      document.body.addEventListener(
+        "haxcms-delete-node",
+        this.deleteNode.bind(this)
+      );
+      document.body.addEventListener(
+        "haxcms-create-node",
+        this.createNode.bind(this)
+      );
+      // listen for app being selected
+      document.body.addEventListener(
+        "hax-app-picker-selection",
+        this._appPicked.bind(this)
+      );
+    });
+  }
   /**
    * detached life cycle
    */
-  detached: function() {
+  disconnectedCallback() {
     document.body.removeEventListener(
       "jwt-token",
       this._jwtTokenFired.bind(this)
@@ -88,24 +104,25 @@ Polymer({
       this.saveOutline.bind(this)
     );
     document.body.removeEventListener(
-      "haxcms-save-page",
-      this.savePage.bind(this)
+      "haxcms-save-node",
+      this.saveNode.bind(this)
     );
     document.body.removeEventListener(
-      "haxcms-delete-page",
-      this.deletePage.bind(this)
+      "haxcms-delete-node",
+      this.deleteNode.bind(this)
     );
     document.body.removeEventListener(
-      "haxcms-create-page",
-      this.createPage.bind(this)
+      "haxcms-create-node",
+      this.createNode.bind(this)
     );
     // listen for app being selected
     document.body.removeEventListener(
       "hax-app-picker-selection",
       this._appPicked.bind(this)
     );
-  },
-  _appPicked: function(e) {
+    super.disconnectedCallback();
+  }
+  _appPicked(e) {
     if (e.detail.connection.protocol === "dat") {
       e.preventDefault();
       e.stopPropagation();
@@ -122,11 +139,11 @@ Polymer({
         window.HaxStore.instance.haxManager.$.fileupload.files[0]
       );
     }
-  },
+  }
   /**
    * Save page data
    */
-  savePage: async function(e) {
+  async saveNode(e) {
     this.activeItem = e.detail;
     // make sure this location exists
     await this.$.beaker.write(
@@ -136,15 +153,18 @@ Polymer({
     window.cmsSiteEditor.instance.haxCmsSiteEditorElement.$.toast.show(
       "Page updated!"
     );
-    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.fire(
-      "haxcms-trigger-update-page",
-      true
-    );
-  },
+    const evt = new CustomEvent("haxcms-trigger-update-node", {
+      bubbles: true,
+      composed: true,
+      cancelable: false,
+      detail: true
+    });
+    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(evt);
+  }
   /**
    * Outline save event.
    */
-  saveOutline: async function(e) {
+  async saveOutline(e) {
     // snag global to be sure we have it set first
     this.manifest =
       window.cmsSiteEditor.instance.haxCmsSiteEditorElement.manifest;
@@ -178,16 +198,27 @@ Polymer({
     window.cmsSiteEditor.instance.haxCmsSiteEditorElement.$.toast.show(
       "Outline saved!"
     );
-    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.fire(
-      "haxcms-trigger-update",
-      true
+    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
+      new CustomEvent("haxcms-trigger-update", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: true
+      })
     );
-    this.fire("json-outline-schema-changed", this.manifest);
-  },
+    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
+      new CustomEvent("json-outline-schema-changed", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this.manifest
+      })
+    );
+  }
   /**
    * Outline save event.
    */
-  deletePage: async function(e) {
+  async deleteNode(e) {
     let page = e.detail.item;
     // snag global to be sure we have it set first
     this.manifest =
@@ -205,16 +236,27 @@ Polymer({
     window.cmsSiteEditor.instance.haxCmsSiteEditorElement.$.toast.show(
       `${page.title} deleted`
     );
-    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.fire(
-      "haxcms-trigger-update",
-      true
+    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
+      new CustomEvent("haxcms-trigger-update", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: true
+      })
     );
-    this.fire("json-outline-schema-changed", this.manifest);
-  },
+    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
+      new CustomEvent("json-outline-schema-changed", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this.manifest
+      })
+    );
+  }
   /**
-   * createPage
+   * createNode
    */
-  createPage: async function(e) {
+  async createNode(e) {
     let page = e.detail.values;
     // snag global to be sure we have it set first
     this.manifest =
@@ -252,16 +294,27 @@ Polymer({
     window.cmsSiteEditor.instance.haxCmsSiteEditorElement.$.toast.show(
       `${page.title} created!`
     );
-    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.fire(
-      "haxcms-trigger-update",
-      true
+    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
+      new CustomEvent("haxcms-trigger-update", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: true
+      })
     );
-    this.fire("json-outline-schema-changed", this.manifest);
-  },
+    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
+      new CustomEvent("json-outline-schema-changed", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this.manifest
+      })
+    );
+  }
   /**
    * Manifest save event.
    */
-  saveManifest: async function(e) {
+  async saveManifest(e) {
     this.manifest = e.detail;
     // limits options but makes it possible to switch core themes
     if (typeof this.manifest.metadata.theme === "string") {
@@ -295,22 +348,33 @@ Polymer({
     window.cmsSiteEditor.instance.haxCmsSiteEditorElement.$.toast.show(
       "Site details saved!"
     );
-    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.fire(
-      "haxcms-trigger-update",
-      true
+    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
+      new CustomEvent("haxcms-trigger-update", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: true
+      })
     );
-    this.fire("json-outline-schema-changed", this.manifest);
-  },
+    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
+      new CustomEvent("json-outline-schema-changed", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this.manifest
+      })
+    );
+  }
   /**
    * JWT token fired, let's capture it
    */
-  _jwtTokenFired: function(e) {
+  _jwtTokenFired(e) {
     this.jwt = e.detail;
-  },
+  }
   /**
    * Generate a uinque ID
    */
-  generateResourceID: function(base = "") {
+  generateResourceID(base = "") {
     function idPart() {
       return Math.floor((1 + Math.random()) * 0x10000)
         .toString(16)
@@ -331,11 +395,12 @@ Polymer({
       idPart() +
       idPart()
     );
-  },
+  }
   /**
    * Attached life cycle
    */
-  attached: async function() {
+  async connectedCallback() {
+    super.connectedCallback();
     let beaker = this.$.beaker;
     this.jwt = beaker.archive.url;
     var info = await beaker.archive.getInfo();
@@ -368,4 +433,6 @@ Polymer({
       }
     }
   }
-});
+}
+window.customElements.define(HAXCMSBackendBeaker.tag, HAXCMSBackendBeaker);
+export { HAXCMSBackendBeaker };

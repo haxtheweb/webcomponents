@@ -1,7 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import { microTask, timeOut } from "@polymer/polymer/lib/utils/async.js";
-import { Debouncer } from "@polymer/polymer/lib/utils/debounce.js";
+import { wipeSlot } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import "@polymer/paper-toggle-button/paper-toggle-button.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/paper-tabs/paper-tabs.js";
@@ -14,6 +13,7 @@ import "@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";
 import "@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js";
 import "@lrnwebcomponents/code-editor/code-editor.js";
 import "@lrnwebcomponents/app-datepicker/app-datepicker.js";
+import "@lrnwebcomponents/hax-body/lib/hax-upload-field.js";
 import "@lrnwebcomponents/simple-picker/simple-picker.js";
 import "@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js";
 import "@lrnwebcomponents/paper-input-flagged/paper-input-flagged.js";
@@ -621,7 +621,7 @@ Polymer({
     if (typeof newValue !== typeof undefined) {
       // wipe the preview area and assocaited node
       let preview = dom(this);
-      window.HaxStore.wipeSlot(preview, "*");
+      wipeSlot(preview, "*");
       this.set("previewNode", {});
       this.modeTab = "configure";
       // if we have something, generate the new element inside it
@@ -768,7 +768,7 @@ Polymer({
             }
             tmpel.innerHTML = valueChange.base[path];
             // wipe just the slot in question
-            window.HaxStore.wipeSlot(node, propData.slot);
+            wipeSlot(node, propData.slot);
             const cloneIt = tmpel.cloneNode(true);
             // inject the slotted content
             dom(node).appendChild(cloneIt);
