@@ -530,6 +530,7 @@ class HAXCMSSiteListing extends PolymerElement {
       this.__loginIcon = "icons:account-circle";
       const evt = new CustomEvent("simple-toast-show", {
         bubbles: true,
+        composed: true,
         cancelable: true,
         detail: {
           text: "Welcome, log in successful!",
@@ -549,6 +550,7 @@ class HAXCMSSiteListing extends PolymerElement {
       this.__loginIcon = "icons:power-settings-new";
       const evt = new CustomEvent("simple-toast-show", {
         bubbles: true,
+        composed: true,
         cancelable: true,
         detail: {
           text: "You logged out",
@@ -902,12 +904,14 @@ class HAXCMSSiteListing extends PolymerElement {
     this.dispatchEvent(
       new CustomEvent("sites-listing-refresh-data", {
         bubbles: true,
+        composed: true,
         cancelable: false,
         detail: e.detail.response
       })
     );
     const evt = new CustomEvent("simple-toast-show", {
       bubbles: true,
+      composed: true,
       cancelable: true,
       detail: {
         text: e.detail.response.title + " created successfully!",
@@ -925,6 +929,7 @@ class HAXCMSSiteListing extends PolymerElement {
     this.$.settingsdialog.opened = false;
     const evt = new CustomEvent("simple-toast-show", {
       bubbles: true,
+      composed: true,
       cancelable: true,
       detail: {
         text: "HAXCMS configuration updated!",
@@ -941,6 +946,7 @@ class HAXCMSSiteListing extends PolymerElement {
     this.dispatchEvent(
       new CustomEvent("download-site-listing", {
         bubbles: true,
+        composed: true,
         cancelable: false,
         detail: e.detail.response
       })
@@ -953,6 +959,7 @@ class HAXCMSSiteListing extends PolymerElement {
     document.body.removeChild(element);
     const evt = new CustomEvent("simple-toast-show", {
       bubbles: true,
+      composed: true,
       cancelable: true,
       detail: {
         text: this.activeItem.title + " downloaded successfully!",
@@ -971,6 +978,7 @@ class HAXCMSSiteListing extends PolymerElement {
         if (e.detail.option === "option1") {
           const evt = new CustomEvent("simple-toast-show", {
             bubbles: true,
+            composed: true,
             cancelable: true,
             detail: {
               text: "Deleting this",
@@ -985,6 +993,7 @@ class HAXCMSSiteListing extends PolymerElement {
         if (e.detail.option === "option1") {
           const evt = new CustomEvent("simple-toast-show", {
             bubbles: true,
+            composed: true,
             cancelable: true,
             detail: {
               text: "Duplicating this",
@@ -999,6 +1008,7 @@ class HAXCMSSiteListing extends PolymerElement {
         if (e.detail.option === "option1") {
           const evt = new CustomEvent("simple-toast-show", {
             bubbles: true,
+            composed: true,
             cancelable: true,
             detail: {
               text: "Move this item left",
@@ -1009,6 +1019,7 @@ class HAXCMSSiteListing extends PolymerElement {
         } else {
           const evt = new CustomEvent("simple-toast-show", {
             bubbles: true,
+            composed: true,
             cancelable: true,
             detail: {
               text: "Move this item right",

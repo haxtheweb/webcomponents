@@ -8,6 +8,11 @@ import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import {
+  encapScript,
+  findTagsInHTML,
+  wipeSlot
+} from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import "@polymer/app-layout/app-header/app-header.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
@@ -370,58 +375,6 @@ class HAXCMSLegacyPlayer extends PolymerElement {
     );
   }
   /**
-   * Wipe slotted content
-   */
-  wipeSlot(element, slot = "*") {
-    // 100% clean slate
-    if (slot === "*") {
-      while (dom(element).firstChild !== null) {
-        dom(element).removeChild(dom(element).firstChild);
-      }
-    } else {
-      for (var i in dom(element).childNodes) {
-        // test for element nodes to be safe
-        if (
-          typeof dom(element).childNodes[i] !== typeof undefined &&
-          dom(element).childNodes[i].slot === slot
-        ) {
-          dom(element).removeChild(dom(element).childNodes[i]);
-        }
-      }
-    }
-  }
-  /**
-   * Encapsulate script and style tags correctly
-   */
-  encapScript(html) {
-    html = html.replace(/<script[\s\S]*?>/gi, "&lt;script&gt;");
-    html = html.replace(/<\/script>/gi, "&lt;/script&gt;");
-    html = html.replace(/<style[\s\S]*?>/gi, "&lt;style&gt;");
-    html = html.replace(/<\/style>/gi, "&lt;/style&gt;");
-    // special case, it's inside a template tag
-    html = html.replace(
-      /<template[\s\S]*?>[\s\S]*?&lt;script[\s\S]*?&gt;[\s\S]*?&lt;\/script&gt;/gi,
-      function(match, contents, offset, input_string) {
-        match = match.replace("&lt;script&gt;", "<script>");
-        match = match.replace("&lt;/script&gt;", "</script>");
-        match = match.replace("&lt;style&gt;", "<style>");
-        match = match.replace("&lt;/style&gt;", "</style>");
-        return match;
-      }
-    );
-    return html;
-  }
-  findTagsInHTML(html) {
-    let tags = {};
-    let tag = "";
-    var matches = html.match(/<\/(\S*?)-(\S*?)>/g);
-    for (var i in matches) {
-      tag = matches[i].replace("</", "").replace(">", "");
-      tags[tag] = tag;
-    }
-    return tags;
-  }
-  /**
    * React to content being loaded from a page.
    */
   _activeItemContentChanged(newValue, oldValue) {
@@ -429,8 +382,8 @@ class HAXCMSLegacyPlayer extends PolymerElement {
       var html = newValue;
       // only append if not empty
       if (html !== null) {
-        this.wipeSlot(this, "*");
-        html = this.encapScript(newValue);
+        wipeSlot(this, "*");
+        html = encapScript(newValue);
         // insert the content as quickly as possible, then work on the dynamic imports
         microTask.run(() => {
           setTimeout(() => {
@@ -440,6 +393,7 @@ class HAXCMSLegacyPlayer extends PolymerElement {
               "json-outline-schema-active-body-changed",
               {
                 bubbles: true,
+                composed: true,
                 cancelable: false,
                 detail: { html }
               }
@@ -448,7 +402,7 @@ class HAXCMSLegacyPlayer extends PolymerElement {
         });
         // if there are, dynamically import them
         if (this.manifest.metadata.dynamicElementLoader) {
-          let tagsFound = this.findTagsInHTML(html);
+          let tagsFound = findTagsInHTML(html);
           const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
           for (var i in tagsFound) {
             const tagName = tagsFound[i];

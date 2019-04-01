@@ -41,7 +41,7 @@ class SimpleBlogListing extends PolymerElement {
       </style>
       <site-query
         result="{{__items}}"
-        sort='{"metadata.created": "ASC"}'
+        sort='{"metadata.created": "DESC"}'
       ></site-query>
       <iron-list items="[[__items]]">
         <template>

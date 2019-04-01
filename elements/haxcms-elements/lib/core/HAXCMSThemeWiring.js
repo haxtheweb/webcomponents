@@ -194,6 +194,7 @@ export const HAXCMSTheme = function(SuperClass) {
       this.dispatchEvent(
         new CustomEvent("haxcms-active-item-changed", {
           bubbles: true,
+          composed: true,
           cancelable: true,
           detail: {}
         })
@@ -271,6 +272,7 @@ class HAXCMSThemeWiring {
       // dispatch to everything else caring
       const evt = new CustomEvent("json-outline-schema-active-item-changed", {
         bubbles: true,
+        composed: true,
         cancelable: true,
         detail: newValue
       });
@@ -292,6 +294,7 @@ class HAXCMSThemeWiring {
     this.dispatchEvent(
       new CustomEvent("haxcms-active-item-changed", {
         bubbles: true,
+        composed: true,
         cancelable: true,
         detail: {}
       })

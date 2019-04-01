@@ -5,6 +5,11 @@ import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import { microTask } from "@polymer/polymer/lib/utils/async.js";
+import {
+  encapScript,
+  findTagsInHTML,
+  wipeSlot
+} from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
@@ -254,8 +259,8 @@ class HAXCMSSiteBuilder extends PolymerElement {
       var html = newValue;
       // only append if not empty
       if (html !== null) {
-        this.wipeSlot(this.themeElement, "*");
-        html = this.encapScript(newValue);
+        wipeSlot(this.themeElement, "*");
+        html = encapScript(newValue);
         // set in the store
         store.activeItemContent = html;
         // insert the content as quickly as possible, then work on the dynamic imports
@@ -266,6 +271,7 @@ class HAXCMSSiteBuilder extends PolymerElement {
             this.dispatchEvent(
               new CustomEvent("json-outline-schema-active-body-changed", {
                 bubbles: true,
+                composed: true,
                 cancelable: false,
                 detail: html
               })
@@ -284,7 +290,7 @@ class HAXCMSSiteBuilder extends PolymerElement {
         });
         // if there are, dynamically import them
         if (this.manifest.metadata.dynamicElementLoader) {
-          let tagsFound = this.findTagsInHTML(html);
+          let tagsFound = findTagsInHTML(html);
           const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
           for (var i in tagsFound) {
             const tagName = tagsFound[i];
@@ -296,6 +302,7 @@ class HAXCMSSiteBuilder extends PolymerElement {
                 this.manifest.metadata.dynamicElementLoader[tagName]
               }`)
                 .then(response => {
+                  // useful to debug if dynamic references are coming in
                   //console.log(tagName + ' dynamic import');
                 })
                 .catch(error => {
@@ -308,38 +315,6 @@ class HAXCMSSiteBuilder extends PolymerElement {
       }
     }
   }
-  findTagsInHTML(html) {
-    let tags = {};
-    let tag = "";
-    var matches = html.match(/<\/(\S*?)-(\S*?)>/g);
-    for (var i in matches) {
-      tag = matches[i].replace("</", "").replace(">", "");
-      tags[tag] = tag;
-    }
-    return tags;
-  }
-  /**
-   * Encapsulate script and style tags correctly
-   */
-  encapScript(html) {
-    html = html.replace(/<script[\s\S]*?>/gi, "&lt;script&gt;");
-    html = html.replace(/<\/script>/gi, "&lt;/script&gt;");
-    html = html.replace(/<style[\s\S]*?>/gi, "&lt;style&gt;");
-    html = html.replace(/<\/style>/gi, "&lt;/style&gt;");
-    // special case, it's inside a template tag
-    html = html.replace(
-      /<template[\s\S]*?>[\s\S]*?&lt;script[\s\S]*?&gt;[\s\S]*?&lt;\/script&gt;/gi,
-      function(match, contents, offset, input_string) {
-        match = match.replace("&lt;script&gt;", "<script>");
-        match = match.replace("&lt;/script&gt;", "</script>");
-        match = match.replace("&lt;style&gt;", "<style>");
-        match = match.replace("&lt;/style&gt;", "</style>");
-        return match;
-      }
-    );
-    return html;
-  }
-
   /**
    * Active item updated, let's request the content from it
    */
@@ -359,6 +334,7 @@ class HAXCMSSiteBuilder extends PolymerElement {
       this.dispatchEvent(
         new CustomEvent("json-outline-schema-active-body-changed", {
           bubbles: true,
+          composed: true,
           cancelable: false,
           detail: null
         })
@@ -468,6 +444,7 @@ class HAXCMSSiteBuilder extends PolymerElement {
       this.dispatchEvent(
         new CustomEvent("json-outline-schema-changed", {
           bubbles: true,
+          composed: true,
           cancelable: false,
           detail: newValue
         })
@@ -495,7 +472,7 @@ class HAXCMSSiteBuilder extends PolymerElement {
       this.themeLoaded = false;
       let theme = newValue;
       // wipe out what we got
-      this.wipeSlot(this, "*");
+      wipeSlot(this, "*");
       // create the 'theme' as a new element
       this.themeElement = document.createElement(theme.element);
       // weird but definition already here so we should be able
@@ -525,28 +502,6 @@ class HAXCMSSiteBuilder extends PolymerElement {
       setTimeout(() => {
         updateStyles();
       }, 500);
-    }
-  }
-
-  /**
-   * Wipe slotted content
-   */
-  wipeSlot(element, slot = "*") {
-    // 100% clean slate
-    if (slot === "*") {
-      while (dom(element).firstChild !== null) {
-        dom(element).removeChild(dom(element).firstChild);
-      }
-    } else {
-      for (var i in dom(element).childNodes) {
-        // test for element nodes to be safe
-        if (
-          typeof dom(element).childNodes[i] !== typeof undefined &&
-          dom(element).childNodes[i].slot === slot
-        ) {
-          dom(element).removeChild(dom(element).childNodes[i]);
-        }
-      }
     }
   }
 }

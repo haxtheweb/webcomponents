@@ -195,6 +195,7 @@ class HAXCMSOutlineEditorDialog extends PolymerElement {
     this.dispatchEvent(
       new CustomEvent("haxcms-save-outline", {
         bubbles: true,
+        composed: true,
         cancelable: false,
         detail: this.$.outline.exportJsonOutlineSchemaItems(true)
       })

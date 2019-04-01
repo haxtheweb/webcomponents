@@ -30,6 +30,7 @@ class HAXCMSCustomTheme extends HAXCMSTheme(PolymerElement) {
       .then(response => {
         const evt = new CustomEvent("haxcms-custom-theme-template-ready", {
           bubbles: true,
+          composed: true,
           cancelable: false,
           detail: {
             css: response
@@ -51,6 +52,7 @@ class HAXCMSCustomTheme extends HAXCMSTheme(PolymerElement) {
       .then(response => {
         const evt = new CustomEvent("haxcms-custom-theme-template-ready", {
           bubbles: true,
+          composed: true,
           cancelable: false,
           detail: {
             html: response

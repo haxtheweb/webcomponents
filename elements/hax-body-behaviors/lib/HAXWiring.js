@@ -189,6 +189,7 @@ export class HAXWiring {
         if (tag != "" && typeof window.HaxStore === typeof undefined) {
           const evt = new CustomEvent("hax-register-properties", {
             bubbles: true,
+            composed: true,
             cancelable: true,
             detail: {
               tag: tag.toLowerCase(),
@@ -204,6 +205,7 @@ export class HAXWiring {
         ) {
           const evt = new CustomEvent("hax-register-properties", {
             bubbles: true,
+            composed: true,
             cancelable: true,
             detail: {
               tag: tag.toLowerCase(),
@@ -219,6 +221,7 @@ export class HAXWiring {
         ) {
           const evt = new CustomEvent("hax-register-properties", {
             bubbles: true,
+            composed: true,
             cancelable: true,
             detail: {
               tag: this.tagName.toLowerCase(),
@@ -369,6 +372,7 @@ export class HAXWiring {
           if (tag != "" && typeof window.HaxStore === typeof undefined) {
             const evt = new CustomEvent("hax-register-properties", {
               bubbles: true,
+              composed: true,
               cancelable: true,
               detail: {
                 tag: tag.toLowerCase(),
@@ -380,6 +384,7 @@ export class HAXWiring {
           } else if (tag != "") {
             const evt = new CustomEvent("hax-register-properties", {
               bubbles: true,
+              composed: true,
               cancelable: true,
               detail: {
                 tag: tag.toLowerCase(),
@@ -390,6 +395,7 @@ export class HAXWiring {
           } else if (typeof this.tagName !== typeof undefined) {
             const evt = new CustomEvent("hax-register-properties", {
               bubbles: true,
+              composed: true,
               cancelable: true,
               detail: {
                 tag: this.tagName.toLowerCase(),

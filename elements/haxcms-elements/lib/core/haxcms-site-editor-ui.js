@@ -324,6 +324,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
       this.dispatchEvent(
         new CustomEvent("haxcms-save-node", {
           bubbles: true,
+          composed: true,
           cancelable: false,
           detail: store.activeItem
         })
@@ -334,6 +335,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
     var normalizedEvent = dom(e);
     const evt = new CustomEvent("haxcms-load-node-fields", {
       bubbles: true,
+      composed: true,
       cancelable: false,
       detail: normalizedEvent.localTarget
     });
@@ -351,6 +353,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
     this.dispatchEvent(
       new CustomEvent("hax-cancel", {
         bubbles: true,
+        composed: true,
         cancelable: false,
         detail: e.detail
       })
@@ -390,6 +393,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
     b.appendChild(b2);
     const evt = new CustomEvent("simple-modal-show", {
       bubbles: true,
+      composed: true,
       cancelable: false,
       detail: {
         title: "Add a new page",
@@ -406,6 +410,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
   _createNewItem(e) {
     const evt = new CustomEvent("haxcms-create-node", {
       bubbles: true,
+      composed: true,
       cancelable: false,
       detail: {
         values: this.__newForm.value
@@ -429,6 +434,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
     window.dispatchEvent(
       new CustomEvent("haxcms-save-node-details", {
         bubbles: true,
+        composed: true,
         cancelable: true,
         detail: values
       })
@@ -437,6 +443,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
     window.dispatchEvent(
       new CustomEvent("simple-modal-hide", {
         bubbles: true,
+        composed: true,
         cancelable: true,
         detail: {}
       })
@@ -467,6 +474,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
     b.appendChild(b2);
     const evt = new CustomEvent("simple-modal-show", {
       bubbles: true,
+      composed: true,
       cancelable: false,
       detail: {
         title: "Are you sure you want to delete this page?",
@@ -483,6 +491,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
   _deleteActive(e) {
     const evt = new CustomEvent("haxcms-delete-node", {
       bubbles: true,
+      composed: true,
       cancelable: false,
       detail: {
         item: store.activeItem
@@ -496,6 +505,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
   _outlineButtonTap(e) {
     const evt = new CustomEvent("simple-modal-show", {
       bubbles: true,
+      composed: true,
       cancelable: false,
       detail: {
         title: "Edit site outline",
@@ -519,6 +529,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
     }
     const evt = new CustomEvent("simple-modal-show", {
       bubbles: true,
+      composed: true,
       cancelable: false,
       detail: {
         title: store.routerManifest.title + ": site details",
@@ -546,6 +557,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
       this.dispatchEvent(
         new CustomEvent("haxcms-edit-mode-changed", {
           bubbles: true,
+          composed: true,
           cancelable: false,
           detail: newValue
         })
@@ -560,6 +572,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
     this.dispatchEvent(
       new CustomEvent("haxcms-outline-edit-mode-changed", {
         bubbles: true,
+        composed: true,
         cancelable: false,
         detail: newValue
       })
@@ -572,6 +585,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
     this.dispatchEvent(
       new CustomEvent("haxcms-manifest-edit-mode-changed", {
         bubbles: true,
+        composed: true,
         cancelable: false,
         detail: newValue
       })

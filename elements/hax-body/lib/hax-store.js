@@ -9,6 +9,10 @@ import "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 import "@lrnwebcomponents/hal-9000/hal-9000.js";
 import { CodeSample } from "@lrnwebcomponents/code-sample/code-sample.js";
 import { getRange } from "./shadows-safari.js";
+import {
+  encapScript,
+  wipeSlot
+} from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import "./hax-app.js";
 import "./hax-stax.js";
 import "./hax-stax-browser.js";
@@ -540,6 +544,7 @@ Polymer({
       const evt = new CustomEvent("hax-store-app-store-loaded", {
         bubbles: true,
         cancelable: true,
+        composed: true,
         detail: true
       });
       this.dispatchEvent(evt);
@@ -680,6 +685,7 @@ Polymer({
       new CustomEvent("hax-store-ready", {
         bubbles: true,
         cancelable: false,
+        composed: true,
         detail: false
       })
     );
@@ -762,6 +768,7 @@ Polymer({
       new CustomEvent("hax-store-ready", {
         bubbles: true,
         cancelable: false,
+        composed: true,
         detail: true
       })
     );
@@ -1522,6 +1529,7 @@ Polymer({
       this.dispatchEvent(
         new CustomEvent("hax-store-property-updated", {
           bubbles: true,
+          composed: true,
           cancelable: false,
           detail: {
             property: e.detail.property,
@@ -1674,6 +1682,9 @@ window.HaxStore.htmlToHaxElements = html => {
  * properties / attributes that have values.
  */
 window.HaxStore.nodeToHaxElement = (node, eventName = "insert-element") => {
+  if (!node) {
+    return null;
+  }
   // build out the properties to send along
   var props = {};
   // support basic styles
@@ -2133,6 +2144,7 @@ window.HaxStore.getHAXSlot = node => {
 window.HaxStore.write = (prop, value, obj) => {
   obj.dispatchEvent(
     new CustomEvent("hax-store-write", {
+      composed: true,
       bubbles: true,
       cancelable: false,
       detail: { property: prop, value: value, owner: obj }
@@ -2253,51 +2265,13 @@ window.HaxStore.haxElementPrototype = (gizmo, properties, content = "") => {
  * Wipe out the slot of an element.
  */
 window.HaxStore.wipeSlot = (element, slot = "") => {
-  // 100% clean slate
-  if (slot === "*") {
-    while (dom(element).firstChild !== null) {
-      dom(element).removeChild(dom(element).firstChild);
-    }
-  } else {
-    for (var i in dom(element).childNodes) {
-      // test for element nodes to be safe
-      if (
-        typeof dom(element).childNodes[i] !== typeof undefined &&
-        dom(element).childNodes[i].slot === slot
-      ) {
-        dom(element).removeChild(dom(element).childNodes[i]);
-      }
-    }
-  }
+  wipeSlot(element, slot);
 };
 /**
  * HTML encapsulation of a string on script and style tags
  */
 window.HaxStore.encapScript = html => {
-  // ensure this is a string to then do replacements on, rare but possible w/ null
-  if (html && typeof html.replace === "function") {
-    html = html.replace(/<script[\s\S]*?>/gi, "&lt;script&gt;");
-    html = html.replace(/<\/script>/gi, "&lt;/script&gt;");
-    // ensure that HAX tags aren't leaking in here
-    html = html.replace(/<hax[\s\S]*?>/gi, "");
-    html = html.replace(/<\/hax[\s\S]*?>/gi, "");
-    html = html.replace(/<h-a-x[\s\S]*?>/gi, "");
-    html = html.replace(/<\/h-a-x*?>/gi, "");
-    html = html.replace(/<style[\s\S]*?>/gi, "&lt;style&gt;");
-    html = html.replace(/<\/style>/gi, "&lt;/style&gt;");
-    // special case, it's inside a template tag
-    html = html.replace(
-      /<template[\s\S]*?>[\s\S]*?&lt;script[\s\S]*?&gt;[\s\S]*?&lt;\/script&gt;/gi,
-      function(match, contents, offset, input_string) {
-        match = match.replace("&lt;script&gt;", "<script>");
-        match = match.replace("&lt;/script&gt;", "</script>");
-        match = match.replace("&lt;style&gt;", "<style>");
-        match = match.replace("&lt;/style&gt;", "</style>");
-        return match;
-      }
-    );
-  }
-  return html;
+  return encapScript(html);
 };
 /**
  * Global toast bridge so we don't have to keep writing custom event
@@ -2311,6 +2285,7 @@ window.HaxStore.toast = (
 ) => {
   const evt = new CustomEvent("simple-toast-show", {
     bubbles: true,
+    composed: true,
     cancelable: true,
     detail: {
       text: message,

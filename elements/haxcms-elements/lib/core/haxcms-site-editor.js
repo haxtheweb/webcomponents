@@ -382,6 +382,7 @@ class HAXCMSSiteEditor extends PolymerElement {
       });
       const evt = new CustomEvent("simple-toast-show", {
         bubbles: true,
+        composed: true,
         cancelable: true,
         detail: {
           text: "You are logged in, edit tools shown."
@@ -500,6 +501,7 @@ class HAXCMSSiteEditor extends PolymerElement {
     b.appendChild(b2);
     const evt = new CustomEvent("simple-modal-show", {
       bubbles: true,
+      composed: true,
       cancelable: false,
       detail: {
         title: "Edit " + store.activeTitle + " fields",
@@ -520,6 +522,7 @@ class HAXCMSSiteEditor extends PolymerElement {
     window.dispatchEvent(
       new CustomEvent("haxcms-save-node-details", {
         bubbles: true,
+        composed: true,
         cancelable: true,
         detail: values
       })
@@ -528,6 +531,7 @@ class HAXCMSSiteEditor extends PolymerElement {
     window.dispatchEvent(
       new CustomEvent("simple-modal-hide", {
         bubbles: true,
+        composed: true,
         cancelable: true,
         detail: {}
       })
@@ -548,6 +552,7 @@ class HAXCMSSiteEditor extends PolymerElement {
       this.$.createajax.generateRequest();
       const evt = new CustomEvent("simple-modal-hide", {
         bubbles: true,
+        composed: true,
         cancelable: true,
         detail: {}
       });
@@ -557,6 +562,7 @@ class HAXCMSSiteEditor extends PolymerElement {
   _handleCreateResponse(response) {
     const evt = new CustomEvent("simple-toast-show", {
       bubbles: true,
+      composed: true,
       cancelable: true,
       detail: {
         text: `Created ${this.__createNodeResponse.title}!`,
@@ -567,6 +573,7 @@ class HAXCMSSiteEditor extends PolymerElement {
     this.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
+        composed: true,
         cancelable: false,
         detail: true
       })
@@ -586,6 +593,7 @@ class HAXCMSSiteEditor extends PolymerElement {
     this.$.deleteajax.generateRequest();
     const evt = new CustomEvent("simple-modal-hide", {
       bubbles: true,
+      composed: true,
       cancelable: true,
       detail: {}
     });
@@ -597,6 +605,7 @@ class HAXCMSSiteEditor extends PolymerElement {
   _handleDeleteResponse(response) {
     const evt = new CustomEvent("simple-toast-show", {
       bubbles: true,
+      composed: true,
       cancelable: true,
       detail: {
         text: `Deleted ${this.__deleteNodeResponse.title}`,
@@ -607,6 +616,7 @@ class HAXCMSSiteEditor extends PolymerElement {
     this.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
+        composed: true,
         cancelable: false,
         detail: true
       })
@@ -629,6 +639,7 @@ class HAXCMSSiteEditor extends PolymerElement {
     if (newValue) {
       const evt = new CustomEvent("simple-toast-show", {
         bubbles: true,
+        composed: true,
         cancelable: true,
         detail: {
           text: "Publishing...",
@@ -639,6 +650,7 @@ class HAXCMSSiteEditor extends PolymerElement {
     } else if (!newValue && oldValue) {
       const evt = new CustomEvent("simple-toast-show", {
         bubbles: true,
+        composed: true,
         cancelable: true,
         detail: {
           text: "Publishing...",
@@ -701,6 +713,7 @@ class HAXCMSSiteEditor extends PolymerElement {
       this.dispatchEvent(
         new CustomEvent("json-outline-schema-active-item-changed", {
           bubbles: true,
+          composed: true,
           cancelable: true,
           detail: active
         })
@@ -708,6 +721,7 @@ class HAXCMSSiteEditor extends PolymerElement {
     }
     const evt = new CustomEvent("simple-toast-show", {
       bubbles: true,
+      composed: true,
       cancelable: true,
       detail: {
         text: "Page saved!",
@@ -719,6 +733,7 @@ class HAXCMSSiteEditor extends PolymerElement {
     this.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
+        composed: true,
         cancelable: false,
         detail: true
       })
@@ -727,6 +742,7 @@ class HAXCMSSiteEditor extends PolymerElement {
     this.dispatchEvent(
       new CustomEvent("haxcms-trigger-update-node", {
         bubbles: true,
+        composed: true,
         cancelable: false,
         detail: true
       })
@@ -736,6 +752,7 @@ class HAXCMSSiteEditor extends PolymerElement {
     // trigger a refresh of the data in node
     const evt = new CustomEvent("simple-toast-show", {
       bubbles: true,
+      composed: true,
       cancelable: true,
       detail: {
         text: "Outline saved!",
@@ -746,6 +763,7 @@ class HAXCMSSiteEditor extends PolymerElement {
     this.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
+        composed: true,
         cancelable: false,
         detail: true
       })
@@ -755,6 +773,7 @@ class HAXCMSSiteEditor extends PolymerElement {
     // trigger a refresh of the data in node
     const evt = new CustomEvent("simple-toast-show", {
       bubbles: true,
+      composed: true,
       cancelable: true,
       detail: {
         text: "Site details saved!",
@@ -765,6 +784,7 @@ class HAXCMSSiteEditor extends PolymerElement {
     this.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
+        composed: true,
         cancelable: false,
         detail: true
       })
@@ -782,6 +802,7 @@ class HAXCMSSiteEditor extends PolymerElement {
     </a>`;
     const evt = new CustomEvent("simple-toast-show", {
       bubbles: true,
+      composed: true,
       cancelable: true,
       detail: {
         text: data.response,

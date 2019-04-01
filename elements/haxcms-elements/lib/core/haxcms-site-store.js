@@ -71,6 +71,8 @@ class Store {
     document.body.dispatchEvent(
       new CustomEvent("json-outline-schema-changed", {
         bubbles: true,
+        composed: true,
+        cancelable: false,
         detail: manifest
       })
     );
@@ -466,6 +468,8 @@ autorun(() => {
     document.body.dispatchEvent(
       new CustomEvent("json-outline-schema-active-item-changed", {
         bubbles: true,
+        composed: true,
+        cancelable: false,
         detail: foundItem
       })
     );

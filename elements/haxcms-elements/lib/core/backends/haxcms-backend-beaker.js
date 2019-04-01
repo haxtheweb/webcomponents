@@ -155,6 +155,7 @@ class HAXCMSBackendBeaker extends PolymerElement {
     );
     const evt = new CustomEvent("haxcms-trigger-update-node", {
       bubbles: true,
+      composed: true,
       cancelable: false,
       detail: true
     });
@@ -200,6 +201,7 @@ class HAXCMSBackendBeaker extends PolymerElement {
     window.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
+        composed: true,
         cancelable: false,
         detail: true
       })
@@ -207,6 +209,7 @@ class HAXCMSBackendBeaker extends PolymerElement {
     window.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
       new CustomEvent("json-outline-schema-changed", {
         bubbles: true,
+        composed: true,
         cancelable: false,
         detail: this.manifest
       })
@@ -236,6 +239,7 @@ class HAXCMSBackendBeaker extends PolymerElement {
     window.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
+        composed: true,
         cancelable: false,
         detail: true
       })
@@ -243,6 +247,7 @@ class HAXCMSBackendBeaker extends PolymerElement {
     window.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
       new CustomEvent("json-outline-schema-changed", {
         bubbles: true,
+        composed: true,
         cancelable: false,
         detail: this.manifest
       })
@@ -292,6 +297,7 @@ class HAXCMSBackendBeaker extends PolymerElement {
     window.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
+        composed: true,
         cancelable: false,
         detail: true
       })
@@ -299,6 +305,7 @@ class HAXCMSBackendBeaker extends PolymerElement {
     window.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
       new CustomEvent("json-outline-schema-changed", {
         bubbles: true,
+        composed: true,
         cancelable: false,
         detail: this.manifest
       })
@@ -344,6 +351,7 @@ class HAXCMSBackendBeaker extends PolymerElement {
     window.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
+        composed: true,
         cancelable: false,
         detail: true
       })
@@ -351,6 +359,7 @@ class HAXCMSBackendBeaker extends PolymerElement {
     window.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
       new CustomEvent("json-outline-schema-changed", {
         bubbles: true,
+        composed: true,
         cancelable: false,
         detail: this.manifest
       })

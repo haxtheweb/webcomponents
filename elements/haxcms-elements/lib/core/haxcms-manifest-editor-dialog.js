@@ -215,6 +215,7 @@ class HAXCMSManifestEditorDialog extends PolymerElement {
     this.dispatchEvent(
       new CustomEvent("haxcms-publish-site", {
         bubbles: true,
+        composed: true,
         cancelable: false,
         detail: this.manifest
       })
@@ -237,6 +238,7 @@ class HAXCMSManifestEditorDialog extends PolymerElement {
     this.dispatchEvent(
       new CustomEvent("haxcms-save-site-data", {
         bubbles: true,
+        composed: true,
         cancelable: false,
         detail: this.manifest
       })
