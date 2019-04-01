@@ -34,11 +34,6 @@ class SimplePopover extends AbsolutePositionBehavior {
     this.HAXWiring = new HAXWiring();
     this.HAXWiring.setup(SimplePopover.haxProperties, SimplePopover.tag, this);
   }
-
-  _showBefore(position) {
-    console.log(position, position === "top" || position === "left");
-    return position === "top" || position === "left";
-  }
   /**
    * life cycle, element is removed from the DOM
    */

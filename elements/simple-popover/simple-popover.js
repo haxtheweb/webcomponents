@@ -22,73 +22,85 @@ class SimplePopover extends AbsolutePositionBehavior {
     return html`
       <style>
         :host {
-          display: block;
+          display: flex;
+          align-items: center;
+          flex-direction: column-reverse;
+          --simple-popover-border-radius: 3px;
+          --simple-popover-color: #222;
+          --simple-popover-padding: 10px;
+          --simple-popover-background-color: white;
+          --simple-popover-border-color: #bbb;
+          --simple-popover-box-shadow: rgba(60, 64, 67, 0.3) 0px 4px 8px 3px;
         }
-
         :host([hidden]) {
           display: none;
         }
-        :host > * {
+        :host([position="left"]) {
+          flex-direction: row;
+        }
+        :host([position="right"]) {
+          flex-direction: row-reverse;
+        }
+        :host([position="top"]) {
+          flex-direction: column;
+        }
+        :host #content {
           margin: 0 auto;
-        }
-        :host #after {
-          display: none;
-        }
-        :host #before {
-          display: block;
-        }
-        :host([position="top"]) #after {
-          display: block;
-        }
-        :host([position="top"]) #before {
-          display: none;
-        }
-        :host([position="left"]) #before,
-        :host([position="left"]) #middle {
-          display: inline-block;
-        }
-        :host([position="right"]) #before,
-        :host([position="right"]) #middle {
-          display: inline-block;
-        }
-        :host #before,
-        :host #after {
-          width: 0;
-          height: 0;
-          border-style: solid;
-        }
-        :host #before {
-          border-width: 0 10px 15px 10px;
-          border-color: transparent transparent black;
-        }
-        :host([position="left"]) #after {
-          border-width: 10px 0 10px 15px;
-          border-color: transparent black transparent;
-        }
-
-        :host #after {
-          border-width: 15px 10px 0 10px;
-          border-color: black transparent transparent;
-        }
-
-        :host([position="right"]) #before {
-          border-width: 10px 0105px 10px 0px;
-          border-color: transparent black transparent;
-        }
-
-        :host #middle {
-          padding: 5px;
-          color: white;
-          background-color: black;
-          border-radius: 3px;
+          padding: var(--simple-popover-padding);
+          color: var(--simple-popover-color);
+          background-color: var(--simple-popover-background-color);
+          border: 1px solid var(--simple-popover-border-color);
           min-height: 20px;
+          border-radius: var(--simple-popover-border-radius);
+          box-shadow: var(--simple-popover-box-shadow);
+          @apply --simple-popover-content;
+        }
+        :host #pointer {
+          margin: 0 auto;
+          width: 20px;
+          height: 20px;
+          position: relative;
+          overflow: hidden;
+          flex: 0 0 20px;
+          margin: 0 0 -1px;
+        }
+        :host([position="top"]) #pointer {
+          margin: -0.5px 0 0;
+        }
+        :host([position="left"]) #pointer {
+          margin: 0 0 0 -1px;
+        }
+        :host([position="right"]) #pointer {
+          margin: 0 -1px 0 0;
+        }
+        :host #pointer:after {
+          content: "";
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          background-color: var(--simple-popover-background-color);
+          border: 1px solid var(--simple-popover-border-color);
+          transform: rotate(45deg);
+          top: 15px;
+          left: 5px;
+        }
+        :host([position="top"]) #pointer:after {
+          top: -6px;
+          left: 5px;
+        }
+        :host([position="right"]) #pointer:after {
+          top: 5px;
+          left: 15px;
+        }
+        :host([position="left"]) #pointer:after {
+          top: 5px;
+          left: -6px;
         }
       </style>
-      <div id="before"></div>
-      <div id="middle">
+      <div id="content" role="alertdialog">
         <slot></slot>
       </div>
-      <div id="after"></div>
+      <div id="pointer"></div>
     `;
   }
 
@@ -133,15 +145,13 @@ class SimplePopover extends AbsolutePositionBehavior {
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      title: {
-        name: "title",
-        type: "String",
-        value: null
-      },
-      showBefore: {
-        name: "showBefore",
-        type: "Boolean",
-        computed: "_showBefore(position)"
+      /**
+       * Offset to compensate for the popover pointers.
+       */
+      offset: {
+        type: Number,
+        value: -10,
+        readOnly: true
       }
     };
   }
@@ -160,11 +170,6 @@ class SimplePopover extends AbsolutePositionBehavior {
     super.connectedCallback();
     this.HAXWiring = new HAXWiring();
     this.HAXWiring.setup(SimplePopover.haxProperties, SimplePopover.tag, this);
-  }
-
-  _showBefore(position) {
-    console.log(position, position === "top" || position === "left");
-    return position === "top" || position === "left";
   }
   /**
    * life cycle, element is removed from the DOM

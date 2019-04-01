@@ -1,12 +1,10 @@
 {
-  "title": {
-    "name": "title",
-    "type": "String",
-    "value": null
-  },
-  "showBefore": {
-    "name": "showBefore",
-    "type": "Boolean",
-    "computed": "_showBefore(position)"
+  /**
+   * Offset to compensate for the popover pointers.
+   */
+  "offset": {
+    "type": Number,
+    "value": -10,
+    "readOnly": true
   }
 }
