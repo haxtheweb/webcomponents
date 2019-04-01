@@ -66,22 +66,17 @@ class SimpleBlogHeader extends PolymerElement {
           -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
           box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
         }
-        site-title {
-          --site-title-link: {
-            color: #333;
-          }
-          --site-title-heading: {
-            margin: 0;
-            padding: 84px 16px 8px;
-            font-size: 50px;
-            text-align: center;
-            font-weight: 700;
-            letter-spacing: -2px;
-            outline: 0;
-            line-height: 50px;
-            word-break: break-word;
-            color: #333;
-          }
+        .site-title {
+          margin: 0;
+          padding: 84px 16px 8px;
+          font-size: 50px;
+          text-align: center;
+          font-weight: 700;
+          letter-spacing: -2px;
+          outline: 0;
+          line-height: 50px;
+          word-break: break-word;
+          color: #333;
         }
         .blog-description {
           margin: 0 0 20px;
@@ -111,7 +106,7 @@ class SimpleBlogHeader extends PolymerElement {
       </div>
       <header class="blog-header">
         <iron-icon class="blog-logo" icon="[[icon]]"></iron-icon>
-        <site-title></site-title>
+        <h1 class="site-title">[[title]]</h1>
         <h2 class="blog-description">[[description]]</h2>
         <div class="custom-links">
           <site-rss-button type="atom"></site-rss-button>
@@ -131,6 +126,9 @@ class SimpleBlogHeader extends PolymerElement {
       },
       icon: {
         type: String
+      },
+      title: {
+        type: String
       }
     };
   }
@@ -140,6 +138,7 @@ class SimpleBlogHeader extends PolymerElement {
     autorun(reaction => {
       let manifest = toJS(store.manifest);
       this.description = manifest.description;
+      this.title = manifest.title;
       this.image = manifest.metadata.image;
       this.icon = manifest.metadata.icon;
       this.__disposer.push(reaction);
