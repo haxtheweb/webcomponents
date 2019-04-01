@@ -1074,9 +1074,9 @@ let HaxBody = Polymer({
     this._positionContextMenu(this.__activeContextType, container, -39, -39);
     this._positionContextMenu(this.$.platecontextmenu, container, -31, 0);
     // special case for node not matching container
-    if (!this._HTMLPrimativeTest(node) && node !== container) {
+    if (container && !this._HTMLPrimativeTest(node) && node !== container) {
       container.contentEditable = false;
-    } else if (this._HTMLPrimativeTest(container)) {
+    } else if (container && this._HTMLPrimativeTest(container)) {
       container.contentEditable = true;
     }
   },

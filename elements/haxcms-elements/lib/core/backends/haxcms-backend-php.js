@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/jwt-login/jwt-login.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 /**
@@ -14,76 +14,85 @@ import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
  * @microcopy - the mental model for this element
  * - jwt - a json web token which is an encrypted security token to talk
  */
-Polymer({
-  is: "haxcms-backend-php",
-  _template: html`
-    <style>
-      :host {
-        display: block;
-      }
-    </style>
-    <jwt-login
-      id="jwt"
-      url="[[jwtLoginLocation]]"
-      url-logout="[[jwtLogoutLocation]]"
-      jwt="{{jwt}}"
-    ></jwt-login>
-  `,
-  properties: {
-    /**
-     * Location of what endpoint to hit for
-     */
-    jwtLoginLocation: {
-      type: String,
-      value: function() {
-        if (window.appSettings) {
-          return window.appSettings.login;
+class HAXCMSBackendPHP extends PolymerElement {
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   * @notice function name must be here for tooling to operate correctly
+   */
+  static get tag() {
+    return "haxcms-backend-php";
+  }
+  // render function
+  static get template() {
+    return html`
+      <jwt-login
+        id="jwt"
+        url="[[jwtLoginLocation]]"
+        url-logout="[[jwtLogoutLocation]]"
+        jwt="{{jwt}}"
+      ></jwt-login>
+    `;
+  }
+  static get properties() {
+    return {
+      /**
+       * Location of what endpoint to hit for
+       */
+      jwtLoginLocation: {
+        type: String,
+        value: function() {
+          if (window.appSettings) {
+            return window.appSettings.login;
+          }
         }
-      }
-    },
-    /**
-     * Location of what endpoint to hit for logging out
-     */
-    jwtLogoutLocation: {
-      type: String,
-      value: function() {
-        if (window.appSettings) {
-          return window.appSettings.logout;
+      },
+      /**
+       * Location of what endpoint to hit for logging out
+       */
+      jwtLogoutLocation: {
+        type: String,
+        value: function() {
+          if (window.appSettings) {
+            return window.appSettings.logout;
+          }
         }
+      },
+      /**
+       * JSON Web token, it'll come from a global call if it's available
+       */
+      jwt: {
+        type: String
       }
-    },
-    /**
-     * JSON Web token, it'll come from a global call if it's available
-     */
-    jwt: {
-      type: String
-    }
-  },
+    };
+  }
   /**
    * created life cycle
    */
-  created: function() {
+  constructor() {
+    super();
     document.body.addEventListener("jwt-token", this._jwtTokenFired.bind(this));
-  },
+  }
   /**
    * detached life cycle
    */
-  detached: function() {
+  disconnectedCallback() {
     document.body.removeEventListener(
       "jwt-token",
       this._jwtTokenFired.bind(this)
     );
-  },
+    super.disconnectedCallback();
+  }
   /**
    * JWT token fired, let's capture it
    */
-  _jwtTokenFired: function(e) {
+  _jwtTokenFired(e) {
     this.jwt = e.detail;
-  },
+  }
   /**
    * Attached life cycle
    */
-  attached: function() {
+  connectedCallback() {
+    super.connectedCallback();
     if (this.jwt != null && typeof this.jwt == "string") {
       // attempt to dynamically import the hax cms site editor
       // which will appear to be injecting into the page
@@ -127,4 +136,6 @@ Polymer({
       }
     }
   }
-});
+}
+window.customElements.define(HAXCMSBackendPHP.tag, HAXCMSBackendPHP);
+export { HAXCMSBackendPHP };

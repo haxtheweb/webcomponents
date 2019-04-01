@@ -676,7 +676,13 @@ Polymer({
     );
     window.removeEventListener("paste", this._onPaste.bind(this));
     // fire that hax store is ready to go so now we can setup the rest
-    this.fire("hax-store-ready", false);
+    this.dispatchEvent(
+      new CustomEvent("hax-store-ready", {
+        bubbles: true,
+        cancelable: false,
+        detail: false
+      })
+    );
     window.HaxStore.ready = false;
   },
   /**
@@ -752,7 +758,13 @@ Polymer({
    */
   attached: function() {
     // fire that hax store is ready to go so now we can setup the rest
-    this.fire("hax-store-ready", true);
+    this.dispatchEvent(
+      new CustomEvent("hax-store-ready", {
+        bubbles: true,
+        cancelable: false,
+        detail: true
+      })
+    );
     window.HaxStore.ready = true;
     this.__ready = true;
     // register built in primitive definitions
@@ -1507,11 +1519,17 @@ Polymer({
         this.set(e.detail.property, {});
       }
       this.set(e.detail.property, e.detail.value);
-      this.fire("hax-store-property-updated", {
-        property: e.detail.property,
-        value: e.detail.value,
-        owner: e.detail.owner
-      });
+      this.dispatchEvent(
+        new CustomEvent("hax-store-property-updated", {
+          bubbles: true,
+          cancelable: false,
+          detail: {
+            property: e.detail.property,
+            value: e.detail.value,
+            owner: e.detail.owner
+          }
+        })
+      );
     }
   },
 
@@ -2113,7 +2131,13 @@ window.HaxStore.getHAXSlot = node => {
  * Shortcut to standardize the write / read process.
  */
 window.HaxStore.write = (prop, value, obj) => {
-  obj.fire("hax-store-write", { property: prop, value: value, owner: obj });
+  obj.dispatchEvent(
+    new CustomEvent("hax-store-write", {
+      bubbles: true,
+      cancelable: false,
+      detail: { property: prop, value: value, owner: obj }
+    })
+  );
 };
 /**
  * Guess the type of Gizmo when given some information about what we have.
@@ -2251,7 +2275,7 @@ window.HaxStore.wipeSlot = (element, slot = "") => {
  */
 window.HaxStore.encapScript = html => {
   // ensure this is a string to then do replacements on, rare but possible w/ null
-  if (typeof html.replace === "function") {
+  if (html && typeof html.replace === "function") {
     html = html.replace(/<script[\s\S]*?>/gi, "&lt;script&gt;");
     html = html.replace(/<\/script>/gi, "&lt;/script&gt;");
     // ensure that HAX tags aren't leaking in here
