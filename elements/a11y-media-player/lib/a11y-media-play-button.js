@@ -136,14 +136,16 @@ class A11yMediaPlayButton extends A11yMediaBehaviors {
         id="button"
         aria-pressed$="[[playing]]"
         aria-hidden$="[[disabled]]"
-        tabindex="0"
-        disabled$="[[disabled]]"
         controls="video"
+        disabled$="[[disabled]]"
+        label="[[playPause.label]]"
         on-tap="_buttonTap"
+        tabindex="0"
         title$="[[label]]"
       >
         <svg
           id="svg"
+          aria-hidden
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 200 200"
           width="30%"

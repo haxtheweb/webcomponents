@@ -1,57 +1,59 @@
-import { storiesOf } from "@storybook/polymer";
-import * as storybookBridge from "@storybook/addon-knobs/polymer";
 import { SimplePicker } from "./simple-picker.js";
+import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
-// need to account for polymer goofiness when webpack rolls this up
-var template = require("raw-loader!./demo/index.html");
-let pattern = /<body[^>]*>((.|[\n\r])*)<\/body>/im;
-var array_matches = pattern.exec(template);
-// now template is just the body contents
-template = array_matches[1];
-const stories = storiesOf("Picker", module);
-stories.addDecorator(storybookBridge.withKnobs);
-stories.add("simple-picker", () => {
-  var binding = {};
-  // start of tag for demo
-  let elementDemo = `<simple-picker`;
-  // mix in properties defined on the class
-  for (var key in SimplePicker.properties) {
-    // skip prototype
-    if (!SimplePicker.properties.hasOwnProperty(key)) continue;
-    // convert typed props
-    if (SimplePicker.properties[key].type.name) {
-      let method = "text";
-      switch (SimplePicker.properties[key].type.name) {
-        case "Boolean":
-        case "Number":
-        case "Object":
-        case "Array":
-        case "Date":
-          method = SimplePicker.properties[key].type.name.toLowerCase();
-          break;
-        default:
-          method = "text";
-          break;
-      }
-      binding[key] = storybookBridge[method](
-        key,
-        SimplePicker.properties[key].value
-      );
-      // ensure ke-bab case
-      let kebab = key.replace(/[A-Z\u00C0-\u00D6\u00D8-\u00DE]/g, function(
-        match
-      ) {
-        return "-" + match.toLowerCase();
-      });
-      elementDemo += ` ${kebab}="${binding[key]}"`;
+window.StorybookUtilities.requestAvailability();
+
+/**
+ * add to the pattern library 
+ */
+const SimplePickerPattern = {
+  "of": "Pattern Library/Atoms/Forms",
+  "name": "Picker",
+  "file": require("raw-loader!./demo/index.html"),
+  "replacements": []
+};
+window.StorybookUtilities.instance.addPattern(SimplePickerPattern);
+
+/**
+ * add the live demo
+ */
+const props = SimplePicker.properties;
+props.label.value = "Pick a Font-Family";
+props.options.type = "Object";
+props.options.value = [
+  [
+    {
+      "alt": "sans-serif",              
+      "style": "font-family: sans-serif",
+      "value": "sans-serif"
     }
-  }
-  const innerText = storybookBridge.text("Inner contents", "Picker");
-  elementDemo += `> ${innerText}</simple-picker>`;
-  return `
-  <h1>Live demo</h1>
-  ${elementDemo}
-  <h1>Additional examples</h1>
-  ${template}
-  `;
-});
+  ],[
+    {
+      "alt": "serif",
+      "style": "font-family: serif",
+      "value": "serif"
+    }
+  ],[
+    {
+      "alt": "monospace",
+      "selected": true,
+      "style": "font-family: monospace",
+      "value": "monospace"
+    }
+  ],[
+    {
+      "alt": "cursive",
+      "style": "font-family: cursive",
+      "value": "cursive"
+    }
+  ]
+];
+const SimplePickerStory = {
+  "of": "simple-picker",
+  "name": "simple-picker",
+  "props": props,
+  "slots": {}, 
+  "attr": ``, 
+  "slotted": ``
+}
+window.StorybookUtilities.instance.addLiveDemo(SimplePickerStory);

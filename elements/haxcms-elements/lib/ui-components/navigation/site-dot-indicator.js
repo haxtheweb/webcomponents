@@ -147,13 +147,11 @@ class SiteDotIndicator extends PolymerElement {
     });
     if (this.scrollOnActive) {
       this.$.list.addEventListener("click", () => {
-        this.parentElement
-          .querySelector("#" + this.activeId)
-          .scrollIntoView({
-            behavior: "smooth",
-            block: "end",
-            inline: "nearest"
-          });
+        this.parentElement.querySelector("#" + this.activeId).scrollIntoView({
+          behavior: "smooth",
+          block: "end",
+          inline: "nearest"
+        });
       });
     }
   }
@@ -163,13 +161,11 @@ class SiteDotIndicator extends PolymerElement {
     this.__disposer2();
     if (this.scrollOnActive) {
       this.$.list.removeEventListener("click", () => {
-        this.parentElement
-          .querySelector("#" + this.activeId)
-          .scrollIntoView({
-            behavior: "smooth",
-            block: "end",
-            inline: "nearest"
-          });
+        this.parentElement.querySelector("#" + this.activeId).scrollIntoView({
+          behavior: "smooth",
+          block: "end",
+          inline: "nearest"
+        });
       });
     }
   }
