@@ -492,14 +492,12 @@ class HAXCMSSiteEditor extends PolymerElement {
   loadSiteFields(e) {
     this.__siteFieldsInvoked = e.detail;
     // pass along the jwt for user "session" purposes
-    this.set("getFieldsData.jwt", this.jwt);
-    this.notifyPath("getFieldsData.jwt");
-    this.set("getFieldsData.token", this.getFieldsToken);
-    this.notifyPath("getFieldsData.token");
-    this.set("getFieldsData.siteName", this.manifest.metadata.siteName);
-    this.notifyPath("getFieldsData.siteName");
-    this.set("getFieldsData.nodeId", this.activeItem.id);
-    this.notifyPath("getFieldsData.nodeId");
+    this.set("getSiteFieldsData.jwt", this.jwt);
+    this.notifyPath("getSiteFieldsData.jwt");
+    this.set("getSiteFieldsData.token", this.getFieldsToken);
+    this.notifyPath("getSiteFieldsData.token");
+    this.set("getSiteFieldsData.siteName", this.manifest.metadata.siteName);
+    this.notifyPath("getSiteFieldsData.siteName");
     this.$.getsitefieldsajax.generateRequest();
   }
   /**
