@@ -106,6 +106,8 @@ class HAXCMSBackendDemo extends PolymerElement {
               window.appSettings.saveOutlinePath;
             haxCmsSiteEditorElement.getNodeFieldsPath =
               window.appSettings.getNodeFieldsPath;
+            haxCmsSiteEditorElement.getSiteFieldsPath =
+              window.appSettings.getSiteFieldsPath;
             haxCmsSiteEditorElement.createNodePath =
               window.appSettings.createNodePath;
             haxCmsSiteEditorElement.deleteNodePath =

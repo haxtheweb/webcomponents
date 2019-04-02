@@ -8,6 +8,7 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
 import { autorun, toJS } from "mobx";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/paper-fab/paper-fab.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-button/paper-button.js";
@@ -35,7 +36,7 @@ class HAXCMSSiteEditor extends PolymerElement {
   // render function
   static get template() {
     return html`
-      <style>
+      <style include="simple-colors">
         :host {
           display: block;
         }
@@ -114,6 +115,16 @@ class HAXCMSSiteEditor extends PolymerElement {
         content-type="application/json"
         handle-as="json"
         on-response="_handleGetFieldsResponse"
+      ></iron-ajax>
+      <iron-ajax
+        headers='{"Authorization": "Bearer [[jwt]]"}'
+        id="getsitefieldsajax"
+        url="[[getSiteFieldsPath]]"
+        method="[[method]]"
+        body="[[getSiteFieldsData]]"
+        content-type="application/json"
+        handle-as="json"
+        on-response="_handleGetSiteFieldsResponse"
       ></iron-ajax>
       <iron-ajax
         headers='{"Authorization": "Bearer [[jwt]]"}'
@@ -290,6 +301,13 @@ class HAXCMSSiteEditor extends PolymerElement {
         value: {}
       },
       /**
+       * data as part of the POST to the for field data
+       */
+      getSiteFieldsData: {
+        type: Object,
+        value: {}
+      },
+      /**
        * Active item of the node being worked on, JSON outline schema item format
        */
       activeItem: {
@@ -306,6 +324,9 @@ class HAXCMSSiteEditor extends PolymerElement {
         observer: "_manifestChanged"
       },
       getNodeFieldsPath: {
+        type: String
+      },
+      getSiteFieldsPath: {
         type: String
       },
       getFieldsToken: {
@@ -364,6 +385,10 @@ class HAXCMSSiteEditor extends PolymerElement {
       window.addEventListener(
         "haxcms-load-node-fields",
         this.loadNodeFields.bind(this)
+      );
+      window.addEventListener(
+        "haxcms-load-site-fields",
+        this.loadSiteFields.bind(this)
       );
       window.addEventListener("haxcms-create-node", this.createNode.bind(this));
       window.addEventListener("haxcms-delete-node", this.deleteNode.bind(this));
@@ -432,6 +457,10 @@ class HAXCMSSiteEditor extends PolymerElement {
       this.loadNodeFields.bind(this)
     );
     window.removeEventListener(
+      "haxcms-load-site-fields",
+      this.loadSiteFields.bind(this)
+    );
+    window.removeEventListener(
       "haxcms-create-node",
       this.createNode.bind(this)
     );
@@ -456,6 +485,20 @@ class HAXCMSSiteEditor extends PolymerElement {
     this.set("getFieldsData.nodeId", this.activeItem.id);
     this.notifyPath("getFieldsData.nodeId");
     this.$.getfieldsajax.generateRequest();
+  }
+  /**
+   * Load site fields
+   */
+  loadSiteFields(e) {
+    this.__siteFieldsInvoked = e.detail;
+    // pass along the jwt for user "session" purposes
+    this.set("getSiteFieldsData.jwt", this.jwt);
+    this.notifyPath("getSiteFieldsData.jwt");
+    this.set("getSiteFieldsData.token", this.getFieldsToken);
+    this.notifyPath("getSiteFieldsData.token");
+    this.set("getSiteFieldsData.siteName", this.manifest.metadata.siteName);
+    this.notifyPath("getSiteFieldsData.siteName");
+    this.$.getsitefieldsajax.generateRequest();
   }
   /**
    * Handle getting fields response
@@ -513,6 +556,90 @@ class HAXCMSSiteEditor extends PolymerElement {
     window.dispatchEvent(evt);
   }
   /**
+   * Handle getting fields response
+   */
+  _handleGetSiteFieldsResponse(e) {
+    // we get back HAXSchema from the server
+    let wiring = new HAXWiring();
+    this._haxSchema = wiring.prototypeHaxProperties();
+    this._haxSchema.settings = e.detail.response.haxSchema;
+    let values = e.detail.response.values;
+    let c = document.createElement("hax-schema-form");
+    // set a min width of 50 viewable
+    c.style.minWidth = "50vw";
+    for (var key in this._haxSchema.settings) {
+      let schema = wiring.getHaxJSONSchema(key, this._haxSchema);
+      for (var i in schema.properties) {
+        if (values[i]) {
+          schema.properties[i].value = values[i];
+        }
+      }
+      c.set(key + "Schema", schema);
+    }
+    this.__siteFieldsForm = c;
+    // build a save button
+    let b1 = document.createElement("paper-button");
+    b1.raised = true;
+    let icon = document.createElement("iron-icon");
+    icon.icon = "icons:save";
+    b1.appendChild(icon);
+    b1.appendChild(document.createTextNode("Save fields"));
+    b1.setAttribute("dialog-confirm", "dialog-confirm");
+    b1.addEventListener("click", this._saveSiteFieldsTap.bind(this));
+    // cancel
+    let b2 = document.createElement("paper-button");
+    b2.appendChild(document.createTextNode("cancel"));
+    b2.setAttribute("dialog-dismiss", "dialog-dismiss");
+    // publish button
+    let icon2 = document.createElement("iron-icon");
+    icon2.icon = "icons:cloud-upload";
+    let b3 = document.createElement("paper-button");
+    b3.raised = true;
+    b3.appendChild(icon2);
+    b3.appendChild(document.createTextNode("Publish"));
+    b3.setAttribute("dialog-confirm", "dialog-confirm");
+    b3.addEventListener("click", this._publishTap.bind(this));
+    b3.style.minWidth = "100px";
+    b3.style.backgroundColor = getComputedStyle(this).getPropertyValue(
+      "--haxcms-color"
+    );
+    let b = document.createElement("div");
+    b.style.position = "absolute";
+    b.style.bottom = 0;
+    b.style.left = 0;
+    b.style.right = 0;
+    b.style.zIndex = 1000000;
+    b.style.backgroundColor = "#ddd";
+    b.appendChild(b1);
+    b.appendChild(b2);
+    b.appendChild(b3);
+    const evt = new CustomEvent("simple-modal-show", {
+      bubbles: true,
+      composed: true,
+      cancelable: false,
+      detail: {
+        title: "Edit site fields",
+        elements: { content: c, buttons: b },
+        invokedBy: this.__siteFieldsInvoked,
+        clone: false
+      }
+    });
+    window.dispatchEvent(evt);
+  }
+  /**
+   * Publish request send to backend from button
+   */
+  _publishTap(e) {
+    this.dispatchEvent(
+      new CustomEvent("haxcms-publish-site", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: true
+      })
+    );
+  }
+  /**
    * Save the fields as we get tapped
    */
   _saveFieldsTap(e) {
@@ -521,6 +648,30 @@ class HAXCMSSiteEditor extends PolymerElement {
     // fire event with details for saving
     window.dispatchEvent(
       new CustomEvent("haxcms-save-node-details", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: values
+      })
+    );
+    // fire event to close the modal
+    window.dispatchEvent(
+      new CustomEvent("simple-modal-hide", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {}
+      })
+    );
+  }
+  /**
+   * Save the fields as we get tapped
+   */
+  _saveSiteFieldsTap(e) {
+    let values = this.__siteFieldsForm.value;
+    // fire event with details for saving
+    window.dispatchEvent(
+      new CustomEvent("haxcms-save-site-data", {
         bubbles: true,
         composed: true,
         cancelable: true,
@@ -871,9 +1022,19 @@ class HAXCMSSiteEditor extends PolymerElement {
    */
   saveManifest(e) {
     // now let's work on the outline
+    let values = e.detail;
+    // if we have a cssVariable selected then generate a hexCode off of it
+    if (values.cssVariable) {
+      values.hexCode =
+        window.SimpleColorsUtilities.colors[
+          values.cssVariable
+            .replace("--simple-colors-default-theme-", "")
+            .replace("-7", "")
+        ][6];
+    }
     this.set("updateManifestData.siteName", this.manifest.metadata.siteName);
     this.notifyPath("updateManifestData.siteName");
-    this.set("updateManifestData.manifest", e.detail);
+    this.set("updateManifestData.manifest", values);
     this.notifyPath("updateManifestData.manifest");
     this.set("updateManifestData.jwt", this.jwt);
     this.notifyPath("updateManifestData.jwt");

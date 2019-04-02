@@ -10,13 +10,13 @@ import {
   findTagsInHTML,
   wipeSlot
 } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
+import { autorun, toJS } from "mobx";
+import { store } from "./haxcms-site-store.js";
 import "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-progress/paper-progress.js";
-import { autorun, toJS } from "mobx";
-import { store } from "./haxcms-site-store.js";
 import "./haxcms-site-router.js";
 import "./haxcms-editor-builder.js";
 
@@ -430,16 +430,6 @@ class HAXCMSSiteBuilder extends PolymerElement {
             "@lrnwebcomponents/wikipedia-query/wikipedia-query.js"
         };
       }
-      // need to order by... order, then parent, then indent
-      newValue.items.sort((item1, item2) => {
-        if (item1.order < item2.order) {
-          return -1;
-        } else if (item1.order > item2.order) {
-          return 1;
-        } else {
-          return 0;
-        }
-      });
       store.manifest = newValue;
       this.dispatchEvent(
         new CustomEvent("json-outline-schema-changed", {
