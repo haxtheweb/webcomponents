@@ -1,0 +1,10 @@
+{
+  /**
+   * Offset to compensate for the popover pointers.
+   */
+  "offset": {
+    "type": Number,
+    "value": -10,
+    "readOnly": true
+  }
+}

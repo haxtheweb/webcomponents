@@ -42,11 +42,14 @@
   "dependencies": {
     "@lrnwebcomponents/es-global-bridge": "^2.0.5",
     "@lrnwebcomponents/hax-body-behaviors": "latest",
+    "@lrnwebcomponents/simple-picker": "latest",
+    "@lrnwebcomponents/a11y-collapse": "latest",
     "@polymer/iron-a11y-keys": "^3.0.0",
     "@polymer/iron-fit-behavior": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-tooltip": "^3.0.0",
+    "@polymer/paper-input": "^3.0.0",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {

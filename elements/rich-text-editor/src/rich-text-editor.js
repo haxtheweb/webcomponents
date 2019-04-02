@@ -9,6 +9,7 @@ import "./lib/rich-text-editor-button.js";
 import "./lib/rich-text-editor-more-button.js";
 import "./lib/rich-text-editor-heading-picker.js";
 import "./lib/rich-text-editor-symbol-picker.js";
+import "./lib/rich-text-editor-link.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/iron-icons/image-icons.js";
@@ -53,7 +54,7 @@ class RichTextEditor extends PolymerElement {
       })
     );
     document.designMode = "on";
-    document.addEventListener("selectionchange", function(e) {
+    document.addEventListener("selectionchange", e => {
       root.getUpdatedSelection();
     });
   }
@@ -64,7 +65,7 @@ class RichTextEditor extends PolymerElement {
   disconnectedCallback() {
     super.disconnectedCallback();
     let root = this;
-    document.removeEventListener("selectionchange", function(e) {
+    document.removeEventListener("selectionchange", e => {
       root.getUpdatedSelection();
     });
   }
@@ -115,7 +116,7 @@ class RichTextEditor extends PolymerElement {
         : root.editableElement.getSelection
         ? root.editableElement.getSelection()
         : root._getRange();
-    this.buttons.forEach(function(button) {
+    this.buttons.forEach(button => {
       button.selection = null;
       button.selection = root.selection;
     });
@@ -131,13 +132,13 @@ class RichTextEditor extends PolymerElement {
     for (let i = 0; i < this.editableElements.length; i++) {
       let item = this.editableElements[i];
       if (item[0] === editableElement) {
-        item[0].removeEventListener("click", function(e) {
+        item[0].removeEventListener("click", e => {
           root.editTarget(editableElement);
         });
-        editableElement.removeEventListener("blur", function(e) {
+        editableElement.removeEventListener("blur", e => {
           root.getUpdatedSelection();
         });
-        editableElement.removeEventListener("mouseout", function(e) {
+        editableElement.removeEventListener("mouseout", e => {
           root.getUpdatedSelection();
         });
         item[1].disconnect();
@@ -153,16 +154,16 @@ class RichTextEditor extends PolymerElement {
    */
   addEditableRegion(editableElement) {
     let root = this,
-      observer = new MutationObserver(function(e) {
+      observer = new MutationObserver(e => {
         root.getUpdatedSelection();
       });
-    editableElement.addEventListener("click", function(e) {
+    editableElement.addEventListener("click", e => {
       root.editTarget(editableElement);
     });
-    editableElement.addEventListener("blur", function(e) {
+    editableElement.addEventListener("blur", e => {
       root.getUpdatedSelection();
     });
-    editableElement.addEventListener("mouseout", function(e) {
+    editableElement.addEventListener("mouseout", e => {
       root.getUpdatedSelection();
     });
     observer.observe(editableElement, {
@@ -171,7 +172,6 @@ class RichTextEditor extends PolymerElement {
       subtree: true,
       characterData: false
     });
-    console.log(this.editableElements, editableElement);
     root.push("editableElements", [editableElement, observer]);
   }
 
@@ -188,15 +188,16 @@ class RichTextEditor extends PolymerElement {
       button[key] = child[key];
     }
     button.setAttribute("class", "button");
-    button.addEventListener("mousedown", function(e) {
+    /*button.addEventListener("mousedown", (e) => {
       e.preventDefault();
       root._preserveSelection(button);
     });
-    button.addEventListener("keydown", function(e) {
+    button.addEventListener("keydown", (e) => {
       e.preventDefault();
       root._preserveSelection(button);
-    });
-    button.addEventListener("deselect", function(e) {
+    });*/
+    button.addEventListener("deselect", e => {
+      console.log("deselect");
       root._getRange().collapse(false);
     });
     parent.appendChild(button);
@@ -223,14 +224,14 @@ class RichTextEditor extends PolymerElement {
       sizes = ["xs", "sm", "md", "lg", "xl"],
       temp = [];
     toolbar.innerHTML = "";
-    config.forEach(function(item) {
+    config.forEach(item => {
       if (item.type === "button-group") {
         let group = document.createElement("div");
         group.setAttribute("class", "group");
         if (item.collapsedUntil !== undefined && item.collapsedUntil !== null)
           group.setAttribute("collapsed-until", item.collapsedUntil);
         max = Math.max(max, sizes.indexOf(item.collapsedUntil));
-        item.buttons.forEach(function(button) {
+        item.buttons.forEach(button => {
           max = Math.max(max, sizes.indexOf(button.collapsedUntil));
           temp.push(root._addButton(button, group));
         });
@@ -267,7 +268,7 @@ class RichTextEditor extends PolymerElement {
   _preserveSelection() {
     let sel = window.getSelection(),
       temp = this.selection;
-    this.buttons.forEach(function(button) {
+    this.buttons.forEach(button => {
       button.selection = temp;
     });
     sel.removeAllRanges();

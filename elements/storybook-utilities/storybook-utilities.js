@@ -125,10 +125,10 @@ export class StorybookUtilities {
                   )
                 : method === "object"
                 ? storybookBridge.text(key, stringifiedVal || "{}")
-                : //storybookBridge.object(key, val || {}) :
+                : //storybookBridge.object(key, props[key].value || {}) :
                 method === "array"
                 ? storybookBridge.text(key, stringifiedVal || "[]")
-                : //storybookBridge.array(key, val || [], ',') :
+                : //storybookBridge.array(key, props[key].value || [], ',') :
                 method === "options"
                 ? storybookBridge.radios(
                     key,

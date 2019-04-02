@@ -86,11 +86,12 @@
             "command": "link",
             "icon": "link",
             "label": "Link",
+            "prompt": "href",
             "toggledCommand": "unlink",
             "toggledIcon": "mdextra:unlink",
             "toggledLabel": "Unink",
             "toggles": true,
-            "type": "rich-text-editor-button"
+            "type": "rich-text-editor-link"
           }
         ]
       },

@@ -1,57 +1,36 @@
 import { storiesOf } from "@storybook/polymer";
-import * as storybookBridge from "@storybook/addon-knobs/polymer";
+import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 import { LrndesignContactcard } from "./lrndesign-contactcard.js";
 
-// need to account for polymer goofiness when webpack rolls this up
-var template = require("raw-loader!./demo/index.html");
-let pattern = /<body[^>]*>((.|[\n\r])*)<\/body>/im;
-var array_matches = pattern.exec(template);
-// now template is just the body contents
-template = array_matches[1];
-const stories = storiesOf("Contactcard", module);
-stories.addDecorator(storybookBridge.withKnobs);
-stories.add("lrndesign-contactcard", () => {
-  var binding = {};
-  // start of tag for demo
-  let elementDemo = `<lrndesign-contactcard`;
-  // mix in properties defined on the class
-  for (var key in LrndesignContactcard.properties) {
-    // skip prototype
-    if (!LrndesignContactcard.properties.hasOwnProperty(key)) continue;
-    // convert typed props
-    if (LrndesignContactcard.properties[key].type.name) {
-      let method = "text";
-      switch (LrndesignContactcard.properties[key].type.name) {
-        case "Boolean":
-        case "Number":
-        case "Object":
-        case "Array":
-        case "Date":
-          method = LrndesignContactcard.properties[key].type.name.toLowerCase();
-          break;
-        default:
-          method = "text";
-          break;
+window.StorybookUtilities.requestAvailability();
+
+/**
+ * add to the pattern library 
+ */
+/*const Pattern = {
+  "of": "Pattern Library/Molecules/Layout",       //Patter library path
+  "name": "Collapse"                              //Pattern name
+  "file": require("raw-loader!./demo/index.html"),
+  "replacements": []
+};
+window.StorybookUtilities.instance.addPattern(Pattern);*/
+
+/**
+ * add the live demo
+ */
+/*const Story = {
+  "of": "a11y-collpase",                    //component folder
+  "name": "a11y-collpase",                  //component tag
+  "props": A11yCollapse.properties,         //component properties that will become knobs
+  "slots": {                                //slots that will become knobs
+    "heading":                              
+      {
+        "name": "heading",                  //slot name
+        "type": "String",                   //slot type
+        "value": `Click to expand me.`      //slot content
       }
-      binding[key] = storybookBridge[method](
-        key,
-        LrndesignContactcard.properties[key].value
-      );
-      // ensure ke-bab case
-      let kebab = key.replace(/[A-Z\u00C0-\u00D6\u00D8-\u00DE]/g, function(
-        match
-      ) {
-        return "-" + match.toLowerCase();
-      });
-      elementDemo += ` ${kebab}="${binding[key]}"`;
-    }
-  }
-  const innerText = storybookBridge.text("Inner contents", "Contactcard");
-  elementDemo += `> ${innerText}</lrndesign-contactcard>`;
-  return `
-  <h1>Live demo</h1>
-  ${elementDemo}
-  <h1>Additional examples</h1>
-  ${template}
-  `;
-});
+  }, 
+  "attr": ``,                               //attributes that won't become knobs
+  "slotted": ``                             //slots that won't become knobs
+}
+window.StorybookUtilities.instance.addLiveDemo(Story);*/
