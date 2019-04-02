@@ -530,21 +530,12 @@ class HAXCMSSiteEditorUI extends PolymerElement {
    * toggle state on button tap
    */
   _manifestButtonTap(e) {
-    if (!this.__manifestEditor) {
-      this.__manifestEditor = document.createElement(
-        "haxcms-manifest-editor-dialog"
-      );
-    }
-    const evt = new CustomEvent("simple-modal-show", {
+    var normalizedEvent = dom(e);
+    const evt = new CustomEvent("haxcms-load-site-fields", {
       bubbles: true,
       composed: true,
       cancelable: false,
-      detail: {
-        title: store.routerManifest.title + ": site details",
-        elements: { content: this.__manifestEditor },
-        invokedBy: this.$.manifestbutton,
-        clone: false
-      }
+      detail: normalizedEvent.localTarget
     });
     window.dispatchEvent(evt);
   }

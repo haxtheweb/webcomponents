@@ -117,6 +117,16 @@ class HAXCMSSiteEditor extends PolymerElement {
       ></iron-ajax>
       <iron-ajax
         headers='{"Authorization": "Bearer [[jwt]]"}'
+        id="getsitefieldsajax"
+        url="[[getSiteFieldsPath]]"
+        method="[[method]]"
+        body="[[getSiteFieldsData]]"
+        content-type="application/json"
+        handle-as="json"
+        on-response="_handleGetSiteFieldsResponse"
+      ></iron-ajax>
+      <iron-ajax
+        headers='{"Authorization": "Bearer [[jwt]]"}'
         id="manifestupdateajax"
         url="[[saveManifestPath]]"
         method="[[method]]"
@@ -290,6 +300,13 @@ class HAXCMSSiteEditor extends PolymerElement {
         value: {}
       },
       /**
+       * data as part of the POST to the for field data
+       */
+      getSiteFieldsData: {
+        type: Object,
+        value: {}
+      },
+      /**
        * Active item of the node being worked on, JSON outline schema item format
        */
       activeItem: {
@@ -306,6 +323,9 @@ class HAXCMSSiteEditor extends PolymerElement {
         observer: "_manifestChanged"
       },
       getNodeFieldsPath: {
+        type: String
+      },
+      getSiteFieldsPath: {
         type: String
       },
       getFieldsToken: {
@@ -364,6 +384,10 @@ class HAXCMSSiteEditor extends PolymerElement {
       window.addEventListener(
         "haxcms-load-node-fields",
         this.loadNodeFields.bind(this)
+      );
+      window.addEventListener(
+        "haxcms-load-site-fields",
+        this.loadSiteFields.bind(this)
       );
       window.addEventListener("haxcms-create-node", this.createNode.bind(this));
       window.addEventListener("haxcms-delete-node", this.deleteNode.bind(this));
@@ -432,6 +456,10 @@ class HAXCMSSiteEditor extends PolymerElement {
       this.loadNodeFields.bind(this)
     );
     window.removeEventListener(
+      "haxcms-load-site-fields",
+      this.loadSiteFields.bind(this)
+    );
+    window.removeEventListener(
       "haxcms-create-node",
       this.createNode.bind(this)
     );
@@ -456,6 +484,22 @@ class HAXCMSSiteEditor extends PolymerElement {
     this.set("getFieldsData.nodeId", this.activeItem.id);
     this.notifyPath("getFieldsData.nodeId");
     this.$.getfieldsajax.generateRequest();
+  }
+  /**
+   * Load site fields
+   */
+  loadSiteFields(e) {
+    this.__siteFieldsInvoked = e.detail;
+    // pass along the jwt for user "session" purposes
+    this.set("getFieldsData.jwt", this.jwt);
+    this.notifyPath("getFieldsData.jwt");
+    this.set("getFieldsData.token", this.getFieldsToken);
+    this.notifyPath("getFieldsData.token");
+    this.set("getFieldsData.siteName", this.manifest.metadata.siteName);
+    this.notifyPath("getFieldsData.siteName");
+    this.set("getFieldsData.nodeId", this.activeItem.id);
+    this.notifyPath("getFieldsData.nodeId");
+    this.$.getsitefieldsajax.generateRequest();
   }
   /**
    * Handle getting fields response
@@ -513,6 +557,61 @@ class HAXCMSSiteEditor extends PolymerElement {
     window.dispatchEvent(evt);
   }
   /**
+   * Handle getting fields response
+   */
+  _handleGetSiteFieldsResponse(e) {
+    // we get back HAXSchema from the server
+    let wiring = new HAXWiring();
+    this._haxSchema = wiring.prototypeHaxProperties();
+    this._haxSchema.settings = e.detail.response.haxSchema;
+    let values = e.detail.response.values;
+    let c = document.createElement("hax-schema-form");
+    // set a min width of 50 viewable
+    c.style.minWidth = "50vw";
+    for (var key in this._haxSchema.settings) {
+      let schema = wiring.getHaxJSONSchema(key, this._haxSchema);
+      for (var i in schema.properties) {
+        if (values[i]) {
+          schema.properties[i].value = values[i];
+        }
+      }
+      c.set(key + "Schema", schema);
+    }
+    this.__siteFieldsForm = c;
+    let b1 = document.createElement("paper-button");
+    b1.raised = true;
+    let icon = document.createElement("iron-icon");
+    icon.icon = "icons:save";
+    b1.appendChild(icon);
+    b1.appendChild(document.createTextNode("Save fields"));
+    b1.setAttribute("dialog-confirm", "dialog-confirm");
+    b1.addEventListener("click", this._saveSiteFieldsTap.bind(this));
+    let b2 = document.createElement("paper-button");
+    b2.appendChild(document.createTextNode("cancel"));
+    b2.setAttribute("dialog-dismiss", "dialog-dismiss");
+    let b = document.createElement("div");
+    b.style.position = "absolute";
+    b.style.bottom = 0;
+    b.style.left = 0;
+    b.style.right = 0;
+    b.style.zIndex = 1000000;
+    b.style.backgroundColor = "#ddd";
+    b.appendChild(b1);
+    b.appendChild(b2);
+    const evt = new CustomEvent("simple-modal-show", {
+      bubbles: true,
+      composed: true,
+      cancelable: false,
+      detail: {
+        title: "Edit site fields",
+        elements: { content: c, buttons: b },
+        invokedBy: this.__siteFieldsInvoked,
+        clone: false
+      }
+    });
+    window.dispatchEvent(evt);
+  }
+  /**
    * Save the fields as we get tapped
    */
   _saveFieldsTap(e) {
@@ -521,6 +620,30 @@ class HAXCMSSiteEditor extends PolymerElement {
     // fire event with details for saving
     window.dispatchEvent(
       new CustomEvent("haxcms-save-node-details", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: values
+      })
+    );
+    // fire event to close the modal
+    window.dispatchEvent(
+      new CustomEvent("simple-modal-hide", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {}
+      })
+    );
+  }
+  /**
+   * Save the fields as we get tapped
+   */
+  _saveSiteFieldsTap(e) {
+    let values = this.__siteFieldsForm.value;
+    // fire event with details for saving
+    window.dispatchEvent(
+      new CustomEvent("haxcms-save-site-data", {
         bubbles: true,
         composed: true,
         cancelable: true,
