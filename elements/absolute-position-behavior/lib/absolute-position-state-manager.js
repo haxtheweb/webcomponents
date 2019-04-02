@@ -4,8 +4,6 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
-import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 
 // register globally so we can make sure there is only one
 window.AbsolutePositionStateManager = window.AbsolutePositionStateManager || {};
@@ -130,13 +128,14 @@ class AbsolutePositionStateManager extends PolymerElement {
    * @type {Node}
    */
   findTarget(el) {
-    var parentNode = el.parentNode;
-    // If the parentNode is a document fragment, then we need to use the host.
-    var ownerRoot = el.shadowRoot;
-    var target;
-    if (el.for) {
+    let target;
+    let parentNode = this.parentNode;
+    if (el.target) {
+      target = el.target;
+    } else if (el.for) {
       target = parentNode.querySelector("#" + el.for);
     } else {
+      let ownerRoot = el.shadowRoot;
       target =
         parentNode.nodeType == Node.DOCUMENT_FRAGMENT_NODE
           ? ownerRoot.host
@@ -173,7 +172,7 @@ class AbsolutePositionStateManager extends PolymerElement {
    */
   updatePosition(element) {
     let target = this.findTarget(element);
-    if (!target || !this.offsetParent) return;
+    if (!target || !element.offsetParent) return;
     var offset = element.offset;
     var parentRect = element.offsetParent.getBoundingClientRect();
     var targetRect = target.getBoundingClientRect();
