@@ -8,6 +8,7 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
 import { autorun, toJS } from "mobx";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/paper-fab/paper-fab.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-button/paper-button.js";
@@ -35,7 +36,7 @@ class HAXCMSSiteEditor extends PolymerElement {
   // render function
   static get template() {
     return html`
-      <style>
+      <style include="simple-colors">
         :host {
           display: block;
         }
@@ -578,6 +579,7 @@ class HAXCMSSiteEditor extends PolymerElement {
       c.set(key + "Schema", schema);
     }
     this.__siteFieldsForm = c;
+    // build a save button
     let b1 = document.createElement("paper-button");
     b1.raised = true;
     let icon = document.createElement("iron-icon");
@@ -586,9 +588,23 @@ class HAXCMSSiteEditor extends PolymerElement {
     b1.appendChild(document.createTextNode("Save fields"));
     b1.setAttribute("dialog-confirm", "dialog-confirm");
     b1.addEventListener("click", this._saveSiteFieldsTap.bind(this));
+    // cancel
     let b2 = document.createElement("paper-button");
     b2.appendChild(document.createTextNode("cancel"));
     b2.setAttribute("dialog-dismiss", "dialog-dismiss");
+    // publish button
+    let icon2 = document.createElement("iron-icon");
+    icon2.icon = "icons:cloud-upload";
+    let b3 = document.createElement("paper-button");
+    b3.raised = true;
+    b3.appendChild(icon2);
+    b3.appendChild(document.createTextNode("Publish"));
+    b3.setAttribute("dialog-confirm", "dialog-confirm");
+    b3.addEventListener("click", this._publishTap.bind(this));
+    b3.style.minWidth = "100px";
+    b3.style.backgroundColor = getComputedStyle(this).getPropertyValue(
+      "--haxcms-color"
+    );
     let b = document.createElement("div");
     b.style.position = "absolute";
     b.style.bottom = 0;
@@ -598,6 +614,7 @@ class HAXCMSSiteEditor extends PolymerElement {
     b.style.backgroundColor = "#ddd";
     b.appendChild(b1);
     b.appendChild(b2);
+    b.appendChild(b3);
     const evt = new CustomEvent("simple-modal-show", {
       bubbles: true,
       composed: true,
@@ -610,6 +627,19 @@ class HAXCMSSiteEditor extends PolymerElement {
       }
     });
     window.dispatchEvent(evt);
+  }
+  /**
+   * Publish request send to backend from button
+   */
+  _publishTap(e) {
+    this.dispatchEvent(
+      new CustomEvent("haxcms-publish-site", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: true
+      })
+    );
   }
   /**
    * Save the fields as we get tapped
@@ -994,9 +1024,19 @@ class HAXCMSSiteEditor extends PolymerElement {
    */
   saveManifest(e) {
     // now let's work on the outline
+    let values = e.detail;
+    // if we have a cssVariable selected then generate a hexCode off of it
+    if (values.cssVariable) {
+      values.hexCode =
+        window.SimpleColorsUtilities.colors[
+          values.cssVariable
+            .replace("--simple-colors-default-theme-", "")
+            .replace("-7", "")
+        ][6];
+    }
     this.set("updateManifestData.siteName", this.manifest.metadata.siteName);
     this.notifyPath("updateManifestData.siteName");
-    this.set("updateManifestData.manifest", e.detail);
+    this.set("updateManifestData.manifest", values);
     this.notifyPath("updateManifestData.manifest");
     this.set("updateManifestData.jwt", this.jwt);
     this.notifyPath("updateManifestData.jwt");

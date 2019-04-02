@@ -306,12 +306,16 @@ Polymer({
       "flipboolean",
       "boolean",
       "select",
-      "confirm",
       "textfield",
       "textarea",
       "datepicker",
+      "haxupload",
       "colorpicker",
-      "number"
+      "iconpicker",
+      "alt",
+      "number",
+      "code-editor",
+      "array"
     ];
     return methods;
   },
