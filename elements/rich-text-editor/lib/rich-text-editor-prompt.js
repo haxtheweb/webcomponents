@@ -38,6 +38,29 @@ class RichTextEditorPrompt extends RichTextEditorButton {
         name: "target",
         type: Object,
         value: null
+      },
+      /**
+       * Eco-json-schema of the prompt.
+       */
+      schema: {
+        type: Object,
+        value: {
+          $schema: "http://json-schema.org/schema#",
+          title: "Link",
+          type: "Object",
+          properties: {
+            href: {
+              title: "Href",
+              type: "Input",
+              value: null
+            },
+            target: {
+              title: "Target",
+              type: "Input",
+              value: null
+            }
+          }
+        }
       }
     };
   }

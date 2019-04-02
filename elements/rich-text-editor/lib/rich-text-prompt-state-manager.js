@@ -5,6 +5,8 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
 import "@lrnwebcomponents/simple-popover/simple-popover.js";
+import "@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";
+import "@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js";
 
 // register globally so we can make sure there is only one
 window.RichTextPromptStateManager = window.RichTextPromptStateManager || {};
@@ -35,6 +37,11 @@ class RichTextPromptStateManager extends PolymerElement {
   static get template() {
     return html`
       <simple-popover id="prompt" hidden$="[[!target]]" for$="[[for]]" auto>
+        <eco-json-schema-object
+          id="schemaObj"
+          schema="[[schema]]"
+          value="{{value}}"
+        ></eco-json-schema-object>
         I'm a popover!
       </simple-popover>
     `;
@@ -71,6 +78,29 @@ class RichTextPromptStateManager extends PolymerElement {
       target: {
         type: Object,
         value: null
+      },
+      /**
+       * Eco-json-schema of the prompt.
+       */
+      schema: {
+        type: Object,
+        value: {
+          $schema: "http://json-schema.org/schema#",
+          title: "Link",
+          type: "object",
+          properties: {
+            href: {
+              title: "Href",
+              type: "String",
+              value: null
+            },
+            target: {
+              title: "Href",
+              type: "String",
+              value: null
+            }
+          }
+        }
       }
     };
   }

@@ -38,23 +38,6 @@ class RichTextEditorLink extends RichTextEditorButton {
   ready() {
     super.ready();
     let root = this;
-    root.addEventListener("mousedown", function(e) {
-      e.preventDefault();
-    });
-    root.addEventListener("keydown", function(e) {
-      e.preventDefault();
-    });
-  }
-
-  /**
-   * Handles button tap;
-   */
-  _buttonTap(e) {
-    e.preventDefault();
-    let button = document.createElement("button");
-    button.appendNode(this.selection.extractContents());
-    this.selection.insertNode(button);
-    console.log("tap");
   }
 }
 window.customElements.define(RichTextEditorLink.tag, RichTextEditorLink);
