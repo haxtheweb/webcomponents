@@ -564,6 +564,15 @@ class HAXCMSSiteEditor extends PolymerElement {
     this._haxSchema = wiring.prototypeHaxProperties();
     this._haxSchema.settings = e.detail.response.haxSchema;
     let values = e.detail.response.values;
+    let h = "";
+    if (this.manifest.metadata.publishedLocation) {
+      h = document.createElement("a");
+      h.setAttribute("tabindex", "-1");
+      h.setAttribute("href", this.manifest.metadata.publishedLocation);
+      h.setAttribute("target", "_blank");
+      h.innerHTML =
+        '<paper-button raised style="text-transform:none;">Access published version</paper-button>';
+    }
     let c = document.createElement("hax-schema-form");
     // set a min width of 50 viewable
     c.style.minWidth = "50vw";
@@ -619,7 +628,7 @@ class HAXCMSSiteEditor extends PolymerElement {
       cancelable: false,
       detail: {
         title: "Edit site fields",
-        elements: { content: c, buttons: b },
+        elements: { header: h, content: c, buttons: b },
         invokedBy: this.__siteFieldsInvoked,
         clone: false
       }
