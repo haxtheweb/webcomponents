@@ -232,6 +232,14 @@ class HAXCMSSiteBuilder extends PolymerElement {
         this.activeItem = toJS(store.activeItem);
         this.__disposer.push(reaction);
       });
+      this.dispatchEvent(
+        new CustomEvent("haxcms-ready", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: this
+        })
+      );
     });
   }
   /**
