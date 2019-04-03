@@ -37,6 +37,7 @@ class SiteRSSButton extends PolymerElement {
           background-color: var(--site-rss-bg-color, #383f45);
           font-size: var(--site-rss-font-size, 13px);
           margin: 0;
+          border-radius: var(--site-rss-border-radius, 3px);
         }
         paper-button:hover,
         paper-button:focus,
