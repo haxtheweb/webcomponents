@@ -51,7 +51,7 @@ class SiteRSSButton extends PolymerElement {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <paper-button raised>
+        <paper-button raised="[[raised]]">
           <iron-icon icon="[[icon]]"></iron-icon> [[label]]
         </paper-button>
       </a>
@@ -66,6 +66,11 @@ class SiteRSSButton extends PolymerElement {
         type: String,
         value: "rss",
         observer: "_generateLink"
+      },
+      raised: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true,
       }
     };
   }
