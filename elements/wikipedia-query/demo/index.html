@@ -1,52 +1,29 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+<html>
 
-    <title>wikipedia-query demo</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+  <title>WikipediaQuery: wikipedia-query Demo</title>
+  <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+  <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+  <script type="module">
+    import '@polymer/iron-demo-helpers/demo-snippet.js';
+    import '../wikipedia-query.js';
+  </script>
+  <style is="custom-style" include="demo-pages-shared-styles">
+  </style>
+</head>
 
-    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+<body>
+  <div class="vertical-section-container centered">
+    <h1>wikipedia-query Demo</h1>
+    <demo-snippet>
+      <template>
+       <wikipedia-query search="Polymer"></wikipedia-query>
+      </template>
+    </demo-snippet>
+  </div>
+</body>
 
-    <script type="module">
-      import "@polymer/iron-demo-helpers/demo-pages-shared-styles.js";
-      import "@polymer/iron-demo-helpers/demo-snippet.js";
-      import "../wikipedia-query.js";
-    </script>
-
-    <!-- FIXME(polymer-modulizer):
-        These imperative modules that innerHTML your HTML are
-        a hacky way to be sure that any mixins in included style
-        modules are ready before any elements that reference them are
-        instantiated, otherwise the CSS @apply mixin polyfill won't be
-        able to expand the underlying CSS custom properties.
-        See: https://github.com/Polymer/polymer-modulizer/issues/154
-        -->
-    <script type="module">
-var $_documentContainer = document.createElement('div');
-$_documentContainer.setAttribute('style', 'display: none;');
-
-$_documentContainer.innerHTML = `<style is="custom-style" include="demo-pages-shared-styles">
-    </style>`;
-
-document.head.appendChild($_documentContainer);
-</script>
-  </head>
-  <body>
-    <script type="module">
-var $_documentContainer = document.createElement('div');
-
-$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
-      <h3>Basic wikipedia-query demo</h3>
-      <demo-snippet>
-        <template>
-          <wikipedia-query search="Polymer"></wikipedia-query>
-        </template>
-      </demo-snippet>
-    </div>`;
-
-document.body.appendChild($_documentContainer);
-</script>
-  </body>
 </html>
