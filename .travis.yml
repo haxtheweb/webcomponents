@@ -17,3 +17,4 @@ install:
   - lerna exec -- yarn link
 script:
     - npm test -- --verbose
+cache: yarn
