@@ -42,7 +42,7 @@
   "dependencies": {
     "@lrnwebcomponents/es-global-bridge": "^2.0.5",
     "@lrnwebcomponents/hax-body-behaviors": "latest",
-    "@lrnwebcomponents/simple-popover": "latest",
+    "@lrnwebcomponents/simple-popover": "^2.0.8",
     "@lrnwebcomponents/simple-picker": "latest",
     "@lrnwebcomponents/a11y-collapse": "latest",
     "@polymer/iron-a11y-keys": "^3.0.0",

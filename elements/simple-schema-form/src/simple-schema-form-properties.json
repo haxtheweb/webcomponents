@@ -1,0 +1,32 @@
+{
+  /**
+   * Returned value from the form input.
+   */
+  "initialValue": {
+    "type": Object,
+    "notify": true,
+    "value": {},
+    "observer": "_valueChanged"
+  },
+
+  "value": {
+    "type": Object,
+    "notify": true,
+    "value": {}
+  },
+  /**
+   * Fields to conver toJSON Schema.
+   */
+  "fields": {
+    "type": Array,
+    "value": [],
+    "observer": "_fieldsChanged"
+  },
+  /**
+   * Fields to conver toJSON Schema.
+   */
+  "__validatedSchema": {
+    "type": Array,
+    "value": { "properties": {} }
+  }
+}
