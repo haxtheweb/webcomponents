@@ -16,7 +16,7 @@
       "hax": "src/img-pan-zoom-hax.json"
     }
   },
-  "version": "2.0.8",
+  "version": "2.0.9",
   "description": "Start of img-pan-zoom",
   "repository": {
     "type": "git",
@@ -40,13 +40,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/es-global-bridge": "^2.0.5",
+    "@lrnwebcomponents/es-global-bridge": "^2.0.9",
     "@polymer/paper-spinner": "^3.0.0",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.0.8",
-    "@lrnwebcomponents/storybook-utilities": "^2.0.8",
+    "@lrnwebcomponents/deduping-fix": "^2.0.9",
+    "@lrnwebcomponents/storybook-utilities": "^2.0.9",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@webcomponents/webcomponentsjs": "2.2.4",

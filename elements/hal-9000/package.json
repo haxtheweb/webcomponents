@@ -16,7 +16,7 @@
       "hax": "src/hal-9000-hax.json"
     }
   },
-  "version": "2.0.8",
+  "version": "2.0.9",
   "description": "Robot assistant tag, hopefully not evil",
   "repository": {
     "type": "git",
@@ -43,8 +43,8 @@
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.0.8",
-    "@lrnwebcomponents/storybook-utilities": "^2.0.8",
+    "@lrnwebcomponents/deduping-fix": "^2.0.9",
+    "@lrnwebcomponents/storybook-utilities": "^2.0.9",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@webcomponents/webcomponentsjs": "2.2.4",
