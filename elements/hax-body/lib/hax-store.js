@@ -475,38 +475,29 @@ Polymer({
       typeof appDataResponse !== typeof undefined &&
       appDataResponse != null
     ) {
+      var items = {};
       // autoload elements
       if (typeof appDataResponse.autoloader !== typeof undefined) {
-        for (var i = 0; i < appDataResponse.autoloader.length; i++) {
+        // ensure the list is in the right order so we can async dynamic imports
+        // regardless of if its an array or object of values in the right format
+        // force this to be an object
+        appDataResponse.autoloader = Object.assign(
+          {},
+          appDataResponse.autoloader
+        );
+        for (var i in appDataResponse.autoloader) {
+          let CEname = i;
+          let CEimport = appDataResponse.autoloader[i];
+          // helps support array or object based appstore
+          // array was originally in the standard so this lets us support both
+          if (!isNaN(CEname)) {
+            CEname = appDataResponse.autoloader[i];
+            CEimport = `@lrnwebcomponents/${CEname}/${CEname}.js`;
+          }
           // force this into the valid tag list so early paints will
           // correctly include the tag without filtering it out incorrectly
-          this.push("validTagList", appDataResponse.autoloader[i]);
-          let CEname = appDataResponse.autoloader[i];
-          const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
-          import(`${basePath}../../${CEname}/${CEname}.js`)
-            .then(response => {
-              // get the custom element definition we used to add that file
-              let CEClass = window.customElements.get(CEname);
-              if (typeof CEClass.getHaxProperties === "function") {
-                this.setHaxProperties(CEClass.getHaxProperties(), CEname);
-              } else if (typeof CEClass.HAXWiring === "function") {
-                this.setHaxProperties(
-                  CEClass.HAXWiring.getHaxProperties(),
-                  CEname
-                );
-              } else if (CEClass.haxProperties) {
-                this.setHaxProperties(CEClass.haxProperties, CEname);
-              } else {
-                // this is the less optimized / legacy polymer element method to inlcude
-                // this item. It's a good reason to skip on this though because you'll
-                // have a faster boot up time with newer ES6 methods then previous ones.
-                dom(haxAutoloader).appendChild(document.createElement(CEname));
-              }
-            })
-            .catch(error => {
-              /* Error handling */
-              console.log(error);
-            });
+          this.push("validTagList", CEname);
+          items[CEname] = CEimport;
         }
       }
       // load apps automatically
@@ -548,6 +539,43 @@ Polymer({
         detail: true
       });
       this.dispatchEvent(evt);
+      // now process the dynamic imports
+      this._handleDynamicImports(items, haxAutoloader);
+    }
+  },
+  /**
+   * Handle all the dynamic imports of things told to autoload
+   * This ensures we get the definitions very quickly as far as
+   * what is a safe / valid tag above but then we import in a way
+   * that allows us to correctly associate the hax schema to where
+   * it came from.
+   */
+  _handleDynamicImports: async function(items, haxAutoloader) {
+    const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+    for (var i in items) {
+      await import(`${basePath}../../../${items[i]}`)
+        .then(response => {
+          for (var cVal in response) {
+            // get the custom element definition we used to add that file
+            let CEClass = response[cVal];
+            if (typeof CEClass.getHaxProperties === "function") {
+              this.setHaxProperties(CEClass.getHaxProperties(), i);
+            } else if (typeof CEClass.HAXWiring === "function") {
+              this.setHaxProperties(CEClass.HAXWiring.getHaxProperties(), i);
+            } else if (CEClass.haxProperties) {
+              this.setHaxProperties(CEClass.haxProperties, i);
+            } else {
+              // this is the less optimized / legacy polymer element method to inlcude
+              // this item. It's a good reason to skip on this though because you'll
+              // have a faster boot up time with newer ES6 methods then previous ones.
+              dom(haxAutoloader).appendChild(document.createElement(i));
+            }
+          }
+        })
+        .catch(error => {
+          /* Error handling */
+          console.log(error);
+        });
     }
   },
   _editModeChanged: function(newValue) {
