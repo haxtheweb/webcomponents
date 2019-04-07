@@ -6,7 +6,37 @@ class Store {
     this.editMode = false;
     this.manifest = null;
     this.activeId = null;
+    this.cmsSiteEditor = {
+      instance: null
+    };
   }
+  cmsSiteEditorAvailability(element = this, location = document.body) {
+    if (!store.cmsSiteEditor.instance) {
+      store.cmsSiteEditor.instance = document.createElement(
+        store.cmsSiteEditor.tag
+      );
+      store.cmsSiteEditor.instance.appElement = element;
+      store.cmsSiteEditor.instance.appendTarget = location;
+      // self append the reference to.. well.. us.
+      document.body.appendChild(store.cmsSiteEditor.instance);
+    } else {
+      if (element) {
+        // already exists, just alter some references
+        store.cmsSiteEditor.instance.appElement = element;
+        store.cmsSiteEditor.instance.appendTarget = location;
+        if (
+          typeof store.cmsSiteEditor.instance.haxCmsSiteEditorElement !==
+          typeof undefined
+        ) {
+          store.cmsSiteEditor.instance.appendTarget.appendChild(
+            store.cmsSiteEditor.instance.haxCmsSiteEditorElement
+          );
+        }
+      }
+    }
+    return store.cmsSiteEditor.instance;
+  }
+
   get processedItems() {}
   /**
    * Compute items leveraging the site query engine

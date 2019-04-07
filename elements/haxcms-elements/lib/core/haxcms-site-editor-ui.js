@@ -8,7 +8,6 @@ import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-fab/paper-fab.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "./haxcms-outline-editor-dialog.js";
-import "./haxcms-manifest-editor-dialog.js";
 
 /**
  * `haxcms-site-editor-ui`
@@ -326,7 +325,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
    */
   _editButtonTap(e) {
     this.editMode = !this.editMode;
-    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.editMode = this.editMode;
+    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.editMode = this.editMode;
     // save button shifted to edit
     if (!this.editMode) {
       this.dispatchEvent(
@@ -357,7 +356,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
   }
   _cancelButtonTap(e) {
     this.editMode = false;
-    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.editMode = false;
+    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.editMode = false;
     this.dispatchEvent(
       new CustomEvent("hax-cancel", {
         bubbles: true,

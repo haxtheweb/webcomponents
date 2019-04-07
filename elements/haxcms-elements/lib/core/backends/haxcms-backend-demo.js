@@ -4,6 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import "@lrnwebcomponents/jwt-login/jwt-login.js";
 /**
  * `haxcms-backend-demo`
@@ -85,48 +86,43 @@ class HAXCMSBackendDemo extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    if (true) {
-      // attempt to dynamically import the hax cms site editor
-      // which will appear to be injecting into the node
-      // but because of this approach it should be non-blocking
-      try {
-        import(pathFromUrl(decodeURIComponent(import.meta.url)) +
-          "../haxcms-site-editor.js").then(
-          e => {
-            let haxCmsSiteEditorElement = document.createElement(
-              "haxcms-site-editor"
-            );
-            haxCmsSiteEditorElement.jwt = this.jwt;
-            haxCmsSiteEditorElement.method = "GET";
-            haxCmsSiteEditorElement.saveNodePath =
-              window.appSettings.saveNodePath;
-            haxCmsSiteEditorElement.saveManifestPath =
-              window.appSettings.saveManifestPath;
-            haxCmsSiteEditorElement.saveOutlinePath =
-              window.appSettings.saveOutlinePath;
-            haxCmsSiteEditorElement.getNodeFieldsPath =
-              window.appSettings.getNodeFieldsPath;
-            haxCmsSiteEditorElement.getSiteFieldsPath =
-              window.appSettings.getSiteFieldsPath;
-            haxCmsSiteEditorElement.createNodePath =
-              window.appSettings.createNodePath;
-            haxCmsSiteEditorElement.deleteNodePath =
-              window.appSettings.deleteNodePath;
-            haxCmsSiteEditorElement.publishSitePath =
-              window.appSettings.publishSitePath;
-            haxCmsSiteEditorElement.appStore = window.appSettings.appStore;
-            window.cmsSiteEditor.instance.haxCmsSiteEditorElement = haxCmsSiteEditorElement;
-            window.cmsSiteEditor.instance.appendTarget.appendChild(
-              haxCmsSiteEditorElement
-            );
-          },
-          e => {
-            //import failed
-          }
-        );
-      } catch (err) {
-        // error in the event this is a double registration
-      }
+    try {
+      const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+      import(`${basePath}../haxcms-site-editor.js`).then(
+        e => {
+          let haxCmsSiteEditorElement = document.createElement(
+            "haxcms-site-editor"
+          );
+          haxCmsSiteEditorElement.jwt = this.jwt;
+          haxCmsSiteEditorElement.method = "GET";
+          haxCmsSiteEditorElement.saveNodePath =
+            window.appSettings.saveNodePath;
+          haxCmsSiteEditorElement.saveManifestPath =
+            window.appSettings.saveManifestPath;
+          haxCmsSiteEditorElement.saveOutlinePath =
+            window.appSettings.saveOutlinePath;
+          haxCmsSiteEditorElement.getNodeFieldsPath =
+            window.appSettings.getNodeFieldsPath;
+          haxCmsSiteEditorElement.getSiteFieldsPath =
+            window.appSettings.getSiteFieldsPath;
+          haxCmsSiteEditorElement.createNodePath =
+            window.appSettings.createNodePath;
+          haxCmsSiteEditorElement.deleteNodePath =
+            window.appSettings.deleteNodePath;
+          haxCmsSiteEditorElement.publishSitePath =
+            window.appSettings.publishSitePath;
+          haxCmsSiteEditorElement.appStore = window.appSettings.appStore;
+          store.cmsSiteEditor.instance.haxCmsSiteEditorElement = haxCmsSiteEditorElement;
+          store.cmsSiteEditor.instance.appendTarget.appendChild(
+            haxCmsSiteEditorElement
+          );
+        },
+        e => {
+          //import failed
+        }
+      );
+    } catch (err) {
+      // error in the event this is a double registration
     }
   }
 }

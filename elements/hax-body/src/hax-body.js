@@ -2,6 +2,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { flush } from "@polymer/polymer/lib/utils/flush.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import {
   encapScript,
@@ -20,7 +21,6 @@ import "./lib/hax-shared-styles.js";
 /**
  * `hax-body`
  * `Manager of the body area that can be modified`
- * @demo demo/index.html
  * @microcopy - the mental model for this element
  *  - body is effectively a body of content that can be manipulated in the browser. This is for other HAX elements ultimately to interface with and reside in. It is the controller of input and output for all of HAX as it exists in a document. body is not the <body> tag but we need a similar mental model container for all our other elements.
  *  - text-context - the context menu that shows up when an item is active so it can have text based operations performed to it.
@@ -275,42 +275,44 @@ let HaxBody = Polymer({
   ready: function() {
     this.polyfillSafe = window.HaxStore.instance.computePolyfillSafe();
     // mutation observer that ensures state of hax applied correctly
-    this._observer = new FlattenedNodesObserver(this, info => {
-      // MAKE SURE WE KNOW WHAT JUST GOT ADDED HERE
-      flush();
-      // if we've got new nodes, we have to react to that
-      if (info.addedNodes.length > 0) {
-        info.addedNodes.map(node => {
-          if (this._haxElementTest(node)) {
-            if (this._HTMLPrimativeTest(node)) {
-              node.contentEditable = this.editMode;
+    afterNextRender(this, function() {
+      this._observer = new FlattenedNodesObserver(this, info => {
+        // MAKE SURE WE KNOW WHAT JUST GOT ADDED HERE
+        flush();
+        // if we've got new nodes, we have to react to that
+        if (info.addedNodes.length > 0) {
+          info.addedNodes.map(node => {
+            if (this._haxElementTest(node)) {
+              if (this._HTMLPrimativeTest(node)) {
+                node.contentEditable = this.editMode;
+              }
+              // this does the real targetting
+              node.setAttribute("data-editable", this.editMode);
+              let haxRay = node.tagName.replace("-", " ").toLowerCase();
+              let i = window.HaxStore.instance.gizmoList.findIndex(
+                j => j.tag === node.tagName.toLowerCase()
+              );
+              if (i !== -1) {
+                haxRay = window.HaxStore.instance.gizmoList[i].title;
+              }
+              node.setAttribute("data-hax-ray", haxRay);
+              this.fire("hax-body-tag-added", { node: node });
             }
-            // this does the real targetting
-            node.setAttribute("data-editable", this.editMode);
-            let haxRay = node.tagName.replace("-", " ").toLowerCase();
-            let i = window.HaxStore.instance.gizmoList.findIndex(
-              j => j.tag === node.tagName.toLowerCase()
-            );
-            if (i !== -1) {
-              haxRay = window.HaxStore.instance.gizmoList[i].title;
+          });
+        }
+        // if we dropped nodes via the UI (delete event basically)
+        if (info.removedNodes.length > 0) {
+          // handle removing items... not sure we need to do anything here
+          info.removedNodes.map(node => {
+            if (
+              this._haxElementTest(node) &&
+              !node.classList.contains("hax-active")
+            ) {
+              this.fire("hax-body-tag-removed", { node: node });
             }
-            node.setAttribute("data-hax-ray", haxRay);
-            this.fire("hax-body-tag-added", { node: node });
-          }
-        });
-      }
-      // if we dropped nodes via the UI (delete event basically)
-      if (info.removedNodes.length > 0) {
-        // handle removing items... not sure we need to do anything here
-        info.removedNodes.map(node => {
-          if (
-            this._haxElementTest(node) &&
-            !node.classList.contains("hax-active")
-          ) {
-            this.fire("hax-body-tag-removed", { node: node });
-          }
-        });
-      }
+          });
+        }
+      });
     });
   },
   /**
@@ -318,73 +320,75 @@ let HaxBody = Polymer({
    * we exist and are the thing being edited.
    */
   attached: function() {
-    // try to normalize paragraph insert on enter
-    try {
-      document.execCommand("enableObjectResizing", false, false);
-      document.execCommand("defaultParagraphSeparator", false, "p");
-    } catch (e) {
-      console.log(e);
-    }
-    window.addEventListener("keydown", this._onKeyDown.bind(this));
-    window.addEventListener("keypress", this._onKeyPress.bind(this));
-    this.shadowRoot
-      .querySelector("slot")
-      .addEventListener("mousemove", this.hoverEvent.bind(this));
-    this.shadowRoot.querySelector("slot").addEventListener("mouseup", e => {
-      const tmp = window.HaxStore.getSelection();
-      window.HaxStore._tmpSelection = tmp;
+    afterNextRender(this, function() {
+      // try to normalize paragraph insert on enter
       try {
-        const range = window.HaxStore.getRange();
-        if (range.cloneRange) {
-          window.HaxStore._tmpRange = range.cloneRange();
-        }
+        document.execCommand("enableObjectResizing", false, false);
+        document.execCommand("defaultParagraphSeparator", false, "p");
       } catch (e) {
         console.log(e);
       }
-    });
-    this.shadowRoot.querySelector("slot").addEventListener("paste", e => {
-      // only perform this on a text element that is active
-      if (
-        window.HaxStore.instance.isTextElement(
-          window.HaxStore.instance.activeNode
-        ) &&
-        !window.HaxStore.instance.haxManager.opened
-      ) {
-        e.preventDefault();
-        e.stopPropagation();
-        e.stopImmediatePropagation();
-        let text = "";
-        // intercept paste event
-        if (e.clipboardData || e.originalEvent.clipboardData) {
-          text = (e.originalEvent || e).clipboardData.getData("text/plain");
-        } else if (window.clipboardData) {
-          text = window.clipboardData.getData("Text");
-        }
+      window.addEventListener("keydown", this._onKeyDown.bind(this));
+      window.addEventListener("keypress", this._onKeyPress.bind(this));
+      this.shadowRoot
+        .querySelector("slot")
+        .addEventListener("mousemove", this.hoverEvent.bind(this));
+      this.shadowRoot.querySelector("slot").addEventListener("mouseup", e => {
+        const tmp = window.HaxStore.getSelection();
+        window.HaxStore._tmpSelection = tmp;
         try {
-          let range = window.HaxStore.getRange();
-          let sel = window.HaxStore.getSelection();
-          let newNode = document.createTextNode(text);
-          let newRange = document.createRange();
-          if (range && sel) {
-            range.deleteContents();
-            range.insertNode(newNode);
-            newRange.setStart(newNode, text.length);
-            newRange.collapse(true);
-            sel.removeAllRanges();
-            sel.addRange(newRange);
+          const range = window.HaxStore.getRange();
+          if (range.cloneRange) {
+            window.HaxStore._tmpRange = range.cloneRange();
           }
         } catch (e) {
           console.log(e);
         }
-      }
+      });
+      this.shadowRoot.querySelector("slot").addEventListener("paste", e => {
+        // only perform this on a text element that is active
+        if (
+          window.HaxStore.instance.isTextElement(
+            window.HaxStore.instance.activeNode
+          ) &&
+          !window.HaxStore.instance.haxManager.opened
+        ) {
+          e.preventDefault();
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+          let text = "";
+          // intercept paste event
+          if (e.clipboardData || e.originalEvent.clipboardData) {
+            text = (e.originalEvent || e).clipboardData.getData("text/plain");
+          } else if (window.clipboardData) {
+            text = window.clipboardData.getData("Text");
+          }
+          try {
+            let range = window.HaxStore.getRange();
+            let sel = window.HaxStore.getSelection();
+            let newNode = document.createTextNode(text);
+            let newRange = document.createRange();
+            if (range && sel) {
+              range.deleteContents();
+              range.insertNode(newNode);
+              newRange.setStart(newNode, text.length);
+              newRange.collapse(true);
+              sel.removeAllRanges();
+              sel.addRange(newRange);
+            }
+          } catch (e) {
+            console.log(e);
+          }
+        }
+      });
+      this.__tabTrap = false;
+      this.fire("hax-register-body", this);
+      document.body.addEventListener(
+        "hax-store-property-updated",
+        this._haxStorePropertyUpdated.bind(this)
+      );
+      window.addEventListener("scroll", this._keepContextVisible.bind(this));
     });
-    this.__tabTrap = false;
-    this.fire("hax-register-body", this);
-    document.body.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-    window.addEventListener("scroll", this._keepContextVisible.bind(this));
   },
   /**
    * Detached life cycle

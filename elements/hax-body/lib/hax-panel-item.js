@@ -8,7 +8,6 @@ import "./hax-shared-styles.js";
 /**
  * `hax-panel-item`
  * `A single button in the hax panel for consistency.`
- * @demo demo/index.html
  * @microcopy - the mental model for this element
  * - panel - the flyout from left or right side that has elements that can be placed
  * - button - an item that expresses what interaction you will have with the content.

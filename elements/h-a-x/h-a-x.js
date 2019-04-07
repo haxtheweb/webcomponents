@@ -181,7 +181,9 @@ class HAX extends HTMLElement {
     // store needs to come before anyone else, use it's availability request mechanism
     window.HaxStore.requestAvailability();
     // now everyone else
-    document.body.appendChild(document.createElement("hax-panel"));
+    let panel = document.createElement("hax-panel");
+    panel.hidePanelOps = this.hidePanelOps;
+    document.body.appendChild(panel);
     document.body.appendChild(document.createElement("hax-manager"));
     document.body.appendChild(document.createElement("hax-app-picker"));
     document.body.appendChild(document.createElement("hax-stax-picker"));
@@ -195,7 +197,15 @@ class HAX extends HTMLElement {
     window.removeEventListener("hax-store-ready", this.render.bind(this));
   }
   static get observedAttributes() {
-    return ["app-store"];
+    return ["app-store", "hide-panel-ops"];
+  }
+  get hidePanelOps() {
+    return this.getAttribute("hide-panel-ops");
+  }
+  set hidePanelOps(newValue) {
+    if (newValue) {
+      this.setAttribute("hide-panel-ops", "hide-panel-ops");
+    }
   }
   get appStore() {
     return this.getAttribute("app-store");

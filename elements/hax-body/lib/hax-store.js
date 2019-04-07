@@ -2,17 +2,18 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import { setPassiveTouchGestures } from "@polymer/polymer/lib/utils/settings.js";
+import { getRange } from "./shadows-safari.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import {
+  encapScript,
+  wipeSlot
+} from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/media-behaviors/media-behaviors.js";
 import "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 import "@lrnwebcomponents/hal-9000/hal-9000.js";
 import { CodeSample } from "@lrnwebcomponents/code-sample/code-sample.js";
-import { getRange } from "./shadows-safari.js";
-import {
-  encapScript,
-  wipeSlot
-} from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import "./hax-app.js";
 import "./hax-stax.js";
 import "./hax-stax-browser.js";
@@ -735,57 +736,59 @@ Polymer({
    * ready life cycle
    */
   ready: function() {
-    // see if a global was used to prevent this check
-    // this is useful when in trusted environments where the statement
-    // has been consented to in the application this is utilized in
-    if (this.skipHAXConfirmation) {
-      window.sessionStorage.setItem("haxConfirm", true);
-      window.localStorage.setItem("haxConfirm", true);
-    }
-    // check for local storage object
-    // if not, then store it in sessionStorage so that all our checks
-    // and balances are the same. This could allow for storing these
-    // settings on a server in theory
-    let haxConfirm =
-      window.sessionStorage.getItem("haxConfirm") ||
-      window.localStorage.getItem("haxConfirm");
-    if (!haxConfirm) {
-      // this way it isn't shown EVERY reload, but if they didn't confirm
-      // it will show up in the future
-      window.sessionStorage.setItem("haxConfirm", true);
-      let msg = `
+    afterNextRender(this, function() {
+      // see if a global was used to prevent this check
+      // this is useful when in trusted environments where the statement
+      // has been consented to in the application this is utilized in
+      if (this.skipHAXConfirmation) {
+        window.sessionStorage.setItem("haxConfirm", true);
+        window.localStorage.setItem("haxConfirm", true);
+      }
+      // check for local storage object
+      // if not, then store it in sessionStorage so that all our checks
+      // and balances are the same. This could allow for storing these
+      // settings on a server in theory
+      let haxConfirm =
+        window.sessionStorage.getItem("haxConfirm") ||
+        window.localStorage.getItem("haxConfirm");
+      if (!haxConfirm) {
+        // this way it isn't shown EVERY reload, but if they didn't confirm
+        // it will show up in the future
+        window.sessionStorage.setItem("haxConfirm", true);
+        let msg = `
       The HAX content editor keeps preferences in order to improve your experience.
       This data is stored in your browser and is never sent anywhere.
       Click to accept.
       `;
-      window.HaxStore.toast(
-        msg,
-        "-1",
-        "fit-bottom",
-        "I Accept",
-        "hax-consent-tap"
-      );
-    } else {
-      if (
-        window.sessionStorage.getItem("haxConfirm") &&
-        !window.localStorage.getItem("haxConfirm")
-      ) {
-        // verify there is something there
-        try {
-          let globalData = window.sessionStorage.getItem("haxUserData")
-            ? JSON.parse(window.sessionStorage.getItem("haxUserData"))
-            : {};
-          this.set("storageData", globalData);
-        } catch (e) {}
+        window.HaxStore.toast(
+          msg,
+          "-1",
+          "fit-bottom",
+          "I Accept",
+          "hax-consent-tap"
+        );
       } else {
-        try {
-          let globalData = window.localStorage.getItem("haxUserData")
-            ? JSON.parse(window.localStorage.getItem("haxUserData"))
-            : {};
-          this.set("storageData", globalData);
-        } catch (e) {}
+        if (
+          window.sessionStorage.getItem("haxConfirm") &&
+          !window.localStorage.getItem("haxConfirm")
+        ) {
+          // verify there is something there
+          try {
+            let globalData = window.sessionStorage.getItem("haxUserData")
+              ? JSON.parse(window.sessionStorage.getItem("haxUserData"))
+              : {};
+            this.set("storageData", globalData);
+          } catch (e) {}
+        } else {
+          try {
+            let globalData = window.localStorage.getItem("haxUserData")
+              ? JSON.parse(window.localStorage.getItem("haxUserData"))
+              : {};
+            this.set("storageData", globalData);
+          } catch (e) {}
+        }
       }
-    }
+    });
   },
   /**
    * attached.
@@ -801,27 +804,35 @@ Polymer({
       })
     );
     window.HaxStore.ready = true;
+    afterNextRender(this, function() {
+      // register built in primitive definitions
+      this._buildPrimitiveDefinitions();
+      // capture events and intercept them globally
+      window.addEventListener(
+        "hax-consent-tap",
+        this._haxConsentTap.bind(this)
+      );
+      window.addEventListener(
+        "onbeforeunload",
+        this._onBeforeUnload.bind(this)
+      );
+      window.addEventListener("paste", this._onPaste.bind(this));
+      // initialize voice commands
+      this.voiceCommands = this._initVoiceCommands();
+      // set this global flag so we know it's safe to start trusting data
+      // that is written to global preferences / storage bin
+      setTimeout(() => {
+        this.__storageDataProcessed = true;
+        if (this.storageData.globalPreferences) {
+          window.HaxStore.write(
+            "globalPreferences",
+            this.storageData.globalPreferences,
+            this
+          );
+        }
+      }, 325);
+    });
     this.__ready = true;
-    // register built in primitive definitions
-    this._buildPrimitiveDefinitions();
-    // capture events and intercept them globally
-    window.addEventListener("hax-consent-tap", this._haxConsentTap.bind(this));
-    window.addEventListener("onbeforeunload", this._onBeforeUnload.bind(this));
-    window.addEventListener("paste", this._onPaste.bind(this));
-    // initialize voice commands
-    this.voiceCommands = this._initVoiceCommands();
-    // set this global flag so we know it's safe to start trusting data
-    // that is written to global preferences / storage bin
-    setTimeout(() => {
-      this.__storageDataProcessed = true;
-      if (this.storageData.globalPreferences) {
-        window.HaxStore.write(
-          "globalPreferences",
-          this.storageData.globalPreferences,
-          this
-        );
-      }
-    }, 325);
   },
   /**
    * Build a list of common voice commands

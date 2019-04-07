@@ -2,6 +2,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/iron-pages/iron-pages.js";
@@ -134,18 +135,8 @@ class SimpleBlog extends HAXCMSTheme(PolymerElement) {
     };
     return props;
   }
-  /**
-   * ready life cycle
-   */
-  ready() {
-    super.ready();
-    this.contentContainer = this.$.post.$.contentcontainer;
-  }
-  /**
-   * attached life cycle
-   */
-  connectedCallback() {
-    super.connectedCallback();
+  constructor() {
+    super();
     this.__disposer = [];
     autorun(reaction => {
       this.activeId = toJS(store.activeId);
@@ -154,6 +145,15 @@ class SimpleBlog extends HAXCMSTheme(PolymerElement) {
     autorun(reaction => {
       this._locationChanged(store.location);
       this.__disposer.push(reaction);
+    });
+  }
+  /**
+   * attached life cycle
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, () => {
+      this.contentContainer = this.$.post.$.contentcontainer;
     });
   }
   /**

@@ -12,18 +12,13 @@ import {
 } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import { autorun, toJS } from "mobx";
 import { store } from "./haxcms-site-store.js";
-import "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
-import "@lrnwebcomponents/simple-toast/simple-toast.js";
-import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-progress/paper-progress.js";
 import "./haxcms-site-router.js";
-import "./haxcms-editor-builder.js";
 
 /**
  * `haxcms-site-builder`
  * `build the site and everything off of this`
- * @demo demo/index.html
  * @microcopy - the mental model for this element
  * - This is a factory element, it doesn't do much on its own visually
  * - it loads a site.json file and then utilizes this data in order to construct
@@ -76,7 +71,6 @@ class HAXCMSSiteBuilder extends PolymerElement {
         id="manifest"
         url="[[outlineLocation]][[file]][[__timeStamp]]"
         handle-as="json"
-        debounce-duration="250"
         last-response="{{manifest}}"
       ></iron-ajax>
       <iron-ajax
@@ -84,7 +78,6 @@ class HAXCMSSiteBuilder extends PolymerElement {
         url="[[outlineLocation]][[activeItem.location]][[__timeStamp]]"
         handle-as="text"
         loading="{{loading}}"
-        debounce-duration="250"
         last-response="{{activeItemContent}}"
       ></iron-ajax>
       <div id="slot"><slot></slot></div>
@@ -186,52 +179,27 @@ class HAXCMSSiteBuilder extends PolymerElement {
    */
   constructor() {
     super();
-    // tidy up the dom if this is there
-    if (document.getElementById("haxcmsoutdatedfallback")) {
-      document.body.removeChild(
-        document.getElementById("haxcmsoutdatedfallback")
-      );
-    }
-    this.__timeStamp = "";
     // attempt to set polymer passive gestures globally
     // this decreases logging and improves performance on scrolling
     setPassiveTouchGestures(true);
-    window.JSONOutlineSchema.requestAvailability();
-    afterNextRender(this, function() {
-      window.addEventListener(
-        "haxcms-trigger-update",
-        this._triggerUpdatedData.bind(this)
-      );
-      window.addEventListener(
-        "haxcms-trigger-update-node",
-        this._triggerUpdatedNode.bind(this)
-      );
-      window.SimpleToast.requestAvailability();
-    });
-  }
-  ready() {
-    super.ready();
+    // hide the outdated fallback
+    if (document.getElementById("haxcmsoutdatedfallback")) {
+      document.getElementById("haxcmsoutdatedfallback").style.display = "none";
+    }
     this.__disposer = [];
     autorun(reaction => {
       this.themeData = toJS(store.themeData);
       this.__disposer.push(reaction);
     });
+    autorun(reaction => {
+      this.activeItem = toJS(store.activeItem);
+      this.__disposer.push(reaction);
+    });
+    this.__timeStamp = "";
   }
   connectedCallback() {
     super.connectedCallback();
     afterNextRender(this, function() {
-      window.SimpleModal.requestAvailability();
-      this.editorBuilder = document.createElement("haxcms-editor-builder");
-      // attach editor builder after we've appended to the screen
-      document.body.appendChild(this.editorBuilder);
-      // get fresh data if not published
-      if (this.editorBuilder.getContext() !== "published") {
-        this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
-      }
-      autorun(reaction => {
-        this.activeItem = toJS(store.activeItem);
-        this.__disposer.push(reaction);
-      });
       this.dispatchEvent(
         new CustomEvent("haxcms-ready", {
           bubbles: true,
@@ -240,6 +208,38 @@ class HAXCMSSiteBuilder extends PolymerElement {
           detail: this
         })
       );
+      if (document.getElementById("haxcmsoutdatedfallback")) {
+        document.body.removeChild(
+          document.getElementById("haxcmsoutdatedfallback")
+        );
+      }
+      window.addEventListener(
+        "haxcms-trigger-update",
+        this._triggerUpdatedData.bind(this)
+      );
+      window.addEventListener(
+        "haxcms-trigger-update-node",
+        this._triggerUpdatedNode.bind(this)
+      );
+      // dyanmcially import the editor builder which figures out if we should have one
+      const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+      import(`${basePath}haxcms-editor-builder.js`)
+        .then(response => {
+          this.editorBuilder = document.createElement("haxcms-editor-builder");
+          // attach editor builder after we've appended to the screen
+          document.body.appendChild(this.editorBuilder);
+          // get fresh data if not published
+          if (
+            this.editorBuilder.getContext() !== "published" &&
+            this.editorBuilder.getContext() !== "demo"
+          ) {
+            this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
+          }
+        })
+        .catch(error => {
+          /* Error handling */
+          console.log(error);
+        });
     });
   }
   /**
@@ -272,6 +272,7 @@ class HAXCMSSiteBuilder extends PolymerElement {
         // set in the store
         store.activeItemContent = html;
         // insert the content as quickly as possible, then work on the dynamic imports
+        // @todo this ight be why we get a double render some times
         microTask.run(() => {
           setTimeout(() => {
             let frag = document.createRange().createContextualFragment(html);
@@ -287,12 +288,13 @@ class HAXCMSSiteBuilder extends PolymerElement {
             if (!window.HaxStore || !window.HaxStore.ready) {
               setTimeout(() => {
                 if (
-                  window.cmsSiteEditor.instance &&
-                  window.cmsSiteEditor.haxCmsSiteEditorUIElement
+                  store.cmsSiteEditor &&
+                  store.cmsSiteEditor.instance &&
+                  store.cmsSiteEditor.haxCmsSiteEditorUIElement
                 ) {
                   window.HaxStore.instance.activeHaxBody.importContent(html);
                 }
-              }, 2000);
+              }, 1000);
             }
           }, 5);
         });
@@ -331,7 +333,11 @@ class HAXCMSSiteBuilder extends PolymerElement {
       this.set("queryParams.nodeId", newValue.id);
       this.notifyPath("queryParams.nodeId");
       // get fresh data if not published
-      if (this.editorBuilder.getContext() !== "published") {
+      if (
+        this.editorBuilder &&
+        this.editorBuilder.getContext() !== "published" &&
+        this.editorBuilder.getContext() !== "demo"
+      ) {
         this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
       }
       this.$.activecontent.generateRequest();
@@ -355,7 +361,11 @@ class HAXCMSSiteBuilder extends PolymerElement {
    */
   _triggerUpdatedData(e) {
     // get fresh data if not published
-    if (this.editorBuilder.getContext() !== "published") {
+    if (
+      this.editorBuilder &&
+      this.editorBuilder.getContext() !== "published" &&
+      this.editorBuilder.getContext() !== "demo"
+    ) {
       this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
     }
     this.$.manifest.generateRequest();
@@ -366,7 +376,11 @@ class HAXCMSSiteBuilder extends PolymerElement {
    */
   _triggerUpdatedNode(e) {
     // get fresh data if not published
-    if (this.editorBuilder.getContext() !== "published") {
+    if (
+      this.editorBuilder &&
+      this.editorBuilder.getContext() !== "published" &&
+      this.editorBuilder.getContext() !== "demo"
+    ) {
       this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
     }
     // ensure we don't get a miss on initial load
@@ -456,13 +470,13 @@ class HAXCMSSiteBuilder extends PolymerElement {
   _themeChanged(newValue, oldValue) {
     if (newValue && oldValue) {
       if (
-        window.cmsSiteEditor &&
-        window.cmsSiteEditor.instance &&
-        typeof window.cmsSiteEditor.instance.haxCmsSiteEditorElement !==
+        store.cmsSiteEditor &&
+        store.cmsSiteEditor.instance &&
+        typeof store.cmsSiteEditor.instance.haxCmsSiteEditorElement !==
           typeof undefined
       ) {
-        window.cmsSiteEditor.instance.appendChild(
-          window.cmsSiteEditor.instance.haxCmsSiteEditorElement
+        store.cmsSiteEditor.instance.appendChild(
+          store.cmsSiteEditor.instance.haxCmsSiteEditorElement
         );
       }
     }

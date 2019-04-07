@@ -91,19 +91,21 @@ export const HAXCMSTheme = function(SuperClass) {
      */
     _contentContainerChanged(newValue, oldValue) {
       // test that this hasn't been connected previously
-      if (newValue && oldValue === null) {
-        this.HAXCMSThemeWiring.connect(this, newValue);
-      }
-      // previously connected, needs to change to new connection
-      // this is an edge case at best...
-      else if (newValue && oldValue) {
-        this.HAXCMSThemeWiring.disconnect(this);
-        this.HAXCMSThemeWiring.connect(this, newValue);
-      }
-      // no longer connected
-      else if (oldValue && newValue === null) {
-        this.HAXCMSThemeWiring.disconnect(this);
-      }
+      setTimeout(() => {
+        if (newValue && oldValue == null) {
+          this.HAXCMSThemeWiring.connect(this, newValue);
+        }
+        // previously connected, needs to change to new connection
+        // this is an edge case at best...
+        else if (newValue && oldValue) {
+          this.HAXCMSThemeWiring.disconnect(this);
+          this.HAXCMSThemeWiring.connect(this, newValue);
+        }
+        // no longer connected
+        else if (oldValue && newValue == null) {
+          this.HAXCMSThemeWiring.disconnect(this);
+        }
+      }, 500);
     }
     _locationChanged(newValue, oldValue) {
       if (!newValue || typeof newValue.route === "undefined") return;
@@ -234,9 +236,7 @@ class HAXCMSThemeWiring {
    */
   connect(element, injector) {
     // this implies there's the possibility of an authoring experience
-    if (typeof window.cmsSiteEditor !== typeof undefined) {
-      window.cmsSiteEditor.requestAvailability(element, injector);
-    }
+    store.cmsSiteEditorAvailability(element, injector);
   }
   /**
    * detatch element events from whats passed in

@@ -169,7 +169,7 @@ class HAXCMSSiteEditor extends PolymerElement {
         on-response="_handleDeleteResponse"
         last-response="{{__deleteNodeResponse}}"
       ></iron-ajax>
-      <h-a-x app-store$="[[appStore]]"></h-a-x>
+      <h-a-x app-store$="[[appStore]]" hide-panel-ops></h-a-x>
     `;
   }
   static get properties() {

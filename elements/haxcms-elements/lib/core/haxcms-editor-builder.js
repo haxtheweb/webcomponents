@@ -4,17 +4,14 @@
  */
 import { PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import "./haxcms-site-editor-ui.js";
 
-window.cmsSiteEditor = window.cmsSiteEditor || {};
-// store reference to the instance as a global
-window.cmsSiteEditor.instance = null;
 /**
  * `haxcms-editor-builder`
  * Figure out what our context is and setup based on that
  *
- * @demo demo/index.html
  * @microcopy - the mental model for this element
  * - something called us asking to provide an authoring solution
  * - we need to decide based on environment if this supports php, beaker or none
@@ -30,8 +27,8 @@ class HAXCMSEditorBuilder extends PolymerElement {
   /**
    * ready life cycle
    */
-  ready() {
-    super.ready();
+  constructor() {
+    super();
     this.applyContext();
   }
   connectedCallback() {
@@ -44,14 +41,14 @@ class HAXCMSEditorBuilder extends PolymerElement {
   }
   storeReady(e) {
     // append UI element to body to avoid stack order issues
-    if (!window.cmsSiteEditor.haxCmsSiteEditorUIElement) {
-      window.cmsSiteEditor.haxCmsSiteEditorUIElement = document.createElement(
+    if (!store.cmsSiteEditor.haxCmsSiteEditorUIElement) {
+      store.cmsSiteEditor.haxCmsSiteEditorUIElement = document.createElement(
         "haxcms-site-editor-ui"
       );
-      document.body.appendChild(window.cmsSiteEditor.haxCmsSiteEditorUIElement);
+      document.body.appendChild(store.cmsSiteEditor.haxCmsSiteEditorUIElement);
       // forces a nice fade in transition
       setTimeout(() => {
-        window.cmsSiteEditor.haxCmsSiteEditorUIElement.painting = false;
+        store.cmsSiteEditor.haxCmsSiteEditorUIElement.painting = false;
       }, 5);
     }
   }
@@ -89,45 +86,11 @@ class HAXCMSEditorBuilder extends PolymerElement {
     if (context !== "published") {
       const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
       // import and set the tag based on the context
-      window.cmsSiteEditor.tag = `haxcms-backend-${context}`;
+      store.cmsSiteEditor.tag = `haxcms-backend-${context}`;
       // delay import slightly to ensure global scope is there
-      async.microTask.run(() => {
-        setTimeout(() => {
-          import(`${basePath}backends/${window.cmsSiteEditor.tag}.js`);
-        }, 50);
-      });
+      import(`${basePath}backends/${store.cmsSiteEditor.tag}.js`);
     }
   }
 }
 window.customElements.define(HAXCMSEditorBuilder.tag, HAXCMSEditorBuilder);
 export { HAXCMSEditorBuilder };
-// self append if anyone calls us into action
-window.cmsSiteEditor.requestAvailability = function(
-  element = this,
-  location = document.body
-) {
-  if (!window.cmsSiteEditor.instance) {
-    window.cmsSiteEditor.instance = document.createElement(
-      window.cmsSiteEditor.tag
-    );
-    window.cmsSiteEditor.instance.appElement = element;
-    window.cmsSiteEditor.instance.appendTarget = location;
-    // self append the reference to.. well.. us.
-    document.body.appendChild(window.cmsSiteEditor.instance);
-  } else {
-    if (element) {
-      // already exists, just alter some references
-      window.cmsSiteEditor.instance.appElement = element;
-      window.cmsSiteEditor.instance.appendTarget = location;
-      if (
-        typeof window.cmsSiteEditor.instance.haxCmsSiteEditorElement !==
-        typeof undefined
-      ) {
-        window.cmsSiteEditor.instance.appendTarget.appendChild(
-          window.cmsSiteEditor.instance.haxCmsSiteEditorElement
-        );
-      }
-    }
-  }
-  return window.cmsSiteEditor.instance;
-};

@@ -27,6 +27,7 @@ let GridPlate = Polymer({
           --grid-plate-item-margin: 15px;
           --grid-plate-editable-border-color: #ccc;
           --grid-plate-active-border-color: #6cd;
+          --grid-plate-col-transition: all 0.2s ease-in-out;
         }
         :host .row {
           width: 100%;
@@ -40,7 +41,7 @@ let GridPlate = Polymer({
         :host .column {
           width: 100%;
           flex: 0 0 auto;
-          transition: all 0.5s;
+          transition: var(--grid-plate-col-transition);
         }
         :host([edit-mode]) .column {
           min-height: 150px;
