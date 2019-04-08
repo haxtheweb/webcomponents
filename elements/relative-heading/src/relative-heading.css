@@ -1,0 +1,33 @@
+:host {
+  display: block;
+}
+:host([hidden]) {
+  display: none;
+}
+:host h1,
+:host h2,
+:host h3,
+:host h4,
+:host h5,
+:host h6 {
+  
+  @apply --relative-heading-style;
+}
+:host h1 {
+  @apply --relative-heading-h1;
+}
+:host h2 {
+  @apply --relative-heading-h2;
+}
+:host h3 {
+  @apply --relative-heading-h3;
+}
+:host h4 {
+  @apply --relative-heading-h4;
+}
+:host h5 {
+  @apply --relative-heading-h5;
+}
+:host h6 {
+  @apply --relative-heading-h6;
+}
