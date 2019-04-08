@@ -4,6 +4,19 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import "@polymer/paper-toggle-button/paper-toggle-button.js";
+import "@polymer/paper-button/paper-button.js";
+import "@polymer/paper-input/paper-textarea.js";
+import "@polymer/iron-icons/iron-icons.js";
+import "@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";
+import "@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js";
+import "@lrnwebcomponents/code-editor/code-editor.js";
+import "@lrnwebcomponents/app-datepicker/app-datepicker.js";
+import "@lrnwebcomponents/simple-picker/simple-picker.js";
+import "@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js";
+import "@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js";
+import "@lrnwebcomponents/paper-input-flagged/paper-input-flagged.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `simple-fields`
  * `Uses eco-json-form and HAX wiring to display a series of fields`
@@ -22,14 +35,36 @@ class SimpleFields extends PolymerElement {
       <style>
         :host {
           display: block;
+          background-color: #ffffff;
+          overflow: hidden;
         }
 
         :host([hidden]) {
           display: none;
         }
+
+        eco-json-schema-object {
+          width: 50%;
+        }
+        eco-json-schema-object {
+          color: var(--hax-text-color);
+          --eco-json-schema-object-form : {
+            -ms-flex: unset;
+            -webkit-flex: unset;
+            flex: unset;
+            -webkit-flex-basis: unset;
+            flex-basis: unset;
+          }
+        }
+        eco-json-schema-object .hax-code-editor {
+          padding: 0;
+        }
       </style>
-      <slot></slot>
-      <div>[[fields]]</div>
+      <eco-json-schema-object
+        id="schema-object"
+        schema="[[__validatedSchema]]"
+        value="{{value}}"
+      ></eco-json-schema-object>
     `;
   }
 
@@ -74,12 +109,35 @@ class SimpleFields extends PolymerElement {
   // properties available to the custom element for data binding
   static get properties() {
     return {
+      /**
+       * Returned value from the form input.
+       */
+      initialValue: {
+        type: "Object",
+        notify: true,
+        value: {},
+        observer: "_valueChanged"
+      },
+
+      value: {
+        type: "Object",
+        notify: true,
+        value: {}
+      },
+      /**
+       * Fields to conver toJSON Schema.
+       */
       fields: {
-        name: "fields",
         type: "Array",
-        value: "",
-        reflectToAttribute: false,
+        value: [],
         observer: "_fieldsChanged"
+      },
+      /**
+       * Fields to conver toJSON Schema.
+       */
+      __validatedSchema: {
+        type: "Array",
+        value: { properties: {} }
       }
     };
   }
@@ -99,16 +157,37 @@ class SimpleFields extends PolymerElement {
     this.HAXWiring = new HAXWiring();
     this.HAXWiring.setup(SimpleFields.haxProperties, SimpleFields.tag, this);
   }
+
+  /**
+   * Value in the form has changed, reflect to the preview.
+   */
+  _valueChanged(newValue) {
+    if (newValue && this.schema) {
+      for (var i in newValue) {
+        this.schema[i].value = newValue[i];
+      }
+    }
+  }
+
+  _fieldsChanged() {
+    let wiring = window.HAXWiring,
+      fields = this.fields,
+      schema = {
+        $schema: "http://json-schema.org/schema#",
+        title: this.title,
+        type: "object",
+        properties: {
+          fields: { fields }
+        }
+      };
+    this.set("__validatedSchema", {
+      properties: wiring._getHaxJSONSchemaProperty(fields, wiring)
+    });
+  }
   /**
    * life cycle, element is removed from the DOM
    */
   //disconnectedCallback() {}
-  // Observer fields for changes
-  _fieldsChanged(newValue, oldValue) {
-    if (typeof newValue !== typeof undefined) {
-      console.log(newValue);
-    }
-  }
 }
 window.customElements.define(SimpleFields.tag, SimpleFields);
 export { SimpleFields };
