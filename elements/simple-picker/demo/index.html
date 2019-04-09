@@ -24,73 +24,12 @@
       <h3>Basic simple-picker demo</h3>
       <demo-snippet>
         <template>
-          <script>
-            document.getElementById('picker').options = [
-              [
-                {
-                  "alt": "sans-serif",               //sets the option's font-family, so that user can preview the option
-                  "style": "font-family: sans-serif",
-                  "value": "sans-serif"
-                }
-              ],[
-                {
-                  "alt": "serif",
-                  "style": "font-family: serif",
-                  "value": "serif"
-                }
-              ],[
-                {
-                  "alt": "monospace",
-                  "selected": true,
-                  "style": "font-family: monospace",
-                  "value": "monospace"
-                }
-              ],[
-                {
-                  "alt": "cursive",
-                  "style": "font-family: cursive",
-                  "value": "cursive"
-                }
-              ]
-            ];
-          </script>
-          <simple-picker id="picker" label="Pick a Font-Family" position="right" value="monospace"></simple-picker>
+          <simple-picker id="picker" label="Pick a Font-Family" position="right" value="monospace" options="[ [ {&quot;alt&quot;:&quot;sans-serif&quot;,&quot;style&quot;:&quot;font-family: sans-serif&quot;,&quot;value&quot;:&quot;sans-serif&quot; } ],[ {&quot;alt&quot;:&quot;serif&quot;,&quot;style&quot;:&quot;font-family: serif&quot;,&quot;value&quot;:&quot;serif&quot; } ],[ {&quot;alt&quot;:&quot;monospace&quot;,&quot;selected&quot;: true,&quot;style&quot;:&quot;font-family: monospace&quot;,&quot;value&quot;:&quot;monospace&quot; } ],[ {&quot;alt&quot;:&quot;cursive&quot;,&quot;style&quot;:&quot;font-family: cursive&quot;,&quot;value&quot;:&quot;cursive&quot; } ] ]"></simple-picker>
         </template>
       </demo-snippet>
       <h3>simple-picker as a Color-Picker</h3>
       <demo-snippet>
         <template>
-          <script>
-            document.getElementById('colorpicker').options = [
-              [
-              {
-                  "style": "background-color: #FF00FF", //sets the option's background color
-                  "alt": "Purple",
-                  "value": "Purple (#FF00FF)"
-                },{
-                  "style": "background-color: #2222FF",
-                  "alt": "Blue",
-                  "value": "Blue (#2222FF)"
-                },{
-                  "style": "background-color: #00FF00",
-                  "alt": "Green",
-                  "value": "Green (#00FF00)"
-                },{
-                  "style": "background-color: #FFFF00",
-                  "alt": "Yellow",
-                  "value": "Yellow (#FFFF00)"
-                },{
-                  "style": "background-color: #FF8800",
-                  "alt": "Orange",
-                  "value": "Orange (#FF8800)"
-                },{
-                  "style": "background-color: #FF0000",
-                  "alt": "Red",
-                  "value": "Red (#FF0000)"
-                }
-              ]
-            ];
-          </script>
           <style>
             /* 
              Since background color styles override styles for active and selected options, 
@@ -101,56 +40,15 @@
               --simple-picker-active-option-outline: 2px solid black;
             }
           </style>
-          <simple-picker id="colorpicker" hide-option-labels label="Pick a Color" position="center"></simple-picker>
+          <simple-picker id="colorpicker" hide-option-labels label="Pick a Color" position="center" options="[ [ { &quot;style&quot;: &quot;background-color: #FF00FF&quot;, &quot;alt&quot;: &quot;Purple&quot;, &quot;value&quot;: &quot;Purple (#FF00FF)&quot; },{ &quot;style&quot;: &quot;background-color: #2222FF&quot;, &quot;alt&quot;: &quot;Blue&quot;, &quot;value&quot;: &quot;Blue (#2222FF)&quot; },{ &quot;style&quot;: &quot;background-color: #00FF00&quot;, &quot;alt&quot;: &quot;Green&quot;, &quot;value&quot;: &quot;Green (#00FF00)&quot; },{ &quot;style&quot;: &quot;background-color: #FFFF00&quot;, &quot;alt&quot;: &quot;Yellow&quot;, &quot;value&quot;: &quot;Yellow (#FFFF00)&quot; },{ &quot;style&quot;: &quot;background-color: #FF8800&quot;, &quot;alt&quot;: &quot;Orange&quot;, &quot;value&quot;: &quot;Orange (#FF8800)&quot; },{ &quot;style&quot;: &quot;background-color: #FF0000&quot;, &quot;alt&quot;: &quot;Red&quot;, &quot;value&quot;: &quot;Red (#FF0000)&quot; } ] ]"></simple-picker>
         </template>
       </demo-snippet>
       <h3>simple-picker as an Icon-Picker</h3>
       <demo-snippet>
         <template>
-          <script>
-            document.getElementById('iconpicker').options = [
-              [
-                {
-                  "alt": "none",
-                  "icon": "clear",
-                  "value": null
-                },{
-                  "icon": "check",
-                  "alt": "OK",
-                  "value": "check"
-                },{
-                  "icon": "clear",
-                  "alt": "Cancel",
-                  "value": "clear"
-                },{
-                  "icon": "search",
-                  "alt": "Find",
-                  "value": "search"
-                }
-              ],[
-                {
-                  "icon": "arrow-back", //sets the option's iron-icon
-                  "alt": "Left",
-                  "value": "arrow-back"
-                },{
-                  "icon": "arrow-downward",
-                  "alt": "Down",
-                  "value": "arrow-downward"
-                },{
-                  "icon": "arrow-forward",
-                  "alt": "Right",
-                  "value": "arrow-forward"
-                },{
-                  "icon": "arrow-upward",
-                  "alt": "Up",
-                  "value": "arrow-upward"
-                }
-              ]
-            ];
-          </script>
           <div id="icondemo">
             <label id="iconpicker-label">Pick an Icon: </label> 
-            <simple-picker id="iconpicker" hide-option-labels aria-labelledby="iconpicker-label"></simple-picker>
+            <simple-picker id="iconpicker" hide-option-labels aria-labelledby="iconpicker-label" options="[ [ { &quot;alt&quot;: &quot;none&quot;, &quot;icon&quot;: &quot;clear&quot;, &quot;value&quot;: null },{ &quot;icon&quot;: &quot;check&quot;, &quot;alt&quot;: &quot;OK&quot;, &quot;value&quot;: &quot;check&quot; },{ &quot;icon&quot;: &quot;clear&quot;, &quot;alt&quot;: &quot;Cancel&quot;, &quot;value&quot;: &quot;clear&quot; },{ &quot;icon&quot;: &quot;search&quot;, &quot;alt&quot;: &quot;Find&quot;, &quot;value&quot;: &quot;search&quot; } ],[ { &quot;icon&quot;: &quot;arrow-back&quot;, &quot;alt&quot;: &quot;Left&quot;, &quot;value&quot;: &quot;arrow-back&quot; },{ &quot;icon&quot;: &quot;arrow-downward&quot;, &quot;alt&quot;: &quot;Down&quot;, &quot;value&quot;: &quot;arrow-downward&quot; },{ &quot;icon&quot;: &quot;arrow-forward&quot;, &quot;alt&quot;: &quot;Right&quot;, &quot;value&quot;: &quot;arrow-forward&quot; },{ &quot;icon&quot;: &quot;arrow-upward&quot;, &quot;alt&quot;: &quot;Up&quot;, &quot;value&quot;: &quot;arrow-upward&quot; } ] ]"></simple-picker>
           </div>
         </template>
       </demo-snippet>

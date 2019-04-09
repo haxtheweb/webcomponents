@@ -231,7 +231,7 @@ class SimplePicker extends PolymerElement {
           <div class="rows">
             <template
               is="dom-repeat"
-              items="[[options]]"
+              items="[[__options]]"
               as="row"
               index-as="rownum"
             >
@@ -576,12 +576,19 @@ class SimplePicker extends PolymerElement {
   _setSelectedOption() {
     let sel = null;
     if (this.options !== undefined && this.options !== null) {
+      this.set(
+        "__options",
+        typeof this.options === "string"
+          ? JSON.parse(this.options)
+          : this.options.slice()
+      );
+
       this.__activeDesc = "option-0-0";
-      for (var i = 0; i < this.options.length; i++) {
-        for (var j = 0; j < this.options[i].length; j++) {
-          if (this.options[i][j].value === this.value) {
+      for (var i = 0; i < this.__options.length; i++) {
+        for (var j = 0; j < this.__options[i].length; j++) {
+          if (this.__options[i][j].value === this.value) {
             this.__activeDesc = "option-" + i + "-" + j;
-            sel = this.options[i][j];
+            sel = this.__options[i][j];
           }
         }
       }

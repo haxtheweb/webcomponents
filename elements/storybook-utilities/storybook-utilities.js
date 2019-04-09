@@ -80,10 +80,7 @@ export class StorybookUtilities {
         // convert typed props
         if (keyType) {
           let method = keyType.toLowerCase(),
-            stringifiedVal = JSON.stringify(props[key].value || "").replace(
-              /'/g,
-              "&apos;"
-            );
+            stringifiedVal = JSON.stringify(props[key].value || "");
           // ensure ke-bab case
           let kebab = key.replace(/[A-Z\u00C0-\u00D6\u00D8-\u00DE]/g, function(
             match
@@ -198,8 +195,14 @@ export class StorybookUtilities {
       () => {
         story.attrBindings = ``;
         Object.values(this.getBindings(story.props)).forEach(prop => {
-          if (prop.value !== false && prop.value !== "")
-            story.attrBindings += ` ${prop.id}='${prop.value}'`;
+          if (prop.value !== false && prop.value !== "") {
+            story.attrBindings += ` ${prop.id}="${prop.value
+              .replace(/'/g, "&apos;")
+              .replace(/"/g, "&quot;")}"`;
+            console.log(
+              prop.value.replace(/'/g, "&apos;").replace(/"/g, "&quot;")
+            );
+          }
         });
         story.slotBindings = ``;
         Object.values(this.getBindings(story.slots)).forEach(slot => {
