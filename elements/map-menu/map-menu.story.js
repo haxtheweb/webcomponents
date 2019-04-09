@@ -19,8 +19,8 @@ window.StorybookUtilities.instance.addPattern(Pattern);*/
  * add the live demo
  */
 /*const Story = {
-  "of": "a11y-collpase",                    //component folder
-  "name": "a11y-collpase",                  //component tag
+  "of": "Web Components",                   //component folder
+  "name": "a11y-collapse",                  //component tag
   "props": A11yCollapse.properties,         //component properties that will become knobs
   "slots": {                                //slots that will become knobs
     "heading":                              

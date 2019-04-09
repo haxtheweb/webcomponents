@@ -3,8 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-import * as Chartist from "chartist/dist/chartist.min.js";
+import { Chartist } from "chartist";
 import "./lib/chartist-render-shared-styles";
 
 export { ChartistRender };
@@ -136,28 +135,30 @@ Container class	Ratio
    */
   connectedCallback() {
     super.connectedCallback();
-    this._chartistLoaded();
+    console.log("connected Chartist", Chartist);
+    //this._chartistLoaded();
   }
 
   ready() {
+    console.log("loaded Chartist", Chartist);
     super.ready();
-    this.__chartId = this._getUniqueId("chartist-render-");
-    if (this.__chartistLoaded) this._chartReady();
+    //this.__chartId = this._getUniqueId("chartist-render-");
+    //if (this.__chartistLoaded) this._chartReady();
   }
 
   /**
    * determines if char is ready
    */
   _chartistLoaded() {
-    this.__chartistLoaded = true;
-    if (this.__chartId) this._chartReady();
+    //this.__chartistLoaded = true;
+    //if (this.__chartId) this._chartReady();
   }
   /**
    * Makes chart and returns the chart object.
    */
   _checkReady() {
     let root = this;
-    setInterval(root._chartReady, 500);
+    //setInterval(root._chartReady, 500);
   }
 
   /**
@@ -180,7 +181,7 @@ Container class	Ratio
   makeChart() {
     let root = this,
       chart;
-    if (
+    /*if (
       this.__chartistLoaded &&
       this.__chartId &&
       root.data !== null &&
@@ -236,14 +237,14 @@ Container class	Ratio
       return chart;
     } else {
       return null;
-    }
+    }*/
   }
 
   /**
    * Add accessibility features.
    */
   addA11yFeatures(svg) {
-    let desc =
+    /*let desc =
       this.data.labels !== undefined && this.data.labels !== null
         ? this.chartDesc + this.makeA11yTable(svg)
         : this.chartDesc;
@@ -252,14 +253,14 @@ Container class	Ratio
     svg.setAttribute(
       "aria-labelledby",
       this.__chartId + "-chart-title " + this.__chartId + "-chart-desc"
-    );
+    );*/
   }
 
   /**
    * Add accessibility features.
    */
   makeA11yTable(svg) {
-    let title =
+    /*let title =
       this.chartTitle !== null ? this.chartTitle : "A " + this.type + " chart.";
     let table = [
       '<table summary="Each column is a series of data, and the first column is the data label.">',
@@ -278,26 +279,26 @@ Container class	Ratio
       table.push("</tr>");
     }
     table.push("</tbody></table>");
-    return table.join("");
+    return table.join("");*/
   }
 
   /**
    * For inserting chart title and description.
    */
   _addA11yFeature(svg, tag, html) {
-    let el = document.createElement(tag);
+    /*let el = document.createElement(tag);
     let first = svg.childNodes[0];
     el.innerHTML = html;
     el.setAttribute("id", this.__chartId + "-chart-" + tag);
-    svg.insertBefore(el, first);
+    svg.insertBefore(el, first);*/
   }
 
   /**
    * Get unique ID from the chart
    */
   _getUniqueId(prefix) {
-    let id = prefix + Date.now();
-    return id;
+    /*let id = prefix + Date.now();
+    return id;*/
   }
 }
 window.customElements.define(ChartistRender.tag, ChartistRender);

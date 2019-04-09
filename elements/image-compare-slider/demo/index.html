@@ -11,22 +11,24 @@
       import '../image-compare-slider.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
-      .vertical-section-container.centered {
-        max-width: 80%;
-      }
-      image-compare-slider {
-        width: 49%;
-      }
     </style>
   </head>
   <body>
   <div class="vertical-section-container centered">
     <h3>Basic image-compare-slider demo</h3>
     <demo-snippet>
+      <style> 
+        .vertical-section-container.centered {
+          max-width: 80%;
+        }
+        image-compare-slider {
+          width: 49%;
+        }  
+      </style>
       <template>
-        <image-compare-slider title="Demo" top-src="images/Matterhorn02.png" bottom-src="images/Matterhorn01.png">
+        <image-compare-slider title="Default Compare Mode" top-src="./images/Matterhorn02.png" bottom-src="./images/Matterhorn01.png">
         </image-compare-slider>
-        <image-compare-slider opacity title="Demo" top-src="images/Matterhorn02.png" bottom-src="images/Matterhorn01.png">
+        <image-compare-slider opacity title="Opacity Compare Mode" top-src="./images/Matterhorn02.png" bottom-src="./images/Matterhorn01.png">
         </image-compare-slider>
       </template>
     </demo-snippet>

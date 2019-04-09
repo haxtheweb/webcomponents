@@ -18,7 +18,7 @@ window.StorybookUtilities.instance.addPattern(TeamMemberPattern);
  * add the live demo
  */
 const TeamMemberStory = {
-  "of": "team-member",
+  "of": "Web Components",
   "name": "team-member",
   "props": TeamMember.properties, 
   "slots": {}, 

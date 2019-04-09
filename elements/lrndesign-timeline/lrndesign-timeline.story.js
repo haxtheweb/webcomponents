@@ -43,7 +43,7 @@ props.title.value = `My Timeline`;
 props.events.value = events;
 console.log(events, typeof events, typeof props.events.value);
 const LrndesignTimelineStory = {
-  "of": "lrndesign-timeline",
+  "of": "Web Components",
   "name": "lrndesign-timeline",
   "props":  props,
   "slots": {

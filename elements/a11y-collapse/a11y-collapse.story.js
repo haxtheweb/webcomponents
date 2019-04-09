@@ -26,7 +26,7 @@ window.StorybookUtilities.instance.addPattern(A11yCollapsePattern);
  * add the live demo
  */
 const A11yCollapseStory = {
-  "of": "a11y-collapse",
+  "of": "Web Components/a11y-collapse",
   "name": "a11y-collapse",
   "props": A11yCollapse.properties, 
   "slots": {
@@ -37,7 +37,7 @@ const A11yCollapseStory = {
   "slotted": ``
 }
 const A11yCollapseGroupStory = {
-  "of": "a11y-collapse",
+  "of": "Web Components/a11y-collapse",
   "name": "a11y-collapse-group",
   "props": A11yCollapseGroup.properties, 
   "slots": {

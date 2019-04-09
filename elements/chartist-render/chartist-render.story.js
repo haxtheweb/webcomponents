@@ -37,7 +37,7 @@ props.scale.options = [
 ];
 props.scale.value = "ct-major-twelfth";
 const ChartistRenderStory = {
-  "of": "chartist-render",
+  "of": "Web Components",
   "name": "chartist-render",
   "props":  props,
   "slots": {}, 

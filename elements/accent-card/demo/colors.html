@@ -11,10 +11,6 @@
       import '../accent-card.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
-      accent-card {
-        display: inline-flex;
-        margin: 10px;
-      }
     </style>
   </head>
   <body>
@@ -22,6 +18,12 @@
       <h1>accent-card Colors</h1>
       <h2>Accent Color</h2>
       <demo-snippet>
+        <style>    
+          accent-card {
+            display: inline-flex;
+            margin: 10px;
+          }  
+        </style>
         <template>
           <accent-card>
             <div slot="heading">Default Accent</div>

@@ -90,8 +90,8 @@ delete ytKnobs.sources;
 ytKnobs.youtubeId.value = "NP0mQeLWCCo";
 
 const A11yMediaPlayerStory = {
-  "of": "a11y-media-player",
-  "name": "a11y-media-player",
+  "of": "Web Components/a11y-media-player",
+  "name": "Video",
   "props": videoKnobs, 
   "slots": {
     "slot": {
@@ -109,8 +109,8 @@ const A11yMediaPlayerStory = {
   "slotted": ``
 };
 const A11yMediaPlayerAudioStory = {
-  "of": "a11y-media-player",
-  "name": "a11y-media-player (Audio)",
+  "of": "Web Components/a11y-media-player",
+  "name": "Audio",
   "props": audioKnobs, 
   "slots": {
     "slot": {
@@ -126,8 +126,8 @@ const A11yMediaPlayerAudioStory = {
   "slotted": ``
 };
 const A11yMediaPlayerYTStory = {
-  "of": "a11y-media-player",
-  "name": "a11y-media-player (YouTube)",
+  "of": "Web Components/a11y-media-player",
+  "name": "YouTube",
   "props": ytKnobs, 
   "slots": {}, 
   "attr": ``,
