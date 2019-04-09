@@ -336,7 +336,7 @@ class A11yMediaControls extends A11yMediaBehaviors {
             value$="[[volume]]"
           ></paper-slider>
         </div>
-        <span class="play-status control-bar">
+        <span aria-live="polite" class="play-status control-bar">
           <span id="statbar"></span>
         </span>
       </div>
@@ -369,6 +369,15 @@ class A11yMediaControls extends A11yMediaBehaviors {
           icon$="[[_getLocal('print','icon')]]"
           label="[[_getLocal('print','label')]]"
           on-tap="_handlePrintClick"
+        >
+        </a11y-media-button>
+        <a11y-media-button
+          action="download"
+          disabled$="[[noPrinting]]"
+          hidden$="[[noPrinting]]"
+          icon$="[[_getLocal('download','icon')]]"
+          label="[[_getLocal('download','label')]]"
+          on-tap="_handleDownloadClick"
         >
         </a11y-media-button>
         <template is="dom-if" if="[[fullscreenButton]]">

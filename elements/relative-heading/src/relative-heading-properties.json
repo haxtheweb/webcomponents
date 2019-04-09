@@ -9,6 +9,14 @@
     "reflectToAttribute": true
   },
   /**
+   * The default heading level (1-6), eg., 1 for <h1>, if there  is no parent.
+   */
+  "defaultLevel": {
+    "name": "defaultLevel",
+    "type": "Number",
+    "value": 1
+  },
+  /**
    * The relative-heading's UUID.
    */
   "id": {
@@ -34,12 +42,11 @@
     "value": null
   },
   /**
-   * The heading level (1-6) if a parent relative-heading is not found, eg., 1 for <h1>
+   * The heading level (1-6), eg., 1 for <h1>
    */
   "level": {
     "name": "level",
     "type": "Number",
-    "value": 1,
     "reflectToAttribute": true,
     "observer": "_levelChange"
   },

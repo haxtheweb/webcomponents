@@ -30,6 +30,8 @@ class RelativeHeading extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
+    this.level = this.defaultLevel;
+    this._parentIdChange();
     this.HAXWiring = new HAXWiring();
     this.HAXWiring.setup(
       RelativeHeading.haxProperties,
@@ -58,7 +60,7 @@ class RelativeHeading extends PolymerElement {
     if (parent !== null && parent.level !== null) {
       this.level = parent.level < 6 ? parent.level + 1 : 6;
     } else {
-      this.level = 1;
+      this.level = this.defaultLevel;
     }
   }
   /**

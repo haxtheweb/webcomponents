@@ -571,6 +571,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
             ></div>
             <div
               id="customcc"
+              aria-live="polite"
               class="screen-only"
               hidden$="[[!showCustomCaptions]]"
             >
@@ -601,6 +602,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
           mute-unmute="[[muteUnmute]]"
           on-controls-change="_onControlsChanged"
           on-print-transcript="_handlePrinting"
+          on-download-transcript="_handleDownload"
           responsive-size$="[[responsiveSize]]"
           play-pause="[[playPause]]"
           stand-alone$="[[standAlone]]"
@@ -632,6 +634,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
             on-searchbar-added="_handleSearchAdded"
             on-toggle-scroll="_handleTranscriptScrollToggle"
             on-print-transcript="_handlePrinting"
+            on-download-transcript="_handleDownload"
             stand-alone$="[[standAlone]]"
           >
           </a11y-media-transcript-controls>

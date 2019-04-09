@@ -157,6 +157,10 @@ class A11yMediaBehaviors extends SimpleColors {
             icon: "av:closed-caption",
             off: "Off"
           },
+          download: {
+            label: "Download the transcript.",
+            icon: "file-download"
+          },
           forward: {
             label: "Forward",
             icon: "av:fast-forward"
@@ -531,6 +535,26 @@ class A11yMediaBehaviors extends SimpleColors {
    */
   _handlePrintClick(e) {
     this.dispatchEvent(new CustomEvent("print-transcript", { detail: this }));
+  }
+
+  /**
+   * handles the print transcript button
+   */
+  _handleDownloadClick(e) {
+    this.dispatchEvent(
+      new CustomEvent("download-transcript", { detail: this })
+    );
+  }
+
+  /**
+   * handles transcript printing
+   */
+  _handleDownload(e) {
+    let root = this;
+    root.dispatchEvent(
+      new CustomEvent("downloading-transcript", { detail: root })
+    );
+    root.$.transcript.download(root.mediaTitle);
   }
 
   /**
