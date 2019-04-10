@@ -8,30 +8,89 @@ window.StorybookUtilities.requestAvailability();
 /**
  * add to the pattern library 
  */
-/*const Pattern = {
-  "of": "Pattern Library/Molecules/Layout",       //Patter library path
-  "name": "Collapse"                              //Pattern name
-  "file": require("raw-loader!./demo/index.html"),
+const SimpleColorsPattern = {
+  "of": "Pattern Library/Atoms",       
+  "name": "Color",                              
+  "file": require("raw-loader!./demo/colors.html"),
   "replacements": []
 };
-window.StorybookUtilities.instance.addPattern(Pattern);*/
+/**
+ * add to the pattern library 
+ */
+const SimpleColorsPatternPicker = {
+  "of": "Pattern Library/Atoms/Forms",       
+  "name": "Color Picker",                              
+  "file": require("raw-loader!./demo/picker.html"),
+  "replacements": []
+};
+window.StorybookUtilities.instance.addPattern(SimpleColorsPattern);
+window.StorybookUtilities.instance.addPattern(SimpleColorsPatternPicker);
 
 /**
  * add the live demo
  */
-/*const Story = {
-  "of": "Web Components",                   //component folder
-  "name": "a11y-collapse",                  //component tag
-  "props": A11yCollapse.properties,         //component properties that will become knobs
-  "slots": {                                //slots that will become knobs
-    "heading":                              
-      {
-        "name": "heading",                  //slot name
-        "type": "String",                   //slot type
-        "value": `Click to expand me.`      //slot content
+const colors = window.StorybookUtilities.instance.getSimpleColors();
+colors.accentColor.value = 'grey';
+const SimpleColorsStory = {
+  "of": "Web Components/simple-colors",                  
+  "name": "simple-colors",
+  "props": colors,
+  "slots": {}, 
+  "attr": ``,  
+  "slotted": `
+    <style is="custom-style" include="simple-colors">
+      div {
+        padding: 20px;
+        margin: 0 0 15px;
       }
-  }, 
-  "attr": ``,                               //attributes that won't become knobs
-  "slotted": ``                             //slots that won't become knobs
+      button {
+        color: var(--simple-colors-default-theme-grey-1);
+        border-radius: 3px;
+        padding: 3px 5px;
+        font-size: 110%;
+        cursor: pointer;
+      }
+      #box {
+        display: block;
+        margin: 0 15px;
+        padding: 20px;
+        color: var(--simple-colors-default-theme-grey-12);
+        background-color: var(--simple-colors-default-theme-accent-1);
+        border: 4px solid var(--simple-colors-default-theme-accent-3);
+      }
+      simple-colors-picker-demo[dark] #box {
+        background-color: var(--simple-colors-default-theme-grey-1);
+        border: 4px solid var(--simple-colors-default-theme-accent-6);
+      }
+      .button {
+        background-color: var(--simple-colors-default-theme-accent-7);
+        border: 2px solid var(--simple-colors-default-theme-accent-8);
+      }
+      .button:hover {
+        background-color: var(--simple-colors-default-theme-accent-8);
+      }
+      .confirm {
+        background-color: var(--simple-colors-default-theme-blue-7);
+        border: 2px solid var(--simple-colors-default-theme-blue-8);
+      }
+      .confirm:hover {
+        background-color: var(--simple-colors-default-theme-blue-8);
+      }
+      .delete {
+        background-color: var(--simple-colors-default-theme-red-7);
+        border: 2px solid var(--simple-colors-default-theme-red-8);
+      }
+      .delete:hover {
+        background-color: var(--simple-colors-default-theme-red-8);
+      }
+    </style>
+    <div id="box">
+    <p class="simple-colors-default-theme-accent-7-text">This is an accent-color box.</p>
+    <button class="button">
+      Button
+    </button>
+    <button class="confirm">Save</button>
+    <button class="delete">Delete</button>
+  </div>`
 }
-window.StorybookUtilities.instance.addLiveDemo(Story);*/
+window.StorybookUtilities.instance.addLiveDemo(SimpleColorsStory);

@@ -196,12 +196,12 @@ export class StorybookUtilities {
         story.attrBindings = ``;
         Object.values(this.getBindings(story.props)).forEach(prop => {
           if (prop.value !== false && prop.value !== "") {
-            story.attrBindings += ` ${prop.id}="${prop.value
-              .replace(/'/g, "&apos;")
-              .replace(/"/g, "&quot;")}"`;
-            console.log(
-              prop.value.replace(/'/g, "&apos;").replace(/"/g, "&quot;")
-            );
+            story.attrBindings +=
+              typeof prop.value !== "string"
+                ? ` ${prop.id}="${prop.value}"`
+                : ` ${prop.id}="${prop.value
+                    .replace(/'/g, "&apos;")
+                    .replace(/"/g, "&quot;")}"`;
           }
         });
         story.slotBindings = ``;

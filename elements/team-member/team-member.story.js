@@ -17,7 +17,7 @@ window.StorybookUtilities.instance.addPattern(TeamMemberPattern);
 /**
  * add the live demo
  */
-const TeamMemberStory = {
+/*const TeamMemberStory = {
   "of": "Web Components",
   "name": "team-member",
   "props": TeamMember.properties, 
@@ -25,4 +25,4 @@ const TeamMemberStory = {
   "attr": ``,
   "slotted": ``
 }
-window.StorybookUtilities.instance.addLiveDemo(TeamMemberStory);
+window.StorybookUtilities.instance.addLiveDemo(TeamMemberStory);*/
