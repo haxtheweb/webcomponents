@@ -105,7 +105,7 @@ export class StorybookUtilities {
                       : ""
                   )
                 : method === "boolean"
-                ? storybookBridge.boolean(key, false)
+                ? storybookBridge.boolean(key, props[key].value)
                 : method === "date"
                 ? storybookBridge.date(key, new Date(props[key].value))
                 : method === "files"

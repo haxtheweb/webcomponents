@@ -93,4 +93,15 @@ const SimpleColorsStory = {
     <button class="delete">Delete</button>
   </div>`
 }
+const picker = SimpleColorsPicker.properties;
+picker.label.value ="Pick a Color";
+const SimpleColorsPickerStory = {
+  "of": "Web Components/simple-colors",                  
+  "name": "simple-colors-picker",
+  "props": picker,
+  "slots": {}, 
+  "attr": ``,  
+  "slotted": ``
+}
 window.StorybookUtilities.instance.addLiveDemo(SimpleColorsStory);
+window.StorybookUtilities.instance.addLiveDemo(SimpleColorsPickerStory);

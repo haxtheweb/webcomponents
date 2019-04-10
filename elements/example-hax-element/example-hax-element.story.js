@@ -8,8 +8,8 @@ window.StorybookUtilities.requestAvailability();
  * add to the pattern library 
  */
 /*const Pattern = {
-  "of": "Pattern Library/Molecules/Layout",       //Patter library path
-  "name": "Collapse"                              //Pattern name
+  "of": "Pattern Library/Molecules/Layout",       //Pattern library path
+  "name": "Collapse",                             //Pattern name
   "file": require("raw-loader!./demo/index.html"),
   "replacements": []
 };
