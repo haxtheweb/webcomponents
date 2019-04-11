@@ -19,8 +19,9 @@ Polymer({
         display: inline-flex;
       }
       paper-button {
-        height: 36px;
-        width: 36px;
+        height: 48px;
+        line-height: 48px;
+        width: 48px;
         overflow: hidden;
         margin: 0;
         text-transform: none;
@@ -28,24 +29,18 @@ Polymer({
         color: var(--hax-color-accent-text);
         display: flex;
         padding: 8px;
-        border-radius: 4px;
+        border-radius: 50%;
         border: 1px solid var(--hax-color-bg-accent);
         min-width: unset;
         --paper-button-ink-color: var(--hax-color-accent1);
-      }
-      :host([edged="left"]) paper-button {
-        border-bottom-right-radius: 16px;
-      }
-      :host([edged="right"]) paper-button {
-        border-bottom-left-radius: 16px;
       }
       paper-button .button-inner {
         text-align: center;
         margin: 0 auto;
       }
       paper-button iron-icon {
-        height: 20px;
-        width: 20px;
+        height: 24px;
+        width: 24px;
         display: inline-flex;
       }
       paper-button:hover,
