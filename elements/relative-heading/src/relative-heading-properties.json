@@ -1,14 +1,5 @@
 {
   /**
-   * Default aria-live value of polite so that if the headings change, the screenreader is updated.
-   */
-  "ariaLive": {
-    "name": "ariaLive",
-    "type": "String",
-    "value": "polite",
-    "reflectToAttribute": true
-  },
-  /**
    * The default heading level (1-6), eg., 1 for <h1>, if there  is no parent.
    */
   "defaultLevel": {
@@ -22,7 +13,8 @@
   "id": {
     "name": "id",
     "type": "String",
-    "value": null
+    "value": null,
+    "observer": "_updateChildren"
   },
   /**
    * The parent relative-heading's UUID.
@@ -30,8 +22,7 @@
   "parentId": {
     "name": "parentId",
     "type": "String",
-    "value": null,
-    "observer": "_parentIdChange"
+    "value": null
   },
   /**
    * The heading text.
@@ -48,7 +39,8 @@
     "name": "level",
     "type": "Number",
     "reflectToAttribute": true,
-    "observer": "_levelChange"
+    "computed": "_getLevel(parentId,defaultLevel)",
+    "observer": "_updateChildren"
   },
   /**
    * Is the heading an h1?

@@ -12,19 +12,22 @@
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../relative-heading.js';
     </script>
+    <script src="./demo.js"></script>
     <style is="custom-style" include="demo-pages-shared-styles">
-        relative-heading:before {
-          content: '<h' attr(level) '/>';
-          font-size: 10px;
-          float: right;
-        }
     </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic relative-heading demo</h3>
       <demo-snippet>
-        <p>
+        <style>
+          relative-heading:before {
+            content: '<h' attr(level) '/>';
+            font-size: 10px;
+            float: right;
+          }  
+        </style>
+        <p id="selector" hidden>
           <label>Make "Sapien sit amet" a subheading of
             <select id="changer">
               <option value="rh1">Lorem ipsum dolor</option>
@@ -33,14 +36,6 @@
             </select>
           </label>
         </p>
-        <script>
-          window.onload = function(){
-            let changer = document.getElementById('changer'), rh4 = document.getElementById('rh4');
-            changer.onchange = function(e){
-              rh4.parentId = changer.value;
-            }
-          };
-        </script>
         <template>
           <relative-heading id="rh1" text="Lorem ipsum dolor"></relative-heading>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>

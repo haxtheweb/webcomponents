@@ -6,30 +6,24 @@ window.StorybookUtilities.requestAvailability();
 /**
  * add to the pattern library 
  */
-/*const Pattern = {
-  "of": "Pattern Library/Molecules/Layout",       //Pattern library path
-  "name": "Collapse",                             //Pattern name
+const DemoPattern = {
+  "of": "Pattern Library/Atoms",
+  "name": "Icons",
   "file": require("raw-loader!./demo/index.html"),
   "replacements": []
 };
-window.StorybookUtilities.instance.addPattern(Pattern);*/
+window.StorybookUtilities.instance.addPattern(DemoPattern);
 
 /**
  * add the live demo
  */
-/*const Story = {
-  "of": "Web Components",                   //component folder
-  "name": "a11y-collapse",                  //component tag
-  "props": A11yCollapse.properties,         //component properties that will become knobs
-  "slots": {                                //slots that will become knobs
-    "heading":                              
-      {
-        "name": "heading",                  //slot name
-        "type": "String",                   //slot type
-        "value": `Click to expand me.`      //slot content
-      }
+const Story = {
+  "of": "Web Components",
+  "name": "iconset-demo",
+  "props": IconsetDemo.properties,
+  "slots": { 
   }, 
-  "attr": ``,                               //attributes that won't become knobs
-  "slotted": ``                             //slots that won't become knobs
+  "attr": ``,
+  "slotted": ``
 }
-window.StorybookUtilities.instance.addLiveDemo(Story);*/
+window.StorybookUtilities.instance.addLiveDemo(Story);

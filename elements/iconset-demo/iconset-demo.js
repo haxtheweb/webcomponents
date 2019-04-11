@@ -96,10 +96,29 @@ class IconsetDemo extends PolymerElement {
   // properties available to the custom element for data binding
   static get properties() {
     return {
+      /**
+       * all the iconsets
+       */
       __iconList: {
         name: "__iconList",
         type: "Array",
         value: []
+      },
+      /**
+       * a space-separated whitelist of iconsets by name
+       */
+      includeSets: {
+        name: "includeSets",
+        type: "String",
+        value: null
+      },
+      /**
+       * a space-separated blacklist of iconsets by name
+       */
+      excludeSets: {
+        name: "excludeSets",
+        type: "String",
+        value: null
       }
     };
   }
@@ -114,10 +133,11 @@ class IconsetDemo extends PolymerElement {
   /**
    * life cycle, element is ready
    */
-  connectedCallback() {
-    super.connectedCallback();
+  ready() {
+    super.ready();
     const iconSets = new IronMeta({ type: "iconset" });
-    let temp = [];
+    let root = this,
+      temp = [];
 
     // need to access iconset imperatively now
     if (
@@ -128,17 +148,32 @@ class IconsetDemo extends PolymerElement {
       var index = 0;
       iconSets.list.forEach(function(item) {
         let name = item.name;
-        temp.push({
-          name: name,
-          icons: []
-        });
-        item.getIconNames().forEach(icon => {
-          temp[index].icons.push(icon);
-        });
-        index++;
+        if (!root._hideIconset(name)) {
+          temp.push({
+            name: name,
+            icons: []
+          });
+          item.getIconNames().forEach(icon => {
+            temp[index].icons.push(icon);
+          });
+          index++;
+        }
       });
     }
     this.__iconList = temp;
+  }
+  /**
+   *  determines if a given iconset should be hidden
+   *
+   * @param {string} name the name of the iconset
+   * @returns {boolean} whether or n ot to hide the iconset
+   */
+  _hideIconset(name) {
+    let isets = this.includeSets !== null ? this.includeSets.split(/ /) : [],
+      included = isets.length === 0 || isets.includes(name),
+      esets = this.excludeSets !== null ? this.excludeSets.split(/ /) : [],
+      excluded = esets.length.length > 0 && esets.includes(name);
+    return !included || excluded;
   }
   /**
    * life cycle, element is removed from the DOM

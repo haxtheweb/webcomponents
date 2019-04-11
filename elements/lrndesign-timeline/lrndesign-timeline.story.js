@@ -41,7 +41,6 @@ props = Object.assign(
 );
 props.title.value = `My Timeline`;
 props.events.value = events;
-console.log(events, typeof events, typeof props.events.value);
 const LrndesignTimelineStory = {
   "of": "Web Components",
   "name": "lrndesign-timeline",

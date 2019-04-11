@@ -53,12 +53,12 @@ class RelativeHeading extends PolymerElement {
           @apply --relative-heading-h6;
         }
       </style>
-      <h1 hidden="[[!__isLevel1]]">[[text]]</h1>
-      <h2 hidden="[[!__isLevel2]]">[[text]]</h2>
-      <h3 hidden="[[!__isLevel3]]">[[text]]</h3>
-      <h4 hidden="[[!__isLevel4]]">[[text]]</h4>
-      <h5 hidden="[[!__isLevel5]]">[[text]]</h5>
-      <h6 hidden="[[!__isLevel6]]">[[text]]</h6>
+      <h1 aria-live="polite" hidden="[[!__isLevel1]]">[[text]]</h1>
+      <h2 aria-live="polite" hidden="[[!__isLevel2]]">[[text]]</h2>
+      <h3 aria-live="polite" hidden="[[!__isLevel3]]">[[text]]</h3>
+      <h4 aria-live="polite" hidden="[[!__isLevel4]]">[[text]]</h4>
+      <h5 aria-live="polite" hidden="[[!__isLevel5]]">[[text]]</h5>
+      <h6 aria-live="polite" hidden="[[!__isLevel6]]">[[text]]</h6>
     `;
   }
 
@@ -111,15 +111,6 @@ class RelativeHeading extends PolymerElement {
   static get properties() {
     return {
       /**
-       * Default aria-live value of polite so that if the headings change, the screenreader is updated.
-       */
-      ariaLive: {
-        name: "ariaLive",
-        type: "String",
-        value: "polite",
-        reflectToAttribute: true
-      },
-      /**
        * The default heading level (1-6), eg., 1 for <h1>, if there  is no parent.
        */
       defaultLevel: {
@@ -133,7 +124,8 @@ class RelativeHeading extends PolymerElement {
       id: {
         name: "id",
         type: "String",
-        value: null
+        value: null,
+        observer: "_updateChildren"
       },
       /**
        * The parent relative-heading's UUID.
@@ -141,8 +133,7 @@ class RelativeHeading extends PolymerElement {
       parentId: {
         name: "parentId",
         type: "String",
-        value: null,
-        observer: "_parentIdChange"
+        value: null
       },
       /**
        * The heading text.
@@ -159,7 +150,8 @@ class RelativeHeading extends PolymerElement {
         name: "level",
         type: "Number",
         reflectToAttribute: true,
-        observer: "_levelChange"
+        computed: "_getLevel(parentId,defaultLevel)",
+        observer: "_updateChildren"
       },
       /**
        * Is the heading an h1?
@@ -224,8 +216,6 @@ class RelativeHeading extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.level = this.defaultLevel;
-    this._parentIdChange();
     this.HAXWiring = new HAXWiring();
     this.HAXWiring.setup(
       RelativeHeading.haxProperties,
@@ -234,28 +224,25 @@ class RelativeHeading extends PolymerElement {
     );
   }
   /**
-   * update the children when this level changes
-   */
-  _levelChange() {
-    let root = this,
-      children = document.querySelectorAll(
-        'relative-heading[parent-id="' + this.id + '"]'
-      );
-    children.forEach(child => {
-      child.level = this.level < 6 ? this.level + 1 : 6;
-    });
-  }
-  /**
    * update this level when the parent id changes
    */
-  _parentIdChange() {
-    let parent = document.querySelector('[id="' + this.parentId + '"]'),
-      root = this;
-    if (parent !== null && parent.level !== null) {
-      this.level = parent.level < 6 ? parent.level + 1 : 6;
-    } else {
-      this.level = this.defaultLevel;
-    }
+  _getLevel(parentId, defaultLevel) {
+    let root = this,
+      parent = document.querySelector("#" + parentId),
+      parentLvl =
+        parent !== null && parent.level !== undefined
+          ? parent.level
+          : defaultLevel - 1,
+      level = parentLvl < 6 ? parentLvl + 1 : 6;
+    return level;
+  }
+  _updateChildren() {
+    document
+      .querySelectorAll('relative-heading[parent-id="' + this.id + '"]')
+      .forEach(child => {
+        child.parentId = null;
+        child.parentId = this.id;
+      });
   }
   /**
    * determines if the level matches a specific level
@@ -269,13 +256,9 @@ class RelativeHeading extends PolymerElement {
   }
   /**
    * life cycle, element is removed from the DOM
-   */
+   * /
   disconnectedCallback() {
-    let children = document.querySelectorAll('[parent-id="' + this.id + '"]');
-    children.forEach(child => {
-      child.parentId = null;
-    });
-  }
+  }*/
 }
 window.customElements.define(RelativeHeading.tag, RelativeHeading);
 export { RelativeHeading };

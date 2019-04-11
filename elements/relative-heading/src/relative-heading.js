@@ -30,8 +30,6 @@ class RelativeHeading extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.level = this.defaultLevel;
-    this._parentIdChange();
     this.HAXWiring = new HAXWiring();
     this.HAXWiring.setup(
       RelativeHeading.haxProperties,
@@ -40,28 +38,25 @@ class RelativeHeading extends PolymerElement {
     );
   }
   /**
-   * update the children when this level changes
-   */
-  _levelChange() {
-    let root = this,
-      children = document.querySelectorAll(
-        'relative-heading[parent-id="' + this.id + '"]'
-      );
-    children.forEach(child => {
-      child.level = this.level < 6 ? this.level + 1 : 6;
-    });
-  }
-  /**
    * update this level when the parent id changes
    */
-  _parentIdChange() {
-    let parent = document.querySelector('[id="' + this.parentId + '"]'),
-      root = this;
-    if (parent !== null && parent.level !== null) {
-      this.level = parent.level < 6 ? parent.level + 1 : 6;
-    } else {
-      this.level = this.defaultLevel;
-    }
+  _getLevel(parentId, defaultLevel) {
+    let root = this,
+      parent = document.querySelector("#" + parentId),
+      parentLvl =
+        parent !== null && parent.level !== undefined
+          ? parent.level
+          : defaultLevel - 1,
+      level = parentLvl < 6 ? parentLvl + 1 : 6;
+    return level;
+  }
+  _updateChildren() {
+    document
+      .querySelectorAll('relative-heading[parent-id="' + this.id + '"]')
+      .forEach(child => {
+        child.parentId = null;
+        child.parentId = this.id;
+      });
   }
   /**
    * determines if the level matches a specific level
@@ -75,13 +70,9 @@ class RelativeHeading extends PolymerElement {
   }
   /**
    * life cycle, element is removed from the DOM
-   */
+   * /
   disconnectedCallback() {
-    let children = document.querySelectorAll('[parent-id="' + this.id + '"]');
-    children.forEach(child => {
-      child.parentId = null;
-    });
-  }
+  }*/
 }
 window.customElements.define(RelativeHeading.tag, RelativeHeading);
 export { RelativeHeading };
