@@ -80,7 +80,7 @@ class SimpleIconPicker extends SimplePicker {
         name: "hideOptionLabels",
         type: "Boolean",
         value: true,
-        "read-only": true
+        readOnly: true
       },
 
       /**
@@ -185,6 +185,7 @@ class SimpleIconPicker extends SimplePicker {
    *
    */
   _getOptions(icons = [], __iconList = [], allowNull = false) {
+    if (typeof icons === "string") icons = JSON.parse(icons);
     if (icons.length === 0) icons = __iconList;
     let options = allowNull === false ? [] : [[{ alt: "null", value: null }]],
       h = allowNull === false ? 0 : 1,
