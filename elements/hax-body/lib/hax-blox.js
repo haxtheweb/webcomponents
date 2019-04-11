@@ -1,4 +1,4 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { HAXApp } from "./hax-app.js";
 /**
  `hax-blox`
 Register a blox with HAX store.
@@ -39,33 +39,16 @@ Register a blox with HAX store.
     }
   ]
 }]
-
 ```
-
 */
-Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: none;
-      }
-    </style>
-  `,
-  is: "hax-blox",
-  properties: {
-    /**
-     * The data model.
-     */
-    data: {
-      type: Object
-    }
-  },
-  /**
-   * ON attached life-cycle, meaning it's in the body most likely, then fire registration.
-   */
-  attached: function() {
-    if (typeof this.data !== typeof undefined) {
-      this.fire("hax-register-blox", this.data);
-    }
+class HAXBlox extends HAXApp {
+  constructor() {
+    super();
+    this.eventName = "hax-register-blox";
   }
-});
+  static get tag() {
+    return "hax-blox";
+  }
+}
+window.customElements.define(HAXBlox.tag, HAXBlox);
+export { HAXBlox };
