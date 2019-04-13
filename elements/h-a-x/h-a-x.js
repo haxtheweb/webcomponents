@@ -2,29 +2,10 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
+import { DynamicImporter } from "@lrnwebcomponents/dynamic-importer/dynamic-importer.js";
 import "@lrnwebcomponents/hax-body/lib/hax-store.js";
-import "@lrnwebcomponents/hax-body/lib/hax-panel.js";
-import "@lrnwebcomponents/hax-body/lib/hax-manager.js";
-import "@lrnwebcomponents/hax-body/lib/hax-autoloader.js";
 import "@lrnwebcomponents/hax-body/hax-body.js";
-import "@lrnwebcomponents/hax-body/lib/hax-app-picker.js";
-import "@lrnwebcomponents/hax-body/lib/hax-app.js";
-import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
-import "@lrnwebcomponents/hax-body/lib/hax-preferences-dialog.js";
-import "@lrnwebcomponents/hax-body/lib/hax-stax-picker.js";
-import "@lrnwebcomponents/hax-body/lib/hax-blox-picker.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icons/editor-icons.js";
-import "@polymer/iron-icons/device-icons.js";
-import "@polymer/iron-icons/hardware-icons.js";
-import "@polymer/iron-icons/communication-icons.js";
-import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
-import "@polymer/iron-icons/social-icons.js";
-import "@polymer/iron-icons/av-icons.js";
-import "@polymer/iron-icons/places-icons.js";
-import "@polymer/iron-icons/maps-icons.js";
-import "@polymer/iron-image/iron-image.js";
-import "@lrnwebcomponents/hax-body/lib/hax-export-dialog.js";
+
 /**
  * `h-a-x`
  * `Single tag to transform authoring`
@@ -36,7 +17,7 @@ import "@lrnwebcomponents/hax-body/lib/hax-export-dialog.js";
  * @customElement
  * @demo demo/index.html
  */
-class HAX extends HTMLElement {
+class HAX extends DynamicImporter(HTMLElement) {
   // render function
   get html() {
     return `
@@ -70,6 +51,35 @@ class HAX extends HTMLElement {
    */
   static get tag() {
     return "h-a-x";
+  }
+  /**
+   * Dynamically import these late so we can load faster
+   */
+  dynamicImports() {
+    return {
+      "hax-panel": "@lrnwebcomponents/hax-body/lib/hax-panel.js",
+      "hax-autoloader": "@lrnwebcomponents/hax-body/lib/hax-autoloader.js",
+      "hax-app": "@lrnwebcomponents/hax-body/lib/hax-app.js",
+      "hax-manager": "@lrnwebcomponents/hax-body/lib/hax-manager.js",
+      "hax-app-picker": "@lrnwebcomponents/hax-body/lib/hax-app-picker.js",
+      "hax-toolbar": "@lrnwebcomponents/hax-body/lib/hax-toolbar.js",
+      "hax-preferences-dialog":
+        "@lrnwebcomponents/hax-body/lib/hax-preferences-dialog.js",
+      "hax-stax-picker": "@lrnwebcomponents/hax-body/lib/hax-stax-picker.js",
+      "hax-blox-picker": "@lrnwebcomponents/hax-body/lib/hax-blox-picker.js",
+      "iron-icons": "@polymer/iron-icons/iron-icons.js",
+      "editor-icons": "@polymer/iron-icons/editor-icons.js",
+      "device-icons": "@polymer/iron-icons/device-icons.js",
+      "hardware-icons": "@polymer/iron-icons/hardware-icons.js",
+      "communication-icons": "@polymer/iron-icons/communication-icons.js",
+      "lrn-icons": "@lrnwebcomponents/lrn-icons/lrn-icons.js",
+      "social-icons": "@polymer/iron-icons/social-icons.js",
+      "av-icons": "@polymer/iron-icons/av-icons.js",
+      "places-icons": "@polymer/iron-icons/places-icons.js",
+      "maps-icons": "@polymer/iron-icons/maps-icons.js",
+      "iron-image": "@polymer/iron-image/iron-image.js",
+      "hax-export-dialog": "@lrnwebcomponents/hax-body/lib/hax-export-dialog.js"
+    };
   }
   /**
    * life cycle
@@ -108,6 +118,7 @@ class HAX extends HTMLElement {
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
+    super.connectedCallback();
     // this ensures it's only applied once
     if (!this.__HAXApplied && !window.__HAXApplied) {
       window.__HAXApplied = this.__HAXApplied = this.applyHAX();

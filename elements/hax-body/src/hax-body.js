@@ -8,9 +8,9 @@ import {
   encapScript,
   wipeSlot
 } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
-import "@polymer/paper-item/paper-item.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
+import "@polymer/paper-item/paper-item.js";
 import "@lrnwebcomponents/grid-plate/grid-plate.js";
 import "./lib/hax-text-context.js";
 import "./lib/hax-ce-context.js";

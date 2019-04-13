@@ -58,7 +58,10 @@ Polymer({
 
   behaviors: [MediaBehaviors.Video, HAXBehaviors.PropertiesBehaviors],
 
-  observers: ["_loadAppStoreData(__ready, __appStoreData, haxAutoloader)"],
+  observers: [
+    "_loadAppStoreData(__ready, __appStoreData, haxAutoloader)",
+    "_storePiecesAllHere(haxAutoloader,activeHaxBody, haxPanel, haxToast, haxExport, haxPreferences, haxManager, haxStaxPicker, haxAppPicker)"
+  ],
 
   properties: {
     /**
@@ -794,16 +797,6 @@ Polymer({
    * attached.
    */
   attached: function() {
-    // fire that hax store is ready to go so now we can setup the rest
-    this.dispatchEvent(
-      new CustomEvent("hax-store-ready", {
-        bubbles: true,
-        cancelable: false,
-        composed: true,
-        detail: true
-      })
-    );
-    window.HaxStore.ready = true;
     afterNextRender(this, function() {
       // register built in primitive definitions
       this._buildPrimitiveDefinitions();
@@ -832,7 +825,41 @@ Polymer({
         }
       }, 325);
     });
-    this.__ready = true;
+  },
+  _storePiecesAllHere: function(
+    haxAutoloader,
+    activeHaxBody,
+    haxPanel,
+    haxToast,
+    haxExport,
+    haxPreferences,
+    haxManager,
+    haxStaxPicker,
+    haxAppPicker
+  ) {
+    if (
+      !this.__ready &&
+      haxAutoloader &&
+      haxPanel &&
+      haxToast &&
+      haxExport &&
+      haxPreferences &&
+      haxManager &&
+      haxStaxPicker &&
+      haxAppPicker
+    ) {
+      // fire that hax store is ready to go so now we can setup the rest
+      this.dispatchEvent(
+        new CustomEvent("hax-store-ready", {
+          bubbles: true,
+          cancelable: false,
+          composed: true,
+          detail: true
+        })
+      );
+      window.HaxStore.ready = true;
+      this.__ready = true;
+    }
   },
   /**
    * Build a list of common voice commands

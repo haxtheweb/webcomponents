@@ -5,6 +5,7 @@ import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import { microTask } from "@polymer/polymer/lib/utils/async.js";
+import { DynamicImporter } from "@lrnwebcomponents/dynamic-importer/dynamic-importer.js";
 import {
   encapScript,
   findTagsInHTML,
@@ -13,7 +14,6 @@ import {
 import { autorun, toJS } from "mobx";
 import { store } from "./haxcms-site-store.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@polymer/paper-progress/paper-progress.js";
 import "./haxcms-site-router.js";
 
 /**
@@ -24,13 +24,21 @@ import "./haxcms-site-router.js";
  * - it loads a site.json file and then utilizes this data in order to construct
  *   what theme it should load (element) in order to get everything off and running
  */
-class HAXCMSSiteBuilder extends PolymerElement {
+class HAXCMSSiteBuilder extends DynamicImporter(PolymerElement) {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
     return "haxcms-site-builder";
+  }
+  /**
+   * Dynamically import these late so we can load faster
+   */
+  dynamicImports() {
+    return {
+      "paper-progress": "@polymer/paper-progress/paper-progress.js"
+    };
   }
   // render function
   static get template() {
