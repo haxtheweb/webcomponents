@@ -281,31 +281,29 @@ class HAXCMSSiteBuilder extends DynamicImporter(PolymerElement) {
         store.activeItemContent = html;
         // insert the content as quickly as possible, then work on the dynamic imports
         // @todo this ight be why we get a double render some times
-        microTask.run(() => {
-          setTimeout(() => {
-            let frag = document.createRange().createContextualFragment(html);
-            dom(this.themeElement).appendChild(frag);
-            this.dispatchEvent(
-              new CustomEvent("json-outline-schema-active-body-changed", {
-                bubbles: true,
-                composed: true,
-                cancelable: false,
-                detail: html
-              })
-            );
-            if (!window.HaxStore || !window.HaxStore.ready) {
-              setTimeout(() => {
-                if (
-                  store.cmsSiteEditor &&
-                  store.cmsSiteEditor.instance &&
-                  store.cmsSiteEditor.haxCmsSiteEditorUIElement
-                ) {
-                  window.HaxStore.instance.activeHaxBody.importContent(html);
-                }
-              }, 1000);
-            }
-          }, 5);
-        });
+        setTimeout(() => {
+          let frag = document.createRange().createContextualFragment(html);
+          dom(this.themeElement).appendChild(frag);
+          this.dispatchEvent(
+            new CustomEvent("json-outline-schema-active-body-changed", {
+              bubbles: true,
+              composed: true,
+              cancelable: false,
+              detail: html
+            })
+          );
+          if (!window.HaxStore || !window.HaxStore.ready) {
+            setTimeout(() => {
+              if (
+                store.cmsSiteEditor &&
+                store.cmsSiteEditor.instance &&
+                store.cmsSiteEditor.haxCmsSiteEditorUIElement
+              ) {
+                window.HaxStore.instance.activeHaxBody.importContent(html);
+              }
+            }, 1000);
+          }
+        }, 5);
         // if there are, dynamically import them
         if (this.manifest.metadata.dynamicElementLoader) {
           let tagsFound = findTagsInHTML(html);

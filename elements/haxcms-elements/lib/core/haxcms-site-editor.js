@@ -9,29 +9,38 @@ import { autorun, toJS } from "mobx";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@polymer/paper-fab/paper-fab.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
-import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@polymer/iron-icons/editor-icons.js";
 import "@lrnwebcomponents/jwt-login/jwt-login.js";
 import "@lrnwebcomponents/h-a-x/h-a-x.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
-import "@lrnwebcomponents/hax-body/lib/hax-schema-form.js";
+import { DynamicImporter } from "@lrnwebcomponents/dynamic-importer/dynamic-importer.js";
+
 /**
  * `haxcms-site-editor`
  * `haxcms editor element that provides all editing capabilities`
  *
  * @demo demo/index.html
  */
-class HAXCMSSiteEditor extends PolymerElement {
+class HAXCMSSiteEditor extends DynamicImporter(PolymerElement) {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
     return "haxcms-site-editor";
+  }
+  /**
+   * Dynamically import these late so we can load faster
+   */
+  dynamicImports() {
+    return {
+      "paper-button": "@polymer/paper-button/paper-button.js",
+      "hax-schema-form": "@lrnwebcomponents/hax-body/lib/hax-schema-form.js",
+      "paper-tooltip": "@polymer/paper-tooltip/paper-tooltip.js",
+      "editor-icons": "@polymer/iron-icons/editor-icons.js",
+      "paper-fab": "@polymer/paper-fab/paper-fab.js"
+    };
   }
   // render function
   static get template() {
