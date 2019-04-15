@@ -173,6 +173,12 @@ class A11yMediaPlayButton extends A11yMediaBehaviors {
           </g>
         </svg>
       </button>
+      <iron-a11y-keys
+        id="a11y"
+        keys="enter space"
+        target$="[[__target]]"
+        on-keys-pressed="_buttonTap"
+      ></iron-a11y-keys>
     `;
   }
 

@@ -4,6 +4,8 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { A11yMediaBehaviors } from "./lib/a11y-media-behaviors.js";
+import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
+import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import "@polymer/paper-slider/paper-slider.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/av-icons.js";
@@ -571,6 +573,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
             ></div>
             <div
               id="customcc"
+              aria-live="polite"
               class="screen-only"
               hidden$="[[!showCustomCaptions]]"
             >
@@ -601,6 +604,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
           mute-unmute="[[muteUnmute]]"
           on-controls-change="_onControlsChanged"
           on-print-transcript="_handlePrinting"
+          on-download-transcript="_handleDownload"
           responsive-size$="[[responsiveSize]]"
           play-pause="[[playPause]]"
           stand-alone$="[[standAlone]]"
@@ -632,6 +636,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
             on-searchbar-added="_handleSearchAdded"
             on-toggle-scroll="_handleTranscriptScrollToggle"
             on-print-transcript="_handlePrinting"
+            on-download-transcript="_handleDownload"
             stand-alone$="[[standAlone]]"
           >
           </a11y-media-transcript-controls>
@@ -725,7 +730,8 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
       fullscreenButton: {
         name: "fullscreenButton",
         type: "Boolean",
-        computed: "_getFullscreenButton(disableFullscreen,audioNoThumb)",
+        computed:
+          "_getFullscreenButton(disableFullscreen,audioNoThumb,screenfullLoaded)",
         notify: true
       },
 
@@ -813,6 +819,15 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
         notify: true,
         value: "xs",
         reflectToAttribute: true
+      },
+      /**
+       * Has screenfull loaded?
+       */
+      screenfullLoaded: {
+        name: "screenfullLoaded",
+        type: "Boolean",
+        value: false,
+        notify: true
       },
       /**
        * is YouTube?
@@ -915,6 +930,15 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
   connectedCallback() {
     super.connectedCallback();
     let root = this;
+    const name = "screenfullLib";
+    const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+    const location = `${basePath}lib/screenfull/dist/screenfull.js`;
+    window.ESGlobalBridge.requestAvailability();
+    window.ESGlobalBridge.instance.load(name, location);
+    window.addEventListener(
+      `es-bridge-${name}-loaded`,
+      root._onScreenfullLoaded.bind(root)
+    );
     root.__playerAttached = true;
     window.A11yMediaStateManager.requestAvailability();
     root._addResponsiveUtility();
@@ -934,6 +958,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
       tracks = new Array(),
       tdata = new Array(),
       selected = 0;
+    if (typeof screenfull === "object") root._onScreenfullLoaded.bind(root);
     if (root.id === null) root.id = "a11y-media-player" + Date.now();
     root.__playerReady = true;
     root.target = root.shadowRoot.querySelector("#transcript");
@@ -941,10 +966,6 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
     root.__slider = root.$.slider;
     root.__volume = root.muted ? 0 : Math.max(this.volume, 10);
     root.__resumePlaying = false;
-    root.__showFullscreen =
-      !root.disableFullscreen &&
-      window.A11yMediaStateManager.screenfullLoaded &&
-      screenfull.enabled;
     root.__duration = 0;
     root.$.controls.setStatus(root.__status);
     root.width = root.width !== null ? root.width : "100%";
@@ -963,14 +984,6 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
       root._addSourcesAndTracks();
     }
     root.$.transcript.setMedia(root.$.innerplayer);
-
-    // handles fullscreen
-    if (root.__showFullscreen) {
-      if (window.A11yMediaStateManager.screenfullLoaded)
-        screenfull.on("change", () => {
-          root.fullscreen = screenfull.isFullscreen;
-        });
-    }
     root.$.slider.addEventListener("mousedown", e => {
       root._handleSliderStart();
     });
@@ -1317,13 +1330,14 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    * @param {boolean} Is fullscreen mode set to disabled?
    * @returns {boolean} Should fullscreen disabled?
    */
-  _getFullscreenButton(disableFullscreen, audioNoThumb) {
+  _getFullscreenButton(disableFullscreen, audioNoThumb, screenfullLoaded) {
     if (
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
         navigator.userAgent
       ) ||
       disableFullscreen ||
-      audioNoThumb
+      audioNoThumb ||
+      !screenfullLoaded
     ) {
       return false;
     } else {
@@ -1560,10 +1574,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
       }
     } else if (action === "forward") {
       root.forward();
-    } else if (
-      action === "fullscreen" &&
-      window.A11yMediaStateManager.screenfullLoaded
-    ) {
+    } else if (action === "fullscreen" && root.fullscreenButton) {
       root.toggleTranscript(root.fullscreen);
       screenfull.toggle(root.$.outerplayer);
     } else if (action === "loop") {
@@ -1581,6 +1592,22 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
       root.setPlaybackRate(e.detail.value);
     } else if (action === "volume") {
       root.setVolume(e.detail.value);
+    }
+  }
+
+  /**
+   * sets the element's screenfullLoaded variable to true once screenfull is loaded
+   * and adds an event listener for screenfull
+   */
+  _onScreenfullLoaded() {
+    let root = this;
+    root.screenfullLoaded = true;
+
+    // handles fullscreen
+    if (screenfull) {
+      screenfull.on("change", () => {
+        if (screenfull.enabled) root.fullscreen = screenfull.isFullscreen;
+      });
     }
   }
 

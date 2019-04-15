@@ -15,7 +15,7 @@
     "name": "hideOptionLabels",
     "type": "Boolean",
     "value": true,
-    "read-only": true
+    "readOnly": true
   },
 
   /**

@@ -152,6 +152,13 @@ class SimplePopover extends AbsolutePositionBehavior {
         type: Number,
         value: -10,
         readOnly: true
+      },
+      /**
+       * The actual target element
+       */
+      target: {
+        type: Object,
+        observer: "updatePosition"
       }
     };
   }

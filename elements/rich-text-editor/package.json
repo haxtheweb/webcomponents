@@ -43,6 +43,7 @@
     "@lrnwebcomponents/a11y-collapse": "latest",
     "@lrnwebcomponents/es-global-bridge": "^2.0.9",
     "@lrnwebcomponents/hax-body-behaviors": "latest",
+    "@lrnwebcomponents/simple-popover": "^2.0.8",
     "@lrnwebcomponents/simple-picker": "latest",
     "@polymer/iron-a11y-keys": "^3.0.0",
     "@polymer/iron-fit-behavior": "^3.0.1",

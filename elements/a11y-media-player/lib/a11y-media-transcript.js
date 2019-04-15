@@ -173,6 +173,7 @@ class A11yMediaTranscript extends A11yMediaBehaviors {
         [[_getLocal('transcript','skip')]]
       </a>
       <div
+        aria-live="polite"
         id="loading"
         active$="[[_isLoading(selectedTranscript, tracks)]]"
         class="transcript-from-track"
@@ -181,6 +182,7 @@ class A11yMediaTranscript extends A11yMediaBehaviors {
       </div>
       <template id="tracks" is="dom-repeat" items="{{tracks}}" as="track">
         <div
+          aria-live="polite"
           id="track"
           class="transcript-from-track"
           lang="{{track.language}}"
@@ -205,6 +207,18 @@ class A11yMediaTranscript extends A11yMediaBehaviors {
           </template>
         </div>
       </template>
+      <template is="dom-repeat" items="{{tracks}}" as="track">
+        <div
+          id="download"
+          class="downloadable-track"
+          hidden
+          active$="[[_isActive(selectedTranscript,index)]]"
+        >
+          <template is="dom-repeat" items="{{track.cues}}" as="cue">
+            [[cue.start]] - [[cue.end]]: [[cue.text]]
+          </template>
+        </div>
+      </template>
       <div id="bottom" class="sr-only"></div>
     `;
   }
@@ -224,6 +238,34 @@ class A11yMediaTranscript extends A11yMediaBehaviors {
     super.ready();
   }
 
+  /**
+   * gets download data for the active transcript
+   *
+   * @param {string} the title of the media
+   */
+  download(mediaTitle) {
+    let root = this,
+      a = document.createElement("a"),
+      title =
+        mediaTitle !== null && mediaTitle !== ""
+          ? mediaTitle
+          : this._getLocal("transcript", "label"),
+      filename =
+        mediaTitle !== null && mediaTitle !== ""
+          ? mediaTitle.replace(/[^\w\d]/g, "")
+          : "Transcript",
+      track = root.shadowRoot.querySelector("#download[active]"),
+      data = track !== null ? track.innerText : "";
+    a.setAttribute(
+      "href",
+      "data:text/plain;charset=UTF-8," + encodeURIComponent(title + "\n" + data)
+    );
+    a.setAttribute("download", filename + ".txt");
+    a.style.display = "none";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
   /**
    * prints the active transcript
    *

@@ -44,6 +44,7 @@
           video-id$="[[videoId]]">
         </div>
         <div id="customcc" 
+          aria-live="polite"
           class="screen-only" 
           hidden$="[[!showCustomCaptions]]">
           <div id="customcctxt"></div>
@@ -71,6 +72,7 @@
       mute-unmute="[[muteUnmute]]"
       on-controls-change="_onControlsChanged"
       on-print-transcript="_handlePrinting"
+      on-download-transcript="_handleDownload"
       responsive-size$="[[responsiveSize]]"
       play-pause="[[playPause]]"
       stand-alone$="[[standAlone]]"
@@ -99,9 +101,10 @@
         on-searchbar-added="_handleSearchAdded"
         on-toggle-scroll="_handleTranscriptScrollToggle"
         on-print-transcript="_handlePrinting"
+        on-download-transcript="_handleDownload"
         stand-alone$="[[standAlone]]">
       </a11y-media-transcript-controls>
-      <a11y-media-transcript id="transcript"
+      <a11y-media-transcript id="transcript" 
         accent-color$="[[accentColor]]"
         dark$="[[darkTranscript]]"
         disable-scroll$="[[disableScroll]]"

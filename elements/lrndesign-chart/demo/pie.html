@@ -11,17 +11,19 @@
       import '../lrndesign-chart.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
-      lrndesign-pie {
-        width: 300px;
-        height: 300px;
-        display: inline-block;
-      }
     </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic lrndesign-pie demo</h3>
       <demo-snippet>
+        <style>
+            lrndesign-pie {
+              width: 300px;
+              height: 300px;
+              display: inline-block;
+            }
+        </style>
         <template>
           <lrndesign-pie chart-title="A pie chart of favorite foods" data-source="pie.csv"></lrndesign-pie>
           <lrndesign-pie dark chart-title="A pie chart of favorite foods" data-source="pie.csv"></lrndesign-pie>

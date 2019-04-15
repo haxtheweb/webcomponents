@@ -18,7 +18,7 @@ window.StorybookUtilities.instance.addPattern(A11yGifPlayerPattern);
  * add the live demo
  */
 const A11yGifPlayerStory = {
-  "of": "a11y-gif-player",
+  "of": "Web Components",
   "name": "a11y-gif-player",
   "props": {
     "alt": {"name": "alt", "type": "String", "value": "IT Crowd: Moss eating popcorn." },

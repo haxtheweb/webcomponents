@@ -3,8 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import * as Chartist from "chartist/dist/chartist.min.js";
-import "./lib/chartist-render-shared-styles";
+import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
+import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import "./lib/chartist-render-shared-styles.js";
 
 export { ChartistRender };
 /**
@@ -135,13 +136,28 @@ Container class	Ratio
    */
   connectedCallback() {
     super.connectedCallback();
-    this._chartistLoaded();
+    let root = this;
+    const name = "chartistLib";
+    const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+    let location = `${basePath}lib/chartist/dist/chartist.min.js`;
+    window.addEventListener(
+      `es-bridge-${name}-loaded`,
+      root._chartistLoaded.bind(root)
+    );
+    window.ESGlobalBridge.requestAvailability();
+    window.ESGlobalBridge.instance.load(name, location);
   }
 
+  /**
+   * life cycle, element is ready
+   */
   ready() {
     super.ready();
-    this.__chartId = this._getUniqueId("chartist-render-");
-    if (this.__chartistLoaded) this._chartReady();
+    let root = this;
+    window.dispatchEvent(
+      new CustomEvent("chartist-render-ready", { detail: root })
+    );
+    if (typeof Chartist === "object") root._chartistLoaded.bind(root);
   }
 
   /**
@@ -149,41 +165,31 @@ Container class	Ratio
    */
   _chartistLoaded() {
     this.__chartistLoaded = true;
-    if (this.__chartId) this._chartReady();
-  }
-  /**
-   * Makes chart and returns the chart object.
-   */
-  _checkReady() {
-    let root = this;
-    setInterval(root._chartReady, 500);
+    this.makeChart();
   }
 
   /**
    * Makes chart and returns the chart object.
    */
-  _chartReady() {
-    let root = this,
-      container = root.$.chart;
-    if (container !== null) {
-      window.dispatchEvent(
-        new CustomEvent("chartist-render-ready", { detail: root })
-      );
-      if (root.data !== null) root.makeChart();
-      clearInterval(root._checkReady);
-    }
-  }
-  /**
-   * Makes chart and returns the chart object.
-   */
   makeChart() {
+    setTimeout(() => {
+      this.chart = this._renderChart();
+    }, 100);
+  }
+
+  /**
+   * Renders chart and returns the chart object.
+   */
+  _renderChart() {
     let root = this,
-      chart;
+      chart = null;
+
+    root.__chartId = root._getUniqueId("chartist-render-");
     if (
-      this.__chartistLoaded &&
-      this.__chartId &&
-      root.data !== null &&
-      this.$.chart !== null
+      root !== undefined &&
+      typeof Chartist === "object" &&
+      root.$.chart !== null &&
+      root.data !== null
     ) {
       if (root.type == "bar") {
         if (
@@ -232,10 +238,8 @@ Container class	Ratio
       chart.on("created", () => {
         root.addA11yFeatures(chart.container.childNodes[0]);
       });
-      return chart;
-    } else {
-      return null;
     }
+    return chart;
   }
 
   /**

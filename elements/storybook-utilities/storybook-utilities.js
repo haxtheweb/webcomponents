@@ -1,6 +1,7 @@
 import { storiesOf } from "@storybook/polymer";
 import * as storybookBridge from "@storybook/addon-knobs/polymer";
 import "@lrnwebcomponents/simple-colors/lib/simple-colors-styles.js";
+import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 
 /**
  * Copyright 2018 The Pennsylvania State University
@@ -53,10 +54,13 @@ export class StorybookUtilities {
    */
   addPattern(story) {
     let template = this.cleanHTML(story.file, story.replacements);
+    story.before = story.before || ``;
+    story.after = story.after || ``;
     story.demo = storiesOf(story.of, module);
     story.demo.add(story.name, () => {
-      return `${template}`;
+      return `${story.before}${template}${story.after}`;
     });
+    return [story.before, template, story.after];
   }
   /**
    * Creates a knob and adds an attribute for each property in the given element
@@ -80,10 +84,7 @@ export class StorybookUtilities {
         // convert typed props
         if (keyType) {
           let method = keyType.toLowerCase(),
-            stringifiedVal = JSON.stringify(props[key].value || "").replace(
-              /'/g,
-              "&apos;"
-            );
+            stringifiedVal = JSON.stringify(props[key].value || "");
           // ensure ke-bab case
           let kebab = key.replace(/[A-Z\u00C0-\u00D6\u00D8-\u00DE]/g, function(
             match
@@ -108,7 +109,7 @@ export class StorybookUtilities {
                       : ""
                   )
                 : method === "boolean"
-                ? storybookBridge.boolean(key, false)
+                ? storybookBridge.boolean(key, props[key].value)
                 : method === "date"
                 ? storybookBridge.date(key, new Date(props[key].value))
                 : method === "files"
@@ -198,8 +199,14 @@ export class StorybookUtilities {
       () => {
         story.attrBindings = ``;
         Object.values(this.getBindings(story.props)).forEach(prop => {
-          if (prop.value !== false && prop.value !== "")
-            story.attrBindings += ` ${prop.id}='${prop.value}'`;
+          if (prop.value !== false && prop.value !== "") {
+            story.attrBindings +=
+              typeof prop.value !== "string"
+                ? ` ${prop.id}="${prop.value}"`
+                : ` ${prop.id}="${prop.value
+                    .replace(/'/g, "&apos;")
+                    .replace(/"/g, "&quot;")}"`;
+          }
         });
         story.slotBindings = ``;
         Object.values(this.getBindings(story.slots)).forEach(slot => {
@@ -220,6 +227,18 @@ export class StorybookUtilities {
       },
       { knobs: { escapeHTML: escape } }
     );
+  }
+  /**
+   * prevents the element's load of an unpacked location from failing
+   * and loads a packed path specificed by thye story.js file
+   * @param {*} name of the resource (should match the name the element is using to load)
+   * @param {*} location of the resource, eg., require("file-loader!./path/to/file.js")
+   */
+  addGlobalScript(name, location) {
+    window.ESGlobalBridge.requestAvailability();
+    if (!window.ESGlobalBridge.webpack) window.ESGlobalBridge.webpack = {};
+    window.ESGlobalBridge.webpack[name] = true;
+    window.ESGlobalBridge.instance.load(name, location, true);
   }
 }
 

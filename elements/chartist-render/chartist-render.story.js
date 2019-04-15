@@ -2,6 +2,10 @@ import { ChartistRender } from './chartist-render.js';
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 window.StorybookUtilities.requestAvailability();
+window.StorybookUtilities.instance.addGlobalScript(
+  'chartistLib',
+  require("file-loader!./lib/chartist/dist/chartist.min.js")
+);
 
 /**
  * add the live demo
@@ -37,7 +41,7 @@ props.scale.options = [
 ];
 props.scale.value = "ct-major-twelfth";
 const ChartistRenderStory = {
-  "of": "chartist-render",
+  "of": "Web Components",
   "name": "chartist-render",
   "props":  props,
   "slots": {}, 

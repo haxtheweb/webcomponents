@@ -27,7 +27,7 @@ ImageCompareSliderProps.bottomSrc.value = image2;
 ImageCompareSliderProps.style = {"type":"String", "value": `width: 400px;`};
 
 const ImageCompareSliderStory = {
-  "of": "image-compare-slider",
+  "of": "Web Components",
   "name": "image-compare-slider",
   "props":  ImageCompareSliderProps,
   "slots": {}, 

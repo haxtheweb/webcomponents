@@ -24,7 +24,7 @@ let events = [
     "imagesrc": "https://upload.wikimedia.org/wikipedia/commons/5/56/James_Pollock_Pennsylvania_Governor.jpg",  
   }, {  
     "heading": "1856 - Construction of Old Main",  
-    "details": "Construction of Old Main (the \"College Building\") begun; supervised by William G. Waring, who was appointed superintendent to open the school and plan farm, orchards and nursery.", 
+    "details": "Construction of Old Main (the &amp;quot;College Building&amp;quot;) begun; supervised by William G. Waring, who was appointed superintendent to open the school and plan farm, orchards and nursery.", 
     "imagealt": "Black and white photo original Old Main in an empty field.", 
     "imagesrc": "https://libraries.psu.edu/sites/default/files/migrated/1287768717666.jpg",   
   }, {  
@@ -41,9 +41,8 @@ props = Object.assign(
 );
 props.title.value = `My Timeline`;
 props.events.value = events;
-console.log(events, typeof events, typeof props.events.value);
 const LrndesignTimelineStory = {
-  "of": "lrndesign-timeline",
+  "of": "Web Components",
   "name": "lrndesign-timeline",
   "props":  props,
   "slots": {

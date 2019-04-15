@@ -4,7 +4,7 @@
     "className": "RelativeHeading",
     "customElementClass": "PolymerElement",
     "elementName": "relative-heading",
-    "generator-wcfactory-version": "0.3.2",
+    "generator-wcfactory-version": "0.7.1",
     "useHAX": true,
     "useSass": false,
     "files": {
@@ -28,15 +28,10 @@
   "amd": "relative-heading.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/relative-heading/test/",
-    "start": "yarn run dev",
-    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'",
-    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
-    "watch": "../../node_modules/.bin/gulp dev",
-    "serve": "polymer serve --npm --module-resolution=node --open",
-    "lighthouse": "../../node_modules/.bin/gulp lighthouse"
+    "start":"yarn run dev","build":"../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'","dev":"concurrently --kill-others \"yarn run watch\" \"yarn run serve\"","watch":"../../node_modules/.bin/gulp dev","serve":"polymer serve --npm --module-resolution=node --open","lighthouse":"../../node_modules/.bin/gulp lighthouse"
   },
   "author": {
-    "name": "btopro"
+    "name": "nikkimk"
   },
   "license": "Apache-2.0",
   "dependencies": {
@@ -64,6 +59,5 @@
   "keywords": [
     "web-components",
     "html"
-  ],
-  "gitHead": "e38751e6f76a812e00ae87ef826fafcdbfec4083"
+  ]
 }

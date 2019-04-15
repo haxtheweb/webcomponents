@@ -77,7 +77,7 @@ const pieProps = getAllKnobs( LrndesignPie.properties, PieCSV ),
   barProps =  getAllKnobs( LrndesignBar.properties, BarCSV ),
   lineProps =  getAllKnobs( LrndesignLine.properties, LineCSV );
 const LrndesignPieStory = {
-  "of": "lrndesign-chart",
+  "of": "Web Components/lrndesign-chart",
   "name": "lrndesign-pie",
   "props":  pieProps,
   "slots": {}, 
@@ -85,7 +85,7 @@ const LrndesignPieStory = {
   "slotted": ``
 };
 const LrndesignBarStory = {
-  "of": "lrndesign-chart",
+  "of": "Web Components/lrndesign-chart",
   "name": "lrndesign-bar",
   "props":  barProps,
   "slots": {}, 
@@ -93,7 +93,7 @@ const LrndesignBarStory = {
   "slotted": ``
 };
 const LrndesignLineStory = {
-  "of": "lrndesign-chart",
+  "of": "Web Components/lrndesign-chart",
   "name": "lrndesign-line",
   "props":  lineProps,
   "slots": {}, 

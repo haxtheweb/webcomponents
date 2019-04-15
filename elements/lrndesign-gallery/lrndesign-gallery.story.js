@@ -140,7 +140,7 @@ props.sources.value = [
   }
 ];
 const LrndesignGalleryStory = {
-  "of": "lrndesign-gallery",
+  "of": "Web Components",
   "name": "lrndesign-gallery",
   "props": props,
   "slots": {

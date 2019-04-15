@@ -49,7 +49,7 @@ props.options.value = [
   ]
 ];
 const SimplePickerStory = {
-  "of": "simple-picker",
+  "of": "Web Components",
   "name": "simple-picker",
   "props": props,
   "slots": {}, 

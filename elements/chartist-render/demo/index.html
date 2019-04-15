@@ -11,9 +11,6 @@
       import '../chartist-render.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
-      *[scale="ct-square"] {
-        max-width: 300px;
-      }
     </style>
   </head>
   <body>
@@ -21,6 +18,13 @@
       <h3>Basic chartist-render demo</h3>
       <h3>Basic pie chart</h3>
       <demo-snippet>
+        <style>
+          chartist-render#pie-chart {
+              width: 300px;
+              height: 300px;
+              display: inline-block;
+          }  
+        </style>
         <template>
           <chartist-render id="pie-chart" 
             chart-title="A pie chart of favorite foods" 
@@ -79,7 +83,6 @@
             };
             document.getElementById('bar-chart').data = bardata;
             document.getElementById('bar-chart').options = baroptions;
-            document.getElementById('bar-chart').makeChart();
             let makeBar = function(){
               var barresponsive = [
                 ["screen and (min-width: 400px)", {
@@ -100,7 +103,6 @@
               ];
               document.getElementById('bar-chart').responsiveOptions = barresponsive;
               document.getElementById('bar-chart').makeChart();
-
             }
           </script>
         </template>

@@ -1,0 +1,93 @@
+{
+  /**
+   * The default heading level (1-6), eg., 1 for <h1>, if there  is no parent.
+   */
+  "defaultLevel": {
+    "name": "defaultLevel",
+    "type": "Number",
+    "value": 1
+  },
+  /**
+   * The relative-heading's UUID.
+   */
+  "id": {
+    "name": "id",
+    "type": "String",
+    "value": null,
+    "observer": "_updateChildren"
+  },
+  /**
+   * The parent relative-heading's UUID.
+   */
+  "parentId": {
+    "name": "parentId",
+    "type": "String",
+    "value": null
+  },
+  /**
+   * The heading text.
+   */
+  "text": {
+    "name": "text",
+    "type": "String",
+    "value": null
+  },
+  /**
+   * The heading level (1-6), eg., 1 for <h1>
+   */
+  "level": {
+    "name": "level",
+    "type": "Number",
+    "reflectToAttribute": true,
+    "computed": "_getLevel(parentId,defaultLevel)",
+    "observer": "_updateChildren"
+  },
+  /**
+   * Is the heading an h1?
+   */
+  "__isLevel1": {
+    "name": "__isLevel1",
+    "type": "Boolean",
+    "computed": "_isLevel(level,1)"
+  },
+  /**
+   * Is the heading an h2?
+   */
+  "__isLevel2": {
+    "name": "__isLevel2",
+    "type": "Boolean",
+    "computed": "_isLevel(level,2)"
+  },
+  /**
+   * Is the heading an h3?
+   */
+  "__isLevel3": {
+    "name": "__isLevel3",
+    "type": "Boolean",
+    "computed": "_isLevel(level,3)"
+  },
+  /**
+   * Is the heading an h4?
+   */
+  "__isLevel4": {
+    "name": "__isLevel4",
+    "type": "Boolean",
+    "computed": "_isLevel(level,4)"
+  },
+  /**
+   * Is the heading an h5?
+   */
+  "__isLevel5": {
+    "name": "__isLevel5",
+    "type": "Boolean",
+    "computed": "_isLevel(level,5)"
+  },
+  /**
+   * Is the heading an h6?
+   */
+  "__isLevel6": {
+    "name": "__isLevel6",
+    "type": "Boolean",
+    "computed": "_isLevel(level,6)"
+  }
+}

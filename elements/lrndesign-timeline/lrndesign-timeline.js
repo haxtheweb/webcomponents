@@ -538,7 +538,7 @@ class LrndesignTimeline extends SimpleColors {
    * @param {array} the raw events array
    */
   _updateEvents(events) {
-    events = typeof events === "String" ? JSON.parse(events) : events;
+    events = typeof events === "string" ? JSON.parse(events) : events;
     return events;
   }
 

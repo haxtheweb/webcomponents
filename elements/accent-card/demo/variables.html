@@ -11,31 +11,6 @@
       import '../accent-card.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
-      accent-card#example1a, 
-      accent-card#example1b, 
-      accent-card#example1c {
-        --accent-card-image-width: 80px;
-      }
-      table {
-        width: 100%;
-        border-spacing: 0;
-        margin: 0 0 15px;
-      }
-      table th, table td, table caption {
-        border-right: 1px solid #ddd;
-        border-top: 1px solid #ddd;
-        padding: 3px;
-        text-align: left;
-      }
-      table th:first-child, 
-      table td:first-child,
-      table caption:first-child {
-        border-left: 1px solid #ddd;
-      }
-      table tbody tr:last-child th, 
-      table tbody tr:last-child td {
-        border-bottom: 1px solid #ddd;
-      }
     </style>
   </head>
   <body>
@@ -43,12 +18,39 @@
       <h1>accent-card with CSS Variables</h1>
       <h2>Image Height (Vertical Layout)</h2>
       <demo-snippet>
+        <style>
+          accent-card#example1a, 
+          accent-card#example1b, 
+          accent-card#example1c {
+            --accent-card-image-width: 80px;
+          }
+          table {
+            width: 100%;
+            border-spacing: 0;
+            margin: 0 0 15px;
+          }
+          table th, table td, table caption {
+            border-right: 1px solid #ddd;
+            border-top: 1px solid #ddd;
+            padding: 3px;
+            text-align: left;
+          }
+          table th:first-child, 
+          table td:first-child,
+          table caption:first-child {
+            border-left: 1px solid #ddd;
+          }
+          table tbody tr:last-child th, 
+          table tbody tr:last-child td {
+            border-bottom: 1px solid #ddd;
+          }
+        </style>
         <template>
-          <accent-card id="example4a" accent-color="lime" accent-heading image-src="images/image7.jpg">
+          <accent-card id="example4a" accent-color="lime" accent-heading image-src="./images/image7.jpg">
             <div slot="heading">Accent Card, Default Height</div>
             <div slot="content">This is an accent card with the default image height (10%).</div>
           </accent-card>
-          <accent-card id="example4b" accent-color="lime" accent-heading image-src="images/image7.jpg">
+          <accent-card id="example4b" accent-color="lime" accent-heading image-src="./images/image7.jpg">
             <div slot="heading">Accent Card, Custom Height</div>
             <div slot="content">This is an accent card with the image height set to <tt>50px</tt>.</div>
           </accent-card>
@@ -63,11 +65,11 @@
       <h2>Image Width (Horizontal Layout)</h2>
       <demo-snippet>
         <template>
-          <accent-card id="example3a" accent-color="red" dark horizontal image-src="images/image1.jpg">
+          <accent-card id="example3a" accent-color="red" dark horizontal image-src="./images/image1.jpg">
             <div slot="heading">Accent Card, Default Width</div>
             <div slot="content">This is a horizontal accent card with the default image width (30%).</div>
           </accent-card>
-          <accent-card id="example3b" accent-color="red" dark horizontal image-src="images/image1.jpg">
+          <accent-card id="example3b" accent-color="red" dark horizontal image-src="./images/image1.jpg">
             <div slot="heading">Accent Card, Custom Width</div>
             <div slot="content">This is a horizontal accent card with image width set to <tt>20%</tt>.</div>
           </accent-card>

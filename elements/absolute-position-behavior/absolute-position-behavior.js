@@ -37,22 +37,12 @@ class AbsolutePositionBehavior extends PolymerElement {
   static get properties() {
     return {
       /**
-       * The id of the element that the tooltip is anchored to. This element
-       * must be a sibling of the tooltip. If this property is not set,
-       * then the tooltip will be centered to the parent node containing it.
+       * Element is positioned from connected to disconnected?
+       * Otherwise setPosition and unsetPosition must be called manually.
        */
-      for: {
-        type: String,
-        observer: "updatePosition"
-      },
-      /**
-       * Positions the tooltip to the top, right, bottom, left of its content.
-       */
-      position: {
-        type: String,
-        value: "bottom",
-        observer: "updatePosition",
-        reflectToAttribute: true
+      auto: {
+        type: Boolean,
+        value: false
       },
       /**
        * If true, no parts of the tooltip will ever be shown offscreen.
@@ -60,6 +50,15 @@ class AbsolutePositionBehavior extends PolymerElement {
       fitToVisibleBounds: {
         type: Boolean,
         value: false,
+        observer: "updatePosition"
+      },
+      /**
+       * The id of the element that the tooltip is anchored to. This element
+       * must be a sibling of the tooltip. If this property is not set,
+       * then the tooltip will be centered to the parent node containing it.
+       */
+      for: {
+        type: String,
         observer: "updatePosition"
       },
       /**
@@ -71,12 +70,20 @@ class AbsolutePositionBehavior extends PolymerElement {
         value: 0
       },
       /**
-       * Element is positioned from connected to disconnected?
-       * Otherwise setPosition and unsetPosition must be called manually.
+       * Positions the tooltip to the top, right, bottom, left of its content.
        */
-      auto: {
-        type: Boolean,
-        value: false
+      position: {
+        type: String,
+        value: "bottom",
+        observer: "updatePosition",
+        reflectToAttribute: true
+      },
+      /**
+       * The actual target element
+       */
+      target: {
+        type: Object,
+        observer: "updatePosition"
       }
     };
   }

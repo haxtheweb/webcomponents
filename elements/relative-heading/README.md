@@ -1,22 +1,26 @@
 # &lt;relative-heading&gt;
 
 Heading
-> Start of relative-heading
+> outputs the correct heading hierarchy based on parent&#39;s heading
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
-/* In an existing module / web component */
-import '@lrnwebcomponents/relative-heading.js';
-/* At top of an application */
-<script type="module" src="relative-heading.js"></script>
+/* In an existing JS module / web component */
+import '@lrnwebcomponents/relative-heading/relative-heading.js';
+/* At top of an application with build routine */
+<script type="module" src="@lrnwebcomponents/relative-heading/relative-heading.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/relative-heading.js';
-
+  import '@lrnwebcomponents/relative-heading/relative-heading.js';
+  // imperative form
   import {RelativeHeading} from '@lrnwebcomponents/relative-heading';
+  // if you don't have a build routine and need to reference directly
+  import './node_modules/@lrnwebcomponents/relative-heading/relative-heading.js';
 </script>
+// via unpkg CDN (good for testing)
+<script type="module" src="https://unpkg.com/@lrnwebcomponents/relative-heading/relative-heading.js"></script>
 ```
 
 ## Develop / Demo
@@ -40,7 +44,7 @@ $ yarn run build
 
 ## Contributing
 
-1. Fork it! `git clone git@github.com/elmsln/lrnwebcomponents.git`
+1. Fork it! `git clone https://github.com/elmsln/lrnwebcomponents.git`
 2. Create your feature branch: `git checkout -b my-new-feature`
 3. Commit your changes: `git commit -m 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`

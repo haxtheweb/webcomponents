@@ -330,6 +330,7 @@
 
       width = width || "100%";
       height = height || "100%";
+
       // Check if there is a previous SVG element in the container that contains the Chartist XML namespace and remove it
       // Since the DOM API does not support namespaces we need to manually search the returned list http://www.w3.org/TR/selectors-api/
       Array.prototype.slice

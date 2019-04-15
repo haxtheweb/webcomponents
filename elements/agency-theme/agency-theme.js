@@ -3,6 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import "./lib/agency-theme-band.js";
+import "./lib/agency-theme-spotlight.js";
 
 export { AgencyTheme };
 /**

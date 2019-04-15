@@ -22,8 +22,15 @@
     <div class="vertical-section-container centered">
       <h1>accent-card Demo</h1>
       <demo-snippet>
+        <style>
+          accent-card {
+            min-width: 400px;
+            max-width: 600px;
+            margin: 0 auto 10px;
+          }
+        </style>
         <template>
-          <accent-card accent-color="red" accent-heading horizontal image-src="images/image2.jpg">
+          <accent-card accent-color="red" accent-heading horizontal image-src="./images/image2.jpg">
             <div slot="heading">Accent Card</div>
             <div slot="subheading">A card with optional accent stylings.</div>
             <div slot="content">

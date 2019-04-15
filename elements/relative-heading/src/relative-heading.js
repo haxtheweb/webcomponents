@@ -1,167 +1,78 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "./lib/relative-heading-manager.js";
 /**
-`relative-heading`
-A LRN element
+ * Copyright 2019 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+/**
+ * `relative-heading`
+ * `outputs the correct heading hierarchy based on parent&#39;s heading`
+ *
+ * @microcopy - language worth noting:
+ *  -
+ *
+ * @customElement
+ * @polymer
+ * @demo demo/index.html
+ */
+class RelativeHeading extends PolymerElement {
+  /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
- -
- -
- -
-
-*/
-let RelativeHeading = Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: block;
-      }
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        @apply --relative-heading-heading;
-      }
-      h1 {
-        @apply --relative-heading-heading1;
-      }
-      h2 {
-        @apply --relative-heading-heading2;
-      }
-      h3 {
-        @apply --relative-heading-heading3;
-      }
-      h4 {
-        @apply --relative-heading-heading4;
-      }
-      h5 {
-        @apply --relative-heading-heading5;
-      }
-      h6 {
-        @apply --relative-heading-heading6;
-      }
-    </style>
-    <div id="html"></div>
-  `,
-
-  is: "relative-heading",
-
-  properties: {
-    /*
-     * id of the heading element that this heading is a subtopic of
-     */
-    subtopicOf: {
-      type: String,
-      value: null,
-      reflectToAttribute: true
-    },
-    /*
-     * text of the heading
-     */
-    text: {
-      type: String,
-      value: null,
-      reflectToAttribute: true
-    },
-    /*
-     * the id of the heading element that this heading is a subtopic of
-     */
-    parentHeading: {
-      type: Object,
-      value: {}
-    },
-    /*
-     * the heading tag, eg. <h1/>, <h2/> ...
-     */
-    tag: {
-      type: String,
-      value: null,
-      reflectToAttribute: true
-    }
-  },
-
-  /*
-   * make sure the heading manager is ready to listen
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   * @notice function name must be here for tooling to operate correctly
    */
-  created: function() {
-    window.RelativeHeadingManager.requestAvailability();
-  },
-
-  /*
-   * fire a heading created event for the heading manager
-   */
-  attached: function() {
-    this.fire("heading-created", this);
-  },
-
-  /*
-   * fired if the subtopic changes
-   */
-  attributeChanged: function(name, type) {
-    if (name === "subtopic-of") {
-      this.fire("heading-created", this);
-    } else if (name === "tag") {
-      this.fire("heading-changed", this);
-      this.$.html.innerHTML =
-        "<" + this.tag + ">" + this.text + "</" + this.tag + ">";
-    }
-  },
-
-  /*
-   * sets the parent of the heading
-   */
-  _setParent: function(el) {
-    let root = this;
-    if (root.__parentListener !== undefined)
-      root.parentHeading.removeEventListener("heading-changed");
-    root.parentHeading = el;
-    if (el !== null) {
-      root.__parentListener = root.parentHeading.addEventListener(
-        "heading-changed",
-        function(e) {
-          root._setTag();
-        }
-      );
-    }
-    this._setTag();
-  },
-
-  /*
-   * gets the  heading tag name
-   */
-  _setTag: function() {
-    let tag = "h1",
-      level = 1,
-      h = function(level) {
-        // get the tag name based on the number of the heading, eg. 1 for <h1/>, 2 for <h2/>
-        return "h" + Math.max(Math.min(level, 6), 1);
-      };
-    // if there is a parent heading, get the parent's tag attribute or tagName attribute
-    if (this.parentHeading !== null) {
-      if (
-        this.parentHeading.tag !== undefined &&
-        this.parentHeading.tag !== null
-      ) {
-        level =
-          parseInt(this.parentHeading.tag.toLowerCase().replace("h", "")) + 1;
-      } else if (
-        this.parentHeading.tagName !== undefined &&
-        this.parentHeading.tagName.match(/^H[0-6]$/)
-      ) {
-        level =
-          parseInt(this.parentHeading.tagName.toLowerCase().replace("h", "")) +
-          1;
-      }
-      // if there is a tag attribute, get that
-    } else if (this.tag !== undefined && this.tag !== null) {
-      level = parseInt(this.tag.toLowerCase().replace("h", ""));
-    }
-    tag = h(level);
-    this.tag = tag;
+  static get tag() {
+    return "relative-heading";
   }
-});
+  /**
+   * life cycle, element is afixed to the DOM
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    this.HAXWiring = new HAXWiring();
+    this.HAXWiring.setup(
+      RelativeHeading.haxProperties,
+      RelativeHeading.tag,
+      this
+    );
+  }
+  /**
+   * update this level when the parent id changes
+   */
+  _getLevel(parentId, defaultLevel) {
+    let root = this,
+      parent = document.querySelector("#" + parentId),
+      parentLvl =
+        parent !== null && parent.level !== undefined
+          ? parent.level
+          : defaultLevel - 1,
+      level = parentLvl < 6 ? parentLvl + 1 : 6;
+    return level;
+  }
+  _updateChildren() {
+    document
+      .querySelectorAll('relative-heading[parent-id="' + this.id + '"]')
+      .forEach(child => {
+        child.parentId = null;
+        child.parentId = this.id;
+      });
+  }
+  /**
+   * determines if the level matches a specific level
+   *
+   * @param {number} the heading level
+   * @param {number} the level it might match
+   * @returns {boolean} whether or not they match
+   */
+  _isLevel(level, testLevel) {
+    return level === testLevel;
+  }
+  /**
+   * life cycle, element is removed from the DOM
+   * /
+  disconnectedCallback() {
+  }*/
+}
+window.customElements.define(RelativeHeading.tag, RelativeHeading);
 export { RelativeHeading };

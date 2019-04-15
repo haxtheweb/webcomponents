@@ -70,7 +70,7 @@ class SiteRSSButton extends PolymerElement {
       raised: {
         type: Boolean,
         value: false,
-        reflectToAttribute: true,
+        reflectToAttribute: true
       }
     };
   }

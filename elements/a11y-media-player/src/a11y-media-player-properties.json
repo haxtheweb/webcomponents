@@ -64,7 +64,7 @@
   "fullscreenButton": {
     "name": "fullscreenButton",
     "type": "Boolean",
-    "computed": "_getFullscreenButton(disableFullscreen,audioNoThumb)",
+    "computed": "_getFullscreenButton(disableFullscreen,audioNoThumb,screenfullLoaded)",
     "notify": true
   },
 
@@ -152,6 +152,15 @@
     "notify": true,
     "value": "xs",
     "reflectToAttribute": true
+  },
+  /**
+   * Has screenfull loaded?
+   */
+  "screenfullLoaded": {
+    "name": "screenfullLoaded",
+    "type": "Boolean",
+    "value": false,
+    "notify": true
   },
   /**
    * is YouTube?

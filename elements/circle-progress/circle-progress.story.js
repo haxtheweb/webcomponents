@@ -19,7 +19,7 @@ window.StorybookUtilities.instance.addPattern(CircleProgressPattern);
 const CircleProgressProps = CircleProgress.properties;
 CircleProgressProps.value.value = 30;
 const CircleProgressStory = {
-  "of": "circle-progress",
+  "of": "Web Components",
   "name": "circle-progress",
   "props": CircleProgressProps,
   "slots": {

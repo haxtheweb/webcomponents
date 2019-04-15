@@ -11,8 +11,15 @@ export class ESGlobalBridge {
     /**
      * Load location and register it by name
      */
-    this.load = (name, location) => {
-      if (!window.ESGlobalBridge.imports[name]) {
+    this.load = (name, location, webpack = false) => {
+      //don't try to load file if a story.js is already working on importing the packed version of the file
+      let imported =
+          window.ESGlobalBridge.imports && window.ESGlobalBridge.imports[name],
+        importing =
+          !webpack &&
+          window.ESGlobalBridge.webpack &&
+          window.ESGlobalBridge.webpack[name];
+      if (!importing && !imported) {
         return new Promise((resolve, reject) => {
           const script = document.createElement("script");
           script.src = location;

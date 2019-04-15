@@ -17,12 +17,12 @@ window.StorybookUtilities.instance.addPattern(TeamMemberPattern);
 /**
  * add the live demo
  */
-const TeamMemberStory = {
-  "of": "team-member",
+/*const TeamMemberStory = {
+  "of": "Web Components",
   "name": "team-member",
   "props": TeamMember.properties, 
   "slots": {}, 
   "attr": ``,
   "slotted": ``
 }
-window.StorybookUtilities.instance.addLiveDemo(TeamMemberStory);
+window.StorybookUtilities.instance.addLiveDemo(TeamMemberStory);*/

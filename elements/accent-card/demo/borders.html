@@ -11,16 +11,18 @@
       import '../accent-card.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
-      accent-card {
-        display: inline-flex;
-        margin: 10px;
-      }
     </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h1>accent-card Borders and Shadow</h1>
       <demo-snippet>
+        <style>
+          accent-card {
+            display: inline-flex;
+            margin: 10px;
+          }
+        </style>
         <template>
           <accent-card no-border>
             <div slot="heading">Accent Card, No Border</div>

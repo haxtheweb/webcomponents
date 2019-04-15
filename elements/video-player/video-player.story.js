@@ -72,24 +72,24 @@ ytKnobs.tracks.value = [
 ytKnobs.source = {"name": "source","value": "https://www.youtube.com/watch?v=NP0mQeLWCCo", "type": "String" };
 
 const VideoPlayerStory = {
-  "of": "video-player",
-  "name": "video-player",
+  "of": "Web Components/video-player",
+  "name": "Video",
   "props": videoKnobs, 
   "slots": {}, 
   "attr": ``,
   "slotted": ``
 };
 const VideoPlayerAudioStory = {
-  "of": "video-player",
-  "name": "video-player (Audio)",
+  "of": "Web Components/video-player",
+  "name": "Audio",
   "props": audioKnobs, 
   "slots": {}, 
   "attr": ` audio-only="audio-only"`,
   "slotted": ``
 };
 const VideoPlayerYTStory = {
-  "of": "video-player",
-  "name": "video-player (YouTube)",
+  "of": "Web Components/video-player",
+  "name": "YouTube",
   "props": ytKnobs, 
   "slots": {}, 
   "attr": ``,

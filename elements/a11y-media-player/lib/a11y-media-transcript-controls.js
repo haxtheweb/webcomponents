@@ -156,6 +156,14 @@ class A11yMediaTranscriptControls extends A11yMediaBehaviors {
           disabled$="[[disablePrintButton]]"
         >
           <a11y-media-button
+            id="download"
+            controls="transcript"
+            icon$="[[_getLocal('download','icon')]]"
+            label="[[_getLocal('download','label')]]"
+            on-tap="_handleDownloadClick"
+          >
+          </a11y-media-button>
+          <a11y-media-button
             id="print"
             controls="transcript"
             icon$="[[_getLocal('print','icon')]]"
