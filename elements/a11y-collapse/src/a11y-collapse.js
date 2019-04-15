@@ -1,7 +1,8 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import "@polymer/polymer/lib/elements/dom-if.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import { flush } from "@polymer/polymer/lib/utils/flush.js";
 import "./lib/a11y-collapse-accordion-button.js";
 import "./lib/a11y-collapse-icon-button.js";
 /**
@@ -49,187 +50,206 @@ import "./lib/a11y-collapse-icon-button.js";
  * @polymer
  * @demo demo/index.html demo
  */
-let A11yCollapse = Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: block;
-        margin: var(--a11y-collapse-margin, 15px 0);
-        border: var(--a11y-collapse-border, 1px solid);
-        transition: all 0.5s;
-        @apply --a11y-collapse;
-      }
-      :host #content {
-        max-height: 0;
-        overflow: hidden;
-        padding: 0 var(--a11y-collapse-horizontal-padding, 16px);
-        border-top: 0px solid rgba(255, 255, 255, 0);
-        transition: all 0.5s ease-in-out;
-        @apply --a11y-collapse-content;
-      }
-      :host(:not(:first-of-type)) {
-        border-top: var(
-          --a11y-collapse-border-between,
-          var(--a11y-collapse-border, 1px solid)
-        );
-      }
-      :host([disabled]) {
-        opacity: 0.5;
-        @apply --a11y-collapse-disabled;
-      }
-      :host([disabled]:not([accordion])) #expand,
-      :host([disabled][accordion]) #heading {
-        cursor: not-allowed;
-      }
-      :host([expanded]) {
-        @apply --a11y-collapse-expanded;
-      }
-      :host([expanded]) #content {
-        max-height: unset;
-        overflow: hidden;
-        padding: var(--a11y-collapse-vertical-padding, 16px)
-          var(--a11y-collapse-horizontal-padding, 16px);
-        border-top: var(--a11y-collapse-border, 1px solid);
-        @apply --a11y-collapse-content-expanded;
-      }
-      :host(:not([expanded])) #content-inner {
-        overflow: hidden;
-      }
-    </style>
-    <template is="dom-if" if="[[!accordion]]">
-      <a11y-collapse-icon-button
-        id="iconbutton"
-        disabled$="[[disabled]]"
-        expanded$="[[_setAriaExpanded(expanded)]]"
-        label$="[[_getExpandCollapse(expanded,label,labelExpanded)]]"
-        icon$="[[_getExpandCollapse(expanded,icon,iconExpanded)]]"
-        rotated$="[[__rotateIcon]]"
-        tooltip$="[[_getExpandCollapse(expanded,tooltip,tooltipExpanded)]]"
+class A11yCollapse extends PolymerElement {
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: block;
+          margin: var(--a11y-collapse-margin, 15px 0);
+          border: var(--a11y-collapse-border, 1px solid);
+          transition: all 0.5s;
+          @apply --a11y-collapse;
+        }
+        :host #content {
+          max-height: 0;
+          overflow: hidden;
+          padding: 0 var(--a11y-collapse-horizontal-padding, 16px);
+          border-top: 0px solid rgba(255, 255, 255, 0);
+          transition: all 0.5s ease-in-out;
+          @apply --a11y-collapse-content;
+        }
+        :host(:not(:first-of-type)) {
+          border-top: var(
+            --a11y-collapse-border-between,
+            var(--a11y-collapse-border, 1px solid)
+          );
+        }
+        :host([disabled]) {
+          opacity: 0.5;
+          @apply --a11y-collapse-disabled;
+        }
+        :host([disabled]:not([accordion])) #expand,
+        :host([disabled][accordion]) #heading {
+          cursor: not-allowed;
+        }
+        :host([expanded]) {
+          @apply --a11y-collapse-expanded;
+        }
+        :host([expanded]) #content {
+          max-height: unset;
+          overflow: hidden;
+          padding: var(--a11y-collapse-vertical-padding, 16px)
+            var(--a11y-collapse-horizontal-padding, 16px);
+          border-top: var(--a11y-collapse-border, 1px solid);
+          @apply --a11y-collapse-content-expanded;
+        }
+        :host(:not([expanded])) #content-inner {
+          overflow: hidden;
+        }
+      </style>
+      <template is="dom-if" if="[[!accordion]]" restamp>
+        <a11y-collapse-icon-button
+          id="iconbutton"
+          disabled$="[[disabled]]"
+          expanded$="[[_setAriaExpanded(expanded)]]"
+          label$="[[_getExpandCollapse(expanded,label,labelExpanded)]]"
+          icon$="[[_getExpandCollapse(expanded,icon,iconExpanded)]]"
+          rotated$="[[__rotateIcon]]"
+          tooltip$="[[_getExpandCollapse(expanded,tooltip,tooltipExpanded)]]"
+        >
+          <slot name="heading"></slot>
+        </a11y-collapse-icon-button>
+      </template>
+      <template is="dom-if" if="[[accordion]]" restamp>
+        <a11y-collapse-accordion-button
+          id="accordionbutton"
+          disabled$="[[disabled]]"
+          expanded$="[[_setAriaExpanded(expanded)]]"
+          label$="[[_getExpandCollapse(expanded,label,labelExpanded)]]"
+          icon$="[[_getExpandCollapse(expanded,icon,iconExpanded)]]"
+          rotated$="[[__rotateIcon]]"
+          tooltip$="[[_getExpandCollapse(expanded,tooltip,tooltipExpanded)]]"
+        >
+          <slot name="heading"></slot>
+        </a11y-collapse-accordion-button>
+      </template>
+      <div
+        id="content"
+        aria-hidden\$="{{!expanded}}"
+        aria-labelledby="heading"
+        aria-live="polite"
       >
-        <slot name="heading"></slot>
-      </a11y-collapse-icon-button>
-    </template>
-    <template is="dom-if" if="[[accordion]]">
-      <a11y-collapse-accordion-button
-        id="accordionbutton"
-        disabled$="[[disabled]]"
-        expanded$="[[_setAriaExpanded(expanded)]]"
-        label$="[[_getExpandCollapse(expanded,label,labelExpanded)]]"
-        icon$="[[_getExpandCollapse(expanded,icon,iconExpanded)]]"
-        rotated$="[[__rotateIcon]]"
-        tooltip$="[[_getExpandCollapse(expanded,tooltip,tooltipExpanded)]]"
-      >
-        <slot name="heading"></slot>
-      </a11y-collapse-accordion-button>
-    </template>
-    <div
-      id="content"
-      aria-hidden\$="{{!expanded}}"
-      aria-labelledby="heading"
-      aria-live="polite"
-    >
-      <div id="content-inner"><slot name="content"></slot><slot></slot></div>
-    </div>
-  `,
-
-  is: "a11y-collapse",
-  behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
-  listeners: { "a11y-collapse-tap": "_onTap" },
-
-  properties: {
-    /**
-     * accordion-style: whole header acts as button? default is just icon.
-     */
-    accordion: {
-      name: "accordion",
-      type: Boolean,
-      value: false,
-      observer: "flush",
-      reflectToAttribute: true
-    },
-    /**
-     * is disabled?
-     */
-    disabled: {
-      name: "disabled",
-      type: Boolean,
-      value: false,
-      reflectToAttribute: true
-    },
-    /**
-     * icon when expanded
-     */
-    expanded: {
-      name: "expanded",
-      type: Boolean,
-      value: false,
-      reflectToAttribute: true,
-      observer: "_fireToggleEvents"
-    },
-    /**
-     * icon for the button
-     */
-    icon: {
-      name: "icon",
-      type: String,
-      value: "expand-more"
-    },
-    /**
-     * icon when expanded
-     */
-    iconExpanded: {
-      name: "iconExpanded",
-      type: String,
-      value: null
-    },
-    /**
-     * label for the button
-     */
-    label: {
-      name: "label",
-      type: String,
-      value: "expand/collapse"
-    },
-    /**
-     * optional label for the button when expanded
-     */
-    labelExpanded: {
-      name: "labelExpanded",
-      type: String,
-      value: null
-    },
-    /**
-     * tooltip for the button
-     */
-    tooltip: {
-      name: "tooltip",
-      type: String,
-      value: "toggle expand/collapse"
-    },
-    /**
-     * optional tooltip for the button when expanded
-     */
-    tooltipExpanded: {
-      name: "tooltipExpanded",
-      type: String,
-      value: null
-    },
-    /**
-     * If no expanded icon is set, the default icon will rotate when expanded
-     */
-    __rotateIcon: {
-      name: "__rotateIcon",
-      type: Boolean,
-      computed: "_isRotated(expanded,iconExpanded)"
-    }
-  },
+        <div id="content-inner"><slot name="content"></slot><slot></slot></div>
+      </div>
+    `;
+  }
+  static get tag() {
+    return "a11y-collapse";
+  }
+  static get properties() {
+    return {
+      /**
+       * accordion-style: whole header acts as button? default is just icon.
+       */
+      accordion: {
+        name: "accordion",
+        type: Boolean,
+        value: false,
+        observer: "_flush",
+        reflectToAttribute: true
+      },
+      /**
+       * is disabled?
+       */
+      disabled: {
+        name: "disabled",
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
+       * icon when expanded
+       */
+      expanded: {
+        name: "expanded",
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true,
+        observer: "_fireToggleEvents"
+      },
+      /**
+       * icon for the button
+       */
+      icon: {
+        name: "icon",
+        type: String,
+        value: "expand-more"
+      },
+      /**
+       * icon when expanded
+       */
+      iconExpanded: {
+        name: "iconExpanded",
+        type: String,
+        value: null
+      },
+      /**
+       * label for the button
+       */
+      label: {
+        name: "label",
+        type: String,
+        value: "expand/collapse"
+      },
+      /**
+       * optional label for the button when expanded
+       */
+      labelExpanded: {
+        name: "labelExpanded",
+        type: String,
+        value: null
+      },
+      /**
+       * tooltip for the button
+       */
+      tooltip: {
+        name: "tooltip",
+        type: String,
+        value: "toggle expand/collapse"
+      },
+      /**
+       * optional tooltip for the button when expanded
+       */
+      tooltipExpanded: {
+        name: "tooltipExpanded",
+        type: String,
+        value: null
+      },
+      /**
+       * If no expanded icon is set, the default icon will rotate when expanded
+       */
+      __rotateIcon: {
+        name: "__rotateIcon",
+        type: Boolean,
+        computed: "_isRotated(expanded,iconExpanded)"
+      }
+    };
+  }
+  _flush(newValue) {
+    flush();
+  }
   /**
    * Attached to the DOM, now fire.
    */
-  attached: function() {
-    this.fire("a11y-collapse-attached", this);
-    // Establish hax property binding
-    let props = {
+  connectedCallback() {
+    super.connectedCallback();
+    this.dispatchEvent(
+      new CustomEvent("a11y-collapse-attached", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
+    afterNextRender(this, function() {
+      this.addEventListener("a11y-collapse-tap", this._onTap.bind(this));
+      this.HAXWiring = new HAXWiring();
+      this.HAXWiring.setup(A11yCollapse.haxProperties, A11yCollapse.tag, this);
+    });
+  }
+  static get haxProperties() {
+    return {
       canScale: false,
       canPosition: true,
       canEditSource: false,
@@ -285,86 +305,130 @@ let A11yCollapse = Polymer({
         advanced: []
       }
     };
-    this.setHaxProperties(props);
-  },
-
+  }
   /**
    * Collapses the content
    */
-  collapse: function() {
+  collapse() {
     this.toggle(false);
-  },
+  }
 
   /**
    * Let the group know that this is gone.
    */
-  detached: function() {
-    this.fire("a11y-collapse-detached", this);
-  },
+  disconnectedCallback() {
+    this.dispatchEvent(
+      new CustomEvent("a11y-collapse-detached", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
+    this.removeEventListener("a11y-collapse-tap", this._onTap.bind(this));
+    super.disconnectedCallback();
+  }
 
   /**
    * Expands the content
    */
-  expand: function() {
+  expand() {
     this.toggle(true);
-  },
+  }
 
   /**
    * Toggles based on mode
    */
-  toggle: function(mode) {
+  toggle(mode) {
     this.expanded = mode !== undefined ? mode : !this.expanded;
-  },
+  }
 
   /**
    * Fires toggling events
    */
-  _fireToggleEvents: function() {
-    this.fire("toggle", this);
-    this.fire("a11y-collapse-toggle", this); //supports legacy version
+  _fireToggleEvents() {
+    this.dispatchEvent(
+      new CustomEvent("toggle", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
+    //supports legacy version
+    this.dispatchEvent(
+      new CustomEvent("a11y-collapse-toggle", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
     if (this.expanded) {
-      this.fire("expand", this);
+      this.dispatchEvent(
+        new CustomEvent("expand", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this
+        })
+      );
     } else {
-      this.fire("collapse", this);
+      this.dispatchEvent(
+        new CustomEvent("collapse", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this
+        })
+      );
     }
-  },
+  }
 
   /**
    * If no expanded value is set, the default will be same as collapsed
    */
-  _overrideProp: function(prop, val) {
+  _overrideProp(prop, val) {
     this[prop] = val;
-  },
+  }
 
   /**
    * If no expanded value is set, the default will be same as collapsed
    */
-  _getExpandCollapse: function(expanded, ifFalse, ifTrue) {
+  _getExpandCollapse(expanded, ifFalse, ifTrue) {
     return expanded && ifTrue !== null ? ifTrue : ifFalse;
-  },
+  }
 
   /**
    * If no expanded icon is set, the default icon will rotate when expanded
    */
-  _isRotated: function(expanded, iconExpanded) {
+  _isRotated(expanded, iconExpanded) {
     return !expanded && iconExpanded === null;
-  },
+  }
 
   /**
    * Handle tap
    */
-  _onTap: function(e) {
+  _onTap(e) {
     if (!this.disabled) {
       this.toggle();
-      this.fire("a11y-collapse-click", this);
+      this.dispatchEvent(
+        new CustomEvent("a11y-collapse-click", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this
+        })
+      );
     }
-  },
+  }
 
   /**
    * Attached to the DOM, now fire.
    */
-  _setAriaExpanded: function(expanded) {
+  _setAriaExpanded(expanded) {
     return "" + expanded;
   }
-});
+}
+window.customElements.define(A11yCollapse.tag, A11yCollapse);
 export { A11yCollapse };

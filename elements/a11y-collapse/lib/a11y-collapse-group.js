@@ -1,6 +1,5 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "../a11y-collapse.js";
 /**
  * `a11y-collapse-group`
@@ -22,75 +21,77 @@ CSS Mixins:
  * @polymer
  * @demo demo/accordion.html collapse groups
  */
-let A11yCollapseGroup = Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: block;
-        margin: var(--a11y-collapse-group-margin, 15px 0);
-        --a11y-collapse-margin: 15px;
 
-        @apply --a11y-collapse-group;
-      }
-      :host #heading {
-        font-weight: bold;
-        @apply --a11y-collapse-group-heading;
-      }
-      :host .wrapper {
-        border-radius: 0;
-        --a11y-collapse-margin: 0;
-        --a11y-collapse-border-between: none;
-      }
-    </style>
-    <div class="wrapper"><slot></slot></div>
-  `,
+class A11yCollapseGroup extends PolymerElement {
+  static get tag() {
+    return "a11y-collapse-group";
+  }
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: block;
+          margin: var(--a11y-collapse-group-margin, 15px 0);
+          --a11y-collapse-margin: 15px;
 
-  is: "a11y-collapse-group",
-  behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
-
-  properties: {
-    /**
-     * an array of globalProperties to override every a11y-collapse item
-     * For example, {"icon": "arrow-drop-down"} would set every item's icon to "arrow-drop-down"
-     */
-    globalOptions: {
-      type: Object,
-      value: {}
-    },
-    /**
-     * is every a11y-collapse item radio button?
-     */
-    radio: {
-      type: Boolean,
-      value: false
-    },
-    /**
-     * is radio button
-     */
-    __items: {
-      type: Array,
-      value: []
-    }
-  },
-  /**
-   * Attached to the DOM, now fire.
-   */
-  ready: function() {
-    this.addEventListener("a11y-collapse-click", function(e) {
-      this.radioToggle(e.detail);
-    });
+          @apply --a11y-collapse-group;
+        }
+        :host #heading {
+          font-weight: bold;
+          @apply --a11y-collapse-group-heading;
+        }
+        :host .wrapper {
+          border-radius: 0;
+          --a11y-collapse-margin: 0;
+          --a11y-collapse-border-between: none;
+        }
+      </style>
+      <div class="wrapper"><slot></slot></div>
+    `;
+  }
+  static get properties() {
+    return {
+      /**
+       * an array of globalProperties to override every a11y-collapse item
+       * For example, {"icon": "arrow-drop-down"} would set every item's icon to "arrow-drop-down"
+       */
+      globalOptions: {
+        type: Object,
+        value: {}
+      },
+      /**
+       * is every a11y-collapse item radio button?
+       */
+      radio: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * is radio button
+       */
+      __items: {
+        type: Array,
+        value: []
+      }
+    };
+  }
+  constructor() {
+    super();
     this.addEventListener("a11y-collapse-attached", function(e) {
       this._attachItem(e.detail);
     });
     this.addEventListener("a11y-collapse-detached", function(e) {
       this._detachItem(e.detail);
     });
-  },
+    this.addEventListener("a11y-collapse-click", function(e) {
+      this.radioToggle(e.detail);
+    });
+  }
 
   /**
    * Removes a detached item from the _items array.
    */
-  _attachItem: function(item) {
+  _attachItem(item) {
     for (let key in this.globalOptions) {
       if (this.globalOptions.hasOwnProperty(key)) {
         item._overrideProp(key, this.globalOptions[key]);
@@ -98,32 +99,29 @@ let A11yCollapseGroup = Polymer({
     }
     this.push("__items", item);
     this.notifyPath("__items");
-  },
+  }
 
   /**
    * Removes a detached item from the _items array.
    */
-  _detachItem: function(item) {
+  _detachItem(item) {
     for (let i = 0; i < this.__items.length; i++) {
       if (this.__items[i] === e.detail) this.splice("_items", i, 1);
     }
-  },
+  }
 
   /**
    * Toggles off all previous choices.
    */
-  radioToggle: function(item) {
+  radioToggle(item) {
     if (this.radio && item.expanded) {
       for (let i = 0; i < this.__items.length; i++) {
         if (this.__items[i] !== item) this.__items[i].toggle(false);
       }
     }
-  },
+  }
 
-  /**
-   * Attached to the DOM, now fire.
-   */
-  detached: function() {
+  disconnectedCallback() {
     this.removeEventListener("a11y-collapse-click", function(e) {
       this.radioToggle(e.detail);
     });
@@ -133,58 +131,8 @@ let A11yCollapseGroup = Polymer({
     this.removeEventListener("a11y-collapse-detached", function(e) {
       this._detachItem(e.detail);
     });
-    this.set("__items", []);
-    this.notifyPath("__items");
-  },
-
-  /**
-   * Attached to the DOM, now fire.
-   */
-  attached: function() {
-    // Establish hax property binding
-    let props = {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Sample gizmo",
-        description: "The user will be able to see this for selection in a UI.",
-        icon: "av:play-circle-filled",
-        color: "grey",
-        groups: ["Video", "Media"],
-        handles: [
-          {
-            type: "video",
-            url: "source"
-          }
-        ],
-        meta: {
-          author: "Your organization on github"
-        }
-      },
-      settings: {
-        quick: [
-          {
-            property: "title",
-            title: "Title",
-            description: "The title of the element",
-            inputMethod: "textfield",
-            icon: "editor:title"
-          }
-        ],
-        configure: [
-          {
-            property: "title",
-            title: "Title",
-            description: "The title of the element",
-            inputMethod: "textfield",
-            icon: "editor:title"
-          }
-        ],
-        advanced: []
-      }
-    };
-    this.setHaxProperties(props);
+    super.disconnectedCallback();
   }
-});
+}
+window.customElements.define(A11yCollapseGroup.tag, A11yCollapseGroup);
 export { A11yCollapseGroup };

@@ -1,10 +1,9 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/iron-icons/iron-icons.js";
-import "./a11y-collapse-button-styles.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
+import "./a11y-collapse-button-styles.js";
 /**
  * `a11y-collapse-icon-button`
  * An accessible expand collapse.
@@ -43,107 +42,111 @@ import "@polymer/paper-tooltip/paper-tooltip.js";
  * @see ../a11y-collapse.js
  * @see ./a11y-collapse-button-styles.js
  */
-Polymer({
-  _template: html`
-    <style include="a11y-collapse-button-styles">
-      :host #expand:focus,
-      :host #expand:hover {
-        @apply --a11y-collapse-icon-focus;
+class A11yCollapseIconButton extends PolymerElement {
+  static get tag() {
+    return "a11y-collapse-icon-button";
+  }
+  static get template() {
+    return html`
+      <style include="a11y-collapse-button-styles">
+        :host #expand:focus,
+        :host #expand:hover {
+          @apply --a11y-collapse-icon-focus;
+        }
+      </style>
+      <div id="heading">
+        <div id="text"><slot></slot></div>
+        <paper-icon-button
+          id="expand"
+          alt\$="[[label]]"
+          aria-controls="content"
+          aria-expanded\$="[[exanded]]"
+          disabled\$="[[disabled]]"
+          label\$="[[label]]"
+          icon\$="[[icon]]"
+          rotated\$="[[rotated]]"
+        >
+        </paper-icon-button>
+        <paper-tooltip for="expand">[[tooltip]]</paper-tooltip>
+      </div>
+    `;
+  }
+  static get properties() {
+    return {
+      /**
+       * is disabled?
+       */
+      disabled: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
+       * icon when expanded
+       */
+      expanded: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
+       * icon for the button
+       */
+      icon: {
+        type: String,
+        value: "icons:expand-more"
+      },
+      /**
+       * label for the button
+       */
+      label: {
+        type: String,
+        value: "expand/collapse"
+      },
+      /**
+       * tooltip for the button
+       */
+      tooltip: {
+        type: String,
+        value: "toggle expand/collapse"
+      },
+      /**
+       * If no expanded icon is set, the default icon will rotate when expanded
+       */
+      rotated: {
+        type: Boolean,
+        value: false
       }
-    </style>
-    <div id="heading">
-      <div id="text"><slot></slot></div>
-      <paper-icon-button
-        id="expand"
-        alt\$="[[label]]"
-        aria-controls="content"
-        aria-expanded\$="[[exanded]]"
-        disabled\$="[[disabled]]"
-        label\$="[[label]]"
-        icon\$="[[icon]]"
-        rotated\$="[[rotated]]"
-      >
-      </paper-icon-button>
-      <paper-tooltip for="expand">[[tooltip]]</paper-tooltip>
-    </div>
-  `,
-
-  is: "a11y-collapse-icon-button",
-  behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
-
-  properties: {
-    /**
-     * is disabled?
-     */
-    disabled: {
-      type: Boolean,
-      value: false,
-      reflectToAttribute: true
-    },
-    /**
-     * icon when expanded
-     */
-    expanded: {
-      type: Boolean,
-      value: false,
-      reflectToAttribute: true
-    },
-    /**
-     * icon for the button
-     */
-    icon: {
-      type: String,
-      value: "icons:expand-more"
-    },
-    /**
-     * label for the button
-     */
-    label: {
-      type: String,
-      value: "expand/collapse"
-    },
-    /**
-     * tooltip for the button
-     */
-    tooltip: {
-      type: String,
-      value: "toggle expand/collapse"
-    },
-    /**
-     * If no expanded icon is set, the default icon will rotate when expanded
-     */
-    rotated: {
-      type: Boolean,
-      value: false
-    }
-  },
-
-  /**
-   * Attached to the DOM, now fire.
-   */
-  ready: function() {
-    let root = this;
-    this.$.expand.addEventListener("tap", function(e) {
-      root._onTap(e);
+    };
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, function() {
+      this.$.expand.addEventListener("tap", this._onTap.bind(this));
     });
-  },
-
-  /**
-   * Remove lsitener.
-   */
-  detached: function() {
-    this.$.expand.removeEventListener("tap", function(e) {
-      root._onTap(e);
-    });
-  },
-
-  /**
+  }
+  disconnectedCallback() {
+    this.$.expand.removeEventListener("tap", this._onTap.bind(this));
+    super.disconnectedCallback();
+  }
   /**
    * Handle tap
    */
-  _onTap: function(e) {
+  _onTap(e) {
     if (!this.disabled) {
-      this.fire("a11y-collapse-tap", this);
+      this.dispatchEvent(
+        new CustomEvent("a11y-collapse-tap", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: this
+        })
+      );
     }
   }
-});
+}
+window.customElements.define(
+  A11yCollapseIconButton.tag,
+  A11yCollapseIconButton
+);
+export { A11yCollapseIconButton };
