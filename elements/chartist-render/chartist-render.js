@@ -41,13 +41,6 @@ class ChartistRender extends PolymerElement {
         value: "chart"
       },
       /**
-       * The chart object.
-       */
-      chart: {
-        type: Object,
-        value: null
-      },
-      /**
        * The type of chart:bar, line, or pie
        */
       type: {

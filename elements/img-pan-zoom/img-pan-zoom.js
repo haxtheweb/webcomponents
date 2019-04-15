@@ -167,8 +167,6 @@ let ImgPanZoom = Polymer({
       value: 1
     }
   },
-
-  observers: ["_srcChanged(src)"],
   created: function() {
     const name = "openseadragon";
     const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
@@ -187,8 +185,6 @@ let ImgPanZoom = Polymer({
     }
   },
   ready: function() {
-    if (typeof OpenSeadragon === "function")
-      this._openseadragonLoaded.bind(this);
     this.animationConfig = {
       fade: {
         name: "fade-in-animation",
