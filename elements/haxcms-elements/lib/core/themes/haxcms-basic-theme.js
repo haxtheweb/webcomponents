@@ -57,6 +57,10 @@ class HAXCMSBasicTheme extends HAXCMSTheme(BasicTemplate(PolymerElement)) {
             color: var(--haxcms-basic-theme-accent-color);
           }
         }
+        .grid-wrapper {
+          --grid-plate-col-transition: none;
+          min-height: 85vh;
+        }
         .left-col {
           min-height: 250px;
           border: 2px solid black;

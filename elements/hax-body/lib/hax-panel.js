@@ -66,7 +66,7 @@ Polymer({
         }
       }
       hax-panel-item {
-        margin: 8px 4px;
+        margin: 8px 2px;
       }
       hax-panel-item[right] {
         float: right;
@@ -131,14 +131,8 @@ Polymer({
         vertical-align: middle;
       }
       @media screen and (max-width: 600px) {
-        :host([edit-mode]) hax-panel-item {
-          margin: 8px 2px;
-        }
         :host([edit-mode]) .hide-small {
           display: none;
-        }
-        :host([edit-mode]) app-drawer {
-          padding: 0;
         }
       }
       @media screen and (max-width: 800px) {

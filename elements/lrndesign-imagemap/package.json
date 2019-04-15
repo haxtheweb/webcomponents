@@ -16,7 +16,7 @@
       "hax": "src/lrndesign-imagemap-hax.json"
     }
   },
-  "version": "2.0.8",
+  "version": "2.0.9",
   "description": "Automated conversion of lrndesign-imagemap/",
   "repository": {
     "type": "git",
@@ -40,8 +40,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/relative-heading": "^2.0.8",
-    "@lrnwebcomponents/simple-modal": "^2.0.8",
+    "@lrnwebcomponents/relative-heading": "^2.0.9",
+    "@lrnwebcomponents/simple-modal": "^2.0.9",
     "@polymer/iron-a11y-keys": "^3.0.0",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-icons": "^3.0.1",
@@ -52,8 +52,8 @@
     "@polymer/prism-element": "^3.0.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.0.8",
-    "@lrnwebcomponents/storybook-utilities": "^2.0.8",
+    "@lrnwebcomponents/deduping-fix": "^2.0.9",
+    "@lrnwebcomponents/storybook-utilities": "^2.0.9",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@webcomponents/webcomponentsjs": "2.2.4",

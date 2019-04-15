@@ -9,29 +9,38 @@ import { autorun, toJS } from "mobx";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@polymer/paper-fab/paper-fab.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
-import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@polymer/iron-icons/editor-icons.js";
 import "@lrnwebcomponents/jwt-login/jwt-login.js";
 import "@lrnwebcomponents/h-a-x/h-a-x.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
-import "@lrnwebcomponents/hax-body/lib/hax-schema-form.js";
+import { DynamicImporter } from "@lrnwebcomponents/dynamic-importer/dynamic-importer.js";
+
 /**
  * `haxcms-site-editor`
  * `haxcms editor element that provides all editing capabilities`
  *
  * @demo demo/index.html
  */
-class HAXCMSSiteEditor extends PolymerElement {
+class HAXCMSSiteEditor extends DynamicImporter(PolymerElement) {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
     return "haxcms-site-editor";
+  }
+  /**
+   * Dynamically import these late so we can load faster
+   */
+  dynamicImports() {
+    return {
+      "paper-button": "@polymer/paper-button/paper-button.js",
+      "hax-schema-form": "@lrnwebcomponents/hax-body/lib/hax-schema-form.js",
+      "paper-tooltip": "@polymer/paper-tooltip/paper-tooltip.js",
+      "editor-icons": "@polymer/iron-icons/editor-icons.js",
+      "paper-fab": "@polymer/paper-fab/paper-fab.js"
+    };
   }
   // render function
   static get template() {
@@ -169,7 +178,7 @@ class HAXCMSSiteEditor extends PolymerElement {
         on-response="_handleDeleteResponse"
         last-response="{{__deleteNodeResponse}}"
       ></iron-ajax>
-      <h-a-x app-store$="[[appStore]]"></h-a-x>
+      <h-a-x app-store$="[[appStore]]" hide-panel-ops></h-a-x>
     `;
   }
   static get properties() {
@@ -564,6 +573,15 @@ class HAXCMSSiteEditor extends PolymerElement {
     this._haxSchema = wiring.prototypeHaxProperties();
     this._haxSchema.settings = e.detail.response.haxSchema;
     let values = e.detail.response.values;
+    let h = "";
+    if (this.manifest.metadata.publishedLocation) {
+      h = document.createElement("a");
+      h.setAttribute("tabindex", "-1");
+      h.setAttribute("href", this.manifest.metadata.publishedLocation);
+      h.setAttribute("target", "_blank");
+      h.innerHTML =
+        '<paper-button raised style="text-transform:none;">Access published version</paper-button>';
+    }
     let c = document.createElement("hax-schema-form");
     // set a min width of 50 viewable
     c.style.minWidth = "50vw";
@@ -619,7 +637,7 @@ class HAXCMSSiteEditor extends PolymerElement {
       cancelable: false,
       detail: {
         title: "Edit site fields",
-        elements: { content: c, buttons: b },
+        elements: { header: h, content: c, buttons: b },
         invokedBy: this.__siteFieldsInvoked,
         clone: false
       }

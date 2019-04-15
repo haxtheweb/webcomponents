@@ -1,5 +1,7 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "./a11y-collapse-button-styles.js";
+import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 /**
 `a11y-collapse-accordion-button`
@@ -31,99 +33,121 @@ An accessible expand collapse.
  * @see ../a11y-collapse.js
  * @see ./a11y-collapse-button-styles.js
  */
-Polymer({
-  _template: html`
-    <style include="a11y-collapse-button-styles">
-      :host #heading:focus,
-      :host #heading:hover {
-        @apply --a11y-collapse-heading-focus;
-      }
-      :host #heading:focus #text,
-      :host #heading:hover #text {
-        @apply --a11y-collapse-heading-text-focus;
-      }
-      :host #heading:focus #expand,
-      :host #heading:hover #expand {
-        @apply --a11y-collapse-icon-focus;
-      }
-    </style>
-    <div
-      id="heading"
-      aria-controls="content"
-      aria-expanded\$="[[expanded]]"
-      disabled\$="[[disabled]]"
-      label\$="[[label]]"
-      role="button"
-    >
-      <div id="text"><slot></slot></div>
-      <iron-icon
-        id="expand"
-        aria-hidden="true"
-        icon\$="[[icon]]"
-        rotated\$="[[rotated]]"
+class A11yCollapseAccordionButton extends PolymerElement {
+  static get tag() {
+    return "a11y-collapse-accordion-button";
+  }
+  static get template() {
+    return html`
+      <style include="a11y-collapse-button-styles">
+        :host #heading:focus,
+        :host #heading:hover {
+          @apply --a11y-collapse-heading-focus;
+        }
+        :host #heading:focus #text,
+        :host #heading:hover #text {
+          @apply --a11y-collapse-heading-text-focus;
+        }
+        :host #heading:focus #expand,
+        :host #heading:hover #expand {
+          @apply --a11y-collapse-icon-focus;
+        }
+      </style>
+      <div
+        id="heading"
+        aria-controls="content"
+        aria-expanded\$="[[expanded]]"
+        disabled\$="[[disabled]]"
+        label\$="[[label]]"
+        role="button"
       >
-      </iron-icon>
-    </div>
-    <paper-tooltip for="heading">[[tooltip]]</paper-tooltip>
-  `,
-
-  is: "a11y-collapse-accordion-button",
-  listeners: {
-    tap: "_onTap"
-  },
-  properties: {
-    /**
-     * is disabled?
-     */
-    disabled: {
-      type: Boolean,
-      value: false,
-      reflectToAttribute: true
-    },
-    /**
-     * icon when expanded
-     */
-    expanded: {
-      type: Boolean,
-      value: false,
-      reflectToAttribute: true
-    },
-    /**
-     * icon for the button
-     */
-    icon: {
-      type: String,
-      value: "icons:expand-more"
-    },
-    /**
-     * label for the button
-     */
-    label: {
-      type: String,
-      value: "expand/collapse"
-    },
-    /**
-     * tooltip for the button
-     */
-    tooltip: {
-      type: String,
-      value: "toggle expand/collapse"
-    },
-    /**
-     * If no expanded icon is set, the default icon will rotate when expanded
-     */
-    rotated: {
-      type: Boolean,
-      value: false
-    }
-  },
-
+        <div id="text"><slot></slot></div>
+        <iron-icon
+          id="expand"
+          aria-hidden="true"
+          icon\$="[[icon]]"
+          rotated\$="[[rotated]]"
+        >
+        </iron-icon>
+      </div>
+      <paper-tooltip for="heading" offset="24">[[tooltip]]</paper-tooltip>
+    `;
+  }
+  static get properties() {
+    return {
+      /**
+       * is disabled?
+       */
+      disabled: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
+       * icon when expanded
+       */
+      expanded: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
+       * icon for the button
+       */
+      icon: {
+        type: String,
+        value: "icons:expand-more"
+      },
+      /**
+       * label for the button
+       */
+      label: {
+        type: String,
+        value: "expand/collapse"
+      },
+      /**
+       * tooltip for the button
+       */
+      tooltip: {
+        type: String,
+        value: "toggle expand/collapse"
+      },
+      /**
+       * If no expanded icon is set, the default icon will rotate when expanded
+       */
+      rotated: {
+        type: Boolean,
+        value: false
+      }
+    };
+  }
+  /**
+   * life cycle
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, function() {
+      this.addEventListener("tap", this._onTap.bind(this));
+    });
+  }
   /**
    * Handle tap
    */
-  _onTap: function(e) {
+  _onTap(e) {
     if (!this.disabled) {
-      this.fire("a11y-collapse-tap", this);
+      this.dispatchEvent(
+        new CustomEvent("a11y-collapse-tap", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this
+        })
+      );
     }
   }
-});
+}
+window.customElements.define(
+  A11yCollapseAccordionButton.tag,
+  A11yCollapseAccordionButton
+);
+export { A11yCollapseAccordionButton };

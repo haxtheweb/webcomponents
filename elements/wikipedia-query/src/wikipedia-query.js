@@ -1,7 +1,6 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/citation-element/citation-element.js";
 /**
  * `wikipedia-query`
@@ -9,9 +8,17 @@ import "@lrnwebcomponents/citation-element/citation-element.js";
  *
  * @demo demo/index.html
  */
-let WikipediaQuery = Polymer({
-  _template: html`
-    <custom-style>
+class WikipediaQuery extends PolymerElement {
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   * @notice function name must be here for tooling to operate correctly
+   */
+  static get tag() {
+    return "wikipedia-query";
+  }
+  // render function
+  static get template() {
+    return html`
       <style>
         :host {
           display: block;
@@ -29,70 +36,61 @@ let WikipediaQuery = Polymer({
           font-size: 12px;
         }
       </style>
-    </custom-style>
-    <iron-ajax
-      auto
-      url$="https://en.wikipedia.org/w/api.php?origin=*&amp;action=query&amp;titles=[[search]]&amp;prop=extracts&amp;format=json"
-      handle-as="json"
-      on-response="handleResponse"
-      debounce-duration="100"
-      last-response="{{searchResponse}}"
-    ></iron-ajax>
-    <h3 hidden$="[[!showTitle]]">[[search]] Wikipedia article</h3>
-    <div id="result" hidden$="[[!__rendercontent]]"></div>
-    <citation-element
-      hidden$="[[!__rendercontent]]"
-      creator="{Wikipedia contributors}"
-      scope="sibling"
-      license="by-sa"
-      title="[[search]] --- {Wikipedia}{,} The Free Encyclopedia"
-      source="https://en.wikipedia.org/w/index.php?title=[[search]]"
-      date="[[__now]]"
-    ></citation-element>
-  `,
-
-  is: "wikipedia-query",
-  behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
-  properties: {
-    /**
-     * ShowTitle
-     */
-    showTitle: {
-      type: Boolean,
-      value: true
-    },
-    /**
-     * Search string.
-     */
-    search: {
-      type: String,
-      value: "Polymer (library)"
-    },
-    /**
-     * Render the response as..
-     */
-    renderAs: {
-      type: String,
-      value: "content",
-      observer: "_renderAsUpdated"
-    },
-    /**
-     * Response to parse.
-     */
-    searchResponse: {
-      type: Object
-    }
-  },
-
-  /**
-   * attached
-   */
-  attached: function() {
-    let date = new Date(Date.now());
-    this.__now =
-      date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
-    // Establish hax properties if they exist
-    let props = {
+      <iron-ajax
+        auto
+        url$="https://en.wikipedia.org/w/api.php?origin=*&amp;action=query&amp;titles=[[search]]&amp;prop=extracts&amp;format=json"
+        handle-as="json"
+        on-response="handleResponse"
+        debounce-duration="100"
+        last-response="{{searchResponse}}"
+      ></iron-ajax>
+      <h3 hidden$="[[!showTitle]]">[[search]] Wikipedia article</h3>
+      <div id="result" hidden$="[[!__rendercontent]]"></div>
+      <citation-element
+        hidden$="[[!__rendercontent]]"
+        creator="{Wikipedia contributors}"
+        scope="sibling"
+        license="by-sa"
+        title="[[search]] --- {Wikipedia}{,} The Free Encyclopedia"
+        source="https://en.wikipedia.org/w/index.php?title=[[search]]"
+        date="[[__now]]"
+      ></citation-element>
+    `;
+  }
+  static get properties() {
+    return {
+      /**
+       * ShowTitle
+       */
+      showTitle: {
+        type: Boolean,
+        value: true
+      },
+      /**
+       * Search string.
+       */
+      search: {
+        type: String,
+        value: "Polymer (library)"
+      },
+      /**
+       * Render the response as..
+       */
+      renderAs: {
+        type: String,
+        value: "content",
+        observer: "_renderAsUpdated"
+      },
+      /**
+       * Response to parse.
+       */
+      searchResponse: {
+        type: Object
+      }
+    };
+  }
+  static get haxProperties() {
+    return {
       canScale: true,
       canPosition: true,
       canEditSource: false,
@@ -146,41 +144,49 @@ let WikipediaQuery = Polymer({
         wipeSlot: true
       }
     };
-    this.setHaxProperties(props);
-  },
-
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    let date = new Date(Date.now());
+    this.__now =
+      date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+    this.HAXWiring = new HAXWiring();
+    this.HAXWiring.setup(
+      WikipediaQuery.haxProperties,
+      WikipediaQuery.tag,
+      this
+    );
+  }
   /**
    * Convert renderas into a variable.
    */
-  _renderAsUpdated: function(newValue, oldValue) {
+  _renderAsUpdated(newValue, oldValue) {
     if (typeof newValue !== typeof undefined) {
       this._resetRenderMethods();
       this["__render" + newValue] = true;
     }
-  },
-
+  }
   /**
    * Validate input method.
    */
-  _validRenderMethods: function() {
+  _validRenderMethods() {
     var methods = ["content"];
     return methods;
-  },
-
+  }
   /**
    * Reset all our meta attributes.
    */
-  _resetRenderMethods: function() {
+  _resetRenderMethods() {
     let methods = this._validRenderMethods();
     for (var i = 0; i < methods.length; i++) {
       this["__render" + methods[i]] = false;
     }
-  },
+  }
 
   /**
    * Process response from wikipedia.
    */
-  handleResponse: function(response) {
+  handleResponse(response) {
     // the key of pages is a number so need to look for it
     if (typeof this.searchResponse !== typeof undefined) {
       for (var key in this.searchResponse.query.pages) {
@@ -198,5 +204,6 @@ let WikipediaQuery = Polymer({
       }
     }
   }
-});
+}
+window.customElements.define(WikipediaQuery.tag, WikipediaQuery);
 export { WikipediaQuery };

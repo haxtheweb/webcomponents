@@ -4,6 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/jwt-login/jwt-login.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 /**
  * `haxcms-backend-php`
@@ -124,8 +125,8 @@ class HAXCMSBackendPHP extends PolymerElement {
             haxCmsSiteEditorElement.deleteNodePath =
               window.appSettings.deleteNodePath;
             haxCmsSiteEditorElement.appStore = window.appSettings.appStore;
-            window.cmsSiteEditor.instance.haxCmsSiteEditorElement = haxCmsSiteEditorElement;
-            window.cmsSiteEditor.instance.appendTarget.appendChild(
+            store.cmsSiteEditor.instance.haxCmsSiteEditorElement = haxCmsSiteEditorElement;
+            store.cmsSiteEditor.instance.appendTarget.appendChild(
               haxCmsSiteEditorElement
             );
           },

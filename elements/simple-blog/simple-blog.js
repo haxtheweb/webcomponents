@@ -2,26 +2,36 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { DynamicImporter } from "@lrnwebcomponents/dynamic-importer/dynamic-importer.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@polymer/iron-pages/iron-pages.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
 import "./lib/simple-blog-listing.js";
-import "./lib/simple-blog-header.js";
-import "./lib/simple-blog-footer.js";
 import "./lib/simple-blog-post.js";
 /**
  * `simple-blog`
  * `A simple blog and associated elements`
  * @demo demo/index.html
  */
-class SimpleBlog extends HAXCMSTheme(PolymerElement) {
+class SimpleBlog extends DynamicImporter(HAXCMSTheme(PolymerElement)) {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
     return "simple-blog";
+  }
+  /**
+   * Dynamically import these late so we can load faster
+   */
+  dynamicImports() {
+    return {
+      "iron-pages": "@polymer/iron-pages/iron-pages.js",
+      "paper-icon-button": "@polymer/paper-icon-button/paper-icon-button.js",
+      "simple-blog-header":
+        "@lrnwebcomponents/simple-blog/lib/simple-blog-header.js",
+      "simple-blog-footer":
+        "@lrnwebcomponents/simple-blog/lib/simple-blog-footer.js"
+    };
   }
   // render function
   static get template() {
@@ -134,18 +144,8 @@ class SimpleBlog extends HAXCMSTheme(PolymerElement) {
     };
     return props;
   }
-  /**
-   * ready life cycle
-   */
-  ready() {
-    super.ready();
-    this.contentContainer = this.$.post.$.contentcontainer;
-  }
-  /**
-   * attached life cycle
-   */
-  connectedCallback() {
-    super.connectedCallback();
+  constructor() {
+    super();
     this.__disposer = [];
     autorun(reaction => {
       this.activeId = toJS(store.activeId);
@@ -154,6 +154,15 @@ class SimpleBlog extends HAXCMSTheme(PolymerElement) {
     autorun(reaction => {
       this._locationChanged(store.location);
       this.__disposer.push(reaction);
+    });
+  }
+  /**
+   * attached life cycle
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, () => {
+      this.contentContainer = this.$.post.$.contentcontainer;
     });
   }
   /**
@@ -176,12 +185,11 @@ class SimpleBlog extends HAXCMSTheme(PolymerElement) {
     if (name === "home" || name === "404") {
       this.selectedPage = 0;
     } else {
-      this.selectedPage = 1;
       window.scrollTo({
         top: 0,
-        left: 0,
-        behavior: "smooth"
+        left: 0
       });
+      this.selectedPage = 1;
     }
   }
   /**

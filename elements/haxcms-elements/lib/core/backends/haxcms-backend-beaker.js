@@ -5,6 +5,8 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/beaker-broker/beaker-broker.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+
 /**
  * `haxcms-backend-beaker`
  * `a simple element to check for and fetch JWTs`
@@ -150,7 +152,7 @@ class HAXCMSBackendBeaker extends PolymerElement {
       this.activeItem.location,
       window.HaxStore.instance.activeHaxBody.haxToContent()
     );
-    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.$.toast.show(
+    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.$.toast.show(
       "Page updated!"
     );
     const evt = new CustomEvent("haxcms-trigger-update-node", {
@@ -159,7 +161,7 @@ class HAXCMSBackendBeaker extends PolymerElement {
       cancelable: false,
       detail: true
     });
-    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(evt);
+    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(evt);
   }
   /**
    * Outline save event.
@@ -167,7 +169,7 @@ class HAXCMSBackendBeaker extends PolymerElement {
   async saveOutline(e) {
     // snag global to be sure we have it set first
     this.manifest =
-      window.cmsSiteEditor.instance.haxCmsSiteEditorElement.manifest;
+      store.cmsSiteEditor.instance.haxCmsSiteEditorElement.manifest;
     // set items specifically since it's just an outline update
     this.manifest.items = e.detail;
     // loop through and match the data our backend generates
@@ -195,10 +197,10 @@ class HAXCMSBackendBeaker extends PolymerElement {
     });
     this.$.beaker.write("site.json", JSON.stringify(this.manifest, null, 2));
     // simulate save events since they wont fire
-    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.$.toast.show(
+    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.$.toast.show(
       "Outline saved!"
     );
-    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
+    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
         composed: true,
@@ -206,7 +208,7 @@ class HAXCMSBackendBeaker extends PolymerElement {
         detail: true
       })
     );
-    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
+    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
       new CustomEvent("json-outline-schema-changed", {
         bubbles: true,
         composed: true,
@@ -222,7 +224,7 @@ class HAXCMSBackendBeaker extends PolymerElement {
     let page = e.detail.item;
     // snag global to be sure we have it set first
     this.manifest =
-      window.cmsSiteEditor.instance.haxCmsSiteEditorElement.manifest;
+      store.cmsSiteEditor.instance.haxCmsSiteEditorElement.manifest;
     // set items specifically since it's just an outline update
     this.manifest.items = e.detail;
     // loop through and match the data our backend generates
@@ -233,10 +235,10 @@ class HAXCMSBackendBeaker extends PolymerElement {
     });
     this.$.beaker.write("site.json", JSON.stringify(this.manifest, null, 2));
     // simulate save events since they wont fire
-    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.$.toast.show(
+    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.$.toast.show(
       `${page.title} deleted`
     );
-    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
+    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
         composed: true,
@@ -244,7 +246,7 @@ class HAXCMSBackendBeaker extends PolymerElement {
         detail: true
       })
     );
-    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
+    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
       new CustomEvent("json-outline-schema-changed", {
         bubbles: true,
         composed: true,
@@ -260,7 +262,7 @@ class HAXCMSBackendBeaker extends PolymerElement {
     let page = e.detail.values;
     // snag global to be sure we have it set first
     this.manifest =
-      window.cmsSiteEditor.instance.haxCmsSiteEditorElement.manifest;
+      store.cmsSiteEditor.instance.haxCmsSiteEditorElement.manifest;
     // set items specifically since it's just an outline update
     this.manifest.items = e.detail;
     // loop through and match the data our backend generates
@@ -291,10 +293,10 @@ class HAXCMSBackendBeaker extends PolymerElement {
     });
     this.$.beaker.write("site.json", JSON.stringify(this.manifest, null, 2));
     // simulate save events since they wont fire
-    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.$.toast.show(
+    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.$.toast.show(
       `${page.title} created!`
     );
-    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
+    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
         composed: true,
@@ -302,7 +304,7 @@ class HAXCMSBackendBeaker extends PolymerElement {
         detail: true
       })
     );
-    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
+    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
       new CustomEvent("json-outline-schema-changed", {
         bubbles: true,
         composed: true,
@@ -345,10 +347,10 @@ class HAXCMSBackendBeaker extends PolymerElement {
       JSON.stringify(this.manifest, null, 2)
     );
     // simulate save events since they wont fire
-    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.$.toast.show(
+    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.$.toast.show(
       "Site details saved!"
     );
-    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
+    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
         composed: true,
@@ -356,7 +358,7 @@ class HAXCMSBackendBeaker extends PolymerElement {
         detail: true
       })
     );
-    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
+    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
       new CustomEvent("json-outline-schema-changed", {
         bubbles: true,
         composed: true,
@@ -419,8 +421,8 @@ class HAXCMSBackendBeaker extends PolymerElement {
             );
             haxCmsSiteEditorElement.jwt = this.jwt;
             haxCmsSiteEditorElement.appStore = appstore;
-            window.cmsSiteEditor.instance.haxCmsSiteEditorElement = haxCmsSiteEditorElement;
-            window.cmsSiteEditor.instance.appendTarget.appendChild(
+            store.cmsSiteEditor.instance.haxCmsSiteEditorElement = haxCmsSiteEditorElement;
+            store.cmsSiteEditor.instance.appendTarget.appendChild(
               haxCmsSiteEditorElement
             );
           },

@@ -4,9 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-footer.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
+import { DynamicImporter } from "@lrnwebcomponents/dynamic-importer/dynamic-importer.js";
 /**
  * `site-print-button`
  * `Dynamic print button to request and generate what to print`
@@ -15,13 +13,24 @@ import "@polymer/paper-tooltip/paper-tooltip.js";
  * @polymer
  * @demo demo/index.html
  */
-class SitePrintButton extends PolymerElement {
+class SitePrintButton extends DynamicImporter(PolymerElement) {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
     return "site-print-button";
+  }
+  /**
+   * Dynamically import these late so we can load faster
+   */
+  dynamicImports() {
+    return {
+      "site-footer":
+        "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-footer.js",
+      "paper-tooltip": "@polymer/paper-tooltip/paper-tooltip.js",
+      "paper-icon-button": "@polymer/paper-icon-button/paper-icon-button.js"
+    };
   }
   // render function
   static get template() {

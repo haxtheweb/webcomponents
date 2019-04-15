@@ -3,12 +3,7 @@ import { store } from "./haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import "@polymer/iron-icons/editor-icons.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
-import "@polymer/paper-fab/paper-fab.js";
-import "@lrnwebcomponents/simple-modal/simple-modal.js";
-import "./haxcms-outline-editor-dialog.js";
-import "./haxcms-manifest-editor-dialog.js";
+import { DynamicImporter } from "@lrnwebcomponents/dynamic-importer/dynamic-importer.js";
 
 /**
  * `haxcms-site-editor-ui`
@@ -17,13 +12,27 @@ import "./haxcms-manifest-editor-dialog.js";
  * @demo demo/index.html
  * @microcopy - the mental model for this element
  */
-class HAXCMSSiteEditorUI extends PolymerElement {
+class HAXCMSSiteEditorUI extends DynamicImporter(PolymerElement) {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
     return "haxcms-site-editor-ui";
+  }
+  /**
+   * Dynamically import these late so we can load faster
+   */
+  dynamicImports() {
+    return {
+      "paper-tooltip": "@polymer/paper-tooltip/paper-tooltip.js",
+      "paper-icon-button": "@polymer/paper-icon-button/paper-icon-button.js",
+      "simple-modal": "@lrnwebcomponents/simple-modal/simple-modal.js",
+      "haxcms-outline-editor-dialog":
+        "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-outline-editor-dialog.js",
+      "editor-icons": "@polymer/iron-icons/editor-icons.js",
+      "paper-fab": "@polymer/paper-fab/paper-fab.js"
+    };
   }
   // render function
   static get template() {
@@ -326,7 +335,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
    */
   _editButtonTap(e) {
     this.editMode = !this.editMode;
-    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.editMode = this.editMode;
+    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.editMode = this.editMode;
     // save button shifted to edit
     if (!this.editMode) {
       this.dispatchEvent(
@@ -357,7 +366,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
   }
   _cancelButtonTap(e) {
     this.editMode = false;
-    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.editMode = false;
+    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.editMode = false;
     this.dispatchEvent(
       new CustomEvent("hax-cancel", {
         bubbles: true,

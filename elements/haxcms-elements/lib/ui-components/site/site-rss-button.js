@@ -37,6 +37,7 @@ class SiteRSSButton extends PolymerElement {
           background-color: var(--site-rss-bg-color, #383f45);
           font-size: var(--site-rss-font-size, 13px);
           margin: 0;
+          border-radius: var(--site-rss-border-radius, 3px);
         }
         paper-button:hover,
         paper-button:focus,
@@ -50,7 +51,7 @@ class SiteRSSButton extends PolymerElement {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <paper-button raised>
+        <paper-button raised="[[raised]]">
           <iron-icon icon="[[icon]]"></iron-icon> [[label]]
         </paper-button>
       </a>
@@ -65,6 +66,11 @@ class SiteRSSButton extends PolymerElement {
         type: String,
         value: "rss",
         observer: "_generateLink"
+      },
+      raised: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
       }
     };
   }

@@ -1,4 +1,3 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 /**
  `hax-app`
  An app registered with HAX. This provides all the information needed for HAX
@@ -119,33 +118,32 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
     }
   }
 }
-
 ```
-
 */
-Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: none;
-      }
-    </style>
-  `,
-  is: "hax-app",
-  properties: {
-    /**
-     * The data model.
-     */
-    data: {
-      type: Object
-    }
-  },
+class HAXApp extends HTMLElement {
+  constructor() {
+    super();
+    this.data = {};
+    this.eventName = "hax-register-app";
+  }
+  static get tag() {
+    return "hax-app";
+  }
   /**
-   * ON attached life-cycle, meaning it's in the body most likely, then fire registration.
+   * Connected life cycle
    */
-  attached: function() {
+  connectedCallback() {
     if (typeof this.data !== typeof undefined) {
-      this.fire("hax-register-app", this.data);
+      this.dispatchEvent(
+        new CustomEvent(this.eventName, {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: this.data
+        })
+      );
     }
   }
-});
+}
+window.customElements.define(HAXApp.tag, HAXApp);
+export { HAXApp };

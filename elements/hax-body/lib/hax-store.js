@@ -2,17 +2,18 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import { setPassiveTouchGestures } from "@polymer/polymer/lib/utils/settings.js";
+import { getRange } from "./shadows-safari.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import {
+  encapScript,
+  wipeSlot
+} from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/media-behaviors/media-behaviors.js";
 import "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 import "@lrnwebcomponents/hal-9000/hal-9000.js";
 import { CodeSample } from "@lrnwebcomponents/code-sample/code-sample.js";
-import { getRange } from "./shadows-safari.js";
-import {
-  encapScript,
-  wipeSlot
-} from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import "./hax-app.js";
 import "./hax-stax.js";
 import "./hax-stax-browser.js";
@@ -57,7 +58,10 @@ Polymer({
 
   behaviors: [MediaBehaviors.Video, HAXBehaviors.PropertiesBehaviors],
 
-  observers: ["_loadAppStoreData(__ready, __appStoreData, haxAutoloader)"],
+  observers: [
+    "_loadAppStoreData(__ready, __appStoreData, haxAutoloader)",
+    "_storePiecesAllHere(haxAutoloader,activeHaxBody, haxPanel, haxToast, haxExport, haxPreferences, haxManager, haxStaxPicker, haxAppPicker)"
+  ],
 
   properties: {
     /**
@@ -475,38 +479,29 @@ Polymer({
       typeof appDataResponse !== typeof undefined &&
       appDataResponse != null
     ) {
+      var items = {};
       // autoload elements
       if (typeof appDataResponse.autoloader !== typeof undefined) {
-        for (var i = 0; i < appDataResponse.autoloader.length; i++) {
+        // ensure the list is in the right order so we can async dynamic imports
+        // regardless of if its an array or object of values in the right format
+        // force this to be an object
+        appDataResponse.autoloader = Object.assign(
+          {},
+          appDataResponse.autoloader
+        );
+        for (var i in appDataResponse.autoloader) {
+          let CEname = i;
+          let CEimport = appDataResponse.autoloader[i];
+          // helps support array or object based appstore
+          // array was originally in the standard so this lets us support both
+          if (!isNaN(CEname)) {
+            CEname = appDataResponse.autoloader[i];
+            CEimport = `@lrnwebcomponents/${CEname}/${CEname}.js`;
+          }
           // force this into the valid tag list so early paints will
           // correctly include the tag without filtering it out incorrectly
-          this.push("validTagList", appDataResponse.autoloader[i]);
-          let CEname = appDataResponse.autoloader[i];
-          const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
-          import(`${basePath}../../${CEname}/${CEname}.js`)
-            .then(response => {
-              // get the custom element definition we used to add that file
-              let CEClass = window.customElements.get(CEname);
-              if (typeof CEClass.getHaxProperties === "function") {
-                this.setHaxProperties(CEClass.getHaxProperties(), CEname);
-              } else if (typeof CEClass.HAXWiring === "function") {
-                this.setHaxProperties(
-                  CEClass.HAXWiring.getHaxProperties(),
-                  CEname
-                );
-              } else if (CEClass.haxProperties) {
-                this.setHaxProperties(CEClass.haxProperties, CEname);
-              } else {
-                // this is the less optimized / legacy polymer element method to inlcude
-                // this item. It's a good reason to skip on this though because you'll
-                // have a faster boot up time with newer ES6 methods then previous ones.
-                dom(haxAutoloader).appendChild(document.createElement(CEname));
-              }
-            })
-            .catch(error => {
-              /* Error handling */
-              console.log(error);
-            });
+          this.push("validTagList", CEname);
+          items[CEname] = CEimport;
         }
       }
       // load apps automatically
@@ -548,6 +543,43 @@ Polymer({
         detail: true
       });
       this.dispatchEvent(evt);
+      // now process the dynamic imports
+      this._handleDynamicImports(items, haxAutoloader);
+    }
+  },
+  /**
+   * Handle all the dynamic imports of things told to autoload
+   * This ensures we get the definitions very quickly as far as
+   * what is a safe / valid tag above but then we import in a way
+   * that allows us to correctly associate the hax schema to where
+   * it came from.
+   */
+  _handleDynamicImports: async function(items, haxAutoloader) {
+    const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+    for (var i in items) {
+      await import(`${basePath}../../../${items[i]}`)
+        .then(response => {
+          for (var cVal in response) {
+            // get the custom element definition we used to add that file
+            let CEClass = response[cVal];
+            if (typeof CEClass.getHaxProperties === "function") {
+              this.setHaxProperties(CEClass.getHaxProperties(), i);
+            } else if (typeof CEClass.HAXWiring === "function") {
+              this.setHaxProperties(CEClass.HAXWiring.getHaxProperties(), i);
+            } else if (CEClass.haxProperties) {
+              this.setHaxProperties(CEClass.haxProperties, i);
+            } else {
+              // this is the less optimized / legacy polymer element method to inlcude
+              // this item. It's a good reason to skip on this though because you'll
+              // have a faster boot up time with newer ES6 methods then previous ones.
+              dom(haxAutoloader).appendChild(document.createElement(i));
+            }
+          }
+        })
+        .catch(error => {
+          /* Error handling */
+          console.log(error);
+        });
     }
   },
   _editModeChanged: function(newValue) {
@@ -707,93 +739,127 @@ Polymer({
    * ready life cycle
    */
   ready: function() {
-    // see if a global was used to prevent this check
-    // this is useful when in trusted environments where the statement
-    // has been consented to in the application this is utilized in
-    if (this.skipHAXConfirmation) {
-      window.sessionStorage.setItem("haxConfirm", true);
-      window.localStorage.setItem("haxConfirm", true);
-    }
-    // check for local storage object
-    // if not, then store it in sessionStorage so that all our checks
-    // and balances are the same. This could allow for storing these
-    // settings on a server in theory
-    let haxConfirm =
-      window.sessionStorage.getItem("haxConfirm") ||
-      window.localStorage.getItem("haxConfirm");
-    if (!haxConfirm) {
-      // this way it isn't shown EVERY reload, but if they didn't confirm
-      // it will show up in the future
-      window.sessionStorage.setItem("haxConfirm", true);
-      let msg = `
+    afterNextRender(this, function() {
+      // see if a global was used to prevent this check
+      // this is useful when in trusted environments where the statement
+      // has been consented to in the application this is utilized in
+      if (this.skipHAXConfirmation) {
+        window.sessionStorage.setItem("haxConfirm", true);
+        window.localStorage.setItem("haxConfirm", true);
+      }
+      // check for local storage object
+      // if not, then store it in sessionStorage so that all our checks
+      // and balances are the same. This could allow for storing these
+      // settings on a server in theory
+      let haxConfirm =
+        window.sessionStorage.getItem("haxConfirm") ||
+        window.localStorage.getItem("haxConfirm");
+      if (!haxConfirm) {
+        // this way it isn't shown EVERY reload, but if they didn't confirm
+        // it will show up in the future
+        window.sessionStorage.setItem("haxConfirm", true);
+        let msg = `
       The HAX content editor keeps preferences in order to improve your experience.
       This data is stored in your browser and is never sent anywhere.
       Click to accept.
       `;
-      window.HaxStore.toast(
-        msg,
-        "-1",
-        "fit-bottom",
-        "I Accept",
-        "hax-consent-tap"
-      );
-    } else {
-      if (
-        window.sessionStorage.getItem("haxConfirm") &&
-        !window.localStorage.getItem("haxConfirm")
-      ) {
-        // verify there is something there
-        try {
-          let globalData = window.sessionStorage.getItem("haxUserData")
-            ? JSON.parse(window.sessionStorage.getItem("haxUserData"))
-            : {};
-          this.set("storageData", globalData);
-        } catch (e) {}
+        window.HaxStore.toast(
+          msg,
+          "-1",
+          "fit-bottom",
+          "I Accept",
+          "hax-consent-tap"
+        );
       } else {
-        try {
-          let globalData = window.localStorage.getItem("haxUserData")
-            ? JSON.parse(window.localStorage.getItem("haxUserData"))
-            : {};
-          this.set("storageData", globalData);
-        } catch (e) {}
+        if (
+          window.sessionStorage.getItem("haxConfirm") &&
+          !window.localStorage.getItem("haxConfirm")
+        ) {
+          // verify there is something there
+          try {
+            let globalData = window.sessionStorage.getItem("haxUserData")
+              ? JSON.parse(window.sessionStorage.getItem("haxUserData"))
+              : {};
+            this.set("storageData", globalData);
+          } catch (e) {}
+        } else {
+          try {
+            let globalData = window.localStorage.getItem("haxUserData")
+              ? JSON.parse(window.localStorage.getItem("haxUserData"))
+              : {};
+            this.set("storageData", globalData);
+          } catch (e) {}
+        }
       }
-    }
+    });
   },
   /**
    * attached.
    */
   attached: function() {
-    // fire that hax store is ready to go so now we can setup the rest
-    this.dispatchEvent(
-      new CustomEvent("hax-store-ready", {
-        bubbles: true,
-        cancelable: false,
-        composed: true,
-        detail: true
-      })
-    );
-    window.HaxStore.ready = true;
-    this.__ready = true;
-    // register built in primitive definitions
-    this._buildPrimitiveDefinitions();
-    // capture events and intercept them globally
-    window.addEventListener("hax-consent-tap", this._haxConsentTap.bind(this));
-    window.addEventListener("onbeforeunload", this._onBeforeUnload.bind(this));
-    window.addEventListener("paste", this._onPaste.bind(this));
-    // initialize voice commands
-    this.voiceCommands = this._initVoiceCommands();
-    // set this global flag so we know it's safe to start trusting data
-    // that is written to global preferences / storage bin
-    setTimeout(() => {
-      this.__storageDataProcessed = true;
-      if (this.storageData.globalPreferences) {
-        window.HaxStore.write(
-          "globalPreferences",
-          this.storageData.globalPreferences,
-          this
-        );
-      }
-    }, 325);
+    afterNextRender(this, function() {
+      // register built in primitive definitions
+      this._buildPrimitiveDefinitions();
+      // capture events and intercept them globally
+      window.addEventListener(
+        "hax-consent-tap",
+        this._haxConsentTap.bind(this)
+      );
+      window.addEventListener(
+        "onbeforeunload",
+        this._onBeforeUnload.bind(this)
+      );
+      window.addEventListener("paste", this._onPaste.bind(this));
+      // initialize voice commands
+      this.voiceCommands = this._initVoiceCommands();
+      // set this global flag so we know it's safe to start trusting data
+      // that is written to global preferences / storage bin
+      setTimeout(() => {
+        this.__storageDataProcessed = true;
+        if (this.storageData.globalPreferences) {
+          window.HaxStore.write(
+            "globalPreferences",
+            this.storageData.globalPreferences,
+            this
+          );
+        }
+      }, 325);
+    });
+  },
+  _storePiecesAllHere: function(
+    haxAutoloader,
+    activeHaxBody,
+    haxPanel,
+    haxToast,
+    haxExport,
+    haxPreferences,
+    haxManager,
+    haxStaxPicker,
+    haxAppPicker
+  ) {
+    if (
+      !this.__ready &&
+      haxAutoloader &&
+      haxPanel &&
+      haxToast &&
+      haxExport &&
+      haxPreferences &&
+      haxManager &&
+      haxStaxPicker &&
+      haxAppPicker
+    ) {
+      // fire that hax store is ready to go so now we can setup the rest
+      this.dispatchEvent(
+        new CustomEvent("hax-store-ready", {
+          bubbles: true,
+          cancelable: false,
+          composed: true,
+          detail: true
+        })
+      );
+      window.HaxStore.ready = true;
+      this.__ready = true;
+    }
   },
   /**
    * Build a list of common voice commands
