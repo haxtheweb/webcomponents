@@ -1,6 +1,7 @@
 import { storiesOf } from "@storybook/polymer";
 import * as storybookBridge from "@storybook/addon-knobs/polymer";
 import "@lrnwebcomponents/simple-colors/lib/simple-colors-styles.js";
+import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 
 /**
  * Copyright 2018 The Pennsylvania State University
@@ -53,10 +54,13 @@ export class StorybookUtilities {
    */
   addPattern(story) {
     let template = this.cleanHTML(story.file, story.replacements);
+    story.before = story.before || ``;
+    story.after = story.after || ``;
     story.demo = storiesOf(story.of, module);
     story.demo.add(story.name, () => {
-      return `${template}`;
+      return `${story.before}${template}${story.after}`;
     });
+    return [story.before, template, story.after];
   }
   /**
    * Creates a knob and adds an attribute for each property in the given element
@@ -223,6 +227,18 @@ export class StorybookUtilities {
       },
       { knobs: { escapeHTML: escape } }
     );
+  }
+  /**
+   * prevents the element's load of an unpacked location from failing
+   * and loads a packed path specificed by thye story.js file
+   * @param {*} name of the resource (should match the name the element is using to load)
+   * @param {*} location of the resource, eg., require("file-loader!./path/to/file.js")
+   */
+  addGlobalScript(name, location) {
+    window.ESGlobalBridge.requestAvailability();
+    if (!window.ESGlobalBridge.webpack) window.ESGlobalBridge.webpack = {};
+    window.ESGlobalBridge.webpack[name] = true;
+    window.ESGlobalBridge.instance.load(name, location, true);
   }
 }
 

@@ -172,7 +172,7 @@ let ImgPanZoom = Polymer({
   created: function() {
     const name = "openseadragon";
     const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
-    const location = `${basePath}lib/openseadragon/build/openseadragon/openseadragon.js`;
+    let location = `${basePath}lib/openseadragon/build/openseadragon/openseadragon.js`;
     window.addEventListener(
       `es-bridge-${name}-loaded`,
       this._openseadragonLoaded.bind(this)

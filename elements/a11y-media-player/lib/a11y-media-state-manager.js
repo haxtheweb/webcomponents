@@ -4,8 +4,6 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
-import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 
 // register globally so we can make sure there is only one
 window.A11yMediaStateManager = window.A11yMediaStateManager || {};
@@ -95,13 +93,6 @@ class A11yMediaStateManager extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     let root = this;
-    const name = "screenfullLib";
-    const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
-    const location = `${basePath}screenfull/dist/screenfull.js`;
-    window.addEventListener(
-      `es-bridge-${name}-loaded`,
-      root._onScreenfullLoaded.bind(root)
-    );
     this.__stickyManager = function(e) {
       root.setStickyPlayer(e.detail);
     };
@@ -197,15 +188,6 @@ class A11yMediaStateManager extends PolymerElement {
       parent = parent.host;
     }
     return parent;
-  }
-
-  /**
-   * sets the element's __screenFullLoaded variable to true once screenfull is loaded
-   *
-   * @param {object} the element
-   */
-  _onScreenfullLoaded(el) {
-    this.screenfullLoaded = true;
   }
 
   /**

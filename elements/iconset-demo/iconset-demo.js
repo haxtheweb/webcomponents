@@ -136,8 +136,7 @@ class IconsetDemo extends PolymerElement {
   ready() {
     super.ready();
     const iconSets = new IronMeta({ type: "iconset" });
-    let root = this,
-      temp = [];
+    let temp = [];
 
     // need to access iconset imperatively now
     if (

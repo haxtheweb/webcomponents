@@ -1,18 +1,28 @@
 import { ImgPanZoom } from "./img-pan-zoom.js";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
+import * as image from "./demo/HAXCmsworkflow.jpg"
 
+//require("file-loader!./lib/openseadragon/build/openseadragon/openseadragon.js");
 window.StorybookUtilities.requestAvailability();
-
+window.StorybookUtilities.instance.addGlobalScript(
+  'openseadragon',
+  require("file-loader!./lib/openseadragon/build/openseadragon/openseadragon.js")
+);
 /**
  * add to the pattern library 
  */
-/*const Pattern = {
-  "of": "Pattern Library/Molecules/Layout",       //Pattern library path
-  "name": "Collapse",                             //Pattern name
+const Pattern = {
+  "of": "Pattern Library/Atoms/Media",       //Pattern library path
+  "name": "Pan and Zoom",   
   "file": require("raw-loader!./demo/index.html"),
-  "replacements": []
+  "replacements": [
+    {
+      "find": 'HAXCmsworkflow.jpg',
+      "replace": image
+    }
+  ]
 };
-window.StorybookUtilities.instance.addPattern(Pattern);*/
+window.StorybookUtilities.instance.addPattern(Pattern);
 
 /**
  * add the live demo

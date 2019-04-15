@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { Chartist } from "chartist";
 import "./lib/chartist-render-shared-styles";
 
 export { ChartistRender };
