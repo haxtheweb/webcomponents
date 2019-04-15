@@ -187,6 +187,8 @@ let ImgPanZoom = Polymer({
     }
   },
   ready: function() {
+    if (typeof OpenSeadragon === "function")
+      this._openseadragonLoaded.bind(this);
     this.animationConfig = {
       fade: {
         name: "fade-in-animation",

@@ -2,7 +2,6 @@ import { ImgPanZoom } from "./img-pan-zoom.js";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 import * as image from "./demo/HAXCmsworkflow.jpg"
 
-//require("file-loader!./lib/openseadragon/build/openseadragon/openseadragon.js");
 window.StorybookUtilities.requestAvailability();
 window.StorybookUtilities.instance.addGlobalScript(
   'openseadragon',
@@ -11,8 +10,8 @@ window.StorybookUtilities.instance.addGlobalScript(
 /**
  * add to the pattern library 
  */
-const Pattern = {
-  "of": "Pattern Library/Atoms/Media",       //Pattern library path
+const ImgPanZoomPattern = {
+  "of": "Pattern Library/Atoms/Media",
   "name": "Pan and Zoom",   
   "file": require("raw-loader!./demo/index.html"),
   "replacements": [
@@ -22,24 +21,20 @@ const Pattern = {
     }
   ]
 };
-window.StorybookUtilities.instance.addPattern(Pattern);
+window.StorybookUtilities.instance.addPattern(ImgPanZoomPattern);
 
 /**
  * add the live demo
  */
-/*const Story = {
-  "of": "Web Components",                   //component folder
-  "name": "a11y-collapse",                  //component tag
-  "props": A11yCollapse.properties,         //component properties that will become knobs
-  "slots": {                                //slots that will become knobs
-    "heading":                              
-      {
-        "name": "heading",                  //slot name
-        "type": "String",                   //slot type
-        "value": `Click to expand me.`      //slot content
-      }
-  }, 
-  "attr": ``,                               //attributes that won't become knobs
-  "slotted": ``                             //slots that won't become knobs
+const props = ImgPanZoom.properties;
+props.src.value = image;
+
+const ImgPanZoomStory = {
+  "of": "Web Components",
+  "name": "img-pan-zoom",
+  "props": props,
+  "slots": {}, 
+  "attr": ``,
+  "slotted": ``
 }
-window.StorybookUtilities.instance.addLiveDemo(Story);*/
+window.StorybookUtilities.instance.addLiveDemo(ImgPanZoomStory);

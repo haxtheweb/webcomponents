@@ -178,6 +178,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
       tracks = new Array(),
       tdata = new Array(),
       selected = 0;
+    if (typeof screenfull === "object") root._onScreenfullLoaded.bind(root);
     if (root.id === null) root.id = "a11y-media-player" + Date.now();
     root.__playerReady = true;
     root.target = root.shadowRoot.querySelector("#transcript");

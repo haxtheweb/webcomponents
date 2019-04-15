@@ -167,14 +167,10 @@ let ImgPanZoom = Polymer({
       value: 1
     }
   },
-
-  observers: ["_srcChanged(src)"],
   created: function() {
     const name = "openseadragon";
     const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
-    let location = typeof require
-      ? `${basePath}lib/openseadragon/build/openseadragon/openseadragon.js`
-      : require("file-loader!./lib/openseadragon/build/openseadragon/openseadragon.js");
+    let location = `${basePath}lib/openseadragon/build/openseadragon/openseadragon.js`;
     window.addEventListener(
       `es-bridge-${name}-loaded`,
       this._openseadragonLoaded.bind(this)
