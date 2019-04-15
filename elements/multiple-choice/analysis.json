@@ -1,417 +1,28 @@
 {
   "schema_version": "1.0.0",
-  "elements": [
+  "classes": [
     {
-      "description": "",
+      "description": "`multiple-choice`\n`Ask the user a question from a set of possible answers.`",
       "summary": "",
       "path": "multiple-choice.js",
-      "properties": [
-        {
-          "name": "schemaResourceID",
-          "type": "string | null | undefined",
-          "description": "Unique Resource ID, generated when schemaMap processes.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
-            "start": {
-              "line": 26,
-              "column": 4
-            },
-            "end": {
-              "line": 29,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          },
-          "defaultValue": "\"\"",
-          "inheritedFrom": "SchemaBehaviors.Schema"
-        },
-        {
-          "name": "schemaMap",
-          "type": "Object | null | undefined",
-          "description": "Schema Map for this element.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
-            "start": {
-              "line": 33,
-              "column": 4
-            },
-            "end": {
-              "line": 46,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "observer": "\"_schemaMapChanged\"",
-              "attributeType": "Object"
-            }
-          },
-          "defaultValue": "{\"prefix\":{\"oer\":\"http://oerschema.org/\",\"schema\":\"http://schema.org/\",\"dc\":\"http://purl.org/dc/terms/\",\"foaf\":\"http://xmlns.com/foaf/0.1/\",\"cc\":\"http://creativecommons.org/ns#\",\"bib\":\"http://bib.schema.org\"}}",
-          "inheritedFrom": "SchemaBehaviors.Schema"
-        },
-        {
-          "name": "title",
-          "type": "string | null | undefined",
-          "description": "Title",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 95,
-              "column": 4
-            },
-            "end": {
-              "line": 98,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          },
-          "defaultValue": "\"\""
-        },
-        {
-          "name": "disabled",
-          "type": "boolean | null | undefined",
-          "description": "Support disabling interaction with the entire board",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 102,
-              "column": 4
-            },
-            "end": {
-              "line": 105,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false"
-        },
-        {
-          "name": "checkLabel",
-          "type": "string | null | undefined",
-          "description": "Text of the label to check your answer",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 109,
-              "column": 4
-            },
-            "end": {
-              "line": 112,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          },
-          "defaultValue": "\"Check answer\""
-        },
-        {
-          "name": "resetLabel",
-          "type": "string | null | undefined",
-          "description": "Text of the reset button",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 116,
-              "column": 4
-            },
-            "end": {
-              "line": 119,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          },
-          "defaultValue": "\"Reset\""
-        },
-        {
-          "name": "relatedResource",
-          "type": "string | null | undefined",
-          "description": "Related Resource ID",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 123,
-              "column": 4
-            },
-            "end": {
-              "line": 125,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          }
-        },
-        {
-          "name": "hideTitle",
-          "type": "boolean | null | undefined",
-          "description": "Flag to hide the title",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 129,
-              "column": 4
-            },
-            "end": {
-              "line": 132,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false"
-        },
-        {
-          "name": "question",
-          "type": "string | null | undefined",
-          "description": "Question to ask",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 136,
-              "column": 4
-            },
-            "end": {
-              "line": 139,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          },
-          "defaultValue": "\"\""
-        },
-        {
-          "name": "answers",
-          "type": "Array | null | undefined",
-          "description": "Array of possible answers",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 143,
-              "column": 4
-            },
-            "end": {
-              "line": 147,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "notify": true,
-              "attributeType": "Array"
-            }
-          },
-          "defaultValue": "[]"
-        },
-        {
-          "name": "displayedAnswers",
-          "type": "Array | null | undefined",
-          "description": "Displayed Answer set.",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 151,
-              "column": 4
-            },
-            "end": {
-              "line": 155,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "notify": true,
-              "readOnly": true,
-              "attributeType": "Array"
-            }
-          }
-        },
-        {
-          "name": "correctText",
-          "type": "string | null | undefined",
-          "description": "Correct answer text to display",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 159,
-              "column": 4
-            },
-            "end": {
-              "line": 162,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          },
-          "defaultValue": "\"Great job!\""
-        },
-        {
-          "name": "incorrectText",
-          "type": "string | null | undefined",
-          "description": "Incorrect answer text to display",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 166,
-              "column": 4
-            },
-            "end": {
-              "line": 169,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          },
-          "defaultValue": "\"Better luck next time!\""
-        },
-        {
-          "name": "randomize",
-          "type": "boolean | null | undefined",
-          "description": "Randomize the display of the answers",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 173,
-              "column": 4
-            },
-            "end": {
-              "line": 177,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false"
-        },
-        {
-          "name": "hideButtons",
-          "type": "boolean | null | undefined",
-          "description": "flag to hide buttons",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 181,
-              "column": 4
-            },
-            "end": {
-              "line": 184,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false"
-        },
-        {
-          "name": "hostAttributes",
-          "type": "Object",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 79,
-              "column": 2
-            },
-            "end": {
-              "line": 81,
-              "column": 3
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          }
-        }
-      ],
+      "properties": [],
       "methods": [
         {
-          "name": "generateResourceID",
-          "description": "Generate a uinque ID",
+          "name": "dynamicImports",
+          "description": "Dynamically import these late so we can load faster",
           "privacy": "public",
           "sourceRange": {
-            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
             "start": {
-              "line": 51,
+              "line": 82,
               "column": 2
             },
             "end": {
-              "line": 68,
+              "line": 89,
               "column": 3
             }
           },
           "metadata": {},
-          "params": [],
-          "inheritedFrom": "SchemaBehaviors.Schema"
-        },
-        {
-          "name": "_schemaMapChanged",
-          "description": "Notice the schema map has changed, reprocess attributes.",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
-            "start": {
-              "line": 72,
-              "column": 2
-            },
-            "end": {
-              "line": 94,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "newValue"
-            },
-            {
-              "name": "oldValue"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "SchemaBehaviors.Schema"
+          "params": []
         },
         {
           "name": "_valueChanged",
@@ -419,11 +30,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 190,
+              "line": 192,
               "column": 2
             },
             "end": {
-              "line": 196,
+              "line": 198,
               "column": 3
             }
           },
@@ -443,11 +54,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 201,
+              "line": 203,
               "column": 2
             },
             "end": {
-              "line": 214,
+              "line": 216,
               "column": 3
             }
           },
@@ -467,11 +78,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 219,
+              "line": 221,
               "column": 2
             },
             "end": {
-              "line": 242,
+              "line": 244,
               "column": 3
             }
           },
@@ -484,11 +95,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 248,
+              "line": 249,
               "column": 2
             },
             "end": {
-              "line": 264,
+              "line": 265,
               "column": 3
             }
           },
@@ -508,11 +119,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 269,
+              "line": 270,
               "column": 2
             },
             "end": {
-              "line": 295,
+              "line": 296,
               "column": 3
             }
           },
@@ -527,16 +138,16 @@
           ]
         },
         {
-          "name": "attached",
+          "name": "connectedCallback",
           "description": "Attached to the DOM, now fire.",
-          "privacy": "protected",
+          "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 300,
+              "line": 412,
               "column": 2
             },
             "end": {
-              "line": 414,
+              "line": 424,
               "column": 3
             }
           },
@@ -548,287 +159,29 @@
         }
       ],
       "staticMethods": [],
-      "demos": [],
+      "demos": [
+        {
+          "url": "demo/index.html",
+          "description": ""
+        },
+        {
+          "url": "demo/index.html",
+          "description": ""
+        }
+      ],
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 19,
-          "column": 29
+          "line": 12,
+          "column": 0
         },
         "end": {
-          "line": 415,
+          "line": 425,
           "column": 1
         }
       },
       "privacy": "public",
-      "superclass": "HTMLElement",
-      "name": "MultipleChoice",
-      "attributes": [
-        {
-          "name": "schema-resource-i-d",
-          "description": "Unique Resource ID, generated when schemaMap processes.",
-          "sourceRange": {
-            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
-            "start": {
-              "line": 26,
-              "column": 4
-            },
-            "end": {
-              "line": 29,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined",
-          "inheritedFrom": "SchemaBehaviors.Schema"
-        },
-        {
-          "name": "schema-map",
-          "description": "Schema Map for this element.",
-          "sourceRange": {
-            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
-            "start": {
-              "line": 33,
-              "column": 4
-            },
-            "end": {
-              "line": 46,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "Object | null | undefined",
-          "inheritedFrom": "SchemaBehaviors.Schema"
-        },
-        {
-          "name": "title",
-          "description": "Title",
-          "sourceRange": {
-            "start": {
-              "line": 95,
-              "column": 4
-            },
-            "end": {
-              "line": 98,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "disabled",
-          "description": "Support disabling interaction with the entire board",
-          "sourceRange": {
-            "start": {
-              "line": 102,
-              "column": 4
-            },
-            "end": {
-              "line": 105,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined"
-        },
-        {
-          "name": "check-label",
-          "description": "Text of the label to check your answer",
-          "sourceRange": {
-            "start": {
-              "line": 109,
-              "column": 4
-            },
-            "end": {
-              "line": 112,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "reset-label",
-          "description": "Text of the reset button",
-          "sourceRange": {
-            "start": {
-              "line": 116,
-              "column": 4
-            },
-            "end": {
-              "line": 119,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "related-resource",
-          "description": "Related Resource ID",
-          "sourceRange": {
-            "start": {
-              "line": 123,
-              "column": 4
-            },
-            "end": {
-              "line": 125,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "hide-title",
-          "description": "Flag to hide the title",
-          "sourceRange": {
-            "start": {
-              "line": 129,
-              "column": 4
-            },
-            "end": {
-              "line": 132,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined"
-        },
-        {
-          "name": "question",
-          "description": "Question to ask",
-          "sourceRange": {
-            "start": {
-              "line": 136,
-              "column": 4
-            },
-            "end": {
-              "line": 139,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "answers",
-          "description": "Array of possible answers",
-          "sourceRange": {
-            "start": {
-              "line": 143,
-              "column": 4
-            },
-            "end": {
-              "line": 147,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "Array | null | undefined"
-        },
-        {
-          "name": "displayed-answers",
-          "description": "Displayed Answer set.",
-          "sourceRange": {
-            "start": {
-              "line": 151,
-              "column": 4
-            },
-            "end": {
-              "line": 155,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "Array | null | undefined"
-        },
-        {
-          "name": "correct-text",
-          "description": "Correct answer text to display",
-          "sourceRange": {
-            "start": {
-              "line": 159,
-              "column": 4
-            },
-            "end": {
-              "line": 162,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "incorrect-text",
-          "description": "Incorrect answer text to display",
-          "sourceRange": {
-            "start": {
-              "line": 166,
-              "column": 4
-            },
-            "end": {
-              "line": 169,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "randomize",
-          "description": "Randomize the display of the answers",
-          "sourceRange": {
-            "start": {
-              "line": 173,
-              "column": 4
-            },
-            "end": {
-              "line": 177,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined"
-        },
-        {
-          "name": "hide-buttons",
-          "description": "flag to hide buttons",
-          "sourceRange": {
-            "start": {
-              "line": 181,
-              "column": 4
-            },
-            "end": {
-              "line": 184,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined"
-        }
-      ],
-      "events": [
-        {
-          "type": "CustomEvent",
-          "name": "answers-changed",
-          "description": "Fired when the `answers` property changes.",
-          "metadata": {}
-        },
-        {
-          "type": "CustomEvent",
-          "name": "displayed-answers-changed",
-          "description": "Fired when the `displayedAnswers` property changes.",
-          "metadata": {}
-        }
-      ],
-      "styling": {
-        "cssVariables": [],
-        "selectors": []
-      },
-      "slots": [],
-      "tagname": "multiple-choice"
+      "name": "MultipleChoice"
     }
   ]
 }
