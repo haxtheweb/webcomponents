@@ -1,6 +1,5 @@
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 import { AframePlayer } from "./aframe-player.js";
-import * as gtlf from "./demo/animatedbox.gtlf";
 
 window.StorybookUtilities.requestAvailability();
 window.StorybookUtilities.instance.addGlobalScript(
@@ -16,8 +15,10 @@ const AframePattern = {
   "name": "3D",
   "file": require("raw-loader!./demo/index.html"),
   "replacements": [
-    "find": "./animatedbox.gtlf",
-    "replace": gtlf
+    {
+      "find": "./animatedbox.gltf",
+      "replace": require("file-loader!./demo/animatedbox.gltf")
+    }
   ]
 };
 window.StorybookUtilities.instance.addPattern(AframePattern);
@@ -26,7 +27,7 @@ window.StorybookUtilities.instance.addPattern(AframePattern);
  * add the live demo
  */
 const props = AframePlayer.properties;
-props.source.value = gtlf;
+props.source.value = require("file-loader!./demo/animatedbox.gltf");
 const AframeStory = {
   "of": "Web Components",
   "name": "aframe-player",
