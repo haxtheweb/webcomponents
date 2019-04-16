@@ -39,8 +39,7 @@
     "@lrnwebcomponents/schema-behaviors": "^2.0.9",
     "@polymer/paper-spinner": "^3.0.0",
     "@polymer/paper-tooltip": "^3.0.0",
-    "@polymer/polymer": "^3.0.5",
-    "aframe": "^0.8.2"
+    "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.0.9",
