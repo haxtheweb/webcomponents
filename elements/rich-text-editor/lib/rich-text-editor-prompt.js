@@ -24,12 +24,26 @@ class RichTextEditorPrompt extends RichTextEditorButton {
   static get properties() {
     return {
       /**
+       * fields for the prompt popover.
+       */
+      fields: {
+        type: Array,
+        value: []
+      },
+      /**
        * the text of the prompt, as in "Link href" or "Image src"
        */
       prompt: {
         name: "prompt",
         type: String,
         value: "Value"
+      },
+      /**
+       * Optional text field for current selection
+       */
+      selectionField: {
+        type: Object,
+        value: null
       },
       /**
        * the text of the prompt, as in "Link href" or "Image src"
@@ -40,27 +54,11 @@ class RichTextEditorPrompt extends RichTextEditorButton {
         value: null
       },
       /**
-       * Eco-json-schema of the prompt.
+       * The prefilled value of the prompt
        */
-      schema: {
+      value: {
         type: Object,
-        value: {
-          $schema: "http://json-schema.org/schema#",
-          title: "Link",
-          type: "Object",
-          properties: {
-            href: {
-              title: "Href",
-              type: "Input",
-              value: null
-            },
-            target: {
-              title: "Target",
-              type: "Input",
-              value: null
-            }
-          }
-        }
+        value: {}
       }
     };
   }
@@ -86,6 +84,7 @@ class RichTextEditorPrompt extends RichTextEditorButton {
    */
   _buttonTap(e) {
     e.preventDefault();
+    console.log("link", this.fields);
     this.__popover.setTarget(this);
     //this.doTextOperation();
   }

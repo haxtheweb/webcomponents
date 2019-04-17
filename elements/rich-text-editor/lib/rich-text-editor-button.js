@@ -31,6 +31,7 @@ class RichTextEditorButton extends PolymerElement {
       </iron-a11y-keys>
       <paper-button
         id="button"
+        class="rtebutton"
         disabled$="[[disabled]]"
         controls="[[controls]]"
         on-tap="_buttonTap"

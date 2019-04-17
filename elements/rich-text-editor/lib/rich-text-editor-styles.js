@@ -18,6 +18,19 @@ const styleElement = document.createElement("dom-module");
 
 const css = html`
   <style>
+    :host {
+      --rich-text-editor-bg: #fafafa;
+      --rich-text-editor-button-color: #444;
+      --rich-text-editor-border: 1px solid #ddd;
+      --rich-text-editor-button-border: transparent;
+      --rich-text-editor-button-disabled-color: #666;
+      --rich-text-editor-button-disabled-bg: transparent;
+      --rich-text-editor-button-toggled-color: #222;
+      --rich-text-editor-button-toggled-bg: #ddd;
+      --rich-text-editor-button-hover-color: #000;
+      --rich-text-editor-button-hover-bg: #f0f0f0;
+      --rich-text-editor-picker-border: #fafafa;
+    }
     :host([hidden]) {
       display: none;
     }
@@ -68,7 +81,8 @@ const css = html`
     :host .confirm-or-cancel {
       min-width: 40px;
     }
-    :host #button {
+    :host #button,
+    :host .rtebutton {
       text-transform: unset;
       padding: 0;
       transition: all 0.5s;
@@ -93,23 +107,28 @@ const css = html`
       }
       @apply --rich-text-editor-button;
     }
-    :host([disabled]) #button {
+    :host([disabled]) #button,
+    :host([disabled]) .rtebutton {
       cursor: not-allowed;
       color: var(--rich-text-editor-button-disabled-color);
       background-color: var(--rich-text-editor-button-disabled-bg);
       @apply --rich-text-editor-button-disabled;
     }
-    :host #button[toggled] {
+    :host #button[toggled],
+    :host .rtebutton[toggled] {
       color: var(--rich-text-editor-button-toggled-color);
       background-color: var(--rich-text-editor-button-toggled-bg);
       @apply --rich-text-editor-button-toggled;
     }
     :host #button:focus,
-    :host #button:hover {
+    :host #button:hover,
+    :host .rtebutton:focus,
+    :host .rtebutton:hover {
       color: var(--rich-text-editor-button-hover-color);
       background-color: var(--rich-text-editor-button-hover-bg);
     }
-    :host #button #icon:not([icon]) {
+    :host #button #icon:not([icon]),
+    :host .rtebutton #icon:not([icon]) {
       display: none;
     }
     :host .offscreen {

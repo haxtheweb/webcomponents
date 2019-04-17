@@ -51,6 +51,7 @@ class SimpleFields extends PolymerElement {
    * Value in the form has changed, reflect to the preview.
    */
   _valueChanged(newValue) {
+    console.log("_valueChanged", newValue, this.schema);
     if (newValue && this.schema) {
       for (var i in newValue) {
         this.schema[i].value = newValue[i];

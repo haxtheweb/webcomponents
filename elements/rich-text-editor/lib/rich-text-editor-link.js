@@ -7,7 +7,7 @@ import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "./rich-text-editor-styles.js";
-import { RichTextEditorButton } from "./rich-text-editor-button.js";
+import { RichTextEditorPrompt } from "./rich-text-editor-prompt.js";
 /**
  * `rich-text-editor-link`
  * `a button for rich text editor (custom buttons can extend this)`
@@ -18,10 +18,46 @@ import { RichTextEditorButton } from "./rich-text-editor-button.js";
  * @customElement
  * @polymer
  */
-class RichTextEditorLink extends RichTextEditorButton {
+class RichTextEditorLink extends RichTextEditorPrompt {
   // properties available to the custom element for data binding
   static get properties() {
-    return {};
+    return {
+      /**
+       * fields for the prompt popover.
+       */
+      fields: {
+        type: Array,
+        value: [
+          {
+            property: "link",
+            title: "Link",
+            description: "The link URL",
+            inputMethod: "textfield"
+          }
+        ]
+      },
+      /**
+       * Optional text field for current selection
+       */
+      selectionField: {
+        type: Object,
+        value: {
+          property: "text",
+          title: "Text",
+          description: "The link text",
+          inputMethod: "textfield"
+        }
+      },
+      /**
+       * The prefilled value of the prompt
+       */
+      value: {
+        type: Object,
+        value: {
+          link: null
+        }
+      }
+    };
   }
 
   /**
@@ -37,6 +73,7 @@ class RichTextEditorLink extends RichTextEditorButton {
    */
   ready() {
     super.ready();
+    console.log("link", this.fields);
     let root = this;
   }
 }

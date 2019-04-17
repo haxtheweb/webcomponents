@@ -221,7 +221,6 @@ let AframePlayer = Polymer({
   },
 
   _aframeLoaded(el) {
-    console.log(typeof TWEEN);
     // ensure that this doesn't put full screen styles on the page!
     this.$.scene.removeFullScreenStyles();
     this.__entity = document.createElement("a-entity");

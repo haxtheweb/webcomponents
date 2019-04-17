@@ -23,6 +23,7 @@ class RichTextEditorPicker extends RichTextEditorButton {
     return html`
       <style include="rich-text-editor-styles"></style>
       <simple-picker id="button"
+        class="rtebutton"
         disabled$="[[disabled]]" 
         controls="[[controls]]"
         on-change="_pickerChange"
@@ -212,7 +213,6 @@ class RichTextEditorPicker extends RichTextEditorButton {
       }
       items[row][col] = data;
     }
-    console.log("items", items);
     return items;
   }
 }

@@ -10,6 +10,7 @@ import "./lib/rich-text-editor-more-button.js";
 import "./lib/rich-text-editor-heading-picker.js";
 import "./lib/rich-text-editor-symbol-picker.js";
 import "./lib/rich-text-editor-link.js";
+import "./lib/rich-text-editor-styles.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/iron-icons/image-icons.js";
@@ -123,6 +124,7 @@ class RichTextEditor extends PolymerElement {
           display: none;
         }
       </style>
+      <style include="rich-text-editor-styles"></style>
       <div id="toolbar" aria-hidden$="[[!controls]]" collapsed$="[[collapsed]]">
         <rich-text-editor-more-button
           id="morebutton"
@@ -271,7 +273,7 @@ class RichTextEditor extends PolymerElement {
                 toggledIcon: "mdextra:unlink",
                 toggledLabel: "Unink",
                 toggles: true,
-                type: "rich-text-editor-prompt"
+                type: "rich-text-editor-link"
               }
             ]
           },
@@ -512,6 +514,7 @@ class RichTextEditor extends PolymerElement {
    * Gets the updated selection.
    */
   getUpdatedSelection() {
+    console.log("selectionchange");
     let root = this;
     root.selection =
       root.editableElement === undefined || root.editableElement === null
