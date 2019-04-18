@@ -3,7 +3,6 @@ import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 /**
  * `simple-blog-post`
  * `A simple blog and associated elements`
@@ -175,6 +174,7 @@ class SimpleBlogPost extends PolymerElement {
    */
   constructor() {
     super();
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
     this.__disposer = [];
     afterNextRender(this, function() {
       window.addEventListener("scroll", this._scrollListener.bind(this));

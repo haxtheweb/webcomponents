@@ -3,8 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import "@lrnwebcomponents/hax-body/lib/hax-store.js";
-import "@lrnwebcomponents/hax-body/hax-body.js";
-
 /**
  * `h-a-x`
  * `Single tag to transform authoring`
@@ -29,7 +27,7 @@ class HAX extends HTMLElement {
   /**
    * life cycle
    */
-  constructor(delayRender = true) {
+  constructor(delayRender = false) {
     super();
 
     // set tag for later use
@@ -53,12 +51,13 @@ class HAX extends HTMLElement {
     this.template = document.createElement("template");
 
     this.attachShadow({ mode: "open" });
-    // if we shouldn't delay rendering OR the store is already ready...
-    if (!delayRender || window.HaxStore.ready) {
+    // if we shouldn't delay rendering
+    if (!delayRender) {
       this.render();
     }
-    window.addEventListener("hax-store-ready", this.render.bind(this));
+    window.addEventListener("hax-store-ready", this.storeReady.bind(this));
     // dynamically import definitions for all needed tags
+    import("@lrnwebcomponents/hax-body/hax-body.js");
     import("@lrnwebcomponents/hax-body/lib/hax-panel.js");
     import("@lrnwebcomponents/hax-body/lib/hax-autoloader.js");
     import("@lrnwebcomponents/hax-body/lib/hax-app.js");
@@ -92,10 +91,6 @@ class HAX extends HTMLElement {
     if (!this.__HAXApplied && !window.__HAXApplied) {
       window.__HAXApplied = this.__HAXApplied = this.applyHAX();
     }
-
-    if (this._queue.length) {
-      this._processQueue();
-    }
   }
 
   _copyAttribute(name, to) {
@@ -107,52 +102,35 @@ class HAX extends HTMLElement {
     }
   }
 
-  _queueAction(action) {
-    this._queue.push(action);
-  }
-
-  _processQueue() {
-    this._queue.forEach(action => {
-      this[`_${action.type}`](action.data);
-    });
-
-    this._queue = [];
-  }
-
   _setProperty({ name, value }) {
     this[name] = value;
   }
 
+  storeReady(e) {
+    window.HaxStore.instance.appStore = JSON.parse(
+      this.getAttribute("app-store")
+    );
+    // import into the active body if there's content
+    // obtain the nodes that have been assigned to the slot of our element
+    if (this.shadowRoot.querySelector("slot")) {
+      const nodes = this.shadowRoot.querySelector("slot").assignedNodes();
+      let body = "";
+      // loop the nodes and if it has an outerHTML attribute, append as string
+      for (let i in nodes) {
+        if (typeof nodes[i].outerHTML !== typeof undefined) {
+          body += nodes[i].outerHTML;
+        }
+      }
+      window.HaxStore.instance.activeHaxBody.importContent(body);
+    }
+  }
   render() {
     if (!this.__rendered) {
-      window.HaxStore.instance.appStore = JSON.parse(
-        this.getAttribute("app-store")
-      );
       this.__rendered = true;
       this.shadowRoot.innerHTML = null;
       this.template.innerHTML = this.html;
       this.shadowRoot.appendChild(this.template.content.cloneNode(true));
-      // import into the active body if there's content
-      if (this.shadowRoot.querySelector("slot")) {
-        this._importBodyContent();
-      }
     }
-  }
-  /**
-   * Import slotted content as body for haxActiveBody but ONLY
-   * after we've got the appstore loaded so we know tags will validate
-   */
-  _importBodyContent() {
-    // obtain the nodes that have been assigned to the slot of our element
-    const nodes = this.shadowRoot.querySelector("slot").assignedNodes();
-    let body = "";
-    // loop the nodes and if it has an outerHTML attribute, append as string
-    for (let i in nodes) {
-      if (typeof nodes[i].outerHTML !== typeof undefined) {
-        body += nodes[i].outerHTML;
-      }
-    }
-    window.HaxStore.instance.activeHaxBody.importContent(body);
   }
   /**
    * Apply tags to the screen to establish HAX
@@ -174,7 +152,7 @@ class HAX extends HTMLElement {
     return true;
   }
   disconnectedCallback() {
-    window.removeEventListener("hax-store-ready", this.render.bind(this));
+    window.removeEventListener("hax-store-ready", this.storeReady.bind(this));
   }
   static get observedAttributes() {
     return ["app-store", "hide-panel-ops"];

@@ -98,7 +98,7 @@ class HAXCMSBackendPHP extends PolymerElement {
       // which will appear to be injecting into the page
       // but because of this approach it should be non-blocking
       try {
-        import(`@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor.js`).then(
+        import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor.js").then(
           e => {
             let haxCmsSiteEditorElement = document.createElement(
               "haxcms-site-editor"

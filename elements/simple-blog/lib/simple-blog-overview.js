@@ -1,7 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import "@polymer/paper-card/paper-card.js";
-import "@lrnwebcomponents/simple-datetime/simple-datetime.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `simple-blog-overview`
@@ -19,6 +17,11 @@ class SimpleBlogOverview extends PolymerElement {
    */
   static get tag() {
     return "simple-blog-overview";
+  }
+  constructor() {
+    super();
+    import("@polymer/paper-card/paper-card.js");
+    import("@lrnwebcomponents/simple-datetime/simple-datetime.js");
   }
   // render function
   static get template() {

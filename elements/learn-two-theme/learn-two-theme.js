@@ -4,18 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@polymer/app-layout/app-drawer/app-drawer.js";
-import "@polymer/app-layout/app-drawer-layout/app-drawer-layout.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
-
 /**
  * `learn-two-theme`
  * `Learn2 theme for HAXcms`
@@ -262,7 +251,7 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
           icon="menu"
           on-tap="toggleDrawer"
         ></paper-icon-button>
-        <app-drawer id="drawer" swipe-open slot="drawer" opened="{{opened}}">
+        <app-drawer swipe-open slot="drawer" opened="{{opened}}">
           <paper-icon-button
             id="menubutton2"
             icon="menu"
@@ -299,7 +288,19 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
   static get properties() {
     return {};
   }
-
+  constructor() {
+    super();
+    import("@polymer/app-layout/app-drawer/app-drawer.js");
+    import("@polymer/app-layout/app-drawer-layout/app-drawer-layout.js");
+    import("@polymer/paper-icon-button/paper-icon-button.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
+  }
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -319,7 +320,7 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
     return props;
   }
   toggleDrawer(e) {
-    this.$.drawer.toggle();
+    this.shadowRoot.querySelector("app-drawer").toggle();
   }
 }
 window.customElements.define(LearnTwoTheme.tag, LearnTwoTheme);

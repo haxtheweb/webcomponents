@@ -178,6 +178,7 @@ class HAXCMSSiteBuilder extends PolymerElement {
    */
   constructor() {
     super();
+    window.addEventListener("hax-store-ready", this.storeReady.bind(this));
     import("@polymer/paper-progress/paper-progress.js");
     // attempt to set polymer passive gestures globally
     // this decreases logging and improves performance on scrolling
@@ -256,7 +257,21 @@ class HAXCMSSiteBuilder extends PolymerElement {
     for (var i in this.__disposer) {
       this.__disposer[i].dispose();
     }
+    window.removeEventListener("hax-store-ready", this.storeReady.bind(this));
     super.disconnectedCallback();
+  }
+  storeReady(e) {
+    // append UI element to body to avoid stack order issues
+    if (
+      store.cmsSiteEditor &&
+      store.cmsSiteEditor.instance &&
+      window.HaxStore.instance.activeHaxBody &&
+      store.activeItemContent
+    ) {
+      window.HaxStore.instance.activeHaxBody.importContent(
+        store.activeItemContent
+      );
+    }
   }
   /**
    * React to content being loaded from a page.
@@ -283,17 +298,6 @@ class HAXCMSSiteBuilder extends PolymerElement {
               detail: html
             })
           );
-          if (!window.HaxStore || !window.HaxStore.ready) {
-            setTimeout(() => {
-              if (
-                store.cmsSiteEditor &&
-                store.cmsSiteEditor.instance &&
-                store.cmsSiteEditor.haxCmsSiteEditorUIElement
-              ) {
-                window.HaxStore.instance.activeHaxBody.importContent(html);
-              }
-            }, 1000);
-          }
         }, 5);
         // if there are, dynamically import them
         if (this.manifest.metadata.dynamicElementLoader) {

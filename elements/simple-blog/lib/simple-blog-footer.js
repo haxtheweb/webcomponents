@@ -1,9 +1,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
-import "@polymer/paper-button/paper-button.js";
-import "@lrnwebcomponents/simple-datetime/simple-datetime.js";
 /**
  * `simple-blog-footer`
  * `Footer to blog posts`
@@ -203,6 +200,12 @@ class SimpleBlogFooter extends PolymerElement {
       this.nextTitle = "";
       this.nextChanged = "";
     }
+  }
+  constructor() {
+    super();
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
+    import("@polymer/paper-button/paper-button.js");
+    import("@lrnwebcomponents/simple-datetime/simple-datetime.js");
   }
   /**
    * attached life cycle

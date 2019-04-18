@@ -3,7 +3,6 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
 import { autorun, toJS } from "mobx";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js";
-import "@polymer/iron-image/iron-image.js";
 
 /**
  * `site-recent-content-block`
@@ -20,6 +19,10 @@ class SiteRecentContentBlock extends PolymerElement {
    */
   static get tag() {
     return "site-recent-content-block";
+  }
+  constructor() {
+    super();
+    import("@polymer/iron-image/iron-image.js");
   }
   // render function
   static get template() {

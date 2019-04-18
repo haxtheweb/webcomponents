@@ -86,7 +86,7 @@ class HAXCMSBackendDemo extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     try {
-      import(`@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor.js`).then(
+      import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor.js").then(
         e => {
           let haxCmsSiteEditorElement = document.createElement(
             "haxcms-site-editor"
@@ -117,6 +117,7 @@ class HAXCMSBackendDemo extends PolymerElement {
         },
         e => {
           //import failed
+          console.log(e);
         }
       );
     } catch (err) {

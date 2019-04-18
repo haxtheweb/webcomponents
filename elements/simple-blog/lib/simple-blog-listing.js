@@ -1,7 +1,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js";
 import "@polymer/iron-list/iron-list.js";
-import "./simple-blog-overview.js";
 /**
  * `simple-blog-listing`
  * `A simple blog and associated elements`
@@ -13,6 +12,10 @@ class SimpleBlogListing extends PolymerElement {
    */
   static get tag() {
     return "simple-blog-listing";
+  }
+  constructor() {
+    super();
+    import("@lrnwebcomponents/simple-blog/lib/simple-blog-overview.js");
   }
   // render function
   static get template() {

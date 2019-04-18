@@ -5,9 +5,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { autorun, toJS } from "mobx";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
 /**
  * `active-when-visible`
  * `Title of the site`

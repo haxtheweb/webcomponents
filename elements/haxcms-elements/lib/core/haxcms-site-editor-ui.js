@@ -38,7 +38,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
           right: 0;
           bottom: 0;
           opacity: 0.9;
-          transition: 0.6s all ease-in-out;
+          transition: 0.3s all ease-in-out;
           background-color: var(--haxcms-color, white);
           padding: 0px 8px;
           border-top-left-radius: 10px;
@@ -55,6 +55,11 @@ class HAXCMSSiteEditorUI extends PolymerElement {
           min-width: 154px;
         }
         :host *[hidden] {
+          display: none;
+        }
+        paper-fab:not(:defined),
+        paper-tooltip:not(:defined),
+        paper-icon-button:not(:defined) {
           display: none;
         }
         paper-fab {

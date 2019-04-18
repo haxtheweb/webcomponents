@@ -273,6 +273,7 @@ let HaxBody = Polymer({
    * Ready state to tee everything up.
    */
   ready: function() {
+    this.fire("hax-register-body", this);
     this.polyfillSafe = window.HaxStore.instance.computePolyfillSafe();
     // mutation observer that ensures state of hax applied correctly
     afterNextRender(this, function() {
@@ -382,7 +383,6 @@ let HaxBody = Polymer({
         }
       });
       this.__tabTrap = false;
-      this.fire("hax-register-body", this);
       document.body.addEventListener(
         "hax-store-property-updated",
         this._haxStorePropertyUpdated.bind(this)

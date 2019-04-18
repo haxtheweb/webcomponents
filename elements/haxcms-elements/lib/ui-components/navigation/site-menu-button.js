@@ -5,10 +5,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-button/paper-button.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
 /**
  * `site-menu-button`
  * `Menu button based on the hierarchy`
@@ -24,6 +21,12 @@ class SiteMenuButton extends PolymerElement {
    */
   static get tag() {
     return "site-menu-button";
+  }
+  constructor() {
+    super();
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/paper-tooltip/paper-tooltip.js");
   }
   // render function
   static get template() {

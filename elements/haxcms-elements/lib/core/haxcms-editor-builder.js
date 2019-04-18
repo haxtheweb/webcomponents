@@ -6,7 +6,6 @@ import { PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
-import "./haxcms-site-editor-ui.js";
 
 /**
  * `haxcms-editor-builder`
@@ -29,18 +28,7 @@ class HAXCMSEditorBuilder extends PolymerElement {
    */
   constructor() {
     super();
-    this.applyContext();
-  }
-  connectedCallback() {
-    super.connectedCallback();
-    window.addEventListener("hax-store-ready", this.storeReady.bind(this));
-  }
-  disconnectedCallback() {
-    window.removeEventListener("hax-store-ready", this.storeReady.bind(this));
-    super.disconnectedCallback();
-  }
-  storeReady(e) {
-    // append UI element to body to avoid stack order issues
+    import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor-ui.js");
     if (!store.cmsSiteEditor.haxCmsSiteEditorUIElement) {
       store.cmsSiteEditor.haxCmsSiteEditorUIElement = document.createElement(
         "haxcms-site-editor-ui"
@@ -51,6 +39,7 @@ class HAXCMSEditorBuilder extends PolymerElement {
         store.cmsSiteEditor.haxCmsSiteEditorUIElement.painting = false;
       }, 5);
     }
+    this.applyContext();
   }
   /**
    * Try to get context of what backend is powering this

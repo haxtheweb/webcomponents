@@ -6,8 +6,6 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
 /**
  * `site-modal`
  * `A basic site dialog`
@@ -23,6 +21,10 @@ class SiteModal extends PolymerElement {
    */
   static get tag() {
     return "site-modal";
+  }
+  constructor() {
+    super();
+    import("@polymer/paper-tooltip/paper-tooltip.js");
   }
   // render function
   static get template() {

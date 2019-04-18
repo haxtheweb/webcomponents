@@ -22,7 +22,6 @@ class SitePrintButton extends PolymerElement {
   }
   constructor() {
     super();
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-footer.js");
     import("@polymer/paper-tooltip/paper-tooltip.js");
     import("@polymer/paper-icon-button/paper-icon-button.js");
   }
@@ -109,6 +108,8 @@ class SitePrintButton extends PolymerElement {
    * Print the type in question
    */
   async print(e) {
+    // now dynamic import the footer so we don't bloat all other page loads
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-footer.js");
     const type = this.type;
     let content = "";
     if (type === "page") {

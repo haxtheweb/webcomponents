@@ -4,8 +4,8 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
 import { autorun, toJS } from "mobx";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "./lib/simple-blog-listing.js";
-import "./lib/simple-blog-post.js";
+import "@lrnwebcomponents/simple-blog/lib/simple-blog-listing.js";
+import "@lrnwebcomponents/simple-blog/lib/simple-blog-post.js";
 /**
  * `simple-blog`
  * `A simple blog and associated elements`
@@ -75,27 +75,30 @@ class SimpleBlog extends HAXCMSTheme(PolymerElement) {
           width: 100vw;
           height: 100vh;
         }
-        #post {
+        simple-blog-post {
           transition: all 0.6s ease-in-out;
           visibility: hidden;
         }
-        :host([selected-page="0"]) #post {
+        :host([selected-page="0"]) simple-blog-post {
           visibility: visible;
           opacity: 0;
           visibility: hidden;
         }
-        :host([selected-page="1"]) #post {
+        :host([selected-page="1"]) simple-blog-post {
           visibility: visible;
           opacity: 1;
         }
-        a, a:* {
+        a,
+        a:active,
+        a:hover,
+        a:focus {
           color: inherit;
         }
       </style>
       <iron-pages selected="[[selectedPage]]">
         <section>
           <simple-blog-header></simple-blog-header>
-          <simple-blog-listing id="listing"></simple-blog-listing>
+          <simple-blog-listing></simple-blog-listing>
         </section>
         <section>
           <paper-icon-button
@@ -110,7 +113,7 @@ class SimpleBlog extends HAXCMSTheme(PolymerElement) {
             animation-delay="100"
             >Back to listing
           </paper-tooltip>
-          <simple-blog-post id="post" edit-mode="[[editMode]]"
+          <simple-blog-post edit-mode="[[editMode]]"
             ><slot></slot
           ></simple-blog-post>
           <simple-blog-footer id="footer"></simple-blog-footer>
@@ -132,9 +135,9 @@ class SimpleBlog extends HAXCMSTheme(PolymerElement) {
   }
   constructor() {
     super();
+    import("@lrnwebcomponents/simple-blog/lib/simple-blog-header.js");
     import("@polymer/iron-pages/iron-pages.js");
     import("@polymer/paper-icon-button/paper-icon-button.js");
-    import("@lrnwebcomponents/simple-blog/lib/simple-blog-header.js");
     import("@lrnwebcomponents/simple-blog/lib/simple-blog-footer.js");
     this.__disposer = [];
     autorun(reaction => {
@@ -152,7 +155,9 @@ class SimpleBlog extends HAXCMSTheme(PolymerElement) {
   connectedCallback() {
     super.connectedCallback();
     afterNextRender(this, () => {
-      this.contentContainer = this.$.post.$.contentcontainer;
+      this.contentContainer = this.shadowRoot.querySelector(
+        "simple-blog-post"
+      ).$.contentcontainer;
     });
   }
   /**
@@ -193,9 +198,11 @@ class SimpleBlog extends HAXCMSTheme(PolymerElement) {
     // and also generate data model mirroring
     if (prevActiveItemId) {
       setTimeout(() => {
-        let active = this.$.listing.shadowRoot.querySelector(
-          'simple-blog-overview[item-id="' + prevActiveItemId + '"]'
-        );
+        let active = this.shadowRoot
+          .querySelector("simple-blog-listing")
+          .shadowRoot.querySelector(
+            'simple-blog-overview[item-id="' + prevActiveItemId + '"]'
+          );
         if (active) {
           active.scrollIntoView(true);
           active.focus();
