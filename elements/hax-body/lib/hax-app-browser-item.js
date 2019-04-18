@@ -1,6 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { DynamicImporter } from "@lrnwebcomponents/dynamic-importer/dynamic-importer.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./hax-shared-styles.js";
 
@@ -10,7 +9,7 @@ import "./hax-shared-styles.js";
  * @microcopy - the mental model for this element
  * - hax-app - data wiring for an app, this element uses the visual side of this
  */
-class HAXAppBrowserItem extends DynamicImporter(PolymerElement) {
+class HAXAppBrowserItem extends PolymerElement {
   static get tag() {
     return "hax-app-browser-item";
   }
@@ -81,15 +80,11 @@ class HAXAppBrowserItem extends DynamicImporter(PolymerElement) {
       }
     };
   }
-  /**
-   * Dynamically import these late so we can load faster
-   */
-  dynamicImports() {
-    return {
-      "paper-button": "@polymer/paper-button/paper-button.js",
-      "iron-icon": "@polymer/iron-icon/iron-icon.js",
-      "iron-image": "@polymer/iron-image/iron-image.js"
-    };
+  constructor() {
+    super();
+    import("@polymer/paper-button/paper-button.js");
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/iron-image/iron-image.js");
   }
   static get template() {
     return html`

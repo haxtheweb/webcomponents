@@ -5,7 +5,6 @@ import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import { microTask } from "@polymer/polymer/lib/utils/async.js";
-import { DynamicImporter } from "@lrnwebcomponents/dynamic-importer/dynamic-importer.js";
 import {
   encapScript,
   findTagsInHTML,
@@ -24,21 +23,13 @@ import "./haxcms-site-router.js";
  * - it loads a site.json file and then utilizes this data in order to construct
  *   what theme it should load (element) in order to get everything off and running
  */
-class HAXCMSSiteBuilder extends DynamicImporter(PolymerElement) {
+class HAXCMSSiteBuilder extends PolymerElement {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
     return "haxcms-site-builder";
-  }
-  /**
-   * Dynamically import these late so we can load faster
-   */
-  dynamicImports() {
-    return {
-      "paper-progress": "@polymer/paper-progress/paper-progress.js"
-    };
   }
   // render function
   static get template() {
@@ -187,6 +178,7 @@ class HAXCMSSiteBuilder extends DynamicImporter(PolymerElement) {
    */
   constructor() {
     super();
+    import("@polymer/paper-progress/paper-progress.js");
     // attempt to set polymer passive gestures globally
     // this decreases logging and improves performance on scrolling
     setPassiveTouchGestures(true);
@@ -230,8 +222,7 @@ class HAXCMSSiteBuilder extends DynamicImporter(PolymerElement) {
         this._triggerUpdatedNode.bind(this)
       );
       // dyanmcially import the editor builder which figures out if we should have one
-      const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
-      import(`${basePath}haxcms-editor-builder.js`)
+      import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-editor-builder.js")
         .then(response => {
           this.editorBuilder = document.createElement("haxcms-editor-builder");
           // attach editor builder after we've appended to the screen
@@ -324,6 +315,7 @@ class HAXCMSSiteBuilder extends DynamicImporter(PolymerElement) {
                 .catch(error => {
                   /* Error handling */
                   console.log(error);
+                  console.log(tagName);
                 });
             }
           }

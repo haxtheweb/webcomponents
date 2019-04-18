@@ -37,12 +37,12 @@
     "new": "yarn run rebuild-wcfcache && wcf element && yarn run test-suite-inject && yarn install --link-duplicates"
   },
   "devDependencies": {
-    "@storybook/addon-knobs": "4.1.13",
-    "@open-wc/webpack": "0.1.6",
-    "@open-wc/storybook": "0.2.8",
     "@emotion/core": "0.13.1",
     "@emotion/styled": "0.10.6",
-    "@webcomponents/webcomponentsjs": "2.2.7",
+    "@open-wc/storybook": "0.2.8",
+    "@open-wc/webpack": "0.1.6",
+    "@storybook/addon-knobs": "4.1.13",
+    "@webcomponents/webcomponentsjs": "^2.2.9",
     "babel-plugin-external-helpers": "6.22.0",
     "babel-plugin-transform-custom-element-classes": "0.1.0",
     "babel-plugin-transform-es2015-modules-umd": "6.24.1",
@@ -55,7 +55,7 @@
     "dialog-polyfill": "0.4.10",
     "file-loader": "^3.0.1",
     "global": "4.3.2",
-    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp": "4.0.0",
     "gulp-babel": "8.0.0",
     "gulp-clean-css": "4.0.0",
     "gulp-concat-util": "0.5.5",
@@ -94,12 +94,12 @@
     "web-component-tester": "6.9.2",
     "webpack": "4.29.3",
     "whatwg-fetch": "3.0.0",
-    "yo": "2.0.5"
+    "yo": "2.0.6"
   },
   "dependencies": {
     "fetch-ie8": "1.5.0",
-    "promise-polyfill": "8.1.0",
-    "lunr": "2.3.6"
+    "lunr": "2.3.6",
+    "promise-polyfill": "8.1.0"
   },
   "lint-staged": {
     "linters": {
@@ -142,5 +142,15 @@
     "hooks": {
       "pre-commit": "yarn run test-suite-inject > /dev/null && lint-staged"
     }
+  },
+  "resolutions": {
+    "promise-polyfill": "8.1.0",
+    "@webcomponents/webcomponentsjs": "2.2.9",
+    "@webcomponents/shadycss": "1.9.1",
+    "@polymer/iron-demo-helpers": "3.1.0",
+    "@polymer/app-layout": "3.0.2",
+    "@polymer/paper-icon-button": "3.0.2",
+    "@polymer/paper-input": "3.0.2",
+    "@polymer/iron-list": "3.0.2"
   }
 }

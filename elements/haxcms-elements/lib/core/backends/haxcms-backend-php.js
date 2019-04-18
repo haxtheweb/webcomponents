@@ -5,7 +5,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/jwt-login/jwt-login.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 /**
  * `haxcms-backend-php`
  * `a simple element to check for and fetch JWTs`
@@ -99,8 +98,7 @@ class HAXCMSBackendPHP extends PolymerElement {
       // which will appear to be injecting into the page
       // but because of this approach it should be non-blocking
       try {
-        import(pathFromUrl(decodeURIComponent(import.meta.url)) +
-          "../haxcms-site-editor.js").then(
+        import(`@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor.js`).then(
           e => {
             let haxCmsSiteEditorElement = document.createElement(
               "haxcms-site-editor"

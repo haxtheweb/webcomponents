@@ -3,13 +3,15 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { MutableData } from "@polymer/polymer/lib/mixins/mutable-data.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { DynamicImporter } from "@lrnwebcomponents/dynamic-importer/dynamic-importer.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@polymer/iron-ajax/iron-ajax.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@vaadin/vaadin-split-layout/vaadin-split-layout.js";
 import "@lrnwebcomponents/multiple-choice/multiple-choice.js";
 import "./lib/game-show-quiz-modal.js";
 /**
@@ -19,48 +21,53 @@ import "./lib/game-show-quiz-modal.js";
  * @microcopy - the mental model for this element
  * - game show - a display board in the style of Jeopardy
  */
-class GameShowQuiz extends DynamicImporter(PolymerElement) {
+class GameShowQuiz extends MutableData(PolymerElement) {
   static get tag() {
     return "game-show-quiz";
   }
-  /**
-   * Dynamically import these late so we can load faster
-   */
-  dynamicImports() {
-    return {
-      "iron-image": "@polymer/iron-image/iron-image.js",
-      "responsive-grid-row":
-        "@lrnwebcomponents/responsive-grid/lib/responsive-grid-row.js",
-      "responsive-grid-col":
-        "@lrnwebcomponents/responsive-grid/lib/responsive-grid-col.js",
-      "app-drawer": "@polymer/app-layout/app-drawer/app-drawer.js",
-      "app-header": "@polymer/app-layout/app-header/app-header.js",
-      "app-toolbar": "@polymer/app-layout/app-toolbar/app-toolbar.js",
-      "iron-flex-layout": "@polymer/iron-flex-layout/iron-flex-layout.js",
-      "iron-icon": "@polymer/iron-icon/iron-icon.js",
-      "iron-icons": "@polymer/iron-icons/iron-icons.js"
-    };
+  constructor() {
+    super();
+    import("@polymer/iron-image/iron-image.js");
+    import("@lrnwebcomponents/responsive-grid/lib/responsive-grid-row.js");
+    import("@lrnwebcomponents/responsive-grid/lib/responsive-grid-col.js");
+    import("@polymer/app-layout/app-drawer/app-drawer.js");
+    import("@polymer/app-layout/app-header/app-header.js");
+    import("@polymer/app-layout/app-toolbar/app-toolbar.js");
+    import("@polymer/iron-flex-layout/iron-flex-layout.js");
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/iron-icons/iron-icons.js");
   }
   static get template() {
     return html`
-      <style>
+      <style include="simple-colors">
         :host {
           display: block;
-          --game-show-bg-color: #4285f4;
-          --game-show-text-color: #ffffff;
+          --game-show-bg-color: var(--simple-colors-default-theme-blue-11);
+          --game-show-text-color: var(--simple-colors-default-theme-blue-1);
         }
         app-toolbar {
-          background-color: var(--game-show-bg-color, blue);
-          color: var(--game-show-text-color, white);
+          background-color: var(--game-show-bg-color);
+          color: var(--game-show-text-color);
           font-size: 24px;
           display: flex;
         }
         iron-icon {
           display: inline-block;
         }
+        table {
+          width: 90%;
+        }
+        tr {
+          outline: 1px solid black;
+        }
+        td {
+          border-left: 1px solid black;
+          padding: 16px;
+          text-align: center;
+        }
 
         paper-button {
-          --paper-button-ink-color: var(--game-show-bg-color, blue);
+          --paper-button-ink-color: var(--game-show-bg-color);
           text-transform: none;
           display: block;
         }
@@ -76,7 +83,7 @@ class GameShowQuiz extends DynamicImporter(PolymerElement) {
           display: inline-flex;
         }
         app-header {
-          color: var(--game-show-text-color, white);
+          color: var(--game-show-text-color);
           --app-header-background-rear-layer: {
             background-color: #ef6c00;
           }
@@ -100,22 +107,30 @@ class GameShowQuiz extends DynamicImporter(PolymerElement) {
         .grid-button {
           width: 100%;
           height: 80px;
+          font-size: 24px;
           text-align: center;
           min-width: unset;
           padding: 0;
           margin: 0;
+          align-items: center;
+          display: flex;
         }
         .status-icon {
-          width: 64px;
-          height: 64px;
-          opacity: 0.25;
+          border-radius: 50%;
+          width: 48px;
+          height: 48px;
+          opacity: 0.5;
+          right: 0;
+          bottom: 0;
           position: absolute;
         }
         .correct {
-          color: green;
+          color: var(--simple-colors-default-theme-green-6);
+          background-color: var(--simple-colors-default-theme-green-11);
         }
         .incorrect {
-          color: red;
+          color: var(--simple-colors-default-theme-red-6);
+          background-color: var(--simple-colors-default-theme-red-11);
         }
         .row-0 paper-button[disabled] {
           font-weight: bold;
@@ -132,8 +147,12 @@ class GameShowQuiz extends DynamicImporter(PolymerElement) {
             height: 16px;
             min-width: unset;
           }
+          game-show-quiz-modal paper-button {
+            height: 48px;
+            width: 100%;
+          }
           .grid-button {
-            font-size: 9px;
+            font-size: 14px;
           }
           .status-icon {
             width: 24px;
@@ -150,20 +169,26 @@ class GameShowQuiz extends DynamicImporter(PolymerElement) {
       <app-header>
         <app-toolbar>
           <paper-button id="helpbutton" on-tap="directionsToggle">
-            <iron-icon icon="help"></iron-icon>Directions
+            <iron-icon icon="help"></iron-icon
+            ><label for="helpbutton">Directions</label>
           </paper-button>
           <div main-title>[[title]]</div>
         </app-toolbar>
       </app-header>
       <div id="contentcontainer">
-        <template is="dom-repeat" items="[[gameBoard]]" as="row">
+        <template is="dom-repeat" items="[[gameBoard]]" as="row" mutable-data>
           <responsive-grid-row gutter="0" class\$="row row-[[index]]">
-            <template is="dom-repeat" items="[[row.cols]]" as="col">
-              <responsive-grid-col xl="3" lg="3" md="3" sm="3" xs="3">
+            <template
+              is="dom-repeat"
+              items="[[row.cols]]"
+              as="col"
+              mutable-data
+            >
+              <responsive-grid-col xl="2" lg="2" md="2" sm="2" xs="2">
                 <paper-button
                   class="grid-button"
                   raised="[[!col.notRaised]]"
-                  data-question-data\$="[[col.question]]"
+                  data-question-uuid\$="[[col.uuid]]"
                   data-value\$="[[col.points]]"
                   data-type\$="[[col.type]]"
                   disabled\$="[[col.disabled]]"
@@ -188,8 +213,8 @@ class GameShowQuiz extends DynamicImporter(PolymerElement) {
               </tr>
               <tr>
                 <th>Points Attempted</th>
-                <td>[[points.slide.attempted]]</td>
-                <td>[[points.terms.attempted]]</td>
+                <td>[[points.slideid.attempted]]</td>
+                <td>[[points.terminology.attempted]]</td>
                 <td>[[points.reading.attempted]]</td>
                 <td>[[points.lecture.attempted]]</td>
                 <td>[[points.bonus.attempted]]</td>
@@ -197,8 +222,8 @@ class GameShowQuiz extends DynamicImporter(PolymerElement) {
               </tr>
               <tr>
                 <th>Points Earned</th>
-                <td>[[points.slide.earned]]</td>
-                <td>[[points.terms.earned]]</td>
+                <td>[[points.slideid.earned]]</td>
+                <td>[[points.terminology.earned]]</td>
                 <td>[[points.reading.earned]]</td>
                 <td>[[points.lecture.earned]]</td>
                 <td>[[points.bonus.earned]]</td>
@@ -206,8 +231,8 @@ class GameShowQuiz extends DynamicImporter(PolymerElement) {
               </tr>
               <tr>
                 <th>Category Percentage</th>
-                <td>[[points.slide.percent]]</td>
-                <td>[[points.terms.percent]]</td>
+                <td>[[points.slideid.percent]]</td>
+                <td>[[points.terminology.percent]]</td>
                 <td>[[points.reading.percent]]</td>
                 <td>[[points.lecture.percent]]</td>
                 <td>[[points.bonus.percent]]</td>
@@ -220,26 +245,32 @@ class GameShowQuiz extends DynamicImporter(PolymerElement) {
       </div>
       <game-show-quiz-modal id="directions" title="[[directionsTitle]]">
         <div slot="content"><slot name="directions"></slot></div>
-        <paper-button slot="buttons" id="dismiss" dialog-confirm="" raised=""
+        <paper-button
+          aria-label="Close directions dialog and return to game"
+          slot="buttons"
+          id="dismiss"
+          dialog-confirm
+          raised
           >Good luck!</paper-button
         >
       </game-show-quiz-modal>
-      <game-show-quiz-modal id="dialog" title="[[activeQuestion.title]]">
-        <iron-image
-          slot="content"
-          style="min-width:100px; width:100%; min-height:25vh; height:40vh; background-color: lightgray;"
-          sizing="contain"
-          preload=""
-          src\$="[[activeQuestion.image]]"
-        ></iron-image>
-        <multiple-choice
-          disabled\$="[[activeQuestion.submitted]]"
-          slot="content"
-          id="question"
-          hide-buttons=""
-          title="[[activeQuestion.title]]"
-          answers="[[activeQuestion.data]]"
-        ></multiple-choice>
+      <game-show-quiz-modal id="dialog" title="[[questionTitle]]">
+        <vaadin-split-layout slot="content" style="height:80vh;">
+          <iron-image
+            style="min-width:100px; width:100%; min-height:50vh; height:75vh; background-color: lightgray;"
+            sizing="contain"
+            preload=""
+            src\$="[[activeQuestion.image]]"
+          ></iron-image>
+          <multiple-choice
+            randomize
+            single-option
+            id="question"
+            hide-buttons
+            title="[[activeQuestion.title]]"
+            answers="[[activeQuestion.data]]"
+          ></multiple-choice>
+        </vaadin-split-layout>
         <paper-button
           slot="buttons"
           hidden\$="[[activeQuestion.submitted]]"
@@ -256,8 +287,10 @@ class GameShowQuiz extends DynamicImporter(PolymerElement) {
           slot="buttons"
           id="continue"
           hidden\$="[[!activeQuestion.submitted]]"
-          dialog-confirm=""
-          raised=""
+          dialog-confirm
+          raised
+          aria-disabled\$="[[activeQuestion.submitted]]"
+          aria-label="Return to game board"
           >Continue <iron-icon icon="icons:arrow-forward"></iron-icon
         ></paper-button>
       </game-show-quiz-modal>
@@ -266,13 +299,7 @@ class GameShowQuiz extends DynamicImporter(PolymerElement) {
         id="gamedata"
         url="[[gameData]]"
         handle-as="json"
-        last-response="{{gameBoard}}"
-      ></iron-ajax>
-      <iron-ajax
-        id="questiondata"
-        url="[[__questionEndpoint]]"
-        handle-as="json"
-        last-response="{{activeQuestion}}"
+        last-response="{{gameBoardData}}"
       ></iron-ajax>
     `;
   }
@@ -291,12 +318,12 @@ class GameShowQuiz extends DynamicImporter(PolymerElement) {
       points: {
         type: Object,
         value: {
-          slide: {
+          slideid: {
             attempted: 0,
             earned: 0,
             percent: 0
           },
-          terms: {
+          terminology: {
             attempted: 0,
             earned: 0,
             percent: 0
@@ -331,18 +358,28 @@ class GameShowQuiz extends DynamicImporter(PolymerElement) {
         value: 30
       },
       /**
-       * Title to use on the directions area.
+       * Title to use on the directions dialog.
        */
       directionsTitle: {
         type: String,
         value: "Directions"
       },
       /**
+       * Title to use on the question dialog.
+       */
+      questionTitle: {
+        type: String,
+        value: "Answer the following question"
+      },
+      /**
        * Rows on the gameshow board
        */
       gameBoard: {
-        type: Array,
-        observer: "_gameBoardChanged"
+        type: Array
+      },
+      gameBoardData: {
+        type: Object,
+        observer: "_gameBoardDataChanged"
       },
       /**
        * URL to load data for the game.
@@ -378,14 +415,7 @@ class GameShowQuiz extends DynamicImporter(PolymerElement) {
     ) {
       dom(
         this.__activeTap
-      ).parentNode.nextElementSibling.firstElementChild.firstElementChild.focus();
-      delete this.__activeTap;
-    } else if (
-      typeof this.__activeTap !== typeof undefined &&
-      dom(this.__activeTap).parentNode.nextElementSibling.firstElementChild ==
-        null
-    ) {
-      this.__activeTap.focus();
+      ).parentNode.nextElementSibling.firstElementChild.focus();
       delete this.__activeTap;
     }
   }
@@ -393,8 +423,14 @@ class GameShowQuiz extends DynamicImporter(PolymerElement) {
    * Register a tap on the board.
    */
   registerTap(e) {
+    var found = true;
+    for (var i in this.$.question.answers) {
+      if (this.$.question.answers[i].userGuess) {
+        found = false;
+      }
+    }
     // ensure they touch the board before ability to submit
-    this.__submitDisabled = false;
+    this.__submitDisabled = found;
   }
   /**
    * Submit answer to see what they got.
@@ -491,16 +527,18 @@ class GameShowQuiz extends DynamicImporter(PolymerElement) {
   _gameBoardTap(e) {
     var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
-    if (local.getAttribute("data-question-data") != null) {
+    if (local.getAttribute("data-question-uuid") != null) {
       this.__submitDisabled = true;
-      this.__questionEndpoint = local.getAttribute("data-question-data");
       this.__activeTap = local;
       this.__activeType = local.getAttribute("data-type");
       this.__activeValue = local.getAttribute("data-value");
-      this.$.questiondata.answers = [];
-      // @todo need to get these to reset correctly
+      let uuid = local.getAttribute("data-question-uuid");
+      this.set("activeQuestion", {});
+      this.set("activeQuestion", this._gameBoardFlat[uuid].question);
+      this.notifyPath("activeQuestion.*");
+      this.notifyPath("activeQuestion.data.*");
+      this.$.question.resetAnswers();
       setTimeout(() => {
-        this.$.questiondata.generateRequest();
         this.$.dialog.toggle();
       }, 100);
     }
@@ -508,7 +546,111 @@ class GameShowQuiz extends DynamicImporter(PolymerElement) {
   /**
    * Notice the game board has changed from the backend loading it most likely.
    */
-  _gameBoardChanged(newValue, oldvalue) {}
+  _gameBoardDataChanged(newValue, oldvalue) {
+    if (newValue) {
+      this._gameBoardFlat = {};
+      // @todo this needs to come in via settings some how
+      var gameBoard = [
+        {
+          cols: [
+            {
+              title: "Slide id",
+              points: "",
+              notRaised: true,
+              disabled: true
+            },
+            {
+              title: "Terms",
+              points: "",
+              notRaised: true,
+              disabled: true
+            },
+            {
+              title: "Reading",
+              points: "",
+              notRaised: true,
+              disabled: true
+            },
+            {
+              title: "Lecture",
+              points: "",
+              notRaised: true,
+              disabled: true
+            }
+          ]
+        }
+      ];
+      // row prototype
+      var row = {};
+      const gameData = newValue;
+      const keys = Object.keys(gameData);
+      var count = 0;
+      // we want 4 1 pt questions, 2 2pts, and 1 3 pts
+      var pointMap = {
+        1: 4,
+        2: 2,
+        3: 1,
+        bonus: 1
+      };
+      // 4 iterations for 1 points
+      for (var pointLevel in pointMap) {
+        count = 0;
+        while (count < pointMap[pointLevel]) {
+          count++;
+          // tee up the key used array so we can track random questions used in banks
+          var keysUsed = [];
+          for (var type in keys) {
+            keysUsed[keys[type]] = [];
+          }
+          // reset the row
+          row = {
+            cols: []
+          };
+          // loop over the keys coming in so we can build each row across
+          for (var type in keys) {
+            if (gameData[keys[type]][pointLevel]) {
+              // get a random key based on what hasn't been used here previously
+              var qKey = Math.floor(
+                Math.random() *
+                  gameData[keys[type]][pointLevel].questions.length
+              );
+              while (typeof keysUsed[keys[type]][qKey] !== typeof undefined) {
+                qKey = Math.floor(
+                  Math.random() *
+                    gameData[keys[type]][pointLevel].questions.length
+                );
+              }
+              keysUsed[keys[type]][qKey] = qKey;
+              var questionObject = {
+                uuid: this.generateUUID(),
+                type: gameData[keys[type]][pointLevel].type,
+                title: gameData[keys[type]][pointLevel].title,
+                points: gameData[keys[type]][pointLevel].points,
+                question: gameData[keys[type]][pointLevel].questions[qKey]
+              };
+              row.cols.push(questionObject);
+              this._gameBoardFlat[questionObject.uuid] = questionObject;
+            }
+          }
+          gameBoard.push(row);
+        }
+      }
+      // this delay helps with updating the board after the fact
+      this.set("gameBoard", []);
+      setTimeout(() => {
+        this.set("gameBoard", gameBoard);
+        this.notifyPath("gameBoard.*");
+      }, 100);
+    }
+  }
+  generateUUID() {
+    return "item-sss-ss-ss".replace(/s/g, this._uuidPart);
+  }
+  _uuidPart() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
   /**
    * Reset focus on close back to the help button
    */
@@ -578,7 +720,7 @@ class GameShowQuiz extends DynamicImporter(PolymerElement) {
       );
       this.$.submit.addEventListener("tap", this.submitAnswer.bind(this));
       this.$.continue.addEventListener("tap", this.continueGameTap.bind(this));
-      this.$.question.addEventListener("tap", this.registerTap.bind(this));
+      this.$.question.addEventListener("click", this.registerTap.bind(this));
     });
   }
   /**
@@ -592,7 +734,7 @@ class GameShowQuiz extends DynamicImporter(PolymerElement) {
     );
     this.$.submit.removeEventListener("tap", this.submitAnswer.bind(this));
     this.$.continue.removeEventListener("tap", this.continueGameTap.bind(this));
-    this.$.question.removeEventListener("tap", this.registerTap.bind(this));
+    this.$.question.removeEventListener("click", this.registerTap.bind(this));
     super.disconnectedCallback();
   }
 }

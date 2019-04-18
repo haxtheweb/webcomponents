@@ -3,7 +3,6 @@ import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSTh
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { DynamicImporter } from "@lrnwebcomponents/dynamic-importer/dynamic-importer.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./lib/simple-blog-listing.js";
 import "./lib/simple-blog-post.js";
@@ -12,26 +11,13 @@ import "./lib/simple-blog-post.js";
  * `A simple blog and associated elements`
  * @demo demo/index.html
  */
-class SimpleBlog extends DynamicImporter(HAXCMSTheme(PolymerElement)) {
+class SimpleBlog extends HAXCMSTheme(PolymerElement) {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
     return "simple-blog";
-  }
-  /**
-   * Dynamically import these late so we can load faster
-   */
-  dynamicImports() {
-    return {
-      "iron-pages": "@polymer/iron-pages/iron-pages.js",
-      "paper-icon-button": "@polymer/paper-icon-button/paper-icon-button.js",
-      "simple-blog-header":
-        "@lrnwebcomponents/simple-blog/lib/simple-blog-header.js",
-      "simple-blog-footer":
-        "@lrnwebcomponents/simple-blog/lib/simple-blog-footer.js"
-    };
   }
   // render function
   static get template() {
@@ -146,6 +132,10 @@ class SimpleBlog extends DynamicImporter(HAXCMSTheme(PolymerElement)) {
   }
   constructor() {
     super();
+    import("@polymer/iron-pages/iron-pages.js");
+    import("@polymer/paper-icon-button/paper-icon-button.js");
+    import("@lrnwebcomponents/simple-blog/lib/simple-blog-header.js");
+    import("@lrnwebcomponents/simple-blog/lib/simple-blog-footer.js");
     this.__disposer = [];
     autorun(reaction => {
       this.activeId = toJS(store.activeId);

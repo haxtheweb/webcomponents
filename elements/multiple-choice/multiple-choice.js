@@ -1,6 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { DynamicImporter } from "@lrnwebcomponents/dynamic-importer/dynamic-importer.js";
+import "@polymer/polymer/lib/elements/dom-repeat.js";
+import "@polymer/polymer/lib/elements/dom-if.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@polymer/paper-toast/paper-toast.js";
@@ -10,9 +11,15 @@ import "@lrnwebcomponents/simple-colors/simple-colors.js";
  * `Ask the user a question from a set of possible answers.`
  * @demo demo/index.html
  */
-class MultipleChoice extends SchemaBehaviors(DynamicImporter(PolymerElement)) {
+class MultipleChoice extends SchemaBehaviors(PolymerElement) {
   static get tag() {
     return "multiple-choice";
+  }
+  constructor() {
+    super();
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/paper-button/paper-button.js");
   }
   static get template() {
     return html`
@@ -38,6 +45,10 @@ class MultipleChoice extends SchemaBehaviors(DynamicImporter(PolymerElement)) {
         ul li {
           padding: 8px;
         }
+        paper-radio-button {
+          padding: 8px;
+          display: block;
+        }
         paper-checkbox {
           padding: 8px;
         }
@@ -50,18 +61,43 @@ class MultipleChoice extends SchemaBehaviors(DynamicImporter(PolymerElement)) {
         <span property="oer:name">[[title]]</span>
       </h3>
       <div>[[question]]</div>
-      <ul>
-        <template is="dom-repeat" items="[[displayedAnswers]]" as="answer">
-          <li>
-            <paper-checkbox
+      <template is="dom-if" if="[[singleOption]]" restamp>
+        <paper-radio-group>
+          <template
+            is="dom-repeat"
+            items="[[displayedAnswers]]"
+            as="answer"
+            mutable-data
+          >
+            <paper-radio-button
               disabled\$="[[disabled]]"
               property="oer:answer"
+              name$="[[index]]"
               checked="{{answer.userGuess}}"
-              >[[answer.label]]</paper-checkbox
+              >[[answer.label]]</paper-radio-button
             >
-          </li>
-        </template>
-      </ul>
+          </template>
+        </paper-radio-group>
+      </template>
+      <template is="dom-if" if="[[!singleOption]]" restamp>
+        <ul>
+          <template
+            is="dom-repeat"
+            items="[[displayedAnswers]]"
+            as="answer"
+            mutable-data
+          >
+            <li>
+              <paper-checkbox
+                disabled\$="[[disabled]]"
+                property="oer:answer"
+                checked="{{answer.userGuess}}"
+                >[[answer.label]]</paper-checkbox
+              >
+            </li>
+          </template>
+        </ul>
+      </template>
       <div hidden\$="[[hideButtons]]">
         <paper-button
           disabled\$="[[disabled]]"
@@ -69,7 +105,7 @@ class MultipleChoice extends SchemaBehaviors(DynamicImporter(PolymerElement)) {
           on-tap="_verifyAnswers"
           >[[checkLabel]]</paper-button
         >
-        <paper-button disabled\$="[[disabled]]" raised="" on-tap="_resetAnswers"
+        <paper-button disabled\$="[[disabled]]" raised="" on-tap="resetAnswers"
           >[[resetLabel]]</paper-button
         >
       </div>
@@ -82,17 +118,6 @@ class MultipleChoice extends SchemaBehaviors(DynamicImporter(PolymerElement)) {
         <iron-icon icon="[[__toastIcon]]" style="margin-left:16px;"></iron-icon>
       </paper-toast>
     `;
-  }
-  /**
-   * Dynamically import these late so we can load faster
-   */
-  dynamicImports() {
-    return {
-      "paper-checkbox": "@polymer/paper-checkbox/paper-checkbox.js",
-      "iron-icons": "@polymer/iron-icons/iron-icons.js",
-      "iron-icon": "@polymer/iron-icon/iron-icon.js",
-      "paper-button": "@polymer/paper-button/paper-button.js"
-    };
   }
   static get properties() {
     return Object.assign(
@@ -108,6 +133,13 @@ class MultipleChoice extends SchemaBehaviors(DynamicImporter(PolymerElement)) {
          * Support disabling interaction with the entire board
          */
         disabled: {
+          type: Boolean,
+          value: false
+        },
+        /**
+         * Simple option, otherwise allow multiple via checkbox
+         */
+        singleOption: {
           type: Boolean,
           value: false
         },
@@ -195,7 +227,6 @@ class MultipleChoice extends SchemaBehaviors(DynamicImporter(PolymerElement)) {
       super.properties
     );
   }
-
   /**
    * Notice an answer has changed and update the DOM.
    */
@@ -206,11 +237,10 @@ class MultipleChoice extends SchemaBehaviors(DynamicImporter(PolymerElement)) {
       }
     }
   }
-
   /**
    * Reset user answers and shuffle the board again.
    */
-  _resetAnswers(e) {
+  resetAnswers(e) {
     this.$.toast.hide();
     // loop and force all answers to false
     for (var i in this.displayedAnswers) {
@@ -421,6 +451,13 @@ class MultipleChoice extends SchemaBehaviors(DynamicImporter(PolymerElement)) {
    */
   connectedCallback() {
     super.connectedCallback();
+    // single option implies it's a radio group or if multiple, do check boxes
+    if (this.singleOption) {
+      import("@polymer/paper-radio-group/paper-radio-group.js");
+      import("@polymer/paper-radio-button/paper-radio-button.js");
+    } else {
+      import("@polymer/paper-checkbox/paper-checkbox.js");
+    }
     this.setAttribute("typeof", "oer:Assessment");
     afterNextRender(this, function() {
       this.$.toast.fitInto = this;

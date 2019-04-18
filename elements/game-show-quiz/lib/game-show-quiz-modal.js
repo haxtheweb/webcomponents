@@ -1,26 +1,38 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/paper-dialog/paper-dialog.js";
+import { LitElement, html } from "lit-element";
 /**
  * `game-show-quiz-modal`
  * `Modal for the quiz show`
- * @microcopy - the mental model for this element
- * - game show - a display board in the style of Jeopardy
+ *  @microcopy - the mental model for this element
+ *  - game show - a display board in the style of Jeopardy
  */
-class GameShowQuizModal extends PolymerElement {
-  static get template() {
+class GameShowQuizModal extends LitElement {
+  static get tag() {
+    return "game-show-quiz-modal";
+  }
+  static get properties() {
+    return { title: { type: String } };
+  }
+  constructor() {
+    super();
+    import("@polymer/paper-dialog/paper-dialog.js");
+  }
+  render() {
     return html`
       <style>
         :host {
           display: block;
         }
-        #dialog {
+        paper-dialog:not(:defined) {
+          display: none;
+        }
+        paper-dialog {
           min-width: 60%;
-          top: 5%;
-          bottom: 5%;
+          top: 2%;
+          bottom: 2%;
           margin: 0;
           padding: 0;
-          left: 15%;
-          right: 15%;
+          left: 8%;
+          right: 8%;
           position: fixed;
           overflow: hidden;
         }
@@ -33,11 +45,11 @@ class GameShowQuizModal extends PolymerElement {
           padding: 0;
         }
         h2 {
-          font-size: 32px;
+          font-size: 24px;
           background-color: var(--game-show-bg-color);
           color: var(--game-show-text-color);
           margin: 0;
-          padding: 16px;
+          padding: 8px;
           text-align: center;
         }
         .buttons {
@@ -60,11 +72,11 @@ class GameShowQuizModal extends PolymerElement {
           color: #a8a8a8;
         }
         .buttons ::slotted(#continue) {
-          color: #004400;
-          background-color: #eeffee;
+          color: var(--simple-colors-default-theme-blue-11);
+          background-color: var(--simple-colors-default-theme-blue-1);
         }
         @media screen and (max-width: 600px) {
-          #dialog {
+          paper-dialog {
             top: 0;
             bottom: 0;
             left: 0;
@@ -84,29 +96,18 @@ class GameShowQuizModal extends PolymerElement {
           }
         }
       </style>
-      <paper-dialog id="dialog" modal="">
-        <h2>[[title]]</h2>
+      <paper-dialog modal>
+        <h2>${this.title}</h2>
         <div class="content"><slot name="content"></slot></div>
         <div class="buttons"><slot name="buttons"></slot></div>
       </paper-dialog>
     `;
   }
-
-  static get tag() {
-    return "game-show-quiz-modal";
-  }
-  static get properties() {
-    return {
-      /**
-       * Title
-       */
-      title: {
-        type: String
-      }
-    };
-  }
+  /**
+   * Basic bridge to the toggle function in paper-dialog
+   */
   toggle() {
-    this.$.dialog.toggle();
+    this.shadowRoot.querySelector("paper-dialog").toggle();
   }
 }
 window.customElements.define(GameShowQuizModal.tag, GameShowQuizModal);
