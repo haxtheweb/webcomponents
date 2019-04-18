@@ -28,18 +28,18 @@ class HAXCMSEditorBuilder extends PolymerElement {
    */
   constructor() {
     super();
-    import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor-ui.js");
-    if (!store.cmsSiteEditor.haxCmsSiteEditorUIElement) {
-      store.cmsSiteEditor.haxCmsSiteEditorUIElement = document.createElement(
-        "haxcms-site-editor-ui"
-      );
-      document.body.appendChild(store.cmsSiteEditor.haxCmsSiteEditorUIElement);
-      // forces a nice fade in transition
-      setTimeout(() => {
-        store.cmsSiteEditor.haxCmsSiteEditorUIElement.painting = false;
-      }, 5);
-    }
     this.applyContext();
+    window.addEventListener(
+      "haxcms-site-editor-loaded",
+      this.editorLoaded.bind(this)
+    );
+  }
+  disconnectedCallback() {
+    window.removeEventListener(
+      "haxcms-site-editor-loaded",
+      this.editorLoaded.bind(this)
+    );
+    super.disconnectedCallback();
   }
   /**
    * Try to get context of what backend is powering this
@@ -61,6 +61,19 @@ class HAXCMSEditorBuilder extends PolymerElement {
       context = "php";
     }
     return context;
+  }
+  editorLoaded(e) {
+    if (!store.cmsSiteEditor.haxCmsSiteEditorUIElement) {
+      import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor-ui.js");
+      store.cmsSiteEditor.haxCmsSiteEditorUIElement = document.createElement(
+        "haxcms-site-editor-ui"
+      );
+      document.body.appendChild(store.cmsSiteEditor.haxCmsSiteEditorUIElement);
+      // forces a nice fade in transition
+      setTimeout(() => {
+        store.cmsSiteEditor.haxCmsSiteEditorUIElement.painting = false;
+      }, 5);
+    }
   }
   applyContext() {
     let context = this.getContext();

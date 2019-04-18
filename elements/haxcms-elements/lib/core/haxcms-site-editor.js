@@ -420,6 +420,20 @@ class HAXCMSSiteEditor extends PolymerElement {
       window.dispatchEvent(evt);
     });
   }
+  connectedCallback() {
+    super.connectedCallback();
+    // fire event suggesting that we were authorized to have a site editor
+    // so the UI and other pieces can react to this news
+    // this tag is going to be added by a backend if it has determined we have a valid one
+    window.dispatchEvent(
+      new CustomEvent("haxcms-site-editor-loaded", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: true
+      })
+    );
+  }
   /**
    * Detatched life cycle
    */
