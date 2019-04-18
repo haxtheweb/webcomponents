@@ -76,7 +76,7 @@
     "lodash": "4.17.11",
     "lodash.clonedeep": "4.5.0",
     "node-sass": "4.11.0",
-    "polymer-build": "3.1.1",
+    "polymer-build": "3.1.3",
     "polymer-webpack-loader": "2.0.3",
     "prettier": "1.16.4",
     "raw-loader": "1.0.0",
