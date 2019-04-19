@@ -17,9 +17,9 @@ class MultipleChoice extends SchemaBehaviors(PolymerElement) {
   }
   constructor() {
     super();
-    import("@polymer/iron-icons/iron-icons.js").then(bundle => noop());
-    import("@polymer/iron-icon/iron-icon.js").then(bundle => noop());
-    import("@polymer/paper-button/paper-button.js").then(bundle => noop());
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/paper-button/paper-button.js");
   }
   static get template() {
     return html`
@@ -453,16 +453,10 @@ class MultipleChoice extends SchemaBehaviors(PolymerElement) {
     super.connectedCallback();
     // single option implies it's a radio group or if multiple, do check boxes
     if (this.singleOption) {
-      import("@polymer/paper-radio-group/paper-radio-group.js").then(bundle =>
-        noop()
-      );
-      import("@polymer/paper-radio-button/paper-radio-button.js").then(bundle =>
-        noop()
-      );
+      import("@polymer/paper-radio-group/paper-radio-group.js");
+      import("@polymer/paper-radio-button/paper-radio-button.js");
     } else {
-      import("@polymer/paper-checkbox/paper-checkbox.js").then(bundle =>
-        noop()
-      );
+      import("@polymer/paper-checkbox/paper-checkbox.js");
     }
     this.setAttribute("typeof", "oer:Assessment");
     afterNextRender(this, function() {
@@ -476,5 +470,5 @@ class MultipleChoice extends SchemaBehaviors(PolymerElement) {
     });
   }
 }
-window.customElements.define("multiple-choice", MultipleChoice);
+window.customElements.define(MultipleChoice.tag, MultipleChoice);
 export { MultipleChoice };
