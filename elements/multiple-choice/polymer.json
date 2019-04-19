@@ -23,6 +23,21 @@
       "addServiceWorker": false
     },
     {
+      "name": "es6-amd",
+      "js": {
+        "minify": true,
+        "transformModulesToAmd": true
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": true
+      },
+      "bundle": false,
+      "addServiceWorker": false
+    },
+    {
       "name": "es5-amd",
       "js": {
         "minify": true,

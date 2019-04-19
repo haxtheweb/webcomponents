@@ -52,9 +52,7 @@
     "concurrently": "4.1.0",
     "gulp-babel": "8.0.0",
     "gulp-sourcemaps": "2.6.5",
-    "lodash": "4.17.11",
-    "polymer-build": "3.1.2",
-    "polymer-cli": "1.9.8",
+    "lodash": "4.17.11",    "polymer-cli": "1.9.8",
     "wct-browser-legacy": "1.0.2",
     "web-animations-js": "2.3.1"
   },
