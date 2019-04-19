@@ -148,6 +148,8 @@
     "@webcomponents/shadycss": "1.9.1",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@polymer/app-layout": "3.0.2",
+    "@polymer/polymer": "3.2.0",
+    "lit-element": "2.1.0",
     "@polymer/paper-icon-button": "3.0.2",
     "@polymer/paper-input": "3.0.2",
     "@polymer/iron-list": "3.0.2"
