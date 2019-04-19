@@ -7,14 +7,6 @@ import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSTh
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-dot-indicator";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";
 /**
@@ -26,6 +18,17 @@ import "@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";
  * @demo demo/index.html
  */
 class HAXCMSSlideTheme extends HAXCMSTheme(PolymerElement) {
+  constructor() {
+    super();
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-dot-indicator");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
+    import("@polymer/paper-icon-button/paper-icon-button.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/paper-tooltip/paper-tooltip.js");
+  }
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly

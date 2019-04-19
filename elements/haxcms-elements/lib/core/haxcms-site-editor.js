@@ -14,7 +14,6 @@ import "@lrnwebcomponents/jwt-login/jwt-login.js";
 import "@lrnwebcomponents/h-a-x/h-a-x.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
-import { DynamicImporter } from "@lrnwebcomponents/dynamic-importer/dynamic-importer.js";
 
 /**
  * `haxcms-site-editor`
@@ -22,7 +21,7 @@ import { DynamicImporter } from "@lrnwebcomponents/dynamic-importer/dynamic-impo
  *
  * @demo demo/index.html
  */
-class HAXCMSSiteEditor extends DynamicImporter(PolymerElement) {
+class HAXCMSSiteEditor extends PolymerElement {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -30,17 +29,13 @@ class HAXCMSSiteEditor extends DynamicImporter(PolymerElement) {
   static get tag() {
     return "haxcms-site-editor";
   }
-  /**
-   * Dynamically import these late so we can load faster
-   */
-  dynamicImports() {
-    return {
-      "paper-button": "@polymer/paper-button/paper-button.js",
-      "hax-schema-form": "@lrnwebcomponents/hax-body/lib/hax-schema-form.js",
-      "paper-tooltip": "@polymer/paper-tooltip/paper-tooltip.js",
-      "editor-icons": "@polymer/iron-icons/editor-icons.js",
-      "paper-fab": "@polymer/paper-fab/paper-fab.js"
-    };
+  constructor() {
+    super();
+    import("@polymer/paper-button/paper-button.js");
+    import("@lrnwebcomponents/hax-body/lib/hax-schema-form.js");
+    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@polymer/iron-icons/editor-icons.js");
+    import("@polymer/paper-fab/paper-fab.js");
   }
   // render function
   static get template() {
@@ -424,6 +419,20 @@ class HAXCMSSiteEditor extends DynamicImporter(PolymerElement) {
       });
       window.dispatchEvent(evt);
     });
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    // fire event suggesting that we were authorized to have a site editor
+    // so the UI and other pieces can react to this news
+    // this tag is going to be added by a backend if it has determined we have a valid one
+    window.dispatchEvent(
+      new CustomEvent("haxcms-site-editor-loaded", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: true
+      })
+    );
   }
   /**
    * Detatched life cycle

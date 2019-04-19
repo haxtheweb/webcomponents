@@ -839,6 +839,7 @@ Polymer({
   ) {
     if (
       !this.__ready &&
+      activeHaxBody &&
       haxAutoloader &&
       haxPanel &&
       haxToast &&

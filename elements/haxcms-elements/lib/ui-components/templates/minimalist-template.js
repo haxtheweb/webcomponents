@@ -3,18 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html } from "@polymer/polymer/polymer-element.js";
-import "@lrnwebcomponents/scroll-button/scroll-button.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/blocks/site-children-block.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-footer.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-top-menu.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js";
 
 /**
  * `An incredibly minimalist template.
@@ -22,6 +10,21 @@ import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js";
  */
 let MinimalistTemplate = superclass =>
   class extends superclass {
+    constructor() {
+      super();
+      import("@lrnwebcomponents/scroll-button/scroll-button.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/blocks/site-children-block.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-footer.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-top-menu.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js");
+    }
     // render function
     static get template() {
       return html`

@@ -5,8 +5,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/paper-button/paper-button.js";
 /**
  * `site-breadcrumb`
  * `A basic breadcrumb of links based on the active state in HAXcms on JSON Outline Schema`
@@ -22,6 +20,11 @@ class SiteBreadcrumb extends PolymerElement {
    */
   static get tag() {
     return "site-breadcrumb";
+  }
+  constructor() {
+    super();
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/paper-button/paper-button.js");
   }
   // render function
   static get template() {
@@ -138,9 +141,9 @@ class SiteBreadcrumb extends PolymerElement {
     });
   }
   disconnectedCallback() {
-    super.disconnectedCallback();
     this.__disposer();
     this.__disposer2();
+    super.disconnectedCallback();
   }
 }
 window.customElements.define(SiteBreadcrumb.tag, SiteBreadcrumb);

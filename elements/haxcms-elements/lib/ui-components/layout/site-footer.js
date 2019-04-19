@@ -5,7 +5,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import "@lrnwebcomponents/license-element/license-element.js";
 /**
  * `site-footer`
  * `A basic site footer`
@@ -21,6 +20,10 @@ class SiteFooter extends PolymerElement {
    */
   static get tag() {
     return "site-footer";
+  }
+  constructor() {
+    super();
+    import("@lrnwebcomponents/license-element/license-element.js");
   }
   // render function
   static get template() {
@@ -61,9 +64,9 @@ class SiteFooter extends PolymerElement {
     });
   }
   disconnectedCallback() {
-    super.disconnectedCallback();
     this.__disposer();
     this.__disposer2();
+    super.disconnectedCallback();
   }
 }
 window.customElements.define(SiteFooter.tag, SiteFooter);

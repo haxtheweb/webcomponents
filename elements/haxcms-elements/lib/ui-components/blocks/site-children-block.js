@@ -7,7 +7,6 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query-menu-slice.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
-import "@polymer/paper-button/paper-button.js";
 
 /**
  * `site-children-block`
@@ -24,6 +23,10 @@ class SiteChildrenBlock extends PolymerElement {
    */
   static get tag() {
     return "site-children-block";
+  }
+  constructor() {
+    super();
+    import("@polymer/paper-button/paper-button.js");
   }
   // render function
   static get template() {

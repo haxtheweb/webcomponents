@@ -4,7 +4,6 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/beaker-broker/beaker-broker.js";
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 
 /**
@@ -413,8 +412,7 @@ class HAXCMSBackendBeaker extends PolymerElement {
       // which will appear to be injecting into the page
       // but because of this approach it should be non-blocking
       try {
-        import(pathFromUrl(decodeURIComponent(import.meta.url)) +
-          `../haxcms-site-editor.js`).then(
+        import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor.js").then(
           e => {
             let haxCmsSiteEditorElement = document.createElement(
               "haxcms-site-editor"

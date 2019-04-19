@@ -7,8 +7,6 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
 import { autorun, toJS } from "mobx";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
-
 /**
  * `site-top-menu`
  * `Menu on top of the site typically a bar of options`
@@ -24,6 +22,11 @@ class SiteTopMenu extends PolymerElement {
    */
   static get tag() {
     return "site-top-menu";
+  }
+  constructor() {
+    super();
+    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@polymer/paper-button/paper-button.js");
   }
   // render function
   static get template() {
@@ -59,6 +62,9 @@ class SiteTopMenu extends PolymerElement {
         .link {
           color: var(--site-top-menu-link-color, #444444);
           @apply --site-top-menu-link;
+        }
+        paper-tooltip:not(:defined) {
+          display: none;
         }
         paper-button {
           text-transform: unset;

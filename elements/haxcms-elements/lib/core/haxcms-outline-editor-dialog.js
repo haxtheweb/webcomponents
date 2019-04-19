@@ -2,7 +2,6 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import { DynamicImporter } from "@lrnwebcomponents/dynamic-importer/dynamic-importer.js";
 import "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
 import "@lrnwebcomponents/json-editor/json-editor.js";
 import "@lrnwebcomponents/editable-outline/editable-outline.js";
@@ -15,7 +14,7 @@ import "@lrnwebcomponents/editable-outline/editable-outline.js";
  *
  * @microcopy - the mental model for this element
  */
-class HAXCMSOutlineEditorDialog extends DynamicImporter(PolymerElement) {
+class HAXCMSOutlineEditorDialog extends PolymerElement {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -23,15 +22,11 @@ class HAXCMSOutlineEditorDialog extends DynamicImporter(PolymerElement) {
   static get tag() {
     return "haxcms-outline-editor-dialog";
   }
-  /**
-   * Dynamically import these late so we can load faster
-   */
-  dynamicImports() {
-    return {
-      "paper-button": "@polymer/paper-button/paper-button.js",
-      "iron-icon": "@polymer/iron-icon/iron-icon.js",
-      "iron-icons": "@polymer/iron-icons/iron-icons.js"
-    };
+  constructor() {
+    super();
+    import("@polymer/paper-button/paper-button.js");
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/iron-icons/iron-icons.js");
   }
   // render function
   static get template() {

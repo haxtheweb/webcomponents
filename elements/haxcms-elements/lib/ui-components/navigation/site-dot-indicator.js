@@ -156,7 +156,6 @@ class SiteDotIndicator extends PolymerElement {
     }
   }
   disconnectedCallback() {
-    super.disconnectedCallback();
     this.__disposer();
     this.__disposer2();
     if (this.scrollOnActive) {
@@ -168,6 +167,7 @@ class SiteDotIndicator extends PolymerElement {
         });
       });
     }
+    super.disconnectedCallback();
   }
 }
 window.customElements.define(SiteDotIndicator.tag, SiteDotIndicator);

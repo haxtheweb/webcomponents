@@ -1,13 +1,12 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import { DynamicImporter } from "@lrnwebcomponents/dynamic-importer/dynamic-importer.js";
 /**
  * `simple-blog-header`
  * `A simple blog header to the front of the site`
  * @demo demo/index.html
  */
-class SimpleBlogHeader extends DynamicImporter(PolymerElement) {
+class SimpleBlogHeader extends PolymerElement {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -15,16 +14,10 @@ class SimpleBlogHeader extends DynamicImporter(PolymerElement) {
   static get tag() {
     return "simple-blog-header";
   }
-  /**
-   * Dynamically import these late so we can load faster
-   */
-  dynamicImports() {
-    return {
-      "site-title":
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js",
-      "site-rss-button":
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js"
-    };
+  constructor() {
+    super();
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");
   }
   // render function
   static get template() {

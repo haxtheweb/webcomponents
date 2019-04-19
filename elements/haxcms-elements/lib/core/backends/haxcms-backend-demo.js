@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import "@lrnwebcomponents/jwt-login/jwt-login.js";
 /**
@@ -87,8 +86,7 @@ class HAXCMSBackendDemo extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     try {
-      const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
-      import(`${basePath}../haxcms-site-editor.js`).then(
+      import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor.js").then(
         e => {
           let haxCmsSiteEditorElement = document.createElement(
             "haxcms-site-editor"
@@ -119,6 +117,7 @@ class HAXCMSBackendDemo extends PolymerElement {
         },
         e => {
           //import failed
+          console.log(e);
         }
       );
     } catch (err) {

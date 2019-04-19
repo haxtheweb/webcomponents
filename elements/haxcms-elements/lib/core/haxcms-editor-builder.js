@@ -6,7 +6,6 @@ import { PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
-import "./haxcms-site-editor-ui.js";
 
 /**
  * `haxcms-editor-builder`
@@ -30,27 +29,17 @@ class HAXCMSEditorBuilder extends PolymerElement {
   constructor() {
     super();
     this.applyContext();
-  }
-  connectedCallback() {
-    super.connectedCallback();
-    window.addEventListener("hax-store-ready", this.storeReady.bind(this));
+    window.addEventListener(
+      "haxcms-site-editor-loaded",
+      this.editorLoaded.bind(this)
+    );
   }
   disconnectedCallback() {
-    window.removeEventListener("hax-store-ready", this.storeReady.bind(this));
+    window.removeEventListener(
+      "haxcms-site-editor-loaded",
+      this.editorLoaded.bind(this)
+    );
     super.disconnectedCallback();
-  }
-  storeReady(e) {
-    // append UI element to body to avoid stack order issues
-    if (!store.cmsSiteEditor.haxCmsSiteEditorUIElement) {
-      store.cmsSiteEditor.haxCmsSiteEditorUIElement = document.createElement(
-        "haxcms-site-editor-ui"
-      );
-      document.body.appendChild(store.cmsSiteEditor.haxCmsSiteEditorUIElement);
-      // forces a nice fade in transition
-      setTimeout(() => {
-        store.cmsSiteEditor.haxCmsSiteEditorUIElement.painting = false;
-      }, 5);
-    }
   }
   /**
    * Try to get context of what backend is powering this
@@ -72,6 +61,19 @@ class HAXCMSEditorBuilder extends PolymerElement {
       context = "php";
     }
     return context;
+  }
+  editorLoaded(e) {
+    if (!store.cmsSiteEditor.haxCmsSiteEditorUIElement) {
+      import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor-ui.js");
+      store.cmsSiteEditor.haxCmsSiteEditorUIElement = document.createElement(
+        "haxcms-site-editor-ui"
+      );
+      document.body.appendChild(store.cmsSiteEditor.haxCmsSiteEditorUIElement);
+      // forces a nice fade in transition
+      setTimeout(() => {
+        store.cmsSiteEditor.haxCmsSiteEditorUIElement.painting = false;
+      }, 5);
+    }
   }
   applyContext() {
     let context = this.getContext();

@@ -5,7 +5,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import "@lrnwebcomponents/map-menu/map-menu.js";
 /**
  * `site-menu`
  * `Menu hierarchy`
@@ -22,6 +21,10 @@ class SiteMenu extends PolymerElement {
   static get tag() {
     return "site-menu";
   }
+  constructor() {
+    super();
+    import("@lrnwebcomponents/map-menu/map-menu.js");
+  }
   // render function
   static get template() {
     return html`
@@ -29,6 +32,9 @@ class SiteMenu extends PolymerElement {
         :host {
           display: block;
           height: 100vh;
+        }
+        map-menu:not(:defined) {
+          display: none;
         }
         map-menu {
           @apply --site-menu;
@@ -54,7 +60,6 @@ class SiteMenu extends PolymerElement {
         }
       </style>
       <map-menu
-        id="menu"
         selected="[[activeId]]"
         manifest="[[routerManifest]]"
         active-indicator="[[!hideActiveIndicator]]"
@@ -113,10 +118,9 @@ class SiteMenu extends PolymerElement {
         this.activeId = toJS(store.activeId);
       });
     }, 50);
-    this.$.menu.addEventListener(
-      "active-item",
-      this.mapMenuActiveChanged.bind(this)
-    );
+    this.shadowRoot
+      .querySelector("map-menu")
+      .addEventListener("active-item", this.mapMenuActiveChanged.bind(this));
   }
   disconnectedCallback() {
     super.disconnectedCallback();
@@ -124,10 +128,9 @@ class SiteMenu extends PolymerElement {
     if (this.__disposer2) {
       this.__disposer2();
     }
-    this.$.menu.removeEventListener(
-      "active-item",
-      this.mapMenuActiveChanged.bind(this)
-    );
+    this.shadowRoot
+      .querySelector("map-menu")
+      .removeEventListener("active-item", this.mapMenuActiveChanged.bind(this));
   }
   /**
    * When map menu changes let's set a track icon internal to it.

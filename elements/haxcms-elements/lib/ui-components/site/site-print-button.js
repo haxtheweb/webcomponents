@@ -4,7 +4,6 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { DynamicImporter } from "@lrnwebcomponents/dynamic-importer/dynamic-importer.js";
 /**
  * `site-print-button`
  * `Dynamic print button to request and generate what to print`
@@ -13,7 +12,7 @@ import { DynamicImporter } from "@lrnwebcomponents/dynamic-importer/dynamic-impo
  * @polymer
  * @demo demo/index.html
  */
-class SitePrintButton extends DynamicImporter(PolymerElement) {
+class SitePrintButton extends PolymerElement {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -21,16 +20,10 @@ class SitePrintButton extends DynamicImporter(PolymerElement) {
   static get tag() {
     return "site-print-button";
   }
-  /**
-   * Dynamically import these late so we can load faster
-   */
-  dynamicImports() {
-    return {
-      "site-footer":
-        "@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-footer.js",
-      "paper-tooltip": "@polymer/paper-tooltip/paper-tooltip.js",
-      "paper-icon-button": "@polymer/paper-icon-button/paper-icon-button.js"
-    };
+  constructor() {
+    super();
+    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@polymer/paper-icon-button/paper-icon-button.js");
   }
   // render function
   static get template() {
@@ -115,6 +108,8 @@ class SitePrintButton extends DynamicImporter(PolymerElement) {
    * Print the type in question
    */
   async print(e) {
+    // now dynamic import the footer so we don't bloat all other page loads
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-footer.js");
     const type = this.type;
     let content = "";
     if (type === "page") {

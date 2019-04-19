@@ -5,29 +5,34 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>GameShowQuiz: game-show-quiz Demo</title>
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script type="module">
-      import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../game-show-quiz.js';
     </script>
-    <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
-    <div class="vertical-section-container" style="width:50%;margin:0 auto;">
-      <h3>Basic game-show-quiz demo</h3>
-      <demo-snippet>
-        <template>
-          <game-show-quiz game-data="example.json" title="Art History Jeopardy" directions-title="Jeopardy Directions">
-            <div slot="directions" style="padding:16px;">
-              <strong>Important:</strong> Please read <strong>all</strong> of the following directions before starting the
-              quiz. <strong>Continue taking Jeopardy until you have attempted all 30 points and all open bonus questions.</strong>
-              <ul>
-                <li>Questions come in four categories...</li>
-              </ul>
-            </div>
-          </game-show-quiz>
-        </template>
-      </demo-snippet>
+    <div style="padding:16px;">Select a game board:
+    <select id="select">
+      <option></option>
+      <option value="arth111-jeopardy/Lesson 05 - The Aegean.json">Lesson 05 - The Aegean</option>
+      <option value="arth111-jeopardy/Lesson 06 - Greece.json">Lesson 06 - Greece</option>
+      <option value="arth111-jeopardy/Lesson 07 - Rome.json">Lesson 07 - Rome</option>
+      <option value="arth111-jeopardy/Lesson 08 - Jewish, Early Christian and Byzantine.json">Lesson 08 - Jewish, Early Christian and Byzantine</option>
+      <option value="arth111-jeopardy/Lesson 09 - Early Medieval Art, Islamic.json">Lesson 09 - Early Medieval Art, Islamic</option>
+    </select>
     </div>
+    <script defer>
+      document.getElementById('select').addEventListener('change', (e) => {
+        document.getElementById('game').gameData = e.target.value;
+      });
+    </script>
+    <game-show-quiz id="game" title="Art History Jeopardy" directions-title="Jeopardy Directions">
+      <div slot="directions" style="padding:16px;">
+        <strong>Important:</strong> Please read <strong>all</strong> of the following directions before starting the
+        quiz. <strong>Continue taking Jeopardy until you have attempted all 30 points and all open bonus questions.</strong>
+        <ul>
+          <li>Questions come in four categories...</li>
+        </ul>
+      </div>
+    </game-show-quiz>
   </body>
 </html>

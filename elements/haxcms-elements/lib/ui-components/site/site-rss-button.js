@@ -3,9 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-icons/communication-icons.js";
 /**
  * `site-rss-button`
  * `A button that references RSS feeds in a standards based way`
@@ -21,6 +18,12 @@ class SiteRSSButton extends PolymerElement {
    */
   static get tag() {
     return "site-rss-button";
+  }
+  constructor() {
+    super();
+    import("@polymer/paper-button/paper-button.js");
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/iron-icons/communication-icons.js");
   }
   // render function
   static get template() {
