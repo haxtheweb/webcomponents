@@ -46,7 +46,7 @@ class RichTextEditorPrompt extends RichTextEditorButton {
         value: null
       },
       /**
-       * the text of the prompt, as in "Link href" or "Image src"
+       * the target of the prompt
        */
       target: {
         name: "target",
@@ -84,11 +84,22 @@ class RichTextEditorPrompt extends RichTextEditorButton {
    */
   _buttonTap(e) {
     e.preventDefault();
-    console.log("link", this.fields);
+    this.__targetId = "prompt" + Date.now();
     console.log("selection", this.selection);
+    this.target = document.createElement("span");
+    this.target.setAttribute("id", this.__targetId);
+    this.target.style.outline = "1px dotted #888";
+    this.target.appendChild(this.selection.extractContents());
+    this.selection.insertNode(this.target);
+    if (this.selectionField !== null)
+      this.value[this.selectionField.property] = this.target.innerHTML;
+    console.log("target", this.target);
     this.__popover.setTarget(this);
-    //this.doTextOperation();
   }
+  /**
+   * placeholder function for prompt action
+   */
+  doPrompt() {}
 }
 window.customElements.define(RichTextEditorPrompt.tag, RichTextEditorPrompt);
 export { RichTextEditorPrompt };

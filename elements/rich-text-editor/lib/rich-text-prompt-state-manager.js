@@ -209,21 +209,13 @@ class RichTextPromptStateManager extends PolymerElement {
     this.clearTarget();
     let fields = el.fields,
       vals = el.value;
-    this.__targetId = "prompt" + Date.now();
-    this.__el = el;
+    this.target = el.target;
     this.__selection = el.selection.cloneRange();
-    this.target = document.createElement("span");
-    this.target.setAttribute("id", this.__targetId);
-    this.target.style.outline = "1px dotted #888";
-    this.target.appendChild(this.__selection.extractContents());
-    el.selection.insertNode(this.target);
-    if (el.selectionField !== null) {
-      fields.unshift(el.selectionField);
-      vals[el.selectionField.property] = this.target.innerHTML;
-    }
+    if (el.selectionField !== null) fields.unshift(el.selectionField);
     this.set("fields", fields);
     this.set("value", vals);
-    this.for = this.__targetId;
+    this.__el = el;
+    this.for = el.target.getAttribute("id");
   }
 
   /**
@@ -232,10 +224,10 @@ class RichTextPromptStateManager extends PolymerElement {
   clearTarget() {
     if (!this.target) return;
     this.for = null;
+    this.target = null;
     this.set("fields", null);
     this.set("value", null);
     this.__selection = null;
-    this.target = null;
     this.__el = null;
   }
   /**
@@ -253,7 +245,7 @@ class RichTextPromptStateManager extends PolymerElement {
     this.__el.value = this.value;
     if (this.__el.selectionField !== null)
       this.__el.selection = this.value[this.__el.selectionField.property];
-    this.__el.doTextOperation(this.target);
+    this.__el.doPrompt();
     this.clearTarget();
   }
 }
