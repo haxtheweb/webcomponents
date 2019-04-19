@@ -85,6 +85,7 @@ class RichTextEditorPrompt extends RichTextEditorButton {
   _buttonTap(e) {
     e.preventDefault();
     console.log("link", this.fields);
+    console.log("selection", this.selection);
     this.__popover.setTarget(this);
     //this.doTextOperation();
   }

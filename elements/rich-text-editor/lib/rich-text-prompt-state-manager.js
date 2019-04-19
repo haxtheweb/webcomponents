@@ -79,21 +79,21 @@ class RichTextPromptStateManager extends PolymerElement {
           <simple-fields
             id="formfields"
             fields="[[fields]]"
-            initial-value="{{value}}"
+            value="{{value}}"
           ></simple-fields>
           <div class="actions">
             <iron-a11y-keys
               id="a11ycancel"
               target="[[__a11ycancel]]"
               keys="enter"
-              on-keys-pressed="_buttonTap"
+              on-keys-pressed="_cancel"
             >
             </iron-a11y-keys>
             <paper-button
               id="cancel"
               class="rtebutton"
               controls="[[__targetId]]"
-              on-tap="_buttonTap"
+              on-tap="_cancel"
               tabindex="0"
             >
               <iron-icon id="icon" aria-hidden icon="clear"> </iron-icon>
@@ -104,14 +104,14 @@ class RichTextPromptStateManager extends PolymerElement {
               id="a11yconfirm"
               target="[[__a11yconfirm]]"
               keys="enter"
-              on-keys-pressed="_buttonTap"
+              on-keys-pressed="_confirm"
             >
             </iron-a11y-keys>
             <paper-button
               id="confirm"
               class="rtebutton"
               controls="[[__targetId]]"
-              on-tap="_buttonTap"
+              on-tap="_confirm"
               tabindex="0"
             >
               <iron-icon id="icon" aria-hidden icon="check"> </iron-icon>
@@ -168,7 +168,8 @@ class RichTextPromptStateManager extends PolymerElement {
        */
       value: {
         type: Object,
-        value: {}
+        value: {},
+        observer: "_valueChanged"
       }
     };
   }
@@ -197,26 +198,37 @@ class RichTextPromptStateManager extends PolymerElement {
     this.__a11ycancel = this.$.cancel;
   }
 
+  _valueChanged() {
+    console.log("_valueChanged");
+  }
+
   /**
    * Loads element into array
    */
   setTarget(el) {
-    let sel = el.selection,
-      fields = el.fields.slice();
-    //this.clearTarget();
+    this.clearTarget();
+    let fields = el.fields,
+      vals = el.value;
     this.__targetId = "prompt" + Date.now();
+    this.__el = el;
+    this.__selection = el.selection.cloneRange();
+    console.log(
+      "set target",
+      this.__selection,
+      typeof this.__selection,
+      typeof el.selection,
+      el.selection
+    );
     this.target = document.createElement("span");
     this.target.setAttribute("id", this.__targetId);
-    this.target.appendChild(sel.extractContents());
-    el.selection.insertNode(this.target);
-    console.log("set target", this.target.innerHTML);
-    this.set("value", el.value);
+    this.target.style.outline = "1px dotted #888";
+    el.selection.surroundContents(this.target);
     if (el.selectionField !== null) {
       fields.unshift(el.selectionField);
-      this.value[el.selectionField.property] = this.target.innerHTML;
+      vals[el.selectionField.property] = this.target.innerHTML;
     }
     this.set("fields", fields);
-    console.log("set target done", this.fields, fields, el.fields);
+    this.set("value", vals);
     this.for = this.__targetId;
   }
 
@@ -226,18 +238,29 @@ class RichTextPromptStateManager extends PolymerElement {
   clearTarget() {
     if (!this.target) return;
     this.for = null;
-    let parent = this.target.parentNode;
-    parent.insertBefore(this.target.firstChild, this.target);
-    parent.removeChild(this.target);
-    this.set("fields", []);
+    this.set("fields", null);
+    this.set("value", null);
+    this.__selection = null;
     this.target = null;
+    this.__el = null;
   }
   /**
    * Handles button tap;
    */
-  _buttonTap(e) {
+  _cancel(e) {
     e.preventDefault();
-    console.log("button tap", e);
+    this.clearTarget();
+  }
+  /**
+   * Handles button tap;
+   */
+  _confirm(e) {
+    e.preventDefault();
+    this.__el.value = this.value;
+    if (this.__el.selectionField !== null)
+      this.__el.selection = this.value[this.__el.selectionField.property];
+    this.__el.doTextOperation(this.target);
+    this.clearTarget();
   }
 }
 window.customElements.define(

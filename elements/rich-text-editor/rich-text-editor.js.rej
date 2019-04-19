@@ -1,0 +1,195 @@
+diff a/elements/rich-text-editor/rich-text-editor.js b/elements/rich-text-editor/rich-text-editor.js	(rejected hunks)
+@@ -36,64 +35,65 @@ class RichTextEditor extends PolymerElement {
+-<style>:host {
+-  display: block;
+-  width: 100%;
+-  margin: 0;
+-  padding: 0;
+-  z-index: 9999;
+-  --rich-text-editor-bg: #fafafa;
+-  --rich-text-editor-button-color: #444;
+-  --rich-text-editor-border: 1px solid #ddd;
+-  --rich-text-editor-button-border: transparent;
+-  --rich-text-editor-button-disabled-color: #666;
+-  --rich-text-editor-button-disabled-bg: transparent;
+-  --rich-text-editor-button-toggled-color: #222;
+-  --rich-text-editor-button-toggled-bg: #ddd;
+-  --rich-text-editor-button-hover-color: #000;
+-  --rich-text-editor-button-hover-bg: #f0f0f0;
+-  --rich-text-editor-picker-border: #fafafa;
+-  @apply --rich-text-editor;
+-}
+-:host([sticky]) {
+-  position: sticky;
+-  top: 0;
+-}
+-:host #toolbar {
+-  display: flex;
+-  opacity: 1;
+-  margin: 0;
+-  align-items: stretch;
+-  flex-wrap: wrap;
+-  justify-content: flex-start;
+-  background-color: var(--rich-text-editor-bg);
+-  border: var(--rich-text-editor-border);
+-  font-size: 12px;
+-  transition: all 0.5s;
+-  @apply --rich-text-editor-toolbar;
+-} 
+-:host #toolbar[aria-hidden]{
+-  visibility: hidden;
+-  opacity: 0;
+-  height: 0;
+-}
+-:host #toolbar .group {
+-  display: flex;
+-  flex-wrap: nowrap;
+-  justify-content: space-evenly;
+-  align-items: stretch;
+-  padding: 0 3px;
+-  @apply --rich-text-editor-toolbar-group;
+-}
+-:host #toolbar .group:not(:last-of-type) {
+-  margin-right: 3px;
+-  border-right: var(--rich-text-editor-border);
+-  @apply --rich-text-editor-toolbar-divider;
+-}
+-:host #toolbar .button {
+-  display: flex;
+-  flex: 0 0 auto;
+-  align-items: stretch;
+-  margin: 3px;
+-}
+-:host #toolbar #morebutton {
+-  flex: 1 0 auto;
+-  justify-content: flex-end;
+-}
++      <style>
++        :host {
++          display: block;
++          width: 100%;
++          margin: 0;
++          padding: 0;
++          z-index: 9999;
++          --rich-text-editor-bg: #fafafa;
++          --rich-text-editor-button-color: #444;
++          --rich-text-editor-border: 1px solid #ddd;
++          --rich-text-editor-button-border: transparent;
++          --rich-text-editor-button-disabled-color: #666;
++          --rich-text-editor-button-disabled-bg: transparent;
++          --rich-text-editor-button-toggled-color: #222;
++          --rich-text-editor-button-toggled-bg: #ddd;
++          --rich-text-editor-button-hover-color: #000;
++          --rich-text-editor-button-hover-bg: #f0f0f0;
++          --rich-text-editor-picker-border: #fafafa;
++          @apply --rich-text-editor;
++        }
++        :host([sticky]) {
++          position: sticky;
++          top: 0;
++        }
++        :host #toolbar {
++          display: flex;
++          opacity: 1;
++          margin: 0;
++          align-items: stretch;
++          flex-wrap: wrap;
++          justify-content: flex-start;
++          background-color: var(--rich-text-editor-bg);
++          border: var(--rich-text-editor-border);
++          font-size: 12px;
++          transition: all 0.5s;
++          @apply --rich-text-editor-toolbar;
++        }
++        :host #toolbar[aria-hidden] {
++          visibility: hidden;
++          opacity: 0;
++          height: 0;
++        }
++        :host #toolbar .group {
++          display: flex;
++          flex-wrap: nowrap;
++          justify-content: space-evenly;
++          align-items: stretch;
++          padding: 0 3px;
++          @apply --rich-text-editor-toolbar-group;
++        }
++        :host #toolbar .group:not(:last-of-type) {
++          margin-right: 3px;
++          border-right: var(--rich-text-editor-border);
++          @apply --rich-text-editor-toolbar-divider;
++        }
++        :host #toolbar .button {
++          display: flex;
++          flex: 0 0 auto;
++          align-items: stretch;
++          margin: 3px;
++        }
++        :host #toolbar #morebutton {
++          flex: 1 0 auto;
++          justify-content: flex-end;
++        }
+@@ -362,62 +435 @@ class RichTextEditor extends PolymerElement {
+-    ]
+-  },
+-  /**
+-   * The target element's id attribute.
+-   */
+-  "controls": {
+-    "name": "controls",
+-    "type": "String",
+-    "value": null
+-  },
+-  /**
+-   * The editableElement element for the editor.
+-   */
+-  "editableElements": {
+-    "name": "editableElements",
+-    "type": "Array",
+-    "value": []
+-  },
+-  /**
+-   * The editableElement element for the editor.
+-   */
+-  "editableElement": {
+-    "name": "editableElement",
+-    "type": "Object",
+-    "value": null
+-  },
+-  /**
+-   * The the size of the editor.
+-   */
+-  "responsiveSize": {
+-    "name": "responsiveSize",
+-    "type": "String",
+-    "value": "xs",
+-    "reflectToAttribute": true
+-  },
+-  /**
+-   * The current text selection.
+-   */
+-  "savedSelection": {
+-    "name": "savedSelection",
+-    "type": "Object",
+-    "value": null
+-  },
+-  /**
+-   * The current text selection.
+-   */
+-  "selection": {
+-    "name": "selection",
+-    "type": "Object",
+-    "value": null
+-  },
+-  /**
+-   * Should the toolbar stick to the top so that it is always visible.
+-   */
+-  "sticky": {
+-    "name": "sticky",
+-    "type": "Boolean",
+-    "value": false,
+-    "reflectToAttribute": true
+-  }
+-}
+-;
++    };

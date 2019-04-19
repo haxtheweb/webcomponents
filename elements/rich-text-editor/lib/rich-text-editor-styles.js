@@ -69,7 +69,7 @@ const css = html`
     :host paper-tooltip {
       z-index: 99999;
     }
-    :host #prompt {
+    :host #prompt:not([hidden]) {
       display: flex;
       align-items: center;
       justify-content: space-between;

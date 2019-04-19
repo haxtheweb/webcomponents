@@ -76,6 +76,20 @@ class RichTextEditorLink extends RichTextEditorPrompt {
     console.log("link", this.fields);
     let root = this;
   }
+  doTextOperation(target) {
+    if (this.value.link !== null && this.value.link.trim() !== "") {
+      let link = document.createElement("a");
+      link.setAttribute("href", this.value.link);
+      link.innerHTML = this.value.text;
+      let parent = target.parentNode;
+      console.log("target", target, "parent", parent);
+      parent.insertBefore(link, target);
+      parent.removeChild(target);
+    } else {
+      console.log("TODO: Remove link", this.selection);
+    }
+    this.dispatchEvent(new CustomEvent("deselect", { detail: this }));
+  }
 }
 window.customElements.define(RichTextEditorLink.tag, RichTextEditorLink);
 export { RichTextEditorLink };
