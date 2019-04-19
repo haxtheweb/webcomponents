@@ -22,17 +22,19 @@ class RichTextEditorPicker extends RichTextEditorButton {
   static get template() {
     return html`
       <style include="rich-text-editor-styles"></style>
-      <simple-picker id="button"
-        disabled$="[[disabled]]" 
+      <simple-picker
+        id="button"
+        disabled$="[[disabled]]"
         controls="[[controls]]"
         on-change="_pickerChange"
         tabindex="0"
         title-as-html$="[[titleAsHtml]]"
         options="[[options]]"
-        value="{{value}}">
+        value="{{value}}"
+      >
         <span id="label" class$="[[labelStyle]]"></span>
-      </paper-button>
-      <paper-tooltip id="tooltip" for="button"></paper-button>
+      </simple-picker>
+      <paper-tooltip id="tooltip" for="button"></paper-tooltip>
     `;
   }
 
