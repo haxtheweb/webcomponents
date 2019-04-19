@@ -212,17 +212,11 @@ class RichTextPromptStateManager extends PolymerElement {
     this.__targetId = "prompt" + Date.now();
     this.__el = el;
     this.__selection = el.selection.cloneRange();
-    console.log(
-      "set target",
-      this.__selection,
-      typeof this.__selection,
-      typeof el.selection,
-      el.selection
-    );
     this.target = document.createElement("span");
     this.target.setAttribute("id", this.__targetId);
     this.target.style.outline = "1px dotted #888";
-    el.selection.surroundContents(this.target);
+    this.target.appendChild(this.__selection.extractContents());
+    el.selection.insertNode(this.target);
     if (el.selectionField !== null) {
       fields.unshift(el.selectionField);
       vals[el.selectionField.property] = this.target.innerHTML;
