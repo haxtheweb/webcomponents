@@ -1,20 +1,5 @@
 {
   /**
-   * Returned value from the form input.
-   */
-  "initialValue": {
-    "type": "Object",
-    "notify": true,
-    "value": {},
-    "observer": "_valueChanged"
-  },
-
-  "value": {
-    "type": "Object",
-    "notify": true,
-    "value": {}
-  },
-  /**
    * Fields to conver toJSON Schema.
    */
   "fields": {
@@ -23,10 +8,22 @@
     "observer": "_fieldsChanged"
   },
   /**
-   * Fields to conver toJSON Schema.
+   * Returned value from the form input.
+   */
+  "value": {
+    "type": "Object",
+    "notify": true,
+    "value": {},
+    "reflectToAttribute": true,
+    "observer": "_valueChanged"
+  },
+  /**
+   * Fields to conver to JSON Schema.
    */
   "__validatedSchema": {
     "type": "Array",
-    "value": { "properties": {} }
+    "value": {
+      "properties": {}
+    }
   }
 }

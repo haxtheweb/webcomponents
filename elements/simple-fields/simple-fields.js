@@ -4,6 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import { MutableData } from "@polymer/polymer/lib/mixins/mutable-data.js";
 import "@polymer/paper-toggle-button/paper-toggle-button.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-input/paper-textarea.js";
@@ -28,7 +29,7 @@ import "@lrnwebcomponents/simple-colors/simple-colors.js";
  * @polymer
  * @demo demo/index.html
  */
-class SimpleFields extends PolymerElement {
+class SimpleFields extends MutableData(PolymerElement) {
   // render function
   static get template() {
     return html`
@@ -61,7 +62,7 @@ class SimpleFields extends PolymerElement {
         }
       </style>
       <eco-json-schema-object
-        id="schema-object"
+        id="schemaobject"
         schema="[[__validatedSchema]]"
         value="{{value}}"
       ></eco-json-schema-object>
@@ -110,21 +111,6 @@ class SimpleFields extends PolymerElement {
   static get properties() {
     return {
       /**
-       * Returned value from the form input.
-       */
-      initialValue: {
-        type: "Object",
-        notify: true,
-        value: {},
-        observer: "_valueChanged"
-      },
-
-      value: {
-        type: "Object",
-        notify: true,
-        value: {}
-      },
-      /**
        * Fields to conver toJSON Schema.
        */
       fields: {
@@ -133,11 +119,23 @@ class SimpleFields extends PolymerElement {
         observer: "_fieldsChanged"
       },
       /**
-       * Fields to conver toJSON Schema.
+       * Returned value from the form input.
+       */
+      value: {
+        type: "Object",
+        notify: true,
+        value: {},
+        reflectToAttribute: true,
+        observer: "_valueChanged"
+      },
+      /**
+       * Fields to conver to JSON Schema.
        */
       __validatedSchema: {
         type: "Array",
-        value: { properties: {} }
+        value: {
+          properties: {}
+        }
       }
     };
   }
@@ -157,33 +155,41 @@ class SimpleFields extends PolymerElement {
     this.HAXWiring = new HAXWiring();
     this.HAXWiring.setup(SimpleFields.haxProperties, SimpleFields.tag, this);
   }
-
   /**
-   * Value in the form has changed, reflect to the preview.
+   * fires when either the eco-json-schema-object or the simple-fields object changes the value
+   * @param {object} oldValue the old value
+   * @param {object} newValue the new value
    */
-  _valueChanged(newValue) {
-    console.log("_valueChanged", newValue, this.schema);
-    if (newValue && this.schema) {
-      for (var i in newValue) {
-        this.schema[i].value = newValue[i];
-      }
+  _valueChanged(oldValue, newValue) {
+    //prevent a feddback loop when the eco-json-schema-object's values change to reflect the changes to simple-fields
+    if (JSON.stringify(oldValue) !== JSON.stringify(newValue)) {
+      this._setValues();
     }
   }
 
-  _fieldsChanged() {
+  /**
+   * fires when the fields array changes
+   * @param {object} oldValue the old value
+   * @param {object} newValue the new value
+   */
+  _fieldsChanged(oldValue, newValue) {
+    //prevent a potential feedback loop
+    if (JSON.stringify(oldValue) !== JSON.stringify(newValue)) {
+      this._setValues();
+    }
+  }
+  /**
+   * when either the fields or the value changes, updates the schema and form to match
+   */
+  _setValues() {
     let wiring = window.HAXWiring,
-      fields = this.fields,
-      schema = {
-        $schema: "http://json-schema.org/schema#",
-        title: this.title,
-        type: "object",
-        properties: {
-          fields: { fields }
-        }
-      };
-    this.set("__validatedSchema", {
-      properties: wiring._getHaxJSONSchemaProperty(fields, wiring)
-    });
+      schema = wiring._getHaxJSONSchemaProperty(this.fields, wiring);
+    for (let prop in this.value) {
+      if (schema[prop]) schema[prop].value = this.value[prop];
+    }
+    //form won't refresh unless we set it to null. notifyPath wasn't enough to refresh it
+    this.__validatedSchema = null;
+    this.__validatedSchema = { properties: schema };
   }
   /**
    * life cycle, element is removed from the DOM

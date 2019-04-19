@@ -29,30 +29,20 @@
                 {
                   "property": "name",
                   "title": "What is your name?",
-                  "description": "",
+                  "description": "Enter your real name or an alias.",
                   "inputMethod": "textfield"
                 },
                 {
-                  "property": "lying",
-                  "title": "Are you lying?",
+                  "property": "alias",
+                  "title": "This is an alias.",
                   "description": "",
                   "inputMethod": "boolean"
-                },
-                {
-                  "property": "url",
-                  "title": "URL",
-                  "description": "Enter an external url.",
-                  "inputMethod": "haxupload",
-                  "required": true
-                },
-                {
-                  "property": "message",
-                  "title": "Message",
-                  "description": "Enter a message for stop-note.",
-                  "inputMethod": "code-editor",
-                  "required": true
                 }
               ];
+              fields.value = {
+                "name": "John Doe",
+                "alias": true
+              };
             }
           </script>
         </template>
