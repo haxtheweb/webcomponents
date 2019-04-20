@@ -3,9 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import "aframe/dist/aframe-master.js";
+import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 /**
  * `aframe-player`
  * `A wrapper to do data binding into aframe`
@@ -34,11 +35,6 @@ let AframePlayer = Polymer({
     >
       <a-sky color\$="[[skyColor]]"></a-sky>
       <a-marker-camera preset="hiro"></a-marker-camera>
-      <a-entity
-        id="entity"
-        gltf-model\$="[[source]]"
-        position="0 0 0"
-      ></a-entity>
     </a-scene>
   `,
 
@@ -121,8 +117,16 @@ let AframePlayer = Polymer({
    * Attached.
    */
   attached: function() {
-    // ensure that this doesn't put full screen styles on the page!
-    this.$.scene.removeFullScreenStyles();
+    const name = "aframePlayer";
+    const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+    let location = `${basePath}lib/aframe/dist/aframe-master.js`;
+    if (typeof TWEEN === "object") this._aframeLoaded.bind(this);
+    window.addEventListener(
+      `es-bridge-${name}-loaded`,
+      this._aframeLoaded.bind(this)
+    );
+    window.ESGlobalBridge.requestAvailability();
+    window.ESGlobalBridge.instance.load(name, location);
     let props = {
       canScale: false,
       canPosition: false,
@@ -216,6 +220,15 @@ let AframePlayer = Polymer({
     this.setHaxProperties(props);
   },
 
+  _aframeLoaded(el) {
+    // ensure that this doesn't put full screen styles on the page!
+    this.$.scene.removeFullScreenStyles();
+    this.__entity = document.createElement("a-entity");
+    this.__entity.setAttribute("gltf-model", "url(" + this.source + ")");
+    this._positionChanged();
+    this.$.scene.appendChild(this.__entity);
+  },
+
   /**
    * Generate position object based on format a-frame expects.
    */
@@ -231,7 +244,8 @@ let AframePlayer = Polymer({
    * When position is updated, inject this into a-frame tag.
    */
   _positionChanged: function(position) {
-    this.$.entity.setAttribute("position", position);
+    if (this.__entity !== undefined)
+      this.__entity.setAttribute("position", position);
   }
 });
 export { AframePlayer };

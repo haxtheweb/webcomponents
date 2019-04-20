@@ -10,6 +10,7 @@ import "./lib/rich-text-editor-more-button.js";
 import "./lib/rich-text-editor-heading-picker.js";
 import "./lib/rich-text-editor-symbol-picker.js";
 import "./lib/rich-text-editor-link.js";
+import "./lib/rich-text-editor-styles.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/iron-icons/image-icons.js";
@@ -38,17 +39,6 @@ class RichTextEditor extends PolymerElement {
           margin: 0;
           padding: 0;
           z-index: 9999;
-          --rich-text-editor-bg: #fafafa;
-          --rich-text-editor-button-color: #444;
-          --rich-text-editor-border: 1px solid #ddd;
-          --rich-text-editor-button-border: transparent;
-          --rich-text-editor-button-disabled-color: #666;
-          --rich-text-editor-button-disabled-bg: transparent;
-          --rich-text-editor-button-toggled-color: #222;
-          --rich-text-editor-button-toggled-bg: #ddd;
-          --rich-text-editor-button-hover-color: #000;
-          --rich-text-editor-button-hover-bg: #f0f0f0;
-          --rich-text-editor-picker-border: #fafafa;
           @apply --rich-text-editor;
         }
         :host([sticky]) {
@@ -123,6 +113,7 @@ class RichTextEditor extends PolymerElement {
           display: none;
         }
       </style>
+      <style include="rich-text-editor-styles"></style>
       <div id="toolbar" aria-hidden$="[[!controls]]" collapsed$="[[collapsed]]">
         <rich-text-editor-more-button
           id="morebutton"
@@ -271,7 +262,7 @@ class RichTextEditor extends PolymerElement {
                 toggledIcon: "mdextra:unlink",
                 toggledLabel: "Unink",
                 toggles: true,
-                type: "rich-text-editor-prompt"
+                type: "rich-text-editor-link"
               }
             ]
           },
@@ -512,6 +503,7 @@ class RichTextEditor extends PolymerElement {
    * Gets the updated selection.
    */
   getUpdatedSelection() {
+    console.log("selectionchange");
     let root = this;
     root.selection =
       root.editableElement === undefined || root.editableElement === null

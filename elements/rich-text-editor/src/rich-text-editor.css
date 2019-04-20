@@ -4,17 +4,6 @@
   margin: 0;
   padding: 0;
   z-index: 9999;
-  --rich-text-editor-bg: #fafafa;
-  --rich-text-editor-button-color: #444;
-  --rich-text-editor-border: 1px solid #ddd;
-  --rich-text-editor-button-border: transparent;
-  --rich-text-editor-button-disabled-color: #666;
-  --rich-text-editor-button-disabled-bg: transparent;
-  --rich-text-editor-button-toggled-color: #222;
-  --rich-text-editor-button-toggled-bg: #ddd;
-  --rich-text-editor-button-hover-color: #000;
-  --rich-text-editor-button-hover-bg: #f0f0f0;
-  --rich-text-editor-picker-border: #fafafa;
   @apply --rich-text-editor;
 }
 :host([sticky]) {

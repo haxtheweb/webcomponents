@@ -45,6 +45,7 @@
     "@lrnwebcomponents/hax-body-behaviors": "^2.0.9",
     "@lrnwebcomponents/simple-popover": "^2.0.9",
     "@lrnwebcomponents/simple-picker": "^2.0.9",
+    "@lrnwebcomponents/simple-fields": "^2.0.9",
     "@polymer/iron-a11y-keys": "^3.0.1",
     "@polymer/iron-fit-behavior": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",

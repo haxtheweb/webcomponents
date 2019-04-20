@@ -1,0 +1,20 @@
+diff a/elements/simple-fields/simple-fields.js b/elements/simple-fields/simple-fields.js	(rejected hunks)
+@@ -110,9 +112,9 @@ eco-json-schema-object .hax-code-editor {
+-  /**
+-   * Returned value from the form input.
+-   */
+-  "initialValue": {
+-    "type": "Object",
+-    "notify": true,
+-    "value": {},
+-    "observer": "_valueChanged"
+-  },
++      /**
++       * Returned value from the form input.
++       */
++      initialValue: {
++        type: "Object",
++        notify: true,
++        value: {},
++        observer: "_valueChanged"
++      },

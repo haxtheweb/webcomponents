@@ -3,7 +3,7 @@ const path = require("path");
 module.exports = (storybookBaseConfig, configType, defaultConfig) => {
   defaultConfig.module.rules.push({
     //VTT files need to be in the same place at the demo
-    test: /\.(vtt|csv)$/,
+    test: /\.(vtt|csv|gltf)$/,
     loader: "file-loader"
   });
   defaultConfig.module.rules.push({
