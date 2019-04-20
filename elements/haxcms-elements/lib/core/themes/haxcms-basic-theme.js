@@ -25,6 +25,23 @@ class HAXCMSBasicTheme extends HAXCMSTheme(BasicTemplate(PolymerElement)) {
           background-color: white;
           --haxcms-basic-theme-accent-color: var(--haxcms-color, yellow);
         }
+        scroll-button:not(:defined),
+        site-active-title:not(:defined),
+        site-render-item:not(:defined),
+        site-children-block:not(:defined),
+        site-outline-block:not(:defined),
+        site-recent-content-block:not(:defined),
+        site-footer:not(:defined),
+        site-modal:not(:defined),
+        site-breadcrumb:not(:defined),
+        site-dot-indicator:not(:defined),
+        site-menu-button:not(:defined),
+        site-menu:not(:defined),
+        site-top-menu:not(:defined),
+        site-print-button:not(:defined),
+        site-rss-button:not(:defined) {
+          display: none;
+        }
         .container {
           margin: 24px auto;
           max-width: 1280px;
