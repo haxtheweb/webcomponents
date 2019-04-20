@@ -161,14 +161,14 @@ class RichTextPromptStateManager extends PolymerElement {
        */
       fields: {
         type: Array,
-        value: []
+        value: null
       },
       /**
        * The prefilled value of the prompt
        */
       value: {
         type: Object,
-        value: {},
+        value: null,
         observer: "_valueChanged"
       }
     };
@@ -210,8 +210,6 @@ class RichTextPromptStateManager extends PolymerElement {
     let fields = el.fields,
       vals = el.value;
     this.target = el.target;
-    this.__selection = el.selection.cloneRange();
-    if (el.selectionField !== null) fields.unshift(el.selectionField);
     this.set("fields", fields);
     this.set("value", vals);
     this.__el = el;
@@ -222,7 +220,8 @@ class RichTextPromptStateManager extends PolymerElement {
    * Unloads element from array
    */
   clearTarget() {
-    if (!this.target) return;
+    console.log("clearTarget", this.for);
+    if (!this.for) return;
     this.for = null;
     this.target = null;
     this.set("fields", null);
@@ -243,9 +242,7 @@ class RichTextPromptStateManager extends PolymerElement {
   _confirm(e) {
     e.preventDefault();
     this.__el.value = this.value;
-    if (this.__el.selectionField !== null)
-      this.__el.selection = this.value[this.__el.selectionField.property];
-    this.__el.doPrompt();
+    this.__el.doTextOperation();
     this.clearTarget();
   }
 }

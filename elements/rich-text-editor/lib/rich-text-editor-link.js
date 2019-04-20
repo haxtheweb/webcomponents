@@ -6,7 +6,8 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "./rich-text-editor-styles.js";
-import { RichTextEditorPrompt } from "./rich-text-editor-prompt.js";
+import { RichTextEditorButton } from "./rich-text-editor-button.js";
+import "./rich-text-prompt-state-manager.js";
 /**
  * `rich-text-editor-link`
  * `a button for rich text editor (custom buttons can extend this)`
@@ -17,7 +18,7 @@ import { RichTextEditorPrompt } from "./rich-text-editor-prompt.js";
  * @customElement
  * @polymer
  */
-class RichTextEditorLink extends RichTextEditorPrompt {
+class RichTextEditorLink extends RichTextEditorButton {
   // properties available to the custom element for data binding
   static get properties() {
     return {
@@ -28,6 +29,12 @@ class RichTextEditorLink extends RichTextEditorPrompt {
         type: Array,
         value: [
           {
+            property: "text",
+            title: "Text",
+            description: "The link text",
+            inputMethod: "textfield"
+          },
+          {
             property: "link",
             title: "Link",
             description: "The link URL",
@@ -36,16 +43,20 @@ class RichTextEditorLink extends RichTextEditorPrompt {
         ]
       },
       /**
-       * Optional text field for current selection
+       * the text of the prompt, as in "Link href" or "Image src"
        */
-      selectionField: {
+      prompt: {
+        name: "prompt",
+        type: String,
+        value: "Value"
+      },
+      /**
+       * the target of the prompt
+       */
+      target: {
+        name: "target",
         type: Object,
-        value: {
-          property: "text",
-          title: "Text",
-          description: "The link text",
-          inputMethod: "textfield"
-        }
+        value: null
       },
       /**
        * The prefilled value of the prompt
@@ -72,18 +83,54 @@ class RichTextEditorLink extends RichTextEditorPrompt {
    */
   ready() {
     super.ready();
+    console.log(
+      getComputedStyle(this).getPropertyValue(
+        "--rich-text-editor-picker-border"
+      )
+    );
     let root = this;
+    this.__popover = window.RichTextPromptStateManager.requestAvailability();
   }
-  doPrompt() {
-    if (this.value.link !== null && this.value.link.trim() !== "") {
-      let link = document.createElement("a");
-      link.setAttribute("href", this.value.link);
-      link.innerHTML = this.value.text;
-      let parent = this.target.parentNode;
-      parent.insertBefore(link, this.target);
-      parent.removeChild(this.target);
+  /**
+   * Handles button tap;
+   */
+  _buttonTap(e) {
+    e.preventDefault();
+    this.getSelectionData();
+    this.__popover.setTarget(this);
+  }
+  /**
+   * placeholder function for prompt action
+   */
+  getSelectionData() {
+    let sel = this.selection.commonAncestorContainer,
+      parent = sel.tagName === "A" ? sel : sel.parentNode;
+    if (parent.tagName === "A") {
+      this.value.link = parent.getAttribute("href");
+      this.target = parent;
     } else {
-      console.log("TODO: Remove link", this.selection);
+      this.target = document.createElement("a");
+      this.target.appendChild(this.selection.extractContents());
+      this.selection.insertNode(this.target);
+    }
+    if (!this.target.getAttribute("id"))
+      this.target.setAttribute("id", "prompt" + Date.now());
+    this.__style = this.style;
+    this.target.style.backgroundColor = getComputedStyle(this).getPropertyValue(
+      "--rich-text-editor-selection-bg"
+    );
+    this.value.text = this.target.innerHTML;
+  }
+  doTextOperation() {
+    if (this.value.link !== null && this.value.link.trim() !== "") {
+      this.target.setAttribute("href", this.value.link.trim());
+      this.target.innerHTML = this.value.text;
+      this.target.style = this.__style;
+    } else {
+      let parent = this.target.parentNode;
+      while (this.target.firstChild)
+        parent.insertBefore(this.target.firstChild, this.target);
+      parent.removeChild(this.target);
     }
     this.target = null;
     this.value = {};

@@ -30,6 +30,7 @@ const css = html`
       --rich-text-editor-button-hover-color: #000;
       --rich-text-editor-button-hover-bg: #f0f0f0;
       --rich-text-editor-picker-border: #fafafa;
+      --rich-text-editor-selection-bg: #b3d9ff;
     }
     :host([hidden]) {
       display: none;
