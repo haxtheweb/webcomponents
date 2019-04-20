@@ -9,21 +9,21 @@ import "@lrnwebcomponents/simple-fields/simple-fields.js";
 import "./rich-text-editor-styles.js";
 
 // register globally so we can make sure there is only one
-window.RichTextPromptStateManager = window.RichTextPromptStateManager || {};
+window.richTextEditorPrompt = window.richTextEditorPrompt || {};
 // request if this exists. This helps invoke the element existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same modal
-window.RichTextPromptStateManager.requestAvailability = () => {
-  if (!window.RichTextPromptStateManager.instance) {
-    window.RichTextPromptStateManager.instance = document.createElement(
-      "rich-text-prompt-state-manager"
+window.richTextEditorPrompt.requestAvailability = () => {
+  if (!window.richTextEditorPrompt.instance) {
+    window.richTextEditorPrompt.instance = document.createElement(
+      "rich-text-editor-prompt"
     );
-    document.body.appendChild(window.RichTextPromptStateManager.instance);
+    document.body.appendChild(window.richTextEditorPrompt.instance);
   }
-  return window.RichTextPromptStateManager.instance;
+  return window.richTextEditorPrompt.instance;
 };
 /**
- * `rich-text-prompt-state-manager`
+ * `rich-text-editor-prompt`
  * `A utility that manages the state of multiple rich-text-prompts on one page.`
  *
  * @microcopy - language worth noting:
@@ -32,7 +32,7 @@ window.RichTextPromptStateManager.requestAvailability = () => {
  * @customElement
  * @polymer
  */
-class RichTextPromptStateManager extends PolymerElement {
+class richTextEditorPrompt extends PolymerElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */ // render function
   static get template() {
     return html`
@@ -129,7 +129,7 @@ class RichTextPromptStateManager extends PolymerElement {
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
-    return "rich-text-prompt-state-manager";
+    return "rich-text-editor-prompt";
   }
 
   // properties available to the custom element for data binding
@@ -182,8 +182,8 @@ class RichTextPromptStateManager extends PolymerElement {
     let root = this;
 
     // sets the instance to the current instance
-    if (!window.RichTextPromptStateManager.instance) {
-      window.RichTextPromptStateManager.instance = this;
+    if (!window.richTextEditorPrompt.instance) {
+      window.richTextEditorPrompt.instance = this;
       return this;
     }
   }
@@ -246,8 +246,5 @@ class RichTextPromptStateManager extends PolymerElement {
     this.clearTarget();
   }
 }
-window.customElements.define(
-  RichTextPromptStateManager.tag,
-  RichTextPromptStateManager
-);
-export { RichTextPromptStateManager };
+window.customElements.define(richTextEditorPrompt.tag, richTextEditorPrompt);
+export { richTextEditorPrompt };

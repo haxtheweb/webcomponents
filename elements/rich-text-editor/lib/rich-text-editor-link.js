@@ -7,7 +7,7 @@ import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "./rich-text-editor-styles.js";
 import { RichTextEditorButton } from "./rich-text-editor-button.js";
-import "./rich-text-prompt-state-manager.js";
+import "./rich-text-editor-prompt.js";
 /**
  * `rich-text-editor-link`
  * `a button for rich text editor (custom buttons can extend this)`
@@ -89,7 +89,7 @@ class RichTextEditorLink extends RichTextEditorButton {
       )
     );
     let root = this;
-    this.__popover = window.RichTextPromptStateManager.requestAvailability();
+    this.__popover = window.richTextEditorPrompt.requestAvailability();
   }
   /**
    * Handles button tap;
