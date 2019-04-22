@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   flex-direction: column-reverse;
+  justify-content: stretch;
   --simple-popover-border-radius: 3px;
   --simple-popover-color: #222;
   --simple-popover-padding: 10px;
@@ -33,7 +34,6 @@
   @apply --simple-popover-content;
 }
 :host #pointer {
-  margin: 0 auto;
   width: 20px;
   height: 20px;
   position: relative;

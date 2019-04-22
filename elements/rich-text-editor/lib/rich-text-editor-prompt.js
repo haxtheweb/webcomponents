@@ -209,18 +209,17 @@ class richTextEditorPrompt extends PolymerElement {
     this.clearTarget();
     let fields = el.fields,
       vals = el.value;
-    this.target = el.target;
+    this.target = el.selectedText;
     this.set("fields", fields);
     this.set("value", vals);
     this.__el = el;
-    this.for = el.target.getAttribute("id");
+    this.for = el.selectedText.getAttribute("id");
   }
 
   /**
    * Unloads element from array
    */
   clearTarget() {
-    console.log("clearTarget", this.for);
     if (!this.for) return;
     this.for = null;
     this.target = null;
@@ -234,6 +233,7 @@ class richTextEditorPrompt extends PolymerElement {
    */
   _cancel(e) {
     e.preventDefault();
+    this.__el.deselectText();
     this.clearTarget();
   }
   /**
@@ -242,7 +242,7 @@ class richTextEditorPrompt extends PolymerElement {
   _confirm(e) {
     e.preventDefault();
     this.__el.value = this.value;
-    this.__el.doTextOperation();
+    this.__el.updateSelection();
     this.clearTarget();
   }
 }

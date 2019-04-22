@@ -84,6 +84,12 @@ class AbsolutePositionBehavior extends PolymerElement {
       target: {
         type: Object,
         observer: "updatePosition"
+      },
+      /**
+       * The element's style
+       */
+      __positions: {
+        type: Object
       }
     };
   }

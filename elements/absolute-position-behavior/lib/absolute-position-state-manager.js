@@ -230,6 +230,11 @@ class AbsolutePositionStateManager extends PolymerElement {
       element.style.left = tooltipLeft + "px";
       element.style.top = tooltipTop + "px";
     }
+    //provide positions for element and target (in case furthor positioning adjustments are needed)
+    element.__positions = {
+      self: elementRect,
+      target: targetRect
+    };
   }
 
   /**

@@ -23,7 +23,8 @@
             <p id="p1">
               Aenean eget nisl volutpat, molestie purus eget, bibendum metus. 
               Pellentesque magna velit, tincidunt quis pharetra id, gravida 
-              placerat erat. <em id="em">Maecenas</em> id dui pretium risus pulvinar feugiat 
+              placerat erat. <em id="em">Maecenas</em> 
+              id dui pretium risus pulvinar feugiat 
               vel nec leo. Praesent non congue tellus. Suspendisse ac tincidunt 
               purus. Donec eu dui a metus vehicula bibendum sed nec tortor. 
               Nunc convallis justo sed nibh consectetur, at pharetra nulla 
@@ -42,10 +43,10 @@
               leo bibendum faucibus. Etiam aliquam neque sit amet maximus 
               lacinia. Duis ut libero eget augue egestas suscipit. 
             </p>
-            <absolute-position-behavior for="em" auto>
+            <absolute-position-behavior for="em" auto fit-to-visible-bounds>
               <div class="box">I'm positioned below the &lt;em/&gt;</div>
             </absolute-position-behavior>
-            <absolute-position-behavior for="strong" auto position="top">
+            <absolute-position-behavior for="strong" auto fit-to-visible-bounds position="top">
               <div class="box">I'm positioned above the &lt;strong/&gt;</div>
             </absolute-position-behavior>
           </div>

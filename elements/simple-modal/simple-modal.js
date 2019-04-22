@@ -69,9 +69,8 @@ class SimpleModal extends PolymerElement {
 
         :host #dialog {
           margin: 15px auto;
-          height: auto;
-          height: var(--simple-modal-height, auto);
           z-index: 1000;
+          height: var(--simple-modal-height, auto);
           width: var(--simple-modal-width, auto);
           min-width: var(--simple-modal-min-width, unset);
           max-width: var(--simple-modal-max-width, unset);
