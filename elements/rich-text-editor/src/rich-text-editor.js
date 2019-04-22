@@ -199,7 +199,6 @@ class RichTextEditor extends PolymerElement {
       root._preserveSelection(button);
     });*/
     button.addEventListener("deselect", e => {
-      console.log("deselect");
       root._getRange().collapse(false);
     });
     parent.appendChild(button);

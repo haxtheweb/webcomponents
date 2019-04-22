@@ -74,7 +74,7 @@ class richTextEditorPrompt extends PolymerElement {
           );
         }
       </style>
-      <simple-popover id="prompt" hidden$="[[!target]]" for$="[[for]]" auto>
+      <simple-popover id="prompt" auto for$="[[for]]" hidden$="[[!target]]">
         <form id="form">
           <simple-fields
             id="formfields"
@@ -196,11 +196,15 @@ class richTextEditorPrompt extends PolymerElement {
     super.connectedCallback();
     this.__a11yconfirm = this.$.confirm;
     this.__a11ycancel = this.$.cancel;
+    this.$.prompt.addEventListener("blur", e => {
+      this._cancel(e);
+    });
+    this.$.prompt.addEventListener("mouseout", e => {
+      this._cancel(e);
+    });
   }
 
-  _valueChanged() {
-    console.log("_valueChanged");
-  }
+  _valueChanged() {}
 
   /**
    * Loads element into array
