@@ -1,0 +1,35 @@
+<paper-card
+  .alt="${this.alt}"
+  image="${this.image}"
+  .elevation="${this.shadow}"
+  animated-shadow
+  preload-image
+  .placeholder-image="${this.placeholder}"
+  class="card-${this.size}">
+  <div class="card-content">
+    <a href="${this.link}">
+      <h3>${this.title}</h3>
+      <div class="teaser">
+        <slot></slot>
+      </div>
+    </a>
+  </div>
+  <div class="card-actions">
+    <div class="author-block">
+      <paper-avatar
+        .label="${this.author}"
+        .src="${this.authorimage}">
+      </paper-avatar>
+      <div class="author-info">
+        <a href="${this.authorlink}">${this.author}</a>
+        <div class="post-details">
+          <local-time datetime="${this.date}" month="short" day="numeric">
+            ${this.date}
+          </local-time>
+          <span class="dot">&#183</span>
+          <span class="reading-time" title="${this.readtime} min read"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</paper-card>

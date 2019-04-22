@@ -1,0 +1,50 @@
+{
+  "title": {
+    "name": "title",
+    "type": "String"
+  },
+  "author": {
+    "name": "author",
+    "type": "String"
+  },
+  "authorimage": {
+    "name": "authorimage",
+    "type": "String"
+  },
+  "authorlink": {
+    "name": "authorlink",
+    "type": "String"
+  },
+  "readtime": {
+    "name": "readtime",
+    "type": "Number"
+  },
+  "date": {
+    "name": "date",
+    "type": "String"
+  },
+  "image": {
+    "name": "image",
+    "type": "String"
+  },
+  "link": {
+    "name": "link",
+    "type": "String"
+  },
+  "shadow": {
+    "name": "shadow",
+    "type": "Number"
+  },
+  "size": {
+    "name": "size",
+    "type": "String"
+  },
+  "placeholder": {
+    "name": "placeholder",
+    "type": "String"
+  },
+  "alt": {
+    "name": "alt",
+    "type": "String"
+  }
+}
