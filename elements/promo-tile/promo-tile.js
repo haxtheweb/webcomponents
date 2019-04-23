@@ -1,5 +1,4 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@polymer/paper-button/paper-button.js";
@@ -156,11 +155,7 @@ let PromoTile = Polymer({
   `,
 
   is: "promo-tile",
-  behaviors: [
-    HAXBehaviors.PropertiesBehaviors,
-    MaterializeCSSBehaviors.ColorBehaviors,
-    SchemaBehaviors.Schema
-  ],
+  behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
 
   properties: {
     /**
