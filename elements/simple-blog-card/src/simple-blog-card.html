@@ -15,7 +15,12 @@
     </a>
   </div>
   <div class="card-actions">
-    <div class="author-block">
+    <div id="author" class="author-block"
+    @mouseover=${this.showDetails}
+    @focusin=${this.showDetails}
+    @mouseout=${this.hideDetails}
+    @focusout=${this.hideDetails}
+    >
       <paper-avatar
         .label="${this.author}"
         .src="${this.authorimage}">
@@ -33,3 +38,11 @@
     </div>
   </div>
 </paper-card>
+<absolute-position-behavior for="author" poisition="top">
+  <div class="box">
+    <paper-avatar .label="${this.author}" .src="${this.authorimage}">
+    </paper-avatar>
+    <h5 class="author-name">${this.author}</h5>
+    <div class="author-bio">${this.authorbio}</div>
+  </div>
+</absolute-position-behavior>

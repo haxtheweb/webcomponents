@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/paper-card/paper-card.js";
+import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
 
 /**
  * `simple-blog-card`
@@ -18,6 +19,7 @@ import "@polymer/paper-card/paper-card.js";
  * @demo demo/index.html
  */
 class SimpleBlogCard extends LitElement {
+  
   // render function
   render() {
     return html`
@@ -43,7 +45,12 @@ class SimpleBlogCard extends LitElement {
     </a>
   </div>
   <div class="card-actions">
-    <div class="author-block">
+    <div id="author" class="author-block"
+    @mouseover=${this.showDetails}
+    @focusin=${this.showDetails}
+    @mouseout=${this.hideDetails}
+    @focusout=${this.hideDetails}
+    >
       <paper-avatar
         .label="${this.author}"
         .src="${this.authorimage}">
@@ -60,61 +67,70 @@ class SimpleBlogCard extends LitElement {
       </div>
     </div>
   </div>
-</paper-card>`;
+</paper-card>
+<absolute-position-behavior for="author" poisition="top">
+  <div class="box">
+    <paper-avatar .label="${this.author}" .src="${this.authorimage}">
+    </paper-avatar>
+    <h5 class="author-name">${this.author}</h5>
+    <div class="author-bio">${this.authorbio}</div>
+  </div>
+</absolute-position-behavior>`;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      title: {
-        name: "title",
-        type: "String"
-      },
-      author: {
-        name: "author",
-        type: "String"
-      },
-      authorimage: {
-        name: "authorimage",
-        type: "String"
-      },
-      authorlink: {
-        name: "authorlink",
-        type: "String"
-      },
-      readtime: {
-        name: "readtime",
-        type: "Number"
-      },
-      date: {
-        name: "date",
-        type: "String"
-      },
-      image: {
-        name: "image",
-        type: "String"
-      },
-      link: {
-        name: "link",
-        type: "String"
-      },
-      shadow: {
-        name: "shadow",
-        type: "Number"
-      },
-      size: {
-        name: "size",
-        type: "String"
-      },
-      placeholder: {
-        name: "placeholder",
-        type: "String"
-      },
-      alt: {
-        name: "alt",
-        type: "String"
-      }
-    };
+  "title": {
+    "name": "title",
+    "type": "String"
+  },
+  "author": {
+    "name": "author",
+    "type": "String"
+  },
+  "authorimage": {
+    "name": "authorimage",
+    "type": "String"
+  },
+  "authorlink": {
+    "name": "authorlink",
+    "type": "String"
+  },
+  "readtime": {
+    "name": "readtime",
+    "type": "Number"
+  },
+  "date": {
+    "name": "date",
+    "type": "String"
+  },
+  "image": {
+    "name": "image",
+    "type": "String"
+  },
+  "link": {
+    "name": "link",
+    "type": "String"
+  },
+  "shadow": {
+    "name": "shadow",
+    "type": "Number"
+  },
+  "size": {
+    "name": "size",
+    "type": "String"
+  },
+  "placeholder": {
+    "name": "placeholder",
+    "type": "String"
+  },
+  "alt": {
+    "name": "alt",
+    "type": "String"
+  }
+}
+;
   }
 
   /**
@@ -143,11 +159,6 @@ class SimpleBlogCard extends LitElement {
       }
       .card-large {
         width: 600px;
-      }
-      iron-image {
-        width: 400px;
-        height: 400px;
-        background-color: lightgray;
       }
       a {
         text-decoration: none;
@@ -223,6 +234,15 @@ class SimpleBlogCard extends LitElement {
         padding-right: 0.3em;
         padding-left: 0.3em;
       }
+      .box {
+        outline: 1px solid black;
+      }
+      absolute-position-behavior {
+        display: none;
+      }
+      .show {
+        display: unset;
+      }
     `;
   }
   // life cycle
@@ -244,6 +264,16 @@ class SimpleBlogCard extends LitElement {
     super.disconnectedCallback();
     this.removeEventListener("mouseover", this.hoverState.bind(this));
     this.removeEventListener("mouseout", this.hoverStateOff.bind(this));
+  }
+  showDetails(e) {
+    this.shadowRoot
+      .querySelector("absolute-position-behavior")
+      .classList.add("show");
+  }
+  hideDetails(e) {
+    this.shadowRoot
+      .querySelector("absolute-position-behavior")
+      .classList.remove("show");
   }
   hoverState(e) {
     this.shadow = 1;

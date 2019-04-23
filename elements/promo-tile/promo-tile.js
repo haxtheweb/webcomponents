@@ -144,7 +144,7 @@ let PromoTile = Polymer({
                 target$="[[_urlTarget(url)]]"
               >
                 <paper-button id="learn" no-ink
-                  >Learn More
+                  >[[label]]
                   <iron-icon icon="chevron-right"></iron-icon>
                 </paper-button>
               </a>
@@ -175,6 +175,14 @@ let PromoTile = Polymer({
      * Alt text for image
      */
     alt: {
+      type: String,
+      value: "",
+      reflectToAttribute: true
+    },
+    /**
+     * Label for button
+     */
+    label: {
       type: String,
       value: "",
       reflectToAttribute: true
@@ -293,6 +301,13 @@ let PromoTile = Polymer({
             description: "The link of the tile",
             inputMethod: "textfield",
             icon: "editor:insert-link"
+          },
+          {
+            property: "label",
+            title: "Label",
+            description: "The label for the button",
+            inputMethod: "textfield",
+            icon: "editor:title"
           }
         ],
         advanced: []

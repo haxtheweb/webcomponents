@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/paper-card/paper-card.js";
+import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
 
 /**
  * `simple-blog-card`
@@ -46,11 +47,6 @@ class SimpleBlogCard extends LitElement {
       }
       .card-large {
         width: 600px;
-      }
-      iron-image {
-        width: 400px;
-        height: 400px;
-        background-color: lightgray;
       }
       a {
         text-decoration: none;
@@ -126,6 +122,15 @@ class SimpleBlogCard extends LitElement {
         padding-right: 0.3em;
         padding-left: 0.3em;
       }
+      .box {
+        outline: 1px solid black;
+      }
+      absolute-position-behavior {
+        display: none;
+      }
+      .show {
+        display: unset;
+      }
     `;
   }
   // life cycle
@@ -147,6 +152,16 @@ class SimpleBlogCard extends LitElement {
     super.disconnectedCallback();
     this.removeEventListener("mouseover", this.hoverState.bind(this));
     this.removeEventListener("mouseout", this.hoverStateOff.bind(this));
+  }
+  showDetails(e) {
+    this.shadowRoot
+      .querySelector("absolute-position-behavior")
+      .classList.add("show");
+  }
+  hideDetails(e) {
+    this.shadowRoot
+      .querySelector("absolute-position-behavior")
+      .classList.remove("show");
   }
   hoverState(e) {
     this.shadow = 1;

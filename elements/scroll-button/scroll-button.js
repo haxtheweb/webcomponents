@@ -25,6 +25,8 @@ class ScrollButton extends PolymerElement {
       <style>
         :host {
           display: block;
+          --scroll-button-z-index: 99;
+          z-index: var(--scroll-button-z-index);
         }
 
         :host([hidden]) {
