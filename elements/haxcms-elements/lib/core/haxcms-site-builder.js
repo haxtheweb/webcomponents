@@ -390,7 +390,6 @@ class HAXCMSSiteBuilder extends PolymerElement {
       this.$.activecontent.generateRequest();
     }
   }
-
   /**
    * File changed so let's pull from the location
    */
@@ -399,7 +398,6 @@ class HAXCMSSiteBuilder extends PolymerElement {
       this.$.manifest.generateRequest();
     }
   }
-
   /**
    * notice manifest changes and ensure slot is rebuilt.
    */
@@ -465,7 +463,6 @@ class HAXCMSSiteBuilder extends PolymerElement {
       );
     }
   }
-
   /**
    * notice theme changes and ensure slot is rebuilt.
    */
