@@ -14,51 +14,53 @@ gulp.task("merge", () => {
     .src("./src/" + packageJson.wcfactory.elementName + ".js")
     .pipe(
       replace(
-        /extends\s+PolymerElement\s+{/g,
+        /\/\* REQUIRED FOR TOOLING DO NOT TOUCH \*\//g,
         (classStatement, character, jsFile) => {
-          // extract the templateUrl and styleUrl with regex.  Would prefer to do
-          // this by require'ing lrn-button.js and asking it directly, but without
-          // node.js support for ES modules, we're stuck with this.
-          const oneLineFile = jsFile
-            .slice(character)
-            .split("\n")
-            .join(" ");
-          const [
-            ,
-            templateUrl
-          ] = /templateUrl\([^)]*\)\s*{\s*return\s+"([^"]+)"/.exec(oneLineFile);
-
+          // pull these off the package wcfactory files area
           let html = fs
-            .readFileSync(path.join("./src", templateUrl))
+            .readFileSync(path.join("./", packageJson.wcfactory.files.html))
             .toString()
             .trim();
-
           html = decomment(html);
-          let props = {};
-          // pull properties off of the file location
-          const [
-            ,
-            propertiesUrl
-          ] = /propertiesUrl\([^)]*\)\s*{\s*return\s+"([^"]+)"/.exec(
-            oneLineFile
+          let haxString = "";
+          if (packageJson.wcfactory.useHAX) {
+            let HAXProps = fs.readFileSync(
+              path.join("./", packageJson.wcfactory.files.hax)
+            );
+            haxString = `
+  // haxProperty definition
+  static get haxProperties() {
+    return ${HAXProps};
+  }`;
+          }
+          let props = "{}";
+          props = fs.readFileSync(
+            path.join("./", packageJson.wcfactory.files.properties)
           );
-          props = fs.readFileSync(path.join("./src", propertiesUrl));
-          // pull together styles from url
-          const [
-            ,
-            styleUrl
-          ] = /styleUrl\([^)]*\)\s*{\s*return\s+"([^"]+)"/.exec(oneLineFile);
-          const styleFilePath = path.join("./src", styleUrl);
-          let cssResult = fs.readFileSync(styleFilePath);
+          let cssResult = "<style>";
+          if (
+            packageJson.wcfactory.useSass &&
+            packageJson.wcfactory.files.scss
+          ) {
+            const sass = require("node-sass");
+            cssResult += sass.renderSync({
+              file: path.join("./", packageJson.wcfactory.files.scss)
+            }).css;
+          } else if (packageJson.wcfactory.files.css) {
+            cssResult += fs.readFileSync(
+              path.join("./", packageJson.wcfactory.files.css)
+            );
+          }
+          cssResult += "</style>";
           cssResult = stripCssComments(cssResult).trim();
-          return `${classStatement}
+          return `
+  // render function
   static get template() {
     return html\`
-<style>
 ${cssResult}
-</style>
 ${html}\`;
   }
+${haxString}
   // properties available to the custom element for data binding
   static get properties() {
     return ${props};

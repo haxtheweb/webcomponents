@@ -3,12 +3,11 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/paper-button/paper-button.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
-export { LrnButton };
+
 /**
  * `lrn-button`
  * `Simple button wrapper with a few options`
@@ -21,6 +20,7 @@ export { LrnButton };
  * @demo demo/index.html
  */
 class LrnButton extends PolymerElement {
+  /* REQUIRED FOR TOOLING DO NOT TOUCH */
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -28,52 +28,32 @@ class LrnButton extends PolymerElement {
   static get tag() {
     return "lrn-button";
   }
-  /**
-   * A file that contains the HTML template for the element.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  get templateUrl() {
-    return "lrn-button.html";
-  }
-  /**
-   * A file that contains the properties that will be wired into this element.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  get propertiesUrl() {
-    return "lrn-button-properties.json";
-  }
-  /**
-   * A file that contains the HAX properties that will be wired into this element.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  get HAXPropertiesUrl() {
-    return "lrn-button-hax.json";
-  }
-  /**
-   * A file that contains the css for this element to be mixed into the html block.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  get styleUrl() {
-    return "lrn-button.css";
+  constructor() {
+    super();
+    import("@polymer/paper-button/paper-button.js");
+    import("@polymer/paper-tooltip/paper-tooltip.js");
   }
   /**
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
     super.connectedCallback();
-    this.addEventListener("mousedown", this.tapEventOn);
-    this.addEventListener("mouseover", this.tapEventOn);
-    this.addEventListener("mouseout", this.tapEventOff);
+    afterNextRender(this, function() {
+      this.addEventListener("mousedown", this.tapEventOn);
+      this.addEventListener("mouseover", this.tapEventOn);
+      this.addEventListener("mouseout", this.tapEventOff);
+      this.$.button.addEventListener("focused-changed", this.focusToggle);
+    });
   }
   /**
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    super.disconnectedCallback();
     this.removeEventListener("mousedown", this.tapEventOn);
     this.removeEventListener("mouseover", this.tapEventOn);
     this.removeEventListener("mouseout", this.tapEventOff);
     this.$.button.removeEventListener("focused-changed", this.focusToggle);
+    super.disconnectedCallback();
   }
   /**
    * Go to the href if the button isn't disabled
@@ -83,7 +63,6 @@ class LrnButton extends PolymerElement {
     if (!this.disabled) {
       this.showHref = this.href;
     }
-    this.$.button.addEventListener("focused-changed", this.focusToggle);
   }
 
   /**
@@ -163,3 +142,4 @@ class LrnButton extends PolymerElement {
   }
 }
 window.customElements.define(LrnButton.tag, LrnButton);
+export { LrnButton };
