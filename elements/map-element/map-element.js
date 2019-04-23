@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@lrnwebcomponents/web-map/web-map.js";
@@ -102,11 +101,7 @@ let MapElement = Polymer({
   `,
 
   is: "map-element",
-  behaviors: [
-    HAXBehaviors.PropertiesBehaviors,
-    MaterializeCSSBehaviors.ColorBehaviors,
-    SchemaBehaviors.Schema
-  ],
+  behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
 
   properties: {
     /**

@@ -8,7 +8,6 @@ import "@polymer/paper-card/paper-card.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-menu-button/paper-menu-button.js";
 import "@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
-import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/lrnsys-layout/lrnsys-layout.js";
 import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-drawer.js";

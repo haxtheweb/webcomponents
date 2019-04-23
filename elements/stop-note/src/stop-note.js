@@ -1,168 +1,153 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
-import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "./lib/stop-icon.js";
 /**
  * `stop-note`
  * `A note that directs people to an action item of different warning levels`
- *
  * @demo demo/index.html
- *
  * @microcopy - the mental model for this element
  * -
  */
-let StopNote = Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: block;
-        width: auto;
-        --background-color: #f7f7f7;
-        --accent-color: #d32f2f;
-        margin-bottom: 20px;
-      }
+class StopNote extends SchemaBehaviors(PolymerElement) {
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: block;
+          width: auto;
+          --background-color: #f7f7f7;
+          --accent-color: #d32f2f;
+          margin-bottom: 20px;
+        }
 
-      iron-icon {
-        height: 100px;
-        width: 100px;
-      }
+        iron-icon {
+          height: 100px;
+          width: 100px;
+        }
 
-      :host([icon="stopnoteicons:stop-icon"]) {
-        --accent-color: #d8261c;
-      }
+        :host([icon="stopnoteicons:stop-icon"]) {
+          --accent-color: #d8261c;
+        }
 
-      :host([icon="stopnoteicons:warning-icon"]) {
-        --accent-color: #ffeb3b;
-      }
+        :host([icon="stopnoteicons:warning-icon"]) {
+          --accent-color: #ffeb3b;
+        }
 
-      :host([icon="stopnoteicons:confirm-icon"]) {
-        --accent-color: #81c784;
-      }
+        :host([icon="stopnoteicons:confirm-icon"]) {
+          --accent-color: #81c784;
+        }
 
-      :host([icon="stopnoteicons:book-icon"]) {
-        --accent-color: #21a3db;
-      }
+        :host([icon="stopnoteicons:book-icon"]) {
+          --accent-color: #21a3db;
+        }
 
-      .container {
-        display: flex;
-        width: auto;
-      }
+        .container {
+          display: flex;
+          width: auto;
+        }
 
-      .message_wrap {
-        border-right: 7px solid var(--accent-color);
-        padding: 10px 25px;
-        flex: 1 1 auto;
-        background-color: var(--background-color);
-      }
+        .message_wrap {
+          border-right: 7px solid var(--accent-color);
+          padding: 10px 25px;
+          flex: 1 1 auto;
+          background-color: var(--background-color);
+        }
 
-      .main_message {
-        font-size: 32px;
-        margin-top: 10px;
-      }
+        .main_message {
+          font-size: 32px;
+          margin-top: 10px;
+        }
 
-      .secondary_message {
-        margin-top: 5px;
-        font-size: 19.2px;
-        float: left;
-      }
+        .secondary_message {
+          margin-top: 5px;
+          font-size: 19.2px;
+          float: left;
+        }
 
-      .link a {
-        margin-top: 5px;
-        font-size: 19.2px;
-        float: left;
-        clear: left;
-        text-decoration: none;
-        color: #2196f3;
-      }
+        .link a {
+          margin-top: 5px;
+          font-size: 19.2px;
+          float: left;
+          clear: left;
+          text-decoration: none;
+          color: #2196f3;
+        }
 
-      .link a:hover {
-        color: #1976d2;
-      }
+        .link a:hover {
+          color: #1976d2;
+        }
 
-      .svg {
-        display: flex;
-        justify-content: center;
-      }
+        .svg {
+          display: flex;
+          justify-content: center;
+        }
 
-      .svg_wrap {
-        background-color: var(--accent-color);
-        padding: 5px;
-        width: auto;
-      }
-    </style>
-
-    <div class="container">
-      <div class="svg_wrap">
-        <div class="svg"><iron-icon icon="[[icon]]"></iron-icon></div>
-      </div>
-      <div class="message_wrap">
-        <div class="main_message">[[title]]</div>
-        <div class="secondary_message"><slot name="message"></slot></div>
-        <template is="dom-if" if="[[url]]">
-          <div class="link">
+        .svg_wrap {
+          background-color: var(--accent-color);
+          padding: 5px;
+          width: auto;
+        }
+      </style>
+      <div class="container">
+        <div class="svg_wrap">
+          <div class="svg"><iron-icon icon="[[icon]]"></iron-icon></div>
+        </div>
+        <div class="message_wrap">
+          <div class="main_message">[[title]]</div>
+          <div class="secondary_message"><slot name="message"></slot></div>
+          <div class="link" hidden$="[[!url]]">
             <a href="[[url]]" target\$="[[_urlTarget(url)]]"
               >More Information &gt;</a
             >
           </div>
-        </template>
+        </div>
       </div>
-    </div>
-  `,
-
-  is: "stop-note",
-
-  behaviors: [
-    HAXBehaviors.PropertiesBehaviors,
-    MaterializeCSSBehaviors.ColorBehaviors,
-    SchemaBehaviors.Schema
-  ],
-
-  observers: ["_iconChanged(icon)"],
-
-  properties: {
-    /**
-     * Title Message
-     */
-    title: {
-      type: String,
-      value: "Title",
-      reflectToAttribute: true
-    },
-
-    /**
-     * url to additional resources
-     */
-    url: {
-      type: String,
-      value: null,
-      reflectToAttribute: true
-    },
-
-    /**
-     * Icon selected
-     */
-    icon: {
-      type: String,
-      value: "stopnoteicons:stop-icon",
-      reflectToAttribute: true
-    }
-  },
-
+    `;
+  }
+  static get tag() {
+    return "stop-note";
+  }
+  static get properties() {
+    return {
+      /**
+       * Title Message
+       */
+      title: {
+        type: String,
+        value: "Title",
+        reflectToAttribute: true
+      },
+      /**
+       * url to additional resources
+       */
+      url: {
+        type: String,
+        value: null,
+        reflectToAttribute: true
+      },
+      /**
+       * Icon selected
+       */
+      icon: {
+        type: String,
+        value: "stopnoteicons:stop-icon",
+        observer: "_iconChanged",
+        reflectToAttribute: true
+      }
+    };
+  }
   /**
    * Update styles based on icon selected.
    */
-
-  _iconChanged: function(icon) {
+  _iconChanged(icon) {
     this.updateStyles();
-  },
-
+  }
   /**
    * Evaluates url for correct targeting.
    */
-
-  _urlTarget: function(url) {
+  _urlTarget(url) {
     if (url) {
       const external = this._outsideLink(url);
       if (external) {
@@ -170,26 +155,19 @@ let StopNote = Polymer({
       }
     }
     return false;
-  },
-
+  }
   /**
    * Internal function to check if a url is external
    */
-  _outsideLink: function(url) {
+  _outsideLink(url) {
     if (url.indexOf("http") != 0) return false;
     var loc = location.href,
       path = location.pathname,
       root = loc.substring(0, loc.indexOf(path));
     return url.indexOf(root) != 0;
-  },
-
-  /**
-   * Attached to the DOM, now fire.
-   */
-
-  attached: function() {
-    // Establish hax property binding
-    let props = {
+  }
+  static get haxProperties() {
+    return {
       canScale: true,
       canPosition: true,
       canEditSource: false,
@@ -264,7 +242,15 @@ let StopNote = Polymer({
         advanced: []
       }
     };
-    this.setHaxProperties(props);
   }
-});
+  /**
+   * Attached to the DOM, now fire.
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    this.HAXWiring = new HAXWiring();
+    this.HAXWiring.setup(StopNote.haxProperties, StopNote.tag, this);
+  }
+}
+window.customElements.define(StopNote.tag, StopNote);
 export { StopNote };

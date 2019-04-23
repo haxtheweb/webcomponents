@@ -1,5 +1,4 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@polymer/iron-image/iron-image.js";
@@ -52,11 +51,7 @@ let ImageCompareSlider = Polymer({
   `,
 
   is: "image-compare-slider",
-  behaviors: [
-    HAXBehaviors.PropertiesBehaviors,
-    MaterializeCSSBehaviors.ColorBehaviors,
-    SchemaBehaviors.Schema
-  ],
+  behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
   observers: ["_setStyles(width,height,sliderPercent)"],
 
   properties: {
