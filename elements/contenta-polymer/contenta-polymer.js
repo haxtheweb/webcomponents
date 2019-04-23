@@ -5,7 +5,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-list/iron-list.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/iron-image/iron-image.js";
@@ -36,46 +35,44 @@ A polymer app to talk to Contenta to serve up it's content in a visually awesome
 */
 let ContentaPolymer = Polymer({
   _template: html`
-    <custom-style>
-      <style is="custom-style" include="materializecss-styles">
-        :host {
-          --app-primary-color: #4285f4;
-          --app-secondary-color: black;
+    <style>
+      :host {
+        --app-primary-color: #4285f4;
+        --app-secondary-color: black;
 
-          display: block;
-        }
+        display: block;
+      }
 
-        app-drawer-layout:not([narrow]) [drawer-toggle] {
-          display: none;
-        }
+      app-drawer-layout:not([narrow]) [drawer-toggle] {
+        display: none;
+      }
 
-        app-header {
-          color: #fff;
-          background-color: var(--app-primary-color);
-        }
+      app-header {
+        color: #fff;
+        background-color: var(--app-primary-color);
+      }
 
-        app-header paper-icon-button {
-          --paper-icon-button-ink-color: white;
-        }
+      app-header paper-icon-button {
+        --paper-icon-button-ink-color: white;
+      }
 
-        .drawer-list {
-          margin: 0 20px;
-        }
+      .drawer-list {
+        margin: 0 20px;
+      }
 
-        .drawer-list a {
-          display: block;
-          padding: 0 16px;
-          text-decoration: none;
-          color: var(--app-secondary-color);
-          line-height: 40px;
-        }
+      .drawer-list a {
+        display: block;
+        padding: 0 16px;
+        text-decoration: none;
+        color: var(--app-secondary-color);
+        line-height: 40px;
+      }
 
-        .drawer-list a.iron-selected {
-          color: black;
-          font-weight: bold;
-        }
-      </style>
-    </custom-style>
+      .drawer-list a.iron-selected {
+        color: black;
+        font-weight: bold;
+      }
+    </style>
     <app-location route="{{route}}" url-space-regex="^[[rootPath]]">
     </app-location>
 

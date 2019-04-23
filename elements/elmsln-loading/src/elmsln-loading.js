@@ -1,11 +1,11 @@
 /**
- * Copyright 2018 The Pennsylvania State University
+ * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
-import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `elmsln-loading`
  * A spinner to tell the user that something is loading.
@@ -19,89 +19,110 @@ import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
  * @polymerLegacy
  * @demo demo/index.html
  */
-let ElmslnLoading = Polymer({
-  _template: html`
-    <style is="custom-style" include="materializecss-styles-colors">
-      @-moz-keyframes spin {
-        100% {
-          -moz-transform: rotate(60deg);
-          filter: saturate(10) invert(0.9);
-        }
-      }
-      @-webkit-keyframes spin {
-        100% {
-          -webkit-transform: rotate(60deg);
-          filter: saturate(10) invert(0.9);
-        }
-      }
-      @keyframes spin {
-        100% {
-          -webkit-transform: rotate(60deg);
-          transform: rotate(60deg);
-        }
-      }
-      :host {
-        display: block;
-        -webkit-animation: spin 1.25s ease-out infinite;
-        -moz-animation: spin 1.25s ease-out infinite;
-        animation: spin 1.25s ease-out infinite;
-      }
-      :host([size="tiny"]) {
-        width: 16px;
-        height: 16px;
-        -webkit-animation: spin 0.75s ease-out infinite;
-        -moz-animation: spin 0.75s ease-out infinite;
-        animation: spin 0.75s ease-out infinite;
-      }
-      :host([size="small"]) {
-        width: 32px;
-        height: 32px;
-        -webkit-animation: spin 1s ease-out infinite;
-        -moz-animation: spin 1s ease-out infinite;
-        animation: spin 1s ease-out infinite;
-      }
-      :host([size="medium"]) {
-        width: 64px;
-        height: 64px;
-        -webkit-animation: spin 1.25s ease-out infinite;
-        -moz-animation: spin 1.25s ease-out infinite;
-        animation: spin 1.25s ease-out infinite;
-      }
-      :host([size="large"]) {
-        width: 80px;
-        height: 80px;
-        -webkit-animation: spin 1.25s ease-out infinite;
-        -moz-animation: spin 1.25s ease-out infinite;
-        animation: spin 1.25s ease-out infinite;
-      }
-      :host([size="epic"]) {
-        width: 400px;
-        height: 400px;
-        -webkit-animation: spin 2s ease-out infinite;
-        -moz-animation: spin 2s ease-out infinite;
-        animation: spin 2s ease-out infinite;
-      }
-    </style>
-    <iron-icon icon="lrn:network" class$="[[color]]"></iron-icon>
-  `,
-
-  is: "elmsln-loading",
-  properties: {
-    /**
-     * materialize class names for color
-     */
-    color: {
-      type: String,
-      reflectToAttribute: true
-    },
-    /**
-     * tiny, small, medium, large, epic sizing.
-     */
-    size: {
-      type: String,
-      reflectToAttribute: true,
-      value: "medium"
-    }
+class ElmslnLoading extends PolymerElement {
+  static get tag() {
+    return "elmsln-loading";
   }
-});
+  static get properties() {
+    return {
+      /**
+       * materialize class names for color
+       */
+      color: {
+        type: String
+      },
+      /**
+       * Class for the color
+       */
+      hexColor: {
+        type: String,
+        computed: "_getHexColor(color)"
+      },
+      /**
+       * tiny, small, medium, large, epic sizing.
+       */
+      size: {
+        type: String,
+        reflectToAttribute: true,
+        value: "medium"
+      }
+    };
+  }
+  static get template() {
+    return html`
+      <style include="simple-colors">
+        @-moz-keyframes spin {
+          100% {
+            -moz-transform: rotate(60deg);
+            filter: saturate(10) invert(0.9);
+          }
+        }
+        @-webkit-keyframes spin {
+          100% {
+            -webkit-transform: rotate(60deg);
+            filter: saturate(10) invert(0.9);
+          }
+        }
+        @keyframes spin {
+          100% {
+            -webkit-transform: rotate(60deg);
+            transform: rotate(60deg);
+          }
+        }
+        :host iron-icon {
+          display: block;
+          -webkit-animation: spin 1.25s ease-out infinite;
+          -moz-animation: spin 1.25s ease-out infinite;
+          animation: spin 1.25s ease-out infinite;
+        }
+        :host([size="tiny"]) iron-icon {
+          width: 16px;
+          height: 16px;
+          -webkit-animation: spin 0.75s ease-out infinite;
+          -moz-animation: spin 0.75s ease-out infinite;
+          animation: spin 0.75s ease-out infinite;
+        }
+        :host([size="small"]) iron-icon {
+          width: 32px;
+          height: 32px;
+          -webkit-animation: spin 1s ease-out infinite;
+          -moz-animation: spin 1s ease-out infinite;
+          animation: spin 1s ease-out infinite;
+        }
+        :host([size="medium"]) iron-icon {
+          width: 64px;
+          height: 64px;
+          -webkit-animation: spin 1.25s ease-out infinite;
+          -moz-animation: spin 1.25s ease-out infinite;
+          animation: spin 1.25s ease-out infinite;
+        }
+        :host([size="large"]) iron-icon {
+          width: 80px;
+          height: 80px;
+          -webkit-animation: spin 1.25s ease-out infinite;
+          -moz-animation: spin 1.25s ease-out infinite;
+          animation: spin 1.25s ease-out infinite;
+        }
+        :host([size="epic"]) iron-icon {
+          width: 400px;
+          height: 400px;
+          -webkit-animation: spin 2s ease-out infinite;
+          -moz-animation: spin 2s ease-out infinite;
+          animation: spin 2s ease-out infinite;
+        }
+      </style>
+      <iron-icon icon="lrn:network" style$="color:[[hexColor]]"></iron-icon>
+    `;
+  }
+
+  _getHexColor(color) {
+    let name = color.replace("-text", "");
+    let tmp = new SimpleColors();
+    if (tmp.colors[name]) {
+      return tmp.colors[name][6];
+    }
+    return "#000000";
+  }
+}
+window.customElements.define(ElmslnLoading.tag, ElmslnLoading);
 export { ElmslnLoading };
