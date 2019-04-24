@@ -26,13 +26,12 @@
         .src="${this.authorimage}">
       </paper-avatar>
       <div class="author-info">
-        <a href="${this.authorlink}">${this.author}</a>
+        <a .href="${this.authorlink}">${this.author}</a>
         <div class="post-details">
-          <local-time datetime="${this.date}" month="short" day="numeric">
-            ${this.date}
-          </local-time>
+          <simple-datetime format="M jS" .timestamp="${this.timestamp}" unix>
+          </simple-datetime>
           <span class="dot">&#183</span>
-          <span class="reading-time" title="${this.readtime} min read"></span>
+          <span class="reading-time" .title="${this.readtime} min read"></span>
         </div>
       </div>
     </div>

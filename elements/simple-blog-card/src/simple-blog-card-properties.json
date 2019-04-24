@@ -19,9 +19,9 @@
     "name": "readtime",
     "type": "Number"
   },
-  "date": {
-    "name": "date",
-    "type": "String"
+  "timestamp": {
+    "name": "timestamp",
+    "type": "Number"
   },
   "image": {
     "name": "image",

@@ -38,14 +38,19 @@ class SimpleBlogCard extends LitElement {
       :host([hidden]) {
         display: none;
       }
-
+      .card-micro {
+        width: 100px;
+      }
       .card-small {
         width: 200px;
       }
       .card-medium {
-        width: 400px;
+        width: 300px;
       }
       .card-large {
+        width: 400px;
+      }
+      .card-xlarge {
         width: 600px;
       }
       a {
@@ -59,9 +64,42 @@ class SimpleBlogCard extends LitElement {
         color: var(--simple-blog-card-text, rgba(0, 0, 0, 0.54));
         line-height: 1.2;
         font-size: 20px;
+        word-break: all;
       }
       paper-card:not(:defined) {
         display: none;
+      }
+      paper-card {
+        --iron-image-height: 250px;
+      }
+      .card-content {
+        height: 125px;
+        overflow: hidden;
+      }
+      .card-micro {
+        --iron-image-height: 50px;
+      }
+      .card-small {
+        --iron-image-height: 100px;
+      }
+      .card-medium {
+        --iron-image-height: 150px;
+      }
+      .card-large {
+        --iron-image-height: 200px;
+        height: 100px;
+      }
+      .card-micro .card-content {
+        height: 25px;
+      }
+      .card-small .card-content {
+        height: 50px;
+      }
+      .card-medium .card-content {
+        height: 75px;
+      }
+      .card-large .card-content {
+        height: 100px;
       }
       paper-card h3 {
         font-size: 26px;
@@ -143,8 +181,22 @@ class SimpleBlogCard extends LitElement {
     import("@lrnwebcomponents/paper-avatar/paper-avatar.js");
     import("time-elements/dist/time-elements.js");
   }
+  update(changedProperties) {
+    super.update();
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "image") {
+        // fallback to placeholder if set to empty
+        if (!this.image) {
+          this.image = this.placeholder;
+        }
+      }
+    });
+  }
   connectedCallback() {
     super.connectedCallback();
+    if (!this.image) {
+      this.image = this.placeholder;
+    }
     this.addEventListener("mouseover", this.hoverState.bind(this));
     this.addEventListener("mouseout", this.hoverStateOff.bind(this));
   }
@@ -154,14 +206,14 @@ class SimpleBlogCard extends LitElement {
     this.removeEventListener("mouseout", this.hoverStateOff.bind(this));
   }
   showDetails(e) {
-    this.shadowRoot
+    /*this.shadowRoot
       .querySelector("absolute-position-behavior")
-      .classList.add("show");
+      .classList.add("show");*/
   }
   hideDetails(e) {
-    this.shadowRoot
+    /*this.shadowRoot
       .querySelector("absolute-position-behavior")
-      .classList.remove("show");
+      .classList.remove("show");*/
   }
   hoverState(e) {
     this.shadow = 1;

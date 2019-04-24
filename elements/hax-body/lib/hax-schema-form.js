@@ -4,16 +4,10 @@ import "@polymer/paper-card/paper-card.js";
 import "@polymer/paper-tabs/paper-tabs.js";
 import "@polymer/paper-tabs/paper-tab.js";
 import "@polymer/paper-button/paper-button.js";
-import "@polymer/paper-input/paper-textarea.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";
 import "@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js";
 import "@lrnwebcomponents/code-editor/code-editor.js";
-import "app-datepicker/app-datepicker.js";
-import "@lrnwebcomponents/simple-picker/simple-picker.js";
-import "@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js";
-import "@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js";
-import "@lrnwebcomponents/paper-input-flagged/paper-input-flagged.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./hax-shared-styles.js";
 /**
@@ -183,7 +177,16 @@ Polymer({
       }
     }
   },
-
+  attached: function() {
+    afterNextRender(this, function() {
+      import("@polymer/paper-input/paper-textarea.js");
+      import("app-datepicker/app-datepicker.js");
+      import("@lrnwebcomponents/simple-picker/simple-picker.js");
+      import("@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js");
+      import("@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js");
+      import("@lrnwebcomponents/paper-input-flagged/paper-input-flagged.js");
+    });
+  },
   /**
    * Compute form key to use.
    */
