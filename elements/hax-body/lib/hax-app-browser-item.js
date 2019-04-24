@@ -1,6 +1,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./hax-shared-styles.js";
 
 /**
@@ -47,6 +47,13 @@ class HAXAppBrowserItem extends PolymerElement {
         type: String
       },
       /**
+       * Class for the color
+       */
+      hexColor: {
+        type: String,
+        computed: "_getHexColor(color)"
+      },
+      /**
        * Author related to this app
        */
       author: {
@@ -88,7 +95,7 @@ class HAXAppBrowserItem extends PolymerElement {
   }
   static get template() {
     return html`
-      <style include="simple-colors hax-shared-styles">
+      <style include="hax-shared-styles">
         :host {
           display: block;
         }
@@ -133,7 +140,7 @@ class HAXAppBrowserItem extends PolymerElement {
         paper-button iron-icon {
           height: 32px;
           width: 32px;
-          color: var(--simple-colors-default-theme-grey-12);
+          color: var(--simple-colors-default-theme-grey-1);
           display: inline-block;
         }
         .item-title {
@@ -158,7 +165,7 @@ class HAXAppBrowserItem extends PolymerElement {
       <paper-button
         data-voicecommand\$="select [[title]]"
         title="[[title]]"
-        class$="simple-colors-default-theme-[[color]]-4"
+        style$="background-color:[[hexColor]];"
       >
         <div class="button-inner">
           <iron-icon icon="[[icon]]" hidden\$="[[!icon]]"></iron-icon>
@@ -205,7 +212,14 @@ class HAXAppBrowserItem extends PolymerElement {
   tapEventOff(e) {
     this.elevation = 1;
   }
-
+  _getHexColor(color) {
+    let name = color.replace("-text", "");
+    let tmp = new SimpleColors();
+    if (tmp.colors[name]) {
+      return tmp.colors[name][6];
+    }
+    return "#000000";
+  }
   /**
    * Fire an event that includes the eventName of what was just pressed.
    */

@@ -1,13 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@polymer/paper-dialog/paper-dialog.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/paper-input/paper-input.js";
-import "@polymer/paper-button/paper-button.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@lrnwebcomponents/dl-behavior/dl-behavior.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/code-editor/code-editor.js";
-import "@lrnwebcomponents/hexagon-loader/hexagon-loader.js";
 import "./hax-shared-styles.js";
 /**
 `hax-export-dialog`
@@ -20,7 +13,7 @@ Export dialog with all export options and settings provided.
 */
 Polymer({
   _template: html`
-    <style include="simple-colors hax-shared-styles">
+    <style include="hax-shared-styles">
       :host {
         display: block;
       }
@@ -159,21 +152,39 @@ Polymer({
    */
   attached: function() {
     // fire an event that this is the manager
-    this.fire("hax-register-export", this);
-    // add event listeners
-    document.body.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
+    this.dispatchEvent(
+      new CustomEvent("hax-register-export", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
     );
-    this.$.download.addEventListener("tap", this.download.bind(this));
-    this.$.downloadfull.addEventListener("tap", this.downloadfull.bind(this));
-    this.$.import.addEventListener("tap", this.importContent.bind(this));
-    this.$.copy.addEventListener("tap", this.selectBody.bind(this));
-    this.$.closedialog.addEventListener("tap", this.close.bind(this));
-    this.$.elementexport.addEventListener(
-      "tap",
-      this.htmlToHaxElements.bind(this)
-    );
+    afterNextRender(this, function() {
+      // add event listeners
+      document.body.addEventListener(
+        "hax-store-property-updated",
+        this._haxStorePropertyUpdated.bind(this)
+      );
+      this.shadowRoot
+        .querySelector("#download")
+        .addEventListener("tap", this.download.bind(this));
+      this.shadowRoot
+        .querySelector("#downloadfull")
+        .addEventListener("tap", this.downloadfull.bind(this));
+      this.shadowRoot
+        .querySelector("#import")
+        .addEventListener("tap", this.importContent.bind(this));
+      this.shadowRoot
+        .querySelector("#copy")
+        .addEventListener("tap", this.selectBody.bind(this));
+      this.shadowRoot
+        .querySelector("#closedialog")
+        .addEventListener("tap", this.close.bind(this));
+      this.shadowRoot
+        .querySelector("#elementexport")
+        .addEventListener("tap", this.htmlToHaxElements.bind(this));
+    });
   },
   /**
    * Detached life cycle
@@ -183,18 +194,24 @@ Polymer({
       "hax-store-property-updated",
       this._haxStorePropertyUpdated.bind(this)
     );
-    this.$.download.removeEventListener("tap", this.download.bind(this));
-    this.$.downloadfull.removeEventListener(
-      "tap",
-      this.downloadfull.bind(this)
-    );
-    this.$.import.removeEventListener("tap", this.importContent.bind(this));
-    this.$.copy.removeEventListener("tap", this.selectBody.bind(this));
-    this.$.closedialog.removeEventListener("tap", this.close.bind(this));
-    this.$.elementexport.removeEventListener(
-      "tap",
-      this.htmlToHaxElements.bind(this)
-    );
+    this.shadowRoot
+      .querySelector("#download")
+      .removeEventListener("tap", this.download.bind(this));
+    this.shadowRoot
+      .querySelector("#downloadfull")
+      .removeEventListener("tap", this.downloadfull.bind(this));
+    this.shadowRoot
+      .querySelector("#import")
+      .removeEventListener("tap", this.importContent.bind(this));
+    this.shadowRoot
+      .querySelector("#copy")
+      .removeEventListener("tap", this.selectBody.bind(this));
+    this.shadowRoot
+      .querySelector("#closedialog")
+      .removeEventListener("tap", this.close.bind(this));
+    this.shadowRoot
+      .querySelector("#elementexport")
+      .removeEventListener("tap", this.htmlToHaxElements.bind(this));
   },
 
   /**
@@ -236,7 +253,7 @@ Polymer({
    */
   importContent: function(e) {
     // import contents of this text area into the activeHaxBody
-    const htmlBody = this.$.textarea.value;
+    const htmlBody = this.shadowRoot.querySelector("#textarea").value;
     window.HaxStore.toast("Content updated");
     return window.HaxStore.instance.activeHaxBody.importContent(htmlBody);
   },
@@ -245,12 +262,13 @@ Polymer({
    * selectBody
    */
   selectBody: function(e) {
-    this.$.hiddentextarea.value = this.$.textarea.value;
-    this.$.hiddentextarea.removeAttribute("hidden");
-    this.$.hiddentextarea.focus();
-    this.$.hiddentextarea.select();
+    let hiddenarea = this.shadowRoot.querySelector("#hiddentextarea");
+    hiddenarea.value = this.shadowRoot.querySelector("#textarea").value;
+    hiddenarea.removeAttribute("hidden");
+    hiddenarea.focus();
+    hiddenarea.select();
     document.execCommand("copy");
-    this.$.hiddentextarea.setAttribute("hidden", "hidden");
+    hiddenarea.setAttribute("hidden", "hidden");
     window.HaxStore.toast("Copied HTML content");
   },
 
@@ -258,16 +276,19 @@ Polymer({
    * HTML to HAX Elements
    */
   htmlToHaxElements: function(e) {
-    let elements = window.HaxStore.htmlToHaxElements(this.$.textarea.value);
+    let elements = window.HaxStore.htmlToHaxElements(
+      this.shadowRoot.querySelector("#textarea").value
+    );
     var str = JSON.stringify(elements, null, 2);
-    let val = this.$.textarea.value;
-    this.$.hiddentextarea.removeAttribute("hidden");
-    this.$.hiddentextarea.value = str;
-    this.$.hiddentextarea.focus();
-    this.$.hiddentextarea.select();
+    let val = this.shadowRoot.querySelector("#textarea").value;
+    let hiddenarea = this.shadowRoot.querySelector("#hiddentextarea");
+    hiddenarea.removeAttribute("hidden");
+    hiddenarea.value = str;
+    hiddenarea.focus();
+    hiddenarea.select();
     document.execCommand("copy");
-    this.$.hiddentextarea.value = val;
-    this.$.hiddentextarea.setAttribute("hidden", "hidden");
+    hiddenarea.value = val;
+    hiddenarea.setAttribute("hidden", "hidden");
     window.HaxStore.toast("Copied hax elements to clipboard");
   },
 
@@ -322,26 +343,41 @@ Polymer({
    * Toggle ourselves.
    */
   toggleDialog: function() {
-    if (this.$.dialog.opened) {
+    if (this.shadowRoot.querySelector("#dialog").opened) {
       this.close();
     } else {
-      this.$.textarea.editorValue = this.contentToFile(false);
+      this.shadowRoot.querySelector(
+        "#textarea"
+      ).editorValue = this.contentToFile(false);
       window.HaxStore.instance.closeAllDrawers(this);
     }
   },
-
+  created: function() {
+    import("@polymer/paper-dialog/paper-dialog.js");
+  },
   /**
    * open the dialog
    */
   open: function() {
-    this.$.dialog.open();
-    this.$.buttons.style.display = "none";
-    this.$.loading.setAttribute("loading", "loading");
-    this.$.wrapper.appendChild(this.$.textarea);
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/paper-input/paper-input.js");
+    import("@polymer/paper-button/paper-button.js");
+    import("@lrnwebcomponents/code-editor/code-editor.js");
+    import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
+
+    this.shadowRoot.querySelector("#dialog").open();
+    this.shadowRoot.querySelector("#buttons").style.display = "none";
+    this.shadowRoot
+      .querySelector("#loading")
+      .setAttribute("loading", "loading");
+    this.shadowRoot
+      .querySelector("#wrapper")
+      .appendChild(this.shadowRoot.querySelector("#textarea"));
     // silly but we need the code editor to figure itself out real quick as to sizing
     setTimeout(() => {
-      this.$.loading.removeAttribute("loading");
-      this.$.buttons.style.display = "unset";
+      this.shadowRoot.querySelector("#loading").removeAttribute("loading");
+      this.shadowRoot.querySelector("#buttons").style.display = "unset";
     }, 800);
   },
 
@@ -349,6 +385,6 @@ Polymer({
    * close the dialog
    */
   close: function() {
-    this.$.dialog.close();
+    this.shadowRoot.querySelector("#dialog").close();
   }
 });
