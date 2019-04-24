@@ -65,6 +65,15 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
     import("@polymer/app-layout/app-toolbar/app-toolbar.js");
     import("@lrnwebcomponents/social-share-link/social-share-link.js");
   }
+  _showImage(image) {
+    if (image) {
+      return image;
+    }
+    if (this.image) {
+      return this.image;
+    }
+    return false;
+  }
   /**
    * life cycle, element is afixed to the DOM
    */

@@ -31,7 +31,7 @@
             title="[[post.title]]"
             size="large"
             link="[[post.location]]"
-            image="[[post.metadata.fields.images.0.src]]"
+            image="[[_showImage(post.metadata.fields.images.0.src)]]"
             author="[[author.name]]"
             timestamp="[[post.created]]"
             readtime="5"
@@ -48,7 +48,7 @@
           <simple-blog-card 
           placeholder="[[image]]"
           alt="[[post.metadata.fields.images.0.alt]]" color="[[color]]" title="[[post.title]]" size="medium"
-            link="[[post.location]]" image="[[post.metadata.fields.images.0.src]]" author="[[author.name]]"
+            link="[[post.location]]" image="[[_showImage(post.metadata.fields.images.0.src)]]" author="[[author.name]]"
             timestamp="[[post.created]]" readtime="5" authorimage="[[author.image]]" authorlink="[[author.socialLink]]">
             [[post.description]]
           </simple-blog-card>
@@ -65,7 +65,7 @@
       <iron-list items="[[__followUpPosts]]" as="post" grid mutable-data>
         <template>
           <simple-blog-card alt="[[post.metadata.fields.images.0.alt]]" color="[[color]]" title="[[post.title]]" size="small"
-            link="[[post.location]]" image="[[post.metadata.fields.images.0.src]]" author="[[author.name]]"
+            link="[[post.location]]" image="[[_showImage(post.metadata.fields.images.0.src)]]" author="[[author.name]]"
             placeholder="[[image]]"
             timestamp="[[post.created]]" readtime="5" authorimage="[[author.image]]" authorlink="[[author.socialLink]]">
             [[post.description]]

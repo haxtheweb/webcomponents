@@ -281,7 +281,7 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
                   title="[[post.title]]"
                   size="large"
                   link="[[post.location]]"
-                  image="[[post.metadata.fields.images.0.src]]"
+                  image="[[_showImage(post.metadata.fields.images.0.src)]]"
                   author="[[author.name]]"
                   timestamp="[[post.created]]"
                   readtime="5"
@@ -308,7 +308,7 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
                   title="[[post.title]]"
                   size="medium"
                   link="[[post.location]]"
-                  image="[[post.metadata.fields.images.0.src]]"
+                  image="[[_showImage(post.metadata.fields.images.0.src)]]"
                   author="[[author.name]]"
                   timestamp="[[post.created]]"
                   readtime="5"
@@ -340,7 +340,7 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
                   title="[[post.title]]"
                   size="small"
                   link="[[post.location]]"
-                  image="[[post.metadata.fields.images.0.src]]"
+                  image="[[_showImage(post.metadata.fields.images.0.src)]]"
                   author="[[author.name]]"
                   placeholder="[[image]]"
                   timestamp="[[post.created]]"
@@ -458,6 +458,15 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
     import("@polymer/app-layout/app-header/app-header.js");
     import("@polymer/app-layout/app-toolbar/app-toolbar.js");
     import("@lrnwebcomponents/social-share-link/social-share-link.js");
+  }
+  _showImage(image) {
+    if (image) {
+      return image;
+    }
+    if (this.image) {
+      return this.image;
+    }
+    return false;
   }
   /**
    * life cycle, element is afixed to the DOM
