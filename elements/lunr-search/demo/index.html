@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>LunrSearch: lunr-search Demo</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/polymer/lib/elements/dom-bind.js';
+      import "@polymer/iron-list/iron-list.js";
+      import '../lunr-search.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic lunr-search demo</h3>
+        <dom-bind>
+          <template>
+          <lunr-search
+          data-source="documents.json"
+          results="{{__results}}"
+          log></lunr-search>
+          <iron-list items="[[__results]]">
+            <template>
+              <div style="border: 1px solid black;">
+                <div>[[index]]. [[item.title]]</div>
+                <div>[[item.text]]</div>
+              </div>
+            </template>
+          </iron-list>
+          </template>
+        </dom-bind>
+    </div>
+  </body>
+</html>
