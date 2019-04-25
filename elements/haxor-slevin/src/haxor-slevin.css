@@ -51,7 +51,7 @@
   padding-right: 20px;
   margin: 0 auto;
 }
-#contentcontainer {
+.contentcontainer-wrapper {
   max-width: 740px;
   margin: 0 auto;
   box-sizing: border-box;
@@ -59,9 +59,17 @@
   padding-right: 20px;
 }
 simple-blog-card {
-  padding: 16px;
+  padding: 8px;
   min-height: 100px;
   min-width: 100px;
+}
+.simple-blog-card-wrapper {
+  margin: 0 auto;
+  width: 100%;
+}
+.evenly {
+  display: flex;
+  justify-content: space-evenly;
 }
 simple-blog-card[size="micro"] {
   padding: 4px;
@@ -69,7 +77,7 @@ simple-blog-card[size="micro"] {
 iron-pages {
   padding-top: 64px;
 }
-iron-list {
+dom-repeat {
   padding-bottom: 16px;
   min-height: 300px;
 }

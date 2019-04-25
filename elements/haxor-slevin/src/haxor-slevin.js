@@ -10,7 +10,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js";
 import "@polymer/iron-pages/iron-pages.js";
 import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-list/iron-list.js";
+import "@polymer/polymer/lib/elements/dom-repeat.js";
 
 /**
  * `haxor-slevin`

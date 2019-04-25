@@ -31,7 +31,7 @@ class SimpleBlogCard extends LitElement {
   static get styles() {
     return css`
       :host {
-        display: inline-flex;
+        display: inline-block;
         --simple-blog-card-author-link: #03a87c;
       }
 

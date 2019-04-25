@@ -10,7 +10,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js";
 import "@polymer/iron-pages/iron-pages.js";
 import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-list/iron-list.js";
+import "@polymer/polymer/lib/elements/dom-repeat.js";
 
 /**
  * `haxor-slevin`
@@ -79,7 +79,7 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
           padding-right: 20px;
           margin: 0 auto;
         }
-        #contentcontainer {
+        .contentcontainer-wrapper {
           max-width: 740px;
           margin: 0 auto;
           box-sizing: border-box;
@@ -87,9 +87,17 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
           padding-right: 20px;
         }
         simple-blog-card {
-          padding: 16px;
+          padding: 8px;
           min-height: 100px;
           min-width: 100px;
+        }
+        .simple-blog-card-wrapper {
+          margin: 0 auto;
+          width: 100%;
+        }
+        .evenly {
+          display: flex;
+          justify-content: space-evenly;
         }
         simple-blog-card[size="micro"] {
           padding: 4px;
@@ -97,7 +105,7 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
         iron-pages {
           padding-top: 64px;
         }
-        iron-list {
+        dom-repeat {
           padding-bottom: 16px;
           min-height: 300px;
         }
@@ -273,58 +281,64 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
               limit="2"
               sort='{"created": "ASC"}'
             ></site-query>
-            <iron-list items="[[__mainPosts]]" as="post" grid mutable-data>
-              <template>
-                <simple-blog-card
-                  alt="[[post.metadata.fields.images.0.alt]]"
-                  color="[[color]]"
-                  title="[[post.title]]"
-                  size="large"
-                  link="[[post.location]]"
-                  image="[[_showImage(post.metadata.fields.images.0.src)]]"
-                  author="[[author.name]]"
-                  timestamp="[[post.created]]"
-                  readtime="5"
-                  authorimage="[[author.image]]"
-                  placeholder="[[image]]"
-                  authorlink="[[author.socialLink]]"
-                >
-                  [[post.description]]
-                </simple-blog-card>
-              </template>
-            </iron-list>
+            <div class="simple-blog-card-wrapper evenly">
+              <dom-repeat items="[[__mainPosts]]" as="post" mutable-data>
+                <template>
+                  <simple-blog-card
+                    alt="[[post.metadata.fields.images.0.alt]]"
+                    color="[[color]]"
+                    title="[[post.title]]"
+                    size="large"
+                    link="[[post.location]]"
+                    image="[[_showImage(post.metadata.fields.images.0.src)]]"
+                    author="[[author.name]]"
+                    timestamp="[[post.created]]"
+                    readtime="[[post.metadata.readtime]]"
+                    authorimage="[[author.image]]"
+                    placeholder="[[image]]"
+                    authorlink="[[author.socialLink]]"
+                  >
+                    [[post.description]]
+                  </simple-blog-card>
+                </template>
+              </dom-repeat>
+            </div>
             <site-query
               result="{{__posts}}"
               start-index="2"
               limit="6"
               sort='{"created": "ASC"}'
             ></site-query>
-            <iron-list items="[[__posts]]" as="post" grid mutable-data>
-              <template>
-                <simple-blog-card
-                  placeholder="[[image]]"
-                  alt="[[post.metadata.fields.images.0.alt]]"
-                  color="[[color]]"
-                  title="[[post.title]]"
-                  size="medium"
-                  link="[[post.location]]"
-                  image="[[_showImage(post.metadata.fields.images.0.src)]]"
-                  author="[[author.name]]"
-                  timestamp="[[post.created]]"
-                  readtime="5"
-                  authorimage="[[author.image]]"
-                  authorlink="[[author.socialLink]]"
-                >
-                  [[post.description]]
-                </simple-blog-card>
-              </template>
-            </iron-list>
+            <div class="simple-blog-card-wrapper">
+              <dom-repeat items="[[__posts]]" as="post" mutable-data>
+                <template>
+                  <simple-blog-card
+                    placeholder="[[image]]"
+                    alt="[[post.metadata.fields.images.0.alt]]"
+                    color="[[color]]"
+                    title="[[post.title]]"
+                    size="medium"
+                    link="[[post.location]]"
+                    image="[[_showImage(post.metadata.fields.images.0.src)]]"
+                    author="[[author.name]]"
+                    timestamp="[[post.created]]"
+                    readtime="[[post.metadata.readtime]]"
+                    authorimage="[[author.image]]"
+                    authorlink="[[author.socialLink]]"
+                  >
+                    [[post.description]]
+                  </simple-blog-card>
+                </template>
+              </dom-repeat>
+            </div>
           </div>
-          <div id="contentcontainer">
-            <site-active-title></site-active-title>
-            <h3 class="subtitle" hidden$="[[!subtitle]]">[[subtitle]]</h3>
-            <div id="slot">
-              <slot></slot>
+          <div class="contentcontainer-wrapper">
+            <div id="contentcontainer">
+              <site-active-title></site-active-title>
+              <h3 class="subtitle" hidden$="[[!subtitle]]">[[subtitle]]</h3>
+              <div id="slot">
+                <slot></slot>
+              </div>
             </div>
             <site-query
               result="{{__followUpPosts}}"
@@ -332,26 +346,28 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
               start-index="[[activeManifestIndexCounter]]"
               sort='{"created": "ASC"}'
             ></site-query>
-            <iron-list items="[[__followUpPosts]]" as="post" grid mutable-data>
-              <template>
-                <simple-blog-card
-                  alt="[[post.metadata.fields.images.0.alt]]"
-                  color="[[color]]"
-                  title="[[post.title]]"
-                  size="small"
-                  link="[[post.location]]"
-                  image="[[_showImage(post.metadata.fields.images.0.src)]]"
-                  author="[[author.name]]"
-                  placeholder="[[image]]"
-                  timestamp="[[post.created]]"
-                  readtime="5"
-                  authorimage="[[author.image]]"
-                  authorlink="[[author.socialLink]]"
-                >
-                  [[post.description]]
-                </simple-blog-card>
-              </template>
-            </iron-list>
+            <div class="simple-blog-card-wrapper">
+              <dom-repeat items="[[__followUpPosts]]" as="post" mutable-data>
+                <template>
+                  <simple-blog-card
+                    alt="[[post.metadata.fields.images.0.alt]]"
+                    color="[[color]]"
+                    title="[[post.title]]"
+                    size="small"
+                    link="[[post.location]]"
+                    image="[[_showImage(post.metadata.fields.images.0.src)]]"
+                    author="[[author.name]]"
+                    placeholder="[[image]]"
+                    timestamp="[[post.created]]"
+                    readtime="[[post.metadata.readtime]]"
+                    authorimage="[[author.image]]"
+                    authorlink="[[author.socialLink]]"
+                  >
+                    [[post.description]]
+                  </simple-blog-card>
+                </template>
+              </dom-repeat>
+            </div>
             <div class="social-float hide-small">
               <ul>
                 <li>
