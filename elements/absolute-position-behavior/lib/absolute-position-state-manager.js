@@ -236,8 +236,8 @@ class AbsolutePositionStateManager extends PolymerElement {
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    super.disconnectedCallback();
     this.removeEventListeners();
+    super.disconnectedCallback();
   }
 }
 window.customElements.define(

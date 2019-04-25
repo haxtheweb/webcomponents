@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/paper-toggle-button/paper-toggle-button.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/paper-tabs/paper-tabs.js";

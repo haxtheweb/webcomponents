@@ -203,6 +203,10 @@ site-rss-button {
     padding-left: 8px;
     padding-right: 8px;
   }
+  .evenly {
+    display: unset;
+    justify-content: unset;
+  }
   simple-blog-card {
     padding: 0;
   }
