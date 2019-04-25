@@ -498,6 +498,7 @@ Polymer({
     this.notifyPath("value.*");
   },
   _buildForm: function() {
+    let first = null;
     this._schemaProperties.forEach(property => {
       var el = this.create(property.component.name, {
         label: property.label,
@@ -506,6 +507,7 @@ Polymer({
         language: this.language,
         resources: this.resources
       });
+      if (first === null) first = el;
       if (property.component.name === "paper-input") {
         el.style["background-color"] = "transparent";
         el.style["width"] = "100%";
@@ -542,6 +544,17 @@ Polymer({
         }
       }
     });
+    this.dispatchEvent(
+      new CustomEvent("form-changed", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: {
+          form: this,
+          firstField: first
+        }
+      })
+    );
   },
   _removePropertyEl: function(el) {
     if (typeof el.schemaProperty !== typeof undefined) {

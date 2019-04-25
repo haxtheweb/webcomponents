@@ -21,7 +21,7 @@ class RichTextEditorPicker extends RichTextEditorButton {
   // render function
   static get template() {
     return html`
-      <style include="rich-text-editor-styles"></style>
+      <style include="rich-text-editor-toolbar-styles"></style>
       <simple-picker
         id="button"
         class="rtebutton"

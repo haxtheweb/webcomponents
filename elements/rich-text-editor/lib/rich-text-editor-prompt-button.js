@@ -5,7 +5,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/iron-icons/iron-icons.js";
-import "./rich-text-editor-styles.js";
+import "./rich-text-editor-toolbar-styles.js";
 import { RichTextEditorButton } from "./rich-text-editor-button.js";
 import "./rich-text-editor-prompt.js";
 /**
@@ -95,7 +95,7 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
         parent.insertBefore(this.selectedText.firstChild, this.selectedText);
       parent.removeChild(this.selectedText);
     } else {
-      if (this.__style) this.selectedText.style = this.__style;
+      this.selectedText.classList.remove("rich-text-editor-selection");
     }
     this.value = {};
     this.selectedText = null;
@@ -165,10 +165,7 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
     });
     if (!this.selectedText.getAttribute("id"))
       this.selectedText.setAttribute("id", "prompt" + Date.now());
-    this.__style = this.selectedText.style;
-    this.selectedText.style.backgroundColor = getComputedStyle(
-      this
-    ).getPropertyValue("--rich-text-editor-selection-bg");
+    this.selectedText.classList.add("rich-text-editor-selection");
     this.dispatchEvent(new CustomEvent("select", { detail: this }));
   }
 }

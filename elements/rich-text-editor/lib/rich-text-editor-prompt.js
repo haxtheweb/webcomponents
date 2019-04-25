@@ -6,7 +6,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
 import "@lrnwebcomponents/simple-popover/simple-popover.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
-import "./rich-text-editor-styles.js";
+import "./rich-text-editor-toolbar-styles.js";
 
 // register globally so we can make sure there is only one
 window.richTextEditorPrompt = window.richTextEditorPrompt || {};
@@ -36,7 +36,7 @@ class richTextEditorPrompt extends PolymerElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */ // render function
   static get template() {
     return html`
-      <style include="rich-text-editor-styles">
+      <style include="rich-text-editor-toolbar-styles">
         :host {
           --simple-popover-padding: 0 10px;
           --paper-input-container-focus-color: var(
@@ -77,8 +77,10 @@ class richTextEditorPrompt extends PolymerElement {
       <simple-popover id="prompt" auto for$="[[for]]" hidden$="[[!target]]">
         <form id="form">
           <simple-fields
+            auto-focus
             id="formfields"
             fields="[[fields]]"
+            on-fields-changed="_fieldsChanged"
             value="{{value}}"
           ></simple-fields>
           <div class="actions">
@@ -196,14 +198,16 @@ class richTextEditorPrompt extends PolymerElement {
     super.connectedCallback();
     this.__a11yconfirm = this.$.confirm;
     this.__a11ycancel = this.$.cancel;
-    this.$.prompt.addEventListener("blur", e => {
-      this._cancel(e);
+    this.addEventListener("blur", e => {
+      //this._cancel(e);
     });
-    this.$.prompt.addEventListener("mouseout", e => {
-      this._cancel(e);
+    this.addEventListener("mouseout", e => {
+      //this._cancel(e);
     });
   }
-
+  _fieldsChanged(e) {
+    if (e.detail.firstField !== null) e.detail.firstField.focus();
+  }
   _valueChanged() {}
 
   /**

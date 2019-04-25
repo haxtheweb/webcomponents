@@ -10,7 +10,8 @@ import "./lib/rich-text-editor-more-button.js";
 import "./lib/rich-text-editor-heading-picker.js";
 import "./lib/rich-text-editor-symbol-picker.js";
 import "./lib/rich-text-editor-link.js";
-import "./lib/rich-text-editor-styles.js";
+import "./lib/rich-text-editor-content.js";
+import "./lib/rich-text-editor-toolbar-styles.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/iron-icons/image-icons.js";
@@ -110,7 +111,6 @@ class RichTextEditor extends PolymerElement {
    * Gets the updated selection.
    */
   getUpdatedSelection() {
-    console.log("selectionchange");
     let root = this;
     root.selection =
       root.editableElement === undefined || root.editableElement === null
@@ -154,11 +154,26 @@ class RichTextEditor extends PolymerElement {
    *
    * @param {object} an HTML object that can be edited
    */
+  makeEditableRegion(editableElement) {
+    let root = this,
+      content = document.createElement("rich-text-editor-content");
+    editableElement.parentNode.insertBefore(content, editableElement);
+    content.appendChild(editableElement);
+    root.addEditableRegion(content);
+  }
+
+  /**
+   * adds an editable region to the list of editableElements
+   *
+   * @param {object} an HTML object that can be edited
+   */
   addEditableRegion(editableElement) {
     let root = this,
       observer = new MutationObserver(e => {
         root.getUpdatedSelection();
       });
+
+    console.log(editableElement.tagName);
     editableElement.addEventListener("click", e => {
       root.editTarget(editableElement);
     });

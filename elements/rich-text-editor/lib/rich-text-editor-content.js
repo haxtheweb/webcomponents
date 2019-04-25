@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "./rich-text-editor-styles.js";
+import "./rich-text-editor-toolbar-styles.js";
 import "../rich-text-editor.js";
 /**
  * `rich-text-editor-content`
@@ -20,7 +20,7 @@ class RichTextEditorContent extends PolymerElement {
   // render function
   static get template() {
     return html`
-      <style include="rich-text-editor-styles">
+      <style include="rich-text-editor-toolbar-styles">
         :host {
           display: block;
           min-height: 20px;
@@ -32,6 +32,15 @@ class RichTextEditorContent extends PolymerElement {
           border-top: none;
           overflow: hidden;
           @apply --rich-text-editor-content-edit;
+        }
+        :host([contenteditable="true"]):empty:before {
+          content: attr(placeholder);
+          display: block;
+          @apply --rich-text-editor-content-placeholder;
+        }
+        :host .rich-text-editor-selection {
+          background-color: var(--rich-text-editor-selection-bg);
+          @apply --rich-text-editor-content-selection;
         }
       </style>
       <slot></slot>
