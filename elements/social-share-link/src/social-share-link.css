@@ -69,3 +69,6 @@
   width: 0;
   overflow: hidden;
 }
+:host a.icon-only iron-icon {
+  margin-right: 0;
+} 

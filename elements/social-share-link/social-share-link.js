@@ -93,8 +93,17 @@ class SocialShareLink extends PolymerElement {
           width: 0;
           overflow: hidden;
         }
+        :host a.icon-only iron-icon {
+          margin-right: 0;
+        }
       </style>
-      <a href$="[[__href]]" disabled$="[[!__href]]" class$="[[mode]]">
+      <a
+        href$="[[__href]]"
+        disabled$="[[!__href]]"
+        class$="[[mode]]"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
         <iron-icon
           aria-hidden="true"
           icon$="[[__icon]]"

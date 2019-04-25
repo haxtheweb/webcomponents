@@ -4,7 +4,17 @@
     "className": "LrnButton",
     "customElementClass": "PolymerElement",
     "elementName": "lrn-button",
-    "generator-rhelement-version": "0.0.8"
+    "generator-wcfactory-version": "0.5.0",
+    "useHAX": false,
+    "useSass": false,
+    "files": {
+      "css": "src/lrn-button.css",
+      "scss": "src/lrn-button.scss",
+      "html": "src/lrn-button.html",
+      "js": "src/lrn-button.js",
+      "properties": "src/lrn-button-properties.json",
+      "hax": "src/lrn-button-hax.json"
+    }
   },
   "version": "2.0.9",
   "description": "Button element for PolymerElement",

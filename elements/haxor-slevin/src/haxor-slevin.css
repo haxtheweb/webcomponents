@@ -1,0 +1,216 @@
+:host {
+  display: block;
+  background-color: #FFFFFF;
+  color: rgba(0,0,0,.84);
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+/**
+ * Hide the slotted content during edit mode. This must be here to work.
+ */
+:host([edit-mode]) #slot {
+  display: none;
+}
+#slot {
+  min-height: 50vh;
+}
+#slot ::slotted(p) {
+  margin-top: 29px;
+  font-family: Georgia,Cambria,"Times New Roman",Times,serif;
+  letter-spacing: .01rem;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 21px;
+  line-height: 1.58;
+  letter-spacing: -.003em;
+  margin-bottom: 0;
+}
+#slot ::slotted(h1,h2,h3,h4,h5,h6) {
+  font-family: "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Arial,sans-serif;
+  letter-spacing: -.02em;
+  font-style: normal;
+  letter-spacing: 0;
+  font-size: 34px;
+  line-height: 1.15;
+  letter-spacing: -.015em;
+  font-weight: 600;
+  margin-top: 53px;
+}
+#slot ::slotted(h2,h3) {
+  font-size: 34px;
+}
+.wrapper {
+  padding-bottom: 80px;
+}
+#home {
+  max-width: 1032px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0 auto;
+}
+.contentcontainer-wrapper {
+  max-width: 740px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+simple-blog-card {
+  padding: 8px;
+  min-height: 100px;
+  min-width: 100px;
+}
+.simple-blog-card-wrapper {
+  margin: 0 auto;
+  width: 100%;
+}
+.evenly {
+  display: flex;
+  justify-content: space-evenly;
+}
+simple-blog-card[size="micro"] {
+  padding: 4px;
+}
+iron-pages {
+  padding-top: 64px;
+}
+dom-repeat {
+  padding-bottom: 16px;
+  min-height: 300px;
+}
+app-toolbar {
+  padding: 0 20px;
+  height: 54px;
+  max-width: 1032px;
+  margin: 0 auto;
+}
+.backbutton {
+  height: 54px;
+  border-radius: 0;
+  min-width: unset;
+  text-transform: unset;
+}
+app-header {
+  z-index: 100;
+  @apply --layout-fixed-top;
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px 0 rgba(0,0,0,.15);
+  background-color: var(--haxcms-color);
+  --app-header-background-rear-layer: {
+    background-color: var(--haxcms-color);
+  };
+}
+paper-icon-button {
+  --paper-icon-button-ink-color: white;
+}
+site-active-title {
+  --site-active-title-heading: {
+    font-size: 42px;
+    font-family: Georgia,Cambria,"Times New Roman",Times,serif;
+    font-weight: 400;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: 0;
+  };
+}
+
+.social-float {
+  top: 160px;
+  position: fixed;
+  z-index: 99;
+  margin-left: -10vw;
+}
+.social-float ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+social-share-link {
+  --social-share-button-bg: var(--haxcms-color);
+  --social-share-button: {
+    padding: 8px;
+    border-radius: 50%;
+  }
+}
+
+.annoy-user {
+  background-color: rgba(255,255,255,.9);
+  display: block;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  box-shadow: 0 -3px 10px 0 rgba(0,0,0,.0785);
+  right: 0;
+  padding: 10px 0;
+  height: 50px;
+  z-index: 100;
+}
+iron-icon {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  padding-right: 20px;
+}
+.annoy-user iron-icon {
+  color: black;
+}
+.annoy-user span {
+  flex: 1 1 auto;
+  height: 40px;
+  display: flex;
+  vertical-align: middle;
+  line-height: 40px;
+}
+.annoy-inner strong {
+  padding: 0 4px;
+}
+.annoy-user .rss {
+  margin-left: 50px;
+}
+.annoy-inner {
+  max-width:700px;
+  margin: 0 auto;
+  display: flex;
+}
+.subtitle {
+  font-family: "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Arial,sans-serif;
+  letter-spacing: -.02em;
+  font-weight: 300;
+  font-style: normal;
+  letter-spacing: 0;
+  font-size: 28px;
+  line-height: 1.22;
+  letter-spacing: -.012em;
+}
+site-rss-button {
+  margin: 0 4px;
+  padding: 0;
+  --site-rss-color: #000000;
+  --site-rss-bg-color: var(--haxcms-color);
+  --site-rss-paper-button: {
+    padding: 0 4px;
+    margin: 0;
+  };
+}
+
+@media screen and (max-width: 800px) {
+  #contentcontainer, #home {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .evenly {
+    display: unset;
+    justify-content: unset;
+  }
+  simple-blog-card {
+    padding: 0;
+  }
+  .hide-small {
+    display: none;
+  }
+}

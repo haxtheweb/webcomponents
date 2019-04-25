@@ -1,5 +1,4 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@polymer/paper-button/paper-button.js";
@@ -144,7 +143,7 @@ let PromoTile = Polymer({
                 target$="[[_urlTarget(url)]]"
               >
                 <paper-button id="learn" no-ink
-                  >Learn More
+                  >[[label]]
                   <iron-icon icon="chevron-right"></iron-icon>
                 </paper-button>
               </a>
@@ -156,11 +155,7 @@ let PromoTile = Polymer({
   `,
 
   is: "promo-tile",
-  behaviors: [
-    HAXBehaviors.PropertiesBehaviors,
-    MaterializeCSSBehaviors.ColorBehaviors,
-    SchemaBehaviors.Schema
-  ],
+  behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
 
   properties: {
     /**
@@ -175,6 +170,14 @@ let PromoTile = Polymer({
      * Alt text for image
      */
     alt: {
+      type: String,
+      value: "",
+      reflectToAttribute: true
+    },
+    /**
+     * Label for button
+     */
+    label: {
       type: String,
       value: "",
       reflectToAttribute: true
@@ -293,6 +296,13 @@ let PromoTile = Polymer({
             description: "The link of the tile",
             inputMethod: "textfield",
             icon: "editor:insert-link"
+          },
+          {
+            property: "label",
+            title: "Label",
+            description: "The label for the button",
+            inputMethod: "textfield",
+            icon: "editor:title"
           }
         ],
         advanced: []

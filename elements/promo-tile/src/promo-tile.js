@@ -1,5 +1,4 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@polymer/paper-button/paper-button.js";
@@ -22,9 +21,14 @@ let PromoTile = Polymer({
       :host {
         display: block;
         --tile-image: "";
+        --front-title-text-shadow: #363533;
+        --title-font-size: 34px;
+        --title-font-weight: 400;
+        --back-content-font-size: 18px;
+        --back-content-font-weight: 100;
         --font-color: #fff;
         --hover-background-color: #e2801e;
-        --hover-link: #e0e0e0;
+        --button-hover-color: #363533;
       }
 
       a {
@@ -40,6 +44,8 @@ let PromoTile = Polymer({
         background-color: var(--hover-background-color);
         height: 460px;
         opacity: 0;
+        display: flex;
+        flex-direction: column;
       }
 
       :host([hover]) #container .back_card {
@@ -53,67 +59,82 @@ let PromoTile = Polymer({
       }
 
       .image {
+        display: flex;
+        justify-content: center;
         background-image: var(--tile-image);
         background-position: top center;
         background-repeat: no-repeat;
         background-size: cover;
         width: 100%;
         height: 100%;
-        justify-content: center;
       }
 
       .front_title {
         opacity: 1;
-        float: left;
-        margin: 375px 0 0 25px;
-        font-size: 40px;
+        position: absolute;
+        display: flex;
+        align-self: flex-end;
+        padding-bottom: 25px;
+      }
+
+      .front_title h1 {
         color: var(--font-color);
-        border-bottom: solid 5px #fff;
-        border-radius: 5px;
-        padding-bottom: 5px;
+        font-size: var(--title-font-size);
+        font-weight: var(--title-font-weight);
+        text-shadow: 1px 1px 3px var(--front-title-text-shadow);
       }
 
       .back_title {
         opacity: 1;
-        font-size: 40px;
+        display: flex;
+        justify-content: center;
+        padding: 20px 0 0;
+      }
+
+      .back_title h1 {
         color: var(--font-color);
-        float: left;
-        margin: -390px 0 0 25px;
-        border-bottom: solid 5px #fff;
-        border-radius: 5px;
-        padding-bottom: 5px;
+        font-size: var(--title-font-size);
+        font-weight: var(--title-font-weight);
       }
 
       .back_content {
         color: var(--font-color);
-        font-size: 16px;
-        clear: left;
-        position: relative;
-        bottom: 334px;
-        width: 85%;
-        margin-left: auto;
-        margin-right: auto;
-        padding-top: 10px;
+        font-size: var(--back-content-font-size);
+        font-weight: var(--back-content-font-weight);
+        padding: 0 20px;
       }
-      .learn_more {
-        float: right;
-        margin-top: -75px;
+
+      paper-button#learn {
+        display: flex;
+        margin-top: 180px;
         font-size: 16px;
         color: var(--font-color);
-        margin-right: 10px;
+        border: solid 1px #fff;
+        border-radius: 0;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
       }
-      :host([hover]) .learn_more paper-button {
-        color: var(--hover-link);
+
+      paper-button#learn:hover,
+      paper-button#learn:focus {
+        background-color: var(--button-hover-color);
       }
     </style>
 
     <div id="container">
       <div class="front_card">
-        <div class="front_title">[[title]]</div>
         <div id="front_image" class="image" alt="[[alt]]">
+          <div class="front_title">
+            <h1>[[title]]</h1>
+          </div>
           <div class="back_card" id="cardBack" on-click="activateBtn">
-            <div class="back_title">[[title]]</div>
-            <div class="back_content"><slot></slot></div>
+            <div class="back_title">
+              <h1>[[title]]</h1>
+            </div>
+            <div class="back_content">
+              <slot></slot>
+            </div>
             <div class="learn_more">
               <a
                 tabindex="-1"
@@ -121,8 +142,8 @@ let PromoTile = Polymer({
                 id="link"
                 target$="[[_urlTarget(url)]]"
               >
-                <paper-button no-ink
-                  >Learn More
+                <paper-button id="learn" no-ink
+                  >[[label]]
                   <iron-icon icon="chevron-right"></iron-icon>
                 </paper-button>
               </a>
@@ -134,11 +155,7 @@ let PromoTile = Polymer({
   `,
 
   is: "promo-tile",
-  behaviors: [
-    HAXBehaviors.PropertiesBehaviors,
-    MaterializeCSSBehaviors.ColorBehaviors,
-    SchemaBehaviors.Schema
-  ],
+  behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
 
   properties: {
     /**
@@ -153,6 +170,14 @@ let PromoTile = Polymer({
      * Alt text for image
      */
     alt: {
+      type: String,
+      value: "",
+      reflectToAttribute: true
+    },
+    /**
+     * Label for button
+     */
+    label: {
       type: String,
       value: "",
       reflectToAttribute: true
@@ -271,6 +296,13 @@ let PromoTile = Polymer({
             description: "The link of the tile",
             inputMethod: "textfield",
             icon: "editor:insert-link"
+          },
+          {
+            property: "label",
+            title: "Label",
+            description: "The label for the button",
+            inputMethod: "textfield",
+            icon: "editor:title"
           }
         ],
         advanced: []

@@ -1,0 +1,47 @@
+<paper-card
+  .alt="${this.alt}"
+  image="${this.image}"
+  .elevation="${this.shadow}"
+  animated-shadow
+  preload-image
+  .placeholder-image="${this.placeholder}"
+  class="card-${this.size}">
+  <div class="card-content">
+    <a href="${this.link}">
+      <h3>${this.title}</h3>
+      <div class="teaser">
+        <slot></slot>
+      </div>
+    </a>
+  </div>
+  <div class="card-actions">
+    <div id="author" class="author-block"
+    @mouseover=${this.showDetails}
+    @focusin=${this.showDetails}
+    @mouseout=${this.hideDetails}
+    @focusout=${this.hideDetails}
+    >
+      <paper-avatar
+        .label="${this.author}"
+        .src="${this.authorimage}">
+      </paper-avatar>
+      <div class="author-info">
+        <a .href="${this.authorlink}">${this.author}</a>
+        <div class="post-details">
+          <simple-datetime format="M jS" .timestamp="${this.timestamp}" unix>
+          </simple-datetime>
+          <span class="dot">&#183</span>
+          <span class="reading-time" .title="${this.readtime} min read"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</paper-card>
+<absolute-position-behavior for="author" poisition="top">
+  <div class="box">
+    <paper-avatar .label="${this.author}" .src="${this.authorimage}">
+    </paper-avatar>
+    <h5 class="author-name">${this.author}</h5>
+    <div class="author-bio">${this.authorbio}</div>
+  </div>
+</absolute-position-behavior>

@@ -77,7 +77,7 @@ Polymer({
               <hax-gizmo-browser-item
                 index="[[gizmo.index]]"
                 title="[[gizmo.title]]"
-                tag="[[gizmo.tag]]"
+                tag-to-insert="[[gizmo.tag]]"
                 icon="[[gizmo.icon]]"
                 image="[[gizmo.image]]"
                 color="[[gizmo.color]]"

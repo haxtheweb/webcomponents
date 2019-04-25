@@ -51,7 +51,7 @@ let BasicTemplate = superclass =>
         </site-top-menu>
         <div class="container">
           <site-breadcrumb></site-breadcrumb>
-          <grid-plate layout="1-3" class="grid-wrapper">
+          <grid-plate layout="1-3" class="grid-wrapper" ignore-hax>
             <div slot="col-1" class="left-col">
               <div class="menu-buttons">
                 <site-menu-button type="prev" position="top"></site-menu-button>

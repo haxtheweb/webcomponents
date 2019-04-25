@@ -41,6 +41,7 @@ class SiteRSSButton extends PolymerElement {
           font-size: var(--site-rss-font-size, 13px);
           margin: 0;
           border-radius: var(--site-rss-border-radius, 3px);
+          @apply --site-rss-paper-button;
         }
         paper-button:hover,
         paper-button:focus,

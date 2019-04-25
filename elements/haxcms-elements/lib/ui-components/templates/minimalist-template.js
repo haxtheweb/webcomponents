@@ -14,6 +14,7 @@ let MinimalistTemplate = superclass =>
       super();
       import("@lrnwebcomponents/scroll-button/scroll-button.js");
       import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-fields.js");
       import("@lrnwebcomponents/haxcms-elements/lib/ui-components/blocks/site-children-block.js");
       import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-footer.js");
       import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js");

@@ -1,8 +1,6 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@polymer/paper-dialog/paper-dialog.js";
-import "@polymer/paper-button/paper-button.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./hax-shared-styles.js";
 /**
  `hax-app-picker-item`
@@ -10,9 +8,15 @@ import "./hax-shared-styles.js";
 
 * @demo demo/index.html
 */
-Polymer({
-  _template: html`
-      <style include="materializecss-styles simple-colors hax-shared-styles">
+class HaxAppPickerItem extends PolymerElement {
+  constructor() {
+    super();
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/paper-button/paper-button.js");
+  }
+  static get template() {
+    return html`
+      <style include="hax-shared-styles">
         :host {
           display: inline-block;
           color: var(--hax-color-text);
@@ -42,7 +46,7 @@ Polymer({
           height: 50px;
           padding: 5px;
           margin: 10px;
-          color: #FFFFFF;
+          color: #ffffff;
           border-radius: 50%;
           box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
             0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
@@ -73,62 +77,94 @@ Polymer({
           height: 36px;
         }
       </style>
-    </custom-style>
-    <paper-button id="button" class$="icon [[color]]" title="[[label]]">
-      <iron-icon icon="[[icon]]"></iron-icon>
-    </paper-button>
-    <div aria-hidden="true">[[label]]</div>
-  `,
-
-  is: "hax-app-picker-item",
-
-  listeners: {
-    mousedown: "tapEventOn",
-    mouseover: "tapEventOn",
-    mouseout: "tapEventOff",
-    focusin: "tapEventOn",
-    focusout: "tapEventOff"
-  },
-  properties: {
-    /**
-     * Color
-     */
-    color: {
-      type: String
-    },
-    /**
-     * Icon
-     */
-    icon: {
-      type: String
-    },
-    /**
-     * Label
-     */
-    label: {
-      type: String
-    },
-    /**
-     * Elevation off the UI
-     */
-    elevation: {
-      type: Number,
-      value: 1,
-      reflectToAttribute: true
+      <paper-button
+        class="icon"
+        title="[[label]]"
+        style$="background-color:[[hexColor]];"
+      >
+        <iron-icon icon="[[icon]]"></iron-icon>
+      </paper-button>
+      <div aria-hidden="true">[[label]]</div>
+    `;
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, function() {
+      this.addEventListener("mousedown", this.tapEventOn.bind(this));
+      this.addEventListener("mouseover", this.tapEventOn.bind(this));
+      this.addEventListener("mouseout", this.tapEventOff.bind(this));
+      this.addEventListener("focusin", this.tapEventOn.bind(this));
+      this.addEventListener("focusout", this.tapEventOff.bind(this));
+    });
+  }
+  disconnectedCallback() {
+    this.removeEventListener("mousedown", this.tapEventOn.bind(this));
+    this.removeEventListener("mouseover", this.tapEventOn.bind(this));
+    this.removeEventListener("mouseout", this.tapEventOff.bind(this));
+    this.removeEventListener("focusin", this.tapEventOn.bind(this));
+    this.removeEventListener("focusout", this.tapEventOff.bind(this));
+    super.disconnectedCallback();
+  }
+  static get tag() {
+    return "hax-app-picker-item";
+  }
+  static get properties() {
+    return {
+      /**
+       * Color
+       */
+      color: {
+        type: String
+      },
+      /**
+       * Class for the color
+       */
+      hexColor: {
+        type: String,
+        computed: "_getHexColor(color)"
+      },
+      /**
+       * Icon
+       */
+      icon: {
+        type: String
+      },
+      /**
+       * Label
+       */
+      label: {
+        type: String
+      },
+      /**
+       * Elevation off the UI
+       */
+      elevation: {
+        type: Number,
+        value: 1,
+        reflectToAttribute: true
+      }
+    };
+  }
+  _getHexColor(color) {
+    let name = color.replace("-text", "");
+    let tmp = new SimpleColors();
+    if (tmp.colors[name]) {
+      return tmp.colors[name][6];
     }
-  },
-
+    return "#000000";
+  }
   /**
    * special handling for taps on the thing
    */
-  tapEventOn: function(e) {
+  tapEventOn(e) {
     this.elevation = 2;
-  },
-
+  }
   /**
    * Hover off stop showing the deeper shadow.
    */
-  tapEventOff: function(e) {
+  tapEventOff(e) {
     this.elevation = 1;
   }
-});
+}
+window.customElements.define(HaxAppPickerItem.tag, HaxAppPickerItem);
+export { HaxAppPickerItem };

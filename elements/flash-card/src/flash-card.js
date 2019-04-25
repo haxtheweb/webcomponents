@@ -4,7 +4,6 @@
  */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-card/paper-card.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
@@ -20,7 +19,7 @@ A LRN element
 */
 let FlashCard = Polymer({
   _template: html`
-    <style include="materializecss-styles-colors">
+    <style>
       :host {
         display: block;
       }

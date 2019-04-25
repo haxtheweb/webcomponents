@@ -1,0 +1,119 @@
+<custom-style>
+  <style>
+  html,body {
+    background-color: #FFFFFF;
+  }
+  :root,html,body,a {
+    color: rgba(0,0,0,.84);
+  }
+  </style>
+</custom-style>
+<app-header reveals>
+  <app-toolbar>
+    <div>
+      <paper-button class="backbutton" on-click="_goBack">
+        <iron-icon icon="[[icon]]"></iron-icon>
+        <span class="hide-small">[[title]] - [[activeTitle]]</span>
+      </paper-button>
+    </div>
+    <div main-title>
+      <iron-image src="[[image]]" preload sizing="cover" style="height:46px;width:100%;margin: 4px 0 2px 0;"></iron-image>
+    </div>
+  </app-toolbar>
+</app-header>
+<div class="wrapper">
+  <iron-pages selected="[[selectedPage]]">
+    <div id="home">
+      <site-query result="{{__mainPosts}}" limit="2" sort='{"created": "ASC"}'></site-query>
+      <div class="simple-blog-card-wrapper evenly">
+        <dom-repeat items="[[__mainPosts]]" as="post" mutable-data>
+          <template>
+            <simple-blog-card alt="[[post.metadata.fields.images.0.alt]]" color="[[color]]"
+              title="[[post.title]]"
+              size="large"
+              link="[[post.location]]"
+              image="[[_showImage(post.metadata.fields.images.0.src)]]"
+              author="[[author.name]]"
+              timestamp="[[post.created]]"
+              readtime="[[post.metadata.readtime]]"
+              authorimage="[[author.image]]"
+              placeholder="[[image]]"
+              authorlink="[[author.socialLink]]">
+              [[post.description]]
+            </simple-blog-card>
+          </template>
+        </dom-repeat>
+      </div>
+      <site-query result="{{__posts}}" start-index="2" limit="6" sort='{"created": "ASC"}'></site-query>
+      <div class="simple-blog-card-wrapper">
+        <dom-repeat items="[[__posts]]" as="post" mutable-data>
+          <template>
+            <simple-blog-card 
+            placeholder="[[image]]"
+            alt="[[post.metadata.fields.images.0.alt]]" color="[[color]]" title="[[post.title]]" size="medium"
+              link="[[post.location]]" image="[[_showImage(post.metadata.fields.images.0.src)]]" author="[[author.name]]"
+              timestamp="[[post.created]]" readtime="[[post.metadata.readtime]]" authorimage="[[author.image]]" authorlink="[[author.socialLink]]">
+              [[post.description]]
+            </simple-blog-card>
+          </template>
+        </dom-repeat>
+      </div>
+    </div>
+    <div class="contentcontainer-wrapper">
+      <div id="contentcontainer">
+        <site-active-title></site-active-title>
+        <h3 class="subtitle" hidden$="[[!subtitle]]">[[subtitle]]</h3>
+        <div id="slot">
+          <slot></slot>
+        </div>
+      </div>
+      <site-query result="{{__followUpPosts}}" limit="3" start-index="[[activeManifestIndexCounter]]"
+        sort='{"created": "ASC"}'></site-query>
+      <div class="simple-blog-card-wrapper">
+        <dom-repeat items="[[__followUpPosts]]" as="post" mutable-data>
+          <template>
+            <simple-blog-card alt="[[post.metadata.fields.images.0.alt]]" color="[[color]]" title="[[post.title]]" size="small"
+              link="[[post.location]]" image="[[_showImage(post.metadata.fields.images.0.src)]]" author="[[author.name]]"
+              placeholder="[[image]]" timestamp="[[post.created]]" readtime="[[post.metadata.readtime]]"
+              authorimage="[[author.image]]" authorlink="[[author.socialLink]]">
+              [[post.description]]
+            </simple-blog-card>
+          </template>
+        </dom-repeat>
+      </div>
+      <div class="social-float hide-small">
+        <ul>
+          <li>
+            <social-share-link button-style mode="icon-only" message="[[shareMsg]]" type="Twitter">
+            </social-share-link>
+          </li>
+          <li>
+            <social-share-link button-style mode="icon-only" message="[[shareMsg]]" url="[[shareUrl]]" type="LinkedIn">
+            </social-share-link>
+          </li>
+          <li>
+            <social-share-link button-style mode="icon-only" url="[[shareUrl]]" message="[[shareMsg]]" type="Facebook">
+            </social-share-link>
+          </li>
+          <li>
+            <social-share-link button-style mode="icon-only" message="[[shareMsg]]" image="[[activeImage]]" url="[[shareUrl]]"
+              type="Pinterest">
+            </social-share-link>
+          </li>
+        </ul>
+      </div>
+      <div class="annoy-user hide-small">
+        <div class="annoy-inner">
+          <iron-icon icon="[[icon]]"></iron-icon>
+          <span>
+            Never miss a story from <strong>[[title]]</strong> use RSS today!
+          </span>
+          <span class="rss">
+            <site-rss-button type="atom"></site-rss-button>
+            <site-rss-button type="rss"></site-rss-button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </iron-pages>
+</div>
