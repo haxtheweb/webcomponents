@@ -233,6 +233,10 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
             padding-left: 8px;
             padding-right: 8px;
           }
+          .evenly {
+            display: unset;
+            justify-content: unset;
+          }
           simple-blog-card {
             padding: 0;
           }
