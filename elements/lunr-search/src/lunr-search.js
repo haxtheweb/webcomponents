@@ -22,7 +22,6 @@ class LunrSearch extends PolymerElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
   constructor() {
     super();
-    import("@polymer/paper-input/paper-input.js");
     const name = "lunr";
     const basePath = pathFromUrl(import.meta.url);
     const location = `${basePath}../../lunr/lunr.js`;
@@ -35,7 +34,7 @@ class LunrSearch extends PolymerElement {
   }
   _lunrLoaded(e) {
     // callback when loaded
-    this._lunr = true;
+    this.__lunrLoaded = true;
   }
   /**
    * Store the tag name to make it easier to obtain directly.

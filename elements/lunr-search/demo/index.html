@@ -11,24 +11,72 @@
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/polymer/lib/elements/dom-bind.js';
       import "@polymer/iron-list/iron-list.js";
+      import "@polymer/paper-input/paper-input.js";
+      import "@polymer/iron-icons/iron-icons.js";
+      import "@polymer/iron-icon/iron-icon.js";
       import '../lunr-search.js';
     </script>
-    <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic lunr-search demo</h3>
+      <p>This illustrates some data binding <a href="lunrSearchIndex.json">leveraging this as a data set</a>.</p>
         <dom-bind>
           <template>
+            <style is="custom-style" include="demo-pages-shared-styles">
+              .example-result {
+                background-color: #EEEEEE;
+                color: #222222;
+                border: 1px solid black;
+                padding: 16px;
+              }
+            
+              .example-result:hover {
+                background-color: #DDDDDD;
+                color: black;
+              }
+            
+              .example-result h4 {
+                font-size: 30px;
+                margin: 0;
+              }
+            
+              .example-result h5 {
+                font-size: 18px;
+                font-color: #666666;
+                margin: 0;
+              }
+            
+              #input {
+                flex-grow: 2;
+                margin-right: 4px;
+                --paper-input-container-input-color: var(--simple-search-input-text-color,
+                  #000);
+                --paper-input-container-shared-input-style_-_color: var(--simple-search-input-text-color,
+                  #000);
+                --paper-input-container-focus-color: var(--simple-search-input-line-color,
+                  #000);
+                --paper-input-container-color: var(--simple-search-input-placeholder-color,
+                  #222);
+                color: var(--simple-search-input-placeholder-color, #222);
+              }
+            </style>
+          <paper-input id="input" always-float-label label="Search" value="{{__search}}">
+            <iron-icon icon="search" slot="prefix"></iron-icon>
+          </paper-input>
+          <template is="dom-if" if="[[__search]]">
+            Found [[__results.length]] results.
+          </template>
           <lunr-search
-          data-source="documents.json"
-          results="{{__results}}"
-          log></lunr-search>
+          data-source="lunrSearchIndex.json"
+          search="[[__search]]"
+          results="{{__results}}"></lunr-search>
           <iron-list items="[[__results]]">
             <template>
-              <div style="border: 1px solid black;">
-                <div>[[index]]. [[item.title]]</div>
-                <div>[[item.text]]</div>
+              <div class="example-result">
+                <h4>[[item.title]]</h4>
+                <h5>[[item.location]]</h5>
+                <div>[[item.description]]..</div>
               </div>
             </template>
           </iron-list>

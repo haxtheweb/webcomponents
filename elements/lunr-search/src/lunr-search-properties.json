@@ -5,7 +5,8 @@
   },
   "data": {
     "name": "data",
-    "type": "Array"
+    "type": "Array",
+    "notify": true
   },
   "method": {
     "name": "method",
@@ -23,7 +24,8 @@
   },
   "noStopWords": {
     "type": "Boolean",
-    "value": false
+    "value": false,
+    "notify": true
   },
   "fields": {
     "type": "Array",
@@ -34,9 +36,9 @@
   },
   "index": {
     "type": "Object",
-    "computed": "_createIndex(data, fields, noStopWords, _lunr)"
+    "computed": "_createIndex(data, fields, noStopWords, __lunrLoaded)"
   },
-  "_lunr": {
+  "__lunrLoaded": {
     "type": "Boolean"
   },
   "limit": {

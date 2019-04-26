@@ -38,7 +38,6 @@ class LunrSearch extends PolymerElement {
         handle-as="json"
         on-response="_dataResponse"
       ></iron-ajax>
-      <paper-input label="Search" value="{{search}}"></paper-input>
     `;
   }
 
@@ -51,7 +50,8 @@ class LunrSearch extends PolymerElement {
       },
       data: {
         name: "data",
-        type: "Array"
+        type: "Array",
+        notify: true
       },
       method: {
         name: "method",
@@ -69,7 +69,8 @@ class LunrSearch extends PolymerElement {
       },
       noStopWords: {
         type: "Boolean",
-        value: false
+        value: false,
+        notify: true
       },
       fields: {
         type: "Array",
@@ -80,9 +81,9 @@ class LunrSearch extends PolymerElement {
       },
       index: {
         type: "Object",
-        computed: "_createIndex(data, fields, noStopWords, _lunr)"
+        computed: "_createIndex(data, fields, noStopWords, __lunrLoaded)"
       },
-      _lunr: {
+      __lunrLoaded: {
         type: "Boolean"
       },
       limit: {
@@ -101,7 +102,6 @@ class LunrSearch extends PolymerElement {
   }
   constructor() {
     super();
-    import("@polymer/paper-input/paper-input.js");
     const name = "lunr";
     const basePath = pathFromUrl(import.meta.url);
     const location = `${basePath}../../lunr/lunr.js`;
@@ -114,7 +114,7 @@ class LunrSearch extends PolymerElement {
   }
   _lunrLoaded(e) {
     // callback when loaded
-    this._lunr = true;
+    this.__lunrLoaded = true;
   }
   /**
    * Store the tag name to make it easier to obtain directly.
