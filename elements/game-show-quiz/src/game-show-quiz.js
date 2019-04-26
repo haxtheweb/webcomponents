@@ -136,6 +136,17 @@ class GameShowQuiz extends MutableData(PolymerElement) {
           font-weight: bold;
           font-size: 16px;
         }
+        .grid-button[data-type="bonus"] {
+          display: inline-flex;
+          position: absolute;
+          outline: 1px solid #dddddd;
+        }
+        .grid-button[data-type="bonus"][data-display-points="1"] {
+          height: 320px;
+        }
+        .grid-button[data-type="bonus"][data-display-points="2"] {
+          height: 160px;
+        }
         @media screen and (max-width: 600px) {
           app-toolbar {
             font-size: 14px;
@@ -190,9 +201,10 @@ class GameShowQuiz extends MutableData(PolymerElement) {
                   raised="[[!col.notRaised]]"
                   data-question-uuid\$="[[col.uuid]]"
                   data-value\$="[[col.points]]"
+                  data-display-points\$="[[col.displayPoints]]"
                   data-type\$="[[col.type]]"
                   disabled\$="[[col.disabled]]"
-                  >[[col.title]]<br />[[col.points]]</paper-button
+                  >[[col.title]]<br />[[col.displayPoints]]</paper-button
                 >
               </responsive-grid-col>
             </template>
@@ -576,13 +588,19 @@ class GameShowQuiz extends MutableData(PolymerElement) {
               points: "",
               notRaised: true,
               disabled: true
+            },
+            {
+              title: "Bonus",
+              points: "",
+              notRaised: true,
+              disabled: true
             }
           ]
         }
       ];
       // row prototype
       var row = {};
-      const gameData = newValue;
+      var gameData = Object.assign({}, newValue);
       const keys = Object.keys(gameData);
       var count = 0;
       // we want 4 1 pt questions, 2 2pts, and 1 3 pts
@@ -597,37 +615,33 @@ class GameShowQuiz extends MutableData(PolymerElement) {
         count = 0;
         while (count < pointMap[pointLevel]) {
           count++;
-          // tee up the key used array so we can track random questions used in banks
-          var keysUsed = [];
-          for (var type in keys) {
-            keysUsed[keys[type]] = [];
-          }
           // reset the row
           row = {
             cols: []
           };
           // loop over the keys coming in so we can build each row across
           for (var type in keys) {
-            if (gameData[keys[type]][pointLevel]) {
+            var level = gameData[keys[type]][pointLevel];
+            if (level && level.questions.length > 0) {
               // get a random key based on what hasn't been used here previously
-              var qKey = Math.floor(
-                Math.random() *
-                  gameData[keys[type]][pointLevel].questions.length
-              );
-              while (typeof keysUsed[keys[type]][qKey] !== typeof undefined) {
-                qKey = Math.floor(
-                  Math.random() *
-                    gameData[keys[type]][pointLevel].questions.length
-                );
-              }
-              keysUsed[keys[type]][qKey] = qKey;
+              let qKey = Math.floor(Math.random() * level.questions.length);
               var questionObject = {
                 uuid: this.generateUUID(),
-                type: gameData[keys[type]][pointLevel].type,
-                title: gameData[keys[type]][pointLevel].title,
-                points: gameData[keys[type]][pointLevel].points,
-                question: gameData[keys[type]][pointLevel].questions[qKey]
+                type: level.type,
+                title: level.title,
+                points: level.points,
+                displayPoints: level.points,
+                question: Object.assign({}, level.questions[qKey])
               };
+              // remove this record
+              gameData[keys[type]][pointLevel].questions.splice(qKey, 1);
+              if (keys[type] === "bonus") {
+                gameData[keys[type]][pointLevel].questions = [];
+                questionObject.disabled = true;
+                questionObject.displayPoints = pointLevel;
+              } else if (pointLevel === "bonus") {
+                questionObject.disabled = true;
+              }
               row.cols.push(questionObject);
               this._gameBoardFlat[questionObject.uuid] = questionObject;
             }
