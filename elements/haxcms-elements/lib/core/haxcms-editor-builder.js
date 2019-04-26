@@ -81,7 +81,8 @@ class HAXCMSEditorBuilder extends PolymerElement {
       // append the php for global scope to show up via window
       // this is a unique case since it's server side generated in HAXCMS/PHP
       let script = document.createElement("script");
-      script.src = `/haxcms-jwt.php`;
+      // IF we're in a php environment this will always be 2 levels back
+      script.src = `../../haxcms-jwt.php`;
       document.documentElement.appendChild(script);
     }
     // dynamic import if this isn't published
