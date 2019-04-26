@@ -275,6 +275,15 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
               style="height:46px;width:100%;margin: 4px 0 2px 0;"
             ></iron-image>
           </div>
+          <div>
+            <site-modal
+              icon="icons:search"
+              title="Search site"
+              button-label="Search"
+            >
+              <site-search></site-search>
+            </site-modal>
+          </div>
         </app-toolbar>
       </app-header>
       <div class="wrapper">
@@ -478,6 +487,8 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
     import("@polymer/app-layout/app-header/app-header.js");
     import("@polymer/app-layout/app-toolbar/app-toolbar.js");
     import("@lrnwebcomponents/social-share-link/social-share-link.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js");
   }
   _showImage(image) {
     if (image) {

@@ -32,6 +32,7 @@ let BasicTemplate = superclass =>
       import("@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-render-query.js");
       import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js");
       import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js");
       import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js");
       import("@lrnwebcomponents/haxcms-elements/lib/ui-components/magic/active-when-visible.js");
     }
@@ -47,6 +48,14 @@ let BasicTemplate = superclass =>
             button-label="Site map"
           >
             <site-menu></site-menu>
+          </site-modal>
+          <site-modal
+            slot="suffix"
+            icon="icons:search"
+            title="Search site"
+            button-label="Search"
+          >
+            <site-search></site-search>
           </site-modal>
         </site-top-menu>
         <div class="container">

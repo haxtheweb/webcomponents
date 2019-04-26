@@ -260,6 +260,13 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
           <div class="header-wrapper">
             <div class="header">
               <site-title></site-title>
+              <site-modal
+                icon="icons:search"
+                title="Search site"
+                button-label="Search"
+              >
+                <site-search></site-search>
+              </site-modal>
             </div>
           </div>
           <site-menu></site-menu>
@@ -300,6 +307,8 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js");
   }
   /**
    * Store the tag name to make it easier to obtain directly.

@@ -31,6 +31,9 @@ class LunrSearch extends PolymerElement {
     );
     window.ESGlobalBridge.requestAvailability();
     window.ESGlobalBridge.instance.load(name, location);
+    if (window.ESGlobalBridge.imports && window.ESGlobalBridge.imports[name]) {
+      this.__lunrLoaded = true;
+    }
   }
   _lunrLoaded(e) {
     // callback when loaded
@@ -68,7 +71,6 @@ class LunrSearch extends PolymerElement {
             break;
           }
           // match on the id within the array of options
-          console.log(searched[i].ref);
           let tmpItem = data.find(j => j.id == searched[i].ref);
           results.push(tmpItem);
         }
