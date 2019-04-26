@@ -183,7 +183,6 @@ Container class	Ratio
   _renderChart() {
     let root = this,
       chart = null;
-
     root.__chartId = root._getUniqueId("chartist-render-");
     if (
       root !== undefined &&

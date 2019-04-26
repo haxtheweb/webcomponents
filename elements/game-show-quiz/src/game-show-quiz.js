@@ -36,6 +36,8 @@ class GameShowQuiz extends MutableData(PolymerElement) {
     import("@polymer/iron-flex-layout/iron-flex-layout.js");
     import("@polymer/iron-icon/iron-icon.js");
     import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icons/editor-icons.js");
+    import("@lrnwebcomponents/chartist-render/chartist-render.js");
   }
   static get template() {
     return html`
@@ -44,6 +46,18 @@ class GameShowQuiz extends MutableData(PolymerElement) {
           display: block;
           --game-show-bg-color: var(--simple-colors-default-theme-blue-11);
           --game-show-text-color: var(--simple-colors-default-theme-blue-1);
+        }
+        chartist-render#piechart {
+          width: 300px;
+          height: 300px;
+          display: inline-block;
+        }
+        chartist-render.mini-chart {
+          width: 132px;
+          height: 132px;
+          display: inline-block;
+          --chartist-color-1: green;
+          --chartist-color-2: red;
         }
         app-toolbar {
           background-color: var(--game-show-bg-color);
@@ -64,6 +78,9 @@ class GameShowQuiz extends MutableData(PolymerElement) {
           border-left: 1px solid black;
           padding: 16px;
           text-align: center;
+        }
+        .chart-row td {
+          padding: 0;
         }
 
         paper-button {
@@ -179,11 +196,15 @@ class GameShowQuiz extends MutableData(PolymerElement) {
       </style>
       <app-header>
         <app-toolbar>
+          <paper-button id="scorebutton" on-tap="scoreBoardToggle">
+            <iron-icon icon="editor:pie-chart"></iron-icon
+            ><label for="scorebutton">Score board</label>
+          </paper-button>
+          <div main-title>[[title]]</div>
           <paper-button id="helpbutton" on-tap="directionsToggle">
             <iron-icon icon="help"></iron-icon
             ><label for="helpbutton">Directions</label>
           </paper-button>
-          <div main-title>[[title]]</div>
         </app-toolbar>
       </app-header>
       <div id="contentcontainer">
@@ -210,51 +231,130 @@ class GameShowQuiz extends MutableData(PolymerElement) {
             </template>
           </responsive-grid-row>
         </template>
-        <div>
-          <h3>Scoreboard</h3>
-          <table>
-            <tbody>
-              <tr>
-                <th></th>
-                <th>Slide ID</th>
-                <th>Terms</th>
-                <th>Reading</th>
-                <th>Lecture</th>
-                <th>Bonus</th>
-                <th>Total</th>
-              </tr>
-              <tr>
-                <th>Points Attempted</th>
-                <td>[[points.slideid.attempted]]</td>
-                <td>[[points.terminology.attempted]]</td>
-                <td>[[points.reading.attempted]]</td>
-                <td>[[points.lecture.attempted]]</td>
-                <td>[[points.bonus.attempted]]</td>
-                <td>[[points.total.attempted]]</td>
-              </tr>
-              <tr>
-                <th>Points Earned</th>
-                <td>[[points.slideid.earned]]</td>
-                <td>[[points.terminology.earned]]</td>
-                <td>[[points.reading.earned]]</td>
-                <td>[[points.lecture.earned]]</td>
-                <td>[[points.bonus.earned]]</td>
-                <td>[[points.total.earned]]</td>
-              </tr>
-              <tr>
-                <th>Category Percentage</th>
-                <td>[[points.slideid.percent]]</td>
-                <td>[[points.terminology.percent]]</td>
-                <td>[[points.reading.percent]]</td>
-                <td>[[points.lecture.percent]]</td>
-                <td>[[points.bonus.percent]]</td>
-                <td>[[points.total.percent]]</td>
-              </tr>
-            </tbody>
-          </table>
-          <div>Points Remaining to Attempt: [[remainingAttempts]]</div>
-        </div>
       </div>
+      <game-show-quiz-modal id="scoreboard" title="Score board">
+        <div slot="content">
+          <div style="padding: 32px;">
+            <chartist-render
+              id="piechart"
+              chart-title="Breakdown of attempts"
+              data="[[attemptsData.overall]]"
+              type="pie"
+              scale="ct-square"
+            >
+            </chartist-render>
+            <table style="margin: 16px auto;">
+              <tbody>
+                <tr>
+                  <th></th>
+                  <th>Slide ID</th>
+                  <th>Terms</th>
+                  <th>Reading</th>
+                  <th>Lecture</th>
+                  <th>Bonus</th>
+                  <th>Total</th>
+                </tr>
+                <tr>
+                  <th>Points Attempted</th>
+                  <td>[[points.slideid.attempted]]</td>
+                  <td>[[points.terminology.attempted]]</td>
+                  <td>[[points.reading.attempted]]</td>
+                  <td>[[points.lecture.attempted]]</td>
+                  <td>[[points.bonus.attempted]]</td>
+                  <td>[[points.total.attempted]]</td>
+                </tr>
+                <tr>
+                  <th>Points Earned</th>
+                  <td>[[points.slideid.earned]]</td>
+                  <td>[[points.terminology.earned]]</td>
+                  <td>[[points.reading.earned]]</td>
+                  <td>[[points.lecture.earned]]</td>
+                  <td>[[points.bonus.earned]]</td>
+                  <td>[[points.total.earned]]</td>
+                </tr>
+                <tr>
+                  <th>Category Percentage</th>
+                  <td>[[points.slideid.percent]]</td>
+                  <td>[[points.terminology.percent]]</td>
+                  <td>[[points.reading.percent]]</td>
+                  <td>[[points.lecture.percent]]</td>
+                  <td>[[points.bonus.percent]]</td>
+                  <td>[[points.total.percent]]</td>
+                </tr>
+                <tr class="chart-row">
+                  <th>Visualized</th>
+                  <td>
+                    <chartist-render
+                      class="mini-chart"
+                      chart-title="Slide ID percentage"
+                      data="[[attemptsData.slideid]]"
+                      type="pie"
+                      scale="ct-square"
+                    ></chartist-render>
+                  </td>
+                  <td>
+                    <chartist-render
+                      class="mini-chart"
+                      chart-title="Terminology percentage"
+                      data="[[attemptsData.terminology]]"
+                      type="pie"
+                      scale="ct-square"
+                    ></chartist-render>
+                  </td>
+                  <td>
+                    <chartist-render
+                      class="mini-chart"
+                      chart-title="Reading percentage"
+                      data="[[attemptsData.reading]]"
+                      type="pie"
+                      scale="ct-square"
+                    ></chartist-render>
+                  </td>
+                  <td>
+                    <chartist-render
+                      class="mini-chart"
+                      chart-title="Lecture percentage"
+                      data="[[attemptsData.lecture]]"
+                      type="pie"
+                      scale="ct-square"
+                    ></chartist-render>
+                  </td>
+                  <td>
+                    <chartist-render
+                      class="mini-chart"
+                      chart-title="Bonus percentage"
+                      data="[[attemptsData.bonus]]"
+                      type="pie"
+                      scale="ct-square"
+                    ></chartist-render>
+                  </td>
+                  <td>
+                    <chartist-render
+                      class="mini-chart"
+                      chart-title="Total percentage"
+                      data="[[attemptsData.total]]"
+                      type="pie"
+                      scale="ct-square"
+                    ></chartist-render>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div style="font-size: 24px;" hidden$="[[!remainingAttempts]]">
+              Points Remaining to Attempt:
+              <strong>[[remainingAttempts]]</strong>
+            </div>
+          </div>
+        </div>
+        <paper-button
+          aria-label="Close score board and return to game"
+          slot="buttons"
+          id="dismiss"
+          dialog-confirm
+          raised
+          >Return to game board</paper-button
+        >
+      </game-show-quiz-modal>
       <game-show-quiz-modal id="directions" title="[[directionsTitle]]">
         <div slot="content"><slot name="directions"></slot></div>
         <paper-button
@@ -268,20 +368,28 @@ class GameShowQuiz extends MutableData(PolymerElement) {
       </game-show-quiz-modal>
       <game-show-quiz-modal id="dialog" title="[[questionTitle]]">
         <vaadin-split-layout slot="content" style="height:80vh;">
-          <iron-image
-            style="min-width:100px; width:100%; min-height:50vh; height:75vh; background-color: lightgray;"
-            sizing="contain"
-            preload=""
-            src\$="[[activeQuestion.image]]"
-          ></iron-image>
-          <multiple-choice
-            randomize
-            single-option
-            id="question"
-            hide-buttons
-            title="[[activeQuestion.title]]"
-            answers="[[activeQuestion.data]]"
-          ></multiple-choice>
+          <div>
+            <iron-image
+              style="min-width:100px; width:100%; min-height:50vh; height:75vh; background-color: lightgray;"
+              sizing="contain"
+              preload=""
+              src\$="[[activeQuestion.image]]"
+            ></iron-image>
+          </div>
+          <div>
+            <multiple-choice
+              randomize
+              single-option
+              id="question"
+              hide-buttons
+              title="[[activeQuestion.title]]"
+              answers="[[activeQuestion.data]]"
+            ></multiple-choice>
+            <div hidden\$="[[!activeQuestion.submitted]]" aria-hidden="true">
+              <h3>Feedback</h3>
+              <p>[[activeQuestion.feedback]]</p>
+            </div>
+          </div>
         </vaadin-split-layout>
         <paper-button
           slot="buttons"
@@ -323,6 +431,39 @@ class GameShowQuiz extends MutableData(PolymerElement) {
        */
       title: {
         type: String
+      },
+      attemptsData: {
+        type: Object,
+        value: {
+          overall: {
+            labels: ["Slide ID", "Terminology", "Reading", "Lecture"],
+            series: [0, 0, 0, 0]
+          },
+          slideid: {
+            labels: ["Correct", "Incorrect"],
+            series: [0, 0]
+          },
+          terminology: {
+            labels: ["Correct", "Incorrect"],
+            series: [0, 0]
+          },
+          reading: {
+            labels: ["Correct", "Incorrect"],
+            series: [0, 0]
+          },
+          lecture: {
+            labels: ["Correct", "Incorrect"],
+            series: [0, 0]
+          },
+          bonus: {
+            labels: ["Correct", "Incorrect"],
+            series: [0, 0]
+          },
+          total: {
+            labels: ["Correct", "Incorrect"],
+            series: [0, 0]
+          }
+        }
       },
       /**
        * Points object
@@ -414,6 +555,12 @@ class GameShowQuiz extends MutableData(PolymerElement) {
     this.$.directions.toggle();
   }
   /**
+   * Toggle the directions to appear
+   */
+  scoreBoardToggle(e) {
+    this.$.scoreboard.toggle();
+  }
+  /**
    * Continue button pressed.
    */
   continueGameTap(e) {
@@ -448,6 +595,8 @@ class GameShowQuiz extends MutableData(PolymerElement) {
    * Submit answer to see what they got.
    */
   submitAnswer(e) {
+    // reset attemptsData for chartist and rebuild fully throughout
+    let attemptsData = this.attemptsData;
     // flip submitted status
     this.set("activeQuestion.submitted", true);
     this.notifyPath("activeQuestion.submitted");
@@ -463,14 +612,16 @@ class GameShowQuiz extends MutableData(PolymerElement) {
       parseInt(this.__activeValue);
     this.set("points." + this.__activeType + ".attempted", num);
     this.notifyPath("points." + this.__activeType + ".attempted");
-    // update the global totals for attempt
-    let total =
+    var total =
       parseInt(this.points.total.attempted) + parseInt(this.__activeValue);
-    this.set("points.total.attempted", total);
-    this.notifyPath("points.total.attempted");
-    // update remaining attempts
-    this.remainingAttempts =
-      this.remainingAttempts - parseInt(this.__activeValue);
+    if (this.__activeType != "bonus") {
+      // update the global totals for attempt
+      this.set("points.total.attempted", total);
+      this.notifyPath("points.total.attempted");
+      // update remaining attempts
+      this.remainingAttempts =
+        this.remainingAttempts - parseInt(this.__activeValue);
+    }
     // if current answer is correct
     if (this.$.question.checkAnswers()) {
       // show correct
@@ -494,8 +645,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
       icon.icon = "icons:check-circle";
       icon.classList.add("correct");
       // update total column
-      let total =
-        parseInt(this.points.total.earned) + parseInt(this.__activeValue);
+      total = parseInt(this.points.total.earned) + parseInt(this.__activeValue);
       this.set("points.total.earned", total);
       this.notifyPath("points.total.earned");
     } else {
@@ -530,8 +680,46 @@ class GameShowQuiz extends MutableData(PolymerElement) {
     ).toFixed(1);
     this.set("points.total.percent", total);
     this.notifyPath("points.total.percent");
+    attemptsData[this.__activeType].series = [
+      this.points[this.__activeType].earned,
+      this.points[this.__activeType].attempted -
+        this.points[this.__activeType].earned
+    ];
+    attemptsData.total.series = [
+      this.points.total.earned,
+      this.points.total.attempted - this.points.total.earned
+    ];
+    attemptsData.overall.series = [
+      this.points.slideid.attempted,
+      this.points.terminology.attempted,
+      this.points.reading.attempted,
+      this.points.lecture.attempted
+    ];
+    this.set("attemptsData", {});
+    this.set("attemptsData", attemptsData);
     // append child via polymer so we can style it correctly in shadow dom
     dom(this.__activeTap).appendChild(icon);
+    // check for if we have any attempts remaining
+    if (this.remainingAttempts <= 0) {
+      this.shadowRoot
+        .querySelectorAll("responsive-grid-col paper-button:not([disabled])")
+        .forEach(item => {
+          item.setAttribute("disabled", "disabled");
+        });
+      this.remainingAttempts = 0;
+      // open score report in a modal now
+      this.$.dialog.toggle();
+      this.scoreBoardToggle({});
+      const evt = new CustomEvent("simple-toast-show", {
+        bubbles: true,
+        cancelable: true,
+        detail: {
+          text: "Game over!",
+          duration: 5000
+        }
+      });
+      this.dispatchEvent(evt);
+    }
   }
   /**
    * Notice that something was tapped, resolve what it was.

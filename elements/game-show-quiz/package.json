@@ -38,6 +38,7 @@
     "@lrnwebcomponents/hax-body-behaviors": "^2.0.9",
     "@lrnwebcomponents/multiple-choice": "^2.0.9",
     "@lrnwebcomponents/responsive-grid": "^2.0.9",
+    "@lrnwebcomponents/chartist-render": "^2.0.9",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-flex-layout": "^3.0.1",
