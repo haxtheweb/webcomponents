@@ -154,7 +154,9 @@ class AbsolutePositionStateManager extends PolymerElement {
       clearTimeout(root.__timeout);
       root.__timeout = setTimeout(root.updateElements(), 250);
     });
-    root.__observer.disconnect();
+    if (root.__observer) {
+      root.__observer.disconnect();
+    }
   }
 
   /**
