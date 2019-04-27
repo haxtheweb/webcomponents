@@ -476,6 +476,7 @@ Polymer({
    */
   _loadAppStoreData: function(ready, appDataResponse, haxAutoloader) {
     if (
+      ready &&
       typeof appDataResponse !== typeof undefined &&
       appDataResponse != null
     ) {
@@ -536,13 +537,14 @@ Polymer({
           window.HaxStore.instance.appendChild(blox);
         }
       }
-      const evt = new CustomEvent("hax-store-app-store-loaded", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: true
-      });
-      this.dispatchEvent(evt);
+      this.dispatchEvent(
+        new CustomEvent("hax-store-app-store-loaded", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: true
+        })
+      );
       // now process the dynamic imports
       this._handleDynamicImports(items, haxAutoloader);
     }
@@ -798,8 +800,6 @@ Polymer({
    */
   attached: function() {
     afterNextRender(this, function() {
-      // register built in primitive definitions
-      this._buildPrimitiveDefinitions();
       // capture events and intercept them globally
       window.addEventListener(
         "hax-consent-tap",
@@ -810,8 +810,6 @@ Polymer({
         this._onBeforeUnload.bind(this)
       );
       window.addEventListener("paste", this._onPaste.bind(this));
-      // initialize voice commands
-      this.voiceCommands = this._initVoiceCommands();
       // set this global flag so we know it's safe to start trusting data
       // that is written to global preferences / storage bin
       setTimeout(() => {
@@ -860,6 +858,10 @@ Polymer({
       );
       window.HaxStore.ready = true;
       this.__ready = true;
+      // register built in primitive definitions
+      this._buildPrimitiveDefinitions();
+      // initialize voice commands
+      this.voiceCommands = this._initVoiceCommands();
     }
   },
   /**
