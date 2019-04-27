@@ -20,6 +20,9 @@ Polymer({
       #dialog {
         z-index: 1000;
       }
+      paper-dialog:not(:defined) {
+        display: none;
+      }
       .title {
         position: relative;
         padding: 16px;
