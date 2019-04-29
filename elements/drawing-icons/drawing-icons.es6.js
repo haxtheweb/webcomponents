@@ -1,4 +1,17 @@
-import"./node_modules/@polymer/iron-icon/iron-icon.js";import"./node_modules/@polymer/iron-iconset-svg/iron-iconset-svg.js";import{html}from"./node_modules/@polymer/polymer/lib/utils/html-tag.js";const template=html`
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ *
+ * `drawing-icons` is a iconset for the Material Design Icons collection
+ *
+ * Example:
+ *   <script>import "@lrnwebcomponents/drawing-icons/drawing-icons.js";</script>
+ *   <iron-icon icon="drawing:draw-rect"></iron-icon>
+ *
+ * @group LRN Elements
+ * @pseudoElement drawing-icons
+ * @demo demo/index.html
+ */import"./node_modules/@polymer/iron-icon/iron-icon.js";import"./node_modules/@polymer/iron-iconset-svg/iron-iconset-svg.js";import{html}from"./node_modules/@polymer/polymer/lib/utils/html-tag.js";const template=html`
   <iron-iconset-svg size="24" name="drawing">
     <!-- move -->
     <svg>

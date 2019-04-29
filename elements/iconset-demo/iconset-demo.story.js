@@ -4,13 +4,13 @@ import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storyb
 window.StorybookUtilities.requestAvailability();
 
 /**
- * add to the pattern library 
+ * add to the pattern library
  */
 const DemoPattern = {
-  "of": "Pattern Library/Atoms",
-  "name": "Icons",
-  "file": require("raw-loader!./demo/index.html"),
-  "replacements": []
+  of: "Pattern Library/Atoms",
+  name: "Icons",
+  file: require("raw-loader!./demo/index.html"),
+  replacements: []
 };
 window.StorybookUtilities.instance.addPattern(DemoPattern);
 
@@ -18,12 +18,11 @@ window.StorybookUtilities.instance.addPattern(DemoPattern);
  * add the live demo
  */
 const Story = {
-  "of": "Web Components",
-  "name": "iconset-demo",
-  "props": IconsetDemo.properties,
-  "slots": { 
-  }, 
-  "attr": ``,
-  "slotted": ``
-}
+  of: "Web Components",
+  name: "iconset-demo",
+  props: IconsetDemo.properties,
+  slots: {},
+  attr: ``,
+  slotted: ``
+};
 window.StorybookUtilities.instance.addLiveDemo(Story);

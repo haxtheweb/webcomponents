@@ -1,4 +1,12 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";let LicenseElement=Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";/**
+`license-element`
+A simple way of applying a semantically accurate license to work.
+
+* @demo demo/index.html
+
+@microcopy - the mental model for this element
+
+*/let LicenseElement=Polymer({_template:html`
     <style>
       :host {
         display: block;
@@ -92,4 +100,34 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         >
       </template>
     </div>
-  `,is:"license-element",behaviors:[HAXBehaviors.PropertiesBehaviors,SchemaBehaviors.Schema],properties:{title:{type:String},creator:{type:String},source:{type:String},licenseName:{type:String},licenseLink:{type:String},license:{type:String,observer:"_licenseUpdated"},moreLabel:{type:String,value:"on the licensing details page"},moreLink:{type:String},hasMore:{type:Boolean,computed:"_computeHasMore(moreLink)"}},attached:function(){let props={canScale:!1,canPosition:!1,canEditSource:!1,gizmo:{title:"License",description:"Provide a license for you rwork",icon:"icons:theaters",color:"grey",groups:["Content","Copyright"],handles:[{type:"license",source:"source",title:"title",author:"creator",license:"license"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"title",title:"Title",description:"The title of the work being cited.",inputMethod:"textfield",icon:"editor:title"}],configure:[{property:"title",title:"Title",description:"The title of the work being cited.",inputMethod:"textfield",icon:"editor:title"},{property:"source",title:"Source link",description:"The source url for the element this is citing.",inputMethod:"textfield",icon:"link",validationType:"url"},{property:"license",title:"License",description:"The source url for the element this is citing.",inputMethod:"select",options:this.licenseList("select"),icon:"link"},{property:"creator",title:"Creator",description:"Who made or owns this.",inputMethod:"textfield",icon:"link"}],advanced:[{property:"moreLink",title:"Source link",description:"Link to additional licensing details",inputMethod:"textfield",validationType:"url"},{property:"moreLabel",title:"more label",description:"Label for more licensing details",inputMethod:"textfield"}]}};this.setHaxProperties(props)},_computeHasMore:function(link){if(typeof link!==typeof void 0&&""!==link){return!0}return!1},licenseList:function(mode="full"){let list={by:{name:"Creative Commons: Attribution",link:"https://creativecommons.org/licenses/by/4.0/",image:"https://i.creativecommons.org/l/by/4.0/88x31.png"},"by-sa":{name:"Creative Commons: Attribution Share a like",link:"https://creativecommons.org/licenses/by-sa/4.0/",image:"https://i.creativecommons.org/l/by-sa/4.0/88x31.png"},"by-nd":{name:"Creative Commons: Attribution No derivatives",link:"https://creativecommons.org/licenses/by-nd/4.0/",image:"https://i.creativecommons.org/l/by-nd/4.0/88x31.png"},"by-nc":{name:"Creative Commons: Attribution non-commercial",link:"https://creativecommons.org/licenses/by-nc/4.0/",image:"https://i.creativecommons.org/l/by-nc/4.0/88x31.png"},"by-nc-sa":{name:"Creative Commons: Attribution non-commercial share a like",link:"https://creativecommons.org/licenses/by-nc-sa/4.0/",image:"https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"},"by-nc-nd":{name:"Creative Commons: Attribution Non-commercial No derivatives",link:"https://creativecommons.org/licenses/by-nc-nd/4.0/",image:"https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png"}};if("select"==mode){var select={};for(var i in list){select[i]=list[i].name}return select}return list},_licenseUpdated:function(newValue,oldValue){if(typeof newValue!==typeof void 0){var list=this.licenseList();if(typeof list[newValue]!==typeof void 0){this.licenseName=list[newValue].name;this.licenseLink=list[newValue].link;this.licenseImage=list[newValue].image}}}});export{LicenseElement};
+  `,is:"license-element",behaviors:[HAXBehaviors.PropertiesBehaviors,SchemaBehaviors.Schema],properties:{/**
+     * Title of the work.
+     */title:{type:String},/**
+     * Person or group that owns / created the work.
+     */creator:{type:String},/**
+     * Original Source of the work in question
+     */source:{type:String},/**
+     * License name, calculated or supplied by the end user if we don't have them.
+     */licenseName:{type:String},/**
+     * License link for more details
+     */licenseLink:{type:String},/**
+     * License short hand. Options cc0,
+     */license:{type:String,observer:"_licenseUpdated"},/**
+     * More details label
+     */moreLabel:{type:String,value:"on the licensing details page"},/**
+     * More details link
+     */moreLink:{type:String},/**
+     * See if we have more things to point to
+     */hasMore:{type:Boolean,computed:"_computeHasMore(moreLink)"}},/**
+   * Attached to the DOM, now fire.
+   */attached:function(){// Establish hax property binding
+let props={canScale:!1,canPosition:!1,canEditSource:!1,gizmo:{title:"License",description:"Provide a license for you rwork",icon:"icons:theaters",color:"grey",groups:["Content","Copyright"],handles:[{type:"license",source:"source",title:"title",author:"creator",license:"license"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"title",title:"Title",description:"The title of the work being cited.",inputMethod:"textfield",icon:"editor:title"}],configure:[{property:"title",title:"Title",description:"The title of the work being cited.",inputMethod:"textfield",icon:"editor:title"},{property:"source",title:"Source link",description:"The source url for the element this is citing.",inputMethod:"textfield",icon:"link",validationType:"url"},{property:"license",title:"License",description:"The source url for the element this is citing.",inputMethod:"select",options:this.licenseList("select"),icon:"link"},{property:"creator",title:"Creator",description:"Who made or owns this.",inputMethod:"textfield",icon:"link"}],advanced:[{property:"moreLink",title:"Source link",description:"Link to additional licensing details",inputMethod:"textfield",validationType:"url"},{property:"moreLabel",title:"more label",description:"Label for more licensing details",inputMethod:"textfield"}]}};this.setHaxProperties(props)},/**
+   * Calculate if we should show the advanced details area
+   */_computeHasMore:function(link){// only show if there's a link supplied for additional details
+if(typeof link!==typeof void 0&&""!==link){return!0}return!1},/**
+   * A list of licenses that we support the references for.
+   */licenseList:function(mode="full"){// initial list, PR to add more
+let list={by:{name:"Creative Commons: Attribution",link:"https://creativecommons.org/licenses/by/4.0/",image:"https://i.creativecommons.org/l/by/4.0/88x31.png"},"by-sa":{name:"Creative Commons: Attribution Share a like",link:"https://creativecommons.org/licenses/by-sa/4.0/",image:"https://i.creativecommons.org/l/by-sa/4.0/88x31.png"},"by-nd":{name:"Creative Commons: Attribution No derivatives",link:"https://creativecommons.org/licenses/by-nd/4.0/",image:"https://i.creativecommons.org/l/by-nd/4.0/88x31.png"},"by-nc":{name:"Creative Commons: Attribution non-commercial",link:"https://creativecommons.org/licenses/by-nc/4.0/",image:"https://i.creativecommons.org/l/by-nc/4.0/88x31.png"},"by-nc-sa":{name:"Creative Commons: Attribution non-commercial share a like",link:"https://creativecommons.org/licenses/by-nc-sa/4.0/",image:"https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"},"by-nc-nd":{name:"Creative Commons: Attribution Non-commercial No derivatives",link:"https://creativecommons.org/licenses/by-nc-nd/4.0/",image:"https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png"}};// support mutating the array into a select list
+if("select"==mode){var select={};for(var i in list){select[i]=list[i].name}return select}return list},/**
+   * License was updated, time to update license name and link.
+   */_licenseUpdated:function(newValue,oldValue){if(typeof newValue!==typeof void 0){var list=this.licenseList();if(typeof list[newValue]!==typeof void 0){this.licenseName=list[newValue].name;this.licenseLink=list[newValue].link;this.licenseImage=list[newValue].image}}}});export{LicenseElement};

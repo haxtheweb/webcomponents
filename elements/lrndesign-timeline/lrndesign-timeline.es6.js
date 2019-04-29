@@ -1,4 +1,18 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import{SimpleColors}from"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@lrnwebcomponents/responsive-utility/responsive-utility.js";export{LrndesignTimeline};class LrndesignTimeline extends SimpleColors{static get template(){return html`
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import{SimpleColors}from"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@lrnwebcomponents/responsive-utility/responsive-utility.js";export{LrndesignTimeline};/**
+ * `lrndesign-timeline`
+ * `an element that displays events on a timeline`
+ *
+ * @microcopy - language worth noting:
+ *  -
+ *
+ * @customElement
+ * @polymer
+ * @demo demo/index.html
+ */class LrndesignTimeline extends SimpleColors{// render function
+static get template(){return html`
 <style>:host {
   font-size: 14px;
   font-weight: 100;
@@ -132,13 +146,13 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
     padding: 0 20px;
     line-height: 50px;
     height: 50px;
-    color: var(--lrndesign-timeline-color);
-    background-color: var(--lrndesign-timeline-background);
-    transition: background-color 0.3s;
-  }
-  :host(:not([timeline-size="xs"])) .event[selected] .heading h2 {
     background-color: var(--lrndesign-timeline-header-accent);
     color:  var(--lrndesign-timeline-header);
+    opacity: 0.6;
+    transition: opacity 0.3s;
+  }
+  :host(:not([timeline-size="xs"])) .event[selected] .heading h2 {
+    opacity: 1;
   }
   :host(:not([timeline-size="xs"])) .event[has-media] .heading h2:after {
     content: '';
@@ -204,7 +218,7 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
   <slot></slot>
   <div id="timeline">
       <div id="events" on-scroll="_onScroll">
-        <template id="repeat" is="dom-repeat" items="[[events]]" as="event" index-as="index" restamp>
+        <template id="repeat" is="dom-repeat" items="[[__events]]" as="event" index-as="index" restamp>
           <section class="event" has-media$="[[_isSet(event.imagesrc)]]">
             <div class="event-overview">
               <div class="heading"><h2>[[event.heading]]</h2></div>
@@ -221,4 +235,52 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
         </template>
     </div>
   </div>
-</article>`}static get haxProperties(){return{canScale:!1,canPosition:!1,canEditSource:!0,gizmo:{title:"Timeline",description:"A timeline of events with images and text",icon:"icons:timeline",color:"indigo",groups:["Content","Instructional","Media","Image"],handles:[{type:"image",source:"image"}],meta:{author:"LRNWebComponents"}},settings:{quick:[],configure:[{property:"title",title:"Timeline Title",description:"A title for the timeline.",inputMethod:"textfield"},{property:"accentColor",title:"Accent Color",description:"An optional accent color.",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{property:"dark",title:"Dark Theme",description:"Enable Dark Theme",inputMethod:"boolean",icon:"icons:invert-colors"},{slot:"",title:"Timeline Description",description:"Optional text describing the timeline.",inputMethod:"textfield"},{property:"events",title:"Timeline Events",description:"The events in the timeline",inputMethod:"array",properties:[{property:"heading",title:"Event Heading",description:"The heading for the event.",inputMethod:"textfield",icon:"editor:title"},{property:"details",title:"Event Details",description:"The body text with details for the event.",inputMethod:"textfield",icon:"editor:title"},{property:"imagesrc",title:"Event Image",description:"The path of the image.",inputMethod:"textfield",icon:"editor:title"},{property:"imagealt",title:"Event Image Alt Text",description:"The alt text of the image (for accessibility).",inputMethod:"textfield",icon:"editor:title"}]}],advanced:[]}}}static get properties(){return{title:{type:"String",value:null},events:{type:"Array",value:[],notify:!0},timelineSize:{type:"String",value:"xs",reflectToAttribute:!0}}}static get tag(){return"lrndesign-timeline"}static get behaviors(){return[SimpleColors]}static get observers(){return["_updateEvents(events.*)"]}connectedCallback(){let root=this;super.connectedCallback();this.HAXWiring=new HAXWiring;this.HAXWiring.setup(LrndesignTimeline.haxProperties,LrndesignTimeline.tag,this);window.ResponsiveUtility.requestAvailability();window.dispatchEvent(new CustomEvent("responsive-element",{detail:{element:root,attribute:"timeline-size",relativeToParent:!0,sm:600,md:900,lg:1200,xl:1600}}));this._checkScroll()}_checkScroll(){let root=this,events=root.shadowRoot.querySelectorAll(".event");if(1>events.length)root.$.repeat.render();events=root.shadowRoot.querySelectorAll(".event");events.forEach(event=>{let top=event.offsetTop,target=events[0].offsetTop+50+event.parentNode.scrollTop,bottom=event.offsetTop+event.offsetHeight;if(target>top&&target<bottom){event.setAttribute("selected",!0)}else{event.removeAttribute("selected")}})}_isMediaType(event,type){return this._isSet(event.media)&&this._isSet(event.media.type)?event.media.type===type:!1}_isSet(prop){return prop!==void 0&&null!==prop}_updateEvents(e){for(var i in e.base){for(var j in e.base[i]){this.notifyPath("events."+i+"."+j)}}}_onScroll(e){this._checkScroll()}}window.customElements.define(LrndesignTimeline.tag,LrndesignTimeline);
+</article>`}// haxProperty definition
+static get haxProperties(){return{canScale:!1,canPosition:!1,canEditSource:!0,gizmo:{title:"Timeline",description:"A timeline of events with images and text",icon:"icons:timeline",color:"indigo",groups:["Content","Instructional","Media","Image"],handles:[{type:"image",source:"image"}],meta:{author:"LRNWebComponents"}},settings:{quick:[],configure:[{property:"title",title:"Timeline Title",description:"A title for the timeline.",inputMethod:"textfield"},{property:"accentColor",title:"Accent Color",description:"An optional accent color.",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{property:"dark",title:"Dark Theme",description:"Enable Dark Theme",inputMethod:"boolean",icon:"icons:invert-colors"},{slot:"",title:"Timeline Description",description:"Optional text describing the timeline.",inputMethod:"textfield"},{property:"events",title:"Timeline Events",description:"The events in the timeline",inputMethod:"array",properties:[{property:"heading",title:"Event Heading",description:"The heading for the event.",inputMethod:"textfield",icon:"editor:title"},{property:"details",title:"Event Details",description:"The body text with details for the event.",inputMethod:"textfield",icon:"editor:title"},{property:"imagesrc",title:"Event Image",description:"The path of the image.",inputMethod:"haxupload",icon:"editor:title"},{property:"imagealt",title:"Event Image Alt Text",description:"The alt text of the image (for accessibility).",inputMethod:"alt",icon:"editor:title"}]}],advanced:[]}}}// properties available to the custom element for data binding
+static get properties(){return{/**
+   * the title of the timeline
+   */title:{type:"String",value:null},/**
+   * the events of the timeline, in the desired order, as in:```
+[
+  {
+    "heading": "1855 - Penn State Charter",   //required, the main heading for the media, usually a date, time, or era
+    "details": "",                            //optional, text describing the event
+    "image": {                                //optional image for the event
+      "src": "path/to/media.jpg",             //the alt text of the image
+      "alt": "path/to/media.mp3",             //the url of the image
+    },
+    {...},
+    {...},
+  }
+]```
+   */events:{type:"Array",value:[],notify:!0},/**
+   * the updated list of events
+   */__events:{type:"Array",computed:"_updateEvents(events)",notify:!0},/**
+   * the timline size, calculated by responsive utility
+   */timelineSize:{type:"String",value:"xs",reflectToAttribute:!0}}}/**
+   * Store the tag name to make it easier to obtain directly.
+   * @notice function name must be here for tooling to operate correctly
+   */static get tag(){return"lrndesign-timeline"}/**
+   * gets simple-colors behaviors
+   */static get behaviors(){return[SimpleColors]}/**
+   * life cycle, element is afixed to the DOM
+   */connectedCallback(){let root=this;super.connectedCallback();this.HAXWiring=new HAXWiring;this.HAXWiring.setup(LrndesignTimeline.haxProperties,LrndesignTimeline.tag,this);window.ResponsiveUtility.requestAvailability();window.dispatchEvent(new CustomEvent("responsive-element",{detail:{element:root,attribute:"timeline-size",relativeToParent:!0,sm:600,md:900,lg:1200,xl:1600}}));this._checkScroll()}/**
+   * checks the scroll of each event
+   */_checkScroll(){let root=this,events=root.shadowRoot.querySelectorAll(".event");if(1>events.length)root.$.repeat.render();events=root.shadowRoot.querySelectorAll(".event");events.forEach(event=>{let top=event.offsetTop,target=events[0].offsetTop+50+event.parentNode.scrollTop,bottom=event.offsetTop+event.offsetHeight;if(target>top&&target<bottom){event.setAttribute("selected",!0)}else{event.removeAttribute("selected")}})}/**
+   * returns the media type for a given event, or false if there is no media
+   *
+   * @param {object} the event type to check
+   * @param {object} the media type to check
+   * @returns {string} the media type, or false if there is no media
+   */_isMediaType(event,type){return this._isSet(event.media)&&this._isSet(event.media.type)?event.media.type===type:!1}/**
+   * returns true if an property is not null
+   *
+   * @param {object} the property to check
+   * @returns {boolean} property !== undefined && property !== null
+   */_isSet(prop){return prop!==void 0&&null!==prop}/**
+   * gets updated event data
+   *
+   * @param {array} the raw events array
+   */_updateEvents(events){events="string"===typeof events?JSON.parse(events):events;return events}/**
+   * handles the scroll on the events side
+   */_onScroll(e){this._checkScroll()}}window.customElements.define(LrndesignTimeline.tag,LrndesignTimeline);

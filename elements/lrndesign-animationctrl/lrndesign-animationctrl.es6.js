@@ -1,4 +1,9 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./lib/lrndesign-animationctrl-button.js";let LrndesignAnimationctrl=Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./lib/lrndesign-animationctrl-button.js";/**
+`lrndesign-animationctrl`
+A LRN element
+
+* @demo demo/index.html
+*/let LrndesignAnimationctrl=Polymer({_template:html`
     <style>
       :host {
         display: block;

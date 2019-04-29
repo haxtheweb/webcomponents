@@ -1,44 +1,55 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/iron-ajax/iron-ajax.js";import"./node_modules/@polymer/iron-list/iron-list.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@polymer/iron-image/iron-image.js";import"./node_modules/@polymer/iron-icon/iron-icon.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@polymer/iron-icons/av-icons.js";import"./node_modules/@polymer/app-layout/app-drawer/app-drawer.js";import"./node_modules/@polymer/app-layout/app-drawer-layout/app-drawer-layout.js";import"./node_modules/@polymer/app-layout/app-header/app-header.js";import"./node_modules/@polymer/app-layout/app-header-layout/app-header-layout.js";import"./node_modules/@polymer/app-layout/app-scroll-effects/app-scroll-effects.js";import"./node_modules/@polymer/app-layout/app-toolbar/app-toolbar.js";import"./node_modules/@polymer/app-route/app-location.js";import"./node_modules/@polymer/app-route/app-route.js";import"./node_modules/@polymer/iron-pages/iron-pages.js";import"./node_modules/@polymer/iron-selector/iron-selector.js";import"./node_modules/@polymer/paper-icon-button/paper-icon-button.js";let ContentaPolymer=Polymer({_template:html`
-    <custom-style>
-      <style is="custom-style" include="materializecss-styles">
-        :host {
-          --app-primary-color: #4285f4;
-          --app-secondary-color: black;
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/iron-ajax/iron-ajax.js";import"./node_modules/@polymer/iron-list/iron-list.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@polymer/iron-image/iron-image.js";import"./node_modules/@polymer/iron-icon/iron-icon.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@polymer/iron-icons/av-icons.js";import"./node_modules/@polymer/app-layout/app-drawer/app-drawer.js";import"./node_modules/@polymer/app-layout/app-drawer-layout/app-drawer-layout.js";import"./node_modules/@polymer/app-layout/app-header/app-header.js";import"./node_modules/@polymer/app-layout/app-header-layout/app-header-layout.js";import"./node_modules/@polymer/app-layout/app-scroll-effects/app-scroll-effects.js";import"./node_modules/@polymer/app-layout/app-toolbar/app-toolbar.js";import"./node_modules/@polymer/app-route/app-location.js";import"./node_modules/@polymer/app-route/app-route.js";import"./node_modules/@polymer/iron-pages/iron-pages.js";import"./node_modules/@polymer/iron-selector/iron-selector.js";import"./node_modules/@polymer/paper-icon-button/paper-icon-button.js";/**
+`contenta-polymer`
+A polymer app to talk to Contenta to serve up it's content in a visually awesome way
 
-          display: block;
-        }
+@demo ../../demo/index.html
 
-        app-drawer-layout:not([narrow]) [drawer-toggle] {
-          display: none;
-        }
+@microcopy - the mental model for this app
+ - contenta - the future of Drupal and web development, a decoupled CMS.
+ -
 
-        app-header {
-          color: #fff;
-          background-color: var(--app-primary-color);
-        }
+*/let ContentaPolymer=Polymer({_template:html`
+    <style>
+      :host {
+        --app-primary-color: #4285f4;
+        --app-secondary-color: black;
 
-        app-header paper-icon-button {
-          --paper-icon-button-ink-color: white;
-        }
+        display: block;
+      }
 
-        .drawer-list {
-          margin: 0 20px;
-        }
+      app-drawer-layout:not([narrow]) [drawer-toggle] {
+        display: none;
+      }
 
-        .drawer-list a {
-          display: block;
-          padding: 0 16px;
-          text-decoration: none;
-          color: var(--app-secondary-color);
-          line-height: 40px;
-        }
+      app-header {
+        color: #fff;
+        background-color: var(--app-primary-color);
+      }
 
-        .drawer-list a.iron-selected {
-          color: black;
-          font-weight: bold;
-        }
-      </style>
-    </custom-style>
+      app-header paper-icon-button {
+        --paper-icon-button-ink-color: white;
+      }
+
+      .drawer-list {
+        margin: 0 20px;
+      }
+
+      .drawer-list a {
+        display: block;
+        padding: 0 16px;
+        text-decoration: none;
+        color: var(--app-secondary-color);
+        line-height: 40px;
+      }
+
+      .drawer-list a.iron-selected {
+        color: black;
+        font-weight: bold;
+      }
+    </style>
     <app-location route="{{route}}" url-space-regex="^[[rootPath]]">
     </app-location>
 
@@ -94,4 +105,6 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         </iron-pages>
       </app-header-layout>
     </app-drawer-layout>
-  `,is:"contenta-polymer",properties:{},_toArray:function(obj){return Object.keys(obj).map(function(key){return obj[key]})}});export{ContentaPolymer};
+  `,is:"contenta-polymer",properties:{},/**
+   * Simple way to convert from object to array.
+   */_toArray:function(obj){return Object.keys(obj).map(function(key){return obj[key]})}});export{ContentaPolymer};

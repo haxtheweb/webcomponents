@@ -8,14 +8,14 @@ window.StorybookUtilities.requestAvailability();
  * add to the pattern library
  */
 const ImageCompareSliderPattern = {
-  "of": "Pattern Library/Molecules/Media", 
-  "name": 'Image Compare',
-  "file": require("raw-loader!./demo/index.html"),
-  "replacements": [
-    {"find": "\.\/images\/Matterhorn01.png", "replace": image1 },
-    {"find": "\.\/images\/Matterhorn02.png", "replace": image2 }
+  of: "Pattern Library/Molecules/Media",
+  name: "Image Compare",
+  file: require("raw-loader!./demo/index.html"),
+  replacements: [
+    { find: "./images/Matterhorn01.png", replace: image1 },
+    { find: "./images/Matterhorn02.png", replace: image2 }
   ]
-}
+};
 window.StorybookUtilities.instance.addPattern(ImageCompareSliderPattern);
 
 /**
@@ -24,14 +24,14 @@ window.StorybookUtilities.instance.addPattern(ImageCompareSliderPattern);
 const ImageCompareSliderProps = ImageCompareSlider.properties;
 ImageCompareSliderProps.topSrc.value = image1;
 ImageCompareSliderProps.bottomSrc.value = image2;
-ImageCompareSliderProps.style = {"type":"String", "value": `width: 400px;`};
+ImageCompareSliderProps.style = { type: "String", value: `width: 400px;` };
 
 const ImageCompareSliderStory = {
-  "of": "Web Components",
-  "name": "image-compare-slider",
-  "props":  ImageCompareSliderProps,
-  "slots": {}, 
-  "attr": ``,
-  "slotted": ``
+  of: "Web Components",
+  name: "image-compare-slider",
+  props: ImageCompareSliderProps,
+  slots: {},
+  attr: ``,
+  slotted: ``
 };
 window.StorybookUtilities.instance.addLiveDemo(ImageCompareSliderStory);

@@ -1,4 +1,18 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import"./node_modules/@polymer/iron-flex-layout/iron-flex-layout.js";const styleElement=document.createElement("dom-module"),css=html`
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ *
+ * `lrn-shared-styles`
+ * `a shared set of styles for @lrnwebcomponents`
+ *
+ * @microcopy - language worth noting:
+ *  -
+ *
+ * @pseudoElement
+ * @polymer
+ * @demo demo/index.html
+ * @see lib/lrn-shared-styles-demo.js
+ */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import"./node_modules/@polymer/iron-flex-layout/iron-flex-layout.js";const styleElement=document.createElement("dom-module"),css=html`
   <style include="iron-flex-layout">
     /**
      * Normalizes iron-icon and lrn-icon.

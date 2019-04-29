@@ -1,4 +1,9 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import{FlattenedNodesObserver}from"./node_modules/@polymer/polymer/lib/utils/flattened-nodes-observer.js";let WordCount=Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import{FlattenedNodesObserver}from"./node_modules/@polymer/polymer/lib/utils/flattened-nodes-observer.js";/**
+ * `word-count`
+ * `Count the words on whatever this wraps`
+ *
+ * @demo demo/index.html
+ */let WordCount=Polymer({_template:html`
     <style>
       :host {
         display: block;
@@ -37,4 +42,17 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       }
     </style>
     <slot></slot>
-  `,is:"word-count",hostAttributes:{tabindex:"0"},properties:{words:{type:Number},wordsPrefix:{type:String,value:"Words:"},wordsText:{type:String,computed:"_computeWordsText(words, wordsPrefix)",reflectToAttribute:!0}},ready:function(){this._observer=new FlattenedNodesObserver(this,info=>{if(0<info.addedNodes.length||0<info.removedNodes.length){this._updateWords()}})},_updateWords:function(){if(""!==dom(this).textContent){this.words=parseInt(dom(this).textContent.split(/\s+/g).length-1)}else{this.words=0}},_computeWordsText:function(words,prefix){return prefix+" "+words}});export{WordCount};
+  `,is:"word-count",hostAttributes:{tabindex:"0"},properties:{/**
+     * Words
+     */words:{type:Number},/**
+     * Prefix text.
+     */wordsPrefix:{type:String,value:"Words:"},/**
+     * Text to output
+     */wordsText:{type:String,computed:"_computeWordsText(words, wordsPrefix)",reflectToAttribute:!0}},/**
+   * Ready life cycle
+   */ready:function(){// mutation observer that ensures state applied correctly
+this._observer=new FlattenedNodesObserver(this,info=>{if(0<info.addedNodes.length||0<info.removedNodes.length){this._updateWords()}})},/**
+   * Update words based on data in the slot.
+   */_updateWords:function(){if(""!==dom(this).textContent){this.words=parseInt(dom(this).textContent.split(/\s+/g).length-1)}else{this.words=0}},/**
+   * Computer the text to output for words
+   */_computeWordsText:function(words,prefix){return prefix+" "+words}});export{WordCount};

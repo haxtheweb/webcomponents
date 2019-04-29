@@ -6,31 +6,34 @@ import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storyb
 window.StorybookUtilities.requestAvailability();
 
 /**
- * add to the pattern library 
+ * add to the pattern library
  */
 const SimplePopoverPattern = {
-  "of": "Pattern Library/Atoms/Layout",
-  "name": "Popover",
-  "file": require("raw-loader!./demo/index.html"),
-  "replacements": []
+  of: "Pattern Library/Atoms/Layout",
+  name: "Popover",
+  file: require("raw-loader!./demo/index.html"),
+  replacements: []
 };
 window.StorybookUtilities.instance.addPattern(SimplePopoverPattern);
 
 /**
  * add the live demo
  */
-const props = Object.assign(AbsolutePositionBehavior.properties,SimplePopover.properties);
+const props = Object.assign(
+  AbsolutePositionBehavior.properties,
+  SimplePopover.properties
+);
 delete props.target;
 props.auto.value = true;
 props.for.type = "Select";
 props.for.value = "em";
-props.for.options = ["em","p1","p2","strong"];
+props.for.options = ["em", "p1", "p2", "strong"];
 props.position.type = "Select";
-props.position.options = ["top","bottom","left","right"];
+props.position.options = ["top", "bottom", "left", "right"];
 const SimplePopoverStory = {
-  "of": "Web Components",
-  "name": "simple-popover",
-  "before": `
+  of: "Web Components",
+  name: "simple-popover",
+  before: `
     <div contenteditable="true">
       <p id="p1">
         Aenean eget nisl volutpat, molestie purus eget, bibendum metus. 
@@ -55,16 +58,15 @@ const SimplePopoverStory = {
         lacinia. Duis ut libero eget augue egestas suscipit. 
       </p>
     </div>`,
-  "props": props,
-  "slots": {
-    "slot":                              
-      {
-        "name": "slot",
-        "type": "String",
-        "value": `I'm a popover!`
-      }
-  }, 
-  "attr": ``,
-  "slotted": ``
-}
+  props: props,
+  slots: {
+    slot: {
+      name: "slot",
+      type: "String",
+      value: `I'm a popover!`
+    }
+  },
+  attr: ``,
+  slotted: ``
+};
 window.StorybookUtilities.instance.addLiveDemo(SimplePopoverStory);

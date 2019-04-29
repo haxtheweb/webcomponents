@@ -4,13 +4,13 @@ import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storyb
 window.StorybookUtilities.requestAvailability();
 
 /**
- * add to the pattern library 
+ * add to the pattern library
  */
 const SimplePickerPattern = {
-  "of": "Pattern Library/Atoms/Forms",
-  "name": "Picker",
-  "file": require("raw-loader!./demo/index.html"),
-  "replacements": []
+  of: "Pattern Library/Atoms/Forms",
+  name: "Picker",
+  file: require("raw-loader!./demo/index.html"),
+  replacements: []
 };
 window.StorybookUtilities.instance.addPattern(SimplePickerPattern);
 
@@ -23,37 +23,40 @@ props.options.type = "Object";
 props.options.value = [
   [
     {
-      "alt": "sans-serif",              
-      "style": "font-family: sans-serif",
-      "value": "sans-serif"
+      alt: "sans-serif",
+      style: "font-family: sans-serif",
+      value: "sans-serif"
     }
-  ],[
+  ],
+  [
     {
-      "alt": "serif",
-      "style": "font-family: serif",
-      "value": "serif"
+      alt: "serif",
+      style: "font-family: serif",
+      value: "serif"
     }
-  ],[
+  ],
+  [
     {
-      "alt": "monospace",
-      "selected": true,
-      "style": "font-family: monospace",
-      "value": "monospace"
+      alt: "monospace",
+      selected: true,
+      style: "font-family: monospace",
+      value: "monospace"
     }
-  ],[
+  ],
+  [
     {
-      "alt": "cursive",
-      "style": "font-family: cursive",
-      "value": "cursive"
+      alt: "cursive",
+      style: "font-family: cursive",
+      value: "cursive"
     }
   ]
 ];
 const SimplePickerStory = {
-  "of": "Web Components",
-  "name": "simple-picker",
-  "props": props,
-  "slots": {}, 
-  "attr": ``, 
-  "slotted": ``
-}
+  of: "Web Components",
+  name: "simple-picker",
+  props: props,
+  slots: {},
+  attr: ``,
+  slotted: ``
+};
 window.StorybookUtilities.instance.addLiveDemo(SimplePickerStory);

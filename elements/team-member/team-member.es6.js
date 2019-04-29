@@ -1,4 +1,12 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import"./node_modules/@polymer/iron-iconset-svg/iron-iconset-svg.js";import"./node_modules/@polymer/iron-image/iron-image.js";import"./node_modules/@polymer/paper-icon-button/paper-icon-button.js";import"./node_modules/@lrnwebcomponents/mdi-iconset-svg/lib/mdi-social-iconset-svg.js";let TeamMember=Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import"./node_modules/@polymer/iron-iconset-svg/iron-iconset-svg.js";import"./node_modules/@polymer/iron-image/iron-image.js";import"./node_modules/@polymer/paper-icon-button/paper-icon-button.js";import"./node_modules/@lrnwebcomponents/mdi-iconset-svg/lib/mdi-social-iconset-svg.js";/**
+ * `team-member`
+ * `A simple presentation of a team member and basic info`
+ *
+ * @demo demo/index.html
+ *
+ * @microcopy - the mental model for this element
+ * -
+ */let TeamMember=Polymer({_template:html`
     <style is="custom-style">
       :host {
         display: block;
@@ -85,4 +93,37 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         ></a>
       </div>
     </div>
-  `,is:"team-member",behaviors:[HAXBehaviors.PropertiesBehaviors,SchemaBehaviors.Schema],properties:{image:{type:String},fullName:{type:String},firstLine:{type:String,value:!1},secondLine:{type:String,value:!1},dribble:{type:String,value:!1},facebook:{type:String,value:!1},github:{type:String,value:!1},google:{type:String,value:!1},instagram:{type:String,value:!1},linkedin:{type:String,value:!1},pinterest:{type:String,value:!1},tumblr:{type:String,value:!1},twitch:{type:String,value:!1},twitter:{type:String,value:!1},whatsapp:{type:String,value:!1}},attached:function(){let props={canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Sample gizmo",description:"The user will be able to see this for selection in a UI.",icon:"av:play-circle-filled",color:"grey",groups:["Video","Media"],handles:[{type:"video",url:"source"}],meta:{author:"Your organization on github"}},settings:{quick:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield",icon:"editor:title"}],configure:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield",icon:"editor:title"}],advanced:[]}};this.setHaxProperties(props)}});export{TeamMember};
+  `,is:"team-member",behaviors:[HAXBehaviors.PropertiesBehaviors,SchemaBehaviors.Schema],properties:{/**
+     * Image
+     */image:{type:String},/**
+     * Full name of the team member
+     */fullName:{type:String},/**
+     * first line
+     */firstLine:{type:String,value:!1},/**
+     * second line
+     */secondLine:{type:String,value:!1},/**
+     * dribble
+     */dribble:{type:String,value:!1},/**
+     * facebook
+     */facebook:{type:String,value:!1},/**
+     * github
+     */github:{type:String,value:!1},/**
+     * google
+     */google:{type:String,value:!1},/**
+     * instagram
+     */instagram:{type:String,value:!1},/**
+     * linkedin
+     */linkedin:{type:String,value:!1},/**
+     * pinterest
+     */pinterest:{type:String,value:!1},/**
+     * tumblr
+     */tumblr:{type:String,value:!1},/**
+     * twitch
+     */twitch:{type:String,value:!1},/**
+     * twitter
+     */twitter:{type:String,value:!1},/**
+     * whatsapp
+     */whatsapp:{type:String,value:!1}},/**
+   * Attached to the DOM, now fire.
+   */attached:function(){// Establish hax property binding
+let props={canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Sample gizmo",description:"The user will be able to see this for selection in a UI.",icon:"av:play-circle-filled",color:"grey",groups:["Video","Media"],handles:[{type:"video",url:"source"}],meta:{author:"Your organization on github"}},settings:{quick:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield",icon:"editor:title"}],configure:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield",icon:"editor:title"}],advanced:[]}};this.setHaxProperties(props)}});export{TeamMember};

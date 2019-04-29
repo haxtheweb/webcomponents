@@ -1,4 +1,24 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import*as async from"./node_modules/@polymer/polymer/lib/utils/async.js";import"./node_modules/@polymer/paper-icon-button/paper-icon-button.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@polymer/iron-icons/social-icons.js";import"./node_modules/@polymer/iron-icons/device-icons.js";import"./node_modules/@polymer/iron-pages/iron-pages.js";import"./node_modules/@polymer/iron-image/iron-image.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@polymer/iron-ajax/iron-ajax.js";import"./node_modules/@polymer/iron-list/iron-list.js";import"./node_modules/@polymer/iron-swipeable-container/iron-swipeable-container.js";import"./node_modules/@polymer/paper-tooltip/paper-tooltip.js";import"./node_modules/@polymer/paper-progress/paper-progress.js";import"./node_modules/@polymer/app-layout/app-toolbar/app-toolbar.js";import"./node_modules/@polymer/app-layout/app-header/app-header.js";import"./node_modules/@lrnwebcomponents/item-overlay-ops/item-overlay-ops.js";import"./node_modules/@lrnwebcomponents/lrnsys-outline/lrnsys-outline.js";import"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@lrnwebcomponents/simple-modal/simple-modal.js";import"./node_modules/@lrnwebcomponents/editable-list/editable-list.js";import"./lib/sortable-list.js";import{pagemap}from"./lib/pagemap.js";class OutlineDesigner extends PolymerElement{static get template(){return html`
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import*as async from"./node_modules/@polymer/polymer/lib/utils/async.js";import"./node_modules/@polymer/paper-icon-button/paper-icon-button.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@polymer/iron-icons/social-icons.js";import"./node_modules/@polymer/iron-icons/device-icons.js";import"./node_modules/@polymer/iron-pages/iron-pages.js";import"./node_modules/@polymer/iron-image/iron-image.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@polymer/iron-ajax/iron-ajax.js";import"./node_modules/@polymer/iron-list/iron-list.js";import"./node_modules/@polymer/iron-swipeable-container/iron-swipeable-container.js";import"./node_modules/@polymer/paper-tooltip/paper-tooltip.js";import"./node_modules/@polymer/paper-progress/paper-progress.js";import"./node_modules/@polymer/app-layout/app-toolbar/app-toolbar.js";import"./node_modules/@polymer/app-layout/app-header/app-header.js";import"./node_modules/@lrnwebcomponents/item-overlay-ops/item-overlay-ops.js";import"./node_modules/@lrnwebcomponents/lrnsys-outline/lrnsys-outline.js";import"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@lrnwebcomponents/simple-modal/simple-modal.js";import"./node_modules/@lrnwebcomponents/editable-list/editable-list.js";import"./lib/sortable-list.js";import{pagemap}from"./lib/pagemap.js";/**
+ * `outline-designer`
+ * `tools to modify and visualize JSON Outline Schema for editing`
+ *
+ * @microcopy - language worth noting:
+ *  -
+ * Feedback
+ * color code lessons
+step down the hierarchy
+
+mode vs resolution (3 levels)
+
+ *
+ * @customElement
+ * @polymer
+ * @demo demo/index.html
+ */class OutlineDesigner extends PolymerElement{// render function
+static get template(){return html`
 <style>:host {
   display: block;
 }
@@ -289,4 +309,55 @@ paper-card.card-high-detail {
   </section>
 </iron-pages>
 <canvas id="minimaparea"></canvas>
-<slot></slot>`}static get properties(){return{viewMode:{name:"viewMode",type:"String",value:"cards",observer:"_viewModeChanged"},viewModeIcon:{name:"viewModeIcon",type:"String"},viewModeLabel:{name:"viewModeLabel",type:"String"},detailsMode:{name:"detailsMode",type:"String",value:"mid",reflectToAttribute:!0,observer:"_detailsModeChanged"},detailsModeIcon:{name:"detailsModeIcon",type:"String"},detailsModeLabel:{name:"detailsModeLabel",type:"String"},selectedView:{name:"selectedView",type:"Number"},editMode:{name:"editMode",type:"Boolean",value:!1,reflectToAttribute:!0,observer:"_editModeChanged"},miniMap:{name:"miniMap",type:"Boolean",value:!0,reflectToAttribute:!0,observer:"_miniMapChanged"},outlineSchemaUrl:{name:"outlineSchemaUrl",type:"String",value:!1},manifest:{name:"manifest",type:"Object",notify:!0},outlineData:{name:"outlineData",type:"Object",notify:!0}}}static get tag(){return"outline-designer"}connectedCallback(){super.connectedCallback();this.$.ironlist.addEventListener("item-overlay-op-changed",this._overlayOpChanged.bind(this));this.$.ironlist.addEventListener("item-overlay-option-selected",this._overlayOpSelected.bind(this));pagemap(this.$.minimaparea,{viewport:null,styles:{"ul,ol,li":"rgba(0, 0, 0, 0.08)","h1,h2,h3,h4,h5,h6,a":"rgba(0, 0, 0, 0.10)","lrnsys-outline-item":"rgba(0, 0, 0, 0.08)","p,section":"rgba(0, 0, 0, 0.02)"},back:"rgba(0, 0, 0, 0.02)",view:"rgba(0, 0, 0, 0.05)",drag:"rgba(0, 0, 0, 0.10)",interval:null})}disconnectedCallback(){super.disconnectedCallback();this.$.ironlist.removeEventListener("item-overlay-op-changed",this._overlayOpChanged.bind(this));this.$.ironlist.removeEventListener("item-overlay-option-selected",this._overlayOpSelected.bind(this))}_toggleMiniMap(e){this.miniMap=!this.miniMap}_miniMapChanged(newValue,oldValue){if(typeof newValue!==typeof void 0){if(newValue){this.$.minimap.icon="device:gps-fixed";this.$.minimaparea.classList.add("show-minimap")}else{this.$.minimap.icon="device:gps-off";this.$.minimaparea.classList.remove("show-minimap")}}}_toggleViewMode(e){switch(this.viewMode){case"cards":this.viewMode="outline";break;case"outline":this.outlineData=this.$.outline.getData();this.viewMode="tree";break;case"tree":this.viewMode="drag";break;case"drag":this.viewMode="cards";break;}}_toggleDetailsMode(e){switch(this.detailsMode){case"low":this.detailsMode="mid";break;case"mid":this.detailsMode="high";break;case"high":this.detailsMode="low";break;}}_detailsModeChanged(newValue,oldValue){if(typeof newValue!==typeof void 0){switch(newValue){case"low":this.detailsModeIcon="icons:apps";this.detailsModeLabel="Low";break;case"mid":this.detailsModeIcon="icons:view-module";this.detailsModeLabel="Medium";break;case"high":this.detailsModeIcon="icons:view-carousel";this.detailsModeLabel="High";break;}if(0===this.selectedView){async.microTask.run(()=>{setTimeout(()=>{this.$.ironlist.fire("iron-resize");window.dispatchEvent(new Event("resize"))},50)})}}}_onSortFinish(e){console.log(e.detail)}_overlayOpChanged(e){console.log(e.detail);switch(e.detail.operation){case"add":console.log("add item");console.log(e.detail.element.getAttribute("data-item-id"));break;case"edit":console.log("edit item");console.log(e.detail.element.getAttribute("data-item-id"));break;}}_overlayOpSelected(e){console.log(e.detail);switch(e.detail.operation){case"move":if("option1"===e.detail.option){console.log("move left")}else if("option2"===e.detail.option){console.log("move right")}console.log(e.detail.element.getAttribute("data-item-id"));break;case"duplicate":if("option1"===e.detail.option){console.log("duplicate");console.log(e.detail.element.getAttribute("data-item-id"))}break;case"remove":if("option1"===e.detail.option){console.log("remove");console.log(e.detail.element.getAttribute("data-item-id"))}break;}}_viewModeChanged(newValue,oldValue){if(typeof newValue!==typeof void 0){switch(newValue){case"cards":this.$.viewmode.classList.add("rotate-90");this.selectedView=0;this.viewModeIcon="icons:view-module";this.viewModeLabel="Card view";async.microTask.run(()=>{setTimeout(()=>{this.$.ironlist.fire("iron-resize");window.dispatchEvent(new Event("resize"))},100)});break;case"outline":this.$.viewmode.classList.remove("rotate-90");this.selectedView=1;this.viewModeIcon="icons:view-list";this.viewModeLabel="Outline view";break;case"tree":this.$.viewmode.classList.add("rotate-90");this.selectedView=2;this.viewModeIcon="social:share";this.viewModeLabel="Tree view";break;case"drag":this.$.viewmode.classList.remove("rotate-90");this.selectedView=3;this.viewModeIcon="icons:touch-app";this.viewModeLabel="Draggable cards";break;}}}}window.customElements.define("outline-designer",OutlineDesigner);export{OutlineDesigner};
+<slot></slot>`}// properties available to the custom element for data binding
+static get properties(){return{/**
+   * Which layout to the outline to display
+   */viewMode:{name:"viewMode",type:"String",value:"cards",observer:"_viewModeChanged"},/**
+   * Icon for the selected view mode
+   */viewModeIcon:{name:"viewModeIcon",type:"String"},/**
+   * Label for the selected view mode
+   */viewModeLabel:{name:"viewModeLabel",type:"String"},/**
+   * Which layout to the outline to display
+   */detailsMode:{name:"detailsMode",type:"String",value:"mid",reflectToAttribute:!0,observer:"_detailsModeChanged"},/**
+   * Icon for the selected view mode
+   */detailsModeIcon:{name:"detailsModeIcon",type:"String"},/**
+   * Label for the selected view mode
+   */detailsModeLabel:{name:"detailsModeLabel",type:"String"},/**
+   * Data binding to show the selected view
+   */selectedView:{name:"selectedView",type:"Number"},/**
+   * Whether or not we are in an editing state
+   */editMode:{name:"editMode",type:"Boolean",value:!1,reflectToAttribute:!0,observer:"_editModeChanged"},/**
+   * Whether or to show the mini map
+   */miniMap:{name:"miniMap",type:"Boolean",value:!0,reflectToAttribute:!0,observer:"_miniMapChanged"},/**
+   * end point / JSON to load
+   */outlineSchemaUrl:{name:"outlineSchemaUrl",type:"String",value:!1},/**
+   * JSON outline schema manifest
+   */manifest:{name:"manifest",type:"Object",notify:!0},/**
+   * Data in outline format
+   */outlineData:{name:"outlineData",type:"Object",notify:!0}}}/**
+   * Store the tag name to make it easier to obtain directly.
+   */static get tag(){return"outline-designer"}/**
+   * life cycle, element is afixed to the DOM
+   */connectedCallback(){super.connectedCallback();this.$.ironlist.addEventListener("item-overlay-op-changed",this._overlayOpChanged.bind(this));this.$.ironlist.addEventListener("item-overlay-option-selected",this._overlayOpSelected.bind(this));pagemap(this.$.minimaparea,{viewport:null,styles:{"ul,ol,li":"rgba(0, 0, 0, 0.08)","h1,h2,h3,h4,h5,h6,a":"rgba(0, 0, 0, 0.10)","lrnsys-outline-item":"rgba(0, 0, 0, 0.08)","p,section":"rgba(0, 0, 0, 0.02)"},back:"rgba(0, 0, 0, 0.02)",view:"rgba(0, 0, 0, 0.05)",drag:"rgba(0, 0, 0, 0.10)",interval:null})}/**
+   * life cycle, element is removed from the DOM
+   */disconnectedCallback(){super.disconnectedCallback();this.$.ironlist.removeEventListener("item-overlay-op-changed",this._overlayOpChanged.bind(this));this.$.ironlist.removeEventListener("item-overlay-option-selected",this._overlayOpSelected.bind(this))}_toggleMiniMap(e){this.miniMap=!this.miniMap}_miniMapChanged(newValue,oldValue){if(typeof newValue!==typeof void 0){if(newValue){this.$.minimap.icon="device:gps-fixed";this.$.minimaparea.classList.add("show-minimap")}else{this.$.minimap.icon="device:gps-off";this.$.minimaparea.classList.remove("show-minimap")}}}/**
+   * toggle between view modes
+   */_toggleViewMode(e){switch(this.viewMode){case"cards":this.viewMode="outline";break;case"outline":this.outlineData=this.$.outline.getData();this.viewMode="tree";break;case"tree":this.viewMode="drag";break;case"drag":this.viewMode="cards";break;}}/**
+   * toggle between details mode
+   */_toggleDetailsMode(e){switch(this.detailsMode){case"low":this.detailsMode="mid";break;case"mid":this.detailsMode="high";break;case"high":this.detailsMode="low";break;}}// Observer details mode for changes
+_detailsModeChanged(newValue,oldValue){if(typeof newValue!==typeof void 0){switch(newValue){case"low":this.detailsModeIcon="icons:apps";this.detailsModeLabel="Low";break;case"mid":this.detailsModeIcon="icons:view-module";this.detailsModeLabel="Medium";break;case"high":this.detailsModeIcon="icons:view-carousel";this.detailsModeLabel="High";break;}// fire resize event if iron-list is visible
+if(0===this.selectedView){async.microTask.run(()=>{setTimeout(()=>{this.$.ironlist.fire("iron-resize");window.dispatchEvent(new Event("resize"))},50)})}}}/**
+   * Sorting of items has finished, meaning drag drop complete
+   */_onSortFinish(e){// @todo ensure items align with what's been drag and drop reordered
+console.log(e.detail)}/**
+   * overlay operation changed
+   */_overlayOpChanged(e){console.log(e.detail);switch(e.detail.operation){case"add":// @todo execute adding an item after here
+console.log("add item");console.log(e.detail.element.getAttribute("data-item-id"));break;case"edit":// @todo execute edit item here
+console.log("edit item");console.log(e.detail.element.getAttribute("data-item-id"));break;}}/**
+   * Option selected in overlay by the user
+   */_overlayOpSelected(e){console.log(e.detail);switch(e.detail.operation){case"move":if("option1"===e.detail.option){// @todo execute move left
+console.log("move left")}else if("option2"===e.detail.option){// @todo execute move right
+console.log("move right")}console.log(e.detail.element.getAttribute("data-item-id"));break;case"duplicate":if("option1"===e.detail.option){// @todo execute duplicate
+console.log("duplicate");console.log(e.detail.element.getAttribute("data-item-id"))}break;case"remove":if("option1"===e.detail.option){// @todo execute delete
+console.log("remove");console.log(e.detail.element.getAttribute("data-item-id"))}break;}}// Observer layoutMode for changes
+_viewModeChanged(newValue,oldValue){if(typeof newValue!==typeof void 0){switch(newValue){case"cards":this.$.viewmode.classList.add("rotate-90");this.selectedView=0;this.viewModeIcon="icons:view-module";this.viewModeLabel="Card view";async.microTask.run(()=>{setTimeout(()=>{this.$.ironlist.fire("iron-resize");window.dispatchEvent(new Event("resize"))},100)});break;case"outline":this.$.viewmode.classList.remove("rotate-90");this.selectedView=1;this.viewModeIcon="icons:view-list";this.viewModeLabel="Outline view";break;case"tree":this.$.viewmode.classList.add("rotate-90");this.selectedView=2;this.viewModeIcon="social:share";this.viewModeLabel="Tree view";break;case"drag":this.$.viewmode.classList.remove("rotate-90");this.selectedView=3;this.viewModeIcon="icons:touch-app";this.viewModeLabel="Draggable cards";break;}}}}window.customElements.define("outline-designer",OutlineDesigner);export{OutlineDesigner};

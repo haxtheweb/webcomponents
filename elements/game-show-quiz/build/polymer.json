@@ -1,0 +1,34 @@
+{
+  "entrypoint": "demo/index.html",
+  "fragments": [],
+  "sources": ["demo/index.html"],
+  "extraDependencies": [
+    "bower_components/webcomponentsjs/*.js",
+    "demo/**",
+    "node_modules/@webcomponents/webcomponentsjs/*.js",
+    "!node_modules/@webcomponents/webcomponentsjs/gulpfile.js",
+    "node_modules/@webcomponents/webcomponentsjs/bundles/*.js"
+  ],
+  "builds": [
+    {
+      "name": "es6",
+      "browserCapabilities": ["es2015", "modules"],
+      "js": {
+        "minify": true
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": false
+      },
+      "bundle": false
+    }
+  ],
+  "lint": {
+    "rules": ["polymer-3"]
+  },
+  "npm": true,
+  "componentDir": "node_modules/",
+  "moduleResolution": "node"
+}

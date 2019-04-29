@@ -1,4 +1,12 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";let WatsonlogicParallax=Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";/**
+ * `watsonlogic-parallax`
+ * `Parallax scrolling effect web component for Polymer 2.0.`
+ *
+ * @customElement
+ * @polymer
+ * @polymerLegacy
+ * @demo demo/index.html
+ */let WatsonlogicParallax=Polymer({_template:html`
     <style>
       :host {
         display: block;

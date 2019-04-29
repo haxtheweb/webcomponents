@@ -1,4 +1,12 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js";let LrndesignSidenote=Polymer({_template:html`
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js";/**
+`lrndesign-sidenote`
+A basic side note
+
+* @demo demo/index.html
+*/let LrndesignSidenote=Polymer({_template:html`
     <style>
       :host {
         display: block;
@@ -43,4 +51,25 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       </div>
       <slot></slot>
     </div>
-  `,is:"lrndesign-sidenote",behaviors:[A11yBehaviors.A11y,MaterializeCSSBehaviors.ColorBehaviors],properties:{label:{type:String,value:""},icon:{type:String,value:""},bgColor:{type:String,value:"#f7f7f7"},outset:{type:Number,value:0},outsetMeasurementType:{type:String,value:"em"}},created:function(){for(var prop in this.properties){let prefix=this.is;prefix=prefix.replace("-"," ").replace(/(?:^\w|[A-Z]|\b\w)/g,function(letter,index){return 0==index?letter.toLowerCase():letter.toUpperCase()}).replace(/\s+/g,"");if("undefined"!==typeof window[prefix]){if("undefined"!==typeof window[prefix][prop]){this.properties[prop].value=window[prefix][prop]}}}},observers:["__updateStyles(bgColor, outset, outsetMeasurementType)"],__updateStyles:function(bgColor,outset,outsetMeasurementType){const bgColorHex=this._colorTransformFromClass(bgColor)||bgColor;this.updateStyles({"--container-text-color":this.getTextContrastColor(bgColorHex),"--container-bg-color":bgColorHex,"--container-outset":`${+outset}${outsetMeasurementType}`})}});export{LrndesignSidenote};
+  `,is:"lrndesign-sidenote",behaviors:[A11yBehaviors.A11y,MaterializeCSSBehaviors.ColorBehaviors],properties:{/**
+     * The display label
+     */label:{type:String,value:""},/**
+     * The display icon for the element
+     */icon:{type:String,value:""},/**
+     * Background Color
+     */bgColor:{type:String,value:"#f7f7f7"},/**
+     * Outset will move the entire element left to make it
+     * stand out from the content.
+     */outset:{type:Number,value:0},/**
+     * Define the unit of measure for the outset variable
+     * Examples: 'em', 'px', '%', 'vw'
+     */outsetMeasurementType:{type:String,value:"em"}},/**
+   * Create global overrides for each property defined in a component
+   *
+   * Example: this will override the default value for bgColor for all
+   *          lrndesign-sidenote elements on the page.
+   *
+   *  _.set(window, 'lrndesignSidenote.bgColor', 'blue');
+   */created:function(){for(var prop in this.properties){let prefix=this.is;// convert prefix to camel case
+prefix=prefix.replace("-"," ").replace(/(?:^\w|[A-Z]|\b\w)/g,function(letter,index){return 0==index?letter.toLowerCase():letter.toUpperCase()}).replace(/\s+/g,"");// find out if a property override is set on the window object
+if("undefined"!==typeof window[prefix]){if("undefined"!==typeof window[prefix][prop]){this.properties[prop].value=window[prefix][prop]}}}},observers:["__updateStyles(bgColor, outset, outsetMeasurementType)"],__updateStyles:function(bgColor,outset,outsetMeasurementType){const bgColorHex=this._colorTransformFromClass(bgColor)||bgColor;this.updateStyles({"--container-text-color":this.getTextContrastColor(bgColorHex),"--container-bg-color":bgColorHex,"--container-outset":`${+outset}${outsetMeasurementType}`})}});export{LrndesignSidenote};

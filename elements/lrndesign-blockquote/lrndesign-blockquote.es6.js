@@ -1,4 +1,12 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import{pathFromUrl}from"./node_modules/@polymer/polymer/lib/utils/resolve-url.js";import"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import"./node_modules/@polymer/paper-styles/shadow.js";let LrndesignBlockquote=Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import{pathFromUrl}from"./node_modules/@polymer/polymer/lib/utils/resolve-url.js";import"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import"./node_modules/@polymer/paper-styles/shadow.js";/**
+ * `lrndesign-blockquote`
+ * `A structured blockquote element`
+ *
+ * @PolymerElement
+ * @polymer
+ * @webcomponent
+ * @demo demo/index.html
+ */let LrndesignBlockquote=Polymer({_template:html`
     <custom-style>
       <style is="custom-style" include="simple-colors">
         :host {
@@ -545,11 +553,28 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         <cite><a href$="[[sourceLink]]">[[citation]]</a></cite>
       </div>
     </div>
-  `,is:"lrndesign-blockquote",behaviors:[HAXBehaviors.PropertiesBehaviors,SchemaBehaviors.Schema],properties:{citation:{type:String,notify:!0},image:{type:String,notify:!0,observer:"_imageChanged"},author:{type:String,notify:!0},sourceLink:{type:String,notify:!0},displayMode:{type:String,reflectToAttribute:!0,notify:!0,value:"default",observer:"_displayModeChanged"}},_imageChanged:function(newValue,oldValue){if("hypercard"==this.displayMode){this.$.wrap.style.cssText="";this.$.thumb.style.cssText=""}else if("poster"==this.displayMode){this.$.wrap.style.cssText="background: #444 url("+newValue+") no-repeat 140% 25%";this.$.thumb.style.cssText=""}else{this.$.wrap.style.cssText="";this.$.thumb.style.cssText="background: url("+newValue+") no-repeat center center"}},_displayModeChanged:function(newValue,oldValue){if("hypercard"==newValue){this.$.wrap.style.cssText="";this.$.thumb.style.cssText="";let style=document.createElement("style"),basePath=pathFromUrl(decodeURIComponent(import.meta.url));style.innerHTML=`@font-face {
+  `,is:"lrndesign-blockquote",behaviors:[HAXBehaviors.PropertiesBehaviors,SchemaBehaviors.Schema],properties:{/**
+     * Source being cited
+     */citation:{type:String,notify:!0},/**
+     * Optional image to use
+     */image:{type:String,notify:!0,observer:"_imageChanged"},/**
+     * Optional author of the quote
+     */author:{type:String,notify:!0},/**
+     * Optional source that links to where the quote is from
+     */sourceLink:{type:String,notify:!0},/**
+     * Funny 1900s vision.
+     */displayMode:{type:String,reflectToAttribute:!0,notify:!0,value:"default",observer:"_displayModeChanged"}},/**
+   * Notice display mode change activated so load the font
+   */_imageChanged:function(newValue,oldValue){if("hypercard"==this.displayMode){this.$.wrap.style.cssText="";this.$.thumb.style.cssText=""}else if("poster"==this.displayMode){this.$.wrap.style.cssText="background: #444 url("+newValue+") no-repeat 140% 25%";this.$.thumb.style.cssText=""}else{this.$.wrap.style.cssText="";this.$.thumb.style.cssText="background: url("+newValue+") no-repeat center center"}},/**
+   * Notice display mode change activated so load the font
+   */_displayModeChanged:function(newValue,oldValue){if("hypercard"==newValue){this.$.wrap.style.cssText="";this.$.thumb.style.cssText="";let style=document.createElement("style"),basePath=pathFromUrl(decodeURIComponent(import.meta.url));style.innerHTML=`@font-face {
         font-family: 'Chikarego';
         font-display: swap;
         src: url('${basePath}lib/chikarego2-webfont.woff2') format('woff2'),
              url('${basePath}lib/chikarego2-webfont.woff') format('woff');
         font-weight: normal;
         font-style: normal;
-      }`;document.head.appendChild(style)}else if("poster"==newValue){this.$.wrap.style.cssText="background: #444 url("+this.image+") no-repeat 140% 25%";this.$.thumb.style.cssText=""}else{this.$.wrap.style.cssText="";this.$.thumb.style.cssText="background: url("+this.image+") no-repeat center center"}},attached:function(){let props={canScale:!0,canPosition:!0,canEditSource:!0,gizmo:{title:"Fancy quote",description:"Presents a famous quote with additional design options.",icon:"editor:format-quote",color:"grey",groups:["Content","Presentation"],handles:[{type:"image",source:"image",src:"image",author:"author",description:"",citation:"citation"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"displayMode",title:"Display style",description:"Style to present the quote with",inputMethod:"select",icon:"image:style",options:{default:"Default",leather:"Leather",swoop:"Swoop",soft:"Soft",poster:"Poster",fun:"Fun",photo:"Photo",hypercard:"Hypercard"}},{property:"image",title:"Image",description:"Picture of the author of this quote",inputMethod:"textfield",icon:"editor:short-text",required:!1,validationType:"text"}],configure:[{property:"displayMode",title:"Display style",description:"Style to present the quote with",inputMethod:"select",icon:"image:style",options:{default:"Default",leather:"Leather",swoop:"Swoop",soft:"Soft",poster:"Poster",fun:"Fun",photo:"Photo",hypercard:"Hypercard"}},{property:"image",title:"Image",description:"Picture of the author of this quote",inputMethod:"textfield",icon:"editor:short-text",required:!1,validationType:"text"},{property:"citation",title:"Citation",description:"",inputMethod:"textfield",icon:"editor:short-text",required:!1,validationType:"text"},{property:"author",title:"Author",description:"",inputMethod:"textfield",icon:"editor:short-text",required:!1,validationType:"text"},{slot:"",title:"Quote",description:"",inputMethod:"textfield",icon:"editor:format-quote",required:!0,validationType:"text"},{property:"sourceLink",title:"Source link",description:"Reference to the ",inputMethod:"textfield",icon:"editor:short-text",required:!1,validationType:"url"}],advanced:[]}};this.setHaxProperties(props)}});export{LrndesignBlockquote};
+      }`;document.head.appendChild(style)}else if("poster"==newValue){this.$.wrap.style.cssText="background: #444 url("+this.image+") no-repeat 140% 25%";this.$.thumb.style.cssText=""}else{this.$.wrap.style.cssText="";this.$.thumb.style.cssText="background: url("+this.image+") no-repeat center center"}},/**
+   * Attached.
+   */attached:function(){// Establish hax properties if they exist
+let props={canScale:!0,canPosition:!0,canEditSource:!0,gizmo:{title:"Fancy quote",description:"Presents a famous quote with additional design options.",icon:"editor:format-quote",color:"grey",groups:["Content","Presentation"],handles:[{type:"image",source:"image",src:"image",author:"author",description:"",citation:"citation"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"displayMode",title:"Display style",description:"Style to present the quote with",inputMethod:"select",icon:"image:style",options:{default:"Default",leather:"Leather",swoop:"Swoop",soft:"Soft",poster:"Poster",fun:"Fun",photo:"Photo",hypercard:"Hypercard"}},{property:"image",title:"Image",description:"Picture of the author of this quote",inputMethod:"textfield",icon:"editor:short-text",required:!1,validationType:"text"}],configure:[{property:"displayMode",title:"Display style",description:"Style to present the quote with",inputMethod:"select",icon:"image:style",options:{default:"Default",leather:"Leather",swoop:"Swoop",soft:"Soft",poster:"Poster",fun:"Fun",photo:"Photo",hypercard:"Hypercard"}},{property:"image",title:"Image",description:"Picture of the author of this quote",inputMethod:"haxupload",icon:"editor:short-text",required:!1,validationType:"text"},{property:"citation",title:"Citation",description:"",inputMethod:"textfield",icon:"editor:short-text",required:!1,validationType:"text"},{property:"author",title:"Author",description:"",inputMethod:"textfield",icon:"editor:short-text",required:!1,validationType:"text"},{slot:"",title:"Quote",description:"",inputMethod:"textfield",icon:"editor:format-quote",required:!0,validationType:"text"},{property:"sourceLink",title:"Source link",description:"Reference to the ",inputMethod:"haxupload",icon:"editor:short-text",required:!1,validationType:"url"}],advanced:[]}};this.setHaxProperties(props)}});export{LrndesignBlockquote};

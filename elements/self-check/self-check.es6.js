@@ -1,4 +1,20 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import{SimpleColors}from"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@polymer/paper-icon-button/paper-icon-button.js";import"./node_modules/@polymer/iron-icons/editor-icons.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@polymer/paper-tooltip/paper-tooltip.js";import"./node_modules/@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";let SelfCheck=Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import{SimpleColors}from"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@polymer/paper-icon-button/paper-icon-button.js";import"./node_modules/@polymer/iron-icons/editor-icons.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@polymer/paper-tooltip/paper-tooltip.js";import"./node_modules/@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";/**
+`self-check`
+A LRN element
+
+* @demo demo/index.html
+
+@microcopy - the mental model for this element
+ -
+ CSS Variables that override accent color:
+ --self-check-question-color //overrides the question background color
+ --self-check-question-text //overrides the question text color
+ --self-check-heading-color //overrides the heading background color
+ --self-check-heading-text //overrides the heading text color
+ --self-check-answer-color //overrides the answer background color
+ --self-check-answer-text //overrides the answer text color
+
+*/let SelfCheck=Polymer({_template:html`
     <style is="custom-style" include="simple-colors">
       :host {
         display: block;
@@ -209,4 +225,21 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         </div>
       </div>
     </paper-card>
-  `,is:"self-check",behaviors:[HAXBehaviors.PropertiesBehaviors,SchemaBehaviors.Schema,A11yBehaviors.A11y,SimpleColors],properties:{title:{type:String,value:"Self-Check"},question:{type:String,value:""},image:{type:String,value:"",reflectToAttribute:!0},alt:{type:String,value:"",reflectToAttribute:!0},link:{type:String,reflectToAttribute:!0},correct:{type:Boolean,value:!1,reflectToAttribute:!0}},openAnswer:function(e){this.correct=!this.correct},attached:function(){let props={canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Self-Check",description:"The user will be able to complete a self-check.",icon:"icons:check-circle",color:"orange",groups:["Image","Assessment"],handles:[{type:"image",source:"image",title:"question",description:"answer"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield",icon:"editor:title"},{property:"image",title:"Image",description:"The image of the element",inputMethod:"textfield",icon:"editor:insert-photo"},{property:"link",title:"More link",description:"Link to additional information",inputMethod:"textfield",validationType:"url",icon:"icons:link"}],configure:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield"},{property:"accentColor",title:"Accent Color",description:"The accent color of the self-check",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{property:"dark",title:"Dark Theme",description:"Enable Dark Theme",inputMethod:"boolean",icon:"icons:invert-colors"},{property:"image",title:"Image",description:"The image of the element",inputMethod:"textfield",validationType:"url"},{property:"link",title:"More link",description:"Link to additional information",inputMethod:"textfield",validationType:"url"},{property:"alt",title:"Alt Text",description:"Add alt text to the image",inputMethod:"alt"},{slot:"question",title:"Question to ask",description:"This is where you enter a question for the self-check.",inputMethod:"code-editor",required:!0},{slot:"",title:"Answer",description:"This is where you enter a question for the self-check.",inputMethod:"code-editor",required:!0}],advanced:[]}};this.setHaxProperties(props)}});export{SelfCheck};
+  `,is:"self-check",behaviors:[HAXBehaviors.PropertiesBehaviors,SchemaBehaviors.Schema,A11yBehaviors.A11y,SimpleColors],properties:{/**
+     * Title.
+     */title:{type:String,value:"Self-Check"},/**
+     * Question.
+     */question:{type:String,value:""},/**
+     * Image.
+     */image:{type:String,value:"",reflectToAttribute:!0},/**
+     * Alt text for image.
+     */alt:{type:String,value:"",reflectToAttribute:!0},/**
+     * Link for more information.
+     */link:{type:String,reflectToAttribute:!0},/**
+     * Property for toggling "checkbtn".
+     */correct:{type:Boolean,value:!1,reflectToAttribute:!0}},/**
+   * Property for toggling "checkbtn".
+   */openAnswer:function(e){this.correct=!this.correct},/**
+   * Attached to the DOM, now fire.
+   */attached:function(){// Establish hax property binding
+let props={canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Self-Check",description:"The user will be able to complete a self-check.",icon:"icons:check-circle",color:"orange",groups:["Image","Assessment"],handles:[{type:"image",source:"image",title:"question",description:"answer"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield",icon:"editor:title"},{property:"image",title:"Image",description:"The image of the element",inputMethod:"textfield",icon:"editor:insert-photo"},{property:"link",title:"More link",description:"Link to additional information",inputMethod:"textfield",validationType:"url",icon:"icons:link"}],configure:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield"},{property:"accentColor",title:"Accent Color",description:"The accent color of the self-check",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{property:"dark",title:"Dark Theme",description:"Enable Dark Theme",inputMethod:"boolean",icon:"icons:invert-colors"},{property:"image",title:"Image",description:"The image of the element",inputMethod:"haxupload",validationType:"url"},{property:"link",title:"More link",description:"Link to additional information",inputMethod:"haxupload",validationType:"url"},{property:"alt",title:"Alt Text",description:"Add alt text to the image",inputMethod:"alt"},{slot:"question",title:"Question to ask",description:"This is where you enter a question for the self-check.",inputMethod:"code-editor",required:!0},{slot:"",title:"Answer",description:"This is where you enter a question for the self-check.",inputMethod:"code-editor",required:!0}],advanced:[]}};this.setHaxProperties(props)}});export{SelfCheck};

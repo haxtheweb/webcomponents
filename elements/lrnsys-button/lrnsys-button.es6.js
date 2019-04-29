@@ -1,4 +1,12 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@polymer/paper-tooltip/paper-tooltip.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/lib/colors.js";let LrnsysButton=Polymer({_template:html`
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@polymer/paper-tooltip/paper-tooltip.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/lib/colors.js";/**
+`lrnsys-button`
+`A simple button for use in system`
+
+* @demo demo/index.html
+*/let LrnsysButton=Polymer({_template:html`
     <custom-style>
       <style include="materializecss-styles-colors">
         :host {
@@ -89,4 +97,55 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       hidden\$="[[!alt]]"
       >[[alt]]</paper-tooltip
     >
-  `,is:"lrnsys-button",properties:{href:{type:String,value:"#",reflectToAttribute:!0},showHref:{type:String,value:!1,reflectToAttribute:!0,computed:"_getShowHref(href,disabled)"},raised:{type:Boolean,reflectToAttribute:!0},label:{type:String,value:""},target:{type:String,value:""},icon:{type:String,value:!1},hoverClass:{type:String},buttonClass:{type:String},iconClass:{type:String},innerClass:{type:String},color:{type:String},textColor:{type:String},prefetch:{type:String},alt:{type:String},disabled:{type:Boolean,value:!1},focusState:{type:Boolean,value:!1}},attached:function(){this.addEventListener("mousedown",this.tapEventOn.bind(this));this.addEventListener("mouseover",this.tapEventOn.bind(this));this.addEventListener("mouseout",this.tapEventOff.bind(this));this.$.button.addEventListener("focused-changed",this.focusToggle.bind(this))},detached:function(){this.addEventListener("mousedown",this.tapEventOn.bind(this));this.addEventListener("mouseover",this.tapEventOn.bind(this));this.addEventListener("mouseout",this.tapEventOff.bind(this));this.$.button.addEventListener("focused-changed",this.focusToggle.bind(this))},_getShowHref:function(href,disabled){if(href&&!disabled){return href}},tapEventOn:function(e){let root=this;if(typeof root.hoverClass!==typeof void 0&&!root.disabled){var classes=root.hoverClass.split(" ");classes.forEach(function(item,index){if(""!=item){root.$.button.classList.add(item);if(-1!=item.indexOf("-")){root.$.icon.classList.add(item)}}})}},tapEventOff:function(e){let root=this;if(typeof root.hoverClass!==typeof void 0&&!root.disabled){var classes=root.hoverClass.split(" ");classes.forEach(function(item,index){if(""!=item){root.$.button.classList.remove(item);if(-1!=item.indexOf("-")){root.$.icon.classList.remove(item)}}})}},focusToggle:function(e){if(typeof this.hoverClass!==typeof void 0&&!this.disabled){var classes=this.hoverClass.split(" ");classes.forEach((item,index)=>{if(""!=item){if(!this.focusState){this.$.button.classList.add(item);if(-1!=item.indexOf("-")){this.$.icon.classList.add(item)}}else{this.$.button.classList.remove(item);if(-1!=item.indexOf("-")){this.$.icon.classList.remove(item)}}}})}this.focusState=!this.focusState}});export{LrnsysButton};
+  `,is:"lrnsys-button",properties:{/**
+     * Standard href pass down
+     */href:{type:String,value:"#",reflectToAttribute:!0},showHref:{type:String,value:!1,reflectToAttribute:!0,computed:"_getShowHref(href,disabled)"},/**
+     * If the button should be visually lifted off the UI.
+     */raised:{type:Boolean,reflectToAttribute:!0},/**
+     * Label to place in the text area
+     */label:{type:String,value:""},/**
+     * Support for target to open in new windows.
+     */target:{type:String,value:""},/**
+     * iron-icon to use (with iconset if needed)
+     */icon:{type:String,value:!1},/**
+     * Classes to add / subtract based on the item being hovered.
+     */hoverClass:{type:String},/**
+     * Button class.
+     */buttonClass:{type:String},/**
+     * Icon class in the event you want it to look different from the text.
+     */iconClass:{type:String},/**
+     * Inner container classes.
+     */innerClass:{type:String},/**
+     * materializeCSS color class
+     */color:{type:String},/**
+     * materializeCSS color class for text
+     */textColor:{type:String},/**
+     * Allow for prefetch data on hover
+     */prefetch:{type:String},/**
+     * Alt via tooltip.
+     */alt:{type:String},/**
+     * Disabled state.
+     */disabled:{type:Boolean,value:!1},/**
+     * Tracks if focus state is applied
+     */focusState:{type:Boolean,value:!1}},/**
+   * attached life cycle
+   */attached:function(){this.addEventListener("mousedown",this.tapEventOn.bind(this));this.addEventListener("mouseover",this.tapEventOn.bind(this));this.addEventListener("mouseout",this.tapEventOff.bind(this));this.$.button.addEventListener("focused-changed",this.focusToggle.bind(this))},/**
+   * detached event listener
+   */detached:function(){this.addEventListener("mousedown",this.tapEventOn.bind(this));this.addEventListener("mouseover",this.tapEventOn.bind(this));this.addEventListener("mouseout",this.tapEventOff.bind(this));this.$.button.addEventListener("focused-changed",this.focusToggle.bind(this))},/**
+   * Generate the pass down href if it exists. This helps
+   * ensure that if a button is disabled it won't do anything
+   * even if it has a resource reference.
+   */_getShowHref:function(href,disabled){if(href&&!disabled){return href}},/**
+   * Class processing on un-tap / hover
+   */tapEventOn:function(e){let root=this;if(typeof root.hoverClass!==typeof void 0&&!root.disabled){// break class into array
+var classes=root.hoverClass.split(" ");// run through each and add or remove classes
+classes.forEach(function(item,index){if(""!=item){root.$.button.classList.add(item);if(-1!=item.indexOf("-")){root.$.icon.classList.add(item)}}})}},/**
+   * Undo class processing on un-tap / hover
+   */tapEventOff:function(e){let root=this;if(typeof root.hoverClass!==typeof void 0&&!root.disabled){// break class into array
+var classes=root.hoverClass.split(" ");// run through each and add or remove classes
+classes.forEach(function(item,index){if(""!=item){root.$.button.classList.remove(item);if(-1!=item.indexOf("-")){root.$.icon.classList.remove(item)}}})}},/**
+   * Handle toggle for mouse class and manage classList array for paper-button.
+   */focusToggle:function(e){// weird but reality... focus event is the button inside of here
+if(typeof this.hoverClass!==typeof void 0&&!this.disabled){// break class into array
+var classes=this.hoverClass.split(" ");// run through each and add or remove classes
+classes.forEach((item,index)=>{if(""!=item){if(!this.focusState){this.$.button.classList.add(item);if(-1!=item.indexOf("-")){this.$.icon.classList.add(item)}}else{this.$.button.classList.remove(item);if(-1!=item.indexOf("-")){this.$.icon.classList.remove(item)}}}})}this.focusState=!this.focusState}});export{LrnsysButton};

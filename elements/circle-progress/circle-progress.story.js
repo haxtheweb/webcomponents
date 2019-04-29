@@ -6,11 +6,11 @@ window.StorybookUtilities.requestAvailability();
  * add to the pattern library
  */
 const CircleProgressPattern = {
-  "of": "Pattern Library/Atoms/Media", 
-  "name": 'Progress Circle',
-  "file": require("raw-loader!./demo/index.html"),
-  "replacements": []
-}
+  of: "Pattern Library/Atoms/Media",
+  name: "Progress Circle",
+  file: require("raw-loader!./demo/index.html"),
+  replacements: []
+};
 window.StorybookUtilities.instance.addPattern(CircleProgressPattern);
 
 /**
@@ -19,17 +19,17 @@ window.StorybookUtilities.instance.addPattern(CircleProgressPattern);
 const CircleProgressProps = CircleProgress.properties;
 CircleProgressProps.value.value = 30;
 const CircleProgressStory = {
-  "of": "Web Components",
-  "name": "circle-progress",
-  "props": CircleProgressProps,
-  "slots": {
-    "slot": { 
-      "name": "slot", 
-      "type": "String", 
-      "value": ``
+  of: "Web Components",
+  name: "circle-progress",
+  props: CircleProgressProps,
+  slots: {
+    slot: {
+      name: "slot",
+      type: "String",
+      value: ``
     }
-  }, 
-  "attr": ``,
-  "slotted": ``
+  },
+  attr: ``,
+  slotted: ``
 };
 window.StorybookUtilities.instance.addLiveDemo(CircleProgressStory);

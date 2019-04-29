@@ -1,4 +1,9 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";let LrndesignContentblock=Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";/**
+`lrndesign-contentblock`
+An incredibly basic content block
+
+* @demo demo/index.html
+*/let LrndesignContentblock=Polymer({_template:html`
     <style>
       :host {
         display: inline-block;
@@ -8,4 +13,6 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";let 
     </style>
     <h3>[[title]]</h3>
     <slot></slot>
-  `,is:"lrndesign-contentblock",properties:{title:{type:String}}});export{LrndesignContentblock};
+  `,is:"lrndesign-contentblock",properties:{/**
+     * Heading for this block
+     */title:{type:String}}});export{LrndesignContentblock};

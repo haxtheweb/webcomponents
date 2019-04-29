@@ -1,4 +1,18 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import"./node_modules/@polymer/paper-icon-button/paper-icon-button.js";import"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@polymer/app-layout/app-drawer/app-drawer.js";import"./node_modules/@polymer/app-layout/app-drawer-layout/app-drawer-layout.js";import"./node_modules/@lrnwebcomponents/haxcms-elements/lib/theme/site-breadcrumb.js";import"./node_modules/@lrnwebcomponents/haxcms-elements/lib/theme/site-active-title.js";import"./node_modules/@lrnwebcomponents/haxcms-elements/lib/theme/site-title.js";import"./node_modules/@lrnwebcomponents/haxcms-elements/lib/theme/site-rss-button.js";import"./node_modules/@lrnwebcomponents/haxcms-elements/lib/theme/site-menu.js";import"./node_modules/@lrnwebcomponents/haxcms-elements/lib/theme/site-menu-button.js";import{HAXCMSTheme}from"./node_modules/@lrnwebcomponents/haxcms-elements/lib/HAXCMSThemeWiring.js";class LearnTwoTheme extends HAXCMSTheme(PolymerElement){static get template(){return html`
+/**
+ * Copyright 2019 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXCMSTheme}from"./node_modules/@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";import"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";/**
+ * `learn-two-theme`
+ * `Learn2 theme for HAXcms`
+ *
+ * @microcopy - language worth noting:
+ *  -
+ *
+ * @customElement
+ * @polymer
+ * @demo demo/index.html
+ */class LearnTwoTheme extends HAXCMSTheme(PolymerElement){// render function
+static get template(){return html`
 <style>:host {
   display: block;
   font-family: "Muli","Helvetica","Tahoma","Geneva","Arial",sans-serif;
@@ -118,6 +132,11 @@ app-drawer-layout {
   justify-content: space-evenly;
   display: flex;
 }
+site-print-button {
+  --site-print-button-button: {
+    color: white;
+  }
+}
 
 app-drawer {
   box-shadow: 0 0 6px -3px var(--haxcms-color, black);
@@ -136,6 +155,7 @@ app-drawer-layout[narrow] #menubutton {
 app-drawer-layout[narrow] #menubutton2 {
   display: block;
   position: absolute;
+  z-index: 1;
 }
 app-drawer-layout[narrow] .header {
   padding: 0;
@@ -148,7 +168,6 @@ site-menu-button {
   --site-menu-button-icon: {
     width: 64px;
     height: 64px;
-    display: contents;
     color: #2d3237;
   };
   --site-menu-button-button: {
@@ -206,17 +225,21 @@ app-drawer-layout[narrow] site-menu-button[type="prev"] {
 <style include="simple-colors"></style>
 <app-drawer-layout>
   <paper-icon-button id="menubutton" icon="menu" on-tap="toggleDrawer"></paper-icon-button>
-  <app-drawer id="drawer" swipe-open slot="drawer" opened="{{opened}}">
+  <app-drawer swipe-open slot="drawer" opened="{{opened}}">
     <paper-icon-button id="menubutton2" icon="menu" on-tap="toggleDrawer"></paper-icon-button>
     <div class="header-wrapper">
       <div class="header">
         <site-title></site-title>
+        <site-modal icon="icons:search" title="Search site" button-label="Search">
+          <site-search></site-search>
+        </site-modal>
       </div>
     </div>
     <site-menu></site-menu>
     <div class="rss-buttons">
       <site-rss-button type="atom"></site-rss-button>
       <site-rss-button type="rss"></site-rss-button>
+      <site-print-button position="top"></site-print-button>
     </div>
   </app-drawer>
   <div>
@@ -230,4 +253,10 @@ app-drawer-layout[narrow] site-menu-button[type="prev"] {
     </div>
     <site-menu-button type="next"></site-menu-button>
   </div>
-</app-drawer-layout>`}static get properties(){return{}}static get tag(){return"learn-two-theme"}static get properties(){let props=super.properties;props.opened={type:Boolean,reflectToAttribute:!0};return props}toggleDrawer(e){this.$.drawer.toggle()}}window.customElements.define(LearnTwoTheme.tag,LearnTwoTheme);export{LearnTwoTheme};
+</app-drawer-layout>`}// properties available to the custom element for data binding
+static get properties(){return{}}constructor(){super();import("./node_modules/@polymer/app-layout/app-drawer/app-drawer.js");import("./node_modules/@polymer/app-layout/app-drawer-layout/app-drawer-layout.js");import("./node_modules/@polymer/paper-icon-button/paper-icon-button.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js")}/**
+   * Store the tag name to make it easier to obtain directly.
+   * @notice function name must be here for tooling to operate correctly
+   */static get tag(){return"learn-two-theme"}/**
+   * Mix in an opened status
+   */static get properties(){let props=super.properties;props.opened={type:Boolean,reflectToAttribute:!0};return props}toggleDrawer(e){this.shadowRoot.querySelector("app-drawer").toggle()}}window.customElements.define(LearnTwoTheme.tag,LearnTwoTheme);export{LearnTwoTheme};

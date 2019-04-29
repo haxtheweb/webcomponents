@@ -1,4 +1,12 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./lib/lrndesign-stepper-button.js";let LrndesignStepper=Polymer({_template:html`
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./lib/lrndesign-stepper-button.js";/**
+`lrndesign-stepper`
+visualization of steps
+
+* @demo demo/index.html
+*/let LrndesignStepper=Polymer({_template:html`
     <style>
       :host {
         display: block;

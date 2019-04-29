@@ -5,24 +5,27 @@ import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storyb
 window.StorybookUtilities.requestAvailability();
 
 /**
- * add to the pattern library 
+ * add to the pattern library
  */
 const SimpleIconPickerPattern = {
-  "of": "Pattern Library/Atoms/Forms",
-  "name": "Icon Picker",
-  "file": require("raw-loader!./demo/index.html"),
-  "replacements": []
+  of: "Pattern Library/Atoms/Forms",
+  name: "Icon Picker",
+  file: require("raw-loader!./demo/index.html"),
+  replacements: []
 };
 window.StorybookUtilities.instance.addPattern(SimpleIconPickerPattern);
 
 /**
  * add the live demo
  */
-const props = Object.assign(SimpleIconPicker.properties, SimplePicker.properties);
+const props = Object.assign(
+  SimpleIconPicker.properties,
+  SimplePicker.properties
+);
 delete props.hideOptionLabels;
 delete props.options;
 delete props.titleAsHtml;
-props.label.value = "Pick an Icon"
+props.label.value = "Pick an Icon";
 props.icons.value = [
   "check",
   "clear",
@@ -33,11 +36,11 @@ props.icons.value = [
   "arrow-upward"
 ];
 const SimpleIconPickerStory = {
-  "of": "Web Components",
-  "name": "simple-icon-picker",
-  "props": props,
-  "slots": {}, 
-  "attr": ``,
-  "slotted": ``
-}
+  of: "Web Components",
+  name: "simple-icon-picker",
+  props: props,
+  slots: {},
+  attr: ``,
+  slotted: ``
+};
 window.StorybookUtilities.instance.addLiveDemo(SimpleIconPickerStory);

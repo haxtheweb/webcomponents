@@ -1,4 +1,10 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/oer-schema/oer-schema.js";let LrnPage=Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/oer-schema/oer-schema.js";/**
+`lrn-page`
+A LRN element for a "page" of material. This ensures there's an OERSchema wrapper
+so that all content produced has a baseline level of being identified as OER.
+
+* @demo demo/index.html
+*/let LrnPage=Polymer({_template:html`
     <style>
       :host {
         display: block;

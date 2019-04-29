@@ -5,7 +5,7 @@ import { MapMenu } from "./map-menu.js";
 window.StorybookUtilities.requestAvailability();
 
 /**
- * add to the pattern library 
+ * add to the pattern library
  */
 /*const Pattern = {
   "of": "Pattern Library/Molecules/Layout",       //Pattern library path

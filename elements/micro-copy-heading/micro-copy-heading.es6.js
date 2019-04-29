@@ -1,4 +1,19 @@
-import{LitElement,html,css,customElement,property}from"./node_modules/lit-element/lit-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";class MicroCopyHeading extends LitElement{render(){return html`
+/**
+ * Copyright 2019 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */import{LitElement,html,css,customElement,property}from"./node_modules/lit-element/lit-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";/**
+ * `micro-copy-heading`
+ * `small call to action / attention that acts as a heading too`
+ *
+ * @microcopy - language worth noting:
+ *  -
+ *
+ * @customElement
+ * @lit-html
+ * @lit-element
+ * @demo demo/index.html
+ */class MicroCopyHeading extends LitElement{// render function
+render(){return html`
 <style>:host {
   display: block;
   margin: 16px 0;
@@ -24,4 +39,24 @@ h2 {
   letter-spacing: 0.09em;
   padding: 6px 16px;
 }</style>
-<h2>${this.heading}<span aria-hidden="true">${this.endcap}</span></h2>`}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Micro copy-heading",description:"small call to action / attention that acts as a heading too",icon:"icons:android",color:"green",groups:["Copy"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"btopro",owner:"The Pennsylvania State University"}},settings:{quick:[{property:"heading",description:"",inputMethod:"textfield",required:!1,icon:"icons:android"},{property:"endCap",description:"",inputMethod:"textfield",required:!1,icon:"icons:android"}],configure:[{property:"heading",description:"",inputMethod:"textfield",required:!1,icon:"icons:android"},{property:"endCap",description:"",inputMethod:"textfield",required:!1,icon:"icons:android"}],advanced:[]}}}static get properties(){return{heading:{name:"heading",type:"String",value:"Telling our story"},endcap:{name:"endcap",type:"String",value:"//"}}}tag(){return"micro-copy-heading"}constructor(){super();this.tag=MicroCopyHeading.tag;let obj=MicroCopyHeading.properties;for(let p in obj){if(obj.hasOwnProperty(p)){if(this.hasAttribute(p)){this[p]=this.getAttribute(p)}else{this.setAttribute(p,obj[p].value);this[p]=obj[p].value}}}}connectedCallback(){super.connectedCallback();this.HAXWiring=new HAXWiring;this.HAXWiring.setup(MicroCopyHeading.haxProperties,MicroCopyHeading.tag,this)}}customElements.define("micro-copy-heading",MicroCopyHeading);export{MicroCopyHeading};
+<h2>${this.heading}<span aria-hidden="true">${this.endcap}</span></h2>`}// haxProperty definition
+static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Micro copy-heading",description:"small call to action / attention that acts as a heading too",icon:"icons:android",color:"green",groups:["Copy"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"btopro",owner:"The Pennsylvania State University"}},settings:{quick:[{property:"heading",description:"",inputMethod:"textfield",required:!1,icon:"icons:android"},{property:"endCap",description:"",inputMethod:"textfield",required:!1,icon:"icons:android"}],configure:[{property:"heading",description:"",inputMethod:"textfield",required:!1,icon:"icons:android"},{property:"endCap",description:"",inputMethod:"textfield",required:!1,icon:"icons:android"}],advanced:[]}}}// properties available to the custom element for data binding
+static get properties(){return{/**
+   * Heading / call to action to display
+   */heading:{name:"heading",type:"String",value:"Telling our story"},/**
+   * ending cap to the statement, possibly a character, icon, etc
+   */endcap:{name:"endcap",type:"String",value:"//"}}}/**
+   * Store the tag name to make it easier to obtain directly.
+   * @notice function name must be here for tooling to operate correctly
+   */tag(){return"micro-copy-heading"}// life cycle
+constructor(){super();this.tag=MicroCopyHeading.tag;// map our imported properties json to real props on the element
+// @notice static getter of properties is built via tooling
+// to edit modify src/micro-copy-heading-properties.json
+let obj=MicroCopyHeading.properties;for(let p in obj){if(obj.hasOwnProperty(p)){if(this.hasAttribute(p)){this[p]=this.getAttribute(p)}else{this.setAttribute(p,obj[p].value);this[p]=obj[p].value}}}}/**
+   * life cycle, element is afixed to the DOM
+   */connectedCallback(){super.connectedCallback();this.HAXWiring=new HAXWiring;this.HAXWiring.setup(MicroCopyHeading.haxProperties,MicroCopyHeading.tag,this)}// static get observedAttributes() {
+//   return [];
+// }
+// disconnectedCallback() {}
+// attributeChangedCallback(attr, oldValue, newValue) {}
+}customElements.define("micro-copy-heading",MicroCopyHeading);export{MicroCopyHeading};

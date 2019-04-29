@@ -4,7 +4,7 @@ import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storyb
 window.StorybookUtilities.requestAvailability();
 
 /**
- * add to the pattern library 
+ * add to the pattern library
  */
 /*const DrawingIconsPattern = {
   "of": "Pattern Library/Atoms/Icons",

@@ -139,6 +139,7 @@ class AbsolutePositionBehavior extends PolymerElement {
    */
   disconnectedCallback() {
     this.unsetPosition();
+    super.disconnectedCallback();
   }
 }
 window.customElements.define(

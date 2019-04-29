@@ -1,4 +1,14 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import{SimpleColors}from"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";import"./lib/simple-concept-network-node.js";let SimpleConceptNetwork=Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import{SimpleColors}from"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";import"./lib/simple-concept-network-node.js";/**
+`simple-concept-network`
+A small but effective little data visualizer for topics surrounding
+a central concept, much like the ELMS:LN snowflake icon.
+
+* @demo demo/index.html
+
+@microcopy - the mental model for this element
+ - ELMS:LN - The ELMS: Learning Network "snowflake" is a network diagram
+
+*/let SimpleConceptNetwork=Polymer({_template:html`
     <style include="simple-colors">
       :host {
         display: block;
@@ -59,4 +69,17 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         disabled$="[[node.disabled]]"
       ></simple-concept-network-node>
     </template>
-  `,is:"simple-concept-network",behaviors:[HAXBehaviors.PropertiesBehaviors,SimpleColors,A11yBehaviors.A11y],observers:["_valueChanged(nodes.*)"],properties:{visualization:{type:String,reflectToAttribute:!0,value:"3d"},disabled:{type:Boolean},coloredText:{type:Boolean,reflectToAttribute:!0,value:!1},nodes:{type:Array,value:[],notify:!0}},_valueChanged:function(e){for(var i in e.base){for(var j in e.base[i]){this.notifyPath("nodes."+i+"."+j)}}},attached:function(){let props={canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Concept Network",description:"A simple way of visualizing data in a small network style configuration.",icon:"lrn:network",color:"blue",groups:["Image","Visualization"],handles:[{type:"image",source:"nodes.source",title:"nodes.label",link:"nodes.src",description:"nodes.description"}],meta:{author:"LRNWebComponents"}},settings:{quick:[],configure:[{property:"visualization",title:"Visualization",description:"How to visualize the concept",inputMethod:"select",options:{"3d":"3d plain",network:"network",flat:"flat"}},{property:"dark",title:"Dark",description:"Use dark theme",inputMethod:"boolean",icon:"invert-colors"},{property:"coloredText",title:"Colored Text / Icon",description:"Apply color to text / icon instead of background.",inputMethod:"boolean",icon:"editor:format-color-text"},{property:"nodes",title:"Node list",description:"List of the items to present in the visual",inputMethod:"array",properties:[{property:"color",title:"Node color",description:"Select the accent color for this node",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{property:"icon",title:"Icon",description:"icon to display in the middle",inputMethod:"iconpicker",options:[]},{property:"label",title:"Label",description:"Label",inputMethod:"textfield"},{property:"image",title:"Image",description:"Image for the background",inputMethod:"textfield",validationType:"url"},{property:"description",title:"Description",description:"A longer description that can be used as part of a modal presentation",inputMethod:"textfield"},{property:"src",title:"Link",description:"Label",inputMethod:"textfield",validationType:"url"}]}],advanced:[]}};this.setHaxProperties(props)}});export{SimpleConceptNetwork};
+  `,is:"simple-concept-network",behaviors:[HAXBehaviors.PropertiesBehaviors,SimpleColors,A11yBehaviors.A11y],observers:["_valueChanged(nodes.*)"],properties:{/**
+     * Type of visualization
+     */visualization:{type:String,reflectToAttribute:!0,value:"3d"},/**
+     * disabled status
+     */disabled:{type:Boolean},/**
+     * Apply color to text / icon instead of background.
+     */coloredText:{type:Boolean,reflectToAttribute:!0,value:!1},/**
+     * List of nodes to template stamp out
+     */nodes:{type:Array,value:[],notify:!0}},/**
+   * Notice an answer has changed and update the DOM.
+   */_valueChanged:function(e){for(var i in e.base){for(var j in e.base[i]){this.notifyPath("nodes."+i+"."+j)}}},/**
+   * Attached.
+   */attached:function(){// Establish hax properties if they exist
+let props={canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Concept Network",description:"A simple way of visualizing data in a small network style configuration.",icon:"lrn:network",color:"blue",groups:["Image","Visualization"],handles:[{type:"image",source:"nodes.source",title:"nodes.label",link:"nodes.src",description:"nodes.description"}],meta:{author:"LRNWebComponents"}},settings:{quick:[],configure:[{property:"visualization",title:"Visualization",description:"How to visualize the concept",inputMethod:"select",options:{"3d":"3d plain",network:"network",flat:"flat"}},{property:"dark",title:"Dark",description:"Use dark theme",inputMethod:"boolean",icon:"invert-colors"},{property:"coloredText",title:"Colored Text / Icon",description:"Apply color to text / icon instead of background.",inputMethod:"boolean",icon:"editor:format-color-text"},{property:"nodes",title:"Node list",description:"List of the items to present in the visual",inputMethod:"array",properties:[{property:"color",title:"Node color",description:"Select the accent color for this node",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{property:"icon",title:"Icon",description:"icon to display in the middle",inputMethod:"iconpicker",options:[]},{property:"label",title:"Label",description:"Label",inputMethod:"textfield"},{property:"image",title:"Image",description:"Image for the background",inputMethod:"textfield",validationType:"url"},{property:"description",title:"Description",description:"A longer description that can be used as part of a modal presentation",inputMethod:"textfield"},{property:"src",title:"Link",description:"Label",inputMethod:"textfield",validationType:"url"}]}],advanced:[]}};this.setHaxProperties(props)}});export{SimpleConceptNetwork};

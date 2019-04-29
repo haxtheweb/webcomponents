@@ -1,9 +1,9 @@
-import { ChartistRender } from './chartist-render.js';
+import { ChartistRender } from "./chartist-render.js";
 import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storybook-utilities.js";
 
 window.StorybookUtilities.requestAvailability();
 window.StorybookUtilities.instance.addGlobalScript(
-  'chartistLib',
+  "chartistLib",
   require("file-loader!./lib/chartist/dist/chartist.min.js")
 );
 
@@ -11,11 +11,11 @@ window.StorybookUtilities.instance.addGlobalScript(
  * add the live demo
  */
 const props = ChartistRender.properties;
-props.data.value = { 
-  "labels": ["Bananas", "Apples", "Grapes"], 
-  "series": [20, 15, 40]
+props.data.value = {
+  labels: ["Bananas", "Apples", "Grapes"],
+  series: [20, 15, 40]
 };
-props.chartTitle.value =`A pie chart of favorite foods`;
+props.chartTitle.value = `A pie chart of favorite foods`;
 props.type.type = "select";
 props.type.options = ["bar", "line", "pie"];
 props.type.value = "pie";
@@ -41,11 +41,11 @@ props.scale.options = [
 ];
 props.scale.value = "ct-major-twelfth";
 const ChartistRenderStory = {
-  "of": "Web Components",
-  "name": "chartist-render",
-  "props":  props,
-  "slots": {}, 
-  "attr": ` style="width: 100%; max-width: 500px;"`,
-  "slotted": ``
+  of: "Web Components",
+  name: "chartist-render",
+  props: props,
+  slots: {},
+  attr: ` style="width: 100%; max-width: 500px;"`,
+  slotted: ``
 };
 window.StorybookUtilities.instance.addLiveDemo(ChartistRenderStory);

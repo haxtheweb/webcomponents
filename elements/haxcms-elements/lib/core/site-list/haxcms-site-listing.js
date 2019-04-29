@@ -466,7 +466,7 @@ class HAXCMSSiteListing extends PolymerElement {
         value: false,
         notify: true,
         reflectToAttribute: true,
-        observer: "_loginStateChanged"
+        observer: "_loggedInChanged"
       },
       /**
        * Edit mode
@@ -525,7 +525,7 @@ class HAXCMSSiteListing extends PolymerElement {
   /**
    * Request a user login if we need one or log out
    */
-  _loginStateChange(e) {
+  _jwtLoggedIn(e) {
     if (e.detail) {
       this.loggedIn = true;
     } else {
@@ -545,7 +545,7 @@ class HAXCMSSiteListing extends PolymerElement {
   /**
    * Login state changed
    */
-  _loginStateChanged(newValue, oldValue) {
+  _loggedInChanged(newValue, oldValue) {
     if (typeof oldValue !== typeof undefined) {
       if (newValue) {
         this.__loginText = "Log out";
@@ -773,7 +773,7 @@ class HAXCMSSiteListing extends PolymerElement {
         .addEventListener("change", this._colorChanged.bind(this));
       this.shadowRoot
         .querySelector("#jwt")
-        .addEventListener("jwt-logged-in", this._loginStateChange.bind(this));
+        .addEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this));
       this.shadowRoot
         .querySelector("#siteslisting")
         .addEventListener(
@@ -812,7 +812,7 @@ class HAXCMSSiteListing extends PolymerElement {
       .removeEventListener("change", this._colorChanged.bind(this));
     this.shadowRoot
       .querySelector("#jwt")
-      .removeEventListener("jwt-logged-in", this._loginStateChange.bind(this));
+      .removeEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this));
     this.shadowRoot
       .querySelector("#siteslisting")
       .removeEventListener(

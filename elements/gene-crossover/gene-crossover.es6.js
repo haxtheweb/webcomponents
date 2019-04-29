@@ -1,4 +1,15 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/app-route/app-route.js";import"./node_modules/@polymer/app-route/app-location.js";import"./node_modules/@polymer/iron-pages/iron-pages.js";import"./node_modules/@lrnwebcomponents/paper-stepper/paper-stepper.js";import"./lib/gene-crossover-1.js";import"./lib/gene-crossover-2.js";import"./lib/gene-crossover-3.js";import"./lib/gene-crossover-4.js";import"./lib/gene-crossover-5.js";let GeneCrossover=Polymer({_template:html`
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/app-route/app-route.js";import"./node_modules/@polymer/app-route/app-location.js";import"./node_modules/@polymer/iron-pages/iron-pages.js";import"./node_modules/@lrnwebcomponents/paper-stepper/paper-stepper.js";import"./lib/gene-crossover-1.js";import"./lib/gene-crossover-2.js";import"./lib/gene-crossover-3.js";import"./lib/gene-crossover-4.js";import"./lib/gene-crossover-5.js";/**
+ * `gene-crossover`
+ * `Gene animations`
+ *
+ * @demo demo/index.html
+ *
+ * @microcopy - the mental model for this element
+ *  -
+ */let GeneCrossover=Polymer({_template:html`
     <style is="custom-style" include="animation-shared-styles">
       :host {
         display: block;
