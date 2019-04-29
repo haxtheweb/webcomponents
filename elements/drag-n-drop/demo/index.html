@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>DragNDrop: drag-n-drop Demo</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '../drag-n-drop.js';
+      import "@lrnwebcomponents/multiple-choice/multiple-choice.js";
+      import "@lrnwebcomponents/image-compare-slider/image-compare-slider.js";
+      import "@lrnwebcomponents/meme-maker/meme-maker.js";
+      import "@lrnwebcomponents/grid-plate/grid-plate.js";
+      import "@lrnwebcomponents/place-holder/place-holder.js";
+    </script>
+    <style>
+      p[data-draggable] {
+        background-image: url('https://source.unsplash.com/random/150x150');
+      }
+      [data-draggable] {
+        display: block;
+        position: relative;
+        max-width: 400px;
+      }
+      drag-n-drop[editing] p[data-draggable]:hover {
+        cursor: pointer;
+        outline: 2px solid blue;
+      }
+      [data-droppable] {
+        width: 100%;
+        min-height: 200px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <button id="toggle">Toggle edit mode</button>
+    <drag-n-drop id="dnd">
+      <image-compare-slider data-draggable style="width: 50%; margin: 0px auto; display: block;" title="Make menu (slide to reveal)"
+        top-src="https://haxtheweb.org/files/2019-01-27_09-23-59.png" bottom-src="https://haxtheweb.org/files/2019-01-27_09-45-04.png" sizing="contain" width="400"
+        height="300" resource="#5185593e-f9c1-fb83-1149"
+        prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org "
+        slider-percent="0"></image-compare-slider>
+
+      <meme-maker data-draggable style="width: 75%; margin: 0px auto; display: block;" alt="happy snoop dogg GIF by Cheezburger"
+        image-url="https://media2.giphy.com/media/Um04iWtX2eby8/giphy.gif" top-text="Step 'ight up"
+        bottom-text="urz te next contrib"></meme-maker>
+
+      <multiple-choice data-draggable title="Decoupled question" check-label="Check answer" reset-label="Reset" hide-title=""
+        question="Is this decoupled... I mean.. REALLY decoupled, if it would work on other webpages?"
+        correct-text="Great job!" incorrect-text="Better luck next time!" randomize="" typeof="oer:Assessment"
+        resource="#dd2feacf-ed4a-dcb0-b85d"
+        prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org "
+        answers="[{&quot;correct&quot;:true,&quot;label&quot;:&quot;Yeah this really will work anywhere!&quot;,&quot;userGuess&quot;:false},{&quot;correct&quot;:null,&quot;label&quot;:&quot;There's no way it actually is&quot;},{&quot;correct&quot;:null,&quot;label&quot;:&quot;Decoupled?&quot;},{&quot;correct&quot;:null,&quot;label&quot;:&quot;Umm.. I think?&quot;}]">
+      </multiple-choice>
+
+      <p data-draggable>Item one</p>
+      <p data-draggable>Item two</p>
+      <grid-plate data-droppable columns="3" layout="1-1-1" responsive-size="sm">
+        <place-holder slot="col-1" type="image"></place-holder>
+        <place-holder slot="col-2" type="image"></place-holder>
+        <place-holder slot="col-3" type="image"></place-holder>
+      </grid-plate>
+      <div data-droppable></div>
+      <div data-droppable></div>
+      <div data-droppable></div>
+      <div data-droppable></div>
+      <div data-droppable></div>
+      <div data-droppable></div>
+      <div data-droppable></div>
+    </drag-n-drop>
+    <script>
+      window._click = false;
+      document.getElementById('toggle').addEventListener('click', (e) => {
+        window._click = !window._click;
+        document.getElementById('dnd').editing = window._click;
+      });
+    </script>
+  </body>
+</html>

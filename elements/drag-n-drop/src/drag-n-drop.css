@@ -1,0 +1,22 @@
+:host {
+  display: block;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+:host([editing]) .items ::slotted(.hold) {
+  border: solid 5px #ccc;
+}
+
+:host([editing]) .items ::slotted([data-droppable]) {
+  margin: 10px;
+  border: solid 3px salmon;
+  background: white;
+}
+
+:host([editing]) .items ::slotted(.hovered) {
+  background: #f4f4f4;
+  border-style: dashed;
+}
