@@ -16,7 +16,7 @@
       "hax": "src/lrnsys-outline-hax.json"
     }
   },
-  "version": "2.0.9",
+  "version": "2.0.10",
   "description": "Automated conversion of lrnsys-outline/",
   "repository": {
     "type": "git",
@@ -40,8 +40,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/drawing-icons": "^2.0.9",
-    "@lrnwebcomponents/simple-modal": "^2.0.9",
+    "@lrnwebcomponents/drawing-icons": "^2.0.10",
+    "@lrnwebcomponents/simple-modal": "^2.0.10",
     "@polymer/iron-a11y-keys": "^3.0.1",
     "@polymer/iron-list": "^3.0.2",
     "@polymer/paper-button": "^3.0.1",
@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.0.9",
-    "@lrnwebcomponents/storybook-utilities": "^2.0.9",
+    "@lrnwebcomponents/storybook-utilities": "^2.0.10",
     "@polymer/iron-ajax": "^3.0.1",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",

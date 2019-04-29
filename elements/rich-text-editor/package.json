@@ -16,7 +16,7 @@
       "hax": "src/rich-text-editor-hax.json"
     }
   },
-  "version": "2.0.9",
+  "version": "2.0.10",
   "description": "a standalone rich text editor",
   "repository": {
     "type": "git",
@@ -40,12 +40,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-collapse": "^2.0.9",
-    "@lrnwebcomponents/es-global-bridge": "^2.0.9",
-    "@lrnwebcomponents/hax-body-behaviors": "^2.0.9",
-    "@lrnwebcomponents/simple-popover": "^2.0.9",
-    "@lrnwebcomponents/simple-picker": "^2.0.9",
+    "@lrnwebcomponents/a11y-collapse": "^2.0.10",
+    "@lrnwebcomponents/es-global-bridge": "^2.0.10",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.0.10",
     "@lrnwebcomponents/simple-fields": "^2.0.9",
+    "@lrnwebcomponents/simple-picker": "^2.0.10",
+    "@lrnwebcomponents/simple-popover": "^2.0.10",
     "@polymer/iron-a11y-keys": "^3.0.1",
     "@polymer/iron-fit-behavior": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",
@@ -56,7 +56,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.0.9",
-    "@lrnwebcomponents/storybook-utilities": "^2.0.9",
+    "@lrnwebcomponents/storybook-utilities": "^2.0.10",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.9",
