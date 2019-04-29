@@ -320,6 +320,12 @@ class GridPlate extends PolymerElement {
   }
   static get properties() {
     return {
+      droppable: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true,
+        observer: "_droppableChanged"
+      },
       ignoreHax: {
         type: Boolean,
         value: false
@@ -557,6 +563,11 @@ class GridPlate extends PolymerElement {
     };
   }
 
+  _droppableChanged(newValue) {
+    if (newValue) {
+      this.editMode = true;
+    }
+  }
   /**
    * Cancel active element
    */
