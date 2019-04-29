@@ -4,42 +4,54 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { setPassiveTouchGestures } from "@polymer/polymer/lib/utils/settings.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
-import "@polymer/app-layout/app-header/app-header.js";
-import "@polymer/app-layout/app-toolbar/app-toolbar.js";
-import "@polymer/app-layout/app-drawer/app-drawer.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icons/editor-icons.js";
-import "@polymer/iron-icons/notification-icons.js";
-import "@polymer/iron-icons/av-icons.js";
-import "@polymer/iron-icons/device-icons.js";
-import "@polymer/iron-icons/image-icons.js";
-import "@polymer/paper-item/paper-item.js";
-import "@polymer/paper-input/paper-input.js";
 import "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
-import "@polymer/paper-dialog/paper-dialog.js";
-import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
-import "@lrnwebcomponents/simple-picker/simple-picker.js";
-import "@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js";
-import "@lrnwebcomponents/map-menu/map-menu.js";
 import "@lrnwebcomponents/jwt-login/jwt-login.js";
-import "@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";
-import "@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js";
-import "@lrnwebcomponents/magazine-cover/magazine-cover.js";
 import "@lrnwebcomponents/sites-listing/sites-listing.js";
+import "@lrnwebcomponents/map-menu/map-menu.js";
 /**
  * `haxcms-site-listing`
  * `A listing of all sites being managed by this instance.`
  */
 class HAXCMSSiteListing extends PolymerElement {
+  /**
+   * created life cycle
+   */
+  constructor() {
+    super();
+    setPassiveTouchGestures(true);
+    import("@polymer/paper-button/paper-button.js");
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/paper-icon-button/paper-icon-button.js");
+    import("@polymer/app-layout/app-header/app-header.js");
+    import("@polymer/app-layout/app-toolbar/app-toolbar.js");
+    import("@polymer/app-layout/app-drawer/app-drawer.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icons/editor-icons.js");
+    import("@polymer/iron-icons/notification-icons.js");
+    import("@polymer/iron-icons/av-icons.js");
+    import("@polymer/iron-icons/device-icons.js");
+    import("@polymer/iron-icons/image-icons.js");
+    import("@polymer/paper-item/paper-item.js");
+    import("@polymer/paper-input/paper-input.js");
+    import("@polymer/paper-dialog/paper-dialog.js");
+    import("@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js");
+    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@lrnwebcomponents/simple-picker/simple-picker.js");
+    import("@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js");
+    import("@lrnwebcomponents/magazine-cover/magazine-cover.js");
+    import("@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js");
+    import("@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js");
+    window.JSONOutlineSchema.requestAvailability();
+    window.SimpleModal.requestAvailability();
+    window.SimpleToast.requestAvailability();
+    window.HAXCMS = {};
+  }
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -133,7 +145,7 @@ class HAXCMSSiteListing extends PolymerElement {
       ></jwt-login>
       <iron-ajax
         id="createrequest"
-        method="POST"
+        method="[[method]]"
         body="[[createParams]]"
         headers='{"Authorization": "Bearer [[jwt]]"}'
         content-type="application/json"
@@ -143,7 +155,7 @@ class HAXCMSSiteListing extends PolymerElement {
       ></iron-ajax>
       <iron-ajax
         id="downloadrequest"
-        method="POST"
+        method="[[method]]"
         body="[[downloadParams]]"
         headers='{"Authorization": "Bearer [[jwt]]"}'
         content-type="application/json"
@@ -153,7 +165,7 @@ class HAXCMSSiteListing extends PolymerElement {
       ></iron-ajax>
       <iron-ajax
         id="getconfigrequest"
-        method="POST"
+        method="[[method]]"
         body="[[configParams]]"
         headers='{"Authorization": "Bearer [[jwt]]"}'
         content-type="application/json"
@@ -163,7 +175,7 @@ class HAXCMSSiteListing extends PolymerElement {
       ></iron-ajax>
       <iron-ajax
         id="setconfigrequest"
-        method="POST"
+        method="[[method]]"
         body="[[setConfigParams]]"
         headers='{"Authorization": "Bearer [[jwt]]"}'
         content-type="application/json"
@@ -366,6 +378,10 @@ class HAXCMSSiteListing extends PolymerElement {
   }
   static get properties() {
     return {
+      method: {
+        type: String,
+        value: "POST"
+      },
       /**
        * Title
        */
@@ -447,6 +463,7 @@ class HAXCMSSiteListing extends PolymerElement {
        */
       loggedIn: {
         type: Boolean,
+        value: false,
         notify: true,
         reflectToAttribute: true,
         observer: "_loginStateChanged"
@@ -467,7 +484,7 @@ class HAXCMSSiteListing extends PolymerElement {
    * Toggle drawer open
    */
   drawerToggle(e) {
-    this.$.drawer.toggle();
+    this.shadowRoot.querySelector("#drawer").toggle();
   }
   /**
    * Site response has changed.
@@ -477,21 +494,25 @@ class HAXCMSSiteListing extends PolymerElement {
       this.title = newValue.title;
       setTimeout(() => {
         if (this.jwt) {
-          this.$.siteslisting.$.list.querySelector(
-            '[data-site-id="item-new"]'
-          ).hidden = false;
-          this.$.mapmenu.$.builder.shadowRoot.querySelector(
-            "#item-new"
-          ).hidden = false;
-          this.$.add.hidden = false;
+          this.shadowRoot
+            .querySelector("#siteslisting")
+            .shadowRoot.querySelector("#list")
+            .querySelector('[data-site-id="item-new"]').hidden = false;
+          this.shadowRoot
+            .querySelector("#mapmenu")
+            .shadowRoot.querySelector("#builder")
+            .shadowRoot.querySelector("#item-new").hidden = false;
+          this.shadowRoot.querySelector("#add").hidden = false;
         } else {
-          this.$.siteslisting.$.list.querySelector(
-            '[data-site-id="item-new"]'
-          ).hidden = true;
-          this.$.mapmenu.$.builder.shadowRoot.querySelector(
-            "#item-new"
-          ).hidden = true;
-          this.$.add.hidden = true;
+          this.shadowRoot
+            .querySelector("#siteslisting")
+            .shadowRoot.querySelector("#list")
+            .querySelector('[data-site-id="item-new"]').hidden = true;
+          this.shadowRoot
+            .querySelector("#mapmenu")
+            .shadowRoot.querySelector("#builder")
+            .shadowRoot.querySelector("#item-new").hidden = true;
+          this.shadowRoot.querySelector("#add").hidden = true;
         }
       }, 100);
     }
@@ -524,47 +545,67 @@ class HAXCMSSiteListing extends PolymerElement {
   /**
    * Login state changed
    */
-  _loginStateChanged(newValue) {
-    if (newValue) {
-      this.__loginText = "Log out";
-      this.__loginIcon = "icons:account-circle";
-      const evt = new CustomEvent("simple-toast-show", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: {
-          text: "Welcome, log in successful!",
-          duration: 4000
+  _loginStateChanged(newValue, oldValue) {
+    if (typeof oldValue !== typeof undefined) {
+      if (newValue) {
+        this.__loginText = "Log out";
+        this.__loginIcon = "icons:account-circle";
+        const evt = new CustomEvent("simple-toast-show", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: {
+            text: "Welcome, log in successful!",
+            duration: 4000
+          }
+        });
+        this.dispatchEvent(evt);
+        this.shadowRoot.querySelector("#add").hidden = false;
+        this.shadowRoot
+          .querySelector("#siteslisting")
+          .shadowRoot.querySelector("#list")
+          .querySelector('[data-site-id="item-new"]').hidden = false;
+        this.shadowRoot
+          .querySelector("#mapmenu")
+          .shadowRoot.querySelector("#builder")
+          .shadowRoot.querySelector("#item-new").hidden = false;
+      } else {
+        this.__loginText = "Log in";
+        this.__loginIcon = "icons:power-settings-new";
+        const evt = new CustomEvent("simple-toast-show", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: {
+            text: "You logged out",
+            duration: 4000
+          }
+        });
+        this.dispatchEvent(evt);
+        this.shadowRoot.querySelector("#add").hidden = true;
+        if (
+          this.shadowRoot
+            .querySelector("#siteslisting")
+            .shadowRoot.querySelector("#list")
+            .querySelector('[data-site-id="item-new"]')
+        ) {
+          this.shadowRoot
+            .querySelector("#siteslisting")
+            .shadowRoot.querySelector("#list")
+            .querySelector('[data-site-id="item-new"]').hidden = true;
         }
-      });
-      this.dispatchEvent(evt);
-      this.$.add.hidden = false;
-      this.$.siteslisting.$.list.querySelector(
-        '[data-site-id="item-new"]'
-      ).hidden = false;
-      this.$.mapmenu.$.builder.shadowRoot.querySelector(
-        "#item-new"
-      ).hidden = false;
-    } else {
-      this.__loginText = "Log in";
-      this.__loginIcon = "icons:power-settings-new";
-      const evt = new CustomEvent("simple-toast-show", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: {
-          text: "You logged out",
-          duration: 4000
+        if (
+          this.shadowRoot
+            .querySelector("#mapmenu")
+            .shadowRoot.querySelector("#builder")
+            .shadowRoot.querySelector("#item-new")
+        ) {
+          this.shadowRoot
+            .querySelector("#mapmenu")
+            .shadowRoot.querySelector("#builder")
+            .shadowRoot.querySelector("#item-new").hidden = true;
         }
-      });
-      this.dispatchEvent(evt);
-      this.$.add.hidden = true;
-      this.$.siteslisting.$.list.querySelector(
-        '[data-site-id="item-new"]'
-      ).hidden = true;
-      this.$.mapmenu.$.builder.shadowRoot.querySelector(
-        "#item-new"
-      ).hidden = true;
+      }
     }
   }
   /**
@@ -583,7 +624,7 @@ class HAXCMSSiteListing extends PolymerElement {
    * Request a user login if we need one or log out
    */
   _loginUserRoutine(e) {
-    this.$.jwt.toggleLogin();
+    this.shadowRoot.querySelector("#jwt").toggleLogin();
   }
   /**
    * Use events for real value in theme.
@@ -616,9 +657,10 @@ class HAXCMSSiteListing extends PolymerElement {
    * Add button clicked, trick DOM into clicking the add new site item.
    */
   _addTap(e) {
-    let itemNew = this.$.siteslisting.$.list.querySelector(
-      '[data-site-id="item-new"]'
-    );
+    let itemNew = this.shadowRoot
+      .querySelector("#siteslisting")
+      .shadowRoot.querySelector("#list")
+      .querySelector('[data-site-id="item-new"]');
     if (itemNew) {
       itemNew.click();
     }
@@ -634,7 +676,7 @@ class HAXCMSSiteListing extends PolymerElement {
    */
   _settingsTap(e) {
     this._loadConfig();
-    this.$.settingsdialog.opened = true;
+    this.shadowRoot.querySelector("#settingsdialog").opened = true;
   }
   /**
    * User clicked on the flyout menu, set that item to active.
@@ -664,11 +706,11 @@ class HAXCMSSiteListing extends PolymerElement {
     ) {
       // for new items we need the new item form
       if (newValue.id === "item-new") {
-        this.$.newdialog.opened = true;
-        this.$.itemdialog.opened = false;
+        this.shadowRoot.querySelector("#newdialog").opened = true;
+        this.shadowRoot.querySelector("#itemdialog").opened = false;
       } else {
-        this.$.newdialog.opened = false;
-        this.$.itemdialog.opened = true;
+        this.shadowRoot.querySelector("#newdialog").opened = false;
+        this.shadowRoot.querySelector("#itemdialog").opened = true;
       }
     }
     // it's possible to have NO item in scope, ensure everything closes :)
@@ -676,9 +718,9 @@ class HAXCMSSiteListing extends PolymerElement {
       typeof newValue !== typeof undefined &&
       typeof newValue.id !== typeof undefined
     ) {
-      this.$.newdialog.opened = false;
-      this.$.itemdialog.opened = false;
-      this.$.drawer.opened = false;
+      this.shadowRoot.querySelector("#newdialog").opened = false;
+      this.shadowRoot.querySelector("#itemdialog").opened = false;
+      this.shadowRoot.querySelector("#drawer").opened = false;
     }
   }
   /**
@@ -686,63 +728,65 @@ class HAXCMSSiteListing extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.__loginPath = window.appSettings.login;
-    this.__logoutPath = window.appSettings.logout;
-    let themeOptions = [];
-    let firstTheme = null;
-    for (var theme in window.appSettings.themes) {
-      let item = [
-        {
-          alt: window.appSettings.themes[theme].name,
-          value: theme
+    afterNextRender(this, function() {
+      this.__loginPath = window.appSettings.login;
+      this.__logoutPath = window.appSettings.logout;
+      let themeOptions = [];
+      let firstTheme = null;
+      for (var theme in window.appSettings.themes) {
+        let item = [
+          {
+            alt: window.appSettings.themes[theme].name,
+            value: theme
+          }
+        ];
+        themeOptions.push(item);
+        if (!firstTheme) {
+          firstTheme = theme;
         }
-      ];
-      themeOptions.push(item);
-      if (!firstTheme) {
-        firstTheme = theme;
       }
-    }
-    this.$.newsitetheme.options = themeOptions;
-    if (!this.$.newsitetheme.value) {
-      this.$.newsitetheme.value = firstTheme;
-    }
-    this.__setConfigPath = window.appSettings.setConfigPath;
-    this.__getConfigPath = window.appSettings.getConfigPath;
-    this.__createNewSitePath = window.appSettings.createNewSitePath;
-    this.__downloadSitePath = window.appSettings.downloadSitePath;
-    // @todo support state routing for loadActiveSite
-    document.body.addEventListener(
-      "sites-listing-item-selected",
-      this._itemSelected.bind(this)
-    );
-    document.body.addEventListener(
-      "haxcms-load-site",
-      this.loadActiveSite.bind(this)
-    );
-    this.$.mapmenu.addEventListener(
-      "selected",
-      this._mapMenuSelection.bind(this)
-    );
-    this.$.newsitetheme.addEventListener(
-      "change",
-      this._themeChanged.bind(this)
-    );
-    this.$.newsitecolor.addEventListener(
-      "change",
-      this._colorChanged.bind(this)
-    );
-    this.$.jwt.addEventListener(
-      "jwt-logged-in",
-      this._loginStateChange.bind(this)
-    );
-    this.$.siteslisting.addEventListener(
-      "item-overlay-option-selected",
-      this._itemOptionSelected.bind(this)
-    );
-    this.$.siteslisting.addEventListener(
-      "item-overlay-op-changed",
-      this._itemOpChanged.bind(this)
-    );
+      this.shadowRoot.querySelector("#newsitetheme").options = themeOptions;
+      if (!this.shadowRoot.querySelector("#newsitetheme").value) {
+        this.shadowRoot.querySelector("#newsitetheme").value = firstTheme;
+      }
+      this.__setConfigPath = window.appSettings.setConfigPath;
+      this.__getConfigPath = window.appSettings.getConfigPath;
+      this.__createNewSitePath = window.appSettings.createNewSitePath;
+      this.__downloadSitePath = window.appSettings.downloadSitePath;
+      // @todo support state routing for loadActiveSite
+      document.body.addEventListener(
+        "sites-listing-item-selected",
+        this._itemSelected.bind(this)
+      );
+      document.body.addEventListener(
+        "haxcms-load-site",
+        this.loadActiveSite.bind(this)
+      );
+      this.shadowRoot
+        .querySelector("#mapmenu")
+        .addEventListener("selected", this._mapMenuSelection.bind(this));
+      this.shadowRoot
+        .querySelector("#newsitetheme")
+        .addEventListener("change", this._themeChanged.bind(this));
+      this.shadowRoot
+        .querySelector("#newsitecolor")
+        .addEventListener("change", this._colorChanged.bind(this));
+      this.shadowRoot
+        .querySelector("#jwt")
+        .addEventListener("jwt-logged-in", this._loginStateChange.bind(this));
+      this.shadowRoot
+        .querySelector("#siteslisting")
+        .addEventListener(
+          "item-overlay-option-selected",
+          this._itemOptionSelected.bind(this)
+        );
+      this.shadowRoot
+        .querySelector("#siteslisting")
+        .addEventListener(
+          "item-overlay-op-changed",
+          this._itemOpChanged.bind(this)
+        );
+    });
   }
   /**
    * detached life cycle
@@ -757,42 +801,31 @@ class HAXCMSSiteListing extends PolymerElement {
       "haxcms-load-site",
       this.loadActiveSite.bind(this)
     );
-    this.$.mapmenu.removeEventListener(
-      "selected",
-      this._mapMenuSelection.bind(this)
-    );
-    this.$.newsitetheme.removeEventListener(
-      "change",
-      this._themeChanged.bind(this)
-    );
-    this.$.newsitecolor.removeEventListener(
-      "change",
-      this._colorChanged.bind(this)
-    );
-    this.$.jwt.removeEventListener(
-      "jwt-logged-in",
-      this._loginStateChange.bind(this)
-    );
-    this.$.siteslisting.removeEventListener(
-      "item-overlay-option-selected",
-      this._itemOptionSelected.bind(this)
-    );
-    this.$.siteslisting.removeEventListener(
-      "item-overlay-op-changed",
-      this._itemOpChanged.bind(this)
-    );
+    this.shadowRoot
+      .querySelector("#mapmenu")
+      .removeEventListener("selected", this._mapMenuSelection.bind(this));
+    this.shadowRoot
+      .querySelector("#newsitetheme")
+      .removeEventListener("change", this._themeChanged.bind(this));
+    this.shadowRoot
+      .querySelector("#newsitecolor")
+      .removeEventListener("change", this._colorChanged.bind(this));
+    this.shadowRoot
+      .querySelector("#jwt")
+      .removeEventListener("jwt-logged-in", this._loginStateChange.bind(this));
+    this.shadowRoot
+      .querySelector("#siteslisting")
+      .removeEventListener(
+        "item-overlay-option-selected",
+        this._itemOptionSelected.bind(this)
+      );
+    this.shadowRoot
+      .querySelector("#siteslisting")
+      .removeEventListener(
+        "item-overlay-op-changed",
+        this._itemOpChanged.bind(this)
+      );
     super.disconnectedCallback();
-  }
-  /**
-   * created life cycle
-   */
-  constructor() {
-    super();
-    setPassiveTouchGestures(true);
-    window.JSONOutlineSchema.requestAvailability();
-    window.SimpleModal.requestAvailability();
-    window.SimpleToast.requestAvailability();
-    window.HAXCMS = {};
   }
   /**
    * Ready life cycle
@@ -817,7 +850,7 @@ class HAXCMSSiteListing extends PolymerElement {
     if (item.location) {
       window.open(item.location);
     } else {
-      window.open("/_sites/" + item.metadata.siteName + "/index.html");
+      window.open(this.basePath + "_sites/" + item.metadata.siteName + "/");
     }
   }
   /**
@@ -833,9 +866,15 @@ class HAXCMSSiteListing extends PolymerElement {
    */
   _createSite(e) {
     // ship off a new call
-    this.set("createParams.siteName", this.$.newsitetitle.value);
+    this.set(
+      "createParams.siteName",
+      this.shadowRoot.querySelector("#newsitetitle").value
+    );
     this.notifyPath("createParams.siteName");
-    this.set("createParams.description", this.$.newsitedescription.value);
+    this.set(
+      "createParams.description",
+      this.shadowRoot.querySelector("#newsitedescription").value
+    );
     this.notifyPath("createParams.description");
     // need to pull this from the active item bc of data binding silly
     this.set("createParams.theme", this.activeItem.metadata.theme);
@@ -844,16 +883,22 @@ class HAXCMSSiteListing extends PolymerElement {
     this.notifyPath("createParams.hexCode");
     this.set("createParams.cssVariable", this.activeItem.metadata.cssVariable);
     this.notifyPath("createParams.cssVariable");
-    this.set("createParams.image", this.$.newsiteimage.value);
+    this.set(
+      "createParams.image",
+      this.shadowRoot.querySelector("#newsiteimage").value
+    );
     this.notifyPath("createParams.image");
-    this.set("createParams.icon", this.$.newsiteicon.icon);
+    this.set(
+      "createParams.icon",
+      this.shadowRoot.querySelector("#newsiteicon").icon
+    );
     this.notifyPath("createParams.icon");
     // pass along the jwt for user "session" purposes
     this.set("createParams.jwt", this.jwt);
     this.notifyPath("createParams.jwt");
-    this.$.newsitetitle.value = "";
-    this.$.newsitedescription.value = null;
-    this.$.createrequest.generateRequest();
+    this.shadowRoot.querySelector("#newsitetitle").value = "";
+    this.shadowRoot.querySelector("#newsitedescription").value = null;
+    this.shadowRoot.querySelector("#createrequest").generateRequest();
   }
   /**
    * Download a new site button was clicked
@@ -865,7 +910,7 @@ class HAXCMSSiteListing extends PolymerElement {
     // pass along the jwt for user "session" purposes
     this.set("downloadParams.jwt", this.jwt);
     this.notifyPath("downloadParams.jwt");
-    this.$.downloadrequest.generateRequest();
+    this.shadowRoot.querySelector("#downloadrequest").generateRequest();
   }
   /**
    * Load configuration
@@ -877,13 +922,15 @@ class HAXCMSSiteListing extends PolymerElement {
     this.set("configParams.token", this.createParams.token);
     this.notifyPath("configParams.token");
 
-    this.$.getconfigrequest.generateRequest();
+    this.shadowRoot.querySelector("#getconfigrequest").generateRequest();
   }
   /**
    * Save configuration
    */
   _saveConfig(e) {
-    window.HAXCMS.config.values = this.$.settingsform.value;
+    window.HAXCMS.config.values = this.shadowRoot.querySelector(
+      "#settingsform"
+    ).value;
     // pass along the jwt for user "session" purposes
     this.set("setConfigParams.values", {});
     this.set("setConfigParams.values", window.HAXCMS.config.values);
@@ -893,7 +940,7 @@ class HAXCMSSiteListing extends PolymerElement {
     this.set("setConfigParams.token", this.createParams.token);
     this.notifyPath("setConfigParams.token");
 
-    this.$.setconfigrequest.generateRequest();
+    this.shadowRoot.querySelector("#setconfigrequest").generateRequest();
   }
   /**
    * Create a new site button was clicked
@@ -922,11 +969,15 @@ class HAXCMSSiteListing extends PolymerElement {
   }
   handleConfigResponse(e) {
     window.HAXCMS.config = e.detail.response;
-    this.$.settingsform.set("schema", window.HAXCMS.config.schema);
-    this.$.settingsform.set("value", window.HAXCMS.config.values);
+    this.shadowRoot
+      .querySelector("#settingsform")
+      .set("schema", window.HAXCMS.config.schema);
+    this.shadowRoot
+      .querySelector("#settingsform")
+      .set("value", window.HAXCMS.config.values);
   }
   handleSetConfigResponse(e) {
-    this.$.settingsdialog.opened = false;
+    this.shadowRoot.querySelector("#settingsdialog").opened = false;
     const evt = new CustomEvent("simple-toast-show", {
       bubbles: true,
       composed: true,
@@ -1050,7 +1101,7 @@ class HAXCMSSiteListing extends PolymerElement {
         this.set("activeItem", findSite.pop());
         this.notifyPath("activeItem.*");
         // simulate clicking on the edit button that's in this tab
-        this.$.edit.click();
+        this.shadowRoot.querySelector("#edit").click();
       }
     }
   }
