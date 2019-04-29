@@ -208,6 +208,10 @@ class GameShowQuiz extends MutableData(PolymerElement) {
         </app-toolbar>
       </app-header>
       <div id="contentcontainer">
+        <div style="font-size: 24px;" hidden$="[[!remainingAttempts]]">
+          Points Remaining to Attempt:
+          <strong>[[remainingAttempts]]</strong>
+        </div>
         <template is="dom-repeat" items="[[gameBoard]]" as="row" mutable-data>
           <responsive-grid-row gutter="0" class\$="row row-[[index]]">
             <template
@@ -354,7 +358,10 @@ class GameShowQuiz extends MutableData(PolymerElement) {
           >Good luck!</paper-button
         >
       </game-show-quiz-modal>
-      <game-show-quiz-modal id="dialog" title="[[questionTitle]]">
+      <game-show-quiz-modal
+        id="dialog"
+        title="[[questionTitle]] [[__activeQuestionDetails.points]] point, [[__activeQuestionDetails.type]] question."
+      >
         <vaadin-split-layout slot="content" style="height:80vh;">
           <div>
             <iron-image
@@ -373,7 +380,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
               title="[[activeQuestion.title]]"
               answers="[[activeQuestion.data]]"
             ></multiple-choice>
-            <div hidden\$="[[!activeQuestion.submitted]]" aria-hidden="true">
+            <div hidden\$="[[!activeQuestion.wrong]]" aria-hidden="true">
               <h3>Feedback</h3>
               <p>[[activeQuestion.feedback]]</p>
             </div>
@@ -510,7 +517,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
        */
       questionTitle: {
         type: String,
-        value: "Answer the following question"
+        value: "Answer the following"
       },
       /**
        * Rows on the gameshow board
@@ -710,6 +717,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
       this.set("points.total.earned", total);
       this.notifyPath("points.total.earned");
     } else {
+      this.set("activeQuestion.wrong", true);
       // show wrong
       const evt = new CustomEvent("simple-toast-show", {
         bubbles: true,
