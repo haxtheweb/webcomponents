@@ -2,6 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { microTask } from "@polymer/polymer/lib/utils/async.js";
@@ -47,6 +48,20 @@ export const HAXCMSTheme = function(SuperClass) {
     static get properties() {
       return {
         /**
+         * Class for the color
+         */
+        hexColor: {
+          type: String,
+          computed: "_getHexColor(color)"
+        },
+        /**
+         * Color class work to apply
+         */
+        color: {
+          type: String,
+          reflectToAttribute: true
+        },
+        /**
          * editting state for the page
          */
         editMode: {
@@ -72,6 +87,18 @@ export const HAXCMSTheme = function(SuperClass) {
           observer: "_locationChanged"
         }
       };
+    }
+    /**
+     * Convert color name to HEX
+     */
+    _getHexColor(color) {
+      // legacy support for materializeCSS names
+      let name = color.replace("-text", "");
+      let tmp = new SimpleColors();
+      if (tmp.colors[name]) {
+        return tmp.colors[name][6];
+      }
+      return "#000000";
     }
     /**
      * notice edit changed, make sure we fake a resize because of that container flyout
