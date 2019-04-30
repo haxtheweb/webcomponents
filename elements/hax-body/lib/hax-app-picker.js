@@ -35,6 +35,8 @@ class HaxAppPicker extends PolymerElement {
         :host {
           display: block;
         }
+        iron-icon:not(:defined),
+        paper-button:not(:defined),
         paper-dialog:not(:defined) {
           display: none;
         }

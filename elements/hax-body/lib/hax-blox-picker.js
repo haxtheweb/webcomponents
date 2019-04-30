@@ -28,6 +28,9 @@ class HaxBloxPicker extends PolymerElement {
         :host {
           display: block;
         }
+        iron-icon:not(:defined) {
+          display: none;
+        }
         #dialog {
           --app-drawer-width: 320px;
           z-index: 1000;

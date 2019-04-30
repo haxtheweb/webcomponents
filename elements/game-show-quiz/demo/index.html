@@ -22,7 +22,75 @@
     </div>
     <script defer>
       document.getElementById('select').addEventListener('change', (e) => {
-        document.getElementById('game').gameData = e.target.value;
+        var game = document.getElementById('game');
+        game.attemptsData = {
+          overall: {
+            labels: ["Slide ID", "Terminology", "Reading", "Lecture"],
+              series: [0, 0, 0, 0]
+          },
+          slideid: {
+            labels: ["Correct", "Incorrect"],
+              series: [0, 0]
+          },
+          terminology: {
+            labels: ["Correct", "Incorrect"],
+              series: [0, 0]
+          },
+          reading: {
+            labels: ["Correct", "Incorrect"],
+              series: [0, 0]
+          },
+          lecture: {
+            labels: ["Correct", "Incorrect"],
+              series: [0, 0]
+          },
+          bonus: {
+            labels: ["Correct", "Incorrect"],
+              series: [0, 0]
+          },
+          total: {
+            labels: ["Correct", "Incorrect"],
+              series: [0, 0]
+          }
+        };
+        game.points = {
+          slideid: {
+            attempted: 0,
+              earned: 0,
+                percent: 0
+          },
+          terminology: {
+            attempted: 0,
+              earned: 0,
+                percent: 0
+          },
+          reading: {
+            attempted: 0,
+              earned: 0,
+                percent: 0
+          },
+          lecture: {
+            attempted: 0,
+              earned: 0,
+                percent: 0
+          },
+          bonus: {
+            attempted: 0,
+              earned: 0,
+                percent: 0
+          },
+          total: {
+            attempted: 0,
+              earned: 0,
+                percent: 0
+          }
+        };
+        game.remainingAttempts = 30;
+        game.set('gameBoard', []);
+        game.set('gameBoardData', {});
+        game.set('activeQuestion',{});
+        // generate the request
+        game.gameData = e.target.value;
       });
     </script>
     <game-show-quiz id="game" title="Art History Jeopardy" directions-title="Jeopardy Directions">

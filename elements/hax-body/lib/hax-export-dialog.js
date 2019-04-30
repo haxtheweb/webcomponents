@@ -16,6 +16,8 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(PolymerElement) {
         #dialog {
           z-index: 1000;
         }
+        iron-icon:not(:defined),
+        paper-button:not(:defined),
         paper-dialog:not(:defined) {
           display: none;
         }

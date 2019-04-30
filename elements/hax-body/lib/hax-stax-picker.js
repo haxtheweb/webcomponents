@@ -1,7 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "./hax-stax-browser.js";
 import "./hax-shared-styles.js";
 /**
@@ -18,12 +16,19 @@ class HaxStaxPicker extends PolymerElement {
     super();
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/paper-button/paper-button.js");
+    import("@polymer/app-layout/app-drawer/app-drawer.js");
   }
   static get template() {
     return html`
       <style include="simple-colors hax-shared-styles">
         :host {
           display: block;
+        }
+        iron-icon:not(:defined),
+        paper-button:not(:defined),
+        app-drawer:not(:defined) {
+          display: none;
         }
         #dialog {
           --app-drawer-width: 320px;

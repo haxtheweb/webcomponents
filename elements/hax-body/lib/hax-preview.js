@@ -11,6 +11,25 @@ import "./hax-shared-styles.js";
  *  - source - a json object from some place loaded in remotely which will then be in json-schema format. This will then be parsed into a form which can be used to manipulate the element.
  */
 class HaxPreview extends PolymerElement {
+  constructor() {
+    super();
+    import("@polymer/paper-card/paper-card.js");
+    import("@polymer/paper-tabs/paper-tabs.js");
+    import("@polymer/paper-tabs/paper-tab.js");
+    import("@polymer/paper-button/paper-button.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@vaadin/vaadin-split-layout/vaadin-split-layout.js");
+    import("@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js");
+    import("@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js");
+    import("@lrnwebcomponents/code-editor/code-editor.js");
+    import("@polymer/paper-input/paper-textarea.js");
+    import("app-datepicker/app-datepicker.js");
+    import("@polymer/paper-toggle-button/paper-toggle-button.js");
+    import("@lrnwebcomponents/hax-body/lib/hax-upload-field.js");
+    import("@lrnwebcomponents/simple-picker/simple-picker.js");
+    import("@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js");
+    import("@lrnwebcomponents/paper-input-flagged/paper-input-flagged.js");
+  }
   static get template() {
     return html`
       <style include="simple-colors hax-shared-styles">
@@ -18,6 +37,10 @@ class HaxPreview extends PolymerElement {
           display: block;
           background-color: #ffffff;
           overflow: hidden;
+        }
+        iron-icon:not(:defined),
+        paper-button:not(:defined) {
+          display: none;
         }
         paper-card.form-wrapper {
           margin: 0;
@@ -308,25 +331,6 @@ class HaxPreview extends PolymerElement {
         type: String
       }
     };
-  }
-  constructor() {
-    super();
-    import("@polymer/paper-card/paper-card.js");
-    import("@polymer/paper-tabs/paper-tabs.js");
-    import("@polymer/paper-tabs/paper-tab.js");
-    import("@polymer/paper-button/paper-button.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@vaadin/vaadin-split-layout/vaadin-split-layout.js");
-    import("@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js");
-    import("@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js");
-    import("@lrnwebcomponents/code-editor/code-editor.js");
-    import("@polymer/paper-input/paper-textarea.js");
-    import("app-datepicker/app-datepicker.js");
-    import("@polymer/paper-toggle-button/paper-toggle-button.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-upload-field.js");
-    import("@lrnwebcomponents/simple-picker/simple-picker.js");
-    import("@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js");
-    import("@lrnwebcomponents/paper-input-flagged/paper-input-flagged.js");
   }
   /**
    * Trigger cancel on manager as it is the parent here.

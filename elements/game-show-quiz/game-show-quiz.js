@@ -363,7 +363,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
         title="[[questionTitle]] [[__activeQuestionDetails.points]] point, [[__activeQuestionDetails.type]] question."
       >
         <vaadin-split-layout slot="content" style="height:80vh;">
-          <div>
+          <div id="col1" style="width:70%;min-width: 30%;">
             <iron-image
               style="min-width:100px; width:100%; min-height:50vh; height:75vh; background-color: lightgray;"
               sizing="contain"
@@ -371,7 +371,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
               src\$="[[activeQuestion.image]]"
             ></iron-image>
           </div>
-          <div>
+          <div id="col2" style="width:30%;min-width: 30%;">
             <multiple-choice
               randomize
               single-option
@@ -547,13 +547,13 @@ class GameShowQuiz extends MutableData(PolymerElement) {
    * Toggle the directions to appear
    */
   directionsToggle(e) {
-    this.$.directions.toggle();
+    this.shadowRoot.querySelector("#directions").toggle();
   }
   /**
    * Toggle the directions to appear
    */
   scoreBoardToggle(e) {
-    this.$.scoreboard.toggle();
+    this.shadowRoot.querySelector("#scoreboard").toggle();
   }
   /**
    * Continue button pressed.
@@ -578,8 +578,8 @@ class GameShowQuiz extends MutableData(PolymerElement) {
    */
   registerTap(e) {
     var found = true;
-    for (var i in this.$.question.answers) {
-      if (this.$.question.answers[i].userGuess) {
+    for (var i in this.shadowRoot.querySelector("#question").answers) {
+      if (this.shadowRoot.querySelector("#question").answers[i].userGuess) {
         found = false;
       }
     }
@@ -595,7 +595,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
     // flip submitted status
     this.set("activeQuestion.submitted", true);
     this.notifyPath("activeQuestion.submitted");
-    this.$.continue.focus();
+    this.shadowRoot.querySelector("#continue").focus();
     // maker this disabled on the board
     this.__activeTap.disabled = true;
     // start to build a status icon
@@ -691,7 +691,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
         });
     }
     // if current answer is correct
-    if (this.$.question.checkAnswers()) {
+    if (this.shadowRoot.querySelector("#question").checkAnswers()) {
       // show correct
       const evt = new CustomEvent("simple-toast-show", {
         bubbles: true,
@@ -783,6 +783,32 @@ class GameShowQuiz extends MutableData(PolymerElement) {
     this.set("attemptsData", attemptsData);
     // append child via polymer so we can style it correctly in shadow dom
     dom(this.__activeTap).appendChild(icon);
+    // check for 2 points remaining
+    if (this.remainingAttempts === 2) {
+      this.shadowRoot
+        .querySelectorAll(
+          "responsive-grid-col paper-button[data-value='3']:not([disabled]):not([data-is-bonus])"
+        )
+        .forEach(item => {
+          item.setAttribute("disabled", "disabled");
+        });
+    }
+    if (this.remainingAttempts === 1) {
+      this.shadowRoot
+        .querySelectorAll(
+          "responsive-grid-col paper-button[data-value='2']:not([disabled]):not([data-is-bonus])"
+        )
+        .forEach(item => {
+          item.setAttribute("disabled", "disabled");
+        });
+      this.shadowRoot
+        .querySelectorAll(
+          'responsive-grid-col paper-button[data-value="3"]:not([disabled]):not([data-is-bonus])'
+        )
+        .forEach(item => {
+          item.setAttribute("disabled", "disabled");
+        });
+    }
     // check for if we have any attempts remaining
     if (this.remainingAttempts <= 0) {
       this.shadowRoot
@@ -800,7 +826,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
         ).length === 0
       ) {
         // open score report in a modal now
-        this.$.dialog.toggle();
+        this.shadowRoot.querySelector("#dialog").toggle();
         this.scoreBoardToggle({});
         const evt = new CustomEvent("simple-toast-show", {
           bubbles: true,
@@ -833,9 +859,12 @@ class GameShowQuiz extends MutableData(PolymerElement) {
       this.set("activeQuestion", this.__activeQuestionDetails.question);
       this.notifyPath("activeQuestion.*");
       this.notifyPath("activeQuestion.data.*");
-      this.$.question.resetAnswers();
+      // reset the layout on open
+      this.shadowRoot.querySelector("#col1").style.flex = "";
+      this.shadowRoot.querySelector("#col2").style.flex = "";
+      this.shadowRoot.querySelector("#question").resetAnswers();
       setTimeout(() => {
-        this.$.dialog.toggle();
+        this.shadowRoot.querySelector("#dialog").toggle();
       }, 100);
     }
   }
@@ -957,7 +986,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
    * Reset focus on close back to the help button
    */
   resetFocus(e) {
-    this.$.helpbutton.focus();
+    this.shadowRoot.querySelector("#helpbutton").focus();
   }
   /**
    * HAX bindings
@@ -1007,7 +1036,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
     };
   }
   /**
-   * Attached to the DOM, now fire.
+   * Attached to the DOM
    */
   connectedCallback() {
     super.connectedCallback();
@@ -1015,28 +1044,42 @@ class GameShowQuiz extends MutableData(PolymerElement) {
     afterNextRender(this, function() {
       this.HAXWiring = new HAXWiring();
       this.HAXWiring.setup(GameShowQuiz.haxProperties, GameShowQuiz.tag, this);
-      this.$.dismiss.addEventListener("tap", this.resetFocus.bind(this));
-      this.$.contentcontainer.addEventListener(
-        "tap",
-        this._gameBoardTap.bind(this)
-      );
-      this.$.submit.addEventListener("tap", this.submitAnswer.bind(this));
-      this.$.continue.addEventListener("tap", this.continueGameTap.bind(this));
-      this.$.question.addEventListener("click", this.registerTap.bind(this));
+      this.shadowRoot
+        .querySelector("#dismiss")
+        .addEventListener("tap", this.resetFocus.bind(this));
+      this.shadowRoot
+        .querySelector("#contentcontainer")
+        .addEventListener("tap", this._gameBoardTap.bind(this));
+      this.shadowRoot
+        .querySelector("#submit")
+        .addEventListener("tap", this.submitAnswer.bind(this));
+      this.shadowRoot
+        .querySelector("#continue")
+        .addEventListener("tap", this.continueGameTap.bind(this));
+      this.shadowRoot
+        .querySelector("#question")
+        .addEventListener("click", this.registerTap.bind(this));
     });
   }
   /**
    * detached life cycke
    */
   disconnectedCallback() {
-    this.$.dismiss.removeEventListener("tap", this.resetFocus.bind(this));
-    this.$.contentcontainer.removeEventListener(
-      "tap",
-      this._gameBoardTap.bind(this)
-    );
-    this.$.submit.removeEventListener("tap", this.submitAnswer.bind(this));
-    this.$.continue.removeEventListener("tap", this.continueGameTap.bind(this));
-    this.$.question.removeEventListener("click", this.registerTap.bind(this));
+    this.shadowRoot
+      .querySelector("#dismiss")
+      .removeEventListener("tap", this.resetFocus.bind(this));
+    this.shadowRoot
+      .querySelector("#contentcontainer")
+      .removeEventListener("tap", this._gameBoardTap.bind(this));
+    this.shadowRoot
+      .querySelector("#submit")
+      .removeEventListener("tap", this.submitAnswer.bind(this));
+    this.shadowRoot
+      .querySelector("#continue")
+      .removeEventListener("tap", this.continueGameTap.bind(this));
+    this.shadowRoot
+      .querySelector("#question")
+      .removeEventListener("click", this.registerTap.bind(this));
     super.disconnectedCallback();
   }
 }

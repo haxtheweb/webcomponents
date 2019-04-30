@@ -36,6 +36,9 @@ class HaxManager extends PolymerElement {
           display: block;
           color: var(--hax-color-text);
         }
+        iron-icon:not(:defined) {
+          display: none;
+        }
         #dialog {
           color: var(--hax-color-text);
           z-index: 10000;

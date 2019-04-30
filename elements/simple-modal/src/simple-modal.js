@@ -3,15 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import * as async from "@polymer/polymer/lib/utils/async.js";
+import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/paper-dialog/paper-dialog.js";
-import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/neon-animation/animations/scale-up-animation.js";
-import "@polymer/neon-animation/animations/fade-out-animation.js";
 // register globally so we can make sure there is only one
 window.SimpleModal = window.SimpleModal || {};
 // request if this exists. This helps invoke the element existing in the dom
@@ -52,6 +47,15 @@ window.SimpleModal.requestAvailability = () => {
 class SimpleModal extends PolymerElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
+  constructor() {
+    super();
+    import("@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js");
+    import("@polymer/paper-button/paper-button.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/neon-animation/animations/scale-up-animation.js");
+    import("@polymer/neon-animation/animations/fade-out-animation.js");
+  }
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -64,21 +68,23 @@ class SimpleModal extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener("simple-modal-hide", this.close.bind(this));
-    window.addEventListener("simple-modal-show", this.showEvent.bind(this));
-    this.shadowRoot
-      .querySelector("#simple-modal-content")
-      .addEventListener(
-        "neon-animation-finish",
-        this._ironOverlayClosed.bind(this)
-      );
+    afterNextRender(this, function() {
+      window.addEventListener("simple-modal-hide", this.close.bind(this));
+      window.addEventListener("simple-modal-show", this.showEvent.bind(this));
+      this.shadowRoot
+        .querySelector("#simple-modal-content")
+        .addEventListener(
+          "neon-animation-finish",
+          this._ironOverlayClosed.bind(this)
+        );
+    });
   }
   /**
    * Ensure everything is visible in what's been expanded.
    */
   _resizeContent(e) {
     // fake a resize event to make contents happy
-    async.microTask.run(() => {
+    microTask.run(() => {
       window.dispatchEvent(new Event("resize"));
     });
   }
@@ -148,7 +154,7 @@ class SimpleModal extends PolymerElement {
       dom(this).removeChild(dom(this).firstChild);
     }
     if (this.invokedBy) {
-      async.microTask.run(() => {
+      microTask.run(() => {
         setTimeout(() => {
           this.invokedBy.focus();
         }, 500);
@@ -159,7 +165,7 @@ class SimpleModal extends PolymerElement {
    * Close the modal and do some clean up
    */
   close() {
-    this.$.dialog.close();
+    this.shadowRoot.querySelector("#dialog").close();
   }
   // Observer opened for changes
   _openedChanged(newValue, oldValue) {
@@ -199,7 +205,6 @@ class SimpleModal extends PolymerElement {
     return !title ? "Modal Dialog" : null;
   }
   _ironOverlayClosed(e) {
-    console.log("i got here..");
     e.preventDefault();
     e.stopPropagation();
   }
@@ -207,7 +212,6 @@ class SimpleModal extends PolymerElement {
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    super.disconnectedCallback();
     window.removeEventListener("simple-modal-hide", this.close.bind(this));
     window.removeEventListener("simple-modal-show", this.showEvent.bind(this));
     this.shadowRoot
@@ -216,6 +220,7 @@ class SimpleModal extends PolymerElement {
         "neon-animation-finish",
         this._ironOverlayClosed.bind(this)
       );
+    super.disconnectedCallback();
   }
 }
 window.customElements.define(SimpleModal.tag, SimpleModal);

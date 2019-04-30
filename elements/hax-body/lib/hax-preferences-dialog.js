@@ -27,6 +27,10 @@ class HaxPreferencesDialog extends PolymerElement {
         :host {
           display: block;
         }
+        iron-icon:not(:defined),
+        paper-button:not(:defined) {
+          display: none;
+        }
         #dialog {
           z-index: 1000;
           margin-top: 56px;
