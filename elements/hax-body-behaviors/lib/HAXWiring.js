@@ -133,7 +133,7 @@ import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
  *
  */
 /**
- * Object to validate HAX
+ * Object to validate HAX schema. Can be used in and out of element contexts
  */
 export class HAXWiring {
   constructor() {
@@ -1040,6 +1040,117 @@ export class HAXWiring {
     };
   }
 }
+/**
+ * Super class element partial. This mixes the HAXWiring capabilities into the element itself.
+ * Use this in instances where you want direct access to all the functions in the element itself
+ */
+export const HAXElement = function(SuperClass) {
+  return class extends SuperClass {
+    constructor() {
+      super();
+      this.HAXWiring = new HAXWiring();
+    }
+    static get properties() {
+      return {
+        /**
+         * haxProperties
+         */
+        haxProperties: window.HAXWiring.haxProperties
+      };
+    }
+    /**
+     * Setter to bridge private haxProperties setter.
+     * This is to then be implemented by the ready state of whatever is supplying the
+     * properties in order to be able to bubble up the properties for a tag.
+     */
+    setHaxProperties(props, tag = "", context = this) {
+      if (tag == "" && typeof this.tagName !== typeof undefined) {
+        tag = this.tagName.toLowerCase();
+      }
+      window.addEventListener(
+        "hax-store-ready",
+        this._haxStoreReady.bind(this)
+      );
+      if (
+        typeof window.HaxStore !== typeof undefined &&
+        window.HaxStore.instance != null &&
+        window.HaxStore.ready
+      ) {
+        return this.HAXWiring.setHaxProperties(props, tag, context, true);
+      } else {
+        return this.HAXWiring.setHaxProperties(props, tag, context, false);
+      }
+    }
+    /**
+     * Setter to bridge private haxProperties setter.
+     * This is to then be implemented by the ready state of whatever is supplying the
+     * properties in order to be able to bubble up the properties for a tag.
+     */
+    setup(props, tag = "", context = this) {
+      return this.HAXWiring.setup(props, (tag = ""), (context = this));
+    }
+    /**
+     * Private function to fire off props when ready
+     */
+    _haxStoreReady(e) {
+      return this.HAXWiring._haxStoreReady(e);
+    }
+    /**
+     * Validate settings object.
+     */
+    validateSetting(setting) {
+      return this.HAXWiring.validateSetting(setting);
+    }
+    /**
+     * Match convention for set.
+     */
+    getHaxProperties() {
+      return this.haxProperties;
+    }
+    /**
+     * Convert haxProperties structure to a simple json-schema.
+     * This allows for complex form building systems based on this data.
+     * type is configure or advanced
+     */
+    getHaxJSONSchema(type, haxProperties, target = this) {
+      return this.HAXWiring.getHaxJSONSchema(type, haxProperties, target);
+    }
+    /**
+     * Default postProcessgetHaxJSONSchema to be overridden.
+     */
+    postProcessgetHaxJSONSchema(schema) {
+      return this.HAXWiring.postProcessgetHaxJSONSchema(schema);
+    }
+    /**
+     * Internal helper for getHaxJSONSchema to buiild the properties object
+     * correctly with support for recursive nesting thx to objects / arrays.
+     */
+    _getHaxJSONSchemaProperty(settings, target) {
+      return this.HAXWiring._getHaxJSONSchemaProperty(settings, target);
+    }
+    /**
+     * Convert input method to schedma type
+     */
+    getHaxJSONSchemaType(inputMethod) {
+      return this.HAXWiring.getHaxJSONSchemaType(inputMethod);
+    }
+    /**
+     * List valid input methods.
+     */
+    validHAXPropertyInputMethod() {
+      return this.HAXWiring.validHAXPropertyInputMethod();
+    }
+    /**
+     * Return a haxProperties prototype / example structure
+     */
+    prototypeHaxProperties() {
+      return this.HAXWiring.prototypeHaxProperties();
+    }
+  };
+};
+
+// LEGACY. This is a Polymer 1.x syntax element "behavior"
+// This has been replaced with HAXElement, a super class which can be used to wrap classes
 // invoke an instance so we can support behaviors as well
 window.HAXWiring = new HAXWiring();
 // ensure HAXPropertiesBehaviors exists

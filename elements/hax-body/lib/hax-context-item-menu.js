@@ -1,8 +1,5 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
-import "@polymer/paper-item/paper-item.js";
-import "@polymer/neon-animation/neon-animation.js";
 import "./hax-toolbar-menu.js";
 import "./hax-shared-styles.js";
 
@@ -17,99 +14,109 @@ An icon / button that has support for multiple options via drop down.
  - button - an item that expresses what interaction you will have with the content.
 
 */
-Polymer({
-  _template: html`
-    <style include="hax-shared-styles">
-      :host {
-        display: inline-flex;
-        height: 36px;
-        box-sizing: border-box;
+class HaxContextItemMenu extends PolymerElement {
+  constructor() {
+    super();
+    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@polymer/paper-item/paper-item.js");
+    import("@polymer/neon-animation/neon-animation.js");
+  }
+  static get template() {
+    return html`
+      <style include="hax-shared-styles">
+        :host {
+          display: inline-flex;
+          height: 36px;
+          box-sizing: border-box;
+        }
+        :host hax-toolbar-menu ::slotted(*):hover {
+          background-color: var(--hax-color-bg-accent);
+        }
+        :host hax-toolbar-menu ::slotted(*) {
+          height: 36px;
+        }
+      </style>
+      <hax-toolbar-menu
+        id="menu"
+        icon="[[icon]]"
+        tooltip="[[label]]"
+        tooltip-direction="[[direction]]"
+        selected="{{selectedValue}}"
+        reset-on-select="[[resetOnSelect]]"
+      >
+        <slot></slot>
+      </hax-toolbar-menu>
+    `;
+  }
+  static get tag() {
+    return "hax-context-item-menu";
+  }
+  static get properties() {
+    return {
+      /**
+       * Internal flag to allow blocking the event firing if machine selects tag.
+       */
+      _blockEvent: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Should we reset the selection after it is made
+       */
+      resetOnSelect: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Value.
+       */
+      selectedValue: {
+        type: Number,
+        reflectToAttribute: true,
+        notify: true,
+        value: 0,
+        observer: "_selectedUpdated"
+      },
+      /**
+       * Direction for the tooltip
+       */
+      direction: {
+        type: String,
+        value: "top"
+      },
+      /**
+       * Icon for the button.
+       */
+      icon: {
+        type: String,
+        value: "editor:text-fields",
+        reflectToAttribute: true
+      },
+      /**
+       * Label for the button.
+       */
+      label: {
+        type: String,
+        value: "editor:text-fields",
+        reflectToAttribute: true
+      },
+      /**
+       * Name of the event to bubble up as being tapped.
+       * This can be used to tell other elements what was
+       * clicked so it can take action appropriately.
+       */
+      eventName: {
+        type: String,
+        value: "button",
+        reflectToAttribute: true
       }
-      :host hax-toolbar-menu ::slotted(*):hover {
-        background-color: var(--hax-color-bg-accent);
-      }
-      :host hax-toolbar-menu ::slotted(*) {
-        height: 36px;
-      }
-    </style>
-    <hax-toolbar-menu
-      id="menu"
-      icon="[[icon]]"
-      tooltip="[[label]]"
-      tooltip-direction="[[direction]]"
-      selected="{{selectedValue}}"
-      reset-on-select="[[resetOnSelect]]"
-    >
-      <slot></slot>
-    </hax-toolbar-menu>
-  `,
-
-  is: "hax-context-item-menu",
-
-  properties: {
-    /**
-     * Internal flag to allow blocking the event firing if machine selects tag.
-     */
-    _blockEvent: {
-      type: Boolean,
-      value: false
-    },
-    /**
-     * Should we reset the selection after it is made
-     */
-    resetOnSelect: {
-      type: Boolean,
-      value: false
-    },
-    /**
-     * Value.
-     */
-    selectedValue: {
-      type: Number,
-      reflectToAttribute: true,
-      notify: true,
-      value: 0,
-      observer: "_selectedUpdated"
-    },
-    /**
-     * Direction for the tooltip
-     */
-    direction: {
-      type: String,
-      value: "top"
-    },
-    /**
-     * Icon for the button.
-     */
-    icon: {
-      type: String,
-      value: "editor:text-fields",
-      reflectToAttribute: true
-    },
-    /**
-     * Label for the button.
-     */
-    label: {
-      type: String,
-      value: "editor:text-fields",
-      reflectToAttribute: true
-    },
-    /**
-     * Name of the event to bubble up as being tapped.
-     * This can be used to tell other elements what was
-     * clicked so it can take action appropriately.
-     */
-    eventName: {
-      type: String,
-      value: "button",
-      reflectToAttribute: true
-    }
-  },
+    };
+  }
 
   /**
    * Notice the selected value has changed.
    */
-  _selectedUpdated: function(newValue, oldValue) {
+  _selectedUpdated(newValue, oldValue) {
     if (
       typeof newValue !== typeof null &&
       typeof oldValue !== typeof undefined &&
@@ -138,15 +145,22 @@ Polymer({
         typeof item.attributes.value !== typeof undefined &&
         typeof item.attributes.value.value !== typeof undefined
       ) {
-        // weird but this makes the menu close when we fire up an event
+        // weird but this makes the menu close when we send up an event
         // that indicates something higher should do something. This
         // avoids an annoying UX error where the menu stays open for
         // no reason.
-        this.$.menu.hideMenu();
-        this.fire("hax-context-item-selected", {
-          target: item,
-          eventName: item.attributes.value.value
-        });
+        this.shadowRoot.querySelector("#menu").hideMenu();
+        this.dispatchEvent(
+          new CustomEvent("hax-context-item-selected", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: {
+              target: item,
+              eventName: item.attributes.value.value
+            }
+          })
+        );
       }
       // we only block 1 time if it's available
       if (this._blockEvent) {
@@ -154,4 +168,6 @@ Polymer({
       }
     }
   }
-});
+}
+window.customElements.define(HaxContextItemMenu.tag, HaxContextItemMenu);
+export { HaxContextItemMenu };

@@ -1,28 +1,19 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { wipeSlot } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
-import "@polymer/paper-card/paper-card.js";
-import "@polymer/paper-tabs/paper-tabs.js";
-import "@polymer/paper-tabs/paper-tab.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@vaadin/vaadin-split-layout/vaadin-split-layout.js";
-import "@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";
-import "@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./hax-shared-styles.js";
 /**
  * `hax-preview`
  * `An element that can generate a form`
- * @demo demo/index.html
  * @microcopy - the mental model for this element
  *  - element - the element to work against. an object that expresses enough information to create an element in the DOM. This is useful for remixing a tag via the json-form
  *  - source - a json object from some place loaded in remotely which will then be in json-schema format. This will then be parsed into a form which can be used to manipulate the element.
  */
-Polymer({
-  _template: html`
-    <custom-style>
-      <style is="custom-style" include="simple-colors hax-shared-styles">
+class HaxPreview extends PolymerElement {
+  static get template() {
+    return html`
+      <style include="simple-colors hax-shared-styles">
         :host {
           display: block;
           background-color: #ffffff;
@@ -164,155 +155,170 @@ Polymer({
           background-color: var(--hax-color-accent1);
         }
       </style>
-    </custom-style>
-    <vaadin-split-layout class="panel-wrapper">
-      <!-- critique panel -->
-      <div class="vaadin-split-layout-panel">
-        <div class="preview-buttons">
-          <paper-button id="insert" raised on-click="insert"
-            >[[editTitle]]</paper-button
-          >
-          <paper-button id="cancel" raised on-click="cancel"
-            >Cancel</paper-button
-          >
+      <vaadin-split-layout class="panel-wrapper">
+        <!-- critique panel -->
+        <div class="vaadin-split-layout-panel">
+          <div class="preview-buttons">
+            <paper-button id="insert" raised on-click="insert"
+              >[[editTitle]]</paper-button
+            >
+            <paper-button id="cancel" raised on-click="cancel"
+              >Cancel</paper-button
+            >
+          </div>
+          <div class="preview-text">
+            <iron-icon icon="icons:arrow-drop-down"></iron-icon
+            ><iron-icon icon="icons:arrow-drop-down"></iron-icon
+            ><iron-icon icon="icons:arrow-drop-down"></iron-icon>[[humanName]]
+            preview<iron-icon icon="icons:arrow-drop-down"></iron-icon
+            ><iron-icon icon="icons:arrow-drop-down"></iron-icon
+            ><iron-icon icon="icons:arrow-drop-down"></iron-icon>
+          </div>
+          <div id="preview"><slot></slot></div>
+          <div class="preview-text preview-text-bottom">
+            <iron-icon icon="icons:arrow-drop-up"></iron-icon
+            ><iron-icon icon="icons:arrow-drop-up"></iron-icon
+            ><iron-icon icon="icons:arrow-drop-up"></iron-icon>end
+            preview<iron-icon icon="icons:arrow-drop-up"></iron-icon
+            ><iron-icon icon="icons:arrow-drop-up"></iron-icon
+            ><iron-icon icon="icons:arrow-drop-up"></iron-icon>
+          </div>
         </div>
-        <div class="preview-text">
-          <iron-icon icon="icons:arrow-drop-down"></iron-icon
-          ><iron-icon icon="icons:arrow-drop-down"></iron-icon
-          ><iron-icon icon="icons:arrow-drop-down"></iron-icon>[[humanName]]
-          preview<iron-icon icon="icons:arrow-drop-down"></iron-icon
-          ><iron-icon icon="icons:arrow-drop-down"></iron-icon
-          ><iron-icon icon="icons:arrow-drop-down"></iron-icon>
-        </div>
-        <div id="preview"><slot></slot></div>
-        <div class="preview-text preview-text-bottom">
-          <iron-icon icon="icons:arrow-drop-up"></iron-icon
-          ><iron-icon icon="icons:arrow-drop-up"></iron-icon
-          ><iron-icon icon="icons:arrow-drop-up"></iron-icon>end
-          preview<iron-icon icon="icons:arrow-drop-up"></iron-icon
-          ><iron-icon icon="icons:arrow-drop-up"></iron-icon
-          ><iron-icon icon="icons:arrow-drop-up"></iron-icon>
-        </div>
-      </div>
-      <div class="vaadin-split-layout-panel">
-        <paper-tabs
-          hidden\$="[[!haspreviewNode]]"
-          id="modetabs"
-          selected="{{modeTab}}"
-          attr-for-selected="data-mode"
-        >
-          <paper-tab id="configurebutton" data-mode="configure"
-            ><paper-button raised="" noink=""
-              >Configure</paper-button
-            ></paper-tab
+        <div class="vaadin-split-layout-panel">
+          <paper-tabs
+            hidden\$="[[!haspreviewNode]]"
+            id="modetabs"
+            selected="{{modeTab}}"
+            attr-for-selected="data-mode"
           >
-          <paper-tab id="advancedbutton" data-mode="advanced"
-            ><paper-button raised="" noink="">Advanced</paper-button></paper-tab
-          >
-        </paper-tabs>
-        <paper-card class="form-wrapper">
-          <eco-json-schema-object
-            id="form"
-            schema="[[schema]]"
-            value="{{value}}"
-          ></eco-json-schema-object>
-        </paper-card>
-      </div>
-    </vaadin-split-layout>
-  `,
+            <paper-tab id="configurebutton" data-mode="configure"
+              ><paper-button raised="" noink=""
+                >Configure</paper-button
+              ></paper-tab
+            >
+            <paper-tab id="advancedbutton" data-mode="advanced"
+              ><paper-button raised="" noink=""
+                >Advanced</paper-button
+              ></paper-tab
+            >
+          </paper-tabs>
+          <paper-card class="form-wrapper">
+            <eco-json-schema-object
+              id="form"
+              schema="[[schema]]"
+              value="{{value}}"
+            ></eco-json-schema-object>
+          </paper-card>
+        </div>
+      </vaadin-split-layout>
+    `;
+  }
+  static get tag() {
+    return "hax-preview";
+  }
 
-  is: "hax-preview",
-
-  observers: ["_valueChanged(value.*)"],
-
-  properties: {
-    /**
-     * A reference to the previewNode so we can do data binding correctly.
-     */
-    previewNode: {
-      type: Object,
-      value: {},
-      notify: true,
-      observer: "_previewNodeChanged"
-    },
-    /**
-     * Returned value from the form input.
-     */
-    value: {
-      type: Object,
-      notify: true,
-      value: {}
-    },
-    /**
-     * State of mode tabs.
-     */
-    modeTab: {
-      type: String,
-      value: "configure",
-      observer: "_editorModeChanged"
-    },
-    /**
-     * Edit title since it can change based on the operation
-     */
-    editTitle: {
-      type: String,
-      value: "Update"
-    },
-    /**
-     * The element to work against expressing the structure of the DOM element
-     * to create in the preview area.
-     */
-    element: {
-      type: Object,
-      observer: "_elementChanged"
-    },
-    /**
-     * Boolean association for a preview node existing.
-     */
-    haspreviewNode: {
-      type: Boolean,
-      computed: "_computedHasPreviewNode(previewNode)"
-    },
-    /**
-     * JSON Schema.
-     */
-    schema: {
-      type: Object,
+  static get observers() {
+    return ["_valueChanged(value.*)"];
+  }
+  static get properties() {
+    return {
+      /**
+       * A reference to the previewNode so we can do data binding correctly.
+       */
+      previewNode: {
+        type: Object,
+        value: {},
+        notify: true,
+        observer: "_previewNodeChanged"
+      },
+      /**
+       * Returned value from the form input.
+       */
       value: {
-        schema: {}
+        type: Object,
+        notify: true,
+        value: {}
+      },
+      /**
+       * State of mode tabs.
+       */
+      modeTab: {
+        type: String,
+        value: "configure",
+        observer: "_editorModeChanged"
+      },
+      /**
+       * Edit title since it can change based on the operation
+       */
+      editTitle: {
+        type: String,
+        value: "Update"
+      },
+      /**
+       * The element to work against expressing the structure of the DOM element
+       * to create in the preview area.
+       */
+      element: {
+        type: Object,
+        observer: "_elementChanged"
+      },
+      /**
+       * Boolean association for a preview node existing.
+       */
+      haspreviewNode: {
+        type: Boolean,
+        computed: "_computedHasPreviewNode(previewNode)"
+      },
+      /**
+       * JSON Schema.
+       */
+      schema: {
+        type: Object,
+        value: {
+          schema: {}
+        }
+      },
+      /**
+       * If this is the advancedForm or not. Default to not but slider allows
+       * switching mode for the form to be presented.
+       */
+      advancedForm: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * If we should show source view or not.
+       */
+      canEditSource: {
+        type: Boolean,
+        computed: "_computedEditSource(formKey)"
+      },
+      /**
+       * Form key from hax to target.
+       */
+      formKey: {
+        type: String,
+        computed: "_computedFormKey(advancedForm)",
+        observer: "_formKeyChanged"
+      },
+      /**
+       * Active Name from the properties
+       */
+      humanName: {
+        type: String
       }
-    },
-    /**
-     * If this is the advancedForm or not. Default to not but slider allows
-     * switching mode for the form to be presented.
-     */
-    advancedForm: {
-      type: Boolean,
-      value: false
-    },
-    /**
-     * If we should show source view or not.
-     */
-    canEditSource: {
-      type: Boolean,
-      computed: "_computedEditSource(formKey)"
-    },
-    /**
-     * Form key from hax to target.
-     */
-    formKey: {
-      type: String,
-      computed: "_computedFormKey(advancedForm)",
-      observer: "_formKeyChanged"
-    },
-    /**
-     * Active Name from the properties
-     */
-    humanName: {
-      type: String
-    }
-  },
-  created: function() {
+    };
+  }
+  constructor() {
+    super();
+    import("@polymer/paper-card/paper-card.js");
+    import("@polymer/paper-tabs/paper-tabs.js");
+    import("@polymer/paper-tabs/paper-tab.js");
+    import("@polymer/paper-button/paper-button.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@vaadin/vaadin-split-layout/vaadin-split-layout.js");
+    import("@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js");
+    import("@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js");
     import("@lrnwebcomponents/code-editor/code-editor.js");
     import("@polymer/paper-input/paper-textarea.js");
     import("app-datepicker/app-datepicker.js");
@@ -321,36 +327,36 @@ Polymer({
     import("@lrnwebcomponents/simple-picker/simple-picker.js");
     import("@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js");
     import("@lrnwebcomponents/paper-input-flagged/paper-input-flagged.js");
-  },
+  }
   /**
    * Trigger cancel on manager as it is the parent here.
    */
-  cancel: function(e) {
+  cancel(e) {
     window.HaxStore.instance.haxManager.cancel(e);
-  },
+  }
 
   /**
    * Trigger insert on manager as it is the parent here.
    */
-  insert: function(e) {
+  insert(e) {
     window.HaxStore.instance.haxManager.insertHaxElement(e);
-  },
+  }
 
   /**
    * Make a boolean to match the preview node's existance.
    */
-  _computedHasPreviewNode: function(previewNode) {
+  _computedHasPreviewNode(previewNode) {
     if (typeof previewNode.tagName === typeof undefined) {
       return false;
     } else {
       return true;
     }
-  },
+  }
 
   /**
    * Edit source.
    */
-  _computedEditSource: function(newValue, oldValue) {
+  _computedEditSource(newValue, oldValue) {
     if (typeof newValue !== typeof undefined) {
       if (
         typeof this.previewNode.tagName !== typeof undefined &&
@@ -364,24 +370,24 @@ Polymer({
       }
     }
     return true;
-  },
+  }
 
   /**
    * Compute form key to use.
    */
-  _computedFormKey: function(advanced) {
+  _computedFormKey(advanced) {
     if (advanced) {
       return "advanced";
     } else {
       return "configure";
     }
-  },
+  }
 
   /**
    * Form key changed, rebuild schema for the form
    * but don't update the element. Critical difference.
    */
-  _formKeyChanged: function(newValue, oldValue) {
+  _formKeyChanged(newValue, oldValue) {
     // ensure this doesn't run the 1st pass
     if (typeof oldValue !== typeof undefined) {
       var schema = {};
@@ -489,12 +495,12 @@ Polymer({
       this.set("schema", {});
       this.set("schema", schema);
     }
-  },
+  }
 
   /**
    * When the preview node is updated, pull schema associated with it
    */
-  _previewNodeChanged: function(newValue, oldValue) {
+  _previewNodeChanged(newValue, oldValue) {
     // ensure this doesn't run the 1st pass
     if (typeof oldValue !== typeof undefined && newValue != oldValue) {
       // see if we can get schema off of this.
@@ -614,12 +620,12 @@ Polymer({
         this.set("schema", schema);
       }
     }
-  },
+  }
 
   /**
    * Element changed, update the preview area.
    */
-  _elementChanged: function(newValue, oldValue) {
+  _elementChanged(newValue, oldValue) {
     if (typeof newValue !== typeof undefined) {
       // wipe the preview area and assocaited node
       let preview = dom(this);
@@ -642,11 +648,11 @@ Polymer({
       this.modeTab = "advanced";
       this.set("previewNode", {});
     }
-  },
+  }
   /**
    * Value in the form has changed, reflect to the preview.
    */
-  _valueChanged: function(valueChange) {
+  _valueChanged(valueChange) {
     var node = this.previewNode;
     // sanity check and then get props and mesh with form value response
     if (
@@ -783,11 +789,11 @@ Polymer({
         }
       }
     }
-  },
+  }
   /**
    * Editor mode changed handler
    */
-  _editorModeChanged: function(mode) {
+  _editorModeChanged(mode) {
     if (mode) {
       // if it's the advanced setting then toggle the advancedForm setting
       if (mode === "advanced") {
@@ -797,4 +803,6 @@ Polymer({
       }
     }
   }
-});
+}
+window.customElements.define(HaxPreview.tag, HaxPreview);
+export { HaxPreview };

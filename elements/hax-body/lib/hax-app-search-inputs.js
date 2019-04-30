@@ -1,6 +1,4 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@polymer/paper-input/paper-input.js";
-import "@polymer/paper-item/paper-item.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./hax-shared-styles.js";
@@ -15,9 +13,14 @@ import "./hax-shared-styles.js";
  - hax-app-search - element controlling the experience of searching an app
  - hax-body - the text are ultimately we are trying to insert this item into
 */
-Polymer({
-  _template: html`
-    <custom-style>
+class HaxAppSearchInputs extends PolymerElement {
+  constructor() {
+    super();
+    import("@polymer/paper-input/paper-input.js");
+    import("@polymer/paper-item/paper-item.js");
+  }
+  static get template() {
+    return html`
       <style include="simple-colors hax-shared-styles">
         :host {
           display: block;
@@ -33,45 +36,60 @@ Polymer({
           padding: 0;
         }
       </style>
-    </custom-style>
-    <div class="search-label">Search [[label]]</div>
-    <eco-json-schema-object
-      id="form"
-      schema="[[schema]]"
-      value="{{values}}"
-    ></eco-json-schema-object>
-  `,
+      <div class="search-label">Search [[label]]</div>
+      <eco-json-schema-object
+        id="form"
+        schema="[[schema]]"
+        value="{{values}}"
+      ></eco-json-schema-object>
+    `;
+  }
 
-  is: "hax-app-search-inputs",
+  static get tag() {
+    return "hax-app-search-inputs";
+  }
 
-  observers: ["_valueChanged(values.*)"],
+  static get observers() {
+    return ["_valueChanged(values.*)"];
+  }
 
-  properties: {
-    /**
-     * Title.
-     */
-    label: {
-      type: String,
-      value: "app"
-    },
-    /**
-     * Search input values mapped to schema inputs.
-     */
-    values: {
-      type: Object
-    },
-    /**
-     * Schema used to generate the input types.
-     */
-    schema: {
-      type: Object
-    }
-  },
+  static get properties() {
+    return {
+      /**
+       * Title.
+       */
+      label: {
+        type: String,
+        value: "app"
+      },
+      /**
+       * Search input values mapped to schema inputs.
+       */
+      values: {
+        type: Object
+      },
+      /**
+       * Schema used to generate the input types.
+       */
+      schema: {
+        type: Object
+      }
+    };
+  }
 
   /**
    * Search input was added.
    */
-  _valueChanged: function(change) {
-    this.fire("hax-app-search-values-changed", change.base);
+  _valueChanged(change) {
+    this.dispatchEvent(
+      new CustomEvent("hax-app-search-values-changed", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: change.base
+      })
+    );
   }
-});
+}
+window.customElements.define(HaxAppSearchInputs.tag, HaxAppSearchInputs);
+export { HaxAppSearchInputs };

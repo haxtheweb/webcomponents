@@ -1,19 +1,10 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-list/iron-list.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-button/paper-button.js";
-import "@polymer/paper-dialog/paper-dialog.js";
-import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
-import "@polymer/paper-ripple/paper-ripple.js";
-import "@polymer/paper-toast/paper-toast.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
-import "@polymer/neon-animation/neon-animation.js";
-import "@polymer/neon-animation/animations/scale-up-animation.js";
-import "@polymer/neon-animation/animations/scale-down-animation.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "./hax-app-picker-item.js";
+import "@lrnwebcomponents/hax-body/lib/hax-app-picker-item.js";
 import "./hax-shared-styles.js";
 /**
  `hax-app-picker`
@@ -27,191 +18,227 @@ import "./hax-shared-styles.js";
 @microcopy - the mental model for this element
  - data - this is the app data model for an element which expresses itself to hax
 */
-Polymer({
-  _template: html`
-    <style is="custom-style" include="simple-colors hax-shared-styles">
-      :host {
-        display: block;
-      }
-      hax-app-picker-item {
-        -webkit-transition: 0.3s all linear;
-        transition: 0.3s all linear;
-        display: inline-flex;
-      }
-      #closedialog {
-        float: right;
-        top: 15px;
-        right: 0;
-        position: absolute;
-        padding: 8px;
-        margin: 0;
-        color: var(--hax-color-text);
-        background-color: transparent;
-        width: 40px;
-        height: 40px;
-        min-width: unset;
-      }
-      #ironlist {
-        width: 100%;
-        min-height: 280px;
-      }
-      #dialog {
-        min-width: 350px;
-        min-height: 350px;
-        height: 50vh;
-        width: 50vw;
-        padding: 8px;
-        overflow: hidden;
-        border-radius: 16px;
-        z-index: 1000000;
-        border: 2px solid var(--hax-color-border-outline);
-        @apply --hax-app-picker-dialog;
-        background-color: #ffffff;
-      }
-      #title,
-      .element-button > div {
-        color: var(--hax-color-text);
-      }
-      #title {
-        padding: 16px;
-        border-bottom: 2px solid var(--hax-color-border-outline);
-        margin: 0;
-        width: calc(100% - 32px);
-        background-color: var(--hax-color-menu-heading-bg);
-        color: var(--hax-color-text);
-        @apply --paper-font-title;
-        @apply --hax-app-picker-dialog-title;
-      }
-      #buttonlist {
-        display: block;
-        text-align: left;
-        margin: -32px;
-        padding: 32px;
-        overflow-x: hidden;
-        overflow-y: auto;
-        --paper-dialog-scrollable: {
-          padding: 0 0 78px 0;
+class HaxAppPicker extends PolymerElement {
+  constructor() {
+    super();
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/neon-animation/neon-animation.js");
+    import("@polymer/neon-animation/animations/scale-up-animation.js");
+    import("@polymer/neon-animation/animations/scale-down-animation.js");
+    import("@polymer/paper-dialog/paper-dialog.js");
+    import("@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js");
+  }
+  static get template() {
+    return html`
+      <style include="simple-colors hax-shared-styles">
+        :host {
+          display: block;
         }
-      }
-      .element-button {
-        display: inline-block;
-        width: 70px;
-        margin: 8px 4px;
-        text-align: center;
-      }
-      @media screen and (max-width: 550px) {
-        #buttonlist,
-        #ironlist,
+        paper-dialog:not(:defined) {
+          display: none;
+        }
+        hax-app-picker-item {
+          -webkit-transition: 0.3s all linear;
+          transition: 0.3s all linear;
+          display: inline-flex;
+        }
+        #closedialog {
+          float: right;
+          top: 15px;
+          right: 0;
+          position: absolute;
+          padding: 8px;
+          margin: 0;
+          color: var(--hax-color-text);
+          background-color: transparent;
+          width: 40px;
+          height: 40px;
+          min-width: unset;
+        }
+        #ironlist {
+          width: 100%;
+          min-height: 280px;
+        }
         #dialog {
-          max-width: 80%;
-          overflow: auto;
+          min-width: 350px;
+          min-height: 350px;
+          height: 50vh;
+          width: 50vw;
+          padding: 8px;
+          overflow: hidden;
+          border-radius: 16px;
+          z-index: 1000000;
+          border: 2px solid var(--hax-color-border-outline);
+          @apply --hax-app-picker-dialog;
+          background-color: #ffffff;
         }
+        #title,
+        .element-button > div {
+          color: var(--hax-color-text);
+        }
+        #title {
+          padding: 16px;
+          border-bottom: 2px solid var(--hax-color-border-outline);
+          margin: 0;
+          width: calc(100% - 32px);
+          background-color: var(--hax-color-menu-heading-bg);
+          color: var(--hax-color-text);
+          @apply --paper-font-title;
+          @apply --hax-app-picker-dialog-title;
+        }
+        #buttonlist {
+          display: block;
+          text-align: left;
+          margin: -32px;
+          padding: 32px;
+          overflow-x: hidden;
+          overflow-y: auto;
+          --paper-dialog-scrollable: {
+            padding: 0 0 78px 0;
+          }
+        }
+        .element-button {
+          display: inline-block;
+          width: 70px;
+          margin: 8px 4px;
+          text-align: center;
+        }
+        @media screen and (max-width: 550px) {
+          #buttonlist,
+          #ironlist,
+          #dialog {
+            max-width: 80%;
+            overflow: auto;
+          }
+        }
+      </style>
+      <paper-dialog id="dialog" with-backdrop always-on-top>
+        <h3 id="title">[[title]]</h3>
+        <paper-dialog-scrollable id="buttonlist">
+          <iron-list id="ironlist" items="[[selectionList]]" as="element" grid>
+            <template>
+              <div>
+                <hax-app-picker-item
+                  id$="picker-item-[[index]]"
+                  class="element-button"
+                  on-tap="_selected"
+                  data-selected\$="[[index]]"
+                  label="[[element.title]]"
+                  icon="[[element.icon]]"
+                  color="[[element.color]]"
+                ></hax-app-picker-item>
+              </div>
+            </template>
+          </iron-list>
+        </paper-dialog-scrollable>
+        <paper-button id="closedialog" on-tap="close">
+          <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
+        </paper-button>
+      </paper-dialog>
+    `;
+  }
+  static get tag() {
+    return "hax-app-picker";
+  }
+
+  static get properties() {
+    return {
+      /**
+       * raw element set
+       */
+      _elements: {
+        type: Array,
+        value: []
+      },
+      /**
+       * Refactored list for selection purposes
+       */
+      selectionList: {
+        type: Array,
+        value: []
+      },
+      /**
+       * Title for the dialog
+       */
+      title: {
+        type: String,
+        value: "Pick an options"
+      },
+      /**
+       * Allow multiple uses
+       */
+      pickerType: {
+        type: String,
+        value: "gizmo"
+      },
+      /**
+       * Opened status to bind to the dialog box being open
+       */
+      opened: {
+        type: Boolean,
+        value: false,
+        observer: "_openedChanged"
       }
-    </style>
-    <paper-dialog id="dialog" with-backdrop always-on-top>
-      <h3 id="title">[[title]]</h3>
-      <paper-dialog-scrollable id="buttonlist">
-        <iron-list id="ironlist" items="[[selectionList]]" as="element" grid>
-          <template>
-            <div>
-              <hax-app-picker-item
-                id$="picker-item-[[index]]"
-                class="element-button"
-                on-tap="_selected"
-                data-selected\$="[[index]]"
-                label="[[element.title]]"
-                icon="[[element.icon]]"
-                color="[[element.color]]"
-              ></hax-app-picker-item>
-            </div>
-          </template>
-        </iron-list>
-      </paper-dialog-scrollable>
-      <paper-button id="closedialog" on-tap="close">
-        <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
-      </paper-button>
-    </paper-dialog>
-  `,
-
-  is: "hax-app-picker",
-
-  listeners: {
-    "iron-overlay-canceled": "close",
-    "iron-overlay-closed": "close"
-  },
-
-  properties: {
-    /**
-     * raw element set
-     */
-    _elements: {
-      type: Array,
-      value: []
-    },
-    /**
-     * Refactored list for selection purposes
-     */
-    selectionList: {
-      type: Array,
-      value: []
-    },
-    /**
-     * Title for the dialog
-     */
-    title: {
-      type: String,
-      value: "Pick an options"
-    },
-    /**
-     * Allow multiple uses
-     */
-    pickerType: {
-      type: String,
-      value: "gizmo"
-    },
-    /**
-     * Opened status to bind to the dialog box being open
-     */
-    opened: {
-      type: Boolean,
-      value: false,
-      observer: "_openedChanged"
-    }
-  },
-
+    };
+  }
   /**
    * Attached life cycle
    */
-  attached: function() {
-    this.fire("hax-register-app-picker", this);
-  },
+  connectedCallback() {
+    super.connectedCallback();
+    this.dispatchEvent(
+      new CustomEvent("hax-register-app-picker", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
+    afterNextRender(this, function() {
+      this.addEventListener("iron-overlay-canceled", this.close.bind(this));
+      this.addEventListener("iron-overlay-closed", this.close.bind(this));
+    });
+  }
+  disconnectedCallback() {
+    this.removeEventListener("iron-overlay-canceled", this.close.bind(this));
+    this.removeEventListener("iron-overlay-closed", this.close.bind(this));
+    super.disconnectedCallback();
+  }
 
   /**
    * Close the picker and ensure body locking is off.
    */
-  close: function() {
+  close() {
     this.opened = false;
-  },
+  }
 
   /**
    * Open status changed
    */
-  _openedChanged: function(newValue, oldValue) {
-    if (typeof newValue !== typeof undefined) {
-      if (newValue) {
-        this.$.dialog.open();
-        setTimeout(() => {
-          this.$.ironlist.fire("iron-resize");
-          window.dispatchEvent(new Event("resize"));
-        }, 100);
-        // lock the background
-        document.body.style.overflow = "hidden";
-      } else {
-        this.$.dialog.close();
-        document.body.style.overflow = null;
+  _openedChanged(newValue, oldValue) {
+    if (newValue) {
+      this.shadowRoot.querySelector("#dialog").open();
+      setTimeout(() => {
+        this.shadowRoot.querySelector("#ironlist").dispatchEvent(
+          new CustomEvent("iron-resize", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: true
+          })
+        );
+        window.dispatchEvent(new Event("resize"));
+      }, 100);
+      // lock the background
+      document.body.style.overflow = "hidden";
+    } else {
+      if (this.shadowRoot.querySelector("#dialog").close) {
+        this.shadowRoot.querySelector("#dialog").close();
       }
+      document.body.style.overflow = null;
     }
-  },
+  }
 
   /**
    * Present options to the user with a modal and selection method that
@@ -219,7 +246,7 @@ Polymer({
    * @param  [array] elements  a list of elements for presenting to the user
    * to select between.
    */
-  presentOptions: function(
+  presentOptions(
     elements,
     type,
     title = "Select an option",
@@ -264,12 +291,11 @@ Polymer({
     setTimeout(() => {
       this.shadowRoot.querySelector("#picker-item-0").focus();
     }, 100);
-  },
-
+  }
   /**
    * Handle the user selecting an app.
    */
-  _selected: function(e) {
+  _selected(e) {
     var normalizedEvent = dom(e);
     let key = normalizedEvent.localTarget.getAttribute("data-selected");
     e.preventDefault();
@@ -303,9 +329,18 @@ Polymer({
         }
       } else {
         // bubble this up
-        this.fire("hax-app-picker-selection", this._elements[key]);
+        this.dispatchEvent(
+          new CustomEvent("hax-app-picker-selection", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: this._elements[key]
+          })
+        );
       }
     }
     this.opened = false;
   }
-});
+}
+window.customElements.define(HaxAppPicker.tag, HaxAppPicker);
+export { HaxAppPicker };

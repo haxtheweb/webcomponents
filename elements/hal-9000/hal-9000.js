@@ -136,8 +136,6 @@ class Hal9000 extends PolymerElement {
     );
     window.ESGlobalBridge.requestAvailability();
     window.ESGlobalBridge.instance.load(name, location);
-    // ensure singleton is set
-    window.Hal9000.instance = this;
     // check for speech synthesis API
     if (typeof window.speechSynthesis !== "undefined") {
       this.synth = window.speechSynthesis;
@@ -154,6 +152,9 @@ class Hal9000 extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
+    // ensure singleton is set
+    window.Hal9000 = window.Hal9000 || {};
+    window.Hal9000.instance = this;
   }
   /**
    * Callback for clicking on whatever was just said

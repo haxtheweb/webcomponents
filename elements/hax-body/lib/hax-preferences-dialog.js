@@ -1,10 +1,5 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/paper-button/paper-button.js";
-import "@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";
-import "@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js";
-import "@polymer/app-layout/app-drawer/app-drawer.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./hax-shared-styles.js";
 /**
@@ -16,117 +11,125 @@ Export dialog with all export options and settings provided.
 @microcopy - the mental model for this element
  -
 */
-Polymer({
-  _template: html`
-    <style is="custom-style" include="simple-colors hax-shared-styles">
-      :host {
-        display: block;
-      }
-      #dialog {
-        z-index: 1000;
-        margin-top: 56px;
-      }
-      #closedialog {
-        float: right;
-        top: 124px;
-        right: 0;
-        position: absolute;
-        padding: 8px;
-        margin: 0;
-        color: var(--hax-color-text);
-        background-color: transparent;
-        width: 40px;
-        height: 40px;
-        min-width: unset;
-      }
-      .title {
-        position: relative;
-        padding: 16px;
-        outline: 0;
-        font-weight: 600;
-        text-align: left;
-        margin: 0;
-        background-color: var(--hax-color-menu-heading-bg);
-        font-size: 18px;
-        line-height: 18px;
-        font-family: "Noto Serif", serif;
-        color: var(--hax-color-text);
-      }
-      app-drawer {
-        --app-drawer-content-container: {
-          background-color: #ffffff;
+class HaxPreferencesDialog extends PolymerElement {
+  constructor() {
+    super();
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/paper-button/paper-button.js");
+    import("@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js");
+    import("@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js");
+    import("@polymer/app-layout/app-drawer/app-drawer.js");
+  }
+  static get template() {
+    return html`
+      <style include="simple-colors hax-shared-styles">
+        :host {
+          display: block;
         }
-        --app-drawer-width: 320px;
-      }
-      eco-json-schema-object {
-        color: white;
-        --eco-json-schema-object-form : {
-          -ms-flex: unset;
-          -webkit-flex: unset;
-          flex: unset;
-          -webkit-flex-basis: unset;
-          flex-basis: unset;
+        #dialog {
+          z-index: 1000;
+          margin-top: 56px;
         }
-        --paper-checkbox-size: 16px;
-        --paper-checkbox-checked-ink-color: --hax-color-accent1;
-        --paper-checkbox-label: {
-          font-size: 16px;
-          line-height: 16px;
+        #closedialog {
+          float: right;
+          top: 124px;
+          right: 0;
+          position: absolute;
+          padding: 8px;
+          margin: 0;
+          color: var(--hax-color-text);
+          background-color: transparent;
+          width: 40px;
+          height: 40px;
+          min-width: unset;
         }
+        .title {
+          position: relative;
+          padding: 16px;
+          outline: 0;
+          font-weight: 600;
+          text-align: left;
+          margin: 0;
+          background-color: var(--hax-color-menu-heading-bg);
+          font-size: 18px;
+          line-height: 18px;
+          font-family: "Noto Serif", serif;
+          color: var(--hax-color-text);
+        }
+        app-drawer {
+          --app-drawer-content-container: {
+            background-color: #ffffff;
+          }
+          --app-drawer-width: 320px;
+        }
+        eco-json-schema-object {
+          color: white;
+          --eco-json-schema-object-form : {
+            -ms-flex: unset;
+            -webkit-flex: unset;
+            flex: unset;
+            -webkit-flex-basis: unset;
+            flex-basis: unset;
+          }
+          --paper-checkbox-size: 16px;
+          --paper-checkbox-checked-ink-color: --hax-color-accent1;
+          --paper-checkbox-label: {
+            font-size: 16px;
+            line-height: 16px;
+          }
+        }
+        .pref-container {
+          text-align: left;
+          padding: 16px;
+        }
+      </style>
+      <app-drawer id="dialog" align="right" transition-duration="300">
+        <h3 class="title">[[title]]</h3>
+        <div style="height: 100%; overflow: auto;" class="pref-container">
+          <eco-json-schema-object
+            schema="[[schema]]"
+            value="{{preferences}}"
+          ></eco-json-schema-object>
+        </div>
+        <paper-button id="closedialog" on-tap="close">
+          <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
+        </paper-button>
+      </app-drawer>
+    `;
+  }
+  static get tag() {
+    return "hax-preferences-dialog";
+  }
+  static get properties() {
+    return {
+      /**
+       * Title when open.
+       */
+      title: {
+        type: String,
+        value: "Preferences"
+      },
+      /**
+       * Schema that has all of inputs / manages state
+       */
+      schema: {
+        type: Object
+      },
+      /**
+       * Preferences managed for everything global about HAX.
+       */
+      preferences: {
+        type: Object,
+        notify: true
       }
-      .pref-container {
-        text-align: left;
-        padding: 16px;
-      }
-    </style>
-    <app-drawer id="dialog" align="right" transition-duration="300">
-      <h3 class="title">[[title]]</h3>
-      <div style="height: 100%; overflow: auto;" class="pref-container">
-        <eco-json-schema-object
-          schema="[[schema]]"
-          value="{{preferences}}"
-        ></eco-json-schema-object>
-      </div>
-      <paper-button id="closedialog" on-tap="close">
-        <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
-      </paper-button>
-    </app-drawer>
-  `,
-
-  is: "hax-preferences-dialog",
-  properties: {
-    /**
-     * Title when open.
-     */
-    title: {
-      type: String,
-      value: "Preferences"
-    },
-    /**
-     * Schema that has all of inputs / manages state
-     */
-    schema: {
-      type: Object
-    },
-    /**
-     * Preferences managed for everything global about HAX.
-     */
-    preferences: {
-      type: Object,
-      notify: true
-    }
-  },
-  observers: ["_preferencesChanged(preferences.*)"],
-  /**
-   * Detached life cycle
-   */
-  detached: function() {
-    document.body.removeEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-  },
-  ready: function() {
+    };
+  }
+  static get observers() {
+    return ["_preferencesChanged(preferences.*)"];
+  }
+  ready() {
+    super.ready();
     // JSON schema object needs delayed to ensure page repaints the form
     var schema = {
       $schema: "http://json-schema.org/schema#",
@@ -177,26 +180,45 @@ Polymer({
     };
     this.set("schema", {});
     this.set("schema", schema);
-  },
+  }
   /**
    * Attached to the DOM, now fire that we exist.
    */
-  attached: function() {
+  connectedCallback() {
+    super.connectedCallback();
     // register this with hax as the preference pane
-    this.fire("hax-register-preferences", this);
-    // add event listener
-    document.body.addEventListener(
+    this.dispatchEvent(
+      new CustomEvent("hax-register-preferences", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
+    afterNextRender(this, function() {
+      // add event listener
+      document.body.addEventListener(
+        "hax-store-property-updated",
+        this._haxStorePropertyUpdated.bind(this)
+      );
+      // force color values to apply
+      this.updateStyles();
+    });
+  }
+  /**
+   * Detached life cycle
+   */
+  disconnectedCallback() {
+    document.body.removeEventListener(
       "hax-store-property-updated",
       this._haxStorePropertyUpdated.bind(this)
     );
-    // force color values to apply
-    this.updateStyles();
-  },
-
+    super.disconnectedCallback();
+  }
   /**
    * Store updated, sync.
    */
-  _haxStorePropertyUpdated: function(e) {
+  _haxStorePropertyUpdated(e) {
     if (
       e.detail &&
       typeof e.detail.value !== typeof undefined &&
@@ -210,22 +232,22 @@ Polymer({
       this.set("preferences", e.detail.value);
       this.notifyPath("preferences.*");
     }
-  },
+  }
 
   /**
    * Notice preferences have changed.
    */
-  _preferencesChanged: function(details) {
+  _preferencesChanged(details) {
     if (this.schema && this.schema.properties && window.HaxStore.ready) {
       window.HaxStore.write("globalPreferences", details.base, this);
     }
-  },
+  }
 
   /**
    * Toggle state.
    */
-  toggleDialog: function() {
-    if (this.$.dialog.opened) {
+  toggleDialog() {
+    if (this.shadowRoot.querySelector("#dialog").opened) {
       this.close();
     } else {
       window.HaxStore.instance.closeAllDrawers(this);
@@ -238,19 +260,19 @@ Polymer({
       this.set("schema", {});
       this.set("schema", schema);
     }
-  },
-
+  }
   /**
    * open the dialog
    */
-  open: function() {
-    this.$.dialog.open();
-  },
-
+  open() {
+    this.shadowRoot.querySelector("#dialog").open();
+  }
   /**
    * close the dialog
    */
-  close: function() {
-    this.$.dialog.close();
+  close() {
+    this.shadowRoot.querySelector("#dialog").close();
   }
-});
+}
+window.customElements.define(HaxPreferencesDialog.tag, HaxPreferencesDialog);
+export { HaxPreferencesDialog };
