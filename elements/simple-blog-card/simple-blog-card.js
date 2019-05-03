@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/paper-card/paper-card.js";
-import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
+import "@lrnwebcomponents/simple-popover/simple-popover.js";
 
 /**
  * `simple-blog-card`
@@ -66,14 +66,12 @@ class SimpleBlogCard extends LitElement {
     </div>
   </div>
 </paper-card>
-<absolute-position-behavior for="author" poisition="top">
-  <div class="box">
+<simple-popover auto for="author" position="top">
     <paper-avatar .label="${this.author}" .src="${this.authorimage}">
     </paper-avatar>
     <h5 class="author-name">${this.author}</h5>
     <div class="author-bio">${this.authorbio}</div>
-  </div>
-</absolute-position-behavior>`;
+</simple-popover>`;
   }
 
   // properties available to the custom element for data binding
@@ -271,9 +269,6 @@ class SimpleBlogCard extends LitElement {
       }
       .box {
         outline: 1px solid black;
-      }
-      absolute-position-behavior {
-        display: none;
       }
       .show {
         display: unset;

@@ -130,16 +130,20 @@ class AbsolutePositionStateManager extends PolymerElement {
   findTarget(el) {
     let target;
     let parentNode = this.parentNode;
+    console.log("findTarget", el, el.target, parentNode);
     if (el.target) {
       target = el.target;
+      console.log("target", el.target);
     } else if (el.for) {
       target = parentNode.querySelector("#" + el.for);
+      console.log("for", el.for, target);
     } else {
       let ownerRoot = el.shadowRoot;
       target =
         parentNode.nodeType == Node.DOCUMENT_FRAGMENT_NODE
           ? ownerRoot.host
           : parentNode;
+      console.log("for", ownerRoot, target);
     }
     return target;
   }
@@ -181,6 +185,7 @@ class AbsolutePositionStateManager extends PolymerElement {
     var elementRect = element.getBoundingClientRect();
     var horizontalCenterOffset = (targetRect.width - elementRect.width) / 2;
     var verticalCenterOffset = (targetRect.height - elementRect.height) / 2;
+    console.log("updatePosition", element, target);
     //var targetLeft = targetRect.left - parentRect.left;
     //var targetTop = targetRect.top - parentRect.top;
     var tooltipLeft, tooltipTop;

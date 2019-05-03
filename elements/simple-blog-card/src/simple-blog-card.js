@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/paper-card/paper-card.js";
-import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
+import "@lrnwebcomponents/simple-popover/simple-popover.js";
 
 /**
  * `simple-blog-card`
@@ -162,9 +162,6 @@ class SimpleBlogCard extends LitElement {
       }
       .box {
         outline: 1px solid black;
-      }
-      absolute-position-behavior {
-        display: none;
       }
       .show {
         display: unset;
