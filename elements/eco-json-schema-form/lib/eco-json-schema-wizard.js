@@ -1,4 +1,4 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
 import "@polymer/iron-icons/image-icons.js";
@@ -10,6 +10,7 @@ import "@polymer/paper-menu-button/paper-menu-button.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-ripple/paper-ripple.js";
 import { AppLocalizeBehavior } from "@polymer/app-localize-behavior/app-localize-behavior.js";
+import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 import "./eco-json-schema-object.js";
 import "./eco-json-schema-array.js";
 import "./eco-json-schema-boolean.js";
@@ -290,186 +291,197 @@ el.error = {
 @element eco-json-schema-wizard
 * @demo demo/index.html
 */
-Polymer({
-  is: "eco-json-schema-wizard",
-  behaviors: [AppLocalizeBehavior],
-  _template: html`
-    <style is="custom-style" include="iron-flex iron-flex-alignment">
-      :host {
-        display: block;
-        @apply --layout-vertical;
-      }
-
-      paper-input {
-        padding: 2px;
-        --paper-input-container-label: {
-          white-space: normal;
-          position: static;
-          font-size: 22px;
-          color: #fff;
+class EcoJsonSchemaWizard extends mixinBehaviors(
+  [AppLocalizeBehavior],
+  PolymerElement
+) {
+  static get tag() {
+    return "eco-json-schema-wizard";
+  }
+  static get template() {
+    return html`
+      <style is="custom-style" include="iron-flex iron-flex-alignment">
+        :host {
+          display: block;
+          @apply --layout-vertical;
         }
-      }
 
-      .box,
-      #form {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-flex-align: center;
-        -ms-flex-align: center;
-        -webkit-align-items: center;
-        align-items: center;
-      }
+        paper-input {
+          padding: 2px;
+          --paper-input-container-label: {
+            white-space: normal;
+            position: static;
+            font-size: 22px;
+            color: #fff;
+          }
+        }
 
-      .fullbleed {
-        z-index: 1;
-      }
+        .box,
+        #form {
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-flex-align: center;
+          -ms-flex-align: center;
+          -webkit-align-items: center;
+          align-items: center;
+        }
 
-      app-toolbar.bottom {
-        --app-toolbar-color: var(--app-primary-color);
-        --app-toolbar-background: var(--dark-theme-text-color);
-      }
+        .fullbleed {
+          z-index: 1;
+        }
 
-      app-toolbar.bottom paper-icon-button {
-        --app-toolbar-color: var(--dark-theme-text-color);
-        --app-toolbar-background: var(--app-primary-color);
-      }
-    </style>
-    <div class="vertical flex layout fullbleed">
-      <!--
+        app-toolbar.bottom {
+          --app-toolbar-color: var(--app-primary-color);
+          --app-toolbar-background: var(--dark-theme-text-color);
+        }
+
+        app-toolbar.bottom paper-icon-button {
+          --app-toolbar-color: var(--dark-theme-text-color);
+          --app-toolbar-background: var(--app-primary-color);
+        }
+      </style>
+      <div class="vertical flex layout fullbleed">
+        <!--
         paper-icon-button id="camButton" icon="editor:insert-photo" raised>add photo</paper-icon-button
       -->
-      <app-toolbar>
-        <paper-icon-button
-          id="prevButton"
-          icon="arrow-back"
-          hidden\$="{{!hasPrev}}"
-          on-tap="prev"
-          raised=""
-          >{{localize('prev')}}</paper-icon-button
-        ><span class="title layout horizontal flex" style="white-space: normal"
-          >[[title]]</span
-        >
-        <paper-icon-button
-          id="nextButton"
-          icon="arrow-forward"
-          hidden\$="{{!hasNext}}"
-          on-tap="next"
-          raised=""
-          >{{localize('next')}}</paper-icon-button
-        >
-        <paper-icon-button
-          id="submitButton"
-          icon="cloud-upload"
-          on-tap="submit"
-          raised=""
-          >{{localize('submit')}}</paper-icon-button
-        >
-      </app-toolbar>
-      <iron-pages
-        id="form"
-        class="layout horizontal flex start-justified"
-        role="main"
-        selected="[[page]]"
-        attr-for-selected="name"
-      ></iron-pages>
-      <app-toolbar class="bottom">
-        <div hidden\$="{{!hasPrev}}" on-tap="prev">
-          <paper-icon-button id="prevButton" icon="arrow-back" raised=""
+        <app-toolbar>
+          <paper-icon-button
+            id="prevButton"
+            icon="arrow-back"
+            hidden\$="{{!hasPrev}}"
+            on-tap="prev"
+            raised=""
             >{{localize('prev')}}</paper-icon-button
+          ><span
+            class="title layout horizontal flex"
+            style="white-space: normal"
+            >[[title]]</span
           >
-          <span class="title layout" style="white-space: normal"
-            >{{localize('prev')}}</span
-          >
-        </div>
-        <span
-          class="title layout horizontal flex"
-          style="white-space: normal"
-        ></span>
-        <div hidden\$="{{!hasNext}}" on-tap="next">
-          <span class="title layout" style="white-space: normal"
-            >{{localize('next')}}</span
-          >
-          <paper-icon-button id="nextButton" icon="arrow-forward" raised=""
+          <paper-icon-button
+            id="nextButton"
+            icon="arrow-forward"
+            hidden\$="{{!hasNext}}"
+            on-tap="next"
+            raised=""
             >{{localize('next')}}</paper-icon-button
           >
-        </div>
-      </app-toolbar>
-    </div>
-  `,
+          <paper-icon-button
+            id="submitButton"
+            icon="cloud-upload"
+            on-tap="submit"
+            raised=""
+            >{{localize('submit')}}</paper-icon-button
+          >
+        </app-toolbar>
+        <iron-pages
+          id="form"
+          class="layout horizontal flex start-justified"
+          role="main"
+          selected="[[page]]"
+          attr-for-selected="name"
+        ></iron-pages>
+        <app-toolbar class="bottom">
+          <div hidden\$="{{!hasPrev}}" on-tap="prev">
+            <paper-icon-button id="prevButton" icon="arrow-back" raised=""
+              >{{localize('prev')}}</paper-icon-button
+            >
+            <span class="title layout" style="white-space: normal"
+              >{{localize('prev')}}</span
+            >
+          </div>
+          <span
+            class="title layout horizontal flex"
+            style="white-space: normal"
+          ></span>
+          <div hidden\$="{{!hasNext}}" on-tap="next">
+            <span class="title layout" style="white-space: normal"
+              >{{localize('next')}}</span
+            >
+            <paper-icon-button id="nextButton" icon="arrow-forward" raised=""
+              >{{localize('next')}}</paper-icon-button
+            >
+          </div>
+        </app-toolbar>
+      </div>
+    `;
+  }
 
-  properties: {
-    language: {
-      type: String,
-      notify: true
-    },
-    resources: {
-      type: Object,
-      notify: true
-    },
-    schema: {
-      type: Object,
-      notify: true,
-      observer: "_schemaChanged"
-    },
-    label: {
-      type: String
-    },
-    value: {
-      type: Object,
-      notify: true,
-      value: function() {
-        return {};
+  static get properties() {
+    return {
+      language: {
+        type: String,
+        notify: true
+      },
+      resources: {
+        type: Object,
+        notify: true
+      },
+      schema: {
+        type: Object,
+        notify: true,
+        observer: "_schemaChanged"
+      },
+      label: {
+        type: String
+      },
+      value: {
+        type: Object,
+        notify: true,
+        value() {
+          return {};
+        }
+      },
+      page: {
+        type: String,
+        notify: true,
+        observer: "_pageChanged"
+      },
+      pages: {
+        type: Array,
+        notify: true,
+        value: []
+      },
+      error: {
+        type: Object,
+        observer: "_errorChanged"
+      },
+      isReview: {
+        type: Boolean,
+        value: false,
+        notify: true
+      },
+      canSubmit: {
+        type: Boolean,
+        notify: true
+      },
+      hasNext: {
+        type: Boolean,
+        notify: true
+      },
+      hasPrev: {
+        type: Boolean,
+        notify: true
+      },
+      titles: {
+        type: Array,
+        notify: true,
+        value: []
+      },
+      title: {
+        type: String,
+        value: "",
+        notify: true
       }
-    },
-    page: {
-      type: String,
-      notify: true,
-      observer: "_pageChanged"
-    },
-    pages: {
-      type: Array,
-      notify: true,
-      value: []
-    },
-    error: {
-      type: Object,
-      observer: "_errorChanged"
-    },
-    isReview: {
-      type: Boolean,
-      value: false,
-      notify: true
-    },
-    canSubmit: {
-      type: Boolean,
-      notify: true
-    },
-    hasNext: {
-      type: Boolean,
-      notify: true
-    },
-    hasPrev: {
-      type: Boolean,
-      notify: true
-    },
-    titles: {
-      type: Array,
-      notify: true,
-      value: []
-    },
-    title: {
-      type: String,
-      value: "",
-      notify: true
-    }
-  },
-  detached: function() {
+    };
+  }
+  disconnectedCallback() {
     this._clearForm();
-  },
-  _buildSchemaProperties: function() {
+    super.disconnectedCallback();
+  }
+  _buildSchemaProperties() {
     var ctx = this;
 
     this._schemaProperties = Object.keys(this.schema.properties || []).map(
@@ -520,8 +532,8 @@ Polymer({
         return property;
       }
     );
-  },
-  _schemaPropertyChanged: function(event, detail) {
+  }
+  _schemaPropertyChanged(event, detail) {
     if (detail.path && /\.length$/.test(detail.path)) {
       return;
     }
@@ -581,16 +593,16 @@ Polymer({
 
       console.log("value: " + JSON.stringify(this.value));
     }
-  },
-  _setValue: function() {
+  }
+  _setValue() {
     var ctx = this;
     var value = {};
     this._schemaProperties.forEach(function(property) {
       value[property.property] = ctx._deepClone(property.value);
     });
     this.value = value;
-  },
-  _buildForm: function() {
+  }
+  _buildForm() {
     var ctx = this;
     this._schemaProperties.forEach(property => {
       var el = ctx.create(property.component.name, {
@@ -614,8 +626,8 @@ Polymer({
       );
       dom(ctx.$.form).appendChild(el);
     });
-  },
-  _removePropertyEl: function(el) {
+  }
+  _removePropertyEl(el) {
     if (typeof el.schemaProperty !== typeof undefined) {
       this.unlisten(
         el,
@@ -627,14 +639,14 @@ Polymer({
     }
     el.schemaProperty = null;
     dom(this.$.form).removeChild(el);
-  },
-  _clearForm: function() {
+  }
+  _clearForm() {
     var formEl = dom(this.$.form);
     while (formEl.firstChild) {
       this._removePropertyEl(formEl.firstChild);
     }
-  },
-  _schemaChanged: function() {
+  }
+  _schemaChanged() {
     this._clearForm();
     this._buildSchemaProperties();
     this._buildForm();
@@ -643,8 +655,8 @@ Polymer({
       this.set("page", this.pages[0]);
     }
     this.set("title", this.titles[0]);
-  },
-  next: function() {
+  }
+  next() {
     var current = this.pages.indexOf(this.page);
     var next = current;
     if (current !== -1) {
@@ -656,8 +668,8 @@ Polymer({
     } else {
       console.log("Invalid current page in wizard");
     }
-  },
-  prev: function() {
+  }
+  prev() {
     var current = this.pages.indexOf(this.page);
     var prev = current;
     if (current !== -1) {
@@ -669,11 +681,18 @@ Polymer({
     } else {
       console.log("Invalid current page in wizard");
     }
-  },
-  submit: function() {
-    this.fire("submit");
-  },
-  _pageChanged: function() {
+  }
+  submit() {
+    this.dispatchEvent(
+      new CustomEvent("submit", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: true
+      })
+    );
+  }
+  _pageChanged() {
     var current = this.pages.indexOf(this.page);
     if (current === 0) {
       this.set("hasPrev", false);
@@ -685,8 +704,8 @@ Polymer({
     } else {
       this.set("hasNext", true);
     }
-  },
-  _errorChanged: function() {
+  }
+  _errorChanged() {
     var ctx = this;
     dom(this.$.form).childNodes.forEach(function(el) {
       var name = el.getAttribute("name");
@@ -696,53 +715,55 @@ Polymer({
         el.error = null;
       }
     });
-  },
-  _deepClone: function(o) {
+  }
+  _deepClone(o) {
     return JSON.parse(JSON.stringify(o));
-  },
-  _isSchemaValue: function(type) {
+  }
+  _isSchemaValue(type) {
     return (
       this._isSchemaBoolean(type) ||
       this._isSchemaNumber(type) ||
       this._isSchemaString(type) ||
       this._isSchemaFile(type)
     );
-  },
-  _isSchemaFile: function(type) {
+  }
+  _isSchemaFile(type) {
     if (Array.isArray(type)) {
       return type.indexOf("file") !== -1;
     } else {
       return type === "file";
     }
-  },
-  _isSchemaBoolean: function(type) {
+  }
+  _isSchemaBoolean(type) {
     if (Array.isArray(type)) {
       return type.indexOf("boolean") !== -1;
     } else {
       return type === "boolean";
     }
-  },
-  _isSchemaEnum: function(schema) {
+  }
+  _isSchemaEnum(schema) {
     return !!schema.enum;
-  },
-  _isSchemaNumber: function(type) {
+  }
+  _isSchemaNumber(type) {
     if (Array.isArray(type)) {
       return type.indexOf("number") !== -1 || type.indexOf("integer") !== -1;
     } else {
       return type === "number" || type === "integer";
     }
-  },
-  _isSchemaString: function(type) {
+  }
+  _isSchemaString(type) {
     if (Array.isArray(type)) {
       return type.indexOf("string") !== -1;
     } else {
       return type === "string";
     }
-  },
-  _isSchemaObject: function(type) {
+  }
+  _isSchemaObject(type) {
     return type === "object";
-  },
-  _isSchemaArray: function(type) {
+  }
+  _isSchemaArray(type) {
     return type === "array";
   }
-});
+}
+window.customElements.define(EcoJsonSchemaWizard.tag, EcoJsonSchemaWizard);
+export { EcoJsonSchemaWizard };

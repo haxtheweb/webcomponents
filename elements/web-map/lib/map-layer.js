@@ -1,85 +1,88 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-
 import "./map-styles.js";
 /* styles scoped to inside a custom element must be in a style module */
-Polymer({
-  _template: html`
-    <style include="map-styles">
-      :host {
-        display: none;
+class MapLayer extends PolymerElement {
+  static get template() {
+    return html`
+      <style include="map-styles">
+        :host {
+          display: none;
+        }
+      </style>
+      <!-- hide any feature, image or tile elements the author includes -->
+      <slot></slot>
+    `;
+  }
+
+  static get tag() {
+    return "map-layer";
+  }
+
+  static get properties() {
+    return {
+      _apiToggleChecked: true,
+      src: {
+        type: String,
+        reflectToAttribute: true,
+        observer: "_srcChanged"
+      },
+      label: {
+        type: String,
+        value: "Layer",
+        reflectToAttribute: true,
+        observer: "_labelChanged"
+      },
+      // changing checked turns the layer on or off, and reflects that in the
+      // user interface/ layer control.
+      checked: {
+        type: Boolean,
+        reflectToAttribute: true,
+        observer: "_toggleChecked"
+      },
+      // changing disabled does nothing; it is supposed to be read-only to the api,
+      // and indicates if the layer is visible, i.e. if turned on it would be in
+      // the map extent / zoom bounds of the map and will be updated on zoom/pan
+      // by the map.  If a layer is disabled, it is 'greyed out' in the layer control
+      // and can't be clicked on, although it can still be checked/unchecked via the api.
+      disabled: {
+        type: Boolean,
+        reflectToAttribute: true
+      },
+      // hidden allows a layer to be added to the map but not displayed in the
+      // layer control.  Changing hidden removes/adds it to the layer control,
+      // but does not change the status of the layer on the map. It is 'hidden'
+      // from the user interface.
+      hidden: {
+        type: Boolean,
+        reflectToAttribute: true,
+        observer: "_toggleHidden"
+      },
+      legendLinks: {
+        type: Object,
+        reflectToAttribute: false,
+        // default value if property (this.legendLinks) not otherwise set
+        value() {
+          return [];
+        }
       }
-    </style>
-    <!-- hide any feature, image or tile elements the author includes -->
-    <slot></slot>
-  `,
+    };
+  }
 
-  is: "layer-",
-
-  properties: {
-    src: {
-      type: String,
-      reflectToAttribute: true,
-      observer: "_srcChanged"
-    },
-    label: {
-      type: String,
-      value: "Layer",
-      reflectToAttribute: true,
-      observer: "_labelChanged"
-    },
-    // changing checked turns the layer on or off, and reflects that in the
-    // user interface/ layer control.
-    checked: {
-      type: Boolean,
-      reflectToAttribute: true,
-      observer: "_toggleChecked"
-    },
-    // changing disabled does nothing; it is supposed to be read-only to the api,
-    // and indicates if the layer is visible, i.e. if turned on it would be in
-    // the map extent / zoom bounds of the map and will be updated on zoom/pan
-    // by the map.  If a layer is disabled, it is 'greyed out' in the layer control
-    // and can't be clicked on, although it can still be checked/unchecked via the api.
-    disabled: {
-      type: Boolean,
-      reflectToAttribute: true
-    },
-    // hidden allows a layer to be added to the map but not displayed in the
-    // layer control.  Changing hidden removes/adds it to the layer control,
-    // but does not change the status of the layer on the map. It is 'hidden'
-    // from the user interface.
-    hidden: {
-      type: Boolean,
-      reflectToAttribute: true,
-      observer: "_toggleHidden"
-    },
-    legendLinks: {
-      type: Object,
-      reflectToAttribute: false,
-      // default value if property (this.legendLinks) not otherwise set
-      value: function() {
-        return [];
-      }
-    }
-  },
-
-  _srcChanged: function() {
+  _srcChanged() {
     // this should only be invoked after the ready callback
     if (this._layer) {
       this._layer.initialize(this.src, this);
     }
-  },
+  }
 
-  _labelChanged: function() {
+  _labelChanged() {
     var map = this.parentElement && this.parentElement._map;
     if (map) {
       this._toggleHidden(false);
     }
-  },
-
-  _apiToggleChecked: true,
-
-  _toggleChecked: function() {
+  }
+  _toggleChecked() {
     var map = this.parentElement && this.parentElement._map;
     if (map) {
       if (this._apiToggleChecked) {
@@ -92,9 +95,9 @@ Polymer({
       }
       this._apiToggleChecked = true;
     }
-  },
+  }
 
-  _onLayerExtentLoad: function(e) {
+  _onLayerExtentLoad(e) {
     // the mapml document associated to this layer can in theory contain many
     // link[@rel=legend] elements with different @type or other attributes;
     // currently only support a single link, don't care about type, lang etc.
@@ -117,11 +120,18 @@ Polymer({
     // make sure local content layer has the chance to set its extent properly
     // which is important for the layer control and the disabled property
     if (this._layer._map) {
-      this._layer.fire("attached", this._layer);
+      this._layer.dispatchEvent(
+        new CustomEvent("attached", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: true
+        })
+      );
     }
-  },
+  }
 
-  _validateDisabled: function() {
+  _validateDisabled() {
     var layer = this._layer,
       map = layer._map;
     if (map) {
@@ -136,18 +146,18 @@ Polymer({
           map.getPixelBounds().intersects(layer.getLayerExtentBounds(map));
       this.disabled = !visible;
     }
-  },
+  }
 
-  _onLayerChange: function() {
+  _onLayerChange() {
     if (this._layer._map) {
       // can't disable observers, have to set a flag telling it where
       // the 'event' comes from: either the api or a user click/tap
       this._apiToggleChecked = false;
       this.checked = this._layer._map.hasLayer(this._layer);
     }
-  },
+  }
 
-  _toggleHidden: function(hide) {
+  _toggleHidden(hide) {
     var map = this.parentElement && this.parentElement._map;
     if (map && this.parentElement.controls) {
       if (hide) {
@@ -158,9 +168,9 @@ Polymer({
       }
       this._validateDisabled();
     }
-  },
+  }
 
-  detached: function() {
+  disconnectedCallback() {
     // if the map-layer node is removed from the dom, the layer should be
     // removed from the map and the layer control
 
@@ -172,9 +182,12 @@ Polymer({
       this._layerControl.removeLayer(this._layer);
     }
     this._removeEvents();
-  },
+    super.disconnectedCallback();
+  }
 
-  ready: function() {
+  ready() {
+    super.ready();
+
     // the layer might not be attached to a map
     // so we need a way for non-src based layers to establish what their
     // zoom range, extent and projection are.  meta elements in content to
@@ -188,9 +201,9 @@ Polymer({
     );
     this._layer.on("extentload", this._onLayerExtentLoad, this);
     this._setUpEvents();
-  },
+  }
 
-  _attachedToMap: function() {
+  _attachedToMap() {
     // set i to the position of this layer element in the set of layers
     var i = 0,
       position = 1;
@@ -209,7 +222,14 @@ Polymer({
     // make sure the Leaflet layer has a reference to the map
     this._layer._map = dom(this).parentNode._map;
     // notify the layer that it is attached to a map (layer._map)
-    this._layer.fire("attached");
+    this._layer.dispatchEvent(
+      new CustomEvent("attached", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: true
+      })
+    );
 
     if (this.checked) {
       this._layer.addTo(this._layer._map);
@@ -232,10 +252,18 @@ Polymer({
     // for one thing, layers which are checked by the author before
     // adding to the map are displayed despite that they are not visible
     // See issue #26
-    this._layer._map.fire("moveend");
-  },
+    this._layer._map.dispatchEvent(
+      new CustomEvent("moveend", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: true
+      })
+    );
+  }
 
-  attached: function() {
+  connectedCallback() {
+    super.connectedCallback();
     if (dom(this).parentNode.nodeName !== "MAP") {
       console.log(
         "ERROR: " +
@@ -250,21 +278,30 @@ Polymer({
     if (dom(this).parentNode._map) {
       this._attachedToMap();
     }
-  },
+  }
 
-  _removeEvents: function() {
+  _removeEvents() {
     if (this._layer) {
       this._layer.off("loadstart", false, this);
     }
-  },
+  }
 
-  _setUpEvents: function() {
+  _setUpEvents() {
     this._layer.on(
       "loadstart",
-      function() {
-        this.fire("loadstart", { target: this });
+      () => {
+        this.dispatchEvent(
+          new CustomEvent("loadstart", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: { target: this }
+          })
+        );
       },
       this
     );
   }
-});
+}
+window.customElements.define(MapLayer.tag, MapLayer);
+export { MapLayer };

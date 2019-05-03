@@ -179,8 +179,11 @@ class HaxPreview extends PolymerElement {
         }
       </style>
       <vaadin-split-layout class="panel-wrapper">
-        <!-- critique panel -->
-        <div class="vaadin-split-layout-panel">
+        <div
+          id="ppanel1"
+          class="vaadin-split-layout-panel"
+          style="width:50%;max-width:75%;min-width:25%;"
+        >
           <div class="preview-buttons">
             <paper-button id="insert" raised on-click="insert"
               >[[editTitle]]</paper-button
@@ -207,7 +210,11 @@ class HaxPreview extends PolymerElement {
             ><iron-icon icon="icons:arrow-drop-up"></iron-icon>
           </div>
         </div>
-        <div class="vaadin-split-layout-panel">
+        <div
+          id="ppanel2"
+          class="vaadin-split-layout-panel"
+          style="width:50%;max-width:75%;min-width:25%;"
+        >
           <paper-tabs
             hidden\$="[[!haspreviewNode]]"
             id="modetabs"
@@ -239,7 +246,6 @@ class HaxPreview extends PolymerElement {
   static get tag() {
     return "hax-preview";
   }
-
   static get observers() {
     return ["_valueChanged(value.*)"];
   }
@@ -435,12 +441,25 @@ class HaxPreview extends PolymerElement {
                 element.properties[property] != null &&
                 !element.properties[property].readOnly
               ) {
-                // attempt to set it, should be no problem but never know
-                try {
-                  this.previewNode.set(property, element.properties[property]);
-                } catch (e) {
-                  console.warn(`${property} is busted some how`);
-                  console.log(e);
+                if (typeof this.previewNode.set === "function") {
+                  // attempt to set it, should be no problem but never know
+                  try {
+                    this.previewNode.set(
+                      property,
+                      element.properties[property]
+                    );
+                  } catch (e) {
+                    console.warn(`${property} is busted some how`);
+                    console.log(e);
+                  }
+                } else {
+                  // set attribute, this doesn't have the Polymer convention
+                  // this is Vanilla, Lit, etc
+                  // set is powerful though for objects and arrays so they will reflect instantly
+                  this.previewNode.setAttribute(
+                    property,
+                    element.properties[property]
+                  );
                 }
               } else if (property === "prefix") {
                 this.previewNode.setAttribute(

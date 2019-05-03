@@ -2,7 +2,8 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@polymer/paper-progress/paper-progress.js";
 import "./lib/lrnsys-progress-circle.js";
@@ -18,10 +19,10 @@ import "./lib/lrnsys-progress-circle.js";
  *  - percentage - amount complete either in the bar or the nodes themselves
  *  - bar - the underlayed bar that's tracking overall progression
  */
-let LrnsysProgress = Polymer({
-  _template: html`
-    <custom-style>
-      <style is="custom-style" include="paper-material-styles">
+class LrnsysProgress extends PolymerElement {
+  static get template() {
+    return html`
+      <style include="paper-material-styles">
         :host {
           display: block;
           margin-top: 24px;
@@ -97,233 +98,254 @@ let LrnsysProgress = Polymer({
           --paper-spinner-stroke-width: 1.2px;
         }
       </style>
-    </custom-style>
-    <iron-ajax
-      id="ajax"
-      url="[[activeNodeURL]]"
-      handle-as="json"
-      last-error="{{nodeDataError}}"
-      on-response="handleNodeResponse"
-    ></iron-ajax>
-    <h3 class="progress-title">[[title]]</h3>
-    <paper-progress
-      id="progress"
-      value="[[overallPercentage]]"
-    ></paper-progress>
-    <ul id="circle-container">
-      <template is="dom-repeat" items="[[items]]" as="item">
-        <li class="circle-node">
-          <lrnsys-progress-circle
-            play-finish-sound="[[soundFinish]]"
-            play-sound="[[sound]]"
-            complete-sound="[[completeSound]]"
-            finished-sound="[[finishedSound]]"
-            active="[[_isActive(index, active)]]"
-            step="[[index]]"
-            label="[[item.title]]"
-            icon="[[item.metadata.icon]]"
-            icon-complete="[[item.metadata.iconComplete]]"
-            data-url="[[item.metadata.dataUrl]]"
-            url="[[item.location]]"
-            status="[[item.metadata.status]]"
-            value="[[item.metadata.value]]"
-            max="[[item.metadata.max]]"
-            stroke-width="[[strokeWidth]]"
-            tool-tip="[[!vertical]]"
-            list-view="[[vertical]]"
-            class\$="[[size]]"
-          >
-            <span slot="description">[[item.description]]</span>
-          </lrnsys-progress-circle>
-        </li>
-      </template>
-    </ul>
-  `,
 
-  is: "lrnsys-progress",
-
-  listeners: {
-    "node-is-active": "_bubbleUpChangeActive",
-    "node-status-change": "_statusChanged"
-  },
-
-  properties: {
-    /**
-     * Disable internal ajax calls as something is handling them above.
-     */
-    disableAjaxCalls: {
-      type: Boolean,
-      value: false,
-      reflectToAttribute: true
-    },
-    /**
-     * Items to display to visualize the progression.
-     */
-    items: {
-      type: Array,
-      value: [],
-      notify: true,
-      observer: "_itemsChanged"
-    },
-    /**
-     * Play sounds whenever an item is complete.
-     * This can get pretty annoying though unless the items
-     * won't be completed for awhile.
-     */
-    sound: {
-      type: Boolean,
-      value: false,
-      reflectToAttribute: true
-    },
-    /**
-     * Play sound when the user finishes the progression. This
-     * could also be annoying but far less so :)
-     */
-    soundFinish: {
-      type: Boolean,
-      value: false,
-      reflectToAttribute: true
-    },
-    /**
-     * Play sound on complete.
-     */
-    completeSound: {
-      type: String,
-      value:
-        pathFromUrl(decodeURIComponent(import.meta.url)) +
-        "lib/assets/complete.mp3",
-      reflectToAttribute: true
-    },
-    /**
-     * Play sound on complete.
-     */
-    finishedSound: {
-      type: String,
-      value:
-        pathFromUrl(decodeURIComponent(import.meta.url)) +
-        "lib/assets/finished.mp3",
-      reflectToAttribute: true
-    },
-    /**
-     * Title of this progression, primarily for accessibility.
-     */
-    title: {
-      type: String,
-      value: "Steps to completion",
-      reflectToAttribute: true
-    },
-    /**
-     * Items displayed at specific points on the progression.
-     * These aren't filled up but place points along the progression
-     * which can help people see where they are relative to other
-     * factors such as % complete as a tick mark or icon.
-     */
-    keyItems: {
-      type: Array,
-      value: [],
-      notify: true
-    },
-    /**
-     * ID of the active item.
-     */
-    active: {
-      type: Number,
-      value: 0,
-      notify: true,
-      reflectToAttribute: true,
-      observer: "_activeChanged"
-    },
-    /**
-     * Whether to automatically make disabled items available
-     * or not when the previous one was just complete.
-     */
-    progressiveUnlock: {
-      type: Boolean,
-      value: true,
-      reflectToAttribute: true,
-      notify: true
-    },
-    /**
-     * State of progress in the current progression
-     */
-    state: {
-      type: String,
-      value: null,
-      reflectToAttribute: true,
-      observer: "_reportState"
-    },
-    /**
-     * How far is the user through this series of items.
-     */
-    overallPercentage: {
-      type: Number,
-      computed: "_overallPercentageCompute(items, active)",
-      reflectToAttribute: true
-    },
-    /**
-     * Responses for each item.
-     */
-    _responseList: {
-      type: Array,
-      value: []
-    },
-    /**
-     * Active response from the node selected.
-     */
-    activeNodeResponse: {
-      type: String,
-      value: "",
-      observer: "_activeResponseChanged"
-    },
-    /**
-     * Active response from the node selected.
-     */
-    manifest: {
-      type: Object,
-      value: {},
-      notify: true,
-      observer: "_manifestChanged"
-    },
-    /**
-     * Error.
-     */
-    nodeDataError: {
-      type: Object,
-      value: [],
-      observer: "_handleNodeError"
-    },
-    /**
-     * Flag to be vertical instead of horizontal.
-     */
-    vertical: {
-      type: Boolean,
-      value: false
-    },
-    /**
-     * Size to make everything, small, medium, large, and epic
-     * are available class names; default medium.
-     */
-    size: {
-      type: String,
-      value: "medium",
-      notify: true,
-      reflectToAttribute: true
-    },
-    /**
-     * Calculate width based on the size since we have to convert em to px.
-     */
-    strokeWidth: {
-      type: Number,
-      computed: "_getStrokeWidth(size)"
-    }
-  },
-
+      <iron-ajax
+        id="ajax"
+        url="[[activeNodeURL]]"
+        handle-as="json"
+        last-error="{{nodeDataError}}"
+        on-response="handleNodeResponse"
+      ></iron-ajax>
+      <h3 class="progress-title">[[title]]</h3>
+      <paper-progress
+        id="progress"
+        value="[[overallPercentage]]"
+      ></paper-progress>
+      <ul id="circle-container">
+        <template is="dom-repeat" items="[[items]]" as="item">
+          <li class="circle-node">
+            <lrnsys-progress-circle
+              play-finish-sound="[[soundFinish]]"
+              play-sound="[[sound]]"
+              complete-sound="[[completeSound]]"
+              finished-sound="[[finishedSound]]"
+              active="[[_isActive(index, active)]]"
+              step="[[index]]"
+              label="[[item.title]]"
+              icon="[[item.metadata.icon]]"
+              icon-complete="[[item.metadata.iconComplete]]"
+              data-url="[[item.metadata.dataUrl]]"
+              url="[[item.location]]"
+              status="[[item.metadata.status]]"
+              value="[[item.metadata.value]]"
+              max="[[item.metadata.max]]"
+              stroke-width="[[strokeWidth]]"
+              tool-tip="[[!vertical]]"
+              list-view="[[vertical]]"
+              class\$="[[size]]"
+            >
+              <span slot="description">[[item.description]]</span>
+            </lrnsys-progress-circle>
+          </li>
+        </template>
+      </ul>
+    `;
+  }
+  static get tag() {
+    return "lrnsys-progress";
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, function() {
+      this.addEventListener(
+        "node-is-active",
+        this._bubbleUpChangeActive.bind(this)
+      );
+      this.addEventListener(
+        "node-status-change",
+        this._statusChanged.bind(this)
+      );
+    });
+  }
+  disconnectedCallback() {
+    this.removeEventListener(
+      "node-is-active",
+      this._bubbleUpChangeActive.bind(this)
+    );
+    this.removeEventListener(
+      "node-status-change",
+      this._statusChanged.bind(this)
+    );
+    super.disconnectedCallback();
+  }
+  static get properties() {
+    return {
+      /**
+       * Disable internal ajax calls as something is handling them above.
+       */
+      disableAjaxCalls: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
+       * Items to display to visualize the progression.
+       */
+      items: {
+        type: Array,
+        value: [],
+        notify: true,
+        observer: "_itemsChanged"
+      },
+      /**
+       * Play sounds whenever an item is complete.
+       * This can get pretty annoying though unless the items
+       * won't be completed for awhile.
+       */
+      sound: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
+       * Play sound when the user finishes the progression. This
+       * could also be annoying but far less so :)
+       */
+      soundFinish: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
+       * Play sound on complete.
+       */
+      completeSound: {
+        type: String,
+        value:
+          pathFromUrl(decodeURIComponent(import.meta.url)) +
+          "lib/assets/complete.mp3",
+        reflectToAttribute: true
+      },
+      /**
+       * Play sound on complete.
+       */
+      finishedSound: {
+        type: String,
+        value:
+          pathFromUrl(decodeURIComponent(import.meta.url)) +
+          "lib/assets/finished.mp3",
+        reflectToAttribute: true
+      },
+      /**
+       * Title of this progression, primarily for accessibility.
+       */
+      title: {
+        type: String,
+        value: "Steps to completion",
+        reflectToAttribute: true
+      },
+      /**
+       * Items displayed at specific points on the progression.
+       * These aren't filled up but place points along the progression
+       * which can help people see where they are relative to other
+       * factors such as % complete as a tick mark or icon.
+       */
+      keyItems: {
+        type: Array,
+        value: [],
+        notify: true
+      },
+      /**
+       * ID of the active item.
+       */
+      active: {
+        type: Number,
+        value: 0,
+        notify: true,
+        reflectToAttribute: true,
+        observer: "_activeChanged"
+      },
+      /**
+       * Whether to automatically make disabled items available
+       * or not when the previous one was just complete.
+       */
+      progressiveUnlock: {
+        type: Boolean,
+        value: true,
+        reflectToAttribute: true,
+        notify: true
+      },
+      /**
+       * State of progress in the current progression
+       */
+      state: {
+        type: String,
+        value: null,
+        reflectToAttribute: true,
+        observer: "_reportState"
+      },
+      /**
+       * How far is the user through this series of items.
+       */
+      overallPercentage: {
+        type: Number,
+        computed: "_overallPercentageCompute(items, active)",
+        reflectToAttribute: true
+      },
+      /**
+       * Responses for each item.
+       */
+      _responseList: {
+        type: Array,
+        value: []
+      },
+      /**
+       * Active response from the node selected.
+       */
+      activeNodeResponse: {
+        type: String,
+        value: "",
+        observer: "_activeResponseChanged"
+      },
+      /**
+       * Active response from the node selected.
+       */
+      manifest: {
+        type: Object,
+        value: {},
+        notify: true,
+        observer: "_manifestChanged"
+      },
+      /**
+       * Error.
+       */
+      nodeDataError: {
+        type: Object,
+        value: [],
+        observer: "_handleNodeError"
+      },
+      /**
+       * Flag to be vertical instead of horizontal.
+       */
+      vertical: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Size to make everything, small, medium, large, and epic
+       * are available class names; default medium.
+       */
+      size: {
+        type: String,
+        value: "medium",
+        notify: true,
+        reflectToAttribute: true
+      },
+      /**
+       * Calculate width based on the size since we have to convert em to px.
+       */
+      strokeWidth: {
+        type: Number,
+        computed: "_getStrokeWidth(size)"
+      }
+    };
+  }
   /**
    * Set an appropriate stroke width based on size of the element.
    * This is because it's a hard pixel value when the rest of our
    * sizing is based on em's
    */
-  _getStrokeWidth: function(size) {
+  _getStrokeWidth(size) {
     var width = 4;
     if (size == "tiny") {
       width = 3;
@@ -340,28 +362,35 @@ let LrnsysProgress = Polymer({
     }
 
     return width;
-  },
+  }
 
   /**
    * Fire event that state has changed with what the statement is.
    * This gives a readable name to what the state is of the progress bar
    * as well as access to the full item that triggered the state change.
    */
-  _reportState: function(newValue, oldValue) {
+  _reportState(newValue, oldValue) {
     // help avoid initial ready state being null
     if (newValue != null && this.items.length > 0) {
-      this.fire("progress-state-change", {
-        state: this.state,
-        active: this.items[this.active]
-      });
+      this.dispatchEvent(
+        new CustomEvent("progress-state-change", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: {
+            state: this.state,
+            active: this.items[this.active]
+          }
+        })
+      );
     }
-  },
+  }
 
   /**
    * Notice items have changed; only worry about if the count changes
    * though since other oberservers handle downstream mutation
    */
-  _itemsChanged: function(newValue, oldValue) {
+  _itemsChanged(newValue, oldValue) {
     // strange but this is effectively the same as "ready" except the ready
     // state invokes potentially without items while this one will only
     // match a case where there was no values and now we have one
@@ -392,48 +421,59 @@ let LrnsysProgress = Polymer({
         }, 1200);
       }
     }
-  },
+  }
 
   /**
    * Simple boolean for whatever is active currently.
    */
-  _isActive: function(index, active) {
+  _isActive(index, active) {
     return index === active;
-  },
+  }
 
   /**
    * Active Response changed; bubble it up.
    */
-  _activeResponseChanged: function(value) {
-    this.fire("progress-response-loaded", { response: value });
-  },
+  _activeResponseChanged(value) {
+    this.dispatchEvent(
+      new CustomEvent("progress-response-loaded", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: { response: value }
+      })
+    );
+  }
 
   /**
    * Notice event from the nodes themselves
    * and set active based on a node bubbling up an event
    * that says "Hey I am active now!"
    */
-  _bubbleUpChangeActive: function(e) {
+  _bubbleUpChangeActive(e) {
     // changing active will kick off events internally
     this.active = e.detail.target.step;
-    this.fire(
-      "json-outline-schema-active-item-changed",
-      this.items[this.active]
+    this.dispatchEvent(
+      new CustomEvent("json-outline-schema-active-item-changed", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this.items[this.active]
+      })
     );
-  },
+  }
   /**
    * Allow for JSON Outline Schema manifest structure changes
    */
-  _manifestChanged: function(newValue, oldValue) {
+  _manifestChanged(newValue, oldValue) {
     if (newValue) {
       this.set("items", newValue.items);
       this.notifyPath("items.*");
     }
-  },
+  }
   /**
    * Active item has changed, set the rest of the data to match.
    */
-  _activeChanged: function(newValue, oldValue) {
+  _activeChanged(newValue, oldValue) {
     // bubble up event from state being set
     this.state = "active item is " + this.active;
     this.items.forEach((element, index, array) => {
@@ -489,12 +529,12 @@ let LrnsysProgress = Polymer({
         this.notifyPath("items." + index + ".metadata.status");
       }
     });
-  },
+  }
 
   /**
    * Listen for the state of anything below to change.
    */
-  _statusChanged: function(e) {
+  _statusChanged(e) {
     // we are in loading state so go load data and let the response
     // dictate what state we reach after that
     if (e.target.status == "loading") {
@@ -523,12 +563,12 @@ let LrnsysProgress = Polymer({
         this.notifyPath("items." + this.active + ".metadata.status");
       }, 100);
     }
-  },
+  }
 
   /**
    * Response returned from triggering the Node's URL to fire to get a response.
    */
-  handleNodeResponse: function(e) {
+  handleNodeResponse(e) {
     const detail = e.detail;
     // this means that it was an internal path, fake "loading"
     if (typeof detail.response === typeof null) {
@@ -548,12 +588,12 @@ let LrnsysProgress = Polymer({
       this._responseList[this.active] = detail.response;
       this.activeNodeResponse = this._responseList[this.active];
     }
-  },
+  }
 
   /**
    * Weak support for error code being found
    */
-  _handleNodeError: function(newValue, oldValue) {
+  _handleNodeError(newValue, oldValue) {
     if (
       typeof oldValue !== typeof undefined &&
       newValue != null &&
@@ -568,29 +608,33 @@ let LrnsysProgress = Polymer({
       this.set("items." + this.active + ".metadata.status", "available");
       this.notifyPath("items." + this.active + ".metadata.status");
       // fire an event that this isn't really available so we know an issue occured
-      this.fire("node-load-failed", {
-        message: newValue,
-        node: this.items[this.active]
-      });
+      this.dispatchEvent(
+        new CustomEvent("node-load-failed", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this.items[this.active]
+        })
+      );
     }
-  },
+  }
 
   /**
    * Calculate the overall percentage competed.
    * This forms the line that's connecting the steps.
    */
-  _overallPercentageCompute: function(items, active) {
+  _overallPercentageCompute(items, active) {
     if (typeof items !== typeof undefined) {
       this.$.progress.classList.add("transiting");
       return (active / (items.length - 1)) * 100;
     }
     return 0;
-  },
+  }
 
   /**
    * Change the percentage for the active item.
    */
-  changePercentage: function(percentage, mode) {
+  changePercentage(percentage, mode) {
     var newp = 0;
     // support for adding and removing percentage as well as setting
     if (mode == "add") {
@@ -659,12 +703,12 @@ let LrnsysProgress = Polymer({
       this.set("items." + this.active + ".metadata.value", newp);
       this.notifyPath("items." + this.active + ".metadata.value");
     }
-  },
+  }
 
   /**
    * Modify items and update template binding correctly.
    */
-  updateItems: function(op, item) {
+  updateItems(op, item) {
     var response = false;
     if (op == "push") {
       this.push("items", item);
@@ -682,5 +726,6 @@ let LrnsysProgress = Polymer({
     this.notifyPath("active");
     return response;
   }
-});
+}
+window.customElements.define(LrnsysProgress.tag, LrnsysProgress);
 export { LrnsysProgress };

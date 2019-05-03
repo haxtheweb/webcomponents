@@ -1,5 +1,6 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import * as async from "@polymer/polymer/lib/utils/async.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/iron-form-element-behavior/iron-form-element-behavior.js";
@@ -18,213 +19,218 @@ import "@lrnwebcomponents/dropdown-select/dropdown-select.js";
 import "../lrnsys-comment.js";
 
 /**
-`lrnsys-comment-list`
-A listing and event handling for comments.
-
-* @demo demo/index.html
-*/
-Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: block;
-      }
-      app-toolbar {
-        padding: 0;
-      }
-      app-toolbar > *:not(:last-child) {
-        margin-right: 10px;
-      }
-      .comment-button {
-        min-width: 125px;
-      }
-    </style>
-    <!-- Load all comments on load of element -->
-    <iron-ajax
-      auto
-      url="[[sourcePath]]"
-      handle-as="json"
-      method="[[opsRequestMethod.list]]"
-      last-response="{{comments}}"
-    ></iron-ajax>
-    <!-- Create stub-comment -->
-    <iron-ajax
-      id="ajaxcreatestub"
-      url="[[createStubUrl]]"
-      method="[[opsRequestMethod.create]]"
-      body="[[activeComment.id]]"
-      on-response="_updateReply"
-      handle-as="json"
-      last-response="{{newComment}}"
-    ></iron-ajax>
-    <!-- Update comment -->
-    <iron-ajax
-      id="ajaxupdaterequest"
-      url="[[reqUrl]]"
-      method="[[opsRequestMethod.update]]"
-      body="[[activeComment]]"
-      content-type="application/json"
-      handle-as="json"
-      on-response="_handleUpdateResponse"
-    ></iron-ajax>
-    <!-- Delete comment -->
-    <iron-ajax
-      id="ajaxdeleterequest"
-      url="[[reqUrl]]"
-      method="[[opsRequestMethod.delete]]"
-      body="[[activeComment]]"
-      content-type="application/json"
-      handle-as="json"
-      on-response="_handleDeleteResponse"
-    ></iron-ajax>
-    <!-- Like comment -->
-    <iron-ajax
-      id="ajaxlikerequest"
-      url="[[reqUrl]]"
-      method="[[opsRequestMethod.like]]"
-      body="[[activeComment]]"
-      content-type="application/json"
-      handle-as="json"
-      on-response="_handleLikeResponse"
-    ></iron-ajax>
-    <app-toolbar>
-      <lrnsys-button
-        class="comment-button"
-        raised=""
-        on-click="handleTopReply"
-        id="leavecomment"
-        hover-class="blue white-text"
-        label="Add Comment"
-      ></lrnsys-button>
-      <dropdown-select
-        id="filtertype"
-        label="Filter Comments by"
-        value="attributes.body"
-      >
-        <paper-item value="attributes.body">Body</paper-item>
-        <paper-item value="relationships.author.data.name"
-          >User Name</paper-item
+ * `lrnsys-comment-list`
+ * `A listing and event handling for comments.`
+ * @demo demo/index.html
+ */
+class LrnsysCommentList extends PolymerElement {
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: block;
+        }
+        app-toolbar {
+          padding: 0;
+        }
+        app-toolbar > *:not(:last-child) {
+          margin-right: 10px;
+        }
+        .comment-button {
+          min-width: 125px;
+        }
+      </style>
+      <!-- Load all comments on load of element -->
+      <iron-ajax
+        auto
+        url="[[sourcePath]]"
+        handle-as="json"
+        method="[[opsRequestMethod.list]]"
+        last-response="{{comments}}"
+      ></iron-ajax>
+      <!-- Create stub-comment -->
+      <iron-ajax
+        id="ajaxcreatestub"
+        url="[[createStubUrl]]"
+        method="[[opsRequestMethod.create]]"
+        body="[[activeComment.id]]"
+        on-response="_updateReply"
+        handle-as="json"
+        last-response="{{newComment}}"
+      ></iron-ajax>
+      <!-- Update comment -->
+      <iron-ajax
+        id="ajaxupdaterequest"
+        url="[[reqUrl]]"
+        method="[[opsRequestMethod.update]]"
+        body="[[activeComment]]"
+        content-type="application/json"
+        handle-as="json"
+        on-response="_handleUpdateResponse"
+      ></iron-ajax>
+      <!-- Delete comment -->
+      <iron-ajax
+        id="ajaxdeleterequest"
+        url="[[reqUrl]]"
+        method="[[opsRequestMethod.delete]]"
+        body="[[activeComment]]"
+        content-type="application/json"
+        handle-as="json"
+        on-response="_handleDeleteResponse"
+      ></iron-ajax>
+      <!-- Like comment -->
+      <iron-ajax
+        id="ajaxlikerequest"
+        url="[[reqUrl]]"
+        method="[[opsRequestMethod.like]]"
+        body="[[activeComment]]"
+        content-type="application/json"
+        handle-as="json"
+        on-response="_handleLikeResponse"
+      ></iron-ajax>
+      <app-toolbar>
+        <lrnsys-button
+          class="comment-button"
+          raised=""
+          on-click="handleTopReply"
+          id="leavecomment"
+          hover-class="blue white-text"
+          label="Add Comment"
+        ></lrnsys-button>
+        <dropdown-select
+          id="filtertype"
+          label="Filter Comments by"
+          value="attributes.body"
         >
-      </dropdown-select>
-      <paper-input
-        label="Filter Text"
-        id="filtercomments"
-        aria-controls="filteredcomments"
-        value=""
-        always-float-label=""
-      ></paper-input>
-    </app-toolbar>
-    <grafitto-filter
-      id="filteredcomments"
-      items\$="[[_toArray(comments.data)]]"
-      where=""
-      as="filtered"
-      like=""
-    >
-      <template>
-        <iron-list id="commentlist" items="[[filtered]]" as="item">
-          <template>
-            <lrnsys-comment
-              comment="{{item}}"
-              hover-class="blue white-text"
-            ></lrnsys-comment>
-          </template>
-        </iron-list>
-      </template>
-    </grafitto-filter>
-  `,
+          <paper-item value="attributes.body">Body</paper-item>
+          <paper-item value="relationships.author.data.name"
+            >User Name</paper-item
+          >
+        </dropdown-select>
+        <paper-input
+          label="Filter Text"
+          id="filtercomments"
+          aria-controls="filteredcomments"
+          value=""
+          always-float-label=""
+        ></paper-input>
+      </app-toolbar>
+      <grafitto-filter
+        id="filteredcomments"
+        items\$="[[_toArray(comments.data)]]"
+        where=""
+        as="filtered"
+        like=""
+      >
+        <template>
+          <iron-list id="commentlist" items="[[filtered]]" as="item">
+            <template>
+              <lrnsys-comment
+                comment="{{item}}"
+                hover-class="blue white-text"
+              ></lrnsys-comment>
+            </template>
+          </iron-list>
+        </template>
+      </grafitto-filter>
+    `;
+  }
 
-  is: "lrnsys-comment-list",
+  static get tag() {
+    return "lrnsys-comment-list";
+  }
 
-  listeners: {
-    "comment-save": "handleSave",
-    "comment-editing": "handleEditing",
-    "comment-reply": "handleReply",
-    "comment-like": "handleLike",
-    "comment-delete-dialog": "handleDeleteDialog"
-  },
-
-  properties: {
-    /**
-     * CSRF Token
-     */
-    csrfToken: {
-      type: String
-    },
-    /**
-     * Request methods
-     */
-    opsRequestMethod: {
-      type: Object,
-      value: {
-        list: "GET",
-        create: "POST",
-        update: "PUT",
-        delete: "DELETE",
-        like: "PATCH"
+  static get properties() {
+    return {
+      /**
+       * CSRF Token
+       */
+      csrfToken: {
+        type: String
+      },
+      /**
+       * Request methods
+       */
+      opsRequestMethod: {
+        type: Object,
+        value: {
+          list: "GET",
+          create: "POST",
+          update: "PUT",
+          delete: "DELETE",
+          like: "PATCH"
+        }
+      },
+      /**
+       * Comment currently in scope
+       */
+      activeComment: {
+        type: Object,
+        notify: true
+      },
+      /**
+       * New stub comment from backend.
+       */
+      newComment: {
+        type: Object,
+        notify: true
+      },
+      /**
+       * An object containing all comments to render in the list
+       */
+      comments: {
+        type: Object,
+        notify: true
+      },
+      /**
+       * Source to pull the comments from
+       */
+      sourcePath: {
+        type: String,
+        notify: true
+      },
+      /**
+       * Base for ops calls
+       */
+      commentOpsBase: {
+        type: String,
+        notify: true
+      },
+      /**
+       * Source to get stub comments from
+       */
+      createStubUrl: {
+        type: String,
+        notify: true
+      },
+      /**
+       * Source for CRUD ops against individual comments.
+       */
+      reqUrl: {
+        type: String,
+        notify: true,
+        computed:
+          "_computeCommentOpsUrl(activeComment, commentOpsBase, csrfToken)"
       }
-    },
-    /**
-     * Comment currently in scope
-     */
-    activeComment: {
-      type: Object,
-      notify: true
-    },
-    /**
-     * New stub comment from backend.
-     */
-    newComment: {
-      type: Object,
-      notify: true
-    },
-    /**
-     * An object containing all comments to render in the list
-     */
-    comments: {
-      type: Object,
-      notify: true
-    },
-    /**
-     * Source to pull the comments from
-     */
-    sourcePath: {
-      type: String,
-      notify: true
-    },
-    /**
-     * Base for ops calls
-     */
-    commentOpsBase: {
-      type: String,
-      notify: true
-    },
-    /**
-     * Source to get stub comments from
-     */
-    createStubUrl: {
-      type: String,
-      notify: true
-    },
-    /**
-     * Source for CRUD ops against individual comments.
-     */
-    reqUrl: {
-      type: String,
-      notify: true,
-      computed:
-        "_computeCommentOpsUrl(activeComment, commentOpsBase, csrfToken)"
-    }
-  },
+    };
+  }
 
   /**
    * attached life cycle
    */
-  attached: function(e) {
+  connectedCallback() {
+    super.connectedCallback();
     window.SimpleModal.requestAvailability();
-    async.microTask.run(() => {
+    microTask.run(() => {
       if (this.$.filteredcomments.querySelector("iron-list")) {
-        this.$.filteredcomments.querySelector("iron-list").fire("iron-resize");
+        this.$.filteredcomments.querySelector("iron-list").dispatchEvent(
+          new CustomEvent("iron-resize", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: true
+          })
+        );
       }
       window.dispatchEvent(new Event("resize"));
     });
@@ -236,11 +242,29 @@ Polymer({
       this.$.filteredcomments.where = e.detail.value;
       this.$.filteredcomments.like = "";
     });
-  },
+    afterNextRender(this, function() {
+      this.addEventListener("comment-save", this.handleSave.bind(this));
+      this.addEventListener("comment-editing", this.handleEditing.bind(this));
+      this.addEventListener("comment-reply", this.handleReply.bind(this));
+      this.addEventListener("comment-like", this.handleLike.bind(this));
+      this.addEventListener(
+        "comment-delete-dialog",
+        this.handleDeleteDialog.bind(this)
+      );
+    });
+  }
   /**
    * detached life cycle
    */
-  detached: function(e) {
+  disconnectedCallback() {
+    this.removeEventListener("comment-save", this.handleSave.bind(this));
+    this.removeEventListener("comment-editing", this.handleEditing.bind(this));
+    this.removeEventListener("comment-reply", this.handleReply.bind(this));
+    this.removeEventListener("comment-like", this.handleLike.bind(this));
+    this.removeEventListener(
+      "comment-delete-dialog",
+      this.handleDeleteDialog.bind(this)
+    );
     this.$.filtercomments.removeEventListener("value-changed", e => {
       this.$.filteredcomments.like = e.target.value;
     });
@@ -249,30 +273,31 @@ Polymer({
       this.$.filteredcomments.where = e.detail.value;
       this.$.filteredcomments.like = "";
     });
-  },
+    super.disconnectedCallback();
+  }
   /**
    * Generate the ops URL based on the active comment
    */
-  _computeCommentOpsUrl: function(activeComment, commentOpsBase, csrfToken) {
+  _computeCommentOpsUrl(activeComment, commentOpsBase, csrfToken) {
     if (typeof activeComment !== typeof undefined) {
       return commentOpsBase + "/" + activeComment.id + "?token=" + csrfToken;
     }
-  },
+  }
   /**
    * Handle liking a comment.
    */
-  handleLike: function(e) {
+  handleLike(e) {
     this.activeComment = e.detail.comment;
     this.$.ajaxlikerequest.generateRequest();
-  },
+  }
   /**
    * @todo not sure we need to do anything post like button
    */
-  _handleLikeResponse: function(e) {},
+  _handleLikeResponse(e) {}
   /**
    * Handle a delete dialog to confirm.
    */
-  handleDeleteDialog: function(e) {
+  handleDeleteDialog(e) {
     this.activeComment = e.detail.comment;
     // content of dialog
     let c = document.createElement("p");
@@ -311,11 +336,11 @@ Polymer({
       }
     });
     this.dispatchEvent(evt);
-  },
+  }
   /**
    * Handle editing response
    */
-  handleEditing: function(e) {
+  handleEditing(e) {
     const evt = new CustomEvent("simple-toast-show", {
       bubbles: true,
       cancelable: true,
@@ -325,7 +350,7 @@ Polymer({
       }
     });
     this.dispatchEvent(evt);
-  },
+  }
 
   /**
    * Handle a reply event bubbling up from a comment we've printed
@@ -333,12 +358,12 @@ Polymer({
    * to create new lower ones which can invoke more lower ones from
    * up above.
    */
-  handleTopReply: function(e) {
+  handleTopReply(e) {
     // ensure nothing is set as active for when this goes out the door
     this.set("newComment", []);
     this.set("activeComment", []);
     this.$.ajaxcreatestub.generateRequest();
-  },
+  }
 
   /**
    * Handle a reply event bubbling up from a comment we've printed
@@ -346,18 +371,18 @@ Polymer({
    * to create new lower ones which can invoke more lower ones from
    * up above.
    */
-  handleReply: function(e) {
+  handleReply(e) {
     this.set("newComment", []);
     this.activeComment = e.detail.comment;
     // shift where the response will go
     this.$.ajaxcreatestub.generateRequest();
-  },
+  }
 
   /**
    * Update the UI to reflect the new comment based on returned data
    * added to the end since it's a new comment.
    */
-  _updateReply: function(e) {
+  _updateReply(e) {
     var comment = this.activeComment;
     var comments = this.comments.data;
     // normalize response
@@ -383,16 +408,16 @@ Polymer({
     this.set("comments.data", []);
     this.set("comments.data", comments);
     this.notifyPath("comments.data");
-  },
+  }
 
   /**
    * Handle a delete event bubbling up from a comment we've printed.
    */
-  _handleDeleteConfirm: function(e) {
+  _handleDeleteConfirm(e) {
     this.$.ajaxdeleterequest.generateRequest();
-  },
+  }
 
-  _handleDeleteResponse: function(e) {
+  _handleDeleteResponse(e) {
     var comment = this.activeComment;
     var comments = this.comments.data;
     for (var index = 0; index < comments.length; index++) {
@@ -418,17 +443,17 @@ Polymer({
         return true;
       }
     }
-  },
+  }
 
   /**
    * Handle saving a comment.
    */
-  handleSave: function(e) {
+  handleSave(e) {
     this.activeComment = e.detail.comment;
     this.$.ajaxupdaterequest.generateRequest();
-  },
+  }
 
-  _handleUpdateResponse: function(e) {
+  _handleUpdateResponse(e) {
     const evt = new CustomEvent("simple-toast-show", {
       bubbles: true,
       cancelable: true,
@@ -438,14 +463,16 @@ Polymer({
       }
     });
     this.dispatchEvent(evt);
-  },
+  }
 
   /**
    * Simple way to convert from object to array.
    */
-  _toArray: function(obj) {
+  _toArray(obj) {
     return Object.keys(obj).map(function(key) {
       return obj[key];
     });
   }
-});
+}
+window.customElements.define(LrnsysCommentList.tag, LrnsysCommentList);
+export { LrnsysCommentList };

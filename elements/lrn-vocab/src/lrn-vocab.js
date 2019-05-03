@@ -2,12 +2,11 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom";
-import "@polymer/paper-button/paper-button.js";
-import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 /**
 `lrn-vocab`
@@ -15,10 +14,14 @@ Vocabulary term with visual treatment and semantic meaning.
 
 * @demo demo/index.html
 */
-let LrnVocab = Polymer({
-  _template: html`
-    <custom-style>
-      <style is="custom-style">
+class LrnVocab extends SchemaBehaviors(PolymerElement) {
+  constructor() {
+    super();
+    import("@polymer/paper-button/paper-button.js");
+  }
+  static get template() {
+    return html`
+      <style>
         :host {
           display: inline-flex;
           --lrn-vocab-border: 1px dashed #ccc;
@@ -40,27 +43,34 @@ let LrnVocab = Polymer({
           @apply --lrn-vocab-button-hover;
         }
       </style>
-    </custom-style>
-    <paper-button id="button" noink on-tap="openDialog">[[term]]</paper-button>
-  `,
+      <paper-button id="button" noink on-tap="openDialog"
+        >[[term]]</paper-button
+      >
+    `;
+  }
 
-  is: "lrn-vocab",
-
-  behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
-
-  properties: {
-    /**
-     * Term to highlight / display
-     */
-    term: {
-      type: String,
-      reflectToAttribute: true
+  static get tag() {
+    return "lrn-vocab";
+  }
+  static get properties() {
+    let props = {
+      /**
+       * Term to highlight / display
+       */
+      term: {
+        type: String,
+        reflectToAttribute: true
+      }
+    };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
     }
-  },
+    return props;
+  }
   /**
    * Request the singleton dialog open
    */
-  openDialog: function(e) {
+  openDialog(e) {
     let children = FlattenedNodesObserver.getFlattenedNodes(this).filter(
       n => n.nodeType === Node.ELEMENT_NODE
     );
@@ -76,18 +86,24 @@ let LrnVocab = Polymer({
         elements: {
           content: c
         },
-        invokedBy: this.$.button
+        invokedBy: this.shadowRoot.querySelector("#button")
       }
     });
     window.dispatchEvent(evt);
-  },
+  }
   /**
    * Attached life cycle
    */
-  attached: function() {
-    window.SimpleModal.requestAvailability();
-    // Establish hax properties if they exist
-    let props = {
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, function() {
+      window.SimpleModal.requestAvailability();
+      this.HAXWiring = new HAXWiring();
+      this.HAXWiring.setup(LrnVocab.haxProperties, LrnVocab.tag, this);
+    });
+  }
+  static get haxProperties() {
+    return {
       canScale: false,
       canPosition: false,
       canEditSource: false,
@@ -138,7 +154,7 @@ let LrnVocab = Polymer({
         advanced: []
       }
     };
-    this.setHaxProperties(props);
   }
-});
+}
+window.customElements.define(LrnVocab.tag, LrnVocab);
 export { LrnVocab };

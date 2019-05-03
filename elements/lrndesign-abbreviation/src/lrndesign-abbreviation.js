@@ -2,79 +2,99 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
  * `lrndesign-abbreviation`
  * `A wrapper to make a cleaner abbreviation deign element`
  *
  * @demo demo/index.html
  */
-let LrndesignAbbreviation = Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: inline-block;
-      }
-      abbr {
-        transition: 0.6s all ease;
-        padding: 2px 4px;
-        font-style: italic;
-        background-color: var(--abbreviation-bg, #f9f9f9);
-        text-underline-position: under;
-        text-decoration: underline double;
-        cursor: help;
-        outline: var(--abbreviation-selection, #ffff33);
-        @apply --abbreviation-main;
-      }
-      abbr:focus,
-      abbr:active,
-      abbr:hover {
-        text-decoration: none;
-        background-color: var(--abbreviation-selection, #ffff33);
-        @apply --abbreviation-hover;
-      }
-      abbr::-moz-selection,
-      abbr::selection {
-        text-decoration: none;
-        background-color: var(--abbreviation-selection, #ffff33);
-        @apply --abbreviation-selection;
-      }
-    </style>
-    <abbr tabindex="0" title$="[[phrase]]" id="abbr">[[abbr]]</abbr>
-    <paper-tooltip for="abbr" position="top" offset="2" animation-delay="300"
-      >[[phrase]]</paper-tooltip
-    >
-  `,
+class LrndesignAbbreviation extends SchemaBehaviors(PolymerElement) {
+  constructor() {
+    super();
+    import("@polymer/paper-tooltip/paper-tooltip.js");
+    afterNextRender(this, function() {
+      this.HAXWiring = new HAXWiring();
+      this.HAXWiring.setup(
+        LrndesignAbbreviation.haxProperties,
+        LrndesignAbbreviation.tag,
+        this
+      );
+    });
+  }
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: inline-block;
+        }
+        abbr {
+          transition: 0.6s all ease;
+          padding: 2px 4px;
+          font-style: italic;
+          background-color: var(--abbreviation-bg, #f9f9f9);
+          text-underline-position: under;
+          text-decoration: underline double;
+          cursor: help;
+          outline: var(--abbreviation-selection, #ffff33);
+          @apply --abbreviation-main;
+        }
+        abbr:focus,
+        abbr:active,
+        abbr:hover {
+          text-decoration: none;
+          background-color: var(--abbreviation-selection, #ffff33);
+          @apply --abbreviation-hover;
+        }
+        abbr::-moz-selection,
+        abbr::selection {
+          text-decoration: none;
+          background-color: var(--abbreviation-selection, #ffff33);
+          @apply --abbreviation-selection;
+        }
+      </style>
+      <abbr tabindex="0" title$="[[phrase]]" id="abbr">[[abbr]]</abbr>
+      <paper-tooltip for="abbr" position="top" offset="2" animation-delay="300"
+        >[[phrase]]</paper-tooltip
+      >
+    `;
+  }
 
-  is: "lrndesign-abbreviation",
-  behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
-  properties: {
-    /**
-     * Abbreviation text.
-     */
-    abbr: {
-      type: String,
-      reflectToAttribute: true,
-      notify: true
-    },
-    /**
-     * The thing the abbreviation represents.
-     */
-    phrase: {
-      type: String,
-      reflectToAttribute: true,
-      notify: true
+  static get tag() {
+    return "lrndesign-abbreviation";
+  }
+  static get properties() {
+    let props = {
+      /**
+       * Abbreviation text.
+       */
+      abbr: {
+        type: String,
+        reflectToAttribute: true,
+        notify: true
+      },
+      /**
+       * The thing the abbreviation represents.
+       */
+      phrase: {
+        type: String,
+        reflectToAttribute: true,
+        notify: true
+      }
+    };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
     }
-  },
+    return props;
+  }
   /**
    * Attached to the DOM, now fire.
    */
-  attached: function() {
-    // Establish hax property binding
-    let props = {
+  static get haxProperties() {
+    return {
       canScale: false,
       canPosition: false,
       canEditSource: false,
@@ -130,7 +150,7 @@ let LrndesignAbbreviation = Polymer({
         advanced: []
       }
     };
-    this.setHaxProperties(props);
   }
-});
+}
+window.customElements.define(LrndesignAbbreviation.tag, LrndesignAbbreviation);
 export { LrndesignAbbreviation };

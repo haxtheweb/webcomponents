@@ -1,9 +1,12 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/paper-input/paper-input.js";
-import "@vaadin/vaadin-upload/vaadin-upload.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./hax-shared-styles.js";
 class HaxUploadField extends PolymerElement {
+  constructor() {
+    super();
+    import("@polymer/paper-input/paper-input.js");
+    import("@vaadin/vaadin-upload/vaadin-upload.js");
+  }
   static get template() {
     return html`
       <style include="simple-colors hax-shared-styles">

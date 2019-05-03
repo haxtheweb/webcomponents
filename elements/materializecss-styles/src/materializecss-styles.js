@@ -32,7 +32,7 @@ window.MaterializeCSSBehaviors.ColorBehaviors = {
    * Get the Materialize color classes mapping based on defined parts
    * Example: getColorClasses('text')
    */
-  getColorClasses: function(parta = "", partb = "") {
+  getColorClasses(parta = "", partb = "") {
     var colorClasses = {
       "#ffffff": "white",
       "#000000": "black",
@@ -297,7 +297,7 @@ window.MaterializeCSSBehaviors.ColorBehaviors = {
   /**
    * Transform a color value into it's associated color class
    */
-  _colorTransform: function(item, parta, partb) {
+  _colorTransform(item, parta, partb) {
     const colorClasses = this.getColorClasses(parta, partb);
     if (typeof colorClasses[item] !== "undefined") {
       return colorClasses[item];
@@ -310,7 +310,7 @@ window.MaterializeCSSBehaviors.ColorBehaviors = {
    * @param {string} color Color class
    * @return {string} hex value
    */
-  _colorTransformFromClass: function(color) {
+  _colorTransformFromClass(color) {
     const colorClasses = this.getColorClasses();
     let hexColor = null;
     Object.keys(colorClasses).forEach(function(key) {

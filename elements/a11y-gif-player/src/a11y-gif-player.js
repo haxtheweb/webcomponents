@@ -1,165 +1,181 @@
 /**
- * Copyright 2018 The Pennsylvania State University
+ * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
-import "@polymer/iron-image/iron-image.js";
-import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
  * `a11y-gif-player`
  * `Play gifs in an accessible way by having the user click to play their animation`
  *
- * @microcopy - language worth noting:
- *  -
- *
  * @customElement
  * @polymer
- * @polymerLegacy
  * @demo demo/index.html
  */
-let A11yGifPlayer = Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: block;
-      }
-      :host #gifbutton > * {
-        position: relative;
-      }
-      :host #svg {
-        position: absolute;
-        top: 35%;
-        left: 35%;
-      }
-      :host #gifbutton:active,
-      :host #gifbutton:focus,
-      :host #gifbutton:hover {
-        cursor: pointer;
-        outline: 1px solid blue;
-      }
-      :host #preload {
-        display: none;
-      }
-    </style>
-    <div id="gifbutton" aria-role="button" aria-controls="gif" tabindex="0">
-      <div>
-        <img
-          id="gif"
-          alt\$="[[alt]]"
-          src\$="[[srcWithoutAnimation]]"
-          style="width:100%;height:100%;"
-        />
-        <svg
-          id="svg"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 200 200"
-          width="30%"
-          height="30%"
-        >
-          <g opacity=".5">
-            <polygon
-              points="30,20 30,180 170,100"
-              fill="#000000"
-              stroke="#ffffff"
-              stroke-width="15px"
-            ></polygon>
-            <text x="50" y="115" fill="#ffffff" font-size="40px">GIF</text>
-          </g>
-        </svg>
+class A11yGifPlayer extends SchemaBehaviors(PolymerElement) {
+  constructor() {
+    super();
+    import("@polymer/iron-image/iron-image.js");
+  }
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: block;
+        }
+        :host #gifbutton > * {
+          position: relative;
+        }
+        :host #svg {
+          position: absolute;
+          top: 35%;
+          left: 35%;
+        }
+        :host #gifbutton:active,
+        :host #gifbutton:focus,
+        :host #gifbutton:hover {
+          cursor: pointer;
+          outline: 1px solid blue;
+        }
+        :host #preload {
+          display: none;
+        }
+      </style>
+      <div id="gifbutton" aria-role="button" aria-controls="gif" tabindex="0">
+        <div>
+          <img
+            id="gif"
+            alt\$="[[alt]]"
+            src\$="[[srcWithoutAnimation]]"
+            style="width:100%;height:100%;"
+          />
+          <svg
+            id="svg"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 200 200"
+            width="30%"
+            height="30%"
+          >
+            <g opacity=".5">
+              <polygon
+                points="30,20 30,180 170,100"
+                fill="#000000"
+                stroke="#ffffff"
+                stroke-width="15px"
+              ></polygon>
+              <text x="50" y="115" fill="#ffffff" font-size="40px">GIF</text>
+            </g>
+          </svg>
+        </div>
       </div>
-    </div>
-    <iron-image id="preload" src\$="[[src]]" hidden=""></iron-image>
-    <iron-a11y-keys
-      id="a11y"
-      keys="enter space"
-      on-keys-pressed="toggleAnimation"
-    ></iron-a11y-keys>
-  `,
-
-  is: "a11y-gif-player",
-  behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
-
-  listeners: {
-    tap: "toggleAnimation"
-  },
-
-  properties: {
-    /**
-     * Source of the animated gif
-     */
-    src: {
-      type: String,
-      value: null
-    },
-    /**
-     * Source of a version that is not animated
-     */
-    srcWithoutAnimation: {
-      type: String,
-      value: null
-    },
-    /**
-     * Alt text of the gif
-     */
-    alt: {
-      type: String,
-      value: null
+      <iron-image id="preload" src\$="[[src]]" hidden=""></iron-image>
+      <iron-a11y-keys
+        id="a11y"
+        keys="enter space"
+        on-keys-pressed="toggleAnimation"
+      ></iron-a11y-keys>
+    `;
+  }
+  static get tag() {
+    return "a11y-gif-player";
+  }
+  static get properties() {
+    let props = {
+      /**
+       * Source of the animated gif
+       */
+      src: {
+        type: String,
+        value: null
+      },
+      /**
+       * Source of a version that is not animated
+       */
+      srcWithoutAnimation: {
+        type: String,
+        value: null
+      },
+      /**
+       * Alt text of the gif
+       */
+      alt: {
+        type: String,
+        value: null
+      }
+    };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
     }
-  },
-
+    return props;
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, function() {
+      this.addEventListener("click", this.toggleAnimation.bind(this));
+      this.HAXWiring = new HAXWiring();
+      this.HAXWiring.setup(
+        A11yGifPlayer.haxProperties,
+        A11yGifPlayer.tag,
+        this
+      );
+    });
+  }
+  disconnectedCallback() {
+    this.removeEventListener("click", this.toggleAnimation.bind(this));
+    super.disconnectedCallback();
+  }
   /**
    * Ready life cycle
    */
-  ready: function() {
+  ready() {
+    super.ready();
     this.stop();
-    this.$.a11y.target = this.$.gifbutton;
-  },
-
+    this.shadowRoot.querySelector(
+      "#a11y"
+    ).target = this.shadowRoot.querySelector("#gifbutton");
+  }
   /**
    * plays the animation regarless of previous state
    */
-  play: function() {
+  play() {
     this.__stopped = true;
     this.toggleAnimation();
-  },
-
+  }
   /**
    * stops the animation regarless of previous state
    */
-  stop: function() {
+  stop() {
     this.__stopped = false;
     this.toggleAnimation();
-  },
-
+  }
   /**
    * toggles the animation based on current state
    */
-  toggleAnimation: function() {
+  toggleAnimation() {
     if (this.__stopped) {
       this.__stopped = false;
-      this.$.svg.style.visibility = "hidden";
+      this.shadowRoot.querySelector("#svg").style.visibility = "hidden";
       if (this.src != null) {
-        this.$.gif.src = this.src;
+        this.shadowRoot.querySelector("#gif").src = this.src;
       }
-      this.$.gif.alt = this.alt + " (Stop animation.)";
+      this.shadowRoot.querySelector("#gif").alt =
+        this.alt + " (Stop animation.)";
     } else {
       this.__stopped = true;
-      this.$.svg.style.visibility = "visible";
+      this.shadowRoot.querySelector("#svg").style.visibility = "visible";
       if (this.srcWithoutAnimation != null) {
-        this.$.gif.src = this.srcWithoutAnimation;
+        this.shadowRoot.querySelector("#gif").src = this.srcWithoutAnimation;
       }
-      this.$.gif.alt = this.alt + " (Play animation.)";
+      this.shadowRoot.querySelector("#gif").alt =
+        this.alt + " (Play animation.)";
     }
-  },
+  }
 
-  /**
-   * wire it for hax-body
-   */
-  attached: function() {
-    // Establish hax properties if they exist
-    let props = {
+  static get haxProperties() {
+    return {
       canScale: true,
       canPosition: true,
       canEditSource: false,
@@ -241,7 +257,7 @@ let A11yGifPlayer = Polymer({
         advanced: []
       }
     };
-    this.setHaxProperties(props);
   }
-});
+}
+window.customElements.define(A11yGifPlayer.tag, A11yGifPlayer);
 export { A11yGifPlayer };

@@ -7,7 +7,7 @@
  *
  * @demo demo/index.html
  */class ChemicalElementVisualisation extends PolymerElement{static get template(){return html`
-      <custom-style>
+      
         <style>
           .alkali-metal {
             fill: var(--alkali-metal-primary-color, #ff8a65);
@@ -66,7 +66,7 @@
             fill: var(--f-group-electron-color, #e91e63);
           }
         </style>
-      </custom-style>
+      
       <svg id="element" version="1.1" viewBox="0 0 500 500">
         <title>An animation of the chemical element [[_element.name]].</title>
         <circle

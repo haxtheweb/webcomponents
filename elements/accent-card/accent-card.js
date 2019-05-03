@@ -4,7 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 
 /**
@@ -40,7 +40,7 @@ class AccentCard extends SimpleColors {
   // render function
   static get template() {
     return html`
-      <style is="custom-style" include="simple-colors">
+      <style include="simple-colors">
         :host {
           display: block;
           border-radius: 2px;

@@ -2,22 +2,23 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
-import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
-`lrnsys-button`
-`A simple button for use in system`
-
-* @demo demo/index.html
-*/
-let LrnsysButton = Polymer({
-  _template: html`
-    <custom-style>
-      <style include="materializecss-styles-colors">
+ * `lrnsys-button`
+ * `A simple button for use in system`
+ * @demo demo/index.html
+ */
+class LrnsysButton extends PolymerElement {
+  constructor() {
+    super();
+    import("@polymer/paper-button/paper-button.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/paper-tooltip/paper-tooltip.js");
+  }
+  static get template() {
+    return html`
+      <style>
         :host {
           display: block;
           @apply --paper-font-common-base;
@@ -73,189 +74,218 @@ let LrnsysButton = Polymer({
           padding-left: 0 !important;
         }
       </style>
-    </custom-style>
-    <a
-      tabindex="-1"
-      id="lrnsys-button-link"
-      href\$="[[showHref]]"
-      data-prefetch-hover\$="[[prefetch]]"
-      target\$="[[target]]"
-    >
-      <paper-button
-        id="button"
-        title="[[alt]]"
-        raised="[[raised]]"
-        class\$="[[buttonClass]] [[color]] [[textColor]]"
-        disabled\$="[[disabled]]"
+      <a
+        tabindex="-1"
+        id="lrnsys-button-link"
+        href\$="[[showHref]]"
+        data-prefetch-hover\$="[[prefetch]]"
+        target\$="[[target]]"
       >
-        <div class\$="inner [[innerClass]]">
-          <iron-icon
-            icon="[[icon]]"
-            id="icon"
-            class\$="[[iconClass]]"
-            hidden\$="[[!icon]]"
-          ></iron-icon>
-          <span class="label" hidden\$="[[!label]]"> [[label]] </span>
-          <slot></slot>
-        </div>
-      </paper-button>
-    </a>
-    <paper-tooltip
-      for="lrnsys-button-link"
-      animation-delay="0"
-      hidden\$="[[!alt]]"
-      >[[alt]]</paper-tooltip
-    >
-  `,
+        <paper-button
+          id="button"
+          title="[[alt]]"
+          raised="[[raised]]"
+          style$="background-color:[[hexColor]];color:[[textHexColor]];"
+          class\$="[[buttonClass]]"
+          disabled\$="[[disabled]]"
+        >
+          <div class\$="inner [[innerClass]]">
+            <iron-icon
+              icon="[[icon]]"
+              id="icon"
+              class\$="[[iconClass]]"
+              hidden\$="[[!icon]]"
+            ></iron-icon>
+            <span class="label" hidden\$="[[!label]]"> [[label]] </span>
+            <slot></slot>
+          </div>
+        </paper-button>
+      </a>
+      <paper-tooltip
+        for="lrnsys-button-link"
+        animation-delay="0"
+        hidden\$="[[!alt]]"
+        >[[alt]]</paper-tooltip
+      >
+    `;
+  }
 
-  is: "lrnsys-button",
+  static get tag() {
+    return "lrnsys-button";
+  }
 
-  properties: {
-    /**
-     * Standard href pass down
-     */
-    href: {
-      type: String,
-      value: "#",
-      reflectToAttribute: true
-    },
-    showHref: {
-      type: String,
-      value: false,
-      reflectToAttribute: true,
-      computed: "_getShowHref(href,disabled)"
-    },
-    /**
-     * If the button should be visually lifted off the UI.
-     */
-    raised: {
-      type: Boolean,
-      reflectToAttribute: true
-    },
-    /**
-     * Label to place in the text area
-     */
-    label: {
-      type: String,
-      value: ""
-    },
-    /**
-     * Support for target to open in new windows.
-     */
-    target: {
-      type: String,
-      value: ""
-    },
-    /**
-     * iron-icon to use (with iconset if needed)
-     */
-    icon: {
-      type: String,
-      value: false
-    },
-    /**
-     * Classes to add / subtract based on the item being hovered.
-     */
-    hoverClass: {
-      type: String
-    },
-    /**
-     * Button class.
-     */
-    buttonClass: {
-      type: String
-    },
-    /**
-     * Icon class in the event you want it to look different from the text.
-     */
-    iconClass: {
-      type: String
-    },
-    /**
-     * Inner container classes.
-     */
-    innerClass: {
-      type: String
-    },
-    /**
-     * materializeCSS color class
-     */
-    color: {
-      type: String
-    },
-    /**
-     * materializeCSS color class for text
-     */
-    textColor: {
-      type: String
-    },
-    /**
-     * Allow for prefetch data on hover
-     */
-    prefetch: {
-      type: String
-    },
-    /**
-     * Alt via tooltip.
-     */
-    alt: {
-      type: String
-    },
-    /**
-     * Disabled state.
-     */
-    disabled: {
-      type: Boolean,
-      value: false
-    },
-    /**
-     * Tracks if focus state is applied
-     */
-    focusState: {
-      type: Boolean,
-      value: false
+  static get properties() {
+    return {
+      /**
+       * Standard href pass down
+       */
+      href: {
+        type: String,
+        value: "#",
+        reflectToAttribute: true
+      },
+      showHref: {
+        type: String,
+        value: false,
+        reflectToAttribute: true,
+        computed: "_getShowHref(href,disabled)"
+      },
+      /**
+       * If the button should be visually lifted off the UI.
+       */
+      raised: {
+        type: Boolean,
+        reflectToAttribute: true
+      },
+      /**
+       * Label to place in the text area
+       */
+      label: {
+        type: String,
+        value: ""
+      },
+      /**
+       * Support for target to open in new windows.
+       */
+      target: {
+        type: String,
+        value: ""
+      },
+      /**
+       * iron-icon to use (with iconset if needed)
+       */
+      icon: {
+        type: String,
+        value: false
+      },
+      /**
+       * Classes to add / subtract based on the item being hovered.
+       */
+      hoverClass: {
+        type: String
+      },
+      /**
+       * Button class.
+       */
+      buttonClass: {
+        type: String
+      },
+      /**
+       * Icon class in the event you want it to look different from the text.
+       */
+      iconClass: {
+        type: String
+      },
+      /**
+       * Inner container classes.
+       */
+      innerClass: {
+        type: String
+      },
+      /**
+       * Class for the color
+       */
+      hexColor: {
+        type: String,
+        computed: "_getHexColor(color)"
+      },
+      /**
+       * Color class work to apply
+       */
+      color: {
+        type: String,
+        value: "blue",
+        reflectToAttribute: true
+      },
+      /**
+       * Class for the color
+       */
+      textHexColor: {
+        type: String,
+        computed: "_getHexColor(textColor)"
+      },
+      /**
+       * materializeCSS color class for text
+       */
+      textColor: {
+        type: String
+      },
+      /**
+       * Allow for prefetch data on hover
+       */
+      prefetch: {
+        type: String
+      },
+      /**
+       * Alt via tooltip.
+       */
+      alt: {
+        type: String
+      },
+      /**
+       * Disabled state.
+       */
+      disabled: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Tracks if focus state is applied
+       */
+      focusState: {
+        type: Boolean,
+        value: false
+      }
+    };
+  }
+  _getHexColor(color) {
+    let name = color.replace("-text", "");
+    let tmp = new SimpleColors();
+    if (tmp.colors[name]) {
+      return tmp.colors[name][6];
     }
-  },
+    return "#000000";
+  }
   /**
    * attached life cycle
    */
-  attached: function() {
+  connectedCallback() {
+    super.connectedCallback();
     this.addEventListener("mousedown", this.tapEventOn.bind(this));
     this.addEventListener("mouseover", this.tapEventOn.bind(this));
     this.addEventListener("mouseout", this.tapEventOff.bind(this));
-    this.$.button.addEventListener(
-      "focused-changed",
-      this.focusToggle.bind(this)
-    );
-  },
+    this.shadowRoot
+      .querySelector("#button")
+      .addEventListener("focused-changed", this.focusToggle.bind(this));
+  }
   /**
    * detached event listener
    */
-  detached: function() {
-    this.addEventListener("mousedown", this.tapEventOn.bind(this));
-    this.addEventListener("mouseover", this.tapEventOn.bind(this));
-    this.addEventListener("mouseout", this.tapEventOff.bind(this));
-    this.$.button.addEventListener(
-      "focused-changed",
-      this.focusToggle.bind(this)
-    );
-  },
+  disconnectedCallback() {
+    this.removeEventListener("mousedown", this.tapEventOn.bind(this));
+    this.removeEventListener("mouseover", this.tapEventOn.bind(this));
+    this.removeEventListener("mouseout", this.tapEventOff.bind(this));
+    this.shadowRoot
+      .querySelector("#button")
+      .removeEventListener("focused-changed", this.focusToggle.bind(this));
+    super.disconnectedCallback();
+  }
 
   /**
    * Generate the pass down href if it exists. This helps
    * ensure that if a button is disabled it won't do anything
    * even if it has a resource reference.
    */
-  _getShowHref: function(href, disabled) {
+  _getShowHref(href, disabled) {
     if (href && !disabled) {
       return href;
     }
-  },
+  }
 
   /**
    * Class processing on un-tap / hover
    */
-  tapEventOn: function(e) {
+  tapEventOn(e) {
     let root = this;
     if (typeof root.hoverClass !== typeof undefined && !root.disabled) {
       // break class into array
@@ -263,19 +293,19 @@ let LrnsysButton = Polymer({
       // run through each and add or remove classes
       classes.forEach(function(item, index) {
         if (item != "") {
-          root.$.button.classList.add(item);
+          root.shadowRoot.querySelector("#button").classList.add(item);
           if (item.indexOf("-") != -1) {
-            root.$.icon.classList.add(item);
+            root.shadowRoot.querySelector("#icon").classList.add(item);
           }
         }
       });
     }
-  },
+  }
 
   /**
    * Undo class processing on un-tap / hover
    */
-  tapEventOff: function(e) {
+  tapEventOff(e) {
     let root = this;
     if (typeof root.hoverClass !== typeof undefined && !root.disabled) {
       // break class into array
@@ -283,19 +313,18 @@ let LrnsysButton = Polymer({
       // run through each and add or remove classes
       classes.forEach(function(item, index) {
         if (item != "") {
-          root.$.button.classList.remove(item);
+          root.shadowRoot.querySelector("#button").classList.remove(item);
           if (item.indexOf("-") != -1) {
-            root.$.icon.classList.remove(item);
+            root.shadowRoot.querySelector("#icon").classList.remove(item);
           }
         }
       });
     }
-  },
-
+  }
   /**
    * Handle toggle for mouse class and manage classList array for paper-button.
    */
-  focusToggle: function(e) {
+  focusToggle(e) {
     // weird but reality... focus event is the button inside of here
     if (typeof this.hoverClass !== typeof undefined && !this.disabled) {
       // break class into array
@@ -304,14 +333,14 @@ let LrnsysButton = Polymer({
       classes.forEach((item, index) => {
         if (item != "") {
           if (!this.focusState) {
-            this.$.button.classList.add(item);
+            this.shadowRoot.querySelector("#button").classList.add(item);
             if (item.indexOf("-") != -1) {
-              this.$.icon.classList.add(item);
+              this.shadowRoot.querySelector("#icon").classList.add(item);
             }
           } else {
-            this.$.button.classList.remove(item);
+            this.shadowRoot.querySelector("#button").classList.remove(item);
             if (item.indexOf("-") != -1) {
-              this.$.icon.classList.remove(item);
+              this.shadowRoot.querySelector("#icon").classList.remove(item);
             }
           }
         }
@@ -319,5 +348,6 @@ let LrnsysButton = Polymer({
     }
     this.focusState = !this.focusState;
   }
-});
+}
+window.customElements.define(LrnsysButton.tag, LrnsysButton);
 export { LrnsysButton };

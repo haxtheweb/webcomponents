@@ -1,10 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import "@polymer/iron-list/iron-list.js";
-import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/hax-body/lib/hax-app-picker-item.js";
 import "./hax-shared-styles.js";
 /**
  `hax-app-picker`
@@ -21,6 +18,9 @@ import "./hax-shared-styles.js";
 class HaxAppPicker extends PolymerElement {
   constructor() {
     super();
+    import("@polymer/iron-list/iron-list.js");
+    import("@polymer/paper-button/paper-button.js");
+    import("@lrnwebcomponents/hax-body/lib/hax-app-picker-item.js");
     import("@polymer/iron-icon/iron-icon.js");
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/neon-animation/neon-animation.js");

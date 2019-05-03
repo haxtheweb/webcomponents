@@ -1,62 +1,63 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "./map-styles.js";
-var $_documentContainer = document.createElement("div");
-$_documentContainer.setAttribute("style", "display: none;");
-
-$_documentContainer.innerHTML = `<dom-module id="map-area">
-<style include="map-styles">
- :host {
-   display: none;
- }
-</style>
-
-</dom-module>`;
-
-document.head.appendChild($_documentContainer);
 /* styles scoped to inside a custom element must be in a style module */
-Polymer({
-  is: "map-area",
-  extends: "area",
-  properties: {
-    alt: {
-      type: String,
-      reflectToAttribute: true
-    },
-    coords: {
-      type: String,
-      reflectToAttribute: true
-    },
-    href: {
-      type: String,
-      reflectToAttribute: true
-    },
-    shape: {
-      type: String,
-      /* to HTML5's default, circle, poly and rect, add marker, line */
-      value: "default",
-      reflectToAttribute: true
-    },
-    rel: {
-      type: String,
-      reflectToAttribute: true
-    },
-    type: {
-      type: String,
-      reflectToAttribute: true
-    },
-    target: {
-      type: String,
-      reflectToAttribute: true
-    }
-  },
-  attached: function() {
+class MapArea extends PolymerElement {
+  static get template() {
+    return html`
+      <style include="map-styles">
+        :host {
+          display: none;
+        }
+      </style>
+    `;
+  }
+  static get tag() {
+    return "map-area";
+  }
+  static get properties() {
+    return {
+      alt: {
+        type: String,
+        reflectToAttribute: true
+      },
+      coords: {
+        type: String,
+        reflectToAttribute: true
+      },
+      href: {
+        type: String,
+        reflectToAttribute: true
+      },
+      shape: {
+        type: String,
+        /* to HTML5's default, circle, poly and rect, add marker, line */
+        value: "default",
+        reflectToAttribute: true
+      },
+      rel: {
+        type: String,
+        reflectToAttribute: true
+      },
+      type: {
+        type: String,
+        reflectToAttribute: true
+      },
+      target: {
+        type: String,
+        reflectToAttribute: true
+      }
+    };
+  }
+  connectedCallback() {
+    super.connectedCallback();
     // if the map has been attached, set this layer up wrt Leaflet map
     if (this.parentElement._map) {
       this._attachedToMap();
     }
-  },
-  _attachedToMap: function() {
+  }
+  _attachedToMap() {
     // need the map to convert container points to LatLngs
     this._map = this.parentElement._map;
     var map = this.parentElement._map;
@@ -140,12 +141,13 @@ Polymer({
         );
       }
     }
-  },
-  detached: function() {
+  }
+  disconnectedCallback() {
+    super.disconnectedCallback();
     this._map.removeLayer(this._feature);
     delete this._feature;
-  },
-  _coordsToArray: function(containerPoints) {
+  }
+  _coordsToArray(containerPoints) {
     // returns an array of arrays of coordinate pairs coordsToArray("1,2,3,4") -> [[1,2],[3,4]]
     for (
       var i = 1, points = [], coords = containerPoints.split(",");
@@ -155,8 +157,8 @@ Polymer({
       points.push([parseInt(coords[i - 1]), parseInt(coords[i])]);
     }
     return points;
-  },
-  _pointsToLatLngs: function(points) {
+  }
+  _pointsToLatLngs(points) {
     // points should be an array of nested container coordinates [[x1,y1],[x2,y2](,[xN,yN])]
     var latLngArray = [];
     if (this._map) {
@@ -165,8 +167,8 @@ Polymer({
       }
     }
     return latLngArray;
-  },
-  _styleToPathOptions: function(style) {
+  }
+  _styleToPathOptions(style) {
     var options = {};
     if (style.stroke !== "none") {
       options["stroke"] = true;
@@ -189,4 +191,6 @@ Polymer({
     }
     return options;
   }
-});
+}
+window.customElements.define(MapArea.tag, MapArea);
+export { MapArea };

@@ -1,9 +1,14 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { IronA11yKeysBehavior } from "@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js";
 
-Polymer({
-  is: "paper-search-bar",
-
+class PaperSearchBar extends mixinBehaviors(
+  [IronA11yKeysBehavior],
+  PolymerElement
+) {
+  static get tag() {
+    return "paper-search-bar";
+  }
   /**
    * Fired when the user requests to open the filtering dialog
    *
@@ -20,72 +25,105 @@ Polymer({
    * @event paper-search-clear
    */
 
-  properties: {
-    /**
-     * Text for which the user is searching
-     */
-    query: {
-      type: String,
-      notify: true,
-      value: ""
-    },
-    /**
-     * Whether to hide the Filter button. Set attribute "hide-filter-button" to do so.
-     */
-    hideFilterButton: {
-      type: Boolean,
-      value: false
-    },
-    /**
-     * Whether to disable the Filter button. Set attribute "disable-filter-button" to do so.
-     */
-    disableFilterButton: {
-      type: Boolean,
-      value: false
-    },
-    /**
-     * Number of filters the user has been selected (shown in the badge) (optional)
-     */
-    nrSelectedFilters: {
-      type: Number,
-      value: 0
-    },
-    /**
-     * Icon shown in the search background
-     */
-    icon: {
-      type: String,
-      value: "search"
-    },
-    /**
-     * Text shown in the search box if the user didn't enter any query
-     */
-    placeholder: {
-      type: String,
-      value: "Search"
-    }
-  },
+  static get properties() {
+    return {
+      /**
+       * Text for which the user is searching
+       */
+      query: {
+        type: String,
+        notify: true,
+        value: ""
+      },
+      /**
+       * Whether to hide the Filter button. Set attribute "hide-filter-button" to do so.
+       */
+      hideFilterButton: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Whether to disable the Filter button. Set attribute "disable-filter-button" to do so.
+       */
+      disableFilterButton: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Number of filters the user has been selected (shown in the badge) (optional)
+       */
+      nrSelectedFilters: {
+        type: Number,
+        value: 0
+      },
+      /**
+       * Icon shown in the search background
+       */
+      icon: {
+        type: String,
+        value: "search"
+      },
+      /**
+       * Text shown in the search box if the user didn't enter any query
+       */
+      placeholder: {
+        type: String,
+        value: "Search"
+      }
+    };
+  }
 
-  behaviors: [IronA11yKeysBehavior],
-
-  keyBindings: {
-    enter: "_search"
-  },
-
-  focus: function() {
+  focus() {
     this.$.input.focus();
-  },
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, function() {
+      this.addEventListener("keypress", this._search.bind(this));
+    });
+  }
 
+  disconnectedCallback() {
+    this.removeEventListener("keypress", this._search.bind(this));
+    super.disconnectedCallback();
+  }
   // Private methods
-  _filter: function(e) {
-    this.fire("paper-search-filter");
-  },
-  _clear: function() {
+  _filter(e) {
+    this.dispatchEvent(
+      new CustomEvent("paper-search-filter", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: true
+      })
+    );
+  }
+  _clear() {
     this.query = "";
     this.$.input.focus();
-    this.fire("paper-search-clear");
-  },
-  _search: function() {
-    this.fire("paper-search-search");
+    this.dispatchEvent(
+      new CustomEvent("paper-search-clear", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: true
+      })
+    );
   }
-});
+  _search(e) {
+    if (e.keyCode == 13) {
+      //Enter
+      this.dispatchEvent(
+        new CustomEvent("paper-search-search", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: true
+        })
+      );
+      return false;
+    }
+  }
+}
+window.customElements.define(PaperSearchBar.tag, PaperSearchBar);
+export { PaperSearchBar };

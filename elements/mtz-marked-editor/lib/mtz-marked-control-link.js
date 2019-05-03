@@ -1,40 +1,46 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
-import "./mtz-marked-control-line-behavior.js";
-Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: inline-block;
-      }
-    </style>
+import { mtzMarkedControlBehavior } from "./mtz-marked-control-behavior.js";
+class MtzMarkedControlLink extends mtzMarkedControlBehavior(PolymerElement) {
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: inline-block;
+        }
+      </style>
 
-    <paper-icon-button
-      icon="[[icon]]"
-      noink="[[noink]]"
-      on-click="_handleCommand"
-      alt="[[title]]"
-    ></paper-icon-button>
+      <paper-icon-button
+        icon="[[icon]]"
+        noink="[[noink]]"
+        on-click="_handleCommand"
+        alt="[[title]]"
+      ></paper-icon-button>
 
-    <iron-a11y-keys
-      keys="[[keys]]"
-      on-keys-pressed="_handleCommand"
-      target="[[__editor]]"
-    ></iron-a11y-keys>
-  `,
+      <iron-a11y-keys
+        keys="[[keys]]"
+        on-keys-pressed="_handleCommand"
+        target="[[__editor]]"
+      ></iron-a11y-keys>
+    `;
+  }
+  static get tag() {
+    return "mtz-marked-control-link";
+  }
 
-  is: "mtz-marked-control-link",
-
-  behaviors: [mtz.MarkedControlBehavior],
-
-  properties: {
-    title: String,
-    icon: String,
-    keys: String,
-    noink: Boolean // Pass-through
-  },
-
+  static get properties() {
+    let props = {
+      title: String,
+      icon: String,
+      keys: String,
+      noink: Boolean // Pass-through
+    };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
+  }
   /**
    * Toggles a syntax prefix at the start of selected lines
    *
@@ -87,7 +93,7 @@ Polymer({
         selection.end + (newLink.length - selection.length)
       );
     }
-  },
+  }
 
   /**
    * Determines if the selection is a link, may override for more complex checks
@@ -99,4 +105,6 @@ Polymer({
   _isLink(selection) {
     return selection.text.startsWith("https://");
   }
-});
+}
+window.customElements.define(MtzMarkedControlLink.tag, MtzMarkedControlLink);
+export { MtzMarkedControlLink };

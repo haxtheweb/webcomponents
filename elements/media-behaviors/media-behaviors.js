@@ -19,7 +19,7 @@ window.MediaBehaviors.Video = {
   /**
    * Compute iframe or video tag for implementation.
    */
-  _sourceIsIframe: function(source) {
+  _sourceIsIframe(source) {
     let type = this.getVideoType(source);
     if (type == "local") {
       return false;
@@ -30,7 +30,7 @@ window.MediaBehaviors.Video = {
   /**
    * Check source of the video, potentially correcting bad links.
    */
-  cleanVideoSource: function(input, type) {
+  cleanVideoSource(input, type) {
     if (type != "local") {
       // strip off the ? modifier for youtube/vimeo so we can build ourselves
       var tmp = input.split("?");
@@ -93,7 +93,7 @@ window.MediaBehaviors.Video = {
   /**
    * Figure out the type of video based on source.
    */
-  getVideoType: function(source) {
+  getVideoType(source) {
     let localFormats = [
         "aac",
         "flac",

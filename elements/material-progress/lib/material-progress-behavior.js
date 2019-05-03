@@ -38,7 +38,7 @@ window.MaterialProgressBehaviorImpl = {
      */
     bars: {
       type: Array,
-      value: function() {
+      value() {
         return [];
       },
       notify: true,
@@ -62,7 +62,7 @@ window.MaterialProgressBehaviorImpl = {
      */
     _legendItems: {
       type: Array,
-      value: function() {
+      value() {
         return [];
       },
       readOnly: true
@@ -85,7 +85,7 @@ window.MaterialProgressBehaviorImpl = {
   /**
    * Refresh the element.
    */
-  refresh: function() {
+  refresh() {
     if (this._attached) {
       // Reading and computing fundamental data
       this._computeSumAndBars();
@@ -154,7 +154,9 @@ window.MaterialProgressBehaviorImpl = {
       this._initialized = foundOneValue;
     }
   },
-  ready: function() {
+  ready() {
+    super.ready();
+
     // Setting up the mutation observer
     this._mutationOptions = {
       childList: true,
@@ -176,14 +178,15 @@ window.MaterialProgressBehaviorImpl = {
       );
     };
   },
-  attached: function() {
+  connectedCallback() {
+    super.connectedCallback();
     this._attached = true;
     this._refresh();
   },
-  _refresh: function() {
+  _refresh() {
     this.debounce("refresh", this.refresh, 10);
   },
-  _computeSumAndBars: function() {
+  _computeSumAndBars() {
     var sum = 0,
       value = 0,
       withValueCount = 0,
@@ -211,7 +214,7 @@ window.MaterialProgressBehaviorImpl = {
     this._barWithValueCount = withValueCount;
     return sum;
   },
-  _getBarMeta: function(bar) {
+  _getBarMeta(bar) {
     var meta = { value: 0, legend: undefined },
       val;
     if (bar && bar.getAttribute) {
@@ -222,11 +225,11 @@ window.MaterialProgressBehaviorImpl = {
     }
     return meta;
   },
-  _getWidthForBar: function(barValue, barValuesSum, maxBarValue, barHeight) {
+  _getWidthForBar(barValue, barValuesSum, maxBarValue, barHeight) {
     // To implement
     return "0px";
   },
-  _playFirstAnimation: function(node, index, animationDelay) {
+  _playFirstAnimation(node, index, animationDelay) {
     this.toggleClass("entry", true, node);
     (node, index, animationDelay) => {
       async.microTask.run(() => {
@@ -234,7 +237,7 @@ window.MaterialProgressBehaviorImpl = {
       }, 500 + animationDelay * index);
     };
   },
-  _computeLegendNeeded: function(legendItems) {
+  _computeLegendNeeded(legendItems) {
     return legendItems && legendItems.length > 0;
   }
 };

@@ -1,40 +1,47 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "./elmsmedia-dashboard-toolbar-filter.js";
-let ElmsmediaDashboardToolbarFilters = Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: flex;
-        align-items: center;
+class ElmsmediaDashboardToolbarFilters extends PolymerElement {
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: flex;
+          align-items: center;
+        }
+        elmsmedia-dashboard-toolbar-filter {
+          margin-right: 4.8px;
+        }
+      </style>
+
+      <template is="dom-repeat" items="[[_filtersArray]]" as="item">
+        <elmsmedia-dashboard-toolbar-filter
+          path="[[item.path]]"
+          prop-value="[[item.propValue]]"
+          title="[[item.title]]"
+        ></elmsmedia-dashboard-toolbar-filter>
+      </template>
+    `;
+  }
+
+  static get tag() {
+    return "elmsmedia-dashboard-toolbar-filters";
+  }
+
+  static get properties() {
+    return {
+      filters: {
+        type: Object,
+        value: {}
+      },
+      _filtersArray: {
+        type: Array,
+        computed: "_filtersArrayCompute(filters, filters.*)"
       }
-      elmsmedia-dashboard-toolbar-filter {
-        margin-right: 4.8px;
-      }
-    </style>
+    };
+  }
 
-    <template is="dom-repeat" items="[[_filtersArray]]" as="item">
-      <elmsmedia-dashboard-toolbar-filter
-        path="[[item.path]]"
-        prop-value="[[item.propValue]]"
-        title="[[item.title]]"
-      ></elmsmedia-dashboard-toolbar-filter>
-    </template>
-  `,
-
-  is: "elmsmedia-dashboard-toolbar-filters",
-
-  properties: {
-    filters: {
-      type: Object,
-      value: {}
-    },
-    _filtersArray: {
-      type: Array,
-      computed: "_filtersArrayCompute(filters, filters.*)"
-    }
-  },
-
-  _filtersArrayCompute: function(filters) {
+  _filtersArrayCompute(filters) {
     let filtersArray = [];
     for (f in filters) {
       const prop = f;
@@ -53,5 +60,9 @@ let ElmsmediaDashboardToolbarFilters = Polymer({
     }
     return filtersArray;
   }
-});
+}
+window.customElements.define(
+  ElmsmediaDashboardToolbarFilters.tag,
+  ElmsmediaDashboardToolbarFilters
+);
 export { ElmsmediaDashboardToolbarFilters };

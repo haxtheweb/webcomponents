@@ -1,7 +1,8 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import * as async from "@polymer/polymer/lib/utils/async.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
 import { AppLocalizeBehavior } from "@polymer/app-localize-behavior/app-localize-behavior.js";
+import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/iron-icon/iron-icon.js";
@@ -20,345 +21,357 @@ Please see the `eco-json-schema-object` documentation for further information.
 @element eco-json-schema-file
 * @demo demo/index.html
 */
-Polymer({
-  is: "eco-json-schema-file",
-  _template: html`
-    <style is="custom-style" include="iron-flex iron-flex-alignment">
-      paper-input {
-        padding: 2px;
-        --paper-input-container-label: {
-          white-space: normal;
-          position: static;
-          font-size: 22px;
-          color: #212121;
+
+class EcoJsonSchemaFile extends mixinBehaviors(
+  [AppLocalizeBehavior],
+  PolymerElement
+) {
+  static get tag() {
+    return "eco-json-schema-file";
+  }
+  static get template() {
+    return html`
+      <style is="custom-style" include="iron-flex iron-flex-alignment">
+        paper-input {
+          padding: 2px;
+          --paper-input-container-label: {
+            white-space: normal;
+            position: static;
+            font-size: 22px;
+            color: #212121;
+          }
         }
-      }
 
-      :host {
-        display: inline-block;
-      }
+        :host {
+          display: inline-block;
+        }
 
-      .enabled {
-        border: 1px dashed #555;
-        @apply --file-upload-upload-border-enabled;
-      }
+        .enabled {
+          border: 1px dashed #555;
+          @apply --file-upload-upload-border-enabled;
+        }
 
-      .hover {
-        opacity: 0.7;
-        border: 1px dashed #111;
-        @apply --file-upload-upload-border-hover;
-      }
+        .hover {
+          opacity: 0.7;
+          border: 1px dashed #111;
+          @apply --file-upload-upload-border-hover;
+        }
 
-      #UploadBorder {
-        vertical-align: middle;
-        color: #555;
-        padding: 20px;
-        max-height: 300px;
-        overflow-y: auto;
-        display: inline-block;
-        @apply --file-upload-upload-border;
-      }
+        #UploadBorder {
+          vertical-align: middle;
+          color: #555;
+          padding: 20px;
+          max-height: 300px;
+          overflow-y: auto;
+          display: inline-block;
+          @apply --file-upload-upload-border;
+        }
 
-      #dropArea {
-        text-align: center;
-        @apply --file-upload-drop-area;
-      }
+        #dropArea {
+          text-align: center;
+          @apply --file-upload-drop-area;
+        }
 
-      paper-button#button {
-        margin-bottom: 20px;
-        @apply --file-upload-button;
-      }
+        paper-button#button {
+          margin-bottom: 20px;
+          @apply --file-upload-button;
+        }
 
-      .file {
-        padding: 10px 0px;
-        @apply --file-upload-file;
-      }
+        .file {
+          padding: 10px 0px;
+          @apply --file-upload-file;
+        }
 
-      .commands {
-        float: right;
-        @apply --file-upload-commands;
-      }
+        .commands {
+          float: right;
+          @apply --file-upload-commands;
+        }
 
-      .commands iron-icon:not([icon="check-circle"]) {
-        cursor: pointer;
-        opacity: 0.9;
-        @apply --file-upload-commands-faded;
-      }
+        .commands iron-icon:not([icon="check-circle"]) {
+          cursor: pointer;
+          opacity: 0.9;
+          @apply --file-upload-commands-faded;
+        }
 
-      .commands iron-icon:hover {
-        opacity: 1;
-        @apply --file-upload-commands-hovered;
-      }
+        .commands iron-icon:hover {
+          opacity: 1;
+          @apply --file-upload-commands-hovered;
+        }
 
-      [hidden] {
-        display: none;
-      }
+        [hidden] {
+          display: none;
+        }
 
-      .error {
-        color: #f40303;
-        font-size: 11px;
-        margin-top: 2px;
-        @apply --file-upload-error;
-      }
+        .error {
+          color: #f40303;
+          font-size: 11px;
+          margin-top: 2px;
+          @apply --file-upload-error;
+        }
 
-      .progress-bar {
-        margin-top: 2px;
-      }
+        .progress-bar {
+          margin-top: 2px;
+        }
 
-      paper-progress {
-        --paper-progress-active-color: #03a9f4;
-      }
+        paper-progress {
+          --paper-progress-active-color: #03a9f4;
+        }
 
-      paper-progress[error] {
-        --paper-progress-active-color: #f40303;
-      }
-    </style>
+        paper-progress[error] {
+          --paper-progress-active-color: #f40303;
+        }
+      </style>
 
-    <div class="layout horizontal nowrap">
-      <div>
-        <paper-button
-          id="button"
-          on-click="_fileClick"
-          alt="{{paperButtonAlt}}"
-          raised=""
-        >
-          <iron-icon icon="editor:attach-file"></iron-icon
-          >{{paperButtonTitle}}</paper-button
-        >
-        <div id="UploadBorder">
-          <div id="dropArea" hidden\$="{{!_shownDropText}}">{{dropText}}</div>
-          <template is="dom-repeat" items="{{files}}">
-            <div class="file">
-              <div class="name">
-                <span>{{item.name}}</span>
-                <div class="commands">
-                  <iron-icon
-                    icon="autorenew"
-                    title="{{retryText}}"
-                    on-click="_retryUpload"
-                    hidden\$="{{!item.error}}"
-                  ></iron-icon>
-                  <iron-icon
-                    icon="cancel"
-                    title="{{removeText}}"
-                    on-click="_cancelUpload"
-                    hidden\$="{{item.complete}}"
-                  ></iron-icon>
-                  <iron-icon
-                    icon="check-circle"
-                    title="{{successText}}"
-                    hidden\$="{{!item.complete}}"
-                  ></iron-icon>
+      <div class="layout horizontal nowrap">
+        <div>
+          <paper-button
+            id="button"
+            on-click="_fileClick"
+            alt="{{paperButtonAlt}}"
+            raised=""
+          >
+            <iron-icon icon="editor:attach-file"></iron-icon
+            >{{paperButtonTitle}}</paper-button
+          >
+          <div id="UploadBorder">
+            <div id="dropArea" hidden\$="{{!_shownDropText}}">{{dropText}}</div>
+            <template is="dom-repeat" items="{{files}}">
+              <div class="file">
+                <div class="name">
+                  <span>{{item.name}}</span>
+                  <div class="commands">
+                    <iron-icon
+                      icon="autorenew"
+                      title="{{retryText}}"
+                      on-click="_retryUpload"
+                      hidden\$="{{!item.error}}"
+                    ></iron-icon>
+                    <iron-icon
+                      icon="cancel"
+                      title="{{removeText}}"
+                      on-click="_cancelUpload"
+                      hidden\$="{{item.complete}}"
+                    ></iron-icon>
+                    <iron-icon
+                      icon="check-circle"
+                      title="{{successText}}"
+                      hidden\$="{{!item.complete}}"
+                    ></iron-icon>
+                  </div>
+                </div>
+                <div class="error" hidden\$="{{!item.error}}">
+                  {{errorText}}
                 </div>
               </div>
-              <div class="error" hidden\$="{{!item.error}}">{{errorText}}</div>
-            </div>
-          </template>
+            </template>
+          </div>
         </div>
+        <input
+          type="file"
+          id="fileInput"
+          on-change="_fileChange"
+          hidden=""
+          multiple="{{multi}}"
+          accept="{{accept}}"
+        />
       </div>
-      <input
-        type="file"
-        id="fileInput"
-        on-change="_fileChange"
-        hidden=""
-        multiple="{{multi}}"
-        accept="{{accept}}"
-      />
-    </div>
-  `,
-  behaviors: [AppLocalizeBehavior],
-
-  properties: {
-    language: {
-      value: "en",
-      notify: true
-    },
-    resources: {
-      value: function() {
-        return {};
+    `;
+  }
+  static get properties() {
+    return {
+      language: {
+        value: "en",
+        notify: true
       },
-      notify: true
-    },
-    schema: {
-      type: Object,
-      observer: "_schemaChanged"
-    },
-    value: {
-      type: Object,
-      notify: true,
-      value: function() {
-        return {};
+      resources: {
+        value() {
+          return {};
+        },
+        notify: true
       },
-      observer: "_valueChanged"
-    },
-    /**
-    error: {
-      type: String,
-      observer: '_errorChanged',
-      value: null
-    },
-    */
+      schema: {
+        type: Object,
+        observer: "_schemaChanged"
+      },
+      value: {
+        type: Object,
+        notify: true,
+        value() {
+          return {};
+        },
+        observer: "_valueChanged"
+      },
+      /**
+      error: {
+        type: String,
+        observer: '_errorChanged',
+        value: null
+      },
+      */
 
-    /**
-     * `target` is the target url to upload the files to.
-     * Additionally by adding '<name>' in your url, it will be replaced by
-     * the file name.
-     */
-    target: {
-      type: String,
-      value: ""
-    },
+      /**
+       * `target` is the target url to upload the files to.
+       * Additionally by adding '<name>' in your url, it will be replaced by
+       * the file name.
+       */
+      target: {
+        type: String,
+        value: ""
+      },
 
-    /**
-     * `accept` is the set of comma separated file extensions or mime types
-     * to filter as accepted.
-     */
-    accept: {
-      type: String,
-      value: ""
-    },
+      /**
+       * `accept` is the set of comma separated file extensions or mime types
+       * to filter as accepted.
+       */
+      accept: {
+        type: String,
+        value: ""
+      },
 
-    /**
-     * `droppable` indicates whether or not to allow file drop.
-     */
-    droppable: {
-      type: Boolean,
-      value: false
-    },
+      /**
+       * `droppable` indicates whether or not to allow file drop.
+       */
+      droppable: {
+        type: Boolean,
+        value: false
+      },
 
-    /**
-     * `dropText` is the  text to display in the file drop area.
-     */
-    dropText: {
-      type: String,
-      value: "Drop Files Here"
-    },
+      /**
+       * `dropText` is the  text to display in the file drop area.
+       */
+      dropText: {
+        type: String,
+        value: "Drop Files Here"
+      },
 
-    /**
-     * `multi` indicates whether or not to allow multiple files to be uploaded.
-     */
-    multi: {
-      type: Boolean,
-      value: true
-    },
+      /**
+       * `multi` indicates whether or not to allow multiple files to be uploaded.
+       */
+      multi: {
+        type: Boolean,
+        value: true
+      },
 
-    /**
-     * `files` is the list of files to be uploaded
-     */
-    files: {
-      type: Array,
-      notify: true,
-      value: function() {
-        return [];
+      /**
+       * `files` is the list of files to be uploaded
+       */
+      files: {
+        type: Array,
+        notify: true,
+        value() {
+          return [];
+        }
+      },
+
+      /**
+       * `raised` indicates whether or not the button should be raised
+       */
+      raised: {
+        type: Boolean,
+        value: true
+      },
+
+      /**
+       * `noink` indicates that the button should not have an ink effect
+       */
+      noink: {
+        type: Boolean,
+        value: false
+      },
+
+      /**
+       * `headers` is a key value map of header names and values
+       */
+      headers: {
+        type: Object,
+        value: {}
+      },
+
+      /**
+       * `retryText` is the text for the tooltip to retry an upload
+       */
+      retryText: {
+        type: String,
+        value: "Retry Upload"
+      },
+
+      /**
+       * `removeText` is the text for the tooltip to remove an upload
+       */
+      removeText: {
+        type: String,
+        value: "Remove"
+      },
+
+      /**
+       * `successText` is the text for the tooltip of a successful upload
+       */
+      successText: {
+        type: String,
+        value: "Success"
+      },
+
+      /**
+       * `errorText` is the text to display for a failed upload
+       */
+      errorText: {
+        type: String,
+        value: "Error uploading file..."
+      },
+
+      /**
+       * `_shownDropText` indicates whether or not the drop text should be shown
+       */
+      _shownDropText: {
+        type: Boolean,
+        value: false
+      },
+
+      /**
+       * `additional` object of key-pair values to send additional values along with file.
+       */
+      additional: {
+        type: Object,
+        value: {}
+      },
+
+      /**
+       * `fileDataName` is the name for the file data in the `formData` object.
+       */
+      fileDataName: {
+        type: String,
+        value: "file"
+      },
+
+      /**
+       * `paperButtonAlt` allows changing the alt property on the paper button
+       */
+      paperButtonAlt: {
+        type: String,
+        value: ""
+      },
+
+      /**
+       * `paperButtonTitle` allows changing the title property on the paper button
+       */
+      paperButtonTitle: {
+        type: String,
+        value: ""
       }
-    },
-
-    /**
-     * `raised` indicates whether or not the button should be raised
-     */
-    raised: {
-      type: Boolean,
-      value: true
-    },
-
-    /**
-     * `noink` indicates that the button should not have an ink effect
-     */
-    noink: {
-      type: Boolean,
-      value: false
-    },
-
-    /**
-     * `headers` is a key value map of header names and values
-     */
-    headers: {
-      type: Object,
-      value: {}
-    },
-
-    /**
-     * `retryText` is the text for the tooltip to retry an upload
-     */
-    retryText: {
-      type: String,
-      value: "Retry Upload"
-    },
-
-    /**
-     * `removeText` is the text for the tooltip to remove an upload
-     */
-    removeText: {
-      type: String,
-      value: "Remove"
-    },
-
-    /**
-     * `successText` is the text for the tooltip of a successful upload
-     */
-    successText: {
-      type: String,
-      value: "Success"
-    },
-
-    /**
-     * `errorText` is the text to display for a failed upload
-     */
-    errorText: {
-      type: String,
-      value: "Error uploading file..."
-    },
-
-    /**
-     * `_shownDropText` indicates whether or not the drop text should be shown
-     */
-    _shownDropText: {
-      type: Boolean,
-      value: false
-    },
-
-    /**
-     * `additional` object of key-pair values to send additional values along with file.
-     */
-    additional: {
-      type: Object,
-      value: {}
-    },
-
-    /**
-     * `fileDataName` is the name for the file data in the `formData` object.
-     */
-    fileDataName: {
-      type: String,
-      value: "file"
-    },
-
-    /**
-     * `paperButtonAlt` allows changing the alt property on the paper button
-     */
-    paperButtonAlt: {
-      type: String,
-      value: ""
-    },
-
-    /**
-     * `paperButtonTitle` allows changing the title property on the paper button
-     */
-    paperButtonTitle: {
-      type: String,
-      value: ""
-    }
-  },
+    };
+  }
   /**
    * Clears the list of files
    */
-  clear: function() {
+  clear() {
     this.set("files", []);
     this.$.fileInput.value = "";
     this._showDropText();
-  },
+  }
 
-  ready: function() {
+  ready() {
+    super.ready();
+
     if (this.raised) {
       this.toggleAttribute("raised", true, this.$.button);
     }
@@ -369,12 +382,12 @@ Polymer({
       this._showDropText();
       this.setupDrop();
     }
-  },
+  }
 
   /**
    * A function to set up a drop area for drag-and-drop file uploads
    */
-  setupDrop: function() {
+  setupDrop() {
     var uploadBorder = this.$.UploadBorder;
     this.toggleClass("enabled", true, uploadBorder);
 
@@ -435,12 +448,12 @@ Polymer({
         this.uploadFile(file);
       }
     };
-  },
+  }
 
   /**
    * Clicks the invisible file input
    */
-  _fileClick: function() {
+  _fileClick() {
     var elem = this.$.fileInput;
     if (elem && document.createEvent) {
       // sanity check
@@ -448,14 +461,14 @@ Polymer({
       evt.initEvent("click", true, false);
       elem.dispatchEvent(evt);
     }
-  },
+  }
 
   /**
    * Called whenever the list of selected files changes
    *
    * @param {object} e An event object
    */
-  _fileChange: function(e) {
+  _fileChange(e) {
     var length = e.target.files.length;
     for (var i = 0; i < length; i++) {
       var file = e.target.files[i];
@@ -469,14 +482,14 @@ Polymer({
       }
       this.uploadFile(file);
     }
-  },
+  }
 
   /**
    * Cancels the file upload for a specific file
    *
    * @param {object} file An element of the files array
    */
-  cancel: function(file) {
+  cancel(file) {
     if (file) {
       if (file.xhr) {
         file.xhr.abort();
@@ -484,49 +497,56 @@ Polymer({
       this.splice("files", this.files.indexOf(file), 1);
       this._showDropText();
     }
-  },
+  }
 
   /**
    * Cancels the file upload
    *
    * @param {object} e An event object
    */
-  _cancelUpload: function(e) {
+  _cancelUpload(e) {
     this.cancel(e.model.__data__.item);
-  },
+  }
 
   /**
    * Retries to upload the file
    *
    * @param {object} e An event object
    */
-  _retryUpload: function(e) {
+  _retryUpload(e) {
     e.model.set("item.error", false);
     e.model.set("item.progress", 0);
     // The async helps give visual feedback of a retry occurring, even though it's less efficient.
     var self = this;
-    async.microTask.run(() => {
+    microTask.run(() => {
       self.uploadFile(e.model.__data__.item);
     });
-  },
+  }
 
   /**
    * Whether or not to display the drop text
    */
-  _showDropText: function() {
+  _showDropText() {
     this.set("_shownDropText", !this.files.length && this.droppable);
-  },
+  }
 
   /**
    * Uploads a file
    *
    * @param {object} file An element of the files array
    */
-  uploadFile: function(file) {
+  uploadFile(file) {
     if (!file) {
       return;
     }
-    this.fire("before-upload");
+    this.dispatchEvent(
+      new CustomEvent("before-upload", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: true
+      })
+    );
     this._showDropText();
     var prefix = "files." + this.files.indexOf(file);
     var self = this;
@@ -556,11 +576,11 @@ Polymer({
       this.set("value." + self.attributes.name.value, {});
     }
     reader.readAsDataURL(file);
-  },
-  _valueChanged: function() {
+  }
+  _valueChanged() {
     console.log("this.value: " + JSON.stringify(this.value));
-  },
-  _schemaChanged: function() {
+  }
+  _schemaChanged() {
     var schema = this.schema;
     /*
     var inputEl = this.$.fileInput;
@@ -583,9 +603,9 @@ Polymer({
       inputEl.label = schema.title;
     }
     */
-  },
+  }
   /*
-  _errorChanged: function() {
+  _errorChanged() {
     if (this.error) {
       this.$.fileInput.errorMessage = this.error;
       this.$.fileInput.invalid = true;
@@ -595,44 +615,46 @@ Polymer({
     }
   },
   */
-  _isSchemaValue: function(type) {
+  _isSchemaValue(type) {
     return this._isSchemaFile(type);
-  },
-  _isSchemaFile: function(type) {
+  }
+  _isSchemaFile(type) {
     if (Array.isArray(type)) {
       return type.indexOf("file") !== -1;
     } else {
       return type === "file";
     }
-  },
-  _isSchemaBoolean: function(type) {
+  }
+  _isSchemaBoolean(type) {
     if (Array.isArray(type)) {
       return type.indexOf("boolean") !== -1;
     } else {
       return type === "boolean";
     }
-  },
-  _isSchemaNumber: function(type) {
+  }
+  _isSchemaNumber(type) {
     if (Array.isArray(type)) {
       return type.indexOf("number") !== -1 || type.indexOf("integer") !== -1;
     } else {
       return type === "number" || type === "integer";
     }
-  },
-  _isSchemaString: function(type) {
+  }
+  _isSchemaString(type) {
     if (Array.isArray(type)) {
       return type.indexOf("string") !== -1;
     } else {
       return type === "string";
     }
-  },
-  _isSchemaObject: function(type) {
+  }
+  _isSchemaObject(type) {
     return type === "object";
-  },
-  _isSchemaArray: function(type) {
+  }
+  _isSchemaArray(type) {
     return type === "array";
-  },
-  stringify: function(s) {
+  }
+  stringify(s) {
     return JSON.stringify(s);
   }
-});
+}
+window.customElements.define(EcoJsonSchemaFile.tag, EcoJsonSchemaFile);
+export { EcoJsonSchemaFile };

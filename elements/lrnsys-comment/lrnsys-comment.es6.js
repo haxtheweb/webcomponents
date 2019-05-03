@@ -1,12 +1,12 @@
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import*as async from"./node_modules/@polymer/polymer/lib/utils/async.js";import"./node_modules/@polymer/iron-icons/editor-icons.js";import"./node_modules/@polymer/marked-element/marked-element.js";import"./node_modules/@polymer/paper-tooltip/paper-tooltip.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@polymer/paper-input/paper-textarea.js";import"./node_modules/@polymer/paper-badge/paper-badge.js";import"./node_modules/@lrnwebcomponents/moment-element/moment-element.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/lib/colors.js";import"./node_modules/@lrnwebcomponents/mtz-marked-editor/mtz-marked-editor.js";import"./node_modules/@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-generic-line.js";import"./node_modules/@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-generic-wrap.js";import"./node_modules/@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-link.js";import"./node_modules/@lrnwebcomponents/word-count/word-count.js";import"./node_modules/@lrnwebcomponents/lrnsys-button/lrnsys-button.js";import"./node_modules/@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";/**
+ */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import*as async from"./node_modules/@polymer/polymer/lib/utils/async.js";import"./node_modules/@polymer/paper-input/paper-textarea.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/lib/colors.js";import"./node_modules/@lrnwebcomponents/mtz-marked-editor/mtz-marked-editor.js";import"./node_modules/@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-generic-line.js";import"./node_modules/@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-generic-wrap.js";import"./node_modules/@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-link.js";import"./node_modules/@lrnwebcomponents/word-count/word-count.js";import"./node_modules/@lrnwebcomponents/lrnsys-button/lrnsys-button.js";import"./node_modules/@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";/**
 `lrnsys-comment`
 A well styled comment for a user with markdown support.
 
 * @demo demo/index.html
-*/let LrnsysComment=Polymer({_template:html`
+*/class LrnsysComment extends PolymerElement{constructor(){super();import("./node_modules/@polymer/iron-icons/editor-icons.js");import("./node_modules/@polymer/paper-tooltip/paper-tooltip.js");import("./node_modules/@polymer/marked-element/marked-element.js");import("./node_modules/@polymer/paper-badge/paper-badge.js");import("./node_modules/@lrnwebcomponents/moment-element/moment-element.js")}static get template(){return html`
     <style include="materializecss-styles-colors">
       :host {
         display: block;
@@ -312,24 +312,23 @@ A well styled comment for a user with markdown support.
         label="[[comment.relationships.author.data.visual.label]]"
       >
       </paper-badge>
-    </template>
-  `,is:"lrnsys-comment",properties:{comment:{type:Object,notify:!0,observer:"_commentLoaded"},displayName:{type:String,notify:!0,computed:"_generateName(comment.relationships.author.data.display_name, comment.relationships.author.data.visual)"},commentNew:{type:String,notify:!0,computed:"_isCommentNew(comment.relationships.author.data.visual)"},hoverClass:{type:String,reflectToAttribute:!0},editform:{type:Boolean,notify:!0,observer:"_editTrigger",reflectToAttribute:!0},disabled:{type:Boolean,notify:!0,reflectToAttribute:!0}},/**
+    </template>`}static get tag(){return"lrnsys-comment"}static get properties(){return{comment:{type:Object,notify:!0,observer:"_commentLoaded"},displayName:{type:String,notify:!0,computed:"_generateName(comment.relationships.author.data.display_name, comment.relationships.author.data.visual)"},commentNew:{type:String,notify:!0,computed:"_isCommentNew(comment.relationships.author.data.visual)"},hoverClass:{type:String,reflectToAttribute:!0},editform:{type:Boolean,notify:!0,observer:"_editTrigger",reflectToAttribute:!0},disabled:{type:Boolean,notify:!0,reflectToAttribute:!0}}}/**
    * attached lifecycle
-   */attached:function(){this.$.bodyarea.addEventListener("tap",this.bodyToggle.bind(this));this.$.bodyarea.addEventListener("dblclick",this.bodyToggleOn.bind(this))},/**
+   */connectedCallback(){super.connectedCallback();this.$.bodyarea.addEventListener("tap",this.bodyToggle.bind(this));this.$.bodyarea.addEventListener("dblclick",this.bodyToggleOn.bind(this))}/**
    * detached lifecycle
-   */detached:function(){this.$.bodyarea.removeEventListener("tap",this.bodyToggle.bind(this));this.$.bodyarea.removeEventListener("dblclick",this.bodyToggleOn.bind(this))},_generateName:function(name,visual){if(typeof visual!==typeof void 0&&!1!==visual.label){return name+" ("+visual.label+")"}return name},_isCommentNew:function(visual){if(typeof visual!==typeof void 0&&!1!==visual.label){return"new-comment"}return""},_commentLoaded:function(e){this.editform=this.comment.metadata.editing;this.disabled=this.comment.metadata.disabled;this.blockFirstState=!0},/**
+   */disconnectedCallback(){super.disconnectedCallback();this.$.bodyarea.removeEventListener("tap",this.bodyToggle.bind(this));this.$.bodyarea.removeEventListener("dblclick",this.bodyToggleOn.bind(this))}_generateName(name,visual){if(typeof visual!==typeof void 0&&!1!==visual.label){return name+" ("+visual.label+")"}return name}_isCommentNew(visual){if(typeof visual!==typeof void 0&&!1!==visual.label){return"new-comment"}return""}_commentLoaded(e){this.editform=this.comment.metadata.editing;this.disabled=this.comment.metadata.disabled;this.blockFirstState=!0}/**
    * Handle all actions from the button bar.
-   */actionHandler:function(e){// convert click handler into local dom object
+   */actionHandler(e){// convert click handler into local dom object
 var normalizedEvent=dom(e),target=normalizedEvent.localTarget,comment=null;// ensure we have a comment ID to operate against
 if(null!=target.dataCommentid&&!target.disabled){comment=target.dataCommentid;// handle the type of event requested
-if("reply"==target.id){this.fire("comment-reply",{comment:this.comment,target:target})}else if("like"==target.id){this.$.like.classList.toggle("like-icon-color");this.fire("comment-like",{comment:this.comment,target:target})}else if("edit"==target.id){// toggle edit, allow edit state handle itself via observer
-this.editform=!this.editform}else if("delete"==target.id){this.fire("comment-delete-dialog",{comment:this.comment,target:target})}}},/**
+if("reply"==target.id){this.dispatchEvent(new CustomEvent("comment-reply",{bubbles:!0,cancelable:!0,composed:!0,detail:{comment:this.comment,target:target}}))}else if("like"==target.id){this.$.like.classList.toggle("like-icon-color");this.dispatchEvent(new CustomEvent("comment-like",{bubbles:!0,cancelable:!0,composed:!0,detail:{comment:this.comment,target:target}}))}else if("edit"==target.id){// toggle edit, allow edit state handle itself via observer
+this.editform=!this.editform}else if("delete"==target.id){this.dispatchEvent(new CustomEvent("comment-delete-dialog",{bubbles:!0,cancelable:!0,composed:!0,detail:{comment:this.comment,target:target}}))}}}/**
    * Trigger the edit form.
-   */_editTrigger:function(e){// bother checking if they can edit or not first
+   */_editTrigger(e){// bother checking if they can edit or not first
 if(typeof this.comment!==typeof void 0&&this.comment.actions.edit){async.microTask.run(()=>{// show / hide the edit vs display area
 this.$.renderedcomment.hidden=this.editform;this.$.commenteditor.hidden=!this.editform;// simple icon toggle
-if(this.editform){this.$.edit.icon="save";this.$.edit.alt="Save";this.$.reply.disabled=!0;this.$.editcomment.focus();this.fire("comment-editing",{comment:this.comment});this.blockFirstState=!1}else{if(!this.blockFirstState){this.fire("comment-save",{comment:this.comment})}else{this.blockFirstState=!1}this.$.edit.icon="create";this.$.edit.alt="Edit";this.$.reply.disabled=!1}this.fire("iron-resize")})}},/**
+if(this.editform){this.$.edit.icon="save";this.$.edit.alt="Save";this.$.reply.disabled=!0;this.$.editcomment.focus();this.dispatchEvent(new CustomEvent("comment-editing",{bubbles:!0,cancelable:!0,composed:!0,detail:{comment:this.comment}}));this.blockFirstState=!1}else{if(!this.blockFirstState){this.dispatchEvent(new CustomEvent("comment-save",{bubbles:!0,cancelable:!0,composed:!0,detail:{comment:this.comment}}))}else{this.blockFirstState=!1}this.$.edit.icon="create";this.$.edit.alt="Edit";this.$.reply.disabled=!1}this.dispatchEvent(new CustomEvent("iron-resize",{bubbles:!0,cancelable:!0,composed:!0,detail:!0}))})}}/**
    * Toggle the body field expanding to show the whole comment
-   */bodyToggle:function(e){this.$.bodyarea.classList.remove("nowrap-me");this.fire("iron-resize")},/**
+   */bodyToggle(e){this.$.bodyarea.classList.remove("nowrap-me");this.dispatchEvent(new CustomEvent("iron-resize",{bubbles:!0,cancelable:!0,composed:!0,detail:!0}))}/**
    * Toggle the body field expanding to show the whole comment
-   */bodyToggleOn:function(e){this.$.bodyarea.classList.toggle("nowrap-me");this.fire("iron-resize")}});export{LrnsysComment};
+   */bodyToggleOn(e){this.$.bodyarea.classList.toggle("nowrap-me");this.dispatchEvent(new CustomEvent("iron-resize",{bubbles:!0,cancelable:!0,composed:!0,detail:!0}))}}window.customElements.define(LrnsysComment.tag,LrnsysComment);export{LrnsysComment};

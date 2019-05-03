@@ -1,4 +1,4 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import"./node_modules/@polymer/paper-dropdown-menu/paper-dropdown-menu.js";import"./node_modules/@polymer/paper-item/paper-item.js";import"./node_modules/@polymer/paper-listbox/paper-listbox.js";/**
+import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";/**
 `dropdown-select`
 An easy to use, works as expected dropdown menu. Add slotted items like follows:
 
@@ -22,7 +22,7 @@ An easy to use, works as expected dropdown menu. Add slotted items like follows:
 
 * @demo demo/index.html
 
-*/let DropdownSelect=Polymer({_template:html`
+*/class DropdownSelect extends PolymerElement{constructor(){super();import("./node_modules/@polymer/paper-dropdown-menu/paper-dropdown-menu.js");import("./node_modules/@polymer/paper-item/paper-item.js");import("./node_modules/@polymer/paper-listbox/paper-listbox.js")}static get template(){return html`
     <style>
       :host {
         display: block;
@@ -64,7 +64,7 @@ An easy to use, works as expected dropdown menu. Add slotted items like follows:
         <slot id="content"></slot>
       </paper-listbox>
     </paper-dropdown-menu>
-  `,is:"dropdown-select",listeners:{"paper-dropdown-open":"_onOpen","paper-dropdown-close":"_onClose"},properties:{/**
+  `}static get tag(){return"dropdown-select"}connectedCallback(){super.connectedCallback();afterNextRender(this,function(){this._valueChanged(this.value);this.addEventListener("paper-dropdown-open",this._onOpen.bind(this));this.addEventListener("paper-dropdown-close",this._onClose.bind(this))})}disconnectedCallback(){this.removeEventListener("paper-dropdown-open",this._onOpen.bind(this));this.removeEventListener("paper-dropdown-close",this._onClose.bind(this));super.disconnectedCallback()}static get properties(){return{/**
      * Set to true in order to prevent scroll from being constrained
      * to the dropdown when it opens.
      */allowOutsideScroll:{type:Boolean,value:!1},/**
@@ -106,17 +106,15 @@ An easy to use, works as expected dropdown menu. Add slotted items like follows:
      */verticalAlign:{type:String,value:"top"},/**
      * Overrides the vertical offset computed in
      * _computeMenuVerticalOffset.
-     */verticalOffset:{type:Number}},/**
+     */verticalOffset:{type:Number}}}/**
    * Get the value of the selected item.
-   */_getSelectedValue:function(e){if(null!==e.detail.value){this.value=e.detail.value.getAttribute("value");this._setSelectedValues();this.fire("change",{value:this.value});//support for old version
-this.fire("dropdown-select-changed",this)}},/**
+   */_getSelectedValue(e){if(null!==e.detail.value){this.value=e.detail.value.getAttribute("value");this._setSelectedValues();this.dispatchEvent(new CustomEvent("change",{bubbles:!0,cancelable:!0,composed:!0,detail:{value:this.value}}));//support for old version
+this.dispatchEvent(new CustomEvent("dropdown-select-changed",{bubbles:!0,cancelable:!0,composed:!0,detail:this}))}}/**
    * Sets the opened property to true
-   */_onOpen:function(e){this.opened=!0},/**
+   */_onOpen(e){this.opened=!0}/**
    * Sets the opened property to false
-   */_onClose:function(e){this.opened=!1},/**
+   */_onClose(e){this.opened=!1}/**
    * Get the value of the selected item.
-   */_setSelectedValues:function(){this.selectedItem=this.$.menu.selectedItem;this.selectedItemLabel=this.$.menu.selectedItemLabel;this.selectedItemIndex=this.$.listbox.selected},/**
-   * Set the index of the selected item, only on initial setup though
-   */attached:function(){this._valueChanged(this.value)},/**
+   */_setSelectedValues(){this.selectedItem=this.shadowRoot.querySelector("#menu").selectedItem;this.selectedItemLabel=this.shadowRoot.querySelector("#menu").selectedItemLabel;this.selectedItemIndex=this.shadowRoot.querySelector("#listbox").selected}/**
    * Notice value has changed and ensure data model is accurate
-   */_valueChanged:function(newValue,oldValue){let children=dom(this).querySelectorAll("paper-item");if(children!==void 0&&null!==children){for(let i=0;i<children.length;i++){if(this.value===children[i].getAttribute("value")){this.$.listbox.selected=i;this._setSelectedValues()}}}}});export{DropdownSelect};
+   */_valueChanged(newValue,oldValue){let children=dom(this).querySelectorAll("paper-item");if(children!==void 0&&null!==children){for(let i=0;i<children.length;i++){if(this.value===children[i].getAttribute("value")){this.shadowRoot.querySelector("#listbox").selected=i;this._setSelectedValues()}}}}}window.customElements.define(DropdownSelect.tag,DropdownSelect);export{DropdownSelect};

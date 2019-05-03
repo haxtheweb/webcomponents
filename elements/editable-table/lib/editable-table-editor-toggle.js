@@ -1,4 +1,5 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-toggle-button/paper-toggle-button.js";
 import "@polymer/paper-item/paper-item.js";
@@ -22,86 +23,111 @@ interface (editable-table.html).
 </editable-table-editor-toggle>
 
 */
-Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: block;
-      }
-      :host .setting {
-        font-size: 95%;
-        padding: var(--editable-table-toggle-padding, 8px 0px);
-        justify-content: space-between;
-        width: 100%;
-      }
-      :host([disabled]) .setting-text {
-        opacity: 0.5;
-      }
-    </style>
-    <div class="setting">
-      <div class="setting-control">
-        <paper-toggle-button
-          id="button"
-          checked\$="[[value]]"
-          disabled\$="[[disabled]]"
-          >[[label]]</paper-toggle-button
-        >
-        <paper-tooltip id="tooltip" for="button">[[tooltip]]</paper-tooltip>
+class EditableTableEditorToggle extends PolymerElement {
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: block;
+        }
+        :host .setting {
+          font-size: 95%;
+          padding: var(--editable-table-toggle-padding, 8px 0px);
+          justify-content: space-between;
+          width: 100%;
+        }
+        :host([disabled]) .setting-text {
+          opacity: 0.5;
+        }
+      </style>
+      <div class="setting">
+        <div class="setting-control">
+          <paper-toggle-button
+            id="button"
+            checked\$="[[value]]"
+            disabled\$="[[disabled]]"
+            >[[label]]</paper-toggle-button
+          >
+          <paper-tooltip id="tooltip" for="button">[[tooltip]]</paper-tooltip>
+        </div>
       </div>
-    </div>
-  `,
+    `;
+  }
 
-  is: "editable-table-editor-toggle",
-  listeners: { change: "_onChange" },
-
-  properties: {
-    /**
-     * is the toggle disabled
-     */
-    disabled: {
-      type: Boolean,
-      value: false,
-      reflectToAttribute: true
-    },
-    /**
-     * label for menu setting
-     */
-    label: {
-      type: String,
-      value: null
-    },
-    /**
-     * the property to update
-     */
-    prop: {
-      type: String,
-      value: null
-    },
-    /**
-     * tool tip for menu setting
-     */
-    tooltip: {
-      type: String,
-      value: null
-    },
-    /**
-     * boolean value of menu setting
-     */
-    value: {
-      type: Boolean,
-      value: false
-    }
-  },
+  static get tag() {
+    return "editable-table-editor-toggle";
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, function() {
+      this.addEventListener("change", this._onChange.bind(this));
+    });
+  }
+  disconnectedCallback() {
+    this.removeEventListener("change", this._onChange.bind(this));
+    super.disconnectedCallback();
+  }
+  static get properties() {
+    return {
+      /**
+       * is the toggle disabled
+       */
+      disabled: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
+       * label for menu setting
+       */
+      label: {
+        type: String,
+        value: null
+      },
+      /**
+       * the property to update
+       */
+      prop: {
+        type: String,
+        value: null
+      },
+      /**
+       * tool tip for menu setting
+       */
+      tooltip: {
+        type: String,
+        value: null
+      },
+      /**
+       * boolean value of menu setting
+       */
+      value: {
+        type: Boolean,
+        value: false
+      }
+    };
+  }
 
   /**
    * Set up event listener to fire when toggled
    */
-  _onChange: function(e) {
-    let root = this;
+  _onChange(e) {
     if (e.srcElement === this.$.button)
-      root.fire("editable-table-setting-changed", {
-        prop: this.prop,
-        value: e.srcElement.checked
-      });
+      this.dispatchEvent(
+        new CustomEvent("editable-table-setting-changed", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: {
+            prop: this.prop,
+            value: e.srcElement.checked
+          }
+        })
+      );
   }
-});
+}
+window.customElements.define(
+  EditableTableEditorToggle.tag,
+  EditableTableEditorToggle
+);
+export { EditableTableEditorToggle };

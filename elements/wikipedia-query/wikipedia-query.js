@@ -1,7 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/iron-ajax/iron-ajax.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "@lrnwebcomponents/citation-element/citation-element.js";
+import "@polymer/iron-ajax/iron-ajax.js";
 /**
  * `wikipedia-query`
  * `Query and present information from wikipedia.`
@@ -9,6 +9,18 @@ import "@lrnwebcomponents/citation-element/citation-element.js";
  * @demo demo/index.html
  */
 class WikipediaQuery extends PolymerElement {
+  constructor() {
+    super();
+    import("@lrnwebcomponents/citation-element/citation-element.js");
+    afterNextRender(this, function() {
+      this.HAXWiring = new HAXWiring();
+      this.HAXWiring.setup(
+        WikipediaQuery.haxProperties,
+        WikipediaQuery.tag,
+        this
+      );
+    });
+  }
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -23,6 +35,9 @@ class WikipediaQuery extends PolymerElement {
         :host {
           display: block;
           --wikipedia-query-body-height: 160px;
+        }
+        :host [hidden] {
+          display: none;
         }
         #result {
           height: var(--wikipedia-query-body-height);
@@ -41,7 +56,7 @@ class WikipediaQuery extends PolymerElement {
         url$="https://en.wikipedia.org/w/api.php?origin=*&amp;action=query&amp;titles=[[search]]&amp;prop=extracts&amp;format=json"
         handle-as="json"
         on-response="handleResponse"
-        debounce-duration="100"
+        debounce-duration="250"
         last-response="{{searchResponse}}"
       ></iron-ajax>
       <h3 hidden$="[[!showTitle]]">[[search]] Wikipedia article</h3>
@@ -150,12 +165,6 @@ class WikipediaQuery extends PolymerElement {
     let date = new Date(Date.now());
     this.__now =
       date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(
-      WikipediaQuery.haxProperties,
-      WikipediaQuery.tag,
-      this
-    );
   }
   /**
    * Convert renderas into a variable.
@@ -163,7 +172,6 @@ class WikipediaQuery extends PolymerElement {
   _renderAsUpdated(newValue, oldValue) {
     if (typeof newValue !== typeof undefined) {
       this._resetRenderMethods();
-      this["__render" + newValue] = true;
     }
   }
   /**
@@ -188,19 +196,24 @@ class WikipediaQuery extends PolymerElement {
    */
   handleResponse(response) {
     // the key of pages is a number so need to look for it
-    if (typeof this.searchResponse !== typeof undefined) {
+    if (
+      typeof this.searchResponse !== typeof undefined &&
+      this.searchResponse.query
+    ) {
+      this[`__render${this.renderAs}`] = true;
       for (var key in this.searchResponse.query.pages) {
         // skip anything that's prototype object
         if (!this.searchResponse.query.pages.hasOwnProperty(key)) continue;
-        // load object response
-        var obj = this.searchResponse.query.pages[key];
-        let html = obj.extract;
-        html = html.replace(/<script[\s\S]*?>/gi, "&lt;script&gt;");
-        html = html.replace(/<\/script>/gi, "&lt;/script&gt;");
-        html = html.replace(/<style[\s\S]*?>/gi, "&lt;style&gt;");
-        html = html.replace(/<\/style>/gi, "&lt;/style&gt;");
-        // need to innerHTML this or it won't set
-        this.$.result.innerHTML = html;
+        // load object response, double check we have an extract
+        if (this.searchResponse.query.pages[key].extract) {
+          let html = this.searchResponse.query.pages[key].extract;
+          html = html.replace(/<script[\s\S]*?>/gi, "&lt;script&gt;");
+          html = html.replace(/<\/script>/gi, "&lt;/script&gt;");
+          html = html.replace(/<style[\s\S]*?>/gi, "&lt;style&gt;");
+          html = html.replace(/<\/style>/gi, "&lt;/style&gt;");
+          // need to innerHTML this or it won't set
+          this.shadowRoot.querySelector("#result").innerHTML = html;
+        }
       }
     }
   }

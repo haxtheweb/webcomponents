@@ -7,14 +7,14 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"simple-blog"}// render function
 static get template(){return html`
-      <custom-style>
+      
         <style>
           html,
           body {
             background-color: #fafafa;
           }
         </style>
-      </custom-style>
+      
       <style include="simple-colors">
         :host {
           display: block;

@@ -1,10 +1,13 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./hax-shared-styles.js";
 
 class HaxToolbarItem extends PolymerElement {
+  constructor() {
+    super();
+    import("@polymer/paper-button/paper-button.js");
+    import("@polymer/paper-tooltip/paper-tooltip.js");
+  }
   static get template() {
     return html`
       <style include="simple-colors hax-shared-styles">

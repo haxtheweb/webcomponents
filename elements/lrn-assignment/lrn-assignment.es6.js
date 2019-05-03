@@ -1,8 +1,8 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@polymer/paper-button/paper-button.js";/**
+import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/polymer/lib/elements/dom-repeat.js";import"./node_modules/@polymer/polymer/lib/elements/dom-if.js";/**
 `lrn-assignment`
 
 * @demo demo/index.html
-*/let LrnAssignment=Polymer({_template:html`
+*/class LrnAssignment extends PolymerElement{static get template(){return html`
     <style>
       :host {
         display: flex;
@@ -26,16 +26,15 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
           >
         </template>
       </div>
-    </paper-card>
-  `,is:"lrn-assignment",properties:{/**
-     * Title
-     */title:{type:String},/**
-     * Image url
-     */image:{type:String},/**
-     * Details of the assignment
-     */details:{type:String},/**
-     * url
-     */url:{type:String},open:{type:Boolean,value:!1},complete:{type:Boolean,value:!1},actions:{type:Object}}});export{LrnAssignment};let LrnAssignments=Polymer({_template:html`
+    </paper-card>`}static get tag(){return"lrn-assignment"}static get properties(){return{/**
+       * Title
+       */title:{type:String},/**
+       * Image url
+       */image:{type:String},/**
+       * Details of the assignment
+       */details:{type:String},/**
+       * url
+       */url:{type:String},open:{type:Boolean,value:!1},complete:{type:Boolean,value:!1},actions:{type:Object}}}}window.customElements.define(LrnAssignment.tag,LrnAssignment);export{LrnAssignment};class LrnAssignments extends PolymerElement{static get template(){return html`
     <style>
       :host {
         display: flex;
@@ -68,5 +67,4 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         handle-as="json"
         on-response="handleResponse"
       ></iron-ajax>
-    </template>
-  `,is:"lrn-assignments",properties:{assignments:{type:Object,reflectToAttribute:!0,observer:"assignmentsChanged"},layout:{type:String,reflectToAttribute:!0},url:{type:String}},assignmentsChanged:function(assignments){if(1>=assignments.length){this.layout="wide"}else if(4>=assignments.length){this.layout="medium"}else if(6>=assignments.length){this.layout="tight"}},rowItemsChanged:function(items){},handleResponse:function(data){this.assignments=data.response}});export{LrnAssignments};
+    </template>`}static get tag(){return"lrn-assignments"}static get properties(){return{assignments:{type:Object,reflectToAttribute:!0,observer:"assignmentsChanged"},layout:{type:String,reflectToAttribute:!0},url:{type:String}}}assignmentsChanged(assignments){if(1>=assignments.length){this.layout="wide"}else if(4>=assignments.length){this.layout="medium"}else if(6>=assignments.length){this.layout="tight"}}rowItemsChanged(items){}handleResponse(data){this.assignments=data.response}}window.customElements.define(LrnAssignments.tag,LrnAssignments);export{LrnAssignments};

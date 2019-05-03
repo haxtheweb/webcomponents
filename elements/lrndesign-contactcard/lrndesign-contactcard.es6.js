@@ -1,9 +1,9 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@lrnwebcomponents/lrn-icons/lrn-icons.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@polymer/iron-icons/maps-icons.js";import"./node_modules/@polymer/iron-icons/hardware-icons.js";import"./node_modules/@polymer/paper-tooltip/paper-tooltip.js";import"./node_modules/@lrnwebcomponents/social-media-icons/social-media-icons.js";/**
+import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";/**
 `lrndesign-contactcard`
 lrndesign-contactcard
 
 * @demo demo/index.html
-*/let LrndesignContactcard=Polymer({_template:html`
+*/class LrndesignContactcard extends PolymerElement{constructor(){super();import("./node_modules/@polymer/paper-card/paper-card.js");import("./node_modules/@polymer/paper-button/paper-button.js");import("./node_modules/@lrnwebcomponents/lrn-icons/lrn-icons.js");import("./node_modules/@polymer/iron-icons/iron-icons.js");import("./node_modules/@polymer/iron-icons/maps-icons.js");import("./node_modules/@polymer/iron-icons/hardware-icons.js");import("./node_modules/@polymer/paper-tooltip/paper-tooltip.js");import("./node_modules/@lrnwebcomponents/social-media-icons/social-media-icons.js")}static get template(){return html`
     <style>
       :host {
         display: block;
@@ -176,21 +176,20 @@ lrndesign-contactcard
           </template>
         </div>
       </div>
-    </paper-card>
-  `,is:"lrndesign-contactcard",properties:{/**
-     * A url to the image in question.
-     */image:{type:String},/**
-     * The email address of the user.
-     */email:{type:String},/**
-     * The name of the user.
-     */name:{type:String},/**
-     * The job-title / position of the user.
-     */position:{type:String},/**
-     * The employer / organization of the user.
-     */organization:{type:String},/**
-     * The phone number of the user.
-     */phone:{type:String},/**
-     * The associated website of the user.
-     */website:{type:String},/**
-     * Twitter account of the user.
-     */twitter:{type:String}}});export{LrndesignContactcard};
+    </paper-card>`}static get tag(){return"lrndesign-contactcard"}static get properties(){return{/**
+       * A url to the image in question.
+       */image:{type:String},/**
+       * The email address of the user.
+       */email:{type:String},/**
+       * The name of the user.
+       */name:{type:String},/**
+       * The job-title / position of the user.
+       */position:{type:String},/**
+       * The employer / organization of the user.
+       */organization:{type:String},/**
+       * The phone number of the user.
+       */phone:{type:String},/**
+       * The associated website of the user.
+       */website:{type:String},/**
+       * Twitter account of the user.
+       */twitter:{type:String}}}}window.customElements.define(LrndesignContactcard.tag,LrndesignContactcard);export{LrndesignContactcard};

@@ -102,18 +102,27 @@ class LunrSearch extends PolymerElement {
   }
   constructor() {
     super();
-    const name = "lunr";
     const basePath = pathFromUrl(import.meta.url);
     const location = `${basePath}../../lunr/lunr.js`;
     window.addEventListener(
-      `es-bridge-${name}-loaded`,
+      "es-bridge-lunr-loaded",
       this._lunrLoaded.bind(this)
     );
     window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load(name, location);
-    if (window.ESGlobalBridge.imports && window.ESGlobalBridge.imports[name]) {
+    window.ESGlobalBridge.instance.load("lunr", location);
+    if (
+      window.ESGlobalBridge.imports &&
+      window.ESGlobalBridge.imports["lunr"]
+    ) {
       this.__lunrLoaded = true;
     }
+  }
+  disconnectedCallback() {
+    window.removeEventListener(
+      "es-bridge-lunr-loaded",
+      this._lunrLoaded.bind(this)
+    );
+    super.disconnectedCallback();
   }
   _lunrLoaded(e) {
     // callback when loaded

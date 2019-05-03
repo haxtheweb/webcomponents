@@ -1,9 +1,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
-import "@polymer/iron-icon/iron-icon.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./hax-shared-styles.js";
 /**
@@ -14,6 +11,12 @@ import "./hax-shared-styles.js";
  * - button - an item that expresses what interaction you will have with the content.
  */
 class HAXPanelItem extends PolymerElement {
+  constructor() {
+    super();
+    import("@polymer/paper-button/paper-button.js");
+    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@polymer/iron-icon/iron-icon.js");
+  }
   static get properties() {
     return {
       /**

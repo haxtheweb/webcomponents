@@ -2,22 +2,17 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { html } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { A11yMediaBehaviors } from "./lib/a11y-media-behaviors.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-import "@polymer/paper-slider/paper-slider.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icons/av-icons.js";
+import "./lib/a11y-media-state-manager.js";
 import "./lib/a11y-media-controls.js";
 import "./lib/a11y-media-html5.js";
-import "./lib/a11y-media-play-button.js";
 import "./lib/a11y-media-transcript.js";
 import "./lib/a11y-media-transcript-controls.js";
-import "./lib/a11y-media-state-manager.js";
 import "./lib/a11y-media-youtube.js";
-
-export { A11yMediaPlayer };
 /**
  * `a11y-media-player`
  * An accessible video player
@@ -131,6 +126,23 @@ export { A11yMediaPlayer };
 class A11yMediaPlayer extends A11yMediaBehaviors {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
+  constructor() {
+    super();
+    import("@polymer/paper-slider/paper-slider.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icons/av-icons.js");
+    import("@lrnwebcomponents/a11y-media-player/lib/a11y-media-play-button.js");
+    const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+    const location = `${basePath}lib/screenfull/dist/screenfull.js`;
+    window.ESGlobalBridge.requestAvailability();
+    window.ESGlobalBridge.instance.load("screenfullLib", location);
+    window.addEventListener(
+      "es-bridge-screenfullLib-loaded",
+      this._onScreenfullLoaded.bind(this)
+    );
+    this.__playerAttached = true;
+    window.A11yMediaStateManager.requestAvailability();
+  }
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -149,22 +161,10 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    */
   connectedCallback() {
     super.connectedCallback();
-    let root = this;
-    const name = "screenfullLib";
-    const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
-    const location = `${basePath}lib/screenfull/dist/screenfull.js`;
-    window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load(name, location);
-    window.addEventListener(
-      `es-bridge-${name}-loaded`,
-      root._onScreenfullLoaded.bind(root)
-    );
-    root.__playerAttached = true;
-    window.A11yMediaStateManager.requestAvailability();
-    root._addResponsiveUtility();
-    window.dispatchEvent(new CustomEvent("a11y-player", { detail: root }));
-    if (root.isYoutube) {
-      root._youTubeRequest();
+    this._addResponsiveUtility();
+    window.dispatchEvent(new CustomEvent("a11y-player", { detail: this }));
+    if (this.isYoutube) {
+      this._youTubeRequest();
     }
   }
 
@@ -204,20 +204,22 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
       root._addSourcesAndTracks();
     }
     root.$.transcript.setMedia(root.$.innerplayer);
-    root.$.slider.addEventListener("mousedown", e => {
-      root._handleSliderStart();
-    });
-    root.$.slider.addEventListener("mouseup", e => {
-      root._handleSliderStop();
-    });
-    root.$.slider.addEventListener("keydown", e => {
-      root._handleSliderStart();
-    });
-    root.$.slider.addEventListener("keyup", e => {
-      root._handleSliderStop();
-    });
-    root.$.slider.addEventListener("blur", e => {
-      root._handleSliderStop();
+    afterNextRender(this, function() {
+      this.shadowRoot
+        .querySelector("#slider")
+        .addEventListener("mousedown", this._handleSliderStart.bind(this));
+      this.shadowRoot
+        .querySelector("#slider")
+        .addEventListener("mouseup", this._handleSliderStop.bind(this));
+      this.shadowRoot
+        .querySelector("#slider")
+        .addEventListener("keydown", this._handleSliderStart.bind(this));
+      this.shadowRoot
+        .querySelector("#slider")
+        .addEventListener("keyup", this._handleSliderStop.bind(this));
+      this.shadowRoot
+        .querySelector("#slider")
+        .addEventListener("blur", this._handleSliderStop.bind(this));
     });
   }
 
@@ -959,9 +961,31 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
       }
     }
   }
+  /**
+   * life cycle, element is removed from the DOM
+   */
+  disconnectedCallback() {
+    this.shadowRoot
+      .querySelector("#slider")
+      .removeEventListener("mousedown", this._handleSliderStart.bind(this));
+    this.shadowRoot
+      .querySelector("#slider")
+      .removeEventListener("mouseup", this._handleSliderStop.bind(this));
+    this.shadowRoot
+      .querySelector("#slider")
+      .removeEventListener("keydown", this._handleSliderStart.bind(this));
+    this.shadowRoot
+      .querySelector("#slider")
+      .removeEventListener("keyup", this._handleSliderStop.bind(this));
+    this.shadowRoot
+      .querySelector("#slider")
+      .removeEventListener("blur", this._handleSliderStop.bind(this));
+    window.removeEventListener(
+      "es-bridge-screenfullLib-loaded",
+      this._onScreenfullLoaded.bind(this)
+    );
+    super.disconnectedCallback();
+  }
 }
-/**
- * life cycle, element is removed from the DOM
- */
-//disconnectedCallback() {}
 window.customElements.define(A11yMediaPlayer.tag, A11yMediaPlayer);
+export { A11yMediaPlayer };

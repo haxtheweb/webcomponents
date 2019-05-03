@@ -1,75 +1,86 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@lrnwebcomponents/lrndesign-panelcard/lrndesign-panelcard.js";
-import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 /**
  * `lrn-aside`
  * A content aside as a panel
  *
  * @demo demo/index.html
  */
-let LrnAside = Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: flex;
-        padding: 8px;
-      }
-      :host([sticky]) {
-        top: 0;
-        position: sticky;
-      }
-      :host([direction="left"]) {
-        float: left;
-        max-width: 480px;
-      }
-      :host([direction="right"]) {
-        float: right;
-        max-width: 480px;
-      }
-    </style>
-    <aside>
-      <lrndesign-panelcard title="[[title]]">
-        <slot></slot>
-      </lrndesign-panelcard>
-    </aside>
-  `,
+class LrnAside extends PolymerElement {
+  constructor() {
+    super();
+    import("@lrnwebcomponents/lrndesign-panelcard/lrndesign-panelcard.js");
+    afterNextRender(this, function() {
+      this.HAXWiring = new HAXWiring();
+      this.HAXWiring.setup(LrnAside.haxProperties, LrnAside.tag, this);
+    });
+  }
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: flex;
+          padding: 8px;
+        }
+        :host([sticky]) {
+          top: 0;
+          position: sticky;
+        }
+        :host([direction="left"]) {
+          float: left;
+          max-width: 480px;
+        }
+        :host([direction="right"]) {
+          float: right;
+          max-width: 480px;
+        }
+      </style>
+      <aside>
+        <lrndesign-panelcard title="[[title]]">
+          <slot></slot>
+        </lrndesign-panelcard>
+      </aside>
+    `;
+  }
 
-  is: "lrn-aside",
+  static get tag() {
+    return "lrn-aside";
+  }
 
-  behaviors: [HAXBehaviors.PropertiesBehaviors],
-
-  properties: {
-    /**
-     * Title for the aside.
-     */
-    title: {
-      type: String,
-      value: "Related content"
-    },
-    /**
-     * Apply CSS sticky styling
-     */
-    sticky: {
-      type: Boolean,
-      value: false,
-      reflectToAttribute: true
-    },
-    /**
-     * Direction to hang off UI if sticky, left or right.
-     */
-    direction: {
-      type: String,
-      value: "",
-      reflectToAttribute: true
-    }
-  },
+  static get properties() {
+    return {
+      /**
+       * Title for the aside.
+       */
+      title: {
+        type: String,
+        value: "Related content"
+      },
+      /**
+       * Apply CSS sticky styling
+       */
+      sticky: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
+       * Direction to hang off UI if sticky, left or right.
+       */
+      direction: {
+        type: String,
+        value: "",
+        reflectToAttribute: true
+      }
+    };
+  }
 
   /**
    * Attached to the DOM, now fire.
    */
-  attached: function() {
-    // Establish hax property binding
-    let props = {
+  static get haxProperties() {
+    return {
       canScale: true,
       canPosition: true,
       canEditSource: false,
@@ -136,7 +147,7 @@ let LrnAside = Polymer({
         advanced: []
       }
     };
-    this.setHaxProperties(props);
   }
-});
+}
+window.customElements.define(LrnAside.tag, LrnAside);
 export { LrnAside };

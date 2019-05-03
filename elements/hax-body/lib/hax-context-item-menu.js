@@ -1,22 +1,17 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import "./hax-toolbar-menu.js";
 import "./hax-shared-styles.js";
-
 /**
-`hax-context-item-menu`
-An icon / button that has support for multiple options via drop down.
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
- - panel - the flyout from left or right side that has elements that can be placed
- - button - an item that expresses what interaction you will have with the content.
-
-*/
+ * `hax-context-item-menu`
+ * `An icon / button that has support for multiple options via drop down.`
+ * @microcopy - the mental model for this element
+ * - panel - the flyout from left or right side that has elements that can be placed
+ * - button - an item that expresses what interaction you will have with the content.
+ */
 class HaxContextItemMenu extends PolymerElement {
   constructor() {
     super();
+    import("@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js");
     import("@polymer/paper-tooltip/paper-tooltip.js");
     import("@polymer/paper-item/paper-item.js");
     import("@polymer/neon-animation/neon-animation.js");

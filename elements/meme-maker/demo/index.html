@@ -17,8 +17,15 @@
       <h3>Basic meme-maker demo</h3>
       <demo-snippet>
         <template>
+          <style>
+            meme-maker {
+              --meme-maker-font-size: 50px;
+              --meme-maker-font-size-medium: 24px;
+              --meme-maker-font-size-small: 16px;
+            }
+          </style>
           <meme-maker image-url="NGDLE-university.jpg"
-            top-text="You're university" bottom-text="stuck on edtech" font-size="24px"></meme-maker>
+            top-text="You're university" bottom-text="stuck on edtech" style="width:75%;"></meme-maker>
         </template>
       </demo-snippet>
     </div>

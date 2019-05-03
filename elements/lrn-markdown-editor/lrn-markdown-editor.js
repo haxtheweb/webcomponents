@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/paper-tabs/paper-tabs.js";
 import "@polymer/marked-element/marked-element.js";
 import "@polymer/iron-pages/iron-pages.js";
@@ -17,131 +17,139 @@ import "./lib/lrn-markdown-editor-editor.js";
  * @customElement
  * @demo demo/index.html
  */
-let LrnMarkdownEditor = Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: block;
-      }
+class LrnMarkdownEditor extends PolymerElement {
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: block;
+        }
 
-      #split-pane {
-        display: flex;
-      }
+        #split-pane {
+          display: flex;
+        }
 
-      .split-pane > * {
-        flex: 1 1 auto;
-        min-height: 160px;
-      }
+        .split-pane > * {
+          flex: 1 1 auto;
+          min-height: 160px;
+        }
 
-      .preview-pane {
-        background: lightblue;
-      }
+        .preview-pane {
+          background: lightblue;
+        }
 
-      paper-card {
-        padding: 16px;
-        width: calc(100% - 32px);
-      }
+        paper-card {
+          padding: 16px;
+          width: calc(100% - 32px);
+        }
 
-      paper-tabs {
-        background: #f5f5f5;
-        border-style: solid;
-        border-color: #dcdcdc;
-        border-width: 1px;
-        min-width: 500px;
-      }
+        paper-tabs {
+          background: #f5f5f5;
+          border-style: solid;
+          border-color: #dcdcdc;
+          border-width: 1px;
+          min-width: 500px;
+        }
 
-      marked-element.lrn-markdown-editor {
-        width: 100%;
-        word-wrap: break-word;
-      }
+        marked-element.lrn-markdown-editor {
+          width: 100%;
+          word-wrap: break-word;
+        }
 
-      .container-flex {
-        display: flex;
-        flex-wrap: nowrap;
-      }
+        .container-flex {
+          display: flex;
+          flex-wrap: nowrap;
+        }
 
-      .split-pane .container-flex > * {
-        width: 50%;
-      }
+        .split-pane .container-flex > * {
+          width: 50%;
+        }
 
-      .split-pane marked-element {
-        width: calc(100% - 32px);
-        min-width: 150px;
-        margin: 0 16px;
-        padding: 0 16px;
-        background: #fff;
-        border-left: solid #dcdcdc 1px;
-      }
-    </style>
+        .split-pane marked-element {
+          width: calc(100% - 32px);
+          min-width: 150px;
+          margin: 0 16px;
+          padding: 0 16px;
+          background: #fff;
+          border-left: solid #dcdcdc 1px;
+        }
+      </style>
 
-    <div class="mtz-toolbar">
-      <paper-tabs selected="{{selected}}">
-        <paper-tab>Write</paper-tab>
-        <paper-tab>Preview</paper-tab>
-        <paper-tab>Split View</paper-tab>
-      </paper-tabs>
-    </div>
+      <div class="mtz-toolbar">
+        <paper-tabs selected="{{selected}}">
+          <paper-tab>Write</paper-tab>
+          <paper-tab>Preview</paper-tab>
+          <paper-tab>Split View</paper-tab>
+        </paper-tabs>
+      </div>
 
-    <iron-pages selected="{{selected}}">
-      <section>
-        <paper-card>
-          <lrn-markdown-editor-editor
-            content="{{content}}"
-          ></lrn-markdown-editor-editor>
-        </paper-card>
-      </section>
-
-      <section>
-        <paper-card>
-          <marked-element markdown="{{content}}"></marked-element>
-        </paper-card>
-      </section>
-
-      <section class="split-pane">
-        <paper-card>
-          <div class="container-flex">
+      <iron-pages selected="{{selected}}">
+        <section>
+          <paper-card>
             <lrn-markdown-editor-editor
               content="{{content}}"
             ></lrn-markdown-editor-editor>
-            <marked-element
-              class="preview-pane"
-              markdown="{{content}}"
-            ></marked-element>
-          </div>
-        </paper-card>
-      </section>
-    </iron-pages>
-  `,
+          </paper-card>
+        </section>
 
-  is: "lrn-markdown-editor",
+        <section>
+          <paper-card>
+            <marked-element markdown="{{content}}"></marked-element>
+          </paper-card>
+        </section>
 
-  properties: {
-    content: {
-      type: String,
-      notify: true
-    },
-    selected: {
-      type: String,
-      value: "0",
-      reflectToAttribute: true
-    },
-    layout: {
-      type: String,
-      value: 0
-    },
-    cookies: {
-      type: Boolean,
-      value: true
-    },
-    elReady: {
-      type: Boolean,
-      value: false
-    }
-  },
+        <section class="split-pane">
+          <paper-card>
+            <div class="container-flex">
+              <lrn-markdown-editor-editor
+                content="{{content}}"
+              ></lrn-markdown-editor-editor>
+              <marked-element
+                class="preview-pane"
+                markdown="{{content}}"
+              ></marked-element>
+            </div>
+          </paper-card>
+        </section>
+      </iron-pages>
+    `;
+  }
 
-  observers: ["_selectedChanged(selected)"],
+  static get tag() {
+    return "lrn-markdown-editor";
+  }
 
-  _selectedChanged: function(selected) {
+  static get properties() {
+    return {
+      content: {
+        type: String,
+        notify: true
+      },
+      selected: {
+        type: String,
+        value: "0",
+        reflectToAttribute: true
+      },
+      layout: {
+        type: String,
+        value: 0
+      },
+      cookies: {
+        type: Boolean,
+        value: true
+      },
+      elReady: {
+        type: Boolean,
+        value: false
+      }
+    };
+  }
+
+  static get observers() {
+    return ["_selectedChanged(selected)"];
+  }
+
+  _selectedChanged(selected) {
     var root = this;
     var cookieName = root._getCookieName();
     // get current cookies
@@ -155,9 +163,9 @@ let LrnMarkdownEditor = Polymer({
        */
       root._eraseCookie(cookieName);
     }
-  },
+  }
 
-  _createCookie: function(name, value, days) {
+  _createCookie(name, value, days) {
     var expires = "";
     if (days) {
       var date = new Date();
@@ -165,9 +173,9 @@ let LrnMarkdownEditor = Polymer({
       expires = "; expires=" + date.toUTCString();
     }
     document.cookie = name + "=" + value + expires + "; path=/";
-  },
+  }
 
-  _readCookie: function(name) {
+  _readCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(";");
     for (var i = 0; i < ca.length; i++) {
@@ -176,17 +184,18 @@ let LrnMarkdownEditor = Polymer({
       if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
     }
     return null;
-  },
+  }
 
-  _eraseCookie: function(name) {
+  _eraseCookie(name) {
     this._createCookie(name, "", -1);
-  },
+  }
 
-  _getCookieName: function() {
+  _getCookieName() {
     return "lrnmarkdowneditorsplitview";
-  },
+  }
 
-  ready: function() {
+  ready() {
+    super.ready();
     var root = this;
     // tell others we are ready
     root.elReady = true;
@@ -199,5 +208,6 @@ let LrnMarkdownEditor = Polymer({
       root.selected = 2;
     }
   }
-});
+}
+window.customElements.define(LrnMarkdownEditor.tag, LrnMarkdownEditor);
 export { LrnMarkdownEditor };

@@ -1,7 +1,11 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-toggle-button/paper-toggle-button.js";
-import "./lib/editable-table-behaviors.js";
+import {
+  displayBehaviors,
+  editBehaviors
+} from "./lib/editable-table-behaviors.js";
 import "./lib/editable-table-editor.js";
 import "./lib/editable-table-display.js";
 /**
@@ -46,95 +50,97 @@ edit mode (editable-table-editor.html).
   summary="...">            //An accessible description of the table, what each row reporesents, and what each column represents.
 </editable-table>
 */
-let EditableTable = Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: block;
-        width: 100%;
+class EditableTable extends displayBehaviors(editBehaviors(PolymerElement)) {
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: block;
+          width: 100%;
+        }
+      </style>
+      <paper-tooltip for="button" position="left"
+        >Edit this table.</paper-tooltip
+      >
+      <template id="display" is="dom-if" if="[[!editMode]]" restamp="true">
+        <editable-table-display
+          accent-color\$="[[accentColor]]"
+          bordered\$="[[bordered]]"
+          caption\$="[[caption]]"
+          column-header\$="[[columnHeader]]"
+          dark\$="[[dark]]"
+          data\$="[[data]]"
+          condensed\$="[[condensed]]"
+          filter\$="[[filter]]"
+          footer\$="[[footer]]"
+          row-header\$="[[rowHeader]]"
+          scroll\$="[[scroll]]"
+          sort\$="[[sort]]"
+          striped\$="[[striped]]"
+          summary\$="[[summary]]"
+        >
+        </editable-table-display>
+      </template>
+      <template id="editor" is="dom-if" if="[[editMode]]" restamp="true">
+        <editable-table-editor
+          accent-color\$="[[accentColor]]"
+          bordered\$="[[bordered]]"
+          caption\$="[[caption]]"
+          column-header\$="[[columnHeader]]"
+          condensed\$="[[condensed]]"
+          dark\$="[[dark]]"
+          data\$="[[data]]"
+          filter\$="[[filter]]"
+          footer\$="[[footer]]"
+          hide-accent-color\$="[[hideAccentColor]]"
+          hide-dark-theme\$="[[hideDarkTheme]]"
+          hide-bordered\$="[[hideBordered]]"
+          hide-condensed\$="[[hideCondensed]]"
+          hide-filter\$="[[hideFilter]]"
+          hide-sort\$="[[hideSort]]"
+          hide-scroll\$="[[hideScroll]]"
+          hide-striped\$="[[hideStriped]]"
+          row-header\$="[[rowHeader]]"
+          scroll\$="[[scroll]]"
+          sort\$="[[sort]]"
+          striped\$="[[striped]]"
+          summary\$="[[summary]]"
+        >
+        </editable-table-editor>
+      </template>
+    `;
+  }
+
+  static get tag() {
+    return "editable-table";
+  }
+  static get properties() {
+    return {
+      /**
+       * Is the table in edit-mode? Default is false (display mode).
+       */
+      editMode: {
+        type: Boolean,
+        value: false
       }
-    </style>
-    <paper-tooltip for="button" position="left">Edit this table.</paper-tooltip>
-    <template id="display" is="dom-if" if="[[!editMode]]" restamp="true">
-      <editable-table-display
-        accent-color\$="[[accentColor]]"
-        bordered\$="[[bordered]]"
-        caption\$="[[caption]]"
-        column-header\$="[[columnHeader]]"
-        dark\$="[[dark]]"
-        data\$="[[data]]"
-        condensed\$="[[condensed]]"
-        filter\$="[[filter]]"
-        footer\$="[[footer]]"
-        row-header\$="[[rowHeader]]"
-        scroll\$="[[scroll]]"
-        sort\$="[[sort]]"
-        striped\$="[[striped]]"
-        summary\$="[[summary]]"
-      >
-      </editable-table-display>
-    </template>
-    <template id="editor" is="dom-if" if="[[editMode]]" restamp="true">
-      <editable-table-editor
-        accent-color\$="[[accentColor]]"
-        bordered\$="[[bordered]]"
-        caption\$="[[caption]]"
-        column-header\$="[[columnHeader]]"
-        condensed\$="[[condensed]]"
-        dark\$="[[dark]]"
-        data\$="[[data]]"
-        filter\$="[[filter]]"
-        footer\$="[[footer]]"
-        hide-accent-color\$="[[hideAccentColor]]"
-        hide-dark-theme\$="[[hideDarkTheme]]"
-        hide-bordered\$="[[hideBordered]]"
-        hide-condensed\$="[[hideCondensed]]"
-        hide-filter\$="[[hideFilter]]"
-        hide-sort\$="[[hideSort]]"
-        hide-scroll\$="[[hideScroll]]"
-        hide-striped\$="[[hideStriped]]"
-        row-header\$="[[rowHeader]]"
-        scroll\$="[[scroll]]"
-        sort\$="[[sort]]"
-        striped\$="[[striped]]"
-        summary\$="[[summary]]"
-      >
-      </editable-table-editor>
-    </template>
-  `,
-
-  is: "editable-table",
-
-  behaviors: [
-    editableTableBehaviors.displayBehaviors,
-    editableTableBehaviors.editBehaviors
-  ],
-
-  properties: {
-    /**
-     * Is the table in edit-mode? Default is false (display mode).
-     */
-    editMode: {
-      type: Boolean,
-      value: false
-    }
-  },
+    };
+  }
 
   /**
    * Toggles between edit-mode and display mode.
    */
-  toggleEditMode: function(edit) {
+  toggleEditMode(edit) {
     let temp;
     edit = edit !== undefined ? edit : !this.editMode;
     if (edit) {
-      this.querySelector("editable-table-display").toggleFilter();
-      this.querySelector("editable-table-display").sortData(false);
-      temp = this.querySelector("editable-table-display").getData();
+      this.shadowRoot.querySelector("editable-table-display").toggleFilter();
+      this.shadowRoot.querySelector("editable-table-display").sortData(false);
+      temp = this.shadowRoot.querySelector("editable-table-display").getData();
       console.log(temp);
     } else {
-      temp = this.querySelector("editable-table-editor").getData();
+      temp = this.shadowRoot.querySelector("editable-table-editor").getData();
     }
-    for (prop in temp) {
+    for (var prop in temp) {
       if (prop !== "data") {
         this[prop] = temp[prop];
       } else {
@@ -143,5 +149,6 @@ let EditableTable = Polymer({
     }
     this.editMode = edit;
   }
-});
+}
+window.customElements.define(EditableTable.tag, EditableTable);
 export { EditableTable };

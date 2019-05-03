@@ -1,7 +1,9 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import "@polymer/polymer/lib/elements/dom-if.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { AppLocalizeBehavior } from "@polymer/app-localize-behavior/app-localize-behavior.js";
+import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
 import "./eco-json-schema-array.js";
 import "./eco-json-schema-boolean.js";
@@ -281,77 +283,86 @@ el.error = {
 @element eco-json-schema-object
 * @demo demo/index.html
 */
-Polymer({
-  is: "eco-json-schema-object",
-  _template: html`
-    <custom-style>
-      <style is="custom-style" include="iron-flex iron-flex-alignment">
-        div.layout {
-          height: auto;
-        }
-        #form {
-          display: block;
-          @apply --eco-json-schema-object-form;
-          @apply --layout-vertical;
-          @apply --layout-wrap;
-        }
-        #form ::slotted(paper-input) {
-          --paper-input-container-shared-input-style: {
-            border: none !important;
-            width: 100% !important;
-            background-color: transparent !important;
+class EcoJsonSchemaObject extends mixinBehaviors(
+  [AppLocalizeBehavior],
+  PolymerElement
+) {
+  static get tag() {
+    return "eco-json-schema-object";
+  }
+  static get template() {
+    return html`
+      <custom-style>
+        <style is="custom-style" include="iron-flex iron-flex-alignment">
+          div.layout {
+            height: auto;
           }
-        }
-      </style>
-    </custom-style>
+          #form {
+            display: block;
+            @apply --eco-json-schema-object-form;
+            @apply --layout-vertical;
+            @apply --layout-wrap;
+          }
+          #form ::slotted(paper-input) {
+            --paper-input-container-shared-input-style: {
+              border: none !important;
+              width: 100% !important;
+              background-color: transparent !important;
+            }
+          }
+        </style>
+      </custom-style>
 
-    <template is="dom-if" if="{{!wizard}}">
-      <div class="header" hidden\$="[[!label]]">[[label]]</div>
-    </template>
-    <div class="layout vertical flex start-justified">
-      <div id="form" class="layout horizontal flex start-justified">
-        <slot></slot>
+      <template is="dom-if" if="{{!wizard}}">
+        <div class="header" hidden\$="[[!label]]">[[label]]</div>
+      </template>
+      <div class="layout vertical flex start-justified">
+        <div id="form" class="layout horizontal flex start-justified">
+          <slot></slot>
+        </div>
       </div>
-    </div>
-  `,
-  behaviors: [AppLocalizeBehavior],
-  properties: {
-    language: {
-      value: "en"
-    },
-    resources: {
-      value: function() {
-        return {};
+    `;
+  }
+  static get properties() {
+    return {
+      language: {
+        value: "en"
+      },
+      resources: {
+        value() {
+          return {};
+        }
+      },
+      schema: {
+        type: Object,
+        notify: true,
+        observer: "_schemaChanged"
+      },
+      label: {
+        type: String
+      },
+      value: {
+        type: Object,
+        notify: true,
+        value() {
+          return {};
+        }
+      },
+      error: {
+        type: Object,
+        observer: "_errorChanged"
+      },
+      wizard: {
+        type: Boolean,
+        notify: true
       }
-    },
-    schema: {
-      type: Object,
-      notify: true,
-      observer: "_schemaChanged"
-    },
-    label: {
-      type: String
-    },
-    value: {
-      type: Object,
-      notify: true,
-      value: function() {
-        return {};
-      }
-    },
-    error: {
-      type: Object,
-      observer: "_errorChanged"
-    },
-    wizard: {
-      type: Boolean,
-      notify: true
-    }
-  },
-  detached: function() {
+    };
+  }
+  disconnectedCallback() {
     this._clearForm();
-  },
-  _buildSchemaProperties: function() {
+    super.disconnectedCallback();
+  }
+  _buildSchemaProperties() {
     var ctx = this;
 
     this._schemaProperties = Object.keys(this.schema.properties || []).map(
@@ -420,8 +431,8 @@ Polymer({
         return property;
       }
     );
-  },
-  _schemaPropertyChanged: function(event, detail) {
+  }
+  _schemaPropertyChanged(event, detail) {
     if (detail.path && /\.length$/.test(detail.path)) {
       return;
     }
@@ -486,8 +497,8 @@ Polymer({
       this.set(path, this._deepClone(detail.value));
       this.notifyPath(path);
     }
-  },
-  _setValue: function() {
+  }
+  _setValue() {
     var value = {};
     this._schemaProperties.forEach(property => {
       if (typeof property.value !== typeof undefined) {
@@ -496,8 +507,8 @@ Polymer({
     });
     this.set("value", value);
     this.notifyPath("value.*");
-  },
-  _buildForm: function() {
+  }
+  _buildForm() {
     this._schemaProperties.forEach(property => {
       var el = this.create(property.component.name, {
         label: property.label,
@@ -542,8 +553,8 @@ Polymer({
         }
       }
     });
-  },
-  _removePropertyEl: function(el) {
+  }
+  _removePropertyEl(el) {
     if (typeof el.schemaProperty !== typeof undefined) {
       this.unlisten(
         el,
@@ -555,24 +566,24 @@ Polymer({
     }
     el.schemaProperty = null;
     dom(this).removeChild(el);
-  },
-  _clearForm: function() {
+  }
+  _clearForm() {
     if (typeof this.$ !== typeof undefined) {
       var formEl = dom(this);
       while (formEl.firstChild) {
         this._removePropertyEl(formEl.firstChild);
       }
     }
-  },
-  _schemaChanged: function(newValue, oldValue) {
+  }
+  _schemaChanged(newValue, oldValue) {
     if (newValue) {
       this._clearForm();
       this._buildSchemaProperties();
       this._buildForm();
       this._setValue();
     }
-  },
-  _errorChanged: function() {
+  }
+  _errorChanged() {
     dom(this).childNodes.forEach(el => {
       var name = el.getAttribute("name");
       if (this.error && this.error[name]) {
@@ -581,53 +592,55 @@ Polymer({
         el.error = null;
       }
     });
-  },
-  _deepClone: function(o) {
+  }
+  _deepClone(o) {
     return JSON.parse(JSON.stringify(o));
-  },
-  _isSchemaValue: function(type) {
+  }
+  _isSchemaValue(type) {
     return (
       this._isSchemaBoolean(type) ||
       this._isSchemaNumber(type) ||
       this._isSchemaString(type) ||
       this._isSchemaFile(type)
     );
-  },
-  _isSchemaFile: function(type) {
+  }
+  _isSchemaFile(type) {
     if (Array.isArray(type)) {
       return type.indexOf("file") !== -1;
     } else {
       return type === "file";
     }
-  },
-  _isSchemaBoolean: function(type) {
+  }
+  _isSchemaBoolean(type) {
     if (Array.isArray(type)) {
       return type.indexOf("boolean") !== -1;
     } else {
       return type === "boolean";
     }
-  },
-  _isSchemaEnum: function(schema) {
+  }
+  _isSchemaEnum(schema) {
     return !!schema.enum;
-  },
-  _isSchemaNumber: function(type) {
+  }
+  _isSchemaNumber(type) {
     if (Array.isArray(type)) {
       return type.indexOf("number") !== -1 || type.indexOf("integer") !== -1;
     } else {
       return type === "number" || type === "integer";
     }
-  },
-  _isSchemaString: function(type) {
+  }
+  _isSchemaString(type) {
     if (Array.isArray(type)) {
       return type.indexOf("string") !== -1;
     } else {
       return type === "string";
     }
-  },
-  _isSchemaObject: function(type) {
+  }
+  _isSchemaObject(type) {
     return type === "object";
-  },
-  _isSchemaArray: function(type) {
+  }
+  _isSchemaArray(type) {
     return type === "array";
   }
-});
+}
+window.customElements.define(EcoJsonSchemaObject.tag, EcoJsonSchemaObject);
+export { EcoJsonSchemaObject };

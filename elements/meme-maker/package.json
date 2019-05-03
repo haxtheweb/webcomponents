@@ -41,7 +41,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/hax-body-behaviors": "^2.0.10",
-    "@polymer/polymer": "^3.2.0"
+    "lit-element": "^2.1.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.0.9",

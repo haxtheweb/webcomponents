@@ -1,8 +1,9 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@polymer/paper-styles/shadow.js";
 /**
  * `lrndesign-blockquote`
@@ -13,10 +14,21 @@ import "@polymer/paper-styles/shadow.js";
  * @webcomponent
  * @demo demo/index.html
  */
-let LrndesignBlockquote = Polymer({
-  _template: html`
-    <custom-style>
-      <style is="custom-style" include="simple-colors">
+class LrndesignBlockquote extends SchemaBehaviors(PolymerElement) {
+  constructor() {
+    super();
+    afterNextRender(this, function() {
+      this.HAXWiring = new HAXWiring();
+      this.HAXWiring.setup(
+        LrndesignBlockquote.haxProperties,
+        LrndesignBlockquote.tag,
+        this
+      );
+    });
+  }
+  static get template() {
+    return html`
+      <style include="simple-colors">
         :host {
           display: inline-block;
           position: relative;
@@ -550,68 +562,71 @@ let LrndesignBlockquote = Polymer({
           filter: none;
         }
       </style>
-    </custom-style>
-    <div id="wrap" class="mb-wrap">
-      <div id="thumb" class="mb-thumb"></div>
-      <blockquote cite$="[[sourceLink]]">
-        <p><slot></slot></p>
-      </blockquote>
-      <div class="mb-attribution">
-        <p class="mb-author">[[author]]</p>
-        <cite><a href$="[[sourceLink]]">[[citation]]</a></cite>
+
+      <div id="wrap" class="mb-wrap">
+        <div id="thumb" class="mb-thumb"></div>
+        <blockquote cite$="[[sourceLink]]">
+          <p><slot></slot></p>
+        </blockquote>
+        <div class="mb-attribution">
+          <p class="mb-author">[[author]]</p>
+          <cite><a href$="[[sourceLink]]">[[citation]]</a></cite>
+        </div>
       </div>
-    </div>
-  `,
+    `;
+  }
 
-  is: "lrndesign-blockquote",
+  static get tag() {
+    return "lrndesign-blockquote";
+  }
 
-  behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
-
-  properties: {
-    /**
-     * Source being cited
-     */
-    citation: {
-      type: String,
-      notify: true
-    },
-    /**
-     * Optional image to use
-     */
-    image: {
-      type: String,
-      notify: true,
-      observer: "_imageChanged"
-    },
-    /**
-     * Optional author of the quote
-     */
-    author: {
-      type: String,
-      notify: true
-    },
-    /**
-     * Optional source that links to where the quote is from
-     */
-    sourceLink: {
-      type: String,
-      notify: true
-    },
-    /**
-     * Funny 1900s vision.
-     */
-    displayMode: {
-      type: String,
-      reflectToAttribute: true,
-      notify: true,
-      value: "default",
-      observer: "_displayModeChanged"
-    }
-  },
+  static get properties() {
+    return {
+      /**
+       * Source being cited
+       */
+      citation: {
+        type: String,
+        notify: true
+      },
+      /**
+       * Optional image to use
+       */
+      image: {
+        type: String,
+        notify: true,
+        observer: "_imageChanged"
+      },
+      /**
+       * Optional author of the quote
+       */
+      author: {
+        type: String,
+        notify: true
+      },
+      /**
+       * Optional source that links to where the quote is from
+       */
+      sourceLink: {
+        type: String,
+        notify: true
+      },
+      /**
+       * Funny 1900s vision.
+       */
+      displayMode: {
+        type: String,
+        reflectToAttribute: true,
+        notify: true,
+        value: "default",
+        observer: "_displayModeChanged"
+      }
+    };
+  }
   /**
    * Notice display mode change activated so load the font
    */
-  _imageChanged: function(newValue, oldValue) {
+  _imageChanged(newValue, oldValue) {
     if (this.displayMode == "hypercard") {
       this.$.wrap.style.cssText = "";
       this.$.thumb.style.cssText = "";
@@ -624,11 +639,11 @@ let LrndesignBlockquote = Polymer({
       this.$.thumb.style.cssText =
         "background: url(" + newValue + ") no-repeat center center";
     }
-  },
+  }
   /**
    * Notice display mode change activated so load the font
    */
-  _displayModeChanged: function(newValue, oldValue) {
+  _displayModeChanged(newValue, oldValue) {
     if (newValue == "hypercard") {
       this.$.wrap.style.cssText = "";
       this.$.thumb.style.cssText = "";
@@ -652,14 +667,9 @@ let LrndesignBlockquote = Polymer({
       this.$.thumb.style.cssText =
         "background: url(" + this.image + ") no-repeat center center";
     }
-  },
-
-  /**
-   * Attached.
-   */
-  attached: function() {
-    // Establish hax properties if they exist
-    let props = {
+  }
+  static get haxProperties() {
+    return {
       canScale: true,
       canPosition: true,
       canEditSource: true,
@@ -779,7 +789,7 @@ let LrndesignBlockquote = Polymer({
         advanced: []
       }
     };
-    this.setHaxProperties(props);
   }
-});
+}
+window.customElements.define(LrndesignBlockquote.tag, LrndesignBlockquote);
 export { LrndesignBlockquote };

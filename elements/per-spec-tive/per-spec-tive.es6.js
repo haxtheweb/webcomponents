@@ -1,12 +1,10 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@polymer/iron-list/iron-list.js";import"./node_modules/@polymer/iron-ajax/iron-ajax.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@polymer/paper-icon-button/paper-icon-button.js";import"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";/**
-`per-spec-tive`
-Giving learners a new perspective on education.
-
-@demo ../../demo/index.html
-
-@microcopy - the mental model for this app
- - perspective - a change in viewpoint, angle of seeing something
-*/let PerSpecTive=Polymer({_template:html`
+import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import"./node_modules/@polymer/iron-ajax/iron-ajax.js";/**
+ * `per-spec-tive`
+ * Giving learners a new perspective on education.
+ * @demo ../../demo/index.html
+ * @microcopy - the mental model for this app
+ * - perspective - a change in viewpoint, angle of seeing something
+ */class PerSpecTive extends PolymerElement{constructor(){super();import("./node_modules/@polymer/paper-button/paper-button.js");import("./node_modules/@polymer/paper-card/paper-card.js");import("./node_modules/@polymer/iron-list/iron-list.js");import("./node_modules/@polymer/iron-icons/iron-icons.js");import("./node_modules/@polymer/paper-icon-button/paper-icon-button.js")}static get template(){return html`
     <style>
       :host {
         display: block;
@@ -51,19 +49,18 @@ Giving learners a new perspective on education.
           </div>
         </paper-card>
       </template>
-    </iron-list>
-  `,is:"per-spec-tive",properties:{/**
-     * State of outline loading
-     */outlineLoading:{type:Boolean,reflectToAttribute:!0},/**
-     * Location of data to kick us off
-     */endPoint:{type:String},/**
-     * Outline data loaded from endPoint.
-     */_outlineData:{type:Object,observer:"_outlineRawDataChanged"},/**
-     * Outline
-     */outline:{type:Array,observer:"_outlineChanged"}},/**
+    </iron-list>`}static get tag(){return"per-spec-tive"}static get properties(){return{/**
+       * State of outline loading
+       */outlineLoading:{type:Boolean,reflectToAttribute:!0},/**
+       * Location of data to kick us off
+       */endPoint:{type:String},/**
+       * Outline data loaded from endPoint.
+       */_outlineData:{type:Object,observer:"_outlineRawDataChanged"},/**
+       * Outline
+       */outline:{type:Array,observer:"_outlineChanged"}}}/**
    * Notice outline data has changed off the end point
-   */_outlineRawDataChanged:function(newValue,oldValue){if(null!=newValue&&typeof newValue.items!==typeof void 0){this.set("outline",[]);this.set("outline",newValue.items)}},/**
+   */_outlineRawDataChanged(newValue,oldValue){if(null!=newValue&&typeof newValue.items!==typeof void 0){this.set("outline",[]);this.set("outline",newValue.items)}}/**
    * Notice items in the outline have changed.
-   */_outlineChanged:function(newValue,oldValue){},/**
+   */_outlineChanged(newValue,oldValue){}/**
    * Simple way to convert from object to array.
-   */_toArray:function(obj){return Object.keys(obj).map(function(key){return obj[key]})}});export{PerSpecTive};
+   */_toArray(obj){return Object.keys(obj).map(function(key){return obj[key]})}}window.customElements.define(PerSpecTive.tag,PerSpecTive);export{PerSpecTive};

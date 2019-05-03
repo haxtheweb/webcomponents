@@ -2,21 +2,25 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/paper-styles/paper-styles.js";
 import "@polymer/iron-flex-layout/iron-flex-layout.js";
 import { IronResizableBehavior } from "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
-
+import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 /**
  * `circle-progress`
  * `Polymer-based web component displaying a circular progress bar.`
  *
  * @demo demo/index.html
  */
-let CircleProgress = Polymer({
-  _template: html`
-    <custom-style>
-      <style is="custom-style" include="paper-material-styles">
+class CircleProgress extends mixinBehaviors(
+  [IronResizableBehavior],
+  PolymerElement
+) {
+  static get template() {
+    return html`
+      <style include="paper-material-styles">
         :host {
           @apply --layout-vertical;
           @apply --layout-center-center;
@@ -41,134 +45,149 @@ let CircleProgress = Polymer({
           stroke-linecap: var(--circle-progress-stroke-linecap, round);
         }
       </style>
-    </custom-style>
-    <svg id="circle" width="100%" height="100%">
-      <circle
-        class="circle-background"
-        r\$="[[_radius]]"
-        cx\$="[[_cx]]"
-        cy\$="[[_cy]]"
-        fill="transparent"
-        stroke-width\$="[[strokeWidth]]"
-      ></circle>
-      <circle
-        class="circle-foreground"
-        r\$="[[_radius]]"
-        cx\$="[[_cx]]"
-        cy\$="[[_cy]]"
-        fill="transparent"
-        stroke-width\$="[[strokeWidth]]"
-        stroke-dasharray\$="[[_dasharray]]"
-        stroke-dashoffset\$="[[_dashoffset]]"
-        transform\$="[[_transform]]"
-      ></circle>
-    </svg>
-    <slot></slot>
-  `,
 
-  is: "circle-progress",
-  behaviors: [IronResizableBehavior],
+      <svg id="circle" width="100%" height="100%">
+        <circle
+          class="circle-background"
+          r\$="[[_radius]]"
+          cx\$="[[_cx]]"
+          cy\$="[[_cy]]"
+          fill="transparent"
+          stroke-width\$="[[strokeWidth]]"
+        ></circle>
+        <circle
+          class="circle-foreground"
+          r\$="[[_radius]]"
+          cx\$="[[_cx]]"
+          cy\$="[[_cy]]"
+          fill="transparent"
+          stroke-width\$="[[strokeWidth]]"
+          stroke-dasharray\$="[[_dasharray]]"
+          stroke-dashoffset\$="[[_dashoffset]]"
+          transform\$="[[_transform]]"
+        ></circle>
+      </svg>
+      <slot></slot>
+    `;
+  }
 
-  properties: {
-    /**
-     * Value of circular progress bar.
-     */
-    value: {
-      name: "value",
-      type: "Number",
-      value: 0
-    },
+  static get tag() {
+    return "circle-progress";
+  }
 
-    /**
-     * Maximum of value.
-     */
-    max: {
-      name: "max",
-      type: "Number",
-      value: 100
-    },
+  static get properties() {
+    let props = {
+      /**
+       * Value of circular progress bar.
+       */
+      value: {
+        name: "value",
+        type: "Number",
+        value: 0
+      },
 
-    /**
-     * Stroke width of circle.
-     */
-    strokeWidth: {
-      name: "strokeWidth",
-      type: "Number",
-      value: 4
-    },
+      /**
+       * Maximum of value.
+       */
+      max: {
+        name: "max",
+        type: "Number",
+        value: 100
+      },
 
-    /**
-     * Starting angle of the progress.
-     */
-    angle: {
-      name: "angle",
-      type: "Number",
-      value: -90
-    },
+      /**
+       * Stroke width of circle.
+       */
+      strokeWidth: {
+        name: "strokeWidth",
+        type: "Number",
+        value: 4
+      },
 
-    _cx: {
-      name: "_cx",
-      type: "Number",
-      value: null
-    },
+      /**
+       * Starting angle of the progress.
+       */
+      angle: {
+        name: "angle",
+        type: "Number",
+        value: -90
+      },
 
-    _cy: {
-      name: "_cy",
-      type: "Number",
-      value: null
-    },
+      _cx: {
+        name: "_cx",
+        type: "Number",
+        value: null
+      },
 
-    _radius: {
-      name: "_radius",
-      type: "Number",
-      computed: "_computeRadius(_cx, _cy, strokeWidth)"
-    },
+      _cy: {
+        name: "_cy",
+        type: "Number",
+        value: null
+      },
 
-    _transform: {
-      name: "_transform",
-      type: "String",
-      computed: "_computeTransform(angle, _cx, _cy)"
-    },
+      _radius: {
+        name: "_radius",
+        type: "Number",
+        computed: "_computeRadius(_cx, _cy, strokeWidth)"
+      },
 
-    _dasharray: {
-      name: "_dasharray",
-      type: "Number",
-      computed: "_computeDashArray(_radius)"
-    },
+      _transform: {
+        name: "_transform",
+        type: "String",
+        computed: "_computeTransform(angle, _cx, _cy)"
+      },
 
-    _dashoffset: {
-      name: "_dashoffset",
-      type: "Number",
-      computed: "_computeDashOffset(value, max, _dasharray)"
+      _dasharray: {
+        name: "_dasharray",
+        type: "Number",
+        computed: "_computeDashArray(_radius)"
+      },
+
+      _dashoffset: {
+        name: "_dashoffset",
+        type: "Number",
+        computed: "_computeDashOffset(value, max, _dasharray)"
+      }
+    };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
     }
-  },
+    return props;
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, function() {
+      this.addEventListener("iron-resize", this._onIronResize.bind(this));
+    });
+  }
+  disconnectedCallback() {
+    this.removeEventListener("iron-resize", this._onIronResize.bind(this));
+    super.disconnectedCallback();
+  }
 
-  listeners: {
-    "iron-resize": "_onIronResize"
-  },
-
-  _computeDashArray: function(radius) {
+  _computeDashArray(radius) {
     return 2 * Math.PI * radius;
-  },
+  }
 
-  _computeDashOffset: function(value, max, dasharray) {
+  _computeDashOffset(value, max, dasharray) {
     return (1 - value / max) * dasharray;
-  },
+  }
 
-  _computeRadius: function(cx, cy, strokeWidth) {
+  _computeRadius(cx, cy, strokeWidth) {
     return cx && cy ? Math.max(0, Math.min(cx, cy) - strokeWidth / 2) : 0;
-  },
+  }
 
-  _computeTransform: function(angle, cx, cy) {
+  _computeTransform(angle, cx, cy) {
     return cx && cy ? "rotate(" + angle + ", " + cx + ", " + cy + ")" : "";
-  },
+  }
 
-  _onIronResize: function() {
+  _onIronResize() {
     if (this.offsetWidth && this.offsetHeight) {
       this._cx = this.offsetWidth / 2;
       this._cy = this.offsetHeight / 2;
       this.$.circle.style.display = "block";
     }
   }
-});
+}
+window.customElements.define(CircleProgress.tag, CircleProgress);
 export { CircleProgress };

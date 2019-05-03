@@ -1,7 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/paper-card/paper-card.js";
 import "./hax-shared-styles.js";
 /**
  * `hax-stax-browser-item`
@@ -11,6 +9,8 @@ class HaxStaxBrowserItem extends PolymerElement {
   constructor() {
     super();
     import("@polymer/iron-image/iron-image.js");
+    import("@polymer/paper-button/paper-button.js");
+    import("@polymer/paper-card/paper-card.js");
   }
   static get template() {
     return html`

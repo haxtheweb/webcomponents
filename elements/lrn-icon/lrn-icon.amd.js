@@ -1,4 +1,4 @@
-define(["exports","./node_modules/@polymer/polymer/polymer-legacy.js","./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js","./node_modules/@polymer/iron-meta/iron-meta.js","./node_modules/@polymer/iron-flex-layout/iron-flex-layout.js","./node_modules/@lrnwebcomponents/lrn-shared-styles/lrn-shared-styles.js"],function(_exports,_polymerLegacy,_polymerDom,_ironMeta,_ironFlexLayout,_lrnSharedStyles){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.LrnIcon=void 0;function _templateObject_2171bc406a8411e9825db31b98a6ef1c(){var data=babelHelpers.taggedTemplateLiteral(["\n    <style include=\"lrn-shared-styles\">\n      :host {\n        position: relative;\n\n        vertical-align: middle;\n\n        fill: var(--lrn-icon-fill-color, currentcolor);\n        stroke: var(--lrn-icon-stroke-color, none);\n\n        width: var(--lrn-icon-width, 24px);\n        height: var(--lrn-icon-height, 24px);\n        @apply --layout-inline;\n        @apply --layout-center-center;\n        @apply --lrn-icon;\n      }\n    </style>\n    <iron-icon icon$=\"lrn:[[icon]]\"></iron-icon>\n  "]);_templateObject_2171bc406a8411e9825db31b98a6ef1c=function _templateObject_2171bc406a8411e9825db31b98a6ef1c(){return data};return data}/**
+define(["exports","./node_modules/@polymer/polymer/polymer-element.js","./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js","./node_modules/@polymer/iron-meta/iron-meta.js","./node_modules/@polymer/iron-flex-layout/iron-flex-layout.js","./node_modules/@lrnwebcomponents/lrn-shared-styles/lrn-shared-styles.js"],function(_exports,_polymerElement,_polymerDom,_ironMeta,_ironFlexLayout,_lrnSharedStyles){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.LrnIcon=void 0;function _templateObject_cf26d3a06d6a11e9ba55cd77ba7fbde0(){var data=babelHelpers.taggedTemplateLiteral(["\n    <style include=\"lrn-shared-styles\">\n      :host {\n        position: relative;\n\n        vertical-align: middle;\n\n        fill: var(--lrn-icon-fill-color, currentcolor);\n        stroke: var(--lrn-icon-stroke-color, none);\n\n        width: var(--lrn-icon-width, 24px);\n        height: var(--lrn-icon-height, 24px);\n        @apply --layout-inline;\n        @apply --layout-center-center;\n        @apply --lrn-icon;\n      }\n    </style>\n    <iron-icon icon$=\"lrn:[[icon]]\"></iron-icon>"]);_templateObject_cf26d3a06d6a11e9ba55cd77ba7fbde0=function _templateObject_cf26d3a06d6a11e9ba55cd77ba7fbde0(){return data};return data}/**
 This is a fork of https://github.com/PolymerElements/lrn-icon
 @license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
@@ -19,7 +19,7 @@ Example setting size to 32px x 32px:
 
     <lrn-icon class="big" src="big_star.png"></lrn-icon>
 
-    <style is="custom-style">
+    <style>
       .big {
         --lrn-icon-height: 32px;
         --lrn-icon-width: 32px;
@@ -75,14 +75,14 @@ Custom property | Description | Default
 * @demo demo/index.html
 @hero hero.svg
 @homepage polymer.github.io
-*/var LrnIcon=(0,_polymerLegacy.Polymer)({_template:(0,_polymerLegacy.html)(_templateObject_2171bc406a8411e9825db31b98a6ef1c()),is:"lrn-icon",properties:{/**
-     * The name of the icon to use. The name should be of the form:
-     * `iconset_name:icon_name`.
-     */icon:{type:String},/**
-     * The name of the theme to used, if one is specified by the
-     * iconset.
-     */theme:{type:String},/**
-     * If using lrn-icon without an iconset, you can set the src to be
-     * the URL of an individual icon image file. Note that this will take
-     * precedence over a given icon attribute.
-     */src:{type:String},_meta:{value:document.createElement("iron-meta",{type:"iconset"})}},observers:["_updateIcon(_meta, isAttached)","_updateIcon(theme, isAttached)","_srcChanged(src, isAttached)","_iconChanged(icon, isAttached)"],_DEFAULT_ICONSET:"lrn",_iconChanged:function _iconChanged(icon){this._iconName=icon;this._iconsetName=this._DEFAULT_ICONSET;this._updateIcon()},_srcChanged:function _srcChanged(src){this._updateIcon()},_usesIconset:function _usesIconset(){return this.icon||!this.src},/** @suppress {visibility} */_updateIcon:function _updateIcon(){if(this._usesIconset()){if(this._img&&this._img.parentNode){(0,_polymerDom.dom)(this.root).removeChild(this._img)}if(""===this._iconName){if(this._iconset){this._iconset.removeIcon(this)}}else if(this._iconsetName&&this._meta){this._iconset=this._meta.byKey(this._iconsetName);if(this._iconset){this._iconset.applyIcon(this,this._iconName,this.theme);this.unlisten(window,"lrn-iconset-added","_updateIcon")}else{this.listen(window,"lrn-iconset-added","_updateIcon")}}}else{if(this._iconset){this._iconset.removeIcon(this)}if(!this._img){this._img=document.createElement("img");this._img.style.width="100%";this._img.style.height="100%";this._img.draggable=!1}this._img.src=this.src;(0,_polymerDom.dom)(this.root).appendChild(this._img)}}});_exports.LrnIcon=LrnIcon});
+*/var LrnIcon=/*#__PURE__*/function(_PolymerElement){babelHelpers.inherits(LrnIcon,_PolymerElement);function LrnIcon(){babelHelpers.classCallCheck(this,LrnIcon);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(LrnIcon).apply(this,arguments))}babelHelpers.createClass(LrnIcon,[{key:"_iconChanged",value:function _iconChanged(icon){this._iconName=icon;this._iconsetName="lrn";this._updateIcon()}},{key:"_srcChanged",value:function _srcChanged(src){this._updateIcon()}},{key:"_usesIconset",value:function _usesIconset(){return this.icon||!this.src}/** @suppress {visibility} */},{key:"_updateIcon",value:function _updateIcon(){if(this._usesIconset()){if(this._img&&this._img.parentNode){(0,_polymerDom.dom)(this.root).removeChild(this._img)}if(""===this._iconName){if(this._iconset){this._iconset.removeIcon(this)}}else if(this._iconsetName&&this._meta){this._iconset=this._meta.byKey(this._iconsetName);if(this._iconset){this._iconset.applyIcon(this,this._iconName,this.theme);this.unlisten(window,"lrn-iconset-added","_updateIcon")}else{this.listen(window,"lrn-iconset-added","_updateIcon")}}}else{if(this._iconset){this._iconset.removeIcon(this)}if(!this._img){this._img=document.createElement("img");this._img.style.width="100%";this._img.style.height="100%";this._img.draggable=!1}this._img.src=this.src;(0,_polymerDom.dom)(this.root).appendChild(this._img)}}}],[{key:"template",get:function get(){return(0,_polymerElement.html)(_templateObject_cf26d3a06d6a11e9ba55cd77ba7fbde0())}},{key:"tag",get:function get(){return"lrn-icon"}},{key:"properties",get:function get(){return{/**
+       * The name of the icon to use. The name should be of the form:
+       * `iconset_name:icon_name`.
+       */icon:{type:String},/**
+       * The name of the theme to used, if one is specified by the
+       * iconset.
+       */theme:{type:String},/**
+       * If using lrn-icon without an iconset, you can set the src to be
+       * the URL of an individual icon image file. Note that this will take
+       * precedence over a given icon attribute.
+       */src:{type:String},_meta:{value:document.createElement("iron-meta",{type:"iconset"})}}}},{key:"observers",get:function get(){return["_updateIcon(_meta, isAttached)","_updateIcon(theme, isAttached)","_srcChanged(src, isAttached)","_iconChanged(icon, isAttached)"]}}]);return LrnIcon}(_polymerElement.PolymerElement);_exports.LrnIcon=LrnIcon;window.customElements.define(LrnIcon.tag,LrnIcon)});

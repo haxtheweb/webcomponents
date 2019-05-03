@@ -1,61 +1,66 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "./lib/gitgraph.js/src/gitgraph.js";
 /**
-`lrn-gitgraph`
-A LRN element
+ * `lrn-gitgraph`
+ * For each branch in your repo use the following git command:
+ *   ```
+ *   git log [branch_name] --format='{"refs": "%d", "commit": "%h", "tree": "%t", "parent": "%p", "subject": "%s", "date": "%cd", "author": "%an %ae"},' --reverse
+ *   ```
+ * @demo demo/index.html
+ */
+class LrnGitgraph extends PolymerElement {
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: block;
+          overflow-x: scroll;
+        }
+      </style>
+      <canvas id="gitGraph"></canvas>
+    `;
+  }
 
-For each branch in your repo use the following git command:
-```
-git log [branch_name] --format='{"refs": "%d", "commit": "%h", "tree": "%t", "parent": "%p", "subject": "%s", "date": "%cd", "author": "%an %ae"},' --reverse
-```
+  static get tag() {
+    return "lrn-gitgraph";
+  }
 
-* @demo demo/index.html
-*/
-let LrnGitgraph = Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: block;
-        overflow-x: scroll;
+  static get properties() {
+    return {
+      commits: {
+        type: Array,
+        value: []
+      },
+      template: {
+        type: String,
+        value: "blackarrow"
+      },
+      orientation: {
+        type: String,
+        value: "horizontal"
+      },
+      mode: {
+        type: String,
+        value: ""
+      },
+      reverseArrow: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * @type {{template: String, reverseArrow: Boolean, orientation: String, element: Object}}
+       */
+      config: {
+        type: Object
       }
-    </style>
-    <canvas id="gitGraph"></canvas>
-  `,
+    };
+  }
 
-  is: "lrn-gitgraph",
+  static get observers() {
+    return ["_commitsChanged(commits)"];
+  }
 
-  properties: {
-    commits: {
-      type: Array,
-      value: []
-    },
-    template: {
-      type: String,
-      value: "blackarrow"
-    },
-    orientation: {
-      type: String,
-      value: "horizontal"
-    },
-    mode: {
-      type: String,
-      value: ""
-    },
-    reverseArrow: {
-      type: Boolean,
-      value: false
-    },
-    /**
-     * @type {{template: String, reverseArrow: Boolean, orientation: String, element: Object}}
-     */
-    config: {
-      type: Object
-    }
-  },
-
-  observers: ["_commitsChanged(commits)"],
-
-  _commitsChanged: function(commits) {
+  _commitsChanged(commits) {
     var root = this;
     if (root.config) {
       if (commits.length > 0) {
@@ -95,9 +100,9 @@ let LrnGitgraph = Polymer({
         });
       }
     }
-  },
+  }
 
-  _treeRemoveDuplicates: function(tree) {
+  _treeRemoveDuplicates(tree) {
     var htTree = [];
     var htCommits = [];
     tree.forEach(function(t) {
@@ -107,9 +112,10 @@ let LrnGitgraph = Polymer({
       }
     });
     return htTree;
-  },
+  }
 
-  ready: function() {
+  ready() {
+    super.ready();
     var root = this;
     var config = {
       template: root.template, // could be: "blackarrow" or "metro" or `myTemplate` (custom Template object)
@@ -122,5 +128,6 @@ let LrnGitgraph = Polymer({
     }
     root.config = config;
   }
-});
+}
+window.customElements.define(LrnGitgraph.tag, LrnGitgraph);
 export { LrnGitgraph };

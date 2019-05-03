@@ -215,13 +215,12 @@ app-drawer-layout[narrow] site-menu-button[type="prev"] {
 :host([opened]) app-drawer-layout[narrow] site-menu-button[type="next"] {
   display: none;
 }</style>
-<custom-style>
-  <style>
+<style>
   html,body {
     background-color: #FAFAFA;
   }
   </style>
-</custom-style>
+
 <style include="simple-colors"></style>
 <app-drawer-layout>
   <paper-icon-button id="menubutton" icon="menu" on-tap="toggleDrawer"></paper-icon-button>
