@@ -346,6 +346,10 @@ Polymer({
     wizard: {
       type: Boolean,
       notify: true
+    },
+    __firstField: {
+      type: Object,
+      value: null
     }
   },
   detached: function() {
@@ -498,7 +502,7 @@ Polymer({
     this.notifyPath("value.*");
   },
   _buildForm: function() {
-    let first = null;
+    this.__firstField = null;
     this._schemaProperties.forEach(property => {
       var el = this.create(property.component.name, {
         label: property.label,
@@ -507,7 +511,7 @@ Polymer({
         language: this.language,
         resources: this.resources
       });
-      if (first === null) first = el;
+      if (this.__firstField === null) this.__firstField = el;
       if (property.component.name === "paper-input") {
         el.style["background-color"] = "transparent";
         el.style["width"] = "100%";
@@ -551,7 +555,7 @@ Polymer({
         composed: true,
         detail: {
           form: this,
-          firstField: first
+          firstField: this.__firstField
         }
       })
     );
@@ -642,5 +646,9 @@ Polymer({
   },
   _isSchemaArray: function(type) {
     return type === "array";
+  },
+  focus: function() {
+    console.log(this.__firstField);
+    if (this.__firstField !== null) this.__firstField.focus();
   }
 });
