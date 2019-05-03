@@ -1,4 +1,12 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/paper-fab/paper-fab.js";import"./node_modules/@lrnwebcomponents/paper-fab-speed-dial/paper-fab-speed-dial.js";import"./node_modules/@lrnwebcomponents/paper-fab-speed-dial/lib/paper-fab-speed-dial-overlay.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js";let LrnappFabMenu=Polymer({_template:html`
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/paper-fab/paper-fab.js";import"./node_modules/@lrnwebcomponents/paper-fab-speed-dial/paper-fab-speed-dial.js";import"./node_modules/@lrnwebcomponents/paper-fab-speed-dial/lib/paper-fab-speed-dial-overlay.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js";/**
+ * `lrnapp-fab-menu`
+ * `floating action button with menu`
+ *
+ * @demo demo/index.html
+ */let LrnappFabMenu=Polymer({_template:html`
     <custom-style>
       <style include="materializecss-styles-colors"></style>
       <style>
@@ -41,4 +49,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       <slot></slot>
       <paper-fab icon="close" class="close" on-tap="close"></paper-fab>
     </paper-fab-speed-dial-overlay>
-  `,is:"lrnapp-fab-menu",properties:{icon:{type:String,value:"add"},opened:{type:Boolean,notify:!0},disabled:{type:Boolean,value:!1}},open:function(e){if(e){e.preventDefault()}this.opened=!0},close:function(e){if(e){e.preventDefault()}this.opened=!1}});export{LrnappFabMenu};
+  `,is:"lrnapp-fab-menu",properties:{icon:{type:String,value:"add"},opened:{type:Boolean,notify:!0},disabled:{type:Boolean,value:!1}},// Public methods
+open:function(e){// Required for mobile Safari to avoid passing the tap event to an element below the FAB
+if(e){e.preventDefault()}this.opened=!0},close:function(e){// Required for mobile Safari to avoid passing the tap event to an element below the FAB
+if(e){e.preventDefault()}this.opened=!1}});export{LrnappFabMenu};

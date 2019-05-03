@@ -1,4 +1,9 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/fancy-carousel/fancy-carousel.js";let LrndesignImagecarousel=Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/fancy-carousel/fancy-carousel.js";/**
+`lrndesign-imagecarousel`
+A LRN element
+
+* @demo demo/index.html
+*/let LrndesignImagecarousel=Polymer({_template:html`
     <style>
       :host {
         display: block;

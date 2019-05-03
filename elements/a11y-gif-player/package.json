@@ -11,7 +11,7 @@
       "js": "src/a11y-gif-player.js"
     }
   },
-  "version": "2.0.9",
+  "version": "2.0.10",
   "description": "Play gifs in an accessible way by having the user click to play their animation",
   "repository": {
     "type": "git",
@@ -35,15 +35,15 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^2.0.9",
-    "@lrnwebcomponents/schema-behaviors": "^2.0.9",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.0.10",
+    "@lrnwebcomponents/schema-behaviors": "^2.0.10",
     "@polymer/iron-a11y-keys": "^3.0.1",
     "@polymer/iron-image": "^3.0.0",
     "@polymer/polymer": "^3.2.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.0.9",
-    "@lrnwebcomponents/storybook-utilities": "^2.0.9",
+    "@lrnwebcomponents/storybook-utilities": "^2.0.10",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.9",

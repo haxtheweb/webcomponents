@@ -1,4 +1,9 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@lrnwebcomponents/paper-contact/paper-contact.js";let LrndesignBiocard=Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@lrnwebcomponents/paper-contact/paper-contact.js";/**
+`lrndesign-biocard`
+A LRN element
+
+* @demo demo/index.html
+*/let LrndesignBiocard=Polymer({_template:html`
     <style>
       :host {
         display: block;

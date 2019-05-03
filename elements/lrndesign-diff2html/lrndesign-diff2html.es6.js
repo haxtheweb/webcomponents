@@ -1,4 +1,9 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";let LrndesignDiff2html=Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";/**
+`lrndesign-diff2html`
+A LRN element
+
+* @demo demo/index.html
+*/let LrndesignDiff2html=Polymer({_template:html`
     <style>
       :host {
         display: block;

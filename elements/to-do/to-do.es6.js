@@ -1,4 +1,14 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/paper-checkbox/paper-checkbox.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@polymer/paper-input/paper-input.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";let ToDo=Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/paper-checkbox/paper-checkbox.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@polymer/paper-input/paper-input.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";/**
+`to-do`
+A LRN element
+
+* @demo demo/index.html
+
+@microcopy - the mental model for this element
+ -
+ -
+
+*/let ToDo=Polymer({_template:html`
     <style>
       :host {
         display: block;
@@ -62,4 +72,20 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         </ul>
       </div>
     </paper-card>
-  `,is:"to-do",behaviors:[HAXBehaviors.PropertiesBehaviors],observers:["_valueChanged(items.*)"],properties:{hideForm:{type:Boolean,value:!1,reflectToAttribute:!0},disabledList:{type:Boolean,value:!1,reflectToAttribute:!0},name:{type:String,value:"To do list"},items:{type:Array,value:[],notify:!0}},_valueChanged:function(e){for(var i in e.base){for(var j in e.base[i]){this.notifyPath("items."+i+"."+j)}}},_addItemToList:function(e){if(""!=this.$.itemtext.value&&typeof this.$.itemtext.value!==typeof void 0){this.push("items",{label:this.$.itemtext.value,value:!1,disabled:this.disabledList,id:"item-id-"+this.items.length});this.$.itemtext.value=""}},attached:function(){let props={canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"To do list",description:"A list of things to do so people can keep calm.",icon:"icons:list",color:"grey",groups:["List"],handles:[],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"name",title:"Name",description:"The name of this to do list",inputMethod:"textfield",icon:"editor:title"}],configure:[{property:"name",title:"Name",description:"The name of this to do list",inputMethod:"textfield",icon:"editor:title"},{property:"items",title:"List of items",description:"List of items to display in our list.",inputMethod:"array",properties:[{property:"label",title:"Task",description:"Name of the task",inputMethod:"textfield",required:!0},{property:"value",title:"Done",description:"Completion state",inputMethod:"boolean"}]}],advanced:[]}};this.setHaxProperties(props)}});export{ToDo};
+  `,is:"to-do",behaviors:[HAXBehaviors.PropertiesBehaviors],observers:["_valueChanged(items.*)"],properties:{/**
+     * Allow for hiding the input form for new data.
+     */hideForm:{type:Boolean,value:!1,reflectToAttribute:!0},/**
+     * Whether or not the list of items is disabled
+     * checkboxes.
+     */disabledList:{type:Boolean,value:!1,reflectToAttribute:!0},/**
+     * Name of this to do list
+     */name:{type:String,value:"To do list"},/**
+     * Items
+     */items:{type:Array,value:[],notify:!0}},/**
+   * Ensure the values change.
+   */_valueChanged:function(e){for(var i in e.base){for(var j in e.base[i]){this.notifyPath("items."+i+"."+j)}}},/**
+   * Add a new item to the list.
+   */_addItemToList:function(e){if(""!=this.$.itemtext.value&&typeof this.$.itemtext.value!==typeof void 0){this.push("items",{label:this.$.itemtext.value,value:!1,disabled:this.disabledList,id:"item-id-"+this.items.length});this.$.itemtext.value=""}},/**
+   * Attached to the DOM, now fire.
+   */attached:function(){// Establish hax property binding
+let props={canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"To do list",description:"A list of things to do so people can keep calm.",icon:"icons:list",color:"grey",groups:["List"],handles:[],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"name",title:"Name",description:"The name of this to do list",inputMethod:"textfield",icon:"editor:title"}],configure:[{property:"name",title:"Name",description:"The name of this to do list",inputMethod:"textfield",icon:"editor:title"},{property:"items",title:"List of items",description:"List of items to display in our list.",inputMethod:"array",properties:[{property:"label",title:"Task",description:"Name of the task",inputMethod:"textfield",required:!0},{property:"value",title:"Done",description:"Completion state",inputMethod:"boolean"}]}],advanced:[]}};this.setHaxProperties(props)}});export{ToDo};

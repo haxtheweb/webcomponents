@@ -60,7 +60,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
         paper-fab:not(:defined),
         paper-tooltip:not(:defined),
         paper-icon-button:not(:defined) {
-          display: none;
+          display: none !important;
         }
         paper-fab {
           display: inline-flex;

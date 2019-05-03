@@ -1,4 +1,14 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";let ParallaxImage=Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";/**
+`parallax-image`
+A LRN element
+
+* @demo demo/index.html
+
+@microcopy - the mental model for this element
+ -
+ -
+
+*/let ParallaxImage=Polymer({_template:html`
     <style>
       :host {
         display: block;
@@ -59,4 +69,13 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         </div>
       </div>
     </a>
-  `,is:"parallax-image",behaviors:[HAXBehaviors.PropertiesBehaviors,MaterializeCSSBehaviors.ColorBehaviors,SchemaBehaviors.Schema],properties:{imageBg:{type:String,value:"",reflectToAttribute:!0},url:{type:String,value:"",reflectToAttribute:!0}},observers:["__updateStyles(imageBg)"],_urlTarget:function(url){if(url){const external=this._outsideLink(url);if(external){return"_blank"}}return!1},_outsideLink:function(url){if(0!=url.indexOf("http"))return!1;var loc=location.href,path=location.pathname,root=loc.substring(0,loc.indexOf(path));return 0!=url.indexOf(root)},attached:function(){let props={canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Sample gizmo",description:"The user will be able to see this for selection in a UI.",icon:"av:play-circle-filled",color:"grey",groups:["Video","Media"],handles:[{type:"video",url:"source"}],meta:{author:"Your organization on github"}},settings:{quick:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield",icon:"editor:title"}],configure:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield",icon:"editor:title"}],advanced:[]}};this.setHaxProperties(props)},__updateStyles:function(imageBg){this.updateStyles({"--parallax-image-background":`url(${imageBg})`})},ready:function(){const bgParallax=this.$.bgParallax,titleParallax=this.$.titleParallax;window.addEventListener("scroll",e=>{const yParallaxPosition=-.2*window.scrollY,yParallaxPositionTitle=1.4*yParallaxPosition;bgParallax.style.backgroundPosition=`center ${yParallaxPosition}px`;titleParallax.style.transform=`translate3D(0, ${yParallaxPositionTitle}px, 0)`})}});export{ParallaxImage};
+  `,is:"parallax-image",behaviors:[HAXBehaviors.PropertiesBehaviors,SchemaBehaviors.Schema],properties:{/**
+     * Image
+     */imageBg:{type:String,value:"",reflectToAttribute:!0},/**
+     * Url
+     */url:{type:String,value:"",reflectToAttribute:!0}},observers:["__updateStyles(imageBg)"],_urlTarget:function(url){if(url){const external=this._outsideLink(url);if(external){return"_blank"}}return!1},/**
+   * Internal function to check if a url is external
+   */_outsideLink:function(url){if(0!=url.indexOf("http"))return!1;var loc=location.href,path=location.pathname,root=loc.substring(0,loc.indexOf(path));return 0!=url.indexOf(root)},/**
+   * Attached to the DOM, now fire.
+   */attached:function(){// Establish hax property binding
+let props={canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Sample gizmo",description:"The user will be able to see this for selection in a UI.",icon:"av:play-circle-filled",color:"grey",groups:["Video","Media"],handles:[{type:"video",url:"source"}],meta:{author:"Your organization on github"}},settings:{quick:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield",icon:"editor:title"}],configure:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield",icon:"editor:title"}],advanced:[]}};this.setHaxProperties(props)},__updateStyles:function(imageBg){this.updateStyles({"--parallax-image-background":`url(${imageBg})`})},ready:function(){const bgParallax=this.$.bgParallax,titleParallax=this.$.titleParallax;window.addEventListener("scroll",e=>{const yParallaxPosition=-.2*window.scrollY,yParallaxPositionTitle=1.4*yParallaxPosition;bgParallax.style.backgroundPosition=`center ${yParallaxPosition}px`;titleParallax.style.transform=`translate3D(0, ${yParallaxPositionTitle}px, 0)`})}});export{ParallaxImage};

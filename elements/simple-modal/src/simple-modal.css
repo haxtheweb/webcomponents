@@ -6,12 +6,16 @@
   display: none;
 }
 
-:host ::slotted(*) {
+paper-dialog-scrollable:not(:defined) {
+  display: none;
+}
+
+:host paper-dialog ::slotted(*) {
   font-size: 14px;
   @apply --simple-modal-content;
 }
 
-:host #dialog {
+#dialog {
   margin: 15px auto;
   z-index: 1000;
   height: var(--simple-modal-height, auto);
@@ -24,7 +28,7 @@
   @apply --simple-modal-dialog;
 }
 
-:host #titlebar {
+#titlebar {
   margin-top: 0;
   padding: 0px 16px;
   display: flex;
@@ -36,7 +40,7 @@
   @apply --simple-modal-top;
 }
 
-:host #headerbar {
+#headerbar {
   margin: 0;
   padding: 0 16px;
   color: var(--simple-modal-header-color, #222);
@@ -44,7 +48,7 @@
   @apply --simple-modal-headerbar;
 }
 
-:host h2 {
+h2 {
   margin-right: 8px;
   padding: 0;
   flex: auto;
@@ -53,7 +57,7 @@
   @apply --simple-modal-title;
 }
 
-:host #close {
+#close {
   top: 0;
   padding: 10px 0;
   min-width: unset;
@@ -63,7 +67,7 @@
   @apply --simple-modal-close;
 }
 
-:host #close iron-icon {
+#close iron-icon {
   width: 16px;
   height: 16px;
   color: var(--simple-modal-titlebar-color,#444);

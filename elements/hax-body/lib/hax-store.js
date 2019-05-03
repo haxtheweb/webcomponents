@@ -1,378 +1,373 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import { setPassiveTouchGestures } from "@polymer/polymer/lib/utils/settings.js";
 import { getRange } from "./shadows-safari.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import {
   encapScript,
   wipeSlot
 } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
-import "@lrnwebcomponents/media-behaviors/media-behaviors.js";
-import "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
-import "@lrnwebcomponents/hal-9000/hal-9000.js";
+import { MediaBehaviorsVideo } from "@lrnwebcomponents/media-behaviors/media-behaviors.js";
+import { HAXElement } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 import { CodeSample } from "@lrnwebcomponents/code-sample/code-sample.js";
 import "./hax-app.js";
 import "./hax-stax.js";
 import "./hax-stax-browser.js";
 import "./hax-blox.js";
 import "./hax-blox-browser.js";
-/**
- * Trick to write the store to the DOM if it wasn't there already.
- * This is not used yet but could be if you wanted to dynamically
- * load the store based on something else calling for it. Like
- * store lazy loading but it isn't tested.
- */
-window.HaxStore = window.HaxStore || {};
-window.HaxStore.instance = null;
-window.HaxStore.requestAvailability = function() {
-  if (!window.HaxStore.instance) {
-    window.HaxStore.instance = document.createElement("hax-store");
-    document.body.appendChild(window.HaxStore.instance);
+
+class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: none;
+        }
+      </style>
+      <slot></slot>
+      <iron-ajax
+        id="appstore"
+        url="[[appStore.url]]"
+        params="[[appStore.params]]"
+        method="GET"
+        content-type="application/json"
+        handle-as="json"
+        last-response="{{__appStoreData}}"
+      ></iron-ajax>
+      <hal-9000 id="hal" debug="debug" commands="[[voiceCommands]]"></hal-9000>
+    `;
   }
-  return window.HaxStore.instance;
-};
-Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: none;
-      }
-    </style>
-    <slot></slot>
-    <iron-ajax
-      id="appstore"
-      url="[[appStore.url]]"
-      params="[[appStore.params]]"
-      method="GET"
-      content-type="application/json"
-      handle-as="json"
-      last-response="{{__appStoreData}}"
-    ></iron-ajax>
-    <hal-9000 id="hal" debug="debug" commands="[[voiceCommands]]"></hal-9000>
-  `,
+  static get tag() {
+    return "hax-store";
+  }
+  /**
+   * Complex observer composites used for initial timing since this is a skeleton setup
+   */
+  static get observers() {
+    return [
+      "_loadAppStoreData(__ready, __appStoreData, haxAutoloader)",
+      "_storePiecesAllHere(haxAutoloader,activeHaxBody, haxPanel, haxToast, haxExport, haxPreferences, haxManager, haxStaxPicker, haxAppPicker)"
+    ];
+  }
 
-  is: "hax-store",
-
-  behaviors: [MediaBehaviors.Video, HAXBehaviors.PropertiesBehaviors],
-
-  observers: [
-    "_loadAppStoreData(__ready, __appStoreData, haxAutoloader)",
-    "_storePiecesAllHere(haxAutoloader,activeHaxBody, haxPanel, haxToast, haxExport, haxPreferences, haxManager, haxStaxPicker, haxAppPicker)"
-  ],
-
-  properties: {
-    /**
-     * skipHAXConfirmation
-     */
-    skipHAXConfirmation: {
-      type: Boolean,
-      value: false,
-      reflectToAttribute: true
-    },
-    /**
-     * Local storage bridge
-     */
-    storageData: {
-      type: Object,
-      value: {},
-      observer: "_storageDataChanged"
-    },
-    /**
-     * Hax app picker element.
-     */
-    haxAppPicker: {
-      type: Object
-    },
-    /**
-     * Hax stax picker element.
-     */
-    haxStaxPicker: {
-      type: Object
-    },
-    /**
-     * Hax manager element.
-     */
-    haxManager: {
-      type: Object
-    },
-    /**
-     * Hax autoloader element.
-     */
-    haxAutoloader: {
-      type: Object
-    },
-    /**
-     * A list of all haxBodies that exist
-     */
-    haxBodies: {
-      type: Array,
-      value: []
-    },
-    /**
-     * An active place holder item reference. This is used
-     * for inline drag and drop event detection so that we
-     * know what element replace in context.
-     */
-    activePlaceHolder: {
-      type: Object,
-      value: null
-    },
-    /**
-     * The hax-body that is currently active.
-     */
-    activeHaxBody: {
-      type: Object
-    },
-    /**
-     * Possible appStore endpoint for loading in things dynamically.
-     */
-    appStore: {
-      type: Object,
-      observer: "_appStoreChanged"
-    },
-    /**
-     * HAX Toast message.
-     */
-    haxToast: {
-      type: Object
-    },
-    /**
-     * Hax panel element.
-     */
-    haxPanel: {
-      type: Object
-    },
-    /**
-     * Hax export dialog element.
-     */
-    haxExport: {
-      type: Object
-    },
-    /**
-     * Hax preferences dialog element.
-     */
-    haxPreferences: {
-      type: Object
-    },
-    /**
-     * Active HAX Element if we have one we are working on.
-     */
-    activeHaxElement: {
-      type: Object
-    },
-    /**
-     * Active Node.
-     */
-    activeNode: {
-      type: Object
-    },
-    /**
-     * Active container Node, 2nd highest parent of activeNode.
-     */
-    activeContainerNode: {
-      type: Object
-    },
-    /**
-     * Session object bridged in from a session method of some kind
-     */
-    sessionObject: {
-      type: Object,
-      value: {}
-    },
-    /**
-     * editMode
-     */
-    editMode: {
-      type: Boolean,
-      value: false,
-      observer: "_editModeChanged"
-    },
-    /**
-     * Boolean for if this instance has backends that support uploading
-     */
-    canSupportUploads: {
-      type: Boolean,
-      value: false
-    },
-    /**
-     * skip the exit trap to prevent losing data
-     */
-    skipExitTrap: {
-      type: Boolean,
-      value: false
-    },
-    /**
-     * Default settings that can be overridden as needed
-     */
-    defaults: {
-      type: Object,
-      value: {
-        image: {
-          src: "stock.jpg",
-          alt: "A beachfront deep in the heart of Alaska."
+  static get properties() {
+    return Object.assign(
+      {
+        /**
+         * skipHAXConfirmation
+         */
+        skipHAXConfirmation: {
+          type: Boolean,
+          value: false,
+          reflectToAttribute: true
         },
-        iframe: {
-          src: "https://www.wikipedia.org/"
+        /**
+         * Local storage bridge
+         */
+        storageData: {
+          type: Object,
+          value: {},
+          observer: "_storageDataChanged"
+        },
+        /**
+         * Hax app picker element.
+         */
+        haxAppPicker: {
+          type: Object
+        },
+        /**
+         * Hax stax picker element.
+         */
+        haxStaxPicker: {
+          type: Object
+        },
+        /**
+         * Hax manager element.
+         */
+        haxManager: {
+          type: Object
+        },
+        /**
+         * Hax autoloader element.
+         */
+        haxAutoloader: {
+          type: Object
+        },
+        /**
+         * A list of all haxBodies that exist
+         */
+        haxBodies: {
+          type: Array,
+          value: []
+        },
+        /**
+         * An active place holder item reference. This is used
+         * for inline drag and drop event detection so that we
+         * know what element replace in context.
+         */
+        activePlaceHolder: {
+          type: Object,
+          value: null
+        },
+        /**
+         * The hax-body that is currently active.
+         */
+        activeHaxBody: {
+          type: Object
+        },
+        /**
+         * Possible appStore endpoint for loading in things dynamically.
+         */
+        appStore: {
+          type: Object,
+          observer: "_appStoreChanged"
+        },
+        /**
+         * HAX Toast message.
+         */
+        haxToast: {
+          type: Object
+        },
+        /**
+         * Hax panel element.
+         */
+        haxPanel: {
+          type: Object
+        },
+        /**
+         * Hax export dialog element.
+         */
+        haxExport: {
+          type: Object
+        },
+        /**
+         * Hax preferences dialog element.
+         */
+        haxPreferences: {
+          type: Object
+        },
+        /**
+         * Active HAX Element if we have one we are working on.
+         */
+        activeHaxElement: {
+          type: Object
+        },
+        /**
+         * Active Node.
+         */
+        activeNode: {
+          type: Object
+        },
+        /**
+         * Active container Node, 2nd highest parent of activeNode.
+         */
+        activeContainerNode: {
+          type: Object
+        },
+        /**
+         * Session object bridged in from a session method of some kind
+         */
+        sessionObject: {
+          type: Object,
+          value: {}
+        },
+        /**
+         * editMode
+         */
+        editMode: {
+          type: Boolean,
+          value: false,
+          observer: "_editModeChanged"
+        },
+        /**
+         * Boolean for if this instance has backends that support uploading
+         */
+        canSupportUploads: {
+          type: Boolean,
+          value: false
+        },
+        /**
+         * skip the exit trap to prevent losing data
+         */
+        skipExitTrap: {
+          type: Boolean,
+          value: false
+        },
+        /**
+         * Default settings that can be overridden as needed
+         */
+        defaults: {
+          type: Object,
+          value: {
+            image: {
+              src: "stock.jpg",
+              alt: "A beachfront deep in the heart of Alaska."
+            },
+            iframe: {
+              src: "https://www.wikipedia.org/"
+            }
+          }
+        },
+        /**
+         * Available gizmos.
+         */
+        gizmoList: {
+          type: Array,
+          value: []
+        },
+        /**
+         * Available elements keyed by tagName and with
+         * their haxProperties centrally registered.
+         */
+        elementList: {
+          type: Object,
+          value: {}
+        },
+        /**
+         * Available apps of things supplying media / content.
+         */
+        appList: {
+          type: Array,
+          value: []
+        },
+        /**
+         * Available hax stax which are just re-usable templates
+         */
+        staxList: {
+          type: Array,
+          value: []
+        },
+        /**
+         * Available hax blox which are grid plate / layout elements
+         */
+        bloxList: {
+          type: Array,
+          value: []
+        },
+        /**
+         * Global preferences that HAX can write to and
+         * other elements can use to go off of.
+         */
+        globalPreferences: {
+          type: Object,
+          value: {},
+          observer: "_globalPreferencesChanged"
+        },
+        /**
+         * Globally active app, used for brokering communications
+         */
+        activeApp: {
+          type: Object,
+          value: {}
+        },
+        /**
+         * Valid tag list, tag only and including primatives for a baseline.
+         */
+        validTagList: {
+          type: Array,
+          value: [
+            "p",
+            "div",
+            "ol",
+            "ul",
+            "li",
+            "a",
+            "strong",
+            "kbd",
+            "em",
+            "i",
+            "b",
+            "hr",
+            "h1",
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "h6",
+            "blockquote",
+            "code",
+            "figure",
+            "img",
+            "iframe",
+            "video",
+            "audio",
+            "section",
+            "grid-plate",
+            "template",
+            "webview"
+          ]
+        },
+        /**
+         * Gizmo types which can be used to bridge apps to gizmos.
+         */
+        validGizmoTypes: {
+          type: Array,
+          value: [
+            "data",
+            "video",
+            "audio",
+            "text",
+            "link",
+            "file",
+            "pdf",
+            "image",
+            "csv",
+            "doc",
+            "content",
+            "text",
+            "inline",
+            "*"
+          ]
+        },
+        /**
+         * Sandboxed environment test
+         */
+        _isSandboxed: {
+          type: Boolean,
+          value: function() {
+            let test = document.createElement("webview");
+            // if this function exists it means that our deploy target
+            // is in a sandboxed environment and is not able to run iframe
+            // content with any real stability. This is beyond edge case but
+            // as this is an incredibly useful tag we want to make sure it
+            // can mutate to work in chromium and android environments
+            // which support such sandboxing
+            if (typeof test.reload === "function") {
+              return true;
+            }
+            return false;
+          }
+        },
+        /**
+         * Internal app store data property after request
+         */
+        __appStoreData: {
+          type: Object
+        },
+        __ready: {
+          type: Boolean
+        },
+        voiceCommands: {
+          type: Object
+        },
+        /**
+         * Support for deploy specific rewriting for things like JWTs
+         */
+        connectionRewrites: {
+          type: Object,
+          value: {}
         }
-      }
-    },
-    /**
-     * Available gizmos.
-     */
-    gizmoList: {
-      type: Array,
-      value: []
-    },
-    /**
-     * Available elements keyed by tagName and with
-     * their haxProperties centrally registered.
-     */
-    elementList: {
-      type: Object,
-      value: {}
-    },
-    /**
-     * Available apps of things supplying media / content.
-     */
-    appList: {
-      type: Array,
-      value: []
-    },
-    /**
-     * Available hax stax which are just re-usable templates
-     */
-    staxList: {
-      type: Array,
-      value: []
-    },
-    /**
-     * Available hax blox which are grid plate / layout elements
-     */
-    bloxList: {
-      type: Array,
-      value: []
-    },
-    /**
-     * Global preferences that HAX can write to and
-     * other elements can use to go off of.
-     */
-    globalPreferences: {
-      type: Object,
-      value: {},
-      observer: "_globalPreferencesChanged"
-    },
-    /**
-     * Globally active app, used for brokering communications
-     */
-    activeApp: {
-      type: Object,
-      value: {}
-    },
-    /**
-     * Valid tag list, tag only and including primatives for a baseline.
-     */
-    validTagList: {
-      type: Array,
-      value: [
-        "p",
-        "div",
-        "ol",
-        "ul",
-        "li",
-        "a",
-        "strong",
-        "kbd",
-        "em",
-        "i",
-        "b",
-        "hr",
-        "h1",
-        "h2",
-        "h3",
-        "h4",
-        "h5",
-        "h6",
-        "blockquote",
-        "code",
-        "figure",
-        "img",
-        "iframe",
-        "video",
-        "audio",
-        "section",
-        "grid-plate",
-        "template",
-        "webview"
-      ]
-    },
-    /**
-     * Gizmo types which can be used to bridge apps to gizmos.
-     */
-    validGizmoTypes: {
-      type: Array,
-      value: [
-        "data",
-        "video",
-        "audio",
-        "text",
-        "link",
-        "file",
-        "pdf",
-        "image",
-        "csv",
-        "doc",
-        "content",
-        "text",
-        "inline",
-        "*"
-      ]
-    },
-    /**
-     * Sandboxed environment test
-     */
-    _isSandboxed: {
-      type: Boolean,
-      value: function() {
-        let test = document.createElement("webview");
-        // if this function exists it means that our deploy target
-        // is in a sandboxed environment and is not able to run iframe
-        // content with any real stability. This is beyond edge case but
-        // as this is an incredibly useful tag we want to make sure it
-        // can mutate to work in chromium and android environments
-        // which support such sandboxing
-        if (typeof test.reload === "function") {
-          return true;
-        }
-        return false;
-      }
-    },
-    /**
-     * Internal app store data property after request
-     */
-    __appStoreData: {
-      type: Object
-    },
-    __ready: {
-      type: Boolean
-    },
-    voiceCommands: {
-      type: Object
-    },
-    /**
-     * Support for deploy specific rewriting for things like JWTs
-     */
-    connectionRewrites: {
-      type: Object,
-      value: {}
-    }
-  },
+      },
+      super.properties
+    );
+  }
   /**
    * Local storage data changed; callback to store this data in user storage
    */
-  _storageDataChanged: function(newValue) {
+  _storageDataChanged(newValue) {
     if (newValue && window.HaxStore.ready && this.__storageDataProcessed) {
       if (window.localStorage.getItem("haxConfirm")) {
         window.localStorage.setItem("haxUserData", JSON.stringify(newValue));
@@ -380,12 +375,12 @@ Polymer({
         window.sessionStorage.setItem("haxUserData", JSON.stringify(newValue));
       }
     }
-  },
+  }
   /**
    * If this is a text node or not so we know if the inline context
    * operations are valid.
    */
-  isTextElement: function(node) {
+  isTextElement(node) {
     if (
       node != null &&
       this.validTagList.includes(node.tagName.toLowerCase())
@@ -417,13 +412,13 @@ Polymer({
       }
     }
     return false;
-  },
+  }
 
   /**
    * test for being a valid grid plate, li is here because
    * nested lists make this really complicated
    */
-  isGridPlateElement: function(node) {
+  isGridPlateElement(node) {
     let tag = node.tagName.toLowerCase();
     if (this.validTagList.includes(tag)) {
       if (
@@ -449,18 +444,18 @@ Polymer({
       }
     }
     return false;
-  },
+  }
 
   /**
    * Notice _appStore changed.
    */
-  _appStoreChanged: function(newValue, oldValue) {
+  _appStoreChanged(newValue, oldValue) {
     // if we have an endpoint defined, pull it
     if (typeof newValue !== typeof undefined && newValue != null) {
       // support having the request or remote loading
       // depending on the integration type
       if (typeof newValue.apps === typeof undefined) {
-        this.$.appstore.generateRequest();
+        this.shadowRoot.querySelector("#appstore").generateRequest();
       } else {
         // directly injected json object into the DOM, allow some time to propagate data
         // otherwise we might not have a haxAutoloader object ready in time for the paint
@@ -469,13 +464,14 @@ Polymer({
         }, 500);
       }
     }
-  },
+  }
 
   /**
    * Load and attach items from the app store.
    */
-  _loadAppStoreData: function(ready, appDataResponse, haxAutoloader) {
+  _loadAppStoreData(ready, appDataResponse, haxAutoloader) {
     if (
+      ready &&
       typeof appDataResponse !== typeof undefined &&
       appDataResponse != null
     ) {
@@ -536,17 +532,18 @@ Polymer({
           window.HaxStore.instance.appendChild(blox);
         }
       }
-      const evt = new CustomEvent("hax-store-app-store-loaded", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: true
-      });
-      this.dispatchEvent(evt);
+      this.dispatchEvent(
+        new CustomEvent("hax-store-app-store-loaded", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: true
+        })
+      );
       // now process the dynamic imports
       this._handleDynamicImports(items, haxAutoloader);
     }
-  },
+  }
   /**
    * Handle all the dynamic imports of things told to autoload
    * This ensures we get the definitions very quickly as far as
@@ -554,7 +551,7 @@ Polymer({
    * that allows us to correctly associate the hax schema to where
    * it came from.
    */
-  _handleDynamicImports: async function(items, haxAutoloader) {
+  async _handleDynamicImports(items, haxAutoloader) {
     const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
     for (var i in items) {
       await import(`${basePath}../../../${items[i]}`)
@@ -581,15 +578,15 @@ Polymer({
           console.log(error);
         });
     }
-  },
-  _editModeChanged: function(newValue) {
+  }
+  _editModeChanged(newValue) {
     if (newValue && this.globalPreferences.haxVoiceCommands) {
-      this.$.hal.auto = true;
+      this.shadowRoot.querySelector("#hal").auto = true;
     } else {
-      this.$.hal.auto = false;
+      this.shadowRoot.querySelector("#hal").auto = false;
     }
-  },
-  _globalPreferencesChanged: function(newValue, oldValue) {
+  }
+  _globalPreferencesChanged(newValue, oldValue) {
     // regardless of what it is, reflect it globally but only after setup
     if (
       this.__storageDataProcessed &&
@@ -602,16 +599,16 @@ Polymer({
       this.set("storageData", {});
       this.set("storageData", storageData);
       if (newValue.haxVoiceCommands && this.editMode) {
-        this.$.hal.auto = true;
+        this.shadowRoot.querySelector("#hal").auto = true;
       } else {
-        this.$.hal.auto = false;
+        this.shadowRoot.querySelector("#hal").auto = false;
       }
     }
-  },
+  }
   /**
    * Detached life cycle
    */
-  detached: function() {
+  disconnectedCallback() {
     // notice hax property definitions coming from anywhere
     window.removeEventListener(
       "hax-register-properties",
@@ -712,7 +709,7 @@ Polymer({
       this._haxConsentTap.bind(this)
     );
     window.removeEventListener("paste", this._onPaste.bind(this));
-    // fire that hax store is ready to go so now we can setup the rest
+    // send that hax store is ready to go so now we can setup the rest
     this.dispatchEvent(
       new CustomEvent("hax-store-ready", {
         bubbles: true,
@@ -722,11 +719,12 @@ Polymer({
       })
     );
     window.HaxStore.ready = false;
-  },
+    super.disconnectedCallback();
+  }
   /**
-   * This only fires if they consented to storage of data locally
+   * This only send if they consented to storage of data locally
    */
-  _haxConsentTap: function(e) {
+  _haxConsentTap(e) {
     // store for future local storage usage
     window.localStorage.setItem("haxConfirm", true);
     // most likely nothing but set it anyway
@@ -734,11 +732,12 @@ Polymer({
       "haxUserData",
       JSON.stringify(this.storageData)
     );
-  },
+  }
   /**
    * ready life cycle
    */
-  ready: function() {
+  ready() {
+    super.ready();
     afterNextRender(this, function() {
       // see if a global was used to prevent this check
       // this is useful when in trusted environments where the statement
@@ -792,14 +791,13 @@ Polymer({
         }
       }
     });
-  },
+  }
   /**
    * attached.
    */
-  attached: function() {
+  connectedCallback() {
+    super.connectedCallback();
     afterNextRender(this, function() {
-      // register built in primitive definitions
-      this._buildPrimitiveDefinitions();
       // capture events and intercept them globally
       window.addEventListener(
         "hax-consent-tap",
@@ -810,8 +808,6 @@ Polymer({
         this._onBeforeUnload.bind(this)
       );
       window.addEventListener("paste", this._onPaste.bind(this));
-      // initialize voice commands
-      this.voiceCommands = this._initVoiceCommands();
       // set this global flag so we know it's safe to start trusting data
       // that is written to global preferences / storage bin
       setTimeout(() => {
@@ -825,8 +821,8 @@ Polymer({
         }
       }, 325);
     });
-  },
-  _storePiecesAllHere: function(
+  }
+  _storePiecesAllHere(
     haxAutoloader,
     activeHaxBody,
     haxPanel,
@@ -849,7 +845,7 @@ Polymer({
       haxStaxPicker &&
       haxAppPicker
     ) {
-      // fire that hax store is ready to go so now we can setup the rest
+      // send that hax store is ready to go so now we can setup the rest
       this.dispatchEvent(
         new CustomEvent("hax-store-ready", {
           bubbles: true,
@@ -860,54 +856,66 @@ Polymer({
       );
       window.HaxStore.ready = true;
       this.__ready = true;
+      // register built in primitive definitions
+      this._buildPrimitiveDefinitions();
+      // initialize voice commands
+      this.voiceCommands = this._initVoiceCommands();
     }
-  },
+  }
   /**
    * Build a list of common voice commands
    */
-  _initVoiceCommands: function() {
+  _initVoiceCommands() {
     var commands = {};
-    commands[`${this.$.hal.respondsTo} scroll up`] = () => {
+    commands[
+      `${this.shadowRoot.querySelector("#hal").respondsTo} scroll up`
+    ] = () => {
       window.scrollBy({
         top: -(window.innerHeight * 0.5),
         left: 0,
         behavior: "smooth"
       });
     };
-    commands[`${this.$.hal.respondsTo} scroll (down)`] = () => {
+    commands[
+      `${this.shadowRoot.querySelector("#hal").respondsTo} scroll (down)`
+    ] = () => {
       window.scrollBy({
         top: window.innerHeight * 0.5,
         left: 0,
         behavior: "smooth"
       });
     };
-    commands[`hey ${this.$.hal.respondsTo}`] = () => {
-      this.$.hal.speak("Yeah what do you want");
+    commands[
+      `hey ${this.shadowRoot.querySelector("#hal").respondsTo}`
+    ] = () => {
+      this.shadowRoot.querySelector("#hal").speak("Yeah what do you want");
     };
-    commands[`${this.$.hal.respondsTo} find media`] = () => {
+    commands[
+      `${this.shadowRoot.querySelector("#hal").respondsTo} find media`
+    ] = () => {
       window.HaxStore.write("activeHaxElement", {}, window.HaxStore.instance);
       window.HaxStore.instance.haxManager.resetManager(1);
       window.HaxStore.instance.haxManager.toggleDialog(false);
     };
     return commands;
-  },
+  }
   /**
    * allow uniform method of adding voice commands
    */
-  addVoiceCommand: function(command) {
+  addVoiceCommand(command) {
     this.push("voiceCommands", command);
     this.notifyPath("voiceCommands.*");
-  },
+  }
   /**
    * event driven version
    */
-  _addVoiceCommand: function(e) {
+  _addVoiceCommand(e) {
     this.addVoiceCommand(e.detail);
-  },
+  }
   /**
    * Before the browser closes / changes paths, ask if they are sure they want to leave
    */
-  _onBeforeUnload: function(e) {
+  _onBeforeUnload(e) {
     // ensure we don't leave DURING edit mode
     if (
       !window.HaxStore.instance.skipExitTrap &&
@@ -915,11 +923,11 @@ Polymer({
     ) {
       return "Are you sure you want to leave? Your work will not be saved!";
     }
-  },
+  }
   /**
    * Intercept paste event and clean it up before inserting the contents
    */
-  _onPaste: function(e) {
+  _onPaste(e) {
     // only perform this on a text element that is active
     if (
       window.HaxStore.instance.isTextElement(
@@ -943,11 +951,13 @@ Polymer({
         range.insertNode(document.createTextNode(text));
       }
     }
-  },
+  }
   /**
    * Created life-cycle to ensure a single global store.
    */
-  created: function() {
+  constructor() {
+    super();
+    import("@lrnwebcomponents/hal-9000/hal-9000.js");
     setPassiveTouchGestures(true);
     // claim the instance spot. This way we can easily
     // be referenced globally
@@ -1046,12 +1056,12 @@ Polymer({
       this._addVoiceCommand.bind(this)
     );
     document.body.style.setProperty("--hax-ui-headings", "#d4ff77");
-  },
+  }
 
   /**
    * Build HAX property definitions for primitives that we support.
    */
-  _buildPrimitiveDefinitions: function() {
+  _buildPrimitiveDefinitions() {
     // sandboxes need a webview definition
     // we don't want people making them but we need to
     // know how to edit them if asked
@@ -1338,63 +1348,63 @@ Polymer({
     };
     this.setHaxProperties(hr, "hr");
     this.setHaxProperties(CodeSample.haxProperties, CodeSample.tag);
-  },
+  }
 
   /**
    * Set the haxManager node so we can interface with it.
    * This also allows for using a different manager that supplies
    * the same functions if that would be desired at some point.
    */
-  _haxStoreRegisterManager: function(e) {
+  _haxStoreRegisterManager(e) {
     if (e.detail && typeof this.haxManager === typeof undefined) {
       this.haxManager = e.detail;
     }
-  },
+  }
 
   /**
    * Register autoloader so we can ship to it from app-store spec
    */
-  _haxStoreRegisterAutoloader: function(e) {
+  _haxStoreRegisterAutoloader(e) {
     if (e.detail && typeof this.haxAutoloader === typeof undefined) {
       this.haxAutoloader = e.detail;
     }
-  },
+  }
 
   /**
    * Set the appPicker node so we can interface with it.
    * This helps with picking between multiple options when we need the user
    * to decide between a sub-set of options
    */
-  _haxStoreRegisterAppPicker: function(e) {
+  _haxStoreRegisterAppPicker(e) {
     if (e.detail && typeof this.haxAppPicker === typeof undefined) {
       this.haxAppPicker = e.detail;
     }
-  },
+  }
 
   /**
    * Set the stax picker so that we have an element in charge
    * of the listing of available stax.
    */
-  _haxStoreRegisterStaxPicker: function(e) {
+  _haxStoreRegisterStaxPicker(e) {
     if (e.detail && typeof this.haxStaxPicker === typeof undefined) {
       this.haxStaxPicker = e.detail;
     }
-  },
+  }
 
   /**
    * Set the blox picker so that we have an element in charge
    * of the listing of available blox.
    */
-  _haxStoreRegisterBloxPicker: function(e) {
+  _haxStoreRegisterBloxPicker(e) {
     if (e.detail && typeof this.haxBloxPicker === typeof undefined) {
       this.haxBloxPicker = e.detail;
     }
-  },
+  }
 
   /**
    * Close all drawers
    */
-  closeAllDrawers: function(active = false) {
+  closeAllDrawers(active = false) {
     // walk all drawers, close everything
     // except active. This also will allow them
     // to close everything then.
@@ -1438,12 +1448,12 @@ Polymer({
         this[drawers[i]].close();
       }
     }
-  },
+  }
 
   /**
    * Insert content in the body.
    */
-  _haxStoreInsertContent: function(e) {
+  _haxStoreInsertContent(e) {
     if (e.detail) {
       var properties = {};
       // support for properties to be set automatically optionally
@@ -1492,11 +1502,11 @@ Polymer({
         );
       }
     }
-  },
+  }
   /**
    * Optional send array, to improve performance and event bubbling better
    */
-  _haxStoreInsertMultiple: function(e) {
+  _haxStoreInsertMultiple(e) {
     if (e.detail) {
       var properties;
       for (var i in e.detail) {
@@ -1516,12 +1526,12 @@ Polymer({
         this.activeHaxBody.breakUpdateLock();
       }, 300);
     }
-  },
+  }
 
   /**
    * Set the activeHaxBody and add to the list so we know what to insert into.
    */
-  _haxStoreRegisterBody: function(e) {
+  _haxStoreRegisterBody(e) {
     if (e.detail) {
       this.haxBodies.push(e.detail);
       // default active the whatever is last here
@@ -1530,39 +1540,38 @@ Polymer({
       window.HaxStore.write("activeHaxBody", this.activeHaxBody, this);
       window.HaxStore.write("editMode", this.editMode, this);
     }
-  },
+  }
 
   /**
    * Set the haxPanel so we know what to insert into.
    */
-  _haxStoreRegisterPanel: function(e) {
+  _haxStoreRegisterPanel(e) {
     if (e.detail && typeof this.haxPanel === typeof undefined) {
       this.haxPanel = e.detail;
     }
-  },
-
+  }
   /**
    * Set the haxExport so we know who to call for exporting
    */
-  _haxStoreRegisterExport: function(e) {
+  _haxStoreRegisterExport(e) {
     if (e.detail && typeof this.haxExport === typeof undefined) {
       this.haxExport = e.detail;
     }
-  },
+  }
 
   /**
    * Set the haxPreferences so we know what has global preferences
    */
-  _haxStoreRegisterPreferences: function(e) {
+  _haxStoreRegisterPreferences(e) {
     if (e.detail && typeof this.haxPreferences === typeof undefined) {
       this.haxPreferences = e.detail;
     }
-  },
+  }
 
   /**
    * Feature detect on the bar.
    */
-  computePolyfillSafe: function() {
+  computePolyfillSafe() {
     /**
      * These are our bad actors in polyfill'ed browsers.
      * This means that https://github.com/webcomponents/webcomponentsjs/commit/ce464bb533bf39b544c312906499a6044ee0d30d
@@ -1576,12 +1585,12 @@ Polymer({
       console.log("Shadow DOM missing, certain operations hidden");
       return false;
     }
-  },
+  }
 
   /**
    * Write store event callback.
    */
-  _writeHaxStore: function(e) {
+  _writeHaxStore(e) {
     // ensure we have a valid store write
     if (
       e.detail &&
@@ -1606,12 +1615,12 @@ Polymer({
         })
       );
     }
-  },
+  }
 
   /**
    * Notice that an app was set in HAX; register it
    */
-  _haxStoreRegisterApp: function(e) {
+  _haxStoreRegisterApp(e) {
     if (e.detail) {
       e.detail.index = this.appList.length;
       this.push("appList", e.detail);
@@ -1624,12 +1633,12 @@ Polymer({
         dom(e.target.parentElement).removeChild(e.target);
       }
     }
-  },
+  }
 
   /**
    * Notice that a stax was set in HAX; register it
    */
-  _haxStoreRegisterStax: function(e) {
+  _haxStoreRegisterStax(e) {
     if (e.detail) {
       e.detail.index = this.staxList.length;
       this.push("staxList", e.detail);
@@ -1642,12 +1651,12 @@ Polymer({
         dom(e.target.parentElement).removeChild(e.target);
       }
     }
-  },
+  }
 
   /**
    * Notice that a blox was set in HAX; register it
    */
-  _haxStoreRegisterBlox: function(e) {
+  _haxStoreRegisterBlox(e) {
     if (e.detail) {
       e.detail.index = this.bloxList.length;
       this.push("bloxList", e.detail);
@@ -1660,12 +1669,12 @@ Polymer({
         dom(e.target.parentElement).removeChild(e.target);
       }
     }
-  },
+  }
 
   /**
    * Notice that a property off an element was set in HAX some place; register it here
    */
-  _haxStoreRegisterProperties: function(e) {
+  _haxStoreRegisterProperties(e) {
     if (e.detail && e.detail.properties && e.detail.tag) {
       // only register tag if we don't know about it already
       if (typeof this.elementList[e.detail.tag] === typeof undefined) {
@@ -1696,7 +1705,22 @@ Polymer({
       }
     }
   }
-});
+}
+/**
+ * Trick to write the store to the DOM if it wasn't there already.
+ * This is not used yet but could be if you wanted to dynamically
+ * load the store based on something else calling for it. Like
+ * store lazy loading but it isn't tested.
+ */
+window.HaxStore = window.HaxStore || {};
+window.HaxStore.instance = null;
+window.HaxStore.requestAvailability = function() {
+  if (!window.HaxStore.instance) {
+    window.HaxStore.instance = document.createElement("hax-store");
+    document.body.appendChild(window.HaxStore.instance);
+  }
+  return window.HaxStore.instance;
+};
 /**
  * Simple Array smashing function to ensure Object is array.
  */
@@ -2396,3 +2420,6 @@ window.HaxStore.getRange = () => {
     return sel;
   } else false;
 };
+
+window.customElements.define(HaxStore.tag, HaxStore);
+export { HaxStore };

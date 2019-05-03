@@ -1,4 +1,12 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/paper-card/paper-card.js";import{SimpleColors}from"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";let LrndesignPanelcard=Polymer({_template:html`
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/paper-card/paper-card.js";import{SimpleColors}from"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";/**
+`lrndesign-panelcard`
+A LRN element
+
+* @demo demo/index.html
+*/let LrndesignPanelcard=Polymer({_template:html`
     <style include="simple-colors"></style>
     <style>
       :host {
@@ -45,4 +53,13 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         </div>
       </paper-card>
     </aside>
-  `,is:"lrndesign-panelcard",behaviors:[HAXBehaviors.PropertiesBehaviors,SimpleColors],properties:{title:{type:String,value:"Block heading",reflectToAttribute:!0},elevation:{type:Number,value:2,reflectToAttribute:!0},coloredText:{type:Boolean,value:!1,reflectToAttribute:!0}},attached:function(){let props={canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Note card",description:"A small note to offset text used for asides.",icon:"icons:check-box-outline-blank",color:"grey",groups:["Content","Visual Treatment"],handles:[{type:"text",text:"title"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"title",title:"Title",description:"The heading for this sticky note",inputMethod:"textfield",icon:"editor:title"},{property:"accentColor",title:"Accent color",description:"Select the accent color use",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{property:"dark",title:"Dark",description:"Use dark theme",inputMethod:"boolean",icon:"invert-colors"},{property:"elevation",title:"Elevation",description:"Visually how high this is off the page",inputMethod:"textfield",icon:"icons:content-copy"}],configure:[{property:"title",title:"Title",description:"The heading for this sticky note",inputMethod:"textfield",icon:"editor:title"},{slot:"",title:"Text",description:"The text for our sticky note",inputMethod:"textarea",icon:"editor:title",required:!1,validationType:"text"},{property:"accentColor",title:"Accent color",description:"Select the accent color use",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{property:"dark",title:"Dark",description:"Use dark theme",inputMethod:"boolean",icon:"invert-colors"},{property:"coloredText",title:"Colored Text",description:"Apply color to text instead of background.",inputMethod:"boolean",icon:"editor:format-color-text"},{property:"elevation",title:"Elevation",description:"Visually how high this is off the page",inputMethod:"select",options:{0:"0",1:"1",2:"2",3:"3",4:"4",5:"5"}}],advanced:[]}};this.setHaxProperties(props)}});export{LrndesignPanelcard};
+  `,is:"lrndesign-panelcard",behaviors:[HAXBehaviors.PropertiesBehaviors,SimpleColors],properties:{/**
+     * Title of the panel
+     */title:{type:String,value:"Block heading",reflectToAttribute:!0},/**
+     * Height of the paper.
+     */elevation:{type:Number,value:2,reflectToAttribute:!0},/**
+     * Applies the color to the text instead of the background
+     */coloredText:{type:Boolean,value:!1,reflectToAttribute:!0}},/**
+   * Attached.
+   */attached:function(){// Establish hax properties if they exist
+let props={canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Note card",description:"A small note to offset text used for asides.",icon:"icons:check-box-outline-blank",color:"grey",groups:["Content","Visual Treatment"],handles:[{type:"text",text:"title"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"title",title:"Title",description:"The heading for this sticky note",inputMethod:"textfield",icon:"editor:title"},{property:"accentColor",title:"Accent color",description:"Select the accent color use",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{property:"dark",title:"Dark",description:"Use dark theme",inputMethod:"boolean",icon:"invert-colors"},{property:"elevation",title:"Elevation",description:"Visually how high this is off the page",inputMethod:"textfield",icon:"icons:content-copy"}],configure:[{property:"title",title:"Title",description:"The heading for this sticky note",inputMethod:"textfield",icon:"editor:title"},{slot:"",title:"Text",description:"The text for our sticky note",inputMethod:"textarea",icon:"editor:title",required:!1,validationType:"text"},{property:"accentColor",title:"Accent color",description:"Select the accent color use",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{property:"dark",title:"Dark",description:"Use dark theme",inputMethod:"boolean",icon:"invert-colors"},{property:"coloredText",title:"Colored Text",description:"Apply color to text instead of background.",inputMethod:"boolean",icon:"editor:format-color-text"},{property:"elevation",title:"Elevation",description:"Visually how high this is off the page",inputMethod:"select",options:{0:"0",1:"1",2:"2",3:"3",4:"4",5:"5"}}],advanced:[]}};this.setHaxProperties(props)}});export{LrndesignPanelcard};

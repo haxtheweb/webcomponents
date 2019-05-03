@@ -56,6 +56,10 @@ class HAX extends HTMLElement {
       this.render();
     }
     window.addEventListener("hax-store-ready", this.storeReady.bind(this));
+    window.addEventListener(
+      "hax-store-app-store-loaded",
+      this.appStoreReady.bind(this)
+    );
     // dynamically import definitions for all needed tags
     import("@lrnwebcomponents/hax-body/hax-body.js");
     import("@lrnwebcomponents/hax-body/lib/hax-panel.js");
@@ -106,22 +110,35 @@ class HAX extends HTMLElement {
     this[name] = value;
   }
 
+  /**
+   * Store is ready, now we can pass along the app store definition
+   * which HAX will react to an load the data it finds.
+   */
   storeReady(e) {
-    window.HaxStore.instance.appStore = JSON.parse(
-      this.getAttribute("app-store")
-    );
-    // import into the active body if there's content
-    // obtain the nodes that have been assigned to the slot of our element
-    if (this.shadowRoot.querySelector("slot")) {
-      const nodes = this.shadowRoot.querySelector("slot").assignedNodes();
-      let body = "";
-      // loop the nodes and if it has an outerHTML attribute, append as string
-      for (let i in nodes) {
-        if (typeof nodes[i].outerHTML !== typeof undefined) {
-          body += nodes[i].outerHTML;
+    if (e.detail) {
+      window.HaxStore.instance.appStore = JSON.parse(
+        this.getAttribute("app-store")
+      );
+    }
+  }
+  /**
+   * Appstore has been loaded, NOW we can safely do an import
+   */
+  appStoreReady(e) {
+    if (e.detail) {
+      // import into the active body if there's content
+      // obtain the nodes that have been assigned to the slot of our element
+      if (this.shadowRoot.querySelector("slot")) {
+        const nodes = this.shadowRoot.querySelector("slot").assignedNodes();
+        let body = "";
+        // loop the nodes and if it has an outerHTML attribute, append as string
+        for (let i in nodes) {
+          if (typeof nodes[i].outerHTML !== typeof undefined) {
+            body += nodes[i].outerHTML;
+          }
         }
+        window.HaxStore.instance.activeHaxBody.importContent(body);
       }
-      window.HaxStore.instance.activeHaxBody.importContent(body);
     }
   }
   render() {
@@ -153,6 +170,13 @@ class HAX extends HTMLElement {
   }
   disconnectedCallback() {
     window.removeEventListener("hax-store-ready", this.storeReady.bind(this));
+    window.removeEventListener(
+      "hax-store-ready",
+      this.appStoreReady.bind(this)
+    );
+    if (super.disconnectedCallback) {
+      super.disconnectedCallback();
+    }
   }
   static get observedAttributes() {
     return ["app-store", "hide-panel-ops"];

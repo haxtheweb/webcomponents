@@ -1,4 +1,18 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import"./node_modules/@polymer/polymer/lib/elements/dom-repeat.js";import"./lib/hex-a-gon.js";export{HexagonLoader};class HexagonLoader extends PolymerElement{static get template(){return html`
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import"./node_modules/@polymer/polymer/lib/elements/dom-repeat.js";import"./lib/hex-a-gon.js";export{HexagonLoader};/**
+ * `hexagon-loader`
+ * `a simple element that is for showing something is loading`
+ *
+ * @microcopy - language worth noting:
+ *  -
+ *
+ * @customElement
+ * @polymer
+ * @demo demo/index.html
+ */class HexagonLoader extends PolymerElement{// render function
+static get template(){return html`
 <style>:host {
   display: none;
 }
@@ -410,4 +424,23 @@ hex-a-gon:nth-of-type(37) {
     <template is="dom-repeat" items="[[items]]">
         <hex-a-gon></hex-a-gon>
     </template>
-</div>`}static get properties(){return{color:{name:"color",type:"String",observer:"_colorChanged",reflectToAttribute:!0},size:{name:"size",type:"String",reflectToAttribute:!0},loading:{name:"loading",type:"Boolean"},itemCount:{name:"itemCount",type:"Number",value:37}}}static get tag(){return"hexagon-loader"}connectedCallback(){super.connectedCallback();let items=[];for(var i=0;i<this.itemCount;i++){items.push("")}this.set("items",items)}_colorChanged(newValue,oldValue){if(newValue){this.updateStyles({"--hexagon-color":newValue})}}}window.customElements.define(HexagonLoader.tag,HexagonLoader);
+</div>`}// properties available to the custom element for data binding
+static get properties(){return{/**
+   * Color to make the loader
+   */color:{name:"color",type:"String",observer:"_colorChanged",reflectToAttribute:!0},/**
+   * The relative size of this loader. Options small, medium, large
+   */size:{name:"size",type:"String",reflectToAttribute:!0},/**
+   * Loading state
+   */loading:{name:"loading",type:"Boolean"},/**
+   * Count of the items
+   */itemCount:{name:"itemCount",type:"Number",value:37}}}/**
+   * Store the tag name to make it easier to obtain directly.
+   * @notice function name must be here for tooling to operate correctly
+   */static get tag(){return"hexagon-loader"}/**
+   * life cycle, element is afixed to the DOM
+   */connectedCallback(){super.connectedCallback();let items=[];for(var i=0;i<this.itemCount;i++){items.push("")}this.set("items",items)}/**
+   * Color changed
+   */_colorChanged(newValue,oldValue){if(newValue){this.updateStyles({"--hexagon-color":newValue})}}/**
+   * life cycle, element is removed from the DOM
+   */ //disconnectedCallback() {}
+}window.customElements.define(HexagonLoader.tag,HexagonLoader);

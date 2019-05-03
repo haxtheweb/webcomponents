@@ -12,29 +12,23 @@ window.StorybookUtilities.requestAvailability();
  * add to the pattern library
  */
 const LrndesignPiePattern = {
-  "of": "Pattern Library/Atoms/Media", 
-  "name": 'Pie Chart',
-  "file": require("raw-loader!./demo/pie.html"),
-  "replacements": [
-    {"find": "pie.csv", "replace": PieCSV }
-  ]
-}
+  of: "Pattern Library/Atoms/Media",
+  name: "Pie Chart",
+  file: require("raw-loader!./demo/pie.html"),
+  replacements: [{ find: "pie.csv", replace: PieCSV }]
+};
 const LrndesignBarPattern = {
-  "of": "Pattern Library/Atoms/Media", 
-  "name": 'Bar Chart',
-  "file": require("raw-loader!./demo/bar.html"),
-  "replacements": [
-    {"find": "bar.csv", "replace": BarCSV }
-  ]
-}
+  of: "Pattern Library/Atoms/Media",
+  name: "Bar Chart",
+  file: require("raw-loader!./demo/bar.html"),
+  replacements: [{ find: "bar.csv", replace: BarCSV }]
+};
 const LrndesignLinePattern = {
-  "of": "Pattern Library/Atoms/Media", 
-  "name": 'Line Chart',
-  "file": require("raw-loader!./demo/line.html"),
-  "replacements": [
-    {"find": "line.csv", "replace": LineCSV }
-  ]
-}
+  of: "Pattern Library/Atoms/Media",
+  name: "Line Chart",
+  file: require("raw-loader!./demo/line.html"),
+  replacements: [{ find: "line.csv", replace: LineCSV }]
+};
 window.StorybookUtilities.instance.addPattern(LrndesignBarPattern);
 window.StorybookUtilities.instance.addPattern(LrndesignPiePattern);
 window.StorybookUtilities.instance.addPattern(LrndesignLinePattern);
@@ -42,11 +36,11 @@ window.StorybookUtilities.instance.addPattern(LrndesignLinePattern);
 /**
  * add the live demo
  */
-let getAllKnobs = (props,csv)=>{
-  let allKnobs = Object.assign( 
-    window.StorybookUtilities.instance.getSimpleColors(''),  
-    LrndesignChartBehaviors.properties, 
-    props 
+let getAllKnobs = (props, csv) => {
+  let allKnobs = Object.assign(
+    window.StorybookUtilities.instance.getSimpleColors(""),
+    LrndesignChartBehaviors.properties,
+    props
   );
   allKnobs.dataSource.value = csv;
   allKnobs.scale.type = "select";
@@ -69,36 +63,36 @@ let getAllKnobs = (props,csv)=>{
     "ct-major-eleventh",
     "ct-major-twelfth",
     "ct-double-octave"
-  ]
+  ];
   delete allKnobs.rawData;
   return allKnobs;
-}
-const pieProps = getAllKnobs( LrndesignPie.properties, PieCSV ), 
-  barProps =  getAllKnobs( LrndesignBar.properties, BarCSV ),
-  lineProps =  getAllKnobs( LrndesignLine.properties, LineCSV );
+};
+const pieProps = getAllKnobs(LrndesignPie.properties, PieCSV),
+  barProps = getAllKnobs(LrndesignBar.properties, BarCSV),
+  lineProps = getAllKnobs(LrndesignLine.properties, LineCSV);
 const LrndesignPieStory = {
-  "of": "Web Components/lrndesign-chart",
-  "name": "lrndesign-pie",
-  "props":  pieProps,
-  "slots": {}, 
-  "attr": ``,
-  "slotted": ``
+  of: "Web Components/lrndesign-chart",
+  name: "lrndesign-pie",
+  props: pieProps,
+  slots: {},
+  attr: ``,
+  slotted: ``
 };
 const LrndesignBarStory = {
-  "of": "Web Components/lrndesign-chart",
-  "name": "lrndesign-bar",
-  "props":  barProps,
-  "slots": {}, 
-  "attr": ``,
-  "slotted": ``
+  of: "Web Components/lrndesign-chart",
+  name: "lrndesign-bar",
+  props: barProps,
+  slots: {},
+  attr: ``,
+  slotted: ``
 };
 const LrndesignLineStory = {
-  "of": "Web Components/lrndesign-chart",
-  "name": "lrndesign-line",
-  "props":  lineProps,
-  "slots": {}, 
-  "attr": ``,
-  "slotted": ``
+  of: "Web Components/lrndesign-chart",
+  name: "lrndesign-line",
+  props: lineProps,
+  slots: {},
+  attr: ``,
+  slotted: ``
 };
 window.StorybookUtilities.instance.addLiveDemo(LrndesignPieStory);
 window.StorybookUtilities.instance.addLiveDemo(LrndesignBarStory);

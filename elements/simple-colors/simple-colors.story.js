@@ -6,22 +6,22 @@ import { StorybookUtilities } from "@lrnwebcomponents/storybook-utilities/storyb
 window.StorybookUtilities.requestAvailability();
 
 /**
- * add to the pattern library 
+ * add to the pattern library
  */
 const SimpleColorsPattern = {
-  "of": "Pattern Library/Atoms",       
-  "name": "Color",                              
-  "file": require("raw-loader!./demo/colors.html"),
-  "replacements": []
+  of: "Pattern Library/Atoms",
+  name: "Color",
+  file: require("raw-loader!./demo/colors.html"),
+  replacements: []
 };
 /**
- * add to the pattern library 
+ * add to the pattern library
  */
 const SimpleColorsPatternPicker = {
-  "of": "Pattern Library/Atoms/Forms",       
-  "name": "Color Picker",                              
-  "file": require("raw-loader!./demo/picker.html"),
-  "replacements": []
+  of: "Pattern Library/Atoms/Forms",
+  name: "Color Picker",
+  file: require("raw-loader!./demo/picker.html"),
+  replacements: []
 };
 window.StorybookUtilities.instance.addPattern(SimpleColorsPattern);
 window.StorybookUtilities.instance.addPattern(SimpleColorsPatternPicker);
@@ -30,14 +30,14 @@ window.StorybookUtilities.instance.addPattern(SimpleColorsPatternPicker);
  * add the live demo
  */
 const colors = window.StorybookUtilities.instance.getSimpleColors();
-colors.accentColor.value = 'grey';
+colors.accentColor.value = "grey";
 const SimpleColorsStory = {
-  "of": "Web Components/simple-colors",                  
-  "name": "simple-colors",
-  "props": colors,
-  "slots": {}, 
-  "attr": ``,  
-  "slotted": `
+  of: "Web Components/simple-colors",
+  name: "simple-colors",
+  props: colors,
+  slots: {},
+  attr: ``,
+  slotted: `
     <style is="custom-style" include="simple-colors">
       div {
         padding: 20px;
@@ -92,16 +92,16 @@ const SimpleColorsStory = {
     <button class="confirm">Save</button>
     <button class="delete">Delete</button>
   </div>`
-}
+};
 const picker = SimpleColorsPicker.properties;
-picker.label.value ="Pick a Color";
+picker.label.value = "Pick a Color";
 const SimpleColorsPickerStory = {
-  "of": "Web Components/simple-colors",                  
-  "name": "simple-colors-picker",
-  "props": picker,
-  "slots": {}, 
-  "attr": ``,  
-  "slotted": ``
-}
+  of: "Web Components/simple-colors",
+  name: "simple-colors-picker",
+  props: picker,
+  slots: {},
+  attr: ``,
+  slotted: ``
+};
 window.StorybookUtilities.instance.addLiveDemo(SimpleColorsStory);
 window.StorybookUtilities.instance.addLiveDemo(SimpleColorsPickerStory);

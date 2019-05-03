@@ -1,5 +1,18 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";let FlashCard=Polymer({_template:html`
-    <style include="materializecss-styles-colors">
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";/**
+`flash-card`
+A LRN element
+
+* @demo demo/index.html
+
+@microcopy - the mental model for this element
+ -
+ -
+
+*/let FlashCard=Polymer({_template:html`
+    <style>
       :host {
         display: block;
       }
@@ -47,4 +60,13 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       <div class="face front white black-text">Front</div>
       <div class="face back black white-text">Back</div>
     </paper-card>
-  `,is:"flash-card",behaviors:[HAXBehaviors.PropertiesBehaviors,MaterializeCSSBehaviors.ColorBehaviors,SchemaBehaviors.Schema],listeners:{mouseenter:"_flipup",mouseleave:"_flipback"},properties:{title:{type:String}},attached:function(){let props={canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Sample gizmo",description:"The user will be able to see this for selection in a UI.",icon:"av:play-circle-filled",color:"grey",groups:["Video","Media"],handles:[{type:"video",url:"source"}],meta:{author:"Your organization on github"}},settings:{quick:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield",icon:"editor:title"}],configure:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield",icon:"editor:title"}],advanced:[]}};this.setHaxProperties(props)},_flipup:function(e){this.$.card.classList.add("flipped")},_flipback:function(e){this.$.card.classList.remove("flipped")}});export{FlashCard};
+  `,is:"flash-card",behaviors:[HAXBehaviors.PropertiesBehaviors,MaterializeCSSBehaviors.ColorBehaviors,SchemaBehaviors.Schema],listeners:{mouseenter:"_flipup",mouseleave:"_flipback"},properties:{/**
+     * Title
+     */title:{type:String}},/**
+   * Attached to the DOM, now fire.
+   */attached:function(){// Establish hax property binding
+let props={canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Sample gizmo",description:"The user will be able to see this for selection in a UI.",icon:"av:play-circle-filled",color:"grey",groups:["Video","Media"],handles:[{type:"video",url:"source"}],meta:{author:"Your organization on github"}},settings:{quick:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield",icon:"editor:title"}],configure:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield",icon:"editor:title"}],advanced:[]}};this.setHaxProperties(props)},/**
+   * Flip up
+   */_flipup:function(e){this.$.card.classList.add("flipped")},/**
+   * Flip back
+   */_flipback:function(e){this.$.card.classList.remove("flipped")}});export{FlashCard};

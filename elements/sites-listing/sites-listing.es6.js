@@ -1,4 +1,15 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import"./node_modules/@polymer/iron-ajax/iron-ajax.js";import"./node_modules/@polymer/iron-list/iron-list.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@lrnwebcomponents/elmsln-loading/elmsln-loading.js";import"./lib/site-card.js";let SitesListing=Polymer({_template:html`
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import"./node_modules/@polymer/iron-ajax/iron-ajax.js";import"./node_modules/@polymer/iron-list/iron-list.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@lrnwebcomponents/elmsln-loading/elmsln-loading.js";import"./lib/site-card.js";/**
+ * `sites-listing`
+ * A LRN element
+ *
+ * @demo demo/index.html
+ *
+ * @microcopy - the mental model for this element
+ * -
+ */let SitesListing=Polymer({_template:html`
     <style>
       :host {
         height: 100vh;
@@ -75,4 +86,31 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         </paper-button>
       </template>
     </iron-list>
-  `,is:"sites-listing",properties:{sitesResponse:{type:Object,notify:!0,observer:"_sitesResponseChanged"},sites:{type:Array,notify:!0},size:{type:String,value:"large"},dataSource:{type:String},loadLocation:{type:Boolean,value:!1}},attached:function(){window.addEventListener("sites-listing-refresh-data",this.refreshData.bind(this))},detached:function(){window.removeEventListener("sites-listing-refresh-data",this.refreshData.bind(this))},refreshData:function(e){this.$.loaddata.generateRequest()},_sitesResponseChanged:function(newValue,oldValue){if(newValue){if(typeof newValue.items!==typeof void 0){this.set("sites",[]);this.set("sites",newValue.items);this.notifyPath("sites.*")}}},_siteClicked:function(e){var normalizedEvent=dom(e),local=normalizedEvent.localTarget,active=local.getAttribute("data-site-id");let findSite=this.sites.filter(site=>{if(site.id!==active){return!1}return!0});if(0<findSite.length){findSite=findSite.pop()}if(this.loadLocation&&typeof findSite.location!==typeof void 0){window.location.href=findSite.location}this.fire("sites-listing-item-selected",findSite)},_mouseEnter:function(e){let card=dom(e.target).querySelectorAll("site-card")[0];card.__oldElevation=card.elevation;if(5<card.elevation+2){card.elevation=5}else{card.elevation+=2}},_mouseLeave:function(e){let card=dom(e.target).querySelectorAll("site-card")[0];card.elevation=card.__oldElevation}});export{SitesListing};
+  `,is:"sites-listing",properties:{/**
+     * Object, JSON Outline Schema format
+     */sitesResponse:{type:Object,notify:!0,observer:"_sitesResponseChanged"},/**
+     * Array of site objects
+     */sites:{type:Array,notify:!0},/**
+     * Size of the cards
+     */size:{type:String,value:"large"},/**
+     * Data Source to power the loading of sites in JSON Outline Schema format.
+     */dataSource:{type:String},/**
+     * Allow for loading the location in the array rather than firing an event
+     */loadLocation:{type:Boolean,value:!1}},/**
+   * attached life cycle
+   */attached:function(){window.addEventListener("sites-listing-refresh-data",this.refreshData.bind(this))},/**
+   * detached life cycle
+   */detached:function(){window.removeEventListener("sites-listing-refresh-data",this.refreshData.bind(this))},/**
+   * force the request to regenerate
+   */refreshData:function(e){this.$.loaddata.generateRequest()},/**
+   * Parse JSON Outline Schema for the items and bind that to sites
+   */_sitesResponseChanged:function(newValue,oldValue){if(newValue){if(typeof newValue.items!==typeof void 0){this.set("sites",[]);this.set("sites",newValue.items);this.notifyPath("sites.*")}}},/**
+   * Handle tap on paper-button above to redirect to the correct data.
+   */_siteClicked:function(e){var normalizedEvent=dom(e),local=normalizedEvent.localTarget,active=local.getAttribute("data-site-id");// find the course by it's unique id and filter just to it
+let findSite=this.sites.filter(site=>{if(site.id!==active){return!1}return!0});// if we found one, make it the top level item
+if(0<findSite.length){findSite=findSite.pop()}// double check we have a URI
+if(this.loadLocation&&typeof findSite.location!==typeof void 0){window.location.href=findSite.location}this.fire("sites-listing-item-selected",findSite)},/**
+   * Increase elevation while hovering.
+   */_mouseEnter:function(e){let card=dom(e.target).querySelectorAll("site-card")[0];card.__oldElevation=card.elevation;if(5<card.elevation+2){card.elevation=5}else{card.elevation+=2}},/**
+   * Reset the elevation.
+   */_mouseLeave:function(e){let card=dom(e.target).querySelectorAll("site-card")[0];card.elevation=card.__oldElevation}});export{SitesListing};

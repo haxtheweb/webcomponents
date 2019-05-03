@@ -11,7 +11,7 @@
       "js": "src/game-show-quiz.js"
     }
   },
-  "version": "2.0.9",
+  "version": "2.0.10",
   "description": "A game show style quiz interaction",
   "repository": {
     "type": "git",
@@ -35,9 +35,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^2.0.9",
-    "@lrnwebcomponents/multiple-choice": "^2.0.9",
-    "@lrnwebcomponents/responsive-grid": "^2.0.9",
+    "@lrnwebcomponents/chartist-render": "^2.0.10",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.0.10",
+    "@lrnwebcomponents/multiple-choice": "^2.0.10",
+    "@lrnwebcomponents/responsive-grid": "^2.0.10",
+    "@lrnwebcomponents/simple-colors": "^2.0.10",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-flex-layout": "^3.0.1",
@@ -49,13 +51,12 @@
     "@polymer/paper-icon-button": "^3.0.2",
     "@polymer/paper-toast": "^3.0.0",
     "@polymer/polymer": "^3.2.0",
-    "lit-element": "^2.1.0",
-    "@lrnwebcomponents/simple-colors": "^2.0.9",
-    "@vaadin/vaadin-split-layout": "^4.1.0"
+    "@vaadin/vaadin-split-layout": "^4.1.0",
+    "lit-element": "^2.1.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.0.9",
-    "@lrnwebcomponents/storybook-utilities": "^2.0.9",
+    "@lrnwebcomponents/storybook-utilities": "^2.0.10",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.9",

@@ -1,4 +1,49 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@polymer/paper-button/paper-button.js";let PdfBrowserViewer=Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@polymer/paper-button/paper-button.js";/**
+@license
+Copyright (c) 2016 The Ingresso Rápido Web Components Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://ingressorapidowebcomponents.github.io/LICENSE.txt
+The complete set of authors may be found at http://ingressorapidowebcomponents.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://ingressorapidowebcomponents.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+*/ /**
+
+
+Example:
+```html
+    <pdf-browser-viewer id="pdfViewer" file="[[pdfUrl]]" width="100%"></pdf-browser-viewer>
+```
+
+Data Bind with Blob example:
+```js
+    this.pdfUrl = URL.createObjectURL(blob);
+```
+
+Clear PDF container example:
+```js
+    this.$.pdfViewer.clear();
+```
+
+Message example:
+```html
+    <pdf-browser-viewer
+        file="[[pdfUrl]]"
+        not-supported-message="Not supported by your browser"
+        not-supported-link-message="see the file here!">
+    </pdf-browser-viewer>
+```
+
+Card example:
+```html
+    <pdf-browser-viewer
+        file="[[pdfUrl]]"
+        card elevation="3"
+        download-label="Baixar">
+    </pdf-browser-viewer>
+```
+
+* @demo demo/index.html
+*/let PdfBrowserViewer=Polymer({_template:html`
     <style>
       :host {
         display: none;
@@ -42,4 +87,40 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         </p>
       </object>
     </template>
-  `,is:"pdf-browser-viewer",properties:{file:{type:String,value:void 0,reflectToAttribute:!0},notSupportedMessage:{type:String,value:"It appears your Web browser is not configured to display PDF files. No worries, just"},notSupportedLinkMessage:{type:String,value:"click here to download the PDF file."},height:{type:String,value:"400px"},width:{type:String,value:"100%"},card:{type:Boolean,value:!1},downloadLabel:{type:String,value:"Download"},elevation:{type:String,value:"1"}},clear:function(){this.file=void 0},_download:function(){window.location=this.file}});export{PdfBrowserViewer};
+  `,is:"pdf-browser-viewer",properties:{/**
+     * The location of the PDF file.
+     *
+     * @type String
+     */file:{type:String,value:void 0,reflectToAttribute:!0},/**
+     * The message when browser doesn't support pdf object
+     *
+     * @type String
+     */notSupportedMessage:{type:String,value:"It appears your Web browser is not configured to display PDF files. No worries, just"},/**
+     * The PDF link message when browser doesn't support pdf object
+     *
+     * @type String
+     */notSupportedLinkMessage:{type:String,value:"click here to download the PDF file."},/**
+     * The height of the PDF viewer.
+     *
+     * @type String
+     */height:{type:String,value:"400px"},/**
+     * The width of the PDF viewer.
+     *
+     * @type String
+     */width:{type:String,value:"100%"},/**
+     * PDF viewer as a card with download button.
+     *
+     * @type Boolean
+     */card:{type:Boolean,value:!1},/**
+     * Download button label.
+     *
+     * @type String
+     */downloadLabel:{type:String,value:"Download"},/**
+     * The z-depth of the card, from 0-5.
+     *
+     * @type String
+     */elevation:{type:String,value:"1"}},/**
+   * Clear PDF container
+   */clear:function(){this.file=void 0},/**
+   * Downloads the pdf file
+   */_download:function(){window.location=this.file}});export{PdfBrowserViewer};

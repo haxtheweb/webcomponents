@@ -6,7 +6,7 @@ import "./hax-shared-styles.js";
 class HaxUploadField extends PolymerElement {
   static get template() {
     return html`
-      <style is="custom-style" include="simple-colors hax-shared-styles">
+      <style include="simple-colors hax-shared-styles">
         :host {
           display: block;
           justify-content: flex-start;
@@ -170,7 +170,7 @@ class HaxUploadField extends PolymerElement {
       item.type = this._resolveObjectPath(map.gizmo.type, data);
     }
     // set the value of the url which will update our URL and notify
-    this.$.url.value = item.url;
+    this.shadowRoot.querySelector("#url").value = item.url;
   }
   /**
    * Event for an app being selected from a picker
@@ -180,7 +180,8 @@ class HaxUploadField extends PolymerElement {
     // details for where to upload the file
     let connection = e.detail.connection;
     this.__appUsed = e.detail;
-    this.$.fileupload.method = connection.operations.add.method;
+    this.shadowRoot.querySelector("#fileupload").method =
+      connection.operations.add.method;
     let requestEndPoint = connection.protocol + "://" + connection.url;
     // ensure we build a url correctly
     if (requestEndPoint.substr(requestEndPoint.length - 1) != "/") {
@@ -207,36 +208,35 @@ class HaxUploadField extends PolymerElement {
           window.HaxStore.instance.connectionRewrites.appendJwt
         );
     }
-    this.$.fileupload.headers = connection.headers;
-    this.$.fileupload.target = requestEndPoint;
+    this.shadowRoot.querySelector("#fileupload").headers = connection.headers;
+    this.shadowRoot.querySelector("#fileupload").target = requestEndPoint;
     // invoke file uploading...
     this.__allowUpload = true;
-    this.$.fileupload.uploadFiles();
+    this.shadowRoot.querySelector("#fileupload").uploadFiles();
   }
   connectedCallback() {
     super.connectedCallback();
-    this.$.fileupload.addEventListener(
-      "upload-before",
-      this._fileAboutToUpload.bind(this)
-    );
-    this.$.fileupload.addEventListener(
-      "upload-response",
-      this._fileUploadResponse.bind(this)
-    );
+    this.shadowRoot
+      .querySelector("#fileupload")
+      .addEventListener("upload-before", this._fileAboutToUpload.bind(this));
+    this.shadowRoot
+      .querySelector("#fileupload")
+      .addEventListener("upload-response", this._fileUploadResponse.bind(this));
     document.body.addEventListener(
       "hax-app-picker-selection",
       this._haxAppPickerSelection.bind(this)
     );
   }
   disconnectedCallback() {
-    this.$.fileupload.removeEventListener(
-      "upload-before",
-      this._fileAboutToUpload.bind(this)
-    );
-    this.$.fileupload.removeEventListener(
-      "upload-response",
-      this._fileUploadResponse.bind(this)
-    );
+    this.shadowRoot
+      .querySelector("#fileupload")
+      .removeEventListener("upload-before", this._fileAboutToUpload.bind(this));
+    this.shadowRoot
+      .querySelector("#fileupload")
+      .removeEventListener(
+        "upload-response",
+        this._fileUploadResponse.bind(this)
+      );
     document.body.removeEventListener(
       "hax-app-picker-selection",
       this._haxAppPickerSelection.bind(this)

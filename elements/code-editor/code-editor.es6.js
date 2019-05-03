@@ -1,4 +1,14 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import{FlattenedNodesObserver}from"./node_modules/@polymer/polymer/lib/utils/flattened-nodes-observer.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import*as async from"./node_modules/@polymer/polymer/lib/utils/async.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import"./lib/monaco-element/monaco-element.js";import"./lib/code-pen-button.js";let CodeEditor=Polymer({_template:html`
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import{FlattenedNodesObserver}from"./node_modules/@polymer/polymer/lib/utils/flattened-nodes-observer.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import*as async from"./node_modules/@polymer/polymer/lib/utils/async.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import"./lib/monaco-element/monaco-element.js";import"./lib/code-pen-button.js";/**
+ * `code-editor`
+ * `Wrapper on top of a code editor`
+ *
+ * @demo demo/index.html
+ * @microcopy - the mental model for this element
+ * - monaco is the VS code editor
+ */let CodeEditor=Polymer({_template:html`
     <custom-style>
       <style>
         :host {
@@ -52,4 +62,46 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       <span>Check it out on code pen: </span
       ><code-pen-button data="[[codePenData]]"></code-pen-button>
     </div>
-  `,is:"code-editor",behaviors:[HAXBehaviors.PropertiesBehaviors,SchemaBehaviors.Schema],properties:{title:{type:String},showCodePen:{type:Boolean,value:!1,reflectToAttribute:!0},readOnly:{type:Boolean,value:!1,reflectToAttribute:!0},codePenData:{type:Object,computed:"_computeCodePenData(title, value)"},editorValue:{type:String,value:""},value:{type:String,notify:!0},theme:{type:String,value:"vs-dark"},mode:{type:String,observer:"_modeChanged"},language:{type:String,value:"javascript"},fontSize:{type:Number,value:16}},_computeCodePenData:function(title,editorValue){return{title:title,html:editorValue}},_modeChanged:function(newValue){this.language=this.mode},_editorDataChanged:function(e){this.value=e.detail},updateEditorValue:function(){var content="",children=this.queryEffectiveChildren("template");if(!children){console.warn("code-editor works best with a template tag provided in light dom");children=dom(this).getEffectiveChildNodes();if(0<children.length){for(var j=0,len2=children.length;j<len2;j++){if(typeof children[j].tagName!==typeof void 0){content+=children[j].outerHTML}else{content+=children[j].textContent}}}}else{content=children.innerHTML}this.$.codeeditor.value=content.trim()},preProcessHaxNodeToContent:function(clone){clone.editorValue=null;clone.codePenData=null;clone.value=null;clone.removeAttribute("value");clone.removeAttribute("code-pen-data");return clone},created:function(){this.__libPath=decodeURIComponent(import.meta.url)+"/../../../monaco-editor/min/vs"},ready:function(){this._observer=new FlattenedNodesObserver(this,info=>{if(0<info.addedNodes.length){info.addedNodes.map(node=>{this.updateEditorValue()})}if(0<info.removedNodes.length){info.removedNodes.map(node=>{this.updateEditorValue()})}})}});export{CodeEditor};
+  `,is:"code-editor",behaviors:[HAXBehaviors.PropertiesBehaviors,SchemaBehaviors.Schema],properties:{/**
+     * Title
+     */title:{type:String},/**
+     * Show codePen button to fork it to there to run
+     */showCodePen:{type:Boolean,value:!1,reflectToAttribute:!0},/**
+     * Readonly setting for the editor
+     */readOnly:{type:Boolean,value:!1,reflectToAttribute:!0},/**
+     * Code pen data, computed based on the HTML editor
+     */codePenData:{type:Object,computed:"_computeCodePenData(title, value)"},/**
+     * contents of the editor
+     */editorValue:{type:String},/**
+     * value of the editor after the fact
+     */value:{type:String,notify:!0},/**
+     * Theme for the Ace editor.
+     */theme:{type:String,value:"vs-dark"},/**
+     * Mode / language for editor
+     */mode:{type:String,observer:"_modeChanged"},/**
+     * Language to present color coding for
+     */language:{type:String,value:"javascript"},/**
+     * font size for the editor
+     */fontSize:{type:Number,value:16}},/**
+   * Update the post data whenever the editor has been updated
+   */_computeCodePenData:function(title,editorValue){return{title:title,html:editorValue}},/**
+   * LEGACY: pass down mode to language if that api is used
+   */_modeChanged:function(newValue){this.language=this.mode},/**
+   * Notice code editor changes and reflect them into this element
+   */_editorDataChanged:function(e){// value coming up off of thiss
+this.value=e.detail},/**
+   * Calculate what's in slot currently and then inject it into the editor.
+   */updateEditorValue:function(){var content="",children=this.queryEffectiveChildren("template");// 1st look for a template tag
+if(!children){console.warn("code-editor works best with a template tag provided in light dom");children=dom(this).getEffectiveChildNodes();if(0<children.length){// loop through everything found in the slotted area and put it back in
+for(var j=0,len2=children.length;j<len2;j++){if(typeof children[j].tagName!==typeof void 0){content+=children[j].outerHTML}else{content+=children[j].textContent}}}}else{content=children.innerHTML}this.$.codeeditor.value=content.trim()},/**
+   * Ensure fields don't pass through to HAX if in that context
+   */preProcessHaxNodeToContent:function(clone){clone.editorValue=null;clone.codePenData=null;clone.value=null;clone.removeAttribute("value");clone.removeAttribute("code-pen-data");return clone},/**
+   * created callback
+   */created:function(){// set this ahead of it being painted into the dom
+this.__libPath=decodeURIComponent(import.meta.url)+"/../../../monaco-editor/min/vs"},/**
+   * attached life cycle
+   */attached:function(){afterNextRender(this,function(){// mutation observer that ensures state of hax applied correctly
+this._observer=new FlattenedNodesObserver(this,info=>{// if we've got new nodes, we have to react to that
+if(0<info.addedNodes.length){info.addedNodes.map(node=>{this.updateEditorValue()})}// if we dropped nodes via the UI (delete event basically)
+if(0<info.removedNodes.length){// handle removing items... not sure we need to do anything here
+info.removedNodes.map(node=>{this.updateEditorValue()})}})})}});export{CodeEditor};

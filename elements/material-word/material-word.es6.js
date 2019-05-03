@@ -1,4 +1,12 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";let MaterialWord=Polymer({_template:html`
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";/**
+`material-word`
+Outputs word in material alphabet
+
+* @demo demo/index.html
+*/let MaterialWord=Polymer({_template:html`
     <custom-style>
       <style>
         html {

@@ -85,11 +85,10 @@ class SimpleModalTemplate extends PolymerElement {
    * @returns {object} the modal object
    */
   associateEvents(target, evt = "tap", bubbles = true, cancelable = true) {
-    let root = this;
     target.addEventListener(evt, e => {
-      root.openModal(target, bubbles, cancelable);
+      this.openModal(target, bubbles, cancelable);
     });
-    return root.modal;
+    return this.modal;
   }
   /**
    * gets the simple-modal

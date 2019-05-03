@@ -1,4 +1,18 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";class HaxschemaBuilder extends PolymerElement{static get template(){return html`
+/**
+ * Copyright 2019 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/json-editor/json-editor.js";import"./node_modules/@lrnwebcomponents/code-editor/code-editor.js";import"./node_modules/@vaadin/vaadin-split-layout/vaadin-split-layout.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@lrnwebcomponents/hax-body/lib/hax-schema-form.js";/**
+ * `haxschema-builder`
+ * `dynamically build and visualize HAXschema`
+ *
+ * @microcopy - language worth noting:
+ *  -
+ *
+ * @customElement
+ * @polymer
+ * @demo demo/index.html
+ */class HaxschemaBuilder extends PolymerElement{// render function
+static get template(){return html`
 <style>:host {
   display: block;
 }
@@ -6,7 +20,43 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
 :host([hidden]) {
   display: none;
 }
-</style>
-<slot></slot>
-<div>[[haxSchema]]</div>
-<div>[[source]]</div>`}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Haxschema builder",description:"dynamically build and visualize HAXschema",icon:"icons:android",color:"green",groups:["Builder"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"btopro",owner:"The Pennsylvania State University"}},settings:{quick:[{property:"source",description:"",inputMethod:"textfield",required:!0,icon:"icons:link",validationType:"url"}],configure:[{property:"haxSchema",description:"",inputMethod:"array",required:!1,icon:"icons:android"},{property:"source",description:"",inputMethod:"textfield",required:!0,icon:"icons:link",validationType:"url"}],advanced:[]}}}static get properties(){return{haxSchema:{name:"haxSchema",type:"Object",value:"{}",reflectToAttribute:!1,observer:!1},source:{name:"source",type:"String",value:"",reflectToAttribute:!1,observer:!1}}}static get tag(){return"haxschema-builder"}connectedCallback(){super.connectedCallback();this.HAXWiring=new HAXWiring;this.HAXWiring.setup(HaxschemaBuilder.haxProperties,HaxschemaBuilder.tag,this)}}window.customElements.define(HaxschemaBuilder.tag,HaxschemaBuilder);export{HaxschemaBuilder};
+code-editor {
+  height: 500px;
+}</style>
+<vaadin-split-layout>
+  <div>
+    <paper-button raised="" noink="">Add to configure</paper-button>
+    <paper-button raised="" noink="">Add to advanced</paper-button>
+    <code-editor id="code"  on-value-changed="_editorDataChanged" language="json"></code-editor>
+    <json-editor id="json" label="JSON" value="{{haxSchema}}"></json-editor>
+  </div>
+  <div>
+    <hax-schema-form id="form" configure-schema="[[configureSchema]]" advanced-schema="[[advancedSchema]]" value="{{value}}"></hax-schema-form>
+  </div>
+</vaadin-split-layout>`}// haxProperty definition
+static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Haxschema builder",description:"dynamically build and visualize HAXschema",icon:"icons:android",color:"green",groups:["Builder"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"btopro",owner:"The Pennsylvania State University"}},settings:{quick:[{property:"source",description:"",inputMethod:"textfield",required:!0,icon:"icons:link",validationType:"url"}],configure:[{property:"haxSchema",description:"",inputMethod:"array",required:!1,icon:"icons:android"},{property:"source",description:"",inputMethod:"textfield",required:!0,icon:"icons:link",validationType:"url"}],advanced:[]}}}// properties available to the custom element for data binding
+static get properties(){return{/**
+   * schema to extract for whatever you wanted it for
+   */haxSchema:{name:"haxSchema",type:"String",notify:!0,observer:"_haxSchemaChanged"},/**
+   * configure form schema to extract for whatever you wanted it for
+   */configureSchema:{name:"configureSchema",type:"Object",value:{}},/**
+   * advanced form schema to extract for whatever you wanted it for
+   */advancedSchema:{name:"advancedSchema",type:"Object",value:{}},/**
+   * Optional remote source to pull in
+   */source:{name:"source",type:"String"},/**
+   * String based value passed between the elements to stitch together
+   */value:{name:"value",type:"String"}}}/**
+   * Store the tag name to make it easier to obtain directly.
+   * @notice function name must be here for tooling to operate correctly
+   */static get tag(){return"haxschema-builder"}/**
+   * life cycle, element is afixed to the DOM
+   */connectedCallback(){super.connectedCallback();this.HAXWiring=new HAXWiring;this.HAXWiring.setup(HaxschemaBuilder.haxProperties,HaxschemaBuilder.tag,this);if(!this.source){this.haxSchema=JSON.stringify(this.HAXWiring.prototypeHaxProperties(),null,2)}// HACK to get initial paint to have the correct form
+this.$.form.modeTab="advanced";setTimeout(()=>{this.$.form.modeTab="configure"},2e3)}/**
+   * Force an update on code editor when this value changes
+   */_haxSchemaChanged(newValue){if(newValue){this.$.code.editorValue=newValue}}/**
+   * Notice code editor changes and reflect them into this element
+   */_editorDataChanged(e){// value coming up off of thiss
+this.haxSchema=e.detail.value;let hs=JSON.parse(this.haxSchema);for(var key in hs.settings){let schema=this.HAXWiring.getHaxJSONSchema(key,hs);this.set(key+"Schema",schema)}}/**
+   * life cycle, element is removed from the DOM
+   */ //disconnectedCallback() {}
+}window.customElements.define(HaxschemaBuilder.tag,HaxschemaBuilder);export{HaxschemaBuilder};

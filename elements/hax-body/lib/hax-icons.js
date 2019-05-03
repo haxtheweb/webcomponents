@@ -1,4 +1,4 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-iconset-svg/iron-iconset-svg.js";
 var $_documentContainer = document.createElement("div");

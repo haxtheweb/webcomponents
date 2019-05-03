@@ -1,4 +1,59 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/paper-progress/paper-progress.js";import"./node_modules/@polymer/iron-icon/iron-icon.js";import"./node_modules/@polymer/paper-icon-button/paper-icon-button.js";import"./node_modules/@polymer/paper-ripple/paper-ripple.js";import{IronA11yKeysBehavior}from"./node_modules/@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js";import"./lib/lrndesign-audio-player-icons.js";let LrndesignAudioPlayer=Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/paper-progress/paper-progress.js";import"./node_modules/@polymer/iron-icon/iron-icon.js";import"./node_modules/@polymer/paper-icon-button/paper-icon-button.js";import"./node_modules/@polymer/paper-ripple/paper-ripple.js";import{IronA11yKeysBehavior}from"./node_modules/@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js";import"./lib/lrndesign-audio-player-icons.js";/**
+ * The MIT License (MIT)
+
+Copyright (c) 2015 Nadi Dikun
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+A custom audio player with material paper style and clean design.
+
+Example:
+
+    <lrndesign-audio-player src="audio.mp3"></lrndesign-audio-player>
+
+### Styling the player:
+
+This player has an accent color, and you have two option to modify it:
+
+- **Option 1**: Using the *color property* on element. This one is handy if you need to modify the color dynamically.
+
+
+    <lrndesign-audio-player color="#F05C38" src="audio.mp3"></lrndesign-audio-player>
+
+
+- **Option 2**: Using the *custom CSS property*:
+
+
+
+    lrndesign-audio-player {
+       --lrndesign-audio-player-color: #e91e63;
+    }
+
+The following mixins are available for styling:
+
+Custom property                             | Description                                 | Default
+--------------------------------------------|---------------------------------------------|----------
+--lrndesign-audio-player-color                  | Color of the element                        | blueviolet
+
+@element lrndesign-audio-player
+* @demo demo/index.html
+*/let LrndesignAudioPlayer=Polymer({_template:html`
     <style>
       :host {
         display: block;
@@ -231,4 +286,63 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         ></paper-icon-button>
       </div>
     </div>
-  `,is:"lrndesign-audio-player",behaviors:[IronA11yKeysBehavior],hostAttributes:{tabindex:0,role:"application","aria-label":"Audio Player","aria-describedby":"title"},properties:{src:{type:String,observer:"_srcChanged"},title:{type:String,value:"Click to play this audio file"},color:{type:String,observer:"_changeColor"},autoPlay:{type:Boolean,value:!1},preload:{type:String,value:"auto"},currentTime:{type:Number,value:0,notify:!0},timeLeft:{type:Number,value:0},smallSkip:{type:Number,value:15},largeSkip:{type:Number,value:60},error:{type:Boolean},timeOffset:{type:Number,value:0}},keyBindings:{space:"playPause",enter:"playPause",left:"_skipReverseByInterval",right:"_skipReverseByInterval",down:"_skipReverseByInterval",up:"_skipReverseByInterval"},ready:function(){var player=this;player.canBePlayed=!1;player.isPlaying=!1;player.ended=!1;player.error=!1;player.$.audio.currentTime=player.timeOffset},attached:function(){this.$.audio.addEventListener("loadedmetadata",this._onCanPlay.bind(this));this.$.audio.addEventListener("playing",this._onPlaying.bind(this));this.$.audio.addEventListener("pause",this._onPause.bind(this));this.$.audio.addEventListener("ended",this._onEnd.bind(this));this.$.audio.addEventListener("error",this._onError.bind(this))},detached:function(){this.$.audio.removeEventListener("loadedmetadata",this._onCanPlay.bind(this));this.$.audio.removeEventListener("playing",this._onPlaying.bind(this));this.$.audio.removeEventListener("pause",this._onPause.bind(this));this.$.audio.removeEventListener("ended",this._onEnd.bind(this));this.$.audio.removeEventListener("error",this._onError.bind(this))},playPause:function(e){if(!!e)e.preventDefault();var player=this;if(player.canBePlayed){return player.isPlaying?player.$.audio.pause():player.$.audio.play()}else if("none"===player.preload){player.$.audio.load();player.$.audio.play()}},restart:function(e){if(!!e)e.preventDefault();var player=this;player.$.audio.currentTime=0;if(!player.isPlaying)player.$.audio.play()},_onCanPlay:function(){var player=this;player.canBePlayed=!0;player.timeLeft=player.$.audio.duration;if(0<player.timeOffset){var percentagePlayed=player.timeOffset/player.$.audio.duration;player._updateVisualProgress(percentagePlayed)}if(player.autoPlay)player.$.audio.play()},_onPlaying:function(){var player=this;player.ended=!1;player.isPlaying=!0;player.$.replay.style="";player._startProgressTimer()},_skipReverseByInterval:function(e){if(!!e)e.preventDefault();var player=this,newTime=0;switch(e.detail.key){case"up":if(player.largeSkip<player.timeLeft)newTime=player.currentTime+player.largeSkip;break;case"down":if(0<player.currentTime-player.largeSkip)newTime=player.currentTime-player.largeSkip;break;case"right":if(player.smallSkip<player.timeLeft)newTime=player.currentTime+player.smallSkip;break;default:if(0<player.currentTime-player.smallSkip)newTime=player.currentTime-player.smallSkip;}player._updatePlayPosition(newTime);if(!player.isPlaying)player.$.audio.play()},_startProgressTimer:function(){var player=this;player.timer={};if(player.timer.sliderUpdateInterval){clearInterval(player.timer.sliderUpdateInterval)}player.timer.sliderUpdateInterval=setInterval(function(){if(player.isPlaying){player.currentTime=player.$.audio.currentTime;player.timeLeft=player.$.audio.duration-player.currentTime;var percentagePlayed=player.currentTime/player.$.audio.duration;player._updateVisualProgress(percentagePlayed)}else{clearInterval(player.timer.sliderUpdateInterval)}},60)},_onPause:function(){var player=this;player.isPlaying=!1},_onEnd:function(){var player=this;player.ended=!0;player.isPlaying=!1;player.$.replay.style.opacity=1},_onError:function(){var player=this;player.classList.add("cantplay");player.title="Sorry, can't play track: "+player.title;player.error=!0;player.setAttribute("aria-invalid","true")},_convertSecToMin:function(seconds){var _Mathfloor=Math.floor;if(0===seconds)return"";var minutes=_Mathfloor(seconds/60),secondsToCalc=_Mathfloor(seconds%60)+"";return minutes+":"+(2>secondsToCalc.length?"0"+secondsToCalc:secondsToCalc)},_onDown:function(e){e.preventDefault();var player=this;if(player.canBePlayed){player._updateProgressBar(e);if(!player.isPlaying)player.$.audio.play()}else if("none"===player.preload){player.$.audio.load();player.$.audio.addEventListener("loadedmetadata",function(){player._updateProgressBar(e);if(!player.isPlaying)player.$.audio.play()},!1)}},_updateProgressBar:function(e){var player=this,x=e.detail.x-player.$.center.getBoundingClientRect().left,r=x/player.$.center.getBoundingClientRect().width*player.$.audio.duration;this._updatePlayPosition(r)},_updatePlayPosition:function(newTime){var player=this;player.currentTime=player.$.audio.currentTime=newTime;var percentagePlayed=player.currentTime/player.$.audio.duration;player._updateVisualProgress(percentagePlayed)},_updateVisualProgress:function(percentagePlayed){var player=this;player.$.progress.style.transform="scaleX("+percentagePlayed+")";player.$.progress2.style.width=100*percentagePlayed+"%";player.$.title2.style.width=100*(1/percentagePlayed)+"%"},_srcChanged:function(oldValue,newValue){var player=this;if(player.isPlaying){player.$.audio.pause();player.$.audio.play()}},_changeColor:function(newValue){var player=this;player.$.left.style.backgroundColor=newValue;player.$.title.style.color=newValue;player.$.duration.style.color=newValue;player.$.progress.style.backgroundColor=newValue;player.$.replay.style.color=newValue},_hidePlayIcon:function(isPlaying,canBePlayed){return isPlaying?!0:!(canBePlayed||"none"===this.preload)},_setPreload:function(autoplay,preload){return autoplay?"auto":preload}});export{LrndesignAudioPlayer};
+  `,is:"lrndesign-audio-player",//
+// Component behaviors
+behaviors:[IronA11yKeysBehavior],//
+// Define component default attributes
+hostAttributes:{tabindex:0,role:"application",//'aria-activedescendant': 'play',
+"aria-label":"Audio Player","aria-describedby":"title"},//
+// Define public properties
+properties:{src:{type:String,observer:"_srcChanged"},title:{type:String,value:"Click to play this audio file"},color:{type:String,observer:"_changeColor"},autoPlay:{type:Boolean,value:!1},preload:{type:String,value:"auto"},currentTime:{type:Number,value:0,notify:!0},timeLeft:{type:Number,value:0},smallSkip:{type:Number,value:15},largeSkip:{type:Number,value:60},error:{type:Boolean},timeOffset:{type:Number,value:0}},keyBindings:{space:"playPause",enter:"playPause",left:"_skipReverseByInterval",right:"_skipReverseByInterval",down:"_skipReverseByInterval",up:"_skipReverseByInterval"},//
+// When element is created
+ready:function(){var player=this;//
+// create Player defaults
+player.canBePlayed=!1;player.isPlaying=!1;player.ended=!1;player.error=!1;player.$.audio.currentTime=player.timeOffset;// apply the audio start time property
+},/**
+   * attached lifecycle
+   */attached:function(){this.$.audio.addEventListener("loadedmetadata",this._onCanPlay.bind(this));this.$.audio.addEventListener("playing",this._onPlaying.bind(this));this.$.audio.addEventListener("pause",this._onPause.bind(this));this.$.audio.addEventListener("ended",this._onEnd.bind(this));this.$.audio.addEventListener("error",this._onError.bind(this))},/**
+   * detached lifecycle
+   */detached:function(){this.$.audio.removeEventListener("loadedmetadata",this._onCanPlay.bind(this));this.$.audio.removeEventListener("playing",this._onPlaying.bind(this));this.$.audio.removeEventListener("pause",this._onPause.bind(this));this.$.audio.removeEventListener("ended",this._onEnd.bind(this));this.$.audio.removeEventListener("error",this._onError.bind(this))},// Play/Pause controls
+playPause:function(e){if(!!e)e.preventDefault();var player=this;if(player.canBePlayed){return player.isPlaying?player.$.audio.pause():player.$.audio.play()}else if("none"===player.preload){// If player can't be played, because audio wasn't pre-loaded
+// due to the preload="none" property set,
+// load the audio file at this point and start playing it immediately
+player.$.audio.load();player.$.audio.play()}},//
+// Restart audio
+restart:function(e){if(!!e)e.preventDefault();var player=this;player.$.audio.currentTime=0;if(!player.isPlaying)player.$.audio.play()},// when audio file can be played in user's browser
+_onCanPlay:function(){var player=this;player.canBePlayed=!0;player.timeLeft=player.$.audio.duration;// If player has a Time Offset specified
+// style the progress bar and title accordingly
+if(0<player.timeOffset){var percentagePlayed=player.timeOffset/player.$.audio.duration;player._updateVisualProgress(percentagePlayed)}// If player has auto-play attribute set,
+// it ignores preload="none" property and starts playing on load.
+// This behavior corresponds to the native audio element behavior.
+if(player.autoPlay)player.$.audio.play()},// when Player starts playing
+_onPlaying:function(){var player=this;player.ended=!1;player.isPlaying=!0;player.$.replay.style="";// remove Replay inline styling
+player._startProgressTimer()},//
+// Skip or reverse by pre-defined intervals
+_skipReverseByInterval:function(e){if(!!e)e.preventDefault();var player=this,newTime=0;switch(e.detail.key){case"up":if(player.largeSkip<player.timeLeft)newTime=player.currentTime+player.largeSkip;break;case"down":if(0<player.currentTime-player.largeSkip)newTime=player.currentTime-player.largeSkip;break;case"right":if(player.smallSkip<player.timeLeft)newTime=player.currentTime+player.smallSkip;break;default:if(0<player.currentTime-player.smallSkip)newTime=player.currentTime-player.smallSkip;}player._updatePlayPosition(newTime);if(!player.isPlaying)player.$.audio.play()},// starts Timer
+_startProgressTimer:function(){var player=this;player.timer={};if(player.timer.sliderUpdateInterval){clearInterval(player.timer.sliderUpdateInterval)}player.timer.sliderUpdateInterval=setInterval(function(){if(player.isPlaying){player.currentTime=player.$.audio.currentTime;player.timeLeft=player.$.audio.duration-player.currentTime;var percentagePlayed=player.currentTime/player.$.audio.duration;player._updateVisualProgress(percentagePlayed)}else{clearInterval(player.timer.sliderUpdateInterval)}},60)},// when Player is paused
+_onPause:function(){var player=this;player.isPlaying=!1},// when Player ended playing an audio file
+_onEnd:function(){var player=this;player.ended=!0;player.isPlaying=!1;player.$.replay.style.opacity=1;// display Replay icon
+},// on file load error
+_onError:function(){var player=this;player.classList.add("cantplay");player.title="Sorry, can't play track: "+player.title;player.error=!0;player.setAttribute("aria-invalid","true")},// to convert seconds to 'm:ss' format
+_convertSecToMin:function(seconds){if(0===seconds)return"";var minutes=Math.floor(seconds/60),secondsToCalc=Math.floor(seconds%60)+"";return minutes+":"+(2>secondsToCalc.length?"0"+secondsToCalc:secondsToCalc)},//
+// When user clicks somewhere on the progress bar
+_onDown:function(e){e.preventDefault();var player=this;if(player.canBePlayed){player._updateProgressBar(e);if(!player.isPlaying)player.$.audio.play();// When preload="none" is being used,
+// player should first try to load the audio,
+// and when it's successfully loaded, recalculate the progress bar
+}else if("none"===player.preload){player.$.audio.load();player.$.audio.addEventListener("loadedmetadata",function(){player._updateProgressBar(e);if(!player.isPlaying)player.$.audio.play()},!1)}},//
+// Helper function
+// that recalculates the progress bar position
+// based on the event.click position
+_updateProgressBar:function(e){var player=this,x=e.detail.x-player.$.center.getBoundingClientRect().left,r=x/player.$.center.getBoundingClientRect().width*player.$.audio.duration;this._updatePlayPosition(r)},//
+// Helper function
+// updates the current time based on a time variable
+_updatePlayPosition:function(newTime){var player=this;player.currentTime=player.$.audio.currentTime=newTime;var percentagePlayed=player.currentTime/player.$.audio.duration;player._updateVisualProgress(percentagePlayed)},//
+// Helper function
+// updates the progress bar based on a percentage played
+_updateVisualProgress:function(percentagePlayed){var player=this;player.$.progress.style.transform="scaleX("+percentagePlayed+")";player.$.progress2.style.width=100*percentagePlayed+"%";player.$.title2.style.width=100*(1/percentagePlayed)+"%"},//
+// If src is changed when track is playing,
+// pause the track and start playing a new src
+_srcChanged:function(oldValue,newValue){var player=this;if(player.isPlaying){player.$.audio.pause();player.$.audio.play()}},//
+// If color property is changed,
+// update all the nodes with the new accent color
+_changeColor:function(newValue){var player=this;player.$.left.style.backgroundColor=newValue;player.$.title.style.color=newValue;player.$.duration.style.color=newValue;player.$.progress.style.backgroundColor=newValue;player.$.replay.style.color=newValue},_hidePlayIcon:function(isPlaying,canBePlayed){return isPlaying?!0:!(canBePlayed||"none"===this.preload)},_setPreload:function(autoplay,preload){return autoplay?"auto":preload}});export{LrndesignAudioPlayer};

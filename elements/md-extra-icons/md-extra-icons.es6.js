@@ -1,4 +1,12 @@
-import"./node_modules/@polymer/iron-icon/iron-icon.js";import"./node_modules/@polymer/iron-iconset-svg/iron-iconset-svg.js";import{html}from"./node_modules/@polymer/polymer/lib/utils/html-tag.js";const template=html`
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ * `md-extra-icons`
+ *
+ * @group LRN Elements
+ * @pseudoElement md-extra-icons
+ * @demo demo/index.html
+ */import"./node_modules/@polymer/iron-icon/iron-icon.js";import"./node_modules/@polymer/iron-iconset-svg/iron-iconset-svg.js";import{html}from"./node_modules/@polymer/polymer/lib/utils/html-tag.js";const template=html`
   <iron-iconset-svg name="mdextra" size="24">
     <svg>
       <defs>

@@ -16,7 +16,7 @@
       "hax": "src/jwt-login-hax.json"
     }
   },
-  "version": "2.0.9",
+  "version": "2.0.10",
   "description": "JSON Web Token login broker / manager",
   "repository": {
     "type": "git",
@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.0.9",
-    "@lrnwebcomponents/storybook-utilities": "^2.0.9",
+    "@lrnwebcomponents/storybook-utilities": "^2.0.10",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.9",

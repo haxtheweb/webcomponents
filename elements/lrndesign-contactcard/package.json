@@ -16,7 +16,7 @@
       "hax": "src/lrndesign-contactcard-hax.json"
     }
   },
-  "version": "2.0.9",
+  "version": "2.0.10",
   "description": "Automated conversion of lrndesign-contactcard/",
   "repository": {
     "type": "git",
@@ -40,8 +40,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/lrn-icons": "^2.0.9",
-    "@lrnwebcomponents/social-media-icons": "^2.0.9",
+    "@lrnwebcomponents/lrn-icons": "^2.0.10",
+    "@lrnwebcomponents/social-media-icons": "^2.0.10",
     "@polymer/iron-icon": "^3.0.0",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-button": "^3.0.1",
@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.0.9",
-    "@lrnwebcomponents/storybook-utilities": "^2.0.9",
+    "@lrnwebcomponents/storybook-utilities": "^2.0.10",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.9",

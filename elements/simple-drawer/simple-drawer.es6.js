@@ -1,4 +1,22 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import*as async from"./node_modules/@polymer/polymer/lib/utils/async.js";import"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@polymer/app-layout/app-drawer/app-drawer.js";import"./node_modules/@polymer/neon-animation/neon-animation.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@polymer/iron-icon/iron-icon.js";window.SimpleDrawer=window.SimpleDrawer||{};window.SimpleDrawer.requestAvailability=()=>{if(!window.SimpleDrawer.instance){window.SimpleDrawer.instance=document.createElement("simple-drawer");document.body.appendChild(window.SimpleDrawer.instance)}return window.SimpleDrawer.instance};class SimpleDrawer extends PolymerElement{static get template(){return html`
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import*as async from"./node_modules/@polymer/polymer/lib/utils/async.js";import"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@polymer/app-layout/app-drawer/app-drawer.js";import"./node_modules/@polymer/neon-animation/neon-animation.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@polymer/iron-icon/iron-icon.js";// register globally so we can make sure there is only one
+window.SimpleDrawer=window.SimpleDrawer||{};// request if this exists. This helps invoke the element existing in the dom
+// as well as that there is only one of them. That way we can ensure everything
+// is rendered through the same drawer
+window.SimpleDrawer.requestAvailability=()=>{if(!window.SimpleDrawer.instance){window.SimpleDrawer.instance=document.createElement("simple-drawer");document.body.appendChild(window.SimpleDrawer.instance)}return window.SimpleDrawer.instance};/**
+ * `simple-drawer`
+ * `a singleton drawer element`
+ *
+ * @microcopy - language worth noting:
+ *  -
+ *
+ * @customElement
+ * @polymer
+ * @demo demo/index.html
+ */class SimpleDrawer extends PolymerElement{// render function
+static get template(){return html`
 <style>:host {
   display: block;
   z-index: 1000;
@@ -94,4 +112,44 @@ app-drawer {
       <iron-icon icon="[[closeIcon]]"></iron-icon> [[closeLabel]]
     </paper-button>
   </div>
-</app-drawer>`}static get properties(){return{title:{name:"title",type:String,value:""},align:{name:"align",type:String,value:"left"},opened:{name:"opened",type:Boolean,value:!1,reflectToAttribute:!0,observer:"_openedChanged"},closeLabel:{name:"closeLabel",type:String,value:"Close"},closeIcon:{name:"closeIcon",type:String,value:"cancel"},invokedBy:{name:"invokedBy",type:Object}}}static get tag(){return"simple-drawer"}connectedCallback(){super.connectedCallback();window.addEventListener("simple-drawer-hide",this.close.bind(this));window.addEventListener("simple-drawer-show",this.showEvent.bind(this))}_resizeContent(e){async.microTask.run(()=>{window.dispatchEvent(new Event("resize"))})}showEvent(e){if(this.opened){while(null!==dom(this).firstChild){dom(this).removeChild(dom(this).firstChild)}setTimeout(()=>{this.show(e.detail.title,e.detail.elements,e.detail.invokedBy,e.detail.align,e.detail.clone)},100)}else{this.show(e.detail.title,e.detail.elements,e.detail.invokedBy,e.detail.align,e.detail.size,e.detail.clone)}}show(title,elements,invokedBy,align="left",size="256px",clone=!1){this.set("invokedBy",invokedBy);this.title=title;this.align=align;this.updateStyles({"--simple-drawer-width":size});let element,slots=["header","content"];for(var i in slots){if(elements[slots[i]]){if(clone){element=elements[slots[i]].cloneNode(!0)}else{element=elements[slots[i]]}element.setAttribute("slot",slots[i]);dom(this).appendChild(element)}}setTimeout(()=>{this.opened=!0;this._resizeContent()},100)}animationEnded(e){this.title="";while(null!==dom(this).firstChild){dom(this).removeChild(dom(this).firstChild)}if(this.invokedBy){async.microTask.run(()=>{setTimeout(()=>{this.invokedBy.focus()},500)})}}close(){this.$.drawer.close()}_openedChanged(newValue,oldValue){if(typeof newValue!==typeof void 0&&!newValue){this.animationEnded();const evt=new CustomEvent("simple-drawer-closed",{bubbles:!0,cancelable:!0,detail:{opened:!1,invokedBy:this.invokedBy}});this.dispatchEvent(evt)}else if(newValue){const evt=new CustomEvent("simple-drawer-opened",{bubbles:!0,cancelable:!0,detail:{opened:!0,invokedBy:this.invokedBy}});this.dispatchEvent(evt)}}disconnectedCallback(){super.disconnectedCallback();window.removeEventListener("simple-drawer-hide",this.close.bind(this));window.removeEventListener("simple-drawer-show",this.showEvent.bind(this))}}window.customElements.define(SimpleDrawer.tag,SimpleDrawer);export{SimpleDrawer};
+</app-drawer>`}// properties available to the custom element for data binding
+static get properties(){return{/**
+   * heading / label of the modal
+   */title:{name:"title",type:String,value:""},/**
+   * alignment of the drawer
+   */align:{name:"align",type:String,value:"left"},/**
+   * open state
+   */opened:{name:"opened",type:Boolean,value:!1,reflectToAttribute:!0,observer:"_openedChanged"},/**
+   * Close label
+   */closeLabel:{name:"closeLabel",type:String,value:"Close"},/**
+   * Close icon
+   */closeIcon:{name:"closeIcon",type:String,value:"cancel"},/**
+   * The element that invoked this. This way we can track our way back accessibly
+   */invokedBy:{name:"invokedBy",type:Object}}}/**
+   * Store the tag name to make it easier to obtain directly.
+   * @notice function name must be here for tooling to operate correctly
+   */static get tag(){return"simple-drawer"}/**
+   * life cycle, element is afixed to the DOM
+   */connectedCallback(){super.connectedCallback();window.addEventListener("simple-drawer-hide",this.close.bind(this));window.addEventListener("simple-drawer-show",this.showEvent.bind(this))}/**
+   * Ensure everything is visible in what's been expanded.
+   */_resizeContent(e){// fake a resize event to make contents happy
+async.microTask.run(()=>{window.dispatchEvent(new Event("resize"))})}/**
+   * show event call to open the drawer and display it's content
+   */showEvent(e){// if we're already opened and we get told to open again....
+// swap out the contents
+if(this.opened){// wipe the slot of our drawer
+while(null!==dom(this).firstChild){dom(this).removeChild(dom(this).firstChild)}setTimeout(()=>{this.show(e.detail.title,e.detail.elements,e.detail.invokedBy,e.detail.align,e.detail.clone)},100)}else{this.show(e.detail.title,e.detail.elements,e.detail.invokedBy,e.detail.align,e.detail.size,e.detail.clone)}}/**
+   * Show the drawer and display the material
+   */show(title,elements,invokedBy,align="left",size="256px",clone=!1){this.set("invokedBy",invokedBy);this.title=title;this.align=align;this.updateStyles({"--simple-drawer-width":size});let element,slots=["header","content"];// append element areas into the appropriate slots
+// ensuring they are set if it wasn't previously
+for(var i in slots){if(elements[slots[i]]){if(clone){element=elements[slots[i]].cloneNode(!0)}else{element=elements[slots[i]]}element.setAttribute("slot",slots[i]);dom(this).appendChild(element)}}// minor delay to help the above happen prior to opening
+setTimeout(()=>{this.opened=!0;this._resizeContent()},100)}/**
+   * check state and if we should clean up on close.
+   * This keeps the DOM tiddy and allows animation to happen gracefully.
+   */animationEnded(e){// wipe the slot of our drawer
+this.title="";while(null!==dom(this).firstChild){dom(this).removeChild(dom(this).firstChild)}if(this.invokedBy){async.microTask.run(()=>{setTimeout(()=>{this.invokedBy.focus()},500)})}}/**
+   * Close the drawer and do some clean up
+   */close(){this.$.drawer.close()}// Observer opened for changes
+_openedChanged(newValue,oldValue){if(typeof newValue!==typeof void 0&&!newValue){this.animationEnded();const evt=new CustomEvent("simple-drawer-closed",{bubbles:!0,cancelable:!0,detail:{opened:!1,invokedBy:this.invokedBy}});this.dispatchEvent(evt)}else if(newValue){const evt=new CustomEvent("simple-drawer-opened",{bubbles:!0,cancelable:!0,detail:{opened:!0,invokedBy:this.invokedBy}});this.dispatchEvent(evt)}}/**
+   * life cycle, element is removed from the DOM
+   */disconnectedCallback(){super.disconnectedCallback();window.removeEventListener("simple-drawer-hide",this.close.bind(this));window.removeEventListener("simple-drawer-show",this.showEvent.bind(this))}}window.customElements.define(SimpleDrawer.tag,SimpleDrawer);export{SimpleDrawer};

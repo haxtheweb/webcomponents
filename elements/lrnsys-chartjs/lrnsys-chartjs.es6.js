@@ -1,4 +1,12 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@vowo/chart-elements/chart-elements.js";let LrnsysChartjs=Polymer({_template:html`
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@vowo/chart-elements/chart-elements.js";/**
+`lrnsys-chartjs`
+A LRN element
+
+* @demo demo/index.html
+*/let LrnsysChartjs=Polymer({_template:html`
     <style>
       :host {
         display: block;

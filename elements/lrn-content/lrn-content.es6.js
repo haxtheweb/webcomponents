@@ -1,4 +1,11 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";let LrnContent=Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";/**
+`lrn-content`
+  A LRN element for presenting content with a simple heading.
+  This is to improve accessibility, consistency, and tag things
+  with OER schema.
+
+* @demo demo/index.html
+*/let LrnContent=Polymer({_template:html`
     <style>
       :host {
         display: block;

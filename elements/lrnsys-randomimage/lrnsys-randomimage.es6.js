@@ -1,4 +1,12 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/random-image/random-image.js";import"./node_modules/@polymer/paper-button/paper-button.js";let LrnsysRandomimage=Polymer({_template:html`
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/random-image/random-image.js";import"./node_modules/@polymer/paper-button/paper-button.js";/**
+`lrnsys-randomimage`
+A LRN element
+
+* @demo demo/index.html
+*/let LrnsysRandomimage=Polymer({_template:html`
     <style>
       :host {
         display: block;
@@ -6,4 +14,8 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
     </style>
     <div id="list"><random-image images-list$="{{images}}"></random-image></div>
     <paper-button raised on-click="reload">Reload</paper-button>
-  `,is:"lrnsys-randomimage",properties:{images:{type:Object,notify:!0,value:function(){return[]}}},reload:function(e){let root=this;this.$.list.innerHTML=this.$.list.innerHTML}});export{LrnsysRandomimage};
+  `,is:"lrnsys-randomimage",properties:{/**
+     * An array of images to pick from at random.
+     */images:{type:Object,notify:!0,value:function(){return[]}}},/**
+   * trigger a reload of the random-image element
+   */reload:function(e){let root=this;this.$.list.innerHTML=this.$.list.innerHTML}});export{LrnsysRandomimage};

@@ -36,6 +36,8 @@ class GameShowQuiz extends MutableData(PolymerElement) {
     import("@polymer/iron-flex-layout/iron-flex-layout.js");
     import("@polymer/iron-icon/iron-icon.js");
     import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icons/editor-icons.js");
+    import("@lrnwebcomponents/chartist-render/chartist-render.js");
   }
   static get template() {
     return html`
@@ -44,6 +46,18 @@ class GameShowQuiz extends MutableData(PolymerElement) {
           display: block;
           --game-show-bg-color: var(--simple-colors-default-theme-blue-11);
           --game-show-text-color: var(--simple-colors-default-theme-blue-1);
+        }
+        chartist-render#piechart {
+          width: 300px;
+          height: 300px;
+          display: inline-block;
+        }
+        chartist-render.mini-chart {
+          width: 132px;
+          height: 132px;
+          display: inline-block;
+          --chartist-color-1: green;
+          --chartist-color-2: red;
         }
         app-toolbar {
           background-color: var(--game-show-bg-color);
@@ -64,6 +78,9 @@ class GameShowQuiz extends MutableData(PolymerElement) {
           border-left: 1px solid black;
           padding: 16px;
           text-align: center;
+        }
+        .chart-row td {
+          padding: 0;
         }
 
         paper-button {
@@ -136,6 +153,17 @@ class GameShowQuiz extends MutableData(PolymerElement) {
           font-weight: bold;
           font-size: 16px;
         }
+        .grid-button[data-type="bonus"] {
+          display: inline-flex;
+          position: absolute;
+          outline: 1px solid #dddddd;
+        }
+        .grid-button[data-type="bonus"][data-display-points="1"] {
+          height: 320px;
+        }
+        .grid-button[data-type="bonus"][data-display-points="2"] {
+          height: 160px;
+        }
         @media screen and (max-width: 600px) {
           app-toolbar {
             font-size: 14px;
@@ -168,14 +196,22 @@ class GameShowQuiz extends MutableData(PolymerElement) {
       </style>
       <app-header>
         <app-toolbar>
+          <paper-button id="scorebutton" on-tap="scoreBoardToggle">
+            <iron-icon icon="editor:pie-chart"></iron-icon
+            ><label for="scorebutton">Score board</label>
+          </paper-button>
+          <div main-title>[[title]]</div>
           <paper-button id="helpbutton" on-tap="directionsToggle">
             <iron-icon icon="help"></iron-icon
             ><label for="helpbutton">Directions</label>
           </paper-button>
-          <div main-title>[[title]]</div>
         </app-toolbar>
       </app-header>
       <div id="contentcontainer">
+        <div style="font-size: 24px;" hidden$="[[!remainingAttempts]]">
+          Points Remaining to Attempt:
+          <strong>[[remainingAttempts]]</strong>
+        </div>
         <template is="dom-repeat" items="[[gameBoard]]" as="row" mutable-data>
           <responsive-grid-row gutter="0" class\$="row row-[[index]]">
             <template
@@ -190,59 +226,127 @@ class GameShowQuiz extends MutableData(PolymerElement) {
                   raised="[[!col.notRaised]]"
                   data-question-uuid\$="[[col.uuid]]"
                   data-value\$="[[col.points]]"
+                  data-display-points\$="[[col.displayPoints]]"
+                  data-is-bonus\$="[[col.isBonus]]"
                   data-type\$="[[col.type]]"
                   disabled\$="[[col.disabled]]"
-                  >[[col.title]]<br />[[col.points]]</paper-button
+                  >[[col.title]]<br />[[col.displayPoints]]</paper-button
                 >
               </responsive-grid-col>
             </template>
           </responsive-grid-row>
         </template>
-        <div>
-          <h3>Scoreboard</h3>
-          <table>
-            <tbody>
-              <tr>
-                <th></th>
-                <th>Slide ID</th>
-                <th>Terms</th>
-                <th>Reading</th>
-                <th>Lecture</th>
-                <th>Bonus</th>
-                <th>Total</th>
-              </tr>
-              <tr>
-                <th>Points Attempted</th>
-                <td>[[points.slideid.attempted]]</td>
-                <td>[[points.terminology.attempted]]</td>
-                <td>[[points.reading.attempted]]</td>
-                <td>[[points.lecture.attempted]]</td>
-                <td>[[points.bonus.attempted]]</td>
-                <td>[[points.total.attempted]]</td>
-              </tr>
-              <tr>
-                <th>Points Earned</th>
-                <td>[[points.slideid.earned]]</td>
-                <td>[[points.terminology.earned]]</td>
-                <td>[[points.reading.earned]]</td>
-                <td>[[points.lecture.earned]]</td>
-                <td>[[points.bonus.earned]]</td>
-                <td>[[points.total.earned]]</td>
-              </tr>
-              <tr>
-                <th>Category Percentage</th>
-                <td>[[points.slideid.percent]]</td>
-                <td>[[points.terminology.percent]]</td>
-                <td>[[points.reading.percent]]</td>
-                <td>[[points.lecture.percent]]</td>
-                <td>[[points.bonus.percent]]</td>
-                <td>[[points.total.percent]]</td>
-              </tr>
-            </tbody>
-          </table>
-          <div>Points Remaining to Attempt: [[remainingAttempts]]</div>
-        </div>
       </div>
+      <game-show-quiz-modal id="scoreboard" title="Score board">
+        <div slot="content">
+          <div style="padding: 32px;">
+            <chartist-render
+              id="piechart"
+              chart-title="Breakdown of attempts"
+              data="[[attemptsData.overall]]"
+              type="pie"
+              scale="ct-square"
+            >
+            </chartist-render>
+            <table style="margin: 16px auto;">
+              <tbody>
+                <tr>
+                  <th></th>
+                  <th>Slide ID</th>
+                  <th>Terms</th>
+                  <th>Reading</th>
+                  <th>Lecture</th>
+                  <th>Total</th>
+                </tr>
+                <tr>
+                  <th>Points Earned</th>
+                  <td>[[points.slideid.earned]]</td>
+                  <td>[[points.terminology.earned]]</td>
+                  <td>[[points.reading.earned]]</td>
+                  <td>[[points.lecture.earned]]</td>
+                  <td>[[points.total.earned]]</td>
+                </tr>
+                <tr>
+                  <th>Points Attempted</th>
+                  <td>[[points.slideid.attempted]]</td>
+                  <td>[[points.terminology.attempted]]</td>
+                  <td>[[points.reading.attempted]]</td>
+                  <td>[[points.lecture.attempted]]</td>
+                  <td>[[points.total.attempted]]</td>
+                </tr>
+                <tr>
+                  <th>Category Percentage</th>
+                  <td>[[points.slideid.percent]]</td>
+                  <td>[[points.terminology.percent]]</td>
+                  <td>[[points.reading.percent]]</td>
+                  <td>[[points.lecture.percent]]</td>
+                  <td>[[points.total.percent]]</td>
+                </tr>
+                <tr class="chart-row">
+                  <th>Pie chart</th>
+                  <td>
+                    <chartist-render
+                      class="mini-chart"
+                      chart-title="Slide ID percentage"
+                      data="[[attemptsData.slideid]]"
+                      type="pie"
+                      scale="ct-square"
+                    ></chartist-render>
+                  </td>
+                  <td>
+                    <chartist-render
+                      class="mini-chart"
+                      chart-title="Terminology percentage"
+                      data="[[attemptsData.terminology]]"
+                      type="pie"
+                      scale="ct-square"
+                    ></chartist-render>
+                  </td>
+                  <td>
+                    <chartist-render
+                      class="mini-chart"
+                      chart-title="Reading percentage"
+                      data="[[attemptsData.reading]]"
+                      type="pie"
+                      scale="ct-square"
+                    ></chartist-render>
+                  </td>
+                  <td>
+                    <chartist-render
+                      class="mini-chart"
+                      chart-title="Lecture percentage"
+                      data="[[attemptsData.lecture]]"
+                      type="pie"
+                      scale="ct-square"
+                    ></chartist-render>
+                  </td>
+                  <td>
+                    <chartist-render
+                      class="mini-chart"
+                      chart-title="Total percentage"
+                      data="[[attemptsData.total]]"
+                      type="pie"
+                      scale="ct-square"
+                    ></chartist-render>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div style="font-size: 24px;" hidden$="[[!remainingAttempts]]">
+              Points Remaining to Attempt:
+              <strong>[[remainingAttempts]]</strong>
+            </div>
+          </div>
+        </div>
+        <paper-button
+          aria-label="Close score board and return to game"
+          slot="buttons"
+          id="dismiss"
+          dialog-confirm
+          raised
+          >Return to game board</paper-button
+        >
+      </game-show-quiz-modal>
       <game-show-quiz-modal id="directions" title="[[directionsTitle]]">
         <div slot="content"><slot name="directions"></slot></div>
         <paper-button
@@ -254,22 +358,33 @@ class GameShowQuiz extends MutableData(PolymerElement) {
           >Good luck!</paper-button
         >
       </game-show-quiz-modal>
-      <game-show-quiz-modal id="dialog" title="[[questionTitle]]">
+      <game-show-quiz-modal
+        id="dialog"
+        title="[[questionTitle]] [[__activeQuestionDetails.points]] point, [[__activeQuestionDetails.type]] question."
+      >
         <vaadin-split-layout slot="content" style="height:80vh;">
-          <iron-image
-            style="min-width:100px; width:100%; min-height:50vh; height:75vh; background-color: lightgray;"
-            sizing="contain"
-            preload=""
-            src\$="[[activeQuestion.image]]"
-          ></iron-image>
-          <multiple-choice
-            randomize
-            single-option
-            id="question"
-            hide-buttons
-            title="[[activeQuestion.title]]"
-            answers="[[activeQuestion.data]]"
-          ></multiple-choice>
+          <div id="col1" style="width:70%;min-width: 30%;">
+            <iron-image
+              style="min-width:100px; width:100%; min-height:50vh; height:75vh; background-color: lightgray;"
+              sizing="contain"
+              preload=""
+              src\$="[[activeQuestion.image]]"
+            ></iron-image>
+          </div>
+          <div id="col2" style="width:30%;min-width: 30%;">
+            <multiple-choice
+              randomize
+              single-option
+              id="question"
+              hide-buttons
+              title="[[activeQuestion.title]]"
+              answers="[[activeQuestion.data]]"
+            ></multiple-choice>
+            <div hidden\$="[[!activeQuestion.wrong]]" aria-hidden="true">
+              <h3>Feedback</h3>
+              <p>[[activeQuestion.feedback]]</p>
+            </div>
+          </div>
         </vaadin-split-layout>
         <paper-button
           slot="buttons"
@@ -311,6 +426,39 @@ class GameShowQuiz extends MutableData(PolymerElement) {
        */
       title: {
         type: String
+      },
+      attemptsData: {
+        type: Object,
+        value: {
+          overall: {
+            labels: ["Slide ID", "Terminology", "Reading", "Lecture"],
+            series: [0, 0, 0, 0]
+          },
+          slideid: {
+            labels: ["Correct", "Incorrect"],
+            series: [0, 0]
+          },
+          terminology: {
+            labels: ["Correct", "Incorrect"],
+            series: [0, 0]
+          },
+          reading: {
+            labels: ["Correct", "Incorrect"],
+            series: [0, 0]
+          },
+          lecture: {
+            labels: ["Correct", "Incorrect"],
+            series: [0, 0]
+          },
+          bonus: {
+            labels: ["Correct", "Incorrect"],
+            series: [0, 0]
+          },
+          total: {
+            labels: ["Correct", "Incorrect"],
+            series: [0, 0]
+          }
+        }
       },
       /**
        * Points object
@@ -369,7 +517,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
        */
       questionTitle: {
         type: String,
-        value: "Answer the following question"
+        value: "Answer the following"
       },
       /**
        * Rows on the gameshow board
@@ -399,7 +547,13 @@ class GameShowQuiz extends MutableData(PolymerElement) {
    * Toggle the directions to appear
    */
   directionsToggle(e) {
-    this.$.directions.toggle();
+    this.shadowRoot.querySelector("#directions").toggle();
+  }
+  /**
+   * Toggle the directions to appear
+   */
+  scoreBoardToggle(e) {
+    this.shadowRoot.querySelector("#scoreboard").toggle();
   }
   /**
    * Continue button pressed.
@@ -424,8 +578,8 @@ class GameShowQuiz extends MutableData(PolymerElement) {
    */
   registerTap(e) {
     var found = true;
-    for (var i in this.$.question.answers) {
-      if (this.$.question.answers[i].userGuess) {
+    for (var i in this.shadowRoot.querySelector("#question").answers) {
+      if (this.shadowRoot.querySelector("#question").answers[i].userGuess) {
         found = false;
       }
     }
@@ -436,31 +590,108 @@ class GameShowQuiz extends MutableData(PolymerElement) {
    * Submit answer to see what they got.
    */
   submitAnswer(e) {
+    // reset attemptsData for chartist and rebuild fully throughout
+    let attemptsData = this.attemptsData;
     // flip submitted status
     this.set("activeQuestion.submitted", true);
     this.notifyPath("activeQuestion.submitted");
-    this.$.continue.focus();
+    this.shadowRoot.querySelector("#continue").focus();
     // maker this disabled on the board
     this.__activeTap.disabled = true;
     // start to build a status icon
     let icon = document.createElement("iron-icon");
     icon.classList.add("status-icon");
-    // update attempts for the category
-    let num =
-      parseInt(this.points[this.__activeType].attempted) +
-      parseInt(this.__activeValue);
-    this.set("points." + this.__activeType + ".attempted", num);
-    this.notifyPath("points." + this.__activeType + ".attempted");
-    // update the global totals for attempt
-    let total =
-      parseInt(this.points.total.attempted) + parseInt(this.__activeValue);
-    this.set("points.total.attempted", total);
-    this.notifyPath("points.total.attempted");
-    // update remaining attempts
-    this.remainingAttempts =
-      this.remainingAttempts - parseInt(this.__activeValue);
+    var total = 0;
+    if (this.__activeType != "bonus" && !this.__activeQuestionDetails.isBonus) {
+      // update attempts for the category
+      let num =
+        parseInt(this.points[this.__activeType].attempted) +
+        parseInt(this.__activeValue);
+      this.set("points." + this.__activeType + ".attempted", num);
+      this.notifyPath("points." + this.__activeType + ".attempted");
+      total =
+        parseInt(this.points.total.attempted) + parseInt(this.__activeValue);
+      // update the global totals for attempt
+      this.set("points.total.attempted", total);
+      this.notifyPath("points.total.attempted");
+      // update remaining attempts
+      this.remainingAttempts =
+        this.remainingAttempts - parseInt(this.__activeValue);
+    }
+    // do a detection for per value type level being filled in to unlock the assoicated bonus question
+    if (!this.__activeQuestionDetails.isBonus) {
+      let unlockCheck = 0;
+      let unlockThreashold = 100;
+      let boardCol = 0;
+      for (var t in this._gameBoardFlat) {
+        // only count things that are disabled
+        if (
+          !this._gameBoardFlat[t].isBonus &&
+          this._gameBoardFlat[t].question.submitted &&
+          this._gameBoardFlat[t].points === this.__activeQuestionDetails.points
+        ) {
+          unlockCheck += this.__activeQuestionDetails.points;
+        }
+      }
+      switch (this.__activeQuestionDetails.points) {
+        case 1:
+          unlockThreashold = 16;
+          boardCol = 1;
+          break;
+        case 2:
+          unlockThreashold = 16;
+          boardCol = 5;
+          break;
+        case 3:
+          unlockThreashold = 12;
+          boardCol = 7;
+          break;
+      }
+      // unlock the bonus point question per level if the entire level is cleared
+      if (unlockCheck === unlockThreashold) {
+        this.shadowRoot
+          .querySelectorAll(
+            'responsive-grid-col paper-button[data-type="bonus"][data-display-points="' +
+              this.__activeQuestionDetails.points +
+              '"]'
+          )
+          .forEach(item => {
+            item.removeAttribute("disabled");
+            let uuid = item.getAttribute("data-question-uuid");
+            // bonus always last row, make data match the operation
+            this.gameBoard[boardCol].cols.find(
+              i => i.uuid == uuid
+            ).disabled = false;
+            // keep flat in sync
+            this._gameBoardFlat[uuid].disabled = false;
+          });
+      }
+    }
+    // test for completing an entire column so we need to activate a bonus chance
+    if (
+      this.points[this.__activeType].attempted == 11 &&
+      !this.__activeQuestionDetails.isBonus
+    ) {
+      // get last row
+      this.shadowRoot
+        .querySelectorAll(
+          'responsive-grid-col paper-button[data-is-bonus][data-type="' +
+            this.__activeType +
+            '"]'
+        )
+        .forEach(item => {
+          item.removeAttribute("disabled");
+          let uuid = item.getAttribute("data-question-uuid");
+          // bonus always last row, make data match the operation
+          this.gameBoard[this.gameBoard.length - 1].cols.find(
+            i => i.uuid == uuid
+          ).disabled = false;
+          // keep flat in sync
+          this._gameBoardFlat[uuid].disabled = false;
+        });
+    }
     // if current answer is correct
-    if (this.$.question.checkAnswers()) {
+    if (this.shadowRoot.querySelector("#question").checkAnswers()) {
       // show correct
       const evt = new CustomEvent("simple-toast-show", {
         bubbles: true,
@@ -482,11 +713,11 @@ class GameShowQuiz extends MutableData(PolymerElement) {
       icon.icon = "icons:check-circle";
       icon.classList.add("correct");
       // update total column
-      let total =
-        parseInt(this.points.total.earned) + parseInt(this.__activeValue);
+      total = parseInt(this.points.total.earned) + parseInt(this.__activeValue);
       this.set("points.total.earned", total);
       this.notifyPath("points.total.earned");
     } else {
+      this.set("activeQuestion.wrong", true);
       // show wrong
       const evt = new CustomEvent("simple-toast-show", {
         bubbles: true,
@@ -518,8 +749,96 @@ class GameShowQuiz extends MutableData(PolymerElement) {
     ).toFixed(1);
     this.set("points.total.percent", total);
     this.notifyPath("points.total.percent");
+    attemptsData[this.__activeType].series = [
+      this.points[this.__activeType].earned,
+      this.points[this.__activeType].attempted -
+        this.points[this.__activeType].earned
+    ];
+    // beyond edge case as bonus can make this negative
+    if (
+      this.points[this.__activeType].attempted <
+      this.points[this.__activeType].earned
+    ) {
+      attemptsData[this.__activeType].series = [
+        this.points[this.__activeType].earned,
+        0
+      ];
+    }
+    attemptsData.total.series = [
+      this.points.total.earned,
+      this.points.total.attempted - this.points.total.earned
+    ];
+    // beyond edge case as bonus can make this negative
+    if (this.points.total.attempted < this.points.total.earned) {
+      attemptsData.total.series = [this.points.total.earned, 0];
+    }
+    // update the charts
+    attemptsData.overall.series = [
+      this.points.slideid.attempted,
+      this.points.terminology.attempted,
+      this.points.reading.attempted,
+      this.points.lecture.attempted
+    ];
+    this.set("attemptsData", {});
+    this.set("attemptsData", attemptsData);
     // append child via polymer so we can style it correctly in shadow dom
     dom(this.__activeTap).appendChild(icon);
+    // check for 2 points remaining
+    if (this.remainingAttempts === 2) {
+      this.shadowRoot
+        .querySelectorAll(
+          "responsive-grid-col paper-button[data-value='3']:not([disabled]):not([data-is-bonus])"
+        )
+        .forEach(item => {
+          item.setAttribute("disabled", "disabled");
+        });
+    }
+    if (this.remainingAttempts === 1) {
+      this.shadowRoot
+        .querySelectorAll(
+          "responsive-grid-col paper-button[data-value='2']:not([disabled]):not([data-is-bonus])"
+        )
+        .forEach(item => {
+          item.setAttribute("disabled", "disabled");
+        });
+      this.shadowRoot
+        .querySelectorAll(
+          'responsive-grid-col paper-button[data-value="3"]:not([disabled]):not([data-is-bonus])'
+        )
+        .forEach(item => {
+          item.setAttribute("disabled", "disabled");
+        });
+    }
+    // check for if we have any attempts remaining
+    if (this.remainingAttempts <= 0) {
+      this.shadowRoot
+        .querySelectorAll(
+          "responsive-grid-col paper-button:not([disabled]):not([data-is-bonus])"
+        )
+        .forEach(item => {
+          item.setAttribute("disabled", "disabled");
+        });
+      this.remainingAttempts = 0;
+      // trap for bonus questions still being available
+      if (
+        this.shadowRoot.querySelectorAll(
+          "responsive-grid-col paper-button[data-is-bonus]:not([disabled])"
+        ).length === 0
+      ) {
+        // open score report in a modal now
+        this.shadowRoot.querySelector("#dialog").toggle();
+        this.scoreBoardToggle({});
+        const evt = new CustomEvent("simple-toast-show", {
+          bubbles: true,
+          cancelable: true,
+          detail: {
+            text: "Game over!",
+            duration: 5000
+          }
+        });
+        this.dispatchEvent(evt);
+      }
+    }
   }
   /**
    * Notice that something was tapped, resolve what it was.
@@ -533,13 +852,19 @@ class GameShowQuiz extends MutableData(PolymerElement) {
       this.__activeType = local.getAttribute("data-type");
       this.__activeValue = local.getAttribute("data-value");
       let uuid = local.getAttribute("data-question-uuid");
+      this.__activeQuestionDetails = this._gameBoardFlat[uuid];
+      // debug
+      //console.log(this.__activeQuestionDetails.question.data.find((currentValue, index, arr)=>{if(currentValue.correct){return currentValue;}}));
       this.set("activeQuestion", {});
-      this.set("activeQuestion", this._gameBoardFlat[uuid].question);
+      this.set("activeQuestion", this.__activeQuestionDetails.question);
       this.notifyPath("activeQuestion.*");
       this.notifyPath("activeQuestion.data.*");
-      this.$.question.resetAnswers();
+      // reset the layout on open
+      this.shadowRoot.querySelector("#col1").style.flex = "";
+      this.shadowRoot.querySelector("#col2").style.flex = "";
+      this.shadowRoot.querySelector("#question").resetAnswers();
       setTimeout(() => {
-        this.$.dialog.toggle();
+        this.shadowRoot.querySelector("#dialog").toggle();
       }, 100);
     }
   }
@@ -576,13 +901,19 @@ class GameShowQuiz extends MutableData(PolymerElement) {
               points: "",
               notRaised: true,
               disabled: true
+            },
+            {
+              title: "Bonus",
+              points: "",
+              notRaised: true,
+              disabled: true
             }
           ]
         }
       ];
       // row prototype
       var row = {};
-      const gameData = newValue;
+      var gameData = Object.assign({}, newValue);
       const keys = Object.keys(gameData);
       var count = 0;
       // we want 4 1 pt questions, 2 2pts, and 1 3 pts
@@ -597,37 +928,37 @@ class GameShowQuiz extends MutableData(PolymerElement) {
         count = 0;
         while (count < pointMap[pointLevel]) {
           count++;
-          // tee up the key used array so we can track random questions used in banks
-          var keysUsed = [];
-          for (var type in keys) {
-            keysUsed[keys[type]] = [];
-          }
           // reset the row
           row = {
             cols: []
           };
           // loop over the keys coming in so we can build each row across
           for (var type in keys) {
-            if (gameData[keys[type]][pointLevel]) {
+            var level = gameData[keys[type]][pointLevel];
+            if (level && level.questions.length > 0) {
               // get a random key based on what hasn't been used here previously
-              var qKey = Math.floor(
-                Math.random() *
-                  gameData[keys[type]][pointLevel].questions.length
-              );
-              while (typeof keysUsed[keys[type]][qKey] !== typeof undefined) {
-                qKey = Math.floor(
-                  Math.random() *
-                    gameData[keys[type]][pointLevel].questions.length
-                );
-              }
-              keysUsed[keys[type]][qKey] = qKey;
+              let qKey = Math.floor(Math.random() * level.questions.length);
               var questionObject = {
                 uuid: this.generateUUID(),
-                type: gameData[keys[type]][pointLevel].type,
-                title: gameData[keys[type]][pointLevel].title,
-                points: gameData[keys[type]][pointLevel].points,
-                question: gameData[keys[type]][pointLevel].questions[qKey]
+                type: level.type,
+                title: level.title,
+                points: level.points,
+                displayPoints: level.points,
+                isBonus: false,
+                question: Object.assign({}, level.questions[qKey])
               };
+              // remove this record
+              gameData[keys[type]][pointLevel].questions.splice(qKey, 1);
+              if (keys[type] === "bonus") {
+                gameData[keys[type]][pointLevel].questions = [];
+                questionObject.disabled = true;
+                questionObject.isBonus = true;
+                questionObject.points = pointLevel;
+                questionObject.displayPoints = pointLevel;
+              } else if (pointLevel === "bonus") {
+                questionObject.disabled = true;
+                questionObject.isBonus = true;
+              }
               row.cols.push(questionObject);
               this._gameBoardFlat[questionObject.uuid] = questionObject;
             }
@@ -655,7 +986,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
    * Reset focus on close back to the help button
    */
   resetFocus(e) {
-    this.$.helpbutton.focus();
+    this.shadowRoot.querySelector("#helpbutton").focus();
   }
   /**
    * HAX bindings
@@ -705,7 +1036,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
     };
   }
   /**
-   * Attached to the DOM, now fire.
+   * Attached to the DOM
    */
   connectedCallback() {
     super.connectedCallback();
@@ -713,28 +1044,42 @@ class GameShowQuiz extends MutableData(PolymerElement) {
     afterNextRender(this, function() {
       this.HAXWiring = new HAXWiring();
       this.HAXWiring.setup(GameShowQuiz.haxProperties, GameShowQuiz.tag, this);
-      this.$.dismiss.addEventListener("tap", this.resetFocus.bind(this));
-      this.$.contentcontainer.addEventListener(
-        "tap",
-        this._gameBoardTap.bind(this)
-      );
-      this.$.submit.addEventListener("tap", this.submitAnswer.bind(this));
-      this.$.continue.addEventListener("tap", this.continueGameTap.bind(this));
-      this.$.question.addEventListener("click", this.registerTap.bind(this));
+      this.shadowRoot
+        .querySelector("#dismiss")
+        .addEventListener("tap", this.resetFocus.bind(this));
+      this.shadowRoot
+        .querySelector("#contentcontainer")
+        .addEventListener("tap", this._gameBoardTap.bind(this));
+      this.shadowRoot
+        .querySelector("#submit")
+        .addEventListener("tap", this.submitAnswer.bind(this));
+      this.shadowRoot
+        .querySelector("#continue")
+        .addEventListener("tap", this.continueGameTap.bind(this));
+      this.shadowRoot
+        .querySelector("#question")
+        .addEventListener("click", this.registerTap.bind(this));
     });
   }
   /**
    * detached life cycke
    */
   disconnectedCallback() {
-    this.$.dismiss.removeEventListener("tap", this.resetFocus.bind(this));
-    this.$.contentcontainer.removeEventListener(
-      "tap",
-      this._gameBoardTap.bind(this)
-    );
-    this.$.submit.removeEventListener("tap", this.submitAnswer.bind(this));
-    this.$.continue.removeEventListener("tap", this.continueGameTap.bind(this));
-    this.$.question.removeEventListener("click", this.registerTap.bind(this));
+    this.shadowRoot
+      .querySelector("#dismiss")
+      .removeEventListener("tap", this.resetFocus.bind(this));
+    this.shadowRoot
+      .querySelector("#contentcontainer")
+      .removeEventListener("tap", this._gameBoardTap.bind(this));
+    this.shadowRoot
+      .querySelector("#submit")
+      .removeEventListener("tap", this.submitAnswer.bind(this));
+    this.shadowRoot
+      .querySelector("#continue")
+      .removeEventListener("tap", this.continueGameTap.bind(this));
+    this.shadowRoot
+      .querySelector("#question")
+      .removeEventListener("click", this.registerTap.bind(this));
     super.disconnectedCallback();
   }
 }

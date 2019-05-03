@@ -11,13 +11,13 @@ delete props.target;
 props.auto.value = true;
 props.for.type = "Select";
 props.for.value = "em";
-props.for.options = ["em","p1","p2","strong"];
+props.for.options = ["em", "p1", "p2", "strong"];
 props.position.type = "Select";
-props.position.options = ["top","bottom","left","right"];
+props.position.options = ["top", "bottom", "left", "right"];
 const AbsolutePositionBehaviorStory = {
-  "of": "Web Components",
-  "name": "absolute-position-behavior",
-  "before": `
+  of: "Web Components",
+  name: "absolute-position-behavior",
+  before: `
   <style>
     absolute-position-behavior {
       border: 1px solid black;
@@ -50,15 +50,15 @@ const AbsolutePositionBehaviorStory = {
         lacinia. Duis ut libero eget augue egestas suscipit. 
       </p>
     </div>`,
-  "props":  props,
-  "slots": {
-    "slot": { 
-      "name": "slot", 
-      "type": "String", 
-      "value": `I'm absolutely positioned!`
+  props: props,
+  slots: {
+    slot: {
+      name: "slot",
+      type: "String",
+      value: `I'm absolutely positioned!`
     }
-  }, 
-  "attr": ``,
-  "slotted": ``
+  },
+  attr: ``,
+  slotted: ``
 };
 window.StorybookUtilities.instance.addLiveDemo(AbsolutePositionBehaviorStory);

@@ -1,4 +1,14 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";let SimpleImage=Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";/**
+`simple-image`
+A minimalist image that modals and presents info cleanly.
+
+* @demo demo/index.html
+
+@microcopy - the mental model for this element
+ -
+ -
+
+*/let SimpleImage=Polymer({_template:html`
     <style is="custom-style" include="simple-colors">
       :host {
         display: block;
@@ -216,4 +226,15 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       <div class="credit">[[credit]]</div>
       <iron-icon icon="icons:fullscreen" class="close-fullscreen"></iron-icon>
     </div>
-  `,is:"simple-image",behaviors:[HAXBehaviors.PropertiesBehaviors,SchemaBehaviors.Schema],properties:{src:{type:String},alt:{type:String},caption:{type:String},credit:{type:String}},attached:function(){let props={canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Simple image",description:"A clean, simple image presentation that's responsive and modals on tapping",icon:"editor:insert-photo",color:"green",groups:["Image","Media"],handles:[{type:"image",url:"src"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"src",title:"Source",description:"The URL for the image.",inputMethod:"textfield",icon:"link",required:!0},{property:"alt",title:"Alternative text",description:"Text to describe the image to non-sighted users.",inputMethod:"alt",icon:"accessibility",required:!0}],configure:[{property:"src",title:"Source",description:"The URL for the image.",inputMethod:"textfield",icon:"link",required:!0},{property:"caption",title:"Caption",description:"A caption to describe the image usage",inputMethod:"textarea"},{property:"alt",title:"Alternative text",description:"Text to describe the image to non-sighted users.",inputMethod:"alt"},{property:"credit",title:"Credits",description:"Who the image is credited to / copyright information",inputMethod:"textarea"}],advanced:[]}};this.setHaxProperties(props)}});export{SimpleImage};
+  `,is:"simple-image",behaviors:[HAXBehaviors.PropertiesBehaviors,SchemaBehaviors.Schema],properties:{/**
+     * image source
+     */src:{type:String},/**
+     * alt data
+     */alt:{type:String},/**
+     * caption on the image
+     */caption:{type:String},/**
+     * photo credit / copyright info
+     */credit:{type:String}},/**
+   * Attached to the DOM, now fire.
+   */attached:function(){// Establish hax property binding
+let props={canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Simple image",description:"A clean, simple image presentation that's responsive and modals on tapping",icon:"editor:insert-photo",color:"green",groups:["Image","Media"],handles:[{type:"image",url:"src"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"src",title:"Source",description:"The URL for the image.",inputMethod:"textfield",icon:"link",required:!0},{property:"alt",title:"Alternative text",description:"Text to describe the image to non-sighted users.",inputMethod:"alt",icon:"accessibility",required:!0}],configure:[{property:"src",title:"Source",description:"The URL for the image.",inputMethod:"textfield",icon:"link",required:!0},{property:"caption",title:"Caption",description:"A caption to describe the image usage",inputMethod:"textarea"},{property:"alt",title:"Alternative text",description:"Text to describe the image to non-sighted users.",inputMethod:"alt"},{property:"credit",title:"Credits",description:"Who the image is credited to / copyright information",inputMethod:"textarea"}],advanced:[]}};this.setHaxProperties(props)}});export{SimpleImage};

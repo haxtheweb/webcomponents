@@ -1,4 +1,8 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@polymer/paper-button/paper-button.js";let LrnAssignment=Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@polymer/paper-button/paper-button.js";/**
+`lrn-assignment`
+
+* @demo demo/index.html
+*/let LrnAssignment=Polymer({_template:html`
     <style>
       :host {
         display: flex;
@@ -23,7 +27,15 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         </template>
       </div>
     </paper-card>
-  `,is:"lrn-assignment",properties:{title:{type:String},image:{type:String},details:{type:String},url:{type:String},open:{type:Boolean,value:!1},complete:{type:Boolean,value:!1},actions:{type:Object}}});export{LrnAssignment};let LrnAssignments=Polymer({_template:html`
+  `,is:"lrn-assignment",properties:{/**
+     * Title
+     */title:{type:String},/**
+     * Image url
+     */image:{type:String},/**
+     * Details of the assignment
+     */details:{type:String},/**
+     * url
+     */url:{type:String},open:{type:Boolean,value:!1},complete:{type:Boolean,value:!1},actions:{type:Object}}});export{LrnAssignment};let LrnAssignments=Polymer({_template:html`
     <style>
       :host {
         display: flex;

@@ -22,7 +22,75 @@
     </div>
     <script defer>
       document.getElementById('select').addEventListener('change', (e) => {
-        document.getElementById('game').gameData = e.target.value;
+        var game = document.getElementById('game');
+        game.attemptsData = {
+          overall: {
+            labels: ["Slide ID", "Terminology", "Reading", "Lecture"],
+              series: [0, 0, 0, 0]
+          },
+          slideid: {
+            labels: ["Correct", "Incorrect"],
+              series: [0, 0]
+          },
+          terminology: {
+            labels: ["Correct", "Incorrect"],
+              series: [0, 0]
+          },
+          reading: {
+            labels: ["Correct", "Incorrect"],
+              series: [0, 0]
+          },
+          lecture: {
+            labels: ["Correct", "Incorrect"],
+              series: [0, 0]
+          },
+          bonus: {
+            labels: ["Correct", "Incorrect"],
+              series: [0, 0]
+          },
+          total: {
+            labels: ["Correct", "Incorrect"],
+              series: [0, 0]
+          }
+        };
+        game.points = {
+          slideid: {
+            attempted: 0,
+              earned: 0,
+                percent: 0
+          },
+          terminology: {
+            attempted: 0,
+              earned: 0,
+                percent: 0
+          },
+          reading: {
+            attempted: 0,
+              earned: 0,
+                percent: 0
+          },
+          lecture: {
+            attempted: 0,
+              earned: 0,
+                percent: 0
+          },
+          bonus: {
+            attempted: 0,
+              earned: 0,
+                percent: 0
+          },
+          total: {
+            attempted: 0,
+              earned: 0,
+                percent: 0
+          }
+        };
+        game.remainingAttempts = 30;
+        game.set('gameBoard', []);
+        game.set('gameBoardData', {});
+        game.set('activeQuestion',{});
+        // generate the request
+        game.gameData = e.target.value;
       });
     </script>
     <game-show-quiz id="game" title="Art History Jeopardy" directions-title="Jeopardy Directions">
@@ -32,6 +100,54 @@
         <ul>
           <li>Questions come in four categories...</li>
         </ul>
+        <h2>Jeopardy Directions</h2>
+        
+        <strong>Important:</strong> Please read <strong>all</strong> of the following directions before starting the quiz. <strong>Continue taking Jeopardy until you have
+        attempted all 30 points and all open bonus questions.</strong>
+        <ol>
+        <li>Questions come in four categories, <strong>Slide Identification, Terminology, Reading</strong> (which can also include video) and
+        <strong>Lecture</strong> (concept-based).</li>
+        
+        <li>All questions have 1 "answer" and 5 possible "questions", using the Jeopardy game show format.</li>
+        
+        <li>Questions are worth 1, 2, or 3 points, as indicated on the board.</li>
+        
+        <li>In each category, there are a total of four 1-point questions, two 2-point questions, and one 3-point question (11
+        points).</li>
+        
+        <li>The board shows <strong>44 available</strong> points, but you can only attempt 30. <strong>Plan accordingly</strong>.</li>
+        
+        <li>Located at the last column and last row of the board are 10 <strong>initially unavailable bonus points</strong> that are displayed in
+        a faded out view. The bonus questions in the bottom row are all 1-point questions, and the bonus questions in the last
+        column are worth 1 point, 2 points, and 3 points.</li>
+        
+        <li><strong>In order to access the bonus points, you must complete the questions associated to the column or row that they are
+        in.</strong> For example, if you complete all 16 of the one-point questions, you will earn access to the one point bonus at the
+        far right hand column of the board. If you would like to earn access to the “Terms Bonus” at the bottom of the second
+        column, you must complete all of the Terms questions in that column. Once you gain access to a bonus question, the
+        choice will no longer be faded, and it will be available to answer any time during the quiz, even after your 30 regular
+        points have been attempted.</li>
+        
+        <li>You <strong>MUST</strong> attempt no more than 30 points in total (the quiz should not allow you to do this), and no fewer than 30
+        (your responsibility to manage). <strong>Be sure to leave at least 1 one-pointer to finish with</strong>.</li>
+        
+        <li>After each response submitted, you will receive immediate feedback indicating whether your response was correct or
+        incorrect. <strong>Be sure to read and take note of the guidance offered for incorrect answers</strong>.</li>
+        
+        <li>The Jeopardy scoreboard (below) will tally your points attempted, points earned, category percentage, and points
+        remaining to attempt as you go. Please use this to your advantage in choosing questions and earning the maximum score.</li>
+        
+        <li><strong>Category</strong> questions will only use images familiar to you from the visual note taking guides.</li>
+        
+        <li><strong>Bonus</strong> questions often use images unfamiliar to you, requiring more analysis and reasoning on your part, and will
+        thus are harder than category questions. These questions do not test recall and recognition; instead, they test your
+        ability to apply what you know to deduce the correct answer.</li>
+        
+        <li>You can improve your final score by taking a Jeopardy again. Note that the game board is designed to randomize the
+        selection of questions. Even if you repeated your selections exactly, you wouldn't see an identical set of questions.
+        Some will be new. As you gain knowledge, you may attempt more challenging strategies than you did at first. That is the
+        beauty of Jeopardy!</li>
+        </ol>
       </div>
     </game-show-quiz>
   </body>

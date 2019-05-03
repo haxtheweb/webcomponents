@@ -1,4 +1,3 @@
-
 import { VideoPlayer } from "./video-player.js";
 import { A11yMediaPlayer } from "@lrnwebcomponents/a11y-media-player/a11y-media-player.js";
 import { A11yMediaBehaviors } from "@lrnwebcomponents/a11y-media-player/lib/a11y-media-behaviors.js";
@@ -18,82 +17,94 @@ window.StorybookUtilities.requestAvailability();
  */
 //combine all of the inherited properties into one object
 let getVideoKnobs = () => {
-  let allKnobs = Object.assign(
-    window.StorybookUtilities.instance.getSimpleColors(), 
-    A11yMediaPlayer.properties, A11yMediaBehaviors.properties
-  );
-  allKnobs.crossorigin = {value: "anonymous", "type": "Select", "options": ["anonymous","use-credentials",""]};
-  //remove properties we don't want to expose
-  [
-    'audioOnly',
-    'flexLayout',
-    'manifest',
-    'media',
-    'muteUnmute',
-    'playing',
-    'playPause',
-    'responsiveSize',
-    'seekDisabled',
-    'selectedTrack',
-    'selectedTrackID',
-    'status',
-    'target',
-    'search',
-    'youtubeId',
-    'youTube'
-  ].forEach(prop => {
-    delete allKnobs[prop];
-  });
-  return allKnobs;
-},
+    let allKnobs = Object.assign(
+      window.StorybookUtilities.instance.getSimpleColors(),
+      A11yMediaPlayer.properties,
+      A11yMediaBehaviors.properties
+    );
+    allKnobs.crossorigin = {
+      value: "anonymous",
+      type: "Select",
+      options: ["anonymous", "use-credentials", ""]
+    };
+    //remove properties we don't want to expose
+    [
+      "audioOnly",
+      "flexLayout",
+      "manifest",
+      "media",
+      "muteUnmute",
+      "playing",
+      "playPause",
+      "responsiveSize",
+      "seekDisabled",
+      "selectedTrack",
+      "selectedTrackID",
+      "status",
+      "target",
+      "search",
+      "youtubeId",
+      "youTube"
+    ].forEach(prop => {
+      delete allKnobs[prop];
+    });
+    return allKnobs;
+  },
   audioKnobs = getVideoKnobs(),
-  videoKnobs = getVideoKnobs(), 
+  videoKnobs = getVideoKnobs(),
   ytKnobs = getVideoKnobs();
-videoKnobs.sources.value = [{
-  "src": "https://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4", 
-  "type": "video/mp4"
-}];
+videoKnobs.sources.value = [
+  {
+    src:
+      "https://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4",
+    type: "video/mp4"
+  }
+];
 videoKnobs.tracks.value = [
-  {"src": enVtt,  "srclang": "en", "label": "English"},
-  {"src": esVtt,  "srclang": "es", "label": "Español"},
-  {"src": deVtt,  "srclang": "de", "label": "Deutsch"}
+  { src: enVtt, srclang: "en", label: "English" },
+  { src: esVtt, srclang: "es", label: "Español" },
+  { src: deVtt, srclang: "de", label: "Deutsch" }
 ];
-videoKnobs.source = {"name": "source","value": null, "type": "String" } ;
-audioKnobs.sources.value = [{
-  "src": buellerMp3, 
-  "type": "audio/mp3"
-}];
+videoKnobs.source = { name: "source", value: null, type: "String" };
+audioKnobs.sources.value = [
+  {
+    src: buellerMp3,
+    type: "audio/mp3"
+  }
+];
 audioKnobs.tracks.value = [
-  {"src": buellerVtt,  "srclang": "en", "label": "English"},
+  { src: buellerVtt, srclang: "en", label: "English" }
 ];
-ytKnobs.tracks.value = [
-  {"src": buellerVtt,  "srclang": "en", "label": "English"}
-] ;
-ytKnobs.source = {"name": "source","value": "https://www.youtube.com/watch?v=NP0mQeLWCCo", "type": "String" };
+ytKnobs.tracks.value = [{ src: buellerVtt, srclang: "en", label: "English" }];
+ytKnobs.source = {
+  name: "source",
+  value: "https://www.youtube.com/watch?v=NP0mQeLWCCo",
+  type: "String"
+};
 
 const VideoPlayerStory = {
-  "of": "Web Components/video-player",
-  "name": "Video",
-  "props": videoKnobs, 
-  "slots": {}, 
-  "attr": ``,
-  "slotted": ``
+  of: "Web Components/video-player",
+  name: "Video",
+  props: videoKnobs,
+  slots: {},
+  attr: ``,
+  slotted: ``
 };
 const VideoPlayerAudioStory = {
-  "of": "Web Components/video-player",
-  "name": "Audio",
-  "props": audioKnobs, 
-  "slots": {}, 
-  "attr": ` audio-only="audio-only"`,
-  "slotted": ``
+  of: "Web Components/video-player",
+  name: "Audio",
+  props: audioKnobs,
+  slots: {},
+  attr: ` audio-only="audio-only"`,
+  slotted: ``
 };
 const VideoPlayerYTStory = {
-  "of": "Web Components/video-player",
-  "name": "YouTube",
-  "props": ytKnobs, 
-  "slots": {}, 
-  "attr": ``,
-  "slotted": ``
+  of: "Web Components/video-player",
+  name: "YouTube",
+  props: ytKnobs,
+  slots: {},
+  attr: ``,
+  slotted: ``
 };
 window.StorybookUtilities.instance.addLiveDemo(VideoPlayerStory);
 window.StorybookUtilities.instance.addLiveDemo(VideoPlayerAudioStory);

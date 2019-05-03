@@ -45,6 +45,11 @@ class HAXCMSOutlineEditorDialog extends PolymerElement {
           left: 0;
           right: 0;
         }
+        editable-outline:not(:defined),
+        json-editor:not(:defined),
+        paper-button:not(:defined) {
+          display: none;
+        }
         #toggle {
           float: right;
           text-transform: unset;

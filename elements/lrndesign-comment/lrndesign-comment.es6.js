@@ -1,4 +1,9 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";import"./node_modules/time-elements/dist/time-elements.js";let LrndesignComment=Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";import"./node_modules/time-elements/dist/time-elements.js";/**
+ * `lrndesign-comment`
+ * A LRN element
+ *
+ * @demo demo/index.html
+ */let LrndesignComment=Polymer({_template:html`
     <style>
       :host {
         display: block;

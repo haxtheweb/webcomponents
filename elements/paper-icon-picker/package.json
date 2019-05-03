@@ -19,7 +19,7 @@
   "contributors": [
     "Valentin Hristov <v.hristov@mail.ru>"
   ],
-  "version": "2.0.9",
+  "version": "2.0.10",
   "description": "A icon picker element using all the Material Design icons",
   "repository": {
     "type": "git",
@@ -62,7 +62,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.0.9",
-    "@lrnwebcomponents/storybook-utilities": "^2.0.9",
+    "@lrnwebcomponents/storybook-utilities": "^2.0.10",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.9",

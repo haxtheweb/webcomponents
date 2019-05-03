@@ -1,6 +1,4 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icon/iron-icon.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "./hax-blox-browser.js";
@@ -18,108 +16,128 @@ import "./hax-shared-styles.js";
 @microcopy - the mental model for this element
  - data - this is the app data model for an element which expresses itself to hax
 */
-Polymer({
-  _template: html`
-    <style include="simple-colors hax-shared-styles">
-      :host {
-        display: block;
-      }
-      #dialog {
-        --app-drawer-width: 320px;
-        z-index: 1000;
-        margin-top: 56px;
-        @apply --hax-blox-picker-dialog;
-      }
-      #closedialog {
-        float: right;
-        top: 124px;
-        right: 0;
-        position: absolute;
-        padding: 8px;
-        margin: 0;
-        color: var(--hax-color-text);
-        background-color: transparent;
-        width: 40px;
-        height: 40px;
-        min-width: unset;
-      }
-      .title {
-        position: relative;
-        padding: 16px;
-        outline: 0;
-        font-weight: 600;
-        text-align: left;
-        margin: 0;
-        background-color: var(--hax-color-menu-heading-bg);
-        font-size: 18px;
-        line-height: 18px;
-        font-family: "Noto Serif", serif;
-        color: var(--hax-color-text);
-      }
-      app-drawer {
-        --app-drawer-content-container: {
-          background-color: #ffffff;
+class HaxBloxPicker extends PolymerElement {
+  constructor() {
+    super();
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icon/iron-icon.js");
+  }
+  static get template() {
+    return html`
+      <style include="simple-colors hax-shared-styles">
+        :host {
+          display: block;
         }
-        --app-drawer-width: 320px;
-      }
-      .pref-container {
-        text-align: left;
-        padding: 16px;
-      }
-    </style>
-    <app-drawer id="dialog" align="left" transition-duration="300">
-      <h3 class="title">[[title]]</h3>
-      <div style="height: 100%; overflow: auto;" class="pref-container">
-        <hax-blox-browser id="bloxbrowser"></hax-blox-browser>
-      </div>
-      <paper-button id="closedialog" on-tap="close">
-        <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
-      </paper-button>
-    </app-drawer>
-  `,
+        iron-icon:not(:defined) {
+          display: none;
+        }
+        #dialog {
+          --app-drawer-width: 320px;
+          z-index: 1000;
+          margin-top: 56px;
+          @apply --hax-blox-picker-dialog;
+        }
+        #closedialog {
+          float: right;
+          top: 124px;
+          right: 0;
+          position: absolute;
+          padding: 8px;
+          margin: 0;
+          color: var(--hax-color-text);
+          background-color: transparent;
+          width: 40px;
+          height: 40px;
+          min-width: unset;
+        }
+        .title {
+          position: relative;
+          padding: 16px;
+          outline: 0;
+          font-weight: 600;
+          text-align: left;
+          margin: 0;
+          background-color: var(--hax-color-menu-heading-bg);
+          font-size: 18px;
+          line-height: 18px;
+          font-family: "Noto Serif", serif;
+          color: var(--hax-color-text);
+        }
+        app-drawer {
+          --app-drawer-content-container: {
+            background-color: #ffffff;
+          }
+          --app-drawer-width: 320px;
+        }
+        .pref-container {
+          text-align: left;
+          padding: 16px;
+        }
+      </style>
+      <app-drawer id="dialog" align="left" transition-duration="300">
+        <h3 class="title">[[title]]</h3>
+        <div style="height: 100%; overflow: auto;" class="pref-container">
+          <hax-blox-browser id="bloxbrowser"></hax-blox-browser>
+        </div>
+        <paper-button id="closedialog" on-tap="close">
+          <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
+        </paper-button>
+      </app-drawer>
+    `;
+  }
+  static get tag() {
+    return "hax-blox-picker";
+  }
 
-  is: "hax-blox-picker",
-
-  properties: {
-    /**
-     * Header so it's variable
-     */
-    title: {
-      type: String,
-      value: "Layouts"
-    }
-  },
+  static get properties() {
+    return {
+      /**
+       * Header so it's variable
+       */
+      title: {
+        type: String,
+        value: "Layouts"
+      }
+    };
+  }
 
   /**
    * Attached life cycle
    */
-  attached: function() {
-    this.fire("hax-register-blox-picker", this);
-  },
-
+  connectedCallback() {
+    super.connectedCallback();
+    this.dispatchEvent(
+      new CustomEvent("hax-register-blox-picker", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
+  }
   /**
    * open the dialog
    */
-  open: function() {
-    this.$.bloxbrowser.resetBrowser();
-    this.$.dialog.open();
-  },
-
+  open() {
+    this.shadowRoot.querySelector("#bloxbrowser").resetBrowser();
+    this.shadowRoot.querySelector("#dialog").open();
+  }
   /**
    * close the dialog
    */
-  close: function() {
-    this.$.dialog.close();
-  },
-
+  close() {
+    this.shadowRoot.querySelector("#dialog").close();
+  }
   /**
    * Toggle state.
    */
-  toggleDialog: function() {
-    if (this.$.dialog.opened) {
+  toggleDialog() {
+    if (this.shadowRoot.querySelector("#dialog").opened) {
       this.close();
     } else {
       window.HaxStore.instance.closeAllDrawers(this);
     }
   }
-});
+}
+window.customElements.define(HaxBloxPicker.tag, HaxBloxPicker);
+export { HaxBloxPicker };

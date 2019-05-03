@@ -1,4 +1,18 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/iron-ajax/iron-ajax.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/paper-spinner/paper-spinner.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@polymer/iron-icon/iron-icon.js";import"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@polymer/paper-tooltip/paper-tooltip.js";let CsvRender=Polymer({_template:html`
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/iron-ajax/iron-ajax.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/paper-spinner/paper-spinner.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@polymer/iron-icon/iron-icon.js";import"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@polymer/paper-tooltip/paper-tooltip.js";/**
+ * `csv-render`
+ * `Remote render a CSV file in place as an accessible table.`
+ *
+ * @microcopy - language worth noting:
+ *  - CSV is comma separated values
+ *
+ * @customElement
+ * @polymer
+ * @polymerLegacy
+ * @demo demo/index.html
+ */let CsvRender=Polymer({_template:html`
     <style include="simple-colors">
       :host {
         display: block;
@@ -163,4 +177,20 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         </template>
       </tbody>
     </table>
-  `,is:"csv-render",properties:{dataSource:{type:String},caption:{type:String,reflectToAttribute:!0},summary:{type:String,reflectToAttribute:!0},table:{type:Array,value:[]},tableHeadings:{type:Array,value:[]},tableData:{type:String,value:""}},handleResponse:function(e){this.table=this.CSVtoArray(this.tableData);this.tableHeadings=this.table.shift();this.$.loading.active=!1},CSVtoArray:function(text){let p="",row=[""],ret=[row],i=0,r=0,s=!0,l;for(l in text){l=text[l];if("\""===l){if(s&&l===p)row[i]+=l;s=!s}else if(","===l&&s)l=row[++i]="";else if("\n"===l&&s){if("\r"===p)row[i]=row[i].slice(0,-1);row=ret[++r]=[l=""];i=0}else row[i]+=l;p=l}return ret}});export{CsvRender};
+  `,is:"csv-render",properties:{/**
+     * Location of the CSV file.
+     */dataSource:{type:String},/**
+     * Caption for the table to improve accessibility and readability.
+     */caption:{type:String,reflectToAttribute:!0},/**
+     * Summary to improve accessibility for screen readers.
+     */summary:{type:String,reflectToAttribute:!0},/**
+     * Table busted out as an array.
+     */table:{type:Array,value:[]},/**
+     * Headings from the first row of the csv
+     */tableHeadings:{type:Array,value:[]},/**
+     * Raw data pulled in from the csv file.
+     */tableData:{type:String,value:""}},/**
+   * Convert from csv text to an array in the table function
+   */handleResponse:function(e){this.table=this.CSVtoArray(this.tableData);this.tableHeadings=this.table.shift();this.$.loading.active=!1},/**
+   * Mix of solutions from https://stackoverflow.com/questions/8493195/how-can-i-parse-a-csv-string-with-javascript-which-contains-comma-in-data
+   */CSVtoArray:function(text){let p="",row=[""],ret=[row],i=0,r=0,s=!0,l;for(l in text){l=text[l];if("\""===l){if(s&&l===p)row[i]+=l;s=!s}else if(","===l&&s)l=row[++i]="";else if("\n"===l&&s){if("\r"===p)row[i]=row[i].slice(0,-1);row=ret[++r]=[l=""];i=0}else row[i]+=l;p=l}return ret}});export{CsvRender};

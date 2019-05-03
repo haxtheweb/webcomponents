@@ -1,4 +1,4 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { flush } from "@polymer/polymer/lib/utils/flush.js";
@@ -9,9 +9,6 @@ import {
   wipeSlot
 } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
-import "@polymer/paper-item/paper-item.js";
-import "@lrnwebcomponents/grid-plate/grid-plate.js";
 import "./lib/hax-text-context.js";
 import "./lib/hax-ce-context.js";
 import "./lib/hax-plate-context.js";
@@ -26,254 +23,265 @@ import "./lib/hax-shared-styles.js";
  *  - text-context - the context menu that shows up when an item is active so it can have text based operations performed to it.
  *  - plate/grid plate - a plate or grid plate is a container that we can operate on in HAX. it can also have layout / "global" type of body operations performed on it such as delete, duplicate and higher level format styling.
  */
-let HaxBody = Polymer({
-  is: "hax-body",
-  _template: html`
-    <style include="simple-colors hax-shared-styles">
-      @import url("https://fonts.googleapis.com/css?family=Noto+Serif");
-      :host {
-        display: block;
-        min-height: 32px;
-        min-width: 32px;
-        outline: none;
-      }
-      .hax-context-menu {
-        padding: 0;
-        margin-left: -5000px;
-        position: absolute;
-        visibility: hidden;
-        opacity: 0;
-        z-index: 1000;
-        float: left;
-        display: block;
-        pointer-events: none;
-        transition: 0.8s opacity ease-in-out, 0.8s visibility ease-in-out;
-      }
-      #haxinputmixer {
-        z-index: 10000000;
-      }
-      .hax-context-visible.hax-active-hover {
-        visibility: visible;
-        opacity: 1;
-        pointer-events: all;
-        margin-left: unset;
-      }
-      :host #bodycontainer ::slotted(*) {
-        font-family: "Noto Serif", serif;
-        color: #444;
-        margin: 2px;
-      }
-      :host #bodycontainer ::slotted(h1) {
-        font-size: 2.5em;
-        line-height: 2.5em;
-      }
-      :host #bodycontainer ::slotted(h2) {
-        font-size: 2em;
-      }
-      :host #bodycontainer ::slotted(h3) {
-        font-size: 1.75em;
-      }
-      :host #bodycontainer ::slotted(h4) {
-        font-size: 1.5em;
-      }
-      :host #bodycontainer ::slotted(h5),
-      :host #bodycontainer ::slotted(h6) {
-        font-size: 1.25em;
-      }
-      :host #bodycontainer ::slotted(p) {
-        line-height: 40px;
-        min-height: 26px;
-        font-size: 24px;
-      }
-      :host #bodycontainer ::slotted(a),
-      :host #bodycontainer ::slotted(a:visited),
-      :host #bodycontainer ::slotted(a:active) {
-        color: #000;
-      }
-      :host #bodycontainer ::slotted(a:hover) {
-        color: #2196f3;
-      }
-      :host #bodycontainer ::slotted(ol),
-      :host #bodycontainer ::slotted(ul),
-      :host #bodycontainer ::slotted(li) {
-        padding-bottom: 1.5em;
-        line-height: 40px;
-        font-size: 24px;
-        max-width: 28em;
-      }
-      :host #bodycontainer ::slotted(ol > li:last-child),
-      :host #bodycontainer ::slotted(ul > li:last-child) {
-        padding-bottom: 1em;
-      }
-      :host #bodycontainer ::slotted(ul),
-      :host #bodycontainer ::slotted(ol) {
-        padding-left: 20px;
-        margin-left: 20px;
-      }
+class HaxBody extends PolymerElement {
+  constructor() {
+    super();
+    import("@polymer/iron-a11y-keys/iron-a11y-keys.js");
+    import("@polymer/paper-item/paper-item.js");
+    import("@lrnwebcomponents/grid-plate/grid-plate.js");
+  }
+  static get tag() {
+    return "hax-body";
+  }
+  static get template() {
+    return html`
+      <style include="simple-colors hax-shared-styles">
+        @import url("https://fonts.googleapis.com/css?family=Noto+Serif");
+        :host {
+          display: block;
+          min-height: 32px;
+          min-width: 32px;
+          outline: none;
+        }
+        .hax-context-menu {
+          padding: 0;
+          margin-left: -5000px;
+          position: absolute;
+          visibility: hidden;
+          opacity: 0;
+          z-index: 1000;
+          float: left;
+          display: block;
+          pointer-events: none;
+          transition: 0.8s opacity ease-in-out, 0.8s visibility ease-in-out;
+        }
+        #haxinputmixer {
+          z-index: 10000000;
+        }
+        .hax-context-visible.hax-active-hover {
+          visibility: visible;
+          opacity: 1;
+          pointer-events: all;
+          margin-left: unset;
+        }
+        :host #bodycontainer ::slotted(*) {
+          font-family: "Noto Serif", serif;
+          color: #444;
+          margin: 2px;
+        }
+        :host #bodycontainer ::slotted(h1) {
+          font-size: 2.5em;
+          line-height: 2.5em;
+        }
+        :host #bodycontainer ::slotted(h2) {
+          font-size: 2em;
+        }
+        :host #bodycontainer ::slotted(h3) {
+          font-size: 1.75em;
+        }
+        :host #bodycontainer ::slotted(h4) {
+          font-size: 1.5em;
+        }
+        :host #bodycontainer ::slotted(h5),
+        :host #bodycontainer ::slotted(h6) {
+          font-size: 1.25em;
+        }
+        :host #bodycontainer ::slotted(p) {
+          line-height: 40px;
+          min-height: 26px;
+          font-size: 24px;
+        }
+        :host #bodycontainer ::slotted(a),
+        :host #bodycontainer ::slotted(a:visited),
+        :host #bodycontainer ::slotted(a:active) {
+          color: #000;
+        }
+        :host #bodycontainer ::slotted(a:hover) {
+          color: #2196f3;
+        }
+        :host #bodycontainer ::slotted(ol),
+        :host #bodycontainer ::slotted(ul),
+        :host #bodycontainer ::slotted(li) {
+          padding-bottom: 1.5em;
+          line-height: 40px;
+          font-size: 24px;
+          max-width: 28em;
+        }
+        :host #bodycontainer ::slotted(ol > li:last-child),
+        :host #bodycontainer ::slotted(ul > li:last-child) {
+          padding-bottom: 1em;
+        }
+        :host #bodycontainer ::slotted(ul),
+        :host #bodycontainer ::slotted(ol) {
+          padding-left: 20px;
+          margin-left: 20px;
+        }
 
-      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]) {
-        outline: none;
-        outline-offset: 2px;
-        transition: 0.2s width ease-in-out, 0.2s height ease-in-out,
-          0.2s margin ease-in-out;
-        caret-color: var(--hax-color-text);
-      }
-      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]:hover) {
-        outline: 1px solid rgba(145, 151, 162, 0.25);
-        caret-color: #000000;
-      }
-      :host([edit-mode])
-        #bodycontainer
-        ::slotted(*.hax-active[data-editable]:hover) {
-        cursor: text !important;
-        outline: 1px solid rgba(145, 151, 162, 0.25);
-      }
-      :host([edit-mode])
-        #bodycontainer
-        ::slotted(*[data-editable] .hax-active:hover) {
-        cursor: text !important;
-        outline: 1px solid rgba(145, 151, 162, 0.25);
-      }
-      :host([edit-mode])
-        #bodycontainer
-        ::slotted(code.hax-active[data-editable]) {
-        display: block;
-      }
-      :host([edit-mode]) #bodycontainer ::slotted(hr[data-editable]) {
-        height: 2px;
-        background-color: #eeeeee;
-        padding-top: 4px;
-        padding-bottom: 4px;
-      }
-      /** Fix to support safari as it defaults to none */
-      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]) {
-        -webkit-user-select: text;
-        cursor: pointer;
-      }
+        :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]) {
+          outline: none;
+          outline-offset: 2px;
+          transition: 0.2s width ease-in-out, 0.2s height ease-in-out,
+            0.2s margin ease-in-out;
+          caret-color: var(--hax-color-text);
+        }
+        :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]:hover) {
+          outline: 1px solid rgba(145, 151, 162, 0.25);
+          caret-color: #000000;
+        }
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(*.hax-active[data-editable]:hover) {
+          cursor: text !important;
+          outline: 1px solid rgba(145, 151, 162, 0.25);
+        }
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(*[data-editable] .hax-active:hover) {
+          cursor: text !important;
+          outline: 1px solid rgba(145, 151, 162, 0.25);
+        }
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(code.hax-active[data-editable]) {
+          display: block;
+        }
+        :host([edit-mode]) #bodycontainer ::slotted(hr[data-editable]) {
+          height: 2px;
+          background-color: #eeeeee;
+          padding-top: 4px;
+          padding-bottom: 4px;
+        }
+        /** Fix to support safari as it defaults to none */
+        :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]) {
+          -webkit-user-select: text;
+          cursor: pointer;
+        }
 
-      :host([edit-mode])
-        #bodycontainer
-        ::slotted(*[data-editable]::-moz-selection),
-      :host([edit-mode])
-        #bodycontainer
-        ::slotted(*[data-editable] *::-moz-selection) {
-        background-color: var(--hax-body-highlight, --paper-yellow-300);
-        color: black;
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(*[data-editable]::-moz-selection),
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(*[data-editable] *::-moz-selection) {
+          background-color: var(--hax-body-highlight, --paper-yellow-300);
+          color: black;
+        }
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(*[data-editable]::selection),
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(*[data-editable] *::selection) {
+          background-color: var(--hax-body-highlight, --paper-yellow-300);
+          color: black;
+        }
+        #bodycontainer {
+          -webkit-user-select: text;
+          user-select: text;
+        }
+        :host([edit-mode][hax-ray-mode])
+          #bodycontainer
+          ::slotted(*[data-editable]):before {
+          content: attr(data-hax-ray) " " attr(resource) " " attr(typeof) " "
+            attr(property) " " attr(content);
+          font-size: 10px;
+          font-style: italic;
+          left: unset;
+          right: unset;
+          top: unset;
+          background-color: #d3d3d3;
+          color: #000000;
+          bottom: unset;
+          width: auto;
+          padding: 8px;
+          margin: 0;
+          z-index: 1;
+          margin: -16px 0 0 0;
+          float: right;
+          line-height: 2;
+        }
+      </style>
+      <div id="bodycontainer" class="ignore-activation">
+        <slot id="body"></slot>
+      </div>
+      <hax-text-context
+        id="textcontextmenu"
+        class="hax-context-menu ignore-activation"
+      ></hax-text-context>
+      <hax-ce-context
+        id="cecontextmenu"
+        class="hax-context-menu ignore-activation"
+      ></hax-ce-context>
+      <hax-plate-context
+        id="platecontextmenu"
+        class="hax-context-menu ignore-activation"
+      ></hax-plate-context>
+      <hax-input-mixer
+        id="haxinputmixer"
+        class="hax-context-menu ignore-activation"
+      ></hax-input-mixer>
+    `;
+  }
+  static get properties() {
+    return {
+      /**
+       * State of if we are editing or not.
+       */
+      editMode: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true,
+        observer: "_editModeChanged"
+      },
+      /**
+       * Access to the global properties object.
+       */
+      globalPreferences: {
+        type: Object,
+        value: {},
+        observer: "_globalPreferencesUpdated"
+      },
+      /**
+       * Bust out the HAX Ray mode
+       */
+      haxRayMode: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
+       * A reference to the active node in the slot.
+       */
+      activeNode: {
+        type: Object,
+        value: null,
+        notify: true,
+        observer: "_activeNodeChanged"
+      },
+      /**
+       * A reference to the active node in the slot.
+       */
+      activeContainerNode: {
+        type: Object,
+        value: null,
+        notify: true,
+        observer: "_activeContainerNodeChanged"
       }
-      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]::selection),
-      :host([edit-mode])
-        #bodycontainer
-        ::slotted(*[data-editable] *::selection) {
-        background-color: var(--hax-body-highlight, --paper-yellow-300);
-        color: black;
-      }
-      #bodycontainer {
-        -webkit-user-select: text;
-        user-select: text;
-      }
-      :host([edit-mode][hax-ray-mode])
-        #bodycontainer
-        ::slotted(*[data-editable]):before {
-        content: attr(data-hax-ray) " " attr(resource) " " attr(typeof) " "
-          attr(property) " " attr(content);
-        font-size: 10px;
-        font-style: italic;
-        left: unset;
-        right: unset;
-        top: unset;
-        background-color: #d3d3d3;
-        color: #000000;
-        bottom: unset;
-        width: auto;
-        padding: 8px;
-        margin: 0;
-        z-index: 1;
-        margin: -16px 0 0 0;
-        float: right;
-        line-height: 2;
-      }
-    </style>
-    <div id="bodycontainer" class="ignore-activation">
-      <slot id="body"></slot>
-    </div>
-    <hax-text-context
-      id="textcontextmenu"
-      class="hax-context-menu ignore-activation"
-    ></hax-text-context>
-    <hax-ce-context
-      id="cecontextmenu"
-      class="hax-context-menu ignore-activation"
-    ></hax-ce-context>
-    <hax-plate-context
-      id="platecontextmenu"
-      class="hax-context-menu ignore-activation"
-    ></hax-plate-context>
-    <hax-input-mixer
-      id="haxinputmixer"
-      class="hax-context-menu ignore-activation"
-    ></hax-input-mixer>
-  `,
-  listeners: {
-    focusin: "_focusIn",
-    mousedown: "_focusIn",
-    "hax-context-item-selected": "_haxContextOperation",
-    "hax-input-mixer-update": "_haxInputMixerOperation",
-    "place-holder-replace": "replacePlaceholder"
-  },
-  properties: {
-    __self: {
-      type: Object,
-      value: this
-    },
-    /**
-     * State of if we are editing or not.
-     */
-    editMode: {
-      type: Boolean,
-      value: false,
-      reflectToAttribute: true,
-      observer: "_editModeChanged"
-    },
-    /**
-     * Access to the global properties object.
-     */
-    globalPreferences: {
-      type: Object,
-      value: {},
-      observer: "_globalPreferencesUpdated"
-    },
-    /**
-     * Bust out the HAX Ray mode
-     */
-    haxRayMode: {
-      type: Boolean,
-      value: false,
-      reflectToAttribute: true
-    },
-    /**
-     * A reference to the active node in the slot.
-     */
-    activeNode: {
-      type: Object,
-      value: null,
-      notify: true,
-      observer: "_activeNodeChanged"
-    },
-    /**
-     * A reference to the active node in the slot.
-     */
-    activeContainerNode: {
-      type: Object,
-      value: null,
-      notify: true,
-      observer: "_activeContainerNodeChanged"
-    }
-  },
+    };
+  }
   /**
    * Ready state to tee everything up.
    */
-  ready: function() {
-    this.fire("hax-register-body", this);
+  ready() {
+    super.ready();
+    this.dispatchEvent(
+      new CustomEvent("hax-register-body", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
     this.polyfillSafe = window.HaxStore.instance.computePolyfillSafe();
     // mutation observer that ensures state of hax applied correctly
     afterNextRender(this, function() {
@@ -297,7 +305,14 @@ let HaxBody = Polymer({
                 haxRay = window.HaxStore.instance.gizmoList[i].title;
               }
               node.setAttribute("data-hax-ray", haxRay);
-              this.fire("hax-body-tag-added", { node: node });
+              this.dispatchEvent(
+                new CustomEvent("hax-body-tag-added", {
+                  bubbles: true,
+                  cancelable: true,
+                  composed: true,
+                  detail: { node: node }
+                })
+              );
             }
           });
         }
@@ -309,18 +324,26 @@ let HaxBody = Polymer({
               this._haxElementTest(node) &&
               !node.classList.contains("hax-active")
             ) {
-              this.fire("hax-body-tag-removed", { node: node });
+              this.dispatchEvent(
+                new CustomEvent("hax-body-tag-removed", {
+                  bubbles: true,
+                  cancelable: true,
+                  composed: true,
+                  detail: { node: node }
+                })
+              );
             }
           });
         }
       });
     });
-  },
+  }
   /**
    * Attached to the DOM; now we can fire event to the store that
    * we exist and are the thing being edited.
    */
-  attached: function() {
+  connectedCallback() {
+    super.connectedCallback();
     afterNextRender(this, function() {
       // try to normalize paragraph insert on enter
       try {
@@ -388,12 +411,26 @@ let HaxBody = Polymer({
         this._haxStorePropertyUpdated.bind(this)
       );
       window.addEventListener("scroll", this._keepContextVisible.bind(this));
+      this.addEventListener("focusin", this._focusIn.bind(this));
+      this.addEventListener("mousedown", this._focusIn.bind(this));
+      this.addEventListener(
+        "hax-context-item-selected",
+        this._haxContextOperation.bind(this)
+      );
+      this.addEventListener(
+        "hax-input-mixer-update",
+        this._haxInputMixerOperation.bind(this)
+      );
+      this.addEventListener(
+        "place-holder-replace",
+        this.replacePlaceholder.bind(this)
+      );
     });
-  },
+  }
   /**
    * Detached life cycle
    */
-  detached: function() {
+  disconnectedCallback() {
     window.removeEventListener("keydown", this._onKeyDown.bind(this));
     window.removeEventListener("keypress", this._onKeyPress.bind(this));
     this.shadowRoot
@@ -452,11 +489,26 @@ let HaxBody = Polymer({
       this._haxStorePropertyUpdated.bind(this)
     );
     window.removeEventListener("scroll", this._keepContextVisible.bind(this));
-  },
+    this.removeEventListener("focusin", this._focusIn.bind(this));
+    this.removeEventListener("mousedown", this._focusIn.bind(this));
+    this.removeEventListener(
+      "hax-context-item-selected",
+      this._haxContextOperation.bind(this)
+    );
+    this.removeEventListener(
+      "hax-input-mixer-update",
+      this._haxInputMixerOperation.bind(this)
+    );
+    this.removeEventListener(
+      "place-holder-replace",
+      this.replacePlaceholder.bind(this)
+    );
+    super.disconnectedCallback();
+  }
   /**
    * Keep the context menu visible if needed
    */
-  _keepContextVisible: function(e) {
+  _keepContextVisible(e) {
     // see if the text context menu is visible
     let el = false;
     if (this.$.textcontextmenu.classList.contains("hax-context-visible")) {
@@ -476,8 +528,8 @@ let HaxBody = Polymer({
         }
       }
     }
-  },
-  _onKeyDown: function(e) {
+  }
+  _onKeyDown(e) {
     if (this.editMode && this.getAttribute("contenteditable")) {
       setTimeout(() => {
         const rng = window.HaxStore.getRange();
@@ -570,25 +622,29 @@ let HaxBody = Polymer({
         this.__dropActiveHover();
       }
     }
-  },
-  _onKeyPress: function(e) {
+  }
+  _onKeyPress(e) {
     if (
       this.editMode &&
       this.$.platecontextmenu.classList.contains("hax-active-hover")
     ) {
       this.__dropActiveHover();
     }
-  },
+  }
   /**
    * on mouse over then fire the hax ray value if we have one
    */
-  hoverEvent: function(e) {
+  hoverEvent(e) {
     if (this.editMode) {
       if (e.target && e.target.getAttribute("data-hax-ray") != null) {
         this.__activeHover = e.target;
-        this.fire(
-          "hax-active-hover-name",
-          e.target.getAttribute("data-hax-ray")
+        this.dispatchEvent(
+          new CustomEvent("hax-active-hover-name", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: e.target.getAttribute("data-hax-ray")
+          })
         );
       } else if (
         e.target &&
@@ -596,9 +652,13 @@ let HaxBody = Polymer({
         e.target.parentNode.getAttribute("data-hax-ray") != null
       ) {
         this.__activeHover = e.target.parentNode;
-        this.fire(
-          "hax-active-hover-name",
-          e.target.parentNode.getAttribute("data-hax-ray")
+        this.dispatchEvent(
+          new CustomEvent("hax-active-hover-name", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: e.target.parentNode.getAttribute("data-hax-ray")
+          })
         );
       }
       if (!this.$.platecontextmenu.classList.contains("hax-active-hover")) {
@@ -624,21 +684,21 @@ let HaxBody = Polymer({
         }
       }
     }
-  },
-  __addActiveHover: function() {
+  }
+  __addActiveHover() {
     this.$.cecontextmenu.classList.add("hax-active-hover");
     this.$.textcontextmenu.classList.add("hax-active-hover");
     this.$.platecontextmenu.classList.add("hax-active-hover");
-  },
-  __dropActiveHover: function() {
+  }
+  __dropActiveHover() {
     this.$.cecontextmenu.classList.remove("hax-active-hover");
     this.$.textcontextmenu.classList.remove("hax-active-hover");
     this.$.platecontextmenu.classList.remove("hax-active-hover");
-  },
+  }
   /**
    * Check if part of the passed element is int he viewport
    */
-  elementInViewport: function(el) {
+  elementInViewport(el) {
     let top =
       el.offsetTop -
       32 -
@@ -658,11 +718,11 @@ let HaxBody = Polymer({
       top + height > window.pageYOffset &&
       left + width > window.pageXOffset
     );
-  },
+  }
   /**
    * Replace place holder after an event has called for it in the element itself
    */
-  replacePlaceholder: function(e) {
+  replacePlaceholder(e) {
     // generate a paragraph of text here on click
     if (e.detail === "text") {
       // make sure text just escalates to a paragraph tag
@@ -682,13 +742,13 @@ let HaxBody = Polymer({
     } else {
       this.replaceElementWorkflow();
     }
-  },
+  }
   /**
    * Whole workflow of replacing something in place contextually.
    * This can fire for things like events needing this workflow to
    * invoke whether it's a "convert" event or a "replace placeholder" event
    */
-  replaceElementWorkflow: function() {
+  replaceElementWorkflow() {
     let element = window.HaxStore.nodeToHaxElement(this.activeNode, null);
     let type = "*";
     let skipPropMatch = false;
@@ -764,19 +824,19 @@ let HaxBody = Polymer({
     } else {
       window.HaxStore.toast("Sorry, this can not be transformed!", 5000);
     }
-  },
+  }
   /**
    * Global prefs updated, let's visualize stuff from hax-ray
    */
-  _globalPreferencesUpdated: function(newValue, oldValue) {
+  _globalPreferencesUpdated(newValue, oldValue) {
     if (typeof newValue !== typeof undefined && newValue != null) {
       this.haxRayMode = newValue.haxRayMode;
     }
-  },
+  }
   /**
    * Store updated, sync.
    */
-  _haxStorePropertyUpdated: function(e) {
+  _haxStorePropertyUpdated(e) {
     if (
       e.detail &&
       typeof e.detail.value !== typeof undefined &&
@@ -787,11 +847,11 @@ let HaxBody = Polymer({
       }
       this.set(e.detail.property, e.detail.value);
     }
-  },
+  }
   /**
    * Clear area.
    */
-  haxClearBody: function(confirm = true) {
+  haxClearBody(confirm = true) {
     let status = true;
     // only confirm if asked so we can support wipes without it
     if (confirm) {
@@ -801,11 +861,11 @@ let HaxBody = Polymer({
     if (status) {
       wipeSlot(this);
     }
-  },
+  }
   /**
    * Insert new tag + content into the local DOM as a node.
    */
-  haxInsert: function(tag, content, properties = {}, waitForLock = true) {
+  haxInsert(tag, content, properties = {}, waitForLock = true) {
     var tags = window.HaxStore.instance.validTagList;
     this.__activeHover = null;
     // verify this tag is a valid one
@@ -895,14 +955,14 @@ let HaxBody = Polymer({
       if (waitForLock) {
         setTimeout(() => {
           this.breakUpdateLock();
-        }, 150);
+        }, 50);
       }
       return true;
     }
     return false;
-  },
+  }
 
-  breakUpdateLock: function() {
+  breakUpdateLock() {
     window.HaxStore.write("activeContainerNode", this.__updateLockFocus, this);
     window.HaxStore.write("activeNode", this.__updateLockFocus, this);
     // attempt to focus on the new node, may not always work
@@ -916,12 +976,12 @@ let HaxBody = Polymer({
         inline: "center"
       });
     }
-  },
+  }
   /**
    * Return the current hax content area as text that could be
    * inserted into something.
    */
-  haxToContent: function() {
+  haxToContent() {
     this.hideContextMenus();
     var __active = this.activeNode;
     // null this to drop hax based classes
@@ -1016,11 +1076,11 @@ let HaxBody = Polymer({
       console.log(content);
     }
     return content;
-  },
+  }
   /**
    * Duplicate node into the local DOM below the current item if we can.
    */
-  haxDuplicateNode: function(node, parent = this) {
+  haxDuplicateNode(node, parent = this) {
     // move the context menu before duplicating!!!!
     this.hideContextMenus();
     var nodeClone = dom(node).cloneNode(true);
@@ -1045,11 +1105,11 @@ let HaxBody = Polymer({
       window.HaxStore.write("activeNode", nodeClone, this);
     }, 50);
     return true;
-  },
+  }
   /**
    * Hide all context menus.
    */
-  hideContextMenus: function() {
+  hideContextMenus() {
     // primary context menus
     this._hideContextMenu(this.$.textcontextmenu);
     this._hideContextMenu(this.$.cecontextmenu);
@@ -1058,11 +1118,11 @@ let HaxBody = Polymer({
     this._hideContextMenu(this.$.haxinputmixer);
     // force context menu state to closed
     this.$.textcontextmenu.highlightOps = false;
-  },
+  }
   /**
    * Reposition context menus to match an element.
    */
-  positionContextMenus: function(node, container) {
+  positionContextMenus(node, container) {
     let tag = node.tagName.toLowerCase();
     if (window.HaxStore.instance._isSandboxed && tag === "webview") {
       tag = "iframe";
@@ -1087,11 +1147,11 @@ let HaxBody = Polymer({
     } else if (container && this._HTMLPrimativeTest(container)) {
       container.contentEditable = true;
     }
-  },
+  }
   /**
    * Move grid plate around
    */
-  haxMoveGridPlate: function(direction, node, container) {
+  haxMoveGridPlate(direction, node, container) {
     // menu is actually in the element for render purposes
     // support moving things multiple directions
     switch (direction) {
@@ -1128,11 +1188,11 @@ let HaxBody = Polymer({
       }
     }, 50);
     return true;
-  },
+  }
   /**
    * Convert an element from one tag to another.
    */
-  haxReplaceNode: function(node, replacement, parent = this) {
+  haxReplaceNode(node, replacement, parent = this) {
     // ensure we're not in the document tree for the replaced node
     this.hideContextMenus();
     // Switch, try loop in case we screwed up elsewhere
@@ -1146,11 +1206,11 @@ let HaxBody = Polymer({
       console.log(e);
     }
     return replacement;
-  },
+  }
   /**
    * Convert an element from one tag to another.
    */
-  haxChangeTagName: function(node, tagName, newNode) {
+  haxChangeTagName(node, tagName, newNode) {
     // ensure we're not in the document tree for the replaced node
     this.hideContextMenus();
     // Create a replacement tag of the desired type
@@ -1206,11 +1266,11 @@ let HaxBody = Polymer({
       }
     }, 50);
     return replacement;
-  },
+  }
   /**
    * Delete the node passed in
    */
-  haxDeleteNode: function(node, parent = this) {
+  haxDeleteNode(node, parent = this) {
     // move the context menu before deleting!!!!
     this.hideContextMenus();
     // shift active to a viable replacement
@@ -1254,14 +1314,14 @@ let HaxBody = Polymer({
     } catch (e) {
       console.log(e);
     }
-  },
+  }
   /**
    * Bulk import HTML with option to clear what is currently
    * in the slot of this tag. This also validates tags
    * that are being inserted for security based on the
    * internal whitelist.
    */
-  importContent: function(html, clear = true) {
+  importContent(html, clear = true) {
     // kill the slot of the active body, all of it
     if (clear) {
       wipeSlot(this, "*");
@@ -1307,11 +1367,11 @@ let HaxBody = Polymer({
         }
       }
     }, 50);
-  },
+  }
   /**
    * Respond to hax operations.
    */
-  _haxContextOperation: function(e) {
+  _haxContextOperation(e) {
     let detail = e.detail;
     var haxElement;
     // support a simple insert event to bubble up or everything else
@@ -1543,11 +1603,11 @@ let HaxBody = Polymer({
         }, 100);
         break;
     }
-  },
+  }
   /**
    * Respond to an input mixer call.
    */
-  _haxInputMixerOperation: function(e) {
+  _haxInputMixerOperation(e) {
     // this is a big deal how simple this part is in the end
     let mixer = e.detail.inputMixer;
     // if we have a property to bind, set that value from the
@@ -1567,22 +1627,22 @@ let HaxBody = Polymer({
     }
     // hide mixer
     this._hideContextMenu(this.$.haxinputmixer);
-  },
+  }
   /**
    * Item has gained focus, change active element to match
    */
-  _focusIn: function(e) {
+  _focusIn(e) {
     var normalizedEvent = dom(e);
     if (this.__focusLogic(normalizedEvent.localTarget)) {
       e.stopPropagation();
     }
-  },
+  }
   /**
    * Focus a target and update the data model to reflect this.
    * This helps ensure that keyboard and non click based focusing
    * registers the same as click events
    */
-  __focusLogic: function(target) {
+  __focusLogic(target) {
     let stopProp = false;
     // only worry about these when we are in edit mode
     if (this.editMode && !this.__tabTrap) {
@@ -1661,11 +1721,11 @@ let HaxBody = Polymer({
     }
 
     return stopProp;
-  },
+  }
   /**
    * Notice the change between states for editing.
    */
-  _editModeChanged: function(newValue, oldValue) {
+  _editModeChanged(newValue, oldValue) {
     // fire above that we have changed states so things can react if needed
     if (typeof oldValue !== typeof undefined) {
       this._applyContentEditable(newValue);
@@ -1683,11 +1743,11 @@ let HaxBody = Polymer({
       this.removeAttribute("contenteditable");
       this.hideContextMenus();
     }
-  },
+  }
   /**
    * Test if this is a HAX element or not
    */
-  _haxResolvePreviousElement: function(node) {
+  _haxResolvePreviousElement(node) {
     node = dom(node).previousElementSibling;
     while (
       node != null &&
@@ -1697,11 +1757,11 @@ let HaxBody = Polymer({
       node = dom(node).previousElementSibling;
     }
     return node;
-  },
+  }
   /**
    * Test if this is a HAX element or not
    */
-  _haxElementTest: function(node) {
+  _haxElementTest(node) {
     if (
       typeof node.tagName !== typeof undefined &&
       node.tagName.substring(0, 4) !== "HAX-"
@@ -1709,11 +1769,11 @@ let HaxBody = Polymer({
       return true;
     }
     return false;
-  },
+  }
   /**
    * Test if this is an HTML primative
    */
-  _HTMLPrimativeTest: function(node) {
+  _HTMLPrimativeTest(node) {
     if (
       node != null &&
       typeof node.tagName !== typeof undefined &&
@@ -1722,11 +1782,11 @@ let HaxBody = Polymer({
       return true;
     }
     return false;
-  },
+  }
   /**
    * Walk everything we find and either enable or disable editable state.
    */
-  _applyContentEditable: function(status, target = this.$.body) {
+  _applyContentEditable(status, target = this.$.body) {
     let children = dom(target).getDistributedNodes();
     // fallback for content nodes if not polymer managed nodes above
     if (children.length === 0) {
@@ -1755,11 +1815,11 @@ let HaxBody = Polymer({
         }
       }
     }
-  },
+  }
   /**
    * Container has changed
    */
-  _activeContainerNodeChanged: function(newValue, oldValue) {
+  _activeContainerNodeChanged(newValue, oldValue) {
     if (
       this.editMode &&
       typeof newValue !== typeof undefined &&
@@ -1782,11 +1842,11 @@ let HaxBody = Polymer({
         this._applyContentEditable(this.editMode, newValue);
       }
     }
-  },
+  }
   /**
    * React to a new node being set to active.
    */
-  _activeNodeChanged: function(newValue, oldValue) {
+  _activeNodeChanged(newValue, oldValue) {
     // clean up the older one
     if (typeof oldValue !== typeof undefined && oldValue != null) {
       oldValue.classList.remove("hax-active");
@@ -1835,7 +1895,7 @@ let HaxBody = Polymer({
       this.$.textcontextmenu.justifyIcon = "editor:format-align-left";
       this.$.textcontextmenu.justifyValue = "text-align-left";
     }
-  },
+  }
   /**
    * walk parents and find the correct position from top of document
    * https://stackoverflow.com/questions/11805955/how-to-get-the-distance-from-the-top-for-an-element
@@ -1845,11 +1905,11 @@ let HaxBody = Polymer({
       element.offsetLeft - element.scrollLeft + element.clientLeft;
     let yPosition = element.offsetTop - element.scrollTop + element.clientTop;
     return { x: xPosition, y: yPosition };
-  },
+  }
   /**
    * Handle display and position of the context menu
    */
-  _positionContextMenu: function(menu, target, xoffset, yoffset) {
+  _positionContextMenu(menu, target, xoffset, yoffset) {
     // make it account for the offset if it's floated over to one side
     // or inside of something that's over that way
     if (target != null) {
@@ -1875,22 +1935,22 @@ let HaxBody = Polymer({
     setTimeout(() => {
       async.microTask.run(this._keepContextVisible());
     }, 100);
-  },
+  }
   /**
    * Simple hide / reset of whatever menu it's handed.
    */
-  _hideContextMenu: function(menu) {
+  _hideContextMenu(menu) {
     menu.classList.remove(
       "hax-context-visible",
       "hax-context-pin-top",
       "hax-context-pin-bottom"
     );
     menu.style.left = "-100px";
-  },
+  }
   /**
    * Find the next thing to tab forward to.
    */
-  _tabKeyPressed: function() {
+  _tabKeyPressed() {
     let focus = false;
     let node = this.activeContainerNode;
     const activeNodeTagName = this.activeContainerNode.tagName;
@@ -1925,11 +1985,11 @@ let HaxBody = Polymer({
     } catch (e) {
       console.log(e);
     }
-  },
+  }
   /**
    * Move back through things when tab back pressed
    */
-  _tabBackKeyPressed: function() {
+  _tabBackKeyPressed() {
     let node = this.activeContainerNode;
     const activeNodeTagName = this.activeContainerNode.tagName;
     // try selection / tab block since range can cause issues
@@ -1964,5 +2024,6 @@ let HaxBody = Polymer({
       console.log(e);
     }
   }
-});
+}
+window.customElements.define(HaxBody.tag, HaxBody);
 export { HaxBody };

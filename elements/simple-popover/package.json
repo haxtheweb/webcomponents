@@ -16,7 +16,7 @@
       "hax": "src/simple-popover-hax.json"
     }
   },
-  "version": "2.0.9",
+  "version": "2.0.10",
   "description": "A popover alertdialog that is positioned next to a target element",
   "repository": {
     "type": "git",
@@ -40,8 +40,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/absolute-position-behavior": "^2.0.9",
-    "@lrnwebcomponents/hax-body-behaviors": "^2.0.9",
+    "@lrnwebcomponents/absolute-position-behavior": "^2.0.10",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.0.10",
     "@polymer/polymer": "^3.2.0"
   },
   "devDependencies": {
@@ -52,7 +52,8 @@
     "concurrently": "4.1.0",
     "gulp-babel": "8.0.0",
     "gulp-sourcemaps": "2.6.5",
-    "lodash": "4.17.11",    "polymer-cli": "1.9.8",
+    "lodash": "4.17.11",
+    "polymer-cli": "1.9.8",
     "wct-browser-legacy": "1.0.2",
     "web-animations-js": "2.3.1"
   },

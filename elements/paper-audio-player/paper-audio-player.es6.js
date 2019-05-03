@@ -1,4 +1,37 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import{IronA11yKeysBehavior}from"./node_modules/@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js";import"./node_modules/@polymer/paper-progress/paper-progress.js";import"./node_modules/@polymer/iron-icon/iron-icon.js";import"./node_modules/@polymer/paper-icon-button/paper-icon-button.js";import"./node_modules/@polymer/paper-ripple/paper-ripple.js";import{SimpleColors}from"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import"./node_modules/@polymer/iron-iconset-svg/iron-iconset-svg.js";import"./lib/paper-audio-icons.js";let PaperAudioPlayer=Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import{IronA11yKeysBehavior}from"./node_modules/@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js";import"./node_modules/@polymer/paper-progress/paper-progress.js";import"./node_modules/@polymer/iron-icon/iron-icon.js";import"./node_modules/@polymer/paper-icon-button/paper-icon-button.js";import"./node_modules/@polymer/paper-ripple/paper-ripple.js";import{SimpleColors}from"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import"./node_modules/@polymer/iron-iconset-svg/iron-iconset-svg.js";import"./lib/paper-audio-icons.js";/**
+A custom audio player with material paper style and clean design.
+
+Example:
+
+    <paper-audio-player src="audio.mp3"></paper-audio-player>
+
+### Styling the player:
+
+This player has an accent color, and you have two option to modify it:
+
+- **Option 1**: Using the *color property* on element. This one is handy if you need to modify the color dynamically.
+
+
+    <paper-audio-player color="#F05C38" src="audio.mp3"></paper-audio-player>
+
+
+- **Option 2**: Using the *custom CSS property*:
+
+
+
+    paper-audio-player {
+       --paper-audio-player-color: #e91e63;
+    }
+
+The following mixins are available for styling:
+
+Custom property                             | Description                                 | Default
+--------------------------------------------|---------------------------------------------|----------
+--paper-audio-player-color                  | Color of the element                        | blueviolet
+
+@element paper-audio-player
+* @demo demo/index.html
+*/let PaperAudioPlayer=Polymer({_template:html`
     <style include="simple-colors">
       :host {
         display: block;
@@ -243,4 +276,59 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         ></paper-icon-button>
       </div>
     </div>
-  `,is:"paper-audio-player",behaviors:[IronA11yKeysBehavior,HAXBehaviors.PropertiesBehaviors,SimpleColors,SchemaBehaviors.Schema],hostAttributes:{tabindex:0,role:"application","aria-label":"Audio Player","aria-describedby":"title"},properties:{src:{type:String,observer:"_srcChanged"},title:{type:String,value:"Click to play this audio file"},autoPlay:{type:Boolean,value:!1},preload:{type:String,value:"auto"},currentTime:{type:Number,value:0,notify:!0},timeLeft:{type:Number,value:0},smallSkip:{type:Number,value:15},largeSkip:{type:Number,value:60},error:{type:Boolean},timeOffset:{type:Number,value:0}},keyBindings:{space:"playPause",enter:"playPause",left:"_skipReverseByInterval",right:"_skipReverseByInterval",down:"_skipReverseByInterval",up:"_skipReverseByInterval"},attached:function(){let props={canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Mini Audio player",description:"A very small audio player good for MP3s.",icon:"image:music-note",color:"green",groups:["Audio","Media"],handles:[{type:"audio",source:"src",title:"title",color:"color"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"src",title:"Source",description:"The URL for this audio file.",inputMethod:"textfield",icon:"link",required:!0,validationType:"url"},{property:"title",title:"Title",description:"Title of this sound track.",inputMethod:"textfield",icon:"av:video-label",required:!1,validationType:"text"},{property:"accentColor",title:"Accent color",description:"Select the accent color use",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{property:"dark",title:"Dark",description:"Use dark theme",inputMethod:"boolean",icon:"invert-colors"}],configure:[{property:"src",title:"Source",description:"The URL for this audio file.",inputMethod:"textfield",icon:"link",required:!0,validationType:"url"},{property:"title",title:"Title",description:"Title of this sound track.",inputMethod:"textfield",icon:"av:video-label",required:!1,validationType:"text"},{property:"accentColor",title:"Accent color",description:"Select the accent color use",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{property:"dark",title:"Dark",description:"Use dark theme",inputMethod:"boolean",icon:"invert-colors"}],advanced:[]}};this.setHaxProperties(props);this.$.audio.addEventListener("loadedmetadata",this._onCanPlay.bind(this));this.$.audio.addEventListener("playing",this._onPlaying.bind(this));this.$.audio.addEventListener("pause",this._onPause.bind(this));this.$.audio.addEventListener("ended",this._onEnd.bind(this));this.$.audio.addEventListener("error",this._onError.bind(this))},detached:function(){this.$.audio.removeEventListener("loadedmetadata",this._onCanPlay.bind(this));this.$.audio.removeEventListener("playing",this._onPlaying.bind(this));this.$.audio.removeEventListener("pause",this._onPause.bind(this));this.$.audio.removeEventListener("ended",this._onEnd.bind(this));this.$.audio.removeEventListener("error",this._onError.bind(this))},ready:function(){var player=this;player.canBePlayed=!1;player.isPlaying=!1;player.ended=!1;player.error=!1;player.$.audio.currentTime=player.timeOffset},playPause:function(e){if(!!e)e.preventDefault();var player=this;if(player.canBePlayed){if(player.isPlaying){player._pause()}else{player._play()}}else if("none"===player.preload){player.$.audio.load();player._play()}},_play:function(){var player=this;player.$.audio.play()},_pause:function(){var player=this;player.$.audio.pause()},restart:function(e){if(!!e)e.preventDefault();var player=this;player.$.audio.currentTime=0;if(!player.isPlaying)player._play()},_onCanPlay:function(){var player=this;player.canBePlayed=!0;player.timeLeft=player.$.audio.duration;if(0<player.timeOffset){var percentagePlayed=player.timeOffset/player.$.audio.duration;player._updateVisualProgress(percentagePlayed)}if(player.autoPlay)player._play()},_onPlaying:function(){var player=this;player.ended=!1;player.isPlaying=!0;player.$.replay.style="";player._startProgressTimer()},_skipReverseByInterval:function(e){if(!!e)e.preventDefault();var player=this,newTime=0;switch(e.detail.key){case"up":if(player.largeSkip<player.timeLeft)newTime=player.currentTime+player.largeSkip;break;case"down":if(0<player.currentTime-player.largeSkip)newTime=player.currentTime-player.largeSkip;break;case"right":if(player.smallSkip<player.timeLeft)newTime=player.currentTime+player.smallSkip;break;default:if(0<player.currentTime-player.smallSkip)newTime=player.currentTime-player.smallSkip;}player._updatePlayPosition(newTime);if(!player.isPlaying)player._play()},_startProgressTimer:function(){var player=this;player.timer={};if(player.timer.sliderUpdateInterval){clearInterval(player.timer.sliderUpdateInterval)}player.timer.sliderUpdateInterval=setInterval(function(){if(player.isPlaying){player.currentTime=player.$.audio.currentTime;player.timeLeft=player.$.audio.duration-player.currentTime;var percentagePlayed=player.currentTime/player.$.audio.duration;player._updateVisualProgress(percentagePlayed)}else{clearInterval(player.timer.sliderUpdateInterval)}},60)},_onPause:function(){var player=this;player.isPlaying=!1},_onEnd:function(){var player=this;player.ended=!0;player.isPlaying=!1;player.$.replay.style.opacity=1},_onError:function(){var player=this;player.classList.add("cantplay");player.title="Sorry, can't play track: "+player.title;player.error=!0;player.setAttribute("aria-invalid","true")},_convertSecToMin:function(seconds){var _Mathfloor=Math.floor;if(0===seconds)return"";var minutes=_Mathfloor(seconds/60),secondsToCalc=_Mathfloor(seconds%60)+"";return minutes+":"+(2>secondsToCalc.length?"0"+secondsToCalc:secondsToCalc)},_onDown:function(e){e.preventDefault();var player=this;if(player.canBePlayed){player._updateProgressBar(e);if(!player.isPlaying){player._play()}}else if("none"===player.preload){player.$.audio.load();player.$.audio.addEventListener("loadedmetadata",function(){player._updateProgressBar(e);if(!player.isPlaying){player._play()}},!1)}},_updateProgressBar:function(e){var player=this,x=e.detail.x-player.$.center.getBoundingClientRect().left,r=x/player.$.center.getBoundingClientRect().width*player.$.audio.duration;this._updatePlayPosition(r)},_updatePlayPosition:function(newTime){var player=this;player.currentTime=player.$.audio.currentTime=newTime;var percentagePlayed=player.currentTime/player.$.audio.duration;player._updateVisualProgress(percentagePlayed)},_updateVisualProgress:function(percentagePlayed){var player=this;player.$.progress.style.transform="scaleX("+percentagePlayed+")";player.$.progress2.style.width=100*percentagePlayed+"%";player.$.title2.style.width=100*(1/percentagePlayed)+"%"},_srcChanged:function(newValue,oldValue){var player=this;if(player.isPlaying){player._pause();player._play()}},_changeColor:function(newValue){var player=this;player.$.left.style.backgroundColor=newValue;player.$.title.style.color=newValue;player.$.duration.style.color=newValue;player.$.progress.style.backgroundColor=newValue;player.$.replay.style.color=newValue},_hidePlayIcon:function(isPlaying,canBePlayed){return isPlaying?!0:!(canBePlayed||"none"===this.preload)},_setPreload:function(autoplay,preload){return autoplay?"auto":preload}});export{PaperAudioPlayer};
+  `,is:"paper-audio-player",//
+// Component behaviors
+behaviors:[IronA11yKeysBehavior,HAXBehaviors.PropertiesBehaviors,SimpleColors,SchemaBehaviors.Schema],// Define component default attributes
+hostAttributes:{tabindex:0,role:"application","aria-label":"Audio Player","aria-describedby":"title"},// Define public properties
+properties:{src:{type:String,observer:"_srcChanged"},title:{type:String,value:"Click to play this audio file"},autoPlay:{type:Boolean,value:!1},preload:{type:String,value:"auto"},currentTime:{type:Number,value:0,notify:!0},timeLeft:{type:Number,value:0},smallSkip:{type:Number,value:15},largeSkip:{type:Number,value:60},error:{type:Boolean},timeOffset:{type:Number,value:0}},keyBindings:{space:"playPause",enter:"playPause",left:"_skipReverseByInterval",right:"_skipReverseByInterval",down:"_skipReverseByInterval",up:"_skipReverseByInterval"},/**
+   * attached life cycle
+   */attached:function(){// Establish hax properties if they exist
+let props={canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Mini Audio player",description:"A very small audio player good for MP3s.",icon:"image:music-note",color:"green",groups:["Audio","Media"],handles:[{type:"audio",source:"src",title:"title",color:"color"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"src",title:"Source",description:"The URL for this audio file.",inputMethod:"textfield",icon:"link",required:!0,validationType:"url"},{property:"title",title:"Title",description:"Title of this sound track.",inputMethod:"textfield",icon:"av:video-label",required:!1,validationType:"text"},{property:"accentColor",title:"Accent color",description:"Select the accent color use",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{property:"dark",title:"Dark",description:"Use dark theme",inputMethod:"boolean",icon:"invert-colors"}],configure:[{property:"src",title:"Source",description:"The URL for this audio file.",inputMethod:"haxupload",icon:"link",required:!0,validationType:"url"},{property:"title",title:"Title",description:"Title of this sound track.",inputMethod:"textfield",icon:"av:video-label",required:!1,validationType:"text"},{property:"accentColor",title:"Accent color",description:"Select the accent color use",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{property:"dark",title:"Dark",description:"Use dark theme",inputMethod:"boolean",icon:"invert-colors"}],advanced:[]}};this.setHaxProperties(props);this.$.audio.addEventListener("loadedmetadata",this._onCanPlay.bind(this));this.$.audio.addEventListener("playing",this._onPlaying.bind(this));this.$.audio.addEventListener("pause",this._onPause.bind(this));this.$.audio.addEventListener("ended",this._onEnd.bind(this));this.$.audio.addEventListener("error",this._onError.bind(this))},/**
+   * detached life cycle
+   */detached:function(){this.$.audio.removeEventListener("loadedmetadata",this._onCanPlay.bind(this));this.$.audio.removeEventListener("playing",this._onPlaying.bind(this));this.$.audio.removeEventListener("pause",this._onPause.bind(this));this.$.audio.removeEventListener("ended",this._onEnd.bind(this));this.$.audio.removeEventListener("error",this._onError.bind(this))},/**
+   * ready life cycle
+   */ready:function(){var player=this;// create Player defaults
+player.canBePlayed=!1;player.isPlaying=!1;player.ended=!1;player.error=!1;player.$.audio.currentTime=player.timeOffset;// apply the audio start time property
+},// Play/Pause controls
+playPause:function(e){if(!!e)e.preventDefault();var player=this;if(player.canBePlayed){if(player.isPlaying){player._pause()}else{player._play()}}else if("none"===player.preload){// If player can't be played, because audio wasn't pre-loaded
+// due to the preload="none" property set,
+// load the audio file at this point and start playing it immediately
+player.$.audio.load();player._play()}},_play:function(){var player=this;player.$.audio.play()},_pause:function(){var player=this;player.$.audio.pause()},//
+// Restart audio
+restart:function(e){if(!!e)e.preventDefault();var player=this;player.$.audio.currentTime=0;if(!player.isPlaying)player._play()},// when audio file can be played in user's browser
+_onCanPlay:function(){var player=this;player.canBePlayed=!0;player.timeLeft=player.$.audio.duration;// If player has a Time Offset specified
+// style the progress bar and title accordingly
+if(0<player.timeOffset){var percentagePlayed=player.timeOffset/player.$.audio.duration;player._updateVisualProgress(percentagePlayed)}// If player has auto-play attribute set,
+// it ignores preload="none" property and starts playing on load.
+// This behavior corresponds to the native audio element behavior.
+if(player.autoPlay)player._play()},// when Player starts playing
+_onPlaying:function(){var player=this;player.ended=!1;player.isPlaying=!0;player.$.replay.style="";// remove Replay inline styling
+player._startProgressTimer()},// Skip or reverse by pre-defined intervals
+_skipReverseByInterval:function(e){if(!!e)e.preventDefault();var player=this,newTime=0;switch(e.detail.key){case"up":if(player.largeSkip<player.timeLeft)newTime=player.currentTime+player.largeSkip;break;case"down":if(0<player.currentTime-player.largeSkip)newTime=player.currentTime-player.largeSkip;break;case"right":if(player.smallSkip<player.timeLeft)newTime=player.currentTime+player.smallSkip;break;default:if(0<player.currentTime-player.smallSkip)newTime=player.currentTime-player.smallSkip;}player._updatePlayPosition(newTime);if(!player.isPlaying)player._play()},// starts Timer
+_startProgressTimer:function(){var player=this;player.timer={};if(player.timer.sliderUpdateInterval){clearInterval(player.timer.sliderUpdateInterval)}player.timer.sliderUpdateInterval=setInterval(function(){if(player.isPlaying){player.currentTime=player.$.audio.currentTime;player.timeLeft=player.$.audio.duration-player.currentTime;var percentagePlayed=player.currentTime/player.$.audio.duration;player._updateVisualProgress(percentagePlayed)}else{clearInterval(player.timer.sliderUpdateInterval)}},60)},// when Player is paused
+_onPause:function(){var player=this;player.isPlaying=!1},// when Player ended playing an audio file
+_onEnd:function(){var player=this;player.ended=!0;player.isPlaying=!1;player.$.replay.style.opacity=1;// display Replay icon
+},// on file load error
+_onError:function(){var player=this;player.classList.add("cantplay");player.title="Sorry, can't play track: "+player.title;player.error=!0;player.setAttribute("aria-invalid","true")},// to convert seconds to 'm:ss' format
+_convertSecToMin:function(seconds){if(0===seconds)return"";var minutes=Math.floor(seconds/60),secondsToCalc=Math.floor(seconds%60)+"";return minutes+":"+(2>secondsToCalc.length?"0"+secondsToCalc:secondsToCalc)},//
+// When user clicks somewhere on the progress bar
+_onDown:function(e){e.preventDefault();var player=this;if(player.canBePlayed){player._updateProgressBar(e);if(!player.isPlaying){player._play()}// When preload="none" is being used,
+// player should first try to load the audio,
+// and when it's successfully loaded, recalculate the progress bar
+}else if("none"===player.preload){player.$.audio.load();player.$.audio.addEventListener("loadedmetadata",function(){player._updateProgressBar(e);if(!player.isPlaying){player._play()}},!1)}},//
+// Helper function
+// that recalculates the progress bar position
+// based on the event.click position
+_updateProgressBar:function(e){var player=this,x=e.detail.x-player.$.center.getBoundingClientRect().left,r=x/player.$.center.getBoundingClientRect().width*player.$.audio.duration;this._updatePlayPosition(r)},//
+// Helper function
+// updates the current time based on a time variable
+_updatePlayPosition:function(newTime){var player=this;player.currentTime=player.$.audio.currentTime=newTime;var percentagePlayed=player.currentTime/player.$.audio.duration;player._updateVisualProgress(percentagePlayed)},//
+// Helper function
+// updates the progress bar based on a percentage played
+_updateVisualProgress:function(percentagePlayed){var player=this;player.$.progress.style.transform="scaleX("+percentagePlayed+")";player.$.progress2.style.width=100*percentagePlayed+"%";player.$.title2.style.width=100*(1/percentagePlayed)+"%"},//
+// If src is changed when track is playing,
+// pause the track and start playing a new src
+_srcChanged:function(newValue,oldValue){var player=this;if(player.isPlaying){player._pause();player._play()}},//
+// If color property is changed,
+// update all the nodes with the new accent color
+_changeColor:function(newValue){var player=this;player.$.left.style.backgroundColor=newValue;player.$.title.style.color=newValue;player.$.duration.style.color=newValue;player.$.progress.style.backgroundColor=newValue;player.$.replay.style.color=newValue},_hidePlayIcon:function(isPlaying,canBePlayed){return isPlaying?!0:!(canBePlayed||"none"===this.preload)},_setPreload:function(autoplay,preload){return autoplay?"auto":preload}});export{PaperAudioPlayer};

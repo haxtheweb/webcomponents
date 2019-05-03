@@ -1,0 +1,401 @@
+[
+  {
+    "id": "welcome",
+    "title": "Welcome",
+    "location": "home",
+    "description": "  Why HAX?That video player is a single tag in the DOM that works anywhere\u00a0(see code-sample)  // the tag opening just like normal HTML&lt; video-player// a custom prop",
+    "text": "video player single works anywhere sample opening normal custom property stick corner sticky right closed captioning generates transcript track files haxshort youtube source https watch lrs7dqoktle looking style attributes after width 75 margin 0px display block closing though there could information above using called present itself these elements further documentation integrations involved "
+  },
+  {
+    "id": "504d6323873d49e39de0ffa56c28f",
+    "title": "Get Involved!",
+    "location": "get-involved-",
+    "description": "HAXcms - That which powers this websiteHAXeditor - That which powers our editing experience\u00a0(and all our other tags for that matter)ELMS:LN Web components on webcomponents.org\u00a0- Thos",
+    "text": "haxcms which powers website haxeditor editing experience other matter components webcomponents those contributed wcfactory build maintain component library should special makes multiple projects across hundreds various repos overwhelming imagine something being developer because takes involved thats right showing getting things powered people wanting better accessible easier painful develop place reality could snoop escorting brand anything possible haxtheweb limit yourself claims where guess "
+  },
+  {
+    "id": "asd7dab5820865e3c3e4267f233f6",
+    "title": "What is HAX",
+    "location": "what-is-it",
+    "description": "",
+    "text": "headless authoring experience decoupled built components standard developers creating layer below traditional libraries frameworks gives level property capabilities cycles means fundamentally change operates while expressing highly semantic structure understand through silly example maker mother shades image https media2 giphy media 3cb7aom6347pw bottom platform style width 50 leverages capability express advanced functionality single order build itself ultimately dozens complex component though shows interface cascades unpacks unique doesnt editing hasnt above editthings general sense custom element object could theoretically directions these emitted capable elements editor critical implication created anywhere without haxhax extended modify about definitions limited develop rules content produced operate after integrated other platforms effectively managing makes visual assets website frees focus design think constrain "
+  },
+  {
+    "id": "add7dab58208sadd1234262fa3c4d",
+    "title": "Principles",
+    "location": "why-hax",
+    "description": "Core PrinciplesSupport all platforms and devices (CMS, App, etc)Empower authors to write code without ever looking at codeAll content produced must work with or without HAXeditor availableSuppo",
+    "text": "principles support platforms devices empower authors write without looking content produced haxeditor available older markup regardless structure learn rules producing elements dictate decentralize things peoples cross platform because adopted component standard development authoring system haxcms management everything create compile tooling about 98 4 browser traffic globally server rendering employs progressive enhancement methodology meaning 100 browsing means latest greatest constantly worry library changing components revolution chrome safari opera android firefox polyfill 3 versions 11 legacy aggressive polyfills delivered installed locally functionality itself think complex youve built another migrated maintain functioning actually example "
+  },
+  {
+    "id": "3f7d815c5020b7f0dc79d13499775",
+    "title": "Try hax",
+    "location": "try-hax",
+    "description": "When you use HAXeditor in your own system, everyone won't be able to see this but, just for this website we made something special. HAX mode is activated even though you're not logged in! You can't sa",
+    "text": "haxeditor system everyone website something special activated though youre logged least about ahead click bottom right party started playing capabilities offer "
+  },
+  {
+    "id": "c86470aa02954c9d9f1748ad79ab0",
+    "title": "Presentations",
+    "location": "presentations",
+    "description": "HAX The PlaylistThis playlist is of all things HAXTheWebWCFactory is another important project that the HAX team develops with.",
+    "text": "playlist things haxtheweb wcfactory another important project develops "
+  },
+  {
+    "id": "5dede24a2de74faea00b31e8121e3",
+    "title": "I have issues",
+    "location": "i-have-issues",
+    "description": "Yea yea, we all do.Oh, you have a problem or would like to contribute to HAXcms (that's awesome!). All issues, feature requests and general thumbs up should happen in our issue queue on github:\u00a0http",
+    "text": "problem would contribute haxcms thats awesome issues feature requests general thumbs should happen issue queue github https elmsln"
+  },
+  {
+    "id": "36c4fc6067c043c28f71c6a117e8b",
+    "title": "Query examples",
+    "location": "query-examples",
+    "description": "  Hold up there. You didn't cover any of the query tags in that last section!Ok ok, here's the deal. Queries are so important that they needed their own section. Calm down Dwight we'll handle that n",
+    "text": "there didnt cover query section heres queries important needed their dwight handle elements incredibly powerful aspects haxcms theming deserve anyway example result conditions metadata funny spoken pages useful always element library structure effectively return anything anywhere matches criteria exact matching though getting children unless specifically requested great things parents level items which exactly conjunction repeat caveats doesnt render itself template polymer convention looking javascript order results visual output slice takes hierarchy chops dynamic methodology dynamicmethodology start parent fixed fixedid title child 2 4 levels delivered leveraging again leveling would allow create analyzes current active 3 below instance youve being returned block shows documentation attempts standardize practice wiring something requires supply going unfortunate limitation nature description location changed updated static based infrastructure changing dynamically during possible usage havent rolled themes could placing latest posts upcoming events thats passed unchanging loaded think simple views construct drupal worldview "
+  },
+  {
+    "id": "4824986b1897568dfdd94b882ea6e",
+    "title": "BackdropCMS",
+    "location": "backdropcms",
+    "description": "",
+    "text": "getting setup backdropcms search within backdrop follow instructions components module readme building worry requires comes files supply details install enable modules should enjoy haxing "
+  },
+  {
+    "id": "692eb91c400334295d9fcaac64691",
+    "title": "WCFactory Tooling",
+    "location": "wcfactory-tooling",
+    "description": "",
+    "text": "tooling publish components library called wcfactory while required managing related elements factory churns agnostic unified development testing build production pipeline eliminate barriers component adoption because 23rd 89 18 traffic handle polyfills publishing global github"
+  },
+  {
+    "id": "534ed4c72468366f5410adc169efc",
+    "title": "HAX development",
+    "location": "development",
+    "description": "Include HAX in your projectThe developers docs will lay out the many specifications that make HAX possible including core concepts, different schema's it leverages ad how to define app store spec in ",
+    "text": "include project developers specifications possible including concepts different schemas leverages define store order integrations further install lrnwebcomponents reference import template appstore definition paragraph editable thats behold power thousand source raining their editors complex ecosystem "
+  },
+  {
+    "id": "39074718758fd51b1dc515cfbb79e",
+    "title": "hello-world element",
+    "location": "hello-world-hax-element",
+    "description": "",
+    "text": "element called lrnwebcomponents example order learn anything haxeditor import reference haxwiring behaviors connectedcallback cycle component specification appended exists establish wiring setup which ensure store ready canscale canposition caneditsource false gizmo title description provide apart working icons android color green groups handles usage author owner company settings quick configure property inputmethod textfield required available boolean advanced "
+  },
+  {
+    "id": "f1c8e3a4eddb806a8a3a206c1e33f",
+    "title": "HAX schema",
+    "location": "hax-schema",
+    "description": "",
+    "text": "understanding haxschema first property passed haxwiring setup standard sending about element question understands communicate broken major groupings settings basic booleans scaled slider width canscale position center justified canposition source future caneditsource false after these gizmo section internal calling custom represented interfaces reason everywhere would confusing describes should reference detailed example below comments title display description provide apart working represent selection displays icons android color green grouping filtering groups handlers allow stitch together sources information gizmos render youtube supplies value points video picks things match 1 additional field presented presents player default implementations because which handles block insert array objects multiple types reserved anything looking something matching present coming right pulls sticks caption fallback matches ability across though primarycolor metadata along author owner company wiring forms capable elements grouped three different areas quick segment schema provides singular properties select screenshot accentcolor accent inputmethod colorpicker editor format attribute theme enable boolean invert colors configure shows moving manager hitting youll defaulted textfield required validationtype track closed captions thumbnailsrc thumbnail image optional poster mediatitle simple under label advanced configuration selects darktranscript transcript hidetimestamps timestamps stamps preload preloaded options media stickycorner sticky corner where plays scrolled range choose disable bottom other audio mp3 mp4 tracks languages subtitles features thumbnails interactive annotation human readable english srclang letter language german spanish "
+  },
+  {
+    "id": "52727dcfa7d590e9c459a4a53dd07",
+    "title": "HAX Element Schema",
+    "location": "hax-element-schema",
+    "description": "",
+    "text": "example element schema object pretty simple abstraction elements helps packaging sanitization h2 properties content introduction learning network fundamentally different other technologies reading youve added really solid instruction video player component style width 75 margin 0px display block source https youtube watch pklpq4ufo64 nocookie embed showinfo 0 controls 1 iframed sandboxed false 560 height 315 responsive caption educational technology thats existed sustainable innovation secondarycolor fff9c4 textcolor 000000 secondarycolorclass yellow lighten 4 textcolorclass black ytnocookie ytsuggested ytcontrols yttitle vimeotitle vimeobyline vimeoportrait videocolor ff031d resource 86bfd28d 8b57 a3b9 b2e5 prefix oerschema terms xmlns creativecommons "
+  },
+  {
+    "id": "4de60a5f98aba602edfc0cf024e83",
+    "title": "HAX app store",
+    "location": "hax-appstore-specification",
+    "description": "",
+    "text": "store specification provides integration capabilities block tells haxeditor rules which complete example available outline different parts supports detail source either upload search supply definition connect remote things elements series wrapped inside plate element modified pieces fundamentally entire thing piece moved group stack added think these autoloader automatically loaded setup "
+  },
+  {
+    "id": "96d00871d866c65eb7f04e242bde5",
+    "title": "apps",
+    "location": "hax-appstore-apps",
+    "description": "",
+    "text": "single definition example flickr integration haxtheweb below integrations pieces annotated order illustrate provides advanced complete about source details title display represent image collections optional present color accent author future yahoo description original photo sharing platform status available rating 0 grouping sources images creative commons crowdsourced connection object declares connect service protocol https additional headers added authorization bearer potentiallysomebigsignaturehere usually querying somebigkeyhere supported operations include browse delete method endpoint services pagination methodology style props photos perpage total pages needed search schema label supply input field textfield license select options 1 public domain 2 attribution 3 4 share alike requests 20 format nojsoncallback extras information coming across resultmap gizmo match results defaultgizmotype video location where items found response resource collection preview stuff whatever fields citation caption reading individual nodes editing inputs update adding uploading request "
+  },
+  {
+    "id": "a91393ea31f830bd888f275a05e08",
+    "title": "blox",
+    "location": "hax-appstore-blox",
+    "description": "",
+    "text": "internal normal wysiwyg would layouts lists plate populate theres other generate layout ensure decent defaults produced schema below definition above details displaying visually title 33 66 columns author 4 8 status available piece which series element definitions array place holder properties 2 content 1 image "
+  },
+  {
+    "id": "faaa119810c7ff30ece601b30a9c0",
+    "title": "stax",
+    "location": "hax-appstore-stax",
+    "description": "",
+    "text": "wysiwyg systems would templates series element schemas succession below definition example lesson above larger probably items stack template layout except pieces group deleted shortcut generating details describes visually while subsequent property array title image author description status available rating 0 h2 properties content introduction learning network fundamentally different other technologies reading youve added really solid instruction video player style width 75 margin 0px display block source https youtube watch pklpq4ufo64 nocookie embed showinfo controls 1 iframed sandboxed false 560 height 315 responsive caption educational technology thats existed sustainable innovation secondarycolor fff9c4 textcolor 000000 secondarycolorclass yellow lighten 4 textcolorclass black ytnocookie ytsuggested ytcontrols yttitle vimeotitle vimeobyline vimeoportrait videocolor ff031d resource 86bfd28d 8b57 a3b9 b2e5 prefix oerschema schema terms xmlns creativecommons h3 pretest check 50 float right farm1 staticflickr 642 21641107852 3602f9c1a8 stickers associated shown presented laptop correct backgroundcolor b2dfdb backgroundcolorclass 08d09967 a7c9 3d02 8935 traditional management system considered generation digital environment nlearn about ngdle educause think already ahead something history review illustrate flexibility authoring platform multiple choice checklabel guess resetlabel clear hidetitle question founded answers label bryan ollendyke mythic elves michael potter nikki massaro kauffman charles lavera correcttext great incorrecttext again randomize typeof assessment 97ffed48 c928 39ae 1bea development responsible existing improves wants solution transform education world anyone community developed organizations displayedanswers trick theres 59426af4 ecf2 f49d 06a6 "
+  },
+  {
+    "id": "a839d5c13321a395c0324ea8ea2cf",
+    "title": "autoloader",
+    "location": "hax-appstore-autoloader",
+    "description": "",
+    "text": "autoloader waaayyy easier implement other parts appstore array object references elements should forcibly definitions bootstrapping heres basic example steps information loads definition finishes bootstrap ready loops through element following attempts dynamically import places called waits reads standard events haxwiring deletes aside plate magazine cover video player license "
+  },
+  {
+    "id": "d65518701c08da0a6e2de24e919fa",
+    "title": "HAXeditor",
+    "location": "haxeditor",
+    "description": "",
+    "text": "haxeditor editor future youre using editing capabilities youve solution other projects based common integrations check works "
+  },
+  {
+    "id": "f0af8879a79c4d1cafc4e23c32f52",
+    "title": "CSS vars",
+    "location": "css",
+    "description": "CSS can be modified via CSS variables. CSS variables create a happy middle ground between the constraints of Shadow DOM (namely that styles are fully encapsulated) and designers wanting flexibility a",
+    "text": "modified variables create happy middle ground between constraints shadow namely styles fully encapsulated designers wanting flexibility control design leverage heavily template layer allow about theme already apply unlike normal polymer library build supports convention operate mixins write blocks variable which someone whatever valid attributes level several implemented below example haxcms basic forms clean baseline sites 37474f color ffffff indicator active accent arrow 8px children block button background height 250px border 2px solid black white padding 16px title display inline heading family montserrat helvetica tahoma geneva arial serif 32px margin bottom rendering optimizelegibility weight 600 "
+  },
+  {
+    "id": "e3dafe1a1f50183468f39f378e4dd",
+    "title": "Add",
+    "location": "add",
+    "description": "",
+    "text": "assets remote places paste configure added guessing example mp4 trigger against document video types "
+  },
+  {
+    "id": "6dfbc25d96f94671a07669986c447",
+    "title": "Basic",
+    "location": "basic",
+    "description": "The Basic theme provides a simple yet highly themable structure. It's leveraging the bulk of our custom elements specifically geared toward HAXcms state encapsulationThe theme elements in HAXcms can",
+    "text": "basic theme provides simple highly themable structure leveraging custom elements specifically geared toward haxcms state encapsulation completely encapsulate design example called children block automatically whats below current inside ancestor hierarchy means could easily style never think about management active approach themes level pervasive which previous buttons button their format "
+  },
+  {
+    "id": "dfd62788ba484051a869986e59568",
+    "title": "Concepts",
+    "location": "concepts",
+    "description": "HAXcms seeks to be a microsite generator and manager that doesn't require any command line in order to operate. HAXcms leverages HAX to give a best in class authoring experience while HAXcms seeks to",
+    "text": "haxcms seeks microsite generator manager doesnt require command order operate leverages class authoring experience while eliminate barriers publishing content online words phrases worth understanding haxeditor editor individual thats created outline sites schema manage theme single component based agnostic elements components design assets anywhere"
+  },
+  {
+    "id": "3859b3ac1ef545b4909c3892f97a9",
+    "title": "Skin a site",
+    "location": "skin-a-custom-theme",
+    "description": "Theme skinning is the easiest way to build a decent looking theme in HAXcms. This method is geared toward people that know CSS and HTML but can&#39;t get into the weeds of web components or javascript.Wo",
+    "text": "theme skinning easiest build decent looking haxcms method geared toward people weeds components javascript workflow select custom system sites mynewsite modify structure design liking minimal barrier entry those seeing files touch change requires tooling utilize either "
+  },
+  {
+    "id": "275a092860abb7cec2b6d0e358264",
+    "title": "Core concepts",
+    "location": "core-concepts",
+    "description": "",
+    "text": "gizmo advanced piece media interactivity placed technical level component users content readers functionality helping complete maybe embed article wikipedia create gorgeous responsive video would without knowledge gizmos ensure consistent visual presentation authoring experience across myriad complex wired support remote capabilities search youtube leaving editing under while provide definitions talking commonly modified connect almost anything "
+  },
+  {
+    "id": "5a6e664338344ac5ae70009026375",
+    "title": "Installation",
+    "location": "installation",
+    "description": "Generic PHP install directionsHave PHP? well then you can setup HAXcms pretty quick. Just download HAXcms and navigate to its directory in a browser. It'll attempt to automatically install (which is ",
+    "text": "generic install directions setup haxcms pretty quick download navigate directory browser attempt automatically which create basic folders youll ascii telling password seeks 0 config installation anything didnt sense issue queues command haxing through prompts scripted arguments backend needs configuration files answer scripts haxtheweb youre having issues installing script ensure version 4 flavors start 3 allows users rapidly working webdev stack their machine heres steps using similar hosting latest github place htdocs servers button click website started build organically docksal lando vagrant recommend docker container manager though based above basically downloading running going support methods often clone https elmsln terminal window magic username admin building static sites locally anywhere right "
+  },
+  {
+    "id": "e29af6f1f3924a0b3284b4c4fc907",
+    "title": "Make",
+    "location": "make",
+    "description": "",
+    "text": "allows create things using gizmos editor knows about typically involve media pieces could treatment apply examples default settings wikipedia article reference entering provide additional information write 2 which difficult expect metadata elements order details search engines whatever these "
+  },
+  {
+    "id": "ed88bc56c13648398505aaeaba374",
+    "title": "Minimalist",
+    "location": "minimalist",
+    "description": "As you can see, the minimalist theme is for trying to give you a straight forward, linear design pattern.Pages are ordered based on the very 1 page's child pages.So you'd have a structure like this:",
+    "text": "minimalist theme trying straight forward linear design pattern pages ordered based 1 child structure 2 3 wouldnt "
+  },
+  {
+    "id": "ca8c6ba8c0128ace343a3701f2060",
+    "title": "Drupal",
+    "location": "drupal",
+    "description": "Try on SimplyTest.meTry HAX on Simplytest me in a few steps without needing to install anythingGo to Simplytest me and pick HAX modulePick 8.x-3.0 or 7.x-3.0Log in, go to Administration -> Co",
+    "text": "simplytest steps without needing install anything module 8 3 0 7 administration configuration content authoring components change location https webcomponents getting setup drupal works 6 mostly prove point while routines largely follow directions flavor branching easiest require additional modules going project aware version download platform found readme these files copythisstuff folder enable should enjoy haxing special order upload capabilities youll entity restws "
+  },
+  {
+    "id": "29e7d7f5db3e3ef0733aed41d88f2",
+    "title": "Solutions",
+    "location": "solutions",
+    "description": "",
+    "text": "modularity success solutions provides which leverage haxeditor interface authoring wysiwyg replacement headless experience component integrated drupal backdropcms gravcms haxcms stand alone micro manager built future haxdesktop desktop version functionality publishing"
+  },
+  {
+    "id": "apo7dab513ddsadd1234262fa3c4d",
+    "title": "HAXcms",
+    "location": "what-is-haxcms",
+    "description": "Pure publishing joyHAXcms is the slimmest possible Content Management System possible thanks to the awesome power of HAX. HAXcms boils content creation down to a handful of files behind the scenes, a",
+    "text": "publishing haxcms slimmest possible content management system thanks awesome power boils creation handful files behind scenes which highly readable small works loading single contains relationships between pages those stored editor manipulate simple server technology basically update making baked github documentation section deeper website youre viewing powered controls bottom right would implementation demoing capabilities organization trying educations remote moment world where little controlled completely uniform manner actually pulls together universe media across helps bridge knowledge creators publishers eliminates involved anyway "
+  },
+  {
+    "id": "36ed4f6a7eb89414d5b06c2914e9f",
+    "title": "HAXdesktop (future)",
+    "location": "haxdesktop",
+    "description": "",
+    "text": "haxdesktop great experience haxcms provided stand alone desktop builds content forever format version control simplicity using "
+  },
+  {
+    "id": "897a98394ca3a3364795afca7b6de",
+    "title": "GravCMS",
+    "location": "gravcms",
+    "description": "",
+    "text": "theres plugins needed gravcms components plugin provides build routine installation instructions editor capabilities"
+  },
+  {
+    "id": "1ba9e275eca649118cb323dd6b039",
+    "title": "Learn two",
+    "location": "learn-two",
+    "description": "Learn two is a straight forward way of presenting material for learning about a topic. With a breadcrumb trail `` and a simple `` that tracks visually as you activate new items, it's a great way to pr",
+    "text": "learn straight forward presenting material learning about topic breadcrumb trail simple tracks visually activate items great present educational mobile support changing dimensions browser heavily based theme gravcms community "
+  },
+  {
+    "id": "44a138ea51224a2bb2ce8bf1fb11b",
+    "title": "Structure",
+    "location": "structure",
+    "description": "By design we've got a very simple structure. The goal of HAXcms isn't to lock you into anything and so we've simplified our file structure over other solutions.The key directories / files include:fi",
+    "text": "design simple structure haxcms anything simplified other solutions directories files include youve uploaded through interface pages folders named their content index created hitting outline schema object defines relationship front stitch together service worker makes screen microsite"
+  },
+  {
+    "id": "174499517504468ab3154388b85c0",
+    "title": "Web components",
+    "location": "web-components",
+    "description": "Do you know full on web component development? Well, you can build a new theme from scratch. The best way to learn is by picking a part some of our examples. For this we'll analyze the haxcms-slide-th",
+    "text": "component development build theme scratch learn picking examples analyze haxcms slide import classes components polymerelement polymer element haxcmstheme lrnwebcomponents elements haxcmsthemewiring title print button active navigation indicator paper icons tooltip simple colors shared styles imports basic helpful themes first wiring library provides basis custom state management typically without having concepts class haxcmsslidetheme extends statement wraps thereby giving together about digging bridges store written design layer leverage anything writing convention referencing bound variable template heres variables youll commonly direct example would sitetitle ancestortitle parenttitle activetitle activeitemfields images 0 power under approach create field definitions haxschema extend capabilities pages required there small block doing following slotted content during display helps ensure clicks haxeditor opposed currently working sends backend which updates front changes ensures visible editing related appear somewhere leveraged whatever beyond correctly target integrated using position reposition dynamically covered write referenced provide prints different leveraging system discuss order cleaner "
+  },
+  {
+    "id": "251f207e4046a4b040ce7c28fe38a",
+    "title": "Find",
+    "location": "find",
+    "description": "",
+    "text": "interoperability layer where components binding shines stitch remote together local order streamline workflows "
+  },
+  {
+    "id": "06233713d866335181da841d39311",
+    "title": "UX concepts",
+    "location": "ux-concepts",
+    "description": "",
+    "text": "broken three major production concepts content authors either adding something already finding their making could media found elsewhere these primary methods "
+  },
+  {
+    "id": "ac67dab5820865e3c3e4267b1bf60",
+    "title": "Integrations",
+    "location": "integrations",
+    "description": "HAX provides plenty of ways to integrate into the platforms you already use! Here's a list of currently supported ones with links off to their associated plugins\nHAXcms (duh, it's powering this websit",
+    "text": "provides plenty integrate platforms already heres currently supported links their associated plugins haxcms powering website backdropcms drupal 8 7 6 gravcms wordpress youll components plugin liiitle crazy bookmarklet allows injecting below details component inject parts sites exploring ecosystem electron reaches maturity bookmark javascript function document createelement script module window appliedhax false https waxam build es6 modules lrnwebcomponents appendchild style innerhtml injected highlighter outline 2px dotted 34e79a important offset width 50 margin 100px addeventlistener click target outerhtml mouseover classlist mouseout remove store ready haxstore instance appstore status 200 title youtube arrow color author google description popular online video sharing remix available crowdsourced connection protocol googleapis v3 aizasyaf9zkxv fxus9gnqn40shztn6f8a7h operations browse method endpoint search pagination props previous prevpagetoken nextpagetoken total items pageinfo totalresults string snippet maxresults 20 resultmap defaultgizmotype preview image thumbnails default videoid gizmo source watch caption citation channeltitle vimeo circle filled quality community access token 0a718b853bad87571d52e9fb554e0a43 videos first paging query direction alphabetical filter pictures sizes 1 flickr collections yahoo original photo platform rating 0 images creative commons 43ccc969703b7afd4e2a1b16f02ce84e services photos perpage pages results value dropdown select valueproperty safemoderaterestricted license anyall rights reservedattribution licenseattribution noderivs noncommercial sharealike licenseno known copyright restrictionsunited states government workpublic domain dedication cc0 public format nojsoncallback extras content places inclusive cozmos through simple space media collection photographer giphy green crowd sourced memes animated mr3blnktt0hetvtyppt4tiftqusgyhoo v1 count ygpgpg 13r language enesptidfrartrthvideitjazh twrukoplnlrohusvcshibndafatlfiiwmsnouk limit source2 480w still display icons 3d rotation object service aizasydisvloa49ghujg0yat3ys i6ieoiscpum assets keywords category anyanimalsarchitectureartfoodnatureobjectspeoplescenestechnologytransport pagesize displayname thumbnail property split delimiter position embed authorname sketchfab purple models anyattributionattribution sharealikeattribution noderivativesattribution noncommercialattribution noderivativespublic 2 embedurl generator android engine picture version1 memegenerator apikey e7fbcd7f 8d76 4513 9698 e20de4362d99 generators pageindex result imageurl imageid unsplash client 0e1fa3a203724415c10c03581e8db8a43e8bc8906ad934e0f321d28be16281ff thumb regular dailymotion fields 240 relevance pixabay orange 7839766 f49bb4174cd49cb587944a5f7 totalhits previewurl webformaturl mixter library music submitted audio files ccmixter upload plain download codepen development cpv2api small fchazal theme version large wikipedia account balance wikimedia encyclopedia world action origin sroffset srsearch static project logos enwiki example lesson h2 properties introduction learning network fundamentally different other technologies reading youve added really solid instruction player 75 0px block pklpq4ufo64 nocookie showinfo controls iframed sandboxed 560 height 315 responsive educational technology thats existed sustainable innovation secondarycolor fff9c4 textcolor 000000 secondarycolorclass yellow lighten 4 textcolorclass black ytnocookie ytsuggested ytcontrols yttitle vimeotitle vimeobyline vimeoportrait videocolor ff031d resource 86bfd28d 8b57 a3b9 b2e5 prefix oerschema schema terms xmlns creativecommons h3 pretest check float right farm1 staticflickr 642 21641107852 3602f9c1a8 stickers shown presented laptop correct backgroundcolor b2dfdb backgroundcolorclass 08d09967 a7c9 3d02 8935 traditional management system considered generation digital environment nlearn about ngdle educause think ahead something history review illustrate flexibility authoring multiple choice checklabel guess resetlabel clear hidetitle question founded answers label bryan ollendyke mythic elves michael potter nikki massaro kauffman charles lavera correcttext great incorrecttext again randomize typeof assessment 97ffed48 c928 39ae 1bea responsible existing improves wants solution transform education anyone developed organizations displayedanswers trick theres 59426af4 ecf2 f49d 06a6 course 100 multimedia design foundations introduces process thinking skills support facilitate reasoned approaches ambiguous defined problem spaces concepts principles practice related communications information sciences e2 80 94 three discreet disciplines which students pursue further study while developing pathways standard methods tools mental attitudes necessary approach problems meant comprehensive catalog instead should inspire confidence concept frame complex issues discovered solutions delivered structure comprised 5 lessons introduce topics considerations weeks depending semester assigned chapters supplemental including podcasts complete exercises employing double diamond culminating critique expected throughout therefore several activities provide opportunity iteration software rather delivery pedagogy particular subject matter period without getting theory instructor gives order meaningfully engage learn delivering challenges using needs canvas stores assignment calendar grades messages everyone based similar custom house built studio easily share progress guided perform actions combination emails explicit instructions contact state confused responsibility student assignments technical material requirements h4 hardware computer fully require meets minimum campus internet broadband camera cellphone asked various aspects printer scanner helpful printing paper templates optional would browser latest either chrome safari firefox microsoft accounts addition general university required create invisionapp installs install desktop application called twine twinery possible cannot materials journal recommend moleskine cahier squared kraft brown cover 25 amazon purchase pencils markers special however following recommendations professional grade inclined invest drawing npencil palomino blackwing 602 copic multiliner marker nmarker n2 scissors notes poster board truth robert grudin prime shipping element creator collins github program licensename attribution licenselink licenses morelabel checking morelink hasmore ee77aae6 561a fbf8 d738 class objectives understanding critical writing discourse apply relevant context resources essays dummies carrie winstanley wiley january 2012 c2 a0 "
+  },
+  {
+    "id": "5a9ea17e63ce96f3e94fd5282b290",
+    "title": "WordPress",
+    "location": "wordpress",
+    "description": "You'll want to follow a few steps before replacing Gutenberg\n.\nGet the Classic Editor\n. This plugin helps restore WordPress back to what you wanted\nGet the Web component plugin\n\nGet the HAX plugin\n\nEn",
+    "text": "youll follow steps before replacing gutenberg classic editor plugin helps restore wordpress wanted component enable plugins install routine leverage break platform specific assets content"
+  },
+  {
+    "id": "c5e61b84e88a5a4829c65908117ec",
+    "title": "Creating new ones",
+    "location": "integrations/create-new-ones",
+    "description": "\nHAXeditor keeps so much functionality on the front-end that there's really very little tying it to..well.. anything. As a result, HAX is easy to integrate into systems that currently have WYSIWYG cap",
+    "text": "haxeditor keeps functionality front theres really little tying anything result integrate systems currently wysiwyg capabilities integrations effectively things point content appstore specification upload files optional filtering because components valid system accept saved database doing other sanitization prior storage process should strips youll white listing order ensure component through "
+  },
+  {
+    "id": "db25d465f8ee6d9ba738f9e94305d",
+    "title": "Documentation",
+    "location": "documentation",
+    "description": "",
+    "text": "complex built series standards never break result complexity these there things should prior digging haxeditor related solutions"
+  },
+  {
+    "id": "0e4cc53c944f658a5440eacc5a1c0",
+    "title": "Related technologies",
+    "location": "related-technologies",
+    "description": "",
+    "text": "there several technologies should learn about going understand built extend schema official website standard provides describing contained modify those values extensively called object related definition fully binded example https tutorialspoint draft 04 title product description acmes catalog properties unique identifier integer string price number minimum 0 exclusiveminimum required abstraction order provide forms updating wired elements wanted types input fields access learning would place start outline expressing storing relation between objects gives simple linking together concepts entities entity 1 indent location parent metadata enough visually represent information larger 3 items which express nested hierarchy consistent 123 d321d d2e dd2 author lrnwebcomponents series material teach structure content license glance potentially icons quilt 2 introduction outlines files 2nd break these higher whole created short explain valid additional details could relating needed universe works array contain pages leaves element within position inward something indented levels resource references display weighting relative other match level child container"
+  },
+  {
+    "id": "4bce35464d5344568eae494c79180",
+    "title": "HAXcms",
+    "location": "haxcms-1",
+    "description": "HAXcms, that which powers the site you are currently reading is a powerful \"static site generator\" paradigm. It leverages server technology in order to orchestrate a static site. That way the \"server\"",
+    "text": "haxcms which powers currently reading powerful static generator paradigm leverages server technology order orchestrate needed securely develop their content difference generators unlike solutions jekyll anyone publish website those understand command intended installed allow users entirely create manage micro sites visualization"
+  },
+  {
+    "id": "5df45272f6b94f4fb65016c47aeac",
+    "title": "Publishing",
+    "location": "publishing",
+    "description": "HAXcms requires being published in order to be visible to other people. Working locally or on Desktop or on a server, is akin to you writing a document on your computer. It's not shared with anyone. W",
+    "text": "haxcms requires being published order visible other people working locally desktop server writing document computer shared anyone recommend setup publishing ahead hassle later setting listing click settings right corner youll modal options plugging github credentials password aspect optional enter behalf container which allows future requests publish happen automatically stored manually files after using heading npublishing sites share update website hitting button inside bottom started currently provider supported local installation method providers additional development flexibility understanding whats actually happening things ready general those operations takes underlying commits version control though already should pushes these origin repository likely switches branch pages deviate needed deletes symlinks replaces correct references leverages specified super charge users through correctly rewrite index match paths where going sends clean master everything indicated successful meaning pushed there depending content minutes change usually within about 2 passed refresh address youve previously probably theme 5 seconds message indicating available clicking refreshing browser updated happens because called service worker enables 100 offline capable ensures traffic absolutely necessary workflows might between thats terminal following yoursite checkout branches valid distribution wasnt their destination "
+  },
+  {
+    "id": "e6daa06edfd243a4ade80c0ded24e",
+    "title": "Life cycle",
+    "location": "life-cycle",
+    "description": "This is a general life cycle that happens when HAXcms \"boots up\". When web components are unpacking the contents of what to do it generally will work this way.page load, should it be no-js or a web c",
+    "text": "general cycle happens haxcms boots components unpacking contents generally should component delivered preflight builder loads reads outline schema starts bootstrap theme items title appends editor which checks context established based global values nodejs beaker login point check theres users local finds backend injects bridge haxeditor injected correct place unpacks thing"
+  },
+  {
+    "id": "c75009029aed41178949a6597a02d",
+    "title": "Troubleshooting",
+    "location": "troubleshooting",
+    "description": "These are some common issues / resolutions in HAXcms related to installation, publishing, etc.I installed HAXcms and forgot my passwordYour username and password can be found in _config/config.php o",
+    "text": "these common issues resolutions haxcms related installation publishing installed forgot password username found config server assuming local development clicked login nothing happened locked clear browser cache cookie might invalid again publish minute times since creating commit rewriting files front waiting github before triggers successful response setup click dashboard listing ensure youve integration correctly realize everything outline schema theres issue something check sites mysite settings variables cascade stored globally replicated locally allow pealed easily imported exported other setups "
+  },
+  {
+    "id": "a52fb6850a2f4bc08e62457cf01d6",
+    "title": "Theming",
+    "location": "theme-layer",
+    "description": "There are multiple ways to \"theme\" in HAXcms that align with the skillsets of the person doing the theme development. Know web components? Cool. Know basic CSS and HTML? Cool. Want to build something ",
+    "text": "there multiple theme haxcms align skillsets person doing development components basic build something complete ground robust templating engine unleash creativity written wcfactory tooling order improve management component libraries scale lrnwebcomponents element portfolio required fancy yourself modern front developer might watch video these dives layer great seeing whats possible about making themes store state works internally always designers heres source learn which viewing currently initial example looks copyright 2019 pennsylvania university license apache 2 0 import polymerelement polymer haxcmstheme elements haxcmsthemewiring navigation breadcrumb active title button print simple colors layout drawer paper learn2 microcopy language worth noting customelement index class learntwotheme extends render function static template return style display block family helvetica tahoma geneva arial serif letter spacing 03rem weight 400 background fafafa h1 h2 h3 h4 h5 h6 montserrat rendering optimizelegibility height 150 hidden contentcontainer padding 48px 96px header 747474 color center 0rem 1rem 2rem heading 52px 3px 78px margin bottom 27 2px 13 6px 100 position relative overflow inline decoration 28px 383f45 ffffff scroll 100vh 200px container 2d3237 webkit scrollbar track shadow inset 4px 56 63 69 9 border radius width thumb 1px available 300px scrim 80 8 content buttons justify space evenly white black narrow 16px menubutton menubutton2 absolute 1 fixed 64px transition 4s delay 2s opacity disabled hover focus 160px unset transparent important right opened properties custom binding easier obtain directly notice operate correctly status props super boolean reflecttoattribute toggledrawer toggle window customelements define export "
+  },
+  {
+    "id": "a84c35ec85c84c7cb4ab80c2fbc87",
+    "title": "Core elements",
+    "location": "elements",
+    "description": "While you're not required to use them, HAXcms supplies a series of elements that can make theme development effortless. You can see the source of these in greater detail under the theme directory of h",
+    "text": "while youre required haxcms supplies series elements theme development effortless source these greater detail under directory brief overview provide interface seeks apply pattern technique sentence dramatic effect everyone knows about heading stands semantic drink sweats thats right allows complex state managed system without needing understand management important awesome people twitter designers design intricacies making collapsed field expand relative dictated active store intentionally confusing worded something themes directly implement layer simple blogs footer element great example heres module imports dependencies lrnwebcomponents latest import components title blocks children block outline layout modal navigation breadcrumb indicator button query slice render print pretty explanatory because wrapped h1 child items based criteria match basic license details house other trail links buttons navigating through previous parent first kinds options visualization hierarchy complete checkmarks given optional styling highlighted scrolls small screens fantastic level focus support 4 levels printing displays opened window 2 0 1 format applies correct values discover homepage themselves examples check leverage heavily across style variables inside custom available learn implementing multiple against always reread section "
+  },
+  {
+    "id": "7f3dd6904c3f4616baa5159b9a158",
+    "title": "Dev workflows",
+    "location": "dev-workflows",
+    "description": "Our development workflow is as follows (for themes)All custom theme work happens in your _config directoryMake my-theme.js, pull everything together, either in this directory or in a wcfactory cat",
+    "text": "development workflow follows themes custom theme happens config directory everything together either wcfactory catalog elements youve reference element update block include something haxtheme myorganization eberly tells haxcms select valid local during polymer serve components locally while recommended sites mynewsite entrypoint adjust opens address after youll which leveraging assets referenced modules project install would other manually point location actively working develop until liking shipping build routine important currently forks original source because recompile youre trying around involving rollup delete symlink replace publish leverage future admittedly component rough maintain built modular system without tooling having workflows directly allow streamline creation current limitations existing webcomponents whatever there pegged projects creating creates effect ensure place order power "
+  },
+  {
+    "id": "dfb1fdc884644ae496dc42bf6095c",
+    "title": "Simple blog",
+    "location": "simple-blog",
+    "description": "This one definitely just broke your world view... cause... it's... a.... blog.It also just broke the navigation cause Simple Blog is about viewing a listing of blog posts and then when you are inside",
+    "text": "definitely broke world cause navigation simple about viewing listing posts inside single takes entire interaction click button another theme "
+  },
+  {
+    "id": "57610c36a78a416aa01d6d38a692b",
+    "title": "Example themes",
+    "location": "example-themes",
+    "description": "Explore some of the themes built for HAXcms that you get out of the box. This is a great demonstration of the performance and power of both web components and HAXcms (the system powering this site!).",
+    "text": "explore themes built haxcms great demonstration performance power components system powering special switch theme question reset provide navigation sense different structures learn about layer write section there known issues currently times doing dynamically concept namely variables rebuilt "
+  },
+  {
+    "id": "6e62c525da4e4b77bcb7d752d54f9",
+    "title": "Slide player",
+    "location": "slide-player",
+    "description": "Slide player is great for lectures and presentation style sites (or parts of sites). It lets you focus on the content and has almost no UI.",
+    "text": "slide player great lectures presentation style sites parts focus content almost "
+  },
+  {
+    "id": "9c331aafb94e4455a206057797dfa",
+    "title": "Outline player",
+    "location": "outline-player",
+    "description": "Outline player is an even more basic form of Learn two. It's for those seeking something even more minimalist in design and capabilities.Fun things about this include... ok well very little. Let's fa",
+    "text": "outline player basic learn those seeking something minimalist design capabilities things about include little first theme decided supporting because helps illustrate modular nature layer examples exact thats found buttons other themes initial abstraction state allows focus leave front engineering sorta happens "
+  },
+  {
+    "id": "1c5235343b594e3a880a8af81f5e7",
+    "title": "Dev theme",
+    "location": "dev-theme",
+    "description": "EEK! You were NOT supposed to see this...except that this is what HAXcms sees. This is your just barebones components with almost 0 css baseline theme play space. This is a great one to fork and rewri",
+    "text": "supposed except haxcms barebones components almost 0 baseline theme space great rewrite starting point illustrates hideous things given window probably didnt charley chocolate factory reference "
+  },
+  {
+    "id": "49d727fbb5c8871a3979a51431169",
+    "title": "F.A.Q.",
+    "location": "f-a-q-",
+    "description": "Is this really real?Yes. Web components turn your site effectively into an API. HAXeditor just leverages this fact and standards that exist in order to supply an incredible amount of functionality on",
+    "text": "really components effectively haxeditor leverages standards exist order supply incredible amount functionality front browser majority content solutions provide without files understand modify whats support supported ie11 higher 11 though tested evergreen browsers haxcms treated legacy enabled handful traffic 3 simplistic design 93 global everyone elements supplies written appstore specification defining access demos leveraging autoloader piece which definitions schema associated those these require operate inside export writing could semantic ensure lives platform being itself component scope element unpack correctly otherwise compare wordpress gutenberg plugin terms mission attempt click build website tonight minimal solution masses reduce barriers entry expression takes critical differences philosophy technical implementation goals seeks improve publishing systems constructed fraction empower anyone privacy sovereignty individuality peoples eliminate production integration delivery material internet expensive hence domain larger points different highlighted below independent touches agnostic highly focused needs improving authoring experience users embeds blocks layer nuance operations wildly block example tabbed items another button inline believes editing across complex delivered level illustrates selecting interfacing would other adoption training through cognitive increase things primary construction method upload media thats separately integrated process dependent deliver boils creation mental model author authors either something create layout remix template system produces react specific logistics traditional produced capable believe extending broader capabilities first second reduces duplication efforts globally improves resource sharing requiring plugins vanillajs polymer compatible library produce while limited popular examples natively following custom litelement skatejs svelte vuejs wrapper angular compiled passes testing everywhere should where brain child pennsylvania state university originally created power instructional innovations quickly realized potential transform original development evangelist infancy conceived 2016 experimented 2017 manifested 2018 actualized 2019 bryan ollendyke btopro project developer michael potter nikki massaro kauffman nikkimk charles lavera cgldevel collins feedback assessment katrina katrinamwehr melissa hicks juststormy champion there nothing together january 28 plures"
+  }
+]
