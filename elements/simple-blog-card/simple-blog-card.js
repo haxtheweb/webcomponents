@@ -66,7 +66,7 @@ class SimpleBlogCard extends LitElement {
     </div>
   </div>
 </paper-card>
-<simple-popover auto for="author" position="top">
+<simple-popover position="top" offset="0">
     <paper-avatar .label="${this.author}" .src="${this.authorimage}">
     </paper-avatar>
     <h5 class="author-name">${this.author}</h5>
@@ -271,8 +271,8 @@ class SimpleBlogCard extends LitElement {
         .box {
           outline: 1px solid black;
         }
-        .show {
-          display: unset;
+        simple-popover:not([for]) {
+          display: none;
         }
       `
     ];
@@ -311,15 +311,18 @@ class SimpleBlogCard extends LitElement {
     this.removeEventListener("mouseover", this.hoverState.bind(this));
     this.removeEventListener("mouseout", this.hoverStateOff.bind(this));
   }
+  ready() {
+    super.ready();
+  }
   showDetails(e) {
-    /*this.shadowRoot
-      .querySelector("absolute-position-behavior")
-      .classList.add("show");*/
+    this.shadowRoot
+      .querySelector("simple-popover")
+      .setAttribute("for", "author");
+    this.shadowRoot.querySelector("simple-popover").setPosition();
   }
   hideDetails(e) {
-    /*this.shadowRoot
-      .querySelector("absolute-position-behavior")
-      .classList.remove("show");*/
+    this.shadowRoot.querySelector("simple-popover").removeAttribute("for");
+    this.shadowRoot.querySelector("simple-popover").unsetPosition();
   }
   hoverState(e) {
     this.shadow = 1;

@@ -12,8 +12,7 @@
    */
   "offset": {
     "type": Number,
-    "value": -10,
-    "readOnly": true
+    "value": -10
   },
   /**
    * Positions the tooltip to the top, right, bottom, left of its content.

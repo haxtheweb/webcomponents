@@ -7,7 +7,7 @@ import "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
 
 // register globally so we can make sure there is only one
 window.AbsolutePositionStateManager = window.AbsolutePositionStateManager || {};
-// request if this exists. This helps invoke the element existing in the dom
+// request if this exists. This helps invoke the el existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same modal
 window.AbsolutePositionStateManager.requestAvailability = () => {
@@ -40,13 +40,13 @@ class AbsolutePositionStateManager extends PolymerElement {
     return "absolute-position-state-manager";
   }
 
-  // properties available to the custom element for data binding
+  // properties available to the custom el for data binding
   static get properties() {
     return {
       /**
        * Stores an array of all the players on the page.
        */
-      elements: {
+      els: {
         type: Array,
         value: []
       }
@@ -54,7 +54,7 @@ class AbsolutePositionStateManager extends PolymerElement {
   }
 
   /**
-   * Makes sure there is a utility ready and listening for elements.
+   * Makes sure there is a utility ready and listening for els.
    */
   constructor() {
     super();
@@ -68,32 +68,32 @@ class AbsolutePositionStateManager extends PolymerElement {
   }
 
   /**
-   * life cycle, element is afixed to the DOM
-   * Makes sure there is a utility ready and listening for elements.
+   * life cycle, el is afixed to the DOM
+   * Makes sure there is a utility ready and listening for els.
    */
   connectedCallback() {
     super.connectedCallback();
   }
 
   /**
-   * Loads element into array
+   * Loads el into array
    */
   loadElement(el) {
     let root = this;
     root.__on = root.__on !== undefined ? root.__on : false;
-    root.elements.push(el);
+    root.els.push(el);
     root.updatePosition(el);
     if (!root.__on) root.addEventListeners();
     root.__on = true;
   }
 
   /**
-   * Unloads element from array
+   * Unloads el from array
    */
   unloadElement(el) {
     let root = this;
-    root.elements.filter(element => element === el);
-    root.__on = root.elements > 0;
+    root.els.filter(el => el === el);
+    root.__on = root.els > 0;
     if (!root.__on) root.removeEventListeners();
   }
 
@@ -121,29 +121,24 @@ class AbsolutePositionStateManager extends PolymerElement {
   }
 
   /**
-   * Returns the target element that this tooltip is anchored to. It is
-   * either the element given by the `for` attribute, or the immediate parent
-   * of the tooltip.
+   * Returns the target el that this el is anchored to. It is
+   * either the el given by the `for` attribute, or the immediate parent
+   * of the el.
    *
    * @type {Node}
    */
   findTarget(el) {
     let target;
-    let parentNode = this.parentNode;
-    console.log("findTarget", el, el.target, parentNode);
     if (el.target) {
       target = el.target;
-      console.log("target", el.target);
     } else if (el.for) {
-      target = parentNode.querySelector("#" + el.for);
-      console.log("for", el.for, target);
+      target = el.parentNode.querySelector("#" + el.for);
     } else {
       let ownerRoot = el.shadowRoot;
       target =
-        parentNode.nodeType == Node.DOCUMENT_FRAGMENT_NODE
+        this.parentNode.nodeType == Node.DOCUMENT_FRAGMENT_NODE
           ? ownerRoot.host
-          : parentNode;
-      console.log("for", ownerRoot, target);
+          : this.parentNode;
     }
     return target;
   }
@@ -168,84 +163,85 @@ class AbsolutePositionStateManager extends PolymerElement {
    */
   updateElements() {
     let root = this;
-    root.elements.forEach(element => {
-      root.updatePosition(element);
+    root.els.forEach(el => {
+      root.updatePosition(el);
     });
   }
 
   /**
    * @return {void}
    */
-  updatePosition(element) {
-    let target = this.findTarget(element);
-    if (!target || !element.offsetParent) return;
-    var offset = element.offset;
-    var parentRect = element.offsetParent.getBoundingClientRect();
-    var targetRect = target.getBoundingClientRect();
-    var elementRect = element.getBoundingClientRect();
-    var horizontalCenterOffset = (targetRect.width - elementRect.width) / 2;
-    var verticalCenterOffset = (targetRect.height - elementRect.height) / 2;
-    console.log("updatePosition", element, target);
-    //var targetLeft = targetRect.left - parentRect.left;
-    //var targetTop = targetRect.top - parentRect.top;
-    var tooltipLeft, tooltipTop;
-    switch (element.position) {
+  updatePosition(el) {
+    let target = this.findTarget(el);
+    if (!target || !el.offsetParent) return;
+    let offset = el.offset,
+      parentRect = el.offsetParent.getBoundingClientRect(),
+      targetRect = target.getBoundingClientRect(),
+      elRect = el.getBoundingClientRect(),
+      centerOffset = (targetRect.width - elRect.width) / 2,
+      middleOffset = (targetRect.height - elRect.height) / 2,
+      elLeft,
+      elTop,
+      styleLeft,
+      styleRight,
+      styleTop,
+      styleBottom;
+    switch (el.position) {
       case "top":
-        tooltipLeft = targetRect.left + horizontalCenterOffset;
-        tooltipTop = targetRect.top - elementRect.height - offset;
+        elLeft = targetRect.left + centerOffset;
+        elTop = targetRect.top - elRect.height - offset;
         break;
       case "bottom":
-        tooltipLeft = targetRect.left + horizontalCenterOffset;
-        tooltipTop = targetRect.top + targetRect.height + offset;
+        elLeft = targetRect.left + centerOffset;
+        elTop = targetRect.top + targetRect.height + offset;
         break;
       case "left":
-        tooltipLeft = targetRect.left - elementRect.width - offset;
-        tooltipTop = targetRect.top + verticalCenterOffset;
+        elLeft = targetRect.left - elRect.width - offset;
+        elTop = targetRect.top + middleOffset;
         break;
       case "right":
-        tooltipLeft = targetRect.left + targetRect.width + offset;
-        tooltipTop = targetRect.top + verticalCenterOffset;
+        elLeft = targetRect.left + targetRect.width + offset;
+        elTop = targetRect.top + middleOffset;
         break;
     }
-    element.style.position = "absolute";
+    el.style.position = "absolute";
     // TODO(noms): This should use IronFitBehavior if possible.
-    if (element.fitToVisibleBounds) {
-      // Clip the left/right side
-      if (
-        parentRect.left + tooltipLeft + elementRect.width >
-        window.innerWidth
-      ) {
-        element.style.right = "0px";
-        element.style.left = "auto";
+    styleLeft = elLeft + "px";
+    styleTop = elTop + "px";
+    styleRight = "unset";
+    styleBottom = "unset";
+    if (el.fitToVisibleBounds) {
+      /// Clip the left/right side
+      if (parentRect.left + elLeft + elRect.width > window.innerWidth) {
+        el.style.right = "0px";
+        el.style.left = "auto";
       } else {
-        element.style.left = Math.max(0, tooltipLeft) + "px";
-        element.style.right = "auto";
+        el.style.left = Math.max(0, elLeft) + "px";
+        el.style.right = "auto";
       }
       // Clip the top/bottom side.
-      if (
-        parentRect.top + tooltipTop + elementRect.height >
-        window.innerHeight
-      ) {
-        element.style.bottom =
-          parentRect.height - targetRect.top + offset + "px";
-        element.style.top = "auto";
+      if (parentRect.top + elTop + elRect.height > window.innerHeight) {
+        el.style.bottom = parentRect.height - targetRect.top + offset + "px";
+        el.style.top = "auto";
       } else {
-        element.style.top = Math.max(-parentRect.top, tooltipTop) + "px";
-        element.style.bottom = "auto";
+        el.style.top = Math.max(-parentRect.top, elTop) + "px";
+        el.style.bottom = "auto";
       }
     } else {
-      element.style.left = tooltipLeft + "px";
-      element.style.top = tooltipTop + "px";
     }
-    //provide positions for element and target (in case furthor positioning adjustments are needed)
-    element.__positions = {
-      self: elementRect,
+    el.style.left = styleLeft;
+    el.style.top = styleTop;
+    el.style.right = styleRight;
+    el.style.bottom = styleBottom;
+    //provide positions for el and target (in case furthor positioning adjustments are needed)
+    el.__positions = {
+      self: elRect,
       target: targetRect
     };
   }
 
   /**
-   * life cycle, element is removed from the DOM
+   * life cycle, el is removed from the DOM
    */
   disconnectedCallback() {
     this.removeEventListeners();

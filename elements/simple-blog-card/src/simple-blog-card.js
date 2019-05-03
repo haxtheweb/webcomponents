@@ -164,8 +164,8 @@ class SimpleBlogCard extends LitElement {
         .box {
           outline: 1px solid black;
         }
-        .show {
-          display: unset;
+        simple-popover:not([for]) {
+          display: none;
         }
       `
     ];
@@ -204,15 +204,18 @@ class SimpleBlogCard extends LitElement {
     this.removeEventListener("mouseover", this.hoverState.bind(this));
     this.removeEventListener("mouseout", this.hoverStateOff.bind(this));
   }
+  ready() {
+    super.ready();
+  }
   showDetails(e) {
-    /*this.shadowRoot
-      .querySelector("absolute-position-behavior")
-      .classList.add("show");*/
+    this.shadowRoot
+      .querySelector("simple-popover")
+      .setAttribute("for", "author");
+    this.shadowRoot.querySelector("simple-popover").setPosition();
   }
   hideDetails(e) {
-    /*this.shadowRoot
-      .querySelector("absolute-position-behavior")
-      .classList.remove("show");*/
+    this.shadowRoot.querySelector("simple-popover").removeAttribute("for");
+    this.shadowRoot.querySelector("simple-popover").unsetPosition();
   }
   hoverState(e) {
     this.shadow = 1;
