@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 /**
 `lrnsys-render-html`
 A legacy element which just directly renders HTML.
@@ -15,38 +15,47 @@ your users.
 
 * @demo demo/index.html
 */
-let LrnsysRenderHtml = Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: block;
+class LrnsysRenderHtml extends PolymerElement {
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: block;
+        }
+      </style>
+      <div id="container"></div>
+    `;
+  }
+
+  static get tag() {
+    return "lrnsys-render-html";
+  }
+
+  static get properties() {
+    return {
+      /**
+       * String to render as HTML directly
+       * @type {Object}
+       */
+      html: {
+        type: String
       }
-    </style>
-    <div id="container"></div>
-  `,
-
-  is: "lrnsys-render-html",
-
-  properties: {
-    /**
-     * String to render as HTML directly
-     * @type {Object}
-     */
-    html: {
-      type: String
-    }
-  },
+    };
+  }
 
   /**
    * When HTML changes, inject it directly.
    */
-  observers: ["_render(html)"],
+  static get observers() {
+    return ["_render(html)"];
+  }
 
   /**
    * Render the HTML by just injecting it directly.
    */
-  _render: function(html) {
+  _render(html) {
     this.$.container.innerHTML = html;
   }
-});
+}
+window.customElements.define(LrnsysRenderHtml.tag, LrnsysRenderHtml);
 export { LrnsysRenderHtml };

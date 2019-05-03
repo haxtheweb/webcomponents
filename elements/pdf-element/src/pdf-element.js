@@ -1,12 +1,10 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@polymer/paper-card/paper-card.js";
-import "@polymer/app-layout/app-toolbar/app-toolbar.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/iron-input/iron-input.js";
-import "@polymer/paper-spinner/paper-spinner.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
-import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "pdfjs-dist/build/pdf.js";
 import "pdfjs-dist/build/pdf.worker.js";
 import "./lib/main.js";
@@ -38,238 +36,259 @@ Another awesome feature is dynamically load PDF file. So you can change the `src
 * @demo demo/index.html
 @hero hero.svg
 */
-let PdfElement = Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: block;
-        width: 100%;
-        height: 100%;
-      }
+class PdfElement extends SchemaBehaviors(PolymerElement) {
+  constructor() {
+    super();
+    import("@polymer/paper-card/paper-card.js");
+    import("@polymer/app-layout/app-toolbar/app-toolbar.js");
+    import("@polymer/paper-spinner/paper-spinner.js");
+    afterNextRender(this, function() {
+      this.HAXWiring = new HAXWiring();
+      this.HAXWiring.setup(PdfElement.haxProperties, PdfElement.tag, this);
+    });
+  }
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
 
-      app-toolbar.pdf-toolbar {
-        --app-toolbar-background: #323639;
-      }
+        app-toolbar.pdf-toolbar {
+          --app-toolbar-background: #323639;
+        }
 
-      .pdf-viewer {
-        text-align: center;
-        border: 1px solid #4d4d4d;
-      }
+        .pdf-viewer {
+          text-align: center;
+          border: 1px solid #4d4d4d;
+        }
 
-      .pdf-viewport-out {
-        overflow: auto;
-        background-color: #525659;
-        position: relative;
-        width: 100%;
-        height: 100%;
-      }
+        .pdf-viewport-out {
+          overflow: auto;
+          background-color: #525659;
+          position: relative;
+          width: 100%;
+          height: 100%;
+        }
 
-      .pdf-viewport {
-        display: block;
-        position: relative;
-        border: 1px solid #eeeeee;
-        transition: all 200ms ease-in-out;
-        width: 100%;
-        height: 100%;
-      }
+        .pdf-viewport {
+          display: block;
+          position: relative;
+          border: 1px solid #eeeeee;
+          transition: all 200ms ease-in-out;
+          width: 100%;
+          height: 100%;
+        }
 
-      .sidebar {
-        background-color: gray;
-        float: left;
-        height: 0px;
-        overflow: scroll;
-        margin-left: -25%;
-        visibility: hidden;
-      }
+        .sidebar {
+          background-color: gray;
+          float: left;
+          height: 0px;
+          overflow: scroll;
+          margin-left: -25%;
+          visibility: hidden;
+        }
 
-      .main {
-        margin-left: 0%;
-      }
+        .main {
+          margin-left: 0%;
+        }
 
-      .pageselector {
-        width: 3ch;
-        background-color: black;
-        font-size: 17px;
-        background-color: transparent;
-        border: 0px solid;
-      }
+        .pageselector {
+          width: 3ch;
+          background-color: black;
+          font-size: 17px;
+          background-color: transparent;
+          border: 0px solid;
+        }
 
-      .pageselector:focus {
-        outline: none;
-      }
+        .pageselector:focus {
+          outline: none;
+        }
 
-      #input {
-        -webkit-margin-start: -3px;
-        color: #fff;
-        line-height: 18px;
-        padding: 3px;
-        text-align: end;
-      }
+        #input {
+          -webkit-margin-start: -3px;
+          color: #fff;
+          line-height: 18px;
+          padding: 3px;
+          text-align: end;
+        }
 
-      #input:focus,
-      #input:hover {
-        background-color: rgba(0, 0, 0, 0.5);
-        border-radius: 2px;
-      }
+        #input:focus,
+        #input:hover {
+          background-color: rgba(0, 0, 0, 0.5);
+          border-radius: 2px;
+        }
 
-      #slash {
-        padding: 0 3px;
-      }
+        #slash {
+          padding: 0 3px;
+        }
 
-      paper-spinner {
-        position: absolute;
-        left: 50%;
-      }
+        paper-spinner {
+          position: absolute;
+          left: 50%;
+        }
 
-      .textLayer {
-        transition: all 200ms ease-in-out;
-      }
+        .textLayer {
+          transition: all 200ms ease-in-out;
+        }
 
-      .positionRelative {
-        position: relative;
-      }
-    </style>
+        .positionRelative {
+          position: relative;
+        }
+      </style>
 
-    <paper-material elevation="{{elevation}}">
-      <div class="card-content" style="width: {{width}}px">
-        <paper-card class="paperCard" style="width: {{width}}px">
-          <div class="pdf-viewer">
-            <app-toolbar class="pdf-toolbar">
-              <paper-icon-button
-                icon="menu"
-                on-click="sideBar"
-              ></paper-icon-button>
-              <paper-icon-button
-                icon="arrow-back"
-                on-click="showPrev"
-              ></paper-icon-button>
-              <input
-                class="pageselector"
-                id="input"
-                is="iron-input"
-                value="{{currentPage}}"
-                prevent-invalid-input=""
-                allowed-pattern="\\d"
-                on-change="pageNumSearch"
-              />
-              <span id="slash">/</span><span id="totalPages"></span>
-              <paper-icon-button
-                icon="arrow-forward"
-                on-click="showNext"
-              ></paper-icon-button>
-              <span class="title" hidden="{{!showFileName}}">Testing</span>
-              <span class="title" hidden="{{showFileName}}"></span>
-              <span class="pageRendering"></span>
-              <paper-icon-button
-                icon="zoom-in"
-                on-click="zoomIn"
-              ></paper-icon-button>
-              <paper-icon-button
-                icon="zoom-out"
-                on-click="zoomOut"
-              ></paper-icon-button>
-              <paper-icon-button
-                id="zoomIcon"
-                icon="fullscreen"
-                on-click="zoomFit"
-              ></paper-icon-button>
-              <paper-icon-button
-                icon="file-download"
-                hidden\$="{{!downloadable}}"
-                on-click="download"
-              ></paper-icon-button>
-            </app-toolbar>
-            <div id="container" class="sidebar" style="width:25%"></div>
-            <div id="main">
-              <div id="test" class="pdf-viewport-out">
-                <canvas class="pdf-viewport"></canvas>
-                <div
-                  id="text-layer"
-                  class="textLayer"
-                  hidden\$="{{!enableTextSelection}}"
-                ></div>
+      <paper-material elevation="{{elevation}}">
+        <div class="card-content" style="width: {{width}}px">
+          <paper-card class="paperCard" style="width: {{width}}px">
+            <div class="pdf-viewer">
+              <app-toolbar class="pdf-toolbar">
+                <paper-icon-button
+                  icon="menu"
+                  on-click="sideBar"
+                ></paper-icon-button>
+                <paper-icon-button
+                  icon="arrow-back"
+                  on-click="showPrev"
+                ></paper-icon-button>
+                <input
+                  class="pageselector"
+                  id="input"
+                  is="iron-input"
+                  value="{{currentPage}}"
+                  prevent-invalid-input=""
+                  allowed-pattern="\\d"
+                  on-change="pageNumSearch"
+                />
+                <span id="slash">/</span><span id="totalPages"></span>
+                <paper-icon-button
+                  icon="arrow-forward"
+                  on-click="showNext"
+                ></paper-icon-button>
+                <span class="title" hidden="{{!showFileName}}">Testing</span>
+                <span class="title" hidden="{{showFileName}}"></span>
+                <span class="pageRendering"></span>
+                <paper-icon-button
+                  icon="zoom-in"
+                  on-click="zoomIn"
+                ></paper-icon-button>
+                <paper-icon-button
+                  icon="zoom-out"
+                  on-click="zoomOut"
+                ></paper-icon-button>
+                <paper-icon-button
+                  id="zoomIcon"
+                  icon="fullscreen"
+                  on-click="zoomFit"
+                ></paper-icon-button>
+                <paper-icon-button
+                  icon="file-download"
+                  hidden\$="{{!downloadable}}"
+                  on-click="download"
+                ></paper-icon-button>
+              </app-toolbar>
+              <div id="container" class="sidebar" style="width:25%"></div>
+              <div id="main">
+                <div id="test" class="pdf-viewport-out">
+                  <canvas class="pdf-viewport"></canvas>
+                  <div
+                    id="text-layer"
+                    class="textLayer"
+                    hidden\$="{{!enableTextSelection}}"
+                  ></div>
+                </div>
+                <paper-spinner
+                  class="spinner"
+                  hidden\$="{{!showSpinner}}"
+                ></paper-spinner>
               </div>
-              <paper-spinner
-                class="spinner"
-                hidden\$="{{!showSpinner}}"
-              ></paper-spinner>
             </div>
-          </div>
-        </paper-card>
-      </div>
-    </paper-material>
-  `,
+          </paper-card>
+        </div>
+      </paper-material>
+    `;
+  }
 
-  is: "pdf-element",
-  behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
+  static get tag() {
+    return "pdf-element";
+  }
 
-  properties: {
-    /**
-     * Source of a PDF file.
-     */
-    src: {
-      type: String,
-      reflectToAttribute: true
-    },
-    /**
-     * The z-depth of this element, from 0-5. Setting to 0 will remove the shadow, and each increasing number greater than 0 will be "deeper" than the last.
-     */
-    elevation: {
-      type: Number,
-      value: 1
-    },
-    /**
-     * If provided then download icon will appear on the toolbar to download file.
-     */
-    downloadable: {
-      type: Boolean,
-      value: false
-    },
-    /**
-     * If provided then file name will be shown on the toolbar.
-     */
-    showFileName: {
-      type: Boolean,
-      value: false
-    },
-    /*
-     * If provided then during page rendering loading spinner will be shown.
-     * Maybe used for documents with many images for example.
-     */
-    showSpinner: {
-      type: Boolean,
-      value: false
-    },
-    /*
-     * If provided then text selection will be enabled.
-     */
-    enableTextSelection: {
-      type: Boolean,
-      value: false
-    },
-    /*
-     * If provided then the document will be zoomed to maximum width initially.
-     */
-    fitWidth: {
-      type: Boolean,
-      value: false
-    },
-    /*
-     * If provided then the width will be set.
-     */
-    width: {
-      type: Number,
-      value: 500
+  static get properties() {
+    let props = {
+      /**
+       * Source of a PDF file.
+       */
+      src: {
+        type: String,
+        reflectToAttribute: true
+      },
+      /**
+       * The z-depth of this element, from 0-5. Setting to 0 will remove the shadow, and each increasing number greater than 0 will be "deeper" than the last.
+       */
+      elevation: {
+        type: Number,
+        value: 1
+      },
+      /**
+       * If provided then download icon will appear on the toolbar to download file.
+       */
+      downloadable: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * If provided then file name will be shown on the toolbar.
+       */
+      showFileName: {
+        type: Boolean,
+        value: false
+      },
+      /*
+       * If provided then during page rendering loading spinner will be shown.
+       * Maybe used for documents with many images for example.
+       */
+      showSpinner: {
+        type: Boolean,
+        value: false
+      },
+      /*
+       * If provided then text selection will be enabled.
+       */
+      enableTextSelection: {
+        type: Boolean,
+        value: false
+      },
+      /*
+       * If provided then the document will be zoomed to maximum width initially.
+       */
+      fitWidth: {
+        type: Boolean,
+        value: false
+      },
+      /*
+       * If provided then the width will be set.
+       */
+      width: {
+        type: Number,
+        value: 500
+      }
+    };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
     }
-  },
+    return props;
+  }
 
-  attached: function() {
+  connectedCallback() {
+    super.connectedCallback();
     this.src = this.getAttribute("src");
     this._initializeReader();
     if (this.src) this.instance.loadPDF();
     this._setFitWidth();
-    // Establish hax properties
-    let props = {
+  }
+  static get haxProperties() {
+    return {
       canScale: true,
       canPosition: true,
       canEditSource: false,
@@ -341,14 +360,12 @@ let PdfElement = Polymer({
         advanced: []
       }
     };
-    this.setHaxProperties(props);
-  },
-
+  }
   /*
    * For the first time the pdf is loaded.
    * The inital page is set to 1 and it sets the total Pages
    */
-  loadPDF: function() {
+  loadPDF() {
     if (!this.getAttribute("src")) return;
     this.instance.changePDFSource(this.getAttribute("src"));
     this.currentPage = 1;
@@ -356,12 +373,12 @@ let PdfElement = Polymer({
     this.fileName = this.src.split("/").pop();
     this._setFitWidth();
     this.$.zoomIcon.icon = "fullscreen";
-  },
+  }
 
   /*
    * When a new pdf is selected and loaded, this sets the properties for the switch
    */
-  attributeChanged: function(name, type) {
+  attributeChanged(name, type) {
     if (name === "src") {
       if (typeof this.instance == "undefined") this._initializeReader();
       else {
@@ -373,22 +390,22 @@ let PdfElement = Polymer({
     } else if (name === "fitWidth") {
       this._setFitWidth();
     }
-  },
+  }
 
-  _initializeReader: function() {
+  _initializeReader() {
     this.instance = new Reader(this);
     if (this.src != null) this.fileName = this.src.split("/").pop();
     this.currentPage = 1;
-  },
+  }
 
-  _setFitWidth: function() {
+  _setFitWidth() {
     this.instance.setFitWidth(this.fitWidth);
-  },
+  }
 
   /*
    * Is called from zoomIn function to control the zoom in
    */
-  zoomInOut: function(step) {
+  zoomInOut(step) {
     if (this.instance.currentZoomVal >= 2) {
       this.instance.currentZoomVal = 2;
     } else if (this.instance.currentZoomVal <= 0.1) {
@@ -397,30 +414,30 @@ let PdfElement = Polymer({
       this.$.zoomIcon.icon = "fullscreen";
       this.instance.zoomInOut(step);
     }
-  },
+  }
 
   /*
    * Zoom in to the pdf as long as it is loaded
    */
-  zoomIn: function() {
+  zoomIn() {
     if (this.instance.pdfExists) {
       this.zoomInOut(0.1);
     }
-  },
+  }
 
   /*
    * Zoom out of the pdf as long as it is loaded
    */
-  zoomOut: function() {
+  zoomOut() {
     if (this.instance.pdfExists) {
       this.instance.zoomInOut(-0.1);
     }
-  },
+  }
 
   /*
    * When the zoom in/out button is selected. Reformats the pdf to the original display
    */
-  zoomFit: function() {
+  zoomFit() {
     if (this.instance.pdfExists) {
       if (this.instance.currentZoomVal == this.instance.widthZoomVal) {
         this.instance.zoomPageFit();
@@ -430,7 +447,7 @@ let PdfElement = Polymer({
         this.$.zoomIcon.icon = "fullscreen-exit";
       }
     }
-  },
+  }
 
   /*
    * Controls the page search functionality.
@@ -438,7 +455,7 @@ let PdfElement = Polymer({
    * If it is valid then it will change the view to that page
    * as well as update the page number
    */
-  pageNumSearch: function() {
+  pageNumSearch() {
     var page = parseInt(this.$.input.value);
 
     if (1 <= page && page <= this.instance.totalPagesNum) {
@@ -450,14 +467,14 @@ let PdfElement = Polymer({
       this.$.input.value = this.currentPage;
       this.$.input.blur();
     }
-  },
+  }
 
   /*
    * Is called when a page is selected from the sidebar
    * Checks to make sure a valid page is selected, then changes the page
    * The currentInstance is passed in to make sure it is changing the proper pdf if multiple are loaded
    */
-  sideBarClick: function(page, currentInstance, currentThis) {
+  sideBarClick(page, currentInstance, currentThis) {
     //this.instance = currentInstance;
     var parsedFileName = currentThis.src.split("/").pop();
     var self = currentInstance;
@@ -472,29 +489,29 @@ let PdfElement = Polymer({
       this.$.input.value = self.currentPage;
       this.$.input.blur();
     }
-  },
+  }
 
   /*
    * Is called to show the previous page and update page number
    */
-  showPrev: function() {
+  showPrev() {
     if (1 < this.instance.currentPage) {
       this.instance.currentPage--;
       this.instance.queueRenderPage(this.instance.currentPage);
       this.currentPage--;
     }
-  },
+  }
 
   /*
    * Is called to show the next page and update page number
    */
-  showNext: function() {
+  showNext() {
     if (this.instance.totalPagesNum > this.instance.currentPage) {
       this.instance.currentPage++;
       this.instance.queueRenderPage(this.instance.currentPage);
       this.currentPage++;
     }
-  },
+  }
 
   /*
    * The sidebar is a scrollable bar on the side of the page that allows you to scroll and select a page to change to
@@ -502,7 +519,7 @@ let PdfElement = Polymer({
    * Then checks if the sidebar is open or not
    * If it is open, close. Else open sidebar. Set sidebarOpen to either T or F
    */
-  sideBar: function() {
+  sideBar() {
     if (this.instance.pdfExists) {
       if (!this.fromChange) {
         this.$.container.style.height = this.$.test.style.height;
@@ -525,15 +542,16 @@ let PdfElement = Polymer({
       this.instance.sidebarSetup(this);
       this.changedSideBar = false;
     }
-  },
+  }
 
   /*
    * Is called when the download pdf button is selected
    */
-  download: function() {
+  download() {
     if (this.instance.pdfExists) {
       this.instance.download();
     }
   }
-});
+}
+window.customElements.define(PdfElement.tag, PdfElement);
 export { PdfElement };

@@ -1,4 +1,4 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 /**    
 `responsive-grid-col`
 A column for the responsive grid
@@ -16,75 +16,83 @@ A column for the responsive grid
   </responsive-grid-col>
 
 */
-Polymer({
-  _template: html`
-    <style>
-      :host {
-        position: relative;
-        min-height: 1px;
-        float: left;
-      }
-      :host:after {
-        clear: both;
-      }
-      #col-inner {
-        padding-left: 15px;
-        padding-right: 15px;
-        @apply --responsive-grid-col-inner;
-      }
-      /* Hide Print-Only on Screen */
-      @media screen {
-        :host([print-only]) {
-          display: none;
+class ResponsiveGridCol extends PolymerElement {
+  static get template() {
+    return html`
+      <style>
+        :host {
+          position: relative;
+          min-height: 1px;
+          float: left;
         }
-      }
-      /* Hide Screen-Only on Print */
-      @media print {
-        :host([screen-only]) {
-          display: none;
+        :host:after {
+          clear: both;
         }
-      }
-    </style>
-    <div id="col-inner"><slot></slot></div>
-  `,
-
-  is: "responsive-grid-col",
-
-  properties: {
-    /**
-     * the width when viewed on an extra large screen
-     */
-    xl: {
-      type: Number,
-      value: 1
-    },
-    /**
-     * the width when viewed on a large screen
-     */
-    lg: {
-      type: Number,
-      value: 1
-    },
-    /**
-     * the width when viewed on a medium screen
-     */
-    md: {
-      type: Number,
-      value: 1
-    },
-    /**
-     * the width when viewed on a small screen
-     */
-    sm: {
-      type: Number,
-      value: 1
-    },
-    /**
-     * the width when viewed on an extra-small screen
-     */
-    xs: {
-      type: Number,
-      value: 1
-    }
+        #col-inner {
+          padding-left: 15px;
+          padding-right: 15px;
+          @apply --responsive-grid-col-inner;
+        }
+        /* Hide Print-Only on Screen */
+        @media screen {
+          :host([print-only]) {
+            display: none;
+          }
+        }
+        /* Hide Screen-Only on Print */
+        @media print {
+          :host([screen-only]) {
+            display: none;
+          }
+        }
+      </style>
+      <div id="col-inner"><slot></slot></div>
+    `;
   }
-});
+
+  static get tag() {
+    return "responsive-grid-col";
+  }
+
+  static get properties() {
+    return {
+      /**
+       * the width when viewed on an extra large screen
+       */
+      xl: {
+        type: Number,
+        value: 1
+      },
+      /**
+       * the width when viewed on a large screen
+       */
+      lg: {
+        type: Number,
+        value: 1
+      },
+      /**
+       * the width when viewed on a medium screen
+       */
+      md: {
+        type: Number,
+        value: 1
+      },
+      /**
+       * the width when viewed on a small screen
+       */
+      sm: {
+        type: Number,
+        value: 1
+      },
+      /**
+       * the width when viewed on an extra-small screen
+       */
+      xs: {
+        type: Number,
+        value: 1
+      }
+    };
+  }
+}
+window.customElements.define(ResponsiveGridCol.tag, ResponsiveGridCol);
+export { ResponsiveGridCol };

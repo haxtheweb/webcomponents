@@ -1,5 +1,4 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@lrnwebcomponents/oer-schema/oer-schema.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 /**
 `lrn-page`
 A LRN element for a "page" of material. This ensures there's an OERSchema wrapper
@@ -7,16 +6,25 @@ so that all content produced has a baseline level of being identified as OER.
 
 * @demo demo/index.html
 */
-let LrnPage = Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: block;
-      }
-    </style>
-    <oer-schema> <slot></slot> </oer-schema>
-  `,
+class LrnPage extends PolymerElement {
+  constructor() {
+    super();
+    import("@lrnwebcomponents/oer-schema/oer-schema.js");
+  }
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: block;
+        }
+      </style>
+      <oer-schema><slot></slot></oer-schema>
+    `;
+  }
 
-  is: "lrn-page"
-});
+  static get tag() {
+    return "lrn-page";
+  }
+}
+window.customElements.define(LrnPage.tag, LrnPage);
 export { LrnPage };

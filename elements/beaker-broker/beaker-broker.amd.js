@@ -1,4 +1,4 @@
-define(["exports","./node_modules/@polymer/polymer/polymer-element.js"],function(_exports,_polymerElement){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.BeakerBroker=void 0;function _templateObject_8fa1dac06a8311e9ab5a6b5eeb198517(){var data=babelHelpers.taggedTemplateLiteral(["\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n</style>\n<slot></slot>"]);_templateObject_8fa1dac06a8311e9ab5a6b5eeb198517=function _templateObject_8fa1dac06a8311e9ab5a6b5eeb198517(){return data};return data}/**
+define(["exports","./node_modules/@polymer/polymer/polymer-element.js"],function(_exports,_polymerElement){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.BeakerBroker=void 0;function _templateObject_8d517e806d6a11e9ba401f8a3041e37e(){var data=babelHelpers.taggedTemplateLiteral(["\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n</style>\n<slot></slot>"]);_templateObject_8d517e806d6a11e9ba401f8a3041e37e=function _templateObject_8d517e806d6a11e9ba401f8a3041e37e(){return data};return data}/**
  * `beaker-broker`
  * `An element to help check for and broker calls to read and write beaker browser dat sites.
  * This allows for data binding and figuring out if we're in an environment that we can even use this.`
@@ -28,7 +28,7 @@ this.set("archive",new DatArchive(newValue))}case 1:case"end":return _context.st
    * life cycle, element is removed from the DOM
    */ //disconnectedCallback() {}
 }],[{key:"template",// render function
-get:function get(){return(0,_polymerElement.html)(_templateObject_8fa1dac06a8311e9ab5a6b5eeb198517())}// haxProperty definition
+get:function get(){return(0,_polymerElement.html)(_templateObject_8d517e806d6a11e9ba401f8a3041e37e())}// haxProperty definition
 },{key:"haxProperties",get:function get(){return{}}// properties available to the custom element for data binding
 },{key:"properties",get:function get(){return{/**
    * Archive

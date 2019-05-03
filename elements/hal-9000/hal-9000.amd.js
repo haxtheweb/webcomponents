@@ -1,4 +1,4 @@
-define(["exports","meta","./node_modules/@polymer/polymer/polymer-element.js","./node_modules/@lrnwebcomponents/es-global-bridge/es-global-bridge.js","./node_modules/@polymer/polymer/lib/utils/resolve-url.js"],function(_exports,meta,_polymerElement,_esGlobalBridge,_resolveUrl){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.Hal9000=void 0;meta=babelHelpers.interopRequireWildcard(meta);function _templateObject_a5a72c406a8211e9b752c7c9816cb3eb(){var data=babelHelpers.taggedTemplateLiteral(["\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n[hidden] {\n  display: none;\n}\n</style>\n<slot></slot>"]);_templateObject_a5a72c406a8211e9b752c7c9816cb3eb=function _templateObject_a5a72c406a8211e9b752c7c9816cb3eb(){return data};return data}/**
+define(["exports","meta","./node_modules/@polymer/polymer/polymer-element.js","./node_modules/@lrnwebcomponents/es-global-bridge/es-global-bridge.js","./node_modules/@polymer/polymer/lib/utils/resolve-url.js"],function(_exports,meta,_polymerElement,_esGlobalBridge,_resolveUrl){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.Hal9000=void 0;meta=babelHelpers.interopRequireWildcard(meta);function _templateObject_d9462f806d6911e9b6170febd231a1e5(){var data=babelHelpers.taggedTemplateLiteral(["\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n[hidden] {\n  display: none;\n}\n</style>\n<slot></slot>"]);_templateObject_d9462f806d6911e9b6170febd231a1e5=function _templateObject_d9462f806d6911e9b6170febd231a1e5(){return data};return data}/**
  * `hal-9000`
  * `Robot assistant tag, hopefully not evil`
  *
@@ -9,7 +9,7 @@ define(["exports","meta","./node_modules/@polymer/polymer/polymer-element.js",".
  * @polymer
  * @demo demo/index.html
  */var Hal9000=/*#__PURE__*/function(_PolymerElement){babelHelpers.inherits(Hal9000,_PolymerElement);babelHelpers.createClass(Hal9000,null,[{key:"template",// render function
-get:function get(){return(0,_polymerElement.html)(_templateObject_a5a72c406a8211e9b752c7c9816cb3eb())}// properties available to the custom element for data binding
+get:function get(){return(0,_polymerElement.html)(_templateObject_d9462f806d6911e9b6170febd231a1e5())}// properties available to the custom element for data binding
 },{key:"properties",get:function get(){return{/**
    * Commands to listen for and take action on
    */commands:{name:"commands",type:"Object",value:{},observer:"_commandsChanged"},/**
@@ -31,11 +31,11 @@ get:function get(){return(0,_polymerElement.html)(_templateObject_a5a72c406a8211
    * @notice function name must be here for tooling to operate correctly
    */},{key:"tag",get:function get(){return"hal-9000"}/**
    * Establish the element
-   */}]);function Hal9000(){var _this;babelHelpers.classCallCheck(this,Hal9000);_this=babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(Hal9000).call(this));var name="annyang",basePath=(0,_resolveUrl.pathFromUrl)(decodeURIComponent(meta.url)),location="".concat(basePath,"lib/annyang/annyang.min.js");window.addEventListener("es-bridge-".concat(name,"-loaded"),_this._annyangLoaded.bind(babelHelpers.assertThisInitialized(_this)));window.ESGlobalBridge.requestAvailability();window.ESGlobalBridge.instance.load(name,location);// ensure singleton is set
-window.Hal9000.instance=babelHelpers.assertThisInitialized(_this);// check for speech synthesis API
+   */}]);function Hal9000(){var _this;babelHelpers.classCallCheck(this,Hal9000);_this=babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(Hal9000).call(this));var basePath=(0,_resolveUrl.pathFromUrl)(decodeURIComponent(meta.url)),location="".concat(basePath,"lib/annyang/annyang.min.js");window.addEventListener("es-bridge-annyang-loaded",_this._annyangLoaded.bind(babelHelpers.assertThisInitialized(_this)));window.ESGlobalBridge.requestAvailability();window.ESGlobalBridge.instance.load("annyang",location);// check for speech synthesis API
 if("undefined"!==typeof window.speechSynthesis){_this.synth=window.speechSynthesis;_this.voices=_this.synth.getVoices();for(var i=0;i<_this.voices.length;i++){if(_this.voices[i].default){_this.defaultVoice=_this.voices[i].name}}}return _this}/**
    * life cycle, element is afixed to the DOM
-   */babelHelpers.createClass(Hal9000,[{key:"connectedCallback",value:function connectedCallback(){babelHelpers.get(babelHelpers.getPrototypeOf(Hal9000.prototype),"connectedCallback",this).call(this)}/**
+   */babelHelpers.createClass(Hal9000,[{key:"connectedCallback",value:function connectedCallback(){babelHelpers.get(babelHelpers.getPrototypeOf(Hal9000.prototype),"connectedCallback",this).call(this);// ensure singleton is set
+window.Hal9000=window.Hal9000||{};window.Hal9000.instance=this}/**
    * Callback for clicking on whatever was just said
    */},{key:"clickObject",value:function clickObject(phrase){this.__text=phrase;this.commands[phrase].object.click();this.commands[phrase].object.focus()}/**
    * Notice new voice commands added
@@ -60,6 +60,5 @@ if(this.annyang){this.annyang.removeCommands()}var commands={};for(var i in this
    * debug mode changed
    */},{key:"_debugChanged",value:function _debugChanged(newValue,oldValue){if(this.annyang){this.annyang.debug(newValue)}}/**
    * life cycle, element is removed from the DOM
-   */ //disconnectedCallback() {}
-}]);return Hal9000}(_polymerElement.PolymerElement);// ensure we can generate a singleton
+   */},{key:"disconnectedCallback",value:function disconnectedCallback(){window.removeEventListener("es-bridge-annyang-loaded",this._annyangLoaded.bind(this));babelHelpers.get(babelHelpers.getPrototypeOf(Hal9000.prototype),"disconnectedCallback",this).call(this)}}]);return Hal9000}(_polymerElement.PolymerElement);// ensure we can generate a singleton
 _exports.Hal9000=Hal9000;window.customElements.define(Hal9000.tag,Hal9000);window.Hal9000=window.Hal9000||{};window.Hal9000.requestAvailability=function(){if(!window.Hal9000.instance){window.Hal9000.instance=new Hal9000}}});

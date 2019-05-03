@@ -238,7 +238,7 @@ class SimpleSearch extends PolymerElement {
   // render function
   static get template() {
     return html`
-      <style is="custom-style">
+      <style>
         :host {
           display: flex;
           align-items: flex-end;

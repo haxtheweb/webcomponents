@@ -1,10 +1,9 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
-import "@lrnwebcomponents/relative-heading/relative-heading.js";
-import "./lib/lrndesign-imagemap-hotspot.js";
 /**
  * `lrndesign-imagemap`
  * creates an accessible image map
@@ -13,123 +12,132 @@ import "./lib/lrndesign-imagemap-hotspot.js";
  * @polymer
  * @demo demo/index.html
  */
-let LrndesignImagemap = Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: block;
-      }
-      :host #buttons {
-        position: absolute;
-        left: -999999px;
-        top: 0;
-        overflow: hidden;
-        opacity: 0;
-      }
-      /*::slotted([hotspot]) {
+class LrndesignImagemap extends PolymerElement {
+  constructor() {
+    super();
+    import("@lrnwebcomponents/relative-heading/relative-heading.js");
+    import("@lrnwebcomponents/lrndesign-imagemap/lib/lrndesign-imagemap-hotspot.js");
+  }
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: block;
+        }
+        :host #buttons {
+          position: absolute;
+          left: -999999px;
+          top: 0;
+          overflow: hidden;
+          opacity: 0;
+        }
+        /*::slotted([hotspot]) {
         display: none;
       }*/
-      @media print {
-        :host > #svg {
-          display: none;
-        }
-        /*::slotted(#screen-only) {
+        @media print {
+          :host > #svg {
+            display: none;
+          }
+          /*::slotted(#screen-only) {
           display: none;
         }
         ::slotted([hotspot]) {
           display: block;
         }*/
+        }
+      </style>
+      <relative-heading
+        hidden\$="[[!label]]"
+        id="heading"
+        subtopic-of\$="[[subtopicOf]]"
+        tag\$="[[tag]]"
+        text\$="[[label]]"
+      >
+      </relative-heading>
+      <div id="desc"><slot name="desc"></slot></div>
+      <div id="svg"></div>
+      <div id="buttons"></div>
+      <slot></slot>
+      <iron-ajax
+        auto=""
+        id="get_svg"
+        url="[[src]]"
+        handle-as="text"
+        on-response="_getSVGHandler"
+      ></iron-ajax>
+    `;
+  }
+  static get tag() {
+    return "lrndesign-imagemap";
+  }
+  static get properties() {
+    return {
+      /**
+       * Label for the imagemap
+       */
+      label: {
+        type: String,
+        value: null
+      },
+      /**
+       * The path of the SVG
+       */
+      src: {
+        type: String,
+        value: null
+      },
+      /**
+       * The path of the SVG
+       */
+      hotspotDetails: {
+        type: Array,
+        value: []
+      },
+      /*
+       * optional: the id of the heading element that this imagemap is a subtopic of
+       */
+      subtopicOf: {
+        type: String,
+        value: null,
+        reflectToAttribute: true
+      },
+      /*
+       * optional: if subtopicOf is not set, start the content at a heading tag, eg. <h1/>, <h2/> ...
+       */
+      tag: {
+        type: String,
+        value: null,
+        reflectToAttribute: true
       }
-    </style>
-    <relative-heading
-      hidden\$="[[!label]]"
-      id="heading"
-      subtopic-of\$="[[subtopicOf]]"
-      tag\$="[[tag]]"
-      text\$="[[label]]"
-    >
-    </relative-heading>
-    <div id="desc"><slot name="desc"></slot></div>
-    <div id="svg"></div>
-    <div id="buttons"></div>
-    <slot></slot>
-    <iron-ajax
-      auto=""
-      id="get_svg"
-      url="[[src]]"
-      handle-as="text"
-      on-response="_getSVGHandler"
-    ></iron-ajax>
-  `,
-
-  is: "lrndesign-imagemap",
-
-  properties: {
-    /**
-     * Label for the imagemap
-     */
-    label: {
-      type: String,
-      value: null
-    },
-    /**
-     * The path of the SVG
-     */
-    src: {
-      type: String,
-      value: null
-    },
-    /**
-     * The path of the SVG
-     */
-    hotspotDetails: {
-      type: Array,
-      value: []
-    },
-    /*
-     * optional: the id of the heading element that this imagemap is a subtopic of
-     */
-    subtopicOf: {
-      type: String,
-      value: null,
-      reflectToAttribute: true
-    },
-    /*
-     * optional: if subtopicOf is not set, start the content at a heading tag, eg. <h1/>, <h2/> ...
-     */
-    tag: {
-      type: String,
-      value: null,
-      reflectToAttribute: true
-    }
-  },
-
+    };
+  }
   /**
    * attached life cycle
    */
-  attached: function() {
+  connectedCallback() {
+    super.connectedCallback();
     window.SimpleModal.requestAvailability();
     window.addEventListener("simple-modal-closed", e => {
       if (e.detail.invokedBy === this) {
         this.closeHotspot();
       }
     });
-  },
+  }
   /**
    * detached life cycle
    */
-  detached: function() {
+  disconnectedCallback() {
     window.removeEventListener("simple-modal-closed", e => {
       if (e.detail.invokedBy === this) {
         this.closeHotspot();
       }
     });
-  },
-
+    super.disconnectedCallback();
+  }
   /**
    * Convert from svg text to an array in the table function
    */
-  _getSVGHandler: function(e) {
+  _getSVGHandler(e) {
     let root = this,
       temp = document.createElement("div"),
       getID = function(element, alt) {
@@ -171,7 +179,7 @@ let LrndesignImagemap = Polymer({
       svgid = getID(svg, "svg-" + Date.now()),
       hdata = dom(root).querySelectorAll("lrndesign-imagemap-hotspot");
     setAriaLabelledBy(root, svg, svgid);
-    this.$.svg.appendChild(svg);
+    this.shadowRoot.querySelector("#svg").appendChild(svg);
 
     for (let i = 0; i < hdata.length; i++) {
       let hid = hdata[i].getAttribute("hotspot-id"),
@@ -182,7 +190,7 @@ let LrndesignImagemap = Polymer({
       setAriaLabelledBy(hdata[i], clone, hid);
       hdata[i].appendChild(clone);
       hdata[i].querySelector("#" + hid).classList.add("selected");
-      hdata[i].setParentHeading(root.$.heading);
+      hdata[i].setParentHeading(root.shadowRoot.querySelector("#heading"));
       for (let j = 0; j < hdata.length; j++) {
         hdata[i]
           .querySelector("#" + hdata[j].getAttribute("hotspot-id"))
@@ -193,9 +201,8 @@ let LrndesignImagemap = Polymer({
       let hbutton = document.createElement("button");
       hbutton.setAttribute("tabindex", 0);
       hbutton.setAttribute("aria-label", hdata[i].label);
-      root.$.buttons.appendChild(hbutton);
+      root.shadowRoot.querySelector("#buttons").appendChild(hbutton);
       hbutton.addEventListener("focus", function() {
-        console.log("focus", i, hotspot);
         hotspot.classList.add("focus");
       });
       hbutton.addEventListener("blur", function() {
@@ -213,14 +220,14 @@ let LrndesignImagemap = Polymer({
         }
       });
     }
-  },
-
+  }
   /**
    * Selects a hotspot and opens dialog with details about it.
    */
-  openHotspot: function(hotspot, details) {
+  openHotspot(hotspot, details) {
     // get everything flat
-    var children = details.$.desc
+    var children = details.shadowRoot
+      .querySelector("#desc")
       .querySelector("slot")
       .assignedNodes({ flatten: true });
     let c = document.createElement("div");
@@ -244,24 +251,23 @@ let LrndesignImagemap = Polymer({
     this.__activeHotspot = hotspot;
     this.resetHotspots();
     hotspot.classList.add("selected");
-  },
-
+  }
   /**
    * Closes a hotspot.
    */
-  closeHotspot: function() {
+  closeHotspot() {
     this.resetHotspots();
     this.__activeHotspot.focus();
-  },
-
+  }
   /**
    * Closes dialog and deselects all hotspots.
    */
-  resetHotspots: function() {
+  resetHotspots() {
     let hotspots = this.querySelectorAll('.hotspot[role="button"]');
     for (let i = 0; i < hotspots.length; i++) {
       hotspots[i].classList.remove("selected");
     }
   }
-});
+}
+window.customElements.define(LrndesignImagemap.tag, LrndesignImagemap);
 export { LrndesignImagemap };

@@ -1,10 +1,9 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js";import"./node_modules/@polymer/iron-image/iron-image.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@polymer/iron-icon/iron-icon.js";/**
+import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";/**
 `lrndesign-gallerycard`
 A LRN element for presenting a gallery of items as cards
 that can pop up to display more info
 * @demo demo/index.html
-*/let LrndesignGallerycard=Polymer({_template:html`
-    <style include="materializecss-styles"></style>
+*/class LrndesignGallerycard extends PolymerElement{constructor(){super();import("./node_modules/@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js");import("./node_modules/@polymer/iron-image/iron-image.js");import("./node_modules/@polymer/paper-card/paper-card.js");import("./node_modules/@polymer/iron-icon/iron-icon.js")}static get template(){return html`
     <style>
       :host {
         display: inline-flex;
@@ -149,17 +148,16 @@ that can pop up to display more info
           <span class="comments text-right">Comments: [[comments]]</span>
         </div>
       </div>
-    </paper-card>
-  `,is:"lrndesign-gallerycard",listeners:{mouseenter:"_mouseEnter",mouseleave:"_mouseLeave"},properties:{size:{type:String,notify:!0,reflectToAttribute:!0},/**
-     * Cover image src.
-     */image:{type:String,notify:!0,reflectToAttribute:!0},/**
-     * Icon to use if image isn't there.
-     */icon:{type:String,notify:!0,reflectToAttribute:!0},/**
-     * Title of the gallery item
-     */title:{type:String,value:"Project",notify:!0},/**
-     * Gallery creator
-     */author:{type:Object,value:{name:"author",display_name:"Author"},notify:!0},/**
-     * Visual elevation of the item off the UI via paper element height
-     */elevation:{type:Number,value:1,reflectToAttribute:!0,notify:!0},/**
-     * Number of comments this has
-     */comments:{type:Number,value:0,reflectToAttribute:!0,notify:!0}},_mouseEnter:function(e){this.elevation+=2},_mouseLeave:function(e){this.elevation-=2}});export{LrndesignGallerycard};
+    </paper-card>`}static get tag(){return"lrndesign-gallerycard"}connectedCallback(){super.connectedCallback();afterNextRender(this,function(){this.addEventListener("mouseenter",this._mouseEnter.bind(this));this.addEventListener("mouseleave",this._mouseLeave.bind(this))})}disconnectedCallback(){this.removeEventListener("mouseenter",this._mouseEnter.bind(this));this.removeEventListener("mouseleave",this._mouseLeave.bind(this));super.disconnectedCallback()}static get properties(){return{size:{type:String,notify:!0,reflectToAttribute:!0},/**
+       * Cover image src.
+       */image:{type:String,notify:!0,reflectToAttribute:!0},/**
+       * Icon to use if image isn't there.
+       */icon:{type:String,notify:!0,reflectToAttribute:!0},/**
+       * Title of the gallery item
+       */title:{type:String,value:"Project",notify:!0},/**
+       * Gallery creator
+       */author:{type:Object,value:{name:"author",display_name:"Author"},notify:!0},/**
+       * Visual elevation of the item off the UI via paper element height
+       */elevation:{type:Number,value:1,reflectToAttribute:!0,notify:!0},/**
+       * Number of comments this has
+       */comments:{type:Number,value:0,reflectToAttribute:!0,notify:!0}}}_mouseEnter(e){this.elevation+=2}_mouseLeave(e){this.elevation-=2}}window.customElements.define(LrndesignGallerycard.tag,LrndesignGallerycard);export{LrndesignGallerycard};

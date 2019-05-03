@@ -2,8 +2,9 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/hardware-icons.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
@@ -39,10 +40,10 @@ A LRN element
   bar - the underlayed bar that's tracking overall progression
   author mode - authoring mode
 */
-Polymer({
-  _template: html`
-    <custom-style>
-      <style is="custom-style" include="materializecss-styles">
+class LrnappBook extends HAXCMSTheme(PolymerElement) {
+  static get template() {
+    return html`
+      <style include="materializecss-styles">
         :host {
           display: block;
           font-size: 16px;
@@ -362,74 +363,73 @@ Polymer({
           font-size: 1.2em;
         }
         /**
-         * Hide the slotted content during edit mode. This must be here to work.
-         */
+        * Hide the slotted content during edit mode. This must be here to work.
+        */
         :host([edit-mode]) #slot {
           display: none;
         }
       </style>
-    </custom-style>
-    <page-scroll-position value="{{scrollPosition}}"></page-scroll-position>
-    <div id="anchor"></div>
-    <!-- body where most of the heavy lifting happens -->
-    <app-drawer-layout>
-      <!-- LRNApp book we expect to navigate -->
-      <app-drawer
-        slot="drawer"
-        id="bookdrawer"
-        opened="{{drawerOpened}}"
-        swipe-open=""
-        transition-duration="300"
-      >
-        <div
-          id="bookdrawercontent"
-          style="height: 100%; overflow: auto;"
-          hidden\$="[[!bookItems]]"
+      <page-scroll-position value="{{scrollPosition}}"></page-scroll-position>
+      <div id="anchor"></div>
+      <!-- body where most of the heavy lifting happens -->
+      <app-drawer-layout>
+        <!-- LRNApp book we expect to navigate -->
+        <app-drawer
+          slot="drawer"
+          id="bookdrawer"
+          opened="{{drawerOpened}}"
+          swipe-open=""
+          transition-duration="300"
         >
-          <paper-search-bar
-            hide-filter-button=""
-            hidden\$="[[!showSearch]]"
-          ></paper-search-bar>
-          <map-menu id="mapmenu" manifest="[[_routerManifest]]">
-            <!-- Server response will populate this -->
-          </map-menu>
-        </div>
-      </app-drawer>
-      <app-header-layout>
-        <app-header slot="header" id="header" shadow="" fixed="">
-          <div id="outlineloading" class="loading">
-            <elmsln-loading color="grey-text" size="medium"></elmsln-loading>
-            <elmsln-loading color="grey-text" size="medium"></elmsln-loading>
-            <elmsln-loading color="grey-text" size="medium"></elmsln-loading>
+          <div
+            id="bookdrawercontent"
+            style="height: 100%; overflow: auto;"
+            hidden\$="[[!bookItems]]"
+          >
+            <paper-search-bar
+              hide-filter-button=""
+              hidden\$="[[!showSearch]]"
+            ></paper-search-bar>
+            <map-menu id="mapmenu" manifest="[[_routerManifest]]">
+              <!-- Server response will populate this -->
+            </map-menu>
           </div>
-          <app-toolbar id="toolbar" sticky="" class="tall">
-            <div style="pointer-events: auto;" class="menu-btn-wrap">
-              <paper-icon-button
-                style="pointer-events: auto;"
-                title="Content outline"
-                id="menubutton"
-                icon="menu"
-                on-tap="toggleBook"
-              ></paper-icon-button>
+        </app-drawer>
+        <app-header-layout>
+          <app-header slot="header" id="header" shadow="" fixed="">
+            <div id="outlineloading" class="loading">
+              <elmsln-loading color="grey-text" size="medium"></elmsln-loading>
+              <elmsln-loading color="grey-text" size="medium"></elmsln-loading>
+              <elmsln-loading color="grey-text" size="medium"></elmsln-loading>
             </div>
-            <div spacer="" class="outline-title">[[outlineTitle]]</div>
-            <div spacer="" main-title="" style="pointer-events: auto;">
-              <div class="progress-container">
-                <lrnsys-progress
-                  sound-finish="[[soundFinish]]"
-                  sound="[[sound]]"
-                  complete-sound="[[completeSound]]"
-                  finished-sound="[[finishedSound]]"
-                  title="The steps to complete this lesson"
-                  id="progress"
-                  active="{{activePage}}"
-                  manifest="{{manifest}}"
-                  progressive-unlock=""
-                  size="small"
-                ></lrnsys-progress>
+            <app-toolbar id="toolbar" sticky="" class="tall">
+              <div style="pointer-events: auto;" class="menu-btn-wrap">
+                <paper-icon-button
+                  style="pointer-events: auto;"
+                  title="Content outline"
+                  id="menubutton"
+                  icon="menu"
+                  on-tap="toggleBook"
+                ></paper-icon-button>
               </div>
-            </div>
-            <!--
+              <div spacer="" class="outline-title">[[outlineTitle]]</div>
+              <div spacer="" main-title="" style="pointer-events: auto;">
+                <div class="progress-container">
+                  <lrnsys-progress
+                    sound-finish="[[soundFinish]]"
+                    sound="[[sound]]"
+                    complete-sound="[[completeSound]]"
+                    finished-sound="[[finishedSound]]"
+                    title="The steps to complete this lesson"
+                    id="progress"
+                    active="{{activePage}}"
+                    manifest="{{manifest}}"
+                    progressive-unlock=""
+                    size="small"
+                  ></lrnsys-progress>
+                </div>
+              </div>
+              <!--
               <div class="your-progress-button">
                 <lrnsys-dialog body-append modal on-tap="progressdashboardopen" header="Your progress" alt="Your progress">
                   <span slot="button"><iron-icon icon="av:equalizer"></iron-icon></span>
@@ -439,336 +439,340 @@ Polymer({
                 </lrnsys-dialog>
               </div>
             -->
-          </app-toolbar>
-        </app-header>
-        <div class="content-body">
-          <div id="current" class="content-current">
-            <h2 id="currenttitle" class="content-title">[[currentTitle]]</h2>
-            <div id="bodyloading" class="loading">
-              <elmsln-loading color="grey-text" size="large"></elmsln-loading>
-              <h3 class="loading-text">Loading content..</h3>
+            </app-toolbar>
+          </app-header>
+          <div class="content-body">
+            <div id="current" class="content-current">
+              <h2 id="currenttitle" class="content-title">[[currentTitle]]</h2>
+              <div id="bodyloading" class="loading">
+                <elmsln-loading color="grey-text" size="large"></elmsln-loading>
+                <h3 class="loading-text">Loading content..</h3>
+              </div>
+              <div id="contentcontainer">
+                <div id="slot"><slot></slot></div>
+              </div>
             </div>
-            <div id="contentcontainer">
-              <div id="slot"><slot></slot></div>
+          </div>
+          <div class="content-nav">
+            <div class="content-nav-buttons next">
+              <paper-icon-button
+                id="next"
+                title="[[nextLabel]]"
+                on-tap="_nextBtn"
+                icon="hardware:keyboard-arrow-right"
+                data-voicecommand="next page"
+                hidden\$="[[!hasNextPage]]"
+              ></paper-icon-button>
+              <paper-tooltip
+                for="next"
+                position="left"
+                offset="0"
+                animation-delay="100"
+              >
+                [[nextLabel]]
+              </paper-tooltip>
+            </div>
+            <div class="content-nav-buttons prev">
+              <paper-icon-button
+                id="prev"
+                title="[[prevLabel]]"
+                on-tap="_prevBtn"
+                icon="hardware:keyboard-arrow-left"
+                data-voicecommand="previous page"
+                hidden\$="[[!hasPrevPage]]"
+              ></paper-icon-button>
+              <paper-tooltip
+                for="prev"
+                position="right"
+                offset="0"
+                animation-delay="100"
+              >
+                [[prevLabel]]
+              </paper-tooltip>
             </div>
           </div>
-        </div>
-        <div class="content-nav">
-          <div class="content-nav-buttons next">
-            <paper-icon-button
-              id="next"
-              title="[[nextLabel]]"
-              on-tap="_nextBtn"
-              icon="hardware:keyboard-arrow-right"
-              data-voicecommand="next page"
-              hidden\$="[[!hasNextPage]]"
-            ></paper-icon-button>
-            <paper-tooltip
-              for="next"
-              position="left"
-              offset="0"
-              animation-delay="100"
-            >
-              [[nextLabel]]
-            </paper-tooltip>
-          </div>
-          <div class="content-nav-buttons prev">
-            <paper-icon-button
-              id="prev"
-              title="[[prevLabel]]"
-              on-tap="_prevBtn"
-              icon="hardware:keyboard-arrow-left"
-              data-voicecommand="previous page"
-              hidden\$="[[!hasPrevPage]]"
-            ></paper-icon-button>
-            <paper-tooltip
-              for="prev"
-              position="right"
-              offset="0"
-              animation-delay="100"
-            >
-              [[prevLabel]]
-            </paper-tooltip>
-          </div>
-        </div>
-      </app-header-layout>
-    </app-drawer-layout>
-  `,
+        </app-header-layout>
+      </app-drawer-layout>
+    `;
+  }
 
-  is: "lrnapp-book",
-  behaviors: [HAXCMSBehaviors.Theme],
-  properties: {
-    /**
-     * Path for getting progress dashboard data
-     */
-    progressDashboardPath: {
-      type: String
-    },
-    /**
-     * Option to display the search bar.
-     */
-    showSearch: {
-      type: Boolean,
-      reflectToAttribute: true,
-      value: false
-    },
-    /**
-     * Source path to the 'find one' end point
-     */
-    sourcePath: {
-      type: String
-    },
-    /**
-     * Edit / authoring mode.
-     */
-    editMode: {
-      type: Boolean,
-      reflectToAttribute: true,
-      value: false,
-      notify: true,
-      observer: "_editModeChanged"
-    },
-    /**
-     * Binding so we can style based on drawer status
-     * @type {Object}
-     */
-    drawerOpened: {
-      type: Boolean,
-      value: true,
-      reflectToAttribute: true
-    },
-    /**
-     * Title for the content
-     */
-    currentTitle: {
-      type: String
-    },
-    /**
-     * Title for the top of the bar
-     */
-    outlineTitle: {
-      type: String
-    },
-    /**
-     * Title for the top of the bar
-     */
-    bookTitle: {
-      type: String,
-      value: "Course outline"
-    },
-    /**
-     * If the sound should play on finish.
-     */
-    soundFinish: {
-      type: Boolean,
-      value: true
-    },
-    /**
-     * If the sound should play on complete.
-     */
-    sound: {
-      type: Boolean,
-      value: true
-    },
-    /**
-     * Completing a step sound.
-     */
-    completeSound: {
-      type: String,
-      value: ""
-    },
-    /**
-     * Finished sound file.
-     */
-    finishedSound: {
-      type: String,
-      value: ""
-    },
-    /**
-     * Distance through the present document so we can visualize
-     */
-    scrollPosition: {
-      type: Number,
-      value: 0,
-      observer: "_scrollChanged"
-    },
-    /**
-     * Track the active page exposed from the progress bar.
-     */
-    activePage: {
-      type: Number,
-      value: 0,
-      observer: "_activePageChanged"
-    },
-    /**
-     * Track the active outline to load data for the progress bar.
-     */
-    activeOutline: {
-      type: Number,
-      value: 0,
-      observer: "_activeOutlineChanged"
-    },
-    /**
-     * List of items in our outline presently.
-     */
-    outlineItems: {
-      type: Array,
-      value: [],
-      notify: true,
-      observer: "_outlineItemsChanged"
-    },
-    /**
-     * List of items in our book presently.
-     */
-    bookItems: {
-      type: Array,
-      notify: true
-    },
-    /**
-     * Item responses.
-     */
-    itemResponses: {
-      type: Array,
-      value: []
-    },
-    /**
-     * Params for the request for outline/book to load.
-     */
-    requestParams: {
-      type: Object,
-      notify: true,
-      value: {
-        node: null
+  static get tag() {
+    return "lrnapp-book";
+  }
+  static get properties() {
+    return {
+      /**
+       * Path for getting progress dashboard data
+       */
+      progressDashboardPath: {
+        type: String
+      },
+      /**
+       * Option to display the search bar.
+       */
+      showSearch: {
+        type: Boolean,
+        reflectToAttribute: true,
+        value: false
+      },
+      /**
+       * Source path to the 'find one' end point
+       */
+      sourcePath: {
+        type: String
+      },
+      /**
+       * Edit / authoring mode.
+       */
+      editMode: {
+        type: Boolean,
+        reflectToAttribute: true,
+        value: false,
+        notify: true,
+        observer: "_editModeChanged"
+      },
+      /**
+       * Binding so we can style based on drawer status
+       * @type {Object}
+       */
+      drawerOpened: {
+        type: Boolean,
+        value: true,
+        reflectToAttribute: true
+      },
+      /**
+       * Title for the content
+       */
+      currentTitle: {
+        type: String
+      },
+      /**
+       * Title for the top of the bar
+       */
+      outlineTitle: {
+        type: String
+      },
+      /**
+       * Title for the top of the bar
+       */
+      bookTitle: {
+        type: String,
+        value: "Course outline"
+      },
+      /**
+       * If the sound should play on finish.
+       */
+      soundFinish: {
+        type: Boolean,
+        value: true
+      },
+      /**
+       * If the sound should play on complete.
+       */
+      sound: {
+        type: Boolean,
+        value: true
+      },
+      /**
+       * Completing a step sound.
+       */
+      completeSound: {
+        type: String,
+        value: ""
+      },
+      /**
+       * Finished sound file.
+       */
+      finishedSound: {
+        type: String,
+        value: ""
+      },
+      /**
+       * Distance through the present document so we can visualize
+       */
+      scrollPosition: {
+        type: Number,
+        value: 0,
+        observer: "_scrollChanged"
+      },
+      /**
+       * Track the active page exposed from the progress bar.
+       */
+      activePage: {
+        type: Number,
+        value: 0,
+        observer: "_activePageChanged"
+      },
+      /**
+       * Track the active outline to load data for the progress bar.
+       */
+      activeOutline: {
+        type: Number,
+        value: 0,
+        observer: "_activeOutlineChanged"
+      },
+      /**
+       * List of items in our outline presently.
+       */
+      outlineItems: {
+        type: Array,
+        value: [],
+        notify: true,
+        observer: "_outlineItemsChanged"
+      },
+      /**
+       * List of items in our book presently.
+       */
+      bookItems: {
+        type: Array,
+        notify: true
+      },
+      /**
+       * Item responses.
+       */
+      itemResponses: {
+        type: Array,
+        value: []
+      },
+      /**
+       * Params for the request for outline/book to load.
+       */
+      requestParams: {
+        type: Object,
+        notify: true,
+        value: {
+          node: null
+        }
+      },
+      /**
+       * Params for the request for content to load.
+       */
+      pageParams: {
+        type: Object,
+        notify: true,
+        value: {
+          load: false
+        }
+      },
+      /**
+       * Returned data for processing.
+       */
+      outlineData: {
+        type: Object,
+        notify: true
+      },
+      /**
+       * Returned data for processing.
+       */
+      bookData: {
+        type: Object,
+        notify: true
+      },
+      /**
+       * Returned data for processing.
+       */
+      pageData: {
+        type: Object,
+        notify: true
+      },
+      /**
+       * data pathway that expects the present outline returned.
+       */
+      outlinePath: {
+        type: String
+      },
+      /**
+       * data pathway that expects the book chapters returned.
+       */
+      bookPath: {
+        type: String
+      },
+      /**
+       * data pathway that expects the book chapters returned.
+       */
+      pagePath: {
+        type: String
+      },
+      /**
+       * Simple flag for having the previous button show.
+       */
+      hasPrevPage: {
+        type: Boolean,
+        notify: true
+      },
+      /**
+       * Previous page title.
+       */
+      prevLabel: {
+        type: String
+      },
+      /**
+       * Simple flag for having the next button show.
+       */
+      hasNextPage: {
+        type: Boolean,
+        notify: true
+      },
+      /**
+       * Next page title.
+       */
+      nextLabel: {
+        type: String
+      },
+      /**
+       * Ensure scrolling doesn't influence during a transition.
+       */
+      resetScroll: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Store current page data.
+       */
+      currentPageData: {
+        type: Object,
+        value: {},
+        observer: "_currentPageDataUpdated"
+      },
+      /**
+       * Store current page data.
+       */
+      manifest: {
+        type: Object,
+        value: {},
+        observer: "_manifestChanged"
+      },
+      /**
+       * Rebuild outline flag so we know to call it on page build.
+       */
+      rebuildOutline: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Track if we should go full width or not.
+       */
+      fullWidth: {
+        type: Boolean,
+        reflectToAttribute: true,
+        value: false,
+        observer: "_fullWidthChanged"
+      },
+      /**
+       * Private state for _routerManifest
+       */
+      _routerManifest: {
+        type: Object,
+        value: {}
       }
-    },
-    /**
-     * Params for the request for content to load.
-     */
-    pageParams: {
-      type: Object,
-      notify: true,
-      value: {
-        load: false
-      }
-    },
-    /**
-     * Returned data for processing.
-     */
-    outlineData: {
-      type: Object,
-      notify: true
-    },
-    /**
-     * Returned data for processing.
-     */
-    bookData: {
-      type: Object,
-      notify: true
-    },
-    /**
-     * Returned data for processing.
-     */
-    pageData: {
-      type: Object,
-      notify: true
-    },
-    /**
-     * data pathway that expects the present outline returned.
-     */
-    outlinePath: {
-      type: String
-    },
-    /**
-     * data pathway that expects the book chapters returned.
-     */
-    bookPath: {
-      type: String
-    },
-    /**
-     * data pathway that expects the book chapters returned.
-     */
-    pagePath: {
-      type: String
-    },
-    /**
-     * Simple flag for having the previous button show.
-     */
-    hasPrevPage: {
-      type: Boolean,
-      notify: true
-    },
-    /**
-     * Previous page title.
-     */
-    prevLabel: {
-      type: String
-    },
-    /**
-     * Simple flag for having the next button show.
-     */
-    hasNextPage: {
-      type: Boolean,
-      notify: true
-    },
-    /**
-     * Next page title.
-     */
-    nextLabel: {
-      type: String
-    },
-    /**
-     * Ensure scrolling doesn't influence during a transition.
-     */
-    resetScroll: {
-      type: Boolean,
-      value: false
-    },
-    /**
-     * Store current page data.
-     */
-    currentPageData: {
-      type: Object,
-      value: {},
-      observer: "_currentPageDataUpdated"
-    },
-    /**
-     * Store current page data.
-     */
-    manifest: {
-      type: Object,
-      value: {},
-      observer: "_manifestChanged"
-    },
-    /**
-     * Rebuild outline flag so we know to call it on page build.
-     */
-    rebuildOutline: {
-      type: Boolean,
-      value: false
-    },
-    /**
-     * Track if we should go full width or not.
-     */
-    fullWidth: {
-      type: Boolean,
-      reflectToAttribute: true,
-      value: false,
-      observer: "_fullWidthChanged"
-    },
-    /**
-     * Private state for _routerManifest
-     */
-    _routerManifest: {
-      type: Object,
-      value: {}
-    }
-  },
+    };
+  }
 
   /**
    * Ready event.
    */
-  ready: function(e) {
-    this.setupHAXTheme(true, this.$.contentcontainer);
+  ready() {
+    super.ready();
     window.dispatchEvent(
       new CustomEvent("haxcms-router-manifest-subscribe", {
         detail: {
@@ -784,25 +788,27 @@ Polymer({
     setTimeout(() => {
       this._resetScroll();
     }, 500);
-  },
+  }
   /**
    * attached life cycle
    */
-  attached: function() {
-    this.$.progress.addEventListener(
-      "node-percent-milestone",
-      this.testMilestone.bind(this)
-    );
-    this.$.mapmenu.addEventListener(
-      "link-clicked",
-      this._menuItemClicked.bind(this)
-    );
-  },
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, function() {
+      this.$.progress.addEventListener(
+        "node-percent-milestone",
+        this.testMilestone.bind(this)
+      );
+      this.$.mapmenu.addEventListener(
+        "link-clicked",
+        this._menuItemClicked.bind(this)
+      );
+    });
+  }
   /**
    * detached life cycle
    */
-  detached: function() {
-    this.setupHAXTheme(false);
+  disconnectedCallback() {
     this.$.progress.removeEventListener(
       "node-percent-milestone",
       this.testMilestone.bind(this)
@@ -811,39 +817,40 @@ Polymer({
       "link-clicked",
       this._menuItemClicked.bind(this)
     );
-  },
-  _haxcmsRouterManifestSubscribeHandler: function(e) {
+    super.disconnectedCallback();
+  }
+  _haxcmsRouterManifestSubscribeHandler(e) {
     this._routerManifest = {};
     this._routerManifest = e.detail;
-  },
-  _menuItemClicked: function(e) {
+  }
+  _menuItemClicked(e) {
     let i = this.manifest.items.findIndex(j => j.id === e.detail.id);
     this.activePage = i;
-  },
+  }
   /**
    * When element is told to be full width it'll close things.
    */
-  _fullWidthChanged: function(newValue, oldValue) {
+  _fullWidthChanged(newValue, oldValue) {
     this.updateStyles();
-  },
+  }
   /**
    * Handle click on dashboard to trigger loading data.
    */
-  progressdashboardopen: function(e) {
+  progressdashboardopen(e) {
     this.$.progressdashboard.showProgress = true;
-  },
+  }
 
   /**
    * Generate path to point to the right endpoint for updating items.
    */
-  _computePageUpdatePath: function(data, sourcePath) {
+  _computePageUpdatePath(data, sourcePath) {
     return sourcePath.replace("%", data.id);
-  },
+  }
 
   /**
    * React when state changes for editMode
    */
-  _editModeChanged: function(newValue, oldValue) {
+  _editModeChanged(newValue, oldValue) {
     if (typeof newValue !== typeof undefined) {
       if (newValue === true) {
         this.$.currenttitle.contentEditable = true;
@@ -880,13 +887,13 @@ Polymer({
         }
       }
     }
-  },
+  }
 
   /**
    * A book level button was pressed, we need to invoke a change of
    * content as well as outline.
    */
-  _activeOutlineChanged: function(newValue, oldValue) {
+  _activeOutlineChanged(newValue, oldValue) {
     if (
       typeof newValue !== typeof undefined &&
       typeof oldValue !== typeof undefined
@@ -894,12 +901,12 @@ Polymer({
       // trigger loading state
       this.rebuildOutline = true;
     }
-  },
+  }
 
   /**
    * Reset scroll position visually and internally data wise.
    */
-  _resetScroll: function() {
+  _resetScroll() {
     this.resetScroll = true;
     this.scrollPosition = 0;
     this.$.anchor.scrollIntoView({
@@ -907,20 +914,24 @@ Polymer({
       behavior: "smooth",
       inline: "nearest"
     });
-  },
+  }
 
   /**
    * React to active page being changed.
    */
-  _activePageChanged: function(newValue, oldValue) {
+  _activePageChanged(newValue, oldValue) {
     if (typeof newValue !== typeof undefined) {
       if (
         typeof this.outlineItems !== typeof undefined &&
         this.outlineItems.length > 0
       ) {
-        this.fire(
-          "json-outline-schema-active-item-changed",
-          this.outlineItems[newValue]
+        this.dispatchEvent(
+          new CustomEvent("json-outline-schema-active-item-changed", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: this.outlineItems[newValue]
+          })
         );
       }
       // scroll into view the container that's about to be swapped out
@@ -954,12 +965,12 @@ Polymer({
         }
       }
     }
-  },
+  }
 
   /**
    * React to items being changed.
    */
-  _outlineItemsChanged: function(newValue, oldValue) {
+  _outlineItemsChanged(newValue, oldValue) {
     // these need set immediately
     if (typeof newValue !== typeof undefined && newValue.length != 0) {
       // manage the previous page button on the UI
@@ -971,25 +982,25 @@ Polymer({
         this.nextLabel = newValue[this.activePage + 1].title;
       }
     }
-  },
+  }
 
   /**
    * Test what milestone has been hit and if we should start to preload
    * items as a result of it!
    */
-  testMilestone: function(e) {
+  testMilestone(e) {
     // we should preload the next page
     if (e.detail.percentage == 75) {
       console.log(
         "@todo preload the next page and present grayed out right of UI."
       );
     }
-  },
+  }
 
   /**
    * Pass down scroll change to the element for progress visualization.
    */
-  _scrollChanged: function(newValue, oldValue) {
+  _scrollChanged(newValue, oldValue) {
     // only evaluate scroll if value is greater then previous
     if (
       typeof this.outlineItems !== typeof undefined &&
@@ -1014,12 +1025,12 @@ Polymer({
         );
       }
     }
-  },
+  }
 
   /**
    * Pass down the click to the next page if we have one
    */
-  _nextBtn: function(e) {
+  _nextBtn(e) {
     // make sure we are able to move forward more
     if (this.activePage < this.outlineItems.length - 1) {
       this.set(
@@ -1028,30 +1039,30 @@ Polymer({
       );
       this.activePage = this.activePage + 1;
     }
-  },
+  }
 
   /**
    * Pass down the click to the prev page if we have one
    */
-  _prevBtn: function(e) {
+  _prevBtn(e) {
     if (this.activePage > 0) {
       this.activePage = this.activePage - 1;
     }
-  },
+  }
 
   /**
    * Toggle the book drawer
    */
-  toggleBook: function(e) {
+  toggleBook(e) {
     // if we are in edit mode then we ned to close this
     this.$.bookdrawer.toggle();
     this.fullWidth = !this.$.bookdrawer.opened;
-  },
+  }
 
   /**
    * Handle the response.
    */
-  _manifestChanged: function(newValue, oldValue) {
+  _manifestChanged(newValue, oldValue) {
     if (typeof newValue !== typeof undefined) {
       const items = newValue.items;
       const outlineTitle = newValue.title;
@@ -1072,13 +1083,13 @@ Polymer({
       this.$.outlineloading.hidden = true;
       this.pageParams.load = true;
     }
-  },
+  }
   /**
    * Handle page object getting updated. This allows
    * for updating parts of the page either from the localcache
    * or from the ajax call.
    */
-  _currentPageDataUpdated: function(newValue, oldValue) {
+  _currentPageDataUpdated(newValue, oldValue) {
     if (
       typeof newValue !== typeof undefined &&
       typeof newValue.content !== typeof undefined
@@ -1094,14 +1105,16 @@ Polymer({
         this.editMode = false;
       }
     }
-  },
+  }
 
   /**
    * Simple way to convert from object to array.
    */
-  _toArray: function(obj) {
+  _toArray(obj) {
     return Object.keys(obj).map(function(key) {
       return obj[key];
     });
   }
-});
+}
+window.customElements.define(LrnappBook.tag, LrnappBook);
+export { LrnappBook };

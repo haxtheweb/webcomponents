@@ -1,4 +1,7 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { SecureRequestXhr } from "@lrnwebcomponents/secure-request/secure-request.js";
+import "@polymer/polymer/lib/elements/dom-repeat.js";
+import "@polymer/polymer/lib/elements/dom-if.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "@polymer/paper-input/paper-input.js";
@@ -7,113 +10,120 @@ import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/secure-request/secure-request.js";
 import "./lrnapp-studio-submission-edit-add-asset.js";
 import "./lrnapp-studio-submission-media-editoverlay.js";
-Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: flex;
-        position: relative;
-        align-items: stretch;
-      }
+class LrnappStudioSubmissionEditVideo extends SecureRequestXhr(PolymerElement) {
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: flex;
+          position: relative;
+          align-items: stretch;
+        }
 
-      :host * {
-        background: lightgray;
-        display: flex;
-        align-items: center;
-        margin-right: 1em;
-      }
+        :host * {
+          background: lightgray;
+          display: flex;
+          align-items: center;
+          margin-right: 1em;
+        }
 
-      iframe {
-        display: block;
-      }
+        iframe {
+          display: block;
+        }
 
-      .videosfield__create {
-        display: block;
-        height: 250px;
-        width: 300px;
-      }
+        .videosfield__create {
+          display: block;
+          height: 250px;
+          width: 300px;
+        }
 
-      paper-dialog {
-        width: 50%;
-        width: 50vmax;
-        padding: 1em;
-      }
-    </style>
+        paper-dialog {
+          width: 50%;
+          width: 50vmax;
+          padding: 1em;
+        }
+      </style>
 
-    <template is="dom-repeat" items="{{videos}}" as="video">
-      <lrnapp-studio-submission-media-editoverlay
-        on-delete="_videoDelete"
-        data-index\$="[[index]]"
-      >
-        <iframe class="videosfield__iframe" src="{{video.video_src}}"></iframe>
-      </lrnapp-studio-submission-media-editoverlay>
-    </template>
-
-    <lrnapp-studio-submission-edit-add-asset
-      icon="av:video-library"
-      on-click="_openDialog"
-    ></lrnapp-studio-submission-edit-add-asset>
-
-    <paper-dialog
-      id="dialog"
-      entry-animation="scale-up-animation"
-      exit-animation="fade-out-animation"
-      with-backdrop=""
-    >
-      <h2>Add Video</h2>
-      <paper-dialog-scrollable>
-        <paper-input label="Video URL" value="{{newvideo}}"></paper-input>
-      </paper-dialog-scrollable>
-      <div class="buttons">
-        <paper-button dialog-dismiss="">Cancel</paper-button>
-        <paper-button dialog-confirm="" on-click="_addImage"
-          >Add Video</paper-button
+      <template is="dom-repeat" items="{{videos}}" as="video">
+        <lrnapp-studio-submission-media-editoverlay
+          on-delete="_videoDelete"
+          data-index\$="[[index]]"
         >
-      </div>
-    </paper-dialog>
+          <iframe
+            class="videosfield__iframe"
+            src="{{video.video_src}}"
+          ></iframe>
+        </lrnapp-studio-submission-media-editoverlay>
+      </template>
 
-    <template is="dom-if" if="[[videoGenerateSourceUrl]]">
-      <!-- Generate Video Source Url for preview -->
-      <iron-ajax
-        id="videoGenerateSourceUrl"
-        url="[[videoGenerateSourceUrl]]"
-        method="POST"
-        body="[[newvideo]]"
-        content-type="application/json"
-        handle-as="json"
-        on-response="_addImage"
-      ></iron-ajax>
-    </template>
-  `,
+      <lrnapp-studio-submission-edit-add-asset
+        icon="av:video-library"
+        on-click="_openDialog"
+      ></lrnapp-studio-submission-edit-add-asset>
 
-  is: "lrnapp-studio-submission-edit-video",
-  behaviors: [SecureRequest.xhr],
+      <paper-dialog
+        id="dialog"
+        entry-animation="scale-up-animation"
+        exit-animation="fade-out-animation"
+        with-backdrop=""
+      >
+        <h2>Add Video</h2>
+        <paper-dialog-scrollable>
+          <paper-input label="Video URL" value="{{newvideo}}"></paper-input>
+        </paper-dialog-scrollable>
+        <div class="buttons">
+          <paper-button dialog-dismiss="">Cancel</paper-button>
+          <paper-button dialog-confirm="" on-click="_addImage"
+            >Add Video</paper-button
+          >
+        </div>
+      </paper-dialog>
 
-  properties: {
-    videos: {
-      type: Array,
-      value: [],
-      notify: true
-    },
-    selectedPage: {
-      type: String,
-      value: "0"
-    },
-    newvideo: {
-      type: String,
-      value: ""
-    },
-    videoGenerateSourceUrl: {
-      type: String,
-      value: null
-    }
-  },
-  _openDialog: function(e) {
+      <template is="dom-if" if="[[videoGenerateSourceUrl]]">
+        <!-- Generate Video Source Url for preview -->
+        <iron-ajax
+          id="videoGenerateSourceUrl"
+          url="[[videoGenerateSourceUrl]]"
+          method="POST"
+          body="[[newvideo]]"
+          content-type="application/json"
+          handle-as="json"
+          on-response="_addImage"
+        ></iron-ajax>
+      </template>
+    `;
+  }
+  static get tag() {
+    return "lrnapp-studio-submission-edit-video";
+  }
+
+  static get properties() {
+    return {
+      videos: {
+        type: Array,
+        value: [],
+        notify: true
+      },
+      selectedPage: {
+        type: String,
+        value: "0"
+      },
+      newvideo: {
+        type: String,
+        value: ""
+      },
+      videoGenerateSourceUrl: {
+        type: String,
+        value: null
+      }
+    };
+  }
+  _openDialog(e) {
     // @todo use singleton
     this.$.dialog.open();
-  },
+  }
 
-  _addImage: function(e) {
+  _addImage(e) {
     var video_url = this.newvideo;
     var normalizedEvent = dom(e);
     var tagname = normalizedEvent.localTarget.tagName;
@@ -136,16 +146,22 @@ Polymer({
         .querySelector("#videoGenerateSourceUrl")
         .generateRequest();
     }
-  },
+  }
 
-  _videoDelete: function(e) {
+  _videoDelete(e) {
     var normalizedEvent = dom(e);
     var deleteIndex = normalizedEvent.localTarget.getAttribute("data-index");
     this.splice("videos", deleteIndex, 1);
-  },
+  }
 
-  ready: function() {
+  ready() {
+    super.ready();
     const url = this.generateUrl("/api/video/generate-source-url");
     this.set("videoGenerateSourceUrl", url);
   }
-});
+}
+window.customElements.define(
+  LrnappStudioSubmissionEditVideo.tag,
+  LrnappStudioSubmissionEditVideo
+);
+export { LrnappStudioSubmissionEditVideo };

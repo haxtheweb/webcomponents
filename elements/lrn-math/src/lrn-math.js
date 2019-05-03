@@ -69,7 +69,7 @@ function load_library() {
         "noUndefined.js"
       ]
     },
-    AuthorInit: function() {
+    AuthorInit() {
       mathjaxHub = window.MathJax.Hub;
       mathjaxHub.Register.StartupHook("End", function() {
         state = states.ready;

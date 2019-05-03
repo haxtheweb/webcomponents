@@ -227,8 +227,7 @@ site-rss-button {
     display: none;
   }
 }</style>
-<custom-style>
-  <style>
+<style>
   html,body {
     background-color: #FFFFFF;
   }
@@ -236,7 +235,7 @@ site-rss-button {
     color: rgba(0,0,0,.84);
   }
   </style>
-</custom-style>
+
 <app-header reveals>
   <app-toolbar>
     <div>

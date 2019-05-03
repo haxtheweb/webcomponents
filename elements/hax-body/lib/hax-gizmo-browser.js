@@ -4,7 +4,6 @@ import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/grafitto-filter/grafitto-filter.js";
 import "@polymer/iron-list/iron-list.js";
-
 import "./hax-shared-styles.js";
 /**
  * `hax-gizmo-browser`

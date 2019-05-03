@@ -1,17 +1,15 @@
-define(["exports","./node_modules/@polymer/polymer/polymer-legacy.js","./node_modules/@polymer/app-layout/app-layout.js","./node_modules/@polymer/paper-icon-button/paper-icon-button.js","./node_modules/@polymer/paper-tooltip/paper-tooltip.js"],function(_exports,_polymerLegacy,_appLayout,_paperIconButton,_paperTooltip){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.LrndesignDrawer=void 0;function _templateObject_533af1b06a8411e99e8439ef226d5ea3(){var data=babelHelpers.taggedTemplateLiteral(["\n    <style>\n      :host {\n        display: block;\n        --lrndesign-drawer-width: 30%;\n      }\n      app-header {\n        z-index: 100;\n      }\n      app-drawer {\n        --app-drawer-width: var(--lrndesign-drawer-width);\n        --app-drawer-content-container: {\n          padding: 16px;\n          overflow-y: scroll;\n          margin-top: 112px;\n        }\n      }\n    </style>\n    <app-header>\n      <app-drawer opened=\"{{opened}}\" align=\"{{align}}\">\n        <slot></slot>\n      </app-drawer>\n    </app-header>\n    <paper-icon-button\n      icon=\"[[icon]]\"\n      alt=\"[[alt]]\"\n      id=\"flyout-drawer\"\n    ></paper-icon-button>\n    <paper-tooltip for=\"flyout-drawer\">[[alt]]</paper-tooltip>\n  "]);_templateObject_533af1b06a8411e99e8439ef226d5ea3=function _templateObject_533af1b06a8411e99e8439ef226d5ea3(){return data};return data}/**
-`lrndesign-drawer`
-
-
-* @demo demo/index.html
-*/var LrndesignDrawer=(0,_polymerLegacy.Polymer)({_template:(0,_polymerLegacy.html)(_templateObject_533af1b06a8411e99e8439ef226d5ea3()),is:"lrndesign-drawer",properties:{/**
-     * State for if it is currently open.
-     */opened:{type:Boolean,value:!1},/**
-     * Icon to present for clicking.
-     */icon:{type:String,value:"icon"},/**
-     * Side of the screen to align the flyout (right or left)
-     */align:{type:String,value:"left"},/**
-     * Alt / hover text for this link
-     */alt:{type:String,value:""}},/**
+define(["exports","require","./node_modules/@polymer/polymer/polymer-element.js"],function(_exports,_require,_polymerElement){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.LrndesignDrawer=void 0;_require=babelHelpers.interopRequireWildcard(_require);function _templateObject_e164ee806d6a11e9b43f9ddc6af99401(){var data=babelHelpers.taggedTemplateLiteral(["\n    <style>\n      :host {\n        display: block;\n        --lrndesign-drawer-width: 30%;\n      }\n      app-header {\n        z-index: 100;\n      }\n      app-drawer {\n        --app-drawer-width: var(--lrndesign-drawer-width);\n        --app-drawer-content-container: {\n          padding: 16px;\n          overflow-y: scroll;\n          margin-top: 112px;\n        }\n      }\n    </style>\n    <app-header>\n      <app-drawer opened=\"{{opened}}\" align=\"{{align}}\">\n        <slot></slot>\n      </app-drawer>\n    </app-header>\n    <paper-icon-button\n      icon=\"[[icon]]\"\n      alt=\"[[alt]]\"\n      id=\"flyoutdrawer\"\n    ></paper-icon-button>\n    <paper-tooltip for=\"flyoutdrawer\">[[alt]]</paper-tooltip>"]);_templateObject_e164ee806d6a11e9b43f9ddc6af99401=function _templateObject_e164ee806d6a11e9b43f9ddc6af99401(){return data};return data}/**
+ * `lrndesign-drawer`
+ * @demo demo/index.html
+ */var LrndesignDrawer=/*#__PURE__*/function(_PolymerElement){babelHelpers.inherits(LrndesignDrawer,_PolymerElement);function LrndesignDrawer(){var _this;babelHelpers.classCallCheck(this,LrndesignDrawer);_this=babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(LrndesignDrawer).call(this));new Promise(function(res,rej){return _require.default(["@polymer/app-layout/app-header/app-header.js"],res,rej)});new Promise(function(res,rej){return _require.default(["@polymer/app-layout/app-drawer/app-drawer.js"],res,rej)});new Promise(function(res,rej){return _require.default(["@polymer/paper-icon-button/paper-icon-button.js"],res,rej)});new Promise(function(res,rej){return _require.default(["@polymer/paper-tooltip/paper-tooltip.js"],res,rej)});return _this}babelHelpers.createClass(LrndesignDrawer,[{key:"ready",/**
    * Initalize the flyout and ensure it's not open to start
    * while adding the click event to it.
-   */ready:function ready(){var root=this,opened=this.opened;this.shadowRoot.querySelector("paper-icon-button").addEventListener("click",function(e){root.opened=!root.opened})}});_exports.LrndesignDrawer=LrndesignDrawer});
+   */value:function ready(){var _this2=this;babelHelpers.get(babelHelpers.getPrototypeOf(LrndesignDrawer.prototype),"ready",this).call(this);this.shadowRoot.querySelector("paper-icon-button").addEventListener("click",function(e){_this2.opened=!_this2.opened})}}],[{key:"template",get:function get(){return(0,_polymerElement.html)(_templateObject_e164ee806d6a11e9b43f9ddc6af99401())}},{key:"tag",get:function get(){return"lrndesign-drawer"}},{key:"properties",get:function get(){return{/**
+       * State for if it is currently open.
+       */opened:{type:Boolean,value:!1},/**
+       * Icon to present for clicking.
+       */icon:{type:String,value:"icon"},/**
+       * Side of the screen to align the flyout (right or left)
+       */align:{type:String,value:"left"},/**
+       * Alt / hover text for this link
+       */alt:{type:String,value:""}}}}]);return LrndesignDrawer}(_polymerElement.PolymerElement);_exports.LrndesignDrawer=LrndesignDrawer;window.customElements.define(LrndesignDrawer.tag,LrndesignDrawer)});

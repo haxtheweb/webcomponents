@@ -1,7 +1,7 @@
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";/**
+ */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";/**
  * `awesome-explosion`
  * `An awesome, explosion.`
  *
@@ -10,7 +10,7 @@
  * @polymerLegacy
  * @silly
  * @demo demo/index.html
- */let AwesomeExplosion=Polymer({_template:html`
+ */class AwesomeExplosion extends PolymerElement{static get template(){return html`
     <style>
       :host {
         display: inline-block;
@@ -57,7 +57,7 @@
       }
     </style>
     <img src="[[image]]" id="image" class="image-tag" alt="" />
-  `,is:"awesome-explosion",listeners:{tap:"_setPlaySound",mouseover:"_setPlaySound",mouseout:"_setStopSound"},properties:{/**
+  `}static get tag(){return"awesome-explosion"}connectedCallback(){super.connectedCallback();afterNextRender(this,function(){this.addEventListener("click",this._setPlaySound.bind(this));this.addEventListener("mouseover",this._setPlaySound.bind(this));this.addEventListener("mouseout",this._setStopSound.bind(this))})}disconnectedCallback(){this.removeEventListener("click",this._setPlaySound.bind(this));this.removeEventListener("mouseover",this._setPlaySound.bind(this));this.removeEventListener("mouseout",this._setStopSound.bind(this));super.disconnectedCallback()}static get properties(){return{/**
      * State is for setting:
      * Possible values: play, pause, stop
      */state:{type:String,value:"stop",reflectToAttribute:!0},/**
@@ -78,18 +78,18 @@
      * red, blue, orange, yellow
      */color:{type:String,value:"",reflectToAttribute:!0},/**
      * Allow for resetting the sound effect.
-     */resetSound:{type:Boolean,value:!1,reflectToAttribute:!0}},/**
+     */resetSound:{type:Boolean,value:!1,reflectToAttribute:!0}}}/**
    * calculate if it is stopped
-   */_calculateStopped:function(newValue,oldValue){if("stop"==newValue){this.stopped=!0;if(typeof window.audio!==typeof void 0){window.audio.currentTime=0}this._stopSound();this.fire("awesome-event",{message:"Sound stopped"})}else{this.stopped=!1}},/**
+   */_calculateStopped(newValue,oldValue){if("stop"==newValue){this.stopped=!0;if(typeof window.audio!==typeof void 0){window.audio.currentTime=0}this._stopSound();this.dispatchEvent(new CustomEvent("awesome-event",{bubbles:!0,cancelable:!0,composed:!0,detail:{message:"Sound stopped"}}))}else{this.stopped=!1}}/**
    * calculate if it is stopped
-   */_calculatePlaying:function(newValue,oldValue){if("play"==newValue){this.playing=!0;this._playSound();this.fire("awesome-event",{message:"Sound played"})}else{this.playing=!1}},/**
+   */_calculatePlaying(newValue,oldValue){if("play"==newValue){this.playing=!0;this._playSound();this.dispatchEvent(new CustomEvent("awesome-event",{bubbles:!0,cancelable:!0,composed:!0,detail:{message:"Sound played"}}))}else{this.playing=!1}}/**
    * calculate if it is stopped
-   */_calculatePaused:function(newValue,oldValue){if("pause"==newValue){this.paused=!0;this._stopSound();this.fire("awesome-event",{message:"Sound paused"})}else{this.paused=!1}},/**
+   */_calculatePaused(newValue,oldValue){if("pause"==newValue){this.paused=!0;this._stopSound();this.dispatchEvent(new CustomEvent("awesome-event",{bubbles:!0,cancelable:!0,composed:!0,detail:{message:"Sound paused"}}))}else{this.paused=!1}}/**
    * Stop the sound effect.
-   */_stopSound:function(){if(typeof window.audio!==typeof void 0){window.audio.pause();if(this.resetSound){window.audio.currentTime=0}}},/**
+   */_stopSound(){if(typeof window.audio!==typeof void 0){window.audio.pause();if(this.resetSound){window.audio.currentTime=0}}}/**
    * Set the state to play from an event.
-   */_setPlaySound:function(e){this.state="play"},/**
+   */_setPlaySound(e){this.state="play"}/**
    * Set the state to play from an event.
-   */_setStopSound:function(e){this.state="pause"},/**
+   */_setStopSound(e){this.state="pause"}/**
    * Play the sound effect.
-   */_playSound:function(){if(typeof window.audio===typeof void 0){window.audio=new Audio(this.sound)}window.audio.play()}});export{AwesomeExplosion};
+   */_playSound(){if(typeof window.audio===typeof void 0){window.audio=new Audio(this.sound)}window.audio.play()}}window.customElements.define(AwesomeExplosion.tag,AwesomeExplosion);export{AwesomeExplosion};

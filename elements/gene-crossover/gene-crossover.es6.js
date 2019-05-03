@@ -1,7 +1,7 @@
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/app-route/app-route.js";import"./node_modules/@polymer/app-route/app-location.js";import"./node_modules/@polymer/iron-pages/iron-pages.js";import"./node_modules/@lrnwebcomponents/paper-stepper/paper-stepper.js";import"./lib/gene-crossover-1.js";import"./lib/gene-crossover-2.js";import"./lib/gene-crossover-3.js";import"./lib/gene-crossover-4.js";import"./lib/gene-crossover-5.js";/**
+ */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import"./node_modules/@polymer/app-route/app-route.js";import"./node_modules/@polymer/app-route/app-location.js";import"./node_modules/@polymer/iron-pages/iron-pages.js";import"./node_modules/@lrnwebcomponents/paper-stepper/paper-stepper.js";import"./lib/gene-crossover-1.js";import"./lib/gene-crossover-2.js";import"./lib/gene-crossover-3.js";import"./lib/gene-crossover-4.js";import"./lib/gene-crossover-5.js";/**
  * `gene-crossover`
  * `Gene animations`
  *
@@ -9,8 +9,8 @@
  *
  * @microcopy - the mental model for this element
  *  -
- */let GeneCrossover=Polymer({_template:html`
-    <style is="custom-style" include="animation-shared-styles">
+ */class GeneCrossover extends PolymerElement{static get template(){return html`
+    <style include="animation-shared-styles">
       :host {
         display: block;
       }
@@ -59,5 +59,4 @@
           <paper-step></paper-step>
         </template>
       </paper-stepper>
-    </template>
-  `,is:"gene-crossover",properties:{activePage:{type:String,value:0},count:{type:Number,value:0}},_isActive:function(activePage,index){return activePage===index},_countToArray:function(count){var array=[];if(count){for(var i=0;i<count;i++){array.push(i)}}return array},ready:function(){var root=this,ironPages=root.shadowRoot.querySelector("iron-pages");if(ironPages.children){if(ironPages.children.length){root.count=ironPages.children.length}}}});export{GeneCrossover};
+    </template>`}static get tag(){return"gene-crossover"}static get properties(){return{activePage:{type:String,value:0},count:{type:Number,value:0}}}_isActive(activePage,index){return activePage===index}_countToArray(count){var array=[];if(count){for(var i=0;i<count;i++){array.push(i)}}return array}ready(){super.ready();var ironPages=this.shadowRoot.querySelector("iron-pages");if(ironPages.children){if(ironPages.children.length){this.count=ironPages.children.length}}}}window.customElements.define(GeneCrossover.tag,GeneCrossover);export{GeneCrossover};

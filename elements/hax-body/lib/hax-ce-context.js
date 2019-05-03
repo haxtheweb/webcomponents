@@ -7,9 +7,9 @@ import "./hax-shared-styles.js";
  * `A context menu that provides common custom-element based authoring options. While
  * trying to call for haxProperties which can automatically generate the buttons
  * required for populating input.`
-@microcopy - the mental model for this element
- - context menu - this is a menu of custom-element based buttons and events for use in a larger solution.
-*/
+ * @microcopy - the mental model for this element
+ * - context menu - this is a menu of custom-element based buttons and events for use in a larger solution.
+ */
 class HaxCeContext extends PolymerElement {
   constructor() {
     super();

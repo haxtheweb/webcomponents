@@ -127,15 +127,14 @@ class Hal9000 extends PolymerElement {
    */
   constructor() {
     super();
-    const name = "annyang";
     const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
     const location = `${basePath}lib/annyang/annyang.min.js`;
     window.addEventListener(
-      `es-bridge-${name}-loaded`,
+      "es-bridge-annyang-loaded",
       this._annyangLoaded.bind(this)
     );
     window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load(name, location);
+    window.ESGlobalBridge.instance.load("annyang", location);
     // check for speech synthesis API
     if (typeof window.speechSynthesis !== "undefined") {
       this.synth = window.speechSynthesis;
@@ -276,7 +275,13 @@ class Hal9000 extends PolymerElement {
   /**
    * life cycle, element is removed from the DOM
    */
-  //disconnectedCallback() {}
+  disconnectedCallback() {
+    window.removeEventListener(
+      "es-bridge-annyang-loaded",
+      this._annyangLoaded.bind(this)
+    );
+    super.disconnectedCallback();
+  }
 }
 // ensure we can generate a singleton
 window.customElements.define(Hal9000.tag, Hal9000);

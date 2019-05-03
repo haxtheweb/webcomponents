@@ -2,10 +2,10 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@lrnwebcomponents/smooth-scroll/smooth-scroll.js";
-import "./lib/map-menu-container.js";
-import "./lib/map-menu-builder.js";
+import "@lrnwebcomponents/map-menu/lib/map-menu-builder.js";
 
 /**
  * `map-menu`
@@ -13,109 +13,143 @@ import "./lib/map-menu-builder.js";
  *
  * @demo demo/index.html
  */
-let MapMenu = Polymer({
-  _template: html`
-    <style>
-      :host {
-        --map-menu-active-color: rgba(0, 0, 0, 0.1);
-        display: block;
-        overflow-y: scroll;
-        position: relative;
-        height: 100%;
+class MapMenu extends PolymerElement {
+  constructor() {
+    super();
+    import("@lrnwebcomponents/map-menu/lib/map-menu-container.js");
+  }
+  static get template() {
+    return html`
+      <style>
+        :host {
+          --map-menu-active-color: rgba(0, 0, 0, 0.1);
+          display: block;
+          overflow-y: scroll;
+          position: relative;
+          height: 100%;
+        }
+
+        #activeIndicator {
+          background: var(--map-menu-active-color);
+          transition: all 0.3s ease-in-out;
+          position: absolute;
+          @apply --map-menu-active-indicator;
+        }
+
+        map-menu-container {
+          padding: 32px;
+          @apply --map-menu-container;
+        }
+
+        /* turn default active color if indicator is on */
+        :host([active-indicator]) map-menu-builder {
+          --map-menu-active-color: transparent;
+        }
+      </style>
+      <div id="itemslist">
+        <map-menu-container>
+          <div id="activeIndicator"></div>
+          <map-menu-builder
+            id="builder"
+            items="[[items]]"
+            selected="[[selected]]"
+          ></map-menu-builder>
+        </map-menu-container>
+      </div>
+      <smooth-scroll id="smoothScroll"></smooth-scroll>
+    `;
+  }
+
+  static get tag() {
+    return "map-menu";
+  }
+
+  static get properties() {
+    return {
+      title: {
+        type: String,
+        value: "Content Outline"
+      },
+      data: {
+        type: Array,
+        value: null
+      },
+      /**
+       * Support for JSON Outline Schema manifest format
+       */
+      manifest: {
+        type: Object,
+        notify: true,
+        observer: "_manifestChanged"
+      },
+      items: {
+        type: Array,
+        value: null,
+        notify: true
+      },
+      /**
+       * Current selected item.
+       */
+      selected: {
+        type: String,
+        notify: true
+      },
+      /**
+       * Auto scroll an active element if not in view
+       */
+      autoScroll: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Show active indicator animation
+       */
+      activeIndicator: {
+        type: Boolean,
+        value: false
       }
-
-      #activeIndicator {
-        background: var(--map-menu-active-color);
-        transition: all 0.3s ease-in-out;
-        position: absolute;
-        @apply --map-menu-active-indicator;
-      }
-
-      map-menu-container {
-        padding: 32px;
-        @apply --map-menu-container;
-      }
-
-      /* turn default active color if indicator is on */
-      :host([active-indicator]) map-menu-builder {
-        --map-menu-active-color: transparent;
-      }
-    </style>
-    <div id="itemslist">
-      <map-menu-container>
-        <div id="activeIndicator"></div>
-        <map-menu-builder
-          id="builder"
-          items="[[items]]"
-          selected="[[selected]]"
-        ></map-menu-builder>
-      </map-menu-container>
-    </div>
-    <smooth-scroll id="smoothScroll"></smooth-scroll>
-  `,
-
-  is: "map-menu",
-
-  properties: {
-    title: {
-      type: String,
-      value: "Content Outline"
-    },
-    data: {
-      type: Array,
-      value: null
-    },
-    /**
-     * Support for JSON Outline Schema manifest format
-     */
-    manifest: {
-      type: Object,
-      notify: true,
-      observer: "_manifestChanged"
-    },
-    items: {
-      type: Array,
-      value: null,
-      notify: true
-    },
-    /**
-     * Current selected item.
-     */
-    selected: {
-      type: String,
-      notify: true
-    },
-    /**
-     * Auto scroll an active element if not in view
-     */
-    autoScroll: {
-      type: Boolean,
-      value: false
-    },
-    /**
-     * Show active indicator animation
-     */
-    activeIndicator: {
-      type: Boolean,
-      value: false
-    }
-  },
-
-  observers: ["_dataChanged(data)"],
-
-  listeners: {
-    "link-clicked": "__linkClickedHandler",
-    "toggle-updated": "__toggleUpdated",
-    "active-item": "__activeItemHandler",
-    "map-meu-item-hidden-check": "_mapMeuItemHiddenCheckHandler"
-  },
-
-  __activeItemHandler: function(e) {
+    };
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, function() {
+      this.addEventListener(
+        "link-clicked",
+        this.__linkClickedHandler.bind(this)
+      );
+      this.addEventListener("toggle-updated", this.__toggleUpdated.bind(this));
+      this.addEventListener("active-item", this.__activeItemHandler.bind(this));
+      this.addEventListener(
+        "map-meu-item-hidden-check",
+        this._mapMeuItemHiddenCheckHandler.bind(this)
+      );
+    });
+  }
+  disconnectedCallback() {
+    this.removeEventListener(
+      "link-clicked",
+      this.__linkClickedHandler.bind(this)
+    );
+    this.removeEventListener("toggle-updated", this.__toggleUpdated.bind(this));
+    this.removeEventListener(
+      "active-item",
+      this.__activeItemHandler.bind(this)
+    );
+    this.removeEventListener(
+      "map-meu-item-hidden-check",
+      this._mapMeuItemHiddenCheckHandler.bind(this)
+    );
+    super.disconnectedCallback();
+  }
+  static get observers() {
+    return ["_dataChanged(data)"];
+  }
+  __activeItemHandler(e) {
     const target = e.detail;
     this.refreshActiveChildren(target);
-  },
+  }
 
-  _mapMeuItemHiddenCheckHandler: function(e) {
+  _mapMeuItemHiddenCheckHandler(e) {
     const action = e.detail.action;
     const target = e.detail.target;
     const hiddenChild = e.detail.hiddenChild;
@@ -124,14 +158,14 @@ let MapMenu = Polymer({
     } else {
       this.__updateActiveIndicator(this._activeItem, 200, false);
     }
-  },
+  }
 
   /**
    * Set and unset active properties on children
    * @param {string} activeItem
    * @param {number} timeoutTime
    */
-  refreshActiveChildren: function(activeItem, timeoutTime = 200) {
+  refreshActiveChildren(activeItem, timeoutTime = 200) {
     const oldActiveItem = this._activeItem;
     const newActiveItem = activeItem;
 
@@ -158,27 +192,27 @@ let MapMenu = Polymer({
     }
 
     this._activeItem = newActiveItem;
-  },
+  }
 
-  _manifestChanged: function(newValue, oldValue) {
+  _manifestChanged(newValue, oldValue) {
     if (newValue) {
       this.set("data", newValue.items);
     }
-  },
+  }
 
   /**
    * Set data property
    */
-  setData: function(data) {
+  setData(data) {
     this.set("data", []);
     this.set("data", data);
-  },
+  }
 
   /**
    * Convert data from a linear array
    * to a nested array for template rendering
    */
-  _dataChanged: function(data) {
+  _dataChanged(data) {
     const items = [];
     if (!data) return;
     // find parents
@@ -195,7 +229,7 @@ let MapMenu = Polymer({
     // Update items array
     this.set("items", []);
     this.set("items", items);
-  },
+  }
 
   /**
    * Recursively search through a data to find children
@@ -204,7 +238,7 @@ let MapMenu = Polymer({
    * @param {array} data linear array of the data set.
    * @return {void}
    */
-  _setChildren: function(item, data) {
+  _setChildren(item, data) {
     // find all children
     const children = data.filter(d => item.id === d.parent);
     item.children = children;
@@ -214,49 +248,60 @@ let MapMenu = Polymer({
         this._setChildren(child, data);
       });
     }
-  },
+  }
 
   /**
    * Determine if a menu item has children
    */
-  __hasChildren: function(item) {
+  __hasChildren(item) {
     return item.children.length > 0;
-  },
+  }
 
   /**
    * asdf
    */
-  __linkClickedHandler: function(e) {
+  __linkClickedHandler(e) {
     this.selected = e.detail.id;
-    this.fire("selected", e.detail.id);
-  },
+    this.dispatchEvent(
+      new CustomEvent("selected", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: e.detail.id
+      })
+    );
+  }
 
   /**
    * When a user clicks the toggle button to collapse or
    * expand a submenu, this event gets triggered after
    * the animation has been triggered
    */
-  __toggleUpdated: function(e) {
+  __toggleUpdated(e) {
     const action = e.detail.opened ? "opened" : "closed";
     const target = e.path[0];
     if (typeof this._activeItem !== "undefined") {
-      this._activeItem.fire(
-        "map-menu-item-hidden-check",
-        Object.assign(
-          {},
-          {
-            action: action,
-            target: target
-          }
-        )
+      this._activeItem.dispatchEvent(
+        new CustomEvent("map-menu-item-hidden-check", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: Object.assign(
+            {},
+            {
+              action: action,
+              target: target
+            }
+          )
+        })
       );
     }
-  },
+  }
 
   /**
    * Find out if
    */
-  __isInViewport: function(element) {
+  __isInViewport(element) {
     const scrollParent = this.__getScrollParent(element);
     if (!scrollParent) return false;
 
@@ -265,12 +310,12 @@ let MapMenu = Polymer({
     var viewportTop = scrollParent.offsetTop;
     var viewportBottom = viewportTop + scrollParent.offsetHeight;
     return elementBottom > viewportTop && elementTop < viewportBottom;
-  },
+  }
 
   /**
    * Get scroll parent
    */
-  __getScrollParent: function(node) {
+  __getScrollParent(node) {
     if (node == null) {
       return null;
     }
@@ -280,16 +325,12 @@ let MapMenu = Polymer({
     } else {
       return this.__getScrollParent(node.parentNode);
     }
-  },
+  }
 
   /**
    * Move the highlight widget over active element
    */
-  __updateActiveIndicator: function(
-    element,
-    timeoutTime = 200,
-    hidden = false
-  ) {
+  __updateActiveIndicator(element, timeoutTime = 200, hidden = false) {
     // run it through to set time just to let stuff set up
     setTimeout(() => {
       const activeIndicator = this.$.activeIndicator;
@@ -306,12 +347,11 @@ let MapMenu = Polymer({
         `width:${width}px;height:${height}px;top:${top}px;left:${left}px`
       );
     }, timeoutTime);
-  },
-
+  }
   /**
    * Find out if any parents of the item are collapsed
    */
-  __parentsHidden: function(node) {
+  __parentsHidden(node) {
     // get the parent node
     const parent = node.parentNode;
     // bail if we have no node to work with
@@ -328,5 +368,6 @@ let MapMenu = Polymer({
     // against the parent node
     return this.__parentsHidden(parent);
   }
-});
+}
+window.customElements.define(MapMenu.tag, MapMenu);
 export { MapMenu };

@@ -2,161 +2,170 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import "@polymer/iron-image/iron-image.js";
-import "@polymer/iron-icons/iron-icons.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
  * `media-image`
  * `A simple image presentaiton with minor documented options`
- *
  * @demo demo/index.html
  */
-let MediaImage = Polymer({
-  _template: html`
-    <style is="custom-style">
-      :host {
-        display: block;
-        font-family: "Roboto", sans-serif;
-        width: 100%;
-        --box-background-color: #f7f6ef;
-      }
-
-      :host([card]) {
-        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.14);
-        padding: 20px;
-      }
-
-      :host([box]) {
-        background-color: var(--box-background-color);
-        padding: 20px;
-      }
-
-      :host([round]) iron-image {
-        border-radius: 50%;
-      }
-
-      @media screen and (min-width: 450px) {
-        :host([size="small"]) {
-          max-width: 50%;
+class MediaImage extends SchemaBehaviors(PolymerElement) {
+  constructor() {
+    super();
+    import("@polymer/iron-image/iron-image.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    afterNextRender(this, function() {
+      this.HAXWiring = new HAXWiring();
+      this.HAXWiring.setup(MediaImage.haxProperties, MediaImage.tag, this);
+    });
+  }
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: block;
+          font-family: "Roboto", sans-serif;
+          width: 100%;
+          --box-background-color: #f7f6ef;
         }
-      }
 
-      @media screen and (min-width: 650px) {
-        :host([size="small"]) {
-          max-width: 35%;
+        :host([card]) {
+          box-shadow: 0 1px 5px rgba(0, 0, 0, 0.14);
+          padding: 20px;
         }
-      }
 
-      @media screen and (min-width: 900px) {
-        :host([size="small"]) {
-          max-width: 25%;
+        :host([box]) {
+          background-color: var(--box-background-color);
+          padding: 20px;
         }
-      }
 
-      .citation {
-        font-size: 12.8px;
-        font-style: italic;
-        color: #4c4c4c;
-        margin: 15px 0 15px;
-      }
+        :host([round]) iron-image {
+          border-radius: 50%;
+        }
 
-      .caption {
-        padding-bottom: 25px;
-        border-bottom: dashed 2px lightgray;
-        margin-bottom: 25px;
-        line-height: 1.5;
-        font-size: 18px;
-      }
+        @media screen and (min-width: 450px) {
+          :host([size="small"]) {
+            max-width: 50%;
+          }
+        }
 
-      iron-image {
-        width: 100%;
-        --iron-image-width: 100%;
-      }
-    </style>
+        @media screen and (min-width: 650px) {
+          :host([size="small"]) {
+            max-width: 35%;
+          }
+        }
 
-    <iron-image
-      resource\$="[[schemaResourceID]]-image"
-      src\$="[[source]]"
-      alt\$="[[alt]]"
-    ></iron-image>
-    <div class="citation">[[citation]]<slot name="citation"></slot></div>
-    <div class="caption">[[caption]]<slot name="caption"></slot></div>
-  `,
+        @media screen and (min-width: 900px) {
+          :host([size="small"]) {
+            max-width: 25%;
+          }
+        }
 
-  is: "media-image",
-  behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
+        .citation {
+          font-size: 12.8px;
+          font-style: italic;
+          color: #4c4c4c;
+          margin: 15px 0 15px;
+        }
 
-  properties: {
-    /**
-     * Image source.
-     */
-    source: {
-      type: String,
-      value: ""
-    },
-    /**
-     * Image citation.
-     */
-    citation: {
-      type: String,
-      value: ""
-    },
-    /**
-     * Image caption.
-     */
-    caption: {
-      type: String,
-      value: ""
-    },
-    /**
-     * Image alt.
-     */
-    alt: {
-      type: String,
-      value: ""
-    },
-    /**
-     * The size of the image (small, wide).
-     */
-    size: {
-      type: String,
-      value: "wide",
-      reflectToAttribute: true
-    },
-    /**
-     * The shape of the image (round).
-     */
-    round: {
-      type: Boolean,
-      value: false,
-      reflectToAttribute: true
-    },
-    /**
-     * Applies card styling.
-     */
-    card: {
-      type: Boolean,
-      value: false,
-      reflectToAttribute: true
-    },
-    /**
-     * Applies box styling.
-     */
-    box: {
-      type: Boolean,
-      value: false,
-      reflectToAttribute: true
-    }
-  },
+        .caption {
+          padding-bottom: 25px;
+          border-bottom: dashed 2px lightgray;
+          margin-bottom: 25px;
+          line-height: 1.5;
+          font-size: 18px;
+        }
 
-  /**
-   * Ready.
-   */
-  ready: function() {
-    // Establish hax properties if it exist
+        iron-image {
+          width: 100%;
+          --iron-image-width: 100%;
+        }
+      </style>
+
+      <iron-image
+        resource\$="[[schemaResourceID]]-image"
+        src\$="[[source]]"
+        alt\$="[[alt]]"
+      ></iron-image>
+      <div class="citation">[[citation]]<slot name="citation"></slot></div>
+      <div class="caption">[[caption]]<slot name="caption"></slot></div>
+    `;
+  }
+  static get tag() {
+    return "media-image";
+  }
+  static get properties() {
     let props = {
+      /**
+       * Image source.
+       */
+      source: {
+        type: String,
+        value: ""
+      },
+      /**
+       * Image citation.
+       */
+      citation: {
+        type: String,
+        value: ""
+      },
+      /**
+       * Image caption.
+       */
+      caption: {
+        type: String,
+        value: ""
+      },
+      /**
+       * Image alt.
+       */
+      alt: {
+        type: String,
+        value: ""
+      },
+      /**
+       * The size of the image (small, wide).
+       */
+      size: {
+        type: String,
+        value: "wide",
+        reflectToAttribute: true
+      },
+      /**
+       * The shape of the image (round).
+       */
+      round: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
+       * Applies card styling.
+       */
+      card: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
+       * Applies box styling.
+       */
+      box: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      }
+    };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
+  }
+  static get haxProperties() {
+    return {
       canScale: true,
       canPosition: true,
       canEditSource: false,
@@ -262,7 +271,7 @@ let MediaImage = Polymer({
         ]
       }
     };
-    this.setHaxProperties(props);
   }
-});
+}
+window.customElements.define(MediaImage.tag, MediaImage);
 export { MediaImage };

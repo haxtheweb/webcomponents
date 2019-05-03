@@ -1,4 +1,4 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/app-route/app-route.js";
 import "@polymer/app-route/app-location.js";
 import "@polymer/paper-dialog/paper-dialog.js";
@@ -7,65 +7,66 @@ import "@lrnwebcomponents/hax-body/lib/hax-app.js";
 import "./elmsmedia-dashboard-filters.js";
 import "./elmsmedia-dashboard-toolbar-filters.js";
 import "./elmsmedia-dashboard-toolbar-button.js";
-let ElmsmediaDashboard = Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: block;
-      }
-      paper-dialog {
-        padding: 1em;
-      }
-      #toolbar {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-      }
-    </style>
+class ElmsmediaDashboard extends PolymerElement {
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: block;
+        }
+        paper-dialog {
+          padding: 1em;
+        }
+        #toolbar {
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+        }
+      </style>
 
-    <app-location route="{{route}}"></app-location>
-    <app-route
-      route="{{route}}"
-      pattern="/:page"
-      data="{{data}}"
-      tail="{{tail}}"
-      query-params="{{queryParams}}"
-    ></app-route>
+      <app-location route="{{route}}"></app-location>
+      <app-route
+        route="{{route}}"
+        pattern="/:page"
+        data="{{data}}"
+        tail="{{tail}}"
+        query-params="{{queryParams}}"
+      ></app-route>
 
-    <div id="toolbar">
-      <elmsmedia-dashboard-toolbar-filters
-        filters="[[queryParams]]"
-      ></elmsmedia-dashboard-toolbar-filters>
-      <elmsmedia-dashboard-toolbar-button
-        icon="filter-list"
-        title="Filter"
-        on-click="toggleFilters"
-      ></elmsmedia-dashboard-toolbar-button>
-      <elmsmedia-dashboard-toolbar-button
-        icon="search"
-        title="Search"
-        on-click="toggleSearch"
-      ></elmsmedia-dashboard-toolbar-button>
-    </div>
-
-    <paper-dialog id="filterDialog" with-backdrop="">
-      <h3>Filter Media</h3>
-      <elmsmedia-dashboard-filters
-        form="{{queryParams}}"
-        on-filter-changed="_filterChanged"
-      ></elmsmedia-dashboard-filters>
-      <div class="buttons">
-        <paper-button dialog-dismiss="">Dismiss dialog</paper-button>
+      <div id="toolbar">
+        <elmsmedia-dashboard-toolbar-filters
+          filters="[[queryParams]]"
+        ></elmsmedia-dashboard-toolbar-filters>
+        <elmsmedia-dashboard-toolbar-button
+          icon="filter-list"
+          title="Filter"
+          on-click="toggleFilters"
+        ></elmsmedia-dashboard-toolbar-button>
+        <elmsmedia-dashboard-toolbar-button
+          icon="search"
+          title="Search"
+          on-click="toggleSearch"
+        ></elmsmedia-dashboard-toolbar-button>
       </div>
-    </paper-dialog>
 
-    <hax-app
-      id="haxSource"
-      auto=""
-      query-param="title"
-      request-end-point="[[requestEndPoint]]"
-      request-params="{{queryParams}}"
-      data='{
+      <paper-dialog id="filterDialog" with-backdrop="">
+        <h3>Filter Media</h3>
+        <elmsmedia-dashboard-filters
+          form="{{queryParams}}"
+          on-filter-changed="_filterChanged"
+        ></elmsmedia-dashboard-filters>
+        <div class="buttons">
+          <paper-button dialog-dismiss="">Dismiss dialog</paper-button>
+        </div>
+      </paper-dialog>
+
+      <hax-app
+        id="haxSource"
+        auto=""
+        query-param="title"
+        request-end-point="[[requestEndPoint]]"
+        request-params="{{queryParams}}"
+        data='{
       "root": "list",
       "gizmoType": "video",
       "url": "http://media.elmsln.local/entity_iframe/node/",
@@ -74,42 +75,47 @@ let ElmsmediaDashboard = Polymer({
       "description": "attributes.body",
       "image": "display.image",
       "customGizmoType": "type"}'
-    ></hax-app>
-  `,
+      ></hax-app>
+    `;
+  }
 
-  is: "elmsmedia-dashboard",
+  static get tag() {
+    return "elmsmedia-dashboard";
+  }
 
-  properties: {
-    requestEndPoint: {
-      type: String,
-      value: ""
-    },
-    queryParams: {
-      type: Object,
-      value: {}
-    }
-  },
+  static get properties() {
+    return {
+      requestEndPoint: {
+        type: String,
+        value: ""
+      },
+      queryParams: {
+        type: Object,
+        value: {}
+      }
+    };
+  }
 
-  _computeRequestEndPoint: function(endPoint, csrfToken) {
+  _computeRequestEndPoint(endPoint, csrfToken) {
     return `${endPoint}/api/data?token=${csrfToken}`;
-  },
+  }
 
   /**
    * Listen for filter changes and reset the page count
    * @todo unsetting this object does not always work
    */
-  _filterChanged: function(e) {
+  _filterChanged(e) {
     let newParams = Object.assign({}, e.detail);
     newParams = this._cleanParams(newParams);
     this.set("queryParams", {});
     this.set("queryParams", newParams);
-  },
+  }
 
   /**
    * Helper function to prepare parameters object for the url
    * @todo this is horribly written
    */
-  _cleanParams: function(params) {
+  _cleanParams(params) {
     let newParams = {};
     for (x in params) {
       const prop = x;
@@ -122,18 +128,18 @@ let ElmsmediaDashboard = Polymer({
       }
     }
     return newParams;
-  },
+  }
 
-  toggleSearch: function(e) {
+  toggleSearch(e) {
     const searchEnabled = this.$.haxSource.search;
     this.$.haxSource.search = !searchEnabled;
-  },
+  }
 
-  toggleFilters: function(e) {
+  toggleFilters(e) {
     this.$.filterDialog.toggle();
-  },
+  }
 
-  removeFilter: function(path, propValue) {
+  removeFilter(path, propValue) {
     const currentParams = Object.assign({}, this.queryParams);
     // get the current value of the filter
     const currentValue = _.get(currentParams, path);
@@ -147,17 +153,20 @@ let ElmsmediaDashboard = Polymer({
     const newCleanParams = this._cleanParams(newParams);
     this.set("queryParams", {});
     this.set("queryParams", newCleanParams);
-  },
+  }
 
-  ready: function() {
+  ready() {
+    super.ready();
     this.addEventListener("remove-filter", e => {
       this.removeFilter(e.detail.path, e.detail.propValue);
     });
-  },
-  detached: function() {
+  }
+  disconnectedCallback() {
+    super.disconnectedCallback();
     this.removeEventListener("remove-filter", e => {
       this.removeFilter(e.detail.path, e.detail.propValue);
     });
   }
-});
+}
+window.customElements.define(ElmsmediaDashboard.tag, ElmsmediaDashboard);
 export { ElmsmediaDashboard };

@@ -2,11 +2,12 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
-import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import "@lrnwebcomponents/chartist-render/chartist-render.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/chartist-render/chartist-render.js";
 /**
  * `progress-donut`
  * `Showing progression in a circle shape w/ hollow middle`
@@ -16,192 +17,202 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
  * @microcopy - the mental model for this element
  *  -
  */
-let ProgressDonut = Polymer({
-  _template: html`
-    <style is="custom-style" include="simple-colors">
-      :host {
-        background-color: var(--simple-colors-background1, #ffffff);
-        overflow: visible;
-        display: block;
-      }
-      :host #wrapper {
-        margin: 0 auto;
-        position: relative;
-      }
-      :host #wrapper > * {
-        position: absolute;
-      }
-      :host #wrapper #chart {
-        left: 0;
-        top: 0;
-      }
-      :host #wrapper,
-      :host #wrapper #chart {
-        width: 250px;
-        height: 250px;
-      }
-      :host([size="xs"]) #wrapper,
-      :host([size="xs"]) #wrapper #chart {
-        width: 150px;
-        height: 150px;
-      }
-      :host([size="sm"]) #wrapper,
-      :host([size="sm"]) #wrapper #chart {
-        width: 200px;
-        height: 200px;
-      }
-      :host([size="lg"]) #wrapper,
-      :host([size="lg"]) #wrapper #chart {
-        width: 300px;
-        height: 300px;
-      }
-      :host([size="xl"]) #wrapper,
-      :host([size="xl"]) #wrapper #chart {
-        width: 400px;
-        height: 400px;
-      }
-      :host #wrapper > #image {
-        left: 20%;
-        top: 20%;
-        width: 60%;
-        height: 60%;
-        -webkit-clip-path: circle(50% at 50% 50%);
-        clip-path: circle(50% at 50% 50%);
-      }
-    </style>
-    <div id="wrapper">
-      <img
-        id="image"
-        alt\$="[[imageAlt]]"
-        aria-hidden="true"
-        hidden\$="[[!imageSrc]]"
-        src\$="[[imageSrc]]"
-        style\$="[[imageStyle]]"
-      />
-      <chartist-render
-        id="chart"
-        data\$="[[data]]"
-        chart-desc\$="[[desc]]"
-        chart-title="[[title]]"
-        scale="ct-square"
-        options\$="[[options]]"
-        title\$="[[title]]"
-        type="pie"
-      >
-      </chartist-render>
-    </div>
-  `,
+class ProgressDonut extends SchemaBehaviors(PolymerElement) {
+  constructor() {
+    super();
+    afterNextRender(this, function() {
+      this.HAXWiring = new HAXWiring();
+      this.HAXWiring.setup(
+        ProgressDonut.haxProperties,
+        ProgressDonut.tag,
+        this
+      );
+    });
+  }
+  static get template() {
+    return html`
+      <style include="simple-colors">
+        :host {
+          background-color: var(--simple-colors-background1, #ffffff);
+          overflow: visible;
+          display: block;
+        }
+        :host #wrapper {
+          margin: 0 auto;
+          position: relative;
+        }
+        :host #wrapper > * {
+          position: absolute;
+        }
+        :host #wrapper #chart {
+          left: 0;
+          top: 0;
+        }
+        :host #wrapper,
+        :host #wrapper #chart {
+          width: 250px;
+          height: 250px;
+        }
+        :host([size="xs"]) #wrapper,
+        :host([size="xs"]) #wrapper #chart {
+          width: 150px;
+          height: 150px;
+        }
+        :host([size="sm"]) #wrapper,
+        :host([size="sm"]) #wrapper #chart {
+          width: 200px;
+          height: 200px;
+        }
+        :host([size="lg"]) #wrapper,
+        :host([size="lg"]) #wrapper #chart {
+          width: 300px;
+          height: 300px;
+        }
+        :host([size="xl"]) #wrapper,
+        :host([size="xl"]) #wrapper #chart {
+          width: 400px;
+          height: 400px;
+        }
+        :host #wrapper > #image {
+          left: 20%;
+          top: 20%;
+          width: 60%;
+          height: 60%;
+          -webkit-clip-path: circle(50% at 50% 50%);
+          clip-path: circle(50% at 50% 50%);
+        }
+      </style>
+      <div id="wrapper">
+        <img
+          id="image"
+          alt\$="[[imageAlt]]"
+          aria-hidden="true"
+          hidden\$="[[!imageSrc]]"
+          src\$="[[imageSrc]]"
+          style\$="[[imageStyle]]"
+        />
+        <chartist-render
+          id="chart"
+          data\$="[[data]]"
+          chart-desc\$="[[desc]]"
+          chart-title="[[title]]"
+          scale="ct-square"
+          options\$="[[options]]"
+          title\$="[[title]]"
+          type="pie"
+        >
+        </chartist-render>
+      </div>
+    `;
+  }
 
-  is: "progress-donut",
-  behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
-
-  listeners: {
-    "chartist-render-draw": "_onCreated"
-  },
-
-  properties: {
-    /**
-     * An array of completed values
-     */
-    complete: {
-      type: Array,
-      value: []
-    },
-    /**
-     * The thickness of the donut from 0-100
-     */
-    donutThickness: {
-      type: Number
-    },
-    /**
-     * An array of hex codes to use as colors for each section.
-     * If null, colors are determined by accentColor & dark properties
-     */
-    colors: {
-      type: Array,
-      value: null
-    },
-    /**
-     * An array of data for the donut chart
-     */
-    data: {
-      type: Array,
-      computed: "_getData(complete)"
-    },
-    /**
-     * Accessible long description
-     */
-    desc: {
-      type: String,
-      value: null
-    },
-    /**
-     * An array of data for the donut chart
-     */
-    options: {
-      type: Array,
-      computed: "_getOptions(complete,total,size,colors,accentColor,dark)"
-    },
-    /**
-     * The source of the image in the center of the object.
-     */
-    imageSrc: {
-      type: String,
-      value: null,
-      reflectToAttribute: true
-    },
-    /**
-     * The alt text for the image.
-     */
-    imageAlt: {
-      type: String,
-      value: null,
-      reflectToAttribute: true
-    },
-    /**
-     * The style for the image based on the size of the donut
-     */
-    imageStyle: {
-      type: String,
-      computed: "_getImageStyle(size)"
-    },
-    /**
-     * The size of the progress-donut: sx, sm, md, lg, or xl. Default is md
-     */
-    size: {
-      type: String,
-      value: "md",
-      reflectToAttribute: true
-    },
-    /**
-     * Title
-     */
-    title: {
-      type: String
-    },
-    /**
-     * a selected accent-color: grey, red, pink, purple, etc.
-     */
-    accentColor: {
-      type: String,
-      value: "grey",
-      reflectToAttribute: true
-    },
-    /**
-     * An array of incomplete values
-     */
-    total: {
-      type: Number,
-      value: 100
-    }
-  },
-
-  /**
-   * Attached to the DOM, now fire.
-   */
-  attached: function() {
-    // Establish hax property binding
+  static get tag() {
+    return "progress-donut";
+  }
+  static get properties() {
     let props = {
+      /**
+       * An array of completed values
+       */
+      complete: {
+        type: Array,
+        value: []
+      },
+      /**
+       * The thickness of the donut from 0-100
+       */
+      donutThickness: {
+        type: Number
+      },
+      /**
+       * An array of hex codes to use as colors for each section.
+       * If null, colors are determined by accentColor & dark properties
+       */
+      colors: {
+        type: Array,
+        value: null
+      },
+      /**
+       * An array of data for the donut chart
+       */
+      data: {
+        type: Array,
+        computed: "_getData(complete)"
+      },
+      /**
+       * Accessible long description
+       */
+      desc: {
+        type: String,
+        value: null
+      },
+      /**
+       * An array of data for the donut chart
+       */
+      options: {
+        type: Array,
+        computed: "_getOptions(complete,total,size,colors,accentColor,dark)"
+      },
+      /**
+       * The source of the image in the center of the object.
+       */
+      imageSrc: {
+        type: String,
+        value: null,
+        reflectToAttribute: true
+      },
+      /**
+       * The alt text for the image.
+       */
+      imageAlt: {
+        type: String,
+        value: null,
+        reflectToAttribute: true
+      },
+      /**
+       * The style for the image based on the size of the donut
+       */
+      imageStyle: {
+        type: String,
+        computed: "_getImageStyle(size)"
+      },
+      /**
+       * The size of the progress-donut: sx, sm, md, lg, or xl. Default is md
+       */
+      size: {
+        type: String,
+        value: "md",
+        reflectToAttribute: true
+      },
+      /**
+       * Title
+       */
+      title: {
+        type: String
+      },
+      /**
+       * a selected accent-color: grey, red, pink, purple, etc.
+       */
+      accentColor: {
+        type: String,
+        value: "grey",
+        reflectToAttribute: true
+      },
+      /**
+       * An array of incomplete values
+       */
+      total: {
+        type: Number,
+        value: 100
+      }
+    };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
+  }
+  static get haxProperties() {
+    return {
       canScale: true,
       canPosition: true,
       canEditSource: false,
@@ -243,20 +254,31 @@ let ProgressDonut = Polymer({
         advanced: []
       }
     };
-    this.setHaxProperties(props);
-  },
-
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, function() {
+      this.addEventListener("chartist-render-draw", this._onCreated.bind(this));
+    });
+  }
+  disconnectedCallback() {
+    this.removeEventListener(
+      "chartist-render-draw",
+      this._onCreated.bind(this)
+    );
+    super.disconnectedCallback();
+  }
   /**
    * Makes chart and returns the chart object.
    */
-  _getData: function(complete) {
+  _getData(complete) {
     return { series: complete };
-  },
+  }
 
   /**
    * Makes chart and returns the chart object.
    */
-  _getImageStyle: function(size) {
+  _getImageStyle(size) {
     let offset = "22%",
       diameter = "56%";
     if (this.size === "xs") {
@@ -283,12 +305,12 @@ let ProgressDonut = Polymer({
       diameter +
       ";"
     );
-  },
+  }
 
   /**
    * Makes chart and returns the chart object.
    */
-  _getOptions: function(complete, total, size, colors, accentColor, dark) {
+  _getOptions(complete, total, size, colors, accentColor, dark) {
     let sum = 0;
     for (let i = 0; i < complete.length; i++) {
       sum += parseFloat(complete[i]);
@@ -299,20 +321,20 @@ let ProgressDonut = Polymer({
       startAngle: 0,
       total: Math.max(sum, total)
     };
-  },
+  }
 
   /**
    * Handles chart creation event.
    */
-  _onCreated: function(e) {
+  _onCreated(e) {
     this.__chart = e.detail;
     this.makeChart(this.__chart);
-  },
+  }
 
   /**
    * Makes chart and returns the chart object.
    */
-  makeChart: function(chart) {
+  makeChart(chart) {
     if (chart !== undefined) {
       let colors = this.colors,
         strokeWidth = "10%",
@@ -398,5 +420,6 @@ let ProgressDonut = Polymer({
       return chart;
     }
   }
-});
+}
+window.customElements.define(ProgressDonut.tag, ProgressDonut);
 export { ProgressDonut };

@@ -1,4 +1,4 @@
-import { LitElement, html } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `game-show-quiz-modal`
  * `Modal for the quiz show`
@@ -6,19 +6,9 @@ import { LitElement, html } from "lit-element/lit-element.js";
  *  - game show - a display board in the style of Jeopardy
  */
 class GameShowQuizModal extends LitElement {
-  static get tag() {
-    return "game-show-quiz-modal";
-  }
-  static get properties() {
-    return { title: { type: String } };
-  }
-  constructor() {
-    super();
-    import("@polymer/paper-dialog/paper-dialog.js");
-  }
-  render() {
-    return html`
-      <style>
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -95,7 +85,21 @@ class GameShowQuizModal extends LitElement {
             font-size: 12px;
           }
         }
-      </style>
+      `
+    ];
+  }
+  static get tag() {
+    return "game-show-quiz-modal";
+  }
+  static get properties() {
+    return { title: { type: String } };
+  }
+  constructor() {
+    super();
+    import("@polymer/paper-dialog/paper-dialog.js");
+  }
+  render() {
+    return html`
       <paper-dialog modal>
         <h2>${this.title}</h2>
         <div class="content"><slot name="content"></slot></div>

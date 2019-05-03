@@ -1,4 +1,4 @@
-define(["exports","./node_modules/@polymer/polymer/polymer-legacy.js","./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js","./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js"],function(_exports,_polymerLegacy,_HAXWiring,_schemaBehaviors){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.TaskList=void 0;function _templateObject_234638b06a8511e993e2f7378e29350e(){var data=babelHelpers.taggedTemplateLiteral(["\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <h3><span property=\"oer:name\">[[name]]</span></h3>\n    <ol>\n      <template is=\"dom-repeat\" items=\"[[tasks]]\" as=\"task\">\n        <li><span property=\"oer:task\">[[task.name]]</span></li>\n      </template>\n    </ol>\n  "]);_templateObject_234638b06a8511e993e2f7378e29350e=function _templateObject_234638b06a8511e993e2f7378e29350e(){return data};return data}/**
+define(["exports","./node_modules/@polymer/polymer/polymer-legacy.js","./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js","./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js"],function(_exports,_polymerLegacy,_HAXWiring,_schemaBehaviors){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.TaskList=void 0;function _templateObject_ba28f3906d0911e98cf779863d9fb275(){var data=babelHelpers.taggedTemplateLiteral(["\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <h3><span property=\"oer:name\">[[name]]</span></h3>\n    <ol>\n      <template is=\"dom-repeat\" items=\"[[tasks]]\" as=\"task\">\n        <li><span property=\"oer:task\">[[task.name]]</span></li>\n      </template>\n    </ol>\n  "]);_templateObject_ba28f3906d0911e98cf779863d9fb275=function _templateObject_ba28f3906d0911e98cf779863d9fb275(){return data};return data}/**
 `task-list`
 Visual listing of tasks with different design components that is
 OER Schema capable!
@@ -8,7 +8,7 @@ OER Schema capable!
 @microcopy - the mental model for this element
  - task - a singular thing to accomplish
 
-*/var TaskList=(0,_polymerLegacy.Polymer)({_template:(0,_polymerLegacy.html)(_templateObject_234638b06a8511e993e2f7378e29350e()),is:"task-list",behaviors:[HAXBehaviors.PropertiesBehaviors,SchemaBehaviors.Schema],hostAttributes:{typeof:"oer:SupportingMaterial"},observers:["_valueChanged(tasks.*)"],properties:{/**
+*/var TaskList=(0,_polymerLegacy.Polymer)({_template:(0,_polymerLegacy.html)(_templateObject_ba28f3906d0911e98cf779863d9fb275()),is:"task-list",behaviors:[HAXBehaviors.PropertiesBehaviors,SchemaBehaviors.Schema],hostAttributes:{typeof:"oer:SupportingMaterial"},observers:["_valueChanged(tasks.*)"],properties:{/**
      * Name of this task list
      */name:{type:String,value:"Steps to completion"},/**
      * Related Resource ID

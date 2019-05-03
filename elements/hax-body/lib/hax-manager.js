@@ -1,18 +1,9 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import "@polymer/app-layout/app-drawer/app-drawer.js";
-import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-styles/paper-styles.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
-import "@polymer/iron-pages/iron-pages.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@vaadin/vaadin-upload/vaadin-upload.js";
-import "./hax-preview.js";
-import "./hax-app-browser.js";
-import "./hax-gizmo-browser.js";
-import "./hax-shared-styles.js";
+import "@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";
 /**
  * `hax-manager`
  * `A LRN element for brokering the UI for api endpoints both in querying and uploading of new media to eventually bubble up an event for hax-body to have content inserted into it. This is a wiring closet of sorts to ensure we can talk to any backend that's returning a slew of widgets / media to insert.`
@@ -28,6 +19,15 @@ class HaxManager extends PolymerElement {
     super();
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/paper-input/paper-input.js");
+    import("@polymer/paper-button/paper-button.js");
+    import("@polymer/paper-icon-button/paper-icon-button.js");
+    import("@polymer/iron-pages/iron-pages.js");
+    import("@vaadin/vaadin-upload/vaadin-upload.js");
+    import("@lrnwebcomponents/hax-body/lib/hax-preview.js");
+    import("@lrnwebcomponents/hax-body/lib/hax-app-browser.js");
+    import("@lrnwebcomponents/hax-body/lib/hax-gizmo-browser.js");
+    import("@polymer/app-layout/app-drawer/app-drawer.js");
   }
   static get template() {
     return html`
@@ -709,6 +709,12 @@ class HaxManager extends PolymerElement {
     this.shadowRoot.querySelector("#fileupload").headers = "";
     this.shadowRoot.querySelector("#fileupload").method = "";
     this.shadowRoot.querySelector("#fileupload").target = "";
+    this.shadowRoot
+      .querySelector("#preview")
+      .shadowRoot.querySelector("#ppanel1").style.flex = "";
+    this.shadowRoot
+      .querySelector("#preview")
+      .shadowRoot.querySelector("#ppanel2").style.flex = "";
     this.__allowUpload = false;
   }
 

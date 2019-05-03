@@ -2,13 +2,11 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import { html } from "@polymer/polymer/polymer-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/chartist-render/chartist-render.js";
-
-export { LrndesignChartBehaviors };
 /**
  * `lrndesign-chart-behaviors`
  * A line chart
@@ -21,7 +19,7 @@ export { LrndesignChartBehaviors };
  * @demo demo/line.html line charts
  *
  */
-class LrndesignChartBehaviors extends SimpleColors {
+class LrndesignChartBehaviors extends SchemaBehaviors(SimpleColors) {
   // render function
   static get template() {
     return html`
@@ -544,10 +542,6 @@ Container class	Ratio
     return "lrndesign-chart-behaviors";
   }
 
-  //get player-specific behaviors
-  static get behaviors() {
-    return [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema];
-  }
   // haxProperty definition
   static get haxProperties() {
     return {
@@ -710,14 +704,6 @@ Container class	Ratio
       }
     };
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    let root = this;
-    this.HAXWiring = new HAXWiring();
-  }
 
   /**
    * life cycle, element is ready
@@ -796,3 +782,4 @@ window.customElements.define(
   LrndesignChartBehaviors.tag,
   LrndesignChartBehaviors
 );
+export { LrndesignChartBehaviors };

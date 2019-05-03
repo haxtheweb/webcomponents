@@ -1,185 +1,182 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/h-a-x/h-a-x.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
-import "./lib/cms-token.js";
-import "./lib/cms-block.js";
-import "./lib/cms-views.js";
-import "./lib/cms-entity.js";
 /**
-`cms-hax`
-A LRN polymer app
+ * `cms-hax`
+ * @demo ../../demo/index.html
+ */
+class CmsHax extends PolymerElement {
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: block;
+          font-size: 16px;
+          box-sizing: content-box;
+        }
+      </style>
+      <iron-ajax
+        id="pageupdateajax"
+        url="[[endPoint]]"
+        method="[[method]]"
+        body="[[updatePageData]]"
+        content-type="application/json"
+        handle-as="json"
+        on-response="_handleUpdateResponse"
+      ></iron-ajax>
+      <h-a-x app-store$="[[appStoreConnection]]"></h-a-x>
+    `;
+  }
 
-@demo ../../demo/index.html
-
-@microcopy - the mental model for this app
- -
- -
-
-*/
-let CmsHax = Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: block;
-        font-size: 16px;
-        box-sizing: content-box;
+  static get tag() {
+    return "cms-hax";
+  }
+  static get observers() {
+    return [
+      "_noticeTagChanges(allowedTags, hideExportButton, hidePanelOps, hidePreferencesButton, align, bodyOffsetLeft)"
+    ];
+  }
+  static get properties() {
+    return {
+      /**
+       * Default the panel to open
+       */
+      openDefault: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Hide the export button, showing it is good for developers
+       * or those doing QA testing of new elements.
+       */
+      hideExportButton: {
+        type: Boolean,
+        value: true
+      },
+      /**
+       * Hide the panel operations (save and cancel),
+       */
+      hidePanelOps: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Hide preferences button
+       */
+      hidePreferencesButton: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Direction to align the hax edit panel
+       */
+      align: {
+        type: String,
+        value: "right"
+      },
+      /**
+       * allowed Tags, usually as dictated by the input filtering
+       * layer of the backend system that HAX is riding on.
+       * While not fullproof, this at least will enforce front-end
+       * filtering to match what actually is going to be allowed
+       * to be saved in the first place.
+       */
+      allowedTags: {
+        type: Array
+      },
+      /**
+       * Location to save content to.
+       */
+      endPoint: {
+        type: String
+      },
+      /**
+       * Method to save content.
+       */
+      method: {
+        type: String,
+        value: "PUT"
+      },
+      /**
+       * Page data, body of text as a string.
+       */
+      updatePageData: {
+        type: String
+      },
+      /**
+       * Connection object for talking to an app store.
+       */
+      appStoreConnection: {
+        type: Object
+      },
+      /**
+       * Offset from the left of the body field
+       */
+      bodyOffsetLeft: {
+        type: Number,
+        value: -164
+      },
+      /**
+       * State of the panel
+       */
+      editMode: {
+        type: Boolean,
+        reflectToAttribute: true
+      },
+      /**
+       * syncBody
+       */
+      syncBody: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag
+       */
+      bodyValue: {
+        type: String,
+        value: ""
+      },
+      /**
+       * Flag to hide the toast.
+       */
+      hideMessage: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Optional URL to redirect to once we save.
+       */
+      redirectLocation: {
+        type: String
+      },
+      /**
+       * Option to redirect once we save successfully
+       */
+      redirectOnSave: {
+        type: Boolean,
+        computed: "_computeRedirectOnSave(redirectLocation)"
+      },
+      /**
+       * Reference to activeBody.
+       */
+      activeHaxBody: {
+        type: Object,
+        observer: "_activeHaxBodyUpdated"
+      },
+      __imported: {
+        type: Boolean,
+        value: false
       }
-    </style>
-    <iron-ajax
-      id="pageupdateajax"
-      url="[[endPoint]]"
-      method="[[method]]"
-      body="[[updatePageData]]"
-      content-type="application/json"
-      handle-as="json"
-      on-response="_handleUpdateResponse"
-    ></iron-ajax>
-    <h-a-x app-store$="[[appStoreConnection]]"></h-a-x>
-  `,
-
-  is: "cms-hax",
-  observers: [
-    "_noticeTagChanges(allowedTags, hideExportButton, hidePanelOps, hidePreferencesButton, align, bodyOffsetLeft)"
-  ],
-  properties: {
-    /**
-     * Default the panel to open
-     */
-    openDefault: {
-      type: Boolean,
-      value: false
-    },
-    /**
-     * Hide the export button, showing it is good for developers
-     * or those doing QA testing of new elements.
-     */
-    hideExportButton: {
-      type: Boolean,
-      value: true
-    },
-    /**
-     * Hide the panel operations (save and cancel),
-     */
-    hidePanelOps: {
-      type: Boolean,
-      value: false
-    },
-    /**
-     * Hide preferences button
-     */
-    hidePreferencesButton: {
-      type: Boolean,
-      value: false
-    },
-    /**
-     * Direction to align the hax edit panel
-     */
-    align: {
-      type: String,
-      value: "right"
-    },
-    /**
-     * allowed Tags, usually as dictated by the input filtering
-     * layer of the backend system that HAX is riding on.
-     * While not fullproof, this at least will enforce front-end
-     * filtering to match what actually is going to be allowed
-     * to be saved in the first place.
-     */
-    allowedTags: {
-      type: Array
-    },
-    /**
-     * Location to save content to.
-     */
-    endPoint: {
-      type: String
-    },
-    /**
-     * Method to save content.
-     */
-    method: {
-      type: String,
-      value: "PUT"
-    },
-    /**
-     * Page data, body of text as a string.
-     */
-    updatePageData: {
-      type: String
-    },
-    /**
-     * Connection object for talking to an app store.
-     */
-    appStoreConnection: {
-      type: Object
-    },
-    /**
-     * Offset from the left of the body field
-     */
-    bodyOffsetLeft: {
-      type: Number,
-      value: -164
-    },
-    /**
-     * State of the panel
-     */
-    editMode: {
-      type: Boolean,
-      reflectToAttribute: true
-    },
-    /**
-     * syncBody
-     */
-    syncBody: {
-      type: Boolean,
-      value: false
-    },
-    /**
-     * Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag
-     */
-    bodyValue: {
-      type: String,
-      value: ""
-    },
-    /**
-     * Flag to hide the toast.
-     */
-    hideMessage: {
-      type: Boolean,
-      value: false
-    },
-    /**
-     * Optional URL to redirect to once we save.
-     */
-    redirectLocation: {
-      type: String
-    },
-    /**
-     * Option to redirect once we save successfully
-     */
-    redirectOnSave: {
-      type: Boolean,
-      computed: "_computeRedirectOnSave(redirectLocation)"
-    },
-    /**
-     * Reference to activeBody.
-     */
-    activeHaxBody: {
-      type: Object,
-      observer: "_activeHaxBodyUpdated"
-    },
-    __imported: {
-      type: Boolean,
-      value: false
-    }
-  },
+    };
+  }
 
   /**
    * Ensure we've imported our content on initial setup
    */
-  _activeHaxBodyUpdated: function(newValue, oldValue) {
+  _activeHaxBodyUpdated(newValue, oldValue) {
     // ensure we import our content once we get an initial registration of active body
     if (newValue != null && !this.__imported) {
       this.__imported = true;
@@ -191,27 +188,27 @@ let CmsHax = Polymer({
         newValue.importContent(children.innerHTML);
       }
     }
-  },
+  }
 
   /**
    * Calculate if we have anywhere to redirect to.
    */
-  _computeRedirectOnSave: function(redirectLocation) {
+  _computeRedirectOnSave(redirectLocation) {
     if (typeof redirectLocation !== typeof undefined) {
       return true;
     }
     return false;
-  },
+  }
   /**
    * Break the shadow root for this element (by design)
    */
   _attachDom(dom) {
     this.appendChild(dom);
-  },
+  }
   /**
    * Set certain data bound values to the store once it's ready
    */
-  _noticeTagChanges: function(
+  _noticeTagChanges(
     allowedTags,
     hideExportButton,
     hidePanelOps,
@@ -230,11 +227,11 @@ let CmsHax = Polymer({
       window.HaxStore.instance.haxPanel.align = align;
       window.HaxStore.instance.activeHaxBody.contextOffsetLeft = bodyOffsetLeft;
     }
-  },
+  }
   /**
    * Set certain data bound values to the store once it's ready
    */
-  _storeReady: function(e) {
+  _storeReady(e) {
     // trigger the update of different parts of the global state
     this._noticeTagChanges(
       this.allowedTags,
@@ -244,29 +241,36 @@ let CmsHax = Polymer({
       this.align,
       this.bodyOffsetLeft
     );
-  },
+  }
   /**
    * Created life cycle
    */
-  created: function() {
+  constructor() {
+    super();
+    import("@lrnwebcomponents/cms-hax/lib/cms-token.js");
+    import("@lrnwebcomponents/cms-hax/lib/cms-block.js");
+    import("@lrnwebcomponents/cms-hax/lib/cms-views.js");
+    import("@lrnwebcomponents/cms-hax/lib/cms-entity.js");
     window.addEventListener(
       "hax-store-property-updated",
       this._haxStorePropertyUpdated.bind(this)
     );
     window.addEventListener("hax-store-ready", this._storeReady.bind(this));
-  },
+  }
   /**
    * detached life cycle
    */
-  detached: function() {
+  disconnectedCallback() {
     window.removeEventListener("hax-store-ready", this._storeReady.bind(this));
     window.removeEventListener("hax-save", this._saveFired.bind(this));
-  },
+    super.disconnectedCallback();
+  }
   /**
    * Attached to the DOM; now we can fire event to the store that
    * we exist and are the thing being edited.
    */
-  attached: function() {
+  connectedCallback() {
+    super.connectedCallback();
     window.SimpleToast.requestAvailability();
     this.__lock = false;
     window.addEventListener("hax-save", this._saveFired.bind(this));
@@ -279,9 +283,13 @@ let CmsHax = Polymer({
       FlattenedNodesObserver(window.HaxStore.instance.activeHaxBody, info => {
         if (!this.__lock) {
           this.__lock = true;
-          this.fire(
-            "hax-body-content-changed",
-            window.HaxStore.instance.activeHaxBody.haxToContent()
+          this.dispatchEvent(
+            new CustomEvent("hax-body-content-changed", {
+              bubbles: true,
+              cancelable: true,
+              composed: true,
+              detail: window.HaxStore.instance.activeHaxBody.haxToContent()
+            })
           );
           setTimeout(() => {
             this.__lock = false;
@@ -289,12 +297,12 @@ let CmsHax = Polymer({
         }
       });
     }
-  },
+  }
 
   /**
    * Store updated, sync.
    */
-  _haxStorePropertyUpdated: function(e) {
+  _haxStorePropertyUpdated(e) {
     if (
       e.detail &&
       typeof e.detail.value !== typeof undefined &&
@@ -306,22 +314,22 @@ let CmsHax = Polymer({
       this.set(e.detail.property, e.detail.value);
       this.notifyPath(e.detail.property);
     }
-  },
+  }
 
   /**
    * _saveFired
    */
-  _saveFired: function(e) {
+  _saveFired(e) {
     // generate sanitized content
     this.updatePageData = window.HaxStore.instance.activeHaxBody.haxToContent();
     // send the request
     this.$.pageupdateajax.generateRequest();
-  },
+  }
 
   /**
    * _handleUpdateResponse
    */
-  _handleUpdateResponse: function(e) {
+  _handleUpdateResponse(e) {
     if (!this.hideMessage) {
       const evt = new CustomEvent("simple-toast-show", {
         bubbles: true,
@@ -344,5 +352,6 @@ let CmsHax = Polymer({
       }
     }
   }
-});
+}
+window.customElements.define(CmsHax.tag, CmsHax);
 export { CmsHax };

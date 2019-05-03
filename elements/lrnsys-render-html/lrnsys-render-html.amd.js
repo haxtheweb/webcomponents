@@ -1,4 +1,4 @@
-define(["exports","./node_modules/@polymer/polymer/polymer-legacy.js"],function(_exports,_polymerLegacy){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.LrnsysRenderHtml=void 0;function _templateObject_6e966c506a8411e9979633906cf9c37c(){var data=babelHelpers.taggedTemplateLiteral(["\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <div id=\"container\"></div>\n  "]);_templateObject_6e966c506a8411e9979633906cf9c37c=function _templateObject_6e966c506a8411e9979633906cf9c37c(){return data};return data}/**
+define(["exports","./node_modules/@polymer/polymer/polymer-element.js"],function(_exports,_polymerElement){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.LrnsysRenderHtml=void 0;function _templateObject_f97a17c06d6a11e9a217098acef6bdeb(){var data=babelHelpers.taggedTemplateLiteral(["\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <div id=\"container\"></div>"]);_templateObject_f97a17c06d6a11e9a217098acef6bdeb=function _templateObject_f97a17c06d6a11e9a217098acef6bdeb(){return data};return data}/**
 `lrnsys-render-html`
 A legacy element which just directly renders HTML.
 WARNING: DO NOT USE THIS UNLESS YOU KNOW WHAT YOU ARE DOING!
@@ -9,11 +9,11 @@ that. Do not render raw user input through this element! This would allow XSS at
 your users.
 
 * @demo demo/index.html
-*/var LrnsysRenderHtml=(0,_polymerLegacy.Polymer)({_template:(0,_polymerLegacy.html)(_templateObject_6e966c506a8411e9979633906cf9c37c()),is:"lrnsys-render-html",properties:{/**
-     * String to render as HTML directly
-     * @type {Object}
-     */html:{type:String}},/**
-   * When HTML changes, inject it directly.
-   */observers:["_render(html)"],/**
+*/var LrnsysRenderHtml=/*#__PURE__*/function(_PolymerElement){babelHelpers.inherits(LrnsysRenderHtml,_PolymerElement);function LrnsysRenderHtml(){babelHelpers.classCallCheck(this,LrnsysRenderHtml);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(LrnsysRenderHtml).apply(this,arguments))}babelHelpers.createClass(LrnsysRenderHtml,[{key:"_render",/**
    * Render the HTML by just injecting it directly.
-   */_render:function _render(html){this.$.container.innerHTML=html}});_exports.LrnsysRenderHtml=LrnsysRenderHtml});
+   */value:function _render(html){this.$.container.innerHTML=html}}],[{key:"template",get:function get(){return(0,_polymerElement.html)(_templateObject_f97a17c06d6a11e9a217098acef6bdeb())}},{key:"tag",get:function get(){return"lrnsys-render-html"}},{key:"properties",get:function get(){return{/**
+       * String to render as HTML directly
+       * @type {Object}
+       */html:{type:String}}}/**
+   * When HTML changes, inject it directly.
+   */},{key:"observers",get:function get(){return["_render(html)"]}}]);return LrnsysRenderHtml}(_polymerElement.PolymerElement);_exports.LrnsysRenderHtml=LrnsysRenderHtml;window.customElements.define(LrnsysRenderHtml.tag,LrnsysRenderHtml)});

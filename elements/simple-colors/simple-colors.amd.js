@@ -1,4 +1,4 @@
-define(["exports","./node_modules/@polymer/polymer/polymer-element.js","./lib/simple-colors-styles.js"],function(_exports,_polymerElement,_simpleColorsStyles){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.SimpleColors=void 0;function _templateObject_92491b106a8511e983c16f9c55444497(){var data=babelHelpers.taggedTemplateLiteral(["\n      <style is=\"custom-style\" include=\"simple-colors\"></style>\n      <slot></slot>\n    "]);_templateObject_92491b106a8511e983c16f9c55444497=function _templateObject_92491b106a8511e983c16f9c55444497(){return data};return data}/**
+define(["exports","./node_modules/@polymer/polymer/polymer-element.js","./lib/simple-colors-styles.js"],function(_exports,_polymerElement,_simpleColorsStyles){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.SimpleColors=void 0;function _templateObject_bc2ffaa06d6b11e98c8e435d93d2727e(){var data=babelHelpers.taggedTemplateLiteral(["\n      <style is=\"custom-style\" include=\"simple-colors\"></style>\n      <slot></slot>\n    "]);_templateObject_bc2ffaa06d6b11e98c8e435d93d2727e=function _templateObject_bc2ffaa06d6b11e98c8e435d93d2727e(){return data};return data}/**
  * `simple-colors`
  * `a shared set of styles for @lrnwebcomponents`
  *
@@ -74,7 +74,7 @@ define(["exports","./node_modules/@polymer/polymer/polymer-element.js","./lib/si
    * @param {string} contrast shade, e.g. 12
    * @param {boolean} whether or not the contrasting shade is WCAG 2.0 AA-compliant
    */},{key:"isContrastCompliant",value:function isContrastCompliant(isLarge,colorName,colorShade,contrastName,contrastShade){return window.SimpleColorsUtilities.isContrastCompliant(isLarge,colorName,colorShade,contrastName,contrastShade)}}],[{key:"template",// render function
-get:function get(){return(0,_polymerElement.html)(_templateObject_92491b106a8511e983c16f9c55444497())}// properties available to the custom element for data binding
+get:function get(){return(0,_polymerElement.html)(_templateObject_bc2ffaa06d6b11e98c8e435d93d2727e())}// properties available to the custom element for data binding
 },{key:"properties",get:function get(){return{/**
        * a selected accent-color: grey, red, pink, purple, etc.
        */accentColor:{name:"accentColor",type:"String",value:"grey",reflectToAttribute:!0,notify:!0},/**

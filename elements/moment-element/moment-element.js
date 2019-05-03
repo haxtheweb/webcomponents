@@ -1,4 +1,4 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 /**
@@ -16,98 +16,110 @@ Examples:
 
 * @demo demo/index.html
 */
-let MomentElement = Polymer({
-  _template: html`
-    [[output]]
-  `,
+class MomentElement extends PolymerElement {
+  static get template() {
+    return html`
+      [[output]]
+    `;
+  }
+  static get tag() {
+    return "moment-element";
+  }
+  static get properties() {
+    return {
+      /**
+       * The input datetime. If don't set the datetime, the datetime will be now.
+       * For consistent results, parsing anything other than ISO 8601 strings
+       * with the `inputFormat` property. More information in [moment String](http://momentjs.com/docs/#/parsing/string/).
+       */
+      datetime: {
+        type: String,
+        value() {
+          return new Date();
+        }
+      },
 
-  is: "moment-element",
+      /**
+       * The datetime input format. An string using the
+       * [moment String + Format](http://momentjs.com/docs/#/parsing/string-format/).
+       */
+      inputFormat: {
+        type: String,
+        value: ""
+      },
 
-  properties: {
-    /**
-     * The input datetime. If don't set the datetime, the datetime will be now.
-     * For consistent results, parsing anything other than ISO 8601 strings
-     * with the `inputFormat` property. More information in [moment String](http://momentjs.com/docs/#/parsing/string/).
-     */
-    datetime: {
-      type: String,
-      value: function() {
-        return new Date();
+      /**
+       * The datetime output format. Options are 'now' or datetime using the
+       * [moment Format](http://momentjs.com/docs/#/displaying/format/).
+       */
+      outputFormat: {
+        type: String,
+        value: ""
+      },
+
+      /**
+       * Relative time using [momen time from now](http://momentjs.com/docs/#/displaying/fromnow/)
+       * or [momen Time from datetime](http://momentjs.com/docs/#/displaying/from/).
+       */
+      from: {
+        type: String,
+        value: ""
+      },
+
+      /**
+       * Relative time using [momen Time to now](http://momentjs.com/docs/#/displaying/tonow/)
+       * or [momen Time to datetime](http://momentjs.com/docs/#/displaying/to/).
+       */
+      to: {
+        type: String,
+        value: ""
+      },
+
+      /**
+       * The output datetime.
+       */
+      output: {
+        type: String,
+        notify: true
+      },
+      /**
+       * library loaded
+       */
+      libraryLoaded: {
+        type: Boolean
       }
-    },
-
-    /**
-     * The datetime input format. An string using the
-     * [moment String + Format](http://momentjs.com/docs/#/parsing/string-format/).
-     */
-    inputFormat: {
-      type: String,
-      value: ""
-    },
-
-    /**
-     * The datetime output format. Options are 'now' or datetime using the
-     * [moment Format](http://momentjs.com/docs/#/displaying/format/).
-     */
-    outputFormat: {
-      type: String,
-      value: ""
-    },
-
-    /**
-     * Relative time using [momen time from now](http://momentjs.com/docs/#/displaying/fromnow/)
-     * or [momen Time from datetime](http://momentjs.com/docs/#/displaying/from/).
-     */
-    from: {
-      type: String,
-      value: ""
-    },
-
-    /**
-     * Relative time using [momen Time to now](http://momentjs.com/docs/#/displaying/tonow/)
-     * or [momen Time to datetime](http://momentjs.com/docs/#/displaying/to/).
-     */
-    to: {
-      type: String,
-      value: ""
-    },
-
-    /**
-     * The output datetime.
-     */
-    output: {
-      type: String,
-      notify: true
-    },
-    /**
-     * library loaded
-     */
-    libraryLoaded: {
-      type: Boolean
-    }
-  },
-
-  observers: [
-    "_computeOutput(datetime, inputFormat, outputFormat, from, to, libraryLoaded)"
-  ],
-  created: function() {
-    const name = "moment";
+    };
+  }
+  static get observers() {
+    return [
+      "_computeOutput(datetime, inputFormat, outputFormat, from, to, libraryLoaded)"
+    ];
+  }
+  constructor() {
+    super();
     const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
     const location = `${basePath}lib/moment/moment.js`;
     window.addEventListener(
-      `es-bridge-${name}-loaded`,
+      "es-bridge-moment-loaded",
       this._momentLoaded.bind(this)
     );
     window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load(name, location);
-  },
-  _momentLoaded: function() {
+    window.ESGlobalBridge.instance.load("moment", location);
+  }
+  disconnectedCallback() {
+    window.removeEventListener(
+      "es-bridge-moment-loaded",
+      this._momentLoaded.bind(this)
+    );
+    super.disconnectedCallback();
+  }
+  _momentLoaded() {
     this.libraryLoaded = true;
-  },
+  }
   /**
    * Recomputes the output
    */
-  update: function() {
+  update() {
     this._computeOutput(
       this.datetime,
       this.inputFormat,
@@ -116,16 +128,8 @@ let MomentElement = Polymer({
       this.to,
       this.libraryLoaded
     );
-  },
-
-  _computeOutput: function(
-    datetime,
-    inputFormat,
-    outputFormat,
-    from,
-    to,
-    libraryLoaded
-  ) {
+  }
+  _computeOutput(datetime, inputFormat, outputFormat, from, to, libraryLoaded) {
     if (libraryLoaded) {
       var output = inputFormat
         ? moment(datetime, inputFormat)
@@ -140,5 +144,6 @@ let MomentElement = Polymer({
       this.set("output", output);
     }
   }
-});
+}
+window.customElements.define(MomentElement.tag, MomentElement);
 export { MomentElement };

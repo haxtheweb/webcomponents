@@ -1,4 +1,4 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import{addDebouncer,dom,flush}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import{Templatizer}from"./node_modules/@polymer/polymer/lib/legacy/templatizer-behavior.js";import{OptionalMutableDataBehavior}from"./node_modules/@polymer/polymer/lib/legacy/mutable-data-behavior.js";/**
+import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import{addDebouncer,dom,flush}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import{Templatizer}from"./node_modules/@polymer/polymer/lib/legacy/templatizer-behavior.js";import{OptionalMutableDataBehavior}from"./node_modules/@polymer/polymer/lib/legacy/mutable-data-behavior.js";import{mixinBehaviors}from"./node_modules/@polymer/polymer/lib/legacy/class.js";/**
 @license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
 This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
@@ -134,9 +134,11 @@ The function receives a single `item` of the items provided and should return a 
       </template>
     </grafitto-filter>
     <script>
-      Polymer({
-        is: "your-element",
-        properties: {
+      class YourElement extends PolymerElement {
+        static get tag() {
+    return "your-element",
+        static get properties() {
+    return {
           data: {
             type: Array,
             value: [
@@ -151,7 +153,8 @@ The function receives a single `item` of the items provided and should return a 
                   ]
           }
         },
-        ready: function(){
+        ready() {
+    super.ready();
           this.$.filter.f = function(item){
             return item.name == "Doe";
           };
@@ -169,26 +172,25 @@ by the regular expression engine.
 
 @element grafitto-filter
 * @demo demo/index.html
-*/let GrafittoFilter=Polymer({_template:html`
-    <div id="dom"><slot></slot></div>
-  `,is:"grafitto-filter",behaviors:[Templatizer,OptionalMutableDataBehavior],properties:{/**
-     * These are the items to be filtered
-     */items:{type:Array,value:[]},/**
-     * Filter regular expression string
-     */like:{type:String,value:""},/**
-     * The filter-by field of your items array of objects
-     */where:{type:String,value:"name"},/**
-     * Enable case sensitivity when filtering
-     */caseSensitive:{type:Boolean,value:!1,reflectToAttribute:!0},/**
-     * How the filtered items will be passed to the light-DOM. Default `items`
-     */as:{type:String,value:"items"},/**
-     * Filtered items
-     */filtered:{type:Array,computed:"_computeFiltered(items, where, like, caseSensitive)",observer:"_onFilter"},/**
-     * Custom filter function, if this is provided then 'where' and 'like' are ignored
-     */f:{type:Function,notify:!0}},observers:["_populateUserTemplate(filtered)"],/**
+*/class GrafittoFilter extends mixinBehaviors([Templatizer,OptionalMutableDataBehavior],PolymerElement){static get template(){return html`
+    <div id="dom"><slot></slot></div>`}static get tag(){return"grafitto-filter"}static get properties(){let props={/**
+       * These are the items to be filtered
+       */items:{type:Array,value:[]},/**
+       * Filter regular expression string
+       */like:{type:String,value:""},/**
+       * The filter-by field of your items array of objects
+       */where:{type:String,value:"name"},/**
+       * Enable case sensitivity when filtering
+       */caseSensitive:{type:Boolean,value:!1,reflectToAttribute:!0},/**
+       * How the filtered items will be passed to the light-DOM. Default `items`
+       */as:{type:String,value:"items"},/**
+       * Filtered items
+       */filtered:{type:Array,computed:"_computeFiltered(items, where, like, caseSensitive)",observer:"_onFilter"},/**
+       * Custom filter function, if this is provided then 'where' and 'like' are ignored
+       */f:{type:Function,notify:!0}};if(super.properties){props=Object.assign(props,super.properties)}return props}static get observers(){return["_populateUserTemplate(filtered)"]}/**
    * Filters the items using the f function provided. Recommended when f function is provided
-   */filter:function(){//This forces _computeFiltered function to do its job :-)
-this.where=""},/**
+   */filter(){//This forces _computeFiltered function to do its job :-)
+this.where=""}/**
    * This filters the items provided
    *
    * @param {array} items These are the items to be filtered.
@@ -196,7 +198,7 @@ this.where=""},/**
    * @param {string} like The filter string.
    * @param {boolean} capital This is a flag to determine whether filter should be case sensitive or not.
    * @return array} Filter results.
-   */_computeFiltered:function(items,where,like,caseSensitive){var regex=null;if(caseSensitive){regex=new RegExp(like)}else{regex=new RegExp(like,"i")}var filtered=[];if(this.f){var customFunction=this.f.bind(this);filtered=items.filter(customFunction)}else{//Save a reference to this object
+   */_computeFiltered(items,where,like,caseSensitive){var regex=null;if(caseSensitive){regex=new RegExp(like)}else{regex=new RegExp(like,"i")}var filtered=[];if(this.f){var customFunction=this.f.bind(this);filtered=items.filter(customFunction)}else{//Save a reference to this object
 var decompose=this._decomposeWhere.bind(this);//Filter by `like`
 filtered=items.filter(function(item){//This is when a complex object is provided
 if("object"==typeof item){//Decompose where incase it is represented in . notation for complex objects
@@ -204,10 +206,10 @@ var decomposed=decompose(where,item);//Check if the items specified are defined
 if("undefined"==typeof decomposed&&""!=where){//Do what I know best
 console.warn("grafitto-filter was unable to find a property in '"+where+"'")}return regex.test(decomposed)}//When a simple object of strings is provided
 if("string"==typeof item){return regex.test(item)}//When a simple object of numbers is provided
-if("number"==typeof item){return regex.test(item.toString())}})}return filtered},/**
+if("number"==typeof item){return regex.test(item.toString())}})}return filtered}/**
    * Populates user template, only template dom-repeate is supported for now
    *@param {array} filtered the filtered array to be displayed
-   */_populateUserTemplate:function(filtered){// set after template is stamped
+   */_populateUserTemplate(filtered){// set after template is stamped
 if(this.ctor){// use this so filtered items can be updated after the fact
 this.__clone[this.as]=filtered;// bail so we don't get a double template error
 return}// find the template, just the 1st time though
@@ -216,10 +218,10 @@ if(!this._userTemplate){console.warn("grafitto-filter requires a template to be 
 this.templatize(this._userTemplate);// stamp it from template into an object
 this.__clone=this.stamp(null);// set filtered to whatever it is to start
 this.__clone[this.as]=filtered;// stamp this into itself...weird I know
-dom(this).appendChild(this.__clone.root)},/**
+dom(this).appendChild(this.__clone.root)}/**
    * This decomposes `where` property to object attributes using . notation
-   */_decomposeWhere:function(where,item){return where.split(".").reduce(function(a,b){return a&&a[b]},item)},/**
+   */_decomposeWhere(where,item){return where.split(".").reduce(function(a,b){return a&&a[b]},item)}/**
    * The `filter` event is fired whenever filtering is done before populating the dom.
    *
    * @event filter
-   */_onFilter:function(){this.fire("filter")}});export{GrafittoFilter};
+   */_onFilter(){this.dispatchEvent(new CustomEvent("filter",{bubbles:!0,cancelable:!0,composed:!0,detail:!0}))}}window.customElements.define(GrafittoFilter.tag,GrafittoFilter);export{GrafittoFilter};

@@ -465,7 +465,8 @@ class HexagonLoader extends PolymerElement {
        */
       loading: {
         name: "loading",
-        type: "Boolean"
+        type: "Boolean",
+        reflectToAttribute: true
       },
       /**
        * Count of the items

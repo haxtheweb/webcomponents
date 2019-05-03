@@ -1,6 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
-import "./hax-toolbar-item.js";
 /**
  * `hax-context-item-textop`
  * `A single button in the hax context menus for consistency. This one uses the mousedown event becasue tap won't work in safari / firefox / IE while maintaining focus inside the contenteditable area (stupid, I know)`
@@ -11,6 +10,7 @@ import "./hax-toolbar-item.js";
 class HaxContextItemTextop extends PolymerElement {
   constructor() {
     super();
+    import("@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js");
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/iron-icons/editor-icons.js");
     import("@polymer/iron-icons/device-icons.js");

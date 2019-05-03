@@ -1,11 +1,10 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/app-layout/app-layout.js";import"./node_modules/@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";import"./node_modules/@lrnwebcomponents/lrnsys-button/lrnsys-button.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@polymer/iron-icons/image-icons.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/lib/colors.js";/**
+import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";/**
  * `image-inspector`
  * `Zoom, Rotate, Mirror, Download, and View image`
  *
  * @demo demo/index.html
- */let ImageInspector=Polymer({_template:html`
-    <custom-style>
-      <style include="materializecss-styles-colors">
+ */class ImageInspector extends PolymerElement{constructor(){super();import("./node_modules/@polymer/app-layout/app-layout.js");import("./node_modules/@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js");import("./node_modules/@lrnwebcomponents/lrnsys-button/lrnsys-button.js");import("./node_modules/@polymer/iron-icons/iron-icons.js");import("./node_modules/@polymer/iron-icons/image-icons.js")}static get template(){return html`
+      <style>
         :host {
           display: block;
           --image-inspector-background: #dddddd;
@@ -29,7 +28,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
           top: 128px;
         }
       </style>
-    </custom-style>
+    
     <app-toolbar>
       <lrnsys-button
         alt="Zoom in"
@@ -71,23 +70,22 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       <slot name="toolbar"></slot>
     </app-toolbar>
     <img-pan-zoom id="img" src="[[src]]"></img-pan-zoom>
-    <slot></slot>
-  `,is:"image-inspector",properties:{/**
-     * Image rotation
-     */degrees:{type:Number,value:0,reflectToAttribute:!0},/**
-     * Image source.
-     */src:{type:String,reflectToAttribute:!0},/**
-     * Hover class for button styling
-     */hoverClass:{type:String,value:"blue white-text"}},/**
+    <slot></slot>`}static get tag(){return"image-inspector"}static get properties(){return{/**
+       * Image rotation
+       */degrees:{type:Number,value:0,reflectToAttribute:!0},/**
+       * Image source.
+       */src:{type:String,reflectToAttribute:!0},/**
+       * Hover class for button styling
+       */hoverClass:{type:String,value:"blue white-text"}}}connectedCallback(){super.connectedCallback();this.__img=this.shadowRoot.querySelector("#img")}/**
    * Rotate the image to the right.
-   */rotateRight:function(){let img=this.$.img;// spin 90
-this.degrees+=90;img.style.transform="rotate("+this.degrees+"deg)";img.toggleClass("top")},/**
+   */rotateRight(){// spin 90
+this.degrees+=90;this.__img.style.transform="rotate("+this.degrees+"deg)";this.__img.toggleClass("top")}/**
    * Rotate the image to the left.
-   */rotateLeft:function(){let img=this.$.img;// go back 90
-this.degrees+=-90;img.style.transform="rotate("+this.degrees+"deg)";img.toggleClass("top")},/**
+   */rotateLeft(){// go back 90
+this.degrees+=-90;this.__img.style.transform="rotate("+this.degrees+"deg)";this.__img.toggleClass("top")}/**
    * Flip the image.
-   */mirrorImage:function(){let img=this.$.img;if("scaleX(1)"===img.style.transform){img.style.transform="scaleX(-1)"}else{img.style.transform="scaleX(1)"}},/**
+   */mirrorImage(){if("scaleX(1)"===this.__img.style.transform){this.__img.style.transform="scaleX(-1)"}else{this.__img.style.transform="scaleX(1)"}}/**
    * Zoom in by calling  downstream function.
-   */zoomIn:function(){this.$.img.zoomIn()},/**
+   */zoomIn(){this.__img.zoomIn()}/**
    * Zoom out by calling downstream function.
-   */zoomOut:function(){this.$.img.zoomOut()}});export{ImageInspector};
+   */zoomOut(){this.__img.zoomOut()}}window.customElements.define(ImageInspector.tag,ImageInspector);export{ImageInspector};

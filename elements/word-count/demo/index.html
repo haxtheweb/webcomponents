@@ -22,18 +22,22 @@
       </demo-snippet>
     </div>
     <div class="vertical-section-container centered">
-      <h3>Basic word-count demo</h3>
-      <demo-snippet>
-        <template>
-          <word-count>
-            <p>So put in some words and get a count.
-              So put in some words and get a count.
-              So put in some words and get a count.
-              So put in some words and get a count.So put in some words and get a count.So put in some words and get a
-              count.</p>
-          </word-count>
-        </template>
-      </demo-snippet>
+      <h3>Basic word-count demo with some basic CSS variables</h3>
+      <style>
+        #another {
+          --word-count-color: orange;
+          --word-count-color-hover: green;
+          --word-count-font-size: 20px;
+          --word-count-font-size-hover: 28px;
+        }
+      </style>
+      <word-count id="another">
+        <p>So put in some words and get a count.
+          So put in some words <a href="http://google.com">and get</a> a count.
+          So put in some words and get a count.
+          So put in some words and get a count.So put in some words and get a count.So put in some words and get a
+          count.</p>
+      </word-count>
     </div>
   </body>
 </html>

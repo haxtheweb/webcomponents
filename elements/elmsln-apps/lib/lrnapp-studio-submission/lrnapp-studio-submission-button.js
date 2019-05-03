@@ -1,5 +1,6 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-ajax/iron-ajax.js";
+import "@polymer/polymer/lib/elements/dom-if.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 /*
@@ -10,81 +11,89 @@ Usage:
 ```
 <lrnapp-studio-submission-button assignment-id="[[id]]" submission-id="{{submissionId}}" end-point="[[endPoint]]" csrf-token=[[csrfToken]]></lrnapp-studio-submission-button>
 */
-Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: block;
+class LrnappStudioSubmissionButton extends PolymerElement {
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: block;
+        }
+      </style>
+
+      <template is="dom-if" if="[[!submissionId]]">
+        <lrnsys-button
+          raised=""
+          on-tap="_createSubmission"
+          label="Create submission"
+        ></lrnsys-button>
+        <iron-ajax
+          id="ajaxCreateStub"
+          url="[[createStubUrl]]"
+          method="POST"
+          body="[[assignmentId]]"
+          handle-as="json"
+          on-response="_ajaxCreateStubHandler"
+        ></iron-ajax>
+      </template>
+      <template is="dom-if" if="[[submissionId]]">
+        <lrnsys-button
+          raised=""
+          label="View submission"
+          show-href="[[_submissionUrl(submissionId)]]"
+          href="[[_submissionUrl(submissionId)]]"
+        ></lrnsys-button>
+      </template>
+
+      <template is="dom-if" if="[[displayErrors]]">
+        <paper-toast id="toast"></paper-toast>
+      </template>
+    `;
+  }
+
+  static get tag() {
+    return "lrnapp-studio-submission-button";
+  }
+
+  static get properties() {
+    return {
+      auto: {
+        type: Boolean,
+        reflectToAttribute: true,
+        value: false,
+        notify: true
+      },
+      assignmentId: {
+        type: String,
+        reflectToAttribute: true
+      },
+      submissionId: {
+        type: String,
+        value: false,
+        reflectToAttribute: true
+      },
+      endPoint: String,
+      csrfToken: String,
+      displayErrors: {
+        type: Boolean,
+        value: true
       }
-    </style>
+    };
+  }
 
-    <template is="dom-if" if="[[!submissionId]]">
-      <lrnsys-button
-        raised=""
-        on-tap="_createSubmission"
-        label="Create submission"
-      ></lrnsys-button>
-      <iron-ajax
-        id="ajaxCreateStub"
-        url="[[createStubUrl]]"
-        method="POST"
-        body="[[assignmentId]]"
-        handle-as="json"
-        on-response="_ajaxCreateStubHandler"
-      ></iron-ajax>
-    </template>
-    <template is="dom-if" if="[[submissionId]]">
-      <lrnsys-button
-        raised=""
-        label="View submission"
-        show-href="[[_submissionUrl(submissionId)]]"
-        href="[[_submissionUrl(submissionId)]]"
-      ></lrnsys-button>
-    </template>
+  static get observers() {
+    return ["_requestUrlChanged(endPoint, csrfToken)"];
+  }
 
-    <template is="dom-if" if="[[displayErrors]]">
-      <paper-toast id="toast"></paper-toast>
-    </template>
-  `,
-
-  is: "lrnapp-studio-submission-button",
-
-  properties: {
-    auto: {
-      type: Boolean,
-      reflectToAttribute: true,
-      value: false,
-      notify: true
-    },
-    assignmentId: {
-      type: String,
-      reflectToAttribute: true
-    },
-    submissionId: {
-      type: String,
-      value: false,
-      reflectToAttribute: true
-    },
-    endPoint: String,
-    csrfToken: String,
-    displayErrors: {
-      type: Boolean,
-      value: true
-    }
-  },
-
-  observers: ["_requestUrlChanged(endPoint, csrfToken)"],
-
-  _requestUrlChanged: function(endPoint, csrfToken) {
+  _requestUrlChanged(endPoint, csrfToken) {
     this.createStubUrl =
       endPoint + "/api/submissions/create-stub?token=" + csrfToken;
-  },
+  }
 
-  _createSubmission: function() {
+  _createSubmission() {
     this.shadowRoot.querySelector("#ajaxCreateStub").generateRequest();
-  },
+  }
 
-  _ajaxCreateStubHandler: function(e) {
+  _ajaxCreateStubHandler(e) {
     var status = e.detail.response.status;
     var response = e.detail.response;
     if (status === 201) {
@@ -106,9 +115,14 @@ Polymer({
       });
       this.shadowRoot.querySelector("#toast").show(text);
     }
-  },
+  }
 
-  _submissionUrl: function(id) {
+  _submissionUrl(id) {
     return this.endPoint + "/submissions/" + id;
   }
-});
+}
+window.customElements.define(
+  LrnappStudioSubmissionButton.tag,
+  LrnappStudioSubmissionButton
+);
+export { LrnappStudioSubmissionButton };

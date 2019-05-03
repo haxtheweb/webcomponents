@@ -1123,29 +1123,31 @@ class HaxBody extends PolymerElement {
    * Reposition context menus to match an element.
    */
   positionContextMenus(node, container) {
-    let tag = node.tagName.toLowerCase();
-    if (window.HaxStore.instance._isSandboxed && tag === "webview") {
-      tag = "iframe";
-    }
-    let props = window.HaxStore.instance.elementList[tag];
-    // try and work against anything NOT a P tag
-    if (
-      typeof props !== typeof undefined &&
-      !window.HaxStore.instance.isTextElement(node)
-    ) {
-      this.__activeContextType = this.$.cecontextmenu;
-      props.element = node;
-      this.__activeContextType.setHaxProperties(props);
-    } else {
-      this.__activeContextType = this.$.textcontextmenu;
-    }
-    this._positionContextMenu(this.__activeContextType, container, -39, -39);
-    this._positionContextMenu(this.$.platecontextmenu, container, -31, 0);
-    // special case for node not matching container
-    if (container && !this._HTMLPrimativeTest(node) && node !== container) {
-      container.contentEditable = false;
-    } else if (container && this._HTMLPrimativeTest(container)) {
-      container.contentEditable = true;
+    if (node) {
+      let tag = node.tagName.toLowerCase();
+      if (window.HaxStore.instance._isSandboxed && tag === "webview") {
+        tag = "iframe";
+      }
+      let props = window.HaxStore.instance.elementList[tag];
+      // try and work against anything NOT a P tag
+      if (
+        typeof props !== typeof undefined &&
+        !window.HaxStore.instance.isTextElement(node)
+      ) {
+        this.__activeContextType = this.$.cecontextmenu;
+        props.element = node;
+        this.__activeContextType.setHaxProperties(props);
+      } else {
+        this.__activeContextType = this.$.textcontextmenu;
+      }
+      this._positionContextMenu(this.__activeContextType, container, -39, -39);
+      this._positionContextMenu(this.$.platecontextmenu, container, -31, 0);
+      // special case for node not matching container
+      if (container && !this._HTMLPrimativeTest(node) && node !== container) {
+        container.contentEditable = false;
+      } else if (container && this._HTMLPrimativeTest(container)) {
+        container.contentEditable = true;
+      }
     }
   }
   /**

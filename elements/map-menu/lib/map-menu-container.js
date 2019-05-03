@@ -1,4 +1,4 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "./map-menu-item.js";
 import "./map-menu-submenu.js";
 /**
@@ -7,23 +7,26 @@ A LRN element
 
 * @demo demo/index.html
 */
-Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: block;
-      }
-      #container {
-        padding: 16px 32px;
-      }
-      :host > ::slotted(map-menu-submenu + map-menu-submenu) {
-        margin-top: 16px;
-      }
-    </style>
-    <slot></slot>
-  `,
-
-  is: "map-menu-container",
-
-  properties: {}
-});
+class MapMenuContainer extends PolymerElement {
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: block;
+        }
+        #container {
+          padding: 16px 32px;
+        }
+        :host > ::slotted(map-menu-submenu + map-menu-submenu) {
+          margin-top: 16px;
+        }
+      </style>
+      <slot></slot>
+    `;
+  }
+  static get tag() {
+    return "map-menu-container";
+  }
+}
+window.customElements.define(MapMenuContainer.tag, MapMenuContainer);
+export { MapMenuContainer };

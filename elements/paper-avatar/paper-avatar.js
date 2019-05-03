@@ -1,8 +1,8 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import "@polymer/polymer/lib/elements/dom-if.js";
 import * as md5 from "./lib/md5.min.js";
-
 /**
 `paper-avatar`
 User avatar in material style
@@ -29,136 +29,142 @@ Custom property | Description | Default
 
 * @demo demo/index.html 
 */
-let PaperAvatar = Polymer({
-  is: "paper-avatar",
-  _template: html`
-    <style>
-      :host {
-        --paper-avatar-width: 40px;
-        display: inline-block;
-        box-sizing: border-box;
-        position: relative;
-        width: var(--paper-avatar-width);
-        height: var(--paper-avatar-width);
-        border-radius: 50%;
-        cursor: default;
-        background-color: var(
-          --paper-avatar-color,
-          var(--paper-avatar-bgcolor)
-        );
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
+class PaperAvatar extends PolymerElement {
+  static get tag() {
+    return "paper-avatar";
+  }
+  static get template() {
+    return html`
+      <style>
+        :host {
+          --paper-avatar-width: 40px;
+          display: inline-block;
+          box-sizing: border-box;
+          position: relative;
+          width: var(--paper-avatar-width);
+          height: var(--paper-avatar-width);
+          border-radius: 50%;
+          cursor: default;
+          background-color: var(
+            --paper-avatar-color,
+            var(--paper-avatar-bgcolor)
+          );
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
 
-      :host > * {
-        pointer-events: none;
-      }
+        :host > * {
+          pointer-events: none;
+        }
 
-      #label,
-      #img,
-      #jdenticon {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-      }
-      #label {
-        overflow: hidden;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-flex-direction: row;
-        -ms-flex-direction: row;
-        flex-direction: row;
-        -webkit-align-items: center;
-        -ms-flex-align: center;
-        align-items: center;
-      }
-      #label span {
-        display: block;
-        width: 100%;
-        font-weight: 400;
-        color: rgba(255, 255, 255, 0.8);
-        text-transform: capitalize;
-        font-family: "Roboto", "Noto", sans-serif;
-        -webkit-font-smoothing: antialiased;
-        text-align: center;
-        font-size: calc(var(--paper-avatar-width) / 1.65);
-      }
-      #jdenticon {
-        width: var(--paper-avatar-width);
-        height: var(--paper-avatar-width);
-      }
-    </style>
-    <div id="label" title="[[label]]"><span>[[_label(label)]]</span></div>
-    <svg id="jdenticon" width="40" height="40"><slot></slot></svg>
-    <template is="dom-if" if="[[src]]">
-      <img
-        id="img"
-        src="[[src]]"
-        title="[[label]]"
-        on-load="_onImgLoad"
-        on-error="_onImgError"
-        title="[[color]]"
-      />
-    </template>
-  `,
-  properties: {
-    /**
-     * Image address or base64
-     */
-    src: {
-      type: String,
-      value: false
-    },
+        #label,
+        #img,
+        #jdenticon {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+        }
+        #label {
+          overflow: hidden;
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-flex-direction: row;
+          -ms-flex-direction: row;
+          flex-direction: row;
+          -webkit-align-items: center;
+          -ms-flex-align: center;
+          align-items: center;
+        }
+        #label span {
+          display: block;
+          width: 100%;
+          font-weight: 400;
+          color: rgba(255, 255, 255, 0.8);
+          text-transform: capitalize;
+          font-family: "Roboto", "Noto", sans-serif;
+          -webkit-font-smoothing: antialiased;
+          text-align: center;
+          font-size: calc(var(--paper-avatar-width) / 1.65);
+        }
+        #jdenticon {
+          width: var(--paper-avatar-width);
+          height: var(--paper-avatar-width);
+        }
+      </style>
+      <div id="label" title="[[label]]"><span>[[_label(label)]]</span></div>
+      <svg id="jdenticon" width="40" height="40"><slot></slot></svg>
+      <template is="dom-if" if="[[src]]">
+        <img
+          id="img"
+          src="[[src]]"
+          title="[[label]]"
+          on-load="_onImgLoad"
+          on-error="_onImgError"
+          title="[[color]]"
+        />
+      </template>
+    `;
+  }
+  static get properties() {
+    return {
+      /**
+       * Image address or base64
+       */
+      src: {
+        type: String,
+        value: false
+      },
 
-    /**
-     *	Label with username
-     */
-    label: {
-      type: String,
-      observer: "_observerLabel"
-    },
-    /**
-     * Ensure we can support jdenticon before invoking it
-     */
-    jdenticonExists: {
-      type: Boolean,
-      value: false
-    },
-    /**
-     * Show two chars in avatar
-     */
-    twoChars: {
-      type: Boolean,
-      value: false
-    },
+      /**
+       *	Label with username
+       */
+      label: {
+        type: String,
+        observer: "_observerLabel"
+      },
+      /**
+       * Ensure we can support jdenticon before invoking it
+       */
+      jdenticonExists: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Show two chars in avatar
+       */
+      twoChars: {
+        type: Boolean,
+        value: false
+      },
 
-    /**
-     * Array of colors for avatar background
-     */
-    colors: {
-      type: Array
-    },
+      /**
+       * Array of colors for avatar background
+       */
+      colors: {
+        type: Array
+      },
 
-    /**
-     * Set true if you want use a jdenticon avatar
-     */
-    jdenticon: {
-      type: Boolean,
-      value: false
-    }
-  },
+      /**
+       * Set true if you want use a jdenticon avatar
+       */
+      jdenticon: {
+        type: Boolean,
+        value: false
+      }
+    };
+  }
   /**
    * Generate the correct label from change with optional jdenticon md5 hash
    */
-  _observerLabel: function(label) {
+  _observerLabel(label) {
     if (label) {
       if (this.jdenticonExists && this.jdenticon) {
         this.$.label.hidden = true;
@@ -177,32 +183,39 @@ let PaperAvatar = Polymer({
         "--paper-avatar-bgcolor": this._parseColor(label)
       });
     }
-  },
+  }
   /**
    * ready lifecycle
    */
-  ready: function() {
-    const name = "jdenticon";
+  ready() {
+    super.ready();
     const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
     const location = `${basePath}lib/jdenticon-1.4.0.min.js`;
     window.addEventListener(
-      `es-bridge-${name}-loaded`,
+      "es-bridge-jdenticon-loaded",
       this._jdenticonLoaded.bind(this)
     );
     window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load(name, location);
-  },
+    window.ESGlobalBridge.instance.load("jdenticon", location);
+  }
+  disconnectedCallback() {
+    window.removeEventListener(
+      "es-bridge-jdenticon-loaded",
+      this._jdenticonLoaded.bind(this)
+    );
+    super.disconnectedCallback();
+  }
   /**
    * Callback once we know that the jdenticon library is globally loaded.
    */
-  _jdenticonLoaded: function(e) {
+  _jdenticonLoaded(e) {
     this.jdenticonExists = true;
     this._observerLabel(this.label);
-  },
+  }
   /**
    * convert label in context
    */
-  _label: function(label) {
+  _label(label) {
     if (!label) return "";
 
     if (this.twoChars) {
@@ -215,17 +228,14 @@ let PaperAvatar = Polymer({
     }
 
     return label.charAt(0);
-  },
-
-  _onImgLoad: function(e) {
+  }
+  _onImgLoad(e) {
     e.currentTarget.hidden = false;
-  },
-
-  _onImgError: function(e) {
+  }
+  _onImgError(e) {
     e.currentTarget.hidden = true;
-  },
-
-  _parseColor: function(label) {
+  }
+  _parseColor(label) {
     var colors = this.colors
       ? this.colors
       : [
@@ -258,5 +268,6 @@ let PaperAvatar = Polymer({
 
     return colors[hash];
   }
-});
+}
+window.customElements.define(PaperAvatar.tag, PaperAvatar);
 export { PaperAvatar };

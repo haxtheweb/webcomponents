@@ -1,9 +1,9 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";import"./node_modules/time-elements/dist/time-elements.js";/**
+import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import"./node_modules/@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";import"./node_modules/time-elements/dist/time-elements.js";/**
  * `lrndesign-comment`
  * A LRN element
  *
  * @demo demo/index.html
- */let LrndesignComment=Polymer({_template:html`
+ */class LrndesignComment extends PolymerElement{static get template(){return html`
     <style>
       :host {
         display: block;
@@ -26,5 +26,4 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         <div class="row-2"><slot></slot></div>
         <div class="row-3">{{links}}</div>
       </div>
-    </div>
-  `,is:"lrndesign-comment",properties:{avatar:{type:Object,reflectToAttribute:!0,notify:!0},name:{type:String,reflectToAttribute:!0,notify:!0},date:{type:String,value:"2014-04-01T00:00:00.000Z",reflectToAttribute:!0,notify:!0},links:{type:Object,notify:!0}}});export{LrndesignComment};
+    </div>`}static get tag(){return"lrndesign-comment"}static get properties(){return{avatar:{type:Object,reflectToAttribute:!0,notify:!0},name:{type:String,reflectToAttribute:!0,notify:!0},date:{type:String,value:"2014-04-01T00:00:00.000Z",reflectToAttribute:!0,notify:!0},links:{type:Object,notify:!0}}}}window.customElements.define(LrndesignComment.tag,LrndesignComment);export{LrndesignComment};

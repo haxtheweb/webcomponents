@@ -1,11 +1,11 @@
 /**
- * Copyright 2018 The Pennsylvania State University
+ * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@lrnwebcomponents/csv-render/csv-render.js";
-import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 
 /**
  * `lrn-table`
@@ -19,60 +19,71 @@ import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
  * @polymerLegacy
  * @demo demo/index.html
  */
-let LrnTable = Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: block;
-      }
-      .hidden-title {
-        display: none;
-      }
-    </style>
-    <div typeof="oer:SupportingMaterial">
-      <div class="hidden-title" property="oer:name">[[title]]</div>
-      <div property="oer:description">
-        <slot></slot>
-        <csv-render
-          data-source="[[csvFile]]"
-          caption="[[title]]"
-          summary="[[description]]"
-        ></csv-render>
+class LrnTable extends SchemaBehaviors(PolymerElement) {
+  constructor() {
+    super();
+    import("@lrnwebcomponents/csv-render/csv-render.js");
+  }
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: block;
+        }
+        .hidden-title {
+          display: none;
+        }
+      </style>
+      <div typeof="oer:SupportingMaterial">
+        <div class="hidden-title" property="oer:name">[[title]]</div>
+        <div property="oer:description">
+          <slot></slot>
+          <csv-render
+            data-source="[[csvFile]]"
+            caption="[[title]]"
+            summary="[[description]]"
+          ></csv-render>
+        </div>
       </div>
-    </div>
-  `,
-
-  is: "lrn-table",
-
-  behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
-
-  properties: {
-    /**
-     * Title of this table. This is both for accessibility and presentation.
-     */
-    title: {
-      type: String
-    },
-    /**
-     * The file to load material from.
-     */
-    csvFile: {
-      type: String
-    },
-    /**
-     * An extended description of the material in the table for improved accessibility.
-     */
-    description: {
-      type: String
-    }
-  },
-
+    `;
+  }
+  static get tag() {
+    return "lrn-table";
+  }
+  static get properties() {
+    return {
+      /**
+       * Title of this table. This is both for accessibility and presentation.
+       */
+      title: {
+        type: String
+      },
+      /**
+       * The file to load material from.
+       */
+      csvFile: {
+        type: String
+      },
+      /**
+       * An extended description of the material in the table for improved accessibility.
+       */
+      description: {
+        type: String
+      }
+    };
+  }
   /**
    * attached.
    */
-  attached: function() {
-    // Establish hax properties if they exist
-    let props = {
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, function() {
+      this.HAXWiring = new HAXWiring();
+      this.HAXWiring.setup(LrnTable.haxProperties, LrnTable.tag, this);
+    });
+  }
+  static get haxProperties() {
+    return {
       canScale: true,
       canPosition: true,
       canEditSource: false,
@@ -144,7 +155,7 @@ let LrnTable = Polymer({
         advanced: []
       }
     };
-    this.setHaxProperties(props);
   }
-});
+}
+window.customElements.define(LrnTable.tag, LrnTable);
 export { LrnTable };

@@ -2,7 +2,8 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@lrnwebcomponents/circle-progress/circle-progress.js";
 import "@polymer/paper-button/paper-button.js";
@@ -16,458 +17,457 @@ import "@polymer/iron-icons/iron-icons.js";
  * `circle that the outline grows as the percentage ticks up`
  *
  */
-Polymer({
-  _template: html`
-    <custom-style>
-      <style is="custom-style" include="paper-material-styles">
-        :host {
-          --paper-button-ink-color: var(
-            --lrnsys-progress-color,
-            var(--paper-green-500)
-          );
-          display: block;
-          transition: box-shadow var(--lrnsys-progress-circle-transition, 0.5s)
-              linear,
-            color var(--lrnsys-progress-circle-transition, 0.5s) ease-in-out,
-            background-color var(--lrnsys-progress-circle-transition, 0.5s)
-              ease-in-out;
-        }
-        :host([status="complete"]) .circle-wrapper {
-          --paper-button-ink-color: var(
-            --lrnsys-progress-complete-color,
-            var(--paper-green-500)
-          );
-          box-shadow: 0px 0px 0px 0.16px
-            var(--lrnsys-progress-complete-color, var(--paper-green-900));
-        }
-        :host([status="disabled"]) .circle-wrapper {
-          box-shadow: none;
-        }
-        :host([status="available"]) .circle-wrapper {
-          box-shadow: none;
-        }
-        :host([active]) .circle-wrapper {
-          box-shadow: 0px 0px 0px 0.16px var(--google-grey-500, #555555);
-        }
-        .circle-wrapper {
-          border-radius: 100%;
-        }
-        .button {
-          margin: 0;
-          padding: 0;
-          display: flex;
-          min-width: 40px;
-          border-radius: 100%;
-        }
-        paper-button {
-          width: var(--lrnsys-progress-circle-size, 40px);
-          height: var(--lrnsys-progress-circle-size, 40px);
-        }
-        circle-progress {
-          margin: 0;
-          --circle-progress-width: var(--lrnsys-progress-circle-size, 40px);
-          --circle-progress-height: var(--lrnsys-progress-circle-size, 40px);
-          --circle-progress-stroke-color: var(
-            --lrnsys-progress-color,
-            var(--paper-green-500)
-          );
-          --circle-progress-bg-stroke-color: var(
-            --lrnsys-progress-container-color,
-            var(--google-grey-300)
-          );
-          --circle-progress-transition: 0.5s;
-          --circle-progress-stroke-linecap: square;
-          transition: color 0.5s ease-in-out, background-color 0.5s ease-in-out;
-        }
-        paper-spinner {
-          display: block;
-          font-size: 16px;
-          width: var(--lrnsys-progress-spinner-size, 32px);
-          height: var(--lrnsys-progress-spinner-size, 32px);
-          position: absolute;
-          z-index: 1;
-          margin: 4px;
-          padding: 0;
-          visibility: visible;
-          opacity: 1;
-          transition: visibility 0.4s, opacity 0.4s ease;
-        }
-        paper-spinner.multi {
-          --paper-spinner-layer-1-color: var(--paper-purple-500);
-          --paper-spinner-layer-2-color: var(--paper-cyan-500);
-          --paper-spinner-layer-3-color: var(--paper-blue-grey-500);
-          --paper-spinner-layer-4-color: var(--paper-amber-500);
-        }
-        .transition {
-          opacity: 0.4;
-          width: calc(var(--lrnsys-progress-icon-size, 24px) - 8px);
-          height: calc(var(--lrnsys-progress-icon-size, 24px) - 8px);
-        }
-        iron-icon {
-          visibility: visible;
-          opacity: 1;
-          transition: width 0.1s linear, height 0.1s linear,
-            visibility 0.4s ease, opacity 0.4s ease;
-          width: var(--lrnsys-progress-icon-size, 24px);
-          height: var(--lrnsys-progress-icon-size, 24px);
-        }
-        .disabled {
-          background-color: var(
-            --lrnsys-progress-disabled-color,
-            var(--google-grey-500)
-          );
-          color: white;
-        }
-        .loading {
-          background-color: white;
-          color: black;
-        }
-        .finished iron-icon:not(.activeIcon) {
-          width: calc(var(--lrnsys-progress-icon-size, 24px) - 8px);
-          height: calc(var(--lrnsys-progress-icon-size, 24px) - 8px);
-        }
-        .available {
-          background-color: var(
-            --lrnsys-progress-active-color,
-            var(--google-grey-300)
-          );
-          color: var(
-            --lrnsys-progress-active-text-color,
-            var(--google-grey-500)
-          );
-        }
-        .activeIcon {
-          color: black;
-        }
-        .complete .activeIcon {
-          color: white;
-        }
-        :host([active]) .complete .activeIcon,
-        :host([active]) .finished .activeIcon {
-          color: black;
-        }
-        .complete,
-        .finished {
-          background-color: var(
-            --lrnsys-progress-container-color,
-            var(--paper-green-500)
-          );
-          color: white;
-        }
-        :host([active]) circle-progress {
-          background-color: white;
-          color: black;
-        }
-        .listview-title {
-          font-size: 16px;
-          padding: 0;
-          margin: 0;
-        }
-        .description-content {
-          font-size: 8px;
-          font-style: italic;
-        }
-        .circle-wrapper {
-          display: inline-block;
-        }
-        .listview {
-          height: 32px;
-          padding: 4px 0;
-          margin: 0;
-          vertical-align: top;
-        }
-        .link {
-          height: 40px;
-          width: 100%;
-        }
-        :host([list-view]) .button {
-          margin: 0;
-          padding: 0;
-          display: block;
-          min-width: 40px;
-          border-radius: 0;
-        }
-      </style>
-    </custom-style>
-    <paper-tooltip
-      hidden$="[[!toolTip]]"
-      for="button"
-      position="bottom"
-      offset="8"
-      animation-delay="0"
-    >
-      [[label]]
-    </paper-tooltip>
-    <paper-button
-      id="button"
-      class="button"
-      disabled$="[[disabled]]"
-      title="[[label]]"
-    >
-      <span class="circle-wrapper">
-        <paper-spinner
-          active$="[[loading]]"
-          hidden$="[[!loading]]"
-          class="multi"
-          alt$="Loading content for [[label]]"
-        ></paper-spinner>
-        <circle-progress
-          class$="[[status]]"
-          value="[[value]]"
-          max="[[max]]"
-          stroke-width="[[strokeWidth]]"
-          angle="180"
-        >
-          <iron-icon
-            id="icon"
-            icon="[[activeIcon]]"
-            hidden$="[[!activeIcon]]"
-          ></iron-icon>
-          <slot name="image"></slot>
-        </circle-progress>
-      </span>
-      <span hidden$="[[!listView]]" id="listview" class="listview">
-        <h3 class="listview-title">[[label]]</h3>
-        <div class="description-content">
-          <slot name="description"></slot> <slot></slot>
-        </div>
-      </span>
-    </paper-button>
-  `,
-
-  is: "lrnsys-progress-circle",
-
-  listeners: {
-    tap: "tapEventOn",
-    mouseover: "focusOn",
-    mouseout: "focusOff",
-    "focused-changed": "focusEvent"
-  },
-
-  properties: {
-    /**
-     * Current value.
-     */
-    value: {
-      type: Number,
-      value: 0,
-      notify: true,
-      reflectToAttribute: true,
-      observer: "_testValueComplete"
-    },
-    /**
-     * Whether to add a tooltip on hover.
-     */
-    toolTip: {
-      type: Boolean,
-      value: true,
-      reflectToAttribute: true
-    },
-    /**
-     * If this is in a list view, expand the output.
-     */
-    listView: {
-      type: Boolean,
-      value: true,
-      reflectToAttribute: true
-    },
-    /**
-     * Icon.
-     */
-    icon: {
-      type: String,
-      value: "icons:description",
-      reflectToAttribute: true
-    },
-    /**
-     * Special icon to use when the item has been completed.
-     */
-    iconComplete: {
-      type: String,
-      value: "icons:description",
-      reflectToAttribute: true
-    },
-    /**
-     * Loading icon
-     */
-    loadingIcon: {
-      type: String,
-      value: "hourglass-full",
-      reflectToAttribute: true
-    },
-    /**
-     * Finished icon
-     */
-    finishedIcon: {
-      type: String,
-      value: "thumb-up",
-      reflectToAttribute: true
-    },
-    /**
-     * Current value.
-     */
-    activeIcon: {
-      type: String,
-      notify: true,
-      computed: "_getActiveIcon(icon, iconComplete, status)"
-    },
-    /**
-     * Array position within a larger body of items.
-     */
-    step: {
-      type: Number,
-      value: 0,
-      reflectToAttribute: true
-    },
-    /**
-     * If this item is active or not in the larger list
-     */
-    active: {
-      type: Boolean,
-      value: false,
-      reflectToAttribute: true,
-      notify: true
-    },
-    /**
-     * Status of the progression.
-     * Possible values are disabled, loading, available, complete
-     */
-    status: {
-      type: String,
-      value: "available",
-      reflectToAttribute: true,
-      notify: true,
-      observer: "_statusChange"
-    },
-    /**
-     * Correctly disable the button if it's status is such.
-     */
-    disabled: {
-      type: Boolean,
-      computed: "_disableStatus(status)"
-    },
-    /**
-     * Calculate if something is in a loading status which invokes a swirl.
-     */
-    loading: {
-      type: Boolean,
-      computed: "_loadingStatus(status)"
-    },
-    /**
-     * Boolean to invoke "finished" state. Useful for the last circle
-     * in a series.
-     */
-    finished: {
-      type: Boolean,
-      computed: "_finishedStatus(status)"
-    },
-    /**
-     * Max progression for doing math against.
-     */
-    max: {
-      type: String,
-      reflectToAttribute: true
-    },
-    /**
-     * Internal property to ensure we only ding 1x
-     */
-    __chimed: {
-      type: Boolean,
-      value: false
-    },
-    /**
-     * Internal property to ensure we only finish 1x
-     */
-    __finishchimed: {
-      type: Boolean,
-      value: false
-    },
-    /**
-     * URL to link to on click.
-     */
-    url: {
-      type: String,
-      value: "#",
-      reflectToAttribute: true
-    },
-    /**
-     * Data url to bubble up for more advanced implementations.
-     */
-    dataUrl: {
-      type: String,
-      value: false,
-      reflectToAttribute: true
-    },
-    /**
-     * Stroke width.
-     */
-    strokeWidth: {
-      type: Number,
-      value: 4
-    },
-    /**
-     * Tracks if focus state is applied for element consistency
-     * when dealing with focus vs hover states.
-     */
-    focusState: {
-      type: Boolean,
-      value: false
-    },
-    /**
-     * Play sound status; if this should play sound
-     * when it hits certain milestones or not.
-     */
-    playSound: {
-      type: Boolean,
-      value: false,
-      reflectToAttribute: true
-    },
-    /**
-     * Play sound at end; if this should play sound
-     * when it hits certain milestones or not.
-     */
-    playFinishSound: {
-      type: Boolean,
-      value: false,
-      reflectToAttribute: true
-    },
-    /**
-     * Play sound on complete.
-     */
-    completeSound: {
-      type: String,
-      value:
-        pathFromUrl(decodeURIComponent(import.meta.url)) +
-        "assets/complete.mp3",
-      reflectToAttribute: true
-    },
-    /**
-     * Play sound on complete.
-     */
-    finishedSound: {
-      type: String,
-      value:
-        pathFromUrl(decodeURIComponent(import.meta.url)) +
-        "assets/finished.mp3",
-      reflectToAttribute: true
-    },
-    /**
-     * Fire and track milestones towards completion state.
-     */
-    _bubbleProgress: {
-      type: Object,
+class LrnsysProgressCircle extends PolymerElement {
+  static get template() {
+    return html`
+      <custom-style>
+        <style is="custom-style" include="paper-material-styles">
+          :host {
+            --paper-button-ink-color: var(
+              --lrnsys-progress-color,
+              var(--paper-green-500)
+            );
+            display: block;
+            transition: box-shadow
+                var(--lrnsys-progress-circle-transition, 0.5s) linear,
+              color var(--lrnsys-progress-circle-transition, 0.5s) ease-in-out,
+              background-color var(--lrnsys-progress-circle-transition, 0.5s)
+                ease-in-out;
+          }
+          :host([status="complete"]) .circle-wrapper {
+            --paper-button-ink-color: var(
+              --lrnsys-progress-complete-color,
+              var(--paper-green-500)
+            );
+            box-shadow: 0px 0px 0px 0.16px
+              var(--lrnsys-progress-complete-color, var(--paper-green-900));
+          }
+          :host([status="disabled"]) .circle-wrapper {
+            box-shadow: none;
+          }
+          :host([status="available"]) .circle-wrapper {
+            box-shadow: none;
+          }
+          :host([active]) .circle-wrapper {
+            box-shadow: 0px 0px 0px 0.16px var(--google-grey-500, #555555);
+          }
+          .circle-wrapper {
+            border-radius: 100%;
+          }
+          .button {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            min-width: 40px;
+            border-radius: 100%;
+          }
+          paper-button {
+            width: var(--lrnsys-progress-circle-size, 40px);
+            height: var(--lrnsys-progress-circle-size, 40px);
+          }
+          circle-progress {
+            margin: 0;
+            --circle-progress-width: var(--lrnsys-progress-circle-size, 40px);
+            --circle-progress-height: var(--lrnsys-progress-circle-size, 40px);
+            --circle-progress-stroke-color: var(
+              --lrnsys-progress-color,
+              var(--paper-green-500)
+            );
+            --circle-progress-bg-stroke-color: var(
+              --lrnsys-progress-container-color,
+              var(--google-grey-300)
+            );
+            --circle-progress-transition: 0.5s;
+            --circle-progress-stroke-linecap: square;
+            transition: color 0.5s ease-in-out,
+              background-color 0.5s ease-in-out;
+          }
+          paper-spinner {
+            display: block;
+            font-size: 16px;
+            width: var(--lrnsys-progress-spinner-size, 32px);
+            height: var(--lrnsys-progress-spinner-size, 32px);
+            position: absolute;
+            z-index: 1;
+            margin: 4px;
+            padding: 0;
+            visibility: visible;
+            opacity: 1;
+            transition: visibility 0.4s, opacity 0.4s ease;
+          }
+          paper-spinner.multi {
+            --paper-spinner-layer-1-color: var(--paper-purple-500);
+            --paper-spinner-layer-2-color: var(--paper-cyan-500);
+            --paper-spinner-layer-3-color: var(--paper-blue-grey-500);
+            --paper-spinner-layer-4-color: var(--paper-amber-500);
+          }
+          .transition {
+            opacity: 0.4;
+            width: calc(var(--lrnsys-progress-icon-size, 24px) - 8px);
+            height: calc(var(--lrnsys-progress-icon-size, 24px) - 8px);
+          }
+          iron-icon {
+            visibility: visible;
+            opacity: 1;
+            transition: width 0.1s linear, height 0.1s linear,
+              visibility 0.4s ease, opacity 0.4s ease;
+            width: var(--lrnsys-progress-icon-size, 24px);
+            height: var(--lrnsys-progress-icon-size, 24px);
+          }
+          .disabled {
+            background-color: var(
+              --lrnsys-progress-disabled-color,
+              var(--google-grey-500)
+            );
+            color: white;
+          }
+          .loading {
+            background-color: white;
+            color: black;
+          }
+          .finished iron-icon:not(.activeIcon) {
+            width: calc(var(--lrnsys-progress-icon-size, 24px) - 8px);
+            height: calc(var(--lrnsys-progress-icon-size, 24px) - 8px);
+          }
+          .available {
+            background-color: var(
+              --lrnsys-progress-active-color,
+              var(--google-grey-300)
+            );
+            color: var(
+              --lrnsys-progress-active-text-color,
+              var(--google-grey-500)
+            );
+          }
+          .activeIcon {
+            color: black;
+          }
+          .complete .activeIcon {
+            color: white;
+          }
+          :host([active]) .complete .activeIcon,
+          :host([active]) .finished .activeIcon {
+            color: black;
+          }
+          .complete,
+          .finished {
+            background-color: var(
+              --lrnsys-progress-container-color,
+              var(--paper-green-500)
+            );
+            color: white;
+          }
+          :host([active]) circle-progress {
+            background-color: white;
+            color: black;
+          }
+          .listview-title {
+            font-size: 16px;
+            padding: 0;
+            margin: 0;
+          }
+          .description-content {
+            font-size: 8px;
+            font-style: italic;
+          }
+          .circle-wrapper {
+            display: inline-block;
+          }
+          .listview {
+            height: 32px;
+            padding: 4px 0;
+            margin: 0;
+            vertical-align: top;
+          }
+          .link {
+            height: 40px;
+            width: 100%;
+          }
+          :host([list-view]) .button {
+            margin: 0;
+            padding: 0;
+            display: block;
+            min-width: 40px;
+            border-radius: 0;
+          }
+        </style>
+      </custom-style>
+      <paper-tooltip
+        hidden$="[[!toolTip]]"
+        for="button"
+        position="bottom"
+        offset="8"
+        animation-delay="0"
+      >
+        [[label]]
+      </paper-tooltip>
+      <paper-button
+        id="button"
+        class="button"
+        disabled$="[[disabled]]"
+        title="[[label]]"
+      >
+        <span class="circle-wrapper">
+          <paper-spinner
+            active$="[[loading]]"
+            hidden$="[[!loading]]"
+            class="multi"
+            alt$="Loading content for [[label]]"
+          ></paper-spinner>
+          <circle-progress
+            class$="[[status]]"
+            value="[[value]]"
+            max="[[max]]"
+            stroke-width="[[strokeWidth]]"
+            angle="180"
+          >
+            <iron-icon
+              id="icon"
+              icon="[[activeIcon]]"
+              hidden$="[[!activeIcon]]"
+            ></iron-icon>
+            <slot name="image"></slot>
+          </circle-progress>
+        </span>
+        <span hidden$="[[!listView]]" id="listview" class="listview">
+          <h3 class="listview-title">[[label]]</h3>
+          <div class="description-content">
+            <slot name="description"></slot> <slot></slot>
+          </div>
+        </span>
+      </paper-button>
+    `;
+  }
+  static get tag() {
+    return "lrnsys-progress-circle";
+  }
+  static get properties() {
+    return {
+      /**
+       * Current value.
+       */
       value: {
-        "25": false,
-        "50": false,
-        "75": false
+        type: Number,
+        value: 0,
+        notify: true,
+        reflectToAttribute: true,
+        observer: "_testValueComplete"
+      },
+      /**
+       * Whether to add a tooltip on hover.
+       */
+      toolTip: {
+        type: Boolean,
+        value: true,
+        reflectToAttribute: true
+      },
+      /**
+       * If this is in a list view, expand the output.
+       */
+      listView: {
+        type: Boolean,
+        value: true,
+        reflectToAttribute: true
+      },
+      /**
+       * Icon.
+       */
+      icon: {
+        type: String,
+        value: "icons:description",
+        reflectToAttribute: true
+      },
+      /**
+       * Special icon to use when the item has been completed.
+       */
+      iconComplete: {
+        type: String,
+        value: "icons:description",
+        reflectToAttribute: true
+      },
+      /**
+       * Loading icon
+       */
+      loadingIcon: {
+        type: String,
+        value: "hourglass-full",
+        reflectToAttribute: true
+      },
+      /**
+       * Finished icon
+       */
+      finishedIcon: {
+        type: String,
+        value: "thumb-up",
+        reflectToAttribute: true
+      },
+      /**
+       * Current value.
+       */
+      activeIcon: {
+        type: String,
+        notify: true,
+        computed: "_getActiveIcon(icon, iconComplete, status)"
+      },
+      /**
+       * Array position within a larger body of items.
+       */
+      step: {
+        type: Number,
+        value: 0,
+        reflectToAttribute: true
+      },
+      /**
+       * If this item is active or not in the larger list
+       */
+      active: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true,
+        notify: true
+      },
+      /**
+       * Status of the progression.
+       * Possible values are disabled, loading, available, complete
+       */
+      status: {
+        type: String,
+        value: "available",
+        reflectToAttribute: true,
+        notify: true,
+        observer: "_statusChange"
+      },
+      /**
+       * Correctly disable the button if it's status is such.
+       */
+      disabled: {
+        type: Boolean,
+        computed: "_disableStatus(status)"
+      },
+      /**
+       * Calculate if something is in a loading status which invokes a swirl.
+       */
+      loading: {
+        type: Boolean,
+        computed: "_loadingStatus(status)"
+      },
+      /**
+       * Boolean to invoke "finished" state. Useful for the last circle
+       * in a series.
+       */
+      finished: {
+        type: Boolean,
+        computed: "_finishedStatus(status)"
+      },
+      /**
+       * Max progression for doing math against.
+       */
+      max: {
+        type: String,
+        reflectToAttribute: true
+      },
+      /**
+       * Internal property to ensure we only ding 1x
+       */
+      __chimed: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Internal property to ensure we only finish 1x
+       */
+      __finishchimed: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * URL to link to on click.
+       */
+      url: {
+        type: String,
+        value: "#",
+        reflectToAttribute: true
+      },
+      /**
+       * Data url to bubble up for more advanced implementations.
+       */
+      dataUrl: {
+        type: String,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
+       * Stroke width.
+       */
+      strokeWidth: {
+        type: Number,
+        value: 4
+      },
+      /**
+       * Tracks if focus state is applied for element consistency
+       * when dealing with focus vs hover states.
+       */
+      focusState: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Play sound status; if this should play sound
+       * when it hits certain milestones or not.
+       */
+      playSound: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
+       * Play sound at end; if this should play sound
+       * when it hits certain milestones or not.
+       */
+      playFinishSound: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
+       * Play sound on complete.
+       */
+      completeSound: {
+        type: String,
+        value:
+          pathFromUrl(decodeURIComponent(import.meta.url)) +
+          "assets/complete.mp3",
+        reflectToAttribute: true
+      },
+      /**
+       * Play sound on complete.
+       */
+      finishedSound: {
+        type: String,
+        value:
+          pathFromUrl(decodeURIComponent(import.meta.url)) +
+          "assets/finished.mp3",
+        reflectToAttribute: true
+      },
+      /**
+       * Fire and track milestones towards completion state.
+       */
+      _bubbleProgress: {
+        type: Object,
+        value: {
+          "25": false,
+          "50": false,
+          "75": false
+        }
       }
-    }
-  },
+    };
+  }
 
   /**
    * Ready state
    */
-  ready: function(e) {
+  ready() {
+    super.ready();
     // seems odd but if we don't do this we can get issues with
     // this field being unified across all circles when really
     // we have to track this state per circle.
@@ -476,12 +476,27 @@ Polymer({
       "50": false,
       "75": false
     };
-  },
-
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, function() {
+      this.addEventListener("tap", this.tapEventOn.bind(this));
+      this.addEventListener("mouseover", this.focusOn.bind(this));
+      this.addEventListener("mouseout", this.focusOff.bind(this));
+      this.addEventListener("focused-changed", this.focusEvent.bind(this));
+    });
+  }
+  disconnectedCallback() {
+    this.removeEventListener("tap", this.tapEventOn.bind(this));
+    this.removeEventListener("mouseover", this.focusOn.bind(this));
+    this.removeEventListener("mouseout", this.focusOff.bind(this));
+    this.removeEventListener("focused-changed", this.focusEvent.bind(this));
+    super.disconnectedCallback();
+  }
   /**
    * Test if the value = max meaning that we hit complete from available
    */
-  _testValueComplete: function(newValue, oldValue) {
+  _testValueComplete(newValue, oldValue) {
     // ensure we were previously available before marking complete
     // this way we don't conflict with the finished state which can
     // only be set from outside the circle as the circle doesn't
@@ -494,21 +509,41 @@ Polymer({
     // for jumping ahead and not triggering 25/50/75 all at once and preventing
     // over reported percentages upstream
     else if (newValue / this.max >= 0.75 && !this._bubbleProgress["75"]) {
-      this.fire("node-percent-milestone", { percentage: 75 });
+      this.dispatchEvent(
+        new CustomEvent("node-percent-milestone", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: { percentage: 75 }
+        })
+      );
       this._bubbleProgress["75"] = true;
     } else if (newValue / this.max >= 0.5 && !this._bubbleProgress["50"]) {
-      this.fire("node-percent-milestone", { percentage: 50 });
+      this.dispatchEvent(
+        new CustomEvent("node-percent-milestone", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: { percentage: 50 }
+        })
+      );
       this._bubbleProgress["50"] = true;
     } else if (newValue / this.max >= 0.25 && !this._bubbleProgress["25"]) {
-      this.fire("node-percent-milestone", { percentage: 25 });
+      this.dispatchEvent(
+        new CustomEvent("node-percent-milestone", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: { percentage: 25 }
+        })
+      );
       this._bubbleProgress["25"] = true;
     }
-  },
-
+  }
   /**
    * Focus event for UX consistency.
    */
-  focusEvent: function(e) {
+  focusEvent(e) {
     // see if it has hover classes
     if (!this.disabled && this.status != "loading") {
       // focus shows focus
@@ -526,24 +561,22 @@ Polymer({
       }
       this.focusState = !this.focusState;
     }
-  },
-
+  }
   /**
    * Focus event for UX consistency.
    */
-  focusOn: function(e) {
+  focusOn(e) {
     // see if it has hover classes
     if (!this.disabled && this.status != "loading") {
       // force icon to be set to real one and class added
       this.$.icon.icon = this.icon;
       this.$.icon.classList.add("activeIcon");
     }
-  },
-
+  }
   /**
    * Focus event for UX consistency.
    */
-  focusOff: function(e) {
+  focusOff(e) {
     // see if it has hover classes
     if (!this.disabled && this.status != "loading") {
       // if complete set it back to what it was
@@ -553,20 +586,25 @@ Polymer({
       // drop the class for active step
       this.$.icon.classList.remove("activeIcon");
     }
-  },
-
+  }
   /**
    * Tapped on the item.
    */
-  tapEventOn: function(e) {
+  tapEventOn(e) {
     let target = e.target;
-    this.fire("node-is-active", { target });
-  },
-
+    this.dispatchEvent(
+      new CustomEvent("node-is-active", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: { target }
+      })
+    );
+  }
   /**
    * Calculate which icon to present.
    */
-  _getActiveIcon: function(icon, iconComplete, status) {
+  _getActiveIcon(icon, iconComplete, status) {
     if (typeof icon !== typeof undefined) {
       var tmp = icon;
       // support for a loading icon while loading
@@ -589,12 +627,12 @@ Polymer({
       return tmp;
     }
     return false;
-  },
+  }
 
   /**
    * Play the sound effect.
    */
-  _playSound: function() {
+  _playSound() {
     // calculate sound to use and ensure it only ever happens once
     // via the __chimed flag
     if (this.status == "complete") {
@@ -608,22 +646,20 @@ Polymer({
       window.audio = new Audio();
     }
     window.audio.play();
-  },
-
+  }
   /**
    * Calculate loading based on the status of the item.
    */
-  _loadingStatus: function(status) {
+  _loadingStatus(status) {
     if (status == "loading") {
       return true;
     }
     return false;
-  },
-
+  }
   /**
    * Calculate loading based on the status of the item.
    */
-  _finishedStatus: function(status) {
+  _finishedStatus(status) {
     if (status == "finished") {
       if (this.playFinishSound && !this.__finishchimed) {
         this._playSound();
@@ -631,25 +667,32 @@ Polymer({
       return true;
     }
     return false;
-  },
-
+  }
   /**
    * Notice when state changes to fire up an event for others to respond to.
    */
-  _statusChange: function(newValue, oldValue) {
+  _statusChange(newValue, oldValue) {
     // verify this isn't loading up
     if (typeof oldValue !== typeof undefined && newValue !== oldValue) {
-      this.fire("node-status-change", { status: newValue });
+      this.dispatchEvent(
+        new CustomEvent("node-status-change", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: { status: newValue }
+        })
+      );
     }
-  },
-
+  }
   /**
    * Calculate disable based on the status of the item.
    */
-  _disableStatus: function(status) {
+  _disableStatus(status) {
     if (status == "disabled") {
       return true;
     }
     return false;
   }
-});
+}
+window.customElements.define(LrnsysProgressCircle.tag, LrnsysProgressCircle);
+export { LrnsysProgressCircle };

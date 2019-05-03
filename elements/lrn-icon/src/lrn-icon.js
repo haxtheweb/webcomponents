@@ -1,4 +1,4 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-meta/iron-meta.js";
 import "@polymer/iron-flex-layout/iron-flex-layout.js";
@@ -26,7 +26,7 @@ Example setting size to 32px x 32px:
 
     <lrn-icon class="big" src="big_star.png"></lrn-icon>
 
-    <style is="custom-style">
+    <style>
       .big {
         --lrn-icon-height: 32px;
         --lrn-icon-width: 32px;
@@ -83,85 +83,90 @@ Custom property | Description | Default
 @hero hero.svg
 @homepage polymer.github.io
 */
-let LrnIcon = Polymer({
-  _template: html`
-    <style include="lrn-shared-styles">
-      :host {
-        position: relative;
+class LrnIcon extends PolymerElement {
+  static get template() {
+    return html`
+      <style include="lrn-shared-styles">
+        :host {
+          position: relative;
 
-        vertical-align: middle;
+          vertical-align: middle;
 
-        fill: var(--lrn-icon-fill-color, currentcolor);
-        stroke: var(--lrn-icon-stroke-color, none);
+          fill: var(--lrn-icon-fill-color, currentcolor);
+          stroke: var(--lrn-icon-stroke-color, none);
 
-        width: var(--lrn-icon-width, 24px);
-        height: var(--lrn-icon-height, 24px);
-        @apply --layout-inline;
-        @apply --layout-center-center;
-        @apply --lrn-icon;
+          width: var(--lrn-icon-width, 24px);
+          height: var(--lrn-icon-height, 24px);
+          @apply --layout-inline;
+          @apply --layout-center-center;
+          @apply --lrn-icon;
+        }
+      </style>
+      <iron-icon icon$="lrn:[[icon]]"></iron-icon>
+    `;
+  }
+
+  static get tag() {
+    return "lrn-icon";
+  }
+
+  static get properties() {
+    return {
+      /**
+       * The name of the icon to use. The name should be of the form:
+       * `iconset_name:icon_name`.
+       */
+      icon: {
+        type: String
+      },
+
+      /**
+       * The name of the theme to used, if one is specified by the
+       * iconset.
+       */
+      theme: {
+        type: String
+      },
+
+      /**
+       * If using lrn-icon without an iconset, you can set the src to be
+       * the URL of an individual icon image file. Note that this will take
+       * precedence over a given icon attribute.
+       */
+      src: {
+        type: String
+      },
+
+      _meta: {
+        value: document.createElement("iron-meta", { type: "iconset" })
       }
-    </style>
-    <iron-icon icon$="lrn:[[icon]]"></iron-icon>
-  `,
+    };
+  }
 
-  is: "lrn-icon",
-
-  properties: {
-    /**
-     * The name of the icon to use. The name should be of the form:
-     * `iconset_name:icon_name`.
-     */
-    icon: {
-      type: String
-    },
-
-    /**
-     * The name of the theme to used, if one is specified by the
-     * iconset.
-     */
-    theme: {
-      type: String
-    },
-
-    /**
-     * If using lrn-icon without an iconset, you can set the src to be
-     * the URL of an individual icon image file. Note that this will take
-     * precedence over a given icon attribute.
-     */
-    src: {
-      type: String
-    },
-
-    _meta: {
-      value: document.createElement("iron-meta", { type: "iconset" })
-    }
-  },
-
-  observers: [
-    "_updateIcon(_meta, isAttached)",
-    "_updateIcon(theme, isAttached)",
-    "_srcChanged(src, isAttached)",
-    "_iconChanged(icon, isAttached)"
-  ],
-
-  _DEFAULT_ICONSET: "lrn",
-
-  _iconChanged: function(icon) {
+  static get observers() {
+    return [
+      "_updateIcon(_meta, isAttached)",
+      "_updateIcon(theme, isAttached)",
+      "_srcChanged(src, isAttached)",
+      "_iconChanged(icon, isAttached)"
+    ];
+  }
+  _iconChanged(icon) {
     this._iconName = icon;
-    this._iconsetName = this._DEFAULT_ICONSET;
+    this._iconsetName = "lrn";
     this._updateIcon();
-  },
+  }
 
-  _srcChanged: function(src) {
+  _srcChanged(src) {
     this._updateIcon();
-  },
+  }
 
-  _usesIconset: function() {
+  _usesIconset() {
     return this.icon || !this.src;
-  },
+  }
 
   /** @suppress {visibility} */
-  _updateIcon: function() {
+  _updateIcon() {
     if (this._usesIconset()) {
       if (this._img && this._img.parentNode) {
         dom(this.root).removeChild(this._img);
@@ -193,5 +198,6 @@ let LrnIcon = Polymer({
       dom(this.root).appendChild(this._img);
     }
   }
-});
+}
+window.customElements.define(LrnIcon.tag, LrnIcon);
 export { LrnIcon };

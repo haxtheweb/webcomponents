@@ -1,142 +1,133 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/paper-card/paper-card.js";
-import "@polymer/iron-ajax/iron-ajax.js";
-import "@polymer/paper-menu-button/paper-menu-button.js";
-import "@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
-import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "@lrnwebcomponents/lrnsys-layout/lrnsys-layout.js";
-import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-drawer.js";
-import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
-import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-collapselist.js";
-import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-collapselist-item.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-import "./lib/lrn-calendar-date.js";
+import "@polymer/iron-ajax/iron-ajax.js";
 /**
-`lrn-calendar`
-A LRN element
+ * `lrn-calendar`
+ * @demo demo/index.html
+ */
+class LrnCalendar extends PolymerElement {
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: block;
+        }
+        lrn-calendar-date {
+          display: inline-table;
+          top: 0px;
+        }
+        paper-card {
+          width: 14%;
+          height: 20px;
+          display: inline-table;
+          padding: 0;
+          margin: 0;
+        }
+        .calendar {
+          color: var(--my-toolbar-title-color);
+        }
+        .header {
+          padding-bottom: 15px;
+        }
+      </style>
 
-* @demo demo/index.html
-*/
-let LrnCalendar = Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: block;
-      }
-      lrn-calendar-date {
-        display: inline-table;
-        top: 0px;
-      }
-      paper-card {
-        width: 14%;
-        height: 20px;
-        display: inline-table;
-        padding: 0;
-        margin: 0;
-      }
-      .calendar {
-        color: var(--my-toolbar-title-color);
-      }
-      .header {
-        padding-bottom: 15px;
-      }
-    </style>
+      <div class="calendar">
+        <div class="header">
+          <div style="float: left">
+            <paper-button raised type="button" on-tap="monthView"
+              >Month</paper-button
+            >
+            <paper-button raised type="button" on-tap="weekView"
+              >Week</paper-button
+            >
+          </div>
+          <div style="float: right">
+            <paper-button raised type="button" on-tap="showDate"
+              >Today</paper-button
+            >
+            <paper-button on-tap="showPrev"
+              ><iron-icon icon="arrow-back"></iron-icon
+            ></paper-button>
+            <paper-button on-tap="showNext"
+              ><iron-icon icon="arrow-forward"></iron-icon
+            ></paper-button>
+          </div>
+          <div style="margin: 0 auto; width: 200px; text-align: center">
+            <h2>[[getDisplayDate(date)]]</h2>
+          </div>
+        </div>
 
-    <div class="calendar">
-      <div class="header">
-        <div style="float: left">
-          <paper-button raised type="button" on-tap="monthView"
-            >Month</paper-button
-          >
-          <paper-button raised type="button" on-tap="weekView"
-            >Week</paper-button
-          >
-        </div>
-        <div style="float: right">
-          <paper-button raised type="button" on-tap="showDate"
-            >Today</paper-button
-          >
-          <paper-button on-tap="showPrev"
-            ><iron-icon icon="arrow-back"></iron-icon
-          ></paper-button>
-          <paper-button on-tap="showNext"
-            ><iron-icon icon="arrow-forward"></iron-icon
-          ></paper-button>
-        </div>
-        <div style="margin: 0 auto; width: 200px; text-align: center">
-          <h2>[[getDisplayDate(date)]]</h2>
-        </div>
+        <div class="calendarView" id="calView"></div>
       </div>
+    `;
+  }
 
-      <div class="calendarView" id="calView"></div>
-    </div>
-  `,
+  static get tag() {
+    return "lrn-calendar";
+  }
 
-  is: "lrn-calendar",
-
-  behaviors: [HAXBehaviors.PropertiesBehaviors],
-
-  properties: {
-    /**
-     * An array of events for display
-     */
-    listOfEvents: {
-      type: Array,
-      value: []
-    },
-    /**
-     * Date to start from
-     */
-    dateString: {
-      type: String,
-      observer: "_dateStringChanged"
-    },
-    /**
-     * Date to start from
-     */
-    date: {
-      type: Date,
-      value: new Date(),
-      observer: "_dateChanged"
-    },
-    /**
-     * Type of display, possible values, month, day, week
-     */
-    view: {
-      type: String,
-      value: "month",
-      observer: "_viewTypeChanged"
-    },
-    /**
-     * ical file to reference to pull in dates.
-     */
-    file: {
-      type: String,
-      reflectToAttribute: true,
-      observer: "_fileChanged"
-    }
-  },
+  static get properties() {
+    return {
+      /**
+       * An array of events for display
+       */
+      listOfEvents: {
+        type: Array,
+        value: []
+      },
+      /**
+       * Date to start from
+       */
+      dateString: {
+        type: String,
+        observer: "_dateStringChanged"
+      },
+      /**
+       * Date to start from
+       */
+      date: {
+        type: Date,
+        value: new Date(),
+        observer: "_dateChanged"
+      },
+      /**
+       * Type of display, possible values, month, day, week
+       */
+      view: {
+        type: String,
+        value: "month",
+        observer: "_viewTypeChanged"
+      },
+      /**
+       * ical file to reference to pull in dates.
+       */
+      file: {
+        type: String,
+        reflectToAttribute: true,
+        observer: "_fileChanged"
+      }
+    };
+  }
 
   /**
    * Notice the file has changed and attempt to rebind.
    */
-  _fileChanged: function(newValue, oldValue) {
+  _fileChanged(newValue, oldValue) {
     if (typeof newValue !== typeof undefined && this.__icalLoaded) {
       this.loadFile();
       this.getDateInfo();
       this.createCalendar();
     }
-  },
+  }
 
   /**
    * Notice the file has changed and attempt to rebind.
    */
-  _viewTypeChanged: function(newValue, oldValue) {
+  _viewTypeChanged(newValue, oldValue) {
     if (
       typeof newValue !== typeof undefined &&
       typeof this.file !== typeof undefined &&
@@ -145,12 +136,12 @@ let LrnCalendar = Polymer({
       this.getDateInfo();
       this.createCalendar();
     }
-  },
+  }
 
   /**
    * Notice the file has changed and attempt to rebind.
    */
-  _dateChanged: function(newValue, oldValue) {
+  _dateChanged(newValue, oldValue) {
     if (
       typeof newValue !== typeof undefined &&
       typeof this.file !== typeof undefined &&
@@ -159,12 +150,12 @@ let LrnCalendar = Polymer({
       this.getDateInfo();
       this.createCalendar();
     }
-  },
+  }
 
   /**
    * Notice the String of the date has changed and reset the actual date to it
    */
-  _dateStringChanged: function(newValue, oldValue) {
+  _dateStringChanged(newValue, oldValue) {
     if (
       typeof newValue !== typeof undefined &&
       newValue != "" &&
@@ -172,37 +163,58 @@ let LrnCalendar = Polymer({
     ) {
       this.date = new Date(newValue);
     }
-  },
+  }
   /**
    * created life cycle
    */
-  created: function() {
-    const name = "ical";
+  constructor() {
+    super();
+    import("@polymer/paper-button/paper-button.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/paper-card/paper-card.js");
+    import("@polymer/paper-menu-button/paper-menu-button.js");
+    import("@polymer/paper-dropdown-menu/paper-dropdown-menu.js");
+    import("@lrnwebcomponents/lrnsys-layout/lrnsys-layout.js");
+    import("@lrnwebcomponents/lrnsys-layout/lib/lrnsys-drawer.js");
+    import("@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js");
+    import("@lrnwebcomponents/lrnsys-layout/lib/lrnsys-collapselist.js");
+    import("@lrnwebcomponents/lrnsys-layout/lib/lrnsys-collapselist-item.js");
+    import("@lrnwebcomponents/lrn-calendar/lib/lrn-calendar-date.js");
+    afterNextRender(this, function() {
+      this.HAXWiring = new HAXWiring();
+      this.HAXWiring.setup(LrnCalendar.haxProperties, LrnCalendar.tag, this);
+    });
     const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
     const location = `${basePath}lib/ical.js/build/ical.js`;
     window.addEventListener(
-      `es-bridge-${name}-loaded`,
+      "es-bridge-ical-loaded",
       this._icalLoaded.bind(this)
     );
     window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load(name, location);
-  },
+    window.ESGlobalBridge.instance.load("ical", location);
+  }
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    window.removeEventListener(
+      "es-bridge-ical-loaded",
+      this._icalLoaded.bind(this)
+    );
+  }
   /**
    * ical loaded
    */
-  _icalLoaded: function() {
+  _icalLoaded() {
     this.__icalLoaded = true;
     if (typeof this.file !== typeof undefined) {
       this.loadFile();
     }
-  },
+  }
   /**
    * Attached lifecycle.
    */
-  attached: function() {
-    // Establish hax properties if they exist
-    //this._initializeReader();
-    let props = {
+  static get haxProperties() {
+    return {
       canScale: false,
       canPosition: false,
       canEditSource: false,
@@ -264,23 +276,21 @@ let LrnCalendar = Polymer({
         advanced: []
       }
     };
-    this.setHaxProperties(props);
-  },
-
+  }
   /**
    * Load the ical file.
    */
-  loadFile: function() {
+  loadFile() {
     this.startIndex = 0;
     this.calendarText = this.readTextFile(this.file);
     this.listOfEvents = this.getEvents(this.date, this.calendarText);
     this.listOfEvents = this.sortByTime(this.listOfEvents);
-  },
+  }
 
   /*
    * Is called to show the previous month/week depending on option selected
    */
-  showPrev: function() {
+  showPrev() {
     var current;
     this.startIndex = 0;
     if (this.view == "month") {
@@ -319,12 +329,12 @@ let LrnCalendar = Polymer({
 
     this.getDateInfo();
     this.createCalendar();
-  },
+  }
 
   /*
    * Is called to show the next month/week
    */
-  showNext: function() {
+  showNext() {
     var current;
     if (this.view == "month") {
       if (this.date.getMonth() == 11) {
@@ -362,33 +372,33 @@ let LrnCalendar = Polymer({
 
     this.getDateInfo();
     this.createCalendar();
-  },
+  }
 
   /**
    * Is called to show the next month/week
    */
-  showDate: function() {
+  showDate() {
     this.startIndex = 0;
     this.date = new Date();
     this.getDateInfo();
     this.createCalendar();
-  },
+  }
 
   //Set the view to month
-  monthView: function() {
+  monthView() {
     this.view = "month";
     this.startIndex = 0;
     this.createCalendar();
-  },
+  }
 
   //Set the view to weekly
-  weekView: function() {
+  weekView() {
     this.view = "week";
     this.startIndex = 0;
     this.createCalendar();
-  },
+  }
 
-  readTextFile: function(file) {
+  readTextFile(file) {
     this.fileNotFound = false;
     var rawFile = new XMLHttpRequest();
     var allText = "";
@@ -406,14 +416,14 @@ let LrnCalendar = Polymer({
     rawFile.send(null);
     this.calendarText = allText;
     return allText;
-  },
+  }
 
   /*
    * Determines the view and then calls lrn-calendar-date to
    * create the individual date blocks
    * Does the math required to get all the days correct. Ex: Oct 31 -> Nov 1
    */
-  createCalendar: function() {
+  createCalendar() {
     if (this.view != "month") {
       if (this.view != "week") {
         this.view = "month";
@@ -427,13 +437,13 @@ let LrnCalendar = Polymer({
 
     this.totalDays = this.numweeks * 7;
     this.calendarText = this.readTextFile(this.file);
-    this.calendarView = this.$.calView;
+    this.calendarView = this.shadowRoot.querySelector("#calView");
 
     var days = 1;
     var pastDate = 0;
 
     //Remove past calendar blocks ************************************
-    var elem = dom(this.$.calView).node;
+    var elem = dom(this.shadowRoot.querySelector("#calView")).node;
     var elemChildren = elem.childNodes;
 
     while (elemChildren[1]) {
@@ -709,13 +719,13 @@ let LrnCalendar = Polymer({
         pastDate = 1;
       }
     }
-  },
+  }
 
   /*
    * Get events gets the events that are within the calendar corresponding to the specific event
    *
    */
-  getEvents: function(date, text) {
+  getEvents(date, text) {
     if (text == "Not Found") {
       return "";
     }
@@ -739,13 +749,13 @@ let LrnCalendar = Polymer({
     }
 
     return this.eventArray;
-  },
+  }
 
   /*
    * Determines what type of recurrence is occuring and calls createRepeatedEvent
    * The int in the function call is the max number of recurrences
    */
-  createRecurrence: function(events) {
+  createRecurrence(events) {
     if (events.getRecurrenceTypes().WEEKLY) {
       this.createRepeatedEvent(events, 156);
     } else if (events.getRecurrenceTypes().DAILY) {
@@ -755,7 +765,7 @@ let LrnCalendar = Polymer({
     } else if (events.getRecurrenceTypes().YEARLY) {
       this.createRepeatedEvent(events, 10);
     }
-  },
+  }
 
   /*
    * Iterates through the recurring event.  Each time it creates a new event.
@@ -763,7 +773,7 @@ let LrnCalendar = Polymer({
    * That will need to be adjusted, only info in new Event is start time, end time, summary, and description
    * The new event is loaded into the array of all the events
    */
-  createRepeatedEvent: function(events, maxRepeat) {
+  createRepeatedEvent(events, maxRepeat) {
     var iter = events.iterator(events.startDate);
 
     let next;
@@ -786,18 +796,18 @@ let LrnCalendar = Polymer({
       }
     }
     return;
-  },
+  }
 
   /*
    * Called from eventCheck, gets the start time of an event and returns it
    */
-  createDate: function(event) {
+  createDate(event) {
     var year = event.startDate._time.year;
     var month = event.startDate._time.month;
     var day = event.startDate._time.day;
     var eventDate = new Date(year + "/" + month + "/" + day);
     return eventDate;
-  },
+  }
 
   /*
    * Check if the event occurs on this date and then includes it in the event array that is returned
@@ -806,7 +816,7 @@ let LrnCalendar = Polymer({
    * Once an event is found after the date, it exits the for loop
    * This is all because the event array is sorted by date
    */
-  eventCheck: function(events, date) {
+  eventCheck(events, date) {
     var eventsOnDay = [];
     var end = events.length;
     for (var i = this.startIndex; i < end; i++) {
@@ -822,12 +832,12 @@ let LrnCalendar = Polymer({
       }
     }
     return eventsOnDay;
-  },
+  }
 
   /*
    * Organizes the events on a certain day in order based on start time
    */
-  sortByTime: function(eventList) {
+  sortByTime(eventList) {
     var swapped;
     do {
       swapped = false;
@@ -841,9 +851,9 @@ let LrnCalendar = Polymer({
       }
     } while (swapped);
     return eventList;
-  },
+  }
 
-  getDateInfo: function() {
+  getDateInfo() {
     this.startMonth = this.date.getMonth() + 1;
     this.startYear = this.date.getFullYear();
     this.startDay = this.date.getDate();
@@ -853,24 +863,24 @@ let LrnCalendar = Polymer({
     this.currentYear = this.startYear;
     this.currentDayofWeek = this.startDayOfWeek;
     return;
-  },
+  }
 
   /*
    * Creates an event array that gets all of the events for that certain day
    */
-  createReturn: function(event) {
+  createReturn(event) {
     var EventArray = [];
 
     for (var i = 0; i < event.length; i++) {
       EventArray.push({ event: event[i] });
     }
     return EventArray;
-  },
+  }
 
   /*
    * Gets the date to display on the header, currently the month and year. Returns it as a String
    */
-  getDisplayDate: function(date) {
+  getDisplayDate(date) {
     if (typeof date.getMonth === "function") {
       var monthInt = date.getMonth();
       var day = date.getDate();
@@ -892,5 +902,6 @@ let LrnCalendar = Polymer({
     }
     return "";
   }
-});
+}
+window.customElements.define(LrnCalendar.tag, LrnCalendar);
 export { LrnCalendar };

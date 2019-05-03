@@ -120,7 +120,7 @@
        * The container element that the navigation buttons control
        */target:{type:Object,value:null}}}// render function
 static get template(){return html`
-      <style is="custom-style">
+      <style>
         :host {
           display: flex;
           align-items: flex-end;

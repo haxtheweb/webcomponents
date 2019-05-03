@@ -1,6 +1,7 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
 import { AppLocalizeBehavior } from "@polymer/app-localize-behavior/app-localize-behavior.js";
+import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-styles/typography.js";
 /**
@@ -17,50 +18,59 @@ Please see the `eco-json-schema-object` documentation for further information.
 @element eco-json-schema-input
 * @demo demo/index.html
 */
-Polymer({
-  is: "eco-json-schema-input",
-  _template: html`
-    <custom-style>
-      <style is="custom-style" include="iron-flex iron-flex-alignment"></style>
-    </custom-style>
-    <paper-input
-      id="input"
-      class="flex"
-      value="{{value}}"
-      auto-validate
-    ></paper-input>
-  `,
-  behaviors: [AppLocalizeBehavior],
+class EcoJsonSchemaInput extends mixinBehaviors(
+  [AppLocalizeBehavior],
+  PolymerElement
+) {
+  static get tag() {
+    return "eco-json-schema-input";
+  }
+  static get template() {
+    return html`
+      <custom-style>
+        <style
+          is="custom-style"
+          include="iron-flex iron-flex-alignment"
+        ></style>
+      </custom-style>
+      <paper-input
+        id="input"
+        class="flex"
+        value="{{value}}"
+        auto-validate
+      ></paper-input>
+    `;
+  }
 
-  properties: {
-    language: {
-      value: "en"
-    },
-    resources: {
-      value: function() {
-        return {};
+  static get properties() {
+    return {
+      language: {
+        value: "en"
+      },
+      resources: {
+        value() {
+          return {};
+        }
+      },
+      schema: {
+        type: Object,
+        observer: "_schemaChanged"
+      },
+      value: {
+        type: String,
+        notify: true,
+        value() {
+          return "";
+        }
+      },
+      error: {
+        type: String,
+        observer: "_errorChanged",
+        value: null
       }
-    },
-    schema: {
-      type: Object,
-      observer: "_schemaChanged"
-    },
-    value: {
-      type: String,
-      notify: true,
-      value: function() {
-        return "";
-      }
-    },
-    error: {
-      type: String,
-      observer: "_errorChanged",
-      value: null
-    }
-  },
-  ready: function() {},
-  detached: function() {},
-  _schemaChanged: function() {
+    };
+  }
+  _schemaChanged() {
     var schema = this.schema;
     var inputEl = this.$.input;
     if (schema.required) {
@@ -140,8 +150,8 @@ Polymer({
     if (schema.title) {
       inputEl.label = schema.title;
     }
-  },
-  _errorChanged: function() {
+  }
+  _errorChanged() {
     if (this.error) {
       this.$.input.errorMessage = this.error;
       this.$.input.invalid = true;
@@ -149,39 +159,41 @@ Polymer({
       this.$.input.invalid = false;
       this.$.input.errorMessage = null;
     }
-  },
-  _isSchemaValue: function(type) {
+  }
+  _isSchemaValue(type) {
     return (
       this._isSchemaBoolean(type) ||
       this._isSchemaNumber(type) ||
       this._isSchemaString(type)
     );
-  },
-  _isSchemaBoolean: function(type) {
+  }
+  _isSchemaBoolean(type) {
     if (Array.isArray(type)) {
       return type.indexOf("boolean") !== -1;
     } else {
       return type === "boolean";
     }
-  },
-  _isSchemaNumber: function(type) {
+  }
+  _isSchemaNumber(type) {
     if (Array.isArray(type)) {
       return type.indexOf("number") !== -1 || type.indexOf("integer") !== -1;
     } else {
       return type === "number" || type === "integer";
     }
-  },
-  _isSchemaString: function(type) {
+  }
+  _isSchemaString(type) {
     if (Array.isArray(type)) {
       return type.indexOf("string") !== -1;
     } else {
       return type === "string";
     }
-  },
-  _isSchemaObject: function(type) {
+  }
+  _isSchemaObject(type) {
     return type === "object";
-  },
-  _isSchemaArray: function(type) {
+  }
+  _isSchemaArray(type) {
     return type === "array";
   }
-});
+}
+window.customElements.define(EcoJsonSchemaInput.tag, EcoJsonSchemaInput);
+export { EcoJsonSchemaInput };

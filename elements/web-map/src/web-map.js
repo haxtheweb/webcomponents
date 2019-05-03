@@ -1,4 +1,4 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import "./lib/map-layer.js";
@@ -7,39 +7,42 @@ import "./lib/map-styles.js";
 
 /* styles scoped to inside a custom element must be in a style module */
 /* web-map is an HTML &lt;map&gt; customized built-in element */
-let WebMap = Polymer({
-  _template: html`
-    <!-- use the leaflet-styles style module -->
-    <style include="map-styles">
-      /* make sure the map element doesn't get selected and styled by document styles */
-      :host {
-        display: inline-block !important;
-        position: relative !important;
-      }
-      /* try to constrain the map and the leaflet div#map to the size of the container */
-      :host,
-      :host #map {
-        max-width: 100%;
-        min-width: 100%;
-      }
-      /* this is a hack for shady DOM, as max-width messes with Leaflet tiles */
-      :host img {
-        max-width: none !important;
-      }
-      #map:focus {
-        outline: 2px double lightskyblue;
-      }
-    </style>
-    <!-- giving the map div a tabindex allows the map to display its focus. -->
-    <!-- see the #map:focus selector in styles, above. -->
-    <div id="map" tabindex="0"></div>
-    <slot></slot>
-  `,
+class WebMap extends PolymerElement {
+  static get template() {
+    return html`
+      <!-- use the leaflet-styles style module -->
+      <style include="map-styles">
+        /* make sure the map element doesn't get selected and styled by document styles */
+        :host {
+          display: inline-block !important;
+          position: relative !important;
+        }
+        /* try to constrain the map and the leaflet div#map to the size of the container */
+        :host,
+        :host #map {
+          max-width: 100%;
+          min-width: 100%;
+        }
+        /* this is a hack for shady DOM, as max-width messes with Leaflet tiles */
+        :host img {
+          max-width: none !important;
+        }
+        #map:focus {
+          outline: 2px double lightskyblue;
+        }
+      </style>
+      <!-- giving the map div a tabindex allows the map to display its focus. -->
+      <!-- see the #map:focus selector in styles, above. -->
+      <div id="map" tabindex="0"></div>
+      <slot></slot>
+    `;
+  }
 
-  is: "web-map",
-  extends: "map",
+  static get tag() {
+    return "web-map";
+  }
 
-  factoryImpl: function(width, height, lat, lon, zoom, projection, controls) {
+  factoryImpl(width, height, lat, lon, zoom, projection, controls) {
     this.width = width;
     this.height = height;
     this.lat = lat || this.lat;
@@ -47,64 +50,68 @@ let WebMap = Polymer({
     this.zoom = zoom || this.zoom;
     this.projection = projection || "OSMTILE";
     this.controls = controls || this.controls;
-  },
+  }
 
-  properties: {
-    lat: {
-      type: Number,
-      value: 0,
-      reflectToAttribute: true
-    },
-    lon: {
-      type: Number,
-      value: 0,
-      reflectToAttribute: true
-    },
-    zoom: {
-      type: Number,
-      value: 0,
-      reflectToAttribute: true
-    },
-    projection: {
-      type: String,
-      value: "OSMTILE",
-      reflectToAttribute: false
-    },
-    width: {
-      type: Number,
-      value: null,
-      reflectToAttribute: true
-    },
-    height: {
-      type: Number,
-      value: null,
-      reflectToAttribute: true
-    },
-    layers: {
-      type: Object,
-      value: function() {
-        return this.getElementsByTagName("layer-");
+  static get properties() {
+    return {
+      lat: {
+        type: Number,
+        value: 0,
+        reflectToAttribute: true
+      },
+      lon: {
+        type: Number,
+        value: 0,
+        reflectToAttribute: true
+      },
+      zoom: {
+        type: Number,
+        value: 0,
+        reflectToAttribute: true
+      },
+      projection: {
+        type: String,
+        value: "OSMTILE",
+        reflectToAttribute: false
+      },
+      width: {
+        type: Number,
+        value: null,
+        reflectToAttribute: true
+      },
+      height: {
+        type: Number,
+        value: null,
+        reflectToAttribute: true
+      },
+      layers: {
+        type: Object,
+        value() {
+          return this.getElementsByTagName("layer-");
+        }
+      },
+      areas: {
+        type: Object,
+        value() {
+          return this.getElementsByTagName("area");
+        }
+      },
+      controls: {
+        type: Boolean,
+        reflectToAttribute: true
       }
-    },
-    areas: {
-      type: Object,
-      value: function() {
-        return this.getElementsByTagName("area");
-      }
-    },
-    controls: {
-      type: Boolean,
-      reflectToAttribute: true
-    }
-  },
+    };
+  }
 
-  observers: [
-    "_widthChanged(width)",
-    "_heightChanged(height)",
-    "_toggleControls(controls)"
-  ],
+  static get observers() {
+    return [
+      "_widthChanged(width)",
+      "_heightChanged(height)",
+      "_toggleControls(controls)"
+    ];
+  }
 
-  _toggleControls: function(controls) {
+  _toggleControls(controls) {
     if (this._map) {
       if (controls) {
         this._zoomControl = L.control.zoom().addTo(this._map);
@@ -130,42 +137,42 @@ let WebMap = Polymer({
         this._map.removeControl(this._zoomControl);
       }
     }
-  },
+  }
 
-  _widthChanged: function(width) {
+  _widthChanged(width) {
     this.style.width = width + "px";
     this.$.map.style.width = width + "px";
     if (this._map) {
       this._map.invalidateSize(false);
     }
-  },
+  }
 
-  _heightChanged: function(height) {
+  _heightChanged(height) {
     this.style.height = height + "px";
     this.$.map.style.height = height + "px";
     if (this._map) {
       this._map.invalidateSize(false);
     }
-  },
+  }
 
-  zoomTo: function(lat, lon, zoom) {
+  zoomTo(lat, lon, zoom) {
     zoom = zoom || this.zoom;
     var location = new L.LatLng(lat, lon);
     this._map.setView(location, zoom);
     this.zoom = zoom;
     this.lat = location.lat;
     this.lon = location.lng;
-  },
+  }
 
-  _updateMapCenter: function() {
+  _updateMapCenter() {
     // remember to tell Leaflet event handler that 'this' in here refers to
     //  something other than the map in this case the custom polymer element
     this.lat = this._map.getCenter().lat;
     this.lon = this._map.getCenter().lng;
     this.zoom = this._map.getZoom();
-  },
-
-  ready: function() {
+  }
+  ready() {
+    super.ready();
     // when used in a custom element, the leaflet script element is hidden inside
     // the import's shadow dom.
     L.Icon.Default.imagePath = (function() {
@@ -205,13 +212,13 @@ let WebMap = Polymer({
         }
       }
     }
-  },
-
-  detached: function() {
+  }
+  disconnectedCallback() {
     this._removeEvents();
-  },
-
-  attached: function() {
+    super.disconnectedCallback();
+  }
+  connectedCallback() {
+    super.connectedCallback();
     async.microTask.run(() => {
       // the dimension attributes win, if they're there. A map does not
       // have an intrinsic size, unlike an image or video, and so must
@@ -289,12 +296,18 @@ let WebMap = Polymer({
           }
         }
         this._setUpEvents();
-        this.fire("load", { target: this });
+        this.dispatchEvent(
+          new CustomEvent("load", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: { target: this }
+          })
+        );
       }
     }, 10);
-  },
-
-  _removeEvents: function() {
+  }
+  _removeEvents() {
     if (this._map) {
       this._map.off(
         "preclick click dblclick mousemove mouseover mouseout mousedown mouseup contextmenu",
@@ -307,121 +320,190 @@ let WebMap = Polymer({
         this
       );
     }
-  },
-
-  _setUpEvents: function() {
+  }
+  _setUpEvents() {
     this._map.on(
       "load",
       function() {
-        this.fire("load", { target: this });
+        this.dispatchEvent(
+          new CustomEvent("load", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: { target: this }
+          })
+        );
       },
       this
     );
     this._map.on(
       "preclick",
       function(e) {
-        this.fire("preclick", {
-          lat: e.latlng.lat,
-          lon: e.latlng.lng,
-          x: e.containerPoint.x,
-          y: e.containerPoint.y
-        });
+        this.dispatchEvent(
+          new CustomEvent("preclick", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: {
+              lat: e.latlng.lat,
+              lon: e.latlng.lng,
+              x: e.containerPoint.x,
+              y: e.containerPoint.y
+            }
+          })
+        );
       },
       this
     );
     this._map.on(
       "click",
       function(e) {
-        this.fire("click", {
-          lat: e.latlng.lat,
-          lon: e.latlng.lng,
-          x: e.containerPoint.x,
-          y: e.containerPoint.y
-        });
+        this.dispatchEvent(
+          new CustomEvent("click", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: {
+              lat: e.latlng.lat,
+              lon: e.latlng.lng,
+              x: e.containerPoint.x,
+              y: e.containerPoint.y
+            }
+          })
+        );
       },
       this
     );
     this._map.on(
       "dblclick",
       function(e) {
-        this.fire("dblclick", {
-          lat: e.latlng.lat,
-          lon: e.latlng.lng,
-          x: e.containerPoint.x,
-          y: e.containerPoint.y
-        });
+        this.dispatchEvent(
+          new CustomEvent("dblclick", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: {
+              lat: e.latlng.lat,
+              lon: e.latlng.lng,
+              x: e.containerPoint.x,
+              y: e.containerPoint.y
+            }
+          })
+        );
       },
       this
     );
     this._map.on(
       "mousemove",
       function(e) {
-        this.fire("mousemove", {
-          lat: e.latlng.lat,
-          lon: e.latlng.lng,
-          x: e.containerPoint.x,
-          y: e.containerPoint.y
-        });
+        this.dispatchEvent(
+          new CustomEvent("mousemove", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: {
+              lat: e.latlng.lat,
+              lon: e.latlng.lng,
+              x: e.containerPoint.x,
+              y: e.containerPoint.y
+            }
+          })
+        );
       },
       this
     );
     this._map.on(
       "mouseover",
       function(e) {
-        this.fire("mouseover", {
-          lat: e.latlng.lat,
-          lon: e.latlng.lng,
-          x: e.containerPoint.x,
-          y: e.containerPoint.y
-        });
+        this.dispatchEvent(
+          new CustomEvent("mouseover", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: {
+              lat: e.latlng.lat,
+              lon: e.latlng.lng,
+              x: e.containerPoint.x,
+              y: e.containerPoint.y
+            }
+          })
+        );
       },
       this
     );
     this._map.on(
       "mouseout",
       function(e) {
-        this.fire("mouseout", {
-          lat: e.latlng.lat,
-          lon: e.latlng.lng,
-          x: e.containerPoint.x,
-          y: e.containerPoint.y
-        });
+        this.dispatchEvent(
+          new CustomEvent("mouseout", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: {
+              lat: e.latlng.lat,
+              lon: e.latlng.lng,
+              x: e.containerPoint.x,
+              y: e.containerPoint.y
+            }
+          })
+        );
       },
       this
     );
     this._map.on(
       "mousedown",
       function(e) {
-        this.fire("mousedown", {
-          lat: e.latlng.lat,
-          lon: e.latlng.lng,
-          x: e.containerPoint.x,
-          y: e.containerPoint.y
-        });
+        this.dispatchEvent(
+          new CustomEvent("mousedown", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: {
+              lat: e.latlng.lat,
+              lon: e.latlng.lng,
+              x: e.containerPoint.x,
+              y: e.containerPoint.y
+            }
+          })
+        );
       },
       this
     );
     this._map.on(
       "mouseup",
       function(e) {
-        this.fire("mouseup", {
-          lat: e.latlng.lat,
-          lon: e.latlng.lng,
-          x: e.containerPoint.x,
-          y: e.containerPoint.y
-        });
+        this.dispatchEvent(
+          new CustomEvent("mouseup", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: {
+              lat: e.latlng.lat,
+              lon: e.latlng.lng,
+              x: e.containerPoint.x,
+              y: e.containerPoint.y
+            }
+          })
+        );
       },
       this
     );
     this._map.on(
       "contextmenu",
       function(e) {
-        this.fire("contextmenu", {
-          lat: e.latlng.lat,
-          lon: e.latlng.lng,
-          x: e.containerPoint.x,
-          y: e.containerPoint.y
-        });
+        this.dispatchEvent(
+          new CustomEvent("contextmenu", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: {
+              lat: e.latlng.lat,
+              lon: e.latlng.lng,
+              x: e.containerPoint.x,
+              y: e.containerPoint.y
+            }
+          })
+        );
       },
       this
     );
@@ -429,7 +511,14 @@ let WebMap = Polymer({
       "movestart",
       function() {
         this._updateMapCenter();
-        this.fire("movestart", { target: this });
+        this.dispatchEvent(
+          new CustomEvent("movestart", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: { target: this }
+          })
+        );
       },
       this
     );
@@ -437,7 +526,14 @@ let WebMap = Polymer({
       "move",
       function() {
         this._updateMapCenter();
-        this.fire("move", { target: this });
+        this.dispatchEvent(
+          new CustomEvent("move", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: { target: this }
+          })
+        );
       },
       this
     );
@@ -445,7 +541,14 @@ let WebMap = Polymer({
       "moveend",
       function() {
         this._updateMapCenter();
-        this.fire("moveend", { target: this });
+        this.dispatchEvent(
+          new CustomEvent("moveend", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: { target: this }
+          })
+        );
       },
       this
     );
@@ -453,7 +556,14 @@ let WebMap = Polymer({
       "zoomstart",
       function() {
         this._updateMapCenter();
-        this.fire("zoomstart", { target: this });
+        this.dispatchEvent(
+          new CustomEvent("zoomstart", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: { target: this }
+          })
+        );
       },
       this
     );
@@ -461,7 +571,14 @@ let WebMap = Polymer({
       "zoom",
       function() {
         this._updateMapCenter();
-        this.fire("zoom", { target: this });
+        this.dispatchEvent(
+          new CustomEvent("zoom", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: { target: this }
+          })
+        );
       },
       this
     );
@@ -469,10 +586,18 @@ let WebMap = Polymer({
       "zoomend",
       function() {
         this._updateMapCenter();
-        this.fire("zoomend", { target: this });
+        this.dispatchEvent(
+          new CustomEvent("zoomend", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: { target: this }
+          })
+        );
       },
       this
     );
   }
-});
+}
+window.customElements.define(WebMap.tag, WebMap);
 export { WebMap };
