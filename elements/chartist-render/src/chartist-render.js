@@ -21,7 +21,7 @@ class ChartistRender extends PolymerElement {
   // render function
   static get template() {
     return html`
-      <style is="custom-style" include="chartist-render-shared-styles">
+      <style include="chartist-render-shared-styles">
         :host {
           display: block;
         }
@@ -136,16 +136,21 @@ Container class	Ratio
    */
   connectedCallback() {
     super.connectedCallback();
-    let root = this;
-    const name = "chartistLib";
     const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
     let location = `${basePath}lib/chartist/dist/chartist.min.js`;
     window.addEventListener(
-      `es-bridge-${name}-loaded`,
-      root._chartistLoaded.bind(root)
+      "es-bridge-chartistLib-loaded",
+      this._chartistLoaded.bind(this)
     );
     window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load(name, location);
+    window.ESGlobalBridge.instance.load("chartistLib", location);
+  }
+  disconnectedCallback() {
+    window.removeEventListener(
+      "es-bridge-chartistLib-loaded",
+      this._chartistLoaded.bind(this)
+    );
+    super.disconnectedCallback();
   }
 
   /**

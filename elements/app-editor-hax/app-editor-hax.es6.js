@@ -1,4 +1,4 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/hax-body/lib/hax-store.js";import"./node_modules/@lrnwebcomponents/hax-body/hax-body.js";import"./node_modules/@lrnwebcomponents/hax-body/lib/hax-autoloader.js";import"./node_modules/@lrnwebcomponents/hax-body/lib/hax-manager.js";import"./node_modules/@lrnwebcomponents/hax-body/lib/hax-panel.js";import"./node_modules/@lrnwebcomponents/hax-body/lib/hax-app-picker.js";import"./node_modules/@lrnwebcomponents/hax-body/lib/hax-export-dialog.js";/**
+import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import"./node_modules/@lrnwebcomponents/h-a-x/h-a-x.js";/**
 `app-editor-hax`
 stand alone editor intended for use in a larger application
 as the editor. It is like cms-hax in that it's prepackaged
@@ -12,7 +12,7 @@ is no edit state and that it is always editing effectively.
  - editor - in this case HAX is the editor / authoring tool
  - hax - just to make sure we're aware that it's actually HAX based
 
-*/let AppEditorHax=Polymer({_template:html`
+*/class AppEditorHax extends PolymerElement{static get template(){return html`
     <style>
       :host {
         display: block;
@@ -20,33 +20,14 @@ is no edit state and that it is always editing effectively.
         box-sizing: content-box;
       }
     </style>
-    <hax-store
-      skip-exit-trap=""
-      hidden=""
-      app-store="[[appStoreConnection]]"
-    ></hax-store>
-    <hax-autoloader hidden=""></hax-autoloader>
-    <hax-panel
-      id="panel"
-      hide-panel-ops=""
-      hide-export-button=""
-      hide-preferences-button\$="[[hidePreferencesButton]]"
-      align="right"
-    ></hax-panel>
-    <hax-body id="body"></hax-body>
-    <hax-manager></hax-manager>
-    <hax-export-dialog></hax-export-dialog>
-    <hax-app-picker></hax-app-picker>
-  `,is:"app-editor-hax",properties:{/**
-     * Establish the app store connection to pull in our JSON
-     */appStoreConnection:{type:Object},/**
-     * Ability to hide the preferences button
-     */hidePreferencesButton:{value:!1,type:Boolean}},/**
+    <h-a-x app-store$="[[appStoreConnection]]"></h-a-x>`}static get tag(){return"app-editor-hax"}static get properties(){return{/**
+       * Establish the app store connection to pull in our JSON
+       */appStoreConnection:{type:Object}}}/**
    * Basic save event to make targetting easier.
-   */save:function(){// convert the body area to content
+   */save(){// convert the body area to content
 let content=window.HaxStore.instance.activeHaxBody.haxToContent();// fire event so apps can react correctly
-this.fire("app-editor-hax-save",content)},/**
+this.dispatchEvent(new CustomEvent("app-editor-hax-save",{bubbles:!0,cancelable:!0,composed:!0,detail:content}))}/**
    * Basic import capability abstraction of hax body's import capabilities
-   */import:function(html){// import the HTML blob to get going
+   */import(html){// import the HTML blob to get going
 window.HaxStore.instance.activeHaxBody.importContent(html);// fire event just letting things know this happened
-this.fire("app-editor-hax-import",!0)}});export{AppEditorHax};
+this.dispatchEvent(new CustomEvent("app-editor-hax-import",{bubbles:!0,cancelable:!0,composed:!0,detail:!0}))}}window.customElements.define(AppEditorHax.tag,AppEditorHax);export{AppEditorHax};

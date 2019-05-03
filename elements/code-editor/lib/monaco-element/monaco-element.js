@@ -120,11 +120,11 @@ class MonacoElement extends PolymerElement {
   }
 
   disconnectedCallback() {
-    super.disconnectedCallback();
     window.removeEventListener("message", message => {
       this.handleMessage(message);
     });
     this.__init = false;
+    super.disconnectedCallback();
   }
 
   initIFrame() {
@@ -364,4 +364,5 @@ class MonacoElement extends PolymerElement {
 }
 
 window.customElements.define("monaco-element", MonacoElement);
+export { MonacoElement };
 window.MonacoData = window.MonacoData || {};

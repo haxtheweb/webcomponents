@@ -1,7 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/app-layout/app-drawer/app-drawer.js";
-import "./hax-blox-browser.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./hax-shared-styles.js";
 /**
@@ -19,6 +16,9 @@ import "./hax-shared-styles.js";
 class HaxBloxPicker extends PolymerElement {
   constructor() {
     super();
+    import("@polymer/paper-button/paper-button.js");
+    import("@polymer/app-layout/app-drawer/app-drawer.js");
+    import("@lrnwebcomponents/hax-body/lib/hax-blox-browser.js");
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/iron-icon/iron-icon.js");
   }

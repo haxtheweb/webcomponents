@@ -1,14 +1,13 @@
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/paper-styles/paper-styles.js";import"./node_modules/@polymer/iron-flex-layout/iron-flex-layout.js";import{IronResizableBehavior}from"./node_modules/@polymer/iron-resizable-behavior/iron-resizable-behavior.js";/**
+ */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import"./node_modules/@polymer/paper-styles/paper-styles.js";import"./node_modules/@polymer/iron-flex-layout/iron-flex-layout.js";import{IronResizableBehavior}from"./node_modules/@polymer/iron-resizable-behavior/iron-resizable-behavior.js";import{mixinBehaviors}from"./node_modules/@polymer/polymer/lib/legacy/class.js";/**
  * `circle-progress`
  * `Polymer-based web component displaying a circular progress bar.`
  *
  * @demo demo/index.html
- */let CircleProgress=Polymer({_template:html`
-    <custom-style>
-      <style is="custom-style" include="paper-material-styles">
+ */class CircleProgress extends mixinBehaviors([IronResizableBehavior],PolymerElement){static get template(){return html`
+      <style include="paper-material-styles">
         :host {
           @apply --layout-vertical;
           @apply --layout-center-center;
@@ -33,7 +32,7 @@
           stroke-linecap: var(--circle-progress-stroke-linecap, round);
         }
       </style>
-    </custom-style>
+    
     <svg id="circle" width="100%" height="100%">
       <circle
         class="circle-background"
@@ -55,13 +54,12 @@
         transform\$="[[_transform]]"
       ></circle>
     </svg>
-    <slot></slot>
-  `,is:"circle-progress",behaviors:[IronResizableBehavior],properties:{/**
-     * Value of circular progress bar.
-     */value:{name:"value",type:"Number",value:0},/**
-     * Maximum of value.
-     */max:{name:"max",type:"Number",value:100},/**
-     * Stroke width of circle.
-     */strokeWidth:{name:"strokeWidth",type:"Number",value:4},/**
-     * Starting angle of the progress.
-     */angle:{name:"angle",type:"Number",value:-90},_cx:{name:"_cx",type:"Number",value:null},_cy:{name:"_cy",type:"Number",value:null},_radius:{name:"_radius",type:"Number",computed:"_computeRadius(_cx, _cy, strokeWidth)"},_transform:{name:"_transform",type:"String",computed:"_computeTransform(angle, _cx, _cy)"},_dasharray:{name:"_dasharray",type:"Number",computed:"_computeDashArray(_radius)"},_dashoffset:{name:"_dashoffset",type:"Number",computed:"_computeDashOffset(value, max, _dasharray)"}},listeners:{"iron-resize":"_onIronResize"},_computeDashArray:function(radius){return 2*Math.PI*radius},_computeDashOffset:function(value,max,dasharray){return(1-value/max)*dasharray},_computeRadius:function(cx,cy,strokeWidth){return cx&&cy?Math.max(0,Math.min(cx,cy)-strokeWidth/2):0},_computeTransform:function(angle,cx,cy){return cx&&cy?"rotate("+angle+", "+cx+", "+cy+")":""},_onIronResize:function(){if(this.offsetWidth&&this.offsetHeight){this._cx=this.offsetWidth/2;this._cy=this.offsetHeight/2;this.$.circle.style.display="block"}}});export{CircleProgress};
+    <slot></slot>`}static get tag(){return"circle-progress"}static get properties(){let props={/**
+       * Value of circular progress bar.
+       */value:{name:"value",type:"Number",value:0},/**
+       * Maximum of value.
+       */max:{name:"max",type:"Number",value:100},/**
+       * Stroke width of circle.
+       */strokeWidth:{name:"strokeWidth",type:"Number",value:4},/**
+       * Starting angle of the progress.
+       */angle:{name:"angle",type:"Number",value:-90},_cx:{name:"_cx",type:"Number",value:null},_cy:{name:"_cy",type:"Number",value:null},_radius:{name:"_radius",type:"Number",computed:"_computeRadius(_cx, _cy, strokeWidth)"},_transform:{name:"_transform",type:"String",computed:"_computeTransform(angle, _cx, _cy)"},_dasharray:{name:"_dasharray",type:"Number",computed:"_computeDashArray(_radius)"},_dashoffset:{name:"_dashoffset",type:"Number",computed:"_computeDashOffset(value, max, _dasharray)"}};if(super.properties){props=Object.assign(props,super.properties)}return props}connectedCallback(){super.connectedCallback();afterNextRender(this,function(){this.addEventListener("iron-resize",this._onIronResize.bind(this))})}disconnectedCallback(){this.removeEventListener("iron-resize",this._onIronResize.bind(this));super.disconnectedCallback()}_computeDashArray(radius){return 2*Math.PI*radius}_computeDashOffset(value,max,dasharray){return(1-value/max)*dasharray}_computeRadius(cx,cy,strokeWidth){return cx&&cy?Math.max(0,Math.min(cx,cy)-strokeWidth/2):0}_computeTransform(angle,cx,cy){return cx&&cy?"rotate("+angle+", "+cx+", "+cy+")":""}_onIronResize(){if(this.offsetWidth&&this.offsetHeight){this._cx=this.offsetWidth/2;this._cy=this.offsetHeight/2;this.$.circle.style.display="block"}}}window.customElements.define(CircleProgress.tag,CircleProgress);export{CircleProgress};

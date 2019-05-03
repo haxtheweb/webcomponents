@@ -1,7 +1,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import "@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js";
 import "./hax-shared-styles.js";
 /**
  * `hax-input-mixer`
@@ -14,6 +13,7 @@ import "./hax-shared-styles.js";
 class HaxImportMixer extends PolymerElement {
   constructor() {
     super();
+    import("@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js");
     import("@polymer/paper-input/paper-textarea.js");
     import("@polymer/paper-input/paper-input.js");
     import("@polymer/paper-checkbox/paper-checkbox.js");

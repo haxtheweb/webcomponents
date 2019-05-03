@@ -1,23 +1,21 @@
-define(["exports","./node_modules/@polymer/polymer/polymer-legacy.js","./node_modules/@polymer/paper-button/paper-button.js","./node_modules/@polymer/paper-card/paper-card.js","./node_modules/@polymer/iron-list/iron-list.js","./node_modules/@polymer/iron-ajax/iron-ajax.js","./node_modules/@polymer/iron-icons/iron-icons.js","./node_modules/@polymer/paper-icon-button/paper-icon-button.js","./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js"],function(_exports,_polymerLegacy,_paperButton,_paperCard,_ironList,_ironAjax,_ironIcons,_paperIconButton,_simpleColors){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.PerSpecTive=void 0;function _templateObject_3349b0606a8611e9ac9be5a2f7c24273(){var data=babelHelpers.taggedTemplateLiteral(["\n    <style>\n      :host {\n        display: block;\n        transition: 0.6s all linear;\n        background-color: transparent;\n        opacity: 1;\n      }\n      :host([outline-loading]) {\n        opacity: 0.6;\n        background-color: #999999;\n      }\n      paper-card {\n        width: 250px;\n        height: 250px;\n      }\n      #list {\n        min-height: 50vh;\n        width: 100%;\n      }\n    </style>\n    <iron-ajax\n      auto=\"\"\n      id=\"endpoint\"\n      url=\"[[endPoint]]\"\n      loading=\"{{outlineLoading}}\"\n      handle-as=\"json\"\n      last-response=\"{{_outlineData}}\"\n      debounce-duration=\"300\"\n    ></iron-ajax>\n    <iron-list grid=\"\" id=\"list\" items=\"[[outline]]\">\n      <template>\n        <paper-card\n          heading=\"[[item.title]]\"\n          image=\"\"\n          elevation=\"1\"\n          animated-shadow=\"true\"\n        >\n          <div class=\"card-content\">A card</div>\n          <div class=\"card-actions\">\n            <paper-icon-button icon=\"add\"></paper-icon-button>\n            <paper-icon-button icon=\"delete\"></paper-icon-button>\n          </div>\n        </paper-card>\n      </template>\n    </iron-list>\n  "]);_templateObject_3349b0606a8611e9ac9be5a2f7c24273=function _templateObject_3349b0606a8611e9ac9be5a2f7c24273(){return data};return data}/**
-`per-spec-tive`
-Giving learners a new perspective on education.
-
-@demo ../../demo/index.html
-
-@microcopy - the mental model for this app
- - perspective - a change in viewpoint, angle of seeing something
-*/var PerSpecTive=(0,_polymerLegacy.Polymer)({_template:(0,_polymerLegacy.html)(_templateObject_3349b0606a8611e9ac9be5a2f7c24273()),is:"per-spec-tive",properties:{/**
-     * State of outline loading
-     */outlineLoading:{type:Boolean,reflectToAttribute:!0},/**
-     * Location of data to kick us off
-     */endPoint:{type:String},/**
-     * Outline data loaded from endPoint.
-     */_outlineData:{type:Object,observer:"_outlineRawDataChanged"},/**
-     * Outline
-     */outline:{type:Array,observer:"_outlineChanged"}},/**
+define(["exports","require","./node_modules/@polymer/polymer/polymer-element.js","./node_modules/@polymer/iron-ajax/iron-ajax.js"],function(_exports,_require,_polymerElement,_ironAjax){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.PerSpecTive=void 0;_require=babelHelpers.interopRequireWildcard(_require);function _templateObject_270168506d6c11e98dc649d98b91f72a(){var data=babelHelpers.taggedTemplateLiteral(["\n    <style>\n      :host {\n        display: block;\n        transition: 0.6s all linear;\n        background-color: transparent;\n        opacity: 1;\n      }\n      :host([outline-loading]) {\n        opacity: 0.6;\n        background-color: #999999;\n      }\n      paper-card {\n        width: 250px;\n        height: 250px;\n      }\n      #list {\n        min-height: 50vh;\n        width: 100%;\n      }\n    </style>\n    <iron-ajax\n      auto=\"\"\n      id=\"endpoint\"\n      url=\"[[endPoint]]\"\n      loading=\"{{outlineLoading}}\"\n      handle-as=\"json\"\n      last-response=\"{{_outlineData}}\"\n      debounce-duration=\"300\"\n    ></iron-ajax>\n    <iron-list grid=\"\" id=\"list\" items=\"[[outline]]\">\n      <template>\n        <paper-card\n          heading=\"[[item.title]]\"\n          image=\"\"\n          elevation=\"1\"\n          animated-shadow=\"true\"\n        >\n          <div class=\"card-content\">A card</div>\n          <div class=\"card-actions\">\n            <paper-icon-button icon=\"add\"></paper-icon-button>\n            <paper-icon-button icon=\"delete\"></paper-icon-button>\n          </div>\n        </paper-card>\n      </template>\n    </iron-list>"]);_templateObject_270168506d6c11e98dc649d98b91f72a=function _templateObject_270168506d6c11e98dc649d98b91f72a(){return data};return data}/**
+ * `per-spec-tive`
+ * Giving learners a new perspective on education.
+ * @demo ../../demo/index.html
+ * @microcopy - the mental model for this app
+ * - perspective - a change in viewpoint, angle of seeing something
+ */var PerSpecTive=/*#__PURE__*/function(_PolymerElement){babelHelpers.inherits(PerSpecTive,_PolymerElement);function PerSpecTive(){var _this;babelHelpers.classCallCheck(this,PerSpecTive);_this=babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(PerSpecTive).call(this));new Promise(function(res,rej){return _require.default(["@polymer/paper-button/paper-button.js"],res,rej)});new Promise(function(res,rej){return _require.default(["@polymer/paper-card/paper-card.js"],res,rej)});new Promise(function(res,rej){return _require.default(["@polymer/iron-list/iron-list.js"],res,rej)});new Promise(function(res,rej){return _require.default(["@polymer/iron-icons/iron-icons.js"],res,rej)});new Promise(function(res,rej){return _require.default(["@polymer/paper-icon-button/paper-icon-button.js"],res,rej)});return _this}babelHelpers.createClass(PerSpecTive,[{key:"_outlineRawDataChanged",/**
    * Notice outline data has changed off the end point
-   */_outlineRawDataChanged:function _outlineRawDataChanged(newValue,oldValue){if(null!=newValue&&babelHelpers.typeof(newValue.items)!==("undefined"===typeof void 0?"undefined":babelHelpers.typeof(void 0))){this.set("outline",[]);this.set("outline",newValue.items)}},/**
+   */value:function _outlineRawDataChanged(newValue,oldValue){if(null!=newValue&&babelHelpers.typeof(newValue.items)!==("undefined"===typeof void 0?"undefined":babelHelpers.typeof(void 0))){this.set("outline",[]);this.set("outline",newValue.items)}}/**
    * Notice items in the outline have changed.
-   */_outlineChanged:function _outlineChanged(newValue,oldValue){},/**
+   */},{key:"_outlineChanged",value:function _outlineChanged(newValue,oldValue){}/**
    * Simple way to convert from object to array.
-   */_toArray:function _toArray(obj){return Object.keys(obj).map(function(key){return obj[key]})}});_exports.PerSpecTive=PerSpecTive});
+   */},{key:"_toArray",value:function _toArray(obj){return Object.keys(obj).map(function(key){return obj[key]})}}],[{key:"template",get:function get(){return(0,_polymerElement.html)(_templateObject_270168506d6c11e98dc649d98b91f72a())}},{key:"tag",get:function get(){return"per-spec-tive"}},{key:"properties",get:function get(){return{/**
+       * State of outline loading
+       */outlineLoading:{type:Boolean,reflectToAttribute:!0},/**
+       * Location of data to kick us off
+       */endPoint:{type:String},/**
+       * Outline data loaded from endPoint.
+       */_outlineData:{type:Object,observer:"_outlineRawDataChanged"},/**
+       * Outline
+       */outline:{type:Array,observer:"_outlineChanged"}}}}]);return PerSpecTive}(_polymerElement.PolymerElement);_exports.PerSpecTive=PerSpecTive;window.customElements.define(PerSpecTive.tag,PerSpecTive)});

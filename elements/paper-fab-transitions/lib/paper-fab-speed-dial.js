@@ -1,4 +1,4 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-flex-layout/iron-flex-layout.js";
 import "@polymer/iron-dropdown/iron-dropdown.js";
@@ -38,9 +38,9 @@ Custom property | Description | Default
 @hero hero.svg
 * @demo demo/index.html
 */
-(function(Polymer) {
-  Polymer({
-    _template: html`
+class PaperFabSpeedDial extends PolymerElement {
+  static get template() {
+    return html`
       <custom-style>
         <style>
           :host .vertical ::content .dropdown-content {
@@ -63,11 +63,15 @@ Custom property | Description | Default
       >
         <slot id="contentContainer" name="dropdown-content"></slot>
       </iron-dropdown>
-    `,
+    `;
+  }
 
-    is: "paper-fab-speed-dial",
+  static get tag() {
+    return "paper-fab-speed-dial";
+  }
 
-    properties: {
+  static get properties() {
+    return {
       /**
        * The direction in which to expand the options. One of `top`, `bottom`
        * `left` and `right`.
@@ -90,7 +94,7 @@ Custom property | Description | Default
        */
       openAnimationConfig: {
         type: Array,
-        value: function() {
+        value() {
           return [
             {
               name: "fade-in-animation",
@@ -116,7 +120,7 @@ Custom property | Description | Default
        */
       closeAnimationConfig: {
         type: Array,
-        value: function() {
+        value() {
           return [
             {
               name: "fade-out-animation",
@@ -127,76 +131,82 @@ Custom property | Description | Default
           ];
         }
       }
-    },
+    };
+  }
 
-    observers: ["_updateDropdown(direction, offset)"],
+  static get observers() {
+    return ["_updateDropdown(direction, offset)"];
+  }
 
-    ready: function() {
-      var fab = dom(this.$.fabContainer).getDistributedNodes()[0];
-      fab.addEventListener(
-        "tap",
-        function() {
-          this.$.dropdown.open();
-        }.bind(this)
-      );
+  ready() {
+    super.ready();
 
-      var content = dom(this.$.contentContainer).getDistributedNodes()[0];
-      content.addEventListener(
-        "tap",
-        function() {
-          this.$.dropdown.close();
-        }.bind(this)
-      );
-    },
+    var fab = dom(this.$.fabContainer).getDistributedNodes()[0];
+    fab.addEventListener(
+      "tap",
+      function() {
+        this.$.dropdown.open();
+      }.bind(this)
+    );
 
-    /**
-     * Show the speed dial options.
-     */
-    open: function() {
-      this.$.dropdown.open();
-    },
+    var content = dom(this.$.contentContainer).getDistributedNodes()[0];
+    content.addEventListener(
+      "tap",
+      function() {
+        this.$.dropdown.close();
+      }.bind(this)
+    );
+  }
 
-    /**
-     * Hide the speed dial options.
-     */
-    close: function() {
-      this.$.dropdown.close();
-    },
+  /**
+   * Show the speed dial options.
+   */
+  open() {
+    this.$.dropdown.open();
+  }
 
-    _updateDropdown: function(direction, offset) {
-      var d = this.$.dropdown;
-      switch (direction) {
-        case "bottom":
-          d.verticalAlign = "top";
-          d.horizontalOffset = 0;
-          d.verticalOffset = offset;
-          d.classList.add("vertical");
-          d.classList.remove("horizontal");
-          break;
-        case "top":
-          d.verticalAlign = "bottom";
-          d.horizontalOffset = 0;
-          d.verticalOffset = offset;
-          d.classList.add("vertical");
-          d.classList.remove("horizontal");
-          break;
-        case "right":
-          d.horizontalAlign = "left";
-          d.horizontalOffset = offset;
-          d.verticalOffset = 0;
-          d.classList.add("horizontal");
-          d.classList.remove("vertical");
-          break;
-        case "left":
-          d.horizontalAlign = "right";
-          d.horizontalOffset = offset;
-          d.verticalOffset = 0;
-          d.classList.add("horizontal");
-          d.classList.remove("vertical");
-          break;
-        default:
-          throw "Invalid direction. Must be one of [top, bottom, left, right].";
-      }
+  /**
+   * Hide the speed dial options.
+   */
+  close() {
+    this.$.dropdown.close();
+  }
+
+  _updateDropdown(direction, offset) {
+    var d = this.$.dropdown;
+    switch (direction) {
+      case "bottom":
+        d.verticalAlign = "top";
+        d.horizontalOffset = 0;
+        d.verticalOffset = offset;
+        d.classList.add("vertical");
+        d.classList.remove("horizontal");
+        break;
+      case "top":
+        d.verticalAlign = "bottom";
+        d.horizontalOffset = 0;
+        d.verticalOffset = offset;
+        d.classList.add("vertical");
+        d.classList.remove("horizontal");
+        break;
+      case "right":
+        d.horizontalAlign = "left";
+        d.horizontalOffset = offset;
+        d.verticalOffset = 0;
+        d.classList.add("horizontal");
+        d.classList.remove("vertical");
+        break;
+      case "left":
+        d.horizontalAlign = "right";
+        d.horizontalOffset = offset;
+        d.verticalOffset = 0;
+        d.classList.add("horizontal");
+        d.classList.remove("vertical");
+        break;
+      default:
+        throw "Invalid direction. Must be one of [top, bottom, left, right].";
     }
-  });
-})(Polymer);
+  }
+}
+window.customElements.define(PaperFabSpeedDial.tag, PaperFabSpeedDial);
+export { PaperFabSpeedDial };

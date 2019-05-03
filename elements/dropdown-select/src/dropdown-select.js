@@ -1,8 +1,6 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import "@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
-import "@polymer/paper-item/paper-item.js";
-import "@polymer/paper-listbox/paper-listbox.js";
 /**
 `dropdown-select`
 An easy to use, works as expected dropdown menu. Add slotted items like follows:
@@ -28,254 +26,285 @@ An easy to use, works as expected dropdown menu. Add slotted items like follows:
 * @demo demo/index.html
 
 */
-let DropdownSelect = Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: block;
-      }
-      paper-listbox ::slotted(paper-item) {
-        display: block;
-        width: calc(100% - 32px);
-        padding: 0 16px;
-        min-height: 32px;
-        vertical-align: text-top;
-        line-height: 32px;
-        @apply --dropdown-select-items;
-      }
-      paper-listbox paper-listbox {
-        @apply --dropdown-listbox;
-      }
-    </style>
-    <paper-dropdown-menu
-      id="menu"
-      allow-outside-scroll\$="[[allowOutsideScroll]]"
-      always-float-label\$="[[alwaysFloatLabel]]"
-      dynamic-align\$="[[dynamicAlign]]"
-      error-message\$="[[errorMessage]]"
-      horizontal-align\$="[[horizontalAlign]]"
-      label\$="[[label]]"
-      no-animations\$="[[noAnimations]]"
-      no-label-float\$="[[noLabelFloat]]"
-      on-selected-item-changed="_getSelectedValue"
-      placeholder\$="[[placeholder]]"
-      restore-focus-on-close\$="[[restoreFocusOnClose]]"
-      vertical-align\$="[[verticalAlign]]"
-      vertical-offset\$="[[verticalOffset]]"
-    >
-      <paper-listbox
-        id="listbox"
-        slot="dropdown-content"
-        class="dropdown-content"
+class DropdownSelect extends PolymerElement {
+  constructor() {
+    super();
+    import("@polymer/paper-dropdown-menu/paper-dropdown-menu.js");
+    import("@polymer/paper-item/paper-item.js");
+    import("@polymer/paper-listbox/paper-listbox.js");
+  }
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: block;
+        }
+        paper-listbox ::slotted(paper-item) {
+          display: block;
+          width: calc(100% - 32px);
+          padding: 0 16px;
+          min-height: 32px;
+          vertical-align: text-top;
+          line-height: 32px;
+          @apply --dropdown-select-items;
+        }
+        paper-listbox paper-listbox {
+          @apply --dropdown-listbox;
+        }
+      </style>
+      <paper-dropdown-menu
+        id="menu"
+        allow-outside-scroll\$="[[allowOutsideScroll]]"
+        always-float-label\$="[[alwaysFloatLabel]]"
+        dynamic-align\$="[[dynamicAlign]]"
+        error-message\$="[[errorMessage]]"
+        horizontal-align\$="[[horizontalAlign]]"
+        label\$="[[label]]"
+        no-animations\$="[[noAnimations]]"
+        no-label-float\$="[[noLabelFloat]]"
+        on-selected-item-changed="_getSelectedValue"
+        placeholder\$="[[placeholder]]"
+        restore-focus-on-close\$="[[restoreFocusOnClose]]"
+        vertical-align\$="[[verticalAlign]]"
+        vertical-offset\$="[[verticalOffset]]"
       >
-        <slot id="content"></slot>
-      </paper-listbox>
-    </paper-dropdown-menu>
-  `,
+        <paper-listbox
+          id="listbox"
+          slot="dropdown-content"
+          class="dropdown-content"
+        >
+          <slot id="content"></slot>
+        </paper-listbox>
+      </paper-dropdown-menu>
+    `;
+  }
 
-  is: "dropdown-select",
+  static get tag() {
+    return "dropdown-select";
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, function() {
+      this._valueChanged(this.value);
+      this.addEventListener("paper-dropdown-open", this._onOpen.bind(this));
+      this.addEventListener("paper-dropdown-close", this._onClose.bind(this));
+    });
+  }
+  disconnectedCallback() {
+    this.removeEventListener("paper-dropdown-open", this._onOpen.bind(this));
+    this.removeEventListener("paper-dropdown-close", this._onClose.bind(this));
+    super.disconnectedCallback();
+  }
 
-  listeners: {
-    "paper-dropdown-open": "_onOpen",
-    "paper-dropdown-close": "_onClose"
-  },
+  static get properties() {
+    return {
+      /**
+       * Set to true in order to prevent scroll from being constrained
+       * to the dropdown when it opens.
+       */
+      allowOutsideScroll: {
+        type: Boolean,
+        value: false
+      },
 
-  properties: {
-    /**
-     * Set to true in order to prevent scroll from being constrained
-     * to the dropdown when it opens.
-     */
-    allowOutsideScroll: {
-      type: Boolean,
-      value: false
-    },
+      /**
+       * Set to true to always float the label.
+       */
+      alwaysFloatLabel: {
+        type: Boolean,
+        value: false
+      },
 
-    /**
-     * Set to true to always float the label.
-     */
-    alwaysFloatLabel: {
-      type: Boolean,
-      value: false
-    },
+      /**
+       * If true, the `horizontalAlign` and `verticalAlign` properties will
+       * be considered preferences instead of strict requirements when
+       * positioning the dropdown and may be changed if doing so reduces
+       * the area of the dropdown falling outside of `fitInto`.
+       */
+      dynamicAlign: {
+        type: Boolean
+      },
 
-    /**
-     * If true, the `horizontalAlign` and `verticalAlign` properties will
-     * be considered preferences instead of strict requirements when
-     * positioning the dropdown and may be changed if doing so reduces
-     * the area of the dropdown falling outside of `fitInto`.
-     */
-    dynamicAlign: {
-      type: Boolean
-    },
+      /**
+       * The error message to display when invalid.
+       */
+      errorMessage: {
+        type: String
+      },
 
-    /**
-     * The error message to display when invalid.
-     */
-    errorMessage: {
-      type: String
-    },
+      /**
+       * The orientation against which to align the menu dropdown
+       * horizontally relative to the dropdown trigger.
+       */
+      horizontalAlign: {
+        type: String,
+        value: "right"
+      },
 
-    /**
-     * The orientation against which to align the menu dropdown
-     * horizontally relative to the dropdown trigger.
-     */
-    horizontalAlign: {
-      type: String,
-      value: "right"
-    },
+      /**
+       * The label of the select menu
+       */
+      label: {
+        type: String,
+        value: "Select an option."
+      },
 
-    /**
-     * The label of the select menu
-     */
-    label: {
-      type: String,
-      value: "Select an option."
-    },
+      /**
+       * Set to true to disable animations when opening and closing the
+       * dropdown.
+       */
+      noAnimations: {
+        type: Boolean,
+        value: false
+      },
 
-    /**
-     * Set to true to disable animations when opening and closing the
-     * dropdown.
-     */
-    noAnimations: {
-      type: Boolean,
-      value: false
-    },
+      /**
+       * Set to true to disable the floating label.
+       */
+      noLabelFloat: {
+        type: Boolean,
+        value: false
+      },
 
-    /**
-     * Set to true to disable the floating label.
-     */
-    noLabelFloat: {
-      type: Boolean,
-      value: false
-    },
+      /**
+       * True if the dropdown is open. Otherwise, false.
+       */
+      opened: {
+        type: Boolean,
+        value: false
+      },
 
-    /**
-     * True if the dropdown is open. Otherwise, false.
-     */
-    opened: {
-      type: Boolean,
-      value: false
-    },
+      /**
+       * The placeholder for the dropdown.
+       */
+      placeholder: {
+        type: String
+      },
 
-    /**
-     * The placeholder for the dropdown.
-     */
-    placeholder: {
-      type: String
-    },
+      /**
+       * Whether focus should be restored to the dropdown when the menu closes.
+       */
+      restoreFocusOnClose: {
+        type: Boolean,
+        value: true
+      },
 
-    /**
-     * Whether focus should be restored to the dropdown when the menu closes.
-     */
-    restoreFocusOnClose: {
-      type: Boolean,
-      value: true
-    },
+      /**
+       * The last selected item.
+       */
+      selectedItem: {
+        type: Object
+      },
 
-    /**
-     * The last selected item.
-     */
-    selectedItem: {
-      type: Object
-    },
+      /**
+       * The index of the selected item
+       */
+      selectedItemIndex: {
+        type: Number,
+        value: null
+      },
 
-    /**
-     * The index of the selected item
-     */
-    selectedItemIndex: {
-      type: Number,
-      value: null
-    },
+      /**
+       * The label of the selected item
+       */
+      selectedItemLabel: {
+        type: String,
+        value: null
+      },
 
-    /**
-     * The label of the selected item
-     */
-    selectedItemLabel: {
-      type: String,
-      value: null
-    },
+      /**
+       * The default value
+       */
+      value: {
+        type: String,
+        value: null,
+        notify: true,
+        reflectToAttribute: true,
+        observer: "_valueChanged"
+      },
 
-    /**
-     * The default value
-     */
-    value: {
-      type: String,
-      value: null,
-      notify: true,
-      reflectToAttribute: true,
-      observer: "_valueChanged"
-    },
+      /**
+       * The orientation against which to align the menu dropdown
+       * vertically relative to the dropdown trigger.
+       */
+      verticalAlign: {
+        type: String,
+        value: "top"
+      },
 
-    /**
-     * The orientation against which to align the menu dropdown
-     * vertically relative to the dropdown trigger.
-     */
-    verticalAlign: {
-      type: String,
-      value: "top"
-    },
-
-    /**
-     * Overrides the vertical offset computed in
-     * _computeMenuVerticalOffset.
-     */
-    verticalOffset: {
-      type: Number
-    }
-  },
+      /**
+       * Overrides the vertical offset computed in
+       * _computeMenuVerticalOffset.
+       */
+      verticalOffset: {
+        type: Number
+      }
+    };
+  }
 
   /**
    * Get the value of the selected item.
    */
-  _getSelectedValue: function(e) {
+  _getSelectedValue(e) {
     if (e.detail.value !== null) {
       this.value = e.detail.value.getAttribute("value");
       this._setSelectedValues();
-      this.fire("change", { value: this.value }); //support for old version
-      this.fire("dropdown-select-changed", this);
+      this.dispatchEvent(
+        new CustomEvent("change", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: { value: this.value }
+        })
+      ); //support for old version
+      this.dispatchEvent(
+        new CustomEvent("dropdown-select-changed", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this
+        })
+      );
     }
-  },
+  }
 
   /**
    * Sets the opened property to true
    */
-  _onOpen: function(e) {
+  _onOpen(e) {
     this.opened = true;
-  },
+  }
 
   /**
    * Sets the opened property to false
    */
-  _onClose: function(e) {
+  _onClose(e) {
     this.opened = false;
-  },
+  }
   /**
    * Get the value of the selected item.
    */
-  _setSelectedValues: function() {
-    this.selectedItem = this.$.menu.selectedItem;
-    this.selectedItemLabel = this.$.menu.selectedItemLabel;
-    this.selectedItemIndex = this.$.listbox.selected;
-  },
-  /**
-   * Set the index of the selected item, only on initial setup though
-   */
-  attached: function() {
-    this._valueChanged(this.value);
-  },
+  _setSelectedValues() {
+    this.selectedItem = this.shadowRoot.querySelector("#menu").selectedItem;
+    this.selectedItemLabel = this.shadowRoot.querySelector(
+      "#menu"
+    ).selectedItemLabel;
+    this.selectedItemIndex = this.shadowRoot.querySelector("#listbox").selected;
+  }
   /**
    * Notice value has changed and ensure data model is accurate
    */
-  _valueChanged: function(newValue, oldValue) {
+  _valueChanged(newValue, oldValue) {
     let children = dom(this).querySelectorAll("paper-item");
     if (children !== undefined && children !== null) {
       for (let i = 0; i < children.length; i++) {
         if (this.value === children[i].getAttribute("value")) {
-          this.$.listbox.selected = i;
+          this.shadowRoot.querySelector("#listbox").selected = i;
           this._setSelectedValues();
         }
       }
     }
   }
-});
+}
+window.customElements.define(DropdownSelect.tag, DropdownSelect);
 export { DropdownSelect };

@@ -1,4 +1,3 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 var $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
 

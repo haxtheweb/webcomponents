@@ -1,4 +1,5 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import {
   addDebouncer,
   dom,
@@ -6,7 +7,7 @@ import {
 } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { Templatizer } from "@polymer/polymer/lib/legacy/templatizer-behavior.js";
 import { OptionalMutableDataBehavior } from "@polymer/polymer/lib/legacy/mutable-data-behavior.js";
-
+import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 /**
 @license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
@@ -144,9 +145,11 @@ The function receives a single `item` of the items provided and should return a 
       </template>
     </grafitto-filter>
     <script>
-      Polymer({
-        is: "your-element",
-        properties: {
+      class YourElement extends PolymerElement {
+        static get tag() {
+    return "your-element",
+        static get properties() {
+    return {
           data: {
             type: Array,
             value: [
@@ -161,7 +164,8 @@ The function receives a single `item` of the items provided and should return a 
                   ]
           }
         },
-        ready: function(){
+        ready() {
+    super.ready();
           this.$.filter.f = function(item){
             return item.name == "Doe";
           };
@@ -180,76 +184,90 @@ by the regular expression engine.
 @element grafitto-filter
 * @demo demo/index.html
 */
-let GrafittoFilter = Polymer({
-  _template: html`
-    <div id="dom"><slot></slot></div>
-  `,
+class GrafittoFilter extends mixinBehaviors(
+  [Templatizer, OptionalMutableDataBehavior],
+  PolymerElement
+) {
+  static get template() {
+    return html`
+      <div id="dom"><slot></slot></div>
+    `;
+  }
 
-  is: "grafitto-filter",
-  behaviors: [Templatizer, OptionalMutableDataBehavior],
-  properties: {
-    /**
-     * These are the items to be filtered
-     */
-    items: {
-      type: Array,
-      value: []
-    },
-    /**
-     * Filter regular expression string
-     */
-    like: {
-      type: String,
-      value: ""
-    },
-    /**
-     * The filter-by field of your items array of objects
-     */
-    where: {
-      type: String,
-      value: "name"
-    },
-    /**
-     * Enable case sensitivity when filtering
-     */
-    caseSensitive: {
-      type: Boolean,
-      value: false,
-      reflectToAttribute: true
-    },
-    /**
-     * How the filtered items will be passed to the light-DOM. Default `items`
-     */
-    as: {
-      type: String,
-      value: "items"
-    },
-    /**
-     * Filtered items
-     */
-    filtered: {
-      type: Array,
-      computed: "_computeFiltered(items, where, like, caseSensitive)",
-      observer: "_onFilter"
-    },
-    /**
-     * Custom filter function, if this is provided then 'where' and 'like' are ignored
-     */
-    f: {
-      type: Function,
-      notify: true
+  static get tag() {
+    return "grafitto-filter";
+  }
+  static get properties() {
+    let props = {
+      /**
+       * These are the items to be filtered
+       */
+      items: {
+        type: Array,
+        value: []
+      },
+      /**
+       * Filter regular expression string
+       */
+      like: {
+        type: String,
+        value: ""
+      },
+      /**
+       * The filter-by field of your items array of objects
+       */
+      where: {
+        type: String,
+        value: "name"
+      },
+      /**
+       * Enable case sensitivity when filtering
+       */
+      caseSensitive: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
+       * How the filtered items will be passed to the light-DOM. Default `items`
+       */
+      as: {
+        type: String,
+        value: "items"
+      },
+      /**
+       * Filtered items
+       */
+      filtered: {
+        type: Array,
+        computed: "_computeFiltered(items, where, like, caseSensitive)",
+        observer: "_onFilter"
+      },
+      /**
+       * Custom filter function, if this is provided then 'where' and 'like' are ignored
+       */
+      f: {
+        type: Function,
+        notify: true
+      }
+    };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
     }
-  },
+    return props;
+  }
 
-  observers: ["_populateUserTemplate(filtered)"],
+  static get observers() {
+    return ["_populateUserTemplate(filtered)"];
+  }
 
   /**
    * Filters the items using the f function provided. Recommended when f function is provided
    */
-  filter: function() {
+  filter() {
     //This forces _computeFiltered function to do its job :-)
     this.where = "";
-  },
+  }
 
   /**
    * This filters the items provided
@@ -260,7 +278,7 @@ let GrafittoFilter = Polymer({
    * @param {boolean} capital This is a flag to determine whether filter should be case sensitive or not.
    * @return array} Filter results.
    */
-  _computeFiltered: function(items, where, like, caseSensitive) {
+  _computeFiltered(items, where, like, caseSensitive) {
     var regex = null;
     if (caseSensitive) {
       regex = new RegExp(like);
@@ -302,13 +320,13 @@ let GrafittoFilter = Polymer({
       });
     }
     return filtered;
-  },
+  }
 
   /**
    * Populates user template, only template dom-repeate is supported for now
    *@param {array} filtered the filtered array to be displayed
    */
-  _populateUserTemplate: function(filtered) {
+  _populateUserTemplate(filtered) {
     // set after template is stamped
     if (this.ctor) {
       // use this so filtered items can be updated after the fact
@@ -332,24 +350,32 @@ let GrafittoFilter = Polymer({
     this.__clone[this.as] = filtered;
     // stamp this into itself...weird I know
     dom(this).appendChild(this.__clone.root);
-  },
+  }
 
   /**
    * This decomposes `where` property to object attributes using . notation
    */
-  _decomposeWhere: function(where, item) {
+  _decomposeWhere(where, item) {
     return where.split(".").reduce(function(a, b) {
       return a && a[b];
     }, item);
-  },
+  }
 
   /**
    * The `filter` event is fired whenever filtering is done before populating the dom.
    *
    * @event filter
    */
-  _onFilter: function() {
-    this.fire("filter");
+  _onFilter() {
+    this.dispatchEvent(
+      new CustomEvent("filter", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: true
+      })
+    );
   }
-});
+}
+window.customElements.define(GrafittoFilter.tag, GrafittoFilter);
 export { GrafittoFilter };

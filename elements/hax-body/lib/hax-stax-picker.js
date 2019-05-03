@@ -1,6 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "./hax-stax-browser.js";
 import "./hax-shared-styles.js";
 /**
  *  `hax-stax-picker`
@@ -14,6 +13,7 @@ import "./hax-shared-styles.js";
 class HaxStaxPicker extends PolymerElement {
   constructor() {
     super();
+    import("@lrnwebcomponents/hax-body/lib/hax-stax-browser.js");
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/iron-icon/iron-icon.js");
     import("@polymer/paper-button/paper-button.js");

@@ -1,53 +1,60 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 /*
 `img-loader` preloads images
 
 all `img-loader` code comes from <a href="https://github.com/PolymerElements/iron-image/blob/master/iron-image.html">iron image</a>
 */
-Polymer({
-  _template: html`
-    <img id="img" hidden="" src="[[src]]" />
-  `,
+class ImgLoader extends PolymerElement {
+  static get template() {
+    return html`
+      <img id="img" hidden="" src="[[src]]" />
+    `;
+  }
 
-  is: "img-loader",
+  static get tag() {
+    return "img-loader";
+  }
 
-  properties: {
-    src: {
-      observer: "_srcChanged",
-      type: String
-    },
-    /**
-     * Read-only value that is true when the image is loaded.
-     */
-    loaded: {
-      notify: true,
-      readOnly: true,
-      type: Boolean,
-      value: false
-    },
-    /**
-     * Read-only value that tracks the loading state of the image when the `preload`
-     * option is used.
-     */
-    loading: {
-      notify: true,
-      readOnly: true,
-      type: Boolean,
-      value: false
-    },
-    /**
-     * Read-only value that indicates that the last set `src` failed to load.
-     */
-    error: {
-      notify: true,
-      readOnly: true,
-      type: Boolean,
-      value: false
-    }
-  },
+  static get properties() {
+    return {
+      src: {
+        observer: "_srcChanged",
+        type: String
+      },
+      /**
+       * Read-only value that is true when the image is loaded.
+       */
+      loaded: {
+        notify: true,
+        readOnly: true,
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Read-only value that tracks the loading state of the image when the `preload`
+       * option is used.
+       */
+      loading: {
+        notify: true,
+        readOnly: true,
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Read-only value that indicates that the last set `src` failed to load.
+       */
+      error: {
+        notify: true,
+        readOnly: true,
+        type: Boolean,
+        value: false
+      }
+    };
+  }
 
-  ready: function() {
+  ready() {
+    super.ready();
+
     var img = this.$.img;
 
     img.onload = function() {
@@ -66,17 +73,17 @@ Polymer({
     }.bind(this);
 
     this._resolvedSrc = "";
-  },
+  }
 
-  _srcChanged: function(newSrc, oldSrc) {
+  _srcChanged(newSrc, oldSrc) {
     var newResolvedSrc = this._resolveSrc(newSrc);
     if (newResolvedSrc === this._resolvedSrc) return;
     this._resolvedSrc = newResolvedSrc;
     this._reset();
     this._load(newSrc);
-  },
+  }
 
-  _load: function(src) {
+  _load(src) {
     if (src) {
       this.$.img.src = src;
     } else {
@@ -85,17 +92,19 @@ Polymer({
     this._setLoading(!!src);
     this._setLoaded(false);
     this._setError(false);
-  },
+  }
 
-  _reset: function() {
+  _reset() {
     this.$.img.removeAttribute("src");
     this._setLoading(false);
     this._setLoaded(false);
     this._setError(false);
-  },
+  }
 
-  _resolveSrc: function(testSrc) {
+  _resolveSrc(testSrc) {
     var baseURI = /** @type {string} */ (this.ownerDocument.baseURI);
     return new URL(this.resolveUrl(testSrc, baseURI), baseURI).href;
   }
-});
+}
+window.customElements.define(ImgLoader.tag, ImgLoader);
+export { ImgLoader };

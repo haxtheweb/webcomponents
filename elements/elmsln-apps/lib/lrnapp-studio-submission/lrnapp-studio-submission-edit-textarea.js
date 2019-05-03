@@ -1,21 +1,30 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/lrn-markdown-editor/lrn-markdown-editor.js";
-Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: block;
-      }
-    </style>
-    <lrn-markdown-editor content="{{content}}"></lrn-markdown-editor>
-  `,
-
-  is: "lrnapp-studio-submission-edit-textarea",
-
-  properties: {
-    content: {
-      type: String,
-      notify: true
-    }
+class LrnappStudioSubmissionEditTextArea extends PolymerElement {
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: block;
+        }
+      </style>
+      <lrn-markdown-editor content="{{content}}"></lrn-markdown-editor>
+    `;
   }
-});
+  static get tag() {
+    return "lrnapp-studio-submission-edit-textarea";
+  }
+  static get properties() {
+    return {
+      content: {
+        type: String,
+        notify: true
+      }
+    };
+  }
+}
+window.customElements.define(
+  LrnappStudioSubmissionEditTextArea.tag,
+  LrnappStudioSubmissionEditTextArea
+);
+export { LrnappStudioSubmissionEditTextArea };

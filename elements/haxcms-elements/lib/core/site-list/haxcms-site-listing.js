@@ -11,9 +11,6 @@ import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@lrnwebcomponents/jwt-login/jwt-login.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js";
-import "@lrnwebcomponents/sites-listing/sites-listing.js";
-import "@lrnwebcomponents/map-menu/map-menu.js";
 /**
  * `haxcms-site-listing`
  * `A listing of all sites being managed by this instance.`
@@ -25,6 +22,9 @@ class HAXCMSSiteListing extends PolymerElement {
   constructor() {
     super();
     setPassiveTouchGestures(true);
+    import("@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js");
+    import("@lrnwebcomponents/sites-listing/sites-listing.js");
+    import("@lrnwebcomponents/map-menu/map-menu.js");
     import("@polymer/paper-button/paper-button.js");
     import("@polymer/iron-icon/iron-icon.js");
     import("@polymer/paper-icon-button/paper-icon-button.js");
@@ -47,9 +47,6 @@ class HAXCMSSiteListing extends PolymerElement {
     import("@lrnwebcomponents/magazine-cover/magazine-cover.js");
     import("@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js");
     import("@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js");
-    window.JSONOutlineSchema.requestAvailability();
-    window.SimpleModal.requestAvailability();
-    window.SimpleToast.requestAvailability();
     window.HAXCMS = {};
   }
   /**
@@ -492,29 +489,31 @@ class HAXCMSSiteListing extends PolymerElement {
   __sitesResponseChanged(newValue) {
     if (newValue) {
       this.title = newValue.title;
-      setTimeout(() => {
-        if (this.jwt) {
-          this.shadowRoot
-            .querySelector("#siteslisting")
-            .shadowRoot.querySelector("#list")
-            .querySelector('[data-site-id="item-new"]').hidden = false;
-          this.shadowRoot
-            .querySelector("#mapmenu")
-            .shadowRoot.querySelector("#builder")
-            .shadowRoot.querySelector("#item-new").hidden = false;
-          this.shadowRoot.querySelector("#add").hidden = false;
-        } else {
-          this.shadowRoot
-            .querySelector("#siteslisting")
-            .shadowRoot.querySelector("#list")
-            .querySelector('[data-site-id="item-new"]').hidden = true;
-          this.shadowRoot
-            .querySelector("#mapmenu")
-            .shadowRoot.querySelector("#builder")
-            .shadowRoot.querySelector("#item-new").hidden = true;
-          this.shadowRoot.querySelector("#add").hidden = true;
-        }
-      }, 100);
+      afterNextRender(this, function() {
+        setTimeout(() => {
+          if (this.jwt) {
+            this.shadowRoot
+              .querySelector("#siteslisting")
+              .shadowRoot.querySelector("#list")
+              .querySelector('[data-site-id="item-new"]').hidden = false;
+            this.shadowRoot
+              .querySelector("#mapmenu")
+              .shadowRoot.querySelector("#builder")
+              .shadowRoot.querySelector("#item-new").hidden = false;
+            this.shadowRoot.querySelector("#add").hidden = false;
+          } else {
+            this.shadowRoot
+              .querySelector("#siteslisting")
+              .shadowRoot.querySelector("#list")
+              .querySelector('[data-site-id="item-new"]').hidden = true;
+            this.shadowRoot
+              .querySelector("#mapmenu")
+              .shadowRoot.querySelector("#builder")
+              .shadowRoot.querySelector("#item-new").hidden = true;
+            this.shadowRoot.querySelector("#add").hidden = true;
+          }
+        }, 1000);
+      });
     }
   }
   _dataSourceChanged(newValue) {
@@ -832,6 +831,9 @@ class HAXCMSSiteListing extends PolymerElement {
    */
   ready() {
     super.ready();
+    window.JSONOutlineSchema.requestAvailability();
+    window.SimpleModal.requestAvailability();
+    window.SimpleToast.requestAvailability();
     // set jwt from local storage bin
     this.jwt = localStorage.getItem("jwt");
   }

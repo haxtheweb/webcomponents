@@ -1,9 +1,27 @@
-import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";window.mtz=window.mtz||{};/**
+import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";export const MtzFileDownloadBehaviors=function(SuperClass){return class extends SuperClass{static get properties(){if(super.properties){return Object.assign({fileTypes:{type:Object,value(){return{CSV:"text/csv",JSON:"text/json",PDF:"application/pdf",TXT:"text/plain"}}}},super.properties)}else{return{fileTypes:{type:Object,value(){return{CSV:"text/csv",JSON:"text/json",PDF:"application/pdf",TXT:"text/plain"}}}}}}/**
+     * Converts the data to a blob then uses navigator to save blob if it’s available, otherwise
+     * creates an <a> with [download] attribute then simulates a click.
+     * @param {String} data - data to encode.
+     * @param {String} type - type of file to generate (i.e, JSON or CSV).
+     * @param {String} [name = 'download'] - file name to save data under.
+     * @param {Boolean} [newTab = true] - If false, downloads uri in existing tab. Otherwise,
+     * downloads in new tab.
+     */downloadFromData(data,type,name="download",newTab=!0){const mimeType=this.fileTypes[type.toUpperCase()],blob=new Blob([decodeURIComponent(encodeURI(data))],{type:mimeType}),filename=name+"."+type.toLowerCase();if(window.navigator&&window.navigator.msSaveOrOpenBlob){window.navigator.msSaveOrOpenBlob(blob,filename)}else{// Link elements have a download attribute which provides cross-platform
+// download behavior supporting all but IE 11. This creates new link and then
+// clicks it to initiate download.
+const link=document.createElement("a");link.href=(window.URL||window.webkitURL).createObjectURL(blob);link.download=filename;link.target=newTab?"_blank":"_self";dom(this.root).appendChild(link);link.click();dom(this.root).removeChild(link)}}/**
+     * Opens a new tab at the URI so that download can be initiated from the page.
+     * @param {String} uri - The uri to open.
+     * @param {Boolean} [newTab = true] - If false, downloads uri in existing tab. Otherwise,
+     * downloads in new tab.
+     * @return {Boolean} Returns true.
+     */downloadFromURI(uri,newTab=!0){window.open(uri,newTab?"_blank":"_self");return!0;// NOTE: Returning true to prevent error in some browsers during download.
+}}};/**
  * A behavior for downloading streamed files or creating files based on available data.
  *
  * @polymerBehavior
  * @demo demo/index.html
- */mtz.FileDownloadBehaviors={properties:{/* MIME type lookup for file extensions */fileTypes:{type:Object,value(){return{CSV:"text/csv",JSON:"text/json",PDF:"application/pdf",TXT:"text/plain"}}}},/**
+ */window.mtz=window.mtz||{};mtz.FileDownloadBehaviors={properties:{/* MIME type lookup for file extensions */fileTypes:{type:Object,value(){return{CSV:"text/csv",JSON:"text/json",PDF:"application/pdf",TXT:"text/plain"}}}},/**
    * Converts the data to a blob then uses navigator to save blob if it’s available, otherwise
    * creates an <a> with [download] attribute then simulates a click.
    * @param {String} data - data to encode.

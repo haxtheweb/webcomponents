@@ -406,7 +406,7 @@ class OutlineDesigner extends PolymerElement {
           border-top-width: 2px;
         }
       </style>
-      <style is="custom-style" include="simple-colors"></style>
+      <style include="simple-colors"></style>
       <iron-ajax
         auto="[[outlineSchemaUrl]]"
         url="[[outlineSchemaUrl]]"
@@ -817,7 +817,14 @@ class OutlineDesigner extends PolymerElement {
       if (this.selectedView === 0) {
         async.microTask.run(() => {
           setTimeout(() => {
-            this.$.ironlist.fire("iron-resize");
+            this.$.ironlist.dispatchEvent(
+              new CustomEvent("iron-resize", {
+                bubbles: true,
+                cancelable: true,
+                composed: true,
+                detail: true
+              })
+            );
             window.dispatchEvent(new Event("resize"));
           }, 50);
         });
@@ -892,7 +899,14 @@ class OutlineDesigner extends PolymerElement {
           this.viewModeLabel = "Card view";
           async.microTask.run(() => {
             setTimeout(() => {
-              this.$.ironlist.fire("iron-resize");
+              this.$.ironlist.dispatchEvent(
+                new CustomEvent("iron-resize", {
+                  bubbles: true,
+                  cancelable: true,
+                  composed: true,
+                  detail: true
+                })
+              );
               window.dispatchEvent(new Event("resize"));
             }, 100);
           });

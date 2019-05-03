@@ -4,8 +4,8 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { LrndesignChartBehaviors } from "./lrndesign-chart-behaviors.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 
-export { LrndesignLine };
 /**
  * `lrndesign-line`
  * A line chart
@@ -18,7 +18,7 @@ export { LrndesignLine };
 class LrndesignLine extends LrndesignChartBehaviors {
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       /**
        * Type of chart.
        */
@@ -200,6 +200,10 @@ class LrndesignLine extends LrndesignChartBehaviors {
         value: false
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
 
   /**
@@ -208,11 +212,6 @@ class LrndesignLine extends LrndesignChartBehaviors {
    */
   static get tag() {
     return "lrndesign-line";
-  }
-
-  //get player-specific behaviors
-  static get behaviors() {
-    return [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema];
   }
 
   // haxProperty definition
@@ -475,6 +474,10 @@ class LrndesignLine extends LrndesignChartBehaviors {
   connectedCallback() {
     super.connectedCallback();
     this.HAXWiring.setup(LrndesignLine.haxProperties, LrndesignLine.tag, this);
+    afterNextRender(this, function() {
+      this.HAXWiring = new HAXWiring();
+      this.HAXWiring.setup(CMSEntity.haxProperties, CMSEntity.tag, this);
+    });
   }
 
   /**
@@ -519,3 +522,4 @@ class LrndesignLine extends LrndesignChartBehaviors {
  */
 //disconnectedCallback() {}
 window.customElements.define(LrndesignLine.tag, LrndesignLine);
+export { LrndesignLine };

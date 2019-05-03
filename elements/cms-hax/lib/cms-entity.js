@@ -1,138 +1,136 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import * as async from "@polymer/polymer/lib/utils/async.js";
+import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-spinner/paper-spinner.js";
-import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-var $_documentContainer = document.createElement("div");
-$_documentContainer.setAttribute("style", "display: none;");
-
-$_documentContainer.innerHTML = `<dom-module id="cms-entity">
-  <template strip-whitespace="">
-    <style>
-      :host {
-        display: block;
-        min-width: 112px;
-        min-height: 112px;
-        transition: .6s all ease;
-        background-color: transparent;
-      }
-      paper-spinner {
-        visibility: hidden;
-        opacity: 0;
-        height: 80px;
-        width: 80px;
-        padding: 16px;
-      }
-      #replacementcontent {
-        visibility: visible;
-        opacity: 1;
-      }
-      :host([loading]) {
-        text-align: center;
-      }
-      :host([loading]) paper-spinner {
-        visibility: visible;
-        opacity: 1;
-      }
-      :host([loading]) #replacementcontent {
-        opacity: 0;
-        visibility: hidden;
-      }
-    </style>
-    <iron-ajax id="entityrequest" method="GET" params="[[bodyData]]" url="[[entityEndPoint]]" handle-as="json" last-response="{{entityData}}"></iron-ajax>
-    <paper-spinner active="[[loading]]"></paper-spinner>
-    <span id="replacementcontent"><slot></slot></span>
-  </template>
-
-  
-</dom-module>`;
-
-document.head.appendChild($_documentContainer);
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import { wipeSlot } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 /**
-`cms-entity`
-Render and process a  / entity from a content management system.
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
- -
- -
-
-*/
-Polymer({
-  is: "cms-entity",
-  behaviors: [HAXBehaviors.PropertiesBehaviors],
-  properties: {
-    /**
-     * Loading state
-     */
-    loading: {
-      type: Boolean,
-      reflectToAttribute: true,
-      value: false
-    },
-    /**
-     * Type of entity to load
-     */
-    entityType: {
-      type: String,
-      reflectToAttribute: true
-    },
-    /**
-     * ID of the item to load
-     */
-    entityId: {
-      type: String,
-      reflectToAttribute: true
-    },
-    /**
-     * Display mode of the entity
-     */
-    entityDisplayMode: {
-      type: String,
-      reflectToAttribute: true
-    },
-    /**
-     * entity end point updated, change the way we do processing.
-     */
-    entityEndPoint: {
-      type: String
-    },
-    /**
-     * Body data which is just entity with some encapsulation.
-     */
-    bodyData: {
-      type: Object,
-      computed: "_generateBodyData(entityType, entityId, entityDisplayMode)",
-      observer: "_entityChanged"
-    },
-    /**
-     * entity data from the end point.
-     */
-    entityData: {
-      type: String,
-      observer: "_handleEntityResponse"
-    },
-    /**
-     * Prefix for the entity to be processed
-     */
-    entityPrefix: {
-      type: String,
-      observer: "["
-    },
-    /**
-     * Suffix for the entity to be processed
-     */
-    entitySuffix: {
-      type: String,
-      observer: "]"
-    }
-  },
+ * `cms-entity`
+ * `Render and process a  / entity from a content management system.`
+ */
+class CMSEntity extends PolymerElement {
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: block;
+          min-width: 112px;
+          min-height: 112px;
+          transition: 0.6s all ease;
+          background-color: transparent;
+        }
+        paper-spinner {
+          visibility: hidden;
+          opacity: 0;
+          height: 80px;
+          width: 80px;
+          padding: 16px;
+        }
+        #replacementcontent {
+          visibility: visible;
+          opacity: 1;
+        }
+        :host([loading]) {
+          text-align: center;
+        }
+        :host([loading]) paper-spinner {
+          visibility: visible;
+          opacity: 1;
+        }
+        :host([loading]) #replacementcontent {
+          opacity: 0;
+          visibility: hidden;
+        }
+      </style>
+      <iron-ajax
+        id="entityrequest"
+        method="GET"
+        params="[[bodyData]]"
+        url="[[entityEndPoint]]"
+        handle-as="json"
+        last-response="{{entityData}}"
+      ></iron-ajax>
+      <paper-spinner active="[[loading]]"></paper-spinner>
+      <span id="replacementcontent"><slot></slot></span>
+    `;
+  }
+  static get tag() {
+    return "cms-entity";
+  }
+  static get properties() {
+    return {
+      /**
+       * Loading state
+       */
+      loading: {
+        type: Boolean,
+        reflectToAttribute: true,
+        value: false
+      },
+      /**
+       * Type of entity to load
+       */
+      entityType: {
+        type: String,
+        reflectToAttribute: true
+      },
+      /**
+       * ID of the item to load
+       */
+      entityId: {
+        type: String,
+        reflectToAttribute: true
+      },
+      /**
+       * Display mode of the entity
+       */
+      entityDisplayMode: {
+        type: String,
+        reflectToAttribute: true
+      },
+      /**
+       * entity end point updated, change the way we do processing.
+       */
+      entityEndPoint: {
+        type: String
+      },
+      /**
+       * Body data which is just entity with some encapsulation.
+       */
+      bodyData: {
+        type: Object,
+        computed: "_generateBodyData(entityType, entityId, entityDisplayMode)",
+        observer: "_entityChanged"
+      },
+      /**
+       * entity data from the end point.
+       */
+      entityData: {
+        type: String,
+        observer: "_handleEntityResponse"
+      },
+      /**
+       * Prefix for the entity to be processed
+       */
+      entityPrefix: {
+        type: String,
+        observer: "["
+      },
+      /**
+       * Suffix for the entity to be processed
+       */
+      entitySuffix: {
+        type: String,
+        observer: "]"
+      }
+    };
+  }
   /**
    * Generate body data.
    */
-  _generateBodyData: function(entityType, entityId, entityDisplayMode) {
+  _generateBodyData(entityType, entityId, entityDisplayMode) {
     if (
       entityType !== null &&
       entityType !== "" &&
@@ -145,11 +143,11 @@ Polymer({
         display_mode: `${entityDisplayMode}`
       };
     }
-  },
+  }
   /**
    * Handle the response from the entity processing endpoint
    */
-  _handleEntityResponse: function(newValue, oldValue) {
+  _handleEntityResponse(newValue, oldValue) {
     if (newValue !== null && typeof newValue.content !== typeof undefined) {
       // store the text and url callbacks
       if (document.getElementById("cmstokenidtolockonto") != null) {
@@ -160,9 +158,9 @@ Polymer({
           newValue.editText;
       }
       // wipe our own slot here
-      this.wipeSlot(dom(this));
+      wipeSlot(dom(this));
       // now inject the content we got
-      async.microTask.run(() => {
+      microTask.run(() => {
         let frag = document.createElement("span");
         frag.innerHTML = newValue.content;
         let newNode = frag.cloneNode(true);
@@ -172,19 +170,11 @@ Polymer({
         }, 600);
       });
     }
-  },
-  /**
-   * wipe out the slot
-   */
-  wipeSlot: function(element) {
-    while (element.firstChild !== null) {
-      element.removeChild(element.firstChild);
-    }
-  },
+  }
   /**
    * entity end point changed
    */
-  _entityChanged: function(newValue, oldValue) {
+  _entityChanged(newValue, oldValue) {
     // ensure we have something and are not loading currently
     if (
       typeof newValue !== typeof undefined &&
@@ -200,16 +190,17 @@ Polymer({
       }
       if (this.entityEndPoint) {
         this.loading = true;
-        async.microTask.run(() => {
+        microTask.run(() => {
           this.$.entityrequest.generateRequest();
         });
       }
     }
-  },
+  }
   /**
    * Attached to the DOM, now fire.
    */
-  attached: function() {
+  connectedCallback() {
+    super.connectedCallback();
     if (
       typeof this.entity !== typeof undefined &&
       this.entity !== null &&
@@ -229,14 +220,19 @@ Polymer({
         }
         if (this.entityEndPoint) {
           this.loading = true;
-          async.microTask.run(() => {
+          microTask.run(() => {
             this.$.entityrequest.generateRequest();
           });
         }
       }
     }
-    // Establish hax property binding
-    let props = {
+    afterNextRender(this, function() {
+      this.HAXWiring = new HAXWiring();
+      this.HAXWiring.setup(CMSEntity.haxProperties, CMSEntity.tag, this);
+    });
+  }
+  static get haxProperties() {
+    return {
       canScale: true,
       canPosition: true,
       canEditSource: false,
@@ -298,12 +294,11 @@ Polymer({
         ]
       }
     };
-    this.setHaxProperties(props);
-  },
+  }
   /**
    * Implements getHaxJSONSchema post processing callback.
    */
-  postProcessgetHaxJSONSchema: function(schema) {
+  postProcessgetHaxJSONSchema(schema) {
     schema.properties["__editThis"] = {
       type: "string",
       component: {
@@ -318,4 +313,6 @@ Polymer({
     };
     return schema;
   }
-});
+}
+window.customElements.define(CMSEntity.tag, CMSEntity);
+export { CMSEntity };

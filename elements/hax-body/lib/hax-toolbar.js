@@ -1,18 +1,21 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import "@polymer/paper-slider/paper-slider.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
-import "@polymer/paper-item/paper-item.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icons/editor-icons.js";
 import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "./hax-toolbar-item.js";
-import "./hax-toolbar-menu.js";
-import "./hax-context-item.js";
-import "./hax-context-item-menu.js";
 import "./hax-shared-styles.js";
 class HaxToolbar extends PolymerElement {
+  constructor() {
+    super();
+    import("@polymer/paper-slider/paper-slider.js");
+    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@polymer/paper-item/paper-item.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icons/editor-icons.js");
+    import("@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js");
+    import("@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js");
+    import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
+    import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
+  }
   static get template() {
     return html`
       <style include="simple-colors hax-shared-styles">

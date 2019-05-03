@@ -1,6 +1,7 @@
-import { Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/neon-animation/neon-animation.js";
 import { NeonAnimationBehavior } from "@polymer/neon-animation/neon-animation-behavior.js";
+import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 /**
 `<paper-square-grow-animation>` increases the element's width and height from an initial
 predefined pixel square size to its final size.
@@ -14,14 +15,17 @@ Configuration:
   timing: <animation-timing>,
 }
 ```
-
 @hero hero.svg
 * @demo demo/index.html
 */
-Polymer({
-  is: "paper-square-grow-animation",
-  behaviors: [NeonAnimationBehavior],
-  configure: function(config) {
+class PaperSquareGrowAnimation extends mixinBehaviors(
+  [NeonAnimationBehavior],
+  PolymerElement
+) {
+  static get tag() {
+    return "paper-square-grow-animation";
+  }
+  configure(config) {
     var node = config.node;
     var startSize = config.startSize;
     var height = node.getBoundingClientRect().height;
@@ -42,4 +46,9 @@ Polymer({
     );
     return this._effect;
   }
-});
+}
+window.customElements.define(
+  PaperSquareGrowAnimation.tag,
+  PaperSquareGrowAnimation
+);
+export { PaperSquareGrowAnimation };

@@ -1,4 +1,5 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/paper-button/paper-button.js";
 /**
 `editable-table-editor-insdel`
@@ -19,75 +20,99 @@ deletes a row or column .
 </editable-table-editor-insdel>
 
 */
-Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: block;
+class EditableTableEditorInsdel extends PolymerElement {
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: block;
+        }
+        :host paper-button {
+          display: block;
+          text-transform: none;
+          text-align: left;
+        }
+      </style>
+      <paper-button><slot></slot></paper-button>
+    `;
+  }
+
+  static get tag() {
+    return "editable-table-editor-insdel";
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, function() {
+      this.addEventListener("tap", this._onTap.bind(this));
+    });
+  }
+  disconnectedCallback() {
+    this.removeEventListener("tap", this._onTap.bind(this));
+    super.disconnectedCallback();
+  }
+
+  static get properties() {
+    return {
+      /**
+       * The action of the menu item
+       */
+      action: {
+        type: String,
+        value: null
+      },
+      /**
+       * The index of the row or column
+       */
+      index: {
+        type: Number,
+        value: null,
+        reflectToAttribute: true
+      },
+      /**
+       * If insert, does it insert before? Default is insert after.
+       */
+      before: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
+       * Is it row or column?
+       */
+      type: {
+        type: String,
+        value: null
       }
-      :host paper-button {
-        display: block;
-        text-transform: none;
-        text-align: left;
-      }
-    </style>
-    <paper-button><slot></slot></paper-button>
-  `,
-
-  is: "editable-table-editor-insdel",
-
-  listeners: {
-    tap: "_onTap"
-  },
-
-  properties: {
-    /**
-     * The action of the menu item
-     */
-    action: {
-      type: String,
-      value: null
-    },
-    /**
-     * The index of the row or column
-     */
-    index: {
-      type: Number,
-      value: null,
-      reflectToAttribute: true
-    },
-    /**
-     * If insert, does it insert before? Default is insert after.
-     */
-    before: {
-      type: Boolean,
-      value: false,
-      reflectToAttribute: true
-    },
-    /**
-     * Is it row or column?
-     */
-    type: {
-      type: String,
-      value: null
-    }
-  },
+    };
+  }
 
   /**
    * Handle item tap
    */
-  _onTap: function(e) {
-    let root = this,
-      action = root.action,
-      type = root.type,
-      before = root.before,
-      index = root.index,
+  _onTap(e) {
+    let action = this.action,
+      type = this.type,
+      before = this.before,
+      index = this.index,
       event = action + "-" + type.toLowerCase();
     if (action === "insert" && before && type === "Row") {
       index--;
     } else if (action === "insert" && !before && type !== "Row") {
       index++;
     }
-    root.fire(event, index);
+    this.dispatchEvent(
+      new CustomEvent(event, {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: index
+      })
+    );
   }
-});
+}
+window.customElements.define(
+  EditableTableEditorInsdel.tag,
+  EditableTableEditorInsdel
+);
+export { EditableTableEditorInsdel };

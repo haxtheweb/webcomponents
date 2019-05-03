@@ -40,7 +40,7 @@
     "@polymer/iron-icon": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-button": "^3.0.1",
-    "@polymer/paper-spinner": "^3.0.1",
+    "@lrnwebcomponents/hexagon-loader": "^2.0.10",
     "@polymer/paper-tooltip": "^3.0.1",
     "@polymer/polymer": "^3.2.0"
   },

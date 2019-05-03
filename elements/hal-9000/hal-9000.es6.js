@@ -46,11 +46,11 @@ static get properties(){return{/**
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"hal-9000"}/**
    * Establish the element
-   */constructor(){super();const name="annyang",basePath=pathFromUrl(decodeURIComponent(import.meta.url)),location=`${basePath}lib/annyang/annyang.min.js`;window.addEventListener(`es-bridge-${name}-loaded`,this._annyangLoaded.bind(this));window.ESGlobalBridge.requestAvailability();window.ESGlobalBridge.instance.load(name,location);// ensure singleton is set
-window.Hal9000.instance=this;// check for speech synthesis API
+   */constructor(){super();const basePath=pathFromUrl(decodeURIComponent(import.meta.url)),location=`${basePath}lib/annyang/annyang.min.js`;window.addEventListener("es-bridge-annyang-loaded",this._annyangLoaded.bind(this));window.ESGlobalBridge.requestAvailability();window.ESGlobalBridge.instance.load("annyang",location);// check for speech synthesis API
 if("undefined"!==typeof window.speechSynthesis){this.synth=window.speechSynthesis;this.voices=this.synth.getVoices();for(var i=0;i<this.voices.length;i++){if(this.voices[i].default){this.defaultVoice=this.voices[i].name}}}}/**
    * life cycle, element is afixed to the DOM
-   */connectedCallback(){super.connectedCallback()}/**
+   */connectedCallback(){super.connectedCallback();// ensure singleton is set
+window.Hal9000=window.Hal9000||{};window.Hal9000.instance=this}/**
    * Callback for clicking on whatever was just said
    */clickObject(phrase){this.__text=phrase;this.commands[phrase].object.click();this.commands[phrase].object.focus()}/**
    * Notice new voice commands added
@@ -75,6 +75,5 @@ if(this.annyang){this.annyang.removeCommands()}var commands={};for(var i in this
    * debug mode changed
    */_debugChanged(newValue,oldValue){if(this.annyang){this.annyang.debug(newValue)}}/**
    * life cycle, element is removed from the DOM
-   */ //disconnectedCallback() {}
-}// ensure we can generate a singleton
+   */disconnectedCallback(){window.removeEventListener("es-bridge-annyang-loaded",this._annyangLoaded.bind(this));super.disconnectedCallback()}}// ensure we can generate a singleton
 window.customElements.define(Hal9000.tag,Hal9000);export{Hal9000};window.Hal9000=window.Hal9000||{};window.Hal9000.requestAvailability=()=>{if(!window.Hal9000.instance){window.Hal9000.instance=new Hal9000}};

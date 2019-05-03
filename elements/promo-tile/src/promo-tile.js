@@ -1,228 +1,246 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
-import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-icons/iron-icons.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 /**
-`promo-tile`
-A LRN element
+ * `promo-tile`
+ * @demo demo/index.html
+ */
+class PromoTile extends SchemaBehaviors(PolymerElement) {
+  constructor() {
+    super();
+    import("@polymer/paper-button/paper-button.js");
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    afterNextRender(this, function() {
+      this.HAXWiring = new HAXWiring();
+      this.HAXWiring.setup(PromoTile.haxProperties, PromoTile.tag, this);
+    });
+  }
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: block;
+          --tile-image: "";
+          --front-title-text-shadow: #363533;
+          --title-font-size: 34px;
+          --title-font-weight: 400;
+          --back-content-font-size: 18px;
+          --back-content-font-weight: 100;
+          --font-color: #fff;
+          --hover-background-color: #e2801e;
+          --button-hover-color: #363533;
+        }
 
-* @demo demo/index.html
+        a {
+          text-decoration: none;
+        }
 
-@microcopy - the mental model for this element
- -
- -
+        #container {
+          width: 100%;
+          height: auto;
+        }
 
-*/
-let PromoTile = Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: block;
-        --tile-image: "";
-        --front-title-text-shadow: #363533;
-        --title-font-size: 34px;
-        --title-font-weight: 400;
-        --back-content-font-size: 18px;
-        --back-content-font-weight: 100;
-        --font-color: #fff;
-        --hover-background-color: #e2801e;
-        --button-hover-color: #363533;
-      }
+        .back_card {
+          background-color: var(--hover-background-color);
+          height: 460px;
+          opacity: 0;
+          display: flex;
+          flex-direction: column;
+        }
 
-      a {
-        text-decoration: none;
-      }
+        :host([hover]) #container .back_card {
+          opacity: 0.9;
+          transition: all 0.3s ease-in-out;
+        }
 
-      #container {
-        width: 100%;
-        height: auto;
-      }
+        :host([hover]) #container .front_card .front_title {
+          opacity: 0;
+          transition: all 0.3s ease-in-out;
+        }
 
-      .back_card {
-        background-color: var(--hover-background-color);
-        height: 460px;
-        opacity: 0;
-        display: flex;
-        flex-direction: column;
-      }
+        .image {
+          display: flex;
+          justify-content: center;
+          background-image: var(--tile-image);
+          background-position: top center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          width: 100%;
+          height: 100%;
+        }
 
-      :host([hover]) #container .back_card {
-        opacity: 0.9;
-        transition: all 0.3s ease-in-out;
-      }
+        .front_title {
+          opacity: 1;
+          position: absolute;
+          display: flex;
+          align-self: flex-end;
+          padding-bottom: 25px;
+        }
 
-      :host([hover]) #container .front_card .front_title {
-        opacity: 0;
-        transition: all 0.3s ease-in-out;
-      }
+        .front_title h1 {
+          color: var(--font-color);
+          font-size: var(--title-font-size);
+          font-weight: var(--title-font-weight);
+          text-shadow: 1px 1px 3px var(--front-title-text-shadow);
+        }
 
-      .image {
-        display: flex;
-        justify-content: center;
-        background-image: var(--tile-image);
-        background-position: top center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        width: 100%;
-        height: 100%;
-      }
+        .back_title {
+          opacity: 1;
+          display: flex;
+          justify-content: center;
+          padding: 20px 0 0;
+        }
 
-      .front_title {
-        opacity: 1;
-        position: absolute;
-        display: flex;
-        align-self: flex-end;
-        padding-bottom: 25px;
-      }
+        .back_title h1 {
+          color: var(--font-color);
+          font-size: var(--title-font-size);
+          font-weight: var(--title-font-weight);
+        }
 
-      .front_title h1 {
-        color: var(--font-color);
-        font-size: var(--title-font-size);
-        font-weight: var(--title-font-weight);
-        text-shadow: 1px 1px 3px var(--front-title-text-shadow);
-      }
+        .back_content {
+          color: var(--font-color);
+          font-size: var(--back-content-font-size);
+          font-weight: var(--back-content-font-weight);
+          padding: 0 20px;
+        }
 
-      .back_title {
-        opacity: 1;
-        display: flex;
-        justify-content: center;
-        padding: 20px 0 0;
-      }
+        paper-button#learn {
+          display: flex;
+          margin-top: 180px;
+          font-size: 16px;
+          color: var(--font-color);
+          border: solid 1px #fff;
+          border-radius: 0;
+          width: 50%;
+          margin-left: auto;
+          margin-right: auto;
+        }
 
-      .back_title h1 {
-        color: var(--font-color);
-        font-size: var(--title-font-size);
-        font-weight: var(--title-font-weight);
-      }
+        paper-button#learn:hover,
+        paper-button#learn:focus {
+          background-color: var(--button-hover-color);
+        }
+      </style>
 
-      .back_content {
-        color: var(--font-color);
-        font-size: var(--back-content-font-size);
-        font-weight: var(--back-content-font-weight);
-        padding: 0 20px;
-      }
-
-      paper-button#learn {
-        display: flex;
-        margin-top: 180px;
-        font-size: 16px;
-        color: var(--font-color);
-        border: solid 1px #fff;
-        border-radius: 0;
-        width: 50%;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      paper-button#learn:hover,
-      paper-button#learn:focus {
-        background-color: var(--button-hover-color);
-      }
-    </style>
-
-    <div id="container">
-      <div class="front_card">
-        <div id="front_image" class="image" alt="[[alt]]">
-          <div class="front_title">
-            <h1>[[title]]</h1>
-          </div>
-          <div class="back_card" id="cardBack" on-click="activateBtn">
-            <div class="back_title">
+      <div id="container">
+        <div class="front_card">
+          <div id="front_image" class="image" alt="[[alt]]">
+            <div class="front_title">
               <h1>[[title]]</h1>
             </div>
-            <div class="back_content">
-              <slot></slot>
-            </div>
-            <div class="learn_more">
-              <a
-                tabindex="-1"
-                href="[[url]]"
-                id="link"
-                target$="[[_urlTarget(url)]]"
-              >
-                <paper-button id="learn" no-ink
-                  >[[label]]
-                  <iron-icon icon="chevron-right"></iron-icon>
-                </paper-button>
-              </a>
+            <div class="back_card" id="cardBack" on-click="activateBtn">
+              <div class="back_title">
+                <h1>[[title]]</h1>
+              </div>
+              <div class="back_content">
+                <slot></slot>
+              </div>
+              <div class="learn_more">
+                <a
+                  tabindex="-1"
+                  href="[[url]]"
+                  id="link"
+                  target$="[[_urlTarget(url)]]"
+                >
+                  <paper-button id="learn" no-ink
+                    >[[label]]
+                    <iron-icon icon="chevron-right"></iron-icon>
+                  </paper-button>
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  `,
+    `;
+  }
 
-  is: "promo-tile",
-  behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
+  static get tag() {
+    return "promo-tile";
+  }
 
-  properties: {
-    /**
-     * Image source
-     */
-    image: {
-      type: String,
-      value: "",
-      reflectToAttribute: true
-    },
-    /**
-     * Alt text for image
-     */
-    alt: {
-      type: String,
-      value: "",
-      reflectToAttribute: true
-    },
-    /**
-     * Label for button
-     */
-    label: {
-      type: String,
-      value: "",
-      reflectToAttribute: true
-    },
-    /**
-     * Title of tile
-     */
-    title: {
-      type: String,
-      value: "",
-      reflectToAttribute: true
-    },
-    /**
-     * Url for tile
-     */
-    url: {
-      type: String,
-      value: "",
-      reflectToAttribute: true
-    },
-    /**
-     * Hover state
-     */
-    hover: {
-      type: Boolean,
-      value: false,
-      reflectToAttribute: true
+  static get properties() {
+    let props = {
+      /**
+       * Image source
+       */
+      image: {
+        type: String,
+        value: "",
+        reflectToAttribute: true
+      },
+      /**
+       * Alt text for image
+       */
+      alt: {
+        type: String,
+        value: "",
+        reflectToAttribute: true
+      },
+      /**
+       * Label for button
+       */
+      label: {
+        type: String,
+        value: "",
+        reflectToAttribute: true
+      },
+      /**
+       * Title of tile
+       */
+      title: {
+        type: String,
+        value: "",
+        reflectToAttribute: true
+      },
+      /**
+       * Url for tile
+       */
+      url: {
+        type: String,
+        value: "",
+        reflectToAttribute: true
+      },
+      /**
+       * Hover state
+       */
+      hover: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      }
+    };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
     }
-  },
-
-  observers: ["__updateStyles(image)"],
-
-  listeners: {
-    mouseover: "__hoverIn",
-    mouseout: "__hoverOut",
-    focusin: "__hoverIn",
-    focusout: "__hoverOut"
-  },
-
+    return props;
+  }
+  static get observers() {
+    return ["__updateStyles(image)"];
+  }
   /**
    * Attached to the DOM, now fire.
    */
-  attached: function() {
-    // Establish hax property binding
-    let props = {
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, function() {
+      this.addEventListener("mouseover", this.__hoverIn.bind(this));
+      this.addEventListener("mouseout", this.__hoverOut.bind(this));
+      this.addEventListener("focusin", this.__hoverIn.bind(this));
+      this.addEventListener("focusout", this.__hoverOut.bind(this));
+    });
+  }
+  disconnectedCallback() {
+    this.removeEventListener("mouseover", this.__hoverIn.bind(this));
+    this.removeEventListener("mouseout", this.__hoverOut.bind(this));
+    this.removeEventListener("focusin", this.__hoverIn.bind(this));
+    this.removeEventListener("focusout", this.__hoverOut.bind(this));
+    super.disconnectedCallback();
+  }
+  static get haxProperties() {
+    return {
       canScale: true,
       canPosition: true,
       canEditSource: false,
@@ -308,28 +326,26 @@ let PromoTile = Polymer({
         advanced: []
       }
     };
-    this.setHaxProperties(props);
-  },
-
-  __updateStyles: function(image) {
+  }
+  __updateStyles(image) {
     this.updateStyles({ "--tile-image": `url(${image})` });
-  },
+  }
 
   /**
    * Internal function to check if a url is external
    */
-  _outsideLink: function(url) {
+  _outsideLink(url) {
     if (url.indexOf("http") != 0) return false;
     var loc = location.href,
       path = location.pathname,
       root = loc.substring(0, loc.indexOf(path));
     return url.indexOf(root) != 0;
-  },
+  }
 
   /**
    * If url is external, open link in new window, otherwise open link in same window.
    */
-  _urlTarget: function(url) {
+  _urlTarget(url) {
     if (url) {
       const external = this._outsideLink(url);
       if (external) {
@@ -337,22 +353,23 @@ let PromoTile = Polymer({
       }
     }
     return false;
-  },
+  }
 
-  activateBtn: function() {
+  activateBtn() {
     if (this.hover) {
-      const link = this.$.link;
+      const link = this.shadowRoot.querySelector("#link");
       if (window.innerWidth > 700) {
         link.click();
       }
     }
-  },
+  }
 
-  __hoverIn: function() {
+  __hoverIn() {
     this.hover = true;
-  },
-  __hoverOut: function() {
+  }
+  __hoverOut() {
     this.hover = false;
   }
-});
+}
+window.customElements.define(PromoTile.tag, PromoTile);
 export { PromoTile };

@@ -1,20 +1,22 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@polymer/app-layout/app-layout.js";
-import "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
-import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icons/image-icons.js";
-import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 /**
  * `image-inspector`
  * `Zoom, Rotate, Mirror, Download, and View image`
  *
  * @demo demo/index.html
  */
-let ImageInspector = Polymer({
-  _template: html`
-    <custom-style>
-      <style include="materializecss-styles-colors">
+class ImageInspector extends PolymerElement {
+  constructor() {
+    super();
+    import("@polymer/app-layout/app-layout.js");
+    import("@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js");
+    import("@lrnwebcomponents/lrnsys-button/lrnsys-button.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icons/image-icons.js");
+  }
+  static get template() {
+    return html`
+      <style>
         :host {
           display: block;
           --image-inspector-background: #dddddd;
@@ -38,124 +40,130 @@ let ImageInspector = Polymer({
           top: 128px;
         }
       </style>
-    </custom-style>
-    <app-toolbar>
-      <lrnsys-button
-        alt="Zoom in"
-        icon="zoom-in"
-        on-tap="zoomIn"
-        hover-class="[[hoverClass]]"
-      ></lrnsys-button>
-      <lrnsys-button
-        alt="Zoom out"
-        icon="zoom-out"
-        on-tap="zoomOut"
-        hover-class="[[hoverClass]]"
-      ></lrnsys-button>
-      <lrnsys-button
-        alt="Rotate right"
-        icon="image:rotate-right"
-        on-tap="rotateRight"
-        hover-class="[[hoverClass]]"
-      ></lrnsys-button>
-      <lrnsys-button
-        alt="Rotate left"
-        icon="image:rotate-left"
-        on-tap="rotateLeft"
-        hover-class="[[hoverClass]]"
-      ></lrnsys-button>
-      <lrnsys-button
-        alt="Mirror image"
-        icon="image:flip"
-        on-tap="mirrorImage"
-        hover-class="[[hoverClass]]"
-      ></lrnsys-button>
-      <lrnsys-button
-        alt="Open in new window"
-        icon="launch"
-        href="[[src]]"
-        target="_blank"
-        hover-class="[[hoverClass]]"
-      ></lrnsys-button>
-      <slot name="toolbar"></slot>
-    </app-toolbar>
-    <img-pan-zoom id="img" src="[[src]]"></img-pan-zoom>
-    <slot></slot>
-  `,
 
-  is: "image-inspector",
+      <app-toolbar>
+        <lrnsys-button
+          alt="Zoom in"
+          icon="zoom-in"
+          on-tap="zoomIn"
+          hover-class="[[hoverClass]]"
+        ></lrnsys-button>
+        <lrnsys-button
+          alt="Zoom out"
+          icon="zoom-out"
+          on-tap="zoomOut"
+          hover-class="[[hoverClass]]"
+        ></lrnsys-button>
+        <lrnsys-button
+          alt="Rotate right"
+          icon="image:rotate-right"
+          on-tap="rotateRight"
+          hover-class="[[hoverClass]]"
+        ></lrnsys-button>
+        <lrnsys-button
+          alt="Rotate left"
+          icon="image:rotate-left"
+          on-tap="rotateLeft"
+          hover-class="[[hoverClass]]"
+        ></lrnsys-button>
+        <lrnsys-button
+          alt="Mirror image"
+          icon="image:flip"
+          on-tap="mirrorImage"
+          hover-class="[[hoverClass]]"
+        ></lrnsys-button>
+        <lrnsys-button
+          alt="Open in new window"
+          icon="launch"
+          href="[[src]]"
+          target="_blank"
+          hover-class="[[hoverClass]]"
+        ></lrnsys-button>
+        <slot name="toolbar"></slot>
+      </app-toolbar>
+      <img-pan-zoom id="img" src="[[src]]"></img-pan-zoom>
+      <slot></slot>
+    `;
+  }
 
-  properties: {
-    /**
-     * Image rotation
-     */
-    degrees: {
-      type: Number,
-      value: 0,
-      reflectToAttribute: true
-    },
-    /**
-     * Image source.
-     */
-    src: {
-      type: String,
-      reflectToAttribute: true
-    },
-    /**
-     * Hover class for button styling
-     */
-    hoverClass: {
-      type: String,
-      value: "blue white-text"
-    }
-  },
+  static get tag() {
+    return "image-inspector";
+  }
 
+  static get properties() {
+    return {
+      /**
+       * Image rotation
+       */
+      degrees: {
+        type: Number,
+        value: 0,
+        reflectToAttribute: true
+      },
+      /**
+       * Image source.
+       */
+      src: {
+        type: String,
+        reflectToAttribute: true
+      },
+      /**
+       * Hover class for button styling
+       */
+      hoverClass: {
+        type: String,
+        value: "blue white-text"
+      }
+    };
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    this.__img = this.shadowRoot.querySelector("#img");
+  }
   /**
    * Rotate the image to the right.
    */
-  rotateRight: function() {
-    let img = this.$.img;
+  rotateRight() {
     // spin 90
     this.degrees += 90;
-    img.style.transform = "rotate(" + this.degrees + "deg)";
-    img.toggleClass("top");
-  },
+    this.__img.style.transform = "rotate(" + this.degrees + "deg)";
+    this.__img.toggleClass("top");
+  }
 
   /**
    * Rotate the image to the left.
    */
-  rotateLeft: function() {
-    let img = this.$.img;
+  rotateLeft() {
     // go back 90
     this.degrees += -90;
-    img.style.transform = "rotate(" + this.degrees + "deg)";
-    img.toggleClass("top");
-  },
+    this.__img.style.transform = "rotate(" + this.degrees + "deg)";
+    this.__img.toggleClass("top");
+  }
 
   /**
    * Flip the image.
    */
-  mirrorImage: function() {
-    let img = this.$.img;
-    if (img.style.transform === "scaleX(1)") {
-      img.style.transform = "scaleX(-1)";
+  mirrorImage() {
+    if (this.__img.style.transform === "scaleX(1)") {
+      this.__img.style.transform = "scaleX(-1)";
     } else {
-      img.style.transform = "scaleX(1)";
+      this.__img.style.transform = "scaleX(1)";
     }
-  },
+  }
 
   /**
    * Zoom in by calling  downstream function.
    */
-  zoomIn: function() {
-    this.$.img.zoomIn();
-  },
+  zoomIn() {
+    this.__img.zoomIn();
+  }
 
   /**
    * Zoom out by calling downstream function.
    */
-  zoomOut: function() {
-    this.$.img.zoomOut();
+  zoomOut() {
+    this.__img.zoomOut();
   }
-});
+}
+window.customElements.define(ImageInspector.tag, ImageInspector);
 export { ImageInspector };

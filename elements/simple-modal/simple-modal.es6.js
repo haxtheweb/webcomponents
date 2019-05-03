@@ -1,7 +1,7 @@
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import*as async from"./node_modules/@polymer/polymer/lib/utils/async.js";import"./node_modules/@polymer/paper-dialog/paper-dialog.js";import"./node_modules/@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@polymer/iron-icon/iron-icon.js";import"./node_modules/@polymer/neon-animation/animations/scale-up-animation.js";import"./node_modules/@polymer/neon-animation/animations/fade-out-animation.js";// register globally so we can make sure there is only one
+ */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import{microTask}from"./node_modules/@polymer/polymer/lib/utils/async.js";import"./node_modules/@polymer/paper-dialog/paper-dialog.js";// register globally so we can make sure there is only one
 window.SimpleModal=window.SimpleModal||{};// request if this exists. This helps invoke the element existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same modal
@@ -39,12 +39,16 @@ static get template(){return html`
   display: none;
 }
 
-:host ::slotted(*) {
+paper-dialog-scrollable:not(:defined) {
+  display: none;
+}
+
+:host paper-dialog ::slotted(*) {
   font-size: 14px;
   @apply --simple-modal-content;
 }
 
-:host #dialog {
+#dialog {
   margin: 15px auto;
   height: auto;
   height: var(--simple-modal-height, auto);
@@ -58,7 +62,7 @@ static get template(){return html`
   @apply --simple-modal-dialog;
 }
 
-:host #titlebar {
+#titlebar {
   margin-top: 0;
   padding: 0px 16px;
   display: flex;
@@ -70,7 +74,7 @@ static get template(){return html`
   @apply --simple-modal-top;
 }
 
-:host #headerbar {
+#headerbar {
   margin: 0;
   padding: 0 16px;
   color: var(--simple-modal-header-color, #222);
@@ -78,7 +82,7 @@ static get template(){return html`
   @apply --simple-modal-headerbar;
 }
 
-:host h2 {
+h2 {
   margin-right: 8px;
   padding: 0;
   flex: auto;
@@ -87,7 +91,7 @@ static get template(){return html`
   @apply --simple-modal-title;
 }
 
-:host #close {
+#close {
   top: 0;
   padding: 10px 0;
   min-width: unset;
@@ -97,7 +101,7 @@ static get template(){return html`
   @apply --simple-modal-close;
 }
 
-:host #close iron-icon {
+#close iron-icon {
   width: 16px;
   height: 16px;
   color: var(--simple-modal-titlebar-color,#444);
@@ -164,15 +168,15 @@ static get properties(){return{/**
    * Close icon
    */closeIcon:{name:"closeIcon",type:String,value:"close"},/**
    * The element that invoked this. This way we can track our way back accessibly
-   */invokedBy:{name:"invokedBy",type:Object}}}/**
+   */invokedBy:{name:"invokedBy",type:Object}}}constructor(){super();import("./node_modules/@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js");import("./node_modules/@polymer/paper-button/paper-button.js");import("./node_modules/@polymer/iron-icons/iron-icons.js");import("./node_modules/@polymer/iron-icon/iron-icon.js");import("./node_modules/@polymer/neon-animation/animations/scale-up-animation.js");import("./node_modules/@polymer/neon-animation/animations/fade-out-animation.js")}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"simple-modal"}/**
    * life cycle, element is afixed to the DOM
-   */connectedCallback(){super.connectedCallback();window.addEventListener("simple-modal-hide",this.close.bind(this));window.addEventListener("simple-modal-show",this.showEvent.bind(this));this.shadowRoot.querySelector("#simple-modal-content").addEventListener("neon-animation-finish",this._ironOverlayClosed.bind(this))}/**
+   */connectedCallback(){super.connectedCallback();afterNextRender(this,function(){window.addEventListener("simple-modal-hide",this.close.bind(this));window.addEventListener("simple-modal-show",this.showEvent.bind(this));this.shadowRoot.querySelector("#simple-modal-content").addEventListener("neon-animation-finish",this._ironOverlayClosed.bind(this))})}/**
    * Ensure everything is visible in what's been expanded.
    */_resizeContent(e){// fake a resize event to make contents happy
-async.microTask.run(()=>{window.dispatchEvent(new Event("resize"))})}/**
+microTask.run(()=>{window.dispatchEvent(new Event("resize"))})}/**
    * show event call to open the modal and display it's content
    */showEvent(e){// if we're already opened and we get told to open again....
 // swap out the contents
@@ -186,13 +190,13 @@ setTimeout(()=>{this.opened=!0;this._resizeContent()},100)}/**
    * check state and if we should clean up on close.
    * This keeps the DOM tiddy and allows animation to happen gracefully.
    */animationEnded(e){// wipe the slot of our modal
-this.title="";while(null!==dom(this).firstChild){dom(this).removeChild(dom(this).firstChild)}if(this.invokedBy){async.microTask.run(()=>{setTimeout(()=>{this.invokedBy.focus()},500)})}}/**
+this.title="";while(null!==dom(this).firstChild){dom(this).removeChild(dom(this).firstChild)}if(this.invokedBy){microTask.run(()=>{setTimeout(()=>{this.invokedBy.focus()},500)})}}/**
    * Close the modal and do some clean up
-   */close(){this.$.dialog.close()}// Observer opened for changes
+   */close(){this.shadowRoot.querySelector("#dialog").close()}// Observer opened for changes
 _openedChanged(newValue,oldValue){if(typeof newValue!==typeof void 0&&!newValue){this.animationEnded();const evt=new CustomEvent("simple-modal-closed",{bubbles:!0,cancelable:!0,detail:{opened:!1,invokedBy:this.invokedBy}});this.dispatchEvent(evt)}else if(newValue){const evt=new CustomEvent("simple-modal-opened",{bubbles:!0,cancelable:!0,detail:{opened:!0,invokedBy:this.invokedBy}});this.dispatchEvent(evt)}}/**
    * If there is a title, aria-labelledby should point to #simple-modal-title
    */_getAriaLabelledby(title){return!title?null:"simple-modal-title"}/**
    * If there is no title, supply a generic aria-label
-   */_getAriaLabel(title){return!title?"Modal Dialog":null}_ironOverlayClosed(e){console.log("i got here..");e.preventDefault();e.stopPropagation()}/**
+   */_getAriaLabel(title){return!title?"Modal Dialog":null}_ironOverlayClosed(e){e.preventDefault();e.stopPropagation()}/**
    * life cycle, element is removed from the DOM
-   */disconnectedCallback(){super.disconnectedCallback();window.removeEventListener("simple-modal-hide",this.close.bind(this));window.removeEventListener("simple-modal-show",this.showEvent.bind(this));this.shadowRoot.querySelector("#simple-modal-content").removeEventListener("neon-animation-finish",this._ironOverlayClosed.bind(this))}}window.customElements.define(SimpleModal.tag,SimpleModal);export{SimpleModal};
+   */disconnectedCallback(){window.removeEventListener("simple-modal-hide",this.close.bind(this));window.removeEventListener("simple-modal-show",this.showEvent.bind(this));this.shadowRoot.querySelector("#simple-modal-content").removeEventListener("neon-animation-finish",this._ironOverlayClosed.bind(this));super.disconnectedCallback()}}window.customElements.define(SimpleModal.tag,SimpleModal);export{SimpleModal};

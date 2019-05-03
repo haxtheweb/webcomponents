@@ -1,6 +1,6 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import * as async from "@polymer/polymer/lib/utils/async.js";
+import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-dropdown/iron-dropdown.js";
 /**
 `paper-fab-morph` can be used to wrap a floating action button and another
@@ -59,9 +59,9 @@ Custom property | Description | Default
 @hero hero.svg
 * @demo demo/index.html
 */
-(function(Polymer) {
-  Polymer({
-    _template: html`
+class PaperFabMorph extends PolymerElement {
+  static get template() {
+    return html`
       <style>
         iron-dropdown {
           @apply --paper-morph-dropdown;
@@ -82,11 +82,15 @@ Custom property | Description | Default
         ><slot name="dropdown-content"></slot
       ></span>
       <paper-material id="morpher"></paper-material>
-    `,
+    `;
+  }
 
-    is: "paper-fab-morph",
+  static get tag() {
+    return "paper-fab-morph";
+  }
 
-    properties: {
+  static get properties() {
+    return {
       /**
        * Whether the content already has overlay behavior.
        * If false, it will be wrapped by an iron-dropdown element, which can be
@@ -145,149 +149,154 @@ Custom property | Description | Default
         value: 0,
         notify: true
       }
-    },
+    };
+  }
 
-    observers: [
+  static get observers() {
+    return [
       "_updateOverlayPosition(verticalAlign, horizontalAlign, verticalOffset, horizontalOffset)"
-    ],
+    ];
+  }
 
-    ready: function() {
-      this._fab = this.$.fabContainer;
-      this._content = this.$.contentContainer;
+  ready() {
+    super.ready();
+    this._fab = this.$.fabContainer;
+    this._content = this.$.contentContainer;
 
-      if (this.isOverlayContent) {
-        this._fab.addEventListener(
-          "tap",
-          function() {
-            this._content.open();
-          }.bind(this)
-        );
-
-        this._overlay = this._content;
-      } else {
-        var dropdown = document.createElement("iron-dropdown");
-
-        dom(dropdown).appendChild(this._content);
-        dom(this.root).appendChild(dropdown);
-
-        this._overlay = dropdown;
-        this._dropdown = dropdown;
-
-        this._fab.addEventListener(
-          "tap",
-          function() {
-            this._dropdown.open();
-          }.bind(this)
-        );
-
-        this._updateOverlayPosition(
-          this.verticalAlign,
-          this.horizontalAlign,
-          this.verticalOffset,
-          this.horizontalOffset
-        );
-      }
-
-      this._overlay.addEventListener(
-        "iron-overlay-opened",
+    if (this.isOverlayContent) {
+      this._fab.addEventListener(
+        "tap",
         function() {
-          this._morphOpen();
+          this._content.open();
         }.bind(this)
       );
 
-      this._overlay.addEventListener(
-        "iron-overlay-closed",
+      this._overlay = this._content;
+    } else {
+      var dropdown = document.createElement("iron-dropdown");
+
+      dom(dropdown).appendChild(this._content);
+      dom(this.root).appendChild(dropdown);
+
+      this._overlay = dropdown;
+      this._dropdown = dropdown;
+
+      this._fab.addEventListener(
+        "tap",
         function() {
-          this._morphClose();
+          this._dropdown.open();
         }.bind(this)
       );
-    },
 
-    /**
-     * Show the content.
-     */
-    open: function() {
-      this._overlay.open();
-    },
+      this._updateOverlayPosition(
+        this.verticalAlign,
+        this.horizontalAlign,
+        this.verticalOffset,
+        this.horizontalOffset
+      );
+    }
 
-    /**
-     * Hide the content.
-     */
-    close: function() {
-      this._overlay.close();
-    },
+    this._overlay.addEventListener(
+      "iron-overlay-opened",
+      function() {
+        this._morphOpen();
+      }.bind(this)
+    );
 
-    _updateOverlayPosition: function(
-      verticalAlign,
-      horizontalAlign,
-      verticalOffset,
-      horizontalOffset
-    ) {
-      if (this._dropdown) {
-        var d = this._dropdown;
-        d.verticalAlign = verticalAlign;
-        d.horizontalAlign = horizontalAlign;
-        d.verticalOffset = verticalOffset;
-        d.horizontalOffset = horizontalOffset;
-      }
-    },
+    this._overlay.addEventListener(
+      "iron-overlay-closed",
+      function() {
+        this._morphClose();
+      }.bind(this)
+    );
+  }
 
-    _morphOpen: function() {
-      var fab = this._fab;
-      var content = this._content;
+  /**
+   * Show the content.
+   */
+  open() {
+    this._overlay.open();
+  }
 
+  /**
+   * Hide the content.
+   */
+  close() {
+    this._overlay.close();
+  }
+
+  _updateOverlayPosition(
+    verticalAlign,
+    horizontalAlign,
+    verticalOffset,
+    horizontalOffset
+  ) {
+    if (this._dropdown) {
+      var d = this._dropdown;
+      d.verticalAlign = verticalAlign;
+      d.horizontalAlign = horizontalAlign;
+      d.verticalOffset = verticalOffset;
+      d.horizontalOffset = horizontalOffset;
+    }
+  }
+
+  _morphOpen() {
+    var fab = this._fab;
+    var content = this._content;
+
+    var fabRect = fab.getBoundingClientRect();
+    var morpher = this.$.morpher;
+    var ms = morpher.style;
+
+    ms.display = "block";
+    ms.top = fabRect.top + "px";
+    ms.left = fabRect.left + "px";
+    ms.width = fabRect.width + "px";
+    ms.height = fabRect.height + "px";
+    ms.borderRadius = "50%";
+    ms.transitionDuration = this.duration + "ms";
+
+    fab.style.visibility = "hidden";
+    content.style.visibility = "hidden";
+
+    var contentRect = content.getBoundingClientRect();
+
+    ms.top = contentRect.top + "px";
+    ms.left = contentRect.left + "px";
+    ms.width = contentRect.width + "px";
+    ms.height = contentRect.height + "px";
+    ms.borderRadius = "";
+
+    microTask.run(() => {
+      morpher.style.display = "none";
+      content.style.visibility = "visible";
+    });
+  }
+
+  _morphClose() {
+    var fab = this._fab;
+    var content = this._content;
+
+    var contentRect = fab.getBoundingClientRect();
+    var morpher = this.$.morpher;
+    var ms = morpher.style;
+
+    morpher.style.display = "block";
+
+    microTask.run(() => {
       var fabRect = fab.getBoundingClientRect();
-      var morpher = this.$.morpher;
-      var ms = morpher.style;
-
-      ms.display = "block";
       ms.top = fabRect.top + "px";
       ms.left = fabRect.left + "px";
       ms.width = fabRect.width + "px";
       ms.height = fabRect.height + "px";
       ms.borderRadius = "50%";
-      ms.transitionDuration = this.duration + "ms";
 
-      fab.style.visibility = "hidden";
-      content.style.visibility = "hidden";
-
-      var contentRect = content.getBoundingClientRect();
-
-      ms.top = contentRect.top + "px";
-      ms.left = contentRect.left + "px";
-      ms.width = contentRect.width + "px";
-      ms.height = contentRect.height + "px";
-      ms.borderRadius = "";
-
-      async.microTask.run(() => {
+      microTask.run(() => {
         morpher.style.display = "none";
-        content.style.visibility = "visible";
+        fab.style.visibility = "visible";
       });
-    },
-
-    _morphClose: function() {
-      var fab = this._fab;
-      var content = this._content;
-
-      var contentRect = fab.getBoundingClientRect();
-      var morpher = this.$.morpher;
-      var ms = morpher.style;
-
-      morpher.style.display = "block";
-
-      async.microTask.run(() => {
-        var fabRect = fab.getBoundingClientRect();
-        ms.top = fabRect.top + "px";
-        ms.left = fabRect.left + "px";
-        ms.width = fabRect.width + "px";
-        ms.height = fabRect.height + "px";
-        ms.borderRadius = "50%";
-
-        async.microTask.run(() => {
-          morpher.style.display = "none";
-          fab.style.visibility = "visible";
-        });
-      });
-    }
-  });
-})(Polymer);
+    });
+  }
+}
+window.customElements.define(PaperFabMorph.tag, PaperFabMorph);
+export { PaperFabMorph };

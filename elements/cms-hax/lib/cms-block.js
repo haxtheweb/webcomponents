@@ -1,131 +1,130 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import * as async from "@polymer/polymer/lib/utils/async.js";
+import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-spinner/paper-spinner.js";
-import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-var $_documentContainer = document.createElement("div");
-$_documentContainer.setAttribute("style", "display: none;");
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import { wipeSlot } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 
-$_documentContainer.innerHTML = `<dom-module id="cms-block">
-  <template strip-whitespace="">
-    <style>
-      :host {
-        display: block;
-        min-width: 112px;
-        min-height: 112px;
-        transition: .6s all ease;
-        background-color: transparent;
-      }
-      paper-spinner {
-        visibility: hidden;
-        opacity: 0;
-        height: 80px;
-        width: 80px;
-        padding: 16px;
-      }
-      #replacementcontent {
-        visibility: visible;
-        opacity: 1;
-      }
-      :host([loading]) {
-        text-align: center;
-      }
-      :host([loading]) paper-spinner {
-        visibility: visible;
-        opacity: 1;
-      }
-      :host([loading]) #replacementcontent {
-        opacity: 0;
-        visibility: hidden;
-      }
-    </style>
-    <iron-ajax id="blockrequest" method="GET" params="[[bodyData]]" url="[[blockEndPoint]]" handle-as="json" last-response="{{blockData}}"></iron-ajax>
-    <paper-spinner active="[[loading]]"></paper-spinner>
-    <span id="replacementcontent"><slot></slot></span>
-  </template>
-
-  
-</dom-module>`;
-
-document.head.appendChild($_documentContainer);
 /**
-`cms-block`
-Render and process a  / block from a content management system.
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
- -
- -
-
-*/
-Polymer({
-  is: "cms-block",
-  behaviors: [HAXBehaviors.PropertiesBehaviors],
-  properties: {
-    /**
-     * Loading state
-     */
-    loading: {
-      type: Boolean,
-      reflectToAttribute: true,
-      value: false
-    },
-    /**
-     * Module supplying the block
-     */
-    blockModule: {
-      type: String,
-      reflectToAttribute: true
-    },
-    /**
-     * A delta value relative to the module
-     */
-    blockDelta: {
-      type: String,
-      reflectToAttribute: true
-    },
-    /**
-     * block end point updated, change the way we do processing.
-     */
-    blockEndPoint: {
-      type: String
-    },
-    /**
-     * Body data which is just block with some encapsulation.
-     */
-    bodyData: {
-      type: Object,
-      computed: "_generateBodyData(blockModule, blockDelta)",
-      observer: "_blockChanged"
-    },
-    /**
-     * block data from the end point.
-     */
-    blockData: {
-      type: String,
-      observer: "_handleblockResponse"
-    },
-    /**
-     * Prefix for the block to be processed
-     */
-    blockPrefix: {
-      type: String,
-      observer: "["
-    },
-    /**
-     * Suffix for the block to be processed
-     */
-    blockSuffix: {
-      type: String,
-      observer: "]"
-    }
-  },
+ * `cms-block`
+ * `Render and process a  / block from a content management system.`
+ */
+class CMSBlock extends PolymerElement {
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: block;
+          min-width: 112px;
+          min-height: 112px;
+          transition: 0.6s all ease;
+          background-color: transparent;
+        }
+        paper-spinner {
+          visibility: hidden;
+          opacity: 0;
+          height: 80px;
+          width: 80px;
+          padding: 16px;
+        }
+        #replacementcontent {
+          visibility: visible;
+          opacity: 1;
+        }
+        :host([loading]) {
+          text-align: center;
+        }
+        :host([loading]) paper-spinner {
+          visibility: visible;
+          opacity: 1;
+        }
+        :host([loading]) #replacementcontent {
+          opacity: 0;
+          visibility: hidden;
+        }
+      </style>
+      <iron-ajax
+        id="blockrequest"
+        method="GET"
+        params="[[bodyData]]"
+        url="[[blockEndPoint]]"
+        handle-as="json"
+        last-response="{{blockData}}"
+      ></iron-ajax>
+      <paper-spinner active="[[loading]]"></paper-spinner>
+      <span id="replacementcontent"><slot></slot></span>
+    `;
+  }
+  static get tag() {
+    return "cms-block";
+  }
+  static get properties() {
+    return {
+      /**
+       * Loading state
+       */
+      loading: {
+        type: Boolean,
+        reflectToAttribute: true,
+        value: false
+      },
+      /**
+       * Module supplying the block
+       */
+      blockModule: {
+        type: String,
+        reflectToAttribute: true
+      },
+      /**
+       * A delta value relative to the module
+       */
+      blockDelta: {
+        type: String,
+        reflectToAttribute: true
+      },
+      /**
+       * block end point updated, change the way we do processing.
+       */
+      blockEndPoint: {
+        type: String
+      },
+      /**
+       * Body data which is just block with some encapsulation.
+       */
+      bodyData: {
+        type: Object,
+        computed: "_generateBodyData(blockModule, blockDelta)",
+        observer: "_blockChanged"
+      },
+      /**
+       * block data from the end point.
+       */
+      blockData: {
+        type: String,
+        observer: "_handleblockResponse"
+      },
+      /**
+       * Prefix for the block to be processed
+       */
+      blockPrefix: {
+        type: String,
+        observer: "["
+      },
+      /**
+       * Suffix for the block to be processed
+       */
+      blockSuffix: {
+        type: String,
+        observer: "]"
+      }
+    };
+  }
   /**
    * Generate body data.
    */
-  _generateBodyData: function(blockModule, blockDelta) {
+  _generateBodyData(blockModule, blockDelta) {
     if (
       blockModule !== null &&
       blockModule !== "" &&
@@ -137,11 +136,11 @@ Polymer({
         delta: `${blockDelta}`
       };
     }
-  },
+  }
   /**
    * Handle the response from the block processing endpoint
    */
-  _handleblockResponse: function(newValue, oldValue) {
+  _handleblockResponse(newValue, oldValue) {
     if (newValue !== null && typeof newValue.content !== typeof undefined) {
       // store the text and url callbacks
       if (document.getElementById("cmstokenidtolockonto") != null) {
@@ -152,9 +151,9 @@ Polymer({
           newValue.editText;
       }
       // wipe our own slot here
-      this.wipeSlot(dom(this));
+      wipeSlot(dom(this));
       // now inject the content we got
-      async.microTask.run(() => {
+      microTask.run(() => {
         let frag = document.createElement("span");
         frag.innerHTML = newValue.content;
         let newNode = frag.cloneNode(true);
@@ -164,19 +163,11 @@ Polymer({
         }, 600);
       });
     }
-  },
-  /**
-   * wipe out the slot
-   */
-  wipeSlot: function(element) {
-    while (element.firstChild !== null) {
-      element.removeChild(element.firstChild);
-    }
-  },
+  }
   /**
    * block end point changed
    */
-  _blockChanged: function(newValue, oldValue) {
+  _blockChanged(newValue, oldValue) {
     // ensure we have something and are not loading currently
     if (
       typeof newValue !== typeof undefined &&
@@ -192,16 +183,17 @@ Polymer({
       }
       if (this.blockEndPoint) {
         this.loading = true;
-        async.microTask.run(() => {
+        microTask.run(() => {
           this.$.blockrequest.generateRequest();
         });
       }
     }
-  },
+  }
   /**
    * Attached to the DOM, now fire.
    */
-  attached: function() {
+  connectedCallback() {
+    super.connectedCallback();
     if (
       typeof this.blockModule !== typeof undefined &&
       this.blockModule !== null &&
@@ -221,14 +213,19 @@ Polymer({
         }
         if (this.blockEndPoint) {
           this.loading = true;
-          async.microTask.run(() => {
+          microTask.run(() => {
             this.$.blockrequest.generateRequest();
           });
         }
       }
     }
-    // Establish hax property binding
-    let props = {
+    afterNextRender(this, function() {
+      this.HAXWiring = new HAXWiring();
+      this.HAXWiring.setup(CMSBlock.haxProperties, CMSBlock.tag, this);
+    });
+  }
+  static get haxProperties() {
+    return {
       canScale: true,
       canPosition: true,
       canEditSource: false,
@@ -278,12 +275,11 @@ Polymer({
         ]
       }
     };
-    this.setHaxProperties(props);
-  },
+  }
   /**
    * Implements getHaxJSONSchema post processing callback.
    */
-  postProcessgetHaxJSONSchema: function(schema) {
+  postProcessgetHaxJSONSchema(schema) {
     schema.properties["__editThis"] = {
       type: "string",
       component: {
@@ -298,4 +294,6 @@ Polymer({
     };
     return schema;
   }
-});
+}
+window.customElements.define(CMSBlock.tag, CMSBlock);
+export { CMSBlock };

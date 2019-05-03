@@ -2,16 +2,15 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 /**
-`material-word`
-Outputs word in material alphabet
-
-* @demo demo/index.html
-*/
-let MaterialWord = Polymer({
-  _template: html`
-    <custom-style>
+ * `material-word`
+ * `Outputs word in material alphabet`
+ * @demo demo/index.html
+ */
+class MaterialWord extends PolymerElement {
+  static get template() {
+    return html`
       <style>
         html {
           font-size: 100%;
@@ -798,47 +797,49 @@ let MaterialWord = Polymer({
           transform: rotate(270deg);
         }
       </style>
-    </custom-style>
-    <div class="card-title">
-      <div class="wrapper">
-        <div class="container-fluid">
-          <template is="dom-if" if="[[letters]]">
-            <template is="dom-repeat" items="[[letters]]">
-              <div class="card">
-                <div class="alphabets">
-                  <div class\$="[[item]]"></div>
-                  <template is="dom-if" if="[[showHalf(item)]]">
-                    <div class\$="[[item]]-half"></div>
-                  </template>
+      <div class="card-title">
+        <div class="wrapper">
+          <div class="container-fluid">
+            <template is="dom-if" if="[[letters]]">
+              <template is="dom-repeat" items="[[letters]]">
+                <div class="card">
+                  <div class="alphabets">
+                    <div class\$="[[item]]"></div>
+                    <template is="dom-if" if="[[showHalf(item)]]">
+                      <div class\$="[[item]]-half"></div>
+                    </template>
+                  </div>
                 </div>
-              </div>
+              </template>
             </template>
-          </template>
+          </div>
         </div>
       </div>
-    </div>
-  `,
-
-  is: "material-word",
-
-  properties: {
-    word: {
-      type: String,
-      notify: true
-    },
-    letters: {
-      type: Array,
-      value: [],
-      notify: true,
-      reflectToAttribute: true
-    },
-    halfLetters: {
-      type: Array,
-      value: ["e", "f", "h", "i"]
-    }
-  },
-
-  ready: function() {
+    `;
+  }
+  static get tag() {
+    return "material-word";
+  }
+  static get properties() {
+    return {
+      word: {
+        type: String,
+        notify: true
+      },
+      letters: {
+        type: Array,
+        value: [],
+        notify: true,
+        reflectToAttribute: true
+      },
+      halfLetters: {
+        type: Array,
+        value: ["e", "f", "h", "i"]
+      }
+    };
+  }
+  ready() {
+    super.ready();
     var word = this.getAttribute("word");
     var letters = word
       .toLowerCase()
@@ -847,13 +848,13 @@ let MaterialWord = Polymer({
     if (letters.length) {
       this.letters = letters;
     }
-  },
-
-  showHalf: function(letter) {
+  }
+  showHalf(letter) {
     if (this.halfLetters[letter]) {
       return true;
     }
     return false;
   }
-});
+}
+window.customElements.define(MaterialWord.tag, MaterialWord);
 export { MaterialWord };

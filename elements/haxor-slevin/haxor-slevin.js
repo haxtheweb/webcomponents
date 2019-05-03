@@ -245,20 +245,19 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
           }
         }
       </style>
-      <custom-style>
-        <style>
-          html,
-          body {
-            background-color: #ffffff;
-          }
-          :root,
-          html,
-          body,
-          a {
-            color: rgba(0, 0, 0, 0.84);
-          }
-        </style>
-      </custom-style>
+      <style>
+        html,
+        body {
+          background-color: #ffffff;
+        }
+        :root,
+        html,
+        body,
+        a {
+          color: rgba(0, 0, 0, 0.84);
+        }
+      </style>
+
       <app-header reveals>
         <app-toolbar>
           <div>

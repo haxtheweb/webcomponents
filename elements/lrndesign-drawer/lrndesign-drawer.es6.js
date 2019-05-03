@@ -1,9 +1,7 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/app-layout/app-layout.js";import"./node_modules/@polymer/paper-icon-button/paper-icon-button.js";import"./node_modules/@polymer/paper-tooltip/paper-tooltip.js";/**
-`lrndesign-drawer`
-
-
-* @demo demo/index.html
-*/let LrndesignDrawer=Polymer({_template:html`
+import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";/**
+ * `lrndesign-drawer`
+ * @demo demo/index.html
+ */class LrndesignDrawer extends PolymerElement{constructor(){super();import("./node_modules/@polymer/app-layout/app-header/app-header.js");import("./node_modules/@polymer/app-layout/app-drawer/app-drawer.js");import("./node_modules/@polymer/paper-icon-button/paper-icon-button.js");import("./node_modules/@polymer/paper-tooltip/paper-tooltip.js")}static get template(){return html`
     <style>
       :host {
         display: block;
@@ -29,18 +27,17 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
     <paper-icon-button
       icon="[[icon]]"
       alt="[[alt]]"
-      id="flyout-drawer"
+      id="flyoutdrawer"
     ></paper-icon-button>
-    <paper-tooltip for="flyout-drawer">[[alt]]</paper-tooltip>
-  `,is:"lrndesign-drawer",properties:{/**
-     * State for if it is currently open.
-     */opened:{type:Boolean,value:!1},/**
-     * Icon to present for clicking.
-     */icon:{type:String,value:"icon"},/**
-     * Side of the screen to align the flyout (right or left)
-     */align:{type:String,value:"left"},/**
-     * Alt / hover text for this link
-     */alt:{type:String,value:""}},/**
+    <paper-tooltip for="flyoutdrawer">[[alt]]</paper-tooltip>`}static get tag(){return"lrndesign-drawer"}static get properties(){return{/**
+       * State for if it is currently open.
+       */opened:{type:Boolean,value:!1},/**
+       * Icon to present for clicking.
+       */icon:{type:String,value:"icon"},/**
+       * Side of the screen to align the flyout (right or left)
+       */align:{type:String,value:"left"},/**
+       * Alt / hover text for this link
+       */alt:{type:String,value:""}}}/**
    * Initalize the flyout and ensure it's not open to start
    * while adding the click event to it.
-   */ready:function(){let root=this,opened=this.opened;this.shadowRoot.querySelector("paper-icon-button").addEventListener("click",function(e){root.opened=!root.opened})}});export{LrndesignDrawer};
+   */ready(){super.ready();this.shadowRoot.querySelector("paper-icon-button").addEventListener("click",e=>{this.opened=!this.opened})}}window.customElements.define(LrndesignDrawer.tag,LrndesignDrawer);export{LrndesignDrawer};

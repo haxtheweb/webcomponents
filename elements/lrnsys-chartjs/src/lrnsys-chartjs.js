@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@vowo/chart-elements/chart-elements.js";
 /**
 `lrnsys-chartjs`
@@ -10,35 +10,39 @@ A LRN element
 
 * @demo demo/index.html
 */
-let LrnsysChartjs = Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: block;
-      }
-    </style>
-    <div>
-      <!--
+class LrnsysChartjs extends PolymerElement {
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: block;
+        }
+      </style>
+      <div>
+        <!--
         Use the logic from the logic of the template dom-if's to allow for abstraction for all the chart types
       -->
-      <chart-line labels="{{labels}}" data="[[data]]"></chart-line>
-    </div>
-  `,
-
-  is: "lrnsys-chartjs",
-
-  properties: {
-    labels: {
-      type: Array,
-      value: ["January", "February", "March", "April", "May", "June", "July"]
-    },
-    data: {
-      type: Object,
-      value: {}
-    }
-  },
-
-  ready: function() {
+        <chart-line labels="{{labels}}" data="[[data]]"></chart-line>
+      </div>
+    `;
+  }
+  static get tag() {
+    return "lrnsys-chartjs";
+  }
+  static get properties() {
+    return {
+      labels: {
+        type: Array,
+        value: ["January", "February", "March", "April", "May", "June", "July"]
+      },
+      data: {
+        type: Object,
+        value: {}
+      }
+    };
+  }
+  ready() {
+    super.ready();
     this.data = {
       labels: this.labels,
       datasets: [
@@ -66,7 +70,7 @@ let LrnsysChartjs = Polymer({
         }
       ]
     };
-    console.log(this.data);
   }
-});
+}
+window.customElements.define(LrnsysChartjs.tag, LrnsysChartjs);
 export { LrnsysChartjs };

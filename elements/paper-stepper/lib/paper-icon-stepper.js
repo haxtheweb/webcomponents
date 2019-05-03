@@ -1,29 +1,32 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-
-Polymer({
-  is: "paper-icon-stepper",
-  properties: {
-    /**
-     * Indeces of the steps already selected
-     */
-    selectedValues: {
-      type: Array,
-      notify: true,
-      value: []
-    },
-    /**
-     * Currently selected step
-     */
-    _selected: {
-      type: Number,
-      value: -1
-    }
-  },
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+class PaperIconStepper extends PolymerElement {
+  static get tag() {
+    return "paper-icon-stepper";
+  }
+  static get properties() {
+    return {
+      /**
+       * Indeces of the steps already selected
+       */
+      selectedValues: {
+        type: Array,
+        notify: true,
+        value: []
+      },
+      /**
+       * Currently selected step
+       */
+      _selected: {
+        type: Number,
+        value: -1
+      }
+    };
+  }
 
   /**
    * Goes back one step
    */
-  previous: function() {
+  previous() {
     //XXX: Multi selector does not offer selectPrevious() function
     if (this._selected < 0) {
       // we are back to start
@@ -33,11 +36,11 @@ Polymer({
     var index = this.selectedValues.indexOf(this._selected);
     this.splice("selectedValues", index, 1);
     this._selected--;
-  },
+  }
   /**
    * Goes forward one step
    */
-  next: function() {
+  next() {
     //XXX: Multi selector does not offer selectNext() function
     if (this._selected === this._items.length - 1) {
       // We reached the end
@@ -54,15 +57,17 @@ Polymer({
     }
 
     this.push("selectedValues", this._selected);
-  },
+  }
   /**
    * Clears all the steps
    */
-  clear: function() {
+  clear() {
     this.selectedValues = [];
     this._selected = -1;
-  },
-  _onItemsChanged: function(e) {
+  }
+  _onItemsChanged(e) {
     this._items = this.$.selector.items;
   }
-});
+}
+window.customElements.define(PaperIconStepper.tag, PaperIconStepper);
+export { PaperIconStepper };

@@ -2,11 +2,9 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { RichTextEditorPicker } from "./rich-text-editor-picker.js";
-import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
-import "@polymer/iron-icons/editor-icons.js";
+import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 /**
  * `rich-text-editor-emoji-picker`
  * `an emoji picker for the rich-text-editor`
@@ -86,22 +84,30 @@ class RichTextEditorEmojiPicker extends RichTextEditorPicker {
   static get tag() {
     return "rich-text-editor-emoji-picker";
   }
-
+  constructor() {
+    super();
+    import("@polymer/iron-icons/editor-icons.js");
+  }
   /**
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
     super.connectedCallback();
-    const name = "emoji";
     const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
     const src = this.optionsSrc;
     const location = `${basePath}${src}`;
     window.addEventListener(
-      `es-bridge-${name}-loaded`,
+      "es-bridge-emoji-loaded",
       this._setOptions.bind(this)
     );
     window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load(name, location);
+    window.ESGlobalBridge.instance.load("emoji", location);
+  }
+  disconnectedCallback() {
+    window.removeEventListener(
+      `es-bridge-emoji-loaded`,
+      this._setOptions.bind(this)
+    );
   }
 
   /**

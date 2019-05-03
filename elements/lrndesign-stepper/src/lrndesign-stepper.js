@@ -2,30 +2,33 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "./lib/lrndesign-stepper-button.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 /**
 `lrndesign-stepper`
 visualization of steps
 
 * @demo demo/index.html
 */
-let LrndesignStepper = Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: block;
-      }
-    </style>
-
-    <div class="buttons"><slot id="stepper-children"> </slot></div>
-  `,
-
-  is: "lrndesign-stepper",
-
-  properties: {},
-
-  ready: function() {
+class LrndesignStepper extends PolymerElement {
+  constructor() {
+    super();
+    import("@lrnwebcomponents/lrndesign-stepper/lib/lrndesign-stepper-button.js");
+  }
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: block;
+        }
+      </style>
+      <div class="buttons"><slot id="stepper-children"> </slot></div>
+    `;
+  }
+  static get tag() {
+    return "lrndesign-stepper";
+  }
+  ready() {
+    super.ready();
     var root = this;
     var children = root.getContentChildren("#stepper-children");
     if (children.length > 1) {
@@ -41,5 +44,6 @@ let LrndesignStepper = Polymer({
       });
     }
   }
-});
+}
+window.customElements.define(LrndesignStepper.tag, LrndesignStepper);
 export { LrndesignStepper };

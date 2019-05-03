@@ -1,7 +1,8 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/hardware-icons.js";
 import "@polymer/iron-ajax/iron-ajax.js";
+import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-styles/color.js";
 import "@lrnwebcomponents/paper-search/lib/paper-search-bar.js";
@@ -35,10 +36,10 @@ A LRN element
   stats
 
 */
-Polymer({
-  _template: html`
-    <custom-style>
-      <style is="custom-style" include="materializecss-styles">
+class LrnappBookProgressDashboard extends PolymerElement {
+  static get template() {
+    return html`
+      <style include="materializecss-styles">
         :host {
           display: block;
         }
@@ -102,137 +103,141 @@ Polymer({
           background-color: var(--paper-orange-500);
         }
       </style>
-    </custom-style>
-    <iron-ajax
-      id="dataajax"
-      url="[[sourcePath]]"
-      params="[[requestParams]]"
-      handle-as="json"
-      on-response="handleDataResponse"
-      last-response="{{readTimeData}}"
-    ></iron-ajax>
+      <iron-ajax
+        id="dataajax"
+        url="[[sourcePath]]"
+        params="[[requestParams]]"
+        handle-as="json"
+        on-response="handleDataResponse"
+        last-response="{{readTimeData}}"
+      ></iron-ajax>
 
-    <div id="bodyloading" class="loading">
-      <elmsln-loading color="grey-text" size="large"></elmsln-loading>
-      <h3 class="loading-text">Loading content..</h3>
-    </div>
-    <div>
-      <material-progress-bars max="128" bar-height="22" animated="">
-        <div class="bar" data-value="21">
-          <iron-icon icon="av:video-library"></iron-icon>
-        </div>
-        <div class="bar run" data-value="13">
-          <iron-icon icon="maps:directions-run"></iron-icon>
-        </div>
-        <div class="bar hello" data-value="50">
-          <iron-icon icon="maps:directions-bike"></iron-icon>
-          <span>Hello</span>
-        </div>
-        <div class="bar world" data-value="30"><span>World</span></div>
-      </material-progress-bars>
-      <material-progress-histo bar-height="22" animated="">
-        <div class="bar" data-value="21">
-          <iron-icon icon="maps:directions-walk"></iron-icon>
-        </div>
-        <div class="bar run" data-value="13">
-          <iron-icon icon="maps:directions-run"></iron-icon>
-        </div>
-        <div class="bar hello" data-value="50">
-          <iron-icon icon="maps:directions-bike"></iron-icon>
-          <span>Hello</span>
-        </div>
-        <div class="bar world" data-value="30"><span>World</span></div>
-      </material-progress-histo>
-      <template is="dom-repeat" items="[[dashboardItems]]" as="item">
-        <div class="progress-row">
-          <div class="progress-left">
-            <lrnsys-progress-circle
-              status="disabled"
-              class="flex"
-              icon="[[item.meta.icon]]"
-            ></lrnsys-progress-circle>
+      <div id="bodyloading" class="loading">
+        <elmsln-loading color="grey-text" size="large"></elmsln-loading>
+        <h3 class="loading-text">Loading content..</h3>
+      </div>
+      <div>
+        <material-progress-bars max="128" bar-height="22" animated="">
+          <div class="bar" data-value="21">
+            <iron-icon icon="av:video-library"></iron-icon>
           </div>
-          <div class="progress-right">
-            <h3 class="progress-item-title">[[item.attributes.title]]</h3>
-            <div class="description-content">
-              <div>
-                <lrn-icon icon="network" class="progress-icon"></lrn-icon>
-                <paper-progress
-                  value="70"
-                  secondary-progress="80"
-                ></paper-progress>
-              </div>
-              <div>
-                <lrndesign-avatar
-                  src="[[userData.user.avatar]]"
-                  label="[[userData.user.display_name]]"
-                ></lrndesign-avatar>
-                <paper-progress
-                  value="70"
-                  secondary-progress="80"
-                ></paper-progress>
+          <div class="bar run" data-value="13">
+            <iron-icon icon="maps:directions-run"></iron-icon>
+          </div>
+          <div class="bar hello" data-value="50">
+            <iron-icon icon="maps:directions-bike"></iron-icon>
+            <span>Hello</span>
+          </div>
+          <div class="bar world" data-value="30"><span>World</span></div>
+        </material-progress-bars>
+        <material-progress-histo bar-height="22" animated="">
+          <div class="bar" data-value="21">
+            <iron-icon icon="maps:directions-walk"></iron-icon>
+          </div>
+          <div class="bar run" data-value="13">
+            <iron-icon icon="maps:directions-run"></iron-icon>
+          </div>
+          <div class="bar hello" data-value="50">
+            <iron-icon icon="maps:directions-bike"></iron-icon>
+            <span>Hello</span>
+          </div>
+          <div class="bar world" data-value="30"><span>World</span></div>
+        </material-progress-histo>
+        <template is="dom-repeat" items="[[dashboardItems]]" as="item">
+          <div class="progress-row">
+            <div class="progress-left">
+              <lrnsys-progress-circle
+                status="disabled"
+                class="flex"
+                icon="[[item.meta.icon]]"
+              ></lrnsys-progress-circle>
+            </div>
+            <div class="progress-right">
+              <h3 class="progress-item-title">[[item.attributes.title]]</h3>
+              <div class="description-content">
+                <div>
+                  <lrn-icon icon="network" class="progress-icon"></lrn-icon>
+                  <paper-progress
+                    value="70"
+                    secondary-progress="80"
+                  ></paper-progress>
+                </div>
+                <div>
+                  <lrndesign-avatar
+                    src="[[userData.user.avatar]]"
+                    label="[[userData.user.display_name]]"
+                  ></lrndesign-avatar>
+                  <paper-progress
+                    value="70"
+                    secondary-progress="80"
+                  ></paper-progress>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </template>
-    </div>
-  `,
+        </template>
+      </div>
+    `;
+  }
 
-  is: "lrnapp-book-progress-dashboard",
+  static get tag() {
+    return "lrnapp-book-progress-dashboard";
+  }
 
-  properties: {
-    /**
-     * Data about the active route; this includes item type and id.
-     */
-    routeData: {
-      type: Object,
-      observer: "_routeDataChanged"
-    },
-    /**
-     * Params for the request for outline/book to load.
-     */
-    requestParams: {
-      type: Object,
-      value: {
-        node: null
+  static get properties() {
+    return {
+      /**
+       * Data about the active route; this includes item type and id.
+       */
+      routeData: {
+        type: Object,
+        observer: "_routeDataChanged"
+      },
+      /**
+       * Params for the request for outline/book to load.
+       */
+      requestParams: {
+        type: Object,
+        value: {
+          node: null
+        }
+      },
+      /**
+       * Path to get data into the UI
+       */
+      sourcePath: {
+        type: String
+      },
+      /**
+       * Read time data
+       */
+      readTimeData: {
+        type: Object,
+        value: []
+      },
+      /**
+       * User data.
+       */
+      userData: {
+        type: Object,
+        value: []
+      },
+      /**
+       * If this is visible; useful for toggling / activating.
+       */
+      showProgress: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true,
+        observer: "_showProgressChanged"
       }
-    },
-    /**
-     * Path to get data into the UI
-     */
-    sourcePath: {
-      type: String
-    },
-    /**
-     * Read time data
-     */
-    readTimeData: {
-      type: Object,
-      value: []
-    },
-    /**
-     * User data.
-     */
-    userData: {
-      type: Object,
-      value: []
-    },
-    /**
-     * If this is visible; useful for toggling / activating.
-     */
-    showProgress: {
-      type: Boolean,
-      value: false,
-      reflectToAttribute: true,
-      observer: "_showProgressChanged"
-    }
-  },
+    };
+  }
 
   /**
    * Notice route data has changed.
    */
-  _routeDataChanged: function(newValue, oldValue) {
+  _routeDataChanged(newValue, oldValue) {
     if (typeof newValue !== typeof undefined) {
       this.requestParams[newValue.type] = newValue.id;
       // if we're visible kick off the call
@@ -240,36 +245,41 @@ Polymer({
         this.$.dataajax.generateRequest();
       }
     }
-  },
+  }
 
   /**
    * Showing element state has changed
    */
-  _showProgressChanged: function(newValue, oldValue) {
+  _showProgressChanged(newValue, oldValue) {
     // ensure we are visible
     if (newValue && typeof this.routeData !== typeof undefined) {
       this.$.dataajax.generateRequest();
     }
-  },
+  }
 
   /**
    * Response data.
    */
-  handleDataResponse: function(obj) {
+  handleDataResponse(obj) {
     let response = obj.detail.response.data;
     // show the info
     this.$.bodyloading.hidden = true;
     // split the data into two sets
     this.userData = response.userdata;
     this.dashboardItems = this._toArray(response.items);
-  },
+  }
 
   /**
    * Simple way to convert from object to array.
    */
-  _toArray: function(obj) {
+  _toArray(obj) {
     return Object.keys(obj).map(function(key) {
       return obj[key];
     });
   }
-});
+}
+window.customElements.define(
+  LrnappBookProgressDashboard.tag,
+  LrnappBookProgressDashboard
+);
+export { LrnappBookProgressDashboard };

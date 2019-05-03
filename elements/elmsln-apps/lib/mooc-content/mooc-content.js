@@ -1,6 +1,6 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import * as async from "@polymer/polymer/lib/utils/async.js";
+import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/hardware-icons.js";
 import "@polymer/iron-ajax/iron-ajax.js";
@@ -26,8 +26,9 @@ import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
  * - bar - the underlayed bar that's tracking overall progression
  * - author mode - authoring mode
  */
-Polymer({
-  _template: html`
+class MoocContent extends PolymerElement {
+  static get template() {
+    return html`
     <style include="materializecss-styles">
       :host {
         display: block;
@@ -111,131 +112,138 @@ Polymer({
         </section>
         <a class="exit-off-canvas"></a>
       </div>
-    </main>`,
-  is: "mooc-content",
-  observers: ["_routeChanged(data, route, endPoint)"],
-  properties: {
-    /**
-     * Source of data
-     */
-    sourcePath: {
-      type: String
-    },
-    /**
-     * Full outline path
-     */
-    fullOutlinePath: {
-      type: String
-    },
-    /**
-     * App route tracking.
-     */
-    route: {
-      type: Object,
-      notify: true
-    },
-    /**
-     * Title for the content
-     */
-    currentTitle: {
-      type: String
-    },
-    /**
-     * Params for the request for outline/book to load.
-     */
-    requestParams: {
-      type: Object,
-      notify: true,
-      value: {
-        node: null
+    </main>`;
+  }
+  static get tag() {
+    return "mooc-content";
+  }
+  static get observers() {
+    return ["_routeChanged(data, route, endPoint)"];
+  }
+  static get properties() {
+    return {
+      /**
+       * Source of data
+       */
+      sourcePath: {
+        type: String
+      },
+      /**
+       * Full outline path
+       */
+      fullOutlinePath: {
+        type: String
+      },
+      /**
+       * App route tracking.
+       */
+      route: {
+        type: Object,
+        notify: true
+      },
+      /**
+       * Title for the content
+       */
+      currentTitle: {
+        type: String
+      },
+      /**
+       * Params for the request for outline/book to load.
+       */
+      requestParams: {
+        type: Object,
+        notify: true,
+        value: {
+          node: null
+        }
+      },
+      /**
+       * Returned data for processing.
+       */
+      pageData: {
+        type: Object,
+        value: {}
+      },
+      /**
+       * Returned data for processing.
+       */
+      outlineData: {
+        type: Object,
+        value: {}
+      },
+      /**
+       * Ensure scrolling doesn't influence during a transition.
+       */
+      resetScroll: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Store current page data.
+       */
+      responseData: {
+        type: Object,
+        value: {}
+      },
+      /**
+       * BasePath from drupal
+       */
+      basePath: {
+        type: String
+      },
+      /**
+       * elmslnCourse from drupal
+       */
+      elmslnCourse: {
+        type: String
+      },
+      /**
+       * nav title
+       */
+      outlineTitle: {
+        type: String
+      },
+      /**
+       * Node ID
+       */
+      nid: {
+        type: Number
+      },
+      /**
+       * loading pegged to the ajax call running
+       */
+      _loading: {
+        type: Boolean,
+        observer: "_contentLoading",
+        value: false
+      },
+      /**
+       * loading pegged to the ajax call running
+       */
+      loading: {
+        type: Boolean,
+        reflectToAttribute: true,
+        value: false
+      },
+      /**
+       * Aliases
+       */
+      aliases: {
+        type: Array
+      },
+      /**
+       * active item for tracking reference after clicks.
+       */
+      activeNodeItem: {
+        type: Object,
+        value: null
       }
-    },
-    /**
-     * Returned data for processing.
-     */
-    pageData: {
-      type: Object,
-      value: {}
-    },
-    /**
-     * Returned data for processing.
-     */
-    outlineData: {
-      type: Object,
-      value: {}
-    },
-    /**
-     * Ensure scrolling doesn't influence during a transition.
-     */
-    resetScroll: {
-      type: Boolean,
-      value: false
-    },
-    /**
-     * Store current page data.
-     */
-    responseData: {
-      type: Object,
-      value: {}
-    },
-    /**
-     * BasePath from drupal
-     */
-    basePath: {
-      type: String
-    },
-    /**
-     * elmslnCourse from drupal
-     */
-    elmslnCourse: {
-      type: String
-    },
-    /**
-     * nav title
-     */
-    outlineTitle: {
-      type: String
-    },
-    /**
-     * Node ID
-     */
-    nid: {
-      type: Number
-    },
-    /**
-     * loading pegged to the ajax call running
-     */
-    _loading: {
-      type: Boolean,
-      observer: "_contentLoading",
-      value: false
-    },
-    /**
-     * loading pegged to the ajax call running
-     */
-    loading: {
-      type: Boolean,
-      reflectToAttribute: true,
-      value: false
-    },
-    /**
-     * Aliases
-     */
-    aliases: {
-      type: Array
-    },
-    /**
-     * active item for tracking reference after clicks.
-     */
-    activeNodeItem: {
-      type: Object,
-      value: null
-    }
-  },
+    };
+  }
   /**
    * Ensure modal is closed on tap of an item.
    */
-  _modalTap: function _modalTap(e) {
+  _modalTap(e) {
     var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
     // verify that it is a buttonß
@@ -247,11 +255,11 @@ Polymer({
       this.activeNodeItem.classList.add("book-menu-item-active");
       this.$.outlinepopover.toggleDialog();
     }
-  },
+  }
   /**
    * Notice loading state has changed.
    */
-  _contentLoading: function _contentLoading(newValue, oldValue) {
+  _contentLoading(newValue, oldValue) {
     var _this = this;
     if (
       (typeof newValue === "undefined" ? "undefined" : typeof newValue) !==
@@ -266,11 +274,11 @@ Polymer({
     } else {
       this.loading = true;
     }
-  },
+  }
   /**
    * Callback to push the data into the page.
    */
-  handleResponse: function handleResponse(e) {
+  handleResponse(e) {
     // handle the HTML we just got
     if (
       typeof this.pageData.data !==
@@ -301,16 +309,16 @@ Polymer({
         ) {
           this.$.fulloutlinepath.generateRequest();
         }
-        async.microTask.run(() => {
+        microTask.run(() => {
           window.dispatchEvent(new Event("resize"));
         });
       }
     }
-  },
+  }
   /**
    * Callback to push the data into the page.
    */
-  handleOutlineResponse: function handleOutlineResponse(e) {
+  handleOutlineResponse(e) {
     // handle the HTML we just got
     var data = this.outlineData.data;
     if (
@@ -320,7 +328,7 @@ Polymer({
       this.$.outlinemodal.innerHTML = data.outline;
       this.aliases = data.aliases;
     }
-  },
+  }
   /**
    * If the current route is outside the scope of our app then allow
    * the website to break out of the single page application routing.
@@ -331,7 +339,7 @@ Polymer({
    * a reload within the app (without looping) and still allow outbound links to go
    * through as they should.
    */
-  _routeChanged: function _routeChanged(data, route, endPoint) {
+  _routeChanged(data, route, endPoint) {
     if (typeof route.path === "string") {
       // target for url alias that might be delivered into content
       // and menu items throughout the UI
@@ -392,26 +400,26 @@ Polymer({
       // reload the page which since route changed will load that page
       window.location.reload();
     }
-  },
+  }
   /**
    * Reset scroll position visually and internally data wise.
    */
-  _resetScroll: function _resetScroll() {
+  _resetScroll() {
     var item =
       arguments.length > 0 && arguments[0] !== undefined
         ? arguments[0]
         : "anchor";
     this.resetScroll = true;
     this.$[item].scrollIntoView({ block: "nearest", behavior: "smooth" });
-  },
+  }
   /**
    * Simple way to convert from object to array.
    */
-  _toArray: function _toArray(obj) {
+  _toArray(obj) {
     return Object.keys(obj).map(function(key) {
       return obj[key];
     });
-  },
+  }
   /**
    * Inject styles dynamically from inline CSS blocks.
    * This is a function and capability that will drive Potter nuts.
@@ -421,7 +429,7 @@ Polymer({
    * article so we don't have to take credit for our own undoing with
    * what this enables.
    */
-  __injectStyle: function __injectStyle(style) {
+  __injectStyle(style) {
     // target and wipe our id area by force
     if (this.shadowRoot.querySelector("#hackycsspotterhates") != null) {
       dom(this.$.hackycontainer).innerHTML = "";
@@ -434,4 +442,6 @@ Polymer({
     // we have now successfully ruined something encapsulated and once beautiful
     dom(this.$.hackycontainer).appendChild(customStyle);
   }
-});
+}
+window.customElements.define(MoocContent.tag, MoocContent);
+export { MoocContent };

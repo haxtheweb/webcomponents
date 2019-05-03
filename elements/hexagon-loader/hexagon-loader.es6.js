@@ -431,7 +431,7 @@ static get properties(){return{/**
    * The relative size of this loader. Options small, medium, large
    */size:{name:"size",type:"String",reflectToAttribute:!0},/**
    * Loading state
-   */loading:{name:"loading",type:"Boolean"},/**
+   */loading:{name:"loading",type:"Boolean",reflectToAttribute:!0},/**
    * Count of the items
    */itemCount:{name:"itemCount",type:"Number",value:37}}}/**
    * Store the tag name to make it easier to obtain directly.

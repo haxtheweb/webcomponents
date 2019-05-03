@@ -1,12 +1,14 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { IronA11yKeysBehavior } from "@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js";
+import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 import "@polymer/paper-progress/paper-progress.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-ripple/paper-ripple.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@polymer/iron-iconset-svg/iron-iconset-svg.js";
 import "./lib/paper-audio-icons.js";
 /**
@@ -43,330 +45,339 @@ Custom property                             | Description                       
 @element paper-audio-player
 * @demo demo/index.html
 */
-let PaperAudioPlayer = Polymer({
-  _template: html`
-    <style include="simple-colors">
-      :host {
-        display: block;
-        box-sizing: border-box;
-        font-family: var(
-          --paper-audio-player-font-family,
-          "Roboto",
-          "Noto",
-          sans-serif
-        );
-        --paper-audio-player-color: var(--simple-colors-default-theme-accent-9);
-        --paper-audio-player-text-color: var(
-          --simple-colors-default-theme-grey-1
-        );
-        --paper-audio-player-shadow: var(--simple-colors-default-theme-grey-2);
-        --paper-audio-player-background: var(
-          --simple-colors-default-theme-grey-1
-        );
-        background-color: var(--paper-audio-player-background);
-      }
-      #wrapper {
-        position: relative;
-        cursor: pointer;
-        height: 50px;
-        box-shadow: 0 1px 2px var(--paper-audio-player-shadow);
-      }
-      #left,
-      #center {
-        border-right: 1px solid var(--paper-audio-player-shadow);
-      }
-      #left,
-      #right {
-        height: 50px;
-        width: 50px;
-        position: relative;
-      }
+class PaperAudioPlayer extends mixinBehaviors(
+  [IronA11yKeysBehavior],
+  SchemaBehaviors(SimpleColors)
+) {
+  constructor() {
+    super();
+    afterNextRender(this, function() {
+      this.HAXWiring = new HAXWiring();
+      this.HAXWiring.setup(
+        PaperAudioPlayer.haxProperties,
+        PaperAudioPlayer.tag,
+        this
+      );
+    });
+  }
+  static get template() {
+    return html`
+      <style include="simple-colors">
+        :host {
+          display: block;
+          box-sizing: border-box;
+          font-family: var(
+            --paper-audio-player-font-family,
+            "Roboto",
+            "Noto",
+            sans-serif
+          );
+          --paper-audio-player-color: var(
+            --simple-colors-default-theme-accent-9
+          );
+          --paper-audio-player-text-color: var(
+            --simple-colors-default-theme-grey-1
+          );
+          --paper-audio-player-shadow: var(
+            --simple-colors-default-theme-grey-2
+          );
+          --paper-audio-player-background: var(
+            --simple-colors-default-theme-grey-1
+          );
+          background-color: var(--paper-audio-player-background);
+        }
+        #wrapper {
+          position: relative;
+          cursor: pointer;
+          height: 50px;
+          box-shadow: 0 1px 2px var(--paper-audio-player-shadow);
+        }
+        #left,
+        #center {
+          border-right: 1px solid var(--paper-audio-player-shadow);
+        }
+        #left,
+        #right {
+          height: 50px;
+          width: 50px;
+          position: relative;
+        }
 
-      #left {
-        opacity: 0.8;
-        background-color: var(--paper-audio-player-color);
-        transition: opacity 0.25s;
-      }
-      #left:focus,
-      #left:hover {
-        opacity: 1;
-      }
+        #left {
+          opacity: 0.8;
+          background-color: var(--paper-audio-player-color);
+          transition: opacity 0.25s;
+        }
+        #left:focus,
+        #left:hover {
+          opacity: 1;
+        }
 
-      #right {
-        background-color: var(--paper-audio-player-background);
-      }
+        #right {
+          background-color: var(--paper-audio-player-background);
+        }
 
-      paper-icon-button,
-      iron-icon {
-        color: var(--paper-audio-player-text-color);
-      }
+        paper-icon-button,
+        iron-icon {
+          color: var(--paper-audio-player-text-color);
+        }
 
-      #duration,
-      #title,
-      #progress2 {
-        text-align: center;
-        line-height: 50px;
-      }
+        #duration,
+        #title,
+        #progress2 {
+          text-align: center;
+          line-height: 50px;
+        }
 
-      #duration {
-        font-size: 11px;
-        color: var(--paper-audio-player-color);
-      }
+        #duration {
+          font-size: 11px;
+          color: var(--paper-audio-player-color);
+        }
 
-      paper-icon-button,
-      iron-icon {
-        margin: auto;
-      }
+        paper-icon-button,
+        iron-icon {
+          margin: auto;
+        }
 
-      #replay {
-        opacity: 0;
-        color: var(--paper-audio-player-color);
-      }
+        #replay {
+          opacity: 0;
+          color: var(--paper-audio-player-color);
+        }
 
-      #title,
-      #progress2 {
-        pointer-events: none;
-        font-size: 15px;
-      }
+        #title,
+        #progress2 {
+          pointer-events: none;
+          font-size: 15px;
+        }
 
-      #title {
-        z-index: 2;
-        color: var(--paper-audio-player-color);
-      }
+        #title {
+          z-index: 2;
+          color: var(--paper-audio-player-color);
+        }
 
-      #progress2 {
-        width: 0px;
-        z-index: 5;
-        color: var(--paper-audio-player-text-color);
-        overflow: hidden;
-      }
+        #progress2 {
+          width: 0px;
+          z-index: 5;
+          color: var(--paper-audio-player-text-color);
+          overflow: hidden;
+        }
 
-      #center {
-        position: relative;
-        overflow: hidden;
-        background-color: var(--paper-audio-player-background);
-      }
+        #center {
+          position: relative;
+          overflow: hidden;
+          background-color: var(--paper-audio-player-background);
+        }
 
-      #progress {
-        width: 100%;
-        transform-origin: left;
-        transform: scaleX(0);
-        background-color: var(--paper-audio-player-color);
-      }
+        #progress {
+          width: 100%;
+          transform-origin: left;
+          transform: scaleX(0);
+          background-color: var(--paper-audio-player-color);
+        }
 
-      paper-ripple {
-        color: var(--paper-audio-player-color);
-      }
+        paper-ripple {
+          color: var(--paper-audio-player-color);
+        }
 
-      /* On hover */
+        /* On hover */
 
-      :host(:not(.cantplay)) #right:hover #replay {
-        opacity: 1;
-      }
+        :host(:not(.cantplay)) #right:hover #replay {
+          opacity: 1;
+        }
 
-      #right:hover #duration {
-        opacity: 0;
-      }
+        #right:hover #duration {
+          opacity: 0;
+        }
 
-      #left:hover #play,
-      #left:hover #pause {
-        transform: scale3d(1.1, 1.1, 1.1);
-        -ms-transform: scale3d(1.1, 1.1, 1.1);
-        -webkit-transform: scale3d(1.1, 1.1, 1.1);
-      }
+        #left:hover #play,
+        #left:hover #pause {
+          transform: scale3d(1.1, 1.1, 1.1);
+          -ms-transform: scale3d(1.1, 1.1, 1.1);
+          -webkit-transform: scale3d(1.1, 1.1, 1.1);
+        }
 
-      /* On Error */
+        /* On Error */
 
-      :host(.cantplay) #title {
-        font-size: 12px;
-      }
+        :host(.cantplay) #title {
+          font-size: 12px;
+        }
 
-      :host(.cantplay) #wrapper {
-        cursor: default;
-      }
+        :host(.cantplay) #wrapper {
+          cursor: default;
+        }
 
-      :host(.cantplay) #play {
-        opacity: 0;
-      }
+        :host(.cantplay) #play {
+          opacity: 0;
+        }
 
-      /* Flexbox Helpers */
+        /* Flexbox Helpers */
 
-      .layout-horizontal {
-        display: flex;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        -ms-flex-direction: row;
-        -webkit-flex-direction: row;
-        flex-direction: row;
-      }
+        .layout-horizontal {
+          display: flex;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          -ms-flex-direction: row;
+          -webkit-flex-direction: row;
+          flex-direction: row;
+        }
 
-      .flex {
-        -ms-flex: 1;
-        -webkit-flex: 1;
-        flex: 1;
-      }
+        .flex {
+          -ms-flex: 1;
+          -webkit-flex: 1;
+          flex: 1;
+        }
 
-      .fit {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-      }
+        .fit {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+        }
 
-      .self-start {
-        -ms-align-self: flex-start;
-        -webkit-align-self: flex-start;
-        align-self: flex-start;
-      }
+        .self-start {
+          -ms-align-self: flex-start;
+          -webkit-align-self: flex-start;
+          align-self: flex-start;
+        }
 
-      .self-end {
-        -ms-align-self: flex-end;
-        -webkit-align-self: flex-end;
-        align-self: flex-end;
-      }
-    </style>
-    <div id="wrapper" class="layout-horizontal">
-      <div id="left" class="self-start" on-tap="playPause">
-        <!-- Icon -->
-        <paper-icon-button
-          id="play"
-          icon="paper-audio-icons:play-arrow"
-          class="fit"
-          hidden$="[[ _hidePlayIcon(isPlaying, canBePlayed) ]]"
-          role="button"
-          aria-label="Play Audio"
-          tabindex="-1"
-        ></paper-icon-button>
-        <paper-icon-button
-          id="pause"
-          icon="paper-audio-icons:pause"
-          class="fit"
-          hidden$="[[ !isPlaying ]]"
-          role="button"
-          aria-label="Pause Audio"
-          tabindex="-1"
-        ></paper-icon-button>
-        <iron-icon
-          id="error"
-          icon="paper-audio-icons:error-outline"
-          class="fit"
-          hidden$="[[ !error ]]"
-        ></iron-icon>
-      </div>
-      <div id="center" class="flex" on-down="_onDown">
-        <!-- Title -->
-        <div id="title" class="fit" role="alert">[[title]]</div>
-        <!-- Audio HTML5 element -->
-        <audio
-          id="audio"
-          src$="[[src]]"
-          preload$="[[ _setPreload(autoPlay, preload) ]]"
-        ></audio>
-        <!-- Progress bar -->
-        <div id="progress" class="fit"></div>
-        <paper-ripple></paper-ripple>
-        <!-- Secondary white title -->
-        <div id="progress2" class="fit">
-          <div id="title2" aria-hidden="true">[[title]]</div>
+        .self-end {
+          -ms-align-self: flex-end;
+          -webkit-align-self: flex-end;
+          align-self: flex-end;
+        }
+      </style>
+      <div id="wrapper" class="layout-horizontal">
+        <div id="left" class="self-start" on-tap="playPause">
+          <!-- Icon -->
+          <paper-icon-button
+            id="play"
+            icon="paper-audio-icons:play-arrow"
+            class="fit"
+            hidden$="[[ _hidePlayIcon(isPlaying, canBePlayed) ]]"
+            role="button"
+            aria-label="Play Audio"
+            tabindex="-1"
+          ></paper-icon-button>
+          <paper-icon-button
+            id="pause"
+            icon="paper-audio-icons:pause"
+            class="fit"
+            hidden$="[[ !isPlaying ]]"
+            role="button"
+            aria-label="Pause Audio"
+            tabindex="-1"
+          ></paper-icon-button>
+          <iron-icon
+            id="error"
+            icon="paper-audio-icons:error-outline"
+            class="fit"
+            hidden$="[[ !error ]]"
+          ></iron-icon>
+        </div>
+        <div id="center" class="flex" on-down="_onDown">
+          <!-- Title -->
+          <div id="title" class="fit" role="alert">[[title]]</div>
+          <!-- Audio HTML5 element -->
+          <audio
+            id="audio"
+            src$="[[src]]"
+            preload$="[[ _setPreload(autoPlay, preload) ]]"
+          ></audio>
+          <!-- Progress bar -->
+          <div id="progress" class="fit"></div>
+          <paper-ripple></paper-ripple>
+          <!-- Secondary white title -->
+          <div id="progress2" class="fit">
+            <div id="title2" aria-hidden="true">[[title]]</div>
+          </div>
+        </div>
+        <div id="right" class="self-end" on-click="restart">
+          <!-- Duration -->
+          <div id="duration" class="fit" hidden\$="[[ended]]">
+            <span class="fit" role="timer" aria-label="Audio Track Length"
+              >[[ _convertSecToMin(timeLeft) ]]</span
+            >
+          </div>
+          <!-- Icon -->
+          <paper-icon-button
+            id="replay"
+            class="fit"
+            icon="paper-audio-icons:replay"
+            tabindex="-1"
+            role="button"
+            aria-label="Replay Audio"
+          ></paper-icon-button>
         </div>
       </div>
-      <div id="right" class="self-end" on-click="restart">
-        <!-- Duration -->
-        <div id="duration" class="fit" hidden\$="[[ended]]">
-          <span class="fit" role="timer" aria-label="Audio Track Length"
-            >[[ _convertSecToMin(timeLeft) ]]</span
-          >
-        </div>
-        <!-- Icon -->
-        <paper-icon-button
-          id="replay"
-          class="fit"
-          icon="paper-audio-icons:replay"
-          tabindex="-1"
-          role="button"
-          aria-label="Replay Audio"
-        ></paper-icon-button>
-      </div>
-    </div>
-  `,
+    `;
+  }
 
-  is: "paper-audio-player",
-
-  //
-  // Component behaviors
-  behaviors: [
-    IronA11yKeysBehavior,
-    HAXBehaviors.PropertiesBehaviors,
-    SimpleColors,
-    SchemaBehaviors.Schema
-  ],
-  // Define component default attributes
-  hostAttributes: {
-    tabindex: 0,
-    role: "application",
-    "aria-label": "Audio Player",
-    "aria-describedby": "title"
-  },
+  static get tag() {
+    return "paper-audio-player";
+  }
   // Define public properties
-  properties: {
-    src: {
-      type: String,
-      observer: "_srcChanged"
-    },
-    title: {
-      type: String,
-      value: "Click to play this audio file"
-    },
-    autoPlay: {
-      type: Boolean,
-      value: false
-    },
-    preload: {
-      type: String,
-      value: "auto"
-    },
-    currentTime: {
-      type: Number,
-      value: 0,
-      notify: true
-    },
-    timeLeft: {
-      type: Number,
-      value: 0
-    },
-    smallSkip: {
-      type: Number,
-      value: 15
-    },
-    largeSkip: {
-      type: Number,
-      value: 60
-    },
-    error: {
-      type: Boolean
-    },
-    timeOffset: {
-      type: Number,
-      value: 0
-    }
-  },
-
-  keyBindings: {
-    space: "playPause",
-    enter: "playPause",
-    left: "_skipReverseByInterval",
-    right: "_skipReverseByInterval",
-    down: "_skipReverseByInterval",
-    up: "_skipReverseByInterval"
-  },
-
-  /**
-   * attached life cycle
-   */
-  attached: function() {
-    // Establish hax properties if they exist
+  static get properties() {
     let props = {
+      src: {
+        type: String,
+        observer: "_srcChanged"
+      },
+      title: {
+        type: String,
+        value: "Click to play this audio file"
+      },
+      autoPlay: {
+        type: Boolean,
+        value: false
+      },
+      preload: {
+        type: String,
+        value: "auto"
+      },
+      currentTime: {
+        type: Number,
+        value: 0,
+        notify: true
+      },
+      timeLeft: {
+        type: Number,
+        value: 0
+      },
+      smallSkip: {
+        type: Number,
+        value: 15
+      },
+      largeSkip: {
+        type: Number,
+        value: 60
+      },
+      error: {
+        type: Boolean
+      },
+      timeOffset: {
+        type: Number,
+        value: 0
+      }
+    };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
+  }
+
+  static get keyBindings() {
+    return {
+      space: "playPause",
+      enter: "playPause",
+      left: "_skipReverseByInterval",
+      right: "_skipReverseByInterval",
+      down: "_skipReverseByInterval",
+      up: "_skipReverseByInterval"
+    };
+  }
+  static get haxProperties() {
+    return {
       canScale: true,
       canPosition: true,
       canEditSource: false,
@@ -460,17 +471,32 @@ let PaperAudioPlayer = Polymer({
         advanced: []
       }
     };
-    this.setHaxProperties(props);
-    this.$.audio.addEventListener("loadedmetadata", this._onCanPlay.bind(this));
-    this.$.audio.addEventListener("playing", this._onPlaying.bind(this));
-    this.$.audio.addEventListener("pause", this._onPause.bind(this));
-    this.$.audio.addEventListener("ended", this._onEnd.bind(this));
-    this.$.audio.addEventListener("error", this._onError.bind(this));
-  },
+  }
+  /**
+   * attached life cycle
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, function() {
+      this.$.audio.addEventListener(
+        "loadedmetadata",
+        this._onCanPlay.bind(this)
+      );
+      this.$.audio.addEventListener("playing", this._onPlaying.bind(this));
+      this.$.audio.addEventListener("pause", this._onPause.bind(this));
+      this.$.audio.addEventListener("ended", this._onEnd.bind(this));
+      this.$.audio.addEventListener("error", this._onError.bind(this));
+    });
+    this.setAttribute("tabindex", "0");
+    this.setAttribute("role", "application");
+    this.setAttribute("aria-label", "Audio Player");
+    this.setAttribute("aria-describedby", "title");
+  }
   /**
    * detached life cycle
    */
-  detached: function() {
+  disconnectedCallback() {
+    super.disconnectedCallback();
     this.$.audio.removeEventListener(
       "loadedmetadata",
       this._onCanPlay.bind(this)
@@ -479,11 +505,12 @@ let PaperAudioPlayer = Polymer({
     this.$.audio.removeEventListener("pause", this._onPause.bind(this));
     this.$.audio.removeEventListener("ended", this._onEnd.bind(this));
     this.$.audio.removeEventListener("error", this._onError.bind(this));
-  },
+  }
   /**
    * ready life cycle
    */
-  ready: function() {
+  ready() {
+    super.ready();
     var player = this;
     // create Player defaults
     player.canBePlayed = false;
@@ -491,10 +518,9 @@ let PaperAudioPlayer = Polymer({
     player.ended = false;
     player.error = false;
     player.$.audio.currentTime = player.timeOffset; // apply the audio start time property
-  },
-
+  }
   // Play/Pause controls
-  playPause: function(e) {
+  playPause(e) {
     if (!!e) e.preventDefault();
     var player = this;
 
@@ -511,31 +537,25 @@ let PaperAudioPlayer = Polymer({
       player.$.audio.load();
       player._play();
     }
-  },
-
-  _play: function() {
+  }
+  _play() {
     var player = this;
     player.$.audio.play();
-  },
-
-  _pause: function() {
+  }
+  _pause() {
     var player = this;
     player.$.audio.pause();
-  },
-
+  }
   //
   // Restart audio
-
-  restart: function(e) {
+  restart(e) {
     if (!!e) e.preventDefault();
     var player = this;
     player.$.audio.currentTime = 0;
     if (!player.isPlaying) player._play();
-  },
-
+  }
   // when audio file can be played in user's browser
-
-  _onCanPlay: function() {
+  _onCanPlay() {
     var player = this;
     player.canBePlayed = true;
     player.timeLeft = player.$.audio.duration;
@@ -551,19 +571,19 @@ let PaperAudioPlayer = Polymer({
     // it ignores preload="none" property and starts playing on load.
     // This behavior corresponds to the native audio element behavior.
     if (player.autoPlay) player._play();
-  },
+  }
 
   // when Player starts playing
 
-  _onPlaying: function() {
+  _onPlaying() {
     var player = this;
     player.ended = false;
     player.isPlaying = true;
     player.$.replay.style = ""; // remove Replay inline styling
     player._startProgressTimer();
-  },
+  }
   // Skip or reverse by pre-defined intervals
-  _skipReverseByInterval: function(e) {
+  _skipReverseByInterval(e) {
     if (!!e) e.preventDefault();
 
     var player = this,
@@ -589,11 +609,11 @@ let PaperAudioPlayer = Polymer({
 
     player._updatePlayPosition(newTime);
     if (!player.isPlaying) player._play();
-  },
+  }
 
   // starts Timer
 
-  _startProgressTimer: function() {
+  _startProgressTimer() {
     var player = this;
     player.timer = {};
 
@@ -612,37 +632,37 @@ let PaperAudioPlayer = Polymer({
         clearInterval(player.timer.sliderUpdateInterval);
       }
     }, 60);
-  },
+  }
 
   // when Player is paused
 
-  _onPause: function() {
+  _onPause() {
     var player = this;
     player.isPlaying = false;
-  },
+  }
 
   // when Player ended playing an audio file
 
-  _onEnd: function() {
+  _onEnd() {
     var player = this;
     player.ended = true;
     player.isPlaying = false;
     player.$.replay.style.opacity = 1; // display Replay icon
-  },
+  }
 
   // on file load error
 
-  _onError: function() {
+  _onError() {
     var player = this;
     player.classList.add("cantplay");
     player.title = "Sorry, can't play track: " + player.title;
     player.error = true;
     player.setAttribute("aria-invalid", "true");
-  },
+  }
 
   // to convert seconds to 'm:ss' format
 
-  _convertSecToMin: function(seconds) {
+  _convertSecToMin(seconds) {
     if (seconds === 0) return "";
 
     var minutes = Math.floor(seconds / 60);
@@ -652,12 +672,12 @@ let PaperAudioPlayer = Polymer({
       ":" +
       (secondsToCalc.length < 2 ? "0" + secondsToCalc : secondsToCalc)
     );
-  },
+  }
 
   //
   // When user clicks somewhere on the progress bar
 
-  _onDown: function(e) {
+  _onDown(e) {
     e.preventDefault();
     var player = this;
 
@@ -682,14 +702,14 @@ let PaperAudioPlayer = Polymer({
         false
       );
     }
-  },
+  }
 
   //
   // Helper function
   // that recalculates the progress bar position
   // based on the event.click position
 
-  _updateProgressBar: function(e) {
+  _updateProgressBar(e) {
     var player = this;
 
     var x = e.detail.x - player.$.center.getBoundingClientRect().left;
@@ -698,64 +718,65 @@ let PaperAudioPlayer = Polymer({
       player.$.audio.duration;
 
     this._updatePlayPosition(r);
-  },
+  }
 
   //
   // Helper function
   // updates the current time based on a time variable
 
-  _updatePlayPosition: function(newTime) {
+  _updatePlayPosition(newTime) {
     var player = this;
     player.currentTime = player.$.audio.currentTime = newTime;
 
     var percentagePlayed = player.currentTime / player.$.audio.duration;
     player._updateVisualProgress(percentagePlayed);
-  },
+  }
 
   //
   // Helper function
   // updates the progress bar based on a percentage played
 
-  _updateVisualProgress: function(percentagePlayed) {
+  _updateVisualProgress(percentagePlayed) {
     var player = this;
 
     player.$.progress.style.transform = "scaleX(" + percentagePlayed + ")";
     player.$.progress2.style.width = percentagePlayed * 100 + "%";
     player.$.title2.style.width = (1 / percentagePlayed) * 100 + "%";
-  },
+  }
 
   //
   // If src is changed when track is playing,
   // pause the track and start playing a new src
 
-  _srcChanged: function(newValue, oldValue) {
+  _srcChanged(newValue, oldValue) {
     var player = this;
 
     if (player.isPlaying) {
       player._pause();
       player._play();
     }
-  },
+  }
 
   //
   // If color property is changed,
   // update all the nodes with the new accent color
 
-  _changeColor: function(newValue) {
+  _changeColor(newValue) {
     var player = this;
     player.$.left.style.backgroundColor = newValue;
     player.$.title.style.color = newValue;
     player.$.duration.style.color = newValue;
     player.$.progress.style.backgroundColor = newValue;
     player.$.replay.style.color = newValue;
-  },
+  }
 
-  _hidePlayIcon: function(isPlaying, canBePlayed) {
+  _hidePlayIcon(isPlaying, canBePlayed) {
     return isPlaying ? true : !(canBePlayed || this.preload === "none");
-  },
+  }
 
-  _setPreload: function(autoplay, preload) {
+  _setPreload(autoplay, preload) {
     return autoplay ? "auto" : preload;
   }
-});
+}
+window.customElements.define(PaperAudioPlayer.tag, PaperAudioPlayer);
 export { PaperAudioPlayer };

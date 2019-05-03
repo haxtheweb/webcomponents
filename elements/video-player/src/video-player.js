@@ -3,10 +3,13 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
-import "@lrnwebcomponents/media-behaviors/media-behaviors.js";
-import "@lrnwebcomponents/a11y-media-player/a11y-media-player.js";
+import { A11yBehaviors } from "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
+import "@polymer/polymer/lib/elements/dom-repeat.js";
+import "@polymer/polymer/lib/elements/dom-if.js";
+import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import { MediaBehaviorsVideo } from "@lrnwebcomponents/media-behaviors/media-behaviors.js";
 /**
  * `video-player`
  * `A simple responsive video player with ridiculously powerful backing`
@@ -42,9 +45,18 @@ import "@lrnwebcomponents/a11y-media-player/a11y-media-player.js";
  * @polymer
  * @demo demo/index.html
  */
-class VideoPlayer extends PolymerElement {
+class VideoPlayer extends MediaBehaviorsVideo(
+  A11yBehaviors(SchemaBehaviors(PolymerElement))
+) {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
-
+  constructor() {
+    super();
+    import("@lrnwebcomponents/a11y-media-player/a11y-media-player.js");
+    afterNextRender(this, function() {
+      this.HAXWiring = new HAXWiring();
+      this.HAXWiring.setup(VideoPlayer.haxProperties, VideoPlayer.tag, this);
+    });
+  }
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -52,23 +64,11 @@ class VideoPlayer extends PolymerElement {
   static get tag() {
     return "video-player";
   }
-
-  //behaviors
-  static get behaviors() {
-    return [
-      HAXBehaviors.PropertiesBehaviors,
-      SchemaBehaviors.Schema,
-      A11yBehaviors.A11y,
-      MediaBehaviors.Video
-    ];
-  }
   /**
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
     super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(VideoPlayer.haxProperties, VideoPlayer.tag, this);
   }
 
   /**

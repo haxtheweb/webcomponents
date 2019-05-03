@@ -1,9 +1,9 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import"./node_modules/@polymer/iron-ajax/iron-ajax.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/citation-element/citation-element.js";/**
+import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@polymer/iron-ajax/iron-ajax.js";/**
  * `wikipedia-query`
  * `Query and present information from wikipedia.`
  *
  * @demo demo/index.html
- */class WikipediaQuery extends PolymerElement{/**
+ */class WikipediaQuery extends PolymerElement{constructor(){super();import("./node_modules/@lrnwebcomponents/citation-element/citation-element.js");afterNextRender(this,function(){this.HAXWiring=new HAXWiring;this.HAXWiring.setup(WikipediaQuery.haxProperties,WikipediaQuery.tag,this)})}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"wikipedia-query"}// render function
@@ -12,6 +12,9 @@ static get template(){return html`
         :host {
           display: block;
           --wikipedia-query-body-height: 160px;
+        }
+        :host [hidden] {
+          display: none;
         }
         #result {
           height: var(--wikipedia-query-body-height);
@@ -30,7 +33,7 @@ static get template(){return html`
         url$="https://en.wikipedia.org/w/api.php?origin=*&amp;action=query&amp;titles=[[search]]&amp;prop=extracts&amp;format=json"
         handle-as="json"
         on-response="handleResponse"
-        debounce-duration="100"
+        debounce-duration="250"
         last-response="{{searchResponse}}"
       ></iron-ajax>
       <h3 hidden$="[[!showTitle]]">[[search]] Wikipedia article</h3>
@@ -52,16 +55,16 @@ static get template(){return html`
        * Render the response as..
        */renderAs:{type:String,value:"content",observer:"_renderAsUpdated"},/**
        * Response to parse.
-       */searchResponse:{type:Object}}}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Wikipedia article",description:"This can display a wikipedia article in context in a variety of formats.",icon:"book",color:"green",groups:["Content","Creative Commons"],handles:[{type:"content",title:"search"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"search",title:"Search term",description:"Word to search wikipedia for.",inputMethod:"textfield",icon:"editor:title",required:!0},{property:"showTitle",title:"Show title",description:"Whether or not to render the title of the article.",inputMethod:"boolean",icon:"editor:title"}],configure:[{property:"search",title:"Search term",description:"Word to search wikipedia for.",inputMethod:"textfield",icon:"editor:title",required:!0}]},saveOptions:{wipeSlot:!0}}}connectedCallback(){super.connectedCallback();let date=new Date(Date.now());this.__now=date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear();this.HAXWiring=new HAXWiring;this.HAXWiring.setup(WikipediaQuery.haxProperties,WikipediaQuery.tag,this)}/**
+       */searchResponse:{type:Object}}}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Wikipedia article",description:"This can display a wikipedia article in context in a variety of formats.",icon:"book",color:"green",groups:["Content","Creative Commons"],handles:[{type:"content",title:"search"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"search",title:"Search term",description:"Word to search wikipedia for.",inputMethod:"textfield",icon:"editor:title",required:!0},{property:"showTitle",title:"Show title",description:"Whether or not to render the title of the article.",inputMethod:"boolean",icon:"editor:title"}],configure:[{property:"search",title:"Search term",description:"Word to search wikipedia for.",inputMethod:"textfield",icon:"editor:title",required:!0}]},saveOptions:{wipeSlot:!0}}}connectedCallback(){super.connectedCallback();let date=new Date(Date.now());this.__now=date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear()}/**
    * Convert renderas into a variable.
-   */_renderAsUpdated(newValue,oldValue){if(typeof newValue!==typeof void 0){this._resetRenderMethods();this["__render"+newValue]=!0}}/**
+   */_renderAsUpdated(newValue,oldValue){if(typeof newValue!==typeof void 0){this._resetRenderMethods()}}/**
    * Validate input method.
    */_validRenderMethods(){var methods=["content"];return methods}/**
    * Reset all our meta attributes.
    */_resetRenderMethods(){let methods=this._validRenderMethods();for(var i=0;i<methods.length;i++){this["__render"+methods[i]]=!1}}/**
    * Process response from wikipedia.
    */handleResponse(response){// the key of pages is a number so need to look for it
-if(typeof this.searchResponse!==typeof void 0){for(var key in this.searchResponse.query.pages){// skip anything that's prototype object
-if(!this.searchResponse.query.pages.hasOwnProperty(key))continue;// load object response
-var obj=this.searchResponse.query.pages[key];let html=obj.extract;html=html.replace(/<script[\s\S]*?>/gi,"&lt;script&gt;");html=html.replace(/<\/script>/gi,"&lt;/script&gt;");html=html.replace(/<style[\s\S]*?>/gi,"&lt;style&gt;");html=html.replace(/<\/style>/gi,"&lt;/style&gt;");// need to innerHTML this or it won't set
-this.$.result.innerHTML=html}}}}window.customElements.define(WikipediaQuery.tag,WikipediaQuery);export{WikipediaQuery};
+if(typeof this.searchResponse!==typeof void 0&&this.searchResponse.query){this[`__render${this.renderAs}`]=!0;for(var key in this.searchResponse.query.pages){// skip anything that's prototype object
+if(!this.searchResponse.query.pages.hasOwnProperty(key))continue;// load object response, double check we have an extract
+if(this.searchResponse.query.pages[key].extract){let html=this.searchResponse.query.pages[key].extract;html=html.replace(/<script[\s\S]*?>/gi,"&lt;script&gt;");html=html.replace(/<\/script>/gi,"&lt;/script&gt;");html=html.replace(/<style[\s\S]*?>/gi,"&lt;style&gt;");html=html.replace(/<\/style>/gi,"&lt;/style&gt;");// need to innerHTML this or it won't set
+this.shadowRoot.querySelector("#result").innerHTML=html}}}}}window.customElements.define(WikipediaQuery.tag,WikipediaQuery);export{WikipediaQuery};

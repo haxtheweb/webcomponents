@@ -11,7 +11,7 @@
  *
  */class ChartistRender extends PolymerElement{// render function
 static get template(){return html`
-      <style is="custom-style" include="chartist-render-shared-styles">
+      <style include="chartist-render-shared-styles">
         :host {
           display: block;
         }
@@ -59,7 +59,7 @@ Container class	Ratio
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"chartist-render"}/**
    * life cycle, element is afixed to the DOM
-   */connectedCallback(){super.connectedCallback();let root=this;const name="chartistLib",basePath=pathFromUrl(decodeURIComponent(import.meta.url));let location=`${basePath}lib/chartist/dist/chartist.min.js`;window.addEventListener(`es-bridge-${name}-loaded`,root._chartistLoaded.bind(root));window.ESGlobalBridge.requestAvailability();window.ESGlobalBridge.instance.load(name,location)}/**
+   */connectedCallback(){super.connectedCallback();const basePath=pathFromUrl(decodeURIComponent(import.meta.url));let location=`${basePath}lib/chartist/dist/chartist.min.js`;window.addEventListener("es-bridge-chartistLib-loaded",this._chartistLoaded.bind(this));window.ESGlobalBridge.requestAvailability();window.ESGlobalBridge.instance.load("chartistLib",location)}disconnectedCallback(){window.removeEventListener("es-bridge-chartistLib-loaded",this._chartistLoaded.bind(this));super.disconnectedCallback()}/**
    * life cycle, element is ready
    */ready(){super.ready();let root=this;window.dispatchEvent(new CustomEvent("chartist-render-ready",{detail:root}));if("object"===typeof Chartist)root._chartistLoaded.bind(root)}/**
    * determines if char is ready

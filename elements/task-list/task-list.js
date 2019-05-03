@@ -1,69 +1,79 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import "@polymer/polymer/lib/elements/dom-repeat.js";
 /**
-`task-list`
-Visual listing of tasks with different design components that is
-OER Schema capable!
+ * `task-list`
+ * Visual listing of tasks with different design components that is
+ * OER Schema capable!
+ * @demo demo/index.html
+ * @microcopy - the mental model for this element
+ * - task - a singular thing to accomplish
+ */
+class TaskList extends SchemaBehaviors(PolymerElement) {
+  constructor() {
+    super();
+    afterNextRender(this, function() {
+      this.HAXWiring = new HAXWiring();
+      this.HAXWiring.setup(TaskList.haxProperties, TaskList.tag, this);
+    });
+  }
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: block;
+        }
+      </style>
+      <h3><span property="oer:name">[[name]]</span></h3>
+      <ol>
+        <template is="dom-repeat" items="[[tasks]]" as="task">
+          <li><span property="oer:task">[[task.name]]</span></li>
+        </template>
+      </ol>
+    `;
+  }
 
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
- - task - a singular thing to accomplish
-
-*/
-let TaskList = Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: block;
+  static get tag() {
+    return "task-list";
+  }
+  static get observers() {
+    return ["_valueChanged(tasks.*)"];
+  }
+  static get properties() {
+    let props = {
+      /**
+       * Name of this task list
+       */
+      name: {
+        type: String,
+        value: "Steps to completion"
+      },
+      /**
+       * Related Resource ID
+       */
+      relatedResource: {
+        type: String
+      },
+      /**
+       * Task list
+       */
+      tasks: {
+        type: Array,
+        value: [],
+        notify: true
+      },
+      _resourceLink: {
+        type: Object,
+        computed: "_generateResourceLink(relatedResource)"
       }
-    </style>
-    <h3><span property="oer:name">[[name]]</span></h3>
-    <ol>
-      <template is="dom-repeat" items="[[tasks]]" as="task">
-        <li><span property="oer:task">[[task.name]]</span></li>
-      </template>
-    </ol>
-  `,
-
-  is: "task-list",
-
-  behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
-
-  hostAttributes: {
-    typeof: "oer:SupportingMaterial"
-  },
-
-  observers: ["_valueChanged(tasks.*)"],
-
-  properties: {
-    /**
-     * Name of this task list
-     */
-    name: {
-      type: String,
-      value: "Steps to completion"
-    },
-    /**
-     * Related Resource ID
-     */
-    relatedResource: {
-      type: String
-    },
-    /**
-     * Task list
-     */
-    tasks: {
-      type: Array,
-      value: [],
-      notify: true
-    },
-    _resourceLink: {
-      type: Object,
-      computed: "_generateResourceLink(relatedResource)"
+    };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
     }
-  },
+    return props;
+  }
   _generateResourceLink(relatedResource) {
     if (this._resourceLink) {
       document.head.removeChild(this._resourceLink);
@@ -73,25 +83,26 @@ let TaskList = Polymer({
     link.setAttribute("content", relatedResource);
     document.head.appendChild(link);
     return link;
-  },
-
+  }
   /**
    * Ensure the values change.
    */
-  _valueChanged: function(e) {
+  _valueChanged(e) {
     for (var i in e.base) {
       for (var j in e.base[i]) {
         this.notifyPath("tasks." + i + "." + j);
       }
     }
-  },
-
+  }
   /**
    * Attached to the DOM, now fire.
    */
-  attached: function() {
-    // Establish hax property binding
-    let props = {
+  connectedCallback() {
+    super.connectedCallback();
+    this.setAttribute("typeof", "oer:SupportingMaterial");
+  }
+  static get haxProperties() {
+    return {
       canScale: true,
       canPosition: true,
       canEditSource: false,
@@ -163,7 +174,7 @@ let TaskList = Polymer({
         advanced: []
       }
     };
-    this.setHaxProperties(props);
   }
-});
+}
+window.customElements.define(TaskList.tag, TaskList);
 export { TaskList };

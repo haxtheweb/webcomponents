@@ -22,14 +22,13 @@ class SimpleBlog extends HAXCMSTheme(PolymerElement) {
   // render function
   static get template() {
     return html`
-      <custom-style>
-        <style>
-          html,
-          body {
-            background-color: #fafafa;
-          }
-        </style>
-      </custom-style>
+      <style>
+        html,
+        body {
+          background-color: #fafafa;
+        }
+      </style>
+
       <style include="simple-colors">
         :host {
           display: block;

@@ -13,11 +13,6 @@ import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import { MediaBehaviorsVideo } from "@lrnwebcomponents/media-behaviors/media-behaviors.js";
 import { HAXElement } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 import { CodeSample } from "@lrnwebcomponents/code-sample/code-sample.js";
-import "./hax-app.js";
-import "./hax-stax.js";
-import "./hax-stax-browser.js";
-import "./hax-blox.js";
-import "./hax-blox-browser.js";
 
 class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
   static get template() {
@@ -957,6 +952,11 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
    */
   constructor() {
     super();
+    import("@lrnwebcomponents/hax-body/lib/hax-app.js");
+    import("@lrnwebcomponents/hax-body/lib/hax-stax.js");
+    import("@lrnwebcomponents/hax-body/lib/hax-stax-browser.js");
+    import("@lrnwebcomponents/hax-body/lib/hax-blox.js");
+    import("@lrnwebcomponents/hax-body/lib/hax-blox-browser.js");
     import("@lrnwebcomponents/hal-9000/hal-9000.js");
     setPassiveTouchGestures(true);
     // claim the instance spot. This way we can easily

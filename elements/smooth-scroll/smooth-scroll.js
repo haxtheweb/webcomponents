@@ -1,16 +1,14 @@
-import { Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { PolymerElement } from "@polymer/polymer/polymer-element.js";
 /**
-`smooth-scroll`
-
-* @demo demo/index.html
-Smooth scroll an element
-
-@microcopy - this is element provides methods to be called for smooth scrolling
- - scroll()
-*/
-let SmoothScroll = Polymer({
-  is: "smooth-scroll",
-  properties: {},
+ * `smooth-scroll`
+ * @demo demo/index.html
+ * @microcopy - this is element provides methods to be called for smooth scrolling
+ * - scroll()
+ */
+class SmoothScroll extends PolymerElement {
+  static get tag() {
+    return "smooth-scroll";
+  }
   /**
    * Smooth scroll an elment into view
    * @target {Node} DOM node object
@@ -20,7 +18,7 @@ let SmoothScroll = Polymer({
    *           - duration
    *           - scrollElement
    */
-  scroll: function(target, options) {
+  scroll(target, options) {
     // define default options
     const defaultOptions = {
       align: "top",
@@ -51,7 +49,6 @@ let SmoothScroll = Polymer({
      * I'm still not sure why this works :)
      */
     distance = distance - scrollElementHeight / 2;
-
     // see where the user wants to align the scroll
     switch (_options.align) {
       case "center":
@@ -63,10 +60,8 @@ let SmoothScroll = Polymer({
       default:
         break;
     }
-
     // record start time
     let startTime = null;
-
     // internal animation function
     function animation(currentTime) {
       if (startTime === null) startTime = currentTime;
@@ -75,15 +70,14 @@ let SmoothScroll = Polymer({
       _options.scrollElement.scrollTop = run;
       if (timeElapsed < _options.duration) requestAnimationFrame(animation);
     }
-
     // define a ease-in-out
     function ease(t, b, c, d) {
       if ((t /= d / 2) < 1) return (c / 2) * t * t + b;
       return (-c / 2) * (--t * (t - 2) - 1) + b;
     }
-
     // start animation
     requestAnimationFrame(animation);
   }
-});
+}
+window.customElements.define(SmoothScroll.tag, SmoothScroll);
 export { SmoothScroll };

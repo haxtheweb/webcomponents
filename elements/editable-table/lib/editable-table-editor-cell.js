@@ -1,7 +1,8 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/iron-autogrow-textarea/iron-autogrow-textarea.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
-import "./editable-table-behaviors.js";
+import { cellBehaviors } from "./editable-table-behaviors.js";
 /**
 `editable-table-editor-cell`
 
@@ -21,29 +22,41 @@ An editable cell in the editable-table-editor
 </editable-table-editor-cell>
 
 */
-Polymer({
-  _template: html`
-    <style is="custom-style">
-      :host {
-        padding: 0;
-        margin: 0;
-        width: 100%;
-        min-width: unset;
-        display: inline-flex;
-        justify-content: space-between;
-        align-items: center;
-        align-content: stretch;
-      }
-      :host iron-autogrow-textarea {
-        width: 100%;
-        padding: 0;
-        border: none;
-        font-weight: unset;
-        resize: none;
-        -webkit-appearance: none;
-        -mozilla-appearance: none;
-        flex-grow: 1;
-        --iron-autogrow-textarea: {
+class EditableTableEditorCell extends cellBehaviors(PolymerElement) {
+  static get template() {
+    return html`
+      <style is="custom-style">
+        :host {
+          padding: 0;
+          margin: 0;
+          width: 100%;
+          min-width: unset;
+          display: inline-flex;
+          justify-content: space-between;
+          align-items: center;
+          align-content: stretch;
+        }
+        :host iron-autogrow-textarea {
+          width: 100%;
+          padding: 0;
+          border: none;
+          font-weight: unset;
+          resize: none;
+          -webkit-appearance: none;
+          -mozilla-appearance: none;
+          flex-grow: 1;
+          --iron-autogrow-textarea: {
+            padding: 0;
+            font-weight: unset;
+            border: none;
+            resize: none;
+            flex-direction: column;
+            -webkit-flex-direction: column;
+            -webkit-appearance: none;
+            -mozilla-appearance: none;
+          }
+        }
+        :host iron-autogrow-textarea > * {
           padding: 0;
           font-weight: unset;
           border: none;
@@ -53,133 +66,144 @@ Polymer({
           -webkit-appearance: none;
           -mozilla-appearance: none;
         }
-      }
-      :host iron-autogrow-textarea > * {
-        padding: 0;
-        font-weight: unset;
-        border: none;
-        resize: none;
-        flex-direction: column;
-        -webkit-flex-direction: column;
-        -webkit-appearance: none;
-        -mozilla-appearance: none;
-      }
-    </style>
-    <iron-autogrow-textarea
-      autofocus=""
-      id="cell"
-      label\$="[[label]]"
-      value\$="{{value}}"
-    >
-    </iron-autogrow-textarea>
-    <div id="icons"><slot></slot></div>
-    <iron-a11y-keys
-      id="down"
-      keys="down"
-      target\$="[[cell]]"
-      on-keys-pressed="_onCellBelow"
-    >
-    </iron-a11y-keys>
-    <iron-a11y-keys
-      id="up"
-      keys="up"
-      target\$="[[cell]]"
-      on-keys-pressed="_onCellAbove"
-    >
-    </iron-a11y-keys>
-    <iron-a11y-keys
-      id="left"
-      keys="left"
-      target\$="[[cell]]"
-      on-keys-pressed="_onCellLeft"
-    >
-    </iron-a11y-keys>
-    <iron-a11y-keys
-      id="right"
-      keys="right"
-      target\$="[[cell]]"
-      on-keys-pressed="_onCellRight"
-    >
-    </iron-a11y-keys>
-  `,
+      </style>
+      <iron-autogrow-textarea
+        autofocus=""
+        id="cell"
+        label\$="[[label]]"
+        value\$="{{value}}"
+      >
+      </iron-autogrow-textarea>
+      <div id="icons"><slot></slot></div>
+      <iron-a11y-keys
+        id="down"
+        keys="down"
+        target\$="[[cell]]"
+        on-keys-pressed="_onCellBelow"
+      >
+      </iron-a11y-keys>
+      <iron-a11y-keys
+        id="up"
+        keys="up"
+        target\$="[[cell]]"
+        on-keys-pressed="_onCellAbove"
+      >
+      </iron-a11y-keys>
+      <iron-a11y-keys
+        id="left"
+        keys="left"
+        target\$="[[cell]]"
+        on-keys-pressed="_onCellLeft"
+      >
+      </iron-a11y-keys>
+      <iron-a11y-keys
+        id="right"
+        keys="right"
+        target\$="[[cell]]"
+        on-keys-pressed="_onCellRight"
+      >
+      </iron-a11y-keys>
+    `;
+  }
 
-  is: "editable-table-editor-cell",
-  listeners: { "bind-value-changed": "_onValueChanged" },
-  behaviors: [editableTableBehaviors.cellBehaviors],
-
-  properties: {
-    /**
-     * cell row
-     */
-    row: {
-      type: Number,
-      value: null
-    },
-    /**
-     * cell column
-     */
-    column: {
-      type: Number,
-      value: null
-    },
-    /**
-     * cell label
-     */
-    label: {
-      type: String,
-      computed: "_getCellLabel(column,row)"
-    },
-    /**
-     * cell contents
-     */
-    value: {
-      type: String,
-      value: false,
-      reflectToAttribute: true
-    }
-  },
+  static get tag() {
+    return "editable-table-editor-cell";
+  }
+  static get properties() {
+    return {
+      /**
+       * cell row
+       */
+      row: {
+        type: Number,
+        value: null
+      },
+      /**
+       * cell column
+       */
+      column: {
+        type: Number,
+        value: null
+      },
+      /**
+       * cell label
+       */
+      label: {
+        type: String,
+        computed: "_getCellLabel(column,row)"
+      },
+      /**
+       * cell contents
+       */
+      value: {
+        type: String,
+        value: false,
+        reflectToAttribute: true
+      }
+    };
+  }
 
   /**
    * set iron-a11y-keys target to this
    */
-  ready: function() {
+  ready() {
+    super.ready();
+    afterNextRender(this, function() {
+      this.addEventListener(
+        "bind-value-changed",
+        this._onValueChanged.bind(this)
+      );
+    });
     this.cell = this.$.cell;
-  },
+  }
+  disconnectedCallback() {
+    this.removeEventListener(
+      "bind-value-changed",
+      this._onValueChanged.bind(this)
+    );
+    super.disconnectedCallback();
+  }
 
   /**
    * focus the on text area
    */
-  focus: function() {
+  focus() {
     this.cell.textarea.focus();
-  },
+  }
 
   /**
    * if clicking in td but outside textarea, focus the text area
    */
-  _getCellLabel: function(column, row) {
+  _getCellLabel(column, row) {
     return (
       "Cell " + this._getLabel(column, "Column") + this._getLabel(row, "Row")
     );
-  },
+  }
 
   /**
    * if clicking in td but outside textarea, focus the text area
    */
-  _onValueChanged: function(e) {
-    let root = this;
-    root.fire("cell-value-changed", {
-      row: root.row,
-      column: root.column,
-      value: e.detail.value
-    });
-  },
+  _onValueChanged(e) {
+    this.dispatchEvent(
+      new CustomEvent("cell-value-changed", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: {
+          row: this.row,
+          column: this.column,
+          value: e.detail.value
+        }
+      })
+    );
+  }
 
   /**
    * FROM: https://stackoverflow.com/questions/2897155/get-cursor-position-in-characters-within-a-text-input-field
    * Returns the caret (cursor) position of the specified text field.
    * Return value range is 0-oField.value.length.
    */
-  getCaretPosition: function() {
+  getCaretPosition() {
     var caret = 0;
     // IE Support
     if (document.selection) {
@@ -198,12 +222,12 @@ Polymer({
       caret = this.$.cell.shadowRoot.querySelector("textarea").selectionStart;
     }
     return caret;
-  },
+  }
 
   /**
    * make sure caret is in the correct position
    */
-  setCaretPosition: function(start, end) {
+  setCaretPosition(start, end) {
     let textarea = this.$.cell.shadowRoot.querySelector("textarea");
     textarea.focus();
     if (textarea.createTextRange) {
@@ -217,12 +241,12 @@ Polymer({
       textarea.selectionStart = start;
       textarea.selectionEnd = end;
     }
-  },
+  }
 
   /**
    * set focus to textarea
    */
-  setFocus: function(start, end) {
+  setFocus(start, end) {
     this.$.cell.shadowRoot.querySelector("textarea").focus();
     if (start !== undefined && end !== undefined) {
       this.setCaretPosition(start, end);
@@ -231,33 +255,66 @@ Polymer({
     } else {
       this.setCaretPosition(0, 0);
     }
-  },
+  }
 
   /**
    * handle left
    */
-  _onCellLeft: function(e) {
-    this.fire("cell-move", { cell: this.parentNode, direction: "left" });
-  },
+  _onCellLeft(e) {
+    this.dispatchEvent(
+      new CustomEvent("cell-move", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: { cell: this.parentNode, direction: "left" }
+      })
+    );
+  }
 
   /**
    * handle right
    */
-  _onCellRight: function(e) {
-    this.fire("cell-move", { cell: this.parentNode, direction: "right" });
-  },
+  _onCellRight(e) {
+    this.dispatchEvent(
+      new CustomEvent("cell-move", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: { cell: this.parentNode, direction: "right" }
+      })
+    );
+  }
 
   /**
    * handle up
    */
-  _onCellAbove: function(e) {
-    this.fire("cell-move", { cell: this.parentNode, direction: "up" });
-  },
+  _onCellAbove(e) {
+    this.dispatchEvent(
+      new CustomEvent("cell-move", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: { cell: this.parentNode, direction: "up" }
+      })
+    );
+  }
 
   /**
    * handle down
    */
-  _onCellBelow: function(e) {
-    this.fire("cell-move", { cell: this.parentNode, direction: "down" });
+  _onCellBelow(e) {
+    this.dispatchEvent(
+      new CustomEvent("cell-move", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: { cell: this.parentNode, direction: "down" }
+      })
+    );
   }
-});
+}
+window.customElements.define(
+  EditableTableEditorCell.tag,
+  EditableTableEditorCell
+);
+export { EditableTableEditorCell };

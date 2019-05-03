@@ -1,7 +1,7 @@
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";import"./node_modules/@lrnwebcomponents/media-behaviors/media-behaviors.js";import"./node_modules/@lrnwebcomponents/a11y-media-player/a11y-media-player.js";/**
+ */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import{A11yBehaviors}from"./node_modules/@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";import"./node_modules/@polymer/polymer/lib/elements/dom-repeat.js";import"./node_modules/@polymer/polymer/lib/elements/dom-if.js";import{MediaBehaviorsVideo}from"./node_modules/@lrnwebcomponents/media-behaviors/media-behaviors.js";/**
  * `video-player`
  * `A simple responsive video player with ridiculously powerful backing`
  *
@@ -35,7 +35,7 @@
  * @customElement
  * @polymer
  * @demo demo/index.html
- */class VideoPlayer extends PolymerElement{// render function
+ */class VideoPlayer extends MediaBehaviorsVideo(A11yBehaviors(SchemaBehaviors(PolymerElement))){// render function
 static get template(){return html`
 <style>
 :host {
@@ -210,13 +210,12 @@ static get properties(){return{/**
    * The width of the media player for non-a11y-media.
    */width:{type:"String",value:null},/**
    * The type of source, i.e. "local", "vimeo", "youtube", etc.
-   */youtubeId:{type:"String",computed:"_computeYoutubeId(source,sourceType)"}}}/**
+   */youtubeId:{type:"String",computed:"_computeYoutubeId(source,sourceType)"}}}constructor(){super();import("./node_modules/@lrnwebcomponents/a11y-media-player/a11y-media-player.js");afterNextRender(this,function(){this.HAXWiring=new HAXWiring;this.HAXWiring.setup(VideoPlayer.haxProperties,VideoPlayer.tag,this)})}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
-   */static get tag(){return"video-player"}//behaviors
-static get behaviors(){return[HAXBehaviors.PropertiesBehaviors,SchemaBehaviors.Schema,A11yBehaviors.A11y,MediaBehaviors.Video]}/**
+   */static get tag(){return"video-player"}/**
    * life cycle, element is afixed to the DOM
-   */connectedCallback(){super.connectedCallback();this.HAXWiring=new HAXWiring;this.HAXWiring.setup(VideoPlayer.haxProperties,VideoPlayer.tag,this)}/**
+   */connectedCallback(){super.connectedCallback()}/**
    * Get Youtube ID
    */_computeYoutubeId(source,sourceType){if(source!==void 0&&"youtube"===sourceType){return this._computeSRC(source).replace(/(https?:\/\/)?(www.)?youtube(-nocookie)?.com\/embed\//,"")}return!1}/**
    * Determine if it is youtube

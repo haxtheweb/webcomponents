@@ -236,14 +236,13 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
           display: none;
         }
       </style>
-      <custom-style>
-        <style>
-          html,
-          body {
-            background-color: #fafafa;
-          }
-        </style>
-      </custom-style>
+      <style>
+        html,
+        body {
+          background-color: #fafafa;
+        }
+      </style>
+
       <style include="simple-colors"></style>
       <app-drawer-layout>
         <paper-icon-button
