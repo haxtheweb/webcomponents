@@ -26,7 +26,6 @@ import "@lrnwebcomponents/md-extra-icons/md-extra-icons.js";
  * @customElement
  * @polymer
  * @demo ../demo/index.html demo
- * @demo ../demo/content.html easy implementation
  * @demo ../demo/config.html custom configuration
  */
 class RichTextEditorToolbar extends PolymerElement {
@@ -427,6 +426,10 @@ class RichTextEditorToolbar extends PolymerElement {
    */
   getUpdatedSelection() {
     let root = this;
+    //console.log(root.editableElement);
+    /*if(root.editableElement && root.editableElement.children.length < 2 && root.editableElement.children[0].childNodes.length < 2) {
+      console.log(root.editableElement.children[0].childNodes[0]);
+    }*/
     root.selection =
       root.editableElement === undefined || root.editableElement === null
         ? null
@@ -488,7 +491,6 @@ class RichTextEditorToolbar extends PolymerElement {
         root.getUpdatedSelection();
       });
 
-    console.log(editableElement.tagName);
     editableElement.addEventListener("click", e => {
       root.editTarget(editableElement);
     });

@@ -4,6 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
+import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@lrnwebcomponents/simple-popover/simple-popover.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
 import "./rich-text-editor-toolbar-styles.js";
@@ -204,9 +205,6 @@ class richTextEditorPrompt extends PolymerElement {
     this.addEventListener("mouseout", e => {
       //this._cancel(e);
     });
-  }
-  _fieldsChanged(e) {
-    if (e.detail.firstField !== null) e.detail.firstField.focus();
   }
   _valueChanged() {}
 

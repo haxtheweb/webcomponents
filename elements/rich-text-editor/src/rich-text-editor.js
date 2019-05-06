@@ -4,7 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import { ResponsiveUtility } from "@lrnwebcomponents/responsive-utility/responsive-utility.js";
+import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "./lib/rich-text-editor-toolbar.js";
 /**
  * `rich-text-editor`
@@ -16,7 +16,6 @@ import "./lib/rich-text-editor-toolbar.js";
  * @customElement
  * @polymer
  * @demo demo/index.html demo
- * @demo demo/content.html easy implementation
  * @demo demo/config.html custom configuration
  */
 class RichTextEditor extends PolymerElement {
@@ -28,6 +27,12 @@ class RichTextEditor extends PolymerElement {
    */
   static get tag() {
     return "rich-text-editor";
+  }
+  /**
+   * life cycle, element is afixed to the DOM
+   */
+  connectedCallback() {
+    super.connectedCallback();
   }
   /**
    * ready
