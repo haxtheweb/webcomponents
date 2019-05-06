@@ -11,7 +11,6 @@
  * @pseudoElement
  * @polymer
  * @demo demo/index.html
- * @see lib/rich-text-editor-toolbar-styles-demo.js
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 const styleElement = document.createElement("dom-module");
@@ -33,6 +32,66 @@ const css = html`
       --rich-text-editor-selection-bg: #b3d9ff;
     }
     :host([hidden]) {
+      display: none;
+    }
+    :host([sticky]) {
+      position: sticky;
+      top: 0;
+    }
+    :host #toolbar {
+      display: flex;
+      opacity: 1;
+      margin: 0;
+      align-items: stretch;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      background-color: var(--rich-text-editor-bg);
+      border: var(--rich-text-editor-border);
+      font-size: 12px;
+      transition: all 0.5s;
+      @apply --rich-text-editor-toolbar;
+    }
+    :host #toolbar[aria-hidden] {
+      visibility: hidden;
+      opacity: 0;
+      height: 0;
+    }
+    :host #toolbar .group {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-evenly;
+      align-items: stretch;
+      padding: 0 3px;
+      @apply --rich-text-editor-toolbar-group;
+    }
+    :host #toolbar .group:not(:last-of-type) {
+      margin-right: 3px;
+      border-right: var(--rich-text-editor-border);
+      @apply --rich-text-editor-toolbar-divider;
+    }
+    :host #toolbar .button {
+      display: flex;
+      flex: 0 0 auto;
+      align-items: stretch;
+      margin: 3px;
+    }
+    :host #toolbar #morebutton {
+      flex: 1 0 auto;
+      justify-content: flex-end;
+    }
+    /* hide the more button if all the buttons are displayed */
+    :host([responsive-size="xs"]) #morebutton[collapse-max="xs"],
+    :host([responsive-size="sm"]) #morebutton[collapse-max*="s"],
+    :host([responsive-size="md"]) #morebutton:not([collapse-max*="l"]),
+    :host([responsive-size="lg"]) #morebutton:not([collapse-max="xl"]),
+    :host([responsive-size="xl"]) #morebutton,
+    /* hide the buttons if they should be collaped until */
+    :host([responsive-size="xs"]) #toolbar[collapsed] *[collapsed-until*="m"],
+    :host([responsive-size="xs"]) #toolbar[collapsed] *[collapsed-until*="l"],
+    :host([responsive-size="sm"]) #toolbar[collapsed] *[collapsed-until="md"],
+    :host([responsive-size="sm"]) #toolbar[collapsed] *[collapsed-until*="l"],
+    :host([responsive-size="md"]) #toolbar[collapsed] *[collapsed-until*="l"],
+    :host([responsive-size="lg"]) #toolbar[collapsed] *[collapsed-until="xl"] {
       display: none;
     }
     :host(rich-text-editor-picker),

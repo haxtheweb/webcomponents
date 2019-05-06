@@ -1,4 +1,3 @@
-
 :host {
   display: block;
   min-height: 20px;
@@ -10,4 +9,13 @@
   border-top: none;
   overflow: hidden;
   @apply --rich-text-editor-content-edit;
+}
+:host([contenteditable="true"]):empty:before {
+  content: attr(placeholder);
+  display: block;
+  @apply --rich-text-editor-content-placeholder;
+}
+:host .rich-text-editor-selection {
+  background-color: var(--rich-text-editor-selection-bg);
+  @apply --rich-text-editor-content-selection;
 }

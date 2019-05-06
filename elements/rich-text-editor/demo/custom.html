@@ -3,32 +3,32 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-    <title>RichTextEditor: rich-text-editor Demo</title>
+    <title>RichTextEditor: rich-text-editor-tollbar Demo</title>
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '../rich-text-editor.js';
+      import '../rich-text-editor-toolbar.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
     <div class="vertical-section-container centered"> 
-      <h3>Basic rich-text-editor demo</h3>
+      <h3>Custom toolbar for rich-text-editor demo</h3>
       <demo-snippet>
         <template>
-          <demo-snippet>
-            <template>
-              <rich-text-editor>
-                <p>I'm the easiest way to implement editable rich text.</p>
-              </rich-text-editor>
-              <rich-text-editor>
-                <p>Try me!</p>
-              </rich-text-editor>
-            </template>
-          </demo-snippet>
+          <rich-text-editor-toolbar id="editor" sticky></rich-text-editor-toolbar>
+          <div id="content"><p>This is content</p></div>
+          <div id="more-content"><p>This is also <a href="#top">content</a></p></div>
+          <script>
+            window.onload = function(){
+              let editor = document.getElementById('editor');
+              editor.makeEditableRegion(document.getElementById('content'));
+              editor.makeEditableRegion(document.getElementById('more-content'));
+            }     
+          </script>
         </template>
       </demo-snippet>
     </div>
