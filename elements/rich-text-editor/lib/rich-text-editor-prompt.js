@@ -77,8 +77,8 @@ class richTextEditorPrompt extends PolymerElement {
       <simple-popover id="prompt" auto for$="[[for]]" hidden$="[[!target]]">
         <form id="form">
           <simple-fields
-            auto-focus
             id="formfields"
+            autofocus
             fields="[[fields]]"
             on-fields-changed="_fieldsChanged"
             value="{{value}}"

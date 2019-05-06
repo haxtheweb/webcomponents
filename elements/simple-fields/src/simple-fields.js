@@ -51,10 +51,6 @@ class SimpleFields extends MutableData(PolymerElement) {
    * when form changes, sets focus on the first field if this has auto-focus
    */
   _formChanged(e) {
-    console.log(document.activeElement.tagName);
-    if (e.detail.firstField !== null) e.detail.firstField.focus();
-    console.log(document.activeElement.tagName);
-    //console.log("fields-changed",e.detail.firstField,e.detail.firstField.getAttribute('tabindex'));
     this.dispatchEvent(
       new CustomEvent("fields-changed", {
         bubbles: true,

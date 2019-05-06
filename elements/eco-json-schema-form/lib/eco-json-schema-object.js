@@ -317,7 +317,11 @@ class EcoJsonSchemaObject extends mixinBehaviors(
         <div class="header" hidden\$="[[!label]]">[[label]]</div>
       </template>
       <div class="layout vertical flex start-justified">
-        <div id="form" class="layout horizontal flex start-justified">
+        <div
+          id="form"
+          class="layout horizontal flex start-justified"
+          aria-live="polite"
+        >
           <slot></slot>
         </div>
       </div>
@@ -356,9 +360,12 @@ class EcoJsonSchemaObject extends mixinBehaviors(
         type: Boolean,
         notify: true
       },
-      __firstField: {
-        type: Object,
-        value: null
+      /**
+       * automatically set focus on the first field if that field has autofocus
+       */
+      autofocus: {
+        type: Boolean,
+        value: false
       }
     };
   }
@@ -513,7 +520,7 @@ class EcoJsonSchemaObject extends mixinBehaviors(
     this.notifyPath("value.*");
   }
   _buildForm() {
-    this.__firstField = null;
+    let autofocus = this.autofocus;
     this._schemaProperties.forEach(property => {
       var el = this.create(property.component.name, {
         label: property.label,
@@ -522,12 +529,13 @@ class EcoJsonSchemaObject extends mixinBehaviors(
         language: this.language,
         resources: this.resources
       });
-      if (this.__firstField === null) this.__firstField = el;
       if (property.component.name === "paper-input") {
         el.style["background-color"] = "transparent";
         el.style["width"] = "100%";
       }
       el.setAttribute("name", property.property);
+      if (autofocus) el.setAttribute("autofocus", autofocus);
+      autofocus = false;
       el.className = "flex start-justified";
       // set the element's default value to be what was passed into the schema
       el[property.component.valueProperty] = property.value;
@@ -563,10 +571,7 @@ class EcoJsonSchemaObject extends mixinBehaviors(
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: {
-            form: this,
-            firstField: this.__firstField
-          }
+          detail: this
         })
       );
     });
@@ -659,8 +664,7 @@ class EcoJsonSchemaObject extends mixinBehaviors(
     return type === "array";
   }
   focus() {
-    console.log(this.__firstField);
-    if (this.__firstField !== null) this.__firstField.focus();
+    console.log(this);
   }
 }
 window.customElements.define(EcoJsonSchemaObject.tag, EcoJsonSchemaObject);

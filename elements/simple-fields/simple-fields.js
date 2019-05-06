@@ -63,6 +63,7 @@ class SimpleFields extends MutableData(PolymerElement) {
       </style>
       <eco-json-schema-object
         id="schemaobject"
+        autofocus$="[[autofocus]]"
         on-form-changed="_formChanged"
         schema="[[__validatedSchema]]"
         value="{{value}}"
@@ -112,6 +113,13 @@ class SimpleFields extends MutableData(PolymerElement) {
   static get properties() {
     return {
       /**
+       * automatically set focus on the first field if that field has autofocus
+       */
+      autofocus: {
+        type: "Boolean",
+        value: false
+      },
+      /**
        * Fields to conver toJSON Schema.
        */
       fields: {
@@ -160,15 +168,6 @@ class SimpleFields extends MutableData(PolymerElement) {
    * when form changes, sets focus on the first field if this has auto-focus
    */
   _formChanged(e) {
-    console.log(document.activeElement.tagName);
-    if (e.detail.firstField !== null) {
-      e.detail.firstField.focus();
-      e.detail.firstField.addEventListener("focus", e => {
-        console.log("focused");
-      });
-    }
-    console.log(document.activeElement.tagName);
-    //console.log("fields-changed",e.detail.firstField,e.detail.firstField.getAttribute('tabindex'));
     this.dispatchEvent(
       new CustomEvent("fields-changed", {
         bubbles: true,
