@@ -24,6 +24,7 @@
 }
 :host #content {
   margin: 0 auto;
+  width: 100%;
   padding: var(--simple-popover-padding);
   color: var(--simple-popover-color);
   background-color: var(--simple-popover-background-color);
@@ -34,6 +35,7 @@
   @apply --simple-popover-content;
 }
 :host #pointer {
+  width: 100%;
   width: 20px;
   height: 20px;
   position: relative;
@@ -45,9 +47,11 @@
   margin: -0.5px 0 0;
 } 
 :host([position="left"]) #pointer {
+  width: unset;
   margin: 0 0 0 -1px;
 } 
 :host([position="right"]) #pointer {
+  width: unset;
   margin: 0 -1px 0 0;
 } 
 :host #pointer:after {

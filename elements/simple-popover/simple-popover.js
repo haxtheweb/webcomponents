@@ -17,173 +17,177 @@ import { AbsolutePositionBehavior } from "@lrnwebcomponents/absolute-position-be
  * @demo demo/index.html
  */
 class SimplePopover extends AbsolutePositionBehavior {
-  
   // render function
   static get template() {
     return html`
-<style>:host {
-  display: flex;
-  align-items: center;
-  flex-direction: column-reverse;
-  justify-content: stretch;
-  --simple-popover-border-radius: 3px;
-  --simple-popover-color: #222;
-  --simple-popover-padding: 10px;
-  --simple-popover-background-color: white;
-  --simple-popover-border-color: #bbb;
-  --simple-popover-box-shadow:rgba(60, 64, 67, 0.3) 0px 4px 8px 3px;
-}
-:host([hidden]) {
-  display: none;
-}
-:host([position="left"]) {
-  flex-direction: row;
-}
-:host([position="right"]) {
-  flex-direction: row-reverse;
-}
-:host([position="top"]) {
-  flex-direction: column;
-}
-:host #content {
-  margin: 0 auto;
-  padding: var(--simple-popover-padding);
-  color: var(--simple-popover-color);
-  background-color: var(--simple-popover-background-color);
-  border: 1px solid var(--simple-popover-border-color);
-  min-height: 20px;
-  border-radius: var(--simple-popover-border-radius);
-  box-shadow: var(--simple-popover-box-shadow);
-  @apply --simple-popover-content;
-}
-:host #pointer {
-  width: 20px;
-  height: 20px;
-  position: relative;
-  overflow: hidden;
-  flex: 0 0 20px;
-  margin: 0 0 -1px;
-}
-:host([position="top"]) #pointer {
-  margin: -0.5px 0 0;
-} 
-:host([position="left"]) #pointer {
-  margin: 0 0 0 -1px;
-} 
-:host([position="right"]) #pointer {
-  margin: 0 -1px 0 0;
-} 
-:host #pointer:after {
-  content: "";
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background-color: var(--simple-popover-background-color);
-  border: 1px solid var(--simple-popover-border-color);
-  transform: rotate(45deg); 
-  top: 15px;
-  left: 5px;
-}
-:host([position="top"]) #pointer:after {
-  top: -6px;
-  left: 5px;
-} 
-:host([position="right"]) #pointer:after {
-  top: 5px;
-  left: 15px;
-} 
-:host([position="left"]) #pointer:after {
-  top: 5px;
-  left: -6px;
-} </style>
-<div id="content" role="alertdialog">
-  <slot></slot>
-</div>
-<div><div id="pointer" style$="[[__pointerOffSetStyle]]"></div></div>`;
+      <style>
+        :host {
+          display: flex;
+          align-items: center;
+          flex-direction: column-reverse;
+          justify-content: stretch;
+          --simple-popover-border-radius: 3px;
+          --simple-popover-color: #222;
+          --simple-popover-padding: 10px;
+          --simple-popover-background-color: white;
+          --simple-popover-border-color: #bbb;
+          --simple-popover-box-shadow: rgba(60, 64, 67, 0.3) 0px 4px 8px 3px;
+        }
+        :host([hidden]) {
+          display: none;
+        }
+        :host([position="left"]) {
+          flex-direction: row;
+        }
+        :host([position="right"]) {
+          flex-direction: row-reverse;
+        }
+        :host([position="top"]) {
+          flex-direction: column;
+        }
+        :host #content {
+          margin: 0 auto;
+          width: 100%;
+          padding: var(--simple-popover-padding);
+          color: var(--simple-popover-color);
+          background-color: var(--simple-popover-background-color);
+          border: 1px solid var(--simple-popover-border-color);
+          min-height: 20px;
+          border-radius: var(--simple-popover-border-radius);
+          box-shadow: var(--simple-popover-box-shadow);
+          @apply --simple-popover-content;
+        }
+        :host #pointer {
+          width: 100%;
+          width: 20px;
+          height: 20px;
+          position: relative;
+          overflow: hidden;
+          flex: 0 0 20px;
+          margin: 0 0 -1px;
+        }
+        :host([position="top"]) #pointer {
+          margin: -0.5px 0 0;
+        }
+        :host([position="left"]) #pointer {
+          width: unset;
+          margin: 0 0 0 -1px;
+        }
+        :host([position="right"]) #pointer {
+          width: unset;
+          margin: 0 -1px 0 0;
+        }
+        :host #pointer:after {
+          content: "";
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          background-color: var(--simple-popover-background-color);
+          border: 1px solid var(--simple-popover-border-color);
+          transform: rotate(45deg);
+          top: 15px;
+          left: 5px;
+        }
+        :host([position="top"]) #pointer:after {
+          top: -6px;
+          left: 5px;
+        }
+        :host([position="right"]) #pointer:after {
+          top: 5px;
+          left: 15px;
+        }
+        :host([position="left"]) #pointer:after {
+          top: 5px;
+          left: -6px;
+        }
+      </style>
+      <div id="content" role="alertdialog">
+        <slot></slot>
+      </div>
+      <div><div id="pointer" style$="[[__pointerOffSetStyle]]"></div></div>
+    `;
   }
 
   // haxProperty definition
   static get haxProperties() {
     return {
-  "canScale": true,
-  "canPosition": true,
-  "canEditSource": false,
-  "gizmo": {
-    "title": "Simple popover",
-    "description": "A popover alertdialog that is positioned next to a target element",
-    "icon": "icons:android",
-    "color": "green",
-    "groups": ["Popover"],
-    "handles": [
-      {
-        "type": "todo:read-the-docs-for-usage"
+      canScale: true,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Simple popover",
+        description:
+          "A popover alertdialog that is positioned next to a target element",
+        icon: "icons:android",
+        color: "green",
+        groups: ["Popover"],
+        handles: [
+          {
+            type: "todo:read-the-docs-for-usage"
+          }
+        ],
+        meta: {
+          author: "nikkimk",
+          owner: "The Pennsylvania State University"
+        }
+      },
+      settings: {
+        quick: [],
+        configure: [
+          {
+            property: "title",
+            description: "",
+            inputMethod: "textfield",
+            required: false,
+            icon: "icons:android"
+          }
+        ],
+        advanced: []
       }
-    ],
-    "meta": {
-      "author": "nikkimk",
-      "owner": "The Pennsylvania State University"
-    }
-  },
-  "settings": {
-    "quick": [],
-    "configure": [
-      {
-        "property": "title",
-        "description": "",
-        "inputMethod": "textfield",
-        "required": false,
-        "icon": "icons:android"
-      }
-    ],
-    "advanced": []
-  }
-}
-;
+    };
   }
   // properties available to the custom element for data binding
   static get properties() {
     return {
-  /**
-   * Offset to compensate for the popover pointers.
-   */
-  "fitToVisibleBounds": {
-    "type": Boolean,
-    "value": true,
-    "readOnly": true
-  },
-  /**
-   * Offset to compensate for the popover pointers.
-   */
-  "offset": {
-    "type": Number,
-    "value": -10,
-    "readOnly": true
-  },
-  /**
-   * Positions the tooltip to the top, right, bottom, left of its content.
-   */
-  "position": {
-    "type": String,
-    "value": "bottom",
-    "observer": "updatePosition",
-    "reflectToAttribute": true
-  },
-  /**
-   * The actual target element
-   */
-  "target": {
-    "type": Object,
-    "observer": "updatePosition"
-  },
-  /**
-   * Tthe margin styles to offset the pointer
-   */
-  "__pointerOffSetStyle": {
-    "type": Object,
-    "computed": "_getMargins(__positions)"
-  }
-}
-;
+      /**
+       * Offset to compensate for the popover pointers.
+       */
+      fitToVisibleBounds: {
+        type: Boolean,
+        value: true,
+        readOnly: true
+      },
+      /**
+       * Offset to compensate for the popover pointers.
+       */
+      offset: {
+        type: Number,
+        value: -10
+      },
+      /**
+       * Positions the tooltip to the top, right, bottom, left of its content.
+       */
+      position: {
+        type: String,
+        value: "bottom",
+        observer: "updatePosition",
+        reflectToAttribute: true
+      },
+      /**
+       * The actual target element
+       */
+      target: {
+        type: Object,
+        observer: "updatePosition"
+      },
+      /**
+       * Tthe margin styles to offset the pointer
+       */
+      __pointerOffSetStyle: {
+        type: Object,
+        computed: "_getMargins(__positions)"
+      }
+    };
   }
 
   /**

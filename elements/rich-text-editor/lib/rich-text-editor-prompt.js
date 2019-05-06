@@ -75,13 +75,12 @@ class richTextEditorPrompt extends PolymerElement {
           );
         }
       </style>
-      <simple-popover id="prompt" auto for$="[[for]]" hidden$="[[!target]]">
+      <simple-popover id="prompt" auto for$="[[for]]" hidden$="[[!for]]">
         <form id="form">
           <simple-fields
             id="formfields"
             autofocus
             fields="[[fields]]"
-            on-fields-changed="_fieldsChanged"
             value="{{value}}"
           ></simple-fields>
           <div class="actions">
@@ -153,13 +152,6 @@ class richTextEditorPrompt extends PolymerElement {
         value: null
       },
       /**
-       * Is the  target selection for the prompt.
-       */
-      target: {
-        type: Object,
-        value: null
-      },
-      /**
        * fields for the prompt popover.
        */
       fields: {
@@ -171,8 +163,7 @@ class richTextEditorPrompt extends PolymerElement {
        */
       value: {
         type: Object,
-        value: null,
-        observer: "_valueChanged"
+        value: null
       }
     };
   }
@@ -206,7 +197,6 @@ class richTextEditorPrompt extends PolymerElement {
       //this._cancel(e);
     });
   }
-  _valueChanged() {}
 
   /**
    * Loads element into array
@@ -215,7 +205,6 @@ class richTextEditorPrompt extends PolymerElement {
     this.clearTarget();
     let fields = el.fields,
       vals = el.value;
-    this.target = el.selectedText;
     this.set("fields", fields);
     this.set("value", vals);
     this.__el = el;
@@ -228,7 +217,6 @@ class richTextEditorPrompt extends PolymerElement {
   clearTarget() {
     if (!this.for) return;
     this.for = null;
-    this.target = null;
     this.set("fields", null);
     this.set("value", null);
     this.__selection = null;

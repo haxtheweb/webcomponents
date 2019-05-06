@@ -110,7 +110,7 @@ class AbsolutePositionStateManager extends PolymerElement {
       root.__timeout = setTimeout(root.updateElements(), 250);
     });
     root.__observer = new MutationObserver(function(mutations) {
-      root.updateElements();
+      root.checkMutations(mutations);
     });
     root.__observer.observe(document, {
       attributes: true,
@@ -121,30 +121,67 @@ class AbsolutePositionStateManager extends PolymerElement {
   }
 
   /**
+   * Checks if there are any chances other than to
+   * the element's position and updates accordioning.
+   * This is needed so that positioning the elements
+   * doesn't trigger an infinite loop of updates.
+   *
+   * @param {array} mutation records
+   * @return {void}
+   */
+  checkMutations(mutations) {
+    let update = false;
+
+    mutations.forEach(mutation => {
+      if (update) return;
+      update =
+        update ||
+        !(
+          mutation.type === "attributes" &&
+          mutation.attributeName === "style" &&
+          this.els.includes(mutation.target)
+        );
+    });
+    if (update) this.updateElements();
+  }
+
+  /**
    * Returns the target el that this el is anchored to. It is
    * either the el given by the `for` attribute, or the immediate parent
    * of the el.
    *
-   * @type {Node}
+   * @param {object} element using absolute-position behavior
+   * @return {object} target element for positioning
    */
   findTarget(el) {
-    let target;
-    if (el.target) {
-      target = el.target;
-    } else if (el.for) {
-      target = el.parentNode.querySelector("#" + el.for);
-    } else {
-      let ownerRoot = el.shadowRoot;
-      target =
-        this.parentNode.nodeType == Node.DOCUMENT_FRAGMENT_NODE
-          ? ownerRoot.host
-          : this.parentNode;
+    let docQuery =
+        document.querySelectorAll("#" + el.for).length === 1
+          ? document.querySelectorAll("#" + el.for)[0]
+          : null,
+      target = el.target || docQuery,
+      pNode = el;
+
+    /**
+     * Use `target` object if specified.
+     * If not, query the document for elements with the id specified in the `for` attribute.
+     * If there is more than one element that matches, find the closest matching element.
+     */
+    while (
+      el.for !== undefined &&
+      target === null &&
+      pNode !== null &&
+      pNode !== document
+    ) {
+      pNode = pNode.parentNode;
+      if (pNode.nodeType === 11) pNode = pNode.host;
+      target = pNode.getElementById(el.for);
     }
     return target;
   }
 
   /**
    * Removes event listeners
+   * @return {void}
    */
   removeEventListeners() {
     let root = this;
@@ -159,7 +196,8 @@ class AbsolutePositionStateManager extends PolymerElement {
   }
 
   /**
-   * stops all other players on the page
+   * Updates position for all elements on the page.
+   * @return {void}
    */
   updateElements() {
     let root = this;
@@ -169,6 +207,8 @@ class AbsolutePositionStateManager extends PolymerElement {
   }
 
   /**
+   * Gets an updated position based on target.
+   * @param {object} the element using absolute-position behavior
    * @return {void}
    */
   updatePosition(el) {
