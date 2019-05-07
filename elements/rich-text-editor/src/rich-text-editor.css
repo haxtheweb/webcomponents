@@ -1,3 +1,6 @@
+:host([hidden]) {
+  display: none;
+}
 :host {
   display: block;
   min-height: 20px;
@@ -15,7 +18,10 @@
   display: block;
   @apply --rich-text-editor-content-placeholder;
 }
-:host .rich-text-editor-selection {
+span {
+  background-color: blue;
+}
+.rich-text-editor-selection {
   background-color: var(--rich-text-editor-selection-bg);
   @apply --rich-text-editor-content-selection;
 }

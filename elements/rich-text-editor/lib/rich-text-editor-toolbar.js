@@ -11,6 +11,7 @@ import "./rich-text-editor-more-button.js";
 import "./rich-text-editor-heading-picker.js";
 import "./rich-text-editor-symbol-picker.js";
 import "./rich-text-editor-link.js";
+import "./rich-text-editor-styles.js";
 import "./rich-text-editor-toolbar-styles.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
@@ -32,6 +33,7 @@ class RichTextEditorToolbar extends PolymerElement {
   // render function
   static get template() {
     return html`
+      <style include="rich-text-editor-styles"></style>
       <style include="rich-text-editor-toolbar-styles"></style>
       <div
         id="toolbar"

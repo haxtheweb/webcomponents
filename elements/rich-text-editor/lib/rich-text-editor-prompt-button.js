@@ -8,6 +8,8 @@ import "@polymer/iron-icons/iron-icons.js";
 import "./rich-text-editor-toolbar-styles.js";
 import { RichTextEditorButton } from "./rich-text-editor-button.js";
 import "./rich-text-editor-prompt.js";
+import "./rich-text-editor-selection.js";
+import { RichTextEditorSelection } from "./rich-text-editor-selection.js";
 /**
  * `rich-text-editor-prompt-button`
  * `a button that prompts for more information for rich text editor (custom buttons can extend this)`
@@ -90,13 +92,14 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
   }
   deselectText(unwrap = false) {
     if (unwrap) {
-      let parent = this.selectedText.parentNode;
+      let wrapper = this.selectedText.parentNode,
+        parent = wrapper.parentNode;
       while (this.selectedText.firstChild)
-        parent.insertBefore(this.selectedText.firstChild, this.selectedText);
-      parent.removeChild(this.selectedText);
-    } else {
-      this.selectedText.classList.remove("rich-text-editor-selection");
+        wrapper.insertBefore(this.selectedText.firstChild, this.selectedText);
+      wrapper.removeChild(this.selectedText);
     }
+    parent.insertBefore(wrapper.firstChild, this.selectedText);
+    parent.removeChild(wrapper);
     this.value = {};
     this.selectedText = null;
     this.dispatchEvent(new CustomEvent("deselect", { detail: this }));
@@ -150,8 +153,10 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
     } else {
       this.selectedText = document.createElement(this.tag.toLowerCase());
       this.selectedText.appendChild(this.selection.extractContents());
-      this.selection.insertNode(this.selectedText);
     }
+    this.wrapper = document.createElement("rich-text-editor-selection");
+    this.wrapper.appendChild(this.selectedText);
+    this.selection.insertNode(this.wrapper);
     this.fields.forEach(field => {
       if (field.property && field.property !== "") {
         this.value[field.property] = this.selectedText.getAttribute(
@@ -165,7 +170,6 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
     });
     if (!this.selectedText.getAttribute("id"))
       this.selectedText.setAttribute("id", "prompt" + Date.now());
-    this.selectedText.classList.add("rich-text-editor-selection");
     this.dispatchEvent(new CustomEvent("select", { detail: this }));
   }
 }

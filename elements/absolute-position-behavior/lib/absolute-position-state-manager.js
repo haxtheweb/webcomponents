@@ -82,7 +82,7 @@ class AbsolutePositionStateManager extends PolymerElement {
     let root = this;
     root.__on = root.__on !== undefined ? root.__on : false;
     root.els.push(el);
-    root.updatePosition(el);
+    root.positionElement(el);
     if (!root.__on) root.addEventListeners();
     root.__on = true;
   }
@@ -202,7 +202,7 @@ class AbsolutePositionStateManager extends PolymerElement {
   updateElements() {
     let root = this;
     root.els.forEach(el => {
-      root.updatePosition(el);
+      root.positionElement(el);
     });
   }
 
@@ -211,7 +211,7 @@ class AbsolutePositionStateManager extends PolymerElement {
    * @param {object} the element using absolute-position behavior
    * @return {void}
    */
-  updatePosition(el) {
+  positionElement(el) {
     let target = this.findTarget(el);
     if (!target || !el.offsetParent) return;
     let offset = el.offset,

@@ -45,9 +45,15 @@ class SimplePopover extends AbsolutePositionBehavior {
         :host([position="top"]) {
           flex-direction: column;
         }
+        :host > * {
+          width: 100%;
+        }
+        :host([position="left"]) > *,
+        :host([position="right"]) > * {
+          width: unset;
+        }
         :host #content {
           margin: 0 auto;
-          width: 100%;
           padding: var(--simple-popover-padding);
           color: var(--simple-popover-color);
           background-color: var(--simple-popover-background-color);
@@ -58,7 +64,6 @@ class SimplePopover extends AbsolutePositionBehavior {
           @apply --simple-popover-content;
         }
         :host #pointer {
-          width: 100%;
           width: 20px;
           height: 20px;
           position: relative;
@@ -70,7 +75,6 @@ class SimplePopover extends AbsolutePositionBehavior {
           margin: -0.5px 0 0;
         }
         :host([position="left"]) #pointer {
-          width: unset;
           margin: 0 0 0 -1px;
         }
         :host([position="right"]) #pointer {

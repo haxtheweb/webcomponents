@@ -5,6 +5,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
+import "./lib/rich-text-editor-styles.js";
 import "./lib/rich-text-editor-toolbar.js";
 /**
  * `rich-text-editor`
@@ -23,6 +24,9 @@ class RichTextEditor extends PolymerElement {
   static get template() {
     return html`
       <style>
+        :host([hidden]) {
+          display: none;
+        }
         :host {
           display: block;
           min-height: 20px;
@@ -40,11 +44,15 @@ class RichTextEditor extends PolymerElement {
           display: block;
           @apply --rich-text-editor-content-placeholder;
         }
-        :host .rich-text-editor-selection {
+        span {
+          background-color: blue;
+        }
+        .rich-text-editor-selection {
           background-color: var(--rich-text-editor-selection-bg);
           @apply --rich-text-editor-content-selection;
         }
       </style>
+      <style include="rich-text-editor-styles"></style>
       <slot></slot>
     `;
   }
@@ -112,6 +120,10 @@ class RichTextEditor extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
+    let style = document.createElement("style");
+    style.setAttribute("is", "custom-style");
+    style.setAttribute("include", "rich-text-editor-styles");
+    document.head.append(style);
   }
   /**
    * ready

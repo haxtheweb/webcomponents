@@ -5,6 +5,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
+import "./lib/rich-text-editor-styles.js";
 import "./lib/rich-text-editor-toolbar.js";
 /**
  * `rich-text-editor`
@@ -33,6 +34,10 @@ class RichTextEditor extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
+    let style = document.createElement("style");
+    style.setAttribute("is", "custom-style");
+    style.setAttribute("include", "rich-text-editor-styles");
+    document.head.append(style);
   }
   /**
    * ready
