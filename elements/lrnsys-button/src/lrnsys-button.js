@@ -91,6 +91,7 @@ class LrnsysButton extends PolymerElement {
           disabled\$="[[disabled]]"
         >
           <div class\$="inner [[innerClass]]">
+            <slot name="prefix"></slot>
             <iron-icon
               icon="[[icon]]"
               id="icon"
@@ -227,8 +228,8 @@ class LrnsysButton extends PolymerElement {
   /**
    * attached life cycle
    */
-  connectedCallback() {
-    super.connectedCallback();
+  ready() {
+    super.ready();
     afterNextRender(this, function() {
       this.addEventListener("mousedown", this.tapEventOn.bind(this));
       this.addEventListener("mouseover", this.tapEventOn.bind(this));
