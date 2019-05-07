@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   flex-direction: column-reverse;
+  justify-content: stretch;
   --simple-popover-border-radius: 3px;
   --simple-popover-color: #222;
   --simple-popover-padding: 10px;
@@ -21,6 +22,13 @@
 :host([position="top"]) {
   flex-direction: column;
 }
+:host > * {
+  width: 100%;
+}
+:host([position="left"]) > *, 
+:host([position="right"]) > * {
+  width: unset;
+}
 :host #content {
   margin: 0 auto;
   padding: var(--simple-popover-padding);
@@ -33,7 +41,6 @@
   @apply --simple-popover-content;
 }
 :host #pointer {
-  margin: 0 auto;
   width: 20px;
   height: 20px;
   position: relative;
@@ -48,6 +55,7 @@
   margin: 0 0 0 -1px;
 } 
 :host([position="right"]) #pointer {
+  width: unset;
   margin: 0 -1px 0 0;
 } 
 :host #pointer:after {

@@ -48,6 +48,19 @@ class SimpleFields extends MutableData(PolymerElement) {
     this.HAXWiring.setup(SimpleFields.haxProperties, SimpleFields.tag, this);
   }
   /**
+   * when form changes, sets focus on the first field if this has auto-focus
+   */
+  _formChanged(e) {
+    this.dispatchEvent(
+      new CustomEvent("fields-changed", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: e.detail
+      })
+    );
+  }
+  /**
    * fires when either the eco-json-schema-object or the simple-fields object changes the value
    * @param {object} oldValue the old value
    * @param {object} newValue the new value

@@ -4,9 +4,10 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
+import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@lrnwebcomponents/simple-popover/simple-popover.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
-import "./rich-text-editor-styles.js";
+import "./rich-text-editor-toolbar-styles.js";
 
 // register globally so we can make sure there is only one
 window.richTextEditorPrompt = window.richTextEditorPrompt || {};
@@ -36,7 +37,7 @@ class richTextEditorPrompt extends PolymerElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */ // render function
   static get template() {
     return html`
-      <style include="rich-text-editor-styles">
+      <style include="rich-text-editor-toolbar-styles">
         :host {
           --simple-popover-padding: 0 10px;
           --paper-input-container-focus-color: var(
@@ -74,10 +75,17 @@ class richTextEditorPrompt extends PolymerElement {
           );
         }
       </style>
-      <simple-popover id="prompt" hidden$="[[!target]]" for$="[[for]]" auto>
+      <simple-popover
+        id="prompt"
+        auto
+        fit-to-visible-bounds
+        for$="[[for]]"
+        hidden$="[[!for]]"
+      >
         <form id="form">
           <simple-fields
             id="formfields"
+            autofocus
             fields="[[fields]]"
             value="{{value}}"
           ></simple-fields>
@@ -150,13 +158,6 @@ class richTextEditorPrompt extends PolymerElement {
         value: null
       },
       /**
-       * Is the  target selection for the prompt.
-       */
-      target: {
-        type: Object,
-        value: null
-      },
-      /**
        * fields for the prompt popover.
        */
       fields: {
@@ -168,8 +169,7 @@ class richTextEditorPrompt extends PolymerElement {
        */
       value: {
         type: Object,
-        value: null,
-        observer: "_valueChanged"
+        value: null
       }
     };
   }
@@ -196,10 +196,12 @@ class richTextEditorPrompt extends PolymerElement {
     super.connectedCallback();
     this.__a11yconfirm = this.$.confirm;
     this.__a11ycancel = this.$.cancel;
-  }
-
-  _valueChanged() {
-    console.log("_valueChanged");
+    this.addEventListener("blur", e => {
+      //this._cancel(e);
+    });
+    this.addEventListener("mouseout", e => {
+      //this._cancel(e);
+    });
   }
 
   /**
@@ -209,21 +211,18 @@ class richTextEditorPrompt extends PolymerElement {
     this.clearTarget();
     let fields = el.fields,
       vals = el.value;
-    this.target = el.target;
     this.set("fields", fields);
     this.set("value", vals);
     this.__el = el;
-    this.for = el.target.getAttribute("id");
+    this.for = el.selectedText.getAttribute("id");
   }
 
   /**
    * Unloads element from array
    */
   clearTarget() {
-    console.log("clearTarget", this.for);
     if (!this.for) return;
     this.for = null;
-    this.target = null;
     this.set("fields", null);
     this.set("value", null);
     this.__selection = null;
@@ -234,6 +233,7 @@ class richTextEditorPrompt extends PolymerElement {
    */
   _cancel(e) {
     e.preventDefault();
+    this.__el.deselectText();
     this.clearTarget();
   }
   /**
@@ -242,7 +242,7 @@ class richTextEditorPrompt extends PolymerElement {
   _confirm(e) {
     e.preventDefault();
     this.__el.value = this.value;
-    this.__el.doTextOperation();
+    this.__el.updateSelection();
     this.clearTarget();
   }
 }

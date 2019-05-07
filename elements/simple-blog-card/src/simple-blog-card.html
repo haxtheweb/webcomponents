@@ -37,11 +37,9 @@
     </div>
   </div>
 </paper-card>
-<absolute-position-behavior for="author" poisition="top">
-  <div class="box">
+<simple-popover position="top" offset="0">
     <paper-avatar .label="${this.author}" .src="${this.authorimage}">
     </paper-avatar>
     <h5 class="author-name">${this.author}</h5>
     <div class="author-bio">${this.authorbio}</div>
-  </div>
-</absolute-position-behavior>
+</simple-popover>

@@ -317,7 +317,11 @@ class EcoJsonSchemaObject extends mixinBehaviors(
         <div class="header" hidden\$="[[!label]]">[[label]]</div>
       </template>
       <div class="layout vertical flex start-justified">
-        <div id="form" class="layout horizontal flex start-justified">
+        <div
+          id="form"
+          class="layout horizontal flex start-justified"
+          aria-live="polite"
+        >
           <slot></slot>
         </div>
       </div>
@@ -355,6 +359,13 @@ class EcoJsonSchemaObject extends mixinBehaviors(
       wizard: {
         type: Boolean,
         notify: true
+      },
+      /**
+       * automatically set focus on the first field if that field has autofocus
+       */
+      autofocus: {
+        type: Boolean,
+        value: false
       }
     };
   }
@@ -510,6 +521,7 @@ class EcoJsonSchemaObject extends mixinBehaviors(
     this.notifyPath("value.*");
   }
   _buildForm() {
+    let autofocus = this.autofocus;
     this._schemaProperties.forEach(property => {
       var el = this.create(property.component.name, {
         label: property.label,
@@ -523,6 +535,8 @@ class EcoJsonSchemaObject extends mixinBehaviors(
         el.style["width"] = "100%";
       }
       el.setAttribute("name", property.property);
+      if (autofocus) el.setAttribute("autofocus", autofocus);
+      autofocus = false;
       el.className = "flex start-justified";
       // set the element's default value to be what was passed into the schema
       el[property.component.valueProperty] = property.value;
@@ -553,6 +567,14 @@ class EcoJsonSchemaObject extends mixinBehaviors(
           dom(el).appendChild(dom(cloneDiv).firstChild);
         }
       }
+      this.dispatchEvent(
+        new CustomEvent("form-changed", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this
+        })
+      );
     });
   }
   _removePropertyEl(el) {
@@ -641,6 +663,9 @@ class EcoJsonSchemaObject extends mixinBehaviors(
   }
   _isSchemaArray(type) {
     return type === "array";
+  }
+  focus() {
+    console.log(this);
   }
 }
 window.customElements.define(EcoJsonSchemaObject.tag, EcoJsonSchemaObject);

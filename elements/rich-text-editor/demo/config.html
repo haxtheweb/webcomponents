@@ -21,16 +21,8 @@
       <h1>Basic rich-text-editor custom configuration</h1>
       <demo-snippet>
         <template>
-          <style>
-            div[contenteditable=true] {
-              min-height: 20px;
-              border-top: none;
-              overflow: hidden;
-              border: 1px solid #ddd;
-            }
-          </style>
-          <rich-text-editor id="editor" sticky></rich-text-editor>
-          <div id="content">
+          <rich-text-editor-toolbar id="editor" sticky></rich-text-editor-toolbar>
+          <rich-text-editor id="content" editor-id="editor">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
               In nec tincidunt tortor, at varius leo. Mauris varius 
@@ -72,6 +64,7 @@
               orci luctus et ultrices posuere cubilia Curae; Proin laoreet 
               lobortis suscipit. Pellentesque fermentum leo ut risus tincidunt lobortis. Morbi pretium ligula tempor pretium tristique. Vivamus vulputate elit dignissim mi tincidunt, non porttitor lorem condimentum.
             </p>
+          </rich-text-editor>
           <script>
             window.onload = function(){
               let editor = document.getElementById('editor');
@@ -161,6 +154,7 @@
                   ]
                 },{
                   "label": "Clipboard Operations",
+                  "collapsedUntil": "md",
                   "type": "button-group",
                   "buttons": [
                     {
@@ -184,6 +178,28 @@
                   ]
                 },{
                   "collapsedUntil": "sm",
+                  "label": "Insertions",
+                  "type": "button-group",
+                  "buttons": [
+                    {
+                      "command": "insertImage",
+                      "label": "Insert Inline Image",
+                      "icon": "editor:insert-photo",
+                      "type": "rich-text-editor-button"
+                    },{ 
+                      "collapsedUntil": "xl",
+                      "icon": "editor:functions",
+                      "label": "Insert Symbol", 
+                      "type": "rich-text-editor-symbol-picker" 
+                    },{ 
+                      "collapsedUntil": "xl",
+                      "icon": "image:tag-faces",
+                      "label": "Insert Emoji", 
+                      "type": "rich-text-editor-emoji-picker" 
+                    }
+                  ]
+                },{
+                  "collapsedUntil": "lg",
                   "label": "Lists and Indents",
                   "type": "button-group",
                   "buttons": [
@@ -220,31 +236,8 @@
                       "type": "rich-text-editor-button"
                     }
                   ]
-                },{
-                  "collapsedUntil": "lg",
-                  "label": "Insertions",
-                  "type": "button-group",
-                  "buttons": [
-                    {
-                      "command": "insertImage",
-                      "label": "Insert Inline Image",
-                      "icon": "editor:insert-photo",
-                      "type": "rich-text-editor-button"
-                    },{ 
-                      "collapsedUntil": "xl",
-                      "icon": "editor:functions",
-                      "label": "Insert Symbol", 
-                      "type": "rich-text-editor-symbol-picker" 
-                    },{ 
-                      "collapsedUntil": "xl",
-                      "icon": "image:tag-faces",
-                      "label": "Insert Emoji", 
-                      "type": "rich-text-editor-emoji-picker" 
-                    }
-                  ]
                 }
               ];
-              editor.addEditableRegion(document.getElementById('content'));
             }     
           </script>
         </template>

@@ -6,7 +6,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/iron-icons/iron-icons.js";
-import "./rich-text-editor-styles.js";
+import "./rich-text-editor-toolbar-styles.js";
 /**
  * `rich-text-editor-button`
  * `a button for rich text editor (custom buttons can extend this)`
@@ -21,7 +21,7 @@ class RichTextEditorButton extends PolymerElement {
   // render function
   static get template() {
     return html`
-      <style include="rich-text-editor-styles"></style>
+      <style include="rich-text-editor-toolbar-styles"></style>
       <iron-a11y-keys
         id="a11y"
         target="[[__a11y]]"

@@ -41,14 +41,14 @@ class AbsolutePositionBehavior extends PolymerElement {
        * Otherwise setPosition and unsetPosition must be called manually.
        */
       auto: {
-        type: Boolean,
+        type: "Boolean",
         value: false
       },
       /**
        * If true, no parts of the tooltip will ever be shown offscreen.
        */
       fitToVisibleBounds: {
-        type: Boolean,
+        type: "Boolean",
         value: false,
         observer: "updatePosition"
       },
@@ -58,7 +58,7 @@ class AbsolutePositionBehavior extends PolymerElement {
        * then the tooltip will be centered to the parent node containing it.
        */
       for: {
-        type: String,
+        type: "String",
         observer: "updatePosition"
       },
       /**
@@ -66,14 +66,15 @@ class AbsolutePositionBehavior extends PolymerElement {
        * anchored to.
        */
       offset: {
-        type: Number,
-        value: 0
+        type: "Number",
+        value: 0,
+        observer: "updatePosition"
       },
       /**
        * Positions the tooltip to the top, right, bottom, left of its content.
        */
       position: {
-        type: String,
+        type: "String",
         value: "bottom",
         observer: "updatePosition",
         reflectToAttribute: true
@@ -82,8 +83,14 @@ class AbsolutePositionBehavior extends PolymerElement {
        * The actual target element
        */
       target: {
-        type: Object,
+        type: "Object",
         observer: "updatePosition"
+      },
+      /**
+       * The element's style
+       */
+      __positions: {
+        type: "Object"
       }
     };
   }
@@ -111,27 +118,33 @@ class AbsolutePositionBehavior extends PolymerElement {
     let root = this;
     root.__observe = false;
     root.__manager = window.AbsolutePositionStateManager.requestAvailability();
-    if (root.auto === true) {
-      root.setPosition();
-    }
+    if (root.auto !== false) root.setPosition();
   }
-
+  /**
+   * Registers the element with AbsolutePositionStateManager
+   */
   setPosition() {
     let root = this;
     root.__observe = true;
     root.__manager.loadElement(root);
   }
 
+  /**
+   * Unregisters the element with AbsolutePositionStateManager
+   */
   unsetPosition() {
     let root = this;
     root.__observe = false;
     root.__manager.unloadElement(root);
   }
 
+  /**
+   * Updates  the element's position
+   */
   updatePosition() {
     let root = this;
     if (root.__observe === true) {
-      root.__manager.updatePosition(root);
+      root.__manager.positionElement(root);
     }
   }
   /**

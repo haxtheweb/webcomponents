@@ -41,6 +41,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/paper-avatar": "^2.0.10",
+    "@lrnwebcomponents/simple-popover": "^2.0.10",
     "@polymer/paper-card": "^3.0.1",
     "lit-element": "^2.0.1",
     "local-time": "^2.1.0"

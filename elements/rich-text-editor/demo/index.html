@@ -19,24 +19,12 @@
       <h3>Basic rich-text-editor demo</h3>
       <demo-snippet>
         <template>
-          <style>
-            div[contenteditable=true] {
-              min-height: 20px;
-              border-top: none;
-              overflow: hidden;
-              border: 1px solid #ddd;
-            }
-          </style>
-          <rich-text-editor id="editor" sticky></rich-text-editor>
-          <div id="content"><p>This is content</p></div>
-          <div id="more-content"><p>This is also <a href="#top">content</a></p></div>
-          <script>
-            window.onload = function(){
-              let editor = document.getElementById('editor');
-              editor.addEditableRegion(document.getElementById('content'));
-              editor.addEditableRegion(document.getElementById('more-content'));
-            }     
-          </script>
+          <rich-text-editor>
+            <p>I'm the easiest way to implement editable rich text.</p>
+          </rich-text-editor>
+          <rich-text-editor>
+            <p>Try <span class="rich-text-editor-selection">me</span>!</p>
+          </rich-text-editor>
         </template>
       </demo-snippet>
     </div>

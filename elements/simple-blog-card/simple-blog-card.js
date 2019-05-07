@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/paper-card/paper-card.js";
-import "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
+import "@lrnwebcomponents/simple-popover/simple-popover.js";
 
 /**
  * `simple-blog-card`
@@ -66,14 +66,12 @@ class SimpleBlogCard extends LitElement {
     </div>
   </div>
 </paper-card>
-<absolute-position-behavior for="author" poisition="top">
-  <div class="box">
+<simple-popover position="top" offset="0">
     <paper-avatar .label="${this.author}" .src="${this.authorimage}">
     </paper-avatar>
     <h5 class="author-name">${this.author}</h5>
     <div class="author-bio">${this.authorbio}</div>
-  </div>
-</absolute-position-behavior>`;
+</simple-popover>`;
   }
 
   // properties available to the custom element for data binding
@@ -273,11 +271,8 @@ class SimpleBlogCard extends LitElement {
         .box {
           outline: 1px solid black;
         }
-        absolute-position-behavior {
+        simple-popover:not([for]) {
           display: none;
-        }
-        .show {
-          display: unset;
         }
       `
     ];
@@ -316,15 +311,18 @@ class SimpleBlogCard extends LitElement {
     this.removeEventListener("mouseover", this.hoverState.bind(this));
     this.removeEventListener("mouseout", this.hoverStateOff.bind(this));
   }
+  ready() {
+    super.ready();
+  }
   showDetails(e) {
-    /*this.shadowRoot
-      .querySelector("absolute-position-behavior")
-      .classList.add("show");*/
+    this.shadowRoot
+      .querySelector("simple-popover")
+      .setAttribute("for", "author");
+    this.shadowRoot.querySelector("simple-popover").setPosition();
   }
   hideDetails(e) {
-    /*this.shadowRoot
-      .querySelector("absolute-position-behavior")
-      .classList.remove("show");*/
+    this.shadowRoot.querySelector("simple-popover").removeAttribute("for");
+    this.shadowRoot.querySelector("simple-popover").unsetPosition();
   }
   hoverState(e) {
     this.shadow = 1;

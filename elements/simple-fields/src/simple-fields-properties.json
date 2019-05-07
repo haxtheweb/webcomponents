@@ -1,5 +1,12 @@
 {
   /**
+   * automatically set focus on the first field if that field has autofocus
+   */
+  "autofocus": {
+    "type": "Boolean",
+    "value": false
+  },
+  /**
    * Fields to conver toJSON Schema.
    */
   "fields": {

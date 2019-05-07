@@ -25,6 +25,7 @@ class SimplePopover extends AbsolutePositionBehavior {
           display: flex;
           align-items: center;
           flex-direction: column-reverse;
+          justify-content: stretch;
           --simple-popover-border-radius: 3px;
           --simple-popover-color: #222;
           --simple-popover-padding: 10px;
@@ -44,6 +45,13 @@ class SimplePopover extends AbsolutePositionBehavior {
         :host([position="top"]) {
           flex-direction: column;
         }
+        :host > * {
+          width: 100%;
+        }
+        :host([position="left"]) > *,
+        :host([position="right"]) > * {
+          width: unset;
+        }
         :host #content {
           margin: 0 auto;
           padding: var(--simple-popover-padding);
@@ -56,7 +64,6 @@ class SimplePopover extends AbsolutePositionBehavior {
           @apply --simple-popover-content;
         }
         :host #pointer {
-          margin: 0 auto;
           width: 20px;
           height: 20px;
           position: relative;
@@ -71,6 +78,7 @@ class SimplePopover extends AbsolutePositionBehavior {
           margin: 0 0 0 -1px;
         }
         :host([position="right"]) #pointer {
+          width: unset;
           margin: 0 -1px 0 0;
         }
         :host #pointer:after {
@@ -100,7 +108,7 @@ class SimplePopover extends AbsolutePositionBehavior {
       <div id="content" role="alertdialog">
         <slot></slot>
       </div>
-      <div id="pointer"></div>
+      <div><div id="pointer" style$="[[__pointerOffSetStyle]]"></div></div>
     `;
   }
 
@@ -148,10 +156,26 @@ class SimplePopover extends AbsolutePositionBehavior {
       /**
        * Offset to compensate for the popover pointers.
        */
+      fitToVisibleBounds: {
+        type: Boolean,
+        value: true,
+        readOnly: true
+      },
+      /**
+       * Offset to compensate for the popover pointers.
+       */
       offset: {
         type: Number,
-        value: -10,
-        readOnly: true
+        value: -10
+      },
+      /**
+       * Positions the tooltip to the top, right, bottom, left of its content.
+       */
+      position: {
+        type: String,
+        value: "bottom",
+        observer: "updatePosition",
+        reflectToAttribute: true
       },
       /**
        * The actual target element
@@ -159,6 +183,13 @@ class SimplePopover extends AbsolutePositionBehavior {
       target: {
         type: Object,
         observer: "updatePosition"
+      },
+      /**
+       * Tthe margin styles to offset the pointer
+       */
+      __pointerOffSetStyle: {
+        type: Object,
+        computed: "_getMargins(__positions)"
       }
     };
   }
@@ -177,6 +208,41 @@ class SimplePopover extends AbsolutePositionBehavior {
     super.connectedCallback();
     this.HAXWiring = new HAXWiring();
     this.HAXWiring.setup(SimplePopover.haxProperties, SimplePopover.tag, this);
+  }
+  /**
+   * sets pointer position based on popover and target middles
+   *
+   * @param {object} positions object that contains postions for popover and target
+   * @returns {string} a string with margin styles to offset pointer
+   */
+  _getMargins(positions) {
+    let style = "",
+      v =
+        positions.target.top +
+        positions.target.height / 2 -
+        positions.self.top -
+        positions.self.height / 2 -
+        10,
+      h =
+        positions.target.left +
+        positions.target.width / 2 -
+        positions.self.left -
+        positions.self.width / 2 -
+        10;
+    switch (this.position) {
+      case "left":
+        style = `margin: ${v}px 0 0 -1px;`;
+        break;
+      case "right":
+        style = `margin: ${v}px 0 -1px 0;`;
+        break;
+      case "top":
+        style = `margin: -0.5 0 0 -1px ${h}px;`;
+        break;
+      default:
+        style = `margin: 0 0 -1px ${h}px;`;
+    }
+    return style;
   }
   /**
    * life cycle, element is removed from the DOM

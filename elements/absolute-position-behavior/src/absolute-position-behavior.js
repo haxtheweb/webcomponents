@@ -42,27 +42,33 @@ class AbsolutePositionBehavior extends PolymerElement {
     let root = this;
     root.__observe = false;
     root.__manager = window.AbsolutePositionStateManager.requestAvailability();
-    if (root.auto === true) {
-      root.setPosition();
-    }
+    if (root.auto !== false) root.setPosition();
   }
-
+  /**
+   * Registers the element with AbsolutePositionStateManager
+   */
   setPosition() {
     let root = this;
     root.__observe = true;
     root.__manager.loadElement(root);
   }
 
+  /**
+   * Unregisters the element with AbsolutePositionStateManager
+   */
   unsetPosition() {
     let root = this;
     root.__observe = false;
     root.__manager.unloadElement(root);
   }
 
+  /**
+   * Updates  the element's position
+   */
   updatePosition() {
     let root = this;
     if (root.__observe === true) {
-      root.__manager.updatePosition(root);
+      root.__manager.positionElement(root);
     }
   }
   /**
