@@ -154,12 +154,13 @@ class AbsolutePositionStateManager extends PolymerElement {
    * @return {object} target element for positioning
    */
   findTarget(el) {
-    let docQuery =
-        document.querySelectorAll("#" + el.for).length === 1
-          ? document.querySelectorAll("#" + el.for)[0]
+    let selector = "#" + el.for,
+      docQuery =
+        document.querySelectorAll(selector).length === 1
+          ? document.querySelector(selector)
           : null,
       target = el.target || docQuery,
-      pNode = el;
+      ancestor = el;
 
     /**
      * Use `target` object if specified.
@@ -169,12 +170,12 @@ class AbsolutePositionStateManager extends PolymerElement {
     while (
       el.for !== undefined &&
       target === null &&
-      pNode !== null &&
-      pNode !== document
+      ancestor !== null &&
+      ancestor !== document
     ) {
-      pNode = pNode.parentNode;
-      if (pNode.nodeType === 11) pNode = pNode.host;
-      target = pNode.getElementById(el.for);
+      ancestor = ancestor.parentNode;
+      if (ancestor.nodeType === 11) ancestor = ancestor.host;
+      target = ancestor ? ancestor.querySelector(selector) : null;
     }
     return target;
   }

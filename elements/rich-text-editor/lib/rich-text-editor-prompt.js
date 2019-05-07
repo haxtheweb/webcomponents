@@ -75,7 +75,13 @@ class richTextEditorPrompt extends PolymerElement {
           );
         }
       </style>
-      <simple-popover id="prompt" auto for$="[[for]]" hidden$="[[!for]]">
+      <simple-popover
+        id="prompt"
+        auto
+        fit-to-visible-bounds
+        for$="[[for]]"
+        hidden$="[[!for]]"
+      >
         <form id="form">
           <simple-fields
             id="formfields"

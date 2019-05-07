@@ -46,13 +46,32 @@ class RichTextEditorSelection extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    console.log(this);
   }
 
   /**
    * removes the selection
+   * @param {object} selection object
+   * @param {object} contents of the selection object
+   * @param {boolean} remove tag wrapping the content
    */
-  deselect() {}
+  deselect(contents, unwrap = false) {
+    while (unwrap && contents.firstChild) {
+      this.insertBefore(contents.firstChild, contents);
+      this.removeChild(contents);
+    }
+    this.parentNode.insertBefore(this.firstChild, this);
+    this.parentNode.removeChild(this);
+  }
+
+  /**
+   * removes the selection
+   * @param {object} selection object
+   * @param {object} contents of the selection object
+   */
+  select(selection, contents) {
+    this.appendChild(contents);
+    selection.insertNode(this);
+  }
 }
 window.customElements.define(
   RichTextEditorSelection.tag,

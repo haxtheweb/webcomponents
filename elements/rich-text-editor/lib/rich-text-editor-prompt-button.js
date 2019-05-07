@@ -62,6 +62,14 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
         value: {
           link: null
         }
+      },
+      /**
+       * the rich-text-selection object thart highlights the text
+       */
+      __highlight: {
+        name: "__highlight",
+        type: Object,
+        value: null
       }
     };
   }
@@ -90,19 +98,39 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
     this.selectText();
     this.__popover.setTarget(this);
   }
+  /**
+   * Handles selecting text and opening prompt
+   * @param {boolean} whether or not the selection should be unwrapped from a tag
+   */
   deselectText(unwrap = false) {
-    if (unwrap) {
-      let wrapper = this.selectedText.parentNode,
-        parent = wrapper.parentNode;
-      while (this.selectedText.firstChild)
-        wrapper.insertBefore(this.selectedText.firstChild, this.selectedText);
-      wrapper.removeChild(this.selectedText);
-    }
-    parent.insertBefore(wrapper.firstChild, this.selectedText);
-    parent.removeChild(wrapper);
+    console.log(
+      "deselectText",
+      this.__highlight,
+      this.selection,
+      this.selectedText,
+      unwrap
+    );
+    if (this.__highlight) this.__highlight.deselect(this.selectedText, unwrap);
+    this.__highlight = undefined;
     this.value = {};
     this.selectedText = null;
     this.dispatchEvent(new CustomEvent("deselect", { detail: this }));
+  }
+  /**
+   * updates prompt fields with selection data
+   */
+  updatePrompt() {
+    this.fields.forEach(field => {
+      if (field.property && field.property !== "") {
+        this.value[field.property] = this.selectedText.getAttribute(
+          field.property
+        );
+      } else if (field.property && field.property !== "") {
+        this.value[field.slot] = this.selectedText.querySelector(field.slot);
+      } else {
+        this.value[""] = this.selectedText.innerHTML;
+      }
+    });
   }
   /**
    * updates the insertion based on fields
@@ -141,6 +169,9 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
     });
     this.deselectText(!hasVals);
   }
+  /**
+   * Handles selecting text and opening prompt
+   */
   selectText() {
     let sel = this.selection.commonAncestorContainer;
     let parent =
@@ -149,25 +180,24 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
         ? sel
         : sel.parentNode;
     if (parent.tagName.toLowerCase() === this.tag.toLowerCase()) {
+      //if the selection is wrapped in this tag, no need to make a new one
       this.selectedText = parent;
     } else {
+      //if not, wrap the selection in this tag
       this.selectedText = document.createElement(this.tag.toLowerCase());
       this.selectedText.appendChild(this.selection.extractContents());
     }
-    this.wrapper = document.createElement("rich-text-editor-selection");
-    this.wrapper.appendChild(this.selectedText);
-    this.selection.insertNode(this.wrapper);
-    this.fields.forEach(field => {
-      if (field.property && field.property !== "") {
-        this.value[field.property] = this.selectedText.getAttribute(
-          field.property
-        );
-      } else if (field.property && field.property !== "") {
-        this.value[field.slot] = this.selectedText.querySelector(field.slot);
-      } else {
-        this.value[""] = this.selectedText.innerHTML;
-      }
-    });
+    //highlight the selection for when prompt gets focus
+    this.__highlight = document.createElement("rich-text-editor-selection");
+    this.__highlight.select(this.selection, this.selectedText);
+    console.log(
+      "selectText",
+      this.__highlight,
+      this.selection,
+      this.selectedText
+    );
+    this.updatePrompt();
+    //make sure there is a unique id so that the prompt popover appears near the selection
     if (!this.selectedText.getAttribute("id"))
       this.selectedText.setAttribute("id", "prompt" + Date.now());
     this.dispatchEvent(new CustomEvent("select", { detail: this }));
