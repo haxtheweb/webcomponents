@@ -90,6 +90,9 @@ class LrnappStudioSubmissionCritique extends PolymerElement {
    * Simple way to convert from object to array.
    */
   _toArray(obj) {
+    if (obj == null) {
+      return [];
+    }
     return Object.keys(obj).map(function(key) {
       return obj[key];
     });

@@ -1480,7 +1480,6 @@
     "accent-card": "@lrnwebcomponents/accent-card/accent-card.js",
     "person-testimonial": "@lrnwebcomponents/person-testimonial/person-testimonial.js",
     "citation-element": "@lrnwebcomponents/citation-element/citation-element.js",
-    "code-editor": "@lrnwebcomponents/code-editor/code-editor.js",
     "place-holder": "@lrnwebcomponents/place-holder/place-holder.js",
     "stop-note": "@lrnwebcomponents/stop-note/stop-note.js",
     "q-r": "@lrnwebcomponents/q-r/q-r.js",

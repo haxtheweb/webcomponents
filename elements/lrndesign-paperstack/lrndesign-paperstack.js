@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { html } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
@@ -13,7 +13,7 @@ import { A11yBehaviors } from "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.j
  *
  * @demo demo/index.html
  */
-class LrndesignPaperstack extends SimpleColors(A11yBehaviors(PolymerElement)) {
+class LrndesignPaperstack extends A11yBehaviors(SimpleColors) {
   constructor() {
     super();
     import("@polymer/iron-icon/iron-icon.js");

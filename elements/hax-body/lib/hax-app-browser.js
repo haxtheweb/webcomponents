@@ -4,6 +4,7 @@ import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/grafitto-filter/grafitto-filter.js";
 import "@polymer/iron-list/iron-list.js";
+import "@polymer/iron-pages/iron-pages.js";
 import "./hax-shared-styles.js";
 /**
  * `hax-app-browser`
@@ -17,7 +18,6 @@ class HaxAppBrowser extends PolymerElement {
     super();
     import("@polymer/paper-input/paper-input.js");
     import("@polymer/paper-item/paper-item.js");
-    import("@polymer/iron-pages/iron-pages.js");
     import("@lrnwebcomponents/dropdown-select/dropdown-select.js");
     import("@lrnwebcomponents/hax-body/lib/hax-app-browser-item.js");
     import("@lrnwebcomponents/hax-body/lib/hax-app-search.js");

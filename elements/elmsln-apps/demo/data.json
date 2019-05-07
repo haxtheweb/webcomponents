@@ -1,0 +1,120 @@
+{
+  "status": 200,
+  "data": {
+    "canCreateProjects": true,
+    "projects": {
+      "project-2": {
+        "type": "cle_project",
+        "id": "2",
+        "attributes": {
+          "title": "fdfdsf",
+          "body": "\u003Cp\u003Edsfdfsfsd\u003C/p\u003E",
+          "steps": [
+            {
+              "id": "3",
+              "title": "Stuff"
+            }
+          ]
+        },
+        "meta": {
+          "created": "2019-03-18T20:21:20-04:00",
+          "changed": "2019-03-19T00:22:47-04:00",
+          "humandate": "March 19, 2019, 12:22 am",
+          "revision_timestamp": "2019-03-19T00:22:47-04:00",
+          "canUpdate": 1,
+          "canDelete": 1
+        },
+        "relationships": {
+          "project_parent": {
+            "data": {
+              "id": null
+            }
+          },
+          "group": {
+            "data": {
+              "id": "1"
+            }
+          },
+          "author": {
+            "data": {
+              "type": "user",
+              "id": "1",
+              "name": "admin"
+            }
+          },
+          "assignments": {
+            "assignment-3": {
+              "type": "cle_assignment",
+              "id": "3",
+              "attributes": {
+                "title": "Stuff",
+                "body": null,
+                "critiqueOutline": null
+              },
+              "meta": {
+                "created": "2019-03-19T00:22:47-04:00",
+                "changed": "2019-03-19T00:22:47-04:00",
+                "humandate": "March 19, 2019, 12:22 am",
+                "revision_timestamp": "2019-03-19T00:22:47-04:00",
+                "canUpdate": 1,
+                "canDelete": 1,
+                "afterDueDate": 0,
+                "canCritique": 0,
+                "relatedSubmissions": {
+                  "canCreate": 1,
+                  "complete": {
+                    "icon": "assignment",
+                    "color": "grey lighten-4",
+                    "status": 0,
+                    "rationale": {
+                      "text": "You have not submitted anything",
+                      "code": "submission-nosubmission"
+                    },
+                    "submission": [],
+                    "submissions": []
+                  }
+                },
+                "rationale": {
+                  "text": "The assignment was due Mar 19, 2019 - 12:15AM and submissions are now closed. \u003Cem\u003EYour privileges allow you to submit this regardless.\u003C/em\u003E",
+                  "code": "date-closed",
+                  "data": ["1552968900"]
+                },
+                "submissionActive": 1
+              },
+              "relationships": {
+                "project": {
+                  "data": {
+                    "id": "2"
+                  }
+                },
+                "group": {
+                  "data": {
+                    "id": "1"
+                  }
+                },
+                "author": {
+                  "data": {
+                    "type": "user",
+                    "id": "1",
+                    "name": "admin"
+                  }
+                }
+              },
+              "actions": null,
+              "links": {
+                "self": "http://studio.elmsln.local/sing100/api/v1/cle/assignments/3",
+                "url": "http://studio.elmsln.local/sing100/cle/app/assignments/3",
+                "direct": "http://studio.elmsln.local/sing100/node/3",
+                "delete": "http://studio.elmsln.local/sing100/node/3/delete?destination=apps/lrnapp-studio-kanban",
+                "update": "http://studio.elmsln.local/sing100/node/3/edit?destination=apps/lrnapp-studio-kanban"
+              }
+            }
+          }
+        },
+        "actions": null
+      }
+    }
+  },
+  "detail": "",
+  "environment": []
+}

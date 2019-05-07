@@ -253,13 +253,14 @@ class LrnappStudioKanban extends PolymerElement {
           as="project"
           class="projects-container"
           grid=""
+          mutable-data
         >
           <template class="projects-container-items">
             <div class="project-container">
               <paper-card
                 id\$="project-[[project.id]]"
                 class="project-card grey lighten-3"
-                heading="{{project.attributes.title}}"
+                heading="[[project.attributes.title]]"
                 elevation="2"
               >
                 <div class="project-operations">
@@ -304,6 +305,7 @@ class LrnappStudioKanban extends PolymerElement {
                   <iron-list
                     items="[[_toArray(project.relationships.assignments)]]"
                     as="assignment"
+                    mutable-data
                   >
                     <template>
                       <div class="assignment-row" id="assignment">
@@ -453,9 +455,24 @@ class LrnappStudioKanban extends PolymerElement {
 
   static get properties() {
     return {
-      /**
-       * Tracks the active assignment.
-       */
+      elmslnCourse: {
+        type: String
+      },
+      elmslnSection: {
+        type: String
+      },
+      basePath: {
+        type: String,
+        notify: true
+      },
+      csrfToken: {
+        type: String,
+        notify: true
+      },
+      endPoint: {
+        type: String,
+        notify: true
+      },
       activeAssignment: {
         type: String,
         value: null,
@@ -817,9 +834,18 @@ class LrnappStudioKanban extends PolymerElement {
    * Simple way to convert from object to array.
    */
   _toArray(obj) {
+    if (obj == null) {
+      return [];
+    }
     return Object.keys(obj).map(function(key) {
       return obj[key];
     });
+  }
+  /**
+   * highjack shadowDom
+   */
+  _attachDom(dom) {
+    this.appendChild(dom);
   }
 }
 window.customElements.define(LrnappStudioKanban.tag, LrnappStudioKanban);

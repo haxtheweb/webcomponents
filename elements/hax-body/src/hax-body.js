@@ -345,6 +345,8 @@ class HaxBody extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     afterNextRender(this, function() {
+      // in case we miss this on the initial setup. possible in auto opening environments.
+      this.editMode = window.HaxStore.instance.editMode;
       // try to normalize paragraph insert on enter
       try {
         document.execCommand("enableObjectResizing", false, false);

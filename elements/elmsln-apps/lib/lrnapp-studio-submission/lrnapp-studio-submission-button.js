@@ -76,6 +76,21 @@ class LrnappStudioSubmissionButton extends PolymerElement {
       displayErrors: {
         type: Boolean,
         value: true
+      },
+      elmslnCourse: {
+        type: String
+      },
+      elmslnSection: {
+        type: String
+      },
+      basePath: {
+        type: String
+      },
+      csrfToken: {
+        type: String
+      },
+      endPoint: {
+        type: String
       }
     };
   }

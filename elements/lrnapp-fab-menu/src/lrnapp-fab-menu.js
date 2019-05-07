@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@polymer/paper-styles/paper-styles.js";
 /**
  * `lrnapp-fab-menu`
  * `floating action button with menu`
@@ -14,15 +14,20 @@ class LrnappFabMenu extends PolymerElement {
   constructor() {
     super();
     import("@polymer/paper-fab/paper-fab.js");
+    import("@lrnwebcomponents/lrnapp-fab-menu/lib/lrnapp-fab-speed-dial-action.js");
     import("@lrnwebcomponents/paper-fab-speed-dial/paper-fab-speed-dial.js");
     import("@lrnwebcomponents/paper-fab-speed-dial/lib/paper-fab-speed-dial-overlay.js");
   }
   static get template() {
     return html`
-      <style include="simple-colors">
+      <style>
+        lrnapp-fab-speed-dial-action:not(:defined),
+        paper-fab-speed-dial-overlay:not(:defined),
+        paper-fab-speed-dial:not(:defined) {
+          display: none;
+        }
         .open,
         .overlay {
-          background-color: var(--simple-colors-default-theme-blue-5);
           position: fixed;
           bottom: var(--paper-fab-speed-dial-bottom, 16px);
           right: var(--paper-fab-speed-dial-right, 16px);

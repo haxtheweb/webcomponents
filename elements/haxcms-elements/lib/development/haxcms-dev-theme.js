@@ -8,6 +8,7 @@ import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSTh
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";
+import "@polymer/iron-list/iron-list.js";
 /**
  * `haxcms-dev-theme`
  * `A theme intended as the starting point to fork from and build new themes for HAXCMS
@@ -30,7 +31,6 @@ class HAXCMSDevTheme extends HAXCMSTheme(PolymerElement) {
     super();
     import("@polymer/paper-card/paper-card.js");
     import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-list/iron-list.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/blocks/site-children-block.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js");

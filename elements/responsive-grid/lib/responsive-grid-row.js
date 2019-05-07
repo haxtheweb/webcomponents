@@ -268,9 +268,9 @@ class ResponsiveGridRow extends PolymerElement {
         cancelable: true,
         composed: true,
         detail: {
-          element: root,
+          element: this,
           attribute: "screen",
-          relativeToParent: root.responsiveToParent
+          relativeToParent: this.responsiveToParent
         }
       })
     );

@@ -17,7 +17,7 @@ import "./lrnsys-button-inner.js";
 class LrnsysDrawer extends PolymerElement {
   static get template() {
     return html`
-      <style is="custom-style" include="simple-colors">
+      <style include="simple-colors">
         :host {
           display: block;
           --lrnsys-drawer-color: var(--simple-colors-foreground1);
@@ -217,10 +217,17 @@ class LrnsysDrawer extends PolymerElement {
       if (typeof nodes[i].tagName !== typeof undefined) {
         switch (nodes[i].getAttribute("slot")) {
           case "header":
-            h.appendChild(nodes[i].cloneNode(true));
+            let tmp = nodes[i].cloneNode(true);
+            tmp.removeAttribute("slot");
+            h.appendChild(tmp);
+            break;
+          case "button":
+            // do nothing
             break;
           default:
-            c.appendChild(nodes[i].cloneNode(true));
+            let tmp2 = nodes[i].cloneNode(true);
+            tmp2.removeAttribute("slot");
+            c.appendChild(tmp2);
             break;
         }
       }
@@ -234,7 +241,7 @@ class LrnsysDrawer extends PolymerElement {
         invokedBy: this.$.flyouttrigger,
         align: this.align,
         size: "30%",
-        clone: false
+        clone: true
       }
     });
     this.dispatchEvent(evt);

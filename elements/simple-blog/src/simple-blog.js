@@ -6,6 +6,7 @@ import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/simple-blog/lib/simple-blog-listing.js";
 import "@lrnwebcomponents/simple-blog/lib/simple-blog-post.js";
+import "@polymer/iron-pages/iron-pages.js";
 /**
  * `simple-blog`
  * `A simple blog and associated elements`
@@ -135,7 +136,6 @@ class SimpleBlog extends HAXCMSTheme(PolymerElement) {
   constructor() {
     super();
     import("@lrnwebcomponents/simple-blog/lib/simple-blog-header.js");
-    import("@polymer/iron-pages/iron-pages.js");
     import("@polymer/paper-icon-button/paper-icon-button.js");
     import("@lrnwebcomponents/simple-blog/lib/simple-blog-footer.js");
     this.__disposer = [];

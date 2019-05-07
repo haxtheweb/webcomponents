@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import "@polymer/iron-list/iron-list.js";
 /**
  * `site-search`
  * `Searching HAXcms content using the auto-generated lunr search configuration`
@@ -151,10 +152,6 @@ class SiteSearch extends PolymerElement {
    * Notice search term changed and let's fire up some results
    */
   _searchChanged(term, oldTerm) {
-    // lazy load the search assets when they start typing on the first time
-    if (term && typeof oldTerm === typeof undefined) {
-      import("@polymer/iron-list/iron-list.js");
-    }
     // only load up the lunr source data once they have 3 or more characters
     if (term.length >= 3 && typeof this.dataSource === typeof undefined) {
       this.dataSource = "lunrSearchIndex.json";

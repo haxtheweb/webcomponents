@@ -50,6 +50,21 @@ class LrnappBlockRecentSubmissions extends PolymerElement {
   }
   static get properties() {
     return {
+      elmslnCourse: {
+        type: String
+      },
+      elmslnSection: {
+        type: String
+      },
+      basePath: {
+        type: String
+      },
+      csrfToken: {
+        type: String
+      },
+      endPoint: {
+        type: String
+      },
       sourcePath: {
         type: String,
         notify: true
@@ -79,6 +94,9 @@ class LrnappBlockRecentSubmissions extends PolymerElement {
     return this.basePath + "lrnapp-studio-submission/submissions/" + nid;
   }
   _toArray(obj) {
+    if (obj == null) {
+      return [];
+    }
     return Object.keys(obj).map(function(key) {
       return obj[key];
     });

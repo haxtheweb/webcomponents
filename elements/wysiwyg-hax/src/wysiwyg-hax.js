@@ -1,5 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/cms-hax/cms-hax.js";
+import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
+
 /**
  * `wysiwyg-hax`
  * `Integration of wysiwyg edit form for a page with HAX.`
@@ -137,10 +139,10 @@ class WysiwygHax extends PolymerElement {
     if (newValue != null && !this.__imported) {
       this.__imported = true;
       // see what's inside of this, in a template tag
-      let children = this.queryEffectiveChildren("template");
+      let children = this.querySelector("template");
       // convert this template content into the real thing
       // this helps with correctly preserving everything on the way down
-      if (typeof children !== typeof undefined) {
+      if (children != null) {
         newValue.importContent(children.innerHTML);
         // need to dot his because of juggling unfortunately
         this.editMode = false;

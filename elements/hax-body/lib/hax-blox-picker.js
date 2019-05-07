@@ -28,7 +28,9 @@ class HaxBloxPicker extends PolymerElement {
         :host {
           display: block;
         }
-        iron-icon:not(:defined) {
+        iron-icon:not(:defined),
+        paper-button:not(:defined),
+        app-drawer:not(:defined) {
           display: none;
         }
         #dialog {

@@ -4,8 +4,9 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { LrndesignChartBehaviors } from "./lrndesign-chart-behaviors.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 
-export { LrndesignBar };
 /**
  * `lrndesign-bar`
  * A bar chart
@@ -474,7 +475,10 @@ class LrndesignBar extends LrndesignChartBehaviors {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.HAXWiring.setup(LrndesignBar.haxProperties, LrndesignBar.tag, this);
+    afterNextRender(this, function() {
+      this.HAXWiring = new HAXWiring();
+      this.HAXWiring.setup(LrndesignBar.haxProperties, LrndesignBar.tag, this);
+    });
   }
 
   /**
@@ -490,3 +494,4 @@ class LrndesignBar extends LrndesignChartBehaviors {
  */
 //disconnectedCallback() {}
 window.customElements.define(LrndesignBar.tag, LrndesignBar);
+export { LrndesignBar };

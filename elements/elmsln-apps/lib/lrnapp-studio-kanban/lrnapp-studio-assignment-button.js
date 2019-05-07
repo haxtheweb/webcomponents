@@ -47,6 +47,24 @@ class LrnappStudioAssignmentButton extends PolymerElement {
   }
   static get properties() {
     return {
+      elmslnCourse: {
+        type: String
+      },
+      elmslnSection: {
+        type: String
+      },
+      basePath: {
+        type: String,
+        notify: true
+      },
+      csrfToken: {
+        type: String,
+        notify: true
+      },
+      endPoint: {
+        type: String,
+        notify: true
+      },
       auto: {
         type: Boolean,
         reflectToAttribute: true,
@@ -83,9 +101,7 @@ class LrnappStudioAssignmentButton extends PolymerElement {
       icon: {
         type: String,
         value: null
-      },
-      endPoint: String,
-      csrfToken: String
+      }
     };
   }
   ready() {

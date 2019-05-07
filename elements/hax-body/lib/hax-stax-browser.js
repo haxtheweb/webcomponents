@@ -1,5 +1,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { microTask } from "@polymer/polymer/lib/utils/async.js";
+import "@polymer/iron-list/iron-list.js";
 /**
  * `hax-stax-browser`
  * `Select a stack / template to insert`
@@ -9,7 +10,6 @@ import { microTask } from "@polymer/polymer/lib/utils/async.js";
 class HaxStaxBrowser extends PolymerElement {
   constructor() {
     super();
-    import("@polymer/iron-list/iron-list.js");
     import("@lrnwebcomponents/hax-body/lib/hax-stax-browser-item.js");
   }
   static get template() {

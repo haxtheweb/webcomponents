@@ -181,10 +181,10 @@ class CmsHax extends PolymerElement {
     if (newValue != null && !this.__imported) {
       this.__imported = true;
       // see what's inside of this, in a template tag
-      let children = this.queryEffectiveChildren("template");
+      let children = this.querySelector("template");
       // convert this template content into the real thing
       // this helps with correctly preserving everything on the way down
-      if (typeof children !== typeof undefined) {
+      if (children != null) {
         newValue.importContent(children.innerHTML);
       }
     }

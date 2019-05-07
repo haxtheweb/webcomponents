@@ -246,6 +246,21 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
       submission: {
         type: Object,
         notify: true
+      },
+      elmslnCourse: {
+        type: String
+      },
+      elmslnSection: {
+        type: String
+      },
+      basePath: {
+        type: String
+      },
+      csrfToken: {
+        type: String
+      },
+      endPoint: {
+        type: String
       }
     };
   }

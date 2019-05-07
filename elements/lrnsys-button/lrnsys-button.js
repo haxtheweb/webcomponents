@@ -3,22 +3,24 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
+import "@polymer/paper-button/paper-button.js";
+import "@polymer/iron-icon/iron-icon.js";
 /**
  * `lrnsys-button`
- * `A simple button for use in system`
+ * `A simple button for use in systems`
  * @demo demo/index.html
  */
 class LrnsysButton extends PolymerElement {
   constructor() {
     super();
-    import("@polymer/paper-button/paper-button.js");
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/paper-tooltip/paper-tooltip.js");
   }
   static get template() {
     return html`
-      <style>
+      <style include="materializecss-styles-colors">
         :host {
           display: block;
           @apply --paper-font-common-base;
@@ -85,8 +87,7 @@ class LrnsysButton extends PolymerElement {
           id="button"
           title="[[alt]]"
           raised="[[raised]]"
-          style$="background-color:[[hexColor]];color:[[textHexColor]];"
-          class\$="[[buttonClass]]"
+          class\$="[[buttonClass]] [[color]] [[textColor]]"
           disabled\$="[[disabled]]"
         >
           <div class\$="inner [[innerClass]]">
@@ -183,26 +184,11 @@ class LrnsysButton extends PolymerElement {
         type: String
       },
       /**
-       * Class for the color
-       */
-      hexColor: {
-        type: String,
-        computed: "_getHexColor(color)"
-      },
-      /**
        * Color class work to apply
        */
       color: {
         type: String,
-        value: "blue",
         reflectToAttribute: true
-      },
-      /**
-       * Class for the color
-       */
-      textHexColor: {
-        type: String,
-        computed: "_getHexColor(textColor)"
       },
       /**
        * materializeCSS color class for text
@@ -238,25 +224,20 @@ class LrnsysButton extends PolymerElement {
       }
     };
   }
-  _getHexColor(color) {
-    let name = color.replace("-text", "");
-    let tmp = new SimpleColors();
-    if (tmp.colors[name]) {
-      return tmp.colors[name][6];
-    }
-    return "#000000";
-  }
   /**
    * attached life cycle
    */
   connectedCallback() {
     super.connectedCallback();
-    this.addEventListener("mousedown", this.tapEventOn.bind(this));
-    this.addEventListener("mouseover", this.tapEventOn.bind(this));
-    this.addEventListener("mouseout", this.tapEventOff.bind(this));
-    this.shadowRoot
-      .querySelector("#button")
-      .addEventListener("focused-changed", this.focusToggle.bind(this));
+    afterNextRender(this, function() {
+      this.addEventListener("mousedown", this.tapEventOn.bind(this));
+      this.addEventListener("mouseover", this.tapEventOn.bind(this));
+      this.addEventListener("mouseout", this.tapEventOff.bind(this));
+      this.$.button.addEventListener(
+        "focused-changed",
+        this.focusToggle.bind(this)
+      );
+    });
   }
   /**
    * detached event listener
@@ -265,9 +246,10 @@ class LrnsysButton extends PolymerElement {
     this.removeEventListener("mousedown", this.tapEventOn.bind(this));
     this.removeEventListener("mouseover", this.tapEventOn.bind(this));
     this.removeEventListener("mouseout", this.tapEventOff.bind(this));
-    this.shadowRoot
-      .querySelector("#button")
-      .removeEventListener("focused-changed", this.focusToggle.bind(this));
+    this.$.button.removeEventListener(
+      "focused-changed",
+      this.focusToggle.bind(this)
+    );
     super.disconnectedCallback();
   }
 
@@ -286,16 +268,15 @@ class LrnsysButton extends PolymerElement {
    * Class processing on un-tap / hover
    */
   tapEventOn(e) {
-    let root = this;
-    if (typeof root.hoverClass !== typeof undefined && !root.disabled) {
+    if (typeof this.hoverClass !== typeof undefined && !this.disabled) {
       // break class into array
-      var classes = root.hoverClass.split(" ");
+      var classes = this.hoverClass.split(" ");
       // run through each and add or remove classes
-      classes.forEach(function(item, index) {
+      classes.forEach((item, index) => {
         if (item != "") {
-          root.shadowRoot.querySelector("#button").classList.add(item);
+          this.$.button.classList.add(item);
           if (item.indexOf("-") != -1) {
-            root.shadowRoot.querySelector("#icon").classList.add(item);
+            this.$.icon.classList.add(item);
           }
         }
       });
@@ -306,16 +287,15 @@ class LrnsysButton extends PolymerElement {
    * Undo class processing on un-tap / hover
    */
   tapEventOff(e) {
-    let root = this;
-    if (typeof root.hoverClass !== typeof undefined && !root.disabled) {
+    if (typeof this.hoverClass !== typeof undefined && !this.disabled) {
       // break class into array
-      var classes = root.hoverClass.split(" ");
+      var classes = this.hoverClass.split(" ");
       // run through each and add or remove classes
-      classes.forEach(function(item, index) {
+      classes.forEach((item, index) => {
         if (item != "") {
-          root.shadowRoot.querySelector("#button").classList.remove(item);
+          this.$.button.classList.remove(item);
           if (item.indexOf("-") != -1) {
-            root.shadowRoot.querySelector("#icon").classList.remove(item);
+            this.$.icon.classList.remove(item);
           }
         }
       });
@@ -333,14 +313,14 @@ class LrnsysButton extends PolymerElement {
       classes.forEach((item, index) => {
         if (item != "") {
           if (!this.focusState) {
-            this.shadowRoot.querySelector("#button").classList.add(item);
+            this.$.button.classList.add(item);
             if (item.indexOf("-") != -1) {
-              this.shadowRoot.querySelector("#icon").classList.add(item);
+              this.$.icon.classList.add(item);
             }
           } else {
-            this.shadowRoot.querySelector("#button").classList.remove(item);
+            this.$.button.classList.remove(item);
             if (item.indexOf("-") != -1) {
-              this.shadowRoot.querySelector("#icon").classList.remove(item);
+              this.$.icon.classList.remove(item);
             }
           }
         }

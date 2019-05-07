@@ -1,4 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import "@polymer/iron-list/iron-list.js";
 /**
  * `hax-blox-browser`
  * `List of layout blox to select from`
@@ -8,7 +9,6 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 class HaxBloxBrowser extends PolymerElement {
   constructor() {
     super();
-    import("@polymer/iron-list/iron-list.js");
     import("@lrnwebcomponents/hax-body/lib/hax-blox-browser-item.js");
     import("@lrnwebcomponents/hax-body/lib/hax-icons.js");
   }

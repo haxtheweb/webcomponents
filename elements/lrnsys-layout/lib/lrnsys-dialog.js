@@ -181,7 +181,9 @@ class LrnsysDialog extends PolymerElement {
       });
     }
   }
-
+  toggleDialog() {
+    this.openDialog();
+  }
   /**
    * Toggle the drawer to open / close.
    */
@@ -199,6 +201,7 @@ class LrnsysDialog extends PolymerElement {
           case "toolbar":
           case "header":
             node = nodes[i].cloneNode(true);
+            node.removeAttribute("slot");
             h.appendChild(node);
             break;
           case "button":
@@ -206,6 +209,7 @@ class LrnsysDialog extends PolymerElement {
             break;
           default:
             node = nodes[i].cloneNode(true);
+            node.removeAttribute("slot");
             if (this.dynamicImages && node.tagName === "IRON-IMAGE") {
               node.preventLoad = false;
               node.removeAttribute("prevent-load");
@@ -224,7 +228,8 @@ class LrnsysDialog extends PolymerElement {
           header: h,
           content: c
         },
-        invokedBy: this.$.dialogtrigger
+        invokedBy: this.$.dialogtrigger,
+        clone: true
       }
     });
     this.dispatchEvent(evt);
