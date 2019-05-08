@@ -3,8 +3,6 @@ import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/simple-drawer/simple-drawer.js";
-import "@lrnwebcomponents/paper-avatar/paper-avatar.js";
-import "@polymer/app-layout/app-layout.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icons/iron-icons.js";
@@ -25,6 +23,10 @@ class LrnsysDrawer extends PolymerElement {
         }
         paper-button {
           display: inline-block;
+          min-width: unset;
+          margin: var(--lrnsys-drawer-button-margin);
+          padding: var(--lrnsys-drawer-button-padding);
+          @apply --lrnsys-drawer-button;
         }
       </style>
       <paper-button
@@ -152,9 +154,18 @@ class LrnsysDrawer extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     afterNextRender(this, function() {
-      this.addEventListener("mousedown", this.tapEventOn.bind(this));
-      this.addEventListener("mouseover", this.tapEventOn.bind(this));
-      this.addEventListener("mouseout", this.tapEventOff.bind(this));
+      this.$.flyouttrigger.addEventListener(
+        "mousedown",
+        this.tapEventOn.bind(this)
+      );
+      this.$.flyouttrigger.addEventListener(
+        "mouseover",
+        this.tapEventOn.bind(this)
+      );
+      this.$.flyouttrigger.addEventListener(
+        "mouseout",
+        this.tapEventOff.bind(this)
+      );
       this.$.flyouttrigger.addEventListener(
         "focused-changed",
         this.focusToggle.bind(this)
@@ -165,9 +176,18 @@ class LrnsysDrawer extends PolymerElement {
    * detached lifecycle
    */
   disconnectedCallback() {
-    this.removeEventListener("mousedown", this.tapEventOn.bind(this));
-    this.removeEventListener("mouseover", this.tapEventOn.bind(this));
-    this.removeEventListener("mouseout", this.tapEventOff.bind(this));
+    this.$.flyouttrigger.removeEventListener(
+      "mousedown",
+      this.tapEventOn.bind(this)
+    );
+    this.$.flyouttrigger.removeEventListener(
+      "mouseover",
+      this.tapEventOn.bind(this)
+    );
+    this.$.flyouttrigger.removeEventListener(
+      "mouseout",
+      this.tapEventOff.bind(this)
+    );
     this.$.flyouttrigger.removeEventListener(
       "focused-changed",
       this.focusToggle.bind(this)

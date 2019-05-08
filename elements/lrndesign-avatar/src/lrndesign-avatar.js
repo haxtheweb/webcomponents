@@ -16,6 +16,10 @@ class LrndesignAvatar extends PolymerElement {
         :host {
           display: block;
         }
+        paper-avatar {
+          --paper-avatar-width: var(--lrndesign-avatar-width);
+          --paper-avatar-height: var(--lrndesign-avatar-height);
+        }
       </style>
       <paper-avatar
         label="[[label]]"

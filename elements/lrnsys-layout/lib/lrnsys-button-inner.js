@@ -31,7 +31,7 @@ class LrnsysButtonInner extends PolymerElement {
           <lrn-icon icon="[[icon]]"></lrn-icon>
         </template>
         <template is="dom-if" if="[[text]]">
-          <span class\$="[[_getTextLabelClass()]]">[[text]]</span>
+          <span class\$="[[_getTextLabelClass(avatar,icon)]]">[[text]]</span>
         </template>
       </div>
       <div><slot name="button"></slot><slot></slot></div>
@@ -69,8 +69,8 @@ class LrnsysButtonInner extends PolymerElement {
    * Find out if the text does not have an avatar or an icon to the left,
    * and add a class to remove the left margin.
    */
-  _getTextLabelClass() {
-    if (!this.avatar && !this.icon) {
+  _getTextLabelClass(avatar, icon) {
+    if (!avatar && !icon) {
       return "text-label-only";
     }
     return "text-label";

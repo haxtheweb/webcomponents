@@ -30,7 +30,7 @@ class LrnsysButton extends PolymerElement {
         a {
           text-decoration: none;
           display: block;
-          color: #000000;
+          color: var(--lrnsys-button-link-color, #000000);
           display: flex;
         }
         paper-button {
@@ -45,6 +45,9 @@ class LrnsysButton extends PolymerElement {
           text-transform: unset;
           border-radius: unset;
           display: flex;
+        }
+        .no-padding {
+          padding: 0;
         }
         paper-button iron-icon {
           height: var(--lrnsys-button-height);

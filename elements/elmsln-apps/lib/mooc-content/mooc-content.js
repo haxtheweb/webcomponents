@@ -13,6 +13,7 @@ import "@lrnwebcomponents/grid-plate/grid-plate.js";
 import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-row.js";
 import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-col.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status";
 /**
  * `lrnapp-book`
  * A LRN element
@@ -75,8 +76,8 @@ class MoocContent extends PolymerElement {
           <div class="r-header row">
             <div class="r-header__left">
               <div class="book-navigation-header book-sibling-nav-container book-navigation-header-2">
-                <div class="book-navigation-header book-sibling-nav-container book-navigation-header-<?php print $count ?>">
-                  <lrnsys-dialog id="outlinepopover" data-voicecommand="open outline" class="black-text" hover-class="grey darken-3 white-text" label="Outline" header="Outline">
+                <div class="book-navigation-header book-sibling-nav-container">
+                  <lrnsys-dialog id="outlinepopover" data-voicecommand="open outline" label="Outline" header="Outline">
                     <span slot="button">
                       <iron-icon icon="explore"></iron-icon>
                       Outline
@@ -316,7 +317,9 @@ class MoocContent extends PolymerElement {
         // inject styles, destroying previous ones
         this.__injectStyle(data.styles);
         // fire drupal behaviors.. this is evil. Polymer is invoking Drupal behaviors..
-        window.Drupal.attachBehaviors(document, window.Drupal.settings);
+        if (window.Drupal) {
+          window.Drupal.attachBehaviors(document, window.Drupal.settings);
+        }
         // first time this fires let's get the outline block in the background
         if (
           typeof this.outlineData.data ===
@@ -343,6 +346,14 @@ class MoocContent extends PolymerElement {
       this.$.outlinemodal.innerHTML = data.outline;
       this.aliases = data.aliases;
     }
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, function() {
+      if (window.Drupal) {
+        window.Drupal.attachBehaviors(document, window.Drupal.settings);
+      }
+    });
   }
   /**
    * If the current route is outside the scope of our app then allow

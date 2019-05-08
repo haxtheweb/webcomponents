@@ -47,9 +47,13 @@ class LrnappStudioKanban extends PolymerElement {
           -webkit-box-align: start;
           -ms-flex-align: start;
           align-items: flex-start;
-          min-height: 30em;
+          min-height: 23em;
           width: 150vw;
-          padding-top: 1em;
+        }
+        @media screen and (max-width: 800px) {
+          .projects-container {
+            width: auto;
+          }
         }
         .projects-window {
           width: 100vw;
@@ -96,6 +100,10 @@ class LrnappStudioKanban extends PolymerElement {
           margin: 0;
           height: 100%;
           min-height: 10em;
+          --paper-card-header: {
+            max-width: 60%;
+            word-break: break-all;
+          }
         }
         .project-container {
           padding: 1em;
@@ -110,12 +118,9 @@ class LrnappStudioKanban extends PolymerElement {
           position: absolute;
           top: 0;
           right: 0;
-          padding: 1em;
         }
         .project-operations .operation {
           display: inline-flex;
-          height: 2.5em;
-          width: 2.5em;
         }
         .project-operations .operation[hidden] {
           display: none;
@@ -136,7 +141,6 @@ class LrnappStudioKanban extends PolymerElement {
         .assignment-row-button {
           width: 100%;
           justify-content: flex-start;
-          height: 3em;
           text-transform: none;
         }
         .status-indicator {
@@ -168,12 +172,13 @@ class LrnappStudioKanban extends PolymerElement {
           display: inline-flex;
           width: 2.5em;
           height: 2.5em;
+          margin: -4px 4px 0 0;
         }
         .assignment-operations .operation[hidden] {
           display: none;
         }
         lrnapp-studio-project-button {
-          margin: 0em auto 1em;
+          margin: 0em auto;
           max-width: 20em;
         }
         #activeitemcontainer {
@@ -217,7 +222,7 @@ class LrnappStudioKanban extends PolymerElement {
       </div>
       <lrnapp-studio-project-button
         hidden\$="[[!projectResponse.data.canCreateProjects]]"
-        classes="amber darken-3 white-text"
+        classes="amber darken-4 white-text"
         end-point="[[endPoint]]"
         csrf-token="[[csrfToken]]"
         icon="add"
@@ -243,7 +248,7 @@ class LrnappStudioKanban extends PolymerElement {
                     icon-class="no-margin"
                     id\$="project-[[project.id]]-edit"
                     alt="Edit project"
-                    class="circle operation"
+                    class="operation"
                     hover-class="amber lighten-2"
                     hidden="[[!project.meta.canUpdate]]"
                     icon="create"
@@ -255,7 +260,7 @@ class LrnappStudioKanban extends PolymerElement {
                     icon-class="no-margin"
                     id\$="project-[[project.id]]-add"
                     alt="Add assignment"
-                    class="circle operation"
+                    class="operation"
                     hover-class="amber lighten-2"
                     hidden="[[!project.meta.canUpdate]]"
                     icon="add"
@@ -266,7 +271,7 @@ class LrnappStudioKanban extends PolymerElement {
                   <lrnsys-button
                     id\$="project-[[project.id]]-delete"
                     alt="Delete project!"
-                    class="circle operation"
+                    class="operation"
                     hover-class="red darken-2 white-text"
                     header="Delete project!"
                     hidden="[[!project.meta.canDelete]]"
@@ -297,7 +302,7 @@ class LrnappStudioKanban extends PolymerElement {
                             id\$="assignment-[[project.id]]-[[assignment.id]]-add-critique"
                             icon="editor:insert-comment"
                             alt="Add critique"
-                            class="circle operation"
+                            class="operation"
                             hover-class="green lighten-2"
                             hidden="[[!assignment.meta.canCritique]]"
                             href\$="[[assignment.meta.critiqueLink]]"
@@ -307,7 +312,7 @@ class LrnappStudioKanban extends PolymerElement {
                             id\$="assignment-[[project.id]]-[[assignment.id]]-edit"
                             icon="editor:mode-edit"
                             alt="Edit"
-                            class="circle operation"
+                            class="operation"
                             hover-class="amber lighten-4"
                             hidden="[[!assignment.meta.canUpdate]]"
                             on-tap="_makeAssignmentEditLink"
@@ -317,7 +322,7 @@ class LrnappStudioKanban extends PolymerElement {
                             id\$="assignment-[[project.id]]-[[assignment.id]]-delete"
                             icon="delete"
                             alt="Delete"
-                            class="circle operation"
+                            class="operation"
                             hover-class="amber lighten-4"
                             hidden="[[!assignment.meta.canDelete]]"
                             on-tap="_deleteAssignmentDialog"
