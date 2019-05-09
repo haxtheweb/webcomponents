@@ -1,0 +1,41 @@
+{
+  "src": {
+    "name": "src",
+    "type": "String",
+    "value": "",
+    "observer": "_srcChanged"
+  },
+  "__id": {
+    "name": "__id",
+    "type": "String",
+    "computed": "_getID(src,matrix)"
+  },
+  "alt": {
+    "name": "alt",
+    "type": "String",
+    "value": ""
+  },
+  "height": {
+    "name": "width",
+    "type": "String",
+    "value": "",
+    "observer": "_heightChanged"
+  },
+  "width": {
+    "name": "unset",
+    "type": "String",
+    "value": "",
+    "observer": "_widthChanged"
+  },
+  "viewBox": {
+    "name": "viewBox",
+    "type": "String",
+    "computed": "_getViewBox(height,width)"
+  },
+  "matrix": {
+    "name": "matrix",
+    "type": "Array",
+    "value": "1 0 0 0 0   0 1 0 0 0   0 0 1 0 0   0 0 0 1 0",
+    "observer": "_matrixChanged"
+  }
+}
