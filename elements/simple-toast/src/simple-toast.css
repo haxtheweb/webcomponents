@@ -5,3 +5,7 @@
 :host([hidden]) {
   display: none;
 }
+
+paper-toast {
+  @apply --simple-toast-toast;
+}
