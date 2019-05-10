@@ -13,6 +13,7 @@ import "@lrnwebcomponents/grid-plate/grid-plate.js";
 import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-row.js";
 import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-col.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status";
 /**
  * `lrnapp-book`
  * A LRN element
@@ -75,8 +76,8 @@ class MoocContent extends PolymerElement {
           <div class="r-header row">
             <div class="r-header__left">
               <div class="book-navigation-header book-sibling-nav-container book-navigation-header-2">
-                <div class="book-navigation-header book-sibling-nav-container book-navigation-header-<?php print $count ?>">
-                  <lrnsys-dialog id="outlinepopover" data-voicecommand="open outline" class="black-text" hover-class="grey darken-3 white-text" label="Outline" header="Outline">
+                <div class="book-navigation-header book-sibling-nav-container">
+                  <lrnsys-dialog id="outlinepopover" data-voicecommand="open outline" label="Outline" header="Outline">
                     <span slot="button">
                       <iron-icon icon="explore"></iron-icon>
                       Outline
@@ -122,6 +123,21 @@ class MoocContent extends PolymerElement {
   }
   static get properties() {
     return {
+      elmslnCourse: {
+        type: String
+      },
+      elmslnSection: {
+        type: String
+      },
+      basePath: {
+        type: String
+      },
+      csrfToken: {
+        type: String
+      },
+      endPoint: {
+        type: String
+      },
       /**
        * Source of data
        */
@@ -301,7 +317,9 @@ class MoocContent extends PolymerElement {
         // inject styles, destroying previous ones
         this.__injectStyle(data.styles);
         // fire drupal behaviors.. this is evil. Polymer is invoking Drupal behaviors..
-        window.Drupal.attachBehaviors(document, window.Drupal.settings);
+        if (window.Drupal) {
+          window.Drupal.attachBehaviors(document, window.Drupal.settings);
+        }
         // first time this fires let's get the outline block in the background
         if (
           typeof this.outlineData.data ===
@@ -328,6 +346,14 @@ class MoocContent extends PolymerElement {
       this.$.outlinemodal.innerHTML = data.outline;
       this.aliases = data.aliases;
     }
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, function() {
+      if (window.Drupal) {
+        window.Drupal.attachBehaviors(document, window.Drupal.settings);
+      }
+    });
   }
   /**
    * If the current route is outside the scope of our app then allow
@@ -356,12 +382,15 @@ class MoocContent extends PolymerElement {
           this.requestParams.node = this.nid;
           // send request out the door to the actual end point
           this.$.pageajax.generateRequest();
-          // @todo better state management in the modal itself
-          // so that we can detect if it's open or not without
-          // something stupid like this
-          // close outline dialog if it's open
-          if (this.$.outlinepopover.$.modal.opened) {
-            this.$.outlinepopover.$.modal.opened = false;
+          // if open, close this
+          if (this.__modal && this.__modal.opened) {
+            window.dispatchEvent(
+              new CustomEvent("simple-modal-hide", {
+                bubbles: true,
+                cancelable: true,
+                detail: {}
+              })
+            );
           }
           return;
         } else if (tmp[tmp.length - 1] == "edit") {
@@ -377,11 +406,15 @@ class MoocContent extends PolymerElement {
         // trigger change if data location changed
         this.requestParams.node = this.nid;
         this.$.pageajax.generateRequest();
-        // @todo better state management in the modal itself
-        // so that we can detect if it's open or not without
-        // something stupid like this
-        if (this.$.outlinepopover.$.modal.opened) {
-          this.$.outlinepopover.$.modal.opened = false;
+        // if this is open, close it
+        if (this.__modal && this.__modal.opened) {
+          window.dispatchEvent(
+            new CustomEvent("simple-modal-hide", {
+              bubbles: true,
+              cancelable: true,
+              detail: {}
+            })
+          );
         }
         return;
       }
@@ -401,6 +434,10 @@ class MoocContent extends PolymerElement {
       window.location.reload();
     }
   }
+  ready() {
+    super.ready();
+    this.__modal = window.SimpleModal.requestAvailability();
+  }
   /**
    * Reset scroll position visually and internally data wise.
    */
@@ -416,6 +453,9 @@ class MoocContent extends PolymerElement {
    * Simple way to convert from object to array.
    */
   _toArray(obj) {
+    if (obj == null) {
+      return [];
+    }
     return Object.keys(obj).map(function(key) {
       return obj[key];
     });
@@ -431,7 +471,7 @@ class MoocContent extends PolymerElement {
    */
   __injectStyle(style) {
     // target and wipe our id area by force
-    if (this.shadowRoot.querySelector("#hackycsspotterhates") != null) {
+    if (this.$.hackycsspotterhates != null) {
       dom(this.$.hackycontainer).innerHTML = "";
     }
     // construct a new style tag and inject it overtop of what was there previously
@@ -441,6 +481,12 @@ class MoocContent extends PolymerElement {
     customStyle.textContent = style;
     // we have now successfully ruined something encapsulated and once beautiful
     dom(this.$.hackycontainer).appendChild(customStyle);
+  }
+  /**
+   * highjack shadowDom
+   */
+  _attachDom(dom) {
+    this.appendChild(dom);
   }
 }
 window.customElements.define(MoocContent.tag, MoocContent);

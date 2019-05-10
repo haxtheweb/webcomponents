@@ -3,9 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { LrndesignChartBehaviors } from "./lrndesign-chart-behaviors.js";
-
-export { LrndesignPie };
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 /**
  * `lrndesign-pie`
  * A pie chart
@@ -298,15 +298,16 @@ class LrndesignPie extends LrndesignChartBehaviors {
       }
     };
   }
-
   /**
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
     super.connectedCallback();
-    this.HAXWiring.setup(LrndesignPie.haxProperties, LrndesignPie.tag, this);
+    afterNextRender(this, function() {
+      this.HAXWiring = new HAXWiring();
+      this.HAXWiring.setup(LrndesignPie.haxProperties, LrndesignPie.tag, this);
+    });
   }
-
   /**
    * returns options as an array
    */
@@ -334,8 +335,5 @@ class LrndesignPie extends LrndesignChartBehaviors {
     return options;
   }
 }
-/**
- * life cycle, element is removed from the DOM
- */
-//disconnectedCallback() {}
 window.customElements.define(LrndesignPie.tag, LrndesignPie);
+export { LrndesignPie };

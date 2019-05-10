@@ -4,7 +4,7 @@ import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
-
+import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
 import "@polymer/paper-listbox/paper-listbox.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
@@ -236,7 +236,7 @@ class LrnappCis extends PolymerElement {
                 <paper-button
                   data-course-id\$="[[course.id]]"
                   class="coursecard-wrapper"
-                  on-tap="_loadCourseUrl"
+                  on-click="_loadCourseUrl"
                 >
                   <lrnapp-cis-course-card
                     elevation="2"
@@ -265,13 +265,7 @@ class LrnappCis extends PolymerElement {
         query-params="{{queryParams}}"
       >
       </app-route>
-      <lrnsys-dialog tabindex="-1" id="dialog" disable-auto-focus="">
-        <div slot="content">
-          <div id="loadingCourse" class="loading">
-            <h3>Loading..</h3>
-            <elmsln-loading color="grey-text" size="large"></elmsln-loading>
-          </div>
-        </div>
+      <simple-modal-template id="dialog" title="Course details">
         <div class="dialog-header" slot="header">
           <lrndesign-course-banner
             image="[[activeCourse.attributes.image]]"
@@ -280,6 +274,12 @@ class LrnappCis extends PolymerElement {
             color="[[activeCourse.attributes.color]] darken-4"
           >
           </lrndesign-course-banner>
+        </div>
+        <div slot="content">
+          <div id="loadingCourse" class="loading">
+            <h3>Loading..</h3>
+            <elmsln-loading color="grey-text" size="large"></elmsln-loading>
+          </div>
         </div>
         <div id="coursedetails" slot="content">
           <responsive-grid-row gutter="5">
@@ -309,7 +309,7 @@ class LrnappCis extends PolymerElement {
                   <template is="dom-if" if="[[!service._exists]]">
                     <lrnsys-button
                       raised=""
-                      on-tap="_makeService"
+                      on-click="_makeService"
                       color="grey lighten-4"
                       icon-class="grey lighten-5"
                       data-machine-name\$="[[service.machine_name]]"
@@ -400,7 +400,7 @@ class LrnappCis extends PolymerElement {
           </responsive-grid-row>
           <p>[[activeCourse.attributes.body]]</p>
         </div>
-      </lrnsys-dialog>
+      </simple-modal-template>
       <lrnsys-dialog id="confirm">
         <div class="dialog-header" slot="header">
           Add this to the
@@ -475,7 +475,7 @@ class LrnappCis extends PolymerElement {
             raised=""
             dialog-confirm=""
             autofocus=""
-            on-tap="_confirmBuild"
+            on-click="_confirmBuild"
             class="green"
             >Let's do it!</paper-button
           >
@@ -492,6 +492,21 @@ class LrnappCis extends PolymerElement {
   }
   static get properties() {
     return {
+      elmslnCourse: {
+        type: String
+      },
+      elmslnSection: {
+        type: String
+      },
+      basePath: {
+        type: String
+      },
+      csrfToken: {
+        type: String
+      },
+      endPoint: {
+        type: String
+      },
       /**
        * The load initial data
        */
@@ -630,6 +645,9 @@ class LrnappCis extends PolymerElement {
    * Simple way to convert from object to array.
    */
   _toArray(obj) {
+    if (obj == null) {
+      return [];
+    }
     return Object.keys(obj).map(function(key) {
       return obj[key];
     });
@@ -784,11 +802,6 @@ class LrnappCis extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     afterNextRender(this, function() {
-      // listen for focus event to have fired
-      document.body.addEventListener(
-        "lrnsys-dialog-modal-closed",
-        this._accessibleFocus.bind(this)
-      );
       this.addEventListener("route-change", this._routeChange.bind(this));
     });
   }
@@ -798,26 +811,13 @@ class LrnappCis extends PolymerElement {
   disconnectedCallback() {
     // listen for focus event to have fired
     this.removeEventListener("route-change", this._routeChange.bind(this));
-    document.body.removeEventListener(
-      "lrnsys-dialog-modal-closed",
-      this._accessibleFocus.bind(this)
-    );
     super.disconnectedCallback();
-  }
-
-  /**
-   * Set ourselves as having focus after the modal closes.
-   */
-  _accessibleFocus(e) {
-    // focus on our dialog triggering button
-    this.__rememberClick.focus();
   }
 
   /**
    * Handle tap on paper-button above to redirect to the correct course url.
    */
   _loadCourseUrl(e) {
-    this.__rememberClick = e.target;
     // reset dialog to appear to be loading
     this.$.loadingCourse.hidden = false;
     var normalizedEvent = dom(e);
@@ -843,7 +843,7 @@ class LrnappCis extends PolymerElement {
     // @todo look at query cache mechanism to skip calls
     // if they've already happened. lrnapp-book has some stuff to do this
     this.$.courserequest.generateRequest();
-    this.$.dialog.toggleDialog();
+    this.$.dialog.openModal(e.target);
   }
 
   /**
@@ -881,6 +881,12 @@ class LrnappCis extends PolymerElement {
       this.$.ironlist.fire("iron-resize");
     }, 200);
     return filteredCourses;
+  }
+  /**
+   * highjack shadowDom
+   */
+  _attachDom(dom) {
+    this.appendChild(dom);
   }
 }
 window.customElements.define(LrnappCis.tag, LrnappCis);

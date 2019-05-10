@@ -1,7 +1,8 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { MaterialProgressBehavior } from "./material-progress-behavior.js";
+import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
+import "./material-progress-behavior.js";
 class MaterialProgressHisto extends mixinBehaviors(
-  [MaterialProgressBehavior],
+  [MaterialProgressBehaviorImpl],
   PolymerElement
 ) {
   static get template() {

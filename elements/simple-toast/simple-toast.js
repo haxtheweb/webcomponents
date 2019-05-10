@@ -45,6 +45,10 @@ class SimpleToast extends PolymerElement {
         :host([hidden]) {
           display: none;
         }
+
+        paper-toast {
+          @apply --simple-toast-toast;
+        }
       </style>
       <paper-toast
         id="toast"

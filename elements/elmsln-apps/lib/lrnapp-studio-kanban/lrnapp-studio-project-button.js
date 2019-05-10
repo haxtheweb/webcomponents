@@ -48,6 +48,21 @@ class LrnappStudioProjectButton extends PolymerElement {
 
   static get properties() {
     return {
+      elmslnCourse: {
+        type: String
+      },
+      elmslnSection: {
+        type: String
+      },
+      basePath: {
+        type: String
+      },
+      csrfToken: {
+        type: String
+      },
+      endPoint: {
+        type: String
+      },
       auto: {
         type: Boolean,
         reflectToAttribute: true,

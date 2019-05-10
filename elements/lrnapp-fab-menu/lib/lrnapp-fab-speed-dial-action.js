@@ -1,8 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/paper-fab/paper-fab.js";
 import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-
+import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 /*
 An action within a material design [Floating Action Button with Speed Dial](https://www.google.com/design/spec/components/buttons-floating-action-button.html#buttons-floating-action-button-transitions)
 
@@ -27,7 +26,9 @@ class LrnappFabSpeedDialAction extends PolymerElement {
   }
   static get template() {
     return html`
-      <style include="iron-flex iron-flex-alignment">
+      <style
+        include="iron-flex iron-flex-alignment materializecss-styles-colors"
+      >
         :host {
           @apply --layout-horizontal;
           @apply --layout-center;
@@ -53,18 +54,13 @@ class LrnappFabSpeedDialAction extends PolymerElement {
         }
         .label,
         .fab {
-          display: inline-block;
+          display: flex;
         }
       </style>
       <div class="flex">
         <span class="label"><slot></slot></span>
       </div>
-      <paper-fab
-        class$="fab"
-        style$="background-color:[[colorHex]]"
-        icon="[[icon]]"
-        mini
-      ></paper-fab>
+      <paper-fab class$="fab [[color]]" icon="[[icon]]" mini></paper-fab>
     `;
   }
   static get properties() {
@@ -81,23 +77,8 @@ class LrnappFabSpeedDialAction extends PolymerElement {
       color: {
         type: String,
         value: "blue"
-      },
-      /**
-       * Class for the color
-       */
-      hexColor: {
-        type: String,
-        computed: "_getHexColor(color)"
       }
     };
-  }
-  _getHexColor(color) {
-    let name = color.replace("-text", "");
-    let tmp = new SimpleColors();
-    if (tmp.colors[name]) {
-      return tmp.colors[name][6];
-    }
-    return "#000000";
   }
 }
 window.customElements.define(

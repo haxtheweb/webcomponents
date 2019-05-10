@@ -1,5 +1,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-ajax/iron-ajax.js";
+import "@polymer/iron-list/iron-list.js";
 /**
  * `per-spec-tive`
  * Giving learners a new perspective on education.
@@ -12,7 +13,6 @@ class PerSpecTive extends PolymerElement {
     super();
     import("@polymer/paper-button/paper-button.js");
     import("@polymer/paper-card/paper-card.js");
-    import("@polymer/iron-list/iron-list.js");
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/paper-icon-button/paper-icon-button.js");
   }

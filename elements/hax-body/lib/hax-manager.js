@@ -4,6 +4,7 @@ import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/paper-styles/paper-styles.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";
+import "@polymer/iron-pages/iron-pages.js";
 /**
  * `hax-manager`
  * `A LRN element for brokering the UI for api endpoints both in querying and uploading of new media to eventually bubble up an event for hax-body to have content inserted into it. This is a wiring closet of sorts to ensure we can talk to any backend that's returning a slew of widgets / media to insert.`
@@ -22,7 +23,6 @@ class HaxManager extends PolymerElement {
     import("@polymer/paper-input/paper-input.js");
     import("@polymer/paper-button/paper-button.js");
     import("@polymer/paper-icon-button/paper-icon-button.js");
-    import("@polymer/iron-pages/iron-pages.js");
     import("@vaadin/vaadin-upload/vaadin-upload.js");
     import("@lrnwebcomponents/hax-body/lib/hax-preview.js");
     import("@lrnwebcomponents/hax-body/lib/hax-app-browser.js");
@@ -36,6 +36,10 @@ class HaxManager extends PolymerElement {
           display: block;
           color: var(--hax-color-text);
         }
+        app-drawer:not(:defined),
+        hax-preview:not(:defined),
+        hax-app-browser:not(:defined),
+        hax-gizmo-browser:not(:defined),
         iron-icon:not(:defined) {
           display: none;
         }

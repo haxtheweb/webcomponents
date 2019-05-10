@@ -3,9 +3,9 @@ import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
-/*
-`lrnapp-studio-submission-button`
-Allows users to either start a submission or link to a submission.
+/**
+ * `lrnapp-studio-submission-button`
+ * `Allows users to either start a submission or link to a submission.`
 
 Usage:
 ```
@@ -19,16 +19,15 @@ class LrnappStudioSubmissionButton extends PolymerElement {
           display: block;
         }
       </style>
-
       <template is="dom-if" if="[[!submissionId]]">
         <lrnsys-button
-          raised=""
-          on-tap="_createSubmission"
+          raised
+          on-click="_createSubmission"
           label="Create submission"
         ></lrnsys-button>
         <iron-ajax
           id="ajaxCreateStub"
-          url="[[createStubUrl]]"
+          url="[[endPoint]]/api/submissions/create-stub?token=[[csrfToken]]"
           method="POST"
           body="[[assignmentId]]"
           handle-as="json"
@@ -43,17 +42,14 @@ class LrnappStudioSubmissionButton extends PolymerElement {
           href="[[_submissionUrl(submissionId)]]"
         ></lrnsys-button>
       </template>
-
       <template is="dom-if" if="[[displayErrors]]">
         <paper-toast id="toast"></paper-toast>
       </template>
     `;
   }
-
   static get tag() {
     return "lrnapp-studio-submission-button";
   }
-
   static get properties() {
     return {
       auto: {
@@ -71,22 +67,32 @@ class LrnappStudioSubmissionButton extends PolymerElement {
         value: false,
         reflectToAttribute: true
       },
-      endPoint: String,
-      csrfToken: String,
       displayErrors: {
         type: Boolean,
         value: true
+      },
+      elmslnCourse: {
+        type: String
+      },
+      elmslnSection: {
+        type: String
+      },
+      basePath: {
+        type: String,
+        notify: true,
+        reflectToAttribute: true
+      },
+      csrfToken: {
+        type: String,
+        notify: true,
+        reflectToAttribute: true
+      },
+      endPoint: {
+        type: String,
+        notify: true,
+        reflectToAttribute: true
       }
     };
-  }
-
-  static get observers() {
-    return ["_requestUrlChanged(endPoint, csrfToken)"];
-  }
-
-  _requestUrlChanged(endPoint, csrfToken) {
-    this.createStubUrl =
-      endPoint + "/api/submissions/create-stub?token=" + csrfToken;
   }
 
   _createSubmission() {

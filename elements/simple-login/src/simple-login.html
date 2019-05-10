@@ -1,0 +1,16 @@
+<div id="loginform">
+  <paper-progress disabled="[[!loading]]" indeterminate></paper-progress>
+  <div id="loginformcontent">
+    <h1>[[title]]</h1>
+    <h2>[[subtitle]]</h2>
+    <div id="errormsg">[[errorMsg]]</div>
+    <slot></slot>
+    <paper-input id="userinput" value="{{username}}" disabled="[[loading]]" type="text" label="[[userInputLabel]]"
+      required error-message="[[userInputErrMsg]]"></paper-input>
+    <paper-input id="passinput" value="{{password}}" disabled="[[loading]]" type="password"
+      label="[[passwordInputLabel]]" required error-message="[[passwordInputErrMsg]]"></paper-input>
+    <paper-button on-click="_login" disabled="[[loading]]" id="loginbtn" raised class="indigo">[[loginBtnText]]
+    </paper-button>
+    <span id="buttons"><slot name="buttons"></slot></span>
+  </div>
+</div>

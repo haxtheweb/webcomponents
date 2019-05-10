@@ -1,13 +1,12 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
-import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import { SecureRequestXhr } from "@lrnwebcomponents/secure-request/secure-request.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-button/paper-button.js";
 import "@vaadin/vaadin-upload/vaadin-upload.js";
 import "@lrnwebcomponents/secure-request/secure-request.js";
+import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
 import "./lrnapp-studio-submission-edit-add-asset.js";
 import "./lrnapp-studio-submission-edit-file.js";
 class LrnappStudioSubmissionEditFiles extends SecureRequestXhr(PolymerElement) {
@@ -19,29 +18,16 @@ class LrnappStudioSubmissionEditFiles extends SecureRequestXhr(PolymerElement) {
           position: relative;
           min-height: 200px;
         }
-
         #pages {
           display: block;
         }
-
         .files__files {
           display: flex;
           flex-wrap: wrap;
         }
-
         .files__files > * {
           margin-right: 16px;
           min-width: 200px;
-        }
-
-        neon-animated-pages .iron-selected {
-          position: static;
-        }
-
-        paper-dialog {
-          width: 50%;
-          width: 50vmax;
-          padding: 16px;
         }
       </style>
 
@@ -58,36 +44,28 @@ class LrnappStudioSubmissionEditFiles extends SecureRequestXhr(PolymerElement) {
           icon="editor:attach-file"
         ></lrnapp-studio-submission-edit-add-asset>
       </div>
-
-      <paper-dialog
-        id="dialog"
-        entry-animation="scale-up-animation"
-        exit-animation="fade-out-animation"
-        with-backdrop=""
-      >
-        <h2>Add Files(s)</h2>
-        <paper-dialog-scrollable>
-          <div class="files__upload">
-            <template is="dom-if" if="[[uploadUrl]]">
-              <vaadin-upload
-                accept="[[fileTypes]]"
-                target="[[uploadUrl]]"
-                method="POST"
-                form-data-name="file-upload"
-                on-upload-success="_handleImageUploadSuccess"
-              >
-                <div class="files__drop-label">
-                  <iron-icon icon="description"></iron-icon>
-                  Upload files here:
-                </div>
-              </vaadin-upload>
-            </template>
-          </div>
-        </paper-dialog-scrollable>
-        <div class="buttons">
-          <paper-button dialog-dismiss="">Cancel</paper-button>
+      <simple-modal-template id="dialog" title="Add Files">
+        <div slot="header">Add Files</div>
+        <div class="files__upload" slot="content">
+          <template is="dom-if" if="[[uploadUrl]]">
+            <vaadin-upload
+              accept="[[fileTypes]]"
+              target="[[uploadUrl]]"
+              method="POST"
+              form-data-name="file-upload"
+              on-upload-success="_handleImageUploadSuccess"
+            >
+              <div class="files__drop-label">
+                <iron-icon icon="description"></iron-icon>
+                Upload files here:
+              </div>
+            </vaadin-upload>
+          </template>
         </div>
-      </paper-dialog>
+        <div slot="buttons">
+          <paper-button dialog-dismiss>Cancel</paper-button>
+        </div>
+      </simple-modal-template>
     `;
   }
   static get tag() {

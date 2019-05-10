@@ -30,7 +30,7 @@ class LrnappStudioAssignmentButton extends PolymerElement {
       ></lrnsys-button>
       <iron-ajax
         id="ajaxCreateStub"
-        url="[[createAssignmentUrl]]"
+        url="[[endPoint]]/api/assignments/create-stub?token=[[csrfToken]]"
         method="POST"
         body="[[projectId]]"
         handle-as="json"
@@ -47,6 +47,26 @@ class LrnappStudioAssignmentButton extends PolymerElement {
   }
   static get properties() {
     return {
+      elmslnCourse: {
+        type: String
+      },
+      elmslnSection: {
+        type: String
+      },
+      basePath: {
+        type: String,
+        notify: true
+      },
+      csrfToken: {
+        type: String,
+        notify: true,
+        reflectToAttribute: true
+      },
+      endPoint: {
+        type: String,
+        notify: true,
+        reflectToAttribute: true
+      },
       auto: {
         type: Boolean,
         reflectToAttribute: true,
@@ -59,10 +79,6 @@ class LrnappStudioAssignmentButton extends PolymerElement {
       },
       projectId: {
         type: String
-      },
-      createAssignmentUrl: {
-        type: String,
-        value: null
       },
       iconClass: {
         type: String,
@@ -83,16 +99,8 @@ class LrnappStudioAssignmentButton extends PolymerElement {
       icon: {
         type: String,
         value: null
-      },
-      endPoint: String,
-      csrfToken: String
+      }
     };
-  }
-  ready() {
-    super.ready();
-    // @todo need to load a assignment if one exists ahead of time
-    this.createAssignmentUrl =
-      this.endPoint + "/api/assignments/create-stub?token=" + this.csrfToken;
   }
   _createAssignment() {
     this.shadowRoot.querySelector("#ajaxCreateStub").generateRequest();

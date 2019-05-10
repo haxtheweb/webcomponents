@@ -101,8 +101,8 @@ class SimpleDrawer extends PolymerElement {
           font-size: 24px;
           margin: 0 0 8px 0;
           padding: 0 16px;
-          height: 40px;
-          line-height: 48px;
+          height: 64px;
+          line-height: 64px;
           display: flex;
           text-align: left;
           justify-content: space-between;

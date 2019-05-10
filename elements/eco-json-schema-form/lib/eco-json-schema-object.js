@@ -438,75 +438,76 @@ class EcoJsonSchemaObject extends mixinBehaviors(
         } else {
           return console.error("Unknown property type %s", schema.type);
         }
-
         return property;
       }
     );
   }
   _schemaPropertyChanged(event, detail) {
-    if (detail.path && /\.length$/.test(detail.path)) {
-      return;
-    }
-    var ctx = this;
-    var property = event.target.schemaProperty;
-    var path = ["value", property.property];
-
-    if (detail.path && /\.splices$/.test(detail.path)) {
-      var parts = detail.path.split(".").slice(1, -1);
-      while (parts.length) {
-        path.push(parts.shift());
-        if (property.keyMap && property.keyMap[path.join(".")]) {
-          path = property.keyMap[path.join(".")].split(".");
-        }
+    if (detail) {
+      if (detail.path && /\.length$/.test(detail.path)) {
+        return;
       }
+      var ctx = this;
+      var property = event.target.schemaProperty;
+      var path = ["value", property.property];
 
-      if (detail.value.keySplices) {
-        if (property.keyMap) {
-          detail.value.keySplices.forEach(splice => {
-            splice.removed.forEach(k => {
-              delete property.keyMap[path.concat([k]).join(".")];
+      if (detail.path && /\.splices$/.test(detail.path)) {
+        var parts = detail.path.split(".").slice(1, -1);
+        while (parts.length) {
+          path.push(parts.shift());
+          if (property.keyMap && property.keyMap[path.join(".")]) {
+            path = property.keyMap[path.join(".")].split(".");
+          }
+        }
+
+        if (detail.value.keySplices) {
+          if (property.keyMap) {
+            detail.value.keySplices.forEach(splice => {
+              splice.removed.forEach(k => {
+                delete property.keyMap[path.concat([k]).join(".")];
+              });
             });
+          }
+        }
+
+        if (detail.value) {
+          detail.value.indexSplices.forEach(splice => {
+            var args = [path.join("."), splice.index, splice.removed.length];
+            if (splice.addedCount) {
+              for (var i = 0, ii = splice.addedCount; i < ii; i++) {
+                if (splice.addedKeys && splice.addedKeys[i]) {
+                  property.keyMap = property.keyMap || {};
+                  property.keyMap[
+                    path.concat([splice.addedKeys[i]]).join(".")
+                  ] = path.concat([i + splice.index]).join(".");
+                }
+                args.push(ctx._deepClone(splice.object[i + splice.index]));
+              }
+            }
+            ctx.splice.apply(ctx, args);
           });
         }
-      }
-
-      if (detail.value) {
-        detail.value.indexSplices.forEach(splice => {
-          var args = [path.join("."), splice.index, splice.removed.length];
-          if (splice.addedCount) {
-            for (var i = 0, ii = splice.addedCount; i < ii; i++) {
-              if (splice.addedKeys && splice.addedKeys[i]) {
-                property.keyMap = property.keyMap || {};
-                property.keyMap[
-                  path.concat([splice.addedKeys[i]]).join(".")
-                ] = path.concat([i + splice.index]).join(".");
-              }
-              args.push(ctx._deepClone(splice.object[i + splice.index]));
-            }
-          }
-          ctx.splice.apply(ctx, args);
-        });
-      }
-    } else if (detail.path) {
-      var parts = detail.path.split(".").slice(1);
-      var v = this.value;
-      if (!v.hasOwnProperty(property.property)) {
-        this.set("value." + property.property, {});
-        this.notifyPath("value." + property.property);
-      }
-      while (parts.length) {
-        var k = parts.shift();
-        path.push(k);
-        if (property.keyMap && property.keyMap[path.join(".")]) {
-          path = property.keyMap[path.join(".")].split(".");
+      } else if (detail.path) {
+        var parts = detail.path.split(".").slice(1);
+        var v = this.value;
+        if (!v.hasOwnProperty(property.property)) {
+          this.set("value." + property.property, {});
+          this.notifyPath("value." + property.property);
         }
+        while (parts.length) {
+          var k = parts.shift();
+          path.push(k);
+          if (property.keyMap && property.keyMap[path.join(".")]) {
+            path = property.keyMap[path.join(".")].split(".");
+          }
+        }
+        this.set(path.join("."), this._deepClone(detail.value));
+        this.notifyPath(path.join("."));
+      } else {
+        property.value = detail.value;
+        this.set(path, this._deepClone(detail.value));
+        this.notifyPath(path);
       }
-      this.set(path.join("."), this._deepClone(detail.value));
-      this.notifyPath(path.join("."));
-    } else {
-      property.value = detail.value;
-      this.set(path, this._deepClone(detail.value));
-      this.notifyPath(path);
     }
   }
   _setValue() {

@@ -357,6 +357,21 @@ class LrnappStudioSubmissionPage extends PolymerElement {
         type: Boolean,
         value: false
       },
+      elmslnCourse: {
+        type: String
+      },
+      elmslnSection: {
+        type: String
+      },
+      basePath: {
+        type: String
+      },
+      csrfToken: {
+        type: String
+      },
+      endPoint: {
+        type: String
+      },
       endPoint: {
         type: String
       },

@@ -49,6 +49,21 @@ class LrnappMediaUpload extends PolymerElement {
   }
   static get properties() {
     return {
+      elmslnCourse: {
+        type: String
+      },
+      elmslnSection: {
+        type: String
+      },
+      basePath: {
+        type: String
+      },
+      csrfToken: {
+        type: String
+      },
+      endPoint: {
+        type: String
+      },
       uploadPath: {
         type: String,
         notify: true,

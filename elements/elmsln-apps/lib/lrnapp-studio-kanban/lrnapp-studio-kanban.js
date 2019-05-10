@@ -8,6 +8,7 @@ import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-badge/paper-badge.js";
 import "@polymer/paper-toggle-button/paper-toggle-button.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
+import "@polymer/app-layout/app-header/app-header.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/paper-toast/paper-toast.js";
@@ -20,6 +21,7 @@ import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "./lrnapp-studio-project-button.js";
 import "./lrnapp-studio-assignment-button.js";
+import "../lrnapp-studio-submission/lrnapp-studio-submission-button.js";
 class LrnappStudioKanban extends PolymerElement {
   static get template() {
     return html`
@@ -27,7 +29,6 @@ class LrnappStudioKanban extends PolymerElement {
         :host {
           display: block;
         }
-
         #loading {
           width: 100%;
           z-index: 1000;
@@ -39,7 +40,6 @@ class LrnappStudioKanban extends PolymerElement {
           position: absolute;
           background-color: white;
         }
-
         .projects-container {
           -webkit-box-pack: start;
           -ms-flex-pack: start;
@@ -47,11 +47,14 @@ class LrnappStudioKanban extends PolymerElement {
           -webkit-box-align: start;
           -ms-flex-align: start;
           align-items: flex-start;
-          min-height: 30em;
+          min-height: 23em;
           width: 150vw;
-          padding-top: 1em;
         }
-
+        @media screen and (max-width: 800px) {
+          .projects-container {
+            width: auto;
+          }
+        }
         .projects-window {
           width: 100vw;
           overflow-x: scroll;
@@ -64,39 +67,32 @@ class LrnappStudioKanban extends PolymerElement {
           scrollbar-track-color: #ffc107;
           scrollbar-arrow-color: #ffc107;
         }
-
         .projects-window::-webkit-scrollbar-track {
           background-color: #833900;
         }
         /* the new scrollbar will have a flat appearance with the set background color */
-
         .projects-window::-webkit-scrollbar-thumb {
           background-color: #ffc107;
         }
         /* this will style the thumb, ignoring the track */
-
         .projects-window::-webkit-scrollbar-button {
           background-color: #833900;
         }
         /* optionally, you can style the top and the bottom buttons (left and right for horizontal bars) */
-
         .projects-window::-webkit-scrollbar-corner {
           background-color: #833900;
         }
         /* if both the vertical and the horizontal bars appear, then perhaps the right bottom corner*/
-
         .projects-window::-webkit-scrollbar {
           width: 1rem;
           height: 1rem;
         }
         /* this targets the default scrollbar (compulsory) */
-
         paper-button {
           padding: 0;
           margin: 0;
           min-width: 1rem;
         }
-
         .project-card {
           width: 100%;
           min-width: 20em;
@@ -104,56 +100,49 @@ class LrnappStudioKanban extends PolymerElement {
           margin: 0;
           height: 100%;
           min-height: 10em;
+          --paper-card-header: {
+            max-width: 60%;
+            word-break: break-all;
+          }
         }
         .project-container {
           padding: 1em;
         }
         .project-card .card-content {
           height: 100%;
-          min-height: 8em;
-          max-height: 10em;
+          min-height: 288px;
+          max-height: 300px;
           overflow: scroll;
         }
-
         .project-operations {
           position: absolute;
           top: 0;
           right: 0;
-          padding: 1em;
         }
-
         .project-operations .operation {
           display: inline-flex;
-          height: 2.5em;
-          width: 2.5em;
         }
         .project-operations .operation[hidden] {
           display: none;
         }
-
         .assignment-row {
           border: 1px solid #000000;
           background-color: #ffffff;
         }
-
         .assignment-row .assignment-row-button.active {
           background-color: var(--paper-amber-50);
           font-weight: bold;
         }
-
         .assignment-row:hover .assignment-operations {
           display: block;
           overflow: visible;
           margin: 0.2em;
         }
-
         .assignment-row-button {
           width: 100%;
           justify-content: flex-start;
-          height: 3em;
           text-transform: none;
         }
-
         .status-indicator {
           border-right: 1px solid grey;
           padding: 0.5em;
@@ -164,20 +153,10 @@ class LrnappStudioKanban extends PolymerElement {
           justify-content: center;
           align-items: center;
         }
-
         .button-contents {
           display: flex;
           align-content: center;
         }
-
-        .assignment-title {
-          display: inline-flex;
-          align-items: center;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          line-height: 1em;
-        }
-
         .assignment-operations {
           position: absolute;
           top: 0;
@@ -185,24 +164,25 @@ class LrnappStudioKanban extends PolymerElement {
           padding: 0;
           display: none;
         }
-
         .assignment-operations.show {
           display: block;
           overflow: visible;
         }
-
         .assignment-operations .operation {
           display: inline-flex;
           width: 2.5em;
           height: 2.5em;
+          margin: -4px 4px 0 0;
         }
         .assignment-operations .operation[hidden] {
           display: none;
         }
-
         lrnapp-studio-project-button {
-          margin: 0em auto 1em;
+          margin: 0em auto;
           max-width: 20em;
+        }
+        #activeitemcontainer {
+          display: none;
         }
       </style>
       <iron-ajax
@@ -242,7 +222,7 @@ class LrnappStudioKanban extends PolymerElement {
       </div>
       <lrnapp-studio-project-button
         hidden\$="[[!projectResponse.data.canCreateProjects]]"
-        classes="amber darken-3 white-text"
+        classes="amber darken-4 white-text"
         end-point="[[endPoint]]"
         csrf-token="[[csrfToken]]"
         icon="add"
@@ -253,13 +233,14 @@ class LrnappStudioKanban extends PolymerElement {
           as="project"
           class="projects-container"
           grid=""
+          mutable-data
         >
           <template class="projects-container-items">
             <div class="project-container">
               <paper-card
                 id\$="project-[[project.id]]"
                 class="project-card grey lighten-3"
-                heading="{{project.attributes.title}}"
+                heading="[[project.attributes.title]]"
                 elevation="2"
               >
                 <div class="project-operations">
@@ -267,7 +248,7 @@ class LrnappStudioKanban extends PolymerElement {
                     icon-class="no-margin"
                     id\$="project-[[project.id]]-edit"
                     alt="Edit project"
-                    class="circle operation"
+                    class="operation"
                     hover-class="amber lighten-2"
                     hidden="[[!project.meta.canUpdate]]"
                     icon="create"
@@ -279,7 +260,7 @@ class LrnappStudioKanban extends PolymerElement {
                     icon-class="no-margin"
                     id\$="project-[[project.id]]-add"
                     alt="Add assignment"
-                    class="circle operation"
+                    class="operation"
                     hover-class="amber lighten-2"
                     hidden="[[!project.meta.canUpdate]]"
                     icon="add"
@@ -290,7 +271,7 @@ class LrnappStudioKanban extends PolymerElement {
                   <lrnsys-button
                     id\$="project-[[project.id]]-delete"
                     alt="Delete project!"
-                    class="circle operation"
+                    class="operation"
                     hover-class="red darken-2 white-text"
                     header="Delete project!"
                     hidden="[[!project.meta.canDelete]]"
@@ -304,96 +285,24 @@ class LrnappStudioKanban extends PolymerElement {
                   <iron-list
                     items="[[_toArray(project.relationships.assignments)]]"
                     as="assignment"
+                    mutable-data
                   >
                     <template>
                       <div class="assignment-row" id="assignment">
-                        <lrnsys-dialog
-                          body-append=""
-                          on-focusin="assignmentFocusIn"
-                          class="assignment-row-button"
+                        <lrnsys-button
                           id\$="assignment-[[project.id]]-[[assignment.id]]"
-                          header="[[assignment.attributes.title]]"
+                          class="assignment-row-button"
                           hover-class="amber lighten-5"
+                          on-click="assignmentClick"
                         >
-                          <span slot="button" class="button-contents">
-                            <div
-                              class\$="status-indicator [[assignment.meta.relatedSubmissions.complete.color]]"
-                            >
-                              <iron-icon
-                                icon="[[assignment.meta.relatedSubmissions.complete.icon]]"
-                                disabled\$="[[!assignment.meta.relatedSubmissions.canCreate]]"
-                              ></iron-icon>
-                            </div>
-                            <div class="assignment-title">
-                              [[assignment.attributes.title]]
-                            </div>
-                          </span>
-                          <div slot="content">
-                            <app-toolbar
-                              class\$="[[assignment.meta.relatedSubmissions.complete.color]]"
-                            >
-                              <div>
-                                <iron-icon
-                                  icon="[[assignment.meta.relatedSubmissions.complete.icon]]"
-                                  disabled\$="[[!assignment.meta.relatedSubmissions.canCreate]]"
-                                ></iron-icon>
-                                [[assignment.meta.relatedSubmissions.complete.submission.title]]
-                              </div>
-                              <div
-                                spacer=""
-                                class="comment-box"
-                                hidden\$="[[!assignment.meta.relatedSubmissions.complete.submission.id]]"
-                              >
-                                <paper-button
-                                  id\$="assignment-[[project.id]]-[[assignment.id]]-comments"
-                                  style="margin:0;padding:.25em;text-transform:none;"
-                                >
-                                  <iron-icon
-                                    icon="communication:forum"
-                                  ></iron-icon>
-                                  [[assignment.meta.relatedSubmissions.complete.submission.meta.comments.count]]
-                                  Comments
-                                </paper-button>
-                                <paper-badge
-                                  hidden\$="[[displayNewBadge(assignment.meta.relatedSubmissions.complete.submission.meta.new)]]"
-                                  for\$="assignment-[[project.id]]-[[assignment.id]]-comments"
-                                  label\$="[[assignment.meta.relatedSubmissions.complete.submission.meta.comments.new]]"
-                                ></paper-badge>
-                              </div>
-
-                              <lrnapp-studio-submission-button
-                                spacer=""
-                                auto=""
-                                assignment-id="[[assignment.id]]"
-                                submission="{{submission}}"
-                                end-point="[[buildSubmissionPath(basePath)]]"
-                                csrf-token="[[csrfToken]]"
-                                submission-id="[[assignment.meta.relatedSubmissions.complete.submission.id]]"
-                              ></lrnapp-studio-submission-button>
-                              <div main-title=""></div>
-                              <paper-toggle-button
-                                id\$="assignment-[[project.id]]-[[assignment.id]]-toggle"
-                                on-tap="statusToggle"
-                              ></paper-toggle-button>
-                              <span
-                                id\$="assignment-[[project.id]]-[[assignment.id]]-toggle-text"
-                              ></span>
-                              <div bottom-item="" class="status-rationale">
-                                [[assignment.meta.relatedSubmissions.complete.rationale.text]]
-                              </div>
-                            </app-toolbar>
-                            <lrnsys-render-html
-                              style="padding:2em;"
-                              html="[[assignment.attributes.body]]"
-                            ></lrnsys-render-html>
-                          </div>
-                        </lrnsys-dialog>
+                          [[assignment.attributes.title]]
+                        </lrnsys-button>
                         <span class="assignment-operations">
                           <lrnsys-button
                             id\$="assignment-[[project.id]]-[[assignment.id]]-add-critique"
                             icon="editor:insert-comment"
                             alt="Add critique"
-                            class="circle operation"
+                            class="operation"
                             hover-class="green lighten-2"
                             hidden="[[!assignment.meta.canCritique]]"
                             href\$="[[assignment.meta.critiqueLink]]"
@@ -403,7 +312,7 @@ class LrnappStudioKanban extends PolymerElement {
                             id\$="assignment-[[project.id]]-[[assignment.id]]-edit"
                             icon="editor:mode-edit"
                             alt="Edit"
-                            class="circle operation"
+                            class="operation"
                             hover-class="amber lighten-4"
                             hidden="[[!assignment.meta.canUpdate]]"
                             on-tap="_makeAssignmentEditLink"
@@ -413,7 +322,7 @@ class LrnappStudioKanban extends PolymerElement {
                             id\$="assignment-[[project.id]]-[[assignment.id]]-delete"
                             icon="delete"
                             alt="Delete"
-                            class="circle operation"
+                            class="operation"
                             hover-class="amber lighten-4"
                             hidden="[[!assignment.meta.canDelete]]"
                             on-tap="_deleteAssignmentDialog"
@@ -444,6 +353,75 @@ class LrnappStudioKanban extends PolymerElement {
           >
         </div>
       </paper-dialog>
+      <div id="activeitemcontainer">
+        <span id="activeheader" class="button-contents">
+          <div
+            class\$="status-indicator [[activeAssignmentNode.meta.relatedSubmissions.complete.color]]"
+          >
+            <iron-icon
+              icon="[[activeAssignmentNode.meta.relatedSubmissions.complete.icon]]"
+              disabled\$="[[!activeAssignmentNode.meta.relatedSubmissions.canCreate]]"
+            ></iron-icon>
+          </div>
+        </span>
+        <div id="activecontent">
+          <app-header reveals>
+            <app-toolbar
+              class\$="[[activeAssignmentNode.meta.relatedSubmissions.complete.color]]"
+            >
+              <div>
+                <iron-icon
+                  icon="[[activeAssignmentNode.meta.relatedSubmissions.complete.icon]]"
+                  disabled\$="[[!activeAssignmentNode.meta.relatedSubmissions.canCreate]]"
+                ></iron-icon>
+                [[activeAssignmentNode.meta.relatedSubmissions.complete.submission.title]]
+              </div>
+              <div
+                spacer=""
+                class="comment-box"
+                hidden\$="[[!activeAssignmentNode.meta.relatedSubmissions.complete.submission.id]]"
+              >
+                <paper-button
+                  id\$="assignment-[[activeAssignmentNode.relationships.project.data.id]]-[[activeAssignmentNode.id]]-comments"
+                  style="margin:0;padding:.25em;text-transform:none;"
+                >
+                  <iron-icon icon="communication:forum"></iron-icon>
+                  [[activeAssignmentNode.meta.relatedSubmissions.complete.submission.meta.comments.count]]
+                  Comments
+                </paper-button>
+                <paper-badge
+                  hidden\$="[[displayNewBadge(activeAssignmentNode.meta.relatedSubmissions.complete.submission.meta.new)]]"
+                  for\$="assignment-[[activeAssignmentNode.relationships.project.data.id]]-[[activeAssignmentNode.id]]-comments"
+                  label\$="[[activeAssignmentNode.meta.relatedSubmissions.complete.submission.meta.comments.new]]"
+                ></paper-badge>
+              </div>
+
+              <lrnapp-studio-submission-button
+                spacer
+                auto
+                assignment-id="[[activeAssignmentNode.id]]"
+                submission="{{submission}}"
+                end-point="[[buildSubmissionPath(basePath)]]"
+                csrf-token="[[csrfToken]]"
+                submission-id="[[activeAssignmentNode.meta.relatedSubmissions.complete.submission.id]]"
+              ></lrnapp-studio-submission-button>
+              <div main-title=""></div>
+              <paper-toggle-button
+                id="activetoggle"
+                on-tap="statusToggle"
+              ></paper-toggle-button>
+              <span id="activetoggletext"></span>
+              <div bottom-item="" class="status-rationale">
+                [[activeAssignmentNode.meta.relatedSubmissions.complete.rationale.text]]
+              </div>
+            </app-toolbar>
+          </app-header>
+          <lrnsys-render-html
+            style="padding:2em;"
+            html="[[activeAssignmentNode.attributes.body]]"
+          ></lrnsys-render-html>
+        </div>
+      </div>
     `;
   }
 
@@ -453,13 +431,31 @@ class LrnappStudioKanban extends PolymerElement {
 
   static get properties() {
     return {
-      /**
-       * Tracks the active assignment.
-       */
+      elmslnCourse: {
+        type: String
+      },
+      elmslnSection: {
+        type: String
+      },
+      basePath: {
+        type: String,
+        notify: true
+      },
+      csrfToken: {
+        type: String,
+        notify: true
+      },
+      endPoint: {
+        type: String,
+        notify: true
+      },
       activeAssignment: {
         type: String,
         value: null,
         notify: true
+      },
+      activeAssignmentNode: {
+        type: Object
       },
       projectToDelete: {
         type: String,
@@ -668,18 +664,13 @@ class LrnappStudioKanban extends PolymerElement {
       .relationships.assignments["assignment-" + parts[2]].meta
       .relatedSubmissions.complete;
     // ensure this isn't disabled though it shouldn't be possible
-    if (
-      !this.shadowRoot.querySelector("#" + this.activeAssignment + "-toggle")
-        .disabled
-    ) {
+    if (!this.shadowRoot.querySelector("#activetoggle").disabled) {
       // hide the loading screen
       this.$.loading.hidden = false;
       // queue of the request parameters
       xhr.params = {
         submissionid: submission.submission.id,
-        status: this.shadowRoot.querySelector(
-          "#" + this.activeAssignment + "-toggle"
-        ).checked
+        status: this.shadowRoot.querySelector("#activetoggle").checked
       };
       // send the request
       xhr.generateRequest();
@@ -689,7 +680,7 @@ class LrnappStudioKanban extends PolymerElement {
   /**
    * Handle toggle for mouse class and manage classList array for paper-button.
    */
-  assignmentFocusIn(e) {
+  assignmentClick(e) {
     var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
     if (this.activeAssignment != null && this.activeAssignment != local.id) {
@@ -701,9 +692,28 @@ class LrnappStudioKanban extends PolymerElement {
         .classList.remove("active");
     }
     this.activeAssignment = local.id;
+    var parts = this.activeAssignment.split("-");
+    this.activeAssignmentNode = this.projectResponse.data.projects[
+      "project-" + parts[1]
+    ].relationships.assignments["assignment-" + parts[2]];
     this._setToggle(false);
     local.nextElementSibling.classList.add("show");
     local.classList.add("active");
+    window.dispatchEvent(
+      new CustomEvent("simple-modal-show", {
+        bubbles: true,
+        cancelable: false,
+        detail: {
+          title: this.activeAssignmentNode.attributes.title + " details",
+          elements: {
+            header: this.$.activeheader,
+            content: this.$.activecontent
+          },
+          invokedBy: local,
+          clone: true
+        }
+      })
+    );
   }
 
   /**
@@ -748,49 +758,31 @@ class LrnappStudioKanban extends PolymerElement {
       // not finished but also not started
       if (submission.status == 0 && submission.submission.length == 0) {
         if (!update) {
-          this.shadowRoot.querySelector(
-            "#" + this.activeAssignment + "-toggle"
-          ).disabled = true;
-          this.shadowRoot.querySelector(
-            "#" + this.activeAssignment + "-toggle"
-          ).checked = false;
+          this.shadowRoot.querySelector("#activetoggle").disabled = true;
+          this.shadowRoot.querySelector("#activetoggle").checked = false;
         }
-        this.shadowRoot.querySelector(
-          "#" + this.activeAssignment + "-toggle"
-        ).title = "Submission not started";
-        this.shadowRoot.querySelector(
-          "#" + this.activeAssignment + "-toggle-text"
-        ).textContent = "Submission not started";
+        this.shadowRoot.querySelector("#activetoggle").title =
+          "Submission not started";
+        this.shadowRoot.querySelector("#activetoggletext").textContent =
+          "Submission not started";
       } else if (submission.status == 0) {
         if (!update) {
-          this.shadowRoot.querySelector(
-            "#" + this.activeAssignment + "-toggle"
-          ).disabled = false;
-          this.shadowRoot.querySelector(
-            "#" + this.activeAssignment + "-toggle"
-          ).checked = false;
+          this.shadowRoot.querySelector("#activetoggle").disabled = false;
+          this.shadowRoot.querySelector("#activetoggle").checked = false;
         }
-        this.shadowRoot.querySelector(
-          "#" + this.activeAssignment + "-toggle"
-        ).title = "Submission started";
-        this.shadowRoot.querySelector(
-          "#" + this.activeAssignment + "-toggle-text"
-        ).textContent = "Submission in progress";
+        this.shadowRoot.querySelector("#activetoggle").title =
+          "Submission started";
+        this.shadowRoot.querySelector("#activetoggletext").textContent =
+          "Submission in progress";
       } else {
         if (!update) {
-          this.shadowRoot.querySelector(
-            "#" + this.activeAssignment + "-toggle"
-          ).disabled = false;
-          this.shadowRoot.querySelector(
-            "#" + this.activeAssignment + "-toggle"
-          ).checked = true;
+          this.shadowRoot.querySelector("#activetoggle").disabled = false;
+          this.shadowRoot.querySelector("#activetoggle").checked = true;
         }
-        this.shadowRoot.querySelector(
-          "#" + this.activeAssignment + "-toggle"
-        ).title = "Submission ready";
-        this.shadowRoot.querySelector(
-          "#" + this.activeAssignment + "-toggle-text"
-        ).textContent = "Submission ready";
+        this.shadowRoot.querySelector("#activetoggle").title =
+          "Submission ready";
+        this.shadowRoot.querySelector("#activetoggletext").textContent =
+          "Submission ready";
       }
     }
   }
@@ -817,9 +809,18 @@ class LrnappStudioKanban extends PolymerElement {
    * Simple way to convert from object to array.
    */
   _toArray(obj) {
+    if (obj == null) {
+      return [];
+    }
     return Object.keys(obj).map(function(key) {
       return obj[key];
     });
+  }
+  ready() {
+    super.ready();
+    this.__modal = window.SimpleModal.requestAvailability();
+    this.__modal.style =
+      "--simple-modal-min-width: 50vw;--simple-modal-min-height: 50vh;";
   }
 }
 window.customElements.define(LrnappStudioKanban.tag, LrnappStudioKanban);

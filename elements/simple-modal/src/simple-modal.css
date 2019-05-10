@@ -37,6 +37,8 @@ paper-dialog-scrollable:not(:defined) {
   color: var(--simple-modal-titlebar-color,#444);
   background-color: var(--simple-modal-titlebar-background,#ddd);
   border-radius: 3px 3px 0 0;
+  height: 64px;
+  line-height: 64px;
   @apply --simple-modal-top;
 }
 

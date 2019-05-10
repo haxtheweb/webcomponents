@@ -109,6 +109,21 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
   }
   static get properties() {
     return {
+      elmslnCourse: {
+        type: String
+      },
+      elmslnSection: {
+        type: String
+      },
+      basePath: {
+        type: String
+      },
+      csrfToken: {
+        type: String
+      },
+      endPoint: {
+        type: String
+      },
       commentTitle: {
         type: String,
         value: "Comment title",

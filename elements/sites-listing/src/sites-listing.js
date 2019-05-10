@@ -5,6 +5,9 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-ajax/iron-ajax.js";
+import "@polymer/iron-list/iron-list.js";
+import "@lrnwebcomponents/sites-listing/lib/site-card.js";
+import "@polymer/paper-button/paper-button.js";
 /**
  * `sites-listing`
  * @demo demo/index.html
@@ -12,10 +15,7 @@ import "@polymer/iron-ajax/iron-ajax.js";
 class SitesListing extends PolymerElement {
   constructor() {
     super();
-    import("@polymer/iron-list/iron-list.js");
-    import("@polymer/paper-button/paper-button.js");
     import("@lrnwebcomponents/elmsln-loading/elmsln-loading.js");
-    import("@lrnwebcomponents/sites-listing/lib/site-card.js");
   }
   static get template() {
     return html`

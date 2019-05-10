@@ -28,7 +28,8 @@ class HaxPreferencesDialog extends PolymerElement {
           display: block;
         }
         iron-icon:not(:defined),
-        paper-button:not(:defined) {
+        paper-button:not(:defined),
+        app-drawer:not(:defined) {
           display: none;
         }
         #dialog {

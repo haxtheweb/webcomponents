@@ -1,8 +1,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import "@lrnwebcomponents/paper-avatar/paper-avatar.js";
-import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
@@ -44,6 +42,10 @@ class LrnsysDialog extends PolymerElement {
           }
           #dialogtrigger {
             display: inline-block;
+            min-width: unset;
+            margin: var(--lrnsys-dialog-button-margin);
+            padding: var(--lrnsys-dialog-button-padding);
+            @apply --lrnsys-dialog-button;
           }
         </style>
       </custom-style>
@@ -155,12 +157,11 @@ class LrnsysDialog extends PolymerElement {
    * to the classList array for paper-button.
    */
   tapEventOn(e) {
-    const root = this;
-    if (typeof root.hoverClass !== typeof undefined) {
-      var classes = root.hoverClass.split(" ");
-      classes.forEach(function(item, index) {
+    if (typeof this.hoverClass !== typeof undefined) {
+      var classes = this.hoverClass.split(" ");
+      classes.forEach((item, index) => {
         if (item != "") {
-          root.$.dialogtrigger.classList.add(item);
+          this.$.dialogtrigger.classList.add(item);
         }
       });
     }
@@ -171,17 +172,18 @@ class LrnsysDialog extends PolymerElement {
    * from the classList array for paper-button.
    */
   tapEventOff(e) {
-    const root = this;
-    if (typeof root.hoverClass !== typeof undefined) {
-      var classes = root.hoverClass.split(" ");
-      classes.forEach(function(item, index) {
+    if (typeof this.hoverClass !== typeof undefined) {
+      var classes = this.hoverClass.split(" ");
+      classes.forEach((item, index) => {
         if (item != "") {
-          root.$.dialogtrigger.classList.remove(item);
+          this.$.dialogtrigger.classList.remove(item);
         }
       });
     }
   }
-
+  toggleDialog() {
+    this.openDialog();
+  }
   /**
    * Toggle the drawer to open / close.
    */
@@ -199,6 +201,7 @@ class LrnsysDialog extends PolymerElement {
           case "toolbar":
           case "header":
             node = nodes[i].cloneNode(true);
+            node.removeAttribute("slot");
             h.appendChild(node);
             break;
           case "button":
@@ -206,6 +209,7 @@ class LrnsysDialog extends PolymerElement {
             break;
           default:
             node = nodes[i].cloneNode(true);
+            node.removeAttribute("slot");
             if (this.dynamicImages && node.tagName === "IRON-IMAGE") {
               node.preventLoad = false;
               node.removeAttribute("prevent-load");
@@ -224,7 +228,8 @@ class LrnsysDialog extends PolymerElement {
           header: h,
           content: c
         },
-        invokedBy: this.$.dialogtrigger
+        invokedBy: this.$.dialogtrigger,
+        clone: true
       }
     });
     this.dispatchEvent(evt);
@@ -277,9 +282,18 @@ class LrnsysDialog extends PolymerElement {
         "focused-changed",
         this.focusToggle.bind(this)
       );
-      this.addEventListener("mousedown", this.tapEventOn.bind(this));
-      this.addEventListener("mouseover", this.tapEventOn.bind(this));
-      this.addEventListener("mouseout", this.tapEventOff.bind(this));
+      this.$.dialogtrigger.addEventListener(
+        "mousedown",
+        this.tapEventOn.bind(this)
+      );
+      this.$.dialogtrigger.addEventListener(
+        "mouseover",
+        this.tapEventOn.bind(this)
+      );
+      this.$.dialogtrigger.addEventListener(
+        "mouseout",
+        this.tapEventOff.bind(this)
+      );
     });
   }
   /**
@@ -290,9 +304,18 @@ class LrnsysDialog extends PolymerElement {
       "focused-changed",
       this.focusToggle.bind(this)
     );
-    this.removeEventListener("mousedown", this.tapEventOn.bind(this));
-    this.removeEventListener("mouseover", this.tapEventOn.bind(this));
-    this.removeEventListener("mouseout", this.tapEventOff.bind(this));
+    this.$.dialogtrigger.removeEventListener(
+      "mousedown",
+      this.tapEventOn.bind(this)
+    );
+    this.$.dialogtrigger.removeEventListener(
+      "mouseover",
+      this.tapEventOn.bind(this)
+    );
+    this.$.dialogtrigger.removeEventListener(
+      "mouseout",
+      this.tapEventOff.bind(this)
+    );
     super.disconnectedCallback();
   }
 }

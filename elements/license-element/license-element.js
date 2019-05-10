@@ -177,6 +177,7 @@ class LicenseElement extends SchemaBehaviors(PolymerElement) {
   }
   constructor() {
     super();
+    this.licenseList = new licenseList();
     afterNextRender(this, function() {
       this.HAXWiring = new HAXWiring();
       this.HAXWiring.setup(
@@ -284,13 +285,13 @@ class LicenseElement extends SchemaBehaviors(PolymerElement) {
    * License was updated, time to update license name and link.
    */
   _licenseUpdated(newValue, oldValue) {
-    if (typeof newValue !== typeof undefined) {
-      var list = new licenseList();
-      if (typeof list[newValue] !== typeof undefined) {
-        this.licenseName = list[newValue].name;
-        this.licenseLink = list[newValue].link;
-        this.licenseImage = list[newValue].image;
-      }
+    if (
+      typeof newValue !== typeof undefined &&
+      typeof this.licenseList[newValue] !== typeof undefined
+    ) {
+      this.licenseName = this.licenseList[newValue].name;
+      this.licenseLink = this.licenseList[newValue].link;
+      this.licenseImage = this.licenseList[newValue].image;
     }
   }
 }

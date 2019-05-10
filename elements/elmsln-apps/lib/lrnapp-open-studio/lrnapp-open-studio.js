@@ -43,6 +43,9 @@ class LrnappOpenStudio extends PolymerElement {
         iron-selector lrnsys-button {
           display: inline-flex;
         }
+        iron-selector a {
+          display: inline-block;
+        }
         paper-button.gallerycard-wrapper {
           margin: 0;
           padding: 0;
@@ -53,13 +56,17 @@ class LrnappOpenStudio extends PolymerElement {
           height: 15em;
           width: 14em;
         }
+        app-toolbar {
+          height: 48px;
+        }
         .gallery-grid {
           margin: 0 auto;
           width: 95%;
         }
         .iron-selected .display-mode {
-          background-color: #ff6f00;
+          background-color: var(--elmsln-system-color-dark);
           color: white;
+          --lrnsys-button-link-color: white;
         }
         .iron-list-container {
           display: flex;
@@ -96,7 +103,7 @@ class LrnappOpenStudio extends PolymerElement {
         <h3>Loading..</h3>
         <elmsln-loading color="grey-text" size="large"></elmsln-loading>
       </div>
-      <app-toolbar class="amber lighten-3">
+      <app-toolbar>
         <iron-selector
           selected="{{data.page}}"
           attr-for-selected="name"
@@ -263,6 +270,21 @@ class LrnappOpenStudio extends PolymerElement {
   }
   static get properties() {
     return {
+      elmslnCourse: {
+        type: String
+      },
+      elmslnSection: {
+        type: String
+      },
+      basePath: {
+        type: String
+      },
+      csrfToken: {
+        type: String
+      },
+      endPoint: {
+        type: String
+      },
       /**
        * The studioResponse from server
        */
@@ -503,8 +525,14 @@ class LrnappOpenStudio extends PolymerElement {
     var assignments = [];
     var authors = [];
     // get the submission response's data and convert to array ahead of time
-    var submissions = this._toArray(root.studioResponse.data.submissions);
-    var projects = this._toArray(root.studioResponse.data.projects);
+    var submissions = [];
+    if (root.studioResponse.data.submissions != null) {
+      submissions = this._toArray(root.studioResponse.data.submissions);
+    }
+    var projects = [];
+    if (root.studioResponse.data.projects != null) {
+      projects = this._toArray(root.studioResponse.data.projects);
+    }
     this.set("projects", projects);
     // original = active off the bat then we apply filters later to chang this
     this.set("originalSubmissions", submissions);
@@ -549,6 +577,9 @@ class LrnappOpenStudio extends PolymerElement {
    * Simple way to convert from object to array.
    */
   _toArray(obj) {
+    if (obj == null) {
+      return [];
+    }
     return Object.keys(obj).map(function(key) {
       return obj[key];
     });
