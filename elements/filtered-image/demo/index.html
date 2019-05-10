@@ -20,8 +20,8 @@
       filtered-image:after { 
         content: 'Hello!';
         position: relative;
-        top: -30px;
-        left: -220px;
+        top: 320px;
+        left: -200px;
         font-size: 60px;
         color: white;
         font-family: sans-serif;
@@ -36,16 +36,43 @@
       <demo-snippet>
         <template>
           <filtered-image 
-            height="400"
-            width="600"
+            color="#e00"
             alt="cat with attitude" 
-            src="./cat.jpg" 
-            matrix="
-                 0.2     0     0     0.2  0   
-                   0   0.2  0.05  -0.005  0   
-                   0  0.05   0.2  -0.005  0   
-                 0.5     0     0       1  0
-            ">
+            src="./cat.jpg"
+            height="400"
+            width="530">
+          </filtered-image>
+          <filtered-image 
+            color="#e00"
+            alt="cat with attitude" 
+            src="./cat.jpg"
+            strength="0.7"
+            height="400"
+            width="530">
+          </filtered-image>
+          <filtered-image 
+            color="#e00"
+            alt="cat with attitude" 
+            src="./cat.jpg"
+            strength="0.3"
+            height="400"
+            width="530">
+          </filtered-image>
+          <filtered-image 
+            color="#e00"
+            alt="cat with attitude" 
+            src="./cat.jpg"
+            contrast="5"
+            height="400"
+            width="530">
+          </filtered-image>
+          <filtered-image 
+            color="#e00"
+            alt="cat with attitude" 
+            src="./cat.jpg"
+            contrast="-5"
+            height="400"
+            width="530">
           </filtered-image>
         </template>
       </demo-snippet>
