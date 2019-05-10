@@ -83,7 +83,6 @@ class LrnsysButton extends PolymerElement {
         tabindex="-1"
         id="lrnsys-button-link"
         href\$="[[showHref]]"
-        data-prefetch-hover\$="[[prefetch]]"
         target\$="[[target]]"
       >
         <paper-button
@@ -201,10 +200,11 @@ class LrnsysButton extends PolymerElement {
         type: String
       },
       /**
-       * Allow for prefetch data on hover
+       * Allow for prefetch data automatically
        */
       prefetch: {
-        type: String
+        type: Boolean,
+        observer: "_applyPrefetch"
       },
       /**
        * Alt via tooltip.
@@ -228,6 +228,16 @@ class LrnsysButton extends PolymerElement {
       }
     };
   }
+  _applyPrefetch(newValue) {
+    if (newValue && this.__ready && !this.__prefetchLink) {
+      let link = document.createElement("link");
+      link.setAttribute("rel", "prefetch");
+      link.setAttribute("href", this.href);
+      // store for disconnect so we can clean up if needed
+      this.__prefetchLink = link;
+      document.head.appendChild(link);
+    }
+  }
   /**
    * attached life cycle
    */
@@ -243,10 +253,25 @@ class LrnsysButton extends PolymerElement {
       );
     });
   }
+  connectedCallback() {
+    super.connectedCallback();
+    this.__ready = true;
+    afterNextRender(this, function() {
+      // if we have been told to prefetch, give it a second after everything's ready
+      if (this.prefetch) {
+        setTimeout(() => {
+          this._applyPrefetch(this.prefetch);
+        }, 1000);
+      }
+    });
+  }
   /**
    * detached event listener
    */
   disconnectedCallback() {
+    if (this.__prefetchLink) {
+      document.head.removeChild(this.__prefetchLink);
+    }
     this.removeEventListener("mousedown", this.tapEventOn.bind(this));
     this.removeEventListener("mouseover", this.tapEventOn.bind(this));
     this.removeEventListener("mouseout", this.tapEventOff.bind(this));
