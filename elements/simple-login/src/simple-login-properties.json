@@ -1,0 +1,70 @@
+{
+  /**
+   * Title of the loginscreen
+   */
+  "title": String,
+  /**
+   * Subtitle of the loginscreen
+   */
+  "subtitle": String,
+  /**
+   * Error message to show (example : "Invalid username")
+   */
+  "errorMsg": String,
+  /**
+   * Content of the username field
+   */
+  "username": {
+    "type": String,
+    "notify": true
+  },
+  /**
+   * Content of the password field
+   */
+  "password": {
+    "type": String,
+    "notify": true
+  },
+  /**
+   * When true, all fields are disabled and the progress bar is visible
+   */
+  "loading": {
+    "type": Boolean,
+    "value": false
+  },
+  /**
+   * Placeholder of the username field
+   */
+  "userInputLabel": {
+    "type": String,
+    "value": "Username"
+  },
+  /**
+   * Error message of the username field
+   */
+  "userInputErrMsg": {
+    "type": String,
+    "value": "Username required"
+  },
+  /**
+   * Placeholder of the password field
+   */
+  "passwordInputLabel": {
+    "type": String,
+    "value": "Password"
+  },
+  /**
+   * Error message of the password field
+   */
+  "passwordInputErrMsg": {
+    "type": String,
+    "value": "Password required"
+  },
+  /**
+   * Login button label
+   */
+  "loginBtnText": {
+    "type": String,
+    "value": "Login"
+  }
+}

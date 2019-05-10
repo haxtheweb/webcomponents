@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>SimpleLogin: simple-login Demo</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../simple-login.js';
+      import '../lib/simple-login-avatar.js';
+      import '../lib/simple-login-camera.js';
+      import '@polymer/iron-icons/iron-icons.js';
+      import '@polymer/iron-icon/iron-icon.js';
+      import '@polymer/iron-icons/social-icons.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles">
+      simple-login-avatar {
+        --simple-login-avatar-color:green;
+      }
+      simple-login {
+        margin-bottom: 55px;
+      }
+      #selfie {
+        position: absolute;
+        margin: 0;
+      }
+      .has-snap {
+        z-index: 3;
+      }
+      #selfie img {
+        z-index: 2;
+        position: absolute;
+        margin: 0 0 0 -122.5px;
+        width: 355px;
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic simple-login demo with icon</h3>
+      <demo-snippet>
+        <template>
+          <simple-login>
+            <simple-login-avatar>
+              <iron-icon icon="social:sentiment-satisfied"></iron-icon>
+            </simple-login-avatar>
+          </simple-login>
+        </template>
+      </demo-snippet>
+    </div>
+    <div class="vertical-section-container centered">
+      <h3>Webcam simple-login demo</h3>
+      <demo-snippet>
+        <template>
+          <simple-login>
+            <simple-login-avatar>
+              <div id="selfie"></div>
+              <simple-login-camera id="camera" autoplay></simple-login-camera>
+            </simple-login-avatar>
+            <paper-button id="snap" raised slot="buttons">Snap photo</paper-button>
+            <paper-button id="newsnap" raised slot="buttons">Clear photo</paper-button>
+          </simple-login>
+          <script>
+            document.getElementById('snap').addEventListener('click', async function (e) {
+              console.log(document.getElementById('camera'));
+              const camera = document.getElementById('camera');
+              let img = await camera.takeASnap().then(camera.renderImage);
+              camera.removeAttribute('autoplay');
+              const selfie = document.getElementById('selfie');
+              selfie.innerHTML = '';
+              selfie.appendChild(img);
+              selfie.classList.add('has-snap');
+            });
+            document.getElementById('newsnap').addEventListener('click', function (e) {
+              const camera = document.getElementById('camera');
+              camera.setAttribute('autoplay', 'autoplay');
+              const selfie = document.getElementById('selfie');
+              selfie.innerHTML = '';
+              selfie.classList.remove('has-snap');
+            });
+          </script>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

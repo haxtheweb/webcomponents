@@ -1,0 +1,62 @@
+:host {
+  display: block;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+#loginform {
+    width: 450px;
+    height: 450px;
+    background: var(--login-form-background-color, white);
+    @apply --shadow-elevation-12dp;
+    @apply --login-form;
+}
+
+#loginformcontent {
+    padding: 48px;
+}
+
+#loginformcontent>* {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+#loginbtn,
+#buttons ::slotted(paper-button) {
+    margin-top: 24px;
+    background-color: var(--login-btn-background-color, var(--paper-indigo-500));
+    color: var(--login-btn-text-color, white);
+    --paper-button-raised-keyboard-focus: {
+        background-color: var(--login-btn-raised-background-color, var(--paper-pink-a200)) !important;
+        color: var(--login-btn-text-color, white) !important;
+    };
+    @apply --login-btn;
+}
+
+#loginbtn[disabled] {
+    background-color: var(--login-btn-disabled-background-color, var(--paper-indigo-100));
+}
+
+h1 {
+    @apply --paper-font-display1;
+    margin: 0;
+    @apply --login-title;
+}
+
+h2 {
+    @apply --paper-font-title;
+    margin: 0;
+    @apply --login-subtitle;
+}
+
+paper-progress {
+    width: 100%;
+}
+
+#errormsg {
+    margin-top: 16px;
+    color: var(--login-error-label-color, var(--error-color));
+    @apply --paper-font-menu;
+}
