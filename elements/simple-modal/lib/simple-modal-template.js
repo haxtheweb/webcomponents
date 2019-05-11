@@ -110,6 +110,7 @@ class SimpleModalTemplate extends PolymerElement {
       evt = new CustomEvent("simple-modal-show", {
         bubbles: bubbles,
         cancelable: cancelable,
+        composed: true,
         detail: {
           title: this.title !== null ? this.title : false,
           elements: {
