@@ -30,6 +30,9 @@ class HAXCMSSiteListing extends PolymerElement {
     super();
     this.SimpleColors = new SimpleColors();
     setPassiveTouchGestures(true);
+    import("@lrnwebcomponents/simple-login/simple-login.js");
+    import("@lrnwebcomponents/simple-login/lib/simple-login-camera.js");
+    import("@lrnwebcomponents/simple-login/lib/simple-login-avatar.js");
     import("@polymer/iron-image/iron-image.js");
     import("@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js");
     import("@polymer/paper-button/paper-button.js");
@@ -55,6 +58,7 @@ class HAXCMSSiteListing extends PolymerElement {
       import("@polymer/iron-icons/av-icons.js");
       import("@polymer/iron-icons/device-icons.js");
       import("@polymer/iron-icons/image-icons.js");
+      import("@polymer/iron-icons/social-icons.js");
     });
   }
   /**
@@ -71,7 +75,7 @@ class HAXCMSSiteListing extends PolymerElement {
         paper-icon-button {
           --paper-icon-button-ink-color: #ffffff;
         }
-        app-toolbar div[main-title] {
+        app-toolbar div.main-title {
           margin-left: 24px;
           font-size: 28px;
         }
@@ -89,6 +93,30 @@ class HAXCMSSiteListing extends PolymerElement {
         vaadin-grid {
           margin-top: 64px;
           height: calc(100vh - 64px);
+        }
+        .login-prompt {
+          margin: 80px auto 0;
+          display: flex;
+          justify-content: center;
+        }
+        .login-prompt div {
+          margin-right: 32px;
+          font-size: 30px;
+          width: 35%;
+        }
+        .login-prompt div#selfie {
+          position: absolute;
+          margin: 0;
+        }
+        .has-snap {
+          z-index: 3;
+        }
+        .login-prompt div#selfie img {
+          z-index: 2;
+          position: absolute;
+          margin: 0 0 0 -122.5px;
+          width: 355px;
+          height: 200px;
         }
         paper-dialog {
           width: 60vw;
@@ -151,11 +179,57 @@ class HAXCMSSiteListing extends PolymerElement {
           opacity: 0;
           visibility: hidden;
         }
+        a {
+          text-decoration: none;
+        }
+        .site-title {
+          font-size: 20px;
+          color: black;
+          text-transform: unset;
+        }
+        .site-title:hover,
+        .site-title:active,
+        .site-title:focus {
+          background-color: var(--simple-colors-default-theme-pink-4);
+        }
         .operations paper-button {
           font-weight: 500;
-          font-size: 24px;
+          font-size: 20px;
           color: white;
           margin: 0 16px;
+        }
+        .selected-operations {
+          margin: 0 16px;
+          transition: 0.3s linear all;
+          display: inline-flex;
+          visibility: visible;
+          opacity: 1;
+          border-left: 2px solid white;
+          border-right: 2px solid white;
+          height: 64px;
+        }
+        .selected-operations[data-hidden] {
+          visibility: hidden;
+          opacity: 0;
+        }
+        .selected-operations paper-button {
+          background-color: white;
+          font-weight: 500;
+          font-size: 16px;
+          color: black;
+          margin: 0;
+          min-width: unset;
+          margin: 8px;
+          height: 48px;
+        }
+        .selected-operations paper-button:active,
+        .selected-operations paper-button:hover,
+        .selected-operations paper-button:focus {
+          background-color: var(--simple-colors-default-theme-pink-4);
+          color: black !important;
+        }
+        .danger {
+          color: var(--simple-colors-default-theme-red-6) !important;
         }
         #newsiteicon {
           display: inline-flex;
@@ -212,6 +286,46 @@ class HAXCMSSiteListing extends PolymerElement {
           on-response="handleDownloadResponse"
         ></iron-ajax>
         <iron-ajax
+          id="archiverequest"
+          method="[[method]]"
+          body="[[archiveParams]]"
+          headers='{"Authorization": "Bearer [[jwt]]"}'
+          content-type="application/json"
+          url="[[__archiveSitePath]]"
+          handle-as="json"
+          on-response="handleArchiveResponse"
+        ></iron-ajax>
+        <iron-ajax
+          id="deleterequest"
+          method="[[method]]"
+          body="[[deleteParams]]"
+          headers='{"Authorization": "Bearer [[jwt]]"}'
+          content-type="application/json"
+          url="[[__deleteSitePath]]"
+          handle-as="json"
+          on-response="handleDeleteResponse"
+        ></iron-ajax>
+        <iron-ajax
+          id="clonerequest"
+          method="[[method]]"
+          body="[[cloneParams]]"
+          headers='{"Authorization": "Bearer [[jwt]]"}'
+          content-type="application/json"
+          url="[[__cloneSitePath]]"
+          handle-as="json"
+          on-response="handleCloneResponse"
+        ></iron-ajax>
+        <iron-ajax
+          id="publishrequest"
+          method="[[method]]"
+          body="[[publishParams]]"
+          headers='{"Authorization": "Bearer [[jwt]]"}'
+          content-type="application/json"
+          url="[[__publishSitePath]]"
+          handle-as="json"
+          on-response="handlePublishResponse"
+        ></iron-ajax>
+        <iron-ajax
           id="getconfigrequest"
           method="[[method]]"
           body="[[configParams]]"
@@ -236,7 +350,64 @@ class HAXCMSSiteListing extends PolymerElement {
         <elmsln-loading size="large"></elmsln-loading>
         <div>Loading..</div>
       </div>
+      <app-header reveals>
+        <app-toolbar>
+          <div class="operations">
+            <paper-button
+              hidden$="[[!loggedIn]]"
+              on-tap="_loginUserRoutine"
+              id="login"
+              ><iron-icon icon="[[__loginIcon]]"></iron-icon>
+              [[__loginText]]</paper-button
+            >
+          </div>
+          <div class="main-title">[[title]]</div>
+          <div class="selected-operations" data-hidden$="[[!hasSelectedItems]]">
+            <paper-button on-tap="_publishSites" id="publish" raised>
+              <iron-icon icon="editor:publish"></iron-icon> Publish
+            </paper-button>
+            <paper-button on-tap="_cloneSites" id="clone" raised>
+              <iron-icon icon="icons:content-copy"></iron-icon> Clone
+            </paper-button>
+            <paper-button on-tap="_downloadSites" id="download" raised>
+              <iron-icon icon="icons:file-download"></iron-icon> Download
+            </paper-button>
+            <paper-button on-tap="_archiveSites" id="archive" raised>
+              <iron-icon icon="icons:archive"></iron-icon> Archive
+            </paper-button>
+            <paper-button
+              on-tap="_deleteSites"
+              id="delete"
+              raised
+              class="danger"
+            >
+              <iron-icon icon="icons:delete-forever"></iron-icon> Delete
+            </paper-button>
+          </div>
+          <div class="operations">
+            <paper-button
+              on-tap="_addTap"
+              id="add"
+              raised
+              hidden$="[[!loggedIn]]"
+            >
+              <iron-icon icon="icons:add"></iron-icon> Create site
+            </paper-button>
+            <paper-button
+              on-tap="_settingsTap"
+              id="settings"
+              raised
+              hidden$="[[!loggedIn]]"
+            >
+              <iron-icon icon="icons:settings"></iron-icon> Global settings
+            </paper-button>
+          </div>
+        </app-toolbar>
+      </app-header>
+
       <vaadin-grid
+        hidden$="[[!loggedIn]]"
+        id="grid"
         items="[[sites]]"
         theme="row-dividers"
         column-reordering-allowed
@@ -246,14 +417,16 @@ class HAXCMSSiteListing extends PolymerElement {
           auto-select
           frozen
         ></vaadin-grid-selection-column>
-        <vaadin-grid-column width="1em" header="Icon">
-          <template
-            ><iron-icon icon="[[item.metadata.icon]]"></iron-icon
-          ></template>
-        </vaadin-grid-column>
         <vaadin-grid-sort-column width="5em" path="title">
           <template>
-            <a href$="[[item.location]]" target="_blank">[[item.title]]</a>
+            <a tabindex="-1" href$="[[item.location]]" target="_blank"
+              ><paper-button raised class="site-title"
+                >[[item.title]]
+                <iron-icon
+                  style="width:12px;height:12px;"
+                  icon="icons:launch"
+                ></iron-icon></paper-button
+            ></a>
           </template>
         </vaadin-grid-sort-column>
         <vaadin-grid-filter-column
@@ -261,34 +434,21 @@ class HAXCMSSiteListing extends PolymerElement {
           path="metadata.theme.name"
           header="Theme"
         ></vaadin-grid-filter-column>
-        <vaadin-grid-column width="1em" header="color">
-          <template>
-            <div
-              style$="width:48px;height:48px;background-color:[[item.metadata.hexCode]];"
-            ></div>
-          </template>
-        </vaadin-grid-column>
-
-        <vaadin-grid-column width="5em" flex-grow="2" header="Banner">
-          <template
-            ><iron-image
-              sizing="contain"
-              preload
-              src$="[[item.metadata.image]]"
-              style="width:100px; height:48px;"
-            ></iron-image
-          ></template>
-        </vaadin-grid-column>
         <vaadin-grid-sort-column
           width="1em"
-          header="Created"
-          path="metadata.created"
+          path="metadata.pageCount"
+          header="Pages"
+        ></vaadin-grid-sort-column>
+        <vaadin-grid-sort-column
+          width="1em"
+          header="Last published"
+          path="metadata.lastPublished"
         >
           <template>
-            <template is="dom-if" if="[[item.metadata.created]]">
+            <template is="dom-if" if="[[item.metadata.lastPublished]]">
               <simple-datetime
                 format="M jS, Y"
-                timestamp="[[item.metadata.created]]"
+                timestamp="[[item.metadata.lastPublished]]"
                 unix
               ></simple-datetime>
             </template>
@@ -311,49 +471,69 @@ class HAXCMSSiteListing extends PolymerElement {
         </vaadin-grid-sort-column>
         <vaadin-grid-sort-column
           width="1em"
-          header="Last published"
-          path="metadata.lastPublished"
+          header="Created"
+          path="metadata.created"
         >
           <template>
-            <template is="dom-if" if="[[item.metadata.lastPublished]]">
+            <template is="dom-if" if="[[item.metadata.created]]">
               <simple-datetime
                 format="M jS, Y"
-                timestamp="[[item.metadata.lastPublished]]"
+                timestamp="[[item.metadata.created]]"
                 unix
               ></simple-datetime>
             </template>
           </template>
         </vaadin-grid-sort-column>
+        <vaadin-grid-column width="1em" header="Icon">
+          <template
+            ><iron-icon icon="[[item.metadata.icon]]"></iron-icon
+          ></template>
+        </vaadin-grid-column>
+        <vaadin-grid-column width="1em" header="Color">
+          <template>
+            <div
+              style$="width:48px;height:48px;background-color:[[item.metadata.hexCode]];"
+            ></div>
+          </template>
+        </vaadin-grid-column>
+        <vaadin-grid-column width="1em" header="Banner">
+          <template
+            ><iron-image
+              sizing="contain"
+              preload
+              src$="[[item.metadata.image]]"
+              style="width:100px; height:48px;"
+            ></iron-image
+          ></template>
+        </vaadin-grid-column>
       </vaadin-grid>
-      <app-header reveals>
-        <app-toolbar>
-          <div class="operations">
-            <paper-button on-tap="_loginUserRoutine" id="login"
-              ><iron-icon icon="[[__loginIcon]]"></iron-icon>
-              [[__loginText]]</paper-button
-            >
-          </div>
-          <div main-title>[[title]]</div>
-          <div class="operations">
-            <paper-button
-              on-tap="_addTap"
-              id="add"
-              raised
-              hidden$="[[!loggedIn]]"
-            >
-              <iron-icon icon="icons:add"></iron-icon> Add new site
-            </paper-button>
-            <paper-button
-              on-tap="_settingsTap"
-              id="settings"
-              raised
-              hidden$="[[!loggedIn]]"
-            >
-              <iron-icon icon="icons:settings"></iron-icon> Global settings
-            </paper-button>
-          </div>
-        </app-toolbar>
-      </app-header>
+
+      <div class="login-prompt" hidden$="[[loggedIn]]">
+        <div>
+          <h1>Log into HAXcms</h1>
+          <p>
+            Hey I mean we think you look awesome, don't get us wrong. We just
+            need more then your mug in order to let you into the future.
+          </p>
+          <p>
+            So please. please please please.... login and get this party started
+            :)
+          </p>
+        </div>
+        <simple-login>
+          <simple-login-avatar>
+            <div id="selfie"></div>
+            <simple-login-camera id="camera" autoplay></simple-login-camera>
+          </simple-login-avatar>
+          <paper-button id="snap" raised slot="buttons"
+            >Snap photo</paper-button
+          >
+          <paper-button id="newsnap" raised slot="buttons"
+            >Clear photo</paper-button
+          >
+        </simple-login>
+      </div>
+
       <paper-dialog id="newdialog" with-backdrop>
         <h3>Create new site</h3>
         <div>
@@ -482,26 +662,38 @@ class HAXCMSSiteListing extends PolymerElement {
         type: Object,
         value: {}
       },
-      /**
-       * Request params for downloading a new site
-       */
       downloadParams: {
         type: Object,
         value: {}
       },
-      /**
-       * Request params for loading config
-       */
+      cloneParams: {
+        type: Object,
+        value: {}
+      },
+      publishParams: {
+        type: Object,
+        value: {}
+      },
+      archiveParams: {
+        type: Object,
+        value: {}
+      },
+      deletearams: {
+        type: Object,
+        value: {}
+      },
       configParams: {
         type: Object,
         value: {}
       },
-      /**
-       * Request params for loading config
-       */
       setConfigParams: {
         type: Object,
         value: {}
+      },
+      selectedItems: {
+        type: Array,
+        value: [],
+        observer: "_selectedItemsChanged"
       },
       /**
        * Active item that's being reviewed / has bubbled up.
@@ -529,8 +721,19 @@ class HAXCMSSiteListing extends PolymerElement {
         reflectToAttribute: true,
         value: false,
         observer: "_editModeChanged"
+      },
+      hasSelectedItems: {
+        type: Boolean,
+        value: false
       }
     };
+  }
+  _selectedItemsChanged(newValue) {
+    if (newValue && newValue.length > 0) {
+      this.hasSelectedItems = true;
+    } else {
+      this.hasSelectedItems = false;
+    }
   }
   _dataSourceChanged(newValue) {
     if (newValue) {
@@ -564,6 +767,7 @@ class HAXCMSSiteListing extends PolymerElement {
     // reset activeItem
     this.set("activeItem", {});
     this.set("activeItem", {
+      id: false,
       title: "",
       description: "",
       metadata: {
@@ -669,6 +873,9 @@ class HAXCMSSiteListing extends PolymerElement {
   _settingsTap(e) {
     this._loadConfig();
     this.shadowRoot.querySelector("#settingsdialog").opened = true;
+    var evt = document.createEvent("UIEvents");
+    evt.initUIEvent("resize", true, false, window, 0);
+    window.dispatchEvent(evt);
   }
   /**
    * force the request to regenerate
@@ -676,16 +883,34 @@ class HAXCMSSiteListing extends PolymerElement {
   refreshData(e) {
     this.shadowRoot.querySelector("#loaddata").generateRequest();
   }
+  _gridSelectedItemsChanged(e) {
+    // skip splicing, just rebuild whole object
+    this.set("selectedItems", []);
+    this.set("selectedItems", e.path[0].selectedItems);
+  }
   /**
    * Attached life cycle
    */
   connectedCallback() {
     super.connectedCallback();
+    if (this.jwt) {
+      this.loggedIn = true;
+    }
     window.addEventListener(
       "sites-listing-refresh-data",
       this.refreshData.bind(this)
     );
     afterNextRender(this, function() {
+      this.addEventListener(
+        "login-btn-click",
+        this.loginPromptPushed.bind(this)
+      );
+      this.shadowRoot
+        .querySelector("#grid")
+        .addEventListener(
+          "selected-items-changed",
+          this._gridSelectedItemsChanged.bind(this)
+        );
       this.__loginPath = window.appSettings.login;
       this.__logoutPath = window.appSettings.logout;
       let themeOptions = [];
@@ -710,6 +935,10 @@ class HAXCMSSiteListing extends PolymerElement {
       this.__getConfigPath = window.appSettings.getConfigPath;
       this.__createNewSitePath = window.appSettings.createNewSitePath;
       this.__downloadSitePath = window.appSettings.downloadSitePath;
+      this.__archiveSitePath = window.appSettings.archiveSitePath;
+      this.__cloneSitePath = window.appSettings.cloneSitePath;
+      this.__publishSitePath = window.appSettings.publishSitePath;
+      this.__deleteSitePath = window.appSettings.deleteSitePath;
       document.body.addEventListener(
         "haxcms-load-site",
         this.loadActiveSite.bind(this)
@@ -723,7 +952,33 @@ class HAXCMSSiteListing extends PolymerElement {
       this.shadowRoot
         .querySelector("#jwt")
         .addEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this));
+      this.shadowRoot
+        .querySelector("#snap")
+        .addEventListener("click", this.snapPhoto.bind(this));
+      this.shadowRoot
+        .querySelector("#newsnap")
+        .addEventListener("click", this.clearPhoto.bind(this));
     });
+  }
+  async snapPhoto(e) {
+    const camera = this.shadowRoot.querySelector("#camera");
+    let img = await camera.takeASnap().then(camera.renderImage);
+    camera.removeAttribute("autoplay");
+    const selfie = this.shadowRoot.querySelector("#selfie");
+    selfie.innerHTML = "";
+    selfie.appendChild(img);
+    selfie.classList.add("has-snap");
+  }
+  clearPhoto(e) {
+    const camera = this.shadowRoot.querySelector("#camera");
+    camera.setAttribute("autoplay", "autoplay");
+    const selfie = this.shadowRoot.querySelector("#selfie");
+    selfie.innerHTML = "";
+    selfie.classList.remove("has-snap");
+  }
+  loginPromptPushed(e) {
+    console.log(e);
+    this._loginUserRoutine(e);
   }
   /**
    * detached life cycle
@@ -737,6 +992,22 @@ class HAXCMSSiteListing extends PolymerElement {
       "haxcms-load-site",
       this.loadActiveSite.bind(this)
     );
+    this.removeEventListener(
+      "login-btn-click",
+      this.loginPromptPushed.bind(this)
+    );
+    this.shadowRoot
+      .querySelector("#snap")
+      .removeEventListener("click", this.snapPhoto.bind(this));
+    this.shadowRoot
+      .querySelector("#newsnap")
+      .removeEventListener("click", this.clearPhoto.bind(this));
+    this.shadowRoot
+      .querySelector("#grid")
+      .removeEventListener(
+        "selected-items-changed",
+        this._gridSelectedItemsChanged.bind(this)
+      );
     this.shadowRoot
       .querySelector("#newsitetheme")
       .removeEventListener("change", this._themeChanged.bind(this));
@@ -817,16 +1088,99 @@ class HAXCMSSiteListing extends PolymerElement {
     this.shadowRoot.querySelector("#createrequest").generateRequest();
   }
   /**
-   * Download a new site button was clicked
+   * Download site button was hit, package and send a zip
    */
-  _downloadSite(e) {
+  async _downloadSites(e) {
     // ship off a new call
-    this.set("downloadParams.siteName", this.activeItem.metadata.siteName);
-    this.notifyPath("downloadParams.siteName");
     // pass along the jwt for user "session" purposes
     this.set("downloadParams.jwt", this.jwt);
     this.notifyPath("downloadParams.jwt");
-    this.shadowRoot.querySelector("#downloadrequest").generateRequest();
+    for (var i in this.selectedItems) {
+      this.set("activeItem", {});
+      this.set("activeItem", this.selectedItems[i]);
+      this.set(
+        "downloadParams.siteName",
+        this.selectedItems[i].metadata.siteName
+      );
+      this.notifyPath("downloadParams.siteName");
+      await this.shadowRoot.querySelector("#downloadrequest").generateRequest();
+    }
+  }
+  /**
+   * Archive sites
+   */
+  async _archiveSites(e) {
+    // ship off a new call
+    // pass along the jwt for user "session" purposes
+    this.set("archiveParams.jwt", this.jwt);
+    this.notifyPath("archiveParams.jwt");
+    for (var i in this.selectedItems) {
+      this.set("activeItem", {});
+      this.set("activeItem", this.selectedItems[i]);
+      this.set(
+        "archiveParams.siteName",
+        this.selectedItems[i].metadata.siteName
+      );
+      this.notifyPath("archiveParams.siteName");
+      await this.shadowRoot.querySelector("#archiverequest").generateRequest();
+    }
+  }
+  /**
+   * Delete sites
+   */
+  async _deleteSites(e) {
+    // @todo obtain confirmation first
+    // ship off a new call
+    // pass along the jwt for user "session" purposes
+    this.set("deleteParams.jwt", this.jwt);
+    this.notifyPath("deleteParams.jwt");
+    for (var i in this.selectedItems) {
+      this.set("activeItem", {});
+      this.set("activeItem", this.selectedItems[i]);
+      this.set(
+        "deleteParams.siteName",
+        this.selectedItems[i].metadata.siteName
+      );
+      this.notifyPath("deleteParams.siteName");
+      await this.shadowRoot.querySelector("#deleterequest").generateRequest();
+    }
+  }
+  /**
+   * Clone sites
+   */
+  async _cloneSites(e) {
+    // @todo obtain confirmation first
+    // ship off a new call
+    // pass along the jwt for user "session" purposes
+    this.set("cloneParams.jwt", this.jwt);
+    this.notifyPath("cloneParams.jwt");
+    for (var i in this.selectedItems) {
+      this.set("activeItem", {});
+      this.set("activeItem", this.selectedItems[i]);
+      this.set("cloneParams.siteName", this.selectedItems[i].metadata.siteName);
+      this.notifyPath("cloneParams.siteName");
+      await this.shadowRoot.querySelector("#clonerequest").generateRequest();
+    }
+  }
+  /**
+   * Clone sites
+   */
+  async _publishSites(e) {
+    // @todo obtain confirmation first
+    // ship off a new call
+    // pass along the jwt for user "session" purposes
+    this.set("publishParams.jwt", this.jwt);
+    this.notifyPath("publishParams.jwt");
+    for (var i in this.selectedItems) {
+      this.set("activeItem", {});
+      this.set("activeItem", this.selectedItems[i]);
+      this.set(
+        "publishParams.siteName",
+        this.selectedItems[i].metadata.siteName
+      );
+      this.notifyPath("publishParams.siteName");
+      await this.shadowRoot.querySelector("#publishrequest").generateRequest();
+    }
   }
   /**
    * Load configuration
@@ -911,7 +1265,7 @@ class HAXCMSSiteListing extends PolymerElement {
   handleDownloadResponse(e) {
     // fire incase anyone cares
     this.dispatchEvent(
-      new CustomEvent("download-site-listing", {
+      new CustomEvent("haxcms-download-site", {
         bubbles: true,
         composed: true,
         cancelable: false,
@@ -930,6 +1284,90 @@ class HAXCMSSiteListing extends PolymerElement {
       cancelable: true,
       detail: {
         text: this.activeItem.title + " downloaded successfully!",
+        duration: 4000
+      }
+    });
+    this.dispatchEvent(evt);
+  }
+  handleArchiveResponse(e) {
+    // fire incase anyone cares
+    this.dispatchEvent(
+      new CustomEvent("haxcms-archive-site", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: e.detail.response
+      })
+    );
+    const evt = new CustomEvent("simple-toast-show", {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+      detail: {
+        text: this.activeItem.title + " archived!",
+        duration: 4000
+      }
+    });
+    this.dispatchEvent(evt);
+  }
+  handleDeleteResponse(e) {
+    // fire incase anyone cares
+    this.dispatchEvent(
+      new CustomEvent("haxcms-delete-site", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: e.detail.response
+      })
+    );
+    const evt = new CustomEvent("simple-toast-show", {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+      detail: {
+        text: this.activeItem.title + " archived!",
+        duration: 4000
+      }
+    });
+    this.dispatchEvent(evt);
+  }
+  handleCloneResponse(e) {
+    // fire incase anyone cares
+    this.dispatchEvent(
+      new CustomEvent("haxcms-clone-site", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: e.detail.response
+      })
+    );
+    const evt = new CustomEvent("simple-toast-show", {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+      detail: {
+        text: this.activeItem.title + " archived!",
+        duration: 4000
+      }
+    });
+    this.dispatchEvent(evt);
+  }
+  handlePublishResponse(e) {
+    // fire incase anyone cares
+    this.dispatchEvent(
+      new CustomEvent("haxcms-publish-site", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: e.detail.response
+      })
+    );
+    const evt = new CustomEvent("simple-toast-show", {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+      detail: {
+        text: this.activeItem.title + " archived!",
         duration: 4000
       }
     });
