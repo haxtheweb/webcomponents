@@ -20,7 +20,10 @@ class SimpleLoginCamera extends HTMLElement {
     this._error = this._shadow.querySelector("p");
     this._record = this._shadow.querySelector("button.record");
     this._pauseRecord = this._shadow.querySelector("button.pause-record");
-
+    document.addEventListener(
+      "DOMContentLoaded",
+      this.documentLoaded.bind(this)
+    );
     if (!this.hasAttribute("record")) {
       this._record.remove();
       this._pauseRecord.remove();
@@ -166,8 +169,20 @@ class SimpleLoginCamera extends HTMLElement {
       this._applyMSR();
     }
   }
+  /**
+   * Try to apply when fully loaded dom
+   */
+  documentLoaded(e) {
+    if (window.ESGlobalBridge && window.ESGlobalBridge.imports["msr"]) {
+      this._applyMSR();
+    }
+  }
 
   disconnectedCallback() {
+    document.removeEventListener(
+      "DOMContentLoaded",
+      this.documentLoaded.bind(this)
+    );
     window.removeEventListener(
       "es-bridge-msr-loaded",
       this._msrLoaded.bind(this)
@@ -238,5 +253,8 @@ class SimpleLoginCamera extends HTMLElement {
     `;
   }
 }
-window.customElements.define(SimpleLoginCamera.tag, SimpleLoginCamera);
+// only show this element if we're on a secure environment
+if (navigator.mediaDevices) {
+  window.customElements.define(SimpleLoginCamera.tag, SimpleLoginCamera);
+}
 export { SimpleLoginCamera };

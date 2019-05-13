@@ -65,6 +65,12 @@ class SimpleCameraSnap extends HTMLElement {
     `;
   }
   connectedCallback() {
+    // ensure support for the camera snap functionality...
+    // this would be an environment like http that doesn't support camera functionality
+    if (!navigator.mediaDevices) {
+      this.shadowRoot.querySelector("#snap").style.display = "none";
+      this.shadowRoot.querySelector("#newsnap").style.display = "none";
+    }
     this.shadowRoot
       .querySelector("#snap")
       .addEventListener("click", this.snapPhoto.bind(this));

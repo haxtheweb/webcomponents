@@ -99,6 +99,9 @@ class HAXCMSSiteListing extends PolymerElement {
           display: flex;
           justify-content: center;
         }
+        .login-prompt[hidden] {
+          display: none;
+        }
         .login-prompt div {
           margin-right: 32px;
           font-size: 30px;
@@ -198,6 +201,7 @@ class HAXCMSSiteListing extends PolymerElement {
           color: white;
           margin: 0 16px;
         }
+
         .selected-operations {
           margin: 0 16px;
           transition: 0.3s linear all;
@@ -509,34 +513,31 @@ class HAXCMSSiteListing extends PolymerElement {
           ></template>
         </vaadin-grid-column>
       </vaadin-grid>
-
-      <template is="dom-if" if="[[!loggedIn]]" restamp>
-        <div class="login-prompt">
-          <div>
-            <h1>Log into HAXcms</h1>
-            <p>
-              Hey I mean we think you look awesome, don't get us wrong. We just
-              need more then your mug in order to let you into the future.
-            </p>
-            <p>
-              So please. please please please.... login and get this party
-              started :)
-            </p>
-          </div>
-          <simple-login>
-            <simple-login-avatar>
-              <div id="selfie"></div>
-              <simple-login-camera id="camera" autoplay></simple-login-camera>
-            </simple-login-avatar>
-            <paper-button id="snap" raised slot="buttons"
-              >Snap photo</paper-button
-            >
-            <paper-button id="newsnap" raised slot="buttons"
-              >Clear photo</paper-button
-            >
-          </simple-login>
+      <div class="login-prompt" hidden$="[[loggedIn]]">
+        <div>
+          <h1>Log into HAXcms</h1>
+          <p>
+            Hey I mean we think you look awesome, don't get us wrong. We just
+            need more then your mug in order to let you into the future.
+          </p>
+          <p>
+            So please. please please please.... login and get this party started
+            :)
+          </p>
         </div>
-      </template>
+        <simple-login>
+          <simple-login-avatar>
+            <div id="selfie"></div>
+            <simple-login-camera id="camera" autoplay></simple-login-camera>
+          </simple-login-avatar>
+          <paper-button id="snap" raised slot="buttons"
+            >Snap photo</paper-button
+          >
+          <paper-button id="newsnap" raised slot="buttons"
+            >Clear photo</paper-button
+          >
+        </simple-login>
+      </div>
       <paper-dialog id="newdialog" with-backdrop>
         <h3>Create new site</h3>
         <div>
@@ -900,6 +901,11 @@ class HAXCMSSiteListing extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
+    // if we're on an insecure environment, hide the buttons for camera
+    if (!navigator.mediaDevices) {
+      this.shadowRoot.querySelector("#snap").style.display = "none";
+      this.shadowRoot.querySelector("#newsnap").style.display = "none";
+    }
     if (this.jwt) {
       this.loggedIn = true;
     }
