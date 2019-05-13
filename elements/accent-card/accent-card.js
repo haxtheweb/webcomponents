@@ -32,11 +32,6 @@ class AccentCard extends SimpleColors {
   static get tag() {
     return "accent-card";
   }
-
-  //get player-specifc properties
-  static get behaviors() {
-    return [SimpleColors];
-  }
   // render function
   static get template() {
     return html`
@@ -294,7 +289,7 @@ class AccentCard extends SimpleColors {
             property: "imageSrc",
             title: "Image",
             description: "Optional image",
-            inputMethod: "textfield",
+            inputMethod: "haxupload",
             icon: "editor:insert-photo"
           },
           {
@@ -371,7 +366,7 @@ class AccentCard extends SimpleColors {
 
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       /**
        * Apply accent color to card background
        */
@@ -468,6 +463,10 @@ class AccentCard extends SimpleColors {
         computed: "_getBackgroundStyle(imageSrc)"
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
 
   /**
