@@ -674,6 +674,10 @@ class HAXCMSSiteListing extends PolymerElement {
         type: Object,
         value: {}
       },
+      deleteParams: {
+        type: Object,
+        value: {}
+      },
       cloneParams: {
         type: Object,
         value: {}
@@ -683,10 +687,6 @@ class HAXCMSSiteListing extends PolymerElement {
         value: {}
       },
       archiveParams: {
-        type: Object,
-        value: {}
-      },
-      deletearams: {
         type: Object,
         value: {}
       },
