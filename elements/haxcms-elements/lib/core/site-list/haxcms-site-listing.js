@@ -252,6 +252,8 @@ class HAXCMSSiteListing extends PolymerElement {
       <div>
         <jwt-login
           id="jwt"
+          method="[[method]]"
+          body="[[jwtBody]]"
           url="[[__loginPath]]"
           logout-url="[[__logoutPath]]"
           jwt="{{jwt}}"
@@ -508,32 +510,33 @@ class HAXCMSSiteListing extends PolymerElement {
         </vaadin-grid-column>
       </vaadin-grid>
 
-      <div class="login-prompt" hidden$="[[loggedIn]]">
-        <div>
-          <h1>Log into HAXcms</h1>
-          <p>
-            Hey I mean we think you look awesome, don't get us wrong. We just
-            need more then your mug in order to let you into the future.
-          </p>
-          <p>
-            So please. please please please.... login and get this party started
-            :)
-          </p>
+      <template is="dom-if" if="[[!loggedIn]]" restamp>
+        <div class="login-prompt">
+          <div>
+            <h1>Log into HAXcms</h1>
+            <p>
+              Hey I mean we think you look awesome, don't get us wrong. We just
+              need more then your mug in order to let you into the future.
+            </p>
+            <p>
+              So please. please please please.... login and get this party
+              started :)
+            </p>
+          </div>
+          <simple-login>
+            <simple-login-avatar>
+              <div id="selfie"></div>
+              <simple-login-camera id="camera" autoplay></simple-login-camera>
+            </simple-login-avatar>
+            <paper-button id="snap" raised slot="buttons"
+              >Snap photo</paper-button
+            >
+            <paper-button id="newsnap" raised slot="buttons"
+              >Clear photo</paper-button
+            >
+          </simple-login>
         </div>
-        <simple-login>
-          <simple-login-avatar>
-            <div id="selfie"></div>
-            <simple-login-camera id="camera" autoplay></simple-login-camera>
-          </simple-login-avatar>
-          <paper-button id="snap" raised slot="buttons"
-            >Snap photo</paper-button
-          >
-          <paper-button id="newsnap" raised slot="buttons"
-            >Clear photo</paper-button
-          >
-        </simple-login>
-      </div>
-
+      </template>
       <paper-dialog id="newdialog" with-backdrop>
         <h3>Create new site</h3>
         <div>
@@ -605,6 +608,10 @@ class HAXCMSSiteListing extends PolymerElement {
     return {
       __loading: {
         type: Boolean
+      },
+      jwtBody: {
+        type: Object,
+        value: {}
       },
       /**
        * Object, JSON Outline Schema format
@@ -902,8 +909,8 @@ class HAXCMSSiteListing extends PolymerElement {
     );
     afterNextRender(this, function() {
       this.addEventListener(
-        "login-btn-click",
-        this.loginPromptPushed.bind(this)
+        "simple-login-login",
+        this.loginPromptEvent.bind(this)
       );
       this.shadowRoot
         .querySelector("#grid")
@@ -976,8 +983,12 @@ class HAXCMSSiteListing extends PolymerElement {
     selfie.innerHTML = "";
     selfie.classList.remove("has-snap");
   }
-  loginPromptPushed(e) {
-    console.log(e);
+  loginPromptEvent(e) {
+    this.set("jwtBody", {});
+    this.set("jwtBody", {
+      u: e.detail.u,
+      p: e.detail.p
+    });
     this._loginUserRoutine(e);
   }
   /**
@@ -993,8 +1004,8 @@ class HAXCMSSiteListing extends PolymerElement {
       this.loadActiveSite.bind(this)
     );
     this.removeEventListener(
-      "login-btn-click",
-      this.loginPromptPushed.bind(this)
+      "simple-login-login",
+      this.loginPromptEvent.bind(this)
     );
     this.shadowRoot
       .querySelector("#snap")
