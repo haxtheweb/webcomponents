@@ -10,7 +10,7 @@ class SimpleLoginCamera extends HTMLElement {
   constructor() {
     super();
     const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
-    const location = `${basePath}../../../msr/MediaStreamRecorder.js`;
+    const location = `${basePath}../../../msr/MediaStreamRecorder.min.js`;
     window.ESGlobalBridge.requestAvailability();
     window.ESGlobalBridge.instance.load("msr", location);
     window.addEventListener("es-bridge-msr-loaded", this._msrLoaded.bind(this));
