@@ -884,7 +884,7 @@ class HaxBody extends PolymerElement {
         if (properties.hasOwnProperty(property)) {
           // special supporting for boolean because html is weird :p
           if (properties[property] === true) {
-            newNode.setAttribute(attributeName, properties[property]);
+            newNode.setAttribute(attributeName, attributeName);
           } else if (properties[property] === false) {
             newNode.removeAttribute(attributeName);
           } else if (
