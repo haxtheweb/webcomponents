@@ -158,6 +158,11 @@ class HAXCMSSiteListing extends PolymerElement {
           margin-right: 8px;
           --simple-colors-picker-preview-size: 20px;
         }
+        .small-location {
+          font-size: 11px;
+          text-align: center;
+          font-style: italic;
+        }
         #loading {
           width: 100%;
           z-index: 1000;
@@ -188,7 +193,10 @@ class HAXCMSSiteListing extends PolymerElement {
         .site-title {
           font-size: 20px;
           color: black;
+          text-align: center;
+          width: 100%;
           text-transform: unset;
+          min-width: unset;
         }
         .site-title:hover,
         .site-title:active,
@@ -423,7 +431,7 @@ class HAXCMSSiteListing extends PolymerElement {
           auto-select
           frozen
         ></vaadin-grid-selection-column>
-        <vaadin-grid-sort-column width="5em" path="title">
+        <vaadin-grid-filter-column width="6em" path="title">
           <template>
             <a tabindex="-1" href$="[[item.location]]" target="_blank"
               ><paper-button raised class="site-title"
@@ -431,12 +439,14 @@ class HAXCMSSiteListing extends PolymerElement {
                 <iron-icon
                   style="width:12px;height:12px;"
                   icon="icons:launch"
-                ></iron-icon></paper-button
-            ></a>
+                ></iron-icon
+              ></paper-button>
+              <div class="small-location">[[cleanLocation(item.location)]]</div>
+            </a>
           </template>
-        </vaadin-grid-sort-column>
+        </vaadin-grid-filter-column>
         <vaadin-grid-filter-column
-          width="5em"
+          width="2em"
           path="metadata.theme.name"
           header="Theme"
         ></vaadin-grid-filter-column>
@@ -604,6 +614,9 @@ class HAXCMSSiteListing extends PolymerElement {
         this.notifyPath("sites.*");
       }
     }
+  }
+  cleanLocation(location) {
+    return location.replace("/_sites/", "").replace("/", "");
   }
   static get properties() {
     return {
@@ -1208,7 +1221,6 @@ class HAXCMSSiteListing extends PolymerElement {
     this.notifyPath("configParams.jwt");
     this.set("configParams.token", this.createParams.token);
     this.notifyPath("configParams.token");
-
     this.shadowRoot.querySelector("#getconfigrequest").generateRequest();
   }
   /**
@@ -1226,8 +1238,33 @@ class HAXCMSSiteListing extends PolymerElement {
     this.notifyPath("setConfigParams.jwt");
     this.set("setConfigParams.token", this.createParams.token);
     this.notifyPath("setConfigParams.token");
-
     this.shadowRoot.querySelector("#setconfigrequest").generateRequest();
+  }
+  /**
+   * Standard response that refreshes the listing too
+   */
+  standardResponse(toast, refresh = true) {
+    if (refresh) {
+      this.dispatchEvent(
+        new CustomEvent("sites-listing-refresh-data", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: true
+        })
+      );
+    }
+    this.dispatchEvent(
+      new CustomEvent("simple-toast-show", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          text: toast,
+          duration: 5000
+        }
+      })
+    );
   }
   /**
    * Create a new site button was clicked
@@ -1235,24 +1272,7 @@ class HAXCMSSiteListing extends PolymerElement {
   handleCreateResponse(e) {
     // update the listing data
     this._dataSource = this.dataSource + "?" + Math.floor(Date.now() / 1000);
-    this.dispatchEvent(
-      new CustomEvent("sites-listing-refresh-data", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: e.detail.response
-      })
-    );
-    const evt = new CustomEvent("simple-toast-show", {
-      bubbles: true,
-      composed: true,
-      cancelable: true,
-      detail: {
-        text: e.detail.response.title + " created successfully!",
-        duration: 4000
-      }
-    });
-    this.dispatchEvent(evt);
+    this.standardResponse(e.detail.response.title + " created!");
   }
   handleConfigResponse(e) {
     window.HAXCMS.config = e.detail.response;
@@ -1265,194 +1285,31 @@ class HAXCMSSiteListing extends PolymerElement {
   }
   handleSetConfigResponse(e) {
     this.shadowRoot.querySelector("#settingsdialog").opened = false;
-    const evt = new CustomEvent("simple-toast-show", {
-      bubbles: true,
-      composed: true,
-      cancelable: true,
-      detail: {
-        text: "HAXCMS configuration updated!",
-        duration: 4000
-      }
-    });
-    this.dispatchEvent(evt);
+    this.standardResponse("HAXCMS configuration updated!");
   }
   /**
    * Download a site
    */
   handleDownloadResponse(e) {
-    // fire incase anyone cares
-    this.dispatchEvent(
-      new CustomEvent("haxcms-download-site", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: e.detail.response
-      })
-    );
-    var element = document.createElement("a");
+    let element = document.createElement("a");
     element.setAttribute("href", e.detail.response.link);
     element.style.display = "none";
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);
-    const evt = new CustomEvent("simple-toast-show", {
-      bubbles: true,
-      composed: true,
-      cancelable: true,
-      detail: {
-        text: this.activeItem.title + " downloaded successfully!",
-        duration: 4000
-      }
-    });
-    this.dispatchEvent(evt);
+    this.standardResponse(this.activeItem.title + " downloaded!");
   }
   handleArchiveResponse(e) {
-    // fire incase anyone cares
-    this.dispatchEvent(
-      new CustomEvent("haxcms-archive-site", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: e.detail.response
-      })
-    );
-    const evt = new CustomEvent("simple-toast-show", {
-      bubbles: true,
-      composed: true,
-      cancelable: true,
-      detail: {
-        text: this.activeItem.title + " archived!",
-        duration: 4000
-      }
-    });
-    this.dispatchEvent(evt);
+    this.standardResponse(this.activeItem.title + " archived!");
   }
   handleDeleteResponse(e) {
-    // fire incase anyone cares
-    this.dispatchEvent(
-      new CustomEvent("haxcms-delete-site", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: e.detail.response
-      })
-    );
-    const evt = new CustomEvent("simple-toast-show", {
-      bubbles: true,
-      composed: true,
-      cancelable: true,
-      detail: {
-        text: this.activeItem.title + " archived!",
-        duration: 4000
-      }
-    });
-    this.dispatchEvent(evt);
+    this.standardResponse(this.activeItem.title + " deleted!");
   }
   handleCloneResponse(e) {
-    // fire incase anyone cares
-    this.dispatchEvent(
-      new CustomEvent("haxcms-clone-site", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: e.detail.response
-      })
-    );
-    const evt = new CustomEvent("simple-toast-show", {
-      bubbles: true,
-      composed: true,
-      cancelable: true,
-      detail: {
-        text: this.activeItem.title + " archived!",
-        duration: 4000
-      }
-    });
-    this.dispatchEvent(evt);
+    this.standardResponse(this.activeItem.title + " cloned!");
   }
   handlePublishResponse(e) {
-    // fire incase anyone cares
-    this.dispatchEvent(
-      new CustomEvent("haxcms-publish-site", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: e.detail.response
-      })
-    );
-    const evt = new CustomEvent("simple-toast-show", {
-      bubbles: true,
-      composed: true,
-      cancelable: true,
-      detail: {
-        text: this.activeItem.title + " archived!",
-        duration: 4000
-      }
-    });
-    this.dispatchEvent(evt);
-  }
-  /**
-   * Option selected in an operation in context
-   */
-  _itemOptionSelected(e) {
-    var element = e.detail.element;
-    switch (e.detail.operation) {
-      case "remove":
-        if (e.detail.option === "option1") {
-          const evt = new CustomEvent("simple-toast-show", {
-            bubbles: true,
-            composed: true,
-            cancelable: true,
-            detail: {
-              text: "Deleting this",
-              duration: 4000
-            }
-          });
-          this.dispatchEvent(evt);
-          // @todo send call out the door to delete callback
-        }
-        break;
-      case "duplicate":
-        if (e.detail.option === "option1") {
-          const evt = new CustomEvent("simple-toast-show", {
-            bubbles: true,
-            composed: true,
-            cancelable: true,
-            detail: {
-              text: "Duplicating this",
-              duration: 4000
-            }
-          });
-          this.dispatchEvent(evt);
-          // @todo send call out the door to duplicate callback
-        }
-        break;
-      case "move":
-        if (e.detail.option === "option1") {
-          const evt = new CustomEvent("simple-toast-show", {
-            bubbles: true,
-            composed: true,
-            cancelable: true,
-            detail: {
-              text: "Move this item left",
-              duration: 4000
-            }
-          });
-          this.dispatchEvent(evt);
-        } else {
-          const evt = new CustomEvent("simple-toast-show", {
-            bubbles: true,
-            composed: true,
-            cancelable: true,
-            detail: {
-              text: "Move this item right",
-              duration: 4000
-            }
-          });
-          this.dispatchEvent(evt);
-        }
-        // @todo send call out the door to commit the move callback
-        break;
-    }
+    this.standardResponse(this.activeItem.title + " published!");
   }
 }
 window.customElements.define(HAXCMSSiteListing.tag, HAXCMSSiteListing);
