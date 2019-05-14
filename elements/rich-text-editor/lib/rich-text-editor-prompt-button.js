@@ -64,7 +64,7 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
         }
       },
       /**
-       * the rich-text-selection object thart highlights the text
+       * the rich-text-selection object that highlights the text
        */
       __highlight: {
         name: "__highlight",
@@ -190,12 +190,6 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
     //highlight the selection for when prompt gets focus
     this.__highlight = document.createElement("rich-text-editor-selection");
     this.__highlight.select(this.selection, this.selectedText);
-    console.log(
-      "selectText",
-      this.__highlight,
-      this.selection,
-      this.selectedText
-    );
     this.updatePrompt();
     //make sure there is a unique id so that the prompt popover appears near the selection
     if (!this.selectedText.getAttribute("id"))

@@ -35,6 +35,7 @@ class RichTextEditorToolbar extends PolymerElement {
     return html`
       <style include="rich-text-editor-styles"></style>
       <style include="rich-text-editor-toolbar-styles"></style>
+      <textarea id="clipboard"></textarea>
       <div
         id="toolbar"
         aria-live="polite"
@@ -371,10 +372,14 @@ class RichTextEditorToolbar extends PolymerElement {
         }
       })
     );
-    document.designMode = "on";
+    //document.designMode = "on";
     document.addEventListener("selectionchange", e => {
       root.getUpdatedSelection();
     });
+  }
+
+  ready() {
+    super.ready();
   }
 
   /**
@@ -428,10 +433,6 @@ class RichTextEditorToolbar extends PolymerElement {
    */
   getUpdatedSelection() {
     let root = this;
-    //console.log(root.editableElement);
-    /*if(root.editableElement && root.editableElement.children.length < 2 && root.editableElement.children[0].childNodes.length < 2) {
-      console.log(root.editableElement.children[0].childNodes[0]);
-    }*/
     root.selection =
       root.editableElement === undefined || root.editableElement === null
         ? null
@@ -528,12 +529,16 @@ class RichTextEditorToolbar extends PolymerElement {
       e.preventDefault();
       root._preserveSelection(button);
     });
-    button.addEventListener("keydown", (e) => {
+    button.addEventListener("keypress", (e) => {
       e.preventDefault();
       root._preserveSelection(button);
     });*/
     button.addEventListener("deselect", e => {
       root._getRange().collapse(false);
+    });
+    button.addEventListener("paste-button", e => {
+      console.log("paste-button", root.selection, e);
+      if (this.editableElement) this.editableElement.paste();
     });
     parent.appendChild(button);
     return button;
