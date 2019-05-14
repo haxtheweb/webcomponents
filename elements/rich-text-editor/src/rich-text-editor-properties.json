@@ -6,26 +6,5 @@
     "name": "editableElement",
     "type": "Object",
     "value": null
-  },
-  "__copyTarget": {
-    "name": "__copyTarget",
-    "type": "Object"
-  },
-  "__pasteTarget": {
-    "name": "__pasteTarget",
-    "type": "Object"
-  },
-  "__pasteContentReady": {
-    "name": "__pasteContentReady",
-    "type": "Boolean",
-    "value": false
-  },
-  "__pastedContent": {
-    "name": "__pastedContent",
-    "type": "Object"
-  },
-  "__textarea": {
-    "name": "__textarea",
-    "type": "Object"
   }
 }

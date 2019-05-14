@@ -290,16 +290,14 @@ class RichTextEditorButton extends PolymerElement {
         root.toggledCommand || ""
       );
     } else if (root.command !== null) {
-      if (root.command === "paste") {
-        root.dispatchEvent(
-          new CustomEvent("paste-button", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: root
-          })
-        );
-      }
+      root.dispatchEvent(
+        new CustomEvent(root.command + "-button", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: root
+        })
+      );
       document.execCommand(root.command, false, root.commandVal || "");
       root.selection = selection;
     }

@@ -35,7 +35,6 @@ class RichTextEditorToolbar extends PolymerElement {
     return html`
       <style include="rich-text-editor-styles"></style>
       <style include="rich-text-editor-toolbar-styles"></style>
-      <textarea id="clipboard"></textarea>
       <div
         id="toolbar"
         aria-live="polite"
@@ -538,7 +537,6 @@ class RichTextEditorToolbar extends PolymerElement {
     });
     button.addEventListener("paste-button", e => {
       console.log("paste-button", root.selection, e);
-      if (this.editableElement) this.editableElement.paste();
     });
     parent.appendChild(button);
     return button;
