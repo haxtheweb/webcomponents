@@ -42,6 +42,15 @@ class RichTextEditorLink extends RichTextEditorPromptButton {
           }
         ]
       },
+
+      /**
+       * Label for the icon.
+       */
+      label: {
+        name: "label",
+        type: "String",
+        value: "Insert link"
+      },
       /**
        * the text of the prompt, as in "Link href" or "Image src"
        */

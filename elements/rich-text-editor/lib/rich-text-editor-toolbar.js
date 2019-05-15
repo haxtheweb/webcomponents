@@ -113,9 +113,10 @@ class RichTextEditorToolbar extends PolymerElement {
           id="morebutton"
           class="button"
           controls="toolbar"
-          icon="more-vert"
-          label="More buttons"
-          label-toggled="Fewer buttons"
+          icon$="[[moreIcon]]"
+          label$="[[moreLabel]]"
+          show-text-label$="[[moreShowTextLabel]]"
+          label-toggled$="[[moreLabelToggled]]"
           toggled$="[[!collapsed]]"
           on-tap="_toggleMore"
         >
@@ -163,6 +164,14 @@ class RichTextEditorToolbar extends PolymerElement {
   // properties available to the custom element for data binding
   static get properties() {
     return {
+      /**
+       * The label for the breadcrums area.
+       */
+      breadcrumbsLabel: {
+        name: "breadcrumbsLabel",
+        type: "String",
+        value: "Expand selection: "
+      },
       /**
        * The editor buttons.
        */
@@ -381,6 +390,47 @@ class RichTextEditorToolbar extends PolymerElement {
         value: null
       },
       /**
+       * Hide breadcrumbs?
+       */
+      hideBreadcrumbs: {
+        name: "hideBreadcrumbs",
+        type: "Boolean",
+        value: false,
+        observer: "_hideBreadcrumbs"
+      },
+      /**
+       * The icon for the more button.
+       */
+      moreIcon: {
+        name: "moreIcon",
+        type: "String",
+        value: "more-vert"
+      },
+      /**
+       * The label for the more button.
+       */
+      moreLabel: {
+        name: "moreLabel",
+        type: "String",
+        value: "More Buttons"
+      },
+      /**
+       * The label for the more button when toggled.
+       */
+      moreLabelToggled: {
+        name: "moreLabelToggled",
+        type: "String",
+        value: "Fewer Buttons"
+      },
+      /**
+       * The show text label for more button.
+       */
+      moreShowTextLabel: {
+        name: "moreShowTextLabel",
+        type: "Boolean",
+        value: false
+      },
+      /**
        * The the size of the editor.
        */
       responsiveSize: {
@@ -449,6 +499,7 @@ class RichTextEditorToolbar extends PolymerElement {
     super.ready();
     let root = this;
     root.__breadcrumbs = document.createElement("rich-text-editor-breadcrumbs");
+    root.__breadcrumbs.hidden = root.__hideBreadcrumbs;
     document.body.appendChild(root.__breadcrumbs);
     root.__breadcrumbs.addEventListener(
       "breadcrumb-tap",
@@ -463,7 +514,9 @@ class RichTextEditorToolbar extends PolymerElement {
     if (e.detail.target) this.selection.selectNode(e.detail.target);
     this.getUpdatedSelection();
   }
-
+  _hideBreadcrumbs() {
+    if (this.__breadcrumbs) this.__breadcrumbs.hidden = this.hideBreadcrumbs;
+  }
   /**
    * life cycle, element is disconnected
    */
@@ -583,11 +636,10 @@ class RichTextEditorToolbar extends PolymerElement {
       observer = new MutationObserver(e => {
         root.getUpdatedSelection();
       });
-
-    editableElement.addEventListener("focus", e => {
+    editableElement.addEventListener("keydown", e => {
       root.editTarget(editableElement);
     });
-    editableElement.addEventListener("mouseover", e => {
+    editableElement.addEventListener("mousedown", e => {
       root.editTarget(editableElement);
     });
     editableElement.addEventListener("blur", e => {

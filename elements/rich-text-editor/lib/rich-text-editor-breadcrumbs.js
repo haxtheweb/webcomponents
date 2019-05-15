@@ -47,7 +47,7 @@ class richTextEditorBreadcrumbs extends PolymerElement {
           @apply --rich-text-editor-breadcrumb;
         }
       </style>
-      Expand selection:
+      [[label]]
       <template is="dom-repeat" items="[[ancestorNodes]]" as="crumb">
         <rich-text-editor-breadcrumb
           controls$="[[controls]]"
@@ -71,11 +71,34 @@ class richTextEditorBreadcrumbs extends PolymerElement {
   static get properties() {
     return {
       /**
-       * The active rict-text-edito.
+       * fields for the prompt popover.
+       */
+      ancestorNodes: {
+        type: Array,
+        computed: "_getAncestorNodes(selection,controls)"
+      },
+      /**
+       * The active rict-text-editor.
        */
       controls: {
         type: String,
         value: null
+      },
+      /**
+       * Hide breadcrumbs
+       */
+      hidden: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
+       * The breadcrumb labels.
+       */
+      label: {
+        name: "label",
+        type: "String",
+        value: "Expand selection: "
       },
       /**
        * The selected text.
@@ -83,13 +106,6 @@ class richTextEditorBreadcrumbs extends PolymerElement {
       selection: {
         type: Object,
         value: null
-      },
-      /**
-       * fields for the prompt popover.
-       */
-      ancestorNodes: {
-        type: Array,
-        computed: "_getAncestorNodes(selection,controls)"
       }
     };
   }

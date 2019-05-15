@@ -53,9 +53,9 @@ class RichTextEditorButton extends PolymerElement {
           icon$="[[_regOrToggled(icon,toggledIcon,toggled)]]"
         >
         </iron-icon>
-        <span id="label" class$="[[labelStyle]]"></span>
+        <span id="label" class$="[[labelStyle]]">[[__label]]</span>
       </paper-button>
-      <paper-tooltip id="tooltip" for="button"></paper-tooltip>
+      <paper-tooltip id="tooltip" for="button">[[__label]]</paper-tooltip>
     `;
   }
 
@@ -153,7 +153,7 @@ class RichTextEditorButton extends PolymerElement {
       __label: {
         name: "__label",
         type: "String",
-        computed: "_getLabel(selection)",
+        computed: "_getLabel(selection,command,toggles)",
         notify: true
       },
 
@@ -319,12 +319,12 @@ class RichTextEditorButton extends PolymerElement {
    */
   _isToggled(selection) {
     let toggled =
-        this.command !== null && this.toggles
-          ? document.queryCommandState(this.command)
-          : false,
+      this.command !== null && this.toggles
+        ? document.queryCommandState(this.command)
+        : false; /*,
       label = this._regOrToggled(this.label, this.toggledLabel, toggled);
     if (this.$.label !== undefined) this.$.label.innerHTML = label;
-    if (this.$.tooltip !== undefined) this.$.tooltip.innerHTML = label;
+    if (this.$.tooltip !== undefined) this.$.tooltip.innerHTML = label*/
     return toggled;
   }
 
@@ -332,13 +332,15 @@ class RichTextEditorButton extends PolymerElement {
    * determine if the button is toggled
    *
    * @param {object} the text selection
+   * @param {string} the default command
+   * @param {boolean} whether the button toggles
    * @returns {string} the label based on whether or not the button is toggled
    *
    */
-  _getLabel(selection) {
+  _getLabel(selection, command, toggles) {
     let toggled =
-        this.command !== null && this.toggles
-          ? document.queryCommandState(this.command)
+        this.command !== null && toggles
+          ? document.queryCommandState(command)
           : false,
       label = this._regOrToggled(this.label, this.toggledLabel, toggled);
     return label;

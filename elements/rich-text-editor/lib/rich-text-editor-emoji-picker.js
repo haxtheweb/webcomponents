@@ -48,6 +48,15 @@ class RichTextEditorEmojiPicker extends RichTextEditorPicker {
       },
 
       /**
+       * Label for the icon.
+       */
+      label: {
+        name: "label",
+        type: "String",
+        value: "Insert emoji"
+      },
+
+      /**
        * An optional JSON file with default options.
        */
       optionsSrc: {
@@ -83,10 +92,6 @@ class RichTextEditorEmojiPicker extends RichTextEditorPicker {
    */
   static get tag() {
     return "rich-text-editor-emoji-picker";
-  }
-  constructor() {
-    super();
-    import("@polymer/iron-icons/editor-icons.js");
   }
   /**
    * life cycle, element is afixed to the DOM

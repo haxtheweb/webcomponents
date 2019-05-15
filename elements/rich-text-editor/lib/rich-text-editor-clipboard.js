@@ -2,7 +2,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/iron-icons/editor-icons.js";
 /**
  * `rich-text-editor-clipboard`
  * `a heading picker for the rich-text-editor`

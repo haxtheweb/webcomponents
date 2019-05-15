@@ -19,13 +19,28 @@ class RichTextEditorMoreButton extends RichTextEditorButton {
   static get properties() {
     return {
       /**
+       * Label for the icon.
+       */
+      label: {
+        name: "label",
+        type: "String",
+        value: "More buttons"
+      },
+      /**
+       * Label for the icon.
+       */
+      labelToggled: {
+        name: "labelToggled",
+        type: "String",
+        value: "Fewer buttons"
+      },
+      /**
        * Can this button toggle?
        */
       toggled: {
         name: "toggled",
         type: "Boolean",
         value: false,
-        observer: "_updateLabels",
         reflectToAttribute: true
       },
       /**
@@ -55,17 +70,6 @@ class RichTextEditorMoreButton extends RichTextEditorButton {
     this.dispatchEvent(
       new CustomEvent("rich-text-more-button-tap", { detail: this })
     );
-  }
-
-  /**
-   * updates the selection
-   *
-   * @param {boolean} whether the expand is toggled
-   */
-  _updateLabels(toggled) {
-    let label = this._regOrToggled(this.label, this.toggledLabel, toggled);
-    this.$.label.innerHTML = label;
-    this.$.tooltip.innerHTML = label;
   }
 }
 window.customElements.define(

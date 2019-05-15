@@ -54,6 +54,15 @@ class RichTextEditorHeadingPicker extends RichTextEditorPicker {
           { label: "Preformatted", tag: "pre" }
         ]
       },
+
+      /**
+       * Label for the icon.
+       */
+      label: {
+        name: "label",
+        type: "String",
+        value: "Block format"
+      },
       /**
        * The command used for document.execCommand.
        */

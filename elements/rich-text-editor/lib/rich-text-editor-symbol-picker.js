@@ -30,6 +30,15 @@ class RichTextEditorSymbolPicker extends RichTextEditorPicker {
       },
 
       /**
+       * Label for the icon.
+       */
+      label: {
+        name: "label",
+        type: "String",
+        value: "Insert symbol"
+      },
+
+      /**
        * An optional JSON file with default options.
        */
       optionsSrc: {
@@ -74,10 +83,6 @@ class RichTextEditorSymbolPicker extends RichTextEditorPicker {
    */
   static get tag() {
     return "rich-text-editor-symbol-picker";
-  }
-  constructor() {
-    super();
-    import("@polymer/iron-icons/editor-icons.js");
   }
   /**
    * life cycle, element is afixed to the DOM

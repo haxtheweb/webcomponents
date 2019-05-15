@@ -42,9 +42,9 @@ class RichTextEditorPicker extends RichTextEditorButton {
         options="[[options]]"
         value="{{value}}"
       >
-        <span id="label" class$="[[labelStyle]]"></span>
+        <span id="label" class$="[[labelStyle]]">[[__label]]</span>
       </simple-picker>
-      <paper-tooltip id="tooltip" for="button"></paper-tooltip>
+      <paper-tooltip id="tooltip" for="button">[[__label]]</paper-tooltip>
     `;
   }
 
