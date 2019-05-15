@@ -70,6 +70,7 @@ class RichTextEditorClipboard extends PolymerElement {
   }
   copyToClipboard(selection, cut = false) {
     this.$.clipboard.innerHTML = "";
+    console.log(selection);
     if (selection) this.$.clipboard.appendChild(selection.cloneContents());
     if (cut && selection.extractContents) selection.extractContents();
   }

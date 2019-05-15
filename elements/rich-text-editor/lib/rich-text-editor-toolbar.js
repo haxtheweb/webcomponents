@@ -12,7 +12,8 @@ import "./rich-text-editor-heading-picker.js";
 import "./rich-text-editor-symbol-picker.js";
 import "./rich-text-editor-link.js";
 import "./rich-text-editor-styles.js";
-import "./rich-text-editor-toolbar-styles.js";
+import "./rich-text-editor-button-styles.js";
+import "./rich-text-editor-breadcrumbs.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/iron-icons/image-icons.js";
@@ -34,7 +35,74 @@ class RichTextEditorToolbar extends PolymerElement {
   static get template() {
     return html`
       <style include="rich-text-editor-styles"></style>
-      <style include="rich-text-editor-toolbar-styles"></style>
+      <style include="rich-text-editor-button-styles">
+        :host([sticky]) {
+          position: sticky;
+          top: 0;
+        }
+        :host([hidden]) {
+          display: none;
+        }
+        :host #toolbar {
+          display: flex;
+          opacity: 1;
+          margin: 0;
+          align-items: stretch;
+          flex-wrap: wrap;
+          justify-content: flex-start;
+          background-color: var(--rich-text-editor-bg);
+          border: var(--rich-text-editor-border);
+          font-size: 12px;
+          transition: all 0.5s;
+          @apply --rich-text-editor-toolbar;
+        }
+        :host #toolbar[aria-hidden] {
+          visibility: hidden;
+          opacity: 0;
+          height: 0;
+        }
+        :host #toolbar .group {
+          display: flex;
+          flex-wrap: nowrap;
+          justify-content: space-evenly;
+          align-items: stretch;
+          padding: 0 3px;
+          @apply --rich-text-editor-toolbar-group;
+        }
+        :host #toolbar .group:not(:last-of-type) {
+          margin-right: 3px;
+          border-right: var(--rich-text-editor-border);
+          @apply --rich-text-editor-toolbar-divider;
+        }
+        :host #toolbar .button {
+          display: flex;
+          flex: 0 0 auto;
+          align-items: stretch;
+        }
+        :host #toolbar #morebutton {
+          flex: 1 0 auto;
+          justify-content: flex-end;
+        }
+        /* hide the more button if all the buttons are displayed */
+        :host([responsive-size="xs"]) #morebutton[collapse-max="xs"],
+        :host([responsive-size="sm"]) #morebutton[collapse-max*="s"],
+        :host([responsive-size="md"]) #morebutton:not([collapse-max*="l"]),
+        :host([responsive-size="lg"]) #morebutton:not([collapse-max="xl"]),
+        :host([responsive-size="xl"]) #morebutton,
+        /* hide the buttons if they should be collaped until */
+        :host([responsive-size="xs"]) #toolbar[collapsed] *[collapsed-until*="m"],
+        :host([responsive-size="xs"]) #toolbar[collapsed] *[collapsed-until*="l"],
+        :host([responsive-size="sm"]) #toolbar[collapsed] *[collapsed-until="md"],
+        :host([responsive-size="sm"]) #toolbar[collapsed] *[collapsed-until*="l"],
+        :host([responsive-size="md"]) #toolbar[collapsed] *[collapsed-until*="l"],
+        :host([responsive-size="lg"]) #toolbar[collapsed] *[collapsed-until="xl"] {
+          display: none;
+        }
+        :host #breadcrumb {
+          background-color: #e0e0e0;
+          color: #222;
+        }
+      </style>
       <div
         id="toolbar"
         aria-live="polite"
@@ -379,6 +447,21 @@ class RichTextEditorToolbar extends PolymerElement {
 
   ready() {
     super.ready();
+    let root = this;
+    root.__breadcrumbs = document.createElement("rich-text-editor-breadcrumbs");
+    document.body.appendChild(root.__breadcrumbs);
+    root.__breadcrumbs.addEventListener(
+      "breadcrumb-tap",
+      root._handleBreadcrumb.bind(root)
+    );
+  }
+
+  /**
+   *
+   */
+  _handleBreadcrumb(e) {
+    if (e.detail.target) this.selection.selectNode(e.detail.target);
+    this.getUpdatedSelection();
   }
 
   /**
@@ -405,7 +488,8 @@ class RichTextEditorToolbar extends PolymerElement {
    * @param {object} an HTML object that can be edited
    */
   editTarget(editableElement) {
-    let root = this;
+    let root = this,
+      sel = window.getSelection();
     if (
       editableElement.getAttribute("id") === undefined ||
       editableElement.getAttribute("id") === null
@@ -420,10 +504,16 @@ class RichTextEditorToolbar extends PolymerElement {
       }
       //activate the editableElement
       editableElement.parentNode.insertBefore(root, editableElement);
+      editableElement.parentNode.insertBefore(
+        root.__breadcrumbs,
+        editableElement.nextSibling
+      );
+      sel.removeAllRanges();
       root.editableElement = editableElement;
       root.canceled = editableElement.innerHTML;
       root.editableElement.contentEditable = true;
       root.controls = editableElement.getAttribute("id");
+      root.__breadcrumbs.controls = editableElement.getAttribute("id");
     }
   }
 
@@ -438,10 +528,11 @@ class RichTextEditorToolbar extends PolymerElement {
         : root.editableElement.getSelection
         ? root.editableElement.getSelection()
         : root._getRange();
-    this.buttons.forEach(button => {
+    root.buttons.forEach(button => {
       button.selection = null;
       button.selection = root.selection;
     });
+    root.__breadcrumbs.selection = root.selection;
   }
 
   /**
@@ -493,7 +584,10 @@ class RichTextEditorToolbar extends PolymerElement {
         root.getUpdatedSelection();
       });
 
-    editableElement.addEventListener("click", e => {
+    editableElement.addEventListener("focus", e => {
+      root.editTarget(editableElement);
+    });
+    editableElement.addEventListener("mouseover", e => {
       root.editTarget(editableElement);
     });
     editableElement.addEventListener("blur", e => {
@@ -531,12 +625,12 @@ class RichTextEditorToolbar extends PolymerElement {
     button.addEventListener("keypress", (e) => {
       e.preventDefault();
       root._preserveSelection(button);
-    });*/
-    button.addEventListener("deselect", e => {
-      root._getRange().collapse(false);
     });
     button.addEventListener("paste-button", e => {
       console.log("paste-button", root.selection, e);
+    });*/
+    button.addEventListener("deselect", e => {
+      root._getRange().collapse(false);
     });
     parent.appendChild(button);
     return button;
@@ -546,7 +640,7 @@ class RichTextEditorToolbar extends PolymerElement {
    * Generate a UUID
    */
   _generateUUID() {
-    return "ss-s-s-s-sss".replace(/s/g, this._uuidPart);
+    return "rte-" + "ss-s-s-s-sss".replace(/s/g, this._uuidPart);
   }
   /**
    * Gets the groups array for the dom-repeat.
@@ -609,6 +703,7 @@ class RichTextEditorToolbar extends PolymerElement {
     this.buttons.forEach(button => {
       button.selection = temp;
     });
+    this.__breadcrumbs.selection = temp;
     sel.removeAllRanges();
     sel.addRange(temp);
   }

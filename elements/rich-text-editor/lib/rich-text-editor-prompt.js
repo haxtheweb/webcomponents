@@ -3,11 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@lrnwebcomponents/simple-popover/simple-popover.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
-import "./rich-text-editor-toolbar-styles.js";
+import "./rich-text-editor-button-styles.js";
 
 // register globally so we can make sure there is only one
 window.richTextEditorPrompt = window.richTextEditorPrompt || {};
@@ -37,7 +36,7 @@ class richTextEditorPrompt extends PolymerElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */ // render function
   static get template() {
     return html`
-      <style include="rich-text-editor-toolbar-styles">
+      <style include="rich-text-editor-button-styles">
         :host {
           --simple-popover-padding: 0 10px;
           --paper-input-container-focus-color: var(
@@ -49,8 +48,15 @@ class richTextEditorPrompt extends PolymerElement {
             #800
           );
         }
-        :host .actions {
-          text-align: right;
+        :host #prompt:not([hidden]) {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          z-index: 9999;
+        }
+        :host #prompt paper-input {
+          width: 200px;
+          padding: 0;
         }
         :host #cancel.rtebutton:focus,
         :host #cancel.rtebutton:hover {
@@ -73,6 +79,12 @@ class richTextEditorPrompt extends PolymerElement {
             --rich-text-editor-confirm-hover-color,
             var(--rich-text-editor-button-hover-bg)
           );
+        }
+        :host .actions {
+          text-align: right;
+        }
+        :host .confirm-or-cancel {
+          min-width: 40px;
         }
       </style>
       <simple-popover

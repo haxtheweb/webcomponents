@@ -122,7 +122,7 @@ diff a/elements/rich-text-editor/rich-text-editor.js b/elements/rich-text-editor
 -:host([responsive-size="lg"]) #toolbar[collapsed] *[collapsed-until="xl"] {
 -  display: none;
 -}</style>
--<style include="rich-text-editor-toolbar-styles"></style>
+-<style include="rich-text-editor-button-styles"></style>
 -<div id="toolbar" aria-hidden$="[[!controls]]" collapsed$="[[collapsed]]">
 -  <rich-text-editor-more-button
 -    id="morebutton"
@@ -161,7 +161,7 @@ diff a/elements/rich-text-editor/rich-text-editor.js b/elements/rich-text-editor
 +          display: none;
 +        }
 +      </style>
-+      <style include="rich-text-editor-toolbar-styles"></style>
++      <style include="rich-text-editor-button-styles"></style>
 +      <div id="toolbar" aria-hidden$="[[!controls]]" collapsed$="[[collapsed]]">
 +        <rich-text-editor-more-button
 +          id="morebutton"
