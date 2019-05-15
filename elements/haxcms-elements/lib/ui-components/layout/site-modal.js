@@ -43,7 +43,11 @@ class SiteModal extends PolymerElement {
           @apply --site-modal-modal;
         }
       </style>
-      <paper-icon-button id="btn" icon="[[icon]]"></paper-icon-button>
+      <paper-icon-button
+        id="btn"
+        icon="[[icon]]"
+        title="[[buttonLabel]]"
+      ></paper-icon-button>
       <paper-tooltip for="btn" position="[[position]]" offset="14">
         [[buttonLabel]]
       </paper-tooltip>

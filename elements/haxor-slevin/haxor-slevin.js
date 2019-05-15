@@ -261,7 +261,11 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
       <app-header reveals>
         <app-toolbar>
           <div>
-            <paper-button class="backbutton" on-click="_goBack">
+            <paper-button
+              class="backbutton"
+              on-click="_goBack"
+              title="Back to listing"
+            >
               <iron-icon icon="[[icon]]"></iron-icon>
               <span class="hide-small">[[title]] - [[activeTitle]]</span>
             </paper-button>
