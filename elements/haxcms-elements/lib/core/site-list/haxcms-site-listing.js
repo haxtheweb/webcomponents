@@ -136,6 +136,7 @@ class HAXCMSSiteListing extends PolymerElement {
           font-weight: 500;
         }
         #saveconfig,
+        #bulksites,
         #create {
           width: 50%;
           height: 64px;
@@ -377,20 +378,20 @@ class HAXCMSSiteListing extends PolymerElement {
           </div>
           <div class="main-title">[[title]]</div>
           <div class="selected-operations" data-hidden$="[[!hasSelectedItems]]">
-            <paper-button on-tap="_publishSites" id="publish" raised>
+            <paper-button on-tap="_bulkSitesConfirm" id="publish" raised>
               <iron-icon icon="editor:publish"></iron-icon> Publish
             </paper-button>
-            <paper-button on-tap="_cloneSites" id="clone" raised>
+            <paper-button on-tap="_bulkSitesConfirm" id="clone" raised>
               <iron-icon icon="icons:content-copy"></iron-icon> Clone
             </paper-button>
-            <paper-button on-tap="_downloadSites" id="download" raised>
+            <paper-button on-tap="_bulkSitesConfirm" id="download" raised>
               <iron-icon icon="icons:file-download"></iron-icon> Download
             </paper-button>
-            <paper-button on-tap="_archiveSites" id="archive" raised>
+            <paper-button on-tap="_bulkSitesConfirm" id="archive" raised>
               <iron-icon icon="icons:archive"></iron-icon> Archive
             </paper-button>
             <paper-button
-              on-tap="_deleteSites"
+              on-tap="_bulkSitesConfirm"
               id="delete"
               raised
               class="danger"
@@ -548,6 +549,28 @@ class HAXCMSSiteListing extends PolymerElement {
           >
         </simple-login>
       </div>
+      <paper-dialog id="confirm" with-backdrop>
+        <h2>[[activeOpertion]] these [[selectedItems.length]] sites</h2>
+        <paper-dialog-scrollable>
+          <ul>
+            <dom-repeat items="[[selectedItems]]" as="site">
+              <template>
+                <li>[[site.title]]</li>
+              </template>
+            </dom-repeat>
+          </ul>
+        </paper-dialog-scrollable>
+        <div class="buttons">
+          <paper-button
+            on-tap="_confirmBulkOperation"
+            dialog-confirm
+            id="bulksites"
+            raised
+            >Yes, [[activeOpertion]]</paper-button
+          >
+          <paper-button dialog-dismiss>cancel</paper-button>
+        </div>
+      </paper-dialog>
       <paper-dialog id="newdialog" with-backdrop>
         <h3>Create new site</h3>
         <div>
@@ -710,6 +733,9 @@ class HAXCMSSiteListing extends PolymerElement {
       setConfigParams: {
         type: Object,
         value: {}
+      },
+      activeOpertion: {
+        type: String
       },
       selectedItems: {
         type: Array,
@@ -1156,10 +1182,21 @@ class HAXCMSSiteListing extends PolymerElement {
     }
   }
   /**
+   * Confirm delete
+   */
+  _bulkSitesConfirm(e) {
+    this.activeOpertion = e.target.id;
+    this.shadowRoot.querySelector("#confirm").opened = true;
+  }
+  async _confirmBulkOperation(e) {
+    await this["_" + this.activeOpertion + "Sites"]();
+    this.activeOpertion = "";
+    this.shadowRoot.querySelector("#grid").set("selectedItems", []);
+  }
+  /**
    * Delete sites
    */
   async _deleteSites(e) {
-    // @todo obtain confirmation first
     // ship off a new call
     // pass along the jwt for user "session" purposes
     this.set("deleteParams.jwt", this.jwt);
