@@ -884,7 +884,7 @@ class HaxBody extends PolymerElement {
         if (properties.hasOwnProperty(property)) {
           // special supporting for boolean because html is weird :p
           if (properties[property] === true) {
-            newNode.setAttribute(attributeName, properties[property]);
+            newNode.setAttribute(attributeName, attributeName);
           } else if (properties[property] === false) {
             newNode.removeAttribute(attributeName);
           } else if (
@@ -1085,7 +1085,15 @@ class HaxBody extends PolymerElement {
   haxDuplicateNode(node, parent = this) {
     // move the context menu before duplicating!!!!
     this.hideContextMenus();
-    var nodeClone = dom(node).cloneNode(true);
+    // convert the node to a hax element
+    let haxElement = window.HaxStore.nodeToHaxElement(node, null);
+    // convert it back to a clone, seems odd I'm sure but this ensures that all props are copied
+    // correctly and that we get a brand new object
+    var nodeClone = window.HaxStore.haxElementToNode(
+      haxElement.tag,
+      haxElement.content,
+      haxElement.properties
+    );
     if (
       nodeClone.tagName.toLowerCase() === "webview" &&
       window.HaxStore.instance._isSandboxed &&

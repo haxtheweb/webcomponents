@@ -257,11 +257,14 @@ class SimpleLogin extends PolymerElement {
       this.shadowRoot.querySelector("#passinput").validate()
     ) {
       this.dispatchEvent(
-        new CustomEvent("login-btn-click", {
-          cancelable: false,
+        new CustomEvent("simple-login-login", {
+          cancelable: true,
           bubbles: true,
           composed: true,
-          detail: true
+          detail: {
+            u: this.shadowRoot.querySelector("#userinput").value,
+            p: this.shadowRoot.querySelector("#passinput").value
+          }
         })
       );
     }

@@ -1,3 +1,53 @@
+/**
+ * A list of licenses that we support the references for.
+ */
+export class licenseList {
+  constructor(mode = "full") {
+    // initial list, PR to add more
+    let list = {
+      by: {
+        name: "Attribution",
+        link: "https://creativecommons.org/licenses/by/4.0/",
+        image: "https://i.creativecommons.org/l/by/4.0/88x31.png"
+      },
+      "by-sa": {
+        name: "Attribution Share a like",
+        link: "https://creativecommons.org/licenses/by-sa/4.0/",
+        image: "https://i.creativecommons.org/l/by-sa/4.0/88x31.png"
+      },
+      "by-nd": {
+        name: "Attribution No derivatives",
+        link: "https://creativecommons.org/licenses/by-nd/4.0/",
+        image: "https://i.creativecommons.org/l/by-nd/4.0/88x31.png"
+      },
+      "by-nc": {
+        name: "Attribution non-commercial",
+        link: "https://creativecommons.org/licenses/by-nc/4.0/",
+        image: "https://i.creativecommons.org/l/by-nc/4.0/88x31.png"
+      },
+      "by-nc-sa": {
+        name: "Attribution non-commercial share a like",
+        link: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+        image: "https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"
+      },
+      "by-nc-nd": {
+        name: "Attribution Non-commercial No derivatives",
+        link: "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+        image: "https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png"
+      }
+    };
+    // support mutating the array into a select list
+    if (mode == "select") {
+      var select = {};
+      for (var i in list) {
+        select[i] = list[i].name;
+      }
+      return select;
+    }
+    return list;
+  }
+}
+
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
@@ -297,52 +347,3 @@ class LicenseElement extends SchemaBehaviors(PolymerElement) {
 }
 window.customElements.define(LicenseElement.tag, LicenseElement);
 export { LicenseElement };
-/**
- * A list of licenses that we support the references for.
- */
-export class licenseList {
-  constructor(mode = "full") {
-    // initial list, PR to add more
-    let list = {
-      by: {
-        name: "Attribution",
-        link: "https://creativecommons.org/licenses/by/4.0/",
-        image: "https://i.creativecommons.org/l/by/4.0/88x31.png"
-      },
-      "by-sa": {
-        name: "Attribution Share a like",
-        link: "https://creativecommons.org/licenses/by-sa/4.0/",
-        image: "https://i.creativecommons.org/l/by-sa/4.0/88x31.png"
-      },
-      "by-nd": {
-        name: "Attribution No derivatives",
-        link: "https://creativecommons.org/licenses/by-nd/4.0/",
-        image: "https://i.creativecommons.org/l/by-nd/4.0/88x31.png"
-      },
-      "by-nc": {
-        name: "Attribution non-commercial",
-        link: "https://creativecommons.org/licenses/by-nc/4.0/",
-        image: "https://i.creativecommons.org/l/by-nc/4.0/88x31.png"
-      },
-      "by-nc-sa": {
-        name: "Attribution non-commercial share a like",
-        link: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-        image: "https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"
-      },
-      "by-nc-nd": {
-        name: "Attribution Non-commercial No derivatives",
-        link: "https://creativecommons.org/licenses/by-nc-nd/4.0/",
-        image: "https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png"
-      }
-    };
-    // support mutating the array into a select list
-    if (mode == "select") {
-      var select = {};
-      for (var i in list) {
-        select[i] = list[i].name;
-      }
-      return select;
-    }
-    return list;
-  }
-}

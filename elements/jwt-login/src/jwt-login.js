@@ -17,9 +17,11 @@ class JwtLogin extends PolymerElement {
       </style>
       <iron-ajax
         id="loginrequest"
-        method="GET"
+        method="[[method]]"
+        body="[[body]]"
         url="[[url]]"
         handle-as="json"
+        content-type="application/json"
         on-response="loginResponse"
       >
       </iron-ajax>
@@ -37,6 +39,20 @@ class JwtLogin extends PolymerElement {
        */
       url: {
         type: String
+      },
+      /**
+       * Request method
+       */
+      method: {
+        type: String,
+        value: "GET"
+      },
+      /**
+       * Optional body, useful when doing posts
+       */
+      body: {
+        type: Object,
+        value: {}
       },
       /**
        * Key that contains the token in local storage
@@ -78,8 +94,13 @@ class JwtLogin extends PolymerElement {
     if (this.jwt == null) {
       this.$.loginrequest.generateRequest();
     } else {
+      // we were told to logout, reset body
+      this.set("body", {});
+      // remove this key from local storage bin
       localStorage.removeItem(this.key);
+      // reset jwt
       this.jwt = null;
+      // fire login event but false meaning we've executed the logout url
       this.dispatchEvent(
         new CustomEvent("jwt-logged-in", {
           bubbles: true,
@@ -96,6 +117,7 @@ class JwtLogin extends PolymerElement {
   loginResponse(e) {
     this.jwt = e.detail.response;
     if (this.jwt == null || this.jwt == "") {
+      // jwt was invalid some how
       this.dispatchEvent(
         new CustomEvent("jwt-logged-in", {
           bubbles: true,

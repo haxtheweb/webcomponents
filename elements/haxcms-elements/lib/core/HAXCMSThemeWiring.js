@@ -163,12 +163,14 @@ export const HAXCMSTheme = function(SuperClass) {
       this.__disposer = [];
       afterNextRender(this, function() {
         // edge case, we just swapped theme faster then content loaded... lol
-        if (dom(this).getEffectiveChildNodes().length === 0) {
-          let frag = document
-            .createRange()
-            .createContextualFragment(store.activeItemContent);
-          dom(this).appendChild(frag);
-        }
+        setTimeout(() => {
+          if (dom(this).getEffectiveChildNodes().length === 0) {
+            let frag = document
+              .createRange()
+              .createContextualFragment(store.activeItemContent);
+            dom(this).appendChild(frag);
+          }
+        }, 50);
         updateStyles();
         // store disposer so we can clean up later
         autorun(reaction => {

@@ -1794,7 +1794,12 @@ window.HaxStore.nodeToHaxElement = (node, eventName = "insert-element") => {
   if (typeof node.attributes.id !== typeof undefined) {
     props.id = node.getAttribute("id");
   }
-  let tmpProps = node.properties;
+  let tmpProps;
+  // relatively cross library
+  if (customElements.get(node.tagName.toLowerCase())) {
+    tmpProps = customElements.get(node.tagName.toLowerCase()).properties;
+  }
+  // weak fallback
   if (typeof tmpProps === typeof undefined) {
     tmpProps = node.__data;
   }
@@ -2011,8 +2016,17 @@ window.HaxStore.haxNodeToContent = node => {
     }
   }
   // now look through properties
-  if (typeof node.properties !== typeof undefined) {
-    for (var j in node.properties) {
+  let tmpProps;
+  // relatively cross library
+  if (customElements.get(tag)) {
+    tmpProps = customElements.get(tag).properties;
+  }
+  // weak fallback
+  if (typeof tmpProps === typeof undefined) {
+    tmpProps = node.__data;
+  }
+  if (typeof tmpProps !== typeof undefined) {
+    for (var j in tmpProps) {
       var nodeName = window.HaxStore.camelToDash(j);
       var value = null;
       // prefer local value over properties object if possible
@@ -2021,7 +2035,12 @@ window.HaxStore.haxNodeToContent = node => {
       }
       // never allow read only things to recorded as they
       // are run-time creation 99% of the time
-      if (!node.properties[j].readOnly && value !== node.properties[j].value) {
+      // this is very polymer specific but it allows readOnly and computed props
+      if (
+        !tmpProps[j].readOnly &&
+        !tmpProps[j].computed &&
+        value !== tmpProps[j].value
+      ) {
         // encode objects and arrays because they are special
         if (
           value != null &&
@@ -2048,9 +2067,9 @@ window.HaxStore.haxNodeToContent = node => {
             // special handling for empty string cause it might mean boolean
             // or it might be a string
             else if (value === "") {
-              if (value == "" && node.properties[j].value != "") {
-                value = node.properties[j].value;
-              } else if (value === "" && node.properties[j].value == "") {
+              if (value == "" && tmpProps[j].value != "") {
+                value = tmpProps[j].value;
+              } else if (value === "" && tmpProps[j].value == "") {
                 // do nothing, the default value is empty
                 // so lets record less data
               }

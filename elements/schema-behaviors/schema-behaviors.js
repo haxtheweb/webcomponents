@@ -6,7 +6,7 @@
 export const SchemaBehaviors = function(SuperClass) {
   return class extends SuperClass {
     static get properties() {
-      return {
+      let props = {
         /**
          * Unique Resource ID, generated when schemaMap processes.
          */
@@ -15,10 +15,11 @@ export const SchemaBehaviors = function(SuperClass) {
           value: ""
         },
         /**
-         * Schema Map for this element.
+         * Schema Map for the element, used to generate a valid prefix on the fly
          */
         schemaMap: {
           type: Object,
+          readOnly: true,
           value: {
             prefix: {
               oer: "http://oerschema.org/",
@@ -32,6 +33,10 @@ export const SchemaBehaviors = function(SuperClass) {
           observer: "_schemaMapChanged"
         }
       };
+      if (super.properties) {
+        props = Object.assign(props, super.properties);
+      }
+      return props;
     }
     /**
      * Generate a uinque ID
