@@ -1,0 +1,58 @@
+{
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Filtered image",
+    "description": "An image using an SVG filter. Can be used to make background images have more contrast with text.",
+    "icon": "icons:android",
+    "color": "green",
+    "groups": ["Image"],
+    "handles": [
+      {
+        "type": "todo:read-the-docs-for-usage"
+      }
+    ],
+    "meta": {
+      "author": "nikkimk",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "quick": [
+      {
+        "property": "src",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": true,
+        "icon": "icons:link",
+        "validationType": "url"
+      },
+      {
+        "property": "alt",
+        "description": "",
+        "inputMethod": "alt",
+        "required": true,
+        "icon": "icons:accessibility"
+      }
+    ],
+    "configure": [
+      {
+        "property": "src",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": true,
+        "icon": "icons:link",
+        "validationType": "url"
+      },
+      {
+        "property": "alt",
+        "description": "",
+        "inputMethod": "alt",
+        "required": true,
+        "icon": "icons:accessibility"
+      }
+    ],
+    "advanced": []
+  }
+}

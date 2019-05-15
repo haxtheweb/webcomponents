@@ -2,8 +2,8 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  *
- * `rich-text-editor-toolbar-styles`
- * `a shared set of styles for rich-text-editor`
+ * `simple-colors-styles`
+ * `a shared set of styles for simple-colors`
  *
  * @microcopy - language worth noting:
  *  -
@@ -11,7 +11,6 @@
  * @pseudoElement
  * @polymer
  * @demo demo/index.html
- * @see lib/rich-text-editor-toolbar-styles-demo.js
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 

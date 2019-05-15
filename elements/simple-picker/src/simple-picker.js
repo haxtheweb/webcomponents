@@ -91,6 +91,7 @@ class SimplePicker extends PolymerElement {
    * handles listbox click event
    */
   _handleListboxEvent(e, type) {
+    console.log("_handleListboxEvent", type);
     this.dispatchEvent(new CustomEvent(type, { detail: this }));
     if (type === "click") this._toggleListbox(!this.expanded);
   }
@@ -252,6 +253,9 @@ class SimplePicker extends PolymerElement {
       });
       this.$.listbox.addEventListener("keydown", function(e) {
         root._handleListboxKeydown(e);
+      });
+      this.addEventListener("blur", function(e) {
+        this.expanded = false;
       });
     }
   }

@@ -7,6 +7,7 @@ import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "./lib/rich-text-editor-styles.js";
 import "./lib/rich-text-editor-toolbar.js";
+import "./lib/rich-text-editor-clipboard.js";
 /**
  * `rich-text-editor`
  * `a standalone rich text editor`
@@ -130,6 +131,9 @@ class RichTextEditor extends PolymerElement {
    */
   ready() {
     super.ready();
+    let root = this,
+      clipboard = window.RichTextEditorClipboard.requestAvailability();
+    console.log("ready", clipboard);
     //find an editor by id
     let id = document.querySelector(
         "rich-text-editor-toolbar#" + this.editorId
@@ -138,9 +142,23 @@ class RichTextEditor extends PolymerElement {
         id !== null ? id : document.querySelector("rich-text-editor-toolbar");
     if (editor === null) {
       editor = document.createElement("rich-text-editor-toolbar");
-      this.parentNode.appendChild(editor);
+      root.parentNode.appendChild(editor);
     }
-    editor.addEditableRegion(this);
+    editor.addEditableRegion(root);
+  }
+
+  /**
+   * Normalizes selection data.
+   *
+   * @returns {object} the selection
+   */
+  _getRange() {
+    let sel = window.getSelection();
+    if (sel.getRangeAt && sel.rangeCount) {
+      return sel.getRangeAt(0);
+    } else if (sel) {
+      return sel;
+    } else false;
   }
 
   /**

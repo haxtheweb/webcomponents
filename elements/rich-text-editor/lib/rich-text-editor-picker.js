@@ -21,7 +21,16 @@ class RichTextEditorPicker extends RichTextEditorButton {
   // render function
   static get template() {
     return html`
-      <style include="rich-text-editor-toolbar-styles"></style>
+      <style include="rich-text-editor-button-styles">
+        :host {
+          margin: var(--rich-text-editor-button-margin);
+          --simple-picker-option: {
+            line-height: var(--simple-picker-option-size);
+            height: var(--simple-picker-option-size);
+            max-height: var(--simple-picker-option-size);
+          }
+        }
+      </style>
       <simple-picker
         id="button"
         class="rtebutton"
@@ -114,7 +123,7 @@ class RichTextEditorPicker extends RichTextEditorButton {
    */
   _isToggled(selection) {
     let toggled = false;
-    if (selection !== null) {
+    if (selection !== null && !selection.isCollapsed) {
       if (this.command === "formatBlock") {
         let ancestor = selection.commonAncestorContainer,
           parent = ancestor.parentNode,

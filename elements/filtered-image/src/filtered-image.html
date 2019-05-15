@@ -1,0 +1,16 @@
+<style include="simple-colors">
+</style>
+<svg id="svg" viewBox$="[[viewBox]]"> 
+  <rect id="rect" x="0" y="0"></rect>
+  <filter id$="[[__id]]">
+    <feColorMatrix
+      id="matrix"
+      type="matrix"
+      values=" 1   0   0   0   0
+               0   1   0   0   0
+               0   0   1   0   0
+               0   0   0   1   0 "/>
+
+  </filter>      
+  <image id="image" filter$="url(#[[__id]])" x="0" y="0"></image>
+</svg>

@@ -5,8 +5,10 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@polymer/iron-icons/iron-icons.js";
-import "./rich-text-editor-toolbar-styles.js";
+import "./rich-text-editor-button-styles.js";
+import "./rich-text-editor-selection.js";
 /**
  * `rich-text-editor-button`
  * `a button for rich text editor (custom buttons can extend this)`
@@ -21,7 +23,14 @@ class RichTextEditorButton extends PolymerElement {
   // render function
   static get template() {
     return html`
-      <style include="rich-text-editor-toolbar-styles"></style>
+      <style include="rich-text-editor-button-styles">
+        :host .rtebutton {
+          min-width: var(--rich-text-editor-button-min-width);
+          height: var(--rich-text-editor-button-height);
+          margin: var(--rich-text-editor-button-margin);
+          padding: var(--rich-text-editor-button-padding);
+        }
+      </style>
       <iron-a11y-keys
         id="a11y"
         target="[[__a11y]]"
@@ -256,7 +265,7 @@ class RichTextEditorButton extends PolymerElement {
     root.addEventListener("mousedown", function(e) {
       e.preventDefault();
     });
-    root.addEventListener("keydown", function(e) {
+    root.addEventListener("keypress", function(e) {
       e.preventDefault();
     });
   }
@@ -289,11 +298,18 @@ class RichTextEditorButton extends PolymerElement {
         root.toggledCommand || ""
       );
     } else if (root.command !== null) {
+      root.dispatchEvent(
+        new CustomEvent(root.command + "-button", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: root
+        })
+      );
       document.execCommand(root.command, false, root.commandVal || "");
+      root.selection = selection;
     }
-    root.selection = selection;
   }
-
   /**
    * determine if the button is toggled
    *
