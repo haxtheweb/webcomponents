@@ -52,7 +52,7 @@ class RichTextEditorBreadcrumb extends PolymerElement {
        */
       controls: {
         name: "controls",
-        type: "Object",
+        type: "String",
         value: null
       },
       /**
