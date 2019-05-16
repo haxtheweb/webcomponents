@@ -69,7 +69,6 @@ class RichTextEditorClipboard extends PolymerElement {
   }
   copyToClipboard(selection, cut = false) {
     this.$.clipboard.innerHTML = "";
-    console.log(selection);
     if (selection) this.$.clipboard.appendChild(selection.cloneContents());
     if (cut && selection.extractContents) selection.extractContents();
   }
@@ -118,10 +117,6 @@ window.RichTextEditorClipboard.instance = null;
  * Checks to see if there is an instance available, and if not appends one
  */
 window.RichTextEditorClipboard.requestAvailability = function() {
-  console.log(
-    "window.RichTextEditorClipboard.requestAvailability",
-    window.RichTextEditorClipboard.instance
-  );
   if (window.RichTextEditorClipboard.instance == null) {
     window.RichTextEditorClipboard.instance = document.createElement(
       "rich-text-editor-clipboard"

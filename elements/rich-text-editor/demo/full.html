@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>RichTextEditor: Full rich-text-editor with breadcrumbs</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../lib/rich-text-editor-emoji-picker.js';
+      import '../rich-text-editor.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles">
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h1>Full rich-text-editor with breadcrumbs</h1>
+      <demo-snippet>
+        <template>
+          <rich-text-editor type="full">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+              In nec tincidunt tortor, at varius leo. Mauris varius 
+              iaculis enim in molestie. Cras semper odio id nunc 
+              convallis gravida. Curabitur ut dui non massa venenatis 
+              aliquam. Integer quis turpis ut tellus facilisis elementum. 
+              Nulla non leo dapibus, interdum ipsum imperdiet, pharetra 
+              nibh. Praesent cursus posuere varius. Sed non pellentesque 
+              massa. Morbi et purus id quam fermentum consectetur sit 
+              amet sed est. Nam convallis tellus non nisl tempor ornare. 
+              Duis maximus malesuada arcu sit amet placerat. Duis 
+              sollicitudin ex at dapibus porta. Pellentesque porta 
+              tellus at diam bibendum congue. Nam dignissim leo nec 
+              consectetur consequat.
+            </p>
+            <p>
+              Integer quis vulputate ex. Mauris a tincidunt sem, rutrum 
+              imperdiet ante. Pellentesque cursus ipsum sit amet dolor 
+              volutpat, vitae placerat arcu scelerisque. Phasellus diam 
+              massa, varius sollicitudin varius non, lacinia vitae dui. 
+              Proin quis justo tristique massa gravida blandit eget 
+              vitae elit. Duis mattis eleifend eros, ac volutpat lectus 
+              dignissim in. Nullam in placerat libero. Ut ut ligula 
+              congue, auctor nibh eu, vehicula est. Sed ornare at magna 
+              ornare tincidunt.
+            </p>
+            <p>  
+              Sed commodo est ut rutrum vestibulum. Fusce eleifend massa 
+              leo, eu fringilla urna elementum eu. Nam et erat augue. 
+              Morbi tristique nibh a tempus ultricies. Nullam molestie 
+              rutrum nisl, non scelerisque tellus placerat vitae. Ut 
+              mollis, nisl nec lobortis pretium, velit diam tempor 
+              tellus, non volutpat tortor ipsum sed lacus. Aenean 
+              porttitor aliquet dignissim. Sed non blandit felis. 
+              In viverra mauris eu pellentesque pulvinar. Sed convallis, 
+              sapien eget ornare elementum, dui metus scelerisque augue, 
+              non rutrum eros libero eget metus. Nunc quis lorem ut metus 
+              hendrerit facilisis. Vestibulum ante ipsum primis in faucibus 
+              orci luctus et ultrices posuere cubilia Curae; Proin laoreet 
+              lobortis suscipit. Pellentesque fermentum leo ut risus tincidunt lobortis. Morbi pretium ligula tempor pretium tristique. Vivamus vulputate elit dignissim mi tincidunt, non porttitor lorem condimentum.
+            </p>
+          </rich-text-editor>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

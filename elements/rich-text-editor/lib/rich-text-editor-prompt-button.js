@@ -21,6 +21,10 @@ import { RichTextEditorSelection } from "./rich-text-editor-selection.js";
  * @polymer
  */
 class RichTextEditorPromptButton extends RichTextEditorButton {
+  constructor() {
+    super();
+  }
+
   // properties available to the custom element for data binding
   static get properties() {
     return {

@@ -52,7 +52,7 @@ class RichTextEditorBreadcrumb extends PolymerElement {
        */
       controls: {
         name: "controls",
-        type: "String",
+        type: String,
         value: null
       },
       /**
@@ -60,7 +60,7 @@ class RichTextEditorBreadcrumb extends PolymerElement {
        */
       tag: {
         name: "tag",
-        type: "String",
+        type: String,
         value: ""
       },
       /**
@@ -68,7 +68,7 @@ class RichTextEditorBreadcrumb extends PolymerElement {
        */
       target: {
         name: "target",
-        type: "Object",
+        type: Object,
         value: null
       }
     };

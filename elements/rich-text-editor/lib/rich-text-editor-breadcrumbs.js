@@ -23,6 +23,10 @@ class richTextEditorBreadcrumbs extends PolymerElement {
     return html`
       <style include="rich-text-editor-styles"></style>
       <style include="rich-text-editor-button-styles">
+        :host([sticky]) {
+          position: sticky;
+          bottom: 0;
+        }
         :host {
           display: block;
           background-color: var(--rich-text-editor-bg);
@@ -39,8 +43,6 @@ class richTextEditorBreadcrumbs extends PolymerElement {
             margin: 0;
             padding: 2px 5px;
           }
-        }
-        :host .selectednode {
         }
         :host .selectednode {
           background-color: var(--rich-text-editor-bg);
@@ -97,7 +99,7 @@ class richTextEditorBreadcrumbs extends PolymerElement {
        */
       label: {
         name: "label",
-        type: "String",
+        type: String,
         value: "Expand selection: "
       },
       /**
@@ -106,6 +108,15 @@ class richTextEditorBreadcrumbs extends PolymerElement {
       selection: {
         type: Object,
         value: null
+      },
+      /**
+       * Should the breadcrumbs stick to the top so that it is always visible?
+       */
+      sticky: {
+        name: "sticky",
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
       }
     };
   }

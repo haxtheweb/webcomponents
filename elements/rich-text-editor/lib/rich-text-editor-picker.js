@@ -18,6 +18,11 @@ import "@lrnwebcomponents/simple-picker/simple-picker.js";
  * @polymer
  */
 class RichTextEditorPicker extends RichTextEditorButton {
+  constructor() {
+    super();
+    this.label = "Insert link";
+    this.icon = "";
+  }
   // render function
   static get template() {
     return html`
@@ -56,7 +61,7 @@ class RichTextEditorPicker extends RichTextEditorButton {
        */
       allowNull: {
         name: "allowNull",
-        type: "Boolean",
+        type: Boolean,
         value: false
       },
       /**
@@ -64,7 +69,7 @@ class RichTextEditorPicker extends RichTextEditorButton {
        */
       command: {
         name: "command",
-        type: "String",
+        type: String,
         value: "insertHTML",
         readOnly: true
       },
@@ -73,7 +78,7 @@ class RichTextEditorPicker extends RichTextEditorButton {
        */
       icon: {
         name: "icon",
-        type: "String",
+        type: String,
         value: null
       },
       /**
@@ -81,7 +86,7 @@ class RichTextEditorPicker extends RichTextEditorButton {
        */
       options: {
         name: "options",
-        type: "Array",
+        type: Array,
         value: [],
         notify: true
       },
@@ -91,7 +96,7 @@ class RichTextEditorPicker extends RichTextEditorButton {
        */
       titleAsHtml: {
         name: "titleAsHtml",
-        type: "Boolean",
+        type: Boolean,
         value: false
       },
 
@@ -100,7 +105,7 @@ class RichTextEditorPicker extends RichTextEditorButton {
        */
       value: {
         name: "value",
-        type: "Object",
+        type: Object,
         value: null
       }
     };

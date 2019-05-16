@@ -9,9 +9,12 @@
 }
 :host([contenteditable="true"]) {
   border: var(--rich-text-editor-border);
-  border-top: none;
-  overflow: hidden;
+  overflow: auto;
   @apply --rich-text-editor-content-edit;
+}
+:host(.heightmax[contenteditable="true"]) {
+  max-height: calc(100vh - 200px);
+  overflow-y: scroll;
 }
 :host([contenteditable="true"]):empty:before {
   content: attr(placeholder);

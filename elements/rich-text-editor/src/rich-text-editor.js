@@ -7,6 +7,8 @@ import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "./lib/rich-text-editor-styles.js";
 import "./lib/rich-text-editor-toolbar.js";
+import "./lib/rich-text-editor-toolbar-mini.js";
+import "./lib/rich-text-editor-toolbar-full.js";
 import "./lib/rich-text-editor-clipboard.js";
 /**
  * `rich-text-editor`
@@ -18,6 +20,8 @@ import "./lib/rich-text-editor-clipboard.js";
  * @customElement
  * @polymer
  * @demo demo/index.html demo
+ * @demo demo/mini.html mini floating toolbar
+ * @demo demo/full.html toolbar with breadcrumb
  * @demo demo/config.html custom configuration
  */
 class RichTextEditor extends PolymerElement {
@@ -45,17 +49,38 @@ class RichTextEditor extends PolymerElement {
    */
   ready() {
     super.ready();
+    this.getEditor();
+  }
+  /**
+   * connects the mini-toolbar to a mini editor
+   */
+  getEditor() {
+    window.RichTextEditorClipboard.requestAvailability();
     let root = this,
-      clipboard = window.RichTextEditorClipboard.requestAvailability();
-    console.log("ready", clipboard);
-    //find an editor by id
-    let id = document.querySelector(
-        "rich-text-editor-toolbar#" + this.editorId
+      toolbar = "rich-text-editor-toolbar",
+      id = this.editorId ? "#" + this.editorId : "",
+      type =
+        this.type === "full" || this.type === "mini" ? "-" + this.type : "",
+      both = document.querySelector(toolbar + type + id),
+      idOnly = document.querySelector(
+        toolbar +
+          id +
+          "," +
+          toolbar +
+          "-full" +
+          id +
+          "," +
+          toolbar +
+          "-mini" +
+          id
       ),
-      editor =
-        id !== null ? id : document.querySelector("rich-text-editor-toolbar");
-    if (editor === null) {
-      editor = document.createElement("rich-text-editor-toolbar");
+      typeOnly = document.querySelector(toolbar + type),
+      //try to match both id and type, if no match try id only, and then type only
+      editor = both || idOnly || typeOnly;
+    //if still no match, create a region of type
+    if (!editor || !editor.addEditableRegion) {
+      editor = document.createElement(toolbar + type);
+      editor.id = this.editorId;
       root.parentNode.appendChild(editor);
     }
     editor.addEditableRegion(root);

@@ -1,10 +1,9 @@
 /**
- * Copyright 2018 The Pennsylvania State University
+ * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import { ResponsiveUtility } from "@lrnwebcomponents/responsive-utility/responsive-utility.js";
+import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "../rich-text-editor.js";
 import "./rich-text-editor-button.js";
 import "./rich-text-editor-more-button.js";
@@ -13,33 +12,40 @@ import "./rich-text-editor-symbol-picker.js";
 import "./rich-text-editor-link.js";
 import "./rich-text-editor-styles.js";
 import "./rich-text-editor-button-styles.js";
-import "./rich-text-editor-breadcrumbs.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/iron-icons/image-icons.js";
 import "@lrnwebcomponents/md-extra-icons/md-extra-icons.js";
 /**
  * `rich-text-editor-toolbar`
- * `a toolbar for the rich text editor`
+ * `a basic toolbar for the rich text editor`
  *
  * @microcopy - language worth noting:
  *  -
  *
  * @customElement
  * @polymer
- * @demo ../demo/index.html demo
- * @demo ../demo/config.html custom configuration
+ * @demo demo/index.html demo
+ * @demo demo/config.html custom configuration
  */
 class RichTextEditorToolbar extends PolymerElement {
-  // render function
-  static get template() {
+  // render function for styles
+  static get stickyTemplate() {
     return html`
-      <style include="rich-text-editor-styles"></style>
-      <style include="rich-text-editor-button-styles">
+      <style>
         :host([sticky]) {
           position: sticky;
           top: 0;
         }
+      </style>
+    `;
+  }
+
+  // render function for styles
+  static get styleTemplate() {
+    return html`
+      <style include="rich-text-editor-styles"></style>
+      <style include="rich-text-editor-button-styles">
         :host([hidden]) {
           display: none;
         }
@@ -98,11 +104,13 @@ class RichTextEditorToolbar extends PolymerElement {
         :host([responsive-size="lg"]) #toolbar[collapsed] *[collapsed-until="xl"] {
           display: none;
         }
-        :host #breadcrumb {
-          background-color: #e0e0e0;
-          color: #222;
-        }
       </style>
+    `;
+  }
+
+  // render function for toolbar
+  static get toolbarTemplate() {
+    return html`
       <div
         id="toolbar"
         aria-live="polite"
@@ -124,60 +132,23 @@ class RichTextEditorToolbar extends PolymerElement {
       </div>
     `;
   }
-  // haxProperty definition
-  static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Rich text-editor",
-        description: "a standalone rich text editor",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Text"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage"
-          }
-        ],
-        meta: {
-          author: "nikkimk",
-          owner: "Penn State University"
-        }
-      },
-      settings: {
-        quick: [],
-        configure: [
-          {
-            property: "title",
-            description: "",
-            inputMethod: "textfield",
-            required: false,
-            icon: "icons:android"
-          }
-        ],
-        advanced: []
-      }
-    };
+
+  // render function for template
+  static get template() {
+    return html`
+      ${this.styleTemplate} ${this.stickyTemplate} ${this.toolbarTemplate}
+    `;
   }
+
   // properties available to the custom element for data binding
   static get properties() {
     return {
       /**
-       * The label for the breadcrums area.
-       */
-      breadcrumbsLabel: {
-        name: "breadcrumbsLabel",
-        type: "String",
-        value: "Expand selection: "
-      },
-      /**
-       * The editor buttons.
+       * The editor buttons, as determined by `config`.
        */
       buttons: {
         name: "buttons",
-        type: "Array",
+        type: Array,
         computed: "_getButtons(config)"
       },
       /**
@@ -185,23 +156,24 @@ class RichTextEditorToolbar extends PolymerElement {
        */
       canceled: {
         name: "canceled",
-        type: "Object",
+        type: Object,
         value: true
       },
       /**
-       * Is the menu collapsed.
+       * Is the toolbar collapsed?
        */
       collapsed: {
         name: "collapsed",
-        type: "Boolean",
+        type: Boolean,
         value: true
       },
       /**
-       * The button config on the toolbar.
+       * Custom configuration of toolbar groups and buttons.
+       * (See default value for example using default configuration.)
        */
       config: {
         name: "config",
-        type: "Object",
+        type: Object,
         value: [
           {
             label: "History",
@@ -366,44 +338,35 @@ class RichTextEditorToolbar extends PolymerElement {
         ]
       },
       /**
-       * The target element's id attribute.
+       * The `id` of the `rich-text-editor` that the toolbar controls.
        */
       controls: {
         name: "controls",
-        type: "String",
+        type: String,
         value: null
       },
       /**
-       * The editableElement element for the editor.
+       * All `rich-text-editor` elements that use this toolbar
        */
       editableElements: {
         name: "editableElements",
-        type: "Array",
+        type: Array,
         value: []
       },
       /**
-       * The editableElement element for the editor.
+       * The `rich-text-editor` element that uis currently in `contenteditable` mode
        */
       editableElement: {
         name: "editableElement",
-        type: "Object",
+        type: Object,
         value: null
-      },
-      /**
-       * Hide breadcrumbs?
-       */
-      hideBreadcrumbs: {
-        name: "hideBreadcrumbs",
-        type: "Boolean",
-        value: false,
-        observer: "_hideBreadcrumbs"
       },
       /**
        * The icon for the more button.
        */
       moreIcon: {
         name: "moreIcon",
-        type: "String",
+        type: String,
         value: "more-vert"
       },
       /**
@@ -411,7 +374,7 @@ class RichTextEditorToolbar extends PolymerElement {
        */
       moreLabel: {
         name: "moreLabel",
-        type: "String",
+        type: String,
         value: "More Buttons"
       },
       /**
@@ -419,7 +382,7 @@ class RichTextEditorToolbar extends PolymerElement {
        */
       moreLabelToggled: {
         name: "moreLabelToggled",
-        type: "String",
+        type: String,
         value: "Fewer Buttons"
       },
       /**
@@ -427,7 +390,7 @@ class RichTextEditorToolbar extends PolymerElement {
        */
       moreShowTextLabel: {
         name: "moreShowTextLabel",
-        type: "Boolean",
+        type: Boolean,
         value: false
       },
       /**
@@ -435,7 +398,7 @@ class RichTextEditorToolbar extends PolymerElement {
        */
       responsiveSize: {
         name: "responsiveSize",
-        type: "String",
+        type: String,
         value: "xs",
         reflectToAttribute: true
       },
@@ -444,25 +407,26 @@ class RichTextEditorToolbar extends PolymerElement {
        */
       savedSelection: {
         name: "savedSelection",
-        type: "Object",
+        type: Object,
         value: null
       },
       /**
-       * The current text selection.
+       * The current text selection, which is actually a range.
        */
       selection: {
         name: "selection",
-        type: "Object",
+        type: Object,
         value: null
       },
       /**
-       * Should the toolbar stick to the top so that it is always visible.
+       * Should the toolbar stick to the top so that it is always visible?
        */
       sticky: {
         name: "sticky",
-        type: "Boolean",
+        type: Boolean,
         value: false,
-        reflectToAttribute: true
+        reflectToAttribute: true,
+        observer: "_stickyChanged"
       }
     };
   }
@@ -489,34 +453,11 @@ class RichTextEditorToolbar extends PolymerElement {
         }
       })
     );
-    //document.designMode = "on";
     document.addEventListener("selectionchange", e => {
       root.getUpdatedSelection();
     });
   }
 
-  ready() {
-    super.ready();
-    let root = this;
-    root.__breadcrumbs = document.createElement("rich-text-editor-breadcrumbs");
-    root.__breadcrumbs.hidden = root.__hideBreadcrumbs;
-    document.body.appendChild(root.__breadcrumbs);
-    root.__breadcrumbs.addEventListener(
-      "breadcrumb-tap",
-      root._handleBreadcrumb.bind(root)
-    );
-  }
-
-  /**
-   *
-   */
-  _handleBreadcrumb(e) {
-    if (e.detail.target) this.selection.selectNode(e.detail.target);
-    this.getUpdatedSelection();
-  }
-  _hideBreadcrumbs() {
-    if (this.__breadcrumbs) this.__breadcrumbs.hidden = this.hideBreadcrumbs;
-  }
   /**
    * life cycle, element is disconnected
    */
@@ -526,104 +467,6 @@ class RichTextEditorToolbar extends PolymerElement {
     document.removeEventListener("selectionchange", e => {
       root.getUpdatedSelection();
     });
-  }
-
-  /**
-   * cancels edits to the active editableElement
-   */
-  cancel() {
-    this.editableElement.innerHTML = this.canceled;
-    this.editTarget(null);
-  }
-  /**
-   * makes a editableElement editable
-   *
-   * @param {object} an HTML object that can be edited
-   */
-  editTarget(editableElement) {
-    let root = this,
-      sel = window.getSelection();
-    if (
-      editableElement.getAttribute("id") === undefined ||
-      editableElement.getAttribute("id") === null
-    )
-      editableElement.setAttribute("id", root._generateUUID());
-
-    if (root.editableElement !== editableElement) {
-      //save changes to previous editableElement
-      if (root.editableElement !== null) {
-        root.editableElement.contentEditable = false;
-        root.editableElement = null;
-      }
-      //activate the editableElement
-      editableElement.parentNode.insertBefore(root, editableElement);
-      editableElement.parentNode.insertBefore(
-        root.__breadcrumbs,
-        editableElement.nextSibling
-      );
-      sel.removeAllRanges();
-      root.editableElement = editableElement;
-      root.canceled = editableElement.innerHTML;
-      root.editableElement.contentEditable = true;
-      root.controls = editableElement.getAttribute("id");
-      root.__breadcrumbs.controls = editableElement.getAttribute("id");
-    }
-  }
-
-  /**
-   * Gets the updated selection.
-   */
-  getUpdatedSelection() {
-    let root = this;
-    root.selection =
-      root.editableElement === undefined || root.editableElement === null
-        ? null
-        : root.editableElement.getSelection
-        ? root.editableElement.getSelection()
-        : root._getRange();
-    root.buttons.forEach(button => {
-      button.selection = null;
-      button.selection = root.selection;
-    });
-    root.__breadcrumbs.selection = root.selection;
-  }
-
-  /**
-   * removes an editable region to the list of editableElements
-   *
-   * @param {object} an HTML object that can be edited
-   */
-  removeEditableRegion(editableElement) {
-    let root = this;
-    for (let i = 0; i < this.editableElements.length; i++) {
-      let item = this.editableElements[i];
-      if (item[0] === editableElement) {
-        item[0].removeEventListener("click", e => {
-          root.editTarget(editableElement);
-        });
-        editableElement.removeEventListener("blur", e => {
-          root.getUpdatedSelection();
-        });
-        editableElement.removeEventListener("mouseout", e => {
-          root.getUpdatedSelection();
-        });
-        item[1].disconnect();
-        this.set("editableElements", this.editableElements.splice(i, 1));
-      }
-    }
-  }
-
-  /**
-   * adds an editable region to the list of editableElements
-   *
-   * @param {object} an HTML object that can be edited
-   */
-  makeEditableRegion(editableElement) {
-    let root = this,
-      content = document.createElement("rich-text-editor");
-    editableElement.parentNode.insertBefore(content, editableElement);
-    content.appendChild(editableElement);
-    root.addEditableRegion(content);
   }
 
   /**
@@ -658,6 +501,98 @@ class RichTextEditorToolbar extends PolymerElement {
   }
 
   /**
+   * cancels edits to the active editableElement
+   */
+  cancel() {
+    this.editableElement.innerHTML = this.canceled;
+    this.editTarget(null);
+  }
+  /**
+   * makes a editableElement editable
+   *
+   * @param {object} an HTML object that can be edited
+   */
+  editTarget(editableElement) {
+    let root = this,
+      sel = window.getSelection();
+    if (
+      editableElement.getAttribute("id") === undefined ||
+      editableElement.getAttribute("id") === null
+    )
+      editableElement.setAttribute("id", root._generateUUID());
+
+    if (root.editableElement !== editableElement) {
+      //save changes to previous editableElement
+      if (root.editableElement !== null) {
+        root.editableElement.contentEditable = false;
+        root.editableElement = null;
+      }
+      //activate the editableElement
+      editableElement.parentNode.insertBefore(root, editableElement);
+      sel.removeAllRanges();
+      root.editableElement = editableElement;
+      root.canceled = editableElement.innerHTML;
+      root.editableElement.contentEditable = true;
+      root.controls = editableElement.getAttribute("id");
+    }
+  }
+
+  /**
+   * Gets the updated selection.
+   */
+  getUpdatedSelection() {
+    let root = this;
+    root.selection =
+      root.editableElement === undefined || root.editableElement === null
+        ? null
+        : root.editableElement.getSelection
+        ? root.editableElement.getSelection()
+        : root._getRange();
+    root.buttons.forEach(button => {
+      button.selection = null;
+      button.selection = root.selection;
+    });
+  }
+
+  /**
+   * adds an editable region to the list of editableElements
+   *
+   * @param {object} an HTML object that can be edited
+   */
+  makeEditableRegion(editableElement) {
+    let root = this,
+      content = document.createElement("rich-text-editor");
+    editableElement.parentNode.insertBefore(content, editableElement);
+    content.appendChild(editableElement);
+    root.addEditableRegion(content);
+  }
+
+  /**
+   * removes an editable region to the list of editableElements
+   *
+   * @param {object} an HTML object that can be edited
+   */
+  removeEditableRegion(editableElement) {
+    let root = this;
+    for (let i = 0; i < this.editableElements.length; i++) {
+      let item = this.editableElements[i];
+      if (item[0] === editableElement) {
+        item[0].removeEventListener("click", e => {
+          root.editTarget(editableElement);
+        });
+        editableElement.removeEventListener("blur", e => {
+          root.getUpdatedSelection();
+        });
+        editableElement.removeEventListener("mouseout", e => {
+          root.getUpdatedSelection();
+        });
+        item[1].disconnect();
+        this.set("editableElements", this.editableElements.splice(i, 1));
+      }
+    }
+  }
+
+  /**
    * Adds a button to the toolbar
    *
    * @param {object} the child object in the config object
@@ -670,17 +605,6 @@ class RichTextEditorToolbar extends PolymerElement {
       button[key] = child[key];
     }
     button.setAttribute("class", "button");
-    /*button.addEventListener("mousedown", (e) => {
-      e.preventDefault();
-      root._preserveSelection(button);
-    });
-    button.addEventListener("keypress", (e) => {
-      e.preventDefault();
-      root._preserveSelection(button);
-    });
-    button.addEventListener("paste-button", e => {
-      console.log("paste-button", root.selection, e);
-    });*/
     button.addEventListener("deselect", e => {
       root._getRange().collapse(false);
     });
@@ -748,6 +672,7 @@ class RichTextEditorToolbar extends PolymerElement {
    * Preserves the selection when a button is pressed
    *
    * @param {object} the button
+   * @returns {void}
    */
   _preserveSelection() {
     let sel = window.getSelection(),
@@ -755,20 +680,29 @@ class RichTextEditorToolbar extends PolymerElement {
     this.buttons.forEach(button => {
       button.selection = temp;
     });
-    this.__breadcrumbs.selection = temp;
     sel.removeAllRanges();
     sel.addRange(temp);
   }
 
   /**
-   * Toggles collapsed mode
+   * updates breadcrumb sticky
+   */
+  _stickyChanged(newVal, oldVal) {
+    if (this.__breadcrumbs) this.__breadcrumbs.sticky = this.sticky;
+  }
+
+  /**
+   * Toggles collapsed mode when `rich-text-editor-more-button` is tapped
+   * @param {object} e the `rich-text-editor-more-button` tap event
+   * @returns {void}
    */
   _toggleMore(e) {
     this.collapsed = !this.collapsed;
   }
 
   /**
-   * Generate UUID
+   * Generates part of a UUID
+   * @returns {string} a unique hexadecimal number
    */
   _uuidPart() {
     return Math.floor((1 + Math.random()) * 0x10000)

@@ -15,31 +15,20 @@ import { RichTextEditorButton } from "./rich-text-editor-button.js";
  * @polymer
  */
 class RichTextEditorMoreButton extends RichTextEditorButton {
+  constructor() {
+    super();
+    this.label = "More buttons";
+    this.labelToggled = "Fewer buttons";
+  }
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      /**
-       * Label for the icon.
-       */
-      label: {
-        name: "label",
-        type: "String",
-        value: "More buttons"
-      },
-      /**
-       * Label for the icon.
-       */
-      labelToggled: {
-        name: "labelToggled",
-        type: "String",
-        value: "Fewer buttons"
-      },
       /**
        * Can this button toggle?
        */
       toggled: {
         name: "toggled",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         reflectToAttribute: true
       },
@@ -48,7 +37,7 @@ class RichTextEditorMoreButton extends RichTextEditorButton {
        */
       collapseMax: {
         name: "collapseMax",
-        type: "String",
+        type: String,
         value: "xs",
         reflectToAttribute: true
       }

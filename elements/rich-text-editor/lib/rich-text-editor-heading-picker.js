@@ -16,32 +16,22 @@ import "@polymer/iron-icons/editor-icons.js";
  * @polymer
  */
 class RichTextEditorHeadingPicker extends RichTextEditorPicker {
+  constructor() {
+    super();
+    this.command = "formatBlock";
+    this.icon = null;
+    this.label = "Block format";
+  }
+
   // properties available to the custom element for data binding
   static get properties() {
     return {
       /**
-       * Allow a null option to be selected?
-       */
-      allowNull: {
-        name: "allowNull",
-        type: "Boolean",
-        value: false
-      },
-      /**
-       * The command used for document.execCommand.
-       */
-      command: {
-        name: "command",
-        type: "String",
-        value: "formatBlock",
-        readOnly: true
-      },
-      /**
-       * The command used for document.execCommand.
+       * The block options that can be applied
        */
       blocks: {
         name: "blocks",
-        type: "Array",
+        type: Array,
         notify: true,
         value: [
           { label: "Paragraph", tag: "p" },
@@ -54,32 +44,14 @@ class RichTextEditorHeadingPicker extends RichTextEditorPicker {
           { label: "Preformatted", tag: "pre" }
         ]
       },
-
-      /**
-       * Label for the icon.
-       */
-      label: {
-        name: "label",
-        type: "String",
-        value: "Block format"
-      },
       /**
        * The command used for document.execCommand.
        */
       options: {
         name: "options",
-        type: "Array",
+        type: Array,
         computed: "_getBlockOptions(blocks)",
         notify: true
-      },
-
-      /**
-       * Renders html as title. (Good for titles with HTML in them.)
-       */
-      titleAsHtml: {
-        name: "titleAsHtml",
-        type: "Boolean",
-        value: false
       },
 
       /**
@@ -87,7 +59,7 @@ class RichTextEditorHeadingPicker extends RichTextEditorPicker {
        */
       block: {
         name: "block",
-        type: "Boolean",
+        type: Boolean,
         value: true,
         readOnly: true
       }

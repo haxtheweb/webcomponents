@@ -19,56 +19,31 @@ import "./rich-text-editor-prompt.js";
  * @polymer
  */
 class RichTextEditorLink extends RichTextEditorPromptButton {
+  constructor() {
+    super();
+    this.fields = [
+      {
+        property: "",
+        title: "Text",
+        description: "The link text",
+        inputMethod: "textfield"
+      },
+      {
+        property: "href",
+        title: "Link",
+        description: "The link URL",
+        inputMethod: "textfield"
+      }
+    ];
+    this.tag = "a";
+    this.value = {
+      link: null
+    };
+  }
+
   // properties available to the custom element for data binding
   static get properties() {
-    return {
-      /**
-       * fields for the prompt popover.
-       */
-      fields: {
-        type: Array,
-        value: [
-          {
-            property: "",
-            title: "Text",
-            description: "The link text",
-            inputMethod: "textfield"
-          },
-          {
-            property: "href",
-            title: "Link",
-            description: "The link URL",
-            inputMethod: "textfield"
-          }
-        ]
-      },
-
-      /**
-       * Label for the icon.
-       */
-      label: {
-        name: "label",
-        type: "String",
-        value: "Insert link"
-      },
-      /**
-       * the text of the prompt, as in "Link href" or "Image src"
-       */
-      tag: {
-        name: "tag",
-        type: String,
-        value: "a"
-      },
-      /**
-       * The prefilled value of the prompt
-       */
-      value: {
-        type: Object,
-        value: {
-          link: null
-        }
-      }
-    };
+    return {};
   }
 
   /**
