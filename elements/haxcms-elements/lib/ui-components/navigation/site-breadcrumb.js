@@ -45,6 +45,7 @@ class SiteBreadcrumb extends PolymerElement {
           display: inline-flex;
           line-height: 24px;
           padding: 0 8px 0 0;
+          text-decoration: var(--site-breadcrumb-text-decoration, underline);
         }
         paper-button {
           margin: 0;
