@@ -5,13 +5,13 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "../../rich-text-editor.js";
-import "../buttons/rich-text-editor-button.js/index.js";
-import "../buttons/rich-text-editor-more-button.js/index.js";
-import "../buttons/rich-text-editor-heading-picker.js/index.js";
-import "../buttons/rich-text-editor-symbol-picker.js/index.js";
-import "../buttons/rich-text-editor-link.js/index.js";
-import "../singletons/rich-text-editor-styles.js/index.js";
-import "../buttons/rich-text-editor-button-styles.js/index.js";
+import "../rich-text-editor-styles.js";
+import "../buttons/rich-text-editor-button.js";
+import "../buttons/rich-text-editor-more-button.js";
+import "../buttons/rich-text-editor-heading-picker.js";
+import "../buttons/rich-text-editor-symbol-picker.js";
+import "../buttons/rich-text-editor-link.js";
+import "../buttons/rich-text-editor-button-styles.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/iron-icons/image-icons.js";
@@ -416,7 +416,8 @@ class RichTextEditorToolbar extends PolymerElement {
       selection: {
         name: "selection",
         type: Object,
-        value: null
+        value: null,
+        observer: "_selectionChange"
       },
       /**
        * Should the toolbar stick to the top so that it is always visible?
@@ -453,23 +454,21 @@ class RichTextEditorToolbar extends PolymerElement {
         }
       })
     );
-    document.addEventListener("selectionchange", e => {
-      root.getUpdatedSelection();
-    });
-    document.addEventListener("keydown", e => {
-      console.log(e, document.activeElement);
-    });
   }
 
   /**
    * life cycle, element is disconnected
    */
   disconnectedCallback() {
-    super.disconnectedCallback();
-    let root = this;
-    /*document.removeEventListener("selectionchange", e => {
-      root.getUpdatedSelection();
-    });*/
+    //unbind the the toolbar to the rich-text-editor-selection
+    root.dispatchEvent(
+      new CustomEvent("deselect-rich-text-editor-toolbar", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: root
+      })
+    );
   }
 
   /**
@@ -479,6 +478,7 @@ class RichTextEditorToolbar extends PolymerElement {
    */
   addEditableRegion(editableElement) {
     let root = this,
+      /*todo*/
       observer = new MutationObserver(e => {
         root.getUpdatedSelection();
       });
@@ -536,8 +536,15 @@ class RichTextEditorToolbar extends PolymerElement {
         root.editableElement.contentEditable = false;
         root.editableElement = null;
       }
-      //activate the editableElement
-      sel.removeAllRanges();
+      //bind the the toolbar to the rich-text-editor-selection
+      root.dispatchEvent(
+        new CustomEvent("select-rich-text-editor-toolbar", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: root
+        })
+      );
       root.editableElement = editableElement;
       if (editableElement) {
         editableElement.parentNode.insertBefore(root, editableElement);
@@ -553,14 +560,8 @@ class RichTextEditorToolbar extends PolymerElement {
   /**
    * Gets the updated selection.
    */
-  getUpdatedSelection() {
+  _selectionChange() {
     let root = this;
-    root.selection =
-      root.editableElement === undefined || root.editableElement === null
-        ? null
-        : root.editableElement.getSelection
-        ? root.editableElement.getSelection()
-        : root._getRange();
     root.buttons.forEach(button => {
       button.selection = null;
       button.selection = root.selection;
@@ -670,36 +671,6 @@ class RichTextEditorToolbar extends PolymerElement {
       more.collapseMax = sizes[max];
     });
     return temp;
-  }
-
-  /**
-   * Normalizes selection data.
-   *
-   * @returns {object} the selection
-   */
-  _getRange() {
-    let sel = window.getSelection();
-    if (sel.getRangeAt && sel.rangeCount) {
-      return sel.getRangeAt(0);
-    } else if (sel) {
-      return sel;
-    } else false;
-  }
-
-  /**
-   * Preserves the selection when a button is pressed
-   *
-   * @param {object} the button
-   * @returns {void}
-   */
-  _preserveSelection() {
-    let sel = window.getSelection(),
-      temp = this.selection;
-    this.buttons.forEach(button => {
-      button.selection = temp;
-    });
-    sel.removeAllRanges();
-    sel.addRange(temp);
   }
 
   /**

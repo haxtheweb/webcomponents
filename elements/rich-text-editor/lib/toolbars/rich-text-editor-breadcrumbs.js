@@ -4,8 +4,8 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "./rich-text-editor-breadcrumb.js";
-import "../singletons/rich-text-editor-styles.js/index.js";
-import "../buttons/rich-text-editor-button-styles.js/index.js";
+import "../rich-text-editor-styles.js";
+import "../buttons/rich-text-editor-button-styles.js";
 
 /**
  * `rich-text-editor-breadcrumbs`

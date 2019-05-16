@@ -6,7 +6,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@lrnwebcomponents/simple-popover/simple-popover.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
-import "./rich-text-editor-button-styles.js/index.js";
+import "./rich-text-editor-button-styles.js";
 
 // register globally so we can make sure there is only one
 window.richTextEditorPrompt = window.richTextEditorPrompt || {};

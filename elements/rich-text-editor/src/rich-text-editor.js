@@ -6,10 +6,10 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "./lib/rich-text-editor-styles.js";
-import "./lib/rich-text-editor-toolbar.js";
-import "./lib/rich-text-editor-toolbar-mini.js";
-import "./lib/rich-text-editor-toolbar-full.js";
-import "./lib/rich-text-editor-clipboard.js";
+import "./lib/singletons/rich-text-editor-clipboard.js";
+import "./lib/toolbars/rich-text-editor-toolbar.js";
+import "./lib/toolbars/rich-text-editor-toolbar-mini.js";
+import "./lib/toolbars/rich-text-editor-toolbar-full.js";
 /**
  * `rich-text-editor`
  * `a standalone rich text editor`
