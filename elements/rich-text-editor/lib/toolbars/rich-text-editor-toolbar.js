@@ -4,14 +4,14 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
-import "../rich-text-editor.js";
-import "./rich-text-editor-button.js";
-import "./rich-text-editor-more-button.js";
-import "./rich-text-editor-heading-picker.js";
-import "./rich-text-editor-symbol-picker.js";
-import "./rich-text-editor-link.js";
-import "./rich-text-editor-styles.js";
-import "./rich-text-editor-button-styles.js";
+import "../../rich-text-editor.js";
+import "../buttons/rich-text-editor-button.js/index.js";
+import "../buttons/rich-text-editor-more-button.js/index.js";
+import "../buttons/rich-text-editor-heading-picker.js/index.js";
+import "../buttons/rich-text-editor-symbol-picker.js/index.js";
+import "../buttons/rich-text-editor-link.js/index.js";
+import "../singletons/rich-text-editor-styles.js/index.js";
+import "../buttons/rich-text-editor-button-styles.js/index.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/iron-icons/image-icons.js";

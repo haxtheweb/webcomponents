@@ -5,11 +5,11 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/iron-icons/iron-icons.js";
-import "./rich-text-editor-button-styles.js";
+import "./buttons/rich-text-editor-button-styles.js/index.js";
 import { RichTextEditorButton } from "./rich-text-editor-button.js";
-import "./rich-text-editor-prompt.js";
-import "./rich-text-editor-selection.js";
-import { RichTextEditorSelection } from "./rich-text-editor-selection.js";
+import "../singletons/rich-text-editor-prompt.js/index.js";
+import "../singletons/rich-text-editor-selection.js/index.js";
+import { RichTextEditorSelection } from "../singletons/rich-text-editor-selection.js/index.js";
 /**
  * `rich-text-editor-prompt-button`
  * `a button that prompts for more information for rich text editor (custom buttons can extend this)`

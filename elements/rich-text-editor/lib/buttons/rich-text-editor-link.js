@@ -5,9 +5,9 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/iron-icons/iron-icons.js";
-import "./rich-text-editor-button-styles.js";
-import { RichTextEditorPromptButton } from "./rich-text-editor-prompt-button.js";
-import "./rich-text-editor-prompt.js";
+import "./rich-text-editor-button-styles.js/index.js";
+import { RichTextEditorPromptButton } from "./rich-text-editor-prompt-button.js/index.js";
+import "../singletons/rich-text-editor-prompt.js/index.js";
 /**
  * `rich-text-editor-link`
  * `a button for rich text editor (custom buttons can extend this)`

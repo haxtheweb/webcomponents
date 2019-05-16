@@ -4,7 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { RichTextEditorToolbar } from "./rich-text-editor-toolbar.js";
-import "./rich-text-editor-breadcrumbs.js";
+import "./rich-text-editor-breadcrumbs.js/index.js";
 /**
  * `rich-text-editor-toolbar-full`
  * `a full toolbar with breadcrumbs for the rich text editor`

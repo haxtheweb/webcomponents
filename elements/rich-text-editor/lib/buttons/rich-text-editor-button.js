@@ -7,8 +7,8 @@ import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@polymer/iron-icons/iron-icons.js";
-import "./rich-text-editor-button-styles.js";
-import "./rich-text-editor-selection.js";
+import "./rich-text-editor-button-styles.js/index.js";
+import "../singletons/rich-text-editor-selection.js/index.js";
 /**
  * `rich-text-editor-button`
  * `a button for rich text editor (custom buttons can extend this)`

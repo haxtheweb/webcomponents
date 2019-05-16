@@ -5,7 +5,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
-import "./rich-text-editor-button-styles.js";
+import "../buttons/rich-text-editor-button-styles.js/index.js";
 /**
  * `rich-text-editor-breadcrumb`
  * `a button for rich text editor breadcrumbs`
