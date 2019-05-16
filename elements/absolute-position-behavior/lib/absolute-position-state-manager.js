@@ -249,36 +249,39 @@ class AbsolutePositionStateManager extends PolymerElement {
     // TODO(noms): This should use IronFitBehavior if possible.
     styleLeft = elLeft + "px";
     styleTop = elTop + "px";
-    styleRight = "unset";
-    styleBottom = "unset";
+    console.log("fitToVisibleBounds", el.fitToVisibleBounds, el.__positions);
     if (el.fitToVisibleBounds) {
-      /// Clip the left/right side
-      if (parentRect.left + elLeft + elRect.width > window.innerWidth) {
-        el.style.right = "0px";
-        el.style.left = "auto";
-      } else {
-        el.style.left = Math.max(0, elLeft) + "px";
-        el.style.right = "auto";
+      console.log("right side is off-screen", elRect.right > parentRect.right);
+      /// if the left side is off-screen
+      if (
+        elLeft - offset < parentRect.left ||
+        elRect.width > parentRect.width
+      ) {
+        styleLeft = parentRect.left + "px";
+        /// if the right side is off-screen
+      } else if (elRect.right > parentRect.right) {
+        styleLeft = targetRect.right - elRect.width + "px";
       }
-      // Clip the top/bottom side.
-      if (parentRect.top + elTop + elRect.height > window.innerHeight) {
-        el.style.bottom = parentRect.height - targetRect.top + offset + "px";
-        el.style.top = "auto";
-      } else {
-        el.style.top = Math.max(-parentRect.top, elTop) + "px";
-        el.style.bottom = "auto";
+      //if the top is off screen
+      if (
+        elTop - offset < parentRect.top ||
+        elRect.height > parentRect.height
+      ) {
+        styleTop = parentRect.top + "px";
+        // if the bottom is off screen
+      } else if (elRect.bottom > parentRect.bottom) {
+        styleLeft = targetRect.bottom - elRect.height + "px";
       }
-    } else {
     }
     el.style.left = styleLeft;
     el.style.top = styleTop;
-    el.style.right = styleRight;
-    el.style.bottom = styleBottom;
     //provide positions for el and target (in case furthor positioning adjustments are needed)
     el.__positions = {
       self: elRect,
+      parent: parentRect,
       target: targetRect
     };
+    console.log(el.__positions);
   }
 
   /**

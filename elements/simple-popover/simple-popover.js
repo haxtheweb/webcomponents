@@ -23,7 +23,6 @@ class SimplePopover extends AbsolutePositionBehavior {
       <style>
         :host {
           display: flex;
-          align-items: center;
           flex-direction: column-reverse;
           justify-content: stretch;
           --simple-popover-border-radius: 3px;
@@ -37,9 +36,11 @@ class SimplePopover extends AbsolutePositionBehavior {
           display: none;
         }
         :host([position="left"]) {
+          justify-content: start;
           flex-direction: row;
         }
         :host([position="right"]) {
+          justify-content: start;
           flex-direction: row-reverse;
         }
         :host([position="top"]) {
@@ -63,23 +64,15 @@ class SimplePopover extends AbsolutePositionBehavior {
           box-shadow: var(--simple-popover-box-shadow);
           @apply --simple-popover-content;
         }
+        :host #pointer-outer {
+          margin: -1px;
+        }
         :host #pointer {
           width: 20px;
           height: 20px;
           position: relative;
           overflow: hidden;
           flex: 0 0 20px;
-          margin: 0 0 -1px;
-        }
-        :host([position="top"]) #pointer {
-          margin: -0.5px 0 0;
-        }
-        :host([position="left"]) #pointer {
-          margin: 0 0 0 -1px;
-        }
-        :host([position="right"]) #pointer {
-          width: unset;
-          margin: 0 -1px 0 0;
         }
         :host #pointer:after {
           content: "";
@@ -93,7 +86,7 @@ class SimplePopover extends AbsolutePositionBehavior {
           left: 5px;
         }
         :host([position="top"]) #pointer:after {
-          top: -6px;
+          top: -5px;
           left: 5px;
         }
         :host([position="right"]) #pointer:after {
@@ -102,13 +95,15 @@ class SimplePopover extends AbsolutePositionBehavior {
         }
         :host([position="left"]) #pointer:after {
           top: 5px;
-          left: -6px;
+          left: -5px;
         }
       </style>
       <div id="content" role="alertdialog">
         <slot></slot>
       </div>
-      <div><div id="pointer" style$="[[__pointerOffSetStyle]]"></div></div>
+      <div id="pointer-outer">
+        <div id="pointer" style$="[[__pointerOffSetStyle]]"></div>
+      </div>
     `;
   }
 
@@ -154,44 +149,26 @@ class SimplePopover extends AbsolutePositionBehavior {
   static get properties() {
     return {
       /**
-       * Offset to compensate for the popover pointers.
-       */
-      fitToVisibleBounds: {
-        type: Boolean,
-        value: true,
-        readOnly: true
-      },
-      /**
-       * Offset to compensate for the popover pointers.
-       */
-      offset: {
-        type: Number,
-        value: -10
-      },
-      /**
-       * Positions the tooltip to the top, right, bottom, left of its content.
-       */
-      position: {
-        type: String,
-        value: "bottom",
-        observer: "updatePosition",
-        reflectToAttribute: true
-      },
-      /**
-       * The actual target element
-       */
-      target: {
-        type: Object,
-        observer: "updatePosition"
-      },
-      /**
-       * Tthe margin styles to offset the pointer
-       */
+   * Offset to compensate for the popover pointers.
+   * /
+  "fitToVisibleBounds": {
+    "type": "Boolean",
+    "value": true,
+    "readOnly": true
+  },
+  /**
+   * Tthe margin styles to offset the pointer
+   */
       __pointerOffSetStyle: {
-        type: Object,
+        type: "Object",
         computed: "_getMargins(__positions)"
       }
     };
+  }
+  constructor() {
+    super();
+    this.offset = -10;
+    this.fitToVisibleBounds = true;
   }
 
   /**
@@ -216,32 +193,29 @@ class SimplePopover extends AbsolutePositionBehavior {
    * @returns {string} a string with margin styles to offset pointer
    */
   _getMargins(positions) {
-    let style = "",
-      v =
-        positions.target.top +
-        positions.target.height / 2 -
-        positions.self.top -
-        positions.self.height / 2 -
-        10,
-      h =
-        positions.target.left +
-        positions.target.width / 2 -
-        positions.self.left -
-        positions.self.width / 2 -
-        10;
-    switch (this.position) {
-      case "left":
-        style = `margin: ${v}px 0 0 -1px;`;
-        break;
-      case "right":
-        style = `margin: ${v}px 0 -1px 0;`;
-        break;
-      case "top":
-        style = `margin: -0.5 0 0 -1px ${h}px;`;
-        break;
-      default:
-        style = `margin: 0 0 -1px ${h}px;`;
-    }
+    //this.fitToVisibleBounds = true;
+    let self = this.getBoundingClientRect(),
+      h = this.position === "bottom" || this.position === "top",
+      max = h ? self.width : self.height,
+      sStart = h ? self.left : self.top,
+      tStart = h ? positions.target.left : positions.target.top,
+      tHalf = h ? positions.target.width / 2 : positions.target.height / 2,
+      center = tStart + tHalf - 10,
+      margin = Math.min(max - 20, Math.max(0, center - sStart)),
+      style = h ? `margin: 0 0 0 ${margin}px;` : `margin: ${margin}px 0 0 0;`;
+    console.log(
+      `this.fitToVisibleBounds: ${this.fitToVisibleBounds}
+      \npositions: ${positions}
+      \nh: ${h}
+      \ntStart: ${tStart}
+      \ntHalf: ${tHalf}
+      \ncenter: ${center}
+      \nsStart: ${sStart}
+      \nmin: 0
+      \nmax: ${max}
+      \nmargin: ${margin}
+      \nstyle: ${style}`
+    );
     return style;
   }
   /**
