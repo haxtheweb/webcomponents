@@ -456,6 +456,9 @@ class RichTextEditorToolbar extends PolymerElement {
     document.addEventListener("selectionchange", e => {
       root.getUpdatedSelection();
     });
+    document.addEventListener("keydown", e => {
+      console.log(e, document.activeElement);
+    });
   }
 
   /**
@@ -464,9 +467,9 @@ class RichTextEditorToolbar extends PolymerElement {
   disconnectedCallback() {
     super.disconnectedCallback();
     let root = this;
-    document.removeEventListener("selectionchange", e => {
+    /*document.removeEventListener("selectionchange", e => {
       root.getUpdatedSelection();
-    });
+    });*/
   }
 
   /**
@@ -486,6 +489,11 @@ class RichTextEditorToolbar extends PolymerElement {
       root.editTarget(editableElement);
     });
     editableElement.addEventListener("blur", e => {
+      if (
+        e.relatedTarget === null ||
+        !e.relatedTarget.startsWith === "rich-text-editor"
+      )
+        root.editTarget(null);
       root.getUpdatedSelection();
     });
     editableElement.addEventListener("mouseout", e => {
@@ -516,8 +524,9 @@ class RichTextEditorToolbar extends PolymerElement {
     let root = this,
       sel = window.getSelection();
     if (
-      editableElement.getAttribute("id") === undefined ||
-      editableElement.getAttribute("id") === null
+      editableElement &&
+      (editableElement.getAttribute("id") === undefined ||
+        editableElement.getAttribute("id") === null)
     )
       editableElement.setAttribute("id", root._generateUUID());
 
@@ -528,12 +537,16 @@ class RichTextEditorToolbar extends PolymerElement {
         root.editableElement = null;
       }
       //activate the editableElement
-      editableElement.parentNode.insertBefore(root, editableElement);
       sel.removeAllRanges();
       root.editableElement = editableElement;
-      root.canceled = editableElement.innerHTML;
-      root.editableElement.contentEditable = true;
-      root.controls = editableElement.getAttribute("id");
+      if (editableElement) {
+        editableElement.parentNode.insertBefore(root, editableElement);
+        root.canceled = editableElement.innerHTML;
+        root.editableElement.contentEditable = true;
+        root.controls = editableElement.getAttribute("id");
+      } else {
+        root.controls = null;
+      }
     }
   }
 
@@ -581,6 +594,11 @@ class RichTextEditorToolbar extends PolymerElement {
           root.editTarget(editableElement);
         });
         editableElement.removeEventListener("blur", e => {
+          if (
+            e.relatedTarget === null ||
+            !e.relatedTarget.startsWith === "rich-text-editor"
+          )
+            root.editTarget(null);
           root.getUpdatedSelection();
         });
         editableElement.removeEventListener("mouseout", e => {
