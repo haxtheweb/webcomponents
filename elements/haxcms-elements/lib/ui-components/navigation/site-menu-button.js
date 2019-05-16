@@ -43,7 +43,7 @@ class SiteMenuButton extends PolymerElement {
         }
         a {
           color: black;
-          text-decoration: none;
+          text-decoration: underline;
           @apply --site-menu-button-link;
         }
         paper-button {
