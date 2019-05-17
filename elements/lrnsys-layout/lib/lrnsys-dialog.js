@@ -52,7 +52,7 @@ class LrnsysDialog extends PolymerElement {
       <paper-button
         class$="[[class]]"
         id="dialogtrigger"
-        on-tap="openDialog"
+        on-click="openDialog"
         raised="[[raised]]"
         disabled$="[[disabled]]"
         title="[[alt]]"

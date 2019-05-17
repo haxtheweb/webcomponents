@@ -66,57 +66,18 @@ class JwtLogin extends PolymerElement {
        */
       jwt: {
         type: String,
-        notify: true
+        notify: true,
+        observer: "_jwtChanged"
       }
     };
   }
-  /**
-   * Ready life cycle
-   */
-  ready() {
-    super.ready();
-    // set jwt from local storage bin
-    this.jwt = localStorage.getItem(this.key);
-    this.dispatchEvent(
-      new CustomEvent("jwt-token", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: this.jwt
-      })
-    );
-  }
-  /**
-   * Request a user login if we need one or log out
-   */
-  toggleLogin() {
-    // null is default, if we don't have anything go get one
-    if (this.jwt == null) {
-      this.$.loginrequest.generateRequest();
-    } else {
-      // we were told to logout, reset body
-      this.set("body", {});
+  _jwtChanged(newValue, oldValue) {
+    if (
+      (newValue == null || newValue == "") &&
+      typeof oldValue !== typeof undefined
+    ) {
       // remove this key from local storage bin
       localStorage.removeItem(this.key);
-      // reset jwt
-      this.jwt = null;
-      // fire login event but false meaning we've executed the logout url
-      this.dispatchEvent(
-        new CustomEvent("jwt-logged-in", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: false
-        })
-      );
-    }
-  }
-  /**
-   * Login bridge to get a JWT and hang onto it
-   */
-  loginResponse(e) {
-    this.jwt = e.detail.response;
-    if (this.jwt == null || this.jwt == "") {
       // jwt was invalid some how
       this.dispatchEvent(
         new CustomEvent("jwt-logged-in", {
@@ -126,15 +87,15 @@ class JwtLogin extends PolymerElement {
           detail: false
         })
       );
-    } else {
+    } else if (newValue) {
       // set the jwt into local storage so we can reference later
-      localStorage.setItem(this.key, this.jwt);
+      localStorage.setItem(this.key, newValue);
       this.dispatchEvent(
         new CustomEvent("jwt-token", {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: this.jwt
+          detail: newValue
         })
       );
       this.dispatchEvent(
@@ -146,6 +107,34 @@ class JwtLogin extends PolymerElement {
         })
       );
     }
+  }
+  /**
+   * Ready life cycle
+   */
+  ready() {
+    super.ready();
+    // set jwt from local storage bin
+    this.jwt = localStorage.getItem(this.key);
+  }
+  /**
+   * Request a user login if we need one or log out
+   */
+  toggleLogin() {
+    // null is default, if we don't have anything go get one
+    if (this.jwt == null) {
+      this.$.loginrequest.generateRequest();
+    } else {
+      // we were told to logout, reset body
+      this.set("body", {});
+      // reset jwt which will do all the events / local storage work
+      this.jwt = null;
+    }
+  }
+  /**
+   * Login bridge to get a JWT and hang onto it
+   */
+  loginResponse(e) {
+    this.jwt = e.detail.response;
   }
 }
 window.customElements.define(JwtLogin.tag, JwtLogin);
