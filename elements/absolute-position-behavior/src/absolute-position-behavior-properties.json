@@ -22,7 +22,8 @@
    */
   "for": {
     "type": "String",
-    "observer": "updatePosition"
+    "observer": "updatePosition",
+    "reflectToAttribute": true
   },
   /**
    * The spacing between the top of the tooltip and the element it is

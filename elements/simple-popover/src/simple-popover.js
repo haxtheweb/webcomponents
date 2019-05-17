@@ -18,6 +18,11 @@ import { AbsolutePositionBehavior } from "@lrnwebcomponents/absolute-position-be
  */
 class SimplePopover extends AbsolutePositionBehavior {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
+  constructor() {
+    super();
+    this.offset = -10;
+    this.fitToVisibleBounds = true;
+  }
 
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -41,32 +46,16 @@ class SimplePopover extends AbsolutePositionBehavior {
    * @returns {string} a string with margin styles to offset pointer
    */
   _getMargins(positions) {
-    let style = "",
-      v =
-        positions.target.top +
-        positions.target.height / 2 -
-        positions.self.top -
-        positions.self.height / 2 -
-        10,
-      h =
-        positions.target.left +
-        positions.target.width / 2 -
-        positions.self.left -
-        positions.self.width / 2 -
-        10;
-    switch (this.position) {
-      case "left":
-        style = `margin: ${v}px 0 0 -1px;`;
-        break;
-      case "right":
-        style = `margin: ${v}px 0 -1px 0;`;
-        break;
-      case "top":
-        style = `margin: -0.5 0 0 -1px ${h}px;`;
-        break;
-      default:
-        style = `margin: 0 0 -1px ${h}px;`;
-    }
+    //this.fitToVisibleBounds = true;
+    let self = this.getBoundingClientRect(),
+      h = this.position === "bottom" || this.position === "top",
+      max = h ? self.width : self.height,
+      sStart = h ? self.left : self.top,
+      tStart = h ? positions.target.left : positions.target.top,
+      tHalf = h ? positions.target.width / 2 : positions.target.height / 2,
+      center = tStart + tHalf - 10,
+      margin = Math.min(max - 20, Math.max(0, center - sStart)),
+      style = h ? `margin: 0 0 0 ${margin}px;` : `margin: ${margin}px 0 0 0;`;
     return style;
   }
   /**

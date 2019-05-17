@@ -1,6 +1,5 @@
 :host {
   display: flex;
-  align-items: center;
   flex-direction: column-reverse;
   justify-content: stretch;
   --simple-popover-border-radius: 3px;
@@ -14,9 +13,11 @@
   display: none;
 }
 :host([position="left"]) {
+  justify-content: start;
   flex-direction: row;
 }
 :host([position="right"]) {
+  justify-content: start;
   flex-direction: row-reverse;
 }
 :host([position="top"]) {
@@ -40,24 +41,16 @@
   box-shadow: var(--simple-popover-box-shadow);
   @apply --simple-popover-content;
 }
+:host #pointer-outer {
+  margin: -1px;
+}
 :host #pointer {
   width: 20px;
   height: 20px;
   position: relative;
   overflow: hidden;
   flex: 0 0 20px;
-  margin: 0 0 -1px;
 }
-:host([position="top"]) #pointer {
-  margin: -0.5px 0 0;
-} 
-:host([position="left"]) #pointer {
-  margin: 0 0 0 -1px;
-} 
-:host([position="right"]) #pointer {
-  width: unset;
-  margin: 0 -1px 0 0;
-} 
 :host #pointer:after {
   content: "";
   position: absolute;
@@ -70,7 +63,7 @@
   left: 5px;
 }
 :host([position="top"]) #pointer:after {
-  top: -6px;
+  top: -5px;
   left: 5px;
 } 
 :host([position="right"]) #pointer:after {
@@ -79,5 +72,5 @@
 } 
 :host([position="left"]) #pointer:after {
   top: 5px;
-  left: -6px;
-} 
+  left: -5px;
+}

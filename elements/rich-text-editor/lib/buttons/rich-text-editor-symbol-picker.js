@@ -16,25 +16,21 @@ import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
  * @polymer
  */
 class RichTextEditorSymbolPicker extends RichTextEditorPicker {
+  constructor() {
+    super();
+    this.icon = "editor:functions";
+    this.label = "Insert symbol";
+  }
+
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      /**
-       * Optional icon for null value
-       */
-      icon: {
-        name: "icon",
-        type: "String",
-        value: "editor:functions",
-        readOnly: true
-      },
-
       /**
        * An optional JSON file with default options.
        */
       optionsSrc: {
         name: "optionsSrc",
-        type: "String",
+        type: String,
         value: "data/symbols.js"
       },
 
@@ -43,7 +39,7 @@ class RichTextEditorSymbolPicker extends RichTextEditorPicker {
        */
       symbolTypes: {
         name: "symbolTypes",
-        type: "Array",
+        type: Array,
         value: ["symbols", "math", "characters", "greek", "misc"]
       },
 
@@ -52,18 +48,9 @@ class RichTextEditorSymbolPicker extends RichTextEditorPicker {
        */
       titleAsHtml: {
         name: "titleAsHtml",
-        type: "Boolean",
+        type: Boolean,
         value: true,
         readOnly: true
-      },
-
-      /**
-       * The value
-       */
-      value: {
-        name: "value",
-        type: "String",
-        value: "null"
       }
     };
   }
@@ -74,10 +61,6 @@ class RichTextEditorSymbolPicker extends RichTextEditorPicker {
    */
   static get tag() {
     return "rich-text-editor-symbol-picker";
-  }
-  constructor() {
-    super();
-    import("@polymer/iron-icons/editor-icons.js");
   }
   /**
    * life cycle, element is afixed to the DOM

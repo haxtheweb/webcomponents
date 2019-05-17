@@ -6,8 +6,10 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "./lib/rich-text-editor-styles.js";
-import "./lib/rich-text-editor-toolbar.js";
-import "./lib/rich-text-editor-clipboard.js";
+import "./lib/singletons/rich-text-editor-clipboard.js";
+import "./lib/toolbars/rich-text-editor-toolbar.js";
+import "./lib/toolbars/rich-text-editor-toolbar-mini.js";
+import "./lib/toolbars/rich-text-editor-toolbar-full.js";
 /**
  * `rich-text-editor`
  * `a standalone rich text editor`
@@ -18,6 +20,8 @@ import "./lib/rich-text-editor-clipboard.js";
  * @customElement
  * @polymer
  * @demo demo/index.html demo
+ * @demo demo/mini.html mini floating toolbar
+ * @demo demo/full.html toolbar with breadcrumb
  * @demo demo/config.html custom configuration
  */
 class RichTextEditor extends PolymerElement {
@@ -36,9 +40,12 @@ class RichTextEditor extends PolymerElement {
         }
         :host([contenteditable="true"]) {
           border: var(--rich-text-editor-border);
-          border-top: none;
-          overflow: hidden;
+          overflow: auto;
           @apply --rich-text-editor-content-edit;
+        }
+        :host(.heightmax[contenteditable="true"]) {
+          max-height: calc(100vh - 200px);
+          overflow-y: scroll;
         }
         :host([contenteditable="true"]):empty:before {
           content: attr(placeholder);
@@ -99,12 +106,31 @@ class RichTextEditor extends PolymerElement {
   static get properties() {
     return {
       /**
-       * The editableElement element for the editor.
+       * The id for the toolbar
        */
-      editorId: {
-        name: "editableElement",
-        type: "Object",
-        value: null
+      toolbar: {
+        name: "toolbar",
+        type: "String",
+        value: ""
+      },
+      /**
+       * The editor's unique id
+       */
+      id: {
+        name: "id",
+        type: "String",
+        value: ""
+      },
+      /**
+       * The type of editor toolbar, i.e.
+       * `full` for full toolbar with breadcrumb,
+       * `mini` for mini floating toolbar, or
+       * the default toolbar if neither.
+       */
+      type: {
+        name: "type",
+        type: "String",
+        value: ""
       }
     };
   }
@@ -124,6 +150,7 @@ class RichTextEditor extends PolymerElement {
     let style = document.createElement("style");
     style.setAttribute("is", "custom-style");
     style.setAttribute("include", "rich-text-editor-styles");
+    if (!this.id) this.id = this._generateUUID();
     document.head.append(style);
   }
   /**
@@ -131,17 +158,39 @@ class RichTextEditor extends PolymerElement {
    */
   ready() {
     super.ready();
+    this.getEditor();
+  }
+  /**
+   * connects the mini-toolbar to a mini editor
+   */
+  getEditor() {
+    window.RichTextEditorClipboard.requestAvailability();
     let root = this,
-      clipboard = window.RichTextEditorClipboard.requestAvailability();
-    console.log("ready", clipboard);
-    //find an editor by id
-    let id = document.querySelector(
-        "rich-text-editor-toolbar#" + this.editorId
+      toolbar = "rich-text-editor-toolbar",
+      id = this.toolbar ? "#" + this.toolbar : "",
+      type =
+        this.type === "full" || this.type === "mini" ? "-" + this.type : "",
+      both = document.querySelector(toolbar + type + id),
+      idOnly = document.querySelector(
+        toolbar +
+          id +
+          "," +
+          toolbar +
+          "-full" +
+          id +
+          "," +
+          toolbar +
+          "-mini" +
+          id
       ),
-      editor =
-        id !== null ? id : document.querySelector("rich-text-editor-toolbar");
-    if (editor === null) {
-      editor = document.createElement("rich-text-editor-toolbar");
+      typeOnly = document.querySelector(toolbar + type),
+      //try to match both id and type, if no match try id only, and then type only
+      editor = both || idOnly || typeOnly;
+    //if still no match, create a region of type
+    if (!this.toolbar) this.toolbar = this._generateUUID();
+    if (!editor || !editor.addEditableRegion) {
+      editor = document.createElement(toolbar + type);
+      editor.id = this.toolbar;
       root.parentNode.appendChild(editor);
     }
     editor.addEditableRegion(root);
@@ -159,6 +208,16 @@ class RichTextEditor extends PolymerElement {
     } else if (sel) {
       return sel;
     } else false;
+  }
+
+  /**
+   * Generate a UUID
+   */
+  _generateUUID() {
+    let hex = Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+    return "rte-" + "ss-s-s-s-sss".replace(/s/g, hex);
   }
 
   /**

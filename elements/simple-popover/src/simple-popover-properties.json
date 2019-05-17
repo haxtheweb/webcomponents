@@ -1,40 +1,17 @@
 {
   /**
    * Offset to compensate for the popover pointers.
-   */
+   * /
   "fitToVisibleBounds": {
-    "type": Boolean,
+    "type": "Boolean",
     "value": true,
     "readOnly": true
-  },
-  /**
-   * Offset to compensate for the popover pointers.
-   */
-  "offset": {
-    "type": Number,
-    "value": -10
-  },
-  /**
-   * Positions the tooltip to the top, right, bottom, left of its content.
-   */
-  "position": {
-    "type": String,
-    "value": "bottom",
-    "observer": "updatePosition",
-    "reflectToAttribute": true
-  },
-  /**
-   * The actual target element
-   */
-  "target": {
-    "type": Object,
-    "observer": "updatePosition"
   },
   /**
    * Tthe margin styles to offset the pointer
    */
   "__pointerOffSetStyle": {
-    "type": Object,
+    "type": "Object",
     "computed": "_getMargins(__positions)"
   }
 }

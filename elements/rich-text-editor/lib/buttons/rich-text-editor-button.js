@@ -8,7 +8,7 @@ import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "./rich-text-editor-button-styles.js";
-import "./rich-text-editor-selection.js";
+import "../singletons/rich-text-editor-selection.js";
 /**
  * `rich-text-editor-button`
  * `a button for rich text editor (custom buttons can extend this)`
@@ -53,9 +53,9 @@ class RichTextEditorButton extends PolymerElement {
           icon$="[[_regOrToggled(icon,toggledIcon,toggled)]]"
         >
         </iron-icon>
-        <span id="label" class$="[[labelStyle]]"></span>
+        <span id="label" class$="[[labelStyle]]">[[__label]]</span>
       </paper-button>
-      <paper-tooltip id="tooltip" for="button"></paper-tooltip>
+      <paper-tooltip id="tooltip" for="button">[[__label]]</paper-tooltip>
     `;
   }
 
@@ -67,7 +67,7 @@ class RichTextEditorButton extends PolymerElement {
        */
       command: {
         name: "command",
-        type: "String",
+        type: String,
         value: null
       },
 
@@ -76,7 +76,7 @@ class RichTextEditorButton extends PolymerElement {
        */
       commandVal: {
         name: "commandVal",
-        type: "Object",
+        type: Object,
         value: null,
         notify: true
       },
@@ -86,7 +86,7 @@ class RichTextEditorButton extends PolymerElement {
        */
       disabled: {
         name: "disabled",
-        type: "Boolean",
+        type: Boolean,
         value: false
       },
 
@@ -95,7 +95,7 @@ class RichTextEditorButton extends PolymerElement {
        */
       icon: {
         name: "icon",
-        type: "String",
+        type: String,
         value: null
       },
 
@@ -104,7 +104,7 @@ class RichTextEditorButton extends PolymerElement {
        */
       label: {
         name: "label",
-        type: "String",
+        type: String,
         value: null
       },
 
@@ -113,7 +113,7 @@ class RichTextEditorButton extends PolymerElement {
        */
       labelStyle: {
         name: "labelStyle",
-        type: "String",
+        type: String,
         computed: "_labelStyle(icon,showTextLabel)",
         readOnly: true
       },
@@ -123,7 +123,7 @@ class RichTextEditorButton extends PolymerElement {
        */
       selection: {
         name: "selection",
-        type: "Object",
+        type: Object,
         notify: true,
         value: null
       },
@@ -133,7 +133,7 @@ class RichTextEditorButton extends PolymerElement {
        */
       showTextLabel: {
         name: "showTextLabel",
-        type: "Boolean",
+        type: Boolean,
         value: false
       },
 
@@ -142,7 +142,7 @@ class RichTextEditorButton extends PolymerElement {
        */
       toggled: {
         name: "toggled",
-        type: "Boolean",
+        type: Boolean,
         computed: "_isToggled(selection)",
         notify: true
       },
@@ -152,8 +152,8 @@ class RichTextEditorButton extends PolymerElement {
        */
       __label: {
         name: "__label",
-        type: "String",
-        computed: "_getLabel(selection)",
+        type: String,
+        computed: "_getLabel(selection,command,toggles)",
         notify: true
       },
 
@@ -162,7 +162,7 @@ class RichTextEditorButton extends PolymerElement {
        */
       toggledCommand: {
         name: "toggledCommand",
-        type: "String",
+        type: String,
         value: null
       },
       /**
@@ -170,7 +170,7 @@ class RichTextEditorButton extends PolymerElement {
        */
       toggledCommandVal: {
         name: "toggledCommandVal",
-        type: "Object",
+        type: Object,
         value: null
       },
 
@@ -179,7 +179,7 @@ class RichTextEditorButton extends PolymerElement {
        */
       toggledIcon: {
         name: "toggledIcon",
-        type: "String",
+        type: String,
         value: null
       },
 
@@ -188,7 +188,7 @@ class RichTextEditorButton extends PolymerElement {
        */
       toggledLabel: {
         name: "toggledLabel",
-        type: "String",
+        type: String,
         value: null
       },
 
@@ -197,7 +197,7 @@ class RichTextEditorButton extends PolymerElement {
        */
       toggles: {
         name: "toggles",
-        type: "Boolean",
+        type: Boolean,
         value: false
       },
 
@@ -206,7 +206,7 @@ class RichTextEditorButton extends PolymerElement {
        */
       validCommands: {
         name: "validCommands",
-        type: "Array",
+        type: Array,
         value: [
           "backColor",
           "bold",
@@ -319,12 +319,12 @@ class RichTextEditorButton extends PolymerElement {
    */
   _isToggled(selection) {
     let toggled =
-        this.command !== null && this.toggles
-          ? document.queryCommandState(this.command)
-          : false,
+      this.command !== null && this.toggles
+        ? document.queryCommandState(this.command)
+        : false; /*,
       label = this._regOrToggled(this.label, this.toggledLabel, toggled);
     if (this.$.label !== undefined) this.$.label.innerHTML = label;
-    if (this.$.tooltip !== undefined) this.$.tooltip.innerHTML = label;
+    if (this.$.tooltip !== undefined) this.$.tooltip.innerHTML = label*/
     return toggled;
   }
 
@@ -332,13 +332,15 @@ class RichTextEditorButton extends PolymerElement {
    * determine if the button is toggled
    *
    * @param {object} the text selection
+   * @param {string} the default command
+   * @param {boolean} whether the button toggles
    * @returns {string} the label based on whether or not the button is toggled
    *
    */
-  _getLabel(selection) {
+  _getLabel(selection, command, toggles) {
     let toggled =
-        this.command !== null && this.toggles
-          ? document.queryCommandState(this.command)
+        this.command !== null && toggles
+          ? document.queryCommandState(command)
           : false,
       label = this._regOrToggled(this.label, this.toggledLabel, toggled);
     return label;

@@ -2,7 +2,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/iron-icons/editor-icons.js";
 /**
  * `rich-text-editor-clipboard`
  * `a heading picker for the rich-text-editor`
@@ -70,7 +69,6 @@ class RichTextEditorClipboard extends PolymerElement {
   }
   copyToClipboard(selection, cut = false) {
     this.$.clipboard.innerHTML = "";
-    console.log(selection);
     if (selection) this.$.clipboard.appendChild(selection.cloneContents());
     if (cut && selection.extractContents) selection.extractContents();
   }
@@ -119,10 +117,6 @@ window.RichTextEditorClipboard.instance = null;
  * Checks to see if there is an instance available, and if not appends one
  */
 window.RichTextEditorClipboard.requestAvailability = function() {
-  console.log(
-    "window.RichTextEditorClipboard.requestAvailability",
-    window.RichTextEditorClipboard.instance
-  );
   if (window.RichTextEditorClipboard.instance == null) {
     window.RichTextEditorClipboard.instance = document.createElement(
       "rich-text-editor-clipboard"

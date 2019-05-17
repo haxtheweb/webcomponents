@@ -4,8 +4,8 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "./rich-text-editor-breadcrumb.js";
-import "./rich-text-editor-styles.js";
-import "./rich-text-editor-button-styles.js";
+import "../rich-text-editor-styles.js";
+import "../buttons/rich-text-editor-button-styles.js";
 
 /**
  * `rich-text-editor-breadcrumbs`
@@ -23,6 +23,10 @@ class richTextEditorBreadcrumbs extends PolymerElement {
     return html`
       <style include="rich-text-editor-styles"></style>
       <style include="rich-text-editor-button-styles">
+        :host([sticky]) {
+          position: sticky;
+          bottom: 0;
+        }
         :host {
           display: block;
           background-color: var(--rich-text-editor-bg);
@@ -41,13 +45,11 @@ class richTextEditorBreadcrumbs extends PolymerElement {
           }
         }
         :host .selectednode {
-        }
-        :host .selectednode {
           background-color: var(--rich-text-editor-bg);
           @apply --rich-text-editor-breadcrumb;
         }
       </style>
-      Expand selection:
+      [[label]]
       <template is="dom-repeat" items="[[ancestorNodes]]" as="crumb">
         <rich-text-editor-breadcrumb
           controls$="[[controls]]"
@@ -71,11 +73,34 @@ class richTextEditorBreadcrumbs extends PolymerElement {
   static get properties() {
     return {
       /**
-       * The active rict-text-edito.
+       * fields for the prompt popover.
+       */
+      ancestorNodes: {
+        type: Array,
+        computed: "_getAncestorNodes(selection,controls)"
+      },
+      /**
+       * The active rict-text-editor.
        */
       controls: {
         type: String,
         value: null
+      },
+      /**
+       * Hide breadcrumbs
+       */
+      hidden: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
+       * The breadcrumb labels.
+       */
+      label: {
+        name: "label",
+        type: String,
+        value: "Expand selection: "
       },
       /**
        * The selected text.
@@ -85,11 +110,13 @@ class richTextEditorBreadcrumbs extends PolymerElement {
         value: null
       },
       /**
-       * fields for the prompt popover.
+       * Should the breadcrumbs stick to the top so that it is always visible?
        */
-      ancestorNodes: {
-        type: Array,
-        computed: "_getAncestorNodes(selection,controls)"
+      sticky: {
+        name: "sticky",
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
       }
     };
   }

@@ -1,10 +1,29 @@
 {
   /**
-   * The editableElement element for the editor.
+   * The id for the toolbar
    */
-  "editorId": {
-    "name": "editableElement",
-    "type": "Object",
-    "value": null
+  "toolbar": {
+    "name": "toolbar",
+    "type": "String",
+    "value": ""
+  },
+  /**
+   * The editor's unique id
+   */
+  "id": {
+    "name": "id",
+    "type": "String",
+    "value": ""
+  },
+  /**
+   * The type of editor toolbar, i.e.
+   * `full` for full toolbar with breadcrumb,
+   * `mini` for mini floating toolbar, or
+   * the default toolbar if neither.
+   */
+  "type": {
+    "name": "type",
+    "type": "String",
+    "value": ""
   }
 }

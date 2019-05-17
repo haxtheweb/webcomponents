@@ -6,7 +6,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@lrnwebcomponents/simple-popover/simple-popover.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
-import "./rich-text-editor-button-styles.js";
+import "../buttons/rich-text-editor-button-styles.js";
 
 // register globally so we can make sure there is only one
 window.richTextEditorPrompt = window.richTextEditorPrompt || {};
@@ -48,15 +48,22 @@ class richTextEditorPrompt extends PolymerElement {
             #800
           );
         }
-        :host #prompt:not([hidden]) {
+        :host #prompt {
+          width: 200px;
+        }
+        :host #prompt:not([hidden]) #form {
           display: flex;
+          flex-direction: column;
           align-items: center;
           justify-content: space-between;
-          z-index: 9999;
+          z-index: 999999;
         }
         :host #prompt paper-input {
-          width: 200px;
           padding: 0;
+        }
+        :host #confirm, 
+        :host #cancel {
+          min-width: unset;
         }
         :host #cancel.rtebutton:focus,
         :host #cancel.rtebutton:hover {
@@ -81,7 +88,10 @@ class richTextEditorPrompt extends PolymerElement {
           );
         }
         :host .actions {
-          text-align: right;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
         }
         :host .confirm-or-cancel {
           min-width: 40px;
@@ -90,7 +100,6 @@ class richTextEditorPrompt extends PolymerElement {
       <simple-popover
         id="prompt"
         auto
-        fit-to-visible-bounds
         for$="[[for]]"
         hidden$="[[!for]]"
       >
@@ -102,12 +111,6 @@ class richTextEditorPrompt extends PolymerElement {
             value="{{value}}"
           ></simple-fields>
           <div class="actions">
-            <iron-a11y-keys
-              id="a11ycancel"
-              target="[[__a11ycancel]]"
-              keys="enter"
-              on-keys-pressed="_cancel"
-            >
             </iron-a11y-keys>
             <paper-button
               id="cancel"
@@ -120,13 +123,6 @@ class richTextEditorPrompt extends PolymerElement {
               <span id="label" class="offscreen">Cancel</span>
             </paper-button>
             <paper-tooltip id="tooltip" for="cancel">Cancel</paper-tooltip>
-            <iron-a11y-keys
-              id="a11yconfirm"
-              target="[[__a11yconfirm]]"
-              keys="enter"
-              on-keys-pressed="_confirm"
-            >
-            </iron-a11y-keys>
             <paper-button
               id="confirm"
               class="rtebutton"
@@ -139,6 +135,19 @@ class richTextEditorPrompt extends PolymerElement {
             </paper-button>
             <paper-tooltip id="tooltip" for="confirm">OK</paper-tooltip>
           </div>
+          <iron-a11y-keys
+            id="a11ycancel"
+            target="[[__a11ycancel]]"
+            keys="enter"
+            on-keys-pressed="_cancel"
+          >
+          <iron-a11y-keys
+            id="a11yconfirm"
+            target="[[__a11yconfirm]]"
+            keys="enter"
+            on-keys-pressed="_confirm"
+          >
+          </iron-a11y-keys>
         </form>
       </simple-popover>
     `;
@@ -182,6 +191,13 @@ class richTextEditorPrompt extends PolymerElement {
       value: {
         type: Object,
         value: null
+      },
+      /**
+       * The prefilled value of the prompt
+       */
+      __button: {
+        type: Object,
+        value: null
       }
     };
   }
@@ -209,43 +225,38 @@ class richTextEditorPrompt extends PolymerElement {
     this.__a11yconfirm = this.$.confirm;
     this.__a11ycancel = this.$.cancel;
     this.addEventListener("blur", e => {
-      //this._cancel(e);
-    });
-    this.addEventListener("mouseout", e => {
-      //this._cancel(e);
+      this._cancel(e);
     });
   }
 
   /**
    * Loads element into array
    */
-  setTarget(el) {
+  setTarget(button) {
     this.clearTarget();
-    let fields = el.fields,
-      vals = el.value;
-    this.set("fields", fields);
-    this.set("value", vals);
-    this.__el = el;
-    this.for = el.selectedText.getAttribute("id");
+    this.set("fields", button.fields);
+    this.set("value", button.value);
+    this.__button = button;
+    this.for = button.__selectionContents.getAttribute("id");
   }
 
   /**
    * Unloads element from array
    */
   clearTarget() {
-    if (!this.for) return;
+    if (!this.__button) return;
     this.for = null;
     this.set("fields", null);
     this.set("value", null);
-    this.__selection = null;
-    this.__el = null;
+    this.__button = null;
   }
   /**
    * Handles button tap;
    */
   _cancel(e) {
     e.preventDefault();
-    this.__el.deselectText();
+    if (!this.__button) return;
+    this.__button.cancel();
     this.clearTarget();
   }
   /**
@@ -253,8 +264,8 @@ class richTextEditorPrompt extends PolymerElement {
    */
   _confirm(e) {
     e.preventDefault();
-    this.__el.value = this.value;
-    this.__el.updateSelection();
+    this.__button.value = this.value;
+    this.__button.confirm();
     this.clearTarget();
   }
 }

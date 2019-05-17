@@ -16,6 +16,12 @@ import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
  * @polymer
  */
 class RichTextEditorEmojiPicker extends RichTextEditorPicker {
+  constructor() {
+    super();
+    this.label = "Insert emoji";
+    this.icon = "editor:insert-emoticon";
+  }
+
   // properties available to the custom element for data binding
   static get properties() {
     return {
@@ -24,7 +30,7 @@ class RichTextEditorEmojiPicker extends RichTextEditorPicker {
        */
       emojiTypes: {
         name: "emojiTypes",
-        type: "Array",
+        type: Array,
         value: [
           "emotions",
           "people",
@@ -37,22 +43,13 @@ class RichTextEditorEmojiPicker extends RichTextEditorPicker {
           "flags"
         ]
       },
-      /**
-       * Optional icon for null value
-       */
-      icon: {
-        name: "icon",
-        type: "String",
-        value: "editor:insert-emoticon",
-        readOnly: true
-      },
 
       /**
        * An optional JSON file with default options.
        */
       optionsSrc: {
         name: "optionsSrc",
-        type: "String",
+        type: String,
         value: "data/emojis.js"
       },
 
@@ -61,18 +58,9 @@ class RichTextEditorEmojiPicker extends RichTextEditorPicker {
        */
       titleAsHtml: {
         name: "titleAsHtml",
-        type: "Boolean",
+        type: Boolean,
         value: true,
         readOnly: true
-      },
-
-      /**
-       * The value
-       */
-      value: {
-        name: "value",
-        type: "String",
-        value: "null"
       }
     };
   }
@@ -83,10 +71,6 @@ class RichTextEditorEmojiPicker extends RichTextEditorPicker {
    */
   static get tag() {
     return "rich-text-editor-emoji-picker";
-  }
-  constructor() {
-    super();
-    import("@polymer/iron-icons/editor-icons.js");
   }
   /**
    * life cycle, element is afixed to the DOM

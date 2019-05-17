@@ -5,7 +5,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
-import "./rich-text-editor-button-styles.js";
+import "../buttons/rich-text-editor-button-styles.js";
 /**
  * `rich-text-editor-breadcrumb`
  * `a button for rich text editor breadcrumbs`
@@ -52,7 +52,7 @@ class RichTextEditorBreadcrumb extends PolymerElement {
        */
       controls: {
         name: "controls",
-        type: "Object",
+        type: String,
         value: null
       },
       /**
@@ -60,7 +60,7 @@ class RichTextEditorBreadcrumb extends PolymerElement {
        */
       tag: {
         name: "tag",
-        type: "String",
+        type: String,
         value: ""
       },
       /**
@@ -68,7 +68,7 @@ class RichTextEditorBreadcrumb extends PolymerElement {
        */
       target: {
         name: "target",
-        type: "Object",
+        type: Object,
         value: null
       }
     };

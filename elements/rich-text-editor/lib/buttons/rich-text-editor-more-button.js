@@ -15,6 +15,11 @@ import { RichTextEditorButton } from "./rich-text-editor-button.js";
  * @polymer
  */
 class RichTextEditorMoreButton extends RichTextEditorButton {
+  constructor() {
+    super();
+    this.label = "More buttons";
+    this.labelToggled = "Fewer buttons";
+  }
   // properties available to the custom element for data binding
   static get properties() {
     return {
@@ -23,9 +28,8 @@ class RichTextEditorMoreButton extends RichTextEditorButton {
        */
       toggled: {
         name: "toggled",
-        type: "Boolean",
+        type: Boolean,
         value: false,
-        observer: "_updateLabels",
         reflectToAttribute: true
       },
       /**
@@ -33,7 +37,7 @@ class RichTextEditorMoreButton extends RichTextEditorButton {
        */
       collapseMax: {
         name: "collapseMax",
-        type: "String",
+        type: String,
         value: "xs",
         reflectToAttribute: true
       }
@@ -55,17 +59,6 @@ class RichTextEditorMoreButton extends RichTextEditorButton {
     this.dispatchEvent(
       new CustomEvent("rich-text-more-button-tap", { detail: this })
     );
-  }
-
-  /**
-   * updates the selection
-   *
-   * @param {boolean} whether the expand is toggled
-   */
-  _updateLabels(toggled) {
-    let label = this._regOrToggled(this.label, this.toggledLabel, toggled);
-    this.$.label.innerHTML = label;
-    this.$.tooltip.innerHTML = label;
   }
 }
 window.customElements.define(

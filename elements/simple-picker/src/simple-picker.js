@@ -55,22 +55,6 @@ class SimplePicker extends PolymerElement {
   }
 
   /**
-   * aligns collapse to picker
-   *
-   * @param {string} the position: left, right, center
-   * @return {string} css for aligning the collapse
-  _getPosition(position,width = 0) {
-    console.log(width);
-    if(position === "right"){
-      return "left: "+(0 - width);
-    } else if(position === "center"){
-      return "left: "+(0 - width/2);
-    } 
-    return null;
-  }
-   */
-
-  /**
    * sets a new active descendant and sets focus on it
    *
    * @param {number} the row number to be tested
@@ -91,7 +75,6 @@ class SimplePicker extends PolymerElement {
    * handles listbox click event
    */
   _handleListboxEvent(e, type) {
-    console.log("_handleListboxEvent", type);
     this.dispatchEvent(new CustomEvent(type, { detail: this }));
     if (type === "click") this._toggleListbox(!this.expanded);
   }
