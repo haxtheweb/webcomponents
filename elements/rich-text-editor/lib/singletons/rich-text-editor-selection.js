@@ -34,10 +34,18 @@ class RichTextEditorSelection extends PolymerElement {
   // properties available to the custom element for data binding
   static get properties() {
     return {
+      editor: {
+        type: Object,
+        value: null
+      },
       hidden: {
         type: Boolean,
         value: true,
         reflectToAttribute: true
+      },
+      observer: {
+        type: Object,
+        value: null
       },
       range: {
         type: Object,
@@ -64,14 +72,15 @@ class RichTextEditorSelection extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
+    let root = this;
     document.addEventListener("selectionchange", e => {
       root.range = root.getRange();
     });
-    document.addEventListener("select-rich-text-editor-toolbar", e => {
-      root._toolbarChange(e);
+    document.addEventListener("select-rich-text-editor-editor", e => {
+      root._editorChange(e);
     });
-    document.addEventListener("deselect-rich-text-editor-toolbar", e => {
-      root._toolbarChange(e, false);
+    document.addEventListener("deselect-rich-text-editor-editor", e => {
+      root._editorChange(e);
     });
   }
 
@@ -84,11 +93,11 @@ class RichTextEditorSelection extends PolymerElement {
     document.removeEventListener("selectionchange", e => {
       root.range = root.getRange();
     });
-    document.removeEventListener("select-rich-text-editor-toolbar", e => {
-      root._toolbarChange(e);
+    document.removeEventListener("select-rich-text-editor-editor", e => {
+      root._editorChange(e);
     });
-    document.removeEventListener("deselect-rich-text-editor-toolbar", e => {
-      root._toolbarChange(e, false);
+    document.removeEventListener("deselect-rich-text-editor-editor", e => {
+      root._editorChange(e);
     });
   }
   /**
@@ -109,61 +118,130 @@ class RichTextEditorSelection extends PolymerElement {
    * Updates the toolbar
    */
   _updateToolbar() {
-    if (this.toolbar) this.toolbar.selection = this.range();
+    let deleteme = "hello";
+    this.getWrapper();
+    if (this.toolbar) this.toolbar.selection = this.range;
   }
 
-  _toolbarChange(e, deselect = false) {
-    if (!deselect || this.toolbar === e.detail) {
+  /**
+   * Updates the selection based on toolbar and editor
+   */
+  _editorChange(e, deselect = false) {
+    let root = this,
+      editorChange = root.editor !== e.detail.editor,
+      toolbarChange = root.toolbar !== e.detail.toolbar;
+    if (deselect || editorChange || toolbarChange) {
+      let sel = window.getSelection();
       sel.removeAllRanges();
-      this.toolbar = deselect ? null : e.detail;
+      root.editor = e.detail.editor;
+      root.toolbar = e.detail.toolbar;
+      if (root.observer) root.observer.disconnect();
+      if (!deselect && e.detail.editor) {
+        root.observer = new MutationObserver(evt => {
+          root.range = root.getRange();
+        });
+        root.observer.observe(e.detail.editor, {
+          attributes: false,
+          childList: true,
+          subtree: true,
+          characterData: false
+        });
+      }
+    }
+  }
+  /**
+   * wraps the range
+   */
+  getWrapper() {
+    if (this.range) {
+      let ancestor = this.range.commonAncestorContainer,
+        parent = ancestor ? ancestor.parentNode : null;
+      return ancestor && ancestor.tagName
+        ? ancestor
+        : parent && ancestor.parentNode.tagName
+        ? ancestor.parentNode
+        : null;
+    }
+  }
+
+  wrapOrGetTag(tag) {
+    let wrapper = this.getWrapper();
+    if (
+      tag &&
+      (!wrapper || tag.toLowerCase() !== wrapper.tagName.toLowerCase())
+    ) {
+      wrapper = document.createElement(tag);
+      this.wrap(wrapper);
+    }
+    return wrapper;
+  }
+
+  setRangeContents(node) {
+    if (this.range) {
+      this.range.deleteContents();
+      this.range.insertNode(node);
+    }
+  }
+
+  expandRange(node) {
+    if (this.range) {
+      this.range.deleteContents();
+      this.range.insertNode(node);
+    }
+  }
+
+  getRangeContents() {
+    return this.range ? this.range.cloneContents() : null;
+  }
+
+  /**
+   * unwraps the range
+   */
+  unwrap(wrapper) {
+    if (wrapper.parentNode) {
+      wrapper.parentNode.insertBefore(wrapper.firstChild, wrapper);
+      document.body.appendChild(wrapper);
     }
   }
 
   /**
-   * Preserves the selection when a button is pressed
-   *
-   * @param {object} the button
-   * @returns {void}
-   * /
-  _preserveSelection() {
-    let sel = window.getSelection(),
-      temp = this.selection;
-    this.buttons.forEach(button => {
-      button.selection = temp;
-    });
-    sel.removeAllRanges();
-    sel.addRange(temp);
-  }
-
-
-  /**
-   * removes the selection
-   * @param {object} selection object
-   * @param {object} contents of the selection object
-   * @param {boolean} remove tag wrapping the content
+   * wraps the range (or unwraps ir)
    */
-  deselect(contents = null, unwrap = false) {
-    while (unwrap && contents.firstChild) {
-      this.insertBefore(contents.firstChild, contents);
-      this.removeChild(contents);
-    }
-    this.parentNode.insertBefore(this.firstChild, this);
-    document.body.appendChild(this);
-    this.hidden = true;
+  wrap(wrapper) {
+    wrapper.appendChild(this.range.extractContents());
+    this.range.insertNode(wrapper);
   }
 
   /**
-   * removes the selection
-   * @param {object} selection object
-   * @param {object} contents of the selection object
+   * adds or removes the hightlight
+   * @param {boolean} off if true, turns highlight off
    */
-  select(range = null, contents = null) {
-    if (!range) range = this.getRange();
-    if (!contents)
-      contents = range && range.cloneContents ? range.cloneContents() : "";
-    this.appendChild(contents);
-    range.insertNode(this);
-    this.hidden = false;
+  addHighlight() {
+    let root = this;
+    root.dispatchEvent(new CustomEvent("highlight", { detail: root }));
+    root.appendChild(this.range.extractContents());
+    root.range.insertNode(root);
+    root.hidden = false;
+  }
+  /**
+   * adds or removes the hightlight
+   * @param {boolean} off if true, turns highlight off
+   */
+  removeHighlight() {
+    let root = this;
+    while (root.firstChild) root.parentNode.insertBefore(root.firstChild, root);
+    document.body.appendChild(root);
+    root.hidden = true;
+  }
+
+  /**
+   * Generate a UUID
+   */
+  _generateUUID() {
+    let hex = Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+    return "rte-" + "ss-s-s-s-sss".replace(/s/g, hex);
   }
 }
 window.customElements.define(

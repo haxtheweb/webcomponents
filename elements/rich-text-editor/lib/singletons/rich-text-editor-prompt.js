@@ -6,7 +6,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@lrnwebcomponents/simple-popover/simple-popover.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
-import "./rich-text-editor-button-styles.js";
+import "../buttons/rich-text-editor-button-styles.js";
 
 // register globally so we can make sure there is only one
 window.richTextEditorPrompt = window.richTextEditorPrompt || {};
@@ -56,7 +56,7 @@ class richTextEditorPrompt extends PolymerElement {
           flex-direction: column;
           align-items: center;
           justify-content: space-between;
-          z-index: 9999;
+          z-index: 999999;
         }
         :host #prompt paper-input {
           padding: 0;
@@ -191,6 +191,13 @@ class richTextEditorPrompt extends PolymerElement {
       value: {
         type: Object,
         value: null
+      },
+      /**
+       * The prefilled value of the prompt
+       */
+      __button: {
+        type: Object,
+        value: null
       }
     };
   }
@@ -225,33 +232,31 @@ class richTextEditorPrompt extends PolymerElement {
   /**
    * Loads element into array
    */
-  setTarget(el) {
+  setTarget(button) {
     this.clearTarget();
-    let fields = el.fields,
-      vals = el.value;
-    this.set("fields", fields);
-    this.set("value", vals);
-    this.__el = el;
-    this.for = el.selectedText.getAttribute("id");
+    this.set("fields", button.fields);
+    this.set("value", button.value);
+    this.__button = button;
+    this.for = button.__selectionContents.getAttribute("id");
   }
 
   /**
    * Unloads element from array
    */
   clearTarget() {
-    if (!this.for) return;
+    if (!this.__button) return;
     this.for = null;
     this.set("fields", null);
     this.set("value", null);
-    this.__selection = null;
-    this.__el = null;
+    this.__button = null;
   }
   /**
    * Handles button tap;
    */
   _cancel(e) {
     e.preventDefault();
-    this.__el.deselectText();
+    if (!this.__button) return;
+    this.__button.cancel();
     this.clearTarget();
   }
   /**
@@ -259,8 +264,8 @@ class richTextEditorPrompt extends PolymerElement {
    */
   _confirm(e) {
     e.preventDefault();
-    this.__el.value = this.value;
-    this.__el.updateSelection();
+    this.__button.value = this.value;
+    this.__button.confirm();
     this.clearTarget();
   }
 }

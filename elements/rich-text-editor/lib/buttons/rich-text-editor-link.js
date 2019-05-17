@@ -53,14 +53,6 @@ class RichTextEditorLink extends RichTextEditorPromptButton {
   static get tag() {
     return "rich-text-editor-link";
   }
-  /**
-   * placeholder function for prompt action
-   * /
-  updateSelection() {
-    this.selectedText.setAttribute("href", this.value.link.trim());
-    this.selectedText.innerHTML = this.value.text;
-    this.deselectText(this.value.link === null || this.value.link.trim() === "");
-  }*/
 }
 window.customElements.define(RichTextEditorLink.tag, RichTextEditorLink);
 export { RichTextEditorLink };

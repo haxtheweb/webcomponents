@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { RichTextEditorButton } from "./buttons/rich-text-editor-button.js";
+import { RichTextEditorButton } from "./rich-text-editor-button.js";
 /**
  * `rich-text-editor-more-button`
  * `a more button to toggle collapsed buttons in the rich text editor`

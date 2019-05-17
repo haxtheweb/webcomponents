@@ -56,19 +56,6 @@ class SimplePopover extends AbsolutePositionBehavior {
       center = tStart + tHalf - 10,
       margin = Math.min(max - 20, Math.max(0, center - sStart)),
       style = h ? `margin: 0 0 0 ${margin}px;` : `margin: ${margin}px 0 0 0;`;
-    console.log(
-      `this.fitToVisibleBounds: ${this.fitToVisibleBounds}
-      \npositions: ${positions}
-      \nh: ${h}
-      \ntStart: ${tStart}
-      \ntHalf: ${tHalf}
-      \ncenter: ${center}
-      \nsStart: ${sStart}
-      \nmin: 0
-      \nmax: ${max}
-      \nmargin: ${margin}
-      \nstyle: ${style}`
-    );
     return style;
   }
   /**

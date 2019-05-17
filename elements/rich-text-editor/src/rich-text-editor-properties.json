@@ -1,11 +1,19 @@
 {
   /**
-   * The editableElement element for the editor.
+   * The id for the toolbar
    */
-  "editorId": {
-    "name": "editorId",
+  "toolbar": {
+    "name": "toolbar",
     "type": "String",
-    "value": null
+    "value": ""
+  },
+  /**
+   * The editor's unique id
+   */
+  "id": {
+    "name": "id",
+    "type": "String",
+    "value": ""
   },
   /**
    * The type of editor toolbar, i.e.
@@ -16,6 +24,6 @@
   "type": {
     "name": "type",
     "type": "String",
-    "value": null
+    "value": ""
   }
 }

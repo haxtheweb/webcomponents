@@ -6,6 +6,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "../../rich-text-editor.js";
 import "../rich-text-editor-styles.js";
+import "../singletons/rich-text-editor-selection.js";
 import "../buttons/rich-text-editor-button.js";
 import "../buttons/rich-text-editor-more-button.js";
 import "../buttons/rich-text-editor-heading-picker.js";
@@ -346,18 +347,10 @@ class RichTextEditorToolbar extends PolymerElement {
         value: null
       },
       /**
-       * All `rich-text-editor` elements that use this toolbar
-       */
-      editableElements: {
-        name: "editableElements",
-        type: Array,
-        value: []
-      },
-      /**
        * The `rich-text-editor` element that uis currently in `contenteditable` mode
        */
-      editableElement: {
-        name: "editableElement",
+      editor: {
+        name: "editor",
         type: Object,
         value: null
       },
@@ -444,6 +437,7 @@ class RichTextEditorToolbar extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     let root = this;
+    window.RichTextEditorSelection.requestAvailability();
     window.ResponsiveUtility.requestAvailability();
     window.dispatchEvent(
       new CustomEvent("responsive-element", {
@@ -460,97 +454,87 @@ class RichTextEditorToolbar extends PolymerElement {
    * life cycle, element is disconnected
    */
   disconnectedCallback() {
+    let root = this;
     //unbind the the toolbar to the rich-text-editor-selection
     root.dispatchEvent(
-      new CustomEvent("deselect-rich-text-editor-toolbar", {
+      new CustomEvent("deselect-rich-text-editor-editor", {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: root
+        detail: {
+          toolbar: root,
+          editor: root.editor
+        }
       })
     );
   }
 
   /**
-   * adds an editable region to the list of editableElements
+   * adds an editor
    *
    * @param {object} an HTML object that can be edited
    */
-  addEditableRegion(editableElement) {
-    let root = this,
-      /*todo*/
-      observer = new MutationObserver(e => {
-        root.getUpdatedSelection();
-      });
-    editableElement.addEventListener("keydown", e => {
-      root.editTarget(editableElement);
+  addEditableRegion(editor) {
+    let root = this;
+    editor.addEventListener("keydown", e => {
+      root.editTarget(editor);
     });
-    editableElement.addEventListener("mousedown", e => {
-      root.editTarget(editableElement);
+    editor.addEventListener("mousedown", e => {
+      root.editTarget(editor);
     });
-    editableElement.addEventListener("blur", e => {
+    editor.addEventListener("blur", e => {
       if (
         e.relatedTarget === null ||
         !e.relatedTarget.startsWith === "rich-text-editor"
       )
         root.editTarget(null);
+      //root.getUpdatedSelection();
+    });
+    /*editor.addEventListener("mouseout", e => {
       root.getUpdatedSelection();
-    });
-    editableElement.addEventListener("mouseout", e => {
-      root.getUpdatedSelection();
-    });
-    observer.observe(editableElement, {
-      attributes: false,
-      childList: true,
-      subtree: true,
-      characterData: false
-    });
-    root.push("editableElements", [editableElement, observer]);
+    });*/
   }
 
   /**
-   * cancels edits to the active editableElement
+   * cancels edits to the active editor
    */
   cancel() {
-    this.editableElement.innerHTML = this.canceled;
+    this.editor.innerHTML = this.canceled;
     this.editTarget(null);
   }
   /**
-   * makes a editableElement editable
+   * makes a editor editable
    *
    * @param {object} an HTML object that can be edited
    */
-  editTarget(editableElement) {
+  editTarget(editor) {
     let root = this,
       sel = window.getSelection();
-    if (
-      editableElement &&
-      (editableElement.getAttribute("id") === undefined ||
-        editableElement.getAttribute("id") === null)
-    )
-      editableElement.setAttribute("id", root._generateUUID());
 
-    if (root.editableElement !== editableElement) {
-      //save changes to previous editableElement
-      if (root.editableElement !== null) {
-        root.editableElement.contentEditable = false;
-        root.editableElement = null;
+    if (root.editor !== editor) {
+      //save changes to previous editor
+      if (root.editor !== null) {
+        root.editor.contentEditable = false;
+        root.editor = null;
       }
       //bind the the toolbar to the rich-text-editor-selection
       root.dispatchEvent(
-        new CustomEvent("select-rich-text-editor-toolbar", {
+        new CustomEvent("select-rich-text-editor-editor", {
           bubbles: true,
           cancelable: true,
           composed: true,
-          detail: root
+          detail: {
+            toolbar: root,
+            editor: root.editor
+          }
         })
       );
-      root.editableElement = editableElement;
-      if (editableElement) {
-        editableElement.parentNode.insertBefore(root, editableElement);
-        root.canceled = editableElement.innerHTML;
-        root.editableElement.contentEditable = true;
-        root.controls = editableElement.getAttribute("id");
+      root.editor = editor;
+      if (editor) {
+        editor.parentNode.insertBefore(root, editor);
+        root.canceled = editor.innerHTML;
+        root.editor.contentEditable = true;
+        root.controls = editor.getAttribute("id");
       } else {
         root.controls = null;
       }
@@ -569,46 +553,39 @@ class RichTextEditorToolbar extends PolymerElement {
   }
 
   /**
-   * adds an editable region to the list of editableElements
+   * make an new editable element
    *
    * @param {object} an HTML object that can be edited
    */
-  makeEditableRegion(editableElement) {
+  makeEditableRegion(editor) {
     let root = this,
       content = document.createElement("rich-text-editor");
-    editableElement.parentNode.insertBefore(content, editableElement);
-    content.appendChild(editableElement);
+    editor.parentNode.insertBefore(content, editor);
+    content.appendChild(editor);
     root.addEditableRegion(content);
   }
 
   /**
-   * removes an editable region to the list of editableElements
+   * removes an editor
    *
    * @param {object} an HTML object that can be edited
    */
-  removeEditableRegion(editableElement) {
+  removeEditableRegion(editor) {
     let root = this;
-    for (let i = 0; i < this.editableElements.length; i++) {
-      let item = this.editableElements[i];
-      if (item[0] === editableElement) {
-        item[0].removeEventListener("click", e => {
-          root.editTarget(editableElement);
-        });
-        editableElement.removeEventListener("blur", e => {
-          if (
-            e.relatedTarget === null ||
-            !e.relatedTarget.startsWith === "rich-text-editor"
-          )
-            root.editTarget(null);
-          root.getUpdatedSelection();
-        });
-        editableElement.removeEventListener("mouseout", e => {
-          root.getUpdatedSelection();
-        });
-        item[1].disconnect();
-        this.set("editableElements", this.editableElements.splice(i, 1));
-      }
-    }
+    editor.removeEventListener("click", e => {
+      root.editTarget(editor);
+    });
+    editor.removeEventListener("blur", e => {
+      if (
+        e.relatedTarget === null ||
+        !e.relatedTarget.startsWith === "rich-text-editor"
+      )
+        root.editTarget(null);
+      root.getUpdatedSelection();
+    });
+    editor.removeEventListener("mouseout", e => {
+      root.getUpdatedSelection();
+    });
   }
 
   /**
@@ -625,18 +602,12 @@ class RichTextEditorToolbar extends PolymerElement {
     }
     button.setAttribute("class", "button");
     button.addEventListener("deselect", e => {
-      root._getRange().collapse(false);
+      if (root.range && root.range.collapse) root.range.collapse(false);
     });
     parent.appendChild(button);
     return button;
   }
 
-  /**
-   * Generate a UUID
-   */
-  _generateUUID() {
-    return "rte-" + "ss-s-s-s-sss".replace(/s/g, this._uuidPart);
-  }
   /**
    * Gets the groups array for the dom-repeat.
    *
@@ -687,16 +658,6 @@ class RichTextEditorToolbar extends PolymerElement {
    */
   _toggleMore(e) {
     this.collapsed = !this.collapsed;
-  }
-
-  /**
-   * Generates part of a UUID
-   * @returns {string} a unique hexadecimal number
-   */
-  _uuidPart() {
-    return Math.floor((1 + Math.random()) * 0x10000)
-      .toString(16)
-      .substring(1);
   }
 }
 

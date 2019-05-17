@@ -32,6 +32,10 @@ class AbsolutePositionBehavior extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
+    let root = this;
+    root.__observe = false;
+    root.__manager = window.AbsolutePositionStateManager.requestAvailability();
+    if (root.auto !== false) root.setPosition();
   }
 
   /**
@@ -39,10 +43,6 @@ class AbsolutePositionBehavior extends PolymerElement {
    */
   ready() {
     super.ready();
-    let root = this;
-    root.__observe = false;
-    root.__manager = window.AbsolutePositionStateManager.requestAvailability();
-    if (root.auto !== false) root.setPosition();
   }
   /**
    * Registers the element with AbsolutePositionStateManager

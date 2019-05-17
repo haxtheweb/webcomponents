@@ -249,9 +249,7 @@ class AbsolutePositionStateManager extends PolymerElement {
     // TODO(noms): This should use IronFitBehavior if possible.
     styleLeft = elLeft + "px";
     styleTop = elTop + "px";
-    console.log("fitToVisibleBounds", el.fitToVisibleBounds, el.__positions);
     if (el.fitToVisibleBounds) {
-      console.log("right side is off-screen", elRect.right > parentRect.right);
       /// if the left side is off-screen
       if (
         elLeft - offset < parentRect.left ||
@@ -281,7 +279,6 @@ class AbsolutePositionStateManager extends PolymerElement {
       parent: parentRect,
       target: targetRect
     };
-    console.log(el.__positions);
   }
 
   /**

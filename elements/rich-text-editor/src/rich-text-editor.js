@@ -42,6 +42,7 @@ class RichTextEditor extends PolymerElement {
     let style = document.createElement("style");
     style.setAttribute("is", "custom-style");
     style.setAttribute("include", "rich-text-editor-styles");
+    if (!this.id) this.id = this._generateUUID();
     document.head.append(style);
   }
   /**
@@ -58,7 +59,7 @@ class RichTextEditor extends PolymerElement {
     window.RichTextEditorClipboard.requestAvailability();
     let root = this,
       toolbar = "rich-text-editor-toolbar",
-      id = this.editorId ? "#" + this.editorId : "",
+      id = this.toolbar ? "#" + this.toolbar : "",
       type =
         this.type === "full" || this.type === "mini" ? "-" + this.type : "",
       both = document.querySelector(toolbar + type + id),
@@ -78,9 +79,10 @@ class RichTextEditor extends PolymerElement {
       //try to match both id and type, if no match try id only, and then type only
       editor = both || idOnly || typeOnly;
     //if still no match, create a region of type
+    if (!this.toolbar) this.toolbar = this._generateUUID();
     if (!editor || !editor.addEditableRegion) {
       editor = document.createElement(toolbar + type);
-      editor.id = this.editorId;
+      editor.id = this.toolbar;
       root.parentNode.appendChild(editor);
     }
     editor.addEditableRegion(root);
@@ -98,6 +100,16 @@ class RichTextEditor extends PolymerElement {
     } else if (sel) {
       return sel;
     } else false;
+  }
+
+  /**
+   * Generate a UUID
+   */
+  _generateUUID() {
+    let hex = Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+    return "rte-" + "ss-s-s-s-sss".replace(/s/g, hex);
   }
 
   /**
