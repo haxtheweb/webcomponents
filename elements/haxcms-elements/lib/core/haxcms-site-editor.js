@@ -666,13 +666,14 @@ class HAXCMSSiteEditor extends PolymerElement {
       required: true,
       validationType: "text"
     };
-    if (e.target.value.theme === "haxcms-custom-theme") {
+    // @todo figure out why this isn't adding a field in on the fly
+    /*if (e.target.value.theme === "haxcms-custom-theme") {
       e.target.addField(customTag.property, customTag);
       e.target.value[customTag.property] = customTag.property;
     } else {
       e.target.removeField(customTag.property);
       delete e.target.value[customTag.property];
-    }
+    }*/
   }
   /**
    * Publish request send to backend from button
@@ -1018,11 +1019,13 @@ class HAXCMSSiteEditor extends PolymerElement {
     this.set("updateNodeData", {});
     this.set("updateNodeData.siteName", this.manifest.metadata.siteName);
     this.notifyPath("updateNodeData.siteName");
-    this.set(
-      "updateNodeData.body",
-      window.HaxStore.instance.activeHaxBody.haxToContent()
-    );
+    // get the body from what's there currently
+    let body = window.HaxStore.instance.activeHaxBody.haxToContent();
+    this.set("updateNodeData.body", body);
     this.notifyPath("updateNodeData.body");
+    // convert to schema so we can ship that too if we want to process
+    this.set("updateNodeData.schema", window.HaxStore.htmlToHaxElements(body));
+    this.notifyPath("updateNodeData.schema");
     this.set("updateNodeData.nodeId", this.activeItem.id);
     this.notifyPath("updateNodeData.nodeId");
     this.set("updateNodeData.jwt", this.jwt);
