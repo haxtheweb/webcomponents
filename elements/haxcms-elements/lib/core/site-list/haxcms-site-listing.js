@@ -31,7 +31,6 @@ class HAXCMSSiteListing extends PolymerElement {
     this.SimpleColors = new SimpleColors();
     setPassiveTouchGestures(true);
     import("@lrnwebcomponents/simple-login/simple-login.js");
-    import("@lrnwebcomponents/simple-login/lib/simple-login-camera.js");
     import("@lrnwebcomponents/simple-login/lib/simple-login-avatar.js");
     import("@polymer/iron-image/iron-image.js");
     import("@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js");
@@ -120,6 +119,9 @@ class HAXCMSSiteListing extends PolymerElement {
         }
         .has-snap {
           z-index: 3;
+        }
+        .hide-camera {
+          display:none;
         }
         .login-prompt div#selfie img {
           z-index: 2;
@@ -853,6 +855,10 @@ class HAXCMSSiteListing extends PolymerElement {
       hasSelectedItems: {
         type: Boolean,
         value: false
+      },
+      hideCamera: {
+        type: Boolean,
+        value: false
       }
     };
   }
@@ -1046,6 +1052,13 @@ class HAXCMSSiteListing extends PolymerElement {
       this.refreshData.bind(this)
     );
     afterNextRender(this, function() {
+      if (this.hideCamera) {
+        this.shadowRoot.querySelector("#newsnap").classList.add("hide-camera");
+        this.shadowRoot.querySelector("#snap").classList.add("hide-camera");
+        this.shadowRoot.querySelector("#camera").classList.add("hide-camera");
+      } else {
+        import("@lrnwebcomponents/simple-login/lib/simple-login-camera.js");
+      }
       this.addEventListener(
         "simple-login-login",
         this.loginPromptEvent.bind(this)
