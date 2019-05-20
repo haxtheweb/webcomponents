@@ -592,6 +592,10 @@ class HAXCMSSiteEditor extends PolymerElement {
         '<paper-button raised style="text-transform:none;">Access published version</paper-button>';
     }
     let c = document.createElement("hax-schema-form");
+    c.addEventListener(
+      "value-changed",
+      this._schemaFormValueChanged.bind(this)
+    );
     // set a min width of 50 viewable
     c.style.minWidth = "50vw";
     for (var key in this._haxSchema.settings) {
@@ -652,6 +656,23 @@ class HAXCMSSiteEditor extends PolymerElement {
       }
     });
     window.dispatchEvent(evt);
+  }
+  _schemaFormValueChanged(e) {
+    let customTag = {
+      property: "custom-theme-tag",
+      title: "Custom theme tag",
+      description: "Tag that supplies the custom theme",
+      inputMethod: "textfield",
+      required: true,
+      validationType: "text"
+    };
+    if (e.target.value.theme === "haxcms-custom-theme") {
+      e.target.addField(customTag.property, customTag);
+      e.target.value[customTag.property] = customTag.property;
+    } else {
+      e.target.removeField(customTag.property);
+      delete e.target.value[customTag.property];
+    }
   }
   /**
    * Publish request send to backend from button
