@@ -1,6 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { wipeSlot } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
+import "@polymer/iron-media-query/iron-media-query.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./hax-shared-styles.js";
 /**
@@ -177,12 +178,21 @@ class HaxPreview extends PolymerElement {
           display: inline-block;
           background-color: var(--hax-color-accent1);
         }
+        .vaadin-layout-width {
+          min-width: 30%;
+          width: 50%;
+          max-width: 70%;
+        }
+        .vaadin-layout-height {
+          min-height: 40%;
+          height: 50%;
+          max-height: 60%;
+        }
       </style>
-      <vaadin-split-layout class="panel-wrapper">
+      <vaadin-split-layout class="panel-wrapper" orientation="[[orientation]]">
         <div
           id="ppanel1"
-          class="vaadin-split-layout-panel"
-          style="width:50%;max-width:75%;min-width:25%;"
+          class$="vaadin-split-layout-panel vaadin-layout-[[orientationDirection]]"
         >
           <div class="preview-buttons">
             <paper-button id="insert" raised on-click="insert"
@@ -212,8 +222,7 @@ class HaxPreview extends PolymerElement {
         </div>
         <div
           id="ppanel2"
-          class="vaadin-split-layout-panel"
-          style="width:50%;max-width:75%;min-width:25%;"
+          class$="vaadin-split-layout-panel vaadin-layout-[[orientationDirection]]"
         >
           <paper-tabs
             hidden\$="[[!haspreviewNode]]"
@@ -241,6 +250,10 @@ class HaxPreview extends PolymerElement {
           </paper-card>
         </div>
       </vaadin-split-layout>
+      <iron-media-query
+        query="[[_computeMediaQuery(responsiveWidth)]]"
+        on-query-matches-changed="_onQueryMatchesChanged"
+      ></iron-media-query>
     `;
   }
   static get tag() {
@@ -251,6 +264,18 @@ class HaxPreview extends PolymerElement {
   }
   static get properties() {
     return {
+      responsiveWidth: {
+        type: String,
+        value: "800px"
+      },
+      orientation: {
+        type: String,
+        value: "horizontal"
+      },
+      orientationDirection: {
+        type: String,
+        value: "width"
+      },
       /**
        * A reference to the previewNode so we can do data binding correctly.
        */
@@ -337,6 +362,19 @@ class HaxPreview extends PolymerElement {
         type: String
       }
     };
+  }
+  _onQueryMatchesChanged(e) {
+    if (e.detail.value) {
+      this.orientation = "vertical";
+      this.orientationDirection = "height";
+    } else {
+      this.orientation = "horizontal";
+      this.orientationDirection = "width";
+    }
+  }
+
+  _computeMediaQuery(responsiveWidth) {
+    return "(max-width: " + responsiveWidth + ")";
   }
   /**
    * Trigger cancel on manager as it is the parent here.
