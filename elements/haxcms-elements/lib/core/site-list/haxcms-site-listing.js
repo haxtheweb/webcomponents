@@ -557,7 +557,7 @@ class HAXCMSSiteListing extends PolymerElement {
         <vaadin-grid-column width="1em" header="Color">
           <template>
             <div
-              style$="width:48px;height:48px;background-color:[[item.metadata.hexCode]];"
+              style$="border:1px solid black;width:48px;height:48px;background-color:[[item.metadata.hexCode]];"
             ></div>
           </template>
         </vaadin-grid-column>
