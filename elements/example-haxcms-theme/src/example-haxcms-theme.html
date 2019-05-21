@@ -1,0 +1,27 @@
+<!-- Show a horizontal menu that has the top level items in it -->
+<site-top-menu noink indicator="arrow" arrow-size="8">
+  <!-- Show the title of the site with link back to home -->
+  <site-title slot="prefix" class="spacing"></site-title>
+  <!-- A basic navigational modal -->
+  <site-modal slot="suffix" icon="icons:search" title="Search site" button-label="Search">
+    <!-- This will generate a lunr.js search index with form to search items -->
+    <site-search></site-search>
+  </site-modal>
+</site-top-menu>
+<!-- This shows an active breadcrumb trail automatically -->
+<site-breadcrumb></site-breadcrumb>
+<!--
+  This is required in order for HAXeditor to correctly find the place that content lives.
+  The id containtainer / id on slot are conventions we use (which you CAN handle other ways
+  but this is the recommended methodology. There is then associated CSS to state which
+  ensures that when editing you see HAXeditor and when not editing you correctly see the
+  page content loaded from the backend.
+-->
+<div id="contentcontainer">
+  <div id="slot">
+    <slot></slot>
+  </div>
+</div>
+<!-- These two buttons allow you to go left and right through the pages in the manifest -->
+<site-menu-button type="prev" position="top"></site-menu-button>
+<site-menu-button type="next" position="top"></site-menu-button>

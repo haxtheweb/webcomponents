@@ -1,0 +1,38 @@
+/**
+ * Setting host allows you to set styles and css variables
+ * on the tag / theme in question.
+ */
+:host {
+  display: block;
+  /**
+   * CSS variables pair VERY well with web components to ensure
+   * that things are scoped and yet flexible.
+   * --haxcms-color is a global available that is set to whatever
+   * the user has set as a global color
+   */
+  --example-haxcms-theme-color: #222222;
+}
+/**
+ * This may seem odd but is required to ensure that other things
+ * defining display don't have greater priority than those in the
+ * shadow root. This happens because hidden as an attribute is a global
+ * base style and doesn't have priority over display set local to shadow dom.
+ */
+:host([hidden]) {
+  display: none;
+}
+/**
+ * Hide the slotted content when HAXeditor sets edit-mode.
+ */
+:host([edit-mode]) #slot {
+  display: none;
+}
+/**
+ * ::slotted allows you to apply some baseline styles to the 1 level
+ * children inside of the slotted area of this tag. This won't allow
+ * you to fully style things in this light dom root but it's good
+ * for setting base line things like color, font-size, font weight.
+ */
+:host #slot ::slotted(*) {
+  color: var(--example-haxcms-theme-color);
+}
