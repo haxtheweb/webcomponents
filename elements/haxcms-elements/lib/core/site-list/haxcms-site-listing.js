@@ -1099,7 +1099,7 @@ class HAXCMSSiteListing extends PolymerElement {
       this.__deleteSitePath = window.appSettings.deleteSitePath;
       // case where backend has set the JWT ahead of time
       // useful for systems that are managing login above HAXcms
-      if (!this.jwt && window.appSettings.jwt) {
+      if (window.appSettings.jwt) {
         this.set("jwt", window.appSettings.jwt);
       }
       document.body.addEventListener(
