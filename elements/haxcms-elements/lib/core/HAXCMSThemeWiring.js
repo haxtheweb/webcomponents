@@ -22,6 +22,7 @@ export const HAXCMSTheme = function(SuperClass) {
     // as well as those wanting a custom integration methodology
     constructor() {
       super();
+      this.__disposer = [];
       this.HAXCMSThemeWiring = new HAXCMSThemeWiring(this);
     }
     /**
@@ -68,6 +69,7 @@ export const HAXCMSTheme = function(SuperClass) {
           type: Boolean,
           reflectToAttribute: true,
           notify: true,
+          value: false,
           observer: "_editModeChanged"
         },
         /**
@@ -103,8 +105,10 @@ export const HAXCMSTheme = function(SuperClass) {
     /**
      * notice edit changed, make sure we fake a resize because of that container flyout
      */
-    _editModeChanged(newValue) {
-      if (typeof newValue !== typeof undefined) {
+    _editModeChanged(newValue, oldValue) {
+      if (typeof oldValue !== typeof undefined) {
+        // ensure global is kept in sync
+        store.editMode = newValue;
         microTask.run(() => {
           // trick browser into thinking we just reized
           window.dispatchEvent(new Event("resize"));
@@ -160,7 +164,6 @@ export const HAXCMSTheme = function(SuperClass) {
           "#contentcontainer"
         );
       }
-      this.__disposer = [];
       afterNextRender(this, function() {
         // edge case, we just swapped theme faster then content loaded... lol
         setTimeout(() => {
@@ -172,6 +175,11 @@ export const HAXCMSTheme = function(SuperClass) {
           }
         }, 50);
         updateStyles();
+        // keep editMode in sync globally
+        autorun(reaction => {
+          this.editMode = toJS(store.editMode);
+          this.__disposer.push(reaction);
+        });
         // store disposer so we can clean up later
         autorun(reaction => {
           const __routerManifest = toJS(store.routerManifest);
@@ -242,15 +250,15 @@ export const HAXCMSTheme = function(SuperClass) {
 class HAXCMSThemeWiring {
   constructor(element, load = true) {
     if (load) {
-      document.body.addEventListener(
+      window.addEventListener(
         "haxcms-edit-mode-changed",
         this._globalEditChanged.bind(element)
       );
-      document.body.addEventListener(
+      window.addEventListener(
         "haxcms-active-item-changed",
         this._activeItemUpdate.bind(element)
       );
-      document.body.addEventListener(
+      window.addEventListener(
         "haxcms-trigger-update",
         this._triggerUpdate.bind(element)
       );
@@ -271,15 +279,15 @@ class HAXCMSThemeWiring {
    * detatch element events from whats passed in
    */
   disconnect(element) {
-    document.body.removeEventListener(
+    window.removeEventListener(
       "haxcms-active-item-changed",
       this._activeItemUpdate.bind(element)
     );
-    document.body.removeEventListener(
+    window.removeEventListener(
       "haxcms-edit-mode-changed",
       this._globalEditChanged.bind(element)
     );
-    document.body.removeEventListener(
+    window.removeEventListener(
       "haxcms-trigger-update",
       this._triggerUpdate.bind(element)
     );

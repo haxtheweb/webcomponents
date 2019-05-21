@@ -21,10 +21,9 @@ class HAXCMSSiteEditorUI extends PolymerElement {
   }
   constructor() {
     super();
-    import("@polymer/paper-tooltip/paper-tooltip.js");
+    this.__disposer = [];
     import("@polymer/paper-icon-button/paper-icon-button.js");
     import("@lrnwebcomponents/simple-modal/simple-modal.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-outline-editor-dialog.js");
     import("@polymer/iron-icons/editor-icons.js");
     import("@polymer/paper-fab/paper-fab.js");
   }
@@ -309,8 +308,13 @@ class HAXCMSSiteEditorUI extends PolymerElement {
   }
   connectedCallback() {
     super.connectedCallback();
-    this.__disposer = [];
     afterNextRender(this, function() {
+      import("@polymer/paper-tooltip/paper-tooltip.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-outline-editor-dialog.js");
+      autorun(reaction => {
+        this.editMode = toJS(store.editMode);
+        this.__disposer.push(reaction);
+      });
       autorun(reaction => {
         const activeItem = toJS(store.activeItem);
         if (activeItem && activeItem.id) {
@@ -334,7 +338,6 @@ class HAXCMSSiteEditorUI extends PolymerElement {
    */
   _editButtonTap(e) {
     this.editMode = !this.editMode;
-    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.editMode = this.editMode;
     // save button shifted to edit
     if (!this.editMode) {
       this.dispatchEvent(
@@ -365,7 +368,6 @@ class HAXCMSSiteEditorUI extends PolymerElement {
   }
   _cancelButtonTap(e) {
     this.editMode = false;
-    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.editMode = false;
     this.dispatchEvent(
       new CustomEvent("hax-cancel", {
         bubbles: true,
@@ -561,15 +563,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
       this.__editText = "Edit";
     }
     if (typeof oldValue !== typeof undefined) {
-      this.dispatchEvent(
-        new CustomEvent("haxcms-edit-mode-changed", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: newValue
-        })
-      );
-      window.HaxStore.write("editMode", newValue, this);
+      store.editMode = newValue;
     }
   }
   /**

@@ -31,11 +31,7 @@ class HAXCMSSiteEditor extends PolymerElement {
   }
   constructor() {
     super();
-    import("@polymer/paper-button/paper-button.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-schema-form.js");
-    import("@polymer/paper-tooltip/paper-tooltip.js");
-    import("@polymer/iron-icons/editor-icons.js");
-    import("@polymer/paper-fab/paper-fab.js");
+    this.__disposer = [];
   }
   // render function
   static get template() {
@@ -349,8 +345,13 @@ class HAXCMSSiteEditor extends PolymerElement {
    */
   ready() {
     super.ready();
-    this.__disposer = [];
     afterNextRender(this, function() {
+      import("@polymer/paper-button/paper-button.js");
+      import("@lrnwebcomponents/hax-body/lib/hax-schema-form.js");
+      autorun(reaction => {
+        this.editMode = toJS(store.editMode);
+        this.__disposer.push(reaction);
+      });
       autorun(reaction => {
         this.manifest = toJS(store.manifest);
         this.__disposer.push(reaction);

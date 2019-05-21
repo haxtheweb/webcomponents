@@ -505,3 +505,21 @@ autorun(() => {
     );
   }
 });
+/**
+ * When editMode changes notify HAXeditor.
+ */
+autorun(() => {
+  const editMode = toJS(store.editMode);
+  // trap for early setup
+  if (window.HaxStore && window.HaxStore.write) {
+    window.dispatchEvent(
+      new CustomEvent("haxcms-edit-mode-changed", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: editMode
+      })
+    );
+    window.HaxStore.write("editMode", editMode, window.HaxStore.instance);
+  }
+});
