@@ -2,7 +2,6 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@polymer/iron-list/iron-list.js";
 import "@polymer/iron-form-element-behavior/iron-form-element-behavior.js";
 import "@polymer/app-layout/app-layout.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
@@ -123,14 +122,17 @@ class LrnsysCommentList extends PolymerElement {
         like=""
       >
         <template>
-          <iron-list id="commentlist" items="[[filtered]]" as="item">
-            <template>
-              <lrnsys-comment
-                comment="{{item}}"
-                hover-class="blue white-text"
-              ></lrnsys-comment>
-            </template>
-          </iron-list>
+          <template
+            is="dom-repeat"
+            id="commentlist"
+            items="[[filtered]]"
+            as="item"
+          >
+            <lrnsys-comment
+              comment="{{item}}"
+              hover-class="blue white-text"
+            ></lrnsys-comment>
+          </template>
         </template>
       </grafitto-filter>
     `;
@@ -221,19 +223,6 @@ class LrnsysCommentList extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     window.SimpleModal.requestAvailability();
-    microTask.run(() => {
-      if (this.$.filteredcomments.querySelector("iron-list")) {
-        this.$.filteredcomments.querySelector("iron-list").dispatchEvent(
-          new CustomEvent("iron-resize", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: true
-          })
-        );
-      }
-      window.dispatchEvent(new Event("resize"));
-    });
     this.$.filtercomments.addEventListener("value-changed", e => {
       this.$.filteredcomments.like = e.target.value;
     });

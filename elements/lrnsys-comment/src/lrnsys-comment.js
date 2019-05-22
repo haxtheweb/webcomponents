@@ -79,6 +79,7 @@ class LrnsysComment extends PolymerElement {
         }
         .comment-content {
           padding-right: 7px;
+          max-width: 300px;
         }
         h1,
         h2,
@@ -515,14 +516,6 @@ class LrnsysComment extends PolymerElement {
           this.$.edit.alt = "Edit";
           this.$.reply.disabled = false;
         }
-        this.dispatchEvent(
-          new CustomEvent("iron-resize", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: true
-          })
-        );
       });
     }
   }
@@ -531,14 +524,6 @@ class LrnsysComment extends PolymerElement {
    */
   bodyToggle(e) {
     this.$.bodyarea.classList.remove("nowrap-me");
-    this.dispatchEvent(
-      new CustomEvent("iron-resize", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: true
-      })
-    );
   }
 
   /**
@@ -546,14 +531,6 @@ class LrnsysComment extends PolymerElement {
    */
   bodyToggleOn(e) {
     this.$.bodyarea.classList.toggle("nowrap-me");
-    this.dispatchEvent(
-      new CustomEvent("iron-resize", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: true
-      })
-    );
   }
 }
 window.customElements.define(LrnsysComment.tag, LrnsysComment);
