@@ -67,6 +67,8 @@ class SimpleModal extends PolymerElement {
         }
 
         #dialog {
+          display: flex;
+          flex-direction: column;
           margin: 15px auto;
           z-index: 1000;
           height: var(--simple-modal-height, auto);
@@ -128,6 +130,7 @@ class SimpleModal extends PolymerElement {
         }
 
         #simple-modal-content {
+          flex-grow: 1;
           padding: 8px 16px;
           margin: 0;
           color: var(--simple-modal-content-container-color, #222);
@@ -298,6 +301,8 @@ class SimpleModal extends PolymerElement {
           e.detail.title,
           e.detail.elements,
           e.detail.invokedBy,
+          e.detail.id,
+          e.detail.modalClass,
           e.detail.clone
         );
       }, 100);
@@ -306,6 +311,8 @@ class SimpleModal extends PolymerElement {
         e.detail.title,
         e.detail.elements,
         e.detail.invokedBy,
+        e.detail.id,
+        e.detail.modalClass,
         e.detail.clone
       );
     }
@@ -313,13 +320,30 @@ class SimpleModal extends PolymerElement {
   /**
    * Show the modal and display the material
    */
-  show(title, elements, invokedBy, clone = false) {
+  show(
+    title,
+    elements,
+    invokedBy,
+    id = null,
+    modalClass = null,
+    clone = false
+  ) {
     this.set("invokedBy", invokedBy);
     this.title = title;
     let element;
     // append element areas into the appropriate slots
     // ensuring they are set if it wasn't previously
     let slots = ["header", "content", "buttons"];
+    if (id) {
+      this.setAttribute("id", id);
+    } else {
+      this.removeAttribute("id");
+    }
+    if (modalClass) {
+      this.setAttribute("class", modalClass);
+    } else {
+      this.removeAttribute("class");
+    }
     for (var i in slots) {
       if (elements[slots[i]]) {
         if (clone) {

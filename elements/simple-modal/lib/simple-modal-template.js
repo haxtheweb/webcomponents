@@ -30,6 +30,13 @@ class SimpleModalTemplate extends PolymerElement {
   static get properties() {
     return {
       /**
+       * the desired id for the modal
+       */
+      modalId: {
+        type: "Object",
+        value: null
+      },
+      /**
        * the simple-modal
        */
       modal: {
@@ -113,6 +120,8 @@ class SimpleModalTemplate extends PolymerElement {
         composed: true,
         detail: {
           title: this.title !== null ? this.title : false,
+          id: this.getAttribute("modal-id"),
+          modalClass: this.getAttribute("class"),
           elements: {
             header: this._getSlot("header"),
             content: this._getSlot("content"),

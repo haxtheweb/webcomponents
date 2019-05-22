@@ -104,6 +104,8 @@ class SimpleModal extends PolymerElement {
           e.detail.title,
           e.detail.elements,
           e.detail.invokedBy,
+          e.detail.id,
+          e.detail.modalClass,
           e.detail.clone
         );
       }, 100);
@@ -112,6 +114,8 @@ class SimpleModal extends PolymerElement {
         e.detail.title,
         e.detail.elements,
         e.detail.invokedBy,
+        e.detail.id,
+        e.detail.modalClass,
         e.detail.clone
       );
     }
@@ -119,13 +123,30 @@ class SimpleModal extends PolymerElement {
   /**
    * Show the modal and display the material
    */
-  show(title, elements, invokedBy, clone = false) {
+  show(
+    title,
+    elements,
+    invokedBy,
+    id = null,
+    modalClass = null,
+    clone = false
+  ) {
     this.set("invokedBy", invokedBy);
     this.title = title;
     let element;
     // append element areas into the appropriate slots
     // ensuring they are set if it wasn't previously
     let slots = ["header", "content", "buttons"];
+    if (id) {
+      this.setAttribute("id", id);
+    } else {
+      this.removeAttribute("id");
+    }
+    if (modalClass) {
+      this.setAttribute("class", modalClass);
+    } else {
+      this.removeAttribute("class");
+    }
     for (var i in slots) {
       if (elements[slots[i]]) {
         if (clone) {

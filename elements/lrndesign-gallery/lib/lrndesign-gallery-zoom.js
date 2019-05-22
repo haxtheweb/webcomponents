@@ -62,7 +62,7 @@ class LrndesignGalleryZoom extends PolymerElement {
         :host paper-button {
           width: 100%;
         }
-        #zoomdialog {
+        simple-modal-template[modal-id="zoomdialog"] {
           --simple-modal-width: 75vw;
           --simple-modal-height: 75vh;
           --simple-modal-titlebar-color: var(
@@ -90,11 +90,20 @@ class LrndesignGalleryZoom extends PolymerElement {
           min-width: unset;
         }
       </style>
-      <paper-button id="zoombtn" label$="[[tooltip]]" title="">
+      <paper-button
+        id="zoombtn"
+        label$="[[tooltip]]"
+        title=""
+        controls="zoomdialog"
+      >
         <slot></slot>
       </paper-button>
       <paper-tooltip for="zoombtn" position="right">[[tooltip]]</paper-tooltip>
-      <simple-modal-template id="zoomdialog" title$="[[heading]]">
+      <simple-modal-template
+        id="zoomtpl"
+        modal-id="zoomdialog"
+        title$="[[heading]]"
+      >
         <div
           id="details"
           slot="header"
@@ -197,8 +206,7 @@ class LrndesignGalleryZoom extends PolymerElement {
   ready() {
     super.ready();
     this._detailsChanged();
-    this.modal = this.$.zoomdialog.associateEvents(this.$.zoombtn);
-    this.$.zoomdialog.associateEvents(this.$.zoombtn, "gallery-zoom");
+    this.$.zoomtpl.associateEvents(this.$.zoombtn);
     if (this.scrolled) {
       this.dispatchEvent(new CustomEvent("gallery-scroll"));
       if (!this.zoomed) this.$.zoombtn.focus();

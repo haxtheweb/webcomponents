@@ -22,24 +22,35 @@
       <h3>Basic simple-modal demo</h3>
       <demo-snippet>
         <template>
-          <paper-button id="button1">Button 1</paper-button>
-          <simple-modal-template id="smt1" title="simple-modal-template 1">
+            <style>
+              simple-modal-template[modal-id="smt1"] {
+                  --simple-modal-width: 300px;
+                  --simple-modal-height: 300px;
+              }
+              simple-modal-template.wide {
+                  --simple-modal-width: 90vw;
+                  --simple-modal-height: 90vh;
+                  --simple-modal-min-width: unset;
+                  --simple-modal-min-height: unset;
+                  --simple-modal-max-width: 90vw;
+                  --simple-modal-max-height: 90vh;
+              }
+            </style>
+          <paper-button controls="smt1" on-tap="openModal">Button 1</paper-button>
+          <simple-modal-template modal-id="smt1" title="simple-modal-template 1">
             <div slot="header">Simple Modal 1 Header</div>
             <p slot="content">Button 1 opens the first simple-modal-template template.</p>
             <div slot="buttons"><paper-button dialog-dismiss>Close Modal 1</paper-button></div>
           </simple-modal-template>
-          <paper-button id="button2">Button 2</paper-button>
-          <simple-modal-template id="smt2">
+          <paper-button controls="smt2">Button 2</paper-button>
+          <simple-modal-template modal-id="smt2" class="wide">
             <p slot="precontent">Button 2 opens the second simple-modal-template template.</p>
             <p slot="content">Button 2 opens the second simple-modal-template template.</p>
           </simple-modal-template>
+
           <script>
-            let btn1 = document.getElementById('button1'), 
-              smt1 = document.getElementById('smt1'),
-              btn2 = document.getElementById('button2'), 
-              smt2 = document.getElementById('smt2');
-            smt1.associateEvents(btn1);
-            smt2.associateEvents(btn2);
+            document.querySelector('[modal-id="smt1"]').associateEvents(document.querySelector('[controls="smt1"]'));
+            document.querySelector('[modal-id="smt2"]').associateEvents(document.querySelector('[controls="smt2"]'));
           </script>
         </template>
       </demo-snippet>
