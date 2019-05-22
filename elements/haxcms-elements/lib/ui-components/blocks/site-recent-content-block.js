@@ -52,6 +52,7 @@ class SiteRecentContentBlock extends PolymerElement {
         }
         .item-heading a {
           text-decoration: none;
+          text-transform: none;
           color: var(--site-recent-content-block-item-link-color);
           font-size: 16px;
           @apply --site-recent-content-block-item-link;
