@@ -42,6 +42,8 @@ window.SimpleModal.requestAvailability = () => {
  * @customElement
  * @polymer
  * @demo demo/index.html demo
+ * @demo demo/css.html styling simple-modal via CSS
+ * @demo demo/details.html styling simple-modal via event details
  * @demo demo/template.html using simple-modal-template
  */
 class SimpleModal extends PolymerElement {
@@ -90,6 +92,7 @@ class SimpleModal extends PolymerElement {
   }
   /**
    * show event call to open the modal and display it's content
+   *
    */
   showEvent(e) {
     // if we're already opened and we get told to open again....
@@ -106,6 +109,7 @@ class SimpleModal extends PolymerElement {
           e.detail.invokedBy,
           e.detail.id,
           e.detail.modalClass,
+          e.detail.styles,
           e.detail.clone
         );
       }, 100);
@@ -116,6 +120,7 @@ class SimpleModal extends PolymerElement {
         e.detail.invokedBy,
         e.detail.id,
         e.detail.modalClass,
+        e.detail.styles,
         e.detail.clone
       );
     }
@@ -129,6 +134,7 @@ class SimpleModal extends PolymerElement {
     invokedBy,
     id = null,
     modalClass = null,
+    styles = null,
     clone = false
   ) {
     this.set("invokedBy", invokedBy);
@@ -141,6 +147,29 @@ class SimpleModal extends PolymerElement {
       this.setAttribute("id", id);
     } else {
       this.removeAttribute("id");
+    }
+    this.setAttribute("style", "");
+    if (styles) {
+      [
+        "--simple-modal-width",
+        "--simple-modal-height",
+        "--simple-modal-min-width",
+        "--simple-modal-min-height",
+        "--simple-modal-max-width",
+        "--simple-modal-max-height",
+        "--simple-modal-titlebar-color",
+        "--simple-modal-titlebar-background",
+        "--simple-modal-header-color",
+        "--simple-modal-header-background",
+        "--simple-modal-content-container-color",
+        "--simple-modal-content-container-background",
+        "--simple-modal-buttons-color",
+        "--simple-modal-buttons-background",
+        "--simple-modal-button-color",
+        "--simple-modal-button-background"
+      ].forEach(prop => {
+        this.style.setProperty(prop, styles[prop] || "unset");
+      });
     }
     if (modalClass) {
       this.setAttribute("class", modalClass);
