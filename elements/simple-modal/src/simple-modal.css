@@ -16,6 +16,8 @@ paper-dialog-scrollable:not(:defined) {
 }
 
 #dialog {
+  display: flex;
+  flex-direction: column;
   margin: 15px auto;
   z-index: 1000;
   height: var(--simple-modal-height, auto);
@@ -77,6 +79,7 @@ h2 {
 }
 
 #simple-modal-content {
+  flex-grow: 1;
   padding: 8px 16px;
   margin: 0;
   color: var(--simple-modal-content-container-color, #222);

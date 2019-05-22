@@ -30,6 +30,13 @@ class SimpleModalTemplate extends PolymerElement {
   static get properties() {
     return {
       /**
+       * the desired id for the modal
+       */
+      modalId: {
+        type: "Object",
+        value: null
+      },
+      /**
        * the simple-modal
        */
       modal: {
@@ -106,21 +113,8 @@ class SimpleModalTemplate extends PolymerElement {
    * @param {boolean} whether the event can be canceled (default is true)
    */
   openModal(target, bubbles = true, cancelable = true) {
-    const styles = getComputedStyle(this),
-      evt = new CustomEvent("simple-modal-show", {
-        bubbles: bubbles,
-        cancelable: cancelable,
-        composed: true,
-        detail: {
-          title: this.title !== null ? this.title : false,
-          elements: {
-            header: this._getSlot("header"),
-            content: this._getSlot("content"),
-            buttons: this._getSlot("buttons")
-          },
-          invokedBy: target
-        }
-      });
+    let tplStyles = getComputedStyle(this),
+      styles = {};
     [
       "--simple-modal-width",
       "--simple-modal-height",
@@ -139,7 +133,24 @@ class SimpleModalTemplate extends PolymerElement {
       "--simple-modal-button-color",
       "--simple-modal-button-background"
     ].forEach(prop => {
-      this.modal.style.setProperty(prop, styles.getPropertyValue(prop));
+      styles[prop] = tplStyles.getPropertyValue(prop);
+    });
+    const evt = new CustomEvent("simple-modal-show", {
+      bubbles: bubbles,
+      cancelable: cancelable,
+      composed: true,
+      detail: {
+        id: this.getAttribute("modal-id"),
+        elements: {
+          header: this._getSlot("header"),
+          content: this._getSlot("content"),
+          buttons: this._getSlot("buttons")
+        },
+        invokedBy: target,
+        modalClass: this.getAttribute("class"),
+        styles: styles,
+        title: this.title !== null ? this.title : false
+      }
     });
     window.dispatchEvent(evt);
   }
