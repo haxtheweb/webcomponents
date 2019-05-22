@@ -49,7 +49,7 @@ class ElmsmediaDashboard extends PolymerElement {
         ></elmsmedia-dashboard-toolbar-button>
       </div>
 
-      <paper-dialog id="filterDialog" with-backdrop="">
+      <paper-dialog id="filterDialog">
         <h3>Filter Media</h3>
         <elmsmedia-dashboard-filters
           form="{{queryParams}}"

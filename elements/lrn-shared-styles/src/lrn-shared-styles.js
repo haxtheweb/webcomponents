@@ -13,12 +13,13 @@
  * @demo demo/index.html
  * @see lib/lrn-shared-styles-demo.js
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/iron-flex-layout/iron-flex-layout.js";
+import { html } from "@polymer/polymer/polymer-element.js";
+import "@polymer/polymer/lib/elements/dom-module.js";
+import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
 const styleElement = document.createElement("dom-module");
 
 const css = html`
-  <style include="iron-flex-layout">
+  <style include="iron-flex iron-flex-alignment">
     /**
      * Normalizes iron-icon and lrn-icon.
      */

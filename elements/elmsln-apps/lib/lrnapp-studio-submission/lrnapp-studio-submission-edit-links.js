@@ -60,12 +60,7 @@ class LrnappStudioSubmissionEditLinks extends PolymerElement {
         on-click="_openDialog"
       ></lrnapp-studio-submission-edit-add-asset>
 
-      <paper-dialog
-        id="dialog"
-        entry-animation="scale-up-animation"
-        exit-animation="fade-out-animation"
-        with-backdrop=""
-      >
+      <paper-dialog id="dialog">
         <h2>Add Link</h2>
         <paper-dialog-scrollable>
           <paper-input

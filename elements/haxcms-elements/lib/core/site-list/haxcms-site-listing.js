@@ -597,7 +597,7 @@ class HAXCMSSiteListing extends PolymerElement {
           >
         </simple-login>
       </div>
-      <paper-dialog id="confirm" with-backdrop>
+      <paper-dialog id="confirm">
         <h2 class="dialog-header">
           [[activeOpertion]] these [[selectedItems.length]] sites
         </h2>
@@ -626,7 +626,7 @@ class HAXCMSSiteListing extends PolymerElement {
           >
         </div>
       </paper-dialog>
-      <paper-dialog id="newdialog" with-backdrop>
+      <paper-dialog id="newdialog">
         <h2 class="dialog-header">Create new site</h2>
         <div>
           <paper-input
@@ -671,7 +671,7 @@ class HAXCMSSiteListing extends PolymerElement {
           >
         </div>
       </paper-dialog>
-      <paper-dialog id="settingsdialog" with-backdrop>
+      <paper-dialog id="settingsdialog">
         <h2 class="dialog-header">Edit HAXCMS configuration</h2>
         <paper-dialog-scrollable>
           <eco-json-schema-object id="settingsform"></eco-json-schema-object>

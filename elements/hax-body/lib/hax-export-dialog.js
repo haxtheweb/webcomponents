@@ -97,7 +97,7 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(PolymerElement) {
           width: 100%;
         }
       </style>
-      <paper-dialog id="dialog" with-backdrop always-on-top>
+      <paper-dialog id="dialog">
         <h3 class="title">[[title]]</h3>
         <div style="height: 100%; overflow: auto;" class="pref-container">
           <div id="wrapper">

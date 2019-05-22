@@ -306,12 +306,7 @@ class LrnappStudioSubmissionPage extends PolymerElement {
 
       <elmsln-loading></elmsln-loading>
 
-      <paper-dialog
-        id="deletedialog"
-        entry-animation="scale-up-animation"
-        exit-animation="fade-out-animation"
-        with-backdrop=""
-      >
+      <paper-dialog id="deletedialog">
         <h2>Delete submission?</h2>
         <p>Are you sure you want to delete this submission?</p>
         <div class="buttons">
@@ -321,12 +316,7 @@ class LrnappStudioSubmissionPage extends PolymerElement {
           >
         </div>
       </paper-dialog>
-      <paper-dialog
-        id="publishdialog"
-        entry-animation="scale-up-animation"
-        exit-animation="fade-out-animation"
-        with-backdrop=""
-      >
+      <paper-dialog id="publishdialog">
         <h2>Ready to publish?</h2>
         <p>
           By publishing, the author of this submission will be able to view your

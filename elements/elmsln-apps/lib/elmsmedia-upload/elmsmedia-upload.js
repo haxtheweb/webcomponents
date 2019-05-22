@@ -55,12 +55,7 @@ class ElmsMediaUpload extends PolymerElement {
         timeout="0"
         accept="video/mp4,image/*,audio/*,application/pdf,application/zip"
       ></vaadin-upload>
-      <paper-dialog
-        id="dialog"
-        entry-animation="scale-up-animation"
-        exit-animation="fade-out-animation"
-        with-backdrop=""
-      >
+      <paper-dialog id="dialog">
         <app-toolbar>
           <paper-dropdown-menu label="Display style">
             <paper-listbox slot="dropdown-content" class="dropdown-content">

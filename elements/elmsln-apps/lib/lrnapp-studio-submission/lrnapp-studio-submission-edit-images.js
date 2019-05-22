@@ -54,12 +54,7 @@ class LrnappStudioSubmissionEditImages extends SecureRequestXhr(
           icon="image:photo-library"
         ></lrnapp-studio-submission-edit-add-asset>
       </div>
-      <paper-dialog
-        id="dialog"
-        entry-animation="scale-up-animation"
-        exit-animation="fade-out-animation"
-        with-backdrop=""
-      >
+      <paper-dialog id="dialog">
         <h2>Add Image(s)</h2>
         <paper-dialog-scrollable>
           <div class="images__upload">

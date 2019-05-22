@@ -69,11 +69,7 @@ class LrnappMediaManagement extends PolymerElement {
           </template>
         </iron-list>
       </iron-scroll-threshold>
-      <paper-dialog
-        id="dialog"
-        entry-animation="scale-up-animation"
-        exit-animation="fade-out-animation"
-      >
+      <paper-dialog id="dialog">
         <paper-dialog-scrollable id="dialogResponse">
           <iron-image src="{{activeImage}}"></iron-image>
           <div id="details">

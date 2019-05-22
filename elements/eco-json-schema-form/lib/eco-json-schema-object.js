@@ -290,6 +290,7 @@ class EcoJsonSchemaObject extends mixinBehaviors(
   static get tag() {
     return "eco-json-schema-object";
   }
+
   static get template() {
     return html`
       <custom-style>
