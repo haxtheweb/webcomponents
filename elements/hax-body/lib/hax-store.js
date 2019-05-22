@@ -1625,6 +1625,18 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
       e.detail.index = this.appList.length;
       this.push("appList", e.detail);
       window.HaxStore.write("appList", this.appList, this);
+      // preconnect apps at registration time
+      if (
+        e.detail.connection &&
+        e.detail.connection.protocol &&
+        e.detail.connection.url
+      ) {
+        let preconnectlink = document.createElement("link");
+        preconnectlink.rel = "preconnect";
+        preconnectlink.href =
+          e.detail.connection.protocol + "://" + e.detail.connection.url;
+        document.head.appendChild(preconnectlink);
+      }
       // we don't care about this after it's launched
       if (
         typeof e.target.parentElement !== typeof undefined &&

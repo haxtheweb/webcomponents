@@ -473,9 +473,9 @@ class LrnappStudioInstructor extends PolymerElement {
       activeData: {
         type: Object,
         value: {
-          student: {},
-          assignment: {},
-          submission: {}
+          student: false,
+          assignment: false,
+          submission: false
         }
       },
       /**

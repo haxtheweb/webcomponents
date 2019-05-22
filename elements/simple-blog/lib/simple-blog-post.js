@@ -117,8 +117,8 @@ class SimpleBlogPost extends PolymerElement {
           }
         }
         /**
-       * Hide the slotted content during edit mode
-       */
+         * Hide the slotted content during edit mode
+         */
         :host([edit-mode]) #slot {
           display: none;
         }

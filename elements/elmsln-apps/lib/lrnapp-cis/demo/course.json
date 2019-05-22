@@ -1,0 +1,74 @@
+{
+  "status": 200,
+  "data": {
+    "course": {
+      "type": "course",
+      "id": "21",
+      "attributes": {
+        "name": "test2",
+        "title": "testing",
+        "body": null,
+        "machine_name": "test2",
+        "image": "http://online.elmsln.local/",
+        "color": "red"
+      },
+      "uris": {
+        "uri": "/node/21",
+        "offerings": "/node/21/offerings",
+        "edit": "/node/21/edit?destination=apps/lrnapp-cis",
+        "sync": "/node/21/sync-roster?destination=apps/lrnapp-cis",
+        "addOffering": "/cis-add-offering?destination=apps/lrnapp-cis",
+        "delete": "/node/21/delete?destination=apps/lrnapp-cis"
+      },
+      "meta": {
+        "created": "2019-03-19T00:35:32-04:00",
+        "changed": "2019-03-19T00:35:32-04:00",
+        "humandate": "March 19, 2019, 12:35 am",
+        "revision_timestamp": "2019-03-19T00:35:32-04:00",
+        "canUpdate": 1,
+        "canDelete": 1
+      },
+      "relationships": {
+        "program": {
+          "attributes": {}
+        },
+        "academic": {
+          "attributes": {}
+        },
+        "author": {
+          "attributes": {
+            "type": "user",
+            "id": "1",
+            "name": "admin"
+          }
+        }
+      },
+      "topology": {
+        "Network": {
+          "courses": {
+            "title": "Course content",
+            "url": "http://courses.elmsln.local/test2",
+            "machine_name": "courses",
+            "color": "grey",
+            "distro": "mooc",
+            "weight": "-10",
+            "icon": "courses",
+            "_exists": true
+          },
+          "studio": {
+            "title": "Open studio",
+            "url": "http://studio.elmsln.local/test2",
+            "machine_name": "studio",
+            "color": "amber",
+            "distro": "cle",
+            "weight": "0",
+            "icon": "studio",
+            "_exists": true
+          }
+        }
+      }
+    }
+  },
+  "detail": "",
+  "environment": []
+}

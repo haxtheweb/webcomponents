@@ -78,6 +78,7 @@ class OerSchemaElement extends SchemaBehaviors(PolymerElement) {
     return props;
   }
   static get haxProperties() {
+    let oerSchema = new OERSchema();
     return {
       canScale: false,
       canPosition: false,
@@ -121,7 +122,7 @@ class OerSchemaElement extends SchemaBehaviors(PolymerElement) {
             title: "Schema typeof",
             description: "Schema typeof",
             inputMethod: "select",
-            options: new OERSchema().types
+            options: oerSchema.types
           },
           {
             property: "oerProperty",

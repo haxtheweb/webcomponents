@@ -1,0 +1,480 @@
+{
+  "status": 200,
+  "data": {
+    "type": "cle_submission",
+    "id": "28",
+    "display": {
+      "image": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=Cjxg0_sQ",
+      "icon": false
+    },
+    "attributes": {
+      "title": "Stuff",
+      "download_files": "/sing100/download/cle_submission/node-field_download-28-0",
+      "body": "# _**dfsdfsdfsdsfdfs**_ dfs dfs dfs dfs dfs dfs  dfs dfsdfs dfs ds",
+      "state": "submission_ready",
+      "relatedSubmission": null,
+      "files": null,
+      "links": null,
+      "video": null,
+      "images": [
+        {
+          "fid": 2,
+          "uid": 1,
+          "filename": "csev_ian_dolphin_small.jpg",
+          "uri": "private://submission_images/csev_ian_dolphin_small.jpg",
+          "filemime": "image/jpeg",
+          "filesize": 18507,
+          "status": 1,
+          "timestamp": 1553035210,
+          "origname": "csev_ian_dolphin_small.jpg",
+          "type": "image",
+          "uuid": "88e789f3-0f22-40e3-857b-2c8744e13c60",
+          "field_file_image_alt_text": [],
+          "field_file_image_title_text": [],
+          "metadata": {
+            "height": 216,
+            "width": 216
+          },
+          "alt": "",
+          "title": "",
+          "height": "216",
+          "width": "216",
+          "url": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=11B8E2kh",
+          "display": 0,
+          "created": "2019-03-19T18:40:10-04:00",
+          "image_styles": {
+            "elmsln_normalize": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=11B8E2kh",
+            "elmsln_gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=AQ90Zuo2",
+            "elmsln_large": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=EzJHlC0u",
+            "elmsln_large__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=2u4aGn87",
+            "elmsln_medium": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=B13s5tfL",
+            "elmsln_medium__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=Hspq7VBv",
+            "elmsln_micro": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=2nTAUO10",
+            "elmsln_micro__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=QEIIA9JV",
+            "elmsln_small": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=Cjxg0_sQ",
+            "elmsln_small__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=_pKn7ZvF",
+            "elmsln_thumb": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=7-CxCrnv",
+            "elmsln_thumb__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=47q6t0FG"
+          },
+          "originalurl": "http://studio.elmsln.local/sing100/system/files/submission_images/csev_ian_dolphin_small.jpg",
+          "thumbnail": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=Cjxg0_sQ"
+        }
+      ]
+    },
+    "meta": {
+      "created": "2019-03-19T04:08:50-04:00",
+      "changed": "2019-03-19T18:40:10-04:00",
+      "humandate": "March 19, 2019, 6:40 pm",
+      "revision_timestamp": "2019-03-19T18:40:10-04:00",
+      "canUpdate": 1,
+      "canDelete": 1,
+      "canCritique": 0,
+      "filefieldTypes": ".txt,.doc,.docx,.pdf,.zip,.md,.xls,.xlsx,.ppt,.pptx,.html,.rtf",
+      "imagefieldTypes": ".png,.gif,.jpg,.jpeg",
+      "state_icon": "done",
+      "state_color": "green lighten-3",
+      "submissionType": "default",
+      "comment_count": "3",
+      "comment_new": "0"
+    },
+    "relationships": {
+      "assignment": {
+        "type": "cle_assignment",
+        "id": "14",
+        "attributes": {
+          "title": "New fdsfdssdf",
+          "body": "\u003Cp\u003Edfsdfsdfsdfsdfs\u003C/p\u003E",
+          "critiqueOutline": null
+        },
+        "meta": {
+          "created": "2019-03-19T03:17:03-04:00",
+          "changed": "2019-03-19T04:08:42-04:00",
+          "humandate": "March 19, 2019, 4:08 am",
+          "revision_timestamp": "2019-03-19T04:08:42-04:00",
+          "canUpdate": 1,
+          "canDelete": 1,
+          "afterDueDate": 0,
+          "canCritique": 0,
+          "relatedSubmissions": {
+            "canCreate": 1,
+            "complete": {
+              "icon": "done",
+              "color": "green lighten-3",
+              "status": 1,
+              "rationale": {
+                "text": "Submission accepted and ready for comment",
+                "code": "submission-ready"
+              },
+              "submission": {
+                "id": 28,
+                "uid": 1,
+                "uuid": "53f1c6d6-ac3f-4743-aee9-bc2f80d29955",
+                "title": "Stuff",
+                "status": 1,
+                "created": "2019-03-19T04:08:50-04:00",
+                "relatedSubmission": 0,
+                "assignment": 14,
+                "evidence": {
+                  "body": "# _**dfsdfsdfsdsfdfs**_ dfs dfs dfs dfs dfs dfs  dfs dfsdfs dfs ds",
+                  "images": [
+                    {
+                      "fid": 2,
+                      "uid": 1,
+                      "filename": "csev_ian_dolphin_small.jpg",
+                      "uri": "private://submission_images/csev_ian_dolphin_small.jpg",
+                      "filemime": "image/jpeg",
+                      "filesize": 18507,
+                      "status": 1,
+                      "timestamp": 1553035210,
+                      "origname": "csev_ian_dolphin_small.jpg",
+                      "type": "image",
+                      "uuid": "88e789f3-0f22-40e3-857b-2c8744e13c60",
+                      "field_file_image_alt_text": [],
+                      "field_file_image_title_text": [],
+                      "metadata": {
+                        "height": 216,
+                        "width": 216
+                      },
+                      "alt": "",
+                      "title": "",
+                      "height": "216",
+                      "width": "216",
+                      "url": "http://studio.elmsln.local/sing100/system/files/submission_images/csev_ian_dolphin_small.jpg",
+                      "display": 0,
+                      "created": "2019-03-19T18:40:10-04:00",
+                      "image_styles": {
+                        "elmsln_normalize": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=11B8E2kh",
+                        "elmsln_gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=AQ90Zuo2",
+                        "elmsln_large": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=EzJHlC0u",
+                        "elmsln_large__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=2u4aGn87",
+                        "elmsln_medium": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=B13s5tfL",
+                        "elmsln_medium__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=Hspq7VBv",
+                        "elmsln_micro": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=2nTAUO10",
+                        "elmsln_micro__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=QEIIA9JV",
+                        "elmsln_small": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=Cjxg0_sQ",
+                        "elmsln_small__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=_pKn7ZvF",
+                        "elmsln_thumb": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=7-CxCrnv",
+                        "elmsln_thumb__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=47q6t0FG"
+                      }
+                    }
+                  ],
+                  "video": null,
+                  "files": [],
+                  "links": null
+                },
+                "energy": {
+                  "timestamp": "2019-03-19T18:40:10-04:00",
+                  "value": "100"
+                },
+                "state": "submission_ready",
+                "section": 1,
+                "links": {
+                  "self": "http://studio.elmsln.local/sing100/api/v1/cle/submissions/28"
+                },
+                "metadata": {
+                  "canUpdate": 1,
+                  "canDelete": 1,
+                  "canCritique": 0,
+                  "comments": {
+                    "count": "3",
+                    "new": "0"
+                  },
+                  "icon": "done",
+                  "color": "green lighten-3"
+                }
+              },
+              "submissions": {
+                "28": {
+                  "id": 28,
+                  "uid": 1,
+                  "uuid": "53f1c6d6-ac3f-4743-aee9-bc2f80d29955",
+                  "title": "Stuff",
+                  "status": 1,
+                  "created": "2019-03-19T04:08:50-04:00",
+                  "relatedSubmission": 0,
+                  "assignment": 14,
+                  "evidence": {
+                    "body": "# _**dfsdfsdfsdsfdfs**_ dfs dfs dfs dfs dfs dfs  dfs dfsdfs dfs ds",
+                    "images": [
+                      {
+                        "fid": 2,
+                        "uid": 1,
+                        "filename": "csev_ian_dolphin_small.jpg",
+                        "uri": "private://submission_images/csev_ian_dolphin_small.jpg",
+                        "filemime": "image/jpeg",
+                        "filesize": 18507,
+                        "status": 1,
+                        "timestamp": 1553035210,
+                        "origname": "csev_ian_dolphin_small.jpg",
+                        "type": "image",
+                        "uuid": "88e789f3-0f22-40e3-857b-2c8744e13c60",
+                        "field_file_image_alt_text": [],
+                        "field_file_image_title_text": [],
+                        "metadata": {
+                          "height": 216,
+                          "width": 216
+                        },
+                        "alt": "",
+                        "title": "",
+                        "height": "216",
+                        "width": "216",
+                        "url": "http://studio.elmsln.local/sing100/system/files/submission_images/csev_ian_dolphin_small.jpg",
+                        "display": 0,
+                        "created": "2019-03-19T18:40:10-04:00",
+                        "image_styles": {
+                          "elmsln_normalize": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=11B8E2kh",
+                          "elmsln_gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=AQ90Zuo2",
+                          "elmsln_large": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=EzJHlC0u",
+                          "elmsln_large__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=2u4aGn87",
+                          "elmsln_medium": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=B13s5tfL",
+                          "elmsln_medium__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=Hspq7VBv",
+                          "elmsln_micro": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=2nTAUO10",
+                          "elmsln_micro__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=QEIIA9JV",
+                          "elmsln_small": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=Cjxg0_sQ",
+                          "elmsln_small__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=_pKn7ZvF",
+                          "elmsln_thumb": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=7-CxCrnv",
+                          "elmsln_thumb__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small.jpg?itok=47q6t0FG"
+                        }
+                      }
+                    ],
+                    "video": null,
+                    "files": [],
+                    "links": null
+                  },
+                  "energy": {
+                    "timestamp": "2019-03-19T18:40:10-04:00",
+                    "value": "100"
+                  },
+                  "state": "submission_ready",
+                  "section": 1,
+                  "links": {
+                    "self": "http://studio.elmsln.local/sing100/api/v1/cle/submissions/28"
+                  },
+                  "metadata": {
+                    "canUpdate": 1,
+                    "canDelete": 1,
+                    "canCritique": 0,
+                    "comments": {
+                      "count": "3",
+                      "new": "0"
+                    },
+                    "icon": "done",
+                    "color": "green lighten-3"
+                  }
+                }
+              }
+            }
+          },
+          "rationale": {
+            "text": "The assignment is open for submission, there is no due date.",
+            "code": "date-none"
+          },
+          "submissionActive": 1
+        },
+        "relationships": {
+          "project": {
+            "data": {
+              "id": "4"
+            }
+          },
+          "group": {
+            "data": {
+              "id": "1"
+            }
+          },
+          "author": {
+            "data": {
+              "type": "user",
+              "id": "1",
+              "name": "admin"
+            }
+          }
+        },
+        "actions": null,
+        "links": {
+          "self": "http://studio.elmsln.local/sing100/api/v1/cle/assignments/14",
+          "url": "http://studio.elmsln.local/sing100/cle/app/assignments/14",
+          "direct": "http://studio.elmsln.local/sing100/node/14",
+          "delete": "http://studio.elmsln.local/sing100/node/14/delete?destination=",
+          "update": "http://studio.elmsln.local/sing100/node/14/edit?destination="
+        }
+      },
+      "project": {
+        "data": {
+          "id": "4",
+          "title": "New projectdgfdgdgfd"
+        }
+      },
+      "group": {
+        "data": {
+          "id": "1"
+        }
+      },
+      "author": {
+        "data": {
+          "type": "user",
+          "id": "1",
+          "name": "admin",
+          "display_name": "admin",
+          "avatar": false,
+          "sis": {
+            "sortable_name": "admin",
+            "name": "admin"
+          }
+        }
+      },
+      "relatedSubmission": {},
+      "comments": {
+        "data": [
+          {
+            "type": "comment",
+            "id": "1",
+            "attributes": {
+              "subject": "Feedback from admin",
+              "body": "dfsdfsdfsdfsdfs dfs dfs d dfsdfss df dfsdfs fs dsf dfs dfseeeedfsdfsdfsdfsdfs dfs dfs d dfsdfss df dfsdfs fs dsf dfs dfseeeedfsdfsdfsdfsdfs dfs dfs d dfsdfss df dfsdfs fs dsf dfs dfseeeedfsdfsdfsdfsdfs dfs dfs d dfsdfss df dfsdfs fs dsf dfs dfseeee",
+              "thread": "01/",
+              "threadDepth": 1,
+              "parentComment": "0",
+              "created": "2019-03-19T04:09:21-04:00",
+              "changed": "2019-03-19T04:09:21-04:00"
+            },
+            "metadata": {
+              "editing": false,
+              "disabled": false
+            },
+            "relationships": {
+              "author": {
+                "data": {
+                  "type": "user",
+                  "id": "1",
+                  "name": "admin",
+                  "display_name": "admin",
+                  "avatar": false,
+                  "visual": {
+                    "icon": "stars",
+                    "label": "Staff"
+                  },
+                  "sis": {
+                    "sortable_name": "admin",
+                    "name": "admin"
+                  }
+                }
+              },
+              "node": {
+                "data": {
+                  "type": "node",
+                  "id": "28"
+                }
+              }
+            },
+            "actions": {
+              "reply": true,
+              "like": false,
+              "edit": true,
+              "delete": true
+            }
+          },
+          {
+            "type": "comment",
+            "id": "2",
+            "attributes": {
+              "subject": "Feedback from admin",
+              "body": "fdfsdfsdfsdfsdfs",
+              "thread": "02/",
+              "threadDepth": 1,
+              "parentComment": "0",
+              "created": "2019-03-19T04:09:30-04:00",
+              "changed": "2019-03-19T04:09:30-04:00"
+            },
+            "metadata": {
+              "editing": false,
+              "disabled": false
+            },
+            "relationships": {
+              "author": {
+                "data": {
+                  "type": "user",
+                  "id": "1",
+                  "name": "admin",
+                  "display_name": "admin",
+                  "avatar": false,
+                  "visual": {
+                    "icon": "stars",
+                    "label": "Staff"
+                  },
+                  "sis": {
+                    "sortable_name": "admin",
+                    "name": "admin"
+                  }
+                }
+              },
+              "node": {
+                "data": {
+                  "type": "node",
+                  "id": "28"
+                }
+              }
+            },
+            "actions": {
+              "reply": true,
+              "like": false,
+              "edit": true,
+              "delete": true
+            }
+          },
+          {
+            "type": "comment",
+            "id": "3",
+            "attributes": {
+              "subject": "Feedback from admin",
+              "body": "fdfsfsfsfs fd sdsdfsdf",
+              "thread": "03/",
+              "threadDepth": 1,
+              "parentComment": "0",
+              "created": "2019-03-19T18:36:09-04:00",
+              "changed": "2019-03-19T18:36:09-04:00"
+            },
+            "metadata": {
+              "editing": false,
+              "disabled": false
+            },
+            "relationships": {
+              "author": {
+                "data": {
+                  "type": "user",
+                  "id": "1",
+                  "name": "admin",
+                  "display_name": "admin",
+                  "avatar": false,
+                  "visual": {
+                    "icon": "stars",
+                    "label": "Staff"
+                  },
+                  "sis": {
+                    "sortable_name": "admin",
+                    "name": "admin"
+                  }
+                }
+              },
+              "node": {
+                "data": {
+                  "type": "node",
+                  "id": "28"
+                }
+              }
+            },
+            "actions": {
+              "reply": true,
+              "like": false,
+              "edit": true,
+              "delete": true
+            }
+          }
+        ]
+      }
+    },
+    "actions": null
+  },
+  "detail": "",
+  "environment": []
+}

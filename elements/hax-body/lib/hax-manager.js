@@ -67,19 +67,30 @@ class HaxManager extends PolymerElement {
           min-width: unset;
         }
         :host([active-page="0"]) #dialog {
-          --app-drawer-width: 400px;
+          --app-drawer-width: 300px;
         }
         :host([active-page="1"]) #dialog {
-          --app-drawer-width: 800px;
+          --app-drawer-width: 60%;
         }
         :host([active-page="2"]) #dialog {
-          --app-drawer-width: 800px;
+          --app-drawer-width: 60%;
         }
         :host([active-step]) #dialog {
-          --app-drawer-width: 1000px;
+          --app-drawer-width: 60%;
         }
         :host([searching]) #dialog {
-          --app-drawer-width: 1000px;
+          --app-drawer-width: 60%;
+        }
+        @media screen and (max-width: 800px) {
+          :host([active-page="0"]) #dialog {
+            --app-drawer-width: 50%;
+          }
+          :host([active-page="1"]) #dialog,
+          :host([active-page="2"]) #dialog,
+          :host([active-step]) #dialog,
+          :host([searching]) #dialog {
+            --app-drawer-width: 80%;
+          }
         }
         .title {
           position: relative;

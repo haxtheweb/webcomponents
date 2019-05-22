@@ -1,0 +1,20 @@
+{
+  /**
+   * Edit mode which will be updated whenever HAXcms store
+   * has been updated. It's also reflected to attribute which
+   * is a Polymer convention to allow it to be leveraged in
+   * CSS styling.
+   */
+  "editMode": {
+    "name": "editMode",
+    "type": "Boolean",
+    "reflectToAttribute": true
+  },
+  /**
+   * Current array index of the active page that's been loaded.
+   */
+  "activeManifestIndex": {
+    "name": "activeManifestIndex",
+    "type": "Number"
+  }
+}

@@ -2,12 +2,8 @@
  * Class to provide updated OERSchema definitions
  */
 class OERSchema {
-  constructor() {}
-  /**
-   * Latest copy of the official schema.
-   */
-  static get latestSchema() {
-    return {
+  constructor() {
+    this.latestSchema = {
       version: "0.3.4",
       classes: {
         Resource: {
@@ -747,13 +743,9 @@ class OERSchema {
         }
       }
     };
-  }
-  /**
-   * Provide types from the schema
-   */
-  static get types() {
+    // walk the latest schema and create the types
     let schema = this.latestSchema;
-    let types = {};
+    this.types = {};
     for (var i in schema.classes) {
       if (
         typeof schema.classes[i].label !== typeof undefined &&
@@ -762,10 +754,9 @@ class OERSchema {
           schema.classes[i].subClassOf.includes("LearningComponent") ||
           schema.classes[i].subClassOf.includes("InstructionalPattern"))
       ) {
-        types["oer:" + i] = schema.classes[i].label;
+        this.types["oer:" + i] = schema.classes[i].label;
       }
     }
-    return types;
   }
 }
 export { OERSchema };

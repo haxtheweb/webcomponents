@@ -164,7 +164,8 @@ class HaxSchemaForm extends PolymerElement {
        * JSON Schema.
        */
       schema: {
-        type: Object
+        type: Object,
+        notify: true
       },
       /**
        * JSON Schema.
@@ -226,8 +227,6 @@ class HaxSchemaForm extends PolymerElement {
   _valueChanged(newValue) {
     if (newValue && this.schema) {
       for (var i in newValue) {
-        console.log(this.schema);
-        console.log(i);
         this.schema[i].value = newValue[i];
       }
     }
@@ -244,6 +243,31 @@ class HaxSchemaForm extends PolymerElement {
         this.advancedForm = false;
       }
     }
+  }
+  /**
+   * add a field to the form in question in refresh
+   */
+  addField(key, field, type = "configure") {
+    if (type === "configure") {
+      this.configureSchema.properties[key] = field;
+      this.set("schema", this.configureSchema);
+    } else {
+      this.set("schema", this.advancedSchema);
+    }
+    this.notifyPath("schema.*");
+  }
+  /**
+   * remove a field from one of the forms in question and refresh the display
+   */
+  removeField(key, type = "configure") {
+    if (type === "configure") {
+      delete this.configureSchema.properties[key];
+      this.set("schema", this.configureSchema);
+    } else {
+      delete this.advancedSchema.properties[key];
+      this.set("schema", this.advancedSchema);
+    }
+    this.notifyPath("schema.*");
   }
 }
 window.customElements.define(HaxSchemaForm.tag, HaxSchemaForm);

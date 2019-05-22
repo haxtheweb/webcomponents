@@ -231,7 +231,7 @@ class LrnappStudioSubmissionPage extends PolymerElement {
         <div spacer="" main-title="">[[submission.attributes.title]]</div>
         <div spacer="">
           <lrnsys-dialog
-            body-append=""
+            raised
             header="[[submission.relationships.assignment.attributes.title]]"
           >
             <span slot="button"

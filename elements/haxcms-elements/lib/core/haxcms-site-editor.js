@@ -31,11 +31,7 @@ class HAXCMSSiteEditor extends PolymerElement {
   }
   constructor() {
     super();
-    import("@polymer/paper-button/paper-button.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-schema-form.js");
-    import("@polymer/paper-tooltip/paper-tooltip.js");
-    import("@polymer/iron-icons/editor-icons.js");
-    import("@polymer/paper-fab/paper-fab.js");
+    this.__disposer = [];
   }
   // render function
   static get template() {
@@ -349,8 +345,13 @@ class HAXCMSSiteEditor extends PolymerElement {
    */
   ready() {
     super.ready();
-    this.__disposer = [];
     afterNextRender(this, function() {
+      import("@polymer/paper-button/paper-button.js");
+      import("@lrnwebcomponents/hax-body/lib/hax-schema-form.js");
+      autorun(reaction => {
+        this.editMode = toJS(store.editMode);
+        this.__disposer.push(reaction);
+      });
       autorun(reaction => {
         this.manifest = toJS(store.manifest);
         this.__disposer.push(reaction);
@@ -598,6 +599,10 @@ class HAXCMSSiteEditor extends PolymerElement {
         '<paper-button raised style="text-transform:none;">Access published version</paper-button>';
     }
     let c = document.createElement("hax-schema-form");
+    c.addEventListener(
+      "value-changed",
+      this._schemaFormValueChanged.bind(this)
+    );
     // set a min width of 50 viewable
     c.style.minWidth = "50vw";
     for (var key in this._haxSchema.settings) {
@@ -658,6 +663,24 @@ class HAXCMSSiteEditor extends PolymerElement {
       }
     });
     window.dispatchEvent(evt);
+  }
+  _schemaFormValueChanged(e) {
+    let customTag = {
+      property: "custom-theme-tag",
+      title: "Custom theme tag",
+      description: "Tag that supplies the custom theme",
+      inputMethod: "textfield",
+      required: true,
+      validationType: "text"
+    };
+    // @todo figure out why this isn't adding a field in on the fly
+    /*if (e.target.value.theme === "haxcms-custom-theme") {
+      e.target.addField(customTag.property, customTag);
+      e.target.value[customTag.property] = customTag.property;
+    } else {
+      e.target.removeField(customTag.property);
+      delete e.target.value[customTag.property];
+    }*/
   }
   /**
    * Publish request send to backend from button
@@ -1003,11 +1026,13 @@ class HAXCMSSiteEditor extends PolymerElement {
     this.set("updateNodeData", {});
     this.set("updateNodeData.siteName", this.manifest.metadata.siteName);
     this.notifyPath("updateNodeData.siteName");
-    this.set(
-      "updateNodeData.body",
-      window.HaxStore.instance.activeHaxBody.haxToContent()
-    );
+    // get the body from what's there currently
+    let body = window.HaxStore.instance.activeHaxBody.haxToContent();
+    this.set("updateNodeData.body", body);
     this.notifyPath("updateNodeData.body");
+    // convert to schema so we can ship that too if we want to process
+    this.set("updateNodeData.schema", window.HaxStore.htmlToHaxElements(body));
+    this.notifyPath("updateNodeData.schema");
     this.set("updateNodeData.nodeId", this.activeItem.id);
     this.notifyPath("updateNodeData.nodeId");
     this.set("updateNodeData.jwt", this.jwt);

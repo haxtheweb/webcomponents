@@ -31,7 +31,6 @@ class HAXCMSSiteListing extends PolymerElement {
     this.SimpleColors = new SimpleColors();
     setPassiveTouchGestures(true);
     import("@lrnwebcomponents/simple-login/simple-login.js");
-    import("@lrnwebcomponents/simple-login/lib/simple-login-camera.js");
     import("@lrnwebcomponents/simple-login/lib/simple-login-avatar.js");
     import("@polymer/iron-image/iron-image.js");
     import("@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js");
@@ -72,23 +71,30 @@ class HAXCMSSiteListing extends PolymerElement {
   static get template() {
     return html`
       <style include="simple-colors">
+        :host {
+          --haxcms-site-listing-color-dark: var(--simple-colors-default-theme-blue-11);
+          --haxcms-site-listing-color-light: #FFFFFF;
+          --haxcms-site-listing-color-hover: var(--simple-colors-default-theme-blue-8);
+          outline-color: var(--haxcms-site-listing-color-hover);
+        }
         paper-icon-button {
-          --paper-icon-button-ink-color: #ffffff;
+          --paper-icon-button-ink-color: var(--haxcms-site-listing-color-light);
         }
         app-toolbar div.main-title {
-          margin-left: 24px;
-          font-size: 28px;
+          margin-left: 8px;
+          font-size: 24px;
+          min-width: 50px;
         }
         app-header {
-          color: #ffffff;
+          color: var(--haxcms-site-listing-color-light);
           @apply --layout-fixed-top;
           --app-header-background-rear-layer: {
-            background-color: #3a0063;
+            background-color: var(--haxcms-site-listing-color-dark);
           }
         }
         app-toolbar {
-          color: #ffffff;
-          background-color: #3a0063;
+          color: var(--haxcms-site-listing-color-light);
+          background-color: var(--haxcms-site-listing-color-dark);
         }
         vaadin-grid {
           margin-top: 64px;
@@ -114,6 +120,9 @@ class HAXCMSSiteListing extends PolymerElement {
         .has-snap {
           z-index: 3;
         }
+        .hide-camera {
+          display:none;
+        }
         .login-prompt div#selfie img {
           z-index: 2;
           position: absolute;
@@ -126,26 +135,38 @@ class HAXCMSSiteListing extends PolymerElement {
           min-height: 60vh;
           top: 15vh;
         }
+        h2.dialog-header {
+          background-color: var(--haxcms-site-listing-color-dark);
+          margin: 0;
+          padding: 28px;
+          color: var(--haxcms-site-listing-color-light);
+        }
         .buttons {
           text-align: center;
           margin: 0 auto;
           display: flex;
           justify-content: center;
           margin-top: 2em;
-          color: #3a0063;
+          color: var(--haxcms-site-listing-color-dark);
           font-weight: 500;
         }
-        #saveconfig,
-        #bulksites,
-        #create {
+        .action-button {
           width: 50%;
           height: 64px;
-          background-color: #3a0063;
-          color: white;
+          background-color: var(--haxcms-site-listing-color-dark);
+          color: var(--haxcms-site-listing-color-light);
           margin-right: 48px;
         }
+        .action-button:hover,
+        .action-button:active,
+        .action-button:focus {
+          background-color: var(--haxcms-site-listing-color-hover);
+        }
+        .action-button iron-icon {
+          margin-right: 8px;
+        }
         paper-input {
-          --paper-input-container-focus-color: #3a0063;
+          --paper-input-container-focus-color: var(--haxcms-site-listing-color-hover);
         }
         #newsitecolor {
           padding: 4px;
@@ -202,13 +223,36 @@ class HAXCMSSiteListing extends PolymerElement {
         .site-title:hover,
         .site-title:active,
         .site-title:focus {
-          background-color: var(--simple-colors-default-theme-pink-4);
+          background-color: var(--haxcms-site-listing-color-hover);
+          color: var(--haxcms-site-listing-color-light);
         }
         .operations paper-button {
           font-weight: 500;
           font-size: 20px;
-          color: white;
-          margin: 0 16px;
+          color: var(--haxcms-site-listing-color-light);
+          margin: 0;
+          padding: 8px;
+          min-width: 100px;
+          width: auto;
+          display: inline-flex;
+          height: 48px;
+        }
+        .operations paper-button:hover,
+        .operations paper-button:active,
+        .operations paper-button:focus {
+          background-color: var(--haxcms-site-listing-color-light);
+          color: var(--haxcms-site-listing-color-hover);
+        }
+        #add {
+          background-color: var(--haxcms-site-listing-color-hover);
+          color: (--haxcms-site-listing-color-light);
+          transition: .2s all linear;
+        }
+        #add:hover,
+        #add:active,
+        #add:focus {
+          background-color: var(--haxcms-site-listing-color-light);
+          color: var(--haxcms-site-listing-color-hover);
         }
 
         .selected-operations {
@@ -217,8 +261,8 @@ class HAXCMSSiteListing extends PolymerElement {
           display: inline-flex;
           visibility: visible;
           opacity: 1;
-          border-left: 2px solid white;
-          border-right: 2px solid white;
+          border-left: 2px solid var(--haxcms-site-listing-color-light);
+          border-right: 2px solid var(--haxcms-site-listing-color-light);
           height: 64px;
         }
         .selected-operations[data-hidden] {
@@ -226,10 +270,10 @@ class HAXCMSSiteListing extends PolymerElement {
           opacity: 0;
         }
         .selected-operations paper-button {
-          background-color: white;
+          background-color: var(--haxcms-site-listing-color-light);
           font-weight: 500;
           font-size: 16px;
-          color: black;
+          color: var(--haxcms-site-listing-color-dark);
           margin: 0;
           min-width: unset;
           margin: 8px;
@@ -238,11 +282,14 @@ class HAXCMSSiteListing extends PolymerElement {
         .selected-operations paper-button:active,
         .selected-operations paper-button:hover,
         .selected-operations paper-button:focus {
-          background-color: var(--simple-colors-default-theme-pink-4);
-          color: black !important;
+          background-color: var(--haxcms-site-listing-color-hover);
+          color: var(--haxcms-site-listing-color-light); !important;
         }
         .danger {
-          color: var(--simple-colors-default-theme-red-6) !important;
+          color: var(--simple-colors-default-theme-red-7) !important;
+        }
+        .danger:hover {
+          color: var(--haxcms-site-listing-color-light) !important;
         }
         #newsiteicon {
           display: inline-flex;
@@ -367,14 +414,16 @@ class HAXCMSSiteListing extends PolymerElement {
       </div>
       <app-header reveals>
         <app-toolbar>
+          <slot name="app-header-pre"></slot>
           <div class="operations">
             <paper-button
+              on-tap="_addTap"
+              id="add"
+              raised
               hidden$="[[!loggedIn]]"
-              on-tap="_loginUserRoutine"
-              id="login"
-              ><iron-icon icon="[[__loginIcon]]"></iron-icon>
-              [[__loginText]]</paper-button
             >
+              <iron-icon icon="icons:add"></iron-icon> Create site
+            </paper-button>
           </div>
           <div class="main-title">[[title]]</div>
           <div class="selected-operations" data-hidden$="[[!hasSelectedItems]]">
@@ -401,21 +450,20 @@ class HAXCMSSiteListing extends PolymerElement {
           </div>
           <div class="operations">
             <paper-button
-              on-tap="_addTap"
-              id="add"
-              raised
-              hidden$="[[!loggedIn]]"
-            >
-              <iron-icon icon="icons:add"></iron-icon> Create site
-            </paper-button>
-            <paper-button
               on-tap="_settingsTap"
               id="settings"
               raised
-              hidden$="[[!loggedIn]]"
+              hidden$="[[!showSpecialButtons(hideGlobalSettings,loggedIn)]]"
             >
-              <iron-icon icon="icons:settings"></iron-icon> Global settings
+              <iron-icon icon="icons:settings"></iron-icon> Settings
             </paper-button>
+            <paper-button
+              hidden$="[[!showSpecialButtons(hideLogin,loggedIn)]]"
+              on-tap="_loginUserRoutine"
+              id="login"
+              ><iron-icon icon="[[__loginIcon]]"></iron-icon>
+              [[__loginText]]</paper-button
+            >
           </div>
         </app-toolbar>
       </app-header>
@@ -509,7 +557,7 @@ class HAXCMSSiteListing extends PolymerElement {
         <vaadin-grid-column width="1em" header="Color">
           <template>
             <div
-              style$="width:48px;height:48px;background-color:[[item.metadata.hexCode]];"
+              style$="border:1px solid black;width:48px;height:48px;background-color:[[item.metadata.hexCode]];"
             ></div>
           </template>
         </vaadin-grid-column>
@@ -550,7 +598,9 @@ class HAXCMSSiteListing extends PolymerElement {
         </simple-login>
       </div>
       <paper-dialog id="confirm" with-backdrop>
-        <h2>[[activeOpertion]] these [[selectedItems.length]] sites</h2>
+        <h2 class="dialog-header">
+          [[activeOpertion]] these [[selectedItems.length]] sites
+        </h2>
         <paper-dialog-scrollable>
           <ul>
             <dom-repeat items="[[selectedItems]]" as="site">
@@ -565,14 +615,19 @@ class HAXCMSSiteListing extends PolymerElement {
             on-tap="_confirmBulkOperation"
             dialog-confirm
             id="bulksites"
+            class="action-button"
             raised
-            >Yes, [[activeOpertion]]</paper-button
+            ><iron-icon icon="icons:thumb-up"></iron-icon> Yes,
+            [[activeOpertion]]</paper-button
           >
-          <paper-button dialog-dismiss>cancel</paper-button>
+          <paper-button class="action-button" dialog-dismiss
+            ><iron-icon icon="icons:thumb-down"></iron-icon>
+            Cancel</paper-button
+          >
         </div>
       </paper-dialog>
       <paper-dialog id="newdialog" with-backdrop>
-        <h3>Create new site</h3>
+        <h2 class="dialog-header">Create new site</h2>
         <div>
           <paper-input
             id="newsitetitle"
@@ -601,14 +656,23 @@ class HAXCMSSiteListing extends PolymerElement {
           ></simple-icon-picker>
         </div>
         <div class="buttons">
-          <paper-button on-tap="_createSite" dialog-confirm id="create" raised
-            >Create your new site!</paper-button
+          <paper-button
+            on-tap="_createSite"
+            class="action-button"
+            dialog-confirm
+            id="create"
+            raised
+            ><iron-icon icon="icons:home"></iron-icon> Create your new
+            site!</paper-button
           >
-          <paper-button dialog-dismiss>cancel</paper-button>
+          <paper-button class="action-button" dialog-dismiss
+            ><iron-icon icon="icons:thumb-down"></iron-icon>
+            Cancel</paper-button
+          >
         </div>
       </paper-dialog>
       <paper-dialog id="settingsdialog" with-backdrop>
-        <h3>Edit HAXCMS configuration</h3>
+        <h2 class="dialog-header">Edit HAXCMS configuration</h2>
         <paper-dialog-scrollable>
           <eco-json-schema-object id="settingsform"></eco-json-schema-object>
         </paper-dialog-scrollable>
@@ -617,10 +681,14 @@ class HAXCMSSiteListing extends PolymerElement {
             on-tap="_saveConfig"
             dialog-confirm
             id="saveconfig"
+            class="action-button"
             raised
-            >Save</paper-button
+            ><iron-icon icon="icons:save"></iron-icon> Save</paper-button
           >
-          <paper-button dialog-dismiss>cancel</paper-button>
+          <paper-button class="action-button" dialog-dismiss
+            ><iron-icon icon="icons:thumb-down"></iron-icon>
+            Cancel</paper-button
+          >
         </div>
       </paper-dialog>
     `;
@@ -667,7 +735,7 @@ class HAXCMSSiteListing extends PolymerElement {
        */
       title: {
         type: String,
-        value: "Site list"
+        value: "My sites"
       },
       /**
        * Site title
@@ -686,6 +754,20 @@ class HAXCMSSiteListing extends PolymerElement {
         type: String
       },
       /**
+       * If we should hide the login button all the time or not
+       */
+      hideLogin: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * If we should hide the login button all the time or not
+       */
+      hideGlobalSettings: {
+        type: Boolean,
+        value: false
+      },
+      /**
        * Data Source to power the loading of sites in JSON Outline Schema format.
        */
       dataSource: {
@@ -697,6 +779,7 @@ class HAXCMSSiteListing extends PolymerElement {
        */
       jwt: {
         type: String,
+        notify: true,
         observer: "_jwtChanged"
       },
       /**
@@ -772,8 +855,24 @@ class HAXCMSSiteListing extends PolymerElement {
       hasSelectedItems: {
         type: Boolean,
         value: false
+      },
+      hideCamera: {
+        type: Boolean,
+        value: false
       }
     };
+  }
+  /**
+   * Show the login button if we have cause
+   */
+  showSpecialButtons(hideButton, loggedIn) {
+    if (hideButton) {
+      return false;
+    }
+    if (!loggedIn) {
+      return false;
+    }
+    return true;
   }
   _selectedItemsChanged(newValue) {
     if (newValue && newValue.length > 0) {
@@ -953,6 +1052,13 @@ class HAXCMSSiteListing extends PolymerElement {
       this.refreshData.bind(this)
     );
     afterNextRender(this, function() {
+      if (this.hideCamera) {
+        this.shadowRoot.querySelector("#newsnap").classList.add("hide-camera");
+        this.shadowRoot.querySelector("#snap").classList.add("hide-camera");
+        this.shadowRoot.querySelector("#camera").classList.add("hide-camera");
+      } else {
+        import("@lrnwebcomponents/simple-login/lib/simple-login-camera.js");
+      }
       this.addEventListener(
         "simple-login-login",
         this.loginPromptEvent.bind(this)
@@ -991,6 +1097,11 @@ class HAXCMSSiteListing extends PolymerElement {
       this.__cloneSitePath = window.appSettings.cloneSitePath;
       this.__publishSitePath = window.appSettings.publishSitePath;
       this.__deleteSitePath = window.appSettings.deleteSitePath;
+      // case where backend has set the JWT ahead of time
+      // useful for systems that are managing login above HAXcms
+      if (window.appSettings.jwt) {
+        this.set("jwt", window.appSettings.jwt);
+      }
       document.body.addEventListener(
         "haxcms-load-site",
         this.loadActiveSite.bind(this)
@@ -1001,9 +1112,6 @@ class HAXCMSSiteListing extends PolymerElement {
       this.shadowRoot
         .querySelector("#newsitecolor")
         .addEventListener("change", this._colorChanged.bind(this));
-      this.shadowRoot
-        .querySelector("#jwt")
-        .addEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this));
       this.shadowRoot
         .querySelector("#snap")
         .addEventListener("click", this.snapPhoto.bind(this));
@@ -1080,11 +1188,12 @@ class HAXCMSSiteListing extends PolymerElement {
    */
   ready() {
     super.ready();
+    this.shadowRoot
+      .querySelector("#jwt")
+      .addEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this));
     window.JSONOutlineSchema.requestAvailability();
     window.SimpleModal.requestAvailability();
     window.SimpleToast.requestAvailability();
-    // set jwt from local storage bin
-    this.jwt = localStorage.getItem("jwt");
   }
   /**
    * Simple method of loading whatever's been dictated as active.
