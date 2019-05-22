@@ -7,7 +7,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 // we use this to help speed up time to first paint but it's not required
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 // this is required for any HAXcms theme unless you directly implement what this superClass does
-import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/HAXCMSThemeWiring.js";
+import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
 // our store implements Mobx and ensures that we maintain state across the application
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 // While not needing to directly implement mobx classes this can let you do more advanced
