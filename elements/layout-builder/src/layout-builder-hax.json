@@ -1,0 +1,26 @@
+{
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Layout builder",
+    "description": "A new UI for adding content to layouts",
+    "icon": "icons:android",
+    "color": "green",
+    "groups": ["Builder"],
+    "handles": [
+      {
+        "type": "todo:read-the-docs-for-usage"
+      }
+    ],
+    "meta": {
+      "author": "nikkimk",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "quick": [],
+    "configure": [],
+    "advanced": []
+  }
+}
