@@ -29,7 +29,7 @@ class LrnappBlockRecentSubmissions extends PolymerElement {
       </div>
       <iron-list items="[[_toArray(response.data)]]" as="item">
         <template>
-          <paper-button on-tap="_loadSubmissionUrl">
+          <paper-button on-click="_loadSubmissionUrl">
             <lrndesign-gallerycard
               data-submission-id\$="[[item.id]]"
               title="[[item.attributes.title]]"

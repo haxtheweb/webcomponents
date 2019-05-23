@@ -143,7 +143,7 @@ class PaperFabSpeedDial extends PolymerElement {
 
     var fab = dom(this.$.fabContainer).getDistributedNodes()[0];
     fab.addEventListener(
-      "tap",
+      "click",
       function() {
         this.$.dropdown.open();
       }.bind(this)
@@ -151,7 +151,7 @@ class PaperFabSpeedDial extends PolymerElement {
 
     var content = dom(this.$.contentContainer).getDistributedNodes()[0];
     content.addEventListener(
-      "tap",
+      "click",
       function() {
         this.$.dropdown.close();
       }.bind(this)

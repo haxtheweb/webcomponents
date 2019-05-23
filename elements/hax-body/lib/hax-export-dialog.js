@@ -97,7 +97,7 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(PolymerElement) {
           width: 100%;
         }
       </style>
-      <paper-dialog id="dialog" with-backdrop always-on-top>
+      <paper-dialog id="dialog">
         <h3 class="title">[[title]]</h3>
         <div style="height: 100%; overflow: auto;" class="pref-container">
           <div id="wrapper">
@@ -122,7 +122,7 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(PolymerElement) {
             >
           </div>
         </div>
-        <paper-button id="closedialog" on-tap="close">
+        <paper-button id="closedialog" on-click="close">
           <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
         </paper-button>
       </paper-dialog>
@@ -173,22 +173,22 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(PolymerElement) {
       );
       this.shadowRoot
         .querySelector("#download")
-        .addEventListener("tap", this.download.bind(this));
+        .addEventListener("click", this.download.bind(this));
       this.shadowRoot
         .querySelector("#downloadfull")
-        .addEventListener("tap", this.downloadfull.bind(this));
+        .addEventListener("click", this.downloadfull.bind(this));
       this.shadowRoot
         .querySelector("#import")
-        .addEventListener("tap", this.importContent.bind(this));
+        .addEventListener("click", this.importContent.bind(this));
       this.shadowRoot
         .querySelector("#copy")
-        .addEventListener("tap", this.selectBody.bind(this));
+        .addEventListener("click", this.selectBody.bind(this));
       this.shadowRoot
         .querySelector("#closedialog")
-        .addEventListener("tap", this.close.bind(this));
+        .addEventListener("click", this.close.bind(this));
       this.shadowRoot
         .querySelector("#elementexport")
-        .addEventListener("tap", this.htmlToHaxElements.bind(this));
+        .addEventListener("click", this.htmlToHaxElements.bind(this));
     });
   }
   /**
@@ -201,22 +201,22 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(PolymerElement) {
     );
     this.shadowRoot
       .querySelector("#download")
-      .removeEventListener("tap", this.download.bind(this));
+      .removeEventListener("click", this.download.bind(this));
     this.shadowRoot
       .querySelector("#downloadfull")
-      .removeEventListener("tap", this.downloadfull.bind(this));
+      .removeEventListener("click", this.downloadfull.bind(this));
     this.shadowRoot
       .querySelector("#import")
-      .removeEventListener("tap", this.importContent.bind(this));
+      .removeEventListener("click", this.importContent.bind(this));
     this.shadowRoot
       .querySelector("#copy")
-      .removeEventListener("tap", this.selectBody.bind(this));
+      .removeEventListener("click", this.selectBody.bind(this));
     this.shadowRoot
       .querySelector("#closedialog")
-      .removeEventListener("tap", this.close.bind(this));
+      .removeEventListener("click", this.close.bind(this));
     this.shadowRoot
       .querySelector("#elementexport")
-      .removeEventListener("tap", this.htmlToHaxElements.bind(this));
+      .removeEventListener("click", this.htmlToHaxElements.bind(this));
     super.disconnectedCallback();
   }
   /**

@@ -61,7 +61,7 @@ class LrnappOpenStudioAssignments extends PolymerElement {
         <div class="submission-list">
           <template is="dom-repeat" items="[[submissions]]" as="submission">
             <lrnsys-button
-              on-tap="_scrollToTarget"
+              on-click="_scrollToTarget"
               raised=""
               class="submission-list-item"
               button-class="submission-list-item"
@@ -91,7 +91,7 @@ class LrnappOpenStudioAssignments extends PolymerElement {
           <a tabindex="-1"
             ><paper-button
               class="submission-title ferpa-protect"
-              on-tap="_loadSubmissionUrl"
+              on-click="_loadSubmissionUrl"
               data-submission-id\$="[[submission.id]]"
               >Tap to comment on[[submission.attributes.title]] by
               [[submission.relationships.author.data.display_name]]</paper-button

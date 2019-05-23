@@ -2,7 +2,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@polymer/iron-list/iron-list.js";
+import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "./hax-shared-styles.js";
 /**
  `hax-app-picker`
@@ -23,9 +23,6 @@ class HaxAppPicker extends PolymerElement {
     import("@lrnwebcomponents/hax-body/lib/hax-app-picker-item.js");
     import("@polymer/iron-icon/iron-icon.js");
     import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/neon-animation/neon-animation.js");
-    import("@polymer/neon-animation/animations/scale-up-animation.js");
-    import("@polymer/neon-animation/animations/scale-down-animation.js");
     import("@polymer/paper-dialog/paper-dialog.js");
     import("@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js");
   }
@@ -62,18 +59,27 @@ class HaxAppPicker extends PolymerElement {
           width: 100%;
           min-height: 280px;
         }
+        .repeat-item {
+          display: inline-flex;
+        }
         #dialog {
-          min-width: 350px;
-          min-height: 350px;
-          height: 50vh;
-          width: 50vw;
-          padding: 8px;
+          min-width: 300px;
+          min-height: 150px;
+          max-height: 60vh;
+          max-width: 50vw;
           overflow: hidden;
           border-radius: 16px;
           z-index: 1000000;
           border: 2px solid var(--hax-color-border-outline);
           @apply --hax-app-picker-dialog;
           background-color: #ffffff;
+        }
+        #buttonlist {
+          display: block;
+          text-align: left;
+          margin: 0px;
+          overflow-x: hidden;
+          overflow-y: auto;
         }
         #title,
         .element-button > div {
@@ -89,16 +95,9 @@ class HaxAppPicker extends PolymerElement {
           @apply --paper-font-title;
           @apply --hax-app-picker-dialog-title;
         }
-        #buttonlist {
-          display: block;
-          text-align: left;
-          margin: -32px;
-          padding: 32px;
-          overflow-x: hidden;
-          overflow-y: auto;
-          --paper-dialog-scrollable: {
-            padding: 0 0 78px 0;
-          }
+        .scroll-wrap {
+          margin-bottom: -64px;
+          min-height: 180px;
         }
         .element-button {
           display: inline-block;
@@ -106,25 +105,22 @@ class HaxAppPicker extends PolymerElement {
           margin: 8px 4px;
           text-align: center;
         }
-        @media screen and (max-width: 550px) {
-          #buttonlist,
-          #ironlist,
-          #dialog {
-            max-width: 80%;
-            overflow: auto;
-          }
-        }
       </style>
-      <paper-dialog id="dialog" with-backdrop always-on-top>
+      <paper-dialog id="dialog">
         <h3 id="title">[[title]]</h3>
         <paper-dialog-scrollable id="buttonlist">
-          <iron-list id="ironlist" items="[[selectionList]]" as="element" grid>
-            <template>
-              <div>
+          <div class="scroll-wrap">
+            <template
+              is="dom-repeat"
+              id="ironlist"
+              items="[[selectionList]]"
+              as="element"
+            >
+              <div class="repeat-item">
                 <hax-app-picker-item
                   id$="picker-item-[[index]]"
                   class="element-button"
-                  on-tap="_selected"
+                  on-click="_selected"
                   data-selected\$="[[index]]"
                   label="[[element.title]]"
                   icon="[[element.icon]]"
@@ -132,9 +128,9 @@ class HaxAppPicker extends PolymerElement {
                 ></hax-app-picker-item>
               </div>
             </template>
-          </iron-list>
+          </div>
         </paper-dialog-scrollable>
-        <paper-button id="closedialog" on-tap="close">
+        <paper-button id="closedialog" on-click="close">
           <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
         </paper-button>
       </paper-dialog>
@@ -221,17 +217,6 @@ class HaxAppPicker extends PolymerElement {
   _openedChanged(newValue, oldValue) {
     if (newValue) {
       this.shadowRoot.querySelector("#dialog").open();
-      setTimeout(() => {
-        this.shadowRoot.querySelector("#ironlist").dispatchEvent(
-          new CustomEvent("iron-resize", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: true
-          })
-        );
-        window.dispatchEvent(new Event("resize"));
-      }, 100);
       // lock the background
       document.body.style.overflow = "hidden";
     } else {

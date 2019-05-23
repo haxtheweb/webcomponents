@@ -38,7 +38,7 @@ class SiteDrawer extends PolymerElement {
           @apply --site-drawer-button;
         }
       </style>
-      <paper-icon-button icon="[[icon]]" on-tap="toggle"></paper-icon-button>
+      <paper-icon-button icon="[[icon]]" on-click="toggle"></paper-icon-button>
       <app-drawer align="[[align]]">
         <div class="drawer-contents"><slot></slot></div>
       </app-drawer>

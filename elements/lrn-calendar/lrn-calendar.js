@@ -38,21 +38,21 @@ class LrnCalendar extends PolymerElement {
       <div class="calendar">
         <div class="header">
           <div style="float: left">
-            <paper-button raised type="button" on-tap="monthView"
+            <paper-button raised type="button" on-click="monthView"
               >Month</paper-button
             >
-            <paper-button raised type="button" on-tap="weekView"
+            <paper-button raised type="button" on-click="weekView"
               >Week</paper-button
             >
           </div>
           <div style="float: right">
-            <paper-button raised type="button" on-tap="showDate"
+            <paper-button raised type="button" on-click="showDate"
               >Today</paper-button
             >
-            <paper-button on-tap="showPrev"
+            <paper-button on-click="showPrev"
               ><iron-icon icon="arrow-back"></iron-icon
             ></paper-button>
-            <paper-button on-tap="showNext"
+            <paper-button on-click="showNext"
               ><iron-icon icon="arrow-forward"></iron-icon
             ></paper-button>
           </div>

@@ -68,12 +68,7 @@ class LrnappStudioSubmissionMediaEditoverlay extends PolymerElement {
         </div>
       </div>
       <template is="dom-if" if="[[embedcode]]">
-        <paper-dialog
-          id="dialog"
-          entry-animation="scale-up-animation"
-          exit-animation="fade-out-animation"
-          with-backdrop=""
-        >
+        <paper-dialog id="dialog">
           <h2>Embed Code</h2>
           <p>Paste this into the text area and your image will appear.</p>
           <paper-dialog-scrollable>

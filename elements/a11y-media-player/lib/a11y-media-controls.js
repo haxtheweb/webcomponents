@@ -290,7 +290,7 @@ class A11yMediaControls extends A11yMediaBehaviors {
           action$="[[playPause.action]]"
           icon$="[[playPause.icon]]"
           label$="[[playPause.label]]"
-          on-tap="_onButtonTap"
+          on-click="_onButtonTap"
         ></a11y-media-button>
         <a11y-media-button
           action="rewind"
@@ -298,7 +298,7 @@ class A11yMediaControls extends A11yMediaBehaviors {
           hidden$="[[compactControls]]"
           icon$="[[_getLocal('rewind','icon')]]"
           label$="[[_getLocal('rewind','label')]]"
-          on-tap="_onButtonTap"
+          on-click="_onButtonTap"
         ></a11y-media-button>
         <a11y-media-button
           action="forward"
@@ -306,7 +306,7 @@ class A11yMediaControls extends A11yMediaBehaviors {
           hidden$="[[compactControls]]"
           icon$="[[_getLocal('forward','icon')]]"
           label$="[[_getLocal('forward','label')]]"
-          on-tap="_onButtonTap"
+          on-click="_onButtonTap"
         ></a11y-media-button>
         <a11y-media-button
           action="restart"
@@ -314,7 +314,7 @@ class A11yMediaControls extends A11yMediaBehaviors {
           hidden$="[[compactControls]]"
           icon$="[[_getLocal('restart','icon')]]"
           label$="[[_getLocal('restart','label')]]"
-          on-tap="_onButtonTap"
+          on-click="_onButtonTap"
         ></a11y-media-button>
         <div id="showvolume">
           <a11y-media-button
@@ -322,7 +322,7 @@ class A11yMediaControls extends A11yMediaBehaviors {
             action$="[[muteUnmute.action]]"
             icon$="[[muteUnmute.icon]]"
             label$="[[muteUnmute.label]]"
-            on-tap="_onButtonTap"
+            on-click="_onButtonTap"
           ></a11y-media-button>
           <paper-slider
             id="volume"
@@ -347,7 +347,7 @@ class A11yMediaControls extends A11yMediaBehaviors {
           hidden$="[[!hasCaptions]]"
           icon$="[[_getLocal('captions','icon')]]"
           label$="[[_getLocal('captions','label')]]"
-          on-tap="_onButtonTap"
+          on-click="_onButtonTap"
           toggle$="[[cc]]"
         >
         </a11y-media-button>
@@ -358,7 +358,7 @@ class A11yMediaControls extends A11yMediaBehaviors {
           hidden$="[[hideTranscriptButton]]"
           icon$="[[_getLocal('transcript','icon')]]"
           label$="[[_getLocal('transcript','label')]]"
-          on-tap="_onButtonTap"
+          on-click="_onButtonTap"
           toggle$="[[hideTranscript]]"
         >
         </a11y-media-button>
@@ -368,7 +368,7 @@ class A11yMediaControls extends A11yMediaBehaviors {
           hidden$="[[noPrinting]]"
           icon$="[[_getLocal('print','icon')]]"
           label="[[_getLocal('print','label')]]"
-          on-tap="_handlePrintClick"
+          on-click="_handlePrintClick"
         >
         </a11y-media-button>
         <a11y-media-button
@@ -377,7 +377,7 @@ class A11yMediaControls extends A11yMediaBehaviors {
           hidden$="[[noPrinting]]"
           icon$="[[_getLocal('download','icon')]]"
           label="[[_getLocal('download','label')]]"
-          on-tap="_handleDownloadClick"
+          on-click="_handleDownloadClick"
         >
         </a11y-media-button>
         <template is="dom-if" if="[[fullscreenButton]]">
@@ -386,7 +386,7 @@ class A11yMediaControls extends A11yMediaBehaviors {
             hidden$="[[audioNoThumb]]"
             icon$="[[_getLocal('fullscreen','icon')]]"
             label$="[[_getLocal('fullscreen','label')]]"
-            on-tap="_onButtonTap"
+            on-click="_onButtonTap"
             toggle$="[[fullscreen]]"
             step="1"
           >

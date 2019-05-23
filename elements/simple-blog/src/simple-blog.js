@@ -104,7 +104,7 @@ class SimpleBlog extends HAXCMSTheme(PolymerElement) {
           <paper-icon-button
             id="backbutton"
             icon="icons:arrow-back"
-            on-tap="_goBack"
+            on-click="_goBack"
           ></paper-icon-button>
           <paper-tooltip
             for="backbutton"

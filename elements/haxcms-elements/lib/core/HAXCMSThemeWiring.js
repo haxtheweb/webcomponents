@@ -47,20 +47,20 @@ export const HAXCMSTheme = function(SuperClass) {
      *  }
      */
     static get properties() {
-      return {
+      let props = {
         /**
          * Class for the color
          */
         hexColor: {
-          type: String,
-          computed: "_getHexColor(color)"
+          type: String
         },
         /**
          * Color class work to apply
          */
         color: {
           type: String,
-          reflectToAttribute: true
+          reflectToAttribute: true,
+          observer: "_colorChanged"
         },
         /**
          * editting state for the page
@@ -89,6 +89,15 @@ export const HAXCMSTheme = function(SuperClass) {
           observer: "_locationChanged"
         }
       };
+      if (super.properties) {
+        props = Object.assign(props, super.properties);
+      }
+      return props;
+    }
+    _colorChanged(newValue) {
+      if (newValue) {
+        this.hexColor = this._getHexColor(newValue);
+      }
     }
     /**
      * Convert color name to HEX

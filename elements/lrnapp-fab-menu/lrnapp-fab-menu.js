@@ -52,7 +52,7 @@ class LrnappFabMenu extends PolymerElement {
       <paper-fab
         icon="[[icon]]"
         class="open"
-        on-tap="open"
+        on-click="open"
         hidden$="[[opened]]"
         disabled$="[[disabled]]"
       ></paper-fab>
@@ -63,7 +63,7 @@ class LrnappFabMenu extends PolymerElement {
         with-backdrop
       >
         <slot></slot>
-        <paper-fab icon="close" class="close" on-tap="close"></paper-fab>
+        <paper-fab icon="close" class="close" on-click="close"></paper-fab>
       </paper-fab-speed-dial-overlay>
     `;
   }

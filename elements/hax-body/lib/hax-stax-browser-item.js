@@ -61,7 +61,7 @@ class HaxStaxBrowserItem extends PolymerElement {
       <paper-card id="card" elevation="[[elevation]]">
         <paper-button
           id="button"
-          on-tap="_fireEvent"
+          on-click="_fireEvent"
           data-voicecommand\$="select [[title]]"
         >
           <div class="button-inner">

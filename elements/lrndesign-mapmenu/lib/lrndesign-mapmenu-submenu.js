@@ -22,7 +22,7 @@ class LrndesignMapmenuSubmenu extends PolymerElement {
         }
       </style>
       <lrndesign-mapmenu-header
-        on-tap="_headerClickHandler"
+        on-click="_headerClickHandler"
         avatar-label="[[avatarLabel]]"
         title="[[title]]"
         label="[[label]]"

@@ -20,7 +20,7 @@ class LrnappStudioAssignmentButton extends PolymerElement {
         }
       </style>
       <lrnsys-button
-        on-tap="_createAssignment"
+        on-click="_createAssignment"
         icon-class="[[iconClass]]"
         alt="[[alt]]"
         class\$="[[classes]]"

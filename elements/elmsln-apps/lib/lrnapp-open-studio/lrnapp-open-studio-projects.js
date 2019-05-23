@@ -64,7 +64,7 @@ class LrnappOpenStudioProjects extends PolymerElement {
             <lrnsys-button
               icon\$="[[_getSubmissionIcon(assignment.id)]]"
               icon-class\$="[[_getSubmissionClass(assignment.id)]]"
-              on-tap="_scrollToTarget"
+              on-click="_scrollToTarget"
               label="[[assignment.title]]"
               data-assignment-id\$="[[assignment.id]]"
               class="project-step"

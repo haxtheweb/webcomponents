@@ -114,11 +114,11 @@ class HaxToolbarMenu extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     afterNextRender(this, function() {
-      this.addEventListener("tap", this._menubuttonTap.bind(this));
+      this.addEventListener("click", this._menubuttonTap.bind(this));
     });
   }
   disconnectedCallback() {
-    this.removeEventListener("tap", this._menubuttonTap.bind(this));
+    this.removeEventListener("click", this._menubuttonTap.bind(this));
     super.disconnectedCallback();
   }
 

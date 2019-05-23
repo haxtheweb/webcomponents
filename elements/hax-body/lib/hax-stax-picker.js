@@ -78,7 +78,7 @@ class HaxStaxPicker extends PolymerElement {
         <div style="height: 100%; overflow: auto;" class="pref-container">
           <hax-stax-browser id="staxbrowser"></hax-stax-browser>
         </div>
-        <paper-button id="closedialog" on-tap="close">
+        <paper-button id="closedialog" on-click="close">
           <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
         </paper-button>
       </app-drawer>

@@ -110,7 +110,8 @@ class SimpleModal extends PolymerElement {
           e.detail.id,
           e.detail.modalClass,
           e.detail.styles,
-          e.detail.clone
+          e.detail.clone,
+          e.detail.modal
         );
       }, 100);
     } else {
@@ -121,7 +122,8 @@ class SimpleModal extends PolymerElement {
         e.detail.id,
         e.detail.modalClass,
         e.detail.styles,
-        e.detail.clone
+        e.detail.clone,
+        e.detail.modal
       );
     }
   }
@@ -135,9 +137,11 @@ class SimpleModal extends PolymerElement {
     id = null,
     modalClass = null,
     styles = null,
-    clone = false
+    clone = false,
+    modal = false
   ) {
     this.set("invokedBy", invokedBy);
+    this.modal = modal;
     this.title = title;
     let element;
     // append element areas into the appropriate slots

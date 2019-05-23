@@ -61,12 +61,7 @@ class LrnappStudioSubmissionEditVideo extends SecureRequestXhr(PolymerElement) {
         on-click="_openDialog"
       ></lrnapp-studio-submission-edit-add-asset>
 
-      <paper-dialog
-        id="dialog"
-        entry-animation="scale-up-animation"
-        exit-animation="fade-out-animation"
-        with-backdrop=""
-      >
+      <paper-dialog id="dialog">
         <h2>Add Video</h2>
         <paper-dialog-scrollable>
           <paper-input label="Video URL" value="{{newvideo}}"></paper-input>

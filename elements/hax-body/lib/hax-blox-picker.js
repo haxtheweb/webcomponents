@@ -81,7 +81,7 @@ class HaxBloxPicker extends PolymerElement {
         <div style="height: 100%; overflow: auto;" class="pref-container">
           <hax-blox-browser id="bloxbrowser"></hax-blox-browser>
         </div>
-        <paper-button id="closedialog" on-tap="close">
+        <paper-button id="closedialog" on-click="close">
           <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
         </paper-button>
       </app-drawer>

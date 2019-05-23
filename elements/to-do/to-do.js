@@ -66,7 +66,7 @@ class ToDo extends SchemaBehaviors(PolymerElement) {
         <div class="card-content">
           <div hidden\$="[[hideForm]]">
             <paper-input label="Task to accomplish" id="itemtext"></paper-input>
-            <paper-button raised="" id="itembutton" on-tap="_addItemToList"
+            <paper-button raised="" id="itembutton" on-click="_addItemToList"
               >Add item</paper-button
             >
           </div>

@@ -9,10 +9,10 @@
 <app-header reveals>
   <app-toolbar>
     View: [[viewModeLabel]]
-    <paper-icon-button on-tap="_toggleViewMode" id="viewmode" icon="[[viewModeIcon]]"></paper-icon-button>
+    <paper-icon-button on-click="_toggleViewMode" id="viewmode" icon="[[viewModeIcon]]"></paper-icon-button>
     <paper-tooltip for="viewmode">[[viewModeLabel]]</paper-tooltip>
     Detail: [[detailsModeLabel]]
-    <paper-icon-button on-tap="_toggleDetailsMode" id="detailsmode" icon="[[detailsModeIcon]]"></paper-icon-button>
+    <paper-icon-button on-click="_toggleDetailsMode" id="detailsmode" icon="[[detailsModeIcon]]"></paper-icon-button>
     <paper-tooltip for="detailsmode">[[detailsModeLabel]]</paper-tooltip>
     <div main-title class="flex layout breadcrumb_layout">
       <iron-icon class="breadcrumb-arrow" icon="icons:chevron-right"></iron-icon>
@@ -25,7 +25,7 @@
       <a class="breadcrumb" id="third">Math Basics</a>
     </div>
     <div>
-      <paper-icon-button on-tap="_toggleMiniMap" id="minimap" icon="device:gps-fixed" title="Toggle outline mini map"></paper-icon-button>
+      <paper-icon-button on-click="_toggleMiniMap" id="minimap" icon="device:gps-fixed" title="Toggle outline mini map"></paper-icon-button>
       <paper-tooltip for="helpbutton">Toggle mini-map</paper-tooltip>
       <paper-icon-button id="helpbutton" icon="icons:help" title="help"></paper-icon-button>
       <paper-tooltip for="helpbutton">Help</paper-tooltip>

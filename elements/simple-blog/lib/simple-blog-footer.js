@@ -159,7 +159,9 @@ class SimpleBlogFooter extends PolymerElement {
           ></simple-datetime>
           <span slot="prefix">[[prevTitle]]</span>
         </site-menu-button>
-        <paper-button raised on-tap="_backButtonTap">Back to list</paper-button>
+        <paper-button raised on-click="_backButtonTap"
+          >Back to list</paper-button
+        >
         <h2 class="blog-title">[[manifest.title]]</h2>
         <h3 class="blog-description">[[manifest.description]]</h3>
       </div>

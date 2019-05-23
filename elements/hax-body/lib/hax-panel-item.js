@@ -174,11 +174,11 @@ class HAXPanelItem extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     afterNextRender(this, function() {
-      this.addEventListener("tap", this._fireEvent);
+      this.addEventListener("click", this._fireEvent);
     });
   }
   disconnectedCallback() {
-    this.removeEventListener("tap", this._fireEvent);
+    this.removeEventListener("click", this._fireEvent);
     super.disconnectedCallback();
   }
   /**

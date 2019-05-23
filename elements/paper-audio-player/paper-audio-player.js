@@ -248,7 +248,7 @@ class PaperAudioPlayer extends mixinBehaviors(
         }
       </style>
       <div id="wrapper" class="layout-horizontal">
-        <div id="left" class="self-start" on-tap="playPause">
+        <div id="left" class="self-start" on-click="playPause">
           <!-- Icon -->
           <paper-icon-button
             id="play"

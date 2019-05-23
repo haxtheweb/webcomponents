@@ -157,7 +157,7 @@ class HaxPanel extends PolymerElement {
           dark
           large
           data-opened$="[[editMode]]"
-          on-tap="_clickEditButton"
+          on-click="_clickEditButton"
           icon="create"
           id="button"
           edged="[[align]]"
@@ -174,7 +174,7 @@ class HaxPanel extends PolymerElement {
       >
         <hax-panel-item
           hidden$="[[hidePanelOps]]"
-          on-tap="_clickSaveButton"
+          on-click="_clickSaveButton"
           icon="save"
           id="haxsavebutton"
           label="[[__tipText]]"
@@ -249,7 +249,7 @@ class HaxPanel extends PolymerElement {
         ></hax-panel-item>
         <hax-panel-item
           hidden$="[[hideExportButton]]"
-          on-tap="_htmlExportDialog"
+          on-click="_htmlExportDialog"
           icon="code"
           label="Source view"
         ></hax-panel-item>
@@ -257,7 +257,7 @@ class HaxPanel extends PolymerElement {
         <hax-panel-item
           right
           hidden$="[[hidePreferencesButton]]"
-          on-tap="_preferencesDialog"
+          on-click="_preferencesDialog"
           icon="settings"
           label="Preferences"
         ></hax-panel-item>

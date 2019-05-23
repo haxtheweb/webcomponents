@@ -214,7 +214,7 @@ class LrnappStudioSubmissionPage extends PolymerElement {
       <app-toolbar class="amber lighten-3" hidden\$="[[hideMenuBar]]">
         <template is="dom-if" if="[[showComments]]">
           <lrnsys-button
-            on-tap="_backToStudio"
+            on-click="_backToStudio"
             icon="arrow-back"
             label="See in studio"
             hover-class="amber darken-4 white-text"
@@ -222,7 +222,7 @@ class LrnappStudioSubmissionPage extends PolymerElement {
         </template>
         <template is="dom-if" if="[[!showComments]]">
           <lrnsys-button
-            on-tap="_backToKanban"
+            on-click="_backToKanban"
             icon="arrow-back"
             label="Back to project management"
             hover-class="amber darken-4 white-text"
@@ -262,7 +262,7 @@ class LrnappStudioSubmissionPage extends PolymerElement {
         </div>
         <div hidden\$="[[editPage]]">
           <lrnsys-button
-            on-tap="_setEditRoute"
+            on-click="_setEditRoute"
             icon="create"
             label="Edit"
             hover-class="amber darken-4 white-text"
@@ -271,7 +271,7 @@ class LrnappStudioSubmissionPage extends PolymerElement {
         </div>
         <div hidden\$="[[!editPage]]">
           <lrnsys-button
-            on-tap="_resetRoute"
+            on-click="_resetRoute"
             icon="cancel"
             label="Cancel"
             hover-class="amber darken-4 white-text"
@@ -306,12 +306,7 @@ class LrnappStudioSubmissionPage extends PolymerElement {
 
       <elmsln-loading></elmsln-loading>
 
-      <paper-dialog
-        id="deletedialog"
-        entry-animation="scale-up-animation"
-        exit-animation="fade-out-animation"
-        with-backdrop=""
-      >
+      <paper-dialog id="deletedialog">
         <h2>Delete submission?</h2>
         <p>Are you sure you want to delete this submission?</p>
         <div class="buttons">
@@ -321,12 +316,7 @@ class LrnappStudioSubmissionPage extends PolymerElement {
           >
         </div>
       </paper-dialog>
-      <paper-dialog
-        id="publishdialog"
-        entry-animation="scale-up-animation"
-        exit-animation="fade-out-animation"
-        with-backdrop=""
-      >
+      <paper-dialog id="publishdialog">
         <h2>Ready to publish?</h2>
         <p>
           By publishing, the author of this submission will be able to view your

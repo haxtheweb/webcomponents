@@ -32,7 +32,7 @@ class LrnsysDrawer extends PolymerElement {
       <paper-button
         class\$="[[class]]"
         id="flyouttrigger"
-        on-tap="toggleDrawer"
+        on-click="toggleDrawer"
         raised="[[raised]]"
         disabled\$="[[disabled]]"
         title="[[alt]]"

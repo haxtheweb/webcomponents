@@ -6,15 +6,10 @@ import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 /**
-`grid-plate`
-A grid plate based on a layout that manipulates it.
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
- -
-
-*/
+ * `grid-plate`
+ * `A grid plate based on a layout that manipulates it.`
+ * @demo demo/index.html
+ */
 class GridPlate extends PolymerElement {
   constructor() {
     super();
@@ -133,28 +128,28 @@ class GridPlate extends PolymerElement {
           icon="icons:arrow-upward"
           title="move item up"
           id="up"
-          on-tap="moveActiveElement"
+          on-click="moveActiveElement"
         >
         </paper-icon-button>
         <paper-icon-button
           icon="icons:arrow-forward"
           title="move item right"
           id="right"
-          on-tap="moveActiveElement"
+          on-click="moveActiveElement"
         >
         </paper-icon-button>
         <paper-icon-button
           icon="icons:arrow-downward"
           title="move item down"
           id="down"
-          on-tap="moveActiveElement"
+          on-click="moveActiveElement"
         >
         </paper-icon-button>
         <paper-icon-button
           icon="icons:arrow-back"
           title="move item left"
           id="left"
-          on-tap="moveActiveElement"
+          on-click="moveActiveElement"
         >
         </paper-icon-button>
       </div>
@@ -314,7 +309,7 @@ class GridPlate extends PolymerElement {
         ]
       },
       saveOptions: {
-        unsetAttributes: ["__active-item", "edit-mode"]
+        unsetAttributes: ["__active-item", "edit-mode", "layouts"]
       }
     };
   }
@@ -367,14 +362,6 @@ class GridPlate extends PolymerElement {
         reflectToAttribute: true
       },
       /**
-       * name of selected layout
-       */
-      columnWidths: {
-        type: String,
-        computed:
-          "_getColumnWidths(responsiveSize,layout,layouts,disableResponsive)"
-      },
-      /**
        * disables responsive layouts for HAX preview
        */
       disableResponsive: {
@@ -417,6 +404,7 @@ class GridPlate extends PolymerElement {
       */
       layouts: {
         type: Object,
+        readOnly: true,
         value: {
           "1": {
             columnLayout: "1: full width",
@@ -559,6 +547,14 @@ class GridPlate extends PolymerElement {
       __activeItem: {
         type: Object,
         observer: "_activeItemChanged"
+      },
+      /**
+       * name of selected layout
+       */
+      columnWidths: {
+        type: String,
+        computed:
+          "_getColumnWidths(responsiveSize,layout,layouts,disableResponsive)"
       }
     };
   }
@@ -713,31 +709,32 @@ class GridPlate extends PolymerElement {
     layouts,
     disableResponsive
   ) {
-    let newl = layouts[layout],
-      //how old layout names map to the new ones
-      oldLayouts = {
-        "12": "1",
-        "8/4": "2-1",
-        "6/6": "1-1",
-        "4/8": "1-2",
-        "4/4/4": "1-1-1",
-        "3/3/3/3": "1-1-1-1"
-      },
-      oldl = oldLayouts[layout],
-      size = disableResponsive !== false ? "xl" : responsiveSize;
-
-    if (newl !== undefined && newl[size] !== undefined) {
-      //return the layout
-      return layouts[layout][size];
-    } else if (
-      layouts[oldl] !== undefined &&
-      layouts[oldl][size] !== undefined
-    ) {
-      //return new layout that maps to old one
-      return layouts[oldl][size];
-    } else {
-      //return 2-column layout
-      return layouts["1-1"][size];
+    if (layouts) {
+      let newl = layouts[layout],
+        //how old layout names map to the new ones
+        oldLayouts = {
+          "12": "1",
+          "8/4": "2-1",
+          "6/6": "1-1",
+          "4/8": "1-2",
+          "4/4/4": "1-1-1",
+          "3/3/3/3": "1-1-1-1"
+        },
+        size = disableResponsive !== false ? "xl" : responsiveSize;
+      let oldl = oldLayouts[layout];
+      if (newl !== undefined && newl[size] !== undefined) {
+        //return the layout
+        return layouts[layout][size];
+      } else if (
+        layouts[oldl] !== undefined &&
+        layouts[oldl][size] !== undefined
+      ) {
+        //return new layout that maps to old one
+        return layouts[oldl][size];
+      } else if (typeof layouts["1-1"] !== typeof undefined) {
+        //return 2-column layout
+        return layouts["1-1"][size];
+      }
     }
   }
 

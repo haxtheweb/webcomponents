@@ -91,7 +91,7 @@ class SimpleModalTemplate extends PolymerElement {
    * @param {boolean} whether the event can be canceled (default is true)
    * @returns {object} the modal object
    */
-  associateEvents(target, evt = "tap", bubbles = true, cancelable = true) {
+  associateEvents(target, evt = "click", bubbles = true, cancelable = true) {
     target.addEventListener(evt, e => {
       this.openModal(target, bubbles, cancelable);
     });

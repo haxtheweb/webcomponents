@@ -134,7 +134,7 @@ class LrnappOpenStudioTable extends PolymerElement {
           <template>
             <lrnsys-button
               raised=""
-              on-tap="_loadProjectRoute"
+              on-click="_loadProjectRoute"
               data-project-id\$="{{item.relationships.project.data.id}}"
               data-author-id\$="{{item.relationships.author.data.id}}"
               label="[[item.relationships.project.data.title]]"
@@ -162,7 +162,7 @@ class LrnappOpenStudioTable extends PolymerElement {
           <template>
             <lrnsys-button
               raised=""
-              on-tap="_loadSubmissionUrl"
+              on-click="_loadSubmissionUrl"
               data-submission-id\$="{{item.id}}"
               label="[[item.attributes.title]]"
               hover-class="amber lighten-4"

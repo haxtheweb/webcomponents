@@ -43,13 +43,13 @@ class LrnappStudioRoot extends PolymerElement {
         <a
           tabindex="-1"
           name="lrnapp-studio-dashboard"
-          on-tap="_dashboardClicked"
+          on-click="_dashboardClicked"
           >A</a
         >
-        <a tabindex="-1" name="lrnapp-studio-kanban" on-tap="_kanbanClicked"
+        <a tabindex="-1" name="lrnapp-studio-kanban" on-click="_kanbanClicked"
           >B</a
         >
-        <a tabindex="-1" name="lrnapp-open-studio" on-tap="_openstudioClicked"
+        <a tabindex="-1" name="lrnapp-open-studio" on-click="_openstudioClicked"
           >C</a
         >
       </iron-selector>

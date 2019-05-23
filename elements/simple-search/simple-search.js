@@ -316,7 +316,7 @@ class SimpleSearch extends PolymerElement {
           aria-role="button"
           controls\$="[[controls]]"
           disabled\$="[[prevButtonDisabled]]"
-          on-tap="_navigateResults"
+          on-click="_navigateResults"
           tabindex="0"
         >
           <iron-icon icon="[[prevButtonIcon]]"></iron-icon>
@@ -328,7 +328,7 @@ class SimpleSearch extends PolymerElement {
           aria-role="button"
           controls\$="[[controls]]"
           disabled\$="[[nextButtonDisabled]]"
-          on-tap="_navigateResults"
+          on-click="_navigateResults"
           tabindex="0"
         >
           <iron-icon icon\$="[[nextButtonIcon]]"></iron-icon>

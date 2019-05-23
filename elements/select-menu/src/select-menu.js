@@ -31,7 +31,7 @@ class SelectMenu extends PolymerElement {
       <paper-dropdown-menu
         id="menu"
         label\$="[[label]]"
-        on-tap="_menubuttonTap"
+        on-click="_menubuttonTap"
         on-selected-item-changed="_setSelectedValue"
       >
         <paper-listbox

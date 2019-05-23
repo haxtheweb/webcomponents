@@ -248,13 +248,13 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
         <paper-icon-button
           id="menubutton"
           icon="menu"
-          on-tap="toggleDrawer"
+          on-click="toggleDrawer"
         ></paper-icon-button>
         <app-drawer swipe-open slot="drawer" opened="{{opened}}">
           <paper-icon-button
             id="menubutton2"
             icon="menu"
-            on-tap="toggleDrawer"
+            on-click="toggleDrawer"
           ></paper-icon-button>
           <div class="header-wrapper">
             <div class="header">

@@ -82,7 +82,11 @@ class HaxSchemaForm extends PolymerElement {
         }
         eco-json-schema-object {
           color: var(--hax-text-color);
-          --eco-json-schema-object-form : {
+          --paper-input-container-focus-color: var(
+            --haxcms-site-listing-color-hover
+          );
+          --simple-colors-picker-preview-size: 20px;
+          --eco-json-schema-object-form: {
             -ms-flex: unset;
             -webkit-flex: unset;
             flex: unset;

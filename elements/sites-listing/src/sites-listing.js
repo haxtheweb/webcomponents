@@ -81,7 +81,7 @@ class SitesListing extends PolymerElement {
             on-focusout="_mouseLeave"
             data-site-id\$="[[site.id]]"
             class="site-card-wrapper"
-            on-tap="_siteClicked"
+            on-click="_siteClicked"
           >
             <site-card
               data-site-id\$="[[site.id]]"

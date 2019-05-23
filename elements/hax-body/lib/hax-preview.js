@@ -21,7 +21,6 @@ class HaxPreview extends PolymerElement {
     import("@polymer/iron-icons/iron-icons.js");
     import("@vaadin/vaadin-split-layout/vaadin-split-layout.js");
     import("@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js");
-    import("@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js");
     import("@lrnwebcomponents/code-editor/code-editor.js");
     import("@polymer/paper-input/paper-textarea.js");
     import("app-datepicker/app-datepicker.js");

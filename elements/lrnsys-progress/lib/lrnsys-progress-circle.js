@@ -480,14 +480,14 @@ class LrnsysProgressCircle extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     afterNextRender(this, function() {
-      this.addEventListener("tap", this.tapEventOn.bind(this));
+      this.addEventListener("click", this.tapEventOn.bind(this));
       this.addEventListener("mouseover", this.focusOn.bind(this));
       this.addEventListener("mouseout", this.focusOff.bind(this));
       this.addEventListener("focused-changed", this.focusEvent.bind(this));
     });
   }
   disconnectedCallback() {
-    this.removeEventListener("tap", this.tapEventOn.bind(this));
+    this.removeEventListener("click", this.tapEventOn.bind(this));
     this.removeEventListener("mouseover", this.focusOn.bind(this));
     this.removeEventListener("mouseout", this.focusOff.bind(this));
     this.removeEventListener("focused-changed", this.focusEvent.bind(this));

@@ -153,7 +153,7 @@ class ScrollButton extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.$.btn.addEventListener("tap", e => {
+    this.$.btn.addEventListener("click", e => {
       if (this.target) {
         this.target.scrollIntoView({
           behavior: "smooth",
@@ -175,7 +175,7 @@ class ScrollButton extends PolymerElement {
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    this.$.btn.removeEventListener("tap", e => {
+    this.$.btn.removeEventListener("click", e => {
       if (this.target) {
         this.target.scrollIntoView({
           behavior: "smooth",

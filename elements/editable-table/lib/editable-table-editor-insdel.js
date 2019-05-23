@@ -44,11 +44,11 @@ class EditableTableEditorInsdel extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     afterNextRender(this, function() {
-      this.addEventListener("tap", this._onTap.bind(this));
+      this.addEventListener("click", this._onTap.bind(this));
     });
   }
   disconnectedCallback() {
-    this.removeEventListener("tap", this._onTap.bind(this));
+    this.removeEventListener("click", this._onTap.bind(this));
     super.disconnectedCallback();
   }
 
