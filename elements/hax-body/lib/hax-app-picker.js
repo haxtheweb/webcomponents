@@ -120,7 +120,7 @@ class HaxAppPicker extends PolymerElement {
                 <hax-app-picker-item
                   id$="picker-item-[[index]]"
                   class="element-button"
-                  on-tap="_selected"
+                  on-click="_selected"
                   data-selected\$="[[index]]"
                   label="[[element.title]]"
                   icon="[[element.icon]]"
@@ -130,7 +130,7 @@ class HaxAppPicker extends PolymerElement {
             </template>
           </div>
         </paper-dialog-scrollable>
-        <paper-button id="closedialog" on-tap="close">
+        <paper-button id="closedialog" on-click="close">
           <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
         </paper-button>
       </paper-dialog>

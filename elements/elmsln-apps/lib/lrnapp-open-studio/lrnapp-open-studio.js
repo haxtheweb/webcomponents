@@ -109,7 +109,7 @@ class LrnappOpenStudio extends PolymerElement {
           attr-for-selected="name"
           role="navigation"
         >
-          <a tabindex="-1" name="submissions" on-tap="_submissionsClicked"
+          <a tabindex="-1" name="submissions" on-click="_submissionsClicked"
             ><lrnsys-button
               icon="apps"
               label="Submission display"
@@ -118,7 +118,7 @@ class LrnappOpenStudio extends PolymerElement {
               button-class="display-mode style-scope lrnapp-open-studio x-scope lrnsys-button-0"
             ></lrnsys-button
           ></a>
-          <a tabindex="-1" name="projects" on-tap="_projectsClicked"
+          <a tabindex="-1" name="projects" on-click="_projectsClicked"
             ><lrnsys-button
               icon="folder"
               label="Project board"
@@ -127,7 +127,7 @@ class LrnappOpenStudio extends PolymerElement {
               button-class="display-mode style-scope lrnapp-open-studio x-scope lrnsys-button-0"
             ></lrnsys-button
           ></a>
-          <a tabindex="-1" name="assignments" on-tap="_assignmentsClicked"
+          <a tabindex="-1" name="assignments" on-click="_assignmentsClicked"
             ><lrnsys-button
               icon="list"
               label="Assignment centric"
@@ -136,7 +136,7 @@ class LrnappOpenStudio extends PolymerElement {
               button-class="display-mode style-scope lrnapp-open-studio x-scope lrnsys-button-0"
             ></lrnsys-button
           ></a>
-          <a tabindex="-1" name="table" on-tap="_tableClicked"
+          <a tabindex="-1" name="table" on-click="_tableClicked"
             ><lrnsys-button
               icon="view-list"
               label="Table view"
@@ -220,7 +220,7 @@ class LrnappOpenStudio extends PolymerElement {
                 <paper-button
                   data-submission-id$="[[item.id]]"
                   class="gallerycard-wrapper"
-                  on-tap="_loadSubmissionUrl"
+                  on-click="_loadSubmissionUrl"
                 >
                   <lrndesign-gallerycard
                     elevation="2"

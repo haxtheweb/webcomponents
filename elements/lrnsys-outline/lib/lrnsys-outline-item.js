@@ -129,37 +129,37 @@ class LrnsysOutlineItem extends PolymerElement {
           id="down"
           title="Move downwards"
           icon="icons:arrow-downward"
-          on-tap="moveDown"
+          on-click="moveDown"
         ></paper-icon-button>
         <paper-icon-button
           id="left"
           title="Outdent"
           icon="icons:arrow-back"
-          on-tap="moveOut"
+          on-click="moveOut"
         ></paper-icon-button>
         <paper-icon-button
           id="right"
           title="Indent"
           icon="icons:arrow-forward"
-          on-tap="moveIn"
+          on-click="moveIn"
         ></paper-icon-button>
         <paper-icon-button
           id="up"
           title="Move upwards"
           icon="icons:arrow-upward"
-          on-tap="moveUp"
+          on-click="moveUp"
         ></paper-icon-button>
         <paper-icon-button
           id="add"
           title="Add Item"
           icon="icons:add"
-          on-tap="add"
+          on-click="add"
         ></paper-icon-button>
         <paper-icon-button
           id="delete"
           title="Delete"
           icon="icons:delete"
-          on-tap="delete"
+          on-click="delete"
         ></paper-icon-button>
       </div>
       <iron-a11y-keys

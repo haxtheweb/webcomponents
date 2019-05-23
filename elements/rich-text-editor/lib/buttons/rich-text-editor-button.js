@@ -43,7 +43,7 @@ class RichTextEditorButton extends PolymerElement {
         class="rtebutton"
         disabled$="[[disabled]]"
         controls="[[controls]]"
-        on-tap="_buttonTap"
+        on-click="_buttonTap"
         tabindex="0"
         toggled$="[[toggled]]"
       >

@@ -234,7 +234,7 @@ class EcoJsonSchemaArray extends mixinBehaviors(
             icon: "remove",
             title: "Remove item"
           });
-          this.listen(buttonEl, "tap", "_onRemoveItem");
+          this.listen(buttonEl, "click", "_onRemoveItem");
           buttonEl.classList.add("array-remove-element");
           componentEl.classList.add("flex", "horizontal", "layout");
 
@@ -311,7 +311,7 @@ class EcoJsonSchemaArray extends mixinBehaviors(
         "_schemaArrayItemChanged"
       );
       if (typeof polyEl.childNodes[1] !== typeof undefined) {
-        this.unlisten(polyEl.childNodes[1], "tap", "_onRemoveItem");
+        this.unlisten(polyEl.childNodes[1], "click", "_onRemoveItem");
       }
     }
     el.schemaArrayItem = null;
@@ -388,7 +388,7 @@ class EcoJsonSchemaArray extends mixinBehaviors(
       icon: "remove",
       title: "Remove item"
     });
-    this.listen(buttonEl, "tap", "_onRemoveItem");
+    this.listen(buttonEl, "click", "_onRemoveItem");
     buttonEl.classList.add("array-remove-element");
     componentEl.classList.add("flex", "horizontal", "layout");
 

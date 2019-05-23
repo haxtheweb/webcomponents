@@ -214,7 +214,7 @@ class LrnappStudioSubmissionPage extends PolymerElement {
       <app-toolbar class="amber lighten-3" hidden\$="[[hideMenuBar]]">
         <template is="dom-if" if="[[showComments]]">
           <lrnsys-button
-            on-tap="_backToStudio"
+            on-click="_backToStudio"
             icon="arrow-back"
             label="See in studio"
             hover-class="amber darken-4 white-text"
@@ -222,7 +222,7 @@ class LrnappStudioSubmissionPage extends PolymerElement {
         </template>
         <template is="dom-if" if="[[!showComments]]">
           <lrnsys-button
-            on-tap="_backToKanban"
+            on-click="_backToKanban"
             icon="arrow-back"
             label="Back to project management"
             hover-class="amber darken-4 white-text"
@@ -262,7 +262,7 @@ class LrnappStudioSubmissionPage extends PolymerElement {
         </div>
         <div hidden\$="[[editPage]]">
           <lrnsys-button
-            on-tap="_setEditRoute"
+            on-click="_setEditRoute"
             icon="create"
             label="Edit"
             hover-class="amber darken-4 white-text"
@@ -271,7 +271,7 @@ class LrnappStudioSubmissionPage extends PolymerElement {
         </div>
         <div hidden\$="[[!editPage]]">
           <lrnsys-button
-            on-tap="_resetRoute"
+            on-click="_resetRoute"
             icon="cancel"
             label="Cancel"
             hover-class="amber darken-4 white-text"

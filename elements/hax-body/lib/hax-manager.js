@@ -263,7 +263,7 @@ class HaxManager extends PolymerElement {
           </iron-pages>
           <paper-button
             id="closedialog"
-            on-tap="cancel"
+            on-click="cancel"
             hidden$="[[activeStep]]"
           >
             <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
@@ -405,10 +405,10 @@ class HaxManager extends PolymerElement {
         .addEventListener("iron-overlay-closed", this.close.bind(this));
       this.shadowRoot
         .querySelector("#closedialog")
-        .addEventListener("tap", this.close.bind(this));
+        .addEventListener("click", this.close.bind(this));
       this.shadowRoot
         .querySelector("#newassetconfigure")
-        .addEventListener("tap", this.newAssetConfigure.bind(this));
+        .addEventListener("click", this.newAssetConfigure.bind(this));
       this.shadowRoot
         .querySelector("#fileupload")
         .addEventListener("upload-before", this._fileAboutToUpload.bind(this));
@@ -445,10 +445,10 @@ class HaxManager extends PolymerElement {
       .removeEventListener("iron-overlay-closed", this.close.bind(this));
     this.shadowRoot
       .querySelector("#closedialog")
-      .removeEventListener("tap", this.close.bind(this));
+      .removeEventListener("click", this.close.bind(this));
     this.shadowRoot
       .querySelector("#newassetconfigure")
-      .removeEventListener("tap", this.newAssetConfigure.bind(this));
+      .removeEventListener("click", this.newAssetConfigure.bind(this));
     this.shadowRoot
       .querySelector("#fileupload")
       .removeEventListener("upload-before", this._fileAboutToUpload.bind(this));

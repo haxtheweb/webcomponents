@@ -275,14 +275,14 @@ class LrnappStudioInstructor extends PolymerElement {
           <template>
             <template is="dom-if" if="[[_submissionStatus(item, assignment, dataType)]]">
               <template is="dom-if" if="[[!dataType]]">
-                <lrnsys-button icon="[[_submissionPiece(item, assignment, 'icon')]]" id$="student-[[item.id]]-assignment-[[assignment.id]]-submission-[[_submissionID(item, assignment)]]" label="[[_submissionPiece(item, assignment, 'title')]]" on-tap="_setActiveSubmission">
+                <lrnsys-button icon="[[_submissionPiece(item, assignment, 'icon')]]" id$="student-[[item.id]]-assignment-[[assignment.id]]-submission-[[_submissionID(item, assignment)]]" label="[[_submissionPiece(item, assignment, 'title')]]" on-click="_setActiveSubmission">
                 </lrnsys-button>
               </template>
               <template is="dom-if" if="[[dataType]]">
                 <ul class="comment-list">
                 <template is="dom-repeat" items="[[_submissionPiece(item, assignment, 'comments')]]" as="commented">
                   <li>
-                    <lrnsys-button icon="communication:comment" id$="student-[[item.id]]-assignment-[[assignment.id]]-submission-[[commented]]" label="#[[_commentIndex(index)]]" on-tap="_setActiveComment">
+                    <lrnsys-button icon="communication:comment" id$="student-[[item.id]]-assignment-[[assignment.id]]-submission-[[commented]]" label="#[[_commentIndex(index)]]" on-click="_setActiveComment">
                     </lrnsys-button>
                   </li>
                 </template>
@@ -303,13 +303,13 @@ class LrnappStudioInstructor extends PolymerElement {
     <lrnsys-dialog id="dialog" style="overflow: visible;">
       <span slot="toolbar-primary">
         <span style="width:15em;">
-          <paper-icon-button on-tap="_changeActiveItem" id="prevstudent" icon="arrow-upward" title="previous student"></paper-icon-button>
-          <paper-icon-button on-tap="_changeActiveItem" id="nextstudent" icon="arrow-downward" title="next student"></paper-icon-button>
+          <paper-icon-button on-click="_changeActiveItem" id="prevstudent" icon="arrow-upward" title="previous student"></paper-icon-button>
+          <paper-icon-button on-click="_changeActiveItem" id="nextstudent" icon="arrow-downward" title="next student"></paper-icon-button>
           <lrndesign-avatar class="ferpa-protect" label="[[activeData.student.name]]" src="[[activeData.student.avatar]]" style="display:inline-block;vertical-align:middle;"></lrndesign-avatar>
           <span class="avatar-label ferpa-protect" style="margin-left:1em;">[[activeData.student.sis.sortable_name]]</span>
         </span>
-        <paper-icon-button on-tap="_changeActiveItem" id="prevassignment" icon="arrow-back" title="previous assignment" style="margin-left:1em;"></paper-icon-button>
-        <paper-icon-button on-tap="_changeActiveItem" id="nextassignment" icon="arrow-forward" title="next assignment"></paper-icon-button>
+        <paper-icon-button on-click="_changeActiveItem" id="prevassignment" icon="arrow-back" title="previous assignment" style="margin-left:1em;"></paper-icon-button>
+        <paper-icon-button on-click="_changeActiveItem" id="nextassignment" icon="arrow-forward" title="next assignment"></paper-icon-button>
         <span style="font-weight:bold;">Assignment: [[activeData.assignment.title]]</span>
       </span>
       <span slot="content">

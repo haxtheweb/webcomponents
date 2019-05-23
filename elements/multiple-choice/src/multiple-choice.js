@@ -102,10 +102,13 @@ class MultipleChoice extends SchemaBehaviors(PolymerElement) {
         <paper-button
           disabled\$="[[disabled]]"
           raised=""
-          on-tap="_verifyAnswers"
+          on-click="_verifyAnswers"
           >[[checkLabel]]</paper-button
         >
-        <paper-button disabled\$="[[disabled]]" raised="" on-tap="resetAnswers"
+        <paper-button
+          disabled\$="[[disabled]]"
+          raised=""
+          on-click="resetAnswers"
           >[[resetLabel]]</paper-button
         >
       </div>

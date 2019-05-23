@@ -180,32 +180,32 @@ class HAXCMSSiteEditorUI extends PolymerElement {
       <paper-fab
         id="menubutton"
         icon="icons:menu"
-        on-tap="_menuButtonTap"
+        on-click="_menuButtonTap"
         title="Expand menu"
       ></paper-fab>
       <paper-fab
         id="cancelbutton"
         icon="icons:cancel"
-        on-tap="_cancelButtonTap"
+        on-click="_cancelButtonTap"
         hidden$="[[!editMode]]"
         title="Cancel editing"
       ></paper-fab>
       <paper-fab
         id="editbutton"
         icon="[[__editIcon]]"
-        on-tap="_editButtonTap"
+        on-click="_editButtonTap"
         title$="[[__editText]]"
       ></paper-fab>
       <paper-fab
         id="editdetails"
         icon="icons:fingerprint"
-        on-tap="_editDetailsButtonTap"
+        on-click="_editDetailsButtonTap"
         title="Edit page details"
       ></paper-fab>
       <paper-fab
         id="deletebutton"
         icon="icons:delete"
-        on-tap="_deleteButtonTap"
+        on-click="_deleteButtonTap"
         title="Delete current page"
       ></paper-fab>
       <div class="wrapper">
@@ -213,19 +213,19 @@ class HAXCMSSiteEditorUI extends PolymerElement {
         <paper-icon-button
           id="addbutton"
           icon="icons:add"
-          on-tap="_addButtonTap"
+          on-click="_addButtonTap"
           title="Add new page"
         ></paper-icon-button>
         <paper-icon-button
           id="outlinebutton"
           icon="icons:list"
-          on-tap="_outlineButtonTap"
+          on-click="_outlineButtonTap"
           title="Edit site outline"
         ></paper-icon-button>
         <paper-icon-button
           id="manifestbutton"
           icon="icons:settings"
-          on-tap="_manifestButtonTap"
+          on-click="_manifestButtonTap"
           title="Edit site settings"
         ></paper-icon-button>
       </div>
@@ -483,7 +483,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
     b1.appendChild(document.createTextNode("Confirm"));
     b1.style.color = "white";
     b1.style.backgroundColor = "#ee0000";
-    b1.addEventListener("tap", this._deleteActive.bind(this));
+    b1.addEventListener("click", this._deleteActive.bind(this));
     let b2 = document.createElement("paper-button");
     b2.appendChild(document.createTextNode("cancel"));
     b2.setAttribute("dialog-dismiss", "dialog-dismiss");

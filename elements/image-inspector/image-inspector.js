@@ -45,31 +45,31 @@ class ImageInspector extends PolymerElement {
         <lrnsys-button
           alt="Zoom in"
           icon="zoom-in"
-          on-tap="zoomIn"
+          on-click="zoomIn"
           hover-class="[[hoverClass]]"
         ></lrnsys-button>
         <lrnsys-button
           alt="Zoom out"
           icon="zoom-out"
-          on-tap="zoomOut"
+          on-click="zoomOut"
           hover-class="[[hoverClass]]"
         ></lrnsys-button>
         <lrnsys-button
           alt="Rotate right"
           icon="image:rotate-right"
-          on-tap="rotateRight"
+          on-click="rotateRight"
           hover-class="[[hoverClass]]"
         ></lrnsys-button>
         <lrnsys-button
           alt="Rotate left"
           icon="image:rotate-left"
-          on-tap="rotateLeft"
+          on-click="rotateLeft"
           hover-class="[[hoverClass]]"
         ></lrnsys-button>
         <lrnsys-button
           alt="Mirror image"
           icon="image:flip"
-          on-tap="mirrorImage"
+          on-click="mirrorImage"
           hover-class="[[hoverClass]]"
         ></lrnsys-button>
         <lrnsys-button

@@ -97,7 +97,7 @@ class HaxPreferencesDialog extends PolymerElement {
             value="{{preferences}}"
           ></eco-json-schema-object>
         </div>
-        <paper-button id="closedialog" on-tap="close">
+        <paper-button id="closedialog" on-click="close">
           <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
         </paper-button>
       </app-drawer>

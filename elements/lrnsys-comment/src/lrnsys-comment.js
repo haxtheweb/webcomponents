@@ -284,7 +284,7 @@ class LrnsysComment extends PolymerElement {
             <div class="comment-actions">
               <div class="comment-actions-group left-actions">
                 <lrnsys-button
-                  on-tap="actionHandler"
+                  on-click="actionHandler"
                   id="reply"
                   data-commentid="[[comment.id]]"
                   alt="Reply"
@@ -294,7 +294,7 @@ class LrnsysComment extends PolymerElement {
                   hidden\$="[[!comment.actions.reply]]"
                 ></lrnsys-button>
                 <lrnsys-button
-                  on-tap="actionHandler"
+                  on-click="actionHandler"
                   id="like"
                   data-commentid="[[comment.id]]"
                   alt="Like"
@@ -306,7 +306,7 @@ class LrnsysComment extends PolymerElement {
               </div>
               <div class="comment-actions-group right-actions">
                 <lrnsys-button
-                  on-tap="actionHandler"
+                  on-click="actionHandler"
                   id="edit"
                   data-commentid="[[comment.id]]"
                   icon="create"
@@ -316,7 +316,7 @@ class LrnsysComment extends PolymerElement {
                   hidden\$="[[!comment.actions.edit]]"
                 ></lrnsys-button>
                 <lrnsys-button
-                  on-tap="actionHandler"
+                  on-click="actionHandler"
                   id="delete"
                   data-commentid="[[comment.id]]"
                   icon="delete-forever"
@@ -389,7 +389,7 @@ class LrnsysComment extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.$.bodyarea.addEventListener("tap", this.bodyToggle.bind(this));
+    this.$.bodyarea.addEventListener("click", this.bodyToggle.bind(this));
     this.$.bodyarea.addEventListener("dblclick", this.bodyToggleOn.bind(this));
   }
   /**
@@ -397,7 +397,7 @@ class LrnsysComment extends PolymerElement {
    */
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.$.bodyarea.removeEventListener("tap", this.bodyToggle.bind(this));
+    this.$.bodyarea.removeEventListener("click", this.bodyToggle.bind(this));
     this.$.bodyarea.removeEventListener(
       "dblclick",
       this.bodyToggleOn.bind(this)

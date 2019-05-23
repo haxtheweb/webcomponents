@@ -196,12 +196,12 @@ class GameShowQuiz extends MutableData(PolymerElement) {
       </style>
       <app-header>
         <app-toolbar>
-          <paper-button id="scorebutton" on-tap="scoreBoardToggle">
+          <paper-button id="scorebutton" on-click="scoreBoardToggle">
             <iron-icon icon="editor:pie-chart"></iron-icon
             ><label for="scorebutton">Score board</label>
           </paper-button>
           <div main-title>[[title]]</div>
-          <paper-button id="helpbutton" on-tap="directionsToggle">
+          <paper-button id="helpbutton" on-click="directionsToggle">
             <iron-icon icon="help"></iron-icon
             ><label for="helpbutton">Directions</label>
           </paper-button>
@@ -1046,16 +1046,16 @@ class GameShowQuiz extends MutableData(PolymerElement) {
       this.HAXWiring.setup(GameShowQuiz.haxProperties, GameShowQuiz.tag, this);
       this.shadowRoot
         .querySelector("#dismiss")
-        .addEventListener("tap", this.resetFocus.bind(this));
+        .addEventListener("click", this.resetFocus.bind(this));
       this.shadowRoot
         .querySelector("#contentcontainer")
-        .addEventListener("tap", this._gameBoardTap.bind(this));
+        .addEventListener("click", this._gameBoardTap.bind(this));
       this.shadowRoot
         .querySelector("#submit")
-        .addEventListener("tap", this.submitAnswer.bind(this));
+        .addEventListener("click", this.submitAnswer.bind(this));
       this.shadowRoot
         .querySelector("#continue")
-        .addEventListener("tap", this.continueGameTap.bind(this));
+        .addEventListener("click", this.continueGameTap.bind(this));
       this.shadowRoot
         .querySelector("#question")
         .addEventListener("click", this.registerTap.bind(this));
@@ -1067,16 +1067,16 @@ class GameShowQuiz extends MutableData(PolymerElement) {
   disconnectedCallback() {
     this.shadowRoot
       .querySelector("#dismiss")
-      .removeEventListener("tap", this.resetFocus.bind(this));
+      .removeEventListener("click", this.resetFocus.bind(this));
     this.shadowRoot
       .querySelector("#contentcontainer")
-      .removeEventListener("tap", this._gameBoardTap.bind(this));
+      .removeEventListener("click", this._gameBoardTap.bind(this));
     this.shadowRoot
       .querySelector("#submit")
-      .removeEventListener("tap", this.submitAnswer.bind(this));
+      .removeEventListener("click", this.submitAnswer.bind(this));
     this.shadowRoot
       .querySelector("#continue")
-      .removeEventListener("tap", this.continueGameTap.bind(this));
+      .removeEventListener("click", this.continueGameTap.bind(this));
     this.shadowRoot
       .querySelector("#question")
       .removeEventListener("click", this.registerTap.bind(this));

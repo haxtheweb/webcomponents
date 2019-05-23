@@ -1,4 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
@@ -38,7 +39,7 @@ class ImgPanZoom extends PolymerElement {
           width: 100%;
         }
 
-        paper-spinner-lite {
+        paper-spinner {
           opacity: 0;
           display: block;
           transition: opacity 700ms;
@@ -55,17 +56,17 @@ class ImgPanZoom extends PolymerElement {
           --paper-spinner-stroke-width: var(--img-pan-zoom-spinner-width, 5px);
           @apply --img-pan-zoom-spinner;
         }
-        paper-spinner-lite[active] {
+        paper-spinner[active] {
           opacity: 1;
         }
       </style>
 
       <!-- Only preload regular images -->
       <template is="dom-if" if="[[!dzi]]">
-        <paper-spinner-lite
+        <paper-spinner
           hidden$="[[hideSpinner]]"
           active="[[loading]]"
-        ></paper-spinner-lite>
+        ></paper-spinner>
         <img-loader
           loaded="{{loaded}}"
           loading="{{loading}}"
@@ -101,7 +102,6 @@ class ImgPanZoom extends PolymerElement {
       // loading
       loading: {
         type: Boolean,
-        readonly: true,
         notify: true
       },
       // hides spinner
@@ -112,7 +112,6 @@ class ImgPanZoom extends PolymerElement {
       // loaded
       loaded: {
         type: Boolean,
-        readonly: true,
         notify: true,
         observer: "_loadedChanged"
       },
@@ -173,8 +172,12 @@ class ImgPanZoom extends PolymerElement {
       }
     };
   }
+  /**
+   * life cycle
+   */
   constructor() {
     super();
+    import("@polymer/paper-spinner/paper-spinner.js");
     import("@lrnwebcomponents/img-pan-zoom/lib/img-loader.js");
     const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
     let location = `${basePath}lib/openseadragon/build/openseadragon/openseadragon.js`;
@@ -191,6 +194,28 @@ class ImgPanZoom extends PolymerElement {
       this._initOpenSeadragon();
     }
   }
+  /**
+   * life cycle
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    this.animationConfig = {
+      fade: {
+        name: "fade-in-animation",
+        node: this.shadowRoot.querySelector("#viewer")
+      }
+    };
+    afterNextRender(this, function() {
+      // Init openseadragon if we are using a deep zoom image
+      if (this.dzi && this.__openseadragonLoaded) {
+        // Add src changed observer
+        this._initOpenSeadragon();
+      }
+    });
+  }
+  /**
+   * life cycle
+   */
   disconnectedCallback() {
     super.disconnectedCallback();
     window.removeEventListener(
@@ -198,22 +223,6 @@ class ImgPanZoom extends PolymerElement {
       this._openseadragonLoaded.bind(this)
     );
   }
-  ready() {
-    super.ready();
-    this.animationConfig = {
-      fade: {
-        name: "fade-in-animation",
-        node: this.shadowRoot.querySelector("#viewer")
-      }
-    };
-
-    // Init openseadragon if we are using a deep zoom image
-    if (this.dzi && this.__openseadragonLoaded) {
-      // Add src changed observer
-      this._initOpenSeadragon();
-    }
-  }
-
   // Init openseadragon
   _initOpenSeadragon() {
     setTimeout(() => {

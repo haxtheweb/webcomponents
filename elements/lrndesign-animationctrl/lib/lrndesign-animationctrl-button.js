@@ -18,7 +18,7 @@ class LrndesignAnimationctrlButton extends PolymerElement {
           display: none;
         }
       </style>
-      <paper-button raised="" id="[[name]]" on-tap="_tap">
+      <paper-button raised="" id="[[name]]" on-click="_tap">
         [[name]]
         <iron-icon icon="[[icon]]" hidden$="[[!icon]]"></iron-icon>
       </paper-button>

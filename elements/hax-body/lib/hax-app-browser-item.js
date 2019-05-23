@@ -183,7 +183,7 @@ class HAXAppBrowserItem extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     afterNextRender(this, function() {
-      this.addEventListener("tap", this._fireEvent);
+      this.addEventListener("click", this._fireEvent);
       this.addEventListener("mousedown", this.tapEventOn);
       this.addEventListener("mouseover", this.tapEventOn);
       this.addEventListener("mouseout", this.tapEventOff);
@@ -192,7 +192,7 @@ class HAXAppBrowserItem extends PolymerElement {
     });
   }
   disconnectedCallback() {
-    this.removeEventListener("tap", this._fireEvent);
+    this.removeEventListener("click", this._fireEvent);
     this.removeEventListener("mousedown", this.tapEventOn);
     this.removeEventListener("mouseover", this.tapEventOn);
     this.removeEventListener("mouseout", this.tapEventOff);

@@ -252,7 +252,7 @@ class LrnappStudioKanban extends PolymerElement {
                     hover-class="amber lighten-2"
                     hidden="[[!project.meta.canUpdate]]"
                     icon="create"
-                    on-tap="_makeProjectEditLink"
+                    on-click="_makeProjectEditLink"
                   >
                   </lrnsys-button>
                   <lrnapp-studio-assignment-button
@@ -276,7 +276,7 @@ class LrnappStudioKanban extends PolymerElement {
                     header="Delete project!"
                     hidden="[[!project.meta.canDelete]]"
                     icon="delete-forever"
-                    on-tap="_deleteProjectDialog"
+                    on-click="_deleteProjectDialog"
                     icon-class="no-margin"
                   >
                   </lrnsys-button>
@@ -315,7 +315,7 @@ class LrnappStudioKanban extends PolymerElement {
                             class="operation"
                             hover-class="amber lighten-4"
                             hidden="[[!assignment.meta.canUpdate]]"
-                            on-tap="_makeAssignmentEditLink"
+                            on-click="_makeAssignmentEditLink"
                             icon-class="no-margin green-text text-darken-4"
                           ></lrnsys-button>
                           <lrnsys-button
@@ -325,7 +325,7 @@ class LrnappStudioKanban extends PolymerElement {
                             class="operation"
                             hover-class="amber lighten-4"
                             hidden="[[!assignment.meta.canDelete]]"
-                            on-tap="_deleteAssignmentDialog"
+                            on-click="_deleteAssignmentDialog"
                             icon-class="no-margin red-text text-darken-4"
                           ></lrnsys-button>
                         </span>
@@ -346,7 +346,7 @@ class LrnappStudioKanban extends PolymerElement {
           <paper-button dialog-dismiss="">Decline</paper-button>
           <paper-button
             id="deleteaccept"
-            on-tap="_handleDelete"
+            on-click="_handleDelete"
             dialog-confirm=""
             autofocus=""
             >Accept</paper-button
@@ -408,7 +408,7 @@ class LrnappStudioKanban extends PolymerElement {
               <div main-title=""></div>
               <paper-toggle-button
                 id="activetoggle"
-                on-tap="statusToggle"
+                on-click="statusToggle"
               ></paper-toggle-button>
               <span id="activetoggletext"></span>
               <div bottom-item="" class="status-rationale">

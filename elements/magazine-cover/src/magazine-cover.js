@@ -167,7 +167,12 @@ class MagazineCover extends PolymerElement {
           <p hidden$="[[!text]]">[[text]]</p>
           <slot></slot>
         </div>
-        <a tabindex="-1" href$="[[link]]" id="actionlink" on-tap="_linkTapped">
+        <a
+          tabindex="-1"
+          href$="[[link]]"
+          id="actionlink"
+          on-click="_linkTapped"
+        >
           <paper-button raised="" id="action">
             <span id="label"
               >[[action]]<iron-icon

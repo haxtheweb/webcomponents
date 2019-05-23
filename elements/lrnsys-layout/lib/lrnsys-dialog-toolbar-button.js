@@ -17,7 +17,12 @@ class LrnsysDialogToolbarButton extends PolymerElement {
           width: 16px;
         }
       </style>
-      <paper-button raisedon-tap="_onTap" id$="[[id]]" aria-label$="[[title]]">
+      <paper-button
+        raised
+        on-click="_onTap"
+        id$="[[id]]"
+        aria-label$="[[title]]"
+      >
         <iron-icon icon="[[icon]]"></iron-icon> [[title]]
       </paper-button>
       <paper-tooltip for$="[[id]]" animation-delay="200"

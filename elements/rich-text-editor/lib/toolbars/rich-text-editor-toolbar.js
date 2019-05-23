@@ -127,7 +127,7 @@ class RichTextEditorToolbar extends PolymerElement {
           show-text-label$="[[moreShowTextLabel]]"
           label-toggled$="[[moreLabelToggled]]"
           toggled$="[[!collapsed]]"
-          on-tap="_toggleMore"
+          on-click="_toggleMore"
         >
         </rich-text-editor-more-button>
       </div>

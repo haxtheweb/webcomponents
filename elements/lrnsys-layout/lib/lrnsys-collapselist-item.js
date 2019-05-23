@@ -49,7 +49,7 @@ class LrnsysCollapselistItem extends PolymerElement {
         }
       </style>
       <paper-button
-        on-tap="collapseToggle"
+        on-click="collapseToggle"
         id="collapse-trigger"
         aria-controls="collapse"
       >

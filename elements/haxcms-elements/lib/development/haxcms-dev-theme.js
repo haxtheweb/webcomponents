@@ -158,7 +158,7 @@ class HAXCMSDevTheme extends HAXCMSTheme(PolymerElement) {
       <div class="buttons">
         <site-menu-button type="prev"></site-menu-button>
         <site-menu-button type="next"></site-menu-button>
-        <paper-button id="unset" on-tap="resetActive"
+        <paper-button id="unset" on-click="resetActive"
           >Unset activeItem</paper-button
         >
         <site-rss-button type="atom"></site-rss-button>
@@ -187,7 +187,7 @@ class HAXCMSDevTheme extends HAXCMSTheme(PolymerElement) {
           <div id="slot"><slot></slot></div>
         </div>
       </div>
-      <site-render-query class="cardlist" grid on-tap="_itemTapped">
+      <site-render-query class="cardlist" grid on-click="_itemTapped">
         <template>
           <div style="padding:8px;">
             <paper-card

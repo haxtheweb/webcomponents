@@ -105,22 +105,22 @@ class EditableListItem extends PolymerElement {
       <div class="input" hidden$="[[editing]]">[[value]]</div>
       <div class="ops" hidden$="[[!editMode]]">
         <paper-icon-button
-          on-tap="_editToggle"
+          on-click="_editToggle"
           id="edit"
           icon="icons:create"
         ></paper-icon-button>
         <paper-icon-button
-          on-tap="_editToggle"
+          on-click="_editToggle"
           id="add"
           icon="icons:add"
         ></paper-icon-button>
         <paper-icon-button
-          on-tap="_editToggle"
+          on-click="_editToggle"
           id="duplicate"
           icon="icons:content-copy"
         ></paper-icon-button>
         <paper-icon-button
-          on-tap="_deleteModal"
+          on-click="_deleteModal"
           id="delete"
           icon="icons:delete"
         ></paper-icon-button>

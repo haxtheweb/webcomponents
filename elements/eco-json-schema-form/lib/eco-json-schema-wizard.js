@@ -352,7 +352,7 @@ class EcoJsonSchemaWizard extends mixinBehaviors(
             id="prevButton"
             icon="arrow-back"
             hidden\$="{{!hasPrev}}"
-            on-tap="prev"
+            on-click="prev"
             raised=""
             >{{localize('prev')}}</paper-icon-button
           ><span
@@ -364,14 +364,14 @@ class EcoJsonSchemaWizard extends mixinBehaviors(
             id="nextButton"
             icon="arrow-forward"
             hidden\$="{{!hasNext}}"
-            on-tap="next"
+            on-click="next"
             raised=""
             >{{localize('next')}}</paper-icon-button
           >
           <paper-icon-button
             id="submitButton"
             icon="cloud-upload"
-            on-tap="submit"
+            on-click="submit"
             raised=""
             >{{localize('submit')}}</paper-icon-button
           >
@@ -384,7 +384,7 @@ class EcoJsonSchemaWizard extends mixinBehaviors(
           attr-for-selected="name"
         ></iron-pages>
         <app-toolbar class="bottom">
-          <div hidden\$="{{!hasPrev}}" on-tap="prev">
+          <div hidden\$="{{!hasPrev}}" on-click="prev">
             <paper-icon-button id="prevButton" icon="arrow-back" raised=""
               >{{localize('prev')}}</paper-icon-button
             >
@@ -396,7 +396,7 @@ class EcoJsonSchemaWizard extends mixinBehaviors(
             class="title layout horizontal flex"
             style="white-space: normal"
           ></span>
-          <div hidden\$="{{!hasNext}}" on-tap="next">
+          <div hidden\$="{{!hasNext}}" on-click="next">
             <span class="title layout" style="white-space: normal"
               >{{localize('next')}}</span
             >

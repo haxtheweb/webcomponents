@@ -83,7 +83,7 @@ class MoocContent extends PolymerElement {
                       Outline
                     </span>
                     <div class="elmsln-modal-content" id="block-mooc-helper-mooc-helper-toc-nav-modal">
-                      <div id="outlinemodal" on-tap="_modalTap"><slot name="outlinemodal"></slot></div>
+                      <div id="outlinemodal" on-click="_modalTap"><slot name="outlinemodal"></slot></div>
                     </div>
                   </lrnsys-dialog>
                   <div id="navigation"><slot name="navigation"></slot></div>

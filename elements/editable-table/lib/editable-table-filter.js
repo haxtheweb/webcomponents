@@ -75,11 +75,11 @@ class EditableTableFilter extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     afterNextRender(this, function() {
-      this.addEventListener("tap", this._onFilterTapped.bind(this));
+      this.addEventListener("click", this._onFilterTapped.bind(this));
     });
   }
   disconnectedCallback() {
-    this.removeEventListener("tap", this._onFilterTapped.bind(this));
+    this.removeEventListener("click", this._onFilterTapped.bind(this));
     super.disconnectedCallback();
   }
   static get properties() {

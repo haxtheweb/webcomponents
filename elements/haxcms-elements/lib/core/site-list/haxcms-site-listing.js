@@ -417,7 +417,7 @@ class HAXCMSSiteListing extends PolymerElement {
           <slot name="app-header-pre"></slot>
           <div class="operations">
             <paper-button
-              on-tap="_addTap"
+              on-click="_addTap"
               id="add"
               raised
               hidden$="[[!loggedIn]]"
@@ -427,20 +427,20 @@ class HAXCMSSiteListing extends PolymerElement {
           </div>
           <div class="main-title">[[title]]</div>
           <div class="selected-operations" data-hidden$="[[!hasSelectedItems]]">
-            <paper-button on-tap="_bulkSitesConfirm" id="publish" raised>
+            <paper-button on-click="_bulkSitesConfirm" id="publish" raised>
               <iron-icon icon="editor:publish"></iron-icon> Publish
             </paper-button>
-            <paper-button on-tap="_bulkSitesConfirm" id="clone" raised>
+            <paper-button on-click="_bulkSitesConfirm" id="clone" raised>
               <iron-icon icon="icons:content-copy"></iron-icon> Clone
             </paper-button>
-            <paper-button on-tap="_bulkSitesConfirm" id="download" raised>
+            <paper-button on-click="_bulkSitesConfirm" id="download" raised>
               <iron-icon icon="icons:file-download"></iron-icon> Download
             </paper-button>
-            <paper-button on-tap="_bulkSitesConfirm" id="archive" raised>
+            <paper-button on-click="_bulkSitesConfirm" id="archive" raised>
               <iron-icon icon="icons:archive"></iron-icon> Archive
             </paper-button>
             <paper-button
-              on-tap="_bulkSitesConfirm"
+              on-click="_bulkSitesConfirm"
               id="delete"
               raised
               class="danger"
@@ -450,7 +450,7 @@ class HAXCMSSiteListing extends PolymerElement {
           </div>
           <div class="operations">
             <paper-button
-              on-tap="_settingsTap"
+              on-click="_settingsTap"
               id="settings"
               raised
               hidden$="[[!showSpecialButtons(hideGlobalSettings,loggedIn)]]"
@@ -459,7 +459,7 @@ class HAXCMSSiteListing extends PolymerElement {
             </paper-button>
             <paper-button
               hidden$="[[!showSpecialButtons(hideLogin,loggedIn)]]"
-              on-tap="_loginUserRoutine"
+              on-click="_loginUserRoutine"
               id="login"
               ><iron-icon icon="[[__loginIcon]]"></iron-icon>
               [[__loginText]]</paper-button
@@ -612,7 +612,7 @@ class HAXCMSSiteListing extends PolymerElement {
         </paper-dialog-scrollable>
         <div class="buttons">
           <paper-button
-            on-tap="_confirmBulkOperation"
+            on-click="_confirmBulkOperation"
             dialog-confirm
             id="bulksites"
             class="action-button"
@@ -657,7 +657,7 @@ class HAXCMSSiteListing extends PolymerElement {
         </div>
         <div class="buttons">
           <paper-button
-            on-tap="_createSite"
+            on-click="_createSite"
             class="action-button"
             dialog-confirm
             id="create"
@@ -678,7 +678,7 @@ class HAXCMSSiteListing extends PolymerElement {
         </paper-dialog-scrollable>
         <div class="buttons">
           <paper-button
-            on-tap="_saveConfig"
+            on-click="_saveConfig"
             dialog-confirm
             id="saveconfig"
             class="action-button"

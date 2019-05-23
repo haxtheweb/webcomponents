@@ -139,42 +139,42 @@ class ItemOverlayOps extends PolymerElement {
       <div id="container">
         <div class="ops">
           <paper-icon-button
-            on-tap="_opTap"
+            on-click="_opTap"
             icon="icons:add"
             id="add"
             hidden\$="[[!add]]"
             title="Add to this"
           ></paper-icon-button>
           <paper-icon-button
-            on-tap="_opTap"
+            on-click="_opTap"
             icon="icons:create"
             id="edit"
             hidden\$="[[!edit]]"
             title="Edit this"
           ></paper-icon-button>
           <paper-icon-button
-            on-tap="_opTap"
+            on-click="_opTap"
             icon="icons:swap-horiz"
             id="move"
             hidden\$="[[!move]]"
             title="Move this"
           ></paper-icon-button>
           <paper-icon-button
-            on-tap="_opTap"
+            on-click="_opTap"
             icon="icons:delete"
             id="remove"
             hidden\$="[[!remove]]"
             title="Delete this"
           ></paper-icon-button>
           <paper-icon-button
-            on-tap="_opTap"
+            on-click="_opTap"
             icon="icons:content-copy"
             id="duplicate"
             hidden\$="[[!duplicate]]"
             title="Duplicate this"
           ></paper-icon-button>
           <paper-icon-button
-            on-tap="_opTap"
+            on-click="_opTap"
             icon="icons:cancel"
             id="cancel"
             hidden\$="[[!__anyOp]]"
@@ -184,13 +184,13 @@ class ItemOverlayOps extends PolymerElement {
         <div class="active-op">[[activeTitle]]</div>
         <div id="workingarea" class\$="[[activeOp]]">
           <paper-icon-button
-            on-tap="_optionSelected"
+            on-click="_optionSelected"
             id="option1"
             title="[[__option1Text]]"
             icon="[[__option1Icon]]"
           ></paper-icon-button>
           <paper-icon-button
-            on-tap="_optionSelected"
+            on-click="_optionSelected"
             id="option2"
             title="[[__option2Text]]"
             icon="[[__option2Icon]]"

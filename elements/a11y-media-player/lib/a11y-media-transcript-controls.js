@@ -145,7 +145,7 @@ class A11yMediaTranscriptControls extends A11yMediaBehaviors {
             controls="transcript"
             icon="[[_getLocal('autoScroll','icon')]]"
             label="[[_getLocal('autoScroll','label')]]"
-            on-tap="_handleScrollClick"
+            on-click="_handleScrollClick"
             toggle$="[[!disableScroll]]"
           >
           </a11y-media-button>
@@ -160,7 +160,7 @@ class A11yMediaTranscriptControls extends A11yMediaBehaviors {
             controls="transcript"
             icon$="[[_getLocal('download','icon')]]"
             label="[[_getLocal('download','label')]]"
-            on-tap="_handleDownloadClick"
+            on-click="_handleDownloadClick"
           >
           </a11y-media-button>
           <a11y-media-button
@@ -168,7 +168,7 @@ class A11yMediaTranscriptControls extends A11yMediaBehaviors {
             controls="transcript"
             icon$="[[_getLocal('print','icon')]]"
             label="[[_getLocal('print','label')]]"
-            on-tap="_handlePrintClick"
+            on-click="_handlePrintClick"
           >
           </a11y-media-button>
         </div>

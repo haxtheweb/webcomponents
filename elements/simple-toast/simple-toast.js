@@ -58,7 +58,7 @@ class SimpleToast extends PolymerElement {
         class$="[[classStyle]]"
       >
         <slot></slot>
-        <paper-button hidden$="[[!closeButton]]" on-tap="hide"
+        <paper-button hidden$="[[!closeButton]]" on-click="hide"
           >[[closeText]]</paper-button
         >
       </paper-toast>

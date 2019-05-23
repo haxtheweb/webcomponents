@@ -136,7 +136,7 @@ class A11yMediaButton extends A11yMediaBehaviors {
         aria-pressed$="[[toggle]]"
         controls="[[controls]]"
         disabled$="[[disabled]]"
-        on-tap="_buttonTap"
+        on-click="_buttonTap"
         role="button"
         tabindex="0"
         toggle$="[[toggle]]"
@@ -172,7 +172,7 @@ class A11yMediaButton extends A11yMediaBehaviors {
    * lets player know this button was clicked
    */
   _buttonTap() {
-    this.dispatchEvent(new CustomEvent("tap", { detail: this }));
+    this.dispatchEvent(new CustomEvent("click", { detail: this }));
   }
 }
 window.customElements.define(A11yMediaButton.tag, A11yMediaButton);

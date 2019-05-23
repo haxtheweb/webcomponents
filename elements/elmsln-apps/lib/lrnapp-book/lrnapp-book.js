@@ -409,7 +409,7 @@ class LrnappBook extends HAXCMSTheme(PolymerElement) {
                   title="Content outline"
                   id="menubutton"
                   icon="menu"
-                  on-tap="toggleBook"
+                  on-click="toggleBook"
                 ></paper-icon-button>
               </div>
               <div spacer="" class="outline-title">[[outlineTitle]]</div>
@@ -431,7 +431,7 @@ class LrnappBook extends HAXCMSTheme(PolymerElement) {
               </div>
               <!--
               <div class="your-progress-button">
-                <lrnsys-dialog body-append modal on-tap="progressdashboardopen" header="Your progress" alt="Your progress">
+                <lrnsys-dialog body-append modal on-click="progressdashboardopen" header="Your progress" alt="Your progress">
                   <span slot="button"><iron-icon icon="av:equalizer"></iron-icon></span>
                   <div>
                     <lrnapp-book-progress-dashboard id="progressdashboard" source-path="[[progressDashboardPath]]" route-data="[[data]]"></lrnapp-book-progress-dashboard>
@@ -458,7 +458,7 @@ class LrnappBook extends HAXCMSTheme(PolymerElement) {
               <paper-icon-button
                 id="next"
                 title="[[nextLabel]]"
-                on-tap="_nextBtn"
+                on-click="_nextBtn"
                 icon="hardware:keyboard-arrow-right"
                 data-voicecommand="next page"
                 hidden\$="[[!hasNextPage]]"
@@ -476,7 +476,7 @@ class LrnappBook extends HAXCMSTheme(PolymerElement) {
               <paper-icon-button
                 id="prev"
                 title="[[prevLabel]]"
-                on-tap="_prevBtn"
+                on-click="_prevBtn"
                 icon="hardware:keyboard-arrow-left"
                 data-voicecommand="previous page"
                 hidden\$="[[!hasPrevPage]]"

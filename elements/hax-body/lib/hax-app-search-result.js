@@ -89,7 +89,7 @@ class HaxAppSearchResult extends PolymerElement {
         }
       </style>
 
-      <paper-button on-tap="_itemSelected" class="button">
+      <paper-button on-click="_itemSelected" class="button">
         <iron-image
           alt=""
           class="image"

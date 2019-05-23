@@ -116,7 +116,7 @@ class richTextEditorPrompt extends PolymerElement {
               id="cancel"
               class="rtebutton"
               controls="[[__targetId]]"
-              on-tap="_cancel"
+              on-click="_cancel"
               tabindex="0"
             >
               <iron-icon id="icon" aria-hidden icon="clear"> </iron-icon>
@@ -127,7 +127,7 @@ class richTextEditorPrompt extends PolymerElement {
               id="confirm"
               class="rtebutton"
               controls="[[__targetId]]"
-              on-tap="_confirm"
+              on-click="_confirm"
               tabindex="0"
             >
               <iron-icon id="icon" aria-hidden icon="check"> </iron-icon>

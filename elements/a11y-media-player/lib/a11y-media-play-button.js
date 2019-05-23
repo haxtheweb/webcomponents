@@ -139,7 +139,7 @@ class A11yMediaPlayButton extends A11yMediaBehaviors {
         controls="video"
         disabled$="[[disabled]]"
         label="[[playPause.label]]"
-        on-tap="_buttonTap"
+        on-click="_buttonTap"
         tabindex="0"
         title$="[[label]]"
       >

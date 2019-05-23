@@ -162,7 +162,7 @@ class PieMenu extends PolymerElement {
             xlink:title\$="[[centerLabel]]"
             data-button="center"
             tabindex="0"
-            on-tap="_itemTapped"
+            on-click="_itemTapped"
             on-keydown="_itemTapped"
             role="button"
             cx="96.97"
@@ -175,7 +175,7 @@ class PieMenu extends PolymerElement {
             data-button="top"
             role="button"
             tabindex="0"
-            on-tap="_itemTapped"
+            on-click="_itemTapped"
             on-keydown="_itemTapped"
             d="M28.4 28.4a97 97 0 0 1 137.14 0l-46 46.05a31.84 31.84 0 0 0-45 0z"
           ></path>
@@ -185,7 +185,7 @@ class PieMenu extends PolymerElement {
             data-button="right"
             role="button"
             tabindex="0"
-            on-tap="_itemTapped"
+            on-click="_itemTapped"
             on-keydown="_itemTapped"
             d="M165.54 28.4a97 97 0 0 1 0 137.14l-46-46a31.86 31.86 0 0 0 0-45z"
           ></path>
@@ -195,7 +195,7 @@ class PieMenu extends PolymerElement {
             data-button="bottom"
             role="button"
             tabindex="0"
-            on-tap="_itemTapped"
+            on-click="_itemTapped"
             on-keydown="_itemTapped"
             d="M165.54 165.54a97 97 0 0 1-137.14 0l46.05-46a31.84 31.84 0 0 0 45 0z"
           ></path>
@@ -205,7 +205,7 @@ class PieMenu extends PolymerElement {
             data-button="left"
             role="button"
             tabindex="0"
-            on-tap="_itemTapped"
+            on-click="_itemTapped"
             on-keydown="_itemTapped"
             d="M28.4 165.54a97 97 0 0 1 0-137.14l46.05 46.05a31.84 31.84 0 0 0 0 45z"
           ></path>

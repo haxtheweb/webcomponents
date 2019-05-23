@@ -419,14 +419,14 @@ class OutlineDesigner extends PolymerElement {
         <app-toolbar>
           View: [[viewModeLabel]]
           <paper-icon-button
-            on-tap="_toggleViewMode"
+            on-click="_toggleViewMode"
             id="viewmode"
             icon="[[viewModeIcon]]"
           ></paper-icon-button>
           <paper-tooltip for="viewmode">[[viewModeLabel]]</paper-tooltip>
           Detail: [[detailsModeLabel]]
           <paper-icon-button
-            on-tap="_toggleDetailsMode"
+            on-click="_toggleDetailsMode"
             id="detailsmode"
             icon="[[detailsModeIcon]]"
           ></paper-icon-button>
@@ -452,7 +452,7 @@ class OutlineDesigner extends PolymerElement {
           </div>
           <div>
             <paper-icon-button
-              on-tap="_toggleMiniMap"
+              on-click="_toggleMiniMap"
               id="minimap"
               icon="device:gps-fixed"
               title="Toggle outline mini map"

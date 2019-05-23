@@ -137,7 +137,7 @@ class SimpleDrawer extends PolymerElement {
           <div class="content">
             <slot name="content"></slot>
           </div>
-          <paper-button id="close" on-tap="close">
+          <paper-button id="close" on-click="close">
             <iron-icon icon="[[closeIcon]]"></iron-icon> [[closeLabel]]
           </paper-button>
         </div>

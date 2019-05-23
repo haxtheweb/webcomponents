@@ -96,7 +96,7 @@ class HaxGizmoBrowserItem extends PolymerElement {
         }
       </style>
       <paper-button
-        on-tap="_fireEvent"
+        on-click="_fireEvent"
         data-voicecommand$="select [[title]]"
         title="[[title]]"
         style$="background-color:[[hexColor]];"

@@ -43,7 +43,7 @@ class LrnVocab extends SchemaBehaviors(PolymerElement) {
           @apply --lrn-vocab-button-hover;
         }
       </style>
-      <paper-button id="button" noink on-tap="openDialog"
+      <paper-button id="button" noink on-click="openDialog"
         >[[term]]</paper-button
       >
     `;

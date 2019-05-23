@@ -122,11 +122,11 @@ class A11yCollapseIconButton extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     afterNextRender(this, function() {
-      this.$.expand.addEventListener("tap", this._onTap.bind(this));
+      this.$.expand.addEventListener("click", this._onTap.bind(this));
     });
   }
   disconnectedCallback() {
-    this.$.expand.removeEventListener("tap", this._onTap.bind(this));
+    this.$.expand.removeEventListener("click", this._onTap.bind(this));
     super.disconnectedCallback();
   }
   /**

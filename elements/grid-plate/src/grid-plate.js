@@ -128,28 +128,28 @@ class GridPlate extends PolymerElement {
           icon="icons:arrow-upward"
           title="move item up"
           id="up"
-          on-tap="moveActiveElement"
+          on-click="moveActiveElement"
         >
         </paper-icon-button>
         <paper-icon-button
           icon="icons:arrow-forward"
           title="move item right"
           id="right"
-          on-tap="moveActiveElement"
+          on-click="moveActiveElement"
         >
         </paper-icon-button>
         <paper-icon-button
           icon="icons:arrow-downward"
           title="move item down"
           id="down"
-          on-tap="moveActiveElement"
+          on-click="moveActiveElement"
         >
         </paper-icon-button>
         <paper-icon-button
           icon="icons:arrow-back"
           title="move item left"
           id="left"
-          on-tap="moveActiveElement"
+          on-click="moveActiveElement"
         >
         </paper-icon-button>
       </div>

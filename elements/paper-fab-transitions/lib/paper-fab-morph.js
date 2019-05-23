@@ -165,7 +165,7 @@ class PaperFabMorph extends PolymerElement {
 
     if (this.isOverlayContent) {
       this._fab.addEventListener(
-        "tap",
+        "click",
         function() {
           this._content.open();
         }.bind(this)
@@ -182,7 +182,7 @@ class PaperFabMorph extends PolymerElement {
       this._dropdown = dropdown;
 
       this._fab.addEventListener(
-        "tap",
+        "click",
         function() {
           this._dropdown.open();
         }.bind(this)

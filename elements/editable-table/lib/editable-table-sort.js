@@ -78,11 +78,11 @@ class EditableTableSort extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     afterNextRender(this, function() {
-      this.addEventListener("tap", this._onSortTapped.bind(this));
+      this.addEventListener("click", this._onSortTapped.bind(this));
     });
   }
   disconnectedCallback() {
-    this.removeEventListener("tap", this._onSortTapped.bind(this));
+    this.removeEventListener("click", this._onSortTapped.bind(this));
     super.disconnectedCallback();
   }
 

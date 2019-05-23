@@ -26,7 +26,7 @@ class LrnappStudioProjectButton extends PolymerElement {
           class\$="[[classes]]"
           button-class\$="[[classes]]"
           icon="[[icon]]"
-          on-tap="_createProject"
+          on-click="_createProject"
           label="Create project"
         ></lrnsys-button>
         <iron-ajax

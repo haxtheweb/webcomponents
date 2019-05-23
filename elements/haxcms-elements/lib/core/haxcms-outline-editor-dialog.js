@@ -72,9 +72,9 @@ class HAXCMSOutlineEditorDialog extends PolymerElement {
         hidden$="[[!viewMode]]"
       ></json-editor>
       <div class="buttons">
-        <paper-button dialog-confirm on-tap="_saveTap">Save</paper-button>
+        <paper-button dialog-confirm on-click="_saveTap">Save</paper-button>
         <paper-button dialog-dismiss>Cancel</paper-button>
-        <paper-button id="toggle" on-tap="toggleView"
+        <paper-button id="toggle" on-click="toggleView"
           ><iron-icon icon="[[_viewIcon]]"></iron-icon
           >[[viewLabel]]</paper-button
         >

@@ -36,7 +36,7 @@ class RichTextEditorBreadcrumb extends PolymerElement {
         id="button"
         class="rtebutton rtebreadcrumb"
         controls$="[[controls]]"
-        on-tap="_buttonTap"
+        on-click="_buttonTap"
         tabindex="0"
       >
         [[tag]]

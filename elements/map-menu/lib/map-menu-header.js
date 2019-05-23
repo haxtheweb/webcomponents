@@ -186,12 +186,12 @@ class MapMenuHeader extends PolymerElement {
       })
     );
     afterNextRender(this, function() {
-      this.addEventListener("tap", this.__tap.bind(this));
+      this.addEventListener("click", this.__tap.bind(this));
       this.addEventListener("keypress", this.__keypress.bind(this));
     });
   }
   disconnectedCallback() {
-    this.removeEventListener("tap", this.__tap.bind(this));
+    this.removeEventListener("click", this.__tap.bind(this));
     this.removeEventListener("keypress", this.__keypress.bind(this));
     super.disconnectedCallback();
   }
