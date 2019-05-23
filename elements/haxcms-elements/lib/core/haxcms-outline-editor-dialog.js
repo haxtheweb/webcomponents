@@ -201,11 +201,10 @@ class HAXCMSOutlineEditorDialog extends PolymerElement {
    * Save hit, send the message to push up the outline changes.
    */
   _saveTap(e) {
-    this.dispatchEvent(
+    window.dispatchEvent(
       new CustomEvent("haxcms-save-outline", {
         bubbles: true,
         composed: true,
-        cancelable: false,
         detail: this.$.outline.exportJsonOutlineSchemaItems(true)
       })
     );

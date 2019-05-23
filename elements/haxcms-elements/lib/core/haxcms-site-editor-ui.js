@@ -417,7 +417,8 @@ class HAXCMSSiteEditorUI extends PolymerElement {
         title: "Add a new page",
         elements: { content: this.__newForm, buttons: b },
         invokedBy: this.$.addbutton,
-        clone: false
+        clone: false,
+        modal: true
       }
     });
     window.dispatchEvent(evt);
@@ -498,7 +499,8 @@ class HAXCMSSiteEditorUI extends PolymerElement {
         title: "Are you sure you want to delete this page?",
         elements: { content: c, buttons: b },
         invokedBy: this.$.deletebutton,
-        clone: false
+        clone: false,
+        modal: true
       }
     });
     window.dispatchEvent(evt);
@@ -531,7 +533,8 @@ class HAXCMSSiteEditorUI extends PolymerElement {
           content: document.createElement("haxcms-outline-editor-dialog")
         },
         invokedBy: this.$.outlinebutton,
-        clone: false
+        clone: false,
+        modal: true
       }
     });
     window.dispatchEvent(evt);
@@ -540,14 +543,14 @@ class HAXCMSSiteEditorUI extends PolymerElement {
    * toggle state on button tap
    */
   _manifestButtonTap(e) {
-    var normalizedEvent = dom(e);
-    const evt = new CustomEvent("haxcms-load-site-fields", {
-      bubbles: true,
-      composed: true,
-      cancelable: false,
-      detail: normalizedEvent.localTarget
-    });
-    window.dispatchEvent(evt);
+    window.dispatchEvent(
+      new CustomEvent("haxcms-load-site-fields", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: e.target
+      })
+    );
   }
   /**
    * Edit state has changed.

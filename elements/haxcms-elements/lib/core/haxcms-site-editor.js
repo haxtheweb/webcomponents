@@ -575,7 +575,8 @@ class HAXCMSSiteEditor extends PolymerElement {
         title: "Edit " + store.activeTitle + " fields",
         elements: { content: c, buttons: b },
         invokedBy: this.__nodeFieldsInvoked,
-        clone: false
+        clone: false,
+        modal: true
       }
     });
     window.dispatchEvent(evt);
@@ -651,18 +652,20 @@ class HAXCMSSiteEditor extends PolymerElement {
     b.appendChild(b1);
     b.appendChild(b2);
     b.appendChild(b3);
-    const evt = new CustomEvent("simple-modal-show", {
-      bubbles: true,
-      composed: true,
-      cancelable: false,
-      detail: {
-        title: "Edit site fields",
-        elements: { header: h, content: c, buttons: b },
-        invokedBy: this.__siteFieldsInvoked,
-        clone: false
-      }
-    });
-    window.dispatchEvent(evt);
+    window.dispatchEvent(
+      new CustomEvent("simple-modal-show", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: {
+          title: "Edit site fields",
+          elements: { header: h, content: c, buttons: b },
+          invokedBy: this.__siteFieldsInvoked,
+          clone: false,
+          modal: true
+        }
+      })
+    );
   }
   _schemaFormValueChanged(e) {
     let customTag = {
@@ -1064,6 +1067,7 @@ class HAXCMSSiteEditor extends PolymerElement {
    * Save the outline based on an event firing.
    */
   saveOutline(e) {
+    console.log(e);
     // now let's work on the outline
     this.set("updateOutlineData.siteName", this.manifest.metadata.siteName);
     this.notifyPath("updateOutlineData.siteName");
