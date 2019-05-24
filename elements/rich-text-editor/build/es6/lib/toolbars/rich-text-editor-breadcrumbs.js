@@ -1,12 +1,13 @@
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+ */ import {
+  html,
+  PolymerElement
+} from "../../node_modules/@polymer/polymer/polymer-element.js";
 import "./rich-text-editor-breadcrumb.js";
 import "../rich-text-editor-styles.js";
 import "../buttons/rich-text-editor-button-styles.js";
-
 /**
  * `rich-text-editor-breadcrumbs`
  * `A utility that manages the state of multiple rich-text-prompts on one page.`
@@ -16,8 +17,7 @@ import "../buttons/rich-text-editor-button-styles.js";
  *
  * @customElement
  * @polymer
- */
-class RichTextEditorBreadcrumbs extends PolymerElement {
+ */ class RichTextEditorBreadcrumbs extends PolymerElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */ // render function
   static get template() {
     return html`
@@ -60,91 +60,61 @@ class RichTextEditorBreadcrumbs extends PolymerElement {
       </template>
     `;
   }
-
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
+   */ static get tag() {
     return "rich-text-editor-breadcrumbs";
-  }
-
-  // properties available to the custom element for data binding
+  } // properties available to the custom element for data binding
   static get properties() {
     return {
       /**
        * fields for the prompt popover.
-       */
-      ancestorNodes: {
+       */ ancestorNodes: {
         type: Array,
         computed: "_getAncestorNodes(selection,controls)"
       },
       /**
        * The active rict-text-editor.
-       */
-      controls: {
-        type: String,
-        value: null
-      },
+       */ controls: { type: String, value: null },
       /**
        * Hide breadcrumbs
-       */
-      hidden: {
-        type: Boolean,
-        value: false,
-        reflectToAttribute: true
-      },
+       */ hidden: { type: Boolean, value: !1, reflectToAttribute: !0 },
       /**
        * The breadcrumb labels.
-       */
-      label: {
-        name: "label",
-        type: String,
-        value: "Expand selection: "
-      },
+       */ label: { name: "label", type: String, value: "Expand selection: " },
       /**
        * The selected text.
-       */
-      selection: {
-        type: Object,
-        value: null
-      },
+       */ selection: { type: Object, value: null },
       /**
        * Should the breadcrumbs stick to the top so that it is always visible?
-       */
-      sticky: {
+       */ sticky: {
         name: "sticky",
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        value: !1,
+        reflectToAttribute: !0
       }
     };
   }
-
   /**
    * life cycle, element is afixed to the DOM
    * Makes sure there is a utility ready and listening for elements.
-   */
-  connectedCallback() {
+   */ connectedCallback() {
     super.connectedCallback();
   }
   /**
    * updates the breadcrumbs
    * @param {object} the selected range
-   */
-  _getAncestorNodes(selection, controls) {
+   */ _getAncestorNodes(selection, controls) {
     let nodes = [],
       node = "",
-      ancestor = false,
-      parent = false;
+      ancestor = !1,
+      parent = !1;
     if (selection) ancestor = selection.commonAncestorContainer;
     if (ancestor) parent = ancestor;
     this.hidden = !ancestor;
-    while (parent && parent.nodeName !== "RICH-TEXT-EDITOR") {
-      nodes.unshift({
-        tag: parent.nodeName.toLowerCase(),
-        target: parent
-      });
+    while (parent && "RICH-TEXT-EDITOR" !== parent.nodeName) {
+      nodes.unshift({ tag: parent.nodeName.toLowerCase(), target: parent });
       parent = parent.parentNode;
     }
     return nodes;
