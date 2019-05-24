@@ -23,7 +23,7 @@ class SimpleColors extends PolymerElement {
   // render function
   static get template() {
     return html`
-      <style is="custom-style" include="simple-colors"></style>
+      <style></style>
       <slot></slot>
     `;
   }
@@ -57,7 +57,7 @@ class SimpleColors extends PolymerElement {
       colors: {
         name: "colors",
         type: "Object",
-        value: window.SimpleColorsUtilities.colors,
+        value: window.SimpleColorsStyles.colors,
         notify: true
       }
     };
@@ -71,6 +71,7 @@ class SimpleColors extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
+    this.__utils = window.SimpleColorsStyles.requestAvailability();
   }
 
   /**
@@ -87,7 +88,7 @@ class SimpleColors extends PolymerElement {
    * @param {number} the shade with maximum contrast
    */
   maxContrastShade(shade) {
-    return window.SimpleColorsUtilities.maxContrastShade(shade);
+    return this.__utils.maxContrastShade(shade);
   }
 
   /**
@@ -97,7 +98,7 @@ class SimpleColors extends PolymerElement {
    * @param {number} the inverted shade
    */
   invertShade(shade) {
-    return window.SimpleColorsUtilities.invertShade(shade);
+    return this.__utils.invertShade(shade);
   }
 
   /**
@@ -107,19 +108,7 @@ class SimpleColors extends PolymerElement {
    * @param {object} an object that includes the theme, color, and shade information
    */
   getColorInfo(colorName) {
-    let temp1 = colorName
-        .replace(/(.+simple-colors-)?(-text)?(-border)?/g, "")
-        .split("-theme-"),
-      theme = temp1.length > 0 ? temp1[0] : "default",
-      temp2 = temp1.length > 0 ? temp1[1].split("-") : temp1[0].split("-"),
-      color =
-        temp2.length > 1 ? temp2.slice(1, temp2.length - 1).join("-") : "grey",
-      shade = temp2.length > 1 ? temp2[temp2.length - 1] : "1";
-    return {
-      theme: theme,
-      color: color,
-      shade: shade
-    };
+    return this.__utils.getColorInfo(colorName);
   }
 
   /**
@@ -131,27 +120,10 @@ class SimpleColors extends PolymerElement {
    * @returns {string} the CSS Variable
    */
   makeVariable(color = "grey", shade = 1, theme = "default") {
-    return window.SimpleColorsUtilities.makeVariable(
+    return this.__utils.makeVariable(
       (color = "grey"),
       (shade = 1),
       (theme = "default")
-    );
-  }
-
-  /**
-   * returns a variable based on color name, shade, and fixed theme
-   *
-   * @param {string} the color name
-   * @param {number} the color shade
-   * @param {boolean} the color shade
-   * @returns {string} the CSS class
-   */
-  makeClass(color = "grey", shade = 1, theme = "default", suffix = "") {
-    return window.SimpleColorsUtilities.makeClass(
-      (color = "grey"),
-      (shade = 1),
-      (theme = "default"),
-      (suffix = "")
     );
   }
 
@@ -166,11 +138,7 @@ class SimpleColors extends PolymerElement {
    * @param {object} all of the WCAG 2.0 AA-compliant colors and shades
    */
   getContrastingColors(colorName, colorShade, isLarge) {
-    return window.SimpleColorsUtilities.getContrastingColors(
-      colorName,
-      colorShade,
-      isLarge
-    );
+    return this.__utils.getContrastingColors(colorName, colorShade, isLarge);
   }
 
   /**
@@ -185,7 +153,7 @@ class SimpleColors extends PolymerElement {
    * @param {array} all of the WCAG 2.0 AA-compliant shades of the contrasting color
    */
   getContrastingShades(isLarge, colorName, colorShade, contrastName) {
-    return window.SimpleColorsUtilities.getContrastingShades(
+    return this.__utils.getContrastingShades(
       isLarge,
       colorName,
       colorShade,
@@ -210,7 +178,7 @@ class SimpleColors extends PolymerElement {
     contrastName,
     contrastShade
   ) {
-    return window.SimpleColorsUtilities.isContrastCompliant(
+    return this.__utils.isContrastCompliant(
       isLarge,
       colorName,
       colorShade,

@@ -24,7 +24,7 @@ class simpleColorsSwatches extends SimpleColors {
   //render function
   static get template() {
     return html`
-      <style is="custom-style" include="simple-colors">
+      <style>
         :host {
           display: block;
           margin: 15px 0;

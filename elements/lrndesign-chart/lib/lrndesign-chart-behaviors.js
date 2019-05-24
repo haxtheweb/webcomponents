@@ -23,7 +23,7 @@ class LrndesignChartBehaviors extends SchemaBehaviors(SimpleColors) {
   // render function
   static get template() {
     return html`
-      <style is="custom-style" include="simple-colors">
+      <style>
         :host {
           display: block;
         }

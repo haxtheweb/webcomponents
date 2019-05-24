@@ -19,13 +19,13 @@
       <demo-snippet>
         <p>
           Simple-colors is a method for managing colors. It includes a 
-          custom element, CSS variable, shared styles, and more.
+          custom element, and CSS variables declared in shared styles.
         </p>
         <p>
           With simple colors, you can easily create a dark mode version of 
           your interfaces, and/or swap accent colors on the fly.
         </p>
-        <style is="custom-style" include="simple-colors">
+        <style>
           div {
             padding: 20px;
             margin: 0 0 15px;
@@ -106,7 +106,7 @@
         </div>
         <simple-colors id="simplecolors">
           <div id="box">
-            <p class="simple-colors-default-theme-accent-7-text">This is an accent-color box.</p>
+            <p>This is an accent-color box.</p>
             <button class="button">
               Button
             </button>

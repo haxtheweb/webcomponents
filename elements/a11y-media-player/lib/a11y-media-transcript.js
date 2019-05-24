@@ -130,7 +130,7 @@ class A11yMediaTranscript extends A11yMediaBehaviors {
   //render function
   static get template() {
     return html`
-      <style is="custom-style" include="simple-colors">
+      <style>
         :host {
           color: var(--a11y-media-transcript-cue-color);
           background-color: var(--a11y-media-transcript-cue-bg-color);

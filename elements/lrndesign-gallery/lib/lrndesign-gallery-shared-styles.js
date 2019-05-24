@@ -15,7 +15,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-flex-layout/iron-flex-layout.js";
 const styleElement = document.createElement("dom-module");
 const css = html`
-  <style is="custom-style" include="simple-colors">
+  <style>
     :host {
       display: block;
       --lrndesign-gallery-color: var(--simple-colors-default-theme-grey-12);
