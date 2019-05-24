@@ -8,15 +8,15 @@
  * @microcopy - language worth noting:
  *  -
  *
- * @pseudoElement
+ * @customElement
  * @polymer
  * @demo demo/index.html
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 
-window.SimpleColorsUtilities = {};
-window.SimpleColorsUtilities.instance = null;
-window.SimpleColorsUtilities.colors = {
+window.SimpleColorsStyles = {};
+window.SimpleColorsStyles.instance = null;
+window.SimpleColorsStyles.colors = {
   grey: [
     "#ffffff",
     "#eeeeee",
@@ -284,14 +284,7 @@ window.SimpleColorsUtilities.colors = {
     "#0f1518"
   ]
 };
-class SimpleColorsUtilities extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-      <slot></slot>
-    `;
-  }
-
+class SimpleColorsStyles extends PolymerElement {
   // properties available to the custom element for data binding
   static get properties() {
     return {
@@ -301,7 +294,7 @@ class SimpleColorsUtilities extends PolymerElement {
        */
       colors: {
         type: Object,
-        value: window.SimpleColorsUtilities.colors
+        value: window.SimpleColorsStyles.colors
       },
       /**
        * Object with information on which color combinations are WCAG 2.0AA compliant, eg: ```
@@ -635,7 +628,7 @@ class SimpleColorsUtilities extends PolymerElement {
     let greys = this.colors["grey"];
     this.__sheet.insertRule(
       this.makeRule(
-        "body",
+        "html",
         this.addColorShades("default", "accent", greys, false) +
           this.addThemeVariables("default", false)
       ),
@@ -643,7 +636,7 @@ class SimpleColorsUtilities extends PolymerElement {
     );
     this.__sheet.insertRule(
       this.makeRule(
-        "body",
+        "html",
         this.addColorShades("fixed", "accent", greys, false) +
           this.addThemeVariables("fixed", false)
       ),
@@ -691,18 +684,18 @@ class SimpleColorsUtilities extends PolymerElement {
     return selector + " {\n" + style + "\n}\n";
   }
 }
-window.customElements.define(SimpleColorsUtilities.tag, SimpleColorsUtilities);
-export { SimpleColorsUtilities };
+window.customElements.define(SimpleColorsStyles.tag, SimpleColorsStyles);
+export { SimpleColorsStyles };
 
 /**
  * Checks to see if there is an instance available, and if not appends one
  */
-window.SimpleColorsUtilities.requestAvailability = function() {
-  if (window.SimpleColorsUtilities.instance == null) {
-    window.SimpleColorsUtilities.instance = document.createElement(
+window.SimpleColorsStyles.requestAvailability = function() {
+  if (window.SimpleColorsStyles.instance == null) {
+    window.SimpleColorsStyles.instance = document.createElement(
       "simple-colors-styles"
     );
   }
-  document.body.appendChild(window.SimpleColorsUtilities.instance);
-  return window.SimpleColorsUtilities.instance;
+  document.body.appendChild(window.SimpleColorsStyles.instance);
+  return window.SimpleColorsStyles.instance;
 };

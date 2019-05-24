@@ -38,7 +38,7 @@ const SimpleColorsStory = {
   slots: {},
   attr: ``,
   slotted: `
-    <style is="custom-style" include="simple-colors">
+    <style>
       div {
         padding: 20px;
         margin: 0 0 15px;

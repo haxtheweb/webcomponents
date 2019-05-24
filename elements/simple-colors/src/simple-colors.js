@@ -23,6 +23,7 @@ class SimpleColors extends PolymerElement {
   // render function
   static get template() {
     return html`
+      <style></style>
       <slot></slot>
     `;
   }
@@ -56,7 +57,7 @@ class SimpleColors extends PolymerElement {
       colors: {
         name: "colors",
         type: "Object",
-        value: window.SimpleColorsUtilities.colors,
+        value: window.SimpleColorsStyles.colors,
         notify: true
       }
     };
@@ -70,7 +71,7 @@ class SimpleColors extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.__utils = window.SimpleColorsUtilities.requestAvailability();
+    this.__utils = window.SimpleColorsStyles.requestAvailability();
   }
 
   /**

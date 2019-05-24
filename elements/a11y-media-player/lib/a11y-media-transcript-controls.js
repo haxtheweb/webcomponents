@@ -60,7 +60,7 @@ class A11yMediaTranscriptControls extends A11yMediaBehaviors {
   //render function
   static get template() {
     return html`
-      <style is="custom-style" include="simple-colors">
+      <style>
         :host {
           display: flex;
           height: 44px;
