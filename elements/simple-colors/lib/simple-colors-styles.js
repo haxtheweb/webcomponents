@@ -594,26 +594,6 @@ utils.addCssVariables = () => {
         utils.addThemeVariables("fixed", false)
     )
   );
-
-  /**
-   * dark and light themes will be deprecated
-   * in favor of default and fixed themes
-   */
-  str.push(
-    utils.addStatement(
-      ":host",
-      utils.addColorShades("light", "accent", greys, false) +
-        utils.addThemeVariables("light", false)
-    )
-  );
-
-  str.push(
-    utils.addStatement(
-      ":host",
-      utils.addColorShades("dark", "accent", greys, true) +
-        utils.addThemeVariables("dark", true)
-    )
-  );
   str.push(
     utils.addStatement(
       ":host([dark])",
@@ -636,9 +616,7 @@ utils.addAccentVariables = () => {
         ':host([accent-color="' + color + '"])',
         [
           utils.addColorShades("default", "accent", utils.colors[color], false),
-          utils.addColorShades("fixed", "accent", utils.colors[color], false),
-          utils.addColorShades("light", "accent", utils.colors[color], false),
-          utils.addColorShades("dark", "accent", utils.colors[color], true)
+          utils.addColorShades("fixed", "accent", utils.colors[color], false)
         ].join("")
       )
     );
@@ -651,46 +629,6 @@ utils.addAccentVariables = () => {
         ].join("")
       )
     );
-  }
-  return utils.addStyle(str.join(""));
-};
-/**
- * adds all CSS color classes for a given theme
- *
- * @returns {object}
- */
-utils.addClasses = () => {
-  let themes = ["default", "fixed", "light", "dark"],
-    str = [];
-  for (let i = 0; i < themes.length; i++) {
-    for (let j = 0; j < utils.colors["grey"].length; j++) {
-      let bg = ":host " + utils.makeClass("accent", j + 1, themes[i]),
-        cssvar = utils.makeVariable("accent", j + 1, themes[i]);
-      str.push(
-        [
-          utils.addStatement(bg, "background-color: var(" + cssvar + ");"),
-          utils.addStatement(bg + "-text", "color: var(" + cssvar + ");"),
-          utils.addStatement(
-            bg + "-border",
-            "border: 1px solid var(" + cssvar + ");"
-          )
-        ].join("")
-      );
-      for (let color in utils.colors) {
-        let bg = ":host " + utils.makeClass(color, i + 1, themes[i]),
-          cssVar = utils.makeVariable(color, i + 1, themes[i]);
-        str.push(
-          [
-            utils.addStatement(bg, "background-color: var(" + cssvar + ");"),
-            utils.addStatement(bg + "-text", "color: var(" + cssvar + ");"),
-            utils.addStatement(
-              bg + "-border",
-              "border: 1px solid var(" + cssvar + ");"
-            )
-          ].join("")
-        );
-      }
-    }
   }
   return utils.addStyle(str.join(""));
 };
@@ -712,7 +650,6 @@ utils.testStyle = str => {
 const template = document.createElement("template"),
   styleElement = document.createElement("dom-module");
 
-template.innerHTML =
-  utils.addCssVariables() + utils.addAccentVariables() + utils.addClasses();
+template.innerHTML = utils.addCssVariables() + utils.addAccentVariables();
 styleElement.appendChild(template);
 styleElement.register("simple-colors");

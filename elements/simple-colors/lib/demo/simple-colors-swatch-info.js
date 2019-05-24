@@ -65,7 +65,7 @@ class simpleColorsSwatchInfo extends SimpleColors {
         </caption>
         <thead>
           <tr>
-            <th scope="col">Variable or Class Name</th>
+            <th scope="col">Variable Name</th>
             <th scope="col">Color</th>
             <th scope="col">With <tt>dark</tt> Attribute</th>
           </tr>
@@ -84,64 +84,6 @@ class simpleColorsSwatchInfo extends SimpleColors {
             </th>
             <td style$="[[bg]]">default color</td>
             <td style$="[[bg]]">fixed color</td>
-          </tr>
-          <tr>
-            <th scope="row">
-              <tt>.simple-colors-default-theme-[[swatchName]]</tt>
-            </th>
-            <td style$="[[bg]]">default background color</td>
-            <td style$="[[inverseBg]]">inverted background color</td>
-          </tr>
-          <tr>
-            <th scope="row">
-              <tt>.simple-colors-fixed-theme-[[swatchName]]</tt>
-            </th>
-            <td style$="[[bg]]">default background color</td>
-            <td style$="[[bg]]">fixed background color</td>
-          </tr>
-          <tr>
-            <th scope="row">
-              <tt>.simple-colors-default-theme-[[swatchName]]-text</tt>
-            </th>
-            <td style$="[[text]]">default text color</td>
-            <td style$="[[inverseText]]">inverted text color</td>
-          </tr>
-          <tr>
-            <th scope="row">
-              <tt>.simple-colors-fixed-theme-[[swatchName]]-text</tt>
-            </th>
-            <td style$="[[text]]">default text color</td>
-            <td style$="[[text]]">fixed text color</td>
-          </tr>
-          <tr>
-            <th scope="row">
-              <tt>.simple-colors-default-theme-[[swatchName]]-border</tt>
-            </th>
-            <td>
-              <div>
-                <span style$="[[border]]"> default border color</span>
-              </div>
-            </td>
-            <td>
-              <div>
-                <span style$="[[inverseBorder]]">inverted border color</span>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">
-              <tt>.simple-colors-fixed-theme-[[swatchName]]-border</tt>
-            </th>
-            <td>
-              <div style$="[[border]]">
-                default border color
-              </div>
-            </td>
-            <td>
-              <div style$="[[border]]">
-                fixed border color
-              </div>
-            </td>
           </tr>
         </tbody>
       </table>
@@ -232,22 +174,6 @@ class simpleColorsSwatchInfo extends SimpleColors {
         name: "inverseText",
         type: "String",
         computed: "_getInverseText(swatchId)"
-      },
-      /**
-       * A style where swatch color is the border-color
-       */
-      border: {
-        name: "border",
-        type: "String",
-        computed: "_getBorder(swatchId)"
-      },
-      /**
-       * A style where swatch color is the border-color in dark mode
-       */
-      inverseBorder: {
-        name: "inverseBorder",
-        type: "String",
-        computed: "_getInverseBorder(swatchId)"
       }
     };
   }
@@ -322,18 +248,6 @@ class simpleColorsSwatchInfo extends SimpleColors {
   }
 
   /**
-   * gets a style where swatch color is the border-color,
-   * eg. `border: 3px solid var(--simple-colors-default-theme-red-11);`
-   *
-   * @param {string} a swatch id (`color_index`)
-   * @returns {string} the style
-   */
-  _getBorder(swatchId, inverse = false) {
-    let colors = this._getColors(swatchId, inverse);
-    return "border: 3px solid " + colors[0] + "; padding: 3px;";
-  }
-
-  /**
    * gets a style where swatch color is the background-color in dark mode,
    * eg. `background: var(--simple-colors-default-theme-red-2); color: var(--simple-colors-default-theme-grey-12);`
    *
@@ -342,17 +256,6 @@ class simpleColorsSwatchInfo extends SimpleColors {
    */
   _getInverseBg(swatchId) {
     return this._getBg(swatchId, true);
-  }
-
-  /**
-   * gets a style where swatch color is the border-color in dark mode,
-   * eg. `border: 3px solid var(--simple-colors-default-theme-red-2);`
-   *
-   * @param {string} a swatch id (`color_index`)
-   * @returns {string} the style
-   */
-  _getInverseBorder(swatchId) {
-    return this._getBorder(swatchId, true);
   }
 
   /**
