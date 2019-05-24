@@ -305,6 +305,15 @@ class MultipleChoice extends SchemaBehaviors(PolymerElement) {
       this.__toastText = this.incorrectText;
       this.$.toast.show();
     }
+    // start of data passing, this is a prototype atm
+    this.dispatchEvent(
+      new CustomEvent("user-engagement", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: { passed: gotRight }
+      })
+    );
   }
 
   /**

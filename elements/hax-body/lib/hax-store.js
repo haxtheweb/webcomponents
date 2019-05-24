@@ -803,6 +803,9 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
         this._onBeforeUnload.bind(this)
       );
       window.addEventListener("paste", this._onPaste.bind(this));
+      // import voice command stuff in the background
+      // @todo only activate if the setting to use it is in place
+      import("@lrnwebcomponents/hal-9000/hal-9000.js");
       // set this global flag so we know it's safe to start trusting data
       // that is written to global preferences / storage bin
       setTimeout(() => {
@@ -952,13 +955,12 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
    */
   constructor() {
     super();
+    setPassiveTouchGestures(true);
     import("@lrnwebcomponents/hax-body/lib/hax-app.js");
     import("@lrnwebcomponents/hax-body/lib/hax-stax.js");
     import("@lrnwebcomponents/hax-body/lib/hax-stax-browser.js");
     import("@lrnwebcomponents/hax-body/lib/hax-blox.js");
     import("@lrnwebcomponents/hax-body/lib/hax-blox-browser.js");
-    import("@lrnwebcomponents/hal-9000/hal-9000.js");
-    setPassiveTouchGestures(true);
     // claim the instance spot. This way we can easily
     // be referenced globally
     if (window.HaxStore.instance == null) {
