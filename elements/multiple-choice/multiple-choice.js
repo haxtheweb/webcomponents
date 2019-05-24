@@ -212,6 +212,13 @@ class MultipleChoice extends SchemaBehaviors(PolymerElement) {
           value: "Better luck next time!"
         },
         /**
+         * Name of the quiz - hardcoded for now from HTML
+         */
+        quizName: {
+          type: String,
+          value: "Default Quiz"
+        },
+        /**
          * Randomize the display of the answers
          */
         randomize: {
@@ -306,14 +313,11 @@ class MultipleChoice extends SchemaBehaviors(PolymerElement) {
       this.$.toast.show();
     }
 
-    //let eventData = [''];
     const evt = new CustomEvent("user-engagement", {
       bubbles: true,
       composed: true,
       cancelable: false,
-      detail: { passed: gotRight }
-      ///detail: {name: "dave"}
-      //detail: eventData
+      detail: { nameOfQuiz: this.quizName, passed: gotRight }
     });
     this.dispatchEvent(evt);
   }
@@ -437,6 +441,12 @@ class MultipleChoice extends SchemaBehaviors(PolymerElement) {
             property: "incorrectText",
             title: "Incorrect feedback",
             description: "Feedback when they get it wrong",
+            inputMethod: "textfield"
+          },
+          {
+            property: "quizName",
+            title: "Name of the quiz",
+            description: "Quiz name passed in",
             inputMethod: "textfield"
           }
         ],
