@@ -1,3 +1,8 @@
-<div id="menu"><slot name="menu"></slot></div>
-<div id="content"><slot name="content"></slot></div>
+<div id="content-wrapper">
+  <div id="prepend-child"><paper-button on-tap="_handleAddChild">Insert into [[type]]</paper-button></div>
+  <div id="content"><slot></slot></div>
+</div>
+<div id="insert-sibling-after">
+  <paper-button on-tap="_handleAddSibling">Add new [[type]]</paper-button>
+</div>
 

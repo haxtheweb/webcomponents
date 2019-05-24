@@ -1,1 +1,12 @@
-{}
+{
+  "type": {
+    "name": "type",
+    "type": "Boolean",
+    "value": "layout"
+  },
+  "id": {
+    "name": "id",
+    "type": "String",
+    "reflecttoAttribute": true
+  }
+}
