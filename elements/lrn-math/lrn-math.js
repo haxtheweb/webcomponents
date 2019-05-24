@@ -164,6 +164,9 @@ class MathTex extends HTMLElement {
     this.attachShadow({ mode: "open" });
     check_handler();
   }
+  static get tag() {
+    return "lrn-math";
+  }
 
   connectedCallback() {
     const elem = this;
@@ -177,8 +180,12 @@ class MathTex extends HTMLElement {
       update(elem);
       elem._private.observer.observe(elem, mutation_config);
     });
-    // Establish hax properties if they exist
-    let props = {
+    let wiring = new HAXWiring();
+    wiring.setup(MathTex.haxProperties, MathTex.tag, this);
+  }
+
+  static get haxProperties() {
+    return {
       canScale: true,
       canPosition: true,
       canEditSource: true,
@@ -216,8 +223,6 @@ class MathTex extends HTMLElement {
         advanced: []
       }
     };
-    let wiring = new HAXWiring();
-    wiring.setup(props, "lrn-math", this);
   }
 
   disconnectedCallback() {
@@ -228,4 +233,4 @@ class MathTex extends HTMLElement {
   }
 }
 
-window.customElements.define("lrn-math", MathTex);
+window.customElements.define(MathTex.tag, MathTex);
