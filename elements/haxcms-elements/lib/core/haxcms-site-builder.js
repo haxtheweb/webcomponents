@@ -4,7 +4,6 @@ import { updateStyles } from "@polymer/polymer/lib/mixins/element-mixin.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
-import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import {
   encapScript,
   findTagsInHTML,

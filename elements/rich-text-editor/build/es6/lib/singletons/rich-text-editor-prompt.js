@@ -1,16 +1,15 @@
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
-import "@lrnwebcomponents/simple-popover/simple-popover.js";
-import "@lrnwebcomponents/simple-fields/simple-fields.js";
-import "../buttons/rich-text-editor-button-styles.js";
-
-// register globally so we can make sure there is only one
-window.RichTextEditorPrompt = window.RichTextEditorPrompt || {};
-// request if this exists. This helps invoke the element existing in the dom
+ */ import {
+  html,
+  PolymerElement
+} from "../../node_modules/@polymer/polymer/polymer-element.js";
+import "../../node_modules/@polymer/iron-a11y-keys/iron-a11y-keys.js";
+import "../../node_modules/@lrnwebcomponents/simple-popover/simple-popover.js";
+import "../../node_modules/@lrnwebcomponents/simple-fields/simple-fields.js";
+import "../buttons/rich-text-editor-button-styles.js"; // register globally so we can make sure there is only one
+window.RichTextEditorPrompt = window.RichTextEditorPrompt || {}; // request if this exists. This helps invoke the element existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same modal
 window.RichTextEditorPrompt.requestAvailability = () => {
@@ -31,8 +30,7 @@ window.RichTextEditorPrompt.requestAvailability = () => {
  *
  * @customElement
  * @polymer
- */
-class RichTextEditorPrompt extends PolymerElement {
+ */ class RichTextEditorPrompt extends PolymerElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */ // render function
   static get template() {
     return html`
@@ -116,7 +114,7 @@ class RichTextEditorPrompt extends PolymerElement {
               id="cancel"
               class="rtebutton"
               controls="[[__targetId]]"
-              on-click="_cancel"
+              on-tap="_cancel"
               tabindex="0"
             >
               <iron-icon id="icon" aria-hidden icon="clear"> </iron-icon>
@@ -127,7 +125,7 @@ class RichTextEditorPrompt extends PolymerElement {
               id="confirm"
               class="rtebutton"
               controls="[[__targetId]]"
-              on-click="_confirm"
+              on-tap="_confirm"
               tabindex="0"
             >
               <iron-icon id="icon" aria-hidden icon="check"> </iron-icon>
@@ -152,75 +150,45 @@ class RichTextEditorPrompt extends PolymerElement {
       </simple-popover>
     `;
   }
-
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
+   */ static get tag() {
     return "rich-text-editor-prompt";
-  }
-
-  // properties available to the custom element for data binding
+  } // properties available to the custom element for data binding
   static get properties() {
     return {
       /**
        * Is the  target id.
-       */
-      for: {
-        type: String,
-        value: null
-      },
+       */ for: { type: String, value: null },
       /**
        * The selected text.
-       */
-      selection: {
-        type: Object,
-        value: null
-      },
+       */ selection: { type: Object, value: null },
       /**
        * fields for the prompt popover.
-       */
-      fields: {
-        type: Array,
-        value: null
-      },
+       */ fields: { type: Array, value: null },
       /**
        * The prefilled value of the prompt
-       */
-      value: {
-        type: Object,
-        value: null
-      },
+       */ value: { type: Object, value: null },
       /**
        * The prefilled value of the prompt
-       */
-      __button: {
-        type: Object,
-        value: null
-      }
+       */ __button: { type: Object, value: null }
     };
   }
-
   /**
    * Makes sure there is a utility ready and listening for elements.
-   */
-  constructor() {
+   */ constructor() {
     super();
-    let root = this;
-
-    // sets the instance to the current instance
+    let root = this; // sets the instance to the current instance
     if (!window.RichTextEditorPrompt.instance) {
       window.RichTextEditorPrompt.instance = this;
       return this;
     }
   }
-
   /**
    * life cycle, element is afixed to the DOM
    * Makes sure there is a utility ready and listening for elements.
-   */
-  connectedCallback() {
+   */ connectedCallback() {
     super.connectedCallback();
     this.__a11yconfirm = this.$.confirm;
     this.__a11ycancel = this.$.cancel;
@@ -228,22 +196,18 @@ class RichTextEditorPrompt extends PolymerElement {
       this._cancel(e);
     });
   }
-
   /**
    * Loads element into array
-   */
-  setTarget(button) {
+   */ setTarget(button) {
     this.clearTarget();
     this.set("fields", button.fields);
     this.set("value", button.value);
     this.__button = button;
     this.for = button.__selectionContents.getAttribute("id");
   }
-
   /**
    * Unloads element from array
-   */
-  clearTarget() {
+   */ clearTarget() {
     if (!this.__button) return;
     this.for = null;
     this.set("fields", null);
@@ -252,8 +216,7 @@ class RichTextEditorPrompt extends PolymerElement {
   }
   /**
    * Handles button tap;
-   */
-  _cancel(e) {
+   */ _cancel(e) {
     e.preventDefault();
     if (!this.__button) return;
     this.__button.cancel();
@@ -261,8 +224,7 @@ class RichTextEditorPrompt extends PolymerElement {
   }
   /**
    * Handles button tap;
-   */
-  _confirm(e) {
+   */ _confirm(e) {
     e.preventDefault();
     this.__button.value = this.value;
     this.__button.confirm();

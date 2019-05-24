@@ -122,6 +122,8 @@ class A11yMediaYoutube extends PolymerElement {
         if (start !== null) {
           start = Math.max(0, start);
           cue.startSeconds = start;
+        } else {
+          start = 0;
         }
         if (end !== null) {
           end = start !== null ? Math.max(start, end) : Math.max(0, end);
@@ -153,7 +155,7 @@ class A11yMediaYoutube extends PolymerElement {
       length: 1,
       start: index => {
         iframe.seekable.start = index => {
-          return start !== null ? start : 0;
+          return start || 0;
         };
       },
       end: index => {

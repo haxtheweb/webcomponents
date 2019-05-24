@@ -204,23 +204,6 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
       root._addSourcesAndTracks();
     }
     root.$.transcript.setMedia(root.$.innerplayer);
-    afterNextRender(this, function() {
-      this.shadowRoot
-        .querySelector("#slider")
-        .addEventListener("mousedown", this._handleSliderStart.bind(this));
-      this.shadowRoot
-        .querySelector("#slider")
-        .addEventListener("mouseup", this._handleSliderStop.bind(this));
-      this.shadowRoot
-        .querySelector("#slider")
-        .addEventListener("keydown", this._handleSliderStart.bind(this));
-      this.shadowRoot
-        .querySelector("#slider")
-        .addEventListener("keyup", this._handleSliderStop.bind(this));
-      this.shadowRoot
-        .querySelector("#slider")
-        .addEventListener("blur", this._handleSliderStop.bind(this));
-    });
   }
 
   /**
@@ -738,7 +721,11 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
       root.__duration = root.media.duration = root.media.getDuration();
       root.disableSeek = false;
       root._addSourcesAndTracks();
-      if (root.media.seekable !== undefined && root.media.seekable.length > 0) {
+      if (
+        root.media.seekable &&
+        root.media.seekable.length > 0 &&
+        root.media.seekable.start(0) !== 0
+      ) {
         root.$.slider.min = root.media.seekable.start(0);
       }
     }
@@ -965,21 +952,6 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    this.shadowRoot
-      .querySelector("#slider")
-      .removeEventListener("mousedown", this._handleSliderStart.bind(this));
-    this.shadowRoot
-      .querySelector("#slider")
-      .removeEventListener("mouseup", this._handleSliderStop.bind(this));
-    this.shadowRoot
-      .querySelector("#slider")
-      .removeEventListener("keydown", this._handleSliderStart.bind(this));
-    this.shadowRoot
-      .querySelector("#slider")
-      .removeEventListener("keyup", this._handleSliderStop.bind(this));
-    this.shadowRoot
-      .querySelector("#slider")
-      .removeEventListener("blur", this._handleSliderStop.bind(this));
     window.removeEventListener(
       "es-bridge-screenfullLib-loaded",
       this._onScreenfullLoaded.bind(this)

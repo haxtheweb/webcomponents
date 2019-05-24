@@ -151,7 +151,7 @@ class MultipleChoice extends SchemaBehaviors(PolymerElement) {
          */
         checkLabel: {
           type: String,
-          value: "Check answer Finally"
+          value: "Check answer"
         },
         /**
          * Text of the reset button
@@ -312,14 +312,15 @@ class MultipleChoice extends SchemaBehaviors(PolymerElement) {
       this.__toastText = this.incorrectText;
       this.$.toast.show();
     }
-
-    const evt = new CustomEvent("user-engagement", {
-      bubbles: true,
-      composed: true,
-      cancelable: false,
-      detail: { nameOfQuiz: this.quizName, passed: gotRight }
-    });
-    this.dispatchEvent(evt);
+    // start of data passing, this is a prototype atm
+    this.dispatchEvent(
+      new CustomEvent("user-engagement", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: { nameOfQuiz: this.quizName, passed: gotRight }
+      })
+    );
   }
 
   /**
