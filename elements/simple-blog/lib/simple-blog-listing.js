@@ -1,6 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js";
 import "@polymer/iron-list/iron-list.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status";
 /**
  * `simple-blog-listing`
  * `A simple blog and associated elements`
@@ -16,6 +17,19 @@ class SimpleBlogListing extends PolymerElement {
   constructor() {
     super();
     import("@lrnwebcomponents/simple-blog/lib/simple-blog-overview.js");
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, function() {
+      this.shadowRoot.querySelector("iron-list").dispatchEvent(
+        new CustomEvent("iron-resize", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: true
+        })
+      );
+    });
   }
   // render function
   static get template() {
@@ -36,6 +50,9 @@ class SimpleBlogListing extends PolymerElement {
           iron-list {
             padding: 0 32px;
           }
+        }
+        simple-blog-overview:not(:defined) {
+          display: none;
         }
         simple-blog-overview {
           width: 100%;
