@@ -1088,7 +1088,7 @@ class HAXCMSSiteEditor extends PolymerElement {
     // if we have a cssVariable selected then generate a hexCode off of it
     if (values.cssVariable) {
       values.hexCode =
-        window.SimpleColorsUtilities.colors[
+        window.SimpleColorsStyles.colors[
           values.cssVariable
             .replace("--simple-colors-default-theme-", "")
             .replace("-7", "")
