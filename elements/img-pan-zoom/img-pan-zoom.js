@@ -180,7 +180,7 @@ class ImgPanZoom extends PolymerElement {
     import("@polymer/paper-spinner/paper-spinner.js");
     import("@lrnwebcomponents/img-pan-zoom/lib/img-loader.js");
     const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
-    let location = `${basePath}lib/openseadragon/build/openseadragon/openseadragon.js`;
+    let location = `${basePath}lib/openseadragon/build/openseadragon/openseadragon.min.js`;
     window.addEventListener(
       "es-bridge-openseadragon-loaded",
       this._openseadragonLoaded.bind(this)
