@@ -35,7 +35,12 @@ class UserAction extends HTMLElement {
         icon: "icons:android",
         color: "green",
         groups: ["Action"],
-        handles: [],
+        handles: [
+          {
+            type: "inline",
+            text: ""
+          }
+        ],
         meta: {
           author: "btopro",
           owner: "The Pennsylvania State University"
@@ -46,13 +51,13 @@ class UserAction extends HTMLElement {
         configure: [
           {
             attribute: "track",
-            title: "Track when the user..",
-            description: "What event to reack",
+            title: "Track when the user: ",
+            description: "What event to react to",
             inputMethod: "select",
             options: {
-              visibility: "Sees this item",
-              keypress: "Presses a key",
-              click: "Clicks on it"
+              visibility: "Can see this",
+              keypress: "Presses a key here",
+              click: "Clicks this"
             },
             required: true,
             icon: "icons:android"
@@ -63,6 +68,14 @@ class UserAction extends HTMLElement {
             description:
               "Default behavior is just to track the first occurance",
             inputMethod: "boolean",
+            required: false,
+            icon: "icons:android"
+          },
+          {
+            slot: "",
+            title: "Content",
+            description: "Content that can emit events",
+            inputMethod: "code-editor",
             required: false,
             icon: "icons:android"
           }
