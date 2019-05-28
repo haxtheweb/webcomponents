@@ -313,12 +313,29 @@ class MultipleChoice extends SchemaBehaviors(PolymerElement) {
       this.$.toast.show();
     }
     // start of data passing, this is a prototype atm
+    let eventData = [""];
+    eventData = {
+      dbType: "xapistatements",
+      activityDisplay: "answered",
+      activityId: "http://adlnet.gov/expapi/verbs/answered",
+      objectId: "http://haxcms.psu.edu/haxQuiz",
+      objectName: this.quizName,
+      objectDescription: "HAX Quiz",
+      resultScoreScaled: 1,
+      resultScoreMin: 0,
+      resultScoreMax: 100,
+      resultScoreRaw: 100,
+      resultSuccess: gotRight,
+      resultCompletion: true,
+      resultResponse: "sample",
+      resultDuration: "sample"
+    };
     this.dispatchEvent(
       new CustomEvent("user-engagement", {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: { nameOfQuiz: this.quizName, passed: gotRight }
+        detail: eventData
       })
     );
   }

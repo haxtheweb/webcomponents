@@ -4,7 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 
-//WHERE SHOULD THIS GO???
+//Confirm this is the proper way to import/use
 import "./pouchdb.min.js";
 
 // register globally so we can make sure there is only one
@@ -75,8 +75,6 @@ class PouchDb extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener("pouch-db-hide", this.hidePouchDb.bind(this));
-    window.addEventListener("pouch-db-show", this.showPouchDb.bind(this));
     window.addEventListener(
       "user-engagement",
       this.userEngagmentFunction.bind(this)
@@ -84,80 +82,64 @@ class PouchDb extends PolymerElement {
   }
 
   userEngagmentFunction(e) {
-    var db = new PouchDB("xapistatements");
+    var eventData = e.detail;
+    var db = new PouchDB(eventData.dbType);
     var remoteCouch = false;
     ///var remoteCouch = 'http://35.164.8.64:3000/todos';
-
-    function createStatement(quizNameAdded, quizPassed, callback) {
-      var objectStatement = {
-        actor: {
-          mbox: "mailto:dave@gmail.com",
-          name: "Dave Fusco",
-          objectType: "Agent"
-        },
-        verb: {
-          id: "http://adlnet.gov/expapi/verbs/answered",
-          display: {
-            "en-US": "answered"
+    var objectStatement = {
+      actor: {
+        mbox: "mailto:dave@gmail.com",
+        name: "Dave Fusco",
+        objectType: "Agent"
+      },
+      verb: {
+        id: eventData.activityId,
+        display: {
+          "en-US": eventData.activityDisplay
+        }
+      },
+      object: {
+        id: eventData.objectId,
+        definition: {
+          name: {
+            "en-US": eventData.objectName
+          },
+          description: {
+            "en-US": eventData.objectDescription
           }
         },
-        object: {
-          id: "http://haxcms.psu.edu/quiz",
-          definition: {
-            name: {
-              "en-US": quizNameAdded
-            },
-            description: {
-              "en-US": "HAX Quiz"
-            }
-          },
-          objectType: "Activity"
+        objectType: "Activity"
+      },
+      result: {
+        score: {
+          scaled: eventData.resultScoreScaled,
+          min: eventData.resultScoreMin,
+          max: eventData.resultScoreMax,
+          raw: eventData.resultScoreRaw
         },
-        result: {
-          score: {
-            scaled: 1,
-            min: 0,
-            max: 100,
-            raw: 100
-          },
-          success: quizPassed,
-          completion: true,
-          response: "sampleResponse",
-          duration: "sampleDuration"
-        }
-      };
-      callback(objectStatement);
-    }
+        success: eventData.resultSuccess,
+        completion: eventData.resultCompletion,
+        response: eventData.resultResponse,
+        duration: eventData.resultDuration
+      }
+    };
 
-    function addStatement(text) {
-      var xapistatement = {
-        _id: new Date().toISOString(),
-        title: text,
-        completed: false
-      };
-      db.put(xapistatement, function callback(err, result) {
-        if (!err) {
-          console.log("Successfully posted a statement!");
-        }
-      });
-    }
+    var xapistatement = {
+      _id: new Date().toISOString(),
+      title: JSON.stringify(objectStatement),
+      completed: false
+    };
 
-    function sync() {
-      var opts = { live: true };
-      db.replicate.to(remoteCouch, opts, syncError);
-      db.replicate.from(remoteCouch, opts, syncError);
-    }
-
-    createStatement(e.detail.nameOfQuiz, e.detail.passed, function(
-      backStatement
-    ) {
-      addStatement(JSON.stringify(backStatement));
-      //alert(e.detail.nameOfQuiz);
-      //alert(e.detail.passed);
+    db.put(xapistatement, function callback(err, result) {
+      if (!err) {
+        console.log("Successfully posted a statement!");
+      }
     });
 
     if (remoteCouch) {
-      sync();
+      var opts = { live: true };
+      db.replicate.to(remoteCouch, opts, syncError);
+      db.replicate.from(remoteCouch, opts, syncError);
     }
 
     //display for testing only - move to own elements
