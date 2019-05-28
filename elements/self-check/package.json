@@ -45,6 +45,7 @@
     "@lrnwebcomponents/materializecss-styles": "^2.0.10",
     "@lrnwebcomponents/schema-behaviors": "^2.0.10",
     "@lrnwebcomponents/simple-colors": "^2.0.10",
+    "@lrnwebcomponents/user-action": "^2.0.10",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-card": "^3.0.0",
     "@polymer/paper-icon-button": "^3.0.1",
