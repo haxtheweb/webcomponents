@@ -38,8 +38,12 @@ class HaxschemaBuilder extends PolymerElement {
       </style>
       <vaadin-split-layout>
         <div>
-          <paper-button raised="" noink="">Add to configure</paper-button>
-          <paper-button raised="" noink="">Add to advanced</paper-button>
+          <paper-button raised noink on-click="addConfigure"
+            >Add to configure</paper-button
+          >
+          <paper-button raised noink on-click="addAdvanced"
+            >Add to advanced</paper-button
+          >
           <code-editor
             id="code"
             on-value-changed="_editorDataChanged"
@@ -68,42 +72,22 @@ class HaxschemaBuilder extends PolymerElement {
     return {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Haxschema builder",
         description: "dynamically build and visualize HAXschema",
         icon: "icons:android",
         color: "green",
         groups: ["Builder"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage"
-          }
-        ],
+        handles: [],
         meta: {
           author: "btopro",
           owner: "The Pennsylvania State University"
         }
       },
       settings: {
-        quick: [
-          {
-            property: "source",
-            description: "",
-            inputMethod: "textfield",
-            required: true,
-            icon: "icons:link",
-            validationType: "url"
-          }
-        ],
+        quick: [],
         configure: [
-          {
-            property: "haxSchema",
-            description: "",
-            inputMethod: "array",
-            required: false,
-            icon: "icons:android"
-          },
           {
             property: "source",
             description: "",
@@ -205,13 +189,41 @@ class HaxschemaBuilder extends PolymerElement {
    * Notice code editor changes and reflect them into this element
    */
   _editorDataChanged(e) {
-    // value coming up off of thiss
+    // value coming up off of this and get it propegated correctly
     this.haxSchema = e.detail.value;
     let hs = JSON.parse(this.haxSchema);
     for (var key in hs.settings) {
       let schema = this.HAXWiring.getHaxJSONSchema(key, hs);
       this.set(key + "Schema", schema);
     }
+  }
+  addAdvanced(e) {
+    let hs = JSON.parse(this.haxSchema);
+    hs.settings.advanced.push(this.__propPrototype());
+    this.__refreshSchemas(hs);
+  }
+  addConfigure(e) {
+    let hs = JSON.parse(this.haxSchema);
+    hs.settings.configure.push(this.__propPrototype());
+    this.__refreshSchemas(hs);
+  }
+  __refreshSchemas(hs) {
+    for (var key in hs.settings) {
+      let schema = this.HAXWiring.getHaxJSONSchema(key, hs);
+      this.set(key + "Schema", schema);
+    }
+    this.haxSchema = JSON.stringify(hs);
+  }
+  __propPrototype() {
+    return {
+      property: "title",
+      title: "Title",
+      description: "",
+      inputMethod: "textfield",
+      icon: "android",
+      required: true,
+      validationType: "text"
+    };
   }
   /**
    * life cycle, element is removed from the DOM
