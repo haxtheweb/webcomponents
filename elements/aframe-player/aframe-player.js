@@ -4,7 +4,6 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
@@ -232,8 +231,7 @@ class AframePlayer extends SchemaBehaviors(PolymerElement) {
    */
   connectedCallback() {
     super.connectedCallback();
-    const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
-    let location = `${basePath}lib/aframe/dist/aframe-master.js`;
+    let location = "https://aframe.io/releases/0.9.2/aframe.min.js";
     if (typeof TWEEN === "object") this._aframeLoaded.bind(this);
     window.addEventListener(
       "es-bridge-aframePlayer-loaded",
