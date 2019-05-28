@@ -42,7 +42,7 @@
     "@open-wc/storybook": "0.2.8",
     "@open-wc/webpack": "0.1.6",
     "@storybook/addon-knobs": "4.1.13",
-    "@webcomponents/webcomponentsjs": "^2.2.9",
+    "@webcomponents/webcomponentsjs": "2.2.9",
     "polymer-cli": "1.9.9",
     "polymer-build": "3.1.4",
     "babel-plugin-external-helpers": "6.22.0",
@@ -147,7 +147,7 @@
   },
   "resolutions": {
     "promise-polyfill": "8.1.0",
-    "@webcomponents/webcomponentsjs": "2.2.9",
+    "@webcomponents/webcomponentsjs": "2.2.10",
     "@webcomponents/shadycss": "1.9.1",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@polymer/app-layout": "3.0.2",
