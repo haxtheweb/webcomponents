@@ -30,7 +30,7 @@ class SimpleBlog extends HAXCMSTheme(PolymerElement) {
         }
       </style>
 
-      <style include="simple-colors">
+      <style>
         :host {
           display: block;
           font-family: "Roboto", "Noto", sans-serif;

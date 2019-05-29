@@ -1,15 +1,14 @@
 /**
- * Copyright 2018 The Pennsylvania State University
+ * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import{FlattenedNodesObserver}from"./node_modules/@polymer/polymer/lib/utils/flattened-nodes-observer.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import*as async from"./node_modules/@polymer/polymer/lib/utils/async.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import"./lib/monaco-element/monaco-element.js";import"./lib/code-pen-button.js";/**
+ */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{FlattenedNodesObserver}from"./node_modules/@polymer/polymer/lib/utils/flattened-nodes-observer.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import{SchemaBehaviors}from"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";/**
  * `code-editor`
  * `Wrapper on top of a code editor`
  *
  * @demo demo/index.html
  * @microcopy - the mental model for this element
  * - monaco is the VS code editor
- */let CodeEditor=Polymer({_template:html`
-    <custom-style>
+ */class CodeEditor extends SchemaBehaviors(PolymerElement){constructor(){super();this.__libPath=decodeURIComponent(import.meta.url)+"/../../../monaco-editor/min/vs";import("./node_modules/@lrnwebcomponents/code-editor/lib/monaco-element/monaco-element.js");import("./node_modules/@lrnwebcomponents/code-editor/lib/code-pen-button.js")}static get template(){return html`
       <style>
         :host {
           display: block;
@@ -45,63 +44,58 @@
           display: flex;
         }
       </style>
-    </custom-style>
-    <h3 hidden$="[[!title]]">[[title]]</h3>
-    <monaco-element
-      id="codeeditor"
-      lib-path="[[__libPath]]"
-      value="[[editorValue]]"
-      language="[[language]]"
-      theme="[[theme]]"
-      on-value-changed="_editorDataChanged"
-      font-size$="[[fontSize]]"
-      read-only$="[[readOnly]]"
-    >
-    </monaco-element>
-    <div class="code-pen-container" hidden$="[[!showCodePen]]">
-      <span>Check it out on code pen: </span
-      ><code-pen-button data="[[codePenData]]"></code-pen-button>
-    </div>
-  `,is:"code-editor",behaviors:[HAXBehaviors.PropertiesBehaviors,SchemaBehaviors.Schema],properties:{/**
-     * Title
-     */title:{type:String},/**
-     * Show codePen button to fork it to there to run
-     */showCodePen:{type:Boolean,value:!1,reflectToAttribute:!0},/**
-     * Readonly setting for the editor
-     */readOnly:{type:Boolean,value:!1,reflectToAttribute:!0},/**
-     * Code pen data, computed based on the HTML editor
-     */codePenData:{type:Object,computed:"_computeCodePenData(title, value)"},/**
-     * contents of the editor
-     */editorValue:{type:String},/**
-     * value of the editor after the fact
-     */value:{type:String,notify:!0},/**
-     * Theme for the Ace editor.
-     */theme:{type:String,value:"vs-dark"},/**
-     * Mode / language for editor
-     */mode:{type:String,observer:"_modeChanged"},/**
-     * Language to present color coding for
-     */language:{type:String,value:"javascript"},/**
-     * font size for the editor
-     */fontSize:{type:Number,value:16}},/**
+      <h3 hidden$="[[!title]]">[[title]]</h3>
+      <monaco-element
+        id="codeeditor"
+        lib-path="[[__libPath]]"
+        value="[[editorValue]]"
+        language="[[language]]"
+        theme="[[theme]]"
+        on-value-changed="_editorDataChanged"
+        font-size$="[[fontSize]]"
+        read-only$="[[readOnly]]"
+      >
+      </monaco-element>
+      <div class="code-pen-container" hidden$="[[!showCodePen]]">
+        <span>Check it out on code pen: </span
+        ><code-pen-button data="[[codePenData]]"></code-pen-button>
+      </div>
+    `}static get tag(){return"code-editor"}static get properties(){let props={/**
+       * Title
+       */title:{type:String},/**
+       * Show codePen button to fork it to there to run
+       */showCodePen:{type:Boolean,value:!1,reflectToAttribute:!0},/**
+       * Readonly setting for the editor
+       */readOnly:{type:Boolean,value:!1,reflectToAttribute:!0},/**
+       * Code pen data, computed based on the HTML editor
+       */codePenData:{type:Object,computed:"_computeCodePenData(title, value)"},/**
+       * contents of the editor
+       */editorValue:{type:String},/**
+       * value of the editor after the fact
+       */value:{type:String,notify:!0},/**
+       * Theme for the Ace editor.
+       */theme:{type:String,value:"vs-dark"},/**
+       * Mode / language for editor
+       */mode:{type:String,observer:"_modeChanged"},/**
+       * Language to present color coding for
+       */language:{type:String,value:"javascript"},/**
+       * font size for the editor
+       */fontSize:{type:Number,value:16}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Update the post data whenever the editor has been updated
-   */_computeCodePenData:function(title,editorValue){return{title:title,html:editorValue}},/**
+   */_computeCodePenData(title,editorValue){return{title:title,html:editorValue}}/**
    * LEGACY: pass down mode to language if that api is used
-   */_modeChanged:function(newValue){this.language=this.mode},/**
+   */_modeChanged(newValue){this.language=this.mode}/**
    * Notice code editor changes and reflect them into this element
-   */_editorDataChanged:function(e){// value coming up off of thiss
-this.value=e.detail},/**
+   */_editorDataChanged(e){// value coming up off of thiss
+this.value=e.detail}/**
    * Calculate what's in slot currently and then inject it into the editor.
-   */updateEditorValue:function(){var content="",children=this.queryEffectiveChildren("template");// 1st look for a template tag
-if(!children){console.warn("code-editor works best with a template tag provided in light dom");children=dom(this).getEffectiveChildNodes();if(0<children.length){// loop through everything found in the slotted area and put it back in
-for(var j=0,len2=children.length;j<len2;j++){if(typeof children[j].tagName!==typeof void 0){content+=children[j].outerHTML}else{content+=children[j].textContent}}}}else{content=children.innerHTML}this.$.codeeditor.value=content.trim()},/**
+   */updateEditorValue(node){if(node){var content="",children=node;if("TEMPLATE"!==node.tagName){console.warn("code-editor works best with a template tag provided in light dom");children=dom(this).getEffectiveChildNodes();if(0<children.length){// loop through everything found in the slotted area and put it back in
+for(var j=0,len2=children.length;j<len2;j++){if(typeof children[j].tagName!==typeof void 0){content+=children[j].outerHTML}else{content+=children[j].textContent}}}}else{content=children.innerHTML}if(content){this.shadowRoot.querySelector("#codeeditor").value=content.trim()}}}/**
    * Ensure fields don't pass through to HAX if in that context
-   */preProcessHaxNodeToContent:function(clone){clone.editorValue=null;clone.codePenData=null;clone.value=null;clone.removeAttribute("value");clone.removeAttribute("code-pen-data");return clone},/**
-   * created callback
-   */created:function(){// set this ahead of it being painted into the dom
-this.__libPath=decodeURIComponent(import.meta.url)+"/../../../monaco-editor/min/vs"},/**
+   */preProcessHaxNodeToContent(clone){clone.editorValue=null;clone.codePenData=null;clone.value=null;clone.removeAttribute("value");clone.removeAttribute("code-pen-data");return clone}/**
    * attached life cycle
-   */attached:function(){afterNextRender(this,function(){// mutation observer that ensures state of hax applied correctly
+   */connectedCallback(){super.connectedCallback();afterNextRender(this,function(){// mutation observer that ensures state of hax applied correctly
 this._observer=new FlattenedNodesObserver(this,info=>{// if we've got new nodes, we have to react to that
-if(0<info.addedNodes.length){info.addedNodes.map(node=>{this.updateEditorValue()})}// if we dropped nodes via the UI (delete event basically)
+if(0<info.addedNodes.length){info.addedNodes.map(node=>{if(node.tagName){this.updateEditorValue(node)}})}// if we dropped nodes via the UI (delete event basically)
 if(0<info.removedNodes.length){// handle removing items... not sure we need to do anything here
-info.removedNodes.map(node=>{this.updateEditorValue()})}})})}});export{CodeEditor};
+info.removedNodes.map(node=>{if(node.tagName){this.updateEditorValue(node)}})}})})}}window.customElements.define(CodeEditor.tag,CodeEditor);export{CodeEditor};

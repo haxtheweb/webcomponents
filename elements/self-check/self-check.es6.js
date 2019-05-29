@@ -1,245 +1,242 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import{SimpleColors}from"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@polymer/paper-icon-button/paper-icon-button.js";import"./node_modules/@polymer/iron-icons/editor-icons.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@polymer/paper-tooltip/paper-tooltip.js";import"./node_modules/@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";/**
-`self-check`
-A LRN element
+import{html}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import{SimpleColors}from"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import{SchemaBehaviors}from"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import{A11yBehaviors}from"./node_modules/@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";/**
+ * `self-check`
+ * @demo demo/index.html
+ * @microcopy - the mental model for this element
+ * CSS Variables that override accent color:
+ * --self-check-question-color //overrides the question background color
+ * --self-check-question-text //overrides the question text color
+ * --self-check-heading-color //overrides the heading background color
+ * --self-check-heading-text //overrides the heading text color
+ * --self-check-answer-color //overrides the answer background color
+ * --self-check-answer-text //overrides the answer text color
+ */class SelfCheck extends SchemaBehaviors(A11yBehaviors(SimpleColors)){constructor(){super();import("./node_modules/@polymer/paper-card/paper-card.js");import("./node_modules/@polymer/paper-icon-button/paper-icon-button.js");import("./node_modules/@polymer/iron-icons/editor-icons.js");import("./node_modules/@polymer/iron-icons/iron-icons.js");import("./node_modules/@polymer/paper-tooltip/paper-tooltip.js")}static get template(){return html`
+      <style>
+        :host {
+          display: block;
+          margin: 15px 0;
+          --self-check-question-color: var(
+            --simple-colors-default-theme-grey-1,
+            #fff
+          );
+          --self-check-question-text: var(
+            --simple-colors-default-theme-grey-12,
+            #000
+          );
+          --self-check-heading-color: var(
+            --simple-colors-default-theme-accent-8,
+            #444
+          );
+          --self-check-heading-text: var(
+            --simple-colors-default-theme-grey-1,
+            #fff
+          );
+          --self-check-answer-color: var(
+            --simple-colors-default-theme-light-green-8,
+            #00762e
+          );
+          --self-check-answer-text: var(
+            --simple-colors-default-theme-grey-1,
+            #fff
+          );
+        }
+        [hidden] {
+          display: none !important;
+        }
 
-* @demo demo/index.html
+        paper-card {
+          width: 100%;
+          color: var(--self-check-question-text);
+          background-color: var(--self-check-question-color);
+          overflow: hidden;
+        }
 
-@microcopy - the mental model for this element
- -
- CSS Variables that override accent color:
- --self-check-question-color //overrides the question background color
- --self-check-question-text //overrides the question text color
- --self-check-heading-color //overrides the heading background color
- --self-check-heading-text //overrides the heading text color
- --self-check-answer-color //overrides the answer background color
- --self-check-answer-text //overrides the answer text color
+        paper-icon-button#checkbtn {
+          width: 50px;
+          height: 50px;
+          position: relative;
+          left: 16px;
+          bottom: -10px;
+        }
 
-*/let SelfCheck=Polymer({_template:html`
-    <style is="custom-style" include="simple-colors">
-      :host {
-        display: block;
-        margin: 15px 0;
-        --self-check-question-color: var(
-          --simple-colors-default-theme-grey-1,
-          #fff
-        );
-        --self-check-question-text: var(
-          --simple-colors-default-theme-grey-12,
-          #000
-        );
-        --self-check-heading-color: var(
-          --simple-colors-default-theme-accent-8,
-          #444
-        );
-        --self-check-heading-text: var(
-          --simple-colors-default-theme-grey-1,
-          #fff
-        );
-        --self-check-answer-color: var(
-          --simple-colors-default-theme-light-green-8,
-          #00762e
-        );
-        --self-check-answer-text: var(
-          --simple-colors-default-theme-grey-1,
-          #fff
-        );
-      }
-      [hidden] {
-        display: none !important;
-      }
+        .check_button {
+          display: flex;
+          justify-content: flex-end;
+        }
 
-      paper-card {
-        width: 100%;
-        color: var(--self-check-question-text);
-        background-color: var(--self-check-question-color);
-        overflow: hidden;
-      }
+        paper-icon-button#closeBtn {
+          width: 50px;
+          height: 50px;
+          position: relative;
+          left: 16px;
+          bottom: -16px;
+        }
 
-      paper-icon-button#checkbtn {
-        width: 50px;
-        height: 50px;
-        position: relative;
-        left: 16px;
-        bottom: -10px;
-      }
+        .close_button {
+          display: flex;
+          justify-content: flex-end;
+        }
 
-      .check_button {
-        display: flex;
-        justify-content: flex-end;
-      }
+        iron-icon#questionmark {
+          width: 35px;
+          height: 35px;
+          padding: 5px;
+          color: #ffffff;
+        }
 
-      paper-icon-button#closeBtn {
-        width: 50px;
-        height: 50px;
-        position: relative;
-        left: 16px;
-        bottom: -16px;
-      }
+        .heading {
+          text-transform: uppercase;
+          font-size: 22px;
+          margin: 10px;
+          color: #ffffff;
+        }
 
-      .close_button {
-        display: flex;
-        justify-content: flex-end;
-      }
+        #header_wrap {
+          color: var(--self-check-heading-text);
+          background-color: var(--self-check-heading-color);
+          display: inline-flex;
+          width: 100%;
+          margin: -20px 0 0;
+        }
 
-      iron-icon#questionmark {
-        width: 35px;
-        height: 35px;
-        padding: 5px;
-        color: #ffffff;
-      }
+        #question_wrap {
+          color: var(--self-check-question-text);
+          background-color: var(--self-check-question-color);
+          position: relative;
+        }
 
-      .heading {
-        text-transform: uppercase;
-        font-size: 22px;
-        margin: 10px;
-        color: #ffffff;
-      }
+        .question {
+          font-size: 16px;
+          padding: 15px 15px;
+        }
 
-      #header_wrap {
-        color: var(--self-check-heading-text);
-        background-color: var(--self-check-heading-color);
-        display: inline-flex;
-        width: 100%;
-        margin: -20px 0 0;
-      }
+        :host([correct]) .question {
+          display: none;
+        }
 
-      #question_wrap {
-        color: var(--self-check-question-text);
-        background-color: var(--self-check-question-color);
-        position: relative;
-      }
+        #answer_wrap {
+          visibility: hidden;
+          opacity: 0;
+          color: var(--self-check-answer-text);
+          background-color: var(--self-check-answer-color);
+          border-top: 2px solid var(--self-check-answer-text);
+          width: 100%;
+          top: 0;
+          transition: all 0.2s ease;
+          left: calc(100%);
+          position: absolute;
+        }
 
-      .question {
-        font-size: 16px;
-        padding: 15px 15px;
-      }
+        :host([correct]) #answer_wrap {
+          visibility: visible;
+          opacity: 1;
+          position: relative;
+          left: 0;
+        }
 
-      :host([correct]) .question {
-        display: none;
-      }
+        .answer {
+          font-size: 16px;
+          padding: 15px;
+          line-height: 19.2px;
+        }
 
-      #answer_wrap {
-        visibility: hidden;
-        opacity: 0;
-        color: var(--self-check-answer-text);
-        background-color: var(--self-check-answer-color);
-        border-top: 2px solid var(--self-check-answer-text);
-        width: 100%;
-        top: 0;
-        transition: all 0.2s ease;
-        left: calc(100%);
-        position: absolute;
-      }
+        #quote_start {
+          display: inline-flex;
+          transform: rotateY(180deg);
+        }
 
-      :host([correct]) #answer_wrap {
-        visibility: visible;
-        opacity: 1;
-        position: relative;
-        left: 0;
-      }
+        #quote_end {
+          display: inline-flex;
+        }
 
-      .answer {
-        font-size: 16px;
-        padding: 15px;
-        line-height: 19.2px;
-      }
+        .triangle {
+          width: 0;
+          height: 0;
+          border-left: 20px solid transparent;
+          border-right: 20px solid transparent;
+          border-bottom: 20px solid var(--self-check-heading-color);
+          position: relative;
+          top: -20px;
+          left: -1px;
+        }
 
-      #quote_start {
-        display: inline-flex;
-        transform: rotateY(180deg);
-      }
+        .more_info {
+          display: inline;
+        }
 
-      #quote_end {
-        display: inline-flex;
-      }
+        .more_info a {
+          color: var(--self-check-answer-text);
+        }
 
-      .triangle {
-        width: 0;
-        height: 0;
-        border-left: 20px solid transparent;
-        border-right: 20px solid transparent;
-        border-bottom: 20px solid var(--self-check-heading-color);
-        position: relative;
-        top: -20px;
-        left: -1px;
-      }
-
-      .more_info {
-        display: inline;
-      }
-
-      .more_info a {
-        color: var(--self-check-answer-text);
-      }
-
-      .more_info a:hover {
-        text-decoration: none;
-      }
-    </style>
-
-    <paper-card image$="[[image]]" alt$="[[alt]]">
-      <div class="triangle"></div>
-      <div id="header_wrap">
-        <iron-icon id="questionmark" icon="icons:help"></iron-icon>
-        <div class="heading">[[title]]</div>
-      </div>
-      <div id="question_wrap">
-        <div class="question" aria-hidden$="[[correct]]">
-          <slot name="question"></slot>
-          <div class="check_button">
-            <paper-icon-button
-              controls="answer_wrap"
-              aria-label="Reveal Answer"
-              id="checkBtn"
-              icon="icons:check-circle"
-              on-click="openAnswer"
-              noink
-            >
-            </paper-icon-button>
-            <paper-tooltip aria-hidden="true" for="checkBtn" position="left">
-              Reveal Answer
-            </paper-tooltip>
-          </div>
+        .more_info a:hover {
+          text-decoration: none;
+        }
+      </style>
+      <paper-card image$="[[image]]" alt$="[[alt]]">
+        <div class="triangle"></div>
+        <div id="header_wrap">
+          <iron-icon id="questionmark" icon="icons:help"></iron-icon>
+          <div class="heading">[[title]]</div>
         </div>
-
-        <div id="answer_wrap" aria-hidden$="[[!correct]]" aria-live="polite">
-          <div class="answer">
-            <slot></slot>
-            <div class="more_info" hidden$="[[!link]]">
-              <a href$="[[link]]" target="_blank">More info...</a>
-            </div>
-            <div class="close_button">
+        <div id="question_wrap">
+          <div class="question" aria-hidden$="[[correct]]">
+            <slot name="question"></slot>
+            <div class="check_button">
               <paper-icon-button
-                aria-label="Close"
-                id="closeBtn"
-                icon="icons:close"
+                controls="answer_wrap"
+                aria-label="Reveal Answer"
+                id="checkBtn"
+                icon="icons:check-circle"
                 on-click="openAnswer"
                 noink
               >
-              </paper-icon-button>
-              <paper-tooltip aria-hidden="true" for="closeBtn" position="left">
-                Close
+              </user-action>
+              <paper-tooltip aria-hidden="true" for="checkBtn" position="left">
+                Reveal Answer
               </paper-tooltip>
             </div>
           </div>
+
+          <div id="answer_wrap" aria-hidden$="[[!correct]]" aria-live="polite">
+            <div class="answer">
+              <user-action track="visibility">
+                <slot></slot>
+              </user-action>
+              <div class="more_info" hidden$="[[!link]]">
+                <user-action track="click" every><a href$="[[link]]" target="_blank">More info...</a></user-action>
+              </div>
+              <div class="close_button">
+                <paper-icon-button
+                  aria-label="Close"
+                  id="closeBtn"
+                  icon="icons:close"
+                  on-click="openAnswer"
+                  noink
+                >
+                </paper-icon-button>
+                <paper-tooltip
+                  aria-hidden="true"
+                  for="closeBtn"
+                  position="left"
+                >
+                  Close
+                </paper-tooltip>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </paper-card>
-  `,is:"self-check",behaviors:[HAXBehaviors.PropertiesBehaviors,SchemaBehaviors.Schema,A11yBehaviors.A11y,SimpleColors],properties:{/**
-     * Title.
-     */title:{type:String,value:"Self-Check"},/**
-     * Question.
-     */question:{type:String,value:""},/**
-     * Image.
-     */image:{type:String,value:"",reflectToAttribute:!0},/**
-     * Alt text for image.
-     */alt:{type:String,value:"",reflectToAttribute:!0},/**
-     * Link for more information.
-     */link:{type:String,reflectToAttribute:!0},/**
-     * Property for toggling "checkbtn".
-     */correct:{type:Boolean,value:!1,reflectToAttribute:!0}},/**
+      </paper-card>
+    `}static get tag(){return"self-check"}static get properties(){let props={/**
+       * Title.
+       */title:{type:String,value:"Self-Check"},/**
+       * Question.
+       */question:{type:String,value:""},/**
+       * Image.
+       */image:{type:String,value:"",reflectToAttribute:!0},/**
+       * Alt text for image.
+       */alt:{type:String,value:"",reflectToAttribute:!0},/**
+       * Link for more information.
+       */link:{type:String,reflectToAttribute:!0},/**
+       * Property for toggling "checkbtn".
+       */correct:{type:Boolean,value:!1,reflectToAttribute:!0}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Property for toggling "checkbtn".
-   */openAnswer:function(e){this.correct=!this.correct},/**
-   * Attached to the DOM, now fire.
-   */attached:function(){// Establish hax property binding
-let props={canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Self-Check",description:"The user will be able to complete a self-check.",icon:"icons:check-circle",color:"orange",groups:["Image","Assessment"],handles:[{type:"image",source:"image",title:"question",description:"answer"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield",icon:"editor:title"},{property:"image",title:"Image",description:"The image of the element",inputMethod:"textfield",icon:"editor:insert-photo"},{property:"link",title:"More link",description:"Link to additional information",inputMethod:"textfield",validationType:"url",icon:"icons:link"}],configure:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield"},{property:"accentColor",title:"Accent Color",description:"The accent color of the self-check",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{property:"dark",title:"Dark Theme",description:"Enable Dark Theme",inputMethod:"boolean",icon:"icons:invert-colors"},{property:"image",title:"Image",description:"The image of the element",inputMethod:"haxupload",validationType:"url"},{property:"link",title:"More link",description:"Link to additional information",inputMethod:"haxupload",validationType:"url"},{property:"alt",title:"Alt Text",description:"Add alt text to the image",inputMethod:"alt"},{slot:"question",title:"Question to ask",description:"This is where you enter a question for the self-check.",inputMethod:"code-editor",required:!0},{slot:"",title:"Answer",description:"This is where you enter a question for the self-check.",inputMethod:"code-editor",required:!0}],advanced:[]}};this.setHaxProperties(props)}});export{SelfCheck};
+   */openAnswer(e){this.correct=!this.correct}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Self-Check",description:"The user will be able to complete a self-check.",icon:"icons:check-circle",color:"orange",groups:["Image","Assessment"],handles:[{type:"image",source:"image",title:"question",description:"answer"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield",icon:"editor:title"},{property:"image",title:"Image",description:"The image of the element",inputMethod:"textfield",icon:"editor:insert-photo"},{property:"link",title:"More link",description:"Link to additional information",inputMethod:"textfield",validationType:"url",icon:"icons:link"}],configure:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield"},{property:"accentColor",title:"Accent Color",description:"The accent color of the self-check",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{property:"dark",title:"Dark Theme",description:"Enable Dark Theme",inputMethod:"boolean",icon:"icons:invert-colors"},{property:"image",title:"Image",description:"The image of the element",inputMethod:"haxupload",validationType:"url"},{property:"link",title:"More link",description:"Link to additional information",inputMethod:"haxupload",validationType:"url"},{property:"alt",title:"Alt Text",description:"Add alt text to the image",inputMethod:"alt"},{slot:"question",title:"Question to ask",description:"This is where you enter a question for the self-check.",inputMethod:"code-editor",required:!0},{slot:"",title:"Answer",description:"This is where you enter a question for the self-check.",inputMethod:"code-editor",required:!0}],advanced:[]}}}connectedCallback(){super.connectedCallback();afterNextRender(this,function(){this.HAXWiring=new HAXWiring;this.HAXWiring.setup(SelfCheck.haxProperties,SelfCheck.tag,this);import("./node_modules/@lrnwebcomponents/user-action/user-action.js")})}}window.customElements.define(SelfCheck.tag,SelfCheck);export{SelfCheck};

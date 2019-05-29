@@ -1,0 +1,258 @@
+[
+  {
+    "cols": [
+      {
+        "title": "Slide id",
+        "points": "",
+        "notRaised": true,
+        "disabled": true
+      },
+      {
+        "title": "Terms",
+        "points": "",
+        "notRaised": true,
+        "disabled": true
+      },
+      {
+        "title": "Reading",
+        "points": "",
+        "notRaised": true,
+        "disabled": true
+      },
+      {
+        "title": "Lecture",
+        "points": "",
+        "notRaised": true,
+        "disabled": true
+      }
+    ]
+  },
+  {
+    "cols": [
+      {
+        "type": "slide",
+        "title": "Slide id",
+        "points": "1",
+        "question": "question.json"
+      },
+      {
+        "type": "terms",
+        "title": "Terms",
+        "points": "1",
+        "question": "question.json"
+      },
+      {
+        "type": "reading",
+        "title": "Reading",
+        "points": "1",
+        "question": "question.json"
+      },
+      {
+        "type": "lecture",
+        "title": "Lecture",
+        "points": "1",
+        "question": "question.json"
+      }
+    ]
+  },
+  {
+    "cols": [
+      {
+        "type": "slide",
+        "title": "Slide id",
+        "points": "1",
+        "question": "question.json"
+      },
+      {
+        "type": "terms",
+        "title": "Terms",
+        "points": "1",
+        "question": "question.json"
+      },
+      {
+        "type": "reading",
+        "title": "Reading",
+        "points": "1",
+        "question": "question.json"
+      },
+      {
+        "type": "lecture",
+        "title": "Lecture",
+        "points": "1",
+        "question": "question.json"
+      }
+    ]
+  },
+  {
+    "cols": [
+      {
+        "type": "slide",
+        "title": "Slide id",
+        "points": "1",
+        "question": "question.json"
+      },
+      {
+        "type": "terms",
+        "title": "Terms",
+        "points": "1",
+        "question": "question.json"
+      },
+      {
+        "type": "reading",
+        "title": "Reading",
+        "points": "1",
+        "question": "question.json"
+      },
+      {
+        "type": "lecture",
+        "title": "Lecture",
+        "points": "1",
+        "question": "question.json"
+      }
+    ]
+  },
+  {
+    "cols": [
+      {
+        "type": "slide",
+        "title": "Slide id",
+        "points": "1",
+        "question": "question.json"
+      },
+      {
+        "type": "terms",
+        "title": "Terms",
+        "points": "1",
+        "question": "question.json"
+      },
+      {
+        "type": "reading",
+        "title": "Reading",
+        "points": "1",
+        "question": "question.json"
+      },
+      {
+        "type": "lecture",
+        "title": "Lecture",
+        "points": "1",
+        "question": "question.json"
+      }
+    ]
+  },
+  {
+    "cols": [
+      {
+        "type": "slide",
+        "title": "Slide id",
+        "points": "2",
+        "question": "question.json"
+      },
+      {
+        "type": "terms",
+        "title": "Terms",
+        "points": "2",
+        "question": "question.json"
+      },
+      {
+        "type": "reading",
+        "title": "Reading",
+        "points": "2",
+        "question": "question.json"
+      },
+      {
+        "type": "lecture",
+        "title": "Lecture",
+        "points": "2",
+        "question": "question.json"
+      }
+    ]
+  },
+  {
+    "cols": [
+      {
+        "type": "slide",
+        "title": "Slide id",
+        "points": "2",
+        "question": "question.json"
+      },
+      {
+        "type": "terms",
+        "title": "Terms",
+        "points": "2",
+        "question": "question.json"
+      },
+      {
+        "type": "reading",
+        "title": "Reading",
+        "points": "2",
+        "question": "question.json"
+      },
+      {
+        "type": "lecture",
+        "title": "Lecture",
+        "points": "2",
+        "question": "question.json"
+      }
+    ]
+  },
+  {
+    "cols": [
+      {
+        "type": "slide",
+        "title": "Slide id",
+        "points": "3",
+        "question": "question.json"
+      },
+      {
+        "type": "terms",
+        "title": "Terms",
+        "points": "3",
+        "question": "question.json"
+      },
+      {
+        "type": "reading",
+        "title": "Reading",
+        "points": "3",
+        "question": "question.json"
+      },
+      {
+        "type": "lecture",
+        "title": "Lecture",
+        "points": "3",
+        "question": "question.json"
+      }
+    ]
+  },
+  {
+    "cols": [
+      {
+        "type": "slide",
+        "title": "Slide id",
+        "points": "Bonus",
+        "disabled": true,
+        "question": "question.json"
+      },
+      {
+        "type": "terms",
+        "title": "Terms",
+        "points": "Bonus",
+        "disabled": true,
+        "question": "question.json"
+      },
+      {
+        "type": "reading",
+        "title": "Reading",
+        "points": "Bonus",
+        "disabled": true,
+        "question": "question.json"
+      },
+      {
+        "type": "lecture",
+        "title": "Lecture",
+        "points": "Bonus",
+        "disabled": true,
+        "question": "question.json"
+      }
+    ]
+  }
+]

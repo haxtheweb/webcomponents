@@ -11,98 +11,99 @@
  * @customElement
  * @demo demo/index.html
  */class LrnMarkdownEditor extends PolymerElement{static get template(){return html`
-    <style>
-      :host {
-        display: block;
-      }
+      <style>
+        :host {
+          display: block;
+        }
 
-      #split-pane {
-        display: flex;
-      }
+        #split-pane {
+          display: flex;
+        }
 
-      .split-pane > * {
-        flex: 1 1 auto;
-        min-height: 160px;
-      }
+        .split-pane > * {
+          flex: 1 1 auto;
+          min-height: 160px;
+        }
 
-      .preview-pane {
-        background: lightblue;
-      }
+        .preview-pane {
+          background: lightblue;
+        }
 
-      paper-card {
-        padding: 16px;
-        width: calc(100% - 32px);
-      }
+        paper-card {
+          padding: 16px;
+          width: calc(100% - 32px);
+        }
 
-      paper-tabs {
-        background: #f5f5f5;
-        border-style: solid;
-        border-color: #dcdcdc;
-        border-width: 1px;
-        min-width: 500px;
-      }
+        paper-tabs {
+          background: #f5f5f5;
+          border-style: solid;
+          border-color: #dcdcdc;
+          border-width: 1px;
+          min-width: 500px;
+        }
 
-      marked-element.lrn-markdown-editor {
-        width: 100%;
-        word-wrap: break-word;
-      }
+        marked-element.lrn-markdown-editor {
+          width: 100%;
+          word-wrap: break-word;
+        }
 
-      .container-flex {
-        display: flex;
-        flex-wrap: nowrap;
-      }
+        .container-flex {
+          display: flex;
+          flex-wrap: nowrap;
+        }
 
-      .split-pane .container-flex > * {
-        width: 50%;
-      }
+        .split-pane .container-flex > * {
+          width: 50%;
+        }
 
-      .split-pane marked-element {
-        width: calc(100% - 32px);
-        min-width: 150px;
-        margin: 0 16px;
-        padding: 0 16px;
-        background: #fff;
-        border-left: solid #dcdcdc 1px;
-      }
-    </style>
+        .split-pane marked-element {
+          width: calc(100% - 32px);
+          min-width: 150px;
+          margin: 0 16px;
+          padding: 0 16px;
+          background: #fff;
+          border-left: solid #dcdcdc 1px;
+        }
+      </style>
 
-    <div class="mtz-toolbar">
-      <paper-tabs selected="{{selected}}">
-        <paper-tab>Write</paper-tab>
-        <paper-tab>Preview</paper-tab>
-        <paper-tab>Split View</paper-tab>
-      </paper-tabs>
-    </div>
+      <div class="mtz-toolbar">
+        <paper-tabs selected="{{selected}}">
+          <paper-tab>Write</paper-tab>
+          <paper-tab>Preview</paper-tab>
+          <paper-tab>Split View</paper-tab>
+        </paper-tabs>
+      </div>
 
-    <iron-pages selected="{{selected}}">
-      <section>
-        <paper-card>
-          <lrn-markdown-editor-editor
-            content="{{content}}"
-          ></lrn-markdown-editor-editor>
-        </paper-card>
-      </section>
-
-      <section>
-        <paper-card>
-          <marked-element markdown="{{content}}"></marked-element>
-        </paper-card>
-      </section>
-
-      <section class="split-pane">
-        <paper-card>
-          <div class="container-flex">
+      <iron-pages selected="{{selected}}">
+        <section>
+          <paper-card>
             <lrn-markdown-editor-editor
               content="{{content}}"
             ></lrn-markdown-editor-editor>
-            <marked-element
-              class="preview-pane"
-              markdown="{{content}}"
-            ></marked-element>
-          </div>
-        </paper-card>
-      </section>
-    </iron-pages>`}static get tag(){return"lrn-markdown-editor"}static get properties(){return{content:{type:String,notify:!0},selected:{type:String,value:"0",reflectToAttribute:!0},layout:{type:String,value:0},cookies:{type:Boolean,value:!0},elReady:{type:Boolean,value:!1}}}static get observers(){return["_selectedChanged(selected)"]}_selectedChanged(selected){var root=this,cookieName=root._getCookieName();// get current cookies
+          </paper-card>
+        </section>
+
+        <section>
+          <paper-card>
+            <marked-element markdown="{{content}}"></marked-element>
+          </paper-card>
+        </section>
+
+        <section class="split-pane">
+          <paper-card>
+            <div class="container-flex">
+              <lrn-markdown-editor-editor
+                content="{{content}}"
+              ></lrn-markdown-editor-editor>
+              <marked-element
+                class="preview-pane"
+                markdown="{{content}}"
+              ></marked-element>
+            </div>
+          </paper-card>
+        </section>
+      </iron-pages>
+    `}static get tag(){return"lrn-markdown-editor"}static get properties(){return{content:{type:String,notify:!0},selected:{type:String,value:"0",reflectToAttribute:!0},layout:{type:String,value:0},cookies:{type:Boolean,value:!0},elReady:{type:Boolean,value:!1}}}static get observers(){return["_selectedChanged(selected)"]}_selectedChanged(selected){var root=this,cookieName=root._getCookieName();// get current cookies
 // if the 'split-view' pane is selected
 if(2===selected){// add a cookie for lrn-markdown-editor-splitview
 root._createCookie(cookieName,"true","30")}else if(2!==selected&&!0===root.elReady){/**

@@ -13,25 +13,26 @@
  * @polymerLegacy
  * @demo demo/index.html
  */class LrnTable extends SchemaBehaviors(PolymerElement){constructor(){super();import("./node_modules/@lrnwebcomponents/csv-render/csv-render.js")}static get template(){return html`
-    <style>
-      :host {
-        display: block;
-      }
-      .hidden-title {
-        display: none;
-      }
-    </style>
-    <div typeof="oer:SupportingMaterial">
-      <div class="hidden-title" property="oer:name">[[title]]</div>
-      <div property="oer:description">
-        <slot></slot>
-        <csv-render
-          data-source="[[csvFile]]"
-          caption="[[title]]"
-          summary="[[description]]"
-        ></csv-render>
+      <style>
+        :host {
+          display: block;
+        }
+        .hidden-title {
+          display: none;
+        }
+      </style>
+      <div typeof="oer:SupportingMaterial">
+        <div class="hidden-title" property="oer:name">[[title]]</div>
+        <div property="oer:description">
+          <slot></slot>
+          <csv-render
+            data-source="[[csvFile]]"
+            caption="[[title]]"
+            summary="[[description]]"
+          ></csv-render>
+        </div>
       </div>
-    </div>`}static get tag(){return"lrn-table"}static get properties(){return{/**
+    `}static get tag(){return"lrn-table"}static get properties(){return{/**
        * Title of this table. This is both for accessibility and presentation.
        */title:{type:String},/**
        * The file to load material from.

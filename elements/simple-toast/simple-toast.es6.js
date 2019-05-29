@@ -25,10 +25,13 @@ static get template(){return html`
 :host([hidden]) {
   display: none;
 }
-</style>
+
+paper-toast {
+  @apply --simple-toast-toast;
+}</style>
 <paper-toast id="toast" text="[[text]]" duration$="[[duration]]" opened="{{opened}}" class$="[[classStyle]]">
   <slot></slot>
-  <paper-button hidden$="[[!closeButton]]" on-tap="hide">[[closeText]]</paper-button>
+  <paper-button hidden$="[[!closeButton]]" on-click="hide">[[closeText]]</paper-button>
 </paper-toast>`}// properties available to the custom element for data binding
 static get properties(){return{/**
    * Opened state of the toast, use event to change

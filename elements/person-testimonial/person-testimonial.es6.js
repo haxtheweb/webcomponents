@@ -3,7 +3,6 @@ import{html}from"./node_modules/@polymer/polymer/polymer-element.js";import{afte
  * `Leaving a testimonial from a person to say your company rocks!`
  * @demo demo/index.html
  */class PersonTestimonial extends SimpleColors{constructor(){super();import("./node_modules/@polymer/paper-card/paper-card.js");import("./node_modules/@polymer/iron-image/iron-image.js");import("./node_modules/@polymer/iron-icon/iron-icon.js");import("./node_modules/@lrnwebcomponents/person-testimonial/lib/person-testimonial-icon.js");afterNextRender(this,function(){this.HAXWiring=new HAXWiring;this.HAXWiring.setup(PersonTestimonial.haxProperties,PersonTestimonial.tag,this)})}static get template(){return html`
-      <style include="simple-colors"></style>
       <style>
         :host {
           display: block;

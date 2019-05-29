@@ -27,7 +27,7 @@ class SelfCheck extends SchemaBehaviors(A11yBehaviors(SimpleColors)) {
   }
   static get template() {
     return html`
-      <style include="simple-colors">
+      <style>
         :host {
           display: block;
           margin: 15px 0;

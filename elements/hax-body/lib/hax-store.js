@@ -1457,18 +1457,28 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
    */
   _haxStoreInsertContent(e) {
     if (e.detail) {
+      let details = e.detail;
+      if (window.customElements.get(details.tag)) {
+        let prototype = Object.getPrototypeOf(
+          document.createElement(details.tag)
+        );
+        // support for deep API call to clean up special elements
+        if (typeof prototype.preProcessHaxInsertContent !== typeof undefined) {
+          details = prototype.preProcessHaxInsertContent(details);
+        }
+      }
       var properties = {};
       // support for properties to be set automatically optionally
-      if (typeof e.detail.properties !== typeof undefined) {
-        properties = e.detail.properties;
+      if (typeof details.properties !== typeof undefined) {
+        properties = details.properties;
       }
       // ensure better UX for text based operations
       this.activeHaxBody.__activeHover = null;
       // invoke insert or replacement on body, same function so it's easier to trace
-      if (e.detail.replace && e.detail.replacement) {
+      if (details.replace && details.replacement) {
         let node = window.HaxStore.haxElementToNode(
-          e.detail.tag,
-          e.detail.content,
+          details.tag,
+          details.content,
           properties
         );
         if (this.activeNode !== this.activeContainerNode) {
@@ -1481,12 +1491,12 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
           this.activeHaxBody.haxReplaceNode(this.activeNode, node);
         }
       } else if (
-        typeof e.detail.__type !== typeof undefined &&
-        e.detail.__type === "inline"
+        typeof details.__type !== typeof undefined &&
+        details.__type === "inline"
       ) {
         let node = window.HaxStore.haxElementToNode(
-          e.detail.tag,
-          e.detail.content,
+          details.tag,
+          details.content,
           properties
         );
         // replace what WAS the active selection w/ this new node
@@ -1496,12 +1506,33 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
         }
         // set it to nothing
         this.activePlaceHolder = null;
-      } else {
-        this.activeHaxBody.haxInsert(
-          e.detail.tag,
-          e.detail.content,
+      } else if (this.activeContainerNode != null) {
+        let node = window.HaxStore.haxElementToNode(
+          details.tag,
+          details.content,
           properties
         );
+        // allow for inserting things into things but not grid plate
+        if (
+          this.activeContainerNode &&
+          this.activeContainerNode.tagName === "GRID-PLATE"
+        ) {
+          dom(this.activeContainerNode).appendChild(node);
+          this.activeHaxBody.$.textcontextmenu.highlightOps = false;
+          this.activeHaxBody.__updateLockFocus = node;
+          // wait so that the DOM can have the node to then attach to
+          setTimeout(() => {
+            this.activeHaxBody.breakUpdateLock();
+          }, 50);
+        } else {
+          this.activeHaxBody.haxInsert(
+            details.tag,
+            details.content,
+            properties
+          );
+        }
+      } else {
+        this.activeHaxBody.haxInsert(details.tag, details.content, properties);
       }
     }
   }

@@ -27,7 +27,7 @@ class PlaceHolder extends PolymerElement {
   }
   static get template() {
     return html`
-      <style include="simple-colors">
+      <style>
         :host {
           display: block;
           border: none;

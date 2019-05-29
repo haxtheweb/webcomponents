@@ -217,7 +217,6 @@ paper-card.card-high-detail {
     border-top-color: dodgerblue;
     border-top-width: 2px;
   }</style>
-<style is="custom-style" include="simple-colors"></style>
 <iron-ajax
   auto="[[outlineSchemaUrl]]"
   url="[[outlineSchemaUrl]]"
@@ -228,10 +227,10 @@ paper-card.card-high-detail {
 <app-header reveals>
   <app-toolbar>
     View: [[viewModeLabel]]
-    <paper-icon-button on-tap="_toggleViewMode" id="viewmode" icon="[[viewModeIcon]]"></paper-icon-button>
+    <paper-icon-button on-click="_toggleViewMode" id="viewmode" icon="[[viewModeIcon]]"></paper-icon-button>
     <paper-tooltip for="viewmode">[[viewModeLabel]]</paper-tooltip>
     Detail: [[detailsModeLabel]]
-    <paper-icon-button on-tap="_toggleDetailsMode" id="detailsmode" icon="[[detailsModeIcon]]"></paper-icon-button>
+    <paper-icon-button on-click="_toggleDetailsMode" id="detailsmode" icon="[[detailsModeIcon]]"></paper-icon-button>
     <paper-tooltip for="detailsmode">[[detailsModeLabel]]</paper-tooltip>
     <div main-title class="flex layout breadcrumb_layout">
       <iron-icon class="breadcrumb-arrow" icon="icons:chevron-right"></iron-icon>
@@ -244,7 +243,7 @@ paper-card.card-high-detail {
       <a class="breadcrumb" id="third">Math Basics</a>
     </div>
     <div>
-      <paper-icon-button on-tap="_toggleMiniMap" id="minimap" icon="device:gps-fixed" title="Toggle outline mini map"></paper-icon-button>
+      <paper-icon-button on-click="_toggleMiniMap" id="minimap" icon="device:gps-fixed" title="Toggle outline mini map"></paper-icon-button>
       <paper-tooltip for="helpbutton">Toggle mini-map</paper-tooltip>
       <paper-icon-button id="helpbutton" icon="icons:help" title="help"></paper-icon-button>
       <paper-tooltip for="helpbutton">Help</paper-tooltip>
@@ -346,7 +345,7 @@ static get properties(){return{/**
    * toggle between details mode
    */_toggleDetailsMode(e){switch(this.detailsMode){case"low":this.detailsMode="mid";break;case"mid":this.detailsMode="high";break;case"high":this.detailsMode="low";break;}}// Observer details mode for changes
 _detailsModeChanged(newValue,oldValue){if(typeof newValue!==typeof void 0){switch(newValue){case"low":this.detailsModeIcon="icons:apps";this.detailsModeLabel="Low";break;case"mid":this.detailsModeIcon="icons:view-module";this.detailsModeLabel="Medium";break;case"high":this.detailsModeIcon="icons:view-carousel";this.detailsModeLabel="High";break;}// fire resize event if iron-list is visible
-if(0===this.selectedView){async.microTask.run(()=>{setTimeout(()=>{this.$.ironlist.fire("iron-resize");window.dispatchEvent(new Event("resize"))},50)})}}}/**
+if(0===this.selectedView){async.microTask.run(()=>{setTimeout(()=>{this.$.ironlist.dispatchEvent(new CustomEvent("iron-resize",{bubbles:!0,cancelable:!0,composed:!0,detail:!0}));window.dispatchEvent(new Event("resize"))},50)})}}}/**
    * Sorting of items has finished, meaning drag drop complete
    */_onSortFinish(e){// @todo ensure items align with what's been drag and drop reordered
 console.log(e.detail)}/**
@@ -360,4 +359,4 @@ console.log("move left")}else if("option2"===e.detail.option){// @todo execute m
 console.log("move right")}console.log(e.detail.element.getAttribute("data-item-id"));break;case"duplicate":if("option1"===e.detail.option){// @todo execute duplicate
 console.log("duplicate");console.log(e.detail.element.getAttribute("data-item-id"))}break;case"remove":if("option1"===e.detail.option){// @todo execute delete
 console.log("remove");console.log(e.detail.element.getAttribute("data-item-id"))}break;}}// Observer layoutMode for changes
-_viewModeChanged(newValue,oldValue){if(typeof newValue!==typeof void 0){switch(newValue){case"cards":this.$.viewmode.classList.add("rotate-90");this.selectedView=0;this.viewModeIcon="icons:view-module";this.viewModeLabel="Card view";async.microTask.run(()=>{setTimeout(()=>{this.$.ironlist.fire("iron-resize");window.dispatchEvent(new Event("resize"))},100)});break;case"outline":this.$.viewmode.classList.remove("rotate-90");this.selectedView=1;this.viewModeIcon="icons:view-list";this.viewModeLabel="Outline view";break;case"tree":this.$.viewmode.classList.add("rotate-90");this.selectedView=2;this.viewModeIcon="social:share";this.viewModeLabel="Tree view";break;case"drag":this.$.viewmode.classList.remove("rotate-90");this.selectedView=3;this.viewModeIcon="icons:touch-app";this.viewModeLabel="Draggable cards";break;}}}}window.customElements.define("outline-designer",OutlineDesigner);export{OutlineDesigner};
+_viewModeChanged(newValue,oldValue){if(typeof newValue!==typeof void 0){switch(newValue){case"cards":this.$.viewmode.classList.add("rotate-90");this.selectedView=0;this.viewModeIcon="icons:view-module";this.viewModeLabel="Card view";async.microTask.run(()=>{setTimeout(()=>{this.$.ironlist.dispatchEvent(new CustomEvent("iron-resize",{bubbles:!0,cancelable:!0,composed:!0,detail:!0}));window.dispatchEvent(new Event("resize"))},100)});break;case"outline":this.$.viewmode.classList.remove("rotate-90");this.selectedView=1;this.viewModeIcon="icons:view-list";this.viewModeLabel="Outline view";break;case"tree":this.$.viewmode.classList.add("rotate-90");this.selectedView=2;this.viewModeIcon="social:share";this.viewModeLabel="Tree view";break;case"drag":this.$.viewmode.classList.remove("rotate-90");this.selectedView=3;this.viewModeIcon="icons:touch-app";this.viewModeLabel="Draggable cards";break;}}}}window.customElements.define("outline-designer",OutlineDesigner);export{OutlineDesigner};

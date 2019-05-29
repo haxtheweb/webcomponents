@@ -70,7 +70,7 @@ class HAXCMSSiteListing extends PolymerElement {
   // render function
   static get template() {
     return html`
-      <style include="simple-colors">
+      <style>
         :host {
           --haxcms-site-listing-color-dark: var(--simple-colors-default-theme-blue-11);
           --haxcms-site-listing-color-light: #FFFFFF;

@@ -12,7 +12,8 @@ Examples:
 
 * @demo demo/index.html
 */class MomentElement extends PolymerElement{static get template(){return html`
-    [[output]]`}static get tag(){return"moment-element"}static get properties(){return{/**
+      [[output]]
+    `}static get tag(){return"moment-element"}static get properties(){return{/**
        * The input datetime. If don't set the datetime, the datetime will be now.
        * For consistent results, parsing anything other than ISO 8601 strings
        * with the `inputFormat` property. More information in [moment String](http://momentjs.com/docs/#/parsing/string/).

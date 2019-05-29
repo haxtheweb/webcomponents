@@ -23,7 +23,7 @@ class MultipleChoice extends SchemaBehaviors(PolymerElement) {
   }
   static get template() {
     return html`
-      <style include="simple-colors">
+      <style>
         :host {
           display: block;
           padding: 16px 16px 54px 16px;

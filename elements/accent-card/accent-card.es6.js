@@ -1,7 +1,7 @@
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import{SimpleColors}from"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";/**
+ */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import{SchemaBehaviors}from"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import{SimpleColors}from"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";/**
  * `accent-card`
  * `A card with optional accent stylings.`
  *
@@ -20,10 +20,9 @@
  */class AccentCard extends SimpleColors{/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
-   */static get tag(){return"accent-card"}//get player-specifc properties
-static get behaviors(){return[SimpleColors]}// render function
+   */static get tag(){return"accent-card"}// render function
 static get template(){return html`
-      <style is="custom-style" include="simple-colors">
+      <style>
         :host {
           display: block;
           border-radius: 2px;
@@ -196,8 +195,8 @@ static get template(){return html`
         </div>
       </section>
     `}// haxProperty definition
-static get haxProperties(){return{canEditSource:!1,canPosition:!1,canEditSource:!1,gizmo:{title:"Accent Card",description:"A card with optional accent styling.",icon:"chrome-reader-mode",color:"light-blue",groups:["Media","Text"],handles:[{type:"media",url:"source"},{type:"text",url:"source"}],meta:{author:"nikkimk",owner:"The Pennsylvania State University"}},settings:{quick:[{property:"accentColor",title:"Accent Color",description:"An optional accent color.",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{property:"dark",title:"Dark Theme",description:"Enable Dark Theme",inputMethod:"boolean",icon:"icons:invert-colors"},{property:"horizontal",title:"Horizontal",description:"Horizontal orientation?",inputMethod:"boolean"}],configure:[{slot:"heading",title:"Heading",description:"A heading for the card.",inputMethod:"textfield"},{slot:"subheading",title:"Subheading",description:"An optional subheading for the card.",inputMethod:"textfield"},{slot:"content",title:"Content",description:"Content for the card.",inputMethod:"textfield"},{slot:"footer",title:"Footer",description:"An optional footer for the card.",inputMethod:"textfield"},{property:"imageSrc",title:"Image",description:"Optional image",inputMethod:"textfield",icon:"editor:insert-photo"},{property:"imageAlign",title:"imageAlign",description:"Image Horizontal Alignment",inputMethod:"select",options:{left:"left",center:"center",right:"right"}},{property:"imageValign",title:"imageValign",description:"Image Vertical Alignment",inputMethod:"select",options:{top:"top",center:"center",bottom:"bottom"}},{property:"accentColor",title:"Accent Color",description:"An optional accent color.",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{property:"dark",title:"Dark Theme",description:"Enable Dark Theme",inputMethod:"boolean",icon:"icons:invert-colors"},{property:"horizontal",title:"Horizontal",description:"Horizontal orientation?",inputMethod:"boolean"},{property:"accentHeading",title:"Heading Accent",description:"Apply the accent color to the heading?",inputMethod:"boolean"},{property:"accentBackground",title:"Background Accent",description:"Apply the accent color to the card background?",inputMethod:"boolean"},{property:"noBorder",title:"No Border Accent",description:"Remove the border accent?",inputMethod:"boolean"},{property:"flat",title:"Flat",description:"Remove the box shadow?",inputMethod:"boolean"}],advanced:[]}}}// properties available to the custom element for data binding
-static get properties(){return{/**
+static get haxProperties(){return{canEditSource:!1,canPosition:!1,canEditSource:!1,gizmo:{title:"Accent Card",description:"A card with optional accent styling.",icon:"chrome-reader-mode",color:"light-blue",groups:["Media","Text"],handles:[{type:"media",url:"source"},{type:"text",url:"source"}],meta:{author:"nikkimk",owner:"The Pennsylvania State University"}},settings:{quick:[{property:"accentColor",title:"Accent Color",description:"An optional accent color.",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{property:"dark",title:"Dark Theme",description:"Enable Dark Theme",inputMethod:"boolean",icon:"icons:invert-colors"},{property:"horizontal",title:"Horizontal",description:"Horizontal orientation?",inputMethod:"boolean"}],configure:[{slot:"heading",title:"Heading",description:"A heading for the card.",inputMethod:"textfield"},{slot:"subheading",title:"Subheading",description:"An optional subheading for the card.",inputMethod:"textfield"},{slot:"content",title:"Content",description:"Content for the card.",inputMethod:"textfield"},{slot:"footer",title:"Footer",description:"An optional footer for the card.",inputMethod:"textfield"},{property:"imageSrc",title:"Image",description:"Optional image",inputMethod:"haxupload",icon:"editor:insert-photo"},{property:"imageAlign",title:"imageAlign",description:"Image Horizontal Alignment",inputMethod:"select",options:{left:"left",center:"center",right:"right"}},{property:"imageValign",title:"imageValign",description:"Image Vertical Alignment",inputMethod:"select",options:{top:"top",center:"center",bottom:"bottom"}},{property:"accentColor",title:"Accent Color",description:"An optional accent color.",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{property:"dark",title:"Dark Theme",description:"Enable Dark Theme",inputMethod:"boolean",icon:"icons:invert-colors"},{property:"horizontal",title:"Horizontal",description:"Horizontal orientation?",inputMethod:"boolean"},{property:"accentHeading",title:"Heading Accent",description:"Apply the accent color to the heading?",inputMethod:"boolean"},{property:"accentBackground",title:"Background Accent",description:"Apply the accent color to the card background?",inputMethod:"boolean"},{property:"noBorder",title:"No Border Accent",description:"Remove the border accent?",inputMethod:"boolean"},{property:"flat",title:"Flat",description:"Remove the box shadow?",inputMethod:"boolean"}],advanced:[]}}}// properties available to the custom element for data binding
+static get properties(){let props={/**
        * Apply accent color to card background
        */accentBackground:{name:"accentBackground",type:Boolean,value:!1,reflectToAttribute:!0},/**
        * Apply accent color to heading
@@ -223,7 +222,7 @@ static get properties(){return{/**
        * Removes the think accent border
        */noBorder:{name:"noBorder",type:Boolean,value:!1,reflectToAttribute:!0},/**
        * The style for the image if there is an image
-       */__backgroundStyle:{name:"__backgroundStyle",type:String,computed:"_getBackgroundStyle(imageSrc)"}}}/**
+       */__backgroundStyle:{name:"__backgroundStyle",type:String,computed:"_getBackgroundStyle(imageSrc)"}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * life cycle, element is afixed to the DOM
    */connectedCallback(){super.connectedCallback();// Establish hax property binding
 this.HAXWiring=new HAXWiring;this.HAXWiring.setup(AccentCard.haxProperties,AccentCard.tag,this)}/**

@@ -1,7 +1,7 @@
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import{SimpleColors}from"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@lrnwebcomponents/responsive-utility/responsive-utility.js";export{LrndesignTimeline};/**
+ */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import{SchemaBehaviors}from"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import{SimpleColors}from"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@lrnwebcomponents/responsive-utility/responsive-utility.js";export{LrndesignTimeline};/**
  * `lrndesign-timeline`
  * `an element that displays events on a timeline`
  *
@@ -212,7 +212,6 @@ static get template(){return html`
     border-bottom: 1px solid var(--lrndesign-timeline-background);
   }
 }</style>
-<style is="custom-style" include="simple-colors"></style>
 <article>
   <h1 id="title">[[title]]</h1>
   <slot></slot>

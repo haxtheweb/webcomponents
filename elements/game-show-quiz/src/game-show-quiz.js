@@ -41,7 +41,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
   }
   static get template() {
     return html`
-      <style include="simple-colors">
+      <style>
         :host {
           display: block;
           --game-show-bg-color: var(--simple-colors-default-theme-blue-11);

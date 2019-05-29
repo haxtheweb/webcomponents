@@ -76,23 +76,24 @@ Custom property | Description | Default
 @hero hero.svg
 @homepage polymer.github.io
 */class LrnIcon extends PolymerElement{static get template(){return html`
-    <style include="lrn-shared-styles">
-      :host {
-        position: relative;
+      <style include="lrn-shared-styles">
+        :host {
+          position: relative;
 
-        vertical-align: middle;
+          vertical-align: middle;
 
-        fill: var(--lrn-icon-fill-color, currentcolor);
-        stroke: var(--lrn-icon-stroke-color, none);
+          fill: var(--lrn-icon-fill-color, currentcolor);
+          stroke: var(--lrn-icon-stroke-color, none);
 
-        width: var(--lrn-icon-width, 24px);
-        height: var(--lrn-icon-height, 24px);
-        @apply --layout-inline;
-        @apply --layout-center-center;
-        @apply --lrn-icon;
-      }
-    </style>
-    <iron-icon icon$="lrn:[[icon]]"></iron-icon>`}static get tag(){return"lrn-icon"}static get properties(){return{/**
+          width: var(--lrn-icon-width, 24px);
+          height: var(--lrn-icon-height, 24px);
+          @apply --layout-inline;
+          @apply --layout-center-center;
+          @apply --lrn-icon;
+        }
+      </style>
+      <iron-icon icon$="lrn:[[icon]]"></iron-icon>
+    `}static get tag(){return"lrn-icon"}static get properties(){return{/**
        * The name of the icon to use. The name should be of the form:
        * `iconset_name:icon_name`.
        */icon:{type:String},/**
@@ -102,4 +103,4 @@ Custom property | Description | Default
        * If using lrn-icon without an iconset, you can set the src to be
        * the URL of an individual icon image file. Note that this will take
        * precedence over a given icon attribute.
-       */src:{type:String},_meta:{value:document.createElement("iron-meta",{type:"iconset"})}}}static get observers(){return["_updateIcon(_meta, isAttached)","_updateIcon(theme, isAttached)","_srcChanged(src, isAttached)","_iconChanged(icon, isAttached)"]}_iconChanged(icon){this._iconName=icon;this._iconsetName="lrn";this._updateIcon()}_srcChanged(src){this._updateIcon()}_usesIconset(){return this.icon||!this.src}/** @suppress {visibility} */_updateIcon(){if(this._usesIconset()){if(this._img&&this._img.parentNode){dom(this.root).removeChild(this._img)}if(""===this._iconName){if(this._iconset){this._iconset.removeIcon(this)}}else if(this._iconsetName&&this._meta){this._iconset=this._meta.byKey(this._iconsetName);if(this._iconset){this._iconset.applyIcon(this,this._iconName,this.theme);this.unlisten(window,"lrn-iconset-added","_updateIcon")}else{this.listen(window,"lrn-iconset-added","_updateIcon")}}}else{if(this._iconset){this._iconset.removeIcon(this)}if(!this._img){this._img=document.createElement("img");this._img.style.width="100%";this._img.style.height="100%";this._img.draggable=!1}this._img.src=this.src;dom(this.root).appendChild(this._img)}}}window.customElements.define(LrnIcon.tag,LrnIcon);export{LrnIcon};
+       */src:{type:String},_meta:{value:document.createElement("iron-meta",{type:"iconset"})}}}static get observers(){return["_updateIcon(_meta, isAttached)","_updateIcon(theme, isAttached)","_srcChanged(src, isAttached)","_iconChanged(icon, isAttached)"]}_iconChanged(icon){this._iconName=icon;this._iconsetName="lrn";this._updateIcon()}_srcChanged(src){this._updateIcon()}_usesIconset(){return this.icon||!this.src}/** @suppress {visibility} */_updateIcon(){if(this._usesIconset()){if(this._img&&this._img.parentNode){dom(this.root).removeChild(this._img)}if(""===this._iconName){if(this._iconset){this._iconset.removeIcon(this)}}else if(this._iconsetName&&this._meta){this._iconset=this._meta.byKey(this._iconsetName);if(this._iconset){this._iconset.applyIcon(this,this._iconName,this.theme);window.removeEventListener("lrn-iconset-added",this._updateIcon.bind(this))}else{window.addEventListener("lrn-iconset-added",this._updateIcon.bind(this))}}}else{if(this._iconset){this._iconset.removeIcon(this)}if(!this._img){this._img=document.createElement("img");this._img.style.width="100%";this._img.style.height="100%";this._img.draggable=!1}this._img.src=this.src;dom(this.root).appendChild(this._img)}}}window.customElements.define(LrnIcon.tag,LrnIcon);export{LrnIcon};

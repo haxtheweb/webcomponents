@@ -28,7 +28,7 @@ class LrndesignBlockquote extends SchemaBehaviors(PolymerElement) {
   }
   static get template() {
     return html`
-      <style include="simple-colors">
+      <style>
         :host {
           display: inline-block;
           position: relative;

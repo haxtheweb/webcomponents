@@ -13,7 +13,6 @@
  *  - percentage - amount complete either in the bar or the nodes themselves
  *  - bar - the underlayed bar that's tracking overall progression
  */class LrnsysProgress extends PolymerElement{static get template(){return html`
-    
       <style include="paper-material-styles">
         :host {
           display: block;
@@ -90,47 +89,48 @@
           --paper-spinner-stroke-width: 1.2px;
         }
       </style>
-    
-    <iron-ajax
-      id="ajax"
-      url="[[activeNodeURL]]"
-      handle-as="json"
-      last-error="{{nodeDataError}}"
-      on-response="handleNodeResponse"
-    ></iron-ajax>
-    <h3 class="progress-title">[[title]]</h3>
-    <paper-progress
-      id="progress"
-      value="[[overallPercentage]]"
-    ></paper-progress>
-    <ul id="circle-container">
-      <template is="dom-repeat" items="[[items]]" as="item">
-        <li class="circle-node">
-          <lrnsys-progress-circle
-            play-finish-sound="[[soundFinish]]"
-            play-sound="[[sound]]"
-            complete-sound="[[completeSound]]"
-            finished-sound="[[finishedSound]]"
-            active="[[_isActive(index, active)]]"
-            step="[[index]]"
-            label="[[item.title]]"
-            icon="[[item.metadata.icon]]"
-            icon-complete="[[item.metadata.iconComplete]]"
-            data-url="[[item.metadata.dataUrl]]"
-            url="[[item.location]]"
-            status="[[item.metadata.status]]"
-            value="[[item.metadata.value]]"
-            max="[[item.metadata.max]]"
-            stroke-width="[[strokeWidth]]"
-            tool-tip="[[!vertical]]"
-            list-view="[[vertical]]"
-            class\$="[[size]]"
-          >
-            <span slot="description">[[item.description]]</span>
-          </lrnsys-progress-circle>
-        </li>
-      </template>
-    </ul>`}static get tag(){return"lrnsys-progress"}connectedCallback(){super.connectedCallback();afterNextRender(this,function(){this.addEventListener("node-is-active",this._bubbleUpChangeActive.bind(this));this.addEventListener("node-status-change",this._statusChanged.bind(this))})}disconnectedCallback(){this.removeEventListener("node-is-active",this._bubbleUpChangeActive.bind(this));this.removeEventListener("node-status-change",this._statusChanged.bind(this));super.disconnectedCallback()}static get properties(){return{/**
+
+      <iron-ajax
+        id="ajax"
+        url="[[activeNodeURL]]"
+        handle-as="json"
+        last-error="{{nodeDataError}}"
+        on-response="handleNodeResponse"
+      ></iron-ajax>
+      <h3 class="progress-title">[[title]]</h3>
+      <paper-progress
+        id="progress"
+        value="[[overallPercentage]]"
+      ></paper-progress>
+      <ul id="circle-container">
+        <template is="dom-repeat" items="[[items]]" as="item">
+          <li class="circle-node">
+            <lrnsys-progress-circle
+              play-finish-sound="[[soundFinish]]"
+              play-sound="[[sound]]"
+              complete-sound="[[completeSound]]"
+              finished-sound="[[finishedSound]]"
+              active="[[_isActive(index, active)]]"
+              step="[[index]]"
+              label="[[item.title]]"
+              icon="[[item.metadata.icon]]"
+              icon-complete="[[item.metadata.iconComplete]]"
+              data-url="[[item.metadata.dataUrl]]"
+              url="[[item.location]]"
+              status="[[item.metadata.status]]"
+              value="[[item.metadata.value]]"
+              max="[[item.metadata.max]]"
+              stroke-width="[[strokeWidth]]"
+              tool-tip="[[!vertical]]"
+              list-view="[[vertical]]"
+              class\$="[[size]]"
+            >
+              <span slot="description">[[item.description]]</span>
+            </lrnsys-progress-circle>
+          </li>
+        </template>
+      </ul>
+    `}static get tag(){return"lrnsys-progress"}connectedCallback(){super.connectedCallback();afterNextRender(this,function(){this.addEventListener("node-is-active",this._bubbleUpChangeActive.bind(this));this.addEventListener("node-status-change",this._statusChanged.bind(this))})}disconnectedCallback(){this.removeEventListener("node-is-active",this._bubbleUpChangeActive.bind(this));this.removeEventListener("node-status-change",this._statusChanged.bind(this));super.disconnectedCallback()}static get properties(){return{/**
        * Disable internal ajax calls as something is handling them above.
        */disableAjaxCalls:{type:Boolean,value:!1,reflectToAttribute:!0},/**
        * Items to display to visualize the progression.

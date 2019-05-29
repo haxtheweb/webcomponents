@@ -1,71 +1,72 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import{SimpleColors}from"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import{A11yBehaviors}from"./node_modules/@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";/**
+import{html}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import{SimpleColors}from"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import{A11yBehaviors}from"./node_modules/@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";/**
 `simple-concept-network`
 A small but effective little data visualizer for topics surrounding
 a central concept, much like the ELMS:LN snowflake icon.
 * @demo demo/index.html
 @microcopy - the mental model for this element
  - ELMS:LN - The ELMS: Learning Network "snowflake" is a network diagram
-*/class SimpleConceptNetwork extends SimpleColors(A11yBehaviors(PolymerElement)){constructor(){super();import("./node_modules/@lrnwebcomponents/simple-concept-network/lib/simple-concept-network-node.js");afterNextRender(this,function(){this.HAXWiring=new HAXWiring;this.HAXWiring.setup(SimpleConceptNetwork.haxProperties,SimpleConceptNetwork.tag,this)})}static get template(){return html`
-    <style include="simple-colors">
-      :host {
-        display: block;
-      }
-      :host([visualization="network"]) simple-concept-network-node {
-        position: relative;
-      }
-      :host([visualization="network"])
-        simple-concept-network-node:nth-child(1) {
-        top: 150px;
-        left: 176px;
-      }
-      :host([visualization="network"])
-        simple-concept-network-node:nth-child(2) {
-        top: 0px;
-        left: 60px;
-      }
-      :host([visualization="network"])
-        simple-concept-network-node:nth-child(3) {
-        top: 75px;
-        left: 60px;
-      }
-      :host([visualization="network"])
-        simple-concept-network-node:nth-child(4) {
-        top: 230px;
-        left: -56px;
-      }
-      :host([visualization="network"])
-        simple-concept-network-node:nth-child(5) {
-        top: 300px;
-        left: -282px;
-      }
-      :host([visualization="network"])
-        simple-concept-network-node:nth-child(6) {
-        top: 230px;
-        left: -515px;
-      }
-      :host([visualization="network"])
-        simple-concept-network-node:nth-child(7) {
-        top: 75px;
-        left: -630px;
-      }
-      :host([visualization="network"]) {
-        display: block;
-        min-height: 450px;
-      }
-    </style>
-    <template is="dom-repeat" items="[[nodes]]" as="node">
-      <simple-concept-network-node
-        accent-color$="[[node.color]]"
-        colored-text$="[[coloredText]]"
-        dark$="[[dark]]"
-        visualization$="[[visualization]]"
-        src$="[[node.src]]"
-        icon$="[[node.icon]]"
-        image$="[[node.image]]"
-        label$="[[node.label]]"
-        disabled$="[[node.disabled]]"
-      ></simple-concept-network-node>
-    </template>`}static get tag(){return"simple-concept-network"}static get observers(){return["_valueChanged(nodes.*)"]}static get properties(){let props={/**
+*/class SimpleConceptNetwork extends A11yBehaviors(SimpleColors){constructor(){super();import("./node_modules/@lrnwebcomponents/simple-concept-network/lib/simple-concept-network-node.js");afterNextRender(this,function(){this.HAXWiring=new HAXWiring;this.HAXWiring.setup(SimpleConceptNetwork.haxProperties,SimpleConceptNetwork.tag,this)})}static get template(){return html`
+      <style>
+        :host {
+          display: block;
+        }
+        :host([visualization="network"]) simple-concept-network-node {
+          position: relative;
+        }
+        :host([visualization="network"])
+          simple-concept-network-node:nth-child(1) {
+          top: 150px;
+          left: 176px;
+        }
+        :host([visualization="network"])
+          simple-concept-network-node:nth-child(2) {
+          top: 0px;
+          left: 60px;
+        }
+        :host([visualization="network"])
+          simple-concept-network-node:nth-child(3) {
+          top: 75px;
+          left: 60px;
+        }
+        :host([visualization="network"])
+          simple-concept-network-node:nth-child(4) {
+          top: 230px;
+          left: -56px;
+        }
+        :host([visualization="network"])
+          simple-concept-network-node:nth-child(5) {
+          top: 300px;
+          left: -282px;
+        }
+        :host([visualization="network"])
+          simple-concept-network-node:nth-child(6) {
+          top: 230px;
+          left: -515px;
+        }
+        :host([visualization="network"])
+          simple-concept-network-node:nth-child(7) {
+          top: 75px;
+          left: -630px;
+        }
+        :host([visualization="network"]) {
+          display: block;
+          min-height: 450px;
+        }
+      </style>
+      <template is="dom-repeat" items="[[nodes]]" as="node">
+        <simple-concept-network-node
+          accent-color$="[[node.color]]"
+          colored-text$="[[coloredText]]"
+          dark$="[[dark]]"
+          visualization$="[[visualization]]"
+          src$="[[node.src]]"
+          icon$="[[node.icon]]"
+          image$="[[node.image]]"
+          label$="[[node.label]]"
+          disabled$="[[node.disabled]]"
+        ></simple-concept-network-node>
+      </template>
+    `}static get tag(){return"simple-concept-network"}static get observers(){return["_valueChanged(nodes.*)"]}static get properties(){let props={/**
        * Type of visualization
        */visualization:{type:String,reflectToAttribute:!0,value:"3d"},/**
        * disabled status

@@ -101,7 +101,7 @@ class HAXCMSUserTheme extends HAXCMSTheme(PolymerElement) {
     if (this.__counter === 2) {
       let t = document.createElement("template");
       t.innerHTML = `
-      <style include="simple-colors">
+      <style>
         /**
          * Hide the slotted content during edit mode. This must be here to work.
          */

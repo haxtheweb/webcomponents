@@ -221,11 +221,10 @@ app-drawer-layout[narrow] site-menu-button[type="prev"] {
   }
   </style>
 
-<style include="simple-colors"></style>
 <app-drawer-layout>
-  <paper-icon-button id="menubutton" icon="menu" on-tap="toggleDrawer"></paper-icon-button>
+  <paper-icon-button id="menubutton" icon="menu" on-click="toggleDrawer"></paper-icon-button>
   <app-drawer swipe-open slot="drawer" opened="{{opened}}">
-    <paper-icon-button id="menubutton2" icon="menu" on-tap="toggleDrawer"></paper-icon-button>
+    <paper-icon-button id="menubutton2" icon="menu" on-click="toggleDrawer"></paper-icon-button>
     <div class="header-wrapper">
       <div class="header">
         <site-title></site-title>

@@ -1,10 +1,11 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import*as async from"./node_modules/@polymer/polymer/lib/utils/async.js";import{IronResizableBehavior}from"./node_modules/@polymer/iron-resizable-behavior/iron-resizable-behavior.js";window.ResponsiveUtility={};window.ResponsiveUtility.instance=null;class ResponsiveUtility extends IronResizableBehavior(PolymerElement){static get template(){return html`
-    <style>
-      :host {
-        display: inline;
-      }
-    </style>
-    <slot></slot>`}static get tag(){return"responsive-utility"}static get properties(){let props={/**
+import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import*as async from"./node_modules/@polymer/polymer/lib/utils/async.js";import{IronResizableBehavior}from"./node_modules/@polymer/iron-resizable-behavior/iron-resizable-behavior.js";import{mixinBehaviors}from"./node_modules/@polymer/polymer/lib/legacy/class.js";window.ResponsiveUtility={};window.ResponsiveUtility.instance=null;class ResponsiveUtility extends mixinBehaviors([IronResizableBehavior],PolymerElement){static get template(){return html`
+      <style>
+        :host {
+          display: inline;
+        }
+      </style>
+      <slot></slot>
+    `}static get tag(){return"responsive-utility"}static get properties(){let props={/**
        * Stores
        */details:{type:Array,value:[]}};if(super.properties){props=Object.assign(props,super.properties)}return props}connectedCallback(){super.connectedCallback();afterNextRender(this,function(){this.addEventListener("iron-resize",this._onIronResize.bind(this))})}disconnectedCallback(){let root=this;this.removeEventListener("iron-resize",this._onIronResize.bind(this));window.removeEventListener("responsive-element",e=>{let detail={element:e.detail.element,attribute:e.detail.attribute!==void 0&&null!==e.detail.attribute?e.detail.attribute:"responsive-size",relativeToParent:e.detail.relativeToParent!==void 0&&null!==e.detail.relativeToParent?e.detail.relativeToParent:!0,sm:e.detail.sm!==void 0&&null!==e.detail.sm?e.detail.sm:900,md:e.detail.md!==void 0&&null!==e.detail.md?e.detail.md:1200,lg:e.detail.lg!==void 0&&null!==e.detail.lg?e.detail.lg:1500,xl:e.detail.xl!==void 0&&null!==e.detail.xl?e.detail.lg:1800};if("ResizeObserver"in window&&!0===detail.relativeToParent){let resize=new ResizeObserver(function(){window.ResponsiveUtility.setSize(detail)}),observable=e.detail.parentNode!==void 0&&null!==e.detail.parentNode?e.detail.parentNode.nodeType===Node.DOCUMENT_FRAGMENT_NODE?e.detail.element.parentNode.host:e.detail.element.parentNode:e.detail.element;resize.observe(observable)}root.push("details",detail);window.ResponsiveUtility.setSize(detail)});/* handle element deregistration */window.removeEventListener("delete-responsive-element",e=>{for(let i=0;i<this.details.length;i++){if(e.detail===detail[i])root.splice("details",i,1)}});super.disconnectedCallback()}/**
    * An array of objects. Each object is contains data about an element

@@ -260,7 +260,6 @@ class LrndesignTimeline extends SimpleColors {
           }
         }
       </style>
-      <style include="simple-colors"></style>
       <article>
         <h1 id="title">[[title]]</h1>
         <slot></slot>

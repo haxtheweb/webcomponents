@@ -1,7 +1,7 @@
 /**
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{LitElement,html,css}from"./node_modules/lit-element/lit-element.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";/**
+ */import{LitElement,html,css}from"./node_modules/lit-element/lit-element.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@lrnwebcomponents/simple-popover/simple-popover.js";/**
  * `simple-blog-card`
  * `a card commonly found on a blogging website`
  *
@@ -58,14 +58,12 @@ render(){return html`
     </div>
   </div>
 </paper-card>
-<absolute-position-behavior for="author" poisition="top">
-  <div class="box">
+<simple-popover position="top" offset="0">
     <paper-avatar .label="${this.author}" .src="${this.authorimage}">
     </paper-avatar>
     <h5 class="author-name">${this.author}</h5>
     <div class="author-bio">${this.authorbio}</div>
-  </div>
-</absolute-position-behavior>`}// properties available to the custom element for data binding
+</simple-popover>`}// properties available to the custom element for data binding
 static get properties(){return{title:{name:"title",type:"String"},author:{name:"author",type:"String"},authorimage:{name:"authorimage",type:"String"},authorlink:{name:"authorlink",type:"String"},readtime:{name:"readtime",type:"Number"},timestamp:{name:"timestamp",type:"Number"},image:{name:"image",type:"String"},link:{name:"link",type:"String"},shadow:{name:"shadow",type:"Number"},size:{name:"size",type:"String"},placeholder:{name:"placeholder",type:"String"},alt:{name:"alt",type:"String"}}}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -203,16 +201,9 @@ static get properties(){return{title:{name:"title",type:"String"},author:{name:"
         .box {
           outline: 1px solid black;
         }
-        absolute-position-behavior {
+        simple-popover:not([for]) {
           display: none;
-        }
-        .show {
-          display: unset;
         }
       `]}// life cycle
 constructor(){super();this.placeholder="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QBYRXhpZgAATU0AKgAAAAgAAgESAAMAAAABAAEAAIdpAAQAAAABAAAAJgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAAqADAAQAAAABAAAAAgAAAAD/7QA4UGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAAA4QklNBCUAAAAAABDUHYzZjwCyBOmACZjs+EJ+/8AAEQgAAgACAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAwQHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBkaJicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX29/j5+v/bAEMAHBwcHBwcMBwcMEQwMDBEXERERERcdFxcXFxcdIx0dHR0dHSMjIyMjIyMjKioqKioqMTExMTE3Nzc3Nzc3Nzc3P/bAEMBIiQkODQ4YDQ0YOacgJzm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5v/dAAQAAf/aAAwDAQACEQMRAD8AiooooA//2Q==";this.size="medium";this.shadow=0;import("./node_modules/@lrnwebcomponents/paper-avatar/paper-avatar.js");import("./node_modules/time-elements/dist/time-elements.js")}update(changedProperties){super.update();changedProperties.forEach((oldValue,propName)=>{if("image"==propName){// fallback to placeholder if set to empty
-if(!this.image){this.image=this.placeholder}}})}connectedCallback(){super.connectedCallback();if(!this.image){this.image=this.placeholder}this.addEventListener("mouseover",this.hoverState.bind(this));this.addEventListener("mouseout",this.hoverStateOff.bind(this))}disconnectedCallback(){super.disconnectedCallback();this.removeEventListener("mouseover",this.hoverState.bind(this));this.removeEventListener("mouseout",this.hoverStateOff.bind(this))}showDetails(e){/*this.shadowRoot
-      .querySelector("absolute-position-behavior")
-      .classList.add("show");*/}hideDetails(e){/*this.shadowRoot
-      .querySelector("absolute-position-behavior")
-      .classList.remove("show");*/}hoverState(e){this.shadow=1}hoverStateOff(e){this.shadow=0}}customElements.define("simple-blog-card",SimpleBlogCard);export{SimpleBlogCard};
+if(!this.image){this.image=this.placeholder}}})}connectedCallback(){super.connectedCallback();if(!this.image){this.image=this.placeholder}this.addEventListener("mouseover",this.hoverState.bind(this));this.addEventListener("mouseout",this.hoverStateOff.bind(this))}disconnectedCallback(){super.disconnectedCallback();this.removeEventListener("mouseover",this.hoverState.bind(this));this.removeEventListener("mouseout",this.hoverStateOff.bind(this))}ready(){super.ready()}showDetails(e){this.shadowRoot.querySelector("simple-popover").setAttribute("for","author");this.shadowRoot.querySelector("simple-popover").setPosition()}hideDetails(e){this.shadowRoot.querySelector("simple-popover").removeAttribute("for");this.shadowRoot.querySelector("simple-popover").unsetPosition()}hoverState(e){this.shadow=1}hoverStateOff(e){this.shadow=0}}customElements.define("simple-blog-card",SimpleBlogCard);export{SimpleBlogCard};

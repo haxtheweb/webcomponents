@@ -7,52 +7,54 @@ A LRN element
 
 * @demo demo/index.html
 */class LrndesignPanelcard extends SimpleColors{constructor(){super();import("./node_modules/@polymer/paper-card/paper-card.js");afterNextRender(this,function(){this.HAXWiring=new HAXWiring;this.HAXWiring.setup(LrndesignPanelcard.haxProperties,LrndesignPanelcard.tag,this)})}static get template(){return html`
-    <style include="simple-colors"></style>
-    <style>
-      :host {
-        display: inline-block;
-        position: relative;
-        box-sizing: border-box;
-        --lrndesign-panelcard-text-color: var(
-          --simple-colors-default-theme-grey-12
-        );
-        --lrndesign-panelcard-color: var(
-          --simple-colors-default-theme-accent-1
-        );
-      }
-      :host([dark]:not([accent-color="grey"])) {
-        --lrndesign-panelcard-color: var(
-          --simple-colors-default-theme-accent-3
-        );
-      }
-      :host([colored-text]) {
-        --lrndesign-panelcard-text-color: var(
-          --simple-colors-default-theme-accent-9
-        );
-        --lrndesign-panelcard-color: var(--simple-colors-default-theme-grey-1);
-      }
-      .card-panel {
-        transition: box-shadow 0.25s;
-        padding: 24px;
-        margin: 0;
-        border-radius: 2px;
-        color: var(--lrndesign-panelcard-text-color);
-        background-color: var(--lrndesign-panelcard-color);
-      }
+      <style>
+        :host {
+          display: inline-block;
+          position: relative;
+          box-sizing: border-box;
+          --lrndesign-panelcard-text-color: var(
+            --simple-colors-default-theme-grey-12
+          );
+          --lrndesign-panelcard-color: var(
+            --simple-colors-default-theme-accent-1
+          );
+        }
+        :host([dark]:not([accent-color="grey"])) {
+          --lrndesign-panelcard-color: var(
+            --simple-colors-default-theme-accent-3
+          );
+        }
+        :host([colored-text]) {
+          --lrndesign-panelcard-text-color: var(
+            --simple-colors-default-theme-accent-9
+          );
+          --lrndesign-panelcard-color: var(
+            --simple-colors-default-theme-grey-1
+          );
+        }
+        .card-panel {
+          transition: box-shadow 0.25s;
+          padding: 24px;
+          margin: 0;
+          border-radius: 2px;
+          color: var(--lrndesign-panelcard-text-color);
+          background-color: var(--lrndesign-panelcard-color);
+        }
 
-      h3 {
-        padding: 0;
-        margin: 0 0 8px 0;
-      }
-    </style>
-    <aside>
-      <paper-card elevation="[[elevation]]">
-        <div class="card-panel">
-          <h3>[[title]]</h3>
-          <span><slot></slot></span>
-        </div>
-      </paper-card>
-    </aside>`}static get tag(){return"lrndesign-panelcard"}static get properties(){let props={/**
+        h3 {
+          padding: 0;
+          margin: 0 0 8px 0;
+        }
+      </style>
+      <aside>
+        <paper-card elevation="[[elevation]]">
+          <div class="card-panel">
+            <h3>[[title]]</h3>
+            <span><slot></slot></span>
+          </div>
+        </paper-card>
+      </aside>
+    `}static get tag(){return"lrndesign-panelcard"}static get properties(){let props={/**
        * Title of the panel
        */title:{type:String,value:"Block heading",reflectToAttribute:!0},/**
        * Height of the paper.

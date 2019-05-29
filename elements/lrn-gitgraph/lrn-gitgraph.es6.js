@@ -6,13 +6,14 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
  *   ```
  * @demo demo/index.html
  */class LrnGitgraph extends PolymerElement{static get template(){return html`
-    <style>
-      :host {
-        display: block;
-        overflow-x: scroll;
-      }
-    </style>
-    <canvas id="gitGraph"></canvas>`}static get tag(){return"lrn-gitgraph"}static get properties(){return{commits:{type:Array,value:[]},template:{type:String,value:"blackarrow"},orientation:{type:String,value:"horizontal"},mode:{type:String,value:""},reverseArrow:{type:Boolean,value:!1},/**
+      <style>
+        :host {
+          display: block;
+          overflow-x: scroll;
+        }
+      </style>
+      <canvas id="gitGraph"></canvas>
+    `}static get tag(){return"lrn-gitgraph"}static get properties(){return{commits:{type:Array,value:[]},template:{type:String,value:"blackarrow"},orientation:{type:String,value:"horizontal"},mode:{type:String,value:""},reverseArrow:{type:Boolean,value:!1},/**
        * @type {{template: String, reverseArrow: Boolean, orientation: String, element: Object}}
        */config:{type:Object}}}static get observers(){return["_commitsChanged(commits)"]}_commitsChanged(commits){var root=this;if(root.config){if(0<commits.length){var gitgraph=new GitGraph(root.config),tree=[];commits.forEach(function(item){if(item.commits){item.commits.forEach(function(commit){commit.branch=item.branch;tree.push(commit)})}});// remove duplicate commits
 console.log("befor",tree);tree=root._treeRemoveDuplicates(tree);// sort by date

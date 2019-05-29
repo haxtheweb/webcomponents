@@ -28,6 +28,8 @@ window.SimpleModal.requestAvailability=()=>{if(!window.SimpleModal.instance){win
  * @customElement
  * @polymer
  * @demo demo/index.html demo
+ * @demo demo/css.html styling simple-modal via CSS
+ * @demo demo/details.html styling simple-modal via event details
  * @demo demo/template.html using simple-modal-template
  */class SimpleModal extends PolymerElement{// render function
 static get template(){return html`
@@ -49,10 +51,11 @@ paper-dialog-scrollable:not(:defined) {
 }
 
 #dialog {
+  display: flex;
+  flex-direction: column;
   margin: 15px auto;
-  height: auto;
-  height: var(--simple-modal-height, auto);
   z-index: 1000;
+  height: var(--simple-modal-height, auto);
   width: var(--simple-modal-width, auto);
   min-width: var(--simple-modal-min-width, unset);
   max-width: var(--simple-modal-max-width, unset);
@@ -71,6 +74,8 @@ paper-dialog-scrollable:not(:defined) {
   color: var(--simple-modal-titlebar-color,#444);
   background-color: var(--simple-modal-titlebar-background,#ddd);
   border-radius: 3px 3px 0 0;
+  height: 64px;
+  line-height: 64px;
   @apply --simple-modal-top;
 }
 
@@ -109,6 +114,7 @@ h2 {
 }
 
 #simple-modal-content {
+  flex-grow: 1;
   padding: 8px 16px;
   margin: 0;
   color: var(--simple-modal-content-container-color, #222);
@@ -142,6 +148,7 @@ h2 {
   exit-animation="fade-out-animation" 
   role="dialog"
   opened="{{opened}}" 
+  modal="[[modal]]"
   with-backdrop>
   <div id="titlebar">
     <h2 id="simple-modal-title" hidden$="[[!title]]">[[title]]</h2>
@@ -168,7 +175,9 @@ static get properties(){return{/**
    * Close icon
    */closeIcon:{name:"closeIcon",type:String,value:"close"},/**
    * The element that invoked this. This way we can track our way back accessibly
-   */invokedBy:{name:"invokedBy",type:Object}}}constructor(){super();import("./node_modules/@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js");import("./node_modules/@polymer/paper-button/paper-button.js");import("./node_modules/@polymer/iron-icons/iron-icons.js");import("./node_modules/@polymer/iron-icon/iron-icon.js");import("./node_modules/@polymer/neon-animation/animations/scale-up-animation.js");import("./node_modules/@polymer/neon-animation/animations/fade-out-animation.js")}/**
+   */invokedBy:{name:"invokedBy",type:Object},/**
+   * support for modal flag
+   */modal:{name:"modal",type:Boolean,value:!1}}}constructor(){super();import("./node_modules/@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js");import("./node_modules/@polymer/paper-button/paper-button.js");import("./node_modules/@polymer/iron-icons/iron-icons.js");import("./node_modules/@polymer/iron-icon/iron-icon.js");import("./node_modules/@polymer/neon-animation/animations/scale-up-animation.js");import("./node_modules/@polymer/neon-animation/animations/fade-out-animation.js")}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"simple-modal"}/**
@@ -178,14 +187,15 @@ static get properties(){return{/**
    */_resizeContent(e){// fake a resize event to make contents happy
 microTask.run(()=>{window.dispatchEvent(new Event("resize"))})}/**
    * show event call to open the modal and display it's content
+   *
    */showEvent(e){// if we're already opened and we get told to open again....
 // swap out the contents
 if(this.opened){// wipe the slot of our modal
-while(null!==dom(this).firstChild){dom(this).removeChild(dom(this).firstChild)}setTimeout(()=>{this.show(e.detail.title,e.detail.elements,e.detail.invokedBy,e.detail.clone)},100)}else{this.show(e.detail.title,e.detail.elements,e.detail.invokedBy,e.detail.clone)}}/**
+while(null!==dom(this).firstChild){dom(this).removeChild(dom(this).firstChild)}setTimeout(()=>{this.show(e.detail.title,e.detail.elements,e.detail.invokedBy,e.detail.id,e.detail.modalClass,e.detail.styles,e.detail.clone,e.detail.modal)},100)}else{this.show(e.detail.title,e.detail.elements,e.detail.invokedBy,e.detail.id,e.detail.modalClass,e.detail.styles,e.detail.clone,e.detail.modal)}}/**
    * Show the modal and display the material
-   */show(title,elements,invokedBy,clone=!1){this.set("invokedBy",invokedBy);this.title=title;let element,slots=["header","content","buttons"];// append element areas into the appropriate slots
+   */show(title,elements,invokedBy,id=null,modalClass=null,styles=null,clone=!1,modal=!1){this.set("invokedBy",invokedBy);this.modal=modal;this.title=title;let element,slots=["header","content","buttons"];// append element areas into the appropriate slots
 // ensuring they are set if it wasn't previously
-for(var i in slots){if(elements[slots[i]]){if(clone){element=elements[slots[i]].cloneNode(!0)}else{element=elements[slots[i]]}element.setAttribute("slot",slots[i]);dom(this).appendChild(element)}}// minor delay to help the above happen prior to opening
+if(id){this.setAttribute("id",id)}else{this.removeAttribute("id")}this.setAttribute("style","");if(styles){["--simple-modal-width","--simple-modal-height","--simple-modal-min-width","--simple-modal-min-height","--simple-modal-max-width","--simple-modal-max-height","--simple-modal-titlebar-color","--simple-modal-titlebar-background","--simple-modal-header-color","--simple-modal-header-background","--simple-modal-content-container-color","--simple-modal-content-container-background","--simple-modal-buttons-color","--simple-modal-buttons-background","--simple-modal-button-color","--simple-modal-button-background"].forEach(prop=>{this.style.setProperty(prop,styles[prop]||"unset")})}if(modalClass){this.setAttribute("class",modalClass)}else{this.removeAttribute("class")}for(var i in slots){if(elements[slots[i]]){if(clone){element=elements[slots[i]].cloneNode(!0)}else{element=elements[slots[i]]}element.setAttribute("slot",slots[i]);dom(this).appendChild(element)}}// minor delay to help the above happen prior to opening
 setTimeout(()=>{this.opened=!0;this._resizeContent()},100)}/**
    * check state and if we should clean up on close.
    * This keeps the DOM tiddy and allows animation to happen gracefully.

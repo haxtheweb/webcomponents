@@ -173,7 +173,8 @@ by the regular expression engine.
 @element grafitto-filter
 * @demo demo/index.html
 */class GrafittoFilter extends mixinBehaviors([Templatizer,OptionalMutableDataBehavior],PolymerElement){static get template(){return html`
-    <div id="dom"><slot></slot></div>`}static get tag(){return"grafitto-filter"}static get properties(){let props={/**
+      <div id="dom"><slot></slot></div>
+    `}static get tag(){return"grafitto-filter"}static get properties(){let props={/**
        * These are the items to be filtered
        */items:{type:Array,value:[]},/**
        * Filter regular expression string

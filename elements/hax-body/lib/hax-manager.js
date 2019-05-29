@@ -31,7 +31,7 @@ class HaxManager extends PolymerElement {
   }
   static get template() {
     return html`
-      <style include="hax-shared-styles simple-colors">
+      <style include="hax-shared-styles">
         :host {
           display: block;
           color: var(--hax-color-text);

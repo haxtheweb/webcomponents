@@ -35,7 +35,7 @@ class HaxBody extends PolymerElement {
   }
   static get template() {
     return html`
-      <style include="simple-colors hax-shared-styles">
+      <style include="hax-shared-styles">
         @import url("https://fonts.googleapis.com/css?family=Noto+Serif");
         :host {
           display: block;
@@ -1087,6 +1087,10 @@ class HaxBody extends PolymerElement {
     this.hideContextMenus();
     // convert the node to a hax element
     let haxElement = window.HaxStore.nodeToHaxElement(node, null);
+    // support for deep API call to clean up special elements
+    if (typeof node.preProcessHaxInsertContent !== typeof undefined) {
+      haxElement = node.preProcessHaxInsertContent(haxElement);
+    }
     // convert it back to a clone, seems odd I'm sure but this ensures that all props are copied
     // correctly and that we get a brand new object
     var nodeClone = window.HaxStore.haxElementToNode(

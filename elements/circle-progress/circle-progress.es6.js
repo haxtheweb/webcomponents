@@ -32,29 +32,30 @@
           stroke-linecap: var(--circle-progress-stroke-linecap, round);
         }
       </style>
-    
-    <svg id="circle" width="100%" height="100%">
-      <circle
-        class="circle-background"
-        r\$="[[_radius]]"
-        cx\$="[[_cx]]"
-        cy\$="[[_cy]]"
-        fill="transparent"
-        stroke-width\$="[[strokeWidth]]"
-      ></circle>
-      <circle
-        class="circle-foreground"
-        r\$="[[_radius]]"
-        cx\$="[[_cx]]"
-        cy\$="[[_cy]]"
-        fill="transparent"
-        stroke-width\$="[[strokeWidth]]"
-        stroke-dasharray\$="[[_dasharray]]"
-        stroke-dashoffset\$="[[_dashoffset]]"
-        transform\$="[[_transform]]"
-      ></circle>
-    </svg>
-    <slot></slot>`}static get tag(){return"circle-progress"}static get properties(){let props={/**
+
+      <svg id="circle" width="100%" height="100%">
+        <circle
+          class="circle-background"
+          r\$="[[_radius]]"
+          cx\$="[[_cx]]"
+          cy\$="[[_cy]]"
+          fill="transparent"
+          stroke-width\$="[[strokeWidth]]"
+        ></circle>
+        <circle
+          class="circle-foreground"
+          r\$="[[_radius]]"
+          cx\$="[[_cx]]"
+          cy\$="[[_cy]]"
+          fill="transparent"
+          stroke-width\$="[[strokeWidth]]"
+          stroke-dasharray\$="[[_dasharray]]"
+          stroke-dashoffset\$="[[_dashoffset]]"
+          transform\$="[[_transform]]"
+        ></circle>
+      </svg>
+      <slot></slot>
+    `}static get tag(){return"circle-progress"}static get properties(){let props={/**
        * Value of circular progress bar.
        */value:{name:"value",type:"Number",value:0},/**
        * Maximum of value.

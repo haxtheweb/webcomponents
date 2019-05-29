@@ -27,7 +27,6 @@ class LrndesignPanelcard extends SimpleColors {
   }
   static get template() {
     return html`
-      <style include="simple-colors"></style>
       <style>
         :host {
           display: inline-block;

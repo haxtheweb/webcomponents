@@ -39,7 +39,7 @@ class HAXCMSSlideTheme extends HAXCMSTheme(PolymerElement) {
   // render function
   static get template() {
     return html`
-      <style include="simple-colors hax-shared-styles">
+      <style include="hax-shared-styles">
         :host {
           display: block;
         }

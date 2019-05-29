@@ -4,23 +4,24 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
  *
  * @demo demo/index.html
  */class QR extends PolymerElement{constructor(){super();import("./node_modules/@lrnwebcomponents/q-r/lib/qr-code.js");afterNextRender(this,function(){this.HAXWiring=new HAXWiring;this.HAXWiring.setup(QR.haxProperties,QR.tag,this)})}static get template(){return html`
-    <style>
-      :host {
-        display: block;
-      }
-      #link {
-        visibility: hidden;
-        opacity: 0;
-      }
-    </style>
-    <qr-code
-      id="qr"
-      data$="[[data]]"
-      modulesize$="[[modulesize]]"
-      margin$="[[margin]]"
-      format$="[[format]]"
-    ></qr-code>
-    <a href$="[[data]]" id="link">[[title]]</a>`}static get tag(){return"q-r"}static get properties(){return{/**
+      <style>
+        :host {
+          display: block;
+        }
+        #link {
+          visibility: hidden;
+          opacity: 0;
+        }
+      </style>
+      <qr-code
+        id="qr"
+        data$="[[data]]"
+        modulesize$="[[modulesize]]"
+        margin$="[[margin]]"
+        format$="[[format]]"
+      ></qr-code>
+      <a href$="[[data]]" id="link">[[title]]</a>
+    `}static get tag(){return"q-r"}static get properties(){return{/**
        * Data to code via QR code
        */data:{type:String},/**
        * Alternate title for the data

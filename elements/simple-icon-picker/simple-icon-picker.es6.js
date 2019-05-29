@@ -14,7 +14,7 @@
  */class SimpleIconPicker extends SimplePicker{// render function
 static get template(){return html`
 <style>:host {
-  display: flex;
+  display: inline-flex;
   --simple-picker-option-size: 24px;
   --simple-picker-collapse: {
     width: 360px;

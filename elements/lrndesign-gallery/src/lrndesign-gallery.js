@@ -61,7 +61,7 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
   // render function
   static get template() {
     return html`
-      <style include="simple-colors">
+      <style>
         :host {
           display: block;
         }

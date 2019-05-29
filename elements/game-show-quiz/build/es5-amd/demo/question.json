@@ -1,0 +1,11 @@
+{
+  "title": "Slide identification",
+  "image": "image.jpg",
+  "submitted": false,
+  "data": [
+    { "label": "Option 1", "correct": true },
+    { "label": "Option 2", "correct": true },
+    { "label": "Option 3", "correct": true },
+    { "label": "Option 4 is not right", "correct": false }
+  ]
+}

@@ -406,7 +406,6 @@ class OutlineDesigner extends PolymerElement {
           border-top-width: 2px;
         }
       </style>
-      <style include="simple-colors"></style>
       <iron-ajax
         auto="[[outlineSchemaUrl]]"
         url="[[outlineSchemaUrl]]"

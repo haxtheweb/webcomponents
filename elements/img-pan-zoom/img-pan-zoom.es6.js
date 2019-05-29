@@ -1,4 +1,4 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{pathFromUrl}from"./node_modules/@polymer/polymer/lib/utils/resolve-url.js";import"./node_modules/@lrnwebcomponents/es-global-bridge/es-global-bridge.js";import"./node_modules/@polymer/polymer/lib/elements/dom-if.js";/**
+import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import{pathFromUrl}from"./node_modules/@polymer/polymer/lib/utils/resolve-url.js";import"./node_modules/@lrnwebcomponents/es-global-bridge/es-global-bridge.js";import"./node_modules/@polymer/polymer/lib/elements/dom-if.js";/**
 `img-pan-zoom` Image pan zoom element
 
 Images are preloaded by `img-loader` and a spinner is shown until loaded
@@ -19,61 +19,62 @@ Custom property | Description | Default
 
 * @demo demo/index.html
 */class ImgPanZoom extends PolymerElement{static get template(){return html`
-    <style>
-      :host {
-        display: block;
-        position: relative;
-        height: 500px;
-      }
-      #viewer {
-        position: relative;
-        height: 100%;
-        width: 100%;
-      }
+      <style>
+        :host {
+          display: block;
+          position: relative;
+          height: 500px;
+        }
+        #viewer {
+          position: relative;
+          height: 100%;
+          width: 100%;
+        }
 
-      paper-spinner-lite {
-        opacity: 0;
-        display: block;
-        transition: opacity 700ms;
-        position: absolute;
-        margin: auto;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        z-index: 1;
-        height: 70px;
-        width: 70px;
-        --paper-spinner-color: var(--img-pan-zoom-spinner-color, #2196f3);
-        --paper-spinner-stroke-width: var(--img-pan-zoom-spinner-width, 5px);
-        @apply --img-pan-zoom-spinner;
-      }
-      paper-spinner-lite[active] {
-        opacity: 1;
-      }
-    </style>
+        paper-spinner {
+          opacity: 0;
+          display: block;
+          transition: opacity 700ms;
+          position: absolute;
+          margin: auto;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          z-index: 1;
+          height: 70px;
+          width: 70px;
+          --paper-spinner-color: var(--img-pan-zoom-spinner-color, #2196f3);
+          --paper-spinner-stroke-width: var(--img-pan-zoom-spinner-width, 5px);
+          @apply --img-pan-zoom-spinner;
+        }
+        paper-spinner[active] {
+          opacity: 1;
+        }
+      </style>
 
-    <!-- Only preload regular images -->
-    <template is="dom-if" if="[[!dzi]]">
-      <paper-spinner-lite
-        hidden$="[[hideSpinner]]"
-        active="[[loading]]"
-      ></paper-spinner-lite>
-      <img-loader
-        loaded="{{loaded}}"
-        loading="{{loading}}"
-        src="[[src]]"
-      ></img-loader>
-    </template>
+      <!-- Only preload regular images -->
+      <template is="dom-if" if="[[!dzi]]">
+        <paper-spinner
+          hidden$="[[hideSpinner]]"
+          active="[[loading]]"
+        ></paper-spinner>
+        <img-loader
+          loaded="{{loaded}}"
+          loading="{{loading}}"
+          src="[[src]]"
+        ></img-loader>
+      </template>
 
-    <!-- Openseadragon -->
-    <div id="viewer"></div>`}static get tag(){return"img-pan-zoom"}static get properties(){return{// Image source
+      <!-- Openseadragon -->
+      <div id="viewer"></div>
+    `}static get tag(){return"img-pan-zoom"}static get properties(){return{// Image source
 src:{type:String},// Set to true if you are using a deep zoom image
 dzi:{type:Boolean,value:!1},// Fade in new items added to the viewer
 fadeIn:{type:Boolean,value:!0},// loading
-loading:{type:Boolean,readonly:!0,notify:!0},// hides spinner
+loading:{type:Boolean,notify:!0},// hides spinner
 hideSpinner:{type:Boolean,value:!1},// loaded
-loaded:{type:Boolean,readonly:!0,notify:!0,observer:"_loadedChanged"},// Set to false to prevent the appearance of the default navigation controls. Note that if set to false, the customs buttons set by the options zoomInButton, zoomOutButton etc, are rendered inactive.
+loaded:{type:Boolean,notify:!0,observer:"_loadedChanged"},// Set to false to prevent the appearance of the default navigation controls. Note that if set to false, the customs buttons set by the options zoomInButton, zoomOutButton etc, are rendered inactive.
 showNavigationControl:{type:Boolean,value:!1},// Set to true to make the navigator minimap appear.
 showNavigator:{type:Boolean,value:!1},// The "zoom distance" per mouse click or touch tap. Note: Setting this to 1.0 effectively disables the click-to-zoom feature (also see gestureSettings[Mouse|Touch|Pen].clickToZoom/dblClickToZoom).
 zoomPerClick:{type:Number,value:2},// The "zoom distance" per mouse scroll or touch pinch. Note: Setting this to 1.0 effectively disables the mouse-wheel zoom feature (also see gestureSettings[Mouse|Touch|Pen].scrollToZoom}).
@@ -84,9 +85,15 @@ showRotationControl:{type:Boolean,value:!1},// The minimum percentage ( expresse
 minZoomImageRatio:{type:Number,value:1},// The maximum ratio to allow a zoom-in to affect the highest level pixel ratio. This can be set to Infinity to allow 'infinite' zooming into the image though it is less effective visually if the HTML5 Canvas is not availble on the viewing device.
 maxZoomPixelRatio:{type:Number,value:1.1},// Constrain during pan
 constrainDuringPan:{type:Boolean,value:!1},// The percentage ( as a number from 0 to 1 ) of the source image which must be kept within the viewport. If the image is dragged beyond that limit, it will 'bounce' back until the minimum visibility ratio is achieved. Setting this to 0 and wrapHorizontal ( or wrapVertical ) to true will provide the effect of an infinitely scrolling viewport.
-visibilityRatio:{type:Number,value:1}}}constructor(){super();import("./node_modules/@lrnwebcomponents/img-pan-zoom/lib/img-loader.js");const basePath=pathFromUrl(decodeURIComponent(import.meta.url));let location=`${basePath}lib/openseadragon/build/openseadragon/openseadragon.js`;window.addEventListener("es-bridge-openseadragon-loaded",this._openseadragonLoaded.bind(this));window.ESGlobalBridge.requestAvailability();window.ESGlobalBridge.instance.load("openseadragon",location)}_openseadragonLoaded(){this.__openseadragonLoaded=!0;if(this.dzi){this._initOpenSeadragon()}}disconnectedCallback(){super.disconnectedCallback();window.removeEventListener("es-bridge-openseadragon-loaded",this._openseadragonLoaded.bind(this))}ready(){super.ready();this.animationConfig={fade:{name:"fade-in-animation",node:this.shadowRoot.querySelector("#viewer")}};// Init openseadragon if we are using a deep zoom image
+visibilityRatio:{type:Number,value:1}}}/**
+   * life cycle
+   */constructor(){super();import("./node_modules/@polymer/paper-spinner/paper-spinner.js");import("./node_modules/@lrnwebcomponents/img-pan-zoom/lib/img-loader.js");const basePath=pathFromUrl(decodeURIComponent(import.meta.url));let location=`${basePath}lib/openseadragon/build/openseadragon/openseadragon.min.js`;window.addEventListener("es-bridge-openseadragon-loaded",this._openseadragonLoaded.bind(this));window.ESGlobalBridge.requestAvailability();window.ESGlobalBridge.instance.load("openseadragon",location)}_openseadragonLoaded(){this.__openseadragonLoaded=!0;if(this.dzi){this._initOpenSeadragon()}}/**
+   * life cycle
+   */connectedCallback(){super.connectedCallback();this.animationConfig={fade:{name:"fade-in-animation",node:this.shadowRoot.querySelector("#viewer")}};afterNextRender(this,function(){// Init openseadragon if we are using a deep zoom image
 if(this.dzi&&this.__openseadragonLoaded){// Add src changed observer
-this._initOpenSeadragon()}}// Init openseadragon
+this._initOpenSeadragon()}})}/**
+   * life cycle
+   */disconnectedCallback(){super.disconnectedCallback();window.removeEventListener("es-bridge-openseadragon-loaded",this._openseadragonLoaded.bind(this))}// Init openseadragon
 _initOpenSeadragon(){setTimeout(()=>{var tileSources=this.src;if(!this.dzi){tileSources={type:"image",url:this.src,buildPyramid:!1}}this.viewer=new OpenSeadragon({element:this.shadowRoot.querySelector("#viewer"),visibilityRatio:this.visibilityRatio,constrainDuringPan:this.constrainDuringPan,showNavigationControl:this.showNavigationControl,showNavigator:this.showNavigator,zoomPerClick:this.zoomPerClick,zoomPerScroll:this.zoomPerScroll,animationTime:this.animationTime,navPrevNextWrap:this.navPrevNextWrap,showRotationControl:this.showRotationControl,minZoomImageRatio:this.minZoomImageRatio,maxZoomPixelRatio:this.maxZoomPixelRatio,tileSources:tileSources});this.init=!0},100)}//Function to destroy the viewer and clean up everything created by OpenSeadragon.
 destroy(){this.viewer.destroy()}// Zoom in
 zoomIn(){// TODO: Replace with native openseadragon zoomIn

@@ -6,7 +6,7 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
  * @polymer
  * @polymerLegacy
  * @demo demo/index.html
- */class SelectMenu extends PolymerElement{constructor(){super();import("./node_modules/@polymer/paper-dropdown-menu/paper-dropdown-menu.js");import("./node_modules/@polymer/paper-item/paper-item.js");import("./node_modules/@polymer/paper-listbox/paper-listbox.js")}static get template(){return html` 
+ */class SelectMenu extends PolymerElement{constructor(){super();import("./node_modules/@polymer/paper-dropdown-menu/paper-dropdown-menu.js");import("./node_modules/@polymer/paper-item/paper-item.js");import("./node_modules/@polymer/paper-listbox/paper-listbox.js")}static get template(){return html`
       <style>
         paper-dropdown-menu,
         paper-listbox {
@@ -18,20 +18,21 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
           display: block;
         }
       </style>
-    <paper-dropdown-menu
-      id="menu"
-      label\$="[[label]]"
-      on-tap="_menubuttonTap"
-      on-selected-item-changed="_setSelectedValue"
-    >
-      <paper-listbox
-        id="listbox"
-        slot="dropdown-content"
-        selected="{{selectedIndex}}"
+      <paper-dropdown-menu
+        id="menu"
+        label\$="[[label]]"
+        on-click="_menubuttonTap"
+        on-selected-item-changed="_setSelectedValue"
       >
-        <slot></slot>
-      </paper-listbox>
-    </paper-dropdown-menu>`}static get tag(){return"select-menu"}static get properties(){return{/**
+        <paper-listbox
+          id="listbox"
+          slot="dropdown-content"
+          selected="{{selectedIndex}}"
+        >
+          <slot></slot>
+        </paper-listbox>
+      </paper-dropdown-menu>
+    `}static get tag(){return"select-menu"}static get properties(){return{/**
        * The label of the select menu
        */label:{type:String,value:"Select an option."},/**
        * The default value

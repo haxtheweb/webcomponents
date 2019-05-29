@@ -15,7 +15,7 @@ import "./lrnsys-button-inner.js";
 class LrnsysDrawer extends PolymerElement {
   static get template() {
     return html`
-      <style include="simple-colors">
+      <style>
         :host {
           display: block;
           --lrnsys-drawer-color: var(--simple-colors-foreground1);

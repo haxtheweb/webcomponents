@@ -131,6 +131,11 @@ import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
  * the text certain patterns or to look for certain elements at the end of
  * the conversion routine.
  *
+ * `preProcessHaxInsertContent` - If an element needs to ensure it cleans up data
+ * during the conversion from preview to being inserted. This function passes in
+ * the details object for creating an element from HAX schema. Examples could be
+ * objects that contain focus which may cause issues when doing a pure clone as the
+ * reference is being garbage collected on save (see grid-plate).
  */
 /**
  * Object to validate HAX schema. Can be used in and out of element contexts

@@ -13,14 +13,15 @@ is no edit state and that it is always editing effectively.
  - hax - just to make sure we're aware that it's actually HAX based
 
 */class AppEditorHax extends PolymerElement{static get template(){return html`
-    <style>
-      :host {
-        display: block;
-        font-size: 16px;
-        box-sizing: content-box;
-      }
-    </style>
-    <h-a-x app-store$="[[appStoreConnection]]"></h-a-x>`}static get tag(){return"app-editor-hax"}static get properties(){return{/**
+      <style>
+        :host {
+          display: block;
+          font-size: 16px;
+          box-sizing: content-box;
+        }
+      </style>
+      <h-a-x app-store$="[[appStoreConnection]]"></h-a-x>
+    `}static get tag(){return"app-editor-hax"}static get properties(){return{/**
        * Establish the app store connection to pull in our JSON
        */appStoreConnection:{type:Object}}}/**
    * Basic save event to make targetting easier.

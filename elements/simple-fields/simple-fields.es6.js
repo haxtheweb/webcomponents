@@ -41,11 +41,15 @@ eco-json-schema-object .hax-code-editor {
 }</style>
 <eco-json-schema-object
   id="schemaobject"
+  autofocus$="[[autofocus]]"
+  on-form-changed="_formChanged"
   schema="[[__validatedSchema]]"
   value="{{value}}"
 ></eco-json-schema-object>`}// haxProperty definition
 static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Simple fields",description:"Uses eco-json-form and HAX wiring to display a series of fields",icon:"icons:android",color:"green",groups:["Fields"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"nikkimk",owner:"The Pennsylvania State University"}},settings:{quick:[],configure:[{property:"fields",description:"",inputMethod:"array",required:!1,icon:"icons:android"}],advanced:[]}}}// properties available to the custom element for data binding
 static get properties(){return{/**
+   * automatically set focus on the first field if that field has autofocus
+   */autofocus:{type:"Boolean",value:!1},/**
    * Fields to conver toJSON Schema.
    */fields:{type:"Array",value:[],observer:"_fieldsChanged"},/**
    * Returned value from the form input.
@@ -57,6 +61,8 @@ static get properties(){return{/**
    */static get tag(){return"simple-fields"}/**
    * life cycle, element is afixed to the DOM
    */connectedCallback(){super.connectedCallback();this.HAXWiring=new HAXWiring;this.HAXWiring.setup(SimpleFields.haxProperties,SimpleFields.tag,this)}/**
+   * when form changes, sets focus on the first field if this has auto-focus
+   */_formChanged(e){this.dispatchEvent(new CustomEvent("fields-changed",{bubbles:!0,cancelable:!0,composed:!0,detail:e.detail}))}/**
    * fires when either the eco-json-schema-object or the simple-fields object changes the value
    * @param {object} oldValue the old value
    * @param {object} newValue the new value
