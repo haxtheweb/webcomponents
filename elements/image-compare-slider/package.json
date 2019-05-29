@@ -43,6 +43,7 @@
     "@lrnwebcomponents/hax-body-behaviors": "^2.0.10",
     "@lrnwebcomponents/materializecss-styles": "^2.0.10",
     "@lrnwebcomponents/schema-behaviors": "^2.0.10",
+    "@lrnwebcomponents/user-action": "^2.0.10",
     "@polymer/iron-image": "^3.0.0",
     "@polymer/paper-slider": "^3.0.1",
     "@polymer/polymer": "^3.2.0"

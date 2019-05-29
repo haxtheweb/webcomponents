@@ -12,6 +12,11 @@
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
     </style>
+    <script>
+      window.addEventListener('user-engagement', (e) => {
+        console.log(e.detail);
+      });
+    </script>
   </head>
   <body>
   <div class="vertical-section-container centered">

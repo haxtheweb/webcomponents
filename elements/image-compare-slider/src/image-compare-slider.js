@@ -14,6 +14,7 @@ import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behav
 class ImageCompareSlider extends SchemaBehaviors(PolymerElement) {
   constructor() {
     super();
+    import("@lrnwebcomponents/user-action/user-action.js");
     import("@polymer/iron-image/iron-image.js");
     import("@polymer/paper-slider/paper-slider.js");
     afterNextRender(this, function() {
@@ -58,7 +59,9 @@ class ImageCompareSlider extends SchemaBehaviors(PolymerElement) {
         <div id="container" style$="background-image: url([[bottomSrc]]);">
           <div id="top" style$="background-image: url([[topSrc]]);"></div>
         </div>
-        <paper-slider id="slider" value="50"></paper-slider>
+        <user-action track="click">
+          <paper-slider id="slider" value="50"></paper-slider>
+        </user-action>
         <div></div>
       </div>
     `;
