@@ -5,6 +5,7 @@ class Store {
     this.location = null;
     this.editMode = false;
     this.manifest = null;
+    this.activeItemContent = "";
     this.activeId = null;
     this.cmsSiteEditor = {
       instance: null

@@ -70,6 +70,7 @@ class HAXCMSSiteBuilder extends PolymerElement {
         url="[[outlineLocation]][[file]][[__timeStamp]]"
         handle-as="json"
         last-response="{{manifest}}"
+        last-error="{{lastError}}"
       ></iron-ajax>
       <iron-ajax
         id="activecontent"
@@ -77,12 +78,20 @@ class HAXCMSSiteBuilder extends PolymerElement {
         handle-as="text"
         loading="{{loading}}"
         last-response="{{activeItemContent}}"
+        last-error="{{lastError}}"
       ></iron-ajax>
       <div id="slot"><slot></slot></div>
     `;
   }
   static get properties() {
     return {
+      /**
+       * Singular error reporter / visual based on requests erroring
+       */
+      lastError: {
+        type: Object,
+        observer: "_lastErrorChanged"
+      },
       /**
        * queryParams
        */
@@ -171,6 +180,20 @@ class HAXCMSSiteBuilder extends PolymerElement {
         type: String
       }
     };
+  }
+  _lastErrorChanged(newValue) {
+    if (newValue) {
+      console.error(newValue);
+      const evt = new CustomEvent("simple-toast-show", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          text: newValue.statusText
+        }
+      });
+      window.dispatchEvent(evt);
+    }
   }
   /**
    * ready life cycle
