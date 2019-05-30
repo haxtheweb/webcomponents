@@ -95,6 +95,7 @@ class HAXCMSSiteEditor extends PolymerElement {
         content-type="application/json"
         handle-as="json"
         on-response="_handleNodeResponse"
+        last-error="{{lastError}}"
       ></iron-ajax>
       <iron-ajax
         headers='{"Authorization": "Bearer [[jwt]]"}'
@@ -105,6 +106,7 @@ class HAXCMSSiteEditor extends PolymerElement {
         content-type="application/json"
         handle-as="json"
         on-response="_handleOutlineResponse"
+        last-error="{{lastError}}"
       ></iron-ajax>
       <iron-ajax
         headers='{"Authorization": "Bearer [[jwt]]"}'
@@ -115,6 +117,7 @@ class HAXCMSSiteEditor extends PolymerElement {
         content-type="application/json"
         handle-as="json"
         on-response="_handleGetFieldsResponse"
+        last-error="{{lastError}}"
       ></iron-ajax>
       <iron-ajax
         headers='{"Authorization": "Bearer [[jwt]]"}'
@@ -125,6 +128,7 @@ class HAXCMSSiteEditor extends PolymerElement {
         content-type="application/json"
         handle-as="json"
         on-response="_handleGetSiteFieldsResponse"
+        last-error="{{lastError}}"
       ></iron-ajax>
       <iron-ajax
         headers='{"Authorization": "Bearer [[jwt]]"}'
@@ -135,6 +139,7 @@ class HAXCMSSiteEditor extends PolymerElement {
         content-type="application/json"
         handle-as="json"
         on-response="_handleManifestResponse"
+        last-error="{{lastError}}"
       ></iron-ajax>
       <iron-ajax
         headers='{"Authorization": "Bearer [[jwt]]"}'
@@ -146,6 +151,7 @@ class HAXCMSSiteEditor extends PolymerElement {
         content-type="application/json"
         handle-as="json"
         on-response="_handlePublishResponse"
+        last-error="{{lastError}}"
       ></iron-ajax>
       <iron-ajax
         headers='{"Authorization": "Bearer [[jwt]]"}'
@@ -157,6 +163,7 @@ class HAXCMSSiteEditor extends PolymerElement {
         handle-as="json"
         on-response="_handleCreateResponse"
         last-response="{{__createNodeResponse}}"
+        last-error="{{lastError}}"
       ></iron-ajax>
       <iron-ajax
         headers='{"Authorization": "Bearer [[jwt]]"}'
@@ -168,12 +175,20 @@ class HAXCMSSiteEditor extends PolymerElement {
         handle-as="json"
         on-response="_handleDeleteResponse"
         last-response="{{__deleteNodeResponse}}"
+        last-error="{{lastError}}"
       ></iron-ajax>
       <h-a-x app-store$="[[appStore]]" hide-panel-ops></h-a-x>
     `;
   }
   static get properties() {
     return {
+      /**
+       * Singular error reporter / visual based on requests erroring
+       */
+      lastError: {
+        type: Object,
+        observer: "_lastErrorChanged"
+      },
       /**
        * Allow method to be overridden, useful in local testing
        */
@@ -333,6 +348,20 @@ class HAXCMSSiteEditor extends PolymerElement {
         type: String
       }
     };
+  }
+  _lastErrorChanged(newValue) {
+    if (newValue) {
+      console.error(newValue);
+      const evt = new CustomEvent("simple-toast-show", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          text: newValue.error
+        }
+      });
+      window.dispatchEvent(evt);
+    }
   }
   /**
    * Break the shadow root for this element (by design)
@@ -1067,7 +1096,6 @@ class HAXCMSSiteEditor extends PolymerElement {
    * Save the outline based on an event firing.
    */
   saveOutline(e) {
-    console.log(e);
     // now let's work on the outline
     this.set("updateOutlineData.siteName", this.manifest.metadata.siteName);
     this.notifyPath("updateOutlineData.siteName");
