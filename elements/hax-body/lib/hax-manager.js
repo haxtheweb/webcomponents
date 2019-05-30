@@ -493,6 +493,7 @@ class HaxManager extends PolymerElement {
     // reference the active place holder element since place holders are
     // the only things possible for seeing these
     window.HaxStore.instance.activePlaceHolder = e.detail.placeHolderElement;
+    this.editExistingNode = true;
     // ! I can't believe this actually works. This takes the event
     // ! that was a drop event else where on the page and then repoints
     // ! it to simulate the drop event using the same event structure that
@@ -587,6 +588,7 @@ class HaxManager extends PolymerElement {
    * do a gizmo guess from there!
    */
   _fileUploadResponse(e) {
+    this.editExistingNode = true;
     // convert response to object
     let response = JSON.parse(e.detail.xhr.response);
     // access the app that did the upload

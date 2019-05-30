@@ -1529,6 +1529,7 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
           properties
         );
         if (this.activeNode !== this.activeContainerNode) {
+          console.log("should be here");
           this.activeHaxBody.haxReplaceNode(
             this.activeNode,
             node,

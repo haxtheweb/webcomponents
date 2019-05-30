@@ -1222,6 +1222,10 @@ class HaxBody extends PolymerElement {
       if (node.getAttribute("slot") != null) {
         replacement.setAttribute("slot", node.getAttribute("slot"));
       }
+      if (node == null) {
+        node = this.__oldActiveNode;
+        parent = this.__oldActiveNode.parentNode;
+      }
       dom(parent).replaceChild(replacement, node);
     } catch (e) {
       console.log(e);
@@ -1923,6 +1927,7 @@ class HaxBody extends PolymerElement {
     // just hide menus if we don't have an active item
     else if (newValue === null) {
       this.hideContextMenus();
+      this.__oldActiveNode = oldValue;
       this.$.textcontextmenu.justifyIcon = "editor:format-align-left";
       this.$.textcontextmenu.justifyValue = "text-align-left";
     }
