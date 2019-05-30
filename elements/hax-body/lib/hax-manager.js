@@ -685,6 +685,14 @@ class HaxManager extends PolymerElement {
     // bubble up the inject event / element to the body
     let previewNode = this.shadowRoot.querySelector("#preview").previewNode;
     previewNode.removeAttribute("hax-preview-mode");
+    // trickery to get it into the DOM but the preview not disappear
+    if (previewNode.getAttribute("data-hax-slot") != null) {
+      previewNode.setAttribute(
+        "slot",
+        previewNode.getAttribute("data-hax-slot")
+      );
+      previewNode.removeAttribute("data-hax-slot");
+    }
     let element = window.HaxStore.nodeToHaxElement(previewNode);
     element.replace = this.editExistingNode;
     if (typeof this.activeHaxElement.__type !== typeof undefined) {
