@@ -8,6 +8,7 @@
     <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script type="module">
       import '../code-editor.js';
+      import "@polymer/paper-button/paper-button.js";
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
@@ -77,6 +78,7 @@
         </p>
         </template>
       </code-editor>
+      <code-editor id="code2" show-code-pen editor-value="stuff"></code-editor>
     </div>
         <paper-button id="update">update</paper-button>
         <script defer="defer">
@@ -85,7 +87,7 @@
             document.getElementById('code').language = e.target.value;
           });
           document.getElementById('update').addEventListener('click', (e) => {
-              document.getElementById('code').editorValue += 'Updated content';
+              document.getElementById('code').editorValue = 'Updated content';
             });
         </script>
   </body>
