@@ -1340,9 +1340,33 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
       canScale: false,
       canPosition: false,
       canEditSource: true,
+      gizmo: {
+        title: "Paragraph",
+        description: "A basic text area",
+        icon: "editor:short-text",
+        color: "grey",
+        groups: ["Text"],
+        handles: [
+          {
+            type: "content",
+            content: ""
+          }
+        ],
+        meta: {
+          author: "W3C"
+        }
+      },
       settings: {
         quick: [],
-        configure: [],
+        configure: [
+          {
+            slot: "",
+            title: "Content",
+            description: "Internal content",
+            inputMethod: "code-editor",
+            icon: "icons:code"
+          }
+        ],
         advanced: []
       }
     };
@@ -1481,6 +1505,20 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
       if (typeof details.properties !== typeof undefined) {
         properties = details.properties;
       }
+      // support / clean up properties / attributes that have innerHTML / innerText
+      // these are reserved words but required for certain bindings
+      if (properties.innerHTML) {
+        if (details.content == "") {
+          details.content = properties.innerHTML;
+        }
+        delete properties.innerHTML;
+      }
+      if (properties.innerText) {
+        if (details.content == "") {
+          details.content = properties.innerText;
+        }
+        delete properties.innerText;
+      }
       // ensure better UX for text based operations
       this.activeHaxBody.__activeHover = null;
       // invoke insert or replacement on body, same function so it's easier to trace
@@ -1527,7 +1565,7 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
           this.activeContainerNode.tagName === "GRID-PLATE"
         ) {
           // support slot if we have one on the activeNode (most likely)
-          if (this.activeNode.getAttribute("slot")) {
+          if (this.activeNode.getAttribute("slot") != null) {
             node.setAttribute("slot", this.activeNode.getAttribute("slot"));
           }
           dom(this.activeContainerNode).appendChild(node);
@@ -1952,6 +1990,10 @@ window.HaxStore.nodeToHaxElement = (node, eventName = "insert-element") => {
     tag = "webview";
   }
   let slotContent = window.HaxStore.getHAXSlot(node);
+  // support fallback on inner text if there were no nodes
+  if (slotContent == "") {
+    slotContent = node.innerText;
+  }
   // special edge case for slot binding in primatives
   if (tag === "a") {
     props.innerText = slotContent;
@@ -2175,7 +2217,7 @@ window.HaxStore.haxNodeToContent = node => {
   // specialized clean up for some that can leak through from above
   // and are edge case things because #hashtag gotta love HTML attributes
   // and the webview tag. facepalm.
-  let delProps = ["inner-text", "tabindex", "guestinstance"];
+  let delProps = ["inner-text", "inner-html", "tabindex", "guestinstance"];
   for (var delProp in delProps) {
     if (typeof propvals[delProps[delProp]] !== typeof undefined) {
       delete propvals[delProps[delProp]];
@@ -2295,6 +2337,10 @@ window.HaxStore.HTMLPrimativeTest = node => {
  * Slot content w/ support for custom elements in slot.
  */
 window.HaxStore.getHAXSlot = node => {
+  // we can skip all of this if we have a text element / HTML prim!
+  if (window.HaxStore.instance.isTextElement(node)) {
+    return node.innerHTML;
+  }
   let content = "";
   var slotnodes = dom(node).children;
   // ensure there's something inside of this
