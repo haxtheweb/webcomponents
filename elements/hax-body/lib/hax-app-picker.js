@@ -64,7 +64,7 @@ class HaxAppPicker extends PolymerElement {
         }
         #dialog {
           min-width: 300px;
-          min-height: 150px;
+          min-height: 280px;
           max-height: 60vh;
           max-width: 50vw;
           overflow: hidden;
