@@ -1528,15 +1528,19 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
           details.content,
           properties
         );
-        if (this.activeNode !== this.activeContainerNode) {
-          console.log("should be here");
+        if (this.activePlaceHolder) {
+          this.activeHaxBody.haxReplaceNode(
+            this.activePlaceHolder,
+            node,
+            this.activePlaceHolder.parentNode
+          );
+          this.activePlaceHolder = null;
+        } else {
           this.activeHaxBody.haxReplaceNode(
             this.activeNode,
             node,
-            this.activeContainerNode
+            this.activeNode.parentNode
           );
-        } else {
-          this.activeHaxBody.haxReplaceNode(this.activeNode, node);
         }
       } else if (
         typeof details.__type !== typeof undefined &&
