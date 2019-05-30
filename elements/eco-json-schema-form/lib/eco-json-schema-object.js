@@ -524,6 +524,11 @@ class EcoJsonSchemaObject extends mixinBehaviors(
   _buildForm() {
     let autofocus = this.autofocus;
     this._schemaProperties.forEach(property => {
+      // special case, can't come up with a better way to do this but monoco is very special case
+      if (property.component.name === "code-editor") {
+        property.schema.component.properties.editorValue =
+          property.schema.value;
+      }
       var el = this.create(property.component.name, {
         label: property.label,
         schema: property.schema,
