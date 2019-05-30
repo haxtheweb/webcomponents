@@ -1,4 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
 /**
  * `hax-context-item`
  * `A single button in the hax context menu for consistency.`
@@ -9,7 +10,6 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 class HaxContextItem extends PolymerElement {
   constructor() {
     super();
-    import("@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js");
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/iron-icons/editor-icons.js");
     import("@polymer/iron-icons/device-icons.js");
