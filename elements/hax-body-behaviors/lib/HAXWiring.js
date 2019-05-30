@@ -355,8 +355,10 @@ export class HAXWiring {
             description: "element ID, only set this if you know why",
             inputMethod: "textfield"
           });
+          // we need to support slot in the UI but actually shift it around under the hood
+          // this is so that shadow roots don't get mad when previewing
           props.settings.advanced.push({
-            attribute: "slot",
+            attribute: "data-hax-slot",
             title: "slot",
             description: "DOM slot area",
             inputMethod: "textfield"
@@ -610,7 +612,7 @@ export class HAXWiring {
                   name: "code-editor",
                   valueProperty: "value",
                   properties: {
-                    //editorValue: settings[value].value,
+                    editorValue: settings[value].value,
                     title: settings[value].title,
                     theme: "hc-black",
                     mode: "html",
@@ -784,7 +786,7 @@ export class HAXWiring {
                   name: "code-editor",
                   valueProperty: "value",
                   properties: {
-                    //editorValue: props[settings[value].attribute].value,
+                    editorValue: props[settings[value].attribute].value,
                     title: settings[value].title,
                     readOnly: false,
                     theme: "hc-black",
@@ -846,7 +848,7 @@ export class HAXWiring {
                 name: "code-editor",
                 valueProperty: "value",
                 properties: {
-                  //editorValue: settings[value].value,
+                  editorValue: settings[value].value,
                   title: settings[value].title,
                   theme: "hc-black",
                   mode: "html",
@@ -874,8 +876,10 @@ export class HAXWiring {
                 }
               }
             }
-            props[settings[value].slot].component.slot =
-              "<template>" + slot.trim() + "</template>";
+            // @todo verify this stuff actually works
+            props[
+              settings[value].slot
+            ].component.properties.editorValue = slot.trim();
           }
         }
       }
