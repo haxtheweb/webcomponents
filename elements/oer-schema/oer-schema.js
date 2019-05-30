@@ -148,6 +148,9 @@ class OerSchemaElement extends SchemaBehaviors(PolymerElement) {
           }
         ],
         advanced: []
+      },
+      saveOptions: {
+        unsetAttributes: ["_oerlink"]
       }
     };
   }
