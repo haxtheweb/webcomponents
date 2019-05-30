@@ -235,7 +235,7 @@ class HaxAppPicker extends PolymerElement {
    */
   presentOptions(
     elements,
-    type,
+    type = "element",
     title = "Select an option",
     pickerType = "gizmo"
   ) {

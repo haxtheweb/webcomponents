@@ -686,6 +686,11 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
       "hax-insert-content",
       this._haxStoreInsertContent.bind(this)
     );
+    // grid plate add item event
+    document.body.removeEventListener(
+      "grid-plate-add-item",
+      this.haxInsertAnything.bind(this)
+    );
     document.body.removeEventListener(
       "hax-insert-content-array",
       this._haxStoreInsertMultiple.bind(this)
@@ -1043,7 +1048,11 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
       "hax-register-export",
       this._haxStoreRegisterExport.bind(this)
     );
-
+    // grid plate add item event
+    document.body.addEventListener(
+      "grid-plate-add-item",
+      this.haxInsertAnything.bind(this)
+    );
     // notice content insert and help it along to the body
     document.body.addEventListener(
       "hax-insert-content",
@@ -1517,6 +1526,10 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
           this.activeContainerNode &&
           this.activeContainerNode.tagName === "GRID-PLATE"
         ) {
+          // support slot if we have one on the activeNode (most likely)
+          if (this.activeNode.getAttribute("slot")) {
+            node.setAttribute("slot", this.activeNode.getAttribute("slot"));
+          }
           dom(this.activeContainerNode).appendChild(node);
           this.activeHaxBody.$.textcontextmenu.highlightOps = false;
           this.activeHaxBody.__updateLockFocus = node;
@@ -1535,6 +1548,28 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
         this.activeHaxBody.haxInsert(details.tag, details.content, properties);
       }
     }
+  }
+  /**
+   * Present all elements to potentially insert
+   */
+  haxInsertAnything(e) {
+    let haxElements = [];
+    for (var i in window.HaxStore.instance.gizmoList) {
+      haxElements.push(
+        window.HaxStore.haxElementPrototype(
+          window.HaxStore.instance.gizmoList[i],
+          e.detail.properties,
+          ""
+        )
+      );
+    }
+    // hand off to hax-app-picker to deal with the rest of this
+    window.HaxStore.instance.haxAppPicker.presentOptions(
+      haxElements,
+      "element",
+      "Add an element",
+      "gizmo"
+    );
   }
   /**
    * Optional send array, to improve performance and event bubbling better

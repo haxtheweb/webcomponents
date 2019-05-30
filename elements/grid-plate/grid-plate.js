@@ -1046,13 +1046,11 @@ class GridPlate extends PolymerElement {
   dblclick(e) {
     if (this.editMode && e.target.id) {
       let detail = {};
-      detail.tag = "p";
-      detail.content = "Column Text";
       detail.properties = {
         slot: e.target.id.replace("col", "col-")
       };
       this.dispatchEvent(
-        new CustomEvent("hax-insert-content", {
+        new CustomEvent("grid-plate-add-item", {
           bubbles: true,
           cancelable: true,
           composed: true,
