@@ -313,6 +313,7 @@ class HaxPreview extends PolymerElement {
        */
       element: {
         type: Object,
+        notify: true,
         observer: "_elementChanged"
       },
       /**
@@ -611,10 +612,42 @@ class HaxPreview extends PolymerElement {
               element.properties[property] != null &&
               !element.properties[property].readOnly
             ) {
-              // attempt to set it, should be no problem but never know
-              try {
-                newValue.set(property, element.properties[property]);
-              } catch (e) {}
+              // make sure slot is NEVER set in the preview
+              // or it'll not show up and we'll get inconsistency with it
+              // when in the context of being inserted into hax-body's shadow
+              // slot is also a special attribute
+              if (property === "slot") {
+                // temp prop we use
+                property = "data-hax-slot";
+                // move it over
+                element.properties[property] = element.properties["slot"];
+                // delete the slot
+                delete element.properties["slot"];
+                if (element.properties[property] != null) {
+                  newValue.setAttribute(
+                    "data-hax-slot",
+                    element.properties[property]
+                  );
+                }
+              }
+              // prefix is a special attribute and must be handled this way
+              else if (property === "prefix") {
+                newValue.setAttribute("prefix", element.properties[property]);
+              }
+              // set is a Polymer convention but help w/ data binding there a lot
+              else if (typeof newValue.set === "function") {
+                // just to be safe
+                try {
+                  newValue.set(property, element.properties[property]);
+                } catch (e) {
+                  console.log(e);
+                }
+              }
+              // vanilla / anything else we should just be able to set the prop
+              else {
+                // @todo may need to bind differently for vanilla elements
+                newValue.setAttribute(property, element.properties[property]);
+              }
             }
             this.set("value." + property, element.properties[property]);
             this.notifyPath("value." + property);
@@ -693,12 +726,22 @@ class HaxPreview extends PolymerElement {
       this.set("previewNode", {});
       this.modeTab = "configure";
       // if we have something, generate the new element inside it
-      if (newValue != null && newValue.length != 0) {
+      if (
+        newValue &&
+        newValue != null &&
+        newValue.length != 0 &&
+        newValue.tag
+      ) {
         var frag = document.createElement(newValue.tag);
         frag.innerHTML = newValue.content;
         // clone the fragment which will force an escalation to full node
         var newNode = frag.cloneNode(true);
         newNode.setAttribute("hax-preview-mode", "hax-preview-mode");
+        // if there is slot we need to shift it
+        if (newNode.getAttribute("slot") != null) {
+          newNode.setAttribute("data-hax-slot", newNode.getAttribute("slot"));
+          newNode.removeAttribute("slot");
+        }
         // send this into the root, which should filter it back down into the slot
         preview.appendChild(newNode);
         // need to let append propagate, it probably takes like no time
@@ -835,11 +878,15 @@ class HaxPreview extends PolymerElement {
               tmpel.slot = propData.slot;
             }
             tmpel.innerHTML = valueChange.base[path];
-            // wipe just the slot in question
-            wipeSlot(node, propData.slot);
             const cloneIt = tmpel.cloneNode(true);
-            // inject the slotted content
-            dom(node).appendChild(cloneIt);
+            // inject the slotted content but use text nodes if this is a text element
+            if (window.HaxStore.instance.isTextElement(node)) {
+              node.innerHTML = tmpel.innerHTML;
+            } else {
+              // wipe just the slot in question
+              wipeSlot(node, propData.slot);
+              dom(node).appendChild(cloneIt);
+            }
             this.set(
               "element.content",
               "<template>" + cloneIt.outerHTML + "</template>"
