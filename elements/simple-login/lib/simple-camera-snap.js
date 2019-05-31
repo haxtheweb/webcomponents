@@ -93,6 +93,15 @@ class SimpleCameraSnap extends HTMLElement {
     const selfie = this.shadowRoot.querySelector("#selfie");
     selfie.innerHTML = "";
     selfie.appendChild(img);
+    // throw up event for other things to find the image
+    this.dispatchEvent(
+      new CustomEvent("simple-camera-snap-image", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: img
+      })
+    );
     selfie.classList.add("has-snap");
   }
   clearPhoto(e) {
