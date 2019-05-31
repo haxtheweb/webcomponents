@@ -111,6 +111,9 @@ class MultipleChoice extends SchemaBehaviors(PolymerElement) {
           on-click="resetAnswers"
           >[[resetLabel]]</paper-button
         >
+        <paper-button disabled\$="[[disabled]]" raised="" on-click="_showData"
+          >[[showDataLabel]]</paper-button
+        >
       </div>
       <paper-toast
         id="toast"
@@ -159,6 +162,13 @@ class MultipleChoice extends SchemaBehaviors(PolymerElement) {
         resetLabel: {
           type: String,
           value: "Reset"
+        },
+        /**
+         * Text of the reset button
+         */
+        showDataLabel: {
+          type: String,
+          value: "Show data"
         },
         /**
          * Related Resource ID
@@ -341,6 +351,39 @@ class MultipleChoice extends SchemaBehaviors(PolymerElement) {
   }
 
   /**
+   * Show the data based on user selecting the view and
+   * that they want to see how they did.
+   */
+  _showData(e) {
+    // start of data passing, this is a prototype atm
+    let eventData = [""];
+    eventData = {
+      dbType: "xapistatements",
+      activityDisplay: "answered",
+      activityId: "http://adlnet.gov/expapi/verbs/answered",
+      objectId: "http://haxcms.psu.edu/haxQuiz",
+      objectName: this.quizName,
+      objectDescription: "HAX Quiz",
+      resultScoreScaled: 1,
+      resultScoreMin: 0,
+      resultScoreMax: 100,
+      resultScoreRaw: 100,
+      resultSuccess: "tester", //test value
+      resultCompletion: true,
+      resultResponse: "sample",
+      resultDuration: "sample"
+    };
+    this.dispatchEvent(
+      new CustomEvent("show-data", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: eventData
+      })
+    );
+  }
+
+  /**
    * Figure out the order of the answers which will be displayed
    */
   _computeDisplayedAnswers(answers, randomize) {
@@ -479,6 +522,12 @@ class MultipleChoice extends SchemaBehaviors(PolymerElement) {
             property: "resetLabel",
             title: "Reset label",
             description: "label for the reset button",
+            inputMethod: "textfield"
+          },
+          {
+            property: "showDataLabel",
+            title: "Show Data label",
+            description: "label for the show data button",
             inputMethod: "textfield"
           }
         ]

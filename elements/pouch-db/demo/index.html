@@ -11,6 +11,7 @@
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '@lrnwebcomponents/multiple-choice/multiple-choice.js';
+      import '@lrnwebcomponents/chartist-render/chartist-render.js';
       import '../pouch-db.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
@@ -32,8 +33,48 @@
 
           <multiple-choice quiz-name="Quiz5" style="width: 75%; margin: 0px auto; display: block;" title="ELMS Development team" check-label="Check your guess" reset-label="Clear answers" question="Who is responsible for ELMS:LN existing? Who improves it and wants it to be the best NGDLE solution to transform education and the world?" correct-text="Great job! You got our trick question!" incorrect-text="Try again, there's some more answers..." randomize typeof="oer:Assessment" resource="#59426af4-ecf2-f49d-06a6" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org " answers="[{&quot;correct&quot;:true,&quot;label&quot;:&quot;Bryan Ollendyke&quot;},{&quot;correct&quot;:true,&quot;label&quot;:&quot;Charles Lavera&quot;},{&quot;correct&quot;:true,&quot;label&quot;:&quot;Nikki Massaro Kauffman&quot;},{&quot;correct&quot;:true,&quot;label&quot;:&quot;Anyone, ELMS:LN is an open community developed by multiple organizations!&quot;},{&quot;correct&quot;:true,&quot;label&quot;:&quot;Michael Potter&quot;}]" schema-resource-id="#59426af4-ecf2-f49d-06a6"></multiple-choice>
 
+          <chartist-render id="bar-chart"
+            type="bar"
+            scale="ct-major-twelfth"
+            on-chartist-render-ready="makeBar()"
+            chart-title="Quizzes Taken by Quiz#"
+            chart-desc="A bar graph showing how many quizzes were taken">
+          </chartist-render>
 
-          <self-check></self-check>
+
+          <button id="elem">Autoclick</button>
+          <script>
+            let eventData = [""];
+            eventData = {
+              dbType: "xapistatements",
+              activityDisplay: "answered",
+              activityId: "http://adlnet.gov/expapi/verbs/answered",
+              objectId: "http://haxcms.psu.edu/haxQuiz",
+              objectName: "quizName",
+              objectDescription: "HAX Quiz",
+              resultScoreScaled: 1,
+              resultScoreMin: 0,
+              resultScoreMax: 100,
+              resultScoreRaw: 100,
+              resultSuccess: "tester",  //test value
+              resultCompletion: true,
+              resultResponse: "sample",
+              resultDuration: "sample"
+            };
+
+            const elemButton = document.querySelector('button');
+            const evt = new CustomEvent("show-data", {
+              bubbles: true,
+              composed: true,
+              cancelable: false,
+              detail: eventData
+            });
+
+            elemButton.addEventListener('click', e => e.target.dispatchEvent(evt));
+            //elemButton.addEventListener('click', e => e.window.dispatchEvent(evt));
+          </script>
+
+
 
         </template>
       </demo-snippet>

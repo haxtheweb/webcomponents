@@ -5,7 +5,9 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 
 //Confirm this is the proper way to import/use
-import "./pouchdb.min.js";
+//REMOVE once confirmed
+///import "./pouchdb.min.js";
+import "//cdn.jsdelivr.net/npm/pouchdb@7.0.0/dist/pouchdb.min.js";
 
 // register globally so we can make sure there is only one
 window.PouchDb = window.PouchDb || {};
@@ -79,6 +81,7 @@ class PouchDb extends PolymerElement {
       "user-engagement",
       this.userEngagmentFunction.bind(this)
     );
+    window.addEventListener("show-data", this.showDataFunction.bind(this));
   }
 
   userEngagmentFunction(e) {
@@ -149,6 +152,67 @@ class PouchDb extends PolymerElement {
     //display for testing only - move to own elements
   }
 
+  showDataFunction(e) {
+    var eventData = e.detail;
+    var db = new PouchDB(eventData.dbType);
+    var remoteCouch = false;
+    ///var remoteCouch = 'http://35.164.8.64:3000/todos';
+
+    function processxAPI(statements, callback) {
+      var arrayxAPI = [];
+      statements.forEach(function(statement) {
+        var out = JSON.parse(statement.doc.title);
+        //var jsonStatement = out.verb.display['en-US'];  //verb
+        var jsonStatement = out.object.definition.name["en-US"]; //quizName
+        arrayxAPI.push(jsonStatement);
+      });
+      callback(arrayxAPI);
+    }
+
+    function processItems(statements, callback) {
+      var map = {};
+      statements.forEach(function(statement) {
+        map[statement] = (map[statement] || 0) + 1;
+      });
+      callback(map);
+    }
+
+    db.allDocs({ include_docs: true, descending: true }, function(err, doc) {
+      processxAPI(
+        doc.rows,
+        function displayxAPI(mapxAPI) {
+          processItems(
+            mapxAPI,
+            function display(backMap) {
+              var labelsArray = [];
+              var resultsArray = [];
+
+              for (let key of Object.keys(backMap)) {
+                labelsArray.push(key);
+              }
+
+              for (let value of Object.values(backMap)) {
+                resultsArray.push(value);
+              }
+
+              var bardata = {
+                labels: labelsArray,
+                series: [resultsArray]
+              };
+              document.getElementById("bar-chart").data = bardata;
+            }
+            // end of display function
+          );
+          //end of processItems
+        }
+        // end of displayxAPI function
+      );
+      //end of processxAPI
+    });
+    //end of db.allDocs
+  }
+  // end of showDataFunction
+
   /**
    * life cycle, element is removed from the DOM
    */
@@ -160,6 +224,7 @@ class PouchDb extends PolymerElement {
       "user-engagement",
       this.userEngagmentFunction.bind(this)
     );
+    window.removeEventListener("show-data", this.showDataFunction.bind(this));
   }
   /**
    * Hide callback
