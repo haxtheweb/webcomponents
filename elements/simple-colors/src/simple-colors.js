@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "./lib/simple-colors-styles.js";
+import { SimpleColorsStyles } from "./lib/simple-colors-styles.js";
 /**
  * `simple-colors`
  * `a shared set of styles for @lrnwebcomponents`
@@ -79,6 +79,10 @@ class SimpleColors extends PolymerElement {
    */
   ready() {
     super.ready();
+    this.shadowRoot.insertBefore(
+      new SimpleColorsStyles().makeStyleElement(),
+      this.shadowRoot.children[0]
+    );
   }
 
   /**

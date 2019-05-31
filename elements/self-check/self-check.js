@@ -419,6 +419,7 @@ class SelfCheck extends SchemaBehaviors(A11yBehaviors(SimpleColors)) {
       }
     };
   }
+
   connectedCallback() {
     super.connectedCallback();
     afterNextRender(this, function() {
