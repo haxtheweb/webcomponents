@@ -88,6 +88,7 @@ class SimpleCameraSnap extends HTMLElement {
   }
   async snapPhoto(e) {
     const camera = this.shadowRoot.querySelector("#camera");
+    let raw = await camera.takeASnap();
     let img = await camera.takeASnap().then(camera.renderImage);
     camera.removeAttribute("autoplay");
     const selfie = this.shadowRoot.querySelector("#selfie");
@@ -99,7 +100,10 @@ class SimpleCameraSnap extends HTMLElement {
         bubbles: true,
         composed: true,
         cancelable: true,
-        detail: img
+        detail: {
+          img: img,
+          raw: raw
+        }
       })
     );
     selfie.classList.add("has-snap");

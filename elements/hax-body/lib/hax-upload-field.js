@@ -281,7 +281,8 @@ class HaxUploadField extends PolymerElement {
    * We got a new photo
    */
   __newPhotoShowedUp(e) {
-    this.shadowRoot.querySelector("#fileupload")._addFile(e.detail);
+    let file = new File([e.detail.raw], "headshot" + e.timeStamp + ".jpg");
+    this.shadowRoot.querySelector("#fileupload")._addFile(file);
   }
   /**
    * Invoke the camera to set itself up
