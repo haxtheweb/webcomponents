@@ -12,6 +12,7 @@
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '@lrnwebcomponents/multiple-choice/multiple-choice.js';
       import '@lrnwebcomponents/chartist-render/chartist-render.js';
+      import "@polymer/paper-button/paper-button.js";
       import '../pouch-db.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
@@ -42,7 +43,7 @@
           </chartist-render>
 
 
-          <button id="elem">Autoclick</button>
+          <paper-button id="button">Click to see results</paper-button>
           <script>
             let eventData = [""];
             eventData = {
@@ -62,7 +63,7 @@
               resultDuration: "sample"
             };
 
-            const elemButton = document.querySelector('button');
+            const elemButton = document.getElementById('button');
             const evt = new CustomEvent("show-data", {
               bubbles: true,
               composed: true,
@@ -71,6 +72,14 @@
             });
 
             elemButton.addEventListener('click', e => e.target.dispatchEvent(evt));
+            window.addEventListener("user-engagement",
+              (e) => {
+                // delay so we see the result included that kicked off the event
+                setTimeout(() => {
+                  window.dispatchEvent(evt);                  
+                }, 100);
+              }
+            );
             //elemButton.addEventListener('click', e => e.window.dispatchEvent(evt));
           </script>
 

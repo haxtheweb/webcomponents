@@ -6,8 +6,8 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 
 //Confirm this is the proper way to import/use
 //REMOVE once confirmed
-///import "./pouchdb.min.js";
-import "//cdn.jsdelivr.net/npm/pouchdb@7.0.0/dist/pouchdb.min.js";
+import "./lib/pouchdb.min.js";
+//import "//cdn.jsdelivr.net/npm/pouchdb@7.0.0/dist/pouchdb.min.js";
 
 // register globally so we can make sure there is only one
 window.PouchDb = window.PouchDb || {};
@@ -189,26 +189,12 @@ class PouchDb extends PolymerElement {
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    super.connectedCallback();
-    window.removeEventListener("pouch-db-hide", this.hidePouchDb.bind(this));
-    window.removeEventListener("pouch-db-show", this.showPouchDb.bind(this));
     window.removeEventListener(
       "user-engagement",
       this.userEngagmentFunction.bind(this)
     );
     window.removeEventListener("show-data", this.showDataFunction.bind(this));
-  }
-  /**
-   * Hide callback
-   */
-  hidePouchDb(e) {
-    // add your code to run when the singleton hides
-  }
-  /**
-   * Show / available callback
-   */
-  showPouchDb(e) {
-    // add your code to run when the singleton is called for
+    super.disconnectedCallback();
   }
 }
 window.customElements.define(PouchDb.tag, PouchDb);
