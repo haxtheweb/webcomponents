@@ -111,6 +111,9 @@ class MultipleChoice extends SchemaBehaviors(PolymerElement) {
           on-click="resetAnswers"
           >[[resetLabel]]</paper-button
         >
+        <paper-button disabled\$="[[disabled]]" raised="" on-click="_showData"
+          >[[showDataLabel]]</paper-button
+        >
       </div>
       <paper-toast
         id="toast"
@@ -159,6 +162,13 @@ class MultipleChoice extends SchemaBehaviors(PolymerElement) {
         resetLabel: {
           type: String,
           value: "Reset"
+        },
+        /**
+         * Text of the reset button
+         */
+        showDataLabel: {
+          type: String,
+          value: "Show data"
         },
         /**
          * Related Resource ID
@@ -210,6 +220,13 @@ class MultipleChoice extends SchemaBehaviors(PolymerElement) {
         incorrectText: {
           type: String,
           value: "Better luck next time!"
+        },
+        /**
+         * Name of the quiz - hardcoded for now from HTML
+         */
+        quizName: {
+          type: String,
+          value: "Default Quiz"
         },
         /**
          * Randomize the display of the answers
@@ -306,12 +323,62 @@ class MultipleChoice extends SchemaBehaviors(PolymerElement) {
       this.$.toast.show();
     }
     // start of data passing, this is a prototype atm
+    let eventData = [""];
+    eventData = {
+      dbType: "xapistatements",
+      activityDisplay: "answered",
+      activityId: "http://adlnet.gov/expapi/verbs/answered",
+      objectId: "http://haxcms.psu.edu/haxQuiz",
+      objectName: this.quizName,
+      objectDescription: "HAX Quiz",
+      resultScoreScaled: 1,
+      resultScoreMin: 0,
+      resultScoreMax: 100,
+      resultScoreRaw: 100,
+      resultSuccess: gotRight,
+      resultCompletion: true,
+      resultResponse: "sample",
+      resultDuration: "sample"
+    };
     this.dispatchEvent(
       new CustomEvent("user-engagement", {
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: { passed: gotRight }
+        detail: eventData
+      })
+    );
+  }
+
+  /**
+   * Show the data based on user selecting the view and
+   * that they want to see how they did.
+   */
+  _showData(e) {
+    // start of data passing, this is a prototype atm
+    let eventData = [""];
+    eventData = {
+      dbType: "xapistatements",
+      activityDisplay: "answered",
+      activityId: "http://adlnet.gov/expapi/verbs/answered",
+      objectId: "http://haxcms.psu.edu/haxQuiz",
+      objectName: this.quizName,
+      objectDescription: "HAX Quiz",
+      resultScoreScaled: 1,
+      resultScoreMin: 0,
+      resultScoreMax: 100,
+      resultScoreRaw: 100,
+      resultSuccess: "tester", //test value
+      resultCompletion: true,
+      resultResponse: "sample",
+      resultDuration: "sample"
+    };
+    this.dispatchEvent(
+      new CustomEvent("show-data", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: eventData
       })
     );
   }
@@ -436,6 +503,12 @@ class MultipleChoice extends SchemaBehaviors(PolymerElement) {
             title: "Incorrect feedback",
             description: "Feedback when they get it wrong",
             inputMethod: "textfield"
+          },
+          {
+            property: "quizName",
+            title: "Name of the quiz",
+            description: "Quiz name passed in",
+            inputMethod: "textfield"
           }
         ],
         advanced: [
@@ -449,6 +522,12 @@ class MultipleChoice extends SchemaBehaviors(PolymerElement) {
             property: "resetLabel",
             title: "Reset label",
             description: "label for the reset button",
+            inputMethod: "textfield"
+          },
+          {
+            property: "showDataLabel",
+            title: "Show Data label",
+            description: "label for the show data button",
             inputMethod: "textfield"
           }
         ]
