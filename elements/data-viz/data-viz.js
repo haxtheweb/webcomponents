@@ -77,7 +77,6 @@ class DataViz extends PolymerElement {
     super.connectedCallback();
     window.addEventListener("data-viz-hide", this.hideDataViz.bind(this));
     window.addEventListener("data-viz-show", this.showDataViz.bind(this));
-    window.addEventListener("show-data", this.showDataFunction.bind(this));
   }
 
   /**
@@ -117,7 +116,7 @@ class DataViz extends PolymerElement {
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    super.connectedCallback();
+    super.disconnectedCallback();
     window.removeEventListener("data-viz-hide", this.hideDataViz.bind(this));
     window.removeEventListener("data-viz-show", this.showDataViz.bind(this));
   }
