@@ -5,13 +5,13 @@ import "@polymer/polymer/lib/elements/dom-if.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@polymer/paper-toast/paper-toast.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `multiple-choice`
  * `Ask the user a question from a set of possible answers.`
  * @demo demo/index.html
  */
-class MultipleChoice extends SchemaBehaviors(PolymerElement) {
+class MultipleChoice extends SchemaBehaviors(SimpleColors) {
   static get tag() {
     return "multiple-choice";
   }
@@ -111,7 +111,11 @@ class MultipleChoice extends SchemaBehaviors(PolymerElement) {
           on-click="resetAnswers"
           >[[resetLabel]]</paper-button
         >
-        <paper-button disabled\$="[[disabled]]" raised="" on-click="_showData"
+        <paper-button
+          hidden$="[[!showData]]"
+          disabled\$="[[disabled]]"
+          raised=""
+          on-click="_showData"
           >[[showDataLabel]]</paper-button
         >
       </div>
@@ -126,126 +130,134 @@ class MultipleChoice extends SchemaBehaviors(PolymerElement) {
     `;
   }
   static get properties() {
-    return Object.assign(
-      {
-        /**
-         * Title
-         */
-        title: {
-          type: String,
-          value: ""
-        },
-        /**
-         * Support disabling interaction with the entire board
-         */
-        disabled: {
-          type: Boolean,
-          value: false
-        },
-        /**
-         * Simple option, otherwise allow multiple via checkbox
-         */
-        singleOption: {
-          type: Boolean,
-          value: false
-        },
-        /**
-         * Text of the label to check your answer
-         */
-        checkLabel: {
-          type: String,
-          value: "Check answer"
-        },
-        /**
-         * Text of the reset button
-         */
-        resetLabel: {
-          type: String,
-          value: "Reset"
-        },
-        /**
-         * Text of the reset button
-         */
-        showDataLabel: {
-          type: String,
-          value: "Show data"
-        },
-        /**
-         * Related Resource ID
-         */
-        relatedResource: {
-          type: String
-        },
-        /**
-         * Flag to hide the title
-         */
-        hideTitle: {
-          type: Boolean,
-          value: false
-        },
-        /**
-         * Question to ask
-         */
-        question: {
-          type: String,
-          value: ""
-        },
-        /**
-         * Array of possible answers
-         */
-        answers: {
-          type: Array,
-          value: [],
-          notify: true
-        },
-        /**
-         * Displayed Answer set.
-         */
-        displayedAnswers: {
-          type: Array,
-          computed: "_computeDisplayedAnswers(answers, randomize)",
-          observer: "_valueChanged",
-          notify: true
-        },
-        /**
-         * Correct answer text to display
-         */
-        correctText: {
-          type: String,
-          value: "Great job!"
-        },
-        /**
-         * Incorrect answer text to display
-         */
-        incorrectText: {
-          type: String,
-          value: "Better luck next time!"
-        },
-        /**
-         * Name of the quiz - hardcoded for now from HTML
-         */
-        quizName: {
-          type: String,
-          value: "Default Quiz"
-        },
-        /**
-         * Randomize the display of the answers
-         */
-        randomize: {
-          type: Boolean,
-          value: false,
-          reflectToAttribute: true
-        },
-        /**
-         * flag to hide buttons
-         */
-        hideButtons: {
-          type: Boolean,
-          value: false
-        }
+    let props = {
+      /**
+       * Title
+       */
+      title: {
+        type: String,
+        value: ""
       },
-      super.properties
-    );
+      /**
+       * Support disabling interaction with the entire board
+       */
+      disabled: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Simple option, otherwise allow multiple via checkbox
+       */
+      singleOption: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Text of the label to check your answer
+       */
+      checkLabel: {
+        type: String,
+        value: "Check answer"
+      },
+      /**
+       * Text of the reset button
+       */
+      resetLabel: {
+        type: String,
+        value: "Reset"
+      },
+      /**
+       * Text of the reset button
+       */
+      showData: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Text of the reset button
+       */
+      showDataLabel: {
+        type: String,
+        value: "Show data"
+      },
+      /**
+       * Related Resource ID
+       */
+      relatedResource: {
+        type: String
+      },
+      /**
+       * Flag to hide the title
+       */
+      hideTitle: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Question to ask
+       */
+      question: {
+        type: String,
+        value: ""
+      },
+      /**
+       * Array of possible answers
+       */
+      answers: {
+        type: Array,
+        value: [],
+        notify: true
+      },
+      /**
+       * Displayed Answer set.
+       */
+      displayedAnswers: {
+        type: Array,
+        computed: "_computeDisplayedAnswers(answers, randomize)",
+        observer: "_valueChanged",
+        notify: true
+      },
+      /**
+       * Correct answer text to display
+       */
+      correctText: {
+        type: String,
+        value: "Great job!"
+      },
+      /**
+       * Incorrect answer text to display
+       */
+      incorrectText: {
+        type: String,
+        value: "Better luck next time!"
+      },
+      /**
+       * Name of the quiz - hardcoded for now from HTML
+       */
+      quizName: {
+        type: String,
+        value: "Default Quiz"
+      },
+      /**
+       * Randomize the display of the answers
+       */
+      randomize: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
+       * flag to hide buttons
+       */
+      hideButtons: {
+        type: Boolean,
+        value: false
+      }
+    };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
   /**
    * Notice an answer has changed and update the DOM.
