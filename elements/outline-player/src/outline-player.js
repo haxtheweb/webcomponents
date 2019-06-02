@@ -125,9 +125,9 @@ class OutlinePlayer extends HAXCMSTheme(PolymerElement) {
         }
 
         div[main-title] {
-          margin-left: 16px;
-          font-size: 20px;
-          line-height: 20px;
+          margin-left: 8px;
+          font-size: 16px;
+          line-height: 22px;
           overflow-wrap: break-word;
           text-overflow: ellipsis;
           display: inline-block;
