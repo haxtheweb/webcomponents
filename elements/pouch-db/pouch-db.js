@@ -48,7 +48,6 @@ class PouchDb extends PolymerElement {
         }
       </style>
       <slot></slot>
-      <div>[[title]]</div>
     `;
   }
 

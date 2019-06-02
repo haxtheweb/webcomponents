@@ -4,9 +4,6 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 
-//import chartjs library to be used for canvas element
-import "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js";
-
 // register globally so we can make sure there is only one
 window.DataViz = window.DataViz || {};
 // request if this exists. This helps invoke the element existing in the dom
