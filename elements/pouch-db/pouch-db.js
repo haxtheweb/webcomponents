@@ -9,6 +9,9 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "./lib/pouchdb.min.js";
 //import "//cdn.jsdelivr.net/npm/pouchdb@7.0.0/dist/pouchdb.min.js";
 
+//THIS ISN'T RIGHT - REMOVE
+import "http://127.0.0.1:8003/components/@lrnwebcomponents/data-viz/data-viz.js";
+
 // register globally so we can make sure there is only one
 window.PouchDb = window.PouchDb || {};
 // request if this exists. This helps invoke the element existing in the dom
@@ -35,33 +38,33 @@ window.PouchDb.requestAvailability = () => {
  * @demo demo/index.html
  */
 class PouchDb extends PolymerElement {
+  
   // render function
   static get template() {
     return html`
-      <style>
-        :host {
-          display: block;
-        }
+<style>:host {
+  display: block;
+}
 
-        :host([hidden]) {
-          display: none;
-        }
-      </style>
-      <slot></slot>
-    `;
+:host([hidden]) {
+  display: none;
+}
+</style>
+<slot></slot>`;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      title: {
-        name: "title",
-        type: "String",
-        value: "pouch-db-default-value",
-        reflectToAttribute: false,
-        observer: false
-      }
-    };
+  "title": {
+    "name": "title",
+    "type": "String",
+    "value": "pouch-db-default-value",
+    "reflectToAttribute": false,
+    "observer": false
+  }
+}
+;
   }
 
   /**
@@ -80,49 +83,79 @@ class PouchDb extends PolymerElement {
       "user-engagement",
       this.userEngagmentFunction.bind(this)
     );
-    window.addEventListener("show-data", this.showDataFunction.bind(this));
+    window.addEventListener("get-data", this.getDataFunction.bind(this));
   }
 
   userEngagmentFunction(e) {
     var eventData = e.detail;
-    var db = new PouchDB(eventData.dbType);
+    var whatEvent = event.target.tagName;
+
+    switch (whatEvent) {
+      case "MULTIPLE-CHOICE":
+        var dbType = "xapistatements";
+        var activityDisplay = eventData.activityDisplay;
+        var activityId = "http://adlnet.gov/expapi/verbs/" + activityDisplay; //this may need to be changed in the future for more verbs
+        var objectId = "http://haxcms.psu.edu/haxQuiz";
+        var objectName = eventData.objectName;
+        var objectDescription = "HAX Quiz";
+        //hard-coded for now for results, future tracking change to pull data from eventData.x
+        var resultScoreScaled = 1;
+        var resultScoreMin = 0;
+        var resultScoreMax = 100;
+        var resultScoreRaw = 100;
+        var resultSuccess = eventData.resultSuccess;
+        var resultCompletion = true;
+        var resultResponse = "sample";
+        var resultDuration = "sample";
+        //hard-coded for now for results, future tracking change to pull data from eventData.x
+        break;
+      default:
+        break;
+    }
+
+    var db = new PouchDB(dbType);
     var remoteCouch = false;
     ///var remoteCouch = 'http://35.164.8.64:3000/todos';
+
+    //these need to be updated to pull from global
+    var userEmail = "mailto:dave@gmail.com";
+    var userName = "Dave Fusco";
+
     var objectStatement = {
       actor: {
-        mbox: "mailto:dave@gmail.com",
-        name: "Dave Fusco",
+        mbox: userEmail,
+        name: userName,
         objectType: "Agent"
       },
       verb: {
-        id: eventData.activityId,
+        id: activityId,
         display: {
-          "en-US": eventData.activityDisplay
+          "en-US": activityDisplay
         }
       },
       object: {
-        id: eventData.objectId,
+        id: objectId,
         definition: {
           name: {
-            "en-US": eventData.objectName
+            "en-US": objectName
           },
           description: {
-            "en-US": eventData.objectDescription
+            "en-US": objectDescription
           }
         },
         objectType: "Activity"
       },
       result: {
         score: {
-          scaled: eventData.resultScoreScaled,
-          min: eventData.resultScoreMin,
-          max: eventData.resultScoreMax,
-          raw: eventData.resultScoreRaw
+          scaled: resultScoreScaled,
+          min: resultScoreMin,
+          max: resultScoreMax,
+          raw: resultScoreRaw
         },
-        success: eventData.resultSuccess,
-        completion: eventData.resultCompletion,
-        response: eventData.resultResponse,
-        duration: eventData.resultDuration
+        success: resultSuccess,
+        completion: resultCompletion,
+        response: resultResponse,
+        duration: resultDuration
       }
     };
 
@@ -151,18 +184,42 @@ class PouchDb extends PolymerElement {
     //display for testing only - move to own elements
   }
 
-  showDataFunction(e) {
+  getDataFunction(e) {
     var eventData = e.detail;
-    var db = new PouchDB(eventData.dbType);
+    var whatEvent = event.target.tagName;
+
+    switch (eventData.queryRequest) {
+      case "all-quizzes":
+        var dbType = "xapistatements"; //this needs to be changed to be more dynamic in the future
+        break;
+      case "single-quiz":
+        var dbType = "xapistatements"; //this needs to be changed to be more dynamic in the future
+        var objectName = eventData.objectName; //"Quiz2"
+        break;
+      case "future-query":
+        var dbType = "xapistatements";
+        var activityDisplay = eventData.activityDisplay;
+        var objectName = eventData.objectName;
+        var resultSuccess = eventData.resultSuccess;
+        var resultCompletion = eventData.resultCompletion;
+        break;
+      default:
+        var dbType = "xapistatements";
+        break;
+    }
+
+    var db = new PouchDB(dbType);
     var remoteCouch = false;
     ///var remoteCouch = 'http://35.164.8.64:3000/todos';
+
+    //ADD SINGLE-QUIZ QUERY
 
     function processxAPI(statements, callback) {
       var arrayxAPI = [];
       statements.forEach(function(statement) {
         var out = JSON.parse(statement.doc.title);
         //var jsonStatement = out.verb.display['en-US'];  //verb
-        var jsonStatement = out.object.definition.name["en-US"]; //quizName
+        var jsonStatement = out.object.definition.name["en-US"]; //all quizzes; quiz name
         arrayxAPI.push(jsonStatement);
       });
       callback(arrayxAPI);
@@ -194,11 +251,24 @@ class PouchDb extends PolymerElement {
                 resultsArray.push(value);
               }
 
-              var bardata = {
+              let queryData = [""];
+              queryData = {
                 labels: labelsArray,
                 series: [resultsArray]
+                //activityDisplay: eventData.resultCompletion,    //FUTURE
+                //objectName: eventData.objectName,               //FUTURE
+                //resultSuccess: eventData.resultSuccess          //FUTURE
+                //resultCompletion: eventData.resultCompletion    //FUTURE
               };
-              document.getElementById("bar-chart").data = bardata;
+
+              window.dispatchEvent(
+                new CustomEvent("show-data", {
+                  bubbles: true,
+                  composed: true,
+                  cancelable: false,
+                  detail: queryData
+                })
+              );
             }
             // end of display function
           );
@@ -210,7 +280,7 @@ class PouchDb extends PolymerElement {
     });
     //end of db.allDocs
   }
-  // end of showDataFunction
+  // end of getDataFunction
 
   /**
    * life cycle, element is removed from the DOM
@@ -220,7 +290,7 @@ class PouchDb extends PolymerElement {
       "user-engagement",
       this.userEngagmentFunction.bind(this)
     );
-    window.removeEventListener("show-data", this.showDataFunction.bind(this));
+    window.removeEventListener("get-data", this.getDataFunction.bind(this));
     super.disconnectedCallback();
   }
 }

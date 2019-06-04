@@ -47,24 +47,16 @@
           <script>
             let eventData = [""];
             eventData = {
-              dbType: "xapistatements",
-              activityDisplay: "answered",
-              activityId: "http://adlnet.gov/expapi/verbs/answered",
-              objectId: "http://haxcms.psu.edu/haxQuiz",
-              objectName: "quizName",
-              objectDescription: "HAX Quiz",
-              resultScoreScaled: 1,
-              resultScoreMin: 0,
-              resultScoreMax: 100,
-              resultScoreRaw: 100,
-              resultSuccess: "tester",  //test value
-              resultCompletion: true,
-              resultResponse: "sample",
-              resultDuration: "sample"
+              queryRequest: "all-quizzes",        //OR single
+              //queryRequest: "single-quiz",
+              //activityDisplay: "answered",      //KEEP for future use - verb action
+              objectName: "quizName"              //e.g. Quiz2
+              //resultSuccess: "tester",          //KEEP for future use - pass or fail
+              //resultCompletion: true,           //KEEP for future use - complete yes or no
             };
 
             const elemButton = document.getElementById('button');
-            const evt = new CustomEvent("show-data", {
+            const evt = new CustomEvent("get-data", {
               bubbles: true,
               composed: true,
               cancelable: false,
@@ -76,7 +68,7 @@
               (e) => {
                 // delay so we see the result included that kicked off the event
                 setTimeout(() => {
-                  window.dispatchEvent(evt);                  
+                  window.dispatchEvent(evt);
                 }, 100);
               }
             );
