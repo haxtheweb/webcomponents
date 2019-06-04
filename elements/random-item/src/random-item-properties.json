@@ -1,0 +1,10 @@
+{
+  "source": {
+    "name": "source",
+    "type": "String"
+  },
+  "field": {
+    "name": "field",
+    "type": "String"
+  }
+}
