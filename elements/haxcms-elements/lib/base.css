@@ -27,6 +27,8 @@ p {
   font-size: var(--haxcms-base-styles-p-line-height, 40px);
   font-size: var(--haxcms-base-styles-p-min-height, 26px);
   font-size: var(--haxcms-base-styles-p-font-size, 24px);
+  line-height: var(--haxcms-base-styles-p-line-height, 1.8);
+  letter-spacing: var(--haxcms-base-styles-p-letter-spacing, .5px);
 }
 a {
   color: var(--haxcms-base-styles-a-color, #000);
