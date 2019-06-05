@@ -221,58 +221,113 @@ class AbsolutePositionStateManager extends PolymerElement {
       elRect = el.getBoundingClientRect(),
       centerOffset = (targetRect.width - elRect.width) / 2,
       middleOffset = (targetRect.height - elRect.height) / 2,
-      elLeft,
-      elTop,
-      styleLeft,
-      styleRight,
-      styleTop,
-      styleBottom;
+      fitToBounds = (coord, min, max) => {
+        console.log("fitToBounds", coord, min, max);
+        return el.fitToVisibleBounds
+          ? Math.max(min, Math.min(max, coord))
+          : coord;
+      },
+      fitOrFlip = (coord, min, max) => {
+        if (el.fitToVisibleBounds) {
+          if (coord < min) {
+            if (el.position === "left") {
+              el.postition = "right";
+              coord = targetRect.right;
+            } else {
+              el.postition = "bottom";
+              coord = targetRect.bottom;
+            }
+          } else if (coord > max) {
+            if (el.position === "right") {
+              el.postition = "left";
+              coord = targetRect.left;
+            } else {
+              el.postition = "top";
+              coord = targetRect.top;
+            }
+          }
+        }
+        return coord;
+      };
+    el.style.position = "absolute";
     switch (el.position) {
       case "top":
-        elLeft = targetRect.left + centerOffset;
-        elTop = targetRect.top - elRect.height - offset;
+        el.style.left =
+          fitToBounds(
+            targetRect.left + centerOffset,
+            parentRect.left,
+            parentRect.right - elRect.width - parentRect.left + offset
+          ) + "px";
+        el.style.top =
+          fitOrFlip(
+            targetRect.top - elRect.height - offset,
+            parentRect.top,
+            parentRect.bottom - elRect.height
+          ) + "px";
         break;
       case "bottom":
-        elLeft = targetRect.left + centerOffset;
-        elTop = targetRect.top + targetRect.height + offset;
+        console.log(
+          "left",
+          targetRect.left,
+          centerOffset,
+          parentRect.left,
+          elRect.width,
+          offset
+        );
+        el.style.left =
+          fitToBounds(
+            targetRect.left + centerOffset,
+            parentRect.left,
+            parentRect.right - elRect.width - parentRect.left + offset
+          ) + "px";
+        console.log("top", targetRect.top, parentRect.top, elRect.height);
+        el.style.top =
+          fitOrFlip(
+            targetRect.bottom + offset,
+            parentRect.top,
+            parentRect.bottom - elRect.height
+          ) + "px";
         break;
       case "left":
-        elLeft = targetRect.left - elRect.width - offset;
-        elTop = targetRect.top + middleOffset;
+        el.style.left =
+          fitOrFlip(
+            targetRect.left - offset,
+            targetRect.left - elRect.width - offset,
+            parentRect.left,
+            parentRect.right - elRect.width
+          ) + "px";
+        el.style.top =
+          fitToBounds(
+            targetRect.top + middleOffset,
+            parentRect.top,
+            parentRect.bottom - elRect.height - parentRect.top + offset
+          ) + "px";
         break;
       case "right":
-        elLeft = targetRect.left + targetRect.width + offset;
-        elTop = targetRect.top + middleOffset;
+        el.style.left =
+          fitOrFlip(
+            targetRect.left - elRect.width + offset,
+            parentRect.left,
+            parentRect.right - elRect.width
+          ) + "px";
+        el.style.top =
+          fitToBounds(
+            targetRect.top + middleOffset,
+            parentRect.top,
+            parentRect.bottom - elRect.height - parentRect.top + offset
+          ) + "px";
         break;
     }
-    el.style.position = "absolute";
-    // TODO(noms): This should use IronFitBehavior if possible.
-    styleLeft = elLeft + "px";
-    styleTop = elTop + "px";
-    if (el.fitToVisibleBounds) {
-      /// if the left side is off-screen
-      if (
-        elLeft - offset < parentRect.left ||
-        elRect.width > parentRect.width
-      ) {
-        styleLeft = parentRect.left + "px";
-        /// if the right side is off-screen
-      } else if (elRect.right > parentRect.right) {
-        styleLeft = targetRect.right - elRect.width + "px";
-      }
-      //if the top is off screen
-      if (
-        elTop - offset < parentRect.top ||
-        elRect.height > parentRect.height
-      ) {
-        styleTop = parentRect.top + "px";
-        // if the bottom is off screen
-      } else if (elRect.bottom > parentRect.bottom) {
-        styleLeft = targetRect.bottom - elRect.height + "px";
-      }
-    }
-    el.style.left = styleLeft;
-    el.style.top = styleTop;
+    console.log(
+      "positionElement",
+      target,
+      targetRect,
+      el,
+      el.offsetParent,
+      parentRect,
+      elRect,
+      el.fitToVisibleBounds
+    );
     //provide positions for el and target (in case furthor positioning adjustments are needed)
     el.__positions = {
       self: elRect,
