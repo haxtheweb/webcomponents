@@ -1096,6 +1096,7 @@ class HAXCMSSiteListing extends PolymerElement {
       this.__archiveSitePath = window.appSettings.archiveSitePath;
       this.__cloneSitePath = window.appSettings.cloneSitePath;
       this.__publishSitePath = window.appSettings.publishSitePath;
+      this.__revertSitePath = window.appSettings.revertSitePath;
       this.__deleteSitePath = window.appSettings.deleteSitePath;
       // case where backend has set the JWT ahead of time
       // useful for systems that are managing login above HAXcms
