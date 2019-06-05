@@ -229,14 +229,8 @@ class RichTextEditorToolbar extends PolymerElement {
             type: "button-group",
             buttons: [
               {
-                command: "link",
                 icon: "link",
                 label: "Link",
-                prompt: "href",
-                toggledCommand: "unlink",
-                toggledIcon: "mdextra:unlink",
-                toggledLabel: "Unink",
-                toggles: true,
                 type: "rich-text-editor-link"
               }
             ]
@@ -343,8 +337,7 @@ class RichTextEditorToolbar extends PolymerElement {
        */
       controls: {
         name: "controls",
-        type: String,
-        value: null
+        type: String
       },
       /**
        * The `rich-text-editor` element that uis currently in `contenteditable` mode
@@ -454,6 +447,7 @@ class RichTextEditorToolbar extends PolymerElement {
    * life cycle, element is disconnected
    */
   disconnectedCallback() {
+    super.disconnectedCallback();
     let root = this;
     //unbind the the toolbar to the rich-text-editor-selection
     root.dispatchEvent(
@@ -488,11 +482,7 @@ class RichTextEditorToolbar extends PolymerElement {
         !e.relatedTarget.startsWith === "rich-text-editor"
       )
         root.editTarget(null);
-      //root.getUpdatedSelection();
     });
-    /*editor.addEventListener("mouseout", e => {
-      root.getUpdatedSelection();
-    });*/
   }
 
   /**
@@ -538,6 +528,9 @@ class RichTextEditorToolbar extends PolymerElement {
       } else {
         root.controls = null;
       }
+      root.buttons.forEach(button => {
+        button.controls = root.controls;
+      });
     }
   }
 
@@ -597,6 +590,7 @@ class RichTextEditorToolbar extends PolymerElement {
   _addButton(child, parent) {
     let root = this,
       button = document.createElement(child.type);
+
     for (var key in child) {
       button[key] = child[key];
     }

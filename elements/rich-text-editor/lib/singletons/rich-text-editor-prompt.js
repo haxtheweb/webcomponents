@@ -115,7 +115,7 @@ class RichTextEditorPrompt extends PolymerElement {
             <paper-button
               id="cancel"
               class="rtebutton"
-              controls="[[__targetId]]"
+              controls$="[[for]]"
               on-click="_cancel"
               tabindex="0"
             >
@@ -126,7 +126,7 @@ class RichTextEditorPrompt extends PolymerElement {
             <paper-button
               id="confirm"
               class="rtebutton"
-              controls="[[__targetId]]"
+              controls$="[[for]]"
               on-click="_confirm"
               tabindex="0"
             >
@@ -168,8 +168,7 @@ class RichTextEditorPrompt extends PolymerElement {
        * Is the  target id.
        */
       for: {
-        type: String,
-        value: null
+        type: String
       },
       /**
        * The selected text.

@@ -44,6 +44,7 @@ class RichTextEditor extends PolymerElement {
     style.setAttribute("include", "rich-text-editor-styles");
     if (!this.id) this.id = this._generateUUID();
     document.head.append(style);
+    console.log("connectedCallback", style, document, document.head);
   }
   /**
    * ready
@@ -58,30 +59,16 @@ class RichTextEditor extends PolymerElement {
   getEditor() {
     window.RichTextEditorClipboard.requestAvailability();
     let root = this,
-      toolbar = "rich-text-editor-toolbar",
       id = this.toolbar ? "#" + this.toolbar : "",
-      type =
-        this.type === "full" || this.type === "mini" ? "-" + this.type : "",
-      both = document.querySelector(toolbar + type + id),
-      idOnly = document.querySelector(
-        toolbar +
-          id +
-          "," +
-          toolbar +
-          "-full" +
-          id +
-          "," +
-          toolbar +
-          "-mini" +
-          id
-      ),
-      typeOnly = document.querySelector(toolbar + type),
+      both = document.querySelector(this.type + id),
+      idOnly = id ? document.querySelector(id) : null,
+      typeOnly = document.querySelector(this.type),
       //try to match both id and type, if no match try id only, and then type only
       editor = both || idOnly || typeOnly;
     //if still no match, create a region of type
     if (!this.toolbar) this.toolbar = this._generateUUID();
     if (!editor || !editor.addEditableRegion) {
-      editor = document.createElement(toolbar + type);
+      editor = document.createElement(this.type);
       editor.id = this.toolbar;
       root.parentNode.appendChild(editor);
     }

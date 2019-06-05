@@ -42,7 +42,7 @@ class RichTextEditorButton extends PolymerElement {
         id="button"
         class="rtebutton"
         disabled$="[[disabled]]"
-        controls="[[controls]]"
+        controls$="[[controls]]"
         on-click="_buttonTap"
         tabindex="0"
         toggled$="[[toggled]]"
@@ -63,12 +63,18 @@ class RichTextEditorButton extends PolymerElement {
   static get properties() {
     return {
       /**
+       * The `id` of the `rich-text-editor` that the toolbar controls.
+       */
+      controls: {
+        name: "controls",
+        type: String
+      },
+      /**
        * The command used for document.execCommand.
        */
       command: {
         name: "command",
-        type: String,
-        value: null
+        type: String
       },
 
       /**

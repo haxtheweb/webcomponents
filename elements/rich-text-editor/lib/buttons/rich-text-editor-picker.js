@@ -21,7 +21,6 @@ class RichTextEditorPicker extends RichTextEditorButton {
   constructor() {
     super();
     this.label = "Insert link";
-    this.icon = "";
   }
   // render function
   static get template() {
@@ -39,15 +38,15 @@ class RichTextEditorPicker extends RichTextEditorButton {
       <simple-picker
         id="button"
         class="rtebutton"
-        disabled$="[[disabled]]"
-        controls="[[controls]]"
+        disabled$="[[super.disabled]]"
+        controls$="[[super.controls]]"
         on-change="_pickerChange"
         tabindex="0"
         title-as-html$="[[titleAsHtml]]"
         options="[[options]]"
         value="{{value}}"
       >
-        <span id="label" class$="[[labelStyle]]">[[__label]]</span>
+        <span id="label" class$="[[super.labelStyle]]">[[__label]]</span>
       </simple-picker>
       <paper-tooltip id="tooltip" for="button">[[__label]]</paper-tooltip>
     `;
