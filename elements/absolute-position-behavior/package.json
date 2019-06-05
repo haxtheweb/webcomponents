@@ -16,7 +16,7 @@
       "hax": "src/absolute-position-behavior-hax.json"
     }
   },
-  "version": "2.0.10",
+  "version": "2.1.0",
   "description": "Abstracting the positioning behavior from paper-tooltip to be resusable in other elements",
   "repository": {
     "type": "git",

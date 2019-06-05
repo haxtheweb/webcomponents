@@ -16,7 +16,7 @@
       "hax": "src/md-block-hax.json"
     }
   },
-  "version": "2.0.10",
+  "version": "2.1.0",
   "description": "a markdown block",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^2.0.10",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.1.0",
     "@polymer/marked-element": "3.0.1",
     "@polymer/polymer": "^3.2.0"
   },

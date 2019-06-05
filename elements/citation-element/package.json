@@ -11,7 +11,7 @@
       "js": "src/citation-element.js"
     }
   },
-  "version": "2.0.10",
+  "version": "2.1.0",
   "description": "A simple way of citing things on the web.",
   "repository": {
     "type": "git",
@@ -35,14 +35,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^2.0.10",
-    "@lrnwebcomponents/schema-behaviors": "^2.0.10",
-    "@lrnwebcomponents/license-element": "^2.0.10",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.1.0",
+    "@lrnwebcomponents/license-element": "^2.1.0",
+    "@lrnwebcomponents/schema-behaviors": "^2.1.0",
     "@polymer/polymer": "^3.2.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.0.9",
-    "@lrnwebcomponents/storybook-utilities": "^2.0.10",
+    "@lrnwebcomponents/storybook-utilities": "^2.1.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@webcomponents/webcomponentsjs": "2.2.10",
