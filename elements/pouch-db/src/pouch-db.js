@@ -3,15 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-
-//Confirm this is the proper way to import/use
-//REMOVE once confirmed
 import "./lib/pouchdb.min.js";
-//import "//cdn.jsdelivr.net/npm/pouchdb@7.0.0/dist/pouchdb.min.js";
-
-//THIS ISN'T RIGHT - REMOVE
-import "http://127.0.0.1:8003/components/@lrnwebcomponents/data-viz/data-viz.js";
-
 // register globally so we can make sure there is only one
 window.PouchDb = window.PouchDb || {};
 // request if this exists. This helps invoke the element existing in the dom

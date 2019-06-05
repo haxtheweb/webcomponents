@@ -3,15 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-
-//Confirm this is the proper way to import/use
-//REMOVE once confirmed
 import "./lib/pouchdb.min.js";
-//import "//cdn.jsdelivr.net/npm/pouchdb@7.0.0/dist/pouchdb.min.js";
-
-//THIS ISN'T RIGHT - REMOVE
-import "http://127.0.0.1:8003/components/@lrnwebcomponents/data-viz/data-viz.js";
-
 // register globally so we can make sure there is only one
 window.PouchDb = window.PouchDb || {};
 // request if this exists. This helps invoke the element existing in the dom
@@ -38,33 +30,33 @@ window.PouchDb.requestAvailability = () => {
  * @demo demo/index.html
  */
 class PouchDb extends PolymerElement {
-  
   // render function
   static get template() {
     return html`
-<style>:host {
-  display: block;
-}
+      <style>
+        :host {
+          display: block;
+        }
 
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`;
+        :host([hidden]) {
+          display: none;
+        }
+      </style>
+      <slot></slot>
+    `;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
     return {
-  "title": {
-    "name": "title",
-    "type": "String",
-    "value": "pouch-db-default-value",
-    "reflectToAttribute": false,
-    "observer": false
-  }
-}
-;
+      title: {
+        name: "title",
+        type: "String",
+        value: "pouch-db-default-value",
+        reflectToAttribute: false,
+        observer: false
+      }
+    };
   }
 
   /**

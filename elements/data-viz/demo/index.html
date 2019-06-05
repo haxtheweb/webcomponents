@@ -24,11 +24,19 @@
             This is data-viz
           </data-viz>
 
-          <h1>header</h1>
-
           <paper-button id="button">Click to see results</paper-button>
           <script>
             let queryData = [""];
+            queryData = {
+              labels: ['Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4'],
+              series: [
+                {data: [5, 4, 3, 7]},
+                {data: [3, 2, 9, 5]},
+                {data: [1, 5, 8, 4]},
+                {data: [2, 3, 4, 6]},
+                {data: [4, 1, 2, 1]}
+              ]
+            };
 /*
             queryData = {
                 labels: labelsArray,
@@ -48,16 +56,7 @@
             });
 
             elemButton.addEventListener('click', e => e.target.dispatchEvent(evt));
-/*
-            window.addEventListener("show-data",
-              (e) => {
-                // delay so we see the result included that kicked off the event
-                setTimeout(() => {
-                  window.dispatchEvent(evt);
-                }, 100);
-              }
-            );
-*/
+
           </script>
 
         </template>
