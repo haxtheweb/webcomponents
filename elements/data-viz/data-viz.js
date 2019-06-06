@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import "@lrnwebcomponents/chartist-render/chartist-render.js";
 
 // register globally so we can make sure there is only one
 window.DataViz = window.DataViz || {};
@@ -67,46 +68,42 @@ class DataViz extends PolymerElement {
   static get tag() {
     return "data-viz";
   }
+
+  static get template() {
+    return html`
+      <chartist-render
+        id="barChart"
+        type="bar"
+        scale="ct-major-twelfth"
+        chart-title="Quiz Distribution"
+        chart-desc="A bar graph of quizzes completed by student"
+      >
+      </chartist-render>
+    `;
+  }
+
   /**
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener("data-viz-hide", this.hideDataViz.bind(this));
-    window.addEventListener("data-viz-show", this.showDataViz.bind(this));
+    window.addEventListener("show-data", this.showDataFunction.bind(this));
   }
 
   /**
    * Show the data based on user selecting the view and
    * that they want to see how they did.
    */
-  _showData(e) {
-    // start of data passing, this is a prototype atm
-    let eventData = [""];
-    eventData = {
-      dbType: "xapistatements",
-      activityDisplay: "answered",
-      activityId: "http://adlnet.gov/expapi/verbs/answered",
-      objectId: "http://haxcms.psu.edu/haxQuiz",
-      objectName: this.quizName,
-      objectDescription: "HAX Quiz",
-      resultScoreScaled: 1,
-      resultScoreMin: 0,
-      resultScoreMax: 100,
-      resultScoreRaw: 100,
-      resultSuccess: "tester", //test value
-      resultCompletion: true,
-      resultResponse: "sample",
-      resultDuration: "sample"
+  showDataFunction(e) {
+    var queryData = e.detail;
+    var whatEvent = event.target.tagName;
+
+    var bardata = {
+      labels: queryData.labels,
+      series: queryData.series
     };
-    this.dispatchEvent(
-      new CustomEvent("show-data", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: eventData
-      })
-    );
+
+    this.$.barChart.data = bardata;
   }
 
   /**
@@ -114,8 +111,7 @@ class DataViz extends PolymerElement {
    */
   disconnectedCallback() {
     super.disconnectedCallback();
-    window.removeEventListener("data-viz-hide", this.hideDataViz.bind(this));
-    window.removeEventListener("data-viz-show", this.showDataViz.bind(this));
+    window.removeEventListener("show-data", this.showDataFunction.bind(this));
   }
   /**
    * Hide callback
