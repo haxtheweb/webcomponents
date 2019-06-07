@@ -32,6 +32,7 @@ class HaxManager extends PolymerElement {
   static get template() {
     return html`
       <style include="hax-shared-styles">
+        @import url("https://fonts.googleapis.com/css?family=Noto+Serif");
         :host {
           display: block;
           color: var(--hax-color-text);

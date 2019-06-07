@@ -118,7 +118,8 @@ class HaxPanel extends PolymerElement {
           border-top-right-radius: 0;
           border-top-left-radius: unset;
         }
-        .active-op-name {
+        .active-op-name,
+        .editing-mode-active {
           display: none;
         }
         :host([edit-mode]) .active-op-name {
@@ -138,6 +139,13 @@ class HaxPanel extends PolymerElement {
           color: var(--hax-color-text);
           vertical-align: middle;
         }
+        :host([edit-mode]) .editing-mode-active {
+          display: flex;
+          font-size: 18px;
+          margin-left: 100px;
+          font-weight: bold;
+          color: var(--hax-color-text);
+        }
         @media screen and (max-width: 600px) {
           :host([edit-mode]) .hide-small {
             display: none;
@@ -147,6 +155,7 @@ class HaxPanel extends PolymerElement {
           :host([edit-mode]) #haxcancelbutton {
             margin-right: 2px;
           }
+          :host([edit-mode]) .editing-mode-active,
           :host([edit-mode]) .active-op-name {
             display: none;
           }
@@ -261,6 +270,7 @@ class HaxPanel extends PolymerElement {
           icon="settings"
           label="Preferences"
         ></hax-panel-item>
+        <div class="editing-mode-active">[[editModeName]]</div>
       </app-drawer>
       <div class="active-op-name">[[activeOperationName]]</div>
     `;
@@ -313,6 +323,13 @@ class HaxPanel extends PolymerElement {
        */
       activeOperationName: {
         type: String
+      },
+      /**
+       * Say we are editing content
+       */
+      editModeName: {
+        type: String,
+        value: "You are editing content"
       },
       /**
        * Showing preferences area.

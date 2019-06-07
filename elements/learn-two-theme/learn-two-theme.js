@@ -21,6 +21,10 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
   static get template() {
     return html`
       <style>
+        html,
+        body {
+          background-color: var(--learn-two-theme-background-color, #fafafa);
+        }
         :host {
           display: block;
           font-family: "Muli", "Helvetica", "Tahoma", "Geneva", "Arial",
@@ -155,7 +159,18 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
           }
         }
 
+        h-a-x {
+          padding: 0 !important;
+        }
+
+        :host([edit-mode]) app-drawer {
+          opacity: 0.2;
+          pointer-events: none;
+        }
+
         app-drawer {
+          opacity: 1;
+          transition: 0.2s linear all;
           box-shadow: 0 0 6px -3px var(--haxcms-color, black);
           overflow: hidden;
           width: 300px;
@@ -236,13 +251,6 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
           display: none;
         }
       </style>
-      <style>
-        html,
-        body {
-          background-color: #fafafa;
-        }
-      </style>
-
       <app-drawer-layout>
         <paper-icon-button
           id="menubutton"

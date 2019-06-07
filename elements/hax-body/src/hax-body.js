@@ -36,7 +36,6 @@ class HaxBody extends PolymerElement {
   static get template() {
     return html`
       <style include="hax-shared-styles">
-        @import url("https://fonts.googleapis.com/css?family=Noto+Serif");
         :host {
           display: block;
           min-height: 32px;
@@ -63,11 +62,6 @@ class HaxBody extends PolymerElement {
           opacity: 1;
           pointer-events: all;
           margin-left: unset;
-        }
-        :host #bodycontainer ::slotted(*) {
-          font-family: "Noto Serif", serif;
-          color: #444;
-          margin: 2px;
         }
         :host #bodycontainer ::slotted(h1) {
           font-size: var(--haxcms-base-styles-h1-font-size, 2.5em);
