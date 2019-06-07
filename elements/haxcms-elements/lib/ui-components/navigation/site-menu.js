@@ -4,7 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { autorun, toJS } from "mobx";
+import { autorun, toJS } from "mobx/lib/mobx.module.js";
 /**
  * `site-menu`
  * `Menu hierarchy`
@@ -33,6 +33,11 @@ class SiteMenu extends PolymerElement {
           display: block;
           height: 100vh;
         }
+        map-menu[disabled] {
+          pointer-events: none;
+          opacity: 0.5;
+          background-color: grey;
+        }
         map-menu:not(:defined) {
           display: none;
         }
@@ -60,6 +65,7 @@ class SiteMenu extends PolymerElement {
         }
       </style>
       <map-menu
+        disabled="[[editMode]]"
         selected="[[activeId]]"
         manifest="[[routerManifest]]"
         active-indicator="[[!hideActiveIndicator]]"
@@ -117,7 +123,10 @@ class SiteMenu extends PolymerElement {
       this.__disposer2 = autorun(() => {
         this.activeId = toJS(store.activeId);
       });
-    }, 50);
+    }, 100);
+    this.__disposer3 = autorun(() => {
+      this.editMode = toJS(store.editMode);
+    });
     this.shadowRoot
       .querySelector("map-menu")
       .addEventListener("active-item", this.mapMenuActiveChanged.bind(this));
@@ -125,6 +134,7 @@ class SiteMenu extends PolymerElement {
   disconnectedCallback() {
     super.disconnectedCallback();
     this.__disposer();
+    this.__disposer3();
     if (this.__disposer2) {
       this.__disposer2();
     }

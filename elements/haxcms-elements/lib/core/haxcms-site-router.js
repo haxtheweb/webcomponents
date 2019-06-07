@@ -1,6 +1,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { Router } from "@vaadin/router";
-import { autorun } from "mobx";
+import { autorun } from "mobx/lib/mobx.module.js";
 import { store } from "./haxcms-site-store.js";
 /**
  * `haxcms-site-router`

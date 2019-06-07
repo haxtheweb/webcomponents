@@ -671,7 +671,7 @@ class EcoJsonSchemaObject extends mixinBehaviors(
     return type === "array";
   }
   focus() {
-    console.log(this);
+    //console.log(this);
   }
 }
 window.customElements.define(EcoJsonSchemaObject.tag, EcoJsonSchemaObject);

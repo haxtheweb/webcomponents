@@ -119,8 +119,8 @@ class HaxGizmoBrowser extends PolymerElement {
   /**
    * life cycle
    */
-  connectedCallback() {
-    super.connectedCallback();
+  ready() {
+    super.ready();
     this.resetBrowser();
     afterNextRender(this, function() {
       this.shadowRoot
@@ -140,29 +140,6 @@ class HaxGizmoBrowser extends PolymerElement {
         this._haxStorePropertyUpdated.bind(this)
       );
     });
-  }
-
-  /**
-   * Detached life cycle
-   */
-  disconnectedCallback() {
-    this.shadowRoot
-      .querySelector("#inputfilter")
-      .removeEventListener("value-changed", e => {
-        this.shadowRoot.querySelector("#filter").like = e.target.value;
-      });
-    this.shadowRoot
-      .querySelector("#filtertype")
-      .removeEventListener("change", e => {
-        this.shadowRoot.querySelector("#inputfilter").value = "";
-        this.shadowRoot.querySelector("#filter").where = e.detail.value;
-        this.shadowRoot.querySelector("#filter").like = "";
-      });
-    document.body.removeEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-    super.disconnectedCallback();
   }
 
   /**

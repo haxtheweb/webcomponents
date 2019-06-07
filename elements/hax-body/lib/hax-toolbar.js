@@ -15,6 +15,10 @@ class HaxToolbar extends PolymerElement {
     import("@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js");
     import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
     import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
+    this.addEventListener(
+      "hax-context-item-selected",
+      this._haxContextOperation.bind(this)
+    );
   }
   static get template() {
     return html`
@@ -240,23 +244,6 @@ class HaxToolbar extends PolymerElement {
         notify: true
       }
     };
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      this.addEventListener(
-        "hax-context-item-selected",
-        this._haxContextOperation.bind(this)
-      );
-    });
-  }
-  disconnectedCallback() {
-    this.removeEventListener(
-      "hax-context-item-selected",
-      this._haxContextOperation.bind(this)
-    );
-    super.disconnectedCallback();
   }
   /**
    * If hax properties changes, let's see what the initial state

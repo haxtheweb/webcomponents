@@ -9,7 +9,7 @@ import {
   findTagsInHTML,
   wipeSlot
 } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
-import { autorun, toJS } from "mobx";
+import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import { store } from "./haxcms-site-store.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "./haxcms-site-router.js";

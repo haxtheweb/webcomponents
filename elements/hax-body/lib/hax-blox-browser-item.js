@@ -11,6 +11,11 @@ class HaxBloxBrowserItem extends PolymerElement {
     import("@polymer/paper-button/paper-button.js");
     import("@polymer/paper-card/paper-card.js");
     import("@polymer/iron-icon/iron-icon.js");
+    this.addEventListener("mousedown", this.tapEventOn.bind(this));
+    this.addEventListener("mouseover", this.tapEventOn.bind(this));
+    this.addEventListener("mouseout", this.tapEventOff.bind(this));
+    this.addEventListener("focusin", this.tapEventOn.bind(this));
+    this.addEventListener("focusout", this.tapEventOff.bind(this));
   }
   static get template() {
     return html`
@@ -77,24 +82,6 @@ class HaxBloxBrowserItem extends PolymerElement {
   }
   static get tag() {
     return "hax-blox-browser-item";
-  }
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      this.addEventListener("mousedown", this.tapEventOn.bind(this));
-      this.addEventListener("mouseover", this.tapEventOn.bind(this));
-      this.addEventListener("mouseout", this.tapEventOff.bind(this));
-      this.addEventListener("focusin", this.tapEventOn.bind(this));
-      this.addEventListener("focusout", this.tapEventOff.bind(this));
-    });
-  }
-  disconnectedCallback() {
-    this.removeEventListener("mousedown", this.tapEventOn.bind(this));
-    this.removeEventListener("mouseover", this.tapEventOn.bind(this));
-    this.removeEventListener("mouseout", this.tapEventOff.bind(this));
-    this.removeEventListener("focusin", this.tapEventOn.bind(this));
-    this.removeEventListener("focusout", this.tapEventOff.bind(this));
-    super.disconnectedCallback();
   }
 
   static get properties() {

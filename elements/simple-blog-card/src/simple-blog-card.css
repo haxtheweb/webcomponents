@@ -2,3 +2,8 @@
 :host {
   display:block;
 }
+
+simple-popover {
+  position:absolute;
+  display: flex;
+}

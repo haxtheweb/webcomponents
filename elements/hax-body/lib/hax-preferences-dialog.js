@@ -20,6 +20,11 @@ class HaxPreferencesDialog extends PolymerElement {
     import("@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js");
     import("@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js");
     import("@polymer/app-layout/app-drawer/app-drawer.js");
+    // add event listener
+    document.body.addEventListener(
+      "hax-store-property-updated",
+      this._haxStorePropertyUpdated.bind(this)
+    );
   }
   static get template() {
     return html`
@@ -185,12 +190,6 @@ class HaxPreferencesDialog extends PolymerElement {
     };
     this.set("schema", {});
     this.set("schema", schema);
-  }
-  /**
-   * Attached to the DOM, now fire that we exist.
-   */
-  connectedCallback() {
-    super.connectedCallback();
     // register this with hax as the preference pane
     this.dispatchEvent(
       new CustomEvent("hax-register-preferences", {
@@ -201,24 +200,9 @@ class HaxPreferencesDialog extends PolymerElement {
       })
     );
     afterNextRender(this, function() {
-      // add event listener
-      document.body.addEventListener(
-        "hax-store-property-updated",
-        this._haxStorePropertyUpdated.bind(this)
-      );
       // force color values to apply
       this.updateStyles();
     });
-  }
-  /**
-   * Detached life cycle
-   */
-  disconnectedCallback() {
-    document.body.removeEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-    super.disconnectedCallback();
   }
   /**
    * Store updated, sync.

@@ -19,6 +19,10 @@ class HaxTextContext extends PolymerElement {
     import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
     import("@lrnwebcomponents/hax-body/lib/hax-context-item-textop.js");
     import("@lrnwebcomponents/hax-body/lib/hax-toolbar.js");
+    this.addEventListener(
+      "hax-context-item-selected",
+      this._haxContextOperation.bind(this)
+    );
   }
   static get template() {
     return html`
@@ -261,25 +265,20 @@ class HaxTextContext extends PolymerElement {
     }
     return false;
   }
+  ready() {
+    super.ready();
+  }
   /**
    * life cycle, figure out polyfill
    */
   connectedCallback() {
     super.connectedCallback();
     afterNextRender(this, function() {
-      this.addEventListener(
-        "hax-context-item-selected",
-        this._haxContextOperation.bind(this)
-      );
       this.polyfillSafe = window.HaxStore.instance.computePolyfillSafe();
     });
   }
 
   disconnectedCallback() {
-    this.removeEventListener(
-      "hax-context-item-selected",
-      this._haxContextOperation.bind(this)
-    );
     super.disconnectedCallback();
   }
 

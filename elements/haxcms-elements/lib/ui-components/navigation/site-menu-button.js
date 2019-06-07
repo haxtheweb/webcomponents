@@ -4,7 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { autorun, toJS } from "mobx";
+import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import "@polymer/paper-button/paper-button.js";
 /**
  * `site-menu-button`
@@ -117,11 +117,14 @@ class SiteMenuButton extends PolymerElement {
         type: String,
         computed: "pageLink(type, activeManifestIndex, routerManifest.items)"
       },
+      editMode: {
+        type: Boolean
+      },
       disabled: {
         type: Boolean,
         reflectToAttribute: true,
         computed:
-          "pageLinkStatus(type, activeManifestIndex, routerManifest.items)"
+          "pageLinkStatus(type, activeManifestIndex, routerManifest.items, editMode)"
       },
       label: {
         type: String
@@ -186,22 +189,20 @@ class SiteMenuButton extends PolymerElement {
       return null;
     }
   }
-  pageLinkStatus(type, activeManifestIndex, items) {
+  pageLinkStatus(type, activeManifestIndex, items, editMode) {
+    if (editMode) {
+      return true;
+    }
     if (type === "prev") {
       if (activeManifestIndex === 0 || activeManifestIndex === -1) {
         return true;
       }
-      return false;
     } else if (type === "next" && items) {
       if (activeManifestIndex >= items.length - 1) {
         return true;
       }
-      return false;
     }
-    // @todo add support for up and down as far as children and parent relationships
-    else {
-      return false;
-    }
+    return false;
   }
   connectedCallback() {
     super.connectedCallback();
@@ -211,11 +212,15 @@ class SiteMenuButton extends PolymerElement {
     this.__disposer2 = autorun(() => {
       this.activeManifestIndex = toJS(store.activeManifestIndex);
     });
+    this.__disposer3 = autorun(() => {
+      this.editMode = toJS(store.editMode);
+    });
   }
   disconnectedCallback() {
-    super.disconnectedCallback();
     this.__disposer();
     this.__disposer2();
+    this.__disposer3();
+    super.disconnectedCallback();
   }
 }
 window.customElements.define(SiteMenuButton.tag, SiteMenuButton);

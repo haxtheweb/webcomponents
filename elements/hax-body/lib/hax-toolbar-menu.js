@@ -15,6 +15,7 @@ class HaxToolbarMenu extends PolymerElement {
     import("@polymer/paper-listbox/paper-listbox.js");
     import("@polymer/paper-menu-button/paper-menu-button.js");
     import("@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js");
+    this.addEventListener("click", this._menubuttonTap.bind(this));
   }
   static get template() {
     return html`
@@ -110,16 +111,6 @@ class HaxToolbarMenu extends PolymerElement {
         observer: "_selectChanged"
       }
     };
-  }
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      this.addEventListener("click", this._menubuttonTap.bind(this));
-    });
-  }
-  disconnectedCallback() {
-    this.removeEventListener("click", this._menubuttonTap.bind(this));
-    super.disconnectedCallback();
   }
 
   /**

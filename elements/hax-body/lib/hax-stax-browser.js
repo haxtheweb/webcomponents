@@ -11,6 +11,10 @@ class HaxStaxBrowser extends PolymerElement {
   constructor() {
     super();
     import("@lrnwebcomponents/hax-body/lib/hax-stax-browser-item.js");
+    document.body.addEventListener(
+      "hax-store-property-updated",
+      this._haxStorePropertyUpdated.bind(this)
+    );
   }
   static get template() {
     return html`
@@ -62,26 +66,6 @@ class HaxStaxBrowser extends PolymerElement {
     };
   }
 
-  /**
-   * Ready life cycle
-   */
-  ready() {
-    super.ready();
-    document.body.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-  }
-  /**
-   * life cycle
-   */
-  disconnectedCallback() {
-    document.body.removeEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-    this.disconnectedCallback();
-  }
   /**
    * life cycle
    */

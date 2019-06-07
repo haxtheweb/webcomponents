@@ -257,8 +257,9 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
           ></paper-icon-button>
           <div class="header-wrapper">
             <div class="header">
-              <site-title></site-title>
+              <site-title disabled$="[[editMode]]"></site-title>
               <site-modal
+                disabled$="[[editMode]]"
                 icon="icons:search"
                 title="Search site"
                 button-label="Search"
@@ -269,9 +270,18 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
           </div>
           <site-menu></site-menu>
           <div class="rss-buttons">
-            <site-rss-button type="atom"></site-rss-button>
-            <site-rss-button type="rss"></site-rss-button>
-            <site-print-button position="top"></site-print-button>
+            <site-rss-button
+              disabled$="[[editMode]]"
+              type="atom"
+            ></site-rss-button>
+            <site-rss-button
+              disabled$="[[editMode]]"
+              type="rss"
+            ></site-rss-button>
+            <site-print-button
+              disabled$="[[editMode]]"
+              position="top"
+            ></site-print-button>
           </div>
         </app-drawer>
         <div>
@@ -291,7 +301,11 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
 
   // properties available to the custom element for data binding
   static get properties() {
-    return {};
+    let props = {};
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
   constructor() {
     super();

@@ -66,11 +66,9 @@ class SimpleColors extends PolymerElement {
   static get tag() {
     return "simple-colors";
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
+
+  constructor() {
+    super();
     this.__utils = window.SimpleColorsStyles.requestAvailability();
   }
 

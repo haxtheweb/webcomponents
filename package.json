@@ -90,6 +90,8 @@
     "rollup-plugin-commonjs": "9.2.0",
     "rollup-plugin-delete": "0.2.1",
     "rollup-plugin-terser": "4.0.4",
+    "rollup-plugin-auto-external": "^2.0.0",
+    "rollup-plugin-rewrite-imports": "^1.0.1",
     "strip-css-comments": "3.0.0",
     "trim": "0.0.1",
     "wct-browser-legacy": "1.0.2",

@@ -4,7 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { autorun, toJS } from "mobx";
+import { autorun, toJS } from "mobx/lib/mobx.module.js";
 /**
  * `site-breadcrumb`
  * `A basic breadcrumb of links based on the active state in HAXcms on JSON Outline Schema`
@@ -117,12 +117,18 @@ class SiteBreadcrumb extends PolymerElement {
           let button = document.createElement("paper-button");
           button.innerText = items[i].title;
           button.noink = true;
-          let link = document.createElement("a");
-          link.setAttribute("href", items[i].location);
-          link.setAttribute("tabindex", "-1");
-          link.setAttribute("itemprop", "url");
-          link.appendChild(button);
-          this.$.space.appendChild(link);
+          // disable buttons if we ware editing
+          if (this.editMode) {
+            button.setAttribute("disabled", "disabled");
+            this.$.space.appendChild(button);
+          } else {
+            let link = document.createElement("a");
+            link.setAttribute("href", items[i].location);
+            link.setAttribute("tabindex", "-1");
+            link.setAttribute("itemprop", "url");
+            link.appendChild(button);
+            this.$.space.appendChild(link);
+          }
           this.$.space.appendChild(icon);
         } else {
           let span = document.createElement("span");
@@ -138,6 +144,7 @@ class SiteBreadcrumb extends PolymerElement {
       this.manifest = toJS(store.routerManifest);
     });
     this.__disposer2 = autorun(() => {
+      this.editMode = toJS(store.editMode);
       this._activeItemChanged(toJS(store.activeItem));
     });
   }

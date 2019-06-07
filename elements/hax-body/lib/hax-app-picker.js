@@ -183,8 +183,8 @@ class HaxAppPicker extends PolymerElement {
   /**
    * Attached life cycle
    */
-  connectedCallback() {
-    super.connectedCallback();
+  ready() {
+    super.ready();
     this.dispatchEvent(
       new CustomEvent("hax-register-app-picker", {
         bubbles: true,
@@ -197,11 +197,6 @@ class HaxAppPicker extends PolymerElement {
       this.addEventListener("iron-overlay-canceled", this.close.bind(this));
       this.addEventListener("iron-overlay-closed", this.close.bind(this));
     });
-  }
-  disconnectedCallback() {
-    this.removeEventListener("iron-overlay-canceled", this.close.bind(this));
-    this.removeEventListener("iron-overlay-closed", this.close.bind(this));
-    super.disconnectedCallback();
   }
 
   /**

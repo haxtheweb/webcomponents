@@ -70,27 +70,31 @@ class HaxBody extends PolymerElement {
           margin: 2px;
         }
         :host #bodycontainer ::slotted(h1) {
-          font-size: 2.5em;
-          line-height: 2.5em;
+          font-size: var(--haxcms-base-styles-h1-font-size, 2.5em);
+          line-height: var(--haxcms-base-styles-h1-line-height, 2.5em);
         }
         :host #bodycontainer ::slotted(h2) {
-          font-size: 2em;
+          font-size: var(--haxcms-base-styles-h2-font-size, 2em);
         }
         :host #bodycontainer ::slotted(h3) {
-          font-size: 1.75em;
+          font-size: var(--haxcms-base-styles-h3-font-size, 1.75em);
         }
         :host #bodycontainer ::slotted(h4) {
-          font-size: 1.5em;
+          font-size: var(--haxcms-base-styles-h4-font-size, 1.5em);
         }
-        :host #bodycontainer ::slotted(h5),
+        :host #bodycontainer ::slotted(h5) {
+          font-size: var(--haxcms-base-styles-h5-font-size, 1.25em);
+        }
         :host #bodycontainer ::slotted(h6) {
-          font-size: 1.25em;
+          font-size: var(--haxcms-base-styles-h6-font-size, 1.25em);
         }
         :host #bodycontainer ::slotted(p) {
-          line-height: 40px;
           min-height: 26px;
-          font-size: 24px;
+          font-size: var(--haxcms-base-styles-p-font-size, 24px);
+          line-height: var(--haxcms-base-styles-p-line-height, 1.8);
+          letter-spacing: var(--haxcms-base-styles-p-letter-spacing, 0.5px);
         }
+
         :host #bodycontainer ::slotted(a),
         :host #bodycontainer ::slotted(a:visited),
         :host #bodycontainer ::slotted(a:active) {
@@ -336,17 +340,18 @@ class HaxBody extends PolymerElement {
           });
         }
       });
-    });
-  }
-  /**
-   * Attached to the DOM; now we can fire event to the store that
-   * we exist and are the thing being edited.
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      // in case we miss this on the initial setup. possible in auto opening environments.
-      this.editMode = window.HaxStore.instance.editMode;
+      this.addEventListener(
+        "hax-context-item-selected",
+        this._haxContextOperation.bind(this)
+      );
+      this.addEventListener(
+        "hax-input-mixer-update",
+        this._haxInputMixerOperation.bind(this)
+      );
+      this.addEventListener(
+        "place-holder-replace",
+        this.replacePlaceholder.bind(this)
+      );
       // try to normalize paragraph insert on enter
       try {
         document.execCommand("enableObjectResizing", false, false);
@@ -407,7 +412,6 @@ class HaxBody extends PolymerElement {
           }
         }
       });
-      this.__tabTrap = false;
       document.body.addEventListener(
         "hax-store-property-updated",
         this._haxStorePropertyUpdated.bind(this)
@@ -415,97 +419,20 @@ class HaxBody extends PolymerElement {
       window.addEventListener("scroll", this._keepContextVisible.bind(this));
       this.addEventListener("focusin", this._focusIn.bind(this));
       this.addEventListener("mousedown", this._focusIn.bind(this));
-      this.addEventListener(
-        "hax-context-item-selected",
-        this._haxContextOperation.bind(this)
-      );
-      this.addEventListener(
-        "hax-input-mixer-update",
-        this._haxInputMixerOperation.bind(this)
-      );
-      this.addEventListener(
-        "place-holder-replace",
-        this.replacePlaceholder.bind(this)
-      );
     });
   }
   /**
-   * Detached life cycle
+   * Attached to the DOM; now we can fire event to the store that
+   * we exist and are the thing being edited.
    */
-  disconnectedCallback() {
-    window.removeEventListener("keydown", this._onKeyDown.bind(this));
-    window.removeEventListener("keypress", this._onKeyPress.bind(this));
-    this.shadowRoot
-      .querySelector("slot")
-      .removeEventListener("mousemove", this.hoverEvent.bind(this));
-    this.shadowRoot.querySelector("slot").removeEventListener("mouseup", e => {
-      const tmp = window.HaxStore.getSelection();
-      window.HaxStore._tmpSelection = tmp;
-      try {
-        const range = window.HaxStore.getRange();
-        if (range.cloneRange) {
-          window.HaxStore._tmpRange = range.cloneRange();
-        }
-      } catch (e) {
-        console.log(e);
-      }
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, function() {
+      // in case we miss this on the initial setup. possible in auto opening environments.
+      this.editMode = window.HaxStore.instance.editMode;
+      // ensure this resets every append
+      this.__tabTrap = false;
     });
-    this.shadowRoot.querySelector("slot").removeEventListener("paste", e => {
-      // only perform this on a text element that is active
-      if (
-        window.HaxStore.instance.isTextElement(
-          window.HaxStore.instance.activeNode
-        ) &&
-        !window.HaxStore.instance.haxManager.opened
-      ) {
-        e.preventDefault();
-        e.stopPropagation();
-        e.stopImmediatePropagation();
-        let text = "";
-        // intercept paste event
-        if (e.clipboardData || e.originalEvent.clipboardData) {
-          text = (e.originalEvent || e).clipboardData.getData("text/plain");
-        } else if (window.clipboardData) {
-          text = window.clipboardData.getData("Text");
-        }
-        try {
-          let range = window.HaxStore.getRange();
-          let sel = window.HaxStore.getSelection();
-          let newNode = document.createTextNode(text);
-          let newRange = document.createRange();
-          if (range && sel) {
-            range.deleteContents();
-            range.insertNode(newNode);
-            newRange.setStart(newNode, text.length);
-            newRange.collapse(true);
-            sel.removeAllRanges();
-            sel.addRange(newRange);
-          }
-        } catch (e) {
-          console.log(e);
-        }
-      }
-    });
-    document.body.removeEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-    window.removeEventListener("scroll", this._keepContextVisible.bind(this));
-    this.removeEventListener("focusin", this._focusIn.bind(this));
-    this.removeEventListener("mousedown", this._focusIn.bind(this));
-    this.removeEventListener(
-      "hax-context-item-selected",
-      this._haxContextOperation.bind(this)
-    );
-    this.removeEventListener(
-      "hax-input-mixer-update",
-      this._haxInputMixerOperation.bind(this)
-    );
-    this.removeEventListener(
-      "place-holder-replace",
-      this.replacePlaceholder.bind(this)
-    );
-    super.disconnectedCallback();
   }
   /**
    * Keep the context menu visible if needed

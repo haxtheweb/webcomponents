@@ -1,4 +1,11 @@
-import { observable, decorate, computed, autorun, action, toJS } from "mobx";
+import {
+  observable,
+  decorate,
+  computed,
+  autorun,
+  action,
+  toJS
+} from "mobx/lib/mobx.module.js";
 
 class Store {
   constructor() {

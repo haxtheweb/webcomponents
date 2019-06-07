@@ -39,8 +39,8 @@ class HaxAutoloader extends HAXElement(PolymerElement) {
   /**
    * Attached to the DOM, now fire that we exist.
    */
-  connectedCallback() {
-    super.connectedCallback();
+  ready() {
+    super.ready();
     // fire an event that this is the manager
     this.dispatchEvent(
       new CustomEvent("hax-register-autoloader", {

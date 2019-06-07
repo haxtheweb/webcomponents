@@ -11,6 +11,10 @@ class HaxBloxBrowser extends PolymerElement {
     super();
     import("@lrnwebcomponents/hax-body/lib/hax-blox-browser-item.js");
     import("@lrnwebcomponents/hax-body/lib/hax-icons.js");
+    document.body.addEventListener(
+      "hax-store-property-updated",
+      this._haxStorePropertyUpdated.bind(this)
+    );
   }
   static get template() {
     return html`
@@ -65,31 +69,12 @@ class HaxBloxBrowser extends PolymerElement {
     };
   }
 
-  ready() {
-    super.ready();
-    document.body.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-  }
-
   /**
    * Attached life cycle
    */
   connectedCallback() {
     super.connectedCallback();
     this.resetBrowser();
-  }
-
-  /**
-   * Detached life cycle
-   */
-  disconnectedCallback() {
-    document.body.removeEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-    super.disconnectedCallback();
   }
 
   /**

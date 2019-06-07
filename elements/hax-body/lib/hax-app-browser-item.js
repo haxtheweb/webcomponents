@@ -180,8 +180,8 @@ class HAXAppBrowserItem extends PolymerElement {
       <div class="item-title" aria-hidden="true">[[title]]</div>
     `;
   }
-  connectedCallback() {
-    super.connectedCallback();
+  ready() {
+    super.ready();
     afterNextRender(this, function() {
       this.addEventListener("click", this._fireEvent);
       this.addEventListener("mousedown", this.tapEventOn);
@@ -190,15 +190,6 @@ class HAXAppBrowserItem extends PolymerElement {
       this.addEventListener("focusin", this.tapEventOn);
       this.addEventListener("focusout", this.tapEventOff);
     });
-  }
-  disconnectedCallback() {
-    this.removeEventListener("click", this._fireEvent);
-    this.removeEventListener("mousedown", this.tapEventOn);
-    this.removeEventListener("mouseover", this.tapEventOn);
-    this.removeEventListener("mouseout", this.tapEventOff);
-    this.removeEventListener("focusin", this.tapEventOn);
-    this.removeEventListener("focusout", this.tapEventOff);
-    super.disconnectedCallback();
   }
   /**
    * special handling for taps on the thing

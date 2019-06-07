@@ -369,8 +369,8 @@ class HaxManager extends PolymerElement {
   /**
    * life cycle
    */
-  connectedCallback() {
-    super.connectedCallback();
+  ready() {
+    super.ready();
     // send an event that this is the manager
     this.dispatchEvent(
       new CustomEvent("hax-register-manager", {
@@ -420,47 +420,6 @@ class HaxManager extends PolymerElement {
         );
     });
   }
-
-  /**
-   * Detached life cycle
-   */
-  disconnectedCallback() {
-    document.body.removeEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-    document.body.removeEventListener(
-      "hax-app-picker-selection",
-      this._haxAppPickerSelection.bind(this)
-    );
-    document.body.removeEventListener(
-      "place-holder-file-drop",
-      this._placeHolderFileDrop.bind(this)
-    );
-    this.shadowRoot
-      .querySelector("#dialog")
-      .removeEventListener("iron-overlay-canceled", this.close.bind(this));
-    this.shadowRoot
-      .querySelector("#dialog")
-      .removeEventListener("iron-overlay-closed", this.close.bind(this));
-    this.shadowRoot
-      .querySelector("#closedialog")
-      .removeEventListener("click", this.close.bind(this));
-    this.shadowRoot
-      .querySelector("#newassetconfigure")
-      .removeEventListener("click", this.newAssetConfigure.bind(this));
-    this.shadowRoot
-      .querySelector("#fileupload")
-      .removeEventListener("upload-before", this._fileAboutToUpload.bind(this));
-    this.shadowRoot
-      .querySelector("#fileupload")
-      .removeEventListener(
-        "upload-response",
-        this._fileUploadResponse.bind(this)
-      );
-    super.disconnectedCallback();
-  }
-
   /**
    * Toggle panel size
    */

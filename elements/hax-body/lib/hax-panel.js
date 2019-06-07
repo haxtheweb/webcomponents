@@ -342,8 +342,8 @@ class HaxPanel extends PolymerElement {
    * Attached to the DOM; now we can fire event to the store that
    * we exist and are the thing being edited.
    */
-  connectedCallback() {
-    super.connectedCallback();
+  ready() {
+    super.ready();
     afterNextRender(this, function() {
       this.addEventListener(
         "hax-item-selected",
@@ -370,29 +370,6 @@ class HaxPanel extends PolymerElement {
         this._processItemEvent.bind(this)
       );
     });
-  }
-
-  /**
-   * Detached life cycle
-   */
-  disconnectedCallback() {
-    this.removeEventListener(
-      "hax-item-selected",
-      this._processItemEvent.bind(this)
-    );
-    document.body.removeEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-    document.body.removeEventListener(
-      "hax-active-hover-name",
-      this._activeNameChange.bind(this)
-    );
-    document.body.removeEventListener(
-      "hax-panel-operation",
-      this._processItemEvent.bind(this)
-    );
-    super.disconnectedCallback();
   }
 
   _activeNameChange(e) {

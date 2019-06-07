@@ -171,15 +171,11 @@ class HAXPanelItem extends PolymerElement {
       </paper-tooltip>
     `;
   }
-  connectedCallback() {
-    super.connectedCallback();
+  ready() {
+    super.ready();
     afterNextRender(this, function() {
       this.addEventListener("click", this._fireEvent);
     });
-  }
-  disconnectedCallback() {
-    this.removeEventListener("click", this._fireEvent);
-    super.disconnectedCallback();
   }
   /**
    * Fire an event that includes the eventName of what was just pressed.

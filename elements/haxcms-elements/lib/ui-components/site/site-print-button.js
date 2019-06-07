@@ -51,6 +51,7 @@ class SitePrintButton extends PolymerElement {
         icon="[[icon]]"
         on-click="print"
         title$="[[label]]"
+        disabled="[[disabled]]"
       ></paper-icon-button>
       <paper-tooltip for="btn" position="[[position]]" offset="14">
         [[label]]
@@ -68,6 +69,10 @@ class SitePrintButton extends PolymerElement {
       icon: {
         type: String,
         value: "icons:print"
+      },
+      disabled: {
+        type: Boolean,
+        reflectToAttribute: true
       },
       /**
        * label for the button

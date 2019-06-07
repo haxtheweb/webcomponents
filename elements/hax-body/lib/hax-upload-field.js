@@ -224,8 +224,8 @@ class HaxUploadField extends PolymerElement {
     this.__allowUpload = true;
     this.shadowRoot.querySelector("#fileupload").uploadFiles();
   }
-  connectedCallback() {
-    super.connectedCallback();
+  ready() {
+    super.ready();
     // hide the button if this environment can't support it anyway
     if (!navigator.mediaDevices) {
       this.shadowRoot.querySelector("#selfie").style.display = "none";
@@ -251,31 +251,10 @@ class HaxUploadField extends PolymerElement {
       this._haxAppPickerSelection.bind(this)
     );
   }
+  /**
+   * life cycle, ensure body isnt listened to anymore here
+   */
   disconnectedCallback() {
-    this.shadowRoot
-      .querySelector("#fileupload")
-      .removeEventListener("upload-before", this._fileAboutToUpload.bind(this));
-    this.shadowRoot
-      .querySelector("#fileupload")
-      .removeEventListener(
-        "upload-response",
-        this._fileUploadResponse.bind(this)
-      );
-    this.shadowRoot
-      .querySelector("#selfie")
-      .removeEventListener("click", this._takeSelfie.bind(this));
-    this.shadowRoot
-      .querySelector("#camerahole")
-      .removeEventListener(
-        "simple-camera-snap-image",
-        this.__newPhotoShowedUp.bind(this)
-      );
-    this.shadowRoot
-      .querySelector("#fileupload")
-      .removeEventListener(
-        "upload-response",
-        this._fileUploadResponse.bind(this)
-      );
     document.body.removeEventListener(
       "hax-app-picker-selection",
       this._haxAppPickerSelection.bind(this)
