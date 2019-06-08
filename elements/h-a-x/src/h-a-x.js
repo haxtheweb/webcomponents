@@ -46,8 +46,6 @@ class HAX extends HTMLElement {
         }
       }
     }
-    // optional queue for future use
-    this._queue = [];
     this.template = document.createElement("template");
 
     this.attachShadow({ mode: "open" });
@@ -95,19 +93,6 @@ class HAX extends HTMLElement {
     if (!this.__HAXApplied && !window.__HAXApplied) {
       window.__HAXApplied = this.__HAXApplied = this.applyHAX();
     }
-  }
-
-  _copyAttribute(name, to) {
-    const recipients = this.shadowRoot.querySelectorAll(to);
-    const value = this.getAttribute(name);
-    const fname = value == null ? "removeAttribute" : "setAttribute";
-    for (const node of recipients) {
-      node[fname](name, value);
-    }
-  }
-
-  _setProperty({ name, value }) {
-    this[name] = value;
   }
 
   /**
