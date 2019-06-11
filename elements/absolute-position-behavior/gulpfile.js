@@ -33,10 +33,12 @@ gulp.task("merge", () => {
     return ${HAXProps};
   }`;
           }
-          let props = "{}";
-          props = fs.readFileSync(
+          let rawprops = "{}";
+          rawprops = fs.readFileSync(
             path.join("./", packageJson.wcfactory.files.properties)
           );
+          let props = `${rawprops}`;
+          props = props.replace(/\"type\": \"(\w+)\"/g, '"type": $1');
           let cssResult = "<style>";
           if (
             packageJson.wcfactory.useSass &&
@@ -61,9 +63,9 @@ ${cssResult}
 ${html}\`;
   }
 ${haxString}
-  // properties available to the custom element for data binding
+  // properties available to the custom element for data binding NIKKI
   static get properties() {
-    return ${props};
+    return ${props2};
   }`;
         }
       )
