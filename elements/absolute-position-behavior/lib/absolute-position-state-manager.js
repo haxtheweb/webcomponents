@@ -219,121 +219,89 @@ class AbsolutePositionStateManager extends PolymerElement {
       parentRect = el.offsetParent.getBoundingClientRect(),
       targetRect = target.getBoundingClientRect(),
       elRect = el.getBoundingClientRect(),
-      centerOffset = (targetRect.width - elRect.width) / 2,
-      middleOffset = (targetRect.height - elRect.height) / 2,
-      fitToBounds = (coord, min, max) => {
-        console.log("fitToBounds", coord, min, max);
-        return el.fitToVisibleBounds
-          ? Math.max(min, Math.min(max, coord))
-          : coord;
+      /**
+       * place the element before the vertically?
+       * @param {string} position as in "top", "left", "right", or "bottom"
+       */
+      vertical = position => {
+        return position !== "left" && position !== "right";
       },
-      fitOrFlip = (coord, min, max) => {
-        if (el.fitToVisibleBounds) {
-          if (coord < min) {
-            if (el.position === "left") {
-              el.postition = "right";
-              coord = targetRect.right;
-            } else {
-              el.postition = "bottom";
-              coord = targetRect.bottom;
-            }
-          } else if (coord > max) {
-            if (el.position === "right") {
-              el.postition = "left";
-              coord = targetRect.left;
-            } else {
-              el.postition = "top";
-              coord = targetRect.top;
-            }
-          }
-        }
-        return coord;
+      /**
+       * place the element before the target?
+       */
+      before = position => {
+        return position === "left" || position === "top";
+      },
+      /**
+       * fits the element within the parent's boundaries;
+       * if element is larget than the parent,
+       * it will be aligned where parent begins
+       */
+      fitToBounds = () => {
+        let pos1 = vertical(el.position) ? "left" : "top",
+          pos2 = vertical(el.position) ? "right" : "bottom",
+          getRect = rect => {
+            return vertical(el.position) ? rect.width : rect.height;
+          },
+          coord =
+            targetRect[pos1] - getRect(elRect) / 2 + getRect(targetRect) / 2, //works for left
+          min = parentRect[pos1],
+          max = parentRect[pos2] - getRect(elRect);
+        return el.fitToVisibleBounds
+          ? Math.max(min, Math.min(max, coord)) + "px" //Math.max(min, Math.min(max, coord)) + "px"
+          : coord + "px";
+      },
+      /**
+       * adds or subtracts the offset from the target based on a given postion
+       */
+      getCoord = () => {
+        return el.position === "top"
+          ? targetRect.top - elRect.height - offset + "px"
+          : el.position === "left"
+          ? targetRect.left - elRect.width - offset + "px"
+          : targetRect[el.position] + offset + "px";
+      },
+      /**
+       * determines if there is room for the element between
+       * the parent and target in a given position;
+       * if no room in any position it will return the original position
+       */
+      isFit = position => {
+        let size = vertical(position)
+          ? elRect.height + offset
+          : elRect.width + offset;
+        return before(position)
+          ? targetRect[position] - parentRect[position] > size
+          : parentRect[position] - targetRect[position] > size;
       };
-    el.style.position = "absolute";
-    switch (el.position) {
-      case "top":
-        el.style.left =
-          fitToBounds(
-            targetRect.left + centerOffset,
-            parentRect.left,
-            parentRect.right - elRect.width - parentRect.left + offset
-          ) + "px";
-        el.style.top =
-          fitOrFlip(
-            targetRect.top - elRect.height - offset,
-            parentRect.top,
-            parentRect.bottom - elRect.height
-          ) + "px";
-        break;
-      case "bottom":
-        console.log(
-          "left",
-          targetRect.left,
-          centerOffset,
-          parentRect.left,
-          elRect.width,
-          offset
-        );
-        el.style.left =
-          fitToBounds(
-            targetRect.left + centerOffset,
-            parentRect.left,
-            parentRect.right - elRect.width - parentRect.left + offset
-          ) + "px";
-        console.log("top", targetRect.top, parentRect.top, elRect.height);
-        el.style.top =
-          fitOrFlip(
-            targetRect.bottom + offset,
-            parentRect.top,
-            parentRect.bottom - elRect.height
-          ) + "px";
-        break;
-      case "left":
-        el.style.left =
-          fitOrFlip(
-            targetRect.left - offset,
-            targetRect.left - elRect.width - offset,
-            parentRect.left,
-            parentRect.right - elRect.width
-          ) + "px";
-        el.style.top =
-          fitToBounds(
-            targetRect.top + middleOffset,
-            parentRect.top,
-            parentRect.bottom - elRect.height - parentRect.top + offset
-          ) + "px";
-        break;
-      case "right":
-        el.style.left =
-          fitOrFlip(
-            targetRect.left - elRect.width + offset,
-            parentRect.left,
-            parentRect.right - elRect.width
-          ) + "px";
-        el.style.top =
-          fitToBounds(
-            targetRect.top + middleOffset,
-            parentRect.top,
-            parentRect.bottom - elRect.height - parentRect.top + offset
-          ) + "px";
-        break;
+    let flip = el.fitToVisibleBounds !== false && !isFit(el.position),
+      flipData = {
+        top: ["bottom", "left", "right"],
+        left: ["right", "top", "bottom"],
+        bottom: ["top", "right", "left"],
+        right: ["left", "bottom", "top"]
+      };
+    /*
+     * fits the element according to specified postion,
+     * or finds an alternative position that fits
+     */
+    if (flip && isFit(flipData[el.position][0])) {
+      el.position = flipData[el.position][0];
+    } else if (flip && isFit(flipData[el.position][1])) {
+      el.position = flipData[el.position][1];
+    } else if (flip && isFit(flipData[el.position][2])) {
+      el.position = flipData[el.position][2];
+    } else {
+      el.style.position = "absolute";
+      el.style.top = vertical(el.position) ? getCoord() : fitToBounds();
+      el.style.left = vertical(el.position) ? fitToBounds() : getCoord();
+      //provide positions for el and target (in case furthor positioning adjustments are needed)
+      el.__positions = {
+        self: elRect,
+        parent: parentRect,
+        target: targetRect
+      };
     }
-    console.log(
-      "positionElement",
-      target,
-      targetRect,
-      el,
-      el.offsetParent,
-      parentRect,
-      elRect,
-      el.fitToVisibleBounds
-    );
-    //provide positions for el and target (in case furthor positioning adjustments are needed)
-    el.__positions = {
-      self: elRect,
-      parent: parentRect,
-      target: targetRect
-    };
   }
 
   /**

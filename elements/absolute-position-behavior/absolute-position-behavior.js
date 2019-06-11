@@ -22,7 +22,7 @@ class AbsolutePositionBehavior extends PolymerElement {
     return html`
       <style>
         :host {
-          display: block;
+          display: inline-block;
         }
 
         :host([hidden]) {
@@ -33,7 +33,7 @@ class AbsolutePositionBehavior extends PolymerElement {
     `;
   }
 
-  // properties available to the custom element for data binding
+  // properties available to the custom element for data binding NIKKI
   static get properties() {
     return {
       /**
@@ -41,14 +41,14 @@ class AbsolutePositionBehavior extends PolymerElement {
        * Otherwise setPosition and unsetPosition must be called manually.
        */
       auto: {
-        type: "Boolean",
+        type: Boolean,
         value: false
       },
       /**
        * If true, no parts of the tooltip will ever be shown offscreen.
        */
       fitToVisibleBounds: {
-        type: "Boolean",
+        type: Boolean,
         value: false,
         observer: "updatePosition"
       },
@@ -58,7 +58,7 @@ class AbsolutePositionBehavior extends PolymerElement {
        * then the tooltip will be centered to the parent node containing it.
        */
       for: {
-        type: "String",
+        type: String,
         observer: "updatePosition",
         reflectToAttribute: true
       },
@@ -67,7 +67,7 @@ class AbsolutePositionBehavior extends PolymerElement {
        * anchored to.
        */
       offset: {
-        type: "Number",
+        type: Number,
         value: 0,
         observer: "updatePosition"
       },
@@ -75,7 +75,7 @@ class AbsolutePositionBehavior extends PolymerElement {
        * Positions the tooltip to the top, right, bottom, left of its content.
        */
       position: {
-        type: "String",
+        type: String,
         value: "bottom",
         observer: "updatePosition",
         reflectToAttribute: true
@@ -84,14 +84,14 @@ class AbsolutePositionBehavior extends PolymerElement {
        * The actual target element
        */
       target: {
-        type: "Object",
+        type: Object,
         observer: "updatePosition"
       },
       /**
        * The element's style
        */
       __positions: {
-        type: "Object"
+        type: Object
       }
     };
   }
