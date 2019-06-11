@@ -56,8 +56,14 @@ const css = html`
         max-width: var(--simple-picker-option-size);
       }
     }
+    :host(rich-text-editor-heading) {
+      --simple-picker-option: {
+        height: unset;
+        max-height: unset;
+      }
+    }
     :host paper-tooltip {
-      z-index: 99999;
+      z-index: 2;
     }
     :host .rtebutton {
       text-transform: unset;

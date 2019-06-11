@@ -121,7 +121,7 @@ window.RichTextEditorClipboard.requestAvailability = function() {
     window.RichTextEditorClipboard.instance = document.createElement(
       "rich-text-editor-clipboard"
     );
+    document.body.appendChild(window.RichTextEditorClipboard.instance);
   }
-  document.body.appendChild(window.RichTextEditorClipboard.instance);
   return window.RichTextEditorClipboard.instance;
 };

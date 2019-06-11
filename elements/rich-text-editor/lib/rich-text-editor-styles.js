@@ -31,9 +31,6 @@ const css = html`
       --rich-text-editor-picker-border: #fafafa;
       --rich-text-editor-selection-bg: #b3d9ff;
     }
-    span {
-      background-color: pink;
-    }
     .rich-text-editor-selection {
       background-color: var(--rich-text-editor-selection-bg);
       @apply --rich-text-editor-content-selection;
@@ -43,3 +40,26 @@ const css = html`
 styleElement.appendChild(css);
 
 styleElement.register("rich-text-editor-styles");
+
+window.RichTextEditorStyleManager = {};
+window.RichTextEditorStyleManager.instance = null;
+/**
+ * Checks to see if there is an instance available, and if not appends one
+ */
+window.RichTextEditorStyleManager.requestAvailability = function() {
+  if (window.RichTextEditorStyleManager.instance == null) {
+    window.RichTextEditorStyleManager.instance = document.createElement(
+      "style"
+    );
+    window.RichTextEditorStyleManager.instance.setAttribute(
+      "is",
+      "custom-style"
+    );
+    window.RichTextEditorStyleManager.instance.setAttribute(
+      "include",
+      "rich-text-editor-styles"
+    );
+    document.head.append(window.RichTextEditorStyleManager.instance);
+  }
+  return window.RichTextEditorStyleManager.instance;
+};

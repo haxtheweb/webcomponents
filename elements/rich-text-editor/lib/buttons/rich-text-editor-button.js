@@ -314,6 +314,7 @@ class RichTextEditorButton extends PolymerElement {
       );
       document.execCommand(root.command, false, root.commandVal || "");
       root.selection = selection;
+      if (root.command === "paste") root.selection.collapse();
     }
   }
   /**

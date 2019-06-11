@@ -7,21 +7,6 @@ import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@lrnwebcomponents/simple-popover/simple-popover.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
 import "../buttons/rich-text-editor-button-styles.js";
-
-// register globally so we can make sure there is only one
-window.RichTextEditorPrompt = window.RichTextEditorPrompt || {};
-// request if this exists. This helps invoke the element existing in the dom
-// as well as that there is only one of them. That way we can ensure everything
-// is rendered through the same modal
-window.RichTextEditorPrompt.requestAvailability = () => {
-  if (!window.RichTextEditorPrompt.instance) {
-    window.RichTextEditorPrompt.instance = document.createElement(
-      "rich-text-editor-prompt"
-    );
-    document.body.appendChild(window.RichTextEditorPrompt.instance);
-  }
-  return window.RichTextEditorPrompt.instance;
-};
 /**
  * `rich-text-editor-prompt`
  * `A utility that manages the state of multiple rich-text-prompts on one page.`
@@ -50,13 +35,18 @@ class RichTextEditorPrompt extends PolymerElement {
         }
         :host #prompt {
           width: 200px;
+          display: none;
         }
-        :host #prompt:not([hidden]) #form {
+        :host #prompt[for]{
+          display: block;
+          z-index: 2;
+        }
+        :host #prompt[for] #form {
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: space-between;
-          z-index: 999999;
+          z-index: 2;
         }
         :host #prompt paper-input {
           padding: 0;
@@ -101,7 +91,6 @@ class RichTextEditorPrompt extends PolymerElement {
         id="prompt"
         auto
         for$="[[for]]"
-        hidden$="[[!for]]"
       >
         <form id="form">
           <simple-fields
@@ -270,3 +259,18 @@ class RichTextEditorPrompt extends PolymerElement {
 }
 window.customElements.define(RichTextEditorPrompt.tag, RichTextEditorPrompt);
 export { RichTextEditorPrompt };
+
+// register globally so we can make sure there is only one
+window.RichTextEditorPrompt = window.RichTextEditorPrompt || {};
+// request if this exists. This helps invoke the element existing in the dom
+// as well as that there is only one of them. That way we can ensure everything
+// is rendered through the same modal
+window.RichTextEditorPrompt.requestAvailability = () => {
+  if (!window.RichTextEditorPrompt.instance) {
+    window.RichTextEditorPrompt.instance = document.createElement(
+      "rich-text-editor-prompt"
+    );
+    document.body.appendChild(window.RichTextEditorPrompt.instance);
+  }
+  return window.RichTextEditorPrompt.instance;
+};

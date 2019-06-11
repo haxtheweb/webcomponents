@@ -260,7 +260,7 @@ window.RichTextEditorSelection.requestAvailability = function() {
     window.RichTextEditorSelection.instance = document.createElement(
       "rich-text-editor-selection"
     );
+    document.body.appendChild(window.RichTextEditorSelection.instance);
   }
-  document.body.appendChild(window.RichTextEditorSelection.instance);
   return window.RichTextEditorSelection.instance;
 };

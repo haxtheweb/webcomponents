@@ -31,7 +31,7 @@ class RichTextEditorLink extends RichTextEditorPromptButton {
       {
         property: "href",
         title: "Link",
-        description: "The link URL",
+        description: "The link URL. (Leave blank to remove.)",
         inputMethod: "textfield"
       }
     ];

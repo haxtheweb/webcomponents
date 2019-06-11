@@ -53,6 +53,7 @@ class RichTextEditorToolbar extends PolymerElement {
         :host #toolbar {
           display: flex;
           opacity: 1;
+          z-index: 1;
           margin: 0;
           align-items: stretch;
           flex-wrap: wrap;
@@ -337,7 +338,8 @@ class RichTextEditorToolbar extends PolymerElement {
        */
       controls: {
         name: "controls",
-        type: String
+        type: String,
+        value: null
       },
       /**
        * The `rich-text-editor` element that uis currently in `contenteditable` mode

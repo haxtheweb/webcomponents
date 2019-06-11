@@ -39,12 +39,8 @@ class RichTextEditor extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    let style = document.createElement("style");
-    style.setAttribute("is", "custom-style");
-    style.setAttribute("include", "rich-text-editor-styles");
     if (!this.id) this.id = this._generateUUID();
-    document.head.append(style);
-    console.log("connectedCallback", style, document, document.head);
+    window.RichTextEditorStyleManager.requestAvailability();
   }
   /**
    * ready
