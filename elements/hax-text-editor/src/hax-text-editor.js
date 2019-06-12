@@ -36,7 +36,6 @@ class HaxTextEditor extends RichTextEditor {
    */
   connectedCallback() {
     super.connectedCallback();
-    console.log("HAX connectedCallback", document, document.head);
   }
   /**
    * life cycle, element is removed from the DOM
