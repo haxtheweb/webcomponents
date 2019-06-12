@@ -99,6 +99,7 @@ class SimplePicker extends PolymerElement {
           position: absolute;
           top: calc(var(--simple-picker-option-size, 24px) + 4px);
           padding: 0 1px;
+          z-index: 2;
           @apply --simple-picker-collapse;
         }
 

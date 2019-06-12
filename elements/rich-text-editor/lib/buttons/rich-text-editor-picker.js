@@ -4,9 +4,8 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { RichTextEditorButton } from "./rich-text-editor-button.js";
-import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@lrnwebcomponents/simple-picker/simple-picker.js";
+import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 /**
  * `rich-text-editor-picker`
  * `a picker for rich text editor (custom buttons can extend this)`
@@ -69,8 +68,7 @@ class RichTextEditorPicker extends RichTextEditorButton {
       command: {
         name: "command",
         type: String,
-        value: "insertHTML",
-        readOnly: true
+        value: "insertHTML"
       },
       /**
        * Optional icon for null value
@@ -168,15 +166,7 @@ class RichTextEditorPicker extends RichTextEditorButton {
       this.selection !== null
     ) {
       this.commandVal = this.$.button.value;
-      if ((this.command = "formatBlock")) {
-        this.doTextOperation();
-      } else if ((this.command = "insertNode")) {
-        let node = !this.block
-          ? document.createTextNode(val)
-          : document.createElement(val);
-        this.selection.extractContents();
-        this.selection.insertNode(node);
-      }
+      this.doTextOperation();
       if (this.block !== true) {
         this.$.button.value = null;
         this.dispatchEvent(new CustomEvent("deselect", { detail: this }));

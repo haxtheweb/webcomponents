@@ -56,10 +56,14 @@ const css = html`
         max-width: var(--simple-picker-option-size);
       }
     }
-    :host(rich-text-editor-heading) {
+    :host(rich-text-editor-heading-picker) {
       --simple-picker-option: {
+        width: unset;
+        max-width: unset;
         height: unset;
         max-height: unset;
+        padding-top: 3px;
+        padding-bottom: 3px;
       }
     }
     :host paper-tooltip {
