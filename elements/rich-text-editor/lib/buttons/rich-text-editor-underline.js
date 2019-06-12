@@ -29,9 +29,8 @@ class RichTextEditorUnderline extends RichTextEditorPromptButton {
         inputMethod: "textfield"
       },
       {
-        property: "disclaimer",
-        title:
-          "I'm aware of the usuability issues with underlining and still want to use it here.",
+        property: "tag",
+        title: "Underline despite usability issues",
         description:
           "Underlines can be confused with links on the web. To prevent usability issues, we recommend using italics instead.",
         inputMethod: "boolean"
@@ -43,7 +42,7 @@ class RichTextEditorUnderline extends RichTextEditorPromptButton {
     this.toggles = true;
     this.command = "underline";
     this.value = {
-      disclaimer: false
+      tag: false
     };
   }
 

@@ -197,8 +197,8 @@ class RichTextEditorSelection extends PolymerElement {
   /**
    * unwraps the range
    */
-  unwrap(wrapper) {
-    if (wrapper.parentNode) {
+  unwrap(wrapper = this.childNodes[0]) {
+    if (wrapper && wrapper.parentNode) {
       wrapper.parentNode.insertBefore(wrapper.firstChild, wrapper);
       document.body.appendChild(wrapper);
     }
@@ -207,19 +207,20 @@ class RichTextEditorSelection extends PolymerElement {
   /**
    * wraps the range (or unwraps ir)
    */
-  wrap(wrapper) {
+  wrap(wrapper = document.createElement("div")) {
     wrapper.appendChild(this.range.extractContents());
     this.range.insertNode(wrapper);
   }
 
   /**
    * adds or removes the hightlight
-   * @param {boolean} off if true, turns highlight off
+   * @param {object} contents the contents to be highlighted
    */
-  addHighlight() {
+  addHighlight(contents) {
     let root = this;
+    contents = contents || this.range.extractContents();
     root.dispatchEvent(new CustomEvent("highlight", { detail: root }));
-    root.appendChild(this.range.extractContents());
+    root.appendChild(contents);
     root.range.insertNode(root);
     root.hidden = false;
   }

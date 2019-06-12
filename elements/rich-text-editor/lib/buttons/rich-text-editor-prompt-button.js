@@ -123,10 +123,11 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
   updatePrompt() {
     this.fields.forEach(field => {
       if (field.property && field.property !== "") {
-        this.value[field.property] = this.__selectionContents.getAttribute(
-          field.property
-        );
-      } else if (field.property && field.property !== "") {
+        if (field.property !== "tag")
+          this.value[field.property] = this.__selectionContents.getAttribute(
+            field.property
+          );
+      } else if (field.slot && field.slot !== "") {
         this.value[field.slot] = this.__selectionContents.querySelector(
           field.slot
         );
@@ -139,38 +140,38 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
    * updates the insertion based on fields
    */
   updateSelection() {
-    /**
-     * this.__selectionContents.setAttribute("href", this.value.link.trim());
-     * this.__selectionContents.innerHTML = this.value.text;
-     */
     let hasTag = false;
     this.__selectionContents.innerHTML = ``;
     this.fields.forEach(field => {
-      if (field.property && field.property !== "") {
-        if (
-          this.value[field.property] !== null &&
-          this.value[field.property].trim() !== ""
-        )
-          hasTag = true;
-        this.__selectionContents.setAttribute(
-          field.property,
-          this.value[field.property].trim()
-        );
-      } else if (
-        field.slot &&
-        field.slot !== "" &&
-        this.value[field.slot] !== null &&
-        this.value[field.slot].trim() !== ""
-      ) {
-        hasTag = true;
-        this.__selectionContents.innerHTML += `${field.slot}${this.value[
+      if (field.property) {
+        let prop = this._getCleanValue(field.property);
+        if (prop !== null && prop !== "") hasTag = true;
+        if (field.property !== "tag")
+          this.__selectionContents.setAttribute(field.property, prop);
+      } else if (field.slot) {
+        let slot = this._getCleanValue(field.slot);
+        if (slot !== null && slot !== "") hasTag = true;
+        this.__selectionContents.innerHTML += `<span slot="${
           field.slot
-        ].trim()}${field.slot}`;
+        }">${slot}</slot>`;
       } else {
-        this.__selectionContents.innerHTML += `${this.value[field.property]}`;
+        this.__selectionContents.innerHTML += `${this._getCleanValue(
+          field.property
+        )}`;
       }
     });
+    if (this.value.tag === false) hasTag = false;
     if (!hasTag) this.__selection.unwrap();
+  }
+  /**
+   * cleans a field value if needed
+   * @param {obstringject} prop field property name
+   * @returns {object} val the cleaned property value
+   */
+  _getCleanValue(prop) {
+    let val = this.value[prop];
+    if (typeof val === "string") val = val.trim();
+    return val;
   }
   /**
    * updates the insertion based on fields
@@ -194,12 +195,12 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
    * Handles selecting text and opening prompt
    */
   open() {
+    if (this.value.tag !== undefined) this.value.tag = this.toggled;
     this.__revertContents = document.createElement("div");
     this.__revertContents.appendChild(this.__selection.getRangeContents());
     this.__selectionContents = this.__selection.wrapOrGetTag(this.tag);
-    this.__selection.addHighlight();
+    this.__selection.addHighlight(this.__selectionContents);
     this.updatePrompt();
-    //make sure there is a unique id so that the prompt popover appears near the selection
     if (!this.__selectionContents.getAttribute("id"))
       this.__selectionContents.setAttribute("id", "prompt" + Date.now());
     this.__prompt.setTarget(this);
