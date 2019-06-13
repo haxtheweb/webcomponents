@@ -27,7 +27,7 @@ class SimplePicker extends PolymerElement {
           display: inline-flex;
           align-items: center;
           position: relative;
-          --simple-picker-color: black;
+          color: var(--simple-picker-color, black);
           font-size: var(
             --paper-input-container-label_-_font-size,
             var(--paper-font-subhead_-_font-size, inherit)

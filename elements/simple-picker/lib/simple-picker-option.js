@@ -28,6 +28,7 @@ class SimplePickerOption extends PolymerElement {
           display: flex;
           align-items: center;
           justify-content: space-between;
+          color: var(--simple-picker-color);
         }
         :host([hidden]) {
           display: none;
@@ -39,7 +40,6 @@ class SimplePickerOption extends PolymerElement {
         }
 
         :host iron-icon {
-          color: var(--simple-picker-color);
           width: var(--simple-picker-option-size, 24px);
           min-height: var(--simple-picker-option-size, 24px);
           min-width: var(--simple-picker-option-size, 24px);
