@@ -255,6 +255,7 @@ class RichTextEditorSelection extends PolymerElement {
    * @returns {void}
    */
   removeHighlight() {
+    console.log("removeHighlight");
     let root = this;
     while (root.firstChild) root.parentNode.insertBefore(root.firstChild, root);
     document.body.appendChild(root);
