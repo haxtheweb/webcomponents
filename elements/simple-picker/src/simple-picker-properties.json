@@ -1,4 +1,10 @@
 {
+  "allowNull": {
+    "name": "allowNull",
+    "type": "Boolean",
+    "value": false,
+    "reflectToAttribute": true
+  },
   /**
    * Optional. Sets the aria-labelledby attribute
    */
@@ -67,19 +73,29 @@
   /**
    * An array of options for the picker, eg.: `
 [
-  {
-    "icon": "editor:format-paint",      //Optional. Used if the picker is used as an icon picker.
-    "alt": "Blue",                      //Required for accessibility. Alt text description of the choice.
-    "style": "background-color: blue;", //Optional. Used to set an option's style.
-    ...                                 //Optional. Any other properties that should be captured as part of the selected option's value
-  },...
+  [
+    {
+      "icon": "editor:format-paint",      //Optional. Used if the picker is used as an icon picker.
+      "alt": "Blue",                      //Required for accessibility. Alt text description of the choice.
+      "style": "background-color: blue;", //Optional. Used to set an option's style.
+      ...                                 //Optional. Any other properties that should be captured as part of the selected option's value
+    },...
+  ]
 ]`
    */
   "options": {
     "name": "options",
     "type": "Array",
-    "value": [[]],
-    "notify": true,
+    "value": [
+      [
+        {
+          "icon": null,
+          "style": null,
+          "alt": null,
+          "value": null
+        }
+      ]
+    ],
     "observer": "_setSelectedOption"
   },
 

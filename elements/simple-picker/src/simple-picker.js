@@ -32,7 +32,8 @@ class SimplePicker extends PolymerElement {
   /**
    * returns the value of the selected option.
    *
-   * @param {string} the selected option's id
+   * @param {string} options the options
+   * @param {string} optionId the selected option's id
    * @returns {object} the selected option
    */
   _getOption(options, optionId) {
@@ -46,8 +47,8 @@ class SimplePicker extends PolymerElement {
   /**
    * returns a unique id for the option based on its row and column.
    *
-   * @param {number} the row number
-   * @param {number} the column number
+   * @param {number} rownum the row number
+   * @param {number} colnum the column number
    * @returns {string} a unique id
    */
   _getOptionId(rownum, colnum) {
@@ -57,8 +58,9 @@ class SimplePicker extends PolymerElement {
   /**
    * sets a new active descendant and sets focus on it
    *
-   * @param {number} the row number to be tested
-   * @param {number} the column number to be tested
+   * @param {number} rownum the row number to be tested
+   * @param {number} colnum the column number to be tested
+   * @returns {void}
    */
   _goToOption(rownum, colnum) {
     let targetId = this._getOptionId(rownum, colnum),
@@ -73,6 +75,10 @@ class SimplePicker extends PolymerElement {
 
   /**
    * handles listbox click event
+   *
+   * @param {event} e the event
+   * @param {string} type the type of event
+   * @returns {void}
    */
   _handleListboxEvent(e, type) {
     this.dispatchEvent(new CustomEvent(type, { detail: this }));
@@ -81,6 +87,9 @@ class SimplePicker extends PolymerElement {
 
   /**
    * handles listbox keyboard events
+   *
+   * @param {event} e the event
+   * @returns {void}
    */
   _handleListboxKeydown(e) {
     this.dispatchEvent(new CustomEvent("keydown", { detail: this }));
@@ -123,6 +132,9 @@ class SimplePicker extends PolymerElement {
 
   /**
    * handles option focus event and sets the active descendant
+   *
+   * @param {event} e the event
+   * @returns {void}
    */
   _handleOptionFocus(e) {
     this._setActiveOption(e.detail.id);
@@ -131,19 +143,29 @@ class SimplePicker extends PolymerElement {
   /**
    * Determines if a label should be added
    *
-   * @param {string} the label
+   * @param {string} label
    * @returns {boolean} if there is a label
    */
   _hasLabel(label) {
     return label !== undefined && label !== null && label.trim() !== "";
   }
+  /**
+   * determines if an option is hidden a d can't be selected
+   *
+   * @param {string} val option value
+   * @param {boolean} allowNull whether or not null option can be selected
+   * @returns {boolean} whether or not the option should be hidden
+   */
+  _hideNullOption(val, allowNull) {
+    return !allowNull && (val === undefined || val === null);
+  }
 
   /**
-   * determines if an option is at a given row and column
+   * gets sets active option based on a row and column
    *
-   * @param {string} an option's id
-   * @param {number} the row number to be tested
-   * @param {number} the column number to be tested
+   * @param {string} active active option's id
+   * @param {number} rownum the row number to be tested
+   * @param {number} colnum the column number to be tested
    * @returns {boolean} whether or not the option is at the given row and column
    */
   _isActive(active, rownum, colnum) {
@@ -153,10 +175,9 @@ class SimplePicker extends PolymerElement {
   /**
    * determines if an option is at a given row and column
    *
-   * @param {string} an option's id
-   * @param {number} the row number to be tested
-   * @param {number} the column number to be tested
-   * @returns {boolean} whether or not the option is at the given row and column
+   * @param {string} value1 current value
+   * @param {string} value2 an option's value
+   * @returns {boolean} whether or not the option is selected
    */
   _isSelected(value1, value2) {
     return value1 === value2;
@@ -165,7 +186,8 @@ class SimplePicker extends PolymerElement {
   /**
    * sets the  active descendant to a given option's id
    *
-   * @param {string} the option id
+   * @param {string} id the option id
+   * @returns {void}
    */
   _setActiveOption(id) {
     this.__activeDesc = id;
@@ -174,8 +196,7 @@ class SimplePicker extends PolymerElement {
 
   /**
    * sets the selected option to a given option's id
-   *
-   * @param {string} the option id
+   * @returns {void}
    */
   _setSelectedOption() {
     let sel = null;
@@ -187,10 +208,15 @@ class SimplePicker extends PolymerElement {
           : this.options.slice()
       );
 
-      this.__activeDesc = "option-0-0";
+      //if nulls are allowed, set the active descendant to the first not null option
+      this.__activeDesc = this.allowNull ? "option-0-0" : null;
       for (var i = 0; i < this.__options.length; i++) {
         for (var j = 0; j < this.__options[i].length; j++) {
+          //if unset, set the active descendant to the first not null option
+          if (this.value !== null && this.__activeDesc === null)
+            this.__activeDesc = "option-" + i + "-" + j;
           if (this.__options[i][j].value === this.value) {
+            //set the active descendant to the option that matches the value
             this.__activeDesc = "option-" + i + "-" + j;
             sel = this.__options[i][j];
           }
@@ -207,7 +233,8 @@ class SimplePicker extends PolymerElement {
   /**
    * toggles the listbox
    *
-   * @param {boolean} expand the listbox?
+   * @param {boolean} expanded is the listbox expanded?
+   * @returns {void}
    */
   _toggleListbox(expanded) {
     let active = this.shadowRoot.querySelector("#" + this.__activeDesc);
@@ -223,6 +250,7 @@ class SimplePicker extends PolymerElement {
 
   /**
    * Set event listeners
+   * @returns {void}
    */
   ready() {
     super.ready();
@@ -246,7 +274,8 @@ class SimplePicker extends PolymerElement {
   /**
    * sets the options for the picker
    *
-   * @param {array} the nested array of options
+   * @param {array} options the nested array of options
+   * @returns {void}
    */
   setOptions(options) {
     this.set("options", [[]]);
@@ -255,6 +284,7 @@ class SimplePicker extends PolymerElement {
 
   /**
    * life cycle, element is afixed to the DOM
+   * @returns {void}
    */
   connectedCallback() {
     super.connectedCallback();

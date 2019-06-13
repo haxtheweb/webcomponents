@@ -11,8 +11,8 @@
       aria-hidden="true" 
       hide-option-labels$="[[hideOptionLabels]]"
       icon$="[[__selectedOption.icon]]"
+      label$="[[__selectedOption.alt]]"
       style$="[[__selectedOption.style]]" 
-      title$="[[__selectedOption.alt]]"
       title-as-html$="[[titleAsHtml]]">
     </simple-picker-option>
     <span id="icon"><iron-icon aria-hidden="true" icon="arrow-drop-down"></iron-icon></span>
@@ -27,15 +27,16 @@
               aria-selected$="[[_isSelected(value,option.value)]]"
               data$="[[data]]"
               hide-option-labels$="[[hideOptionLabels]]"
+              hidden$="[[_hideNullOption(option.value,allowNull)]]"
               icon$="[[option.icon]]"
               id$="[[_getOptionId(rownum,colnum)]]"
+              label$="[[option.alt]]"
               role="option"
               selected$="[[_isSelected(value,option.value)]]"
               on-option-focus="_handleOptionFocus"
               on-set-selected-option="_handleSetSelectedOption"
               style$="[[option.style]]" 
               tabindex="-1"
-              title="[[option.alt]]"
               title-as-html$="[[titleAsHtml]]"
               value="[[option.value]]">
             </simple-picker-option>
