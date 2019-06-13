@@ -45,7 +45,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbar {
         type: "button-group",
         buttons: [
           {
-            label: "Heading",
+            label: "Format",
             type: "rich-text-editor-heading-picker",
             blocks: [
               { label: "Paragraph", tag: "p" },

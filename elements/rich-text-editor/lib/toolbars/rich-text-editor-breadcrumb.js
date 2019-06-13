@@ -98,6 +98,7 @@ class RichTextEditorBreadcrumb extends PolymerElement {
 
   /**
    * life cycle, element is afixed to the DOM
+   * @returns {void}
    */
   connectedCallback() {
     super.connectedCallback();
@@ -105,6 +106,8 @@ class RichTextEditorBreadcrumb extends PolymerElement {
   }
   /**
    * Handles button tap;
+   * @param {event} e the button tab event
+   * @returns {void}
    */
   _buttonTap(e) {
     e.preventDefault();

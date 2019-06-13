@@ -124,6 +124,7 @@ class RichTextEditorBreadcrumbs extends PolymerElement {
   /**
    * life cycle, element is afixed to the DOM
    * Makes sure there is a utility ready and listening for elements.
+   * @returns {void}
    */
   connectedCallback() {
     super.connectedCallback();
@@ -131,6 +132,8 @@ class RichTextEditorBreadcrumbs extends PolymerElement {
   /**
    * updates the breadcrumbs
    * @param {object} the selected range
+   * @param {string} controls id of what the breadcrumbs control
+   * @returns {void}
    */
   _getAncestorNodes(selection, controls) {
     let nodes = [],

@@ -137,6 +137,7 @@ class RichTextEditor extends PolymerElement {
   }
   /**
    * life cycle, element is afixed to the DOM
+   * @returns {void}
    */
   connectedCallback() {
     super.connectedCallback();
@@ -145,6 +146,7 @@ class RichTextEditor extends PolymerElement {
   }
   /**
    * ready
+   * @returns {void}
    */
   ready() {
     super.ready();
@@ -152,6 +154,7 @@ class RichTextEditor extends PolymerElement {
   }
   /**
    * connects the mini-toolbar to a mini editor
+   * @returns {void}
    */
   getEditor() {
     window.RichTextEditorClipboard.requestAvailability();
@@ -188,6 +191,7 @@ class RichTextEditor extends PolymerElement {
 
   /**
    * Generate a UUID
+   * @returns {string} a unique id
    */
   _generateUUID() {
     let hex = Math.floor((1 + Math.random()) * 0x10000)

@@ -86,6 +86,21 @@ class RichTextEditorSymbolPicker extends RichTextEditorPicker {
   }
 
   /**
+   * gets a list of icons and load them in a format
+   * that the simple-picker can take;
+   * if no icons are provided, loads a list from iron-meta
+   *
+   * @param {array} a list of custom icons for the picker
+   * @param {array} default list of icons for the picker
+   * @param {boolean} allow a null value for the picker
+   */
+  _getPickerOptions(options = [], allowNull = false, icon = null) {
+    let temp = super._getPickerOptions(options, allowNull, icon);
+    temp[0].unshift({ alt: null, icon: this.icon, value: null });
+    return temp;
+  }
+
+  /**
    * Handles default options loaded from an external js file
    */
   _setOptions() {

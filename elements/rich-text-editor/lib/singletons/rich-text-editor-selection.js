@@ -82,6 +82,7 @@ class RichTextEditorSelection extends PolymerElement {
     document.addEventListener("deselect-rich-text-editor-editor", e => {
       root._editorChange(e);
     });
+    this.setAttribute("id", this._generateUUID());
   }
 
   /**
@@ -164,18 +165,28 @@ class RichTextEditorSelection extends PolymerElement {
     }
   }
 
-  wrapOrGetTag(tag) {
+  /**
+   * selects a node
+   * @returns {tag} the tag
+   * @returns {void}
+   */
+  wrapOrGetTag(tag, tag2 = tag) {
     let wrapper = this.getWrapper();
     if (
       tag &&
       (!wrapper || tag.toLowerCase() !== wrapper.tagName.toLowerCase())
     ) {
-      wrapper = document.createElement(tag);
+      wrapper = document.createElement(tag2);
       this.wrap(wrapper);
     }
     return wrapper;
   }
 
+  /**
+   * selects a node
+   * @param {object} the node
+   * @returns {void}
+   */
   setRangeContents(node) {
     if (this.range) {
       this.range.deleteContents();
@@ -183,6 +194,11 @@ class RichTextEditorSelection extends PolymerElement {
     }
   }
 
+  /**
+   * selects a node
+   * @param {object} the node
+   * @returns {void}
+   */
   expandRange(node) {
     if (this.range) {
       this.range.deleteContents();
@@ -190,12 +206,18 @@ class RichTextEditorSelection extends PolymerElement {
     }
   }
 
+  /**
+   * gets the contents of the selection range
+   * @returns {object} the range contents
+   */
   getRangeContents() {
     return this.range ? this.range.cloneContents() : null;
   }
 
   /**
    * unwraps the range
+   * @param {object} the node unwrap/remove
+   * @returns {void}
    */
   unwrap(wrapper = this.childNodes[0]) {
     if (wrapper && wrapper.parentNode) {
@@ -205,7 +227,9 @@ class RichTextEditorSelection extends PolymerElement {
   }
 
   /**
-   * wraps the range (or unwraps ir)
+   * wraps the range (or unwraps it)
+   * @returns {object} the node to use as a wrapper
+   * @returns {void}
    */
   wrap(wrapper = document.createElement("div")) {
     wrapper.appendChild(this.range.extractContents());
@@ -215,6 +239,7 @@ class RichTextEditorSelection extends PolymerElement {
   /**
    * adds or removes the hightlight
    * @param {object} contents the contents to be highlighted
+   * @returns {void}
    */
   addHighlight(contents) {
     let root = this;
@@ -227,6 +252,7 @@ class RichTextEditorSelection extends PolymerElement {
   /**
    * adds or removes the hightlight
    * @param {boolean} off if true, turns highlight off
+   * @returns {void}
    */
   removeHighlight() {
     let root = this;
@@ -237,6 +263,7 @@ class RichTextEditorSelection extends PolymerElement {
 
   /**
    * Generate a UUID
+   * @returns {string} the unique id
    */
   _generateUUID() {
     let hex = Math.floor((1 + Math.random()) * 0x10000)

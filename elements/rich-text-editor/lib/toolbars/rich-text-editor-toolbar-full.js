@@ -51,6 +51,7 @@ class RichTextEditorToolbarFull extends RichTextEditorToolbar {
   }
   /**
    * life cycle, element is ready
+   * @returns {void}
    */
   ready() {
     super.ready();
@@ -66,24 +67,29 @@ class RichTextEditorToolbarFull extends RichTextEditorToolbar {
 
   /**
    * Gets the updated selection.
+   *
+   * @param {object} editableElement the editable element
+   * @returns {void}
    */
   editTarget(editableElement) {
     super.editTarget(editableElement);
     let root = this;
-    root.__breadcrumbs.controls = editableElement.getAttribute("id");
-    editableElement.parentNode.insertBefore(
-      root.__breadcrumbs,
-      editableElement.nextSibling
-    );
-    if (!this.sticky) {
-      editableElement.classList.add("heightmax");
-    } else {
-      editableElement.classList.remove("heightmax");
+    if (editableElement) {
+      root.__breadcrumbs.controls = editableElement.getAttribute("id");
+      editableElement.parentNode.insertBefore(
+        root.__breadcrumbs,
+        editableElement.nextSibling
+      );
+      if (!this.sticky) {
+        editableElement.classList.add("heightmax");
+      } else {
+        editableElement.classList.remove("heightmax");
+      }
     }
-    console.log(this.sticky, editableElement.classList);
   }
   /**
    * Gets the updated selection.
+   * @returns {void}
    */
   getUpdatedSelection() {
     super.getUpdatedSelection();

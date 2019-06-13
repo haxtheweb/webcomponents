@@ -34,9 +34,9 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
         type: Array,
         value: [
           {
-            property: "text",
+            property: "",
             title: "Text",
-            description: "The link text",
+            description: "The inner text",
             inputMethod: "textfield"
           }
         ]
@@ -55,7 +55,8 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
       value: {
         type: Object,
         value: {
-          link: null
+          "": null,
+          id: null
         }
       },
       /**
@@ -81,6 +82,14 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
         name: "__selectionContents",
         type: Object,
         value: null
+      },
+      /**
+       * do the fields have enough for the tag to be necessary
+       */
+      __tagNeeded: {
+        name: "__tagNeeded",
+        type: Object,
+        computed: "_getTagNeeded(value)"
       },
       /**
        * the contents node inside the selected range
@@ -110,6 +119,7 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
     this.__prompt = window.RichTextEditorPrompt.requestAvailability();
     this.__selection = window.RichTextEditorSelection.requestAvailability();
   }
+
   /**
    * Handles button tap;
    */
@@ -117,68 +127,16 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
     e.preventDefault();
     this.open();
   }
-  /**
-   * updates prompt fields with selection data
-   */
-  updatePrompt() {
-    this.fields.forEach(field => {
-      if (field.property && field.property !== "") {
-        if (field.property !== "tag")
-          this.value[field.property] = this.__selectionContents.getAttribute(
-            field.property
-          );
-      } else if (field.slot && field.slot !== "") {
-        this.value[field.slot] = this.__selectionContents.querySelector(
-          field.slot
-        );
-      } else {
-        this.value[""] = this.__selectionContents.innerHTML;
-      }
-    });
-  }
-  /**
-   * updates the insertion based on fields
-   */
-  updateSelection() {
-    let hasTag = false;
-    this.__selectionContents.innerHTML = ``;
-    this.fields.forEach(field => {
-      if (field.property) {
-        let prop = this._getCleanValue(field.property);
-        if (prop !== null && prop !== "") hasTag = true;
-        if (field.property !== "tag")
-          this.__selectionContents.setAttribute(field.property, prop);
-      } else if (field.slot) {
-        let slot = this._getCleanValue(field.slot);
-        if (slot !== null && slot !== "") hasTag = true;
-        this.__selectionContents.innerHTML += `<span slot="${
-          field.slot
-        }">${slot}</slot>`;
-      } else {
-        this.__selectionContents.innerHTML += `${this._getCleanValue(
-          field.property
-        )}`;
-      }
-    });
-    if (this.value.tag === false) hasTag = false;
-    if (!hasTag) this.__selection.unwrap();
-  }
+
   /**
    * cleans a field value if needed
-   * @param {obstringject} prop field property name
+   * @param {string} prop field property name
    * @returns {object} val the cleaned property value
    */
-  _getCleanValue(prop) {
+  getCleanValue(prop) {
     let val = this.value[prop];
-    if (typeof val === "string") val = val.trim();
+    if (val && typeof val === "string") val = val.trim();
     return val;
-  }
-  /**
-   * updates the insertion based on fields
-   */
-  confirm() {
-    this.updateSelection();
-    this.__selection.removeHighlight();
   }
   /**
    * updates the insertion based on fields
@@ -189,22 +147,107 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
       this.__selection.appendChild(this.__revertContents.firstChild);
     this.__selection.normalize();
     this.__revertContents.remove();
+    this.__prompt.setTarget("");
     this.__selection.removeHighlight();
   }
+
+  /**
+   * updates the insertion based on fields
+   */
+  confirm() {
+    this.__revertContents = document.createElement("div");
+    this.__revertContents.appendChild(this.__selection.getRangeContents());
+    this.__prompt.setTarget("");
+    this.__selection.removeHighlight();
+  }
+
   /**
    * Handles selecting text and opening prompt
    */
   open() {
-    if (this.value.tag !== undefined) this.value.tag = this.toggled;
     this.__revertContents = document.createElement("div");
     this.__revertContents.appendChild(this.__selection.getRangeContents());
-    this.__selectionContents = this.__selection.wrapOrGetTag(this.tag);
-    this.__selection.addHighlight(this.__selectionContents);
+    this.__selectionContents = this.__selection;
+    console.log("open", this.__selectionContents, this._getSelectedElement());
+    this.__selection.addHighlight();
     this.updatePrompt();
-    if (!this.__selectionContents.getAttribute("id"))
-      this.__selectionContents.setAttribute("id", "prompt" + Date.now());
     this.__prompt.setTarget(this);
     this.dispatchEvent(new CustomEvent("select", { detail: this }));
+  }
+
+  /**
+   * updates prompt fields with selection data
+   */
+  updatePrompt() {
+    let el = this._getSelectedElement();
+    console.log();
+    this.fields.forEach(field => {
+      if (field.property && field.property !== "") {
+        if (field.property !== "tag")
+          this.value[field.property] = el
+            ? el.getAttribute(field.property)
+            : null;
+      } else if (field.slot && field.slot !== "") {
+        this.value[field.slot] = el ? el.querySelector(field.slot) : null;
+      } else {
+        this.value[""] = el ? el.innerHTML : this.__selectionContents.innerHTML;
+      }
+    });
+  }
+
+  /**
+   * updates the insertion based on fields
+   */
+  updateSelection() {
+    /*
+    rules:
+    1. must have text to have a tag wrapper.
+    2. must have required fields
+    3. 
+    */
+    let hasTag = false;
+    this.__selectionContents.innerHTML = ``;
+    this.fields.forEach(field => {
+      if (field.property) {
+        let prop = this.getCleanValue(field.property);
+        if (prop !== null && prop !== "") hasTag = true;
+        if (field.property !== "tag")
+          this.__selectionContents.setAttribute(field.property, prop);
+      } else if (field.slot) {
+        let slot = this.getCleanValue(field.slot);
+        if (slot !== null && slot !== "") hasTag = true;
+        this.__selectionContents.innerHTML += `<span slot="${
+          field.slot
+        }">${slot}</slot>`;
+      } else {
+        this.__selectionContents.innerHTML += `${this.getCleanValue(
+          field.property
+        )}`;
+      }
+    });
+    if (this.value.tag === false) hasTag = false;
+    if (!hasTag) this.__selection.unwrap();
+  }
+
+  /**
+   * determines if the tag is needed for the element
+   */
+  _getTagNeeded(value) {
+    return value && this.getCleanValue("") && this.getCleanValue("") !== "";
+  }
+  /**
+   * determines if the selection has a tag
+   */
+  _getSelectedElement() {
+    let tag = null,
+      wrapper = this.__selection.getWrapper();
+    if (
+      wrapper.tagName &&
+      wrapper.tagName.toLowerCase() === this.tag.toLowerCase()
+    )
+      tag = wrapper;
+    console.log("_getSelectedElement", wrapper, this.tag, tag);
+    return tag;
   }
 }
 window.customElements.define(

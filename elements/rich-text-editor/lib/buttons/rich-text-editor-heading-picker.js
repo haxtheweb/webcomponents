@@ -21,6 +21,7 @@ class RichTextEditorHeadingPicker extends RichTextEditorPicker {
     this.command = "formatBlock";
     this.icon = null;
     this.label = "Block format";
+    this.allowNull = true;
   }
 
   // properties available to the custom element for data binding
@@ -75,7 +76,7 @@ class RichTextEditorHeadingPicker extends RichTextEditorPicker {
   }
 
   _getBlockOptions(blocks) {
-    let temp = [];
+    let temp = [[{ alt: this.label, value: null }]];
     blocks.forEach(function(block) {
       temp.push([
         {

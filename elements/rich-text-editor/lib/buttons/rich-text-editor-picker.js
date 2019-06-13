@@ -36,6 +36,7 @@ class RichTextEditorPicker extends RichTextEditorButton {
       </style>
       <simple-picker
         id="button"
+        allow-null$="[[allowNull]]"
         class="rtebutton"
         disabled$="[[super.disabled]]"
         controls$="[[super.controls]]"
@@ -117,30 +118,39 @@ class RichTextEditorPicker extends RichTextEditorButton {
   }
 
   /**
-   * determins if the button is toggled
+   * determines the value of the picker based on the selection
    *
    * @param {object} the text selection
    * @returns {boolean} whether the button is toggled
    *
    */
   _isToggled(selection) {
-    let toggled = false;
-    if (selection !== null && !selection.isCollapsed) {
-      if (this.command === "formatBlock") {
-        let ancestor = selection.commonAncestorContainer,
-          parent = ancestor.parentNode,
-          temp = [];
-        this.options.forEach(function(row) {
-          row.forEach(function(option) {
-            temp.push(option.value);
-          });
-        });
-        this.$.button.value =
-          parent.closest(temp.join(",")) !== null
-            ? parent.closest(temp.join(",")).tagName.toLowerCase()
-            : null;
-      }
-    }
+    //get all the possible block selectors from the options
+    let selectors = this.options
+        ? []
+            .concat(...this.options)
+            //flatten th eoptions array
+            .map(option => option.value)
+            //get all the values
+            .filter(
+              //remove the empty values
+              option => option !== null && option !== ""
+              //stringify the list
+            )
+            .join(",")
+        : null,
+      //get the selection parent
+      parent =
+        selection !== null && selection.commonAncestorContainer
+          ? selection.commonAncestorContainer.parentNode
+          : null;
+    this.$.button.value =
+      this.command === "formatBlock" &&
+      selectors &&
+      parent &&
+      parent.closest(selectors) !== null
+        ? parent.closest(selectors).tagName.toLowerCase()
+        : null;
     return false;
   }
 
@@ -199,10 +209,7 @@ class RichTextEditorPicker extends RichTextEditorButton {
    * @param {boolean} allow a null value for the picker
    */
   _getPickerOptions(options = [], allowNull = false, icon = null) {
-    let items =
-        allowNull === false && icon === null
-          ? [{ alt: "null", icon: icon, value: null }]
-          : [],
+    let items = [],
       cols =
         Math.sqrt(options.length) < 11
           ? Math.ceil(Math.sqrt(options.length))
@@ -212,10 +219,6 @@ class RichTextEditorPicker extends RichTextEditorButton {
         col = i - row * cols,
         data = this._getOptionData(options[i]);
       if (items[row] === undefined || items[row] === null) items[row] = [];
-      if (row === 0 && allowNull === false && icon !== null) {
-        items[0][0] = { alt: "null", icon: icon, value: null };
-        col++;
-      }
       items[row][col] = data;
     }
     return items;

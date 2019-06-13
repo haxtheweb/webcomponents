@@ -31,12 +31,12 @@ const css = html`
       --simple-picker-expanded-icon-transform: rotate(0deg);
       --rich-text-editor-picker-small: {
       }
-      --simple-picker-option-null: {
+      /*--simple-picker-option-null: {
         display: none;
       }
       --simple-picker-sample-null-label: {
         display: none;
-      }
+      }*/
     }
     :host([hidden]) {
       display: none;
@@ -53,7 +53,11 @@ const css = html`
     :host(rich-text-editor-symbol-picker) {
       --simple-picker-option: {
         width: var(--simple-picker-option-size);
+        min-width: var(--simple-picker-option-size);
         max-width: var(--simple-picker-option-size);
+      }
+      --simple-picker-option-label: {
+        padding: 2px;
       }
     }
     :host(rich-text-editor-heading-picker) {

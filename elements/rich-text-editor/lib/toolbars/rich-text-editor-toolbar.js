@@ -199,10 +199,10 @@ class RichTextEditorToolbar extends PolymerElement {
             label: "Basic Inline Operations",
             type: "button-group",
             buttons: [
-              {
-                label: "Heading",
+              /*{
+                label: "Format",
                 type: "rich-text-editor-heading-picker"
-              },
+              },*/
               {
                 command: "bold",
                 icon: "editor:format-bold",
@@ -428,6 +428,7 @@ class RichTextEditorToolbar extends PolymerElement {
   }
   /**
    * life cycle, element is afixed to the DOM
+   * @returns {void}
    */
   connectedCallback() {
     super.connectedCallback();
@@ -447,6 +448,7 @@ class RichTextEditorToolbar extends PolymerElement {
 
   /**
    * life cycle, element is disconnected
+   * @returns {void}
    */
   disconnectedCallback() {
     super.disconnectedCallback();
@@ -469,6 +471,7 @@ class RichTextEditorToolbar extends PolymerElement {
    * adds an editor
    *
    * @param {object} an HTML object that can be edited
+   * @returns {void}
    */
   addEditableRegion(editor) {
     let root = this;
@@ -489,6 +492,7 @@ class RichTextEditorToolbar extends PolymerElement {
 
   /**
    * cancels edits to the active editor
+   * @returns {void}
    */
   cancel() {
     this.editor.innerHTML = this.canceled;
@@ -498,6 +502,7 @@ class RichTextEditorToolbar extends PolymerElement {
    * makes a editor editable
    *
    * @param {object} an HTML object that can be edited
+   * @returns {void}
    */
   editTarget(editor) {
     let root = this,
@@ -538,6 +543,7 @@ class RichTextEditorToolbar extends PolymerElement {
 
   /**
    * Gets the updated selection.
+   * @returns {void}
    */
   _selectionChange() {
     let root = this;
@@ -550,7 +556,8 @@ class RichTextEditorToolbar extends PolymerElement {
   /**
    * make an new editable element
    *
-   * @param {object} an HTML object that can be edited
+   * @param {object} editor an HTML object that can be edited
+   * @returns {void}
    */
   makeEditableRegion(editor) {
     let root = this,
@@ -563,7 +570,8 @@ class RichTextEditorToolbar extends PolymerElement {
   /**
    * removes an editor
    *
-   * @param {object} an HTML object that can be edited
+   * @param {object} editor an HTML object that can be edited
+   * @returns {void}
    */
   removeEditableRegion(editor) {
     let root = this;
@@ -586,10 +594,12 @@ class RichTextEditorToolbar extends PolymerElement {
   /**
    * Adds a button to the toolbar
    *
-   * @param {object} the child object in the config object
-   * @param {object} the parent object in the config object
+   * @param {object} child the child object in the config object
+   * @param {object} parent the parent object in the config object
+   * @returns {object} the button
    */
   _addButton(child, parent) {
+    console.log();
     let root = this,
       button = document.createElement(child.type);
 
@@ -607,8 +617,8 @@ class RichTextEditorToolbar extends PolymerElement {
   /**
    * Gets the groups array for the dom-repeat.
    *
-   * @param {object} the toolbar buttons config object
-   * @param {array} an array the buttons grouped by size
+   * @param {object} config the toolbar buttons config object
+   * @returns {array} the buttons array
    */
   _getButtons(config) {
     let root = this,
@@ -641,7 +651,11 @@ class RichTextEditorToolbar extends PolymerElement {
   }
 
   /**
-   * updates breadcrumb sticky
+   * updates breadcrumb sticky when sticky property changes
+   *
+   * @param {boolean} newVal the new value
+   * @param {boolean} oldVal the old value
+   * @returns {void}
    */
   _stickyChanged(newVal, oldVal) {
     if (this.__breadcrumbs) this.__breadcrumbs.sticky = this.sticky;
@@ -649,7 +663,7 @@ class RichTextEditorToolbar extends PolymerElement {
 
   /**
    * Toggles collapsed mode when `rich-text-editor-more-button` is tapped
-   * @param {object} e the `rich-text-editor-more-button` tap event
+   * @param {event} e the `rich-text-editor-more-button` tap event
    * @returns {void}
    */
   _toggleMore(e) {
