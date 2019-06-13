@@ -40,12 +40,14 @@ class AbsolutePositionBehavior extends PolymerElement {
 
   /**
    * life cycle, element is ready
+   * @returns {void}
    */
   ready() {
     super.ready();
   }
   /**
    * Registers the element with AbsolutePositionStateManager
+   * @returns {void}
    */
   setPosition() {
     let root = this;
@@ -55,6 +57,7 @@ class AbsolutePositionBehavior extends PolymerElement {
 
   /**
    * Unregisters the element with AbsolutePositionStateManager
+   * @returns {void}
    */
   unsetPosition() {
     let root = this;
@@ -64,6 +67,7 @@ class AbsolutePositionBehavior extends PolymerElement {
 
   /**
    * Updates  the element's position
+   * @returns {void}
    */
   updatePosition() {
     let root = this;
@@ -73,6 +77,7 @@ class AbsolutePositionBehavior extends PolymerElement {
   }
   /**
    * life cycle, element is removed from the DOM
+   * @returns {void}
    */
   disconnectedCallback() {
     this.unsetPosition();
