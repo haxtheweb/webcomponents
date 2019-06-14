@@ -11,17 +11,22 @@
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../hax-iconset.js';
+      import '@lrnwebcomponents/iconset-demo/iconset-demo.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic hax-iconset demo</h3>
+      <div class="vertical-section-container centered">
+        <h1>hax-iconset</h1>
+        <h2>hax-iconset List</h2>
+        <iconset-demo include-sets="hax"></iconset-demo>
+      </div>
+        
+      <h2>hax-iconset Demo</h2>
       <demo-snippet>
         <template>
-          <hax-iconset>
-            This is hax-iconset
-          </hax-iconset>
+          <iron-icon icon="hax:oerschema"></iron-icon>
         </template>
       </demo-snippet>
     </div>
