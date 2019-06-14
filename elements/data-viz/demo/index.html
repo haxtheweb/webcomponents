@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>DataViz: data-viz Demo</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import "@polymer/paper-button/paper-button.js";
+      import '../data-viz.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic data-viz demo</h3>
+      <demo-snippet>
+        <template>
+          <data-viz>
+            This is data-viz
+          </data-viz>
+
+          <paper-button id="button">Click to see results</paper-button>
+          <script>
+            let queryData = [""];
+            queryData = {
+              labels: ['Quarter 1', 'Quarter 2', 'Quarter 3', 'Quarter 4'],
+              series: [
+                {data: [5, 4, 3, 7]},
+                {data: [3, 2, 9, 5]},
+                {data: [1, 5, 8, 4]},
+                {data: [2, 3, 4, 6]},
+                {data: [4, 1, 2, 1]}
+              ]
+            };
+/*
+            queryData = {
+                labels: labelsArray,
+                series: [resultsArray]
+                //activityDisplay: eventData.resultCompletion,    //FUTURE
+                //objectName: eventData.objectName,               //FUTURE
+                //resultSuccess: eventData.resultSuccess          //FUTURE
+                //resultCompletion: eventData.resultCompletion    //FUTURE
+              };
+*/
+            const elemButton = document.getElementById('button');
+            const evt = new CustomEvent("show-data", {
+              bubbles: true,
+              composed: true,
+              cancelable: false,
+              detail: queryData
+            });
+
+            elemButton.addEventListener('click', e => e.target.dispatchEvent(evt));
+
+          </script>
+
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

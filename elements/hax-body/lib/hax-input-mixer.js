@@ -252,22 +252,12 @@ class HaxImportMixer extends PolymerElement {
     super.ready();
     // prime methods even though invisible most likely
     this._resetInputMethods();
-  }
-  connectedCallback() {
-    super.connectedCallback();
     afterNextRender(this, function() {
       this.addEventListener(
         "hax-context-item-selected",
         this._haxContextOperation.bind(this)
       );
     });
-  }
-  disconnectedCallback() {
-    this.removeEventListener(
-      "hax-context-item-selected",
-      this._haxContextOperation.bind(this)
-    );
-    super.disconnectedCallback();
   }
   /**
    * Input method changes, allow our templates to rebind correctly.

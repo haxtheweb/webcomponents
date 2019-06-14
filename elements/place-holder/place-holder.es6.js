@@ -7,37 +7,38 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
  * @microcopy - the mental model for this element
  * - placeholder is a grey block on the page which can respond to drag and drop
  */class PlaceHolder extends PolymerElement{constructor(){super();import("./node_modules/@polymer/iron-icons/iron-icons.js");import("./node_modules/@polymer/iron-icons/editor-icons.js");import("./node_modules/@polymer/iron-icons/notification-icons.js");import("./node_modules/@polymer/iron-icons/av-icons.js");import("./node_modules/@polymer/iron-icons/device-icons.js");import("./node_modules/@polymer/iron-icons/image-icons.js");afterNextRender(this,function(){this.HAXWiring=new HAXWiring;this.HAXWiring.setup(PlaceHolder.haxProperties,PlaceHolder.tag,this)})}static get template(){return html`
-    <style include="simple-colors">
-      :host {
-        display: block;
-        border: none;
-        transition: 0.2s all linear;
-      }
-      :host([drag-over]) {
-        border: 4px dashed #2196f3;
-      }
-      .placeholder-inner {
-        text-align: center;
-        padding: 16px;
-        color: var(--simple-colors-default-theme-grey-11, #222222);
-        background-color: var(--simple-colors-default-theme-grey-2, #eeeeee);
-      }
-      iron-icon.placeholder-icon {
-        margin: 0 auto;
-        width: 50%;
-        height: 50%;
-        display: block;
-      }
-      .placeholder-text {
-        line-height: 24px;
-        font-size: 24px;
-        font-style: italic;
-      }
-    </style>
-    <div class="placeholder-inner">
-      <iron-icon icon="[[iconFromType]]" class="placeholder-icon"></iron-icon>
-      <span class="placeholder-text">[[calcText]]</span>
-    </div>`}static get tag(){return"place-holder"}static get properties(){return{/**
+      <style>
+        :host {
+          display: block;
+          border: none;
+          transition: 0.2s all linear;
+        }
+        :host([drag-over]) {
+          border: 4px dashed #2196f3;
+        }
+        .placeholder-inner {
+          text-align: center;
+          padding: 16px;
+          color: var(--simple-colors-default-theme-grey-11, #222222);
+          background-color: var(--simple-colors-default-theme-grey-2, #eeeeee);
+        }
+        iron-icon.placeholder-icon {
+          margin: 0 auto;
+          width: 50%;
+          height: 50%;
+          display: block;
+        }
+        .placeholder-text {
+          line-height: 24px;
+          font-size: 24px;
+          font-style: italic;
+        }
+      </style>
+      <div class="placeholder-inner">
+        <iron-icon icon="[[iconFromType]]" class="placeholder-icon"></iron-icon>
+        <span class="placeholder-text">[[calcText]]</span>
+      </div>
+    `}static get tag(){return"place-holder"}static get properties(){return{/**
        * calculate an icon based on the type that was used
        */iconFromType:{type:String,computed:"_getIconFromType(type, dragOver)"},/**
        * Text place holder for describing this place holder element.

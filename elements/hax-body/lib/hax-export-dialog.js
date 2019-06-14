@@ -154,8 +154,8 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(PolymerElement) {
   /**
    * Attached to the DOM, now fire that we exist.
    */
-  connectedCallback() {
-    super.connectedCallback();
+  ready() {
+    super.ready();
     // fire an event that this is the manager
     this.dispatchEvent(
       new CustomEvent("hax-register-export", {
@@ -190,34 +190,6 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(PolymerElement) {
         .querySelector("#elementexport")
         .addEventListener("click", this.htmlToHaxElements.bind(this));
     });
-  }
-  /**
-   * Detached life cycle
-   */
-  disconnectedCallback() {
-    document.body.removeEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-    this.shadowRoot
-      .querySelector("#download")
-      .removeEventListener("click", this.download.bind(this));
-    this.shadowRoot
-      .querySelector("#downloadfull")
-      .removeEventListener("click", this.downloadfull.bind(this));
-    this.shadowRoot
-      .querySelector("#import")
-      .removeEventListener("click", this.importContent.bind(this));
-    this.shadowRoot
-      .querySelector("#copy")
-      .removeEventListener("click", this.selectBody.bind(this));
-    this.shadowRoot
-      .querySelector("#closedialog")
-      .removeEventListener("click", this.close.bind(this));
-    this.shadowRoot
-      .querySelector("#elementexport")
-      .removeEventListener("click", this.htmlToHaxElements.bind(this));
-    super.disconnectedCallback();
   }
   /**
    * Store updated, sync.

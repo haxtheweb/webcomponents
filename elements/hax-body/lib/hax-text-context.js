@@ -19,10 +19,14 @@ class HaxTextContext extends PolymerElement {
     import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
     import("@lrnwebcomponents/hax-body/lib/hax-context-item-textop.js");
     import("@lrnwebcomponents/hax-body/lib/hax-toolbar.js");
+    this.addEventListener(
+      "hax-context-item-selected",
+      this._haxContextOperation.bind(this)
+    );
   }
   static get template() {
     return html`
-      <style include="simple-colors hax-shared-styles">
+      <style include="hax-shared-styles">
         :host {
           display: block;
           pointer-events: none;
@@ -261,25 +265,20 @@ class HaxTextContext extends PolymerElement {
     }
     return false;
   }
+  ready() {
+    super.ready();
+  }
   /**
    * life cycle, figure out polyfill
    */
   connectedCallback() {
     super.connectedCallback();
     afterNextRender(this, function() {
-      this.addEventListener(
-        "hax-context-item-selected",
-        this._haxContextOperation.bind(this)
-      );
       this.polyfillSafe = window.HaxStore.instance.computePolyfillSafe();
     });
   }
 
   disconnectedCallback() {
-    this.removeEventListener(
-      "hax-context-item-selected",
-      this._haxContextOperation.bind(this)
-    );
     super.disconnectedCallback();
   }
 
@@ -344,12 +343,18 @@ class HaxTextContext extends PolymerElement {
       // wow these are way too easy
       case "text-bold":
         document.execCommand("bold");
+        e.preventDefault();
+        e.stopPropagation();
         break;
       case "text-italic":
         document.execCommand("italic");
+        e.preventDefault();
+        e.stopPropagation();
         break;
       case "text-underline":
         document.execCommand("underline");
+        e.preventDefault();
+        e.stopPropagation();
         // silly hack to account for trigging a selection from
         // inside the menu that isn't from a paper-item
         this.shadowRoot
@@ -360,6 +365,8 @@ class HaxTextContext extends PolymerElement {
         break;
       case "text-subscript":
         document.execCommand("subscript");
+        e.preventDefault();
+        e.stopPropagation();
         // silly hack to account for trigging a selection from
         // inside the menu that isn't from a paper-item
         this.shadowRoot
@@ -370,6 +377,8 @@ class HaxTextContext extends PolymerElement {
         break;
       case "text-superscript":
         document.execCommand("superscript");
+        e.preventDefault();
+        e.stopPropagation();
         // silly hack to account for trigging a selection from
         // inside the menu that isn't from a paper-item
         this.shadowRoot
@@ -380,9 +389,13 @@ class HaxTextContext extends PolymerElement {
         break;
       case "text-remove-format":
         document.execCommand("removeFormat");
+        e.preventDefault();
+        e.stopPropagation();
         break;
       case "text-strikethrough":
         document.execCommand("strikeThrough");
+        e.preventDefault();
+        e.stopPropagation();
         // silly hack to account for trigging a selection from
         // inside the menu that isn't from a paper-item
         this.shadowRoot
@@ -400,10 +413,14 @@ class HaxTextContext extends PolymerElement {
         let url = prompt("Enter a URL:", href);
         if (url) {
           document.execCommand("createLink", false, url);
+          e.preventDefault();
+          e.stopPropagation();
         }
         break;
       case "text-unlink":
         document.execCommand("unlink");
+        e.preventDefault();
+        e.stopPropagation();
         break;
       /**
        * Our bad actors when it comes to polyfill'ed shadowDOM.
@@ -411,18 +428,26 @@ class HaxTextContext extends PolymerElement {
        */
       case "text-indent":
         document.execCommand("indent");
+        e.preventDefault();
+        e.stopPropagation();
         break;
       case "text-outdent":
         document.execCommand("outdent");
+        e.preventDefault();
+        e.stopPropagation();
         break;
       case "text-list-numbered":
         try {
           document.execCommand("insertOrderedList");
+          e.preventDefault();
+          e.stopPropagation();
         } catch (e) {}
         break;
       case "text-list-bulleted":
         try {
           document.execCommand("insertUnorderedList");
+          e.preventDefault();
+          e.stopPropagation();
         } catch (e) {}
         break;
     }

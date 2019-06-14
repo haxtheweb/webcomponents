@@ -19,8 +19,7 @@ static get template(){return html`
   position: relative;
   --simple-picker-color: black;
   font-size: var(--paper-input-container-label_-_font-size, var(--paper-font-subhead_-_font-size, inherit));
-  margin: 8px 0;
-  height: 42px;
+  max-height: calc(var(--simple-picker-option-size, 24px) + 4px);
   @apply --simple-picker;
 }
 
@@ -48,6 +47,7 @@ static get template(){return html`
 :host #listbox {
   display: flex;
   flex: 1 0 auto;
+  max-height: calc(var(--simple-picker-option-size, 24px) + 4px);
 }
 
 :host #sample {
@@ -74,8 +74,8 @@ static get template(){return html`
   display: none;
   width: 100%;
   position: absolute;
-  top: 35px;
-  padding: 1px;
+  top: calc(var(--simple-picker-option-size, 24px) + 4px);
+  padding: 0 1px;
   @apply --simple-picker-collapse;
 }
 
@@ -275,20 +275,6 @@ static get properties(){return{/**
    * @param {number} the column number
    * @returns {string} a unique id
    */_getOptionId(rownum,colnum){return"option-"+rownum+"-"+colnum}/**
-   * aligns collapse to picker
-   *
-   * @param {string} the position: left, right, center
-   * @return {string} css for aligning the collapse
-  _getPosition(position,width = 0) {
-    console.log(width);
-    if(position === "right"){
-      return "left: "+(0 - width);
-    } else if(position === "center"){
-      return "left: "+(0 - width/2);
-    } 
-    return null;
-  }
-   */ /**
    * sets a new active descendant and sets focus on it
    *
    * @param {number} the row number to be tested
@@ -345,7 +331,7 @@ this._goToOption(rownum+1,[0])}}}}/**
    * @param {boolean} expand the listbox?
    */_toggleListbox(expanded){let active=this.shadowRoot.querySelector("#"+this.__activeDesc);this.expanded=expanded;if(expanded){if(null!==active)active.focus();this.dispatchEvent(new CustomEvent("expand",{detail:this}))}else{if(null!==active)this.value=active.getAttribute("value");this.dispatchEvent(new CustomEvent("collapse",{detail:this}))}}/**
    * Set event listeners
-   */ready(){super.ready();let root=this;if(this.$.listbox!==void 0){this.$.listbox.addEventListener("click",function(e){root._handleListboxEvent(e,"click")});this.$.listbox.addEventListener("mousedown",function(e){root._handleListboxEvent(e,"mousedown")});this.$.listbox.addEventListener("keydown",function(e){root._handleListboxKeydown(e)})}}/**
+   */ready(){super.ready();let root=this;if(this.$.listbox!==void 0){this.$.listbox.addEventListener("click",function(e){root._handleListboxEvent(e,"click")});this.$.listbox.addEventListener("mousedown",function(e){root._handleListboxEvent(e,"mousedown")});this.$.listbox.addEventListener("keydown",function(e){root._handleListboxKeydown(e)});this.addEventListener("blur",function(e){this.expanded=!1})}}/**
    * sets the options for the picker
    *
    * @param {array} the nested array of options

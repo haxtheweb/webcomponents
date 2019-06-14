@@ -50,7 +50,7 @@ class ElmslnLoading extends PolymerElement {
   }
   static get template() {
     return html`
-      <style include="simple-colors">
+      <style>
         @-moz-keyframes spin {
           100% {
             -moz-transform: rotate(60deg);

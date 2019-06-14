@@ -1,29 +1,30 @@
 import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import*as async from"./node_modules/@polymer/polymer/lib/utils/async.js";import"./lib/map-layer.js";import"./lib/map-area.js";import"./lib/map-styles.js";/* styles scoped to inside a custom element must be in a style module */ /* web-map is an HTML &lt;map&gt; customized built-in element */class WebMap extends PolymerElement{static get template(){return html`
-    <!-- use the leaflet-styles style module -->
-    <style include="map-styles">
-      /* make sure the map element doesn't get selected and styled by document styles */
-      :host {
-        display: inline-block !important;
-        position: relative !important;
-      }
-      /* try to constrain the map and the leaflet div#map to the size of the container */
-      :host,
-      :host #map {
-        max-width: 100%;
-        min-width: 100%;
-      }
-      /* this is a hack for shady DOM, as max-width messes with Leaflet tiles */
-      :host img {
-        max-width: none !important;
-      }
-      #map:focus {
-        outline: 2px double lightskyblue;
-      }
-    </style>
-    <!-- giving the map div a tabindex allows the map to display its focus. -->
-    <!-- see the #map:focus selector in styles, above. -->
-    <div id="map" tabindex="0"></div>
-    <slot></slot>`}static get tag(){return"web-map"}factoryImpl(width,height,lat,lon,zoom,projection,controls){this.width=width;this.height=height;this.lat=lat||this.lat;this.lon=lon||this.lon;this.zoom=zoom||this.zoom;this.projection=projection||"OSMTILE";this.controls=controls||this.controls}static get properties(){return{lat:{type:Number,value:0,reflectToAttribute:!0},lon:{type:Number,value:0,reflectToAttribute:!0},zoom:{type:Number,value:0,reflectToAttribute:!0},projection:{type:String,value:"OSMTILE",reflectToAttribute:!1},width:{type:Number,value:null,reflectToAttribute:!0},height:{type:Number,value:null,reflectToAttribute:!0},layers:{type:Object,value(){return this.getElementsByTagName("layer-")}},areas:{type:Object,value(){return this.getElementsByTagName("area")}},controls:{type:Boolean,reflectToAttribute:!0}}}static get observers(){return["_widthChanged(width)","_heightChanged(height)","_toggleControls(controls)"]}_toggleControls(controls){if(this._map){if(controls){this._zoomControl=L.control.zoom().addTo(this._map);this._layerControl=M.mapMlLayerControl(null,{collapsed:!0}).addTo(this._map);for(var i=0;i<this.layers.length;i++){if(!this.layers[i].hidden){this._layerControl.addOverlay(this.layers[i]._layer,this.layers[i].label);this._map.on("moveend",this.layers[i]._validateDisabled,this.layers[i]);this.layers[i]._layerControl=this._layerControl}}}else{this._map.removeControl(this._layerControl);this._map.removeControl(this._zoomControl)}}}_widthChanged(width){this.style.width=width+"px";this.$.map.style.width=width+"px";if(this._map){this._map.invalidateSize(!1)}}_heightChanged(height){this.style.height=height+"px";this.$.map.style.height=height+"px";if(this._map){this._map.invalidateSize(!1)}}zoomTo(lat,lon,zoom){zoom=zoom||this.zoom;var location=new L.LatLng(lat,lon);this._map.setView(location,zoom);this.zoom=zoom;this.lat=location.lat;this.lon=location.lng}_updateMapCenter(){// remember to tell Leaflet event handler that 'this' in here refers to
+      <!-- use the leaflet-styles style module -->
+      <style include="map-styles">
+        /* make sure the map element doesn't get selected and styled by document styles */
+        :host {
+          display: inline-block !important;
+          position: relative !important;
+        }
+        /* try to constrain the map and the leaflet div#map to the size of the container */
+        :host,
+        :host #map {
+          max-width: 100%;
+          min-width: 100%;
+        }
+        /* this is a hack for shady DOM, as max-width messes with Leaflet tiles */
+        :host img {
+          max-width: none !important;
+        }
+        #map:focus {
+          outline: 2px double lightskyblue;
+        }
+      </style>
+      <!-- giving the map div a tabindex allows the map to display its focus. -->
+      <!-- see the #map:focus selector in styles, above. -->
+      <div id="map" tabindex="0"></div>
+      <slot></slot>
+    `}static get tag(){return"web-map"}factoryImpl(width,height,lat,lon,zoom,projection,controls){this.width=width;this.height=height;this.lat=lat||this.lat;this.lon=lon||this.lon;this.zoom=zoom||this.zoom;this.projection=projection||"OSMTILE";this.controls=controls||this.controls}static get properties(){return{lat:{type:Number,value:0,reflectToAttribute:!0},lon:{type:Number,value:0,reflectToAttribute:!0},zoom:{type:Number,value:0,reflectToAttribute:!0},projection:{type:String,value:"OSMTILE",reflectToAttribute:!1},width:{type:Number,value:null,reflectToAttribute:!0},height:{type:Number,value:null,reflectToAttribute:!0},layers:{type:Object,value(){return this.getElementsByTagName("layer-")}},areas:{type:Object,value(){return this.getElementsByTagName("area")}},controls:{type:Boolean,reflectToAttribute:!0}}}static get observers(){return["_widthChanged(width)","_heightChanged(height)","_toggleControls(controls)"]}_toggleControls(controls){if(this._map){if(controls){this._zoomControl=L.control.zoom().addTo(this._map);this._layerControl=M.mapMlLayerControl(null,{collapsed:!0}).addTo(this._map);for(var i=0;i<this.layers.length;i++){if(!this.layers[i].hidden){this._layerControl.addOverlay(this.layers[i]._layer,this.layers[i].label);this._map.on("moveend",this.layers[i]._validateDisabled,this.layers[i]);this.layers[i]._layerControl=this._layerControl}}}else{this._map.removeControl(this._layerControl);this._map.removeControl(this._zoomControl)}}}_widthChanged(width){this.style.width=width+"px";this.$.map.style.width=width+"px";if(this._map){this._map.invalidateSize(!1)}}_heightChanged(height){this.style.height=height+"px";this.$.map.style.height=height+"px";if(this._map){this._map.invalidateSize(!1)}}zoomTo(lat,lon,zoom){zoom=zoom||this.zoom;var location=new L.LatLng(lat,lon);this._map.setView(location,zoom);this.zoom=zoom;this.lat=location.lat;this.lon=location.lng}_updateMapCenter(){// remember to tell Leaflet event handler that 'this' in here refers to
 //  something other than the map in this case the custom polymer element
 this.lat=this._map.getCenter().lat;this.lon=this._map.getCenter().lng;this.zoom=this._map.getZoom()}ready(){super.ready();// when used in a custom element, the leaflet script element is hidden inside
 // the import's shadow dom.

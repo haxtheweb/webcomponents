@@ -448,8 +448,7 @@ static get template(){return html`
     font-size: 120%;
   }
 }</style>
-<style include="simple-colors"></style>
-  <div class="sr-only">[[mediaCaption]]</div>
+<div class="sr-only">[[mediaCaption]]</div>
   <div id="outerplayer">
     <div id="innerplayer">
       <div id="player"
@@ -502,10 +501,16 @@ static get template(){return html`
     <paper-slider id="slider"
       class="screen-only"
       disabled$="[[disableSeek]]"
-      label="[[seekSlider.label]]"
-      max$="[[__duration]]"
-      secondary-progress$="[[__buffered]]"
-      value$="[[__elapsed]]"
+      label$="[[seekSlider.label]]"
+      min="0"
+      max="[[__duration]]"
+      on-mousedown="_handleSliderStart"
+      on-mouseup="_handleSliderStop"
+      on-keyup="_handleSliderStop"
+      on-keydown="_handleSliderStart"
+      on-blur="_handleSliderStop"
+      secondary-progress="[[__buffered]]"
+      value="[[__elapsed]]"
     >
     </paper-slider>
     <a11y-media-controls id="controls"
@@ -635,7 +640,7 @@ static get behaviors(){return[A11yMediaBehaviors]}/**
    * life cycle, element is afixed to the DOM
    */connectedCallback(){super.connectedCallback();this._addResponsiveUtility();window.dispatchEvent(new CustomEvent("a11y-player",{detail:this}));if(this.isYoutube){this._youTubeRequest()}}/**
    * sets initial values and loads video or youtube iframe
-   */ready(){super.ready();let root=this,aspect=16/9,tracks=[],tdata=[],selected=0;if("object"===typeof screenfull)root._onScreenfullLoaded.bind(root);if(null===root.id)root.id="a11y-media-player"+Date.now();root.__playerReady=!0;root.target=root.shadowRoot.querySelector("#transcript");root.__status=root._getLocal("loading","label");root.__slider=root.$.slider;root.__volume=root.muted?0:Math.max(this.volume,10);root.__resumePlaying=!1;root.__duration=0;root.$.controls.setStatus(root.__status);root.width=null!==root.width?root.width:"100%";root.style.maxWidth=null!==root.width?root.width:"100%";root._setPlayerHeight(aspect);if(root.isYoutube){root._youTubeRequest();document.addEventListener("timeupdate",e=>{if(e.detail===root.media)root._handleTimeUpdate(e)})}else{root.media=root.$.html5;root.media.media.addEventListener("timeupdate",e=>{root._handleTimeUpdate(e)});root._addSourcesAndTracks()}root.$.transcript.setMedia(root.$.innerplayer);afterNextRender(this,function(){this.shadowRoot.querySelector("#slider").addEventListener("mousedown",this._handleSliderStart.bind(this));this.shadowRoot.querySelector("#slider").addEventListener("mouseup",this._handleSliderStop.bind(this));this.shadowRoot.querySelector("#slider").addEventListener("keydown",this._handleSliderStart.bind(this));this.shadowRoot.querySelector("#slider").addEventListener("keyup",this._handleSliderStop.bind(this));this.shadowRoot.querySelector("#slider").addEventListener("blur",this._handleSliderStop.bind(this))})}/**
+   */ready(){super.ready();let root=this,aspect=16/9,tracks=[],tdata=[],selected=0;if("object"===typeof screenfull)root._onScreenfullLoaded.bind(root);if(null===root.id)root.id="a11y-media-player"+Date.now();root.__playerReady=!0;root.target=root.shadowRoot.querySelector("#transcript");root.__status=root._getLocal("loading","label");root.__slider=root.$.slider;root.__slider.min=0;root.__volume=root.muted?0:Math.max(this.volume,10);root.__resumePlaying=!1;root.__duration=0;root.$.controls.setStatus(root.__status);root.width=null!==root.width?root.width:"100%";root.style.maxWidth=null!==root.width?root.width:"100%";root._setPlayerHeight(aspect);if(root.isYoutube){root._youTubeRequest();document.addEventListener("timeupdate",e=>{if(e.detail===root.media)root._handleTimeUpdate(e)})}else{root.media=root.$.html5;root.media.media.addEventListener("timeupdate",e=>{root._handleTimeUpdate(e)});root._addSourcesAndTracks()}root.$.transcript.setMedia(root.$.innerplayer)}/**
    * plays the media
    */play(){let root=this,stopped=!(!0===root.__playing);root.__playing=!0;root.media.play();window.dispatchEvent(new CustomEvent("a11y-player-playing",{detail:root}))}/**
    * pauses the media
@@ -768,7 +773,7 @@ root._setElapsedTime();root._getTrackData(root.$.html5.media)}/**
    */_handleSliderStop(e){this.seek(this.$.slider.immediateValue);this.__seeking=!1;if(this.__resumePlaying){this.play();this.__resumePlaying=null}}/**
    * handles time updates
    */_handleTimeUpdate(e){let root=this;//if play exceeds clip length, stop
-if(root.isYoutube&&root.media.duration!==root.media.getDuration()){root.__duration=root.media.duration=root.media.getDuration();root.disableSeek=!1;root._addSourcesAndTracks();if(root.media.seekable!==void 0&&0<root.media.seekable.length){root.$.slider.min=root.media.seekable.start(0)}}if(root.media.seekable!==void 0&&0<root.media.seekable.length&&root.media.seekable.end(0)<=root.media.getCurrentTime()){root.stop();root.__playing=!1}//prevent slider and cue updates until finished seeking
+if(root.isYoutube&&root.media.duration!==root.media.getDuration()){root.__duration=root.media.duration=root.media.getDuration();root.disableSeek=!1;root._addSourcesAndTracks();if(root.media.seekable&&0<root.media.seekable.length&&0!==root.media.seekable.start(0)){root.$.slider.min=root.media.seekable.start(0)}}if(root.media.seekable!==void 0&&0<root.media.seekable.length&&root.media.seekable.end(0)<=root.media.getCurrentTime()){root.stop();root.__playing=!1}//prevent slider and cue updates until finished seeking
 root._updateCustomTracks();root._setElapsedTime()}/**
    * handles transcript scroll toggle
    */_handleTranscriptScrollToggle(e){this.disableScroll=!this.disableScroll}/**
@@ -812,4 +817,4 @@ root.$.youtube.appendChild(root.media.a);root.__ytAppended=!0;root._updateCustom
    * updates custom tracks for youTube
    */_updateCustomTracks(){if((this.isYoutube||this.audioOnly)&&this.__tracks){let root=this,track=root.__tracks[this.$.transcript.selectedTranscript],active=[],caption="";if(track!==void 0&&null!==track&&track.cues!==void 0&&null!==track.cues){for(let i=0;i<track.cues.length;i++){if(track.cues[i].seek<root.__elapsed&&track.cues[i].seekEnd>root.__elapsed){active.push(track.cues[i].order);caption=""===caption?track.cues[i].text:caption}}root.$.customcctxt.innerText=caption;root.$.transcript.setActiveCues(active)}}}/**
    * life cycle, element is removed from the DOM
-   */disconnectedCallback(){this.shadowRoot.querySelector("#slider").removeEventListener("mousedown",this._handleSliderStart.bind(this));this.shadowRoot.querySelector("#slider").removeEventListener("mouseup",this._handleSliderStop.bind(this));this.shadowRoot.querySelector("#slider").removeEventListener("keydown",this._handleSliderStart.bind(this));this.shadowRoot.querySelector("#slider").removeEventListener("keyup",this._handleSliderStop.bind(this));this.shadowRoot.querySelector("#slider").removeEventListener("blur",this._handleSliderStop.bind(this));window.removeEventListener("es-bridge-screenfullLib-loaded",this._onScreenfullLoaded.bind(this));super.disconnectedCallback()}}window.customElements.define(A11yMediaPlayer.tag,A11yMediaPlayer);export{A11yMediaPlayer};
+   */disconnectedCallback(){window.removeEventListener("es-bridge-screenfullLib-loaded",this._onScreenfullLoaded.bind(this));super.disconnectedCallback()}}window.customElements.define(A11yMediaPlayer.tag,A11yMediaPlayer);export{A11yMediaPlayer};

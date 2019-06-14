@@ -4,7 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "@polymer/marked-element/marked-element.js";
+import "@polymer/polymer/lib/elements/dom-if.js";
 /**
  * `md-block`
  * `a markdown block`
@@ -18,13 +18,26 @@ import "@polymer/marked-element/marked-element.js";
  */
 class MdBlock extends PolymerElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
-
+  constructor() {
+    super();
+    import("@polymer/marked-element/marked-element.js");
+  }
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
     return "md-block";
+  }
+  /**
+   * Calculate visibility of the source response
+   */
+  _calculateHasSource(source) {
+    if (source && source != "") {
+      return true;
+    }
+    this.source = null;
+    return false;
   }
   /**
    * life cycle, element is afixed to the DOM

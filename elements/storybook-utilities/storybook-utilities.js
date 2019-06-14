@@ -157,7 +157,7 @@ export class StorybookUtilities {
         name: "accentColor",
         type: "Select",
         value: color,
-        options: Object.keys(window.SimpleColorsUtilities.colors)
+        options: Object.keys(window.SimpleColorsStyles.colors)
       },
       dark: {
         name: "dark",

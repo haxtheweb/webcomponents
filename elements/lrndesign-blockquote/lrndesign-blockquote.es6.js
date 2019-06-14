@@ -1,4 +1,4 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import{pathFromUrl}from"./node_modules/@polymer/polymer/lib/utils/resolve-url.js";import"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import"./node_modules/@polymer/paper-styles/shadow.js";/**
+import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import{pathFromUrl}from"./node_modules/@polymer/polymer/lib/utils/resolve-url.js";import"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import{SchemaBehaviors}from"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import"./node_modules/@polymer/paper-styles/shadow.js";/**
  * `lrndesign-blockquote`
  * `A structured blockquote element`
  *
@@ -6,9 +6,8 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
  * @polymer
  * @webcomponent
  * @demo demo/index.html
- */let LrndesignBlockquote=Polymer({_template:html`
-    <custom-style>
-      <style is="custom-style" include="simple-colors">
+ */class LrndesignBlockquote extends SchemaBehaviors(PolymerElement){constructor(){super();afterNextRender(this,function(){this.HAXWiring=new HAXWiring;this.HAXWiring.setup(LrndesignBlockquote.haxProperties,LrndesignBlockquote.tag,this)})}static get template(){return html`
+      <style>
         :host {
           display: inline-block;
           position: relative;
@@ -542,39 +541,36 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
           filter: none;
         }
       </style>
-    </custom-style>
-    <div id="wrap" class="mb-wrap">
-      <div id="thumb" class="mb-thumb"></div>
-      <blockquote cite$="[[sourceLink]]">
-        <p><slot></slot></p>
-      </blockquote>
-      <div class="mb-attribution">
-        <p class="mb-author">[[author]]</p>
-        <cite><a href$="[[sourceLink]]">[[citation]]</a></cite>
+
+      <div id="wrap" class="mb-wrap">
+        <div id="thumb" class="mb-thumb"></div>
+        <blockquote cite$="[[sourceLink]]">
+          <p><slot></slot></p>
+        </blockquote>
+        <div class="mb-attribution">
+          <p class="mb-author">[[author]]</p>
+          <cite><a href$="[[sourceLink]]">[[citation]]</a></cite>
+        </div>
       </div>
-    </div>
-  `,is:"lrndesign-blockquote",behaviors:[HAXBehaviors.PropertiesBehaviors,SchemaBehaviors.Schema],properties:{/**
-     * Source being cited
-     */citation:{type:String,notify:!0},/**
-     * Optional image to use
-     */image:{type:String,notify:!0,observer:"_imageChanged"},/**
-     * Optional author of the quote
-     */author:{type:String,notify:!0},/**
-     * Optional source that links to where the quote is from
-     */sourceLink:{type:String,notify:!0},/**
-     * Funny 1900s vision.
-     */displayMode:{type:String,reflectToAttribute:!0,notify:!0,value:"default",observer:"_displayModeChanged"}},/**
+    `}static get tag(){return"lrndesign-blockquote"}static get properties(){return{/**
+       * Source being cited
+       */citation:{type:String,notify:!0},/**
+       * Optional image to use
+       */image:{type:String,notify:!0,observer:"_imageChanged"},/**
+       * Optional author of the quote
+       */author:{type:String,notify:!0},/**
+       * Optional source that links to where the quote is from
+       */sourceLink:{type:String,notify:!0},/**
+       * Funny 1900s vision.
+       */displayMode:{type:String,reflectToAttribute:!0,notify:!0,value:"default",observer:"_displayModeChanged"}}}/**
    * Notice display mode change activated so load the font
-   */_imageChanged:function(newValue,oldValue){if("hypercard"==this.displayMode){this.$.wrap.style.cssText="";this.$.thumb.style.cssText=""}else if("poster"==this.displayMode){this.$.wrap.style.cssText="background: #444 url("+newValue+") no-repeat 140% 25%";this.$.thumb.style.cssText=""}else{this.$.wrap.style.cssText="";this.$.thumb.style.cssText="background: url("+newValue+") no-repeat center center"}},/**
+   */_imageChanged(newValue,oldValue){if("hypercard"==this.displayMode){this.$.wrap.style.cssText="";this.$.thumb.style.cssText=""}else if("poster"==this.displayMode){this.$.wrap.style.cssText="background: #444 url("+newValue+") no-repeat 140% 25%";this.$.thumb.style.cssText=""}else{this.$.wrap.style.cssText="";this.$.thumb.style.cssText="background: url("+newValue+") no-repeat center center"}}/**
    * Notice display mode change activated so load the font
-   */_displayModeChanged:function(newValue,oldValue){if("hypercard"==newValue){this.$.wrap.style.cssText="";this.$.thumb.style.cssText="";let style=document.createElement("style"),basePath=pathFromUrl(decodeURIComponent(import.meta.url));style.innerHTML=`@font-face {
+   */_displayModeChanged(newValue,oldValue){if("hypercard"==newValue){this.$.wrap.style.cssText="";this.$.thumb.style.cssText="";let style=document.createElement("style"),basePath=pathFromUrl(decodeURIComponent(import.meta.url));style.innerHTML=`@font-face {
         font-family: 'Chikarego';
         font-display: swap;
         src: url('${basePath}lib/chikarego2-webfont.woff2') format('woff2'),
              url('${basePath}lib/chikarego2-webfont.woff') format('woff');
         font-weight: normal;
         font-style: normal;
-      }`;document.head.appendChild(style)}else if("poster"==newValue){this.$.wrap.style.cssText="background: #444 url("+this.image+") no-repeat 140% 25%";this.$.thumb.style.cssText=""}else{this.$.wrap.style.cssText="";this.$.thumb.style.cssText="background: url("+this.image+") no-repeat center center"}},/**
-   * Attached.
-   */attached:function(){// Establish hax properties if they exist
-let props={canScale:!0,canPosition:!0,canEditSource:!0,gizmo:{title:"Fancy quote",description:"Presents a famous quote with additional design options.",icon:"editor:format-quote",color:"grey",groups:["Content","Presentation"],handles:[{type:"image",source:"image",src:"image",author:"author",description:"",citation:"citation"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"displayMode",title:"Display style",description:"Style to present the quote with",inputMethod:"select",icon:"image:style",options:{default:"Default",leather:"Leather",swoop:"Swoop",soft:"Soft",poster:"Poster",fun:"Fun",photo:"Photo",hypercard:"Hypercard"}},{property:"image",title:"Image",description:"Picture of the author of this quote",inputMethod:"textfield",icon:"editor:short-text",required:!1,validationType:"text"}],configure:[{property:"displayMode",title:"Display style",description:"Style to present the quote with",inputMethod:"select",icon:"image:style",options:{default:"Default",leather:"Leather",swoop:"Swoop",soft:"Soft",poster:"Poster",fun:"Fun",photo:"Photo",hypercard:"Hypercard"}},{property:"image",title:"Image",description:"Picture of the author of this quote",inputMethod:"haxupload",icon:"editor:short-text",required:!1,validationType:"text"},{property:"citation",title:"Citation",description:"",inputMethod:"textfield",icon:"editor:short-text",required:!1,validationType:"text"},{property:"author",title:"Author",description:"",inputMethod:"textfield",icon:"editor:short-text",required:!1,validationType:"text"},{slot:"",title:"Quote",description:"",inputMethod:"textfield",icon:"editor:format-quote",required:!0,validationType:"text"},{property:"sourceLink",title:"Source link",description:"Reference to the ",inputMethod:"haxupload",icon:"editor:short-text",required:!1,validationType:"url"}],advanced:[]}};this.setHaxProperties(props)}});export{LrndesignBlockquote};
+      }`;document.head.appendChild(style)}else if("poster"==newValue){this.$.wrap.style.cssText="background: #444 url("+this.image+") no-repeat 140% 25%";this.$.thumb.style.cssText=""}else{this.$.wrap.style.cssText="";this.$.thumb.style.cssText="background: url("+this.image+") no-repeat center center"}}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!0,gizmo:{title:"Fancy quote",description:"Presents a famous quote with additional design options.",icon:"editor:format-quote",color:"grey",groups:["Content","Presentation"],handles:[{type:"image",source:"image",src:"image",author:"author",description:"",citation:"citation"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"displayMode",title:"Display style",description:"Style to present the quote with",inputMethod:"select",icon:"image:style",options:{default:"Default",leather:"Leather",swoop:"Swoop",soft:"Soft",poster:"Poster",fun:"Fun",photo:"Photo",hypercard:"Hypercard"}},{property:"image",title:"Image",description:"Picture of the author of this quote",inputMethod:"textfield",icon:"editor:short-text",required:!1,validationType:"text"}],configure:[{property:"displayMode",title:"Display style",description:"Style to present the quote with",inputMethod:"select",icon:"image:style",options:{default:"Default",leather:"Leather",swoop:"Swoop",soft:"Soft",poster:"Poster",fun:"Fun",photo:"Photo",hypercard:"Hypercard"}},{property:"image",title:"Image",description:"Picture of the author of this quote",inputMethod:"haxupload",icon:"editor:short-text",required:!1,validationType:"text"},{property:"citation",title:"Citation",description:"",inputMethod:"textfield",icon:"editor:short-text",required:!1,validationType:"text"},{property:"author",title:"Author",description:"",inputMethod:"textfield",icon:"editor:short-text",required:!1,validationType:"text"},{slot:"",title:"Quote",description:"",inputMethod:"textfield",icon:"editor:format-quote",required:!0,validationType:"text"},{property:"sourceLink",title:"Source link",description:"Reference to the ",inputMethod:"haxupload",icon:"editor:short-text",required:!1,validationType:"url"}],advanced:[]}}}}window.customElements.define(LrndesignBlockquote.tag,LrndesignBlockquote);export{LrndesignBlockquote};

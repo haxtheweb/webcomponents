@@ -4,29 +4,30 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
  *
  * @demo demo/index.html
  */class LrnAside extends PolymerElement{constructor(){super();import("./node_modules/@lrnwebcomponents/lrndesign-panelcard/lrndesign-panelcard.js");afterNextRender(this,function(){this.HAXWiring=new HAXWiring;this.HAXWiring.setup(LrnAside.haxProperties,LrnAside.tag,this)})}static get template(){return html`
-    <style>
-      :host {
-        display: flex;
-        padding: 8px;
-      }
-      :host([sticky]) {
-        top: 0;
-        position: sticky;
-      }
-      :host([direction="left"]) {
-        float: left;
-        max-width: 480px;
-      }
-      :host([direction="right"]) {
-        float: right;
-        max-width: 480px;
-      }
-    </style>
-    <aside>
-      <lrndesign-panelcard title="[[title]]">
-        <slot></slot>
-      </lrndesign-panelcard>
-    </aside>`}static get tag(){return"lrn-aside"}static get properties(){return{/**
+      <style>
+        :host {
+          display: flex;
+          padding: 8px;
+        }
+        :host([sticky]) {
+          top: 0;
+          position: sticky;
+        }
+        :host([direction="left"]) {
+          float: left;
+          max-width: 480px;
+        }
+        :host([direction="right"]) {
+          float: right;
+          max-width: 480px;
+        }
+      </style>
+      <aside>
+        <lrndesign-panelcard title="[[title]]">
+          <slot></slot>
+        </lrndesign-panelcard>
+      </aside>
+    `}static get tag(){return"lrn-aside"}static get properties(){return{/**
        * Title for the aside.
        */title:{type:String,value:"Related content"},/**
        * Apply CSS sticky styling

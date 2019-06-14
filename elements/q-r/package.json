@@ -16,7 +16,7 @@
       "hax": "src/q-r-hax.json"
     }
   },
-  "version": "2.0.10",
+  "version": "2.1.0",
   "description": "Automated conversion of q-r/",
   "repository": {
     "type": "git",
@@ -41,20 +41,20 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/es-global-bridge": "^2.0.10",
-    "@lrnwebcomponents/hax-body-behaviors": "^2.0.10",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.1.0",
     "@polymer/polymer": "^3.2.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.0.9",
-    "@lrnwebcomponents/storybook-utilities": "^2.0.10",
+    "@lrnwebcomponents/storybook-utilities": "^2.1.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",
-    "@webcomponents/webcomponentsjs": "^2.2.9",
+    "@webcomponents/webcomponentsjs": "2.2.10",
     "concurrently": "4.1.0",
     "gulp-babel": "8.0.0",
     "gulp-sourcemaps": "2.6.4",
     "lodash": "4.17.11",
-    "polymer-cli": "1.9.8",
+    "polymer-cli": "1.9.9",
     "wct-browser-legacy": "1.0.2"
   },
   "private": false,

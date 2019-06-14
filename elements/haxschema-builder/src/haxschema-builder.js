@@ -66,13 +66,41 @@ class HaxschemaBuilder extends PolymerElement {
    * Notice code editor changes and reflect them into this element
    */
   _editorDataChanged(e) {
-    // value coming up off of thiss
+    // value coming up off of this and get it propegated correctly
     this.haxSchema = e.detail.value;
     let hs = JSON.parse(this.haxSchema);
     for (var key in hs.settings) {
       let schema = this.HAXWiring.getHaxJSONSchema(key, hs);
       this.set(key + "Schema", schema);
     }
+  }
+  addAdvanced(e) {
+    let hs = JSON.parse(this.haxSchema);
+    hs.settings.advanced.push(this.__propPrototype());
+    this.__refreshSchemas(hs);
+  }
+  addConfigure(e) {
+    let hs = JSON.parse(this.haxSchema);
+    hs.settings.configure.push(this.__propPrototype());
+    this.__refreshSchemas(hs);
+  }
+  __refreshSchemas(hs) {
+    for (var key in hs.settings) {
+      let schema = this.HAXWiring.getHaxJSONSchema(key, hs);
+      this.set(key + "Schema", schema);
+    }
+    this.haxSchema = JSON.stringify(hs);
+  }
+  __propPrototype() {
+    return {
+      property: "title",
+      title: "Title",
+      description: "",
+      inputMethod: "textfield",
+      icon: "android",
+      required: true,
+      validationType: "text"
+    };
   }
   /**
    * life cycle, element is removed from the DOM

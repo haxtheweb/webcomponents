@@ -3,7 +3,7 @@ import * as async from "@polymer/polymer/lib/utils/async.js";
 import { updateStyles } from "@polymer/polymer/lib/mixins/element-mixin.js";
 import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { autorun, toJS } from "mobx";
+import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import "@polymer/app-layout/app-header/app-header.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
@@ -34,7 +34,7 @@ class OutlinePlayer extends HAXCMSTheme(PolymerElement) {
   // render function
   static get template() {
     return html`
-      <style include="simple-colors hax-shared-styles">
+      <style include="hax-shared-styles">
         :host {
           display: block;
           font-family: libre baskerville;
@@ -125,9 +125,9 @@ class OutlinePlayer extends HAXCMSTheme(PolymerElement) {
         }
 
         div[main-title] {
-          margin-left: 16px;
-          font-size: 20px;
-          line-height: 20px;
+          margin-left: 8px;
+          font-size: 16px;
+          line-height: 22px;
           overflow-wrap: break-word;
           text-overflow: ellipsis;
           display: inline-block;

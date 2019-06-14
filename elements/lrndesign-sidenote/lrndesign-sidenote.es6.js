@@ -7,50 +7,51 @@ A basic side note
 
 * @demo demo/index.html
 */class LrndesignSidenote extends A11yBehaviors(PolymerElement){static get template(){return html`
-    <style>
-      :host {
-        display: block;
-        --container-bg-color: lightgray;
-        --container-text-color: black;
-        --container-padding: 16px;
-        --container-outset: 0;
-        @apply --host-styles;
-      }
+      <style>
+        :host {
+          display: block;
+          --container-bg-color: lightgray;
+          --container-text-color: black;
+          --container-padding: 16px;
+          --container-outset: 0;
+          @apply --host-styles;
+        }
 
-      #container {
-        display: block;
-        background: var(--container-bg-color);
-        color: var(--container-text-color);
-        padding: var(--container-padding);
-        margin-left: -var(--container-outset);
-        @apply --container-styles;
-      }
+        #container {
+          display: block;
+          background: var(--container-bg-color);
+          color: var(--container-text-color);
+          padding: var(--container-padding);
+          margin-left: -var(--container-outset);
+          @apply --container-styles;
+        }
 
-      #header {
-        display: flex;
-        align-items: center;
-        @apply --container-header;
-      }
+        #header {
+          display: flex;
+          align-items: center;
+          @apply --container-header;
+        }
 
-      #icon {
-        margin-right: 8px;
-        @apply --icon-styles;
-      }
+        #icon {
+          margin-right: 8px;
+          @apply --icon-styles;
+        }
 
-      #label {
-        font-size: 20.8px;
-        margin: 12.8px 0;
-        flex: 1 1 auto;
-        @apply --label-styles;
-      }
-    </style>
-    <div id="container">
-      <div id="header">
-        <iron-icon id="icon" icon="[[icon]]" hidden\$="[[!icon]]"></iron-icon>
-        <div id="label" hidden\$="[[!label]]">[[label]]</div>
+        #label {
+          font-size: 20.8px;
+          margin: 12.8px 0;
+          flex: 1 1 auto;
+          @apply --label-styles;
+        }
+      </style>
+      <div id="container">
+        <div id="header">
+          <iron-icon id="icon" icon="[[icon]]" hidden\$="[[!icon]]"></iron-icon>
+          <div id="label" hidden\$="[[!label]]">[[label]]</div>
+        </div>
+        <slot></slot>
       </div>
-      <slot></slot>
-    </div>`}static get tag(){return"lrndesign-sidenote"}static get properties(){return{/**
+    `}static get tag(){return"lrndesign-sidenote"}static get properties(){return{/**
        * The display label
        */label:{type:String,value:""},/**
        * The display icon for the element

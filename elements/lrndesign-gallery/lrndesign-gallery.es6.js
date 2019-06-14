@@ -1,7 +1,7 @@
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{LrndesignGalleryBehaviors}from"./lib/lrndesign-gallery-behaviors.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./lib/lrndesign-gallery-carousel.js";import"./lib/lrndesign-gallery-grid.js";export{LrndesignGallery};/**
+ */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{LrndesignGalleryBehaviors}from"./lib/lrndesign-gallery-behaviors.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import{SchemaBehaviors}from"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./lib/lrndesign-gallery-carousel.js";import"./lib/lrndesign-gallery-grid.js";export{LrndesignGallery};/**
  * `lrndesign-gallery`
  * `An element that renders a collection of gallery items into a carousel or a single media item into a layout.`
  *
@@ -39,7 +39,7 @@
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"lrndesign-gallery"}static get behaviors(){return[LrndesignGalleryBehaviors]}// render function
 static get template(){return html`
-      <style is="custom-style" include="simple-colors">
+      <style>
         :host {
           display: block;
         }

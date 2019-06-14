@@ -1,4 +1,4 @@
-define(["exports","meta","./node_modules/@polymer/polymer/polymer-element.js","./node_modules/@lrnwebcomponents/es-global-bridge/es-global-bridge.js","./node_modules/@polymer/polymer/lib/utils/resolve-url.js"],function(_exports,meta,_polymerElement,_esGlobalBridge,_resolveUrl){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.Hal9000=void 0;meta=babelHelpers.interopRequireWildcard(meta);function _templateObject_d9462f806d6911e9b6170febd231a1e5(){var data=babelHelpers.taggedTemplateLiteral(["\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n[hidden] {\n  display: none;\n}\n</style>\n<slot></slot>"]);_templateObject_d9462f806d6911e9b6170febd231a1e5=function _templateObject_d9462f806d6911e9b6170febd231a1e5(){return data};return data}/**
+define(["exports","meta","./node_modules/@polymer/polymer/polymer-element.js","./node_modules/@lrnwebcomponents/es-global-bridge/es-global-bridge.js","./node_modules/@polymer/polymer/lib/utils/resolve-url.js"],function(_exports,meta,_polymerElement,_esGlobalBridge,_resolveUrl){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.Hal9000=void 0;meta=babelHelpers.interopRequireWildcard(meta);function _templateObject_a7331ec081c011e98824c386a93aaec8(){var data=babelHelpers.taggedTemplateLiteral(["\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n[hidden] {\n  display: none;\n}\n</style>\n<slot></slot>"]);_templateObject_a7331ec081c011e98824c386a93aaec8=function _templateObject_a7331ec081c011e98824c386a93aaec8(){return data};return data}/**
  * `hal-9000`
  * `Robot assistant tag, hopefully not evil`
  *
@@ -9,7 +9,7 @@ define(["exports","meta","./node_modules/@polymer/polymer/polymer-element.js",".
  * @polymer
  * @demo demo/index.html
  */var Hal9000=/*#__PURE__*/function(_PolymerElement){babelHelpers.inherits(Hal9000,_PolymerElement);babelHelpers.createClass(Hal9000,null,[{key:"template",// render function
-get:function get(){return(0,_polymerElement.html)(_templateObject_d9462f806d6911e9b6170febd231a1e5())}// properties available to the custom element for data binding
+get:function get(){return(0,_polymerElement.html)(_templateObject_a7331ec081c011e98824c386a93aaec8())}// properties available to the custom element for data binding
 },{key:"properties",get:function get(){return{/**
    * Commands to listen for and take action on
    */commands:{name:"commands",type:"Object",value:{},observer:"_commandsChanged"},/**

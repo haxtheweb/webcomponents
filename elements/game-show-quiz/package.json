@@ -11,7 +11,7 @@
       "js": "src/game-show-quiz.js"
     }
   },
-  "version": "2.0.10",
+  "version": "2.1.0",
   "description": "A game show style quiz interaction",
   "repository": {
     "type": "git",
@@ -35,11 +35,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/chartist-render": "^2.0.10",
-    "@lrnwebcomponents/hax-body-behaviors": "^2.0.10",
-    "@lrnwebcomponents/multiple-choice": "^2.0.10",
-    "@lrnwebcomponents/responsive-grid": "^2.0.10",
-    "@lrnwebcomponents/simple-colors": "^2.0.10",
+    "@lrnwebcomponents/chartist-render": "^2.1.0",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.1.0",
+    "@lrnwebcomponents/multiple-choice": "^2.1.0",
+    "@lrnwebcomponents/responsive-grid": "^2.1.0",
+    "@lrnwebcomponents/simple-colors": "^2.1.0",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-flex-layout": "^3.0.1",
@@ -56,15 +56,15 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.0.9",
-    "@lrnwebcomponents/storybook-utilities": "^2.0.10",
+    "@lrnwebcomponents/storybook-utilities": "^2.1.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",
-    "@webcomponents/webcomponentsjs": "^2.2.9",
+    "@webcomponents/webcomponentsjs": "2.2.10",
     "concurrently": "4.1.0",
     "gulp-babel": "8.0.0",
     "gulp-sourcemaps": "2.6.4",
     "lodash": "4.17.11",
-    "polymer-cli": "1.9.8",
+    "polymer-cli": "1.9.9",
     "wct-browser-legacy": "1.0.2"
   },
   "private": false,

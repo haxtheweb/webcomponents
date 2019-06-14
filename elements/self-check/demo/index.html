@@ -15,6 +15,11 @@
         max-width: 600px;
       }
     </style>
+    <script>
+      window.addEventListener('user-engagement',(e) => {
+        console.log(e.detail);
+      });
+    </script>
   </head>
   <body>
     <div class="vertical-section-container centered">

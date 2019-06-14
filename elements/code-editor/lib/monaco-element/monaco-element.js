@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-
 /**
  * `monaco-element`
  * Webcomponent wrapper for the monaco editor.
@@ -297,6 +296,17 @@ class MonacoElement extends PolymerElement {
     this.monacoValueChanged(this.value);
     this.monacoLanguageChanged(this.language);
     this.monacoThemeChanged(this.theme);
+    // fire when we're ready
+    setTimeout(() => {
+      this.dispatchEvent(
+        new CustomEvent("monaco-element-ready", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: true
+        })
+      );
+    }, 100);
   }
 
   monacoValueChanged(value) {

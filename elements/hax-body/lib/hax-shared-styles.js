@@ -10,7 +10,6 @@ styleElement.innerHTML = `<template>
     --hax-color-accent-text: #555d66;
     --hax-color-accent1: var(--simple-colors-default-theme-light-blue-7, #0085ba);
     --hax-color-accent1-text: #FFFFFF;
-    font-family: 'Noto Serif', serif;
     line-height: 1.8;
   }
   :host ul, :host * ::slotted(ul),

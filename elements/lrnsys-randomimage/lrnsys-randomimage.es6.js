@@ -5,13 +5,16 @@
  * `lrnsys-randomimage`
  * @demo demo/index.html
  */class LrnsysRandomimage extends PolymerElement{static get template(){return html`
-    <style>
-      :host {
-        display: block;
-      }
-    </style>
-    <div id="list"><random-image images-list$="{{images}}"></random-image></div>
-    <paper-button raised on-click="reload">Reload</paper-button>`}static get tag(){return"lrnsys-randomimage"}static get properties(){return{/**
+      <style>
+        :host {
+          display: block;
+        }
+      </style>
+      <div id="list">
+        <random-image images-list$="{{images}}"></random-image>
+      </div>
+      <paper-button raised on-click="reload">Reload</paper-button>
+    `}static get tag(){return"lrnsys-randomimage"}static get properties(){return{/**
        * An array of images to pick from at random.
        */images:{type:Object,notify:!0,value(){return[]}}}}/**
    * trigger a reload of the random-image element

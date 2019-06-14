@@ -79,8 +79,8 @@ app-drawer {
   font-size: 24px;
   margin: 0 0 8px 0;
   padding: 0 16px;
-  height: 40px;
-  line-height: 48px;
+  height: 64px;
+  line-height: 64px;
   display: flex;
   text-align: left;
   justify-content: space-between;
@@ -98,7 +98,6 @@ app-drawer {
   margin: 8px;
   @apply --simple-drawer-heading;
 }</style>
-<style include="simple-colors"></style>
 <app-drawer tabindex="0" id="drawer" opened="{{opened}}" align="[[align]]" role="dialog">
   <div class="wrapper">
     <div class="top">
@@ -108,7 +107,7 @@ app-drawer {
     <div class="content">
       <slot name="content"></slot>
     </div>
-    <paper-button id="close" on-tap="close">
+    <paper-button id="close" on-click="close">
       <iron-icon icon="[[closeIcon]]"></iron-icon> [[closeLabel]]
     </paper-button>
   </div>

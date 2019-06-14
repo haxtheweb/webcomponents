@@ -1,4 +1,4 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXCMSTheme}from"./node_modules/@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";import{store}from"./node_modules/@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";import{autorun,toJS}from"./node_modules/mobx/lib/mobx.module.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@lrnwebcomponents/simple-blog/lib/simple-blog-listing.js";import"./node_modules/@lrnwebcomponents/simple-blog/lib/simple-blog-post.js";/**
+import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXCMSTheme}from"./node_modules/@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";import{store}from"./node_modules/@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";import{autorun,toJS}from"./node_modules/mobx/lib/mobx.module.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@lrnwebcomponents/simple-blog/lib/simple-blog-listing.js";import"./node_modules/@lrnwebcomponents/simple-blog/lib/simple-blog-post.js";import"./node_modules/@polymer/iron-pages/iron-pages.js";/**
  * `simple-blog`
  * `A simple blog and associated elements`
  * @demo demo/index.html
@@ -7,15 +7,14 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"simple-blog"}// render function
 static get template(){return html`
-      
-        <style>
-          html,
-          body {
-            background-color: #fafafa;
-          }
-        </style>
-      
-      <style include="simple-colors">
+      <style>
+        html,
+        body {
+          background-color: #fafafa;
+        }
+      </style>
+
+      <style>
         :host {
           display: block;
           font-family: "Roboto", "Noto", sans-serif;
@@ -89,7 +88,7 @@ static get template(){return html`
           <paper-icon-button
             id="backbutton"
             icon="icons:arrow-back"
-            on-tap="_goBack"
+            on-click="_goBack"
           ></paper-icon-button>
           <paper-tooltip
             for="backbutton"
@@ -106,7 +105,7 @@ static get template(){return html`
       </iron-pages>
     `}/**
    * Mix in an opened status
-   */static get properties(){let props=super.properties;props.selectedPage={type:Number,reflectToAttribute:!0,value:0};return props}constructor(){super();import("./node_modules/@lrnwebcomponents/simple-blog/lib/simple-blog-header.js");import("./node_modules/@polymer/iron-pages/iron-pages.js");import("./node_modules/@polymer/paper-icon-button/paper-icon-button.js");import("./node_modules/@lrnwebcomponents/simple-blog/lib/simple-blog-footer.js");this.__disposer=[];autorun(reaction=>{this.activeId=toJS(store.activeId);this.__disposer.push(reaction)});autorun(reaction=>{this._locationChanged(store.location);this.__disposer.push(reaction)})}/**
+   */static get properties(){let props=super.properties;props.selectedPage={type:Number,reflectToAttribute:!0,value:0};return props}constructor(){super();import("./node_modules/@lrnwebcomponents/simple-blog/lib/simple-blog-header.js");import("./node_modules/@polymer/paper-icon-button/paper-icon-button.js");import("./node_modules/@lrnwebcomponents/simple-blog/lib/simple-blog-footer.js");this.__disposer=[];autorun(reaction=>{this.activeId=toJS(store.activeId);this.__disposer.push(reaction)});autorun(reaction=>{this._locationChanged(store.location);this.__disposer.push(reaction)})}/**
    * attached life cycle
    */connectedCallback(){super.connectedCallback();afterNextRender(this,()=>{this.contentContainer=this.shadowRoot.querySelector("simple-blog-post").$.contentcontainer})}/**
    * detatched life cycle

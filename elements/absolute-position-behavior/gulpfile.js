@@ -63,9 +63,13 @@ ${cssResult}
 ${html}\`;
   }
 ${haxString}
-  // properties available to the custom element for data binding NIKKI
-  static get properties() {
-    return ${props2};
+  // properties available to the custom element for data binding
+    static get properties() {
+    let props = ${props};
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }`;
         }
       )

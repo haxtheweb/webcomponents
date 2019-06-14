@@ -19,6 +19,14 @@ class HaxAppSearch extends PolymerElement {
     import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
     import("@lrnwebcomponents/hax-body/lib/hax-app-search-inputs.js");
     import("@lrnwebcomponents/hax-body/lib/hax-app-search-result.js");
+    document.body.addEventListener(
+      "hax-store-property-updated",
+      this._haxStorePropertyUpdated.bind(this)
+    );
+    document.body.addEventListener(
+      "hax-app-search-values-changed",
+      this._searchValuesEvent.bind(this)
+    );
   }
   static get template() {
     return html`
@@ -283,36 +291,6 @@ class HaxAppSearch extends PolymerElement {
         this.auto = true;
       }
     }
-  }
-
-  /**
-   * Attached life cycle.
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    document.body.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-    document.body.addEventListener(
-      "hax-app-search-values-changed",
-      this._searchValuesEvent.bind(this)
-    );
-  }
-
-  /**
-   * Detached life cycle.
-   */
-  disconnectedCallback() {
-    document.body.removeEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-    document.body.removeEventListener(
-      "hax-app-search-values-changed",
-      this._searchValuesEvent.bind(this)
-    );
-    super.disconnectedCallback();
   }
 
   /**

@@ -24,7 +24,7 @@ class HaxAppBrowser extends PolymerElement {
   }
   static get template() {
     return html`
-      <style include="simple-colors hax-shared-styles">
+      <style include="hax-shared-styles">
         :host {
           display: block;
         }
@@ -165,6 +165,9 @@ class HaxAppBrowser extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     this.resetBrowser();
+  }
+  ready() {
+    super.ready();
     afterNextRender(this, function() {
       this.shadowRoot
         .querySelector("#inputfilter")
@@ -187,21 +190,6 @@ class HaxAppBrowser extends PolymerElement {
         this._haxStorePropertyUpdated.bind(this)
       );
     });
-  }
-
-  /**
-   * Detached life cycle
-   */
-  disconnectedCallback() {
-    document.body.removeEventListener(
-      "hax-app-selected",
-      this._appSelected.bind(this)
-    );
-    document.body.removeEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-    super.disconnectedCallback();
   }
 
   /**

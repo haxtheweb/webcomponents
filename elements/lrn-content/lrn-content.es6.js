@@ -6,12 +6,13 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
 
 * @demo demo/index.html
 */class LrnContent extends PolymerElement{static get template(){return html`
-    <style>
-      :host {
-        display: block;
-      }
-    </style>
-    <div typeof="oer:SupportingMaterial">
-      <h2 property="oer:name" hidden$="[[!title]]">[[title]]</h2>
-      <div property="oer:description"><slot></slot></div>
-    </div>`}static get tag(){return"lrn-content"}static get properties(){return{title:{type:String,value:!1}}}}window.customElements.define(LrnContent.tag,LrnContent);export{LrnContent};
+      <style>
+        :host {
+          display: block;
+        }
+      </style>
+      <div typeof="oer:SupportingMaterial">
+        <h2 property="oer:name" hidden$="[[!title]]">[[title]]</h2>
+        <div property="oer:description"><slot></slot></div>
+      </div>
+    `}static get tag(){return"lrn-content"}static get properties(){return{title:{type:String,value:!1}}}}window.customElements.define(LrnContent.tag,LrnContent);export{LrnContent};

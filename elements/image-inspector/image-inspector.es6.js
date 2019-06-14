@@ -28,49 +28,50 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
           top: 128px;
         }
       </style>
-    
-    <app-toolbar>
-      <lrnsys-button
-        alt="Zoom in"
-        icon="zoom-in"
-        on-tap="zoomIn"
-        hover-class="[[hoverClass]]"
-      ></lrnsys-button>
-      <lrnsys-button
-        alt="Zoom out"
-        icon="zoom-out"
-        on-tap="zoomOut"
-        hover-class="[[hoverClass]]"
-      ></lrnsys-button>
-      <lrnsys-button
-        alt="Rotate right"
-        icon="image:rotate-right"
-        on-tap="rotateRight"
-        hover-class="[[hoverClass]]"
-      ></lrnsys-button>
-      <lrnsys-button
-        alt="Rotate left"
-        icon="image:rotate-left"
-        on-tap="rotateLeft"
-        hover-class="[[hoverClass]]"
-      ></lrnsys-button>
-      <lrnsys-button
-        alt="Mirror image"
-        icon="image:flip"
-        on-tap="mirrorImage"
-        hover-class="[[hoverClass]]"
-      ></lrnsys-button>
-      <lrnsys-button
-        alt="Open in new window"
-        icon="launch"
-        href="[[src]]"
-        target="_blank"
-        hover-class="[[hoverClass]]"
-      ></lrnsys-button>
-      <slot name="toolbar"></slot>
-    </app-toolbar>
-    <img-pan-zoom id="img" src="[[src]]"></img-pan-zoom>
-    <slot></slot>`}static get tag(){return"image-inspector"}static get properties(){return{/**
+
+      <app-toolbar>
+        <lrnsys-button
+          alt="Zoom in"
+          icon="zoom-in"
+          on-click="zoomIn"
+          hover-class="[[hoverClass]]"
+        ></lrnsys-button>
+        <lrnsys-button
+          alt="Zoom out"
+          icon="zoom-out"
+          on-click="zoomOut"
+          hover-class="[[hoverClass]]"
+        ></lrnsys-button>
+        <lrnsys-button
+          alt="Rotate right"
+          icon="image:rotate-right"
+          on-click="rotateRight"
+          hover-class="[[hoverClass]]"
+        ></lrnsys-button>
+        <lrnsys-button
+          alt="Rotate left"
+          icon="image:rotate-left"
+          on-click="rotateLeft"
+          hover-class="[[hoverClass]]"
+        ></lrnsys-button>
+        <lrnsys-button
+          alt="Mirror image"
+          icon="image:flip"
+          on-click="mirrorImage"
+          hover-class="[[hoverClass]]"
+        ></lrnsys-button>
+        <lrnsys-button
+          alt="Open in new window"
+          icon="launch"
+          href="[[src]]"
+          target="_blank"
+          hover-class="[[hoverClass]]"
+        ></lrnsys-button>
+        <slot name="toolbar"></slot>
+      </app-toolbar>
+      <img-pan-zoom id="img" src="[[src]]"></img-pan-zoom>
+      <slot></slot>
+    `}static get tag(){return"image-inspector"}static get properties(){return{/**
        * Image rotation
        */degrees:{type:Number,value:0,reflectToAttribute:!0},/**
        * Image source.

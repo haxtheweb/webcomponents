@@ -1,7 +1,7 @@
 /**
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";/**
+ */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/paper-input/paper-input.js";import"./node_modules/@polymer/paper-progress/paper-progress.js";import"./node_modules/@polymer/paper-styles/shadow.js";import"./node_modules/@polymer/paper-styles/typography.js";import"./node_modules/@polymer/paper-styles/color.js";/**
  * `simple-login`
  * `a simple login form`
  *
@@ -20,17 +20,109 @@ static get template(){return html`
 :host([hidden]) {
   display: none;
 }
-</style>
-<slot></slot>
-<div>[[title]]</div>`}// properties available to the custom element for data binding
-static get properties(){return{title:{name:"title",type:"String",value:"",reflectToAttribute:!1,observer:"_titleChanged"}}}/**
+
+#loginform {
+    width: 450px;
+    height: 450px;
+    background: var(--login-form-background-color, white);
+    @apply --shadow-elevation-12dp;
+    @apply --login-form;
+}
+
+#loginformcontent {
+    padding: 48px;
+}
+
+#loginformcontent>* {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+#loginbtn,
+#buttons ::slotted(paper-button) {
+    margin-top: 24px;
+    background-color: var(--login-btn-background-color, var(--paper-indigo-500));
+    color: var(--login-btn-text-color, white);
+    --paper-button-raised-keyboard-focus: {
+        background-color: var(--login-btn-raised-background-color, var(--paper-pink-a200)) !important;
+        color: var(--login-btn-text-color, white) !important;
+    };
+    @apply --login-btn;
+}
+
+#loginbtn[disabled] {
+    background-color: var(--login-btn-disabled-background-color, var(--paper-indigo-100));
+}
+
+h1 {
+    @apply --paper-font-display1;
+    margin: 0;
+    @apply --login-title;
+}
+
+h2 {
+    @apply --paper-font-title;
+    margin: 0;
+    @apply --login-subtitle;
+}
+
+paper-progress {
+    width: 100%;
+}
+
+#errormsg {
+    margin-top: 16px;
+    color: var(--login-error-label-color, var(--error-color));
+    @apply --paper-font-menu;
+}</style>
+<div id="loginform">
+  <paper-progress disabled="[[!loading]]" indeterminate></paper-progress>
+  <div id="loginformcontent">
+    <h1>[[title]]</h1>
+    <h2>[[subtitle]]</h2>
+    <div id="errormsg">[[errorMsg]]</div>
+    <slot></slot>
+    <paper-input id="userinput" value="{{username}}" disabled="[[loading]]" type="text" label="[[userInputLabel]]"
+      required error-message="[[userInputErrMsg]]"></paper-input>
+    <paper-input id="passinput" value="{{password}}" disabled="[[loading]]" type="password"
+      label="[[passwordInputLabel]]" required error-message="[[passwordInputErrMsg]]"></paper-input>
+    <paper-button on-click="_login" disabled="[[loading]]" id="loginbtn" raised class="indigo">[[loginBtnText]]
+    </paper-button>
+    <span id="buttons"><slot name="buttons"></slot></span>
+  </div>
+</div>`}// properties available to the custom element for data binding
+static get properties(){return{/**
+   * Title of the loginscreen
+   */title:String,/**
+   * Subtitle of the loginscreen
+   */subtitle:String,/**
+   * Error message to show (example : "Invalid username")
+   */errorMsg:String,/**
+   * Content of the username field
+   */username:{type:String,notify:!0},/**
+   * Content of the password field
+   */password:{type:String,notify:!0},/**
+   * When true, all fields are disabled and the progress bar is visible
+   */loading:{type:Boolean,value:!1},/**
+   * Placeholder of the username field
+   */userInputLabel:{type:String,value:"Username"},/**
+   * Error message of the username field
+   */userInputErrMsg:{type:String,value:"Username required"},/**
+   * Placeholder of the password field
+   */passwordInputLabel:{type:String,value:"Password"},/**
+   * Error message of the password field
+   */passwordInputErrMsg:{type:String,value:"Password required"},/**
+   * Login button label
+   */loginBtnText:{type:String,value:"Login"}}}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"simple-login"}/**
    * constructor
-   */constructor(){super()}/**
-   * life cycle, element is afixed to the DOM
-   */connectedCallback(){super.connectedCallback()}/**
-   * life cycle, element is removed from the DOM
-   */disconnectedCallback(){super.disconnectedCallback()}// Observer title for changes
-_titleChanged(newValue,oldValue){if(typeof newValue!==typeof void 0){console.log(newValue)}}}window.customElements.define(SimpleLogin.tag,SimpleLogin);export{SimpleLogin};
+   */constructor(){super();afterNextRender(this,function(){this.shadowRoot.querySelector("#loginform").addEventListener("keypress",this._keyPressLogin.bind(this))})}/**
+   * life cycle
+   */disconnectedCallback(){this.shadowRoot.querySelector("#loginform").removeEventListener("keypress",this._keyPressLogin.bind(this));super.disconnectedCallback()}/**
+   * Key pressed for the login
+   */_keyPressLogin(e){if(13==e.keyCode){//Enter
+this._login();return!1}}/**
+   * Login
+   */_login(){if(this.shadowRoot.querySelector("#userinput").validate()&&this.shadowRoot.querySelector("#passinput").validate()){this.dispatchEvent(new CustomEvent("simple-login-login",{cancelable:!0,bubbles:!0,composed:!0,detail:{u:this.shadowRoot.querySelector("#userinput").value,p:this.shadowRoot.querySelector("#passinput").value}}))}}}window.customElements.define(SimpleLogin.tag,SimpleLogin);export{SimpleLogin};

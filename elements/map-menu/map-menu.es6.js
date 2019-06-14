@@ -1,49 +1,50 @@
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import"./node_modules/@lrnwebcomponents/smooth-scroll/smooth-scroll.js";/**
+ */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import"./node_modules/@lrnwebcomponents/smooth-scroll/smooth-scroll.js";import"./node_modules/@lrnwebcomponents/map-menu/lib/map-menu-builder.js";/**
  * `map-menu`
  * `A series of elements that generate a hierarchical menu`
  *
  * @demo demo/index.html
- */class MapMenu extends PolymerElement{constructor(){super();import("./node_modules/@lrnwebcomponents/map-menu/lib/map-menu-container.js");import("./node_modules/@lrnwebcomponents/map-menu/lib/map-menu-builder.js")}static get template(){return html`
-    <style>
-      :host {
-        --map-menu-active-color: rgba(0, 0, 0, 0.1);
-        display: block;
-        overflow-y: scroll;
-        position: relative;
-        height: 100%;
-      }
+ */class MapMenu extends PolymerElement{constructor(){super();import("./node_modules/@lrnwebcomponents/map-menu/lib/map-menu-container.js")}static get template(){return html`
+      <style>
+        :host {
+          --map-menu-active-color: rgba(0, 0, 0, 0.1);
+          display: block;
+          overflow-y: scroll;
+          position: relative;
+          height: 100%;
+        }
 
-      #activeIndicator {
-        background: var(--map-menu-active-color);
-        transition: all 0.3s ease-in-out;
-        position: absolute;
-        @apply --map-menu-active-indicator;
-      }
+        #activeIndicator {
+          background: var(--map-menu-active-color);
+          transition: all 0.3s ease-in-out;
+          position: absolute;
+          @apply --map-menu-active-indicator;
+        }
 
-      map-menu-container {
-        padding: 32px;
-        @apply --map-menu-container;
-      }
+        map-menu-container {
+          padding: 32px;
+          @apply --map-menu-container;
+        }
 
-      /* turn default active color if indicator is on */
-      :host([active-indicator]) map-menu-builder {
-        --map-menu-active-color: transparent;
-      }
-    </style>
-    <div id="itemslist">
-      <map-menu-container>
-        <div id="activeIndicator"></div>
-        <map-menu-builder
-          id="builder"
-          items="[[items]]"
-          selected="[[selected]]"
-        ></map-menu-builder>
-      </map-menu-container>
-    </div>
-    <smooth-scroll id="smoothScroll"></smooth-scroll>`}static get tag(){return"map-menu"}static get properties(){return{title:{type:String,value:"Content Outline"},data:{type:Array,value:null},/**
+        /* turn default active color if indicator is on */
+        :host([active-indicator]) map-menu-builder {
+          --map-menu-active-color: transparent;
+        }
+      </style>
+      <div id="itemslist">
+        <map-menu-container>
+          <div id="activeIndicator"></div>
+          <map-menu-builder
+            id="builder"
+            items="[[items]]"
+            selected="[[selected]]"
+          ></map-menu-builder>
+        </map-menu-container>
+      </div>
+      <smooth-scroll id="smoothScroll"></smooth-scroll>
+    `}static get tag(){return"map-menu"}static get properties(){return{title:{type:String,value:"Content Outline"},data:{type:Array,value:null},/**
        * Support for JSON Outline Schema manifest format
        */manifest:{type:Object,notify:!0,observer:"_manifestChanged"},items:{type:Array,value:null,notify:!0},/**
        * Current selected item.

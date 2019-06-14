@@ -10,57 +10,63 @@ A LRN element
 @microcopy - the mental model for this element
  - flagged - a piece of content with a status message indicating there's an issue with the input by the user. This isn't formal validation but more of feedback or suggestions about what they are entering. The default is feedback for alt metadata, useful for images.
 */class PaperInputFlagged extends PolymerElement{constructor(){super();import("./node_modules/@polymer/paper-input/paper-input.js");import("./node_modules/@polymer/paper-tooltip/paper-tooltip.js");import("./node_modules/@polymer/iron-icons/iron-icons.js");import("./node_modules/@polymer/iron-icon/iron-icon.js")}static get template(){return html`
-    <style>
-      :host {
-        display: block;
-      }
-      iron-icon {
-        transition: 0.6s all ease-in;
-        width: 24px;
-        height: 24px;
-        margin-right: 4px;
-      }
-      paper-tooltip {
-        --paper-tooltip-delay-in: 100;
-        font-size: 11px;
-      }
-      #icon {
-        color: var(--paper-grey-400);
-        background-color: transparent;
-      }
-      :host([status="info"]) #icon {
-        color: var(--paper-green-400);
-      }
-      :host([status="notice"]) #icon {
-        color: var(--paper-grey-400);
-      }
-      :host([status="warning"]) #icon {
-        color: var(--paper-yellow-700);
-      }
-      :host([status="error"]) #icon {
-        color: var(--paper-red-900);
-      }
-      .element-invisible {
-        position: absolute !important;
-        clip: rect(1px, 1px, 1px, 1px);
-        overflow: hidden;
-        height: 1px;
-      }
-    </style>
-    <paper-input
-      label="[[label]]"
-      value="{{value}}"
-      char-counter="[[charCounter]]"
-      disabled="[[disabled]]"
-      minlength="[[minlength]]"
-      maxlength="[[minlength]]"
-    >
-      <iron-icon id="icon" icon="[[icon]]" slot="prefix"></iron-icon>
-    </paper-input>
-    <div class="element-invisible">[[__activeMessage]]</div>
-    <paper-tooltip for="icon" position="top" offset="20" fit-to-visible-bounds>
-      [[__activeMessage]]
-    </paper-tooltip>`}static get tag(){return"paper-input-flagged"}static get properties(){return{/**
+      <style>
+        :host {
+          display: block;
+        }
+        iron-icon {
+          transition: 0.6s all ease-in;
+          width: 24px;
+          height: 24px;
+          margin-right: 4px;
+        }
+        paper-tooltip {
+          --paper-tooltip-delay-in: 100;
+          font-size: 11px;
+        }
+        #icon {
+          color: var(--paper-grey-400);
+          background-color: transparent;
+        }
+        :host([status="info"]) #icon {
+          color: var(--paper-green-400);
+        }
+        :host([status="notice"]) #icon {
+          color: var(--paper-grey-400);
+        }
+        :host([status="warning"]) #icon {
+          color: var(--paper-yellow-700);
+        }
+        :host([status="error"]) #icon {
+          color: var(--paper-red-900);
+        }
+        .element-invisible {
+          position: absolute !important;
+          clip: rect(1px, 1px, 1px, 1px);
+          overflow: hidden;
+          height: 1px;
+        }
+      </style>
+      <paper-input
+        label="[[label]]"
+        value="{{value}}"
+        char-counter="[[charCounter]]"
+        disabled="[[disabled]]"
+        minlength="[[minlength]]"
+        maxlength="[[minlength]]"
+      >
+        <iron-icon id="icon" icon="[[icon]]" slot="prefix"></iron-icon>
+      </paper-input>
+      <div class="element-invisible">[[__activeMessage]]</div>
+      <paper-tooltip
+        for="icon"
+        position="top"
+        offset="20"
+        fit-to-visible-bounds
+      >
+        [[__activeMessage]]
+      </paper-tooltip>
+    `}static get tag(){return"paper-input-flagged"}static get properties(){return{/**
        * Icon based on status
        */icon:{type:String,computed:"_iconFromStatus(status)"},/**
        * Status based on test for flagged words

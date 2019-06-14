@@ -5,15 +5,16 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
  * @microcopy - the mental model for this element
  * - passing in a timestamp from unix and having it be php based date formatting to render is super helpful
  */class SimpleDatetime extends PolymerElement{static get template(){return html`
-    <style>
-      :host {
-        display: block;
-        font-size: 14px;
-        color: #b3b3b1;
-        line-height: 30px;
-      }
-    </style>
-    <time datetime$="[[date]]">[[date]]</time>`}static get tag(){return"simple-datetime"}static get properties(){return{/**
+      <style>
+        :host {
+          display: block;
+          font-size: 14px;
+          color: #b3b3b1;
+          line-height: 30px;
+        }
+      </style>
+      <time datetime$="[[date]]">[[date]]</time>
+    `}static get tag(){return"simple-datetime"}static get properties(){return{/**
        * Javascript timestamp
        */timestamp:{type:Number},/**
        * Format to output, see https://github.com/jacwright/date.format#supported-identifiers

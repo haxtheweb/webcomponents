@@ -13,7 +13,7 @@
  * @demo demo/index.html
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 window.SimpleColorsStyles = {};
 window.SimpleColorsStyles.instance = null;
 window.SimpleColorsStyles.colors = {
@@ -389,7 +389,6 @@ class SimpleColorsStyles extends PolymerElement {
   static get tag() {
     return "simple-colors-styles";
   }
-
   /**
    * life cycle, element is afixed to the DOM
    */
@@ -398,18 +397,18 @@ class SimpleColorsStyles extends PolymerElement {
     /**
      * append and register the shared styles
      */
-    let style = document.createElement("style");
-    document.head.appendChild(style);
-    this.__sheet = style.sheet;
-    this.addCssVariables();
-    this.addAccentVariables();
-  }
-
-  /**
-   * life cycle, element is disconnected
-   */
-  disconnectedCallback() {
-    super.disconnectedCallback();
+    afterNextRender(this, function() {
+      let style = document.createElement("style");
+      if (this.appendHead) {
+        document.head.appendChild(style);
+      } else {
+        this.parentNode.appendChild(style);
+      }
+      this.__sheet = style.sheet;
+      this.fullStyle = style;
+      this.addCssVariables(this.__sheet);
+      this.addAccentVariables(this.__sheet);
+    });
   }
 
   /**
@@ -624,61 +623,103 @@ class SimpleColorsStyles extends PolymerElement {
    *
    * @returns {string}
    */
-  addCssVariables() {
-    let greys = this.colors["grey"];
-    this.__sheet.insertRule(
-      this.makeRule(
-        "html",
-        this.addColorShades("default", "accent", greys, false) +
-          this.addThemeVariables("default", false)
-      ),
-      this.__sheet.cssRules.length
-    );
-    this.__sheet.insertRule(
-      this.makeRule(
-        "html",
-        this.addColorShades("fixed", "accent", greys, false) +
-          this.addThemeVariables("fixed", false)
-      ),
-      this.__sheet.cssRules.length
-    );
-    this.__sheet.insertRule(
-      this.makeRule(
-        "[dark]",
-        this.addColorShades("default", "accent", greys, true) +
-          this.addThemeVariables("default", true)
-      ),
-      this.__sheet.cssRules.length
-    );
+  addCssVariables(sheet) {
+    if (typeof sheet !== typeof undefined) {
+      let greys = this.colors["grey"];
+      sheet.insertRule(
+        this.makeRule(
+          "html",
+          this.addColorShades("default", "accent", greys, false) +
+            this.addThemeVariables("default", false)
+        ),
+        sheet.cssRules.length
+      );
+      sheet.insertRule(
+        this.makeRule(
+          "html",
+          this.addColorShades("fixed", "accent", greys, false) +
+            this.addThemeVariables("fixed", false)
+        ),
+        sheet.cssRules.length
+      );
+      sheet.insertRule(
+        this.makeRule(
+          "[dark]",
+          this.addColorShades("default", "accent", greys, true) +
+            this.addThemeVariables("default", true)
+        ),
+        sheet.cssRules.length
+      );
+      return sheet;
+    }
   }
   /**
    * adds all CSS accent color variables as styles for :host([accent-color]]) selectors
    *
    * @returns {object}
    */
-  addAccentVariables() {
+  addAccentVariables(sheet) {
+    if (typeof sheet !== typeof undefined) {
+      for (let color in this.colors) {
+        sheet.insertRule(
+          this.makeRule(
+            '[accent-color="' + color + '"]',
+            [
+              this.addColorShades(
+                "default",
+                "accent",
+                this.colors[color],
+                false
+              ),
+              this.addColorShades("fixed", "accent", this.colors[color], false)
+            ].join("")
+          ),
+          sheet.cssRules.length
+        );
+
+        sheet.insertRule(
+          this.makeRule(
+            '[dark][accent-color="' + color + '"]',
+            [
+              this.addColorShades("default", "accent", this.colors[color], true)
+            ].join("")
+          ),
+          sheet.cssRules.length
+        );
+      }
+      return sheet;
+    }
+  }
+  /**
+   * Make style element that can be appended into things
+   */
+  makeStyleElement() {
+    let style = document.createElement("style");
+    style.appendChild(document.createTextNode(this.getAccentVariablesText()));
+    return style;
+  }
+  /**
+   * generate accent variables as text
+   */
+  getAccentVariablesText() {
+    let text = "";
     for (let color in this.colors) {
-      this.__sheet.insertRule(
-        this.makeRule(
-          '[accent-color="' + color + '"]',
-          [
-            this.addColorShades("default", "accent", this.colors[color], false),
-            this.addColorShades("fixed", "accent", this.colors[color], false)
-          ].join("")
-        ),
-        this.__sheet.cssRules.length
+      text += this.makeRule(
+        ':host([accent-color="' + color + '"])',
+        [
+          this.addColorShades("default", "accent", this.colors[color], false),
+          this.addColorShades("fixed", "accent", this.colors[color], false)
+        ].join("")
       );
 
-      this.__sheet.insertRule(
-        this.makeRule(
-          '[dark][accent-color="' + color + '"]',
-          [
-            this.addColorShades("default", "accent", this.colors[color], true)
-          ].join("")
-        ),
-        this.__sheet.cssRules.length
+      text += this.makeRule(
+        ':host([dark][accent-color="' + color + '"])',
+        [
+          this.addColorShades("default", "accent", this.colors[color], true)
+        ].join("")
       );
     }
+    return text;
   }
   makeRule(selector, style) {
     return selector + " {\n" + style + "\n}\n";
@@ -695,6 +736,7 @@ window.SimpleColorsStyles.requestAvailability = function() {
     window.SimpleColorsStyles.instance = document.createElement(
       "simple-colors-styles"
     );
+    window.SimpleColorsStyles.instance.appendHead = true;
   }
   document.body.appendChild(window.SimpleColorsStyles.instance);
   return window.SimpleColorsStyles.instance;

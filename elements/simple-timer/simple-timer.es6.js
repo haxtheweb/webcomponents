@@ -12,12 +12,13 @@
  * @polymer
  * @demo demo/index.html
  */class SimpleTimer extends PolymerElement{static get template(){return html`
-    <style>
-      :host {
-        display: block;
-      }
-    </style>
-    [[_formattedTime]]`}static get tag(){return"simple-timer"}static get properties(){return{/**
+      <style>
+        :host {
+          display: block;
+        }
+      </style>
+      [[_formattedTime]]
+    `}static get tag(){return"simple-timer"}static get properties(){return{/**
        * Start time for the timer in seconds
        */startTime:{type:Number,value:60},/**
        * Current time of the timer, in seconds

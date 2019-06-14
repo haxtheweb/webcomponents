@@ -260,7 +260,6 @@ class LrndesignTimeline extends SimpleColors {
           }
         }
       </style>
-      <style include="simple-colors"></style>
       <article>
         <h1 id="title">[[title]]</h1>
         <slot></slot>
@@ -397,7 +396,7 @@ class LrndesignTimeline extends SimpleColors {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       /**
        * the title of the timeline
        */
@@ -442,6 +441,10 @@ class LrndesignTimeline extends SimpleColors {
         reflectToAttribute: true
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
 
   /**

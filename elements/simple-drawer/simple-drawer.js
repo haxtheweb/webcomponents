@@ -121,7 +121,6 @@ class SimpleDrawer extends PolymerElement {
           @apply --simple-drawer-heading;
         }
       </style>
-      <style include="simple-colors"></style>
       <app-drawer
         tabindex="0"
         id="drawer"

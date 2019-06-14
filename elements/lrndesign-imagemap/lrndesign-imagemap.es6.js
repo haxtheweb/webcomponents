@@ -6,61 +6,62 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
  * @polymer
  * @demo demo/index.html
  */class LrndesignImagemap extends PolymerElement{constructor(){super();import("./node_modules/@lrnwebcomponents/relative-heading/relative-heading.js");import("./node_modules/@lrnwebcomponents/lrndesign-imagemap/lib/lrndesign-imagemap-hotspot.js")}static get template(){return html`
-    <style>
-      :host {
-        display: block;
-      }
-      :host #buttons {
-        position: absolute;
-        left: -999999px;
-        top: 0;
-        overflow: hidden;
-        opacity: 0;
-      }
-      /*::slotted([hotspot]) {
+      <style>
+        :host {
+          display: block;
+        }
+        :host #buttons {
+          position: absolute;
+          left: -999999px;
+          top: 0;
+          overflow: hidden;
+          opacity: 0;
+        }
+        /*::slotted([hotspot]) {
         display: none;
       }*/
-      @media print {
-        :host > #svg {
-          display: none;
-        }
-        /*::slotted(#screen-only) {
+        @media print {
+          :host > #svg {
+            display: none;
+          }
+          /*::slotted(#screen-only) {
           display: none;
         }
         ::slotted([hotspot]) {
           display: block;
         }*/
-      }
-    </style>
-    <relative-heading
-      hidden\$="[[!label]]"
-      id="heading"
-      subtopic-of\$="[[subtopicOf]]"
-      tag\$="[[tag]]"
-      text\$="[[label]]"
-    >
-    </relative-heading>
-    <div id="desc"><slot name="desc"></slot></div>
-    <div id="svg"></div>
-    <div id="buttons"></div>
-    <slot></slot>
-    <iron-ajax
-      auto=""
-      id="get_svg"
-      url="[[src]]"
-      handle-as="text"
-      on-response="_getSVGHandler"
-    ></iron-ajax>`}static get tag(){return"lrndesign-imagemap"}static get properties(){return{/**
+        }
+      </style>
+      <relative-heading
+        hidden\$="[[!label]]"
+        id="heading"
+        subtopic-of\$="[[subtopicOf]]"
+        tag\$="[[tag]]"
+        text\$="[[label]]"
+      >
+      </relative-heading>
+      <div id="desc"><slot name="desc"></slot></div>
+      <div id="svg"></div>
+      <div id="buttons"></div>
+      <slot></slot>
+      <iron-ajax
+        auto=""
+        id="get_svg"
+        url="[[src]]"
+        handle-as="text"
+        on-response="_getSVGHandler"
+      ></iron-ajax>
+    `}static get tag(){return"lrndesign-imagemap"}static get properties(){return{/**
        * Label for the imagemap
        */label:{type:String,value:null},/**
        * The path of the SVG
        */src:{type:String,value:null},/**
        * The path of the SVG
        */hotspotDetails:{type:Array,value:[]},/*
-      * optional: the id of the heading element that this imagemap is a subtopic of
-      */subtopicOf:{type:String,value:null,reflectToAttribute:!0},/*
-      * optional: if subtopicOf is not set, start the content at a heading tag, eg. <h1/>, <h2/> ...
-      */tag:{type:String,value:null,reflectToAttribute:!0}}}/**
+       * optional: the id of the heading element that this imagemap is a subtopic of
+       */subtopicOf:{type:String,value:null,reflectToAttribute:!0},/*
+       * optional: if subtopicOf is not set, start the content at a heading tag, eg. <h1/>, <h2/> ...
+       */tag:{type:String,value:null,reflectToAttribute:!0}}}/**
    * attached life cycle
    */connectedCallback(){super.connectedCallback();window.SimpleModal.requestAvailability();window.addEventListener("simple-modal-closed",e=>{if(e.detail.invokedBy===this){this.closeHotspot()}})}/**
    * detached life cycle

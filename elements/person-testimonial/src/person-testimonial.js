@@ -25,7 +25,6 @@ class PersonTestimonial extends SimpleColors {
   }
   static get template() {
     return html`
-      <style include="simple-colors"></style>
       <style>
         :host {
           display: block;

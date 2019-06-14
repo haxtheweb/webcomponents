@@ -1,10 +1,148 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
+// need to make this an object so that HAX can listen for it correctly
+class GridPlateLayoutOptions {
+  constructor() {
+    this.layouts = {
+      "1": {
+        columnLayout: "1: full width",
+        xs: ["100%"],
+        sm: ["100%"],
+        md: ["100%"],
+        lg: ["100%"],
+        xl: ["100%"]
+      },
+      "1-1": {
+        columnLayout: "2: equal width",
+        xs: ["100%", "100%"],
+        sm: ["50%", "50%"],
+        md: ["50%", "50%"],
+        lg: ["50%", "50%"],
+        xl: ["50%", "50%"]
+      },
+      "2-1": {
+        columnLayout: "2: wide & narrow",
+        xs: ["100%", "100%"],
+        sm: ["50%", "50%"],
+        md: ["66.6666667%", "33.3333337%"],
+        lg: ["66.6666667%", "33.3333337%"],
+        xl: ["66.6666667%", "33.3333337%"]
+      },
+      "1-2": {
+        columnLayout: "2: narrow & wide",
+        xs: ["100%", "100%"],
+        sm: ["50%", "50%"],
+        md: ["33.3333333%", "66.6666667%"],
+        lg: ["33.3333333%", "66.6666667%"],
+        xl: ["33.3333333%", "66.6666667%"]
+      },
+      "3-1": {
+        columnLayout: "2: wider & narrower",
+        xs: ["100%", "100%"],
+        sm: ["50%", "50%"],
+        md: ["75%", "25%"],
+        lg: ["75%", "25%"],
+        xl: ["75%", "25%"]
+      },
+      "1-3": {
+        columnLayout: "2: narrower & wider",
+        xs: ["100%", "100%"],
+        sm: ["50%", "50%"],
+        md: ["25%", "75%"],
+        lg: ["25%", "75%"],
+        xl: ["25%", "75%"]
+      },
+      "1-1-1": {
+        columnLayout: "3: equal width",
+        xs: ["100%", "100%", "100%"],
+        sm: ["100%", "100%", "100%"],
+        md: ["33.3333333%", "33.3333333%", "33.3333333%"],
+        lg: ["33.3333333%", "33.3333333%", "33.3333333%"],
+        xl: ["33.3333333%", "33.3333333%", "33.3333333%"]
+      },
+      "2-1-1": {
+        columnLayout: "3: wide, narrow, and narrow",
+        xs: ["100%", "100%", "100%"],
+        sm: ["100%", "50%", "50%"],
+        md: ["50%", "25%", "25%"],
+        lg: ["50%", "25%", "25%"],
+        xl: ["50%", "25%", "25%"]
+      },
+      "1-2-1": {
+        columnLayout: "3: narrow, wide, and narrow",
+        xs: ["100%", "100%", "100%"],
+        sm: ["100%", "100%", "100%"],
+        md: ["25%", "50%", "25%"],
+        lg: ["25%", "50%", "25%"],
+        xl: ["25%", "50%", "25%"]
+      },
+      "1-1-2": {
+        columnLayout: "3: narrow, narrow, and wide",
+        xs: ["100%", "100%", "100%"],
+        sm: ["50%", "50%", "100%"],
+        md: ["25%", "25%", "50%"],
+        lg: ["25%", "25%", "50%"],
+        xl: ["25%", "25%", "50%"]
+      },
+      "1-1-1-1": {
+        columnLayout: "4: equal width",
+        xs: ["100%", "100%", "100%", "100%"],
+        sm: ["50%", "50%", "50%", "50%"],
+        md: ["25%", "25%", "25%", "25%"],
+        lg: ["25%", "25%", "25%", "25%"],
+        xl: ["25%", "25%", "25%", "25%"]
+      },
+      "1-1-1-1-1": {
+        columnLayout: "5: equal width",
+        xs: ["100%", "100%", "100%", "100%", "100%"],
+        sm: ["50%", "50%", "50%", "50%", "50%"],
+        md: ["20%", "20%", "20%", "20%", "20%"],
+        lg: ["20%", "20%", "20%", "20%", "20%"],
+        xl: ["20%", "20%", "20%", "20%", "20%"]
+      },
+      "1-1-1-1-1-1": {
+        columnLayout: "6: equal width",
+        xs: ["100%", "100%", "100%", "100%", "100%", "100%"],
+        sm: ["50%", "50%", "50%", "50%", "50%", "50%"],
+        md: [
+          "33.3333333%",
+          "33.3333333%",
+          "33.3333333%",
+          "33.3333333%",
+          "33.3333333%",
+          "33.3333333%"
+        ],
+        lg: [
+          "16.6666667%",
+          "16.6666667%",
+          "16.6666667%",
+          "16.6666667%",
+          "16.6666667%",
+          "16.6666667%"
+        ],
+        xl: [
+          "16.6666667%",
+          "16.6666667%",
+          "16.6666667%",
+          "16.6666667%",
+          "16.6666667%",
+          "16.6666667%"
+        ]
+      }
+    };
+    this.options = {};
+    let layoutFlip = Object.keys(this.layouts);
+    //loop through all the supplied layouts to get the HAX layout options & descriptions
+    for (let i = 0; i < layoutFlip.length; i++) {
+      this.options[layoutFlip[i]] = this.layouts[layoutFlip[i]].columnLayout;
+    }
+  }
+}
 /**
  * `grid-plate`
  * `A grid plate based on a layout that manipulates it.`
@@ -13,19 +151,20 @@ import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 class GridPlate extends PolymerElement {
   constructor() {
     super();
+    window.SimpleColorsStyles.requestAvailability();
     import("@polymer/paper-icon-button/paper-icon-button.js");
     import("@polymer/iron-icons/iron-icons.js");
   }
   static get template() {
     return html`
-      <style include="simple-colors">
+      <style>
         :host {
           display: block;
           --grid-plate-row-margin: 0px;
           --grid-plate-row-padding: 0px;
           --grid-plate-item-margin: 15px;
-          --grid-plate-editable-border-color: #ccc;
-          --grid-plate-active-border-color: #6cd;
+          --grid-plate-editable-border-color: #bbbbbb;
+          --grid-plate-active-border-color: #000000;
           --grid-plate-col-transition: all 0.2s ease-in-out;
         }
         :host .row {
@@ -45,7 +184,6 @@ class GridPlate extends PolymerElement {
         :host([edit-mode]) .column {
           min-height: 150px;
         }
-
         :host([edit-mode]) .column {
           outline: 1px dotted var(--grid-plate-editable-border-color);
         }
@@ -60,37 +198,65 @@ class GridPlate extends PolymerElement {
         }
         :host([edit-mode])
           .column[style="min-height: unset"]:not(:empty):before {
-          content: "Layout hides column (" attr(id) ")";
+          content: "Layout hides this column (" attr(id) ")";
           color: red;
           margin: var(--grid-plate-item-margin);
           padding: 15px 0;
           min-height: 150px;
         }
-        :host ::slotted(*) {
+        :host .column ::slotted(*) {
           margin: var(--grid-plate-item-margin);
-          padding: 0;
+          padding: var(--grid-plate-item-margin);
+          transition: var(--grid-plate-col-transition);
         }
-        :host ::slotted(*.mover) {
+        :host([edit-mode]) .column ::slotted(img) {
+          display: block;
+          width: calc(100% - 32px - var(--grid-plate-item-margin));
+        }
+        :host([edit-mode]) .column ::slotted(.mover) {
           outline: 2px dashed var(--grid-plate-editable-border-color);
           outline-offset: 4px;
         }
-        :host ::slotted(*.active-item) {
+        :host([edit-mode]) .column.mover {
+          outline: 2px dashed var(--grid-plate-editable-border-color);
+          outline-offset: 0px;
+        }
+        :host([edit-mode]) .column ::slotted(.active-item) {
           outline: 2px dashed var(--grid-plate-active-border-color);
+          background-color: var(--simple-colors-default-theme-yellow-1);
           outline-offset: 4px;
         }
-        :host ::slotted(*[data-draggable]:focus),
-        :host ::slotted(*[data-draggable]:hover),
-        :host ::slotted(*[data-draggable]:active) {
+        :host([edit-mode]) .column ::slotted(*:focus),
+        :host([edit-mode]) .column ::slotted(*:hover),
+        :host([edit-mode]) .column ::slotted(*:active) {
           cursor: move;
+          background-color: var(--simple-colors-default-theme-yellow-3);
         }
-
+        :host([edit-mode]) .column ::slotted(.mover) {
+          background-color: var(--simple-colors-default-theme-orange-1);
+          padding: 16px;
+        }
+        :host([edit-mode]) .column ::slotted([data-draggable].mover:hover) {
+          background-color: var(--simple-colors-default-theme-yellow-2);
+        }
         :host([edit-mode]) .column.mover {
-          background-color: yellow;
+          content: "Double click to create a paragraph here";
+          background-color: var(--simple-colors-default-theme-orange-1);
         }
-        :host .column[data-draggable].mover {
-          background-color: pink;
+        :host([edit-mode]) .column.mover:hover {
+          background-color: var(--simple-colors-default-theme-yellow-1);
         }
-
+        :host([edit-mode]) .column ::slotted(.hovered) {
+          background-color: var(
+            --simple-colors-default-theme-orange-3
+          ) !important;
+          outline: dashed 4px var(--grid-plate-active-border-color);
+        }
+        :host([edit-mode]) .column.hovered {
+          background-color: var(
+            --simple-colors-default-theme-orange-3
+          ) !important;
+        }
         paper-icon-button {
           display: none;
           position: absolute;
@@ -198,13 +364,12 @@ class GridPlate extends PolymerElement {
         </div>
       </div>
       <iron-a11y-keys
-        stop-keyboard-event-propagation
-        target="[[__activeItem]]"
+        target="[[activeItem]]"
         keys="enter"
         on-keys-pressed="setActiveElement"
       ></iron-a11y-keys>
       <iron-a11y-keys
-        target="[[__activeItem]]"
+        target="[[activeItem]]"
         keys="esc"
         on-keys-pressed="cancelActive"
       ></iron-a11y-keys>
@@ -213,21 +378,41 @@ class GridPlate extends PolymerElement {
   static get tag() {
     return "grid-plate";
   }
+  /**
+   * life cycle
+   */
   connectedCallback() {
     super.connectedCallback();
     afterNextRender(this, function() {
+      for (var j = 1; j <= this.columns; j++) {
+        if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
+          let col = this.shadowRoot.querySelector("#col" + j);
+          col.addEventListener("drop", this.dropEvent.bind(this));
+          col.addEventListener("dblclick", this.dblclick.bind(this));
+          col.addEventListener("dragstart", this.dragStart.bind(this));
+          col.addEventListener("dragenter", this.dragEnter.bind(this));
+          col.addEventListener("dragleave", this.dragLeave.bind(this));
+          col.addEventListener("dragend", this.dragEnd.bind(this));
+          col.addEventListener("dragover", function(e) {
+            e.preventDefault();
+          });
+          col.setAttribute("data-draggable", true);
+        }
+      }
       this.addEventListener("focusin", this._focusIn.bind(this));
-      this.addEventListener("focusout", this._focusOut.bind(this));
       // listen for HAX if it's around
-      document.body.addEventListener(
+      window.addEventListener(
         "hax-store-property-updated",
         this._haxStorePropertyUpdated.bind(this)
       );
       // listen for HAX insert events if it exists
-      document.body.addEventListener(
+      window.addEventListener(
         "hax-insert-content",
         this.haxInsertContent.bind(this)
       );
+      // Establish hax property binding
+      this.HAXWiring = new HAXWiring();
+      this.HAXWiring.setup(GridPlate.haxProperties, GridPlate.tag, this);
     });
     window.ResponsiveUtility.requestAvailability();
     window.dispatchEvent(
@@ -235,7 +420,7 @@ class GridPlate extends PolymerElement {
         detail: {
           element: this,
           attribute: "responsive-size",
-          relativeToParent: true,
+          relativeToParent: false,
           sm: this.breakpointSm,
           md: this.breakpointMd,
           lg: this.breakpointLg,
@@ -243,18 +428,38 @@ class GridPlate extends PolymerElement {
         }
       })
     );
-    // Establish hax property binding
-    this.options = {};
-    let layouts = Object.keys(this.layouts),
-      getOptions = () => {
-        //loop through all the supplied layouts to get the HAX layout options & descriptions
-        for (let i = 0; i < layouts.length; i++) {
-          this.options[layouts[i]] = this.layouts[layouts[i]].columnLayout;
-        }
-      };
-    getOptions();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(GridPlate.haxProperties, GridPlate.tag, this);
+  }
+  /**
+   * life cycle
+   */
+  disconnectedCallback() {
+    for (var j = 1; j <= this.columns; j++) {
+      if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
+        let col = this.shadowRoot.querySelector("#col" + j);
+        col.removeEventListener("drop", this.dropEvent.bind(this));
+        col.removeEventListener("dblclick", this.dblclick.bind(this));
+        col.removeEventListener("dragstart", this.dragStart.bind(this));
+        col.removeEventListener("dragenter", this.dragEnter.bind(this));
+        col.removeEventListener("dragleave", this.dragLeave.bind(this));
+        col.removeEventListener("dragend", this.dragEnd.bind(this));
+        col.removeEventListener("dragover", function(e) {
+          e.preventDefault();
+        });
+        col.removeAttribute("data-draggable");
+      }
+    }
+    this.removeEventListener("focusin", this._focusIn.bind(this));
+    // listen for HAX if it's around
+    window.removeEventListener(
+      "hax-store-property-updated",
+      this._haxStorePropertyUpdated.bind(this)
+    );
+    // listen for HAX insert events if it exists
+    window.removeEventListener(
+      "hax-insert-content",
+      this.haxInsertContent.bind(this)
+    );
+    super.disconnectedCallback();
   }
   static get haxProperties() {
     return {
@@ -270,7 +475,7 @@ class GridPlate extends PolymerElement {
             description:
               "Style to present these items (may change for small screens)",
             inputMethod: "select",
-            options: this.options
+            options: new GridPlateLayoutOptions().options
           }
         ],
         advanced: [
@@ -309,7 +514,13 @@ class GridPlate extends PolymerElement {
         ]
       },
       saveOptions: {
-        unsetAttributes: ["__active-item", "edit-mode", "layouts"]
+        unsetAttributes: [
+          "active-item",
+          "edit-mode",
+          "layouts",
+          "columns",
+          "options"
+        ]
       }
     };
   }
@@ -358,7 +569,7 @@ class GridPlate extends PolymerElement {
        */
       columns: {
         type: Number,
-        computed: "_getColumns(columnWidths)",
+        value: 6,
         reflectToAttribute: true
       },
       /**
@@ -386,6 +597,7 @@ class GridPlate extends PolymerElement {
       layout: {
         type: String,
         value: "1-1",
+        observer: "layoutChanged",
         reflectToAttribute: true
       },
       /**
@@ -405,133 +617,7 @@ class GridPlate extends PolymerElement {
       layouts: {
         type: Object,
         readOnly: true,
-        value: {
-          "1": {
-            columnLayout: "1: full width",
-            xs: ["100%"],
-            sm: ["100%"],
-            md: ["100%"],
-            lg: ["100%"],
-            xl: ["100%"]
-          },
-          "1-1": {
-            columnLayout: "2: equal width",
-            xs: ["100%", "100%"],
-            sm: ["50%", "50%"],
-            md: ["50%", "50%"],
-            lg: ["50%", "50%"],
-            xl: ["50%", "50%"]
-          },
-          "2-1": {
-            columnLayout: "2: wide & narrow",
-            xs: ["100%", "100%"],
-            sm: ["50%", "50%"],
-            md: ["66.6666667%", "33.3333337%"],
-            lg: ["66.6666667%", "33.3333337%"],
-            xl: ["66.6666667%", "33.3333337%"]
-          },
-          "1-2": {
-            columnLayout: "2: narrow & wide",
-            xs: ["100%", "100%"],
-            sm: ["50%", "50%"],
-            md: ["33.3333333%", "66.6666667%"],
-            lg: ["33.3333333%", "66.6666667%"],
-            xl: ["33.3333333%", "66.6666667%"]
-          },
-          "3-1": {
-            columnLayout: "2: wider & narrower",
-            xs: ["100%", "100%"],
-            sm: ["50%", "50%"],
-            md: ["75%", "25%"],
-            lg: ["75%", "25%"],
-            xl: ["75%", "25%"]
-          },
-          "1-3": {
-            columnLayout: "2: narrower & wider",
-            xs: ["100%", "100%"],
-            sm: ["50%", "50%"],
-            md: ["25%", "75%"],
-            lg: ["25%", "75%"],
-            xl: ["25%", "75%"]
-          },
-          "1-1-1": {
-            columnLayout: "3: equal width",
-            xs: ["100%", "100%", "100%"],
-            sm: ["100%", "100%", "100%"],
-            md: ["33.3333333%", "33.3333333%", "33.3333333%"],
-            lg: ["33.3333333%", "33.3333333%", "33.3333333%"],
-            xl: ["33.3333333%", "33.3333333%", "33.3333333%"]
-          },
-          "2-1-1": {
-            columnLayout: "3: wide, narrow, and narrow",
-            xs: ["100%", "100%", "100%"],
-            sm: ["100%", "50%", "50%"],
-            md: ["50%", "25%", "25%"],
-            lg: ["50%", "25%", "25%"],
-            xl: ["50%", "25%", "25%"]
-          },
-          "1-2-1": {
-            columnLayout: "3: narrow, wide, and narrow",
-            xs: ["100%", "100%", "100%"],
-            sm: ["100%", "100%", "100%"],
-            md: ["25%", "50%", "25%"],
-            lg: ["25%", "50%", "25%"],
-            xl: ["25%", "50%", "25%"]
-          },
-          "1-1-2": {
-            columnLayout: "3: narrow, narrow, and wide",
-            xs: ["100%", "100%", "100%"],
-            sm: ["50%", "50%", "100%"],
-            md: ["25%", "25%", "50%"],
-            lg: ["25%", "25%", "50%"],
-            xl: ["25%", "25%", "50%"]
-          },
-          "1-1-1-1": {
-            columnLayout: "4: equal width",
-            xs: ["100%", "100%", "100%", "100%"],
-            sm: ["50%", "50%", "50%", "50%"],
-            md: ["25%", "25%", "25%", "25%"],
-            lg: ["25%", "25%", "25%", "25%"],
-            xl: ["25%", "25%", "25%", "25%"]
-          },
-          "1-1-1-1-1": {
-            columnLayout: "5: equal width",
-            xs: ["100%", "100%", "100%", "100%", "100%"],
-            sm: ["50%", "50%", "50%", "50%", "50%"],
-            md: ["20%", "20%", "20%", "20%", "20%"],
-            lg: ["20%", "20%", "20%", "20%", "20%"],
-            xl: ["20%", "20%", "20%", "20%", "20%"]
-          },
-          "1-1-1-1-1-1": {
-            columnLayout: "6: equal width",
-            xs: ["100%", "100%", "100%", "100%", "100%", "100%"],
-            sm: ["50%", "50%", "50%", "50%", "50%", "50%"],
-            md: [
-              "33.3333333%",
-              "33.3333333%",
-              "33.3333333%",
-              "33.3333333%",
-              "33.3333333%",
-              "33.3333333%"
-            ],
-            lg: [
-              "16.6666667%",
-              "16.6666667%",
-              "16.6666667%",
-              "16.6666667%",
-              "16.6666667%",
-              "16.6666667%"
-            ],
-            xl: [
-              "16.6666667%",
-              "16.6666667%",
-              "16.6666667%",
-              "16.6666667%",
-              "16.6666667%",
-              "16.6666667%"
-            ]
-          }
-        }
+        value: new GridPlateLayoutOptions().layouts
       },
       /**
        * Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`
@@ -544,7 +630,7 @@ class GridPlate extends PolymerElement {
       /**
        * Track active item
        */
-      __activeItem: {
+      activeItem: {
         type: Object,
         observer: "_activeItemChanged"
       },
@@ -558,6 +644,14 @@ class GridPlate extends PolymerElement {
       }
     };
   }
+  /**
+   * Implements preProcessHaxInsertContent to clean up output on save
+   */
+  preProcessHaxInsertContent(detail) {
+    // ensure this is wiped to avoid issues in building
+    delete detail.properties.activeItem;
+    return detail;
+  }
 
   _droppableChanged(newValue) {
     if (newValue) {
@@ -568,9 +662,8 @@ class GridPlate extends PolymerElement {
    * Cancel active element
    */
   cancelActive(e) {
-    this.__activeItem = null;
+    this.activeItem = null;
   }
-
   /**
    * Determines if the item can move a set number of slots.
    *
@@ -585,7 +678,17 @@ class GridPlate extends PolymerElement {
       dest = parseInt(col[1]) + dir;
     return dest >= 1 && dest <= max;
   }
-
+  layoutChanged(newValue, oldValue) {
+    if (newValue && typeof oldValue !== typeof undefined) {
+      // ensure we apply things correctly
+      if (this.editMode) {
+        this.editMode = false;
+        setTimeout(() => {
+          this.editMode = true;
+        }, 100);
+      }
+    }
+  }
   /**
    * Moves an item a set number of slots.
    *
@@ -596,9 +699,7 @@ class GridPlate extends PolymerElement {
     let dir = before ? -1 : 1,
       col = item.getAttribute("slot").split("-"),
       dest = parseInt(col[1]) + dir;
-    if (this.canMoveSlot(item, dir)) {
-      item.setAttribute("slot", "col-" + dest);
-    }
+    item.setAttribute("slot", "col-" + dest);
   }
 
   /**
@@ -609,11 +710,22 @@ class GridPlate extends PolymerElement {
    * @returns {boolean} if the item can move a set number of slots
    */
   canMoveOrder(item, before) {
-    let target = before ? item.previousElementSibling : item.nextElementSibling;
-    return (
-      target !== null &&
-      target.getAttribute("slot") === item.getAttribute("slot")
-    );
+    let nodes = this.shadowRoot
+      .querySelector('slot[name="' + item.getAttribute("slot") + '"')
+      .assignedNodes({ flatten: true });
+    let target = null,
+      position = 0;
+    for (var i in nodes) {
+      if (item === nodes[i]) {
+        position = i;
+      }
+    }
+    if (before && parseInt(position) - 1 >= 0) {
+      target = nodes[parseInt(position) - 1];
+    } else if (!before && parseInt(position) + 1 <= nodes.length - 1) {
+      target = nodes[parseInt(position) + 1];
+    }
+    return target !== null && typeof target !== typeof undefined;
   }
   /**
    * Moves an item's order within a slot.
@@ -622,19 +734,22 @@ class GridPlate extends PolymerElement {
    * @param {boolean} move item before previous? (false for move item after next)
    */
   moveOrder(item, before = true) {
-    let dir = before ? -1 : 1;
-    if (this.canMoveOrder(item, before)) {
-      if (before) {
-        dom(this).insertBefore(
-          this.__activeItem,
-          this.__activeItem.previousElementSibling
-        );
-      } else {
-        dom(this).insertBefore(
-          this.__activeItem.nextElementSibling,
-          this.__activeItem
-        );
+    let nodes = this.shadowRoot
+      .querySelector('slot[name="' + item.getAttribute("slot") + '"')
+      .assignedNodes({ flatten: true });
+    let target = null,
+      position = 0;
+    for (var i in nodes) {
+      if (item === nodes[i]) {
+        position = i;
       }
+    }
+    if (before) {
+      target = nodes[parseInt(position) - 1];
+      dom(this).insertBefore(this.activeItem, target);
+    } else {
+      target = nodes[parseInt(position) + 1];
+      dom(this).insertBefore(target, this.activeItem);
     }
   }
 
@@ -647,23 +762,23 @@ class GridPlate extends PolymerElement {
     // see if this was an up down left or right movement
     switch (local.id) {
       case "up":
-        this.moveOrder(this.__activeItem, true);
+        this.moveOrder(this.activeItem, true);
         break;
       case "down":
-        this.moveOrder(this.__activeItem, false);
+        this.moveOrder(this.activeItem, false);
         break;
       case "left":
-        this.moveSlot(this.__activeItem, true);
+        this.moveSlot(this.activeItem, true);
         break;
       case "right":
-        this.moveSlot(this.__activeItem, false);
+        this.moveSlot(this.activeItem, false);
         break;
     }
     // ensure arrows are correctly positioned after the move
     setTimeout(() => {
-      if (this.__activeItem && typeof this.__activeItem.focus === "function") {
-        this.positionArrows(this.__activeItem);
-        this.__activeItem.focus();
+      if (this.activeItem && typeof this.activeItem.focus === "function") {
+        this.positionArrows(this.activeItem);
+        this.activeItem.focus();
       }
     }, 100);
   }
@@ -690,9 +805,15 @@ class GridPlate extends PolymerElement {
    * Set the target element to active
    */
   setActiveElement(e) {
+    // support HAX text operations should take priority
+    if (
+      window.HaxStore &&
+      window.HaxStore.instance &&
+      window.HaxStore.instance.isTextElement(this.activeItem)
+    ) {
+      return true;
+    }
     this.shadowRoot.querySelector("#right").focus();
-    e.preventDefault();
-    e.stopPropagation();
   }
   /**
    * gets the column widths based on selected layout and current responsive width
@@ -768,25 +889,7 @@ class GridPlate extends PolymerElement {
       var local = normalizedEvent.localTarget;
       // only activate if we touch something that's in the slot of the grid plate
       if (dom(local).parentNode === this) {
-        this.__activeItem = local;
-      }
-    }
-  }
-  /**
-   * Focus / tab / click event normalization
-   */
-  _focusOut(e) {
-    if (this.editMode) {
-      var normalizedEvent = dom(e);
-      var local = normalizedEvent.localTarget;
-      // @todo need to correctly de-focus when the element loses focus entirely
-      if (
-        local.parentNode === this ||
-        document.activeElement.parentNode === this ||
-        document.activeElement === this
-      ) {
-      } else {
-        //this.__activeItem = null;
+        this.activeItem = local;
       }
     }
   }
@@ -865,6 +968,14 @@ class GridPlate extends PolymerElement {
           if (typeof children[i].tagName !== typeof undefined) {
             children[i].addEventListener("drop", this.dropEvent.bind(this));
             children[i].addEventListener(
+              "dragenter",
+              this.dragEnter.bind(this)
+            );
+            children[i].addEventListener(
+              "dragleave",
+              this.dragLeave.bind(this)
+            );
+            children[i].addEventListener(
               "dragstart",
               this.dragStart.bind(this)
             );
@@ -878,39 +989,26 @@ class GridPlate extends PolymerElement {
             children[i].setAttribute("tabindex", 0);
           }
         }
-        microTask.run(() => {
-          for (var j = 1; j <= this.columns.length; j++) {
-            if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
-              this.shadowRoot
-                .querySelector("#col" + j)
-                .addEventListener("drop", this.dropEvent.bind(this));
-              this.shadowRoot
-                .querySelector("#col" + j)
-                .addEventListener("dragstart", this.dragStart.bind(this));
-              this.shadowRoot
-                .querySelector("#col" + j)
-                .addEventListener("dragend", this.dragEnd.bind(this));
-              this.shadowRoot
-                .querySelector("#col" + j)
-                .addEventListener("dragover", function(e) {
-                  e.preventDefault();
-                });
-              this.shadowRoot
-                .querySelector("#col" + j)
-                .setAttribute("data-draggable", true);
-            }
-          }
-        });
       }
       // flipping from true to false
       else if (!newValue && oldValue) {
-        // walk the children and apply the draggable state needed
+        // unset active to clean up state
+        this.activeItem = null;
+        // walk the children and remove the draggable state needed
         for (var i in children) {
           if (typeof children[i].tagName !== typeof undefined) {
             children[i].removeEventListener("drop", this.dropEvent.bind(this));
             children[i].removeEventListener(
               "dragstart",
               this.dragStart.bind(this)
+            );
+            children[i].removeEventListener(
+              "dragenter",
+              this.dragEnter.bind(this)
+            );
+            children[i].removeEventListener(
+              "dragleave",
+              this.dragLeave.bind(this)
             );
             children[i].removeEventListener("dragend", this.dragEnd.bind(this));
             children[i].removeEventListener("dragover", function(e) {
@@ -921,97 +1019,116 @@ class GridPlate extends PolymerElement {
             children[i].removeAttribute("tabindex");
           }
         }
-        microTask.run(() => {
-          for (var j = 1; j <= this.columns.length; j++) {
-            if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
-              this.shadowRoot
-                .querySelector("#col" + j)
-                .removeEventListener("drop", this.dropEvent.bind(this));
-              this.shadowRoot
-                .querySelector("#col" + j)
-                .removeEventListener("dragstart", this.dragStart.bind(this));
-              this.shadowRoot
-                .querySelector("#col" + j)
-                .removeEventListener("dragend", this.dragEnd.bind(this));
-              this.shadowRoot
-                .querySelector("#col" + j)
-                .removeEventListener("dragover", function(e) {
-                  e.preventDefault();
-                });
-              this.shadowRoot
-                .querySelector("#col" + j)
-                .removeAttribute("data-draggable");
-            }
-          }
-        });
       }
+    }
+  }
+  /**
+   * Enter an element, meaning we've over it while dragging
+   */
+  dragEnter(e) {
+    if (this.editMode) {
+      e.preventDefault();
+      e.target.classList.add("hovered");
+    }
+  }
+  /**
+   * Leaving an element while dragging.
+   */
+  dragLeave(e) {
+    if (this.editMode) {
+      e.target.classList.remove("hovered");
+    }
+  }
+  /**
+   * On double check, fire an event for HAX to insert a paragraph.
+   * If they aren't using HAX then it won't do anything
+   */
+  dblclick(e) {
+    if (this.editMode && e.target.id) {
+      let detail = {};
+      detail.properties = {
+        slot: e.target.id.replace("col", "col-")
+      };
+      this.dispatchEvent(
+        new CustomEvent("grid-plate-add-item", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: detail
+        })
+      );
     }
   }
   /**
    * Drop an item onto another
    */
   dropEvent(e) {
-    var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget;
-    // if we have a slot on what we dropped into then we need to mirror that item
-    // and place ourselves below it in the DOM
-    if (
-      typeof this.__activeItem !== typeof undefined &&
-      typeof local !== typeof undefined &&
-      local.getAttribute("slot") != null &&
-      this.__activeItem !== local
-    ) {
-      this.__activeItem.setAttribute("slot", local.getAttribute("slot"));
-      dom(this).insertBefore(this.__activeItem, local);
-      // ensure that if we caught this event we process it
-      e.preventDefault();
-      e.stopPropagation();
-    }
-    // special case for dropping on an empty column or between items
-    // which could involve a miss on the column
-    else if (local.tagName === ".column") {
-      var col = local.id.replace("col", "");
-      this.__activeItem.setAttribute("slot", "col-" + col);
-      dom(this).appendChild(this.__activeItem);
-      // ensure that if we caught this event we process it
-      e.preventDefault();
-      e.stopPropagation();
-    }
-    let children = dom(this).children;
-    // walk the children and apply the draggable state needed
-    for (var i in children) {
-      if (typeof children[i].classList !== typeof undefined) {
-        children[i].classList.remove("mover");
+    if (this.editMode) {
+      var normalizedEvent = dom(e);
+      var local = normalizedEvent.localTarget;
+      // if we have a slot on what we dropped into then we need to mirror that item
+      // and place ourselves below it in the DOM
+      if (
+        typeof this.activeItem !== typeof undefined &&
+        this.activeItem !== null &&
+        typeof local !== typeof undefined &&
+        local.getAttribute("slot") != null &&
+        this.activeItem !== local
+      ) {
+        this.activeItem.setAttribute("slot", local.getAttribute("slot"));
+        dom(this).insertBefore(this.activeItem, local);
+        // ensure that if we caught this event we process it
+        e.preventDefault();
+        e.stopPropagation();
       }
-    }
-    for (var j = 1; j <= this.columns.length; j++) {
-      if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
-        this.shadowRoot.querySelector("#col" + j).classList.remove("mover");
+      // special case for dropping on an empty column or between items
+      // which could involve a miss on the column
+      else if (local.tagName === "DIV" && local.classList.contains("column")) {
+        var col = local.id.replace("col", "");
+        this.activeItem.setAttribute("slot", "col-" + col);
+        dom(this).appendChild(this.activeItem);
+        // ensure that if we caught this event we process it
+        e.preventDefault();
+        e.stopPropagation();
       }
-    }
-    // position arrows / set focus in case the DOM got updated above
-    setTimeout(() => {
-      if (this.__activeItem && typeof this.__activeItem.focus === "function") {
-        this.positionArrows(this.__activeItem);
-        this.__activeItem.focus();
+      let children = dom(this).children;
+      // walk the children and apply the draggable state needed
+      for (var i in children) {
+        if (typeof children[i].classList !== typeof undefined) {
+          children[i].classList.remove("mover");
+        }
       }
-    }, 100);
+      for (var j = 1; j <= this.columns; j++) {
+        if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
+          this.shadowRoot.querySelector("#col" + j).classList.remove("mover");
+        }
+      }
+      // position arrows / set focus in case the DOM got updated above
+      setTimeout(() => {
+        if (this.activeItem && typeof this.activeItem.focus === "function") {
+          this.positionArrows(this.activeItem);
+          this.activeItem.focus();
+        }
+      }, 100);
+    }
   }
 
   /**
    * Start a drag event, this is an element being dragged
    */
   dragStart(e) {
-    let children = dom(this).children;
-    // walk the children and apply the draggable state needed
-    for (var i in children) {
-      if (typeof children[i].classList !== typeof undefined) {
-        children[i].classList.add("mover");
+    if (this.editMode) {
+      let children = dom(this).children;
+      // walk the children and apply the draggable state needed
+      for (var i in children) {
+        if (typeof children[i].classList !== typeof undefined) {
+          children[i].classList.add("mover");
+        }
       }
-    }
-    for (var j = 1; j <= this.columns.length; j++) {
-      if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
-        this.shadowRoot.querySelector("#col" + j).classList.add("mover");
+      for (var j = 1; j <= this.columns; j++) {
+        if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
+          this.shadowRoot.querySelector("#col" + j).classList.add("mover");
+        }
       }
     }
   }
@@ -1020,16 +1137,20 @@ class GridPlate extends PolymerElement {
    * When we end dragging ensure we remove the mover class.
    */
   dragEnd(e) {
-    let children = dom(this).children;
-    // walk the children and apply the draggable state needed
-    for (var i in children) {
-      if (typeof children[i].classList !== typeof undefined) {
-        children[i].classList.remove("mover");
+    if (this.editMode) {
+      let children = dom(this).children;
+      // walk the children and apply the draggable state needed
+      for (var i in children) {
+        if (typeof children[i].classList !== typeof undefined) {
+          children[i].classList.remove("mover", "hovered");
+        }
       }
-    }
-    for (var j = 1; j <= this.columns.length; j++) {
-      if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
-        this.shadowRoot.querySelector("#col" + j).classList.remove("mover");
+      for (var j = 1; j <= this.columns; j++) {
+        if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
+          this.shadowRoot
+            .querySelector("#col" + j)
+            .classList.remove("mover", "hovered");
+        }
       }
     }
   }
@@ -1046,12 +1167,9 @@ class GridPlate extends PolymerElement {
       // delay and then set it back, re-applying all events
       setTimeout(() => {
         this.editMode = true;
-        if (
-          this.__activeItem &&
-          typeof this.__activeItem.focus === "function"
-        ) {
-          this.positionArrows(this.__activeItem);
-          this.__activeItem.focus();
+        if (this.activeItem && typeof this.activeItem.focus === "function") {
+          this.positionArrows(this.activeItem);
+          this.activeItem.focus();
         }
       }, 100);
     }

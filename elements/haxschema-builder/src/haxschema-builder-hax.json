@@ -1,42 +1,22 @@
 {
   "canScale": true,
   "canPosition": true,
-  "canEditSource": false,
+  "canEditSource": true,
   "gizmo": {
     "title": "Haxschema builder",
     "description": "dynamically build and visualize HAXschema",
     "icon": "icons:android",
     "color": "green",
     "groups": ["Builder"],
-    "handles": [
-      {
-        "type": "todo:read-the-docs-for-usage"
-      }
-    ],
+    "handles": [],
     "meta": {
       "author": "btopro",
       "owner": "The Pennsylvania State University"
     }
   },
   "settings": {
-    "quick": [
-      {
-        "property": "source",
-        "description": "",
-        "inputMethod": "textfield",
-        "required": true,
-        "icon": "icons:link",
-        "validationType": "url"
-      }
-    ],
+    "quick": [],
     "configure": [
-      {
-        "property": "haxSchema",
-        "description": "",
-        "inputMethod": "array",
-        "required": false,
-        "icon": "icons:android"
-      },
       {
         "property": "source",
         "description": "",

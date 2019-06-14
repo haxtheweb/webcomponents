@@ -15,8 +15,8 @@
 static get template(){return html`
 <style>:host {
   display: flex;
-  align-items: center;
   flex-direction: column-reverse;
+  justify-content: stretch;
   --simple-popover-border-radius: 3px;
   --simple-popover-color: #222;
   --simple-popover-padding: 10px;
@@ -28,13 +28,22 @@ static get template(){return html`
   display: none;
 }
 :host([position="left"]) {
+  justify-content: start;
   flex-direction: row;
 }
 :host([position="right"]) {
+  justify-content: start;
   flex-direction: row-reverse;
 }
 :host([position="top"]) {
   flex-direction: column;
+}
+:host > * {
+  width: 100%;
+}
+:host([position="left"]) > *, 
+:host([position="right"]) > * {
+  width: unset;
 }
 :host #content {
   margin: 0 auto;
@@ -47,24 +56,16 @@ static get template(){return html`
   box-shadow: var(--simple-popover-box-shadow);
   @apply --simple-popover-content;
 }
+:host #pointer-outer {
+  margin: -1px;
+}
 :host #pointer {
-  margin: 0 auto;
   width: 20px;
   height: 20px;
   position: relative;
   overflow: hidden;
   flex: 0 0 20px;
-  margin: 0 0 -1px;
 }
-:host([position="top"]) #pointer {
-  margin: -0.5px 0 0;
-} 
-:host([position="left"]) #pointer {
-  margin: 0 0 0 -1px;
-} 
-:host([position="right"]) #pointer {
-  margin: 0 -1px 0 0;
-} 
 :host #pointer:after {
   content: "";
   position: absolute;
@@ -77,7 +78,7 @@ static get template(){return html`
   left: 5px;
 }
 :host([position="top"]) #pointer:after {
-  top: -6px;
+  top: -5px;
   left: 5px;
 } 
 :host([position="right"]) #pointer:after {
@@ -86,23 +87,37 @@ static get template(){return html`
 } 
 :host([position="left"]) #pointer:after {
   top: 5px;
-  left: -6px;
-} </style>
+  left: -5px;
+}</style>
 <div id="content" role="alertdialog">
   <slot></slot>
 </div>
-<div id="pointer"></div>`}// haxProperty definition
+<div id="pointer-outer">
+  <div id="pointer" style$="[[__pointerOffSetStyle]]"></div>
+</div>`}// haxProperty definition
 static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Simple popover",description:"A popover alertdialog that is positioned next to a target element",icon:"icons:android",color:"green",groups:["Popover"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"nikkimk",owner:"The Pennsylvania State University"}},settings:{quick:[],configure:[{property:"title",description:"",inputMethod:"textfield",required:!1,icon:"icons:android"}],advanced:[]}}}// properties available to the custom element for data binding
 static get properties(){return{/**
    * Offset to compensate for the popover pointers.
-   */offset:{type:Number,value:-10,readOnly:!0},/**
-   * The actual target element
-   */target:{type:Object,observer:"updatePosition"}}}/**
+   * /
+  "fitToVisibleBounds": {
+    "type": "Boolean",
+    "value": true,
+    "readOnly": true
+  },
+  /**
+   * Tthe margin styles to offset the pointer
+   */__pointerOffSetStyle:{type:"Object",computed:"_getMargins(__positions)"}}}constructor(){super();this.offset=-10;this.fitToVisibleBounds=!0}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"simple-popover"}/**
    * life cycle, element is afixed to the DOM
    */connectedCallback(){super.connectedCallback();this.HAXWiring=new HAXWiring;this.HAXWiring.setup(SimplePopover.haxProperties,SimplePopover.tag,this)}/**
+   * sets pointer position based on popover and target middles
+   *
+   * @param {object} positions object that contains postions for popover and target
+   * @returns {string} a string with margin styles to offset pointer
+   */_getMargins(positions){//this.fitToVisibleBounds = true;
+let self=this.getBoundingClientRect(),h="bottom"===this.position||"top"===this.position,max=h?self.width:self.height,sStart=h?self.left:self.top,tStart=h?positions.target.left:positions.target.top,tHalf=h?positions.target.width/2:positions.target.height/2,center=tStart+tHalf-10,margin=Math.min(max-20,Math.max(0,center-sStart)),style=h?`margin: 0 0 0 ${margin}px;`:`margin: ${margin}px 0 0 0;`;return style}/**
    * life cycle, element is removed from the DOM
    */ //disconnectedCallback() {}
 }window.customElements.define(SimplePopover.tag,SimplePopover);export{SimplePopover};

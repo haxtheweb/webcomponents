@@ -29,7 +29,7 @@ class FilteredImage extends SimpleColors {
           display: none;
         }
       </style>
-      <style include="simple-colors"></style>
+      <style></style>
       <svg id="svg" viewBox$="[[viewBox]]">
         <rect id="rect" x="0" y="0"></rect>
         <filter id$="[[__id]]">

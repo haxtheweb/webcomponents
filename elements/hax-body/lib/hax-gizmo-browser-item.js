@@ -25,6 +25,13 @@ class HaxGizmoBrowserItem extends PolymerElement {
     import("@polymer/iron-icons/maps-icons.js");
     import("@polymer/iron-icons/places-icons.js");
     import("@polymer/iron-image/iron-image.js");
+    afterNextRender(this, function() {
+      this.addEventListener("mousedown", this.tapEventOn.bind(this));
+      this.addEventListener("mouseover", this.tapEventOn.bind(this));
+      this.addEventListener("mouseout", this.tapEventOff.bind(this));
+      this.addEventListener("focusin", this.tapEventOn.bind(this));
+      this.addEventListener("focusout", this.tapEventOff.bind(this));
+    });
   }
   static get template() {
     return html`
@@ -117,25 +124,6 @@ class HaxGizmoBrowserItem extends PolymerElement {
   static get tag() {
     return "hax-gizmo-browser-item";
   }
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      this.addEventListener("mousedown", this.tapEventOn.bind(this));
-      this.addEventListener("mouseover", this.tapEventOn.bind(this));
-      this.addEventListener("mouseout", this.tapEventOff.bind(this));
-      this.addEventListener("focusin", this.tapEventOn.bind(this));
-      this.addEventListener("focusout", this.tapEventOff.bind(this));
-    });
-  }
-  disconnectedCallback() {
-    this.removeEventListener("mousedown", this.tapEventOn.bind(this));
-    this.removeEventListener("mouseover", this.tapEventOn.bind(this));
-    this.removeEventListener("mouseout", this.tapEventOff.bind(this));
-    this.removeEventListener("focusin", this.tapEventOn.bind(this));
-    this.removeEventListener("focusout", this.tapEventOff.bind(this));
-    super.disconnectedCallback();
-  }
-
   static get properties() {
     return {
       /**

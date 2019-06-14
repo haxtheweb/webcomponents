@@ -1,3 +1,6 @@
+ html,body {
+  background-color: var(--learn-two-theme-background-color, #FAFAFA);
+}
 :host {
   display: block;
   font-family: "Muli","Helvetica","Tahoma","Geneva","Arial",sans-serif;
@@ -125,7 +128,18 @@ site-print-button {
   }
 }
 
+h-a-x {
+  padding: 0 !important;
+}
+
+:host([edit-mode]) app-drawer {
+  opacity: .2;
+  pointer-events: none;
+}
+
 app-drawer {
+  opacity: 1;
+  transition: .2s linear all;
   box-shadow: 0 0 6px -3px var(--haxcms-color, black);
   overflow: hidden;
   width: 300px;

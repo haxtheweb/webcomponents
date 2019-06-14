@@ -1,0 +1,70 @@
+{
+  /**
+   * If true init rss request.
+   */
+  "auto": {
+    "type": Boolean,
+    "value": false
+  },
+  /**
+   * The retrieved items array.
+   */
+  "items": {
+    "type": Array,
+    "notify": true
+  },
+  /**
+   * Max number of items to show. If it is undefined shows all items.
+   */
+  "max": {
+    "type": Number,
+    "value": 10,
+    "observer": "_maxChanged"
+  },
+  /**
+   * Max length for item excerpts. If the excerpt exceeds this length it will be trimed and will have an ellipsis appended.
+   */
+  "maxExcerptLength": {
+    "type": Number,
+    "value": 100
+  },
+  /**
+   * Max length for item titles. If the title exceeds this length it will be trimed and will have an ellipsis appended.
+   */
+  "maxTitleLength": {
+    "type": Number,
+    "value": 50
+  },
+  /**
+   * Read more anchor text.
+   */
+  "readMoreAnchorText": {
+    "type": Boolean,
+    "value": "Read more"
+  },
+  /**
+   * Read more image alternative text.
+   */
+  "readMoreImageAlt": {
+    "type": Boolean,
+    "value": "Icono de flecha"
+  },
+  /**
+   * If true the items elements will display a read more link.
+   */
+  "showReadMore": {
+    "type": Boolean,
+    "value": false
+  },
+  /**
+   * The URL of the RSS.
+   */
+  "url": {
+    "type": String,
+    "observer": "_urlChanged"
+  },
+  "xml": {
+    "type": Object,
+    "observer": "xmlToItems"
+  }
+}

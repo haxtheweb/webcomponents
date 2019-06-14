@@ -7,7 +7,6 @@ import { A11yMediaBehaviors } from "./a11y-media-behaviors.js";
 import "@lrnwebcomponents/simple-search/simple-search.js";
 import "./a11y-media-button.js";
 
-export { A11yMediaTranscriptControls };
 /**
  * `a11y-media-transcript-controls`
  * `A controls for the transcript element.`
@@ -199,3 +198,5 @@ window.customElements.define(
   A11yMediaTranscriptControls.tag,
   A11yMediaTranscriptControls
 );
+
+export { A11yMediaTranscriptControls };

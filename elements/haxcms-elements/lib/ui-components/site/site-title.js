@@ -4,7 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { autorun, toJS } from "mobx";
+import { autorun, toJS } from "mobx/lib/mobx.module.js";
 /**
  * `site-title`
  * `Title of the site`
@@ -54,7 +54,12 @@ class SiteTitle extends PolymerElement {
           @apply --site-title-tooltip;
         }
       </style>
-      <a id="btn" href$="[[homeLink]]" title$="Go to [[siteTitle]]">
+      <a
+        id="btn"
+        href$="[[homeLink]]"
+        title$="Go to [[siteTitle]]"
+        disabled$="[[disabled]]"
+      >
         <iron-icon hidden$="[[!icon]]" icon="[[icon]]"></iron-icon>
         <h1 hidden$="[[notitle]]">[[siteTitle]]</h1>
       </a>
@@ -68,6 +73,10 @@ class SiteTitle extends PolymerElement {
    */
   static get properties() {
     return {
+      disabled: {
+        type: Boolean,
+        reflectToAttribute: true
+      },
       /**
        * Site title
        */

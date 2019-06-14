@@ -1,0 +1,40 @@
+{
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Rss feed",
+    "description": "visualize RSS items",
+    "icon": "communication:rss-feed",
+    "color": "orange",
+    "groups": ["RSS"],
+    "handles": [
+      {
+        "type": "rss",
+        "source": "source"
+      }
+    ],
+    "meta": {
+      "author": "btopro",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "quick": [],
+    "configure": [
+      {
+        "property": "url",
+        "title": "Feed URL",
+        "description": "URL to the XML feed",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "max",
+        "title": "Max items",
+        "description": "Max number of feed items to display",
+        "inputMethod": "number"
+      }
+    ],
+    "advanced": []
+  }
+}

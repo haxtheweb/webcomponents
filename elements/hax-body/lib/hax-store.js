@@ -686,6 +686,11 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
       "hax-insert-content",
       this._haxStoreInsertContent.bind(this)
     );
+    // grid plate add item event
+    document.body.removeEventListener(
+      "grid-plate-add-item",
+      this.haxInsertAnything.bind(this)
+    );
     document.body.removeEventListener(
       "hax-insert-content-array",
       this._haxStoreInsertMultiple.bind(this)
@@ -1043,7 +1048,11 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
       "hax-register-export",
       this._haxStoreRegisterExport.bind(this)
     );
-
+    // grid plate add item event
+    document.body.addEventListener(
+      "grid-plate-add-item",
+      this.haxInsertAnything.bind(this)
+    );
     // notice content insert and help it along to the body
     document.body.addEventListener(
       "hax-insert-content",
@@ -1331,9 +1340,33 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
       canScale: false,
       canPosition: false,
       canEditSource: true,
+      gizmo: {
+        title: "Paragraph",
+        description: "A basic text area",
+        icon: "editor:short-text",
+        color: "grey",
+        groups: ["Text"],
+        handles: [
+          {
+            type: "content",
+            content: ""
+          }
+        ],
+        meta: {
+          author: "W3C"
+        }
+      },
       settings: {
         quick: [],
-        configure: [],
+        configure: [
+          {
+            slot: "",
+            title: "Content",
+            description: "Internal content",
+            inputMethod: "code-editor",
+            icon: "icons:code"
+          }
+        ],
         advanced: []
       }
     };
@@ -1457,36 +1490,65 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
    */
   _haxStoreInsertContent(e) {
     if (e.detail) {
+      let details = e.detail;
+      if (window.customElements.get(details.tag)) {
+        let prototype = Object.getPrototypeOf(
+          document.createElement(details.tag)
+        );
+        // support for deep API call to clean up special elements
+        if (typeof prototype.preProcessHaxInsertContent !== typeof undefined) {
+          details = prototype.preProcessHaxInsertContent(details);
+        }
+      }
       var properties = {};
       // support for properties to be set automatically optionally
-      if (typeof e.detail.properties !== typeof undefined) {
-        properties = e.detail.properties;
+      if (typeof details.properties !== typeof undefined) {
+        properties = details.properties;
+      }
+      // support / clean up properties / attributes that have innerHTML / innerText
+      // these are reserved words but required for certain bindings
+      if (properties.innerHTML) {
+        if (details.content == "") {
+          details.content = properties.innerHTML;
+        }
+        delete properties.innerHTML;
+      }
+      if (properties.innerText) {
+        if (details.content == "") {
+          details.content = properties.innerText;
+        }
+        delete properties.innerText;
       }
       // ensure better UX for text based operations
       this.activeHaxBody.__activeHover = null;
       // invoke insert or replacement on body, same function so it's easier to trace
-      if (e.detail.replace && e.detail.replacement) {
+      if (details.replace && details.replacement) {
         let node = window.HaxStore.haxElementToNode(
-          e.detail.tag,
-          e.detail.content,
+          details.tag,
+          details.content,
           properties
         );
-        if (this.activeNode !== this.activeContainerNode) {
+        if (this.activePlaceHolder) {
+          this.activeHaxBody.haxReplaceNode(
+            this.activePlaceHolder,
+            node,
+            this.activePlaceHolder.parentNode
+          );
+          this.activePlaceHolder = null;
+        } else {
           this.activeHaxBody.haxReplaceNode(
             this.activeNode,
             node,
-            this.activeContainerNode
+            this.activeNode.parentNode
           );
-        } else {
-          this.activeHaxBody.haxReplaceNode(this.activeNode, node);
         }
       } else if (
-        typeof e.detail.__type !== typeof undefined &&
-        e.detail.__type === "inline"
+        typeof details.__type !== typeof undefined &&
+        details.__type === "inline"
       ) {
         let node = window.HaxStore.haxElementToNode(
-          e.detail.tag,
-          e.detail.content,
+          details.tag,
+          details.content,
           properties
         );
         // replace what WAS the active selection w/ this new node
@@ -1496,14 +1558,61 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
         }
         // set it to nothing
         this.activePlaceHolder = null;
-      } else {
-        this.activeHaxBody.haxInsert(
-          e.detail.tag,
-          e.detail.content,
+      } else if (this.activeContainerNode != null) {
+        let node = window.HaxStore.haxElementToNode(
+          details.tag,
+          details.content,
           properties
         );
+        // allow for inserting things into things but not grid plate
+        if (
+          this.activeContainerNode &&
+          this.activeContainerNode.tagName === "GRID-PLATE"
+        ) {
+          // support slot if we have one on the activeNode (most likely)
+          if (this.activeNode.getAttribute("slot") != null) {
+            node.setAttribute("slot", this.activeNode.getAttribute("slot"));
+          }
+          dom(this.activeContainerNode).appendChild(node);
+          this.activeHaxBody.$.textcontextmenu.highlightOps = false;
+          this.activeHaxBody.__updateLockFocus = node;
+          // wait so that the DOM can have the node to then attach to
+          setTimeout(() => {
+            this.activeHaxBody.breakUpdateLock();
+          }, 50);
+        } else {
+          this.activeHaxBody.haxInsert(
+            details.tag,
+            details.content,
+            properties
+          );
+        }
+      } else {
+        this.activeHaxBody.haxInsert(details.tag, details.content, properties);
       }
     }
+  }
+  /**
+   * Present all elements to potentially insert
+   */
+  haxInsertAnything(e) {
+    let haxElements = [];
+    for (var i in window.HaxStore.instance.gizmoList) {
+      haxElements.push(
+        window.HaxStore.haxElementPrototype(
+          window.HaxStore.instance.gizmoList[i],
+          e.detail.properties,
+          ""
+        )
+      );
+    }
+    // hand off to hax-app-picker to deal with the rest of this
+    window.HaxStore.instance.haxAppPicker.presentOptions(
+      haxElements,
+      "element",
+      "Add an element",
+      "gizmo"
+    );
   }
   /**
    * Optional send array, to improve performance and event bubbling better
@@ -1886,6 +1995,10 @@ window.HaxStore.nodeToHaxElement = (node, eventName = "insert-element") => {
     tag = "webview";
   }
   let slotContent = window.HaxStore.getHAXSlot(node);
+  // support fallback on inner text if there were no nodes
+  if (slotContent == "") {
+    slotContent = node.innerText;
+  }
   // special edge case for slot binding in primatives
   if (tag === "a") {
     props.innerText = slotContent;
@@ -2109,7 +2222,7 @@ window.HaxStore.haxNodeToContent = node => {
   // specialized clean up for some that can leak through from above
   // and are edge case things because #hashtag gotta love HTML attributes
   // and the webview tag. facepalm.
-  let delProps = ["inner-text", "tabindex", "guestinstance"];
+  let delProps = ["inner-text", "inner-html", "tabindex", "guestinstance"];
   for (var delProp in delProps) {
     if (typeof propvals[delProps[delProp]] !== typeof undefined) {
       delete propvals[delProps[delProp]];
@@ -2229,6 +2342,10 @@ window.HaxStore.HTMLPrimativeTest = node => {
  * Slot content w/ support for custom elements in slot.
  */
 window.HaxStore.getHAXSlot = node => {
+  // we can skip all of this if we have a text element / HTML prim!
+  if (window.HaxStore.instance.isTextElement(node)) {
+    return node.innerHTML;
+  }
   let content = "";
   var slotnodes = dom(node).children;
   // ensure there's something inside of this

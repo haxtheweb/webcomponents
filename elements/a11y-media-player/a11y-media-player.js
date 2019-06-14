@@ -519,7 +519,6 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
           }
         }
       </style>
-      <style include="simple-colors"></style>
       <div class="sr-only">[[mediaCaption]]</div>
       <div id="outerplayer">
         <div id="innerplayer">

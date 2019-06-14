@@ -44,49 +44,50 @@ Card example:
 
 * @demo demo/index.html
 */class PdfBrowserViewer extends PolymerElement{constructor(){super();import("./node_modules/@polymer/paper-card/paper-card.js");import("./node_modules/@polymer/paper-button/paper-button.js")}static get template(){return html`
-    <style>
-      :host {
-        display: none;
-      }
-      :host([file]) {
-        display: inherit;
-      }
-    </style>
+      <style>
+        :host {
+          display: none;
+        }
+        :host([file]) {
+          display: inherit;
+        }
+      </style>
 
-    <template is="dom-if" if="[[card]]">
-      <paper-card heading="[[heading]]" elevation="[[elevation]]">
-        <div class="card-content">
-          <object
-            data="[[file]]"
-            type="application/pdf"
-            width="[[width]]"
-            height="[[height]]"
-          >
-            <p>
-              {{notSupportedMessage}}
-              <a href="[[file]]">{{notSupportedLinkMessage}}</a>
-            </p>
-          </object>
-        </div>
-        <div class="card-actions">
-          <paper-button on-click="_download">[[downloadLabel]]</paper-button>
-        </div>
-      </paper-card>
-    </template>
+      <template is="dom-if" if="[[card]]">
+        <paper-card heading="[[heading]]" elevation="[[elevation]]">
+          <div class="card-content">
+            <object
+              data="[[file]]"
+              type="application/pdf"
+              width="[[width]]"
+              height="[[height]]"
+            >
+              <p>
+                {{notSupportedMessage}}
+                <a href="[[file]]">{{notSupportedLinkMessage}}</a>
+              </p>
+            </object>
+          </div>
+          <div class="card-actions">
+            <paper-button on-click="_download">[[downloadLabel]]</paper-button>
+          </div>
+        </paper-card>
+      </template>
 
-    <template is="dom-if" if="[[!card]]">
-      <object
-        data="[[file]]"
-        type="application/pdf"
-        width="[[width]]"
-        height="[[height]]"
-      >
-        <p>
-          {{notSupportedMessage}}
-          <a href="[[file]]">{{notSupportedLinkMessage}}</a>
-        </p>
-      </object>
-    </template>`}static get tag(){return"pdf-browser-viewer"}static get properties(){return{/**
+      <template is="dom-if" if="[[!card]]">
+        <object
+          data="[[file]]"
+          type="application/pdf"
+          width="[[width]]"
+          height="[[height]]"
+        >
+          <p>
+            {{notSupportedMessage}}
+            <a href="[[file]]">{{notSupportedLinkMessage}}</a>
+          </p>
+        </object>
+      </template>
+    `}static get tag(){return"pdf-browser-viewer"}static get properties(){return{/**
        * The location of the PDF file.
        *
        * @type String

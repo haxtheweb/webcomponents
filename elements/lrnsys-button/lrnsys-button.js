@@ -257,7 +257,12 @@ class LrnsysButton extends PolymerElement {
     super.connectedCallback();
     this.__ready = true;
     afterNextRender(this, function() {
-      this._applyPrefetch(this.prefetch);
+      // if we have been told to prefetch, give it a second after everything's ready
+      if (this.prefetch) {
+        setTimeout(() => {
+          this._applyPrefetch(this.prefetch);
+        }, 1000);
+      }
     });
   }
   /**

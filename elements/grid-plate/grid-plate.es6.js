@@ -1,14 +1,9 @@
 import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import{microTask}from"./node_modules/@polymer/polymer/lib/utils/async.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@polymer/iron-a11y-keys/iron-a11y-keys.js";import"./node_modules/@lrnwebcomponents/responsive-utility/responsive-utility.js";/**
-`grid-plate`
-A grid plate based on a layout that manipulates it.
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
- -
-
-*/class GridPlate extends PolymerElement{constructor(){super();import("./node_modules/@polymer/paper-icon-button/paper-icon-button.js");import("./node_modules/@polymer/iron-icons/iron-icons.js")}static get template(){return html`
-      <style include="simple-colors">
+ * `grid-plate`
+ * `A grid plate based on a layout that manipulates it.`
+ * @demo demo/index.html
+ */class GridPlate extends PolymerElement{constructor(){super();import("./node_modules/@polymer/paper-icon-button/paper-icon-button.js");import("./node_modules/@polymer/iron-icons/iron-icons.js")}static get template(){return html`
+      <style>
         :host {
           display: block;
           --grid-plate-row-margin: 0px;
@@ -118,28 +113,28 @@ A grid plate based on a layout that manipulates it.
           icon="icons:arrow-upward"
           title="move item up"
           id="up"
-          on-tap="moveActiveElement"
+          on-click="moveActiveElement"
         >
         </paper-icon-button>
         <paper-icon-button
           icon="icons:arrow-forward"
           title="move item right"
           id="right"
-          on-tap="moveActiveElement"
+          on-click="moveActiveElement"
         >
         </paper-icon-button>
         <paper-icon-button
           icon="icons:arrow-downward"
           title="move item down"
           id="down"
-          on-tap="moveActiveElement"
+          on-click="moveActiveElement"
         >
         </paper-icon-button>
         <paper-icon-button
           icon="icons:arrow-back"
           title="move item left"
           id="left"
-          on-tap="moveActiveElement"
+          on-click="moveActiveElement"
         >
         </paper-icon-button>
       </div>
@@ -202,7 +197,7 @@ A grid plate based on a layout that manipulates it.
 document.body.addEventListener("hax-store-property-updated",this._haxStorePropertyUpdated.bind(this));// listen for HAX insert events if it exists
 document.body.addEventListener("hax-insert-content",this.haxInsertContent.bind(this))});window.ResponsiveUtility.requestAvailability();window.dispatchEvent(new CustomEvent("responsive-element",{detail:{element:this,attribute:"responsive-size",relativeToParent:!0,sm:this.breakpointSm,md:this.breakpointMd,lg:this.breakpointLg,xl:this.breakpointXl}}));// Establish hax property binding
 this.options={};let layouts=Object.keys(this.layouts),getOptions=()=>{//loop through all the supplied layouts to get the HAX layout options & descriptions
-for(let i=0;i<layouts.length;i++){this.options[layouts[i]]=this.layouts[layouts[i]].columnLayout}};getOptions();this.HAXWiring=new HAXWiring;this.HAXWiring.setup(GridPlate.haxProperties,GridPlate.tag,this)}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,settings:{quick:[],configure:[{property:"layout",title:"Column Layout",description:"Style to present these items (may change for small screens)",inputMethod:"select",options:this.options}],advanced:[{property:"breakpointSm",title:"Small Breakpoint",description:"Anything less than this number (in pixels) will render with the smallest version of this layout",inputMethod:"textfield",validationType:"number"},{property:"breakpointMd",title:"Medium Breakpoint",description:"Anything less than this number (in pixels) will render with the small version of this layout",inputMethod:"textfield",validationType:"number"},{property:"breakpointLg",title:"Large Breakpoint",description:"Anything less than this number (in pixels) will render with the medium version of this layout.",inputMethod:"textfield",validationType:"number"},{property:"breakpointXl",title:"Extra-Large Breakpoint",description:"Anything less than this number (in pixels) will render with the large version of this layout. Anything greater than or equal to this number will display with the maximum number of columns for this layout.",inputMethod:"textfield",validationType:"number"}]},saveOptions:{unsetAttributes:["__active-item","edit-mode"]}}}static get properties(){return{droppable:{type:Boolean,value:!1,reflectToAttribute:!0,observer:"_droppableChanged"},ignoreHax:{type:Boolean,value:!1},/**
+for(let i=0;i<layouts.length;i++){this.options[layouts[i]]=this.layouts[layouts[i]].columnLayout}};getOptions();this.HAXWiring=new HAXWiring;this.HAXWiring.setup(GridPlate.haxProperties,GridPlate.tag,this)}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,settings:{quick:[],configure:[{property:"layout",title:"Column Layout",description:"Style to present these items (may change for small screens)",inputMethod:"select",options:this.options}],advanced:[{property:"breakpointSm",title:"Small Breakpoint",description:"Anything less than this number (in pixels) will render with the smallest version of this layout",inputMethod:"textfield",validationType:"number"},{property:"breakpointMd",title:"Medium Breakpoint",description:"Anything less than this number (in pixels) will render with the small version of this layout",inputMethod:"textfield",validationType:"number"},{property:"breakpointLg",title:"Large Breakpoint",description:"Anything less than this number (in pixels) will render with the medium version of this layout.",inputMethod:"textfield",validationType:"number"},{property:"breakpointXl",title:"Extra-Large Breakpoint",description:"Anything less than this number (in pixels) will render with the large version of this layout. Anything greater than or equal to this number will display with the maximum number of columns for this layout.",inputMethod:"textfield",validationType:"number"}]},saveOptions:{unsetAttributes:["__active-item","edit-mode","layouts"]}}}static get properties(){return{droppable:{type:Boolean,value:!1,reflectToAttribute:!0,observer:"_droppableChanged"},ignoreHax:{type:Boolean,value:!1},/**
        * Custom small breakpoint for the layouts; only updated on attached
        */breakpointSm:{type:Number,value:900},/**
        * Custom medium breakpoint for the layouts; only updated on attached
@@ -213,8 +208,6 @@ for(let i=0;i<layouts.length;i++){this.options[layouts[i]]=this.layouts[layouts[
        */breakpointXl:{type:Number,value:1800},/**
        * number of columns at this layout / responsive size
        */columns:{type:Number,computed:"_getColumns(columnWidths)",reflectToAttribute:!0},/**
-       * name of selected layout
-       */columnWidths:{type:String,computed:"_getColumnWidths(responsiveSize,layout,layouts,disableResponsive)"},/**
        * disables responsive layouts for HAX preview
        */disableResponsive:{type:Boolean,value:!1,notify:!0},/**
        * If the grid plate is in a state where its items
@@ -235,11 +228,13 @@ for(let i=0;i<layouts.length;i++){this.options[layouts[i]]=this.layouts[layouts[
     },
     {...}
   }```
-      */layouts:{type:Object,value:{1:{columnLayout:"1: full width",xs:["100%"],sm:["100%"],md:["100%"],lg:["100%"],xl:["100%"]},"1-1":{columnLayout:"2: equal width",xs:["100%","100%"],sm:["50%","50%"],md:["50%","50%"],lg:["50%","50%"],xl:["50%","50%"]},"2-1":{columnLayout:"2: wide & narrow",xs:["100%","100%"],sm:["50%","50%"],md:["66.6666667%","33.3333337%"],lg:["66.6666667%","33.3333337%"],xl:["66.6666667%","33.3333337%"]},"1-2":{columnLayout:"2: narrow & wide",xs:["100%","100%"],sm:["50%","50%"],md:["33.3333333%","66.6666667%"],lg:["33.3333333%","66.6666667%"],xl:["33.3333333%","66.6666667%"]},"3-1":{columnLayout:"2: wider & narrower",xs:["100%","100%"],sm:["50%","50%"],md:["75%","25%"],lg:["75%","25%"],xl:["75%","25%"]},"1-3":{columnLayout:"2: narrower & wider",xs:["100%","100%"],sm:["50%","50%"],md:["25%","75%"],lg:["25%","75%"],xl:["25%","75%"]},"1-1-1":{columnLayout:"3: equal width",xs:["100%","100%","100%"],sm:["100%","100%","100%"],md:["33.3333333%","33.3333333%","33.3333333%"],lg:["33.3333333%","33.3333333%","33.3333333%"],xl:["33.3333333%","33.3333333%","33.3333333%"]},"2-1-1":{columnLayout:"3: wide, narrow, and narrow",xs:["100%","100%","100%"],sm:["100%","50%","50%"],md:["50%","25%","25%"],lg:["50%","25%","25%"],xl:["50%","25%","25%"]},"1-2-1":{columnLayout:"3: narrow, wide, and narrow",xs:["100%","100%","100%"],sm:["100%","100%","100%"],md:["25%","50%","25%"],lg:["25%","50%","25%"],xl:["25%","50%","25%"]},"1-1-2":{columnLayout:"3: narrow, narrow, and wide",xs:["100%","100%","100%"],sm:["50%","50%","100%"],md:["25%","25%","50%"],lg:["25%","25%","50%"],xl:["25%","25%","50%"]},"1-1-1-1":{columnLayout:"4: equal width",xs:["100%","100%","100%","100%"],sm:["50%","50%","50%","50%"],md:["25%","25%","25%","25%"],lg:["25%","25%","25%","25%"],xl:["25%","25%","25%","25%"]},"1-1-1-1-1":{columnLayout:"5: equal width",xs:["100%","100%","100%","100%","100%"],sm:["50%","50%","50%","50%","50%"],md:["20%","20%","20%","20%","20%"],lg:["20%","20%","20%","20%","20%"],xl:["20%","20%","20%","20%","20%"]},"1-1-1-1-1-1":{columnLayout:"6: equal width",xs:["100%","100%","100%","100%","100%","100%"],sm:["50%","50%","50%","50%","50%","50%"],md:["33.3333333%","33.3333333%","33.3333333%","33.3333333%","33.3333333%","33.3333333%"],lg:["16.6666667%","16.6666667%","16.6666667%","16.6666667%","16.6666667%","16.6666667%"],xl:["16.6666667%","16.6666667%","16.6666667%","16.6666667%","16.6666667%","16.6666667%"]}}},/**
+      */layouts:{type:Object,readOnly:!0,value:{1:{columnLayout:"1: full width",xs:["100%"],sm:["100%"],md:["100%"],lg:["100%"],xl:["100%"]},"1-1":{columnLayout:"2: equal width",xs:["100%","100%"],sm:["50%","50%"],md:["50%","50%"],lg:["50%","50%"],xl:["50%","50%"]},"2-1":{columnLayout:"2: wide & narrow",xs:["100%","100%"],sm:["50%","50%"],md:["66.6666667%","33.3333337%"],lg:["66.6666667%","33.3333337%"],xl:["66.6666667%","33.3333337%"]},"1-2":{columnLayout:"2: narrow & wide",xs:["100%","100%"],sm:["50%","50%"],md:["33.3333333%","66.6666667%"],lg:["33.3333333%","66.6666667%"],xl:["33.3333333%","66.6666667%"]},"3-1":{columnLayout:"2: wider & narrower",xs:["100%","100%"],sm:["50%","50%"],md:["75%","25%"],lg:["75%","25%"],xl:["75%","25%"]},"1-3":{columnLayout:"2: narrower & wider",xs:["100%","100%"],sm:["50%","50%"],md:["25%","75%"],lg:["25%","75%"],xl:["25%","75%"]},"1-1-1":{columnLayout:"3: equal width",xs:["100%","100%","100%"],sm:["100%","100%","100%"],md:["33.3333333%","33.3333333%","33.3333333%"],lg:["33.3333333%","33.3333333%","33.3333333%"],xl:["33.3333333%","33.3333333%","33.3333333%"]},"2-1-1":{columnLayout:"3: wide, narrow, and narrow",xs:["100%","100%","100%"],sm:["100%","50%","50%"],md:["50%","25%","25%"],lg:["50%","25%","25%"],xl:["50%","25%","25%"]},"1-2-1":{columnLayout:"3: narrow, wide, and narrow",xs:["100%","100%","100%"],sm:["100%","100%","100%"],md:["25%","50%","25%"],lg:["25%","50%","25%"],xl:["25%","50%","25%"]},"1-1-2":{columnLayout:"3: narrow, narrow, and wide",xs:["100%","100%","100%"],sm:["50%","50%","100%"],md:["25%","25%","50%"],lg:["25%","25%","50%"],xl:["25%","25%","50%"]},"1-1-1-1":{columnLayout:"4: equal width",xs:["100%","100%","100%","100%"],sm:["50%","50%","50%","50%"],md:["25%","25%","25%","25%"],lg:["25%","25%","25%","25%"],xl:["25%","25%","25%","25%"]},"1-1-1-1-1":{columnLayout:"5: equal width",xs:["100%","100%","100%","100%","100%"],sm:["50%","50%","50%","50%","50%"],md:["20%","20%","20%","20%","20%"],lg:["20%","20%","20%","20%","20%"],xl:["20%","20%","20%","20%","20%"]},"1-1-1-1-1-1":{columnLayout:"6: equal width",xs:["100%","100%","100%","100%","100%","100%"],sm:["50%","50%","50%","50%","50%","50%"],md:["33.3333333%","33.3333333%","33.3333333%","33.3333333%","33.3333333%","33.3333333%"],lg:["16.6666667%","16.6666667%","16.6666667%","16.6666667%","16.6666667%","16.6666667%"],xl:["16.6666667%","16.6666667%","16.6666667%","16.6666667%","16.6666667%","16.6666667%"]}}},/**
        * Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`
        */responsiveSize:{type:String,value:"xs",reflectToAttribute:!0},/**
        * Track active item
-       */__activeItem:{type:Object,observer:"_activeItemChanged"}}}_droppableChanged(newValue){if(newValue){this.editMode=!0}}/**
+       */__activeItem:{type:Object,observer:"_activeItemChanged"},/**
+       * name of selected layout
+       */columnWidths:{type:String,computed:"_getColumnWidths(responsiveSize,layout,layouts,disableResponsive)"}}}_droppableChanged(newValue){if(newValue){this.editMode=!0}}/**
    * Cancel active element
    */cancelActive(e){this.__activeItem=null}/**
    * Determines if the item can move a set number of slots.
@@ -281,11 +276,11 @@ if(typeof oldValue!==typeof void 0&&null!=oldValue){oldValue.classList.remove("a
    * @param {object} predefined layouts of column sizes and various responsive widths
    * @param {boolean} disable responsive sizing?
    * @returns {object} an object with a layout's column sizes at the current responsive width
-   */_getColumnWidths(responsiveSize="sm",layout="1-1",layouts,disableResponsive){let newl=layouts[layout],//how old layout names map to the new ones
-oldLayouts={12:"1","8/4":"2-1","6/6":"1-1","4/8":"1-2","4/4/4":"1-1-1","3/3/3/3":"1-1-1-1"},oldl=oldLayouts[layout],size=!1!==disableResponsive?"xl":responsiveSize;if(newl!==void 0&&newl[size]!==void 0){//return the layout
+   */_getColumnWidths(responsiveSize="sm",layout="1-1",layouts,disableResponsive){if(layouts){let newl=layouts[layout],//how old layout names map to the new ones
+oldLayouts={12:"1","8/4":"2-1","6/6":"1-1","4/8":"1-2","4/4/4":"1-1-1","3/3/3/3":"1-1-1-1"},size=!1!==disableResponsive?"xl":responsiveSize,oldl=oldLayouts[layout];if(newl!==void 0&&newl[size]!==void 0){//return the layout
 return layouts[layout][size]}else if(layouts[oldl]!==void 0&&layouts[oldl][size]!==void 0){//return new layout that maps to old one
-return layouts[oldl][size]}else{//return 2-column layout
-return layouts["1-1"][size]}}/**
+return layouts[oldl][size]}else if(typeof layouts["1-1"]!==typeof void 0){//return 2-column layout
+return layouts["1-1"][size]}}}/**
    * gets a given column's current width based on layout and current responsive width
    *
    * @param {number} the index of the column

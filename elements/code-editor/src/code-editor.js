@@ -22,6 +22,7 @@ class CodeEditor extends SchemaBehaviors(PolymerElement) {
       decodeURIComponent(import.meta.url) + "/../../../monaco-editor/min/vs";
     import("@lrnwebcomponents/code-editor/lib/monaco-element/monaco-element.js");
     import("@lrnwebcomponents/code-editor/lib/code-pen-button.js");
+    this.addEventListener("monaco-element-ready", this.editorReady.bind(this));
   }
   static get template() {
     return html`
@@ -64,7 +65,6 @@ class CodeEditor extends SchemaBehaviors(PolymerElement) {
       <monaco-element
         id="codeeditor"
         lib-path="[[__libPath]]"
-        value="[[editorValue]]"
         language="[[language]]"
         theme="[[theme]]"
         on-value-changed="_editorDataChanged"
@@ -118,7 +118,8 @@ class CodeEditor extends SchemaBehaviors(PolymerElement) {
        * contents of the editor
        */
       editorValue: {
-        type: String
+        type: String,
+        observer: "_editorValueChanged"
       },
       /**
        * value of the editor after the fact
@@ -216,6 +217,11 @@ class CodeEditor extends SchemaBehaviors(PolymerElement) {
       }
     }
   }
+  _editorValueChanged(newValue) {
+    if (newValue) {
+      this.shadowRoot.querySelector("#codeeditor").value = newValue;
+    }
+  }
   /**
    * Ensure fields don't pass through to HAX if in that context
    */
@@ -254,6 +260,18 @@ class CodeEditor extends SchemaBehaviors(PolymerElement) {
         }
       });
     });
+  }
+  disconnectedCallback() {
+    this.removeEventListener(
+      "monaco-element-ready",
+      this.editorReady.bind(this)
+    );
+    super.disconnectedCallback();
+  }
+  editorReady(e) {
+    if (this.editorValue) {
+      this.shadowRoot.querySelector("#codeeditor").value = this.editorValue;
+    }
   }
 }
 window.customElements.define(CodeEditor.tag, CodeEditor);

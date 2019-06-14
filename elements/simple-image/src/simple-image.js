@@ -17,7 +17,7 @@ class SimpleImage extends SchemaBehaviors(PolymerElement) {
   }
   static get template() {
     return html`
-      <style include="simple-colors">
+      <style>
         :host {
           display: block;
         }

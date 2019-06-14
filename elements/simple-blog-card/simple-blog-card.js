@@ -26,7 +26,11 @@ class SimpleBlogCard extends LitElement {
 :host {
   display:block;
 }
-</style>
+
+simple-popover {
+  position:absolute;
+  display: flex;
+}</style>
 <paper-card
   .alt="${this.alt}"
   image="${this.image}"
@@ -45,10 +49,6 @@ class SimpleBlogCard extends LitElement {
   </div>
   <div class="card-actions">
     <div id="author" class="author-block"
-    @mouseover=${this.showDetails}
-    @focusin=${this.showDetails}
-    @mouseout=${this.hideDetails}
-    @focusout=${this.hideDetails}
     >
       <paper-avatar
         .label="${this.author}"
@@ -65,18 +65,12 @@ class SimpleBlogCard extends LitElement {
       </div>
     </div>
   </div>
-</paper-card>
-<simple-popover position="top" offset="0">
-    <paper-avatar .label="${this.author}" .src="${this.authorimage}">
-    </paper-avatar>
-    <h5 class="author-name">${this.author}</h5>
-    <div class="author-bio">${this.authorbio}</div>
-</simple-popover>`;
+</paper-card>`;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       title: {
         name: "title",
         type: "String"
@@ -126,6 +120,10 @@ class SimpleBlogCard extends LitElement {
         type: "String"
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
 
   /**

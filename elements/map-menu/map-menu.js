@@ -27,6 +27,9 @@ class MapMenu extends PolymerElement {
           overflow-y: scroll;
           position: relative;
           height: 100%;
+          transition: 0.2s linear all;
+          opacity: 1;
+          background-color: transparent;
         }
 
         #activeIndicator {
@@ -66,6 +69,11 @@ class MapMenu extends PolymerElement {
 
   static get properties() {
     return {
+      disabled: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
       title: {
         type: String,
         value: "Content Outline"
@@ -110,8 +118,8 @@ class MapMenu extends PolymerElement {
       }
     };
   }
-  connectedCallback() {
-    super.connectedCallback();
+  ready() {
+    super.ready();
     afterNextRender(this, function() {
       this.addEventListener(
         "link-clicked",
@@ -124,22 +132,6 @@ class MapMenu extends PolymerElement {
         this._mapMeuItemHiddenCheckHandler.bind(this)
       );
     });
-  }
-  disconnectedCallback() {
-    this.removeEventListener(
-      "link-clicked",
-      this.__linkClickedHandler.bind(this)
-    );
-    this.removeEventListener("toggle-updated", this.__toggleUpdated.bind(this));
-    this.removeEventListener(
-      "active-item",
-      this.__activeItemHandler.bind(this)
-    );
-    this.removeEventListener(
-      "map-meu-item-hidden-check",
-      this._mapMeuItemHiddenCheckHandler.bind(this)
-    );
-    super.disconnectedCallback();
   }
   static get observers() {
     return ["_dataChanged(data)"];

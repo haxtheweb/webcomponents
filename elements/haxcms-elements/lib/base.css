@@ -1,8 +1,10 @@
-body,html {
+body, html {
   padding: 0;
   margin: 0;
   font-size: var(--haxcms-base-styles-body-font-size, 16px);
-  font-family: var(--haxcms-base-styles-body-font-family, 'Noto Serif', serif);;
+  font-family: var(--haxcms-base-styles-body-font-family, 'Noto Serif', serif);
+  line-height: var(--haxcms-base-styles-body-line-height, 1.8);
+  letter-spacing: var(--haxcms-base-styles-body-letter-spacing, .5px);
 }
 h1 {
   font-size: var(--haxcms-base-styles-h1-font-size, 2.5em);
@@ -27,6 +29,8 @@ p {
   font-size: var(--haxcms-base-styles-p-line-height, 40px);
   font-size: var(--haxcms-base-styles-p-min-height, 26px);
   font-size: var(--haxcms-base-styles-p-font-size, 24px);
+  line-height: var(--haxcms-base-styles-p-line-height, 1.8);
+  letter-spacing: var(--haxcms-base-styles-p-letter-spacing, .5px);
 }
 a {
   color: var(--haxcms-base-styles-a-color, #000);

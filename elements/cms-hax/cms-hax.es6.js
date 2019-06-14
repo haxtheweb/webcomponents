@@ -2,24 +2,24 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
  * `cms-hax`
  * @demo ../../demo/index.html
  */class CmsHax extends PolymerElement{static get template(){return html`
-    <style>
-      :host {
-        display: block;
-        font-size: 16px;
-        box-sizing: content-box;
-      }
-    </style>
-    <iron-ajax
-      id="pageupdateajax"
-      url="[[endPoint]]"
-      method="[[method]]"
-      body="[[updatePageData]]"
-      content-type="application/json"
-      handle-as="json"
-      on-response="_handleUpdateResponse"
-    ></iron-ajax>
-    <h-a-x app-store$="[[appStoreConnection]]"></h-a-x>
-  `}static get tag(){return"cms-hax"}static get observers(){return["_noticeTagChanges(allowedTags, hideExportButton, hidePanelOps, hidePreferencesButton, align, bodyOffsetLeft)"]}static get properties(){return{/**
+      <style>
+        :host {
+          display: block;
+          font-size: 16px;
+          box-sizing: content-box;
+        }
+      </style>
+      <iron-ajax
+        id="pageupdateajax"
+        url="[[endPoint]]"
+        method="[[method]]"
+        body="[[updatePageData]]"
+        content-type="application/json"
+        handle-as="json"
+        on-response="_handleUpdateResponse"
+      ></iron-ajax>
+      <h-a-x app-store$="[[appStoreConnection]]"></h-a-x>
+    `}static get tag(){return"cms-hax"}static get observers(){return["_noticeTagChanges(allowedTags, hideExportButton, hidePanelOps, hidePreferencesButton, align, bodyOffsetLeft)"]}static get properties(){return{/**
        * Default the panel to open
        */openDefault:{type:Boolean,value:!1},/**
        * Hide the export button, showing it is good for developers
@@ -64,9 +64,9 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
    * Ensure we've imported our content on initial setup
    */_activeHaxBodyUpdated(newValue,oldValue){// ensure we import our content once we get an initial registration of active body
 if(null!=newValue&&!this.__imported){this.__imported=!0;// see what's inside of this, in a template tag
-let children=this.queryEffectiveChildren("template");// convert this template content into the real thing
+let children=this.querySelector("template");// convert this template content into the real thing
 // this helps with correctly preserving everything on the way down
-if(typeof children!==typeof void 0){newValue.importContent(children.innerHTML)}}}/**
+if(null!=children){newValue.importContent(children.innerHTML)}}}/**
    * Calculate if we have anywhere to redirect to.
    */_computeRedirectOnSave(redirectLocation){if(typeof redirectLocation!==typeof void 0){return!0}return!1}/**
    * Break the shadow root for this element (by design)

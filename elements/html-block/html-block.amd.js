@@ -11,9 +11,9 @@ define(["exports","./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWi
  * @customElement
  * @demo demo/index.html
  */var HtmlBlock=/*#__PURE__*/function(_HTMLElement){babelHelpers.inherits(HtmlBlock,_HTMLElement);babelHelpers.createClass(HtmlBlock,[{key:"html",// render function
-get:function get(){return"\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n</style>\n<slot></slot>"}// haxProperty definition
-}],[{key:"haxProperties",get:function get(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Html block",description:"A basic HTML block that provides HAXschema wiring",icon:"icons:android",color:"green",groups:["Block"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"btopro",owner:"The Pennsylvania State University"}},settings:{quick:[],configure:[{property:"allowscript",description:"",inputMethod:"boolean",required:!1,icon:"icons:android"}],advanced:[]}}}// properties available to the custom element for data binding
-},{key:"properties",get:function get(){return{allowscript:{name:"allowscript",type:"Boolean",value:"false",reflectToAttribute:!1,observer:!1}}}/**
+get:function get(){return"\n<style></style>\n<slot></slot>"}// haxProperty definition
+}],[{key:"haxProperties",get:function get(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Html block",description:"A basic HTML block that provides HAXschema wiring",icon:"icons:warning",color:"red",groups:["Block"],handles:[{type:"html",content:"slot"}],meta:{author:"btopro",owner:"The Pennsylvania State University"}},settings:{quick:[],configure:[{slot:"",title:"HTML",description:"HTML code you want to present in content",inputMethod:"code-editor"}],advanced:[]}}}// properties available to the custom element for data binding
+},{key:"properties",get:function get(){return{}}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */},{key:"tag",get:function get(){return"html-block"}/**
@@ -22,12 +22,13 @@ get:function get(){return"\n<style>:host {\n  display: block;\n}\n\n:host([hidde
 _this.tag=HtmlBlock.tag;// map our imported properties json to real props on the element
 // @notice static getter of properties is built via tooling
 // to edit modify src/HtmlBlock-properties.json
-var obj=HtmlBlock.properties;for(var p in obj){if(obj.hasOwnProperty(p)){if(_this.hasAttribute(p)){_this[p]=_this.getAttribute(p)}else{_this.setAttribute(p,obj[p].value);_this[p]=obj[p].value}}}// optional queue for future use
-_this._queue=[];_this.template=document.createElement("template");_this.attachShadow({mode:"open"});if(!delayRender){_this.render()}return _this}/**
+return _this}/**
    * life cycle, element is afixed to the DOM
-   */babelHelpers.createClass(HtmlBlock,[{key:"connectedCallback",value:function connectedCallback(){if(window.ShadyCSS){window.ShadyCSS.styleElement(this)}this.HAXWiring=new _HAXWiring.HAXWiring;this.HAXWiring.setup(HtmlBlock.haxProperties,HtmlBlock.tag,this)}},{key:"_copyAttribute",value:function _copyAttribute(name,to){var recipients=this.shadowRoot.querySelectorAll(to),value=this.getAttribute(name),fname=null==value?"removeAttribute":"setAttribute",_iteratorNormalCompletion=!0,_didIteratorError=!1,_iteratorError=void 0;try{for(var _iterator=recipients[Symbol.iterator](),_step,node;!(_iteratorNormalCompletion=(_step=_iterator.next()).done);_iteratorNormalCompletion=!0){node=_step.value;node[fname](name,value)}}catch(err){_didIteratorError=!0;_iteratorError=err}finally{try{if(!_iteratorNormalCompletion&&null!=_iterator.return){_iterator.return()}}finally{if(_didIteratorError){throw _iteratorError}}}}},{key:"_setProperty",value:function _setProperty(_ref){var name=_ref.name,value=_ref.value;this[name]=value}},{key:"render",value:function render(){this.shadowRoot.innerHTML=null;this.template.innerHTML=this.html;if(window.ShadyCSS){window.ShadyCSS.prepareTemplate(this.template,this.tag)}this.shadowRoot.appendChild(this.template.content.cloneNode(!0))}//static get observedAttributes() {
-//  return [];
-//}
-// disconnectedCallback() {}
-// attributeChangedCallback(attr, oldValue, newValue) {}
-}]);return HtmlBlock}(babelHelpers.wrapNativeSuper(HTMLElement));_exports.HtmlBlock=HtmlBlock;window.customElements.define(HtmlBlock.tag,HtmlBlock)});
+   */babelHelpers.createClass(HtmlBlock,[{key:"connectedCallback",value:function connectedCallback(){this.HAXWiring=new _HAXWiring.HAXWiring;this.HAXWiring.setup(HtmlBlock.haxProperties,HtmlBlock.tag,this);// default we block all script unless the user says to do so
+// @todo ensure HAX actually respects this down the road, right now it sanitizes it
+this.allowscript=!1;this.__ignoreChange=!1;this.style.display="block";// ensure we keep applying sanitization as needed while monitoring the tree
+this.__observer=new MutationObserver(this.render.bind(this));this.__observer.observe(this,{attributes:!0,characterData:!0,childList:!0,subtree:!0})}},{key:"render",value:function render(){if(!this.__ignoreChange){if(null==this.allowscript||!this.allowscript||babelHelpers.typeof(this.allowscript)===("undefined"===typeof void 0?"undefined":babelHelpers.typeof(void 0))){this.__sanitizeHTML()}}else{this.__ignoreChange=!1}}},{key:"attributeChangedCallback",// disconnectedCallback() {}
+value:function attributeChangedCallback(attr,oldValue,newValue){if("allowscript"===attr){if(null==newValue||!newValue||babelHelpers.typeof(newValue)===("undefined"===typeof void 0?"undefined":babelHelpers.typeof(void 0))){// we should sanitize innerHTML but create a holding pen for the rawHTML first
+this.__sanitizeHTML()}else{// see if we had anything in the holding pen
+if(this.__rawHTML){this.__ignoreChange=!0;this.innerHTML=this.__rawHTML}}}}},{key:"__sanitizeHTML",value:function __sanitizeHTML(){if(!this.__pen){this.__pen=document.createElement("div")}this.__pen.innerHTML=this.innerHTML;this.__rawHTML=this.__pen.cloneNode(!0).innerHTML;// clear it up
+if("function"===typeof this.innerHTML){this.innerHTML=this.innerHTML.replace(/<script[\s\S]*?>/gi,"&lt;script&gt;");this.innerHTML=this.innerHTML.replace(/<\/script>/gi,"&lt;/script&gt;")}}},{key:"allowscript",get:function get(){return this.getAttribute("allowscript")},set:function set(value){if(value){this.setAttribute("allowscript","allowscript")}else{this.removeAttribute("allowscript")}}}],[{key:"observedAttributes",get:function get(){return["allowscript"]}}]);return HtmlBlock}(babelHelpers.wrapNativeSuper(HTMLElement));_exports.HtmlBlock=HtmlBlock;window.customElements.define(HtmlBlock.tag,HtmlBlock)});

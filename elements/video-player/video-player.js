@@ -2,7 +2,8 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { html } from "@polymer/polymer/polymer-element.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { A11yBehaviors } from "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
@@ -46,7 +47,7 @@ import { MediaBehaviorsVideo } from "@lrnwebcomponents/media-behaviors/media-beh
  * @demo demo/index.html
  */
 class VideoPlayer extends MediaBehaviorsVideo(
-  A11yBehaviors(SchemaBehaviors(PolymerElement))
+  A11yBehaviors(SchemaBehaviors(SimpleColors))
 ) {
   // render function
   static get template() {

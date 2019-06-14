@@ -1,4 +1,4 @@
-define(["exports","meta","./node_modules/@polymer/polymer/polymer-element.js","./node_modules/@polymer/polymer/lib/utils/resolve-url.js","./node_modules/@lrnwebcomponents/es-global-bridge/es-global-bridge.js","./lib/chartist-render-shared-styles.js"],function(_exports,meta,_polymerElement,_resolveUrl,_esGlobalBridge,_chartistRenderSharedStyles){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.ChartistRender=void 0;meta=babelHelpers.interopRequireWildcard(meta);function _templateObject_8ebe2de06d6a11e9a3836779337dbe28(){var data=babelHelpers.taggedTemplateLiteral(["\n      <style include=\"chartist-render-shared-styles\">\n        :host {\n          display: block;\n        }\n      </style>\n      <div id=\"chart\" chart$=\"[[__chartId]]\" class$=\"ct-chart [[scale]]\"></div>\n    "]);_templateObject_8ebe2de06d6a11e9a3836779337dbe28=function _templateObject_8ebe2de06d6a11e9a3836779337dbe28(){return data};return data}/**
+define(["exports","meta","./node_modules/@polymer/polymer/polymer-element.js","./node_modules/@polymer/polymer/lib/utils/resolve-url.js","./node_modules/@lrnwebcomponents/es-global-bridge/es-global-bridge.js","./lib/chartist-render-shared-styles.js"],function(_exports,meta,_polymerElement,_resolveUrl,_esGlobalBridge,_chartistRenderSharedStyles){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.ChartistRender=void 0;meta=babelHelpers.interopRequireWildcard(meta);function _templateObject_6d770a6081c111e98a3e552c3d296d8d(){var data=babelHelpers.taggedTemplateLiteral(["\n      <style include=\"chartist-render-shared-styles\">\n        :host {\n          display: block;\n        }\n      </style>\n      <div id=\"chart\" chart$=\"[[__chartId]]\" class$=\"ct-chart [[scale]]\"></div>\n    "]);_templateObject_6d770a6081c111e98a3e552c3d296d8d=function _templateObject_6d770a6081c111e98a3e552c3d296d8d(){return data};return data}/**
  * `chartist-render`
  * Uses the chartist library to render a chart.
  *
@@ -25,7 +25,7 @@ define(["exports","meta","./node_modules/@polymer/polymer/polymer-element.js",".
    */},{key:"_addA11yFeature",value:function _addA11yFeature(svg,tag,html){var el=document.createElement(tag),first=svg.childNodes[0];el.innerHTML=html;el.setAttribute("id",this.__chartId+"-chart-"+tag);svg.insertBefore(el,first)}/**
    * Get unique ID from the chart
    */},{key:"_getUniqueId",value:function _getUniqueId(prefix){var id=prefix+Date.now();return id}}],[{key:"template",// render function
-get:function get(){return(0,_polymerElement.html)(_templateObject_8ebe2de06d6a11e9a3836779337dbe28())}// properties available to the custom element for data binding
+get:function get(){return(0,_polymerElement.html)(_templateObject_6d770a6081c111e98a3e552c3d296d8d())}// properties available to the custom element for data binding
 },{key:"properties",get:function get(){return{/**
        * The unique identifier of the chart.
        */id:{type:String,value:"chart"},/**

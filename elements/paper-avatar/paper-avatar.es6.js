@@ -24,86 +24,87 @@ Custom property | Description | Default
 
 * @demo demo/index.html 
 */class PaperAvatar extends PolymerElement{static get tag(){return"paper-avatar"}static get template(){return html`
-    <style>
-      :host {
-        --paper-avatar-width: 40px;
-        display: inline-block;
-        box-sizing: border-box;
-        position: relative;
-        width: var(--paper-avatar-width);
-        height: var(--paper-avatar-width);
-        border-radius: 50%;
-        cursor: default;
-        background-color: var(
-          --paper-avatar-color,
-          var(--paper-avatar-bgcolor)
-        );
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
+      <style>
+        :host {
+          --paper-avatar-width: 40px;
+          display: inline-block;
+          box-sizing: border-box;
+          position: relative;
+          width: var(--paper-avatar-width);
+          height: var(--paper-avatar-width);
+          border-radius: 50%;
+          cursor: default;
+          background-color: var(
+            --paper-avatar-color,
+            var(--paper-avatar-bgcolor)
+          );
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
 
-      :host > * {
-        pointer-events: none;
-      }
+        :host > * {
+          pointer-events: none;
+        }
 
-      #label,
-      #img,
-      #jdenticon {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-      }
-      #label {
-        overflow: hidden;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-flex-direction: row;
-        -ms-flex-direction: row;
-        flex-direction: row;
-        -webkit-align-items: center;
-        -ms-flex-align: center;
-        align-items: center;
-      }
-      #label span {
-        display: block;
-        width: 100%;
-        font-weight: 400;
-        color: rgba(255, 255, 255, 0.8);
-        text-transform: capitalize;
-        font-family: "Roboto", "Noto", sans-serif;
-        -webkit-font-smoothing: antialiased;
-        text-align: center;
-        font-size: calc(var(--paper-avatar-width) / 1.65);
-      }
-      #jdenticon {
-        width: var(--paper-avatar-width);
-        height: var(--paper-avatar-width);
-      }
-    </style>
-    <div id="label" title="[[label]]"><span>[[_label(label)]]</span></div>
-    <svg id="jdenticon" width="40" height="40"><slot></slot></svg>
-    <template is="dom-if" if="[[src]]">
-      <img
-        id="img"
-        src="[[src]]"
-        title="[[label]]"
-        on-load="_onImgLoad"
-        on-error="_onImgError"
-        title="[[color]]"
-      />
-    </template>`}static get properties(){return{/**
+        #label,
+        #img,
+        #jdenticon {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+        }
+        #label {
+          overflow: hidden;
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-flex-direction: row;
+          -ms-flex-direction: row;
+          flex-direction: row;
+          -webkit-align-items: center;
+          -ms-flex-align: center;
+          align-items: center;
+        }
+        #label span {
+          display: block;
+          width: 100%;
+          font-weight: 400;
+          color: rgba(255, 255, 255, 0.8);
+          text-transform: capitalize;
+          font-family: "Roboto", "Noto", sans-serif;
+          -webkit-font-smoothing: antialiased;
+          text-align: center;
+          font-size: calc(var(--paper-avatar-width) / 1.65);
+        }
+        #jdenticon {
+          width: var(--paper-avatar-width);
+          height: var(--paper-avatar-width);
+        }
+      </style>
+      <div id="label" title="[[label]]"><span>[[_label(label)]]</span></div>
+      <svg id="jdenticon" width="40" height="40"><slot></slot></svg>
+      <template is="dom-if" if="[[src]]">
+        <img
+          id="img"
+          src="[[src]]"
+          title="[[label]]"
+          on-load="_onImgLoad"
+          on-error="_onImgError"
+          title="[[color]]"
+        />
+      </template>
+    `}static get properties(){return{/**
        * Image address or base64
        */src:{type:String,value:!1},/**
        *	Label with username
-      */label:{type:String,observer:"_observerLabel"},/**
+       */label:{type:String,observer:"_observerLabel"},/**
        * Ensure we can support jdenticon before invoking it
        */jdenticonExists:{type:Boolean,value:!1},/**
        * Show two chars in avatar

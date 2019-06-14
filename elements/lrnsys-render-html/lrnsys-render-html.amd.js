@@ -1,4 +1,4 @@
-define(["exports","./node_modules/@polymer/polymer/polymer-element.js"],function(_exports,_polymerElement){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.LrnsysRenderHtml=void 0;function _templateObject_f97a17c06d6a11e9a217098acef6bdeb(){var data=babelHelpers.taggedTemplateLiteral(["\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <div id=\"container\"></div>"]);_templateObject_f97a17c06d6a11e9a217098acef6bdeb=function _templateObject_f97a17c06d6a11e9a217098acef6bdeb(){return data};return data}/**
+define(["exports","./node_modules/@polymer/polymer/polymer-element.js"],function(_exports,_polymerElement){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.LrnsysRenderHtml=void 0;function _templateObject_fed9841081c111e990fd43be816ffd5c(){var data=babelHelpers.taggedTemplateLiteral(["\n      <style>\n        :host {\n          display: block;\n        }\n      </style>\n      <div id=\"container\"></div>\n    "]);_templateObject_fed9841081c111e990fd43be816ffd5c=function _templateObject_fed9841081c111e990fd43be816ffd5c(){return data};return data}/**
 `lrnsys-render-html`
 A legacy element which just directly renders HTML.
 WARNING: DO NOT USE THIS UNLESS YOU KNOW WHAT YOU ARE DOING!
@@ -11,7 +11,7 @@ your users.
 * @demo demo/index.html
 */var LrnsysRenderHtml=/*#__PURE__*/function(_PolymerElement){babelHelpers.inherits(LrnsysRenderHtml,_PolymerElement);function LrnsysRenderHtml(){babelHelpers.classCallCheck(this,LrnsysRenderHtml);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(LrnsysRenderHtml).apply(this,arguments))}babelHelpers.createClass(LrnsysRenderHtml,[{key:"_render",/**
    * Render the HTML by just injecting it directly.
-   */value:function _render(html){this.$.container.innerHTML=html}}],[{key:"template",get:function get(){return(0,_polymerElement.html)(_templateObject_f97a17c06d6a11e9a217098acef6bdeb())}},{key:"tag",get:function get(){return"lrnsys-render-html"}},{key:"properties",get:function get(){return{/**
+   */value:function _render(html){this.$.container.innerHTML=html}}],[{key:"template",get:function get(){return(0,_polymerElement.html)(_templateObject_fed9841081c111e990fd43be816ffd5c())}},{key:"tag",get:function get(){return"lrnsys-render-html"}},{key:"properties",get:function get(){return{/**
        * String to render as HTML directly
        * @type {Object}
        */html:{type:String}}}/**

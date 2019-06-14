@@ -204,9 +204,9 @@ class MediaImage extends SchemaBehaviors(PolymerElement) {
             property: "alt",
             title: "Alternative text",
             description: "Text to describe the image to non-sighted users.",
-            inputMethod: "alt",
+            inputMethod: "textfield",
             icon: "accessibility",
-            required: true
+            required: false
           }
         ],
         configure: [
@@ -222,7 +222,7 @@ class MediaImage extends SchemaBehaviors(PolymerElement) {
             property: "caption",
             title: "Caption",
             description: "A caption to describe the image usage",
-            inputMethod: "haxupload",
+            inputMethod: "textfield",
             icon: "av:call-to-action"
           },
           {

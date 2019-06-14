@@ -1,0 +1,70 @@
+{
+  "name": "@lrnwebcomponents/pouch-db",
+  "wcfactory": {
+    "className": "PouchDb",
+    "customElementClass": "PolymerElement",
+    "elementName": "pouch-db",
+    "generator-wcfactory-version": "0.7.3",
+    "useHAX": false,
+    "useSass": false,
+    "files": {
+      "css": "src/pouch-db.css",
+      "scss": "src/pouch-db.scss",
+      "html": "src/pouch-db.html",
+      "js": "src/pouch-db.js",
+      "properties": "src/pouch-db-properties.json",
+      "hax": "src/pouch-db-hax.json"
+    }
+  },
+  "version": "2.1.0",
+  "description": "read and write localized data elements",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+  },
+  "main": "pouch-db.js",
+  "module": "pouch-db.es6.js",
+  "umd": "pouch-db.umd.js",
+  "amd": "pouch-db.amd.js",
+  "scripts": {
+    "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/pouch-db/test/",
+    "start": "yarn run dev",
+    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "../../node_modules/.bin/gulp dev",
+    "serve": "polymer serve --npm --module-resolution=node --open",
+    "lighthouse": "../../node_modules/.bin/gulp lighthouse"
+  },
+  "author": {
+    "name": "dfusco"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.5"
+  },
+  "devDependencies": {
+    "@lrnwebcomponents/chartist-render": "^2.1.0",
+    "@lrnwebcomponents/deduping-fix": "2.0.9",
+    "@lrnwebcomponents/multiple-choice": "^2.1.0",
+    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
+    "@polymer/iron-demo-helpers": "3.1.0",
+    "@polymer/paper-button": "^3.0.1",
+    "@webcomponents/webcomponentsjs": "2.2.7",
+    "concurrently": "4.1.0",
+    "gulp-babel": "8.0.0",
+    "gulp-sourcemaps": "2.6.5",
+    "lodash": "4.17.11",
+    "polymer-build": "3.1.3",
+    "polymer-cli": "1.9.8",
+    "wct-browser-legacy": "1.0.2",
+    "web-animations-js": "2.3.1"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-components",
+    "html"
+  ]
+}

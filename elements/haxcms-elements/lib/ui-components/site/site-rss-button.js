@@ -50,6 +50,7 @@ class SiteRSSButton extends PolymerElement {
         }
       </style>
       <a
+        disabled$="[[disabled]]"
         tabindex="-1"
         href$="[[href]]"
         target="_blank"
@@ -66,6 +67,10 @@ class SiteRSSButton extends PolymerElement {
    */
   static get properties() {
     return {
+      disabled: {
+        type: Boolean,
+        reflectToAttribute: true
+      },
       type: {
         type: String,
         value: "rss",

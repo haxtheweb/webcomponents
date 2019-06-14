@@ -1,10 +1,18 @@
-import { observable, decorate, computed, autorun, action, toJS } from "mobx";
+import {
+  observable,
+  decorate,
+  computed,
+  autorun,
+  action,
+  toJS
+} from "mobx/lib/mobx.module.js";
 
 class Store {
   constructor() {
     this.location = null;
     this.editMode = false;
     this.manifest = null;
+    this.activeItemContent = "";
     this.activeId = null;
     this.cmsSiteEditor = {
       instance: null

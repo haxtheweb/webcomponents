@@ -20,7 +20,7 @@
        */hexColor:{type:String,computed:"_getHexColor(color)"},/**
        * tiny, small, medium, large, epic sizing.
        */size:{type:String,reflectToAttribute:!0,value:"medium"}}}static get template(){return html`
-      <style include="simple-colors">
+      <style>
         @-moz-keyframes spin {
           100% {
             -moz-transform: rotate(60deg);

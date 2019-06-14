@@ -5,11 +5,12 @@ class HaxUploadField extends PolymerElement {
   constructor() {
     super();
     import("@polymer/paper-input/paper-input.js");
+    import("@polymer/paper-icon-button/paper-icon-button.js");
     import("@vaadin/vaadin-upload/vaadin-upload.js");
   }
   static get template() {
     return html`
-      <style include="simple-colors hax-shared-styles">
+      <style include="hax-shared-styles">
         :host {
           display: block;
           justify-content: flex-start;
@@ -82,9 +83,15 @@ class HaxUploadField extends PolymerElement {
         auto-validate=""
       ></paper-input>
       <vaadin-upload
+        capture
         form-data-name="file-upload"
         id="fileupload"
       ></vaadin-upload>
+      <paper-icon-button
+        icon="image:photo-camera"
+        id="selfie"
+      ></paper-icon-button>
+      <div id="camerahole"></div>
     `;
   }
   static get properties() {
@@ -217,34 +224,59 @@ class HaxUploadField extends PolymerElement {
     this.__allowUpload = true;
     this.shadowRoot.querySelector("#fileupload").uploadFiles();
   }
-  connectedCallback() {
-    super.connectedCallback();
+  ready() {
+    super.ready();
+    // hide the button if this environment can't support it anyway
+    if (!navigator.mediaDevices) {
+      this.shadowRoot.querySelector("#selfie").style.display = "none";
+      this.shadowRoot.querySelector("#camerahole").style.display = "none";
+    }
     this.shadowRoot
       .querySelector("#fileupload")
       .addEventListener("upload-before", this._fileAboutToUpload.bind(this));
     this.shadowRoot
       .querySelector("#fileupload")
       .addEventListener("upload-response", this._fileUploadResponse.bind(this));
+    this.shadowRoot
+      .querySelector("#selfie")
+      .addEventListener("click", this._takeSelfie.bind(this));
+    this.shadowRoot
+      .querySelector("#camerahole")
+      .addEventListener(
+        "simple-camera-snap-image",
+        this.__newPhotoShowedUp.bind(this)
+      );
     document.body.addEventListener(
       "hax-app-picker-selection",
       this._haxAppPickerSelection.bind(this)
     );
   }
+  /**
+   * life cycle, ensure body isnt listened to anymore here
+   */
   disconnectedCallback() {
-    this.shadowRoot
-      .querySelector("#fileupload")
-      .removeEventListener("upload-before", this._fileAboutToUpload.bind(this));
-    this.shadowRoot
-      .querySelector("#fileupload")
-      .removeEventListener(
-        "upload-response",
-        this._fileUploadResponse.bind(this)
-      );
     document.body.removeEventListener(
       "hax-app-picker-selection",
       this._haxAppPickerSelection.bind(this)
     );
     super.disconnectedCallback();
+  }
+  /**
+   * We got a new photo
+   */
+  __newPhotoShowedUp(e) {
+    let file = new File([e.detail.raw], "headshot" + e.timeStamp + ".jpg");
+    this.shadowRoot.querySelector("#fileupload")._addFile(file);
+  }
+  /**
+   * Invoke the camera to set itself up
+   */
+  _takeSelfie(e) {
+    if (!this.camera) {
+      import("@lrnwebcomponents/simple-login/lib/simple-camera-snap.js");
+      this.camera = document.createElement("simple-camera-snap");
+      this.shadowRoot.querySelector("#camerahole").appendChild(this.camera);
+    }
   }
   /**
    * Helper to take a multi-dimensional object and convert

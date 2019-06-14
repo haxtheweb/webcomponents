@@ -19,7 +19,7 @@ class HAXCMSBasicTheme extends HAXCMSTheme(BasicTemplate(PolymerElement)) {
   static get template() {
     let template = super.template;
     return html`
-      <style include="simple-colors">
+      <style>
         :host {
           display: block;
           background-color: white;

@@ -31,7 +31,7 @@ class HaxPanel extends PolymerElement {
   }
   static get template() {
     return html`
-      <style include="simple-colors hax-shared-styles">
+      <style include="hax-shared-styles">
         :host {
           display: block;
           position: absolute;
@@ -118,7 +118,8 @@ class HaxPanel extends PolymerElement {
           border-top-right-radius: 0;
           border-top-left-radius: unset;
         }
-        .active-op-name {
+        .active-op-name,
+        .editing-mode-active {
           display: none;
         }
         :host([edit-mode]) .active-op-name {
@@ -138,6 +139,13 @@ class HaxPanel extends PolymerElement {
           color: var(--hax-color-text);
           vertical-align: middle;
         }
+        :host([edit-mode]) .editing-mode-active {
+          display: flex;
+          font-size: 18px;
+          margin-left: 100px;
+          font-weight: bold;
+          color: var(--hax-color-text);
+        }
         @media screen and (max-width: 600px) {
           :host([edit-mode]) .hide-small {
             display: none;
@@ -147,6 +155,7 @@ class HaxPanel extends PolymerElement {
           :host([edit-mode]) #haxcancelbutton {
             margin-right: 2px;
           }
+          :host([edit-mode]) .editing-mode-active,
           :host([edit-mode]) .active-op-name {
             display: none;
           }
@@ -220,7 +229,7 @@ class HaxPanel extends PolymerElement {
           voice-command="insert stack"
         ></hax-panel-item>
         <hax-panel-item
-          icon="editor:text-fields"
+          icon="editor:short-text"
           label="Paragraph"
           event-name="text"
           voice-command="insert text"
@@ -261,6 +270,7 @@ class HaxPanel extends PolymerElement {
           icon="settings"
           label="Preferences"
         ></hax-panel-item>
+        <div class="editing-mode-active">[[editModeName]]</div>
       </app-drawer>
       <div class="active-op-name">[[activeOperationName]]</div>
     `;
@@ -315,6 +325,13 @@ class HaxPanel extends PolymerElement {
         type: String
       },
       /**
+       * Say we are editing content
+       */
+      editModeName: {
+        type: String,
+        value: "You are editing content"
+      },
+      /**
        * Showing preferences area.
        */
       hidePreferencesButton: {
@@ -342,8 +359,8 @@ class HaxPanel extends PolymerElement {
    * Attached to the DOM; now we can fire event to the store that
    * we exist and are the thing being edited.
    */
-  connectedCallback() {
-    super.connectedCallback();
+  ready() {
+    super.ready();
     afterNextRender(this, function() {
       this.addEventListener(
         "hax-item-selected",
@@ -370,29 +387,6 @@ class HaxPanel extends PolymerElement {
         this._processItemEvent.bind(this)
       );
     });
-  }
-
-  /**
-   * Detached life cycle
-   */
-  disconnectedCallback() {
-    this.removeEventListener(
-      "hax-item-selected",
-      this._processItemEvent.bind(this)
-    );
-    document.body.removeEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-    document.body.removeEventListener(
-      "hax-active-hover-name",
-      this._activeNameChange.bind(this)
-    );
-    document.body.removeEventListener(
-      "hax-panel-operation",
-      this._processItemEvent.bind(this)
-    );
-    super.disconnectedCallback();
   }
 
   _activeNameChange(e) {

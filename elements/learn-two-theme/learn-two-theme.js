@@ -21,6 +21,10 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
   static get template() {
     return html`
       <style>
+        html,
+        body {
+          background-color: var(--learn-two-theme-background-color, #fafafa);
+        }
         :host {
           display: block;
           font-family: "Muli", "Helvetica", "Tahoma", "Geneva", "Arial",
@@ -155,7 +159,18 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
           }
         }
 
+        h-a-x {
+          padding: 0 !important;
+        }
+
+        :host([edit-mode]) app-drawer {
+          opacity: 0.2;
+          pointer-events: none;
+        }
+
         app-drawer {
+          opacity: 1;
+          transition: 0.2s linear all;
           box-shadow: 0 0 6px -3px var(--haxcms-color, black);
           overflow: hidden;
           width: 300px;
@@ -236,14 +251,6 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
           display: none;
         }
       </style>
-      <style>
-        html,
-        body {
-          background-color: #fafafa;
-        }
-      </style>
-
-      <style include="simple-colors"></style>
       <app-drawer-layout>
         <paper-icon-button
           id="menubutton"
@@ -258,8 +265,9 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
           ></paper-icon-button>
           <div class="header-wrapper">
             <div class="header">
-              <site-title></site-title>
+              <site-title disabled$="[[editMode]]"></site-title>
               <site-modal
+                disabled$="[[editMode]]"
                 icon="icons:search"
                 title="Search site"
                 button-label="Search"
@@ -270,9 +278,18 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
           </div>
           <site-menu></site-menu>
           <div class="rss-buttons">
-            <site-rss-button type="atom"></site-rss-button>
-            <site-rss-button type="rss"></site-rss-button>
-            <site-print-button position="top"></site-print-button>
+            <site-rss-button
+              disabled$="[[editMode]]"
+              type="atom"
+            ></site-rss-button>
+            <site-rss-button
+              disabled$="[[editMode]]"
+              type="rss"
+            ></site-rss-button>
+            <site-print-button
+              disabled$="[[editMode]]"
+              position="top"
+            ></site-print-button>
           </div>
         </app-drawer>
         <div>
@@ -292,7 +309,11 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
 
   // properties available to the custom element for data binding
   static get properties() {
-    return {};
+    let props = {};
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
   constructor() {
     super();

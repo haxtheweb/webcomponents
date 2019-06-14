@@ -131,6 +131,11 @@ import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
  * the text certain patterns or to look for certain elements at the end of
  * the conversion routine.
  *
+ * `preProcessHaxInsertContent` - If an element needs to ensure it cleans up data
+ * during the conversion from preview to being inserted. This function passes in
+ * the details object for creating an element from HAX schema. Examples could be
+ * objects that contain focus which may cause issues when doing a pure clone as the
+ * reference is being garbage collected on save (see grid-plate).
  */
 /**
  * Object to validate HAX schema. Can be used in and out of element contexts
@@ -350,8 +355,10 @@ export class HAXWiring {
             description: "element ID, only set this if you know why",
             inputMethod: "textfield"
           });
+          // we need to support slot in the UI but actually shift it around under the hood
+          // this is so that shadow roots don't get mad when previewing
           props.settings.advanced.push({
-            attribute: "slot",
+            attribute: "data-hax-slot",
             title: "slot",
             description: "DOM slot area",
             inputMethod: "textfield"
@@ -471,6 +478,10 @@ export class HAXWiring {
       if (typeof setting.required === typeof undefined) {
         setting.required = false;
       }
+      // ensure there's required set
+      if (typeof setting.disabled === typeof undefined) {
+        setting.disabled = false;
+      }
       // ensure there's validation or make it anything if none set
       if (typeof setting.validation === typeof undefined) {
         setting.validation = ".*";
@@ -560,7 +571,8 @@ export class HAXWiring {
                   name: "paper-input",
                   valueProperty: "value",
                   properties: {
-                    required: settings[value].required
+                    required: settings[value].required,
+                    disabled: settings[value].disabled
                   },
                   attributes: {
                     type: "number"
@@ -583,7 +595,8 @@ export class HAXWiring {
                   valueProperty: "value",
                   properties: {
                     required: settings[value].required,
-                    options: options
+                    options: options,
+                    disabled: settings[value].disabled
                   }
                 };
                 break;
@@ -592,7 +605,8 @@ export class HAXWiring {
                   name: "paper-textarea",
                   valueProperty: "value",
                   properties: {
-                    required: settings[value].required
+                    required: settings[value].required,
+                    disabled: settings[value].disabled
                   },
                   attributes: {
                     "auto-validate": "auto-validate",
@@ -605,7 +619,7 @@ export class HAXWiring {
                   name: "code-editor",
                   valueProperty: "value",
                   properties: {
-                    //editorValue: settings[value].value,
+                    editorValue: settings[value].value,
                     title: settings[value].title,
                     theme: "hc-black",
                     mode: "html",
@@ -627,7 +641,8 @@ export class HAXWiring {
                   name: "paper-input",
                   valueProperty: "value",
                   properties: {
-                    required: settings[value].required
+                    required: settings[value].required,
+                    disabled: settings[value].disabled
                   },
                   attributes: {
                     "auto-validate": "auto-validate"
@@ -639,7 +654,8 @@ export class HAXWiring {
                   name: "paper-input-flagged",
                   valueProperty: "value",
                   properties: {
-                    required: settings[value].required
+                    required: settings[value].required,
+                    disabled: settings[value].disabled
                   },
                   attributes: {
                     "auto-validate": "auto-validate"
@@ -652,7 +668,8 @@ export class HAXWiring {
                   valueProperty: "value",
                   properties: {
                     required: settings[value].required,
-                    label: settings[value].title
+                    label: settings[value].title,
+                    disabled: settings[value].disabled
                   }
                 };
                 break;
@@ -663,7 +680,8 @@ export class HAXWiring {
                   properties: {
                     required: settings[value].required,
                     hideOptionLabels: true,
-                    label: settings[value].title
+                    label: settings[value].title,
+                    disabled: settings[value].disabled
                   }
                 };
                 // support options array of icons to pick from
@@ -682,7 +700,8 @@ export class HAXWiring {
                   valueProperty: "date",
                   properties: {
                     required: settings[value].required,
-                    autoUpdateDate: true
+                    autoUpdateDate: true,
+                    disabled: settings[value].disabled
                   }
                 };
                 break;
@@ -691,7 +710,9 @@ export class HAXWiring {
                   name: "hax-upload-field",
                   valueProperty: "value",
                   properties: {
-                    formDataName: "file-upload"
+                    formDataName: "file-upload",
+                    disabled: settings[value].disabled,
+                    required: settings[value].required
                   }
                 };
                 break;
@@ -734,7 +755,8 @@ export class HAXWiring {
                   name: "paper-input",
                   valueProperty: "value",
                   properties: {
-                    required: settings[value].required
+                    required: settings[value].required,
+                    disabled: settings[value].disabled
                   },
                   attributes: {
                     type: "number"
@@ -757,6 +779,7 @@ export class HAXWiring {
                   valueProperty: "value",
                   properties: {
                     required: settings[value].required,
+                    disabled: settings[value].disabled,
                     options: options
                   }
                 };
@@ -766,7 +789,8 @@ export class HAXWiring {
                   name: "paper-textarea",
                   valueProperty: "value",
                   properties: {
-                    required: settings[value].required
+                    required: settings[value].required,
+                    disabled: settings[value].disabled
                   },
                   attributes: {
                     "auto-validate": "auto-validate",
@@ -779,7 +803,7 @@ export class HAXWiring {
                   name: "code-editor",
                   valueProperty: "value",
                   properties: {
-                    //editorValue: props[settings[value].attribute].value,
+                    editorValue: props[settings[value].attribute].value,
                     title: settings[value].title,
                     readOnly: false,
                     theme: "hc-black",
@@ -793,7 +817,8 @@ export class HAXWiring {
                   name: "paper-input",
                   valueProperty: "value",
                   properties: {
-                    required: settings[value].required
+                    required: settings[value].required,
+                    disabled: settings[value].disabled
                   },
                   attributes: {
                     "auto-validate": "auto-validate"
@@ -805,7 +830,8 @@ export class HAXWiring {
                   name: "paper-input-flagged",
                   valueProperty: "value",
                   properties: {
-                    required: settings[value].required
+                    required: settings[value].required,
+                    disabled: settings[value].disabled
                   },
                   attributes: {
                     "auto-validate": "auto-validate"
@@ -817,7 +843,8 @@ export class HAXWiring {
                   name: "simple-colors-picker",
                   valueProperty: "value",
                   properties: {
-                    required: settings[value].required
+                    required: settings[value].required,
+                    disabled: settings[value].disabled
                   }
                 };
                 break;
@@ -826,7 +853,9 @@ export class HAXWiring {
                   name: "hax-upload-field",
                   valueProperty: "value",
                   properties: {
-                    formDataName: "file-upload"
+                    formDataName: "file-upload",
+                    required: settings[value].required,
+                    disabled: settings[value].disabled
                   }
                 };
                 break;
@@ -841,7 +870,7 @@ export class HAXWiring {
                 name: "code-editor",
                 valueProperty: "value",
                 properties: {
-                  //editorValue: settings[value].value,
+                  editorValue: settings[value].value,
                   title: settings[value].title,
                   theme: "hc-black",
                   mode: "html",
@@ -869,8 +898,10 @@ export class HAXWiring {
                 }
               }
             }
-            props[settings[value].slot].component.slot =
-              "<template>" + slot.trim() + "</template>";
+            // @todo verify this stuff actually works
+            props[
+              settings[value].slot
+            ].component.properties.editorValue = slot.trim();
           }
         }
       }

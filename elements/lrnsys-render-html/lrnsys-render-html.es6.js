@@ -13,12 +13,13 @@ your users.
 
 * @demo demo/index.html
 */class LrnsysRenderHtml extends PolymerElement{static get template(){return html`
-    <style>
-      :host {
-        display: block;
-      }
-    </style>
-    <div id="container"></div>`}static get tag(){return"lrnsys-render-html"}static get properties(){return{/**
+      <style>
+        :host {
+          display: block;
+        }
+      </style>
+      <div id="container"></div>
+    `}static get tag(){return"lrnsys-render-html"}static get properties(){return{/**
        * String to render as HTML directly
        * @type {Object}
        */html:{type:String}}}/**

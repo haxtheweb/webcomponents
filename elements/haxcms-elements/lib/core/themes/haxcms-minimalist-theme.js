@@ -21,7 +21,7 @@ class HAXCMSMinimalistTheme extends HAXCMSTheme(
   static get template() {
     let template = super.template;
     return html`
-      <style include="simple-colors">
+      <style>
         :host {
           display: block;
           font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial,

@@ -5,7 +5,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { autorun, toJS } from "mobx";
+import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
@@ -36,7 +36,7 @@ class HAXCMSSiteEditor extends PolymerElement {
   // render function
   static get template() {
     return html`
-      <style include="simple-colors">
+      <style>
         :host {
           display: block;
         }
@@ -95,6 +95,7 @@ class HAXCMSSiteEditor extends PolymerElement {
         content-type="application/json"
         handle-as="json"
         on-response="_handleNodeResponse"
+        last-error="{{lastError}}"
       ></iron-ajax>
       <iron-ajax
         headers='{"Authorization": "Bearer [[jwt]]"}'
@@ -105,6 +106,7 @@ class HAXCMSSiteEditor extends PolymerElement {
         content-type="application/json"
         handle-as="json"
         on-response="_handleOutlineResponse"
+        last-error="{{lastError}}"
       ></iron-ajax>
       <iron-ajax
         headers='{"Authorization": "Bearer [[jwt]]"}'
@@ -115,6 +117,7 @@ class HAXCMSSiteEditor extends PolymerElement {
         content-type="application/json"
         handle-as="json"
         on-response="_handleGetFieldsResponse"
+        last-error="{{lastError}}"
       ></iron-ajax>
       <iron-ajax
         headers='{"Authorization": "Bearer [[jwt]]"}'
@@ -125,6 +128,7 @@ class HAXCMSSiteEditor extends PolymerElement {
         content-type="application/json"
         handle-as="json"
         on-response="_handleGetSiteFieldsResponse"
+        last-error="{{lastError}}"
       ></iron-ajax>
       <iron-ajax
         headers='{"Authorization": "Bearer [[jwt]]"}'
@@ -135,6 +139,7 @@ class HAXCMSSiteEditor extends PolymerElement {
         content-type="application/json"
         handle-as="json"
         on-response="_handleManifestResponse"
+        last-error="{{lastError}}"
       ></iron-ajax>
       <iron-ajax
         headers='{"Authorization": "Bearer [[jwt]]"}'
@@ -146,6 +151,18 @@ class HAXCMSSiteEditor extends PolymerElement {
         content-type="application/json"
         handle-as="json"
         on-response="_handlePublishResponse"
+        last-error="{{lastError}}"
+      ></iron-ajax>
+      <iron-ajax
+        headers='{"Authorization": "Bearer [[jwt]]"}'
+        id="revertajax"
+        url="[[revertSitePath]]"
+        method="[[method]]"
+        body="[[revertSiteData]]"
+        content-type="application/json"
+        handle-as="json"
+        on-response="_handleRevertResponse"
+        last-error="{{lastError}}"
       ></iron-ajax>
       <iron-ajax
         headers='{"Authorization": "Bearer [[jwt]]"}'
@@ -157,6 +174,7 @@ class HAXCMSSiteEditor extends PolymerElement {
         handle-as="json"
         on-response="_handleCreateResponse"
         last-response="{{__createNodeResponse}}"
+        last-error="{{lastError}}"
       ></iron-ajax>
       <iron-ajax
         headers='{"Authorization": "Bearer [[jwt]]"}'
@@ -168,12 +186,20 @@ class HAXCMSSiteEditor extends PolymerElement {
         handle-as="json"
         on-response="_handleDeleteResponse"
         last-response="{{__deleteNodeResponse}}"
+        last-error="{{lastError}}"
       ></iron-ajax>
       <h-a-x app-store$="[[appStore]]" hide-panel-ops></h-a-x>
     `;
   }
   static get properties() {
     return {
+      /**
+       * Singular error reporter / visual based on requests erroring
+       */
+      lastError: {
+        type: Object,
+        observer: "_lastErrorChanged"
+      },
       /**
        * Allow method to be overridden, useful in local testing
        */
@@ -212,9 +238,15 @@ class HAXCMSSiteEditor extends PolymerElement {
         type: String
       },
       /**
-       * end point for publishing to surge
+       * end point for publishing
        */
       publishSitePath: {
+        type: String
+      },
+      /**
+       * end point for revert
+       */
+      revertSitePath: {
         type: String
       },
       /**
@@ -269,6 +301,13 @@ class HAXCMSSiteEditor extends PolymerElement {
        * create new node data
        */
       publishSiteData: {
+        type: Object,
+        value: {}
+      },
+      /**
+       * revert site data
+       */
+      revertSiteData: {
         type: Object,
         value: {}
       },
@@ -333,6 +372,20 @@ class HAXCMSSiteEditor extends PolymerElement {
         type: String
       }
     };
+  }
+  _lastErrorChanged(newValue) {
+    if (newValue) {
+      console.error(newValue);
+      const evt = new CustomEvent("simple-toast-show", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          text: newValue.error
+        }
+      });
+      window.dispatchEvent(evt);
+    }
   }
   /**
    * Break the shadow root for this element (by design)
@@ -401,6 +454,10 @@ class HAXCMSSiteEditor extends PolymerElement {
         "haxcms-publish-site",
         this.publishSite.bind(this)
       );
+      window.addEventListener(
+        "haxcms-git-revert-last-commit",
+        this.revertCommit.bind(this)
+      );
       microTask.run(() => {
         this.updateStyles();
         if (window.HaxStore.ready) {
@@ -462,6 +519,10 @@ class HAXCMSSiteEditor extends PolymerElement {
     window.removeEventListener(
       "haxcms-publish-site",
       this.publishSite.bind(this)
+    );
+    window.removeEventListener(
+      "haxcms-git-revert-last-commit",
+      this.revertCommit.bind(this)
     );
     window.removeEventListener(
       "json-outline-schema-active-item-changed",
@@ -639,9 +700,17 @@ class HAXCMSSiteEditor extends PolymerElement {
     b3.setAttribute("dialog-confirm", "dialog-confirm");
     b3.addEventListener("click", this._publishTap.bind(this));
     b3.style.minWidth = "100px";
-    b3.style.backgroundColor = getComputedStyle(this).getPropertyValue(
-      "--haxcms-color"
-    );
+    b3.style.backgroundColor = "var(--haxcms-color)";
+    let b4 = document.createElement("paper-button");
+    b4.raised = true;
+    b4.appendChild(document.createTextNode("Roll site back"));
+    b4.setAttribute("dialog-confirm", "dialog-confirm");
+    b4.addEventListener("click", this._revertCommit.bind(this));
+    b4.style.minWidth = "100px";
+    b4.style.marginLeft = "50px";
+    b4.style.backgroundColor = "var(--simple-colors-default-theme-red-8)";
+    b4.style.color = "white";
+
     let b = document.createElement("div");
     b.style.position = "absolute";
     b.style.bottom = 0;
@@ -652,6 +721,7 @@ class HAXCMSSiteEditor extends PolymerElement {
     b.appendChild(b1);
     b.appendChild(b2);
     b.appendChild(b3);
+    b.appendChild(b4);
     window.dispatchEvent(
       new CustomEvent("simple-modal-show", {
         bubbles: true,
@@ -691,6 +761,19 @@ class HAXCMSSiteEditor extends PolymerElement {
   _publishTap(e) {
     this.dispatchEvent(
       new CustomEvent("haxcms-publish-site", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: true
+      })
+    );
+  }
+  /**
+   * Revert Commit pressed
+   */
+  _revertCommit(e) {
+    this.dispatchEvent(
+      new CustomEvent("haxcms-git-revert-last-commit", {
         bubbles: true,
         composed: true,
         cancelable: false,
@@ -1000,6 +1083,31 @@ class HAXCMSSiteEditor extends PolymerElement {
       })
     );
   }
+  /**
+   * Tell the user we undid their last state of the site and trigger
+   * everything to update to reflect this
+   */
+  _handleRevertResponse(e) {
+    // trigger a refresh of the data in node
+    const evt = new CustomEvent("simple-toast-show", {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+      detail: {
+        text: "Last save undone",
+        duration: 3000
+      }
+    });
+    this.dispatchEvent(evt);
+    this.dispatchEvent(
+      new CustomEvent("haxcms-trigger-update", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: true
+      })
+    );
+  }
   _handlePublishResponse(e) {
     let data = e.detail.response;
     // show the published response
@@ -1067,7 +1175,6 @@ class HAXCMSSiteEditor extends PolymerElement {
    * Save the outline based on an event firing.
    */
   saveOutline(e) {
-    console.log(e);
     // now let's work on the outline
     this.set("updateOutlineData.siteName", this.manifest.metadata.siteName);
     this.notifyPath("updateOutlineData.siteName");
@@ -1088,7 +1195,7 @@ class HAXCMSSiteEditor extends PolymerElement {
     // if we have a cssVariable selected then generate a hexCode off of it
     if (values.cssVariable) {
       values.hexCode =
-        window.SimpleColorsUtilities.colors[
+        window.SimpleColorsStyles.colors[
           values.cssVariable
             .replace("--simple-colors-default-theme-", "")
             .replace("-7", "")
@@ -1114,6 +1221,18 @@ class HAXCMSSiteEditor extends PolymerElement {
     this.notifyPath("publishSiteData.jwt");
     if (this.publishSitePath) {
       this.$.publishajax.generateRequest();
+    }
+  }
+  /**
+   * Revert last commit
+   */
+  revertCommit(e) {
+    this.set("revertSiteData.siteName", this.manifest.metadata.siteName);
+    this.notifyPath("revertSiteData.siteName");
+    this.set("revertSiteData.jwt", this.jwt);
+    this.notifyPath("revertSiteData.jwt");
+    if (this.revertSitePath) {
+      this.$.revertajax.generateRequest();
     }
   }
   /**

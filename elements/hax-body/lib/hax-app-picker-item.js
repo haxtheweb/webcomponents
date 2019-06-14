@@ -87,8 +87,8 @@ class HaxAppPickerItem extends PolymerElement {
       <div aria-hidden="true">[[label]]</div>
     `;
   }
-  connectedCallback() {
-    super.connectedCallback();
+  ready() {
+    super.ready();
     afterNextRender(this, function() {
       this.addEventListener("mousedown", this.tapEventOn.bind(this));
       this.addEventListener("mouseover", this.tapEventOn.bind(this));
@@ -96,14 +96,6 @@ class HaxAppPickerItem extends PolymerElement {
       this.addEventListener("focusin", this.tapEventOn.bind(this));
       this.addEventListener("focusout", this.tapEventOff.bind(this));
     });
-  }
-  disconnectedCallback() {
-    this.removeEventListener("mousedown", this.tapEventOn.bind(this));
-    this.removeEventListener("mouseover", this.tapEventOn.bind(this));
-    this.removeEventListener("mouseout", this.tapEventOff.bind(this));
-    this.removeEventListener("focusin", this.tapEventOn.bind(this));
-    this.removeEventListener("focusout", this.tapEventOff.bind(this));
-    super.disconnectedCallback();
   }
   static get tag() {
     return "hax-app-picker-item";

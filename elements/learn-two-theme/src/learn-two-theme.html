@@ -1,28 +1,20 @@
-
-  <style>
-  html,body {
-    background-color: #FAFAFA;
-  }
-  </style>
-
-<style include="simple-colors"></style>
 <app-drawer-layout>
   <paper-icon-button id="menubutton" icon="menu" on-click="toggleDrawer"></paper-icon-button>
   <app-drawer swipe-open slot="drawer" opened="{{opened}}">
     <paper-icon-button id="menubutton2" icon="menu" on-click="toggleDrawer"></paper-icon-button>
     <div class="header-wrapper">
       <div class="header">
-        <site-title></site-title>
-        <site-modal icon="icons:search" title="Search site" button-label="Search">
+        <site-title disabled$="[[editMode]]"></site-title>
+        <site-modal disabled$="[[editMode]]" icon="icons:search" title="Search site" button-label="Search">
           <site-search></site-search>
         </site-modal>
       </div>
     </div>
     <site-menu></site-menu>
     <div class="rss-buttons">
-      <site-rss-button type="atom"></site-rss-button>
-      <site-rss-button type="rss"></site-rss-button>
-      <site-print-button position="top"></site-print-button>
+      <site-rss-button disabled$="[[editMode]]" type="atom"></site-rss-button>
+      <site-rss-button disabled$="[[editMode]]" type="rss"></site-rss-button>
+      <site-print-button disabled$="[[editMode]]" position="top"></site-print-button>
     </div>
   </app-drawer>
   <div>

@@ -3,7 +3,7 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
  * `Ask the user a question from a set of possible answers.`
  * @demo demo/index.html
  */class MultipleChoice extends SchemaBehaviors(PolymerElement){static get tag(){return"multiple-choice"}constructor(){super();import("./node_modules/@polymer/iron-icons/iron-icons.js");import("./node_modules/@polymer/iron-icon/iron-icon.js");import("./node_modules/@polymer/paper-button/paper-button.js")}static get template(){return html`
-      <style include="simple-colors">
+      <style>
         :host {
           display: block;
           padding: 16px 16px 54px 16px;
@@ -82,10 +82,13 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
         <paper-button
           disabled\$="[[disabled]]"
           raised=""
-          on-tap="_verifyAnswers"
+          on-click="_verifyAnswers"
           >[[checkLabel]]</paper-button
         >
-        <paper-button disabled\$="[[disabled]]" raised="" on-tap="resetAnswers"
+        <paper-button
+          disabled\$="[[disabled]]"
+          raised=""
+          on-click="resetAnswers"
           >[[resetLabel]]</paper-button
         >
       </div>
@@ -137,7 +140,8 @@ for(var i in this.displayedAnswers){if(!1!=gotRight&&this.displayedAnswers[i].co
    * Verify the answers of the user based on their saying
    * that they want to see how they did.
    */_verifyAnswers(e){let gotRight=this.checkAnswers();// see if they got this correct based on their answers
-if(gotRight){this.$.toast.hide();this.__toastColor="green";this.__toastIcon="thumb-up";this.__toastText=this.correctText;this.$.toast.show()}else{this.$.toast.hide();this.__toastColor="red";this.__toastIcon="thumb-down";this.__toastText=this.incorrectText;this.$.toast.show()}}/**
+if(gotRight){this.$.toast.hide();this.__toastColor="green";this.__toastIcon="thumb-up";this.__toastText=this.correctText;this.$.toast.show()}else{this.$.toast.hide();this.__toastColor="red";this.__toastIcon="thumb-down";this.__toastText=this.incorrectText;this.$.toast.show()}// start of data passing, this is a prototype atm
+this.dispatchEvent(new CustomEvent("user-engagement",{bubbles:!0,composed:!0,cancelable:!1,detail:{passed:gotRight}}))}/**
    * Figure out the order of the answers which will be displayed
    */_computeDisplayedAnswers(answers,randomize){if(typeof answers!==typeof void 0&&null!=answers&&0<answers.length&&randomize){let random=answers;var currentIndex=random.length,temporaryValue,randomIndex;// While there remain elements to shuffle...
 while(0!==currentIndex){// Pick a remaining element...

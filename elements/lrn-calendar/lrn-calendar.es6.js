@@ -2,58 +2,58 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
  * `lrn-calendar`
  * @demo demo/index.html
  */class LrnCalendar extends PolymerElement{static get template(){return html`
-    <style>
-      :host {
-        display: block;
-      }
-      lrn-calendar-date {
-        display: inline-table;
-        top: 0px;
-      }
-      paper-card {
-        width: 14%;
-        height: 20px;
-        display: inline-table;
-        padding: 0;
-        margin: 0;
-      }
-      .calendar {
-        color: var(--my-toolbar-title-color);
-      }
-      .header {
-        padding-bottom: 15px;
-      }
-    </style>
+      <style>
+        :host {
+          display: block;
+        }
+        lrn-calendar-date {
+          display: inline-table;
+          top: 0px;
+        }
+        paper-card {
+          width: 14%;
+          height: 20px;
+          display: inline-table;
+          padding: 0;
+          margin: 0;
+        }
+        .calendar {
+          color: var(--my-toolbar-title-color);
+        }
+        .header {
+          padding-bottom: 15px;
+        }
+      </style>
 
-    <div class="calendar">
-      <div class="header">
-        <div style="float: left">
-          <paper-button raised type="button" on-tap="monthView"
-            >Month</paper-button
-          >
-          <paper-button raised type="button" on-tap="weekView"
-            >Week</paper-button
-          >
+      <div class="calendar">
+        <div class="header">
+          <div style="float: left">
+            <paper-button raised type="button" on-click="monthView"
+              >Month</paper-button
+            >
+            <paper-button raised type="button" on-click="weekView"
+              >Week</paper-button
+            >
+          </div>
+          <div style="float: right">
+            <paper-button raised type="button" on-click="showDate"
+              >Today</paper-button
+            >
+            <paper-button on-click="showPrev"
+              ><iron-icon icon="arrow-back"></iron-icon
+            ></paper-button>
+            <paper-button on-click="showNext"
+              ><iron-icon icon="arrow-forward"></iron-icon
+            ></paper-button>
+          </div>
+          <div style="margin: 0 auto; width: 200px; text-align: center">
+            <h2>[[getDisplayDate(date)]]</h2>
+          </div>
         </div>
-        <div style="float: right">
-          <paper-button raised type="button" on-tap="showDate"
-            >Today</paper-button
-          >
-          <paper-button on-tap="showPrev"
-            ><iron-icon icon="arrow-back"></iron-icon
-          ></paper-button>
-          <paper-button on-tap="showNext"
-            ><iron-icon icon="arrow-forward"></iron-icon
-          ></paper-button>
-        </div>
-        <div style="margin: 0 auto; width: 200px; text-align: center">
-          <h2>[[getDisplayDate(date)]]</h2>
-        </div>
+
+        <div class="calendarView" id="calView"></div>
       </div>
-
-      <div class="calendarView" id="calView"></div>
-    </div>
-  `}static get tag(){return"lrn-calendar"}static get properties(){return{/**
+    `}static get tag(){return"lrn-calendar"}static get properties(){return{/**
        * An array of events for display
        */listOfEvents:{type:Array,value:[]},/**
        * Date to start from

@@ -14,12 +14,6 @@ import "@lrnwebcomponents/simple-colors/simple-colors.js";
 class PlaceHolder extends PolymerElement {
   constructor() {
     super();
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icons/editor-icons.js");
-    import("@polymer/iron-icons/notification-icons.js");
-    import("@polymer/iron-icons/av-icons.js");
-    import("@polymer/iron-icons/device-icons.js");
-    import("@polymer/iron-icons/image-icons.js");
     afterNextRender(this, function() {
       this.HAXWiring = new HAXWiring();
       this.HAXWiring.setup(PlaceHolder.haxProperties, PlaceHolder.tag, this);
@@ -27,7 +21,7 @@ class PlaceHolder extends PolymerElement {
   }
   static get template() {
     return html`
-      <style include="simple-colors">
+      <style>
         :host {
           display: block;
           border: none;
@@ -141,26 +135,34 @@ class PlaceHolder extends PolymerElement {
     if (!dragOver) {
       switch (type) {
         case "document":
+          import("@polymer/iron-icons/editor-icons.js");
+
           return "editor:insert-drive-file";
           break;
         case "audio":
+          import("@polymer/iron-icons/av-icons.js");
           return "av:music-video";
           break;
         case "video":
+          import("@polymer/iron-icons/notification-icons.js");
           return "notification:ondemand-video";
           break;
         case "image":
+          import("@polymer/iron-icons/image-icons.js");
           return "image:crop-original";
           break;
         case "math":
+          import("@polymer/iron-icons/editor-icons.js");
           return "editor:functions";
           break;
         case "text":
         default:
+          import("@polymer/iron-icons/editor-icons.js");
           return "editor:format-align-left";
           break;
       }
     } else {
+      import("@polymer/iron-icons/iron-icons.js");
       // we are dragging, ignore icon
       return "icons:file-upload";
     }
@@ -288,11 +290,19 @@ class PlaceHolder extends PolymerElement {
               image: "Image",
               math: "Math"
             }
+          },
+          {
+            property: "text",
+            title: "Text",
+            description: "Identify the place holder desired in greater detail",
+            inputMethod: "textfield",
+            required: false
           }
         ],
         advanced: []
       },
       saveOptions: {
+        unsetAttributes: ["icon-from-type", "calc-text"],
         wipeSlot: true
       }
     };

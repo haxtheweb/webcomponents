@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>GridPlate: grid-plate Demo</title>
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-snippet.js';
@@ -53,18 +54,16 @@
               venenatis quis lacus. 
               Donec luctus aliquam ipsum quis sagittis.   
             </p>
-            <p slot="col-3">
-              <img 
+              <img
+                slot="col-3" 
                 width="100%" 
                 alt="placeholder image of animals" 
                 src="http://lorempixel.com/400/200/animals"/>
-            </p>
-            <p slot="col-4">
-              <img 
-                width="100%" 
-                alt="placeholder image of food" 
-                src="http://lorempixel.com/400/200/food"/>
-            </p>
+            <img 
+              slot="col-4"
+              width="100%" 
+              alt="placeholder image of food" 
+              src="http://lorempixel.com/400/200/food"/>
             <p slot="col-4">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
               Suspendisse lacinia ut urna ut cursus. 

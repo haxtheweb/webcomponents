@@ -27,7 +27,7 @@ class SelfCheck extends SchemaBehaviors(A11yBehaviors(SimpleColors)) {
   }
   static get template() {
     return html`
-      <style include="simple-colors">
+      <style>
         :host {
           display: block;
           margin: 15px 0;
@@ -206,7 +206,7 @@ class SelfCheck extends SchemaBehaviors(A11yBehaviors(SimpleColors)) {
                 on-click="openAnswer"
                 noink
               >
-              </paper-icon-button>
+              </user-action>
               <paper-tooltip aria-hidden="true" for="checkBtn" position="left">
                 Reveal Answer
               </paper-tooltip>
@@ -215,9 +215,11 @@ class SelfCheck extends SchemaBehaviors(A11yBehaviors(SimpleColors)) {
 
           <div id="answer_wrap" aria-hidden$="[[!correct]]" aria-live="polite">
             <div class="answer">
-              <slot></slot>
+              <user-action track="visibility">
+                <slot></slot>
+              </user-action>
               <div class="more_info" hidden$="[[!link]]">
-                <a href$="[[link]]" target="_blank">More info...</a>
+                <user-action track="click" every><a href$="[[link]]" target="_blank">More info...</a></user-action>
               </div>
               <div class="close_button">
                 <paper-icon-button
@@ -417,11 +419,13 @@ class SelfCheck extends SchemaBehaviors(A11yBehaviors(SimpleColors)) {
       }
     };
   }
+
   connectedCallback() {
     super.connectedCallback();
     afterNextRender(this, function() {
       this.HAXWiring = new HAXWiring();
       this.HAXWiring.setup(SelfCheck.haxProperties, SelfCheck.tag, this);
+      import("@lrnwebcomponents/user-action/user-action.js");
     });
   }
 }

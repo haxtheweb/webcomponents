@@ -1,0 +1,17 @@
+{
+  "track": {
+    "name": "track",
+    "type": "String",
+    "value": "visibility"
+  },
+  "every": {
+    "name": "every",
+    "type": "Boolean",
+    "value": false
+  },
+  "visiblelimit": {
+    "name": "visiblelimit",
+    "type": "Number",
+    "value": 0.5
+  }
+}

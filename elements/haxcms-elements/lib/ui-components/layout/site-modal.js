@@ -44,6 +44,7 @@ class SiteModal extends PolymerElement {
         }
       </style>
       <paper-icon-button
+        disabled$="[[disabled]]"
         id="btn"
         icon="[[icon]]"
         title="[[buttonLabel]]"
@@ -58,6 +59,10 @@ class SiteModal extends PolymerElement {
   }
   static get properties() {
     return {
+      disabled: {
+        type: Boolean,
+        reflectToAttribute: true
+      },
       title: {
         type: String,
         value: "Dialog"

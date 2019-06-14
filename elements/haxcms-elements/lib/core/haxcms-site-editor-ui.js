@@ -1,6 +1,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { store } from "./haxcms-site-store.js";
-import { autorun, toJS } from "mobx";
+import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 
