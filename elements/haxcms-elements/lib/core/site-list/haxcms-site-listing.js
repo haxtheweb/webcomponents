@@ -576,8 +576,8 @@ class HAXCMSSiteListing extends PolymerElement {
         <div>
           <h1>Log into HAXcms</h1>
           <p>
-            Hey I mean we think you look awesome, don't get us wrong. We just
-            need more then your mug in order to let you into the future.
+            Hey, I mean we think you look awesome, don't get us wrong. We just
+            need more than your mug in order to let you into the future.
           </p>
           <p>
             So please. please please please.... login and get this party started
