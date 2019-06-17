@@ -48,254 +48,281 @@ import "@polymer/polymer/lib/elements/dom-repeat.js";
  * @demo demo/index.html
  */
 class RssItems extends PolymerElement {
-  
   // render function
   static get template() {
     return html`
-<style>:host([hidden]) {
-  display: none;
-}
-:host {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-between;
-  @apply --rss-items;
-}
+      <style>
+        :host([hidden]) {
+          display: none;
+        }
+        :host {
+          display: flex;
+          flex-wrap: wrap;
+          flex-direction: row;
+          align-items: flex-start;
+          justify-content: space-between;
+          @apply --rss-items;
+        }
 
-:host * {
-  box-sizing: border-box;
-}
+        :host * {
+          box-sizing: border-box;
+        }
 
-h3,
-p {
-  margin: 0;
-}
+        h3,
+        p {
+          margin: 0;
+        }
 
-a {
-  color: var(--primary-color, inherit);
-  text-decoration: none;
-}
+        a {
+          color: var(--primary-color, inherit);
+          text-decoration: none;
+        }
 
-article {
-  margin-bottom: 2em;
+        article {
+          margin-bottom: 2em;
 
-  @apply --rss-items-article;
-}
+          @apply --rss-items-article;
+        }
 
-.thumbnail-container {
-  display: block;
-  overflow: hidden;
-  width: 100%;
-  height: 180px;
+        .thumbnail-container {
+          display: block;
+          overflow: hidden;
+          width: 100%;
+          height: 180px;
 
-  @apply --rss-items-thumbnail-container;
-}
+          @apply --rss-items-thumbnail-container;
+        }
 
-.thumbnail {
-  width: 100%;
-  height: 100%;
-  transition: transform .5s ease-out;
+        .thumbnail {
+          width: 100%;
+          height: 100%;
+          transition: transform 0.5s ease-out;
 
-  @apply --rss-items-thumbnail;
-}
+          @apply --rss-items-thumbnail;
+        }
 
-.thumbnail-container:hover .thumbnail,
-.thumbnail-container:focus .thumbnail {
-  transform: scale3d(1.3, 1.3, 1);
+        .thumbnail-container:hover .thumbnail,
+        .thumbnail-container:focus .thumbnail {
+          transform: scale3d(1.3, 1.3, 1);
 
-  @apply --rss-items-thumbnail-hover;
-}
+          @apply --rss-items-thumbnail-hover;
+        }
 
-.title {
-  min-height: 3em;
-  margin: 1em 0 .5em;
+        .title {
+          min-height: 3em;
+          margin: 1em 0 0.5em;
 
-  @apply --rss-items-title;
-}
+          @apply --rss-items-title;
+        }
 
-.excerpt {
-  min-height: 6em;
-  margin: .5em 0 2em;
+        .excerpt {
+          min-height: 6em;
+          margin: 0.5em 0 2em;
 
-  @apply --rss-items-excerpt;
-}
+          @apply --rss-items-excerpt;
+        }
 
-@media (max-width: 599px) {
-  .title,
-  .excerpt {
-    min-height: 0;
-  }
-}
+        @media (max-width: 599px) {
+          .title,
+          .excerpt {
+            min-height: 0;
+          }
+        }
 
-@media (min-width: 600px) {
-  article {
-    flex: 1 1 40%;
-    margin-right: 2em;
+        @media (min-width: 600px) {
+          article {
+            flex: 1 1 40%;
+            margin-right: 2em;
 
-    @apply --rss-items-article-mq-m-up;
-  }
+            @apply --rss-items-article-mq-m-up;
+          }
 
-  article:nth-of-type(2n),
-  article:last-of-type {
-    margin-right: 0;
-  }
-}
+          article:nth-of-type(2n),
+          article:last-of-type {
+            margin-right: 0;
+          }
+        }
 
-@media (min-width: 900px) {
-  article {
-    flex: 1 1 30%;
+        @media (min-width: 900px) {
+          article {
+            flex: 1 1 30%;
 
-    @apply --rss-items-article-mq-l-up;
-  }
+            @apply --rss-items-article-mq-l-up;
+          }
 
-  article:nth-of-type(2n) {
-    margin-right: 2em;
-  }
+          article:nth-of-type(2n) {
+            margin-right: 2em;
+          }
 
-  article:nth-of-type(3n) {
-    margin-right: 0;
-  }
-}</style>
-<iron-ajax id="rssajax" url="[[url]]" handle-as="xml" last-response="{{xml}}"></iron-ajax>
-<dom-repeat items="[[items]]">
-  <template>
-  <article>
-    <a class="thumbnail-container" href="[[item.link]]" title="[[item.title]]">
-      <iron-image class="thumbnail" src="[[item.imageSrc]]" alt="[[item.title]]" sizing="cover"></iron-image>
-    </a>
-    <a href="[[item.link]]" title="[[item.title]]">
-      <span class="title">[[_truncateText(item.title, maxTitleLength)]]</span>
-    </a>
-    <div class="excerpt">[[_truncateText(item.excerpt, maxExcerptLength)]]</div>
-    <template is="dom-if" if="[[showReadMore]]">
-      <a tabindex="-1" href="[[item.link]]" class="read-more" title="[[item.title]]">[[readMoreAnchorText]]
-        <paper-icon-button icon="icons:arrow-forward" class="read-more-icon" alt="[[readMoreImageAlt]]"></paper-icon-button>
-      </a>
-    </template>
-  </article>
-  </template>
-</dom-repeat>`;
+          article:nth-of-type(3n) {
+            margin-right: 0;
+          }
+        }
+      </style>
+      <iron-ajax
+        id="rssajax"
+        url="[[url]]"
+        handle-as="xml"
+        last-response="{{xml}}"
+      ></iron-ajax>
+      <dom-repeat items="[[items]]">
+        <template>
+          <article>
+            <a
+              class="thumbnail-container"
+              href="[[item.link]]"
+              title="[[item.title]]"
+            >
+              <iron-image
+                class="thumbnail"
+                src="[[item.imageSrc]]"
+                alt="[[item.title]]"
+                sizing="cover"
+              ></iron-image>
+            </a>
+            <a href="[[item.link]]" title="[[item.title]]">
+              <span class="title"
+                >[[_truncateText(item.title, maxTitleLength)]]</span
+              >
+            </a>
+            <div class="excerpt">
+              [[_truncateText(item.excerpt, maxExcerptLength)]]
+            </div>
+            <template is="dom-if" if="[[showReadMore]]">
+              <a
+                tabindex="-1"
+                href="[[item.link]]"
+                class="read-more"
+                title="[[item.title]]"
+                >[[readMoreAnchorText]]
+                <paper-icon-button
+                  icon="icons:arrow-forward"
+                  class="read-more-icon"
+                  alt="[[readMoreImageAlt]]"
+                ></paper-icon-button>
+              </a>
+            </template>
+          </article>
+        </template>
+      </dom-repeat>
+    `;
   }
 
   // haxProperty definition
   static get haxProperties() {
     return {
-  "canScale": true,
-  "canPosition": true,
-  "canEditSource": false,
-  "gizmo": {
-    "title": "Rss feed",
-    "description": "visualize RSS items",
-    "icon": "communication:rss-feed",
-    "color": "orange",
-    "groups": ["RSS"],
-    "handles": [
-      {
-        "type": "rss",
-        "source": "source"
-      }
-    ],
-    "meta": {
-      "author": "btopro",
-      "owner": "The Pennsylvania State University"
-    }
-  },
-  "settings": {
-    "quick": [],
-    "configure": [
-      {
-        "property": "url",
-        "title": "Feed URL",
-        "description": "URL to the XML feed",
-        "inputMethod": "textfield"
+      canScale: true,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Rss feed",
+        description: "visualize RSS items",
+        icon: "communication:rss-feed",
+        color: "orange",
+        groups: ["RSS"],
+        handles: [
+          {
+            type: "rss",
+            source: "source"
+          }
+        ],
+        meta: {
+          author: "btopro",
+          owner: "The Pennsylvania State University"
+        }
       },
-      {
-        "property": "max",
-        "title": "Max items",
-        "description": "Max number of feed items to display",
-        "inputMethod": "number"
+      settings: {
+        quick: [],
+        configure: [
+          {
+            property: "url",
+            title: "Feed URL",
+            description: "URL to the XML feed",
+            inputMethod: "textfield"
+          },
+          {
+            property: "max",
+            title: "Max items",
+            description: "Max number of feed items to display",
+            inputMethod: "number"
+          }
+        ],
+        advanced: []
       }
-    ],
-    "advanced": []
-  }
-}
-;
+    };
   }
   // properties available to the custom element for data binding
   static get properties() {
     let props = {
-  /**
-   * If true init rss request.
-   */
-  "auto": {
-    "type": Boolean,
-    "value": false
-  },
-  /**
-   * The retrieved items array.
-   */
-  "items": {
-    "type": Array,
-    "notify": true
-  },
-  /**
-   * Max number of items to show. If it is undefined shows all items.
-   */
-  "max": {
-    "type": Number,
-    "value": 10,
-    "observer": "_maxChanged"
-  },
-  /**
-   * Max length for item excerpts. If the excerpt exceeds this length it will be trimed and will have an ellipsis appended.
-   */
-  "maxExcerptLength": {
-    "type": Number,
-    "value": 100
-  },
-  /**
-   * Max length for item titles. If the title exceeds this length it will be trimed and will have an ellipsis appended.
-   */
-  "maxTitleLength": {
-    "type": Number,
-    "value": 50
-  },
-  /**
-   * Read more anchor text.
-   */
-  "readMoreAnchorText": {
-    "type": Boolean,
-    "value": "Read more"
-  },
-  /**
-   * Read more image alternative text.
-   */
-  "readMoreImageAlt": {
-    "type": Boolean,
-    "value": "Icono de flecha"
-  },
-  /**
-   * If true the items elements will display a read more link.
-   */
-  "showReadMore": {
-    "type": Boolean,
-    "value": false
-  },
-  /**
-   * The URL of the RSS.
-   */
-  "url": {
-    "type": String,
-    "observer": "_urlChanged"
-  },
-  "xml": {
-    "type": Object,
-    "observer": "xmlToItems"
-  }
-}
-;
+      /**
+       * If true init rss request.
+       */
+      auto: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * The retrieved items array.
+       */
+      items: {
+        type: Array,
+        notify: true
+      },
+      /**
+       * Max number of items to show. If it is undefined shows all items.
+       */
+      max: {
+        type: Number,
+        value: 10,
+        observer: "_maxChanged"
+      },
+      /**
+       * Max length for item excerpts. If the excerpt exceeds this length it will be trimed and will have an ellipsis appended.
+       */
+      maxExcerptLength: {
+        type: Number,
+        value: 100
+      },
+      /**
+       * Max length for item titles. If the title exceeds this length it will be trimed and will have an ellipsis appended.
+       */
+      maxTitleLength: {
+        type: Number,
+        value: 50
+      },
+      /**
+       * Read more anchor text.
+       */
+      readMoreAnchorText: {
+        type: Boolean,
+        value: "Read more"
+      },
+      /**
+       * Read more image alternative text.
+       */
+      readMoreImageAlt: {
+        type: Boolean,
+        value: "Icono de flecha"
+      },
+      /**
+       * If true the items elements will display a read more link.
+       */
+      showReadMore: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * The URL of the RSS.
+       */
+      url: {
+        type: String,
+        observer: "_urlChanged"
+      },
+      xml: {
+        type: Object,
+        observer: "xmlToItems"
+      }
+    };
     if (super.properties) {
       props = Object.assign(props, super.properties);
     }
@@ -316,7 +343,7 @@ article {
     this.shadowRoot.querySelector("#rssajax").generateRequest();
   }
   _maxChanged(newValue) {
-    if (newValue) {
+    if (newValue && this._x2js && this.__ready) {
       this.xmlToItems(this.xml);
     }
   }
@@ -325,7 +352,7 @@ article {
    * @param {Object} xml XML element.
    */
   xmlToItems(newValue) {
-    if (newValue) {
+    if (newValue && this._x2js && this.__ready) {
       // parse xml to json and get items
       var conversor = new X2JS();
       var json = conversor.xml2json(newValue);
