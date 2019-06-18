@@ -17,6 +17,7 @@ import "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-underlin
 import "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-link.js";
 import "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-button-styles.js";
 import "@lrnwebcomponents/md-extra-icons/md-extra-icons.js";
+import "./hax-text-editor-math.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/iron-icons/image-icons.js";
@@ -148,10 +149,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbar {
             type: "rich-text-editor-prompt-button"
           },
           {
-            icon: "hax:pi",
-            label: "Math",
-            toggles: "true",
-            type: "rich-text-editor-prompt-button"
+            type: "rich-text-editor-math"
           },
           {
             icon: "hax:oerschema",
