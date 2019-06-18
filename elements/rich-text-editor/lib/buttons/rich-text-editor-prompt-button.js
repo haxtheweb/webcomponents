@@ -42,7 +42,7 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
         ]
       },
       /**
-       * the tag that will wrap the selection
+       * the tag that will wrap the selected range
        */
       tag: {
         name: "tag",
@@ -145,19 +145,23 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
     this.__selection.innerHTML = "";
     while (this.__revertContents.firstChild)
       this.__selection.appendChild(this.__revertContents.firstChild);
-    this.__selection.normalize();
-    this.__revertContents.remove();
-    this.__prompt.setTarget("");
-    this.__selection.removeHighlight();
+    this.deselect();
   }
 
   /**
    * updates the insertion based on fields
    */
   confirm() {
-    this.__revertContents = document.createElement("div");
-    this.__revertContents.appendChild(this.__selection.getRangeContents());
-    this.__prompt.setTarget("");
+    this.updateSelection();
+    this.deselect();
+  }
+
+  /**
+   * deselects the text
+   */
+  deselect() {
+    this.__revertContents.remove();
+    this.__prompt.clearTarget("");
     this.__selection.removeHighlight();
   }
 
@@ -167,8 +171,7 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
   open() {
     this.__revertContents = document.createElement("div");
     this.__revertContents.appendChild(this.__selection.getRangeContents());
-    this.__selectionContents = this.__selection;
-    console.log("open", this.__selectionContents, this._getSelectedElement());
+    this.__selectionContents = this.__selection.expandSelection(this.tag);
     this.__selection.addHighlight();
     this.updatePrompt();
     this.__prompt.setTarget(this);
@@ -176,11 +179,10 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
   }
 
   /**
-   * updates prompt fields with selection data
+   * updates prompt fields with selected range data
    */
   updatePrompt() {
-    let el = this._getSelectedElement();
-    console.log();
+    let el = this.__selectionContents;
     this.fields.forEach(field => {
       if (field.property && field.property !== "") {
         if (field.property !== "tag")
@@ -199,55 +201,33 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
    * updates the insertion based on fields
    */
   updateSelection() {
-    /*
-    rules:
-    1. must have text to have a tag wrapper.
-    2. must have required fields
-    3. 
-    */
-    let hasTag = false;
-    this.__selectionContents.innerHTML = ``;
-    this.fields.forEach(field => {
-      if (field.property) {
-        let prop = this.getCleanValue(field.property);
-        if (prop !== null && prop !== "") hasTag = true;
-        if (field.property !== "tag")
-          this.__selectionContents.setAttribute(field.property, prop);
-      } else if (field.slot) {
-        let slot = this.getCleanValue(field.slot);
-        if (slot !== null && slot !== "") hasTag = true;
-        this.__selectionContents.innerHTML += `<span slot="${
-          field.slot
-        }">${slot}</slot>`;
-      } else {
-        this.__selectionContents.innerHTML += `${this.getCleanValue(
-          field.property
-        )}`;
-      }
-    });
-    if (this.value.tag === false) hasTag = false;
-    if (!hasTag) this.__selection.unwrap();
+    this.__selection.innerHTML = "";
+    let selection = document.createTextNode(this.getCleanValue(""));
+    if (this.__tagNeeded) {
+      selection = document.createElement(this.tag);
+      this.fields.forEach(field => {
+        if (field.property) {
+          let prop = this.getCleanValue(field.property);
+          if (field.property !== "tag")
+            selection.setAttribute(field.property, prop);
+        } else if (field.slot) {
+          let slot = this.getCleanValue(field.slot);
+          selection.innerHTML += `<span slot="${field.slot}">${slot}</slot>`;
+        } else {
+          selection.innerHTML += `${this.getCleanValue(field.property)}`;
+        }
+      });
+    }
+    if (selection) this.__selection.appendChild(selection);
   }
 
   /**
    * determines if the tag is needed for the element
+   * @param {object} value the prompt values
+   * @returns {boolean} if the tag is needed for the element
    */
   _getTagNeeded(value) {
     return value && this.getCleanValue("") && this.getCleanValue("") !== "";
-  }
-  /**
-   * determines if the selection has a tag
-   */
-  _getSelectedElement() {
-    let tag = null,
-      wrapper = this.__selection.getWrapper();
-    if (
-      wrapper.tagName &&
-      wrapper.tagName.toLowerCase() === this.tag.toLowerCase()
-    )
-      tag = wrapper;
-    console.log("_getSelectedElement", wrapper, this.tag, tag);
-    return tag;
   }
 }
 window.customElements.define(

@@ -58,6 +58,27 @@ class RichTextEditorUnderline extends RichTextEditorPromptButton {
   static get tag() {
     return "rich-text-editor-underline";
   }
+
+  /**
+   * a <u> tag is only needed if there is text content
+   * and the tag usability warning is confirmed
+   * @param {object} value the prompt values
+   * @returns {boolean} if the tag is needed for the element
+   */
+  _getTagNeeded(value) {
+    console.log(
+      "_getTagNeeded",
+      value,
+      !this.getCleanValue("tag") || this.getCleanValue("tag")
+    );
+    return (
+      value &&
+      this.getCleanValue("") &&
+      this.getCleanValue("") !== "" &&
+      this.getCleanValue("tag") &&
+      this.getCleanValue("tag")
+    );
+  }
 }
 window.customElements.define(
   RichTextEditorUnderline.tag,

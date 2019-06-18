@@ -391,7 +391,7 @@ class RichTextEditorToolbar extends PolymerElement {
         reflectToAttribute: true
       },
       /**
-       * The current text selection.
+       * The current text selected range.
        */
       savedSelection: {
         name: "savedSelection",
@@ -399,13 +399,13 @@ class RichTextEditorToolbar extends PolymerElement {
         value: null
       },
       /**
-       * The current text selection, which is actually a range.
+       * The current text selected range, which is actually a range.
        */
-      selection: {
-        name: "selection",
+      range: {
+        name: "range",
         type: Object,
         value: null,
-        observer: "_selectionChange"
+        observer: "_rangeChange"
       },
       /**
        * Should the toolbar stick to the top so that it is always visible?
@@ -542,14 +542,14 @@ class RichTextEditorToolbar extends PolymerElement {
   }
 
   /**
-   * Gets the updated selection.
+   * Gets the updated selected range.
    * @returns {void}
    */
-  _selectionChange() {
+  _rangeChange() {
     let root = this;
     root.buttons.forEach(button => {
-      button.selection = null;
-      button.selection = root.selection;
+      button.range = null;
+      button.range = root.range;
     });
   }
 

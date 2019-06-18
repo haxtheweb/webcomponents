@@ -77,7 +77,7 @@ class RichTextEditorBreadcrumbs extends PolymerElement {
        */
       ancestorNodes: {
         type: Array,
-        computed: "_getAncestorNodes(selection,controls)"
+        computed: "_getAncestorNodes(range,controls)"
       },
       /**
        * The active rict-text-editor.
@@ -105,7 +105,7 @@ class RichTextEditorBreadcrumbs extends PolymerElement {
       /**
        * The selected text.
        */
-      selection: {
+      range: {
         type: Object,
         value: null
       },
@@ -135,12 +135,12 @@ class RichTextEditorBreadcrumbs extends PolymerElement {
    * @param {string} controls id of what the breadcrumbs control
    * @returns {void}
    */
-  _getAncestorNodes(selection, controls) {
+  _getAncestorNodes(range, controls) {
     let nodes = [],
       node = "",
       ancestor = false,
       parent = false;
-    if (selection) ancestor = selection.commonAncestorContainer;
+    if (range) ancestor = range.commonAncestorContainer;
     if (ancestor) parent = ancestor;
     this.hidden = !ancestor;
     while (parent && parent.nodeName !== "RICH-TEXT-EDITOR") {

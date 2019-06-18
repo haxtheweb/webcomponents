@@ -118,13 +118,13 @@ class RichTextEditorPicker extends RichTextEditorButton {
   }
 
   /**
-   * determines the value of the picker based on the selection
+   * determines the value of the picker based on the selected range
    *
-   * @param {object} the text selection
+   * @param {object} the text selected range
    * @returns {boolean} whether the button is toggled
    *
    */
-  _isToggled(selection) {
+  _isToggled(range) {
     //get all the possible block selectors from the options
     let selectors = this.options
         ? []
@@ -139,10 +139,10 @@ class RichTextEditorPicker extends RichTextEditorButton {
             )
             .join(",")
         : null,
-      //get the selection parent
+      //get the selected range parent
       parent =
-        selection !== null && selection.commonAncestorContainer
-          ? selection.commonAncestorContainer.parentNode
+        range !== null && range.commonAncestorContainer
+          ? range.commonAncestorContainer.parentNode
           : null;
     this.$.button.value =
       this.command === "formatBlock" &&
@@ -170,11 +170,7 @@ class RichTextEditorPicker extends RichTextEditorButton {
   _pickerChange(e) {
     let val = this.$.button.value;
     e.preventDefault();
-    if (
-      val !== null &&
-      this.selection !== undefined &&
-      this.selection !== null
-    ) {
+    if (val !== null && this.range !== undefined && this.range !== null) {
       this.commandVal = this.$.button.value;
       this.doTextOperation();
       if (this.block !== true) {

@@ -97,13 +97,13 @@ class RichTextEditor extends PolymerElement {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       /**
        * The id for the toolbar
        */
       toolbar: {
         name: "toolbar",
-        type: "String",
+        type: String,
         value: ""
       },
       /**
@@ -111,7 +111,7 @@ class RichTextEditor extends PolymerElement {
        */
       id: {
         name: "id",
-        type: "String",
+        type: String,
         value: ""
       },
       /**
@@ -122,10 +122,14 @@ class RichTextEditor extends PolymerElement {
        */
       type: {
         name: "type",
-        type: "String",
+        type: String,
         value: "rich-text-editor-toolbar"
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
 
   /**
@@ -176,9 +180,9 @@ class RichTextEditor extends PolymerElement {
   }
 
   /**
-   * Normalizes selection data.
+   * Normalizes selected range data.
    *
-   * @returns {object} the selection
+   * @returns {object} the selected range
    */
   _getRange() {
     let sel = window.getSelection();

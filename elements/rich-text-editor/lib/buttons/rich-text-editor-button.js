@@ -125,10 +125,10 @@ class RichTextEditorButton extends PolymerElement {
       },
 
       /**
-       * The active selection, inherited from the toolbar
+       * The active selected range, inherited from the toolbar
        */
-      selection: {
-        name: "selection",
+      range: {
+        name: "range",
         type: Object,
         notify: true,
         value: null
@@ -149,7 +149,7 @@ class RichTextEditorButton extends PolymerElement {
       toggled: {
         name: "toggled",
         type: Boolean,
-        computed: "_isToggled(selection)",
+        computed: "_isToggled(range)",
         notify: true
       },
 
@@ -159,7 +159,7 @@ class RichTextEditorButton extends PolymerElement {
       __label: {
         name: "__label",
         type: String,
-        computed: "_getLabel(selection,command,toggles)",
+        computed: "_getLabel(range,command,toggles)",
         notify: true
       },
 
@@ -296,7 +296,7 @@ class RichTextEditorButton extends PolymerElement {
    */
   doTextOperation() {
     let root = this,
-      selection = root.selection;
+      range = root.range;
     if (root.toggled && root.toggledCommand !== null) {
       document.execCommand(
         root.toggledCommand,
@@ -313,18 +313,18 @@ class RichTextEditorButton extends PolymerElement {
         })
       );
       document.execCommand(root.command, false, root.commandVal || "");
-      root.selection = selection;
-      if (root.command === "paste") root.selection.collapse();
+      root.range = range;
+      if (root.command === "paste") root.range.collapse();
     }
   }
   /**
    * determine if the button is toggled
    *
-   * @param {object} the text selection
+   * @param {object} the text selected range
    * @returns {boolean} whether the button is toggled
    *
    */
-  _isToggled(selection) {
+  _isToggled(range) {
     let toggled =
       this.command !== null && this.toggles
         ? document.queryCommandState(this.command)
@@ -338,13 +338,13 @@ class RichTextEditorButton extends PolymerElement {
   /**
    * determine if the button is toggled
    *
-   * @param {object} the text selection
+   * @param {object} the text selected range
    * @param {string} the default command
    * @param {boolean} whether the button toggles
    * @returns {string} the label based on whether or not the button is toggled
    *
    */
-  _getLabel(selection, command, toggles) {
+  _getLabel(range, command, toggles) {
     let toggled =
         this.command !== null && toggles
           ? document.queryCommandState(command)

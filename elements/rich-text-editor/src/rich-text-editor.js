@@ -75,9 +75,9 @@ class RichTextEditor extends PolymerElement {
   }
 
   /**
-   * Normalizes selection data.
+   * Normalizes selected range data.
    *
-   * @returns {object} the selection
+   * @returns {object} the selected range
    */
   _getRange() {
     let sel = window.getSelection();

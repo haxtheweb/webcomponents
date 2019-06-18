@@ -53,6 +53,21 @@ class RichTextEditorLink extends RichTextEditorPromptButton {
   static get tag() {
     return "rich-text-editor-link";
   }
+
+  /**
+   * an <a> tag is only needed if there is link text and an href
+   * @param {object} value the prompt values
+   * @returns {boolean} if the tag is needed for the element
+   */
+  _getTagNeeded(value) {
+    return (
+      value &&
+      this.getCleanValue("") &&
+      this.getCleanValue("") !== "" &&
+      this.getCleanValue("href") &&
+      this.getCleanValue("href") !== null
+    );
+  }
 }
 window.customElements.define(RichTextEditorLink.tag, RichTextEditorLink);
 export { RichTextEditorLink };

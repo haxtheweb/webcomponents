@@ -162,7 +162,7 @@ class RichTextEditorPrompt extends PolymerElement {
       /**
        * The selected text.
        */
-      selection: {
+      range: {
         type: Object,
         value: null
       },
@@ -225,7 +225,7 @@ class RichTextEditorPrompt extends PolymerElement {
     this.set("fields", button.fields);
     this.set("value", button.value);
     this.__button = button;
-    this.for = button.__selection.getAttribute("id");
+    if (button.__selection) this.for = button.__selection.getAttribute("id");
   }
 
   /**
