@@ -62,11 +62,6 @@ class RichTextEditorUnderline extends RichTextEditorPromptButton {
    * @returns {boolean} if the tag is needed for the element
    */
   _getTagNeeded(value) {
-    console.log(
-      "_getTagNeeded",
-      value,
-      !this.getCleanValue("tag") || this.getCleanValue("tag")
-    );
     return (
       value &&
       this.getCleanValue("") &&

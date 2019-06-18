@@ -3,8 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { RichTextEditorToolbar } from "@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar.js";
 import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
+import { RichTextEditorToolbar } from "@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "@lrnwebcomponents/rich-text-editor/rich-text-editor.js";
 import "@lrnwebcomponents/rich-text-editor/lib/rich-text-editor-styles.js";
@@ -18,6 +18,8 @@ import "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-link.js"
 import "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-button-styles.js";
 import "@lrnwebcomponents/md-extra-icons/md-extra-icons.js";
 import "./hax-text-editor-math.js";
+import "./hax-text-editor-oer-schema.js";
+import "./hax-text-editor-vocab.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/iron-icons/image-icons.js";
@@ -143,19 +145,13 @@ class HaxTextEditorToolbar extends RichTextEditorToolbar {
         type: "button-group",
         buttons: [
           {
-            icon: "hax:vocab",
-            label: "Term/Definition",
-            toggles: "true",
-            type: "rich-text-editor-prompt-button"
+            type: "hax-text-editor-vocab"
           },
           {
-            type: "rich-text-editor-math"
+            type: "hax-text-editor-math"
           },
           {
-            icon: "hax:oerschema",
-            label: "OER Schema",
-            toggles: "true",
-            type: "rich-text-editor-prompt-button"
+            type: "hax-text-editor-oer-schema"
           }
         ]
       },

@@ -202,7 +202,9 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
    */
   updateSelection() {
     this.__selection.innerHTML = "";
+    //console.log('updateSelection','this.__selection.innerHTML',this.__selection.innerHTML);
     let selection = document.createTextNode(this.getCleanValue(""));
+    //console.log('updateSelection','this.getCleanValue("")',this.getCleanValue(""));
     if (this.__tagNeeded) {
       selection = document.createElement(this.tag);
       this.fields.forEach(field => {
@@ -217,8 +219,10 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
           selection.innerHTML += `${this.getCleanValue(field.property)}`;
         }
       });
+      //console.log('updateSelection','selection',selection);
     }
     if (selection) this.__selection.appendChild(selection);
+    //console.log('updateSelection','this.__selection.innerHTML updated',this.__selection.innerHTML);
   }
 
   /**

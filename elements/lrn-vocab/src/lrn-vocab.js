@@ -29,6 +29,7 @@ class LrnVocab extends SchemaBehaviors(PolymerElement) {
         paper-button {
           text-transform: none;
           padding: 0;
+          min-width: unset;
           margin: 0;
           position: relative;
           top: 0px;

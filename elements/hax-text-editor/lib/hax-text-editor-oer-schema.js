@@ -4,10 +4,10 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { RichTextEditorPromptButton } from "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-prompt-button.js";
-import "@lrnwebcomponents/lrn-math/lrn-math.js";
+import "@lrnwebcomponents/oer-schema/oer-schema.js";
 /**
- * `hax-text-editor-math`
- * `a math button for hax text editor (custom buttons can extend this)`
+ * `hax-text-editor-oer-schema`
+ * `a oer-schema button for hax text editor (custom buttons can extend this)`
  *
  * @microcopy - language worth noting:
  *  -
@@ -15,7 +15,7 @@ import "@lrnwebcomponents/lrn-math/lrn-math.js";
  * @customElement
  * @polymer
  */
-class HaxTextEditorMath extends RichTextEditorPromptButton {
+class HaxTextEditorOerSchema extends RichTextEditorPromptButton {
   constructor() {
     super();
     this.fields = [
@@ -26,9 +26,9 @@ class HaxTextEditorMath extends RichTextEditorPromptButton {
         inputMethod: "textfield"
       }
     ];
-    this.tag = "lrn-math";
-    this.icon = "hax:pi";
-    this.label = "Math";
+    this.tag = "oer-schema";
+    this.icon = "hax:oerschema";
+    this.label = "OER Schema";
     this.toggles = true;
     this.value = {
       "": null
@@ -45,8 +45,11 @@ class HaxTextEditorMath extends RichTextEditorPromptButton {
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
-    return "hax-text-editor-math";
+    return "hax-text-editor-oer-schema";
   }
 }
-window.customElements.define(HaxTextEditorMath.tag, HaxTextEditorMath);
-export { HaxTextEditorMath };
+window.customElements.define(
+  HaxTextEditorOerSchema.tag,
+  HaxTextEditorOerSchema
+);
+export { HaxTextEditorOerSchema };

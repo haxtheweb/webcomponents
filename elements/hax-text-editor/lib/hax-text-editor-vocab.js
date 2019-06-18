@@ -4,10 +4,10 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { RichTextEditorPromptButton } from "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-prompt-button.js";
-import "@lrnwebcomponents/lrn-math/lrn-math.js";
+import "@lrnwebcomponents/lrn-vocab/lrn-vocab.js";
 /**
- * `hax-text-editor-math`
- * `a math button for hax text editor (custom buttons can extend this)`
+ * `hax-text-editor-vocab`
+ * `a lrn-vocab button for hax text editor (custom buttons can extend this)`
  *
  * @microcopy - language worth noting:
  *  -
@@ -15,20 +15,24 @@ import "@lrnwebcomponents/lrn-math/lrn-math.js";
  * @customElement
  * @polymer
  */
-class HaxTextEditorMath extends RichTextEditorPromptButton {
+class HaxTextEditorVocab extends RichTextEditorPromptButton {
   constructor() {
     super();
     this.fields = [
       {
+        property: "term",
+        title: "Term",
+        inputMethod: "textfield"
+      },
+      {
         property: "",
-        title: "Math",
-        description: "Math",
+        title: "Definition",
         inputMethod: "textfield"
       }
     ];
-    this.tag = "lrn-math";
-    this.icon = "hax:pi";
-    this.label = "Math";
+    this.tag = "lrn-vocab";
+    this.icon = "hax:vocab";
+    this.label = "Term/Definition";
     this.toggles = true;
     this.value = {
       "": null
@@ -45,8 +49,8 @@ class HaxTextEditorMath extends RichTextEditorPromptButton {
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
-    return "hax-text-editor-math";
+    return "hax-text-editor-vocab";
   }
 }
-window.customElements.define(HaxTextEditorMath.tag, HaxTextEditorMath);
-export { HaxTextEditorMath };
+window.customElements.define(HaxTextEditorVocab.tag, HaxTextEditorVocab);
+export { HaxTextEditorVocab };
