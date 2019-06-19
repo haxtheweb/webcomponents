@@ -137,46 +137,6 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
   }
 
   /**
-   * Handles editor change
-   * @param {string} newVal the new editor's id
-   * @param {string} oldVal the old editor's id
-   * @returns {void}
-   */
-  _editorChanged(newVal, oldVal) {
-    let root = this;
-    super._editorChanged(newVal, oldVal);
-    if (root.inlineWidget && newVal) {
-      let editor = document.getElementById(newVal);
-      editor.addEventListener("mouseover", e => {
-        root._handleInlineWidget(e.fromElement);
-      });
-      editor.addEventListener("focus", e => {
-        root._handleInlineWidget(e.fromElement);
-      });
-    }
-    if (root.inlineWidget && oldVal) {
-      let editor = document.getElementById(oldVal);
-      editor.removeEventListener("mouseover", e => {
-        root._handleInlineWidget(e.fromElement);
-      });
-      editor.removeEventListener("focus", e => {
-        root._handleInlineWidget(e.fromElement);
-      });
-    }
-  }
-
-  /**
-   * Handles inline widgets which cannot be clicked on to edit
-   * @param {object} widget the node object that this button inserts/edits
-   * @returns {void}
-   */
-  _handleInlineWidget(widget) {
-    if (widget && widget.tagName && widget.tagName.toLowerCase() === this.tag) {
-      this.open(widget);
-    }
-  }
-
-  /**
    * cleans a field value if needed
    * @param {string} prop field property name
    * @returns {object} val the cleaned property value
@@ -211,6 +171,47 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
     this.__revertContents.remove();
     this.__prompt.clearTarget("");
     this.__selection.removeHighlight();
+  }
+
+  /**
+   * Handles editor change
+   * @param {string} newVal the new editor's id
+   * @param {string} oldVal the old editor's id
+   * @returns {void}
+   */
+  _editorChanged(newVal, oldVal) {
+    let root = this,
+      newEditor = newVal ? document.getElementById(newVal) : null,
+      oldEditor = oldVal ? document.getElementById(oldVal) : null;
+    if (newEditor)
+      newEditor.addEventListener(
+        "click",
+        e => {
+          root._editInlineWidget(newEditor, e);
+        },
+        true
+      );
+    if (oldEditor)
+      oldEditor.removeEventListener(
+        "click",
+        e => {
+          root._editInlineWidget(oldEditor, e);
+        },
+        true
+      );
+    super._editorChanged(newVal, oldVal);
+  }
+  _editInlineWidget(editor, e) {
+    if (
+      editor.getAttribute("contenteditable") &&
+      this.inlineWidget &&
+      e.target.tagName &&
+      e.target.tagName.toLowerCase() === this.tag
+    ) {
+      e.stopPropagation();
+      e.preventDefault();
+      this.open(e.target);
+    }
   }
 
   /**

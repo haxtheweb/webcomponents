@@ -416,6 +416,11 @@ class RichTextEditorToolbar extends PolymerElement {
         value: false,
         reflectToAttribute: true,
         observer: "_stickyChanged"
+      },
+      __inlineWidgets: {
+        name: "__inlineWidgets",
+        type: Array,
+        value: []
       }
     };
   }
@@ -599,7 +604,6 @@ class RichTextEditorToolbar extends PolymerElement {
    * @returns {object} the button
    */
   _addButton(child, parent) {
-    console.log();
     let root = this,
       button = document.createElement(child.type);
 
@@ -610,6 +614,7 @@ class RichTextEditorToolbar extends PolymerElement {
     button.addEventListener("deselect", e => {
       if (root.range && root.range.collapse) root.range.collapse(false);
     });
+    if (button.inlineWidget) root.push("__inlineWidgets", button.tag);
     parent.appendChild(button);
     return button;
   }
