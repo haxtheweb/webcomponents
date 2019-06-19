@@ -138,7 +138,8 @@
   "workspaces": {
     "packages": [
       "elements/*",
-      "themes/*"
+      "themes/*",
+      "incubator/*"
     ],
     "nohoist": []
   },
