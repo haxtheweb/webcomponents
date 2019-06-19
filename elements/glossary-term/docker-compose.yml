@@ -1,0 +1,11 @@
+version: "3"
+services:
+  glossary:
+    image: "node:8"
+    user: "node"
+    working_dir: /home/node/app
+    volumes:
+      - ./:/home/node/app
+    expose:
+      - "4000"
+    command: "bash"
