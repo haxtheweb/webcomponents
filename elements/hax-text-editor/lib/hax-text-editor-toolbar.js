@@ -201,6 +201,30 @@ class HaxTextEditorToolbar extends RichTextEditorToolbar {
   static get tag() {
     return "hax-text-editor-toolbar";
   }
+
+  editTarget(editor) {
+    super.editTarget(editor);
+    let root = this,
+      customTags = ["lrn-vocab", "lrn-math"],
+      selection = window.RichTextEditorSelection.instance,
+      openPrompt = e => {
+        if (
+          e.target &&
+          e.target.tagName &&
+          customTags.includes(e.target.tagName.toLowerCase())
+        ) {
+          console.log(e.target);
+        }
+      };
+    if (editor) {
+      editor.addEventListener("focus", e => {
+        openPrompt(e);
+      });
+      editor.addEventListener("mouseover", e => {
+        openPrompt(e);
+      });
+    }
+  }
 }
 
 export { HaxTextEditorToolbar };

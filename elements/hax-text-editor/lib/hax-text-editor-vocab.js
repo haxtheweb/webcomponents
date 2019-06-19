@@ -18,6 +18,7 @@ import "@lrnwebcomponents/lrn-vocab/lrn-vocab.js";
 class HaxTextEditorVocab extends RichTextEditorPromptButton {
   constructor() {
     super();
+    this.inlineWidget = true;
     this.fields = [
       {
         property: "term",

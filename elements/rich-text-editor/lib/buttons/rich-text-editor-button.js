@@ -67,7 +67,8 @@ class RichTextEditorButton extends PolymerElement {
        */
       controls: {
         name: "controls",
-        type: String
+        type: String,
+        observer: "_editorChanged"
       },
       /**
        * The command used for document.execCommand.
@@ -317,22 +318,32 @@ class RichTextEditorButton extends PolymerElement {
       if (root.command === "paste") root.range.collapse();
     }
   }
+
   /**
-   * determine if the button is toggled
-   *
-   * @param {object} the text selected range
-   * @returns {boolean} whether the button is toggled
-   *
+   * Handles button tap;
    */
-  _isToggled(range) {
-    let toggled =
-      this.command !== null && this.toggles
-        ? document.queryCommandState(this.command)
-        : false; /*,
-      label = this._regOrToggled(this.label, this.toggledLabel, toggled);
-    if (this.$.label !== undefined) this.$.label.innerHTML = label;
-    if (this.$.tooltip !== undefined) this.$.tooltip.innerHTML = label*/
-    return toggled;
+  _buttonTap(e) {
+    e.preventDefault();
+    this.doTextOperation();
+  }
+
+  /**
+   * Handles editor change
+   * @param {string} newVal the new editor's id
+   * @param {string} oldVal the old editor's id
+   * @returns {void}
+   */
+  _editorChanged(newVal, oldVal) {
+    let root = this;
+
+    root.dispatchEvent(
+      new CustomEvent(root.command + "-button-editor-change", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: root
+      })
+    );
   }
 
   /**
@@ -352,13 +363,25 @@ class RichTextEditorButton extends PolymerElement {
       label = this._regOrToggled(this.label, this.toggledLabel, toggled);
     return label;
   }
+
   /**
-   * Handles button tap;
+   * determine if the button is toggled
+   *
+   * @param {object} the text selected range
+   * @returns {boolean} whether the button is toggled
+   *
    */
-  _buttonTap(e) {
-    e.preventDefault();
-    this.doTextOperation();
+  _isToggled(range) {
+    let toggled =
+      this.command !== null && this.toggles
+        ? document.queryCommandState(this.command)
+        : false; /*,
+      label = this._regOrToggled(this.label, this.toggledLabel, toggled);
+    if (this.$.label !== undefined) this.$.label.innerHTML = label;
+    if (this.$.tooltip !== undefined) this.$.tooltip.innerHTML = label*/
+    return toggled;
   }
+
   /**
    * updates a button value based on whether or not button is toggled
    *

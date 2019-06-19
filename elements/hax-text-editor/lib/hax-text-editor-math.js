@@ -18,6 +18,7 @@ import "@lrnwebcomponents/lrn-math/lrn-math.js";
 class HaxTextEditorMath extends RichTextEditorPromptButton {
   constructor() {
     super();
+    this.inlineWidget = true;
     this.fields = [
       {
         property: "",

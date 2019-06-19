@@ -42,6 +42,14 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
         ]
       },
       /**
+       * is the element a custom inline widget element?
+       */
+      inlineWidget: {
+        name: "inlineWidget",
+        type: Boolean,
+        value: false
+      },
+      /**
        * the tag that will wrap the selected range
        */
       tag: {
@@ -129,6 +137,46 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
   }
 
   /**
+   * Handles editor change
+   * @param {string} newVal the new editor's id
+   * @param {string} oldVal the old editor's id
+   * @returns {void}
+   */
+  _editorChanged(newVal, oldVal) {
+    let root = this;
+    super._editorChanged(newVal, oldVal);
+    if (root.inlineWidget && newVal) {
+      let editor = document.getElementById(newVal);
+      editor.addEventListener("mouseover", e => {
+        root._handleInlineWidget(e.fromElement);
+      });
+      editor.addEventListener("focus", e => {
+        root._handleInlineWidget(e.fromElement);
+      });
+    }
+    if (root.inlineWidget && oldVal) {
+      let editor = document.getElementById(oldVal);
+      editor.removeEventListener("mouseover", e => {
+        root._handleInlineWidget(e.fromElement);
+      });
+      editor.removeEventListener("focus", e => {
+        root._handleInlineWidget(e.fromElement);
+      });
+    }
+  }
+
+  /**
+   * Handles inline widgets which cannot be clicked on to edit
+   * @param {object} widget the node object that this button inserts/edits
+   * @returns {void}
+   */
+  _handleInlineWidget(widget) {
+    if (widget && widget.tagName && widget.tagName.toLowerCase() === this.tag) {
+      this.open(widget);
+    }
+  }
+
+  /**
    * cleans a field value if needed
    * @param {string} prop field property name
    * @returns {object} val the cleaned property value
@@ -168,10 +216,16 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
   /**
    * Handles selecting text and opening prompt
    */
-  open() {
+  open(node = null) {
     this.__revertContents = document.createElement("div");
-    this.__revertContents.appendChild(this.__selection.getRangeContents());
-    this.__selectionContents = this.__selection.expandSelection(this.tag);
+    if (node) {
+      this.__revertContents.appendChild(node.cloneNode());
+      this.__selection.range.selectNode(node);
+      this.__selectionContents = node;
+    } else {
+      this.__revertContents.appendChild(this.__selection.getRangeContents());
+      this.__selectionContents = this.__selection.expandSelection(this.tag);
+    }
     this.__selection.addHighlight();
     this.updatePrompt();
     this.__prompt.setTarget(this);
@@ -183,6 +237,8 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
    */
   updatePrompt() {
     let el = this.__selectionContents;
+    el.normalize();
+    el.innerHTML.trim();
     this.fields.forEach(field => {
       if (field.property && field.property !== "") {
         if (field.property !== "tag")
@@ -192,7 +248,7 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
       } else if (field.slot && field.slot !== "") {
         this.value[field.slot] = el ? el.querySelector(field.slot) : null;
       } else {
-        this.value[""] = el ? el.innerHTML : this.__selectionContents.innerHTML;
+        this.value[""] = el ? el.innerHTML.trim() : "";
       }
     });
   }
