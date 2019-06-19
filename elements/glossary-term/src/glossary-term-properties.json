@@ -1,0 +1,42 @@
+{
+  "name": {
+    "name": "name",
+    "type": "String",
+    "value": "",
+    "reflectToAttribute": false,
+    "observer": false
+  },
+  "definition": {
+    "name": "display",
+    "type": "String",
+    "value": "",
+    "reflectToAttribute": false,
+    "observer": false
+  },
+  "display": {
+    "name": "display",
+    "type": "String",
+    "value": "",
+    "reflectToAttribute": false,
+    "observer": false
+  },
+  "serviceType": {
+    "name": "serviceType",
+    "type": "String",
+    "value": "file",
+    "observer": false
+  },
+  "endpoint": {
+    "name": "endpoint",
+    "type": "String",
+    "value": "glossary-terms/glossary-terms.json",
+    "observer": false
+  },
+  "_fallback": {
+    "name": "_fallback",
+    "type": "Boolean",
+    "value": true,
+    "reflectToAttribute": false,
+    "observer": false
+  }
+}
