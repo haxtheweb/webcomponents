@@ -390,11 +390,7 @@ class HAXCMSSiteBuilder extends PolymerElement {
    */
   _triggerUpdatedData(e) {
     // get fresh data if not published
-    if (
-      this.editorBuilder &&
-      this.editorBuilder.getContext() !== "published" &&
-      this.editorBuilder.getContext() !== "demo"
-    ) {
+    if (this.editorBuilder && this.editorBuilder.getContext() !== "published") {
       this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
     }
     this.$.manifest.generateRequest();

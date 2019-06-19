@@ -311,6 +311,17 @@ class HAXCMSSiteEditorUI extends PolymerElement {
     afterNextRender(this, function() {
       import("@polymer/paper-tooltip/paper-tooltip.js");
       import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-outline-editor-dialog.js");
+      // this ensures that an initial paint won't get a cached copy of the site.json file
+      // this is more than possible given that it will register to most backends
+      // as a static file rather than dynamic end point as it is in this instance (sorta)
+      this.dispatchEvent(
+        new CustomEvent("haxcms-trigger-update", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: true
+        })
+      );
       autorun(reaction => {
         this.editMode = toJS(store.editMode);
         this.__disposer.push(reaction);

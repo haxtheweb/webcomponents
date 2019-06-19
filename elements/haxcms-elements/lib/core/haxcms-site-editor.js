@@ -1239,7 +1239,9 @@ class HAXCMSSiteEditor extends PolymerElement {
    * Notice body of content has changed and import into HAX
    */
   _bodyChanged(e) {
-    window.HaxStore.instance.activeHaxBody.importContent(e.detail);
+    if (window.HaxStore.instance.activeHaxBody) {
+      window.HaxStore.instance.activeHaxBody.importContent(e.detail);
+    }
   }
 }
 window.customElements.define(HAXCMSSiteEditor.tag, HAXCMSSiteEditor);

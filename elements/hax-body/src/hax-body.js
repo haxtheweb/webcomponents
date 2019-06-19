@@ -856,7 +856,7 @@ class HaxBody extends PolymerElement {
         window.HaxStore.instance.activePlaceHolder = null;
       }
       // insert at active insert point if we have one
-      else if (this.activeContainerNode !== null) {
+      else if (this.activeContainerNode != null) {
         // allow for inserting things into things but not grid plate
         if (
           newNode.tagName !== "GRID-PLATE" &&

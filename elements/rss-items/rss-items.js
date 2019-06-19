@@ -343,7 +343,7 @@ class RssItems extends PolymerElement {
     this.shadowRoot.querySelector("#rssajax").generateRequest();
   }
   _maxChanged(newValue) {
-    if (newValue) {
+    if (newValue && this._x2js && this.__ready) {
       this.xmlToItems(this.xml);
     }
   }
@@ -352,7 +352,7 @@ class RssItems extends PolymerElement {
    * @param {Object} xml XML element.
    */
   xmlToItems(newValue) {
-    if (newValue) {
+    if (newValue && this._x2js && this.__ready) {
       // parse xml to json and get items
       var conversor = new X2JS();
       var json = conversor.xml2json(newValue);
