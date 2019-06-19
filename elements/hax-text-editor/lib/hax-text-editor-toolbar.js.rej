@@ -1,0 +1,30 @@
+diff a/elements/hax-text-editor/lib/hax-text-editor-toolbar.js b/elements/hax-text-editor/lib/hax-text-editor-toolbar.js	(rejected hunks)
+@@ -205 +205 @@ class HaxTextEditorToolbar extends RichTextEditorToolbar {
+-  editTarget(editor){
++  editTarget(editor) {
+@@ -207 +207,2 @@ class HaxTextEditorToolbar extends RichTextEditorToolbar {
+-    let root = this, customTags = ['lrn-vocab','lrn-math'],
++    let root = this,
++      customTags = ["lrn-vocab", "lrn-math"],
+@@ -209,2 +210,6 @@ class HaxTextEditorToolbar extends RichTextEditorToolbar {
+-      openPrompt = e=> {
+-        if(e.target && e.target.tagName && customTags.includes(e.target.tagName.toLowerCase())){
++      openPrompt = e => {
++        if (
++          e.target &&
++          e.target.tagName &&
++          customTags.includes(e.target.tagName.toLowerCase())
++        ) {
+@@ -215,2 +219,2 @@ class HaxTextEditorToolbar extends RichTextEditorToolbar {
+-    if(editor) {
+-      editor.addEventListener('focus',e=>{
++    if (editor) {
++      editor.addEventListener("focus", e => {
+@@ -218,2 +222,2 @@ class HaxTextEditorToolbar extends RichTextEditorToolbar {
+-      })
+-      editor.addEventListener('mouseover',e=>{
++      });
++      editor.addEventListener("mouseover", e => {
+@@ -221 +225 @@ class HaxTextEditorToolbar extends RichTextEditorToolbar {
+-      })
++      });
