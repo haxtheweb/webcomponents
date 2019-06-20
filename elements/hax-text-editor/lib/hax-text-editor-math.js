@@ -4,7 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { RichTextEditorPromptButton } from "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-prompt-button.js";
-import "@lrnwebcomponents/lrn-math/lrn-math.js";
+import { MathTex } from "@lrnwebcomponents/lrn-math/lrn-math.js";
 /**
  * `hax-text-editor-math`
  * `a math button for hax text editor (custom buttons can extend this)`
@@ -19,6 +19,11 @@ class HaxTextEditorMath extends RichTextEditorPromptButton {
   constructor() {
     super();
     this.inlineWidget = true;
+    let element = MathTex;
+    //this.fields = element.haxProperties.settings.configure;
+    this.tag = element.tag;
+    this.icon = element.haxProperties.gizmo.icon;
+    this.label = element.haxProperties.gizmo.title;
     this.fields = [
       {
         property: "",
@@ -27,9 +32,6 @@ class HaxTextEditorMath extends RichTextEditorPromptButton {
         inputMethod: "textfield"
       }
     ];
-    this.tag = "lrn-math";
-    this.icon = "hax:pi";
-    this.label = "Math";
     this.toggles = true;
     this.value = {
       "": null
@@ -47,6 +49,15 @@ class HaxTextEditorMath extends RichTextEditorPromptButton {
    */
   static get tag() {
     return "hax-text-editor-math";
+  }
+
+  /**
+   * deselects the text
+   */
+  deselect() {
+    let math = this.__selection.querySelector("lrn-math");
+    super.deselect();
+    if (math) math.refresh();
   }
 }
 window.customElements.define(HaxTextEditorMath.tag, HaxTextEditorMath);

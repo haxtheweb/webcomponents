@@ -192,7 +192,7 @@ class MathTex extends HTMLElement {
       gizmo: {
         title: "Math",
         description: "Present math in a nice looking way.",
-        icon: "places:all-inclusive",
+        icon: "hax:pi",
         color: "grey",
         groups: ["Content"],
         handles: [
@@ -244,3 +244,4 @@ class MathTex extends HTMLElement {
 }
 
 window.customElements.define(MathTex.tag, MathTex);
+export { MathTex };

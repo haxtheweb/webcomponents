@@ -3,6 +3,7 @@ import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { OERSchema } from "@lrnwebcomponents/oer-schema/lib/oerschema.js";
+import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
 /**
  * `oer-schema`
  * `A LRN element to wrap an oer schema prefix onto materials.`
@@ -86,7 +87,7 @@ class OerSchemaElement extends SchemaBehaviors(PolymerElement) {
       gizmo: {
         title: "Schema",
         description: "Schematized element area",
-        icon: "icons:code",
+        icon: "hax:oerschema",
         color: "blue",
         groups: ["Instructional"],
         handles: [

@@ -264,7 +264,6 @@ class RichTextEditorSelection extends PolymerElement {
    * Updates the toolbar
    */
   _updateToolbar() {
-    let deleteme = "hello";
     if (this.toolbar) this.toolbar.range = this.range;
   }
 }

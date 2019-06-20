@@ -4,7 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { RichTextEditorPromptButton } from "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-prompt-button.js";
-import "@lrnwebcomponents/oer-schema/oer-schema.js";
+import { OerSchemaElement } from "@lrnwebcomponents/oer-schema/oer-schema.js";
 /**
  * `hax-text-editor-oer-schema`
  * `a oer-schema button for hax text editor (custom buttons can extend this)`
@@ -18,17 +18,11 @@ import "@lrnwebcomponents/oer-schema/oer-schema.js";
 class HaxTextEditorOerSchema extends RichTextEditorPromptButton {
   constructor() {
     super();
-    this.fields = [
-      {
-        property: "",
-        title: "Math",
-        description: "Math",
-        inputMethod: "textfield"
-      }
-    ];
-    this.tag = "oer-schema";
-    this.icon = "hax:oerschema";
-    this.label = "OER Schema";
+    let element = OerSchemaElement;
+    this.fields = element.haxProperties.settings.configure;
+    this.tag = element.tag;
+    this.icon = element.haxProperties.gizmo.icon;
+    this.label = element.haxProperties.gizmo.title;
     this.toggles = true;
     this.value = {
       "": null

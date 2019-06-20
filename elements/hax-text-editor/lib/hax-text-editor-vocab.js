@@ -4,7 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { RichTextEditorPromptButton } from "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-prompt-button.js";
-import "@lrnwebcomponents/lrn-vocab/lrn-vocab.js";
+import { LrnVocab } from "@lrnwebcomponents/lrn-vocab/lrn-vocab.js";
 /**
  * `hax-text-editor-vocab`
  * `a lrn-vocab button for hax text editor (custom buttons can extend this)`
@@ -19,6 +19,12 @@ class HaxTextEditorVocab extends RichTextEditorPromptButton {
   constructor() {
     super();
     this.inlineWidget = true;
+    let element = LrnVocab;
+    //this.fields = element.haxProperties.settings.configure;
+    this.tag = element.tag;
+    this.icon = element.haxProperties.gizmo.icon;
+    this.label = element.haxProperties.gizmo.title;
+    //this.fields = element.haxProperties.settings.configure;
     this.fields = [
       {
         property: "term",
@@ -31,9 +37,6 @@ class HaxTextEditorVocab extends RichTextEditorPromptButton {
         inputMethod: "textfield"
       }
     ];
-    this.tag = "lrn-vocab";
-    this.icon = "hax:vocab";
-    this.label = "Term/Definition";
     this.toggles = true;
     this.value = {
       "": null

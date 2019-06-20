@@ -111,7 +111,7 @@ class LrnVocab extends SchemaBehaviors(PolymerElement) {
       gizmo: {
         title: "Vocab",
         description: "Vocabulary term",
-        icon: "image:details",
+        icon: "hax:vocab",
         color: "red",
         groups: ["Vocab"],
         handles: [

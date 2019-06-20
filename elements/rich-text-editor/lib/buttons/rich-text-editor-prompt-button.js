@@ -246,10 +246,9 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
     el.innerHTML.trim();
     this.fields.forEach(field => {
       if (field.property && field.property !== "") {
-        if (field.property !== "tag")
-          this.value[field.property] = el
-            ? el.getAttribute(field.property)
-            : null;
+        this.value[field.property] = el
+          ? el.getAttribute(field.property)
+          : null;
       } else if (field.slot && field.slot !== "") {
         this.value[field.slot] = el ? el.querySelector(field.slot) : null;
       } else {
@@ -268,10 +267,11 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
       selection = document.createElement(this.tag);
       this.fields.forEach(field => {
         if (field.property) {
-          let prop = this.getCleanValue(field.property);
-          if (field.property !== "tag")
-            selection.setAttribute(field.property, prop);
-        } else if (field.slot) {
+          selection.setAttribute(
+            field.property,
+            this.getCleanValue(field.property)
+          );
+        } else if (field.slot && field.slot !== "") {
           let slot = this.getCleanValue(field.slot);
           selection.innerHTML += `<span slot="${field.slot}">${slot}</slot>`;
         } else {
@@ -279,6 +279,7 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
         }
       });
     }
+
     if (selection) this.__selection.appendChild(selection);
   }
 
