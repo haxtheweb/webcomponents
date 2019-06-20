@@ -201,6 +201,7 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
       );
     super._editorChanged(newVal, oldVal);
   }
+
   _editInlineWidget(editor, e) {
     if (
       editor.getAttribute("contenteditable") &&
@@ -211,6 +212,9 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
       e.stopPropagation();
       e.preventDefault();
       this.open(e.target);
+      return false;
+    } else {
+      return true;
     }
   }
 
@@ -221,7 +225,7 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
     this.__revertContents = document.createElement("div");
     if (node) {
       this.__revertContents.appendChild(node.cloneNode());
-      this.__selection.range.selectNode(node);
+      this.__selection.selectNode(node);
       this.__selectionContents = node;
     } else {
       this.__revertContents.appendChild(this.__selection.getRangeContents());
@@ -259,9 +263,7 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
    */
   updateSelection() {
     this.__selection.innerHTML = "";
-    //console.log('updateSelection','this.__selection.innerHTML',this.__selection.innerHTML);
     let selection = document.createTextNode(this.getCleanValue(""));
-    //console.log('updateSelection','this.getCleanValue("")',this.getCleanValue(""));
     if (this.__tagNeeded) {
       selection = document.createElement(this.tag);
       this.fields.forEach(field => {
@@ -276,10 +278,8 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
           selection.innerHTML += `${this.getCleanValue(field.property)}`;
         }
       });
-      //console.log('updateSelection','selection',selection);
     }
     if (selection) this.__selection.appendChild(selection);
-    //console.log('updateSelection','this.__selection.innerHTML updated',this.__selection.innerHTML);
   }
 
   /**
