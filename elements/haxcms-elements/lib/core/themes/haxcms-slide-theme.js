@@ -20,6 +20,7 @@ import "@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";
 class HAXCMSSlideTheme extends HAXCMSTheme(PolymerElement) {
   constructor() {
     super();
+    this.__disposer = [];
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
@@ -58,6 +59,11 @@ class HAXCMSSlideTheme extends HAXCMSTheme(PolymerElement) {
           bottom: 60px;
           overflow: scroll;
           border-bottom: 4px solid var(--haxcms-color, black);
+        }
+        :host([edit-mode]) .active-slide {
+          bottom: 0;
+          overflow: scroll;
+          border-bottom: unset;
         }
         .controls:hover {
           background-color: rgba(0, 0, 0, 1);
@@ -149,6 +155,12 @@ class HAXCMSSlideTheme extends HAXCMSTheme(PolymerElement) {
           height: 60px;
           left: 0;
           right: 0;
+          transition: 0.2s opacity linear;
+          opacity: 1;
+        }
+        :host([edit-mode]) .bottom-wrapper {
+          opacity: 0;
+          pointer-events: none;
         }
         @media screen and (max-width: 900px) {
           site-title {
@@ -213,7 +225,6 @@ class HAXCMSSlideTheme extends HAXCMSTheme(PolymerElement) {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.__disposer = [];
     afterNextRender(this, function() {
       // store disposer so we can clean up later
       autorun(reaction => {
@@ -232,11 +243,11 @@ class HAXCMSSlideTheme extends HAXCMSTheme(PolymerElement) {
    * Disconnect the wiring for the theme and clean up state
    */
   disconnectedCallback() {
-    super.disconnectedCallback();
     // clean up state
     for (var i in this.__disposer) {
       this.__disposer[i].dispose();
     }
+    super.disconnectedCallback();
   }
 }
 window.customElements.define(HAXCMSSlideTheme.tag, HAXCMSSlideTheme);

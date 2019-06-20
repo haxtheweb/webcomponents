@@ -25,6 +25,7 @@ class SiteTopMenu extends PolymerElement {
   }
   constructor() {
     super();
+    this.__disposer = [];
     import("@polymer/paper-tooltip/paper-tooltip.js");
     import("@polymer/paper-button/paper-button.js");
   }
@@ -36,6 +37,12 @@ class SiteTopMenu extends PolymerElement {
           display: block;
           --site-top-menu-bg: var(--haxcms-color, #ffffff);
           --site-top-menu-indicator-arrow: 6px;
+          transition: 0.2s opacity linear;
+          opacity: 1;
+        }
+        :host([edit-mode]) {
+          opacity: 0.2;
+          pointer-events: none;
         }
         :host([sticky]) {
           position: fixed;
@@ -240,6 +247,10 @@ class SiteTopMenu extends PolymerElement {
       position: {
         type: String,
         value: "bottom"
+      },
+      editMode: {
+        type: Boolean,
+        reflectToAttribute: true
       }
     };
   }
@@ -300,14 +311,20 @@ class SiteTopMenu extends PolymerElement {
   }
   connectedCallback() {
     super.connectedCallback();
-    this.__disposer = autorun(() => {
+    autorun(reaction => {
       this.manifest = toJS(store.manifest);
+      this.__disposer.push(reaction);
+    });
+    autorun(reaction => {
+      this.editMode = toJS(store.editMode);
+      this.__disposer.push(reaction);
     });
     // minor timing thing to ensure store has picked active
     // needed if routes set on first paint or lifecycles miss
     setTimeout(() => {
-      this.__disposer2 = autorun(() => {
+      autorun(reaction => {
         this.activeId = toJS(store.activeId);
+        this.__disposer.push(reaction);
       });
     }, 50);
     window.addEventListener(
@@ -319,10 +336,9 @@ class SiteTopMenu extends PolymerElement {
     );
   }
   disconnectedCallback() {
-    super.disconnectedCallback();
-    this.__disposer();
-    if (this.__disposer2) {
-      this.__disposer2();
+    // clean up state
+    for (var i in this.__disposer) {
+      this.__disposer[i].dispose();
     }
     window.removeEventListener(
       "resize",
@@ -331,6 +347,7 @@ class SiteTopMenu extends PolymerElement {
       },
       true
     );
+    super.disconnectedCallback();
   }
 }
 window.customElements.define(SiteTopMenu.tag, SiteTopMenu);

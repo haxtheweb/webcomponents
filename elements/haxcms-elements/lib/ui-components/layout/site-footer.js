@@ -23,6 +23,7 @@ class SiteFooter extends PolymerElement {
   }
   constructor() {
     super();
+    this.__disposer = [];
     import("@lrnwebcomponents/license-element/license-element.js");
   }
   // render function
@@ -31,6 +32,12 @@ class SiteFooter extends PolymerElement {
       <style>
         :host {
           display: block;
+          transition: 0.2s opacity linear;
+          opacity: 1;
+        }
+        :host([edit-mode]) {
+          opacity: 0.2;
+          pointer-events: none;
         }
       </style>
       <div class="wrapper">
@@ -51,21 +58,33 @@ class SiteFooter extends PolymerElement {
       },
       manifest: {
         type: Object
+      },
+      editMode: {
+        type: Boolean,
+        reflectToAttribute: true
       }
     };
   }
   connectedCallback() {
     super.connectedCallback();
-    this.__disposer = autorun(() => {
+    autorun(reaction => {
       this.manifest = toJS(store.manifest);
+      this.__disposer.push(reaction);
     });
-    this.__disposer2 = autorun(() => {
+    autorun(reaction => {
+      this.editMode = toJS(store.editMode);
+      this.__disposer.push(reaction);
+    });
+    autorun(reaction => {
       this.siteTitle = toJS(store.siteTitle);
+      this.__disposer.push(reaction);
     });
   }
   disconnectedCallback() {
-    this.__disposer();
-    this.__disposer2();
+    // clean up state
+    for (var i in this.__disposer) {
+      this.__disposer[i].dispose();
+    }
     super.disconnectedCallback();
   }
 }

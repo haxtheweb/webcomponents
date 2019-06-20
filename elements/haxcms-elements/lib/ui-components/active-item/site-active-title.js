@@ -27,6 +27,11 @@ class SiteActiveTitle extends PolymerElement {
       <style>
         :host {
           display: block;
+          transition: 0.2s opacity linear;
+          opacity: 1;
+        }
+        :host([edit-mode]) {
+          opacity: 0.2;
         }
         h2 {
           text-rendering: optimizelegibility;
@@ -62,6 +67,10 @@ class SiteActiveTitle extends PolymerElement {
         type: String,
         computed:
           "_makeTitle(dynamicMethodology, activeTitle, parentTitle, ancestorTitle)"
+      },
+      editMode: {
+        type: Boolean,
+        reflectToAttribute: true
       }
     };
   }
@@ -86,21 +95,30 @@ class SiteActiveTitle extends PolymerElement {
   }
   connectedCallback() {
     super.connectedCallback();
-    this.__disposer = autorun(() => {
+    this.__disposer = [];
+    autorun(reaction => {
+      this.editMode = toJS(store.editMode);
+      this.__disposer.push(reaction);
+    });
+    autorun(reaction => {
       this.activeTitle = toJS(store.activeTitle);
+      this.__disposer.push(reaction);
     });
-    this.__disposer2 = autorun(() => {
-      this.parentTitle = toJS(store.parentTitle);
-    });
-    this.__disposer3 = autorun(() => {
+    autorun(reaction => {
       this.ancestorTitle = toJS(store.ancestorTitle);
+      this.__disposer.push(reaction);
+    });
+    autorun(reaction => {
+      this.parentTitle = toJS(store.parentTitle);
+      this.__disposer.push(reaction);
     });
   }
   disconnectedCallback() {
+    // clean up state
+    for (var i in this.__disposer) {
+      this.__disposer[i].dispose();
+    }
     super.disconnectedCallback();
-    this.__disposer();
-    this.__disposer2();
-    this.__disposer3();
   }
 }
 window.customElements.define(SiteActiveTitle.tag, SiteActiveTitle);

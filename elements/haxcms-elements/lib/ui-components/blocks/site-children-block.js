@@ -5,6 +5,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query-menu-slice.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 
@@ -26,6 +27,7 @@ class SiteChildrenBlock extends PolymerElement {
   }
   constructor() {
     super();
+    this.__disposer = [];
     import("@polymer/paper-button/paper-button.js");
   }
   // render function
@@ -36,6 +38,12 @@ class SiteChildrenBlock extends PolymerElement {
           display: block;
           --site-children-block-indent: 16px;
           --site-children-block-link-active-bg: rgba(255, 255, 255, 0.1);
+          transition: 0.2s opacity linear;
+          opacity: 1;
+        }
+        :host([edit-mode]) {
+          opacity: 0.2;
+          pointer-events: none;
         }
         .wrapper {
           @apply --site-children-block-wrapper;
@@ -198,6 +206,10 @@ class SiteChildrenBlock extends PolymerElement {
       activeId: {
         type: String,
         observer: "_activeIdChanged"
+      },
+      editMode: {
+        type: Boolean,
+        reflectToAttribute: true
       }
     };
   }
@@ -243,23 +255,31 @@ class SiteChildrenBlock extends PolymerElement {
   }
   connectedCallback() {
     super.connectedCallback();
-    this.__disposer = autorun(() => {
-      this.manifest = toJS(store.manifest);
+    autorun(reaction => {
+      this.editMode = toJS(store.editMode);
+      this.__disposer.push(reaction);
     });
-    // minor timing thing to ensure store has picked active
-    // needed if routes set on first paint or lifecycles miss
-    setTimeout(() => {
-      this.__disposer2 = autorun(() => {
-        this.activeId = toJS(store.activeId);
-      });
-    }, 50);
+    autorun(reaction => {
+      this.manifest = toJS(store.manifest);
+      this.__disposer.push(reaction);
+    });
+    afterNextRender(this, function() {
+      // minor timing thing to ensure store has picked active
+      // needed if routes set on first paint or lifecycles miss
+      setTimeout(() => {
+        autorun(reaction => {
+          this.activeId = toJS(store.activeId);
+          this.__disposer.push(reaction);
+        });
+      }, 250);
+    });
   }
   disconnectedCallback() {
-    super.disconnectedCallback();
-    this.__disposer();
-    if (this.__disposer2) {
-      this.__disposer2();
+    // clean up state
+    for (var i in this.__disposer) {
+      this.__disposer[i].dispose();
     }
+    super.disconnectedCallback();
   }
 }
 window.customElements.define(SiteChildrenBlock.tag, SiteChildrenBlock);

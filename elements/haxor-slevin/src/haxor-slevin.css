@@ -123,6 +123,12 @@ site-active-title {
   position: fixed;
   z-index: 99;
   margin-left: -10vw;
+  opacity: 1;
+  transition: .2s opacity linear;
+}
+.social-float.disable-items {
+  pointer-events: none;
+  opacity: .2 !important;
 }
 .social-float ul {
   padding: 0;
@@ -149,6 +155,16 @@ social-share-link {
   padding: 10px 0;
   height: 50px;
   z-index: 100;
+  opacity: 1;
+  transition: .2s opacity linear;
+  -webkit-transition: .2s opacity linear;
+  -moz-transition: .2s opacity linear;
+  -ms-transition: .2s opacity linear;
+  -o-transition: .2s opacity linear;
+}
+.annoy-user.disable-items {
+  pointer-events: none;
+  opacity: 0 !important;
 }
 iron-icon {
   height: 40px;
