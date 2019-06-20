@@ -57,10 +57,7 @@
     "polymer-build": "3.1.0",
     "wct-browser-legacy": "1.0.2"
   },
-  "private": false,
-  "publishConfig": {
-    "access": "public"
-  },
+  "private": true,
   "keywords": [
     "web-components",
     "html"
