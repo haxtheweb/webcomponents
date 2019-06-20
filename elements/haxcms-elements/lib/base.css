@@ -58,3 +58,4 @@ ul li {
 ol li:last-child,
 ul li:last-child {
   padding-bottom: var(--haxcms-base-styles-list-last-child-padding-bottom, 1em);
+}
