@@ -202,10 +202,10 @@ class RichTextEditorSelection extends PolymerElement {
   selectNode(node = null) {
     if (node) {
       if (!this.range) {
-        let sel = Window.getSelection();
+        let sel = window.getSelection();
         this.range = document.createRange();
         sel.removeAllRanges();
-        sel.addRange(range);
+        sel.addRange(this.range);
       }
       this.range.selectNode(node);
     }

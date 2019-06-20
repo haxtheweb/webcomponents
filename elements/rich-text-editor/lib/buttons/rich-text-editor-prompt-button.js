@@ -143,7 +143,8 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
    */
   getCleanValue(prop) {
     let val = this.value[prop];
-    if (val && typeof val === "string") val = val.trim();
+    if (val && typeof val === "string")
+      val = val.replace(/[\s\n\t]+/g, " ").trim();
     return val;
   }
   /**
@@ -241,20 +242,32 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
    * updates prompt fields with selected range data
    */
   updatePrompt() {
-    let el = this.__selectionContents;
+    let el = this.__selectionContents,
+      promptWidth = "200px";
     el.normalize();
     el.innerHTML.trim();
     this.fields.forEach(field => {
+      if (field.inputMethod && field.inputMethod === "code-editor")
+        promptWidth = "400px";
       if (field.property && field.property !== "") {
         this.value[field.property] = el
           ? el.getAttribute(field.property)
           : null;
       } else if (field.slot && field.slot !== "") {
-        this.value[field.slot] = el ? el.querySelector(field.slot) : null;
+        this.value[field.slot] =
+          el & el.querySelector(field.slot)
+            ? el
+                .querySelector(field.slot)
+                .innerHTML.replace(/[\s\n\t]+/g, " ")
+                .trim()
+            : null;
       } else {
-        this.value[""] = el ? el.innerHTML.trim() : "";
+        this.value[""] = el
+          ? el.innerHTML.replace(/[\s\n\t]+/g, " ").trim()
+          : "";
       }
     });
+    this.__prompt.width = promptWidth;
   }
 
   /**

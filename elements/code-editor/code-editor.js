@@ -53,15 +53,16 @@ class CodeEditor extends SchemaBehaviors(PolymerElement) {
           float: right;
           height: 40px;
         }
-        h3 {
-          color: var(--code-pen-title-color, #222222);
+        label {
+          @apply --code-editor-label;
         }
         #codeeditor {
           height: 100%;
           display: flex;
+          @apply --code-editor-code;
         }
       </style>
-      <h3 hidden$="[[!title]]">[[title]]</h3>
+      <label for="codeeditor" hidden$="[[!title]]">[[title]]</label>
       <monaco-element
         id="codeeditor"
         lib-path="[[__libPath]]"

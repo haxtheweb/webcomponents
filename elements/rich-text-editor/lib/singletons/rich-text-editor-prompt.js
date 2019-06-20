@@ -34,7 +34,6 @@ class RichTextEditorPrompt extends PolymerElement {
           );
         }
         :host #prompt {
-          width: 200px;
           display: none;
         }
         :host #prompt[for]{
@@ -91,6 +90,7 @@ class RichTextEditorPrompt extends PolymerElement {
         id="prompt"
         auto
         for$="[[for]]"
+        style$="width: [[width]]"
       >
         <form id="form">
           <simple-fields
@@ -181,6 +181,13 @@ class RichTextEditorPrompt extends PolymerElement {
         value: null
       },
       /**
+       * The width of the prompt
+       */
+      width: {
+        type: String,
+        value: "200px"
+      },
+      /**
        * The prefilled value of the prompt
        */
       __button: {
@@ -213,6 +220,7 @@ class RichTextEditorPrompt extends PolymerElement {
     this.__a11yconfirm = this.$.confirm;
     this.__a11ycancel = this.$.cancel;
     this.addEventListener("blur", e => {
+      console.log("blur", document.activeElement);
       this._cancel(e);
     });
   }

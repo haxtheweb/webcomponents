@@ -20,18 +20,10 @@ class HaxTextEditorMath extends RichTextEditorPromptButton {
     super();
     this.inlineWidget = true;
     let element = MathTex;
-    //this.fields = element.haxProperties.settings.configure;
+    this.fields = element.haxProperties.settings.configure;
     this.tag = element.tag;
     this.icon = element.haxProperties.gizmo.icon;
     this.label = element.haxProperties.gizmo.title;
-    this.fields = [
-      {
-        property: "",
-        title: "Math",
-        description: "Math",
-        inputMethod: "textfield"
-      }
-    ];
     this.toggles = true;
     this.value = {
       "": null

@@ -20,23 +20,10 @@ class HaxTextEditorVocab extends RichTextEditorPromptButton {
     super();
     this.inlineWidget = true;
     let element = LrnVocab;
-    //this.fields = element.haxProperties.settings.configure;
     this.tag = element.tag;
     this.icon = element.haxProperties.gizmo.icon;
     this.label = element.haxProperties.gizmo.title;
-    //this.fields = element.haxProperties.settings.configure;
-    this.fields = [
-      {
-        property: "term",
-        title: "Term",
-        inputMethod: "textfield"
-      },
-      {
-        property: "",
-        title: "Definition",
-        inputMethod: "textfield"
-      }
-    ];
+    this.fields = element.haxProperties.settings.configure;
     this.toggles = true;
     this.value = {
       "": null

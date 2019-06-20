@@ -25,7 +25,7 @@ class RichTextEditorUnderline extends RichTextEditorPromptButton {
         inputMethod: "textfield"
       },
       {
-        property: "tag",
+        property: "confirm",
         title: "Underline despite usability issues",
         description:
           "Underlines can be confused with links on the web. To prevent usability issues, we recommend using italics instead.",
@@ -66,8 +66,8 @@ class RichTextEditorUnderline extends RichTextEditorPromptButton {
       value &&
       this.getCleanValue("") &&
       this.getCleanValue("") !== "" &&
-      this.getCleanValue("tag") &&
-      this.getCleanValue("tag")
+      this.getCleanValue("confirm") &&
+      this.getCleanValue("confirm")
     );
   }
 }

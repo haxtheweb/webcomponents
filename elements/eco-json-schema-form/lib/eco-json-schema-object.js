@@ -299,6 +299,7 @@ class EcoJsonSchemaObject extends mixinBehaviors(
             height: auto;
           }
           #form {
+            color: var(--eco-json-form-color, unset);
             display: block;
             @apply --eco-json-schema-object-form;
             @apply --layout-vertical;
@@ -309,6 +310,16 @@ class EcoJsonSchemaObject extends mixinBehaviors(
               border: none !important;
               width: 100% !important;
               background-color: transparent !important;
+            }
+          }
+          #form ::slotted(code-editor) {
+            margin: 8px 0;
+            --code-editor-code: {
+              border: var(--eco-json-schema-code-border, 1px solid black);
+            }
+            --code-editor-label: {
+              color: var(--eco-json-form-color, unset);
+              font-family: var(--paper-font-caption_-_font-family, unset);
             }
           }
         </style>
@@ -362,6 +373,13 @@ class EcoJsonSchemaObject extends mixinBehaviors(
         notify: true
       },
       /**
+       * the name of the code-editor theme
+       */
+      codeTheme: {
+        type: String,
+        value: "vs-light-2"
+      },
+      /**
        * automatically set focus on the first field if that field has autofocus
        */
       autofocus: {
@@ -386,6 +404,7 @@ class EcoJsonSchemaObject extends mixinBehaviors(
           schema: schema,
           component: schema.component || {}
         };
+        console.log("map", this.schema, key, schema);
 
         if (!property.component.valueProperty) {
           property.component.valueProperty = "value";
@@ -526,8 +545,10 @@ class EcoJsonSchemaObject extends mixinBehaviors(
     this._schemaProperties.forEach(property => {
       // special case, can't come up with a better way to do this but monoco is very special case
       if (property.component.name === "code-editor") {
+        console.log("code-editor", property.schema, this._schemaProperties);
         property.schema.component.properties.editorValue =
           property.schema.value;
+        property.schema.component.properties.theme = this.codeTheme;
       }
       var el = this.create(property.component.name, {
         label: property.label,
