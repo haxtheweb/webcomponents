@@ -173,7 +173,7 @@ class MathTex extends HTMLElement {
     window.requestAnimationFrame(function() {
       elem._private = {
         check: "",
-        observer: new MutationObserver(function(list) {
+        observer: new MutationObserver(function() {
           update(elem);
         })
       };
@@ -225,7 +225,7 @@ class MathTex extends HTMLElement {
     };
   }
   /**
-   * forces a refresh to preven clone error
+   * forces a refresh to prevent dom reattachment issue
    */
   refresh() {
     let root = this;
