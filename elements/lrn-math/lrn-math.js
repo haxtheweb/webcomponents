@@ -173,7 +173,7 @@ class MathTex extends HTMLElement {
     window.requestAnimationFrame(function() {
       elem._private = {
         check: "",
-        observer: new MutationObserver(function() {
+        observer: new MutationObserver(function(list) {
           update(elem);
         })
       };
@@ -223,6 +223,16 @@ class MathTex extends HTMLElement {
         advanced: []
       }
     };
+  }
+  /**
+   * forces a refresh to preven clone error
+   */
+  refresh() {
+    let root = this;
+    let clone = document.createElement("lrn-math");
+    root.parentNode.insertBefore(clone, root);
+    clone.innerHTML = this.innerHTML;
+    this.remove();
   }
 
   disconnectedCallback() {
