@@ -404,7 +404,6 @@ class EcoJsonSchemaObject extends mixinBehaviors(
           schema: schema,
           component: schema.component || {}
         };
-        console.log("map", this.schema, key, schema);
 
         if (!property.component.valueProperty) {
           property.component.valueProperty = "value";
@@ -545,7 +544,6 @@ class EcoJsonSchemaObject extends mixinBehaviors(
     this._schemaProperties.forEach(property => {
       // special case, can't come up with a better way to do this but monoco is very special case
       if (property.component.name === "code-editor") {
-        console.log("code-editor", property.schema, this._schemaProperties);
         property.schema.component.properties.editorValue =
           property.schema.value;
         property.schema.component.properties.theme = this.codeTheme;
