@@ -1,0 +1,6 @@
+version: '2'
+services:
+  r-service:
+    image: heymp/r-service
+    ports:
+      - 3000:3000
