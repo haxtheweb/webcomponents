@@ -247,13 +247,11 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
    */
   updatePrompt() {
     this.__oldValue = this.value;
-    let el = this.__selectionContents,
-      promptWidth = "200px";
+    let el = this.__selectionContents;
     el.normalize();
     el.innerHTML.trim();
+
     this.fields.forEach(field => {
-      if (field.inputMethod && field.inputMethod === "code-editor")
-        promptWidth = "400px";
       if (field.property && field.property !== "") {
         this.value[field.property] = el
           ? el.getAttribute(field.property)
@@ -272,7 +270,6 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
           : "";
       }
     });
-    this.__prompt.width = promptWidth;
   }
 
   /**

@@ -35,6 +35,7 @@ class RichTextEditorPrompt extends PolymerElement {
         }
         :host #prompt {
           display: none;
+          width: 300px;
         }
         :host #prompt[for]{
           display: block;
@@ -90,7 +91,6 @@ class RichTextEditorPrompt extends PolymerElement {
         id="prompt"
         auto
         for$="[[for]]"
-        style$="width: [[width]]"
       >
         <form id="form">
           <simple-fields
@@ -180,13 +180,6 @@ class RichTextEditorPrompt extends PolymerElement {
       value: {
         type: Object,
         value: null
-      },
-      /**
-       * The width of the prompt
-       */
-      width: {
-        type: String,
-        value: "200px"
       },
       /**
        * The prefilled value of the prompt
