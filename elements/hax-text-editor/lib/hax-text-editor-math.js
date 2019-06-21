@@ -47,8 +47,13 @@ class HaxTextEditorMath extends RichTextEditorPromptButton {
    * deselects the text
    */
   deselect() {
-    let math = this.__selection.querySelector("lrn-math");
     super.deselect();
+    let math =
+      this.__selectionContents &&
+      this.__selectionContents.tagName &&
+      this.__selectionContents.tagName.toLowerCase() === this.tag
+        ? this.__selectionContents
+        : null;
     if (math) math.refresh();
   }
 }

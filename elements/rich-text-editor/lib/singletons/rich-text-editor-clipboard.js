@@ -35,7 +35,9 @@ class RichTextEditorClipboard extends PolymerElement {
   static get tag() {
     return "rich-text-editor-clipboard";
   }
-
+  /**
+   * component is ready
+   */
   ready() {
     super.ready();
     let root = this;
@@ -93,7 +95,6 @@ class RichTextEditorClipboard extends PolymerElement {
 
   /**
    * Normalizes selected range data.
-   *
    * @returns {object} the selected range
    */
   getRange() {

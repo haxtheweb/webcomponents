@@ -68,6 +68,14 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
         }
       },
       /**
+       * the contents node inside the selected range
+       */
+      __oldValue: {
+        name: "__oldValue",
+        type: Object,
+        value: null
+      },
+      /**
        * the prompt that pops up when button is pressed
        */
       __prompt: {
@@ -88,22 +96,6 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
        */
       __selectionContents: {
         name: "__selectionContents",
-        type: Object,
-        value: null
-      },
-      /**
-       * do the fields have enough for the tag to be necessary
-       */
-      __tagNeeded: {
-        name: "__tagNeeded",
-        type: Object,
-        computed: "_getTagNeeded(value)"
-      },
-      /**
-       * the contents node inside the selected range
-       */
-      __revertContents: {
-        name: "__revertContents",
         type: Object,
         value: null
       }
@@ -129,10 +121,12 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
   }
 
   /**
-   * Handles button tap;
+   * Handles button tap
+   * @param {event} e the button tap event
    */
   _buttonTap(e) {
     e.preventDefault();
+    this.selectRange();
     this.open();
   }
 
@@ -151,10 +145,8 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
    * updates the insertion based on fields
    */
   cancel() {
-    this.__selection.innerHTML = "";
-    while (this.__revertContents.firstChild)
-      this.__selection.appendChild(this.__revertContents.firstChild);
-    this.deselect();
+    this.value = this.__oldValue;
+    this.confirm();
   }
 
   /**
@@ -169,9 +161,15 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
    * deselects the text
    */
   deselect() {
-    this.__revertContents.remove();
     this.__prompt.clearTarget("");
-    this.__selection.removeHighlight();
+    this.__selection.normalize();
+    this.__selection.parentNode.insertBefore(
+      this.__selectionContents,
+      this.__selection
+    );
+    this.__selection.range.selectNode(this.__selectionContents);
+    this.__selection.range.collapse();
+    this.__selection.hidden = true;
   }
 
   /**
@@ -202,7 +200,12 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
       );
     super._editorChanged(newVal, oldVal);
   }
-
+  /**
+   *
+   * @param {object} editor the active editor
+   * @param {event} e the edit event
+   * @returns {boolean} whether to prevent the default behavior for an inline widget
+   */
   _editInlineWidget(editor, e) {
     if (
       editor.getAttribute("contenteditable") &&
@@ -212,26 +215,27 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
     ) {
       e.stopPropagation();
       e.preventDefault();
-      this.open(e.target);
+      this.selectWidget(e.target);
+      this.open();
       return false;
     } else {
       return true;
     }
   }
 
+  selectWidget(widget) {
+    this.__selection.selectNode(widget);
+    this.__selectionContents = widget;
+  }
+
+  selectRange() {
+    this.__selectionContents = this.__selection.expandSelection(this.tag);
+  }
+
   /**
    * Handles selecting text and opening prompt
    */
-  open(node = null) {
-    this.__revertContents = document.createElement("div");
-    if (node) {
-      this.__revertContents.appendChild(node.cloneNode());
-      this.__selection.selectNode(node);
-      this.__selectionContents = node;
-    } else {
-      this.__revertContents.appendChild(this.__selection.getRangeContents());
-      this.__selectionContents = this.__selection.expandSelection(this.tag);
-    }
+  open() {
     this.__selection.addHighlight();
     this.updatePrompt();
     this.__prompt.setTarget(this);
@@ -242,6 +246,7 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
    * updates prompt fields with selected range data
    */
   updatePrompt() {
+    this.__oldValue = this.value;
     let el = this.__selectionContents,
       promptWidth = "200px";
     el.normalize();
@@ -276,7 +281,7 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
   updateSelection() {
     this.__selection.innerHTML = "";
     let selection = document.createTextNode(this.getCleanValue(""));
-    if (this.__tagNeeded) {
+    if (this._getTagNeeded(this.value)) {
       selection = document.createElement(this.tag);
       this.fields.forEach(field => {
         if (field.property) {
@@ -288,11 +293,13 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
           let slot = this.getCleanValue(field.slot);
           selection.innerHTML += `<span slot="${field.slot}">${slot}</slot>`;
         } else {
-          selection.innerHTML += `${this.getCleanValue(field.property)}`;
+          selection.innerHTML += `${this.getCleanValue("")}`;
         }
       });
+    } else {
+      selection.innerHTML += `${this.getCleanValue("")}`;
     }
-
+    this.__selectionContents = selection;
     if (selection) this.__selection.appendChild(selection);
   }
 

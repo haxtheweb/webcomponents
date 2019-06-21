@@ -96,6 +96,7 @@ class RichTextEditorPrompt extends PolymerElement {
           <simple-fields
             id="formfields"
             autofocus
+            hide-line-numbers
             fields="[[fields]]"
             value="{{value}}"
           ></simple-fields>
@@ -219,14 +220,18 @@ class RichTextEditorPrompt extends PolymerElement {
     super.connectedCallback();
     this.__a11yconfirm = this.$.confirm;
     this.__a11ycancel = this.$.cancel;
-    this.addEventListener("blur", e => {
+    /*
+    TODO blur  doesnt work with select dropdowns
+     this.addEventListener("blur", e => {
       console.log("blur", document.activeElement);
       this._cancel(e);
-    });
+    });*/
   }
 
   /**
-   * Loads element into array
+   * Associates a button and its selection data with the prompt
+   * @param {object} button the button to associate with the prompt
+   * @returns {void}
    */
   setTarget(button) {
     this.clearTarget();
@@ -237,7 +242,8 @@ class RichTextEditorPrompt extends PolymerElement {
   }
 
   /**
-   * Unloads element from array
+   * Disassociates the button and selection data from the prompt
+   * @returns {void}
    */
   clearTarget() {
     if (!this.__button) return;
@@ -247,7 +253,9 @@ class RichTextEditorPrompt extends PolymerElement {
     this.__button = null;
   }
   /**
-   * Handles button tap;
+   * Handles cancel button
+   * @param {event} e the event
+   * @returns {void}
    */
   _cancel(e) {
     e.preventDefault();
@@ -256,7 +264,9 @@ class RichTextEditorPrompt extends PolymerElement {
     this.clearTarget();
   }
   /**
-   * Handles button tap;
+   * Handles the confirm button
+   * @param {event} e the event
+   * @returns {void}
    */
   _confirm(e) {
     e.preventDefault();

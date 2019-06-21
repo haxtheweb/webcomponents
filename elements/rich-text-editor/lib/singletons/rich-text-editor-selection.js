@@ -151,21 +151,6 @@ class RichTextEditorSelection extends PolymerElement {
   }
 
   /**
-   * adds or removes the hightlight
-   * @param {boolean} off if true, turns highlight off
-   * @returns {void}
-   */
-  removeHighlight() {
-    let root = this,
-      last = this.lastChild;
-    root.normalize();
-    while (root.firstChild) root.parentNode.insertBefore(root.firstChild, root);
-    document.body.appendChild(root);
-    root.hidden = true;
-    this.range.selectNode(last);
-  }
-
-  /**
    * searches for a closest ancestor by tagname,
    * expands the selection to the matching ancestor,
    * and returns the ancestor, or returns null if not found
@@ -198,7 +183,11 @@ class RichTextEditorSelection extends PolymerElement {
     }
     return wrapper;
   }
-
+  /**
+   * sets the selection range to the specified node
+   * @param {object} node the node to select
+   * @returns {void}
+   */
   selectNode(node = null) {
     if (node) {
       if (!this.range) {
@@ -208,6 +197,22 @@ class RichTextEditorSelection extends PolymerElement {
         sel.addRange(this.range);
       }
       this.range.selectNode(node);
+    }
+  }
+  /**
+   * sets the selection range to the specified node's contents
+   * @param {object} node the node to select
+   * @returns {void}
+   */
+  selectNodeContents(node = null) {
+    if (node) {
+      if (!this.range) {
+        let sel = window.getSelection();
+        this.range = document.createRange();
+        sel.removeAllRanges();
+        sel.addRange(this.range);
+      }
+      this.range.selectNodeContents(node);
     }
   }
 
@@ -224,6 +229,9 @@ class RichTextEditorSelection extends PolymerElement {
 
   /**
    * Updates the selected range based on toolbar and editor
+   * @param {event} e the editor change event
+   * @param {deselect} if the editor is being deselected
+   * @returns {void}
    */
   _editorChange(e, deselect = false) {
     let root = this,
