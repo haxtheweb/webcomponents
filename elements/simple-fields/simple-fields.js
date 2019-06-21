@@ -65,6 +65,7 @@ class SimpleFields extends MutableData(PolymerElement) {
       <eco-json-schema-object
         id="schemaobject"
         autofocus$="[[autofocus]]"
+        hide-line-numbers$="[[hideLineNumbers]]"
         on-form-changed="_formChanged"
         schema="[[__validatedSchema]]"
         value="{{value}}"
@@ -117,6 +118,13 @@ class SimpleFields extends MutableData(PolymerElement) {
        * automatically set focus on the first field if that field has autofocus
        */
       autofocus: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * hide code-editor line numbers
+       */
+      hideLineNumbers: {
         type: Boolean,
         value: false
       },

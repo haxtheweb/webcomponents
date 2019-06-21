@@ -560,7 +560,9 @@ class EcoJsonSchemaObject extends mixinBehaviors(
         el.style["width"] = "100%";
       }
       el.setAttribute("name", property.property);
+      //allows the first form fields to be focused on autopmatically
       if (autofocus) el.setAttribute("autofocus", autofocus);
+      //turns of focus on subsequent form fields
       autofocus = false;
       el.className = "flex start-justified";
       // set the element's default value to be what was passed into the schema

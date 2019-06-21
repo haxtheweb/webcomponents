@@ -86,6 +86,21 @@ class MonacoElement extends PolymerElement {
         type: String,
         reflectToAttribute: true,
         computed: "generateUUID()"
+      },
+      /**
+       * automatically set focus on the iframe
+       */
+      autofocus: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
+       * hide line numbers
+       */
+      hideLineNumbers: {
+        type: Boolean,
+        value: false
       }
     };
   }
@@ -159,6 +174,7 @@ class MonacoElement extends PolymerElement {
           language: '${this.language}',
           scrollBeyondLastLine: false,
           automaticLayout: true,
+          lineNumbers: '${!this.hideLineNumbers}',
           fontSize: ${this.fontSize},
           readOnly: ${this.readOnly},
           minimap: {
@@ -166,7 +182,6 @@ class MonacoElement extends PolymerElement {
           },
           autoIndent: true,
         });
-
         const model = this.editor.getModel();
         model.onDidChangeContent(() => {
           const value = model.getValue();
@@ -174,6 +189,7 @@ class MonacoElement extends PolymerElement {
         });
 
         this.ready();
+        if(${this.autofocus}) this.editor.focus();
       });
     }
 
@@ -261,6 +277,7 @@ class MonacoElement extends PolymerElement {
         }
       });
     }
+    if (this.autofocus) this.iframe.focus();
   }
 
   handleMessage(message) {
