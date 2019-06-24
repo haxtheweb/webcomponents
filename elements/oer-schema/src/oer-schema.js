@@ -105,7 +105,6 @@ class OerSchemaElement extends SchemaBehaviors(PolymerElement) {
           {
             slot: "",
             title: "Text",
-            description: "The text to schematize",
             inputMethod: "textfield",
             icon: "editor:title"
           }
@@ -114,14 +113,12 @@ class OerSchemaElement extends SchemaBehaviors(PolymerElement) {
           {
             slot: "",
             title: "Text",
-            description: "The text to schematize",
             inputMethod: "textfield",
             icon: "editor:title"
           },
           {
             property: "typeof",
             title: "Schema typeof",
-            description: "Schema typeof",
             inputMethod: "select",
             options: oerSchema.types
           },

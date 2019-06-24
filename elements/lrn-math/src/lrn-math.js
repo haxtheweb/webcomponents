@@ -216,7 +216,7 @@ class MathTex extends HTMLElement {
           {
             slot: "",
             title: "Math",
-            description: "Math",
+            description: "Enter equation as MathML",
             inputMethod: "code-editor",
             icon: "editor:format-quote"
           }

@@ -304,23 +304,14 @@ class EcoJsonSchemaObject extends mixinBehaviors(
             @apply --eco-json-schema-object-form;
             @apply --layout-vertical;
             @apply --layout-wrap;
-            --paper-input-suffix: {
-              --paper-button: {
-                padding: 0;
-                width: unset;
-                min-width: unset;
-              }
-            }
           }
-          #form ::slotted(.field-desc) {
-            margin-top: 0;
+          #form ::slotted(paper-input),
+          #form ::slotted(div[role="tooltip"]) {
+            color: var(--eco-json-form-color, unset);
+            font-family: var(--paper-font-caption_-_font-family, unset);
           }
-          #form ::slotted(paper-input) {
-            --paper-input-container-shared-input-style: {
-              border: none !important;
-              width: 100% !important;
-              background-color: transparent !important;
-            }
+          #form ::slotted(div[role="tooltip"]) {
+            font-size: 80%;
           }
           #form ::slotted(code-editor) {
             margin: 8px 0;
@@ -567,36 +558,9 @@ class EcoJsonSchemaObject extends mixinBehaviors(
         language: this.language,
         resources: this.resources
       });
-      if (property.description) {
-        var id = property.property + "-description",
-          info = document.createElement("paper-button"),
-          icon = document.createElement("iron-icon"),
-          desc = document.createElement("p");
-        desc.setAttribute("id", id);
-        desc.setAttribute("hidden", true);
-        desc.setAttribute("class", "field-desc");
-        desc.innerHTML = property.description;
-        icon.setAttribute("icon", "info");
-        info.setAttribute("class", "field-info");
-        info.setAttribute("controls", id);
-        info.appendChild(icon);
-        info.addEventListener("tap", e => {
-          console.log("tap", desc.getAttribute("hidden"));
-          if (desc.getAttribute("hidden")) {
-            desc.removeAttribute("hidden");
-          } else {
-            desc.setAttribute("hidden", "hidden");
-          }
-        });
-        el.setAttribute("aria-describedby", id);
-      }
       if (property.component.name === "paper-input") {
         el.style["background-color"] = "transparent";
         el.style["width"] = "100%";
-        if (property.description) {
-          info.setAttribute("slot", "suffix");
-          el.appendChild(info);
-        }
       }
       el.setAttribute("name", property.property);
       //allows the first form fields to be focused on autopmatically
@@ -624,7 +588,13 @@ class EcoJsonSchemaObject extends mixinBehaviors(
       if (typeof this.$ !== typeof undefined) {
         dom(this).appendChild(el);
         if (property.description) {
-          dom(this).appendChild(desc);
+          var id = "tip-" + property.property,
+            tip = document.createElement("div");
+          el.setAttribute("aria-describedby", id);
+          tip.setAttribute("id", id);
+          tip.setAttribute("role", "tooltip");
+          tip.innerHTML = property.description;
+          dom(this).appendChild(tip);
         }
       }
       // support for slot injection too!

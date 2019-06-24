@@ -130,7 +130,6 @@ class LrnVocab extends SchemaBehaviors(PolymerElement) {
           {
             property: "term",
             title: "Term",
-            description: "The word or words to make clickable for more detail.",
             inputMethod: "textfield",
             icon: "editor:title",
             required: true
@@ -140,7 +139,6 @@ class LrnVocab extends SchemaBehaviors(PolymerElement) {
           {
             property: "term",
             title: "Term",
-            description: "The word or words to make clickable for more detail.",
             inputMethod: "textfield",
             icon: "editor:title",
             required: true
@@ -148,7 +146,8 @@ class LrnVocab extends SchemaBehaviors(PolymerElement) {
           {
             slot: "",
             title: "Contents",
-            description: "Contents to display in the pop up.",
+            description:
+              "The definitition to display when the term is clicked.",
             inputMethod: "code-editor",
             required: true
           }
