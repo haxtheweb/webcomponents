@@ -35,6 +35,9 @@ class LrnsysCommentList extends PolymerElement {
         app-toolbar > *:not(:last-child) {
           margin-right: 10px;
         }
+        lrnsys-button {
+          font-size: 12px;
+        }
         .comment-button {
           min-width: 125px;
         }
@@ -90,7 +93,7 @@ class LrnsysCommentList extends PolymerElement {
       <app-toolbar>
         <lrnsys-button
           class="comment-button"
-          raised=""
+          raised
           on-click="handleTopReply"
           id="leavecomment"
           hover-class="blue white-text"
