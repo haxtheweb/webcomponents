@@ -8,6 +8,7 @@ import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nod
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
+import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
 /**
 `lrn-vocab`
 Vocabulary term with visual treatment and semantic meaning.

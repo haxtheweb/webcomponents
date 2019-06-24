@@ -1,4 +1,5 @@
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
 // forked from https://github.com/janmarthedal/math-tex
 const document = window.document,
   states = { start: 1, loading: 2, ready: 3, typesetting: 4, error: 5 };
