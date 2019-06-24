@@ -545,6 +545,10 @@ export class HAXWiring {
     this._getHaxJSONSchemaProperty = (settings, target) => {
       var props = {};
       for (var value in settings) {
+        if (settings[value].description !== typeof undefined) {
+          props[settings[value].property].description =
+            settings[value].description;
+        }
         if (settings.hasOwnProperty(value)) {
           if (typeof settings[value].property !== typeof undefined) {
             props[settings[value].property] = {

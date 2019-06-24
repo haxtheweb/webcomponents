@@ -398,10 +398,13 @@ class EcoJsonSchemaObject extends mixinBehaviors(
     this._schemaProperties = Object.keys(this.schema.properties || []).map(
       key => {
         var schema = ctx.schema.properties[key];
+        console.log("schema", schema);
         var property = {
           property: key,
           label: schema.title || key,
           schema: schema,
+          label: schema.title || key,
+          description: schema.description,
           component: schema.component || {}
         };
 
@@ -542,6 +545,7 @@ class EcoJsonSchemaObject extends mixinBehaviors(
   _buildForm() {
     let autofocus = this.autofocus;
     this._schemaProperties.forEach(property => {
+      let id = "field-" + property.property;
       // special case, can't come up with a better way to do this but monoco is very special case
       if (property.component.name === "code-editor") {
         property.schema.component.properties.editorValue =
@@ -559,6 +563,7 @@ class EcoJsonSchemaObject extends mixinBehaviors(
         el.style["background-color"] = "transparent";
         el.style["width"] = "100%";
       }
+      el.setAttribute("id", id);
       el.setAttribute("name", property.property);
       //allows the first form fields to be focused on autopmatically
       if (autofocus) el.setAttribute("autofocus", autofocus);
@@ -584,6 +589,13 @@ class EcoJsonSchemaObject extends mixinBehaviors(
       );
       if (typeof this.$ !== typeof undefined) {
         dom(this).appendChild(el);
+        console.log(property);
+        if (property.description) {
+          var tooltip = document.createElement("paper-tooltip");
+          tooltip.setAttribute("for", id);
+          tooltip.innerHTML = property.description;
+          dom(this).appendChild(tooltip);
+        }
       }
       // support for slot injection too!
       if (property.component.slot != "") {
