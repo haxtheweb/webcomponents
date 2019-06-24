@@ -63,7 +63,7 @@ class LrnsysDialog extends PolymerElement {
           icon$="[[icon]]"
           text$="[[text]]"
         >
-          <slot name="button" slot="button"></slot>
+          <slot name="button"></slot>
         </lrnsys-button-inner>
       </paper-button>
       <paper-tooltip for="dialogtrigger" animation-delay="0" hidden$="[[!alt]]"
@@ -221,6 +221,7 @@ class LrnsysDialog extends PolymerElement {
     }
     const evt = new CustomEvent("simple-modal-show", {
       bubbles: true,
+      composed: true,
       cancelable: true,
       detail: {
         title: this.header,
