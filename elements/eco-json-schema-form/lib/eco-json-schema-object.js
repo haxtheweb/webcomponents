@@ -398,7 +398,6 @@ class EcoJsonSchemaObject extends mixinBehaviors(
     this._schemaProperties = Object.keys(this.schema.properties || []).map(
       key => {
         var schema = ctx.schema.properties[key];
-        console.log("schema", schema);
         var property = {
           property: key,
           label: schema.title || key,
@@ -562,6 +561,16 @@ class EcoJsonSchemaObject extends mixinBehaviors(
       if (property.component.name === "paper-input") {
         el.style["background-color"] = "transparent";
         el.style["width"] = "100%";
+        if (property.description) {
+          var info = document.createElement("paper-button"),
+            icon = document.createElement("iron-icon");
+          info.setAttribute("slot", "suffix");
+          info.setAttribute("label", "info");
+          icon.setAttribute("icon", "info");
+          //desc.innerHTML = property.description;
+          info.appendChild(icon);
+          el.appendChild(info);
+        }
       }
       el.setAttribute("id", id);
       el.setAttribute("name", property.property);
@@ -589,13 +598,6 @@ class EcoJsonSchemaObject extends mixinBehaviors(
       );
       if (typeof this.$ !== typeof undefined) {
         dom(this).appendChild(el);
-        console.log(property);
-        if (property.description) {
-          var tooltip = document.createElement("paper-tooltip");
-          tooltip.setAttribute("for", id);
-          tooltip.innerHTML = property.description;
-          dom(this).appendChild(tooltip);
-        }
       }
       // support for slot injection too!
       if (property.component.slot != "") {
