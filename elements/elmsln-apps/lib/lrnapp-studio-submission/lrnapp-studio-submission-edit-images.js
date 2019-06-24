@@ -1,5 +1,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { SecureRequestXhr } from "@lrnwebcomponents/secure-request/secure-request.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "@polymer/iron-icon/iron-icon.js";

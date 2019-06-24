@@ -20,7 +20,7 @@ class LrnappStudioSubmissionEditImage extends PolymerElement {
         </style>
       </custom-style>
       <lrnapp-studio-submission-media-editoverlay
-        on-delete="_delete"
+        on-deleted="_delete"
         data-index\$="[[index]]"
         embedcode="{{embedcode}}"
       >

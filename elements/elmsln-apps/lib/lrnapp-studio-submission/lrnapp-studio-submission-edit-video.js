@@ -49,7 +49,7 @@ class LrnappStudioSubmissionEditVideo extends SecureRequestXhr(PolymerElement) {
       <dom-repeat items="[[videos]]" as="video">
         <template>
           <lrnapp-studio-submission-media-editoverlay
-            on-delete="_videoDelete"
+            on-deleted="_videoDelete"
             data-index\$="[[index]]"
           >
             <iframe
