@@ -304,6 +304,16 @@ class EcoJsonSchemaObject extends mixinBehaviors(
             @apply --eco-json-schema-object-form;
             @apply --layout-vertical;
             @apply --layout-wrap;
+            --paper-input-suffix: {
+              --paper-button: {
+                padding: 0;
+                width: unset;
+                min-width: unset;
+              }
+            }
+          }
+          #form ::slotted(.field-desc) {
+            margin-top: 0;
           }
           #form ::slotted(paper-input) {
             --paper-input-container-shared-input-style: {
@@ -544,7 +554,6 @@ class EcoJsonSchemaObject extends mixinBehaviors(
   _buildForm() {
     let autofocus = this.autofocus;
     this._schemaProperties.forEach(property => {
-      let id = "field-" + property.property;
       // special case, can't come up with a better way to do this but monoco is very special case
       if (property.component.name === "code-editor") {
         property.schema.component.properties.editorValue =
@@ -558,21 +567,37 @@ class EcoJsonSchemaObject extends mixinBehaviors(
         language: this.language,
         resources: this.resources
       });
+      if (property.description) {
+        var id = property.property + "-description",
+          info = document.createElement("paper-button"),
+          icon = document.createElement("iron-icon"),
+          desc = document.createElement("p");
+        desc.setAttribute("id", id);
+        desc.setAttribute("hidden", true);
+        desc.setAttribute("class", "field-desc");
+        desc.innerHTML = property.description;
+        icon.setAttribute("icon", "info");
+        info.setAttribute("class", "field-info");
+        info.setAttribute("controls", id);
+        info.appendChild(icon);
+        info.addEventListener("tap", e => {
+          console.log("tap", desc.getAttribute("hidden"));
+          if (desc.getAttribute("hidden")) {
+            desc.removeAttribute("hidden");
+          } else {
+            desc.setAttribute("hidden", "hidden");
+          }
+        });
+        el.setAttribute("aria-describedby", id);
+      }
       if (property.component.name === "paper-input") {
         el.style["background-color"] = "transparent";
         el.style["width"] = "100%";
         if (property.description) {
-          var info = document.createElement("paper-button"),
-            icon = document.createElement("iron-icon");
           info.setAttribute("slot", "suffix");
-          info.setAttribute("label", "info");
-          icon.setAttribute("icon", "info");
-          //desc.innerHTML = property.description;
-          info.appendChild(icon);
           el.appendChild(info);
         }
       }
-      el.setAttribute("id", id);
       el.setAttribute("name", property.property);
       //allows the first form fields to be focused on autopmatically
       if (autofocus) el.setAttribute("autofocus", autofocus);
@@ -598,6 +623,9 @@ class EcoJsonSchemaObject extends mixinBehaviors(
       );
       if (typeof this.$ !== typeof undefined) {
         dom(this).appendChild(el);
+        if (property.description) {
+          dom(this).appendChild(desc);
+        }
       }
       // support for slot injection too!
       if (property.component.slot != "") {

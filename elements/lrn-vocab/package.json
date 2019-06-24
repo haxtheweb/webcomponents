@@ -43,7 +43,6 @@
     "@lrnwebcomponents/hax-body-behaviors": "^2.1.0",
     "@lrnwebcomponents/schema-behaviors": "^2.1.0",
     "@lrnwebcomponents/simple-modal": "^2.1.0",
-    "@lrnwebcomponents/hax-iconset": "^2.1.0",
     "@polymer/paper-button": "^3.0.1",
     "@polymer/polymer": "^3.2.0"
   },

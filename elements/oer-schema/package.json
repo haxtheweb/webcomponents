@@ -42,7 +42,6 @@
   "dependencies": {
     "@lrnwebcomponents/hax-body-behaviors": "^2.1.0",
     "@lrnwebcomponents/schema-behaviors": "^2.1.0",
-    "@lrnwebcomponents/hax-iconset": "^2.1.0",
     "@polymer/polymer": "^3.2.0"
   },
   "devDependencies": {

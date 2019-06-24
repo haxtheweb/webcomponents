@@ -37,7 +37,6 @@
   "dependencies": {
     "@polymer/polymer":"^3.0.5",
     "@lrnwebcomponents/rich-text-editor": "^2.1.0",
-    "@lrnwebcomponents/hax-iconset": "^2.1.0",
     "@lrnwebcomponents/lrn-math": "^2.1.0",
     "@lrnwebcomponents/oer-schema": "^2.1.0",
     "@lrnwebcomponents/lrn-vocab": "^2.1.0"
