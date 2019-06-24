@@ -103,7 +103,7 @@ class OerSchemaElement extends SchemaBehaviors(PolymerElement) {
       settings: {
         quick: [
           {
-            property: "text",
+            slot: "",
             title: "Text",
             description: "The text to schematize",
             inputMethod: "textfield",
@@ -112,7 +112,7 @@ class OerSchemaElement extends SchemaBehaviors(PolymerElement) {
         ],
         configure: [
           {
-            property: "text",
+            slot: "",
             title: "Text",
             description: "The text to schematize",
             inputMethod: "textfield",
