@@ -299,16 +299,28 @@ class EcoJsonSchemaObject extends mixinBehaviors(
             height: auto;
           }
           #form {
+            color: var(--eco-json-form-color, unset);
             display: block;
             @apply --eco-json-schema-object-form;
             @apply --layout-vertical;
             @apply --layout-wrap;
           }
-          #form ::slotted(paper-input) {
-            --paper-input-container-shared-input-style: {
-              border: none !important;
-              width: 100% !important;
-              background-color: transparent !important;
+          #form ::slotted(paper-input),
+          #form ::slotted(div[role="tooltip"]) {
+            color: var(--eco-json-form-color, unset);
+            font-family: var(--paper-font-caption_-_font-family, unset);
+          }
+          #form ::slotted(div[role="tooltip"]) {
+            font-size: 80%;
+          }
+          #form ::slotted(code-editor) {
+            margin: 8px 0;
+            --code-editor-code: {
+              border: var(--eco-json-schema-code-border, 1px solid black);
+            }
+            --code-editor-label: {
+              color: var(--eco-json-form-color, unset);
+              font-family: var(--paper-font-caption_-_font-family, unset);
             }
           }
         </style>
@@ -362,6 +374,13 @@ class EcoJsonSchemaObject extends mixinBehaviors(
         notify: true
       },
       /**
+       * the name of the code-editor theme
+       */
+      codeTheme: {
+        type: String,
+        value: "vs-light-2"
+      },
+      /**
        * automatically set focus on the first field if that field has autofocus
        */
       autofocus: {
@@ -384,6 +403,8 @@ class EcoJsonSchemaObject extends mixinBehaviors(
           property: key,
           label: schema.title || key,
           schema: schema,
+          label: schema.title || key,
+          description: schema.description,
           component: schema.component || {}
         };
 
@@ -528,6 +549,7 @@ class EcoJsonSchemaObject extends mixinBehaviors(
       if (property.component.name === "code-editor") {
         property.schema.component.properties.editorValue =
           property.schema.value;
+        property.schema.component.properties.theme = this.codeTheme;
       }
       var el = this.create(property.component.name, {
         label: property.label,
@@ -541,7 +563,9 @@ class EcoJsonSchemaObject extends mixinBehaviors(
         el.style["width"] = "100%";
       }
       el.setAttribute("name", property.property);
+      //allows the first form fields to be focused on autopmatically
       if (autofocus) el.setAttribute("autofocus", autofocus);
+      //turns of focus on subsequent form fields
       autofocus = false;
       el.className = "flex start-justified";
       // set the element's default value to be what was passed into the schema
@@ -563,6 +587,15 @@ class EcoJsonSchemaObject extends mixinBehaviors(
       );
       if (typeof this.$ !== typeof undefined) {
         dom(this).appendChild(el);
+        if (property.description) {
+          var id = "tip-" + property.property,
+            tip = document.createElement("div");
+          el.setAttribute("aria-describedby", id);
+          tip.setAttribute("id", id);
+          tip.setAttribute("role", "tooltip");
+          tip.innerHTML = property.description;
+          dom(this).appendChild(tip);
+        }
       }
       // support for slot injection too!
       if (property.component.slot != "") {

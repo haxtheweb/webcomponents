@@ -36,17 +36,16 @@ class RichTextEditor extends PolymerElement {
   }
   /**
    * life cycle, element is afixed to the DOM
+   * @returns {void}
    */
   connectedCallback() {
     super.connectedCallback();
-    let style = document.createElement("style");
-    style.setAttribute("is", "custom-style");
-    style.setAttribute("include", "rich-text-editor-styles");
     if (!this.id) this.id = this._generateUUID();
-    document.head.append(style);
+    window.RichTextEditorStyleManager.requestAvailability();
   }
   /**
    * ready
+   * @returns {void}
    */
   ready() {
     super.ready();
@@ -54,34 +53,21 @@ class RichTextEditor extends PolymerElement {
   }
   /**
    * connects the mini-toolbar to a mini editor
+   * @returns {void}
    */
   getEditor() {
     window.RichTextEditorClipboard.requestAvailability();
     let root = this,
-      toolbar = "rich-text-editor-toolbar",
       id = this.toolbar ? "#" + this.toolbar : "",
-      type =
-        this.type === "full" || this.type === "mini" ? "-" + this.type : "",
-      both = document.querySelector(toolbar + type + id),
-      idOnly = document.querySelector(
-        toolbar +
-          id +
-          "," +
-          toolbar +
-          "-full" +
-          id +
-          "," +
-          toolbar +
-          "-mini" +
-          id
-      ),
-      typeOnly = document.querySelector(toolbar + type),
+      both = document.querySelector(this.type + id),
+      idOnly = id ? document.querySelector(id) : null,
+      typeOnly = document.querySelector(this.type),
       //try to match both id and type, if no match try id only, and then type only
       editor = both || idOnly || typeOnly;
     //if still no match, create a region of type
     if (!this.toolbar) this.toolbar = this._generateUUID();
     if (!editor || !editor.addEditableRegion) {
-      editor = document.createElement(toolbar + type);
+      editor = document.createElement(this.type);
       editor.id = this.toolbar;
       root.parentNode.appendChild(editor);
     }
@@ -89,9 +75,9 @@ class RichTextEditor extends PolymerElement {
   }
 
   /**
-   * Normalizes selection data.
+   * Normalizes selected range data.
    *
-   * @returns {object} the selection
+   * @returns {object} the selected range
    */
   _getRange() {
     let sel = window.getSelection();
@@ -104,6 +90,7 @@ class RichTextEditor extends PolymerElement {
 
   /**
    * Generate a UUID
+   * @returns {string} a unique id
    */
   _generateUUID() {
     let hex = Math.floor((1 + Math.random()) * 0x10000)

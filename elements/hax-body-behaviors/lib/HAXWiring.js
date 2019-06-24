@@ -717,6 +717,10 @@ export class HAXWiring {
                 };
                 break;
             }
+            if (settings[value].description !== typeof undefined) {
+              props[settings[value].property].description =
+                settings[value].description;
+            }
           } else if (typeof settings[value].attribute !== typeof undefined) {
             props[settings[value].attribute] = {
               title: settings[value].title,
@@ -860,6 +864,10 @@ export class HAXWiring {
                 };
                 break;
             }
+            if (settings[value].description !== typeof undefined) {
+              props[settings[value].attribute].description =
+                settings[value].description;
+            }
           } else {
             // @todo slot should support other editor types... maybe
             props[settings[value].slot] = {
@@ -902,6 +910,10 @@ export class HAXWiring {
             props[
               settings[value].slot
             ].component.properties.editorValue = slot.trim();
+            if (settings[value].description !== typeof undefined) {
+              props[settings[value].slot].description =
+                settings[value].description;
+            }
           }
         }
       }

@@ -1,13 +1,5 @@
 {
   /**
-   * Offset to compensate for the popover pointers.
-   * /
-  "fitToVisibleBounds": {
-    "type": "Boolean",
-    "value": true,
-    "readOnly": true
-  },
-  /**
    * Tthe margin styles to offset the pointer
    */
   "__pointerOffSetStyle": {

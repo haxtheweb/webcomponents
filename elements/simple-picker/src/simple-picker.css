@@ -2,7 +2,7 @@
   display: inline-flex;
   align-items: center;
   position: relative;
-  --simple-picker-color: black;
+  color: var(--simple-picker-color, black);
   font-size: var(--paper-input-container-label_-_font-size, var(--paper-font-subhead_-_font-size, inherit));
   max-height: calc(var(--simple-picker-option-size, 24px) + 4px);
   @apply --simple-picker;
@@ -61,6 +61,7 @@
   position: absolute;
   top: calc(var(--simple-picker-option-size, 24px) + 4px);
   padding: 0 1px;
+  z-index: 2;
   @apply --simple-picker-collapse;
 }
 

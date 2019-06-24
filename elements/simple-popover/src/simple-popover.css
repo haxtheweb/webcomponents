@@ -1,7 +1,4 @@
 :host {
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: stretch;
   --simple-popover-border-radius: 3px;
   --simple-popover-color: #222;
   --simple-popover-padding: 10px;
@@ -12,22 +9,28 @@
 :host([hidden]) {
   display: none;
 }
-:host([position="left"]) {
+:host > div {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: stretch;
+  z-index: 1;
+}
+:host([position="left"]) > div {
   justify-content: start;
   flex-direction: row;
 }
-:host([position="right"]) {
+:host([position="right"]) > div {
   justify-content: start;
   flex-direction: row-reverse;
 }
-:host([position="top"]) {
+:host([position="top"]) > div {
   flex-direction: column;
 }
-:host > * {
+:host > div > * {
   width: 100%;
 }
-:host([position="left"]) > *, 
-:host([position="right"]) > * {
+:host([position="left"]) > div > *, 
+:host([position="right"]) > div > * {
   width: unset;
 }
 :host #content {

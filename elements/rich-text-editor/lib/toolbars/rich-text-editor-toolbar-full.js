@@ -51,6 +51,7 @@ class RichTextEditorToolbarFull extends RichTextEditorToolbar {
   }
   /**
    * life cycle, element is ready
+   * @returns {void}
    */
   ready() {
     super.ready();
@@ -65,29 +66,34 @@ class RichTextEditorToolbarFull extends RichTextEditorToolbar {
   }
 
   /**
-   * Gets the updated selection.
+   * Gets the updated selected range.
+   *
+   * @param {object} editableElement the editable element
+   * @returns {void}
    */
   editTarget(editableElement) {
     super.editTarget(editableElement);
     let root = this;
-    root.__breadcrumbs.controls = editableElement.getAttribute("id");
-    editableElement.parentNode.insertBefore(
-      root.__breadcrumbs,
-      editableElement.nextSibling
-    );
-    if (!this.sticky) {
-      editableElement.classList.add("heightmax");
-    } else {
-      editableElement.classList.remove("heightmax");
+    if (editableElement) {
+      root.__breadcrumbs.controls = editableElement.getAttribute("id");
+      editableElement.parentNode.insertBefore(
+        root.__breadcrumbs,
+        editableElement.nextSibling
+      );
+      if (!this.sticky) {
+        editableElement.classList.add("heightmax");
+      } else {
+        editableElement.classList.remove("heightmax");
+      }
     }
-    console.log(this.sticky, editableElement.classList);
   }
   /**
-   * Gets the updated selection.
+   * Gets the updated selected range.
+   * @returns {void}
    */
   getUpdatedSelection() {
     super.getUpdatedSelection();
-    if (this.__breadcrumbs) this.__breadcrumbs.selection = this.selection;
+    if (this.__breadcrumbs) this.__breadcrumbs.range = this.range;
   }
 
   /**
@@ -97,19 +103,19 @@ class RichTextEditorToolbarFull extends RichTextEditorToolbar {
    * @returns {void}
    */
   _handleBreadcrumb(e) {
-    if (e.detail.target) this.selection.selectNode(e.detail.target);
+    if (e.detail.target) this.range.selectNode(e.detail.target);
     this.getUpdatedSelection();
   }
 
   /**
-   * Preserves the selection when a button is pressed
+   * Preserves the selected range when a button is pressed
    *
    * @param {object} the button
    * @returns {void}
    */
   _preserveSelection() {
     super._preserveSelection();
-    if (this.__breadcrumbs) this.__breadcrumbs.selection = temp;
+    if (this.__breadcrumbs) this.__breadcrumbs.range = temp;
   }
 }
 

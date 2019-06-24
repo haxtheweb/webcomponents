@@ -8,6 +8,7 @@ import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nod
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
+import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
 /**
 `lrn-vocab`
 Vocabulary term with visual treatment and semantic meaning.
@@ -29,6 +30,7 @@ class LrnVocab extends SchemaBehaviors(PolymerElement) {
         paper-button {
           text-transform: none;
           padding: 0;
+          min-width: unset;
           margin: 0;
           position: relative;
           top: 0px;
@@ -110,7 +112,7 @@ class LrnVocab extends SchemaBehaviors(PolymerElement) {
       gizmo: {
         title: "Vocab",
         description: "Vocabulary term",
-        icon: "image:details",
+        icon: "hax:vocab",
         color: "red",
         groups: ["Vocab"],
         handles: [
@@ -128,7 +130,6 @@ class LrnVocab extends SchemaBehaviors(PolymerElement) {
           {
             property: "term",
             title: "Term",
-            description: "The word or words to make clickable for more detail.",
             inputMethod: "textfield",
             icon: "editor:title",
             required: true
@@ -138,7 +139,6 @@ class LrnVocab extends SchemaBehaviors(PolymerElement) {
           {
             property: "term",
             title: "Term",
-            description: "The word or words to make clickable for more detail.",
             inputMethod: "textfield",
             icon: "editor:title",
             required: true
@@ -146,7 +146,8 @@ class LrnVocab extends SchemaBehaviors(PolymerElement) {
           {
             slot: "",
             title: "Contents",
-            description: "Contents to display in the pop up.",
+            description:
+              "The definitition to display when the term is clicked.",
             inputMethod: "code-editor",
             required: true
           }
