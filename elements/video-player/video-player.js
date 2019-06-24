@@ -73,6 +73,7 @@ class VideoPlayer extends MediaBehaviorsVideo(
             dark-transcript$="[[darkTranscript]]"
             disable-interactive$="[[disableInteractive]]"
             hide-timestamps$="[[hideTimestamps]]"
+            hide-transcript$="[[hideTiranscript]]"
             lang$="[[lang]]"
             media-type$="[[sourceType]]"
             preload$="[[preload]]"
@@ -367,12 +368,12 @@ class VideoPlayer extends MediaBehaviorsVideo(
   }
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       /**
        * Is the media an audio file only?
        */
       audioOnly: {
-        type: "Boolean",
+        type: Boolean,
         value: false
       },
       /**
@@ -384,7 +385,7 @@ class VideoPlayer extends MediaBehaviorsVideo(
        * Default is null.
        */
       accentColor: {
-        type: "String",
+        type: String,
         value: null,
         reflectToAttribute: true
       },
@@ -392,7 +393,7 @@ class VideoPlayer extends MediaBehaviorsVideo(
        * Cross origin flag for transcripts to load
        */
       crossorigin: {
-        type: "Boolean",
+        type: Boolean,
         value: false,
         reflectToAttribute: true
       },
@@ -400,7 +401,7 @@ class VideoPlayer extends MediaBehaviorsVideo(
        * Enables darker player.
        */
       dark: {
-        type: "Boolean",
+        type: Boolean,
         value: false,
         reflectToAttribute: true
       },
@@ -408,76 +409,83 @@ class VideoPlayer extends MediaBehaviorsVideo(
        * Use dark theme on transcript? Default is false, even when player is dark.
        */
       darkTranscript: {
-        type: "Boolean",
+        type: Boolean,
         value: false
       },
       /**
        * disable interactive mode that makes the transcript clickable
        */
       disableInteractive: {
-        type: "Boolean",
+        type: Boolean,
         value: false
       },
       /**
        * The height of the media player for non-a11y-media.
        */
       height: {
-        type: "String",
+        type: String,
         value: null
       },
       /**
        * show cue's start and end time
        */
       hideTimestamps: {
-        type: "Boolean",
+        type: Boolean,
+        value: false
+      },
+      /**
+       * hide the transcript by default
+       */
+      hideTranscript: {
+        type: Boolean,
         value: false
       },
       /**
        * Computed if this should be in an iframe or not.
        */
       iframed: {
-        type: "Boolean",
+        type: Boolean,
         computed: "_computeIframed(sourceData, sandboxed)"
       },
       /**
        * Computed if this should be in a11y-media-player.
        */
       isA11yMedia: {
-        type: "Boolean",
+        type: Boolean,
         computed: "_computeA11yMedia(sourceType, sandboxed)"
       },
       /**
        * The type of source, i.e. "local", "vimeo", "youtube", etc.
        */
       isYoutube: {
-        type: "Boolean",
+        type: Boolean,
         computed: "_computeYoutube(sourceType)"
       },
       /**
        * The language of the media
        */
       lang: {
-        type: "String",
+        type: String,
         value: "en"
       },
       /**
        * Simple caption for the video
        */
       mediaTitle: {
-        type: "String"
+        type: String
       },
       /**
        * What to preload for a11y-media-player: auto, metadata (default), or none.
        */
       preload: {
-        type: "String",
+        type: String,
         value: "metadata"
       },
       /* *
      * Responsive video, calculated from not-responsive.
      * /
     "responsive": {
-      "type": "Boolean",
+      "type": Boolean,
       "reflectToAttribute": true,
       "value": true,
     },*/
@@ -485,14 +493,14 @@ class VideoPlayer extends MediaBehaviorsVideo(
        * Compute if this is a sandboxed system or not
        */
       sandboxed: {
-        type: "Boolean",
+        type: Boolean,
         computed: "_computeSandboxed(sourceData)"
       },
       /**
        * Source of the video
        */
       source: {
-        type: "String",
+        type: String,
         value: null,
         reflectToAttribute: true
       },
@@ -500,21 +508,21 @@ class VideoPlayer extends MediaBehaviorsVideo(
        * Source of the video
        */
       sources: {
-        type: "Array",
+        type: Array,
         value: []
       },
       /**
        * List of source objects
        */
       sourceData: {
-        type: "Array",
+        type: Array,
         computed: "_getSourceData(source,sources,trackData)"
       },
       /**
        * The type of source, i.e. "local", "vimeo", "youtube", etc.
        */
       sourceType: {
-        type: "String",
+        type: String,
         computed: "_computeSourceType(sourceData)"
       },
       /**
@@ -523,7 +531,7 @@ class VideoPlayer extends MediaBehaviorsVideo(
        * Default is "top-right". "None" disables stickiness.
        */
       stickyCorner: {
-        type: "String",
+        type: String,
         value: "top-right",
         reflectToAttribute: true
       },
@@ -531,7 +539,7 @@ class VideoPlayer extends MediaBehaviorsVideo(
        * The url for a single subtitle track
        */
       track: {
-        type: "String",
+        type: String,
         value: null
       },
       /**
@@ -544,7 +552,7 @@ class VideoPlayer extends MediaBehaviorsVideo(
        * }]
        */
       tracks: {
-        type: "Array",
+        type: Array,
         value: []
       },
       /**
@@ -557,14 +565,14 @@ class VideoPlayer extends MediaBehaviorsVideo(
        * }]
        */
       trackData: {
-        type: "Array",
+        type: Array,
         computed: "_getTrackData(track,tracks)"
       },
       /**
        * Source of optional thumbnail image
        */
       thumbnailSrc: {
-        type: "String",
+        type: String,
         value: null,
         reflectToAttribute: true
       },
@@ -572,7 +580,7 @@ class VideoPlayer extends MediaBehaviorsVideo(
      * Calculate vimeo color based on accent color.
      * /
     "vimeoColor": {
-      "type": "String",
+      "type": String,
       "computed": getVimeoColor(dark,accentColor),
     }, 
     */
@@ -580,17 +588,21 @@ class VideoPlayer extends MediaBehaviorsVideo(
        * The width of the media player for non-a11y-media.
        */
       width: {
-        type: "String",
+        type: String,
         value: null
       },
       /**
        * The type of source, i.e. "local", "vimeo", "youtube", etc.
        */
       youtubeId: {
-        type: "String",
+        type: String,
         computed: "_computeYoutubeId(source,sourceType)"
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
   constructor() {
     super();

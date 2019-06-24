@@ -64,6 +64,13 @@
     "value": false
   },
   /**
+   * hide the transcript by default
+   */
+  "hideTranscript": {
+    "type": "Boolean",
+    "value": false
+  },
+  /**
    * Computed if this should be in an iframe or not.
    */
   "iframed": {
