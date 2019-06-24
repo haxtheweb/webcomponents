@@ -701,6 +701,15 @@ class LrnappStudioKanban extends PolymerElement {
   _handleProjectResponse(event) {
     this.$.loading.hidden = true;
     this._setToggle(true);
+    if (this.activeAssignment) {
+      setTimeout(() => {
+        var parts = this.activeAssignment.split("-");
+        this.set("activeAssignmentNode", {});
+        this.activeAssignmentNode = this.projectResponse.data.projects[
+          "project-" + parts[1]
+        ].relationships.assignments["assignment-" + parts[2]];
+      }, 100);
+    }
   }
 
   /**
@@ -717,7 +726,16 @@ class LrnappStudioKanban extends PolymerElement {
     if (this.backendResponse.status == 200) {
       this.$.toast.text = "Updated successfully";
       this.$.toast.toggle();
+      // this will force a repaint of the UI pieces on reload
+      this.set("projectResponse", {});
       this.$.projectbackend.generateRequest();
+      setTimeout(() => {
+        var parts = this.activeAssignment.split("-");
+        this.set("activeAssignmentNode", {});
+        this.activeAssignmentNode = this.projectResponse.data.projects[
+          "project-" + parts[1]
+        ].relationships.assignments["assignment-" + parts[2]];
+      }, 500);
     } else {
       // this would imply an error
       this.$.loading.hidden = true;

@@ -21,7 +21,8 @@ class LrnappStudioSubmissionEditVideo extends SecureRequestXhr(PolymerElement) {
           align-items: stretch;
         }
 
-        :host * {
+        lrnapp-studio-submission-media-editoverlay,
+        lrnapp-studio-submission-edit-add-asset {
           background: lightgray;
           display: flex;
           align-items: center;
@@ -99,7 +100,6 @@ class LrnappStudioSubmissionEditVideo extends SecureRequestXhr(PolymerElement) {
     return {
       videos: {
         type: Array,
-        value: [],
         notify: true
       },
       selectedPage: {
