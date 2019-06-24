@@ -53,17 +53,20 @@ class CodeEditor extends SchemaBehaviors(PolymerElement) {
           float: right;
           height: 40px;
         }
-        h3 {
-          color: var(--code-pen-title-color, #222222);
+        label {
+          @apply --code-editor-label;
         }
         #codeeditor {
           height: 100%;
           display: flex;
+          @apply --code-editor-code;
         }
       </style>
-      <h3 hidden$="[[!title]]">[[title]]</h3>
+      <label for="codeeditor" hidden$="[[!title]]">[[title]]</label>
       <monaco-element
         id="codeeditor"
+        autofocus$="[[autofocus]]"
+        hide-line-numbers$="[[hideLineNumbers]]"
         lib-path="[[__libPath]]"
         language="[[language]]"
         theme="[[theme]]"
@@ -155,6 +158,21 @@ class CodeEditor extends SchemaBehaviors(PolymerElement) {
       fontSize: {
         type: Number,
         value: 16
+      },
+      /**
+       * automatically set focus on the editor
+       */
+      autofocus: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
+       * hide the line numbers
+       */
+      hideLineNumbers: {
+        type: Boolean,
+        value: false
       }
     };
     if (super.properties) {

@@ -22,9 +22,6 @@ class SimplePopover extends AbsolutePositionBehavior {
     return html`
       <style>
         :host {
-          display: flex;
-          flex-direction: column-reverse;
-          justify-content: stretch;
           --simple-popover-border-radius: 3px;
           --simple-popover-color: #222;
           --simple-popover-padding: 10px;
@@ -35,22 +32,28 @@ class SimplePopover extends AbsolutePositionBehavior {
         :host([hidden]) {
           display: none;
         }
-        :host([position="left"]) {
+        :host > div {
+          display: flex;
+          flex-direction: column-reverse;
+          justify-content: stretch;
+          z-index: 1;
+        }
+        :host([position="left"]) > div {
           justify-content: start;
           flex-direction: row;
         }
-        :host([position="right"]) {
+        :host([position="right"]) > div {
           justify-content: start;
           flex-direction: row-reverse;
         }
-        :host([position="top"]) {
+        :host([position="top"]) > div {
           flex-direction: column;
         }
-        :host > * {
+        :host > div > * {
           width: 100%;
         }
-        :host([position="left"]) > *,
-        :host([position="right"]) > * {
+        :host([position="left"]) > div > *,
+        :host([position="right"]) > div > * {
           width: unset;
         }
         :host #content {
@@ -98,11 +101,13 @@ class SimplePopover extends AbsolutePositionBehavior {
           left: -5px;
         }
       </style>
-      <div id="content" role="alertdialog">
-        <slot></slot>
-      </div>
-      <div id="pointer-outer">
-        <div id="pointer" style$="[[__pointerOffSetStyle]]"></div>
+      <div>
+        <div id="content" role="alertdialog">
+          <slot></slot>
+        </div>
+        <div id="pointer-outer">
+          <div id="pointer" style$="[[__pointerOffSetStyle]]"></div>
+        </div>
       </div>
     `;
   }
@@ -149,16 +154,8 @@ class SimplePopover extends AbsolutePositionBehavior {
   static get properties() {
     return {
       /**
-   * Offset to compensate for the popover pointers.
-   * /
-  "fitToVisibleBounds": {
-    "type": "Boolean",
-    "value": true,
-    "readOnly": true
-  },
-  /**
-   * Tthe margin styles to offset the pointer
-   */
+       * Tthe margin styles to offset the pointer
+       */
       __pointerOffSetStyle: {
         type: "Object",
         computed: "_getMargins(__positions)"

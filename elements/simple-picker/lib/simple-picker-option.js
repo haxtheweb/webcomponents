@@ -28,11 +28,23 @@ class SimplePickerOption extends PolymerElement {
           display: flex;
           align-items: center;
           justify-content: space-between;
+          color: var(--simple-picker-color);
+        }
+        :host([hidden]) {
+          display: none;
         }
         :host .label {
           padding: 2px 10px;
           line-height: 100%;
           @apply --simple-picker-option-label;
+        }
+
+        :host iron-icon {
+          width: var(--simple-picker-option-size, 24px);
+          min-height: var(--simple-picker-option-size, 24px);
+          min-width: var(--simple-picker-option-size, 24px);
+          line-height: var(--simple-picker-option-size, 24px);
+          @apply --simple-picker-icon;
         }
       </style>
       <iron-icon
@@ -40,7 +52,7 @@ class SimplePickerOption extends PolymerElement {
         hidden$="[[_hideIcon(icon)]]"
         icon$="[[icon]]"
       ></iron-icon>
-      <div id="title" class$="[[_getSrOnly(hideOptionLabels)]]">[[title]]</div>
+      <div id="label" class$="[[_getSrOnly(hideOptionLabels)]]">[[label]]</div>
     `;
   }
 
@@ -58,13 +70,22 @@ class SimplePickerOption extends PolymerElement {
       },
 
       /**
-       * Optional. If option is an iron icon, the iconset:name of the icon
+       * The style of the option. (Required for accessibility.)
        */
-      icon: {
-        name: "icon",
-        type: "String",
-        value: null,
-        reflectToAttribute: false
+      data: {
+        name: "data",
+        type: "Object",
+        value: null
+      },
+
+      /**
+       * If the option is hidden
+       */
+      hidden: {
+        name: "hidden",
+        type: "Boolean",
+        value: false,
+        reflectToAttribute: true
       },
 
       /**
@@ -79,6 +100,16 @@ class SimplePickerOption extends PolymerElement {
       },
 
       /**
+       * Optional. If option is an iron icon, the iconset:name of the icon
+       */
+      icon: {
+        name: "icon",
+        type: "String",
+        value: null,
+        reflectToAttribute: false
+      },
+
+      /**
        * The id of the option
        */
       id: {
@@ -89,6 +120,17 @@ class SimplePickerOption extends PolymerElement {
       },
 
       /**
+       * The text of the option. (Required for accessibility.)
+       */
+      label: {
+        name: "label",
+        type: "String",
+        value: null,
+        reflectToAttribute: true,
+        observer: "_updateLabel"
+      },
+
+      /**
        * Is the option selected?
        */
       selected: {
@@ -96,26 +138,6 @@ class SimplePickerOption extends PolymerElement {
         type: "Boolean",
         value: false,
         reflectToAttribute: true
-      },
-
-      /**
-       * The style of the option. (Required for accessibility.)
-       */
-      data: {
-        name: "data",
-        type: "Object",
-        value: null
-      },
-
-      /**
-       * The text of the option. (Required for accessibility.)
-       */
-      title: {
-        name: "title",
-        type: "String",
-        value: null,
-        reflectToAttribute: true,
-        observer: "_updateTitle"
       },
 
       /**
@@ -151,7 +173,7 @@ class SimplePickerOption extends PolymerElement {
   /**
    * If the option is not an iron-icon, hide the iron-icon.
    *
-   * @param {string} the icon property
+   * @param {string} icon the icon property
    * @returns {boolean} whether or not the iron iron should be hidden
    */
   _hideIcon(icon) {
@@ -160,6 +182,7 @@ class SimplePickerOption extends PolymerElement {
 
   /**
    * On keyboard focus, fires an event to the picker so that active descendant can be set.
+   * @returns {void}
    */
   _handleFocus() {
     this.dispatchEvent(new CustomEvent("option-focus", { detail: this }));
@@ -167,6 +190,7 @@ class SimplePickerOption extends PolymerElement {
 
   /**
    * On mouse hover, fires an event to the picker so that active descendant can be set.
+   * @returns {void}
    */
   _handleHover() {
     this.dispatchEvent(new CustomEvent("option-focus", { detail: this }));
@@ -184,23 +208,25 @@ class SimplePickerOption extends PolymerElement {
 
   /**
    * updates the title
+   * @returns {void}
    */
-  _updateTitle() {
-    let title = document.createElement("span");
+  _updateLabel() {
+    let label = document.createElement("span");
     if (this.titleAsHtml !== false) {
-      title.innerHTML = this.title;
-      this.$.title.innerHTML = "";
-      this.$.title.appendChild(title);
+      label.innerHTML = this.label;
+      this.$.label.innerHTML = "";
+      this.$.label.appendChild(label);
     }
   }
 
   /**
    * Set event listeners
+   * @returns {void}
    */
   ready() {
     super.ready();
     let root = this;
-    this._updateTitle();
+    this._updateLabel();
     this.addEventListener("focus", function(e) {
       root._handleFocus();
     });
@@ -210,6 +236,7 @@ class SimplePickerOption extends PolymerElement {
   }
   /**
    * life cycle, element is afixed to the DOM
+   * @returns {void}
    */
   connectedCallback() {
     super.connectedCallback();

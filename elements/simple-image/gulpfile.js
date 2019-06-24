@@ -33,10 +33,12 @@ gulp.task("merge", () => {
     return ${HAXProps};
   }`;
           }
-          let props = "{}";
-          props = fs.readFileSync(
+          let rawprops = "{}";
+          rawprops = fs.readFileSync(
             path.join("./", packageJson.wcfactory.files.properties)
           );
+          let props = `${rawprops}`;
+          props = props.replace(/\"type\": \"(\w+)\"/g, '"type": $1');
           let cssResult = "<style>";
           if (
             packageJson.wcfactory.useSass &&

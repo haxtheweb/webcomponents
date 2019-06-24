@@ -1,4 +1,5 @@
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
 // forked from https://github.com/janmarthedal/math-tex
 const document = window.document,
   states = { start: 1, loading: 2, ready: 3, typesetting: 4, error: 5 };
@@ -192,7 +193,7 @@ class MathTex extends HTMLElement {
       gizmo: {
         title: "Math",
         description: "Present math in a nice looking way.",
-        icon: "places:all-inclusive",
+        icon: "hax:pi",
         color: "grey",
         groups: ["Content"],
         handles: [
@@ -215,7 +216,7 @@ class MathTex extends HTMLElement {
           {
             slot: "",
             title: "Math",
-            description: "Math",
+            description: "Enter equation as MathML",
             inputMethod: "code-editor",
             icon: "editor:format-quote"
           }
@@ -223,6 +224,16 @@ class MathTex extends HTMLElement {
         advanced: []
       }
     };
+  }
+  /**
+   * forces a refresh to prevent dom reattachment issue
+   */
+  refresh() {
+    let root = this;
+    let clone = document.createElement("lrn-math");
+    root.parentNode.insertBefore(clone, root);
+    clone.innerHTML = this.innerHTML;
+    this.remove();
   }
 
   disconnectedCallback() {
@@ -234,3 +245,4 @@ class MathTex extends HTMLElement {
 }
 
 window.customElements.define(MathTex.tag, MathTex);
+export { MathTex };

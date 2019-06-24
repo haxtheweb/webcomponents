@@ -53,6 +53,7 @@ class RichTextEditorToolbar extends PolymerElement {
         :host #toolbar {
           display: flex;
           opacity: 1;
+          z-index: 1;
           margin: 0;
           align-items: stretch;
           flex-wrap: wrap;
@@ -198,10 +199,10 @@ class RichTextEditorToolbar extends PolymerElement {
             label: "Basic Inline Operations",
             type: "button-group",
             buttons: [
-              {
-                label: "Heading",
+              /*{
+                label: "Format",
                 type: "rich-text-editor-heading-picker"
-              },
+              },*/
               {
                 command: "bold",
                 icon: "editor:format-bold",
@@ -229,14 +230,8 @@ class RichTextEditorToolbar extends PolymerElement {
             type: "button-group",
             buttons: [
               {
-                command: "link",
                 icon: "link",
                 label: "Link",
-                prompt: "href",
-                toggledCommand: "unlink",
-                toggledIcon: "mdextra:unlink",
-                toggledLabel: "Unink",
-                toggles: true,
                 type: "rich-text-editor-link"
               }
             ]
@@ -396,7 +391,7 @@ class RichTextEditorToolbar extends PolymerElement {
         reflectToAttribute: true
       },
       /**
-       * The current text selection.
+       * The current text selected range.
        */
       savedSelection: {
         name: "savedSelection",
@@ -404,13 +399,13 @@ class RichTextEditorToolbar extends PolymerElement {
         value: null
       },
       /**
-       * The current text selection, which is actually a range.
+       * The current text selected range, which is actually a range.
        */
-      selection: {
-        name: "selection",
+      range: {
+        name: "range",
         type: Object,
         value: null,
-        observer: "_selectionChange"
+        observer: "_rangeChange"
       },
       /**
        * Should the toolbar stick to the top so that it is always visible?
@@ -421,6 +416,11 @@ class RichTextEditorToolbar extends PolymerElement {
         value: false,
         reflectToAttribute: true,
         observer: "_stickyChanged"
+      },
+      __inlineWidgets: {
+        name: "__inlineWidgets",
+        type: Array,
+        value: []
       }
     };
   }
@@ -433,6 +433,7 @@ class RichTextEditorToolbar extends PolymerElement {
   }
   /**
    * life cycle, element is afixed to the DOM
+   * @returns {void}
    */
   connectedCallback() {
     super.connectedCallback();
@@ -452,8 +453,10 @@ class RichTextEditorToolbar extends PolymerElement {
 
   /**
    * life cycle, element is disconnected
+   * @returns {void}
    */
   disconnectedCallback() {
+    super.disconnectedCallback();
     let root = this;
     //unbind the the toolbar to the rich-text-editor-selection
     root.dispatchEvent(
@@ -473,6 +476,7 @@ class RichTextEditorToolbar extends PolymerElement {
    * adds an editor
    *
    * @param {object} an HTML object that can be edited
+   * @returns {void}
    */
   addEditableRegion(editor) {
     let root = this;
@@ -488,15 +492,12 @@ class RichTextEditorToolbar extends PolymerElement {
         !e.relatedTarget.startsWith === "rich-text-editor"
       )
         root.editTarget(null);
-      //root.getUpdatedSelection();
     });
-    /*editor.addEventListener("mouseout", e => {
-      root.getUpdatedSelection();
-    });*/
   }
 
   /**
    * cancels edits to the active editor
+   * @returns {void}
    */
   cancel() {
     this.editor.innerHTML = this.canceled;
@@ -506,6 +507,7 @@ class RichTextEditorToolbar extends PolymerElement {
    * makes a editor editable
    *
    * @param {object} an HTML object that can be edited
+   * @returns {void}
    */
   editTarget(editor) {
     let root = this,
@@ -538,24 +540,29 @@ class RichTextEditorToolbar extends PolymerElement {
       } else {
         root.controls = null;
       }
+      root.buttons.forEach(button => {
+        button.controls = root.controls;
+      });
     }
   }
 
   /**
-   * Gets the updated selection.
+   * Gets the updated selected range.
+   * @returns {void}
    */
-  _selectionChange() {
+  _rangeChange() {
     let root = this;
     root.buttons.forEach(button => {
-      button.selection = null;
-      button.selection = root.selection;
+      button.range = null;
+      button.range = root.range;
     });
   }
 
   /**
    * make an new editable element
    *
-   * @param {object} an HTML object that can be edited
+   * @param {object} editor an HTML object that can be edited
+   * @returns {void}
    */
   makeEditableRegion(editor) {
     let root = this,
@@ -568,7 +575,8 @@ class RichTextEditorToolbar extends PolymerElement {
   /**
    * removes an editor
    *
-   * @param {object} an HTML object that can be edited
+   * @param {object} editor an HTML object that can be edited
+   * @returns {void}
    */
   removeEditableRegion(editor) {
     let root = this;
@@ -591,12 +599,14 @@ class RichTextEditorToolbar extends PolymerElement {
   /**
    * Adds a button to the toolbar
    *
-   * @param {object} the child object in the config object
-   * @param {object} the parent object in the config object
+   * @param {object} child the child object in the config object
+   * @param {object} parent the parent object in the config object
+   * @returns {object} the button
    */
   _addButton(child, parent) {
     let root = this,
       button = document.createElement(child.type);
+
     for (var key in child) {
       button[key] = child[key];
     }
@@ -604,6 +614,7 @@ class RichTextEditorToolbar extends PolymerElement {
     button.addEventListener("deselect", e => {
       if (root.range && root.range.collapse) root.range.collapse(false);
     });
+    if (button.inlineWidget) root.push("__inlineWidgets", button.tag);
     parent.appendChild(button);
     return button;
   }
@@ -611,8 +622,8 @@ class RichTextEditorToolbar extends PolymerElement {
   /**
    * Gets the groups array for the dom-repeat.
    *
-   * @param {object} the toolbar buttons config object
-   * @param {array} an array the buttons grouped by size
+   * @param {object} config the toolbar buttons config object
+   * @returns {array} the buttons array
    */
   _getButtons(config) {
     let root = this,
@@ -645,7 +656,11 @@ class RichTextEditorToolbar extends PolymerElement {
   }
 
   /**
-   * updates breadcrumb sticky
+   * updates breadcrumb sticky when sticky property changes
+   *
+   * @param {boolean} newVal the new value
+   * @param {boolean} oldVal the old value
+   * @returns {void}
    */
   _stickyChanged(newVal, oldVal) {
     if (this.__breadcrumbs) this.__breadcrumbs.sticky = this.sticky;
@@ -653,7 +668,7 @@ class RichTextEditorToolbar extends PolymerElement {
 
   /**
    * Toggles collapsed mode when `rich-text-editor-more-button` is tapped
-   * @param {object} e the `rich-text-editor-more-button` tap event
+   * @param {event} e the `rich-text-editor-more-button` tap event
    * @returns {void}
    */
   _toggleMore(e) {

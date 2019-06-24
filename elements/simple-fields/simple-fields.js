@@ -49,6 +49,7 @@ class SimpleFields extends MutableData(PolymerElement) {
         }
         eco-json-schema-object {
           color: var(--hax-text-color);
+          --eco-json-form-color: var(--hax-text-color);
           --eco-json-schema-object-form : {
             -ms-flex: unset;
             -webkit-flex: unset;
@@ -64,6 +65,7 @@ class SimpleFields extends MutableData(PolymerElement) {
       <eco-json-schema-object
         id="schemaobject"
         autofocus$="[[autofocus]]"
+        hide-line-numbers$="[[hideLineNumbers]]"
         on-form-changed="_formChanged"
         schema="[[__validatedSchema]]"
         value="{{value}}"
@@ -111,19 +113,26 @@ class SimpleFields extends MutableData(PolymerElement) {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       /**
        * automatically set focus on the first field if that field has autofocus
        */
       autofocus: {
-        type: "Boolean",
+        type: Boolean,
+        value: false
+      },
+      /**
+       * hide code-editor line numbers
+       */
+      hideLineNumbers: {
+        type: Boolean,
         value: false
       },
       /**
        * Fields to conver toJSON Schema.
        */
       fields: {
-        type: "Array",
+        type: Array,
         value: [],
         observer: "_fieldsChanged"
       },
@@ -131,7 +140,7 @@ class SimpleFields extends MutableData(PolymerElement) {
        * Returned value from the form input.
        */
       value: {
-        type: "Object",
+        type: Object,
         notify: true,
         value: {},
         reflectToAttribute: true,
@@ -141,12 +150,16 @@ class SimpleFields extends MutableData(PolymerElement) {
        * Fields to conver to JSON Schema.
        */
       __validatedSchema: {
-        type: "Array",
+        type: Array,
         value: {
           properties: {}
         }
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
 
   /**

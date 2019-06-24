@@ -136,7 +136,8 @@ class IconsetDemo extends PolymerElement {
   ready() {
     super.ready();
     const iconSets = new IronMeta({ type: "iconset" });
-    let temp = [];
+    let temp = [],
+      root = this;
 
     // need to access iconset imperatively now
     if (
@@ -168,6 +169,7 @@ class IconsetDemo extends PolymerElement {
    * @returns {boolean} whether or n ot to hide the iconset
    */
   _hideIconset(name) {
+    console.log("_hideIconset", name, this.includeSets, this.excludeSets);
     let isets = this.includeSets !== null ? this.includeSets.split(/ /) : [],
       included = isets.length === 0 || isets.includes(name),
       esets = this.excludeSets !== null ? this.excludeSets.split(/ /) : [],

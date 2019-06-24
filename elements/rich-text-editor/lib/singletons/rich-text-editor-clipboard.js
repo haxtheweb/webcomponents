@@ -35,7 +35,9 @@ class RichTextEditorClipboard extends PolymerElement {
   static get tag() {
     return "rich-text-editor-clipboard";
   }
-
+  /**
+   * component is ready
+   */
   ready() {
     super.ready();
     let root = this;
@@ -59,30 +61,30 @@ class RichTextEditorClipboard extends PolymerElement {
     this.pasteToClipboard(this.getRange());
   }
   handleCutButton(e) {
-    this.copyToClipboard(e.detail.selection, true);
+    this.copyToClipboard(e.detail.range, true);
   }
   handleCopyButton(e) {
-    this.copyToClipboard(e.detail.selection);
+    this.copyToClipboard(e.detail.range);
   }
   handlePasteButton(e) {
-    this.pasteToClipboard(e.detail.selection);
+    this.pasteToClipboard(e.detail.range);
   }
-  copyToClipboard(selection, cut = false) {
+  copyToClipboard(range, cut = false) {
     this.$.clipboard.innerHTML = "";
-    if (selection) this.$.clipboard.appendChild(selection.cloneContents());
-    if (cut && selection.extractContents) selection.extractContents();
+    if (range) this.$.clipboard.appendChild(range.cloneContents());
+    if (cut && range.extractContents) range.extractContents();
   }
-  pasteToClipboard(selection) {
+  pasteToClipboard(range) {
     let div = document.createElement("div"),
-      parent = selection.commonAncestorContainer.parentNode,
+      parent = range.commonAncestorContainer.parentNode,
       closest = parent.closest(
         "[contenteditable=true]:not([disabled]),input:not([disabled]),textarea:not([disabled])"
       );
     if (closest) {
       div.innerHTML = this.$.clipboard.innerHTML;
-      if (selection && selection.extractContents) {
-        selection.extractContents();
-        selection.insertNode(div);
+      if (range && range.extractContents) {
+        range.extractContents();
+        range.insertNode(div);
         while (div.firstChild) {
           div.parentNode.insertBefore(div.firstChild, div);
         }
@@ -92,9 +94,8 @@ class RichTextEditorClipboard extends PolymerElement {
   }
 
   /**
-   * Normalizes selection data.
-   *
-   * @returns {object} the selection
+   * Normalizes selected range data.
+   * @returns {object} the selected range
    */
   getRange() {
     let sel = window.getSelection();
@@ -121,7 +122,7 @@ window.RichTextEditorClipboard.requestAvailability = function() {
     window.RichTextEditorClipboard.instance = document.createElement(
       "rich-text-editor-clipboard"
     );
+    document.body.appendChild(window.RichTextEditorClipboard.instance);
   }
-  document.body.appendChild(window.RichTextEditorClipboard.instance);
   return window.RichTextEditorClipboard.instance;
 };

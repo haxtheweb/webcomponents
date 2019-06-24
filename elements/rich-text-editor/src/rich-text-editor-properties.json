@@ -24,6 +24,6 @@
   "type": {
     "name": "type",
     "type": "String",
-    "value": ""
+    "value": "rich-text-editor-toolbar"
   }
 }

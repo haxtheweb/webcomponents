@@ -21,10 +21,3 @@
   display: block;
   @apply --rich-text-editor-content-placeholder;
 }
-span {
-  background-color: blue;
-}
-.rich-text-editor-selection {
-  background-color: var(--rich-text-editor-selection-bg);
-  @apply --rich-text-editor-content-selection;
-}
