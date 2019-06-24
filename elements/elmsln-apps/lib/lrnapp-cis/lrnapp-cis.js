@@ -11,6 +11,7 @@ import "@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/iron-pages/iron-pages.js";
+import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/app-route/app-location.js";
 import "@polymer/app-route/app-route.js";
 import "@polymer/paper-button/paper-button.js";
@@ -36,6 +37,7 @@ import "./lrnapp-cis-course-card.js";
  -
 
 */
+
 class LrnappCis extends PolymerElement {
   static get template() {
     return html`
@@ -55,6 +57,9 @@ class LrnappCis extends PolymerElement {
           height: 100vh;
           position: absolute;
           background-color: white;
+        }
+        #dialog {
+          width: 80vw;
         }
         iron-selector {
           line-height: 1em;
@@ -265,142 +270,145 @@ class LrnappCis extends PolymerElement {
         query-params="{{queryParams}}"
       >
       </app-route>
-      <simple-modal-template id="dialog" title="Course details">
-        <div class="dialog-header" slot="header">
-          <lrndesign-course-banner
-            image="[[activeCourse.attributes.image]]"
-            name="[[activeCourse.attributes.name]]"
-            title="[[activeCourse.attributes.title]]"
-            color="[[activeCourse.attributes.color]] darken-4"
-          >
-          </lrndesign-course-banner>
-        </div>
-        <div slot="content">
-          <div id="loadingCourse" class="loading">
-            <h3>Loading..</h3>
-            <elmsln-loading color="grey-text" size="large"></elmsln-loading>
+      <paper-dialog id="dialog" with-backdrop>
+        <h2>Course details</h2>
+        <paper-dialog-scrollable>
+          <div class="dialog-header">
+            <lrndesign-course-banner
+              image="[[activeCourse.attributes.image]]"
+              name="[[activeCourse.attributes.name]]"
+              title="[[activeCourse.attributes.title]]"
+              color="[[activeCourse.attributes.color]] darken-4"
+            >
+            </lrndesign-course-banner>
           </div>
-        </div>
-        <div id="coursedetails" slot="content">
-          <responsive-grid-row gutter="5">
-            <responsive-grid-col xl="6" lg="6" md="6" sm="12" xs="12">
-              <div class="column">
-                <h4>Details</h4>
-                <ul>
-                  <li
-                    hidden\$="[[!activeCourse.relationships.academic.attributes.name]]"
-                  >
-                    Academic unit:
-                    [[activeCourse.relationships.academic.attributes.name]]
-                  </li>
-                  <li
-                    hidden\$="[[!activeCourse.relationships.program.attributes.name]]"
-                  >
-                    Program:
-                    [[activeCourse.relationships.program.attributes.name]]
-                  </li>
-                </ul>
-                <h4>Learning Network</h4>
-                <template
-                  is="dom-repeat"
-                  items="[[activeCourse.topology.Network]]"
-                  as="service"
-                >
-                  <template is="dom-if" if="[[!service._exists]]">
-                    <lrnsys-button
-                      raised=""
-                      on-click="_makeService"
-                      color="grey lighten-4"
-                      icon-class="grey lighten-5"
-                      data-machine-name\$="[[service.machine_name]]"
+          <div>
+            <div id="loadingCourse" class="loading">
+              <h3>Loading..</h3>
+              <elmsln-loading color="grey-text" size="large"></elmsln-loading>
+            </div>
+          </div>
+          <div id="coursedetails">
+            <responsive-grid-row gutter="5">
+              <responsive-grid-col xl="6" lg="6" md="6" sm="12" xs="12">
+                <div class="column">
+                  <h4>Details</h4>
+                  <ul>
+                    <li
+                      hidden\$="[[!activeCourse.relationships.academic.attributes.name]]"
                     >
-                      <lrn-icon
+                      Academic unit:
+                      [[activeCourse.relationships.academic.attributes.name]]
+                    </li>
+                    <li
+                      hidden\$="[[!activeCourse.relationships.program.attributes.name]]"
+                    >
+                      Program:
+                      [[activeCourse.relationships.program.attributes.name]]
+                    </li>
+                  </ul>
+                  <h4>Learning Network</h4>
+                  <template
+                    is="dom-repeat"
+                    items="[[activeCourse.topology.Network]]"
+                    as="service"
+                  >
+                    <template is="dom-if" if="[[!service._exists]]">
+                      <lrnsys-button
+                        raised=""
+                        on-click="_makeService"
+                        color="grey lighten-4"
+                        icon-class="grey lighten-5"
                         data-machine-name\$="[[service.machine_name]]"
-                        icon="[[service.icon]]"
-                        class="elmsln-hover-icon"
-                      ></lrn-icon>
-                      <span data-machine-name\$="[[service.machine_name]]"
-                        >Make the [[service.title]] service</span
                       >
-                    </lrnsys-button>
+                        <lrn-icon
+                          data-machine-name\$="[[service.machine_name]]"
+                          icon="[[service.icon]]"
+                          class="elmsln-hover-icon"
+                        ></lrn-icon>
+                        <span data-machine-name\$="[[service.machine_name]]"
+                          >Make the [[service.title]] service</span
+                        >
+                      </lrnsys-button>
+                    </template>
+                    <template is="dom-if" if="[[service._exists]]">
+                      <lrnsys-button
+                        raised=""
+                        href="[[service.url]]"
+                        hover-class="[[service.color]] lighten-4"
+                      >
+                        <lrn-icon
+                          icon="[[service.icon]]"
+                          class="elmsln-hover-icon"
+                        ></lrn-icon>
+                        <span>[[service.title]]</span>
+                      </lrnsys-button>
+                    </template>
                   </template>
-                  <template is="dom-if" if="[[service._exists]]">
+                </div>
+              </responsive-grid-col>
+              <responsive-grid-col xl="6" lg="6" md="6" sm="12" xs="12">
+                <div class="column">
+                  <h4>Operations</h4>
+                  <template is="dom-if" if="[[activeCourse.meta.canUpdate]]">
                     <lrnsys-button
                       raised=""
-                      href="[[service.url]]"
-                      hover-class="[[service.color]] lighten-4"
-                    >
-                      <lrn-icon
-                        icon="[[service.icon]]"
-                        class="elmsln-hover-icon"
-                      ></lrn-icon>
-                      <span>[[service.title]]</span>
-                    </lrnsys-button>
-                  </template>
-                </template>
-              </div>
-            </responsive-grid-col>
-            <responsive-grid-col xl="6" lg="6" md="6" sm="12" xs="12">
-              <div class="column">
-                <h4>Operations</h4>
-                <template is="dom-if" if="[[activeCourse.meta.canUpdate]]">
-                  <lrnsys-button
-                    raised=""
-                    href="[[activeCourse.uris.edit]]"
-                    label="Edit"
-                    hover-class="green lighten-4"
-                    icon="create"
-                  ></lrnsys-button>
-                  <lrnsys-button
-                    raised=""
-                    href="[[activeCourse.uris.addOffering]]"
-                    label="Add offering"
-                    hover-class="amber lighten-3"
-                    icon="icons:add"
-                  ></lrnsys-button>
-                </template>
-                <lrnsys-button
-                  raised=""
-                  href="[[activeCourse.uris.offerings]]"
-                  label="Offerings"
-                  hover-class="amber lighten-4"
-                  icon="social:people"
-                ></lrnsys-button>
-                <lrnsys-button
-                  raised=""
-                  href="[[activeCourse.uris.sync]]"
-                  label="Sync Roster"
-                  hover-class="amber lighten-4"
-                  icon="notification:sync"
-                ></lrnsys-button>
-                <lrnsys-button
-                  raised=""
-                  href="[[activeCourse.uris.uri]]"
-                  label="Course page (legacy)"
-                  hover-class="brown lighten-4"
-                  icon="delete"
-                ></lrnsys-button>
-                <template is="dom-if" if="[[activeCourse.meta.canDelete]]">
-                  <div
-                    style="padding: 1em;width: 100%;margin: .5em 0;display: block;background-color:#FF2222;color:#ffffff;border: 1px solid #222222;"
-                  >
-                    <h4>Danger zone</h4>
-                    <lrnsys-button
-                      raised=""
-                      href="[[activeCourse.uris.delete]]"
-                      label="Delete"
-                      hover-class="red lighten-1"
-                      color="red lighten-3"
-                      icon="delete"
+                      href="[[activeCourse.uris.edit]]"
+                      label="Edit"
+                      hover-class="green lighten-4"
+                      icon="create"
                     ></lrnsys-button>
-                  </div>
-                </template>
-              </div>
-            </responsive-grid-col>
-          </responsive-grid-row>
-          <p>[[activeCourse.attributes.body]]</p>
-        </div>
-      </simple-modal-template>
+                    <lrnsys-button
+                      raised=""
+                      href="[[activeCourse.uris.addOffering]]"
+                      label="Add offering"
+                      hover-class="amber lighten-3"
+                      icon="icons:add"
+                    ></lrnsys-button>
+                  </template>
+                  <lrnsys-button
+                    raised=""
+                    href="[[activeCourse.uris.offerings]]"
+                    label="Offerings"
+                    hover-class="amber lighten-4"
+                    icon="social:people"
+                  ></lrnsys-button>
+                  <lrnsys-button
+                    raised=""
+                    href="[[activeCourse.uris.sync]]"
+                    label="Sync Roster"
+                    hover-class="amber lighten-4"
+                    icon="notification:sync"
+                  ></lrnsys-button>
+                  <lrnsys-button
+                    raised=""
+                    href="[[activeCourse.uris.uri]]"
+                    label="Course page (legacy)"
+                    hover-class="brown lighten-4"
+                    icon="delete"
+                  ></lrnsys-button>
+                  <template is="dom-if" if="[[activeCourse.meta.canDelete]]">
+                    <div
+                      style="padding: 1em;width: 100%;margin: .5em 0;display: block;background-color:#FF2222;color:#ffffff;border: 1px solid #222222;"
+                    >
+                      <h4>Danger zone</h4>
+                      <lrnsys-button
+                        raised=""
+                        href="[[activeCourse.uris.delete]]"
+                        label="Delete"
+                        hover-class="red lighten-1"
+                        color="red lighten-3"
+                        icon="delete"
+                      ></lrnsys-button>
+                    </div>
+                  </template>
+                </div>
+              </responsive-grid-col>
+            </responsive-grid-row>
+            <p>[[activeCourse.attributes.body]]</p>
+          </div>
+        </paper-dialog-scrollable>
+      </paper-dialog>
       <lrnsys-dialog id="confirm">
         <div class="dialog-header" slot="header">
           Add this to the
@@ -487,9 +495,11 @@ class LrnappCis extends PolymerElement {
       <paper-toast id="toast"></paper-toast>
     `;
   }
+
   static get tag() {
     return "lrnapp-cis";
   }
+
   static get properties() {
     return {
       elmslnCourse: {
@@ -507,24 +517,28 @@ class LrnappCis extends PolymerElement {
       endPoint: {
         type: String
       },
+
       /**
        * The load initial data
        */
       _cisResponse: {
         type: Object
       },
+
       /**
        * Load individual course data
        */
       _courseResponse: {
         type: Object
       },
+
       /**
        * Load service creation response
        */
       _makeServiceResponse: {
         type: Object
       },
+
       /**
        * The courses to render; potentially filtered
        */
@@ -533,6 +547,7 @@ class LrnappCis extends PolymerElement {
         value: [],
         computed: "_coursesCompute(originalCourses, queryParams)"
       },
+
       /**
        * The original courses array; used to filter against
        */
@@ -541,6 +556,7 @@ class LrnappCis extends PolymerElement {
         value: [],
         notify: true
       },
+
       /**
        * The programs to render
        */
@@ -548,6 +564,7 @@ class LrnappCis extends PolymerElement {
         type: Array,
         value: []
       },
+
       /**
        * The academics to render
        */
@@ -555,24 +572,28 @@ class LrnappCis extends PolymerElement {
         type: Array,
         value: []
       },
+
       /**
        * sourcePath for data.
        */
       sourcePath: {
         type: String
       },
+
       /**
        * pathway to access info about a single course.
        */
       courseDataPath: {
         type: String
       },
+
       /**
        * pathway to creating new service instances
        */
       makeServicePath: {
         type: String
       },
+
       /**
        * Endpoint for data.
        */
@@ -580,6 +601,7 @@ class LrnappCis extends PolymerElement {
         type: String,
         value: "/"
       },
+
       /**
        * base path for the app
        */
@@ -587,6 +609,7 @@ class LrnappCis extends PolymerElement {
         type: String,
         value: "/"
       },
+
       /**
        * Active / clicked course.
        */
@@ -603,11 +626,10 @@ class LrnappCis extends PolymerElement {
 
   static get observers() {
     return ["_routeChanged(route, endPoint)"];
-  }
-
-  // If the current route is outside the scope of our app
+  } // If the current route is outside the scope of our app
   // then allow the website to break out of the single page
   // application routing
+
   _routeChanged(route, endPoint) {
     if (typeof route.path === "string") {
       if (typeof endPoint === "string") {
@@ -616,76 +638,86 @@ class LrnappCis extends PolymerElement {
           return;
         }
       }
-      this.$.loading.hidden = false;
-      // reload the page which since route changed will load that page
+
+      this.$.loading.hidden = false; // reload the page which since route changed will load that page
+
       window.location.reload();
     }
   }
-
   /**
    * Change route from deeper in the app.
    */
+
   _routeChange(e) {
     var details = e.detail;
+
     if (typeof details.queryParams.course !== typeof undefined) {
       this.set("queryParams.course", details.queryParams.course);
     }
+
     if (typeof details.queryParams.academic !== typeof undefined) {
       this.set("queryParams.academic", details.queryParams.academic);
     }
+
     if (typeof details.queryParams.program !== typeof undefined) {
       this.set("queryParams.program", details.queryParams.program);
     }
+
     if (typeof details.data.page !== typeof undefined) {
       this.set("data.page", details.data.page);
     }
   }
-
   /**
    * Simple way to convert from object to array.
    */
+
   _toArray(obj) {
     if (obj == null) {
       return [];
     }
+
     return Object.keys(obj).map(function(key) {
       return obj[key];
     });
   }
-
   /**
    * Handle course response for additional details about the item
    */
+
   _handleMakeServiceResponse(event) {
     // get the CIS response's data and convert to array ahead of time
     var response = this._makeServiceResponse;
+
     let activeCourse = this.__addServiceLinks(response.data.course);
+
     this.set("activeCourse", []);
     this.set("activeCourse", activeCourse);
     this.$.toast.show(response.message);
   }
-
   /**
    * Handle course response for additional details about the item
    */
+
   _handleCourseResponse(event) {
     // get the CIS response's data and convert to array ahead of time
     var activeCourse = this._courseResponse.data.course;
+
     this.__addServiceLinks(activeCourse);
+
     this.set("activeCourse", []);
     this.set("activeCourse", activeCourse);
     this.$.loadingCourse.hidden = true;
   }
-
   /**
    * Helper to mash up services that exist with those that could.
    */
+
   __addServiceLinks(courseObject) {
     // ensure there's a part for the Network people can request
     if (typeof courseObject.topology.Network === typeof undefined) {
       courseObject.topology.Network = {};
-    }
-    // loop our services to see what we should add as options
+    } // loop our services to see what we should add as options
+
     for (var key in this.services) {
       // if it's not in the topology that means it can be added
       if (
@@ -707,22 +739,22 @@ class LrnappCis extends PolymerElement {
           _exists: false
         };
       }
-    }
-    // convert to array after keys in place for the object
+    } // convert to array after keys in place for the object
+
     courseObject.topology.Network = this._toArray(
       courseObject.topology.Network
-    );
-    // sort items based on weight of the things in the network
+    ); // sort items based on weight of the things in the network
     // so we have a consistent order to things
+
     courseObject.topology.Network.sort(function(a, b) {
       return a.weight - b.weight;
     });
     return courseObject;
   }
-
   /**
    * Handle response for the whole courses object.
    */
+
   _handleResponse(event) {
     var course = {};
     var program = {};
@@ -733,13 +765,14 @@ class LrnappCis extends PolymerElement {
       academics: []
     };
     var programs = [];
-    var academics = [];
-    // get the CIS response's data and convert to array ahead of time
+    var academics = []; // get the CIS response's data and convert to array ahead of time
+
     var courses = this._toArray(this._cisResponse.data.courses);
-    this.set("services", this._toArray(this._cisResponse.data.services));
-    // original = active off the bat then we apply filters later to chang this
-    this.set("originalCourses", courses);
-    // figure out courses, programs and academics
+
+    this.set("services", this._toArray(this._cisResponse.data.services)); // original = active off the bat then we apply filters later to chang this
+
+    this.set("originalCourses", courses); // figure out courses, programs and academics
+
     for (var index = 0; index < courses.length; index++) {
       course = courses[index];
       program = courses[index].relationships.program;
@@ -747,12 +780,12 @@ class LrnappCis extends PolymerElement {
       tmp.programs[program.id] = program;
       tmp.academics[academic.id] = academic;
       tmp.courses[course.id] = course;
-    }
-    // this is stupid but we have to normalize the IDs or else dom repeats will be screwed up
+    } // this is stupid but we have to normalize the IDs or else dom repeats will be screwed up
+
     tmp.programs.forEach(function(element) {
       programs.push(element);
-    });
-    // this is stupid but we have to normalize the IDs or else dom repeats will be screwed up
+    }); // this is stupid but we have to normalize the IDs or else dom repeats will be screwed up
+
     tmp.academics.forEach(function(element) {
       academics.push(element);
     });
@@ -760,10 +793,10 @@ class LrnappCis extends PolymerElement {
     this.set("academics", academics);
     this.set("programs", programs);
   }
-
   /**
    * Request a new service to kick off.
    */
+
   _makeService(e) {
     var normalizedEvent = dom(e);
     let active = normalizedEvent.localTarget.getAttribute("data-machine-name");
@@ -772,33 +805,34 @@ class LrnappCis extends PolymerElement {
       if (service.machine_name !== active) {
         return false;
       }
+
       return true;
-    });
-    // if we found one, make it the top level item
+    }); // if we found one, make it the top level item
+
     if (service.length > 0) {
       service = service.pop();
       this.$.makeservice.params = {
         course: this.activeCourse.attributes.machine_name,
         service: service.machine_name
       };
-      this._activeService = service;
-      // confirm via paper prompt
+      this._activeService = service; // confirm via paper prompt
+
       this.$.confirm.toggleDialog();
     } else {
       console.log("that was not a valid service..");
     }
   }
-
   /**
    * Confirm of build.
    */
+
   _confirmBuild(e) {
     this.$.makeservice.generateRequest();
   }
-
   /**
    * lifecycle
    */
+
   connectedCallback() {
     super.connectedCallback();
     afterNextRender(this, function() {
@@ -808,75 +842,81 @@ class LrnappCis extends PolymerElement {
   /**
    * lifecycle
    */
+
   disconnectedCallback() {
     // listen for focus event to have fired
     this.removeEventListener("route-change", this._routeChange.bind(this));
     super.disconnectedCallback();
   }
-
   /**
    * Handle tap on paper-button above to redirect to the correct course url.
    */
+
   _loadCourseUrl(e) {
     // reset dialog to appear to be loading
     this.$.loadingCourse.hidden = false;
     var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget;
-    // this will have the id of the current course
-    var active = local.getAttribute("data-course-id");
-    // find the course by it's unique id and filter just to it
+    var local = normalizedEvent.localTarget; // this will have the id of the current course
+
+    var active = local.getAttribute("data-course-id"); // find the course by it's unique id and filter just to it
+
     let findCourse = this.originalCourses.filter(course => {
       if (course.id !== active) {
         return false;
       }
+
       return true;
-    });
-    // if we found one, make it the top level item
+    }); // if we found one, make it the top level item
+
     if (findCourse.length > 0) {
       findCourse = findCourse.pop();
     }
-    this.activeCourse = findCourse;
-    // formulate the post data
+
+    this.activeCourse = findCourse; // formulate the post data
+
     this._courseDataParams = {
       id: this.activeCourse.id
-    };
-    // @todo look at query cache mechanism to skip calls
+    }; // @todo look at query cache mechanism to skip calls
     // if they've already happened. lrnapp-book has some stuff to do this
-    this.$.courserequest.generateRequest();
-    this.$.dialog.openModal(e.target);
-  }
 
+    this.$.courserequest.generateRequest();
+    this.$.dialog.toggle();
+  }
   /**
    * Compute the active list of courses
    */
+
   _coursesCompute(originalCourses, queryParams) {
     // if we don't have an original courses object to work with then we need to bail
     if (typeof originalCourses === "undefined") {
       return [];
-    }
-    // define vars
+    } // define vars
+
     const root = this;
-    let filteredCourses = [];
-    // filter the courses by the query params
+    let filteredCourses = []; // filter the courses by the query params
+
     filteredCourses = originalCourses.filter(course => {
       if (typeof root.queryParams.course !== "undefined") {
         if (course.id !== root.queryParams.course) {
           return false;
         }
       }
+
       if (typeof root.queryParams.program !== "undefined") {
         if (course.relationships.program.id !== root.queryParams.program) {
           return false;
         }
       }
+
       if (typeof root.queryParams.academic !== "undefined") {
         if (course.relationships.academic.id !== root.queryParams.academic) {
           return false;
         }
       }
+
       return true;
-    });
-    // delay and repaint, can help with refresh issues
+    }); // delay and repaint, can help with refresh issues
+
     setTimeout(() => {
       this.$.ironlist.fire("iron-resize");
     }, 200);
@@ -885,9 +925,11 @@ class LrnappCis extends PolymerElement {
   /**
    * highjack shadowDom
    */
+
   _attachDom(dom) {
     this.appendChild(dom);
   }
 }
+
 window.customElements.define(LrnappCis.tag, LrnappCis);
 export { LrnappCis };

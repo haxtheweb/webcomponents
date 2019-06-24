@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>LrnappCis: lrnapp-cis Demo</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+        import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js'
+        import '@polymer/iron-demo-helpers/demo-snippet.js';
+        import '../lrnapp-studio-dashboard.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+</head>
+<body>
+    <lrnapp-studio-dashboard username="admin" csrf-token="XdruA30bv30OXt7hsjIkw4X6kYkapJxVXf2vlet1-XQ"
+      end-point="/components/@lrnwebcomponents/elmsln-apps/lib/" base-path="/components/@lrnwebcomponents/elmsln-apps/lib/"
+      class="webcomponent-module-selector" elmsln-course="sing100" elmsln-section="master">
+    </lrnapp-studio-dashboard>
+</body>
+
+</html>

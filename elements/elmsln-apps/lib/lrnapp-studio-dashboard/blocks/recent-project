@@ -1,0 +1,1239 @@
+{
+  "status": 200,
+  "data": {
+    "type": "cle_project",
+    "id": "2",
+    "attributes": {
+      "title": "fdfdsf",
+      "body": "<p>dsfdfsfsd</p>",
+      "steps": [
+        {
+          "id": "3",
+          "title": "Stuffffgdgdgdg"
+        },
+        {
+          "id": "7",
+          "title": "sddddd"
+        },
+        {
+          "id": "12",
+          "title": "5g5g5g5"
+        },
+        {
+          "id": "13",
+          "title": "fghfghfghfghfgh"
+        },
+        {
+          "id": "36",
+          "title": "New assignment"
+        }
+      ]
+    },
+    "meta": {
+      "created": "2019-03-18T20:21:20-04:00",
+      "changed": "2019-03-19T18:24:50-04:00",
+      "humandate": "March 19, 2019, 6:24 pm",
+      "revision_timestamp": "2019-03-19T18:24:50-04:00",
+      "canUpdate": 1,
+      "canDelete": 1
+    },
+    "relationships": {
+      "project_parent": {
+        "data": {
+          "id": null
+        }
+      },
+      "group": {
+        "data": {
+          "id": "1"
+        }
+      },
+      "author": {
+        "data": {
+          "type": "user",
+          "id": "1",
+          "name": "admin"
+        }
+      },
+      "assignments": {
+        "assignment-7": {
+          "id": 7,
+          "uid": 1,
+          "uuid": "526cd1a7-f445-4a62-887a-66e16081c2b0",
+          "title": "sddddd",
+          "status": 1,
+          "created": "2019-03-19T03:16:16-04:00",
+          "body": "<p>ddsfsdfdfs</p>",
+          "allowLateSubmissions": 0,
+          "color": "#ffffff",
+          "image": [],
+          "type": "open",
+          "startDate": null,
+          "endDate": null,
+          "commentStyle": "hierarchy",
+          "hierarchy": {
+            "dependencies": [],
+            "project": 2
+          },
+          "evidence": {
+            "competencies": null,
+            "assets": "artifacts",
+            "artifacts": [
+              "field_submission_text",
+              "field_images",
+              "field_files",
+              "field_links",
+              "field_video"
+            ],
+            "critique": {
+              "method": "none",
+              "outline": null,
+              "public": true
+            }
+          },
+          "metadata": {
+            "rationale": {
+              "text": "The assignment is open for submission, there is no due date.",
+              "code": "date-none"
+            },
+            "submissionActive": 1,
+            "relatedSubmissions": {
+              "canCreate": 1,
+              "complete": {
+                "icon": "done",
+                "color": "green lighten-3",
+                "status": 1,
+                "rationale": {
+                  "text": "Submission accepted and ready for comment",
+                  "code": "submission-ready"
+                },
+                "submission": {
+                  "id": 38,
+                  "uid": 1,
+                  "uuid": "28853b41-6bb2-4bfb-acc6-ecb28ecb9b61",
+                  "title": "Submission for sdddddfsdfsdfsd",
+                  "status": 1,
+                  "created": "2019-05-22T12:28:38-04:00",
+                  "relatedSubmission": 0,
+                  "assignment": 7,
+                  "evidence": {
+                    "body": "dssdssfsddfsdfs dfs dfs dfs dfs sddfsdfs dfs dfs dfs dfs dfs ds fdfs dfs dfs",
+                    "images": [
+                      {
+                        "fid": 3,
+                        "uid": 1,
+                        "filename": "IMG_20190414_173102.jpg",
+                        "uri": "private://submission_images/IMG_20190414_173102.jpg",
+                        "filemime": "image/jpeg",
+                        "filesize": 80613,
+                        "status": 1,
+                        "timestamp": 1558559316,
+                        "origname": "IMG_20190414_173102.jpg",
+                        "type": "image",
+                        "uuid": "49eb5614-1f14-4a4f-92d4-69813d53f00a",
+                        "field_file_image_alt_text": [],
+                        "field_file_image_title_text": [],
+                        "metadata": {
+                          "height": 901,
+                          "width": 676
+                        },
+                        "alt": "",
+                        "title": "",
+                        "height": "901",
+                        "width": "676",
+                        "url": "http://studio.elmsln.local/sing100/system/files/submission_images/IMG_20190414_173102.jpg",
+                        "display": 0,
+                        "created": "2019-05-22T17:08:36-04:00",
+                        "image_styles": {
+                          "elmsln_normalize": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102.jpg?itok=W7Kd8gzc",
+                          "elmsln_gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102.jpg?itok=NUQLFbpe",
+                          "elmsln_large": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102.jpg?itok=opGXe7dn",
+                          "elmsln_large__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102.jpg?itok=hSqhs-Oi",
+                          "elmsln_medium": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102.jpg?itok=FteriIOj",
+                          "elmsln_medium__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102.jpg?itok=r9qw1gyt",
+                          "elmsln_micro": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102.jpg?itok=Wc05gdth",
+                          "elmsln_micro__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102.jpg?itok=xas1kYhj",
+                          "elmsln_small": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102.jpg?itok=qoI_Zbrm",
+                          "elmsln_small__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102.jpg?itok=naCB_4AI",
+                          "elmsln_thumb": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102.jpg?itok=NABw2GT_",
+                          "elmsln_thumb__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102.jpg?itok=b9PWF9nR"
+                        }
+                      },
+                      {
+                        "fid": 4,
+                        "uid": 1,
+                        "filename": "csev_ian_dolphin_small.jpg",
+                        "uri": "private://submission_images/csev_ian_dolphin_small_0.jpg",
+                        "filemime": "image/jpeg",
+                        "filesize": 18507,
+                        "status": 1,
+                        "timestamp": 1558559316,
+                        "origname": "csev_ian_dolphin_small.jpg",
+                        "type": "image",
+                        "uuid": "e733eee2-74a3-4aab-a5c6-250bfe02da72",
+                        "field_file_image_alt_text": [],
+                        "field_file_image_title_text": [],
+                        "metadata": {
+                          "height": 216,
+                          "width": 216
+                        },
+                        "alt": "",
+                        "title": "",
+                        "height": "216",
+                        "width": "216",
+                        "url": "http://studio.elmsln.local/sing100/system/files/submission_images/csev_ian_dolphin_small_0.jpg",
+                        "display": 0,
+                        "created": "2019-05-22T17:08:36-04:00",
+                        "image_styles": {
+                          "elmsln_normalize": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_0.jpg?itok=0a2nniUW",
+                          "elmsln_gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_0.jpg?itok=Z04KMJJ-",
+                          "elmsln_large": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_0.jpg?itok=1KMGP-Z6",
+                          "elmsln_large__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_0.jpg?itok=KSxK5qCD",
+                          "elmsln_medium": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_0.jpg?itok=lQ29L-hl",
+                          "elmsln_medium__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_0.jpg?itok=3V3TJgci",
+                          "elmsln_micro": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_0.jpg?itok=RNjtPXhi",
+                          "elmsln_micro__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_0.jpg?itok=Lj7CDq9a",
+                          "elmsln_small": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_0.jpg?itok=SmtVhhC5",
+                          "elmsln_small__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_0.jpg?itok=KFnr0Lz8",
+                          "elmsln_thumb": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_0.jpg?itok=3Kt9C8rJ",
+                          "elmsln_thumb__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_0.jpg?itok=CBdoRmWJ"
+                        }
+                      },
+                      {
+                        "fid": 6,
+                        "uid": 1,
+                        "filename": "csev_ian_dolphin_small.jpg",
+                        "uri": "private://submission_images/csev_ian_dolphin_small_1.jpg",
+                        "filemime": "image/jpeg",
+                        "filesize": 18507,
+                        "status": 1,
+                        "timestamp": 1558559316,
+                        "origname": "csev_ian_dolphin_small.jpg",
+                        "type": "image",
+                        "uuid": "410de730-a31d-48f4-928f-39a256b0f63e",
+                        "field_file_image_alt_text": [],
+                        "field_file_image_title_text": [],
+                        "metadata": {
+                          "height": 216,
+                          "width": 216
+                        },
+                        "alt": "",
+                        "title": "",
+                        "height": "216",
+                        "width": "216",
+                        "url": "http://studio.elmsln.local/sing100/system/files/submission_images/csev_ian_dolphin_small_1.jpg",
+                        "display": 0,
+                        "created": "2019-05-22T17:08:36-04:00",
+                        "image_styles": {
+                          "elmsln_normalize": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_1.jpg?itok=FwFvAZxc",
+                          "elmsln_gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_1.jpg?itok=MzR1FMun",
+                          "elmsln_large": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_1.jpg?itok=6OOIs_W-",
+                          "elmsln_large__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_1.jpg?itok=1rmWoPfr",
+                          "elmsln_medium": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_1.jpg?itok=KYdgvLcA",
+                          "elmsln_medium__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_1.jpg?itok=HQwXYj-Z",
+                          "elmsln_micro": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_1.jpg?itok=kosXQTEI",
+                          "elmsln_micro__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_1.jpg?itok=ECBlC67g",
+                          "elmsln_small": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_1.jpg?itok=-8fPH1Yr",
+                          "elmsln_small__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_1.jpg?itok=fEDXY4UD",
+                          "elmsln_thumb": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_1.jpg?itok=I_Ny5arl",
+                          "elmsln_thumb__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_1.jpg?itok=Grv6IkE9"
+                        }
+                      },
+                      {
+                        "fid": 5,
+                        "uid": 1,
+                        "filename": "IMG_20181228_113330.jpg",
+                        "uri": "private://submission_images/IMG_20181228_113330.jpg",
+                        "filemime": "image/jpeg",
+                        "filesize": 63981,
+                        "status": 1,
+                        "timestamp": 1558559316,
+                        "origname": "IMG_20181228_113330.jpg",
+                        "type": "image",
+                        "uuid": "6e40715e-0078-444e-8fa4-40c498ff1f6c",
+                        "field_file_image_alt_text": [],
+                        "field_file_image_title_text": [],
+                        "metadata": {
+                          "height": 350,
+                          "width": 784
+                        },
+                        "alt": "",
+                        "title": "",
+                        "height": "350",
+                        "width": "784",
+                        "url": "http://studio.elmsln.local/sing100/system/files/submission_images/IMG_20181228_113330.jpg",
+                        "display": 0,
+                        "created": "2019-05-22T17:08:36-04:00",
+                        "image_styles": {
+                          "elmsln_normalize": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_normalize/private/submission_images/IMG_20181228_113330.jpg?itok=US5qEw4r",
+                          "elmsln_gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20181228_113330.jpg?itok=13c2cL_d",
+                          "elmsln_large": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_normalize/private/submission_images/IMG_20181228_113330.jpg?itok=HTPZ0xYY",
+                          "elmsln_large__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20181228_113330.jpg?itok=qEJT6sRs",
+                          "elmsln_medium": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_normalize/private/submission_images/IMG_20181228_113330.jpg?itok=dmu2BcUD",
+                          "elmsln_medium__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20181228_113330.jpg?itok=fsFgvgGL",
+                          "elmsln_micro": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_normalize/private/submission_images/IMG_20181228_113330.jpg?itok=U8714Yge",
+                          "elmsln_micro__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20181228_113330.jpg?itok=viGhvDwJ",
+                          "elmsln_small": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/IMG_20181228_113330.jpg?itok=Emknz1EY",
+                          "elmsln_small__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20181228_113330.jpg?itok=tJYIAr2R",
+                          "elmsln_thumb": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_normalize/private/submission_images/IMG_20181228_113330.jpg?itok=ZdX9HHM3",
+                          "elmsln_thumb__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20181228_113330.jpg?itok=uu_AizlD"
+                        }
+                      },
+                      {
+                        "fid": 7,
+                        "uid": 1,
+                        "filename": "IMG_20190307_142259.jpg",
+                        "uri": "private://submission_images/IMG_20190307_142259.jpg",
+                        "filemime": "image/jpeg",
+                        "filesize": 32993,
+                        "status": 1,
+                        "timestamp": 1558559316,
+                        "origname": "IMG_20190307_142259.jpg",
+                        "type": "image",
+                        "uuid": "ac85bd9b-d9cf-426f-b838-3714903f18dc",
+                        "field_file_image_alt_text": [],
+                        "field_file_image_title_text": [],
+                        "metadata": {
+                          "height": 561,
+                          "width": 602
+                        },
+                        "alt": "",
+                        "title": "",
+                        "height": "561",
+                        "width": "602",
+                        "url": "http://studio.elmsln.local/sing100/system/files/submission_images/IMG_20190307_142259.jpg",
+                        "display": 0,
+                        "created": "2019-05-22T17:08:36-04:00",
+                        "image_styles": {
+                          "elmsln_normalize": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_normalize/private/submission_images/IMG_20190307_142259.jpg?itok=f7dHuyka",
+                          "elmsln_gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190307_142259.jpg?itok=zzotoJOX",
+                          "elmsln_large": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_normalize/private/submission_images/IMG_20190307_142259.jpg?itok=_CbUlaGW",
+                          "elmsln_large__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190307_142259.jpg?itok=0qZaYtKU",
+                          "elmsln_medium": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_normalize/private/submission_images/IMG_20190307_142259.jpg?itok=Cvx9m6A6",
+                          "elmsln_medium__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190307_142259.jpg?itok=_K3qNTlt",
+                          "elmsln_micro": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_normalize/private/submission_images/IMG_20190307_142259.jpg?itok=6BofoK1f",
+                          "elmsln_micro__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190307_142259.jpg?itok=vYNUExUh",
+                          "elmsln_small": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/IMG_20190307_142259.jpg?itok=E5bBWY0t",
+                          "elmsln_small__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190307_142259.jpg?itok=M1qlFEHo",
+                          "elmsln_thumb": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_normalize/private/submission_images/IMG_20190307_142259.jpg?itok=tj-tpcNx",
+                          "elmsln_thumb__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190307_142259.jpg?itok=mXycfv-s"
+                        }
+                      },
+                      {
+                        "fid": 9,
+                        "uid": 1,
+                        "filename": "IMG_20190414_173102.jpg",
+                        "uri": "private://submission_images/IMG_20190414_173102_0.jpg",
+                        "filemime": "image/jpeg",
+                        "filesize": 80613,
+                        "status": 1,
+                        "timestamp": 1558559316,
+                        "origname": "IMG_20190414_173102.jpg",
+                        "type": "image",
+                        "uuid": "872453ef-bde4-4592-b2bf-138c249c6e28",
+                        "field_file_image_alt_text": [],
+                        "field_file_image_title_text": [],
+                        "metadata": {
+                          "height": 901,
+                          "width": 676
+                        },
+                        "alt": "",
+                        "title": "",
+                        "height": "901",
+                        "width": "676",
+                        "url": "http://studio.elmsln.local/sing100/system/files/submission_images/IMG_20190414_173102_0.jpg",
+                        "display": 0,
+                        "created": "2019-05-22T17:08:36-04:00",
+                        "image_styles": {
+                          "elmsln_normalize": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_0.jpg?itok=U3wZE3Sa",
+                          "elmsln_gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_0.jpg?itok=x6eRP9Sc",
+                          "elmsln_large": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_0.jpg?itok=NORa1n-G",
+                          "elmsln_large__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_0.jpg?itok=IkBXwvb_",
+                          "elmsln_medium": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_0.jpg?itok=cbIWkMoE",
+                          "elmsln_medium__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_0.jpg?itok=hbdDI97N",
+                          "elmsln_micro": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_0.jpg?itok=h_cIExcn",
+                          "elmsln_micro__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_0.jpg?itok=XzNWaoqP",
+                          "elmsln_small": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_0.jpg?itok=XU2pSdDL",
+                          "elmsln_small__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_0.jpg?itok=N7nITgBi",
+                          "elmsln_thumb": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_0.jpg?itok=1IP2eQVL",
+                          "elmsln_thumb__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_0.jpg?itok=93VYYz-B"
+                        }
+                      },
+                      {
+                        "fid": 8,
+                        "uid": 1,
+                        "filename": "headshot.jpg",
+                        "uri": "private://submission_images/headshot.jpg",
+                        "filemime": "image/jpeg",
+                        "filesize": 32993,
+                        "status": 1,
+                        "timestamp": 1558559316,
+                        "origname": "headshot.jpg",
+                        "type": "image",
+                        "uuid": "73bc5334-6a3d-459f-a192-d470a434f72d",
+                        "field_file_image_alt_text": [],
+                        "field_file_image_title_text": [],
+                        "metadata": {
+                          "height": 561,
+                          "width": 602
+                        },
+                        "alt": "",
+                        "title": "",
+                        "height": "561",
+                        "width": "602",
+                        "url": "http://studio.elmsln.local/sing100/system/files/submission_images/headshot.jpg",
+                        "display": 0,
+                        "created": "2019-05-22T17:08:36-04:00",
+                        "image_styles": {
+                          "elmsln_normalize": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_normalize/private/submission_images/headshot.jpg?itok=K1riV1Vt",
+                          "elmsln_gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/headshot.jpg?itok=jHdlhTNN",
+                          "elmsln_large": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_normalize/private/submission_images/headshot.jpg?itok=ert6hJGw",
+                          "elmsln_large__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/headshot.jpg?itok=MdcpGqak",
+                          "elmsln_medium": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_normalize/private/submission_images/headshot.jpg?itok=hoEMxV_x",
+                          "elmsln_medium__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/headshot.jpg?itok=9LnQD_aO",
+                          "elmsln_micro": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_normalize/private/submission_images/headshot.jpg?itok=CxcuCg8i",
+                          "elmsln_micro__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/headshot.jpg?itok=NASz0IUv",
+                          "elmsln_small": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/headshot.jpg?itok=a7hSIsX3",
+                          "elmsln_small__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/headshot.jpg?itok=Aq2GQTud",
+                          "elmsln_thumb": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_normalize/private/submission_images/headshot.jpg?itok=1ukt5gTO",
+                          "elmsln_thumb__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/headshot.jpg?itok=dWtT0ZCM"
+                        }
+                      },
+                      {
+                        "fid": 10,
+                        "uid": 1,
+                        "filename": "IMG_20190414_173102.jpg",
+                        "uri": "private://submission_images/IMG_20190414_173102_1.jpg",
+                        "filemime": "image/jpeg",
+                        "filesize": 80613,
+                        "status": 1,
+                        "timestamp": 1559147373,
+                        "origname": "IMG_20190414_173102.jpg",
+                        "type": "image",
+                        "uuid": "406aa2ed-f986-4ad0-b827-f0cca53e7264",
+                        "field_file_image_alt_text": [],
+                        "field_file_image_title_text": [],
+                        "metadata": {
+                          "height": 901,
+                          "width": 676
+                        },
+                        "alt": "",
+                        "title": "",
+                        "height": "901",
+                        "width": "676",
+                        "url": "http://studio.elmsln.local/sing100/system/files/submission_images/IMG_20190414_173102_1.jpg",
+                        "display": 0,
+                        "created": "2019-05-29T12:29:33-04:00",
+                        "image_styles": {
+                          "elmsln_normalize": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_1.jpg?itok=JKu1yPzX",
+                          "elmsln_gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_1.jpg?itok=uNAT8bMG",
+                          "elmsln_large": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_1.jpg?itok=kBs8QRNG",
+                          "elmsln_large__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_1.jpg?itok=2akJzji5",
+                          "elmsln_medium": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_1.jpg?itok=x9fCmN0J",
+                          "elmsln_medium__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_1.jpg?itok=ACqI8pGI",
+                          "elmsln_micro": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_1.jpg?itok=C4JBIvXG",
+                          "elmsln_micro__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_1.jpg?itok=FmJSV6qS",
+                          "elmsln_small": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_1.jpg?itok=2CCxfDyr",
+                          "elmsln_small__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_1.jpg?itok=CsOE_cwa",
+                          "elmsln_thumb": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_1.jpg?itok=9DRJHwuB",
+                          "elmsln_thumb__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_1.jpg?itok=fTM-M4ED"
+                        }
+                      }
+                    ],
+                    "video": null,
+                    "files": [],
+                    "links": [
+                      {
+                        "url": "google.com",
+                        "title": null,
+                        "attributes": []
+                      },
+                      {
+                        "url": "https://google.com/",
+                        "title": null,
+                        "attributes": []
+                      }
+                    ]
+                  },
+                  "energy": {
+                    "timestamp": "2019-05-29T12:29:33-04:00",
+                    "value": "100"
+                  },
+                  "state": "submission_ready",
+                  "section": 1,
+                  "links": {
+                    "self": "http://studio.elmsln.local/sing100/api/v1/cle/submissions/38"
+                  },
+                  "metadata": {
+                    "canUpdate": 1,
+                    "canDelete": 1,
+                    "canCritique": 0,
+                    "comments": {
+                      "count": "2",
+                      "new": "0"
+                    },
+                    "icon": "done",
+                    "color": "green lighten-3"
+                  }
+                },
+                "submissions": {
+                  "38": {
+                    "id": 38,
+                    "uid": 1,
+                    "uuid": "28853b41-6bb2-4bfb-acc6-ecb28ecb9b61",
+                    "title": "Submission for sdddddfsdfsdfsd",
+                    "status": 1,
+                    "created": "2019-05-22T12:28:38-04:00",
+                    "relatedSubmission": 0,
+                    "assignment": 7,
+                    "evidence": {
+                      "body": "dssdssfsddfsdfs dfs dfs dfs dfs sddfsdfs dfs dfs dfs dfs dfs ds fdfs dfs dfs",
+                      "images": [
+                        {
+                          "fid": 3,
+                          "uid": 1,
+                          "filename": "IMG_20190414_173102.jpg",
+                          "uri": "private://submission_images/IMG_20190414_173102.jpg",
+                          "filemime": "image/jpeg",
+                          "filesize": 80613,
+                          "status": 1,
+                          "timestamp": 1558559316,
+                          "origname": "IMG_20190414_173102.jpg",
+                          "type": "image",
+                          "uuid": "49eb5614-1f14-4a4f-92d4-69813d53f00a",
+                          "field_file_image_alt_text": [],
+                          "field_file_image_title_text": [],
+                          "metadata": {
+                            "height": 901,
+                            "width": 676
+                          },
+                          "alt": "",
+                          "title": "",
+                          "height": "901",
+                          "width": "676",
+                          "url": "http://studio.elmsln.local/sing100/system/files/submission_images/IMG_20190414_173102.jpg",
+                          "display": 0,
+                          "created": "2019-05-22T17:08:36-04:00",
+                          "image_styles": {
+                            "elmsln_normalize": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102.jpg?itok=W7Kd8gzc",
+                            "elmsln_gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102.jpg?itok=NUQLFbpe",
+                            "elmsln_large": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102.jpg?itok=opGXe7dn",
+                            "elmsln_large__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102.jpg?itok=hSqhs-Oi",
+                            "elmsln_medium": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102.jpg?itok=FteriIOj",
+                            "elmsln_medium__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102.jpg?itok=r9qw1gyt",
+                            "elmsln_micro": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102.jpg?itok=Wc05gdth",
+                            "elmsln_micro__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102.jpg?itok=xas1kYhj",
+                            "elmsln_small": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102.jpg?itok=qoI_Zbrm",
+                            "elmsln_small__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102.jpg?itok=naCB_4AI",
+                            "elmsln_thumb": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102.jpg?itok=NABw2GT_",
+                            "elmsln_thumb__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102.jpg?itok=b9PWF9nR"
+                          }
+                        },
+                        {
+                          "fid": 4,
+                          "uid": 1,
+                          "filename": "csev_ian_dolphin_small.jpg",
+                          "uri": "private://submission_images/csev_ian_dolphin_small_0.jpg",
+                          "filemime": "image/jpeg",
+                          "filesize": 18507,
+                          "status": 1,
+                          "timestamp": 1558559316,
+                          "origname": "csev_ian_dolphin_small.jpg",
+                          "type": "image",
+                          "uuid": "e733eee2-74a3-4aab-a5c6-250bfe02da72",
+                          "field_file_image_alt_text": [],
+                          "field_file_image_title_text": [],
+                          "metadata": {
+                            "height": 216,
+                            "width": 216
+                          },
+                          "alt": "",
+                          "title": "",
+                          "height": "216",
+                          "width": "216",
+                          "url": "http://studio.elmsln.local/sing100/system/files/submission_images/csev_ian_dolphin_small_0.jpg",
+                          "display": 0,
+                          "created": "2019-05-22T17:08:36-04:00",
+                          "image_styles": {
+                            "elmsln_normalize": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_0.jpg?itok=0a2nniUW",
+                            "elmsln_gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_0.jpg?itok=Z04KMJJ-",
+                            "elmsln_large": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_0.jpg?itok=1KMGP-Z6",
+                            "elmsln_large__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_0.jpg?itok=KSxK5qCD",
+                            "elmsln_medium": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_0.jpg?itok=lQ29L-hl",
+                            "elmsln_medium__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_0.jpg?itok=3V3TJgci",
+                            "elmsln_micro": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_0.jpg?itok=RNjtPXhi",
+                            "elmsln_micro__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_0.jpg?itok=Lj7CDq9a",
+                            "elmsln_small": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_0.jpg?itok=SmtVhhC5",
+                            "elmsln_small__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_0.jpg?itok=KFnr0Lz8",
+                            "elmsln_thumb": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_0.jpg?itok=3Kt9C8rJ",
+                            "elmsln_thumb__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_0.jpg?itok=CBdoRmWJ"
+                          }
+                        },
+                        {
+                          "fid": 6,
+                          "uid": 1,
+                          "filename": "csev_ian_dolphin_small.jpg",
+                          "uri": "private://submission_images/csev_ian_dolphin_small_1.jpg",
+                          "filemime": "image/jpeg",
+                          "filesize": 18507,
+                          "status": 1,
+                          "timestamp": 1558559316,
+                          "origname": "csev_ian_dolphin_small.jpg",
+                          "type": "image",
+                          "uuid": "410de730-a31d-48f4-928f-39a256b0f63e",
+                          "field_file_image_alt_text": [],
+                          "field_file_image_title_text": [],
+                          "metadata": {
+                            "height": 216,
+                            "width": 216
+                          },
+                          "alt": "",
+                          "title": "",
+                          "height": "216",
+                          "width": "216",
+                          "url": "http://studio.elmsln.local/sing100/system/files/submission_images/csev_ian_dolphin_small_1.jpg",
+                          "display": 0,
+                          "created": "2019-05-22T17:08:36-04:00",
+                          "image_styles": {
+                            "elmsln_normalize": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_1.jpg?itok=FwFvAZxc",
+                            "elmsln_gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_1.jpg?itok=MzR1FMun",
+                            "elmsln_large": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_1.jpg?itok=6OOIs_W-",
+                            "elmsln_large__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_1.jpg?itok=1rmWoPfr",
+                            "elmsln_medium": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_1.jpg?itok=KYdgvLcA",
+                            "elmsln_medium__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_1.jpg?itok=HQwXYj-Z",
+                            "elmsln_micro": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_1.jpg?itok=kosXQTEI",
+                            "elmsln_micro__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_1.jpg?itok=ECBlC67g",
+                            "elmsln_small": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_1.jpg?itok=-8fPH1Yr",
+                            "elmsln_small__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_1.jpg?itok=fEDXY4UD",
+                            "elmsln_thumb": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_1.jpg?itok=I_Ny5arl",
+                            "elmsln_thumb__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/csev_ian_dolphin_small_1.jpg?itok=Grv6IkE9"
+                          }
+                        },
+                        {
+                          "fid": 5,
+                          "uid": 1,
+                          "filename": "IMG_20181228_113330.jpg",
+                          "uri": "private://submission_images/IMG_20181228_113330.jpg",
+                          "filemime": "image/jpeg",
+                          "filesize": 63981,
+                          "status": 1,
+                          "timestamp": 1558559316,
+                          "origname": "IMG_20181228_113330.jpg",
+                          "type": "image",
+                          "uuid": "6e40715e-0078-444e-8fa4-40c498ff1f6c",
+                          "field_file_image_alt_text": [],
+                          "field_file_image_title_text": [],
+                          "metadata": {
+                            "height": 350,
+                            "width": 784
+                          },
+                          "alt": "",
+                          "title": "",
+                          "height": "350",
+                          "width": "784",
+                          "url": "http://studio.elmsln.local/sing100/system/files/submission_images/IMG_20181228_113330.jpg",
+                          "display": 0,
+                          "created": "2019-05-22T17:08:36-04:00",
+                          "image_styles": {
+                            "elmsln_normalize": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_normalize/private/submission_images/IMG_20181228_113330.jpg?itok=US5qEw4r",
+                            "elmsln_gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20181228_113330.jpg?itok=13c2cL_d",
+                            "elmsln_large": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_normalize/private/submission_images/IMG_20181228_113330.jpg?itok=HTPZ0xYY",
+                            "elmsln_large__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20181228_113330.jpg?itok=qEJT6sRs",
+                            "elmsln_medium": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_normalize/private/submission_images/IMG_20181228_113330.jpg?itok=dmu2BcUD",
+                            "elmsln_medium__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20181228_113330.jpg?itok=fsFgvgGL",
+                            "elmsln_micro": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_normalize/private/submission_images/IMG_20181228_113330.jpg?itok=U8714Yge",
+                            "elmsln_micro__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20181228_113330.jpg?itok=viGhvDwJ",
+                            "elmsln_small": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/IMG_20181228_113330.jpg?itok=Emknz1EY",
+                            "elmsln_small__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20181228_113330.jpg?itok=tJYIAr2R",
+                            "elmsln_thumb": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_normalize/private/submission_images/IMG_20181228_113330.jpg?itok=ZdX9HHM3",
+                            "elmsln_thumb__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20181228_113330.jpg?itok=uu_AizlD"
+                          }
+                        },
+                        {
+                          "fid": 7,
+                          "uid": 1,
+                          "filename": "IMG_20190307_142259.jpg",
+                          "uri": "private://submission_images/IMG_20190307_142259.jpg",
+                          "filemime": "image/jpeg",
+                          "filesize": 32993,
+                          "status": 1,
+                          "timestamp": 1558559316,
+                          "origname": "IMG_20190307_142259.jpg",
+                          "type": "image",
+                          "uuid": "ac85bd9b-d9cf-426f-b838-3714903f18dc",
+                          "field_file_image_alt_text": [],
+                          "field_file_image_title_text": [],
+                          "metadata": {
+                            "height": 561,
+                            "width": 602
+                          },
+                          "alt": "",
+                          "title": "",
+                          "height": "561",
+                          "width": "602",
+                          "url": "http://studio.elmsln.local/sing100/system/files/submission_images/IMG_20190307_142259.jpg",
+                          "display": 0,
+                          "created": "2019-05-22T17:08:36-04:00",
+                          "image_styles": {
+                            "elmsln_normalize": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_normalize/private/submission_images/IMG_20190307_142259.jpg?itok=f7dHuyka",
+                            "elmsln_gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190307_142259.jpg?itok=zzotoJOX",
+                            "elmsln_large": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_normalize/private/submission_images/IMG_20190307_142259.jpg?itok=_CbUlaGW",
+                            "elmsln_large__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190307_142259.jpg?itok=0qZaYtKU",
+                            "elmsln_medium": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_normalize/private/submission_images/IMG_20190307_142259.jpg?itok=Cvx9m6A6",
+                            "elmsln_medium__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190307_142259.jpg?itok=_K3qNTlt",
+                            "elmsln_micro": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_normalize/private/submission_images/IMG_20190307_142259.jpg?itok=6BofoK1f",
+                            "elmsln_micro__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190307_142259.jpg?itok=vYNUExUh",
+                            "elmsln_small": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/IMG_20190307_142259.jpg?itok=E5bBWY0t",
+                            "elmsln_small__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190307_142259.jpg?itok=M1qlFEHo",
+                            "elmsln_thumb": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_normalize/private/submission_images/IMG_20190307_142259.jpg?itok=tj-tpcNx",
+                            "elmsln_thumb__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190307_142259.jpg?itok=mXycfv-s"
+                          }
+                        },
+                        {
+                          "fid": 9,
+                          "uid": 1,
+                          "filename": "IMG_20190414_173102.jpg",
+                          "uri": "private://submission_images/IMG_20190414_173102_0.jpg",
+                          "filemime": "image/jpeg",
+                          "filesize": 80613,
+                          "status": 1,
+                          "timestamp": 1558559316,
+                          "origname": "IMG_20190414_173102.jpg",
+                          "type": "image",
+                          "uuid": "872453ef-bde4-4592-b2bf-138c249c6e28",
+                          "field_file_image_alt_text": [],
+                          "field_file_image_title_text": [],
+                          "metadata": {
+                            "height": 901,
+                            "width": 676
+                          },
+                          "alt": "",
+                          "title": "",
+                          "height": "901",
+                          "width": "676",
+                          "url": "http://studio.elmsln.local/sing100/system/files/submission_images/IMG_20190414_173102_0.jpg",
+                          "display": 0,
+                          "created": "2019-05-22T17:08:36-04:00",
+                          "image_styles": {
+                            "elmsln_normalize": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_0.jpg?itok=U3wZE3Sa",
+                            "elmsln_gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_0.jpg?itok=x6eRP9Sc",
+                            "elmsln_large": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_0.jpg?itok=NORa1n-G",
+                            "elmsln_large__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_0.jpg?itok=IkBXwvb_",
+                            "elmsln_medium": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_0.jpg?itok=cbIWkMoE",
+                            "elmsln_medium__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_0.jpg?itok=hbdDI97N",
+                            "elmsln_micro": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_0.jpg?itok=h_cIExcn",
+                            "elmsln_micro__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_0.jpg?itok=XzNWaoqP",
+                            "elmsln_small": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_0.jpg?itok=XU2pSdDL",
+                            "elmsln_small__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_0.jpg?itok=N7nITgBi",
+                            "elmsln_thumb": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_0.jpg?itok=1IP2eQVL",
+                            "elmsln_thumb__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_0.jpg?itok=93VYYz-B"
+                          }
+                        },
+                        {
+                          "fid": 8,
+                          "uid": 1,
+                          "filename": "headshot.jpg",
+                          "uri": "private://submission_images/headshot.jpg",
+                          "filemime": "image/jpeg",
+                          "filesize": 32993,
+                          "status": 1,
+                          "timestamp": 1558559316,
+                          "origname": "headshot.jpg",
+                          "type": "image",
+                          "uuid": "73bc5334-6a3d-459f-a192-d470a434f72d",
+                          "field_file_image_alt_text": [],
+                          "field_file_image_title_text": [],
+                          "metadata": {
+                            "height": 561,
+                            "width": 602
+                          },
+                          "alt": "",
+                          "title": "",
+                          "height": "561",
+                          "width": "602",
+                          "url": "http://studio.elmsln.local/sing100/system/files/submission_images/headshot.jpg",
+                          "display": 0,
+                          "created": "2019-05-22T17:08:36-04:00",
+                          "image_styles": {
+                            "elmsln_normalize": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_normalize/private/submission_images/headshot.jpg?itok=K1riV1Vt",
+                            "elmsln_gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/headshot.jpg?itok=jHdlhTNN",
+                            "elmsln_large": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_normalize/private/submission_images/headshot.jpg?itok=ert6hJGw",
+                            "elmsln_large__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/headshot.jpg?itok=MdcpGqak",
+                            "elmsln_medium": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_normalize/private/submission_images/headshot.jpg?itok=hoEMxV_x",
+                            "elmsln_medium__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/headshot.jpg?itok=9LnQD_aO",
+                            "elmsln_micro": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_normalize/private/submission_images/headshot.jpg?itok=CxcuCg8i",
+                            "elmsln_micro__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/headshot.jpg?itok=NASz0IUv",
+                            "elmsln_small": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/headshot.jpg?itok=a7hSIsX3",
+                            "elmsln_small__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/headshot.jpg?itok=Aq2GQTud",
+                            "elmsln_thumb": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_normalize/private/submission_images/headshot.jpg?itok=1ukt5gTO",
+                            "elmsln_thumb__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/headshot.jpg?itok=dWtT0ZCM"
+                          }
+                        },
+                        {
+                          "fid": 10,
+                          "uid": 1,
+                          "filename": "IMG_20190414_173102.jpg",
+                          "uri": "private://submission_images/IMG_20190414_173102_1.jpg",
+                          "filemime": "image/jpeg",
+                          "filesize": 80613,
+                          "status": 1,
+                          "timestamp": 1559147373,
+                          "origname": "IMG_20190414_173102.jpg",
+                          "type": "image",
+                          "uuid": "406aa2ed-f986-4ad0-b827-f0cca53e7264",
+                          "field_file_image_alt_text": [],
+                          "field_file_image_title_text": [],
+                          "metadata": {
+                            "height": 901,
+                            "width": 676
+                          },
+                          "alt": "",
+                          "title": "",
+                          "height": "901",
+                          "width": "676",
+                          "url": "http://studio.elmsln.local/sing100/system/files/submission_images/IMG_20190414_173102_1.jpg",
+                          "display": 0,
+                          "created": "2019-05-29T12:29:33-04:00",
+                          "image_styles": {
+                            "elmsln_normalize": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_1.jpg?itok=JKu1yPzX",
+                            "elmsln_gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_1.jpg?itok=uNAT8bMG",
+                            "elmsln_large": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_1.jpg?itok=kBs8QRNG",
+                            "elmsln_large__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_large/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_1.jpg?itok=2akJzji5",
+                            "elmsln_medium": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_1.jpg?itok=x9fCmN0J",
+                            "elmsln_medium__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_medium/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_1.jpg?itok=ACqI8pGI",
+                            "elmsln_micro": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_1.jpg?itok=C4JBIvXG",
+                            "elmsln_micro__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_micro/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_1.jpg?itok=FmJSV6qS",
+                            "elmsln_small": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_1.jpg?itok=2CCxfDyr",
+                            "elmsln_small__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_small/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_1.jpg?itok=CsOE_cwa",
+                            "elmsln_thumb": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_1.jpg?itok=9DRJHwuB",
+                            "elmsln_thumb__gray": "http://studio.elmsln.local/sing100/system/files/styles/elmsln_thumb/private/styles/elmsln_gray/private/styles/elmsln_normalize/private/submission_images/IMG_20190414_173102_1.jpg?itok=fTM-M4ED"
+                          }
+                        }
+                      ],
+                      "video": null,
+                      "files": [],
+                      "links": [
+                        {
+                          "url": "google.com",
+                          "title": null,
+                          "attributes": []
+                        },
+                        {
+                          "url": "https://google.com/",
+                          "title": null,
+                          "attributes": []
+                        }
+                      ]
+                    },
+                    "energy": {
+                      "timestamp": "2019-05-29T12:29:33-04:00",
+                      "value": "100"
+                    },
+                    "state": "submission_ready",
+                    "section": 1,
+                    "links": {
+                      "self": "http://studio.elmsln.local/sing100/api/v1/cle/submissions/38"
+                    },
+                    "metadata": {
+                      "canUpdate": 1,
+                      "canDelete": 1,
+                      "canCritique": 0,
+                      "comments": {
+                        "count": "2",
+                        "new": "0"
+                      },
+                      "icon": "done",
+                      "color": "green lighten-3"
+                    }
+                  }
+                }
+              }
+            },
+            "canUpdate": 1,
+            "canDelete": 1,
+            "afterDueDate": 0,
+            "canCritique": 0
+          },
+          "links": {
+            "self": "http://studio.elmsln.local/sing100/api/v1/cle/assignments/7",
+            "url": "http://studio.elmsln.local/sing100/cle/app/assignments/7",
+            "direct": "http://studio.elmsln.local/sing100/node/7",
+            "delete": "http://studio.elmsln.local/sing100/node/7/delete?destination=apps/lrnapp-studio-dashboard",
+            "update": "http://studio.elmsln.local/sing100/node/7/edit?destination=apps/lrnapp-studio-dashboard",
+            "devel": "http://studio.elmsln.local/sing100/node/7/devel"
+          }
+        },
+        "assignment-12": {
+          "id": 12,
+          "uid": 1,
+          "uuid": "b47c32f3-81eb-4a57-9610-4553cf24c052",
+          "title": "5g5g5g5",
+          "status": 1,
+          "created": "2019-03-19T03:16:22-04:00",
+          "body": "<p>ggg</p>",
+          "allowLateSubmissions": 0,
+          "color": "#ffffff",
+          "image": [],
+          "type": "open",
+          "startDate": null,
+          "endDate": null,
+          "commentStyle": "hierarchy",
+          "hierarchy": {
+            "dependencies": [],
+            "project": 2
+          },
+          "evidence": {
+            "competencies": null,
+            "assets": "artifacts",
+            "artifacts": [
+              "field_submission_text",
+              "field_images",
+              "field_files",
+              "field_links",
+              "field_video"
+            ],
+            "critique": {
+              "method": "none",
+              "outline": null,
+              "public": true
+            }
+          },
+          "metadata": {
+            "rationale": {
+              "text": "The assignment is open for submission, there is no due date.",
+              "code": "date-none"
+            },
+            "submissionActive": 1,
+            "relatedSubmissions": {
+              "canCreate": 1,
+              "complete": {
+                "icon": "done",
+                "color": "green lighten-3",
+                "status": 1,
+                "rationale": {
+                  "text": "Submission accepted and ready for comment",
+                  "code": "submission-ready"
+                },
+                "submission": {
+                  "id": 37,
+                  "uid": 1,
+                  "uuid": "210215c1-0048-4196-8b02-a23297d0600d",
+                  "title": "Submission for 5g5g5g5",
+                  "status": 1,
+                  "created": "2019-05-22T11:55:23-04:00",
+                  "relatedSubmission": 0,
+                  "assignment": 12,
+                  "evidence": {
+                    "body": "gdftdrgddgdgdfdfgdfgdfgdfgdfg\ndfg\ndfg\n\ndfg\n# dfg\ndfg\ndfg\ndfg\ndfg",
+                    "images": [],
+                    "video": null,
+                    "files": [],
+                    "links": [
+                      {
+                        "url": "https://www.youtube.com/watch?v=LBZ-3Ugj1AQ&feature=youtu.be",
+                        "title": null,
+                        "attributes": []
+                      }
+                    ]
+                  },
+                  "energy": {
+                    "timestamp": "2019-06-24T15:07:01-04:00",
+                    "value": "100"
+                  },
+                  "state": "submission_ready",
+                  "section": 1,
+                  "links": {
+                    "self": "http://studio.elmsln.local/sing100/api/v1/cle/submissions/37"
+                  },
+                  "metadata": {
+                    "canUpdate": 1,
+                    "canDelete": 1,
+                    "canCritique": 0,
+                    "comments": {
+                      "count": "3",
+                      "new": "0"
+                    },
+                    "icon": "done",
+                    "color": "green lighten-3"
+                  }
+                },
+                "submissions": {
+                  "37": {
+                    "id": 37,
+                    "uid": 1,
+                    "uuid": "210215c1-0048-4196-8b02-a23297d0600d",
+                    "title": "Submission for 5g5g5g5",
+                    "status": 1,
+                    "created": "2019-05-22T11:55:23-04:00",
+                    "relatedSubmission": 0,
+                    "assignment": 12,
+                    "evidence": {
+                      "body": "gdftdrgddgdgdfdfgdfgdfgdfgdfg\ndfg\ndfg\n\ndfg\n# dfg\ndfg\ndfg\ndfg\ndfg",
+                      "images": [],
+                      "video": null,
+                      "files": [],
+                      "links": [
+                        {
+                          "url": "https://www.youtube.com/watch?v=LBZ-3Ugj1AQ&feature=youtu.be",
+                          "title": null,
+                          "attributes": []
+                        }
+                      ]
+                    },
+                    "energy": {
+                      "timestamp": "2019-06-24T15:07:01-04:00",
+                      "value": "100"
+                    },
+                    "state": "submission_ready",
+                    "section": 1,
+                    "links": {
+                      "self": "http://studio.elmsln.local/sing100/api/v1/cle/submissions/37"
+                    },
+                    "metadata": {
+                      "canUpdate": 1,
+                      "canDelete": 1,
+                      "canCritique": 0,
+                      "comments": {
+                        "count": "3",
+                        "new": "0"
+                      },
+                      "icon": "done",
+                      "color": "green lighten-3"
+                    }
+                  }
+                }
+              }
+            },
+            "canUpdate": 1,
+            "canDelete": 1,
+            "afterDueDate": 0,
+            "canCritique": 0
+          },
+          "links": {
+            "self": "http://studio.elmsln.local/sing100/api/v1/cle/assignments/12",
+            "url": "http://studio.elmsln.local/sing100/cle/app/assignments/12",
+            "direct": "http://studio.elmsln.local/sing100/node/12",
+            "delete": "http://studio.elmsln.local/sing100/node/12/delete?destination=apps/lrnapp-studio-dashboard",
+            "update": "http://studio.elmsln.local/sing100/node/12/edit?destination=apps/lrnapp-studio-dashboard",
+            "devel": "http://studio.elmsln.local/sing100/node/12/devel"
+          }
+        },
+        "assignment-13": {
+          "id": 13,
+          "uid": 1,
+          "uuid": "d79795a7-e15d-4f27-8e11-fdeefd4e2e41",
+          "title": "fghfghfghfghfgh",
+          "status": 1,
+          "created": "2019-03-19T03:16:38-04:00",
+          "body": null,
+          "allowLateSubmissions": 0,
+          "color": "#ffffff",
+          "image": [],
+          "type": "open",
+          "startDate": null,
+          "endDate": null,
+          "commentStyle": "hierarchy",
+          "hierarchy": {
+            "dependencies": [],
+            "project": 2
+          },
+          "evidence": {
+            "competencies": null,
+            "assets": "artifacts",
+            "artifacts": [
+              "field_submission_text",
+              "field_images",
+              "field_files",
+              "field_links",
+              "field_video"
+            ],
+            "critique": {
+              "method": "none",
+              "outline": null,
+              "public": true
+            }
+          },
+          "metadata": {
+            "rationale": {
+              "text": "The assignment is open for submission, there is no due date.",
+              "code": "date-none"
+            },
+            "submissionActive": 1,
+            "relatedSubmissions": {
+              "canCreate": 1,
+              "complete": {
+                "icon": "done",
+                "color": "green lighten-3",
+                "status": 1,
+                "rationale": {
+                  "text": "Submission accepted and ready for comment",
+                  "code": "submission-ready"
+                },
+                "submission": {
+                  "id": 27,
+                  "uid": 1,
+                  "uuid": "3d56876f-aa71-4341-8e72-77cb2ad53a9e",
+                  "title": "Submission for New assignment",
+                  "status": 1,
+                  "created": "2019-03-19T04:07:52-04:00",
+                  "relatedSubmission": 0,
+                  "assignment": 13,
+                  "evidence": {
+                    "body": null,
+                    "images": [],
+                    "video": null,
+                    "files": [],
+                    "links": null
+                  },
+                  "energy": {
+                    "timestamp": "2019-06-24T14:54:16-04:00",
+                    "value": "100"
+                  },
+                  "state": "submission_ready",
+                  "section": 1,
+                  "links": {
+                    "self": "http://studio.elmsln.local/sing100/api/v1/cle/submissions/27"
+                  },
+                  "metadata": {
+                    "canUpdate": 1,
+                    "canDelete": 1,
+                    "canCritique": 0,
+                    "comments": {
+                      "count": "0",
+                      "new": "0"
+                    },
+                    "icon": "done",
+                    "color": "green lighten-3"
+                  }
+                },
+                "submissions": {
+                  "27": {
+                    "id": 27,
+                    "uid": 1,
+                    "uuid": "3d56876f-aa71-4341-8e72-77cb2ad53a9e",
+                    "title": "Submission for New assignment",
+                    "status": 1,
+                    "created": "2019-03-19T04:07:52-04:00",
+                    "relatedSubmission": 0,
+                    "assignment": 13,
+                    "evidence": {
+                      "body": null,
+                      "images": [],
+                      "video": null,
+                      "files": [],
+                      "links": null
+                    },
+                    "energy": {
+                      "timestamp": "2019-06-24T14:54:16-04:00",
+                      "value": "100"
+                    },
+                    "state": "submission_ready",
+                    "section": 1,
+                    "links": {
+                      "self": "http://studio.elmsln.local/sing100/api/v1/cle/submissions/27"
+                    },
+                    "metadata": {
+                      "canUpdate": 1,
+                      "canDelete": 1,
+                      "canCritique": 0,
+                      "comments": {
+                        "count": "0",
+                        "new": "0"
+                      },
+                      "icon": "done",
+                      "color": "green lighten-3"
+                    }
+                  }
+                }
+              }
+            },
+            "canUpdate": 1,
+            "canDelete": 1,
+            "afterDueDate": 0,
+            "canCritique": 0
+          },
+          "links": {
+            "self": "http://studio.elmsln.local/sing100/api/v1/cle/assignments/13",
+            "url": "http://studio.elmsln.local/sing100/cle/app/assignments/13",
+            "direct": "http://studio.elmsln.local/sing100/node/13",
+            "delete": "http://studio.elmsln.local/sing100/node/13/delete?destination=apps/lrnapp-studio-dashboard",
+            "update": "http://studio.elmsln.local/sing100/node/13/edit?destination=apps/lrnapp-studio-dashboard",
+            "devel": "http://studio.elmsln.local/sing100/node/13/devel"
+          }
+        },
+        "assignment-36": {
+          "id": 36,
+          "uid": 1,
+          "uuid": "92ee48ff-2e83-4079-adff-e90f6dc18b4d",
+          "title": "New assignment",
+          "status": 1,
+          "created": "2019-03-19T18:24:50-04:00",
+          "body": null,
+          "allowLateSubmissions": 0,
+          "color": "#ffffff",
+          "image": [],
+          "type": "open",
+          "startDate": null,
+          "endDate": null,
+          "commentStyle": "hierarchy",
+          "hierarchy": {
+            "dependencies": [],
+            "project": 2
+          },
+          "evidence": {
+            "competencies": null,
+            "assets": "artifacts",
+            "artifacts": [
+              "field_submission_text",
+              "field_images",
+              "field_files",
+              "field_links",
+              "field_video"
+            ],
+            "critique": {
+              "method": "none",
+              "outline": null,
+              "public": true
+            }
+          },
+          "metadata": {
+            "rationale": {
+              "text": "The assignment is open for submission, there is no due date.",
+              "code": "date-none"
+            },
+            "submissionActive": 1,
+            "relatedSubmissions": {
+              "canCreate": 1,
+              "complete": {
+                "icon": "assignment",
+                "color": "grey lighten-4",
+                "status": 0,
+                "rationale": {
+                  "text": "You have not submitted anything",
+                  "code": "submission-nosubmission"
+                },
+                "submission": [],
+                "submissions": []
+              }
+            },
+            "canUpdate": 1,
+            "canDelete": 1,
+            "afterDueDate": 0,
+            "canCritique": 0
+          },
+          "links": {
+            "self": "http://studio.elmsln.local/sing100/api/v1/cle/assignments/36",
+            "url": "http://studio.elmsln.local/sing100/cle/app/assignments/36",
+            "direct": "http://studio.elmsln.local/sing100/node/36",
+            "delete": "http://studio.elmsln.local/sing100/node/36/delete?destination=apps/lrnapp-studio-dashboard",
+            "update": "http://studio.elmsln.local/sing100/node/36/edit?destination=apps/lrnapp-studio-dashboard",
+            "devel": "http://studio.elmsln.local/sing100/node/36/devel"
+          }
+        }
+      }
+    },
+    "actions": null
+  },
+  "detail": "",
+  "environment": []
+}

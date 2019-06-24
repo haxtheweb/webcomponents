@@ -207,14 +207,13 @@ class LrnappStudioInstructor extends PolymerElement {
     <iron-ajax auto
       id="projectrequest"
       url="[[sourceProjectPath]]"
-      params=""
       handle-as="json"
       last-response="{{_projectData}}"
       on-response="_handleProjectResponse"></iron-ajax>
     <iron-ajax
       id="studentrequest"
       url="[[sourceStudentPath]]"
-      params='[[studentParams]]'
+      params="[[studentParams]]"
       handle-as="json"
       last-response="{{_studentData}}"
       on-response="_handleStudentResponse"></iron-ajax>
@@ -349,6 +348,12 @@ class LrnappStudioInstructor extends PolymerElement {
         type: String
       },
       endPoint: {
+        type: String
+      },
+      sourceProjectPath: {
+        type: String
+      },
+      sourceStudentPath: {
         type: String
       },
       /**

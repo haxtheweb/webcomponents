@@ -1,5 +1,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { SecureRequestXhr } from "@lrnwebcomponents/secure-request/secure-request.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import "@polymer/paper-dialog/paper-dialog.js";
@@ -44,17 +45,19 @@ class LrnappStudioSubmissionEditVideo extends SecureRequestXhr(PolymerElement) {
         }
       </style>
 
-      <template is="dom-repeat" items="{{videos}}" as="video">
-        <lrnapp-studio-submission-media-editoverlay
-          on-delete="_videoDelete"
-          data-index\$="[[index]]"
-        >
-          <iframe
-            class="videosfield__iframe"
-            src="{{video.video_src}}"
-          ></iframe>
-        </lrnapp-studio-submission-media-editoverlay>
-      </template>
+      <dom-repeat items="[[videos]]" as="video">
+        <template>
+          <lrnapp-studio-submission-media-editoverlay
+            on-delete="_videoDelete"
+            data-index\$="[[index]]"
+          >
+            <iframe
+              class="videosfield__iframe"
+              src$="[[video.video_src]]"
+            ></iframe>
+          </lrnapp-studio-submission-media-editoverlay>
+        </template>
+      </dom-repeat>
 
       <lrnapp-studio-submission-edit-add-asset
         icon="av:video-library"
@@ -114,7 +117,6 @@ class LrnappStudioSubmissionEditVideo extends SecureRequestXhr(PolymerElement) {
     };
   }
   _openDialog(e) {
-    // @todo use singleton
     this.$.dialog.open();
   }
 

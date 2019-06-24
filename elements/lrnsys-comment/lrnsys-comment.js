@@ -175,6 +175,7 @@ class LrnsysComment extends PolymerElement {
           font-weight: normal;
         }
         paper-badge {
+          position: absolute;
           right: 0px;
           top: 0px;
         }
