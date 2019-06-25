@@ -28,10 +28,8 @@ class SimplePicker extends PolymerElement {
           align-items: center;
           position: relative;
           color: var(--simple-picker-color, black);
-          font-size: var(
-            --paper-input-container-label_-_font-size,
-            var(--paper-font-subhead_-_font-size, inherit)
-          );
+          font-family: var(--simple-picker-font-family, inherit);
+          font-size: var(--simple-picker-font-size, inherit);
           max-height: calc(var(--simple-picker-option-size, 24px) + 4px);
           @apply --simple-picker;
         }
@@ -46,13 +44,8 @@ class SimplePicker extends PolymerElement {
 
         :host label {
           padding-right: 5px;
-          color: var(
-            --paper-input-container-label_-_color,
-            var(
-              --paper-input-container-color,
-              var(--secondary-text-color, #000)
-            )
-          );
+          font-family: var(--simple-picker-font-family, inherit);
+          color: var(--simple-picker-label-color, #000);
           @apply --simple-picker-label;
         }
 
@@ -71,6 +64,7 @@ class SimplePicker extends PolymerElement {
 
         :host #sample {
           display: flex;
+          flex: 1 0 auto;
           justify-content: space-between;
           align-items: center;
           padding: 2px;
@@ -81,6 +75,7 @@ class SimplePicker extends PolymerElement {
               --simple-picker-sample-border-color,
               var(--simple-picker-border-color, var(--simple-picker-color))
             );
+          @apply --simple-picker-sample;
         }
 
         :host #icon {
@@ -273,10 +268,10 @@ class SimplePicker extends PolymerElement {
 
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       allowNull: {
         name: "allowNull",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         reflectToAttribute: true
       },
@@ -285,7 +280,7 @@ class SimplePicker extends PolymerElement {
        */
       ariaLabelledby: {
         name: "ariaLabelledby",
-        type: "String",
+        type: String,
         value: null
       },
 
@@ -294,7 +289,7 @@ class SimplePicker extends PolymerElement {
        */
       disabled: {
         name: "disabled",
-        type: "Boolean",
+        type: Boolean,
         value: false
       },
 
@@ -303,7 +298,7 @@ class SimplePicker extends PolymerElement {
        */
       expanded: {
         name: "expanded",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         reflectToAttribute: true
       },
@@ -313,7 +308,7 @@ class SimplePicker extends PolymerElement {
        */
       titleAsHtml: {
         name: "titleAsHtml",
-        type: "Boolean",
+        type: Boolean,
         value: false
       },
 
@@ -323,7 +318,7 @@ class SimplePicker extends PolymerElement {
        */
       hideOptionLabels: {
         name: "hideOptionLabels",
-        type: "Boolean",
+        type: Boolean,
         value: false
       },
 
@@ -332,7 +327,7 @@ class SimplePicker extends PolymerElement {
        */
       hasLabel: {
         name: "label",
-        type: "Boolean",
+        type: Boolean,
         computed: "_hasLabel(label)"
       },
 
@@ -341,7 +336,7 @@ class SimplePicker extends PolymerElement {
        */
       label: {
         name: "label",
-        type: "String",
+        type: String,
         value: null
       },
 
@@ -360,7 +355,7 @@ class SimplePicker extends PolymerElement {
    */
       options: {
         name: "options",
-        type: "Array",
+        type: Array,
         value: [
           [
             {
@@ -381,7 +376,7 @@ class SimplePicker extends PolymerElement {
    * `center` aligns the swatches to the picker's center
   "position": {
     "name": "position",
-    "type": "Boolean",
+    "type": Boolean,
     "value": "left",
     "reflectToAttribute": false,
     "observer": false
@@ -393,7 +388,7 @@ class SimplePicker extends PolymerElement {
        */
       value: {
         name: "value",
-        type: "Object",
+        type: Object,
         value: null,
         notify: true,
         observer: "_setSelectedOption",
@@ -405,7 +400,7 @@ class SimplePicker extends PolymerElement {
        */
       __activeDesc: {
         name: "__activeDesc",
-        type: "String",
+        type: String,
         value: "option-0-0"
       },
 
@@ -414,9 +409,13 @@ class SimplePicker extends PolymerElement {
        */
       __selectedOption: {
         name: "_setSelectedOption",
-        type: "Object"
+        type: Object
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
 
   /**

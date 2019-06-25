@@ -594,6 +594,7 @@ export class HAXWiring {
                   name: "simple-picker",
                   valueProperty: "value",
                   properties: {
+                    allowNull: settings[value].allowNull,
                     required: settings[value].required,
                     options: options,
                     disabled: settings[value].disabled

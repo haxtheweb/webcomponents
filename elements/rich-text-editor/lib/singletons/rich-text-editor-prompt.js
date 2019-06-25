@@ -55,6 +55,9 @@ class RichTextEditorPrompt extends PolymerElement {
         :host #cancel {
           min-width: unset;
         }
+        :host #formfields {
+          overflow: visible;
+        }
         :host #cancel.rtebutton:focus,
         :host #cancel.rtebutton:hover {
           color: var(

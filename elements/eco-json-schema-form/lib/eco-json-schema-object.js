@@ -295,11 +295,18 @@ class EcoJsonSchemaObject extends mixinBehaviors(
     return html`
       <custom-style>
         <style is="custom-style" include="iron-flex iron-flex-alignment">
+          :host {
+            color: var(--eco-json-form-color, black);
+            background-color: var(--eco-json-form-bg, white);
+            font-family: var(
+              --eco-json-form-font-family,
+              var(--paper-font-caption_-_font-family, unset)
+            );
+          }
           div.layout {
             height: auto;
           }
           #form {
-            color: var(--eco-json-form-color, unset);
             display: block;
             @apply --eco-json-schema-object-form;
             @apply --layout-vertical;
@@ -307,20 +314,38 @@ class EcoJsonSchemaObject extends mixinBehaviors(
           }
           #form ::slotted(paper-input),
           #form ::slotted(div[role="tooltip"]) {
-            color: var(--eco-json-form-color, unset);
-            font-family: var(--paper-font-caption_-_font-family, unset);
+            color: var(--eco-json-form-color, black);
+            font-family: var(--eco-json-form-font-family, unset);
           }
           #form ::slotted(div[role="tooltip"]) {
             font-size: 80%;
           }
+          #form ::slotted(simple-picker) {
+            margin: 5px 0;
+            --simple-picker-font-family: var(
+              --eco-json-form-font-family,
+              unset
+            );
+            --simple-picker-background-color: var(--eco-json-form-bg, white);
+            --simple-picker-border-color: var(
+              --eco-json-schema-border-color,
+              black
+            );
+            --simple-picker-label: {
+              flex: 1 0 auto;
+            }
+            --simple-picker-sample: {
+              min-width: 40px;
+            }
+          }
           #form ::slotted(code-editor) {
             margin: 8px 0;
             --code-editor-code: {
-              border: var(--eco-json-schema-code-border, 1px solid black);
+              border: 1px solid var(--eco-json-schema-border-color, black);
             }
             --code-editor-label: {
               color: var(--eco-json-form-color, unset);
-              font-family: var(--paper-font-caption_-_font-family, unset);
+              font-family: var(--eco-json-form-font-family, unset);
             }
           }
         </style>

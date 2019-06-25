@@ -3,7 +3,8 @@
   align-items: center;
   position: relative;
   color: var(--simple-picker-color, black);
-  font-size: var(--paper-input-container-label_-_font-size, var(--paper-font-subhead_-_font-size, inherit));
+  font-family: var(--simple-picker-font-family, inherit);
+  font-size: var(--simple-picker-font-size, inherit);
   max-height: calc(var(--simple-picker-option-size, 24px) + 4px);
   @apply --simple-picker;
 }
@@ -18,7 +19,8 @@
 
 :host label {
   padding-right: 5px;
-  color: var(--paper-input-container-label_-_color, var(--paper-input-container-color, var(--secondary-text-color, #000)));
+  font-family: var(--simple-picker-font-family, inherit);
+  color: var(--simple-picker-label-color, #000);
   @apply --simple-picker-label;
 }
 
@@ -37,12 +39,14 @@
 
 :host #sample {
   display: flex;
+  flex: 1 0 auto;
   justify-content: space-between;
   align-items: center;
   padding: 2px;
   border-radius: 2px;
   background-color: var(--simple-picker-background-color,#ddd);
   border: 1px solid var(--simple-picker-sample-border-color, var(--simple-picker-border-color, var(--simple-picker-color)));
+  @apply --simple-picker-sample;
 } 
 
 :host #icon {
