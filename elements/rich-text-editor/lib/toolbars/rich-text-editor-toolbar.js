@@ -169,6 +169,7 @@ class RichTextEditorToolbar extends PolymerElement {
         type: Boolean,
         value: true
       },
+
       /**
        * Custom configuration of toolbar groups and buttons.
        * (See default value for example using default configuration.)
@@ -417,6 +418,9 @@ class RichTextEditorToolbar extends PolymerElement {
         reflectToAttribute: true,
         observer: "_stickyChanged"
       },
+      /**
+       * Tracks the inline widgets that require selection data
+       */
       __inlineWidgets: {
         name: "__inlineWidgets",
         type: Array,
@@ -541,6 +545,7 @@ class RichTextEditorToolbar extends PolymerElement {
         root.controls = null;
       }
       root.buttons.forEach(button => {
+        button.target = editor;
         button.controls = root.controls;
       });
     }
@@ -614,6 +619,7 @@ class RichTextEditorToolbar extends PolymerElement {
     button.addEventListener("deselect", e => {
       if (root.range && root.range.collapse) root.range.collapse(false);
     });
+
     if (button.inlineWidget) root.push("__inlineWidgets", button.tag);
     parent.appendChild(button);
     return button;

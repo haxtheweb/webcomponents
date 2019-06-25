@@ -6,6 +6,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
+import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "./rich-text-editor-button-styles.js";
 import "../singletons/rich-text-editor-selection.js";
@@ -56,6 +57,13 @@ class RichTextEditorButton extends PolymerElement {
         <span id="label" class$="[[labelStyle]]">[[__label]]</span>
       </paper-button>
       <paper-tooltip id="tooltip" for="button">[[__label]]</paper-tooltip>
+      <iron-a11y-keys
+        id="keys"
+        keys$="[[__osKeys]]"
+        on-keys-pressed="_keysPressed"
+        target="[[target]]"
+      >
+      </iron-a11y-keys>
     `;
   }
 
@@ -70,6 +78,7 @@ class RichTextEditorButton extends PolymerElement {
         type: String,
         observer: "_editorChanged"
       },
+
       /**
        * The command used for document.execCommand.
        */
@@ -136,12 +145,31 @@ class RichTextEditorButton extends PolymerElement {
       },
 
       /**
+       * Optional space-sperated list of keyboard shortcuts for the editor
+       * to fire this button, see iron-a11y-keys for more info.
+       */
+      shortcutKeys: {
+        name: "shortcutKeys",
+        type: String,
+        value: null
+      },
+
+      /**
        * Show text label even if an icon is named?
        */
       showTextLabel: {
         name: "showTextLabel",
         type: Boolean,
         value: false
+      },
+
+      /**
+       * The active selected range, inherited from the toolbar
+       */
+      target: {
+        name: "target",
+        type: Object,
+        value: null
       },
 
       /**
@@ -251,6 +279,16 @@ class RichTextEditorButton extends PolymerElement {
           "useCSS"
         ],
         readOnly: true
+      },
+
+      /**
+       * Optional space-sperated list of keyboard shortcuts for the editor
+       * to fire this button, see iron-a11y-keys for more info.
+       */
+      __osKeys: {
+        name: "__osKeys",
+        type: String,
+        computed: "_getOsKeys(shortcutKeys)"
       }
     };
   }
@@ -320,7 +358,7 @@ class RichTextEditorButton extends PolymerElement {
   }
 
   /**
-   * Handles button tap;
+   * Handles button tap
    */
   _buttonTap(e) {
     e.preventDefault();
@@ -344,6 +382,17 @@ class RichTextEditorButton extends PolymerElement {
         detail: root
       })
     );
+  }
+
+  /**
+   * replaces ctrl with command(meta) on Mac
+   * @param {string} shortcutKeys the string of shortcut keys for iron-a11y-keys
+   * @returns {string} the string of shortcut keys for iron-a11y-keys, modded for Mac if needed
+   */
+  _getOsKeys(shortcutKeys) {
+    return window.navigator.platform === "MacIntel" && shortcutKeys
+      ? shortcutKeys.replace(/ctrl/g, "meta")
+      : shortcutKeys;
   }
 
   /**
@@ -380,6 +429,14 @@ class RichTextEditorButton extends PolymerElement {
     if (this.$.label !== undefined) this.$.label.innerHTML = label;
     if (this.$.tooltip !== undefined) this.$.tooltip.innerHTML = label*/
     return toggled;
+  }
+
+  /**
+   * Handles keys the same way a button is handled
+   * @param {event} e the  event
+   */
+  _keysPressed(e) {
+    this._buttonTap(e);
   }
 
   /**
