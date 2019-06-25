@@ -186,12 +186,14 @@ class RichTextEditorToolbar extends PolymerElement {
                 command: "undo",
                 icon: "undo",
                 label: "Undo",
+                shortcutKeys: "ctrl+z",
                 type: "rich-text-editor-button"
               },
               {
                 command: "redo",
                 icon: "redo",
                 label: "Redo",
+                shortcutKeys: "ctrl+shift+z",
                 type: "rich-text-editor-button"
               }
             ]
@@ -200,14 +202,15 @@ class RichTextEditorToolbar extends PolymerElement {
             label: "Basic Inline Operations",
             type: "button-group",
             buttons: [
-              /*{
+              {
                 label: "Format",
                 type: "rich-text-editor-heading-picker"
-              },*/
+              },
               {
                 command: "bold",
                 icon: "editor:format-bold",
                 label: "Bold",
+                shortcutKeys: "ctrl+b",
                 toggles: true,
                 type: "rich-text-editor-button"
               },
@@ -215,6 +218,7 @@ class RichTextEditorToolbar extends PolymerElement {
                 command: "italic",
                 icon: "editor:format-italic",
                 label: "Italics",
+                shortcutKeys: "ctrl+i",
                 toggles: true,
                 type: "rich-text-editor-button"
               },
@@ -233,6 +237,7 @@ class RichTextEditorToolbar extends PolymerElement {
               {
                 icon: "link",
                 label: "Link",
+                shortcutKeys: "ctrl+k",
                 type: "rich-text-editor-link"
               }
             ]
@@ -245,18 +250,21 @@ class RichTextEditorToolbar extends PolymerElement {
                 command: "cut",
                 icon: "content-cut",
                 label: "Cut",
+                shortcutKeys: "ctrl+x",
                 type: "rich-text-editor-button"
               },
               {
                 command: "copy",
                 icon: "content-copy",
                 label: "Copy",
+                shortcutKeys: "ctrl+c",
                 type: "rich-text-editor-button"
               },
               {
                 command: "paste",
                 icon: "content-paste",
                 label: "Paste",
+                shortcutKeys: "ctrl+v",
                 type: "rich-text-editor-button"
               }
             ]
@@ -314,20 +322,23 @@ class RichTextEditorToolbar extends PolymerElement {
                 commandVal: "blockquote",
                 label: "Blockquote",
                 icon: "editor:format-quote",
+                shortcutKeys: "ctrl+'",
                 type: "rich-text-editor-button"
               },
               {
-                label: "Increase Indent",
+                command: "indent",
                 icon: "editor:format-indent-increase",
                 event: "text-indent",
-                command: "indent",
+                label: "Increase Indent",
+                shortcutKeys: "ctrl+]",
                 type: "rich-text-editor-button"
               },
               {
-                label: "Decrease Indent",
-                icon: "editor:format-indent-decrease",
-                event: "text-outdent",
                 command: "outdent",
+                event: "text-outdent",
+                icon: "editor:format-indent-decrease",
+                label: "Decrease Indent",
+                shortcutKeys: "ctrl+[",
                 type: "rich-text-editor-button"
               }
             ]

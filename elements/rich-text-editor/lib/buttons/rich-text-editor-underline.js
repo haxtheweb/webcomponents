@@ -37,6 +37,7 @@ class RichTextEditorUnderline extends RichTextEditorPromptButton {
     this.label = "Underline (not recommended)";
     this.toggles = true;
     this.command = "underline";
+    this.shortcutKeys = "ctrl+u";
     this.value = {
       tag: false
     };
