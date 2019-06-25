@@ -42,6 +42,10 @@ class HAXCMSBasicTheme extends HAXCMSTheme(BasicTemplate(PolymerElement)) {
         site-rss-button:not(:defined) {
           display: none;
         }
+        :host([edit-mode]) .left-col {
+          pointer-events: none;
+          opacity: 0.2;
+        }
         .container {
           margin: 24px auto;
           max-width: 1280px;
@@ -84,6 +88,8 @@ class HAXCMSBasicTheme extends HAXCMSTheme(BasicTemplate(PolymerElement)) {
           background-color: #37474f;
           color: white;
           padding: 16px;
+          transition: 0.2s opacity linear;
+          opacity: 1;
         }
         site-active-title {
           display: inline-flex;

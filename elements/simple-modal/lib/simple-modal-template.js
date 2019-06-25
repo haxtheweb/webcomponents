@@ -33,21 +33,21 @@ class SimpleModalTemplate extends PolymerElement {
        * the desired id for the modal
        */
       modalId: {
-        type: "Object",
+        type: Object,
         value: null
       },
       /**
        * the simple-modal
        */
       modal: {
-        type: "Object",
+        type: Object,
         computed: "_getModal()"
       },
       /**
        * the modal title
        */
       title: {
-        type: "String",
+        type: String,
         value: ""
       }
     };
@@ -149,6 +149,7 @@ class SimpleModalTemplate extends PolymerElement {
         invokedBy: target,
         modalClass: this.getAttribute("class"),
         styles: styles,
+        clone: false,
         title: this.title !== null ? this.title : false
       }
     });

@@ -46,8 +46,18 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
         type: Number,
         reflectToAttribute: true,
         value: 0
+      },
+      stateClass: {
+        type: String,
+        computed: "_getStateClass(editMode)"
       }
     });
+  }
+  _getStateClass(editMode) {
+    if (editMode) {
+      return "disable-items";
+    }
+    return "";
   }
   _getColor(manifest) {
     if (manifest && manifest.metadata && manifest.metadata.hexCode) {
@@ -81,7 +91,6 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.__disposer = [];
     autorun(reaction => {
       let manifest = toJS(store.manifest);
       this.title = manifest.title;

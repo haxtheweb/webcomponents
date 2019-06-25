@@ -35,6 +35,9 @@ class LrnsysCommentList extends PolymerElement {
         app-toolbar > *:not(:last-child) {
           margin-right: 10px;
         }
+        lrnsys-button {
+          font-size: 12px;
+        }
         .comment-button {
           min-width: 125px;
         }
@@ -90,7 +93,7 @@ class LrnsysCommentList extends PolymerElement {
       <app-toolbar>
         <lrnsys-button
           class="comment-button"
-          raised=""
+          raised
           on-click="handleTopReply"
           id="leavecomment"
           hover-class="blue white-text"
@@ -313,6 +316,7 @@ class LrnsysCommentList extends PolymerElement {
     b.appendChild(pb2);
     const evt = new CustomEvent("simple-modal-show", {
       bubbles: true,
+      composed: true,
       cancelable: true,
       detail: {
         title: "Delete comment",
@@ -332,6 +336,7 @@ class LrnsysCommentList extends PolymerElement {
   handleEditing(e) {
     const evt = new CustomEvent("simple-toast-show", {
       bubbles: true,
+      composed: true,
       cancelable: true,
       detail: {
         text: "Be awesome to each other",
@@ -421,6 +426,7 @@ class LrnsysCommentList extends PolymerElement {
         // force tree to notice element updated
         const evt = new CustomEvent("simple-toast-show", {
           bubbles: true,
+          composed: true,
           cancelable: true,
           detail: {
             text: "Comment deleted",
@@ -445,6 +451,7 @@ class LrnsysCommentList extends PolymerElement {
   _handleUpdateResponse(e) {
     const evt = new CustomEvent("simple-toast-show", {
       bubbles: true,
+      composed: true,
       cancelable: true,
       detail: {
         text: "Comment saved!",

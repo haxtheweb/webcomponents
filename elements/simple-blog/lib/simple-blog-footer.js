@@ -25,6 +25,12 @@ class SimpleBlogFooter extends PolymerElement {
           width: 100%;
           position: relative;
           overflow: hidden;
+          opacity: 1;
+          transition: 0.2s opacity linear;
+        }
+        :host([edit-mode]) {
+          pointer-events: none;
+          opacity: 0.2;
         }
         :host *[hidden] {
           display: none;
@@ -184,6 +190,10 @@ class SimpleBlogFooter extends PolymerElement {
        */
       manifest: {
         type: Object
+      },
+      editMode: {
+        type: Boolean,
+        reflectToAttribute: true
       }
     };
   }
@@ -241,6 +251,10 @@ class SimpleBlogFooter extends PolymerElement {
     });
     autorun(reaction => {
       this.activeManifestIndex = toJS(store.activeManifestIndex);
+      this.__disposer.push(reaction);
+    });
+    autorun(reaction => {
+      this.editMode = toJS(store.editMode);
       this.__disposer.push(reaction);
     });
   }

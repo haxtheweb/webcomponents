@@ -36,7 +36,7 @@ class HAX extends HTMLElement {
     let props = {
       appStore: {
         name: "appStore",
-        type: "String",
+        type: String,
         value: ""
       }
     };

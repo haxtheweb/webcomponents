@@ -5,6 +5,9 @@ import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/app-route/app-location.js";
 import "@polymer/app-route/app-route.js";
 import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/iron-icons/editor-icons.js";
+import "@polymer/iron-icons/communication-icons.js";
+import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-badge/paper-badge.js";
 import "@polymer/paper-toggle-button/paper-toggle-button.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
@@ -54,6 +57,9 @@ class LrnappStudioKanban extends PolymerElement {
           .projects-container {
             width: auto;
           }
+        }
+        #activetoggle {
+          padding-left: 16px;
         }
         .projects-window {
           width: 100vw;
@@ -181,9 +187,6 @@ class LrnappStudioKanban extends PolymerElement {
           margin: 0em auto;
           max-width: 20em;
         }
-        #activeitemcontainer {
-          display: none;
-        }
       </style>
       <iron-ajax
         auto=""
@@ -294,6 +297,7 @@ class LrnappStudioKanban extends PolymerElement {
                           class="assignment-row-button"
                           hover-class="amber lighten-5"
                           on-click="assignmentClick"
+                          icon="[[assignment.meta.relatedSubmissions.complete.icon]]"
                         >
                           [[assignment.attributes.title]]
                         </lrnsys-button>
@@ -353,17 +357,7 @@ class LrnappStudioKanban extends PolymerElement {
           >
         </div>
       </paper-dialog>
-      <div id="activeitemcontainer">
-        <span id="activeheader" class="button-contents">
-          <div
-            class\$="status-indicator [[activeAssignmentNode.meta.relatedSubmissions.complete.color]]"
-          >
-            <iron-icon
-              icon="[[activeAssignmentNode.meta.relatedSubmissions.complete.icon]]"
-              disabled\$="[[!activeAssignmentNode.meta.relatedSubmissions.canCreate]]"
-            ></iron-icon>
-          </div>
-        </span>
+      <paper-dialog id="activeitemcontainer" with-backdrop>
         <div id="activecontent">
           <app-header reveals>
             <app-toolbar
@@ -405,23 +399,22 @@ class LrnappStudioKanban extends PolymerElement {
                 csrf-token="[[csrfToken]]"
                 submission-id="[[activeAssignmentNode.meta.relatedSubmissions.complete.submission.id]]"
               ></lrnapp-studio-submission-button>
-              <div main-title=""></div>
               <paper-toggle-button
                 id="activetoggle"
                 on-click="statusToggle"
               ></paper-toggle-button>
               <span id="activetoggletext"></span>
-              <div bottom-item="" class="status-rationale">
-                [[activeAssignmentNode.meta.relatedSubmissions.complete.rationale.text]]
-              </div>
             </app-toolbar>
+            <div class="status-rationale">
+              [[activeAssignmentNode.meta.relatedSubmissions.complete.rationale.text]]
+            </div>
           </app-header>
           <lrnsys-render-html
             style="padding:2em;"
             html="[[activeAssignmentNode.attributes.body]]"
           ></lrnsys-render-html>
         </div>
-      </div>
+      </paper-dialog>
     `;
   }
 
@@ -533,11 +526,11 @@ class LrnappStudioKanban extends PolymerElement {
   _routeChanged(route, endPoint) {
     if (typeof route.path === "string") {
       if (typeof endPoint === "string") {
-        if (route.path.startsWith(endPoint)) {
+        if (route.path.startsWith(endPoint) || route.path == "/") {
           return;
         }
       }
-      window.location = route.path;
+      window.location.reload();
     }
   }
 
@@ -645,7 +638,7 @@ class LrnappStudioKanban extends PolymerElement {
    * if we should show new badge based on new comment count.
    */
   displayNewBadge(count) {
-    if (count == 0) {
+    if (typeof count === typeof undefined || count == 0) {
       return true;
     }
     return false;
@@ -699,21 +692,7 @@ class LrnappStudioKanban extends PolymerElement {
     this._setToggle(false);
     local.nextElementSibling.classList.add("show");
     local.classList.add("active");
-    window.dispatchEvent(
-      new CustomEvent("simple-modal-show", {
-        bubbles: true,
-        cancelable: false,
-        detail: {
-          title: this.activeAssignmentNode.attributes.title + " details",
-          elements: {
-            header: this.$.activeheader,
-            content: this.$.activecontent
-          },
-          invokedBy: local,
-          clone: true
-        }
-      })
-    );
+    this.$.activeitemcontainer.toggle();
   }
 
   /**
@@ -722,6 +701,15 @@ class LrnappStudioKanban extends PolymerElement {
   _handleProjectResponse(event) {
     this.$.loading.hidden = true;
     this._setToggle(true);
+    if (this.activeAssignment) {
+      setTimeout(() => {
+        var parts = this.activeAssignment.split("-");
+        this.set("activeAssignmentNode", {});
+        this.activeAssignmentNode = this.projectResponse.data.projects[
+          "project-" + parts[1]
+        ].relationships.assignments["assignment-" + parts[2]];
+      }, 100);
+    }
   }
 
   /**
@@ -738,7 +726,16 @@ class LrnappStudioKanban extends PolymerElement {
     if (this.backendResponse.status == 200) {
       this.$.toast.text = "Updated successfully";
       this.$.toast.toggle();
+      // this will force a repaint of the UI pieces on reload
+      this.set("projectResponse", {});
       this.$.projectbackend.generateRequest();
+      setTimeout(() => {
+        var parts = this.activeAssignment.split("-");
+        this.set("activeAssignmentNode", {});
+        this.activeAssignmentNode = this.projectResponse.data.projects[
+          "project-" + parts[1]
+        ].relationships.assignments["assignment-" + parts[2]];
+      }, 500);
     } else {
       // this would imply an error
       this.$.loading.hidden = true;
@@ -815,12 +812,6 @@ class LrnappStudioKanban extends PolymerElement {
     return Object.keys(obj).map(function(key) {
       return obj[key];
     });
-  }
-  ready() {
-    super.ready();
-    this.__modal = window.SimpleModal.requestAvailability();
-    this.__modal.style =
-      "--simple-modal-min-width: 50vw;--simple-modal-min-height: 50vh;";
   }
 }
 window.customElements.define(LrnappStudioKanban.tag, LrnappStudioKanban);

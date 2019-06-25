@@ -151,6 +151,12 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
           position: fixed;
           z-index: 99;
           margin-left: -10vw;
+          opacity: 1;
+          transition: 0.2s opacity linear;
+        }
+        .social-float.disable-items {
+          pointer-events: none;
+          opacity: 0.2 !important;
         }
         .social-float ul {
           padding: 0;
@@ -177,6 +183,16 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
           padding: 10px 0;
           height: 50px;
           z-index: 100;
+          opacity: 1;
+          transition: 0.2s opacity linear;
+          -webkit-transition: 0.2s opacity linear;
+          -moz-transition: 0.2s opacity linear;
+          -ms-transition: 0.2s opacity linear;
+          -o-transition: 0.2s opacity linear;
+        }
+        .annoy-user.disable-items {
+          pointer-events: none;
+          opacity: 0 !important;
         }
         iron-icon {
           height: 40px;
@@ -384,7 +400,7 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
                 </template>
               </dom-repeat>
             </div>
-            <div class="social-float hide-small">
+            <div class$="social-float hide-small [[stateClass]]">
               <ul>
                 <li>
                   <social-share-link
@@ -428,7 +444,7 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
                 </li>
               </ul>
             </div>
-            <div class="annoy-user hide-small">
+            <div class$="annoy-user hide-small [[stateClass]]">
               <div class="annoy-inner">
                 <iron-icon icon="[[icon]]"></iron-icon>
                 <span>
@@ -449,7 +465,11 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
 
   // properties available to the custom element for data binding
   static get properties() {
-    return {};
+    let props = {};
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
 
   /**
@@ -472,8 +492,18 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
         type: Number,
         reflectToAttribute: true,
         value: 0
+      },
+      stateClass: {
+        type: String,
+        computed: "_getStateClass(editMode)"
       }
     });
+  }
+  _getStateClass(editMode) {
+    if (editMode) {
+      return "disable-items";
+    }
+    return "";
   }
   _getColor(manifest) {
     if (manifest && manifest.metadata && manifest.metadata.hexCode) {
@@ -507,7 +537,6 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.__disposer = [];
     autorun(reaction => {
       let manifest = toJS(store.manifest);
       this.title = manifest.title;

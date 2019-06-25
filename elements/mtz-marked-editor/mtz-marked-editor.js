@@ -58,7 +58,7 @@ class MtzMarkedEditor extends mixinBehaviors(
 
   disconnectedCallback() {
     this.removeEventListener("register-control", this.__bindControlToEditor);
-    this.disconnectedCallback();
+    super.disconnectedCallback();
   }
   /**
    * Returns the instance of textarea

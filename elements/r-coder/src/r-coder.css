@@ -1,0 +1,16 @@
+:host {
+  display: block;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+#editor {
+  height: var(--r-coder-editor-height, 300px);
+  width: var(--r-coder-editor-width, 100%);
+}
+
+#button {
+  margin: var(--r-code-button-margin, 10px 0);
+}

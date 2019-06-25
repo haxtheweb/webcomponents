@@ -1,12 +1,13 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import { SecureRequestXhr } from "@lrnwebcomponents/secure-request/secure-request.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-button/paper-button.js";
+import "@polymer/paper-dialog/paper-dialog.js";
 import "@vaadin/vaadin-upload/vaadin-upload.js";
 import "@lrnwebcomponents/secure-request/secure-request.js";
-import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
 import "./lrnapp-studio-submission-edit-add-asset.js";
 import "./lrnapp-studio-submission-edit-file.js";
 class LrnappStudioSubmissionEditFiles extends SecureRequestXhr(PolymerElement) {
@@ -29,6 +30,11 @@ class LrnappStudioSubmissionEditFiles extends SecureRequestXhr(PolymerElement) {
           margin-right: 16px;
           min-width: 200px;
         }
+        paper-dialog {
+          width: 50%;
+          width: 50vmax;
+          padding: 16px;
+        }
       </style>
 
       <div class="files__files">
@@ -40,13 +46,13 @@ class LrnappStudioSubmissionEditFiles extends SecureRequestXhr(PolymerElement) {
           ></lrnapp-studio-submission-edit-file>
         </template>
         <lrnapp-studio-submission-edit-add-asset
-          on-click="_addImage"
+          on-click="_addFile"
           icon="editor:attach-file"
         ></lrnapp-studio-submission-edit-add-asset>
       </div>
-      <simple-modal-template id="dialog" title="Add Files">
-        <div slot="header">Add Files</div>
-        <div class="files__upload" slot="content">
+      <paper-dialog id="dialog">
+        <h2>Add Files</h2>
+        <div class="files__upload">
           <template is="dom-if" if="[[uploadUrl]]">
             <vaadin-upload
               accept="[[fileTypes]]"
@@ -62,10 +68,10 @@ class LrnappStudioSubmissionEditFiles extends SecureRequestXhr(PolymerElement) {
             </vaadin-upload>
           </template>
         </div>
-        <div slot="buttons">
+        <div>
           <paper-button dialog-dismiss>Cancel</paper-button>
         </div>
-      </simple-modal-template>
+      </paper-dialog>
     `;
   }
   static get tag() {
@@ -100,7 +106,7 @@ class LrnappStudioSubmissionEditFiles extends SecureRequestXhr(PolymerElement) {
 
   _filesChanged(files) {}
 
-  _addImage(e) {
+  _addFile(e) {
     // @todo switch to singleton
     this.$.dialog.open();
   }

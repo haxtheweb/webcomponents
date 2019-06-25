@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+  <title>GlossaryTerm: glossary-term Demo</title>
+  <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+  <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+  <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+  <script type="module">
+    import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+    import '@polymer/iron-demo-helpers/demo-snippet.js';
+    import '../glossary-term.js';
+  </script>
+  <style is="custom-style" include="demo-pages-shared-styles"></style>
+</head>
+
+<body>
+  <div class="vertical-section-container centered">
+    <h3>Basic glossary-term demo</h3>
+    <p>This element relies on the @lrnwebcomponents/glossary-service.</p>
+    <demo-snippet>
+      <template>
+        <h3>The Future of Docker: Docker and VMs Will&nbsp;Co-exist</h3>
+        <p>While <glossary-term display="Docker" name="docker" endpoint="demo/glossary-terms/glossary-terms.json">Docker</glossary-term> is certainly gaining a lot of
+          steam, I don’t believe it will become a real threat to <glossary-term display="VMs" name="virtual_machine">VMs
+          </glossary-term>. <glossary-term name="container_virtualization" display="Containers">Containers
+          </glossary-term> will continue to gain ground, but there are many use cases where VMs are still better suited.
+        </p>
+        <p>For instance, if you need to run multiple applications on multiple servers, it probably makes sense to use
+          VMs. On the other hand, if you need to run many *copies* of a single application, Docker offers some
+          compelling advantages.</p>
+        <p>Moreover, while containers allow you to break your application into more functional discrete parts to create
+          a separation of concerns, it also means there’s a growing number of parts to manage, which can get unwieldy.
+        </p>
+        <p>Security has also been an area of concern with Docker containers — since containers share the same kernel,
+          the barrier between containers is thinner. While a full VM can only issue hypercalls to the host hypervisor, a
+          Docker container can make syscalls to the host kernel, which creates a larger surface area for attack. When
+          security is particularly important, developers are likely to pick VMs, which are isolated by abstracted
+          hardware — making it much more difficult to interfere with each other.</p>
+        <p>Of course, issues like security and management are certain to evolve as containers get more exposure in
+          production and further scrutiny from users. For now, the debate about containers vs. VMs is really best off to
+          dev ops folks who live and breathe them everyday!</p>
+        Source:
+        https://medium.freecodecamp.org/a-beginner-friendly-introduction-to-containers-vms-and-docker-79a9e3e119b
+      </template>
+    </demo-snippet>
+  </div>
+</body>
+
+</html>

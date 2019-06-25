@@ -35,6 +35,7 @@ p {
 a {
   color: var(--haxcms-base-styles-a-color, #000);
   font-size: var(--haxcms-base-styles-a-font-size, 24px);
+  font-weight: var(--haxcms-base-styles-a-font-weight, normal);
 }
 a:visited {
   color: var(--haxcms-base-styles-a-color-visited, #2196f3);
@@ -43,7 +44,7 @@ a:active,
 a:focus,
 a:hover {
   color: var(--haxcms-base-styles-a-color-active, #2196f3);
-  font-weight: var(--haxcms-base-styles-a-font-weight, normal);
+  font-weight: var(--haxcms-base-styles-a-font-weight-active, normal);
 }
 ol,
 ul

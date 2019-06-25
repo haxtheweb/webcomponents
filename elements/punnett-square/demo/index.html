@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>PunnettSquare: punnett-square Demo</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '@polymer/paper-input/paper-input.js';
+      import '@polymer/paper-input/paper-input.js';
+      import {} from '@polymer/polymer/lib/elements/dom-bind.js';
+      import '../punnett-square.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic punnett-square demo</h3>
+      <demo-snippet>
+        <template>
+          <punnett-square id="demo1-square" variant1="xy, Yy" variant2="Xy, XX">
+            This is punnett-square
+          </punnett-square>
+        </template>
+      </demo-snippet>
+
+      <h3>Basic punnett-square demo editable</h3>
+      <demo-snippet>
+        <template>
+          <punnett-square editable variant1="xy, Yy" variant2="Xy, XX">
+            This is punnett-square
+          </punnett-square>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
