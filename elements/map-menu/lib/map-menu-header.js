@@ -39,7 +39,8 @@ class MapMenuHeader extends PolymerElement {
         a:hover,
         a:visited,
         a:focus {
-          color: inherit;
+          color: var(--map-menu-header-a-color, inherit);
+          text-decoration: var(--map-menu-header-a-text-decoration, inherit);
         }
 
         lrndesign-avatar {
