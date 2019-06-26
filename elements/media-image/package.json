@@ -16,7 +16,7 @@
       "hax": "src/media-image-hax.json"
     }
   },
-  "version": "2.0.10",
+  "version": "2.1.0",
   "description": "Automated conversion of media-image/",
   "repository": {
     "type": "git",
