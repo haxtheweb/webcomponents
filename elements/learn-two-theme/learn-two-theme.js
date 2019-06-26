@@ -21,17 +21,25 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
   static get template() {
     return html`
       <style>
+        :host {
+          --learn-two-theme-default-font-family: "Muli", "Helvetica", "Tahoma",
+            "Geneva", "Arial", sans-serif;
+          --learn-two-theme-default-background: #fafafa;
+          display: block;
+          font-family: var(
+            --learn-two-theme-font-family,
+            var(--learn-two-theme-default-font-family)
+          );
+          letter-spacing: var(--learn-two-theme-letter-spacing, -0.03rem);
+          font-weight: var(--learn-two-theme-font-weight, 400);
+          background: var(
+            --learn-two-theme-background,
+            var(--learn-two-theme-default-background)
+          );
+        }
         html,
         body {
-          background-color: var(--learn-two-theme-background-color, #fafafa);
-        }
-        :host {
-          display: block;
-          font-family: "Muli", "Helvetica", "Tahoma", "Geneva", "Arial",
-            sans-serif;
-          letter-spacing: -0.03rem;
-          font-weight: 400;
-          background: #fafafa;
+          background-color: var(--learn-two-theme-default-background);
         }
         h1,
         h2,
@@ -39,12 +47,17 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
         h4,
         h5,
         h6 {
-          font-family: "Montserrat", "Helvetica", "Tahoma", "Geneva", "Arial",
-            sans-serif;
-          font-weight: 400;
-          text-rendering: optimizeLegibility;
-          line-height: 150%;
-          letter-spacing: 0;
+          font-family: var(
+            --learn-two-theme-headers-font-family,
+            var(--learn-two-theme-default-font-family)
+          );
+          font-weight: var(--learn-two-theme-headers-font-weight, 400);
+          text-rendering: var(
+            --learn-two-theme-headers-text-rendering,
+            optimizeLegibility
+          );
+          line-height: var(--learn-two-theme-headers-line-height, 150%);
+          letter-spacing: var(--learn-two-theme-headers-letter-spacing, 150%);
         }
 
         :host([hidden]) {
@@ -56,8 +69,9 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
         }
 
         #contentcontainer {
-          background: #fafafa;
-          padding: 48px 96px;
+          padding: var(--learn-two-theme-contentcontainer-padding, 48px 96px);
+          max-width: var(--learn-two-theme-contentcontainer-max-width, 900px);
+          margin: var(--learn-two-theme-contentcontainer-margin, auto);
         }
 
         .header {
@@ -69,8 +83,7 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
 
         site-active-title {
           --site-active-title-heading: {
-            font-family: "Montserrat", "Helvetica", "Tahoma", "Geneva", "Arial",
-              sans-serif;
+            font-family: var(--learn-two-theme-default-font-family);
             font-size: 52px;
             letter-spacing: -3px;
             line-height: 78px;
@@ -90,8 +103,7 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
             text-decoration: none;
           }
           --site-title-heading: {
-            font-family: "Montserrat", "Helvetica", "Tahoma", "Geneva", "Arial",
-              sans-serif;
+            font-family: var(--learn-two-theme-default-font-family);
             font-size: 28px;
             margin: 0;
             padding: 0;
