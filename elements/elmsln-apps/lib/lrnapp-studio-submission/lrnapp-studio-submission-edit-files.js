@@ -38,9 +38,9 @@ class LrnappStudioSubmissionEditFiles extends SecureRequestXhr(PolymerElement) {
       </style>
 
       <div class="files__files">
-        <template is="dom-repeat" items="{{files}}" as="file">
+        <template is="dom-repeat" items="[[files]]" as="file">
           <lrnapp-studio-submission-edit-file
-            file="{{file}}"
+            file="[[file]]"
             on-deleted="_deleteImage"
             data-index\$="[[index]]"
           ></lrnapp-studio-submission-edit-file>

@@ -25,7 +25,6 @@ class LrnappStudioSubmissionEditFile extends PolymerElement {
       </style>
 
       <lrnapp-studio-submission-media-editoverlay
-        on-deleted="_delete"
         data-index\$="[[index]]"
         embedcode="{{embedcode}}"
       >
@@ -51,17 +50,6 @@ class LrnappStudioSubmissionEditFile extends PolymerElement {
   }
   _computeEmbedCode(file) {
     return "[Alternative Text Here](" + file.url + ")";
-  }
-
-  _delete(e) {
-    this.dispatchEvent(
-      new CustomEvent("deleted", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: true
-      })
-    );
   }
 }
 window.customElements.define(
