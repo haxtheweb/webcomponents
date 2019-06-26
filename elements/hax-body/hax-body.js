@@ -789,104 +789,102 @@ class HaxBody extends PolymerElement {
    * Insert new tag + content into the local DOM as a node.
    */
   haxInsert(tag, content, properties = {}, waitForLock = true) {
-    var tags = window.HaxStore.instance.validTagList;
     this.__activeHover = null;
     // verify this tag is a valid one
-    if (tags.includes(tag)) {
-      // create a new element fragment w/ content in it
-      // if this is a custom-element it won't expand though
-      var frag = document.createElement(tag);
-      // set text forcibly
-      //frag.innerText = content;
-      // now set html forcibly which would overwrite the other one
-      frag.innerHTML = content;
-      // clone the fragment which will force an escalation to full node
-      var newNode = frag.cloneNode(true);
-      // support for properties if they exist
-      for (var property in properties) {
-        let attributeName = window.HaxStore.camelToDash(property);
-        if (properties.hasOwnProperty(property)) {
-          // special supporting for boolean because html is weird :p
-          if (properties[property] === true) {
-            newNode.setAttribute(attributeName, attributeName);
-          } else if (properties[property] === false) {
-            newNode.removeAttribute(attributeName);
-          } else if (
-            properties[property] != null &&
-            properties[property].constructor === Array
-          ) {
-            if (newNode.properties && newNode.properties[property].readOnly) {
-            } else {
-              newNode.set(attributeName, properties[property]);
-            }
-          } else if (
-            properties[property] != null &&
-            properties[property].constructor === Object
-          ) {
-            if (newNode.properties && newNode.properties[property].readOnly) {
-            } else {
-              newNode.set(attributeName, properties[property]);
-            }
-          } else {
-            newNode.setAttribute(attributeName, properties[property]);
-          }
-        }
-      }
-      // special support for a drag and drop into a place-holder tag
-      // as this is a more aggressive operation then the others
-      if (
-        window.HaxStore.instance.activePlaceHolder !== null &&
-        typeof window.HaxStore.instance.activePlaceHolder.style !==
-          typeof undefined
-      ) {
-        // replicate styles so that it doesn't jar the UI
-        newNode.style.width =
-          window.HaxStore.instance.activePlaceHolder.style.width;
-        newNode.style.float =
-          window.HaxStore.instance.activePlaceHolder.style.float;
-        newNode.style.margin =
-          window.HaxStore.instance.activePlaceHolder.style.margin;
-        newNode.style.display =
-          window.HaxStore.instance.activePlaceHolder.style.display;
-        this.haxReplaceNode(
-          window.HaxStore.instance.activePlaceHolder,
-          newNode,
-          dom(window.HaxStore.instance.activePlaceHolder).parentNode
-        );
-        window.HaxStore.instance.activePlaceHolder = null;
-      }
-      // insert at active insert point if we have one
-      else if (this.activeContainerNode != null) {
-        // allow for inserting things into things but not grid plate
-        if (
-          newNode.tagName !== "GRID-PLATE" &&
-          this.activeContainerNode.tagName === "GRID-PLATE" &&
-          this.activeContainerNode !== this.activeNode
+    // create a new element fragment w/ content in it
+    // if this is a custom-element it won't expand though
+    var frag = document.createElement(tag);
+    // set text forcibly
+    //frag.innerText = content;
+    // now set html forcibly which would overwrite the other one
+    frag.innerHTML = content;
+    // clone the fragment which will force an escalation to full node
+    var newNode = frag.cloneNode(true);
+    // support for properties if they exist
+    for (var property in properties) {
+      let attributeName = window.HaxStore.camelToDash(property);
+      if (properties.hasOwnProperty(property)) {
+        // special supporting for boolean because html is weird :p
+        if (properties[property] === true) {
+          newNode.setAttribute(attributeName, attributeName);
+        } else if (properties[property] === false) {
+          newNode.removeAttribute(attributeName);
+        } else if (
+          properties[property] != null &&
+          properties[property].constructor === Array
         ) {
-          if (this.activeNode.getAttribute("slot") != null) {
-            newNode.setAttribute("slot", this.activeNode.getAttribute("slot"));
+          if (newNode.properties && newNode.properties[property].readOnly) {
+          } else {
+            newNode.set(attributeName, properties[property]);
           }
-          dom(this.activeContainerNode).insertBefore(newNode, this.activeNode);
+        } else if (
+          properties[property] != null &&
+          properties[property].constructor === Object
+        ) {
+          if (newNode.properties && newNode.properties[property].readOnly) {
+          } else {
+            newNode.set(attributeName, properties[property]);
+          }
         } else {
-          dom(this).insertBefore(
-            newNode,
-            this.activeContainerNode.nextElementSibling
-          );
+          newNode.setAttribute(attributeName, properties[property]);
         }
-      } else {
-        // send this into the root, which should filter it back down into the slot
-        dom(this).appendChild(newNode);
       }
-      this.$.textcontextmenu.highlightOps = false;
-      this.__updateLockFocus = newNode;
-      // wait so that the DOM can have the node to then attach to
-      if (waitForLock) {
-        setTimeout(() => {
-          this.breakUpdateLock();
-        }, 50);
-      }
-      return true;
     }
+    // special support for a drag and drop into a place-holder tag
+    // as this is a more aggressive operation then the others
+    if (
+      window.HaxStore.instance.activePlaceHolder !== null &&
+      typeof window.HaxStore.instance.activePlaceHolder.style !==
+        typeof undefined
+    ) {
+      // replicate styles so that it doesn't jar the UI
+      newNode.style.width =
+        window.HaxStore.instance.activePlaceHolder.style.width;
+      newNode.style.float =
+        window.HaxStore.instance.activePlaceHolder.style.float;
+      newNode.style.margin =
+        window.HaxStore.instance.activePlaceHolder.style.margin;
+      newNode.style.display =
+        window.HaxStore.instance.activePlaceHolder.style.display;
+      this.haxReplaceNode(
+        window.HaxStore.instance.activePlaceHolder,
+        newNode,
+        dom(window.HaxStore.instance.activePlaceHolder).parentNode
+      );
+      window.HaxStore.instance.activePlaceHolder = null;
+    }
+    // insert at active insert point if we have one
+    else if (this.activeContainerNode != null) {
+      // allow for inserting things into things but not grid plate
+      if (
+        newNode.tagName !== "GRID-PLATE" &&
+        this.activeContainerNode.tagName === "GRID-PLATE" &&
+        this.activeContainerNode !== this.activeNode
+      ) {
+        if (this.activeNode.getAttribute("slot") != null) {
+          newNode.setAttribute("slot", this.activeNode.getAttribute("slot"));
+        }
+        dom(this.activeContainerNode).insertBefore(newNode, this.activeNode);
+      } else {
+        dom(this).insertBefore(
+          newNode,
+          this.activeContainerNode.nextElementSibling
+        );
+      }
+    } else {
+      // send this into the root, which should filter it back down into the slot
+      dom(this).appendChild(newNode);
+    }
+    this.$.textcontextmenu.highlightOps = false;
+    this.__updateLockFocus = newNode;
+    // wait so that the DOM can have the node to then attach to
+    if (waitForLock) {
+      setTimeout(() => {
+        this.breakUpdateLock();
+      }, 50);
+    }
+    return true;
+
     return false;
   }
 
@@ -923,7 +921,6 @@ class HaxBody extends PolymerElement {
     }
     var content = "";
     for (var i = 0, len = children.length; i < len; i++) {
-      // see if this is a valid element or not, providing
       // some mild front-end sanitization
       if (this._haxElementTest(children[i])) {
         children[i].removeAttribute("data-editable");
@@ -1281,14 +1278,10 @@ class HaxBody extends PolymerElement {
     // pause quickly to ensure wipe goes through successfully
     setTimeout(() => {
       html = encapScript(html);
-      const validTags = window.HaxStore.instance.validTagList;
       let fragment = document.createElement("div");
       fragment.insertAdjacentHTML("beforeend", html);
       while (fragment.firstChild !== null) {
-        if (
-          typeof fragment.firstChild.tagName !== typeof undefined &&
-          validTags.includes(fragment.firstChild.tagName.toLowerCase())
-        ) {
+        if (typeof fragment.firstChild.tagName !== typeof undefined) {
           // ensure import doesn't import non-sandbox safe things!
           if (
             window.HaxStore.instance._isSandboxed &&
@@ -1314,7 +1307,8 @@ class HaxBody extends PolymerElement {
             dom(this).appendChild(fragment.firstChild);
           }
         } else {
-          // this tag didn't pass the test, get rid of it
+          // @todo might want to support appending or keeping track of comments / non tags
+          // but this is not a must have
           fragment.removeChild(fragment.firstChild);
         }
       }
@@ -1598,7 +1592,6 @@ class HaxBody extends PolymerElement {
     let stopProp = false;
     // only worry about these when we are in edit mode
     if (this.editMode && !this.__tabTrap) {
-      var tags = window.HaxStore.instance.validTagList;
       let containerNode = target;
       let activeNode = null;
       // ensure this is valid
@@ -1613,7 +1606,6 @@ class HaxBody extends PolymerElement {
           // make sure active is set after closest legit element
           if (
             activeNode === null &&
-            tags.includes(containerNode.tagName.toLowerCase()) &&
             containerNode.tagName !== "LI" &&
             containerNode.tagName !== "B" &&
             containerNode.tagName !== "I" &&
@@ -1646,7 +1638,6 @@ class HaxBody extends PolymerElement {
         // that it is a new value
         if (
           this.activeContainerNode !== containerNode &&
-          tags.includes(containerNode.tagName.toLowerCase()) &&
           !containerNode.classList.contains("ignore-activation")
         ) {
           this.hideContextMenus();
@@ -1659,7 +1650,6 @@ class HaxBody extends PolymerElement {
         // test for active node changing
         if (
           this.activeNode !== activeNode &&
-          tags.includes(containerNode.tagName.toLowerCase()) &&
           !activeNode.classList.contains("ignore-activation")
         ) {
           this.activeNode = activeNode;
