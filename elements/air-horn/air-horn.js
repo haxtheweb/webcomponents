@@ -55,22 +55,6 @@ class AirHorn extends HTMLElement {
     super();
     // set tag for later use
     this.tag = AirHorn.tag;
-    // map our imported properties json to real props on the element
-    // @notice static getter of properties is built via tooling
-    // to edit modify src/AirHorn-properties.json
-    let obj = AirHorn.properties;
-    for (let p in obj) {
-      if (obj.hasOwnProperty(p)) {
-        if (this.hasAttribute(p)) {
-          this[p] = this.getAttribute(p);
-        } else {
-          this.setAttribute(p, obj[p].value);
-          this[p] = obj[p].value;
-        }
-      }
-    }
-    // optional queue for future use
-    this._queue = [];
     this.template = document.createElement("template");
 
     this.attachShadow({ mode: "open" });
