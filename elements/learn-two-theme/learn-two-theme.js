@@ -37,6 +37,10 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
             var(--learn-two-theme-default-background)
           );
         }
+        html,
+        body {
+          background-color: var(--learn-two-theme-default-background);
+        }
         h1,
         h2,
         h3,
