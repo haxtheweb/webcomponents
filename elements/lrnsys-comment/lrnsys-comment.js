@@ -175,9 +175,8 @@ class LrnsysComment extends PolymerElement {
           font-weight: normal;
         }
         paper-badge {
-          position: absolute;
-          right: 0px;
-          top: 0px;
+          display: flex;
+          float: right;
         }
         .like-icon-color {
           color: #2196f3;
@@ -209,6 +208,17 @@ class LrnsysComment extends PolymerElement {
               class="ferpa-protect"
               >[[displayName]]</paper-tooltip
             >
+            <template
+              is="dom-if"
+              if="[[comment.relationships.author.data.visual.icon]]"
+            >
+              <paper-badge
+                icon="[[comment.relationships.author.data.visual.icon]]"
+                for="papercard"
+                label="[[comment.relationships.author.data.visual.label]]"
+              >
+              </paper-badge>
+            </template>
           </div>
           <div class="comment-content">
             <div class="comment-body">
@@ -331,17 +341,6 @@ class LrnsysComment extends PolymerElement {
           </div>
         </div>
       </div>
-      <template
-        is="dom-if"
-        if="[[comment.relationships.author.data.visual.icon]]"
-      >
-        <paper-badge
-          icon="[[comment.relationships.author.data.visual.icon]]"
-          for="papercard"
-          label="[[comment.relationships.author.data.visual.label]]"
-        >
-        </paper-badge>
-      </template>
     `;
   }
 
