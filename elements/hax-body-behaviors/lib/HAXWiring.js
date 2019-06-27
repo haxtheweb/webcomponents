@@ -595,6 +595,7 @@ export class HAXWiring {
                   valueProperty: "value",
                   properties: {
                     allowNull: settings[value].allowNull,
+                    floatLabel: true,
                     required: settings[value].required,
                     options: options,
                     disabled: settings[value].disabled
@@ -717,6 +718,9 @@ export class HAXWiring {
                   }
                 };
                 break;
+            }
+            if (settings[value].hidden !== typeof undefined) {
+              props[settings[value].property].hidden = settings[value].hidden;
             }
             if (settings[value].description !== typeof undefined) {
               props[settings[value].property].description =

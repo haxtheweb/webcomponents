@@ -296,12 +296,15 @@ class EcoJsonSchemaObject extends mixinBehaviors(
       <custom-style>
         <style is="custom-style" include="iron-flex iron-flex-alignment">
           :host {
-            color: var(--eco-json-form-color, black);
-            background-color: var(--eco-json-form-bg, white);
+            color: var(--eco-json-form-color, #222);
+            background-color: var(--eco-json-form-bg, #fff);
             font-family: var(
               --eco-json-form-font-family,
               var(--paper-font-caption_-_font-family, unset)
             );
+            /*--primary-color: var(--eco-json-form-accent-color, #000);
+            --secondary-color: var(--eco-json-form-faded-color, #888);
+            --primary-text-color: var(--eco-json-form-color, #222);*/
           }
           div.layout {
             height: auto;
@@ -314,7 +317,6 @@ class EcoJsonSchemaObject extends mixinBehaviors(
           }
           #form ::slotted(paper-input),
           #form ::slotted(div[role="tooltip"]) {
-            color: var(--eco-json-form-color, black);
             font-family: var(--eco-json-form-font-family, unset);
           }
           #form ::slotted(div[role="tooltip"]) {
@@ -326,10 +328,18 @@ class EcoJsonSchemaObject extends mixinBehaviors(
               --eco-json-form-font-family,
               unset
             );
-            --simple-picker-background-color: var(--eco-json-form-bg, white);
+            --simple-picker-float-label-active-color: var(
+              --eco-json-form-accent-color,
+              #000
+            );
+            --simple-picker-float-label-faded-color: var(
+              --eco-json-form-faded-color,
+              #888
+            );
+            --simple-picker-background-color: var(--eco-json-form-bg, #fff);
             --simple-picker-border-color: var(
               --eco-json-schema-border-color,
-              black
+              var(--eco-json-form-faded-color, #888)
             );
             --simple-picker-label: {
               flex: 1 0 auto;
@@ -341,7 +351,11 @@ class EcoJsonSchemaObject extends mixinBehaviors(
           #form ::slotted(code-editor) {
             margin: 8px 0;
             --code-editor-code: {
-              border: 1px solid var(--eco-json-schema-border-color, black);
+              border: 1px solid
+                var(
+                  --eco-json-schema-border-color,
+                  var(--eco-json-form-faded-color, #888)
+                );
             }
             --code-editor-label: {
               color: var(--eco-json-form-color, unset);
@@ -588,6 +602,9 @@ class EcoJsonSchemaObject extends mixinBehaviors(
         el.style["width"] = "100%";
       }
       el.setAttribute("name", property.property);
+      if (property.schema.hidden !== undefined)
+        el.setAttribute("hidden", property.schema.hidden);
+
       //allows the first form fields to be focused on autopmatically
       if (autofocus) el.setAttribute("autofocus", autofocus);
       //turns of focus on subsequent form fields

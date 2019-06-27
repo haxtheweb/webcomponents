@@ -34,6 +34,9 @@ class EcoJsonSchemaArray extends mixinBehaviors(
     return html`
       <custom-style>
         <style is="custom-style" include="iron-flex iron-flex-alignment">
+          :host ([hidden]) {
+            display: none;
+          }
           paper-input {
             padding: 2px;
 

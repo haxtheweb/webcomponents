@@ -31,6 +31,9 @@ class CodeEditor extends SchemaBehaviors(PolymerElement) {
           display: block;
           padding: 16px;
         }
+        :host([hidden]) {
+          display: none;
+        }
         .code-pen-container {
           width: 100%;
           display: flex;

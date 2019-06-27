@@ -28,10 +28,11 @@ class EcoJsonSchemaInput extends mixinBehaviors(
   static get template() {
     return html`
       <custom-style>
-        <style
-          is="custom-style"
-          include="iron-flex iron-flex-alignment"
-        ></style>
+        <style is="custom-style" include="iron-flex iron-flex-alignment">
+          :host ([hidden]) {
+            display: none;
+          }
+        </style>
       </custom-style>
       <paper-input
         id="input"

@@ -8,6 +8,9 @@ class EcoJsonSchemaBoolean extends PolymerElement {
   static get template() {
     return html`
       <style is="custom-style" include="iron-flex iron-flex-alignment">
+        :host ([hidden]) {
+          display: none;
+        }
         paper-checkbox {
           color: #737373;
           padding: 2px;
@@ -20,6 +23,7 @@ class EcoJsonSchemaBoolean extends PolymerElement {
       <paper-checkbox
         id="checkbox"
         class="flex"
+        hidden$="[[hidden]]"
         checked="{{value}}"
         invalid="[[error]]"
         >[[_label]]</paper-checkbox

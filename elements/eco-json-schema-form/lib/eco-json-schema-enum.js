@@ -13,6 +13,9 @@ class EcoJsonSchemaEnum extends mixinBehaviors(
   static get template() {
     return html`
       <style is="custom-style" include="iron-flex iron-flex-alignment">
+        :host ([hidden]) {
+          display: none;
+        }
         paper-input {
           --paper-input-container-label: {
             white-space: normal;
