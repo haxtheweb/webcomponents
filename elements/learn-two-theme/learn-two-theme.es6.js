@@ -14,18 +14,41 @@
  */class LearnTwoTheme extends HAXCMSTheme(PolymerElement){// render function
 static get template(){return html`
 <style>:host {
+  --learn-two-theme-default-font-family: "Muli", "Helvetica", "Tahoma",
+    "Geneva", "Arial", sans-serif;
+  --learn-two-theme-default-background: #fafafa;
   display: block;
-  font-family: "Muli","Helvetica","Tahoma","Geneva","Arial",sans-serif;
-  letter-spacing: -.03rem;
-  font-weight:400;
-  background: #FAFAFA;
+  font-family: var(
+    --learn-two-theme-font-family,
+    var(--learn-two-theme-default-font-family)
+  );
+  letter-spacing: var(--learn-two-theme-letter-spacing, -0.03rem);
+  font-weight: var(--learn-two-theme-font-weight, 400);
+  background: var(
+    --learn-two-theme-background,
+    var(--learn-two-theme-default-background)
+  );
 }
-h1,h2,h3,h4,h5,h6 {
-  font-family:"Montserrat","Helvetica","Tahoma","Geneva","Arial",sans-serif;
-  font-weight:400;
-  text-rendering:optimizeLegibility;
-  line-height:150%;
-  letter-spacing:0
+html,body {
+  background-color: var(--learn-two-theme-default-background);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(
+    --learn-two-theme-headers-font-family,
+    var(--learn-two-theme-default-font-family)
+  );
+  font-weight: var(--learn-two-theme-headers-font-weight, 400);
+  text-rendering: var(
+    --learn-two-theme-headers-text-rendering,
+    optimizeLegibility
+  );
+  line-height: var(--learn-two-theme-headers-line-height, 150%);
+  letter-spacing: var(--learn-two-theme-headers-letter-spacing, 150%);
 }
 
 :host([hidden]) {
@@ -37,20 +60,21 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 #contentcontainer {
-  background: #FAFAFA;
-  padding: 48px 96px;
+  padding: var(--learn-two-theme-contentcontainer-padding, 48px 96px);
+  max-width: var(--learn-two-theme-contentcontainer-max-width, 900px);
+  margin: var(--learn-two-theme-contentcontainer-margin, auto);
 }
 
 .header {
   background: #747474;
-  color: #FAFAFA;
+  color: #fafafa;
   text-align: center;
   padding: 0rem 1rem 2rem 1rem;
 }
 
 site-active-title {
   --site-active-title-heading: {
-    font-family: "Montserrat", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+    font-family: var(--learn-two-theme-default-font-family);
     font-size: 52px;
     letter-spacing: -3px;
     line-height: 78px;
@@ -59,18 +83,18 @@ site-active-title {
     text-align: center;
     text-rendering: optimizelegibility;
     font-weight: 100;
-  };
+  }
 }
 site-title {
   position: relative;
   overflow: hidden;
   --site-title-link: {
     display: inline-block;
-    color: #FAFAFA;
+    color: #fafafa;
     text-decoration: none;
-  };
+  }
   --site-title-heading: {
-    font-family: "Montserrat", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+    font-family: var(--learn-two-theme-default-font-family);
     font-size: 28px;
     margin: 0;
     padding: 0;
@@ -79,18 +103,18 @@ site-title {
     text-align: center;
     text-rendering: optimizelegibility;
     font-weight: 100;
-  };
+  }
 }
 site-menu {
-  background-color: #383F45;
-  color: #FFFFFF;
+  background-color: #383f45;
+  color: #ffffff;
   padding: 0;
   overflow: scroll;
   max-height: calc(100vh - 200px);
-  --site-menu-active-color: #FFFFFF;
+  --site-menu-active-color: #ffffff;
   --site-menu: {
-    background-color: #383F45;
-    color: #FFFFFF;
+    background-color: #383f45;
+    color: #ffffff;
   }
   --site-menu-container: {
     padding: 0;
@@ -104,28 +128,28 @@ site-menu {
 site-menu::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 4px rgba(56, 63, 69, 0.9);
   border-radius: 0;
-  background-color: #383F45;
+  background-color: #383f45;
 }
 site-menu::-webkit-scrollbar {
   width: 2px;
-  background-color: #383F45;
+  background-color: #383f45;
 }
 site-menu::-webkit-scrollbar-thumb {
   border-radius: 1px;
   -webkit-box-shadow: inset 0 0 4px #747474;
-  background-color: #383F45;
+  background-color: #383f45;
 }
 app-drawer-layout {
   min-height: 100vh;
-  min-height: -moz-available; 
-  min-height: -webkit-fill-available; 
+  min-height: -moz-available;
+  min-height: -webkit-fill-available;
   min-height: fill-available;
   --app-drawer-width: 300px;
   --app-drawer-scrim-background: rgba(80, 80, 80, 0.8);
   --app-drawer-width: 300px;
   --app-drawer-content-container: {
     overflow: hidden;
-    background-color: #383F45;
+    background-color: #383f45;
   }
 }
 .rss-buttons {
@@ -138,7 +162,18 @@ site-print-button {
   }
 }
 
+h-a-x {
+  padding: 0 !important;
+}
+
+:host([edit-mode]) app-drawer {
+  opacity: 0.2;
+  pointer-events: none;
+}
+
 app-drawer {
+  opacity: 1;
+  transition: 0.2s linear all;
   box-shadow: 0 0 6px -3px var(--haxcms-color, black);
   overflow: hidden;
   width: 300px;
@@ -146,7 +181,8 @@ app-drawer {
 app-drawer-layout[narrow] #contentcontainer {
   padding: 0 16px;
 }
-#menubutton,#menubutton2 {
+#menubutton,
+#menubutton2 {
   display: none;
 }
 app-drawer-layout[narrow] #menubutton {
@@ -169,28 +205,28 @@ site-menu-button {
     width: 64px;
     height: 64px;
     color: #2d3237;
-  };
+  }
   --site-menu-button-button: {
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     width: 64px;
     height: 100vh;
     border-radius: 0;
-    transition: .4s all ease-in-out;
-    transition-delay: .2s;
+    transition: 0.4s all ease-in-out;
+    transition-delay: 0.2s;
     margin: 0;
     padding: 0;
-    opacity: .8;
-    -webkit-transition: .4s all ease-in-out;
-    -moz-transition: .4s all ease-in-out;
-    -ms-transition: .4s all ease-in-out;
-    -o-transition: .4s all ease-in-out;
-  };
+    opacity: 0.8;
+    -webkit-transition: 0.4s all ease-in-out;
+    -moz-transition: 0.4s all ease-in-out;
+    -ms-transition: 0.4s all ease-in-out;
+    -o-transition: 0.4s all ease-in-out;
+  }
 }
 site-menu-button:not([disabled]):hover,
 site-menu-button:not([disabled]):active,
 site-menu-button:not([disabled]):focus {
   opacity: 1;
-  background-color: rgba(0,0,0,.1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 app-drawer-layout[narrow] site-menu {
   max-height: calc(100vh - 160px);
@@ -202,7 +238,7 @@ app-drawer-layout[narrow] site-menu-button {
     background-color: transparent !important;
     width: 64px;
     height: 64px;
-  };
+  }
 }
 site-menu-button[type="next"] {
   right: 0;
@@ -212,32 +248,28 @@ app-drawer-layout[narrow] site-menu-button[type="prev"] {
   left: unset;
 }
 :host([opened]) app-drawer-layout[narrow] site-menu-button[type="prev"],
-:host([opened]) app-drawer-layout[narrow] site-menu-button[type="next"] {
+:host([opened])
+  app-drawer-layout[narrow]
+  site-menu-button[type="next"] {
   display: none;
 }</style>
-<style>
-  html,body {
-    background-color: #FAFAFA;
-  }
-  </style>
-
 <app-drawer-layout>
   <paper-icon-button id="menubutton" icon="menu" on-click="toggleDrawer"></paper-icon-button>
   <app-drawer swipe-open slot="drawer" opened="{{opened}}">
     <paper-icon-button id="menubutton2" icon="menu" on-click="toggleDrawer"></paper-icon-button>
     <div class="header-wrapper">
       <div class="header">
-        <site-title></site-title>
-        <site-modal icon="icons:search" title="Search site" button-label="Search">
+        <site-title disabled$="[[editMode]]"></site-title>
+        <site-modal disabled$="[[editMode]]" icon="icons:search" title="Search site" button-label="Search">
           <site-search></site-search>
         </site-modal>
       </div>
     </div>
     <site-menu></site-menu>
     <div class="rss-buttons">
-      <site-rss-button type="atom"></site-rss-button>
-      <site-rss-button type="rss"></site-rss-button>
-      <site-print-button position="top"></site-print-button>
+      <site-rss-button disabled$="[[editMode]]" type="atom"></site-rss-button>
+      <site-rss-button disabled$="[[editMode]]" type="rss"></site-rss-button>
+      <site-print-button disabled$="[[editMode]]" position="top"></site-print-button>
     </div>
   </app-drawer>
   <div>
@@ -252,7 +284,7 @@ app-drawer-layout[narrow] site-menu-button[type="prev"] {
     <site-menu-button type="next"></site-menu-button>
   </div>
 </app-drawer-layout>`}// properties available to the custom element for data binding
-static get properties(){return{}}constructor(){super();import("./node_modules/@polymer/app-layout/app-drawer/app-drawer.js");import("./node_modules/@polymer/app-layout/app-drawer-layout/app-drawer-layout.js");import("./node_modules/@polymer/paper-icon-button/paper-icon-button.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js")}/**
+static get properties(){let props={};if(super.properties){props=Object.assign(props,super.properties)}return props}constructor(){super();import("./node_modules/@polymer/app-layout/app-drawer/app-drawer.js");import("./node_modules/@polymer/app-layout/app-drawer-layout/app-drawer-layout.js");import("./node_modules/@polymer/paper-icon-button/paper-icon-button.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js")}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"learn-two-theme"}/**

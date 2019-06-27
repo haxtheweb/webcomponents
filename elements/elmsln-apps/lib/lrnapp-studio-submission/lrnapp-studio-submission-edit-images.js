@@ -43,9 +43,9 @@ class LrnappStudioSubmissionEditImages extends SecureRequestXhr(
         }
       </style>
       <div class="images__images">
-        <template is="dom-repeat" items="{{images}}" as="image">
+        <template is="dom-repeat" items="[[images]]" as="image">
           <lrnapp-studio-submission-edit-image
-            image="{{image}}"
+            image="[[image]]"
             on-deleted="_deleteImage"
             data-index\$="[[index]]"
           ></lrnapp-studio-submission-edit-image>
@@ -150,7 +150,6 @@ class LrnappStudioSubmissionEditImages extends SecureRequestXhr(
     var normalizedEvent = dom(e);
     // console.log(normalizedEvent.localTarget);
     var deleteIndex = normalizedEvent.localTarget.getAttribute("data-index");
-    // console.log(deleteIndex);
     this.splice("images", deleteIndex, 1);
   }
   /**

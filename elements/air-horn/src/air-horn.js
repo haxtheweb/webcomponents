@@ -1,0 +1,69 @@
+/**
+ * Copyright 2019 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+/**
+ * `air-horn`
+ * `demonstrative purposes via meme`
+ *
+ * @microcopy - language worth noting:
+ *  -
+ *
+ * @customElement
+ * @demo demo/index.html
+ */
+class AirHorn extends HTMLElement {
+  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   * @notice function name must be here for tooling to operate correctly
+   */
+  static get tag() {
+    return "air-horn";
+  }
+  /**
+   * life cycle
+   */
+  constructor(delayRender = false) {
+    super();
+    // set tag for later use
+    this.tag = AirHorn.tag;
+    this.template = document.createElement("template");
+
+    this.attachShadow({ mode: "open" });
+
+    if (!delayRender) {
+      this.render();
+    }
+  }
+  /**
+   * life cycle, element is afixed to the DOM
+   */
+  connectedCallback() {
+    this.addEventListener("click", this._playSound.bind(this));
+  }
+
+  /**
+   * Play the sound effect.
+   */
+  _playSound(e) {
+    let audio = new Audio(
+      decodeURIComponent(import.meta.url) + "/../lib/airhorn.mp3"
+    );
+    audio.play();
+  }
+
+  render() {
+    this.shadowRoot.innerHTML = null;
+    this.template.innerHTML = this.html;
+
+    if (window.ShadyCSS) {
+      window.ShadyCSS.prepareTemplate(this.template, this.tag);
+    }
+    this.shadowRoot.appendChild(this.template.content.cloneNode(true));
+  }
+}
+window.customElements.define(AirHorn.tag, AirHorn);
+export { AirHorn };

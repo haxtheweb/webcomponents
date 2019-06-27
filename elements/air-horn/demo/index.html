@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>AirHorn: air-horn Demo</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../air-horn.js';
+      import '@lrnwebcomponents/a11y-gif-player/a11y-gif-player.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic air-horn demo</h3>
+      <demo-snippet>
+        <template>
+          <air-horn>
+            <a11y-gif-player style="width: 200px;" alt="Click click click cliiiiiiiiick"
+              src="air-horn.gif"
+              src-without-animation="air-horn.png">
+            </a11y-gif-player>
+          </air-horn>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

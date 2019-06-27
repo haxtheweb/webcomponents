@@ -20,7 +20,6 @@ class LrnappStudioSubmissionEditImage extends PolymerElement {
         </style>
       </custom-style>
       <lrnapp-studio-submission-media-editoverlay
-        on-deleted="_delete"
         data-index\$="[[index]]"
         embedcode="{{embedcode}}"
       >
@@ -63,17 +62,6 @@ class LrnappStudioSubmissionEditImage extends PolymerElement {
 
   _computeEmbedCode(image) {
     return "![Alternative Text Here](" + image.url + ")";
-  }
-
-  _delete(e) {
-    this.dispatchEvent(
-      new CustomEvent("deleted", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: true
-      })
-    );
   }
 }
 window.customElements.define(
