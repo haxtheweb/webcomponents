@@ -34,6 +34,16 @@
   },
 
   /**
+   * Float the label above the listbox
+   */
+  "floatLabel": {
+    "name": "floatLabel",
+    "type": "Boolean",
+    "value": false,
+    "reflectToAttribute": true
+  },
+
+  /**
    * Renders html as title. (Good for titles with HTML in them.)
    */
   "titleAsHtml": {

@@ -30,8 +30,12 @@ class SimplePicker extends PolymerElement {
           color: var(--simple-picker-color, black);
           font-family: var(--simple-picker-font-family, inherit);
           font-size: var(--simple-picker-font-size, inherit);
-          max-height: calc(var(--simple-picker-option-size, 24px) + 4px);
+          max-height: calc(var(--simple-picker-option-size, 24px) + 18px);
           @apply --simple-picker;
+        }
+
+        :host([float-label]) {
+          display: inline;
         }
 
         :host([disabled]) {
@@ -46,7 +50,24 @@ class SimplePicker extends PolymerElement {
           padding-right: 5px;
           font-family: var(--simple-picker-font-family, inherit);
           color: var(--simple-picker-label-color, #000);
+          max-height: calc(var(--simple-picker-option-size, 24px) + 4px);
           @apply --simple-picker-label;
+        }
+
+        :host([float-label]) label {
+          display: block;
+          font-size: 12px;
+          height: 14px;
+          color: var(--simple-picker-float-label-color, #888);
+          transition: all 0.5s;
+        }
+
+        :host([float-label]:focus) label,
+        :host([float-label]:hover) label {
+          color: var(
+            --simple-picker-float-label-active-color,
+            var(--simple-picker-label-color, #000)
+          );
         }
 
         :host,
@@ -69,7 +90,7 @@ class SimplePicker extends PolymerElement {
           align-items: center;
           padding: 2px;
           border-radius: 2px;
-          background-color: var(--simple-picker-background-color, #ddd);
+          background-color: var(--simple-picker-background-color, #eee);
           border: 1px solid
             var(
               --simple-picker-sample-border-color,
@@ -96,6 +117,10 @@ class SimplePicker extends PolymerElement {
           padding: 0 1px;
           z-index: 2;
           @apply --simple-picker-collapse;
+        }
+
+        :host([float-label]) #collapse {
+          top: calc(var(--simple-picker-option-size, 24px) + 18px);
         }
 
         :host([expanded]:not([disabled])) #collapse {
@@ -298,6 +323,16 @@ class SimplePicker extends PolymerElement {
        */
       expanded: {
         name: "expanded",
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+
+      /**
+       * Float the label above the listbox
+       */
+      floatLabel: {
+        name: "floatLabel",
         type: Boolean,
         value: false,
         reflectToAttribute: true
