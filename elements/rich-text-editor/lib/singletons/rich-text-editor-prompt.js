@@ -231,7 +231,7 @@ class RichTextEditorPrompt extends PolymerElement {
    */
   setTarget(button) {
     this.clearTarget();
-    this.set("fields", button.fields);
+    this.set("fields", button.__fields);
     this.set("value", button.value);
     this.__button = button;
     if (button.__selection) this.for = button.__selection.getAttribute("id");

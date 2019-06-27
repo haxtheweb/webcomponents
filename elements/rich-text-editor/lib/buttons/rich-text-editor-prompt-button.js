@@ -28,6 +28,13 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
   static get properties() {
     return {
       /**
+       * if the selection is more than just a single text node, allow edits via code-editor?
+       */
+      editableSelection: {
+        type: Boolean,
+        value: false
+      },
+      /**
        * fields for the prompt popover.
        */
       fields: {
@@ -66,6 +73,13 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
           "": null,
           id: null
         }
+      },
+      /**
+       * fields for the prompt popover.
+       */
+      __fields: {
+        type: Array,
+        value: []
       },
       /**
        * the contents node inside the selected range
@@ -248,10 +262,11 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
   updatePrompt() {
     this.__oldValue = this.value;
     let el = this.__selectionContents;
+    this.__fields = this.fields.slice();
     el.normalize();
     el.innerHTML.trim();
 
-    this.fields.forEach(field => {
+    this.__fields.forEach(field => {
       if (field.property && field.property !== "") {
         this.value[field.property] = el
           ? el.getAttribute(field.property)
@@ -268,8 +283,20 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
         this.value[""] = el
           ? el.innerHTML.replace(/[\s\n\t]+/g, " ").trim()
           : "";
+        if (
+          (el.childNodes.length === 1 &&
+            el.childNodes[0].nodeType !== Node.TEXT_NODE) ||
+          el.childNodes.length > 1
+        ) {
+          if (this.editableSelection) {
+            field.inputMethod = "code-editor";
+          } else {
+            field.hidden = true;
+          }
+        }
       }
     });
+    this.__fields = this.fields;
   }
 
   /**
