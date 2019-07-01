@@ -89,6 +89,19 @@
           </div>
         </template>
       </demo-snippet>
+      <h3>simple-picker with Displayed as Block with Icons and Text</h3>
+      <demo-snippet>
+        <template>
+          <simple-picker block-label id="photo" label="Display as..." value="quilt"></simple-picker>
+          <script>
+            document.getElementById('photo').options = [
+              [ { alt: "Columns", icon: "icons:view-column", value: "column" } ],
+              [ { alt: "List", icon: "icons:view-list", value: "list"} ],
+              [ { alt: "Quilt", icon: "icons:view-quilt", value: "quilt" }  ]
+            ];
+          </script>
+        </template>
+      </demo-snippet>
     </div>
   </body>
 </html>

@@ -26,7 +26,6 @@ class SimplePicker extends PolymerElement {
         :host {
           display: inline-flex;
           align-items: center;
-          position: relative;
           color: var(--simple-picker-color, black);
           font-family: var(--simple-picker-font-family, inherit);
           font-size: var(--simple-picker-font-size, inherit);
@@ -47,17 +46,21 @@ class SimplePicker extends PolymerElement {
           display: none;
         }
 
-        :host label {
+        :host label:not([hidden]) {
           padding-right: 5px;
           font-family: var(--simple-picker-font-family, inherit);
-          color: var(--simple-picker-label-color, #000);
+          color: var(
+            --simple-picker-label-color,
+            var(--simple-picker-color, black)
+          );
           max-height: calc(var(--simple-picker-option-size, 24px) + 4px);
           @apply --simple-picker-label;
         }
 
-        :host([block-label]) label {
+        :host([block-label]) label:not([hidden]) {
           display: block;
-          height: 19px;
+          padding-right: 0px;
+          max-height: unset;
           color: var(--simple-picker-float-label-color, #888);
           transition: all 0.5s;
         }
@@ -66,7 +69,7 @@ class SimplePicker extends PolymerElement {
         :host([block-label]:hover) label {
           color: var(
             --simple-picker-float-label-active-color,
-            var(--simple-picker-label-color, #000)
+            var(--simple-picker-color, black)
           );
         }
 
@@ -78,6 +81,7 @@ class SimplePicker extends PolymerElement {
 
         :host #listbox {
           display: flex;
+          position: relative;
           flex: 1 0 auto;
           max-height: calc(var(--simple-picker-option-size, 24px) + 4px);
         }
@@ -89,21 +93,18 @@ class SimplePicker extends PolymerElement {
           align-items: center;
           padding: 2px;
           border-radius: 2px;
-          background-color: var(--simple-picker-background-color, #ddd);
+          background-color: var(--simple-picker-background-color, #f0f0f0);
           border: 1px solid
-            var(
-              --simple-picker-sample-border-color,
-              var(--simple-picker-border-color, var(--simple-picker-color))
-            );
+            var(--simple-picker-border-color, var(--simple-picker-color, black));
           @apply --simple-picker-sample;
         }
         :host(:focus) #sample,
         :host #listbox:focus #sample,
         :host #sample:focus {
-          border: 1px solid
+          border: 2px solid
             var(
-              --simple-picker-sample-focus-border-color,
-              var(--simple-picker-label-color, #000)
+              --simple-picker-focus-border-color,
+              var(--simple-picker-color, black)
             );
           @apply --simple-picker-sample-focus;
         }
@@ -132,10 +133,6 @@ class SimplePicker extends PolymerElement {
           @apply --simple-picker-collapse;
         }
 
-        :host([block-label]) #collapse {
-          top: calc(var(--simple-picker-option-size, 24px) + 23px);
-        }
-
         :host([expanded]:not([disabled])) #collapse {
           display: block;
         }
@@ -145,8 +142,8 @@ class SimplePicker extends PolymerElement {
           position: absolute;
           z-index: 1000;
           outline: 1px solid
-            var(--simple-picker-border-color, var(--simple-picker-color));
-          background-color: var(--simple-picker-background-color, #ddd);
+            var(--simple-picker-border-color, var(--simple-picker-color, black));
+          background-color: var(--simple-picker-background-color, #f0f0f0);
           box-shadow: 0px 0px 1px #888;
           @apply --simple-picker-rows;
         }
@@ -161,12 +158,16 @@ class SimplePicker extends PolymerElement {
         :host simple-picker-option {
           z-index: 1;
           flex: 1 1 auto;
+          justify-content: flex-start;
           max-height: unset;
           min-height: var(--simple-picker-option-size, 24px);
           min-width: var(--simple-picker-option-size, 24px);
           line-height: var(--simple-picker-option-size, 24px);
           color: var(--simple-picker-color);
-          background-color: var(--simple-picker-option-background-color, white);
+          background-color: var(
+            --simple-picker-option-background-color,
+            #ffffff
+          );
           outline: var(--simple-picker-option-outline, none);
           transition: max-height 2s;
           @apply --simple-picker-option;
