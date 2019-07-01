@@ -39,11 +39,11 @@ class SimplePopover extends AbsolutePositionBehavior {
           z-index: 1;
         }
         :host([position="left"]) > div {
-          justify-content: start;
+          justify-content: flex-start;
           flex-direction: row;
         }
         :host([position="right"]) > div {
-          justify-content: start;
+          justify-content: flex-end;
           flex-direction: row-reverse;
         }
         :host([position="top"]) > div {
@@ -57,7 +57,7 @@ class SimplePopover extends AbsolutePositionBehavior {
           width: unset;
         }
         :host #content {
-          margin: 0 auto;
+          margin: 0;
           padding: var(--simple-popover-padding);
           color: var(--simple-popover-color);
           background-color: var(--simple-popover-background-color);
@@ -152,15 +152,19 @@ class SimplePopover extends AbsolutePositionBehavior {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       /**
        * Tthe margin styles to offset the pointer
        */
       __pointerOffSetStyle: {
-        type: "Object",
+        type: Object,
         computed: "_getMargins(__positions)"
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
   constructor() {
     super();
