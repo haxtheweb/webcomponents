@@ -35,7 +35,7 @@ class CodeEditor extends SchemaBehaviors(PolymerElement) {
         :host([hidden]) {
           display: none !important;
         }
-        .code-pen-container {
+        .code-pen-container:not([hidden]) {
           width: 100%;
           display: flex;
           background-color: var(--code-pen-button-color, #222222);
