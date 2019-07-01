@@ -46,31 +46,40 @@
                   "hidden": true
                 },
                 {
-                    "property": "color",
-                    "title": "Your  favorite  color.",
-                    "inputMethod": "select",
-                    "allowNull": false,
-                    "options": {
-                      "#800080": "purple",
-                      "#0000FF": "blue",
-                      "#008800": "green",
-                      "#FFFF00": "yellow",
-                      "#FFA500": "orange",
-                      "#ff0000": "red"
-                    }
-                  },
+                  "property": "color",
+                  "title": "Your  favorite  color.",
+                  "inputMethod": "select",
+                  "allowNull": false,
+                  "options": {
+                    "#800080": "purple",
+                    "#0000FF": "blue",
+                    "#008800": "green",
+                    "#FFFF00": "yellow",
+                    "#FFA500": "orange",
+                    "#ff0000": "red"
+                  }
+                },
+                {
+                  "property": "profileImage",
+                  "title": "Profile Image",
+                  "description": "Maximum size 400px X 400px.",
+                  "inputMethod": "haxupload",
+                  "validationType": "url",
+                  "required": true
+                },
                 {
                   "property": "code",
                   "title": "This is your favorite code snippet.",
                   "description": "",
                   "inputMethod": "code-editor",
                   "theme": "vs-light"
-                }
+                }      
               ];
               fields.value = {
                 "name": "John Doe",
                 "alias": true,
-                "code": "<p>Hello world!</p>"
+                "code": "<p>Hello world!</p>",
+                "color": "#0000FF"
               };
             };
           </script>
