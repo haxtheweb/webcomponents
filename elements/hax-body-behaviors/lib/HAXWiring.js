@@ -3,6 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import "@lrnwebcomponents/hax-body/lib/hax-upload-field.js";
+import "@lrnwebcomponents/simple-picker/simple-picker.js";
+import "@lrnwebcomponents/code-editor/code-editor.js";
 /**
  * In order to use this, the user must supply a haxProperties object
  * which returns what settings are allowed as well as their format.

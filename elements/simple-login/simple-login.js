@@ -139,7 +139,7 @@ class SimpleLogin extends PolymerElement {
 
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       /**
        * Title of the loginscreen
        */
@@ -209,6 +209,10 @@ class SimpleLogin extends PolymerElement {
         value: "Login"
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
 
   /**

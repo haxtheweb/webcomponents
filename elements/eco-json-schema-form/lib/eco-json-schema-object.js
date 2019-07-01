@@ -623,8 +623,9 @@ class EcoJsonSchemaObject extends mixinBehaviors(
         el.style["width"] = "100%";
       }
       el.setAttribute("name", property.property);
-      if (property.schema.hidden !== undefined)
+      if (property.schema.hidden && property.schema.hidden !== undefined) {
         el.setAttribute("hidden", property.schema.hidden);
+      }
 
       //allows the first form fields to be focused on autopmatically
       if (autofocus) el.setAttribute("autofocus", autofocus);

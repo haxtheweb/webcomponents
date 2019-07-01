@@ -20,7 +20,9 @@ const css = html`
     :host {
       --rich-text-editor-bg: #fafafa;
       --rich-text-editor-button-color: #444;
-      --rich-text-editor-border: 1px solid #ddd;
+      --rich-text-editor-border-color: #ddd;
+      --rich-text-editor-border: 1px solid
+        var(--rich-text-editor-border-color, #ddd);
       --rich-text-editor-button-border: transparent;
       --rich-text-editor-button-disabled-color: #666;
       --rich-text-editor-button-disabled-bg: transparent;

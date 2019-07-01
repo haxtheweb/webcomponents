@@ -1,6 +1,8 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-picker/simple-picker.js";
 import "./hax-shared-styles.js";
+
 class HaxUploadField extends PolymerElement {
   constructor() {
     super();
@@ -13,94 +15,180 @@ class HaxUploadField extends PolymerElement {
       <style include="hax-shared-styles">
         :host {
           display: block;
-          justify-content: flex-start;
           visibility: visible;
           transition: 0.3s all ease;
           box-sizing: border-box;
           pointer-events: all;
+          overflow: visible;
+          --lumo-font-family: var(
+            --eco-json-form-font-family,
+            var(--paper-font-caption_-_font-family, unset)
+          );
+          --lumo-base-color: var(
+            --eco-json-form-bg,
+            var(--primary-background-color, #fff)
+          );
+          --lumo-primary-contrast-color: var(
+            --eco-json-form-bg,
+            var(--primary-background-color, #fff)
+          );
+          --lumo-primary-color: var(
+            --eco-json-form-active-color,
+            var(--primary-color, #000)
+          );
+          --lumo-primary-text-color: var(
+            --eco-json-form-color,
+            var(--primary-text-color, #222)
+          );
+          --lumo-body-text-color: var(
+            --eco-json-form-color,
+            var(--primary-text-color, #222)
+          );
+          --lumo-header-text-color: var(
+            --eco-json-form-color,
+            var(--primary-text-color, #222)
+          );
+          --lumo-secondary-text-color: var(
+            --eco-json-form-faded-color,
+            var(--secondary-text-color, #888)
+          );
+          --lumo-disabled-text-color: var(
+            --eco-json-form-faded-color,
+            var(--secondary-text-color, #888)
+          );
+          background-color: var(
+            --eco-json-form-bg,
+            var(--primary-background-color, #fff)
+          );
+          --simple-picker-float-label-active-color: var(
+            --eco-json-form-active-color,
+            var(--primary-color, #000)
+          );
+          --simple-picker-float-label-faded-color: var(
+            --eco-json-form-faded-color,
+            var(--secondary-text-color, #888)
+          );
+          --simple-picker-background-color: var(
+            --eco-json-form-bg,
+            var(--primary-background-color, #fff)
+          );
+          --simple-picker-border-color: transparent;
+          --simple-picker-sample-focus: {
+            transition: all 0.5s;
+            border: none;
+          }
+        }
+        :host #legend {
+          transition: all 0.5s;
+          color: var(
+            --eco-json-form-faded-color,
+            var(--secondary-text-color, #888)
+          );
+        }
+        :host(:focus-within) #legend {
+          color: var(--eco-json-form-active-color, var(--primary-color, #000));
+        }
+        :host #fieldset {
+          border-radius: 2px;
+          transition: all 0.5s;
+          border: 1px solid
+            var(--eco-json-form-faded-color, var(--secondary-text-color, #888));
+        }
+        :host(:focus-within) fieldset {
+          border: 2px solid
+            var(--eco-json-form-active-color, var(--primary-color, #000));
+        }
+        :host #fieldset > div {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        :host #fieldset > div > *:not(#picker) {
+          flex: 1 1 auto;
+        }
+        #picker {
+          margin-bottom: 0;
+          margin-right: 5px;
         }
         vaadin-upload {
-          --primary-color: var(--hax-color-accent1);
-          --primary-font-color: #ffffff;
-          --dark-primary-color: #ffffff;
-          --light-primary-color: var(--hax-color-accent1);
-          --error-color: darkred;
           padding: 0;
           margin: 0;
-          border: none;
-          --vaadin-upload-button-add-wrapper: {
-            border: none;
-            background-color: var(--hax-color-accent1);
-            color: #ffffff;
-            display: block;
-          }
-          --vaadin-upload-buttons-primary: {
-            display: block;
-            width: 100%;
-            flex: unset;
-            -webkit-flex: unset;
-          }
-          --vaadin-upload-button-add: {
-            color: #000000;
-            display: block;
-            flex: unset;
-            -webkit-flex: unset;
-            text-align: center;
-          }
-          --vaadin-upload-drop-label: {
-            color: #ffffff;
-            display: block;
-            padding: 0;
-            margin: 0;
-          }
-          --vaadin-upload-drop-label-dragover: {
-            color: #ffffff;
-          }
-          --vaadin-upload-file-list: {
-            padding: 0;
-            margin: 0;
-            color: #ffffff;
-          }
-          --vaadin-upload-file: {
-            color: #ffffff;
-          }
-        }
-        vaadin-upload[dragover] {
-          border-color: #396;
-        }
-        vaadin-upload-file {
-          --disabled-text-color: #222222;
-        }
-        paper-input {
-          color: var(--hax-color-text);
         }
       </style>
-      <paper-input
-        id="url"
-        value="{{value}}"
-        label="URL"
-        type="url"
-        auto-validate=""
-      ></paper-input>
-      <vaadin-upload
-        capture
-        form-data-name="file-upload"
-        id="fileupload"
-      ></vaadin-upload>
-      <paper-icon-button
-        icon="image:photo-camera"
-        id="selfie"
-      ></paper-icon-button>
-      <div id="camerahole"></div>
+      <fieldset id="fieldset">
+        <legend id="legend" hidden$="[[!label]]">[[label]]</legend>
+        <div>
+          <simple-picker
+            id="picker"
+            aria-label="Source..."
+            required
+            value="{{option}}"
+            options="[[options]]"
+          >
+          </simple-picker>
+          <paper-input
+            id="url"
+            hidden$="[[_isHidden(option,'url')]]"
+            value="{{value}}"
+            label="URL"
+            type="url"
+            auto-validate=""
+          ></paper-input>
+          <vaadin-upload
+            capture
+            form-data-name="file-upload"
+            hidden$="[[_isHidden(option,'fileupload')]]"
+            id="fileupload"
+          ></vaadin-upload>
+          <div id="camerahole" hidden$="[[_isHidden(option,'selfie')]]"></div>
+        </div>
+      </fieldset>
     `;
   }
   static get properties() {
     return {
+      label: {
+        type: String,
+        value: null
+      },
       value: {
         type: String,
         notify: true
+      },
+      option: {
+        type: String,
+        value: "fileupload"
+      },
+      options: {
+        type: Array,
+        value: [
+          [
+            {
+              alt: "URL",
+              icon: "icons:link",
+              value: "url"
+            }
+          ],
+          [
+            {
+              alt: "Upload",
+              icon: "icons:file-upload",
+              value: "fileupload"
+            }
+          ],
+          [
+            {
+              alt: "Camera",
+              icon: "image:photo-camera",
+              value: "selfie"
+            }
+          ]
+        ]
       }
     };
+  }
+  _isHidden(option, ui) {
+    return option !== ui;
   }
   /**
    * Respond to uploading a file
@@ -237,9 +325,10 @@ class HaxUploadField extends PolymerElement {
     this.shadowRoot
       .querySelector("#fileupload")
       .addEventListener("upload-response", this._fileUploadResponse.bind(this));
-    this.shadowRoot
-      .querySelector("#selfie")
-      .addEventListener("click", this._takeSelfie.bind(this));
+    this.shadowRoot.querySelector("#picker").addEventListener("change", e => {
+      console.log(e.detail.value, e && e.detail && e.detail.value === "selfie");
+      if (e && e.detail && e.detail.value === "selfie") this._takeSelfie();
+    });
     this.shadowRoot
       .querySelector("#camerahole")
       .addEventListener(
