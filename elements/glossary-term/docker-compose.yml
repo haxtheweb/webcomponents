@@ -1,11 +1,8 @@
 version: "3"
 services:
-  glossary:
-    image: "node:8"
-    user: "node"
-    working_dir: /home/node/app
+  glossary-service:
+    image: heymp/glossary-service:latest
     volumes:
-      - ./:/home/node/app
-    expose:
-      - "4000"
-    command: "bash"
+      - ./demo/glossary-terms/glossary-terms.json:/tmp/glossary-terms.json
+    ports:
+      - "4000:4000"
