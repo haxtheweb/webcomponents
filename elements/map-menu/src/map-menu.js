@@ -42,6 +42,7 @@ class MapMenu extends PolymerElement {
 
         map-menu-container {
           padding: var(--map-menu-container-padding, 0);
+          @apply --map-menu-container;
         }
 
         /* turn default active color if indicator is on */

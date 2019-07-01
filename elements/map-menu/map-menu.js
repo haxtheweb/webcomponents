@@ -23,6 +23,7 @@ class MapMenu extends PolymerElement {
       <style>
         :host {
           --map-menu-active-color: rgba(0, 0, 0, 0.1);
+          --map-menu-size: 1;
           display: block;
           overflow-y: scroll;
           position: relative;
@@ -40,7 +41,7 @@ class MapMenu extends PolymerElement {
         }
 
         map-menu-container {
-          padding: 32px;
+          padding: var(--map-menu-container-padding, 0);
           @apply --map-menu-container;
         }
 
