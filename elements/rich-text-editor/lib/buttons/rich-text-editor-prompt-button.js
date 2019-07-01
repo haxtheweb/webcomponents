@@ -262,11 +262,11 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
   updatePrompt() {
     this.__oldValue = this.value;
     let el = this.__selectionContents;
-    this.__fields = this.fields.slice();
+    this.__fields = [];
     el.normalize();
     el.innerHTML.trim();
-
-    this.__fields.forEach(field => {
+    this.fields.forEach(field => {
+      this.__fields.push(field);
       if (field.property && field.property !== "") {
         this.value[field.property] = el
           ? el.getAttribute(field.property)
@@ -283,20 +283,20 @@ class RichTextEditorPromptButton extends RichTextEditorButton {
         this.value[""] = el
           ? el.innerHTML.replace(/[\s\n\t]+/g, " ").trim()
           : "";
+        if (!this.__slotInputMethod) this.__slotInputMethod = field.inputMethod;
         if (
           (el.childNodes.length === 1 &&
             el.childNodes[0].nodeType !== Node.TEXT_NODE) ||
           el.childNodes.length > 1
         ) {
-          if (this.editableSelection) {
-            field.inputMethod = "code-editor";
-          } else {
-            field.hidden = true;
-          }
+          field.hidden = !this.editableSelection;
+          field.inputMethod = "code-editor";
+        } else {
+          field.inputMethod = this.__slotInputMethod;
+          field.hidden = false;
         }
       }
     });
-    this.__fields = this.fields;
   }
 
   /**

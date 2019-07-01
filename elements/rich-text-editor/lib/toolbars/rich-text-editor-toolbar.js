@@ -566,7 +566,7 @@ class RichTextEditorToolbar extends PolymerElement {
    * Gets the updated selected range.
    * @returns {void}
    */
-  _rangeChange() {
+  _rangeChange(e) {
     let root = this;
     root.buttons.forEach(button => {
       button.range = null;
