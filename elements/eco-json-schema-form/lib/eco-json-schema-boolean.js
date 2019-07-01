@@ -12,11 +12,40 @@ class EcoJsonSchemaBoolean extends PolymerElement {
           display: none;
         }
         paper-checkbox {
-          color: #737373;
-          padding: 2px;
           display: block;
           font-size: 16px;
           white-space: normal;
+          margin: var(--eco-json-field-margin, 0 0 15px);
+          --paper-checkbox-checkmark-color: var(
+            --eco-json-form-bg,
+            var(--primary-background-color, #fff)
+          );
+          --paper-checkbox-unchecked-background-color: var(
+            --eco-json-form-bg,
+            var(--primary-background-color, #fff)
+          );
+          --paper-checkbox-checked-color: var(
+            --eco-json-form-active-color,
+            var(--primary-color, #000)
+          );
+          --paper-checkbox-unchecked-color: var(
+            --eco-json-form-active-color,
+            var(--primary-text-text-color, #222)
+          );
+          --paper-checkbox-label-color: var(
+            --eco-json-form-color,
+            var(--secondary-text-color, #888)
+          );
+        }
+        :host paper-checkbox:focus {
+          --paper-checkbox-unchecked-color: var(
+            --eco-json-form-active-color,
+            var(--primary-color, #000)
+          );
+          --paper-checkbox-label-color: var(
+            --eco-json-form-active-color,
+            var(--primary-text-text-color, #222)
+          );
         }
       </style>
 

@@ -34,10 +34,10 @@
   },
 
   /**
-   * Float the label above the listbox
+   * Position label above select dropdown?
    */
-  "floatLabel": {
-    "name": "floatLabel",
+  "blockLabel": {
+    "name": "blockLabel",
     "type": "Boolean",
     "value": false,
     "reflectToAttribute": true

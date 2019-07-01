@@ -63,6 +63,8 @@ class MonacoElement extends PolymerElement {
         type: Object,
         value: {
           ready: "ready",
+          focus: "focus",
+          blur: "blur",
           valueChanged: "valueChanged",
           languageChanged: "languageChanged",
           themeChanged: "themeChanged"
@@ -151,6 +153,8 @@ class MonacoElement extends PolymerElement {
       var iframeScript = `
   var eventTypes = {
     ready: 'ready',
+    focus: 'focus',
+    blur: "blur",
     valueChanged: 'valueChanged',
     languageChanged: 'languageChanged',
     themeChanged: 'themeChanged',
@@ -190,6 +194,12 @@ class MonacoElement extends PolymerElement {
 
         this.ready();
         if(${this.autofocus}) this.editor.focus();
+        this.editor.onDidFocusEditorText(e=>{
+          this.postMessage(eventTypes.focus, null);
+        });
+        this.editor.onDidBlurEditorText(e=>{
+          this.postMessage(eventTypes.blur, null);
+        });
       });
     }
 
@@ -306,7 +316,31 @@ class MonacoElement extends PolymerElement {
       this.dispatchEvent(evt);
     } else if (data.event === this.eventTypes.ready) {
       this.onIFrameReady();
+    } else if (data.event === this.eventTypes.focus) {
+      this.onIFrameFocus();
+    } else if (data.event === this.eventTypes.blur) {
+      this.onIFrameBlur();
     }
+  }
+  onIFrameFocus() {
+    this.dispatchEvent(
+      new CustomEvent("code-editor-focus", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: true
+      })
+    );
+  }
+  onIFrameBlur() {
+    this.dispatchEvent(
+      new CustomEvent("code-editor-blur", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: true
+      })
+    );
   }
 
   onIFrameReady() {

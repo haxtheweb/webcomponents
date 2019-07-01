@@ -296,15 +296,16 @@ class EcoJsonSchemaObject extends mixinBehaviors(
       <custom-style>
         <style is="custom-style" include="iron-flex iron-flex-alignment">
           :host {
-            color: var(--eco-json-form-color, #222);
-            background-color: var(--eco-json-form-bg, #fff);
+            color: var(--eco-json-form-color, var(--primary-text-color, #222));
+            background-color: var(
+              --eco-json-form-bg,
+              var(--primary-background-color, #fff)
+            );
             font-family: var(
               --eco-json-form-font-family,
               var(--paper-font-caption_-_font-family, unset)
             );
-            /*--primary-color: var(--eco-json-form-accent-color, #000);
-            --secondary-color: var(--eco-json-form-faded-color, #888);
-            --primary-text-color: var(--eco-json-form-color, #222);*/
+            --eco-json-field-margin: 0 0 15px;
           }
           div.layout {
             height: auto;
@@ -316,50 +317,70 @@ class EcoJsonSchemaObject extends mixinBehaviors(
             @apply --layout-wrap;
           }
           #form ::slotted(paper-input),
-          #form ::slotted(div[role="tooltip"]) {
+          #form ::slotted(div.tooltip-desc) {
             font-family: var(--eco-json-form-font-family, unset);
           }
-          #form ::slotted(div[role="tooltip"]) {
-            font-size: 80%;
+          #form ::slotted(*.has-tooltip-desc) {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            --paper-input-container: {
+              margin-bottom: 0;
+              padding-bottom: 0;
+            }
+          }
+          #form ::slotted(div.tooltip-desc) {
+            font-size: 12px;
+            margin: var(--eco-json-field-margin);
+            color: var(--eco-json-form-faded-color, #888);
           }
           #form ::slotted(simple-picker) {
-            margin: 5px 0;
-            --simple-picker-font-family: var(
-              --eco-json-form-font-family,
-              unset
-            );
             --simple-picker-float-label-active-color: var(
-              --eco-json-form-accent-color,
-              #000
+              --eco-json-form-active-color,
+              var(--primary-color, #000)
             );
             --simple-picker-float-label-faded-color: var(
               --eco-json-form-faded-color,
-              #888
+              var(--secondary-text-color, #888)
             );
-            --simple-picker-background-color: var(--eco-json-form-bg, #fff);
+            --simple-picker-background-color: var(
+              --eco-json-form-bg,
+              var(--primary-background-color, #fff)
+            );
             --simple-picker-border-color: var(
-              --eco-json-schema-border-color,
-              var(--eco-json-form-faded-color, #888)
+              --eco-json-form-faded-color,
+              var(--secondary-text-color, #888)
             );
-            --simple-picker-label: {
-              flex: 1 0 auto;
-            }
-            --simple-picker-sample: {
-              min-width: 40px;
+            --simple-picker-sample-focus: {
+              transition: all 0.5s;
+              border: 2px solid
+                var(--eco-json-form-active-color, var(--primary-color, #000));
             }
           }
           #form ::slotted(code-editor) {
             margin: 8px 0;
+            --code-editor-float-label-color: var(
+              --eco-json-form-faded-color,
+              var(--secondary-text-color, #888)
+            );
+            --code-editor-float-label-active-color: var(
+              --eco-json-form-active-color,
+              var(--primary-color, #000)
+            );
+            --code-pen-button-color: var(
+              --eco-json-form-faded-color,
+              var(--secondary-text-color, #888)
+            );
             --code-editor-code: {
               border: 1px solid
                 var(
-                  --eco-json-schema-border-color,
-                  var(--eco-json-form-faded-color, #888)
+                  --eco-json-form-faded-color,
+                  var(--secondary-text-color, #888)
                 );
+              border-radius: 2px;
             }
-            --code-editor-label: {
-              color: var(--eco-json-form-color, unset);
-              font-family: var(--eco-json-form-font-family, unset);
+            --code-editor-focus-code: {
+              border: 2px solid
+                var(--eco-json-form-active-color, var(--primary-color, #000));
             }
           }
         </style>
@@ -633,7 +654,11 @@ class EcoJsonSchemaObject extends mixinBehaviors(
           var id = "tip-" + property.property,
             tip = document.createElement("div");
           el.setAttribute("aria-describedby", id);
+          el.setAttribute("class", "has-tooltip-desc");
           tip.setAttribute("id", id);
+          tip.setAttribute("class", "tooltip-desc");
+          if (property.schema.hidden !== undefined)
+            tip.setAttribute("hidden", property.schema.hidden);
           tip.setAttribute("role", "tooltip");
           tip.innerHTML = property.description;
           dom(this).appendChild(tip);

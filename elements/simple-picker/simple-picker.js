@@ -34,8 +34,9 @@ class SimplePicker extends PolymerElement {
           @apply --simple-picker;
         }
 
-        :host([float-label]) {
-          display: inline;
+        :host([block-label]) {
+          display: block;
+          margin: 0 0 15px;
         }
 
         :host([disabled]) {
@@ -54,23 +55,21 @@ class SimplePicker extends PolymerElement {
           @apply --simple-picker-label;
         }
 
-        :host([float-label]) label {
+        :host([block-label]) label {
           display: block;
-          font-size: 12px;
-          height: 14px;
+          height: 19px;
           color: var(--simple-picker-float-label-color, #888);
           transition: all 0.5s;
         }
 
-        :host([float-label]:focus) label,
-        :host([float-label]:hover) label {
+        :host([block-label]:focus) label,
+        :host([block-label]:hover) label {
           color: var(
             --simple-picker-float-label-active-color,
             var(--simple-picker-label-color, #000)
           );
         }
 
-        :host,
         :host #sample,
         :host .rows {
           margin: 0;
@@ -90,13 +89,27 @@ class SimplePicker extends PolymerElement {
           align-items: center;
           padding: 2px;
           border-radius: 2px;
-          background-color: var(--simple-picker-background-color, #eee);
+          background-color: var(--simple-picker-background-color, #ddd);
           border: 1px solid
             var(
               --simple-picker-sample-border-color,
               var(--simple-picker-border-color, var(--simple-picker-color))
             );
           @apply --simple-picker-sample;
+        }
+        :host(:focus) #sample,
+        :host #listbox:focus #sample,
+        :host #sample:focus {
+          border: 1px solid
+            var(
+              --simple-picker-sample-focus-border-color,
+              var(--simple-picker-label-color, #000)
+            );
+          @apply --simple-picker-sample-focus;
+        }
+
+        :host #listbox:focus {
+          outline: none;
         }
 
         :host #icon {
@@ -119,8 +132,8 @@ class SimplePicker extends PolymerElement {
           @apply --simple-picker-collapse;
         }
 
-        :host([float-label]) #collapse {
-          top: calc(var(--simple-picker-option-size, 24px) + 18px);
+        :host([block-label]) #collapse {
+          top: calc(var(--simple-picker-option-size, 24px) + 23px);
         }
 
         :host([expanded]:not([disabled])) #collapse {
@@ -329,10 +342,10 @@ class SimplePicker extends PolymerElement {
       },
 
       /**
-       * Float the label above the listbox
+       * Position label above select dropdown?
        */
-      floatLabel: {
-        name: "floatLabel",
+      blockLabel: {
+        name: "blockLabel",
         type: Boolean,
         value: false,
         reflectToAttribute: true

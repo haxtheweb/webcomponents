@@ -595,7 +595,7 @@ export class HAXWiring {
                   valueProperty: "value",
                   properties: {
                     allowNull: settings[value].allowNull,
-                    floatLabel: true,
+                    blockLabel: true,
                     required: settings[value].required,
                     options: options,
                     disabled: settings[value].disabled
