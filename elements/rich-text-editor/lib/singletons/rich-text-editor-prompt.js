@@ -36,6 +36,7 @@ class RichTextEditorPrompt extends PolymerElement {
         :host #prompt {
           display: none;
           width: 300px;
+          max-width: 300px;
         }
         :host #prompt[for]{
           display: block;
