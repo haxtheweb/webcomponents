@@ -20,6 +20,11 @@ class HaxUploadField extends PolymerElement {
           box-sizing: border-box;
           pointer-events: all;
           overflow: visible;
+          --simple-camera-snap-width: 300px;
+          --simple-camera-snap-height: calc(300px * 9 / 16);
+          --simple-camera-snap-color: var(--eco-json-form-color, #222);
+          --simple-camera-snap-background: var(--eco-json-form-bg, white);
+          --simple-camera-snap-border-radius: 2px;
           --lumo-font-family: var(
             --eco-json-form-font-family,
             var(--paper-font-caption_-_font-family, unset)
@@ -113,6 +118,18 @@ class HaxUploadField extends PolymerElement {
         vaadin-upload {
           padding: 0;
           margin: 0;
+        }
+        simple-camera-snap {
+          position: relative;
+          --simple-camera-snap-button-container: {
+            position: absolute;
+            bottom: 2px;
+          }
+          --simple-camera-snap-button: {
+            border-radius: 100%;
+            opacity: 0.7;
+          }
+          @apply --hax-upload-camera;
         }
       </style>
       <fieldset id="fieldset">
@@ -326,8 +343,7 @@ class HaxUploadField extends PolymerElement {
       .querySelector("#fileupload")
       .addEventListener("upload-response", this._fileUploadResponse.bind(this));
     this.shadowRoot.querySelector("#picker").addEventListener("change", e => {
-      console.log(e.detail.value, e && e.detail && e.detail.value === "selfie");
-      if (e && e.detail && e.detail.value === "selfie") this._takeSelfie();
+      if (e && e.detail && e.detail.value === "selfie") this._takeSelfie(e);
     });
     this.shadowRoot
       .querySelector("#camerahole")
@@ -362,8 +378,14 @@ class HaxUploadField extends PolymerElement {
    */
   _takeSelfie(e) {
     if (!this.camera) {
+      console.log(
+        "_takeSelfie",
+        e,
+        this.shadowRoot.querySelector("#camerahole")
+      );
       import("@lrnwebcomponents/simple-login/lib/simple-camera-snap.js");
       this.camera = document.createElement("simple-camera-snap");
+      this.camera.autoplay = true;
       this.shadowRoot.querySelector("#camerahole").appendChild(this.camera);
     }
   }

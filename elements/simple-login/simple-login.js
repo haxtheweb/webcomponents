@@ -35,20 +35,34 @@ class SimpleLogin extends PolymerElement {
         }
 
         #loginform {
-          width: 450px;
-          height: 450px;
-          background: var(--login-form-background-color, white);
+          width: var(--login-form-width, 450px);
+          height: var(--login-form-height, auto);
+          --simple-camera-snap-color: var(--login-form-color, #36bed4);
+          --simple-camera-snap-error: var(--login-form-error, red);
+          --simple-camera-snap-width: var(--login-form-image-width, 200px);
+          --simple-camera-snap-height: var(--login-form-image-height, 200px);
+          --simple-camera-snap-background: var(--login-form-background, white);
+          --simple-camera-snap-border-radius: var(
+            --login-form-image-bnorder-radius,
+            100%
+          );
           @apply --shadow-elevation-12dp;
           @apply --login-form;
         }
 
         #loginformcontent {
-          padding: 48px;
+          padding: var(--login-form-padding, 48px);
         }
 
         #loginformcontent > * {
-          margin-top: 8px;
-          margin-bottom: 8px;
+          margin-top: var(
+            --login-form-margin-top,
+            var(--login-form-margin, 8px)
+          );
+          margin-bottom: var(
+            --login-form-margin-bottom,
+            var(--login-form-margin, 8px)
+          );
         }
 
         #loginbtn,
@@ -56,15 +70,21 @@ class SimpleLogin extends PolymerElement {
           margin-top: 24px;
           background-color: var(
             --login-btn-background-color,
-            var(--paper-indigo-500)
+            var(--login-form-color, var(--paper-indigo-500))
           );
-          color: var(--login-btn-text-color, white);
+          color: var(
+            --login-btn-text-color,
+            var(--login-form-background, white)
+          );
           --paper-button-raised-keyboard-focus: {
             background-color: var(
               --login-btn-raised-background-color,
               var(--paper-pink-a200)
             ) !important;
-            color: var(--login-btn-text-color, white) !important;
+            color: var(
+              --login-btn-text-color,
+              var(--login-form-background, white)
+            ) !important;
           }
           @apply --login-btn;
         }
@@ -90,6 +110,10 @@ class SimpleLogin extends PolymerElement {
 
         paper-progress {
           width: 100%;
+        }
+
+        ::slotted(simple-login-avatar) {
+          margin: 0 auto;
         }
 
         #errormsg {
