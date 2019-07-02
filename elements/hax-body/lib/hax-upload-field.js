@@ -124,6 +124,7 @@ class HaxUploadField extends PolymerElement {
           --simple-camera-snap-button-container: {
             position: absolute;
             bottom: 2px;
+            z-index: 5;
           }
           --simple-camera-snap-button: {
             border-radius: 100%;
@@ -378,11 +379,6 @@ class HaxUploadField extends PolymerElement {
    */
   _takeSelfie(e) {
     if (!this.camera) {
-      console.log(
-        "_takeSelfie",
-        e,
-        this.shadowRoot.querySelector("#camerahole")
-      );
       import("@lrnwebcomponents/simple-login/lib/simple-camera-snap.js");
       this.camera = document.createElement("simple-camera-snap");
       this.camera.autoplay = true;

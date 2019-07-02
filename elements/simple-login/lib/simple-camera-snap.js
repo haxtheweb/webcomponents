@@ -81,7 +81,6 @@ class SimpleCameraSnap extends HTMLElement {
     <div class="buttons">
       <paper-icon-button id="snap" icon="image:camera-alt"></paper-icon-button>
       <paper-tooltip for="snap">Take Photo</paper-tooltip>
-      <!--paper-icon-button id="newsnap" icon="icons:clear"></paper-icon-button-->
     </div>
     `;
   }
