@@ -15,6 +15,16 @@
   },
 
   /**
+   * Position label above select dropdown?
+   */
+  "blockLabel": {
+    "name": "blockLabel",
+    "type": "Boolean",
+    "value": false,
+    "reflectToAttribute": true
+  },
+
+  /**
    * Is the picker disabled?
    */
   "disabled": {
@@ -34,25 +44,6 @@
   },
 
   /**
-   * Position label above select dropdown?
-   */
-  "blockLabel": {
-    "name": "blockLabel",
-    "type": "Boolean",
-    "value": false,
-    "reflectToAttribute": true
-  },
-
-  /**
-   * Renders html as title. (Good for titles with HTML in them.)
-   */
-  "titleAsHtml": {
-    "name": "titleAsHtml",
-    "type": "Boolean",
-    "value": false
-  },
-
-  /**
    * Hide option labels? As color-picker or icon-picker, labels may be redundant.
    * This option would move the labels off-screen so that only screen-readers will have them.
    */
@@ -63,21 +54,13 @@
   },
 
   /**
-   * Whether r not a label shoudl be added
-   */
-  "hasLabel": {
-    "name": "label",
-    "type": "Boolean",
-    "computed": "_hasLabel(label)"
-  },
-
-  /**
    * Optional. The label for the picker input
    */
   "label": {
     "name": "label",
     "type": "String",
-    "value": null
+    "value": null,
+    "observer": "_setLabel"
   },
 
   /**
@@ -124,6 +107,15 @@
    */
 
   /**
+   * Renders html as title. (Good for titles with HTML in them.)
+   */
+  "titleAsHtml": {
+    "name": "titleAsHtml",
+    "type": "Boolean",
+    "value": false
+  },
+
+  /**
    * An string that stores the current value for the picker
    */
   "value": {
@@ -142,6 +134,15 @@
     "name": "__activeDesc",
     "type": "String",
     "value": "option-0-0"
+  },
+
+  /**
+   * Whether or not a label should be added
+   */
+  "__hasLabel": {
+    "name": "__hasLabel",
+    "type": "Boolean",
+    "value": true
   },
 
   /**

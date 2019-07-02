@@ -306,6 +306,9 @@ class EcoJsonSchemaObject extends mixinBehaviors(
               var(--paper-font-caption_-_font-family, unset)
             );
             --eco-json-field-margin: 0 0 15px;
+            --paper-input-container: {
+              padding-top: 0;
+            }
           }
           div.layout {
             height: auto;
@@ -333,6 +336,12 @@ class EcoJsonSchemaObject extends mixinBehaviors(
             margin: var(--eco-json-field-margin);
             color: var(--eco-json-form-faded-color, #888);
           }
+          #form ::slotted(div.desc-for-paper-textarea) {
+            margin-top: -16px;
+            margin-right: 35px;
+          }
+          #form ::slotted(simple-icon-picker),
+          #form ::slotted(simple-colors-picker),
           #form ::slotted(simple-picker) {
             --simple-picker-float-label-active-color: var(
               --eco-json-form-active-color,
@@ -657,7 +666,10 @@ class EcoJsonSchemaObject extends mixinBehaviors(
           el.setAttribute("aria-describedby", id);
           el.setAttribute("class", "has-tooltip-desc");
           tip.setAttribute("id", id);
-          tip.setAttribute("class", "tooltip-desc");
+          tip.setAttribute(
+            "class",
+            "tooltip-desc desc-for-" + property.component.name
+          );
           if (property.schema.hidden !== undefined)
             tip.setAttribute("hidden", property.schema.hidden);
           tip.setAttribute("role", "tooltip");

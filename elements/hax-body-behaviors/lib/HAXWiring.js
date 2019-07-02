@@ -672,6 +672,8 @@ export class HAXWiring {
                   name: "simple-colors-picker",
                   valueProperty: "value",
                   properties: {
+                    allowNull: settings[value].allowNull,
+                    blockLabel: true,
                     required: settings[value].required,
                     label: settings[value].title,
                     disabled: settings[value].disabled
@@ -683,6 +685,8 @@ export class HAXWiring {
                   name: "simple-icon-picker",
                   valueProperty: "value",
                   properties: {
+                    allowNull: settings[value].allowNull,
+                    blockLabel: true,
                     required: settings[value].required,
                     hideOptionLabels: true,
                     label: settings[value].title,

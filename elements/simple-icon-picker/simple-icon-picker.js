@@ -19,71 +19,40 @@ import { IronMeta } from "@polymer/iron-meta/iron-meta.js";
  * @demo demo/index.html
  */
 class SimpleIconPicker extends SimplePicker {
+  
   // render function
   static get template() {
     return html`
-      <style>
-        :host {
-          display: inline-flex;
-          --simple-picker-option-size: 24px;
-          --simple-picker-collapse: {
-            width: 360px;
-            height: 300px;
-            max-height: 300px;
-            overflow: scroll;
-          }
-          --simple-picker-row: {
-            justify-content: flex-start;
-          }
-          --simple-picker-option: {
-            flex: 0 0 auto;
-          }
-        }
-
-        :host([hidden]) {
-          display: none;
-        }
-      </style>
-      <simple-picker
-        aria-labelledby$="[[ariaLabelledby]]"
-        disabled$="[[disabled]]"
-        expanded$="[[expanded]]"
-        hide-option-labels
-        label$="[[label]]"
-        on-change="_handleChange"
-        on-collapse="_handleCollapse"
-        on-expand="_handleExpand"
-        on-option-focus="_handleOptionFocus"
-        options="[[options]]"
-        value$="{{value}}"
-      >
-      </simple-picker>
-    `;
+<style>:host(simple-icon-picker) #collapse {
+  width: 300px;
+  height: 300px;
+  max-height: 300px;
+  overflow: auto;
+}
+:host(simple-icon-picker) .row {
+  justify-content: flex-start;
+}
+:host(simple-icon-picker) simple-picker-option {
+  flex: 0 0 auto;
+}
+</style>
+${super.template}`;
   }
 
   // properties available to the custom element for data binding
-  static get properties() {
-    return {
-      /**
-       * Allow a null option to be selected?
-       */
-      allowNull: {
-        name: "allowNull",
-        type: "Boolean",
-        value: false
-      },
+    static get properties() {
+    let props = {
+  /**
+   * Allow a null option to be selected?
+   */
+  "allowNull": {
+    "name": "allowNull",
+    "type": Boolean,
+    "value": false,
+    "observer": "_getOptions"
+  },
 
-      /**
-       * Icon picker should not have visible icon labels.
-       */
-      hideOptionLabels: {
-        name: "hideOptionLabels",
-        type: "Boolean",
-        value: true,
-        readOnly: true
-      },
-
-      /**
+  /**
     * An array of icons by name: ```
 [
   "editor:format-paint",
@@ -92,41 +61,35 @@ class SimpleIconPicker extends SimplePicker {
   
 ]```
   */
-      icons: {
-        name: "icons",
-        type: "Array",
-        value: []
-      },
+  "icons": {
+    "name": "icons",
+    "type": Array,
+    "value": [],
+    "observer": "_getOptions"
+  },
 
-      /**
-    * An array of options for the picker, eg.: ```
-[
-  {
-    "icon": "editor:format-paint",      //Optional. Used if the picker is used as an icon picker.
-    "alt": "Blue",                      //Required for accessibility. Alt text description of the choice.
-    "style": "background-color: blue;", //Optional. Used to set an option's style.
-    ...                                 //Optional. Any other properties that should be captured as part of the selected option's value
-  },...
-]```
-    */
-      options: {
-        name: "options",
-        type: "Array",
-        computed: "_getOptions(icons,__iconList,allowNull)"
-      },
+  /**
+   * The value of the option.
+   */
+  "value": {
+    "name": "value",
+    "type": String,
+    "value": null,
+    "reflectToAttribute": true,
+    "notify": true
+  },
 
-      /**
-       * The value of the option.
-       */
-      value: {
-        name: "label",
-        type: "String",
-        value: null,
-        reflectToAttribute: true,
-        notify: true
-      },
+  /**
+   * the maximum number of options per row
+   */
+  "optionsPerRow": {
+    "optionSize": "optionsPerRow",
+    "type": Number,
+    "value": 10,
+    "observer": "_getOptions"
+  },
 
-      /**
+  /**
     * An array of icons by name: ```
 [
   "editor:format-paint",
@@ -135,12 +98,18 @@ class SimpleIconPicker extends SimplePicker {
   
 ]```
   */
-      __iconList: {
-        name: "__iconList",
-        type: "Array",
-        "read-only": true
-      }
-    };
+  "__iconList": {
+    "name": "__iconList",
+    "type": Array,
+    "read-only": true,
+    "observer": "_getOptions"
+  }
+}
+;
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
 
   /**
@@ -149,6 +118,10 @@ class SimpleIconPicker extends SimplePicker {
    */
   static get tag() {
     return "simple-icon-picker";
+  }
+  constructor() {
+    super();
+    this.hideOptionLabels = true;
   }
   /**
    * life cycle, element is afixed to the DOM
@@ -184,15 +157,20 @@ class SimpleIconPicker extends SimplePicker {
    * @param {boolean} allow a null value for the picker
    *
    */
-  _getOptions(icons = [], __iconList = [], allowNull = false) {
-    if (typeof icons === "string") icons = JSON.parse(icons);
-    if (icons.length === 0) icons = __iconList;
-    let options = allowNull === false ? [] : [[{ alt: "null", value: null }]],
-      h = allowNull === false ? 0 : 1,
-      cols =
-        Math.sqrt(icons.length + h) < 16
-          ? Math.ceil(Math.sqrt(icons.length + h))
-          : 15;
+  _getOptions() {
+    let icons =
+        typeof this.icons === "string" ? JSON.parse(this.icons) : this.icons,
+      collapse = this.shadowRoot.querySelector("#collapse"),
+      cols = this.optionsPerRow;
+    if (icons.length === 0 && this.__iconList && this.__iconList.length > 0)
+      icons = this.__iconList;
+    let options =
+        this.allowNull === false ? [] : [[{ alt: "null", value: null }]],
+      h = this.allowNull === false ? 0 : 1;
+    cols =
+      Math.sqrt(icons.length + h) <= this.optionsPerRow
+        ? Math.ceil(Math.sqrt(icons.length + h))
+        : this.optionsPerRow;
     for (let i = 0; i < icons.length; i++) {
       let j = h + i,
         row = Math.floor(j / cols),
@@ -205,43 +183,11 @@ class SimpleIconPicker extends SimplePicker {
         value: icons[i]
       };
     }
-    return options;
+    this.set("options", options);
+    let option = this.shadowRoot.querySelector("simple-picker-option");
+    if (collapse && option)
+      collapse.style.width = cols * option.offsetWidth + 15 + "px";
   }
-
-  /**
-   * handles when the picker's value changes
-   */
-  _handleChange(e) {
-    this.value = e.detail.value;
-    this.dispatchEvent(
-      new CustomEvent("change", { bubbles: true, detail: this })
-    );
-  }
-
-  /**
-   * handles when the picker collapses
-   */
-  _handleCollapse(e) {
-    this.dispatchEvent(new CustomEvent("collapse", { detail: this }));
-  }
-
-  /**
-   * handles when the picker expands
-   */
-  _handleExpand(e) {
-    this.dispatchEvent(new CustomEvent("expand", { detail: this }));
-  }
-
-  /**
-   * handles when the picker's focus changes
-   */
-  _handleOptionFocus(e) {
-    this.dispatchEvent(new CustomEvent("option-focus", { detail: this }));
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
 }
 window.customElements.define(SimpleIconPicker.tag, SimpleIconPicker);
 export { SimpleIconPicker };

@@ -37,6 +37,7 @@ class SimpleColorsPicker extends SimpleColors {
       <simple-picker
         id="picker"
         aria-labelledby$="[[ariaLabelledby]]"
+        block-label$="[[blockLabel]]"
         disabled$="[[disabled]]"
         expanded$="[[expanded]]"
         hide-option-labels$="[[shades]]"
@@ -61,6 +62,15 @@ class SimpleColorsPicker extends SimpleColors {
         name: "ariaLabelledby",
         type: String,
         value: null
+      },
+
+      /**
+       * Display as a block
+       */
+      blockLabel: {
+        name: "blockLabel",
+        type: Boolean,
+        value: false
       },
 
       /**

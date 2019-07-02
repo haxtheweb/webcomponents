@@ -28,6 +28,10 @@ class SimpleIconPicker extends SimplePicker {
   static get tag() {
     return "simple-icon-picker";
   }
+  constructor() {
+    super();
+    this.hideOptionLabels = true;
+  }
   /**
    * life cycle, element is afixed to the DOM
    */
@@ -62,15 +66,20 @@ class SimpleIconPicker extends SimplePicker {
    * @param {boolean} allow a null value for the picker
    *
    */
-  _getOptions(icons = [], __iconList = [], allowNull = false) {
-    if (typeof icons === "string") icons = JSON.parse(icons);
-    if (icons.length === 0) icons = __iconList;
-    let options = allowNull === false ? [] : [[{ alt: "null", value: null }]],
-      h = allowNull === false ? 0 : 1,
-      cols =
-        Math.sqrt(icons.length + h) < 16
-          ? Math.ceil(Math.sqrt(icons.length + h))
-          : 15;
+  _getOptions() {
+    let icons =
+        typeof this.icons === "string" ? JSON.parse(this.icons) : this.icons,
+      collapse = this.shadowRoot.querySelector("#collapse"),
+      cols = this.optionsPerRow;
+    if (icons.length === 0 && this.__iconList && this.__iconList.length > 0)
+      icons = this.__iconList;
+    let options =
+        this.allowNull === false ? [] : [[{ alt: "null", value: null }]],
+      h = this.allowNull === false ? 0 : 1;
+    cols =
+      Math.sqrt(icons.length + h) <= this.optionsPerRow
+        ? Math.ceil(Math.sqrt(icons.length + h))
+        : this.optionsPerRow;
     for (let i = 0; i < icons.length; i++) {
       let j = h + i,
         row = Math.floor(j / cols),
@@ -83,43 +92,11 @@ class SimpleIconPicker extends SimplePicker {
         value: icons[i]
       };
     }
-    return options;
+    this.set("options", options);
+    let option = this.shadowRoot.querySelector("simple-picker-option");
+    if (collapse && option)
+      collapse.style.width = cols * option.offsetWidth + 15 + "px";
   }
-
-  /**
-   * handles when the picker's value changes
-   */
-  _handleChange(e) {
-    this.value = e.detail.value;
-    this.dispatchEvent(
-      new CustomEvent("change", { bubbles: true, detail: this })
-    );
-  }
-
-  /**
-   * handles when the picker collapses
-   */
-  _handleCollapse(e) {
-    this.dispatchEvent(new CustomEvent("collapse", { detail: this }));
-  }
-
-  /**
-   * handles when the picker expands
-   */
-  _handleExpand(e) {
-    this.dispatchEvent(new CustomEvent("expand", { detail: this }));
-  }
-
-  /**
-   * handles when the picker's focus changes
-   */
-  _handleOptionFocus(e) {
-    this.dispatchEvent(new CustomEvent("option-focus", { detail: this }));
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
 }
 window.customElements.define(SimpleIconPicker.tag, SimpleIconPicker);
 export { SimpleIconPicker };

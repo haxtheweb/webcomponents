@@ -5,17 +5,8 @@
   "allowNull": {
     "name": "allowNull",
     "type": "Boolean",
-    "value": false
-  },
-
-  /**
-   * Icon picker should not have visible icon labels.
-   */
-  "hideOptionLabels": {
-    "name": "hideOptionLabels",
-    "type": "Boolean",
-    "value": true,
-    "readOnly": true
+    "value": false,
+    "observer": "_getOptions"
   },
 
   /**
@@ -30,35 +21,29 @@
   "icons": {
     "name": "icons",
     "type": "Array",
-    "value": []
-  },
-
-  /**
-    * An array of options for the picker, eg.: ```
-[
-  {
-    "icon": "editor:format-paint",      //Optional. Used if the picker is used as an icon picker.
-    "alt": "Blue",                      //Required for accessibility. Alt text description of the choice.
-    "style": "background-color: blue;", //Optional. Used to set an option's style.
-    ...                                 //Optional. Any other properties that should be captured as part of the selected option's value
-  },...
-]```
-    */
-  "options": {
-    "name": "options",
-    "type": "Array",
-    "computed": "_getOptions(icons,__iconList,allowNull)"
+    "value": [],
+    "observer": "_getOptions"
   },
 
   /**
    * The value of the option.
    */
   "value": {
-    "name": "label",
+    "name": "value",
     "type": "String",
     "value": null,
     "reflectToAttribute": true,
     "notify": true
+  },
+
+  /**
+   * the maximum number of options per row
+   */
+  "optionsPerRow": {
+    "optionSize": "optionsPerRow",
+    "type": "Number",
+    "value": 10,
+    "observer": "_getOptions"
   },
 
   /**
@@ -73,6 +58,7 @@
   "__iconList": {
     "name": "__iconList",
     "type": "Array",
-    "read-only": true
+    "read-only": true,
+    "observer": "_getOptions"
   }
 }

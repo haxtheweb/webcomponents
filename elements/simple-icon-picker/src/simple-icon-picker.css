@@ -1,20 +1,12 @@
-:host {
-  display: inline-flex;
-  --simple-picker-option-size: 24px;
-  --simple-picker-collapse: {
-    width: 360px;
-    height: 300px;
-    max-height: 300px;
-    overflow: scroll;
-  }
-  --simple-picker-row: {
-    justify-content: flex-start;
-  }
-  --simple-picker-option: {
-    flex: 0 0 auto;
-  }
+:host(simple-icon-picker) #collapse {
+  width: 300px;
+  height: 300px;
+  max-height: 300px;
+  overflow: auto;
 }
-
-:host([hidden]) {
-  display: none;
+:host(simple-icon-picker) .row {
+  justify-content: flex-start;
+}
+:host(simple-icon-picker) simple-picker-option {
+  flex: 0 0 auto;
 }

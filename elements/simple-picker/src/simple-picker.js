@@ -146,8 +146,18 @@ class SimplePicker extends PolymerElement {
    * @param {string} label
    * @returns {boolean} if there is a label
    */
-  _hasLabel(label) {
-    return label !== undefined && label !== null && label.trim() !== "";
+  _setLabel() {
+    let label = this.shadowRoot.querySelector("#listLabel");
+    this.hasLabel =
+      this.label !== undefined &&
+      this.label !== null &&
+      this.label.trim() !== "";
+    label.innerHTML =
+      this.label !== undefined &&
+      this.label !== null &&
+      this.label.trim() !== ""
+        ? this.label.trim()
+        : "";
   }
   /**
    * determines if an option is hidden a d can't be selected
