@@ -19,319 +19,363 @@ export { SimplePicker };
  * @demo demo/index.html
  */
 class SimplePicker extends PolymerElement {
-  
   // render function
   static get template() {
     return html`
-<style>:host {
-  display: inline-flex;
-  align-items: center;
-  color: var(--simple-picker-color, black);
-  font-family: var(--simple-picker-font-family, inherit);
-  font-size: var(--simple-picker-font-size, inherit);
-  max-height: calc(var(--simple-picker-option-size, 24px) + 18px);
-  @apply --simple-picker;
-}
+      <style>
+        :host {
+          display: inline-flex;
+          align-items: center;
+          color: var(--simple-picker-color, black);
+          font-family: var(--simple-picker-font-family, inherit);
+          font-size: var(--simple-picker-font-size, inherit);
+          max-height: calc(var(--simple-picker-option-size, 24px) + 18px);
+          @apply --simple-picker;
+        }
 
-:host([block-label]) {
-  display: block;
-  margin: 0 0 15px;
-}
+        :host([block-label]) {
+          display: block;
+          margin: 0 0 15px;
+        }
 
-:host([disabled]) {
-  cursor: not-allowed;
-}
+        :host([disabled]) {
+          cursor: not-allowed;
+        }
 
-:host([hidden]) {
-  display: none;
-}
+        :host([hidden]) {
+          display: none;
+        }
 
-:host label:not([hidden]) {
-  padding-right: 5px;
-  font-family: var(--simple-picker-font-family, inherit);
-  color: var(--simple-picker-label-color, var(--simple-picker-color, black));
-  max-height: calc(var(--simple-picker-option-size, 24px) + 4px);
-  @apply --simple-picker-label;
-}
+        :host label:not([hidden]) {
+          padding-right: 5px;
+          font-family: var(--simple-picker-font-family, inherit);
+          color: var(
+            --simple-picker-label-color,
+            var(--simple-picker-color, black)
+          );
+          max-height: calc(var(--simple-picker-option-size, 24px) + 4px);
+          @apply --simple-picker-label;
+        }
 
-:host([block-label]) label:not([hidden]) {
-  display: block;
-  padding-right: 0px;
-  max-height: unset;
-  color: var(--simple-picker-float-label-color, #888);
-  transition: all 0.5s;
-}
+        :host([block-label]) label:not([hidden]) {
+          display: block;
+          padding-right: 0px;
+          max-height: unset;
+          color: var(--simple-picker-float-label-color, #888);
+          transition: all 0.5s;
+        }
 
-:host([block-label]:focus) label,
-:host([block-label]:hover) label {
-  color: var(--simple-picker-float-label-active-color, var(--simple-picker-color, black));
-}
+        :host([block-label]:focus) label,
+        :host([block-label]:hover) label {
+          color: var(
+            --simple-picker-float-label-active-color,
+            var(--simple-picker-color, black)
+          );
+        }
 
-:host #sample, 
-:host .rows {
-  margin: 0;
-  padding: 0;
-}
+        :host #sample,
+        :host .rows {
+          margin: 0;
+          padding: 0;
+        }
 
-:host #listbox {
-  display: flex;
-  position: relative;
-  flex: 1 0 auto;
-  max-height: calc(var(--simple-picker-option-size, 24px) + 4px);
-}
+        :host #listbox {
+          cursor: pointer;
+          display: flex;
+          position: relative;
+          flex: 1 0 auto;
+          max-height: calc(var(--simple-picker-option-size, 24px) + 4px);
+        }
 
-:host #sample {
-  display: flex;
-  flex: 1 0 auto;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2px;
-  border-radius: 2px;
-  background-color: var(--simple-picker-background-color,#f0f0f0);
-  border: 1px solid var(--simple-picker-border-color, var(--simple-picker-color, black));
-  @apply --simple-picker-sample;
-}
-:host(:focus) #sample,
-:host #listbox:focus #sample,
-:host #sample:focus {
-  border: 2px solid var(--simple-picker-focus-border-color, var(--simple-picker-color, black));
-  @apply --simple-picker-sample-focus;
-}
+        :host #sample {
+          display: flex;
+          flex: 1 0 auto;
+          justify-content: space-between;
+          align-items: center;
+          padding: 2px;
+          border-radius: 2px;
+          background-color: var(--simple-picker-background-color, #f0f0f0);
+          border: 1px solid
+            var(--simple-picker-border-color, var(--simple-picker-color, black));
+          @apply --simple-picker-sample;
+        }
+        :host(:focus) #sample,
+        :host #listbox:focus #sample,
+        :host #sample:focus {
+          border: 2px solid
+            var(
+              --simple-picker-focus-border-color,
+              var(--simple-picker-color, black)
+            );
+          @apply --simple-picker-sample-focus;
+        }
 
-:host #listbox:focus {
-  outline: none;
-}
+        :host #listbox:focus {
+          outline: none;
+        }
 
-:host #icon {
-  transform: var(--simple-picker-icon-tranform, rotate(0deg));
-  transition: transform 0.25s;
-}
+        :host #icon {
+          transform: var(--simple-picker-icon-tranform, rotate(0deg));
+          transition: transform 0.25s;
+        }
 
-:host([expanded]) #icon {
-  transform: var(--simple-picker-expanded-icon-tranform, rotate(0deg));
-  transition: transform 0.25s;
-}
+        :host([expanded]) #icon {
+          transform: var(--simple-picker-expanded-icon-tranform, rotate(0deg));
+          transition: transform 0.25s;
+        }
 
-:host #collapse {
-  display: none;
-  width: 100%;
-  position: absolute;
-  top: calc(var(--simple-picker-option-size, 24px) + 4px);
-  padding: 0 1px;
-  z-index: 2;
-  @apply --simple-picker-collapse;
-}
+        :host #collapse {
+          display: none;
+          width: 100%;
+          position: absolute;
+          top: calc(var(--simple-picker-option-size, 24px) + 4px);
+          padding: 0 1px;
+          z-index: 2;
+          @apply --simple-picker-collapse;
+        }
 
-:host([expanded]:not([disabled])) #collapse {
-  display: block;
-} 
+        :host([expanded]:not([disabled])) #collapse {
+          display: block;
+        }
 
-:host .rows {
-  display: block;
-  position: absolute;
-  z-index: 1000;
-  outline: 1px solid var(--simple-picker-border-color, var(--simple-picker-color, black));;
-  background-color: var(--simple-picker-background-color,#f0f0f0);
-  box-shadow: 0px 0px 1px #888;
-  @apply --simple-picker-rows;
-}
+        :host .rows {
+          display: block;
+          position: absolute;
+          z-index: 1000;
+          outline: 1px solid
+            var(--simple-picker-border-color, var(--simple-picker-color, black));
+          background-color: var(--simple-picker-background-color, #f0f0f0);
+          box-shadow: 0px 0px 1px #888;
+          @apply --simple-picker-rows;
+        }
 
-:host .row {
-  display: flex; 
-  align-items: stretch;
-  justify-content: space-between;
-  @apply --simple-picker-row;
-}
+        :host .row {
+          display: flex;
+          align-items: stretch;
+          justify-content: space-between;
+          @apply --simple-picker-row;
+        }
 
-:host simple-picker-option {
-  z-index: 1;
-  flex: 1 1 auto;
-  justify-content: flex-start;
-  max-height: unset;
-  min-height: var(--simple-picker-option-size, 24px);
-  min-width: var(--simple-picker-option-size, 24px);
-  line-height: var(--simple-picker-option-size, 24px);
-  color: var(--simple-picker-color);
-  background-color: var(--simple-picker-option-background-color, #ffffff);
-  outline: var(--simple-picker-option-outline, none);
-  transition: max-height 2s;
-  @apply --simple-picker-option;
-}
+        :host simple-picker-option {
+          z-index: 1;
+          flex: 1 1 auto;
+          justify-content: flex-start;
+          max-height: unset;
+          min-height: var(--simple-picker-option-size, 24px);
+          min-width: var(--simple-picker-option-size, 24px);
+          line-height: var(--simple-picker-option-size, 24px);
+          color: var(--simple-picker-color);
+          background-color: var(
+            --simple-picker-option-background-color,
+            #ffffff
+          );
+          outline: var(--simple-picker-option-outline, none);
+          transition: max-height 2s;
+          @apply --simple-picker-option;
+        }
 
-:host(:not([value])) #sample simple-picker-option,
-:host([value="null"]) #sample simple-picker-option {
-  @apply --simple-picker-sample-null;
-  --simple-picker-option-label: {
-    @apply --simple-picker-sample-null-label;
-  };
-}
+        :host(:not([value])) #sample simple-picker-option,
+        :host([value="null"]) #sample simple-picker-option {
+          @apply --simple-picker-sample-null;
+          --simple-picker-option-label: {
+            @apply --simple-picker-sample-null-label;
+          }
+        }
 
-:host #sample simple-picker-option {
-  @apply --simple-picker-sample-option;
-}
+        :host #sample simple-picker-option {
+          @apply --simple-picker-sample-option;
+        }
 
-:host simple-picker-option[selected] {
-  z-index: 50;
-  color: var(--simple-picker-color);
-  background-color: var(--simple-picker-selected-option-background-color, #e8e8e8);
-  outline: var(--simple-picker-selected-option-outline, none);
-}
+        :host simple-picker-option[selected] {
+          z-index: 50;
+          color: var(--simple-picker-color);
+          background-color: var(
+            --simple-picker-selected-option-background-color,
+            #e8e8e8
+          );
+          outline: var(--simple-picker-selected-option-outline, none);
+        }
 
-:host simple-picker-option[active] {
-  z-index: 100;
-  cursor: pointer;
-  color: var(--simple-picker-color);
-  background-color: var(--simple-picker-active-option-background-color, #aaddff);
-  outline: var(--simple-picker-active-option-outline, none);
-}
+        :host simple-picker-option[active] {
+          z-index: 100;
+          cursor: pointer;
+          color: var(--simple-picker-color);
+          background-color: var(
+            --simple-picker-active-option-background-color,
+            #aaddff
+          );
+          outline: var(--simple-picker-active-option-outline, none);
+        }
 
-:host #sample simple-picker-option {
-  color: var(--simple-picker-sample-color,  var(--simple-picker-color));
-  background-color: var(--simple-picker-sample-background-color, transparent);
-  border: none;
-}
+        :host #sample simple-picker-option {
+          color: var(--simple-picker-sample-color, var(--simple-picker-color));
+          background-color: var(
+            --simple-picker-sample-background-color,
+            transparent
+          );
+          border: none;
+        }
 
-:host(:not([expanded])) #collapse simple-picker-option {
-  max-height: 0;
-  transition: max-height 1.5s;
-}
+        :host(:not([expanded])) #collapse simple-picker-option {
+          max-height: 0;
+          transition: max-height 1.5s;
+        }
 
-:host #collapse simple-picker-option:not([value]),
-:host #collapse simple-picker-option[value=null] {
-  @apply --simple-picker-option-null;
-}
+        :host #collapse simple-picker-option:not([value]),
+        :host #collapse simple-picker-option[value="null"] {
+          @apply --simple-picker-option-null;
+        }
 
-@media screen and (max-width: 600px) {
-  :host {
-    position: static;
-  }
-  :host #collapse {
-    top: 0;
-    margin-top: 0;
-    position: relative;
-  } 
-  :host .rows {
-    position: sticky;
-  }  
-}
-</style>
-<label id="listLabel" for="listbox" hidden$="[[!hasLabel]]">[[label]]</label>
-<div id="listbox"
-  aria-activedescendant$="[[__activeDesc]]" 
-  aria-labelledby$="[[ariaLabelledby]]" 
-  disabled$="[[disabled]]"
-  role="listbox" 
-  tabindex="0">
-  <div id="sample">
-    <simple-picker-option 
-      aria-hidden="true" 
-      hide-option-labels$="[[hideOptionLabels]]"
-      icon$="[[__selectedOption.icon]]"
-      label$="[[__selectedOption.alt]]"
-      style$="[[__selectedOption.style]]" 
-      title-as-html$="[[titleAsHtml]]">
-    </simple-picker-option>
-    <span id="icon"><iron-icon aria-hidden="true" icon="arrow-drop-down"></iron-icon></span>
-  </div>
-  <div id="collapse">
-    <div class="rows">
-      <template is="dom-repeat" items="[[__options]]" as="row" index-as="rownum">
-        <div class="row">
-          <template is="dom-repeat" items=[[row]] as="option" index-as="colnum">
-            <simple-picker-option 
-              active$="[[_isActive(__activeDesc,rownum,colnum)]]"
-              aria-selected$="[[_isSelected(value,option.value)]]"
-              data$="[[data]]"
-              hide-option-labels$="[[hideOptionLabels]]"
-              hidden$="[[_hideNullOption(option.value,allowNull)]]"
-              icon$="[[option.icon]]"
-              id$="[[_getOptionId(rownum,colnum)]]"
-              label$="[[option.alt]]"
-              role="option"
-              selected$="[[_isSelected(value,option.value)]]"
-              on-option-focus="_handleOptionFocus"
-              on-set-selected-option="_handleSetSelectedOption"
-              style$="[[option.style]]" 
-              tabindex="-1"
-              title-as-html$="[[titleAsHtml]]"
-              value="[[option.value]]">
-            </simple-picker-option>
-          </template>
+        @media screen and (max-width: 600px) {
+          :host {
+            position: static;
+          }
+          :host #collapse {
+            top: 0;
+            margin-top: 0;
+            position: relative;
+          }
+          :host .rows {
+            position: sticky;
+          }
+        }
+      </style>
+      <label id="listLabel" for="listbox" hidden$="[[!hasLabel]]"
+        >[[label]]</label
+      >
+      <div
+        id="listbox"
+        aria-activedescendant$="[[__activeDesc]]"
+        aria-labelledby$="[[ariaLabelledby]]"
+        disabled$="[[disabled]]"
+        role="listbox"
+        tabindex="0"
+      >
+        <div id="sample">
+          <simple-picker-option
+            aria-hidden="true"
+            hide-option-labels$="[[hideOptionLabels]]"
+            icon$="[[__selectedOption.icon]]"
+            label$="[[__selectedOption.alt]]"
+            style$="[[__selectedOption.style]]"
+            title-as-html$="[[titleAsHtml]]"
+          >
+          </simple-picker-option>
+          <span id="icon"
+            ><iron-icon aria-hidden="true" icon="arrow-drop-down"></iron-icon
+          ></span>
         </div>
-      </template>
-    </div>
-  </div>
-</div>`;
+        <div id="collapse">
+          <div class="rows">
+            <template
+              is="dom-repeat"
+              items="[[__options]]"
+              as="row"
+              index-as="rownum"
+            >
+              <div class="row">
+                <template
+                  is="dom-repeat"
+                  items="[[row]]"
+                  as="option"
+                  index-as="colnum"
+                >
+                  <simple-picker-option
+                    active$="[[_isActive(__activeDesc,rownum,colnum)]]"
+                    aria-selected$="[[_isSelected(value,option.value)]]"
+                    data$="[[data]]"
+                    hide-option-labels$="[[hideOptionLabels]]"
+                    hidden$="[[_hideNullOption(option.value,allowNull)]]"
+                    icon$="[[option.icon]]"
+                    id$="[[_getOptionId(rownum,colnum)]]"
+                    label$="[[option.alt]]"
+                    role="option"
+                    selected$="[[_isSelected(value,option.value)]]"
+                    on-option-focus="_handleOptionFocus"
+                    on-set-selected-option="_handleSetSelectedOption"
+                    style$="[[option.style]]"
+                    tabindex="-1"
+                    title-as-html$="[[titleAsHtml]]"
+                    value="[[option.value]]"
+                  >
+                  </simple-picker-option>
+                </template>
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
+    `;
   }
 
   // properties available to the custom element for data binding
-    static get properties() {
+  static get properties() {
     let props = {
-  "allowNull": {
-    "name": "allowNull",
-    "type": Boolean,
-    "value": false,
-    "reflectToAttribute": true
-  },
-  /**
-   * Optional. Sets the aria-labelledby attribute
-   */
-  "ariaLabelledby": {
-    "name": "ariaLabelledby",
-    "type": String,
-    "value": null
-  },
+      allowNull: {
+        name: "allowNull",
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
+       * Optional. Sets the aria-labelledby attribute
+       */
+      ariaLabelledby: {
+        name: "ariaLabelledby",
+        type: String,
+        value: null
+      },
 
-  /**
-   * Position label above select dropdown?
-   */
-  "blockLabel": {
-    "name": "blockLabel",
-    "type": Boolean,
-    "value": false,
-    "reflectToAttribute": true
-  },
+      /**
+       * Position label above select dropdown?
+       */
+      blockLabel: {
+        name: "blockLabel",
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
 
-  /**
-   * Is the picker disabled?
-   */
-  "disabled": {
-    "name": "disabled",
-    "type": Boolean,
-    "value": false
-  },
+      /**
+       * Is the picker disabled?
+       */
+      disabled: {
+        name: "disabled",
+        type: Boolean,
+        value: false
+      },
 
-  /**
-   * Is it expanded?
-   */
-  "expanded": {
-    "name": "expanded",
-    "type": Boolean,
-    "value": false,
-    "reflectToAttribute": true
-  },
+      /**
+       * Is it expanded?
+       */
+      expanded: {
+        name: "expanded",
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
 
-  /**
-   * Hide option labels? As color-picker or icon-picker, labels may be redundant.
-   * This option would move the labels off-screen so that only screen-readers will have them.
-   */
-  "hideOptionLabels": {
-    "name": "hideOptionLabels",
-    "type": Boolean,
-    "value": false
-  },
+      /**
+       * Hide option labels? As color-picker or icon-picker, labels may be redundant.
+       * This option would move the labels off-screen so that only screen-readers will have them.
+       */
+      hideOptionLabels: {
+        name: "hideOptionLabels",
+        type: Boolean,
+        value: false
+      },
 
-  /**
-   * Optional. The label for the picker input
-   */
-  "label": {
-    "name": "label",
-    "type": String,
-    "value": null,
-    "observer": "_setLabel"
-  },
+      /**
+       * Optional. The label for the picker input
+       */
+      label: {
+        name: "label",
+        type: String,
+        value: null,
+        observer: "_setLabel"
+      },
 
-  /**
+      /**
    * An array of options for the picker, eg.: `
 [
   [
@@ -344,23 +388,23 @@ class SimplePicker extends PolymerElement {
   ]
 ]`
    */
-  "options": {
-    "name": "options",
-    "type": Array,
-    "value": [
-      [
-        {
-          "icon": null,
-          "style": null,
-          "alt": null,
-          "value": null
-        }
-      ]
-    ],
-    "observer": "_setSelectedOption"
-  },
+      options: {
+        name: "options",
+        type: Array,
+        value: [
+          [
+            {
+              icon: null,
+              style: null,
+              alt: null,
+              value: null
+            }
+          ]
+        ],
+        observer: "_setSelectedOption"
+      },
 
-  /**
+      /**
    * position the swatches relative to the picker, where:
    * `left` aligns the swatches to the picker's left edge
    * `right` aligns the swatches to the picker's right edge
@@ -374,54 +418,53 @@ class SimplePicker extends PolymerElement {
   },
    */
 
-  /**
-   * Renders html as title. (Good for titles with HTML in them.)
-   */
-  "titleAsHtml": {
-    "name": "titleAsHtml",
-    "type": Boolean,
-    "value": false
-  },
+      /**
+       * Renders html as title. (Good for titles with HTML in them.)
+       */
+      titleAsHtml: {
+        name: "titleAsHtml",
+        type: Boolean,
+        value: false
+      },
 
-  /**
-   * An string that stores the current value for the picker
-   */
-  "value": {
-    "name": "value",
-    "type": Object,
-    "value": null,
-    "notify": true,
-    "observer": "_setSelectedOption",
-    "reflectToAttribute": true
-  },
+      /**
+       * An string that stores the current value for the picker
+       */
+      value: {
+        name: "value",
+        type: Object,
+        value: null,
+        notify: true,
+        observer: "_setSelectedOption",
+        reflectToAttribute: true
+      },
 
-  /**
-   * The aria-activedescendant attribute (active option's ID)
-   */
-  "__activeDesc": {
-    "name": "__activeDesc",
-    "type": String,
-    "value": "option-0-0"
-  },
+      /**
+       * The aria-activedescendant attribute (active option's ID)
+       */
+      __activeDesc: {
+        name: "__activeDesc",
+        type: String,
+        value: "option-0-0"
+      },
 
-  /**
-   * Whether or not a label should be added
-   */
-  "__hasLabel": {
-    "name": "__hasLabel",
-    "type": Boolean,
-    "value": true
-  },
+      /**
+       * Whether or not a label should be added
+       */
+      __hasLabel: {
+        name: "__hasLabel",
+        type: Boolean,
+        value: true
+      },
 
-  /**
-   * The selected option based on the value of the picker
-   */
-  "__selectedOption": {
-    "name": "_setSelectedOption",
-    "type": Object
-  }
-}
-;
+      /**
+       * The selected option based on the value of the picker
+       */
+      __selectedOption: {
+        name: "_setSelectedOption",
+        type: Object
+      }
+    };
     if (super.properties) {
       props = Object.assign(props, super.properties);
     }

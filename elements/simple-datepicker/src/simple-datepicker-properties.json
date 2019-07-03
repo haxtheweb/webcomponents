@@ -1,0 +1,35 @@
+{
+  "weekdays": {
+    "name": "weekdays",
+    "type": "Array",
+    "value": [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ]
+  },
+  "currentMonth": {
+    "name": "currentMonth",
+    "type": "Number",
+    "value": 1
+  },
+  "currentYear": {
+    "name": "currentYear",
+    "type": "Number",
+    "value": 1
+  },
+  "currentDays": {
+    "name": "currentDays",
+    "type": "Array",
+    "computed": "_getCurrentDays(currentMonth,currentYear,weekdays)"
+  },
+  "dateFormat": {
+    "name": "dateFormat",
+    "type": "String",
+    "value": "mm-dd-yyyy"
+  }
+}

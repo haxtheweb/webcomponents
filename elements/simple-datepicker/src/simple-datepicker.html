@@ -1,0 +1,43 @@
+
+<a11y-collapse 
+  accordion 
+  icon="hax:calendar" label="toggle datepicker" tooltip="toggle datepicker">
+  <paper-input id="dateinput" slot="heading" label$="[[label]]"></paper-input>
+  <div slot="content" role="application">
+    <table id="calendar">
+      <caption>
+        <paper-button label="previous year" controls="calendar">
+          <iron-icon icon="av:fast-rewind"></iron-icon>
+        </paper-button>
+        <paper-button label="previous month" controls="calendar">
+          <iron-icon icon="hax:arrow-left"></iron-icon>
+        </paper-button>
+        <div>[[currentMonth]] [[currentYear]]</div>
+        <paper-button label="next month" controls="calendar">
+          <iron-icon icon="hax:arrow-right"></iron-icon>
+        </paper-button>
+        <paper-button label="next year">
+          <iron-icon icon="av:fast-forward" controls="calendar"></iron-icon>
+        </paper-button>
+      </caption>
+      <thead>
+        <tr>
+          <template is="dom-repeat" items="[[weekdays]]" as="weekday">
+            <th scope="col">[[weekday]]</th>
+          </template>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <template is="dom-repeat" items="[[currentDays]]" as="day">
+            <td scope="row">
+              <button class="day" controls="dateinput" date="[[day.date]]" hidden="[[!day.date]]">
+                [[day.dd]]
+              </button>
+            </td>
+          </template> 
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</a11y-collapse>
