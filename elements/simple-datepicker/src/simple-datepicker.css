@@ -1,7 +1,45 @@
 :host {
   display: block;
+  --a11y-collapse-icon-rotated: {
+    transform: rotate(0deg);
+  }
 }
 
 :host([hidden]) {
   display: none;
+}
+:host #calendar {
+  font-size: 12px;
+  border-collapse: collapse;
+}
+:host #calendar caption div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+:host #calendar caption paper-button {
+  flex: 0 1 auto;
+  padding: 5px;
+  cursor: pointer;
+}
+:host #calendar caption div div {
+  flex: 1 1 auto;
+}
+:host #calendar,
+:host #calendar th, 
+:host #calendar td {
+  border: 1px solid black;
+}
+:host #calendar th {
+  padding: 2px;
+}
+:host #calendar td {
+  padding: 0;
+}
+:host #calendar td paper-button {
+  width: 100%;
+  border: none;
+  padding: 5px;
+  border-radius: 0;
+  cursor: pointer;
 }

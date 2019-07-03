@@ -43,8 +43,48 @@ class SimpleDatepicker extends PolymerElement {
       this
     );
   }
+  nextMonth() {
+    if (this.currentMonth < 12) {
+      this.currentMonth++;
+    } else {
+      this.currentMonth = 1;
+      this.currentYear++;
+    }
+    this.updateCalendar();
+  }
+  prevMonth() {
+    if (this.currentMonth > 1) {
+      this.currentMonth--;
+    } else {
+      this.currentMonth = 12;
+      this.currentYear--;
+    }
+    this.updateCalendar();
+  }
+  nextYear() {
+    this.currentYear++;
+    this.updateCalendar();
+  }
+  prevYear() {
+    this.currentYear--;
+    this.updateCalendar();
+  }
+  updateCalendar() {
+    let label = this.shadowRoot.querySelector("#calendarlabel");
+    console.log(`${this.currentMonthName} ${this.currentYear}`);
+    if (label) label.innerHTML = `${this.currentMonthName} ${this.currentYear}`;
+  }
+  _getMonthName(currentMonth, monthNames) {
+    console.log(
+      "_getMonthName",
+      monthNames,
+      currentMonth,
+      monthNames[currentMonth - 1]
+    );
+    return monthNames[currentMonth - 1];
+  }
   _getCurrentDays(currentMonth, currentYear, weekdays) {
-    let days = [],
+    let week = [],
       totalDays = [1, 3, 5, 7, 8, 10, 12].includes(currentMonth)
         ? 31
         : currentMonth !== 2
@@ -53,12 +93,19 @@ class SimpleDatepicker extends PolymerElement {
           (currentYear % 100 !== 0 || currentYear % 400 === 0)
         ? 29
         : 28;
-    for (i = 1; i > totalDays; i++) {
-      days.push({
-        date: `${currentMonth}/${i}/${currentYear}`,
-        dd: i
-      });
+
+    for (let i = 1; i <= totalDays / 7; i++) {
+      let days = [];
+      for (let j = 1; j <= 7; j++) {
+        console.log(i, j);
+        days.push({
+          date: `${currentMonth}/${j * i}/${currentYear}`,
+          dd: j * i
+        });
+      }
+      week.push(days);
     }
+    return week;
   }
   /**
    * life cycle, element is removed from the DOM

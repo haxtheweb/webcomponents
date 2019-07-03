@@ -28,10 +28,48 @@ class SimpleDatepicker extends PolymerElement {
       <style>
         :host {
           display: block;
+          --a11y-collapse-icon-rotated: {
+            transform: rotate(0deg);
+          }
         }
 
         :host([hidden]) {
           display: none;
+        }
+        :host #calendar {
+          font-size: 12px;
+          border-collapse: collapse;
+        }
+        :host #calendar caption div {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        :host #calendar caption paper-button {
+          flex: 0 1 auto;
+          padding: 5px;
+          cursor: pointer;
+        }
+        :host #calendar caption div div {
+          flex: 1 1 auto;
+        }
+        :host #calendar,
+        :host #calendar th,
+        :host #calendar td {
+          border: 1px solid black;
+        }
+        :host #calendar th {
+          padding: 2px;
+        }
+        :host #calendar td {
+          padding: 0;
+        }
+        :host #calendar td paper-button {
+          width: 100%;
+          border: none;
+          padding: 5px;
+          border-radius: 0;
+          cursor: pointer;
         }
       </style>
       <a11y-collapse
@@ -48,22 +86,42 @@ class SimpleDatepicker extends PolymerElement {
         <div slot="content" role="application">
           <table id="calendar">
             <caption>
-              <paper-button label="previous year" controls="calendar">
-                <iron-icon icon="av:fast-rewind"></iron-icon>
-              </paper-button>
-              <paper-button label="previous month" controls="calendar">
-                <iron-icon icon="hax:arrow-left"></iron-icon>
-              </paper-button>
-              <div>[[currentMonth]] [[currentYear]]</div>
-              <paper-button label="next month" controls="calendar">
-                <iron-icon icon="hax:arrow-right"></iron-icon>
-              </paper-button>
-              <paper-button label="next year">
-                <iron-icon
-                  icon="av:fast-forward"
+              <div>
+                <paper-button
                   controls="calendar"
-                ></iron-icon>
-              </paper-button>
+                  label="previous year"
+                  ontap="prevYear"
+                >
+                  <iron-icon icon="av:fast-rewind"></iron-icon>
+                </paper-button>
+                <paper-button
+                  controls="calendar"
+                  label="previous month"
+                  ontap="prevMonth"
+                >
+                  <iron-icon icon="hax:arrow-left"></iron-icon>
+                </paper-button>
+                <div id="calendarlabel">
+                  [[currentMonthName]] [[currentYear]]
+                </div>
+                <paper-button
+                  controls="calendar"
+                  label="next month"
+                  ontap="nextMonth"
+                >
+                  <iron-icon icon="hax:arrow-right"></iron-icon>
+                </paper-button>
+                <paper-button
+                  controls="calendar"
+                  label="next year"
+                  ontap="nextYear"
+                >
+                  <iron-icon
+                    icon="av:fast-forward"
+                    controls="calendar"
+                  ></iron-icon>
+                </paper-button>
+              </div>
             </caption>
             <thead>
               <tr>
@@ -73,20 +131,22 @@ class SimpleDatepicker extends PolymerElement {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <template is="dom-repeat" items="[[currentDays]]" as="day">
-                  <td scope="row">
-                    <button
-                      class="day"
-                      controls="dateinput"
-                      date="[[day.date]]"
-                      hidden="[[!day.date]]"
-                    >
-                      [[day.dd]]
-                    </button>
-                  </td>
-                </template>
-              </tr>
+              <template is="dom-repeat" items="[[currentDays]]" as="week">
+                <tr>
+                  <template is="dom-repeat" items="[[week]]" as="weekday">
+                    <td scope="row">
+                      <paper-button
+                        class="day"
+                        controls="dateinput"
+                        date="[[weekday.date]]"
+                        hidden="[[!weekday.date]]"
+                      >
+                        [[weekday.dd]]
+                      </paper-button>
+                    </td>
+                  </template>
+                </tr>
+              </template>
             </tbody>
           </table>
         </div>
@@ -129,14 +189,24 @@ class SimpleDatepicker extends PolymerElement {
       weekdays: {
         name: "weekdays",
         type: "Array",
+        value: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+      },
+      monthNames: {
+        name: "monthNames",
+        type: "Array",
         value: [
-          "Sunday",
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday"
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December"
         ]
       },
       currentMonth: {
@@ -144,10 +214,15 @@ class SimpleDatepicker extends PolymerElement {
         type: "Number",
         value: 1
       },
+      currentMonthName: {
+        name: "currentMonthName",
+        type: "String",
+        computed: "_getMonthName(currentMonth,monthNames)"
+      },
       currentYear: {
         name: "currentYear",
         type: "Number",
-        value: 1
+        value: 2019
       },
       currentDays: {
         name: "currentDays",
@@ -181,8 +256,48 @@ class SimpleDatepicker extends PolymerElement {
       this
     );
   }
+  nextMonth() {
+    if (this.currentMonth < 12) {
+      this.currentMonth++;
+    } else {
+      this.currentMonth = 1;
+      this.currentYear++;
+    }
+    this.updateCalendar();
+  }
+  prevMonth() {
+    if (this.currentMonth > 1) {
+      this.currentMonth--;
+    } else {
+      this.currentMonth = 12;
+      this.currentYear--;
+    }
+    this.updateCalendar();
+  }
+  nextYear() {
+    this.currentYear++;
+    this.updateCalendar();
+  }
+  prevYear() {
+    this.currentYear--;
+    this.updateCalendar();
+  }
+  updateCalendar() {
+    let label = this.shadowRoot.querySelector("#calendarlabel");
+    console.log(`${this.currentMonthName} ${this.currentYear}`);
+    if (label) label.innerHTML = `${this.currentMonthName} ${this.currentYear}`;
+  }
+  _getMonthName(currentMonth, monthNames) {
+    console.log(
+      "_getMonthName",
+      monthNames,
+      currentMonth,
+      monthNames[currentMonth - 1]
+    );
+    return monthNames[currentMonth - 1];
+  }
   _getCurrentDays(currentMonth, currentYear, weekdays) {
-    let days = [],
+    let week = [],
       totalDays = [1, 3, 5, 7, 8, 10, 12].includes(currentMonth)
         ? 31
         : currentMonth !== 2
@@ -191,12 +306,19 @@ class SimpleDatepicker extends PolymerElement {
           (currentYear % 100 !== 0 || currentYear % 400 === 0)
         ? 29
         : 28;
-    for (i = 1; i > totalDays; i++) {
-      days.push({
-        date: `${currentMonth}/${i}/${currentYear}`,
-        dd: i
-      });
+
+    for (let i = 1; i <= totalDays / 7; i++) {
+      let days = [];
+      for (let j = 1; j <= 7; j++) {
+        console.log(i, j);
+        days.push({
+          date: `${currentMonth}/${j * i}/${currentYear}`,
+          dd: j * i
+        });
+      }
+      week.push(days);
     }
+    return week;
   }
   /**
    * life cycle, element is removed from the DOM

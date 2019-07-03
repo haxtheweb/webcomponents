@@ -2,14 +2,24 @@
   "weekdays": {
     "name": "weekdays",
     "type": "Array",
+    "value": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+  },
+  "monthNames": {
+    "name": "monthNames",
+    "type": "Array",
     "value": [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday"
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
     ]
   },
   "currentMonth": {
@@ -17,10 +27,15 @@
     "type": "Number",
     "value": 1
   },
+  "currentMonthName": {
+    "name": "currentMonthName",
+    "type": "String",
+    "computed": "_getMonthName(currentMonth,monthNames)"
+  },
   "currentYear": {
     "name": "currentYear",
     "type": "Number",
-    "value": 1
+    "value": 2019
   },
   "currentDays": {
     "name": "currentDays",
