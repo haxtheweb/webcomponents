@@ -10,7 +10,6 @@ class HaxBloxBrowser extends PolymerElement {
   constructor() {
     super();
     import("@lrnwebcomponents/hax-body/lib/hax-blox-browser-item.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-icons.js");
     document.body.addEventListener(
       "hax-store-property-updated",
       this._haxStorePropertyUpdated.bind(this)

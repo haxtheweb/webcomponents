@@ -40,7 +40,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body": "^2.1.0"
+    "@lrnwebcomponents/hax-body": "^2.1.0",
+    "@polymer/iron-icons": "^3.0.1",
+    "@polymer/iron-icon": "^3.0.1",
+    "@lrnwebcomponents/hax-iconset": "^2.0.10",
+    "@lrnwebcomponents/lrn-icons": "^2.1.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.0.9",

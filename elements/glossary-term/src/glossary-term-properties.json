@@ -3,34 +3,29 @@
     "name": "name",
     "type": "String",
     "value": "",
-    "reflectToAttribute": false,
-    "observer": false
+    "reflectToAttribute": false
   },
   "definition": {
     "name": "display",
     "type": "String",
     "value": "",
-    "reflectToAttribute": false,
-    "observer": false
+    "reflectToAttribute": false
   },
   "display": {
     "name": "display",
     "type": "String",
     "value": "",
-    "reflectToAttribute": false,
-    "observer": false
+    "reflectToAttribute": false
   },
   "serviceType": {
     "name": "serviceType",
     "type": "String",
-    "value": "file",
-    "observer": false
+    "value": "file"
   },
   "endpoint": {
     "name": "endpoint",
     "type": "String",
-    "value": "glossary-terms/glossary-terms.json",
-    "observer": false
+    "value": ""
   },
   "_fallback": {
     "name": "_fallback",

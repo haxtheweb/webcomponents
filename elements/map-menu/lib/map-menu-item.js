@@ -10,7 +10,9 @@ class MapMenuItem extends PolymerElement {
           display: block;
           transition: 0.2s all ease-in-out;
           transition-delay: 0.2s;
-          --map-menu-item-height: 16px;
+          font-size: var(--map-menu-item-font-size, 14px);
+          --map-menu-item-height: var(--map-menu-item-height);
+          --map-menu-item-a-color: inherit;
         }
         :host([active]) {
           background: var(--map-menu-active-color);
@@ -28,11 +30,19 @@ class MapMenuItem extends PolymerElement {
         .title {
           text-transform: none;
         }
+        a {
+          color: var(--map-menu-item-a-color);
+          text-decoration: var(--map-menu-item-a-text-decoration);
+        }
         a,
         a:hover,
         a:visited,
         a:focus {
-          color: inherit;
+          color: var(
+            --map-menu-item-a-active-color,
+            var(--map-menu-item-a-color)
+          );
+          text-decoration: var(--map-menu-item-a-text-decoration);
         }
         #track {
           transition: 0.2s all ease-in-out;

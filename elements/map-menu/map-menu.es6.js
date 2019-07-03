@@ -10,10 +10,14 @@
       <style>
         :host {
           --map-menu-active-color: rgba(0, 0, 0, 0.1);
+          --map-menu-size: 1;
           display: block;
           overflow-y: scroll;
           position: relative;
           height: 100%;
+          transition: 0.2s linear all;
+          opacity: 1;
+          background-color: transparent;
         }
 
         #activeIndicator {
@@ -24,7 +28,7 @@
         }
 
         map-menu-container {
-          padding: 32px;
+          padding: var(--map-menu-container-padding, 0);
           @apply --map-menu-container;
         }
 
@@ -44,7 +48,7 @@
         </map-menu-container>
       </div>
       <smooth-scroll id="smoothScroll"></smooth-scroll>
-    `}static get tag(){return"map-menu"}static get properties(){return{title:{type:String,value:"Content Outline"},data:{type:Array,value:null},/**
+    `}static get tag(){return"map-menu"}static get properties(){return{disabled:{type:Boolean,value:!1,reflectToAttribute:!0},title:{type:String,value:"Content Outline"},data:{type:Array,value:null},/**
        * Support for JSON Outline Schema manifest format
        */manifest:{type:Object,notify:!0,observer:"_manifestChanged"},items:{type:Array,value:null,notify:!0},/**
        * Current selected item.
@@ -52,7 +56,7 @@
        * Auto scroll an active element if not in view
        */autoScroll:{type:Boolean,value:!1},/**
        * Show active indicator animation
-       */activeIndicator:{type:Boolean,value:!1}}}connectedCallback(){super.connectedCallback();afterNextRender(this,function(){this.addEventListener("link-clicked",this.__linkClickedHandler.bind(this));this.addEventListener("toggle-updated",this.__toggleUpdated.bind(this));this.addEventListener("active-item",this.__activeItemHandler.bind(this));this.addEventListener("map-meu-item-hidden-check",this._mapMeuItemHiddenCheckHandler.bind(this))})}disconnectedCallback(){this.removeEventListener("link-clicked",this.__linkClickedHandler.bind(this));this.removeEventListener("toggle-updated",this.__toggleUpdated.bind(this));this.removeEventListener("active-item",this.__activeItemHandler.bind(this));this.removeEventListener("map-meu-item-hidden-check",this._mapMeuItemHiddenCheckHandler.bind(this));super.disconnectedCallback()}static get observers(){return["_dataChanged(data)"]}__activeItemHandler(e){const target=e.detail;this.refreshActiveChildren(target)}_mapMeuItemHiddenCheckHandler(e){const action=e.detail.action,target=e.detail.target,hiddenChild=e.detail.hiddenChild;if("closed"===action&&!0===hiddenChild){this.__updateActiveIndicator(this._activeItem,200,!0)}else{this.__updateActiveIndicator(this._activeItem,200,!1)}}/**
+       */activeIndicator:{type:Boolean,value:!1}}}ready(){super.ready();afterNextRender(this,function(){this.addEventListener("link-clicked",this.__linkClickedHandler.bind(this));this.addEventListener("toggle-updated",this.__toggleUpdated.bind(this));this.addEventListener("active-item",this.__activeItemHandler.bind(this));this.addEventListener("map-meu-item-hidden-check",this._mapMeuItemHiddenCheckHandler.bind(this))})}static get observers(){return["_dataChanged(data)"]}__activeItemHandler(e){const target=e.detail;this.refreshActiveChildren(target)}_mapMeuItemHiddenCheckHandler(e){const action=e.detail.action,target=e.detail.target,hiddenChild=e.detail.hiddenChild;if("closed"===action&&!0===hiddenChild){this.__updateActiveIndicator(this._activeItem,200,!0)}else{this.__updateActiveIndicator(this._activeItem,200,!1)}}/**
    * Set and unset active properties on children
    * @param {string} activeItem
    * @param {number} timeoutTime

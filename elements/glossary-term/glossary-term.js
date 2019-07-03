@@ -103,34 +103,29 @@ class GlossaryTerm extends PolymerElement {
         name: "name",
         type: "String",
         value: "",
-        reflectToAttribute: false,
-        observer: false
+        reflectToAttribute: false
       },
       definition: {
         name: "display",
         type: "String",
         value: "",
-        reflectToAttribute: false,
-        observer: false
+        reflectToAttribute: false
       },
       display: {
         name: "display",
         type: "String",
         value: "",
-        reflectToAttribute: false,
-        observer: false
+        reflectToAttribute: false
       },
       serviceType: {
         name: "serviceType",
         type: "String",
-        value: "file",
-        observer: false
+        value: "file"
       },
       endpoint: {
         name: "endpoint",
         type: "String",
-        value: "glossary-terms/glossary-terms.json",
-        observer: false
+        value: ""
       },
       _fallback: {
         name: "_fallback",
@@ -150,6 +145,13 @@ class GlossaryTerm extends PolymerElement {
     return "glossary-term";
   }
 
+  static get observers() {
+    return [
+      // Observer method name, followed by a list of dependencies, in parenthesis
+      "__endpointMethodChanged(endpoint, serviceType)"
+    ];
+  }
+
   /**
    * life cycle, element is afixed to the DOM
    */
@@ -157,39 +159,45 @@ class GlossaryTerm extends PolymerElement {
     super();
     this.HAXWiring = new HAXWiring();
     this.HAXWiring.setup(GlossaryTerm.haxProperties, GlossaryTerm.tag, this);
+  }
+
+  __endpointMethodChanged(endpoint, serviceType) {
     // fetch definition
-    if (this.serviceType === "file") {
-      fetch(this.endpoint, {
-        method: "GET",
-        headers: { "Content-Type": "application/json" }
-      })
-        .then(r => r.json())
-        .then(r => {
-          const foundterm = r.terms.find(i => i.name === this.name);
-          if (foundterm) {
-            this.definition = foundterm.definition;
-            this._fallback = false;
-          } else {
-            this._fallback = true;
-          }
-        });
-    } else if (this.serviceType === "graphql") {
-      fetch(this.endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          query: `{ term(name: "${this.name}") { name definition } }`
+    if (endpoint) {
+      if (serviceType === "file") {
+        fetch(endpoint, {
+          method: "GET",
+          headers: { "Content-Type": "application/json" }
         })
-      })
-        .then(r => r.json())
-        .then(r => {
-          try {
-            this.definition = r.data.term.definition;
-            this._fallback = false;
-          } catch (error) {}
-        });
+          .then(r => r.json())
+          .then(r => {
+            const foundterm = r.terms.find(i => i.name === this.name);
+            if (foundterm) {
+              this.definition = foundterm.definition;
+              this._fallback = false;
+            } else {
+              this._fallback = true;
+            }
+          });
+      } else if (serviceType === "graphql") {
+        fetch(this.endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            query: `{ term(name: "${this.name}") { name definition } }`
+          })
+        })
+          .then(r => r.json())
+          .then(r => {
+            try {
+              this.definition = r.data.term.definition;
+              this._fallback = false;
+            } catch (error) {}
+          });
+      }
     }
   }
+
   /**
    * life cycle, element is removed from the DOM
    */

@@ -109,6 +109,7 @@ class HAX extends HTMLElement {
     import("@polymer/iron-icons/places-icons.js");
     import("@polymer/iron-icons/maps-icons.js");
     import("@polymer/iron-image/iron-image.js");
+    import("@lrnwebcomponents/hax-iconset/hax-iconset.js");
     import("@lrnwebcomponents/hax-body/lib/hax-export-dialog.js");
   }
   /**
