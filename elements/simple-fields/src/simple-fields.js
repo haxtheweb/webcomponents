@@ -94,7 +94,6 @@ class SimpleFields extends MutableData(PolymerElement) {
     //form won't refresh unless we set it to null. notifyPath wasn't enough to refresh it
     this.__validatedSchema = null;
     this.__validatedSchema = { properties: schema };
-    console.log("schema", schema);
   }
   /**
    * life cycle, element is removed from the DOM

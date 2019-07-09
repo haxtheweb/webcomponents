@@ -296,33 +296,40 @@ class EcoJsonSchemaObject extends mixinBehaviors(
       <custom-style>
         <style is="custom-style" include="iron-flex iron-flex-alignment">
           :host {
-            color: var(--eco-json-form-color, var(--primary-text-color, #222));
-            background-color: var(
-              --eco-json-form-bg,
-              var(--primary-background-color, #fff)
-            );
-            font-family: var(
-              --eco-json-form-font-family,
-              var(--paper-font-caption_-_font-family, unset)
-            );
             --eco-json-field-margin: 0 0 15px;
+            --eco-json-form-border-radius: 2px;
+            --eco-json-form-font-family: var(
+              --paper-font-caption_-_font-family,
+              unset
+            );
+            --eco-json-form-bg: var(--primary-background-color, #fff);
+            --eco-json-form-color: var(--primary-text-color, #222);
+            --eco-json-form-faded-color: #888;
+            --eco-json-form-active-color: var(--primary-color, #000);
+            --eco-json-form-faded-bg: #f0f0f0;
+            --eco-json-form-add-color: #008811;
+            --eco-json-form-add-focus: #007700;
+            --eco-json-form-remove-focus: #cc0000;
+            --eco-json-form-remove-color: #dd0000;
             --paper-input-container: {
               padding-top: 0;
             }
-            --eco-json-form-border-radius: 2px;
           }
           div.layout {
             height: auto;
           }
           #form {
             display: block;
+            font-family: var(--eco-json-form-font-family);
+            background-color: var(--eco-json-form-bg);
+            color: var(--eco-json-form-color);
             @apply --eco-json-schema-object-form;
             @apply --layout-vertical;
             @apply --layout-wrap;
           }
           #form ::slotted(paper-input),
           #form ::slotted(div.tooltip-desc) {
-            font-family: var(--eco-json-form-font-family, unset);
+            font-family: var(--eco-json-form-font-family);
           }
           #form ::slotted(*.has-tooltip-desc) {
             margin-bottom: 0;
@@ -335,7 +342,7 @@ class EcoJsonSchemaObject extends mixinBehaviors(
           #form ::slotted(div.tooltip-desc) {
             font-size: 12px;
             margin: var(--eco-json-field-margin);
-            color: var(--eco-json-form-faded-color, #888);
+            color: var(--eco-json-form-faded-color);
           }
           #form ::slotted(div.desc-for-paper-textarea) {
             margin-top: -16px;
@@ -345,52 +352,31 @@ class EcoJsonSchemaObject extends mixinBehaviors(
           #form ::slotted(simple-colors-picker),
           #form ::slotted(simple-picker) {
             --simple-picker-float-label-active-color: var(
-              --eco-json-form-active-color,
-              var(--primary-color, #000)
+              --eco-json-form-active-color
             );
             --simple-picker-float-label-faded-color: var(
-              --eco-json-form-faded-color,
-              var(--secondary-text-color, #888)
+              --eco-json-form-faded-color
             );
-            --simple-picker-background-color: var(
-              --eco-json-form-bg,
-              var(--primary-background-color, #fff)
-            );
-            --simple-picker-border-color: var(
-              --eco-json-form-faded-color,
-              var(--secondary-text-color, #888)
-            );
+            --simple-picker-background-color: var(--eco-json-form-bg);
+            --simple-picker-border-color: var(--eco-json-form-faded-color);
             --simple-picker-sample-focus: {
               transition: all 0.5s;
-              border: 2px solid
-                var(--eco-json-form-active-color, var(--primary-color, #000));
+              border: 2px solid var(--eco-json-form-active-color);
             }
           }
           #form ::slotted(code-editor) {
             margin: 8px 0;
-            --code-editor-float-label-color: var(
-              --eco-json-form-faded-color,
-              var(--secondary-text-color, #888)
-            );
+            --code-editor-float-label-color: var(--eco-json-form-faded-color);
             --code-editor-float-label-active-color: var(
-              --eco-json-form-active-color,
-              var(--primary-color, #000)
+              --eco-json-form-active-color
             );
-            --code-pen-button-color: var(
-              --eco-json-form-faded-color,
-              var(--secondary-text-color, #888)
-            );
+            --code-pen-button-color: var(--eco-json-form-faded-color);
             --code-editor-code: {
-              border: 1px solid
-                var(
-                  --eco-json-form-faded-color,
-                  var(--secondary-text-color, #888)
-                );
+              border: 1px solid var(--eco-json-form-faded-color);
               border-radius: 2px;
             }
             --code-editor-focus-code: {
-              border: 2px solid
-                var(--eco-json-form-active-color, var(--primary-color, #000));
+              border: 2px solid var(--eco-json-form-active-color);
             }
           }
         </style>
@@ -468,7 +454,6 @@ class EcoJsonSchemaObject extends mixinBehaviors(
 
     this._schemaProperties = Object.keys(this.schema.properties || []).map(
       key => {
-        console.log("key", key);
         var schema = ctx.schema.properties[key];
         var property = {
           property: key,
@@ -611,21 +596,18 @@ class EcoJsonSchemaObject extends mixinBehaviors(
       }
     });
     this.set("value", value);
-    console.log("value", value, this._schemaProperties);
     this.notifyPath("value.*");
   }
   _buildForm() {
-    console.log(this.value);
     let autofocus = this.autofocus;
     this._schemaProperties.forEach(property => {
       if (property.component.name === "paper-input")
-        console.log(property, property.value);
-      // special case, can't come up with a better way to do this but monoco is very special case
-      if (property.component.name === "code-editor") {
-        property.schema.component.properties.editorValue =
-          property.schema.value;
-        property.schema.component.properties.theme = this.codeTheme;
-      }
+        if (property.component.name === "code-editor") {
+          // special case, can't come up with a better way to do this but monoco is very special case
+          property.schema.component.properties.editorValue =
+            property.schema.value;
+          property.schema.component.properties.theme = this.codeTheme;
+        }
       var el = this.create(property.component.name, {
         label: property.label,
         schema: property.schema,
@@ -701,7 +683,6 @@ class EcoJsonSchemaObject extends mixinBehaviors(
         })
       );
     });
-    console.log(this.value);
   }
   _removePropertyEl(el) {
     if (typeof el.schemaProperty !== typeof undefined) {

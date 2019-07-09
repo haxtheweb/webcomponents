@@ -29,97 +29,97 @@ import "@lrnwebcomponents/simple-colors/simple-colors.js";
  * @demo demo/index.html
  */
 class SimpleFields extends MutableData(PolymerElement) {
-  
   // render function
   static get template() {
     return html`
-<style>:host {
-  display: block;
-  background-color: #ffffff;
-  overflow: hidden;
-}
+      <style>
+        :host {
+          display: block;
+          background-color: #ffffff;
+          overflow: hidden;
+        }
 
-:host([hidden]) {
-  display: none;
-}
+        :host([hidden]) {
+          display: none;
+        }
 
-eco-json-schema-object {
-  width: 50%;
-}
-eco-json-schema-object {
-  color: var(--hax-text-color);
-  --eco-json-form-color: var(--hax-text-color);
-  --eco-json-schema-object-form : {
-    -ms-flex: unset;
-    -webkit-flex: unset;
-    flex: unset;
-    -webkit-flex-basis: unset;
-    flex-basis: unset;
-  }
-}
-eco-json-schema-object .hax-code-editor {
-  padding: 0;
-}</style>
-<eco-json-schema-object
-  id="schemaobject"
-  autofocus$="[[autofocus]]"
-  hide-line-numbers$="[[hideLineNumbers]]"
-  on-form-changed="_formChanged"
-  schema="[[__validatedSchema]]"
-  value="{{value}}"
-></eco-json-schema-object>`;
+        eco-json-schema-object {
+          width: 50%;
+        }
+        eco-json-schema-object {
+          color: var(--hax-text-color);
+          --eco-json-form-color: var(--hax-text-color);
+          --eco-json-schema-object-form : {
+            -ms-flex: unset;
+            -webkit-flex: unset;
+            flex: unset;
+            -webkit-flex-basis: unset;
+            flex-basis: unset;
+          }
+        }
+        eco-json-schema-object .hax-code-editor {
+          padding: 0;
+        }
+      </style>
+      <eco-json-schema-object
+        id="schemaobject"
+        autofocus$="[[autofocus]]"
+        hide-line-numbers$="[[hideLineNumbers]]"
+        on-form-changed="_formChanged"
+        schema="[[__validatedSchema]]"
+        value="{{value}}"
+      ></eco-json-schema-object>
+    `;
   }
 
   // haxProperty definition
   static get haxProperties() {
-    return ;
+    return;
   }
   // properties available to the custom element for data binding
-    static get properties() {
+  static get properties() {
     let props = {
-  /**
-   * automatically set focus on the first field if that field has autofocus
-   */
-  "autofocus": {
-    "type": Boolean,
-    "value": false
-  },
-  /**
-   * hide code-editor line numbers
-   */
-  "hideLineNumbers": {
-    "type": Boolean,
-    "value": false
-  },
-  /**
-   * Fields to conver toJSON Schema.
-   */
-  "fields": {
-    "type": Array,
-    "value": [],
-    "observer": "_fieldsChanged"
-  },
-  /**
-   * Returned value from the form input.
-   */
-  "value": {
-    "type": Object,
-    "notify": true,
-    "value": {},
-    "reflectToAttribute": true,
-    "observer": "_valueChanged"
-  },
-  /**
-   * Fields to conver to JSON Schema.
-   */
-  "__validatedSchema": {
-    "type": Array,
-    "value": {
-      "properties": {}
-    }
-  }
-}
-;
+      /**
+       * automatically set focus on the first field if that field has autofocus
+       */
+      autofocus: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * hide code-editor line numbers
+       */
+      hideLineNumbers: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Fields to conver toJSON Schema.
+       */
+      fields: {
+        type: Array,
+        value: [],
+        observer: "_fieldsChanged"
+      },
+      /**
+       * Returned value from the form input.
+       */
+      value: {
+        type: Object,
+        notify: true,
+        value: {},
+        observer: "_valueChanged"
+      },
+      /**
+       * Fields to conver to JSON Schema.
+       */
+      __validatedSchema: {
+        type: Array,
+        value: {
+          properties: {}
+        }
+      }
+    };
     if (super.properties) {
       props = Object.assign(props, super.properties);
     }
@@ -189,7 +189,6 @@ eco-json-schema-object .hax-code-editor {
     //form won't refresh unless we set it to null. notifyPath wasn't enough to refresh it
     this.__validatedSchema = null;
     this.__validatedSchema = { properties: schema };
-    console.log("schema", schema);
   }
   /**
    * life cycle, element is removed from the DOM
