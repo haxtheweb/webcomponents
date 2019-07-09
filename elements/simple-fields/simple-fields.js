@@ -12,7 +12,6 @@ import "@polymer/iron-icons/iron-icons.js";
 import "@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";
 import "@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js";
 import "@lrnwebcomponents/code-editor/code-editor.js";
-import "app-datepicker/app-datepicker.js";
 import "@lrnwebcomponents/simple-picker/simple-picker.js";
 import "@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js";
 import "@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js";
@@ -30,132 +29,97 @@ import "@lrnwebcomponents/simple-colors/simple-colors.js";
  * @demo demo/index.html
  */
 class SimpleFields extends MutableData(PolymerElement) {
+  
   // render function
   static get template() {
     return html`
-      <style>
-        :host {
-          display: block;
-          background-color: #ffffff;
-          overflow: hidden;
-        }
+<style>:host {
+  display: block;
+  background-color: #ffffff;
+  overflow: hidden;
+}
 
-        :host([hidden]) {
-          display: none;
-        }
+:host([hidden]) {
+  display: none;
+}
 
-        eco-json-schema-object {
-          width: 50%;
-        }
-        eco-json-schema-object {
-          color: var(--hax-text-color);
-          --eco-json-form-color: var(--hax-text-color);
-          --eco-json-schema-object-form : {
-            -ms-flex: unset;
-            -webkit-flex: unset;
-            flex: unset;
-            -webkit-flex-basis: unset;
-            flex-basis: unset;
-          }
-        }
-        eco-json-schema-object .hax-code-editor {
-          padding: 0;
-        }
-      </style>
-      <eco-json-schema-object
-        id="schemaobject"
-        autofocus$="[[autofocus]]"
-        hide-line-numbers$="[[hideLineNumbers]]"
-        on-form-changed="_formChanged"
-        schema="[[__validatedSchema]]"
-        value="{{value}}"
-      ></eco-json-schema-object>
-    `;
+eco-json-schema-object {
+  width: 50%;
+}
+eco-json-schema-object {
+  color: var(--hax-text-color);
+  --eco-json-form-color: var(--hax-text-color);
+  --eco-json-schema-object-form : {
+    -ms-flex: unset;
+    -webkit-flex: unset;
+    flex: unset;
+    -webkit-flex-basis: unset;
+    flex-basis: unset;
+  }
+}
+eco-json-schema-object .hax-code-editor {
+  padding: 0;
+}</style>
+<eco-json-schema-object
+  id="schemaobject"
+  autofocus$="[[autofocus]]"
+  hide-line-numbers$="[[hideLineNumbers]]"
+  on-form-changed="_formChanged"
+  schema="[[__validatedSchema]]"
+  value="{{value}}"
+></eco-json-schema-object>`;
   }
 
   // haxProperty definition
   static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Simple fields",
-        description:
-          "Uses eco-json-form and HAX wiring to display a series of fields",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Fields"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage"
-          }
-        ],
-        meta: {
-          author: "nikkimk",
-          owner: "The Pennsylvania State University"
-        }
-      },
-      settings: {
-        quick: [],
-        configure: [
-          {
-            property: "fields",
-            description: "",
-            inputMethod: "array",
-            required: false,
-            icon: "icons:android"
-          }
-        ],
-        advanced: []
-      }
-    };
+    return ;
   }
   // properties available to the custom element for data binding
-  static get properties() {
+    static get properties() {
     let props = {
-      /**
-       * automatically set focus on the first field if that field has autofocus
-       */
-      autofocus: {
-        type: Boolean,
-        value: false
-      },
-      /**
-       * hide code-editor line numbers
-       */
-      hideLineNumbers: {
-        type: Boolean,
-        value: false
-      },
-      /**
-       * Fields to conver toJSON Schema.
-       */
-      fields: {
-        type: Array,
-        value: [],
-        observer: "_fieldsChanged"
-      },
-      /**
-       * Returned value from the form input.
-       */
-      value: {
-        type: Object,
-        notify: true,
-        value: {},
-        reflectToAttribute: true,
-        observer: "_valueChanged"
-      },
-      /**
-       * Fields to conver to JSON Schema.
-       */
-      __validatedSchema: {
-        type: Array,
-        value: {
-          properties: {}
-        }
-      }
-    };
+  /**
+   * automatically set focus on the first field if that field has autofocus
+   */
+  "autofocus": {
+    "type": Boolean,
+    "value": false
+  },
+  /**
+   * hide code-editor line numbers
+   */
+  "hideLineNumbers": {
+    "type": Boolean,
+    "value": false
+  },
+  /**
+   * Fields to conver toJSON Schema.
+   */
+  "fields": {
+    "type": Array,
+    "value": [],
+    "observer": "_fieldsChanged"
+  },
+  /**
+   * Returned value from the form input.
+   */
+  "value": {
+    "type": Object,
+    "notify": true,
+    "value": {},
+    "reflectToAttribute": true,
+    "observer": "_valueChanged"
+  },
+  /**
+   * Fields to conver to JSON Schema.
+   */
+  "__validatedSchema": {
+    "type": Array,
+    "value": {
+      "properties": {}
+    }
+  }
+}
+;
     if (super.properties) {
       props = Object.assign(props, super.properties);
     }
@@ -225,6 +189,7 @@ class SimpleFields extends MutableData(PolymerElement) {
     //form won't refresh unless we set it to null. notifyPath wasn't enough to refresh it
     this.__validatedSchema = null;
     this.__validatedSchema = { properties: schema };
+    console.log("schema", schema);
   }
   /**
    * life cycle, element is removed from the DOM

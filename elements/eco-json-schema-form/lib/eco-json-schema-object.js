@@ -309,6 +309,7 @@ class EcoJsonSchemaObject extends mixinBehaviors(
             --paper-input-container: {
               padding-top: 0;
             }
+            --eco-json-form-border-radius: 2px;
           }
           div.layout {
             height: auto;
@@ -467,6 +468,7 @@ class EcoJsonSchemaObject extends mixinBehaviors(
 
     this._schemaProperties = Object.keys(this.schema.properties || []).map(
       key => {
+        console.log("key", key);
         var schema = ctx.schema.properties[key];
         var property = {
           property: key,
@@ -609,11 +611,15 @@ class EcoJsonSchemaObject extends mixinBehaviors(
       }
     });
     this.set("value", value);
+    console.log("value", value, this._schemaProperties);
     this.notifyPath("value.*");
   }
   _buildForm() {
+    console.log(this.value);
     let autofocus = this.autofocus;
     this._schemaProperties.forEach(property => {
+      if (property.component.name === "paper-input")
+        console.log(property, property.value);
       // special case, can't come up with a better way to do this but monoco is very special case
       if (property.component.name === "code-editor") {
         property.schema.component.properties.editorValue =
@@ -695,6 +701,7 @@ class EcoJsonSchemaObject extends mixinBehaviors(
         })
       );
     });
+    console.log(this.value);
   }
   _removePropertyEl(el) {
     if (typeof el.schemaProperty !== typeof undefined) {

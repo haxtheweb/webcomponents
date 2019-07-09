@@ -4,8 +4,8 @@ import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
-import "paper-collapse-item/paper-collapse-item.js";
-import "paper-collapse-item/paper-collapse-group.js";
+import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
+import "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js";
 import { AppLocalizeBehavior } from "@polymer/app-localize-behavior/app-localize-behavior.js";
 import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 import "./eco-json-schema-boolean.js";
@@ -36,98 +36,131 @@ class EcoJsonSchemaArray extends mixinBehaviors(
         <style is="custom-style" include="iron-flex iron-flex-alignment">
           :host ([hidden]) {
             display: none;
+            color: var(--eco-json-form-color, var(--primary-text-color, #222));
+            background-color: var(
+              --eco-json-form-bg,
+              var(--primary-background-color, #fff)
+            );
+            font-family: var(
+              --eco-json-form-font-family,
+              var(--paper-font-caption_-_font-family, unset)
+            );
           }
-          paper-input {
-            padding: 2px;
-
-            --paper-input-container-label: {
-              white-space: normal;
-              position: static;
-              font-size: 22px;
-              color: #212121;
-            }
+          :host #legend {
+            transition: all 0.5s;
+            color: var(
+              --eco-json-form-faded-color,
+              var(--secondary-text-color, #888)
+            );
           }
-
-          paper-collapse-item {
-            --paper-collapse-item-header: {
-              font-weight: bold;
-              padding: 8px 0 0 8px;
-            }
+          :host(:focus) #legend,
+          :host(:focus-within) #legend {
+            color: var(
+              --eco-json-form-active-color,
+              var(--primary-color, #000)
+            );
           }
-
-          #form {
-            border: 1px solid #aaaaaa;
+          :host #fieldset {
+            border-radius: var(--eco-json-form-border-radius, 2px);
+            transition: all 0.5s;
+            border: 1px solid
+              var(
+                --eco-json-form-faded-color,
+                var(--secondary-text-color, #888)
+              );
           }
-
-          #form div:nth-child(odd) {
-            background-color: #f2f2f2;
-            padding: 4px;
+          paper-button {
+            display: flex;
+            text-transform: none;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(
+              --eco-json-form-faded-color,
+              var(--secondary-text-color, #888)
+            );
+            color: var(
+              --eco-json-form-bg,
+              var(--primary-background-color, #fff)
+            );
+            padding-left: 16px;
+            padding-right: 16px;
+            margin: 0;
           }
-
-          #form div:nth-child(even) {
-            background-color: #e2e2e2;
-            border-top: 1px solid #aaaaaa;
-            border-bottom: 1px solid #aaaaaa;
-            padding: 4px;
+          paper-button:focus,
+          paper-button:hover {
+            background-color: var(
+              --eco-json-form-active-color,
+              var(--primary-color, #000)
+            );
           }
-
-          #form div:focus,
-          #form div:hover,
-          #form div:active {
-            background-color: #ffffff !important;
+          paper-button iron-icon {
+            padding: 0 10px;
           }
-
-          paper-icon-button {
-            float: right;
-            border-radius: 50%;
+          #addarray {
+            border-radius: 0 0 var(--eco-json-form-border-radius, 2px)
+              var(--eco-json-form-border-radius, 2px);
+            background-color: var(--eco-json-form-add-color, #008800);
           }
-
-          .array-add {
-            color: #34e79a;
-            background-color: #f8f8f8;
+          #addarray:focus,
+          #addarray:hover {
+            background-color: var(--eco-json-form-add-focus, #007700);
           }
-
+          #addarray {
+            background-color: var(--eco-json-form-add-color, #008800);
+          }
+          #addarray:focus,
+          #addarray:hover {
+            background-color: var(--eco-json-form-add-focus, #007700);
+          }
           .array-remove-element {
-            color: #f44336;
-            background-color: #f8f8f8;
+            background-color: var(--eco-json-form-remove-color, #880000);
           }
-
-          .label {
-            @apply --paper-input-container-label;
-            white-space: normal;
-            position: static;
-            font-size: 22px;
-            color: #212121;
+          .array-remove-element:focus,
+          .array-remove-element:hover {
+            background-color: var(--eco-json-form-remove-focus, #770000);
           }
-
-          :host {
-            display: block;
-          }
-          .label {
-            white-space: normal;
-            position: static;
-            font-size: 22px;
-            color: #212121;
-            @apply --paper-input-container-label;
+          a11y-collapse-group {
+            margin: 0;
+            border-radius: var(--eco-json-form-border-radius, 2px)
+              var(--eco-json-form-border-radius, 2px) 0 0;
+            border: 1px solid
+              var(
+                --eco-json-form-faded-color,
+                var(--secondary-text-color, #888)
+              );
+            --a11y-collapse-border: 1px solid
+              var(
+                --eco-json-form-faded-color,
+                var(--secondary-text-color, #888)
+              );
+            --a11y-collapse-heading: {
+              font-weight: normal;
+              margin: 0;
+            }
           }
         </style>
       </custom-style>
-      <div class="horizontal layout">
-        <div class="flex" hidden\$="[[!label]]">[[label]]</div>
-        <paper-icon-button
+      <fieldset>
+        <legend id="legend" class="flex" hidden\$="[[!label]]">
+          [[label]]
+        </legend>
+        <a11y-collapse-group
+          id="form"
+          icon="settings"
+          class="vertical flex layout"
+          global-options="[[globalOptions]]"
+          ><slot></slot
+        ></a11y-collapse-group>
+        <paper-button
           id="addarray"
-          title="Add another item"
-          class="array-add"
           icon="add"
           on-click="_onAddItem"
           role="button"
-          aria-label="Add another item"
-        ></paper-icon-button>
-      </div>
-
-      <paper-collapse-group id="form" class="vertical flex layout"
-        ><slot></slot
-      ></paper-collapse-group>
+        >
+          Add an item
+          <iron-icon icon="add"></iron-icon>
+        </paper-button>
+      </fieldset>
     `;
   }
   static get properties() {
@@ -151,6 +184,13 @@ class EcoJsonSchemaArray extends mixinBehaviors(
       error: {
         type: Object,
         observer: "_errorChanged"
+      },
+      globalOptions: {
+        type: Object,
+        value: {
+          icon: "settings",
+          tooltip: "configure item"
+        }
       },
       _schemaArrayItems: {
         type: Array,
@@ -197,6 +237,7 @@ class EcoJsonSchemaArray extends mixinBehaviors(
     this.notifyPath("value.*");
   }
   _schemaArraySplicesChanged(detail) {
+    console.log("_schemaArraySplicesChanged", detail, this._schemaArrayItems);
     if (!detail) {
       return false;
     }
@@ -230,13 +271,18 @@ class EcoJsonSchemaArray extends mixinBehaviors(
             schema: item.schema,
             schemaArrayItem: item
           });
-          var containerEl = this.create("paper-collapse-item", {
-            header: "Item " + (i + 1)
+          var containerEl = this.create("a11y-collapse", {});
+          var containerHeader = this.create("p", {
+            slot: "heading"
           });
-          var buttonEl = this.create("paper-icon-button", {
-            icon: "remove",
-            title: "Remove item"
+          containerHeader.innerHTML = "Item " + (i + 1);
+          containerEl.appendChild(containerHeader);
+          var buttonEl = this.create("paper-button", {});
+          var buttonIcon = this.create("iron-icon", {
+            icon: "delete"
           });
+          buttonEl.innerHTML = "Remove item ";
+          buttonEl.appendChild(buttonIcon);
           this.listen(buttonEl, "click", "_onRemoveItem");
           buttonEl.classList.add("array-remove-element");
           componentEl.classList.add("flex", "horizontal", "layout");
@@ -384,13 +430,18 @@ class EcoJsonSchemaArray extends mixinBehaviors(
       schema: item.schema,
       schemaArrayItem: item
     });
-    var containerEl = this.create("paper-collapse-item", {
-      header: "Item " + (this.children.length + 1)
+    var containerEl = this.create("a11y-collapse", {});
+    var containerHeader = this.create("p", {
+      slot: "heading"
     });
-    var buttonEl = this.create("paper-icon-button", {
-      icon: "remove",
-      title: "Remove item"
+    containerHeader.innerHTML = "Item " + (this.children.length + 1);
+    containerEl.appendChild(containerHeader);
+    var buttonEl = this.create("paper-button", {});
+    var buttonIcon = this.create("iron-icon", {
+      icon: "delete"
     });
+    buttonEl.innerHTML = "Remove item ";
+    buttonEl.appendChild(buttonIcon);
     this.listen(buttonEl, "click", "_onRemoveItem");
     buttonEl.classList.add("array-remove-element");
     componentEl.classList.add("flex", "horizontal", "layout");

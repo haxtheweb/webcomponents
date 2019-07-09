@@ -638,7 +638,8 @@ export class HAXWiring {
                   properties: target._getHaxJSONSchemaProperty(
                     settings[value].properties,
                     target
-                  )
+                  ),
+                  label: settings[value].itemLabel
                 };
                 break;
               case "textfield":
@@ -705,11 +706,11 @@ export class HAXWiring {
                 break;
               case "datepicker":
                 props[settings[value].property].component = {
-                  name: "app-datepicker",
+                  name: "paper-input",
                   valueProperty: "date",
                   properties: {
+                    type: "date",
                     required: settings[value].required,
-                    autoUpdateDate: true,
                     disabled: settings[value].disabled
                   }
                 };

@@ -99,10 +99,6 @@ class HaxUploadField extends PolymerElement {
           border: 1px solid
             var(--eco-json-form-faded-color, var(--secondary-text-color, #888));
         }
-        :host(:focus-within) fieldset {
-          border: 2px solid
-            var(--eco-json-form-active-color, var(--primary-color, #000));
-        }
         :host #fieldset > div {
           display: flex;
           align-items: center;
