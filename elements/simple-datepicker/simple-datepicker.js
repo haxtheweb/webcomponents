@@ -5,7 +5,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
-import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icon/iron-icon.js";
@@ -28,17 +27,23 @@ class SimpleDatepicker extends PolymerElement {
       <style>
         :host {
           display: block;
-          --a11y-collapse-icon-rotated: {
-            transform: rotate(0deg);
-          }
         }
-
         :host([hidden]) {
           display: none;
+        }
+        :host paper-button {
+          padding: 5px;
+          margin: 0;
+          cursor: pointer;
+          border-radius: 0;
+          min-width: 30px;
         }
         :host #calendar {
           font-size: 12px;
           border-collapse: collapse;
+        }
+        :host #calendar caption {
+          padding: 0;
         }
         :host #calendar caption div {
           display: flex;
@@ -47,16 +52,25 @@ class SimpleDatepicker extends PolymerElement {
         }
         :host #calendar caption paper-button {
           flex: 0 1 auto;
-          padding: 5px;
-          cursor: pointer;
+          --iron-icon-width: 16px;
+          --iron-icon-height: 16px;
         }
-        :host #calendar caption div div {
+        :host #calendarlabel {
           flex: 1 1 auto;
+          text-align: center;
+          margin: 0 5px;
+        }
+        :host #calendarlabel p {
+          width: 100%;
+          margin: 0;
+        }
+        :host #calendar {
+          border: var(--simple-datepicker-calendar-border, 1px solid black);
         }
         :host #calendar,
         :host #calendar th,
         :host #calendar td {
-          border: 1px solid black;
+          border: var(--simple-datepicker-calendar-days-border, none);
         }
         :host #calendar th {
           padding: 2px;
@@ -66,91 +80,93 @@ class SimpleDatepicker extends PolymerElement {
         }
         :host #calendar td paper-button {
           width: 100%;
-          border: none;
-          padding: 5px;
-          border-radius: 0;
+          height: 30px;
           cursor: pointer;
         }
       </style>
-      <a11y-collapse
-        accordion
-        icon="hax:calendar"
-        label="toggle datepicker"
-        tooltip="toggle datepicker"
+      <paper-input
+        id="dateinput"
+        label$="[[label]]"
+        slot="heading"
+        value$="{{value}}"
+        type="date"
       >
-        <paper-input
-          id="dateinput"
-          slot="heading"
-          label$="[[label]]"
-        ></paper-input>
-        <div slot="content" role="application">
-          <table id="calendar">
-            <caption>
-              <div>
-                <paper-button
+        <paper-button
+          id="expand"
+          controls="content"
+          label="toggle datepicker"
+          tooltip="toggle datepicker"
+          slot="suffix"
+        >
+          <iron-icon icon="hax:calendar"></iron-icon>
+        </paper-button>
+      </paper-input>
+      <div id="content" role="application">
+        <table id="calendar">
+          <caption>
+            <div>
+              <paper-button
+                controls="calendar"
+                label="previous year"
+                on-tap="prevYear"
+              >
+                <iron-icon icon="av:fast-rewind"></iron-icon>
+              </paper-button>
+              <paper-button
+                controls="calendar"
+                label="previous month"
+                on-tap="prevMonth"
+              >
+                <iron-icon icon="hax:arrow-left"></iron-icon>
+              </paper-button>
+              <div id="calendarlabel"><p>[[__calendarLabel]]</p></div>
+              <paper-button
+                controls="calendar"
+                label="next month"
+                on-tap="nextMonth"
+              >
+                <iron-icon icon="hax:arrow-right"></iron-icon>
+              </paper-button>
+              <paper-button
+                controls="calendar"
+                label="next year"
+                on-tap="nextYear"
+              >
+                <iron-icon
+                  icon="av:fast-forward"
                   controls="calendar"
-                  label="previous year"
-                  ontap="prevYear"
-                >
-                  <iron-icon icon="av:fast-rewind"></iron-icon>
-                </paper-button>
-                <paper-button
-                  controls="calendar"
-                  label="previous month"
-                  ontap="prevMonth"
-                >
-                  <iron-icon icon="hax:arrow-left"></iron-icon>
-                </paper-button>
-                <div id="calendarlabel">
-                  [[currentMonthName]] [[currentYear]]
-                </div>
-                <paper-button
-                  controls="calendar"
-                  label="next month"
-                  ontap="nextMonth"
-                >
-                  <iron-icon icon="hax:arrow-right"></iron-icon>
-                </paper-button>
-                <paper-button
-                  controls="calendar"
-                  label="next year"
-                  ontap="nextYear"
-                >
-                  <iron-icon
-                    icon="av:fast-forward"
-                    controls="calendar"
-                  ></iron-icon>
-                </paper-button>
-              </div>
-            </caption>
-            <thead>
+                ></iron-icon>
+              </paper-button>
+            </div>
+          </caption>
+          <thead>
+            <tr>
+              <template is="dom-repeat" items="[[weekdays]]" as="weekday">
+                <th scope="col">[[weekday]]</th>
+              </template>
+            </tr>
+          </thead>
+          <tbody>
+            <template is="dom-repeat" items="[[__calendar]]" as="week" restamp>
               <tr>
-                <template is="dom-repeat" items="[[weekdays]]" as="weekday">
-                  <th scope="col">[[weekday]]</th>
+                <template is="dom-repeat" items="[[week]]" as="day" restamp>
+                  <td scope="row">
+                    <paper-button
+                      class="day"
+                      controls="dateinput"
+                      day$="[[day]]"
+                      disabled$="[[!disabled]]"
+                      hidden$="[[!day]]"
+                    >
+                      [[day]]
+                    </paper-button>
+                  </td>
                 </template>
               </tr>
-            </thead>
-            <tbody>
-              <template is="dom-repeat" items="[[currentDays]]" as="week">
-                <tr>
-                  <template is="dom-repeat" items="[[week]]" as="weekday">
-                    <td scope="row">
-                      <paper-button
-                        class="day"
-                        controls="dateinput"
-                        date="[[weekday.date]]"
-                        hidden="[[!weekday.date]]"
-                      >
-                        [[weekday.dd]]
-                      </paper-button>
-                    </td>
-                  </template>
-                </tr>
-              </template>
-            </tbody>
-          </table>
-        </div>
-      </a11y-collapse>
+            </template>
+          </tbody>
+        </table>
+      </div>
     `;
   }
 
@@ -186,10 +202,10 @@ class SimpleDatepicker extends PolymerElement {
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      weekdays: {
-        name: "weekdays",
-        type: "Array",
-        value: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+      dateFormat: {
+        name: "dateFormat",
+        type: "String",
+        value: "mm-dd-yyyy"
       },
       monthNames: {
         name: "monthNames",
@@ -209,30 +225,35 @@ class SimpleDatepicker extends PolymerElement {
           "December"
         ]
       },
-      currentMonth: {
-        name: "currentMonth",
-        type: "Number",
-        value: 1
-      },
-      currentMonthName: {
-        name: "currentMonthName",
+      value: {
+        name: "value",
         type: "String",
-        computed: "_getMonthName(currentMonth,monthNames)"
+        value: null
       },
-      currentYear: {
-        name: "currentYear",
+      weekStart: {
+        name: "weekStart",
         type: "Number",
-        value: 2019
+        value: 0
       },
-      currentDays: {
-        name: "currentDays",
+      weekdays: {
+        name: "weekdays",
         type: "Array",
-        computed: "_getCurrentDays(currentMonth,currentYear,weekdays)"
+        value: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
       },
-      dateFormat: {
-        name: "dateFormat",
+      __calendar: {
+        name: "__calendar",
+        type: "Array",
+        computed: "_getCalendar(__calendarDate)"
+      },
+      __calendarDate: {
+        name: "__calendarDate",
         type: "String",
-        value: "mm-dd-yyyy"
+        computed: "_getCalendarDate(value)"
+      },
+      __calendarLabel: {
+        name: "__calendarLabel",
+        type: "String",
+        computed: "updateCalendar(__calendarDate)"
       }
     };
   }
@@ -257,68 +278,79 @@ class SimpleDatepicker extends PolymerElement {
     );
   }
   nextMonth() {
-    if (this.currentMonth < 12) {
-      this.currentMonth++;
+    let date = new Date(this.__calendarDate),
+      month = date.getMonth(),
+      year = date.getFullYear();
+    if (month < 11) {
+      date.setMonth(month + 1);
     } else {
-      this.currentMonth = 1;
-      this.currentYear++;
+      date.setMonth(0);
+      date.setYear(year + 1);
     }
-    this.updateCalendar();
+    this.__calendarDate = date.toString();
   }
   prevMonth() {
-    if (this.currentMonth > 1) {
-      this.currentMonth--;
+    let date = new Date(this.__calendarDate),
+      month = date.getMonth(),
+      year = date.getFullYear();
+    if (month > 0) {
+      date.setMonth(month - 1);
     } else {
-      this.currentMonth = 12;
-      this.currentYear--;
+      date.setMonth(11);
+      date.setYear(year - 1);
     }
-    this.updateCalendar();
+    this.__calendarDate = date.toString();
   }
   nextYear() {
-    this.currentYear++;
-    this.updateCalendar();
+    let date = new Date(this.__calendarDate),
+      year = date.getFullYear();
+    date.setYear(year + 1);
+    this.__calendarDate = date.toString();
   }
   prevYear() {
-    this.currentYear--;
-    this.updateCalendar();
+    let date = new Date(this.__calendarDate),
+      year = date.getFullYear();
+    date.setYear(year - 1);
+    this.__calendarDate = date.toString();
   }
-  updateCalendar() {
-    let label = this.shadowRoot.querySelector("#calendarlabel");
-    console.log(`${this.currentMonthName} ${this.currentYear}`);
-    if (label) label.innerHTML = `${this.currentMonthName} ${this.currentYear}`;
+  updateCalendar(__calendarDate) {
+    let label = this.shadowRoot
+        ? this.shadowRoot.querySelector("#calendarlabel > p")
+        : null,
+      date = new Date(__calendarDate),
+      month = this.monthNames[date.getMonth()],
+      year = date.getFullYear();
+    if (label) label.innerHTML = `${month} ${year}`;
+    return `${month} ${year}`;
   }
-  _getMonthName(currentMonth, monthNames) {
-    console.log(
-      "_getMonthName",
-      monthNames,
-      currentMonth,
-      monthNames[currentMonth - 1]
-    );
-    return monthNames[currentMonth - 1];
+  _getCalendarDate(value) {
+    let date = value ? new Date(value) : new Date();
+    this.updateCalendar(date);
+    return date.toString();
   }
-  _getCurrentDays(currentMonth, currentYear, weekdays) {
-    let week = [],
-      totalDays = [1, 3, 5, 7, 8, 10, 12].includes(currentMonth)
-        ? 31
-        : currentMonth !== 2
-        ? 30
-        : currentYear % 4 === 0 &&
-          (currentYear % 100 !== 0 || currentYear % 400 === 0)
-        ? 29
-        : 28;
-
-    for (let i = 1; i <= totalDays / 7; i++) {
-      let days = [];
-      for (let j = 1; j <= 7; j++) {
-        console.log(i, j);
-        days.push({
-          date: `${currentMonth}/${j * i}/${currentYear}`,
-          dd: j * i
-        });
+  _getCalendar(__calendarDate) {
+    let first = new Date(__calendarDate),
+      last = new Date(__calendarDate),
+      weeks = [],
+      start,
+      end,
+      cells,
+      rows;
+    first.setDate(1);
+    last.setDate(0);
+    start = first.getDay();
+    end = 6 - last.getDay();
+    cells = start + end + last.getDate();
+    rows = cells / 7;
+    for (let i = 0; i < rows - 1; i++) {
+      weeks[i] = [];
+      for (let j = 0; j < 7; j++) {
+        let cell = j + i * 7,
+          day = 1 + cell - start;
+        weeks[i][j] = day < 0 || day > last.getDate() ? false : day;
       }
-      week.push(days);
     }
-    return week;
+    return weeks;
   }
   /**
    * life cycle, element is removed from the DOM

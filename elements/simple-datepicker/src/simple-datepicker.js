@@ -5,7 +5,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
-import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icon/iron-icon.js";
@@ -44,68 +43,79 @@ class SimpleDatepicker extends PolymerElement {
     );
   }
   nextMonth() {
-    if (this.currentMonth < 12) {
-      this.currentMonth++;
+    let date = new Date(this.__calendarDate),
+      month = date.getMonth(),
+      year = date.getFullYear();
+    if (month < 11) {
+      date.setMonth(month + 1);
     } else {
-      this.currentMonth = 1;
-      this.currentYear++;
+      date.setMonth(0);
+      date.setYear(year + 1);
     }
-    this.updateCalendar();
+    this.__calendarDate = date.toString();
   }
   prevMonth() {
-    if (this.currentMonth > 1) {
-      this.currentMonth--;
+    let date = new Date(this.__calendarDate),
+      month = date.getMonth(),
+      year = date.getFullYear();
+    if (month > 0) {
+      date.setMonth(month - 1);
     } else {
-      this.currentMonth = 12;
-      this.currentYear--;
+      date.setMonth(11);
+      date.setYear(year - 1);
     }
-    this.updateCalendar();
+    this.__calendarDate = date.toString();
   }
   nextYear() {
-    this.currentYear++;
-    this.updateCalendar();
+    let date = new Date(this.__calendarDate),
+      year = date.getFullYear();
+    date.setYear(year + 1);
+    this.__calendarDate = date.toString();
   }
   prevYear() {
-    this.currentYear--;
-    this.updateCalendar();
+    let date = new Date(this.__calendarDate),
+      year = date.getFullYear();
+    date.setYear(year - 1);
+    this.__calendarDate = date.toString();
   }
-  updateCalendar() {
-    let label = this.shadowRoot.querySelector("#calendarlabel");
-    console.log(`${this.currentMonthName} ${this.currentYear}`);
-    if (label) label.innerHTML = `${this.currentMonthName} ${this.currentYear}`;
+  updateCalendar(__calendarDate) {
+    let label = this.shadowRoot
+        ? this.shadowRoot.querySelector("#calendarlabel > p")
+        : null,
+      date = new Date(__calendarDate),
+      month = this.monthNames[date.getMonth()],
+      year = date.getFullYear();
+    if (label) label.innerHTML = `${month} ${year}`;
+    return `${month} ${year}`;
   }
-  _getMonthName(currentMonth, monthNames) {
-    console.log(
-      "_getMonthName",
-      monthNames,
-      currentMonth,
-      monthNames[currentMonth - 1]
-    );
-    return monthNames[currentMonth - 1];
+  _getCalendarDate(value) {
+    let date = value ? new Date(value) : new Date();
+    this.updateCalendar(date);
+    return date.toString();
   }
-  _getCurrentDays(currentMonth, currentYear, weekdays) {
-    let week = [],
-      totalDays = [1, 3, 5, 7, 8, 10, 12].includes(currentMonth)
-        ? 31
-        : currentMonth !== 2
-        ? 30
-        : currentYear % 4 === 0 &&
-          (currentYear % 100 !== 0 || currentYear % 400 === 0)
-        ? 29
-        : 28;
-
-    for (let i = 1; i <= totalDays / 7; i++) {
-      let days = [];
-      for (let j = 1; j <= 7; j++) {
-        console.log(i, j);
-        days.push({
-          date: `${currentMonth}/${j * i}/${currentYear}`,
-          dd: j * i
-        });
+  _getCalendar(__calendarDate) {
+    let first = new Date(__calendarDate),
+      last = new Date(__calendarDate),
+      weeks = [],
+      start,
+      end,
+      cells,
+      rows;
+    first.setDate(1);
+    last.setDate(0);
+    start = first.getDay();
+    end = 6 - last.getDay();
+    cells = start + end + last.getDate();
+    rows = cells / 7;
+    for (let i = 0; i < rows - 1; i++) {
+      weeks[i] = [];
+      for (let j = 0; j < 7; j++) {
+        let cell = j + i * 7,
+          day = 1 + cell - start;
+        weeks[i][j] = day < 0 || day > last.getDate() ? false : day;
       }
-      week.push(days);
     }
-    return week;
+    return weeks;
   }
   /**
    * life cycle, element is removed from the DOM

@@ -1,59 +1,74 @@
 
-<a11y-collapse 
-  accordion 
-  icon="hax:calendar" label="toggle datepicker" tooltip="toggle datepicker">
-  <paper-input id="dateinput" slot="heading" label$="[[label]]"></paper-input>
-  <div slot="content" role="application">
-    <table id="calendar">
-      <caption>
-        <div>
-          <paper-button  
-            controls="calendar"
-            label="previous year"
-            ontap="prevYear">
-            <iron-icon icon="av:fast-rewind"></iron-icon>
-          </paper-button>
-          <paper-button  
-            controls="calendar"
-            label="previous month"
-            ontap="prevMonth">
-            <iron-icon icon="hax:arrow-left"></iron-icon>
-          </paper-button>
-          <div id="calendarlabel">[[currentMonthName]] [[currentYear]]</div>
-          <paper-button  
-            controls="calendar"
-            label="next month"
-            ontap="nextMonth">
-            <iron-icon icon="hax:arrow-right"></iron-icon>
-          </paper-button>
-          <paper-button  
-            controls="calendar"
-            label="next year"
-            ontap="nextYear">
-            <iron-icon icon="av:fast-forward" controls="calendar"></iron-icon>
-          </paper-button>
-        </div>
-      </caption>
-      <thead>
-        <tr>
-          <template is="dom-repeat" items="[[weekdays]]" as="weekday">
-            <th scope="col">[[weekday]]</th>
-          </template>
-        </tr>
-      </thead>
-      <tbody>
-        <template is="dom-repeat" items="[[currentDays]]" as="week">
-          <tr>
-            <template is="dom-repeat" items="[[week]]" as="weekday">
-              <td scope="row">
-                <paper-button class="day" controls="dateinput" date="[[weekday.date]]" hidden="[[!weekday.date]]">
-                  [[weekday.dd]]
-                </paper-button>
-              </td>
-            </template> 
-          </tr>
+<paper-input 
+  id="dateinput" 
+  label$="[[label]]" 
+  slot="heading" 
+  value$="{{value}}"
+  type="date">
+  <paper-button
+    id="expand"
+    controls="content"
+    label="toggle datepicker" 
+    tooltip="toggle datepicker" 
+    slot="suffix">
+    <iron-icon icon="hax:calendar"></iron-icon>
+  </paper-button>
+</paper-input>
+<div id="content" role="application">
+  <table id="calendar">
+    <caption>
+      <div>
+        <paper-button  
+          controls="calendar"
+          label="previous year"
+          on-tap="prevYear">
+          <iron-icon icon="av:fast-rewind"></iron-icon>
+        </paper-button>
+        <paper-button  
+          controls="calendar"
+          label="previous month"
+          on-tap="prevMonth">
+          <iron-icon icon="hax:arrow-left"></iron-icon>
+        </paper-button>
+        <div id="calendarlabel"><p>[[__calendarLabel]]</p></div>
+        <paper-button  
+          controls="calendar"
+          label="next month"
+          on-tap="nextMonth">
+          <iron-icon icon="hax:arrow-right"></iron-icon>
+        </paper-button>
+        <paper-button  
+          controls="calendar"
+          label="next year"
+          on-tap="nextYear">
+          <iron-icon icon="av:fast-forward" controls="calendar"></iron-icon>
+        </paper-button>
+      </div>
+    </caption>
+    <thead>
+      <tr>
+        <template is="dom-repeat" items="[[weekdays]]" as="weekday">
+          <th scope="col">[[weekday]]</th>
         </template>
-      </tbody>
-    </table>
-  </div>
-</a11y-collapse>
+      </tr>
+    </thead>
+    <tbody>
+      <template is="dom-repeat" items="[[__calendar]]" as="week" restamp>
+        <tr>
+          <template is="dom-repeat" items="[[week]]" as="day" restamp>
+            <td scope="row">
+              <paper-button 
+                class="day" 
+                controls="dateinput" 
+                day$="[[day]]" 
+                disabled$="[[!disabled]]"
+                hidden$="[[!day]]">
+                [[day]]
+              </paper-button>
+            </td>
+          </template> 
+        </tr>
+      </template>
+    </tbody>
+  </table>
+</div>

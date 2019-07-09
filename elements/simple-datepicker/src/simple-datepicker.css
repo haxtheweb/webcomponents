@@ -1,16 +1,22 @@
 :host {
   display: block;
-  --a11y-collapse-icon-rotated: {
-    transform: rotate(0deg);
-  }
 }
-
 :host([hidden]) {
   display: none;
+}
+:host paper-button {
+  padding: 5px;
+  margin: 0;
+  cursor: pointer;
+  border-radius: 0;
+  min-width: 30px;
 }
 :host #calendar {
   font-size: 12px;
   border-collapse: collapse;
+}
+:host #calendar caption {
+  padding: 0;
 }
 :host #calendar caption div {
   display: flex;
@@ -19,16 +25,25 @@
 }
 :host #calendar caption paper-button {
   flex: 0 1 auto;
-  padding: 5px;
-  cursor: pointer;
+  --iron-icon-width: 16px;
+  --iron-icon-height: 16px;
 }
-:host #calendar caption div div {
+:host #calendarlabel{
   flex: 1 1 auto;
+  text-align: center;
+  margin: 0 5px;
+}
+:host #calendarlabel p {
+  width: 100%;
+  margin: 0;
+}
+:host #calendar {
+  border: var(--simple-datepicker-calendar-border, 1px solid black);
 }
 :host #calendar,
 :host #calendar th, 
 :host #calendar td {
-  border: 1px solid black;
+  border: var(--simple-datepicker-calendar-days-border, none);
 }
 :host #calendar th {
   padding: 2px;
@@ -38,8 +53,6 @@
 }
 :host #calendar td paper-button {
   width: 100%;
-  border: none;
-  padding: 5px;
-  border-radius: 0;
+  height: 30px;
   cursor: pointer;
 }

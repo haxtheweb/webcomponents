@@ -1,8 +1,8 @@
 {
-  "weekdays": {
-    "name": "weekdays",
-    "type": "Array",
-    "value": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+  "dateFormat": {
+    "name": "dateFormat",
+    "type": "String",
+    "value": "mm-dd-yyyy"
   },
   "monthNames": {
     "name": "monthNames",
@@ -22,29 +22,34 @@
       "December"
     ]
   },
-  "currentMonth": {
-    "name": "currentMonth",
-    "type": "Number",
-    "value": 1
-  },
-  "currentMonthName": {
-    "name": "currentMonthName",
+  "value": {
+    "name": "value",
     "type": "String",
-    "computed": "_getMonthName(currentMonth,monthNames)"
+    "value": null
   },
-  "currentYear": {
-    "name": "currentYear",
+  "weekStart": {
+    "name": "weekStart",
     "type": "Number",
-    "value": 2019
+    "value": 0
   },
-  "currentDays": {
-    "name": "currentDays",
+  "weekdays": {
+    "name": "weekdays",
     "type": "Array",
-    "computed": "_getCurrentDays(currentMonth,currentYear,weekdays)"
+    "value": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
   },
-  "dateFormat": {
-    "name": "dateFormat",
+  "__calendar": {
+    "name": "__calendar",
+    "type": "Array",
+    "computed": "_getCalendar(__calendarDate)"
+  },
+  "__calendarDate": {
+    "name": "__calendarDate",
     "type": "String",
-    "value": "mm-dd-yyyy"
+    "computed": "_getCalendarDate(value)"
+  },
+  "__calendarLabel": {
+    "name": "__calendarLabel",
+    "type": "String",
+    "computed": "updateCalendar(__calendarDate)"
   }
 }
