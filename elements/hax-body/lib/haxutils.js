@@ -64,4 +64,35 @@ function wipeSlot(element, slot = "*") {
   }
 }
 
-export { encapScript, findTagsInHTML, wipeSlot };
+/**
+ * Strip word BS
+ */
+function stripMSWord(input) {
+  // 1. remove line breaks / Mso classes
+  var output = input.replace(/(\|\\r| class=(")?Mso[a-zA-Z]+(")?)/g, "");
+  // 2. strip Word generated HTML comments
+  output = output.replace(/<\!--(\s|.)*?-->/gim, "");
+  output = output.replace(/<\!(\s|.)*?>/gim, "");
+  // 3. remove tags leave content if any
+  output = output.replace(
+    /<(\/)*(meta|link|html|head|body|span|\\\\?xml:|xml|st1:|o:|w:|m:|v:|font)(\s|.)*?>/gim,
+    ""
+  );
+  // 4. Remove everything in between and including tags '<style(.)style(.)>'
+  var badTags = ["style", "script", "applet", "embed", "noframes", "noscript"];
+  for (var i in badTags) {
+    let tagStripper = new RegExp(
+      "<" + badTags[i] + "(s|.)*?" + badTags[i] + "(.*?)>",
+      "gim"
+    );
+    output = output.replace(tagStripper, "");
+  }
+
+  // 5. remove attributes ' style="..."', align, start
+  output = output.replace(/style='(\s|.)*?'/gim, "");
+  output = output.replace(/ align=.*? /g, "");
+  output = output.replace(/start='.*?'/g, "");
+  return output;
+}
+
+export { encapScript, findTagsInHTML, wipeSlot, stripMSWord };
