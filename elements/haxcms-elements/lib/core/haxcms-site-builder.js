@@ -67,14 +67,14 @@ class HAXCMSSiteBuilder extends PolymerElement {
       <paper-progress hidden\$="[[!loading]]" indeterminate></paper-progress>
       <iron-ajax
         id="manifest"
-        url="[[outlineLocation]][[file]][[__timeStamp]]"
+        url="[[outlineLocation]][[file]][[_timeStamp]]"
         handle-as="json"
         last-response="{{manifest}}"
         last-error="{{lastError}}"
       ></iron-ajax>
       <iron-ajax
         id="activecontent"
-        url="[[outlineLocation]][[activeItem.location]][[__timeStamp]]"
+        url="[[outlineLocation]][[activeItem.location]][[_timeStamp]]"
         handle-as="text"
         loading="{{loading}}"
         last-response="{{activeItemContent}}"
@@ -91,6 +91,9 @@ class HAXCMSSiteBuilder extends PolymerElement {
       lastError: {
         type: Object,
         observer: "_lastErrorChanged"
+      },
+      _timeStamp: {
+        type: String
       },
       /**
        * queryParams
@@ -218,7 +221,7 @@ class HAXCMSSiteBuilder extends PolymerElement {
       this.activeItem = toJS(store.activeItem);
       this.__disposer.push(reaction);
     });
-    this.__timeStamp = "";
+    this._timeStamp = "";
   }
   connectedCallback() {
     super.connectedCallback();
@@ -251,11 +254,8 @@ class HAXCMSSiteBuilder extends PolymerElement {
           // attach editor builder after we've appended to the screen
           document.body.appendChild(this.editorBuilder);
           // get fresh data if not published
-          if (
-            this.editorBuilder.getContext() !== "published" &&
-            this.editorBuilder.getContext() !== "demo"
-          ) {
-            this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
+          if (this.editorBuilder.getContext() !== "published") {
+            this._timeStamp = "?" + Math.floor(Date.now() / 1000);
           }
         })
         .catch(error => {
@@ -361,13 +361,15 @@ class HAXCMSSiteBuilder extends PolymerElement {
     if (newValue && typeof newValue.id !== typeof undefined) {
       this.set("queryParams.nodeId", newValue.id);
       this.notifyPath("queryParams.nodeId");
-      // get fresh data if not published
+      // if published, keep it static on request
+      // @todo might revisit this in the future
       if (
         this.editorBuilder &&
-        this.editorBuilder.getContext() !== "published" &&
-        this.editorBuilder.getContext() !== "demo"
+        this.editorBuilder.getContext() === "published"
       ) {
-        this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
+        this._timeStamp = "";
+      } else {
+        this._timeStamp = "?" + Math.floor(Date.now() / 1000);
       }
       this.$.activecontent.generateRequest();
     }
@@ -391,7 +393,7 @@ class HAXCMSSiteBuilder extends PolymerElement {
   _triggerUpdatedData(e) {
     // get fresh data if not published
     if (this.editorBuilder && this.editorBuilder.getContext() !== "published") {
-      this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
+      this._timeStamp = "?" + Math.floor(Date.now() / 1000);
     }
     this.$.manifest.generateRequest();
   }
@@ -406,7 +408,7 @@ class HAXCMSSiteBuilder extends PolymerElement {
       this.editorBuilder.getContext() !== "published" &&
       this.editorBuilder.getContext() !== "demo"
     ) {
-      this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
+      this._timeStamp = "?" + Math.floor(Date.now() / 1000);
     }
     // ensure we don't get a miss on initial load
     if (this.activeItem.location) {
