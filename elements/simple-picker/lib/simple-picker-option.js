@@ -34,7 +34,7 @@ class SimplePickerOption extends PolymerElement {
           display: none;
         }
         :host .label {
-          padding: 2px 10px;
+          padding: var(--simple-picker-option-padding, 2px 10px);
           line-height: 100%;
           @apply --simple-picker-option-label;
         }

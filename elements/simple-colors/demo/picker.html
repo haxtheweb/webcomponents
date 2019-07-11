@@ -26,10 +26,13 @@
       <h2>Default Color Picker</h2>
       <demo-snippet>
         <template>
-          <div class="demo">
+          <div>
             <p>
               <label>Acccent-Color Names: </label>
-              <simple-colors-picker id="accents" value="pink">
+              <simple-colors-picker 
+                id="accents" 
+                block-label
+                value="pink">
               </simple-colors-picker>
             </p>
           </div>
@@ -48,7 +51,6 @@
             <p>
               <simple-colors-picker 
                 id="shades" 
-                block-label
                 hide-option-labels 
                 label="CSS Variable Shades"
                 shades>

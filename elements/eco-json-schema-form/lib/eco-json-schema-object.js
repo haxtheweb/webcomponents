@@ -327,9 +327,8 @@ class EcoJsonSchemaObject extends mixinBehaviors(
             @apply --layout-vertical;
             @apply --layout-wrap;
           }
-          #form ::slotted(paper-input),
-          #form ::slotted(div.tooltip-desc) {
-            font-family: var(--eco-json-form-font-family);
+          #form ::slotted(paper-input) {
+            margin-bottom: 15px;
           }
           #form ::slotted(*.has-tooltip-desc) {
             margin-bottom: 0;
@@ -344,8 +343,12 @@ class EcoJsonSchemaObject extends mixinBehaviors(
             margin: var(--eco-json-field-margin);
             color: var(--eco-json-form-faded-color);
           }
+          #form ::slotted(paper-input),
+          #form ::slotted(div.tooltip-desc) {
+            font-family: var(--eco-json-form-font-family);
+          }
           #form ::slotted(div.desc-for-paper-textarea) {
-            margin-top: -16px;
+            margin-top: -18px;
             margin-right: 35px;
           }
           #form ::slotted(simple-icon-picker),
@@ -359,6 +362,9 @@ class EcoJsonSchemaObject extends mixinBehaviors(
             );
             --simple-picker-background-color: var(--eco-json-form-bg);
             --simple-picker-border-color: var(--eco-json-form-faded-color);
+            --simple-picker-sample: {
+              padding: 2px 10px;
+            }
             --simple-picker-sample-focus: {
               transition: all 0.5s;
               border: 2px solid var(--eco-json-form-active-color);
@@ -470,7 +476,6 @@ class EcoJsonSchemaObject extends mixinBehaviors(
         if (!property.component.slot) {
           property.component.slot = "";
         }
-
         if (ctx._isSchemaEnum(schema)) {
           property.component.name =
             property.component.name || "eco-json-schema-enum";
@@ -601,13 +606,13 @@ class EcoJsonSchemaObject extends mixinBehaviors(
   _buildForm() {
     let autofocus = this.autofocus;
     this._schemaProperties.forEach(property => {
-      if (property.component.name === "paper-input")
-        if (property.component.name === "code-editor") {
-          // special case, can't come up with a better way to do this but monoco is very special case
-          property.schema.component.properties.editorValue =
-            property.schema.value;
-          property.schema.component.properties.theme = this.codeTheme;
-        }
+      if (property.component.name === "code-editor") {
+        // special case, can't come up with a better way to do this but monoco is very special case
+        property.schema.component.properties.editorValue =
+          property.schema.value;
+        property.schema.component.properties.theme = this.codeTheme;
+      }
+
       var el = this.create(property.component.name, {
         label: property.label,
         schema: property.schema,

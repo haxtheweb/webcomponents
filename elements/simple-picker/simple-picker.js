@@ -182,10 +182,6 @@ class SimplePicker extends PolymerElement {
           }
         }
 
-        :host #sample simple-picker-option {
-          @apply --simple-picker-sample-option;
-        }
-
         :host simple-picker-option[selected] {
           z-index: 50;
           color: var(--simple-picker-color);
@@ -213,6 +209,11 @@ class SimplePicker extends PolymerElement {
             --simple-picker-sample-background-color,
             transparent
           );
+          --simple-picker-option-padding: 2px 0;
+          --simple-picker-option-label: {
+            @apply --simple-picker-sample-label;
+          }
+          @apply --simple-picker-sample-option;
           border: none;
         }
 

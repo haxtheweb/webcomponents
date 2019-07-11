@@ -185,14 +185,6 @@ class SimpleColorsPicker extends SimpleColors {
         return [
           {
             alt: key,
-            style:
-              "color: var(--simple-colors-" +
-              theme +
-              "-theme-grey-12); background-color: var(--simple-colors-" +
-              theme +
-              "-theme-" +
-              key +
-              "-4)",
             value: key
           }
         ];

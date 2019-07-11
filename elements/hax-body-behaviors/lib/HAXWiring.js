@@ -246,7 +246,7 @@ export class HAXWiring {
      * properties in order to be able to bubble up the properties for a tag.
      */
     this.setHaxProperties = (
-      props,
+      props = {},
       tag = "",
       context = document,
       isReady = false
@@ -614,7 +614,7 @@ export class HAXWiring {
                     disabled: settings[value].disabled
                   },
                   attributes: {
-                    "auto-validate": "auto-validate",
+                    //"auto-validate": "auto-validate",
                     "char-counter": "char-counter"
                   }
                 };
@@ -626,7 +626,7 @@ export class HAXWiring {
                   properties: {
                     editorValue: settings[value].value,
                     title: settings[value].title,
-                    theme: "hc-black",
+                    theme: "vs",
                     mode: "html",
                     className: "hax-code-editor"
                   }
@@ -795,9 +795,11 @@ export class HAXWiring {
                   name: "simple-picker",
                   valueProperty: "value",
                   properties: {
+                    allowNull: settings[value].allowNull,
+                    blockLabel: true,
                     required: settings[value].required,
-                    disabled: settings[value].disabled,
-                    options: options
+                    options: options,
+                    disabled: settings[value].disabled
                   }
                 };
                 break;
@@ -810,7 +812,7 @@ export class HAXWiring {
                     disabled: settings[value].disabled
                   },
                   attributes: {
-                    "auto-validate": "auto-validate",
+                    //"auto-validate": "auto-validate",
                     "char-counter": "char-counter"
                   }
                 };
@@ -823,7 +825,7 @@ export class HAXWiring {
                     editorValue: props[settings[value].attribute].value,
                     title: settings[value].title,
                     readOnly: false,
-                    theme: "hc-black",
+                    theme: "vs",
                     mode: "html",
                     className: "hax-code-editor"
                   }
@@ -893,7 +895,7 @@ export class HAXWiring {
                 properties: {
                   editorValue: settings[value].value,
                   title: settings[value].title,
-                  theme: "hc-black",
+                  theme: "vs",
                   mode: "html",
                   className: "hax-code-editor"
                 }
