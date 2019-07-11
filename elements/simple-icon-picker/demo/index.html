@@ -18,24 +18,24 @@
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic simple-icon-picker demo</h3>
-      <demo-snippet>
+      <!--demo-snippet>
         <template>
           <simple-icon-picker label="Icon"></simple-icon-picker>
         </template>
-      </demo-snippet>
+      </demo-snippet-->
 
       <h3>Custom simple-icon-picker demo</h3>
       <demo-snippet>
         <template>
           <script>
             document.getElementById('iconpicker').icons = [
-              "check",
-              "clear",
-              "search",
-              "arrow-back",
-              "arrow-downward",
-              "arrow-forward",
-              "arrow-upward"
+              "icons:check",
+              "icons:clear",
+              "icons:search",
+              "icons:arrow-back",
+              "icons:arrow-downward",
+              "icons:arrow-forward",
+              "icons:arrow-upward"
             ];
           </script>
           <div id="icondemo">
@@ -45,7 +45,7 @@
               allow-null 
               aria-labelledby="iconpicker-label" 
               block-label 
-              value="search">
+              value="icons:search">
             </simple-icon-picker>
           </div>
         </template>

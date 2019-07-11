@@ -19,40 +19,41 @@ import { IronMeta } from "@polymer/iron-meta/iron-meta.js";
  * @demo demo/index.html
  */
 class SimpleIconPicker extends SimplePicker {
-  
   // render function
   static get template() {
     return html`
-<style>:host(simple-icon-picker) #collapse {
-  width: 300px;
-  height: 300px;
-  max-height: 300px;
-  overflow: auto;
-}
-:host(simple-icon-picker) .row {
-  justify-content: flex-start;
-}
-:host(simple-icon-picker) simple-picker-option {
-  flex: 0 0 auto;
-}
-</style>
-${super.template}`;
+      <style>
+        :host(simple-icon-picker) #collapse {
+          width: 300px;
+          height: 300px;
+          max-height: 300px;
+          overflow: auto;
+        }
+        :host(simple-icon-picker) .row {
+          justify-content: flex-start;
+        }
+        :host(simple-icon-picker) simple-picker-option {
+          flex: 0 0 auto;
+        }
+      </style>
+      ${super.template}
+    `;
   }
 
   // properties available to the custom element for data binding
-    static get properties() {
+  static get properties() {
     let props = {
-  /**
-   * Allow a null option to be selected?
-   */
-  "allowNull": {
-    "name": "allowNull",
-    "type": Boolean,
-    "value": false,
-    "observer": "_getOptions"
-  },
+      /**
+       * Allow a null option to be selected?
+       */
+      allowNull: {
+        name: "allowNull",
+        type: Boolean,
+        value: false,
+        observer: "_getOptions"
+      },
 
-  /**
+      /**
     * An array of icons by name: ```
 [
   "editor:format-paint",
@@ -61,35 +62,35 @@ ${super.template}`;
   
 ]```
   */
-  "icons": {
-    "name": "icons",
-    "type": Array,
-    "value": [],
-    "observer": "_getOptions"
-  },
+      icons: {
+        name: "icons",
+        type: Array,
+        value: [],
+        observer: "_getOptions"
+      },
 
-  /**
-   * The value of the option.
-   */
-  "value": {
-    "name": "value",
-    "type": String,
-    "value": null,
-    "reflectToAttribute": true,
-    "notify": true
-  },
+      /**
+       * The value of the option.
+       */
+      value: {
+        name: "value",
+        type: String,
+        value: null,
+        reflectToAttribute: true,
+        notify: true
+      },
 
-  /**
-   * the maximum number of options per row
-   */
-  "optionsPerRow": {
-    "optionSize": "optionsPerRow",
-    "type": Number,
-    "value": 10,
-    "observer": "_getOptions"
-  },
+      /**
+       * the maximum number of options per row
+       */
+      optionsPerRow: {
+        optionSize: "optionsPerRow",
+        type: Number,
+        value: 10,
+        observer: "_getOptions"
+      },
 
-  /**
+      /**
     * An array of icons by name: ```
 [
   "editor:format-paint",
@@ -98,14 +99,14 @@ ${super.template}`;
   
 ]```
   */
-  "__iconList": {
-    "name": "__iconList",
-    "type": Array,
-    "read-only": true,
-    "observer": "_getOptions"
-  }
-}
-;
+
+      __iconList: {
+        name: "__iconList",
+        type: Array,
+        "read-only": true,
+        observer: "_getOptions"
+      }
+    };
     if (super.properties) {
       props = Object.assign(props, super.properties);
     }
@@ -143,6 +144,7 @@ ${super.template}`;
           });
         });
         this.__iconList = iconList;
+        this._setSelectedOption();
       }
     });
   }
@@ -187,6 +189,12 @@ ${super.template}`;
     let option = this.shadowRoot.querySelector("simple-picker-option");
     if (collapse && option)
       collapse.style.width = cols * option.offsetWidth + 15 + "px";
+  }
+  /**
+   * Don't set the selection option until there are options rendered
+   */
+  _setSelectedOption() {
+    if (this.options.length > 1) super._setSelectedOption();
   }
 }
 window.customElements.define(SimpleIconPicker.tag, SimpleIconPicker);

@@ -272,6 +272,7 @@ class SimplePicker extends PolymerElement {
               items="[[__options]]"
               as="row"
               index-as="rownum"
+              restamp
             >
               <div class="row">
                 <template
@@ -279,6 +280,7 @@ class SimplePicker extends PolymerElement {
                   items="[[row]]"
                   as="option"
                   index-as="colnum"
+                  restamp
                 >
                   <simple-picker-option
                     active$="[[_isActive(__activeDesc,rownum,colnum)]]"

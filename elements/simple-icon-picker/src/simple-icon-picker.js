@@ -52,6 +52,7 @@ class SimpleIconPicker extends SimplePicker {
           });
         });
         this.__iconList = iconList;
+        this._setSelectedOption();
       }
     });
   }
@@ -96,6 +97,12 @@ class SimpleIconPicker extends SimplePicker {
     let option = this.shadowRoot.querySelector("simple-picker-option");
     if (collapse && option)
       collapse.style.width = cols * option.offsetWidth + 15 + "px";
+  }
+  /**
+   * Don't set the selection option until there are options rendered
+   */
+  _setSelectedOption() {
+    if (this.options.length > 1) super._setSelectedOption();
   }
 }
 window.customElements.define(SimpleIconPicker.tag, SimpleIconPicker);
