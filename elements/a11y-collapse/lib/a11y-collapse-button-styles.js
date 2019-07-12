@@ -21,7 +21,16 @@ const css = html`
       display: flex;
       justify-content: stretch;
       align-items: center;
-      padding: 0 var(--a11y-collapse-horizontal-padding, 16px);
+      padding: 0
+        var(
+          --a11y-collapse-padding-right,
+          var(--a11y-collapse-horizontal-padding, 16px)
+        )
+        0
+        var(
+          --a11y-collapse-padding-left,
+          var(--a11y-collapse-horizontal-padding, 16px)
+        );
       font-weight: bold;
       @apply --a11y-collapse-heading;
     }

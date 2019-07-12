@@ -72,7 +72,7 @@ class EcoJsonSchemaArray extends mixinBehaviors(
             border-radius: 0 0 var(--eco-json-form-border-radius);
             border: 1px solid var(--eco-json-form-bg);
             margin: 0;
-            padding: 0 16px;
+            padding: 0 8px 0 16px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -100,12 +100,16 @@ class EcoJsonSchemaArray extends mixinBehaviors(
             --a11y-collapse-border: 1px solid var(--eco-json-form-faded-color);
           }
           :host a11y-collapse {
+            --a11y-collapse-padding-right: 8px;
             border: 1px solid var(--eco-json-form-bg);
             --a11y-collapse-heading: {
               color: var(--eco-json-form-faded-color);
               background-color: var(--eco-json-form-bg);
               font-weight: normal;
               margin: 0;
+            }
+            --a11y-collapse-icon: {
+              padding: 8px;
             }
           }
           :host a11y-collapse:focus,
