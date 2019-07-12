@@ -57,14 +57,15 @@ class HaxAppPicker extends PolymerElement {
         }
         #ironlist {
           width: 100%;
-          min-height: 280px;
+          min-height: 400px;
+          padding-bottom: 50px;
         }
         .repeat-item {
           display: inline-flex;
         }
         #dialog {
-          min-width: 300px;
-          min-height: 280px;
+          min-width: 400px;
+          min-height: 400px;
           max-height: 60vh;
           max-width: 50vw;
           overflow: hidden;
@@ -80,6 +81,7 @@ class HaxAppPicker extends PolymerElement {
           margin: 0px;
           overflow-x: hidden;
           overflow-y: auto;
+          min-height: 400px;
         }
         #title,
         .element-button > div {
@@ -96,8 +98,8 @@ class HaxAppPicker extends PolymerElement {
           @apply --hax-app-picker-dialog-title;
         }
         .scroll-wrap {
-          margin-bottom: -64px;
-          min-height: 180px;
+          margin-bottom: 64px;
+          min-height: 200px;
         }
         .element-button {
           display: inline-block;
