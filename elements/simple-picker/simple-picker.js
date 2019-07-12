@@ -36,6 +36,7 @@ class SimplePicker extends PolymerElement {
         :host([block-label]) {
           display: block;
           margin: 0 0 15px;
+          max-height: unset;
         }
 
         :host([disabled]) {
@@ -60,9 +61,9 @@ class SimplePicker extends PolymerElement {
         :host([block-label]) label:not([hidden]) {
           display: block;
           padding-right: 0px;
-          max-height: unset;
           color: var(--simple-picker-float-label-color, #888);
           transition: all 0.5s;
+          max-height: unset;
         }
 
         :host([block-label]:focus) label,
