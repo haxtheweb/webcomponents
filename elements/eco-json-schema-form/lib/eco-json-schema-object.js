@@ -369,6 +369,7 @@ class EcoJsonSchemaObject extends mixinBehaviors(
           }
           #form ::slotted(code-editor) {
             margin: 8px 0;
+            padding: 0;
             --code-editor-float-label-color: var(--eco-json-form-faded-color);
             --code-editor-float-label-active-color: var(
               --eco-json-form-active-color
