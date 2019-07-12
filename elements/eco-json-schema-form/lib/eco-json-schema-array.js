@@ -9,11 +9,7 @@ import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
 import "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js";
-import "./eco-json-schema-boolean.js";
-import "./eco-json-schema-enum.js";
-import "./eco-json-schema-input.js";
 import "./eco-json-schema-object.js";
-import "./eco-json-schema-file.js";
 /**
 `eco-json-schema-array` takes in a JSON schema of type array and builds a form,
 exposing a `value` property that represents an array described by the schema.

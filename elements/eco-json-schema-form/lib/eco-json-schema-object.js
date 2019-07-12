@@ -323,6 +323,8 @@ class EcoJsonSchemaObject extends mixinBehaviors(
             font-family: var(--eco-json-form-font-family);
             background-color: var(--eco-json-form-bg);
             color: var(--eco-json-form-color);
+            --paper-tooltip-background: var(--eco-json-form-active-color);
+            --paper-tooltip-text-color: var(--eco-json-form-bg);
             @apply --eco-json-schema-object-form;
             @apply --layout-vertical;
             @apply --layout-wrap;
