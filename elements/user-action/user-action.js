@@ -32,7 +32,7 @@ class UserAction extends HTMLElement {
         title: "User action",
         description:
           "track user actions and allow them to talk to xAPI stores easily",
-        icon: "icons:android",
+        icon: "icons:touch-app",
         color: "green",
         groups: ["Action"],
         handles: [
@@ -86,7 +86,7 @@ class UserAction extends HTMLElement {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       track: {
         name: "track",
         type: "String",
@@ -103,6 +103,10 @@ class UserAction extends HTMLElement {
         value: 0.5
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
 
   /**

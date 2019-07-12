@@ -5,7 +5,7 @@
   "gizmo": {
     "title": "User action",
     "description": "track user actions and allow them to talk to xAPI stores easily",
-    "icon": "icons:android",
+    "icon": "icons:touch-app",
     "color": "green",
     "groups": ["Action"],
     "handles": [
