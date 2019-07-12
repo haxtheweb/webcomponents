@@ -3,7 +3,6 @@ import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-image/iron-image.js";
-import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 /*
  `lrnapp-cis-course-card`
@@ -37,11 +36,6 @@ class LrnappCisCourseCard extends PolymerElement {
           vertical-align: middle;
           vertical-align: -webkit-baseline-middle;
           width: 80%;
-        }
-        #avatar {
-          display: inline-block;
-          vertical-align: text-top;
-          transform: scale(0.8);
         }
         .card-control-height {
           height: 240px;
@@ -100,11 +94,6 @@ class LrnappCisCourseCard extends PolymerElement {
         .course-preview {
           height: 160px;
         }
-        lrndesign-avatar {
-          margin: -16px 8px 0 0;
-          position: absolute;
-          right: 0;
-        }
         .card-content {
           padding: 0;
           margin: 0;
@@ -131,12 +120,6 @@ class LrnappCisCourseCard extends PolymerElement {
               hidden\$="[[!image]]"
             ></iron-image>
           </div>
-          <lrndesign-avatar
-            label="[[name]]"
-            jdenticon=""
-            color="[[color]] darken-4"
-          >
-          </lrndesign-avatar>
           <div class="course-info">
             <div class="divider"></div>
             <div class="name">[[name]]</div>
