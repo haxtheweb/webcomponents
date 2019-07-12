@@ -149,7 +149,7 @@ class EcoJsonSchemaArray extends mixinBehaviors(
             as="item"
             restamp
           >
-            <a11y-collapse id$="item-[[index]]">
+            <a11y-collapse accordion id$="item-[[index]]">
               <p slot="heading">
                 {{_getHeading(item.value.*,item.label,index)}}
               </p>
@@ -160,6 +160,7 @@ class EcoJsonSchemaArray extends mixinBehaviors(
                     controls$="item-[[index]]"
                     item="[[index]]"
                     autofocus$="[[autofocus]]"
+                    on-value-changed="_valueChanged"
                     hide-line-numbers$="[[hideLineNumbers]]"
                     schema="[[item]]"
                     value="{{item.value}}"
@@ -226,6 +227,11 @@ class EcoJsonSchemaArray extends mixinBehaviors(
         notify: true,
         observer: "_schemaChanged"
       },
+      value: {
+        type: Array,
+        notify: true,
+        value: []
+      },
       /**
        * Fields to conver to JSON Schema.
        */
@@ -241,18 +247,25 @@ class EcoJsonSchemaArray extends mixinBehaviors(
    * @param {event} e the add item button tap event
    */
   _onAddItem(e) {
-    this.push("schema.value", {});
-    this._setValues();
+    let schema = JSON.parse(JSON.stringify(this.schema.items));
+    schema.value = {};
+    this.push("__validatedSchema", schema);
   }
   /**
    * handles removing an array item
    * @param {event} e the remove item button tap event
    */
   _onRemoveItem(e) {
+    this._valueChanged(e);
     let id = e.target.controls.split("-");
-    this.splice("schema.value", id[1], 1);
-    this._setValues();
+    this.splice("__validatedSchema", id[1], 1);
   }
+  /**
+   * labels the collapse heading based on a given property
+   * @param {object} item the array item
+   * @param {string} prop the property that will populate the collapse heading
+   * @param {number} index the  index of the item
+   */
   _getHeading(item, prop, index) {
     return item &&
       item.base &&
@@ -262,6 +275,27 @@ class EcoJsonSchemaArray extends mixinBehaviors(
       item.base[prop].trim("") !== ""
       ? item.base[prop].trim("")
       : `Item ${index + 1}`;
+  }
+  /**
+   * Handles data changes
+   * @param {event} e the change event
+   */
+  _valueChanged(e) {
+    let root = this,
+      val = this.__validatedSchema.map(item => {
+        return item.value;
+      });
+    console.log(this.__validatedSchema);
+    this.notifyPath("value.*");
+    this.set("value", val);
+    this.dispatchEvent(
+      new CustomEvent("value-changed", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: root
+      })
+    );
   }
 
   /**
@@ -276,7 +310,7 @@ class EcoJsonSchemaArray extends mixinBehaviors(
       this._setValues();
     }
     this.dispatchEvent(
-      new CustomEvent("array-schema-changed", {
+      new CustomEvent("schema-changed", {
         bubbles: true,
         cancelable: true,
         composed: true,
@@ -297,7 +331,7 @@ class EcoJsonSchemaArray extends mixinBehaviors(
           schema[i].properties[prop].value = item[prop];
       }
     }
-    this.__validatedSchema = [];
+    this.notifyPath("__validatedSchema.*");
     this.__validatedSchema = schema;
   }
 }

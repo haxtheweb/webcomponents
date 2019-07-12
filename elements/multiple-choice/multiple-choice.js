@@ -423,6 +423,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
             title: "Answer set",
             description: "Answers in a multiple choice",
             inputMethod: "array",
+            itemLabel: "label",
             properties: [
               {
                 property: "correct",

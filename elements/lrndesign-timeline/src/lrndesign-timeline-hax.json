@@ -52,6 +52,7 @@
         "title": "Timeline Events",
         "description": "The events in the timeline",
         "inputMethod": "array",
+        "itemLabel": "heading",
         "properties": [
           {
             "property": "heading",

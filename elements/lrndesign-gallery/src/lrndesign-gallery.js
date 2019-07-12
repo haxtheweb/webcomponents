@@ -167,6 +167,7 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
             title: "Gallery Images",
             description: "The images for the gallery.",
             inputMethod: "array",
+            itemLabel: "title",
             properties: [
               {
                 property: "title",

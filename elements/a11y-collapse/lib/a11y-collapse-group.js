@@ -106,7 +106,7 @@ class A11yCollapseGroup extends PolymerElement {
    */
   _detachItem(item) {
     for (let i = 0; i < this.__items.length; i++) {
-      if (this.__items[i] === e.detail) this.splice("_items", i, 1);
+      if (this.__items[i] === item) this.splice("_items", i, 1);
     }
   }
 
