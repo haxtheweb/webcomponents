@@ -285,7 +285,6 @@ class EcoJsonSchemaArray extends mixinBehaviors(
       val = this.__validatedSchema.map(item => {
         return item.value;
       });
-    console.log(this.__validatedSchema);
     this.notifyPath("value.*");
     this.set("value", val);
     this.dispatchEvent(
