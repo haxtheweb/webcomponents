@@ -5,6 +5,8 @@ import "@polymer/polymer/lib/elements/dom-if.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/app-route/app-location.js";
 import "@polymer/app-route/app-route.js";
+import("@polymer/app-layout/app-header/app-header.js");
+import("@polymer/app-layout/app-toolbar/app-toolbar.js");
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-toggle-button/paper-toggle-button.js";
 import "@polymer/paper-item/paper-item.js";
@@ -24,10 +26,11 @@ import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "@lrnwebcomponents/lrndesign-chart/lib/lrndesign-bar.js";
 import "@lrnwebcomponents/lrndesign-chart/lib/lrndesign-line.js";
 import "@lrnwebcomponents/lrndesign-chart/lib/lrndesign-pie.js";
-import "@lrnwebcomponents/dropdown-select/dropdown-select.js";
+import "@lrnwebcomponents/simple-picker/simple-picker.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
-import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
+import "@polymer/paper-dialog/paper-dialog.js";
+import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/elmsln-apps/lib/lrnapp-studio-submission/lrnapp-studio-submission.js";
 class LrnappStudioInstructor extends PolymerElement {
   static get template() {
@@ -38,13 +41,17 @@ class LrnappStudioInstructor extends PolymerElement {
         align-content: center;
         padding: .8em;
       }
+      paper-dialog {
+        width: 70vw;
+        min-height:50vh;
+      }
       vaadin-grid-table-body > vaadin-grid-cell-content {
         height: unset !important;
       }
-      lrnsys-dialog-toolbar {
-        top: 0;
-        position: sticky !important;
-        z-index: 1;
+      app-toolbar {
+        background-color: #4285f4;
+        color: #fff;
+        margin: 20px 0;
       }
       #loading {
         width: 100%;
@@ -147,10 +154,6 @@ class LrnappStudioInstructor extends PolymerElement {
         display: inline-block;
         margin-left: .2em;
       }
-
-      .avatar-button {
-
-      }
       .assignment-button {
         height: 1em;
       }
@@ -196,6 +199,9 @@ class LrnappStudioInstructor extends PolymerElement {
         display: inline-block;
         text-align: right;
       }
+      #selectedchart {
+        padding-left: 8px;
+      }
     </style>
     <app-location route="{{route}}"></app-location>
     <app-route
@@ -230,23 +236,22 @@ class LrnappStudioInstructor extends PolymerElement {
     <paper-toggle-button id="datatype" checked="{{dataType}}" disabled>
       [[dataTypeText]]
     </paper-toggle-button>
-    <lrnsys-dialog id="statsdialog" disabled>
-      <span slot="button"><iron-icon icon="editor:show-chart"></iron-icon> Statistics (beta)</span>
-      <span slot="toolbar-primary">
-        [[stats.header]]
-      </span>
-    <span slot="content">
-        <div style="padding: 2em 4em;">
-          <span class="stats-text">[[stats.overview]]</span>
-          <dropdown-select id="selectedchart" label="Graph style">
-            <paper-item value="byassignment-submissions">Submissions by Assignment</paper-item>
-            <paper-item value="byassignment-comments">Comments by Assignment</paper-item>
-            <paper-item value="byassignment-commenters">Commenters by Assignment</paper-item>
-          </dropdown-select>
-          <lrndesign-bar chart-title="[[activeChart.title]]" chart-desc="[[activeChart.description]]" data="[[activeChart.data]]"></lrndesign-bar>
-        </div>
-      </span>
-    </lrnsys-dialog>
+    <paper-button id="statsdialogbutton" disabled><iron-icon icon="editor:show-chart"></iron-icon> Statistics (beta)</span></paper-button>
+    <paper-dialog id="statsdialog">
+      <app-header>
+        <app-toolbar>
+          <div main-title>[[stats.header]]</div>
+          <label for="selectedchart">Graph style</label>
+          <simple-picker id="selectedchart" options="[[simplePickerOptions]]"></simple-picker>
+          <paper-button dialog-dismiss><iron-icon icon="close"></iron-icon> Close</paper-button>
+        </app-toolbar>
+      </app-header>
+      <paper-dialog-scrollable>
+          <div class="stats-text">[[stats.overview]]</div>
+        <lrndesign-bar chart-title="[[activeChart.title]]" chart-desc="[[activeChart.description]]" data="[[activeChart.data]]"></lrndesign-bar>
+      </paper-dialog-scrollable>
+      </div>
+    </paper-dialog>
     <vaadin-grid hidden$="[[!students]]" id="material" aria-label="Student project list" items="[[_toArray(students)]]">
       <vaadin-grid-column resizable>
         <template class="header">
@@ -299,19 +304,22 @@ class LrnappStudioInstructor extends PolymerElement {
         </vaadin-grid-column>
       </template>
     </vaadin-grid>
-    <lrnsys-dialog id="dialog" style="overflow: visible;">
-      <span slot="toolbar-primary">
-        <span style="width:15em;">
-          <paper-icon-button on-click="_changeActiveItem" id="prevstudent" icon="arrow-upward" title="previous student"></paper-icon-button>
-          <paper-icon-button on-click="_changeActiveItem" id="nextstudent" icon="arrow-downward" title="next student"></paper-icon-button>
-          <lrndesign-avatar class="ferpa-protect" label="[[activeData.student.name]]" src="[[activeData.student.avatar]]" style="display:inline-block;vertical-align:middle;"></lrndesign-avatar>
-          <span class="avatar-label ferpa-protect" style="margin-left:1em;">[[activeData.student.sis.sortable_name]]</span>
-        </span>
-        <paper-icon-button on-click="_changeActiveItem" id="prevassignment" icon="arrow-back" title="previous assignment" style="margin-left:1em;"></paper-icon-button>
-        <paper-icon-button on-click="_changeActiveItem" id="nextassignment" icon="arrow-forward" title="next assignment"></paper-icon-button>
-        <span style="font-weight:bold;">Assignment: [[activeData.assignment.title]]</span>
-      </span>
-      <span slot="content">
+    <paper-dialog id="dialog" style="overflow: visible;">
+      <app-header>
+        <app-toolbar>
+          <span style="width:15em;">
+            <paper-icon-button on-click="_changeActiveItem" id="prevstudent" icon="arrow-upward" title="previous student"></paper-icon-button>
+            <paper-icon-button on-click="_changeActiveItem" id="nextstudent" icon="arrow-downward" title="next student"></paper-icon-button>
+            <lrndesign-avatar class="ferpa-protect" label="[[activeData.student.name]]" src="[[activeData.student.avatar]]" style="display:inline-block;vertical-align:middle;"></lrndesign-avatar>
+            <span class="avatar-label ferpa-protect" style="margin-left:1em;">[[activeData.student.sis.sortable_name]]</span>
+          </span>
+          <paper-icon-button on-click="_changeActiveItem" id="prevassignment" icon="arrow-back" title="previous assignment" style="margin-left:1em;"></paper-icon-button>
+          <paper-icon-button on-click="_changeActiveItem" id="nextassignment" icon="arrow-forward" title="next assignment"></paper-icon-button>
+          <span style="font-weight:bold;" main-title>Assignment: [[activeData.assignment.title]]</span>
+          <paper-button dialog-dismiss><iron-icon icon="close"></iron-icon> Close</paper-button>
+        </app-toolbar>
+      </app-header>
+      <paper-dialog-scrollable>
         <template is="dom-if" if="[[activeData.submission]]">
           <lrnapp-studio-submission-page base-path="[[basePath]]" route="{{tail}}" id="[[data.submission]]" end-point="[[basePath]]lrnapp-studio-submission" csrf-token="[[csrfToken]]" data="[[data]]" hide-menu-bar></lrnapp-studio-submission-page>
         </template>
@@ -321,8 +329,8 @@ class LrnappStudioInstructor extends PolymerElement {
             <p>This student has not submitted anything for this assignment at this time.</p>
           </div>
         </template>
-      </span>
-    </lrnsys-dialog>`;
+      </paper-dialog-scrollable>
+    </paper-dialog>`;
   }
   static get tag() {
     return "lrnapp-studio-instructor";
@@ -355,6 +363,24 @@ class LrnappStudioInstructor extends PolymerElement {
       },
       sourceStudentPath: {
         type: String
+      },
+      simplePickerOptions: {
+        type: Array,
+        value: [
+          [
+            {
+              alt: "Submissions by Assignment",
+              value: "byassignment-submissions"
+            }
+          ],
+          [{ alt: "Comments by Assignment", value: "byassignment-comments" }],
+          [
+            {
+              alt: "Commenters by Assignment",
+              value: "byassignment-commenters"
+            }
+          ]
+        ]
       },
       /**
        * Type of data to display, either submission centric or comment centric.
@@ -626,13 +652,16 @@ class LrnappStudioInstructor extends PolymerElement {
   _projectChanged(e) {
     this.$.loading.hidden = false;
     // default a11y positioning back to the stats dialog
-    this.__rememberClick = this.$.statsdialog;
-    this.$.statsdialog.disabled = false;
+    this.__rememberClick = this.$.statsdialogbutton;
+    this.$.statsdialogbutton.disabled = false;
     this.$.datatype.disabled = false;
     this.activeProject = e.detail.value;
     // this should fire off the new request
     this.studentParams.projectId = this.activeProject;
     this.$.studentrequest.generateRequest();
+  }
+  _openStatsDialog(e) {
+    this.$.statsdialog.toggle();
   }
   /**
    * attached life cycle
@@ -640,9 +669,17 @@ class LrnappStudioInstructor extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     afterNextRender(this, function() {
+      this.$.statsdialogbutton.addEventListener(
+        "click",
+        this._openStatsDialog.bind(this)
+      );
       // listen for focus event to have fired
-      document.body.addEventListener(
-        "lrnsys-dialog-modal-closed",
+      this.$.statsdialog.addEventListener(
+        "opened-changed",
+        this._accessibleFocus.bind(this)
+      );
+      this.$.dialog.addEventListener(
+        "opened-changed",
         this._accessibleFocus.bind(this)
       );
       this.$.selectedproject.addEventListener(
@@ -659,9 +696,17 @@ class LrnappStudioInstructor extends PolymerElement {
    * detached life cycle
    */
   disconnectedCallback() {
+    this.$.statsdialogbutton.removeEventListener(
+      "click",
+      this._openStatsDialog.bind(this)
+    );
     // listen for focus event to have fired
-    document.body.removeEventListener(
-      "lrnsys-dialog-modal-closed",
+    this.$.statsdialog.removeEventListener(
+      "opened-changed",
+      this._accessibleFocus.bind(this)
+    );
+    this.$.dialog.removeEventListener(
+      "opened-changed",
       this._accessibleFocus.bind(this)
     );
     this.$.selectedproject.removeEventListener(
@@ -678,9 +723,11 @@ class LrnappStudioInstructor extends PolymerElement {
    * Set ourselves as having focus after the modal closes.
    */
   _accessibleFocus(e) {
-    document.body.classList.remove("scroll-disabled");
-    // focus on our dialog triggering button
-    this.__rememberClick.focus();
+    if (!e.detail) {
+      document.body.classList.remove("scroll-disabled");
+      // focus on our dialog triggering button
+      this.__rememberClick.focus();
+    }
   }
   /**
    * Handle response for the whole projects object.
@@ -959,7 +1006,7 @@ class LrnappStudioInstructor extends PolymerElement {
       this.endPoint + "/submissions/" + item[item.length - 1]
     );
     document.body.classList.add("scroll-disabled");
-    this.$.dialog.toggleDialog();
+    this.$.dialog.toggle();
   }
   /**
    * Set route for active submission via comment click
@@ -986,7 +1033,7 @@ class LrnappStudioInstructor extends PolymerElement {
       this.endPoint + "/submissions/" + item[item.length - 1]
     );
     document.body.classList.add("scroll-disabled");
-    this.$.dialog.toggleDialog();
+    this.$.dialog.toggle();
   }
   /**
    * Simple way to convert from object to array.
