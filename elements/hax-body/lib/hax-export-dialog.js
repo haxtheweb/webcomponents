@@ -108,7 +108,7 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(PolymerElement) {
               color="#0085ba"
               aria-roledescription="Loading"
             ></hexagon-loader>
-            <code-editor id="textarea" title="" theme="hc-black"></code-editor>
+            <code-editor id="textarea" title="" theme="vs"></code-editor>
           </div>
           <div id="buttons" class="buttons">
             <paper-button id="import" raised>Update body area</paper-button>

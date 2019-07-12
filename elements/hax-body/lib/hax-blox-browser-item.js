@@ -176,7 +176,7 @@ class HaxBloxBrowserItem extends PolymerElement {
         this.blox[i].content,
         this.blox[i].properties
       );
-      content += window.HaxStore.haxNodeToContent(node);
+      content += window.HaxStore.nodeToContent(node);
     }
     // generate a hax element
     let blox = {

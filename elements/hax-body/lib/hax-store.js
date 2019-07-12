@@ -6,7 +6,8 @@ import { setPassiveTouchGestures } from "@polymer/polymer/lib/utils/settings.js"
 import { getRange } from "./shadows-safari.js";
 import {
   encapScript,
-  wipeSlot
+  wipeSlot,
+  stripMSWord
 } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
@@ -266,6 +267,14 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
           value: [
             "p",
             "div",
+            "span",
+            "table",
+            "sup",
+            "sub",
+            "u",
+            "strike",
+            "tr",
+            "td",
             "ol",
             "ul",
             "li",
@@ -393,6 +402,11 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
           "h4",
           "h5",
           "h6",
+          "strike",
+          "u",
+          "b",
+          "sub",
+          "sup",
           "span",
           "i",
           "bold",
@@ -939,19 +953,61 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
       !window.HaxStore.instance.haxManager.opened
     ) {
       e.preventDefault();
-      let text = "";
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      let pasteContent = "";
       // intercept paste event
       if (e.clipboardData || e.originalEvent.clipboardData) {
-        text = (e.originalEvent || e).clipboardData.getData("text/plain");
+        pasteContent = (e.originalEvent || e).clipboardData.getData(
+          "text/html"
+        );
+        // trap for partial content / pure text based
+        if (pasteContent == "") {
+          pasteContent =
+            "<span>" +
+            (e.originalEvent || e).clipboardData.getData("text/plain") +
+            "</span>";
+        }
       } else if (window.clipboardData) {
-        text = window.clipboardData.getData("Text");
+        pasteContent = window.clipboardData.getData("Text");
       }
-      // find the correct selection object
-      let sel = window.HaxStore.getSelection();
-      var range;
-      if ((range = window.HaxStore.getRange())) {
-        range.deleteContents();
-        range.insertNode(document.createTextNode(text));
+      // edges that some things preserve empty white space needlessly
+      pasteContent = pasteContent.replace(/<span> <\/span>/g, " ");
+      pasteContent = pasteContent.replace(/<span><\/span>/g, "");
+      let haxElements = window.HaxStore.htmlToHaxElements(
+        stripMSWord(pasteContent)
+      );
+      // stupid but we need to reverse these
+      haxElements.reverse();
+      let newContent = "";
+      for (var i in haxElements) {
+        // special traps for word / other styles bleeding through
+        delete haxElements[i].properties.style;
+        delete haxElements[i].properties.start;
+        delete haxElements[i].properties.align;
+        // this is not the right function.
+        let node = window.HaxStore.haxElementToNode(
+          haxElements[i].tag,
+          haxElements[i].content.replace(/<span>&nbsp;<\/span>/g, " ").trim(),
+          haxElements[i].properties
+        );
+        newContent += window.HaxStore.nodeToContent(node);
+      }
+      try {
+        // get the range that's active and selection
+        let range = window.HaxStore.getRange();
+        let sel = window.HaxStore.getSelection();
+        // tee up a wrapper so we can walk and put every element in
+        let newNodes = document.createElement("div");
+        newNodes.innerHTML = newContent;
+        if (range && sel) {
+          range.deleteContents();
+          while (newNodes.firstChild) {
+            range.insertNode(newNodes.firstChild);
+          }
+        }
+      } catch (e) {
+        console.log(e);
       }
     }
   }
@@ -2076,8 +2132,9 @@ window.HaxStore.haxElementToNode = (tag, content, properties) => {
 };
 /**
  * Convert a node to the correct content object for saving.
+ * This DOES NOT acccept a HAXElement which is similar
  */
-window.HaxStore.haxNodeToContent = node => {
+window.HaxStore.nodeToContent = node => {
   if (
     window.HaxStore.instance.activeHaxBody.globalPreferences.haxDeveloperMode
   ) {
@@ -2280,7 +2337,7 @@ window.HaxStore.haxNodeToContent = node => {
             !window.HaxStore.HTMLPrimativeTest(slotnodes[j].tagName) &&
             slotnodes[j].tagName !== "TEMPLATE"
           ) {
-            content += window.HaxStore.haxNodeToContent(slotnodes[j]);
+            content += window.HaxStore.nodeToContent(slotnodes[j]);
           } else {
             slotnodes[j].setAttribute("data-editable", false);
             slotnodes[j].removeAttribute("data-hax-ray");
@@ -2356,8 +2413,7 @@ window.HaxStore.getHAXSlot = node => {
         // if we're a custom element, keep digging, otherwise a simple
         // self append is fine.
         if (slotnodes[j].tagName.indexOf("-") > 0) {
-          content +=
-            "  " + window.HaxStore.haxNodeToContent(slotnodes[j]) + "\n";
+          content += "  " + window.HaxStore.nodeToContent(slotnodes[j]) + "\n";
         } else {
           content += "  " + slotnodes[j].outerHTML + "\n";
         }

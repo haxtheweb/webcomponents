@@ -370,42 +370,6 @@ class HaxBody extends PolymerElement {
           console.log(e);
         }
       });
-      this.shadowRoot.querySelector("slot").addEventListener("paste", e => {
-        // only perform this on a text element that is active
-        if (
-          window.HaxStore.instance.isTextElement(
-            window.HaxStore.instance.activeNode
-          ) &&
-          !window.HaxStore.instance.haxManager.opened
-        ) {
-          e.preventDefault();
-          e.stopPropagation();
-          e.stopImmediatePropagation();
-          let text = "";
-          // intercept paste event
-          if (e.clipboardData || e.originalEvent.clipboardData) {
-            text = (e.originalEvent || e).clipboardData.getData("text/plain");
-          } else if (window.clipboardData) {
-            text = window.clipboardData.getData("Text");
-          }
-          try {
-            let range = window.HaxStore.getRange();
-            let sel = window.HaxStore.getSelection();
-            let newNode = document.createTextNode(text);
-            let newRange = document.createRange();
-            if (range && sel) {
-              range.deleteContents();
-              range.insertNode(newNode);
-              newRange.setStart(newNode, text.length);
-              newRange.collapse(true);
-              sel.removeAllRanges();
-              sel.addRange(newRange);
-            }
-          } catch (e) {
-            console.log(e);
-          }
-        }
-      });
       document.body.addEventListener(
         "hax-store-property-updated",
         this._haxStorePropertyUpdated.bind(this)
@@ -926,7 +890,7 @@ class HaxBody extends PolymerElement {
         children[i].removeAttribute("data-editable");
         children[i].removeAttribute("data-hax-ray");
         children[i].contentEditable = false;
-        content += window.HaxStore.haxNodeToContent(children[i]);
+        content += window.HaxStore.nodeToContent(children[i]);
         if (children[i].tagName.toLowerCase() === "grid-plate") {
           this._applyContentEditable(this.editMode, children[i]);
         }

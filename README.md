@@ -12,7 +12,7 @@ ELMS:LN produced web components for any project
 ### Install
 
 ```bash
-$ git clone git@github.com/elmsln/lrnwebcomponents.git
+$ git clone https://github.com/elmsln/lrnwebcomponents.git
 $ cd lrnwebcomponents
 $ yarn install
 $ yarn start

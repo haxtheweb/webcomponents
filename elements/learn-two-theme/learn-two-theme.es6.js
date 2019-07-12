@@ -14,23 +14,19 @@
  */class LearnTwoTheme extends HAXCMSTheme(PolymerElement){// render function
 static get template(){return html`
 <style>:host {
-  --learn-two-theme-default-font-family: "Muli", "Helvetica", "Tahoma",
-    "Geneva", "Arial", sans-serif;
-  --learn-two-theme-default-background: #fafafa;
+  --__learn-two-theme-default-font-family: var(--learn-two-theme-default-font-family,"Muli, Helvetica, Tahoma, Geneva, Arial, sans-serif");
+  --__learn-two-theme-default-background: var(--learn-two-theme-default-background, #fafafa);
   display: block;
   font-family: var(
     --learn-two-theme-font-family,
-    var(--learn-two-theme-default-font-family)
+    var(--__learn-two-theme-default-font-family)
   );
   letter-spacing: var(--learn-two-theme-letter-spacing, -0.03rem);
   font-weight: var(--learn-two-theme-font-weight, 400);
-  background: var(
-    --learn-two-theme-background,
-    var(--learn-two-theme-default-background)
-  );
+  background: var( --learn-two-theme-background, var(--__learn-two-theme-default-background));
 }
 html,body {
-  background-color: var(--learn-two-theme-default-background);
+  background: var( --learn-two-theme-html-body-background, var(--__learn-two-theme-default-background));
 }
 h1,
 h2,
@@ -40,7 +36,7 @@ h5,
 h6 {
   font-family: var(
     --learn-two-theme-headers-font-family,
-    var(--learn-two-theme-default-font-family)
+    var(--__learn-two-theme-default-font-family)
   );
   font-weight: var(--learn-two-theme-headers-font-weight, 400);
   text-rendering: var(
@@ -74,7 +70,7 @@ h6 {
 
 site-active-title {
   --site-active-title-heading: {
-    font-family: var(--learn-two-theme-default-font-family);
+    font-family: var(--__learn-two-theme-default-font-family);
     font-size: 52px;
     letter-spacing: -3px;
     line-height: 78px;
@@ -94,7 +90,7 @@ site-title {
     text-decoration: none;
   }
   --site-title-heading: {
-    font-family: var(--learn-two-theme-default-font-family);
+    font-family: var(--__learn-two-theme-default-font-family);
     font-size: 28px;
     margin: 0;
     padding: 0;
