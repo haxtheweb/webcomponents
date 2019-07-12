@@ -1,13 +1,14 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { AppLocalizeBehavior } from "@polymer/app-localize-behavior/app-localize-behavior.js";
+import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
 import "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js";
-import { AppLocalizeBehavior } from "@polymer/app-localize-behavior/app-localize-behavior.js";
-import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 import "./eco-json-schema-boolean.js";
 import "./eco-json-schema-enum.js";
 import "./eco-json-schema-input.js";
@@ -148,15 +149,18 @@ class EcoJsonSchemaArray extends mixinBehaviors(
             as="item"
             restamp
           >
-            <a11y-collapse id="item-[[index]]">
-              <p slot="heading">{{item.value.name}}</p>
+            <a11y-collapse id$="item-[[index]]">
+              <p slot="heading">
+                {{_getHeading(item.value.*,item.label,index)}}
+              </p>
               <div slot="content">
                 <div>
                   <eco-json-schema-object
                     id="schemaobject"
+                    controls$="item-[[index]]"
+                    item="[[index]]"
                     autofocus$="[[autofocus]]"
                     hide-line-numbers$="[[hideLineNumbers]]"
-                    on-form-changed="_formChanged"
                     schema="[[item]]"
                     value="{{item.value}}"
                   >
@@ -200,21 +204,6 @@ class EcoJsonSchemaArray extends mixinBehaviors(
         type: "Boolean",
         value: false
       },
-      /**
-       * hide code-editor line numbers
-       */
-      hideLineNumbers: {
-        type: Boolean,
-        value: false
-      },
-      schema: {
-        type: Object,
-        notify: true,
-        observer: "_schemaChanged"
-      },
-      label: {
-        type: String
-      },
       globalOptions: {
         type: Object,
         value: {
@@ -222,41 +211,57 @@ class EcoJsonSchemaArray extends mixinBehaviors(
           tooltip: "configure item"
         }
       },
-      _schemaArrayItems: {
-        type: Array,
-        notify: true
+      /**
+       * hide code-editor line numbers
+       */
+      hideLineNumbers: {
+        type: Boolean,
+        value: false
+      },
+      label: {
+        type: String
+      },
+      schema: {
+        type: Object,
+        notify: true,
+        observer: "_schemaChanged"
       },
       /**
        * Fields to conver to JSON Schema.
        */
       __validatedSchema: {
         type: Array,
-        value: []
+        value: [],
+        notify: true
       }
     };
   }
+  /**
+   * handles adding an array item
+   * @param {event} e the add item button tap event
+   */
   _onAddItem(e) {
-    console.log("_onAddItem", this.schema);
     this.push("schema.value", {});
     this._setValues();
   }
+  /**
+   * handles removing an array item
+   * @param {event} e the remove item button tap event
+   */
   _onRemoveItem(e) {
     let id = e.target.controls.split("-");
     this.splice("schema.value", id[1], 1);
     this._setValues();
   }
-  /**
-   * when form changes, sets focus on the first field if this has auto-focus
-   */
-  _formChanged(e) {
-    this.dispatchEvent(
-      new CustomEvent("array-form-changed", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: e.detail
-      })
-    );
+  _getHeading(item, prop, index) {
+    return item &&
+      item.base &&
+      prop &&
+      item.base[prop] &&
+      typeof item.base[prop] === "string" &&
+      item.base[prop].trim("") !== ""
+      ? item.base[prop].trim("")
+      : `Item ${index + 1}`;
   }
 
   /**

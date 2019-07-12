@@ -362,9 +362,6 @@ class EcoJsonSchemaObject extends mixinBehaviors(
             );
             --simple-picker-background-color: var(--eco-json-form-bg);
             --simple-picker-border-color: var(--eco-json-form-faded-color);
-            --simple-picker-sample: {
-              padding: 2px 10px;
-            }
             --simple-picker-sample-focus: {
               transition: all 0.5s;
               border: 2px solid var(--eco-json-form-active-color);
@@ -457,7 +454,6 @@ class EcoJsonSchemaObject extends mixinBehaviors(
   }
   _buildSchemaProperties() {
     var ctx = this;
-
     this._schemaProperties = Object.keys(this.schema.properties || []).map(
       key => {
         var schema = ctx.schema.properties[key];
