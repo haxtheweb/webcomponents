@@ -33,17 +33,6 @@ class GameShowScoreboard extends PolymerElement {
         vaadin-grid-table-body > vaadin-grid-cell-content {
           height: unset !important;
         }
-        #loading {
-          width: 100%;
-          z-index: 1000;
-          opacity: 0.8;
-          text-align: center;
-          align-content: center;
-          justify-content: center;
-          height: 100vh;
-          position: absolute;
-          background-color: white;
-        }
         vaadin-grid#material {
           height: 75vh;
           font-family: Roboto, sans-serif;
@@ -182,7 +171,7 @@ class GameShowScoreboard extends PolymerElement {
       <vaadin-grid
         hidden$="[[!visibleData]]"
         id="material"
-        aria-label="Scoreboard"
+        aria-label="Student project list"
         items="[[_toArray(visibleData)]]"
         theme="row-dividers"
         column-reordering-allowed
@@ -191,7 +180,7 @@ class GameShowScoreboard extends PolymerElement {
         <vaadin-grid-column resizable>
           <template class="header">
             <vaadin-grid-sorter id="sorter" path="sis.sortable_name"
-              >Name</vaadin-grid-sorter
+              >Student</vaadin-grid-sorter
             >
           </template>
           <template>
@@ -203,13 +192,13 @@ class GameShowScoreboard extends PolymerElement {
           </template>
           <template class="footer">
             <vaadin-grid-filter
-              aria-label="Name"
+              aria-label="Student"
               path="sis.sortable_name"
               value="[[_filterName]]"
             >
               <paper-input
                 slot="filter"
-                label="Name"
+                label="Student"
                 value="{{_filterName::input}}"
                 focus-target
               ></paper-input>
@@ -219,7 +208,7 @@ class GameShowScoreboard extends PolymerElement {
         <vaadin-grid-column resizable>
           <template class="header">
             <vaadin-grid-sorter id="sorter" path="name"
-              >Username</vaadin-grid-sorter
+              >Name</vaadin-grid-sorter
             >
           </template>
           <template>
@@ -227,7 +216,7 @@ class GameShowScoreboard extends PolymerElement {
           </template>
           <template class="footer">
             <vaadin-grid-filter
-              aria-label="Username"
+              aria-label="Student"
               path="name"
               value="[[_filterUserName]]"
             >
@@ -429,15 +418,12 @@ class GameShowScoreboard extends PolymerElement {
         }
       }
 
-      this.$.loading.hidden = false; // reload the page which since route changed will load that page
-
       window.location.reload();
     }
   }
 
   connectedCallback() {
     super.connectedCallback();
-    // elmsln again
     if (document.getElementById("block-mooc-nav-block-mooc-nav-nav")) {
       document.getElementById("block-mooc-nav-block-mooc-nav-nav").remove();
     }
