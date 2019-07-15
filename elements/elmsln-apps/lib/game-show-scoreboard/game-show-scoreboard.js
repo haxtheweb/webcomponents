@@ -137,6 +137,12 @@ class GameShowScoreboard extends PolymerElement {
           line-height: 14px;
           font-size: 14px;
           color: black;
+          text-align: center;
+          border-bottom: 1px dashed black;
+        }
+        simple-datetime:hover,
+        .score:hover {
+          background-color: #dddddd;
         }
       </style>
       <app-location route="{{route}}"></app-location>
@@ -176,7 +182,7 @@ class GameShowScoreboard extends PolymerElement {
       <vaadin-grid
         hidden$="[[!visibleData]]"
         id="material"
-        aria-label="Student project list"
+        aria-label="Scoreboard"
         items="[[_toArray(visibleData)]]"
         theme="row-dividers"
         column-reordering-allowed
@@ -185,7 +191,7 @@ class GameShowScoreboard extends PolymerElement {
         <vaadin-grid-column resizable>
           <template class="header">
             <vaadin-grid-sorter id="sorter" path="sis.sortable_name"
-              >Student</vaadin-grid-sorter
+              >Name</vaadin-grid-sorter
             >
           </template>
           <template>
@@ -197,13 +203,13 @@ class GameShowScoreboard extends PolymerElement {
           </template>
           <template class="footer">
             <vaadin-grid-filter
-              aria-label="Student"
+              aria-label="Name"
               path="sis.sortable_name"
               value="[[_filterName]]"
             >
               <paper-input
                 slot="filter"
-                label="Student"
+                label="Name"
                 value="{{_filterName::input}}"
                 focus-target
               ></paper-input>
@@ -213,7 +219,7 @@ class GameShowScoreboard extends PolymerElement {
         <vaadin-grid-column resizable>
           <template class="header">
             <vaadin-grid-sorter id="sorter" path="name"
-              >Name</vaadin-grid-sorter
+              >Username</vaadin-grid-sorter
             >
           </template>
           <template>
@@ -221,7 +227,7 @@ class GameShowScoreboard extends PolymerElement {
           </template>
           <template class="footer">
             <vaadin-grid-filter
-              aria-label="Student"
+              aria-label="Username"
               path="name"
               value="[[_filterUserName]]"
             >
@@ -234,6 +240,22 @@ class GameShowScoreboard extends PolymerElement {
             </vaadin-grid-filter>
           </template>
         </vaadin-grid-column>
+        <vaadin-grid-sort-column
+          resizable
+          width="1em"
+          header="Game"
+          path="game"
+        >
+          [[item.game]]
+        </vaadin-grid-sort-column>
+        <vaadin-grid-sort-column
+          resizable
+          width="1em"
+          header="Section"
+          path="section"
+        >
+          [[item.section]]
+        </vaadin-grid-sort-column>
         <vaadin-grid-sort-column
           resizable
           width="1em"
@@ -277,15 +299,18 @@ class GameShowScoreboard extends PolymerElement {
       </vaadin-grid>
     `;
   }
+
   static get tag() {
     return "game-show-scoreboard";
   }
+
   static get observers() {
     return ["_routeChanged(route, endPoint)"];
   }
   /**
    * props
    */
+
   static get properties() {
     return {
       elmslnCourse: {
@@ -313,12 +338,14 @@ class GameShowScoreboard extends PolymerElement {
         type: String
       },
       game: {
-        type: String
+        type: String,
+        value: ""
       },
       dataRequestUrl: {
         type: String,
         computed: "_computeDataRequestUrl(dataPath, section, game)"
       },
+
       /**
        * routing variable for url
        */
@@ -352,33 +379,47 @@ class GameShowScoreboard extends PolymerElement {
       }
     };
   }
+
   _computeDataRequestUrl(dataPath, section, game) {
-    return `${dataPath}?section=${section}&game=${game}`;
+    return `${dataPath}&section=${section}&game=${game}`;
   }
+
   _optionsDataChanged(newValue) {
     if (newValue && newValue.status) {
       var sections = [];
+
       for (var i in newValue.data.sections) {
         sections.push([
-          { alt: newValue.data.sections[i], value: newValue.data.sections[i] }
+          {
+            alt: newValue.data.sections[i],
+            value: i
+          }
         ]);
       }
+
       var games = [];
+
       for (var i in newValue.data.games) {
         games.push([
-          { alt: newValue.data.games[i], value: newValue.data.games[i] }
+          {
+            alt: newValue.data.games[i],
+            value: i
+          }
         ]);
       }
+
       this.set("sectionOptions", sections);
       this.set("gameOptions", games);
     }
   }
+
   _activeDataChanged(newValue) {
     this.set("visibleData", newValue.data);
   }
   /**
    * Route changed
    */
+
   _routeChanged(route, endPoint) {
     if (typeof route.path === "string") {
       if (typeof endPoint === "string") {
@@ -393,14 +434,25 @@ class GameShowScoreboard extends PolymerElement {
       window.location.reload();
     }
   }
+
+  connectedCallback() {
+    super.connectedCallback();
+    // elmsln again
+    if (document.getElementById("block-mooc-nav-block-mooc-nav-nav")) {
+      document.getElementById("block-mooc-nav-block-mooc-nav-nav").remove();
+    }
+  }
+
   _toArray(obj) {
     if (obj == null) {
       return [];
     }
+
     return Object.keys(obj).map(function(key) {
       return obj[key];
     });
   }
 }
+
 window.customElements.define(GameShowScoreboard.tag, GameShowScoreboard);
 export { GameShowScoreboard };
