@@ -1,0 +1,13 @@
+{
+  "status": 200,
+  "data": {
+    "sections": ["Section 1", "Section 2", "Section 3"],
+    "games": [
+      "Jeopardy 1",
+      "Jeopardy 2",
+      "Jeopardy 3",
+      "Jeopardy 4",
+      "Jeopardy 5"
+    ]
+  }
+}
