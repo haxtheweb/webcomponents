@@ -1094,6 +1094,15 @@ class GameShowQuiz extends MutableData(PolymerElement) {
           }
         ],
         advanced: []
+      },
+      saveOptions: {
+        unsetAttributes: [
+          "attempts-data",
+          "points",
+          "game-board",
+          "question-title",
+          "remaining-attempts"
+        ]
       }
     };
   }
