@@ -366,7 +366,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
         <vaadin-split-layout slot="content" style="height:80vh;">
           <div id="col1" style="width:70%;min-width: 30%;">
             <iron-image
-              style="min-width:100px; width:100%; min-height:50vh; height:75vh; background-color: lightgray;"
+              style="min-width:100px; width:100%; min-height:50vh; height:75vh;"
               sizing="contain"
               preload=""
               src\$="[[activeQuestion.image]]"
