@@ -70,7 +70,7 @@ class A11yCollapseAccordionButton extends PolymerElement {
         >
         </iron-icon>
       </div>
-      <paper-tooltip for="heading" offset="24">[[tooltip]]</paper-tooltip>
+      <paper-tooltip for="heading">[[tooltip]]</paper-tooltip>
     `;
   }
   static get properties() {

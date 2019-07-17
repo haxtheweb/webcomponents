@@ -1,0 +1,35 @@
+
+<ul id="tabs">
+  <template is="dom-repeat" items="[[__items]]" as="tab">
+    <li>
+      <paper-button 
+        id$="[[tab.id]]-button" 
+        flag$="[[tab.flag]]"
+        disabled$="[[_isActiveTab(tab.id,activeTab)]]" 
+        controls$="[[tab.id]]" 
+        on-tap="_handleTab">
+        <iron-icon 
+          class="flag-icon" 
+          hidden$="[[!tab.flagIcon]]" 
+          icon$="[[tab.flagIcon]]">
+        </iron-icon>
+        <span class="label">[[tab.label]]</span> 
+        <span 
+          class="flag-type" 
+          hidden!="[[!tab.flag]]">
+          [[tab.flag]]
+        </span>
+        <iron-icon 
+          class="icon" 
+          hidden$="[[!tab.icon]]" 
+          icon$="[[tab.icon]]">
+        </iron-icon>
+      </paper-button>
+      <paper-tooltip for="[[tab.id]]-button">[[tab.label]]</paper-tooltip>
+    </li>
+  </template>
+</ul>
+<div id="content">
+  <slot></slot>
+</div>
+
