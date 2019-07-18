@@ -49,13 +49,13 @@ class EditableList extends PolymerElement {
 
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       /**
        * ability to edit the items in the list
        */
       editMode: {
         name: "editMode",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         notify: true,
         reflectToAttribute: true,
@@ -66,7 +66,7 @@ class EditableList extends PolymerElement {
        */
       items: {
         name: "items",
-        type: "Array",
+        type: Array,
         value: [],
         reflectToAttribute: false,
         observer: "_itemsChanged"
@@ -76,9 +76,13 @@ class EditableList extends PolymerElement {
        */
       activeElement: {
         name: "activeElement",
-        type: "Object"
+        type: Object
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
 
   /**
