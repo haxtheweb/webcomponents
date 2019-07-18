@@ -330,7 +330,6 @@ class HaxUploadField extends PolymerElement {
     super.ready();
     // hide the button if this environment can't support it anyway
     if (!navigator.mediaDevices) {
-      this.shadowRoot.querySelector("#selfie").style.display = "none";
       this.shadowRoot.querySelector("#camerahole").style.display = "none";
     }
     this.shadowRoot

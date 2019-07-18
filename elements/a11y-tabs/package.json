@@ -35,7 +35,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors":"latest","@polymer/polymer":"^3.0.5"
+    "@lrnwebcomponents/hax-body-behaviors":"latest",
+    "@polymer/polymer":"^3.0.5",
+    "@polymer/paper-button": "^3.0.1",
+    "@polymer/iron-icons": "^3.0.1",
+    "@polymer/paper-tooltip": "^3.0.1",
+    "@lrnwebcomponents/responsive-utility": "^2.1.0"
   },
   "devDependencies": {
     "web-animations-js":"2.3.1","@lrnwebcomponents/deduping-fix":"2.0.5","@polymer/iron-demo-helpers":"3.1.0","@polymer/iron-component-page":"github:PolymerElements/iron-component-page","@webcomponents/webcomponentsjs":"2.2.7","concurrently":"4.1.0","gulp-babel":"8.0.0","gulp-sourcemaps":"2.6.5","lodash":"4.17.11","polymer-cli":"1.9.7","polymer-build":"3.1.2","wct-browser-legacy":"1.0.2"
