@@ -123,13 +123,13 @@ class EditableOutline extends PolymerElement {
 
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       /**
        * A items list of JSON Outline Schema Items
        */
       items: {
         name: "items",
-        type: "Array",
+        type: Array,
         value: [],
         notify: true
       },
@@ -138,7 +138,7 @@ class EditableOutline extends PolymerElement {
        */
       editMode: {
         name: "editMode",
-        type: "Boolean",
+        type: Boolean,
         notify: true,
         observer: "_editModeChanged"
       },
@@ -147,9 +147,13 @@ class EditableOutline extends PolymerElement {
        */
       __outlineNode: {
         name: "__outlineNode",
-        type: "Object"
+        type: Object
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
   constructor() {
     super();

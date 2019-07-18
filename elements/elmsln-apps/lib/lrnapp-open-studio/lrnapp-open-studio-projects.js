@@ -186,7 +186,11 @@ class LrnappOpenStudioProjects extends PolymerElement {
     });
     // sort render submissions by how the assignment steps are listed in the active project
     renderSubmissions.sort(function(a, b) {
-      for (index = 0; index < activeProject.attributes.steps.length; index++) {
+      for (
+        var index = 0;
+        index < activeProject.attributes.steps.length;
+        index++
+      ) {
         if (
           activeProject.attributes.steps[index].id ==
           a.relationships.assignment.id
@@ -240,9 +244,12 @@ class LrnappOpenStudioProjects extends PolymerElement {
     var local = normalizedEvent.localTarget;
     // this will have the id of the current submission
     var active = local.getAttribute("data-assignment-id");
-    this.shadowRoot
-      .querySelector(".assignment-" + active)
-      .scrollIntoView({ block: "end", behavior: "smooth" });
+    if (this.shadowRoot.querySelector(".assignment-" + active)) {
+      this.shadowRoot.querySelector(".assignment-" + active).scrollIntoView({
+        block: "end",
+        behavior: "smooth"
+      });
+    }
   }
   /**
    * Handle response for the whole projects object.

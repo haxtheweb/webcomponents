@@ -7,6 +7,7 @@ import { MutableData } from "@polymer/polymer/lib/mixins/mutable-data.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import { wipeSlot } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@polymer/iron-ajax/iron-ajax.js";
@@ -348,7 +349,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
         >
       </game-show-quiz-modal>
       <game-show-quiz-modal id="directions" title="[[directionsTitle]]">
-        <div slot="content"><slot name="directions"></slot></div>
+        <div slot="content"><slot></slot></div>
         <paper-button
           aria-label="Close directions dialog and return to game"
           slot="buttons"
@@ -365,7 +366,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
         <vaadin-split-layout slot="content" style="height:80vh;">
           <div id="col1" style="width:70%;min-width: 30%;">
             <iron-image
-              style="min-width:100px; width:100%; min-height:50vh; height:75vh; background-color: lightgray;"
+              style="min-width:100px; width:100%; min-height:50vh; height:75vh;"
               sizing="contain"
               preload=""
               src\$="[[activeQuestion.image]]"
@@ -416,15 +417,44 @@ class GameShowQuiz extends MutableData(PolymerElement) {
         handle-as="json"
         last-response="{{gameBoardData}}"
       ></iron-ajax>
+      <iron-ajax
+        auto
+        id="gamedirections"
+        url="[[gameDirectionsData]]"
+        handle-as="text"
+        last-response="{{gameDirections}}"
+      ></iron-ajax>
+      <iron-ajax id="gamebackend" hand-as="json"></iron-ajax>
     `;
   }
-
+  /**
+   * Support loading directions from a URL / end point
+   */
+  _gameDirectionsChanged(newValue) {
+    if (newValue) {
+      wipeSlot(this);
+      let div = document.createElement("div");
+      div.style = "padding: 16px;";
+      div.innerHTML = newValue;
+      this.appendChild(div.cloneNode(true));
+    }
+  }
   static get properties() {
     return {
       /**
        * Title
        */
       title: {
+        type: String
+      },
+      gameDirectionsData: {
+        type: String
+      },
+      gameDirections: {
+        type: String,
+        observer: "_gameDirectionsChanged"
+      },
+      token: {
         type: String
       },
       attemptsData: {
@@ -533,6 +563,9 @@ class GameShowQuiz extends MutableData(PolymerElement) {
        * URL to load data for the game.
        */
       gameData: {
+        type: String
+      },
+      gameScoreBoardBackend: {
         type: String
       },
       /**
@@ -696,6 +729,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
       const evt = new CustomEvent("simple-toast-show", {
         bubbles: true,
         cancelable: true,
+        composed: true,
         detail: {
           text: "Correct!",
           duration: 4000
@@ -722,6 +756,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
       const evt = new CustomEvent("simple-toast-show", {
         bubbles: true,
         cancelable: true,
+        composed: true,
         detail: {
           text: ":( You got it wrong",
           duration: 4000
@@ -831,12 +866,32 @@ class GameShowQuiz extends MutableData(PolymerElement) {
         const evt = new CustomEvent("simple-toast-show", {
           bubbles: true,
           cancelable: true,
+          composed: true,
           detail: {
             text: "Game over!",
             duration: 5000
           }
         });
         this.dispatchEvent(evt);
+        // fire in case anyone else cares
+        this.dispatchEvent(
+          new CustomEvent("game-show-quiz-game-over", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: {
+              game: this.title,
+              score: this.points.total.earned
+            }
+          })
+        );
+        // ship to backend if we have one
+        if (this.gameScoreBoardBackend) {
+          this.$.gamebackend.url = `${this.gameScoreBoardBackend}/${
+            this.title
+          }/${this.points.total.earned}?token=${this.token}`;
+          this.$.gamebackend.generateRequest();
+        }
       }
     }
   }
@@ -1017,7 +1072,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
           {
             property: "title",
             title: "Title",
-            description: "The title of the element",
+            description: "The title of the game",
             inputMethod: "textfield",
             icon: "editor:title"
           }
@@ -1026,12 +1081,28 @@ class GameShowQuiz extends MutableData(PolymerElement) {
           {
             property: "title",
             title: "Title",
-            description: "The title of the element",
+            description: "The title of the game",
             inputMethod: "textfield",
             icon: "editor:title"
+          },
+          {
+            property: "gameData",
+            title: "Source of the game data data",
+            description: "The title of the game",
+            inputMethod: "textfield",
+            icon: "icons:link"
           }
         ],
         advanced: []
+      },
+      saveOptions: {
+        unsetAttributes: [
+          "attempts-data",
+          "points",
+          "game-board",
+          "question-title",
+          "remaining-attempts"
+        ]
       }
     };
   }
@@ -1040,6 +1111,20 @@ class GameShowQuiz extends MutableData(PolymerElement) {
    */
   connectedCallback() {
     super.connectedCallback();
+    // punch a basic hole for elms:ln to make life easier for IDs
+    if (
+      window.Drupal &&
+      window.Drupal.settings &&
+      window.Drupal.settings.distro
+    ) {
+      this.gameScoreBoardBackend =
+        window.Drupal.settings.basePath +
+        "apps/game-show-scoreboard/save-score";
+      this.token = btoa(window.Drupal.settings.elmslnCore.uname);
+      this.gameDirectionsData =
+        window.Drupal.settings.basePath +
+        "apps/game-show-scoreboard/load-directions";
+    }
     window.SimpleToast.requestAvailability();
     afterNextRender(this, function() {
       this.HAXWiring = new HAXWiring();

@@ -60,7 +60,11 @@ class HtmlBlock extends HTMLElement {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    return {};
+    let props = {};
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
 
   /**
