@@ -12,7 +12,6 @@ import "@polymer/iron-icons/iron-icons.js";
 import "@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";
 import "@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js";
 import "@lrnwebcomponents/code-editor/code-editor.js";
-import "app-datepicker/app-datepicker.js";
 import "@lrnwebcomponents/simple-picker/simple-picker.js";
 import "@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js";
 import "@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js";
@@ -75,41 +74,7 @@ class SimpleFields extends MutableData(PolymerElement) {
 
   // haxProperty definition
   static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Simple fields",
-        description:
-          "Uses eco-json-form and HAX wiring to display a series of fields",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Fields"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage"
-          }
-        ],
-        meta: {
-          author: "nikkimk",
-          owner: "The Pennsylvania State University"
-        }
-      },
-      settings: {
-        quick: [],
-        configure: [
-          {
-            property: "fields",
-            description: "",
-            inputMethod: "array",
-            required: false,
-            icon: "icons:android"
-          }
-        ],
-        advanced: []
-      }
-    };
+    return;
   }
   // properties available to the custom element for data binding
   static get properties() {
@@ -143,7 +108,6 @@ class SimpleFields extends MutableData(PolymerElement) {
         type: Object,
         notify: true,
         value: {},
-        reflectToAttribute: true,
         observer: "_valueChanged"
       },
       /**

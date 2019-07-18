@@ -1,11 +1,11 @@
 import "./simple-login-avatar.js";
 import "./simple-login-camera.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@polymer/paper-tooltip/paper-tooltip.js";
 
 class SimpleCameraSnap extends HTMLElement {
   constructor(delayRender = false) {
     super();
-    import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/iron-icons/image-icons.js");
     this.tag = SimpleCameraSnap.tag;
     this.template = document.createElement("template");
@@ -29,14 +29,34 @@ class SimpleCameraSnap extends HTMLElement {
   get html() {
     return `
     <style>
-      simple-login-avatar {
-        margin: 0;
-        width: 205px;
-        display: block;
+      :host {
+        /* style simple-login-camera according to simple-login-snap styles */
+        --simple-login-camera-background: var(--simple-camera-snap-color, #36bed4);
+        --simple-login-camera-error: var(--simple-camera-snap-error, red);
+        --simple-login-avatar-color: var(--simple-camera-snap-color, #36bed4);
+        --simple-login-camera-width: var(--simple-camera-snap-width, 200px);
+        --simple-login-camera-height: var(--simple-camera-snap-height, 200px);
+
+        /* style simple-login-avatar according to simple-login-snap styles */
+        --simple-login-avatar-background: var(--simple-camera-snap-background, white);
+        --simple-login-avatar-border-radius: var(--simple-camera-snap-border-radius,100%);
+        --simple-login-avatar-width: var(--simple-camera-snap-width, 200px);
+        --simple-login-avatar-height: var(--simple-camera-snap-height, 200px);
+
+        @apply --simple-camera-snap;
       }
       #selfie {
         position: absolute;
         margin: 0;
+        width: var(--simple-camera-snap-width, 200px);
+        height: var(--simple-camera-snap-height, 200px);
+        display: flex;
+        justify-content: center;
+      }
+      #snap {
+        color: var(--simple-camera-snap-color, #36bed4);
+        background-color: var(--simple-camera-snap-background, white);
+        @apply --simple-camera-snap-button;
       }
       .has-snap {
         z-index: 3;
@@ -44,14 +64,14 @@ class SimpleCameraSnap extends HTMLElement {
       #selfie img {
         z-index: 2;
         position: absolute;
-        margin: 0 0 0 -122.5px;
-        width: 355px;
-        height: 200px;
+        width: calc(var(--simple-camera-snap-height, 200px) * 16 / 9);
+        height: var(--simple-camera-snap-height, 200px);
       }
       .buttons {
         display: flex;
-        width: 200px;
+        width: var(--simple-camera-snap-width, 200px);
         justify-content: space-evenly;
+        @apply --simple-camera-snap-button-container;
       }
     </style>
     <simple-login-avatar>
@@ -59,8 +79,8 @@ class SimpleCameraSnap extends HTMLElement {
       <simple-login-camera id="camera" autoplay></simple-login-camera>
     </simple-login-avatar>
     <div class="buttons">
-      <paper-icon-button id="snap" icon="image:image"></paper-icon-button>
-      <paper-icon-button id="newsnap" icon="icons:clear"></paper-icon-button>
+      <paper-icon-button id="snap" icon="image:camera-alt"></paper-icon-button>
+      <paper-tooltip for="snap">Take Photo</paper-tooltip>
     </div>
     `;
   }
@@ -69,44 +89,41 @@ class SimpleCameraSnap extends HTMLElement {
     // this would be an environment like http that doesn't support camera functionality
     if (!navigator.mediaDevices) {
       this.shadowRoot.querySelector("#snap").style.display = "none";
-      this.shadowRoot.querySelector("#newsnap").style.display = "none";
     }
     this.shadowRoot
       .querySelector("#snap")
       .addEventListener("click", this.snapPhoto.bind(this));
-    this.shadowRoot
-      .querySelector("#newsnap")
-      .addEventListener("click", this.clearPhoto.bind(this));
   }
   disconnectedCallback() {
     this.shadowRoot
       .querySelector("#snap")
       .removeEventListener("click", this.snapPhoto.bind(this));
-    this.shadowRoot
-      .querySelector("#newsnap")
-      .removeEventListener("click", this.clearPhoto.bind(this));
   }
   async snapPhoto(e) {
     const camera = this.shadowRoot.querySelector("#camera");
-    let raw = await camera.takeASnap();
-    let img = await camera.takeASnap().then(camera.renderImage);
-    camera.removeAttribute("autoplay");
-    const selfie = this.shadowRoot.querySelector("#selfie");
-    selfie.innerHTML = "";
-    selfie.appendChild(img);
-    // throw up event for other things to find the image
-    this.dispatchEvent(
-      new CustomEvent("simple-camera-snap-image", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: {
-          img: img,
-          raw: raw
-        }
-      })
-    );
-    selfie.classList.add("has-snap");
+    if (camera.hasAttribute("autoplay")) {
+      let raw = await camera.takeASnap();
+      let img = await camera.takeASnap().then(camera.renderImage);
+      camera.removeAttribute("autoplay");
+      const selfie = this.shadowRoot.querySelector("#selfie");
+      selfie.innerHTML = "";
+      selfie.appendChild(img);
+      // throw up event for other things to find the image
+      this.dispatchEvent(
+        new CustomEvent("simple-camera-snap-image", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: {
+            img: img,
+            raw: raw
+          }
+        })
+      );
+      selfie.classList.add("has-snap");
+    } else {
+      this.clearPhoto(e);
+    }
   }
   clearPhoto(e) {
     const camera = this.shadowRoot.querySelector("#camera");

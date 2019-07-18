@@ -105,8 +105,10 @@ class A11yCollapseGroup extends PolymerElement {
    * Removes a detached item from the _items array.
    */
   _detachItem(item) {
-    for (let i = 0; i < this.__items.length; i++) {
-      if (this.__items[i] === e.detail) this.splice("_items", i, 1);
+    if (this.__items && item) {
+      for (let i = 0; i < this.__items.length; i++) {
+        if (this.__items[i] === item) this.splice("__items", i, 1);
+      }
     }
   }
 

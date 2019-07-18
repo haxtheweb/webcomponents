@@ -117,6 +117,7 @@ class TabList extends PolymerElement {
             title: "Tabs",
             description: "Listing of tabs",
             inputMethod: "array",
+            itemLabel: "label",
             properties: [
               {
                 property: "link",

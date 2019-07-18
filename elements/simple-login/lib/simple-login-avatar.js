@@ -44,71 +44,39 @@ class SimpleLoginAvatar extends HTMLElement {
     return `
     <style>
       :host {
-        --simple-login-avatar-color: #36bed4;
+        margin: 0;
+        display: block;
+        width: var(--simple-login-avatar-width, 200px);
+        height: var(--simple-login-avatar-height, 200px);
+        @apply --simple-login-avatar;
+      }
+      :host([hidden]){ 
+        display: none;
+      } 
+      #svg {
+        position: absolute;
+        width: var(--simple-login-avatar-width, 200px);
+        height: var(--simple-login-avatar-height, 200px);
+        fill: var(--simple-login-avatar-background, white);
       }
       .avatar {
-        margin: 0 auto;
-        text-decoration:none;
-        background: var(--simple-login-avatar-color);
-        color:var(--simple-login-avatar-color);;
         position:relative;
-        padding-left:55px;
-        width:150px;
-        height:200px;
-        border-radius:250px;
-        display:block;
-        line-height:240%;
-        overflow:hidden;
-      }
-      .avatar:before, .avatar:after {
-        position:absolute;
-        color:var(--simple-login-avatar-color);;
-        background:white;
-        box-shadow:0 0 10px 0px rgba(0,0,0,0.2);
-      }
-      .avatar:before {
-        content: "\\00a0";
-        border: 0px solid white;
-        border-radius: 75px;
-        top: 20px;
-        left: 50%;
-        height: 100px;
-        width: 100px;
-        line-height: 70%;
-        font-size: 44px;
-        font-weight: normal;
-        text-indent: -1px;
-        margin-left: -25%;
-        z-index: 2;
-      }
-      .avatar:after {
-        content: "\\00a0";
-        border-radius: 20px;
-        top: 115px;
-        left: 50%;
-        width: 100px;
-        height: 103px;
-        text-align: center;
-        font-size: 33px;
-        font-weight: bold;
-        line-height: 130%;
-        margin-left: -25%;
-      }
-      .avatar ::slotted(*) {
-        z-index: 2;
-        margin: 20px 0 0 -4px;
-        width: 100px;
-        height: 100px;
-      }
-      .avatar ::slotted(simple-login-camera) {
-        z-index: 2;
-        position: absolute;
-        margin: 0 0 0 -122.5px;
-        width: 355px;
-        height: 200px;
-      }
+        margin: 0 auto;
+        width: var(--simple-login-avatar-width, 200px);
+        height: var(--simple-login-avatar-height, 200px);
+        display: block;
+        overflow: hidden;
+        text-decoration: none;
+        line-height: 240%;
+        color: var(--simple-login-avatar-background, white);
+        background: var(--simple-login-avatar-color, #36bed4);
+        border-radius: var(--simple-login-avatar-border-radius, 100%);
+      } 
     </style>
-    <div class="avatar"><slot></slot></div>`;
+    <div class="avatar">
+      <svg id="svg" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block;"><g><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path></g></svg>
+      <slot></slot>
+    </div>`;
   }
 }
 window.customElements.define(SimpleLoginAvatar.tag, SimpleLoginAvatar);

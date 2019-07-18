@@ -23,7 +23,6 @@ class RichTextEditorPrompt extends PolymerElement {
     return html`
       <style include="rich-text-editor-button-styles">
         :host {
-          --simple-popover-padding: 0 10px;
           --paper-input-container-focus-color: var(
             --rich-text-editor-focus-color,
             #000
@@ -36,6 +35,8 @@ class RichTextEditorPrompt extends PolymerElement {
         :host #prompt {
           display: none;
           width: 300px;
+          max-width: 300px;
+          --simple-popover-padding: 0px;
         }
         :host #prompt[for]{
           display: block;
@@ -48,12 +49,19 @@ class RichTextEditorPrompt extends PolymerElement {
           justify-content: space-between;
           z-index: 2;
         }
+        :host #formfields {
+          width: calc(100% - 20px);
+          padding: 10px 10px 0;
+        }
         :host #prompt paper-input {
           padding: 0;
         }
         :host #confirm, 
         :host #cancel {
           min-width: unset;
+        }
+        :host #formfields {
+          overflow: visible;
         }
         :host #cancel.rtebutton:focus,
         :host #cancel.rtebutton:hover {
@@ -228,7 +236,7 @@ class RichTextEditorPrompt extends PolymerElement {
    */
   setTarget(button) {
     this.clearTarget();
-    this.set("fields", button.fields);
+    this.set("fields", button.__fields);
     this.set("value", button.value);
     this.__button = button;
     if (button.__selection) this.for = button.__selection.getAttribute("id");

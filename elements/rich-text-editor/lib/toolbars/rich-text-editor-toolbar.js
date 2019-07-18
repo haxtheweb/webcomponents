@@ -169,6 +169,7 @@ class RichTextEditorToolbar extends PolymerElement {
         type: Boolean,
         value: true
       },
+
       /**
        * Custom configuration of toolbar groups and buttons.
        * (See default value for example using default configuration.)
@@ -185,12 +186,14 @@ class RichTextEditorToolbar extends PolymerElement {
                 command: "undo",
                 icon: "undo",
                 label: "Undo",
+                shortcutKeys: "ctrl+z",
                 type: "rich-text-editor-button"
               },
               {
                 command: "redo",
                 icon: "redo",
                 label: "Redo",
+                shortcutKeys: "ctrl+shift+z",
                 type: "rich-text-editor-button"
               }
             ]
@@ -199,14 +202,15 @@ class RichTextEditorToolbar extends PolymerElement {
             label: "Basic Inline Operations",
             type: "button-group",
             buttons: [
-              /*{
+              {
                 label: "Format",
                 type: "rich-text-editor-heading-picker"
-              },*/
+              },
               {
                 command: "bold",
                 icon: "editor:format-bold",
                 label: "Bold",
+                shortcutKeys: "ctrl+b",
                 toggles: true,
                 type: "rich-text-editor-button"
               },
@@ -214,6 +218,7 @@ class RichTextEditorToolbar extends PolymerElement {
                 command: "italic",
                 icon: "editor:format-italic",
                 label: "Italics",
+                shortcutKeys: "ctrl+i",
                 toggles: true,
                 type: "rich-text-editor-button"
               },
@@ -232,6 +237,7 @@ class RichTextEditorToolbar extends PolymerElement {
               {
                 icon: "link",
                 label: "Link",
+                shortcutKeys: "ctrl+k",
                 type: "rich-text-editor-link"
               }
             ]
@@ -244,18 +250,21 @@ class RichTextEditorToolbar extends PolymerElement {
                 command: "cut",
                 icon: "content-cut",
                 label: "Cut",
+                shortcutKeys: "ctrl+x",
                 type: "rich-text-editor-button"
               },
               {
                 command: "copy",
                 icon: "content-copy",
                 label: "Copy",
+                shortcutKeys: "ctrl+c",
                 type: "rich-text-editor-button"
               },
               {
                 command: "paste",
                 icon: "content-paste",
                 label: "Paste",
+                shortcutKeys: "ctrl+v",
                 type: "rich-text-editor-button"
               }
             ]
@@ -313,20 +322,23 @@ class RichTextEditorToolbar extends PolymerElement {
                 commandVal: "blockquote",
                 label: "Blockquote",
                 icon: "editor:format-quote",
+                shortcutKeys: "ctrl+'",
                 type: "rich-text-editor-button"
               },
               {
-                label: "Increase Indent",
+                command: "indent",
                 icon: "editor:format-indent-increase",
                 event: "text-indent",
-                command: "indent",
+                label: "Increase Indent",
+                shortcutKeys: "ctrl+]",
                 type: "rich-text-editor-button"
               },
               {
-                label: "Decrease Indent",
-                icon: "editor:format-indent-decrease",
-                event: "text-outdent",
                 command: "outdent",
+                event: "text-outdent",
+                icon: "editor:format-indent-decrease",
+                label: "Decrease Indent",
+                shortcutKeys: "ctrl+[",
                 type: "rich-text-editor-button"
               }
             ]
@@ -417,6 +429,9 @@ class RichTextEditorToolbar extends PolymerElement {
         reflectToAttribute: true,
         observer: "_stickyChanged"
       },
+      /**
+       * Tracks the inline widgets that require selection data
+       */
       __inlineWidgets: {
         name: "__inlineWidgets",
         type: Array,
@@ -541,6 +556,7 @@ class RichTextEditorToolbar extends PolymerElement {
         root.controls = null;
       }
       root.buttons.forEach(button => {
+        button.target = editor;
         button.controls = root.controls;
       });
     }
@@ -550,7 +566,7 @@ class RichTextEditorToolbar extends PolymerElement {
    * Gets the updated selected range.
    * @returns {void}
    */
-  _rangeChange() {
+  _rangeChange(e) {
     let root = this;
     root.buttons.forEach(button => {
       button.range = null;
@@ -614,6 +630,7 @@ class RichTextEditorToolbar extends PolymerElement {
     button.addEventListener("deselect", e => {
       if (root.range && root.range.collapse) root.range.collapse(false);
     });
+
     if (button.inlineWidget) root.push("__inlineWidgets", button.tag);
     parent.appendChild(button);
     return button;

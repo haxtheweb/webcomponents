@@ -295,32 +295,94 @@ class EcoJsonSchemaObject extends mixinBehaviors(
     return html`
       <custom-style>
         <style is="custom-style" include="iron-flex iron-flex-alignment">
+          :host {
+            --eco-json-field-margin: 0 0 15px;
+            --eco-json-form-border-radius: 2px;
+            --eco-json-form-font-family: var(
+              --paper-font-caption_-_font-family,
+              unset
+            );
+            --eco-json-form-bg: var(--primary-background-color, #fff);
+            --eco-json-form-color: var(--primary-text-color, #222);
+            --eco-json-form-faded-color: #888;
+            --eco-json-form-active-color: var(--primary-color, #000);
+            --eco-json-form-faded-bg: #f0f0f0;
+            --eco-json-form-add-color: #008811;
+            --eco-json-form-add-focus: #007700;
+            --eco-json-form-remove-focus: #cc0000;
+            --eco-json-form-remove-color: #dd0000;
+            --paper-input-container: {
+              padding-top: 0;
+            }
+          }
           div.layout {
             height: auto;
           }
           #form {
-            color: var(--eco-json-form-color, unset);
             display: block;
+            font-family: var(--eco-json-form-font-family);
+            background-color: var(--eco-json-form-bg);
+            color: var(--eco-json-form-color);
+            --paper-tooltip-background: var(--eco-json-form-active-color);
+            --paper-tooltip-text-color: var(--eco-json-form-bg);
             @apply --eco-json-schema-object-form;
             @apply --layout-vertical;
             @apply --layout-wrap;
           }
-          #form ::slotted(paper-input),
-          #form ::slotted(div[role="tooltip"]) {
-            color: var(--eco-json-form-color, unset);
-            font-family: var(--paper-font-caption_-_font-family, unset);
+          #form ::slotted(paper-input) {
+            margin-bottom: 15px;
           }
-          #form ::slotted(div[role="tooltip"]) {
-            font-size: 80%;
+          #form ::slotted(*.has-tooltip-desc) {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            --paper-input-container: {
+              margin-bottom: 0;
+              padding-bottom: 0;
+            }
+          }
+          #form ::slotted(div.tooltip-desc) {
+            font-size: 12px;
+            margin: var(--eco-json-field-margin);
+            color: var(--eco-json-form-faded-color);
+          }
+          #form ::slotted(paper-input),
+          #form ::slotted(div.tooltip-desc) {
+            font-family: var(--eco-json-form-font-family);
+          }
+          #form ::slotted(div.desc-for-paper-textarea) {
+            margin-top: -18px;
+            margin-right: 35px;
+          }
+          #form ::slotted(simple-icon-picker),
+          #form ::slotted(simple-colors-picker),
+          #form ::slotted(simple-picker) {
+            --simple-picker-float-label-active-color: var(
+              --eco-json-form-active-color
+            );
+            --simple-picker-float-label-faded-color: var(
+              --eco-json-form-faded-color
+            );
+            --simple-picker-background-color: var(--eco-json-form-bg);
+            --simple-picker-border-color: var(--eco-json-form-faded-color);
+            --simple-picker-sample-focus: {
+              transition: all 0.5s;
+              border: 2px solid var(--eco-json-form-active-color);
+            }
           }
           #form ::slotted(code-editor) {
             margin: 8px 0;
+            padding: 0;
+            --code-editor-float-label-color: var(--eco-json-form-faded-color);
+            --code-editor-float-label-active-color: var(
+              --eco-json-form-active-color
+            );
+            --code-pen-button-color: var(--eco-json-form-faded-color);
             --code-editor-code: {
-              border: var(--eco-json-schema-code-border, 1px solid black);
+              border: 1px solid var(--eco-json-form-faded-color);
+              border-radius: 2px;
             }
-            --code-editor-label: {
-              color: var(--eco-json-form-color, unset);
-              font-family: var(--paper-font-caption_-_font-family, unset);
+            --code-editor-focus-code: {
+              border: 2px solid var(--eco-json-form-active-color);
             }
           }
         </style>
@@ -395,7 +457,6 @@ class EcoJsonSchemaObject extends mixinBehaviors(
   }
   _buildSchemaProperties() {
     var ctx = this;
-
     this._schemaProperties = Object.keys(this.schema.properties || []).map(
       key => {
         var schema = ctx.schema.properties[key];
@@ -414,7 +475,6 @@ class EcoJsonSchemaObject extends mixinBehaviors(
         if (!property.component.slot) {
           property.component.slot = "";
         }
-
         if (ctx._isSchemaEnum(schema)) {
           property.component.name =
             property.component.name || "eco-json-schema-enum";
@@ -453,6 +513,13 @@ class EcoJsonSchemaObject extends mixinBehaviors(
         } else if (ctx._isSchemaArray(schema.type)) {
           property.component.name =
             property.component.name || "eco-json-schema-array";
+          if (typeof schema.value === typeof undefined) {
+            schema.value = [];
+          }
+          property.value = schema.value;
+        } else if (ctx._isSchemaTabs(schema.type)) {
+          property.component.name =
+            property.component.name || "eco-json-schema-tabs";
           if (typeof schema.value === typeof undefined) {
             schema.value = [];
           }
@@ -545,12 +612,13 @@ class EcoJsonSchemaObject extends mixinBehaviors(
   _buildForm() {
     let autofocus = this.autofocus;
     this._schemaProperties.forEach(property => {
-      // special case, can't come up with a better way to do this but monoco is very special case
       if (property.component.name === "code-editor") {
+        // special case, can't come up with a better way to do this but monoco is very special case
         property.schema.component.properties.editorValue =
           property.schema.value;
         property.schema.component.properties.theme = this.codeTheme;
       }
+
       var el = this.create(property.component.name, {
         label: property.label,
         schema: property.schema,
@@ -563,6 +631,10 @@ class EcoJsonSchemaObject extends mixinBehaviors(
         el.style["width"] = "100%";
       }
       el.setAttribute("name", property.property);
+      if (property.schema.hidden && property.schema.hidden !== undefined) {
+        el.setAttribute("hidden", property.schema.hidden);
+      }
+
       //allows the first form fields to be focused on autopmatically
       if (autofocus) el.setAttribute("autofocus", autofocus);
       //turns of focus on subsequent form fields
@@ -591,7 +663,14 @@ class EcoJsonSchemaObject extends mixinBehaviors(
           var id = "tip-" + property.property,
             tip = document.createElement("div");
           el.setAttribute("aria-describedby", id);
+          el.setAttribute("class", "has-tooltip-desc");
           tip.setAttribute("id", id);
+          tip.setAttribute(
+            "class",
+            "tooltip-desc desc-for-" + property.component.name
+          );
+          if (property.schema.hidden === true)
+            tip.setAttribute("hidden", "hidden");
           tip.setAttribute("role", "tooltip");
           tip.innerHTML = property.description;
           dom(this).appendChild(tip);
@@ -702,6 +781,9 @@ class EcoJsonSchemaObject extends mixinBehaviors(
   }
   _isSchemaArray(type) {
     return type === "array";
+  }
+  _isSchemaTabs(type) {
+    return type === "tabs";
   }
   focus() {
     //console.log(this);

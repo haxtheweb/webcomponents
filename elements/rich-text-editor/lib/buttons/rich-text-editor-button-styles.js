@@ -26,17 +26,9 @@ const css = html`
       --simple-picker-color: var(--rich-text-editor-button-color);
       --simple-picker-background-color: var(--rich-text-editor-bg);
       --simple-picker-sample-border-color: var(--rich-text-editor-bg);
-      --simple-picker-border-color: var(--rich-text-editor-button-color);
+      --simple-picker-border-color: var(--rich-text-editor-border-color);
       --simple-picker-icon-transform: rotate(0deg);
       --simple-picker-expanded-icon-transform: rotate(0deg);
-      --rich-text-editor-picker-small: {
-      }
-      /*--simple-picker-option-null: {
-        display: none;
-      }
-      --simple-picker-sample-null-label: {
-        display: none;
-      }*/
     }
     :host([hidden]) {
       display: none;
@@ -77,7 +69,7 @@ const css = html`
       text-transform: unset;
       transition: all 0.5s;
       color: var(--rich-text-editor-button-color);
-      border-color: var(--rich-text-editor-button-border);
+      border-color: var(--rich-text-editor-border-color);
       @apply --rich-text-editor-button;
     }
     :host([disabled]) .rtebutton {

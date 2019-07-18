@@ -358,6 +358,7 @@ class LrndesignTimeline extends SimpleColors {
             title: "Timeline Events",
             description: "The events in the timeline",
             inputMethod: "array",
+            itemLabel: "heading",
             properties: [
               {
                 property: "heading",
@@ -401,7 +402,7 @@ class LrndesignTimeline extends SimpleColors {
        * the title of the timeline
        */
       title: {
-        type: "String",
+        type: String,
         value: null
       },
       /**
@@ -420,7 +421,7 @@ class LrndesignTimeline extends SimpleColors {
 ]```
    */
       events: {
-        type: "Array",
+        type: Array,
         value: [],
         notify: true
       },
@@ -428,7 +429,7 @@ class LrndesignTimeline extends SimpleColors {
        * the updated list of events
        */
       __events: {
-        type: "Array",
+        type: Array,
         computed: "_updateEvents(events)",
         notify: true
       },
@@ -436,7 +437,7 @@ class LrndesignTimeline extends SimpleColors {
        * the timline size, calculated by responsive utility
        */
       timelineSize: {
-        type: "String",
+        type: String,
         value: "xs",
         reflectToAttribute: true
       }

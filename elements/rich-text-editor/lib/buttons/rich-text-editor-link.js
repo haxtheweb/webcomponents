@@ -39,6 +39,7 @@ class RichTextEditorLink extends RichTextEditorPromptButton {
     this.value = {
       link: null
     };
+    this.shortcutKeys = "ctrl+k";
   }
 
   // properties available to the custom element for data binding

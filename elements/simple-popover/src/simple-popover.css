@@ -16,11 +16,11 @@
   z-index: 1;
 }
 :host([position="left"]) > div {
-  justify-content: start;
+  justify-content: flex-start;
   flex-direction: row;
 }
 :host([position="right"]) > div {
-  justify-content: start;
+  justify-content: flex-end;
   flex-direction: row-reverse;
 }
 :host([position="top"]) > div {
@@ -34,7 +34,7 @@
   width: unset;
 }
 :host #content {
-  margin: 0 auto;
+  margin: 0;
   padding: var(--simple-popover-padding);
   color: var(--simple-popover-color);
   background-color: var(--simple-popover-background-color);

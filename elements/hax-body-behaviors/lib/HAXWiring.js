@@ -3,6 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import "@lrnwebcomponents/hax-body/lib/hax-upload-field.js";
+import "@lrnwebcomponents/simple-picker/simple-picker.js";
+import "@lrnwebcomponents/code-editor/code-editor.js";
 /**
  * In order to use this, the user must supply a haxProperties object
  * which returns what settings are allowed as well as their format.
@@ -243,7 +246,7 @@ export class HAXWiring {
      * properties in order to be able to bubble up the properties for a tag.
      */
     this.setHaxProperties = (
-      props,
+      props = {},
       tag = "",
       context = document,
       isReady = false
@@ -594,6 +597,8 @@ export class HAXWiring {
                   name: "simple-picker",
                   valueProperty: "value",
                   properties: {
+                    allowNull: settings[value].allowNull,
+                    blockLabel: true,
                     required: settings[value].required,
                     options: options,
                     disabled: settings[value].disabled
@@ -609,7 +614,7 @@ export class HAXWiring {
                     disabled: settings[value].disabled
                   },
                   attributes: {
-                    "auto-validate": "auto-validate",
+                    //"auto-validate": "auto-validate",
                     "char-counter": "char-counter"
                   }
                 };
@@ -621,13 +626,23 @@ export class HAXWiring {
                   properties: {
                     editorValue: settings[value].value,
                     title: settings[value].title,
-                    theme: "hc-black",
+                    theme: "vs",
                     mode: "html",
                     className: "hax-code-editor"
                   }
                 };
                 break;
               case "array":
+                props[settings[value].property].items = {
+                  type: "object",
+                  properties: target._getHaxJSONSchemaProperty(
+                    settings[value].properties,
+                    target
+                  ),
+                  label: settings[value].itemLabel
+                };
+                break;
+              case "tabs":
                 props[settings[value].property].items = {
                   type: "object",
                   properties: target._getHaxJSONSchemaProperty(
@@ -667,6 +682,8 @@ export class HAXWiring {
                   name: "simple-colors-picker",
                   valueProperty: "value",
                   properties: {
+                    allowNull: settings[value].allowNull,
+                    blockLabel: true,
                     required: settings[value].required,
                     label: settings[value].title,
                     disabled: settings[value].disabled
@@ -678,6 +695,8 @@ export class HAXWiring {
                   name: "simple-icon-picker",
                   valueProperty: "value",
                   properties: {
+                    allowNull: settings[value].allowNull,
+                    blockLabel: true,
                     required: settings[value].required,
                     hideOptionLabels: true,
                     label: settings[value].title,
@@ -696,11 +715,11 @@ export class HAXWiring {
                 break;
               case "datepicker":
                 props[settings[value].property].component = {
-                  name: "app-datepicker",
+                  name: "paper-input",
                   valueProperty: "date",
                   properties: {
+                    type: "date",
                     required: settings[value].required,
-                    autoUpdateDate: true,
                     disabled: settings[value].disabled
                   }
                 };
@@ -716,6 +735,9 @@ export class HAXWiring {
                   }
                 };
                 break;
+            }
+            if (settings[value].hidden !== typeof undefined) {
+              props[settings[value].property].hidden = settings[value].hidden;
             }
             if (settings[value].description !== typeof undefined) {
               props[settings[value].property].description =
@@ -782,9 +804,11 @@ export class HAXWiring {
                   name: "simple-picker",
                   valueProperty: "value",
                   properties: {
+                    allowNull: settings[value].allowNull,
+                    blockLabel: true,
                     required: settings[value].required,
-                    disabled: settings[value].disabled,
-                    options: options
+                    options: options,
+                    disabled: settings[value].disabled
                   }
                 };
                 break;
@@ -797,7 +821,7 @@ export class HAXWiring {
                     disabled: settings[value].disabled
                   },
                   attributes: {
-                    "auto-validate": "auto-validate",
+                    //"auto-validate": "auto-validate",
                     "char-counter": "char-counter"
                   }
                 };
@@ -810,7 +834,7 @@ export class HAXWiring {
                     editorValue: props[settings[value].attribute].value,
                     title: settings[value].title,
                     readOnly: false,
-                    theme: "hc-black",
+                    theme: "vs",
                     mode: "html",
                     className: "hax-code-editor"
                   }
@@ -880,7 +904,7 @@ export class HAXWiring {
                 properties: {
                   editorValue: settings[value].value,
                   title: settings[value].title,
-                  theme: "hc-black",
+                  theme: "vs",
                   mode: "html",
                   className: "hax-code-editor"
                 }

@@ -292,6 +292,7 @@ class VideoPlayer extends MediaBehaviorsVideo(
             title: "Other sources",
             description: "List of other sources",
             inputMethod: "array",
+            itemLabel: "src",
             properties: [
               {
                 property: "src",
@@ -324,6 +325,7 @@ class VideoPlayer extends MediaBehaviorsVideo(
             title: "Track list",
             description: "Tracks of different languages of closed captions",
             inputMethod: "array",
+            itemLabel: "src",
             properties: [
               {
                 property: "kind",

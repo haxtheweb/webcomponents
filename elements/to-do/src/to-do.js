@@ -198,6 +198,7 @@ class ToDo extends SchemaBehaviors(PolymerElement) {
             title: "List of items",
             description: "List of items to display in our list.",
             inputMethod: "array",
+            itemLabel: "label",
             properties: [
               {
                 property: "label",

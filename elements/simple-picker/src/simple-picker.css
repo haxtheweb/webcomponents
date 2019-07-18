@@ -1,11 +1,17 @@
 :host {
   display: inline-flex;
   align-items: center;
-  position: relative;
   color: var(--simple-picker-color, black);
-  font-size: var(--paper-input-container-label_-_font-size, var(--paper-font-subhead_-_font-size, inherit));
-  max-height: calc(var(--simple-picker-option-size, 24px) + 4px);
+  font-family: var(--simple-picker-font-family, inherit);
+  font-size: var(--simple-picker-font-size, inherit);
+  max-height: calc(var(--simple-picker-option-size, 24px) + 18px);
   @apply --simple-picker;
+}
+
+:host([block-label]) {
+  display: block;
+  margin: 0 0 15px;
+  max-height: unset;
 }
 
 :host([disabled]) {
@@ -16,13 +22,27 @@
   display: none;
 }
 
-:host label {
+:host label:not([hidden]) {
   padding-right: 5px;
-  color: var(--paper-input-container-label_-_color, var(--paper-input-container-color, var(--secondary-text-color, #000)));
+  font-family: var(--simple-picker-font-family, inherit);
+  color: var(--simple-picker-label-color, var(--simple-picker-color, black));
+  max-height: calc(var(--simple-picker-option-size, 24px) + 4px);
   @apply --simple-picker-label;
 }
 
-:host, 
+:host([block-label]) label:not([hidden]) {
+  display: block;
+  padding-right: 0px;
+  color: var(--simple-picker-float-label-color, #888);
+  transition: all 0.5s;
+  max-height: unset;
+}
+
+:host([block-label]:focus) label,
+:host([block-label]:hover) label {
+  color: var(--simple-picker-float-label-active-color, var(--simple-picker-color, black));
+}
+
 :host #sample, 
 :host .rows {
   margin: 0;
@@ -30,20 +50,34 @@
 }
 
 :host #listbox {
+  cursor: pointer;
   display: flex;
+  position: relative;
   flex: 1 0 auto;
   max-height: calc(var(--simple-picker-option-size, 24px) + 4px);
 }
 
 :host #sample {
   display: flex;
+  flex: 1 0 auto;
   justify-content: space-between;
   align-items: center;
   padding: 2px;
   border-radius: 2px;
-  background-color: var(--simple-picker-background-color,#ddd);
-  border: 1px solid var(--simple-picker-sample-border-color, var(--simple-picker-border-color, var(--simple-picker-color)));
-} 
+  background-color: var(--simple-picker-background-color,#f0f0f0);
+  border: 1px solid var(--simple-picker-border-color, var(--simple-picker-color, black));
+  @apply --simple-picker-sample;
+}
+:host(:focus) #sample,
+:host #listbox:focus #sample,
+:host #sample:focus {
+  border: 2px solid var(--simple-picker-focus-border-color, var(--simple-picker-color, black));
+  @apply --simple-picker-sample-focus;
+}
+
+:host #listbox:focus {
+  outline: none;
+}
 
 :host #icon {
   transform: var(--simple-picker-icon-tranform, rotate(0deg));
@@ -73,8 +107,8 @@
   display: block;
   position: absolute;
   z-index: 1000;
-  outline: 1px solid var(--simple-picker-border-color, var(--simple-picker-color));
-  background-color: var(--simple-picker-background-color,#ddd);
+  outline: 1px solid var(--simple-picker-border-color, var(--simple-picker-color, black));;
+  background-color: var(--simple-picker-background-color,#f0f0f0);
   box-shadow: 0px 0px 1px #888;
   @apply --simple-picker-rows;
 }
@@ -89,12 +123,13 @@
 :host simple-picker-option {
   z-index: 1;
   flex: 1 1 auto;
+  justify-content: flex-start;
   max-height: unset;
   min-height: var(--simple-picker-option-size, 24px);
   min-width: var(--simple-picker-option-size, 24px);
   line-height: var(--simple-picker-option-size, 24px);
   color: var(--simple-picker-color);
-  background-color: var(--simple-picker-option-background-color, white);
+  background-color: var(--simple-picker-option-background-color, #ffffff);
   outline: var(--simple-picker-option-outline, none);
   transition: max-height 2s;
   @apply --simple-picker-option;
@@ -106,10 +141,6 @@
   --simple-picker-option-label: {
     @apply --simple-picker-sample-null-label;
   };
-}
-
-:host #sample simple-picker-option {
-  @apply --simple-picker-sample-option;
 }
 
 :host simple-picker-option[selected] {
@@ -130,6 +161,11 @@
 :host #sample simple-picker-option {
   color: var(--simple-picker-sample-color,  var(--simple-picker-color));
   background-color: var(--simple-picker-sample-background-color, transparent);
+  --simple-picker-option-padding: 2px 0;
+  --simple-picker-option-label: {
+    @apply --simple-picker-sample-label;
+  }
+  @apply --simple-picker-sample-option;
   border: none;
 }
 

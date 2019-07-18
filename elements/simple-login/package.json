@@ -42,6 +42,8 @@
   "dependencies": {
     "@lrnwebcomponents/es-global-bridge": "^2.0.10",
     "@polymer/paper-button": "^3.0.1",
+    "@polymer/paper-icon-button": "^3.0.1",
+    "@polymer/paper-tooltip": "^3.0.1",
     "@polymer/paper-input": "^3.0.2",
     "@polymer/paper-progress": "^3.0.1",
     "@polymer/paper-styles": "^3.0.1",

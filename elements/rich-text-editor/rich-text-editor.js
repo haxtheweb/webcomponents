@@ -168,15 +168,15 @@ class RichTextEditor extends PolymerElement {
       idOnly = id ? document.querySelector(id) : null,
       typeOnly = document.querySelector(this.type),
       //try to match both id and type, if no match try id only, and then type only
-      editor = both || idOnly || typeOnly;
+      toolbar = both || idOnly || typeOnly;
     //if still no match, create a region of type
     if (!this.toolbar) this.toolbar = this._generateUUID();
-    if (!editor || !editor.addEditableRegion) {
-      editor = document.createElement(this.type);
-      editor.id = this.toolbar;
-      root.parentNode.appendChild(editor);
+    if (!toolbar || !toolbar.addEditableRegion) {
+      toolbar = document.createElement(this.type);
+      toolbar.id = this.toolbar;
+      root.parentNode.appendChild(toolbar);
     }
-    editor.addEditableRegion(root);
+    toolbar.addEditableRegion(root);
   }
 
   /**

@@ -190,6 +190,7 @@ class SimpleConceptNetwork extends A11yBehaviors(SimpleColors) {
             title: "Node list",
             description: "List of the items to present in the visual",
             inputMethod: "array",
+            itemLabel: "label",
             properties: [
               {
                 property: "color",

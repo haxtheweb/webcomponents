@@ -30,8 +30,12 @@ class CodeEditor extends SchemaBehaviors(PolymerElement) {
         :host {
           display: block;
           padding: 16px;
+          font-family: unset;
         }
-        .code-pen-container {
+        :host([hidden]) {
+          display: none !important;
+        }
+        .code-pen-container:not([hidden]) {
           width: 100%;
           display: flex;
           background-color: var(--code-pen-button-color, #222222);
@@ -46,20 +50,32 @@ class CodeEditor extends SchemaBehaviors(PolymerElement) {
           font-size: 16px;
           padding: 12px;
         }
-        [hidden] {
-          display: none !important;
-        }
         code-pen-button {
           float: right;
           height: 40px;
         }
         label {
+          color: var(--code-editor-label-color, #888);
+          transition: all 0.5s;
           @apply --code-editor-label;
         }
+
+        :host([focused]) label {
+          color: var(
+            --code-editor-float-label-active-color,
+            var(--code-editor-label-color, #000)
+          );
+          @apply --code-editor-focus-label;
+        }
+
         #codeeditor {
           height: 100%;
           display: flex;
           @apply --code-editor-code;
+        }
+
+        :host([focused]) #codeeditor {
+          @apply --code-editor-focus-code;
         }
       </style>
       <label for="codeeditor" hidden$="[[!title]]">[[title]]</label>
@@ -73,6 +89,8 @@ class CodeEditor extends SchemaBehaviors(PolymerElement) {
         on-value-changed="_editorDataChanged"
         font-size$="[[fontSize]]"
         read-only$="[[readOnly]]"
+        on-code-editor-focus="_handleFocus"
+        on-code-editor-blur="_handleBlur"
       >
       </monaco-element>
       <div class="code-pen-container" hidden$="[[!showCodePen]]">
@@ -94,6 +112,7 @@ class CodeEditor extends SchemaBehaviors(PolymerElement) {
       title: {
         type: String
       },
+
       /**
        * Show codePen button to fork it to there to run
        */
@@ -173,6 +192,14 @@ class CodeEditor extends SchemaBehaviors(PolymerElement) {
       hideLineNumbers: {
         type: Boolean,
         value: false
+      },
+      /**
+       * does the monaco-editor have focus
+       */
+      focused: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
       }
     };
     if (super.properties) {
@@ -189,6 +216,20 @@ class CodeEditor extends SchemaBehaviors(PolymerElement) {
       title: title,
       html: editorValue
     };
+  }
+  /**
+   * sets focused attribute when monaco-elements's focus event fires
+   * @param {event} e the monaco-elements's focus event
+   */
+  _handleFocus(e) {
+    this.focused = true;
+  }
+  /**
+   * unsets focused attribute when monaco-elements's blur event fires
+   * @param {event} e the monaco-elements's blur event
+   */
+  _handleBlur(e) {
+    this.focused = false;
   }
   /**
    * LEGACY: pass down mode to language if that api is used
@@ -256,6 +297,7 @@ class CodeEditor extends SchemaBehaviors(PolymerElement) {
    */
   connectedCallback() {
     super.connectedCallback();
+    let root = this;
     afterNextRender(this, function() {
       // mutation observer that ensures state of hax applied correctly
       this._observer = new FlattenedNodesObserver(this, info => {

@@ -91,8 +91,8 @@ class RichTextEditorToolbarFull extends RichTextEditorToolbar {
    * Gets the updated selected range.
    * @returns {void}
    */
-  getUpdatedSelection() {
-    super.getUpdatedSelection();
+  _rangeChange(e) {
+    super._rangeChange(e);
     if (this.__breadcrumbs) this.__breadcrumbs.range = this.range;
   }
 
@@ -104,7 +104,6 @@ class RichTextEditorToolbarFull extends RichTextEditorToolbar {
    */
   _handleBreadcrumb(e) {
     if (e.detail.target) this.range.selectNode(e.detail.target);
-    this.getUpdatedSelection();
   }
 
   /**

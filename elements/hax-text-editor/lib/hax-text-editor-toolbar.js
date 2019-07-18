@@ -3,26 +3,13 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
 import { RichTextEditorToolbar } from "@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar.js";
-import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
-import "@lrnwebcomponents/rich-text-editor/rich-text-editor.js";
-import "@lrnwebcomponents/rich-text-editor/lib/rich-text-editor-styles.js";
-import "@lrnwebcomponents/rich-text-editor/lib/singletons/rich-text-editor-selection.js";
-import "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-button.js";
-import "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-more-button.js";
-import "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-heading-picker.js";
-import "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-symbol-picker.js";
-import "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-underline.js";
-import "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-link.js";
-import "@lrnwebcomponents/rich-text-editor/lib/buttons/rich-text-editor-button-styles.js";
-import "@lrnwebcomponents/md-extra-icons/md-extra-icons.js";
+import { LrnVocab } from "@lrnwebcomponents/lrn-vocab/lrn-vocab.js";
+import { OerSchemaElement } from "@lrnwebcomponents/oer-schema/oer-schema.js";
+import "@lrnwebcomponents/rich-text-editor/lib/toolbars/rich-text-editor-toolbar.js";
+import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
+import "./hax-text-editor-inline.js";
 import "./hax-text-editor-math.js";
-import "./hax-text-editor-oer-schema.js";
-import "./hax-text-editor-vocab.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icons/editor-icons.js";
-import "@polymer/iron-icons/image-icons.js";
 /**
  * `hax-text-editor-toolbar`
  * `a basic toolbar for the HAX text editor`
@@ -145,13 +132,15 @@ class HaxTextEditorToolbar extends RichTextEditorToolbar {
         type: "button-group",
         buttons: [
           {
-            type: "hax-text-editor-vocab"
+            element: LrnVocab,
+            type: "hax-text-editor-inline"
           },
           {
             type: "hax-text-editor-math"
           },
           {
-            type: "hax-text-editor-oer-schema"
+            element: OerSchemaElement,
+            type: "hax-text-editor-oer-inline"
           }
         ]
       },

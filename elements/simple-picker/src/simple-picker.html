@@ -1,5 +1,5 @@
 
-<label for="listbox" hidden$="[[!hasLabel]]">[[label]]</label>
+<label id="listLabel" for="listbox" hidden$="[[!hasLabel]]">[[label]]</label>
 <div id="listbox"
   aria-activedescendant$="[[__activeDesc]]" 
   aria-labelledby$="[[ariaLabelledby]]" 
@@ -19,9 +19,9 @@
   </div>
   <div id="collapse">
     <div class="rows">
-      <template is="dom-repeat" items="[[__options]]" as="row" index-as="rownum">
+      <template is="dom-repeat" items="[[__options]]" as="row" index-as="rownum" restamp>
         <div class="row">
-          <template is="dom-repeat" items=[[row]] as="option" index-as="colnum">
+          <template is="dom-repeat" items=[[row]] as="option" index-as="colnum" restamp>
             <simple-picker-option 
               active$="[[_isActive(__activeDesc,rownum,colnum)]]"
               aria-selected$="[[_isSelected(value,option.value)]]"

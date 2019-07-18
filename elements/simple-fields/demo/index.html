@@ -39,17 +39,148 @@
                   "inputMethod": "boolean"
                 },
                 {
+                  "property": "hiddenField",
+                  "title": "Hidden",
+                  "description": "I'm a hidden field. You can't see me.",
+                  "inputMethod": "boolean",
+                  "hidden": true
+                },
+                {
+                  "property": "winter",
+                  "title": "When is winter coming?",
+                  "inputMethod": "datepicker"
+                },
+                {
+                  "property": "icon",
+                  "title": "Pick an icon.",
+                  "inputMethod": "iconpicker"
+                },
+                {
+                  "property": "color",
+                  "title": "Your  favorite  color.",
+                  "inputMethod": "colorpicker"
+                },
+                {
+                  "property": "sword",
+                  "title": "Your sword's name.",
+                  "inputMethod": "select",
+                  "allowNull": false,
+                  "options": {
+                    "none": "None",
+                    "blackfyre": "Blackfyre",
+                    "brightroar": "Brightroar",
+                    "darksister": "Dark Sister",
+                    "dawn": "Dawn",
+                    "hearteater": "Heart Eater",
+                    "heartsbane": "Heartsbane",
+                    "ice": "Ice",
+                    "ladyforlorn": "Lady Horlorn",
+                    "lightbringer": "Lightbringer",
+                    "lionstooth": "Lion's Tooth",
+                    "longclaw": "Longclaw",
+                    "needle": "Needle",
+                    "oathkeeper": "Oathkeeper",
+                    "widowswail": "Widow's Wail"
+                  }
+                },
+                {
+                  "property": "bio",
+                  "title": "Bio",
+                  "description": "Write a short bio.",
+                  "inputMethod": "textarea"
+                },
+                {
+                  "property": "siblings",
+                  "title": "Siblings",
+                  "description": "Enter the names of your siblings.",
+                  "inputMethod": "array",
+                  "itemLabel": "name",
+                  "properties": [
+                    {
+                      "property": "name",
+                      "title": "Sibling Name",
+                      "inputMethod": "textfield"
+                    },
+                    {
+                      "property": "dead",
+                      "title": "Is sibling dead?",
+                      "description": "",
+                      "inputMethod": "boolean"
+                    }
+                  ]
+                },
+                /*{
+                  "property": "alliesenemies",
+                  "inputMethod": "tabs",
+                  "properties": [
+                    {
+                      "property": "allies",
+                      "title": "Allies",
+                      "description": "List your allies.",
+                      "properties": [
+                        {
+                          "property": "name",
+                          "title": "Ally Name",
+                          "inputMethod": "textfield"
+                        },
+                        {
+                          "property": "dead",
+                          "title": "Is ally dead?",
+                          "description": "",
+                          "inputMethod": "boolean"
+                        }
+                      ]
+                    },
+                    {
+                      "property": "enemies",
+                      "title": "Enemies",
+                      "description": "List your enemies.",
+                      "properties": [
+                        {
+                          "property": "name",
+                          "title": "Enemy Name",
+                          "inputMethod": "textfield"
+                        },
+                        {
+                          "property": "dead",
+                          "title": "Is enemy dead?",
+                          "description": "",
+                          "inputMethod": "boolean"
+                        }
+                      ]
+                    }
+                  ]
+                },*/
+                {
+                  "property": "profileImage",
+                  "title": "Profile Image",
+                  "description": "Maximum size 400px X 400px.",
+                  "inputMethod": "haxupload",
+                  "validationType": "url"
+                },
+                {
                   "property": "code",
                   "title": "This is your favorite code snippet.",
                   "description": "",
-                  "inputMethod": "code-editor",
-                  "theme": "vs-light"
-                }
+                  "inputMethod": "code-editor"
+                }    
               ];
               fields.value = {
-                "name": "John Doe",
+                "name": "Arya Stark",
+                "winter": "12/21/2019",
                 "alias": true,
-                "code": "<p>Hello world!</p>"
+                "bio": "Once upon a time...",
+                "code": "<p>Not today.</p>",
+                "color": "red",
+                "icon": "icons:visibility-off",
+                "siblings": [
+                  { "name": "Rob Stark" },
+                  { "name": "Jon Snow" },
+                  { "name": "Sansa Stark" },
+                  { "name": "Bran Stark" },
+                  { "name": "Rickon Stark" }
+                ],
+                "sword": "needle"
               };
             };
           </script>

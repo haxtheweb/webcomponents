@@ -26,6 +26,37 @@ const template = html`
         </g>
       </defs>
     </svg>
+    <!-- arrow left -->
+    <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <g id="arrow-left">
+          <path d="M7.2,12l8.5,6V6L7.2,12z"/>
+        </g>
+      </defs>
+    </svg>
+    <!-- arrow right -->
+    <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <g id="arrow-right">
+        <path d="M15.8,12L7.2,6v12L15.8,12z"/>
+        </g>
+      </defs>
+    </svg>
+    <!-- calendar -->
+    <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <g id="calendar">
+          <path d="M19,4h-1V2h-2v2H8V2H6v2H5C3.9,4,3,4.9,3,6l0,14c0,1.1,0.9,2,2,2h14c1.1,0,2-0.9,2-2V6C21,4.9,20.1,4,19,4z M19,20H5V9h14
+            V20z"/>
+          <rect x="11" y="11" width="2" height="2"/>
+          <rect x="15" y="11" width="2" height="2"/>
+          <rect x="7" y="11" width="2" height="2"/>
+          <rect x="7" y="15" width="2" height="2"/>
+          <rect x="11" y="15" width="2" height="2"/>
+          <rect x="15" y="15" width="2" height="2"/>
+        </g>
+      </defs>
+    </svg>
     <!-- vocab -->
     <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
       <defs>
@@ -115,7 +146,6 @@ const template = html`
         </g>
     </svg>
   </iron-iconset-svg>
-  
 `;
 
 document.head.appendChild(template.content);

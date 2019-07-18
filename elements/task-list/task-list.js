@@ -154,6 +154,7 @@ class TaskList extends SchemaBehaviors(PolymerElement) {
             title: "Tasks",
             description: "The tasks to be completed",
             inputMethod: "array",
+            itemLabel: "name",
             properties: [
               {
                 property: "name",

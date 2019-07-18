@@ -120,6 +120,7 @@ class OerSchemaElement extends SchemaBehaviors(PolymerElement) {
             property: "typeof",
             title: "Schema typeof",
             inputMethod: "select",
+            allowNull: true,
             options: oerSchema.types
           },
           {
@@ -127,6 +128,7 @@ class OerSchemaElement extends SchemaBehaviors(PolymerElement) {
             title: "Schema property",
             description: "The OER Schema property this represents",
             inputMethod: "select",
+            allowNull: true,
             options: {
               name: "name",
               additionalType: "additionalType",

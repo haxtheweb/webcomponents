@@ -1,0 +1,113 @@
+{
+  /**
+   * the id of the active tab
+   */
+  "activeTab": {
+    "name": "activeTab",
+    "type": "String",
+    "value": null,
+    "observer": "selectTab"
+  },
+  /**
+   * whether the tabbed interface is disabled
+   */
+  "disabled": {
+    "name": "disabled",
+    "type": "Boolean",
+    "value": false,
+    "reflectToAttribute": true
+  },
+  /**
+   * whether the tabbed interface is hidden
+   */
+  "hidden": {
+    "name": "hidden",
+    "type": "Boolean",
+    "value": false,
+    "reflectToAttribute": true
+  },
+  /**
+   * the minimum breakpoint for showing tab text with icons, or
+   * - use `0` to always show icons only
+   * - use `-1` to always show text with icons
+   */
+  "iconBreakpoint": {
+    "name": "iconBreakpoint",
+    "type": "Number",
+    "value": 400,
+    "observer": "_breakpointChanged"
+  },
+  /**
+   * whether the tabs show only icons (no text)
+   */
+  "iconsOnly": {
+    "name": "iconsOnly",
+    "type": "Boolean",
+    "computed": "_showIcons(__hasIcons,iconBreakpoint,layoutBreakpoint,responsiveSize)",
+    "reflectToAttribute": true
+  },
+  /**
+   * unique identifier/anchor for the tabbed interface
+   */
+  "id": {
+    "name": "id",
+    "type": "String",
+    "value": null,
+    "reflectToAttribute": true,
+    "observer": "_idChanged"
+  },
+  /**
+   * the minimum breakpoint for horizontal layout of tabs, or
+   * - use `0` for horizontal-only
+   * - use `-1` for vertical-only
+   */
+  "layoutBreakpoint": {
+    "name": "layoutBreakpoint",
+    "type": "Number",
+    "value": 600,
+    "observer": "_breakpointChanged"
+  },
+  /**
+   * the size of the tabs,
+   * where `xs` is the smaller breakpoint
+   * and `xs` is the larger breakpoint
+   */
+  "responsiveSize": {
+    "name": "responsiveSize",
+    "type": "String",
+    "value": "xs"
+  },
+  /**
+   * whether the tabbed interface is in vertical layout mode
+   */
+  "vertical": {
+    "name": "vertical",
+    "type": "Boolean",
+    "computed": "_isVertical(iconBreakpoint,layoutBreakpoint,responsiveSize)",
+    "reflectToAttribute": true
+  },
+  /**
+   * whether the tabbed interface has icons for each tab
+   */
+  "__hasIcons": {
+    "name": "__hasIcons",
+    "type": "Boolean",
+    "value": false
+  },
+  /**
+   * an array of tab data based on slotted `a11y-tab` elements
+   */
+  "__items": {
+    "name": "__items",
+    "type": "Array",
+    "value": []
+  },
+  /**
+   * a mutation observer to monitor slotted `a11y-tab` elements
+   */
+  "__observer": {
+    "name": "__observer",
+    "type": "Object",
+    "value": null
+  }
+}

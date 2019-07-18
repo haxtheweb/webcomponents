@@ -28,7 +28,6 @@
     "type": "Object",
     "notify": true,
     "value": {},
-    "reflectToAttribute": true,
     "observer": "_valueChanged"
   },
   /**
