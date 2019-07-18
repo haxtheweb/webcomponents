@@ -642,6 +642,15 @@ export class HAXWiring {
                   label: settings[value].itemLabel
                 };
                 break;
+              case "tabs":
+                props[settings[value].property].items = {
+                  type: "object",
+                  properties: target._getHaxJSONSchemaProperty(
+                    settings[value].properties,
+                    target
+                  )
+                };
+                break;
               case "textfield":
                 props[settings[value].property].component = {
                   name: "paper-input",

@@ -23,7 +23,6 @@ class RichTextEditorPrompt extends PolymerElement {
     return html`
       <style include="rich-text-editor-button-styles">
         :host {
-          --simple-popover-padding: 0 10px;
           --paper-input-container-focus-color: var(
             --rich-text-editor-focus-color,
             #000
@@ -37,6 +36,7 @@ class RichTextEditorPrompt extends PolymerElement {
           display: none;
           width: 300px;
           max-width: 300px;
+          --simple-popover-padding: 0px;
         }
         :host #prompt[for]{
           display: block;
@@ -48,6 +48,10 @@ class RichTextEditorPrompt extends PolymerElement {
           align-items: center;
           justify-content: space-between;
           z-index: 2;
+        }
+        :host #formfields {
+          width: calc(100% - 20px);
+          padding: 10px 10px 0;
         }
         :host #prompt paper-input {
           padding: 0;
