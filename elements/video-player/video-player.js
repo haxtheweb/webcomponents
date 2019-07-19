@@ -292,7 +292,6 @@ class VideoPlayer extends MediaBehaviorsVideo(
             title: "Other sources",
             description: "List of other sources",
             inputMethod: "array",
-            itemLabel: "src",
             properties: [
               {
                 property: "src",
@@ -325,7 +324,6 @@ class VideoPlayer extends MediaBehaviorsVideo(
             title: "Track list",
             description: "Tracks of different languages of closed captions",
             inputMethod: "array",
-            itemLabel: "src",
             properties: [
               {
                 property: "kind",
@@ -370,7 +368,7 @@ class VideoPlayer extends MediaBehaviorsVideo(
   }
   // properties available to the custom element for data binding
   static get properties() {
-    let props = {
+    return {
       /**
        * Is the media an audio file only?
        */
@@ -601,10 +599,6 @@ class VideoPlayer extends MediaBehaviorsVideo(
         computed: "_computeYoutubeId(source,sourceType)"
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
   constructor() {
     super();

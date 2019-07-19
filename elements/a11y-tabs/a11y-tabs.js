@@ -382,9 +382,6 @@ class A11yTabs extends PolymerElement {
     this.addEventListener("a11y-tab-changed", function(e) {
       root.updateItems();
     });
-    this.addEventListener("a11y-tab-previous", function(e) {
-      console.log("a11y-tab-previous", e);
-    });
     window.ResponsiveUtility.requestAvailability();
     this._breakpointChanged();
   }
@@ -417,7 +414,7 @@ class A11yTabs extends PolymerElement {
         id && this.querySelector(`a11y-tab#${id}`)
           ? this.querySelector(`a11y-tab#${id}`)
           : this.querySelector("a11y-tab");
-    if (selected.id !== id) {
+    if (selected && selected.id !== id) {
       this.activeTab = selected.id;
       return;
     } else if (tabs && tabs.length > 0) {
@@ -478,17 +475,6 @@ class A11yTabs extends PolymerElement {
       })
     );
     this.responsiveSize = "xs";
-    console.log(
-      "_breakpointChanged",
-      this.layoutBreakpoint,
-      this.iconBreakpoint,
-      v,
-      i,
-      sm,
-      md,
-      lg,
-      xl
-    );
     window.dispatchEvent(
       new CustomEvent("responsive-element", {
         detail: {
