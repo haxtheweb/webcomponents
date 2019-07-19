@@ -34,6 +34,9 @@ class SiteRSSButton extends PolymerElement {
           font-size: 16px;
           color: var(--site-rss-color, #383f45);
         }
+        a {
+          text-decoration: var(--site-rss-text-decoration, none);
+        }
         paper-button {
           text-transform: unset;
           color: white;
