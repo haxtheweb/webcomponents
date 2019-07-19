@@ -322,6 +322,7 @@ class EcoJsonSchemaArray extends mixinBehaviors(
    */
   _setValues() {
     let schema = [];
+    console.log("array this.schema", this.schema);
     for (let i = 0; i < this.schema.value.length; i++) {
       let item = this.schema.value[i];
       schema[i] = JSON.parse(JSON.stringify(this.schema.items));
@@ -332,6 +333,7 @@ class EcoJsonSchemaArray extends mixinBehaviors(
     }
     this.notifyPath("__validatedSchema.*");
     this.__validatedSchema = schema;
+    console.log("array schema", schema);
   }
 }
 window.customElements.define(EcoJsonSchemaArray.tag, EcoJsonSchemaArray);

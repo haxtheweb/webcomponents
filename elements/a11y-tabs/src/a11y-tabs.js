@@ -49,9 +49,6 @@ class A11yTabs extends PolymerElement {
     this.addEventListener("a11y-tab-changed", function(e) {
       root.updateItems();
     });
-    this.addEventListener("a11y-tab-previous", function(e) {
-      console.log("a11y-tab-previous", e);
-    });
     window.ResponsiveUtility.requestAvailability();
     this._breakpointChanged();
   }

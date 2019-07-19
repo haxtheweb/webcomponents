@@ -43,8 +43,8 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
           <a11y-tab
             id$="item-[[index]]"
             icon$="[[item.icon]]"
-            label$="[[item.label]]"
-          >
+            label$="[[item.title]]"
+            ><p>[[item.description]]</p>
             <eco-json-schema-object
               id="schemaobject"
               controls$="item-[[index]]"
@@ -85,7 +85,7 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
       value: {
         type: Array,
         notify: true,
-        value: []
+        value: {}
       },
       /**
        * Fields to conver to JSON Schema.
@@ -102,7 +102,7 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
    * @param {event} e the change event
    */
   _valueChanged(e) {
-    let root = this,
+    /*let root = this,
       val = this.__validatedSchema.map(item => {
         return item.value;
       });
@@ -115,7 +115,7 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
         composed: true,
         detail: root
       })
-    );
+    );*/
   }
 
   /**
@@ -143,16 +143,28 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
    */
   _setValues() {
     let schema = [];
-    for (let i = 0; i < this.schema.value.length; i++) {
-      let item = this.schema.value[i];
-      schema[i] = JSON.parse(JSON.stringify(this.schema.items));
-      for (let prop in item) {
-        if (schema[i].properties[prop])
-          schema[i].properties[prop].value = item[prop];
-      }
+    console.log("tabs this.schema", this.schema, this.schema.items.properties);
+    for (let prop in this.schema.items.properties) {
+      let val = JSON.parse(JSON.stringify(this.value[prop])),
+        tab = {
+          value: val
+        },
+        temp = JSON.parse(JSON.stringify(this.schema.items.properties[prop]));
+      console.log("tab 1", temp, tab, val, tab.value);
+      console.log("tab 2", tab, tab.value);
+      console.log("tab 3", tab, tab.value);
+      schema.push(temp);
+      console.log(
+        prop,
+        tab,
+        this.schema.items.properties[prop],
+        this.value,
+        this.value[prop]
+      );
     }
     this.notifyPath("__validatedSchema.*");
     this.__validatedSchema = schema;
+    console.log("tabs schema", this.__validatedSchema);
   }
 }
 window.customElements.define(EcoJsonSchemaTabs.tag, EcoJsonSchemaTabs);
