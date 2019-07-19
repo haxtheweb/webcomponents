@@ -274,6 +274,14 @@ class VideoPlayer extends MediaBehaviorsVideo(
     }
     return source;
   }
+  /**
+   * postProcesshaxNodeToContent - clean up so we don't have empty array data
+   */
+  postProcesshaxNodeToContent(content) {
+    content = content.replace(' sources="[]",', "");
+    content = content.replace(' tracks="[]",', "");
+    return content;
+  }
 }
 window.customElements.define(VideoPlayer.tag, VideoPlayer);
 export { VideoPlayer };
