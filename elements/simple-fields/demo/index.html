@@ -26,7 +26,7 @@
             window.onload = function(){
               let fields = document.getElementById('fields');
               fields.fields = [
-                /*{
+                {
                   "property": "name",
                   "title": "What is your name?",
                   "description": "Enter your real name or an alias.",
@@ -88,7 +88,7 @@
                   "title": "Bio",
                   "description": "Write a short bio.",
                   "inputMethod": "textarea"
-                },*/
+                },
                 {
                   "property": "siblings",
                   "title": "Siblings",
@@ -109,7 +109,7 @@
                     }
                   ]
                 },
-                {
+                /*{
                   "property": "alliesenemies",
                   "inputMethod": "tabs",
                   "properties": [
@@ -117,8 +117,6 @@
                       "property": "allies",
                       "title": "Allies",
                       "description": "List your allies.",
-                      "inputMethod": "array",
-                      "itemLabel": "name",
                       "properties": [
                         {
                           "property": "name",
@@ -137,8 +135,6 @@
                       "property": "enemies",
                       "title": "Enemies",
                       "description": "List your enemies.",
-                      "inputMethod": "array",
-                      "itemLabel": "name",
                       "properties": [
                         {
                           "property": "name",
@@ -154,7 +150,7 @@
                       ]
                     }
                   ]
-                }/*,
+                },*/
                 {
                   "property": "profileImage",
                   "title": "Profile Image",
@@ -167,7 +163,7 @@
                   "title": "This is your favorite code snippet.",
                   "description": "",
                   "inputMethod": "code-editor"
-                }*/    
+                }    
               ];
               fields.value = {
                 "name": "Arya Stark",
@@ -184,19 +180,6 @@
                   { "name": "Bran Stark" },
                   { "name": "Rickon Stark" }
                 ],
-                "alliesenemies": { 
-                  "allies": [
-                    { "name": "Gregor Clegane" },
-                    { "name": "Gendry" },
-                    { "name": "Brienne of Tarth" },
-                    { "name": "Jaquen Hagar" }
-                  ],
-                  "enemies": [
-                    { "name": "Gregor Clegane" },
-                    { "name": "Cersei Lannister" },
-                    { "name": "Joffrey Lannister" }
-                  ]
-                },
                 "sword": "needle"
               };
             };
