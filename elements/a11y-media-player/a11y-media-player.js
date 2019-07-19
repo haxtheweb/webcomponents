@@ -671,7 +671,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
 
       allowConcurrent: {
         name: "allowConcurrent",
-        type: "Boolean",
+        type: Boolean,
         value: false
       },
       /**
@@ -679,7 +679,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
        */
       audioNoThumb: {
         name: "audioNoThumb",
-        type: "Boolean",
+        type: Boolean,
         computed: "_getAudioNoThumb(audioOnly,thumbnailSrc)"
       },
       /**
@@ -687,7 +687,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
        */
       darkTranscript: {
         name: "darkTranscript",
-        type: "Boolean",
+        type: Boolean,
         value: false
       },
       /**
@@ -695,7 +695,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
        */
       disableFullscreen: {
         name: "disableFullscreen",
-        type: "Boolean",
+        type: Boolean,
         value: false
       },
       /**
@@ -703,7 +703,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
        */
       disableInteractive: {
         name: "disableInteractive",
-        type: "Boolean",
+        type: Boolean,
         value: false
       },
       /**
@@ -711,7 +711,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
        */
       flexLayout: {
         name: "flexLayout",
-        type: "Boolean",
+        type: Boolean,
         computed:
           "_isFlexLayout(standAlone,hideTranscript,audioNoThumb,stackedLayout)",
         reflectToAttribute: true
@@ -721,7 +721,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
        */
       fullscreen: {
         name: "fullscreen",
-        type: "Boolean",
+        type: Boolean,
         value: false
       },
       /**
@@ -729,7 +729,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
        */
       fullscreenButton: {
         name: "fullscreenButton",
-        type: "Boolean",
+        type: Boolean,
         computed:
           "_getFullscreenButton(disableFullscreen,audioNoThumb,screenfullLoaded)",
         notify: true
@@ -740,7 +740,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
        */
       hasCaptions: {
         name: "hasCaptions",
-        type: "Boolean",
+        type: Boolean,
         value: false
       },
 
@@ -749,7 +749,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
        */
       hideElapsedTime: {
         name: "hideElapsedTime",
-        type: "Boolean",
+        type: Boolean,
         value: false
       },
       /**
@@ -757,7 +757,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
        */
       hideTimestamps: {
         name: "hideTimestamps",
-        type: "Boolean",
+        type: Boolean,
         value: false
       },
       /**
@@ -765,7 +765,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
        */
       hideTranscript: {
         name: "hideTranscript",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         reflectToAttribute: true
       },
@@ -774,7 +774,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
        */
       id: {
         name: "id",
-        type: "String",
+        type: String,
         value: null,
         reflectToAttribute: true
       },
@@ -783,7 +783,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
        */
       mediaCaption: {
         name: "mediaCaption",
-        type: "String",
+        type: String,
         computed: "_getMediaCaption(audioOnly,localization,mediaTitle)"
       },
       /**
@@ -791,7 +791,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
        */
       mediaLang: {
         name: "mediaLang",
-        type: "String",
+        type: String,
         value: "en"
       },
       /**
@@ -799,7 +799,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
        */
       muteUnmute: {
         name: "muteUnmute",
-        type: "Object",
+        type: Object,
         computed: "_getMuteUnmute(muted)"
       },
       /**
@@ -807,7 +807,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
        */
       printCaption: {
         name: "printCaption",
-        type: "String",
+        type: String,
         computed: "_getPrintCaption(audioOnly,audioLabel,videoLabel,mediaTitle)"
       },
       /**
@@ -815,7 +815,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
        */
       responsiveSize: {
         name: "responsiveSize",
-        type: "String",
+        type: String,
         notify: true,
         value: "xs",
         reflectToAttribute: true
@@ -825,7 +825,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
        */
       screenfullLoaded: {
         name: "screenfullLoaded",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         notify: true
       },
@@ -834,7 +834,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
        */
       showCustomCaptions: {
         name: "showCustomCaptions",
-        type: "Boolean",
+        type: Boolean,
         computed: "_showCustomCaptions(isYoutube, audioOnly, hasCaptions, cc)"
       },
       /**
@@ -842,7 +842,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
        */
       sources: {
         name: "sources",
-        type: "Array",
+        type: Array,
         value: []
       },
       /**
@@ -850,7 +850,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
        */
       stackedLayout: {
         name: "stackedLayout",
-        type: "Boolean",
+        type: Boolean,
         value: false
       },
       /**
@@ -858,7 +858,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
        */
       sticky: {
         name: "sticky",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         reflectToAttribute: true
       },
@@ -869,7 +869,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
        */
       stickyCorner: {
         name: "stickyCorner",
-        type: "String",
+        type: String,
         value: "top-right",
         reflectToAttribute: true
       },
@@ -878,7 +878,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
        */
       thumbnailSrc: {
         name: "thumbnailSrc",
-        type: "String",
+        type: String,
         value: null,
         reflectToAttribute: true
       },
@@ -887,7 +887,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
        */
       tracks: {
         name: "tracks",
-        type: "Array",
+        type: Array,
         value: []
       },
       /**
@@ -895,7 +895,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
        */
       playPause: {
         name: "playPause",
-        type: "Object",
+        type: Object,
         computed: "_getPlayPause(__playing)"
       },
       /**
@@ -903,7 +903,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
        */
       __playing: {
         name: "__playing",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         notify: true,
         reflectToAttribute: true
