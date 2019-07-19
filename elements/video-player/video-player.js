@@ -292,7 +292,6 @@ class VideoPlayer extends MediaBehaviorsVideo(
             title: "Other sources",
             description: "List of other sources",
             inputMethod: "array",
-            itemLabel: "src",
             properties: [
               {
                 property: "src",
@@ -325,7 +324,6 @@ class VideoPlayer extends MediaBehaviorsVideo(
             title: "Track list",
             description: "Tracks of different languages of closed captions",
             inputMethod: "array",
-            itemLabel: "src",
             properties: [
               {
                 property: "kind",
@@ -829,6 +827,14 @@ class VideoPlayer extends MediaBehaviorsVideo(
       }
     }
     return source;
+  }
+  /**
+   * postProcesshaxNodeToContent - clean up so we don't have empty array data
+   */
+  postProcesshaxNodeToContent(content) {
+    content = content.replace(' sources="[]",', "");
+    content = content.replace(' tracks="[]",', "");
+    return content;
   }
 }
 window.customElements.define(VideoPlayer.tag, VideoPlayer);
