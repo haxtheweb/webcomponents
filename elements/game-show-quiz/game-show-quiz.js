@@ -1111,22 +1111,23 @@ class GameShowQuiz extends MutableData(PolymerElement) {
    */
   connectedCallback() {
     super.connectedCallback();
-    // punch a basic hole for elms:ln to make life easier for IDs
-    if (
-      window.Drupal &&
-      window.Drupal.settings &&
-      window.Drupal.settings.distro
-    ) {
-      this.gameScoreBoardBackend =
-        window.Drupal.settings.basePath +
-        "apps/game-show-scoreboard/save-score";
-      this.token = btoa(window.Drupal.settings.elmslnCore.uname);
-      this.gameDirectionsData =
-        window.Drupal.settings.basePath +
-        "apps/game-show-scoreboard/load-directions";
-    }
     window.SimpleToast.requestAvailability();
     afterNextRender(this, function() {
+      // punch a basic hole for elms:ln to make life easier for IDs
+      if (
+        window.Drupal &&
+        window.Drupal.settings &&
+        window.Drupal.settings.elmslnCore &&
+        window.Drupal.settings.elmslnCore.uname
+      ) {
+        this.gameScoreBoardBackend =
+          window.Drupal.settings.basePath +
+          "apps/game-show-scoreboard/save-score";
+        this.token = btoa(window.Drupal.settings.elmslnCore.uname);
+        this.gameDirectionsData =
+          window.Drupal.settings.basePath +
+          "apps/game-show-scoreboard/load-directions";
+      }
       this.HAXWiring = new HAXWiring();
       this.HAXWiring.setup(GameShowQuiz.haxProperties, GameShowQuiz.tag, this);
       this.shadowRoot
