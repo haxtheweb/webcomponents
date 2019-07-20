@@ -16,7 +16,7 @@
       "hax": "src/data-viz-hax.json"
     }
   },
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "display pouch-db data using graphs",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "2.0.9",
+    "@lrnwebcomponents/deduping-fix": "^2.1.1",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "2.2.7",

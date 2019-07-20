@@ -16,7 +16,7 @@
       "hax": "src/lrndesign-avatar-hax.json"
     }
   },
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Automated conversion of lrndesign-avatar/",
   "repository": {
     "type": "git",
@@ -40,13 +40,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/materializecss-styles": "^2.1.0",
-    "@lrnwebcomponents/paper-avatar": "^2.1.0",
+    "@lrnwebcomponents/materializecss-styles": "^2.1.1",
+    "@lrnwebcomponents/paper-avatar": "^2.1.1",
     "@polymer/polymer": "^3.2.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.0.9",
-    "@lrnwebcomponents/storybook-utilities": "^2.1.0",
+    "@lrnwebcomponents/deduping-fix": "^2.1.1",
+    "@lrnwebcomponents/storybook-utilities": "^2.1.1",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@webcomponents/webcomponentsjs": "2.2.10",

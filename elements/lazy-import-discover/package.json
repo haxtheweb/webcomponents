@@ -16,7 +16,7 @@
       "hax": "src/lazy-import-discover-hax.json"
     }
   },
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Break people&#39;s brains on simplifying webcomponent integrations",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.0.9",
+    "@lrnwebcomponents/deduping-fix": "^2.1.1",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@webcomponents/webcomponentsjs": "2.2.1",
