@@ -136,6 +136,12 @@ site-active-title {
   position: fixed;
   z-index: 99;
   margin-left: -10vw;
+  opacity: 1;
+  transition: .2s opacity linear;
+}
+.social-float.disable-items {
+  pointer-events: none;
+  opacity: .2 !important;
 }
 .social-float ul {
   padding: 0;
@@ -162,6 +168,16 @@ social-share-link {
   padding: 10px 0;
   height: 50px;
   z-index: 100;
+  opacity: 1;
+  transition: .2s opacity linear;
+  -webkit-transition: .2s opacity linear;
+  -moz-transition: .2s opacity linear;
+  -ms-transition: .2s opacity linear;
+  -o-transition: .2s opacity linear;
+}
+.annoy-user.disable-items {
+  pointer-events: none;
+  opacity: 0 !important;
 }
 iron-icon {
   height: 40px;
@@ -314,7 +330,7 @@ site-rss-button {
           </template>
         </dom-repeat>
       </div>
-      <div class="social-float hide-small">
+      <div class$="social-float hide-small [[stateClass]]">
         <ul>
           <li>
             <social-share-link button-style mode="icon-only" message="[[shareMsg]]" type="Twitter">
@@ -335,7 +351,7 @@ site-rss-button {
           </li>
         </ul>
       </div>
-      <div class="annoy-user hide-small">
+      <div class$="annoy-user hide-small [[stateClass]]">
         <div class="annoy-inner">
           <iron-icon icon="[[icon]]"></iron-icon>
           <span>
@@ -350,12 +366,12 @@ site-rss-button {
     </div>
   </iron-pages>
 </div>`}// properties available to the custom element for data binding
-static get properties(){return{}}/**
+static get properties(){let props={};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
-   */static get tag(){return"haxor-slevin"}static get properties(){return Object.assign(super.properties,{manifest:{type:Object},color:{type:String,computed:"_getColor(manifest)"},selectedPage:{type:Number,reflectToAttribute:!0,value:0}})}_getColor(manifest){if(manifest&&manifest.metadata&&manifest.metadata.hexCode){return manifest.metadata.hexCode}}constructor(){super();import("./node_modules/@polymer/paper-button/paper-button.js");import("./node_modules/@polymer/iron-image/iron-image.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");import("./node_modules/@lrnwebcomponents/simple-blog-card/simple-blog-card.js");import("./node_modules/@polymer/app-layout/app-header/app-header.js");import("./node_modules/@polymer/app-layout/app-toolbar/app-toolbar.js");import("./node_modules/@lrnwebcomponents/social-share-link/social-share-link.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js")}_showImage(image){if(image){return image}if(this.image){return this.image}return!1}/**
+   */static get tag(){return"haxor-slevin"}static get properties(){return Object.assign(super.properties,{manifest:{type:Object},color:{type:String,computed:"_getColor(manifest)"},selectedPage:{type:Number,reflectToAttribute:!0,value:0},stateClass:{type:String,computed:"_getStateClass(editMode)"}})}_getStateClass(editMode){if(editMode){return"disable-items"}return""}_getColor(manifest){if(manifest&&manifest.metadata&&manifest.metadata.hexCode){return manifest.metadata.hexCode}}constructor(){super();import("./node_modules/@polymer/paper-button/paper-button.js");import("./node_modules/@polymer/iron-image/iron-image.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");import("./node_modules/@lrnwebcomponents/simple-blog-card/simple-blog-card.js");import("./node_modules/@polymer/app-layout/app-header/app-header.js");import("./node_modules/@polymer/app-layout/app-toolbar/app-toolbar.js");import("./node_modules/@lrnwebcomponents/social-share-link/social-share-link.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js");import("./node_modules/@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js")}_showImage(image){if(image){return image}if(this.image){return this.image}return!1}/**
    * life cycle, element is afixed to the DOM
-   */connectedCallback(){super.connectedCallback();this.__disposer=[];autorun(reaction=>{let manifest=toJS(store.manifest);this.title=manifest.title;this.image=manifest.metadata.image;this.icon=manifest.metadata.icon;this.author=manifest.metadata.author;this.__disposer.push(reaction)});autorun(reaction=>{this._noticeLocationChange(store.location);this.__disposer.push(reaction)});autorun(reaction=>{this.activeManifestIndexCounter=toJS(store.activeManifestIndexCounter);this.__disposer.push(reaction)});autorun(reaction=>{this.activeTitle=toJS(store.activeTitle);this.shareUrl=document.location.href;this.shareMsg=this.activeTitle+" "+this.shareUrl;if(store.activeItem&&store.activeItem.metadata&&store.activeItem.metadata.fields&&store.activeItem.metadata.fields.subtitle){this.subtitle=store.activeItem.metadata.fields.subtitle}else{this.subtitle=!1}// look for image on the post and make it the pin share
+   */connectedCallback(){super.connectedCallback();autorun(reaction=>{let manifest=toJS(store.manifest);this.title=manifest.title;this.image=manifest.metadata.image;this.icon=manifest.metadata.icon;this.author=manifest.metadata.author;this.__disposer.push(reaction)});autorun(reaction=>{this._noticeLocationChange(store.location);this.__disposer.push(reaction)});autorun(reaction=>{this.activeManifestIndexCounter=toJS(store.activeManifestIndexCounter);this.__disposer.push(reaction)});autorun(reaction=>{this.activeTitle=toJS(store.activeTitle);this.shareUrl=document.location.href;this.shareMsg=this.activeTitle+" "+this.shareUrl;if(store.activeItem&&store.activeItem.metadata&&store.activeItem.metadata.fields&&store.activeItem.metadata.fields.subtitle){this.subtitle=store.activeItem.metadata.fields.subtitle}else{this.subtitle=!1}// look for image on the post and make it the pin share
 if(store.activeItem&&store.activeItem.metadata&&store.activeItem.metadata.fields&&store.activeItem.metadata.fields.images&&store.activeItem.metadata.fields.images[0]&&store.activeItem.metadata.fields.images[0].src){this.activeImage=store.activeItem.metadata.fields.images[0].src}this.__disposer.push(reaction)})}/**
    * Listen for router location changes and select page to match
    */_noticeLocationChange(location){if(!location||"undefined"===typeof location.route)return;const name=location.route.name;if("home"===name||"404"===name){this.selectedPage=0}else{window.scrollTo({top:0,left:0});this.selectedPage=1}setTimeout(()=>{var evt=document.createEvent("UIEvents");evt.initUIEvent("resize",!0,!1,window,0);window.dispatchEvent(evt)},50)}/**

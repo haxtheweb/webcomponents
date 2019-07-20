@@ -177,29 +177,33 @@ class FullScreenImage extends PolymerElement {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       title: {
         name: "title",
-        type: "String",
+        type: String,
         value: "",
         reflectToAttribute: false,
         observer: false
       },
       subtitle: {
         name: "subtitle",
-        type: "String",
+        type: String,
         value: "",
         reflectToAttribute: false,
         observer: false
       },
       source: {
         name: "source",
-        type: "String",
+        type: String,
         value: "",
         reflectToAttribute: false,
         observer: false
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
 
   /**

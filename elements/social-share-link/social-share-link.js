@@ -116,13 +116,13 @@ class SocialShareLink extends PolymerElement {
 
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       /**
        * display link as a button
        */
       buttonStyle: {
         name: "buttonStyle",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         reflectToAttribute: true
       },
@@ -132,7 +132,7 @@ class SocialShareLink extends PolymerElement {
        */
       image: {
         name: "image",
-        type: "String",
+        type: String,
         value: ""
       },
       /**
@@ -141,7 +141,7 @@ class SocialShareLink extends PolymerElement {
        */
       message: {
         name: "message",
-        type: "String",
+        type: String,
         value: ""
       },
       /**
@@ -150,7 +150,7 @@ class SocialShareLink extends PolymerElement {
        */
       mode: {
         name: "mode",
-        type: "String",
+        type: String,
         value: null
       },
       /**
@@ -158,7 +158,7 @@ class SocialShareLink extends PolymerElement {
        */
       text: {
         name: "text",
-        type: "String",
+        type: String,
         value: null
       },
       /**
@@ -167,7 +167,7 @@ class SocialShareLink extends PolymerElement {
        */
       type: {
         name: "type",
-        type: "String",
+        type: String,
         value: "Twitter"
       },
       /**
@@ -175,7 +175,7 @@ class SocialShareLink extends PolymerElement {
        */
       url: {
         name: "url",
-        type: "String",
+        type: String,
         value: null
       },
       /**
@@ -183,7 +183,7 @@ class SocialShareLink extends PolymerElement {
        */
       __href: {
         name: "__href",
-        type: "String",
+        type: String,
         computed: "_getHref(image,message,type,url)"
       },
       /**
@@ -191,7 +191,7 @@ class SocialShareLink extends PolymerElement {
        */
       __icon: {
         name: "icon",
-        type: "String",
+        type: String,
         computed: "_getIcon(type)"
       },
       /**
@@ -199,10 +199,14 @@ class SocialShareLink extends PolymerElement {
        */
       __linkText: {
         name: "__linkText",
-        type: "String",
+        type: String,
         computed: "_getLinkText(text,type)"
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
 
   /**

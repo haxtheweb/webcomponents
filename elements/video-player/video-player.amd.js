@@ -1,4 +1,4 @@
-define(["exports","require","./node_modules/@polymer/polymer/polymer-element.js","./node_modules/@polymer/polymer/lib/utils/render-status.js","./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js","./node_modules/@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js","./node_modules/@polymer/polymer/lib/elements/dom-repeat.js","./node_modules/@polymer/polymer/lib/elements/dom-if.js","./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js","./node_modules/@lrnwebcomponents/media-behaviors/media-behaviors.js"],function(_exports,_require,_polymerElement,_renderStatus,_HAXWiring,_a11yBehaviors,_domRepeat,_domIf,_schemaBehaviors,_mediaBehaviors){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.VideoPlayer=void 0;_require=babelHelpers.interopRequireWildcard(_require);function _templateObject_97caffe081c311e98457696a012aa36d(){var data=babelHelpers.taggedTemplateLiteral(["\n<style>\n:host {\n  display: block;\n  margin: 0 0 15px;\n}\n.video-caption {\n  font-style: italic;\n  margin: 0;\n  padding: 8px;\n  @apply --video-player-caption-theme;\n}</style>\n<div style$=\"[[playerStyle]]\">\n<template is=\"dom-if\" if=\"[[isA11yMedia]]\" restamp>\n  <a11y-media-player\n    accent-color$=\"[[accentColor]]\"\n    audio-only$=\"[[audioOnly]]\"\n    dark$=\"[[dark]]\"\n    dark-transcript$=\"[[darkTranscript]]\"\n    disable-interactive$=\"[[disableInteractive]]\"\n    hide-timestamps$=\"[[hideTimestamps]]\"\n    lang$=\"[[lang]]\"\n    media-type$=\"[[sourceType]]\"\n    preload$=\"[[preload]]\"\n    media-title$=\"[[mediaTitle]]\"\n    sources$=\"[[sourceData]]\"\n    stand-alone$=\"[[__standAlone]]\"\n    sticky-corner$=\"[[stickyCorner]]\"\n    thumbnail-src$=\"[[thumbnailSrc]]\"\n    tracks$=\"[[trackData]]\"\n    crossorigin$=\"[[crossorigin]]\"\n    youtube-id$=\"[[youtubeId]]\"\n  >\n    <template id=\"sources\" is=\"dom-repeat\" items=\"[[sourceData]]\" as=\"sd\" restamp>\n      <source src$=\"[[sd.src]]\" type$=\"[[sd.type]]\" />\n    </template>\n    <template id=\"tracks\" is=\"dom-repeat\" items=\"[[trackData]]\" as=\"track\" restamp>\n      <track\n        src$=\"[[track.src]]\"\n        kind$=\"[[track.kind]]\"\n        label$=\"[[track.label]]\"\n        srclang$=\"[[track.lang]]\"\n      />\n    </template>\n    <slot name=\"caption\"></slot>\n  </a11y-media-player>\n</template>\n<template is=\"dom-if\" if=\"[[!isA11yMedia]]\">\n  <template is=\"dom-if\" if=\"[[sandboxed]]\">\n    <div class=\"responsive-video-container\" lang$=\"[[lang]]\">\n      <webview\n        resource$=\"[[schemaResourceID]]-video\"\n        src$=\"[[sourceData.0.src]]\"\n        width$=\"[[width]]\"\n        height$=\"[[height]]\"\n        frameborder=\"0\"\n      ></webview>\n    </div>\n  </template>\n  <template is=\"dom-if\" if=\"[[!sandboxed]]\">\n    <template is=\"dom-if\" if=\"[[iframed]]\">\n      <div class=\"responsive-video-container\" lang$=\"[[lang]]\">\n        <iframe\n          resource$=\"[[schemaResourceID]]-video\"\n          src$=\"[[sourceData.0.src]]\"\n          width$=\"[[width]]\"\n          height$=\"[[height]]\"\n          frameborder=\"0\"\n          webkitallowfullscreen=\"\"\n          mozallowfullscreen=\"\"\n          allowfullscreen=\"\"\n        ></iframe>\n      </div>\n    </template>\n  </template>\n  <div id=\"videocaption\" class$=\"video-caption\">\n    <p>\n      [[mediaTitle]]\n      <span class=\"media-type print-only\">(embedded media)</span>\n    </p>\n    <slot name=\"caption\"></slot>\n  </div>\n</template>"]);_templateObject_97caffe081c311e98457696a012aa36d=function _templateObject_97caffe081c311e98457696a012aa36d(){return data};return data}/**
+define(["exports","require","./node_modules/@polymer/polymer/polymer-element.js","./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js","./node_modules/@polymer/polymer/lib/utils/render-status.js","./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js","./node_modules/@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js","./node_modules/@polymer/polymer/lib/elements/dom-repeat.js","./node_modules/@polymer/polymer/lib/elements/dom-if.js","./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js","./node_modules/@lrnwebcomponents/media-behaviors/media-behaviors.js"],function(_exports,_require,_polymerElement,_simpleColors,_renderStatus,_HAXWiring,_a11yBehaviors,_domRepeat,_domIf,_schemaBehaviors,_mediaBehaviors){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.VideoPlayer=void 0;_require=babelHelpers.interopRequireWildcard(_require);function _templateObject_029be740ab1711e9b92b47c66a4487f9(){var data=babelHelpers.taggedTemplateLiteral(["\n<style>\n:host {\n  display: block;\n  margin: 0 0 15px;\n}\n.video-caption {\n  font-style: italic;\n  margin: 0;\n  padding: 8px;\n  @apply --video-player-caption-theme;\n}</style>\n<div style$=\"[[playerStyle]]\">\n<template is=\"dom-if\" if=\"[[isA11yMedia]]\" restamp>\n  <a11y-media-player\n    accent-color$=\"[[accentColor]]\"\n    audio-only$=\"[[audioOnly]]\"\n    dark$=\"[[dark]]\"\n    dark-transcript$=\"[[darkTranscript]]\"\n    disable-interactive$=\"[[disableInteractive]]\"\n    hide-timestamps$=\"[[hideTimestamps]]\"\n    hide-transcript$=\"[[hideTiranscript]]\"\n    lang$=\"[[lang]]\"\n    media-type$=\"[[sourceType]]\"\n    preload$=\"[[preload]]\"\n    media-title$=\"[[mediaTitle]]\"\n    sources$=\"[[sourceData]]\"\n    stand-alone$=\"[[__standAlone]]\"\n    sticky-corner$=\"[[stickyCorner]]\"\n    thumbnail-src$=\"[[thumbnailSrc]]\"\n    tracks$=\"[[trackData]]\"\n    crossorigin$=\"[[crossorigin]]\"\n    youtube-id$=\"[[youtubeId]]\"\n  >\n    <template id=\"sources\" is=\"dom-repeat\" items=\"[[sourceData]]\" as=\"sd\" restamp>\n      <source src$=\"[[sd.src]]\" type$=\"[[sd.type]]\" />\n    </template>\n    <template id=\"tracks\" is=\"dom-repeat\" items=\"[[trackData]]\" as=\"track\" restamp>\n      <track\n        src$=\"[[track.src]]\"\n        kind$=\"[[track.kind]]\"\n        label$=\"[[track.label]]\"\n        srclang$=\"[[track.lang]]\"\n      />\n    </template>\n    <slot name=\"caption\"></slot>\n  </a11y-media-player>\n</template>\n<template is=\"dom-if\" if=\"[[!isA11yMedia]]\">\n  <template is=\"dom-if\" if=\"[[sandboxed]]\">\n    <div class=\"responsive-video-container\" lang$=\"[[lang]]\">\n      <webview\n        resource$=\"[[schemaResourceID]]-video\"\n        src$=\"[[sourceData.0.src]]\"\n        width$=\"[[width]]\"\n        height$=\"[[height]]\"\n        frameborder=\"0\"\n      ></webview>\n    </div>\n  </template>\n  <template is=\"dom-if\" if=\"[[!sandboxed]]\">\n    <template is=\"dom-if\" if=\"[[iframed]]\">\n      <div class=\"responsive-video-container\" lang$=\"[[lang]]\">\n        <iframe\n          resource$=\"[[schemaResourceID]]-video\"\n          src$=\"[[sourceData.0.src]]\"\n          width$=\"[[width]]\"\n          height$=\"[[height]]\"\n          frameborder=\"0\"\n          webkitallowfullscreen=\"\"\n          mozallowfullscreen=\"\"\n          allowfullscreen=\"\"\n        ></iframe>\n      </div>\n    </template>\n  </template>\n  <div id=\"videocaption\" class$=\"video-caption\">\n    <p>\n      [[mediaTitle]]\n      <span class=\"media-type print-only\">(embedded media)</span>\n    </p>\n    <slot name=\"caption\"></slot>\n  </div>\n</template>"]);_templateObject_029be740ab1711e9b92b47c66a4487f9=function _templateObject_029be740ab1711e9b92b47c66a4487f9(){return data};return data}/**
  * `video-player`
  * `A simple responsive video player with ridiculously powerful backing`
  *
@@ -33,70 +33,72 @@ define(["exports","require","./node_modules/@polymer/polymer/polymer-element.js"
  * @polymer
  * @demo demo/index.html
  */var VideoPlayer=/*#__PURE__*/function(_MediaBehaviorsVideo){babelHelpers.inherits(VideoPlayer,_MediaBehaviorsVideo);babelHelpers.createClass(VideoPlayer,null,[{key:"template",// render function
-get:function get(){return(0,_polymerElement.html)(_templateObject_97caffe081c311e98457696a012aa36d())}// haxProperty definition
+get:function get(){return(0,_polymerElement.html)(_templateObject_029be740ab1711e9b92b47c66a4487f9())}// haxProperty definition
 },{key:"haxProperties",get:function get(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Video player",description:"This can present video in a highly accessible manner regardless of source.",icon:"av:play-circle-filled",color:"red",groups:["Video","Media"],handles:[{type:"video",source:"source",title:"caption",caption:"caption",description:"caption",color:"primaryColor"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"accentColor",title:"Accent color",description:"Select the accent color for the player.",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{attribute:"dark",title:"Dark theme",description:"Enable dark theme for the player.",inputMethod:"boolean",icon:"invert-colors"}],configure:[{property:"source",title:"Source",description:"The URL for this video.",inputMethod:"haxupload",icon:"link",required:!0,validationType:"url"},{property:"track",title:"Closed captions",description:"The URL for the captions file.",inputMethod:"textfield",icon:"link",required:!0,validationType:"url"},{property:"thumbnailSrc",title:"Thumbnail image",description:"Optional. The URL for a thumbnail/poster image.",inputMethod:"textfield",icon:"link",required:!0,validationType:"url"},{property:"mediaTitle",title:"Title",description:"Simple title for under video",inputMethod:"textfield",icon:"av:video-label",required:!1,validationType:"text"},{property:"accentColor",title:"Accent color",description:"Select the accent color for the player.",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{attribute:"dark",title:"Dark theme",description:"Enable dark theme for the player.",inputMethod:"boolean",icon:"invert-colors"}],advanced:[{property:"darkTranscript",title:"Dark theme for transcript",description:"Enable dark theme for the transcript.",inputMethod:"boolean"},{property:"hideTimestamps",title:"Hide timestamps",description:"Hide the time stamps on the transcript.",inputMethod:"boolean"},{property:"preload",title:"Preload source(s).",description:"How the sources should be preloaded, i.e. auto, metadata (default), or none.",inputMethod:"select",options:{preload:"Preload all media",metadata:"Preload media metadata only",none:"Don't preload anything"}},{property:"stickyCorner",title:"Sticky Corner",description:"Set the corner where a video plays when scrolled out of range, or choose none to disable sticky video.",inputMethod:"select",options:{none:"none","top-left":"top-left","top-right":"top-right","bottom-left":"bottom-left","bottom-right":"bottom-right"}},{property:"sources",title:"Other sources",description:"List of other sources",inputMethod:"array",properties:[{property:"src",title:"Source",description:"The URL for this video.",inputMethod:"textfield"},{property:"type",title:"Type",description:"Media type data",inputMethod:"select",options:{"audio/aac":"acc audio","audio/flac":"flac audio","audio/mp3":"mp3 audio","video/mp4":"mp4 video","video/mov":"mov video","audio/ogg":"ogg audio","video/ogg":"ogg video","audio/wav":"wav audio","audio/webm":"webm audio","video/webm":"webm video"}}]},{property:"tracks",title:"Track list",description:"Tracks of different languages of closed captions",inputMethod:"array",properties:[{property:"kind",title:"Kind",description:"Kind of track",inputMethod:"select",options:{subtitles:"subtitles"/*,
               Future Features
               'description': 'description',
               'thumbnails': 'thumbnails',
               'interactive': 'interactive',
               'annotation': 'annotation'*/}},{property:"label",title:"Label",description:"The human-readable name for this track, eg. \"English Subtitles\"",inputMethod:"textfield"},{property:"src",title:"Source",description:"Source of the track",inputMethod:"textfield"},{property:"srclang",title:"Two letter, language code, eg. 'en' for English, \"de\" for German, \"es\" for Spanish, etc.",description:"Label",inputMethod:"textfield"}]}]}}}// properties available to the custom element for data binding
-},{key:"properties",get:function get(){return{/**
+},{key:"properties",get:function get(){var props={/**
    * Is the media an audio file only?
-   */audioOnly:{type:"Boolean",value:!1},/**
+   */audioOnly:{type:Boolean,value:!1},/**
    * Optional accent color for controls,
    * using the following materialize "colors":
    * red, pink, purple, deep-purple, indigo, blue,
    * light blue, cyan, teal, green, light green, lime,
    * yellow, amber, orange, deep-orange, and brown.
    * Default is null.
-   */accentColor:{type:"String",value:null,reflectToAttribute:!0},/**
+   */accentColor:{type:String,value:null,reflectToAttribute:!0},/**
    * Cross origin flag for transcripts to load
-   */crossorigin:{type:"Boolean",value:!1,reflectToAttribute:!0},/**
+   */crossorigin:{type:Boolean,value:!1,reflectToAttribute:!0},/**
    * Enables darker player.
-   */dark:{type:"Boolean",value:!1,reflectToAttribute:!0},/**
+   */dark:{type:Boolean,value:!1,reflectToAttribute:!0},/**
    * Use dark theme on transcript? Default is false, even when player is dark.
-   */darkTranscript:{type:"Boolean",value:!1},/**
+   */darkTranscript:{type:Boolean,value:!1},/**
    * disable interactive mode that makes the transcript clickable
-   */disableInteractive:{type:"Boolean",value:!1},/**
+   */disableInteractive:{type:Boolean,value:!1},/**
    * The height of the media player for non-a11y-media.
-   */height:{type:"String",value:null},/**
+   */height:{type:String,value:null},/**
    * show cue's start and end time
-   */hideTimestamps:{type:"Boolean",value:!1},/**
+   */hideTimestamps:{type:Boolean,value:!1},/**
+   * hide the transcript by default
+   */hideTranscript:{type:Boolean,value:!1},/**
    * Computed if this should be in an iframe or not.
-   */iframed:{type:"Boolean",computed:"_computeIframed(sourceData, sandboxed)"},/**
+   */iframed:{type:Boolean,computed:"_computeIframed(sourceData, sandboxed)"},/**
    * Computed if this should be in a11y-media-player.
-   */isA11yMedia:{type:"Boolean",computed:"_computeA11yMedia(sourceType, sandboxed)"},/**
+   */isA11yMedia:{type:Boolean,computed:"_computeA11yMedia(sourceType, sandboxed)"},/**
    * The type of source, i.e. "local", "vimeo", "youtube", etc.
-   */isYoutube:{type:"Boolean",computed:"_computeYoutube(sourceType)"},/**
+   */isYoutube:{type:Boolean,computed:"_computeYoutube(sourceType)"},/**
    * The language of the media
-   */lang:{type:"String",value:"en"},/**
+   */lang:{type:String,value:"en"},/**
    * Simple caption for the video
-   */mediaTitle:{type:"String"},/**
+   */mediaTitle:{type:String},/**
    * What to preload for a11y-media-player: auto, metadata (default), or none.
-   */preload:{type:"String",value:"metadata"},/* *
+   */preload:{type:String,value:"metadata"},/* *
      * Responsive video, calculated from not-responsive.
      * /
     "responsive": {
-      "type": "Boolean",
+      "type": Boolean,
       "reflectToAttribute": true,
       "value": true,
     },*/ /**
    * Compute if this is a sandboxed system or not
-   */sandboxed:{type:"Boolean",computed:"_computeSandboxed(sourceData)"},/**
+   */sandboxed:{type:Boolean,computed:"_computeSandboxed(sourceData)"},/**
    * Source of the video
-   */source:{type:"String",value:null,reflectToAttribute:!0},/**
+   */source:{type:String,value:null,reflectToAttribute:!0},/**
    * Source of the video
-   */sources:{type:"Array",value:[]},/**
+   */sources:{type:Array,value:[]},/**
    * List of source objects
-   */sourceData:{type:"Array",computed:"_getSourceData(source,sources,trackData)"},/**
+   */sourceData:{type:Array,computed:"_getSourceData(source,sources,trackData)"},/**
    * The type of source, i.e. "local", "vimeo", "youtube", etc.
-   */sourceType:{type:"String",computed:"_computeSourceType(sourceData)"},/**
+   */sourceType:{type:String,computed:"_computeSourceType(sourceData)"},/**
    * When playing but scrolled off screen, to which corner does it "stick":
    * top-left, top-right, bottom-left, bottom-right, or none?
    * Default is "top-right". "None" disables stickiness.
-   */stickyCorner:{type:"String",value:"top-right",reflectToAttribute:!0},/**
+   */stickyCorner:{type:String,value:"top-right",reflectToAttribute:!0},/**
    * The url for a single subtitle track
-   */track:{type:"String",value:null},/**
+   */track:{type:String,value:null},/**
    * Array of text tracks
    * [{
    *  "src": "path/to/track.vtt",
@@ -104,7 +106,7 @@ get:function get(){return(0,_polymerElement.html)(_templateObject_97caffe081c311
    *  "srclang": "en",
    *  "kind": "subtitles",
    * }]
-   */tracks:{type:"Array",value:[]},/**
+   */tracks:{type:Array,value:[]},/**
    * Cleaned array of text tracks
    * [{
    *  "src": "path/to/track.vtt",
@@ -112,20 +114,20 @@ get:function get(){return(0,_polymerElement.html)(_templateObject_97caffe081c311
    *  "srclang": "en",
    *  "kind": "subtitles",
    * }]
-   */trackData:{type:"Array",computed:"_getTrackData(track,tracks)"},/**
+   */trackData:{type:Array,computed:"_getTrackData(track,tracks)"},/**
    * Source of optional thumbnail image
-   */thumbnailSrc:{type:"String",value:null,reflectToAttribute:!0},/* *
+   */thumbnailSrc:{type:String,value:null,reflectToAttribute:!0},/* *
      * Calculate vimeo color based on accent color.
      * /
     "vimeoColor": {
-      "type": "String",
+      "type": String,
       "computed": getVimeoColor(dark,accentColor),
     }, 
     */ /**
    * The width of the media player for non-a11y-media.
-   */width:{type:"String",value:null},/**
+   */width:{type:String,value:null},/**
    * The type of source, i.e. "local", "vimeo", "youtube", etc.
-   */youtubeId:{type:"String",computed:"_computeYoutubeId(source,sourceType)"}}}}]);function VideoPlayer(){var _this;babelHelpers.classCallCheck(this,VideoPlayer);_this=babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(VideoPlayer).call(this));new Promise(function(res,rej){return _require.default(["./node_modules/@lrnwebcomponents/a11y-media-player/a11y-media-player.js"],res,rej)});(0,_renderStatus.afterNextRender)(babelHelpers.assertThisInitialized(_this),function(){this.HAXWiring=new _HAXWiring.HAXWiring;this.HAXWiring.setup(VideoPlayer.haxProperties,VideoPlayer.tag,this)});return _this}/**
+   */youtubeId:{type:String,computed:"_computeYoutubeId(source,sourceType)"}};if(babelHelpers.get(babelHelpers.getPrototypeOf(VideoPlayer),"properties",this)){props=Object.assign(props,babelHelpers.get(babelHelpers.getPrototypeOf(VideoPlayer),"properties",this))}return props}}]);function VideoPlayer(){var _this;babelHelpers.classCallCheck(this,VideoPlayer);_this=babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(VideoPlayer).call(this));new Promise(function(res,rej){return _require.default(["./node_modules/@lrnwebcomponents/a11y-media-player/a11y-media-player.js"],res,rej)});(0,_renderStatus.afterNextRender)(babelHelpers.assertThisInitialized(_this),function(){this.HAXWiring=new _HAXWiring.HAXWiring;this.HAXWiring.setup(VideoPlayer.haxProperties,VideoPlayer.tag,this)});return _this}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */babelHelpers.createClass(VideoPlayer,[{key:"connectedCallback",/**
@@ -165,4 +167,6 @@ if("function"===typeof test.reload){return!0}}return!1}/**
    * Type is set by source so this ensures a waterfall
    * of valid values.
    */},{key:"_computeSRC",value:function _computeSRC(source){if(null!==source&&babelHelpers.typeof(source)!==void 0){var type=this.sourceType!==void 0?this.sourceType:window.MediaBehaviors.Video.getVideoType(source);// ensure that this is a valid url / cleaned up a bit
-source=window.MediaBehaviors.Video.cleanVideoSource(source,type);if("vimeo"==type){if(this.vimeoTitle){source+="?title=1"}else{source+="?title=0"}if(this.vimeoByline){source+="&byline=1"}else{source+="&byline=0"}if(this.vimeoPortrait){source+="&portrait=1"}else{source+="&portrait=0"}if(babelHelpers.typeof(this.videoColor)!==("undefined"===typeof void 0?"undefined":babelHelpers.typeof(void 0))){source+="&color="+this.videoColor}}else if("dailymotion"==type){source+="&ui-start-screen-info=false";source+="&ui-logo=false";source+="&sharing-enable=false";source+="&endscreen-enable=false";if(babelHelpers.typeof(this.videoColor)!==("undefined"===typeof void 0?"undefined":babelHelpers.typeof(void 0))){source+="&ui-highlight="+this.videoColor}}}return source}}],[{key:"tag",get:function get(){return"video-player"}}]);return VideoPlayer}((0,_mediaBehaviors.MediaBehaviorsVideo)((0,_a11yBehaviors.A11yBehaviors)((0,_schemaBehaviors.SchemaBehaviors)(_polymerElement.PolymerElement))));_exports.VideoPlayer=VideoPlayer;window.customElements.define(VideoPlayer.tag,VideoPlayer)});
+source=window.MediaBehaviors.Video.cleanVideoSource(source,type);if("vimeo"==type){if(this.vimeoTitle){source+="?title=1"}else{source+="?title=0"}if(this.vimeoByline){source+="&byline=1"}else{source+="&byline=0"}if(this.vimeoPortrait){source+="&portrait=1"}else{source+="&portrait=0"}if(babelHelpers.typeof(this.videoColor)!==("undefined"===typeof void 0?"undefined":babelHelpers.typeof(void 0))){source+="&color="+this.videoColor}}else if("dailymotion"==type){source+="&ui-start-screen-info=false";source+="&ui-logo=false";source+="&sharing-enable=false";source+="&endscreen-enable=false";if(babelHelpers.typeof(this.videoColor)!==("undefined"===typeof void 0?"undefined":babelHelpers.typeof(void 0))){source+="&ui-highlight="+this.videoColor}}}return source}/**
+   * postProcesshaxNodeToContent - clean up so we don't have empty array data
+   */},{key:"postProcesshaxNodeToContent",value:function postProcesshaxNodeToContent(content){content=content.replace(" sources=\"[]\",","");content=content.replace(" tracks=\"[]\",","");return content}}],[{key:"tag",get:function get(){return"video-player"}}]);return VideoPlayer}((0,_mediaBehaviors.MediaBehaviorsVideo)((0,_a11yBehaviors.A11yBehaviors)((0,_schemaBehaviors.SchemaBehaviors)(_simpleColors.SimpleColors))));_exports.VideoPlayer=VideoPlayer;window.customElements.define(VideoPlayer.tag,VideoPlayer)});

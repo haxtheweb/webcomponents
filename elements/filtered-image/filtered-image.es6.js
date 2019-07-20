@@ -38,9 +38,9 @@ static get template(){return html`
   <image id="image" filter$="url(#[[__id]])" x="0" y="0"></image>
 </svg>`}// haxProperty definition
 static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Filtered image",description:"An image using an SVG filter. Can be used to make background images have more contrast with text.",icon:"icons:android",color:"green",groups:["Image"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"nikkimk",owner:"The Pennsylvania State University"}},settings:{quick:[{property:"src",description:"",inputMethod:"textfield",required:!0,icon:"icons:link",validationType:"url"},{property:"alt",description:"",inputMethod:"alt",required:!0,icon:"icons:accessibility"}],configure:[{property:"src",description:"",inputMethod:"textfield",required:!0,icon:"icons:link",validationType:"url"},{property:"alt",description:"",inputMethod:"alt",required:!0,icon:"icons:accessibility"}],advanced:[]}}}// properties available to the custom element for data binding
-static get properties(){return{src:{name:"src",type:"String",value:"",observer:"_srcChanged"},__id:{name:"__id",type:"String",computed:"_getID(src,matrix)"},alt:{name:"alt",type:"String",value:""},height:{name:"width",type:"String",value:"",observer:"_heightChanged"},width:{name:"unset",type:"String",value:"",observer:"_widthChanged"},viewBox:{name:"viewBox",type:"String",computed:"_getViewBox(height,width)"},color:{name:"color",type:"String",value:"#ffffff"},strength:{name:"strength",type:"Number",value:1},contrast:{name:"contrast",type:"Number",value:0},/*"__filters": {
+static get properties(){let props={src:{name:"src",type:String,value:"",observer:"_srcChanged"},__id:{name:"__id",type:String,computed:"_getID(src,matrix)"},alt:{name:"alt",type:String,value:""},height:{name:"width",type:String,value:"",observer:"_heightChanged"},width:{name:"unset",type:String,value:"",observer:"_widthChanged"},viewBox:{name:"viewBox",type:String,computed:"_getViewBox(height,width)"},color:{name:"color",type:String,value:"#ffffff"},strength:{name:"strength",type:Number,value:1},contrast:{name:"contrast",type:Number,value:0},/*"__filters": {
     "name": "__filters",
-    "type": "Array",
+    "type": Array,
     "value": {
       "red": [0.750,0.0500,0.000],
       "pink": [0.650,0.0300,0.270],
@@ -61,7 +61,7 @@ static get properties(){return{src:{name:"src",type:"String",value:"",observer:"
       "brown": [0.200,0.100,0.075],
       "blue-grey": [0.100,0.200,0.300]
     }
-  },*/__matrix:{name:"matrix",type:"Array",computed:"_getMatrix(color,contrast,strength)"}}}/**
+  },*/__matrix:{name:"matrix",type:Array,computed:"_getMatrix(color,contrast,strength)"}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"filtered-image"}/**

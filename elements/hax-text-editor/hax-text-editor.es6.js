@@ -1,7 +1,7 @@
 /**
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";/**
+ */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{RichTextEditor}from"./node_modules/@lrnwebcomponents/rich-text-editor/rich-text-editor.js";import"./lib/hax-text-editor-toolbar.js";/**
  * `hax-text-editor`
  * `rich-text-editor configured for HAX`
  *
@@ -11,18 +11,11 @@
  * @customElement
  * @polymer
  * @demo demo/index.html
- */class HaxTextEditor extends PolymerElement{// render function
+ */class HaxTextEditor extends RichTextEditor{// render function
 static get template(){return html`
-<style>:host {
-  display: block;
-}
-
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`}// properties available to the custom element for data binding
-static get properties(){return{}}/**
+<style></style>
+${super.template}`}// properties available to the custom element for data binding
+static get properties(){return{}}constructor(){super();this.type="hax-text-editor-toolbar"}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"hax-text-editor"}/**

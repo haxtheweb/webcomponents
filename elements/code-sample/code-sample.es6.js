@@ -76,13 +76,13 @@ button {
   <pre id="code"></pre>
 </div>`}// haxProperty definition
 static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Code sample",description:"A sample of code highlighted in the page",icon:"icons:code",color:"blue",groups:["Code","Development"],meta:{author:"kuscamara"}},settings:{quick:[],configure:[{slot:"",slotWrapper:"template",slotAttributes:{"preserve-content":"preserve-content"},title:"Source",description:"The URL for this video.",inputMethod:"code-editor"},{attribute:"copy-clipboard-button",title:"Copy to clipboard button",description:"button in top right that says copy to clipboard",inputMethod:"boolean"}],advanced:[]}}}// properties available to the custom element for data binding
-static get properties(){return{// Set to true to show a copy to clipboard button.
-copyClipboardButton:{type:"Boolean",value:!1},// Tagged template literal with custom styles.
+static get properties(){let props={// Set to true to show a copy to clipboard button.
+copyClipboardButton:{type:Boolean,value:!1},// Tagged template literal with custom styles.
 // Only supported in Shadow DOM.
-theme:{type:"String",observer:"_themeChanged"},// Set to true to render the code inside the template.
-render:{type:"Boolean",value:!1},// Code type (optional). (eg.: html, js, css)
+theme:{type:String,observer:"_themeChanged"},// Set to true to render the code inside the template.
+render:{type:Boolean,value:!1},// Code type (optional). (eg.: html, js, css)
 // Options are the same as the available classes for `<code>` tag using highlight.js
-type:{type:"String"}}}/**
+type:{type:String}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"code-sample"}/**

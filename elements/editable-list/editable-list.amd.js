@@ -1,4 +1,4 @@
-define(["exports","./node_modules/@polymer/polymer/polymer-element.js","./node_modules/@lrnwebcomponents/simple-modal/simple-modal.js","./node_modules/@polymer/iron-list/iron-list.js","./lib/editable-list-item.js"],function(_exports,_polymerElement,_simpleModal,_ironList,_editableListItem){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.EditableList=void 0;function _templateObject_f6b1645081c211e99ef07925485858c5(){var data=babelHelpers.taggedTemplateLiteral(["\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n\niron-list {\n  height: 100%;\n}</style>\n<iron-list id=\"list\" items=\"[[items]]\" as=\"item\" mutable-data>\n  <template>\n    <editable-list-item edit-mode=\"[[item.metadata.canEdit]]\" can-edit=\"[[item.metadata.canEdit]]\" can-delete=\"[[item.metadata.canDelete]]\" value=\"[[item.title]]\"></editable-list-item>\n  </template>\n</iron-list>"]);_templateObject_f6b1645081c211e99ef07925485858c5=function _templateObject_f6b1645081c211e99ef07925485858c5(){return data};return data}/**
+define(["exports","./node_modules/@polymer/polymer/polymer-element.js","./node_modules/@lrnwebcomponents/simple-modal/simple-modal.js","./node_modules/@polymer/iron-list/iron-list.js","./lib/editable-list-item.js"],function(_exports,_polymerElement,_simpleModal,_ironList,_editableListItem){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.EditableList=void 0;function _templateObject_cf00a660ab1511e9b680897894b74d9d(){var data=babelHelpers.taggedTemplateLiteral(["\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n\niron-list {\n  height: 100%;\n}</style>\n<iron-list id=\"list\" items=\"[[items]]\" as=\"item\" mutable-data>\n  <template>\n    <editable-list-item edit-mode=\"[[item.metadata.canEdit]]\" can-edit=\"[[item.metadata.canEdit]]\" can-delete=\"[[item.metadata.canDelete]]\" value=\"[[item.title]]\"></editable-list-item>\n  </template>\n</iron-list>"]);_templateObject_cf00a660ab1511e9b680897894b74d9d=function _templateObject_cf00a660ab1511e9b680897894b74d9d(){return data};return data}/**
  * `editable-list`
  * `a listing of items that can be edited in place with operations`
  *
@@ -18,14 +18,14 @@ define(["exports","./node_modules/@polymer/polymer/polymer-element.js","./node_m
 var evt=new CustomEvent("simple-modal-hide",{bubbles:!0,cancelable:!0,detail:{}});this.dispatchEvent(evt)}// Observer editMode for changes
 },{key:"_editModeChanged",value:function _editModeChanged(newValue,oldValue){if(babelHelpers.typeof(newValue)!==("undefined"===typeof void 0?"undefined":babelHelpers.typeof(void 0))){this._itemsChanged(this.items);for(var i in this.items){if(this.items[i].metadata){this.items[i].metadata.canEdit=newValue;this.notifyPath("items.".concat(i,".metadata.canEdit"))}}}}// Observer items for changes
 },{key:"_itemsChanged",value:function _itemsChanged(newValue,oldValue){if(babelHelpers.typeof(newValue)!==("undefined"===typeof void 0?"undefined":babelHelpers.typeof(void 0))&&"string"===typeof newValue){this.set("items",JSON.parse(newValue))}}}],[{key:"template",// render function
-get:function get(){return(0,_polymerElement.html)(_templateObject_f6b1645081c211e99ef07925485858c5())}// properties available to the custom element for data binding
-},{key:"properties",get:function get(){return{/**
+get:function get(){return(0,_polymerElement.html)(_templateObject_cf00a660ab1511e9b680897894b74d9d())}// properties available to the custom element for data binding
+},{key:"properties",get:function get(){var props={/**
    * ability to edit the items in the list
-   */editMode:{name:"editMode",type:"Boolean",value:!1,notify:!0,reflectToAttribute:!0,observer:"_editModeChanged"},/**
+   */editMode:{name:"editMode",type:Boolean,value:!1,notify:!0,reflectToAttribute:!0,observer:"_editModeChanged"},/**
    * items array
-   */items:{name:"items",type:"Array",value:[],reflectToAttribute:!1,observer:"_itemsChanged"},/**
+   */items:{name:"items",type:Array,value:[],reflectToAttribute:!1,observer:"_itemsChanged"},/**
    * Active element being worked on in the list
-   */activeElement:{name:"activeElement",type:"Object"}}}/**
+   */activeElement:{name:"activeElement",type:Object}};if(babelHelpers.get(babelHelpers.getPrototypeOf(EditableList),"properties",this)){props=Object.assign(props,babelHelpers.get(babelHelpers.getPrototypeOf(EditableList),"properties",this))}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */},{key:"tag",get:function get(){return"editable-list"}}]);return EditableList}(_polymerElement.PolymerElement);_exports.EditableList=EditableList;window.customElements.define(EditableList.tag,EditableList)});

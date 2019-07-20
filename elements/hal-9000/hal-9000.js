@@ -39,13 +39,13 @@ class Hal9000 extends PolymerElement {
 
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       /**
        * Commands to listen for and take action on
        */
       commands: {
         name: "commands",
-        type: "Object",
+        type: Object,
         value: {},
         observer: "_commandsChanged"
       },
@@ -54,7 +54,7 @@ class Hal9000 extends PolymerElement {
        */
       respondsTo: {
         name: "respondsTo",
-        type: "String",
+        type: String,
         value: "(hal)",
         observer: "_respondsToChanged"
       },
@@ -63,7 +63,7 @@ class Hal9000 extends PolymerElement {
        */
       debug: {
         name: "debug",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         observer: "_debugChanged"
       },
@@ -72,7 +72,7 @@ class Hal9000 extends PolymerElement {
        */
       auto: {
         name: "auto",
-        type: "Boolean",
+        type: Boolean,
         reflectToAttribute: true,
         observer: "_autoChanged"
       },
@@ -81,7 +81,7 @@ class Hal9000 extends PolymerElement {
        */
       enabled: {
         name: "enabled",
-        type: "Boolean",
+        type: Boolean,
         reflectToAttribute: true,
         observer: "_enabledChanged"
       },
@@ -90,7 +90,7 @@ class Hal9000 extends PolymerElement {
        */
       pitch: {
         name: "pitch",
-        type: "Number",
+        type: Number,
         reflectToAttribute: true,
         value: 0.9
       },
@@ -99,7 +99,7 @@ class Hal9000 extends PolymerElement {
        */
       rate: {
         name: "rate",
-        type: "Number",
+        type: Number,
         reflectToAttribute: true,
         value: 0.9
       },
@@ -108,11 +108,15 @@ class Hal9000 extends PolymerElement {
        */
       language: {
         name: "language",
-        type: "String",
+        type: String,
         reflectToAttribute: true,
         value: "en-US"
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
 
   /**

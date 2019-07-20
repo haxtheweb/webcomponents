@@ -368,7 +368,7 @@ class VideoPlayer extends MediaBehaviorsVideo(
   }
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       /**
        * Is the media an audio file only?
        */
@@ -599,6 +599,10 @@ class VideoPlayer extends MediaBehaviorsVideo(
         computed: "_computeYoutubeId(source,sourceType)"
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
   constructor() {
     super();

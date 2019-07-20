@@ -43,62 +43,66 @@ class LunrSearch extends PolymerElement {
 
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       dataSource: {
         name: "dataSource",
-        type: "String"
+        type: String
       },
       data: {
         name: "data",
-        type: "Array",
+        type: Array,
         notify: true
       },
       method: {
         name: "method",
-        type: "String",
+        type: String,
         value: "GET"
       },
       search: {
-        type: "String",
+        type: String,
         notify: true
       },
       results: {
-        type: "Array",
+        type: Array,
         computed: "searched(data, search, index, minScore, limit)",
         notify: true
       },
       noStopWords: {
-        type: "Boolean",
+        type: Boolean,
         value: false,
         notify: true
       },
       fields: {
-        type: "Array",
+        type: Array,
         value: []
       },
       indexNoStopWords: {
-        type: "Object"
+        type: Object
       },
       index: {
-        type: "Object",
+        type: Object,
         computed: "_createIndex(data, fields, noStopWords, __lunrLoaded)"
       },
       __lunrLoaded: {
-        type: "Boolean"
+        type: Boolean
       },
       limit: {
-        type: "Number",
+        type: Number,
         value: 500
       },
       minScore: {
-        type: "Number",
+        type: Number,
         value: 0
       },
       log: {
-        type: "Boolean",
+        type: Boolean,
         value: false
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
   constructor() {
     super();

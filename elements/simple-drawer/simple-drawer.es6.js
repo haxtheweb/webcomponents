@@ -112,7 +112,7 @@ app-drawer {
     </paper-button>
   </div>
 </app-drawer>`}// properties available to the custom element for data binding
-static get properties(){return{/**
+static get properties(){let props={/**
    * heading / label of the modal
    */title:{name:"title",type:String,value:""},/**
    * alignment of the drawer
@@ -124,7 +124,7 @@ static get properties(){return{/**
    * Close icon
    */closeIcon:{name:"closeIcon",type:String,value:"cancel"},/**
    * The element that invoked this. This way we can track our way back accessibly
-   */invokedBy:{name:"invokedBy",type:Object}}}/**
+   */invokedBy:{name:"invokedBy",type:Object}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"simple-drawer"}/**

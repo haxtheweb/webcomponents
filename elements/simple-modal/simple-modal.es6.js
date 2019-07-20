@@ -165,7 +165,7 @@ h2 {
     <slot name="buttons"></slot>
   </div>
 </paper-dialog>`}// properties available to the custom element for data binding
-static get properties(){return{/**
+static get properties(){let props={/**
    * heading / label of the modal
    */title:{name:"title",type:String,value:""},/**
    * open state
@@ -177,7 +177,7 @@ static get properties(){return{/**
    * The element that invoked this. This way we can track our way back accessibly
    */invokedBy:{name:"invokedBy",type:Object},/**
    * support for modal flag
-   */modal:{name:"modal",type:Boolean,value:!1}}}constructor(){super();import("./node_modules/@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js");import("./node_modules/@polymer/paper-button/paper-button.js");import("./node_modules/@polymer/iron-icons/iron-icons.js");import("./node_modules/@polymer/iron-icon/iron-icon.js");import("./node_modules/@polymer/neon-animation/animations/scale-up-animation.js");import("./node_modules/@polymer/neon-animation/animations/fade-out-animation.js")}/**
+   */modal:{name:"modal",type:Boolean,value:!1}};if(super.properties){props=Object.assign(props,super.properties)}return props}constructor(){super();import("./node_modules/@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js");import("./node_modules/@polymer/paper-button/paper-button.js");import("./node_modules/@polymer/iron-icons/iron-icons.js");import("./node_modules/@polymer/iron-icon/iron-icon.js");import("./node_modules/@polymer/neon-animation/animations/scale-up-animation.js");import("./node_modules/@polymer/neon-animation/animations/fade-out-animation.js")}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"simple-modal"}/**

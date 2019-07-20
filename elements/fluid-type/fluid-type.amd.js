@@ -12,7 +12,7 @@ define(["exports"],function(_exports){"use strict";Object.defineProperty(_export
  * @demo demo/index.html
  */var FluidType=/*#__PURE__*/function(_HTMLElement){babelHelpers.inherits(FluidType,_HTMLElement);babelHelpers.createClass(FluidType,[{key:"html",// render function
 get:function get(){return"\n<style>:host {\n  --fluid-type-min-size: 1;\n  --fluid-type-max-size: 2;\n  --fluid-type-min-screen: 20;\n  --fluid-type-max-screen: 88;\n\n  font-size: calc(\n    (var(--fluid-type-min-size) * 1rem) + (var(--fluid-type-max-size) - var(--fluid-type-min-size)) * (100vw - (var(--fluid-type-min-screen) * 1rem)) /\n      (var(--fluid-type-max-screen) - var(--fluid-type-min-screen))\n  );\n}</style>\n<slot></slot>"}// properties available to the custom element for data binding
-}],[{key:"properties",get:function get(){return{}}/**
+}],[{key:"properties",get:function get(){var props={};if(babelHelpers.get(babelHelpers.getPrototypeOf(FluidType),"properties",this)){props=Object.assign(props,babelHelpers.get(babelHelpers.getPrototypeOf(FluidType),"properties",this))}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */},{key:"tag",get:function get(){return"fluid-type"}/**

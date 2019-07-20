@@ -25,23 +25,23 @@ static get template(){return html`
 }
 </style>
 <slot></slot>`}// properties available to the custom element for data binding
-static get properties(){return{/**
+static get properties(){let props={/**
    * Commands to listen for and take action on
-   */commands:{name:"commands",type:"Object",value:{},observer:"_commandsChanged"},/**
+   */commands:{name:"commands",type:Object,value:{},observer:"_commandsChanged"},/**
    * The name that HAL 9000 should respond to.
-   */respondsTo:{name:"respondsTo",type:"String",value:"(hal)",observer:"_respondsToChanged"},/**
+   */respondsTo:{name:"respondsTo",type:String,value:"(hal)",observer:"_respondsToChanged"},/**
    * Debug mode for annyang
-   */debug:{name:"debug",type:"Boolean",value:!1,observer:"_debugChanged"},/**
+   */debug:{name:"debug",type:Boolean,value:!1,observer:"_debugChanged"},/**
    * Start automatically
-   */auto:{name:"auto",type:"Boolean",reflectToAttribute:!0,observer:"_autoChanged"},/**
+   */auto:{name:"auto",type:Boolean,reflectToAttribute:!0,observer:"_autoChanged"},/**
    * Status of listening
-   */enabled:{name:"enabled",type:"Boolean",reflectToAttribute:!0,observer:"_enabledChanged"},/**
+   */enabled:{name:"enabled",type:Boolean,reflectToAttribute:!0,observer:"_enabledChanged"},/**
    * Pitch of speech
-   */pitch:{name:"pitch",type:"Number",reflectToAttribute:!0,value:.9},/**
+   */pitch:{name:"pitch",type:Number,reflectToAttribute:!0,value:.9},/**
    * Rate of speech
-   */rate:{name:"rate",type:"Number",reflectToAttribute:!0,value:.9},/**
+   */rate:{name:"rate",type:Number,reflectToAttribute:!0,value:.9},/**
    * Language of the speaker
-   */language:{name:"language",type:"String",reflectToAttribute:!0,value:"en-US"}}}/**
+   */language:{name:"language",type:String,reflectToAttribute:!0,value:"en-US"}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"hal-9000"}/**

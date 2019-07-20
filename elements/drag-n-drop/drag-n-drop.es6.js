@@ -40,7 +40,7 @@ get html(){return`
 <div class="items">
   <slot></slot>
 </div>`}// properties available to the custom element for data binding
-static get properties(){return{editing:{name:"editing",type:"Boolean"}}}/**
+static get properties(){let props={editing:{name:"editing",type:Boolean}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"drag-n-drop"}/**

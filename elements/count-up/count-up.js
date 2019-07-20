@@ -135,7 +135,7 @@ class CountUpElement extends PolymerElement {
        */
       start: {
         name: "start",
-        type: "Number",
+        type: Number,
         value: 0
       },
       /**
@@ -143,7 +143,7 @@ class CountUpElement extends PolymerElement {
        */
       end: {
         name: "end",
-        type: "Number",
+        type: Number,
         value: 100
       },
       /**
@@ -151,7 +151,7 @@ class CountUpElement extends PolymerElement {
        */
       duration: {
         name: "duration",
-        type: "Number",
+        type: Number,
         value: 2.5
       },
       /**
@@ -159,7 +159,7 @@ class CountUpElement extends PolymerElement {
        */
       noeasing: {
         name: "noeasing",
-        type: "Boolean",
+        type: Boolean,
         value: false
       },
       /**
@@ -167,7 +167,7 @@ class CountUpElement extends PolymerElement {
        */
       decimalplaces: {
         name: "decimalPlaces",
-        type: "Number",
+        type: Number,
         value: 0
       },
       /**
@@ -175,7 +175,7 @@ class CountUpElement extends PolymerElement {
        */
       separator: {
         name: "separator",
-        type: "String",
+        type: String,
         value: ","
       },
       /**
@@ -183,7 +183,7 @@ class CountUpElement extends PolymerElement {
        */
       decimal: {
         name: "decimal",
-        type: "String",
+        type: String,
         value: "."
       },
       /**
@@ -191,7 +191,7 @@ class CountUpElement extends PolymerElement {
        */
       prefixtext: {
         name: "prefixtext",
-        type: "String",
+        type: String,
         value: " "
       },
       /**
@@ -199,24 +199,24 @@ class CountUpElement extends PolymerElement {
        */
       suffixtext: {
         name: "suffixtext",
-        type: "String",
+        type: String,
         value: " "
       },
       thresholds: {
-        type: "Array",
+        type: Array,
         value: [0.0, 0.25, 0.5, 0.75, 1.0]
       },
       rootMargin: {
-        type: "String",
+        type: String,
         value: "0px"
       },
       ratio: {
-        type: "Number",
+        type: Number,
         reflectToAttribute: true,
         readOnly: true
       },
       visibleLimit: {
-        type: "Number",
+        type: Number,
         value: 0.5,
         reflectToAttribute: true
       }

@@ -12,15 +12,15 @@ define(["exports"],function(_exports){"use strict";Object.defineProperty(_export
  * @demo demo/index.html
  */var ToElement=/*#__PURE__*/function(_HTMLElement){babelHelpers.inherits(ToElement,_HTMLElement);babelHelpers.createClass(ToElement,[{key:"html",// render function
 get:function get(){return"\n<style></style>\n<slot></slot>"}// properties available to the custom element for data binding
-}],[{key:"properties",get:function get(){return{/**
+}],[{key:"properties",get:function get(){var props={/**
    * object in question to clone and turn into a custom element
-   */element:{name:"element",type:"Object",value:{}},/**
+   */element:{name:"element",type:Object,value:{}},/**
    * valid custom element name of the new element to create
-   */name:{name:"name",type:"String",value:"new-element"},/**
+   */name:{name:"name",type:String,value:"new-element"},/**
    * optional original location that this came from
-   */sourceUrl:{name:"sourceUrl",type:"String",value:""},/**
+   */sourceUrl:{name:"sourceUrl",type:String,value:""},/**
    * MIME type lookup for file extensions
-   */fileTypes:{type:"Object",value:function value(){return{CSV:"text/csv",JSON:"text/json",PDF:"application/pdf",TXT:"text/plain"}}}}}/**
+   */fileTypes:{type:Object,value:function value(){return{CSV:"text/csv",JSON:"text/json",PDF:"application/pdf",TXT:"text/plain"}}}};if(babelHelpers.get(babelHelpers.getPrototypeOf(ToElement),"properties",this)){props=Object.assign(props,babelHelpers.get(babelHelpers.getPrototypeOf(ToElement),"properties",this))}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */},{key:"tag",get:function get(){return"to-element"}/**

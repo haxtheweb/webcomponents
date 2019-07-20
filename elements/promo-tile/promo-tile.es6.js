@@ -5,111 +5,151 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
       <style>
         :host {
           display: block;
-          --tile-image: "";
-          --front-title-text-shadow: #363533;
-          --title-font-size: 34px;
-          --title-font-weight: 400;
-          --back-content-font-size: 18px;
-          --back-content-font-weight: 100;
-          --font-color: #fff;
-          --hover-background-color: #e2801e;
-          --button-hover-color: #363533;
         }
 
         a {
-          text-decoration: none;
+          text-decoration: var(--promo-tile-a-text-decoration, none);
+          @apply --promo-tile-a;
         }
 
         #container {
-          width: 100%;
-          height: auto;
+          width: var(--promo-tile-container-width, 100%);
+          height: var(--promo-tile-container-height, auto);
+          @apply --promo-tile-container;
         }
 
         .back_card {
-          background-color: var(--hover-background-color);
-          height: 460px;
-          opacity: 0;
-          display: flex;
-          flex-direction: column;
+          background-color: var(
+            --promo-tile-back-card-background-color,
+            #e2801e
+          );
+          height: var(--promo-tile-back-card-height, 460px);
+          opacity: var(--promo-tile-back-card-opacity, 0);
+          display: var(--promo-tile-back-card-display, flex);
+          flex-direction: var(--promo-tile-back-card-flex-direction, column);
+          @apply --promo-tile-back-card;
         }
 
         :host([hover]) #container .back_card {
-          opacity: 0.9;
-          transition: all 0.3s ease-in-out;
+          opacity: var(--promo-tile-container-back-card-hover-opacity, 0.9);
+          transition: var(
+            --promo-tile-container-back-card-hover-transition,
+            all 0.3s ease-in-out
+          );
+          @apply --promo-tile-container-back-card-hover;
         }
 
         :host([hover]) #container .front_card .front_title {
-          opacity: 0;
-          transition: all 0.3s ease-in-out;
+          opacity: var(
+            --promo-tile-container-front-card-front-title-hover-opacity,
+            0
+          );
+          transition: var(
+            --promo-tile-container-front-card-front-title-hover-transition,
+            all 0.3s ease-in-out
+          );
+          @apply --promo-tile-container-front-card-hover;
         }
 
         .image {
-          display: flex;
-          justify-content: center;
-          background-image: var(--tile-image);
-          background-position: top center;
-          background-repeat: no-repeat;
-          background-size: cover;
-          width: 100%;
-          height: 100%;
+          display: var(--promo-tile-image-display, flex);
+          justify-content: var(--promo-tile-image-justify-content, center);
+          background-position: var(
+            --promo-tile-image-background-position,
+            top center
+          );
+          background-repeat: var(
+            --promo-tile-image-background-repeat,
+            no-repeat
+          );
+          background-size: var(--promo-tile-image-background-size, cover);
+          width: var(--promo-tile-image-width, 100%);
+          height: var(--promo-tile-image-height, 100%);
+          @apply --promo-tile-image;
         }
 
         .front_title {
-          opacity: 1;
-          position: absolute;
-          display: flex;
-          align-self: flex-end;
-          padding-bottom: 25px;
+          opacity: var(--promo-tile-front-title-opacity, 1);
+          position: var(--promo-tile-front-title-position, absolute);
+          display: var(--promo-tile-front-title-display, flex);
+          align-self: var(--promo-tile-front-title-align-self, flex-end);
+          padding: var(--promo-tile-front-title-padding, 0 0 25px 0);
+          @apply --promo-tile-front-title;
         }
 
         .front_title h1 {
-          color: var(--font-color);
-          font-size: var(--title-font-size);
-          font-weight: var(--title-font-weight);
-          text-shadow: 1px 1px 3px var(--front-title-text-shadow);
+          color: var(--promo-tile-front-title-h1-color, #ffffff);
+          font-size: var(--promo-tile-front-title-h1-font-size, 36px);
+          font-weight: var(--promo-tile-front-title-h1-font-weight, 400);
+          text-shadow: var(
+            --promo-tile-front-title-h1-text-shadow,
+            1px 1px 3px
+              var(--promo-tile-front-title-h1-text-shadow-color, #363533)
+          );
+          @apply --promo-title-front-title-h1;
         }
 
         .back_title {
-          opacity: 1;
-          display: flex;
-          justify-content: center;
-          padding: 20px 0 0;
+          opacity: var(--promo-tile-back-title-opacity, 1);
+          display: var(--promo-tile-back-title-display, flex);
+          justify-content: var(--promo-tile-back-title-justify-content, center);
+          padding: var(--promo-tile-back-title-padding, 20px 0 0 0);
+          @apply --promo-tile-back-title;
         }
 
         .back_title h1 {
-          color: var(--font-color);
-          font-size: var(--title-font-size);
-          font-weight: var(--title-font-weight);
+          color: var(--promo-tile-back-title-h1-color, #ffffff);
+          font-size: var(--promo-tile-back-title-h1-font-size, 36px);
+          font-weight: var(--promo-tile-back-title-h1-font-weight, 400);
+          @apply --promo-tile-back-title-h1;
         }
 
         .back_content {
-          color: var(--font-color);
-          font-size: var(--back-content-font-size);
-          font-weight: var(--back-content-font-weight);
-          padding: 0 20px;
+          color: var(--promo-tile-back-content-font-color, #ffffff);
+          font-size: var(--promo-tile-back-content-font-size, 18px);
+          font-weight: var(--promo-tile-back-content-font-weight, 300);
+          line-height: var(--promo-tile-back-content-line-height, 1.4);
+          padding: var(--promo-title-back-content-padding, 0 20px 0 20px);
+          text-align: justify;
+          @apply --promo-tile-back-content;
         }
 
         paper-button#learn {
-          display: flex;
-          margin-top: 180px;
-          font-size: 16px;
-          color: var(--font-color);
-          border: solid 1px #fff;
-          border-radius: 0;
-          width: 50%;
-          margin-left: auto;
-          margin-right: auto;
+          display: var(--promo-tile-paper-button-learn-display, flex);
+          margin: var(
+            --promo-tile-paper-button-learn-margin,
+            140px auto 0 auto
+          );
+          font-size: var(--promo-tile-paper-button-learn-font-size, 18px);
+          color: var(--promo-tile-paper-button-learn-font-color, #ffffff);
+          border: var(--promo-tile-paper-button-learn-border, solid);
+          border-width: var(--promo-tile-paper-button-learn-border-width, 1px);
+          border-color: var(
+            --promo-tile-paper-button-learn-border-color,
+            #ffffff
+          );
+          border-radius: var(--promo-tile-paper-button-learn-border-radius, 0);
+          width: var(--promo-tile-paper-button-learn-width, 50%);
+          @apply --promo-tile-paper-button-learn;
         }
 
         paper-button#learn:hover,
         paper-button#learn:focus {
-          background-color: var(--button-hover-color);
+          background-color: var(
+            --promo-tile-paper-button-learn-background-color-active,
+            #363533
+          );
+          @apply --promo-tile-paper-button-learn-active;
         }
       </style>
-
       <div id="container">
         <div class="front_card">
-          <div id="front_image" class="image" alt="[[alt]]">
+          <div
+            id="front_image"
+            class="image"
+            alt="[[alt]]"
+            style$="background-image:url([[image]])"
+          >
             <div class="front_title">
               <h1>[[title]]</h1>
             </div>
@@ -149,9 +189,9 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
        * Url for tile
        */url:{type:String,value:"",reflectToAttribute:!0},/**
        * Hover state
-       */hover:{type:Boolean,value:!1,reflectToAttribute:!0}};if(super.properties){props=Object.assign(props,super.properties)}return props}static get observers(){return["__updateStyles(image)"]}/**
+       */hover:{type:Boolean,value:!1,reflectToAttribute:!0}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Attached to the DOM, now fire.
-   */connectedCallback(){super.connectedCallback();afterNextRender(this,function(){this.addEventListener("mouseover",this.__hoverIn.bind(this));this.addEventListener("mouseout",this.__hoverOut.bind(this));this.addEventListener("focusin",this.__hoverIn.bind(this));this.addEventListener("focusout",this.__hoverOut.bind(this))})}disconnectedCallback(){this.removeEventListener("mouseover",this.__hoverIn.bind(this));this.removeEventListener("mouseout",this.__hoverOut.bind(this));this.removeEventListener("focusin",this.__hoverIn.bind(this));this.removeEventListener("focusout",this.__hoverOut.bind(this));super.disconnectedCallback()}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Promo-Tile",description:"A tile element for promoting content.",icon:"icons:dashboard",color:"orange",groups:["Content","Media"],handles:[{type:"content",source:"image",title:"citation",url:"source"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"title",title:"Title",description:"The title of the tile",inputMethod:"textfield",icon:"editor:title"},{property:"image",title:"Image",description:"The image of the tile",inputMethod:"textfield",icon:"editor:insert-photo"},{property:"url",title:"Link",description:"The link of the tile",inputMethod:"textfield",icon:"editor:insert-link"}],configure:[{property:"title",title:"Title",description:"The title of the tile",inputMethod:"textfield",icon:"editor:title"},{property:"image",title:"Image",description:"The image of the tile",inputMethod:"textfield",icon:"editor:insert-photo"},{property:"alt",title:"Alt",description:"The alt text for the image",inputMethod:"textfield",icon:"editor:mode-edit"},{property:"url",title:"Link",description:"The link of the tile",inputMethod:"textfield",icon:"editor:insert-link"},{property:"label",title:"Label",description:"The label for the button",inputMethod:"textfield",icon:"editor:title"}],advanced:[]}}}__updateStyles(image){this.updateStyles({"--tile-image":`url(${image})`})}/**
+   */connectedCallback(){super.connectedCallback();afterNextRender(this,function(){this.addEventListener("mouseover",this.__hoverIn.bind(this));this.addEventListener("mouseout",this.__hoverOut.bind(this));this.addEventListener("focusin",this.__hoverIn.bind(this));this.addEventListener("focusout",this.__hoverOut.bind(this))})}disconnectedCallback(){this.removeEventListener("mouseover",this.__hoverIn.bind(this));this.removeEventListener("mouseout",this.__hoverOut.bind(this));this.removeEventListener("focusin",this.__hoverIn.bind(this));this.removeEventListener("focusout",this.__hoverOut.bind(this));super.disconnectedCallback()}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Promo-Tile",description:"A tile element for promoting content.",icon:"icons:dashboard",color:"orange",groups:["Content","Media"],handles:[{type:"content",source:"image",title:"citation",url:"source"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"title",title:"Title",description:"The title of the tile",inputMethod:"textfield",icon:"editor:title"},{property:"image",title:"Image",description:"The image of the tile",inputMethod:"textfield",icon:"editor:insert-photo"},{property:"url",title:"Link",description:"The link of the tile",inputMethod:"textfield",icon:"editor:insert-link"}],configure:[{property:"title",title:"Title",description:"The title of the tile",inputMethod:"textfield",icon:"editor:title"},{property:"image",title:"Image",description:"The image of the tile",inputMethod:"textfield",icon:"editor:insert-photo"},{property:"alt",title:"Alt",description:"The alt text for the image",inputMethod:"textfield",icon:"editor:mode-edit"},{property:"url",title:"Link",description:"The link of the tile",inputMethod:"textfield",icon:"editor:insert-link"},{property:"label",title:"Label",description:"The label for the button",inputMethod:"textfield",icon:"editor:title"}],advanced:[]}}}/**
    * Internal function to check if a url is external
    */_outsideLink(url){if(0!=url.indexOf("http"))return!1;var loc=location.href,path=location.pathname,root=loc.substring(0,loc.indexOf(path));return 0!=url.indexOf(root)}/**
    * If url is external, open link in new window, otherwise open link in same window.

@@ -118,27 +118,31 @@ class ScrollButton extends PolymerElement {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       target: {
         name: "target",
-        type: "Object"
+        type: Object
       },
       icon: {
         name: "icon",
-        type: "String",
+        type: String,
         value: "icons:expand-less"
       },
       label: {
         name: "label",
-        type: "String",
+        type: String,
         value: "Scroll to top"
       },
       position: {
         name: "position",
-        type: "String",
+        type: String,
         value: "top"
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
 
   /**

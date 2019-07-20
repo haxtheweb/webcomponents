@@ -77,18 +77,18 @@ static get template(){return html`
       </ul>
   </div>
 </template>`}// properties available to the custom element for data binding
-static get properties(){return{/**
+static get properties(){let props={/**
    * all the iconsets
-   */__iconList:{name:"__iconList",type:"Array",value:[]},/**
+   */__iconList:{name:"__iconList",type:Array,value:[]},/**
    * a space-separated whitelist of iconsets by name
-   */includeSets:{name:"includeSets",type:"String",value:null},/**
+   */includeSets:{name:"includeSets",type:String,value:null},/**
    * a space-separated blacklist of iconsets by name
-   */excludeSets:{name:"excludeSets",type:"String",value:null}}}/**
+   */excludeSets:{name:"excludeSets",type:String,value:null}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"iconset-demo"}/**
    * life cycle, element is ready
-   */ready(){super.ready();const iconSets=new IronMeta({type:"iconset"});let temp=[];// need to access iconset imperatively now
+   */ready(){super.ready();const iconSets=new IronMeta({type:"iconset"});let temp=[],root=this;// need to access iconset imperatively now
 if(typeof iconSets!==typeof void 0&&iconSets.list&&iconSets.list.length){var index=0;iconSets.list.forEach(function(item){let name=item.name;if(!root._hideIconset(name)){temp.push({name:name,icons:[]});item.getIconNames().forEach(icon=>{temp[index].icons.push(icon)});index++}})}this.__iconList=temp}/**
    *  determines if a given iconset should be hidden
    *

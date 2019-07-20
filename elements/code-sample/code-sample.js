@@ -153,29 +153,33 @@ class CodeSample extends PolymerElement {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       // Set to true to show a copy to clipboard button.
       copyClipboardButton: {
-        type: "Boolean",
+        type: Boolean,
         value: false
       },
       // Tagged template literal with custom styles.
       // Only supported in Shadow DOM.
       theme: {
-        type: "String",
+        type: String,
         observer: "_themeChanged"
       },
       // Set to true to render the code inside the template.
       render: {
-        type: "Boolean",
+        type: Boolean,
         value: false
       },
       // Code type (optional). (eg.: html, js, css)
       // Options are the same as the available classes for `<code>` tag using highlight.js
       type: {
-        type: "String"
+        type: String
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
 
   /**

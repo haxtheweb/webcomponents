@@ -235,10 +235,10 @@ static get template(){return html`
     </div>
   </div>
 </article>`}// haxProperty definition
-static get haxProperties(){return{canScale:!1,canPosition:!1,canEditSource:!0,gizmo:{title:"Timeline",description:"A timeline of events with images and text",icon:"icons:timeline",color:"indigo",groups:["Content","Instructional","Media","Image"],handles:[{type:"image",source:"image"}],meta:{author:"LRNWebComponents"}},settings:{quick:[],configure:[{property:"title",title:"Timeline Title",description:"A title for the timeline.",inputMethod:"textfield"},{property:"accentColor",title:"Accent Color",description:"An optional accent color.",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{property:"dark",title:"Dark Theme",description:"Enable Dark Theme",inputMethod:"boolean",icon:"icons:invert-colors"},{slot:"",title:"Timeline Description",description:"Optional text describing the timeline.",inputMethod:"textfield"},{property:"events",title:"Timeline Events",description:"The events in the timeline",inputMethod:"array",properties:[{property:"heading",title:"Event Heading",description:"The heading for the event.",inputMethod:"textfield",icon:"editor:title"},{property:"details",title:"Event Details",description:"The body text with details for the event.",inputMethod:"textfield",icon:"editor:title"},{property:"imagesrc",title:"Event Image",description:"The path of the image.",inputMethod:"haxupload",icon:"editor:title"},{property:"imagealt",title:"Event Image Alt Text",description:"The alt text of the image (for accessibility).",inputMethod:"alt",icon:"editor:title"}]}],advanced:[]}}}// properties available to the custom element for data binding
-static get properties(){return{/**
+static get haxProperties(){return{canScale:!1,canPosition:!1,canEditSource:!0,gizmo:{title:"Timeline",description:"A timeline of events with images and text",icon:"icons:timeline",color:"indigo",groups:["Content","Instructional","Media","Image"],handles:[{type:"image",source:"image"}],meta:{author:"LRNWebComponents"}},settings:{quick:[],configure:[{property:"title",title:"Timeline Title",description:"A title for the timeline.",inputMethod:"textfield"},{property:"accentColor",title:"Accent Color",description:"An optional accent color.",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{property:"dark",title:"Dark Theme",description:"Enable Dark Theme",inputMethod:"boolean",icon:"icons:invert-colors"},{slot:"",title:"Timeline Description",description:"Optional text describing the timeline.",inputMethod:"textfield"},{property:"events",title:"Timeline Events",description:"The events in the timeline",inputMethod:"array",itemLabel:"heading",properties:[{property:"heading",title:"Event Heading",description:"The heading for the event.",inputMethod:"textfield",icon:"editor:title"},{property:"details",title:"Event Details",description:"The body text with details for the event.",inputMethod:"textfield",icon:"editor:title"},{property:"imagesrc",title:"Event Image",description:"The path of the image.",inputMethod:"haxupload",icon:"editor:title"},{property:"imagealt",title:"Event Image Alt Text",description:"The alt text of the image (for accessibility).",inputMethod:"alt",icon:"editor:title"}]}],advanced:[]}}}// properties available to the custom element for data binding
+static get properties(){let props={/**
    * the title of the timeline
-   */title:{type:"String",value:null},/**
+   */title:{type:String,value:null},/**
    * the events of the timeline, in the desired order, as in:```
 [
   {
@@ -252,11 +252,11 @@ static get properties(){return{/**
     {...},
   }
 ]```
-   */events:{type:"Array",value:[],notify:!0},/**
+   */events:{type:Array,value:[],notify:!0},/**
    * the updated list of events
-   */__events:{type:"Array",computed:"_updateEvents(events)",notify:!0},/**
+   */__events:{type:Array,computed:"_updateEvents(events)",notify:!0},/**
    * the timline size, calculated by responsive utility
-   */timelineSize:{type:"String",value:"xs",reflectToAttribute:!0}}}/**
+   */timelineSize:{type:String,value:"xs",reflectToAttribute:!0}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"lrndesign-timeline"}/**

@@ -33,21 +33,21 @@ paper-toast {
   <slot></slot>
   <paper-button hidden$="[[!closeButton]]" on-click="hide">[[closeText]]</paper-button>
 </paper-toast>`}// properties available to the custom element for data binding
-static get properties(){return{/**
+static get properties(){let props={/**
    * Opened state of the toast, use event to change
-   */opened:{name:"opened",type:"Boolean",value:!1,reflectToAttribute:!0},/**
+   */opened:{name:"opened",type:Boolean,value:!1,reflectToAttribute:!0},/**
    * Plain text based message to display
-   */text:{name:"text",type:"String",value:"Saved"},/**
+   */text:{name:"text",type:String,value:"Saved"},/**
    * Class name, fit-bottom being a useful one
-   */classStyle:{name:"classStyle",type:"String",value:""},/**
+   */classStyle:{name:"classStyle",type:String,value:""},/**
    * Text for the close button
-   */closeText:{name:"closeText",type:"String",value:"Close"},/**
+   */closeText:{name:"closeText",type:String,value:"Close"},/**
    * How long the toast message should be displayed
-   */duration:{name:"duration",type:"Number",value:4e3},/**
+   */duration:{name:"duration",type:Number,value:4e3},/**
    * Event callback when hide is called
-   */eventCallback:{name:"eventCallback",type:"String"},/**
+   */eventCallback:{name:"eventCallback",type:String},/**
    * If there should be a close button shown
-   */closeButton:{name:"closeButton",type:"Boolean",value:!0,reflectToAttribute:!0}}}/**
+   */closeButton:{name:"closeButton",type:Boolean,value:!0,reflectToAttribute:!0}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"simple-toast"}/**

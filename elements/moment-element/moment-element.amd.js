@@ -1,4 +1,4 @@
-define(["exports","meta","./node_modules/@polymer/polymer/polymer-element.js","./node_modules/@polymer/polymer/lib/utils/resolve-url.js","./node_modules/@lrnwebcomponents/es-global-bridge/es-global-bridge.js"],function(_exports,meta,_polymerElement,_resolveUrl,_esGlobalBridge){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.MomentElement=void 0;meta=babelHelpers.interopRequireWildcard(meta);function _templateObject_0d125fd081c111e98be11b9ae8bb63e2(){var data=babelHelpers.taggedTemplateLiteral(["\n      [[output]]\n    "]);_templateObject_0d125fd081c111e98be11b9ae8bb63e2=function _templateObject_0d125fd081c111e98be11b9ae8bb63e2(){return data};return data}/**
+define(["exports","meta","./node_modules/@polymer/polymer/polymer-element.js","./node_modules/@polymer/polymer/lib/utils/resolve-url.js","./node_modules/@lrnwebcomponents/es-global-bridge/es-global-bridge.js"],function(_exports,meta,_polymerElement,_resolveUrl,_esGlobalBridge){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.MomentElement=void 0;meta=babelHelpers.interopRequireWildcard(meta);function _templateObject_befca460ab1211e9bcc81146f3b575ac(){var data=babelHelpers.taggedTemplateLiteral(["\n      [[output]]\n    "]);_templateObject_befca460ab1211e9bcc81146f3b575ac=function _templateObject_befca460ab1211e9bcc81146f3b575ac(){return data};return data}/**
  * @license
  * Copyright (c) 2016 Abdón Rodríguez Davila (@abdonrd). All rights reserved.
  * This code may only be used under the MIT style license found at https://abdonrd.github.io/LICENSE.txt
@@ -11,7 +11,7 @@ Examples:
     <moment-element datetime="1991-12-31" output-format="MMM DD[,] YYYY"></moment-element>
 
 * @demo demo/index.html
-*/var MomentElement=/*#__PURE__*/function(_PolymerElement){babelHelpers.inherits(MomentElement,_PolymerElement);babelHelpers.createClass(MomentElement,null,[{key:"template",get:function get(){return(0,_polymerElement.html)(_templateObject_0d125fd081c111e98be11b9ae8bb63e2())}},{key:"tag",get:function get(){return"moment-element"}},{key:"properties",get:function get(){return{/**
+*/var MomentElement=/*#__PURE__*/function(_PolymerElement){babelHelpers.inherits(MomentElement,_PolymerElement);babelHelpers.createClass(MomentElement,null,[{key:"template",get:function get(){return(0,_polymerElement.html)(_templateObject_befca460ab1211e9bcc81146f3b575ac())}},{key:"tag",get:function get(){return"moment-element"}},{key:"properties",get:function get(){return{/**
        * The input datetime. If don't set the datetime, the datetime will be now.
        * For consistent results, parsing anything other than ISO 8601 strings
        * with the `inputFormat` property. More information in [moment String](http://momentjs.com/docs/#/parsing/string/).

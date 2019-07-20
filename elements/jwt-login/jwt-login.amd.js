@@ -1,4 +1,4 @@
-define(["exports","./node_modules/@polymer/polymer/polymer-element.js","./node_modules/@polymer/iron-ajax/iron-ajax.js"],function(_exports,_polymerElement,_ironAjax){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.JwtLogin=void 0;function _templateObject_de34637081c011e9893bffb227c7d2f0(){var data=babelHelpers.taggedTemplateLiteral(["\n      <style>\n        :host {\n          visibility: hidden;\n        }\n      </style>\n      <iron-ajax\n        id=\"loginrequest\"\n        method=\"[[method]]\"\n        body=\"[[body]]\"\n        url=\"[[url]]\"\n        handle-as=\"json\"\n        content-type=\"application/json\"\n        on-response=\"loginResponse\"\n      >\n      </iron-ajax>\n    "]);_templateObject_de34637081c011e9893bffb227c7d2f0=function _templateObject_de34637081c011e9893bffb227c7d2f0(){return data};return data}/**
+define(["exports","./node_modules/@polymer/polymer/polymer-element.js","./node_modules/@polymer/iron-ajax/iron-ajax.js"],function(_exports,_polymerElement,_ironAjax){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.JwtLogin=void 0;function _templateObject_88d481a0ab1211e9b8136fd8833498c1(){var data=babelHelpers.taggedTemplateLiteral(["\n      <style>\n        :host {\n          visibility: hidden;\n        }\n      </style>\n      <iron-ajax\n        id=\"loginrequest\"\n        method=\"[[method]]\"\n        body=\"[[body]]\"\n        url=\"[[url]]\"\n        handle-as=\"json\"\n        content-type=\"application/json\"\n        on-response=\"loginResponse\"\n      >\n      </iron-ajax>\n    "]);_templateObject_88d481a0ab1211e9b8136fd8833498c1=function _templateObject_88d481a0ab1211e9b8136fd8833498c1(){return data};return data}/**
  * `jwt-login`
  * `a simple element to check for and fetch JWTs`
  * @demo demo/index.html
@@ -17,7 +17,7 @@ if(null==this.jwt){this.$.loginrequest.generateRequest()}else{// we were told to
 this.set("body",{});// reset jwt which will do all the events / local storage work
 this.jwt=null}}/**
    * Login bridge to get a JWT and hang onto it
-   */},{key:"loginResponse",value:function loginResponse(e){this.jwt=e.detail.response}}],[{key:"template",get:function get(){return(0,_polymerElement.html)(_templateObject_de34637081c011e9893bffb227c7d2f0())}},{key:"tag",get:function get(){return"jwt-login"}},{key:"properties",get:function get(){return{/**
+   */},{key:"loginResponse",value:function loginResponse(e){this.jwt=e.detail.response}}],[{key:"template",get:function get(){return(0,_polymerElement.html)(_templateObject_88d481a0ab1211e9b8136fd8833498c1())}},{key:"tag",get:function get(){return"jwt-login"}},{key:"properties",get:function get(){return{/**
        * url
        */url:{type:String},/**
        * Request method

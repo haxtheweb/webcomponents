@@ -95,13 +95,13 @@ class IconsetDemo extends PolymerElement {
 
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       /**
        * all the iconsets
        */
       __iconList: {
         name: "__iconList",
-        type: "Array",
+        type: Array,
         value: []
       },
       /**
@@ -109,7 +109,7 @@ class IconsetDemo extends PolymerElement {
        */
       includeSets: {
         name: "includeSets",
-        type: "String",
+        type: String,
         value: null
       },
       /**
@@ -117,10 +117,14 @@ class IconsetDemo extends PolymerElement {
        */
       excludeSets: {
         name: "excludeSets",
-        type: "String",
+        type: String,
         value: null
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
 
   /**
@@ -169,7 +173,6 @@ class IconsetDemo extends PolymerElement {
    * @returns {boolean} whether or n ot to hide the iconset
    */
   _hideIconset(name) {
-    console.log("_hideIconset", name, this.includeSets, this.excludeSets);
     let isets = this.includeSets !== null ? this.includeSets.split(/ /) : [],
       included = isets.length === 0 || isets.includes(name),
       esets = this.excludeSets !== null ? this.excludeSets.split(/ /) : [],

@@ -576,63 +576,63 @@ static get template(){return html`
 static get properties(){return{/**
    * Allow this media to play concurrently with other a11y-media-players?
    * Default is to pause this a11y-media-player when other a11y-media-player starts playing.
-   */allowConcurrent:{name:"allowConcurrent",type:"Boolean",value:!1},/**
+   */allowConcurrent:{name:"allowConcurrent",type:Boolean,value:!1},/**
    * Is it an audio player with no thumbnail?
-   */audioNoThumb:{name:"audioNoThumb",type:"Boolean",computed:"_getAudioNoThumb(audioOnly,thumbnailSrc)"},/**
+   */audioNoThumb:{name:"audioNoThumb",type:Boolean,computed:"_getAudioNoThumb(audioOnly,thumbnailSrc)"},/**
    * Use dark theme on transcript? Default is false, even when player is dark.
-   */darkTranscript:{name:"darkTranscript",type:"Boolean",value:!1},/**
+   */darkTranscript:{name:"darkTranscript",type:Boolean,value:!1},/**
    * disable fullscreen option
-   */disableFullscreen:{name:"disableFullscreen",type:"Boolean",value:!1},/**
+   */disableFullscreen:{name:"disableFullscreen",type:Boolean,value:!1},/**
    * disable interactive mode that makes the transcript clickable
-   */disableInteractive:{name:"disableInteractive",type:"Boolean",value:!1},/**
+   */disableInteractive:{name:"disableInteractive",type:Boolean,value:!1},/**
    * Determines if video and transcript are in a flex layout
-   */flexLayout:{name:"flexLayout",type:"Boolean",computed:"_isFlexLayout(standAlone,hideTranscript,audioNoThumb,stackedLayout)",reflectToAttribute:!0},/**
+   */flexLayout:{name:"flexLayout",type:Boolean,computed:"_isFlexLayout(standAlone,hideTranscript,audioNoThumb,stackedLayout)",reflectToAttribute:!0},/**
    * Is fullscreen mode?
-   */fullscreen:{name:"fullscreen",type:"Boolean",value:!1},/**
+   */fullscreen:{name:"fullscreen",type:Boolean,value:!1},/**
    * show the FullscreenButton?
-   */fullscreenButton:{name:"fullscreenButton",type:"Boolean",computed:"_getFullscreenButton(disableFullscreen,audioNoThumb,screenfullLoaded)",notify:!0},/**
+   */fullscreenButton:{name:"fullscreenButton",type:Boolean,computed:"_getFullscreenButton(disableFullscreen,audioNoThumb,screenfullLoaded)",notify:!0},/**
    * Does the player have tracks?
-   */hasCaptions:{name:"hasCaptions",type:"Boolean",value:!1},/**
+   */hasCaptions:{name:"hasCaptions",type:Boolean,value:!1},/**
    * Hide elapsed time?
-   */hideElapsedTime:{name:"hideElapsedTime",type:"Boolean",value:!1},/**
+   */hideElapsedTime:{name:"hideElapsedTime",type:Boolean,value:!1},/**
    * show cue's start and end time
-   */hideTimestamps:{name:"hideTimestamps",type:"Boolean",value:!1},/**
+   */hideTimestamps:{name:"hideTimestamps",type:Boolean,value:!1},/**
    * initially hide the transcript?
-   */hideTranscript:{name:"hideTranscript",type:"Boolean",value:!1,reflectToAttribute:!0},/**
+   */hideTranscript:{name:"hideTranscript",type:Boolean,value:!1,reflectToAttribute:!0},/**
    * initially hide the transcript?
-   */id:{name:"id",type:"String",value:null,reflectToAttribute:!0},/**
+   */id:{name:"id",type:String,value:null,reflectToAttribute:!0},/**
    * The default media caption if none is given.
-   */mediaCaption:{name:"mediaCaption",type:"String",computed:"_getMediaCaption(audioOnly,localization,mediaTitle)"},/**
+   */mediaCaption:{name:"mediaCaption",type:String,computed:"_getMediaCaption(audioOnly,localization,mediaTitle)"},/**
    * the language of the media (if different from user interface language)
-   */mediaLang:{name:"mediaLang",type:"String",value:"en"},/**
+   */mediaLang:{name:"mediaLang",type:String,value:"en"},/**
    * mute/unmute button
-   */muteUnmute:{name:"muteUnmute",type:"Object",computed:"_getMuteUnmute(muted)"},/**
+   */muteUnmute:{name:"muteUnmute",type:Object,computed:"_getMuteUnmute(muted)"},/**
    * The media caption that displays when the page is printed.
-   */printCaption:{name:"printCaption",type:"String",computed:"_getPrintCaption(audioOnly,audioLabel,videoLabel,mediaTitle)"},/**
+   */printCaption:{name:"printCaption",type:String,computed:"_getPrintCaption(audioOnly,audioLabel,videoLabel,mediaTitle)"},/**
    * Size of the a11y media element for responsive styling
-   */responsiveSize:{name:"responsiveSize",type:"String",notify:!0,value:"xs",reflectToAttribute:!0},/**
+   */responsiveSize:{name:"responsiveSize",type:String,notify:!0,value:"xs",reflectToAttribute:!0},/**
    * Has screenfull loaded?
-   */screenfullLoaded:{name:"screenfullLoaded",type:"Boolean",value:!1,notify:!0},/**
+   */screenfullLoaded:{name:"screenfullLoaded",type:Boolean,value:!1,notify:!0},/**
    * is YouTube?
-   */showCustomCaptions:{name:"showCustomCaptions",type:"Boolean",computed:"_showCustomCaptions(isYoutube, audioOnly, hasCaptions, cc)"},/**
+   */showCustomCaptions:{name:"showCustomCaptions",type:Boolean,computed:"_showCustomCaptions(isYoutube, audioOnly, hasCaptions, cc)"},/**
    * Optional array ouf sources.
-   */sources:{name:"sources",type:"Array",value:[]},/**
+   */sources:{name:"sources",type:Array,value:[]},/**
    * stacked layout instead of side-by-side?
-   */stackedLayout:{name:"stackedLayout",type:"Boolean",value:!1},/**
+   */stackedLayout:{name:"stackedLayout",type:Boolean,value:!1},/**
    * Is the video currently sticky, i.e. it is fixed to the corner when playing but scrolled off screen?
-   */sticky:{name:"sticky",type:"Boolean",value:!1,reflectToAttribute:!0},/**
+   */sticky:{name:"sticky",type:Boolean,value:!1,reflectToAttribute:!0},/**
    * When playing but scrolled off screen, to which corner does it "stick":
    * top-left, top-right, bottom-left, bottom-right, or none?
    * Default is "top-right". "None" disables stickiness.
-   */stickyCorner:{name:"stickyCorner",type:"String",value:"top-right",reflectToAttribute:!0},/**
+   */stickyCorner:{name:"stickyCorner",type:String,value:"top-right",reflectToAttribute:!0},/**
    * Source of optional thumbnail image
-   */thumbnailSrc:{name:"thumbnailSrc",type:"String",value:null,reflectToAttribute:!0},/**
+   */thumbnailSrc:{name:"thumbnailSrc",type:String,value:null,reflectToAttribute:!0},/**
    * Optional array ouf tracks.
-   */tracks:{name:"tracks",type:"Array",value:[]},/**
+   */tracks:{name:"tracks",type:Array,value:[]},/**
    * play/pause button
-   */playPause:{name:"playPause",type:"Object",computed:"_getPlayPause(__playing)"},/**
+   */playPause:{name:"playPause",type:Object,computed:"_getPlayPause(__playing)"},/**
    * Notice if the video is playing
-   */__playing:{name:"__playing",type:"Boolean",value:!1,notify:!0,reflectToAttribute:!0}}}constructor(){super();import("./node_modules/@polymer/paper-slider/paper-slider.js");import("./node_modules/@polymer/iron-icons/iron-icons.js");import("./node_modules/@polymer/iron-icons/av-icons.js");import("./node_modules/@lrnwebcomponents/a11y-media-player/lib/a11y-media-play-button.js");const basePath=pathFromUrl(decodeURIComponent(import.meta.url)),location=`${basePath}lib/screenfull/dist/screenfull.js`;window.ESGlobalBridge.requestAvailability();window.ESGlobalBridge.instance.load("screenfullLib",location);window.addEventListener("es-bridge-screenfullLib-loaded",this._onScreenfullLoaded.bind(this));this.__playerAttached=!0;window.A11yMediaStateManager.requestAvailability()}/**
+   */__playing:{name:"__playing",type:Boolean,value:!1,notify:!0,reflectToAttribute:!0}}}constructor(){super();import("./node_modules/@polymer/paper-slider/paper-slider.js");import("./node_modules/@polymer/iron-icons/iron-icons.js");import("./node_modules/@polymer/iron-icons/av-icons.js");import("./node_modules/@lrnwebcomponents/a11y-media-player/lib/a11y-media-play-button.js");const basePath=pathFromUrl(decodeURIComponent(import.meta.url)),location=`${basePath}lib/screenfull/dist/screenfull.js`;window.ESGlobalBridge.requestAvailability();window.ESGlobalBridge.instance.load("screenfullLib",location);window.addEventListener("es-bridge-screenfullLib-loaded",this._onScreenfullLoaded.bind(this));this.__playerAttached=!0;window.A11yMediaStateManager.requestAvailability()}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"a11y-media-player"}//get player-specific behaviors

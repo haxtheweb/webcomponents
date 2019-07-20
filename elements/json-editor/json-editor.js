@@ -69,13 +69,13 @@ class JsonEditor extends PolymerElement {
 
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       /**
        * label for the text area
        */
       label: {
         name: "label",
-        type: "String",
+        type: String,
         value: "JSON data"
       },
       /**
@@ -83,7 +83,7 @@ class JsonEditor extends PolymerElement {
        */
       error: {
         name: "error",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         reflectToAttribute: true
       },
@@ -92,7 +92,7 @@ class JsonEditor extends PolymerElement {
        */
       disabled: {
         name: "disabled",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         reflectToAttribute: true
       },
@@ -101,7 +101,7 @@ class JsonEditor extends PolymerElement {
        */
       maxRows: {
         name: "maxRows",
-        type: "Number",
+        type: Number,
         value: 0,
         reflectToAttribute: true
       },
@@ -110,7 +110,7 @@ class JsonEditor extends PolymerElement {
        */
       value: {
         name: "value",
-        type: "String",
+        type: String,
         value: "",
         notify: true,
         reflectToAttribute: false,
@@ -121,7 +121,7 @@ class JsonEditor extends PolymerElement {
        */
       formatTest: {
         name: "value",
-        type: "String",
+        type: String,
         computed: "_computeFormattedValue(value)"
       },
       /**
@@ -129,11 +129,15 @@ class JsonEditor extends PolymerElement {
        */
       currentData: {
         name: "currentData",
-        type: "Object",
+        type: Object,
         notify: true,
         computed: "_computeCurrentData(value)"
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
 
   /**

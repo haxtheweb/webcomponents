@@ -7,21 +7,21 @@ define([
   Object.defineProperty(_exports, "__esModule", { value: !0 });
   _exports.GameShowQuizModal = void 0;
   _require = babelHelpers.interopRequireWildcard(_require);
-  function _templateObject2_74399f5081c311e9b46a1fef3c9e046f() {
+  function _templateObject2_aea17d80ab1611e9be6cc36ee328ec59() {
     var data = babelHelpers.taggedTemplateLiteral([
       "\n      <paper-dialog modal>\n        <h2>",
       '</h2>\n        <div class="content"><slot name="content"></slot></div>\n        <div class="buttons"><slot name="buttons"></slot></div>\n      </paper-dialog>\n    '
     ]);
-    _templateObject2_74399f5081c311e9b46a1fef3c9e046f = function _templateObject2_74399f5081c311e9b46a1fef3c9e046f() {
+    _templateObject2_aea17d80ab1611e9be6cc36ee328ec59 = function _templateObject2_aea17d80ab1611e9be6cc36ee328ec59() {
       return data;
     };
     return data;
   }
-  function _templateObject_74399f5081c311e9b46a1fef3c9e046f() {
+  function _templateObject_aea17d80ab1611e9be6cc36ee328ec59() {
     var data = babelHelpers.taggedTemplateLiteral([
       "\n        :host {\n          display: block;\n        }\n        paper-dialog:not(:defined) {\n          display: none;\n        }\n        paper-dialog {\n          min-width: 60%;\n          top: 2%;\n          bottom: 2%;\n          margin: 0;\n          padding: 0;\n          left: 8%;\n          right: 8%;\n          position: fixed;\n          overflow: hidden;\n        }\n        .content {\n          font-size: 16px;\n          overflow: scroll;\n          min-height: 60vh;\n          height: 80vh;\n          margin: 0;\n          padding: 0;\n        }\n        h2 {\n          font-size: 24px;\n          background-color: var(--game-show-bg-color);\n          color: var(--game-show-text-color);\n          margin: 0;\n          padding: 8px;\n          text-align: center;\n        }\n        .buttons {\n          font-size: 20px;\n          font-weight: bold;\n          background-color: var(--game-show-bg-color);\n          bottom: 0;\n          position: absolute;\n          left: 0;\n          right: 0;\n        }\n        .buttons ::slotted(*) {\n          width: 50%;\n          margin: 0 auto;\n          color: var(--game-show-bg-color);\n          background-color: var(--game-show-text-color);\n        }\n        .buttons ::slotted(*[disabled]) {\n          background: #eaeaea;\n          color: #a8a8a8;\n        }\n        .buttons ::slotted(#continue) {\n          color: var(--simple-colors-default-theme-blue-11);\n          background-color: var(--simple-colors-default-theme-blue-1);\n        }\n        @media screen and (max-width: 600px) {\n          paper-dialog {\n            top: 0;\n            bottom: 0;\n            left: 0;\n            right: 0;\n          }\n          h2 {\n            font-size: 20px;\n          }\n          .buttons {\n            font-size: 12px;\n          }\n          .buttons ::slotted(*) {\n            width: 100%;\n          }\n          .content {\n            font-size: 12px;\n          }\n        }\n      "
     ]);
-    _templateObject_74399f5081c311e9b46a1fef3c9e046f = function _templateObject_74399f5081c311e9b46a1fef3c9e046f() {
+    _templateObject_aea17d80ab1611e9be6cc36ee328ec59 = function _templateObject_aea17d80ab1611e9be6cc36ee328ec59() {
       return data;
     };
     return data;
@@ -39,7 +39,7 @@ define([
         get: function get() {
           return [
             (0, _litElement.css)(
-              _templateObject_74399f5081c311e9b46a1fef3c9e046f()
+              _templateObject_aea17d80ab1611e9be6cc36ee328ec59()
             )
           ];
         }
@@ -78,7 +78,7 @@ define([
         key: "render",
         value: function render() {
           return (0, _litElement.html)(
-            _templateObject2_74399f5081c311e9b46a1fef3c9e046f(),
+            _templateObject2_aea17d80ab1611e9be6cc36ee328ec59(),
             this.title
           );
         }

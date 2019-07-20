@@ -53,29 +53,29 @@ static get template(){return html`
 <h5 aria-live="polite" hidden="[[!__isLevel5]]">[[text]]</h5>
 <h6 aria-live="polite" hidden="[[!__isLevel6]]">[[text]]</h6>`}// haxProperty definition
 static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Relative heading",description:"outputs the correct heading hierarchy based on parent's heading",icon:"icons:android",color:"green",groups:["Heading"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"nikkimk",owner:"The Pennsylvania State University"}},settings:{quick:[],configure:[{property:"parentHeading",description:"",inputMethod:"array",required:!1,icon:"icons:android"},{property:"tag",description:"",inputMethod:"textfield",required:!1,icon:"icons:android"}],advanced:[]}}}// properties available to the custom element for data binding
-static get properties(){return{/**
+static get properties(){let props={/**
    * The default heading level (1-6), eg., 1 for <h1>, if there  is no parent.
-   */defaultLevel:{name:"defaultLevel",type:"Number",value:1},/**
+   */defaultLevel:{name:"defaultLevel",type:Number,value:1},/**
    * The relative-heading's UUID.
-   */id:{name:"id",type:"String",value:null,observer:"_updateChildren"},/**
+   */id:{name:"id",type:String,value:null,observer:"_updateChildren"},/**
    * The parent relative-heading's UUID.
-   */parentId:{name:"parentId",type:"String",value:null},/**
+   */parentId:{name:"parentId",type:String,value:null},/**
    * The heading text.
-   */text:{name:"text",type:"String",value:null},/**
+   */text:{name:"text",type:String,value:null},/**
    * The heading level (1-6), eg., 1 for <h1>
-   */level:{name:"level",type:"Number",reflectToAttribute:!0,computed:"_getLevel(parentId,defaultLevel)",observer:"_updateChildren"},/**
+   */level:{name:"level",type:Number,reflectToAttribute:!0,computed:"_getLevel(parentId,defaultLevel)",observer:"_updateChildren"},/**
    * Is the heading an h1?
-   */__isLevel1:{name:"__isLevel1",type:"Boolean",computed:"_isLevel(level,1)"},/**
+   */__isLevel1:{name:"__isLevel1",type:Boolean,computed:"_isLevel(level,1)"},/**
    * Is the heading an h2?
-   */__isLevel2:{name:"__isLevel2",type:"Boolean",computed:"_isLevel(level,2)"},/**
+   */__isLevel2:{name:"__isLevel2",type:Boolean,computed:"_isLevel(level,2)"},/**
    * Is the heading an h3?
-   */__isLevel3:{name:"__isLevel3",type:"Boolean",computed:"_isLevel(level,3)"},/**
+   */__isLevel3:{name:"__isLevel3",type:Boolean,computed:"_isLevel(level,3)"},/**
    * Is the heading an h4?
-   */__isLevel4:{name:"__isLevel4",type:"Boolean",computed:"_isLevel(level,4)"},/**
+   */__isLevel4:{name:"__isLevel4",type:Boolean,computed:"_isLevel(level,4)"},/**
    * Is the heading an h5?
-   */__isLevel5:{name:"__isLevel5",type:"Boolean",computed:"_isLevel(level,5)"},/**
+   */__isLevel5:{name:"__isLevel5",type:Boolean,computed:"_isLevel(level,5)"},/**
    * Is the heading an h6?
-   */__isLevel6:{name:"__isLevel6",type:"Boolean",computed:"_isLevel(level,6)"}}}/**
+   */__isLevel6:{name:"__isLevel6",type:Boolean,computed:"_isLevel(level,6)"}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"relative-heading"}/**

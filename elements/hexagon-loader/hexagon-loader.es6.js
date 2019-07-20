@@ -425,15 +425,15 @@ hex-a-gon:nth-of-type(37) {
         <hex-a-gon></hex-a-gon>
     </template>
 </div>`}// properties available to the custom element for data binding
-static get properties(){return{/**
+static get properties(){let props={/**
    * Color to make the loader
-   */color:{name:"color",type:"String",observer:"_colorChanged",reflectToAttribute:!0},/**
+   */color:{name:"color",type:String,observer:"_colorChanged",reflectToAttribute:!0},/**
    * The relative size of this loader. Options small, medium, large
-   */size:{name:"size",type:"String",reflectToAttribute:!0},/**
+   */size:{name:"size",type:String,reflectToAttribute:!0},/**
    * Loading state
-   */loading:{name:"loading",type:"Boolean",reflectToAttribute:!0},/**
+   */loading:{name:"loading",type:Boolean,reflectToAttribute:!0},/**
    * Count of the items
-   */itemCount:{name:"itemCount",type:"Number",value:37}}}/**
+   */itemCount:{name:"itemCount",type:Number,value:37}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"hexagon-loader"}/**

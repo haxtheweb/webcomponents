@@ -1,7 +1,7 @@
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import{FlattenedNodesObserver}from"./node_modules/@polymer/polymer/lib/utils/flattened-nodes-observer.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import{SchemaBehaviors}from"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import"./node_modules/@lrnwebcomponents/simple-modal/simple-modal.js";/**
+ */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import{FlattenedNodesObserver}from"./node_modules/@polymer/polymer/lib/utils/flattened-nodes-observer.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import{SchemaBehaviors}from"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import"./node_modules/@lrnwebcomponents/simple-modal/simple-modal.js";import"./node_modules/@lrnwebcomponents/hax-iconset/hax-iconset.js";/**
 `lrn-vocab`
 Vocabulary term with visual treatment and semantic meaning.
 
@@ -15,6 +15,7 @@ Vocabulary term with visual treatment and semantic meaning.
         paper-button {
           text-transform: none;
           padding: 0;
+          min-width: unset;
           margin: 0;
           position: relative;
           top: 0px;
@@ -38,4 +39,4 @@ Vocabulary term with visual treatment and semantic meaning.
    * Request the singleton dialog open
    */openDialog(e){let children=FlattenedNodesObserver.getFlattenedNodes(this).filter(n=>n.nodeType===Node.ELEMENT_NODE),c=document.createElement("div");for(var child in children){c.appendChild(children[child].cloneNode(!0))}const evt=new CustomEvent("simple-modal-show",{bubbles:!0,cancelable:!0,detail:{title:this.term,elements:{content:c},invokedBy:this.shadowRoot.querySelector("#button")}});window.dispatchEvent(evt)}/**
    * Attached life cycle
-   */connectedCallback(){super.connectedCallback();afterNextRender(this,function(){window.SimpleModal.requestAvailability();this.HAXWiring=new HAXWiring;this.HAXWiring.setup(LrnVocab.haxProperties,LrnVocab.tag,this)})}static get haxProperties(){return{canScale:!1,canPosition:!1,canEditSource:!1,gizmo:{title:"Vocab",description:"Vocabulary term",icon:"image:details",color:"red",groups:["Vocab"],handles:[{type:"inline",text:"term"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"term",title:"Term",description:"The word or words to make clickable for more detail.",inputMethod:"textfield",icon:"editor:title",required:!0}],configure:[{property:"term",title:"Term",description:"The word or words to make clickable for more detail.",inputMethod:"textfield",icon:"editor:title",required:!0},{slot:"",title:"Contents",description:"Contents to display in the pop up.",inputMethod:"code-editor",required:!0}],advanced:[]}}}}window.customElements.define(LrnVocab.tag,LrnVocab);export{LrnVocab};
+   */connectedCallback(){super.connectedCallback();afterNextRender(this,function(){window.SimpleModal.requestAvailability();this.HAXWiring=new HAXWiring;this.HAXWiring.setup(LrnVocab.haxProperties,LrnVocab.tag,this)})}static get haxProperties(){return{canScale:!1,canPosition:!1,canEditSource:!1,gizmo:{title:"Vocab",description:"Vocabulary term",icon:"hax:vocab",color:"red",groups:["Vocab"],handles:[{type:"inline",text:"term"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"term",title:"Term",inputMethod:"textfield",icon:"editor:title",required:!0}],configure:[{property:"term",title:"Term",inputMethod:"textfield",icon:"editor:title",required:!0},{slot:"",title:"Contents",description:"The definitition to display when the term is clicked.",inputMethod:"code-editor",required:!0}],advanced:[]}}}}window.customElements.define(LrnVocab.tag,LrnVocab);export{LrnVocab};

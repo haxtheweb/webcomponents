@@ -52,7 +52,7 @@ paper-tooltip {
   [[label]]
 </paper-tooltip>`}// haxProperty definition
 static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Scroll button",description:"button to scroll to an area or back to top",icon:"icons:android",color:"green",groups:["Button"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"btopro",owner:"The Pennsylvania State University"}},settings:{quick:[],configure:[{property:"target",description:"",inputMethod:"array",required:!1,icon:"icons:android"},{property:"icon",description:"",inputMethod:"textfield",required:!1,icon:"icons:android"},{property:"label",description:"",inputMethod:"textfield",required:!1,icon:"icons:android"}],advanced:[]}}}// properties available to the custom element for data binding
-static get properties(){return{target:{name:"target",type:"Object"},icon:{name:"icon",type:"String",value:"icons:expand-less"},label:{name:"label",type:"String",value:"Scroll to top"},position:{name:"position",type:"String",value:"top"}}}/**
+static get properties(){let props={target:{name:"target",type:Object},icon:{name:"icon",type:String,value:"icons:expand-less"},label:{name:"label",type:String,value:"Scroll to top"},position:{name:"position",type:String,value:"top"}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"scroll-button"}/**

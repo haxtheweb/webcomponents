@@ -309,31 +309,31 @@ paper-card.card-high-detail {
 </iron-pages>
 <canvas id="minimaparea"></canvas>
 <slot></slot>`}// properties available to the custom element for data binding
-static get properties(){return{/**
+static get properties(){let props={/**
    * Which layout to the outline to display
-   */viewMode:{name:"viewMode",type:"String",value:"cards",observer:"_viewModeChanged"},/**
+   */viewMode:{name:"viewMode",type:String,value:"cards",observer:"_viewModeChanged"},/**
    * Icon for the selected view mode
-   */viewModeIcon:{name:"viewModeIcon",type:"String"},/**
+   */viewModeIcon:{name:"viewModeIcon",type:String},/**
    * Label for the selected view mode
-   */viewModeLabel:{name:"viewModeLabel",type:"String"},/**
+   */viewModeLabel:{name:"viewModeLabel",type:String},/**
    * Which layout to the outline to display
-   */detailsMode:{name:"detailsMode",type:"String",value:"mid",reflectToAttribute:!0,observer:"_detailsModeChanged"},/**
+   */detailsMode:{name:"detailsMode",type:String,value:"mid",reflectToAttribute:!0,observer:"_detailsModeChanged"},/**
    * Icon for the selected view mode
-   */detailsModeIcon:{name:"detailsModeIcon",type:"String"},/**
+   */detailsModeIcon:{name:"detailsModeIcon",type:String},/**
    * Label for the selected view mode
-   */detailsModeLabel:{name:"detailsModeLabel",type:"String"},/**
+   */detailsModeLabel:{name:"detailsModeLabel",type:String},/**
    * Data binding to show the selected view
-   */selectedView:{name:"selectedView",type:"Number"},/**
+   */selectedView:{name:"selectedView",type:Number},/**
    * Whether or not we are in an editing state
-   */editMode:{name:"editMode",type:"Boolean",value:!1,reflectToAttribute:!0,observer:"_editModeChanged"},/**
+   */editMode:{name:"editMode",type:Boolean,value:!1,reflectToAttribute:!0,observer:"_editModeChanged"},/**
    * Whether or to show the mini map
-   */miniMap:{name:"miniMap",type:"Boolean",value:!0,reflectToAttribute:!0,observer:"_miniMapChanged"},/**
+   */miniMap:{name:"miniMap",type:Boolean,value:!0,reflectToAttribute:!0,observer:"_miniMapChanged"},/**
    * end point / JSON to load
-   */outlineSchemaUrl:{name:"outlineSchemaUrl",type:"String",value:!1},/**
+   */outlineSchemaUrl:{name:"outlineSchemaUrl",type:String,value:!1},/**
    * JSON outline schema manifest
-   */manifest:{name:"manifest",type:"Object",notify:!0},/**
+   */manifest:{name:"manifest",type:Object,notify:!0},/**
    * Data in outline format
-   */outlineData:{name:"outlineData",type:"Object",notify:!0}}}/**
+   */outlineData:{name:"outlineData",type:Object,notify:!0}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Store the tag name to make it easier to obtain directly.
    */static get tag(){return"outline-designer"}/**
    * life cycle, element is afixed to the DOM

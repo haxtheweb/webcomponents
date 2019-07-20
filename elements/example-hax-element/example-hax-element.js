@@ -75,22 +75,26 @@ class ExampleHaxElement extends HTMLElement {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       title: {
         name: "title",
-        type: "String",
+        type: String,
         value: "My Example",
         reflectToAttribute: false,
         observer: false
       },
       available: {
         name: "available",
-        type: "Boolean",
+        type: Boolean,
         value: "",
         reflectToAttribute: false,
         observer: false
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
 
   /**

@@ -71,7 +71,7 @@ class ExampleHaxcmsTheme extends HAXCMSTheme(PolymerElement) {
 
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       /**
        * Edit mode which will be updated whenever HAXcms store
        * has been updated. It's also reflected to attribute which
@@ -80,7 +80,7 @@ class ExampleHaxcmsTheme extends HAXCMSTheme(PolymerElement) {
        */
       editMode: {
         name: "editMode",
-        type: "Boolean",
+        type: Boolean,
         reflectToAttribute: true
       },
       /**
@@ -88,9 +88,13 @@ class ExampleHaxcmsTheme extends HAXCMSTheme(PolymerElement) {
        */
       activeManifestIndex: {
         name: "activeManifestIndex",
-        type: "Number"
+        type: Number
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
 
   /**

@@ -1,7 +1,7 @@
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import"./lib/simple-colors-styles.js";/**
+ */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{SimpleColorsStyles}from"./lib/simple-colors-styles.js";/**
  * `simple-colors`
  * `a shared set of styles for @lrnwebcomponents`
  *
@@ -26,11 +26,9 @@ static get properties(){return{/**
        * make the default theme dark?
        */dark:{name:"dark",type:"Boolean",value:!1,reflectToAttribute:!0,notify:!0},/**
        * make the default theme dark?
-       */colors:{name:"colors",type:"Object",value:window.SimpleColorsStyles.colors,notify:!0}}}static get tag(){return"simple-colors"}/**
-   * life cycle, element is afixed to the DOM
-   */connectedCallback(){super.connectedCallback();this.__utils=window.SimpleColorsStyles.requestAvailability()}/**
+       */colors:{name:"colors",type:"Object",value:window.SimpleColorsStyles.colors,notify:!0}}}static get tag(){return"simple-colors"}constructor(){super();this.__utils=window.SimpleColorsStyles.requestAvailability()}/**
    * life cycle, element is ready
-   */ready(){super.ready()}/**
+   */ready(){super.ready();this.shadowRoot.insertBefore(new SimpleColorsStyles().makeStyleElement(),this.shadowRoot.children[0])}/**
    * returns the maximum contrast to the shade
    *
    * @param {string} the shade

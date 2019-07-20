@@ -20,23 +20,21 @@ get html(){return`
   display: none;
 }
 </style>
-<slot></slot>`}// haxProperty definition
-static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Random item",description:"show a random item from a list of items",icon:"icons:android",color:"green",groups:["Item"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"btopro",owner:"The Pennsylvania State University"}},settings:{quick:[{property:"source",description:"",inputMethod:"textfield",required:!0,icon:"icons:link",validationType:"url"}],configure:[{property:"items",description:"",inputMethod:"array",required:!1,icon:"icons:android"},{property:"source",description:"",inputMethod:"textfield",required:!0,icon:"icons:link",validationType:"url"}],advanced:[]}}}// properties available to the custom element for data binding
-static get properties(){let props={items:{name:"items",type:"Array",value:"[]",reflectToAttribute:!1,observer:!1},source:{name:"source",type:"String",value:"",reflectToAttribute:!1,observer:!1}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
+${this.dataPoint}`}// haxProperty definition
+static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Random item",description:"Show a random item from a list of items",icon:"communication:rss-feed",color:"red",groups:["Item"],handles:[],meta:{author:"btopro",owner:"The Pennsylvania State University"}},settings:{quick:[],configure:[{property:"field",title:"Field",description:"Field in the file to show",inputMethod:"textfield",required:!1},{property:"source",title:"Source",description:"URL pointing to a CSV file",inputMethod:"haxupload",required:!0}],advanced:[]}}}// properties available to the custom element for data binding
+static get properties(){let props={source:{name:"source",type:"String"},field:{name:"field",type:"String"}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"random-item"}/**
    * life cycle
    */constructor(delayRender=!1){super();// set tag for later use
-this.tag=RandomItem.tag;// map our imported properties json to real props on the element
-// @notice static getter of properties is built via tooling
-// to edit modify src/RandomItem-properties.json
-let obj=RandomItem.properties;for(let p in obj){if(obj.hasOwnProperty(p)){if(this.hasAttribute(p)){this[p]=this.getAttribute(p)}else{this.setAttribute(p,obj[p].value);this[p]=obj[p].value}}}// optional queue for future use
-this._queue=[];this.template=document.createElement("template");this.attachShadow({mode:"open"});if(!delayRender){this.render()}}/**
+this.tag=RandomItem.tag;this.template=document.createElement("template");this.attachShadow({mode:"open"});if(!delayRender){this.render()}}/**
    * life cycle, element is afixed to the DOM
-   */connectedCallback(){if(window.ShadyCSS){window.ShadyCSS.styleElement(this)}this.HAXWiring=new HAXWiring;this.HAXWiring.setup(RandomItem.haxProperties,RandomItem.tag,this)}_copyAttribute(name,to){const recipients=this.shadowRoot.querySelectorAll(to),value=this.getAttribute(name),fname=null==value?"removeAttribute":"setAttribute";for(const node of recipients){node[fname](name,value)}}_setProperty({name,value}){this[name]=value}render(){this.shadowRoot.innerHTML=null;this.template.innerHTML=this.html;if(window.ShadyCSS){window.ShadyCSS.prepareTemplate(this.template,this.tag)}this.shadowRoot.appendChild(this.template.content.cloneNode(!0))}//static get observedAttributes() {
-//  return [];
-//}
-// disconnectedCallback() {}
-// attributeChangedCallback(attr, oldValue, newValue) {}
-}window.customElements.define(RandomItem.tag,RandomItem);export{RandomItem};
+   */connectedCallback(){if(window.ShadyCSS){window.ShadyCSS.styleElement(this)}this.HAXWiring=new HAXWiring;this.HAXWiring.setup(RandomItem.haxProperties,RandomItem.tag,this)}render(){this.shadowRoot.innerHTML=null;this.template.innerHTML=this.html;if(window.ShadyCSS){window.ShadyCSS.prepareTemplate(this.template,this.tag)}this.shadowRoot.appendChild(this.template.content.cloneNode(!0))}static get observedAttributes(){return["source","field"]}// disconnectedCallback() {}
+attributeChangedCallback(attr,oldValue,newValue){if("source"===attr&&newValue){this.source=newValue;this.sourceChanged(newValue)}else if("field"===attr&&newValue){this.field=newValue;if(this.source){this.setDataWithRandom()}}}/**
+   * source changed
+   */async sourceChanged(value){let data=await fetch(value).then(function(response){return response.text()});this.items=this.CSVtoArray(data);var heading=this.items.shift();this.qKey=heading;this.entryPoint=0;this.setDataWithRandom()}/**
+   * Set data with a random value
+   */setDataWithRandom(){for(let key in this.qKey){if(this.qKey[key]===this.field){this.entryPoint=+key}}var qKey=Math.floor(Math.random()*this.items.length);this.dataPoint=this.items[qKey][this.entryPoint];this.render()}/**
+   * Mix of solutions from https://stackoverflow.com/questions/8493195/how-can-i-parse-a-csv-string-with-javascript-which-contains-comma-in-data
+   */CSVtoArray(text){let p="",row=[""],ret=[row],i=0,r=0,s=!0,l;for(l in text){l=text[l];if("\""===l){if(s&&l===p)row[i]+=l;s=!s}else if(","===l&&s)l=row[++i]="";else if("\n"===l&&s){if("\r"===p)row[i]=row[i].slice(0,-1);row=ret[++r]=[l=""];i=0}else row[i]+=l;p=l}return ret}}window.customElements.define(RandomItem.tag,RandomItem);export{RandomItem};

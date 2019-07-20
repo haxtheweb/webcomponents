@@ -151,8 +151,8 @@ A well styled comment for a user with markdown support.
           font-weight: normal;
         }
         paper-badge {
-          right: 0px;
-          top: 0px;
+          display: flex;
+          float: right;
         }
         .like-icon-color {
           color: #2196f3;
@@ -184,6 +184,17 @@ A well styled comment for a user with markdown support.
               class="ferpa-protect"
               >[[displayName]]</paper-tooltip
             >
+            <template
+              is="dom-if"
+              if="[[comment.relationships.author.data.visual.icon]]"
+            >
+              <paper-badge
+                icon="[[comment.relationships.author.data.visual.icon]]"
+                for="papercard"
+                label="[[comment.relationships.author.data.visual.label]]"
+              >
+              </paper-badge>
+            </template>
           </div>
           <div class="comment-content">
             <div class="comment-body">
@@ -306,17 +317,6 @@ A well styled comment for a user with markdown support.
           </div>
         </div>
       </div>
-      <template
-        is="dom-if"
-        if="[[comment.relationships.author.data.visual.icon]]"
-      >
-        <paper-badge
-          icon="[[comment.relationships.author.data.visual.icon]]"
-          for="papercard"
-          label="[[comment.relationships.author.data.visual.label]]"
-        >
-        </paper-badge>
-      </template>
     `}static get tag(){return"lrnsys-comment"}static get properties(){return{comment:{type:Object,notify:!0,observer:"_commentLoaded"},displayName:{type:String,notify:!0,computed:"_generateName(comment.relationships.author.data.display_name, comment.relationships.author.data.visual)"},commentNew:{type:String,notify:!0,computed:"_isCommentNew(comment.relationships.author.data.visual)"},hoverClass:{type:String,reflectToAttribute:!0},editform:{type:Boolean,notify:!0,observer:"_editTrigger",reflectToAttribute:!0},disabled:{type:Boolean,notify:!0,reflectToAttribute:!0}}}/**
    * attached lifecycle
    */connectedCallback(){super.connectedCallback();this.$.bodyarea.addEventListener("click",this.bodyToggle.bind(this));this.$.bodyarea.addEventListener("dblclick",this.bodyToggleOn.bind(this))}/**

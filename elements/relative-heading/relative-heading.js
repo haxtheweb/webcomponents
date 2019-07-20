@@ -109,13 +109,13 @@ class RelativeHeading extends PolymerElement {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       /**
        * The default heading level (1-6), eg., 1 for <h1>, if there  is no parent.
        */
       defaultLevel: {
         name: "defaultLevel",
-        type: "Number",
+        type: Number,
         value: 1
       },
       /**
@@ -123,7 +123,7 @@ class RelativeHeading extends PolymerElement {
        */
       id: {
         name: "id",
-        type: "String",
+        type: String,
         value: null,
         observer: "_updateChildren"
       },
@@ -132,7 +132,7 @@ class RelativeHeading extends PolymerElement {
        */
       parentId: {
         name: "parentId",
-        type: "String",
+        type: String,
         value: null
       },
       /**
@@ -140,7 +140,7 @@ class RelativeHeading extends PolymerElement {
        */
       text: {
         name: "text",
-        type: "String",
+        type: String,
         value: null
       },
       /**
@@ -148,7 +148,7 @@ class RelativeHeading extends PolymerElement {
        */
       level: {
         name: "level",
-        type: "Number",
+        type: Number,
         reflectToAttribute: true,
         computed: "_getLevel(parentId,defaultLevel)",
         observer: "_updateChildren"
@@ -158,7 +158,7 @@ class RelativeHeading extends PolymerElement {
        */
       __isLevel1: {
         name: "__isLevel1",
-        type: "Boolean",
+        type: Boolean,
         computed: "_isLevel(level,1)"
       },
       /**
@@ -166,7 +166,7 @@ class RelativeHeading extends PolymerElement {
        */
       __isLevel2: {
         name: "__isLevel2",
-        type: "Boolean",
+        type: Boolean,
         computed: "_isLevel(level,2)"
       },
       /**
@@ -174,7 +174,7 @@ class RelativeHeading extends PolymerElement {
        */
       __isLevel3: {
         name: "__isLevel3",
-        type: "Boolean",
+        type: Boolean,
         computed: "_isLevel(level,3)"
       },
       /**
@@ -182,7 +182,7 @@ class RelativeHeading extends PolymerElement {
        */
       __isLevel4: {
         name: "__isLevel4",
-        type: "Boolean",
+        type: Boolean,
         computed: "_isLevel(level,4)"
       },
       /**
@@ -190,7 +190,7 @@ class RelativeHeading extends PolymerElement {
        */
       __isLevel5: {
         name: "__isLevel5",
-        type: "Boolean",
+        type: Boolean,
         computed: "_isLevel(level,5)"
       },
       /**
@@ -198,10 +198,14 @@ class RelativeHeading extends PolymerElement {
        */
       __isLevel6: {
         name: "__isLevel6",
-        type: "Boolean",
+        type: Boolean,
         computed: "_isLevel(level,6)"
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
 
   /**

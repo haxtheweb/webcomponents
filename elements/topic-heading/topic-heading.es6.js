@@ -43,7 +43,7 @@ iron-icon {
 }</style>
 <iron-icon icon="[[icon]]"></iron-icon><relative-heading text="[[title]]"></relative-heading>`}// haxProperty definition
 static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Topic heading",description:"Semantic and visual meaning behind a heading break",icon:"icons:android",color:"green",groups:["Heading"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"btopro",owner:"The Pennsylvania State University"}},settings:{quick:[],configure:[{property:"icon",description:"",inputMethod:"iconpicker",required:!1,icon:"icons:code"},{property:"title",description:"",inputMethod:"textfield",required:!1,icon:"icons:heading"}],advanced:[]}}}// properties available to the custom element for data binding
-static get properties(){return{icon:{name:"icon",type:"String",value:""},title:{name:"title",type:"String",value:"Heading"}}}/**
+static get properties(){let props={icon:{name:"icon",type:String,value:""},title:{name:"title",type:String,value:"Heading"}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"topic-heading"}/**

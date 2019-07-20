@@ -121,7 +121,7 @@ class LrnButton extends PolymerElement {
 
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       /**
        * Standard href pass down
        */
@@ -217,6 +217,10 @@ class LrnButton extends PolymerElement {
         value: false
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
   /**
    * Store the tag name to make it easier to obtain directly.

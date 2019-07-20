@@ -35,17 +35,17 @@ code-editor {
   </div>
 </vaadin-split-layout>`}// haxProperty definition
 static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!0,gizmo:{title:"Haxschema builder",description:"dynamically build and visualize HAXschema",icon:"icons:android",color:"green",groups:["Builder"],handles:[],meta:{author:"btopro",owner:"The Pennsylvania State University"}},settings:{quick:[],configure:[{property:"source",description:"",inputMethod:"textfield",required:!0,icon:"icons:link",validationType:"url"}],advanced:[]}}}// properties available to the custom element for data binding
-static get properties(){return{/**
+static get properties(){let props={/**
    * schema to extract for whatever you wanted it for
-   */haxSchema:{name:"haxSchema",type:"String",notify:!0,observer:"_haxSchemaChanged"},/**
+   */haxSchema:{name:"haxSchema",type:String,notify:!0,observer:"_haxSchemaChanged"},/**
    * configure form schema to extract for whatever you wanted it for
-   */configureSchema:{name:"configureSchema",type:"Object",value:{}},/**
+   */configureSchema:{name:"configureSchema",type:Object,value:{}},/**
    * advanced form schema to extract for whatever you wanted it for
-   */advancedSchema:{name:"advancedSchema",type:"Object",value:{}},/**
+   */advancedSchema:{name:"advancedSchema",type:Object,value:{}},/**
    * Optional remote source to pull in
-   */source:{name:"source",type:"String"},/**
+   */source:{name:"source",type:String},/**
    * String based value passed between the elements to stitch together
-   */value:{name:"value",type:"String"}}}/**
+   */value:{name:"value",type:String}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"haxschema-builder"}/**

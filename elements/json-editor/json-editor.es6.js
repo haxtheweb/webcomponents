@@ -55,21 +55,21 @@ paper-textarea {
   readonly="[[disabled]]"
   invalid="[[error]]"
   max-rows="[[maxRows]]"></paper-textarea>`}// properties available to the custom element for data binding
-static get properties(){return{/**
+static get properties(){let props={/**
    * label for the text area
-   */label:{name:"label",type:"String",value:"JSON data"},/**
+   */label:{name:"label",type:String,value:"JSON data"},/**
    * State of being valid JSON object
-   */error:{name:"error",type:"Boolean",value:!1,reflectToAttribute:!0},/**
+   */error:{name:"error",type:Boolean,value:!1,reflectToAttribute:!0},/**
    * toggling disabled state of the editor
-   */disabled:{name:"disabled",type:"Boolean",value:!1,reflectToAttribute:!0},/**
+   */disabled:{name:"disabled",type:Boolean,value:!1,reflectToAttribute:!0},/**
    * max rows in the textarea
-   */maxRows:{name:"maxRows",type:"Number",value:0,reflectToAttribute:!0},/**
+   */maxRows:{name:"maxRows",type:Number,value:0,reflectToAttribute:!0},/**
    * String based value of the editor, use this to set initial value
-   */value:{name:"value",type:"String",value:"",notify:!0,reflectToAttribute:!1,observer:"_valueChanged"},/**
+   */value:{name:"value",type:String,value:"",notify:!0,reflectToAttribute:!1,observer:"_valueChanged"},/**
    * format test to update value so it's pretty printed
-   */formatTest:{name:"value",type:"String",computed:"_computeFormattedValue(value)"},/**
+   */formatTest:{name:"value",type:String,computed:"_computeFormattedValue(value)"},/**
    * The current data object
-   */currentData:{name:"currentData",type:"Object",notify:!0,computed:"_computeCurrentData(value)"}}}/**
+   */currentData:{name:"currentData",type:Object,notify:!0,computed:"_computeCurrentData(value)"}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"json-editor"}// Observer value for changes

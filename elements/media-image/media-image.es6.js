@@ -79,7 +79,6 @@
           max-width: var(--media-image-offset-narrow-max-width, 500px);
           margin: auto;
         }
-
       </style>
       <iron-image
         resource\$="[[schemaResourceID]]-image"

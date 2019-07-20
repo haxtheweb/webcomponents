@@ -95,13 +95,13 @@ iron-icon {
   stop-keyboard-event-propagation></iron-a11y-keys>
 <iron-a11y-keys target="[[__outlineNode]]" keys="tab" on-keys-pressed="_tabKeyPressed"
   stop-keyboard-event-propagation></iron-a11y-keys>`}// properties available to the custom element for data binding
-static get properties(){return{/**
+static get properties(){let props={/**
    * A items list of JSON Outline Schema Items
-   */items:{name:"items",type:"Array",value:[],notify:!0},/**
+   */items:{name:"items",type:Array,value:[],notify:!0},/**
    * Edit mode
-   */editMode:{name:"editMode",type:"Boolean",notify:!0,observer:"_editModeChanged"},/**
+   */editMode:{name:"editMode",type:Boolean,notify:!0,observer:"_editModeChanged"},/**
    * Outline node for keyboard key binding
-   */__outlineNode:{name:"__outlineNode",type:"Object"}}}constructor(){super();this.polyfillSafe=this.__computePolyfillSafe();window.JSONOutlineSchema.requestAvailability()}/**
+   */__outlineNode:{name:"__outlineNode",type:Object}};if(super.properties){props=Object.assign(props,super.properties)}return props}constructor(){super();this.polyfillSafe=this.__computePolyfillSafe();window.JSONOutlineSchema.requestAvailability()}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"editable-outline"}/**
