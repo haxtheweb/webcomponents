@@ -92,21 +92,25 @@ class MdBlock extends PolymerElement {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       source: {
         name: "source",
-        type: "String"
+        type: String
       },
       hasSource: {
         name: "hasSource",
-        type: "Boolean",
+        type: Boolean,
         computed: "_calculateHasSource(source)"
       },
       markdown: {
         name: "markdown",
-        type: "String"
+        type: String
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
   constructor() {
     super();

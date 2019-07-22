@@ -442,13 +442,13 @@ class HexagonLoader extends PolymerElement {
 
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       /**
        * Color to make the loader
        */
       color: {
         name: "color",
-        type: "String",
+        type: String,
         observer: "_colorChanged",
         reflectToAttribute: true
       },
@@ -457,7 +457,7 @@ class HexagonLoader extends PolymerElement {
        */
       size: {
         name: "size",
-        type: "String",
+        type: String,
         reflectToAttribute: true
       },
       /**
@@ -465,7 +465,7 @@ class HexagonLoader extends PolymerElement {
        */
       loading: {
         name: "loading",
-        type: "Boolean",
+        type: Boolean,
         reflectToAttribute: true
       },
       /**
@@ -473,10 +473,14 @@ class HexagonLoader extends PolymerElement {
        */
       itemCount: {
         name: "itemCount",
-        type: "Number",
+        type: Number,
         value: 37
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
 
   /**

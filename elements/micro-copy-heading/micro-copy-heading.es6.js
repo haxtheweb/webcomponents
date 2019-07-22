@@ -41,11 +41,11 @@ h2 {
 }</style>
 <h2>${this.heading}<span aria-hidden="true">${this.endcap}</span></h2>`}// haxProperty definition
 static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Micro copy-heading",description:"small call to action / attention that acts as a heading too",icon:"icons:android",color:"green",groups:["Copy"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"btopro",owner:"The Pennsylvania State University"}},settings:{quick:[{property:"heading",description:"",inputMethod:"textfield",required:!1,icon:"icons:android"},{property:"endCap",description:"",inputMethod:"textfield",required:!1,icon:"icons:android"}],configure:[{property:"heading",description:"",inputMethod:"textfield",required:!1,icon:"icons:android"},{property:"endCap",description:"",inputMethod:"textfield",required:!1,icon:"icons:android"}],advanced:[]}}}// properties available to the custom element for data binding
-static get properties(){return{/**
+static get properties(){let props={/**
    * Heading / call to action to display
-   */heading:{name:"heading",type:"String",value:"Telling our story"},/**
+   */heading:{name:"heading",type:String,value:"Telling our story"},/**
    * ending cap to the statement, possibly a character, icon, etc
-   */endcap:{name:"endcap",type:"String",value:"//"}}}/**
+   */endcap:{name:"endcap",type:String,value:"//"}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */tag(){return"micro-copy-heading"}// life cycle

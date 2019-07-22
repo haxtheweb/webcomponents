@@ -1,4 +1,4 @@
-define(["exports","meta","./node_modules/@polymer/polymer/polymer-element.js","./node_modules/@lrnwebcomponents/es-global-bridge/es-global-bridge.js","./node_modules/@polymer/polymer/lib/utils/resolve-url.js"],function(_exports,meta,_polymerElement,_esGlobalBridge,_resolveUrl){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.Hal9000=void 0;meta=babelHelpers.interopRequireWildcard(meta);function _templateObject_a7331ec081c011e98824c386a93aaec8(){var data=babelHelpers.taggedTemplateLiteral(["\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n[hidden] {\n  display: none;\n}\n</style>\n<slot></slot>"]);_templateObject_a7331ec081c011e98824c386a93aaec8=function _templateObject_a7331ec081c011e98824c386a93aaec8(){return data};return data}/**
+define(["exports","meta","./node_modules/@polymer/polymer/polymer-element.js","./node_modules/@lrnwebcomponents/es-global-bridge/es-global-bridge.js","./node_modules/@polymer/polymer/lib/utils/resolve-url.js"],function(_exports,meta,_polymerElement,_esGlobalBridge,_resolveUrl){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.Hal9000=void 0;meta=babelHelpers.interopRequireWildcard(meta);function _templateObject_63fb37c0ab1211e980873f4a88e37429(){var data=babelHelpers.taggedTemplateLiteral(["\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n[hidden] {\n  display: none;\n}\n</style>\n<slot></slot>"]);_templateObject_63fb37c0ab1211e980873f4a88e37429=function _templateObject_63fb37c0ab1211e980873f4a88e37429(){return data};return data}/**
  * `hal-9000`
  * `Robot assistant tag, hopefully not evil`
  *
@@ -9,24 +9,24 @@ define(["exports","meta","./node_modules/@polymer/polymer/polymer-element.js",".
  * @polymer
  * @demo demo/index.html
  */var Hal9000=/*#__PURE__*/function(_PolymerElement){babelHelpers.inherits(Hal9000,_PolymerElement);babelHelpers.createClass(Hal9000,null,[{key:"template",// render function
-get:function get(){return(0,_polymerElement.html)(_templateObject_a7331ec081c011e98824c386a93aaec8())}// properties available to the custom element for data binding
-},{key:"properties",get:function get(){return{/**
+get:function get(){return(0,_polymerElement.html)(_templateObject_63fb37c0ab1211e980873f4a88e37429())}// properties available to the custom element for data binding
+},{key:"properties",get:function get(){var props={/**
    * Commands to listen for and take action on
-   */commands:{name:"commands",type:"Object",value:{},observer:"_commandsChanged"},/**
+   */commands:{name:"commands",type:Object,value:{},observer:"_commandsChanged"},/**
    * The name that HAL 9000 should respond to.
-   */respondsTo:{name:"respondsTo",type:"String",value:"(hal)",observer:"_respondsToChanged"},/**
+   */respondsTo:{name:"respondsTo",type:String,value:"(hal)",observer:"_respondsToChanged"},/**
    * Debug mode for annyang
-   */debug:{name:"debug",type:"Boolean",value:!1,observer:"_debugChanged"},/**
+   */debug:{name:"debug",type:Boolean,value:!1,observer:"_debugChanged"},/**
    * Start automatically
-   */auto:{name:"auto",type:"Boolean",reflectToAttribute:!0,observer:"_autoChanged"},/**
+   */auto:{name:"auto",type:Boolean,reflectToAttribute:!0,observer:"_autoChanged"},/**
    * Status of listening
-   */enabled:{name:"enabled",type:"Boolean",reflectToAttribute:!0,observer:"_enabledChanged"},/**
+   */enabled:{name:"enabled",type:Boolean,reflectToAttribute:!0,observer:"_enabledChanged"},/**
    * Pitch of speech
-   */pitch:{name:"pitch",type:"Number",reflectToAttribute:!0,value:.9},/**
+   */pitch:{name:"pitch",type:Number,reflectToAttribute:!0,value:.9},/**
    * Rate of speech
-   */rate:{name:"rate",type:"Number",reflectToAttribute:!0,value:.9},/**
+   */rate:{name:"rate",type:Number,reflectToAttribute:!0,value:.9},/**
    * Language of the speaker
-   */language:{name:"language",type:"String",reflectToAttribute:!0,value:"en-US"}}}/**
+   */language:{name:"language",type:String,reflectToAttribute:!0,value:"en-US"}};if(babelHelpers.get(babelHelpers.getPrototypeOf(Hal9000),"properties",this)){props=Object.assign(props,babelHelpers.get(babelHelpers.getPrototypeOf(Hal9000),"properties",this))}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */},{key:"tag",get:function get(){return"hal-9000"}/**

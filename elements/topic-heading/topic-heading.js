@@ -103,18 +103,22 @@ class TopicHeading extends PolymerElement {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       icon: {
         name: "icon",
-        type: "String",
+        type: String,
         value: ""
       },
       title: {
         name: "title",
-        type: "String",
+        type: String,
         value: "Heading"
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
 
   /**

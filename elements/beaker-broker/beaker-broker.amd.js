@@ -1,4 +1,4 @@
-define(["exports","./node_modules/@polymer/polymer/polymer-element.js"],function(_exports,_polymerElement){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.BeakerBroker=void 0;function _templateObject_6ccac4d081c111e9b60e49f7be0672c9(){var data=babelHelpers.taggedTemplateLiteral(["\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n</style>\n<slot></slot>"]);_templateObject_6ccac4d081c111e9b60e49f7be0672c9=function _templateObject_6ccac4d081c111e9b60e49f7be0672c9(){return data};return data}/**
+define(["exports","./node_modules/@polymer/polymer/polymer-element.js"],function(_exports,_polymerElement){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.BeakerBroker=void 0;function _templateObject_6adff020ab1311e9992ab7ca52344c3c(){var data=babelHelpers.taggedTemplateLiteral(["\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n</style>\n<slot></slot>"]);_templateObject_6adff020ab1311e9992ab7ca52344c3c=function _templateObject_6adff020ab1311e9992ab7ca52344c3c(){return data};return data}/**
  * `beaker-broker`
  * `An element to help check for and broker calls to read and write beaker browser dat sites.
  * This allows for data binding and figuring out if we're in an environment that we can even use this.`
@@ -28,13 +28,13 @@ this.set("archive",new DatArchive(newValue))}case 1:case"end":return _context.st
    * life cycle, element is removed from the DOM
    */ //disconnectedCallback() {}
 }],[{key:"template",// render function
-get:function get(){return(0,_polymerElement.html)(_templateObject_6ccac4d081c111e9b60e49f7be0672c9())}// haxProperty definition
+get:function get(){return(0,_polymerElement.html)(_templateObject_6adff020ab1311e9992ab7ca52344c3c())}// haxProperty definition
 },{key:"haxProperties",get:function get(){return{}}// properties available to the custom element for data binding
-},{key:"properties",get:function get(){return{/**
+},{key:"properties",get:function get(){var props={/**
    * Archive
-   */archive:{type:"Object",notify:!0},/**
+   */archive:{type:Object,notify:!0},/**
    * datUrl
-   */datUrl:{type:"String",value:window.location.host,observer:"_datUrlChanged",notify:!0}}}/**
+   */datUrl:{type:String,value:window.location.host,observer:"_datUrlChanged",notify:!0}};if(babelHelpers.get(babelHelpers.getPrototypeOf(BeakerBroker),"properties",this)){props=Object.assign(props,babelHelpers.get(babelHelpers.getPrototypeOf(BeakerBroker),"properties",this))}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */},{key:"tag",get:function get(){return"beaker-broker"}}]);return BeakerBroker}(_polymerElement.PolymerElement);_exports.BeakerBroker=BeakerBroker;window.customElements.define(BeakerBroker.tag,BeakerBroker)});

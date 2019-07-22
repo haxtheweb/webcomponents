@@ -16,7 +16,7 @@
       "hax": "src/topic-heading-hax.json"
     }
   },
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Semantic and visual meaning behind a heading break",
   "repository": {
     "type": "git",
@@ -40,14 +40,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^2.1.0",
-    "@lrnwebcomponents/relative-heading": "^2.1.0",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.1.1",
+    "@lrnwebcomponents/relative-heading": "^2.1.1",
     "@polymer/iron-icon": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/polymer": "^3.2.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^2.0.9",
+    "@lrnwebcomponents/deduping-fix": "^2.1.1",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@webcomponents/webcomponentsjs": "2.2.10",

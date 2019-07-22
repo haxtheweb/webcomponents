@@ -22,7 +22,7 @@ get html(){return`
 </style>
 <slot></slot>`}// haxProperty definition
 static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Example hax-element",description:"Provide an example to pick apart of a working HAX element",icon:"icons:android",color:"green",groups:["Hax"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"You",owner:"Your Company"}},settings:{quick:[],configure:[{property:"title",description:"",inputMethod:"textfield",required:!1,icon:"icons:android"},{property:"available",description:"",inputMethod:"boolean",required:!1,icon:"icons:android"}],advanced:[]}}}// properties available to the custom element for data binding
-static get properties(){return{title:{name:"title",type:"String",value:"My Example",reflectToAttribute:!1,observer:!1},available:{name:"available",type:"Boolean",value:"",reflectToAttribute:!1,observer:!1}}}/**
+static get properties(){let props={title:{name:"title",type:String,value:"My Example",reflectToAttribute:!1,observer:!1},available:{name:"available",type:Boolean,value:"",reflectToAttribute:!1,observer:!1}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"example-hax-element"}/**

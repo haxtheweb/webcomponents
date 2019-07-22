@@ -9,6 +9,7 @@
     <script type="module">
       import "@polymer/iron-demo-helpers/demo-pages-shared-styles.js";
       import "@polymer/iron-demo-helpers/demo-snippet.js";
+      import "@polymer/marked-element/marked-element.js";
       import "../word-count.js";
     </script>
   </head>
@@ -17,7 +18,13 @@
       <h3>Basic word-count demo</h3>
       <demo-snippet>
         <template>
-          <word-count>So put in some words and get a count</word-count>
+          <word-count>
+            <marked-element>
+              <script type="text/markdown">
+              So put in some words and get a count
+              </script>
+            </marked-element>
+          </word-count>
         </template>
       </demo-snippet>
     </div>

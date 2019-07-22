@@ -17,7 +17,7 @@ if(!window.JSONOutlineSchema.instance){window.JSONOutlineSchema.instance=documen
  * @demo demo/index.html
  */var JsonOutlineSchema=/*#__PURE__*/function(_HTMLElement){babelHelpers.inherits(JsonOutlineSchema,_HTMLElement);babelHelpers.createClass(JsonOutlineSchema,[{key:"html",// render function
 get:function get(){return"\n<style>:host {\n  display: block;\n}\n:host([debug]) {\n  font-family: monospace;\n  white-space: pre;\n  margin: 16px 0px;\n}\n:host([hidden]) {\n  display: none;\n}\n</style>\n<slot></slot>"}// properties available to the custom element for data binding
-}],[{key:"properties",get:function get(){return{}}/**
+}],[{key:"properties",get:function get(){var props={};if(babelHelpers.get(babelHelpers.getPrototypeOf(JsonOutlineSchema),"properties",this)){props=Object.assign(props,babelHelpers.get(babelHelpers.getPrototypeOf(JsonOutlineSchema),"properties",this))}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */},{key:"tag",get:function get(){return"json-outline-schema"}/**

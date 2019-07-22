@@ -1,5 +1,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/iron-list/iron-list.js";
+import "@polymer/polymer/lib/elements/dom-repeat.js";
+
 /**
  * `hax-blox-browser`
  * `List of layout blox to select from`
@@ -26,11 +27,8 @@ class HaxBloxBrowser extends PolymerElement {
           -webkit-transition: 0.3s all linear;
           transition: 0.3s all linear;
         }
-        #ironlist {
-          min-height: 50vh;
-        }
       </style>
-      <iron-list id="ironlist" items="[[__bloxList]]" as="blox" grid="">
+      <dom-repeat items="[[__bloxList]]" as="blox">
         <template>
           <div class="blox-container">
             <hax-blox-browser-item
@@ -48,7 +46,7 @@ class HaxBloxBrowser extends PolymerElement {
             ></hax-blox-browser-item>
           </div>
         </template>
-      </iron-list>
+      </dom-repeat>
     `;
   }
 
@@ -64,16 +62,11 @@ class HaxBloxBrowser extends PolymerElement {
       bloxList: {
         type: Array,
         observer: "_bloxListChanged"
+      },
+      __bloxList: {
+        type: Array
       }
     };
-  }
-
-  /**
-   * Attached life cycle
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.resetBrowser();
   }
 
   /**
@@ -104,22 +97,6 @@ class HaxBloxBrowser extends PolymerElement {
     if (typeof newValue !== typeof undefined) {
       this.set("__bloxList", newValue);
     }
-  }
-  /**
-   * Reset this browser.
-   */
-  resetBrowser() {
-    setTimeout(() => {
-      this.shadowRoot.querySelector("#ironlist").dispatchEvent(
-        new CustomEvent("iron-resize", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: true
-        })
-      );
-      window.dispatchEvent(new Event("resize"));
-    }, 100);
   }
 }
 window.customElements.define(HaxBloxBrowser.tag, HaxBloxBrowser);

@@ -86,7 +86,7 @@ static get template(){return html`
   </paper-button>
 </a>
 <paper-tooltip for="lrnsys-button-link" animation-delay="0">[[alt]]</paper-tooltip>`}// properties available to the custom element for data binding
-static get properties(){return{/**
+static get properties(){let props={/**
    * Standard href pass down
    */href:{type:String,value:"#"},/**
    * What to display for the resource
@@ -114,7 +114,7 @@ static get properties(){return{/**
    * Disabled state.
    */disabled:{type:Boolean,value:!1},/**
    * Tracks if focus state is applied
-   */focusState:{type:Boolean,value:!1}}}/**
+   */focusState:{type:Boolean,value:!1}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"lrn-button"}constructor(){super();import("./node_modules/@polymer/paper-button/paper-button.js");import("./node_modules/@polymer/paper-tooltip/paper-tooltip.js")}/**

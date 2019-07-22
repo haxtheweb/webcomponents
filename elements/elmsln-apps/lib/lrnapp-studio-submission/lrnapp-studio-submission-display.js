@@ -124,13 +124,9 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
               Last updated: [[date(submission.meta.changed)]]
             </div>
             <!-- ----- Text Submission ----- -->
-            <template is="dom-if" if="[[submission.attributes.body]]">
-              <word-count
-                ><marked-element
-                  markdown="[[submission.attributes.body]]"
-                ></marked-element
-              ></word-count>
-            </template>
+            <word-count>
+              <marked-element id="markedarea"> </marked-element>
+            </word-count>
             <!-- ----- Images Submission ----- -->
             <template is="dom-if" if="[[submission.attributes.images]]">
               <lrndesign-contentblock class="center">
@@ -245,7 +241,8 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
        */
       submission: {
         type: Object,
-        notify: true
+        notify: true,
+        observer: "_submissionLoaded"
       },
       elmslnCourse: {
         type: String
@@ -264,6 +261,19 @@ class LrnappStudioSubmissionDisplay extends PolymerElement {
       }
     };
   }
+  _submissionLoaded(newValue) {
+    if (newValue) {
+      if (newValue.attributes && newValue.attributes.body) {
+        let mdscript = document.createElement("script");
+        mdscript.type = "text/markdown";
+        mdscript.innerHTML = newValue.attributes.body;
+        this.shadowRoot.querySelector("#markedarea").appendChild(mdscript);
+        this.shadowRoot.querySelector("#markedarea").markdown =
+          newValue.attributes.body;
+      }
+    }
+  }
+
   date(time) {
     if (time) {
       var parts = time.split("-");

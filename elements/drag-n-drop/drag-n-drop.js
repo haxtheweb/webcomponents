@@ -49,12 +49,16 @@ class DragNDrop extends HTMLElement {
 
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       editing: {
         name: "editing",
-        type: "Boolean"
+        type: Boolean
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
 
   /**

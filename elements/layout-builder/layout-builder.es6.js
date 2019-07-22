@@ -42,7 +42,7 @@ static get template(){return html`
   <paper-button on-tap="_handleAddSibling">Add new [[type]]</paper-button>
 </div>`}// haxProperty definition
 static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Layout builder",description:"A new UI for adding content to layouts",icon:"icons:android",color:"green",groups:["Builder"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"nikkimk",owner:"The Pennsylvania State University"}},settings:{quick:[],configure:[],advanced:[]}}}// properties available to the custom element for data binding
-static get properties(){return{type:{name:"type",type:"Boolean",value:"layout"},id:{name:"id",type:"String",reflecttoAttribute:!0}}}/**
+static get properties(){let props={type:{name:"type",type:Boolean,value:"layout"},id:{name:"id",type:String,reflecttoAttribute:!0}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"layout-builder"}/**

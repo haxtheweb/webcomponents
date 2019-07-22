@@ -18,7 +18,11 @@ render(){return html`
 :host {
   display:block;
 }
-</style>
+
+simple-popover {
+  position:absolute;
+  display: flex;
+}</style>
 <paper-card
   .alt="${this.alt}"
   image="${this.image}"
@@ -37,10 +41,6 @@ render(){return html`
   </div>
   <div class="card-actions">
     <div id="author" class="author-block"
-    @mouseover=${this.showDetails}
-    @focusin=${this.showDetails}
-    @mouseout=${this.hideDetails}
-    @focusout=${this.hideDetails}
     >
       <paper-avatar
         .label="${this.author}"
@@ -57,14 +57,8 @@ render(){return html`
       </div>
     </div>
   </div>
-</paper-card>
-<simple-popover position="top" offset="0">
-    <paper-avatar .label="${this.author}" .src="${this.authorimage}">
-    </paper-avatar>
-    <h5 class="author-name">${this.author}</h5>
-    <div class="author-bio">${this.authorbio}</div>
-</simple-popover>`}// properties available to the custom element for data binding
-static get properties(){return{title:{name:"title",type:"String"},author:{name:"author",type:"String"},authorimage:{name:"authorimage",type:"String"},authorlink:{name:"authorlink",type:"String"},readtime:{name:"readtime",type:"Number"},timestamp:{name:"timestamp",type:"Number"},image:{name:"image",type:"String"},link:{name:"link",type:"String"},shadow:{name:"shadow",type:"Number"},size:{name:"size",type:"String"},placeholder:{name:"placeholder",type:"String"},alt:{name:"alt",type:"String"}}}/**
+</paper-card>`}// properties available to the custom element for data binding
+static get properties(){let props={title:{name:"title",type:String},author:{name:"author",type:String},authorimage:{name:"authorimage",type:String},authorlink:{name:"authorlink",type:String},readtime:{name:"readtime",type:Number},timestamp:{name:"timestamp",type:Number},image:{name:"image",type:String},link:{name:"link",type:String},shadow:{name:"shadow",type:Number},size:{name:"size",type:String},placeholder:{name:"placeholder",type:String},alt:{name:"alt",type:String}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */tag(){return"simple-blog-card"}static get styles(){return[css`

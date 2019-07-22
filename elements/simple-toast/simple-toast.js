@@ -67,13 +67,13 @@ class SimpleToast extends PolymerElement {
 
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       /**
        * Opened state of the toast, use event to change
        */
       opened: {
         name: "opened",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         reflectToAttribute: true
       },
@@ -82,7 +82,7 @@ class SimpleToast extends PolymerElement {
        */
       text: {
         name: "text",
-        type: "String",
+        type: String,
         value: "Saved"
       },
       /**
@@ -90,7 +90,7 @@ class SimpleToast extends PolymerElement {
        */
       classStyle: {
         name: "classStyle",
-        type: "String",
+        type: String,
         value: ""
       },
       /**
@@ -98,7 +98,7 @@ class SimpleToast extends PolymerElement {
        */
       closeText: {
         name: "closeText",
-        type: "String",
+        type: String,
         value: "Close"
       },
       /**
@@ -106,7 +106,7 @@ class SimpleToast extends PolymerElement {
        */
       duration: {
         name: "duration",
-        type: "Number",
+        type: Number,
         value: 4000
       },
       /**
@@ -114,18 +114,22 @@ class SimpleToast extends PolymerElement {
        */
       eventCallback: {
         name: "eventCallback",
-        type: "String"
+        type: String
       },
       /**
        * If there should be a close button shown
        */
       closeButton: {
         name: "closeButton",
-        type: "Boolean",
+        type: Boolean,
         value: true,
         reflectToAttribute: true
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
 
   /**

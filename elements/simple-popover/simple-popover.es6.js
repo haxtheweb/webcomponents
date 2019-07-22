@@ -14,9 +14,6 @@
  */class SimplePopover extends AbsolutePositionBehavior{// render function
 static get template(){return html`
 <style>:host {
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: stretch;
   --simple-popover-border-radius: 3px;
   --simple-popover-color: #222;
   --simple-popover-padding: 10px;
@@ -27,26 +24,32 @@ static get template(){return html`
 :host([hidden]) {
   display: none;
 }
-:host([position="left"]) {
-  justify-content: start;
+:host > div {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: stretch;
+  z-index: 1;
+}
+:host([position="left"]) > div {
+  justify-content: flex-start;
   flex-direction: row;
 }
-:host([position="right"]) {
-  justify-content: start;
+:host([position="right"]) > div {
+  justify-content: flex-end;
   flex-direction: row-reverse;
 }
-:host([position="top"]) {
+:host([position="top"]) > div {
   flex-direction: column;
 }
-:host > * {
+:host > div > * {
   width: 100%;
 }
-:host([position="left"]) > *, 
-:host([position="right"]) > * {
+:host([position="left"]) > div > *, 
+:host([position="right"]) > div > * {
   width: unset;
 }
 :host #content {
-  margin: 0 auto;
+  margin: 0;
   padding: var(--simple-popover-padding);
   color: var(--simple-popover-color);
   background-color: var(--simple-popover-background-color);
@@ -89,24 +92,18 @@ static get template(){return html`
   top: 5px;
   left: -5px;
 }</style>
-<div id="content" role="alertdialog">
-  <slot></slot>
-</div>
-<div id="pointer-outer">
-  <div id="pointer" style$="[[__pointerOffSetStyle]]"></div>
+<div>
+  <div id="content" role="alertdialog">
+    <slot></slot>
+  </div>
+  <div id="pointer-outer">
+    <div id="pointer" style$="[[__pointerOffSetStyle]]"></div>
+  </div>
 </div>`}// haxProperty definition
 static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Simple popover",description:"A popover alertdialog that is positioned next to a target element",icon:"icons:android",color:"green",groups:["Popover"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"nikkimk",owner:"The Pennsylvania State University"}},settings:{quick:[],configure:[{property:"title",description:"",inputMethod:"textfield",required:!1,icon:"icons:android"}],advanced:[]}}}// properties available to the custom element for data binding
-static get properties(){return{/**
-   * Offset to compensate for the popover pointers.
-   * /
-  "fitToVisibleBounds": {
-    "type": "Boolean",
-    "value": true,
-    "readOnly": true
-  },
-  /**
+static get properties(){let props={/**
    * Tthe margin styles to offset the pointer
-   */__pointerOffSetStyle:{type:"Object",computed:"_getMargins(__positions)"}}}constructor(){super();this.offset=-10;this.fitToVisibleBounds=!0}/**
+   */__pointerOffSetStyle:{type:Object,computed:"_getMargins(__positions)"}};if(super.properties){props=Object.assign(props,super.properties)}return props}constructor(){super();this.offset=-10;this.fitToVisibleBounds=!0}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"simple-popover"}/**

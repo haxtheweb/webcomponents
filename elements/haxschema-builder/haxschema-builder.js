@@ -103,13 +103,13 @@ class HaxschemaBuilder extends PolymerElement {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       /**
        * schema to extract for whatever you wanted it for
        */
       haxSchema: {
         name: "haxSchema",
-        type: "String",
+        type: String,
         notify: true,
         observer: "_haxSchemaChanged"
       },
@@ -118,7 +118,7 @@ class HaxschemaBuilder extends PolymerElement {
        */
       configureSchema: {
         name: "configureSchema",
-        type: "Object",
+        type: Object,
         value: {}
       },
       /**
@@ -126,7 +126,7 @@ class HaxschemaBuilder extends PolymerElement {
        */
       advancedSchema: {
         name: "advancedSchema",
-        type: "Object",
+        type: Object,
         value: {}
       },
       /**
@@ -134,16 +134,20 @@ class HaxschemaBuilder extends PolymerElement {
        */
       source: {
         name: "source",
-        type: "String"
+        type: String
       },
       /**
        * String based value passed between the elements to stitch together
        */
       value: {
         name: "value",
-        type: "String"
+        type: String
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
 
   /**

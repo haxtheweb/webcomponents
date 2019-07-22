@@ -8,7 +8,7 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"outline-player"}// render function
 static get template(){return html`
-      <style include="simple-colors hax-shared-styles">
+      <style include="hax-shared-styles">
         :host {
           display: block;
           font-family: libre baskerville;
@@ -99,9 +99,9 @@ static get template(){return html`
         }
 
         div[main-title] {
-          margin-left: 16px;
-          font-size: 20px;
-          line-height: 20px;
+          margin-left: 8px;
+          font-size: 16px;
+          line-height: 22px;
           overflow-wrap: break-word;
           text-overflow: ellipsis;
           display: inline-block;

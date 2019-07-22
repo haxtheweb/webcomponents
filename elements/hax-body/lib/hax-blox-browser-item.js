@@ -21,7 +21,7 @@ class HaxBloxBrowserItem extends PolymerElement {
     return html`
       <style include="hax-shared-styles">
         :host {
-          display: inline-flex;
+          display: flex;
         }
         :host([elevation="1"]) {
           -webkit-transform: scale(1, 1);
@@ -34,6 +34,8 @@ class HaxBloxBrowserItem extends PolymerElement {
         paper-card {
           margin: 4px 0;
           border-radius: 10px;
+          display: flex;
+          width: 100%;
         }
         paper-button {
           color: var(--hax-color-text);
@@ -42,7 +44,7 @@ class HaxBloxBrowserItem extends PolymerElement {
           text-transform: none;
           margin: 0;
           height: 80px !important;
-          width: 200px !important;
+          width: 100%;
           display: flex;
           border-radius: 10px;
           min-width: unset;

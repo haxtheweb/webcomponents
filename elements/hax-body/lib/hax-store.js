@@ -1019,8 +1019,8 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
     setPassiveTouchGestures(true);
     import("@lrnwebcomponents/hax-body/lib/hax-app.js");
     import("@lrnwebcomponents/hax-body/lib/hax-stax.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-stax-browser.js");
     import("@lrnwebcomponents/hax-body/lib/hax-blox.js");
+    import("@lrnwebcomponents/hax-body/lib/hax-stax-browser.js");
     import("@lrnwebcomponents/hax-body/lib/hax-blox-browser.js");
     // claim the instance spot. This way we can easily
     // be referenced globally

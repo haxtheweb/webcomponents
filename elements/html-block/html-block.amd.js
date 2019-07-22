@@ -13,7 +13,7 @@ define(["exports","./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWi
  */var HtmlBlock=/*#__PURE__*/function(_HTMLElement){babelHelpers.inherits(HtmlBlock,_HTMLElement);babelHelpers.createClass(HtmlBlock,[{key:"html",// render function
 get:function get(){return"\n<style></style>\n<slot></slot>"}// haxProperty definition
 }],[{key:"haxProperties",get:function get(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Html block",description:"A basic HTML block that provides HAXschema wiring",icon:"icons:warning",color:"red",groups:["Block"],handles:[{type:"html",content:"slot"}],meta:{author:"btopro",owner:"The Pennsylvania State University"}},settings:{quick:[],configure:[{slot:"",title:"HTML",description:"HTML code you want to present in content",inputMethod:"code-editor"}],advanced:[]}}}// properties available to the custom element for data binding
-},{key:"properties",get:function get(){return{}}/**
+},{key:"properties",get:function get(){var props={};if(babelHelpers.get(babelHelpers.getPrototypeOf(HtmlBlock),"properties",this)){props=Object.assign(props,babelHelpers.get(babelHelpers.getPrototypeOf(HtmlBlock),"properties",this))}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */},{key:"tag",get:function get(){return"html-block"}/**

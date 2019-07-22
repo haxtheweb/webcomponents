@@ -29,13 +29,13 @@ iron-list {
     <editable-list-item edit-mode="[[item.metadata.canEdit]]" can-edit="[[item.metadata.canEdit]]" can-delete="[[item.metadata.canDelete]]" value="[[item.title]]"></editable-list-item>
   </template>
 </iron-list>`}// properties available to the custom element for data binding
-static get properties(){return{/**
+static get properties(){let props={/**
    * ability to edit the items in the list
-   */editMode:{name:"editMode",type:"Boolean",value:!1,notify:!0,reflectToAttribute:!0,observer:"_editModeChanged"},/**
+   */editMode:{name:"editMode",type:Boolean,value:!1,notify:!0,reflectToAttribute:!0,observer:"_editModeChanged"},/**
    * items array
-   */items:{name:"items",type:"Array",value:[],reflectToAttribute:!1,observer:"_itemsChanged"},/**
+   */items:{name:"items",type:Array,value:[],reflectToAttribute:!1,observer:"_itemsChanged"},/**
    * Active element being worked on in the list
-   */activeElement:{name:"activeElement",type:"Object"}}}/**
+   */activeElement:{name:"activeElement",type:Object}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"editable-list"}/**

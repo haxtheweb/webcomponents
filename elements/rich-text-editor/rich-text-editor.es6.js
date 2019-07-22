@@ -38,43 +38,40 @@ static get template(){return html`
   content: attr(placeholder);
   display: block;
   @apply --rich-text-editor-content-placeholder;
-}
-span {
-  background-color: blue;
-}
-.rich-text-editor-selection {
-  background-color: var(--rich-text-editor-selection-bg);
-  @apply --rich-text-editor-content-selection;
 }</style>
 <style include="rich-text-editor-styles"></style>
 <slot></slot>`}// haxProperty definition
 static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Rich text-editor",description:"a standalone rich text editor",icon:"icons:android",color:"green",groups:["Text"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"nikkimk",owner:"Penn State University"}},settings:{quick:[],configure:[{property:"title",description:"",inputMethod:"textfield",required:!1,icon:"icons:android"}],advanced:[]}}}// properties available to the custom element for data binding
-static get properties(){return{/**
+static get properties(){let props={/**
    * The id for the toolbar
-   */toolbar:{name:"toolbar",type:"String",value:""},/**
+   */toolbar:{name:"toolbar",type:String,value:""},/**
    * The editor's unique id
-   */id:{name:"id",type:"String",value:""},/**
+   */id:{name:"id",type:String,value:""},/**
    * The type of editor toolbar, i.e.
    * `full` for full toolbar with breadcrumb,
    * `mini` for mini floating toolbar, or
    * the default toolbar if neither.
-   */type:{name:"type",type:"String",value:""}}}/**
+   */type:{name:"type",type:String,value:"rich-text-editor-toolbar"}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"rich-text-editor"}/**
    * life cycle, element is afixed to the DOM
-   */connectedCallback(){super.connectedCallback();let style=document.createElement("style");style.setAttribute("is","custom-style");style.setAttribute("include","rich-text-editor-styles");if(!this.id)this.id=this._generateUUID();document.head.append(style)}/**
+   * @returns {void}
+   */connectedCallback(){super.connectedCallback();if(!this.id)this.id=this._generateUUID();window.RichTextEditorStyleManager.requestAvailability()}/**
    * ready
+   * @returns {void}
    */ready(){super.ready();this.getEditor()}/**
    * connects the mini-toolbar to a mini editor
-   */getEditor(){window.RichTextEditorClipboard.requestAvailability();let root=this,toolbar="rich-text-editor-toolbar",id=this.toolbar?"#"+this.toolbar:"",type="full"===this.type||"mini"===this.type?"-"+this.type:"",both=document.querySelector(toolbar+type+id),idOnly=document.querySelector(toolbar+id+","+toolbar+"-full"+id+","+toolbar+"-mini"+id),typeOnly=document.querySelector(toolbar+type),//try to match both id and type, if no match try id only, and then type only
-editor=both||idOnly||typeOnly;//if still no match, create a region of type
-if(!this.toolbar)this.toolbar=this._generateUUID();if(!editor||!editor.addEditableRegion){editor=document.createElement(toolbar+type);editor.id=this.toolbar;root.parentNode.appendChild(editor)}editor.addEditableRegion(root)}/**
-   * Normalizes selection data.
+   * @returns {void}
+   */getEditor(){window.RichTextEditorClipboard.requestAvailability();let root=this,id=this.toolbar?"#"+this.toolbar:"",both=document.querySelector(this.type+id),idOnly=id?document.querySelector(id):null,typeOnly=document.querySelector(this.type),//try to match both id and type, if no match try id only, and then type only
+toolbar=both||idOnly||typeOnly;//if still no match, create a region of type
+if(!this.toolbar)this.toolbar=this._generateUUID();if(!toolbar||!toolbar.addEditableRegion){toolbar=document.createElement(this.type);toolbar.id=this.toolbar;root.parentNode.appendChild(toolbar)}toolbar.addEditableRegion(root)}/**
+   * Normalizes selected range data.
    *
-   * @returns {object} the selection
+   * @returns {object} the selected range
    */_getRange(){let sel=window.getSelection();if(sel.getRangeAt&&sel.rangeCount){return sel.getRangeAt(0)}else if(sel){return sel}else!1}/**
    * Generate a UUID
+   * @returns {string} a unique id
    */_generateUUID(){let hex=Math.floor(65536*(1+Math.random())).toString(16).substring(1);return"rte-"+"ss-s-s-s-sss".replace(/s/g,hex)}/**
    * life cycle, element is removed from the DOM
    */ //disconnectedCallback() {}

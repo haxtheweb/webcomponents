@@ -23,13 +23,13 @@ class ToElement extends HTMLElement {
 
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       /**
        * object in question to clone and turn into a custom element
        */
       element: {
         name: "element",
-        type: "Object",
+        type: Object,
         value: {}
       },
       /**
@@ -37,7 +37,7 @@ class ToElement extends HTMLElement {
        */
       name: {
         name: "name",
-        type: "String",
+        type: String,
         value: "new-element"
       },
       /**
@@ -45,14 +45,14 @@ class ToElement extends HTMLElement {
        */
       sourceUrl: {
         name: "sourceUrl",
-        type: "String",
+        type: String,
         value: ""
       },
       /**
        * MIME type lookup for file extensions
        */
       fileTypes: {
-        type: "Object",
+        type: Object,
         value() {
           return {
             CSV: "text/csv",
@@ -63,6 +63,10 @@ class ToElement extends HTMLElement {
         }
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
 
   /**

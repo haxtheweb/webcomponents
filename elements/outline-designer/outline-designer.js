@@ -595,13 +595,13 @@ class OutlineDesigner extends PolymerElement {
 
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       /**
        * Which layout to the outline to display
        */
       viewMode: {
         name: "viewMode",
-        type: "String",
+        type: String,
         value: "cards",
         observer: "_viewModeChanged"
       },
@@ -610,21 +610,21 @@ class OutlineDesigner extends PolymerElement {
        */
       viewModeIcon: {
         name: "viewModeIcon",
-        type: "String"
+        type: String
       },
       /**
        * Label for the selected view mode
        */
       viewModeLabel: {
         name: "viewModeLabel",
-        type: "String"
+        type: String
       },
       /**
        * Which layout to the outline to display
        */
       detailsMode: {
         name: "detailsMode",
-        type: "String",
+        type: String,
         value: "mid",
         reflectToAttribute: true,
         observer: "_detailsModeChanged"
@@ -634,28 +634,28 @@ class OutlineDesigner extends PolymerElement {
        */
       detailsModeIcon: {
         name: "detailsModeIcon",
-        type: "String"
+        type: String
       },
       /**
        * Label for the selected view mode
        */
       detailsModeLabel: {
         name: "detailsModeLabel",
-        type: "String"
+        type: String
       },
       /**
        * Data binding to show the selected view
        */
       selectedView: {
         name: "selectedView",
-        type: "Number"
+        type: Number
       },
       /**
        * Whether or not we are in an editing state
        */
       editMode: {
         name: "editMode",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         reflectToAttribute: true,
         observer: "_editModeChanged"
@@ -665,7 +665,7 @@ class OutlineDesigner extends PolymerElement {
        */
       miniMap: {
         name: "miniMap",
-        type: "Boolean",
+        type: Boolean,
         value: true,
         reflectToAttribute: true,
         observer: "_miniMapChanged"
@@ -675,7 +675,7 @@ class OutlineDesigner extends PolymerElement {
        */
       outlineSchemaUrl: {
         name: "outlineSchemaUrl",
-        type: "String",
+        type: String,
         value: false
       },
       /**
@@ -683,7 +683,7 @@ class OutlineDesigner extends PolymerElement {
        */
       manifest: {
         name: "manifest",
-        type: "Object",
+        type: Object,
         notify: true
       },
       /**
@@ -691,10 +691,14 @@ class OutlineDesigner extends PolymerElement {
        */
       outlineData: {
         name: "outlineData",
-        type: "Object",
+        type: Object,
         notify: true
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
 
   /**

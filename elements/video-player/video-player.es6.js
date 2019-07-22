@@ -1,7 +1,7 @@
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import{A11yBehaviors}from"./node_modules/@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";import"./node_modules/@polymer/polymer/lib/elements/dom-repeat.js";import"./node_modules/@polymer/polymer/lib/elements/dom-if.js";import{SchemaBehaviors}from"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import{MediaBehaviorsVideo}from"./node_modules/@lrnwebcomponents/media-behaviors/media-behaviors.js";/**
+ */import{html}from"./node_modules/@polymer/polymer/polymer-element.js";import{SimpleColors}from"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import{A11yBehaviors}from"./node_modules/@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";import"./node_modules/@polymer/polymer/lib/elements/dom-repeat.js";import"./node_modules/@polymer/polymer/lib/elements/dom-if.js";import{SchemaBehaviors}from"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import{MediaBehaviorsVideo}from"./node_modules/@lrnwebcomponents/media-behaviors/media-behaviors.js";/**
  * `video-player`
  * `A simple responsive video player with ridiculously powerful backing`
  *
@@ -35,7 +35,7 @@
  * @customElement
  * @polymer
  * @demo demo/index.html
- */class VideoPlayer extends MediaBehaviorsVideo(A11yBehaviors(SchemaBehaviors(PolymerElement))){// render function
+ */class VideoPlayer extends MediaBehaviorsVideo(A11yBehaviors(SchemaBehaviors(SimpleColors))){// render function
 static get template(){return html`
 <style>
 :host {
@@ -57,6 +57,7 @@ static get template(){return html`
     dark-transcript$="[[darkTranscript]]"
     disable-interactive$="[[disableInteractive]]"
     hide-timestamps$="[[hideTimestamps]]"
+    hide-transcript$="[[hideTiranscript]]"
     lang$="[[lang]]"
     media-type$="[[sourceType]]"
     preload$="[[preload]]"
@@ -125,63 +126,65 @@ static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gi
               'thumbnails': 'thumbnails',
               'interactive': 'interactive',
               'annotation': 'annotation'*/}},{property:"label",title:"Label",description:"The human-readable name for this track, eg. \"English Subtitles\"",inputMethod:"textfield"},{property:"src",title:"Source",description:"Source of the track",inputMethod:"textfield"},{property:"srclang",title:"Two letter, language code, eg. 'en' for English, \"de\" for German, \"es\" for Spanish, etc.",description:"Label",inputMethod:"textfield"}]}]}}}// properties available to the custom element for data binding
-static get properties(){return{/**
+static get properties(){let props={/**
    * Is the media an audio file only?
-   */audioOnly:{type:"Boolean",value:!1},/**
+   */audioOnly:{type:Boolean,value:!1},/**
    * Optional accent color for controls,
    * using the following materialize "colors":
    * red, pink, purple, deep-purple, indigo, blue,
    * light blue, cyan, teal, green, light green, lime,
    * yellow, amber, orange, deep-orange, and brown.
    * Default is null.
-   */accentColor:{type:"String",value:null,reflectToAttribute:!0},/**
+   */accentColor:{type:String,value:null,reflectToAttribute:!0},/**
    * Cross origin flag for transcripts to load
-   */crossorigin:{type:"Boolean",value:!1,reflectToAttribute:!0},/**
+   */crossorigin:{type:Boolean,value:!1,reflectToAttribute:!0},/**
    * Enables darker player.
-   */dark:{type:"Boolean",value:!1,reflectToAttribute:!0},/**
+   */dark:{type:Boolean,value:!1,reflectToAttribute:!0},/**
    * Use dark theme on transcript? Default is false, even when player is dark.
-   */darkTranscript:{type:"Boolean",value:!1},/**
+   */darkTranscript:{type:Boolean,value:!1},/**
    * disable interactive mode that makes the transcript clickable
-   */disableInteractive:{type:"Boolean",value:!1},/**
+   */disableInteractive:{type:Boolean,value:!1},/**
    * The height of the media player for non-a11y-media.
-   */height:{type:"String",value:null},/**
+   */height:{type:String,value:null},/**
    * show cue's start and end time
-   */hideTimestamps:{type:"Boolean",value:!1},/**
+   */hideTimestamps:{type:Boolean,value:!1},/**
+   * hide the transcript by default
+   */hideTranscript:{type:Boolean,value:!1},/**
    * Computed if this should be in an iframe or not.
-   */iframed:{type:"Boolean",computed:"_computeIframed(sourceData, sandboxed)"},/**
+   */iframed:{type:Boolean,computed:"_computeIframed(sourceData, sandboxed)"},/**
    * Computed if this should be in a11y-media-player.
-   */isA11yMedia:{type:"Boolean",computed:"_computeA11yMedia(sourceType, sandboxed)"},/**
+   */isA11yMedia:{type:Boolean,computed:"_computeA11yMedia(sourceType, sandboxed)"},/**
    * The type of source, i.e. "local", "vimeo", "youtube", etc.
-   */isYoutube:{type:"Boolean",computed:"_computeYoutube(sourceType)"},/**
+   */isYoutube:{type:Boolean,computed:"_computeYoutube(sourceType)"},/**
    * The language of the media
-   */lang:{type:"String",value:"en"},/**
+   */lang:{type:String,value:"en"},/**
    * Simple caption for the video
-   */mediaTitle:{type:"String"},/**
+   */mediaTitle:{type:String},/**
    * What to preload for a11y-media-player: auto, metadata (default), or none.
-   */preload:{type:"String",value:"metadata"},/* *
+   */preload:{type:String,value:"metadata"},/* *
      * Responsive video, calculated from not-responsive.
      * /
     "responsive": {
-      "type": "Boolean",
+      "type": Boolean,
       "reflectToAttribute": true,
       "value": true,
     },*/ /**
    * Compute if this is a sandboxed system or not
-   */sandboxed:{type:"Boolean",computed:"_computeSandboxed(sourceData)"},/**
+   */sandboxed:{type:Boolean,computed:"_computeSandboxed(sourceData)"},/**
    * Source of the video
-   */source:{type:"String",value:null,reflectToAttribute:!0},/**
+   */source:{type:String,value:null,reflectToAttribute:!0},/**
    * Source of the video
-   */sources:{type:"Array",value:[]},/**
+   */sources:{type:Array,value:[]},/**
    * List of source objects
-   */sourceData:{type:"Array",computed:"_getSourceData(source,sources,trackData)"},/**
+   */sourceData:{type:Array,computed:"_getSourceData(source,sources,trackData)"},/**
    * The type of source, i.e. "local", "vimeo", "youtube", etc.
-   */sourceType:{type:"String",computed:"_computeSourceType(sourceData)"},/**
+   */sourceType:{type:String,computed:"_computeSourceType(sourceData)"},/**
    * When playing but scrolled off screen, to which corner does it "stick":
    * top-left, top-right, bottom-left, bottom-right, or none?
    * Default is "top-right". "None" disables stickiness.
-   */stickyCorner:{type:"String",value:"top-right",reflectToAttribute:!0},/**
+   */stickyCorner:{type:String,value:"top-right",reflectToAttribute:!0},/**
    * The url for a single subtitle track
-   */track:{type:"String",value:null},/**
+   */track:{type:String,value:null},/**
    * Array of text tracks
    * [{
    *  "src": "path/to/track.vtt",
@@ -189,7 +192,7 @@ static get properties(){return{/**
    *  "srclang": "en",
    *  "kind": "subtitles",
    * }]
-   */tracks:{type:"Array",value:[]},/**
+   */tracks:{type:Array,value:[]},/**
    * Cleaned array of text tracks
    * [{
    *  "src": "path/to/track.vtt",
@@ -197,20 +200,20 @@ static get properties(){return{/**
    *  "srclang": "en",
    *  "kind": "subtitles",
    * }]
-   */trackData:{type:"Array",computed:"_getTrackData(track,tracks)"},/**
+   */trackData:{type:Array,computed:"_getTrackData(track,tracks)"},/**
    * Source of optional thumbnail image
-   */thumbnailSrc:{type:"String",value:null,reflectToAttribute:!0},/* *
+   */thumbnailSrc:{type:String,value:null,reflectToAttribute:!0},/* *
      * Calculate vimeo color based on accent color.
      * /
     "vimeoColor": {
-      "type": "String",
+      "type": String,
       "computed": getVimeoColor(dark,accentColor),
     }, 
     */ /**
    * The width of the media player for non-a11y-media.
-   */width:{type:"String",value:null},/**
+   */width:{type:String,value:null},/**
    * The type of source, i.e. "local", "vimeo", "youtube", etc.
-   */youtubeId:{type:"String",computed:"_computeYoutubeId(source,sourceType)"}}}constructor(){super();import("./node_modules/@lrnwebcomponents/a11y-media-player/a11y-media-player.js");afterNextRender(this,function(){this.HAXWiring=new HAXWiring;this.HAXWiring.setup(VideoPlayer.haxProperties,VideoPlayer.tag,this)})}/**
+   */youtubeId:{type:String,computed:"_computeYoutubeId(source,sourceType)"}};if(super.properties){props=Object.assign(props,super.properties)}return props}constructor(){super();import("./node_modules/@lrnwebcomponents/a11y-media-player/a11y-media-player.js");afterNextRender(this,function(){this.HAXWiring=new HAXWiring;this.HAXWiring.setup(VideoPlayer.haxProperties,VideoPlayer.tag,this)})}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"video-player"}/**
@@ -250,4 +253,6 @@ if("function"===typeof test.reload){return!0}}return!1}/**
    * Type is set by source so this ensures a waterfall
    * of valid values.
    */_computeSRC(source){if(null!==source&&typeof source!==void 0){let type=this.sourceType!==void 0?this.sourceType:window.MediaBehaviors.Video.getVideoType(source);// ensure that this is a valid url / cleaned up a bit
-source=window.MediaBehaviors.Video.cleanVideoSource(source,type);if("vimeo"==type){if(this.vimeoTitle){source+="?title=1"}else{source+="?title=0"}if(this.vimeoByline){source+="&byline=1"}else{source+="&byline=0"}if(this.vimeoPortrait){source+="&portrait=1"}else{source+="&portrait=0"}if(typeof this.videoColor!==typeof void 0){source+="&color="+this.videoColor}}else if("dailymotion"==type){source+="&ui-start-screen-info=false";source+="&ui-logo=false";source+="&sharing-enable=false";source+="&endscreen-enable=false";if(typeof this.videoColor!==typeof void 0){source+="&ui-highlight="+this.videoColor}}}return source}}window.customElements.define(VideoPlayer.tag,VideoPlayer);export{VideoPlayer};
+source=window.MediaBehaviors.Video.cleanVideoSource(source,type);if("vimeo"==type){if(this.vimeoTitle){source+="?title=1"}else{source+="?title=0"}if(this.vimeoByline){source+="&byline=1"}else{source+="&byline=0"}if(this.vimeoPortrait){source+="&portrait=1"}else{source+="&portrait=0"}if(typeof this.videoColor!==typeof void 0){source+="&color="+this.videoColor}}else if("dailymotion"==type){source+="&ui-start-screen-info=false";source+="&ui-logo=false";source+="&sharing-enable=false";source+="&endscreen-enable=false";if(typeof this.videoColor!==typeof void 0){source+="&ui-highlight="+this.videoColor}}}return source}/**
+   * postProcesshaxNodeToContent - clean up so we don't have empty array data
+   */postProcesshaxNodeToContent(content){content=content.replace(" sources=\"[]\",","");content=content.replace(" tracks=\"[]\",","");return content}}window.customElements.define(VideoPlayer.tag,VideoPlayer);export{VideoPlayer};

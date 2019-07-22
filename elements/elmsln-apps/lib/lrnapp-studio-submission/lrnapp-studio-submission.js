@@ -10,7 +10,7 @@ import "./lrnapp-studio-submission-button.js";
 class LrnappStudioSubmission extends SecureRequestXhr(PolymerElement) {
   static get template() {
     return html`
-      <style include="materializecss-styles">
+      <style>
         :host {
           display: block;
         }

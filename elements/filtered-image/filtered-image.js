@@ -111,58 +111,58 @@ class FilteredImage extends SimpleColors {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       src: {
         name: "src",
-        type: "String",
+        type: String,
         value: "",
         observer: "_srcChanged"
       },
       __id: {
         name: "__id",
-        type: "String",
+        type: String,
         computed: "_getID(src,matrix)"
       },
       alt: {
         name: "alt",
-        type: "String",
+        type: String,
         value: ""
       },
       height: {
         name: "width",
-        type: "String",
+        type: String,
         value: "",
         observer: "_heightChanged"
       },
       width: {
         name: "unset",
-        type: "String",
+        type: String,
         value: "",
         observer: "_widthChanged"
       },
       viewBox: {
         name: "viewBox",
-        type: "String",
+        type: String,
         computed: "_getViewBox(height,width)"
       },
       color: {
         name: "color",
-        type: "String",
+        type: String,
         value: "#ffffff"
       },
       strength: {
         name: "strength",
-        type: "Number",
+        type: Number,
         value: 1
       },
       contrast: {
         name: "contrast",
-        type: "Number",
+        type: Number,
         value: 0
       },
       /*"__filters": {
     "name": "__filters",
-    "type": "Array",
+    "type": Array,
     "value": {
       "red": [0.750,0.0500,0.000],
       "pink": [0.650,0.0300,0.270],
@@ -186,10 +186,14 @@ class FilteredImage extends SimpleColors {
   },*/
       __matrix: {
         name: "matrix",
-        type: "Array",
+        type: Array,
         computed: "_getMatrix(color,contrast,strength)"
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
 
   /**

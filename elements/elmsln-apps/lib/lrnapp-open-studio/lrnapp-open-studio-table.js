@@ -132,15 +132,12 @@ class LrnappOpenStudioTable extends PolymerElement {
             >
           </template>
           <template>
-            <lrnsys-button
-              raised=""
+            <paper-button
               on-click="_loadProjectRoute"
               data-project-id\$="{{item.relationships.project.data.id}}"
               data-author-id\$="{{item.relationships.author.data.id}}"
-              label="[[item.relationships.project.data.title]]"
-              hover-class="amber lighten-4"
-              icon="folder"
-            ></lrnsys-button>
+              >[[item.relationships.project.data.title]]</paper-button
+            >
           </template>
         </vaadin-grid-column>
         <vaadin-grid-column resizable="">
@@ -160,14 +157,11 @@ class LrnappOpenStudioTable extends PolymerElement {
             >
           </template>
           <template>
-            <lrnsys-button
-              raised=""
+            <paper-button
               on-click="_loadSubmissionUrl"
               data-submission-id\$="{{item.id}}"
-              label="[[item.attributes.title]]"
-              hover-class="amber lighten-4"
-              icon="assignment"
-            ></lrnsys-button>
+              >[[item.attributes.title]]</paper-button
+            >
           </template>
           <template class="footer">
             <vaadin-grid-filter

@@ -1,7 +1,7 @@
 /**
- * Copyright 2019 
+ * Copyright 2019
  * @license Apache-2.0, see License.md for full text.
- */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";// register globally so we can make sure there is only one
+ */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import"./node_modules/@lrnwebcomponents/chartist-render/chartist-render.js";// register globally so we can make sure there is only one
 window.DataViz=window.DataViz||{};// request if this exists. This helps invoke the element existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same data-viz element, making it a singleton.
@@ -31,11 +31,23 @@ static get template(){return html`
 static get properties(){return{title:{name:"title",type:"String",value:"data-viz-default-value",reflectToAttribute:!1,observer:!1}}}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
-   */static get tag(){return"data-viz"}/**
+   */static get tag(){return"data-viz"}static get template(){return html`
+      <chartist-render
+        id="barChart"
+        type="bar"
+        scale="ct-major-twelfth"
+        chart-title="Quiz Distribution"
+        chart-desc="A bar graph of quizzes completed by student"
+      >
+      </chartist-render>
+    `}/**
    * life cycle, element is afixed to the DOM
-   */connectedCallback(){super.connectedCallback();window.addEventListener("data-viz-hide",this.hideDataViz.bind(this));window.addEventListener("data-viz-show",this.showDataViz.bind(this))}/**
+   */connectedCallback(){super.connectedCallback();window.addEventListener("show-data",this.showDataFunction.bind(this))}/**
+   * Show the data based on user selecting the view and
+   * that they want to see how they did.
+   */showDataFunction(e){var queryData=e.detail,whatEvent=event.target.tagName,bardata={labels:queryData.labels,series:queryData.series};this.$.barChart.data=bardata}/**
    * life cycle, element is removed from the DOM
-   */disconnectedCallback(){super.connectedCallback();window.removeEventListener("data-viz-hide",this.hideDataViz.bind(this));window.removeEventListener("data-viz-show",this.showDataViz.bind(this))}/**
+   */disconnectedCallback(){super.disconnectedCallback();window.removeEventListener("show-data",this.showDataFunction.bind(this))}/**
    * Hide callback
    */hideDataViz(e){}// add your code to run when the singleton hides
 /**

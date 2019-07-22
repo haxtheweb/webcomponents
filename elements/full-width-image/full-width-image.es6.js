@@ -74,7 +74,7 @@ static get template(){return html`
   </div>
 </div>`}// haxProperty definition
 static get haxProperties(){return{canScale:!1,canPosition:!1,canEditSource:!1,gizmo:{title:"Full width-image",description:"full width image that flows beyond boundaries",icon:"image:image",color:"green",groups:["Width"],handles:[{type:"image",source:"source",caption:"caption",title:"caption"}],meta:{author:"btopro",owner:"The Pennsylvania State University"}},settings:{quick:[{property:"source",description:"",inputMethod:"textfield",required:!0,icon:"image:image",validationType:"url"}],configure:[{property:"source",description:"",inputMethod:"haxupload",required:!0,icon:"icons:link",validationType:"url"},{property:"caption",description:"",inputMethod:"textfield"}],advanced:[]}}}// properties available to the custom element for data binding
-static get properties(){return{source:{name:"source",type:"String",reflectToAttributes:!0,observer:"_sourceChanged"},caption:{name:"caption",type:"String",reflectToAttributes:!0}}}/**
+static get properties(){let props={source:{name:"source",type:String,reflectToAttributes:!0,observer:"_sourceChanged"},caption:{name:"caption",type:String,reflectToAttributes:!0}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"full-width-image"}/**

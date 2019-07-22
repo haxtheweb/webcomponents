@@ -1,4 +1,4 @@
-define(["exports","./node_modules/@polymer/polymer/polymer-element.js","./lib/simple-colors-styles.js"],function(_exports,_polymerElement,_simpleColorsStyles){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.SimpleColors=void 0;function _templateObject_d607e17081c211e9a61963e2786c5036(){var data=babelHelpers.taggedTemplateLiteral(["\n      <style></style>\n      <slot></slot>\n    "]);_templateObject_d607e17081c211e9a61963e2786c5036=function _templateObject_d607e17081c211e9a61963e2786c5036(){return data};return data}/**
+define(["exports","./node_modules/@polymer/polymer/polymer-element.js","./lib/simple-colors-styles.js"],function(_exports,_polymerElement,_simpleColorsStyles){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.SimpleColors=void 0;function _templateObject_a1b0eb20ab1511e9bea8d794e49a0964(){var data=babelHelpers.taggedTemplateLiteral(["\n      <style></style>\n      <slot></slot>\n    "]);_templateObject_a1b0eb20ab1511e9bea8d794e49a0964=function _templateObject_a1b0eb20ab1511e9bea8d794e49a0964(){return data};return data}/**
  * `simple-colors`
  * `a shared set of styles for @lrnwebcomponents`
  *
@@ -12,11 +12,17 @@ define(["exports","./node_modules/@polymer/polymer/polymer-element.js","./lib/si
  * @demo demo/colors.html all of the colors
  * @demo demo/picker.html simple-colors-picker
  * @demo demo/extending.html extending simple-colors
- */var SimpleColors=/*#__PURE__*/function(_PolymerElement){babelHelpers.inherits(SimpleColors,_PolymerElement);function SimpleColors(){babelHelpers.classCallCheck(this,SimpleColors);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(SimpleColors).apply(this,arguments))}babelHelpers.createClass(SimpleColors,[{key:"connectedCallback",/**
-   * life cycle, element is afixed to the DOM
-   */value:function connectedCallback(){babelHelpers.get(babelHelpers.getPrototypeOf(SimpleColors.prototype),"connectedCallback",this).call(this);this.__utils=window.SimpleColorsStyles.requestAvailability()}/**
+ */var SimpleColors=/*#__PURE__*/function(_PolymerElement){babelHelpers.inherits(SimpleColors,_PolymerElement);babelHelpers.createClass(SimpleColors,null,[{key:"template",// render function
+get:function get(){return(0,_polymerElement.html)(_templateObject_a1b0eb20ab1511e9bea8d794e49a0964())}// properties available to the custom element for data binding
+},{key:"properties",get:function get(){return{/**
+       * a selected accent-color: grey, red, pink, purple, etc.
+       */accentColor:{name:"accentColor",type:"String",value:"grey",reflectToAttribute:!0,notify:!0},/**
+       * make the default theme dark?
+       */dark:{name:"dark",type:"Boolean",value:!1,reflectToAttribute:!0,notify:!0},/**
+       * make the default theme dark?
+       */colors:{name:"colors",type:"Object",value:window.SimpleColorsStyles.colors,notify:!0}}}},{key:"tag",get:function get(){return"simple-colors"}}]);function SimpleColors(){var _this;babelHelpers.classCallCheck(this,SimpleColors);_this=babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(SimpleColors).call(this));_this.__utils=window.SimpleColorsStyles.requestAvailability();return _this}/**
    * life cycle, element is ready
-   */},{key:"ready",value:function ready(){babelHelpers.get(babelHelpers.getPrototypeOf(SimpleColors.prototype),"ready",this).call(this)}/**
+   */babelHelpers.createClass(SimpleColors,[{key:"ready",value:function ready(){babelHelpers.get(babelHelpers.getPrototypeOf(SimpleColors.prototype),"ready",this).call(this);this.shadowRoot.insertBefore(new _simpleColorsStyles.SimpleColorsStyles().makeStyleElement(),this.shadowRoot.children[0])}/**
    * returns the maximum contrast to the shade
    *
    * @param {string} the shade
@@ -66,12 +72,4 @@ define(["exports","./node_modules/@polymer/polymer/polymer-element.js","./lib/si
    * @param {string} contrasting color name, e.g. "grey"
    * @param {string} contrast shade, e.g. 12
    * @param {boolean} whether or not the contrasting shade is WCAG 2.0 AA-compliant
-   */},{key:"isContrastCompliant",value:function isContrastCompliant(isLarge,colorName,colorShade,contrastName,contrastShade){return this.__utils.isContrastCompliant(isLarge,colorName,colorShade,contrastName,contrastShade)}}],[{key:"template",// render function
-get:function get(){return(0,_polymerElement.html)(_templateObject_d607e17081c211e9a61963e2786c5036())}// properties available to the custom element for data binding
-},{key:"properties",get:function get(){return{/**
-       * a selected accent-color: grey, red, pink, purple, etc.
-       */accentColor:{name:"accentColor",type:"String",value:"grey",reflectToAttribute:!0,notify:!0},/**
-       * make the default theme dark?
-       */dark:{name:"dark",type:"Boolean",value:!1,reflectToAttribute:!0,notify:!0},/**
-       * make the default theme dark?
-       */colors:{name:"colors",type:"Object",value:window.SimpleColorsStyles.colors,notify:!0}}}},{key:"tag",get:function get(){return"simple-colors"}}]);return SimpleColors}(_polymerElement.PolymerElement);_exports.SimpleColors=SimpleColors;customElements.define(SimpleColors.tag,SimpleColors)});
+   */},{key:"isContrastCompliant",value:function isContrastCompliant(isLarge,colorName,colorShade,contrastName,contrastShade){return this.__utils.isContrastCompliant(isLarge,colorName,colorShade,contrastName,contrastShade)}}]);return SimpleColors}(_polymerElement.PolymerElement);_exports.SimpleColors=SimpleColors;customElements.define(SimpleColors.tag,SimpleColors)});

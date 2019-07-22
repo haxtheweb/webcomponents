@@ -119,13 +119,13 @@ class MicroCopyHeading extends LitElement {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       /**
        * Heading / call to action to display
        */
       heading: {
         name: "heading",
-        type: "String",
+        type: String,
         value: "Telling our story"
       },
       /**
@@ -133,10 +133,14 @@ class MicroCopyHeading extends LitElement {
        */
       endcap: {
         name: "endcap",
-        type: "String",
+        type: String,
         value: "//"
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
 
   /**

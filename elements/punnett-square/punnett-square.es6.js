@@ -65,28 +65,42 @@ constructor(){super();this.variant1="";this.variant2="";this.editable=!1}/**
         }
       </style>
       <div id="inputs">
-        Variant1: <div class="input">${this.editable?html`<paper-input value="${this.variant1}" @value-changed=${e=>this.variant1=e.detail.value}></paper-input>`:html`${this.variant1}`}</div>
-        Variant2: <div class="input">${this.editable?html`<paper-input value="${this.variant2}" @value-changed=${e=>this.variant2=e.detail.value}></paper-input>`:html`${this.variant2}`}</div>
+        Variant1: <div class="input">${this.editable?html`
+                <paper-input
+                  value="${this.variant1}"
+                  @value-changed=${e=>this.variant1=e.detail.value}
+                ></paper-input>
+              `:html`
+                ${this.variant1}
+              `}</div>
+        Variant2: <div class="input">${this.editable?html`
+                <paper-input
+                  value="${this.variant2}"
+                  @value-changed=${e=>this.variant2=e.detail.value}
+                ></paper-input>
+              `:html`
+                ${this.variant2}
+              `}</div>
       </div>
       <table>
         <thead>
           <tr>
             <th></th>
             ${value1.map(allele1=>html`
-                ${allele1.map(i=>html`
-                    <th>${i}</th>
-                  `)}
-              `)}
+                  ${allele1.map(i=>html`
+                        <th>${i}</th>
+                      `)}
+                `)}
           </tr>
         <tbody>
           ${value2.map((allele2,index)=>allele2.map(allele=>html`
-                <tr>
-                  <th>${allele}</th>
-                  ${value1.map(v1=>v1.map(allele1=>html`
-                        <td>${allele1}${allele}</td>
-                      `))}
-                </tr>
-              `))}
+                  <tr>
+                    <th>${allele}</th>
+                    ${value1.map(v1=>v1.map(allele1=>html`
+                            <td>${allele1}${allele}</td>
+                          `))}
+                  </tr>
+                `))}
         </tbody>
         </thead>
       </table>

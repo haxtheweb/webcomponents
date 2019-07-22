@@ -141,19 +141,23 @@ class FullWidthImage extends PolymerElement {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    let props = {
       source: {
         name: "source",
-        type: "String",
+        type: String,
         reflectToAttributes: true,
         observer: "_sourceChanged"
       },
       caption: {
         name: "caption",
-        type: "String",
+        type: String,
         reflectToAttributes: true
       }
     };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }
 
   /**

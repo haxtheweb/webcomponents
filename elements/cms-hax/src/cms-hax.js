@@ -35,7 +35,7 @@ class CmsHax extends PolymerElement {
   }
   static get observers() {
     return [
-      "_noticeTagChanges(allowedTags, hideExportButton, hidePanelOps, hidePreferencesButton, align, bodyOffsetLeft)"
+      "_noticeTagChanges(openDefault, allowedTags, hideExportButton, hidePanelOps, hidePreferencesButton, align, bodyOffsetLeft)"
     ];
   }
   static get properties() {
@@ -209,6 +209,7 @@ class CmsHax extends PolymerElement {
    * Set certain data bound values to the store once it's ready
    */
   _noticeTagChanges(
+    openDefault,
     allowedTags,
     hideExportButton,
     hidePanelOps,
@@ -226,6 +227,10 @@ class CmsHax extends PolymerElement {
       window.HaxStore.instance.haxPanel.hidePreferencesButton = hidePreferencesButton;
       window.HaxStore.instance.haxPanel.align = align;
       window.HaxStore.instance.activeHaxBody.contextOffsetLeft = bodyOffsetLeft;
+      window.HaxStore.instance.validTagList = allowedTags;
+      if (openDefault) {
+        window.HaxStore.write("editMode", openDefault, this);
+      }
     }
   }
   /**
@@ -234,6 +239,7 @@ class CmsHax extends PolymerElement {
   _storeReady(e) {
     // trigger the update of different parts of the global state
     this._noticeTagChanges(
+      this.openDefault,
       this.allowedTags,
       this.hideExportButton,
       this.hidePanelOps,

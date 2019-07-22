@@ -8,8 +8,8 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
           display: block;
         }
         paper-avatar {
-          --paper-avatar-width: var(--lrndesign-avatar-width);
-          --paper-avatar-height: var(--lrndesign-avatar-height);
+          --paper-avatar-width: var(--lrndesign-avatar-width, 40px);
+          --paper-avatar-height: var(--lrndesign-avatar-height, 40px);
         }
       </style>
       <paper-avatar

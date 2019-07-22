@@ -22,30 +22,35 @@ static get template(){return html`
 }
 
 #loginform {
-    width: 450px;
-    height: 450px;
-    background: var(--login-form-background-color, white);
+    width: var(--login-form-width, 450px);
+    height: var(--login-form-height, auto);
+    --simple-camera-snap-color: var(--login-form-color, #36bed4);
+    --simple-camera-snap-error: var(--login-form-error, red);
+    --simple-camera-snap-width: var(--login-form-image-width, 200px);
+    --simple-camera-snap-height: var(--login-form-image-height, 200px);
+    --simple-camera-snap-background: var(--login-form-background, white);
+    --simple-camera-snap-border-radius: var(--login-form-image-bnorder-radius,100%);
     @apply --shadow-elevation-12dp;
     @apply --login-form;
 }
 
 #loginformcontent {
-    padding: 48px;
+    padding: var(--login-form-padding, 48px);
 }
 
 #loginformcontent>* {
-    margin-top: 8px;
-    margin-bottom: 8px;
+    margin-top: var(--login-form-margin-top, var(--login-form-margin, 8px));
+    margin-bottom: var(--login-form-margin-bottom, var(--login-form-margin, 8px));
 }
 
 #loginbtn,
 #buttons ::slotted(paper-button) {
     margin-top: 24px;
-    background-color: var(--login-btn-background-color, var(--paper-indigo-500));
-    color: var(--login-btn-text-color, white);
+    background-color: var(--login-btn-background-color, var(--login-form-color, var(--paper-indigo-500)));
+    color: var(--login-btn-text-color, var(--login-form-background, white));
     --paper-button-raised-keyboard-focus: {
         background-color: var(--login-btn-raised-background-color, var(--paper-pink-a200)) !important;
-        color: var(--login-btn-text-color, white) !important;
+        color: var(--login-btn-text-color, var(--login-form-background, white)) !important;
     };
     @apply --login-btn;
 }
@@ -70,6 +75,10 @@ paper-progress {
     width: 100%;
 }
 
+::slotted(simple-login-avatar) {
+  margin: 0 auto;
+}
+
 #errormsg {
     margin-top: 16px;
     color: var(--login-error-label-color, var(--error-color));
@@ -91,7 +100,7 @@ paper-progress {
     <span id="buttons"><slot name="buttons"></slot></span>
   </div>
 </div>`}// properties available to the custom element for data binding
-static get properties(){return{/**
+static get properties(){let props={/**
    * Title of the loginscreen
    */title:String,/**
    * Subtitle of the loginscreen
@@ -113,7 +122,7 @@ static get properties(){return{/**
    * Error message of the password field
    */passwordInputErrMsg:{type:String,value:"Password required"},/**
    * Login button label
-   */loginBtnText:{type:String,value:"Login"}}}/**
+   */loginBtnText:{type:String,value:"Login"}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"simple-login"}/**

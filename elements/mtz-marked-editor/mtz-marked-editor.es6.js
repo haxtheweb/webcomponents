@@ -10,7 +10,7 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
       </style>
       <slot name="controls"></slot> <slot name="textarea"></slot>
       <slot name="footer"></slot>
-    `}static get tag(){return"mtz-marked-editor"}static get properties(){let props={autofocus:Boolean,readonly:Boolean,textareaSelector:{type:String,value:"textarea"},__textarea:Object};if(super.properties){props=Object.assign(props,super.properties)}return props}constructor(){super();this.addEventListener("register-control",this.__bindControlToEditor.bind(this))}connectedCallback(){super.connectedCallback();this.__textarea=dom(this).queryDistributedElements("[slot=\"textarea\"]")[0]}disconnectedCallback(){this.removeEventListener("register-control",this.__bindControlToEditor);this.disconnectedCallback()}/**
+    `}static get tag(){return"mtz-marked-editor"}static get properties(){let props={autofocus:Boolean,readonly:Boolean,textareaSelector:{type:String,value:"textarea"},__textarea:Object};if(super.properties){props=Object.assign(props,super.properties)}return props}constructor(){super();this.addEventListener("register-control",this.__bindControlToEditor.bind(this))}connectedCallback(){super.connectedCallback();this.__textarea=dom(this).queryDistributedElements("[slot=\"textarea\"]")[0]}disconnectedCallback(){this.removeEventListener("register-control",this.__bindControlToEditor);super.disconnectedCallback()}/**
    * Returns the instance of textarea
    * @return {HTMLTextAreaElement}
    */getTextarea(){return this.__textarea}/**

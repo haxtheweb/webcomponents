@@ -14,7 +14,7 @@ define(["exports"],function(_exports){"use strict";Object.defineProperty(_export
  * @demo demo/index.html
  */var DragNDrop=/*#__PURE__*/function(_HTMLElement){babelHelpers.inherits(DragNDrop,_HTMLElement);babelHelpers.createClass(DragNDrop,[{key:"html",// render function
 get:function get(){return"\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n\n:host([editing]) .items ::slotted(.hold) {\n  border: solid 5px #ccc;\n}\n\n:host([editing]) .items ::slotted([data-droppable]) {\n  margin: 10px;\n  border: solid 3px salmon;\n  background: white;\n}\n\n:host([editing]) .items ::slotted(.hovered) {\n  background: #f4f4f4;\n  border-style: dashed;\n}\n</style>\n<div class=\"items\">\n  <slot></slot>\n</div>"}// properties available to the custom element for data binding
-}],[{key:"properties",get:function get(){return{editing:{name:"editing",type:"Boolean"}}}/**
+}],[{key:"properties",get:function get(){var props={editing:{name:"editing",type:Boolean}};if(babelHelpers.get(babelHelpers.getPrototypeOf(DragNDrop),"properties",this)){props=Object.assign(props,babelHelpers.get(babelHelpers.getPrototypeOf(DragNDrop),"properties",this))}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */},{key:"tag",get:function get(){return"drag-n-drop"}/**

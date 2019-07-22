@@ -22,3 +22,4 @@ import "./lib/lrnapp-studio-kanban/lrnapp-studio-kanban.js";
 import "./lib/lrnapp-studio-root/lrnapp-studio-root.js";
 import "./lib/lrnapp-studio-submission/lrnapp-studio-submission.js";
 import "./lib/mooc-content/mooc-content.js";
+import "./lib/game-show-scoreboard/game-show-scoreboard.js";

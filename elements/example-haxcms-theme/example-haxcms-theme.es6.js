@@ -51,14 +51,14 @@ static get template(){return html`
 </div>
 <site-menu-button type="prev" position="top"></site-menu-button>
 <site-menu-button type="next" position="top"></site-menu-button>`}// properties available to the custom element for data binding
-static get properties(){return{/**
+static get properties(){let props={/**
    * Edit mode which will be updated whenever HAXcms store
    * has been updated. It's also reflected to attribute which
    * is a Polymer convention to allow it to be leveraged in
    * CSS styling.
-   */editMode:{name:"editMode",type:"Boolean",reflectToAttribute:!0},/**
+   */editMode:{name:"editMode",type:Boolean,reflectToAttribute:!0},/**
    * Current array index of the active page that's been loaded.
-   */activeManifestIndex:{name:"activeManifestIndex",type:"Number"}}}/**
+   */activeManifestIndex:{name:"activeManifestIndex",type:Number}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"example-haxcms-theme"}/**

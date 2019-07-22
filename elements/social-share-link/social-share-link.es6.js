@@ -92,31 +92,31 @@ static get template(){return html`
   <iron-icon aria-hidden="true" icon$="[[__icon]]" hidden$="[[!__showIcon]]"></iron-icon>
   <span class="linktext">[[__linkText]]</span>
 </a>`}// properties available to the custom element for data binding
-static get properties(){return{/**
+static get properties(){let props={/**
    * display link as a button
-   */buttonStyle:{name:"buttonStyle",type:"Boolean",value:!1,reflectToAttribute:!0},/**
+   */buttonStyle:{name:"buttonStyle",type:Boolean,value:!1,reflectToAttribute:!0},/**
    * optional image to attach to the share
    * (Pinterest only)
-   */image:{name:"image",type:"String",value:""},/**
+   */image:{name:"image",type:String,value:""},/**
    * the message to attach to the social share
    * (not used in Facebook)
-   */message:{name:"message",type:"String",value:""},/**
+   */message:{name:"message",type:String,value:""},/**
    * optional display mode for the link,"text-only" or "icon-only";
    * default is to dislay both an icon and text
-   */mode:{name:"mode",type:"String",value:null},/**
+   */mode:{name:"mode",type:String,value:null},/**
    * the link text; if null, the text will be "Share on (type of social)"
-   */text:{name:"text",type:"String",value:null},/**
+   */text:{name:"text",type:String,value:null},/**
    * the type of social; currently supports
    * Facebook, LinkedIn, Pinterest, and Twitter (default)
-   */type:{name:"type",type:"String",value:"Twitter"},/**
+   */type:{name:"type",type:String,value:"Twitter"},/**
    * the url to share
-   */url:{name:"url",type:"String",value:null},/**
+   */url:{name:"url",type:String,value:null},/**
    * the href for the link
-   */__href:{name:"__href",type:"String",computed:"_getHref(image,message,type,url)"},/**
+   */__href:{name:"__href",type:String,computed:"_getHref(image,message,type,url)"},/**
    * the icon name for the link
-   */__icon:{name:"icon",type:"String",computed:"_getIcon(type)"},/**
+   */__icon:{name:"icon",type:String,computed:"_getIcon(type)"},/**
    * the link text specified, or the default link text
-   */__linkText:{name:"__linkText",type:"String",computed:"_getLinkText(text,type)"}}}/**
+   */__linkText:{name:"__linkText",type:String,computed:"_getLinkText(text,type)"}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"social-share-link"}/**

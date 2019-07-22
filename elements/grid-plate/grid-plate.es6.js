@@ -1,16 +1,18 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import{microTask}from"./node_modules/@polymer/polymer/lib/utils/async.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@polymer/iron-a11y-keys/iron-a11y-keys.js";import"./node_modules/@lrnwebcomponents/responsive-utility/responsive-utility.js";/**
+import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@polymer/iron-a11y-keys/iron-a11y-keys.js";import"./node_modules/@lrnwebcomponents/responsive-utility/responsive-utility.js";import"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";// need to make this an object so that HAX can listen for it correctly
+class GridPlateLayoutOptions{constructor(){this.layouts={1:{columnLayout:"1: full width",xs:["100%"],sm:["100%"],md:["100%"],lg:["100%"],xl:["100%"]},"1-1":{columnLayout:"2: equal width",xs:["100%","100%"],sm:["50%","50%"],md:["50%","50%"],lg:["50%","50%"],xl:["50%","50%"]},"2-1":{columnLayout:"2: wide & narrow",xs:["100%","100%"],sm:["50%","50%"],md:["66.6666667%","33.3333337%"],lg:["66.6666667%","33.3333337%"],xl:["66.6666667%","33.3333337%"]},"1-2":{columnLayout:"2: narrow & wide",xs:["100%","100%"],sm:["50%","50%"],md:["33.3333333%","66.6666667%"],lg:["33.3333333%","66.6666667%"],xl:["33.3333333%","66.6666667%"]},"3-1":{columnLayout:"2: wider & narrower",xs:["100%","100%"],sm:["50%","50%"],md:["75%","25%"],lg:["75%","25%"],xl:["75%","25%"]},"1-3":{columnLayout:"2: narrower & wider",xs:["100%","100%"],sm:["50%","50%"],md:["25%","75%"],lg:["25%","75%"],xl:["25%","75%"]},"1-1-1":{columnLayout:"3: equal width",xs:["100%","100%","100%"],sm:["100%","100%","100%"],md:["33.3333333%","33.3333333%","33.3333333%"],lg:["33.3333333%","33.3333333%","33.3333333%"],xl:["33.3333333%","33.3333333%","33.3333333%"]},"2-1-1":{columnLayout:"3: wide, narrow, and narrow",xs:["100%","100%","100%"],sm:["100%","50%","50%"],md:["50%","25%","25%"],lg:["50%","25%","25%"],xl:["50%","25%","25%"]},"1-2-1":{columnLayout:"3: narrow, wide, and narrow",xs:["100%","100%","100%"],sm:["100%","100%","100%"],md:["25%","50%","25%"],lg:["25%","50%","25%"],xl:["25%","50%","25%"]},"1-1-2":{columnLayout:"3: narrow, narrow, and wide",xs:["100%","100%","100%"],sm:["50%","50%","100%"],md:["25%","25%","50%"],lg:["25%","25%","50%"],xl:["25%","25%","50%"]},"1-1-1-1":{columnLayout:"4: equal width",xs:["100%","100%","100%","100%"],sm:["50%","50%","50%","50%"],md:["25%","25%","25%","25%"],lg:["25%","25%","25%","25%"],xl:["25%","25%","25%","25%"]},"1-1-1-1-1":{columnLayout:"5: equal width",xs:["100%","100%","100%","100%","100%"],sm:["50%","50%","50%","50%","50%"],md:["20%","20%","20%","20%","20%"],lg:["20%","20%","20%","20%","20%"],xl:["20%","20%","20%","20%","20%"]},"1-1-1-1-1-1":{columnLayout:"6: equal width",xs:["100%","100%","100%","100%","100%","100%"],sm:["50%","50%","50%","50%","50%","50%"],md:["33.3333333%","33.3333333%","33.3333333%","33.3333333%","33.3333333%","33.3333333%"],lg:["16.6666667%","16.6666667%","16.6666667%","16.6666667%","16.6666667%","16.6666667%"],xl:["16.6666667%","16.6666667%","16.6666667%","16.6666667%","16.6666667%","16.6666667%"]}};this.options={};let layoutFlip=Object.keys(this.layouts);//loop through all the supplied layouts to get the HAX layout options & descriptions
+for(let i=0;i<layoutFlip.length;i++){this.options[layoutFlip[i]]=this.layouts[layoutFlip[i]].columnLayout}}}/**
  * `grid-plate`
  * `A grid plate based on a layout that manipulates it.`
  * @demo demo/index.html
- */class GridPlate extends PolymerElement{constructor(){super();import("./node_modules/@polymer/paper-icon-button/paper-icon-button.js");import("./node_modules/@polymer/iron-icons/iron-icons.js")}static get template(){return html`
+ */class GridPlate extends PolymerElement{constructor(){super();window.SimpleColorsStyles.requestAvailability();import("./node_modules/@polymer/paper-icon-button/paper-icon-button.js");import("./node_modules/@polymer/iron-icons/iron-icons.js")}static get template(){return html`
       <style>
         :host {
           display: block;
           --grid-plate-row-margin: 0px;
           --grid-plate-row-padding: 0px;
           --grid-plate-item-margin: 15px;
-          --grid-plate-editable-border-color: #ccc;
-          --grid-plate-active-border-color: #6cd;
+          --grid-plate-editable-border-color: #bbbbbb;
+          --grid-plate-active-border-color: #000000;
           --grid-plate-col-transition: all 0.2s ease-in-out;
         }
         :host .row {
@@ -30,7 +32,6 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
         :host([edit-mode]) .column {
           min-height: 150px;
         }
-
         :host([edit-mode]) .column {
           outline: 1px dotted var(--grid-plate-editable-border-color);
         }
@@ -45,37 +46,65 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
         }
         :host([edit-mode])
           .column[style="min-height: unset"]:not(:empty):before {
-          content: "Layout hides column (" attr(id) ")";
+          content: "Layout hides this column (" attr(id) ")";
           color: red;
           margin: var(--grid-plate-item-margin);
           padding: 15px 0;
           min-height: 150px;
         }
-        :host ::slotted(*) {
+        :host .column ::slotted(*) {
           margin: var(--grid-plate-item-margin);
-          padding: 0;
+          padding: var(--grid-plate-item-margin);
+          transition: var(--grid-plate-col-transition);
         }
-        :host ::slotted(*.mover) {
+        :host([edit-mode]) .column ::slotted(img) {
+          display: block;
+          width: calc(100% - 32px - var(--grid-plate-item-margin));
+        }
+        :host([edit-mode]) .column ::slotted(.mover) {
           outline: 2px dashed var(--grid-plate-editable-border-color);
           outline-offset: 4px;
         }
-        :host ::slotted(*.active-item) {
+        :host([edit-mode]) .column.mover {
+          outline: 2px dashed var(--grid-plate-editable-border-color);
+          outline-offset: 0px;
+        }
+        :host([edit-mode]) .column ::slotted(.active-item) {
           outline: 2px dashed var(--grid-plate-active-border-color);
+          background-color: var(--simple-colors-default-theme-yellow-1);
           outline-offset: 4px;
         }
-        :host ::slotted(*[data-draggable]:focus),
-        :host ::slotted(*[data-draggable]:hover),
-        :host ::slotted(*[data-draggable]:active) {
+        :host([edit-mode]) .column ::slotted(*:focus),
+        :host([edit-mode]) .column ::slotted(*:hover),
+        :host([edit-mode]) .column ::slotted(*:active) {
           cursor: move;
+          background-color: var(--simple-colors-default-theme-yellow-3);
         }
-
+        :host([edit-mode]) .column ::slotted(.mover) {
+          background-color: var(--simple-colors-default-theme-orange-1);
+          padding: 16px;
+        }
+        :host([edit-mode]) .column ::slotted([data-draggable].mover:hover) {
+          background-color: var(--simple-colors-default-theme-yellow-2);
+        }
         :host([edit-mode]) .column.mover {
-          background-color: yellow;
+          content: "Double click to create a paragraph here";
+          background-color: var(--simple-colors-default-theme-orange-1);
         }
-        :host .column[data-draggable].mover {
-          background-color: pink;
+        :host([edit-mode]) .column.mover:hover {
+          background-color: var(--simple-colors-default-theme-yellow-1);
         }
-
+        :host([edit-mode]) .column ::slotted(.hovered) {
+          background-color: var(
+            --simple-colors-default-theme-orange-3
+          ) !important;
+          outline: dashed 4px var(--grid-plate-active-border-color);
+        }
+        :host([edit-mode]) .column.hovered {
+          background-color: var(
+            --simple-colors-default-theme-orange-3
+          ) !important;
+        }
         paper-icon-button {
           display: none;
           position: absolute;
@@ -183,21 +212,25 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
         </div>
       </div>
       <iron-a11y-keys
-        stop-keyboard-event-propagation
-        target="[[__activeItem]]"
+        target="[[activeItem]]"
         keys="enter"
         on-keys-pressed="setActiveElement"
       ></iron-a11y-keys>
       <iron-a11y-keys
-        target="[[__activeItem]]"
+        target="[[activeItem]]"
         keys="esc"
         on-keys-pressed="cancelActive"
       ></iron-a11y-keys>
-    `}static get tag(){return"grid-plate"}connectedCallback(){super.connectedCallback();afterNextRender(this,function(){this.addEventListener("focusin",this._focusIn.bind(this));this.addEventListener("focusout",this._focusOut.bind(this));// listen for HAX if it's around
-document.body.addEventListener("hax-store-property-updated",this._haxStorePropertyUpdated.bind(this));// listen for HAX insert events if it exists
-document.body.addEventListener("hax-insert-content",this.haxInsertContent.bind(this))});window.ResponsiveUtility.requestAvailability();window.dispatchEvent(new CustomEvent("responsive-element",{detail:{element:this,attribute:"responsive-size",relativeToParent:!0,sm:this.breakpointSm,md:this.breakpointMd,lg:this.breakpointLg,xl:this.breakpointXl}}));// Establish hax property binding
-this.options={};let layouts=Object.keys(this.layouts),getOptions=()=>{//loop through all the supplied layouts to get the HAX layout options & descriptions
-for(let i=0;i<layouts.length;i++){this.options[layouts[i]]=this.layouts[layouts[i]].columnLayout}};getOptions();this.HAXWiring=new HAXWiring;this.HAXWiring.setup(GridPlate.haxProperties,GridPlate.tag,this)}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,settings:{quick:[],configure:[{property:"layout",title:"Column Layout",description:"Style to present these items (may change for small screens)",inputMethod:"select",options:this.options}],advanced:[{property:"breakpointSm",title:"Small Breakpoint",description:"Anything less than this number (in pixels) will render with the smallest version of this layout",inputMethod:"textfield",validationType:"number"},{property:"breakpointMd",title:"Medium Breakpoint",description:"Anything less than this number (in pixels) will render with the small version of this layout",inputMethod:"textfield",validationType:"number"},{property:"breakpointLg",title:"Large Breakpoint",description:"Anything less than this number (in pixels) will render with the medium version of this layout.",inputMethod:"textfield",validationType:"number"},{property:"breakpointXl",title:"Extra-Large Breakpoint",description:"Anything less than this number (in pixels) will render with the large version of this layout. Anything greater than or equal to this number will display with the maximum number of columns for this layout.",inputMethod:"textfield",validationType:"number"}]},saveOptions:{unsetAttributes:["__active-item","edit-mode","layouts"]}}}static get properties(){return{droppable:{type:Boolean,value:!1,reflectToAttribute:!0,observer:"_droppableChanged"},ignoreHax:{type:Boolean,value:!1},/**
+    `}static get tag(){return"grid-plate"}/**
+   * life cycle
+   */connectedCallback(){super.connectedCallback();afterNextRender(this,function(){for(var j=1;j<=this.columns;j++){if(this.shadowRoot.querySelector("#col"+j)!==void 0){let col=this.shadowRoot.querySelector("#col"+j);col.addEventListener("drop",this.dropEvent.bind(this));col.addEventListener("dblclick",this.dblclick.bind(this));col.addEventListener("dragstart",this.dragStart.bind(this));col.addEventListener("dragenter",this.dragEnter.bind(this));col.addEventListener("dragleave",this.dragLeave.bind(this));col.addEventListener("dragend",this.dragEnd.bind(this));col.addEventListener("dragover",function(e){e.preventDefault()});col.setAttribute("data-draggable",!0)}}this.addEventListener("focusin",this._focusIn.bind(this));// listen for HAX if it's around
+window.addEventListener("hax-store-property-updated",this._haxStorePropertyUpdated.bind(this));// listen for HAX insert events if it exists
+window.addEventListener("hax-insert-content",this.haxInsertContent.bind(this));// Establish hax property binding
+this.HAXWiring=new HAXWiring;this.HAXWiring.setup(GridPlate.haxProperties,GridPlate.tag,this)});window.ResponsiveUtility.requestAvailability();window.dispatchEvent(new CustomEvent("responsive-element",{detail:{element:this,attribute:"responsive-size",relativeToParent:!1,sm:this.breakpointSm,md:this.breakpointMd,lg:this.breakpointLg,xl:this.breakpointXl}}))}/**
+   * life cycle
+   */disconnectedCallback(){for(var j=1;j<=this.columns;j++){if(this.shadowRoot.querySelector("#col"+j)!==void 0){let col=this.shadowRoot.querySelector("#col"+j);col.removeEventListener("drop",this.dropEvent.bind(this));col.removeEventListener("dblclick",this.dblclick.bind(this));col.removeEventListener("dragstart",this.dragStart.bind(this));col.removeEventListener("dragenter",this.dragEnter.bind(this));col.removeEventListener("dragleave",this.dragLeave.bind(this));col.removeEventListener("dragend",this.dragEnd.bind(this));col.removeEventListener("dragover",function(e){e.preventDefault()});col.removeAttribute("data-draggable")}}this.removeEventListener("focusin",this._focusIn.bind(this));// listen for HAX if it's around
+window.removeEventListener("hax-store-property-updated",this._haxStorePropertyUpdated.bind(this));// listen for HAX insert events if it exists
+window.removeEventListener("hax-insert-content",this.haxInsertContent.bind(this));super.disconnectedCallback()}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,settings:{quick:[],configure:[{property:"layout",title:"Column Layout",description:"Style to present these items (may change for small screens)",inputMethod:"select",options:new GridPlateLayoutOptions().options}],advanced:[{property:"breakpointSm",title:"Small Breakpoint",description:"Anything less than this number (in pixels) will render with the smallest version of this layout",inputMethod:"textfield",validationType:"number"},{property:"breakpointMd",title:"Medium Breakpoint",description:"Anything less than this number (in pixels) will render with the small version of this layout",inputMethod:"textfield",validationType:"number"},{property:"breakpointLg",title:"Large Breakpoint",description:"Anything less than this number (in pixels) will render with the medium version of this layout.",inputMethod:"textfield",validationType:"number"},{property:"breakpointXl",title:"Extra-Large Breakpoint",description:"Anything less than this number (in pixels) will render with the large version of this layout. Anything greater than or equal to this number will display with the maximum number of columns for this layout.",inputMethod:"textfield",validationType:"number"}]},saveOptions:{unsetAttributes:["active-item","edit-mode","layouts","columns","options"]}}}static get properties(){return{droppable:{type:Boolean,value:!1,reflectToAttribute:!0,observer:"_droppableChanged"},ignoreHax:{type:Boolean,value:!1},/**
        * Custom small breakpoint for the layouts; only updated on attached
        */breakpointSm:{type:Number,value:900},/**
        * Custom medium breakpoint for the layouts; only updated on attached
@@ -207,7 +240,7 @@ for(let i=0;i<layouts.length;i++){this.options[layouts[i]]=this.layouts[layouts[
        * Custom extra-large breakpoint for the layouts; only updated on attached
        */breakpointXl:{type:Number,value:1800},/**
        * number of columns at this layout / responsive size
-       */columns:{type:Number,computed:"_getColumns(columnWidths)",reflectToAttribute:!0},/**
+       */columns:{type:Number,value:6,reflectToAttribute:!0},/**
        * disables responsive layouts for HAX preview
        */disableResponsive:{type:Boolean,value:!1,notify:!0},/**
        * If the grid plate is in a state where its items
@@ -215,7 +248,7 @@ for(let i=0;i<layouts.length;i++){this.options[layouts[i]]=this.layouts[layouts[
        */editMode:{reflectToAttribute:!0,type:Boolean,value:!1,observer:"_editModeChanged"},/**
        * an object with a layout's column sizes
        * at the current responsive width
-       */layout:{type:String,value:"1-1",reflectToAttribute:!0},/**
+       */layout:{type:String,value:"1-1",observer:"layoutChanged",reflectToAttribute:!0},/**
        * Predefined layouts of column sizes and various responsive widths. 
        * For example:```
   {
@@ -228,47 +261,52 @@ for(let i=0;i<layouts.length;i++){this.options[layouts[i]]=this.layouts[layouts[
     },
     {...}
   }```
-      */layouts:{type:Object,readOnly:!0,value:{1:{columnLayout:"1: full width",xs:["100%"],sm:["100%"],md:["100%"],lg:["100%"],xl:["100%"]},"1-1":{columnLayout:"2: equal width",xs:["100%","100%"],sm:["50%","50%"],md:["50%","50%"],lg:["50%","50%"],xl:["50%","50%"]},"2-1":{columnLayout:"2: wide & narrow",xs:["100%","100%"],sm:["50%","50%"],md:["66.6666667%","33.3333337%"],lg:["66.6666667%","33.3333337%"],xl:["66.6666667%","33.3333337%"]},"1-2":{columnLayout:"2: narrow & wide",xs:["100%","100%"],sm:["50%","50%"],md:["33.3333333%","66.6666667%"],lg:["33.3333333%","66.6666667%"],xl:["33.3333333%","66.6666667%"]},"3-1":{columnLayout:"2: wider & narrower",xs:["100%","100%"],sm:["50%","50%"],md:["75%","25%"],lg:["75%","25%"],xl:["75%","25%"]},"1-3":{columnLayout:"2: narrower & wider",xs:["100%","100%"],sm:["50%","50%"],md:["25%","75%"],lg:["25%","75%"],xl:["25%","75%"]},"1-1-1":{columnLayout:"3: equal width",xs:["100%","100%","100%"],sm:["100%","100%","100%"],md:["33.3333333%","33.3333333%","33.3333333%"],lg:["33.3333333%","33.3333333%","33.3333333%"],xl:["33.3333333%","33.3333333%","33.3333333%"]},"2-1-1":{columnLayout:"3: wide, narrow, and narrow",xs:["100%","100%","100%"],sm:["100%","50%","50%"],md:["50%","25%","25%"],lg:["50%","25%","25%"],xl:["50%","25%","25%"]},"1-2-1":{columnLayout:"3: narrow, wide, and narrow",xs:["100%","100%","100%"],sm:["100%","100%","100%"],md:["25%","50%","25%"],lg:["25%","50%","25%"],xl:["25%","50%","25%"]},"1-1-2":{columnLayout:"3: narrow, narrow, and wide",xs:["100%","100%","100%"],sm:["50%","50%","100%"],md:["25%","25%","50%"],lg:["25%","25%","50%"],xl:["25%","25%","50%"]},"1-1-1-1":{columnLayout:"4: equal width",xs:["100%","100%","100%","100%"],sm:["50%","50%","50%","50%"],md:["25%","25%","25%","25%"],lg:["25%","25%","25%","25%"],xl:["25%","25%","25%","25%"]},"1-1-1-1-1":{columnLayout:"5: equal width",xs:["100%","100%","100%","100%","100%"],sm:["50%","50%","50%","50%","50%"],md:["20%","20%","20%","20%","20%"],lg:["20%","20%","20%","20%","20%"],xl:["20%","20%","20%","20%","20%"]},"1-1-1-1-1-1":{columnLayout:"6: equal width",xs:["100%","100%","100%","100%","100%","100%"],sm:["50%","50%","50%","50%","50%","50%"],md:["33.3333333%","33.3333333%","33.3333333%","33.3333333%","33.3333333%","33.3333333%"],lg:["16.6666667%","16.6666667%","16.6666667%","16.6666667%","16.6666667%","16.6666667%"],xl:["16.6666667%","16.6666667%","16.6666667%","16.6666667%","16.6666667%","16.6666667%"]}}},/**
+      */layouts:{type:Object,readOnly:!0,value:new GridPlateLayoutOptions().layouts},/**
        * Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`
        */responsiveSize:{type:String,value:"xs",reflectToAttribute:!0},/**
        * Track active item
-       */__activeItem:{type:Object,observer:"_activeItemChanged"},/**
+       */activeItem:{type:Object,observer:"_activeItemChanged"},/**
        * name of selected layout
-       */columnWidths:{type:String,computed:"_getColumnWidths(responsiveSize,layout,layouts,disableResponsive)"}}}_droppableChanged(newValue){if(newValue){this.editMode=!0}}/**
+       */columnWidths:{type:String,computed:"_getColumnWidths(responsiveSize,layout,layouts,disableResponsive)"}}}/**
+   * Implements preProcessHaxInsertContent to clean up output on save
+   */preProcessHaxInsertContent(detail){// ensure this is wiped to avoid issues in building
+delete detail.properties.activeItem;return detail}_droppableChanged(newValue){if(newValue){this.editMode=!0}}/**
    * Cancel active element
-   */cancelActive(e){this.__activeItem=null}/**
+   */cancelActive(e){this.activeItem=null}/**
    * Determines if the item can move a set number of slots.
    *
    * @param {object} the item
    * @param {number} -1 for left or +1 for right
    * @returns {boolean} if the item can move a set number of slots
-   */canMoveSlot(item,before){let dir=before?-1:1,max=this.shadowRoot.querySelectorAll(".column").length,col=item.getAttribute("slot").split("-"),dest=parseInt(col[1])+dir;return 1<=dest&&dest<=max}/**
+   */canMoveSlot(item,before){let dir=before?-1:1,max=this.shadowRoot.querySelectorAll(".column").length,col=item.getAttribute("slot").split("-"),dest=parseInt(col[1])+dir;return 1<=dest&&dest<=max}layoutChanged(newValue,oldValue){if(newValue&&typeof oldValue!==typeof void 0){// ensure we apply things correctly
+if(this.editMode){this.editMode=!1;setTimeout(()=>{this.editMode=!0},100)}}}/**
    * Moves an item a set number of slots.
    *
    * @param {object} the item
    * @param {number} -1 for left or +1 for right
-   */moveSlot(item,before){let dir=before?-1:1,col=item.getAttribute("slot").split("-"),dest=parseInt(col[1])+dir;if(this.canMoveSlot(item,dir)){item.setAttribute("slot","col-"+dest)}}/**
+   */moveSlot(item,before){let dir=before?-1:1,col=item.getAttribute("slot").split("-"),dest=parseInt(col[1])+dir;item.setAttribute("slot","col-"+dest)}/**
    * Determines if the item can move a set number of slots.
    *
    * @param {object} the item
    * @param {boolean} move item before previous? (false for move item after next)
    * @returns {boolean} if the item can move a set number of slots
-   */canMoveOrder(item,before){let target=before?item.previousElementSibling:item.nextElementSibling;return null!==target&&target.getAttribute("slot")===item.getAttribute("slot")}/**
+   */canMoveOrder(item,before){let nodes=this.shadowRoot.querySelector("slot[name=\""+item.getAttribute("slot")+"\"").assignedNodes({flatten:!0}),target=null,position=0;for(var i in nodes){if(item===nodes[i]){position=i}}if(before&&0<=parseInt(position)-1){target=nodes[parseInt(position)-1]}else if(!before&&parseInt(position)+1<=nodes.length-1){target=nodes[parseInt(position)+1]}return null!==target&&typeof target!==typeof void 0}/**
    * Moves an item's order within a slot.
    *
    * @param {object} the item
    * @param {boolean} move item before previous? (false for move item after next)
-   */moveOrder(item,before=!0){let dir=before?-1:1;if(this.canMoveOrder(item,before)){if(before){dom(this).insertBefore(this.__activeItem,this.__activeItem.previousElementSibling)}else{dom(this).insertBefore(this.__activeItem.nextElementSibling,this.__activeItem)}}}/**
+   */moveOrder(item,before=!0){let nodes=this.shadowRoot.querySelector("slot[name=\""+item.getAttribute("slot")+"\"").assignedNodes({flatten:!0}),target=null,position=0;for(var i in nodes){if(item===nodes[i]){position=i}}if(before){target=nodes[parseInt(position)-1];dom(this).insertBefore(this.activeItem,target)}else{target=nodes[parseInt(position)+1];dom(this).insertBefore(target,this.activeItem)}}/**
    * Move the active element based on which button got pressed.
    */moveActiveElement(e){var normalizedEvent=dom(e),local=normalizedEvent.localTarget;// see if this was an up down left or right movement
-switch(local.id){case"up":this.moveOrder(this.__activeItem,!0);break;case"down":this.moveOrder(this.__activeItem,!1);break;case"left":this.moveSlot(this.__activeItem,!0);break;case"right":this.moveSlot(this.__activeItem,!1);break;}// ensure arrows are correctly positioned after the move
-setTimeout(()=>{if(this.__activeItem&&"function"===typeof this.__activeItem.focus){this.positionArrows(this.__activeItem);this.__activeItem.focus()}},100)}/**
+switch(local.id){case"up":this.moveOrder(this.activeItem,!0);break;case"down":this.moveOrder(this.activeItem,!1);break;case"left":this.moveSlot(this.activeItem,!0);break;case"right":this.moveSlot(this.activeItem,!1);break;}// ensure arrows are correctly positioned after the move
+setTimeout(()=>{if(this.activeItem&&"function"===typeof this.activeItem.focus){this.positionArrows(this.activeItem);this.activeItem.focus()}},100)}/**
    * Notice changes to what's active and ensure UX associated w/ it is visble
    */_activeItemChanged(newValue,oldValue){if(typeof newValue!==typeof void 0&&null!=newValue){// position arrows
 newValue.classList.add("active-item");this.positionArrows(newValue)}else if(null==newValue){this.positionArrows(newValue)}// if we had a previous value then remove the active item class
 if(typeof oldValue!==typeof void 0&&null!=oldValue){oldValue.classList.remove("active-item");oldValue.blur()}}/**
    * Set the target element to active
-   */setActiveElement(e){this.shadowRoot.querySelector("#right").focus();e.preventDefault();e.stopPropagation()}/**
+   */setActiveElement(e){// support HAX text operations should take priority
+if(window.HaxStore&&window.HaxStore.instance&&window.HaxStore.instance.isTextElement(this.activeItem)){return!0}this.shadowRoot.querySelector("#right").focus()}/**
    * gets the column widths based on selected layout and current responsive width
    *
    * @param {string} a string that describes the current responsive width
@@ -294,11 +332,7 @@ return layouts["1-1"][size]}}}/**
    */_getColumns(columnWidths){return columnWidths.length}/**
    * Focus / tab / click event normalization
    */_focusIn(e){if(this.editMode){var normalizedEvent=dom(e),local=normalizedEvent.localTarget;// only activate if we touch something that's in the slot of the grid plate
-if(dom(local).parentNode===this){this.__activeItem=local}}}/**
-   * Focus / tab / click event normalization
-   */_focusOut(e){if(this.editMode){var normalizedEvent=dom(e),local=normalizedEvent.localTarget;// @todo need to correctly de-focus when the element loses focus entirely
-if(local.parentNode===this||document.activeElement.parentNode===this||document.activeElement===this){}else{//this.__activeItem = null;
-}}}/**
+if(dom(local).parentNode===this){this.activeItem=local}}}/**
    * Position the arrows to change directions around something
    */positionArrows(item){if(null==item){this.shadowRoot.querySelector("#up").classList.remove("active");this.shadowRoot.querySelector("#down").classList.remove("active");this.shadowRoot.querySelector("#left").classList.remove("active");this.shadowRoot.querySelector("#right").classList.remove("active")}else{this.shadowRoot.querySelector("#up").classList.add("active");this.shadowRoot.querySelector("#down").classList.add("active");this.shadowRoot.querySelector("#left").classList.add("active");this.shadowRoot.querySelector("#right").classList.add("active");// ensure we disable invalid options contextually
 // test for an element above us
@@ -311,32 +345,40 @@ this.shadowRoot.querySelector("#up").style.top=topOffset-20+"px";this.shadowRoot
    * Notice edit state has changed
    */_editModeChanged(newValue,oldValue){// flipping from false to true
 let children=dom(this).getEffectiveChildNodes();if("object"===typeof children){if(newValue&&!oldValue){// walk the children and apply the draggable state needed
-for(var i in children){if(typeof children[i].tagName!==typeof void 0){children[i].addEventListener("drop",this.dropEvent.bind(this));children[i].addEventListener("dragstart",this.dragStart.bind(this));children[i].addEventListener("dragend",this.dragEnd.bind(this));children[i].addEventListener("dragover",function(e){e.preventDefault()});children[i].setAttribute("draggable",!0);children[i].setAttribute("data-draggable",!0);// ensure they can be focused
-children[i].setAttribute("tabindex",0)}}microTask.run(()=>{for(var j=1;j<=this.columns.length;j++){if(this.shadowRoot.querySelector("#col"+j)!==void 0){this.shadowRoot.querySelector("#col"+j).addEventListener("drop",this.dropEvent.bind(this));this.shadowRoot.querySelector("#col"+j).addEventListener("dragstart",this.dragStart.bind(this));this.shadowRoot.querySelector("#col"+j).addEventListener("dragend",this.dragEnd.bind(this));this.shadowRoot.querySelector("#col"+j).addEventListener("dragover",function(e){e.preventDefault()});this.shadowRoot.querySelector("#col"+j).setAttribute("data-draggable",!0)}}})}// flipping from true to false
-else if(!newValue&&oldValue){// walk the children and apply the draggable state needed
-for(var i in children){if(typeof children[i].tagName!==typeof void 0){children[i].removeEventListener("drop",this.dropEvent.bind(this));children[i].removeEventListener("dragstart",this.dragStart.bind(this));children[i].removeEventListener("dragend",this.dragEnd.bind(this));children[i].removeEventListener("dragover",function(e){e.preventDefault()});children[i].removeAttribute("draggable");children[i].removeAttribute("data-draggable");children[i].removeAttribute("tabindex")}}microTask.run(()=>{for(var j=1;j<=this.columns.length;j++){if(this.shadowRoot.querySelector("#col"+j)!==void 0){this.shadowRoot.querySelector("#col"+j).removeEventListener("drop",this.dropEvent.bind(this));this.shadowRoot.querySelector("#col"+j).removeEventListener("dragstart",this.dragStart.bind(this));this.shadowRoot.querySelector("#col"+j).removeEventListener("dragend",this.dragEnd.bind(this));this.shadowRoot.querySelector("#col"+j).removeEventListener("dragover",function(e){e.preventDefault()});this.shadowRoot.querySelector("#col"+j).removeAttribute("data-draggable")}}})}}}/**
+for(var i in children){if(typeof children[i].tagName!==typeof void 0){children[i].addEventListener("drop",this.dropEvent.bind(this));children[i].addEventListener("dragenter",this.dragEnter.bind(this));children[i].addEventListener("dragleave",this.dragLeave.bind(this));children[i].addEventListener("dragstart",this.dragStart.bind(this));children[i].addEventListener("dragend",this.dragEnd.bind(this));children[i].addEventListener("dragover",function(e){e.preventDefault()});children[i].setAttribute("draggable",!0);children[i].setAttribute("data-draggable",!0);// ensure they can be focused
+children[i].setAttribute("tabindex",0)}}}// flipping from true to false
+else if(!newValue&&oldValue){// unset active to clean up state
+this.activeItem=null;// walk the children and remove the draggable state needed
+for(var i in children){if(typeof children[i].tagName!==typeof void 0){children[i].removeEventListener("drop",this.dropEvent.bind(this));children[i].removeEventListener("dragstart",this.dragStart.bind(this));children[i].removeEventListener("dragenter",this.dragEnter.bind(this));children[i].removeEventListener("dragleave",this.dragLeave.bind(this));children[i].removeEventListener("dragend",this.dragEnd.bind(this));children[i].removeEventListener("dragover",function(e){e.preventDefault()});children[i].removeAttribute("draggable");children[i].removeAttribute("data-draggable");children[i].removeAttribute("tabindex")}}}}}/**
+   * Enter an element, meaning we've over it while dragging
+   */dragEnter(e){if(this.editMode){e.preventDefault();e.target.classList.add("hovered")}}/**
+   * Leaving an element while dragging.
+   */dragLeave(e){if(this.editMode){e.target.classList.remove("hovered")}}/**
+   * On double check, fire an event for HAX to insert a paragraph.
+   * If they aren't using HAX then it won't do anything
+   */dblclick(e){if(this.editMode&&e.target.id){let detail={properties:{slot:e.target.id.replace("col","col-")}};this.dispatchEvent(new CustomEvent("grid-plate-add-item",{bubbles:!0,cancelable:!0,composed:!0,detail:detail}))}}/**
    * Drop an item onto another
-   */dropEvent(e){var normalizedEvent=dom(e),local=normalizedEvent.localTarget;// if we have a slot on what we dropped into then we need to mirror that item
+   */dropEvent(e){if(this.editMode){var normalizedEvent=dom(e),local=normalizedEvent.localTarget;// if we have a slot on what we dropped into then we need to mirror that item
 // and place ourselves below it in the DOM
-if(typeof this.__activeItem!==typeof void 0&&typeof local!==typeof void 0&&null!=local.getAttribute("slot")&&this.__activeItem!==local){this.__activeItem.setAttribute("slot",local.getAttribute("slot"));dom(this).insertBefore(this.__activeItem,local);// ensure that if we caught this event we process it
+if(typeof this.activeItem!==typeof void 0&&null!==this.activeItem&&typeof local!==typeof void 0&&null!=local.getAttribute("slot")&&this.activeItem!==local){this.activeItem.setAttribute("slot",local.getAttribute("slot"));dom(this).insertBefore(this.activeItem,local);// ensure that if we caught this event we process it
 e.preventDefault();e.stopPropagation()}// special case for dropping on an empty column or between items
 // which could involve a miss on the column
-else if(".column"===local.tagName){var col=local.id.replace("col","");this.__activeItem.setAttribute("slot","col-"+col);dom(this).appendChild(this.__activeItem);// ensure that if we caught this event we process it
+else if("DIV"===local.tagName&&local.classList.contains("column")){var col=local.id.replace("col","");this.activeItem.setAttribute("slot","col-"+col);dom(this).appendChild(this.activeItem);// ensure that if we caught this event we process it
 e.preventDefault();e.stopPropagation()}let children=dom(this).children;// walk the children and apply the draggable state needed
-for(var i in children){if(typeof children[i].classList!==typeof void 0){children[i].classList.remove("mover")}}for(var j=1;j<=this.columns.length;j++){if(this.shadowRoot.querySelector("#col"+j)!==void 0){this.shadowRoot.querySelector("#col"+j).classList.remove("mover")}}// position arrows / set focus in case the DOM got updated above
-setTimeout(()=>{if(this.__activeItem&&"function"===typeof this.__activeItem.focus){this.positionArrows(this.__activeItem);this.__activeItem.focus()}},100)}/**
+for(var i in children){if(typeof children[i].classList!==typeof void 0){children[i].classList.remove("mover")}}for(var j=1;j<=this.columns;j++){if(this.shadowRoot.querySelector("#col"+j)!==void 0){this.shadowRoot.querySelector("#col"+j).classList.remove("mover")}}// position arrows / set focus in case the DOM got updated above
+setTimeout(()=>{if(this.activeItem&&"function"===typeof this.activeItem.focus){this.positionArrows(this.activeItem);this.activeItem.focus()}},100)}}/**
    * Start a drag event, this is an element being dragged
-   */dragStart(e){let children=dom(this).children;// walk the children and apply the draggable state needed
-for(var i in children){if(typeof children[i].classList!==typeof void 0){children[i].classList.add("mover")}}for(var j=1;j<=this.columns.length;j++){if(this.shadowRoot.querySelector("#col"+j)!==void 0){this.shadowRoot.querySelector("#col"+j).classList.add("mover")}}}/**
+   */dragStart(e){if(this.editMode){let children=dom(this).children;// walk the children and apply the draggable state needed
+for(var i in children){if(typeof children[i].classList!==typeof void 0){children[i].classList.add("mover")}}for(var j=1;j<=this.columns;j++){if(this.shadowRoot.querySelector("#col"+j)!==void 0){this.shadowRoot.querySelector("#col"+j).classList.add("mover")}}}}/**
    * When we end dragging ensure we remove the mover class.
-   */dragEnd(e){let children=dom(this).children;// walk the children and apply the draggable state needed
-for(var i in children){if(typeof children[i].classList!==typeof void 0){children[i].classList.remove("mover")}}for(var j=1;j<=this.columns.length;j++){if(this.shadowRoot.querySelector("#col"+j)!==void 0){this.shadowRoot.querySelector("#col"+j).classList.remove("mover")}}}/**
+   */dragEnd(e){if(this.editMode){let children=dom(this).children;// walk the children and apply the draggable state needed
+for(var i in children){if(typeof children[i].classList!==typeof void 0){children[i].classList.remove("mover","hovered")}}for(var j=1;j<=this.columns;j++){if(this.shadowRoot.querySelector("#col"+j)!==void 0){this.shadowRoot.querySelector("#col"+j).classList.remove("mover","hovered")}}}}/**
    * Insert event noticed by HAX
    */haxInsertContent(e){// see if WE are the thing that's active when insert was fired
 if(this===window.HaxStore.instance.activeContainerNode){// trick events into rebinding since this event is only possible
 // when we are in an edit state
 this.editMode=!1;// delay and then set it back, re-applying all events
-setTimeout(()=>{this.editMode=!0;if(this.__activeItem&&"function"===typeof this.__activeItem.focus){this.positionArrows(this.__activeItem);this.__activeItem.focus()}},100)}}/**
+setTimeout(()=>{this.editMode=!0;if(this.activeItem&&"function"===typeof this.activeItem.focus){this.positionArrows(this.activeItem);this.activeItem.focus()}},100)}}/**
    * Store updated, sync.
    */_haxStorePropertyUpdated(e){if(e.detail&&typeof e.detail.value!==typeof void 0&&e.detail.property){if("object"===typeof e.detail.value){this.set(e.detail.property,null)}if("editMode"===e.detail.property&&this.ignoreHax){// do nothing, we were told to ignore hax
 }else{this.set(e.detail.property,e.detail.value)}}}}window.customElements.define(GridPlate.tag,GridPlate);export{GridPlate};

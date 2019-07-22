@@ -14,15 +14,15 @@
 get html(){return`
 <style></style>
 <slot></slot>`}// properties available to the custom element for data binding
-static get properties(){return{/**
+static get properties(){let props={/**
    * object in question to clone and turn into a custom element
-   */element:{name:"element",type:"Object",value:{}},/**
+   */element:{name:"element",type:Object,value:{}},/**
    * valid custom element name of the new element to create
-   */name:{name:"name",type:"String",value:"new-element"},/**
+   */name:{name:"name",type:String,value:"new-element"},/**
    * optional original location that this came from
-   */sourceUrl:{name:"sourceUrl",type:"String",value:""},/**
+   */sourceUrl:{name:"sourceUrl",type:String,value:""},/**
    * MIME type lookup for file extensions
-   */fileTypes:{type:"Object","value"(){return{CSV:"text/csv",JSON:"text/json",PDF:"application/pdf",TXT:"text/plain"}}}}}/**
+   */fileTypes:{type:Object,"value"(){return{CSV:"text/csv",JSON:"text/json",PDF:"application/pdf",TXT:"text/plain"}}}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"to-element"}/**

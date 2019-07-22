@@ -1,4 +1,4 @@
-define(["exports","./node_modules/@polymer/polymer/polymer-element.js","./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js","./node_modules/countup.js/dist/countUp.min.js"],function(_exports,_polymerElement,_HAXWiring,_countUpMin){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});Object.defineProperty(_exports,"CountUp",{enumerable:!0,get:function get(){return _countUpMin.CountUp}});_exports.CountUpElement=void 0;function _templateObject_7c98a30081c111e981f08108b7d3c278(){var data=babelHelpers.taggedTemplateLiteral(["\n<style>:host {\n  display: inline-flex;\n  --count-up-color: #000000;\n}\n\n:host([hidden]) {\n  display: none;\n}\n\n.wrapper {\n  display: block;\n  text-align: center;\n  width: 100%;\n  height: 100%;\n}\n\n#counter {\n  color: var(--count-up-color);\n  @apply --count-up-number;\n}\n</style>\n<div class=\"wrapper\">\n  <slot name=\"prefix\"></slot>\n  <div id=\"counter\"></div>\n  <slot name=\"suffix\"></slot>\n</div>"]);_templateObject_7c98a30081c111e981f08108b7d3c278=function _templateObject_7c98a30081c111e981f08108b7d3c278(){return data};return data}/**
+define(["exports","./node_modules/@polymer/polymer/polymer-element.js","./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js","./node_modules/countup.js/dist/countUp.min.js"],function(_exports,_polymerElement,_HAXWiring,_countUpMin){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});Object.defineProperty(_exports,"CountUp",{enumerable:!0,get:function get(){return _countUpMin.CountUp}});_exports.CountUpElement=void 0;function _templateObject_7e303e50ab1311e9a10fedb5dea66a18(){var data=babelHelpers.taggedTemplateLiteral(["\n<style>:host {\n  display: inline-flex;\n  --count-up-color: #000000;\n}\n\n:host([hidden]) {\n  display: none;\n}\n\n.wrapper {\n  display: block;\n  text-align: center;\n  width: 100%;\n  height: 100%;\n}\n\n#counter {\n  color: var(--count-up-color);\n  @apply --count-up-number;\n}\n</style>\n<div class=\"wrapper\">\n  <slot name=\"prefix\"></slot>\n  <div id=\"counter\"></div>\n  <slot name=\"suffix\"></slot>\n</div>"]);_templateObject_7e303e50ab1311e9a10fedb5dea66a18=function _templateObject_7e303e50ab1311e9a10fedb5dea66a18(){return data};return data}/**
  * `count-up`
  * `count up js wrapper with minimal styling`
  *
@@ -22,24 +22,24 @@ this._countUp.start()}}}catch(err){_didIteratorError=!0;_iteratorError=err}final
 // disconnectedCallback() {}
 // attributeChangedCallback(attr, oldValue, newValue) {}
 }],[{key:"template",// render function
-get:function get(){return(0,_polymerElement.html)(_templateObject_7c98a30081c111e981f08108b7d3c278())}// haxProperty definition
+get:function get(){return(0,_polymerElement.html)(_templateObject_7e303e50ab1311e9a10fedb5dea66a18())}// haxProperty definition
 },{key:"haxProperties",get:function get(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Count up",description:"count up js wrapper with minimal styling",icon:"icons:android",color:"green",groups:["Up"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"btopro",owner:"The Pennsylvania State University"}},settings:{quick:[],configure:[{property:"start",description:"",inputMethod:"textfield"},{property:"end",description:"",inputMethod:"textfield"},{property:"duration",description:"",inputMethod:"textfield"},{property:"noeasing",description:"",inputMethod:"boolean"},{property:"decimalplaces",description:"",inputMethod:"textfield"},{property:"separator",description:"",inputMethod:"textfield"},{property:"decimal",description:"",inputMethod:"textfield"},{property:"prefix",description:"",inputMethod:"textfield"},{property:"suffix",description:"",inputMethod:"textfield"}],advanced:[]}}}// properties available to the custom element for data binding
-},{key:"properties",get:function get(){return{/**
+},{key:"properties",get:function get(){var props={/**
    * Starting point for counting
-   */start:{name:"start",type:"Number",value:0},/**
+   */start:{name:"start",type:Number,value:0},/**
    * End point for counting stopping
-   */end:{name:"end",type:"Number",value:100},/**
+   */end:{name:"end",type:Number,value:100},/**
    * Duration to count
-   */duration:{name:"duration",type:"Number",value:2.5},/**
+   */duration:{name:"duration",type:Number,value:2.5},/**
    * Disable easing animation
-   */noeasing:{name:"noeasing",type:"Boolean",value:!1},/**
+   */noeasing:{name:"noeasing",type:Boolean,value:!1},/**
    * decimal places to show
-   */decimalplaces:{name:"decimalPlaces",type:"Number",value:0},/**
+   */decimalplaces:{name:"decimalPlaces",type:Number,value:0},/**
    * separator for 100s groupings
-   */separator:{name:"separator",type:"String",value:","},/**
+   */separator:{name:"separator",type:String,value:","},/**
    * decimal point character
-   */decimal:{name:"decimal",type:"String",value:"."},/**
+   */decimal:{name:"decimal",type:String,value:"."},/**
    * prefix string before the number counting
-   */prefixtext:{name:"prefixtext",type:"String",value:" "},/**
+   */prefixtext:{name:"prefixtext",type:String,value:" "},/**
    * suffix string after the number counting
-   */suffixtext:{name:"suffixtext",type:"String",value:" "},thresholds:{type:"Array",value:[0,.25,.5,.75,1]},rootMargin:{type:"String",value:"0px"},ratio:{type:"Number",reflectToAttribute:!0,readOnly:!0},visibleLimit:{type:"Number",value:.5,reflectToAttribute:!0}}}}]);return CountUpElement}(_polymerElement.PolymerElement);_exports.CountUpElement=CountUpElement;customElements.define("count-up",CountUpElement)});
+   */suffixtext:{name:"suffixtext",type:String,value:" "},thresholds:{type:Array,value:[0,.25,.5,.75,1]},rootMargin:{type:String,value:"0px"},ratio:{type:Number,reflectToAttribute:!0,readOnly:!0},visibleLimit:{type:Number,value:.5,reflectToAttribute:!0}};if(babelHelpers.get(babelHelpers.getPrototypeOf(CountUpElement),"properties",this)){props=Object.assign(props,babelHelpers.get(babelHelpers.getPrototypeOf(CountUpElement),"properties",this))}return props}}]);return CountUpElement}(_polymerElement.PolymerElement);_exports.CountUpElement=CountUpElement;customElements.define("count-up",CountUpElement)});

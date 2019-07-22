@@ -1,7 +1,7 @@
 /**
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import{MutableData}from"./node_modules/@polymer/polymer/lib/mixins/mutable-data.js";import"./node_modules/@polymer/paper-toggle-button/paper-toggle-button.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/paper-input/paper-textarea.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";import"./node_modules/@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js";import"./node_modules/@lrnwebcomponents/code-editor/code-editor.js";import"./node_modules/app-datepicker/app-datepicker.js";import"./node_modules/@lrnwebcomponents/simple-picker/simple-picker.js";import"./node_modules/@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js";import"./node_modules/@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js";import"./node_modules/@lrnwebcomponents/paper-input-flagged/paper-input-flagged.js";import"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";/**
+ */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import{MutableData}from"./node_modules/@polymer/polymer/lib/mixins/mutable-data.js";import"./node_modules/@polymer/paper-toggle-button/paper-toggle-button.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/paper-input/paper-textarea.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";import"./node_modules/@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js";import"./node_modules/@lrnwebcomponents/code-editor/code-editor.js";import"./node_modules/@lrnwebcomponents/simple-picker/simple-picker.js";import"./node_modules/@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js";import"./node_modules/@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js";import"./node_modules/@lrnwebcomponents/paper-input-flagged/paper-input-flagged.js";import"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";/**
  * `simple-fields`
  * `Uses eco-json-form and HAX wiring to display a series of fields`
  *
@@ -28,6 +28,7 @@ eco-json-schema-object {
 }
 eco-json-schema-object {
   color: var(--hax-text-color);
+  --eco-json-form-color: var(--hax-text-color);
   --eco-json-schema-object-form : {
     -ms-flex: unset;
     -webkit-flex: unset;
@@ -42,20 +43,23 @@ eco-json-schema-object .hax-code-editor {
 <eco-json-schema-object
   id="schemaobject"
   autofocus$="[[autofocus]]"
+  hide-line-numbers$="[[hideLineNumbers]]"
   on-form-changed="_formChanged"
   schema="[[__validatedSchema]]"
   value="{{value}}"
 ></eco-json-schema-object>`}// haxProperty definition
-static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Simple fields",description:"Uses eco-json-form and HAX wiring to display a series of fields",icon:"icons:android",color:"green",groups:["Fields"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"nikkimk",owner:"The Pennsylvania State University"}},settings:{quick:[],configure:[{property:"fields",description:"",inputMethod:"array",required:!1,icon:"icons:android"}],advanced:[]}}}// properties available to the custom element for data binding
-static get properties(){return{/**
+static get haxProperties(){return}// properties available to the custom element for data binding
+static get properties(){let props={/**
    * automatically set focus on the first field if that field has autofocus
-   */autofocus:{type:"Boolean",value:!1},/**
+   */autofocus:{type:Boolean,value:!1},/**
+   * hide code-editor line numbers
+   */hideLineNumbers:{type:Boolean,value:!1},/**
    * Fields to conver toJSON Schema.
-   */fields:{type:"Array",value:[],observer:"_fieldsChanged"},/**
+   */fields:{type:Array,value:[],observer:"_fieldsChanged"},/**
    * Returned value from the form input.
-   */value:{type:"Object",notify:!0,value:{},reflectToAttribute:!0,observer:"_valueChanged"},/**
+   */value:{type:Object,notify:!0,value:{},observer:"_valueChanged"},/**
    * Fields to conver to JSON Schema.
-   */__validatedSchema:{type:"Array",value:{properties:{}}}}}/**
+   */__validatedSchema:{type:Array,value:{properties:{}}}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"simple-fields"}/**
