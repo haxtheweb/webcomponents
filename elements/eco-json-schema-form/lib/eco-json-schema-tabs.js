@@ -25,11 +25,39 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
     return html`
       <custom-style>
         <style is="custom-style" include="iron-flex iron-flex-alignment">
-          :host ([hidden]) {
-            display: none;
+          :host{
             color: var(--eco-json-form-color);
             background-color: var(--eco-json-form-bg);
             font-family: var(--eco-json-form-font-family);
+          }
+          :host ([hidden]) {
+            display: none;
+          }
+          :host #form {
+            --a11y-tabs-color: var(--eco-json-form-faded-color);
+            --a11y-tabs-focus-color: var(--eco-json-form-color);
+            --a11y-tabs-border-color: var(--eco-json-form-faded-color);
+            --a11y-tabs-border-radius: var(--eco-json-form-border-radius);
+            --a11y-tabs-background: var(--eco-json-form-bg);
+            --a11y-tabs-faded-background: var(--eco-json-form-faded-bg);
+            --a11y-tabs-justify-tabs: flex-start;
+            --ally-tabs-wrap: unset;
+            --a11y-tabs-content-padding: 8px 16px 16px;
+            --a11y-tabs-button-padding: 8px;
+            --a11y-tabs-vertical-button-padding: unset;
+            --a11y-tabs-horizontal-border-radius: unset;
+            --a11y-tabs-vertical-border-radius: unset;
+            --a11y-tabs-horizontal-button-padding: 2px 5px;
+          }
+          :host #form:focus,
+          :host #form:focus-within {
+            --a11y-tabs-border-color: : var(--eco-json-form-focus-color);
+          }
+          :host .tab-title {
+            position: absolute;
+            left: -99999px;
+            height: 0;
+            overflow: hidden;
           }
         </style>
       </custom-style>
@@ -44,7 +72,7 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
             id$="item-[[index]]"
             icon$="[[item.icon]]"
             label$="[[item.title]]"
-            ><p>[[item.description]]</p>
+          >
             <eco-json-schema-object
               id="schemaobject"
               controls$="item-[[index]]"
@@ -102,7 +130,7 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
    * @param {event} e the change event
    */
   _valueChanged(e) {
-    /*let root = this,
+    let root = this,
       val = this.__validatedSchema.map(item => {
         return item.value;
       });
@@ -115,7 +143,7 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
         composed: true,
         detail: root
       })
-    );*/
+    );
   }
 
   /**
@@ -143,28 +171,27 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
    */
   _setValues() {
     let schema = [];
-    console.log("tabs this.schema", this.schema, this.schema.items.properties);
     for (let prop in this.schema.items.properties) {
-      let val = JSON.parse(JSON.stringify(this.value[prop])),
-        tab = {
-          value: val
-        },
-        temp = JSON.parse(JSON.stringify(this.schema.items.properties[prop]));
-      console.log("tab 1", temp, tab, val, tab.value);
-      console.log("tab 2", tab, tab.value);
-      console.log("tab 3", tab, tab.value);
-      schema.push(temp);
-      console.log(
-        prop,
-        tab,
-        this.schema.items.properties[prop],
-        this.value,
-        this.value[prop]
-      );
+      let tab = {
+        title: this.schema.items.properties[prop].title,
+        icon: this.schema.items.properties[prop].icon,
+        properties: this.schema.items.properties[prop].items
+          ? this.schema.items.properties[prop].items.properties
+          : {},
+        value:
+          this.value && this.value[prop]
+            ? JSON.parse(JSON.stringify(this.value[prop]))
+            : {}
+      };
+      for (let subprop in tab.properties) {
+        if (tab.properties.value) delete tab.properties.value;
+        tab.properties[subprop].value = this.value[prop][subprop];
+      }
+      schema.push(tab);
     }
     this.notifyPath("__validatedSchema.*");
+    this.__validatedSchema = [];
     this.__validatedSchema = schema;
-    console.log("tabs schema", this.__validatedSchema);
   }
 }
 window.customElements.define(EcoJsonSchemaTabs.tag, EcoJsonSchemaTabs);

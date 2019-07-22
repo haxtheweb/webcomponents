@@ -633,11 +633,6 @@ export class HAXWiring {
                 };
                 break;
               case "array":
-                console.log(
-                  "array",
-                  props[settings[value].property],
-                  settings[value].properties
-                );
                 props[settings[value].property].items = {
                   type: "object",
                   properties: target._getHaxJSONSchemaProperty(
@@ -646,35 +641,27 @@ export class HAXWiring {
                   ),
                   label: settings[value].itemLabel
                 };
-                console.log(
-                  "array",
-                  settings[value].property,
-                  props[settings[value].property].items
-                );
                 break;
               case "tabs":
+                let tabprops = {};
+                settings[value].properties.forEach(tabprop => {
+                  tabprops[tabprop.property] = {
+                    title: tabprop.title,
+                    items: {
+                      properties: target._getHaxJSONSchemaProperty(
+                        tabprop.properties,
+                        target
+                      )
+                    }
+                  };
+                });
+                props[settings[value].property].property =
+                  settings[value].property;
                 props[settings[value].property].type = "tabs";
                 props[settings[value].property].items = {
                   type: "object",
-                  properties: target._getHaxJSONSchemaProperty(
-                    settings[value].properties,
-                    target
-                  )
+                  properties: tabprops
                 };
-                settings[value].properties.forEach(prop => {
-                  let properties = target._getHaxJSONSchemaProperty(
-                    prop.properties,
-                    target
-                  );
-                  props[settings[value].property].items.properties[
-                    prop.property
-                  ].properties = properties;
-                });
-                console.log(
-                  "tabs",
-                  settings[value].property,
-                  props[settings[value].property].items
-                );
                 break;
               case "textfield":
                 props[settings[value].property].component = {

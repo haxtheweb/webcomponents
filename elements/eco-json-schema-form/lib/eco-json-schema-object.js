@@ -461,7 +461,6 @@ class EcoJsonSchemaObject extends mixinBehaviors(
     this._schemaProperties = Object.keys(this.schema.properties || []).map(
       key => {
         var schema = ctx.schema.properties[key];
-        console.log("schema", schema);
         var property = {
           property: key,
           label: schema.title || key,
@@ -513,7 +512,6 @@ class EcoJsonSchemaObject extends mixinBehaviors(
           }
           property.value = schema.value;
         } else if (ctx._isSchemaArray(schema.type)) {
-          console.log("object schema", schema);
           property.component.name =
             property.component.name || "eco-json-schema-array";
           if (typeof schema.value === typeof undefined) {
@@ -521,7 +519,6 @@ class EcoJsonSchemaObject extends mixinBehaviors(
           }
           property.value = schema.value;
         } else if (ctx._isSchemaTabs(schema.type)) {
-          console.log("object schema", schema);
           property.component.name =
             property.component.name || "eco-json-schema-tabs";
           if (typeof schema.value === typeof undefined) {
@@ -787,7 +784,6 @@ class EcoJsonSchemaObject extends mixinBehaviors(
     return type === "array";
   }
   _isSchemaTabs(type) {
-    console.log("_isSchemaTabs", type);
     return type === "tabs";
   }
   focus() {
