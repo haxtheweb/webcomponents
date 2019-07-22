@@ -121,7 +121,6 @@ class HaxBloxPicker extends PolymerElement {
    * open the dialog
    */
   open() {
-    this.shadowRoot.querySelector("#bloxbrowser").resetBrowser();
     this.shadowRoot.querySelector("#dialog").open();
   }
   /**

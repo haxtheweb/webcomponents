@@ -117,7 +117,6 @@ class HaxStaxPicker extends PolymerElement {
    * open the dialog
    */
   open() {
-    this.shadowRoot.querySelector("#staxbrowser").resetBrowser();
     this.shadowRoot.querySelector("#dialog").open();
   }
 

@@ -1,6 +1,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { microTask } from "@polymer/polymer/lib/utils/async.js";
-import "@polymer/iron-list/iron-list.js";
+import "@polymer/polymer/lib/elements/dom-repeat.js";
 /**
  * `hax-stax-browser`
  * `Select a stack / template to insert`
@@ -27,11 +27,8 @@ class HaxStaxBrowser extends PolymerElement {
           -webkit-transition: 0.3s all linear;
           transition: 0.3s all linear;
         }
-        #ironlist {
-          min-height: 50vh;
-        }
       </style>
-      <iron-list id="ironlist" items="[[__staxList]]" as="stax" grid="">
+      <dom-repeat items="[[__staxList]]" as="stax">
         <template>
           <div class="stax-container">
             <hax-stax-browser-item
@@ -48,7 +45,7 @@ class HaxStaxBrowser extends PolymerElement {
             ></hax-stax-browser-item>
           </div>
         </template>
-      </iron-list>
+      </dom-repeat>
     `;
   }
   static get tag() {
@@ -62,16 +59,11 @@ class HaxStaxBrowser extends PolymerElement {
       staxList: {
         type: Array,
         observer: "_staxListChanged"
+      },
+      __staxList: {
+        type: Array
       }
     };
-  }
-
-  /**
-   * life cycle
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.resetBrowser();
   }
 
   /**
@@ -102,25 +94,6 @@ class HaxStaxBrowser extends PolymerElement {
     if (typeof newValue !== typeof undefined) {
       this.set("__staxList", newValue);
     }
-  }
-
-  /**
-   * Reset this browser.
-   */
-  resetBrowser() {
-    microTask.run(() => {
-      setTimeout(() => {
-        this.shadowRoot.querySelector("#ironlist").dispatchEvent(
-          new CustomEvent("iron-resize", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: true
-          })
-        );
-        window.dispatchEvent(new Event("resize"));
-      }, 100);
-    });
   }
 }
 window.customElements.define(HaxStaxBrowser.tag, HaxStaxBrowser);
