@@ -6,6 +6,8 @@ import { html } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { A11yMediaBehaviors } from "./lib/a11y-media-behaviors.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
+import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import "./lib/a11y-media-state-manager.js";
 import "./lib/a11y-media-controls.js";
@@ -116,6 +118,7 @@ import "./lib/a11y-media-youtube.js";
 --a11y-media-slider-knob-end-border-color: slider knob border color at end, default is --a11y-media-accent-color```
  *
  * @extends A11yMediaBehaviors
+ * @extends SimpleColors
  * @polymer
  * @customElement
  * @demo demo/index.html video demo
@@ -153,7 +156,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
 
   //get player-specific behaviors
   static get behaviors() {
-    return [A11yMediaBehaviors];
+    return [A11yMediaBehaviors, SimpleColors];
   }
 
   /**

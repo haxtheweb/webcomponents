@@ -73,17 +73,6 @@ class SimpleColors extends PolymerElement {
   }
 
   /**
-   * life cycle, element is ready
-   */
-  ready() {
-    super.ready();
-    this.shadowRoot.insertBefore(
-      new SimpleColorsStyles().makeStyleElement(),
-      this.shadowRoot.children[0]
-    );
-  }
-
-  /**
    * returns the maximum contrast to the shade
    *
    * @param {string} the shade

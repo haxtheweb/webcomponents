@@ -14,11 +14,10 @@ export { A11yMediaBehaviors };
  * @microcopy - language worth noting:
  *  -
  *
- * @extends SimpleColors
  * @customElement
  * @polymer
  */
-class A11yMediaBehaviors extends SimpleColors {
+class A11yMediaBehaviors extends PolymerElement {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -29,7 +28,7 @@ class A11yMediaBehaviors extends SimpleColors {
 
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    return Object.assign(SimpleColors.properties, {
       /**
        * Is this an audio file?
        */
@@ -418,14 +417,14 @@ class A11yMediaBehaviors extends SimpleColors {
         type: Object,
         value: {}
       }
-    };
+    });
   }
 
   /**
    * gets behaviors
    */
   static get behaviors() {
-    return [SimpleColors, ResponsiveUtility];
+    return [ResponsiveUtility];
   }
 
   /**
