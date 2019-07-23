@@ -744,14 +744,12 @@ window.SimpleColorsStyles.requestAvailability = function() {
 
     window.SimpleColorsStyles.style = document.createElement("style");
     window.document.head.appendChild(window.SimpleColorsStyles.style);
-    //this.fullStyle = style;
     window.SimpleColorsStyles.addCssVariables(
       window.SimpleColorsStyles.style.sheet
     );
     window.SimpleColorsStyles.addAccentVariables(
       window.SimpleColorsStyles.style.sheet
     );
-    console.log(window.document.head, window.SimpleColorsStyles.style);
   }
   document.body.appendChild(window.SimpleColorsStyles.instance);
   return window.SimpleColorsStyles.instance;
