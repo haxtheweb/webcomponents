@@ -25,11 +25,39 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
     return html`
       <custom-style>
         <style is="custom-style" include="iron-flex iron-flex-alignment">
-          :host ([hidden]) {
-            display: none;
+          :host{
             color: var(--eco-json-form-color);
             background-color: var(--eco-json-form-bg);
             font-family: var(--eco-json-form-font-family);
+          }
+          :host ([hidden]) {
+            display: none;
+          }
+          :host #form {
+            --a11y-tabs-color: var(--eco-json-form-faded-color);
+            --a11y-tabs-focus-color: var(--eco-json-form-color);
+            --a11y-tabs-border-color: var(--eco-json-form-faded-color);
+            --a11y-tabs-border-radius: var(--eco-json-form-border-radius);
+            --a11y-tabs-background: var(--eco-json-form-bg);
+            --a11y-tabs-faded-background: var(--eco-json-form-faded-bg);
+            --a11y-tabs-justify-tabs: flex-start;
+            --ally-tabs-wrap: unset;
+            --a11y-tabs-content-padding: 8px 16px 16px;
+            --a11y-tabs-button-padding: 8px;
+            --a11y-tabs-vertical-button-padding: unset;
+            --a11y-tabs-horizontal-border-radius: unset;
+            --a11y-tabs-vertical-border-radius: unset;
+            --a11y-tabs-horizontal-button-padding: 2px 5px;
+          }
+          :host #form:focus,
+          :host #form:focus-within {
+            --a11y-tabs-border-color: : var(--eco-json-form-focus-color);
+          }
+          :host .tab-title {
+            position: absolute;
+            left: -99999px;
+            height: 0;
+            overflow: hidden;
           }
         </style>
       </custom-style>
@@ -43,7 +71,7 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
           <a11y-tab
             id$="item-[[index]]"
             icon$="[[item.icon]]"
-            label$="[[item.label]]"
+            label$="[[item.title]]"
           >
             <eco-json-schema-object
               id="schemaobject"
@@ -85,7 +113,7 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
       value: {
         type: Array,
         notify: true,
-        value: []
+        value: {}
       },
       /**
        * Fields to conver to JSON Schema.
@@ -143,15 +171,26 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
    */
   _setValues() {
     let schema = [];
-    for (let i = 0; i < this.schema.value.length; i++) {
-      let item = this.schema.value[i];
-      schema[i] = JSON.parse(JSON.stringify(this.schema.items));
-      for (let prop in item) {
-        if (schema[i].properties[prop])
-          schema[i].properties[prop].value = item[prop];
+    for (let prop in this.schema.items.properties) {
+      let tab = {
+        title: this.schema.items.properties[prop].title,
+        icon: this.schema.items.properties[prop].icon,
+        properties: this.schema.items.properties[prop].items
+          ? this.schema.items.properties[prop].items.properties
+          : {},
+        value:
+          this.value && this.value[prop]
+            ? JSON.parse(JSON.stringify(this.value[prop]))
+            : {}
+      };
+      for (let subprop in tab.properties) {
+        if (tab.properties.value) delete tab.properties.value;
+        tab.properties[subprop].value = this.value[prop][subprop];
       }
+      schema.push(tab);
     }
     this.notifyPath("__validatedSchema.*");
+    this.__validatedSchema = [];
     this.__validatedSchema = schema;
   }
 }

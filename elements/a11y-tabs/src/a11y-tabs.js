@@ -49,9 +49,6 @@ class A11yTabs extends PolymerElement {
     this.addEventListener("a11y-tab-changed", function(e) {
       root.updateItems();
     });
-    this.addEventListener("a11y-tab-previous", function(e) {
-      console.log("a11y-tab-previous", e);
-    });
     window.ResponsiveUtility.requestAvailability();
     this._breakpointChanged();
   }
@@ -60,7 +57,8 @@ class A11yTabs extends PolymerElement {
    */
   disconnectedCallback() {
     let root = this;
-    this.__observer.disconnect();
+    if (this.__observer && this.__observer.disconnect)
+      this.__observer.disconnect();
     this.removeEventListener("a11y-tab-changed", function(e) {
       root.updateItems();
     });
@@ -84,7 +82,7 @@ class A11yTabs extends PolymerElement {
         id && this.querySelector(`a11y-tab#${id}`)
           ? this.querySelector(`a11y-tab#${id}`)
           : this.querySelector("a11y-tab");
-    if (selected.id !== id) {
+    if (selected && selected.id !== id) {
       this.activeTab = selected.id;
       return;
     } else if (tabs && tabs.length > 0) {
@@ -96,7 +94,7 @@ class A11yTabs extends PolymerElement {
   /**
    * updates the list of items based on slotted a11y-tab elements
    */
-  updateItems() {
+  updateItems(e) {
     this.set("__items", []);
     let tabs = this.querySelectorAll("a11y-tab"),
       ctr = 1;
@@ -145,17 +143,6 @@ class A11yTabs extends PolymerElement {
       })
     );
     this.responsiveSize = "xs";
-    console.log(
-      "_breakpointChanged",
-      this.layoutBreakpoint,
-      this.iconBreakpoint,
-      v,
-      i,
-      sm,
-      md,
-      lg,
-      xl
-    );
     window.dispatchEvent(
       new CustomEvent("responsive-element", {
         detail: {

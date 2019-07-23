@@ -6,6 +6,7 @@ import { AppLocalizeBehavior } from "@polymer/app-localize-behavior/app-localize
 import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
 import "./eco-json-schema-array.js";
+import "./eco-json-schema-tabs.js";
 import "./eco-json-schema-boolean.js";
 import "./eco-json-schema-enum.js";
 import "./eco-json-schema-file.js";
@@ -521,7 +522,7 @@ class EcoJsonSchemaObject extends mixinBehaviors(
           property.component.name =
             property.component.name || "eco-json-schema-tabs";
           if (typeof schema.value === typeof undefined) {
-            schema.value = [];
+            schema.value = {};
           }
           property.value = schema.value;
         } else {

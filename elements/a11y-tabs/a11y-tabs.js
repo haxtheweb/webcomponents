@@ -35,6 +35,7 @@ class A11yTabs extends PolymerElement {
           --a11y-tabs-color: #222;
           --a11y-tabs-focus-color: #000;
           --a11y-tabs-faded-background: #eee;
+          --a11y-tabs-content-padding: 16px;
           --a11y-tabs-button-padding: 0.7em 0.57em;
           --a11y-tabs-vertical-button-padding: unset;
           --a11y-tabs-horizontal-border-radius: unset;
@@ -42,6 +43,7 @@ class A11yTabs extends PolymerElement {
           --a11y-tabs-horizontal-button-padding: 2px 5px;
         }
         :host([vertical]) {
+          border: 1px solid var(--a11y-tabs-border-color);
           border-radius: var(
             --a11y-tabs-vertical-border-radius,
             var(--a11y-tabs-border-radius)
@@ -67,6 +69,7 @@ class A11yTabs extends PolymerElement {
           @apply --a11y-tabs-tabs;
         }
         :host([vertical]) #tabs {
+          background-color: var(--a11y-tabs-border-color);
           justify-content: var(
             --a11y-tabs-vertical-justify-tabs,
             var(--a11y-tabs-justify-tabs, flex-start)
@@ -75,6 +78,7 @@ class A11yTabs extends PolymerElement {
             --ally-tabs-vertical-wrap,
             var(--ally-tabs-wrap, unset)
           );
+          border-left: none;
           flex: 0 1 auto;
           flex-direction: column;
           @apply --a11y-tabs-vertical-tabs;
@@ -93,13 +97,14 @@ class A11yTabs extends PolymerElement {
           overflow: hidden;
         }
         :host #content {
-          background-color: var(--a11y-tabs-background, white);
-          border: 1px solid var(--a11y-tabs-border-color, #ddd);
+          padding: var(--a11y-tabs-content-padding);
+          background-color: var(--a11y-tabs-background);
+          border: 1px solid var(--a11y-tabs-border-color);
           @apply --a11y-tabs-content;
         }
         :host([vertical]) #content {
           flex: 1 0 auto;
-          border-left: none;
+          border: none;
           @apply --a11y-tabs-vertical-content;
         }
         :host(:not([vertical])) #content {
@@ -110,28 +115,29 @@ class A11yTabs extends PolymerElement {
           margin-top: -1px;
           @apply --a11y-tabs-horizontal-content;
         }
-        :host paper-button {
+        :host #tabs paper-button {
           margin: 0;
           text-transform: unset;
-          color: var(--a11y-tabs-color, #222);
-          background-color: var(--a11y-tabs-faded-background, #eee);
-          border: 1px solid var(--a11y-tabs-border-color, #ddd);
+          color: var(--a11y-tabs-color);
+          background-color: var(--a11y-tabs-faded-background);
+          border: 1px solid var(--a11y-tabs-border-color);
           padding: var(--a11y-tabs-button-padding, 0.7em 0.57em);
           @apply --a11y-tabs-button;
         }
-        :host([vertical]) paper-button {
+        :host([vertical]) #tabs paper-button {
+          border-top: none;
+          border-left: none;
           border-radius: 0;
           display: flex;
           justify-content: space-between;
           align-items: center;
-          border-right: none;
           padding: var(
             --a11y-tabs-vertical-button-padding,
             var(--a11y-tabs-button-padding)
           );
           @apply --a11y-tabs-vertical-button;
         }
-        :host(:not([vertical])) paper-button {
+        :host(:not([vertical])) #tabs paper-button {
           width: 100%;
           border-bottom: none;
           border-radius: var(
@@ -149,32 +155,35 @@ class A11yTabs extends PolymerElement {
           );
           @apply --a11y-tabs-horizontal-button;
         }
-        :host paper-button:active,
-        :host paper-button:focus,
-        :host paper-button:hover {
-          color: var(--a11y-tabs-focus-color, #000);
-          background-color: var(--a11y-tabs-faded-background, #eee);
+        :host(:not([vertical])) #tabs li:not(:first-of-type) paper-button {
+          border-left: none;
         }
-        :host paper-button:focus {
+        :host #tabspaper-button:active,
+        :host #tabs paper-button:focus,
+        :host #tabs paper-button:hover {
+          color: var(--a11y-tabs-focus-color);
+          background-color: var(--a11y-tabs-faded-background);
+        }
+        :host #tabs paper-button:focus {
           @apply --a11y-tabs-button-focus;
         }
-        :host paper-button:active {
+        :host #tabs paper-button:active {
           @apply --a11y-tabs-button-active;
         }
-        :host paper-button:hover {
+        :host #tabs paper-button:hover {
           @apply --a11y-tabs-button-hover;
         }
-        :host paper-button[disabled] {
-          color: var(--a11y-tabs-focus-color, #000);
-          background-color: var(--a11y-tabs-background, white);
+        :host #tabs paper-button[disabled] {
+          color: var(--a11y-tabs-focus-color);
+          background-color: var(--a11y-tabs-background);
           @apply --a11y-tabs-active-button;
         }
-        :host([vertical]) paper-button[disabled] {
-          border-right: 1px solid white;
+        :host([vertical]) #tabs paper-button[disabled] {
+          border-right-color: var(--a11y-tabs-background);
           @apply --a11y-tabs-vertical-active-button;
         }
-        :host(:not([vertical])) paper-button[disabled] {
-          border-bottom: 1px solid var(--a11y-tabs-background, white);
+        :host(:not([vertical])) #tabs paper-button[disabled] {
+          border-bottom: 1px solid var(--a11y-tabs-background);
           @apply --a11y-tabs-horizontal-active-button;
         }
         :host #tabs span.label,
@@ -382,9 +391,6 @@ class A11yTabs extends PolymerElement {
     this.addEventListener("a11y-tab-changed", function(e) {
       root.updateItems();
     });
-    this.addEventListener("a11y-tab-previous", function(e) {
-      console.log("a11y-tab-previous", e);
-    });
     window.ResponsiveUtility.requestAvailability();
     this._breakpointChanged();
   }
@@ -393,7 +399,8 @@ class A11yTabs extends PolymerElement {
    */
   disconnectedCallback() {
     let root = this;
-    this.__observer.disconnect();
+    if (this.__observer && this.__observer.disconnect)
+      this.__observer.disconnect();
     this.removeEventListener("a11y-tab-changed", function(e) {
       root.updateItems();
     });
@@ -417,7 +424,7 @@ class A11yTabs extends PolymerElement {
         id && this.querySelector(`a11y-tab#${id}`)
           ? this.querySelector(`a11y-tab#${id}`)
           : this.querySelector("a11y-tab");
-    if (selected.id !== id) {
+    if (selected && selected.id !== id) {
       this.activeTab = selected.id;
       return;
     } else if (tabs && tabs.length > 0) {
@@ -429,7 +436,7 @@ class A11yTabs extends PolymerElement {
   /**
    * updates the list of items based on slotted a11y-tab elements
    */
-  updateItems() {
+  updateItems(e) {
     this.set("__items", []);
     let tabs = this.querySelectorAll("a11y-tab"),
       ctr = 1;
@@ -478,17 +485,6 @@ class A11yTabs extends PolymerElement {
       })
     );
     this.responsiveSize = "xs";
-    console.log(
-      "_breakpointChanged",
-      this.layoutBreakpoint,
-      this.iconBreakpoint,
-      v,
-      i,
-      sm,
-      md,
-      lg,
-      xl
-    );
     window.dispatchEvent(
       new CustomEvent("responsive-element", {
         detail: {

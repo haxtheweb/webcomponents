@@ -31,24 +31,28 @@ class EcoJsonSchemaArray extends mixinBehaviors(
     return html`
       <custom-style>
         <style is="custom-style" include="iron-flex iron-flex-alignment">
-          :host ([hidden]) {
-            display: none;
+          :host {
             color: var(--eco-json-form-color);
             background-color: var(--eco-json-form-bg);
             font-family: var(--eco-json-form-font-family);
           }
-          :host #legend {
+          :host ([hidden]) {
+            display: none;
+          }
+          :host fieldset {
+            border-radius: var(--eco-json-form-border-radius);
+            border-style: solid;
+            border-width: 1px;
+            border-color: var(--eco-json-form-faded-color);
+            transition: all 0.5s;
+          }
+          :host legend {
             transition: all 0.5s;
             color: var(--eco-json-form-faded-color);
           }
-          :host(:focus) #legend,
-          :host(:focus-within) #legend {
+          :host fieldset:focus #legend,
+          :host fieldset:focus-within #legend {
             color: var(--eco-json-form-active-color);
-          }
-          :host #fieldset {
-            border-radius: var(--eco-json-form-border-radius);
-            border: 1px solid var(--eco-json-form-faded-color);
-            transition: all 0.5s;
           }
           :host .array-item-button {
             color: var(--eco-json-form-faded-color);

@@ -643,12 +643,24 @@ export class HAXWiring {
                 };
                 break;
               case "tabs":
+                let tabprops = {};
+                settings[value].properties.forEach(tabprop => {
+                  tabprops[tabprop.property] = {
+                    title: tabprop.title,
+                    items: {
+                      properties: target._getHaxJSONSchemaProperty(
+                        tabprop.properties,
+                        target
+                      )
+                    }
+                  };
+                });
+                props[settings[value].property].property =
+                  settings[value].property;
+                props[settings[value].property].type = "tabs";
                 props[settings[value].property].items = {
                   type: "object",
-                  properties: target._getHaxJSONSchemaProperty(
-                    settings[value].properties,
-                    target
-                  )
+                  properties: tabprops
                 };
                 break;
               case "textfield":

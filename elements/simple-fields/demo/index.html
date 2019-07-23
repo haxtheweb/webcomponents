@@ -39,6 +39,13 @@
                   "inputMethod": "boolean"
                 },
                 {
+                  "property": "profileImage",
+                  "title": "Profile Image",
+                  "description": "Maximum size 400px X 400px.",
+                  "inputMethod": "haxupload",
+                  "validationType": "url"
+                },
+                {
                   "property": "hiddenField",
                   "title": "Hidden",
                   "description": "I'm a hidden field. You can't see me.",
@@ -90,96 +97,128 @@
                   "inputMethod": "textarea"
                 },
                 {
-                  "property": "siblings",
-                  "title": "Siblings",
-                  "description": "Enter the names of your siblings.",
-                  "inputMethod": "array",
-                  "itemLabel": "name",
-                  "properties": [
-                    {
-                      "property": "name",
-                      "title": "Sibling Name",
-                      "inputMethod": "textfield"
-                    },
-                    {
-                      "property": "dead",
-                      "title": "Is sibling dead?",
-                      "description": "",
-                      "inputMethod": "boolean"
-                    }
-                  ]
-                },
-                /*{
-                  "property": "alliesenemies",
+                  "property": "relationships",
                   "inputMethod": "tabs",
                   "properties": [
-                    {
-                      "property": "allies",
-                      "title": "Allies",
-                      "description": "List your allies.",
+                    { 
+                      "property": "siblings",
+                      "title": "Siblings",
                       "properties": [
                         {
-                          "property": "name",
-                          "title": "Ally Name",
-                          "inputMethod": "textfield"
-                        },
+                          "property": "siblingsList",
+                          "title": "Enter the names of your siblings.",
+                          "inputMethod": "array",
+                          "itemLabel": "name",
+                          "properties": [
+                            {
+                              "property": "name",
+                              "title": "Sibling Name",
+                              "inputMethod": "textfield"
+                            },
+                            {
+                              "property": "dead",
+                              "title": "Is sibling dead?",
+                              "inputMethod": "boolean"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    { 
+                      "property": "allies",
+                      "title": "Allies",
+                      "properties": [
                         {
-                          "property": "dead",
-                          "title": "Is ally dead?",
-                          "description": "",
-                          "inputMethod": "boolean"
+                          "property": "alliesList",
+                          "title": "List your allies.",
+                          "inputMethod": "array",
+                          "itemLabel": "name",
+                          "properties": [
+                            {
+                              "property": "name",
+                              "title": "Ally Name",
+                              "inputMethod": "textfield"
+                            },
+                            {
+                              "property": "dead",
+                              "title": "Is ally dead?",
+                              "inputMethod": "boolean"
+                            }
+                          ]
                         }
                       ]
                     },
                     {
                       "property": "enemies",
                       "title": "Enemies",
-                      "description": "List your enemies.",
                       "properties": [
                         {
-                          "property": "name",
-                          "title": "Enemy Name",
-                          "inputMethod": "textfield"
-                        },
-                        {
-                          "property": "dead",
-                          "title": "Is enemy dead?",
-                          "description": "",
-                          "inputMethod": "boolean"
+                          "property": "enemiesList",
+                          "title": "List your enemies.",
+                          "inputMethod": "array",
+                          "itemLabel": "name",
+                          "properties": [
+                            {
+                              "property": "name",
+                              "title": "Enemy Name",
+                              "inputMethod": "textfield"
+                            },
+                            {
+                              "property": "dead",
+                              "title": "Is enemy dead?",
+                              "inputMethod": "boolean"
+                            }
+                          ]
                         }
                       ]
                     }
                   ]
-                },*/
-                {
-                  "property": "profileImage",
-                  "title": "Profile Image",
-                  "description": "Maximum size 400px X 400px.",
-                  "inputMethod": "haxupload",
-                  "validationType": "url"
                 },
+                
                 {
                   "property": "code",
                   "title": "This is your favorite code snippet.",
-                  "description": "",
                   "inputMethod": "code-editor"
-                }    
+                }   
               ];
               fields.value = {
                 "name": "Arya Stark",
                 "winter": "12/21/2019",
-                "alias": true,
+                "alias": false,
                 "bio": "Once upon a time...",
-                "code": "<p>Not today.</p>",
+                "code": "<p>What do we say to Death?</p>\n<p>Not today.</p>",
                 "color": "red",
                 "icon": "icons:visibility-off",
-                "siblings": [
-                  { "name": "Rob Stark" },
-                  { "name": "Jon Snow" },
-                  { "name": "Sansa Stark" },
-                  { "name": "Bran Stark" },
-                  { "name": "Rickon Stark" }
-                ],
+                "relationships": {
+                  "siblings": {
+                    "siblingsList": [
+                      { "name": "Rob Stark", "dead": true  },
+                      { "name": "Jon Snow", "dead": false  },
+                      { "name": "Sansa Stark", "dead": false  },
+                      { "name": "Bran Stark", "dead": false  },
+                      { "name": "Rickon Stark", "dead": true  }
+                    ]
+                  },
+                  "allies": {
+                    "alliesList": [
+                      { "name": "Syrio Forel", "dead": true },
+                      { "name": "Gendry", "dead": false },
+                      { "name": "Jaquen Hagar", "dead": false },
+                      { "name": "Sandor Clegane", "dead": true },
+                      { "name": "Brienne of Tarth", "dead": false } 
+                    ]
+                  },
+                  "enemies": {
+                    "enemiesList": [
+                      { "name": "Joffrey Baratheon", "dead": true },
+                      { "name": "Cersei Lannister", "dead": true },
+                      { "name": "Gregor Clegane", "dead": true },
+                      { "name": "Meryn Trant", "dead": true },
+                      { "name": "Ilyn Payne", "dead": true },
+                      { "name": "Sandor Clegane", "dead": true }
+                    ],
+                  }
+                },
                 "sword": "needle"
               };
             };
