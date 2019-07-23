@@ -484,7 +484,6 @@ class A11yTabs extends PolymerElement {
         detail: root
       })
     );
-    this.responsiveSize = "xs";
     window.dispatchEvent(
       new CustomEvent("responsive-element", {
         detail: {
