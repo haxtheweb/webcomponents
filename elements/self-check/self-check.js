@@ -97,14 +97,20 @@ class SelfCheck extends SchemaBehaviors(A11yBehaviors(SimpleColors)) {
           width: 35px;
           height: 35px;
           padding: 5px;
-          color: #ffffff;
+          color: var(
+            --simple-colors-default-theme-grey-1,
+            #fff
+          );
         }
 
         .heading {
           text-transform: uppercase;
           font-size: 22px;
           margin: 10px;
-          color: #ffffff;
+          color: var(
+            --simple-colors-default-theme-grey-1,
+            #fff
+          );
         }
 
         #header_wrap {
