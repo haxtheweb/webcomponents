@@ -277,7 +277,7 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(LitElement) {
       let elementList = window.HaxStore.instance.elementList;
       // @todo obviously not sustainable
       let url = "https://lrnwebcomponents.github.io/hax-body/components";
-      content = html`
+      content = `
         <!DOCTYPE html>
         <html lang="en">
           <head>
