@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { SimpleColorsStyles } from "./lib/simple-colors-styles.js";
+import "./lib/simple-colors-styles.js";
 /**
  * `simple-colors`
  * `a shared set of styles for @lrnwebcomponents`
@@ -36,7 +36,7 @@ class SimpleColors extends PolymerElement {
        */
       accentColor: {
         name: "accentColor",
-        type: "String",
+        type: String,
         value: "grey",
         reflectToAttribute: true,
         notify: true
@@ -46,7 +46,7 @@ class SimpleColors extends PolymerElement {
        */
       dark: {
         name: "dark",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         reflectToAttribute: true,
         notify: true
@@ -56,7 +56,7 @@ class SimpleColors extends PolymerElement {
        */
       colors: {
         name: "colors",
-        type: "Object",
+        type: Object,
         value: window.SimpleColorsStyles.colors,
         notify: true
       }
