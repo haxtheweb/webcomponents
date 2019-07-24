@@ -185,7 +185,8 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
       };
       for (let subprop in tab.properties) {
         if (tab.properties.value) delete tab.properties.value;
-        tab.properties[subprop].value = this.value[prop][subprop];
+        if (this.value && this.value[prop])
+          tab.properties[subprop].value = this.value[prop][subprop];
       }
       schema.push(tab);
     }

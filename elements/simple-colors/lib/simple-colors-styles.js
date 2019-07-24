@@ -284,6 +284,165 @@ window.SimpleColorsStyles.colors = {
     "#0f1518"
   ]
 };
+
+/**
+ * returns a variable based on color name, shade, and fixed theme
+ *
+ * @param {string} the color name
+ * @param {number} the color shade
+ * @param {boolean} the color shade
+ * @returns {string} the CSS Variable
+ */
+window.SimpleColorsStyles.makeVariable = (
+  color = "grey",
+  shade = 1,
+  theme = "default"
+) => {
+  return ["--simple-colors", theme, "theme", color, shade].join("-");
+};
+
+/**
+ * adds all CSS variables for a given theme (default, dark, or light)
+ */
+window.SimpleColorsStyles.addThemeVariables = (theme, dark) => {
+  let str = [];
+  for (var name in window.SimpleColorsStyles.colors) {
+    str.push(
+      window.SimpleColorsStyles.addColorShades(
+        theme,
+        name,
+        window.SimpleColorsStyles.colors[name],
+        dark
+      )
+    );
+  }
+  return str.join("");
+};
+/**
+ * adds CSS variables for all shades of contrast for a given theme+color
+ * and assigns a hex code to it
+ *
+ * @returns {string}
+ */
+window.SimpleColorsStyles.addColorShades = (theme, color, hexcodes, dark) => {
+  let str = [];
+  for (let i = 0; i < hexcodes.length; i++) {
+    let cssvar = window.SimpleColorsStyles.makeVariable(color, i + 1, theme),
+      hex = dark
+        ? hexcodes[window.SimpleColorsStyles.invertIndex(i)]
+        : hexcodes[i];
+    str.push(cssvar + ":" + hex + "; ");
+  }
+  return str.join("");
+};
+/**
+ * adds all CSS variables as styles for :host and :host([dark]) selectors
+ *
+ * @returns {string}
+ */
+window.SimpleColorsStyles.addCssVariables = sheet => {
+  if (typeof sheet !== typeof undefined) {
+    let greys = window.SimpleColorsStyles.colors["grey"];
+    sheet.insertRule(
+      window.SimpleColorsStyles.makeRule(
+        "html",
+        window.SimpleColorsStyles.addColorShades(
+          "default",
+          "accent",
+          greys,
+          false
+        ) + window.SimpleColorsStyles.addThemeVariables("default", false)
+      ),
+      sheet.cssRules.length
+    );
+    sheet.insertRule(
+      window.SimpleColorsStyles.makeRule(
+        "html",
+        window.SimpleColorsStyles.addColorShades(
+          "fixed",
+          "accent",
+          greys,
+          false
+        ) + window.SimpleColorsStyles.addThemeVariables("fixed", false)
+      ),
+      sheet.cssRules.length
+    );
+    sheet.insertRule(
+      window.SimpleColorsStyles.makeRule(
+        "[dark]",
+        window.SimpleColorsStyles.addColorShades(
+          "default",
+          "accent",
+          greys,
+          true
+        ) + window.SimpleColorsStyles.addThemeVariables("default", true)
+      ),
+      sheet.cssRules.length
+    );
+    return sheet;
+  }
+};
+/**
+ * adds all CSS accent color variables as styles for :host([accent-color]]) selectors
+ *
+ * @returns {object}
+ */
+window.SimpleColorsStyles.addAccentVariables = sheet => {
+  if (typeof sheet !== typeof undefined) {
+    for (let color in window.SimpleColorsStyles.colors) {
+      sheet.insertRule(
+        window.SimpleColorsStyles.makeRule(
+          '[accent-color="' + color + '"]',
+          [
+            window.SimpleColorsStyles.addColorShades(
+              "default",
+              "accent",
+              window.SimpleColorsStyles.colors[color],
+              false
+            ),
+            window.SimpleColorsStyles.addColorShades(
+              "fixed",
+              "accent",
+              window.SimpleColorsStyles.colors[color],
+              false
+            )
+          ].join("")
+        ),
+        sheet.cssRules.length
+      );
+
+      sheet.insertRule(
+        window.SimpleColorsStyles.makeRule(
+          '[dark][accent-color="' + color + '"]',
+          [
+            window.SimpleColorsStyles.addColorShades(
+              "default",
+              "accent",
+              window.SimpleColorsStyles.colors[color],
+              true
+            )
+          ].join("")
+        ),
+        sheet.cssRules.length
+      );
+    }
+    return sheet;
+  }
+};
+window.SimpleColorsStyles.makeRule = (selector, style) => {
+  return selector + " {\n" + style + "\n}\n";
+};
+
+/**
+ * inverts the current index
+ *
+ * @param {string} the index
+ * @param {number} the inverted index
+ */
+window.SimpleColorsStyles.invertIndex = index => {
+  return window.SimpleColorsStyles.colors["grey"].length - 1 - parseInt(index);
+};
+
 class SimpleColorsStyles extends PolymerElement {
   // properties available to the custom element for data binding
   static get properties() {
@@ -391,23 +550,13 @@ class SimpleColorsStyles extends PolymerElement {
   }
   /**
    * life cycle, element is afixed to the DOM
-   */
+   * /
   connectedCallback() {
     super.connectedCallback();
     /**
      * append and register the shared styles
-     */
+     * /
     afterNextRender(this, function() {
-      let style = document.createElement("style");
-      if (this.appendHead) {
-        document.head.appendChild(style);
-      } else {
-        this.parentNode.appendChild(style);
-      }
-      this.__sheet = style.sheet;
-      this.fullStyle = style;
-      this.addCssVariables(this.__sheet);
-      this.addAccentVariables(this.__sheet);
     });
   }
 
@@ -569,19 +718,6 @@ class SimpleColorsStyles extends PolymerElement {
       ? this.colors["grey"].length
       : 1;
   }
-
-  /**
-   * returns a variable based on color name, shade, and fixed theme
-   *
-   * @param {string} the color name
-   * @param {number} the color shade
-   * @param {boolean} the color shade
-   * @returns {string} the CSS Variable
-   */
-  makeVariable(color = "grey", shade = 1, theme = "default") {
-    return ["--simple-colors", theme, "theme", color, shade].join("-");
-  }
-
   /**
    * gets the correct hexCode for a color shade,
    * depending on whether or not the list is dark (inverted)
@@ -592,137 +728,6 @@ class SimpleColorsStyles extends PolymerElement {
     } else {
       return hexcodes[index];
     }
-  }
-  /**
-   * adds all CSS variables for a given theme (default, dark, or light)
-   */
-  addThemeVariables(theme, dark) {
-    let str = [];
-    for (var name in this.colors) {
-      str.push(this.addColorShades(theme, name, this.colors[name], dark));
-    }
-    return str.join("");
-  }
-  /**
-   * adds CSS variables for all shades of contrast for a given theme+color
-   * and assigns a hex code to it
-   *
-   * @returns {string}
-   */
-  addColorShades(theme, color, hexcodes, dark) {
-    let str = [];
-    for (let i = 0; i < hexcodes.length; i++) {
-      let cssvar = this.makeVariable(color, i + 1, theme),
-        hex = dark ? hexcodes[this.invertIndex(i)] : hexcodes[i];
-      str.push(cssvar + ":" + hex + "; ");
-    }
-    return str.join("");
-  }
-  /**
-   * adds all CSS variables as styles for :host and :host([dark]) selectors
-   *
-   * @returns {string}
-   */
-  addCssVariables(sheet) {
-    if (typeof sheet !== typeof undefined) {
-      let greys = this.colors["grey"];
-      sheet.insertRule(
-        this.makeRule(
-          "html",
-          this.addColorShades("default", "accent", greys, false) +
-            this.addThemeVariables("default", false)
-        ),
-        sheet.cssRules.length
-      );
-      sheet.insertRule(
-        this.makeRule(
-          "html",
-          this.addColorShades("fixed", "accent", greys, false) +
-            this.addThemeVariables("fixed", false)
-        ),
-        sheet.cssRules.length
-      );
-      sheet.insertRule(
-        this.makeRule(
-          "[dark]",
-          this.addColorShades("default", "accent", greys, true) +
-            this.addThemeVariables("default", true)
-        ),
-        sheet.cssRules.length
-      );
-      return sheet;
-    }
-  }
-  /**
-   * adds all CSS accent color variables as styles for :host([accent-color]]) selectors
-   *
-   * @returns {object}
-   */
-  addAccentVariables(sheet) {
-    if (typeof sheet !== typeof undefined) {
-      for (let color in this.colors) {
-        sheet.insertRule(
-          this.makeRule(
-            '[accent-color="' + color + '"]',
-            [
-              this.addColorShades(
-                "default",
-                "accent",
-                this.colors[color],
-                false
-              ),
-              this.addColorShades("fixed", "accent", this.colors[color], false)
-            ].join("")
-          ),
-          sheet.cssRules.length
-        );
-
-        sheet.insertRule(
-          this.makeRule(
-            '[dark][accent-color="' + color + '"]',
-            [
-              this.addColorShades("default", "accent", this.colors[color], true)
-            ].join("")
-          ),
-          sheet.cssRules.length
-        );
-      }
-      return sheet;
-    }
-  }
-  /**
-   * Make style element that can be appended into things
-   */
-  makeStyleElement() {
-    let style = document.createElement("style");
-    style.appendChild(document.createTextNode(this.getAccentVariablesText()));
-    return style;
-  }
-  /**
-   * generate accent variables as text
-   */
-  getAccentVariablesText() {
-    let text = "";
-    for (let color in this.colors) {
-      text += this.makeRule(
-        ':host([accent-color="' + color + '"])',
-        [
-          this.addColorShades("default", "accent", this.colors[color], false),
-          this.addColorShades("fixed", "accent", this.colors[color], false)
-        ].join("")
-      );
-
-      text += this.makeRule(
-        ':host([dark][accent-color="' + color + '"])',
-        [
-          this.addColorShades("default", "accent", this.colors[color], true)
-        ].join("")
-      );
-    }
-    return text;
-  }
-  makeRule(selector, style) {
-    return selector + " {\n" + style + "\n}\n";
   }
 }
 window.customElements.define(SimpleColorsStyles.tag, SimpleColorsStyles);
@@ -736,7 +741,15 @@ window.SimpleColorsStyles.requestAvailability = function() {
     window.SimpleColorsStyles.instance = document.createElement(
       "simple-colors-styles"
     );
-    window.SimpleColorsStyles.instance.appendHead = true;
+
+    window.SimpleColorsStyles.style = document.createElement("style");
+    window.document.head.appendChild(window.SimpleColorsStyles.style);
+    window.SimpleColorsStyles.addCssVariables(
+      window.SimpleColorsStyles.style.sheet
+    );
+    window.SimpleColorsStyles.addAccentVariables(
+      window.SimpleColorsStyles.style.sheet
+    );
   }
   document.body.appendChild(window.SimpleColorsStyles.instance);
   return window.SimpleColorsStyles.instance;
