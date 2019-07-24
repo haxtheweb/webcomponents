@@ -1,15 +1,12 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { LitElement, html, css } from "lit-element";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "./hax-shared-styles.js";
-
 /**
  * `hax-app-browser-item`
  * `A button on the hax-app-browser display`
  * @microcopy - the mental model for this element
  * - hax-app - data wiring for an app, this element uses the visual side of this
  */
-class HAXAppBrowserItem extends PolymerElement {
+class HAXAppBrowserItem extends LitElement {
   static get tag() {
     return "hax-app-browser-item";
   }
@@ -51,7 +48,7 @@ class HAXAppBrowserItem extends PolymerElement {
        */
       hexColor: {
         type: String,
-        computed: "_getHexColor(color)"
+        attribute: "hex-color"
       },
       /**
        * Author related to this app
@@ -82,20 +79,20 @@ class HAXAppBrowserItem extends PolymerElement {
        */
       elevation: {
         type: Number,
-        value: 1,
-        reflectToAttribute: true
+        reflect: true
       }
     };
   }
   constructor() {
     super();
+    this.elevation = 1;
     import("@polymer/paper-button/paper-button.js");
     import("@polymer/iron-icon/iron-icon.js");
     import("@polymer/iron-image/iron-image.js");
   }
-  static get template() {
-    return html`
-      <style include="hax-shared-styles">
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -161,35 +158,38 @@ class HAXAppBrowserItem extends PolymerElement {
         .flip-icon {
           transform: rotateY(180deg);
         }
-      </style>
+      `
+    ];
+  }
+
+  render() {
+    return html`
       <paper-button
-        data-voicecommand\$="select [[title]]"
-        title="[[title]]"
-        style$="background-color:[[hexColor]];"
+        data-voicecommand="select ${this.title}"
+        title="${this.title}"
+        style="background-color:${this.hexColor};"
       >
         <div class="button-inner">
-          <iron-icon icon="[[icon]]" hidden\$="[[!icon]]"></iron-icon>
+          <iron-icon icon="${this.icon}" hidden="${!this.icon}"></iron-icon>
           <iron-image
-            src="[[image]]"
+            src="${this.image}"
             preload=""
             sizing="cover"
-            hidden\$="[[!image]]"
+            hidden="${!this.image}"
           ></iron-image>
         </div>
       </paper-button>
-      <div class="item-title" aria-hidden="true">[[title]]</div>
+      <div class="item-title" aria-hidden="true">${this.title}</div>
     `;
   }
-  ready() {
-    super.ready();
-    afterNextRender(this, function() {
-      this.addEventListener("click", this._fireEvent);
-      this.addEventListener("mousedown", this.tapEventOn);
-      this.addEventListener("mouseover", this.tapEventOn);
-      this.addEventListener("mouseout", this.tapEventOff);
-      this.addEventListener("focusin", this.tapEventOn);
-      this.addEventListener("focusout", this.tapEventOff);
-    });
+  connectedCallback() {
+    super.connectedCallback();
+    this.addEventListener("click", this._fireEvent);
+    this.addEventListener("mousedown", this.tapEventOn);
+    this.addEventListener("mouseover", this.tapEventOn);
+    this.addEventListener("mouseout", this.tapEventOff);
+    this.addEventListener("focusin", this.tapEventOn);
+    this.addEventListener("focusout", this.tapEventOff);
   }
   /**
    * special handling for taps on the thing
@@ -210,6 +210,14 @@ class HAXAppBrowserItem extends PolymerElement {
       return tmp.colors[name][6];
     }
     return "#000000";
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      // update hexcolor when color changes
+      if (propName === "color") {
+        this.hexColor = this._getHexColor(this.color);
+      }
+    });
   }
   /**
    * Fire an event that includes the eventName of what was just pressed.

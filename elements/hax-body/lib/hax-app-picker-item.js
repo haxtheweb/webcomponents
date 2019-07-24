@@ -1,22 +1,21 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { LitElement, html, css } from "lit-element";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "./hax-shared-styles.js";
 /**
  `hax-app-picker-item`
  An item for displaying in a picker
 
 * @demo demo/index.html
 */
-class HaxAppPickerItem extends PolymerElement {
+class HaxAppPickerItem extends LitElement {
   constructor() {
     super();
+    this.elevation = 1;
     import("@polymer/iron-icon/iron-icon.js");
     import("@polymer/paper-button/paper-button.js");
   }
-  static get template() {
-    return html`
-      <style include="hax-shared-styles">
+  static get styles() {
+    return [
+      css`
         :host {
           display: inline-block;
           color: var(--hax-color-text);
@@ -30,14 +29,12 @@ class HaxAppPickerItem extends PolymerElement {
           transform: scale(1.4, 1.4);
         }
         :host > div {
-          @apply --paper-font-caption;
           margin-top: 8px;
           color: var(--hax-color-text);
           width: 100%;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
-          @apply --hax-app-picker-hax-element-text;
         }
         .icon {
           cursor: pointer;
@@ -55,7 +52,6 @@ class HaxAppPickerItem extends PolymerElement {
           -ms-transition: box-shadow 0.3s;
           -o-transition: box-shadow 0.3s;
           transition: box-shadow 0.3s;
-          @apply --hax-app-picker-hax-element--icon;
         }
         .icon:hover,
         .icon:focus {
@@ -76,26 +72,28 @@ class HaxAppPickerItem extends PolymerElement {
           width: 36px;
           height: 36px;
         }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
       <paper-button
         class="icon"
-        title="[[label]]"
-        style$="background-color:[[hexColor]];"
+        title="${this.label}"
+        style="background-color:${this.hexColor};"
       >
-        <iron-icon icon="[[icon]]"></iron-icon>
+        <iron-icon icon="${this.icon}"></iron-icon>
       </paper-button>
-      <div aria-hidden="true">[[label]]</div>
+      <div aria-hidden="true">${this.label}</div>
     `;
   }
-  ready() {
-    super.ready();
-    afterNextRender(this, function() {
-      this.addEventListener("mousedown", this.tapEventOn.bind(this));
-      this.addEventListener("mouseover", this.tapEventOn.bind(this));
-      this.addEventListener("mouseout", this.tapEventOff.bind(this));
-      this.addEventListener("focusin", this.tapEventOn.bind(this));
-      this.addEventListener("focusout", this.tapEventOff.bind(this));
-    });
+  connectedCallback() {
+    super.connectedCallback();
+    this.addEventListener("mousedown", this.tapEventOn.bind(this));
+    this.addEventListener("mouseover", this.tapEventOn.bind(this));
+    this.addEventListener("mouseout", this.tapEventOff.bind(this));
+    this.addEventListener("focusin", this.tapEventOn.bind(this));
+    this.addEventListener("focusout", this.tapEventOff.bind(this));
   }
   static get tag() {
     return "hax-app-picker-item";
@@ -113,7 +111,7 @@ class HaxAppPickerItem extends PolymerElement {
        */
       hexColor: {
         type: String,
-        computed: "_getHexColor(color)"
+        attribute: "hex-color"
       },
       /**
        * Icon
@@ -132,10 +130,17 @@ class HaxAppPickerItem extends PolymerElement {
        */
       elevation: {
         type: Number,
-        value: 1,
-        reflectToAttribute: true
+        reflect: true
       }
     };
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      // update hexcolor when color changes
+      if (propName === "color") {
+        this.hexColor = this._getHexColor(this.color);
+      }
+    });
   }
   _getHexColor(color) {
     let name = color.replace("-text", "");

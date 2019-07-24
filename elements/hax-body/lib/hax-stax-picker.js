@@ -1,6 +1,4 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "./hax-shared-styles.js";
+import { LitElement, html, css } from "lit-element";
 /**
  *  `hax-stax-picker`
  * A picker for selecting an item from a list of apps / hax stax which require
@@ -10,18 +8,27 @@ import "./hax-shared-styles.js";
  * @microcopy - the mental model for this element
  * - data - this is the app data model for an element which expresses itself to hax
  */
-class HaxStaxPicker extends PolymerElement {
+class HaxStaxPicker extends LitElement {
   constructor() {
     super();
+    this.title = "Templates";
     import("@lrnwebcomponents/hax-body/lib/hax-stax-browser.js");
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/iron-icon/iron-icon.js");
     import("@polymer/paper-button/paper-button.js");
     import("@polymer/app-layout/app-drawer/app-drawer.js");
+    this.dispatchEvent(
+      new CustomEvent("hax-register-stax-picker", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
   }
-  static get template() {
-    return html`
-      <style include="hax-shared-styles">
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -34,7 +41,6 @@ class HaxStaxPicker extends PolymerElement {
           --app-drawer-width: 320px;
           z-index: 1000;
           margin-top: 56px;
-          @apply --hax-stax-picker-dialog;
         }
         #closedialog {
           float: right;
@@ -63,22 +69,24 @@ class HaxStaxPicker extends PolymerElement {
           color: var(--hax-color-text);
         }
         app-drawer {
-          --app-drawer-content-container: {
-            background-color: #ffffff;
-          }
           --app-drawer-width: 320px;
         }
         .pref-container {
           text-align: left;
           padding: 16px;
         }
-      </style>
+      `
+    ];
+  }
+
+  render() {
+    return html`
       <app-drawer id="dialog" align="left" transition-duration="300">
-        <h3 class="title">[[title]]</h3>
+        <h3 class="title">${this.title}</h3>
         <div style="height: 100%; overflow: auto;" class="pref-container">
           <hax-stax-browser id="staxbrowser"></hax-stax-browser>
         </div>
-        <paper-button id="closedialog" on-click="close">
+        <paper-button id="closedialog" @click="${this.close}">
           <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
         </paper-button>
       </app-drawer>
@@ -93,24 +101,9 @@ class HaxStaxPicker extends PolymerElement {
        * Header so it's variable
        */
       title: {
-        type: String,
-        value: "Templates"
+        type: String
       }
     };
-  }
-  /**
-   * Attached life cycle
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.dispatchEvent(
-      new CustomEvent("hax-register-stax-picker", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: this
-      })
-    );
   }
 
   /**

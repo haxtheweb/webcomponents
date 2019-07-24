@@ -1,4 +1,4 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element";
 /**
  * `hax-plate-context`
  * `A context menu that provides common grid plate based authoring options.`
@@ -6,15 +6,15 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
  * - context menu - this is a menu of text based buttons and events for use in a larger solution.
  * - grid plate - the container / full HTML tag which can have operations applied to it.
  */
-class HaxPlateContext extends PolymerElement {
+class HaxPlateContext extends LitElement {
   constructor() {
     super();
     import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
     import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
   }
-  static get template() {
-    return html`
-      <style>
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           width: 32px;
@@ -31,7 +31,12 @@ class HaxPlateContext extends PolymerElement {
           visibility: visible;
           transition: 0.3s all ease;
         }
-      </style>
+      `
+    ];
+  }
+
+  render() {
+    return html`
       <div class="area">
         <hax-context-item
           mini
