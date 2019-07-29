@@ -4,7 +4,7 @@
    */
   "items": {
     "name": "items",
-    "type": "Array",
+    "type": Array,
     "value": [],
     "notify": true
   },
@@ -13,7 +13,7 @@
    */
   "editMode": {
     "name": "editMode",
-    "type": "Boolean",
+    "type": Boolean,
     "notify": true,
     "observer": "_editModeChanged"
   },
@@ -22,6 +22,6 @@
    */
   "__outlineNode": {
     "name": "__outlineNode",
-    "type": "Object"
+    "type": Object
   }
 }

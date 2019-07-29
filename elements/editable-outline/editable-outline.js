@@ -86,6 +86,9 @@ class EditableOutline extends PolymerElement {
         }
       </style>
       <div class="button-wrapper">
+        <button on-click="buttonEvents" id="add">
+          <iron-icon icon="icons:add"></iron-icon> Add
+        </button>
         <button on-click="buttonEvents" id="down">
           <iron-icon icon="icons:arrow-downward"></iron-icon> Move down
         </button>
@@ -286,6 +289,9 @@ class EditableOutline extends PolymerElement {
    */
   buttonEvents(e) {
     switch (e.target.id) {
+      case "add":
+        this._add(e);
+        break;
       case "indent":
         this._indent();
         break;
@@ -539,6 +545,14 @@ class EditableOutline extends PolymerElement {
       this.__indent = true;
       this.__blockScrub = true;
       document.execCommand("indent");
+    }
+  }
+  _add(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    if (this.polyfillSafe) {
+      document.execCommand("insertText", false, "\n");
     }
   }
   /**
