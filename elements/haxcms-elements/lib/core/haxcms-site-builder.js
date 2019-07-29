@@ -254,8 +254,11 @@ class HAXCMSSiteBuilder extends PolymerElement {
           this.editorBuilder = document.createElement("haxcms-editor-builder");
           // attach editor builder after we've appended to the screen
           document.body.appendChild(this.editorBuilder);
-          // get fresh data if not published
-          if (this.editorBuilder.getContext() !== "published") {
+          // get fresh data if not published / demo which is a form of published
+          if (
+            this.editorBuilder.getContext() !== "published" &&
+            this.editorBuilder.getContext() !== "demo"
+          ) {
             this._timeStamp = "?" + Math.floor(Date.now() / 1000);
           }
         })
