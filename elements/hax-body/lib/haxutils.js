@@ -89,9 +89,19 @@ function stripMSWord(input) {
   }
 
   // 5. remove attributes ' style="..."', align, start
-  output = output.replace(/style='(\s|.)*?'/gim, "");
+  output = output.replace(/ style='(\s|.)*?'/gim, "");
   output = output.replace(/ align=.*? /g, "");
-  output = output.replace(/start='.*?'/g, "");
+  output = output.replace(/ start='.*?'/g, "");
+
+  // 6. some HAX specific things in case this was moving content around
+  // these are universally true tho so fine to have here
+  output = output.replace(/ style="(\s|.)*?"/gim, "");
+  output = output.replace(/ data-editable="(\s|.)*?"/gim, "");
+  output = output.replace(/ data-hax-ray="(\s|.)*?"/gim, "");
+  output = output.replace(/ class=""/gim, "");
+  output = output.replace(/ class="hax-active"/gim, "");
+  output = output.replace(/ contenteditable="(\s|.)*?"/gim, "");
+
   return output;
 }
 
