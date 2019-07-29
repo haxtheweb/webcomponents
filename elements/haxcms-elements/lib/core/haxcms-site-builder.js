@@ -205,6 +205,7 @@ class HAXCMSSiteBuilder extends PolymerElement {
     super();
     window.addEventListener("hax-store-ready", this.storeReady.bind(this));
     import("@polymer/paper-progress/paper-progress.js");
+    import("@lrnwebcomponents/simple-toast/simple-toast.js");
     // attempt to set polymer passive gestures globally
     // this decreases logging and improves performance on scrolling
     setPassiveTouchGestures(true);
