@@ -1052,6 +1052,32 @@ class HAXCMSSiteListing extends PolymerElement {
       this.refreshData.bind(this)
     );
     afterNextRender(this, function() {
+      /**
+       * These are our bad actors in polyfill'ed browsers.
+       * This means that https://github.com/webcomponents/webcomponentsjs/commit/ce464bb533bf39b544c312906499a6044ee0d30d
+       * explains things but basically if shadow-dom is polyfilled
+       * then we can't safely execute a DOM manipulating execCommand.
+       * This
+       */
+      if (document.head.createShadowRoot || document.head.attachShadow) {
+      } else {
+        console.warn("Shadow DOM missing, ALL YOUR IE R BELONG TO US");
+        console.warn(
+          "HAXCMS DOES NOT LOVE YOUR OLD BROWSER FOR EDITING JUST VIEWING"
+        );
+        console.warn("You get no authoring experience. Good day to you!");
+        const evt = new CustomEvent("simple-toast-show", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: {
+            text:
+              "WARNING: You are using a polyfilled browser. HAXcms requires modern browsers, please upgrade or switch to a modern browser to edit in HAXcms!",
+            duration: 10000
+          }
+        });
+        this.dispatchEvent(evt);
+      }
       if (this.hideCamera) {
         this.shadowRoot.querySelector("#newsnap").classList.add("hide-camera");
         this.shadowRoot.querySelector("#snap").classList.add("hide-camera");
