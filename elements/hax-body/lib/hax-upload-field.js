@@ -170,34 +170,10 @@ class HaxUploadField extends PolymerElement {
         notify: true
       },
       option: {
-        type: String,
-        value: "fileupload"
+        type: String
       },
       options: {
-        type: Array,
-        value: [
-          [
-            {
-              alt: "URL",
-              icon: "icons:link",
-              value: "url"
-            }
-          ],
-          [
-            {
-              alt: "Upload",
-              icon: "icons:file-upload",
-              value: "fileupload"
-            }
-          ],
-          [
-            {
-              alt: "Camera",
-              icon: "image:photo-camera",
-              value: "selfie"
-            }
-          ]
-        ]
+        type: Array
       }
     };
   }
@@ -326,12 +302,53 @@ class HaxUploadField extends PolymerElement {
     this.__allowUpload = true;
     this.shadowRoot.querySelector("#fileupload").uploadFiles();
   }
-  ready() {
-    super.ready();
+  connectedCallback() {
+    super.connectedCallback();
     // hide the button if this environment can't support it anyway
     if (!navigator.mediaDevices) {
+      this.options = [
+        [
+          {
+            alt: "URL",
+            icon: "icons:link",
+            value: "url"
+          }
+        ],
+        [
+          {
+            alt: "Upload",
+            icon: "icons:file-upload",
+            value: "fileupload"
+          }
+        ]
+      ];
       this.shadowRoot.querySelector("#camerahole").style.display = "none";
+    } else {
+      this.options = [
+        [
+          {
+            alt: "URL",
+            icon: "icons:link",
+            value: "url"
+          }
+        ],
+        [
+          {
+            alt: "Upload",
+            icon: "icons:file-upload",
+            value: "fileupload"
+          }
+        ],
+        [
+          {
+            alt: "Camera",
+            icon: "image:photo-camera",
+            value: "selfie"
+          }
+        ]
+      ];
     }
+    this.option = "fileupload";
     this.shadowRoot
       .querySelector("#fileupload")
       .addEventListener("upload-before", this._fileAboutToUpload.bind(this));
