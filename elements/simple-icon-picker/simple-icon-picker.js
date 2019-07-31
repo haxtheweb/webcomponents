@@ -186,9 +186,6 @@ class SimpleIconPicker extends SimplePicker {
       };
     }
     this.set("options", options);
-    let option = this.shadowRoot.querySelector("simple-picker-option");
-    if (collapse && option)
-      collapse.style.width = cols * option.offsetWidth + 15 + "px";
   }
   /**
    * Don't set the selection option until there are options rendered
