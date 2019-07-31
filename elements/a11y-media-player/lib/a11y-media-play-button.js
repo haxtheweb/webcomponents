@@ -57,9 +57,10 @@ class A11yMediaPlayButton extends A11yMediaBehaviors {
     return "a11y-media-play-button";
   }
 
-  //get player-specifc properties
-  static get behaviors() {
-    return [A11yMediaBehaviors];
+  //inherit styles from a11y-media-player or a11y-media-transcript
+  constructor() {
+    super();
+    this.inheritStyles = true;
   }
 
   //render function

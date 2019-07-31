@@ -6,7 +6,7 @@
     "elementName": "simple-colors",
     "generator-wcfactory-version": "0.3.2",
     "useHAX": true,
-    "useSass": true,
+    "useSass": false,
     "files": {
       "css": "src/simple-colors.css",
       "scss": "src/simple-colors.scss",

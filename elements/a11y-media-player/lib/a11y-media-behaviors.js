@@ -17,7 +17,7 @@ export { A11yMediaBehaviors };
  * @customElement
  * @polymer
  */
-class A11yMediaBehaviors extends PolymerElement {
+class A11yMediaBehaviors extends SimpleColors {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly

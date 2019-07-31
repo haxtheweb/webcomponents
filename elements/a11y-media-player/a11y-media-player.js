@@ -6,7 +6,6 @@ import { html } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { A11yMediaBehaviors } from "./lib/a11y-media-behaviors.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
-import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import "./lib/a11y-media-state-manager.js";
@@ -661,7 +660,6 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
           </a11y-media-transcript>
         </div>
       </div>
-      <simple-colors></simple-colors>
     `;
   }
 
@@ -938,11 +936,6 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    */
   static get tag() {
     return "a11y-media-player";
-  }
-
-  //get player-specific behaviors
-  static get behaviors() {
-    return [A11yMediaBehaviors, SimpleColors];
   }
 
   /**

@@ -122,11 +122,6 @@ class A11yMediaTranscript extends A11yMediaBehaviors {
     return "a11y-media-transcript";
   }
 
-  //get player-specifc properties
-  static get behaviors() {
-    return [A11yMediaBehaviors];
-  }
-
   //render function
   static get template() {
     return html`
