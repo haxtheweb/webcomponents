@@ -120,7 +120,7 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(LitElement) {
             <paper-button id="download">Download body area</paper-button>
             <paper-button
               id="elementexport"
-              .hidden="${!this.globalPreferences.haxDeveloperMode}"
+              ?hidden="${!this.globalPreferences.haxDeveloperMode}"
               >Copy as HAX schema to clipboard</paper-button
             >
           </div>
