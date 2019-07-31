@@ -1,0 +1,367 @@
+@import "../../rh-sass/rh-sass";
+$grey: (
+  "color-1": #ffffff,
+  "color-2": #eeeeee,
+  "color-3": #dddddd,
+  "color-4": #cccccc,
+  "color-5": #bbbbbb,
+  "color-6": #999999,
+  "color-7": #666666,
+  "color-8": #444444,
+  "color-9": #333333,
+  "color-10": #222222,
+  "color-11": #111111,
+  "color-12": #000000
+);
+
+$red: (
+  "color-1": #ffdddd,
+  "color-2": #ffaeae,
+  "color-3": #ff8f8f,
+  "color-4": #ff7474,
+  "color-5": #fd5151,
+  "color-6": #ff2222,
+  "color-7": #ee0000,
+  "color-8": #ac0000,
+  "color-9": #850000,
+  "color-10": #670000,
+  "color-11": #520000,
+  "color-12": #3f0000,
+);
+$pink: (
+  "color-1": #ffe6f1,
+  "color-2": #ffa5cf,
+  "color-3": #ff87c0,
+  "color-4": #ff73b5,
+  "color-5": #fd60aa,
+  "color-6": #ff3996,
+  "color-7": #da004e,
+  "color-8": #b80042,
+  "color-9": #980036,
+  "color-10": #78002b,
+  "color-11": #5a0020,
+  "color-12": #440019,
+);
+$purple: (
+  "color-1": #fce6ff,
+  "color-2": #f4affd,
+  "color-3": #f394ff,
+  "color-4": #f07cff,
+  "color-5": #ed61ff,
+  "color-6": #e200ff,
+  "color-7": #a500ba,
+  "color-8": #8a009b,
+  "color-9": #6c0079,
+  "color-10": #490052,
+  "color-11": #33003a,
+  "color-12": #200025,
+);
+$deep-purple: (
+  "color-1": #f3e4ff,
+  "color-2": #ddacff,
+  "color-3": #c97eff,
+  "color-4": #bb63f9,
+  "color-5": #b44aff,
+  "color-6": #a931ff,
+  "color-7": #7e00d8,
+  "color-8": #5d009f,
+  "color-9": #4c0081,
+  "color-10": #3a0063,
+  "color-11": #2a0049,
+  "color-12": #1d0033,
+);
+$indigo: (
+  "color-1": #e5ddff,
+  "color-2": #c3b2ff,
+  "color-3": #af97ff,
+  "color-4": #9e82ff,
+  "color-5": #9373ff,
+  "color-6": #835fff,
+  "color-7": #3a00ff,
+  "color-8": #2801b0,
+  "color-9": #20008c,
+  "color-10": #160063,
+  "color-11": #100049,
+  "color-12": #0a0030,
+);
+$blue: (
+  "color-1": #e2ecff,
+  "color-2": #acc9ff,
+  "color-3": #95baff,
+  "color-4": #74a5ff,
+  "color-5": #5892fd,
+  "color-6": #4083ff,
+  "color-7": #0059ff,
+  "color-8": #0041bb,
+  "color-9": #003494,
+  "color-10": #002569,
+  "color-11": #001947,
+  "color-12": #001333,
+);
+$light-blue: (
+  "color-1": #ddefff,
+  "color-2": #a1d1ff,
+  "color-3": #92c9ff,
+  "color-4": #65b3ff,
+  "color-5": #58adff,
+  "color-6": #41a1ff,
+  "color-7": #007ffc,
+  "color-8": #0066ca,
+  "color-9": #0055a8,
+  "color-10": #003f7d,
+  "color-11": #002850,
+  "color-12": #001b36,
+);
+$cyan: (
+  "color-1": #ddf8ff,
+  "color-2": #9beaff,
+  "color-3": #77e2ff,
+  "color-4": #33d4ff,
+  "color-5": #1ccfff,
+  "color-6": #00c9ff,
+  "color-7": #009dc7,
+  "color-8": #007999,
+  "color-9": #005970,
+  "color-10": #003f50,
+  "color-11": #002c38,
+  "color-12": #001a20,
+);
+$teal: (
+  "color-1": #d9fff0,
+  "color-2": #98ffd7,
+  "color-3": #79ffcb,
+  "color-4": #56ffbd,
+  "color-5": #29ffac,
+  "color-6": #00ff9c,
+  "color-7": #009d75,
+  "color-8": #007658,
+  "color-9": #004e3a,
+  "color-10": #003829,
+  "color-11": #002a20,
+  "color-12": #001b14,
+);
+$green: (
+  "color-1": #e1ffeb,
+  "color-2": #acffc9,
+  "color-3": #79ffa7,
+  "color-4": #49ff88,
+  "color-5": #24ff70,
+  "color-6": #00f961,
+  "color-7": #008c37,
+  "color-8": #00762e,
+  "color-9": #005a23,
+  "color-10": #003d18,
+  "color-11": #002a11,
+  "color-12": #001d0c,
+);
+$light-green: (
+  "color-1": #ebffdb,
+  "color-2": #c7ff9b,
+  "color-3": #b1ff75,
+  "color-4": #a1fd5a,
+  "color-5": #8efd38,
+  "color-6": #6fff00,
+  "color-7": #429d00,
+  "color-8": #357f00,
+  "color-9": #296100,
+  "color-10": #1b3f00,
+  "color-11": #143000,
+  "color-12": #0d2000,
+);
+$lime: (
+  "color-1": #f1ffd2,
+  "color-2": #dfff9b,
+  "color-3": #d4ff77,
+  "color-4": #caff58,
+  "color-5": #bdff2d,
+  "color-6": #aeff00,
+  "color-7": #649900,
+  "color-8": #4d7600,
+  "color-9": #3b5a00,
+  "color-10": #293f00,
+  "color-11": #223400,
+  "color-12": #182400,
+);
+$yellow: (
+  "color-1": #ffffd5,
+  "color-2": #ffffac,
+  "color-3": #ffff90,
+  "color-4": #ffff7c,
+  "color-5": #ffff3a,
+  "color-6": #f6f600,
+  "color-7": #929100,
+  "color-8": #787700,
+  "color-9": #585700,
+  "color-10": #454400,
+  "color-11": #303000,
+  "color-12": #242400,
+);
+$amber: (
+  "color-1": #fff2d4,
+  "color-2": #ffdf92,
+  "color-3": #ffd677,
+  "color-4": #ffcf5e,
+  "color-5": #ffc235,
+  "color-6": #ffc500,
+  "color-7": #b28900,
+  "color-8": #876800,
+  "color-9": #614b00,
+  "color-10": #413200,
+  "color-11": #302500,
+  "color-12": #221a00,
+);
+$orange: (
+  "color-1": #ffebd7,
+  "color-2": #ffca92,
+  "color-3": #ffbd75,
+  "color-4": #ffb05c,
+  "color-5": #ff9e36,
+  "color-6": #ff9625,
+  "color-7": #e56a00,
+  "color-8": #ae5100,
+  "color-9": #833d00,
+  "color-10": #612d00,
+  "color-11": #3d1c00,
+  "color-12": #2c1400,
+);
+$deep-orange: (
+  "color-1": #ffe7e0,
+  "color-2": #ffb299,
+  "color-3": #ffa588,
+  "color-4": #ff8a64,
+  "color-5": #ff7649,
+  "color-6": #ff6c3c,
+  "color-7": #f53100,
+  "color-8": #b92500,
+  "color-9": #8a1c00,
+  "color-10": #561100,
+  "color-11": #3a0c00,
+  "color-12": #240700,
+);
+$brown: (
+  "color-1": #f0e2de,
+  "color-2": #e5b8aa,
+  "color-3": #c59485,
+  "color-4": #b68373,
+  "color-5": #ac7868,
+  "color-6": #a47060,
+  "color-7": #85574a,
+  "color-8": #724539,
+  "color-9": #5b3328,
+  "color-10": #3b1e15,
+  "color-11": #2c140e,
+  "color-12": #200e09,
+);
+$blue-grey: (
+  "color-1": #e7eff1,
+  "color-2": #b1c5ce,
+  "color-3": #9badb6,
+  "color-4": #8d9fa7,
+  "color-5": #7a8f98,
+  "color-6": #718892,
+  "color-7": #56707c,
+  "color-8": #40535b,
+  "color-9": #2f3e45,
+  "color-10": #1e282c,
+  "color-11": #182023,
+  "color-12": #0f1518,
+);
+$colors: 
+  "grey", 
+  "red", 
+  "pink", 
+  "purple", 
+  "deep-purple", 
+  "indigo", 
+  "blue", 
+  "light-blue", 
+  "cyan", 
+  "teal", 
+  "green", 
+  "light-green", 
+  "lime", 
+  "yellow", 
+  "amber", 
+  "orange", 
+  "deep-orange", 
+  "brown", 
+  "blue-grey";
+
+@function color-variable($color){
+  @if $color == "red" {  @return $red; }
+  @else if $color == "pink" { @return $pink; }
+  @else if $color == "purple" { @return $purple; }
+  @else if $color == "deep-purple" { @return $deep-purple; }
+  @else if $color == "indigo" { @return $indigo; }
+  @else if $color == "blue" { @return $blue; }
+  @else if $color == "light-blue" { @return $light-blue; }
+  @else if $color == "cyan" { @return $cyan; }
+  @else if $color == "teal" { @return $teal; }
+  @else if $color == "green" { @return $green; }
+  @else if $color == "light-green" { @return $light-green; }
+  @else if $color == "lime" { @return $lime; }
+  @else if $color == "yellow" { @return $yellow; }
+  @else if $color == "amber" { @return $amber; }
+  @else if $color == "orange" { @return $orange; }
+  @else if $color == "deep-orange" { @return $deep-orange; }
+  @else if $color == "brown" { @return $brown; }
+  @else if $color == "blue-grey" { @return $blue-grey; }
+  @else { @return $grey; }
+}
+@function shade-level($index,$dark){
+  @if $dark == true {
+    @return 13-$index;
+  } @else {
+    @return $index;
+  }
+}
+@function css-variable($theme,$color,$shade){
+  @return "--simple-colors-#{$theme}-theme-#{$color}-#{$shade}";
+}
+@mixin css-variables($theme,$name,$color,$dark) {
+  @for $i from 1 through 12 {
+    $shade: shade-level($i,$dark);
+    $index: "color-#{$shade}"; 
+    $hex: map-get($color,$index);
+    #{css-variable($theme,$name,$i)}: $hex;
+  }
+}
+@mixin get-colors($theme,$dark) {
+  @include css-variables($theme,'accent',$grey,$dark);
+  @each $color in $colors {
+    $var: color-variable($color);
+    /** $color */
+    @include css-variables($theme,$color,$var,$dark);
+  }
+}
+@mixin get-accent($theme,$name,$color) {
+  :host([accent-color=#{$name}]), 
+  :host [accent-color=#{$name}] {
+    @include css-variables($theme,'accent',$color,$dark: false);
+    @include css-variables($theme,'fixed',$color,$dark: false);
+  }
+  :host([dark][accent-color=#{$name}]),
+  :host([dark]) [accent-color=#{$name}],
+  :host([accent-color=#{$name}]) [dark],
+  :host [dark][accent-color=#{$name}] {
+    @include css-variables($theme,'accent',$color,$dark: true);
+  }
+}
+
+:host {
+  display: block;
+  @include get-colors('default',$dark: false);
+  @include get-colors('fixed',$dark: false);
+}
+:host([dark]), 
+:host [dark] {
+  @include get-colors('default',$dark: true);
+}
+@each $color in $colors {
+  $var: color-variable($color);
+  @include get-accent('default',$color,$var);
+}
+
+:host([hidden]) {
+  display: none;
+}
