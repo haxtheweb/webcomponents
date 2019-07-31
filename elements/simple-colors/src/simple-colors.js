@@ -59,6 +59,14 @@ class SimpleColors extends PolymerElement {
         type: Object,
         value: window.SimpleColorsStyles.colors,
         notify: true
+      },
+      /**
+       * styles inherited based on an ancestor's accent and dark attributes.
+       */
+      inheritStyles: {
+        name: "colors",
+        type: "Boolean",
+        value: false
       }
     };
   }
@@ -67,9 +75,14 @@ class SimpleColors extends PolymerElement {
     return "simple-colors";
   }
 
-  constructor() {
-    super();
-    this.__utils = window.SimpleColorsStyles.requestAvailability();
+  ready() {
+    super.ready();
+    let styles = window.SimpleColorsStyles.requestAvailability();
+    if (!this.inheritStyles)
+      this.shadowRoot.adoptedStyleSheets = [
+        ...document.adoptedStyleSheets,
+        styles
+      ];
   }
 
   /**
@@ -79,7 +92,7 @@ class SimpleColors extends PolymerElement {
    * @param {number} the shade with maximum contrast
    */
   maxContrastShade(shade) {
-    return this.__utils.maxContrastShade(shade);
+    return window.SimpleColorsStyles.maxContrastShade(shade);
   }
 
   /**
@@ -89,7 +102,7 @@ class SimpleColors extends PolymerElement {
    * @param {number} the inverted shade
    */
   invertShade(shade) {
-    return this.__utils.invertShade(shade);
+    return window.SimpleColorsStyles.invertShade(shade);
   }
 
   /**
@@ -99,7 +112,7 @@ class SimpleColors extends PolymerElement {
    * @param {object} an object that includes the theme, color, and shade information
    */
   getColorInfo(colorName) {
-    return this.__utils.getColorInfo(colorName);
+    return window.SimpleColorsStyles.getColorInfo(colorName);
   }
 
   /**
@@ -111,7 +124,7 @@ class SimpleColors extends PolymerElement {
    * @returns {string} the CSS Variable
    */
   makeVariable(color = "grey", shade = 1, theme = "default") {
-    return this.__utils.makeVariable(
+    return window.SimpleColorsStyles.makeVariable(
       (color = "grey"),
       (shade = 1),
       (theme = "default")
@@ -129,7 +142,11 @@ class SimpleColors extends PolymerElement {
    * @param {object} all of the WCAG 2.0 AA-compliant colors and shades
    */
   getContrastingColors(colorName, colorShade, isLarge) {
-    return this.__utils.getContrastingColors(colorName, colorShade, isLarge);
+    return window.SimpleColorsStyles.getContrastingColors(
+      colorName,
+      colorShade,
+      isLarge
+    );
   }
 
   /**
@@ -144,7 +161,7 @@ class SimpleColors extends PolymerElement {
    * @param {array} all of the WCAG 2.0 AA-compliant shades of the contrasting color
    */
   getContrastingShades(isLarge, colorName, colorShade, contrastName) {
-    return this.__utils.getContrastingShades(
+    return window.SimpleColorsStyles.getContrastingShades(
       isLarge,
       colorName,
       colorShade,
@@ -169,7 +186,7 @@ class SimpleColors extends PolymerElement {
     contrastName,
     contrastShade
   ) {
-    return this.__utils.isContrastCompliant(
+    return window.SimpleColorsStyles.isContrastCompliant(
       isLarge,
       colorName,
       colorShade,

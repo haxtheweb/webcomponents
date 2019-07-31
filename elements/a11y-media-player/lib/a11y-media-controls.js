@@ -128,10 +128,10 @@ class A11yMediaControls extends A11yMediaBehaviors {
   static get tag() {
     return "a11y-media-controls";
   }
-
-  //get player-specifc properties
-  static get behaviors() {
-    return [A11yMediaBehaviors];
+  //inherit styles from a11y-media-player
+  constructor() {
+    super();
+    this.inheritStyles = true;
   }
 
   //render function

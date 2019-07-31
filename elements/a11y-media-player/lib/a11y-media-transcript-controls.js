@@ -51,9 +51,10 @@ class A11yMediaTranscriptControls extends A11yMediaBehaviors {
     return "a11y-media-transcript-controls";
   }
 
-  //get player-specifc properties
-  static get behaviors() {
-    return [A11yMediaBehaviors];
+  //inherit styles from a11y-media-player or a11y-media-transcript
+  constructor() {
+    super();
+    this.inheritStyles = true;
   }
 
   //render function
