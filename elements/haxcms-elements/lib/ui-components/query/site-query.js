@@ -199,24 +199,49 @@ class SiteQuery extends MutableData(PolymerElement) {
       if (conditions && items) {
         // apply conditions, this will automatically filter our items
         for (var i in conditions) {
+          // test for object vs direct form of condition
+          if (typeof conditions[i] !== "object") {
+            conditions[i] = {
+              value: conditions[i],
+              operator: "="
+            };
+          }
+          // normalize special case evaluations
+          var evaluate = conditions[i].value;
+          if (conditions[i].value === "$activeId") {
+            evaluate = activeId;
+          } else if (conditions[i].value === "$firstId") {
+            evaluate = items[0].id;
+          }
           // apply the conditions in order
           items = items.filter(item => {
-            // specialized condition for active id
-            if (conditions[i] === "$activeId") {
-              if (Object.byString(item, i) !== activeId) {
+            switch (conditions[i].operator) {
+              case "!=":
+                if (Object.byString(item, i) !== conditions[i].value) {
+                  return true;
+                }
                 return false;
-              }
-              return true;
-            } else if (conditions[i] === "$firstId") {
-              if (Object.byString(item, i) !== items[0].id) {
+                break;
+              case ">":
+                if (Object.byString(item, i) > conditions[i].value) {
+                  return true;
+                }
                 return false;
-              }
-              return true;
-            } else {
-              if (Object.byString(item, i) !== conditions[i]) {
+                break;
+              case "<":
+                if (Object.byString(item, i) < conditions[i].value) {
+                  return true;
+                }
                 return false;
-              }
-              return true;
+                break;
+              // most common
+              case "=":
+              default:
+                if (Object.byString(item, i) !== conditions[i].value) {
+                  return false;
+                }
+                return true;
+                break;
             }
           });
         }
