@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { SimpleColorsStyles } from "./lib/simple-colors-styles.js";
 /**
  * `simple-colors`
  * `a shared set of styles for @lrnwebcomponents`
@@ -20,56 +19,10 @@ import { SimpleColorsStyles } from "./lib/simple-colors-styles.js";
  * @demo demo/extending.html extending simple-colors
  */
 class SimpleColors extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-      <style></style>
-      <slot></slot>
-    `;
-  }
-
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {
-      /**
-       * a selected accent-color: grey, red, pink, purple, etc.
-       */
-      accentColor: {
-        name: "accentColor",
-        type: "String",
-        value: "grey",
-        reflectToAttribute: true,
-        notify: true
-      },
-      /**
-       * make the default theme dark?
-       */
-      dark: {
-        name: "dark",
-        type: "Boolean",
-        value: false,
-        reflectToAttribute: true,
-        notify: true
-      },
-      /**
-       * make the default theme dark?
-       */
-      colors: {
-        name: "colors",
-        type: "Object",
-        value: window.SimpleColorsStyles.colors,
-        notify: true
-      }
-    };
-  }
+  /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   static get tag() {
     return "simple-colors";
-  }
-
-  constructor() {
-    super();
-    this.__utils = window.SimpleColorsStyles.requestAvailability();
   }
 
   /**
@@ -79,7 +32,9 @@ class SimpleColors extends PolymerElement {
    * @param {number} the shade with maximum contrast
    */
   maxContrastShade(shade) {
-    return this.__utils.maxContrastShade(shade);
+    return parseInt(shade) < this.colors["grey"].length / 2 + 1
+      ? this.colors["grey"].length
+      : 1;
   }
 
   /**
@@ -88,18 +43,31 @@ class SimpleColors extends PolymerElement {
    * @param {string} the shade
    * @param {number} the inverted shade
    */
+
   invertShade(shade) {
-    return this.__utils.invertShade(shade);
+    return this.colors["grey"].length + 1 - parseInt(shade);
   }
 
   /**
    * gets the color information of a given CSS variable or class
    *
-   * @param {string} the CSS variable (eg. `--simple-colors-fixed-theme-red-3`) or a class (eg. `.simple-colors-fixed-theme-red-3-text`)
+   * @param {string} the CSS variable (eg. `--simple-colors-fixed-theme-red-3`)
    * @param {object} an object that includes the theme, color, and shade information
    */
   getColorInfo(colorName) {
-    return this.__utils.getColorInfo(colorName);
+    let temp1 = colorName
+        .replace(/(simple-colors-)?(-text)?(-border)?/g, "")
+        .split("-theme-"),
+      theme = temp1.length > 0 ? temp1[0] : "default",
+      temp2 = temp1.length > 0 ? temp1[1].split("-") : temp1[0].split("-"),
+      color =
+        temp2.length > 1 ? temp2.slice(1, temp2.length - 1).join("-") : "grey",
+      shade = temp2.length > 1 ? temp2[temp2.length - 1] : "1";
+    return {
+      theme: theme,
+      color: color,
+      shade: shade
+    };
   }
 
   /**
@@ -111,11 +79,7 @@ class SimpleColors extends PolymerElement {
    * @returns {string} the CSS Variable
    */
   makeVariable(color = "grey", shade = 1, theme = "default") {
-    return this.__utils.makeVariable(
-      (color = "grey"),
-      (shade = 1),
-      (theme = "default")
-    );
+    return ["--simple-colors", theme, "theme", color, shade].join("-");
   }
 
   /**
@@ -129,7 +93,16 @@ class SimpleColors extends PolymerElement {
    * @param {object} all of the WCAG 2.0 AA-compliant colors and shades
    */
   getContrastingColors(colorName, colorShade, isLarge) {
-    return this.__utils.getContrastingColors(colorName, colorShade, isLarge);
+    let result = {};
+    Object.keys(this.colors).forEach(color => {
+      result[color] = this.getContrastingShades(
+        isLarge,
+        colorName,
+        colorShade,
+        color
+      );
+    });
+    return result.color;
   }
 
   /**
@@ -144,14 +117,17 @@ class SimpleColors extends PolymerElement {
    * @param {array} all of the WCAG 2.0 AA-compliant shades of the contrasting color
    */
   getContrastingShades(isLarge, colorName, colorShade, contrastName) {
-    return this.__utils.getContrastingShades(
-      isLarge,
-      colorName,
-      colorShade,
-      contrastName
-    );
+    let hasGrey =
+        colorName === "grey" || contrastName === "grey"
+          ? "greyColor"
+          : "colorColor",
+      aa = isLarge ? "aaLarge" : "aa",
+      index = parseInt(colorShade) + 1,
+      range = this.contrasts[hasGrey][aa][index];
+    return Array(range.max - range.min + 1)
+      .fill()
+      .map((_, idx) => range.min + idx);
   }
-
   /**
    * determines if two shades are WCAG 2.0 AA-compliant for contrast
    *
@@ -169,13 +145,56 @@ class SimpleColors extends PolymerElement {
     contrastName,
     contrastShade
   ) {
-    return this.__utils.isContrastCompliant(
-      isLarge,
-      colorName,
-      colorShade,
-      contrastName,
-      contrastShade
-    );
+    let hasGrey =
+        colorName === "grey" || contrastName === "grey"
+          ? "greyColor"
+          : "colorColor",
+      aa = isLarge ? "aaLarge" : "aa",
+      index = parseInt(colorShade) + 1,
+      range = this.contrasts[hasGrey][aa][index];
+    return contrastShade >= range.min && ontrastShade >= range.max;
+  }
+
+  /**
+   * gets the current shade based on the index
+   *
+   * @param {string} the index
+   * @param {number} the shade
+   */
+  indexToShade(index) {
+    return parseInt(index) + 1;
+  }
+
+  /**
+   * gets the current shade based on the index
+   *
+   * @param {string} the shade
+   * @param {number} the index
+   */
+  shadeToIndex(shade) {
+    return parseInt(shade) - 1;
+  }
+
+  /**
+   * inverts the current index
+   *
+   * @param {string} the index
+   * @param {number} the inverted index
+   */
+  invertIndex(index) {
+    return this.colors["grey"].length - 1 - parseInt(index);
+  }
+
+  /**
+   * returns the maximum contrast to the index
+   *
+   * @param {string} the index
+   * @param {number} the index with maximum contrast
+   */
+  maxContrastIndex(index) {
+    return parseInt(index) < this.colors["grey"].length / 2
+      ? this.colors["grey"].length - 1
+      : 0;
   }
 }
 customElements.define(SimpleColors.tag, SimpleColors);

@@ -357,7 +357,7 @@ window.SimpleColorsStyles.addCssVariables = sheet => {
     );
     sheet.insertRule(
       window.SimpleColorsStyles.makeRule(
-        "html",
+        "body, :host",
         window.SimpleColorsStyles.addColorShades(
           "fixed",
           "accent",
@@ -369,7 +369,7 @@ window.SimpleColorsStyles.addCssVariables = sheet => {
     );
     sheet.insertRule(
       window.SimpleColorsStyles.makeRule(
-        "[dark]",
+        "body[dark], :host([dark])",
         window.SimpleColorsStyles.addColorShades(
           "default",
           "accent",
@@ -392,7 +392,8 @@ window.SimpleColorsStyles.addAccentVariables = sheet => {
     for (let color in window.SimpleColorsStyles.colors) {
       sheet.insertRule(
         window.SimpleColorsStyles.makeRule(
-          '[accent-color="' + color + '"]',
+          'body[accent-color="' + color + '"]',
+          ':host([accent-color="' + color + '"])',
           [
             window.SimpleColorsStyles.addColorShades(
               "default",
@@ -413,7 +414,8 @@ window.SimpleColorsStyles.addAccentVariables = sheet => {
 
       sheet.insertRule(
         window.SimpleColorsStyles.makeRule(
-          '[dark][accent-color="' + color + '"]',
+          'body[dark][accent-color="' + color + '"], ',
+          ':host([dark][accent-color="' + color + '"]), ',
           [
             window.SimpleColorsStyles.addColorShades(
               "default",
@@ -738,19 +740,16 @@ export { SimpleColorsStyles };
  */
 window.SimpleColorsStyles.requestAvailability = function() {
   if (window.SimpleColorsStyles.instance == null) {
-    window.SimpleColorsStyles.instance = document.createElement(
-      "simple-colors-styles"
-    );
-
-    window.SimpleColorsStyles.style = document.createElement("style");
-    window.document.head.appendChild(window.SimpleColorsStyles.style);
+    window.SimpleColorsStyles.instance = new CSSStyleSheet();
     window.SimpleColorsStyles.addCssVariables(
-      window.SimpleColorsStyles.style.sheet
+      window.SimpleColorsStyles.instance
     );
     window.SimpleColorsStyles.addAccentVariables(
-      window.SimpleColorsStyles.style.sheet
+      window.SimpleColorsStyles.instance
     );
   }
-  document.body.appendChild(window.SimpleColorsStyles.instance);
+  let sheets = document.adoptedStyleSheets || [];
+  sheets.push(window.SimpleColorsStyles.instance);
+  document.adoptedStyleSheets = sheets;
   return window.SimpleColorsStyles.instance;
 };

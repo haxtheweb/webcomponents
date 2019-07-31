@@ -16,6 +16,9 @@
       "css": {
         "minify": true
       },
+      "sass": {
+        "minify": true
+      },
       "html": {
         "minify": true
       },
