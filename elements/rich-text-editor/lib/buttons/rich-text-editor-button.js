@@ -391,7 +391,7 @@ class RichTextEditorButton extends PolymerElement {
    */
   _getOsKeys(shortcutKeys) {
     //disable clipboard keys since we're already listening for them
-    let keys = shortcutKeys ? shortcutKeys.replace(/ctrl\+[xkv]/g, "") : "";
+    let keys = shortcutKeys ? shortcutKeys.replace(/ctrl\+[xcv]/g, "") : "";
     return window.navigator.platform === "MacIntel" && keys
       ? keys.replace(/ctrl/g, "meta")
       : keys;
