@@ -1,7 +1,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "./hax-shared-styles.js";
 /**

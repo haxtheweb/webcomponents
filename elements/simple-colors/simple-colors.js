@@ -36,7 +36,7 @@ class SimpleColors extends PolymerElement {
        */
       accentColor: {
         name: "accentColor",
-        type: "String",
+        type: String,
         value: "grey",
         reflectToAttribute: true,
         notify: true
@@ -46,7 +46,7 @@ class SimpleColors extends PolymerElement {
        */
       dark: {
         name: "dark",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         reflectToAttribute: true,
         notify: true
@@ -56,7 +56,7 @@ class SimpleColors extends PolymerElement {
        */
       colors: {
         name: "colors",
-        type: "Object",
+        type: Object,
         value: window.SimpleColorsStyles.colors,
         notify: true
       },

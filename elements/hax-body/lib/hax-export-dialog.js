@@ -1,15 +1,13 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { LitElement, html, css } from "lit-element";
 import { MtzFileDownloadBehaviors } from "@lrnwebcomponents/dl-behavior/dl-behavior.js";
-import "./hax-shared-styles.js";
 /**
  * `hax-export-dialog`
  * `Export dialog with all export options and settings provided.`
  */
-class HaxExportDialog extends MtzFileDownloadBehaviors(PolymerElement) {
-  static get template() {
-    return html`
-      <style include="hax-shared-styles">
+class HaxExportDialog extends MtzFileDownloadBehaviors(LitElement) {
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -96,9 +94,14 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(PolymerElement) {
           margin: 0 auto;
           width: 100%;
         }
-      </style>
+      `
+    ];
+  }
+
+  render() {
+    return html`
       <paper-dialog id="dialog">
-        <h3 class="title">[[title]]</h3>
+        <h3 class="title">${this.title}</h3>
         <div style="height: 100%; overflow: auto;" class="pref-container">
           <div id="wrapper">
             <textarea id="hiddentextarea" hidden></textarea>
@@ -117,7 +120,7 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(PolymerElement) {
             <paper-button id="download">Download body area</paper-button>
             <paper-button
               id="elementexport"
-              hidden\$="[[!globalPreferences.haxDeveloperMode]]"
+              ?hidden="${!this.globalPreferences.haxDeveloperMode}"
               >Copy as HAX schema to clipboard</paper-button
             >
           </div>
@@ -139,23 +142,20 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(PolymerElement) {
        * Title when open.
        */
       title: {
-        type: String,
-        value: "Source view"
+        type: String
       },
       /**
        * Access to the global properties object.
        */
       globalPreferences: {
-        type: Object,
-        value: {}
+        type: Object
       }
     };
   }
   /**
    * Attached to the DOM, now fire that we exist.
    */
-  ready() {
-    super.ready();
+  firstUpdated() {
     // fire an event that this is the manager
     this.dispatchEvent(
       new CustomEvent("hax-register-export", {
@@ -165,31 +165,29 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(PolymerElement) {
         detail: this
       })
     );
-    afterNextRender(this, function() {
-      // add event listeners
-      document.body.addEventListener(
-        "hax-store-property-updated",
-        this._haxStorePropertyUpdated.bind(this)
-      );
-      this.shadowRoot
-        .querySelector("#download")
-        .addEventListener("click", this.download.bind(this));
-      this.shadowRoot
-        .querySelector("#downloadfull")
-        .addEventListener("click", this.downloadfull.bind(this));
-      this.shadowRoot
-        .querySelector("#import")
-        .addEventListener("click", this.importContent.bind(this));
-      this.shadowRoot
-        .querySelector("#copy")
-        .addEventListener("click", this.selectBody.bind(this));
-      this.shadowRoot
-        .querySelector("#closedialog")
-        .addEventListener("click", this.close.bind(this));
-      this.shadowRoot
-        .querySelector("#elementexport")
-        .addEventListener("click", this.htmlToHaxElements.bind(this));
-    });
+    // add event listeners
+    document.body.addEventListener(
+      "hax-store-property-updated",
+      this._haxStorePropertyUpdated.bind(this)
+    );
+    this.shadowRoot
+      .querySelector("#download")
+      .addEventListener("click", this.download.bind(this));
+    this.shadowRoot
+      .querySelector("#downloadfull")
+      .addEventListener("click", this.downloadfull.bind(this));
+    this.shadowRoot
+      .querySelector("#import")
+      .addEventListener("click", this.importContent.bind(this));
+    this.shadowRoot
+      .querySelector("#copy")
+      .addEventListener("click", this.selectBody.bind(this));
+    this.shadowRoot
+      .querySelector("#closedialog")
+      .addEventListener("click", this.close.bind(this));
+    this.shadowRoot
+      .querySelector("#elementexport")
+      .addEventListener("click", this.htmlToHaxElements.bind(this));
   }
   /**
    * Store updated, sync.
@@ -201,9 +199,9 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(PolymerElement) {
       e.detail.property
     ) {
       if (typeof e.detail.value === "object") {
-        this.set(e.detail.property, null);
+        this[e.detail.property] = null;
       }
-      this.set(e.detail.property, e.detail.value);
+      this[e.detail.property] = e.detail.value;
     }
   }
 
@@ -280,18 +278,23 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(PolymerElement) {
       // @todo obviously not sustainable
       let url = "https://lrnwebcomponents.github.io/hax-body/components";
       content = `
-      <!doctype html>
-      <html lang="en">
-        <head>
-          <meta charset="utf-8">
-          <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-          <title>hax-body demo</title>
-          <script src="${url}/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-          <style>
-          body {
-            padding: 32px;
-          }
-          </style>
+        <!DOCTYPE html>
+        <html lang="en">
+          <head>
+            <meta charset="utf-8" />
+            <meta
+              name="viewport"
+              content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
+            />
+            <title>hax-body demo</title>
+            <script src="${url}/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+            <style>
+              body {
+                padding: 32px;
+              }
+            </style>
+          </head>
+        </html>
       `;
       var ignoreList = ["iframe", "a", "img", "hr", "p"];
       for (var index in elementList) {
@@ -331,6 +334,8 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(PolymerElement) {
   }
   constructor() {
     super();
+    this.title = "Source view";
+    this.globalPreferences = {};
     import("@polymer/paper-dialog/paper-dialog.js");
   }
   /**

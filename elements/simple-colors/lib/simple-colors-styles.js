@@ -12,8 +12,6 @@
  * @polymer
  * @demo demo/index.html
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 window.SimpleColorsStyles = {};
 window.SimpleColorsStyles.instance = null;
 window.SimpleColorsStyles.colors = {

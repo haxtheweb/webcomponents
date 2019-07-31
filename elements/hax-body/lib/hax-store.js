@@ -952,31 +952,31 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
       ) &&
       !window.HaxStore.instance.haxManager.opened
     ) {
-      e.preventDefault();
-      e.stopPropagation();
-      e.stopImmediatePropagation();
       let pasteContent = "";
       // intercept paste event
       if (e.clipboardData || e.originalEvent.clipboardData) {
         pasteContent = (e.originalEvent || e).clipboardData.getData(
           "text/html"
         );
-        // trap for partial content / pure text based
-        if (pasteContent == "") {
-          pasteContent =
-            "<span>" +
-            (e.originalEvent || e).clipboardData.getData("text/plain") +
-            "</span>";
-        }
       } else if (window.clipboardData) {
         pasteContent = window.clipboardData.getData("Text");
       }
-      // edges that some things preserve empty white space needlessly
       pasteContent = pasteContent.replace(/<span> <\/span>/g, " ");
       pasteContent = pasteContent.replace(/<span><\/span>/g, "");
-      let haxElements = window.HaxStore.htmlToHaxElements(
-        stripMSWord(pasteContent)
-      );
+      pasteContent = stripMSWord(pasteContent);
+      // edges that some things preserve empty white space needlessly
+      let haxElements = window.HaxStore.htmlToHaxElements(pasteContent);
+      // if interpretation as HTML fails then let's ignore this whole thing
+      // as we allow normal contenteditable to handle the paste
+      // we only worry about HTML structures
+      if (haxElements.length === 0) {
+        return false;
+      }
+      // if we got here then we have HTML structures to pull together
+      // this ensures that the below works out
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
       // stupid but we need to reverse these
       haxElements.reverse();
       let newContent = "";
@@ -1000,7 +1000,7 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
         // tee up a wrapper so we can walk and put every element in
         let newNodes = document.createElement("div");
         newNodes.innerHTML = newContent;
-        if (range && sel) {
+        if (range && sel && typeof range.deleteContents === "function") {
           range.deleteContents();
           while (newNodes.firstChild) {
             range.insertNode(newNodes.firstChild);

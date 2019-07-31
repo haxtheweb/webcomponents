@@ -1,8 +1,4 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "./hax-shared-styles.js";
+import { LitElement, html, css } from "lit-element";
 /**
  * `hax-panel-item`
  * `A single button in the hax panel for consistency.`
@@ -10,9 +6,15 @@ import "./hax-shared-styles.js";
  * - panel - the flyout from left or right side that has elements that can be placed
  * - button - an item that expresses what interaction you will have with the content.
  */
-class HAXPanelItem extends PolymerElement {
+class HAXPanelItem extends LitElement {
   constructor() {
     super();
+    this.disabled = false;
+    this.edged = "";
+    this.icon = "editor:text-fields";
+    this.label = "editor:text-fields";
+    this.eventName = "button";
+    this.value = "";
     import("@polymer/paper-button/paper-button.js");
     import("@polymer/paper-tooltip/paper-tooltip.js");
     import("@polymer/iron-icon/iron-icon.js");
@@ -24,20 +26,20 @@ class HAXPanelItem extends PolymerElement {
        */
       light: {
         type: Boolean,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Voice command to append for things that support data-voicecommand.
        */
       voiceCommand: {
-        type: String
+        type: String,
+        attribute: "voice-command"
       },
       /**
        * Support for disabled state buttons
        */
       disabled: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       /**
        * If we should apply a rounded edge to the button, opposite
@@ -45,24 +47,21 @@ class HAXPanelItem extends PolymerElement {
        */
       edged: {
         type: String,
-        value: "",
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Icon for the button.
        */
       icon: {
         type: String,
-        value: "editor:text-fields",
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Label for the button.
        */
       label: {
         type: String,
-        value: "editor:text-fields",
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Name of the event to bubble up as being tapped.
@@ -71,8 +70,8 @@ class HAXPanelItem extends PolymerElement {
        */
       eventName: {
         type: String,
-        value: "button",
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "event-name"
       },
       /**
        * Possible value to send along as well with the event.
@@ -81,17 +80,16 @@ class HAXPanelItem extends PolymerElement {
        */
       value: {
         type: String,
-        value: "",
-        reflectToAttribute: true
+        reflect: true
       }
     };
   }
   static get tag() {
     return "hax-panel-item";
   }
-  static get template() {
-    return html`
-      <style include="hax-shared-styles">
+  static get styles() {
+    return [
+      css`
         :host {
           display: inline-flex;
         }
@@ -157,9 +155,16 @@ class HAXPanelItem extends PolymerElement {
             border-radius: 0;
           }
         }
-      </style>
-      <paper-button raised id="button" disabled="[[disabled]]">
-        <div class="button-inner"><iron-icon icon="[[icon]]"></iron-icon></div>
+      `
+    ];
+  }
+
+  render() {
+    return html`
+      <paper-button raised id="button" .disabled="${this.disabled}">
+        <div class="button-inner">
+          <iron-icon icon="${this.icon}"></iron-icon>
+        </div>
       </paper-button>
       <paper-tooltip
         animation-delay="0"
@@ -167,29 +172,25 @@ class HAXPanelItem extends PolymerElement {
         position="bottom"
         offset="10"
       >
-        [[label]]
+        ${this.label}
       </paper-tooltip>
     `;
   }
-  ready() {
-    super.ready();
-    afterNextRender(this, function() {
-      this.addEventListener("click", this._fireEvent);
-    });
+  connectedCallback() {
+    super.connectedCallback();
+    this.addEventListener("click", this._fireEvent);
   }
   /**
    * Fire an event that includes the eventName of what was just pressed.
    */
   _fireEvent(e) {
-    var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget;
     this.dispatchEvent(
       new CustomEvent("hax-item-selected", {
         bubbles: true,
         cancelable: false,
         composed: true,
         detail: {
-          target: local,
+          target: this,
           value: this.value,
           eventName: this.eventName
         }

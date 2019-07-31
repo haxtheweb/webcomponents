@@ -1,4 +1,4 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
 /**
  * `hax-context-item`
@@ -7,9 +7,23 @@ import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
  * - context - menu in the page the user can select an item from, this being 1 option in that list
  * - button - an item that expresses what interaction you will have with the content.
  */
-class HaxContextItem extends PolymerElement {
+class HaxContextItem extends LitElement {
   constructor() {
     super();
+    this.light = false;
+    this.disabled = false;
+    this.mini = false;
+    this.menu = false;
+    this.direction = "top";
+    this.icon = "editor:text-fields";
+    this.iconClass = "";
+    this.label = "";
+    this.eventName = "button";
+    this.inputMethod = null;
+    this.propertyToBind = null;
+    this.slotToBind = null;
+    this.default = false;
+    this.value = "";
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/iron-icons/editor-icons.js");
     import("@polymer/iron-icons/device-icons.js");
@@ -20,9 +34,9 @@ class HaxContextItem extends PolymerElement {
     import("@polymer/iron-icons/maps-icons.js");
     import("@polymer/neon-animation/neon-animation.js");
   }
-  static get template() {
-    return html`
-      <style>
+  static get styles() {
+    return [
+      css`
         :host {
           display: inline-flex;
           height: 36px;
@@ -36,21 +50,26 @@ class HaxContextItem extends PolymerElement {
           display: flex;
           width: 100%;
         }
-      </style>
+      `
+    ];
+  }
+
+  render() {
+    return html`
       <hax-toolbar-item
-        disabled="[[disabled]]"
-        light="[[light]]"
-        mini="[[mini]]"
+        .disabled="${this.disabled}"
+        .light="${this.light}"
+        .mini="${this.mini}"
         id="button"
-        icon="[[icon]]"
-        hidden\$="[[!icon]]"
-        icon-class="[[iconClass]]"
-        on-mousedown="_storeSelection"
-        on-click="_fireEvent"
-        tooltip="[[label]]"
-        tooltip-direction="[[direction]]"
-        default="[[default]]"
-        menu="[[menu]]"
+        icon="${this.icon}"
+        .hidden="${!this.icon}"
+        icon-class="${this.iconClass}"
+        @mousedown="${this._storeSelection}"
+        @click="${this._fireEvent}"
+        tooltip="${this.label}"
+        tooltip-direction="${this.direction}"
+        .default="${this.default}"
+        .menu="${this.menu}"
       >
         <slot></slot>
       </hax-toolbar-item>
@@ -66,61 +85,54 @@ class HaxContextItem extends PolymerElement {
        * Light theme for toolbar item.
        */
       light: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       /**
        * disabled state
        */
       disabled: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Mini theme for making things small and round.
        */
       mini: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       /**
        * Style to be presented in a menu
        */
       menu: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       /**
        * Direction for the tooltip
        */
       direction: {
-        type: String,
-        value: "top"
+        type: String
       },
       /**
        * Icon for the button.
        */
       icon: {
         type: String,
-        value: "editor:text-fields",
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Icon for the button.
        */
       iconClass: {
         type: String,
-        value: "",
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "icon-class"
       },
       /**
        * Label for the button.
        */
       label: {
         type: String,
-        value: "",
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Name of the event to bubble up as being tapped.
@@ -129,8 +141,8 @@ class HaxContextItem extends PolymerElement {
        */
       eventName: {
         type: String,
-        value: "button",
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "event-name"
       },
       /**
        * Method of input to display when activated. This is
@@ -138,46 +150,44 @@ class HaxContextItem extends PolymerElement {
        */
       inputMethod: {
         type: String,
-        value: null,
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "input-method"
       },
       /**
        * Optional slot to bind this value to.
        */
       propertyToBind: {
         type: String,
-        value: null,
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "property-to-bind"
       },
       /**
        * Optional slot to bind this value to.
        */
       slotToBind: {
         type: String,
-        value: null,
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "slot-to-bind"
       },
       /**
        * Optional description for this item.
        */
       description: {
         type: String,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Is this button concidered a primary interaction
        */
       default: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       /**
        * an optional value to send along in the press. Allows for
        * reusing events more easily
        */
       value: {
-        type: String,
-        value: ""
+        type: String
       }
     };
   }

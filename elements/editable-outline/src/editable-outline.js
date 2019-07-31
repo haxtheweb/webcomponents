@@ -154,6 +154,9 @@ class EditableOutline extends PolymerElement {
    */
   buttonEvents(e) {
     switch (e.target.id) {
+      case "add":
+        this._add(e);
+        break;
       case "indent":
         this._indent();
         break;
@@ -407,6 +410,14 @@ class EditableOutline extends PolymerElement {
       this.__indent = true;
       this.__blockScrub = true;
       document.execCommand("indent");
+    }
+  }
+  _add(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    if (this.polyfillSafe) {
+      document.execCommand("insertText", false, "\n");
     }
   }
   /**

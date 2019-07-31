@@ -1,20 +1,18 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "./hax-shared-styles.js";
+import { LitElement, html, css } from "lit-element";
 /**
  * `hax-source`
  * `An element that brokers the visual display of a listing of material from an end point. The goal is to normalize data from some location which is media centric. This expects to get at least enough data in order to form a grid of items which are selectable. It's also generically implemented so that anything can be hooked up as a potential source for input (example: youtube API or custom in-house solution). The goal is to return enough info via fired event so that hax-manager can tell hax-body that the user selected a tag, properties, slot combination so that hax-body can turn the selection into a custom element / element injected into the hax-body slot.`
  */
-class HaxAppSearchResult extends PolymerElement {
+class HaxAppSearchResult extends LitElement {
   constructor() {
     super();
     import("@polymer/iron-image/iron-image.js");
     import("@polymer/paper-button/paper-button.js");
     import("@polymer/paper-styles/paper-styles.js");
   }
-  static get template() {
-    return html`
-      <style include="hax-shared-styles">
+  static get styles() {
+    return [
+      css`
         :host {
           display: inline-flex;
           width: 50%;
@@ -87,20 +85,24 @@ class HaxAppSearchResult extends PolymerElement {
             font-size: 8px;
           }
         }
-      </style>
+      `
+    ];
+  }
 
-      <paper-button on-click="_itemSelected" class="button">
+  render() {
+    return html`
+      <paper-button @click="${this._itemSelected}" class="button">
         <iron-image
           alt=""
           class="image"
-          src="[[resultData.image]]"
+          src="${this.resultData.image}"
           preload=""
           fade=""
           sizing="cover"
         ></iron-image>
         <div class="detail-wrapper">
-          <div class="title">[[resultData.title]]</div>
-          <div class="details">[[resultData.details]]</div>
+          <div class="title">${this.resultData.title}</div>
+          <div class="details">${this.resultData.details}</div>
         </div>
       </paper-button>
     `;
@@ -114,7 +116,8 @@ class HaxAppSearchResult extends PolymerElement {
        * Preview object from hax-app originally.
        */
       resultData: {
-        type: Object
+        type: Object,
+        attribute: "result-data"
       }
     };
   }
