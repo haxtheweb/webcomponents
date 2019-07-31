@@ -3,10 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "./lib/simple-picker-option.js";
-export { SimplePicker };
 /**
  * `simple-picker`
  * `a simple picker for options, icons, etc.`
@@ -734,7 +730,12 @@ class SimplePicker extends PolymerElement {
       });
     }
   }
-
+  constructor() {
+    super();
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("./lib/simple-picker-option.js");
+  }
   /**
    * sets the options for the picker
    *
@@ -745,17 +746,10 @@ class SimplePicker extends PolymerElement {
     this.set("options", [[]]);
     this.set("options", options);
   }
-
-  /**
-   * life cycle, element is afixed to the DOM
-   * @returns {void}
-   */
-  connectedCallback() {
-    super.connectedCallback();
-  }
   /**
    * life cycle, element is removed from the DOM
    */
   //disconnectedCallback() {}
 }
 window.customElements.define(SimplePicker.tag, SimplePicker);
+export { SimplePicker };
