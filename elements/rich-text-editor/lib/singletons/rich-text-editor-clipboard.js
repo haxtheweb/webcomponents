@@ -57,8 +57,9 @@ class RichTextEditorClipboard extends PolymerElement {
     this.copyToClipboard(this.getRange());
   }
   handlePaste(e) {
+    console.log(e);
     e.preventDefault();
-    this.pasteToClipboard(this.getRange());
+    this.pasteFromClipboard(this.getRange());
   }
   handleCutButton(e) {
     this.copyToClipboard(e.detail.range, true);
@@ -67,14 +68,15 @@ class RichTextEditorClipboard extends PolymerElement {
     this.copyToClipboard(e.detail.range);
   }
   handlePasteButton(e) {
-    this.pasteToClipboard(e.detail.range);
+    this.pasteFromClipboard(e.detail.range);
   }
   copyToClipboard(range, cut = false) {
     this.$.clipboard.innerHTML = "";
-    if (range) this.$.clipboard.appendChild(range.cloneContents());
+    if (range && range.cloneContents)
+      this.$.clipboard.appendChild(range.cloneContents());
     if (cut && range.extractContents) range.extractContents();
   }
-  pasteToClipboard(range) {
+  pasteFromClipboard(range) {
     let div = document.createElement("div"),
       parent = range.commonAncestorContainer.parentNode,
       closest = parent.closest(
@@ -84,12 +86,13 @@ class RichTextEditorClipboard extends PolymerElement {
       div.innerHTML = this.$.clipboard.innerHTML;
       if (range && range.extractContents) {
         range.extractContents();
-        range.insertNode(div);
-        while (div.firstChild) {
-          div.parentNode.insertBefore(div.firstChild, div);
-        }
-        div.parentNode.removeChild(div);
+        console.log("empty?", range.cloneContents());
       }
+      range.insertNode(div);
+      while (div.firstChild) {
+        div.parentNode.insertBefore(div.firstChild, div);
+      }
+      div.parentNode.removeChild(div);
     }
   }
 
