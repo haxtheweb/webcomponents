@@ -3,10 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-icons/iron-icons.js";
 import "@lrnwebcomponents/lrn-shared-styles/lrn-shared-styles.js";
-export { SimplePickerOption };
 /**
  * `simple-picker-option`
  * `a simple picker for options, icons, etc.`
@@ -23,7 +20,7 @@ class SimplePickerOption extends PolymerElement {
   // render function
   static get template() {
     return html`
-      <style is="custom-style" include="lrn-shared-styles">
+      <style include="lrn-shared-styles">
         :host {
           display: flex;
           align-items: center;
@@ -222,6 +219,11 @@ class SimplePickerOption extends PolymerElement {
       this.$.label.appendChild(label);
     }
   }
+  constructor() {
+    super();
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/iron-icons/iron-icons.js");
+  }
 
   /**
    * Set event listeners
@@ -239,15 +241,9 @@ class SimplePickerOption extends PolymerElement {
     });
   }
   /**
-   * life cycle, element is afixed to the DOM
-   * @returns {void}
-   */
-  connectedCallback() {
-    super.connectedCallback();
-  }
-  /**
    * life cycle, element is removed from the DOM
    */
   //disconnectedCallback() {}
 }
 window.customElements.define(SimplePickerOption.tag, SimplePickerOption);
+export { SimplePickerOption };

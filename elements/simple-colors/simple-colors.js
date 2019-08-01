@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "./lib/simple-colors-styles.js";
+import { SimpleColorsStyles } from "./lib/simple-colors-styles.js";
 /**
  * `simple-colors`
  * `a shared set of styles for @lrnwebcomponents`
@@ -36,7 +36,7 @@ class SimpleColors extends PolymerElement {
        */
       accentColor: {
         name: "accentColor",
-        type: String,
+        type: "String",
         value: "grey",
         reflectToAttribute: true,
         notify: true
@@ -46,7 +46,7 @@ class SimpleColors extends PolymerElement {
        */
       dark: {
         name: "dark",
-        type: Boolean,
+        type: "Boolean",
         value: false,
         reflectToAttribute: true,
         notify: true
@@ -56,7 +56,7 @@ class SimpleColors extends PolymerElement {
        */
       colors: {
         name: "colors",
-        type: Object,
+        type: "Object",
         value: window.SimpleColorsStyles.colors,
         notify: true
       },
@@ -98,7 +98,7 @@ class SimpleColors extends PolymerElement {
    * @param {number} the shade with maximum contrast
    */
   maxContrastShade(shade) {
-    return window.SimpleColorsStyles.maxContrastShade(shade);
+    return this.__utils.maxContrastShade(shade);
   }
 
   /**
@@ -108,7 +108,7 @@ class SimpleColors extends PolymerElement {
    * @param {number} the inverted shade
    */
   invertShade(shade) {
-    return window.SimpleColorsStyles.invertShade(shade);
+    return this.__utils.invertShade(shade);
   }
 
   /**
@@ -118,7 +118,7 @@ class SimpleColors extends PolymerElement {
    * @param {object} an object that includes the theme, color, and shade information
    */
   getColorInfo(colorName) {
-    return window.SimpleColorsStyles.getColorInfo(colorName);
+    return this.__utils.getColorInfo(colorName);
   }
 
   /**
@@ -130,7 +130,7 @@ class SimpleColors extends PolymerElement {
    * @returns {string} the CSS Variable
    */
   makeVariable(color = "grey", shade = 1, theme = "default") {
-    return window.SimpleColorsStyles.makeVariable(
+    return this.__utils.makeVariable(
       (color = "grey"),
       (shade = 1),
       (theme = "default")
@@ -148,11 +148,7 @@ class SimpleColors extends PolymerElement {
    * @param {object} all of the WCAG 2.0 AA-compliant colors and shades
    */
   getContrastingColors(colorName, colorShade, isLarge) {
-    return window.SimpleColorsStyles.getContrastingColors(
-      colorName,
-      colorShade,
-      isLarge
-    );
+    return this.__utils.getContrastingColors(colorName, colorShade, isLarge);
   }
 
   /**
@@ -167,7 +163,7 @@ class SimpleColors extends PolymerElement {
    * @param {array} all of the WCAG 2.0 AA-compliant shades of the contrasting color
    */
   getContrastingShades(isLarge, colorName, colorShade, contrastName) {
-    return window.SimpleColorsStyles.getContrastingShades(
+    return this.__utils.getContrastingShades(
       isLarge,
       colorName,
       colorShade,
@@ -192,7 +188,7 @@ class SimpleColors extends PolymerElement {
     contrastName,
     contrastShade
   ) {
-    return window.SimpleColorsStyles.isContrastCompliant(
+    return this.__utils.isContrastCompliant(
       isLarge,
       colorName,
       colorShade,

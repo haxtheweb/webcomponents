@@ -12,6 +12,8 @@
  * @polymer
  * @demo demo/index.html
  */
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 window.SimpleColorsStyles = {};
 window.SimpleColorsStyles.instance = null;
 window.SimpleColorsStyles.colors = {
@@ -282,108 +284,6 @@ window.SimpleColorsStyles.colors = {
     "#0f1518"
   ]
 };
-/**
- * Object with information on which color combinations are WCAG 2.0AA compliant, eg: ```
-  {
-    greyColor: {          //if either the color or its contrast will be a grey
-      aaLarge: [          //if bold text >= 14pt, text >= 18pt, decorative only, or disabled
-        {                 //for the first shade of a color
-          min: 7,         //index of the lightest contrasting shade of another color
-          max: 12         //index of the darkest contrasting shade of another color
-        },
-        ...
-      ],
-      aa: [ ... ]         //if bold text < 14pt, or text < 18pt
-    },
-    colorColor: { ... }   //if neither the color nor its contrast are grey
-  }```
-*/
-window.SimpleColorsStyles.contrasts = {
-  greyColor: {
-    aaLarge: [
-      { min: 7, max: 12 },
-      { min: 7, max: 12 },
-      { min: 7, max: 12 },
-      { min: 7, max: 12 },
-      { min: 8, max: 12 },
-      { min: 10, max: 12 },
-      { min: 1, max: 3 },
-      { min: 1, max: 5 },
-      { min: 1, max: 6 },
-      { min: 1, max: 6 },
-      { min: 1, max: 6 },
-      { min: 1, max: 6 }
-    ],
-    aa: [
-      //if bold text < 14pt, or text < 18pt
-      { min: 7, max: 12 },
-      { min: 7, max: 12 },
-      { min: 7, max: 12 },
-      { min: 8, max: 12 },
-      { min: 8, max: 12 },
-      { min: 11, max: 12 },
-      { min: 1, max: 2 },
-      { min: 1, max: 7 },
-      { min: 1, max: 7 },
-      { min: 1, max: 6 },
-      { min: 1, max: 6 },
-      { min: 1, max: 6 }
-    ]
-  },
-  colorColor: {
-    //if neither the color nor its contrast are grey
-    aaLarge: [
-      { min: 7, max: 12 },
-      { min: 7, max: 12 },
-      { min: 8, max: 12 },
-      { min: 9, max: 12 },
-      { min: 10, max: 12 },
-      { min: 11, max: 12 },
-      { min: 1, max: 2 },
-      { min: 1, max: 3 },
-      { min: 1, max: 4 },
-      { min: 1, max: 5 },
-      { min: 1, max: 6 },
-      { min: 1, max: 6 }
-    ],
-    aa: [
-      { min: 8, max: 12 },
-      { min: 8, max: 12 },
-      { min: 9, max: 12 },
-      { min: 9, max: 12 },
-      { min: 11, max: 12 },
-      { min: 12, max: 12 },
-      { min: 1, max: 1 },
-      { min: 1, max: 2 },
-      { min: 1, max: 4 },
-      { min: 1, max: 4 },
-      { min: 1, max: 5 },
-      { min: 1, max: 5 }
-    ]
-  }
-};
-
-/**
- * gets the color information of a given CSS variable or class
- *
- * @param {string} the CSS variable (eg. `--simple-colors-fixed-theme-red-3`)
- * @param {object} an object that includes the theme, color, and shade information
- */
-window.SimpleColorsStyles.getColorInfo = colorName => {
-  let temp1 = colorName
-      .replace(/(simple-colors-)?(-text)?(-border)?/g, "")
-      .split("-theme-"),
-    theme = temp1.length > 0 ? temp1[0] : "default",
-    temp2 = temp1.length > 0 ? temp1[1].split("-") : temp1[0].split("-"),
-    color =
-      temp2.length > 1 ? temp2.slice(1, temp2.length - 1).join("-") : "grey",
-    shade = temp2.length > 1 ? temp2[temp2.length - 1] : "1";
-  return {
-    theme: theme,
-    color: color,
-    shade: shade
-  };
-};
 
 /**
  * returns a variable based on color name, shade, and fixed theme
@@ -511,6 +411,7 @@ window.SimpleColorsStyles.addAccentVariables = sheet => {
         ),
         sheet.cssRules.length
       );
+
       sheet.insertRule(
         window.SimpleColorsStyles.makeRule(
           `body[dark][accent-color="${color}"], [dark][accent-color="${color}"]`,
@@ -542,168 +443,249 @@ window.SimpleColorsStyles.makeRule = (selector, style) => {
 window.SimpleColorsStyles.invertIndex = index => {
   return window.SimpleColorsStyles.colors["grey"].length - 1 - parseInt(index);
 };
-/**
- * for large or small text given a color and its shade,
- * lists all the shades of another color that would be
- * WCAG 2.0 AA-compliant for contrast
- *
- * @param {boolean} large text? >= 18pt || (bold && >= 14pt)
- * @param {string} color name, e.g. "deep-purple"
- * @param {string} color shade, e.g. 3
- * @param {string} contrasting color name, e.g. "grey"
- * @param {array} all of the WCAG 2.0 AA-compliant shades of the contrasting color
- */
-window.SimpleColorsStyles.getContrastingShades = (
-  isLarge,
-  colorName,
-  colorShade,
-  contrastName
-) => {
-  let hasGrey =
-      colorName === "grey" || contrastName === "grey"
-        ? "greyColor"
-        : "colorColor",
-    aa = isLarge ? "aaLarge" : "aa",
-    index = parseInt(colorShade) + 1,
-    range = window.SimpleColorsStyles.contrasts[hasGrey][aa][index];
-  return Array(range.max - range.min + 1)
-    .fill()
-    .map((_, idx) => range.min + idx);
-};
 
-/**
- * for large or small text given a color and its shade,
- * lists all the colors and shades that would be
- * WCAG 2.0 AA-compliant for contrast
- *
- * @param {boolean} large text? >= 18pt || (bold && >= 14pt)
- * @param {string} color name, e.g. "deep-purple"
- * @param {string} color shade, e.g. 3
- * @param {object} all of the WCAG 2.0 AA-compliant colors and shades
- */
-window.SimpleColorsStyles.getContrastingColors = (
-  colorName,
-  colorShade,
-  isLarge
-) => {
-  let result = {};
-  Object.keys(window.SimpleColorsStyles.colors).forEach(color => {
-    result[color] = window.SimpleColorsStyles.getContrastingShades(
-      isLarge,
-      colorName,
-      colorShade,
-      color
-    );
-  });
-  return result.color;
-};
-/**
- * determines if two shades are WCAG 2.0 AA-compliant for contrast
- *
- * @param {boolean} large text? >= 18pt || (bold && >= 14pt)
- * @param {string} color name, e.g. "deep-purple"
- * @param {string} color shade, e.g. 3
- * @param {string} contrasting color name, e.g. "grey"
- * @param {string} contrast shade, e.g. 12
- * @param {boolean} whether or not the contrasting shade is WCAG 2.0 AA-compliant
- */
-window.SimpleColorsStyles.isContrastCompliant = (
-  isLarge,
-  colorName,
-  colorShade,
-  contrastName,
-  contrastShade
-) => {
-  let hasGrey =
-      colorName === "grey" || contrastName === "grey"
-        ? "greyColor"
-        : "colorColor",
-    aa = isLarge ? "aaLarge" : "aa",
-    index = parseInt(colorShade) + 1,
-    range = window.SimpleColorsStyles.contrasts[hasGrey][aa][index];
-  return contrastShade >= range.min && ontrastShade >= range.max;
-};
-/**
- * gets the current shade based on the index
- *
- * @param {string} the index
- * @param {number} the shade
- */
-window.SimpleColorsStyles.indexToShade = index => {
-  return parseInt(index) + 1;
-};
-
-/**
- * gets the current shade based on the index
- *
- * @param {string} the shade
- * @param {number} the index
- */
-window.SimpleColorsStyles.shadeToIndex = shade => {
-  return parseInt(shade) - 1;
-};
-
-/**
- * gets the current shade
- *
- * @param {string} the shade
- * @param {number} the inverted shade
- */
-
-window.SimpleColorsStyles.invertShade = shade => {
-  return window.SimpleColorsStyles.colors["grey"].length + 1 - parseInt(shade);
-};
-
-/**
- * inverts the current index
- *
- * @param {string} the index
- * @param {number} the inverted index
- */
-window.SimpleColorsStyles.invertIndex = index => {
-  return window.SimpleColorsStyles.colors["grey"].length - 1 - parseInt(index);
-};
-
-/**
- * returns the maximum contrast to the index
- *
- * @param {string} the index
- * @param {number} the index with maximum contrast
- */
-window.SimpleColorsStyles.maxContrastIndex = index => {
-  return parseInt(index) < window.SimpleColorsStyles.colors["grey"].length / 2
-    ? window.SimpleColorsStyles.colors["grey"].length - 1
-    : 0;
-};
-
-/**
- * returns the maximum contrast to the shade
- *
- * @param {string} the shade
- * @param {number} the shade with maximum contrast
- */
-window.SimpleColorsStyles.maxContrastShade = shade => {
-  return parseInt(shade) <
-    window.SimpleColorsStyles.colors["grey"].length / 2 + 1
-    ? window.SimpleColorsStyles.colors["grey"].length
-    : 1;
-};
-/**
- * gets the correct hexCode for a color shade,
- * depending on whether or not the list is dark (inverted)
- */
-window.SimpleColorsStyles.getHex = (hexcodes, index, dark) => {
-  if (dark) {
-    return hexcodes[
-      window.SimpleColorsStyles.invertIndex(
-        window.SimpleColorsStyles.colors,
-        index
-      )
-    ];
-  } else {
-    return hexcodes[index];
+class SimpleColorsStyles extends PolymerElement {
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      /**
+       * The colors object.
+       * Each color contains an array of shades as hex codes from lightest to darkest.
+       */
+      colors: {
+        type: Object,
+        value: window.SimpleColorsStyles.colors
+      },
+      /**
+       * Object with information on which color combinations are WCAG 2.0AA compliant, eg: ```
+        {
+          greyColor: {          //if either the color or its contrast will be a grey
+            aaLarge: [          //if bold text >= 14pt, text >= 18pt, decorative only, or disabled
+              {                 //for the first shade of a color
+                min: 7,         //index of the lightest contrasting shade of another color
+                max: 12         //index of the darkest contrasting shade of another color
+              },
+              ...
+            ],
+            aa: [ ... ]         //if bold text < 14pt, or text < 18pt
+          },
+          colorColor: { ... }   //if neither the color nor its contrast are grey
+        }```
+      */
+      contrasts: {
+        type: Object,
+        value: {
+          greyColor: {
+            aaLarge: [
+              { min: 7, max: 12 },
+              { min: 7, max: 12 },
+              { min: 7, max: 12 },
+              { min: 7, max: 12 },
+              { min: 8, max: 12 },
+              { min: 10, max: 12 },
+              { min: 1, max: 3 },
+              { min: 1, max: 5 },
+              { min: 1, max: 6 },
+              { min: 1, max: 6 },
+              { min: 1, max: 6 },
+              { min: 1, max: 6 }
+            ],
+            aa: [
+              //if bold text < 14pt, or text < 18pt
+              { min: 7, max: 12 },
+              { min: 7, max: 12 },
+              { min: 7, max: 12 },
+              { min: 8, max: 12 },
+              { min: 8, max: 12 },
+              { min: 11, max: 12 },
+              { min: 1, max: 2 },
+              { min: 1, max: 7 },
+              { min: 1, max: 7 },
+              { min: 1, max: 6 },
+              { min: 1, max: 6 },
+              { min: 1, max: 6 }
+            ]
+          },
+          colorColor: {
+            //if neither the color nor its contrast are grey
+            aaLarge: [
+              { min: 7, max: 12 },
+              { min: 7, max: 12 },
+              { min: 8, max: 12 },
+              { min: 9, max: 12 },
+              { min: 10, max: 12 },
+              { min: 11, max: 12 },
+              { min: 1, max: 2 },
+              { min: 1, max: 3 },
+              { min: 1, max: 4 },
+              { min: 1, max: 5 },
+              { min: 1, max: 6 },
+              { min: 1, max: 6 }
+            ],
+            aa: [
+              { min: 8, max: 12 },
+              { min: 8, max: 12 },
+              { min: 9, max: 12 },
+              { min: 9, max: 12 },
+              { min: 11, max: 12 },
+              { min: 12, max: 12 },
+              { min: 1, max: 1 },
+              { min: 1, max: 2 },
+              { min: 1, max: 4 },
+              { min: 1, max: 4 },
+              { min: 1, max: 5 },
+              { min: 1, max: 5 }
+            ]
+          }
+        }
+      }
+    };
   }
-};
+
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   * @notice function name must be here for tooling to operate correctly
+   */
+  static get tag() {
+    return "simple-colors-styles";
+  }
+  /**
+   * life cycle, element is afixed to the DOM
+   * /
+  connectedCallback() {
+    super.connectedCallback();
+    /**
+     * append and register the shared styles
+     * /
+    afterNextRender(this, function() {
+    });
+  }
+
+  /**
+   * gets the color information of a given CSS variable or class
+   *
+   * @param {string} the CSS variable (eg. `--simple-colors-fixed-theme-red-3`)
+   * @param {object} an object that includes the theme, color, and shade information
+   */
+  getColorInfo(colorName) {
+    let temp1 = colorName
+        .replace(/(simple-colors-)?(-text)?(-border)?/g, "")
+        .split("-theme-"),
+      theme = temp1.length > 0 ? temp1[0] : "default",
+      temp2 = temp1.length > 0 ? temp1[1].split("-") : temp1[0].split("-"),
+      color =
+        temp2.length > 1 ? temp2.slice(1, temp2.length - 1).join("-") : "grey",
+      shade = temp2.length > 1 ? temp2[temp2.length - 1] : "1";
+    return {
+      theme: theme,
+      color: color,
+      shade: shade
+    };
+  }
+  /**
+   * for large or small text given a color and its shade,
+   * lists all the shades of another color that would be
+   * WCAG 2.0 AA-compliant for contrast
+   *
+   * @param {boolean} large text? >= 18pt || (bold && >= 14pt)
+   * @param {string} color name, e.g. "deep-purple"
+   * @param {string} color shade, e.g. 3
+   * @param {string} contrasting color name, e.g. "grey"
+   * @param {array} all of the WCAG 2.0 AA-compliant shades of the contrasting color
+   */
+  getContrastingShades(isLarge, colorName, colorShade, contrastName) {
+    let hasGrey =
+        colorName === "grey" || contrastName === "grey"
+          ? "greyColor"
+          : "colorColor",
+      aa = isLarge ? "aaLarge" : "aa",
+      index = parseInt(colorShade) + 1,
+      range = this.contrasts[hasGrey][aa][index];
+    return Array(range.max - range.min + 1)
+      .fill()
+      .map((_, idx) => range.min + idx);
+  }
+
+  /**
+   * for large or small text given a color and its shade,
+   * lists all the colors and shades that would be
+   * WCAG 2.0 AA-compliant for contrast
+   *
+   * @param {boolean} large text? >= 18pt || (bold && >= 14pt)
+   * @param {string} color name, e.g. "deep-purple"
+   * @param {string} color shade, e.g. 3
+   * @param {object} all of the WCAG 2.0 AA-compliant colors and shades
+   */
+  getContrastingColors(colorName, colorShade, isLarge) {
+    let result = {};
+    Object.keys(this.colors).forEach(color => {
+      result[color] = this.getContrastingShades(
+        isLarge,
+        colorName,
+        colorShade,
+        color
+      );
+    });
+    return result.color;
+  }
+  /**
+   * determines if two shades are WCAG 2.0 AA-compliant for contrast
+   *
+   * @param {boolean} large text? >= 18pt || (bold && >= 14pt)
+   * @param {string} color name, e.g. "deep-purple"
+   * @param {string} color shade, e.g. 3
+   * @param {string} contrasting color name, e.g. "grey"
+   * @param {string} contrast shade, e.g. 12
+   * @param {boolean} whether or not the contrasting shade is WCAG 2.0 AA-compliant
+   */
+  isContrastCompliant(
+    isLarge,
+    colorName,
+    colorShade,
+    contrastName,
+    contrastShade
+  ) {
+    let hasGrey =
+        colorName === "grey" || contrastName === "grey"
+          ? "greyColor"
+          : "colorColor",
+      aa = isLarge ? "aaLarge" : "aa",
+      index = parseInt(colorShade) + 1,
+      range = this.contrasts[hasGrey][aa][index];
+    return contrastShade >= range.min && ontrastShade >= range.max;
+  }
+
+  /**
+   * gets the current shade based on the index
+   *
+   * @param {string} the index
+   * @param {number} the shade
+   */
+  indexToShade(index) {
+    return parseInt(index) + 1;
+  }
+
+  /**
+   * gets the current shade based on the index
+   *
+   * @param {string} the shade
+   * @param {number} the index
+   */
+  shadeToIndex(shade) {
+    return parseInt(shade) - 1;
+  }
+
+  /**
+   * gets the current shade
+   *
+   * @param {string} the shade
+   * @param {number} the inverted shade
+   */
+
+  invertShade(shade) {
+    return this.colors["grey"].length + 1 - parseInt(shade);
+  }
+}
 /**
  * Checks to see if there is an instance available, and if not appends one
  */
@@ -715,5 +697,6 @@ window.SimpleColorsStyles.requestAvailability = () => {
     window.SimpleColorsStyles.addAccentVariables(style.sheet);
     window.SimpleColorsStyles.instance = style.sheet;
   }
+  document.body.appendChild(window.SimpleColorsStyles.instance);
   return window.SimpleColorsStyles.instance;
 };

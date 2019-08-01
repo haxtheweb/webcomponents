@@ -1701,7 +1701,37 @@ class HaxBody extends PolymerElement {
     for (var i = 0, len = children.length; i < len; i++) {
       // we have to tell the browser that primatives are editable
       if (this._HTMLPrimativeTest(children[i])) {
-        children[i].contentEditable = status;
+        if (status) {
+          children[i].setAttribute("contenteditable", status);
+          children[i].setAttribute("data-editable", status);
+          if (children[i].querySelectorAll("a").length > 0) {
+            let links = children[i].querySelectorAll("a");
+            for (var j = 0, len2 = links.length; j < len2; j++) {
+              links[j].setAttribute("contenteditable", status);
+              links[j].setAttribute("data-editable", status);
+              links[j].addEventListener("click", e => {
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+              });
+            }
+          }
+        } else {
+          children[i].removeAttribute("data-editable", status);
+          children[i].removeAttribute("contenteditable", status);
+          if (children[i].querySelectorAll("a").length > 0) {
+            let links = children[i].querySelectorAll("a");
+            for (var j = 0, len2 = links.length; j < len2; j++) {
+              links[j].removeAttribute("data-editable", status);
+              links[j].removeAttribute("contenteditable", status);
+              links[j].removeEventListener("click", e => {
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+              });
+            }
+          }
+        }
       }
       // this does the real targetting
       if (this._haxElementTest(children[i])) {

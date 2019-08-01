@@ -208,7 +208,6 @@ class SiteMenuButton extends PolymerElement {
     super.connectedCallback();
     this.__disposer = autorun(() => {
       this.routerManifest = toJS(store.routerManifest);
-      console.log(this.routerManifest);
     });
     this.__disposer2 = autorun(() => {
       this.activeManifestIndex = toJS(store.activeManifestIndex);

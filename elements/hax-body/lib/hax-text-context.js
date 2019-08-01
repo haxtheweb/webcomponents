@@ -413,6 +413,24 @@ class HaxTextContext extends PolymerElement {
         let url = prompt("Enter a URL:", href);
         if (url) {
           document.execCommand("createLink", false, url);
+          if (selection.focusNode.parentNode) {
+            selection.focusNode.parentNode.setAttribute(
+              "contenteditable",
+              true
+            );
+            selection.focusNode.parentNode.setAttribute("data-editable", true);
+            // just to be safe
+            selection.focusNode.parentNode.removeEventListener("click", e => {
+              e.preventDefault();
+              e.stopPropagation();
+              e.stopImmediatePropagation();
+            });
+            selection.focusNode.parentNode.addEventListener("click", e => {
+              e.preventDefault();
+              e.stopPropagation();
+              e.stopImmediatePropagation();
+            });
+          }
           e.preventDefault();
           e.stopPropagation();
         }
