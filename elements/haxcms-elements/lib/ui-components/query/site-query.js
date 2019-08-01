@@ -217,19 +217,19 @@ class SiteQuery extends MutableData(PolymerElement) {
           items = items.filter(item => {
             switch (conditions[i].operator) {
               case "!=":
-                if (Object.byString(item, i) !== conditions[i].value) {
+                if (Object.byString(item, i) !== evaluate) {
                   return true;
                 }
                 return false;
                 break;
               case ">":
-                if (Object.byString(item, i) > conditions[i].value) {
+                if (Object.byString(item, i) > evaluate) {
                   return true;
                 }
                 return false;
                 break;
               case "<":
-                if (Object.byString(item, i) < conditions[i].value) {
+                if (Object.byString(item, i) < evaluate) {
                   return true;
                 }
                 return false;
@@ -237,7 +237,7 @@ class SiteQuery extends MutableData(PolymerElement) {
               // most common
               case "=":
               default:
-                if (Object.byString(item, i) !== conditions[i].value) {
+                if (Object.byString(item, i) !== evaluate) {
                   return false;
                 }
                 return true;
