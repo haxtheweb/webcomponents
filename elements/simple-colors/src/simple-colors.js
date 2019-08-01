@@ -64,9 +64,10 @@ class SimpleColors extends PolymerElement {
        * styles inherited based on an ancestor's accent and dark attributes.
        */
       inheritStyles: {
-        name: "colors",
-        type: "Boolean",
-        value: false
+        name: "inheritStyles",
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
       }
     };
   }
@@ -78,11 +79,16 @@ class SimpleColors extends PolymerElement {
   ready() {
     super.ready();
     let styles = window.SimpleColorsStyles.requestAvailability();
-    if (!this.inheritStyles)
-      this.shadowRoot.adoptedStyleSheets = [
-        ...document.adoptedStyleSheets,
-        styles
-      ];
+    if (!this.inheritStyles) {
+      let style = document.createElement("style"),
+        ruleList = styles.cssRules;
+      this.shadowRoot.appendChild(style);
+
+      for (let rule of ruleList) {
+        let text = rule.cssText;
+        style.innerText += text;
+      }
+    }
   }
 
   /**

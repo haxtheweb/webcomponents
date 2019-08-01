@@ -457,7 +457,7 @@ window.SimpleColorsStyles.addCssVariables = sheet => {
     );
     sheet.insertRule(
       window.SimpleColorsStyles.makeRule(
-        "body, :host",
+        "body",
         window.SimpleColorsStyles.addColorShades(
           "fixed",
           "accent",
@@ -469,7 +469,7 @@ window.SimpleColorsStyles.addCssVariables = sheet => {
     );
     sheet.insertRule(
       window.SimpleColorsStyles.makeRule(
-        "body[dark], :host([dark])",
+        "body[dark], [dark]",
         window.SimpleColorsStyles.addColorShades(
           "default",
           "accent",
@@ -488,15 +488,12 @@ window.SimpleColorsStyles.addCssVariables = sheet => {
  * @returns {object}
  */
 window.SimpleColorsStyles.addAccentVariables = sheet => {
+  console.log(sheet);
   if (typeof sheet !== typeof undefined) {
     for (let color in window.SimpleColorsStyles.colors) {
       sheet.insertRule(
         window.SimpleColorsStyles.makeRule(
-          'body[accent-color="' +
-            color +
-            '"], :host([accent-color="' +
-            color +
-            '"])',
+          `body[accent-color="${color}"], [accent-color="${color}"]`,
           [
             window.SimpleColorsStyles.addColorShades(
               "default",
@@ -516,11 +513,7 @@ window.SimpleColorsStyles.addAccentVariables = sheet => {
       );
       sheet.insertRule(
         window.SimpleColorsStyles.makeRule(
-          'body[dark][accent-color="' +
-            color +
-            '"], :host([dark][accent-color="' +
-            color +
-            '"])',
+          `body[dark][accent-color="${color}"], [dark][accent-color="${color}"]`,
           [
             window.SimpleColorsStyles.addColorShades(
               "default",
@@ -711,23 +704,16 @@ window.SimpleColorsStyles.getHex = (hexcodes, index, dark) => {
     return hexcodes[index];
   }
 };
-
 /**
  * Checks to see if there is an instance available, and if not appends one
  */
-window.SimpleColorsStyles.requestAvailability = function() {
+window.SimpleColorsStyles.requestAvailability = () => {
   if (window.SimpleColorsStyles.instance == null) {
-    window.SimpleColorsStyles.instance = new CSSStyleSheet();
-    window.SimpleColorsStyles.addCssVariables(
-      window.SimpleColorsStyles.instance
-    );
-    window.SimpleColorsStyles.addAccentVariables(
-      window.SimpleColorsStyles.instance
-    );
-    document.adoptedStyleSheets = [
-      ...document.adoptedStyleSheets,
-      window.SimpleColorsStyles.instance
-    ];
+    let style = document.createElement("style");
+    document.head.appendChild(style);
+    window.SimpleColorsStyles.addCssVariables(style.sheet);
+    window.SimpleColorsStyles.addAccentVariables(style.sheet);
+    window.SimpleColorsStyles.instance = style.sheet;
   }
   return window.SimpleColorsStyles.instance;
 };

@@ -32,6 +32,10 @@ class SimplePicker extends PolymerElement {
           max-height: calc(var(--simple-picker-option-size, 24px) + 18px);
           @apply --simple-picker;
         }
+        :host div {
+          margin: unset;
+          padding: unset;
+        }
 
         :host([block-label]) {
           display: block;

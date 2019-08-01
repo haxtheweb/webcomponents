@@ -30,6 +30,10 @@ class SimplePickerOption extends PolymerElement {
           justify-content: space-between;
           color: var(--simple-picker-color);
         }
+        :host div {
+          margin: unset;
+          padding: unset;
+        }
         :host([hidden]) {
           display: none;
         }
