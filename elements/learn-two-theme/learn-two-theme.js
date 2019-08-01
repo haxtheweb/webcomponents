@@ -131,7 +131,6 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
           --site-menu-active-color: #ffffff;
           --site-menu: {
             background-color: #383f45;
-            color: #ffffff;
           }
           --site-menu-container: {
             padding: 0;
@@ -269,6 +268,24 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
           app-drawer-layout[narrow]
           site-menu-button[type="next"] {
           display: none;
+        }
+
+        site-menu,
+        map-menu,
+        map-menu * {
+          display: flex;
+          flex-direction: column;
+          flex: 1 1 auto;
+          --map-menu-container: {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 auto;
+          }
+          --map-menu-items-list: {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 auto;
+          }
         }
       </style>
       <app-drawer-layout>

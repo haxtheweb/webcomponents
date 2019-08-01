@@ -33,6 +33,10 @@ class MapMenu extends PolymerElement {
           background-color: transparent;
         }
 
+        #itemslist {
+          @apply --map-menu-items-list;
+        }
+
         #activeIndicator {
           background: var(--map-menu-active-color);
           transition: all 0.3s ease-in-out;
