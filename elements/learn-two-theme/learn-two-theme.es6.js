@@ -110,7 +110,6 @@ site-menu {
   --site-menu-active-color: #ffffff;
   --site-menu: {
     background-color: #383f45;
-    color: #ffffff;
   }
   --site-menu-container: {
     padding: 0;
@@ -248,7 +247,26 @@ app-drawer-layout[narrow] site-menu-button[type="prev"] {
   app-drawer-layout[narrow]
   site-menu-button[type="next"] {
   display: none;
-}</style>
+}
+
+site-menu,
+map-menu,
+map-menu * {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  --map-menu-container: {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+  }
+  --map-menu-items-list: {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+  }
+}
+</style>
 <app-drawer-layout>
   <paper-icon-button id="menubutton" icon="menu" on-click="toggleDrawer"></paper-icon-button>
   <app-drawer swipe-open slot="drawer" opened="{{opened}}">
