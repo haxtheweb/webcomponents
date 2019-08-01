@@ -466,6 +466,12 @@ class LrnappCanvasListing extends PolymerElement {
     this.roster = this.queryResponse.data;
     this.shadowRoot.querySelector("#loadingContent").style.display = "block";
   }
+  /**
+   * highjack shadowDom
+   */
+  _attachDom(dom) {
+    this.appendChild(dom);
+  }
 }
 window.customElements.define(LrnappCanvasListing.tag, LrnappCanvasListing);
 export { LrnappCanvasListing };
