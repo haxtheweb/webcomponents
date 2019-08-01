@@ -192,7 +192,6 @@ class SimpleColorsPicker extends SimpleColors {
       options.unshift([
         {
           alt: "none",
-          style: "background-color: var(--simple-picker-background-color,#ddd)",
           value: null
         }
       ]);

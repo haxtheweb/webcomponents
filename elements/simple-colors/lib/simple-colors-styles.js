@@ -388,7 +388,6 @@ window.SimpleColorsStyles.addCssVariables = sheet => {
  * @returns {object}
  */
 window.SimpleColorsStyles.addAccentVariables = sheet => {
-  console.log(sheet);
   if (typeof sheet !== typeof undefined) {
     for (let color in window.SimpleColorsStyles.colors) {
       sheet.insertRule(
@@ -697,6 +696,5 @@ window.SimpleColorsStyles.requestAvailability = () => {
     window.SimpleColorsStyles.addAccentVariables(style.sheet);
     window.SimpleColorsStyles.instance = style.sheet;
   }
-  document.body.appendChild(window.SimpleColorsStyles.instance);
   return window.SimpleColorsStyles.instance;
 };
