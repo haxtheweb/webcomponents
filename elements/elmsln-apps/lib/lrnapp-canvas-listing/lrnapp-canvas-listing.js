@@ -448,14 +448,14 @@ class LrnappCanvasListing extends PolymerElement {
    * Trigger the dialog box to opened and kick off request for data.
    */
   _triggerDialog(e) {
-    this.shadowRoot.querySelector("#details-dialog").toggleDialog();
+    this.querySelector("#details-dialog").toggleDialog();
     this.roster = false;
     this.activeCourse = this.canvasCourses[e.target.id];
-    this.shadowRoot.querySelector("#request").params[
+    this.querySelector("#request").params[
       "sis_course_id"
     ] = this.activeCourse.sis_course_id;
-    this.shadowRoot.querySelector("#request").generateRequest();
-    this.shadowRoot.querySelector("#loadingContent").style.display = "none";
+    this.querySelector("#request").generateRequest();
+    this.querySelector("#loadingContent").style.display = "none";
   }
   handleResponse() {
     this.elmslnCourses = this.queryResponse.data.elmslnCourses;
@@ -464,7 +464,7 @@ class LrnappCanvasListing extends PolymerElement {
   }
   handleRosterResponse() {
     this.roster = this.queryResponse.data;
-    this.shadowRoot.querySelector("#loadingContent").style.display = "block";
+    this.querySelector("#loadingContent").style.display = "block";
   }
   /**
    * highjack shadowDom
