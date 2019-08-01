@@ -98,7 +98,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
           </template>
         </ul>
       </template>
-      <div hidden\$="[[hideButtons]]">
+      <div id="buttons" hidden\$="[[hideButtons]]">
         <paper-button
           disabled\$="[[disabled]]"
           raised=""
@@ -114,7 +114,9 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
       </div>
       <paper-toast
         id="toast"
+        scroll-action="cancel"
         duration="6000"
+        position-target="[[positionTarget]]"
         class\$="fit-bottom [[__toastColor]]"
       >
         [[__toastText]]
@@ -130,6 +132,9 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
       title: {
         type: String,
         value: ""
+      },
+      positionTarget: {
+        type: Object
       },
       /**
        * Support disabling interaction with the entire board
@@ -298,24 +303,21 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
    * that they want to see how they did.
    */
   _verifyAnswers(e) {
+    this.$.toast.hide();
     let gotRight = this.checkAnswers();
     // see if they got this correct based on their answers
     if (gotRight) {
-      this.$.toast.hide();
       this.__toastColor = "green";
       this.__toastIcon = "thumb-up";
       this.__toastText = this.correctText;
-      this.$.toast.show();
     } else {
-      this.$.toast.hide();
       this.__toastColor = "red";
       this.__toastIcon = "thumb-down";
       this.__toastText = this.incorrectText;
-      this.$.toast.show();
     }
+    this.$.toast.show();
     // start of data passing, this is a prototype atm
-    let eventData = [""];
-    eventData = {
+    let eventData = {
       activityDisplay: "answered",
       objectName: this.quizName,
       resultSuccess: gotRight
@@ -484,6 +486,9 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
    */
   connectedCallback() {
     super.connectedCallback();
+    if (this.$.positionTarget) {
+      this.positionTarget = this.$.positionTarget;
+    }
     // single option implies it's a radio group or if multiple, do check boxes
     if (this.singleOption) {
       import("@polymer/paper-radio-group/paper-radio-group.js");
