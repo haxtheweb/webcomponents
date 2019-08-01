@@ -35,7 +35,7 @@ class CmsHax extends PolymerElement {
   }
   static get observers() {
     return [
-      "_noticeTagChanges(openDefault, allowedTags, hideExportButton, hidePanelOps, hidePreferencesButton, align, bodyOffsetLeft)"
+      "_noticeTagChanges(openDefault, allowedTags, hideExportButton, hidePanelOps, hidePreferencesButton, align)"
     ];
   }
   static get properties() {
@@ -45,6 +45,7 @@ class CmsHax extends PolymerElement {
        */
       openDefault: {
         type: Boolean,
+        reflectToAttribute: true,
         value: false
       },
       /**
@@ -110,13 +111,6 @@ class CmsHax extends PolymerElement {
        */
       appStoreConnection: {
         type: Object
-      },
-      /**
-       * Offset from the left of the body field
-       */
-      bodyOffsetLeft: {
-        type: Number,
-        value: -164
       },
       /**
        * State of the panel
@@ -214,8 +208,7 @@ class CmsHax extends PolymerElement {
     hideExportButton,
     hidePanelOps,
     hidePreferencesButton,
-    align,
-    bodyOffsetLeft
+    align
   ) {
     if (window.HaxStore.ready) {
       // double check because this can cause issues
@@ -226,8 +219,6 @@ class CmsHax extends PolymerElement {
       window.HaxStore.instance.haxPanel.hidePanelOps = hidePanelOps;
       window.HaxStore.instance.haxPanel.hidePreferencesButton = hidePreferencesButton;
       window.HaxStore.instance.haxPanel.align = align;
-      window.HaxStore.instance.activeHaxBody.contextOffsetLeft = bodyOffsetLeft;
-      window.HaxStore.instance.validTagList = allowedTags;
       if (openDefault) {
         window.HaxStore.write("editMode", openDefault, this);
       }
@@ -237,16 +228,18 @@ class CmsHax extends PolymerElement {
    * Set certain data bound values to the store once it's ready
    */
   _storeReady(e) {
-    // trigger the update of different parts of the global state
-    this._noticeTagChanges(
-      this.openDefault,
-      this.allowedTags,
-      this.hideExportButton,
-      this.hidePanelOps,
-      this.hidePreferencesButton,
-      this.align,
-      this.bodyOffsetLeft
-    );
+    // delay as there can be some timing issues with attributes in CMSs
+    setTimeout(() => {
+      // trigger the update of different parts of the global state
+      this._noticeTagChanges(
+        this.openDefault,
+        this.allowedTags,
+        this.hideExportButton,
+        this.hidePanelOps,
+        this.hidePreferencesButton,
+        this.align
+      );
+    }, 250);
   }
   /**
    * Created life cycle
@@ -257,11 +250,6 @@ class CmsHax extends PolymerElement {
     import("@lrnwebcomponents/cms-hax/lib/cms-block.js");
     import("@lrnwebcomponents/cms-hax/lib/cms-views.js");
     import("@lrnwebcomponents/cms-hax/lib/cms-entity.js");
-    window.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-    window.addEventListener("hax-store-ready", this._storeReady.bind(this));
   }
   /**
    * detached life cycle
@@ -277,13 +265,14 @@ class CmsHax extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
+    window.addEventListener(
+      "hax-store-property-updated",
+      this._haxStorePropertyUpdated.bind(this)
+    );
+    window.addEventListener("hax-store-ready", this._storeReady.bind(this));
     window.SimpleToast.requestAvailability();
     this.__lock = false;
     window.addEventListener("hax-save", this._saveFired.bind(this));
-    // open things by default and set state for edit mode
-    if (this.openDefault) {
-      window.HaxStore.write("editMode", true, this);
-    }
     // notice ANY change to body and bubble up, only when we are attached though
     if (this.syncBody) {
       FlattenedNodesObserver(window.HaxStore.instance.activeHaxBody, info => {
@@ -340,6 +329,7 @@ class CmsHax extends PolymerElement {
       const evt = new CustomEvent("simple-toast-show", {
         bubbles: true,
         cancelable: true,
+        composed: true,
         detail: {
           text: "Saved!",
           duration: 3000
