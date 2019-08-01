@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { SimpleColorsStyles } from "./lib/simple-colors-styles.js";
+import "./lib/simple-colors-styles.js";
 /**
  * `simple-colors`
  * `a shared set of styles for @lrnwebcomponents`
@@ -59,6 +59,15 @@ class SimpleColors extends PolymerElement {
         type: "Object",
         value: window.SimpleColorsStyles.colors,
         notify: true
+      },
+      /**
+       * styles inherited based on an ancestor's accent and dark attributes.
+       */
+      inheritStyles: {
+        name: "inheritStyles",
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
       }
     };
   }
@@ -67,9 +76,19 @@ class SimpleColors extends PolymerElement {
     return "simple-colors";
   }
 
-  constructor() {
-    super();
-    this.__utils = window.SimpleColorsStyles.requestAvailability();
+  ready() {
+    super.ready();
+    let styles = window.SimpleColorsStyles.requestAvailability();
+    if (!this.inheritStyles) {
+      let style = document.createElement("style"),
+        ruleList = styles.cssRules;
+      this.shadowRoot.appendChild(style);
+
+      for (let rule of ruleList) {
+        let text = rule.cssText;
+        style.innerText += text;
+      }
+    }
   }
 
   /**

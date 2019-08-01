@@ -357,7 +357,7 @@ window.SimpleColorsStyles.addCssVariables = sheet => {
     );
     sheet.insertRule(
       window.SimpleColorsStyles.makeRule(
-        "html",
+        "body",
         window.SimpleColorsStyles.addColorShades(
           "fixed",
           "accent",
@@ -369,7 +369,7 @@ window.SimpleColorsStyles.addCssVariables = sheet => {
     );
     sheet.insertRule(
       window.SimpleColorsStyles.makeRule(
-        "[dark]",
+        "body[dark], [dark]",
         window.SimpleColorsStyles.addColorShades(
           "default",
           "accent",
@@ -388,11 +388,12 @@ window.SimpleColorsStyles.addCssVariables = sheet => {
  * @returns {object}
  */
 window.SimpleColorsStyles.addAccentVariables = sheet => {
+  console.log(sheet);
   if (typeof sheet !== typeof undefined) {
     for (let color in window.SimpleColorsStyles.colors) {
       sheet.insertRule(
         window.SimpleColorsStyles.makeRule(
-          '[accent-color="' + color + '"]',
+          `body[accent-color="${color}"], [accent-color="${color}"]`,
           [
             window.SimpleColorsStyles.addColorShades(
               "default",
@@ -413,7 +414,7 @@ window.SimpleColorsStyles.addAccentVariables = sheet => {
 
       sheet.insertRule(
         window.SimpleColorsStyles.makeRule(
-          '[dark][accent-color="' + color + '"]',
+          `body[dark][accent-color="${color}"], [dark][accent-color="${color}"]`,
           [
             window.SimpleColorsStyles.addColorShades(
               "default",
@@ -684,72 +685,17 @@ class SimpleColorsStyles extends PolymerElement {
   invertShade(shade) {
     return this.colors["grey"].length + 1 - parseInt(shade);
   }
-
-  /**
-   * inverts the current index
-   *
-   * @param {string} the index
-   * @param {number} the inverted index
-   */
-  invertIndex(index) {
-    return this.colors["grey"].length - 1 - parseInt(index);
-  }
-
-  /**
-   * returns the maximum contrast to the index
-   *
-   * @param {string} the index
-   * @param {number} the index with maximum contrast
-   */
-  maxContrastIndex(index) {
-    return parseInt(index) < this.colors["grey"].length / 2
-      ? this.colors["grey"].length - 1
-      : 0;
-  }
-
-  /**
-   * returns the maximum contrast to the shade
-   *
-   * @param {string} the shade
-   * @param {number} the shade with maximum contrast
-   */
-  maxContrastShade(shade) {
-    return parseInt(shade) < this.colors["grey"].length / 2 + 1
-      ? this.colors["grey"].length
-      : 1;
-  }
-  /**
-   * gets the correct hexCode for a color shade,
-   * depending on whether or not the list is dark (inverted)
-   */
-  getHex(hexcodes, index, dark) {
-    if (dark) {
-      return hexcodes[this.invertIndex(this.colors, index)];
-    } else {
-      return hexcodes[index];
-    }
-  }
 }
-window.customElements.define(SimpleColorsStyles.tag, SimpleColorsStyles);
-export { SimpleColorsStyles };
-
 /**
  * Checks to see if there is an instance available, and if not appends one
  */
-window.SimpleColorsStyles.requestAvailability = function() {
+window.SimpleColorsStyles.requestAvailability = () => {
   if (window.SimpleColorsStyles.instance == null) {
-    window.SimpleColorsStyles.instance = document.createElement(
-      "simple-colors-styles"
-    );
-
-    window.SimpleColorsStyles.style = document.createElement("style");
-    window.document.head.appendChild(window.SimpleColorsStyles.style);
-    window.SimpleColorsStyles.addCssVariables(
-      window.SimpleColorsStyles.style.sheet
-    );
-    window.SimpleColorsStyles.addAccentVariables(
-      window.SimpleColorsStyles.style.sheet
-    );
+    let style = document.createElement("style");
+    document.head.appendChild(style);
+    window.SimpleColorsStyles.addCssVariables(style.sheet);
+    window.SimpleColorsStyles.addAccentVariables(style.sheet);
+    window.SimpleColorsStyles.instance = style.sheet;
   }
   document.body.appendChild(window.SimpleColorsStyles.instance);
   return window.SimpleColorsStyles.instance;
