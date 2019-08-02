@@ -20,7 +20,7 @@ class WysiwygHax extends PolymerElement {
       <cms-hax
         open-default="[[openDefault]]"
         hide-message=""
-        body-offset-left="[[bodyOffsetLeft]]"
+        redirect-location="[[redirectLocation]]"
         update-page-data="[[updatePageData]]"
         end-point="[[endPoint]]"
         app-store-connection="[[appStoreConnection]]"
@@ -43,6 +43,9 @@ class WysiwygHax extends PolymerElement {
       openDefault: {
         type: Boolean,
         value: false
+      },
+      redirectLocation: {
+        type: String
       },
       /**
        * Hide the export button, not a common thing to show
@@ -84,13 +87,6 @@ class WysiwygHax extends PolymerElement {
       fieldName: {
         type: String,
         value: "data[content]"
-      },
-      /**
-       * Offset from the left of the body field
-       */
-      bodyOffsetLeft: {
-        type: Number,
-        value: -22
       },
       /**
        * State of the panel

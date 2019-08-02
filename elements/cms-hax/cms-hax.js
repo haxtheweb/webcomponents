@@ -340,11 +340,9 @@ class CmsHax extends PolymerElement {
       // in the integration point
       if (this.redirectOnSave) {
         setTimeout(() => {
-          // toggle so state is correct when we go to save
-          window.HaxStore.instance.haxPanel.toggle();
           // trigger redirect
           window.location = this.redirectLocation;
-        }, 1000);
+        }, 500);
       }
     }
   }
