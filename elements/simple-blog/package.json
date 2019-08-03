@@ -25,7 +25,6 @@
   "main": "simple-blog.js",
   "module": "simple-blog.es6.js",
   "umd": "simple-blog.umd.js",
-  "amd": "simple-blog.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/simple-blog/test/",
     "start": "yarn run dev",

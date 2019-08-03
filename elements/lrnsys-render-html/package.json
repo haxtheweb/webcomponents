@@ -25,7 +25,6 @@
   "main": "lrnsys-render-html.js",
   "module": "lrnsys-render-html.es6.js",
   "umd": "lrnsys-render-html.umd.js",
-  "amd": "lrnsys-render-html.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrnsys-render-html/test/",
     "start": "yarn run dev",

@@ -25,7 +25,6 @@
   "main": "to-element.js",
   "module": "to-element.es6.js",
   "umd": "to-element.umd.js",
-  "amd": "to-element.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/to-element/test/",
     "start": "yarn run dev",

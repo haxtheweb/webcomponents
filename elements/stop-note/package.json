@@ -25,7 +25,6 @@
   "main": "stop-note.js",
   "module": "stop-note.es6.js",
   "umd": "stop-note.umd.js",
-  "amd": "stop-note.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/stop-note/test/",
     "start": "yarn run dev",

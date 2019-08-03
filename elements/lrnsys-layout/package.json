@@ -25,7 +25,6 @@
   "main": "lrnsys-layout.js",
   "module": "lrnsys-layout.es6.js",
   "umd": "lrnsys-layout.umd.js",
-  "amd": "lrnsys-layout.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrnsys-layout/test/",
     "start": "yarn run dev",

@@ -25,7 +25,6 @@
   "main": "haxcms-elements.js",
   "module": "haxcms-elements.es6.js",
   "umd": "haxcms-elements.umd.js",
-  "amd": "haxcms-elements.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/haxcms-elements/test/",
     "start": "yarn run dev",

@@ -25,7 +25,6 @@
   "main": "json-editor.js",
   "module": "json-editor.es6.js",
   "umd": "json-editor.umd.js",
-  "amd": "json-editor.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/json-editor/test/",
     "start": "yarn run dev",

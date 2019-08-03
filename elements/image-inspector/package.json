@@ -25,7 +25,6 @@
   "main": "image-inspector.js",
   "module": "image-inspector.es6.js",
   "umd": "image-inspector.umd.js",
-  "amd": "image-inspector.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/image-inspector/test/",
     "start": "yarn run dev",

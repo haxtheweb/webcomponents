@@ -25,7 +25,6 @@
   "main": "lrn-icon.js",
   "module": "lrn-icon.es6.js",
   "umd": "lrn-icon.umd.js",
-  "amd": "lrn-icon.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrn-icon/test/",
     "start": "yarn run dev",

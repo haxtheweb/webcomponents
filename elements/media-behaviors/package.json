@@ -20,7 +20,6 @@
   "main": "media-behaviors.js",
   "module": "media-behaviors.es6.js",
   "umd": "media-behaviors.umd.js",
-  "amd": "media-behaviors.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/media-behaviors/test/",
     "start": "yarn run dev",

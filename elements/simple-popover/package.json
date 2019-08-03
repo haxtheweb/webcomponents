@@ -25,7 +25,6 @@
   "main": "simple-popover.js",
   "module": "simple-popover.es6.js",
   "umd": "simple-popover.umd.js",
-  "amd": "simple-popover.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/simple-popover/test/",
     "start": "yarn run dev",

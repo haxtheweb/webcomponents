@@ -25,7 +25,6 @@
   "main": "magazine-cover.js",
   "module": "magazine-cover.es6.js",
   "umd": "magazine-cover.umd.js",
-  "amd": "magazine-cover.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/magazine-cover/test/",
     "start": "yarn run dev",

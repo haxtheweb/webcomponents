@@ -20,7 +20,6 @@
   "main": "grafitto-filter.js",
   "module": "grafitto-filter.es6.js",
   "umd": "grafitto-filter.umd.js",
-  "amd": "grafitto-filter.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/grafitto-filter/test/",
     "start": "yarn run dev",

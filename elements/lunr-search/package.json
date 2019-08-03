@@ -25,7 +25,6 @@
   "main": "lunr-search.js",
   "module": "lunr-search.es6.js",
   "umd": "lunr-search.umd.js",
-  "amd": "lunr-search.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lunr-search/test/",
     "start": "yarn run dev",

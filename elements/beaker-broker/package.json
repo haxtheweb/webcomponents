@@ -25,7 +25,6 @@
   "main": "beaker-broker.js",
   "module": "beaker-broker.es6.js",
   "umd": "beaker-broker.umd.js",
-  "amd": "beaker-broker.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/beaker-broker/test/",
     "start": "yarn run dev",

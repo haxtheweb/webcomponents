@@ -25,7 +25,6 @@
   "main": "sites-listing.js",
   "module": "sites-listing.es6.js",
   "umd": "sites-listing.umd.js",
-  "amd": "sites-listing.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/sites-listing/test/",
     "start": "yarn run dev",

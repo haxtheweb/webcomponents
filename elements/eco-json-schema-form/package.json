@@ -20,7 +20,6 @@
   "main": "eco-json-schema-form.js",
   "module": "eco-json-schema-form.es6.js",
   "umd": "eco-json-schema-form.umd.js",
-  "amd": "eco-json-schema-form.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/eco-json-schema-form/test/",
     "start": "yarn run dev",

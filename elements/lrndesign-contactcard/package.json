@@ -25,7 +25,6 @@
   "main": "lrndesign-contactcard.js",
   "module": "lrndesign-contactcard.es6.js",
   "umd": "lrndesign-contactcard.umd.js",
-  "amd": "lrndesign-contactcard.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrndesign-contactcard/test/",
     "start": "yarn run dev",

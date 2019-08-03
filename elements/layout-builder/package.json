@@ -25,7 +25,6 @@
   "main": "layout-builder.js",
   "module": "layout-builder.es6.js",
   "umd": "layout-builder.umd.js",
-  "amd": "layout-builder.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/layout-builder/test/",
     "start": "yarn run dev",

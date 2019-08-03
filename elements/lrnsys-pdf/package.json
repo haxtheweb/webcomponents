@@ -25,7 +25,6 @@
   "main": "lrnsys-pdf.js",
   "module": "lrnsys-pdf.es6.js",
   "umd": "lrnsys-pdf.umd.js",
-  "amd": "lrnsys-pdf.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrnsys-pdf/test/",
     "start": "yarn run dev",

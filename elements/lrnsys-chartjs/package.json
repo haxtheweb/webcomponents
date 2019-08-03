@@ -25,7 +25,6 @@
   "main": "lrnsys-chartjs.js",
   "module": "lrnsys-chartjs.es6.js",
   "umd": "lrnsys-chartjs.umd.js",
-  "amd": "lrnsys-chartjs.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrnsys-chartjs/test/",
     "start": "yarn run dev",

@@ -20,7 +20,6 @@
   "main": "chartist-render.js",
   "module": "chartist-render.es6.js",
   "umd": "chartist-render.umd.js",
-  "amd": "chartist-render.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/chartist-render/test/",
     "start": "yarn run dev",

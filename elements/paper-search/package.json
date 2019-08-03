@@ -25,7 +25,6 @@
   "main": "paper-search.js",
   "module": "paper-search.es6.js",
   "umd": "paper-search.umd.js",
-  "amd": "paper-search.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/paper-search/test/",
     "start": "yarn run dev",

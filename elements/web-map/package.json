@@ -36,7 +36,6 @@
   "main": "web-map.js",
   "module": "web-map.es6.js",
   "umd": "web-map.umd.js",
-  "amd": "web-map.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/web-map/test/",
     "start": "yarn run dev",

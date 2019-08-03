@@ -25,7 +25,6 @@
   "main": "lrndesign-chart.js",
   "module": "lrndesign-chart.es6.js",
   "umd": "lrndesign-chart.umd.js",
-  "amd": "lrndesign-chart.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrndesign-chart/test/",
     "start": "yarn run dev",

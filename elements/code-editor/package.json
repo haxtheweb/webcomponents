@@ -25,7 +25,6 @@
   "main": "code-editor.js",
   "module": "code-editor.es6.js",
   "umd": "code-editor.umd.js",
-  "amd": "code-editor.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/code-editor/test/",
     "start": "yarn run dev",

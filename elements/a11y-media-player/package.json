@@ -25,7 +25,6 @@
   "main": "a11y-media-player.js",
   "module": "a11y-media-player.es6.js",
   "umd": "a11y-media-player.umd.js",
-  "amd": "a11y-media-player.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/a11y-media-player/test/",
     "start": "yarn run dev",

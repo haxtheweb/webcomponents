@@ -25,7 +25,6 @@
   "main": "simple-datepicker.js",
   "module": "simple-datepicker.es6.js",
   "umd": "simple-datepicker.umd.js",
-  "amd": "simple-datepicker.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/simple-datepicker/test/",
     "start": "yarn run dev",

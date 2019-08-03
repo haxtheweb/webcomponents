@@ -20,7 +20,6 @@
   "main": "game-show-quiz.js",
   "module": "game-show-quiz.es6.js",
   "umd": "game-show-quiz.umd.js",
-  "amd": "game-show-quiz.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/game-show-quiz/test/",
     "start": "yarn run dev",

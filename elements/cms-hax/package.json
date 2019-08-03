@@ -20,7 +20,6 @@
   "main": "cms-hax.js",
   "module": "cms-hax.es6.js",
   "umd": "cms-hax.umd.js",
-  "amd": "cms-hax.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/cms-hax/test/",
     "start": "yarn run dev",

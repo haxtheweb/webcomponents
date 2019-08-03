@@ -25,7 +25,6 @@
   "main": "lrndesign-contentblock.js",
   "module": "lrndesign-contentblock.es6.js",
   "umd": "lrndesign-contentblock.umd.js",
-  "amd": "lrndesign-contentblock.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrndesign-contentblock/test/",
     "start": "yarn run dev",

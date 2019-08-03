@@ -25,7 +25,6 @@
   "main": "scroll-button.js",
   "module": "scroll-button.es6.js",
   "umd": "scroll-button.umd.js",
-  "amd": "scroll-button.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/scroll-button/test/",
     "start": "yarn run dev",

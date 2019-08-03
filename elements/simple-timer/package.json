@@ -25,7 +25,6 @@
   "main": "simple-timer.js",
   "module": "simple-timer.es6.js",
   "umd": "simple-timer.umd.js",
-  "amd": "simple-timer.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/simple-timer/test/",
     "start": "yarn run dev",

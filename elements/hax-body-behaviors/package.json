@@ -20,7 +20,6 @@
   "main": "hax-body-behaviors.js",
   "module": "hax-body-behaviors.es6.js",
   "umd": "hax-body-behaviors.umd.js",
-  "amd": "hax-body-behaviors.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/hax-body-behaviors/test/",
     "start": "yarn run dev",

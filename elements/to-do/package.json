@@ -25,7 +25,6 @@
   "main": "to-do.js",
   "module": "to-do.es6.js",
   "umd": "to-do.umd.js",
-  "amd": "to-do.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/to-do/test/",
     "start": "yarn run dev",

@@ -25,7 +25,6 @@
   "main": "lrn-gitgraph.js",
   "module": "lrn-gitgraph.es6.js",
   "umd": "lrn-gitgraph.umd.js",
-  "amd": "lrn-gitgraph.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrn-gitgraph/test/",
     "start": "yarn run dev",

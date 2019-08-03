@@ -20,7 +20,6 @@
   "main": "awesome-explosion.js",
   "module": "awesome-explosion.es6.js",
   "umd": "awesome-explosion.umd.js",
-  "amd": "awesome-explosion.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/awesome-explosion/test/",
     "start": "yarn run dev",

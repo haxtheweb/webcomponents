@@ -25,7 +25,6 @@
   "main": "paper-audio-player.js",
   "module": "paper-audio-player.es6.js",
   "umd": "paper-audio-player.umd.js",
-  "amd": "paper-audio-player.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/paper-audio-player/test/",
     "start": "yarn run dev",

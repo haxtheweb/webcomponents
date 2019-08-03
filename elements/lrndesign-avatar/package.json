@@ -25,7 +25,6 @@
   "main": "lrndesign-avatar.js",
   "module": "lrndesign-avatar.es6.js",
   "umd": "lrndesign-avatar.umd.js",
-  "amd": "lrndesign-avatar.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrndesign-avatar/test/",
     "start": "yarn run dev",

@@ -25,7 +25,6 @@
   "main": "lrndesign-stepper.js",
   "module": "lrndesign-stepper.es6.js",
   "umd": "lrndesign-stepper.umd.js",
-  "amd": "lrndesign-stepper.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrndesign-stepper/test/",
     "start": "yarn run dev",

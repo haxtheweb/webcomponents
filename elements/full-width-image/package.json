@@ -25,7 +25,6 @@
   "main": "full-width-image.js",
   "module": "full-width-image.es6.js",
   "umd": "full-width-image.umd.js",
-  "amd": "full-width-image.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/full-width-image/test/",
     "start": "yarn run dev",

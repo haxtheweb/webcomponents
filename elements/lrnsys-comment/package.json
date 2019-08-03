@@ -25,7 +25,6 @@
   "main": "lrnsys-comment.js",
   "module": "lrnsys-comment.es6.js",
   "umd": "lrnsys-comment.umd.js",
-  "amd": "lrnsys-comment.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrnsys-comment/test/",
     "start": "yarn run dev",

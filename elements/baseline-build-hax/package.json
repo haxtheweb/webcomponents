@@ -25,7 +25,6 @@
   "main": "baseline-build-hax.js",
   "module": "baseline-build-hax.es6.js",
   "umd": "baseline-build-hax.umd.js",
-  "amd": "baseline-build-hax.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/baseline-build-hax/test/",
     "start": "yarn run dev",

@@ -25,7 +25,6 @@
   "main": "json-outline-schema.js",
   "module": "json-outline-schema.es6.js",
   "umd": "json-outline-schema.umd.js",
-  "amd": "json-outline-schema.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/json-outline-schema/test/",
     "start": "yarn run dev",

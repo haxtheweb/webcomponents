@@ -25,7 +25,6 @@
   "main": "simple-login.js",
   "module": "simple-login.es6.js",
   "umd": "simple-login.umd.js",
-  "amd": "simple-login.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/simple-login/test/",
     "start": "yarn run dev",

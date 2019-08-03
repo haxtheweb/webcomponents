@@ -20,7 +20,6 @@
   "main": "hax-body.js",
   "module": "hax-body.es6.js",
   "umd": "hax-body.umd.js",
-  "amd": "hax-body.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/hax-body/test/",
     "start": "yarn run dev",

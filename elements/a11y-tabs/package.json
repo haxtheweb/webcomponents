@@ -25,7 +25,6 @@
   "main": "a11y-tabs.js",
   "module": "a11y-tabs.es6.js",
   "umd": "a11y-tabs.umd.js",
-  "amd": "a11y-tabs.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/a11y-tabs/test/",
     "start": "yarn run dev",

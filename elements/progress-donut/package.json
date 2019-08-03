@@ -25,7 +25,6 @@
   "main": "progress-donut.js",
   "module": "progress-donut.es6.js",
   "umd": "progress-donut.umd.js",
-  "amd": "progress-donut.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/progress-donut/test/",
     "start": "yarn run dev",

@@ -25,7 +25,6 @@
   "main": "hax-text-editor.js",
   "module": "hax-text-editor.es6.js",
   "umd": "hax-text-editor.umd.js",
-  "amd": "hax-text-editor.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/hax-text-editor/test/",
     "start": "yarn run dev",

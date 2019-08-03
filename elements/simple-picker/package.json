@@ -24,7 +24,6 @@
   "main": "simple-picker.js",
   "module": "simple-picker.es6.js",
   "umd": "simple-picker.umd.js",
-  "amd": "simple-picker.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/simple-picker/test/",
     "start": "yarn run dev",

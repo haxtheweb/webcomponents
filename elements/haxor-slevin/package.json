@@ -25,7 +25,6 @@
   "main": "haxor-slevin.js",
   "module": "haxor-slevin.es6.js",
   "umd": "haxor-slevin.umd.js",
-  "amd": "haxor-slevin.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/haxor-slevin/test/",
     "start": "yarn run dev",

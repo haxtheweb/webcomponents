@@ -25,7 +25,6 @@
   "main": "lrn-assignment.js",
   "module": "lrn-assignment.es6.js",
   "umd": "lrn-assignment.umd.js",
-  "amd": "lrn-assignment.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrn-assignment/test/",
     "start": "yarn run dev",

@@ -25,7 +25,6 @@
   "main": "lrndesign-panelcard.js",
   "module": "lrndesign-panelcard.es6.js",
   "umd": "lrndesign-panelcard.umd.js",
-  "amd": "lrndesign-panelcard.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrndesign-panelcard/test/",
     "start": "yarn run dev",

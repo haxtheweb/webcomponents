@@ -25,7 +25,6 @@
   "main": "hal-9000.js",
   "module": "hal-9000.es6.js",
   "umd": "hal-9000.umd.js",
-  "amd": "hal-9000.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/hal-9000/test/",
     "start": "yarn run dev",

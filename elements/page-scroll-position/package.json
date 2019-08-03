@@ -25,7 +25,6 @@
   "main": "page-scroll-position.js",
   "module": "page-scroll-position.es6.js",
   "umd": "page-scroll-position.umd.js",
-  "amd": "page-scroll-position.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/page-scroll-position/test/",
     "start": "yarn run dev",

@@ -25,7 +25,6 @@
   "main": "example-hax-element.js",
   "module": "example-hax-element.es6.js",
   "umd": "example-hax-element.umd.js",
-  "amd": "example-hax-element.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/example-hax-element/test/",
     "start": "yarn run dev",

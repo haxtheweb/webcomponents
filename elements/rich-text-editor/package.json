@@ -25,7 +25,6 @@
   "main": "rich-text-editor.js",
   "module": "rich-text-editor.es6.js",
   "umd": "rich-text-editor.umd.js",
-  "amd": "rich-text-editor.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/rich-text-editor/test/",
     "start": "yarn run dev",

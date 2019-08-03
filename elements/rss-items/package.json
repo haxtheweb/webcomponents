@@ -25,7 +25,6 @@
   "main": "rss-items.js",
   "module": "rss-items.es6.js",
   "umd": "rss-items.umd.js",
-  "amd": "rss-items.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/rss-items/test/",
     "start": "yarn run dev",

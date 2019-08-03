@@ -25,7 +25,6 @@
   "main": "responsive-grid.js",
   "module": "responsive-grid.es6.js",
   "umd": "responsive-grid.umd.js",
-  "amd": "responsive-grid.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/responsive-grid/test/",
     "start": "yarn run dev",

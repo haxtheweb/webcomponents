@@ -25,7 +25,6 @@
   "main": "paper-fab-transitions.js",
   "module": "paper-fab-transitions.es6.js",
   "umd": "paper-fab-transitions.umd.js",
-  "amd": "paper-fab-transitions.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/paper-fab-transitions/test/",
     "start": "yarn run dev",

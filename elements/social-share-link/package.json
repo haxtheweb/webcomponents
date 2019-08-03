@@ -25,7 +25,6 @@
   "main": "social-share-link.js",
   "module": "social-share-link.es6.js",
   "umd": "social-share-link.umd.js",
-  "amd": "social-share-link.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/social-share-link/test/",
     "start": "yarn run dev",

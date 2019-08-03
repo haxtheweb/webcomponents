@@ -25,7 +25,6 @@
   "main": "simple-concept-network.js",
   "module": "simple-concept-network.es6.js",
   "umd": "simple-concept-network.umd.js",
-  "amd": "simple-concept-network.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/simple-concept-network/test/",
     "start": "yarn run dev",

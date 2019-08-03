@@ -25,7 +25,6 @@
   "main": "simple-icon-picker.js",
   "module": "simple-icon-picker.es6.js",
   "umd": "simple-icon-picker.umd.js",
-  "amd": "simple-icon-picker.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/simple-icon-picker/test/",
     "start": "yarn run dev",

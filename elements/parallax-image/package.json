@@ -25,7 +25,6 @@
   "main": "parallax-image.js",
   "module": "parallax-image.es6.js",
   "umd": "parallax-image.umd.js",
-  "amd": "parallax-image.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/parallax-image/test/",
     "start": "yarn run dev",

@@ -25,7 +25,6 @@
   "main": "outline-player.js",
   "module": "outline-player.es6.js",
   "umd": "outline-player.umd.js",
-  "amd": "outline-player.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/outline-player/test/",
     "start": "yarn run dev",

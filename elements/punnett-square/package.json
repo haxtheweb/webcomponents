@@ -25,7 +25,6 @@
   "main": "punnett-square.js",
   "module": "punnett-square.es6.js",
   "umd": "punnett-square.umd.js",
-  "amd": "punnett-square.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/punnett-square/test/",
     "start": "yarn run dev",

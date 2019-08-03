@@ -25,7 +25,6 @@
   "main": "person-testimonial.js",
   "module": "person-testimonial.es6.js",
   "umd": "person-testimonial.umd.js",
-  "amd": "person-testimonial.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/person-testimonial/test/",
     "start": "yarn run dev",

@@ -25,7 +25,6 @@
   "main": "pdf-browser-viewer.js",
   "module": "pdf-browser-viewer.es6.js",
   "umd": "pdf-browser-viewer.umd.js",
-  "amd": "pdf-browser-viewer.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/pdf-browser-viewer/test/",
     "start": "yarn run dev",

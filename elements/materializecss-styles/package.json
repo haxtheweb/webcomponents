@@ -15,7 +15,6 @@
   "main": "materializecss-styles.js",
   "module": "materializecss-styles.es6.js",
   "umd": "materializecss-styles.umd.js",
-  "amd": "materializecss-styles.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/materializecss-styles/test/",
     "start": "yarn run dev",

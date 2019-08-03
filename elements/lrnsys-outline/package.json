@@ -25,7 +25,6 @@
   "main": "lrnsys-outline.js",
   "module": "lrnsys-outline.es6.js",
   "umd": "lrnsys-outline.umd.js",
-  "amd": "lrnsys-outline.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrnsys-outline/test/",
     "start": "yarn run dev",

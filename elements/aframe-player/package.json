@@ -20,7 +20,6 @@
   "main": "aframe-player.js",
   "module": "aframe-player.es6.js",
   "umd": "aframe-player.umd.js",
-  "amd": "aframe-player.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/aframe-player/test/",
     "start": "yarn run dev",

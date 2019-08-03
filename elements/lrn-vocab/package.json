@@ -25,7 +25,6 @@
   "main": "lrn-vocab.js",
   "module": "lrn-vocab.es6.js",
   "umd": "lrn-vocab.umd.js",
-  "amd": "lrn-vocab.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrn-vocab/test/",
     "start": "yarn run dev",

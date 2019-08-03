@@ -25,7 +25,6 @@
   "main": "html-block.js",
   "module": "html-block.es6.js",
   "umd": "html-block.umd.js",
-  "amd": "html-block.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/html-block/test/",
     "start": "yarn run dev",

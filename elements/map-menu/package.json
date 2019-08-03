@@ -25,7 +25,6 @@
   "main": "map-menu.js",
   "module": "map-menu.es6.js",
   "umd": "map-menu.umd.js",
-  "amd": "map-menu.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/map-menu/test/",
     "start": "yarn run dev",

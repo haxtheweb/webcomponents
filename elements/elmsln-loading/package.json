@@ -20,7 +20,6 @@
   "main": "elmsln-loading.js",
   "module": "elmsln-loading.es6.js",
   "umd": "elmsln-loading.umd.js",
-  "amd": "elmsln-loading.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/elmsln-loading/test/",
     "start": "yarn run dev",

@@ -25,7 +25,6 @@
   "main": "per-spec-tive.js",
   "module": "per-spec-tive.es6.js",
   "umd": "per-spec-tive.umd.js",
-  "amd": "per-spec-tive.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/per-spec-tive/test/",
     "start": "yarn run dev",

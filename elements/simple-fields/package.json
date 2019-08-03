@@ -25,7 +25,6 @@
   "main": "simple-fields.js",
   "module": "simple-fields.es6.js",
   "umd": "simple-fields.umd.js",
-  "amd": "simple-fields.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/simple-fields/test/",
     "start": "yarn run dev",

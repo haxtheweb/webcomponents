@@ -25,7 +25,6 @@
   "main": "elmsln-apps.js",
   "module": "elmsln-apps.es6.js",
   "umd": "elmsln-apps.umd.js",
-  "amd": "elmsln-apps.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/elmsln-apps/test/",
     "start": "yarn run dev",

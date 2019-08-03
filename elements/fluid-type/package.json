@@ -25,7 +25,6 @@
   "main": "fluid-type.js",
   "module": "fluid-type.es6.js",
   "umd": "fluid-type.umd.js",
-  "amd": "fluid-type.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/fluid-type/test/",
     "start": "yarn run dev",

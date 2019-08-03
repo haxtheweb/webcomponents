@@ -25,7 +25,6 @@
   "main": "team-member.js",
   "module": "team-member.es6.js",
   "umd": "team-member.umd.js",
-  "amd": "team-member.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/team-member/test/",
     "start": "yarn run dev",

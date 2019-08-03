@@ -25,7 +25,6 @@
   "main": "item-overlay-ops.js",
   "module": "item-overlay-ops.es6.js",
   "umd": "item-overlay-ops.umd.js",
-  "amd": "item-overlay-ops.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/item-overlay-ops/test/",
     "start": "yarn run dev",

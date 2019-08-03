@@ -25,7 +25,6 @@
   "main": "moment-element.js",
   "module": "moment-element.es6.js",
   "umd": "moment-element.umd.js",
-  "amd": "moment-element.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/moment-element/test/",
     "start": "yarn run dev",

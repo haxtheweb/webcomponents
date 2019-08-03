@@ -25,7 +25,6 @@
   "main": "editable-table.js",
   "module": "editable-table.es6.js",
   "umd": "editable-table.umd.js",
-  "amd": "editable-table.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/editable-table/test/",
     "start": "yarn run dev",

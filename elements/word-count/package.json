@@ -25,7 +25,6 @@
   "main": "word-count.js",
   "module": "word-count.es6.js",
   "umd": "word-count.umd.js",
-  "amd": "word-count.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/word-count/test/",
     "start": "yarn run dev",

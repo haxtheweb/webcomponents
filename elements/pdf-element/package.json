@@ -25,7 +25,6 @@
   "main": "pdf-element.js",
   "module": "pdf-element.es6.js",
   "umd": "pdf-element.umd.js",
-  "amd": "pdf-element.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/pdf-element/test/",
     "start": "yarn run dev",

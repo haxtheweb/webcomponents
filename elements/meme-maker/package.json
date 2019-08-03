@@ -25,7 +25,6 @@
   "main": "meme-maker.js",
   "module": "meme-maker.es6.js",
   "umd": "meme-maker.umd.js",
-  "amd": "meme-maker.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/meme-maker/test/",
     "start": "yarn run dev",

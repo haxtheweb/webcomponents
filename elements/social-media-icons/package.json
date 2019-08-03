@@ -25,7 +25,6 @@
   "main": "social-media-icons.js",
   "module": "social-media-icons.es6.js",
   "umd": "social-media-icons.umd.js",
-  "amd": "social-media-icons.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/social-media-icons/test/",
     "start": "yarn run dev",

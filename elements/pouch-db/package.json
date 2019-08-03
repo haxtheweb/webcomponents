@@ -25,7 +25,6 @@
   "main": "pouch-db.js",
   "module": "pouch-db.es6.js",
   "umd": "pouch-db.umd.js",
-  "amd": "pouch-db.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/pouch-db/test/",
     "start": "yarn run dev",

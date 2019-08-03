@@ -25,7 +25,6 @@
   "main": "mdi-iconset-svg.js",
   "module": "mdi-iconset-svg.es6.js",
   "umd": "mdi-iconset-svg.umd.js",
-  "amd": "mdi-iconset-svg.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/mdi-iconset-svg/test/",
     "start": "yarn run dev",

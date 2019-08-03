@@ -25,7 +25,6 @@
   "main": "map-element.js",
   "module": "map-element.es6.js",
   "umd": "map-element.umd.js",
-  "amd": "map-element.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/map-element/test/",
     "start": "yarn run dev",

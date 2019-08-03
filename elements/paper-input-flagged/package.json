@@ -25,7 +25,6 @@
   "main": "paper-input-flagged.js",
   "module": "paper-input-flagged.es6.js",
   "umd": "paper-input-flagged.umd.js",
-  "amd": "paper-input-flagged.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/paper-input-flagged/test/",
     "start": "yarn run dev",

@@ -25,7 +25,6 @@
   "main": "lrnsys-button.js",
   "module": "lrnsys-button.es6.js",
   "umd": "lrnsys-button.umd.js",
-  "amd": "lrnsys-button.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrnsys-button/test/",
     "start": "yarn run dev",

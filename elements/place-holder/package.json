@@ -25,7 +25,6 @@
   "main": "place-holder.js",
   "module": "place-holder.es6.js",
   "umd": "place-holder.umd.js",
-  "amd": "place-holder.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/place-holder/test/",
     "start": "yarn run dev",

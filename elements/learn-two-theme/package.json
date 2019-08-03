@@ -25,7 +25,6 @@
   "main": "learn-two-theme.js",
   "module": "learn-two-theme.es6.js",
   "umd": "learn-two-theme.umd.js",
-  "amd": "learn-two-theme.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/learn-two-theme/test/",
     "start": "yarn run dev",

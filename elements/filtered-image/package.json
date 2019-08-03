@@ -25,7 +25,6 @@
   "main": "filtered-image.js",
   "module": "filtered-image.es6.js",
   "umd": "filtered-image.umd.js",
-  "amd": "filtered-image.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/filtered-image/test/",
     "start": "yarn run dev",

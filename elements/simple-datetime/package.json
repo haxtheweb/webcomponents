@@ -25,7 +25,6 @@
   "main": "simple-datetime.js",
   "module": "simple-datetime.es6.js",
   "umd": "simple-datetime.umd.js",
-  "amd": "simple-datetime.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/simple-datetime/test/",
     "start": "yarn run dev",

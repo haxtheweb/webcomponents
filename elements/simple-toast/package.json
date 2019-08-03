@@ -25,7 +25,6 @@
   "main": "simple-toast.js",
   "module": "simple-toast.es6.js",
   "umd": "simple-toast.umd.js",
-  "amd": "simple-toast.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/simple-toast/test/",
     "start": "yarn run dev",

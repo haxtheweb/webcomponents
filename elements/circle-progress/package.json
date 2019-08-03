@@ -20,7 +20,6 @@
   "main": "circle-progress.js",
   "module": "circle-progress.es6.js",
   "umd": "circle-progress.umd.js",
-  "amd": "circle-progress.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/circle-progress/test/",
     "start": "yarn run dev",

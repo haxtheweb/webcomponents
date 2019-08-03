@@ -20,7 +20,6 @@
   "main": "citation-element.js",
   "module": "citation-element.es6.js",
   "umd": "citation-element.umd.js",
-  "amd": "citation-element.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/citation-element/test/",
     "start": "yarn run dev",

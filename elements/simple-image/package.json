@@ -25,7 +25,6 @@
   "main": "simple-image.js",
   "module": "simple-image.es6.js",
   "umd": "simple-image.umd.js",
-  "amd": "simple-image.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/simple-image/test/",
     "start": "yarn run dev",

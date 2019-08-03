@@ -25,7 +25,6 @@
   "main": "a11y-collapse.js",
   "module": "a11y-collapse.es6.js",
   "umd": "a11y-collapse.umd.js",
-  "amd": "a11y-collapse.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/a11y-collapse/test/",
     "start": "yarn run dev",

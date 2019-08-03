@@ -25,7 +25,6 @@
   "main": "lazy-import-discover.js",
   "module": "lazy-import-discover.es6.js",
   "umd": "lazy-import-discover.umd.js",
-  "amd": "lazy-import-discover.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lazy-import-discover/test/",
     "start": "yarn run dev",

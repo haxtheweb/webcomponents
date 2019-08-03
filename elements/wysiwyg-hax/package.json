@@ -25,7 +25,6 @@
   "main": "wysiwyg-hax.js",
   "module": "wysiwyg-hax.es6.js",
   "umd": "wysiwyg-hax.umd.js",
-  "amd": "wysiwyg-hax.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/wysiwyg-hax/test/",
     "start": "yarn run dev",

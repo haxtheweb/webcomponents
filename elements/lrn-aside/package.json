@@ -25,7 +25,6 @@
   "main": "lrn-aside.js",
   "module": "lrn-aside.es6.js",
   "umd": "lrn-aside.umd.js",
-  "amd": "lrn-aside.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrn-aside/test/",
     "start": "yarn run dev",

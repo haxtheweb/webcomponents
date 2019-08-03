@@ -25,7 +25,6 @@
   "main": "multiple-choice.js",
   "module": "multiple-choice.es6.js",
   "umd": "multiple-choice.umd.js",
-  "amd": "multiple-choice.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/multiple-choice/test/",
     "start": "yarn run dev",

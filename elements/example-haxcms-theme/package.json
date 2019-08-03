@@ -25,7 +25,6 @@
   "main": "example-haxcms-theme.js",
   "module": "example-haxcms-theme.es6.js",
   "umd": "example-haxcms-theme.umd.js",
-  "amd": "example-haxcms-theme.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/example-haxcms-theme/test/",
     "start": "yarn run dev",

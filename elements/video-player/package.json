@@ -25,7 +25,6 @@
   "main": "video-player.js",
   "module": "video-player.es6.js",
   "umd": "video-player.umd.js",
-  "amd": "video-player.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/video-player/test/",
     "start": "yarn run dev",

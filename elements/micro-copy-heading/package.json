@@ -25,7 +25,6 @@
   "main": "micro-copy-heading.js",
   "module": "micro-copy-heading.es6.js",
   "umd": "micro-copy-heading.umd.js",
-  "amd": "micro-copy-heading.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/micro-copy-heading/test/",
     "start": "yarn run dev",

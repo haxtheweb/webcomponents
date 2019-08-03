@@ -20,7 +20,6 @@
   "main": "simple-search.js",
   "module": "simple-search.es6.js",
   "umd": "simple-search.umd.js",
-  "amd": "simple-search.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/simple-search/test/",
     "start": "yarn run dev",

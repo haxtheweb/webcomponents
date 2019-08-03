@@ -25,7 +25,6 @@
   "main": "air-horn.js",
   "module": "air-horn.es6.js",
   "umd": "air-horn.umd.js",
-  "amd": "air-horn.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/air-horn/test/",
     "start": "yarn run dev",

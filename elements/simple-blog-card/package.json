@@ -25,7 +25,6 @@
   "main": "simple-blog-card.js",
   "module": "simple-blog-card.es6.js",
   "umd": "simple-blog-card.umd.js",
-  "amd": "simple-blog-card.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/simple-blog-card/test/",
     "start": "yarn run dev",

@@ -25,7 +25,6 @@
   "main": "lrndesign-gallerycard.js",
   "module": "lrndesign-gallerycard.es6.js",
   "umd": "lrndesign-gallerycard.umd.js",
-  "amd": "lrndesign-gallerycard.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrndesign-gallerycard/test/",
     "start": "yarn run dev",

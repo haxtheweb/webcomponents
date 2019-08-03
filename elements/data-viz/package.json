@@ -25,7 +25,6 @@
   "main": "data-viz.js",
   "module": "data-viz.es6.js",
   "umd": "data-viz.umd.js",
-  "amd": "data-viz.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/data-viz/test/",
     "start": "yarn run dev",

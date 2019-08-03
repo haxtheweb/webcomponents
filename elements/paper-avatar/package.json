@@ -25,7 +25,6 @@
   "main": "paper-avatar.js",
   "module": "paper-avatar.es6.js",
   "umd": "paper-avatar.umd.js",
-  "amd": "paper-avatar.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/paper-avatar/test/",
     "start": "yarn run dev",

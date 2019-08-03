@@ -25,7 +25,6 @@
   "main": "lrndesign-sidenote.js",
   "module": "lrndesign-sidenote.es6.js",
   "umd": "lrndesign-sidenote.umd.js",
-  "amd": "lrndesign-sidenote.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrndesign-sidenote/test/",
     "start": "yarn run dev",

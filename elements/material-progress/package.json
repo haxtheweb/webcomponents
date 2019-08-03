@@ -25,7 +25,6 @@
   "main": "material-progress.js",
   "module": "material-progress.es6.js",
   "umd": "material-progress.umd.js",
-  "amd": "material-progress.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/material-progress/test/",
     "start": "yarn run dev",

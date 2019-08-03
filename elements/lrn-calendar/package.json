@@ -25,7 +25,6 @@
   "main": "lrn-calendar.js",
   "module": "lrn-calendar.es6.js",
   "umd": "lrn-calendar.umd.js",
-  "amd": "lrn-calendar.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrn-calendar/test/",
     "start": "yarn run dev",

@@ -25,7 +25,6 @@
   "main": "lrndesign-course-banner.js",
   "module": "lrndesign-course-banner.es6.js",
   "umd": "lrndesign-course-banner.umd.js",
-  "amd": "lrndesign-course-banner.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrndesign-course-banner/test/",
     "start": "yarn run dev",

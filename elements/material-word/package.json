@@ -28,7 +28,6 @@
   "main": "material-word.js",
   "module": "material-word.es6.js",
   "umd": "material-word.umd.js",
-  "amd": "material-word.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/material-word/test/",
     "start": "yarn run dev",

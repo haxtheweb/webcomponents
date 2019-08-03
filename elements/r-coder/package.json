@@ -25,7 +25,6 @@
   "main": "r-coder.js",
   "module": "r-coder.es6.js",
   "umd": "r-coder.umd.js",
-  "amd": "r-coder.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/r-coder/test/",
     "start": "yarn run dev",

@@ -20,7 +20,6 @@
   "main": "grid-plate.js",
   "module": "grid-plate.es6.js",
   "umd": "grid-plate.umd.js",
-  "amd": "grid-plate.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/grid-plate/test/",
     "start": "yarn run dev",
