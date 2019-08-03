@@ -1,12 +1,28 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXCMSTheme}from"./node_modules/@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";import{store}from"./node_modules/@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";import{autorun,toJS}from"./node_modules/mobx/lib/mobx.module.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@lrnwebcomponents/simple-blog/lib/simple-blog-listing.js";import"./node_modules/@lrnwebcomponents/simple-blog/lib/simple-blog-post.js";import"./node_modules/@polymer/iron-pages/iron-pages.js";/**
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { autorun, toJS } from "mobx/lib/mobx.module.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-blog/lib/simple-blog-listing.js";
+import "@lrnwebcomponents/simple-blog/lib/simple-blog-post.js";
+import "@polymer/iron-pages/iron-pages.js";
+/**
  * `simple-blog`
  * `A simple blog and associated elements`
  * @demo demo/index.html
- */class SimpleBlog extends HAXCMSTheme(PolymerElement){/**
+ */
+class SimpleBlog extends HAXCMSTheme(PolymerElement) {
+  /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
-   */static get tag(){return"simple-blog"}// render function
-static get template(){return html`
+   */
+  static get tag() {
+    return "simple-blog";
+  }
+  // render function
+  static get template() {
+    return html`
       <style>
         html,
         body {
@@ -103,18 +119,108 @@ static get template(){return html`
           <simple-blog-footer id="footer"></simple-blog-footer>
         </section>
       </iron-pages>
-    `}/**
+    `;
+  }
+  /**
    * Mix in an opened status
-   */static get properties(){let props=super.properties;props.selectedPage={type:Number,reflectToAttribute:!0,value:0};return props}constructor(){super();import("./node_modules/@lrnwebcomponents/simple-blog/lib/simple-blog-header.js");import("./node_modules/@polymer/paper-icon-button/paper-icon-button.js");import("./node_modules/@lrnwebcomponents/simple-blog/lib/simple-blog-footer.js");this.__disposer=[];autorun(reaction=>{this.activeId=toJS(store.activeId);this.__disposer.push(reaction)});autorun(reaction=>{this._locationChanged(store.location);this.__disposer.push(reaction)})}/**
+   */
+  static get properties() {
+    let props = super.properties;
+    props.selectedPage = {
+      type: Number,
+      reflectToAttribute: true,
+      value: 0
+    };
+    return props;
+  }
+  constructor() {
+    super();
+    import("@lrnwebcomponents/simple-blog/lib/simple-blog-header.js");
+    import("@polymer/paper-icon-button/paper-icon-button.js");
+    import("@lrnwebcomponents/simple-blog/lib/simple-blog-footer.js");
+    this.__disposer = [];
+    autorun(reaction => {
+      this.activeId = toJS(store.activeId);
+      this.__disposer.push(reaction);
+    });
+    autorun(reaction => {
+      this._locationChanged(store.location);
+      this.__disposer.push(reaction);
+    });
+  }
+  /**
    * attached life cycle
-   */connectedCallback(){super.connectedCallback();afterNextRender(this,()=>{this.contentContainer=this.shadowRoot.querySelector("simple-blog-post").$.contentcontainer})}/**
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, () => {
+      this.contentContainer = this.shadowRoot.querySelector(
+        "simple-blog-post"
+      ).$.contentcontainer;
+    });
+  }
+  /**
    * detatched life cycle
-   */disconnectedCallback(){super.disconnectedCallback();// clean up state
-for(var i in this.__disposer){this.__disposer[i].dispose()}}/**
+   */
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    // clean up state
+    for (var i in this.__disposer) {
+      this.__disposer[i].dispose();
+    }
+  }
+  /**
    * Listen for router location changes
    * @param {event} e
-   */_locationChanged(location){if(!location||"undefined"===typeof location.route)return;const name=location.route.name;if("home"===name||"404"===name){this.selectedPage=0}else{window.scrollTo({top:0,left:0});this.selectedPage=1}}/**
+   */
+  _locationChanged(location) {
+    if (!location || typeof location.route === "undefined") return;
+    const name = location.route.name;
+    if (name === "home" || name === "404") {
+      this.selectedPage = 0;
+    } else {
+      window.scrollTo({
+        top: 0,
+        left: 0
+      });
+      this.selectedPage = 1;
+    }
+  }
+  /**
    * Reset the active item to reset state
-   */_goBack(e){const prevActiveItemId=store.activeId;window.history.pushState(null,null,store.location.baseUrl);window.dispatchEvent(new PopStateEvent("popstate"));// should help account for starting on a page where popstate isn't set
-// and also generate data model mirroring
-if(prevActiveItemId){setTimeout(()=>{let active=this.shadowRoot.querySelector("simple-blog-listing").shadowRoot.querySelector("simple-blog-overview[item-id=\""+prevActiveItemId+"\"]");if(active){active.scrollIntoView(!0);active.focus()}},100)}else{window.scrollTo({top:0,left:0})}const evt=new CustomEvent("json-outline-schema-active-item-changed",{bubbles:!0,cancelable:!0,detail:{}});this.dispatchEvent(evt);this.selectedPage=0}}window.customElements.define(SimpleBlog.tag,SimpleBlog);export{SimpleBlog};
+   */
+  _goBack(e) {
+    const prevActiveItemId = store.activeId;
+    window.history.pushState(null, null, store.location.baseUrl);
+    window.dispatchEvent(new PopStateEvent("popstate"));
+    // should help account for starting on a page where popstate isn't set
+    // and also generate data model mirroring
+    if (prevActiveItemId) {
+      setTimeout(() => {
+        let active = this.shadowRoot
+          .querySelector("simple-blog-listing")
+          .shadowRoot.querySelector(
+            'simple-blog-overview[item-id="' + prevActiveItemId + '"]'
+          );
+        if (active) {
+          active.scrollIntoView(true);
+          active.focus();
+        }
+      }, 100);
+    } else {
+      window.scrollTo({
+        top: 0,
+        left: 0
+      });
+    }
+    const evt = new CustomEvent("json-outline-schema-active-item-changed", {
+      bubbles: true,
+      cancelable: true,
+      detail: {}
+    });
+    this.dispatchEvent(evt);
+    this.selectedPage = 0;
+  }
+}
+window.customElements.define(SimpleBlog.tag, SimpleBlog);
+export { SimpleBlog };

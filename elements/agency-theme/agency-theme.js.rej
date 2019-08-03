@@ -1,0 +1,29 @@
+diff a/elements/agency-theme/agency-theme.js b/elements/agency-theme/agency-theme.js	(rejected hunks)
+@@ -22 +21,0 @@ class AgencyTheme extends PolymerElement {
+-  
+@@ -26,3 +25,4 @@ class AgencyTheme extends PolymerElement {
+-<style>:host {
+-  display: block;
+-}
++      <style>
++        :host {
++          display: block;
++        }
+@@ -30,5 +30,6 @@ class AgencyTheme extends PolymerElement {
+-:host([hidden]) {
+-  display: none;
+-}
+-</style>
+-<slot></slot>`;
++        :host([hidden]) {
++          display: none;
++        }
++      </style>
++      <slot></slot>
++    `;
+@@ -38,3 +39,2 @@ class AgencyTheme extends PolymerElement {
+-    static get properties() {
+-    let props = {}
+-;
++  static get properties() {
++    let props = {};

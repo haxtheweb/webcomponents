@@ -1,10 +1,18 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{SchemaBehaviors}from"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@polymer/iron-icon/iron-icon.js";import"./lib/stop-icon.js";/**
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import "@polymer/iron-icon/iron-icon.js";
+import "./lib/stop-icon.js";
+/**
  * `stop-note`
  * `A note that directs people to an action item of different warning levels`
  * @demo demo/index.html
  * @microcopy - the mental model for this element
  * -
- */class StopNote extends SchemaBehaviors(PolymerElement){static get template(){return html`
+ */
+class StopNote extends SchemaBehaviors(PolymerElement) {
+  static get template() {
+    return html`
       <style>
         :host {
           display: block;
@@ -96,18 +104,153 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
           </div>
         </div>
       </div>
-    `}static get tag(){return"stop-note"}static get properties(){return{/**
+    `;
+  }
+  static get tag() {
+    return "stop-note";
+  }
+  static get properties() {
+    return {
+      /**
        * Title Message
-       */title:{type:String,value:"Title",reflectToAttribute:!0},/**
+       */
+      title: {
+        type: String,
+        value: "Title",
+        reflectToAttribute: true
+      },
+      /**
        * url to additional resources
-       */url:{type:String,value:null,reflectToAttribute:!0},/**
+       */
+      url: {
+        type: String,
+        value: null,
+        reflectToAttribute: true
+      },
+      /**
        * Icon selected
-       */icon:{type:String,value:"stopnoteicons:stop-icon",observer:"_iconChanged",reflectToAttribute:!0}}}/**
+       */
+      icon: {
+        type: String,
+        value: "stopnoteicons:stop-icon",
+        observer: "_iconChanged",
+        reflectToAttribute: true
+      }
+    };
+  }
+  /**
    * Update styles based on icon selected.
-   */_iconChanged(icon){this.updateStyles()}/**
+   */
+  _iconChanged(icon) {
+    this.updateStyles();
+  }
+  /**
    * Evaluates url for correct targeting.
-   */_urlTarget(url){if(url){const external=this._outsideLink(url);if(external){return"_blank"}}return!1}/**
+   */
+  _urlTarget(url) {
+    if (url) {
+      const external = this._outsideLink(url);
+      if (external) {
+        return "_blank";
+      }
+    }
+    return false;
+  }
+  /**
    * Internal function to check if a url is external
-   */_outsideLink(url){if(0!=url.indexOf("http"))return!1;var loc=location.href,path=location.pathname,root=loc.substring(0,loc.indexOf(path));return 0!=url.indexOf(root)}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Stop Note",description:"A message to alert readers to specific directions.",icon:"icons:report",color:"orange",groups:["Video","Media"],handles:[{type:"text",title:"label"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"title",title:"Title",description:"Enter title for stop-note.",inputMethod:"textfield",required:!0},{property:"url",title:"URL",description:"Enter an external url.",inputMethod:"textfield",required:!0}],configure:[{property:"title",title:"Title",description:"Enter title for stop-note.",inputMethod:"textfield",required:!0},{property:"url",title:"URL",description:"Enter an external url.",inputMethod:"haxupload",required:!0},{slot:"message",title:"Message",description:"Enter a message for stop-note.",inputMethod:"code-editor",required:!0},{property:"icon",title:"Action Icon",description:"Icon used for stop-note",inputMethod:"iconpicker",options:["stopnoteicons:stop-icon","stopnoteicons:warning-icon","stopnoteicons:confirm-icon","stopnoteicons:book-icon"]}],advanced:[]}}}/**
+   */
+  _outsideLink(url) {
+    if (url.indexOf("http") != 0) return false;
+    var loc = location.href,
+      path = location.pathname,
+      root = loc.substring(0, loc.indexOf(path));
+    return url.indexOf(root) != 0;
+  }
+  static get haxProperties() {
+    return {
+      canScale: true,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Stop Note",
+        description: "A message to alert readers to specific directions.",
+        icon: "icons:report",
+        color: "orange",
+        groups: ["Video", "Media"],
+        handles: [
+          {
+            type: "text",
+            title: "label"
+          }
+        ],
+        meta: {
+          author: "LRNWebComponents"
+        }
+      },
+      settings: {
+        quick: [
+          {
+            property: "title",
+            title: "Title",
+            description: "Enter title for stop-note.",
+            inputMethod: "textfield",
+            required: true
+          },
+          {
+            property: "url",
+            title: "URL",
+            description: "Enter an external url.",
+            inputMethod: "textfield",
+            required: true
+          }
+        ],
+        configure: [
+          {
+            property: "title",
+            title: "Title",
+            description: "Enter title for stop-note.",
+            inputMethod: "textfield",
+            required: true
+          },
+          {
+            property: "url",
+            title: "URL",
+            description: "Enter an external url.",
+            inputMethod: "haxupload",
+            required: true
+          },
+          {
+            slot: "message",
+            title: "Message",
+            description: "Enter a message for stop-note.",
+            inputMethod: "code-editor",
+            required: true
+          },
+          {
+            property: "icon",
+            title: "Action Icon",
+            description: "Icon used for stop-note",
+            inputMethod: "iconpicker",
+            options: [
+              "stopnoteicons:stop-icon",
+              "stopnoteicons:warning-icon",
+              "stopnoteicons:confirm-icon",
+              "stopnoteicons:book-icon"
+            ]
+          }
+        ],
+        advanced: []
+      }
+    };
+  }
+  /**
    * Attached to the DOM, now fire.
-   */connectedCallback(){super.connectedCallback();this.HAXWiring=new HAXWiring;this.HAXWiring.setup(StopNote.haxProperties,StopNote.tag,this)}}window.customElements.define(StopNote.tag,StopNote);export{StopNote};
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    this.HAXWiring = new HAXWiring();
+    this.HAXWiring.setup(StopNote.haxProperties, StopNote.tag, this);
+  }
+}
+window.customElements.define(StopNote.tag, StopNote);
+export { StopNote };

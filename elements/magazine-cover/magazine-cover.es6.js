@@ -1,7 +1,11 @@
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";/**
+ */
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+/**
 `magazine-cover`
 A Magazine cover element
 
@@ -13,7 +17,25 @@ Example:
   ```
 
 * @demo demo/index.html
-*/class MagazineCover extends PolymerElement{constructor(){super();import("./node_modules/@polymer/iron-image/iron-image.js");import("./node_modules/@polymer/iron-icons/iron-icons.js");import("./node_modules/@polymer/iron-icon/iron-icon.js");import("./node_modules/@polymer/paper-button/paper-button.js");afterNextRender(this,function(){this.HAXWiring=new HAXWiring;this.HAXWiring.setup(MagazineCover.haxProperties,MagazineCover.tag,this)})}static get template(){return html`
+*/
+class MagazineCover extends PolymerElement {
+  constructor() {
+    super();
+    import("@polymer/iron-image/iron-image.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/paper-button/paper-button.js");
+    afterNextRender(this, function() {
+      this.HAXWiring = new HAXWiring();
+      this.HAXWiring.setup(
+        MagazineCover.haxProperties,
+        MagazineCover.tag,
+        this
+      );
+    });
+  }
+  static get template() {
+    return html`
       <style>
         :host {
           display: block;
@@ -162,24 +184,234 @@ Example:
           </paper-button>
         </a>
       </div>
-    `}static get tag(){return"magazine-cover"}static get properties(){return{/**
+    `;
+  }
+
+  static get tag() {
+    return "magazine-cover";
+  }
+  static get properties() {
+    return {
+      /**
        * Title / heading
-       */header:{type:String},/**
+       */
+      header: {
+        type: String
+      },
+      /**
        * A secondary title
-       */subheader:{type:String},/**
+       */
+      subheader: {
+        type: String
+      },
+      /**
        * Internal text.
-       */text:{type:String},/**
+       */
+      text: {
+        type: String
+      },
+      /**
        * Title / heading
-       */image:{type:String},/**
+       */
+      image: {
+        type: String
+      },
+      /**
        * Call to action
-       */action:{type:String,value:"Touch to learn more"},/**
+       */
+      action: {
+        type: String,
+        value: "Touch to learn more"
+      },
+      /**
        * Call to action icon
-       */icon:{type:String,value:"trending-flat"},/**
+       */
+      icon: {
+        type: String,
+        value: "trending-flat"
+      },
+      /**
        * Link to go to on click.
-       */link:{type:String,value:""},/**
+       */
+      link: {
+        type: String,
+        value: ""
+      },
+      /**
        * Optional event binding for the button press.
-       */eventName:{type:String,value:""},/**
+       */
+      eventName: {
+        type: String,
+        value: ""
+      },
+      /**
        * Optional event data to send along
-       */eventData:{type:Object,value:{}}}}/**
+       */
+      eventData: {
+        type: Object,
+        value: {}
+      }
+    };
+  }
+  /**
    * Link tap, fire event if we have one
-   */_linkTapped(e){if(""!==this.eventName){e.preventDefault();e.stopPropagation();this.dispatchEvent(new CustomEvent(this.eventName,{bubbles:!0,cancelable:!0,composed:!0,detail:this.eventData}))}}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Cover image",description:"Present a full screen cover image with a call to action. Good for starting off a series of content",icon:"flip-to-front",color:"teal",groups:["Image","Media","Presentation"],handles:[{type:"image",source:"image",title:"header",caption:"subheader",citation:"subheader",description:"text"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"image",title:"Image",description:"The URL for the image.",inputMethod:"textfield",icon:"link",required:!0,validationType:"url"},{property:"link",title:"Link",description:"The URL for the action.",inputMethod:"textfield",icon:"send",required:!0,validationType:"url"},{property:"header",title:"Header",description:"Primary header",inputMethod:"textfield",icon:"editor:title",required:!0},{property:"subheader",title:"Sub-header",description:"Secondary header",inputMethod:"textfield",icon:"editor:text-fields"}],configure:[{property:"image",title:"Image",description:"The URL for the image.",inputMethod:"haxupload",icon:"link",required:!0,validationType:"url"},{property:"header",title:"Header",description:"Primary header",inputMethod:"textfield",icon:"editor:title",required:!0},{property:"subheader",title:"Sub-header",description:"Secondary header",inputMethod:"textfield",icon:"editor:text-fields"},{property:"text",title:"Text",description:"Secondary header",inputMethod:"textfield",icon:"editor:text-fields"},{property:"action",title:"Call to action",description:"Text that lives on the button",inputMethod:"textfield",icon:"trending-flat"},{property:"link",title:"URL",description:"Enter URL for your action link",inputMethod:"haxupload",icon:"send"},{property:"icon",title:"Action icon",description:"Icon used for the call to action",inputMethod:"iconpicker",options:["icons:trending-flat","icons:launch","icons:pan-tool","icons:link","icons:check","icons:favorite","icons:thumb-up","icons:send"]}],advanced:[{property:"event-name",title:"Event name",description:"Name of the event to fire",inputMethod:"textfield"},{property:"event-data",title:"Event data (JSON)",description:"JSON blob of data to send along",inputMethod:"code-editor"}]}}}}window.customElements.define(MagazineCover.tag,MagazineCover);export{MagazineCover};
+   */
+  _linkTapped(e) {
+    if (this.eventName !== "") {
+      e.preventDefault();
+      e.stopPropagation();
+      this.dispatchEvent(
+        new CustomEvent(this.eventName, {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this.eventData
+        })
+      );
+    }
+  }
+  static get haxProperties() {
+    return {
+      canScale: true,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Cover image",
+        description:
+          "Present a full screen cover image with a call to action. Good for starting off a series of content",
+        icon: "flip-to-front",
+        color: "teal",
+        groups: ["Image", "Media", "Presentation"],
+        handles: [
+          {
+            type: "image",
+            source: "image",
+            title: "header",
+            caption: "subheader",
+            citation: "subheader",
+            description: "text"
+          }
+        ],
+        meta: {
+          author: "LRNWebComponents"
+        }
+      },
+      settings: {
+        quick: [
+          {
+            property: "image",
+            title: "Image",
+            description: "The URL for the image.",
+            inputMethod: "textfield",
+            icon: "link",
+            required: true,
+            validationType: "url"
+          },
+          {
+            property: "link",
+            title: "Link",
+            description: "The URL for the action.",
+            inputMethod: "textfield",
+            icon: "send",
+            required: true,
+            validationType: "url"
+          },
+          {
+            property: "header",
+            title: "Header",
+            description: "Primary header",
+            inputMethod: "textfield",
+            icon: "editor:title",
+            required: true
+          },
+          {
+            property: "subheader",
+            title: "Sub-header",
+            description: "Secondary header",
+            inputMethod: "textfield",
+            icon: "editor:text-fields"
+          }
+        ],
+        configure: [
+          {
+            property: "image",
+            title: "Image",
+            description: "The URL for the image.",
+            inputMethod: "haxupload",
+            icon: "link",
+            required: true,
+            validationType: "url"
+          },
+          {
+            property: "header",
+            title: "Header",
+            description: "Primary header",
+            inputMethod: "textfield",
+            icon: "editor:title",
+            required: true
+          },
+          {
+            property: "subheader",
+            title: "Sub-header",
+            description: "Secondary header",
+            inputMethod: "textfield",
+            icon: "editor:text-fields"
+          },
+          {
+            property: "text",
+            title: "Text",
+            description: "Secondary header",
+            inputMethod: "textfield",
+            icon: "editor:text-fields"
+          },
+          {
+            property: "action",
+            title: "Call to action",
+            description: "Text that lives on the button",
+            inputMethod: "textfield",
+            icon: "trending-flat"
+          },
+          {
+            property: "link",
+            title: "URL",
+            description: "Enter URL for your action link",
+            inputMethod: "haxupload",
+            icon: "send"
+          },
+          {
+            property: "icon",
+            title: "Action icon",
+            description: "Icon used for the call to action",
+            inputMethod: "iconpicker",
+            options: [
+              "icons:trending-flat",
+              "icons:launch",
+              "icons:pan-tool",
+              "icons:link",
+              "icons:check",
+              "icons:favorite",
+              "icons:thumb-up",
+              "icons:send"
+            ]
+          }
+        ],
+        advanced: [
+          {
+            property: "event-name",
+            title: "Event name",
+            description: "Name of the event to fire",
+            inputMethod: "textfield"
+          },
+          {
+            property: "event-data",
+            title: "Event data (JSON)",
+            description: "JSON blob of data to send along",
+            inputMethod: "code-editor"
+          }
+        ]
+      }
+    };
+  }
+}
+window.customElements.define(MagazineCover.tag, MagazineCover);
+export { MagazineCover };

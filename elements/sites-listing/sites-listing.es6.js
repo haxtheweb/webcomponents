@@ -1,10 +1,24 @@
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import"./node_modules/@polymer/iron-ajax/iron-ajax.js";import"./node_modules/@polymer/iron-list/iron-list.js";import"./node_modules/@lrnwebcomponents/sites-listing/lib/site-card.js";import"./node_modules/@polymer/paper-button/paper-button.js";/**
+ */
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import "@polymer/iron-ajax/iron-ajax.js";
+import "@polymer/iron-list/iron-list.js";
+import "@lrnwebcomponents/sites-listing/lib/site-card.js";
+import "@polymer/paper-button/paper-button.js";
+/**
  * `sites-listing`
  * @demo demo/index.html
- */class SitesListing extends PolymerElement{constructor(){super();import("./node_modules/@lrnwebcomponents/elmsln-loading/elmsln-loading.js")}static get template(){return html`
+ */
+class SitesListing extends PolymerElement {
+  constructor() {
+    super();
+    import("@lrnwebcomponents/elmsln-loading/elmsln-loading.js");
+  }
+  static get template() {
+    return html`
       <style>
         :host {
           height: 100vh;
@@ -81,31 +95,140 @@
           </paper-button>
         </template>
       </iron-list>
-    `}static get tag(){return"sites-listing"}static get properties(){return{/**
+    `;
+  }
+  static get tag() {
+    return "sites-listing";
+  }
+  static get properties() {
+    return {
+      /**
        * Object, JSON Outline Schema format
-       */sitesResponse:{type:Object,notify:!0,observer:"_sitesResponseChanged"},/**
+       */
+      sitesResponse: {
+        type: Object,
+        notify: true,
+        observer: "_sitesResponseChanged"
+      },
+      /**
        * Array of site objects
-       */sites:{type:Array,notify:!0},/**
+       */
+      sites: {
+        type: Array,
+        notify: true
+      },
+      /**
        * Size of the cards
-       */size:{type:String,value:"large"},/**
+       */
+      size: {
+        type: String,
+        value: "large"
+      },
+      /**
        * Data Source to power the loading of sites in JSON Outline Schema format.
-       */dataSource:{type:String},/**
+       */
+      dataSource: {
+        type: String
+      },
+      /**
        * Allow for loading the location in the array rather than firing an event
-       */loadLocation:{type:Boolean,value:!1}}}/**
+       */
+      loadLocation: {
+        type: Boolean,
+        value: false
+      }
+    };
+  }
+  /**
    * attached life cycle
-   */connectedCallback(){super.connectedCallback();window.addEventListener("sites-listing-refresh-data",this.refreshData.bind(this))}/**
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    window.addEventListener(
+      "sites-listing-refresh-data",
+      this.refreshData.bind(this)
+    );
+  }
+  /**
    * detached life cycle
-   */disconnectedCallback(){window.removeEventListener("sites-listing-refresh-data",this.refreshData.bind(this));super.disconnectedCallback()}/**
+   */
+  disconnectedCallback() {
+    window.removeEventListener(
+      "sites-listing-refresh-data",
+      this.refreshData.bind(this)
+    );
+    super.disconnectedCallback();
+  }
+  /**
    * force the request to regenerate
-   */refreshData(e){this.shadowRoot.querySelector("#loaddata").generateRequest()}/**
+   */
+  refreshData(e) {
+    this.shadowRoot.querySelector("#loaddata").generateRequest();
+  }
+  /**
    * Parse JSON Outline Schema for the items and bind that to sites
-   */_sitesResponseChanged(newValue,oldValue){if(newValue){if(typeof newValue.items!==typeof void 0){this.set("sites",[]);this.set("sites",newValue.items);this.notifyPath("sites.*")}}}/**
+   */
+  _sitesResponseChanged(newValue, oldValue) {
+    if (newValue) {
+      if (typeof newValue.items !== typeof undefined) {
+        this.set("sites", []);
+        this.set("sites", newValue.items);
+        this.notifyPath("sites.*");
+      }
+    }
+  }
+  /**
    * Handle tap on paper-button above to redirect to the correct data.
-   */_siteClicked(e){var normalizedEvent=dom(e),local=normalizedEvent.localTarget,active=local.getAttribute("data-site-id");// find the course by it's unique id and filter just to it
-let findSite=this.sites.filter(site=>{if(site.id!==active){return!1}return!0});// if we found one, make it the top level item
-if(0<findSite.length){findSite=findSite.pop()}// double check we have a URI
-if(this.loadLocation&&typeof findSite.location!==typeof void 0){window.location.href=findSite.location}this.dispatchEvent(new CustomEvent("sites-listing-item-selected",{bubbles:!0,cancelable:!0,composed:!0,detail:findSite}))}/**
+   */
+  _siteClicked(e) {
+    var normalizedEvent = dom(e);
+    var local = normalizedEvent.localTarget;
+    // this will have the id of the current course
+    var active = local.getAttribute("data-site-id");
+    // find the course by it's unique id and filter just to it
+    let findSite = this.sites.filter(site => {
+      if (site.id !== active) {
+        return false;
+      }
+      return true;
+    });
+    // if we found one, make it the top level item
+    if (findSite.length > 0) {
+      findSite = findSite.pop();
+    }
+    // double check we have a URI
+    if (this.loadLocation && typeof findSite.location !== typeof undefined) {
+      window.location.href = findSite.location;
+    }
+    this.dispatchEvent(
+      new CustomEvent("sites-listing-item-selected", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: findSite
+      })
+    );
+  }
+  /**
    * Increase elevation while hovering.
-   */_mouseEnter(e){let card=dom(e.target).querySelectorAll("site-card")[0];card.__oldElevation=card.elevation;if(5<card.elevation+2){card.elevation=5}else{card.elevation+=2}}/**
+   */
+  _mouseEnter(e) {
+    let card = dom(e.target).querySelectorAll("site-card")[0];
+    card.__oldElevation = card.elevation;
+    if (card.elevation + 2 > 5) {
+      card.elevation = 5;
+    } else {
+      card.elevation += 2;
+    }
+  }
+
+  /**
    * Reset the elevation.
-   */_mouseLeave(e){let card=dom(e.target).querySelectorAll("site-card")[0];card.elevation=card.__oldElevation}}window.customElements.define(SitesListing.tag,SitesListing);export{SitesListing};
+   */
+  _mouseLeave(e) {
+    let card = dom(e.target).querySelectorAll("site-card")[0];
+    card.elevation = card.__oldElevation;
+  }
+}
+window.customElements.define(SitesListing.tag, SitesListing);
+export { SitesListing };

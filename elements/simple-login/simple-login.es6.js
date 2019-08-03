@@ -1,7 +1,16 @@
 /**
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/paper-input/paper-input.js";import"./node_modules/@polymer/paper-progress/paper-progress.js";import"./node_modules/@polymer/paper-styles/shadow.js";import"./node_modules/@polymer/paper-styles/typography.js";import"./node_modules/@polymer/paper-styles/color.js";/**
+ */
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import "@polymer/paper-button/paper-button.js";
+import "@polymer/paper-input/paper-input.js";
+import "@polymer/paper-progress/paper-progress.js";
+import "@polymer/paper-styles/shadow.js";
+import "@polymer/paper-styles/typography.js";
+import "@polymer/paper-styles/color.js";
+/**
  * `simple-login`
  * `a simple login form`
  *
@@ -11,8 +20,12 @@
  * @customElement
  * @polymer
  * @demo demo/index.html
- */class SimpleLogin extends PolymerElement{// render function
-static get template(){return html`
+ */
+class SimpleLogin extends PolymerElement {
+  
+  // render function
+  static get template() {
+    return html`
 <style>:host {
   display: block;
 }
@@ -99,39 +112,146 @@ paper-progress {
     </paper-button>
     <span id="buttons"><slot name="buttons"></slot></span>
   </div>
-</div>`}// properties available to the custom element for data binding
-static get properties(){let props={/**
+</div>`;
+  }
+
+  // properties available to the custom element for data binding
+    static get properties() {
+    let props = {
+  /**
    * Title of the loginscreen
-   */title:String,/**
+   */
+  "title": String,
+  /**
    * Subtitle of the loginscreen
-   */subtitle:String,/**
+   */
+  "subtitle": String,
+  /**
    * Error message to show (example : "Invalid username")
-   */errorMsg:String,/**
+   */
+  "errorMsg": String,
+  /**
    * Content of the username field
-   */username:{type:String,notify:!0},/**
+   */
+  "username": {
+    "type": String,
+    "notify": true
+  },
+  /**
    * Content of the password field
-   */password:{type:String,notify:!0},/**
+   */
+  "password": {
+    "type": String,
+    "notify": true
+  },
+  /**
    * When true, all fields are disabled and the progress bar is visible
-   */loading:{type:Boolean,value:!1},/**
+   */
+  "loading": {
+    "type": Boolean,
+    "value": false
+  },
+  /**
    * Placeholder of the username field
-   */userInputLabel:{type:String,value:"Username"},/**
+   */
+  "userInputLabel": {
+    "type": String,
+    "value": "Username"
+  },
+  /**
    * Error message of the username field
-   */userInputErrMsg:{type:String,value:"Username required"},/**
+   */
+  "userInputErrMsg": {
+    "type": String,
+    "value": "Username required"
+  },
+  /**
    * Placeholder of the password field
-   */passwordInputLabel:{type:String,value:"Password"},/**
+   */
+  "passwordInputLabel": {
+    "type": String,
+    "value": "Password"
+  },
+  /**
    * Error message of the password field
-   */passwordInputErrMsg:{type:String,value:"Password required"},/**
+   */
+  "passwordInputErrMsg": {
+    "type": String,
+    "value": "Password required"
+  },
+  /**
    * Login button label
-   */loginBtnText:{type:String,value:"Login"}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
+   */
+  "loginBtnText": {
+    "type": String,
+    "value": "Login"
+  }
+}
+;
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
+  }
+
+  /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
-   */static get tag(){return"simple-login"}/**
+   */
+  static get tag() {
+    return "simple-login";
+  }
+  /**
    * constructor
-   */constructor(){super();afterNextRender(this,function(){this.shadowRoot.querySelector("#loginform").addEventListener("keypress",this._keyPressLogin.bind(this))})}/**
+   */
+  constructor() {
+    super();
+    afterNextRender(this, function() {
+      this.shadowRoot
+        .querySelector("#loginform")
+        .addEventListener("keypress", this._keyPressLogin.bind(this));
+    });
+  }
+  /**
    * life cycle
-   */disconnectedCallback(){this.shadowRoot.querySelector("#loginform").removeEventListener("keypress",this._keyPressLogin.bind(this));super.disconnectedCallback()}/**
+   */
+  disconnectedCallback() {
+    this.shadowRoot
+      .querySelector("#loginform")
+      .removeEventListener("keypress", this._keyPressLogin.bind(this));
+    super.disconnectedCallback();
+  }
+  /**
    * Key pressed for the login
-   */_keyPressLogin(e){if(13==e.keyCode){//Enter
-this._login();return!1}}/**
+   */
+  _keyPressLogin(e) {
+    if (e.keyCode == 13) {
+      //Enter
+      this._login();
+      return false;
+    }
+  }
+  /**
    * Login
-   */_login(){if(this.shadowRoot.querySelector("#userinput").validate()&&this.shadowRoot.querySelector("#passinput").validate()){this.dispatchEvent(new CustomEvent("simple-login-login",{cancelable:!0,bubbles:!0,composed:!0,detail:{u:this.shadowRoot.querySelector("#userinput").value,p:this.shadowRoot.querySelector("#passinput").value}}))}}}window.customElements.define(SimpleLogin.tag,SimpleLogin);export{SimpleLogin};
+   */
+  _login() {
+    if (
+      this.shadowRoot.querySelector("#userinput").validate() &&
+      this.shadowRoot.querySelector("#passinput").validate()
+    ) {
+      this.dispatchEvent(
+        new CustomEvent("simple-login-login", {
+          cancelable: true,
+          bubbles: true,
+          composed: true,
+          detail: {
+            u: this.shadowRoot.querySelector("#userinput").value,
+            p: this.shadowRoot.querySelector("#passinput").value
+          }
+        })
+      );
+    }
+  }
+}
+window.customElements.define(SimpleLogin.tag, SimpleLogin);
+export { SimpleLogin };

@@ -1,7 +1,25 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import{SchemaBehaviors}from"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";/**
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+/**
  * `to-do`
  * @demo demo/index.html
- */class ToDo extends SchemaBehaviors(PolymerElement){constructor(){super();import("./node_modules/@polymer/paper-checkbox/paper-checkbox.js");import("./node_modules/@polymer/paper-button/paper-button.js");import("./node_modules/@polymer/paper-card/paper-card.js");import("./node_modules/@polymer/paper-input/paper-input.js");afterNextRender(this,function(){this.HAXWiring=new HAXWiring;this.HAXWiring.setup(ToDo.haxProperties,ToDo.tag,this)})}static get template(){return html`
+ */
+class ToDo extends SchemaBehaviors(PolymerElement) {
+  constructor() {
+    super();
+    import("@polymer/paper-checkbox/paper-checkbox.js");
+    import("@polymer/paper-button/paper-button.js");
+    import("@polymer/paper-card/paper-card.js");
+    import("@polymer/paper-input/paper-input.js");
+    afterNextRender(this, function() {
+      this.HAXWiring = new HAXWiring();
+      this.HAXWiring.setup(ToDo.haxProperties, ToDo.tag, this);
+    });
+  }
+  static get template() {
+    return html`
       <style>
         :host {
           display: block;
@@ -65,17 +83,143 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
           </ul>
         </div>
       </paper-card>
-    `}static get tag(){return"to-do"}static get observers(){return["_valueChanged(items.*)"]}static get properties(){let props={/**
+    `;
+  }
+  static get tag() {
+    return "to-do";
+  }
+  static get observers() {
+    return ["_valueChanged(items.*)"];
+  }
+  static get properties() {
+    let props = {
+      /**
        * Allow for hiding the input form for new data.
-       */hideForm:{type:Boolean,value:!1,reflectToAttribute:!0},/**
+       */
+      hideForm: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
        * Whether or not the list of items is disabled
        * checkboxes.
-       */disabledList:{type:Boolean,value:!1,reflectToAttribute:!0},/**
+       */
+      disabledList: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
        * Name of this to do list
-       */name:{type:String,value:"To do list"},/**
+       */
+      name: {
+        type: String,
+        value: "To do list"
+      },
+      /**
        * Items
-       */items:{type:Array,value:[],notify:!0}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
+       */
+      items: {
+        type: Array,
+        value: [],
+        notify: true
+      }
+    };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
+  }
+  /**
    * Ensure the values change.
-   */_valueChanged(e){for(var i in e.base){for(var j in e.base[i]){this.notifyPath("items."+i+"."+j)}}}/**
+   */
+  _valueChanged(e) {
+    for (var i in e.base) {
+      for (var j in e.base[i]) {
+        this.notifyPath("items." + i + "." + j);
+      }
+    }
+  }
+  /**
    * Add a new item to the list.
-   */_addItemToList(e){if(""!=this.shadowRoot.querySelector("#itemtext").value&&typeof this.shadowRoot.querySelector("#itemtext").value!==typeof void 0){this.push("items",{label:this.shadowRoot.querySelector("#itemtext").value,value:!1,disabled:this.disabledList,id:"item-id-"+this.items.length});this.shadowRoot.querySelector("#itemtext").value=""}}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"To do list",description:"A list of things to do so people can keep calm.",icon:"icons:list",color:"grey",groups:["List"],handles:[],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"name",title:"Name",description:"The name of this to do list",inputMethod:"textfield",icon:"editor:title"}],configure:[{property:"name",title:"Name",description:"The name of this to do list",inputMethod:"textfield",icon:"editor:title"},{property:"items",title:"List of items",description:"List of items to display in our list.",inputMethod:"array",itemLabel:"label",properties:[{property:"label",title:"Task",description:"Name of the task",inputMethod:"textfield",required:!0},{property:"value",title:"Done",description:"Completion state",inputMethod:"boolean"}]}],advanced:[]}}}}window.customElements.define(ToDo.tag,ToDo);export{ToDo};
+   */
+  _addItemToList(e) {
+    if (
+      this.shadowRoot.querySelector("#itemtext").value != "" &&
+      typeof this.shadowRoot.querySelector("#itemtext").value !==
+        typeof undefined
+    ) {
+      this.push("items", {
+        label: this.shadowRoot.querySelector("#itemtext").value,
+        value: false,
+        disabled: this.disabledList,
+        id: "item-id-" + this.items.length
+      });
+      this.shadowRoot.querySelector("#itemtext").value = "";
+    }
+  }
+  static get haxProperties() {
+    return {
+      canScale: true,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "To do list",
+        description: "A list of things to do so people can keep calm.",
+        icon: "icons:list",
+        color: "grey",
+        groups: ["List"],
+        handles: [],
+        meta: {
+          author: "LRNWebComponents"
+        }
+      },
+      settings: {
+        quick: [
+          {
+            property: "name",
+            title: "Name",
+            description: "The name of this to do list",
+            inputMethod: "textfield",
+            icon: "editor:title"
+          }
+        ],
+        configure: [
+          {
+            property: "name",
+            title: "Name",
+            description: "The name of this to do list",
+            inputMethod: "textfield",
+            icon: "editor:title"
+          },
+          {
+            property: "items",
+            title: "List of items",
+            description: "List of items to display in our list.",
+            inputMethod: "array",
+            itemLabel: "label",
+            properties: [
+              {
+                property: "label",
+                title: "Task",
+                description: "Name of the task",
+                inputMethod: "textfield",
+                required: true
+              },
+              {
+                property: "value",
+                title: "Done",
+                description: "Completion state",
+                inputMethod: "boolean"
+              }
+            ]
+          }
+        ],
+        advanced: []
+      }
+    };
+  }
+}
+window.customElements.define(ToDo.tag, ToDo);
+export { ToDo };

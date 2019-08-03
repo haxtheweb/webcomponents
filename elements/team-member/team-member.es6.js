@@ -1,8 +1,26 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import{SchemaBehaviors}from"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";/**
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+/**
  * `team-member`
  * `A simple presentation of a team member and basic info`
  * @demo demo/index.html
- */class TeamMember extends SchemaBehaviors(PolymerElement){constructor(){super();import("./node_modules/@polymer/iron-iconset-svg/iron-iconset-svg.js");import("./node_modules/@polymer/iron-image/iron-image.js");import("./node_modules/@polymer/paper-icon-button/paper-icon-button.js");import("./node_modules/@lrnwebcomponents/mdi-iconset-svg/lib/mdi-social-iconset-svg.js");afterNextRender(this,function(){this.HAXWiring=new HAXWiring;this.HAXWiring.setup(TeamMember.haxProperties,TeamMember.tag,this)})}static get template(){return html`
+ */
+class TeamMember extends SchemaBehaviors(PolymerElement) {
+  constructor() {
+    super();
+    import("@polymer/iron-iconset-svg/iron-iconset-svg.js");
+    import("@polymer/iron-image/iron-image.js");
+    import("@polymer/paper-icon-button/paper-icon-button.js");
+    import("@lrnwebcomponents/mdi-iconset-svg/lib/mdi-social-iconset-svg.js");
+    afterNextRender(this, function() {
+      this.HAXWiring = new HAXWiring();
+      this.HAXWiring.setup(TeamMember.haxProperties, TeamMember.tag, this);
+    });
+  }
+  static get template() {
+    return html`
       <style>
         :host {
           display: block;
@@ -93,34 +111,167 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
           ></a>
         </div>
       </div>
-    `}static get tag(){return"team-member"}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Sample gizmo",description:"The user will be able to see this for selection in a UI.",icon:"av:play-circle-filled",color:"grey",groups:["Video","Media"],handles:[{type:"video",url:"source"}],meta:{author:"Your organization on github"}},settings:{quick:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield",icon:"editor:title"}],configure:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield",icon:"editor:title"}],advanced:[]}}}static get properties(){let props={/**
+    `;
+  }
+
+  static get tag() {
+    return "team-member";
+  }
+  static get haxProperties() {
+    return {
+      canScale: true,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Sample gizmo",
+        description: "The user will be able to see this for selection in a UI.",
+        icon: "av:play-circle-filled",
+        color: "grey",
+        groups: ["Video", "Media"],
+        handles: [
+          {
+            type: "video",
+            url: "source"
+          }
+        ],
+        meta: {
+          author: "Your organization on github"
+        }
+      },
+      settings: {
+        quick: [
+          {
+            property: "title",
+            title: "Title",
+            description: "The title of the element",
+            inputMethod: "textfield",
+            icon: "editor:title"
+          }
+        ],
+        configure: [
+          {
+            property: "title",
+            title: "Title",
+            description: "The title of the element",
+            inputMethod: "textfield",
+            icon: "editor:title"
+          }
+        ],
+        advanced: []
+      }
+    };
+  }
+  static get properties() {
+    let props = {
+      /**
        * Image
-       */image:{type:String},/**
+       */
+      image: {
+        type: String
+      },
+      /**
        * Full name of the team member
-       */fullName:{type:String},/**
+       */
+      fullName: {
+        type: String
+      },
+      /**
        * first line
-       */firstLine:{type:String,value:!1},/**
+       */
+      firstLine: {
+        type: String,
+        value: false
+      },
+      /**
        * second line
-       */secondLine:{type:String,value:!1},/**
+       */
+      secondLine: {
+        type: String,
+        value: false
+      },
+      /**
        * dribble
-       */dribble:{type:String,value:!1},/**
+       */
+      dribble: {
+        type: String,
+        value: false
+      },
+      /**
        * facebook
-       */facebook:{type:String,value:!1},/**
+       */
+      facebook: {
+        type: String,
+        value: false
+      },
+      /**
        * github
-       */github:{type:String,value:!1},/**
+       */
+      github: {
+        type: String,
+        value: false
+      },
+      /**
        * google
-       */google:{type:String,value:!1},/**
+       */
+      google: {
+        type: String,
+        value: false
+      },
+      /**
        * instagram
-       */instagram:{type:String,value:!1},/**
+       */
+      instagram: {
+        type: String,
+        value: false
+      },
+      /**
        * linkedin
-       */linkedin:{type:String,value:!1},/**
+       */
+      linkedin: {
+        type: String,
+        value: false
+      },
+      /**
        * pinterest
-       */pinterest:{type:String,value:!1},/**
+       */
+      pinterest: {
+        type: String,
+        value: false
+      },
+      /**
        * tumblr
-       */tumblr:{type:String,value:!1},/**
+       */
+      tumblr: {
+        type: String,
+        value: false
+      },
+      /**
        * twitch
-       */twitch:{type:String,value:!1},/**
+       */
+      twitch: {
+        type: String,
+        value: false
+      },
+      /**
        * twitter
-       */twitter:{type:String,value:!1},/**
+       */
+      twitter: {
+        type: String,
+        value: false
+      },
+      /**
        * whatsapp
-       */whatsapp:{type:String,value:!1}};if(super.properties){props=Object.assign(props,super.properties)}return props}}window.customElements.define(TeamMember.tag,TeamMember);export{TeamMember};
+       */
+      whatsapp: {
+        type: String,
+        value: false
+      }
+    };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
+  }
+}
+window.customElements.define(TeamMember.tag, TeamMember);
+export { TeamMember };

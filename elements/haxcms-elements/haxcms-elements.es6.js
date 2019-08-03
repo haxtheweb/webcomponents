@@ -1,4 +1,15 @@
 /**
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import"./node_modules/@lrnwebcomponents/haxcms-elements/lib/core/backends/haxcms-backend-beaker.js";import"./node_modules/@lrnwebcomponents/haxcms-elements/lib/core/backends/haxcms-backend-demo.js";import"./node_modules/@lrnwebcomponents/haxcms-elements/lib/core/backends/haxcms-backend-php.js";import"./node_modules/@lrnwebcomponents/haxcms-elements/lib/core/haxcms-editor-builder.js";import"./node_modules/@lrnwebcomponents/haxcms-elements/lib/core/haxcms-outline-editor-dialog.js";import"./node_modules/@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-builder.js";import"./node_modules/@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor-ui.js";import"./node_modules/@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor.js";import"./node_modules/@lrnwebcomponents/haxcms-elements/lib/core/site-list/haxcms-site-listing.js";import"./node_modules/@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-router.js";import"./node_modules/@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+ */
+import "@lrnwebcomponents/haxcms-elements/lib/core/backends/haxcms-backend-beaker.js";
+import "@lrnwebcomponents/haxcms-elements/lib/core/backends/haxcms-backend-demo.js";
+import "@lrnwebcomponents/haxcms-elements/lib/core/backends/haxcms-backend-php.js";
+import "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-editor-builder.js";
+import "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-outline-editor-dialog.js";
+import "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-builder.js";
+import "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor-ui.js";
+import "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor.js";
+import "@lrnwebcomponents/haxcms-elements/lib/core/site-list/haxcms-site-listing.js";
+import "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-router.js";
+import "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";

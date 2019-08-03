@@ -1,8 +1,22 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import{SchemaBehaviors}from"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";/**
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+/**
  * `simple-image`
  * `A minimalist image that modals and presents info cleanly.`
  * @demo demo/index.html
- */class SimpleImage extends SchemaBehaviors(PolymerElement){constructor(){super();afterNextRender(this,function(){this.HAXWiring=new HAXWiring;this.HAXWiring.setup(SimpleImage.haxProperties,SimpleImage.tag,this)})}static get template(){return html`
+ */
+class SimpleImage extends SchemaBehaviors(PolymerElement) {
+  constructor() {
+    super();
+    afterNextRender(this, function() {
+      this.HAXWiring = new HAXWiring();
+      this.HAXWiring.setup(SimpleImage.haxProperties, SimpleImage.tag, this);
+    });
+  }
+  static get template() {
+    return html`
       <style>
         :host {
           display: block;
@@ -220,12 +234,117 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
         <div class="credit">[[credit]]</div>
         <iron-icon icon="icons:fullscreen" class="close-fullscreen"></iron-icon>
       </div>
-    `}static get tag(){return"simple-image"}static get properties(){let props={/**
+    `;
+  }
+
+  static get tag() {
+    return "simple-image";
+  }
+  static get properties() {
+    let props = {
+      /**
        * image source
-       */src:{type:String},/**
+       */
+      src: {
+        type: String
+      },
+      /**
        * alt data
-       */alt:{type:String},/**
+       */
+      alt: {
+        type: String
+      },
+      /**
        * caption on the image
-       */caption:{type:String},/**
+       */
+      caption: {
+        type: String
+      },
+      /**
        * photo credit / copyright info
-       */credit:{type:String}};if(super.properties){props=Object.assign(props,super.properties)}return props}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Simple image",description:"A clean, simple image presentation that's responsive and modals on tapping",icon:"editor:insert-photo",color:"green",groups:["Image","Media"],handles:[{type:"image",url:"src"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"src",title:"Source",description:"The URL for the image.",inputMethod:"textfield",icon:"link",required:!0},{property:"alt",title:"Alternative text",description:"Text to describe the image to non-sighted users.",inputMethod:"alt",icon:"accessibility",required:!0}],configure:[{property:"src",title:"Source",description:"The URL for the image.",inputMethod:"textfield",icon:"link",required:!0},{property:"caption",title:"Caption",description:"A caption to describe the image usage",inputMethod:"textarea"},{property:"alt",title:"Alternative text",description:"Text to describe the image to non-sighted users.",inputMethod:"alt"},{property:"credit",title:"Credits",description:"Who the image is credited to / copyright information",inputMethod:"textarea"}],advanced:[]}}}}window.customElements.define(SimpleImage.tag,SimpleImage);export{SimpleImage};
+       */
+      credit: {
+        type: String
+      }
+    };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
+  }
+  static get haxProperties() {
+    return {
+      canScale: true,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Simple image",
+        description:
+          "A clean, simple image presentation that's responsive and modals on tapping",
+        icon: "editor:insert-photo",
+        color: "green",
+        groups: ["Image", "Media"],
+        handles: [
+          {
+            type: "image",
+            url: "src"
+          }
+        ],
+        meta: {
+          author: "LRNWebComponents"
+        }
+      },
+      settings: {
+        quick: [
+          {
+            property: "src",
+            title: "Source",
+            description: "The URL for the image.",
+            inputMethod: "textfield",
+            icon: "link",
+            required: true
+          },
+          {
+            property: "alt",
+            title: "Alternative text",
+            description: "Text to describe the image to non-sighted users.",
+            inputMethod: "alt",
+            icon: "accessibility",
+            required: true
+          }
+        ],
+        configure: [
+          {
+            property: "src",
+            title: "Source",
+            description: "The URL for the image.",
+            inputMethod: "textfield",
+            icon: "link",
+            required: true
+          },
+          {
+            property: "caption",
+            title: "Caption",
+            description: "A caption to describe the image usage",
+            inputMethod: "textarea"
+          },
+          {
+            property: "alt",
+            title: "Alternative text",
+            description: "Text to describe the image to non-sighted users.",
+            inputMethod: "alt"
+          },
+          {
+            property: "credit",
+            title: "Credits",
+            description: "Who the image is credited to / copyright information",
+            inputMethod: "textarea"
+          }
+        ],
+        advanced: []
+      }
+    };
+  }
+}
+window.customElements.define(SimpleImage.tag, SimpleImage);
+export { SimpleImage };

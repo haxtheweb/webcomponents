@@ -1,12 +1,25 @@
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import"./node_modules/@polymer/paper-styles/paper-styles.js";/**
+ */
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import "@polymer/paper-styles/paper-styles.js";
+/**
  * `lrnapp-fab-menu`
  * `floating action button with menu`
  *
  * @demo demo/index.html
- */class LrnappFabMenu extends PolymerElement{constructor(){super();import("./node_modules/@polymer/paper-fab/paper-fab.js");import("./node_modules/@lrnwebcomponents/lrnapp-fab-menu/lib/lrnapp-fab-speed-dial-action.js");import("./node_modules/@lrnwebcomponents/paper-fab-speed-dial/paper-fab-speed-dial.js");import("./node_modules/@lrnwebcomponents/paper-fab-speed-dial/lib/paper-fab-speed-dial-overlay.js")}static get template(){return html`
+ */
+class LrnappFabMenu extends PolymerElement {
+  constructor() {
+    super();
+    import("@polymer/paper-fab/paper-fab.js");
+    import("@lrnwebcomponents/lrnapp-fab-menu/lib/lrnapp-fab-speed-dial-action.js");
+    import("@lrnwebcomponents/paper-fab-speed-dial/paper-fab-speed-dial.js");
+    import("@lrnwebcomponents/paper-fab-speed-dial/lib/paper-fab-speed-dial-overlay.js");
+  }
+  static get template() {
+    return html`
       <style>
         lrnapp-fab-speed-dial-action:not(:defined),
         paper-fab-speed-dial-overlay:not(:defined),
@@ -52,7 +65,43 @@
         <slot></slot>
         <paper-fab icon="close" class="close" on-click="close"></paper-fab>
       </paper-fab-speed-dial-overlay>
-    `}static get tag(){return"lrnapp-fab-menu"}static get properties(){return{icon:{type:String,value:"add"},opened:{type:Boolean,notify:!0},disabled:{type:Boolean,value:!1}}}// Public methods
-open(e){// Required for mobile Safari to avoid passing the tap event to an element below the FAB
-if(e){e.preventDefault()}this.opened=!0}close(e){// Required for mobile Safari to avoid passing the tap event to an element below the FAB
-if(e){e.preventDefault()}this.opened=!1}}window.customElements.define(LrnappFabMenu.tag,LrnappFabMenu);export{LrnappFabMenu};
+    `;
+  }
+  static get tag() {
+    return "lrnapp-fab-menu";
+  }
+  static get properties() {
+    return {
+      icon: {
+        type: String,
+        value: "add"
+      },
+      opened: {
+        type: Boolean,
+        notify: true
+      },
+      disabled: {
+        type: Boolean,
+        value: false
+      }
+    };
+  }
+  // Public methods
+  open(e) {
+    // Required for mobile Safari to avoid passing the tap event to an element below the FAB
+    if (e) {
+      e.preventDefault();
+    }
+
+    this.opened = true;
+  }
+  close(e) {
+    // Required for mobile Safari to avoid passing the tap event to an element below the FAB
+    if (e) {
+      e.preventDefault();
+    }
+    this.opened = false;
+  }
+}
+window.customElements.define(LrnappFabMenu.tag, LrnappFabMenu);
+export { LrnappFabMenu };

@@ -1,7 +1,13 @@
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import"./node_modules/@polymer/paper-tabs/paper-tabs.js";import"./node_modules/@polymer/marked-element/marked-element.js";import"./node_modules/@polymer/iron-pages/iron-pages.js";import"./lib/lrn-markdown-editor-editor.js";/**
+ */
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import "@polymer/paper-tabs/paper-tabs.js";
+import "@polymer/marked-element/marked-element.js";
+import "@polymer/iron-pages/iron-pages.js";
+import "./lib/lrn-markdown-editor-editor.js";
+/**
  * `lrn-markdown-editor`
  * `Side by side markdown to HTML editor + preview pane`
  *
@@ -10,7 +16,10 @@
  * @polymer
  * @customElement
  * @demo demo/index.html
- */class LrnMarkdownEditor extends PolymerElement{static get template(){return html`
+ */
+class LrnMarkdownEditor extends PolymerElement {
+  static get template() {
+    return html`
       <style>
         :host {
           display: block;
@@ -103,13 +112,102 @@
           </paper-card>
         </section>
       </iron-pages>
-    `}static get tag(){return"lrn-markdown-editor"}static get properties(){return{content:{type:String,notify:!0},selected:{type:String,value:"0",reflectToAttribute:!0},layout:{type:String,value:0},cookies:{type:Boolean,value:!0},elReady:{type:Boolean,value:!1}}}static get observers(){return["_selectedChanged(selected)"]}_selectedChanged(selected){var root=this,cookieName=root._getCookieName();// get current cookies
-// if the 'split-view' pane is selected
-if(2===selected){// add a cookie for lrn-markdown-editor-splitview
-root._createCookie(cookieName,"true","30")}else if(2!==selected&&!0===root.elReady){/**
+    `;
+  }
+
+  static get tag() {
+    return "lrn-markdown-editor";
+  }
+
+  static get properties() {
+    return {
+      content: {
+        type: String,
+        notify: true
+      },
+      selected: {
+        type: String,
+        value: "0",
+        reflectToAttribute: true
+      },
+      layout: {
+        type: String,
+        value: 0
+      },
+      cookies: {
+        type: Boolean,
+        value: true
+      },
+      elReady: {
+        type: Boolean,
+        value: false
+      }
+    };
+  }
+
+  static get observers() {
+    return ["_selectedChanged(selected)"];
+  }
+
+  _selectedChanged(selected) {
+    var root = this;
+    var cookieName = root._getCookieName();
+    // get current cookies
+    // if the 'split-view' pane is selected
+    if (selected === 2) {
+      // add a cookie for lrn-markdown-editor-splitview
+      root._createCookie(cookieName, "true", "30");
+    } else if (selected !== 2 && root.elReady === true) {
+      /**
        * @todo: this is erasing the cookie erroneously
-       */root._eraseCookie(cookieName)}}_createCookie(name,value,days){var expires="";if(days){var date=new Date;date.setTime(date.getTime()+1e3*(60*(60*(24*days))));expires="; expires="+date.toUTCString()}document.cookie=name+"="+value+expires+"; path=/"}_readCookie(name){for(var nameEQ=name+"=",ca=document.cookie.split(";"),i=0,c;i<ca.length;i++){c=ca[i];while(" "==c.charAt(0))c=c.substring(1,c.length);if(0==c.indexOf(nameEQ))return c.substring(nameEQ.length,c.length)}return null}_eraseCookie(name){this._createCookie(name,"",-1)}_getCookieName(){return"lrnmarkdowneditorsplitview"}ready(){super.ready();var root=this;// tell others we are ready
-root.elReady=!0;// get the cookie for splitview
-var cookieName=root._getCookieName(),cookie=root._readCookie(cookieName);// if there is a cookie set for splitview
-if(cookie&&"true"===cookie){// show splitview pane
-root.selected=2}}}window.customElements.define(LrnMarkdownEditor.tag,LrnMarkdownEditor);export{LrnMarkdownEditor};
+       */
+      root._eraseCookie(cookieName);
+    }
+  }
+
+  _createCookie(name, value, days) {
+    var expires = "";
+    if (days) {
+      var date = new Date();
+      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + value + expires + "; path=/";
+  }
+
+  _readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(";");
+    for (var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == " ") c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+  }
+
+  _eraseCookie(name) {
+    this._createCookie(name, "", -1);
+  }
+
+  _getCookieName() {
+    return "lrnmarkdowneditorsplitview";
+  }
+
+  ready() {
+    super.ready();
+    var root = this;
+    // tell others we are ready
+    root.elReady = true;
+    // get the cookie for splitview
+    var cookieName = root._getCookieName();
+    var cookie = root._readCookie(cookieName);
+    // if there is a cookie set for splitview
+    if (cookie && cookie === "true") {
+      // show splitview pane
+      root.selected = 2;
+    }
+  }
+}
+window.customElements.define(LrnMarkdownEditor.tag, LrnMarkdownEditor);
+export { LrnMarkdownEditor };

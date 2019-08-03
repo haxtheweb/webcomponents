@@ -1,8 +1,12 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";/**
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+/**
  * `lrndesign-contentblock`
  * `An incredibly basic content block`
  * @demo demo/index.html
- */class LrndesignContentblock extends PolymerElement{static get template(){return html`
+ */
+class LrndesignContentblock extends PolymerElement {
+  static get template() {
+    return html`
       <style>
         :host {
           display: inline-block;
@@ -12,6 +16,21 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
       </style>
       <h3>[[title]]</h3>
       <slot></slot>
-    `}static get tag(){return"lrndesign-contentblock"}static get properties(){return{/**
+    `;
+  }
+  static get tag() {
+    return "lrndesign-contentblock";
+  }
+  static get properties() {
+    return {
+      /**
        * Heading for this block
-       */title:{type:String}}}}window.customElements.define(LrndesignContentblock.tag,LrndesignContentblock);export{LrndesignContentblock};
+       */
+      title: {
+        type: String
+      }
+    };
+  }
+}
+window.customElements.define(LrndesignContentblock.tag, LrndesignContentblock);
+export { LrndesignContentblock };

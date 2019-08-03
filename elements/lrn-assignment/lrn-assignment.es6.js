@@ -1,8 +1,17 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/polymer/lib/elements/dom-repeat.js";import"./node_modules/@polymer/polymer/lib/elements/dom-if.js";/**
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import "@polymer/paper-card/paper-card.js";
+import "@polymer/paper-button/paper-button.js";
+import "@polymer/polymer/lib/elements/dom-repeat.js";
+import "@polymer/polymer/lib/elements/dom-if.js";
+
+/**
 `lrn-assignment`
 
 * @demo demo/index.html
-*/class LrnAssignment extends PolymerElement{static get template(){return html`
+*/
+class LrnAssignment extends PolymerElement {
+  static get template() {
+    return html`
       <style>
         :host {
           display: flex;
@@ -27,15 +36,58 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
           </template>
         </div>
       </paper-card>
-    `}static get tag(){return"lrn-assignment"}static get properties(){return{/**
+    `;
+  }
+
+  static get tag() {
+    return "lrn-assignment";
+  }
+
+  static get properties() {
+    return {
+      /**
        * Title
-       */title:{type:String},/**
+       */
+      title: {
+        type: String
+      },
+      /**
        * Image url
-       */image:{type:String},/**
+       */
+      image: {
+        type: String
+      },
+      /**
        * Details of the assignment
-       */details:{type:String},/**
+       */
+      details: {
+        type: String
+      },
+      /**
        * url
-       */url:{type:String},open:{type:Boolean,value:!1},complete:{type:Boolean,value:!1},actions:{type:Object}}}}window.customElements.define(LrnAssignment.tag,LrnAssignment);export{LrnAssignment};class LrnAssignments extends PolymerElement{static get template(){return html`
+       */
+      url: {
+        type: String
+      },
+      open: {
+        type: Boolean,
+        value: false
+      },
+      complete: {
+        type: Boolean,
+        value: false
+      },
+      actions: {
+        type: Object
+      }
+    };
+  }
+}
+window.customElements.define(LrnAssignment.tag, LrnAssignment);
+export { LrnAssignment };
+class LrnAssignments extends PolymerElement {
+  static get template() {
+    return html`
       <style>
         :host {
           display: flex;
@@ -69,4 +121,45 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
           on-response="handleResponse"
         ></iron-ajax>
       </template>
-    `}static get tag(){return"lrn-assignments"}static get properties(){return{assignments:{type:Object,reflectToAttribute:!0,observer:"assignmentsChanged"},layout:{type:String,reflectToAttribute:!0},url:{type:String}}}assignmentsChanged(assignments){if(1>=assignments.length){this.layout="wide"}else if(4>=assignments.length){this.layout="medium"}else if(6>=assignments.length){this.layout="tight"}}rowItemsChanged(items){}handleResponse(data){this.assignments=data.response}}window.customElements.define(LrnAssignments.tag,LrnAssignments);export{LrnAssignments};
+    `;
+  }
+
+  static get tag() {
+    return "lrn-assignments";
+  }
+
+  static get properties() {
+    return {
+      assignments: {
+        type: Object,
+        reflectToAttribute: true,
+        observer: "assignmentsChanged"
+      },
+      layout: {
+        type: String,
+        reflectToAttribute: true
+      },
+      url: {
+        type: String
+      }
+    };
+  }
+
+  assignmentsChanged(assignments) {
+    if (assignments.length <= 1) {
+      this.layout = "wide";
+    } else if (assignments.length <= 4) {
+      this.layout = "medium";
+    } else if (assignments.length <= 6) {
+      this.layout = "tight";
+    }
+  }
+
+  rowItemsChanged(items) {}
+
+  handleResponse(data) {
+    this.assignments = data.response;
+  }
+}
+window.customElements.define(LrnAssignments.tag, LrnAssignments);
+export { LrnAssignments };

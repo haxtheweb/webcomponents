@@ -1,7 +1,16 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";/**
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+/**
  * `lrndesign-course-banner`
  * @demo demo/index.html
- */class LrndesignCourseBanner extends PolymerElement{constructor(){super();import("./node_modules/@polymer/iron-image/iron-image.js");import("./node_modules/@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js")}static get template(){return html`
+ */
+class LrndesignCourseBanner extends PolymerElement {
+  constructor() {
+    super();
+    import("@polymer/iron-image/iron-image.js");
+    import("@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js");
+  }
+  static get template() {
+    return html`
       <style>
         :host {
           display: block;
@@ -70,12 +79,41 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
           <div class="course-title">[[title]]</div>
         </div>
       </div>
-    `}static get tag(){return"lrndesign-course-banner"}static get properties(){return{/**
+    `;
+  }
+
+  static get tag() {
+    return "lrndesign-course-banner";
+  }
+
+  static get properties() {
+    return {
+      /**
        * Text representation of the color like red or blue
-       */color:{type:String},/**
+       */
+      color: {
+        type: String
+      },
+      /**
        * Banner image
-       */image:{type:String},/**
+       */
+      image: {
+        type: String
+      },
+      /**
        * Name of the course
-       */name:{type:String},/**
+       */
+      name: {
+        type: String
+      },
+      /**
        * Title of the course, longer description.
-       */title:{type:String}}}}window.customElements.define(LrndesignCourseBanner.tag,LrndesignCourseBanner);export{LrndesignCourseBanner};
+       */
+      title: {
+        type: String
+      }
+    };
+  }
+}
+window.customElements.define(LrndesignCourseBanner.tag, LrndesignCourseBanner);
+export { LrndesignCourseBanner };

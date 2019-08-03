@@ -1,10 +1,18 @@
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import{SchemaBehaviors}from"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";/**
+ */
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+/**
  * `flash-card`
  * @demo demo/index.html
- */class FlashCard extends SchemaBehaviors(PolymerElement){static get template(){return html`
+ */
+class FlashCard extends SchemaBehaviors(PolymerElement) {
+  static get template() {
+    return html`
       <style>
         :host {
           display: block;
@@ -53,12 +61,106 @@
         <div class="face front white black-text">Front</div>
         <div class="face back black white-text">Back</div>
       </paper-card>
-    `}static get tag(){return"flash-card"}static get properties(){let props={/**
+    `;
+  }
+
+  static get tag() {
+    return "flash-card";
+  }
+
+  static get properties() {
+    let props = {
+      /**
        * Title
-       */title:{type:String}};if(super.properties){props=Object.assign(props,super.properties)}return props}constructor(){super();import("./node_modules/@polymer/paper-card/paper-card.js")}/**
+       */
+      title: {
+        type: String
+      }
+    };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
+  }
+  constructor() {
+    super();
+    import("@polymer/paper-card/paper-card.js");
+  }
+  /**
    * Attached to the DOM, now fire.
-   */connectedCallback(){super.connectedCallback();afterNextRender(this,function(){this.HAXWiring=new HAXWiring;this.HAXWiring.setup(FlashCard.haxProperties,FlashCard.tag,this);this.addEventListener("mouseenter",this._flipup.bind(this));this.addEventListener("mouseleave",this._flipback.bind(this))})}disconnectedCallback(){this.removeEventListener("mouseenter",this._flipup.bind(this));this.removeEventListener("mouseleave",this._flipback.bind(this));super.disconnectedCallback()}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Sample gizmo",description:"The user will be able to see this for selection in a UI.",icon:"av:play-circle-filled",color:"grey",groups:["Video","Media"],handles:[{type:"video",url:"source"}],meta:{author:"Your organization on github"}},settings:{quick:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield",icon:"editor:title"}],configure:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield",icon:"editor:title"}],advanced:[]}}}/**
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, function() {
+      this.HAXWiring = new HAXWiring();
+      this.HAXWiring.setup(FlashCard.haxProperties, FlashCard.tag, this);
+      this.addEventListener("mouseenter", this._flipup.bind(this));
+      this.addEventListener("mouseleave", this._flipback.bind(this));
+    });
+  }
+  disconnectedCallback() {
+    this.removeEventListener("mouseenter", this._flipup.bind(this));
+    this.removeEventListener("mouseleave", this._flipback.bind(this));
+    super.disconnectedCallback();
+  }
+  static get haxProperties() {
+    return {
+      canScale: true,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Sample gizmo",
+        description: "The user will be able to see this for selection in a UI.",
+        icon: "av:play-circle-filled",
+        color: "grey",
+        groups: ["Video", "Media"],
+        handles: [
+          {
+            type: "video",
+            url: "source"
+          }
+        ],
+        meta: {
+          author: "Your organization on github"
+        }
+      },
+      settings: {
+        quick: [
+          {
+            property: "title",
+            title: "Title",
+            description: "The title of the element",
+            inputMethod: "textfield",
+            icon: "editor:title"
+          }
+        ],
+        configure: [
+          {
+            property: "title",
+            title: "Title",
+            description: "The title of the element",
+            inputMethod: "textfield",
+            icon: "editor:title"
+          }
+        ],
+        advanced: []
+      }
+    };
+  }
+
+  /**
    * Flip up
-   */_flipup(e){this.shadowRoot.querySelected("#card").classList.add("flipped")}/**
+   */
+  _flipup(e) {
+    this.shadowRoot.querySelected("#card").classList.add("flipped");
+  }
+
+  /**
    * Flip back
-   */_flipback(e){this.shadowRoot.querySelected("#card").classList.remove("flipped")}}window.customElements.define(FlashCard.tag,FlashCard);export{FlashCard};
+   */
+  _flipback(e) {
+    this.shadowRoot.querySelected("#card").classList.remove("flipped");
+  }
+}
+window.customElements.define(FlashCard.tag, FlashCard);
+export { FlashCard };

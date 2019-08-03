@@ -5,4 +5,5 @@
  *
  * This has theme, style, data binding and compilation enhancements
  * beyond the originals it has stemmed from.
- */import"./lib/eco-json-schema-wizard.js";
+ */
+import "./lib/eco-json-schema-wizard.js";

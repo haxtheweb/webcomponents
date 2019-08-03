@@ -10,7 +10,13 @@
  *
  * @pseudoElement hax-iconset
  * @demo demo/index.html
- */import"./node_modules/@polymer/iron-icon/iron-icon.js";import"./node_modules/@polymer/iron-iconset-svg/iron-iconset-svg.js";import{html}from"./node_modules/@polymer/polymer/lib/utils/html-tag.js";const template=html`
+ */
+import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/iron-iconset-svg/iron-iconset-svg.js";
+
+import { html } from "@polymer/polymer/lib/utils/html-tag.js";
+
+const template = html`
   <iron-iconset-svg size="24" name="hax">
     <!-- paragraph -->
     <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
@@ -140,4 +146,6 @@
         </g>
     </svg>
   </iron-iconset-svg>
-`;document.head.appendChild(template.content);
+`;
+
+document.head.appendChild(template.content);

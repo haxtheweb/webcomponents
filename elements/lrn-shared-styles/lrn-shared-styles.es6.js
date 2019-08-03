@@ -12,7 +12,13 @@
  * @polymer
  * @demo demo/index.html
  * @see lib/lrn-shared-styles-demo.js
- */import{html}from"./node_modules/@polymer/polymer/polymer-element.js";import"./node_modules/@polymer/polymer/lib/elements/dom-module.js";import"./node_modules/@polymer/iron-flex-layout/iron-flex-layout-classes.js";const styleElement=document.createElement("dom-module"),css=html`
+ */
+import { html } from "@polymer/polymer/polymer-element.js";
+import "@polymer/polymer/lib/elements/dom-module.js";
+import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
+const styleElement = document.createElement("dom-module");
+
+const css = html`
   <style include="iron-flex iron-flex-alignment">
     /**
      * Normalizes iron-icon and lrn-icon.
@@ -90,4 +96,7 @@
       }
     }
   </style>
-`;styleElement.appendChild(css);styleElement.register("lrn-shared-styles");
+`;
+styleElement.appendChild(css);
+
+styleElement.register("lrn-shared-styles");

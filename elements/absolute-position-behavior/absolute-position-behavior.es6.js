@@ -1,7 +1,11 @@
 /**
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import"./lib/absolute-position-state-manager.js";/**
+ */
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import "./lib/absolute-position-state-manager";
+
+/**
  * `absolute-position-behavior`
  * `Abstracting the positioning behavior from paper-tooltip to be resusable in other elements`
  *
@@ -11,8 +15,12 @@
  * @customElement
  * @polymer
  * @demo demo/index.html
- */class AbsolutePositionBehavior extends PolymerElement{// render function
-static get template(){return html`
+ */
+class AbsolutePositionBehavior extends PolymerElement {
+  
+  // render function
+  static get template() {
+    return html`
 <style>:host {
   display: inline-block;
 }
@@ -21,43 +29,144 @@ static get template(){return html`
   display: none;
 }
 </style>
-<slot></slot>`}// properties available to the custom element for data binding
-static get properties(){let props={/**
+<slot></slot>`;
+  }
+
+  // properties available to the custom element for data binding
+    static get properties() {
+    let props = {
+  /**
    * Element is positioned from connected to disconnected?
    * Otherwise setPosition and unsetPosition must be called manually.
-   */auto:{type:Boolean,value:!1},/**
+   */
+  "auto": {
+    "type": Boolean,
+    "value": false
+  },
+  /**
    * If true, no parts of the tooltip will ever be shown offscreen.
-   */fitToVisibleBounds:{type:Boolean,value:!1,observer:"updatePosition"},/**
+   */
+  "fitToVisibleBounds": {
+    "type": Boolean,
+    "value": false,
+    "observer": "updatePosition"
+  },
+  /**
    * The id of the element that the tooltip is anchored to. This element
    * must be a sibling of the tooltip. If this property is not set,
    * then the tooltip will be centered to the parent node containing it.
-   */for:{type:String,observer:"updatePosition",reflectToAttribute:!0},/**
+   */
+  "for": {
+    "type": String,
+    "observer": "updatePosition",
+    "reflectToAttribute": true
+  },
+  /**
    * The spacing between the top of the tooltip and the element it is
    * anchored to.
-   */offset:{type:Number,value:0,observer:"updatePosition"},/**
+   */
+  "offset": {
+    "type": Number,
+    "value": 0,
+    "observer": "updatePosition"
+  },
+  /**
    * Positions the tooltip to the top, right, bottom, left of its content.
-   */position:{type:String,value:"bottom",observer:"updatePosition",reflectToAttribute:!0},/**
+   */
+  "position": {
+    "type": String,
+    "value": "bottom",
+    "observer": "updatePosition",
+    "reflectToAttribute": true
+  },
+  /**
    * The actual target element
-   */target:{type:Object,observer:"updatePosition"},/**
+   */
+  "target": {
+    "type": Object,
+    "observer": "updatePosition"
+  },
+  /**
    * The element's style
-   */__positions:{type:Object}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
+   */
+  "__positions": {
+    "type": Object
+  }
+}
+;
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
+  }
+
+  /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
-   */static get tag(){return"absolute-position-behavior"}/**
+   */
+  static get tag() {
+    return "absolute-position-behavior";
+  }
+
+  /**
    * life cycle, element is afixed to the DOM
-   */connectedCallback(){super.connectedCallback();let root=this;root.__observe=!1;root.__manager=window.AbsolutePositionStateManager.requestAvailability();if(!1!==root.auto)root.setPosition()}/**
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    let root = this;
+    root.__observe = false;
+    root.__manager = window.AbsolutePositionStateManager.requestAvailability();
+    if (root.auto !== false) root.setPosition();
+  }
+
+  /**
    * life cycle, element is ready
    * @returns {void}
-   */ready(){super.ready()}/**
+   */
+  ready() {
+    super.ready();
+  }
+  /**
    * Registers the element with AbsolutePositionStateManager
    * @returns {void}
-   */setPosition(){let root=this;root.__observe=!0;root.__manager.loadElement(root)}/**
+   */
+  setPosition() {
+    let root = this;
+    root.__observe = true;
+    root.__manager.loadElement(root);
+  }
+
+  /**
    * Unregisters the element with AbsolutePositionStateManager
    * @returns {void}
-   */unsetPosition(){let root=this;root.__observe=!1;root.__manager.unloadElement(root)}/**
+   */
+  unsetPosition() {
+    let root = this;
+    root.__observe = false;
+    root.__manager.unloadElement(root);
+  }
+
+  /**
    * Updates  the element's position
    * @returns {void}
-   */updatePosition(){let root=this;if(!0===root.__observe){root.__manager.positionElement(root)}}/**
+   */
+  updatePosition() {
+    let root = this;
+    if (root.__observe === true) {
+      root.__manager.positionElement(root);
+    }
+  }
+  /**
    * life cycle, element is removed from the DOM
    * @returns {void}
-   */disconnectedCallback(){this.unsetPosition();super.disconnectedCallback()}}window.customElements.define(AbsolutePositionBehavior.tag,AbsolutePositionBehavior);export{AbsolutePositionBehavior};
+   */
+  disconnectedCallback() {
+    this.unsetPosition();
+    super.disconnectedCallback();
+  }
+}
+window.customElements.define(
+  AbsolutePositionBehavior.tag,
+  AbsolutePositionBehavior
+);
+export { AbsolutePositionBehavior };

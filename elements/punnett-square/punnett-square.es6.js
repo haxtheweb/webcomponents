@@ -1,7 +1,11 @@
 /**
  * Copyright 2019 PSU
  * @license Apache-2.0, see License.md for full text.
- */import{LitElement,html}from"./node_modules/@polymer/lit-element/lit-element.js";import"./node_modules/@polymer/paper-input/paper-input.js";/**
+ */
+import { LitElement, html } from "@polymer/lit-element";
+import "@polymer/paper-input/paper-input.js";
+
+/**
  * `punnett-square`
  * ``
  *
@@ -12,15 +16,55 @@
  * @lit-html
  * @lit-element
  * @demo demo/index.html
- */class PunnettSquare extends LitElement{/**
+ */
+class PunnettSquare extends LitElement {
+  /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
-   */tag(){return"punnett-square"}static get properties(){return{variant1:{type:String},variant2:{type:String},editable:{type:Boolean}}}// life cycle
-constructor(){super();this.variant1="";this.variant2="";this.editable=!1}/**
+   */
+  tag() {
+    return "punnett-square";
+  }
+
+  static get properties() {
+    return {
+      variant1: { type: String },
+      variant2: { type: String },
+      editable: { type: Boolean }
+    };
+  }
+
+  // life cycle
+  constructor() {
+    super();
+    this.variant1 = "";
+    this.variant2 = "";
+    this.editable = false;
+  }
+
+  /**
    * life cycle, element is afixed to the DOM
-   */connectedCallback(){super.connectedCallback()}/**
+   */
+  connectedCallback() {
+    super.connectedCallback();
+  }
+
+  /**
    * Ensures that the value is a multidimensional array
-   */__ensureArray(value){let toplevel="string"===typeof value?value.split(",").map(i=>i.trim()):[];return toplevel.map(i=>"string"===typeof i?i.split("").map(i=>i.trim()):[])}render(){let value1=this.__ensureArray(this.variant1),value2=this.__ensureArray(this.variant2);return html`
+   */
+  __ensureArray(value) {
+    let toplevel =
+      typeof value === "string" ? value.split(",").map(i => i.trim()) : [];
+    return toplevel.map(i =>
+      typeof i === "string" ? i.split("").map(i => i.trim()) : []
+    );
+  }
+
+  render() {
+    let value1 = this.__ensureArray(this.variant1);
+    let value2 = this.__ensureArray(this.variant2);
+
+    return html`
       <style>
         :host {
           display: block;
@@ -65,48 +109,79 @@ constructor(){super();this.variant1="";this.variant2="";this.editable=!1}/**
         }
       </style>
       <div id="inputs">
-        Variant1: <div class="input">${this.editable?html`
+        Variant1: <div class="input">${
+          this.editable
+            ? html`
                 <paper-input
                   value="${this.variant1}"
-                  @value-changed=${e=>this.variant1=e.detail.value}
+                  @value-changed=${e => (this.variant1 = e.detail.value)}
                 ></paper-input>
-              `:html`
+              `
+            : html`
                 ${this.variant1}
-              `}</div>
-        Variant2: <div class="input">${this.editable?html`
+              `
+        }</div>
+        Variant2: <div class="input">${
+          this.editable
+            ? html`
                 <paper-input
                   value="${this.variant2}"
-                  @value-changed=${e=>this.variant2=e.detail.value}
+                  @value-changed=${e => (this.variant2 = e.detail.value)}
                 ></paper-input>
-              `:html`
+              `
+            : html`
                 ${this.variant2}
-              `}</div>
+              `
+        }</div>
       </div>
       <table>
         <thead>
           <tr>
             <th></th>
-            ${value1.map(allele1=>html`
-                  ${allele1.map(i=>html`
+            ${value1.map(
+              allele1 =>
+                html`
+                  ${allele1.map(
+                    i =>
+                      html`
                         <th>${i}</th>
-                      `)}
-                `)}
+                      `
+                  )}
+                `
+            )}
           </tr>
         <tbody>
-          ${value2.map((allele2,index)=>allele2.map(allele=>html`
+          ${value2.map((allele2, index) =>
+            allele2.map(
+              allele =>
+                html`
                   <tr>
                     <th>${allele}</th>
-                    ${value1.map(v1=>v1.map(allele1=>html`
+                    ${value1.map(v1 =>
+                      v1.map(
+                        allele1 =>
+                          html`
                             <td>${allele1}${allele}</td>
-                          `))}
+                          `
+                      )
+                    )}
                   </tr>
-                `))}
+                `
+            )
+          )}
         </tbody>
         </thead>
       </table>
-    `}// static get observedAttributes() {
-//   return [];
-// }
-// disconnectedCallback() {}
-// attributeChangedCallback(attr, oldValue, newValue) {}
-}customElements.define("punnett-square",PunnettSquare);export{PunnettSquare};
+    `;
+  }
+
+  // static get observedAttributes() {
+  //   return [];
+  // }
+  // disconnectedCallback() {}
+
+  // attributeChangedCallback(attr, oldValue, newValue) {}
+}
+customElements.define("punnett-square", PunnettSquare);
+
+export { PunnettSquare };

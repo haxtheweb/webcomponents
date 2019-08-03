@@ -6,7 +6,13 @@
  * @group LRN Elements
  * @pseudoElement md-extra-icons
  * @demo demo/index.html
- */import"./node_modules/@polymer/iron-icon/iron-icon.js";import"./node_modules/@polymer/iron-iconset-svg/iron-iconset-svg.js";import{html}from"./node_modules/@polymer/polymer/lib/utils/html-tag.js";const template=html`
+ */
+import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/iron-iconset-svg/iron-iconset-svg.js";
+
+import { html } from "@polymer/polymer/lib/utils/html-tag.js";
+
+const template = html`
   <iron-iconset-svg name="mdextra" size="24">
     <svg>
       <defs>
@@ -43,4 +49,6 @@
       </defs>
     </svg>
   </iron-iconset-svg>
-`;document.head.appendChild(template.content);
+`;
+
+document.head.appendChild(template.content);

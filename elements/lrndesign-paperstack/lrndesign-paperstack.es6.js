@@ -1,12 +1,34 @@
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import{SimpleColors}from"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import{A11yBehaviors}from"./node_modules/@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";/**
+ */
+import { html } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import { A11yBehaviors } from "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
+/**
  * `lrndesign-paperstack`
  * `Stack of papers visually`
  *
  * @demo demo/index.html
- */class LrndesignPaperstack extends A11yBehaviors(SimpleColors){constructor(){super();import("./node_modules/@polymer/iron-icon/iron-icon.js");import("./node_modules/@lrnwebcomponents/lrn-icons/lrn-icons.js");afterNextRender(this,function(){this.HAXWiring=new HAXWiring;this.HAXWiring.setup(LrndesignPaperstack.haxProperties,LrndesignPaperstack.tag,this)})}static get template(){return html`
+ */
+class LrndesignPaperstack extends A11yBehaviors(SimpleColors) {
+  constructor() {
+    super();
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@lrnwebcomponents/lrn-icons/lrn-icons.js");
+    afterNextRender(this, function() {
+      this.HAXWiring = new HAXWiring();
+      this.HAXWiring.setup(
+        LrndesignPaperstack.haxProperties,
+        LrndesignPaperstack.tag,
+        this
+      );
+    });
+  }
+  static get template() {
+    return html`
       <style>
         :host {
           display: block;
@@ -125,8 +147,111 @@
           <p><slot></slot></p>
         </div>
       </div>
-    `}static get tag(){return"lrndesign-paperstack"}static get properties(){let props={/**
+    `;
+  }
+  static get tag() {
+    return "lrndesign-paperstack";
+  }
+  static get properties() {
+    let props = {
+      /**
        * Title
-       */title:{type:String,value:"Title"},/**
+       */
+      title: {
+        type: String,
+        value: "Title"
+      },
+      /**
        * icon
-       */icon:{type:String,value:"lrn:assignment"}};if(super.properties){props=Object.assign(props,super.properties)}return props}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Paper stack",description:"A stack of papers",icon:"icons:content-copy",color:"grey",groups:["Video","Media"],handles:[],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"title",title:"Title",description:"Title of the cards",inputMethod:"textfield",icon:"editor:title"},{property:"accentColor",title:"Accent Color",description:"Select the accent color use",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{property:"dark",title:"Dark",description:"Use dark theme",inputMethod:"boolean",icon:"invert-colors"}],configure:[{property:"title",title:"Title",description:"Title of the cards",inputMethod:"boolean"},{property:"accentColor",title:"Accent Color",description:"Select the accent color use",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{property:"dark",title:"Dark",description:"Use dark theme",inputMethod:"boolean",icon:"invert-colors"},{property:"icon",title:"Icon",description:"Icon for the card",inputMethod:"iconpicker"},{slot:"",title:"Contents",description:"card contents",inputMethod:"code-editor"}],advanced:[]}}}}window.customElements.define(LrndesignPaperstack.tag,LrndesignPaperstack);export{LrndesignPaperstack};
+       */
+      icon: {
+        type: String,
+        value: "lrn:assignment"
+      }
+    };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
+  }
+  static get haxProperties() {
+    return {
+      canScale: true,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Paper stack",
+        description: "A stack of papers",
+        icon: "icons:content-copy",
+        color: "grey",
+        groups: ["Video", "Media"],
+        handles: [],
+        meta: {
+          author: "LRNWebComponents"
+        }
+      },
+      settings: {
+        quick: [
+          {
+            property: "title",
+            title: "Title",
+            description: "Title of the cards",
+            inputMethod: "textfield",
+            icon: "editor:title"
+          },
+          {
+            property: "accentColor",
+            title: "Accent Color",
+            description: "Select the accent color use",
+            inputMethod: "colorpicker",
+            icon: "editor:format-color-fill"
+          },
+          {
+            property: "dark",
+            title: "Dark",
+            description: "Use dark theme",
+            inputMethod: "boolean",
+            icon: "invert-colors"
+          }
+        ],
+        configure: [
+          {
+            property: "title",
+            title: "Title",
+            description: "Title of the cards",
+            inputMethod: "boolean"
+          },
+          {
+            property: "accentColor",
+            title: "Accent Color",
+            description: "Select the accent color use",
+            inputMethod: "colorpicker",
+            icon: "editor:format-color-fill"
+          },
+          {
+            property: "dark",
+            title: "Dark",
+            description: "Use dark theme",
+            inputMethod: "boolean",
+            icon: "invert-colors"
+          },
+          {
+            property: "icon",
+            title: "Icon",
+            description: "Icon for the card",
+            inputMethod: "iconpicker"
+          },
+          {
+            slot: "",
+            title: "Contents",
+            description: "card contents",
+            inputMethod: "code-editor"
+          }
+        ],
+        advanced: []
+      }
+    };
+  }
+}
+window.customElements.define(LrndesignPaperstack.tag, LrndesignPaperstack);
+export { LrndesignPaperstack };

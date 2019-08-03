@@ -1,9 +1,21 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";/**
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+/**
  * `image-inspector`
  * `Zoom, Rotate, Mirror, Download, and View image`
  *
  * @demo demo/index.html
- */class ImageInspector extends PolymerElement{constructor(){super();import("./node_modules/@polymer/app-layout/app-layout.js");import("./node_modules/@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js");import("./node_modules/@lrnwebcomponents/lrnsys-button/lrnsys-button.js");import("./node_modules/@polymer/iron-icons/iron-icons.js");import("./node_modules/@polymer/iron-icons/image-icons.js")}static get template(){return html`
+ */
+class ImageInspector extends PolymerElement {
+  constructor() {
+    super();
+    import("@polymer/app-layout/app-layout.js");
+    import("@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js");
+    import("@lrnwebcomponents/lrnsys-button/lrnsys-button.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icons/image-icons.js");
+  }
+  static get template() {
+    return html`
       <style>
         :host {
           display: block;
@@ -71,22 +83,87 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
       </app-toolbar>
       <img-pan-zoom id="img" src="[[src]]"></img-pan-zoom>
       <slot></slot>
-    `}static get tag(){return"image-inspector"}static get properties(){return{/**
+    `;
+  }
+
+  static get tag() {
+    return "image-inspector";
+  }
+
+  static get properties() {
+    return {
+      /**
        * Image rotation
-       */degrees:{type:Number,value:0,reflectToAttribute:!0},/**
+       */
+      degrees: {
+        type: Number,
+        value: 0,
+        reflectToAttribute: true
+      },
+      /**
        * Image source.
-       */src:{type:String,reflectToAttribute:!0},/**
+       */
+      src: {
+        type: String,
+        reflectToAttribute: true
+      },
+      /**
        * Hover class for button styling
-       */hoverClass:{type:String,value:"blue white-text"}}}connectedCallback(){super.connectedCallback();this.__img=this.shadowRoot.querySelector("#img")}/**
+       */
+      hoverClass: {
+        type: String,
+        value: "blue white-text"
+      }
+    };
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    this.__img = this.shadowRoot.querySelector("#img");
+  }
+  /**
    * Rotate the image to the right.
-   */rotateRight(){// spin 90
-this.degrees+=90;this.__img.style.transform="rotate("+this.degrees+"deg)";this.__img.toggleClass("top")}/**
+   */
+  rotateRight() {
+    // spin 90
+    this.degrees += 90;
+    this.__img.style.transform = "rotate(" + this.degrees + "deg)";
+    this.__img.toggleClass("top");
+  }
+
+  /**
    * Rotate the image to the left.
-   */rotateLeft(){// go back 90
-this.degrees+=-90;this.__img.style.transform="rotate("+this.degrees+"deg)";this.__img.toggleClass("top")}/**
+   */
+  rotateLeft() {
+    // go back 90
+    this.degrees += -90;
+    this.__img.style.transform = "rotate(" + this.degrees + "deg)";
+    this.__img.toggleClass("top");
+  }
+
+  /**
    * Flip the image.
-   */mirrorImage(){if("scaleX(1)"===this.__img.style.transform){this.__img.style.transform="scaleX(-1)"}else{this.__img.style.transform="scaleX(1)"}}/**
+   */
+  mirrorImage() {
+    if (this.__img.style.transform === "scaleX(1)") {
+      this.__img.style.transform = "scaleX(-1)";
+    } else {
+      this.__img.style.transform = "scaleX(1)";
+    }
+  }
+
+  /**
    * Zoom in by calling  downstream function.
-   */zoomIn(){this.__img.zoomIn()}/**
+   */
+  zoomIn() {
+    this.__img.zoomIn();
+  }
+
+  /**
    * Zoom out by calling downstream function.
-   */zoomOut(){this.__img.zoomOut()}}window.customElements.define(ImageInspector.tag,ImageInspector);export{ImageInspector};
+   */
+  zoomOut() {
+    this.__img.zoomOut();
+  }
+}
+window.customElements.define(ImageInspector.tag, ImageInspector);
+export { ImageInspector };
