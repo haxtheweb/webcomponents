@@ -35,6 +35,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/app-datepicker": "^2.0.9",
+    "@lrnwebcomponents/simple-login": "^2.1.2",
     "@lrnwebcomponents/code-editor": "^2.1.2",
     "@lrnwebcomponents/code-sample": "^2.1.2",
     "@lrnwebcomponents/dl-behavior": "^2.1.2",

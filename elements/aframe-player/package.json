@@ -35,6 +35,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/hax-body-behaviors": "^2.1.2",
+    "@lrnwebcomponents/es-global-bridge": "^2.1.1",
     "@lrnwebcomponents/schema-behaviors": "^2.1.2",
     "@polymer/paper-spinner": "^3.0.0",
     "@polymer/paper-tooltip": "^3.0.1",

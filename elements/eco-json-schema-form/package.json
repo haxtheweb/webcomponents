@@ -35,6 +35,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/a11y-collapse": "^2.1.2",
+    "@lrnwebcomponents/a11y-tabs": "^2.1.2",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/app-localize-behavior": "^3.0.0",
     "@polymer/iron-flex-layout": "^3.0.0",
