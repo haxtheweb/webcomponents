@@ -25,7 +25,6 @@
   "main": "h-a-x.js",
   "module": "h-a-x.es6.js",
   "umd": "h-a-x.umd.js",
-  "amd": "h-a-x.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/h-a-x/test/",
     "start": "yarn run dev",

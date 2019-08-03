@@ -1,1 +1,0 @@
-define(["./node_modules/@polymer/polymer/polymer-element.js","./node_modules/@polymer/polymer/lib/utils/render-status.js","./lib/lrndesign-bar.js","./lib/lrndesign-line.js","./lib/lrndesign-pie.js"],function(_polymerElement,_renderStatus,_lrndesignBar,_lrndesignLine,_lrndesignPie){"use strict"});
