@@ -16,7 +16,7 @@
       "hax": "src/haxor-slevin-hax.json"
     }
   },
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "Tech blogger theme",
   "repository": {
     "type": "git",
@@ -39,7 +39,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/haxcms-elements": "^2.1.2",
+    "@lrnwebcomponents/haxcms-elements": "^2.1.3",
     "@lrnwebcomponents/simple-blog-card": "^2.1.2",
     "@lrnwebcomponents/simple-colors": "^2.1.2",
     "@lrnwebcomponents/social-share-link": "^2.1.2",

@@ -16,7 +16,7 @@
       "hax": "src/video-player-hax.json"
     }
   },
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "Automated conversion of video-player/",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/a11y-behaviors": "^2.1.2",
-    "@lrnwebcomponents/a11y-media-player": "^2.1.2",
+    "@lrnwebcomponents/a11y-media-player": "^2.1.3",
     "@lrnwebcomponents/hax-body-behaviors": "^2.1.2",
     "@lrnwebcomponents/materializecss-styles": "^2.1.2",
     "@lrnwebcomponents/media-behaviors": "^2.1.2",
