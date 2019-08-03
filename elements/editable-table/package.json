@@ -16,7 +16,7 @@
       "hax": "src/editable-table-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "A table that's editable",
   "repository": {
     "type": "git",
@@ -39,10 +39,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-collapse": "^2.1.1",
-    "@lrnwebcomponents/dropdown-select": "^2.1.1",
-    "@lrnwebcomponents/responsive-utility": "^2.1.1",
-    "@lrnwebcomponents/simple-colors": "^2.1.1",
+    "@lrnwebcomponents/a11y-collapse": "^2.1.2",
+    "@lrnwebcomponents/dropdown-select": "^2.1.2",
+    "@lrnwebcomponents/responsive-utility": "^2.1.2",
+    "@lrnwebcomponents/simple-colors": "^2.1.2",
     "@polymer/iron-a11y-keys": "^3.0.1",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-autogrow-textarea": "^3.0.0",
@@ -62,7 +62,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.1.1",
+    "@lrnwebcomponents/storybook-utilities": "^2.1.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@webcomponents/webcomponentsjs": "2.2.10",

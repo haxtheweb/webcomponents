@@ -16,7 +16,7 @@
       "hax": "src/filtered-image-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "An image using an SVG filter. Can be used to make background images have more contrast with text.",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/hax-body-behaviors": "latest",
-    "@lrnwebcomponents/simple-colors": "^2.1.1",
+    "@lrnwebcomponents/simple-colors": "^2.1.2",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {

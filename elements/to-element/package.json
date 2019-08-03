@@ -16,7 +16,7 @@
       "hax": "src/to-element-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Replicate any DOM node passed in and turn it into a web component",
   "repository": {
     "type": "git",

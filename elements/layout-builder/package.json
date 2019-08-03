@@ -16,7 +16,7 @@
       "hax": "src/layout-builder-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "A new UI for adding content to layouts",
   "repository": {
     "type": "git",

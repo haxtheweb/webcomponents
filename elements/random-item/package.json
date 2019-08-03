@@ -16,7 +16,7 @@
       "hax": "src/random-item-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "show a random item from a list of items",
   "repository": {
     "type": "git",

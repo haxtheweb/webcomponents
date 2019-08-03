@@ -16,7 +16,7 @@
       "hax": "src/user-action-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "track user actions and allow them to talk to xAPI stores easily",
   "repository": {
     "type": "git",

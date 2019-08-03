@@ -16,7 +16,7 @@
       "hax": "src/simple-image-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Automated conversion of simple-image/",
   "repository": {
     "type": "git",
@@ -39,13 +39,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^2.1.1",
-    "@lrnwebcomponents/schema-behaviors": "^2.1.1",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.1.2",
+    "@lrnwebcomponents/schema-behaviors": "^2.1.2",
     "@polymer/polymer": "^3.2.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.1.1",
+    "@lrnwebcomponents/storybook-utilities": "^2.1.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@webcomponents/webcomponentsjs": "2.2.10",

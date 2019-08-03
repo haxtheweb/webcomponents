@@ -1,6 +1,6 @@
 {
   "name": "@lrnwebcomponents/storybook-utilities",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "A series of utilities for `story.js` files",
   "repository": {
     "type": "git",
