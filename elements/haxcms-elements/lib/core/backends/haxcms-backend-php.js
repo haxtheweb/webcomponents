@@ -135,10 +135,12 @@ class HAXCMSBackendPHP extends PolymerElement {
                 window.appSettings.deleteNodePath;
               haxCmsSiteEditorElement.appStore = window.appSettings.appStore;
               store.cmsSiteEditorAvailability();
-              store.cmsSiteEditor.instance.haxCmsSiteEditorElement = haxCmsSiteEditorElement;
-              store.cmsSiteEditor.instance.appendTarget.appendChild(
-                haxCmsSiteEditorElement
-              );
+              if (!store.cmsSiteEditor.instance.haxCmsSiteEditorElement) {
+                store.cmsSiteEditor.instance.haxCmsSiteEditorElement = haxCmsSiteEditorElement;
+                store.cmsSiteEditor.instance.appendTarget.appendChild(
+                  haxCmsSiteEditorElement
+                );
+              }
             }
           },
           e => {
