@@ -200,7 +200,7 @@ class SiteQuery extends MutableData(PolymerElement) {
         // apply conditions, this will automatically filter our items
         for (var i in conditions) {
           // test for object vs direct form of condition
-          if (typeof conditions[i] !== "object") {
+          if (typeof conditions[i] !== "object" || conditions[i] === null) {
             conditions[i] = {
               value: conditions[i],
               operator: "="
