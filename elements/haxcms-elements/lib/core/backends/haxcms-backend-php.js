@@ -100,35 +100,45 @@ class HAXCMSBackendPHP extends PolymerElement {
       try {
         import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor.js").then(
           e => {
-            let haxCmsSiteEditorElement = document.createElement(
-              "haxcms-site-editor"
-            );
-            haxCmsSiteEditorElement.jwt = this.jwt;
-            haxCmsSiteEditorElement.saveNodePath =
-              window.appSettings.saveNodePath;
-            haxCmsSiteEditorElement.saveManifestPath =
-              window.appSettings.saveManifestPath;
-            haxCmsSiteEditorElement.saveOutlinePath =
-              window.appSettings.saveOutlinePath;
-            haxCmsSiteEditorElement.getNodeFieldsPath =
-              window.appSettings.getNodeFieldsPath;
-            haxCmsSiteEditorElement.getSiteFieldsPath =
-              window.appSettings.getSiteFieldsPath;
-            haxCmsSiteEditorElement.getFieldsToken =
-              window.appSettings.getFieldsToken;
-            haxCmsSiteEditorElement.publishSitePath =
-              window.appSettings.publishSitePath;
-            haxCmsSiteEditorElement.revertSitePath =
-              window.appSettings.revertSitePath;
-            haxCmsSiteEditorElement.createNodePath =
-              window.appSettings.createNodePath;
-            haxCmsSiteEditorElement.deleteNodePath =
-              window.appSettings.deleteNodePath;
-            haxCmsSiteEditorElement.appStore = window.appSettings.appStore;
-            store.cmsSiteEditor.instance.haxCmsSiteEditorElement = haxCmsSiteEditorElement;
-            store.cmsSiteEditor.instance.appendTarget.appendChild(
-              haxCmsSiteEditorElement
-            );
+            // if we don't have appSettings by this point
+            // it means we don't actually have a backend / directions
+            // this would be a published state or a state where
+            // there is no actual backend to bother confiring with
+            // possibly a user navigated to a site that doesn't
+            // have JWT credentials but isn't actually published
+            // we also need this here because PHP is the assumed
+            // fallback backend
+            if (window.appSettings) {
+              let haxCmsSiteEditorElement = document.createElement(
+                "haxcms-site-editor"
+              );
+              haxCmsSiteEditorElement.jwt = this.jwt;
+              haxCmsSiteEditorElement.saveNodePath =
+                window.appSettings.saveNodePath;
+              haxCmsSiteEditorElement.saveManifestPath =
+                window.appSettings.saveManifestPath;
+              haxCmsSiteEditorElement.saveOutlinePath =
+                window.appSettings.saveOutlinePath;
+              haxCmsSiteEditorElement.getNodeFieldsPath =
+                window.appSettings.getNodeFieldsPath;
+              haxCmsSiteEditorElement.getSiteFieldsPath =
+                window.appSettings.getSiteFieldsPath;
+              haxCmsSiteEditorElement.getFieldsToken =
+                window.appSettings.getFieldsToken;
+              haxCmsSiteEditorElement.publishSitePath =
+                window.appSettings.publishSitePath;
+              haxCmsSiteEditorElement.revertSitePath =
+                window.appSettings.revertSitePath;
+              haxCmsSiteEditorElement.createNodePath =
+                window.appSettings.createNodePath;
+              haxCmsSiteEditorElement.deleteNodePath =
+                window.appSettings.deleteNodePath;
+              haxCmsSiteEditorElement.appStore = window.appSettings.appStore;
+              store.cmsSiteEditor.instance.haxCmsSiteEditorElement = haxCmsSiteEditorElement;
+              store.cmsSiteEditor.instance.appendTarget.appendChild(
+                haxCmsSiteEditorElement
+              );
+            }
           },
           e => {
             //import failed
