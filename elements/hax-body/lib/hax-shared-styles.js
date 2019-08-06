@@ -1,3 +1,5 @@
+import "@polymer/polymer/lib/elements/dom-module.js";
+
 const styleElement = document.createElement("dom-module");
 styleElement.innerHTML = `<template>
   <style>
