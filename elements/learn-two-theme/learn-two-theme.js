@@ -217,6 +217,7 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
           top: 0;
           bottom: 0;
           left: 300px;
+          z-index: 1;
           --site-menu-button-icon: {
             width: 64px;
             height: 64px;
