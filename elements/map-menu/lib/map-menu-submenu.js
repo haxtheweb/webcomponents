@@ -118,8 +118,13 @@ class MapMenuSubmenu extends PolymerElement {
   }
   _openChanged(opened) {
     var target = this.shadowRoot.querySelector("#container");
-    if (opened) target.show();
-    if (!opened) target.hide();
+    if (target) {
+      if (opened && typeof target.show === "function") {
+        target.show();
+      } else if (typeof target.hide === "function") {
+        target.hide();
+      }
+    }
   }
 
   _headerClickHandler(e) {
