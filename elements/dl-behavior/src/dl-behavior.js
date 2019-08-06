@@ -13,7 +13,8 @@ export const MtzFileDownloadBehaviors = function(SuperClass) {
                   CSV: "text/csv",
                   JSON: "text/json",
                   PDF: "application/pdf",
-                  TXT: "text/plain"
+                  TXT: "text/plain",
+                  HTML: "text/html"
                 };
               }
             }
@@ -29,7 +30,8 @@ export const MtzFileDownloadBehaviors = function(SuperClass) {
                 CSV: "text/csv",
                 JSON: "text/json",
                 PDF: "application/pdf",
-                TXT: "text/plain"
+                TXT: "text/plain",
+                HTML: "text/html"
               };
             }
           }
@@ -61,9 +63,9 @@ export const MtzFileDownloadBehaviors = function(SuperClass) {
         link.href = (window.URL || window.webkitURL).createObjectURL(blob);
         link.download = filename;
         link.target = newTab ? "_blank" : "_self";
-        dom(this.root).appendChild(link);
+        dom(this).appendChild(link);
         link.click();
-        dom(this.root).removeChild(link);
+        dom(this).removeChild(link);
       }
     }
 

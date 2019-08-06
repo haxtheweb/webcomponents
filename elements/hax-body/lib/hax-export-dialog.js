@@ -335,6 +335,13 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(LitElement) {
   constructor() {
     super();
     this.title = "Source view";
+    this.fileTypes = {
+      CSV: "text/csv",
+      JSON: "text/json",
+      PDF: "application/pdf",
+      TXT: "text/plain",
+      HTML: "text/html"
+    };
     this.globalPreferences = {};
     import("@polymer/paper-dialog/paper-dialog.js");
   }
