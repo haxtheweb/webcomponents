@@ -431,7 +431,7 @@ class HAXCMSSiteBuilder extends PolymerElement {
   /**
    * notice manifest changes and ensure slot is rebuilt.
    */
-  async _manifestChanged(newValue, oldValue) {
+  _manifestChanged(newValue, oldValue) {
     if (newValue && newValue.metadata && newValue.items) {
       // ensure there's a dynamicELementLoader defined
       // @todo this could also be a place to mix in criticals
@@ -483,11 +483,20 @@ class HAXCMSSiteBuilder extends PolymerElement {
         };
       }
       var site = new JsonOutlineSchema();
-      if (await site.load("site.json")) {
-        var nodes = site.itemsToNodes();
-        var items = site.nodesToItems(nodes);
-        newValue.items = items;
+      // we already have our items, pass them in
+      var nodes = site.itemsToNodes(newValue.items);
+      // smash outline into flat to get the correct order
+      var correctOrder = site.nodesToItems(nodes);
+      var newItems = [];
+      // build a new array in the correct order by pushing the old items around
+      for (var key in correctOrder) {
+        newItems.push(
+          newValue.items.find(element => {
+            return element.id === correctOrder[key].id;
+          })
+        );
       }
+      newValue.items = newItems;
       store.manifest = newValue;
       this.dispatchEvent(
         new CustomEvent("json-outline-schema-changed", {
