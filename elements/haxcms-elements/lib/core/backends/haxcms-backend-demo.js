@@ -112,10 +112,12 @@ class HAXCMSBackendDemo extends PolymerElement {
           haxCmsSiteEditorElement.revertSitePath =
             window.appSettings.revertSitePath;
           haxCmsSiteEditorElement.appStore = window.appSettings.appStore;
+          // timing issue
+          if (!store.cmsSiteEditor.instance) {
+            store.cmsSiteEditor.instance = this;
+          }
           store.cmsSiteEditor.instance.haxCmsSiteEditorElement = haxCmsSiteEditorElement;
-          store.cmsSiteEditor.instance.appendTarget.appendChild(
-            haxCmsSiteEditorElement
-          );
+          document.body.appendChild(haxCmsSiteEditorElement);
         },
         e => {
           //import failed

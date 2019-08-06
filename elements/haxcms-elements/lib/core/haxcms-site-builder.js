@@ -546,4 +546,46 @@ class HAXCMSSiteBuilder extends PolymerElement {
   }
 }
 window.customElements.define(HAXCMSSiteBuilder.tag, HAXCMSSiteBuilder);
+// this global allows a backdoor into activating the HAXcms editor UI
+// this is only going to be visually enabled but it won't actually
+// be able to talk to the backend correctly bc the JWT won't exist
+// the endpoints are also fictional. also useful for testing purposes
+window.HAXme = function(context = null) {
+  if (context == null) {
+    // fake a demo
+    context = "demo";
+    // fake endpoints
+    window.appSettings = {
+      login: "dist/dev/login.json",
+      logout: "dist/dev/logout.json",
+      saveNodePath: "dist/dev/saveNode.json",
+      saveManifestPath: "dist/dev/saveManifestPath.json",
+      createNodePath: "dist/dev/saveNode.json",
+      deleteNodePath: "dist/dev/saveNode.json",
+      saveOutlinePath: "dist/dev/saveNode.json",
+      publishSitePath: "dist/dev/saveNode.json",
+      getNodeFieldsPath: "dist/dev/getNodeFieldsPath.json",
+      getSiteFieldsPath: "dist/dev/getSiteFieldsPath.json",
+      revertSitePath: "dist/dev/saveNode.json",
+      getFieldsToken: "adskjadshjudfu823u823u8fu8fij",
+      appStore: {
+        url: "dist/dev/appstore.json"
+      },
+      // add your custom theme here if testing locally and wanting to emulate the theme selector
+      // this isn't really nessecary though
+      themes: {
+        "haxcms-dev-theme": {
+          element: "haxcms-dev-theme",
+          path: "@lrnwebcomponents/haxcms-elements/lib/haxcms-dev-theme.js",
+          name: "Developer theme"
+        }
+      }
+    };
+  }
+  if (context == "demo") {
+    window.__haxCMSContextDemo = true;
+  }
+  // apply context
+  document.body.querySelector("haxcms-editor-builder").applyContext(context);
+};
 export { HAXCMSSiteBuilder };
