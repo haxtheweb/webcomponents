@@ -192,10 +192,14 @@ export const HAXCMSTheme = function(SuperClass) {
         // store disposer so we can clean up later
         autorun(reaction => {
           const __routerManifest = toJS(store.routerManifest);
-          if (typeof __routerManifest.title !== typeof undefined) {
+          if (
+            __routerManifest &&
+            typeof __routerManifest.title !== typeof undefined
+          ) {
             document.title = __routerManifest.title;
           }
           if (
+            __routerManifest &&
             typeof __routerManifest.metadata !== typeof undefined &&
             typeof __routerManifest.metadata.cssVariable !== typeof undefined
           ) {
