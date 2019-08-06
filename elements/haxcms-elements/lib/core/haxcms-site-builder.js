@@ -4,6 +4,7 @@ import { updateStyles } from "@polymer/polymer/lib/mixins/element-mixin.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
+import { JsonOutlineSchema } from "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
 import {
   encapScript,
   findTagsInHTML,
@@ -430,7 +431,7 @@ class HAXCMSSiteBuilder extends PolymerElement {
   /**
    * notice manifest changes and ensure slot is rebuilt.
    */
-  _manifestChanged(newValue, oldValue) {
+  async _manifestChanged(newValue, oldValue) {
     if (newValue && newValue.metadata && newValue.items) {
       // ensure there's a dynamicELementLoader defined
       // @todo this could also be a place to mix in criticals
@@ -480,6 +481,12 @@ class HAXCMSSiteBuilder extends PolymerElement {
           "wikipedia-query":
             "@lrnwebcomponents/wikipedia-query/wikipedia-query.js"
         };
+      }
+      var site = new JsonOutlineSchema();
+      if (await site.load("site.json")) {
+        var nodes = site.itemsToNodes();
+        var items = site.nodesToItems(nodes);
+        newValue.items = items;
       }
       store.manifest = newValue;
       this.dispatchEvent(
