@@ -134,6 +134,7 @@ class HAXCMSBackendPHP extends PolymerElement {
               haxCmsSiteEditorElement.deleteNodePath =
                 window.appSettings.deleteNodePath;
               haxCmsSiteEditorElement.appStore = window.appSettings.appStore;
+              store.cmsSiteEditorAvailability();
               store.cmsSiteEditor.instance.haxCmsSiteEditorElement = haxCmsSiteEditorElement;
               store.cmsSiteEditor.instance.appendTarget.appendChild(
                 haxCmsSiteEditorElement
