@@ -14,7 +14,12 @@ class WysiwygHax extends PolymerElement {
           display: block;
         }
       </style>
-      <textarea id\$="[[fieldId]]" name="[[fieldName]]" hidden="">
+      <textarea
+        class$="[[fieldClass]]"
+        id\$="[[fieldId]]"
+        name="[[fieldName]]"
+        hidden=""
+      >
 [[bodyValue]]</textarea
       >
       <cms-hax
@@ -73,6 +78,12 @@ class WysiwygHax extends PolymerElement {
        */
       appStoreConnection: {
         type: Object
+      },
+      /**
+       * class on the field
+       */
+      fieldClass: {
+        type: String
       },
       /**
        * fieldId, id value on the input field.
