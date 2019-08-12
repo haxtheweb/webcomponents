@@ -1,20 +1,20 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/iron-icons/iron-icons.js";
+import "@polymer/iron-icons/editor-icons.js";
+import "@polymer/iron-icons/device-icons.js";
+import "@polymer/iron-icons/hardware-icons.js";
+import "@polymer/iron-icons/social-icons.js";
+import "@polymer/iron-icons/av-icons.js";
+import "@polymer/iron-icons/maps-icons.js";
+import "@polymer/paper-item/paper-item.js";
+import "@polymer/paper-listbox/paper-listbox.js";
+import "@polymer/paper-menu-button/paper-menu-button.js";
+import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
 class HaxToolbarMenu extends PolymerElement {
   constructor() {
     super();
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icons/editor-icons.js");
-    import("@polymer/iron-icons/device-icons.js");
-    import("@polymer/iron-icons/hardware-icons.js");
-    import("@polymer/iron-icons/social-icons.js");
-    import("@polymer/iron-icons/av-icons.js");
-    import("@polymer/iron-icons/maps-icons.js");
-    import("@polymer/paper-item/paper-item.js");
-    import("@polymer/paper-listbox/paper-listbox.js");
-    import("@polymer/paper-menu-button/paper-menu-button.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js");
     this.addEventListener("click", this._menubuttonTap.bind(this));
   }
   static get template() {

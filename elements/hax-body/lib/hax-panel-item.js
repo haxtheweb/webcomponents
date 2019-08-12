@@ -1,4 +1,7 @@
-import { LitElement, html, css } from "lit-element";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@polymer/paper-button/paper-button.js";
+import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@polymer/iron-icon/iron-icon.js";
 /**
  * `hax-panel-item`
  * `A single button in the hax panel for consistency.`
@@ -15,9 +18,6 @@ class HAXPanelItem extends LitElement {
     this.label = "editor:text-fields";
     this.eventName = "button";
     this.value = "";
-    import("@polymer/paper-button/paper-button.js");
-    import("@polymer/paper-tooltip/paper-tooltip.js");
-    import("@polymer/iron-icon/iron-icon.js");
   }
   static get properties() {
     return {

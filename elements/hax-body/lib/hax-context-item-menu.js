@@ -1,5 +1,9 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import "@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js";
+import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@polymer/paper-item/paper-item.js";
+import "@polymer/neon-animation/neon-animation.js";
 import "./hax-shared-styles.js";
 /**
  * `hax-context-item-menu`
@@ -11,10 +15,6 @@ import "./hax-shared-styles.js";
 class HaxContextItemMenu extends PolymerElement {
   constructor() {
     super();
-    import("@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js");
-    import("@polymer/paper-tooltip/paper-tooltip.js");
-    import("@polymer/paper-item/paper-item.js");
-    import("@polymer/neon-animation/neon-animation.js");
   }
   static get template() {
     return html`

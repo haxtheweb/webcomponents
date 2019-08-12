@@ -1,5 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import "@polymer/paper-button/paper-button.js";
+import "@polymer/paper-card/paper-card.js";
+import "@polymer/iron-icon/iron-icon.js";
 import "./hax-shared-styles.js";
 /**
  * `hax-blox-browser-item`
@@ -8,9 +10,6 @@ import "./hax-shared-styles.js";
 class HaxBloxBrowserItem extends PolymerElement {
   constructor() {
     super();
-    import("@polymer/paper-button/paper-button.js");
-    import("@polymer/paper-card/paper-card.js");
-    import("@polymer/iron-icon/iron-icon.js");
     this.addEventListener("mousedown", this.tapEventOn.bind(this));
     this.addEventListener("mouseover", this.tapEventOn.bind(this));
     this.addEventListener("mouseout", this.tapEventOff.bind(this));

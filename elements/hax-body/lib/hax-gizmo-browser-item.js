@@ -2,6 +2,17 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./hax-shared-styles.js";
+import "@polymer/paper-button/paper-button.js";
+import "@polymer/iron-icons/iron-icons.js";
+import "@polymer/iron-icons/editor-icons.js";
+import "@polymer/iron-icons/device-icons.js";
+import "@polymer/iron-icons/hardware-icons.js";
+import "@polymer/iron-icons/communication-icons.js";
+import "@polymer/iron-icons/social-icons.js";
+import "@polymer/iron-icons/av-icons.js";
+import "@polymer/iron-icons/maps-icons.js";
+import "@polymer/iron-icons/places-icons.js";
+import "@polymer/iron-image/iron-image.js";
 /**
 `hax-gizmo-browser-item`
 A button on the hax-gizmo-browser app display
@@ -14,17 +25,6 @@ A button on the hax-gizmo-browser app display
 class HaxGizmoBrowserItem extends PolymerElement {
   constructor() {
     super();
-    import("@polymer/paper-button/paper-button.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icons/editor-icons.js");
-    import("@polymer/iron-icons/device-icons.js");
-    import("@polymer/iron-icons/hardware-icons.js");
-    import("@polymer/iron-icons/communication-icons.js");
-    import("@polymer/iron-icons/social-icons.js");
-    import("@polymer/iron-icons/av-icons.js");
-    import("@polymer/iron-icons/maps-icons.js");
-    import("@polymer/iron-icons/places-icons.js");
-    import("@polymer/iron-image/iron-image.js");
     afterNextRender(this, function() {
       this.addEventListener("mousedown", this.tapEventOn.bind(this));
       this.addEventListener("mouseover", this.tapEventOn.bind(this));

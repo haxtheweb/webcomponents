@@ -1,5 +1,7 @@
-import { LitElement, html, css } from "lit-element";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/paper-button/paper-button.js";
 /**
  `hax-app-picker-item`
  An item for displaying in a picker
@@ -10,8 +12,6 @@ class HaxAppPickerItem extends LitElement {
   constructor() {
     super();
     this.elevation = 1;
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/paper-button/paper-button.js");
   }
   static get styles() {
     return [

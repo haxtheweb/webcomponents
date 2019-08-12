@@ -109,27 +109,44 @@ class HaxAutoloader extends HAXElement(PolymerElement) {
             // @todo need to support name spacing of packages so that we
             // don't assume they are all relative to lrnwebcomponents
             const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
-            import(`${basePath}../../${name}/${name}.js`)
-              .then(response => {
-                // get the custom element definition we used to add that file
-                let CEClass = window.customElements.get(name);
-                if (typeof CEClass.getHaxProperties === "function") {
-                  this.setHaxProperties(CEClass.getHaxProperties(), name);
-                } else if (typeof CEClass.HAXWiring === "function") {
-                  this.setHaxProperties(
-                    CEClass.HAXWiring.getHaxProperties(),
-                    name
-                  );
-                } else if (CEClass.haxProperties) {
-                  this.setHaxProperties(CEClass.haxProperties, name);
-                } else {
-                  console.log(`${name} didn't have hax wiring in the end`);
-                }
-              })
-              .catch(error => {
-                /* Error handling */
-                console.log(error);
-              });
+            if (!window.customElements.get(name)) {
+              import(`${basePath}../../${name}/${name}.js`)
+                .then(response => {
+                  // get the custom element definition we used to add that file
+                  let CEClass = window.customElements.get(name);
+                  if (typeof CEClass.getHaxProperties === "function") {
+                    this.setHaxProperties(CEClass.getHaxProperties(), name);
+                  } else if (typeof CEClass.HAXWiring === "function") {
+                    this.setHaxProperties(
+                      CEClass.HAXWiring.getHaxProperties(),
+                      name
+                    );
+                  } else if (CEClass.haxProperties) {
+                    this.setHaxProperties(CEClass.haxProperties, name);
+                  } else {
+                    console.log(`${name} didn't have hax wiring in the end`);
+                  }
+                })
+                .catch(error => {
+                  /* Error handling */
+                  console.log(error);
+                });
+            } else {
+              // get the custom element definition we used to add that file
+              let CEClass = window.customElements.get(name);
+              if (typeof CEClass.getHaxProperties === "function") {
+                this.setHaxProperties(CEClass.getHaxProperties(), name);
+              } else if (typeof CEClass.HAXWiring === "function") {
+                this.setHaxProperties(
+                  CEClass.HAXWiring.getHaxProperties(),
+                  name
+                );
+              } else if (CEClass.haxProperties) {
+                this.setHaxProperties(CEClass.haxProperties, name);
+              } else {
+                console.log(`${name} didn't have hax wiring in the end`);
+              }
+            }
           }
           this.processedList[name] = name;
         } catch (err) {
