@@ -63,6 +63,9 @@ class MapMenuItem extends PolymerElement {
           visibility: visible;
           opacity: 1;
         }
+        #wrapper {
+          font-size: var(--map-menu-font-size, 16px);
+        }
       </style>
       <a tabindex="-1" href$="[[url]]">
         <paper-button id="wrapper" role="link" noink>

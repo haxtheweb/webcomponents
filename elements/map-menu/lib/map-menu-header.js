@@ -62,7 +62,7 @@ class MapMenuHeader extends PolymerElement {
         }
 
         #title {
-          font-size: 16px;
+          font-size: var(--map-menu-font-size, 16px);
         }
 
         #right iron-icon {
