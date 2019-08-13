@@ -403,6 +403,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    */
   _setPlayerHeight(aspect) {
     let root = this;
+    root.$.player.style.height = "unset";
     if (root.audioOnly && root.thumbnailSrc === null && root.height === null) {
       root.$.player.style.height = "60px";
     } else if (root.height === null) {
