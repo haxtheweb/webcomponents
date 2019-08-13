@@ -64,8 +64,7 @@ class H5PElement extends LitElement {
             description: "",
             inputMethod: "textfield",
             required: true,
-            icon: "icons:link",
-            validationType: "url"
+            icon: "icons:link"
           }
         ],
         configure: [
@@ -74,8 +73,7 @@ class H5PElement extends LitElement {
             description: "",
             inputMethod: "textfield",
             required: true,
-            icon: "icons:link",
-            validationType: "url"
+            icon: "icons:link"
           }
         ],
         advanced: []
