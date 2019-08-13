@@ -4,7 +4,7 @@
    */
   "start": {
     "name": "start",
-    "type": "Number",
+    "type": Number,
     "value": 0
   },
   /**
@@ -12,7 +12,7 @@
    */
   "end": {
     "name": "end",
-    "type": "Number",
+    "type": Number,
     "value": 100
   },
   /**
@@ -20,7 +20,7 @@
    */
   "duration": {
     "name": "duration",
-    "type": "Number",
+    "type": Number,
     "value": 2.5
   },
   /**
@@ -28,7 +28,7 @@
    */
   "noeasing": {
     "name": "noeasing",
-    "type": "Boolean",
+    "type": Boolean,
     "value": false
   },
   /**
@@ -36,7 +36,7 @@
    */
   "decimalplaces": {
     "name": "decimalPlaces",
-    "type": "Number",
+    "type": Number,
     "value": 0
   },
   /**
@@ -44,7 +44,7 @@
    */
   "separator": {
     "name": "separator",
-    "type": "String",
+    "type": String,
     "value": ","
   },
   /**
@@ -52,7 +52,7 @@
    */
   "decimal": {
     "name": "decimal",
-    "type": "String",
+    "type": String,
     "value": "."
   },
   /**
@@ -60,7 +60,7 @@
    */
   "prefixtext": {
     "name": "prefixtext",
-    "type": "String",
+    "type": String,
     "value": " "
   },
   /**
@@ -68,24 +68,24 @@
    */
   "suffixtext": {
     "name": "suffixtext",
-    "type": "String",
+    "type": String,
     "value": " "
   },
   "thresholds": {
-    "type": "Array",
+    "type": Array,
     "value": [0.0, 0.25, 0.5, 0.75, 1.0]
   },
   "rootMargin": {
-    "type": "String",
+    "type": String,
     "value": "0px"
   },
   "ratio": {
-    "type": "Number",
+    "type": Number,
     "reflectToAttribute": true,
     "readOnly": true
   },
   "visibleLimit": {
-    "type": "Number",
+    "type": Number,
     "value": 0.5,
     "reflectToAttribute": true
   }

@@ -4,7 +4,7 @@
    */
   "color": {
     "name": "color",
-    "type": "String",
+    "type": String,
     "observer": "_colorChanged",
     "reflectToAttribute": true
   },
@@ -13,7 +13,7 @@
    */
   "size": {
     "name": "size",
-    "type": "String",
+    "type": String,
     "reflectToAttribute": true
   },
   /**
@@ -21,7 +21,7 @@
    */
   "loading": {
     "name": "loading",
-    "type": "Boolean",
+    "type": Boolean,
     "reflectToAttribute": true
   },
   /**
@@ -29,7 +29,7 @@
    */
   "itemCount": {
     "name": "itemCount",
-    "type": "Number",
+    "type": Number,
     "value": 37
   }
 }

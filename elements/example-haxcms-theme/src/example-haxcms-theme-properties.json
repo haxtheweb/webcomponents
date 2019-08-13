@@ -7,7 +7,7 @@
    */
   "editMode": {
     "name": "editMode",
-    "type": "Boolean",
+    "type": Boolean,
     "reflectToAttribute": true
   },
   /**
@@ -15,6 +15,6 @@
    */
   "activeManifestIndex": {
     "name": "activeManifestIndex",
-    "type": "Number"
+    "type": Number
   }
 }

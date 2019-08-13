@@ -4,7 +4,7 @@
    */
   "editMode": {
     "name": "editMode",
-    "type": "Boolean",
+    "type": Boolean,
     "value": false,
     "notify": true,
     "reflectToAttribute": true,
@@ -15,7 +15,7 @@
    */
   "items": {
     "name": "items",
-    "type": "Array",
+    "type": Array,
     "value": [],
     "reflectToAttribute": false,
     "observer": "_itemsChanged"
@@ -25,6 +25,6 @@
    */
   "activeElement": {
     "name": "activeElement",
-    "type": "Object"
+    "type": Object
   }
 }

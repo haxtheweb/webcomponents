@@ -4,7 +4,7 @@
    */
   "element": {
     "name": "element",
-    "type": "Object",
+    "type": Object,
     "value": {}
   },
   /**
@@ -12,7 +12,7 @@
    */
   "name": {
     "name": "name",
-    "type": "String",
+    "type": String,
     "value": "new-element"
   },
   /**
@@ -20,14 +20,14 @@
    */
   "sourceUrl": {
     "name": "sourceUrl",
-    "type": "String",
+    "type": String,
     "value": ""
   },
   /**
    * MIME type lookup for file extensions
    */
   "fileTypes": {
-    "type": "Object",
+    "type": Object,
     "value"() {
       return {
         "CSV": "text/csv",

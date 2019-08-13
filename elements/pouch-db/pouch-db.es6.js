@@ -50,7 +50,7 @@ class PouchDb extends PolymerElement {
     return {
   "title": {
     "name": "title",
-    "type": "String",
+    "type": String,
     "value": "pouch-db-default-value",
     "reflectToAttribute": false,
     "observer": false

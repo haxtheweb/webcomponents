@@ -4,7 +4,7 @@
    */
   "defaultLevel": {
     "name": "defaultLevel",
-    "type": "Number",
+    "type": Number,
     "value": 1
   },
   /**
@@ -12,7 +12,7 @@
    */
   "id": {
     "name": "id",
-    "type": "String",
+    "type": String,
     "value": null,
     "observer": "_updateChildren"
   },
@@ -21,7 +21,7 @@
    */
   "parentId": {
     "name": "parentId",
-    "type": "String",
+    "type": String,
     "value": null
   },
   /**
@@ -29,7 +29,7 @@
    */
   "text": {
     "name": "text",
-    "type": "String",
+    "type": String,
     "value": null
   },
   /**
@@ -37,7 +37,7 @@
    */
   "level": {
     "name": "level",
-    "type": "Number",
+    "type": Number,
     "reflectToAttribute": true,
     "computed": "_getLevel(parentId,defaultLevel)",
     "observer": "_updateChildren"
@@ -47,7 +47,7 @@
    */
   "__isLevel1": {
     "name": "__isLevel1",
-    "type": "Boolean",
+    "type": Boolean,
     "computed": "_isLevel(level,1)"
   },
   /**
@@ -55,7 +55,7 @@
    */
   "__isLevel2": {
     "name": "__isLevel2",
-    "type": "Boolean",
+    "type": Boolean,
     "computed": "_isLevel(level,2)"
   },
   /**
@@ -63,7 +63,7 @@
    */
   "__isLevel3": {
     "name": "__isLevel3",
-    "type": "Boolean",
+    "type": Boolean,
     "computed": "_isLevel(level,3)"
   },
   /**
@@ -71,7 +71,7 @@
    */
   "__isLevel4": {
     "name": "__isLevel4",
-    "type": "Boolean",
+    "type": Boolean,
     "computed": "_isLevel(level,4)"
   },
   /**
@@ -79,7 +79,7 @@
    */
   "__isLevel5": {
     "name": "__isLevel5",
-    "type": "Boolean",
+    "type": Boolean,
     "computed": "_isLevel(level,5)"
   },
   /**
@@ -87,7 +87,7 @@
    */
   "__isLevel6": {
     "name": "__isLevel6",
-    "type": "Boolean",
+    "type": Boolean,
     "computed": "_isLevel(level,6)"
   }
 }

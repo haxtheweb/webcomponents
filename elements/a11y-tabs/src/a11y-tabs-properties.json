@@ -4,7 +4,7 @@
    */
   "activeTab": {
     "name": "activeTab",
-    "type": "String",
+    "type": String,
     "value": null,
     "observer": "selectTab"
   },
@@ -13,7 +13,7 @@
    */
   "disabled": {
     "name": "disabled",
-    "type": "Boolean",
+    "type": Boolean,
     "value": false,
     "reflectToAttribute": true
   },
@@ -22,7 +22,7 @@
    */
   "hidden": {
     "name": "hidden",
-    "type": "Boolean",
+    "type": Boolean,
     "value": false,
     "reflectToAttribute": true
   },
@@ -33,7 +33,7 @@
    */
   "iconBreakpoint": {
     "name": "iconBreakpoint",
-    "type": "Number",
+    "type": Number,
     "value": 400,
     "observer": "_breakpointChanged"
   },
@@ -42,7 +42,7 @@
    */
   "iconsOnly": {
     "name": "iconsOnly",
-    "type": "Boolean",
+    "type": Boolean,
     "computed": "_showIcons(__hasIcons,iconBreakpoint,layoutBreakpoint,responsiveSize)",
     "reflectToAttribute": true
   },
@@ -51,7 +51,7 @@
    */
   "id": {
     "name": "id",
-    "type": "String",
+    "type": String,
     "value": null,
     "reflectToAttribute": true,
     "observer": "_idChanged"
@@ -63,7 +63,7 @@
    */
   "layoutBreakpoint": {
     "name": "layoutBreakpoint",
-    "type": "Number",
+    "type": Number,
     "value": 600,
     "observer": "_breakpointChanged"
   },
@@ -74,7 +74,7 @@
    */
   "responsiveSize": {
     "name": "responsiveSize",
-    "type": "String",
+    "type": String,
     "value": "xs"
   },
   /**
@@ -82,7 +82,7 @@
    */
   "vertical": {
     "name": "vertical",
-    "type": "Boolean",
+    "type": Boolean,
     "computed": "_isVertical(iconBreakpoint,layoutBreakpoint,responsiveSize)",
     "reflectToAttribute": true
   },
@@ -91,7 +91,7 @@
    */
   "__hasIcons": {
     "name": "__hasIcons",
-    "type": "Boolean",
+    "type": Boolean,
     "value": false
   },
   /**
@@ -99,7 +99,7 @@
    */
   "__items": {
     "name": "__items",
-    "type": "Array",
+    "type": Array,
     "value": []
   },
   /**
@@ -107,7 +107,7 @@
    */
   "__observer": {
     "name": "__observer",
-    "type": "Object",
+    "type": Object,
     "value": null
   }
 }

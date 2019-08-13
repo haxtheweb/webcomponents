@@ -333,7 +333,7 @@ class ${this.dashToCamel(this.name)} extends PolymerElement {
     return {
       "title": {
         "name": "title",
-        "type": "String",
+        "type": String,
         "value": "",
       }
     };

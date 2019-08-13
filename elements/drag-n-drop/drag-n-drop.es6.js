@@ -16,6 +16,7 @@
  * @demo demo/index.html
  */
 class DragNDrop extends HTMLElement {
+  
   // render function
   get html() {
     return `
@@ -48,13 +49,14 @@ class DragNDrop extends HTMLElement {
   }
 
   // properties available to the custom element for data binding
-  static get properties() {
+    static get properties() {
     let props = {
-      editing: {
-        name: "editing",
-        type: Boolean
-      }
-    };
+  "editing": {
+    "name": "editing",
+    "type": Boolean
+  }
+}
+;
     if (super.properties) {
       props = Object.assign(props, super.properties);
     }

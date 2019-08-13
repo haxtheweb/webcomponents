@@ -1,12 +1,12 @@
 {
   "dateFormat": {
     "name": "dateFormat",
-    "type": "String",
+    "type": String,
     "value": "mm-dd-yyyy"
   },
   "monthNames": {
     "name": "monthNames",
-    "type": "Array",
+    "type": Array,
     "value": [
       "January",
       "February",
@@ -24,32 +24,32 @@
   },
   "value": {
     "name": "value",
-    "type": "String",
+    "type": String,
     "value": null
   },
   "weekStart": {
     "name": "weekStart",
-    "type": "Number",
+    "type": Number,
     "value": 0
   },
   "weekdays": {
     "name": "weekdays",
-    "type": "Array",
+    "type": Array,
     "value": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
   },
   "__calendar": {
     "name": "__calendar",
-    "type": "Array",
+    "type": Array,
     "computed": "_getCalendar(__calendarDate)"
   },
   "__calendarDate": {
     "name": "__calendarDate",
-    "type": "String",
+    "type": String,
     "computed": "_getCalendarDate(value)"
   },
   "__calendarLabel": {
     "name": "__calendarLabel",
-    "type": "String",
+    "type": String,
     "computed": "updateCalendar(__calendarDate)"
   }
 }

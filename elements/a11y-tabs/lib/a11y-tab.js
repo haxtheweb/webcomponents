@@ -53,7 +53,7 @@ class A11yTab extends PolymerElement {
        */
       id: {
         name: "id",
-        type: "String",
+        type: String,
         value: null,
         observer: "_tabChanged"
       },
@@ -62,7 +62,7 @@ class A11yTab extends PolymerElement {
        */
       flag: {
         name: "flag",
-        type: "String",
+        type: String,
         value: null,
         observer: "_tabChanged",
         reflectToAttribute: true
@@ -72,7 +72,7 @@ class A11yTab extends PolymerElement {
        */
       flagIcon: {
         name: "flagIcon",
-        type: "String",
+        type: String,
         value: null,
         observer: "_tabChanged"
       },
@@ -81,7 +81,7 @@ class A11yTab extends PolymerElement {
        */
       icon: {
         name: "id",
-        type: "String",
+        type: String,
         value: null,
         observer: "_tabChanged"
       },
@@ -90,7 +90,7 @@ class A11yTab extends PolymerElement {
        */
       label: {
         name: "label",
-        type: "String",
+        type: String,
         value: null,
         observer: "_tabChanged"
       },
@@ -99,7 +99,7 @@ class A11yTab extends PolymerElement {
        */
       hidden: {
         name: "hidden",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         reflectToAttribute: true
       },
@@ -108,7 +108,7 @@ class A11yTab extends PolymerElement {
        */
       __toTop: {
         name: "__toTop",
-        type: "String",
+        type: String,
         value: null
       },
       /**
@@ -116,7 +116,7 @@ class A11yTab extends PolymerElement {
        */
       __xOfY: {
         name: "__xOfY",
-        type: "String",
+        type: String,
         value: null
       }
     };

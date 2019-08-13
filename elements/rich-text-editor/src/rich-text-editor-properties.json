@@ -4,7 +4,7 @@
    */
   "toolbar": {
     "name": "toolbar",
-    "type": "String",
+    "type": String,
     "value": ""
   },
   /**
@@ -12,7 +12,7 @@
    */
   "id": {
     "name": "id",
-    "type": "String",
+    "type": String,
     "value": ""
   },
   /**
@@ -23,7 +23,7 @@
    */
   "type": {
     "name": "type",
-    "type": "String",
+    "type": String,
     "value": "rich-text-editor-toolbar"
   }
 }

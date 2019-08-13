@@ -75,11 +75,11 @@ ${this.dataPoint}`;
     let props = {
   "source": {
     "name": "source",
-    "type": "String"
+    "type": String
   },
   "field": {
     "name": "field",
-    "type": "String"
+    "type": String
   }
 }
 ;

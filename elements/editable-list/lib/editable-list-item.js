@@ -135,14 +135,14 @@ class EditableListItem extends PolymerElement {
        */
       value: {
         name: "value",
-        type: "String"
+        type: String
       },
       /**
        * ability to edit the items in the list
        */
       editMode: {
         name: "editMode",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         notify: true,
         reflectToAttribute: true
@@ -152,7 +152,7 @@ class EditableListItem extends PolymerElement {
        */
       editing: {
         name: "editing",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         observer: "_editModeChanged"
       },
@@ -161,7 +161,7 @@ class EditableListItem extends PolymerElement {
        */
       canEdit: {
         name: "canEdit",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         reflectToAttribute: true
       },
@@ -170,7 +170,7 @@ class EditableListItem extends PolymerElement {
        */
       canDelete: {
         name: "canDelete",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         reflectToAttribute: true
       }

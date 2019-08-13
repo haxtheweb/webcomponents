@@ -101,35 +101,35 @@ class GlossaryTerm extends PolymerElement {
     return {
       name: {
         name: "name",
-        type: "String",
+        type: String,
         value: "",
         reflectToAttribute: false
       },
       definition: {
         name: "display",
-        type: "String",
+        type: String,
         value: "",
         reflectToAttribute: false
       },
       display: {
         name: "display",
-        type: "String",
+        type: String,
         value: "",
         reflectToAttribute: false
       },
       serviceType: {
         name: "serviceType",
-        type: "String",
+        type: String,
         value: "file"
       },
       endpoint: {
         name: "endpoint",
-        type: "String",
+        type: String,
         value: ""
       },
       _fallback: {
         name: "_fallback",
-        type: "Boolean",
+        type: Boolean,
         value: true,
         reflectToAttribute: false,
         observer: false

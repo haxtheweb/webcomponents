@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "./lib/simple-colors-styles.js";
+import { SimpleColorsStyles } from "./lib/simple-colors-styles.js";
 /**
  * `simple-colors`
  * `a shared set of styles for @lrnwebcomponents`
@@ -36,7 +36,7 @@ class SimpleColors extends PolymerElement {
        */
       accentColor: {
         name: "accentColor",
-        type: "String",
+        type: String,
         value: "grey",
         reflectToAttribute: true,
         notify: true
@@ -46,7 +46,7 @@ class SimpleColors extends PolymerElement {
        */
       dark: {
         name: "dark",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         reflectToAttribute: true,
         notify: true
@@ -56,7 +56,7 @@ class SimpleColors extends PolymerElement {
        */
       colors: {
         name: "colors",
-        type: "Object",
+        type: Object,
         value: window.SimpleColorsStyles.colors,
         notify: true
       },
@@ -68,6 +68,9 @@ class SimpleColors extends PolymerElement {
         type: Boolean,
         value: false,
         reflectToAttribute: true
+      },
+      __utils: {
+        type: Object
       }
     };
   }
@@ -75,13 +78,16 @@ class SimpleColors extends PolymerElement {
   static get tag() {
     return "simple-colors";
   }
-
+  constructor() {
+    super();
+    this.__styles = window.SimpleColorsStyles.requestAvailability();
+    this.__utils = new SimpleColorsStyles();
+  }
   ready() {
     super.ready();
-    let styles = window.SimpleColorsStyles.requestAvailability();
     if (!this.inheritStyles) {
       let style = document.createElement("style"),
-        ruleList = styles.cssRules;
+        ruleList = this.__styles.cssRules;
       this.shadowRoot.appendChild(style);
 
       for (let rule of ruleList) {
@@ -89,16 +95,6 @@ class SimpleColors extends PolymerElement {
         style.innerText += text;
       }
     }
-  }
-
-  /**
-   * returns the maximum contrast to the shade
-   *
-   * @param {string} the shade
-   * @param {number} the shade with maximum contrast
-   */
-  maxContrastShade(shade) {
-    return this.__utils.maxContrastShade(shade);
   }
 
   /**
@@ -197,5 +193,5 @@ class SimpleColors extends PolymerElement {
     );
   }
 }
-customElements.define(SimpleColors.tag, SimpleColors);
+window.customElements.define(SimpleColors.tag, SimpleColors);
 export { SimpleColors };

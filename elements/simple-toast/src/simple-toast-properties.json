@@ -4,7 +4,7 @@
    */
   "opened": {
     "name": "opened",
-    "type": "Boolean",
+    "type": Boolean,
     "value": false,
     "reflectToAttribute": true
   },
@@ -13,7 +13,7 @@
    */
   "text": {
     "name": "text",
-    "type": "String",
+    "type": String,
     "value": "Saved"
   },
   /**
@@ -21,7 +21,7 @@
    */
   "classStyle": {
     "name": "classStyle",
-    "type": "String",
+    "type": String,
     "value": ""
   },
   /**
@@ -29,7 +29,7 @@
    */
   "closeText": {
     "name": "closeText",
-    "type": "String",
+    "type": String,
     "value": "Close"
   },
   /**
@@ -37,7 +37,7 @@
    */
   "duration": {
     "name": "duration",
-    "type": "Number",
+    "type": Number,
     "value": 4000
   },
   /**
@@ -45,14 +45,14 @@
    */
   "eventCallback": {
     "name": "eventCallback",
-    "type": "String"
+    "type": String
   },
   /**
    * If there should be a close button shown
    */
   "closeButton": {
     "name": "closeButton",
-    "type": "Boolean",
+    "type": Boolean,
     "value": true,
     "reflectToAttribute": true
   }

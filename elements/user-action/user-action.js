@@ -89,17 +89,17 @@ class UserAction extends HTMLElement {
     let props = {
       track: {
         name: "track",
-        type: "String",
+        type: String,
         value: "visibility"
       },
       every: {
         name: "every",
-        type: "Boolean",
+        type: Boolean,
         value: false
       },
       visiblelimit: {
         name: "visiblelimit",
-        type: "Number",
+        type: Number,
         value: 0.5
       }
     };
