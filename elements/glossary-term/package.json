@@ -39,15 +39,15 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "latest",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.1.2",
     "@lrnwebcomponents/lrn-vocab": "^2.1.3",
     "@polymer/polymer": "^3.0.5",
     "@ui5/webcomponents": "^0.7.0"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
-    "@polymer/iron-demo-helpers": "3.0.2",
-    "@webcomponents/webcomponentsjs": "2.1.3",
+    "@polymer/iron-demo-helpers": "3.1.0",
+    "@webcomponents/webcomponentsjs": "^2.2.10",
     "concurrently": "4.0.1",
     "gulp-babel": "8.0.0",
     "gulp-sourcemaps": "2.6.4",
