@@ -140,7 +140,7 @@ class Store {
       ) {
         accessData = userData.manifests[manifest.id].accessData;
       }
-      const manifestItems = manifest.items.map(i => {
+      let manifestItems = manifest.items.map(i => {
         let parentLocation = null;
         let parent = manifest.items.find(d => i.parent === d.id);
         if (parent) {
@@ -162,10 +162,32 @@ class Store {
           metadata: metadata
         });
       });
+
       // build the children into a hierarchy too
       manifestItems.forEach((item, i) => {
         this._setChildren(item, manifestItems);
       });
+
+      // PUBLISHING
+      if (manifest.metadata.core.defaultSettings.publishPagesOn === true) {
+        const filterHiddenParentsRecursive = item => {
+          // if the item is unpublished then remove it.
+          if (item.metadata.published === false) {
+            return false;
+          }
+          // if the item has parents, recursively see if any parent is not published
+          const parent = manifestItems.find(i => i.id === item.parent);
+          if (parent) {
+            return filterHiddenParentsRecursive(parent);
+          }
+          // if it got this far then it should be good.
+          return true;
+        };
+        manifestItems = manifestItems.filter(i =>
+          filterHiddenParentsRecursive(i)
+        );
+      }
+
       return Object.assign({}, manifest, {
         items: manifestItems,
         accessData: accessData
@@ -266,6 +288,16 @@ class Store {
     if (this.manifest && this.manifest.items && this.activeId) {
       for (var index in this.manifest.items) {
         if (this.manifest.items[index].id === this.activeId) {
+          return parseInt(index);
+        }
+      }
+    }
+    return -1;
+  }
+  get activeRouterManifestIndex() {
+    if (this.routerManifest && this.routerManifest.items && this.activeId) {
+      for (var index in this.routerManifest.items) {
+        if (this.routerManifest.items[index].id === this.activeId) {
           return parseInt(index);
         }
       }
