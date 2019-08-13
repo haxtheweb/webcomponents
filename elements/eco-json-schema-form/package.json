@@ -53,7 +53,7 @@
     "@polymer/paper-tooltip": "^3.0.1",
     "@polymer/polymer": "^3.2.0",
     "ace-builds": "^1.4.1",
-    "jsoneditor": "^5.24.7",
+    "jsoneditor": "^6.0.0",
     "paper-collapse-item": "^4.0.4"
   },
   "devDependencies": {
@@ -62,11 +62,11 @@
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",
-    "concurrently": "4.1.0",
+    "concurrently": "4.1.1",
     "gulp-babel": "8.0.0",
-    "gulp-sourcemaps": "2.6.4",
-    "lodash": "4.17.13",
-    "polymer-cli": "1.9.9",
+    "gulp-sourcemaps": "2.6.5",
+    "lodash": "4.17.15",
+    "polymer-cli": "1.9.11",
     "wct-browser-legacy": "1.0.2"
   },
   "private": false,

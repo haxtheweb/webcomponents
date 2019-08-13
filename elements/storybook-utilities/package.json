@@ -12,8 +12,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@storybook/addon-knobs": "^4.1.13",
-    "@storybook/polymer": "^4.1.13"
+    "@storybook/addon-knobs": "^5.0.0",
+    "@storybook/polymer": "^5.0.0"
   },
   "private": false,
   "publishConfig": {
