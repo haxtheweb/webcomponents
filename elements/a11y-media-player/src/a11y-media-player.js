@@ -175,7 +175,6 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
       tracks = new Array(),
       tdata = new Array(),
       selected = 0;
-    console.log("ready", aspect);
     if (typeof screenfull === "object") root._onScreenfullLoaded.bind(root);
     if (root.id === null) root.id = "a11y-media-player" + Date.now();
     root.__playerReady = true;
@@ -403,7 +402,6 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    * @param {Number} the aspect ratio of the media or its poster thumbnail
    */
   _setPlayerHeight(aspect) {
-    console.log("_setPlayerHeight", aspect);
     let root = this;
     root.$.player.style.height = "unset";
     if (root.audioOnly && root.thumbnailSrc === null && root.height === null) {

@@ -1189,7 +1189,6 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    * @param {Number} the aspect ratio of the media or its poster thumbnail
    */
   _setPlayerHeight(aspect) {
-    console.log("_setPlayerHeight", aspect);
     let root = this;
     root.$.player.style.height = "unset";
     if (root.audioOnly && root.thumbnailSrc === null && root.height === null) {
