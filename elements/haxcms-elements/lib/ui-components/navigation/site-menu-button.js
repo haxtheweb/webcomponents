@@ -171,9 +171,6 @@ class SiteMenuButton extends PolymerElement {
     }
   }
   pageLink(type, activeRouterManifestIndex, items) {
-    console.log("items:", items);
-    console.log("activeRouterManifestIndex:", activeRouterManifestIndex);
-
     if (type === "prev" && items) {
       if (
         activeRouterManifestIndex > 0 &&
