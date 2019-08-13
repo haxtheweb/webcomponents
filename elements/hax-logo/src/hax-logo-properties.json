@@ -1,12 +1,1 @@
-{
-  "size": {
-    "name": "size",
-    "type": String,
-    "value": "normal"
-  },
-  "toupper": {
-    "name": "toupper",
-    "type": Boolean,
-    "value": false
-  }
-}
+{}

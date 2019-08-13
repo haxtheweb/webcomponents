@@ -14,16 +14,15 @@ import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js
  * @demo demo/index.html
  */
 class HaxLogo extends HTMLElement {
-  
   // render function
   get html() {
     return `
-<style>
-:host {
+<style>:host {
   display: block;
   --hax-logo-letter-spacing: -16px;
   --hax-logo-font-size: 64px;
   --hax-logo-inner-font-size: 48px;
+  --hax-logo-innerslot-margin: 8px 4px 4px 4px;
   --hax-logo-inner-margin: 8px -4px 8px 8px;
 }
 
@@ -38,12 +37,14 @@ class HaxLogo extends HTMLElement {
   --hax-logo-letter-spacing: -6px;
   --hax-logo-font-size: 18px;
   --hax-logo-inner-font-size: 16px;
+  --hax-logo-innerslot-margin: 0px 0px 2px 4px;
   --hax-logo-inner-margin: 0px 0px 2px 4px;
 }
 
 :host([size="small"]) {
   --hax-logo-font-size: 36px;
   --hax-logo-inner-font-size: 28px;
+  --hax-logo-innerslot-margin: 4px 0px 4px 4px;
   --hax-logo-inner-margin: 4px -4px 4px 8px;
 }
 
@@ -63,74 +64,69 @@ class HaxLogo extends HTMLElement {
   vertical-align: text-top;
   margin: var(--hax-logo-inner-margin);
   letter-spacing: -2px;
+}
+.innerslot {
+  font-size: var(--hax-logo-inner-font-size);
+  display: inline-block;
+  vertical-align: text-top;
+  margin: var(--hax-logo-innerslot-margin);
+  letter-spacing: -2px;
 }</style>
-<span class="wrap">&lt;<slot name="pre"></slot><span class="inner">h-a-x</span><slot name="post"></slot>&gt;</span>`;
+<span class="wrap">&lt;<span class="innerslot"><slot name="pre"></slot></span><span class="inner">h-a-x</span><span class="innerslot"><slot name="post"></slot></span>&gt;</span>`;
   }
 
   // haxProperty definition
   static get haxProperties() {
     return {
-  "canScale": true,
-  "canPosition": true,
-  "canEditSource": false,
-  "gizmo": {
-    "title": "Hax logo",
-    "description": "logo element for hax, obviously as a hax capable element.",
-    "icon": "icons:android",
-    "color": "green",
-    "groups": ["Logo"],
-    "handles": [
-      {
-        "type": "todo:read-the-docs-for-usage"
-      }
-    ],
-    "meta": {
-      "author": "btopro",
-      "owner": "The Pennsylvania State University"
-    }
-  },
-  "settings": {
-    "quick": [],
-    "configure": [
-      {
-        "attribute": "size",
-        "description": "Size of the HAX logo to place",
-        "inputMethod": "select",
-        "options": {
-          "mini": "Mini",
-          "small": "Small",
-          "normal": "Normal",
-          "large": "Large"
-        },
-        "required": false
+      canScale: true,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Hax logo",
+        description:
+          "logo element for hax, obviously as a hax capable element.",
+        icon: "icons:android",
+        color: "green",
+        groups: ["Logo"],
+        handles: [
+          {
+            type: "todo:read-the-docs-for-usage"
+          }
+        ],
+        meta: {
+          author: "btopro",
+          owner: "The Pennsylvania State University"
+        }
       },
-      {
-        "attribute": "toupper",
-        "description": "Whether to transform logo to upper case",
-        "inputMethod": "boolean",
-        "required": false
+      settings: {
+        quick: [],
+        configure: [
+          {
+            attribute: "size",
+            description: "Size of the HAX logo to place",
+            inputMethod: "select",
+            options: {
+              mini: "Mini",
+              small: "Small",
+              normal: "Normal",
+              large: "Large"
+            },
+            required: false
+          },
+          {
+            attribute: "toupper",
+            description: "Whether to transform logo to upper case",
+            inputMethod: "boolean",
+            required: false
+          }
+        ],
+        advanced: []
       }
-    ],
-    "advanced": []
-  }
-}
-;
+    };
   }
   // properties available to the custom element for data binding
   static get properties() {
-    let props = {
-  "size": {
-    "name": "size",
-    "type": String,
-    "value": "normal"
-  },
-  "toupper": {
-    "name": "toupper",
-    "type": Boolean,
-    "value": false
-  }
-}
-;
+    let props = {};
     if (super.properties) {
       props = Object.assign(props, super.properties);
     }

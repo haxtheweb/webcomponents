@@ -1,9 +1,9 @@
-
 :host {
   display: block;
   --hax-logo-letter-spacing: -16px;
   --hax-logo-font-size: 64px;
   --hax-logo-inner-font-size: 48px;
+  --hax-logo-innerslot-margin: 8px 4px 4px 4px;
   --hax-logo-inner-margin: 8px -4px 8px 8px;
 }
 
@@ -18,12 +18,14 @@
   --hax-logo-letter-spacing: -6px;
   --hax-logo-font-size: 18px;
   --hax-logo-inner-font-size: 16px;
+  --hax-logo-innerslot-margin: 0px 0px 2px 4px;
   --hax-logo-inner-margin: 0px 0px 2px 4px;
 }
 
 :host([size="small"]) {
   --hax-logo-font-size: 36px;
   --hax-logo-inner-font-size: 28px;
+  --hax-logo-innerslot-margin: 4px 0px 4px 4px;
   --hax-logo-inner-margin: 4px -4px 4px 8px;
 }
 
@@ -42,5 +44,12 @@
   display: inline-block;
   vertical-align: text-top;
   margin: var(--hax-logo-inner-margin);
+  letter-spacing: -2px;
+}
+.innerslot {
+  font-size: var(--hax-logo-inner-font-size);
+  display: inline-block;
+  vertical-align: text-top;
+  margin: var(--hax-logo-innerslot-margin);
   letter-spacing: -2px;
 }

@@ -21,7 +21,13 @@
         <template>
           <hax-logo size="mini"></hax-logo>
           <hax-logo size="small"></hax-logo>
-          <hax-logo toupper></hax-logo>
+          <hax-logo>
+            <span slot="pre">The</span>
+            <span slot="post">of complacency</span>
+          </hax-logo>
+          <hax-logo toupper>
+            <span slot="post">the web</span>
+          </hax-logo>
           <hax-logo size="large"></hax-logo>
         </template>
       </demo-snippet>
