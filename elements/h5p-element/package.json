@@ -36,8 +36,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/hax-body-behaviors":"^2.1.2",
-    "lit-element":"^2.0.1",
-    "h5p-standalone": "https://github.com/tunapanda/h5p-standalone.git"
+    "lit-element":"^2.0.1"
   },
   "devDependencies": {
     "web-animations-js":"2.3.1",
