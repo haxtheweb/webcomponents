@@ -16,7 +16,7 @@
       "hax": "src/mtz-marked-editor-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Automated conversion of mtz-marked-editor",
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   "main": "mtz-marked-editor.js",
   "module": "mtz-marked-editor.es6.js",
   "umd": "mtz-marked-editor.umd.js",
-  "amd": "mtz-marked-editor.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/mtz-marked-editor/test/",
     "start": "yarn run dev",
@@ -48,7 +47,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.1.1",
+    "@lrnwebcomponents/storybook-utilities": "^2.1.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@webcomponents/webcomponentsjs": "2.2.10",

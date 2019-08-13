@@ -16,7 +16,7 @@
       "hax": "src/md-block-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "a markdown block",
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   "main": "md-block.js",
   "module": "md-block.es6.js",
   "umd": "md-block.umd.js",
-  "amd": "md-block.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/md-block/test/",
     "start": "yarn run dev",
@@ -40,7 +39,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^2.1.1",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.1.2",
     "@polymer/marked-element": "3.0.1",
     "@polymer/polymer": "^3.2.0"
   },

@@ -53,7 +53,7 @@ class DataViz extends PolymerElement {
     return {
       title: {
         name: "title",
-        type: "String",
+        type: String,
         value: "data-viz-default-value",
         reflectToAttribute: false,
         observer: false

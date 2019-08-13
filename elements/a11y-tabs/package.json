@@ -16,7 +16,7 @@
       "hax": "src/a11y-tabs-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.3",
   "description": "accessible and responsive tabbed interface",
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   "main": "a11y-tabs.js",
   "module": "a11y-tabs.es6.js",
   "umd": "a11y-tabs.umd.js",
-  "amd": "a11y-tabs.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/a11y-tabs/test/",
     "start": "yarn run dev",
@@ -41,7 +40,8 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/hax-body-behaviors": "latest",
-    "@lrnwebcomponents/responsive-utility": "^2.1.1",
+    "@lrnwebcomponents/responsive-utility": "^2.1.2",
+    "@polymer/iron-a11y-keys": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-tooltip": "^3.0.1",

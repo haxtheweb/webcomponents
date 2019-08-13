@@ -16,7 +16,7 @@
       "hax": "src/wave-player-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Automated conversion of wave-player/",
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   "main": "wave-player.js",
   "module": "wave-player.es6.js",
   "umd": "wave-player.umd.js",
-  "amd": "wave-player.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/wave-player/test/",
     "start": "yarn run dev",
@@ -41,8 +40,8 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/es-global-bridge": "^2.1.1",
-    "@lrnwebcomponents/hax-body-behaviors": "^2.1.1",
-    "@lrnwebcomponents/schema-behaviors": "^2.1.1",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.1.2",
+    "@lrnwebcomponents/schema-behaviors": "^2.1.2",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-fab": "^3.0.1",
     "@polymer/paper-icon-button": "^3.0.1",
@@ -51,7 +50,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.1.1",
+    "@lrnwebcomponents/storybook-utilities": "^2.1.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@webcomponents/webcomponentsjs": "2.2.10",

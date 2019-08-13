@@ -1,9 +1,15 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import"./lib/lrndesign-animationctrl-button.js";/**
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import "./lib/lrndesign-animationctrl-button.js";
+/**
 `lrndesign-animationctrl`
 A LRN element
 
 * @demo demo/index.html
-*/class LrndesignAnimationctrl extends PolymerElement{static get template(){return html`
+*/
+class LrndesignAnimationctrl extends PolymerElement {
+  static get template() {
+    return html`
       <style>
         :host {
           display: block;
@@ -23,4 +29,31 @@ A LRN element
         }
       </style>
       <div class="buttons"><slot></slot></div>
-    `}static get tag(){return"lrndesign-animationctrl"}connectedCallback(){super.connectedCallback();afterNextRender(this,function(){this.addEventListener("lrndesign-animationctrl-button-click",this._buttonClicked.bind(this))})}disconnectedCallback(){this.removeEventListener("lrndesign-animationctrl-button-click",this._buttonClicked.bind(this));super.disconnectedCallback()}_buttonClicked(e){}}window.customElements.define(LrndesignAnimationctrl.tag,LrndesignAnimationctrl);export{LrndesignAnimationctrl};
+    `;
+  }
+  static get tag() {
+    return "lrndesign-animationctrl";
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, function() {
+      this.addEventListener(
+        "lrndesign-animationctrl-button-click",
+        this._buttonClicked.bind(this)
+      );
+    });
+  }
+  disconnectedCallback() {
+    this.removeEventListener(
+      "lrndesign-animationctrl-button-click",
+      this._buttonClicked.bind(this)
+    );
+    super.disconnectedCallback();
+  }
+  _buttonClicked(e) {}
+}
+window.customElements.define(
+  LrndesignAnimationctrl.tag,
+  LrndesignAnimationctrl
+);
+export { LrndesignAnimationctrl };

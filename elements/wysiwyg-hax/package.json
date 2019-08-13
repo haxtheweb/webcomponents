@@ -16,7 +16,7 @@
       "hax": "src/wysiwyg-hax-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.3",
   "description": "Start of wysiwyg-hax fork",
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   "main": "wysiwyg-hax.js",
   "module": "wysiwyg-hax.es6.js",
   "umd": "wysiwyg-hax.umd.js",
-  "amd": "wysiwyg-hax.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/wysiwyg-hax/test/",
     "start": "yarn run dev",
@@ -40,13 +39,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/cms-hax": "^2.1.1",
+    "@lrnwebcomponents/cms-hax": "^2.1.3",
     "@polymer/iron-dropdown": "^3.0.0",
     "@polymer/polymer": "^3.2.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.1.1",
+    "@lrnwebcomponents/storybook-utilities": "^2.1.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@webcomponents/webcomponentsjs": "2.2.10",

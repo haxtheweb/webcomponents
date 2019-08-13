@@ -1,9 +1,14 @@
-import{LitElement,html,css}from"./node_modules/lit-element/lit-element.js";/**
+import { LitElement, html, css } from "lit-element/lit-element.js";
+/**
  * `word-count`
  * `Count the words on whatever this wraps`
  *
  * @demo demo/index.html
- */class WordCount extends LitElement{static get styles(){return[css`
+ */
+class WordCount extends LitElement {
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -36,9 +41,58 @@ import{LitElement,html,css}from"./node_modules/lit-element/lit-element.js";/**
           position: absolute !important;
           word-wrap: normal !important;
         }
-      `]}render(){return html`
+      `
+    ];
+  }
+  render() {
+    return html`
       <slot></slot>
       <div class="screen-reader-text">${this.wordsPrefix} ${this.words}</div>
-    `}static get tag(){return"word-count"}constructor(){super();this.wordsPrefix="Word count:";this.__observer=new MutationObserver(this._updateWords.bind(this));this.__observer.observe(this,{attributes:!0,characterData:!0,childList:!0,subtree:!0})}disconnectedCallback(){this.__observer.disconnect();super.disconnectedCallback()}update(changedProperties){super.update(changedProperties);if(changedProperties.has("wordsPrefix")||changedProperties.has("words")){this.setAttribute("words-text",`${this.wordsPrefix} ${this.words}`)}}static get properties(){return{words:{type:Number},wordsPrefix:{type:String}}}/**
+    `;
+  }
+  static get tag() {
+    return "word-count";
+  }
+  constructor() {
+    super();
+    this.wordsPrefix = "Word count:";
+    this.__observer = new MutationObserver(this._updateWords.bind(this));
+    this.__observer.observe(this, {
+      attributes: true,
+      characterData: true,
+      childList: true,
+      subtree: true
+    });
+  }
+  disconnectedCallback() {
+    this.__observer.disconnect();
+    super.disconnectedCallback();
+  }
+  update(changedProperties) {
+    super.update(changedProperties);
+    if (
+      changedProperties.has("wordsPrefix") ||
+      changedProperties.has("words")
+    ) {
+      this.setAttribute("words-text", `${this.wordsPrefix} ${this.words}`);
+    }
+  }
+  static get properties() {
+    return {
+      words: { type: Number },
+      wordsPrefix: { type: String }
+    };
+  }
+  /**
    * Update words based on data in the slot.
-   */_updateWords(mutations){if(""!==this.textContent){this.words=parseInt(this.textContent.split(/\s+/g).length-1)}else{this.words=0}}}window.customElements.define(WordCount.tag,WordCount);export{WordCount};
+   */
+  _updateWords(mutations) {
+    if (this.textContent !== "") {
+      this.words = parseInt(this.textContent.split(/\s+/g).length - 1);
+    } else {
+      this.words = 0;
+    }
+  }
+}
+window.customElements.define(WordCount.tag, WordCount);
+export { WordCount };

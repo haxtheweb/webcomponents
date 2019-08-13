@@ -16,7 +16,7 @@
       "hax": "src/pouch-db-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "read and write localized data elements",
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   "main": "pouch-db.js",
   "module": "pouch-db.es6.js",
   "umd": "pouch-db.umd.js",
-  "amd": "pouch-db.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/pouch-db/test/",
     "start": "yarn run dev",
@@ -43,9 +42,9 @@
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
-    "@lrnwebcomponents/chartist-render": "^2.1.1",
+    "@lrnwebcomponents/chartist-render": "^2.1.2",
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/multiple-choice": "^2.1.1",
+    "@lrnwebcomponents/multiple-choice": "^2.1.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@polymer/paper-button": "^3.0.1",

@@ -16,7 +16,7 @@
       "hax": "src/hero-banner-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "The evil yet always requested hero banner",
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   "main": "hero-banner.js",
   "module": "hero-banner.es6.js",
   "umd": "hero-banner.umd.js",
-  "amd": "hero-banner.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/hero-banner/test/",
     "start": "yarn run dev",
@@ -40,16 +39,16 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-behaviors": "^2.1.1",
-    "@lrnwebcomponents/hax-body-behaviors": "^2.1.1",
-    "@lrnwebcomponents/materializecss-styles": "^2.1.1",
+    "@lrnwebcomponents/a11y-behaviors": "^2.1.2",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.1.2",
+    "@lrnwebcomponents/materializecss-styles": "^2.1.2",
     "@polymer/iron-image": "^3.0.0",
     "@polymer/paper-button": "^3.0.1",
     "@polymer/polymer": "^3.2.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.1.1",
+    "@lrnwebcomponents/storybook-utilities": "^2.1.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@webcomponents/webcomponentsjs": "2.2.10",

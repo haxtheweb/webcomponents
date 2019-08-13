@@ -57,7 +57,7 @@ class HAXCMSLegacyPlayer extends PolymerElement {
       },
       activeItemLocation: {
         type: String,
-        computed: "computeActiveItemLocation(activeItem)",
+        computed: "computeActiveItemLocation(activeItem, __ready)",
         observer: "_activeItemLocationChanged"
       },
       activeItem: {
@@ -65,6 +65,10 @@ class HAXCMSLegacyPlayer extends PolymerElement {
       },
       manifest: {
         type: Object
+      },
+      __ready: {
+        type: Boolean,
+        value: false
       },
       routerManifest: {
         type: Object,
@@ -329,10 +333,6 @@ class HAXCMSLegacyPlayer extends PolymerElement {
         <app-header-layout>
           <app-header slot="header" reveals>
             <app-toolbar>
-              <paper-icon-button
-                icon="menu"
-                on-click="_toggleMenu"
-              ></paper-icon-button>
               <div main-title>
                 [[activeItem.title]]
                 <div id="slotTitle"><slot name="title"></slot></div>
@@ -426,17 +426,20 @@ class HAXCMSLegacyPlayer extends PolymerElement {
       }
     }
   }
+  ready() {
+    super.ready();
+    // tidy up the dom if this is there
+    if (document.getElementById("haxcmsoutdatedfallbacksuperold")) {
+      document
+        .getElementById("haxcmsoutdatedfallback")
+        .removeChild(document.getElementById("haxcmsoutdatedfallbacksuperold"));
+    }
+  }
   connectedCallback() {
     super.connectedCallback();
     afterNextRender(this, function() {
-      // tidy up the dom if this is there
-      if (document.getElementById("haxcmsoutdatedfallbacksuperold")) {
-        document
-          .getElementById("haxcmsoutdatedfallback")
-          .removeChild(
-            document.getElementById("haxcmsoutdatedfallbacksuperold")
-          );
-      }
+      // forces the other stuff to wair
+      this.__ready = true;
     });
   }
   disconnectedCallback() {
@@ -446,8 +449,10 @@ class HAXCMSLegacyPlayer extends PolymerElement {
     );
     super.disconnectedCallback();
   }
-  computeActiveItemLocation(activeItem) {
-    return "pages/" + activeItem.location + "/index.html";
+  computeActiveItemLocation(activeItem, __ready) {
+    if (activeItem && activeItem.location) {
+      return "pages/" + activeItem.location + "/index.html";
+    }
   }
   /**
    * The manifest but with routing mixed in

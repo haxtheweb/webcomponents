@@ -1,11 +1,25 @@
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/lib/colors.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/iron-icon/iron-icon.js";/**
+ */
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
+import "@polymer/paper-button/paper-button.js";
+import "@polymer/iron-icon/iron-icon.js";
+/**
  * `lrnsys-button`
  * `A simple button for use in systems`
  * @demo demo/index.html
- */class LrnsysButton extends PolymerElement{constructor(){super();import("./node_modules/@polymer/iron-icons/iron-icons.js");import("./node_modules/@polymer/paper-tooltip/paper-tooltip.js")}static get template(){return html`
+ */
+class LrnsysButton extends PolymerElement {
+  constructor() {
+    super();
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/paper-tooltip/paper-tooltip.js");
+  }
+  static get template() {
+    return html`
       <style include="materializecss-styles-colors">
         :host {
           display: block;
@@ -97,57 +111,252 @@
         hidden\$="[[!alt]]"
         >[[alt]]</paper-tooltip
       >
-    `}static get tag(){return"lrnsys-button"}static get properties(){return{/**
+    `;
+  }
+
+  static get tag() {
+    return "lrnsys-button";
+  }
+
+  static get properties() {
+    return {
+      /**
        * Standard href pass down
-       */href:{type:String,value:"#",reflectToAttribute:!0},showHref:{type:String,value:!1,reflectToAttribute:!0,computed:"_getShowHref(href,disabled)"},/**
+       */
+      href: {
+        type: String,
+        value: "#",
+        reflectToAttribute: true
+      },
+      showHref: {
+        type: String,
+        value: false,
+        reflectToAttribute: true,
+        computed: "_getShowHref(href,disabled)"
+      },
+      /**
        * If the button should be visually lifted off the UI.
-       */raised:{type:Boolean,reflectToAttribute:!0},/**
+       */
+      raised: {
+        type: Boolean,
+        reflectToAttribute: true
+      },
+      /**
        * Label to place in the text area
-       */label:{type:String,value:""},/**
+       */
+      label: {
+        type: String,
+        value: ""
+      },
+      /**
        * Support for target to open in new windows.
-       */target:{type:String,value:""},/**
+       */
+      target: {
+        type: String,
+        value: ""
+      },
+      /**
        * iron-icon to use (with iconset if needed)
-       */icon:{type:String,value:!1},/**
+       */
+      icon: {
+        type: String,
+        value: false
+      },
+      /**
        * Classes to add / subtract based on the item being hovered.
-       */hoverClass:{type:String},/**
+       */
+      hoverClass: {
+        type: String
+      },
+      /**
        * Button class.
-       */buttonClass:{type:String},/**
+       */
+      buttonClass: {
+        type: String
+      },
+      /**
        * Icon class in the event you want it to look different from the text.
-       */iconClass:{type:String},/**
+       */
+      iconClass: {
+        type: String
+      },
+      /**
        * Inner container classes.
-       */innerClass:{type:String},/**
+       */
+      innerClass: {
+        type: String
+      },
+      /**
        * Color class work to apply
-       */color:{type:String,reflectToAttribute:!0},/**
+       */
+      color: {
+        type: String,
+        reflectToAttribute: true
+      },
+      /**
        * materializeCSS color class for text
-       */textColor:{type:String},/**
+       */
+      textColor: {
+        type: String
+      },
+      /**
        * Allow for prefetch data automatically
-       */prefetch:{type:Boolean,observer:"_applyPrefetch"},/**
+       */
+      prefetch: {
+        type: Boolean,
+        observer: "_applyPrefetch"
+      },
+      /**
        * Alt via tooltip.
-       */alt:{type:String},/**
+       */
+      alt: {
+        type: String
+      },
+      /**
        * Disabled state.
-       */disabled:{type:Boolean,value:!1},/**
+       */
+      disabled: {
+        type: Boolean,
+        value: false
+      },
+      /**
        * Tracks if focus state is applied
-       */focusState:{type:Boolean,value:!1}}}_applyPrefetch(newValue){if(newValue&&this.__ready&&!this.__prefetchLink){let link=document.createElement("link");link.setAttribute("rel","prefetch");link.setAttribute("href",this.href);// store for disconnect so we can clean up if needed
-this.__prefetchLink=link;document.head.appendChild(link)}}/**
+       */
+      focusState: {
+        type: Boolean,
+        value: false
+      }
+    };
+  }
+  _applyPrefetch(newValue) {
+    if (newValue && this.__ready && !this.__prefetchLink) {
+      let link = document.createElement("link");
+      link.setAttribute("rel", "prefetch");
+      link.setAttribute("href", this.href);
+      // store for disconnect so we can clean up if needed
+      this.__prefetchLink = link;
+      document.head.appendChild(link);
+    }
+  }
+  /**
    * attached life cycle
-   */ready(){super.ready();afterNextRender(this,function(){this.addEventListener("mousedown",this.tapEventOn.bind(this));this.addEventListener("mouseover",this.tapEventOn.bind(this));this.addEventListener("mouseout",this.tapEventOff.bind(this));this.$.button.addEventListener("focused-changed",this.focusToggle.bind(this))})}connectedCallback(){super.connectedCallback();this.__ready=!0;afterNextRender(this,function(){// if we have been told to prefetch, give it a second after everything's ready
-if(this.prefetch){setTimeout(()=>{this._applyPrefetch(this.prefetch)},1e3)}})}/**
+   */
+  ready() {
+    super.ready();
+    afterNextRender(this, function() {
+      this.addEventListener("mousedown", this.tapEventOn.bind(this));
+      this.addEventListener("mouseover", this.tapEventOn.bind(this));
+      this.addEventListener("mouseout", this.tapEventOff.bind(this));
+      this.$.button.addEventListener(
+        "focused-changed",
+        this.focusToggle.bind(this)
+      );
+    });
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    this.__ready = true;
+    afterNextRender(this, function() {
+      // if we have been told to prefetch, give it a second after everything's ready
+      if (this.prefetch) {
+        setTimeout(() => {
+          this._applyPrefetch(this.prefetch);
+        }, 1000);
+      }
+    });
+  }
+  /**
    * detached event listener
-   */disconnectedCallback(){if(this.__prefetchLink){document.head.removeChild(this.__prefetchLink)}this.removeEventListener("mousedown",this.tapEventOn.bind(this));this.removeEventListener("mouseover",this.tapEventOn.bind(this));this.removeEventListener("mouseout",this.tapEventOff.bind(this));this.$.button.removeEventListener("focused-changed",this.focusToggle.bind(this));super.disconnectedCallback()}/**
+   */
+  disconnectedCallback() {
+    if (this.__prefetchLink) {
+      document.head.removeChild(this.__prefetchLink);
+    }
+    this.removeEventListener("mousedown", this.tapEventOn.bind(this));
+    this.removeEventListener("mouseover", this.tapEventOn.bind(this));
+    this.removeEventListener("mouseout", this.tapEventOff.bind(this));
+    this.$.button.removeEventListener(
+      "focused-changed",
+      this.focusToggle.bind(this)
+    );
+    super.disconnectedCallback();
+  }
+
+  /**
    * Generate the pass down href if it exists. This helps
    * ensure that if a button is disabled it won't do anything
    * even if it has a resource reference.
-   */_getShowHref(href,disabled){if(href&&!disabled){return href}}/**
+   */
+  _getShowHref(href, disabled) {
+    if (href && !disabled) {
+      return href;
+    }
+  }
+
+  /**
    * Class processing on un-tap / hover
-   */tapEventOn(e){if(typeof this.hoverClass!==typeof void 0&&!this.disabled){// break class into array
-var classes=this.hoverClass.split(" ");// run through each and add or remove classes
-classes.forEach((item,index)=>{if(""!=item){this.$.button.classList.add(item);if(-1!=item.indexOf("-")){this.$.icon.classList.add(item)}}})}}/**
+   */
+  tapEventOn(e) {
+    if (typeof this.hoverClass !== typeof undefined && !this.disabled) {
+      // break class into array
+      var classes = this.hoverClass.split(" ");
+      // run through each and add or remove classes
+      classes.forEach((item, index) => {
+        if (item != "") {
+          this.$.button.classList.add(item);
+          if (item.indexOf("-") != -1) {
+            this.$.icon.classList.add(item);
+          }
+        }
+      });
+    }
+  }
+
+  /**
    * Undo class processing on un-tap / hover
-   */tapEventOff(e){if(typeof this.hoverClass!==typeof void 0&&!this.disabled){// break class into array
-var classes=this.hoverClass.split(" ");// run through each and add or remove classes
-classes.forEach((item,index)=>{if(""!=item){this.$.button.classList.remove(item);if(-1!=item.indexOf("-")){this.$.icon.classList.remove(item)}}})}}/**
+   */
+  tapEventOff(e) {
+    if (typeof this.hoverClass !== typeof undefined && !this.disabled) {
+      // break class into array
+      var classes = this.hoverClass.split(" ");
+      // run through each and add or remove classes
+      classes.forEach((item, index) => {
+        if (item != "") {
+          this.$.button.classList.remove(item);
+          if (item.indexOf("-") != -1) {
+            this.$.icon.classList.remove(item);
+          }
+        }
+      });
+    }
+  }
+  /**
    * Handle toggle for mouse class and manage classList array for paper-button.
-   */focusToggle(e){// weird but reality... focus event is the button inside of here
-if(typeof this.hoverClass!==typeof void 0&&!this.disabled){// break class into array
-var classes=this.hoverClass.split(" ");// run through each and add or remove classes
-classes.forEach((item,index)=>{if(""!=item){if(!this.focusState){this.$.button.classList.add(item);if(-1!=item.indexOf("-")){this.$.icon.classList.add(item)}}else{this.$.button.classList.remove(item);if(-1!=item.indexOf("-")){this.$.icon.classList.remove(item)}}}})}this.focusState=!this.focusState}}window.customElements.define(LrnsysButton.tag,LrnsysButton);export{LrnsysButton};
+   */
+  focusToggle(e) {
+    // weird but reality... focus event is the button inside of here
+    if (typeof this.hoverClass !== typeof undefined && !this.disabled) {
+      // break class into array
+      var classes = this.hoverClass.split(" ");
+      // run through each and add or remove classes
+      classes.forEach((item, index) => {
+        if (item != "") {
+          if (!this.focusState) {
+            this.$.button.classList.add(item);
+            if (item.indexOf("-") != -1) {
+              this.$.icon.classList.add(item);
+            }
+          } else {
+            this.$.button.classList.remove(item);
+            if (item.indexOf("-") != -1) {
+              this.$.icon.classList.remove(item);
+            }
+          }
+        }
+      });
+    }
+    this.focusState = !this.focusState;
+  }
+}
+window.customElements.define(LrnsysButton.tag, LrnsysButton);
+export { LrnsysButton };

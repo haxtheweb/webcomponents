@@ -16,7 +16,7 @@
       "hax": "src/simple-blog-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.3",
   "description": "Automated conversion of simple-blog/",
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   "main": "simple-blog.js",
   "module": "simple-blog.es6.js",
   "umd": "simple-blog.umd.js",
-  "amd": "simple-blog.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/simple-blog/test/",
     "start": "yarn run dev",
@@ -40,21 +39,22 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/haxcms-elements": "^2.1.1",
-    "@lrnwebcomponents/schema-behaviors": "^2.1.1",
-    "@lrnwebcomponents/simple-colors": "^2.1.1",
-    "@lrnwebcomponents/simple-datetime": "^2.1.1",
+    "@lrnwebcomponents/haxcms-elements": "^2.1.3",
+    "@lrnwebcomponents/schema-behaviors": "^2.1.2",
+    "@lrnwebcomponents/simple-colors": "^2.1.2",
+    "@lrnwebcomponents/simple-datetime": "^2.1.2",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/iron-list": "^3.0.2",
     "@polymer/iron-pages": "^3.0.0",
     "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-card": "^3.0.0",
     "@polymer/paper-icon-button": "^3.0.2",
-    "@polymer/polymer": "^3.2.0"
+    "@polymer/polymer": "^3.2.0",
+    "time-elements": "^3.0.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.1.1",
+    "@lrnwebcomponents/storybook-utilities": "^2.1.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@webcomponents/webcomponentsjs": "2.2.10",

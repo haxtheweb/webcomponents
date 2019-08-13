@@ -16,7 +16,7 @@
       "hax": "src/fluid-type-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "A simple fluid-type sizing wrapper element to apply to anything",
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   "main": "fluid-type.js",
   "module": "fluid-type.es6.js",
   "umd": "fluid-type.umd.js",
-  "amd": "fluid-type.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/fluid-type/test/",
     "start": "yarn run dev",

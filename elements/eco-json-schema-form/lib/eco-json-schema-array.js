@@ -4,12 +4,6 @@ import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { AppLocalizeBehavior } from "@polymer/app-localize-behavior/app-localize-behavior.js";
 import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icons/editor-icons.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
-import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
-import "@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js";
-import "./eco-json-schema-object.js";
 /**
 `eco-json-schema-array` takes in a JSON schema of type array and builds a form,
 exposing a `value` property that represents an array described by the schema.
@@ -27,116 +21,122 @@ class EcoJsonSchemaArray extends mixinBehaviors(
   static get tag() {
     return "eco-json-schema-array";
   }
+  constructor() {
+    super();
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icons/editor-icons.js");
+    import("@polymer/paper-icon-button/paper-icon-button.js");
+    import("@lrnwebcomponents/a11y-collapse/a11y-collapse.js");
+    import("@lrnwebcomponents/a11y-collapse/lib/a11y-collapse-group.js");
+  }
   static get template() {
     return html`
-      <custom-style>
-        <style is="custom-style" include="iron-flex iron-flex-alignment">
-          :host {
-            color: var(--eco-json-form-color);
-            background-color: var(--eco-json-form-bg);
-            font-family: var(--eco-json-form-font-family);
-          }
-          :host ([hidden]) {
-            display: none;
-          }
-          :host fieldset {
-            border-radius: var(--eco-json-form-border-radius);
-            border-style: solid;
-            border-width: 1px;
-            border-color: var(--eco-json-form-faded-color);
-            transition: all 0.5s;
-          }
-          :host legend {
-            transition: all 0.5s;
+      <style include="iron-flex iron-flex-alignment">
+        :host {
+          color: var(--eco-json-form-color);
+          background-color: var(--eco-json-form-bg);
+          font-family: var(--eco-json-form-font-family);
+        }
+        :host ([hidden]) {
+          display: none;
+        }
+        :host fieldset {
+          border-radius: var(--eco-json-form-border-radius);
+          border-style: solid;
+          border-width: 1px;
+          border-color: var(--eco-json-form-faded-color);
+          transition: all 0.5s;
+        }
+        :host legend {
+          transition: all 0.5s;
+          color: var(--eco-json-form-faded-color);
+        }
+        :host fieldset:focus #legend,
+        :host fieldset:focus-within #legend {
+          color: var(--eco-json-form-active-color);
+        }
+        :host .array-item-button {
+          color: var(--eco-json-form-faded-color);
+          background-color: var(--eco-json-form-bg);
+          text-transform: none;
+          margin-bottom: 0;
+        }
+        :host .array-item-button:focus,
+        :host .array-item-button:hover {
+          color: var(--eco-json-form-active-color);
+        }
+        :host .add-array-item iron-icon {
+          padding: 8px;
+        }
+        :host .add-array-item {
+          color: var(--eco-json-form-add-color);
+          border-radius: 0 0 var(--eco-json-form-border-radius);
+          border: 1px solid var(--eco-json-form-bg);
+          margin: 0;
+          padding: 0 8px 0 16px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        :host .add-array-item:focus,
+        :host .add-array-item:hover {
+          color: var(--eco-json-form-add-color);
+          background-color: var(--eco-json-form-faded-bg);
+          border: 1px solid var(--eco-json-form-faded-color);
+        }
+        :host .remove-array-item {
+          color: var(--eco-json-form-remove-color);
+          background-color: var(--eco-json-form-bg);
+          margin: 15px 0 0 0;
+          border-radius: 100%;
+        }
+        :host .remove-array-item:focus,
+        :host .remove-array-item:hover {
+          color: var(--eco-json-form-remove-color);
+          background-color: var(--eco-json-form-faded-bg);
+        }
+        :host a11y-collapse-group {
+          margin: 0;
+          border-radius: var(--eco-json-form-border-radius);
+          --a11y-collapse-border: 1px solid var(--eco-json-form-faded-color);
+        }
+        :host a11y-collapse {
+          --a11y-collapse-padding-right: 8px;
+          border: 1px solid var(--eco-json-form-bg);
+          --a11y-collapse-heading: {
             color: var(--eco-json-form-faded-color);
-          }
-          :host fieldset:focus #legend,
-          :host fieldset:focus-within #legend {
-            color: var(--eco-json-form-active-color);
-          }
-          :host .array-item-button {
-            color: var(--eco-json-form-faded-color);
             background-color: var(--eco-json-form-bg);
-            text-transform: none;
-            margin-bottom: 0;
+            font-weight: normal;
+            margin: 0;
           }
-          :host .array-item-button:focus,
-          :host .array-item-button:hover {
-            color: var(--eco-json-form-active-color);
-          }
-          :host .add-array-item iron-icon {
+          --a11y-collapse-icon: {
             padding: 8px;
           }
-          :host .add-array-item {
-            color: var(--eco-json-form-add-color);
-            border-radius: 0 0 var(--eco-json-form-border-radius);
-            border: 1px solid var(--eco-json-form-bg);
-            margin: 0;
-            padding: 0 8px 0 16px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-          }
-          :host .add-array-item:focus,
-          :host .add-array-item:hover {
-            color: var(--eco-json-form-add-color);
+        }
+        :host a11y-collapse:focus,
+        :host a11y-collapse:hover,
+        :host a11y-collapse[expanded] {
+          border: 1px solid var(--eco-json-form-faded-color);
+          --a11y-collapse-heading: {
+            color: var(--eco-json-form-color);
             background-color: var(--eco-json-form-faded-bg);
-            border: 1px solid var(--eco-json-form-faded-color);
-          }
-          :host .remove-array-item {
-            color: var(--eco-json-form-remove-color);
-            background-color: var(--eco-json-form-bg);
-            margin: 15px 0 0 0;
-            border-radius: 100%;
-          }
-          :host .remove-array-item:focus,
-          :host .remove-array-item:hover {
-            color: var(--eco-json-form-remove-color);
-            background-color: var(--eco-json-form-faded-bg);
-          }
-          :host a11y-collapse-group {
-            margin: 0;
-            border-radius: var(--eco-json-form-border-radius);
-            --a11y-collapse-border: 1px solid var(--eco-json-form-faded-color);
-          }
-          :host a11y-collapse {
-            --a11y-collapse-padding-right: 8px;
-            border: 1px solid var(--eco-json-form-bg);
-            --a11y-collapse-heading: {
-              color: var(--eco-json-form-faded-color);
-              background-color: var(--eco-json-form-bg);
-              font-weight: normal;
-              margin: 0;
-            }
-            --a11y-collapse-icon: {
-              padding: 8px;
-            }
-          }
-          :host a11y-collapse:focus,
-          :host a11y-collapse:hover,
-          :host a11y-collapse[expanded] {
-            border: 1px solid var(--eco-json-form-faded-color);
-            --a11y-collapse-heading: {
-              color: var(--eco-json-form-color);
-              background-color: var(--eco-json-form-faded-bg);
-              font-weight: normal;
-              margin: 0;
-            }
-          }
-          :host p[slot="heading"] {
+            font-weight: normal;
             margin: 0;
           }
-          :host div[slot="content"] > div {
-            width: 100%;
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-          }
-          :host eco-json-schema-object {
-            flex: 1 0 auto;
-          }
-        </style>
-      </custom-style>
+        }
+        :host p[slot="heading"] {
+          margin: 0;
+        }
+        :host div[slot="content"] > div {
+          width: 100%;
+          display: flex;
+          align-items: flex-end;
+          justify-content: space-between;
+        }
+        :host eco-json-schema-object {
+          flex: 1 0 auto;
+        }
+      </style>
       <fieldset>
         <legend id="legend" class="flex" hidden\$="[[!label]]">
           [[label]]
@@ -206,7 +206,7 @@ class EcoJsonSchemaArray extends mixinBehaviors(
        * automatically set focus on the first field if that field has autofocus
        */
       autofocus: {
-        type: "Boolean",
+        type: Boolean,
         value: false
       },
       globalOptions: {

@@ -13,7 +13,6 @@
  * @demo demo/index.html
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 window.SimpleColorsStyles = {};
 window.SimpleColorsStyles.instance = null;
 window.SimpleColorsStyles.colors = {
@@ -548,17 +547,6 @@ class SimpleColorsStyles extends PolymerElement {
   static get tag() {
     return "simple-colors-styles";
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   * /
-  connectedCallback() {
-    super.connectedCallback();
-    /**
-     * append and register the shared styles
-     * /
-    afterNextRender(this, function() {
-    });
-  }
 
   /**
    * gets the color information of a given CSS variable or class
@@ -580,6 +568,17 @@ class SimpleColorsStyles extends PolymerElement {
       color: color,
       shade: shade
     };
+  }
+  /**
+   * returns a variable based on color name, shade, and fixed theme
+   *
+   * @param {string} the color name
+   * @param {number} the color shade
+   * @param {boolean} the color shade
+   * @returns {string} the CSS Variable
+   */
+  makeVariable(color = "grey", shade = 1, theme = "default") {
+    return ["--simple-colors", theme, "theme", color, shade].join("-");
   }
   /**
    * for large or small text given a color and its shade,
@@ -685,6 +684,8 @@ class SimpleColorsStyles extends PolymerElement {
     return this.colors["grey"].length + 1 - parseInt(shade);
   }
 }
+window.customElements.define(SimpleColorsStyles.tag, SimpleColorsStyles);
+export { SimpleColorsStyles };
 /**
  * Checks to see if there is an instance available, and if not appends one
  */

@@ -1,21 +1,21 @@
 {
   "title": {
     "name": "title",
-    "type": "String",
+    "type": String,
     "value": "",
     "reflectToAttribute": false,
     "observer": false
   },
   "subtitle": {
     "name": "subtitle",
-    "type": "String",
+    "type": String,
     "value": "",
     "reflectToAttribute": false,
     "observer": false
   },
   "source": {
     "name": "source",
-    "type": "String",
+    "type": String,
     "value": "",
     "reflectToAttribute": false,
     "observer": false

@@ -1,7 +1,13 @@
 /**
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@polymer/paper-icon-button/paper-icon-button.js";import"./node_modules/@polymer/paper-tooltip/paper-tooltip.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";/**
+ */
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@polymer/iron-icons/iron-icons.js";
+/**
  * `scroll-button`
  * `button to scroll to an area or back to top`
  *
@@ -11,8 +17,12 @@
  * @customElement
  * @polymer
  * @demo demo/index.html
- */class ScrollButton extends PolymerElement{// render function
-static get template(){return html`
+ */
+class ScrollButton extends PolymerElement {
+  
+  // render function
+  static get template() {
+    return html`
 <style>:host {
   display: block;
   --scroll-button-z-index: 99;
@@ -50,13 +60,142 @@ paper-tooltip {
   position="[[position]]"
   offset="14">
   [[label]]
-</paper-tooltip>`}// haxProperty definition
-static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Scroll button",description:"button to scroll to an area or back to top",icon:"icons:android",color:"green",groups:["Button"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"btopro",owner:"The Pennsylvania State University"}},settings:{quick:[],configure:[{property:"target",description:"",inputMethod:"array",required:!1,icon:"icons:android"},{property:"icon",description:"",inputMethod:"textfield",required:!1,icon:"icons:android"},{property:"label",description:"",inputMethod:"textfield",required:!1,icon:"icons:android"}],advanced:[]}}}// properties available to the custom element for data binding
-static get properties(){let props={target:{name:"target",type:Object},icon:{name:"icon",type:String,value:"icons:expand-less"},label:{name:"label",type:String,value:"Scroll to top"},position:{name:"position",type:String,value:"top"}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
+</paper-tooltip>`;
+  }
+
+  // haxProperty definition
+  static get haxProperties() {
+    return {
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Scroll button",
+    "description": "button to scroll to an area or back to top",
+    "icon": "icons:android",
+    "color": "green",
+    "groups": ["Button"],
+    "handles": [
+      {
+        "type": "todo:read-the-docs-for-usage"
+      }
+    ],
+    "meta": {
+      "author": "btopro",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "quick": [],
+    "configure": [
+      {
+        "property": "target",
+        "description": "",
+        "inputMethod": "array",
+        "required": false,
+        "icon": "icons:android"
+      },
+      {
+        "property": "icon",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": false,
+        "icon": "icons:android"
+      },
+      {
+        "property": "label",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": false,
+        "icon": "icons:android"
+      }
+    ],
+    "advanced": []
+  }
+}
+;
+  }
+  // properties available to the custom element for data binding
+    static get properties() {
+    let props = {
+  "target": {
+    "name": "target",
+    "type": Object
+  },
+  "icon": {
+    "name": "icon",
+    "type": String,
+    "value": "icons:expand-less"
+  },
+  "label": {
+    "name": "label",
+    "type": String,
+    "value": "Scroll to top"
+  },
+  "position": {
+    "name": "position",
+    "type": String,
+    "value": "top"
+  }
+}
+;
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
+  }
+
+  /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
-   */static get tag(){return"scroll-button"}/**
+   */
+  static get tag() {
+    return "scroll-button";
+  }
+  /**
    * life cycle, element is afixed to the DOM
-   */connectedCallback(){super.connectedCallback();this.$.btn.addEventListener("click",e=>{if(this.target){this.target.scrollIntoView({behavior:"smooth",block:"end",inline:"nearest"})}else{window.scrollTo({top:0,left:0,behavior:"smooth"})}});this.HAXWiring=new HAXWiring;this.HAXWiring.setup(ScrollButton.haxProperties,ScrollButton.tag,this)}/**
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    this.$.btn.addEventListener("click", e => {
+      if (this.target) {
+        this.target.scrollIntoView({
+          behavior: "smooth",
+          block: "end",
+          inline: "nearest"
+        });
+      } else {
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: "smooth"
+        });
+      }
+    });
+    this.HAXWiring = new HAXWiring();
+    this.HAXWiring.setup(ScrollButton.haxProperties, ScrollButton.tag, this);
+  }
+  /**
    * life cycle, element is removed from the DOM
-   */disconnectedCallback(){this.$.btn.removeEventListener("click",e=>{if(this.target){this.target.scrollIntoView({behavior:"smooth",block:"end",inline:"nearest"})}else{window.scrollTo({top:0,left:0,behavior:"smooth"})}});super.disconnectedCallback()}}window.customElements.define(ScrollButton.tag,ScrollButton);export{ScrollButton};
+   */
+  disconnectedCallback() {
+    this.$.btn.removeEventListener("click", e => {
+      if (this.target) {
+        this.target.scrollIntoView({
+          behavior: "smooth",
+          block: "end",
+          inline: "nearest"
+        });
+      } else {
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: "smooth"
+        });
+      }
+    });
+    super.disconnectedCallback();
+  }
+}
+window.customElements.define(ScrollButton.tag, ScrollButton);
+export { ScrollButton };

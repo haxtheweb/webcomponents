@@ -1,12 +1,12 @@
 {
   "type": {
     "name": "type",
-    "type": "Boolean",
+    "type": Boolean,
     "value": "layout"
   },
   "id": {
     "name": "id",
-    "type": "String",
+    "type": String,
     "reflecttoAttribute": true
   }
 }

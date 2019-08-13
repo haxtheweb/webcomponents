@@ -4,6 +4,7 @@ import { updateStyles } from "@polymer/polymer/lib/mixins/element-mixin.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
+import { JsonOutlineSchema } from "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
 import {
   encapScript,
   findTagsInHTML,
@@ -481,6 +482,21 @@ class HAXCMSSiteBuilder extends PolymerElement {
             "@lrnwebcomponents/wikipedia-query/wikipedia-query.js"
         };
       }
+      var site = new JsonOutlineSchema();
+      // we already have our items, pass them in
+      var nodes = site.itemsToNodes(newValue.items);
+      // smash outline into flat to get the correct order
+      var correctOrder = site.nodesToItems(nodes);
+      var newItems = [];
+      // build a new array in the correct order by pushing the old items around
+      for (var key in correctOrder) {
+        newItems.push(
+          newValue.items.find(element => {
+            return element.id === correctOrder[key].id;
+          })
+        );
+      }
+      newValue.items = newItems;
       store.manifest = newValue;
       this.dispatchEvent(
         new CustomEvent("json-outline-schema-changed", {
@@ -546,4 +562,46 @@ class HAXCMSSiteBuilder extends PolymerElement {
   }
 }
 window.customElements.define(HAXCMSSiteBuilder.tag, HAXCMSSiteBuilder);
+// this global allows a backdoor into activating the HAXcms editor UI
+// this is only going to be visually enabled but it won't actually
+// be able to talk to the backend correctly bc the JWT won't exist
+// the endpoints are also fictional. also useful for testing purposes
+window.HAXme = function(context = null) {
+  if (context == null) {
+    // fake a demo
+    context = "demo";
+    // fake endpoints
+    window.appSettings = {
+      login: "dist/dev/login.json",
+      logout: "dist/dev/logout.json",
+      saveNodePath: "dist/dev/saveNode.json",
+      saveManifestPath: "dist/dev/saveManifestPath.json",
+      createNodePath: "dist/dev/saveNode.json",
+      deleteNodePath: "dist/dev/saveNode.json",
+      saveOutlinePath: "dist/dev/saveNode.json",
+      publishSitePath: "dist/dev/saveNode.json",
+      getNodeFieldsPath: "dist/dev/getNodeFieldsPath.json",
+      getSiteFieldsPath: "dist/dev/getSiteFieldsPath.json",
+      revertSitePath: "dist/dev/saveNode.json",
+      getFieldsToken: "adskjadshjudfu823u823u8fu8fij",
+      appStore: {
+        url: "dist/dev/appstore.json"
+      },
+      // add your custom theme here if testing locally and wanting to emulate the theme selector
+      // this isn't really nessecary though
+      themes: {
+        "haxcms-dev-theme": {
+          element: "haxcms-dev-theme",
+          path: "@lrnwebcomponents/haxcms-elements/lib/haxcms-dev-theme.js",
+          name: "Developer theme"
+        }
+      }
+    };
+  }
+  if (context == "demo") {
+    window.__haxCMSContextDemo = true;
+  }
+  // apply context
+  document.body.querySelector("haxcms-editor-builder").applyContext(context);
+};
 export { HAXCMSSiteBuilder };

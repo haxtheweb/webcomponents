@@ -1,6 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/hax-body/lib/hax-panel-item.js";
 import "./hax-shared-styles.js";
 /**
 `hax-panel`
@@ -18,16 +19,6 @@ as the events being bubbled up include HTML nodes to inject into something
 class HaxPanel extends PolymerElement {
   constructor() {
     super();
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icons/editor-icons.js");
-    import("@polymer/iron-icons/device-icons.js");
-    import("@polymer/iron-icons/hardware-icons.js");
-    import("@polymer/iron-icons/communication-icons.js");
-    import("@polymer/iron-icons/social-icons.js");
-    import("@polymer/iron-icons/av-icons.js");
-    import("@polymer/iron-icons/maps-icons.js");
-    import("@polymer/app-layout/app-drawer/app-drawer.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-panel-item.js");
   }
   static get template() {
     return html`
@@ -82,10 +73,6 @@ class HaxPanel extends PolymerElement {
         #haxcancelbutton {
           margin-right: 48px;
         }
-        :host([align="right"]) app-drawer {
-          right: 0;
-          left: unset;
-        }
         :host([edit-mode]) app-drawer {
           visibility: visible;
           transition: 0.3s ease opacity;
@@ -104,6 +91,7 @@ class HaxPanel extends PolymerElement {
           transition: all 0.3s ease;
           margin: 0;
           border-top-left-radius: 0;
+          @apply --hax-panel-edit-button;
         }
         :host([edit-mode]) #button {
           visibility: hidden;
@@ -169,7 +157,6 @@ class HaxPanel extends PolymerElement {
           on-click="_clickEditButton"
           icon="create"
           id="button"
-          edged="[[align]]"
           label="[[__tipText]]"
         ></hax-panel-item>
       </div>
@@ -179,7 +166,6 @@ class HaxPanel extends PolymerElement {
         disable-swipe
         persistent
         transition-duration="300"
-        align="[[align]]"
       >
         <hax-panel-item
           hidden$="[[hidePanelOps]]"
@@ -361,6 +347,15 @@ class HaxPanel extends PolymerElement {
    */
   ready() {
     super.ready();
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icons/editor-icons.js");
+    import("@polymer/iron-icons/device-icons.js");
+    import("@polymer/iron-icons/hardware-icons.js");
+    import("@polymer/iron-icons/communication-icons.js");
+    import("@polymer/iron-icons/social-icons.js");
+    import("@polymer/iron-icons/av-icons.js");
+    import("@polymer/iron-icons/maps-icons.js");
+    import("@polymer/app-layout/app-drawer/app-drawer.js");
     afterNextRender(this, function() {
       this.addEventListener(
         "hax-item-selected",

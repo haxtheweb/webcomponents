@@ -16,7 +16,7 @@
       "hax": "src/image-compare-slider-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Slider that allows comparison of two images",
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   "main": "image-compare-slider.js",
   "module": "image-compare-slider.es6.js",
   "umd": "image-compare-slider.umd.js",
-  "amd": "image-compare-slider.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/image-compare-slider/test/",
     "start": "yarn run dev",
@@ -40,17 +39,17 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^2.1.1",
-    "@lrnwebcomponents/materializecss-styles": "^2.1.1",
-    "@lrnwebcomponents/schema-behaviors": "^2.1.1",
-    "@lrnwebcomponents/user-action": "^2.1.1",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.1.2",
+    "@lrnwebcomponents/materializecss-styles": "^2.1.2",
+    "@lrnwebcomponents/schema-behaviors": "^2.1.2",
+    "@lrnwebcomponents/user-action": "^2.1.2",
     "@polymer/iron-image": "^3.0.0",
     "@polymer/paper-slider": "^3.0.1",
     "@polymer/polymer": "^3.2.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.1.1",
+    "@lrnwebcomponents/storybook-utilities": "^2.1.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@webcomponents/webcomponentsjs": "2.2.10",

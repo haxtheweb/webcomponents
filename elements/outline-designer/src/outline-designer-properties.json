@@ -4,7 +4,7 @@
    */
   "viewMode": {
     "name": "viewMode",
-    "type": "String",
+    "type": String,
     "value": "cards",
     "observer": "_viewModeChanged"
   },
@@ -13,21 +13,21 @@
    */
   "viewModeIcon": {
     "name": "viewModeIcon",
-    "type": "String"
+    "type": String
   },
   /**
    * Label for the selected view mode
    */
   "viewModeLabel": {
     "name": "viewModeLabel",
-    "type": "String"
+    "type": String
   },
   /**
    * Which layout to the outline to display
    */
   "detailsMode": {
     "name": "detailsMode",
-    "type": "String",
+    "type": String,
     "value": "mid",
     "reflectToAttribute": true,
     "observer": "_detailsModeChanged"
@@ -37,28 +37,28 @@
    */
   "detailsModeIcon": {
     "name": "detailsModeIcon",
-    "type": "String"
+    "type": String
   },
   /**
    * Label for the selected view mode
    */
   "detailsModeLabel": {
     "name": "detailsModeLabel",
-    "type": "String"
+    "type": String
   },
   /**
    * Data binding to show the selected view
    */
   "selectedView": {
     "name": "selectedView",
-    "type": "Number"
+    "type": Number
   },
   /**
    * Whether or not we are in an editing state
    */
   "editMode": {
     "name": "editMode",
-    "type": "Boolean",
+    "type": Boolean,
     "value": false,
     "reflectToAttribute": true,
     "observer": "_editModeChanged"
@@ -68,7 +68,7 @@
    */
   "miniMap": {
     "name": "miniMap",
-    "type": "Boolean",
+    "type": Boolean,
     "value": true,
     "reflectToAttribute": true,
     "observer": "_miniMapChanged"
@@ -78,7 +78,7 @@
    */
   "outlineSchemaUrl": {
     "name": "outlineSchemaUrl",
-    "type": "String",
+    "type": String,
     "value": false
   },
   /**
@@ -86,7 +86,7 @@
    */
   "manifest": {
     "name": "manifest",
-    "type": "Object",
+    "type": Object,
     "notify": true
   },
   /**
@@ -94,7 +94,7 @@
    */
   "outlineData": {
     "name": "outlineData",
-    "type": "Object",
+    "type": Object,
     "notify": true
   }
 }

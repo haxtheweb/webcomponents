@@ -1,8 +1,0 @@
-define(["exports","./node_modules/@polymer/polymer/polymer-element.js"],function(_exports,_polymerElement){"use strict";Object.defineProperty(_exports,"__esModule",{value:!0});_exports.LrnContent=void 0;function _templateObject_9a381b00ab1211e9a622519da5816f4b(){var data=babelHelpers.taggedTemplateLiteral(["\n      <style>\n        :host {\n          display: block;\n        }\n      </style>\n      <div typeof=\"oer:SupportingMaterial\">\n        <h2 property=\"oer:name\" hidden$=\"[[!title]]\">[[title]]</h2>\n        <div property=\"oer:description\"><slot></slot></div>\n      </div>\n    "]);_templateObject_9a381b00ab1211e9a622519da5816f4b=function _templateObject_9a381b00ab1211e9a622519da5816f4b(){return data};return data}/**
-`lrn-content`
-  A LRN element for presenting content with a simple heading.
-  This is to improve accessibility, consistency, and tag things
-  with OER schema.
-
-* @demo demo/index.html
-*/var LrnContent=/*#__PURE__*/function(_PolymerElement){babelHelpers.inherits(LrnContent,_PolymerElement);function LrnContent(){babelHelpers.classCallCheck(this,LrnContent);return babelHelpers.possibleConstructorReturn(this,babelHelpers.getPrototypeOf(LrnContent).apply(this,arguments))}babelHelpers.createClass(LrnContent,null,[{key:"template",get:function get(){return(0,_polymerElement.html)(_templateObject_9a381b00ab1211e9a622519da5816f4b())}},{key:"tag",get:function get(){return"lrn-content"}},{key:"properties",get:function get(){return{title:{type:String,value:!1}}}}]);return LrnContent}(_polymerElement.PolymerElement);_exports.LrnContent=LrnContent;window.customElements.define(LrnContent.tag,LrnContent)});

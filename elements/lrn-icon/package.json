@@ -16,7 +16,7 @@
       "hax": "src/lrn-icon-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Some icons related to education concepts",
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   "main": "lrn-icon.js",
   "module": "lrn-icon.es6.js",
   "umd": "lrn-icon.umd.js",
-  "amd": "lrn-icon.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrn-icon/test/",
     "start": "yarn run dev",
@@ -40,8 +39,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/lrn-icons": "^2.1.1",
-    "@lrnwebcomponents/lrn-shared-styles": "^2.1.1",
+    "@lrnwebcomponents/lrn-icons": "^2.1.2",
+    "@lrnwebcomponents/lrn-shared-styles": "^2.1.2",
     "@polymer/iron-flex-layout": "^3.0.0",
     "@polymer/iron-iconset": "^3.0.0",
     "@polymer/iron-meta": "^3.0.0",
@@ -50,7 +49,7 @@
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
     "@lrnwebcomponents/lrn-icons": "^0.0.30",
-    "@lrnwebcomponents/storybook-utilities": "^2.1.1",
+    "@lrnwebcomponents/storybook-utilities": "^2.1.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@webcomponents/webcomponentsjs": "2.2.10",

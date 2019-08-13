@@ -112,10 +112,12 @@ class HAXCMSBackendDemo extends PolymerElement {
           haxCmsSiteEditorElement.revertSitePath =
             window.appSettings.revertSitePath;
           haxCmsSiteEditorElement.appStore = window.appSettings.appStore;
-          store.cmsSiteEditor.instance.haxCmsSiteEditorElement = haxCmsSiteEditorElement;
-          store.cmsSiteEditor.instance.appendTarget.appendChild(
-            haxCmsSiteEditorElement
-          );
+          // validate availability
+          store.cmsSiteEditorAvailability();
+          if (!store.cmsSiteEditor.instance.haxCmsSiteEditorElement) {
+            store.cmsSiteEditor.instance.haxCmsSiteEditorElement = haxCmsSiteEditorElement;
+            document.body.appendChild(haxCmsSiteEditorElement);
+          }
         },
         e => {
           //import failed

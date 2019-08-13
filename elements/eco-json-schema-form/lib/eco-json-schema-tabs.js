@@ -95,7 +95,7 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
        * automatically set focus on the first field if that field has autofocus
        */
       autofocus: {
-        type: "Boolean",
+        type: Boolean,
         value: false
       },
       /**

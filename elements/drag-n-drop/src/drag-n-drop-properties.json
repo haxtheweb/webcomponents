@@ -1,6 +1,6 @@
 {
   "editing": {
     "name": "editing",
-    "type": "Boolean"
+    "type": Boolean
   }
 }

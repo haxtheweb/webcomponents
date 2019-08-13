@@ -16,7 +16,7 @@
       "hax": "src/lrn-content-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Simple content wrapper for OER Schema meta-data",
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   "main": "lrn-content.js",
   "module": "lrn-content.es6.js",
   "umd": "lrn-content.umd.js",
-  "amd": "lrn-content.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrn-content/test/",
     "start": "yarn run dev",
@@ -44,7 +43,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.1.1",
+    "@lrnwebcomponents/storybook-utilities": "^2.1.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@webcomponents/webcomponentsjs": "2.2.10",

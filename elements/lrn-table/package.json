@@ -11,7 +11,7 @@
       "js": "src/lrn-table.js"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Accessibly render a HTML table from a csv file",
   "repository": {
     "type": "git",
@@ -20,7 +20,6 @@
   "main": "lrn-table.js",
   "module": "lrn-table.es6.js",
   "umd": "lrn-table.umd.js",
-  "amd": "lrn-table.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrn-table/test/",
     "start": "yarn run dev",
@@ -35,14 +34,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/csv-render": "^2.1.1",
-    "@lrnwebcomponents/hax-body-behaviors": "^2.1.1",
-    "@lrnwebcomponents/schema-behaviors": "^2.1.1",
+    "@lrnwebcomponents/csv-render": "^2.1.2",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.1.2",
+    "@lrnwebcomponents/schema-behaviors": "^2.1.2",
     "@polymer/polymer": "^3.2.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.1.1",
+    "@lrnwebcomponents/storybook-utilities": "^2.1.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@webcomponents/webcomponentsjs": "2.2.10",

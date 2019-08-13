@@ -1,4 +1,10 @@
-import{html}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import{SimpleColors}from"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import{SchemaBehaviors}from"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import{A11yBehaviors}from"./node_modules/@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";/**
+import { html } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import { A11yBehaviors } from "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
+/**
  * `self-check`
  * @demo demo/index.html
  * @microcopy - the mental model for this element
@@ -9,7 +15,18 @@ import{html}from"./node_modules/@polymer/polymer/polymer-element.js";import{afte
  * --self-check-heading-text //overrides the heading text color
  * --self-check-answer-color //overrides the answer background color
  * --self-check-answer-text //overrides the answer text color
- */class SelfCheck extends SchemaBehaviors(A11yBehaviors(SimpleColors)){constructor(){super();import("./node_modules/@polymer/paper-card/paper-card.js");import("./node_modules/@polymer/paper-icon-button/paper-icon-button.js");import("./node_modules/@polymer/iron-icons/editor-icons.js");import("./node_modules/@polymer/iron-icons/iron-icons.js");import("./node_modules/@polymer/paper-tooltip/paper-tooltip.js")}static get template(){return html`
+ */
+class SelfCheck extends SchemaBehaviors(A11yBehaviors(SimpleColors)) {
+  constructor() {
+    super();
+    import("@polymer/paper-card/paper-card.js");
+    import("@polymer/paper-icon-button/paper-icon-button.js");
+    import("@polymer/iron-icons/editor-icons.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/paper-tooltip/paper-tooltip.js");
+  }
+  static get template() {
+    return html`
       <style>
         :host {
           display: block;
@@ -80,14 +97,14 @@ import{html}from"./node_modules/@polymer/polymer/polymer-element.js";import{afte
           width: 35px;
           height: 35px;
           padding: 5px;
-          color: #ffffff;
+          color: var(--simple-colors-default-theme-grey-1, #fff);
         }
 
         .heading {
           text-transform: uppercase;
           font-size: 22px;
           margin: 10px;
-          color: #ffffff;
+          color: var(--simple-colors-default-theme-grey-1, #fff);
         }
 
         #header_wrap {
@@ -188,8 +205,7 @@ import{html}from"./node_modules/@polymer/polymer/polymer-element.js";import{afte
                 icon="icons:check-circle"
                 on-click="openAnswer"
                 noink
-              >
-              </user-action>
+              ></paper-icon-button>
               <paper-tooltip aria-hidden="true" for="checkBtn" position="left">
                 Reveal Answer
               </paper-tooltip>
@@ -202,7 +218,11 @@ import{html}from"./node_modules/@polymer/polymer/polymer-element.js";import{afte
                 <slot></slot>
               </user-action>
               <div class="more_info" hidden$="[[!link]]">
-                <user-action track="click" every><a href$="[[link]]" target="_blank">More info...</a></user-action>
+                <user-action track="click" every
+                  ><a href$="[[link]]" target="_blank"
+                    >More info...</a
+                  ></user-action
+                >
               </div>
               <div class="close_button">
                 <paper-icon-button
@@ -225,18 +245,192 @@ import{html}from"./node_modules/@polymer/polymer/polymer-element.js";import{afte
           </div>
         </div>
       </paper-card>
-    `}static get tag(){return"self-check"}static get properties(){let props={/**
+    `;
+  }
+
+  static get tag() {
+    return "self-check";
+  }
+  static get properties() {
+    let props = {
+      /**
        * Title.
-       */title:{type:String,value:"Self-Check"},/**
+       */
+      title: {
+        type: String,
+        value: "Self-Check"
+      },
+      /**
        * Question.
-       */question:{type:String,value:""},/**
+       */
+      question: {
+        type: String,
+        value: ""
+      },
+      /**
        * Image.
-       */image:{type:String,value:"",reflectToAttribute:!0},/**
+       */
+      image: {
+        type: String,
+        value: "",
+        reflectToAttribute: true
+      },
+      /**
        * Alt text for image.
-       */alt:{type:String,value:"",reflectToAttribute:!0},/**
+       */
+      alt: {
+        type: String,
+        value: "",
+        reflectToAttribute: true
+      },
+      /**
        * Link for more information.
-       */link:{type:String,reflectToAttribute:!0},/**
+       */
+      link: {
+        type: String,
+        reflectToAttribute: true
+      },
+      /**
        * Property for toggling "checkbtn".
-       */correct:{type:Boolean,value:!1,reflectToAttribute:!0}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
+       */
+      correct: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      }
+    };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
+  }
+
+  /**
    * Property for toggling "checkbtn".
-   */openAnswer(e){this.correct=!this.correct}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Self-Check",description:"The user will be able to complete a self-check.",icon:"icons:check-circle",color:"orange",groups:["Image","Assessment"],handles:[{type:"image",source:"image",title:"question",description:"answer"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield",icon:"editor:title"},{property:"image",title:"Image",description:"The image of the element",inputMethod:"textfield",icon:"editor:insert-photo"},{property:"link",title:"More link",description:"Link to additional information",inputMethod:"textfield",validationType:"url",icon:"icons:link"}],configure:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield"},{property:"accentColor",title:"Accent Color",description:"The accent color of the self-check",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{property:"dark",title:"Dark Theme",description:"Enable Dark Theme",inputMethod:"boolean",icon:"icons:invert-colors"},{property:"image",title:"Image",description:"The image of the element",inputMethod:"haxupload",validationType:"url"},{property:"link",title:"More link",description:"Link to additional information",inputMethod:"haxupload",validationType:"url"},{property:"alt",title:"Alt Text",description:"Add alt text to the image",inputMethod:"alt"},{slot:"question",title:"Question to ask",description:"This is where you enter a question for the self-check.",inputMethod:"code-editor",required:!0},{slot:"",title:"Answer",description:"This is where you enter a question for the self-check.",inputMethod:"code-editor",required:!0}],advanced:[]}}}connectedCallback(){super.connectedCallback();afterNextRender(this,function(){this.HAXWiring=new HAXWiring;this.HAXWiring.setup(SelfCheck.haxProperties,SelfCheck.tag,this);import("./node_modules/@lrnwebcomponents/user-action/user-action.js")})}}window.customElements.define(SelfCheck.tag,SelfCheck);export{SelfCheck};
+   */
+
+  openAnswer(e) {
+    this.correct = !this.correct;
+  }
+  static get haxProperties() {
+    return {
+      canScale: true,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Self-Check",
+        description: "The user will be able to complete a self-check.",
+        icon: "icons:check-circle",
+        color: "orange",
+        groups: ["Image", "Assessment"],
+        handles: [
+          {
+            type: "image",
+            source: "image",
+            title: "question",
+            description: "answer"
+          }
+        ],
+        meta: {
+          author: "LRNWebComponents"
+        }
+      },
+      settings: {
+        quick: [
+          {
+            property: "title",
+            title: "Title",
+            description: "The title of the element",
+            inputMethod: "textfield",
+            icon: "editor:title"
+          },
+          {
+            property: "image",
+            title: "Image",
+            description: "The image of the element",
+            inputMethod: "textfield",
+            icon: "editor:insert-photo"
+          },
+          {
+            property: "link",
+            title: "More link",
+            description: "Link to additional information",
+            inputMethod: "textfield",
+            validationType: "url",
+            icon: "icons:link"
+          }
+        ],
+        configure: [
+          {
+            property: "title",
+            title: "Title",
+            description: "The title of the element",
+            inputMethod: "textfield"
+          },
+          {
+            property: "accentColor",
+            title: "Accent Color",
+            description: "The accent color of the self-check",
+            inputMethod: "colorpicker",
+            icon: "editor:format-color-fill"
+          },
+          {
+            property: "dark",
+            title: "Dark Theme",
+            description: "Enable Dark Theme",
+            inputMethod: "boolean",
+            icon: "icons:invert-colors"
+          },
+          {
+            property: "image",
+            title: "Image",
+            description: "The image of the element",
+            inputMethod: "haxupload",
+            validationType: "url"
+          },
+          {
+            property: "link",
+            title: "More link",
+            description: "Link to additional information",
+            inputMethod: "haxupload",
+            validationType: "url"
+          },
+          {
+            property: "alt",
+            title: "Alt Text",
+            description: "Add alt text to the image",
+            inputMethod: "alt"
+          },
+          {
+            slot: "question",
+            title: "Question to ask",
+            description:
+              "This is where you enter a question for the self-check.",
+            inputMethod: "code-editor",
+            required: true
+          },
+          {
+            slot: "",
+            title: "Answer",
+            description:
+              "This is where you enter a question for the self-check.",
+            inputMethod: "code-editor",
+            required: true
+          }
+        ],
+        advanced: []
+      }
+    };
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, function() {
+      this.HAXWiring = new HAXWiring();
+      this.HAXWiring.setup(SelfCheck.haxProperties, SelfCheck.tag, this);
+      import("@lrnwebcomponents/user-action/user-action.js");
+    });
+  }
+}
+window.customElements.define(SelfCheck.tag, SelfCheck);
+export { SelfCheck };

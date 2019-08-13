@@ -1,4 +1,10 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import"./node_modules/@polymer/iron-meta/iron-meta.js";import"./node_modules/@polymer/iron-flex-layout/iron-flex-layout.js";import"./node_modules/@lrnwebcomponents/lrn-shared-styles/lrn-shared-styles.js";/**
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import "@polymer/iron-meta/iron-meta.js";
+import "@polymer/iron-flex-layout/iron-flex-layout.js";
+import "@lrnwebcomponents/lrn-shared-styles/lrn-shared-styles.js";
+
+/**
 This is a fork of https://github.com/PolymerElements/lrn-icon
 @license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
@@ -7,7 +13,8 @@ The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
-*/ /**
+*/
+/**
 
 The `lrn-icon` element displays an icon. By default an icon renders as a 24px square.
 
@@ -75,7 +82,10 @@ Custom property | Description | Default
 * @demo demo/index.html
 @hero hero.svg
 @homepage polymer.github.io
-*/class LrnIcon extends PolymerElement{static get template(){return html`
+*/
+class LrnIcon extends PolymerElement {
+  static get template() {
+    return html`
       <style include="lrn-shared-styles">
         :host {
           position: relative;
@@ -93,14 +103,107 @@ Custom property | Description | Default
         }
       </style>
       <iron-icon icon$="lrn:[[icon]]"></iron-icon>
-    `}static get tag(){return"lrn-icon"}static get properties(){return{/**
+    `;
+  }
+
+  static get tag() {
+    return "lrn-icon";
+  }
+
+  static get properties() {
+    return {
+      /**
        * The name of the icon to use. The name should be of the form:
        * `iconset_name:icon_name`.
-       */icon:{type:String},/**
+       */
+      icon: {
+        type: String
+      },
+
+      /**
        * The name of the theme to used, if one is specified by the
        * iconset.
-       */theme:{type:String},/**
+       */
+      theme: {
+        type: String
+      },
+
+      /**
        * If using lrn-icon without an iconset, you can set the src to be
        * the URL of an individual icon image file. Note that this will take
        * precedence over a given icon attribute.
-       */src:{type:String},_meta:{value:document.createElement("iron-meta",{type:"iconset"})}}}static get observers(){return["_updateIcon(_meta, isAttached)","_updateIcon(theme, isAttached)","_srcChanged(src, isAttached)","_iconChanged(icon, isAttached)"]}_iconChanged(icon){this._iconName=icon;this._iconsetName="lrn";this._updateIcon()}_srcChanged(src){this._updateIcon()}_usesIconset(){return this.icon||!this.src}/** @suppress {visibility} */_updateIcon(){if(this._usesIconset()){if(this._img&&this._img.parentNode){dom(this.root).removeChild(this._img)}if(""===this._iconName){if(this._iconset){this._iconset.removeIcon(this)}}else if(this._iconsetName&&this._meta){this._iconset=this._meta.byKey(this._iconsetName);if(this._iconset){this._iconset.applyIcon(this,this._iconName,this.theme);window.removeEventListener("lrn-iconset-added",this._updateIcon.bind(this))}else{window.addEventListener("lrn-iconset-added",this._updateIcon.bind(this))}}}else{if(this._iconset){this._iconset.removeIcon(this)}if(!this._img){this._img=document.createElement("img");this._img.style.width="100%";this._img.style.height="100%";this._img.draggable=!1}this._img.src=this.src;dom(this.root).appendChild(this._img)}}}window.customElements.define(LrnIcon.tag,LrnIcon);export{LrnIcon};
+       */
+      src: {
+        type: String
+      },
+
+      _meta: {
+        value: document.createElement("iron-meta", { type: "iconset" })
+      }
+    };
+  }
+
+  static get observers() {
+    return [
+      "_updateIcon(_meta, isAttached)",
+      "_updateIcon(theme, isAttached)",
+      "_srcChanged(src, isAttached)",
+      "_iconChanged(icon, isAttached)"
+    ];
+  }
+  _iconChanged(icon) {
+    this._iconName = icon;
+    this._iconsetName = "lrn";
+    this._updateIcon();
+  }
+
+  _srcChanged(src) {
+    this._updateIcon();
+  }
+
+  _usesIconset() {
+    return this.icon || !this.src;
+  }
+
+  /** @suppress {visibility} */
+  _updateIcon() {
+    if (this._usesIconset()) {
+      if (this._img && this._img.parentNode) {
+        dom(this.root).removeChild(this._img);
+      }
+      if (this._iconName === "") {
+        if (this._iconset) {
+          this._iconset.removeIcon(this);
+        }
+      } else if (this._iconsetName && this._meta) {
+        this._iconset = this._meta.byKey(this._iconsetName);
+        if (this._iconset) {
+          this._iconset.applyIcon(this, this._iconName, this.theme);
+          window.removeEventListener(
+            "lrn-iconset-added",
+            this._updateIcon.bind(this)
+          );
+        } else {
+          window.addEventListener(
+            "lrn-iconset-added",
+            this._updateIcon.bind(this)
+          );
+        }
+      }
+    } else {
+      if (this._iconset) {
+        this._iconset.removeIcon(this);
+      }
+      if (!this._img) {
+        this._img = document.createElement("img");
+        this._img.style.width = "100%";
+        this._img.style.height = "100%";
+        this._img.draggable = false;
+      }
+      this._img.src = this.src;
+      dom(this.root).appendChild(this._img);
+    }
+  }
+}
+window.customElements.define(LrnIcon.tag, LrnIcon);
+export { LrnIcon };

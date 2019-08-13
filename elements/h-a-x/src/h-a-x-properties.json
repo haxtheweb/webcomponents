@@ -1,7 +1,7 @@
 {
   "appStore": {
     "name": "appStore",
-    "type": "String",
+    "type": String,
     "value": ""
   }
 }

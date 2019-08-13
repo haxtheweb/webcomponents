@@ -135,7 +135,7 @@ class SimpleColorsPicker extends SimpleColors {
        */
       value: {
         name: "label",
-        type: "String",
+        type: String,
         value: null,
         reflectToAttribute: true,
         notify: true

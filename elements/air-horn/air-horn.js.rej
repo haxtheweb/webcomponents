@@ -1,0 +1,11 @@
+diff a/elements/air-horn/air-horn.js b/elements/air-horn/air-horn.js	(rejected hunks)
+@@ -17 +16,0 @@ class AirHorn extends HTMLElement {
+-  
+@@ -34,2 +33 @@ class AirHorn extends HTMLElement {
+-    return {}
+-;
++    return {};
+@@ -39,2 +37 @@ class AirHorn extends HTMLElement {
+-    let props = {}
+-;
++    let props = {};

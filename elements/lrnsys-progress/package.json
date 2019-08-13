@@ -16,7 +16,7 @@
       "hax": "src/lrnsys-progress-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Automated conversion of lrnsys-progress/",
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   "main": "lrnsys-progress.js",
   "module": "lrnsys-progress.es6.js",
   "umd": "lrnsys-progress.umd.js",
-  "amd": "lrnsys-progress.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrnsys-progress/test/",
     "start": "yarn run dev",
@@ -40,7 +39,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/circle-progress": "^2.1.1",
+    "@lrnwebcomponents/circle-progress": "^2.1.2",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/neon-animation": "^3.0.1",
@@ -55,7 +54,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.1.1",
+    "@lrnwebcomponents/storybook-utilities": "^2.1.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@webcomponents/webcomponentsjs": "2.2.10",

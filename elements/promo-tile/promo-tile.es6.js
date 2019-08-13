@@ -1,7 +1,24 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import{SchemaBehaviors}from"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";/**
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+/**
  * `promo-tile`
  * @demo demo/index.html
- */class PromoTile extends SchemaBehaviors(PolymerElement){constructor(){super();import("./node_modules/@polymer/paper-button/paper-button.js");import("./node_modules/@polymer/iron-icon/iron-icon.js");import("./node_modules/@polymer/iron-icons/iron-icons.js");afterNextRender(this,function(){this.HAXWiring=new HAXWiring;this.HAXWiring.setup(PromoTile.haxProperties,PromoTile.tag,this)})}static get template(){return html`
+ */
+class PromoTile extends SchemaBehaviors(PolymerElement) {
+  constructor() {
+    super();
+    import("@polymer/paper-button/paper-button.js");
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    afterNextRender(this, function() {
+      this.HAXWiring = new HAXWiring();
+      this.HAXWiring.setup(PromoTile.haxProperties, PromoTile.tag, this);
+    });
+  }
+  static get template() {
+    return html`
       <style>
         :host {
           display: block;
@@ -177,22 +194,216 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
           </div>
         </div>
       </div>
-    `}static get tag(){return"promo-tile"}static get properties(){let props={/**
+    `;
+  }
+
+  static get tag() {
+    return "promo-tile";
+  }
+
+  static get properties() {
+    let props = {
+      /**
        * Image source
-       */image:{type:String,value:"",reflectToAttribute:!0},/**
+       */
+      image: {
+        type: String,
+        value: "",
+        reflectToAttribute: true
+      },
+      /**
        * Alt text for image
-       */alt:{type:String,value:"",reflectToAttribute:!0},/**
+       */
+      alt: {
+        type: String,
+        value: "",
+        reflectToAttribute: true
+      },
+      /**
        * Label for button
-       */label:{type:String,value:"",reflectToAttribute:!0},/**
+       */
+      label: {
+        type: String,
+        value: "",
+        reflectToAttribute: true
+      },
+      /**
        * Title of tile
-       */title:{type:String,value:"",reflectToAttribute:!0},/**
+       */
+      title: {
+        type: String,
+        value: "",
+        reflectToAttribute: true
+      },
+      /**
        * Url for tile
-       */url:{type:String,value:"",reflectToAttribute:!0},/**
+       */
+      url: {
+        type: String,
+        value: "",
+        reflectToAttribute: true
+      },
+      /**
        * Hover state
-       */hover:{type:Boolean,value:!1,reflectToAttribute:!0}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
+       */
+      hover: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      }
+    };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
+  }
+  /**
    * Attached to the DOM, now fire.
-   */connectedCallback(){super.connectedCallback();afterNextRender(this,function(){this.addEventListener("mouseover",this.__hoverIn.bind(this));this.addEventListener("mouseout",this.__hoverOut.bind(this));this.addEventListener("focusin",this.__hoverIn.bind(this));this.addEventListener("focusout",this.__hoverOut.bind(this))})}disconnectedCallback(){this.removeEventListener("mouseover",this.__hoverIn.bind(this));this.removeEventListener("mouseout",this.__hoverOut.bind(this));this.removeEventListener("focusin",this.__hoverIn.bind(this));this.removeEventListener("focusout",this.__hoverOut.bind(this));super.disconnectedCallback()}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Promo-Tile",description:"A tile element for promoting content.",icon:"icons:dashboard",color:"orange",groups:["Content","Media"],handles:[{type:"content",source:"image",title:"citation",url:"source"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"title",title:"Title",description:"The title of the tile",inputMethod:"textfield",icon:"editor:title"},{property:"image",title:"Image",description:"The image of the tile",inputMethod:"textfield",icon:"editor:insert-photo"},{property:"url",title:"Link",description:"The link of the tile",inputMethod:"textfield",icon:"editor:insert-link"}],configure:[{property:"title",title:"Title",description:"The title of the tile",inputMethod:"textfield",icon:"editor:title"},{property:"image",title:"Image",description:"The image of the tile",inputMethod:"textfield",icon:"editor:insert-photo"},{property:"alt",title:"Alt",description:"The alt text for the image",inputMethod:"textfield",icon:"editor:mode-edit"},{property:"url",title:"Link",description:"The link of the tile",inputMethod:"textfield",icon:"editor:insert-link"},{property:"label",title:"Label",description:"The label for the button",inputMethod:"textfield",icon:"editor:title"}],advanced:[]}}}/**
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, function() {
+      this.addEventListener("mouseover", this.__hoverIn.bind(this));
+      this.addEventListener("mouseout", this.__hoverOut.bind(this));
+      this.addEventListener("focusin", this.__hoverIn.bind(this));
+      this.addEventListener("focusout", this.__hoverOut.bind(this));
+    });
+  }
+  disconnectedCallback() {
+    this.removeEventListener("mouseover", this.__hoverIn.bind(this));
+    this.removeEventListener("mouseout", this.__hoverOut.bind(this));
+    this.removeEventListener("focusin", this.__hoverIn.bind(this));
+    this.removeEventListener("focusout", this.__hoverOut.bind(this));
+    super.disconnectedCallback();
+  }
+  static get haxProperties() {
+    return {
+      canScale: true,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Promo-Tile",
+        description: "A tile element for promoting content.",
+        icon: "icons:dashboard",
+        color: "orange",
+        groups: ["Content", "Media"],
+        handles: [
+          {
+            type: "content",
+            source: "image",
+            title: "citation",
+            url: "source"
+          }
+        ],
+        meta: {
+          author: "LRNWebComponents"
+        }
+      },
+      settings: {
+        quick: [
+          {
+            property: "title",
+            title: "Title",
+            description: "The title of the tile",
+            inputMethod: "textfield",
+            icon: "editor:title"
+          },
+          {
+            property: "image",
+            title: "Image",
+            description: "The image of the tile",
+            inputMethod: "textfield",
+            icon: "editor:insert-photo"
+          },
+          {
+            property: "url",
+            title: "Link",
+            description: "The link of the tile",
+            inputMethod: "textfield",
+            icon: "editor:insert-link"
+          }
+        ],
+        configure: [
+          {
+            property: "title",
+            title: "Title",
+            description: "The title of the tile",
+            inputMethod: "textfield",
+            icon: "editor:title"
+          },
+          {
+            property: "image",
+            title: "Image",
+            description: "The image of the tile",
+            inputMethod: "textfield",
+            icon: "editor:insert-photo"
+          },
+          {
+            property: "alt",
+            title: "Alt",
+            description: "The alt text for the image",
+            inputMethod: "textfield",
+            icon: "editor:mode-edit"
+          },
+          {
+            property: "url",
+            title: "Link",
+            description: "The link of the tile",
+            inputMethod: "textfield",
+            icon: "editor:insert-link"
+          },
+          {
+            property: "label",
+            title: "Label",
+            description: "The label for the button",
+            inputMethod: "textfield",
+            icon: "editor:title"
+          }
+        ],
+        advanced: []
+      }
+    };
+  }
+
+  /**
    * Internal function to check if a url is external
-   */_outsideLink(url){if(0!=url.indexOf("http"))return!1;var loc=location.href,path=location.pathname,root=loc.substring(0,loc.indexOf(path));return 0!=url.indexOf(root)}/**
+   */
+  _outsideLink(url) {
+    if (url.indexOf("http") != 0) return false;
+    var loc = location.href,
+      path = location.pathname,
+      root = loc.substring(0, loc.indexOf(path));
+    return url.indexOf(root) != 0;
+  }
+
+  /**
    * If url is external, open link in new window, otherwise open link in same window.
-   */_urlTarget(url){if(url){const external=this._outsideLink(url);if(external){return"_blank"}}return!1}activateBtn(){if(this.hover){const link=this.shadowRoot.querySelector("#link");if(700<window.innerWidth){link.click()}}}__hoverIn(){this.hover=!0}__hoverOut(){this.hover=!1}}window.customElements.define(PromoTile.tag,PromoTile);export{PromoTile};
+   */
+  _urlTarget(url) {
+    if (url) {
+      const external = this._outsideLink(url);
+      if (external) {
+        return "_blank";
+      }
+    }
+    return false;
+  }
+
+  activateBtn() {
+    if (this.hover) {
+      const link = this.shadowRoot.querySelector("#link");
+      if (window.innerWidth > 700) {
+        link.click();
+      }
+    }
+  }
+
+  __hoverIn() {
+    this.hover = true;
+  }
+  __hoverOut() {
+    this.hover = false;
+  }
+}
+window.customElements.define(PromoTile.tag, PromoTile);
+export { PromoTile };

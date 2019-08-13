@@ -34,6 +34,16 @@ class HAXCMSEditorBuilder extends PolymerElement {
       this.editorLoaded.bind(this)
     );
   }
+  connectedCallback() {
+    this.dispatchEvent(
+      new CustomEvent("haxcms-editor-builder-ready", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this
+      })
+    );
+  }
   disconnectedCallback() {
     window.removeEventListener(
       "haxcms-site-editor-loaded",
@@ -75,23 +85,35 @@ class HAXCMSEditorBuilder extends PolymerElement {
       }, 5);
     }
   }
-  applyContext() {
-    let context = this.getContext();
-    if (context === "php") {
-      // append the php for global scope to show up via window
-      // this is a unique case since it's server side generated in HAXCMS/PHP
-      let script = document.createElement("script");
-      // IF we're in a php environment this will always be 2 levels back
-      script.src = `../../haxcms-jwt.php`;
-      document.documentElement.appendChild(script);
-    }
-    // dynamic import if this isn't published
-    if (context !== "published") {
-      const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
-      // import and set the tag based on the context
-      store.cmsSiteEditor.tag = `haxcms-backend-${context}`;
-      // delay import slightly to ensure global scope is there
-      import(`${basePath}backends/${store.cmsSiteEditor.tag}.js`);
+  applyContext(context = null) {
+    if (!this.__appliedContext) {
+      this.__appliedContext = true;
+      // this allows forced context
+      if (context == null) {
+        context = this.getContext();
+      }
+      if (context === "php") {
+        // append the php for global scope to show up via window
+        // this is a unique case since it's server side generated in HAXCMS/PHP
+        let script = document.createElement("script");
+        // IF we're in a php environment this will always be 2 levels back
+        script.src = `../../haxcms-jwt.php`;
+        document.documentElement.appendChild(script);
+      }
+      // dynamic import if this isn't published tho we'll double check
+      // that it's valid down in php land were it to come to that
+      if (context !== "published") {
+        const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+        // import and set the tag based on the context
+        store.cmsSiteEditor.tag = `haxcms-backend-${context}`;
+        // delay import slightly to ensure global scope is there
+        import(`${basePath}backends/${store.cmsSiteEditor.tag}.js`).then(e => {
+          let haxCmsSiteEditorElement = document.createElement(
+            store.cmsSiteEditor.tag
+          );
+          document.body.append(haxCmsSiteEditorElement);
+        });
+      }
     }
   }
 }

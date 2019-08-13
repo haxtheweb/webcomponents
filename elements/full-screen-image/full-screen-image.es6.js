@@ -1,7 +1,12 @@
 /**
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@polymer/paper-icon-button/paper-icon-button.js";import"./node_modules/@polymer/iron-icons/hardware-icons.js";/**
+ */
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@polymer/iron-icons/hardware-icons.js";
+/**
  * `full-screen-image`
  * `full screen banner image with down arrow`
  *
@@ -11,8 +16,12 @@
  * @customElement
  * @polymer
  * @demo demo/index.html
- */class FullScreenImage extends PolymerElement{// render function
-static get template(){return html`
+ */
+class FullScreenImage extends PolymerElement {
+  
+  // render function
+  static get template() {
+    return html`
 <style>:host {
   display: block;
   font-variant-ligatures: common-ligatures;
@@ -97,13 +106,142 @@ paper-icon-button {
   <div class="image-wrapper">
     <img id="img" src="[[source]]" />
   </div>
-</div>`}// haxProperty definition
-static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Full screen-image",description:"full screen banner image with down arrow",icon:"icons:android",color:"green",groups:["Screen"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"btopro",owner:"The Pennsylvania State University"}},settings:{quick:[{property:"source",description:"",inputMethod:"textfield",required:!0,icon:"icons:link",validationType:"url"}],configure:[{property:"title",description:"",inputMethod:"textfield",required:!1,icon:"icons:android"},{property:"subtitle",description:"",inputMethod:"textfield",required:!1,icon:"icons:android"},{property:"source",description:"",inputMethod:"textfield",required:!0,icon:"icons:link",validationType:"url"}],advanced:[]}}}// properties available to the custom element for data binding
-static get properties(){let props={title:{name:"title",type:String,value:"",reflectToAttribute:!1,observer:!1},subtitle:{name:"subtitle",type:String,value:"",reflectToAttribute:!1,observer:!1},source:{name:"source",type:String,value:"",reflectToAttribute:!1,observer:!1}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
+</div>`;
+  }
+
+  // haxProperty definition
+  static get haxProperties() {
+    return {
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Full screen-image",
+    "description": "full screen banner image with down arrow",
+    "icon": "icons:android",
+    "color": "green",
+    "groups": ["Screen"],
+    "handles": [
+      {
+        "type": "todo:read-the-docs-for-usage"
+      }
+    ],
+    "meta": {
+      "author": "btopro",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "quick": [
+      {
+        "property": "source",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": true,
+        "icon": "icons:link",
+        "validationType": "url"
+      }
+    ],
+    "configure": [
+      {
+        "property": "title",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": false,
+        "icon": "icons:android"
+      },
+      {
+        "property": "subtitle",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": false,
+        "icon": "icons:android"
+      },
+      {
+        "property": "source",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": true,
+        "icon": "icons:link",
+        "validationType": "url"
+      }
+    ],
+    "advanced": []
+  }
+}
+;
+  }
+  // properties available to the custom element for data binding
+    static get properties() {
+    let props = {
+  "title": {
+    "name": "title",
+    "type": String,
+    "value": "",
+    "reflectToAttribute": false,
+    "observer": false
+  },
+  "subtitle": {
+    "name": "subtitle",
+    "type": String,
+    "value": "",
+    "reflectToAttribute": false,
+    "observer": false
+  },
+  "source": {
+    "name": "source",
+    "type": String,
+    "value": "",
+    "reflectToAttribute": false,
+    "observer": false
+  }
+}
+;
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
+  }
+
+  /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
-   */static get tag(){return"full-screen-image"}/**
+   */
+  static get tag() {
+    return "full-screen-image";
+  }
+  /**
    * life cycle, element is afixed to the DOM
-   */connectedCallback(){super.connectedCallback();this.HAXWiring=new HAXWiring;this.HAXWiring.setup(FullScreenImage.haxProperties,FullScreenImage.tag,this);this.$.down.addEventListener("click",e=>{this.nextElementSibling.scrollIntoView({block:"start",inline:"nearest",behavior:"smooth"})})}/**
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    this.HAXWiring = new HAXWiring();
+    this.HAXWiring.setup(
+      FullScreenImage.haxProperties,
+      FullScreenImage.tag,
+      this
+    );
+    this.$.down.addEventListener("click", e => {
+      this.nextElementSibling.scrollIntoView({
+        block: "start",
+        inline: "nearest",
+        behavior: "smooth"
+      });
+    });
+  }
+  /**
    * life cycle, element is removed from the DOM
-   */disconnectedCallback(){super.disconnectedCallback();this.$.down.removeEventListener("click",e=>{this.nextElementSibling.scrollIntoView({block:"start",inline:"nearest",behavior:"smooth"})})}}window.customElements.define(FullScreenImage.tag,FullScreenImage);export{FullScreenImage};
+   */
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.$.down.removeEventListener("click", e => {
+      this.nextElementSibling.scrollIntoView({
+        block: "start",
+        inline: "nearest",
+        behavior: "smooth"
+      });
+    });
+  }
+}
+window.customElements.define(FullScreenImage.tag, FullScreenImage);
+export { FullScreenImage };

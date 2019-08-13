@@ -6,7 +6,6 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 
-export { A11yMediaBehaviors };
 /**
  * `a11y-media-behaviors`
  * `A set of properties common to player and transcript a11y-media components.`
@@ -428,13 +427,6 @@ class A11yMediaBehaviors extends SimpleColors {
   }
 
   /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-  }
-
-  /**
    * returns true if an attribute is not null
    *
    * @param {object} the attribute to check
@@ -568,3 +560,4 @@ class A11yMediaBehaviors extends SimpleColors {
   }
 }
 window.customElements.define(A11yMediaBehaviors.tag, A11yMediaBehaviors);
+export { A11yMediaBehaviors };

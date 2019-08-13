@@ -1,7 +1,13 @@
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import{SimpleColors}from"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@polymer/polymer/lib/elements/dom-if.js";import"./node_modules/@polymer/polymer/lib/elements/dom-repeat.js";/**
+ */
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@polymer/polymer/lib/elements/dom-if.js";
+import "@polymer/polymer/lib/elements/dom-repeat.js";
+/**
  * `csv-render`
  * `Remote render a CSV file in place as an accessible table.`
  *
@@ -12,7 +18,24 @@
  * @polymer
  * @polymerLegacy
  * @demo demo/index.html
- */class CsvRender extends PolymerElement{constructor(){super();import("./node_modules/@lrnwebcomponents/hexagon-loader/hexagon-loader.js");import("./node_modules/@polymer/iron-ajax/iron-ajax.js");import("./node_modules/@polymer/iron-icons/iron-icons.js");import("./node_modules/@polymer/iron-icon/iron-icon.js")}connectedCallback(){super.connectedCallback();afterNextRender(this,function(){import("./node_modules/@polymer/paper-button/paper-button.js");import("./node_modules/@polymer/paper-tooltip/paper-tooltip.js")})}static get template(){return html`
+ */
+class CsvRender extends PolymerElement {
+  constructor() {
+    super();
+    import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
+    import("@polymer/iron-ajax/iron-ajax.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icon/iron-icon.js");
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, function() {
+      import("@polymer/paper-button/paper-button.js");
+      import("@polymer/paper-tooltip/paper-tooltip.js");
+    });
+  }
+  static get template() {
+    return html`
       <style>
         :host {
           display: block;
@@ -156,24 +179,113 @@
           </template>
         </tbody>
       </table>
-    `}static get tag(){return"csv-render"}static get properties(){return{/**
+    `;
+  }
+
+  static get tag() {
+    return "csv-render";
+  }
+  static get properties() {
+    return {
+      /**
        * Location of the CSV file.
-       */dataSource:{type:String},/**
+       */
+      dataSource: {
+        type: String
+      },
+
+      /**
        * Caption for the table to improve accessibility and readability.
-       */caption:{type:String},/**
+       */
+      caption: {
+        type: String
+      },
+      /**
        * Summary to improve accessibility for screen readers.
-       */summary:{type:String},/**
+       */
+      summary: {
+        type: String
+      },
+      /**
        * Table busted out as an array.
-       */table:{type:Array,value:[]},/**
+       */
+      table: {
+        type: Array,
+        value: []
+      },
+      /**
        * Headings from the first row of the csv
-       */tableHeadings:{type:Array,value:[]},/**
+       */
+      tableHeadings: {
+        type: Array,
+        value: []
+      },
+      /**
        * Raw data pulled in from the csv file.
-       */tableData:{type:String,value:""},/**
+       */
+      tableData: {
+        type: String,
+        value: ""
+      },
+      /**
        * Class for the color
-       */hexColor:{type:String,computed:"_getHexColor(color)"},/**
+       */
+      hexColor: {
+        type: String,
+        computed: "_getHexColor(color)"
+      },
+      /**
        * Color class work to apply
-       */color:{type:String,value:"grey",reflectToAttribute:!0}}}/**
+       */
+      color: {
+        type: String,
+        value: "grey",
+        reflectToAttribute: true
+      }
+    };
+  }
+  /**
    * Convert from csv text to an array in the table function
-   */handleResponse(e){this.table=this.CSVtoArray(this.tableData);this.tableHeadings=this.table.shift();this.shadowRoot.querySelector("#loading").loading=!1}/**
+   */
+  handleResponse(e) {
+    this.table = this.CSVtoArray(this.tableData);
+    this.tableHeadings = this.table.shift();
+    this.shadowRoot.querySelector("#loading").loading = false;
+  }
+  /**
    * Mix of solutions from https://stackoverflow.com/questions/8493195/how-can-i-parse-a-csv-string-with-javascript-which-contains-comma-in-data
-   */CSVtoArray(text){let p="",row=[""],ret=[row],i=0,r=0,s=!0,l;for(l in text){l=text[l];if("\""===l){if(s&&l===p)row[i]+=l;s=!s}else if(","===l&&s)l=row[++i]="";else if("\n"===l&&s){if("\r"===p)row[i]=row[i].slice(0,-1);row=ret[++r]=[l=""];i=0}else row[i]+=l;p=l}return ret}_getHexColor(color){let name=color.replace("-text",""),tmp=new SimpleColors;if(tmp.colors[name]){return tmp.colors[name][6]}return"#000000"}}window.customElements.define(CsvRender.tag,CsvRender);export{CsvRender};
+   */
+  CSVtoArray(text) {
+    let p = "",
+      row = [""],
+      ret = [row],
+      i = 0,
+      r = 0,
+      s = !0,
+      l;
+    for (l in text) {
+      l = text[l];
+      if ('"' === l) {
+        if (s && l === p) row[i] += l;
+        s = !s;
+      } else if ("," === l && s) l = row[++i] = "";
+      else if ("\n" === l && s) {
+        if ("\r" === p) row[i] = row[i].slice(0, -1);
+        row = ret[++r] = [(l = "")];
+        i = 0;
+      } else row[i] += l;
+      p = l;
+    }
+    return ret;
+  }
+  _getHexColor(color) {
+    let name = color.replace("-text", "");
+    let tmp = new SimpleColors();
+    if (tmp.colors[name]) {
+      return tmp.colors[name][6];
+    }
+    return "#000000";
+  }
+}
+window.customElements.define(CsvRender.tag, CsvRender);
+export { CsvRender };

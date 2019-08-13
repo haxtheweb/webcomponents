@@ -16,7 +16,7 @@
       "hax": "src/paper-stepper-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Start of paper-stepper",
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   "main": "paper-stepper.js",
   "module": "paper-stepper.es6.js",
   "umd": "paper-stepper.umd.js",
-  "amd": "paper-stepper.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/paper-stepper/test/",
     "start": "yarn run dev",
@@ -50,7 +49,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.1.1",
+    "@lrnwebcomponents/storybook-utilities": "^2.1.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@webcomponents/webcomponentsjs": "2.2.10",

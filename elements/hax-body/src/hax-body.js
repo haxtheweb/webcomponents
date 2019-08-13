@@ -848,8 +848,6 @@ class HaxBody extends PolymerElement {
       }, 50);
     }
     return true;
-
-    return false;
   }
 
   breakUpdateLock() {

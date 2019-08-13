@@ -4,7 +4,7 @@
    */
   "buttonStyle": {
     "name": "buttonStyle",
-    "type": "Boolean",
+    "type": Boolean,
     "value": false,
     "reflectToAttribute": true
   },
@@ -14,7 +14,7 @@
    */
   "image": {
     "name": "image",
-    "type": "String",
+    "type": String,
     "value": ""
   },
   /**
@@ -23,7 +23,7 @@
    */
   "message": {
     "name": "message",
-    "type": "String",
+    "type": String,
     "value": ""
   },
   /**
@@ -32,7 +32,7 @@
    */
   "mode": {
     "name": "mode",
-    "type": "String",
+    "type": String,
     "value": null
   },
   /**
@@ -40,7 +40,7 @@
    */
   "text": {
     "name": "text",
-    "type": "String",
+    "type": String,
     "value": null
   },
   /**
@@ -49,7 +49,7 @@
    */
   "type": {
     "name": "type",
-    "type": "String",
+    "type": String,
     "value": "Twitter"
   },
   /**
@@ -57,7 +57,7 @@
    */
   "url": {
     "name": "url",
-    "type": "String",
+    "type": String,
     "value": null
   },
   /**
@@ -65,7 +65,7 @@
    */
   "__href": {
     "name": "__href",
-    "type": "String",
+    "type": String,
     "computed": "_getHref(image,message,type,url)"
   },
   /**
@@ -73,7 +73,7 @@
    */
   "__icon": {
     "name": "icon",
-    "type": "String",
+    "type": String,
     "computed": "_getIcon(type)"
   },
   /**
@@ -81,7 +81,7 @@
    */
   "__linkText": {
     "name": "__linkText",
-    "type": "String",
+    "type": String,
     "computed": "_getLinkText(text,type)"
   }
 }

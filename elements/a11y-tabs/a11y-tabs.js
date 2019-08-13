@@ -255,7 +255,7 @@ class A11yTabs extends PolymerElement {
        */
       activeTab: {
         name: "activeTab",
-        type: "String",
+        type: String,
         value: null,
         observer: "selectTab"
       },
@@ -264,7 +264,7 @@ class A11yTabs extends PolymerElement {
        */
       disabled: {
         name: "disabled",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         reflectToAttribute: true
       },
@@ -273,7 +273,7 @@ class A11yTabs extends PolymerElement {
        */
       hidden: {
         name: "hidden",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         reflectToAttribute: true
       },
@@ -284,7 +284,7 @@ class A11yTabs extends PolymerElement {
        */
       iconBreakpoint: {
         name: "iconBreakpoint",
-        type: "Number",
+        type: Number,
         value: 400,
         observer: "_breakpointChanged"
       },
@@ -293,7 +293,7 @@ class A11yTabs extends PolymerElement {
        */
       iconsOnly: {
         name: "iconsOnly",
-        type: "Boolean",
+        type: Boolean,
         computed:
           "_showIcons(__hasIcons,iconBreakpoint,layoutBreakpoint,responsiveSize)",
         reflectToAttribute: true
@@ -303,7 +303,7 @@ class A11yTabs extends PolymerElement {
        */
       id: {
         name: "id",
-        type: "String",
+        type: String,
         value: null,
         reflectToAttribute: true,
         observer: "_idChanged"
@@ -315,7 +315,7 @@ class A11yTabs extends PolymerElement {
        */
       layoutBreakpoint: {
         name: "layoutBreakpoint",
-        type: "Number",
+        type: Number,
         value: 600,
         observer: "_breakpointChanged"
       },
@@ -326,7 +326,7 @@ class A11yTabs extends PolymerElement {
        */
       responsiveSize: {
         name: "responsiveSize",
-        type: "String",
+        type: String,
         value: "xs"
       },
       /**
@@ -334,7 +334,7 @@ class A11yTabs extends PolymerElement {
        */
       vertical: {
         name: "vertical",
-        type: "Boolean",
+        type: Boolean,
         computed: "_isVertical(iconBreakpoint,layoutBreakpoint,responsiveSize)",
         reflectToAttribute: true
       },
@@ -343,7 +343,7 @@ class A11yTabs extends PolymerElement {
        */
       __hasIcons: {
         name: "__hasIcons",
-        type: "Boolean",
+        type: Boolean,
         value: false
       },
       /**
@@ -351,7 +351,7 @@ class A11yTabs extends PolymerElement {
        */
       __items: {
         name: "__items",
-        type: "Array",
+        type: Array,
         value: []
       },
       /**
@@ -359,7 +359,7 @@ class A11yTabs extends PolymerElement {
        */
       __observer: {
         name: "__observer",
-        type: "Object",
+        type: Object,
         value: null
       }
     };

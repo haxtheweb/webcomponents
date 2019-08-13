@@ -200,7 +200,12 @@ class SiteQuery extends MutableData(PolymerElement) {
         // apply conditions, this will automatically filter our items
         for (var i in conditions) {
           // test for object vs direct form of condition
-          if (typeof conditions[i] !== "object") {
+          if (conditions[i] === null) {
+            conditions[i] = {
+              value: [conditions[i]],
+              operator: "="
+            };
+          } else if (typeof conditions[i] !== "object") {
             conditions[i] = {
               value: conditions[i],
               operator: "="
@@ -216,12 +221,6 @@ class SiteQuery extends MutableData(PolymerElement) {
           // apply the conditions in order
           items = items.filter(item => {
             switch (conditions[i].operator) {
-              case "!=":
-                if (Object.byString(item, i) !== evaluate) {
-                  return true;
-                }
-                return false;
-                break;
               case ">":
                 if (Object.byString(item, i) > evaluate) {
                   return true;
@@ -234,10 +233,32 @@ class SiteQuery extends MutableData(PolymerElement) {
                 }
                 return false;
                 break;
+              case "!=":
+                if (
+                  typeof evaluate === "object" &&
+                  !evaluate.includes(Object.byString(item, i))
+                ) {
+                  return true;
+                } else if (
+                  typeof evaluate === "string" &&
+                  Object.byString(item, i) !== evaluate
+                ) {
+                  return true;
+                }
+                return false;
+                break;
               // most common
               case "=":
               default:
-                if (Object.byString(item, i) !== evaluate) {
+                if (
+                  typeof evaluate === "object" &&
+                  !evaluate.includes(Object.byString(item, i))
+                ) {
+                  return false;
+                } else if (
+                  typeof evaluate === "string" &&
+                  Object.byString(item, i) !== evaluate
+                ) {
                   return false;
                 }
                 return true;

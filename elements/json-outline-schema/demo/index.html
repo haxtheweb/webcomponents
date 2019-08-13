@@ -16,14 +16,23 @@
     <script>
       window.addEventListener('json-outline-schema-ready', () => {
         document.getElementById('button').addEventListener('tap', () => {
-        const evt = new CustomEvent("json-outline-schema-debug-toggle", {
-          bubbles: true,
-          cancelable: true,
-          detail: true
+          const evt = new CustomEvent("json-outline-schema-debug-toggle", {
+            bubbles: true,
+            cancelable: true,
+            detail: true
+          });
+          this.dispatchEvent(evt);
         });
-        this.dispatchEvent(evt);
       });
-    });
+      setTimeout(async () => {
+        var site = document.body.querySelector('json-outline-schema');
+        if (await site.load('site.json')) {
+          var nodes = site.itemsToNodes();
+          console.log(nodes);
+          var items = site.nodesToItems(nodes);
+          console.log(items);
+        }
+      }, 500);
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>

@@ -1,14 +1,24 @@
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import"./node_modules/@polymer/paper-icon-button/paper-icon-button.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";/**
+ */
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@polymer/paper-button/paper-button.js";
+import "@polymer/iron-icons/iron-icons.js";
+/**
  * `item-overlay-ops`
  * `Overlayed editing ops on whatever the current item slotted in is`
  *
  * @demo demo/index.html
  *
  * @microcopy - the mental model for this element
- */class ItemOverlayOps extends PolymerElement{static get template(){return html`
+ */
+class ItemOverlayOps extends PolymerElement {
+  static get template() {
+    return html`
       <style>
         :host {
           display: block;
@@ -188,48 +198,263 @@
         </div>
       </div>
       <slot></slot>
-    `}static get tag(){return"item-overlay-ops"}static get properties(){return{/**
+    `;
+  }
+
+  static get tag() {
+    return "item-overlay-ops";
+  }
+
+  static get properties() {
+    return {
+      /**
        * Edit mode whether it is shown or not
-       */editMode:{type:Boolean,reflectToAttribute:!0,value:!1},/**
+       */
+      editMode: {
+        type: Boolean,
+        reflectToAttribute: true,
+        value: false
+      },
+      /**
        * Edit mode whether it is shown or not
-       */focused:{type:Boolean,reflectToAttribute:!0,value:!1},/**
+       */
+      focused: {
+        type: Boolean,
+        reflectToAttribute: true,
+        value: false
+      },
+      /**
        * Title to present of active option
-       */activeTitle:{type:String},/**
+       */
+      activeTitle: {
+        type: String
+      },
+      /**
        * Active operation
-       */activeOp:{type:String},/**
+       */
+      activeOp: {
+        type: String
+      },
+      /**
        * Add opertaions
-       */add:{type:Boolean,value:!1},/**
+       */
+      add: {
+        type: Boolean,
+        value: false
+      },
+      /**
        * Edit opertaions
-       */edit:{type:Boolean,value:!1},/**
+       */
+      edit: {
+        type: Boolean,
+        value: false
+      },
+      /**
        * Move opertaions
-       */move:{type:Boolean,value:!1},/**
+       */
+      move: {
+        type: Boolean,
+        value: false
+      },
+      /**
        * Allow height to be defined rather than calculated
-       */fixedHeight:{type:Number,observer:"fixedHeightChanged"},/**
+       */
+      fixedHeight: {
+        type: Number,
+        observer: "fixedHeightChanged"
+      },
+      /**
        * Ability to disable height setting. Useful if using CSS vars.
-       */disableAutoHeight:{type:Boolean,value:!1},/**
+       */
+      disableAutoHeight: {
+        type: Boolean,
+        value: false
+      },
+      /**
        * Remove opertaions
-       */remove:{type:Boolean,value:!1},/**
+       */
+      remove: {
+        type: Boolean,
+        value: false
+      },
+      /**
        * Duplicate opertaions
-       */duplicate:{type:Boolean,value:!1},__anyOp:{type:Boolean,value:!1}}}/**
+       */
+      duplicate: {
+        type: Boolean,
+        value: false
+      },
+      __anyOp: {
+        type: Boolean,
+        value: false
+      }
+    };
+  }
+
+  /**
    * attached life cycle
-   */connectedCallback(){super.connectedCallback();// delay is enough to get the height correct
-setTimeout(()=>{this._windowResize()},5);this.setAttribute("tabindex","0");window.addEventListener("resize",this._windowResize.bind(this));afterNextRender(this,function(){this.addEventListener("focusin",this._inFocus.bind(this));this.addEventListener("focusout",this._outFocus.bind(this))})}/**
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    // delay is enough to get the height correct
+    setTimeout(() => {
+      this._windowResize();
+    }, 5);
+    this.setAttribute("tabindex", "0");
+    window.addEventListener("resize", this._windowResize.bind(this));
+    afterNextRender(this, function() {
+      this.addEventListener("focusin", this._inFocus.bind(this));
+      this.addEventListener("focusout", this._outFocus.bind(this));
+    });
+  }
+
+  /**
    * detached life cycle
-   */disconnectedCallback(){this.removeEventListener("focusin",this._inFocus.bind(this));this.removeEventListener("focusout",this._outFocus.bind(this));window.removeEventListener("resize",this._windowResize.bind(this));super.disconnectedCallback()}/**
+   */
+  disconnectedCallback() {
+    this.removeEventListener("focusin", this._inFocus.bind(this));
+    this.removeEventListener("focusout", this._outFocus.bind(this));
+    window.removeEventListener("resize", this._windowResize.bind(this));
+    super.disconnectedCallback();
+  }
+  /**
    * Fixed height changed, update.
-   */fixedHeightChanged(newValue,oldValue){if(newValue){if(!this.disableAutoHeight){this.$.container.style.height=this.fixedHeight+"px";this.$.workingarea.style.height=this.fixedHeight-80+"px"}}}/**
+   */
+  fixedHeightChanged(newValue, oldValue) {
+    if (newValue) {
+      if (!this.disableAutoHeight) {
+        this.$.container.style.height = this.fixedHeight + "px";
+        this.$.workingarea.style.height = this.fixedHeight - 80 + "px";
+      }
+    }
+  }
+  /**
    * react to window resizing
-   */_windowResize(e){let rect=this.getBoundingClientRect();this.$.container.style.width=rect.width+"px";if(!this.disableAutoHeight){if(!this.fixedHeight||typeof this.fixedHeight===typeof void 0){this.$.container.style.height=rect.height+"px";this.$.workingarea.style.height=rect.height-80+"px"}else{this.$.container.style.height=this.fixedHeight+"px";this.$.workingarea.style.height=this.fixedHeight-80+"px"}}else{this.$.workingarea.style.height=rect.height-80+"px"}}/**
+   */
+  _windowResize(e) {
+    let rect = this.getBoundingClientRect();
+    this.$.container.style.width = rect.width + "px";
+    if (!this.disableAutoHeight) {
+      if (!this.fixedHeight || typeof this.fixedHeight === typeof undefined) {
+        this.$.container.style.height = rect.height + "px";
+        this.$.workingarea.style.height = rect.height - 80 + "px";
+      } else {
+        this.$.container.style.height = this.fixedHeight + "px";
+        this.$.workingarea.style.height = this.fixedHeight - 80 + "px";
+      }
+    } else {
+      this.$.workingarea.style.height = rect.height - 80 + "px";
+    }
+  }
+
+  /**
    * Support tapping the buttons in the top
-   */_opTap(e){let normalizedEvent=dom(e),local=normalizedEvent.localTarget;this.activeTitle=local.getAttribute("id");this.activeOp=local.getAttribute("id");this._resetActive();this.__anyOp=!0;local.classList.add("active");// we switch icons for these
-switch(this.activeOp){case"cancel":local.classList.remove("active");this.activeTitle=null;this.activeOp=null;this.__anyOp=!1;break;case"remove":this.__option1Icon="icons:check";this.__option1Text="Confirm deleting this";this.__option2Icon="icons:clear";this.__option2Text="Cancel";break;case"duplicate":this.__option1Icon="icons:check";this.__option1Text="Confirm duplicating this";this.__option2Icon="icons:clear";this.__option2Text="Cancel";break;case"move":this.__option1Icon="icons:arrow-back";this.__option1Text="Move item left";this.__option2Icon="icons:arrow-forward";this.__option2Text="Move item right";break;}// let others know there's an event here
-let op={element:this,operation:this.activeOp};this.dispatchEvent(new CustomEvent("item-overlay-op-changed",{bubbles:!0,cancelable:!0,composed:!0,detail:op}))}/**
+   */
+  _opTap(e) {
+    let normalizedEvent = dom(e);
+    let local = normalizedEvent.localTarget;
+    this.activeTitle = local.getAttribute("id");
+    this.activeOp = local.getAttribute("id");
+    this._resetActive();
+    this.__anyOp = true;
+    local.classList.add("active");
+    // we switch icons for these
+    switch (this.activeOp) {
+      case "cancel":
+        local.classList.remove("active");
+        this.activeTitle = null;
+        this.activeOp = null;
+        this.__anyOp = false;
+        break;
+      case "remove":
+        this.__option1Icon = "icons:check";
+        this.__option1Text = "Confirm deleting this";
+        this.__option2Icon = "icons:clear";
+        this.__option2Text = "Cancel";
+        break;
+      case "duplicate":
+        this.__option1Icon = "icons:check";
+        this.__option1Text = "Confirm duplicating this";
+        this.__option2Icon = "icons:clear";
+        this.__option2Text = "Cancel";
+        break;
+      case "move":
+        this.__option1Icon = "icons:arrow-back";
+        this.__option1Text = "Move item left";
+        this.__option2Icon = "icons:arrow-forward";
+        this.__option2Text = "Move item right";
+        break;
+    }
+    // let others know there's an event here
+    let op = {
+      element: this,
+      operation: this.activeOp
+    };
+    this.dispatchEvent(
+      new CustomEvent("item-overlay-op-changed", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: op
+      })
+    );
+  }
+
+  /**
    * Set element reflected focus so we can get the whole thing
-   */_inFocus(e){if(this.editMode){this.focused=!0}}/**
+   */
+  _inFocus(e) {
+    if (this.editMode) {
+      this.focused = true;
+    }
+  }
+
+  /**
    * Drop element reflection when all focus offs are fired
-   */_outFocus(e){if(this.editMode){this.focused=!1}}/**
+   */
+  _outFocus(e) {
+    if (this.editMode) {
+      this.focused = false;
+    }
+  }
+
+  /**
    * fire event because an option was selected.
-   */_optionSelected(e){let normalizedEvent=dom(e),local=normalizedEvent.localTarget,ops={element:this,operation:this.activeOp,option:local.getAttribute("id")};this.dispatchEvent(new CustomEvent("item-overlay-option-selected",{bubbles:!0,cancelable:!0,composed:!0,detail:ops}));// don't reset for movement, just confirm / reject actions
-if("move"!=this.activeOp){this._resetActive();this.activeOp=null}}/**
+   */
+  _optionSelected(e) {
+    let normalizedEvent = dom(e);
+    let local = normalizedEvent.localTarget;
+    // fire that an option was selected and about what operation
+    let ops = {
+      element: this,
+      operation: this.activeOp,
+      option: local.getAttribute("id")
+    };
+    this.dispatchEvent(
+      new CustomEvent("item-overlay-option-selected", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: ops
+      })
+    );
+    // don't reset for movement, just confirm / reject actions
+    if (this.activeOp != "move") {
+      this._resetActive();
+      this.activeOp = null;
+    }
+  }
+
+  /**
    * Reset the active selections
-   */_resetActive(){this.$.add.classList.remove("active");this.$.edit.classList.remove("active");this.$.move.classList.remove("active");this.$.remove.classList.remove("active");this.$.duplicate.classList.remove("active")}}window.customElements.define(ItemOverlayOps.tag,ItemOverlayOps);export{ItemOverlayOps};
+   */
+  _resetActive() {
+    this.$.add.classList.remove("active");
+    this.$.edit.classList.remove("active");
+    this.$.move.classList.remove("active");
+    this.$.remove.classList.remove("active");
+    this.$.duplicate.classList.remove("active");
+  }
+}
+window.customElements.define(ItemOverlayOps.tag, ItemOverlayOps);
+export { ItemOverlayOps };

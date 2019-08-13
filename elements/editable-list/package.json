@@ -16,7 +16,7 @@
       "hax": "src/editable-list-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "a listing of items that can be edited in place with operations",
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   "main": "editable-list.js",
   "module": "editable-list.es6.js",
   "umd": "editable-list.umd.js",
-  "amd": "editable-list.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/editable-list/test/",
     "start": "yarn run dev",
@@ -40,8 +39,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-colors": "^2.1.1",
-    "@lrnwebcomponents/simple-modal": "^2.1.1",
+    "@lrnwebcomponents/simple-colors": "^2.1.2",
+    "@lrnwebcomponents/simple-modal": "^2.1.2",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/iron-list": "^3.0.2",
     "@polymer/paper-icon-button": "^3.0.1",
@@ -50,7 +49,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.1.1",
+    "@lrnwebcomponents/storybook-utilities": "^2.1.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@webcomponents/webcomponentsjs": "2.2.10",

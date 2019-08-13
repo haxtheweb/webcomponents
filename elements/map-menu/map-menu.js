@@ -24,6 +24,7 @@ class MapMenu extends PolymerElement {
         :host {
           --map-menu-active-color: rgba(0, 0, 0, 0.1);
           --map-menu-size: 1;
+          --map-menu-font-size: 16px;
           display: block;
           overflow-y: scroll;
           position: relative;
@@ -31,6 +32,10 @@ class MapMenu extends PolymerElement {
           transition: 0.2s linear all;
           opacity: 1;
           background-color: transparent;
+        }
+
+        #itemslist {
+          @apply --map-menu-items-list;
         }
 
         #activeIndicator {

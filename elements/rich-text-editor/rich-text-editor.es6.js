@@ -1,7 +1,16 @@
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@polymer/iron-a11y-keys/iron-a11y-keys.js";import"./lib/rich-text-editor-styles.js";import"./lib/singletons/rich-text-editor-clipboard.js";import"./lib/toolbars/rich-text-editor-toolbar.js";import"./lib/toolbars/rich-text-editor-toolbar-mini.js";import"./lib/toolbars/rich-text-editor-toolbar-full.js";/**
+ */
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
+import "./lib/rich-text-editor-styles.js";
+import "./lib/singletons/rich-text-editor-clipboard.js";
+import "./lib/toolbars/rich-text-editor-toolbar.js";
+import "./lib/toolbars/rich-text-editor-toolbar-mini.js";
+import "./lib/toolbars/rich-text-editor-toolbar-full.js";
+/**
  * `rich-text-editor`
  * `a standalone rich text editor`
  *
@@ -14,8 +23,12 @@
  * @demo demo/mini.html mini floating toolbar
  * @demo demo/full.html toolbar with breadcrumb
  * @demo demo/config.html custom configuration
- */class RichTextEditor extends PolymerElement{// render function
-static get template(){return html`
+ */
+class RichTextEditor extends PolymerElement {
+  
+  // render function
+  static get template() {
+    return html`
 <style>:host([hidden]) {
   display: none;
 }
@@ -40,39 +53,163 @@ static get template(){return html`
   @apply --rich-text-editor-content-placeholder;
 }</style>
 <style include="rich-text-editor-styles"></style>
-<slot></slot>`}// haxProperty definition
-static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Rich text-editor",description:"a standalone rich text editor",icon:"icons:android",color:"green",groups:["Text"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"nikkimk",owner:"Penn State University"}},settings:{quick:[],configure:[{property:"title",description:"",inputMethod:"textfield",required:!1,icon:"icons:android"}],advanced:[]}}}// properties available to the custom element for data binding
-static get properties(){let props={/**
+<slot></slot>`;
+  }
+
+  // haxProperty definition
+  static get haxProperties() {
+    return {
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Rich text-editor",
+    "description": "a standalone rich text editor",
+    "icon": "icons:android",
+    "color": "green",
+    "groups": ["Text"],
+    "handles": [
+      {
+        "type": "todo:read-the-docs-for-usage"
+      }
+    ],
+    "meta": {
+      "author": "nikkimk",
+      "owner": "Penn State University"
+    }
+  },
+  "settings": {
+    "quick": [],
+    "configure": [
+      {
+        "property": "title",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": false,
+        "icon": "icons:android"
+      }
+    ],
+    "advanced": []
+  }
+}
+;
+  }
+  // properties available to the custom element for data binding
+    static get properties() {
+    let props = {
+  /**
    * The id for the toolbar
-   */toolbar:{name:"toolbar",type:String,value:""},/**
+   */
+  "toolbar": {
+    "name": "toolbar",
+    "type": String,
+    "value": ""
+  },
+  /**
    * The editor's unique id
-   */id:{name:"id",type:String,value:""},/**
+   */
+  "id": {
+    "name": "id",
+    "type": String,
+    "value": ""
+  },
+  /**
    * The type of editor toolbar, i.e.
    * `full` for full toolbar with breadcrumb,
    * `mini` for mini floating toolbar, or
    * the default toolbar if neither.
-   */type:{name:"type",type:String,value:"rich-text-editor-toolbar"}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
+   */
+  "type": {
+    "name": "type",
+    "type": String,
+    "value": "rich-text-editor-toolbar"
+  }
+}
+;
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
+  }
+
+  /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
-   */static get tag(){return"rich-text-editor"}/**
+   */
+  static get tag() {
+    return "rich-text-editor";
+  }
+  /**
    * life cycle, element is afixed to the DOM
    * @returns {void}
-   */connectedCallback(){super.connectedCallback();if(!this.id)this.id=this._generateUUID();window.RichTextEditorStyleManager.requestAvailability()}/**
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    if (!this.id) this.id = this._generateUUID();
+    window.RichTextEditorStyleManager.requestAvailability();
+  }
+  /**
    * ready
    * @returns {void}
-   */ready(){super.ready();this.getEditor()}/**
+   */
+  ready() {
+    super.ready();
+    this.getEditor();
+  }
+  /**
    * connects the mini-toolbar to a mini editor
    * @returns {void}
-   */getEditor(){window.RichTextEditorClipboard.requestAvailability();let root=this,id=this.toolbar?"#"+this.toolbar:"",both=document.querySelector(this.type+id),idOnly=id?document.querySelector(id):null,typeOnly=document.querySelector(this.type),//try to match both id and type, if no match try id only, and then type only
-toolbar=both||idOnly||typeOnly;//if still no match, create a region of type
-if(!this.toolbar)this.toolbar=this._generateUUID();if(!toolbar||!toolbar.addEditableRegion){toolbar=document.createElement(this.type);toolbar.id=this.toolbar;root.parentNode.appendChild(toolbar)}toolbar.addEditableRegion(root)}/**
+   */
+  getEditor() {
+    window.RichTextEditorClipboard.requestAvailability();
+    let root = this,
+      id = this.toolbar ? "#" + this.toolbar : "",
+      both = document.querySelector(this.type + id),
+      idOnly = id ? document.querySelector(id) : null,
+      typeOnly = document.querySelector(this.type),
+      //try to match both id and type, if no match try id only, and then type only
+      toolbar = both || idOnly || typeOnly;
+    //if still no match, create a region of type
+    if (!this.toolbar) this.toolbar = this._generateUUID();
+    if (!toolbar || !toolbar.addEditableRegion) {
+      toolbar = document.createElement(this.type);
+      toolbar.id = this.toolbar;
+      root.parentNode.appendChild(toolbar);
+    }
+    toolbar.addEditableRegion(root);
+  }
+
+  /**
    * Normalizes selected range data.
    *
    * @returns {object} the selected range
-   */_getRange(){let sel=window.getSelection();if(sel.getRangeAt&&sel.rangeCount){return sel.getRangeAt(0)}else if(sel){return sel}else!1}/**
+   */
+  _getRange() {
+    let sel = window.getSelection();
+    if (sel.getRangeAt && sel.rangeCount) {
+      return sel.getRangeAt(0);
+    } else if (sel) {
+      return sel;
+    } else false;
+  }
+
+  /**
    * Generate a UUID
    * @returns {string} a unique id
-   */_generateUUID(){let hex=Math.floor(65536*(1+Math.random())).toString(16).substring(1);return"rte-"+"ss-s-s-s-sss".replace(/s/g,hex)}/**
+   */
+  _generateUUID() {
+    let hex = Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+    return "rte-" + "ss-s-s-s-sss".replace(/s/g, hex);
+  }
+
+  /**
    * life cycle, element is removed from the DOM
-   */ //disconnectedCallback() {}
-}export{RichTextEditor};window.customElements.define(RichTextEditor.tag,RichTextEditor);
+   */
+  //disconnectedCallback() {}
+}
+
+export { RichTextEditor };
+
+window.customElements.define(RichTextEditor.tag, RichTextEditor);

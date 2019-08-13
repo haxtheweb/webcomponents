@@ -16,7 +16,7 @@
       "hax": "src/lrndesign-gallerycard-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Automated conversion of lrndesign-gallerycard/",
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   "main": "lrndesign-gallerycard.js",
   "module": "lrndesign-gallerycard.es6.js",
   "umd": "lrndesign-gallerycard.umd.js",
-  "amd": "lrndesign-gallerycard.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrndesign-gallerycard/test/",
     "start": "yarn run dev",
@@ -40,8 +39,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/lrndesign-avatar": "^2.1.1",
-    "@lrnwebcomponents/materializecss-styles": "^2.1.1",
+    "@lrnwebcomponents/lrndesign-avatar": "^2.1.2",
+    "@lrnwebcomponents/materializecss-styles": "^2.1.2",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/iron-image": "^3.0.0",
     "@polymer/paper-card": "^3.0.0",
@@ -49,7 +48,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.1.1",
+    "@lrnwebcomponents/storybook-utilities": "^2.1.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@webcomponents/webcomponentsjs": "2.2.10",

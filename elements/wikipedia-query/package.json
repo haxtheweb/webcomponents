@@ -16,7 +16,7 @@
       "hax": "src/wikipedia-query-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Automated conversion of wikipedia-query/",
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   "main": "wikipedia-query.js",
   "module": "wikipedia-query.es6.js",
   "umd": "wikipedia-query.umd.js",
-  "amd": "wikipedia-query.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/wikipedia-query/test/",
     "start": "yarn run dev",
@@ -40,14 +39,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/citation-element": "^2.1.1",
-    "@lrnwebcomponents/hax-body-behaviors": "^2.1.1",
+    "@lrnwebcomponents/citation-element": "^2.1.2",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.1.2",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/polymer": "^3.2.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.1.1",
+    "@lrnwebcomponents/storybook-utilities": "^2.1.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@webcomponents/webcomponentsjs": "2.2.10",

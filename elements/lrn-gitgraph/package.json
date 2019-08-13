@@ -16,7 +16,7 @@
       "hax": "src/lrn-gitgraph-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Render git data in a graphing tree format",
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   "main": "lrn-gitgraph.js",
   "module": "lrn-gitgraph.es6.js",
   "umd": "lrn-gitgraph.umd.js",
-  "amd": "lrn-gitgraph.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrn-gitgraph/test/",
     "start": "yarn run dev",
@@ -44,7 +43,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.1.1",
+    "@lrnwebcomponents/storybook-utilities": "^2.1.2",
     "@polymer/iron-ajax": "^3.0.1",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",

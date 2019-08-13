@@ -16,7 +16,7 @@
       "hax": "src/per-spec-tive-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Automated conversion of per-spec-tive/",
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   "main": "per-spec-tive.js",
   "module": "per-spec-tive.es6.js",
   "umd": "per-spec-tive.umd.js",
-  "amd": "per-spec-tive.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/per-spec-tive/test/",
     "start": "yarn run dev",
@@ -40,7 +39,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-colors": "^2.1.1",
+    "@lrnwebcomponents/simple-colors": "^2.1.2",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/app-route": "^3.0.0",
     "@polymer/iron-ajax": "^3.0.0",
@@ -58,7 +57,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.1.1",
+    "@lrnwebcomponents/storybook-utilities": "^2.1.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@webcomponents/webcomponentsjs": "2.2.10",

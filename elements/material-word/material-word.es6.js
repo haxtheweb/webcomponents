@@ -1,11 +1,16 @@
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";/**
+ */
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+/**
  * `material-word`
  * `Outputs word in material alphabet`
  * @demo demo/index.html
- */class MaterialWord extends PolymerElement{static get template(){return html`
+ */
+class MaterialWord extends PolymerElement {
+  static get template() {
+    return html`
       <style>
         html {
           font-size: 100%;
@@ -810,4 +815,46 @@
           </div>
         </div>
       </div>
-    `}static get tag(){return"material-word"}static get properties(){return{word:{type:String,notify:!0},letters:{type:Array,value:[],notify:!0,reflectToAttribute:!0},halfLetters:{type:Array,value:["e","f","h","i"]}}}ready(){super.ready();var word=this.getAttribute("word"),letters=word.toLowerCase().trim().split("");if(letters.length){this.letters=letters}}showHalf(letter){if(this.halfLetters[letter]){return!0}return!1}}window.customElements.define(MaterialWord.tag,MaterialWord);export{MaterialWord};
+    `;
+  }
+  static get tag() {
+    return "material-word";
+  }
+  static get properties() {
+    return {
+      word: {
+        type: String,
+        notify: true
+      },
+      letters: {
+        type: Array,
+        value: [],
+        notify: true,
+        reflectToAttribute: true
+      },
+      halfLetters: {
+        type: Array,
+        value: ["e", "f", "h", "i"]
+      }
+    };
+  }
+  ready() {
+    super.ready();
+    var word = this.getAttribute("word");
+    var letters = word
+      .toLowerCase()
+      .trim()
+      .split("");
+    if (letters.length) {
+      this.letters = letters;
+    }
+  }
+  showHalf(letter) {
+    if (this.halfLetters[letter]) {
+      return true;
+    }
+    return false;
+  }
+}
+window.customElements.define(MaterialWord.tag, MaterialWord);
+export { MaterialWord };

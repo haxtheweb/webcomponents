@@ -4,7 +4,7 @@
    */
   "allowNull": {
     "name": "allowNull",
-    "type": "Boolean",
+    "type": Boolean,
     "value": false,
     "observer": "_getOptions"
   },
@@ -20,7 +20,7 @@
   */
   "icons": {
     "name": "icons",
-    "type": "Array",
+    "type": Array,
     "value": [],
     "observer": "_getOptions"
   },
@@ -30,7 +30,7 @@
    */
   "value": {
     "name": "value",
-    "type": "String",
+    "type": String,
     "value": null,
     "reflectToAttribute": true,
     "notify": true
@@ -41,7 +41,7 @@
    */
   "optionsPerRow": {
     "optionSize": "optionsPerRow",
-    "type": "Number",
+    "type": Number,
     "value": 10,
     "observer": "_getOptions"
   },
@@ -58,7 +58,7 @@
 
   "__iconList": {
     "name": "__iconList",
-    "type": "Array",
+    "type": Array,
     "read-only": true,
     "observer": "_getOptions"
   }

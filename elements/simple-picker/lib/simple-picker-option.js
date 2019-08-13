@@ -65,7 +65,7 @@ class SimplePickerOption extends PolymerElement {
        */
       active: {
         name: "active",
-        type: "Boolean",
+        type: Boolean,
         value: null,
         reflectToAttribute: true
       },
@@ -75,7 +75,7 @@ class SimplePickerOption extends PolymerElement {
        */
       data: {
         name: "data",
-        type: "Object",
+        type: Object,
         value: null
       },
 
@@ -84,7 +84,7 @@ class SimplePickerOption extends PolymerElement {
        */
       hidden: {
         name: "hidden",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         reflectToAttribute: true
       },
@@ -95,7 +95,7 @@ class SimplePickerOption extends PolymerElement {
        */
       hideOptionLabels: {
         name: "hideOptionLabels",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         reflectToAttribute: true
       },
@@ -105,7 +105,7 @@ class SimplePickerOption extends PolymerElement {
        */
       icon: {
         name: "icon",
-        type: "String",
+        type: String,
         value: null,
         reflectToAttribute: false
       },
@@ -115,7 +115,7 @@ class SimplePickerOption extends PolymerElement {
        */
       id: {
         name: "order",
-        type: "String",
+        type: String,
         value: null,
         reflectToAttribute: true
       },
@@ -125,7 +125,7 @@ class SimplePickerOption extends PolymerElement {
        */
       label: {
         name: "label",
-        type: "String",
+        type: String,
         value: null,
         reflectToAttribute: true,
         observer: "_updateLabel"
@@ -136,7 +136,7 @@ class SimplePickerOption extends PolymerElement {
        */
       selected: {
         name: "selected",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         reflectToAttribute: true
       },
@@ -146,7 +146,7 @@ class SimplePickerOption extends PolymerElement {
        */
       titleAsHtml: {
         name: "titleAsHtml",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         reflectToAttribute: true
       },
@@ -156,7 +156,7 @@ class SimplePickerOption extends PolymerElement {
        */
       value: {
         name: "label",
-        type: "String",
+        type: String,
         value: null,
         reflectToAttribute: true
       }

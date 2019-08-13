@@ -16,7 +16,7 @@
       "hax": "src/drag-n-drop-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "drag and drop elements and manager",
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   "main": "drag-n-drop.js",
   "module": "drag-n-drop.es6.js",
   "umd": "drag-n-drop.umd.js",
-  "amd": "drag-n-drop.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/drag-n-drop/test/",
     "start": "yarn run dev",

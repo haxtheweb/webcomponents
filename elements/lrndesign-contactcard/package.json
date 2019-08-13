@@ -16,7 +16,7 @@
       "hax": "src/lrndesign-contactcard-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Automated conversion of lrndesign-contactcard/",
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   "main": "lrndesign-contactcard.js",
   "module": "lrndesign-contactcard.es6.js",
   "umd": "lrndesign-contactcard.umd.js",
-  "amd": "lrndesign-contactcard.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrndesign-contactcard/test/",
     "start": "yarn run dev",
@@ -40,8 +39,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/lrn-icons": "^2.1.1",
-    "@lrnwebcomponents/social-media-icons": "^2.1.1",
+    "@lrnwebcomponents/lrn-icons": "^2.1.2",
+    "@lrnwebcomponents/social-media-icons": "^2.1.2",
     "@polymer/iron-icon": "^3.0.0",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-button": "^3.0.1",
@@ -52,7 +51,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.1.1",
+    "@lrnwebcomponents/storybook-utilities": "^2.1.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@webcomponents/webcomponentsjs": "2.2.10",

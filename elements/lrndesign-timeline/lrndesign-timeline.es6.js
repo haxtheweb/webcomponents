@@ -1,7 +1,15 @@
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import{SchemaBehaviors}from"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import{SimpleColors}from"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@lrnwebcomponents/responsive-utility/responsive-utility.js";export{LrndesignTimeline};/**
+ */
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
+
+export { LrndesignTimeline };
+/**
  * `lrndesign-timeline`
  * `an element that displays events on a timeline`
  *
@@ -11,8 +19,12 @@
  * @customElement
  * @polymer
  * @demo demo/index.html
- */class LrndesignTimeline extends SimpleColors{// render function
-static get template(){return html`
+ */
+class LrndesignTimeline extends SimpleColors {
+  
+  // render function
+  static get template() {
+    return html`
 <style>:host {
   font-size: 14px;
   font-weight: 100;
@@ -234,11 +246,114 @@ static get template(){return html`
         </template>
     </div>
   </div>
-</article>`}// haxProperty definition
-static get haxProperties(){return{canScale:!1,canPosition:!1,canEditSource:!0,gizmo:{title:"Timeline",description:"A timeline of events with images and text",icon:"icons:timeline",color:"indigo",groups:["Content","Instructional","Media","Image"],handles:[{type:"image",source:"image"}],meta:{author:"LRNWebComponents"}},settings:{quick:[],configure:[{property:"title",title:"Timeline Title",description:"A title for the timeline.",inputMethod:"textfield"},{property:"accentColor",title:"Accent Color",description:"An optional accent color.",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{property:"dark",title:"Dark Theme",description:"Enable Dark Theme",inputMethod:"boolean",icon:"icons:invert-colors"},{slot:"",title:"Timeline Description",description:"Optional text describing the timeline.",inputMethod:"textfield"},{property:"events",title:"Timeline Events",description:"The events in the timeline",inputMethod:"array",itemLabel:"heading",properties:[{property:"heading",title:"Event Heading",description:"The heading for the event.",inputMethod:"textfield",icon:"editor:title"},{property:"details",title:"Event Details",description:"The body text with details for the event.",inputMethod:"textfield",icon:"editor:title"},{property:"imagesrc",title:"Event Image",description:"The path of the image.",inputMethod:"haxupload",icon:"editor:title"},{property:"imagealt",title:"Event Image Alt Text",description:"The alt text of the image (for accessibility).",inputMethod:"alt",icon:"editor:title"}]}],advanced:[]}}}// properties available to the custom element for data binding
-static get properties(){let props={/**
+</article>`;
+  }
+
+  // haxProperty definition
+  static get haxProperties() {
+    return {
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Timeline",
+    "description": "A timeline of events with images and text",
+    "icon": "icons:timeline",
+    "color": "indigo",
+    "groups": ["Content", "Instructional", "Media", "Image"],
+    "handles": [
+      {
+        "type": "image",
+        "source": "image"
+      }
+    ],
+    "meta": {
+      "author": "LRNWebComponents"
+    }
+  },
+  "settings": {
+    "quick": [],
+    "configure": [
+      {
+        "property": "title",
+        "title": "Timeline Title",
+        "description": "A title for the timeline.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent Color",
+        "description": "An optional accent color.",
+        "inputMethod": "colorpicker",
+        "icon": "editor:format-color-fill"
+      },
+      {
+        "property": "dark",
+        "title": "Dark Theme",
+        "description": "Enable Dark Theme",
+        "inputMethod": "boolean",
+        "icon": "icons:invert-colors"
+      },
+      {
+        "slot": "",
+        "title": "Timeline Description",
+        "description": "Optional text describing the timeline.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "events",
+        "title": "Timeline Events",
+        "description": "The events in the timeline",
+        "inputMethod": "array",
+        "itemLabel": "heading",
+        "properties": [
+          {
+            "property": "heading",
+            "title": "Event Heading",
+            "description": "The heading for the event.",
+            "inputMethod": "textfield",
+            "icon": "editor:title"
+          },
+          {
+            "property": "details",
+            "title": "Event Details",
+            "description": "The body text with details for the event.",
+            "inputMethod": "textfield",
+            "icon": "editor:title"
+          },
+          {
+            "property": "imagesrc",
+            "title": "Event Image",
+            "description": "The path of the image.",
+            "inputMethod": "haxupload",
+            "icon": "editor:title"
+          },
+          {
+            "property": "imagealt",
+            "title": "Event Image Alt Text",
+            "description": "The alt text of the image (for accessibility).",
+            "inputMethod": "alt",
+            "icon": "editor:title"
+          }
+        ]
+      }
+    ],
+    "advanced": []
+  }
+}
+;
+  }
+  // properties available to the custom element for data binding
+  static get properties() {
+    let props = {
+  /**
    * the title of the timeline
-   */title:{type:String,value:null},/**
+   */
+  "title": {
+    "type": String,
+    "value": null
+  },
+  /**
    * the events of the timeline, in the desired order, as in:```
 [
   {
@@ -252,34 +367,139 @@ static get properties(){let props={/**
     {...},
   }
 ]```
-   */events:{type:Array,value:[],notify:!0},/**
+   */
+  "events": {
+    "type": Array,
+    "value": [],
+    "notify": true
+  },
+  /**
    * the updated list of events
-   */__events:{type:Array,computed:"_updateEvents(events)",notify:!0},/**
+   */
+  "__events": {
+    "type": Array,
+    "computed": "_updateEvents(events)",
+    "notify": true
+  },
+  /**
    * the timline size, calculated by responsive utility
-   */timelineSize:{type:String,value:"xs",reflectToAttribute:!0}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
+   */
+  "timelineSize": {
+    "type": String,
+    "value": "xs",
+    "reflectToAttribute": true
+  }
+}
+;
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
+  }
+
+  /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
-   */static get tag(){return"lrndesign-timeline"}/**
+   */
+  static get tag() {
+    return "lrndesign-timeline";
+  }
+
+  /**
    * gets simple-colors behaviors
-   */static get behaviors(){return[SimpleColors]}/**
+   */
+  static get behaviors() {
+    return [SimpleColors];
+  }
+  /**
    * life cycle, element is afixed to the DOM
-   */connectedCallback(){let root=this;super.connectedCallback();this.HAXWiring=new HAXWiring;this.HAXWiring.setup(LrndesignTimeline.haxProperties,LrndesignTimeline.tag,this);window.ResponsiveUtility.requestAvailability();window.dispatchEvent(new CustomEvent("responsive-element",{detail:{element:root,attribute:"timeline-size",relativeToParent:!0,sm:600,md:900,lg:1200,xl:1600}}));this._checkScroll()}/**
+   */
+  connectedCallback() {
+    let root = this;
+    super.connectedCallback();
+    this.HAXWiring = new HAXWiring();
+    this.HAXWiring.setup(
+      LrndesignTimeline.haxProperties,
+      LrndesignTimeline.tag,
+      this
+    );
+
+    window.ResponsiveUtility.requestAvailability();
+    window.dispatchEvent(
+      new CustomEvent("responsive-element", {
+        detail: {
+          element: root,
+          attribute: "timeline-size",
+          relativeToParent: true,
+          sm: 600,
+          md: 900,
+          lg: 1200,
+          xl: 1600
+        }
+      })
+    );
+    this._checkScroll();
+  }
+
+  /**
    * checks the scroll of each event
-   */_checkScroll(){let root=this,events=root.shadowRoot.querySelectorAll(".event");if(1>events.length)root.$.repeat.render();events=root.shadowRoot.querySelectorAll(".event");events.forEach(event=>{let top=event.offsetTop,target=events[0].offsetTop+50+event.parentNode.scrollTop,bottom=event.offsetTop+event.offsetHeight;if(target>top&&target<bottom){event.setAttribute("selected",!0)}else{event.removeAttribute("selected")}})}/**
+   */
+  _checkScroll() {
+    let root = this,
+      events = root.shadowRoot.querySelectorAll(".event");
+    if (events.length < 1) root.$.repeat.render();
+    events = root.shadowRoot.querySelectorAll(".event");
+    events.forEach(event => {
+      let top = event.offsetTop,
+        target = events[0].offsetTop + 50 + event.parentNode.scrollTop,
+        bottom = event.offsetTop + event.offsetHeight;
+      if (target > top && target < bottom) {
+        event.setAttribute("selected", true);
+      } else {
+        event.removeAttribute("selected");
+      }
+    });
+  }
+
+  /**
    * returns the media type for a given event, or false if there is no media
    *
    * @param {object} the event type to check
    * @param {object} the media type to check
    * @returns {string} the media type, or false if there is no media
-   */_isMediaType(event,type){return this._isSet(event.media)&&this._isSet(event.media.type)?event.media.type===type:!1}/**
+   */
+
+  _isMediaType(event, type) {
+    return this._isSet(event.media) && this._isSet(event.media.type)
+      ? event.media.type === type
+      : false;
+  }
+
+  /**
    * returns true if an property is not null
    *
    * @param {object} the property to check
    * @returns {boolean} property !== undefined && property !== null
-   */_isSet(prop){return prop!==void 0&&null!==prop}/**
+   */
+  _isSet(prop) {
+    return prop !== undefined && prop !== null;
+  }
+
+  /**
    * gets updated event data
    *
    * @param {array} the raw events array
-   */_updateEvents(events){events="string"===typeof events?JSON.parse(events):events;return events}/**
+   */
+  _updateEvents(events) {
+    events = typeof events === "string" ? JSON.parse(events) : events;
+    return events;
+  }
+
+  /**
    * handles the scroll on the events side
-   */_onScroll(e){this._checkScroll()}}window.customElements.define(LrndesignTimeline.tag,LrndesignTimeline);
+   */
+  _onScroll(e) {
+    this._checkScroll();
+  }
+}
+window.customElements.define(LrndesignTimeline.tag, LrndesignTimeline);

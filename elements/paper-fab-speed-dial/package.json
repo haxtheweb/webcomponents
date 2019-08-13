@@ -16,7 +16,7 @@
       "hax": "src/paper-fab-speed-dial-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Start of paper-fab-speed-dial fork",
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   "main": "paper-fab-speed-dial.js",
   "module": "paper-fab-speed-dial.es6.js",
   "umd": "paper-fab-speed-dial.umd.js",
-  "amd": "paper-fab-speed-dial.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/paper-fab-speed-dial/test/",
     "start": "yarn run dev",
@@ -40,12 +39,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^2.1.1",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.1.2",
     "@polymer/polymer": "^3.2.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.1.1",
+    "@lrnwebcomponents/storybook-utilities": "^2.1.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@webcomponents/webcomponentsjs": "2.2.10",

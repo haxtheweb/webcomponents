@@ -16,7 +16,7 @@
       "hax": "src/user-action-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "track user actions and allow them to talk to xAPI stores easily",
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   "main": "user-action.js",
   "module": "user-action.es6.js",
   "umd": "user-action.umd.js",
-  "amd": "user-action.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/user-action/test/",
     "start": "yarn run dev",

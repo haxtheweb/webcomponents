@@ -11,7 +11,7 @@
       "js": "src/dl-behavior.js"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Start of download thing",
   "repository": {
     "type": "git",
@@ -20,7 +20,6 @@
   "main": "dl-behavior.js",
   "module": "dl-behavior.es6.js",
   "umd": "dl-behavior.umd.js",
-  "amd": "dl-behavior.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/dl-behavior/test/",
     "start": "yarn run dev",
@@ -39,7 +38,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.1.1",
+    "@lrnwebcomponents/storybook-utilities": "^2.1.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@webcomponents/webcomponentsjs": "2.2.10",

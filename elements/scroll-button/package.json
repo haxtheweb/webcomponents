@@ -16,7 +16,7 @@
       "hax": "src/scroll-button-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "button to scroll to an area or back to top",
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   "main": "scroll-button.js",
   "module": "scroll-button.es6.js",
   "umd": "scroll-button.umd.js",
-  "amd": "scroll-button.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/scroll-button/test/",
     "start": "yarn run dev",
@@ -40,7 +39,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^2.1.1",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.1.2",
     "@polymer/paper-icon-button": "^3.0.2",
     "@polymer/paper-tooltip": "^3.0.1",
     "@polymer/polymer": "^3.2.0"

@@ -11,6 +11,7 @@ import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { MediaBehaviorsVideo } from "@lrnwebcomponents/media-behaviors/media-behaviors.js";
+import "@lrnwebcomponents/a11y-media-player/a11y-media-player.js";
 /**
  * `video-player`
  * `A simple responsive video player with ridiculously powerful backing`
@@ -52,7 +53,6 @@ class VideoPlayer extends MediaBehaviorsVideo(
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
   constructor() {
     super();
-    import("@lrnwebcomponents/a11y-media-player/a11y-media-player.js");
     afterNextRender(this, function() {
       this.HAXWiring = new HAXWiring();
       this.HAXWiring.setup(VideoPlayer.haxProperties, VideoPlayer.tag, this);

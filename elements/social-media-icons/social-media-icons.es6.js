@@ -11,4 +11,6 @@
  * @group LRN Elements
  * @pseudoElement social-media-icons
  * @demo demo/index.html
- */import"./node_modules/@polymer/iron-iconset-svg/iron-iconset-svg.js";import"./lib/social-media-iconset.js";
+ */
+import "@polymer/iron-iconset-svg/iron-iconset-svg.js";
+import "./lib/social-media-iconset.js";

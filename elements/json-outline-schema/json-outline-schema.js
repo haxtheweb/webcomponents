@@ -71,8 +71,6 @@ class JsonOutlineSchema extends HTMLElement {
     super();
     // set tag for later use
     this.tag = JsonOutlineSchema.tag;
-    // optional queue for future use
-    this._queue = [];
     this.template = document.createElement("template");
 
     this.attachShadow({ mode: "open" });
@@ -100,9 +98,6 @@ class JsonOutlineSchema extends HTMLElement {
       window.ShadyCSS.styleElement(this);
     }
 
-    if (this._queue.length) {
-      this._processQueue();
-    }
     window.addEventListener(
       "json-outline-schema-debug-toggle",
       this._toggleDebug.bind(this)
@@ -123,18 +118,6 @@ class JsonOutlineSchema extends HTMLElement {
     for (const node of recipients) {
       node[fname](name, value);
     }
-  }
-
-  _queueAction(action) {
-    this._queue.push(action);
-  }
-
-  _processQueue() {
-    this._queue.forEach(action => {
-      this[`_${action.type}`](action.data);
-    });
-
-    this._queue = [];
   }
 
   _setProperty({ name, value }) {
@@ -257,10 +240,13 @@ class JsonOutlineSchema extends HTMLElement {
   /**
    * Load a schema from a file
    */
-  load(location) {
+  async load(location) {
     if (location) {
       this.file = location;
-      let fileData = json_decode(file_get_contents(location));
+      let data = await fetch(location).then(function(response) {
+        return response.text();
+      });
+      let fileData = JSON.parse(data);
       for (var key in fileData) {
         if (typeof this[key] !== typeof undefined && key !== "items") {
           this[key] = fileData[key];
@@ -268,8 +254,9 @@ class JsonOutlineSchema extends HTMLElement {
       }
       // check for items and escalate to full JSONOutlineSchemaItem object
       // also ensures data matches only what is supported
-      if (isset(fileData.items)) {
+      if (fileData.items) {
         for (var key in fileData.items) {
+          let item = fileData.items[key];
           let newItem = new JSONOutlineSchemaItem();
           newItem.id = item.id;
           newItem.indent = item.indent;
@@ -546,8 +533,10 @@ class JsonOutlineSchema extends HTMLElement {
   /**
    * Take the items of the manifest (or passed in) and generate an HTML list hierarchy from it
    */
-  itemsToNodes(items) {
-    items = typeof items !== "undefined" ? items : this.items;
+  itemsToNodes(items = []) {
+    if (items.length === 0) {
+      items = this.items;
+    }
     let tree = this.unflattenItems(items);
     return this.treeToNodes(tree, document.createElement("ul"));
   }

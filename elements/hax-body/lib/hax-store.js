@@ -563,29 +563,47 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
   async _handleDynamicImports(items, haxAutoloader) {
     const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
     for (var i in items) {
-      await import(`${basePath}../../../${items[i]}`)
-        .then(response => {
-          for (var cVal in response) {
-            // get the custom element definition we used to add that file
-            let CEClass = response[cVal];
-            if (typeof CEClass.getHaxProperties === "function") {
-              this.setHaxProperties(CEClass.getHaxProperties(), i);
-            } else if (typeof CEClass.HAXWiring === "function") {
-              this.setHaxProperties(CEClass.HAXWiring.getHaxProperties(), i);
-            } else if (CEClass.haxProperties) {
-              this.setHaxProperties(CEClass.haxProperties, i);
-            } else {
-              // this is the less optimized / legacy polymer element method to inlcude
-              // this item. It's a good reason to skip on this though because you'll
-              // have a faster boot up time with newer ES6 methods then previous ones.
-              dom(haxAutoloader).appendChild(document.createElement(i));
+      // seems redundant but this can help polyfill'ed browsers
+      if (!window.customElements.get(i)) {
+        await import(`${basePath}../../../${items[i]}`)
+          .then(response => {
+            for (var cVal in response) {
+              // get the custom element definition we used to add that file
+              let CEClass = response[cVal];
+              if (typeof CEClass.getHaxProperties === "function") {
+                this.setHaxProperties(CEClass.getHaxProperties(), i);
+              } else if (typeof CEClass.HAXWiring === "function") {
+                this.setHaxProperties(CEClass.HAXWiring.getHaxProperties(), i);
+              } else if (CEClass.haxProperties) {
+                this.setHaxProperties(CEClass.haxProperties, i);
+              } else {
+                // this is the less optimized / legacy polymer element method to inlcude
+                // this item. It's a good reason to skip on this though because you'll
+                // have a faster boot up time with newer ES6 methods then previous ones.
+                dom(haxAutoloader).appendChild(document.createElement(i));
+              }
             }
-          }
-        })
-        .catch(error => {
-          /* Error handling */
-          console.log(error);
-        });
+          })
+          .catch(error => {
+            /* Error handling */
+            console.log(error);
+          });
+      } else {
+        // get the custom element definition we used to add that file
+        let CEClass = window.customElements.get(i);
+        if (typeof CEClass.getHaxProperties === "function") {
+          this.setHaxProperties(CEClass.getHaxProperties(), i);
+        } else if (typeof CEClass.HAXWiring === "function") {
+          this.setHaxProperties(CEClass.HAXWiring.getHaxProperties(), i);
+        } else if (CEClass.haxProperties) {
+          this.setHaxProperties(CEClass.haxProperties, i);
+        } else {
+          // this is the less optimized / legacy polymer element method to inlcude
+          // this item. It's a good reason to skip on this though because you'll
+          // have a faster boot up time with newer ES6 methods then previous ones.
+          dom(haxAutoloader).appendChild(document.createElement(i));
+        }
+      }
     }
   }
   _editModeChanged(newValue) {
@@ -1017,11 +1035,8 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
   constructor() {
     super();
     setPassiveTouchGestures(true);
-    import("@lrnwebcomponents/hax-body/lib/hax-app.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-stax.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-blox.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-stax-browser.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-blox-browser.js");
+    // helps promose polyfill for this to be 1 execution chain as opposed to multiple
+    import("@lrnwebcomponents/hax-body/lib/hax-store-dynamic.js");
     // claim the instance spot. This way we can easily
     // be referenced globally
     if (window.HaxStore.instance == null) {

@@ -1,7 +1,11 @@
 /**
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import{AbsolutePositionBehavior}from"./node_modules/@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";/**
+ */
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import { AbsolutePositionBehavior } from "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
+/**
  * `simple-popover`
  * `A popover alertdialog that is positioned next to a target element`
  *
@@ -11,8 +15,12 @@
  * @customElement
  * @polymer
  * @demo demo/index.html
- */class SimplePopover extends AbsolutePositionBehavior{// render function
-static get template(){return html`
+ */
+class SimplePopover extends AbsolutePositionBehavior {
+  
+  // render function
+  static get template() {
+    return html`
 <style>:host {
   --simple-popover-border-radius: 3px;
   --simple-popover-color: #222;
@@ -99,22 +107,108 @@ static get template(){return html`
   <div id="pointer-outer">
     <div id="pointer" style$="[[__pointerOffSetStyle]]"></div>
   </div>
-</div>`}// haxProperty definition
-static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Simple popover",description:"A popover alertdialog that is positioned next to a target element",icon:"icons:android",color:"green",groups:["Popover"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"nikkimk",owner:"The Pennsylvania State University"}},settings:{quick:[],configure:[{property:"title",description:"",inputMethod:"textfield",required:!1,icon:"icons:android"}],advanced:[]}}}// properties available to the custom element for data binding
-static get properties(){let props={/**
+</div>`;
+  }
+
+  // haxProperty definition
+  static get haxProperties() {
+    return {
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Simple popover",
+    "description": "A popover alertdialog that is positioned next to a target element",
+    "icon": "icons:android",
+    "color": "green",
+    "groups": ["Popover"],
+    "handles": [
+      {
+        "type": "todo:read-the-docs-for-usage"
+      }
+    ],
+    "meta": {
+      "author": "nikkimk",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "quick": [],
+    "configure": [
+      {
+        "property": "title",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": false,
+        "icon": "icons:android"
+      }
+    ],
+    "advanced": []
+  }
+}
+;
+  }
+  // properties available to the custom element for data binding
+    static get properties() {
+    let props = {
+  /**
    * Tthe margin styles to offset the pointer
-   */__pointerOffSetStyle:{type:Object,computed:"_getMargins(__positions)"}};if(super.properties){props=Object.assign(props,super.properties)}return props}constructor(){super();this.offset=-10;this.fitToVisibleBounds=!0}/**
+   */
+  "__pointerOffSetStyle": {
+    "type": Object,
+    "computed": "_getMargins(__positions)"
+  }
+}
+;
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
+  }
+  constructor() {
+    super();
+    this.offset = -10;
+    this.fitToVisibleBounds = true;
+  }
+
+  /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
-   */static get tag(){return"simple-popover"}/**
+   */
+  static get tag() {
+    return "simple-popover";
+  }
+  /**
    * life cycle, element is afixed to the DOM
-   */connectedCallback(){super.connectedCallback();this.HAXWiring=new HAXWiring;this.HAXWiring.setup(SimplePopover.haxProperties,SimplePopover.tag,this)}/**
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    this.HAXWiring = new HAXWiring();
+    this.HAXWiring.setup(SimplePopover.haxProperties, SimplePopover.tag, this);
+  }
+  /**
    * sets pointer position based on popover and target middles
    *
    * @param {object} positions object that contains postions for popover and target
    * @returns {string} a string with margin styles to offset pointer
-   */_getMargins(positions){//this.fitToVisibleBounds = true;
-let self=this.getBoundingClientRect(),h="bottom"===this.position||"top"===this.position,max=h?self.width:self.height,sStart=h?self.left:self.top,tStart=h?positions.target.left:positions.target.top,tHalf=h?positions.target.width/2:positions.target.height/2,center=tStart+tHalf-10,margin=Math.min(max-20,Math.max(0,center-sStart)),style=h?`margin: 0 0 0 ${margin}px;`:`margin: ${margin}px 0 0 0;`;return style}/**
+   */
+  _getMargins(positions) {
+    //this.fitToVisibleBounds = true;
+    let self = this.getBoundingClientRect(),
+      h = this.position === "bottom" || this.position === "top",
+      max = h ? self.width : self.height,
+      sStart = h ? self.left : self.top,
+      tStart = h ? positions.target.left : positions.target.top,
+      tHalf = h ? positions.target.width / 2 : positions.target.height / 2,
+      center = tStart + tHalf - 10,
+      margin = Math.min(max - 20, Math.max(0, center - sStart)),
+      style = h ? `margin: 0 0 0 ${margin}px;` : `margin: ${margin}px 0 0 0;`;
+    return style;
+  }
+  /**
    * life cycle, element is removed from the DOM
-   */ //disconnectedCallback() {}
-}window.customElements.define(SimplePopover.tag,SimplePopover);export{SimplePopover};
+   */
+  //disconnectedCallback() {}
+}
+window.customElements.define(SimplePopover.tag, SimplePopover);
+export { SimplePopover };

@@ -16,7 +16,7 @@
       "hax": "src/simple-fields-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.3",
   "description": "Uses eco-json-form and HAX wiring to display a series of fields",
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   "main": "simple-fields.js",
   "module": "simple-fields.es6.js",
   "umd": "simple-fields.umd.js",
-  "amd": "simple-fields.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/simple-fields/test/",
     "start": "yarn run dev",
@@ -40,13 +39,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/code-editor": "^2.1.1",
-    "@lrnwebcomponents/eco-json-schema-form": "^2.1.1",
-    "@lrnwebcomponents/hax-body-behaviors": "^2.1.1",
-    "@lrnwebcomponents/paper-input-flagged": "^2.1.1",
-    "@lrnwebcomponents/simple-colors": "^2.1.1",
-    "@lrnwebcomponents/simple-icon-picker": "^2.1.1",
-    "@lrnwebcomponents/simple-picker": "^2.1.1",
+    "@lrnwebcomponents/code-editor": "^2.1.2",
+    "@lrnwebcomponents/eco-json-schema-form": "^2.1.3",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.1.2",
+    "@lrnwebcomponents/paper-input-flagged": "^2.1.2",
+    "@lrnwebcomponents/simple-colors": "^2.1.2",
+    "@lrnwebcomponents/simple-icon-picker": "^2.1.2",
+    "@lrnwebcomponents/simple-picker": "^2.1.2",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-input": "^3.0.2",

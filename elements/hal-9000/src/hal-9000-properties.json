@@ -4,7 +4,7 @@
    */
   "commands": {
     "name": "commands",
-    "type": "Object",
+    "type": Object,
     "value": {},
     "observer": "_commandsChanged"
   },
@@ -13,7 +13,7 @@
    */
   "respondsTo": {
     "name": "respondsTo",
-    "type": "String",
+    "type": String,
     "value": "(hal)",
     "observer": "_respondsToChanged"
   },
@@ -22,7 +22,7 @@
    */
   "debug": {
     "name": "debug",
-    "type": "Boolean",
+    "type": Boolean,
     "value": false,
     "observer": "_debugChanged"
   },
@@ -31,7 +31,7 @@
    */
   "auto": {
     "name": "auto",
-    "type": "Boolean",
+    "type": Boolean,
     "reflectToAttribute": true,
     "observer": "_autoChanged"
   },
@@ -40,7 +40,7 @@
    */
   "enabled": {
     "name": "enabled",
-    "type": "Boolean",
+    "type": Boolean,
     "reflectToAttribute": true,
     "observer": "_enabledChanged"
   },
@@ -49,7 +49,7 @@
    */
   "pitch": {
     "name": "pitch",
-    "type": "Number",
+    "type": Number,
     "reflectToAttribute": true,
     "value": 0.9
   },
@@ -58,7 +58,7 @@
    */
   "rate": {
     "name": "rate",
-    "type": "Number",
+    "type": Number,
     "reflectToAttribute": true,
     "value": 0.9
   },
@@ -67,7 +67,7 @@
    */
   "language": {
     "name": "language",
-    "type": "String",
+    "type": String,
     "reflectToAttribute": true,
     "value": "en-US"
   }

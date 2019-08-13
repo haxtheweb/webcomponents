@@ -4,7 +4,7 @@
    */
   "haxSchema": {
     "name": "haxSchema",
-    "type": "String",
+    "type": String,
     "notify": true,
     "observer": "_haxSchemaChanged"
   },
@@ -13,7 +13,7 @@
    */
   "configureSchema": {
     "name": "configureSchema",
-    "type": "Object",
+    "type": Object,
     "value": {}
   },
   /**
@@ -21,7 +21,7 @@
    */
   "advancedSchema": {
     "name": "advancedSchema",
-    "type": "Object",
+    "type": Object,
     "value": {}
   },
   /**
@@ -29,13 +29,13 @@
    */
   "source": {
     "name": "source",
-    "type": "String"
+    "type": String
   },
   /**
    * String based value passed between the elements to stitch together
    */
   "value": {
     "name": "value",
-    "type": "String"
+    "type": String
   }
 }

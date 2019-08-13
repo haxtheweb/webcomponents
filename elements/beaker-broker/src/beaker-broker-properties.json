@@ -3,14 +3,14 @@
    * Archive
    */
   "archive": {
-    "type": "Object",
+    "type": Object,
     "notify": true
   },
   /**
    * datUrl
    */
   "datUrl": {
-    "type": "String",
+    "type": String,
     "value": window.location.host,
     "observer": "_datUrlChanged",
     "notify": true

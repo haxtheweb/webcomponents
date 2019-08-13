@@ -1,4 +1,9 @@
-import"./node_modules/@polymer/iron-icon/iron-icon.js";import"./node_modules/@polymer/iron-iconset-svg/iron-iconset-svg.js";var $_documentContainer=document.createElement("div");$_documentContainer.setAttribute("style","display: none;");$_documentContainer.innerHTML=`<iron-iconset-svg size="30" name="lrn">
+import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/iron-iconset-svg/iron-iconset-svg.js";
+var $_documentContainer = document.createElement("div");
+$_documentContainer.setAttribute("style", "display: none;");
+
+$_documentContainer.innerHTML = `<iron-iconset-svg size="30" name="lrn">
   <svg>
     <defs>
 
@@ -537,7 +542,11 @@ import"./node_modules/@polymer/iron-icon/iron-icon.js";import"./node_modules/@po
 
     </g></g></defs>
   </svg>
-</iron-iconset-svg>`;document.head.appendChild($_documentContainer);/**
+</iron-iconset-svg>`;
+
+document.head.appendChild($_documentContainer);
+
+/**
 @license
 Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
 This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
@@ -545,7 +554,8 @@ The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
 The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
-*/ /**
+*/
+/**
 
 `lrn-icons` is a utility import that includes the definition for the `lrn-icon` element, `iron-iconset-svg` element, as well as an import for the default icon set.
 
@@ -573,4 +583,85 @@ See [iron-iconset](#iron-iconset) and [iron-iconset-svg](#iron-iconset-svg) for 
 @group LRN Elements
 @pseudoElement lrn-icons
 * @demo demo/index.html
-*/ /* explore */ /* save */ /* cancel */ /* done */ /* input */ /* local-library */ /* info-outline */ /* mode-edit */ /* accessibility */ /* share */ /* more-vert */ /* about */ /* plus */ /* add */ /* apps */ /* network */ /* arrow-left */ /* arrow-right */ /* studio-assignment-list */ /* canban */ /* columns */ /* assignment */ /* beaker */ /* grades */ /* notifications */ /* inbox */ /* letter */ /* user */ /* calendar */ /* palette */ /* studio */ /* cle */ /* blog */ /* blogs */ /* editorial */ /* write */ /* bookmark */ /* bookmark-border */ /* chevron-down */ /* chevron-left */ /* chevron-right */ /* online */ /* cis */ /* close */ /* collab */ /* comply */ /* ecd */ /* mooc */ /* content-outline */ /* content */ /* dino */ /* discuss */ /* speechballoons */ /* dotgrid */ /* download */ /* file-download */ /* edit */ /* media */ /* elmsmedia */ /* play */ /* replay */ /* gear */ /* settings */ /* assessment */ /* help */ /* hidden */ /* view-off */ /* icor */ /* interact */ /* info */ /* page */ /* pdf */ /* cpr */ /* people */ /* quiz */ /* support */ /* teacher */ /* instructor */ /* tour */ /* visible */ /* view */
+*/
+/* explore */
+/* save */
+/* cancel */
+/* done */
+/* input */
+/* local-library */
+/* info-outline */
+/* mode-edit */
+/* accessibility */
+/* share */
+/* more-vert */
+/* about */
+/* plus */
+/* add */
+/* apps */
+/* network */
+/* arrow-left */
+/* arrow-right */
+/* studio-assignment-list */
+/* canban */
+/* columns */
+/* assignment */
+/* beaker */
+/* grades */
+/* notifications */
+/* inbox */
+/* letter */
+/* user */
+/* calendar */
+/* palette */
+/* studio */
+/* cle */
+/* blog */
+/* blogs */
+/* editorial */
+/* write */
+/* bookmark */
+/* bookmark-border */
+/* chevron-down */
+/* chevron-left */
+/* chevron-right */
+/* online */
+/* cis */
+/* close */
+/* collab */
+/* comply */
+/* ecd */
+/* mooc */
+/* content-outline */
+/* content */
+/* dino */
+/* discuss */
+/* speechballoons */
+/* dotgrid */
+/* download */
+/* file-download */
+/* edit */
+/* media */
+/* elmsmedia */
+/* play */
+/* replay */
+/* gear */
+/* settings */
+/* assessment */
+/* help */
+/* hidden */
+/* view-off */
+/* icor */
+/* interact */
+/* info */
+/* page */
+/* pdf */
+/* cpr */
+/* people */
+/* quiz */
+/* support */
+/* teacher */
+/* instructor */
+/* tour */
+/* visible */
+/* view */

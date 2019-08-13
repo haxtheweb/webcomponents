@@ -16,7 +16,7 @@
       "hax": "src/count-up-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "count up js wrapper with minimal styling",
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   "main": "count-up.js",
   "module": "count-up.es6.js",
   "umd": "count-up.umd.js",
-  "amd": "count-up.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/count-up/test/",
     "start": "yarn run dev",
@@ -40,7 +39,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^2.1.1",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.1.2",
     "@polymer/polymer": "^3.2.0",
     "countup.js": "^2.0.4"
   },

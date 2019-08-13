@@ -16,7 +16,7 @@
       "hax": "src/lrn-shared-styles-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "a shared set of styles for all @lrnwebcomponents",
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   "main": "lrn-shared-styles.js",
   "module": "lrn-shared-styles.es6.js",
   "umd": "lrn-shared-styles.umd.js",
-  "amd": "lrn-shared-styles.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrn-shared-styles/test/",
     "start": "yarn run dev",

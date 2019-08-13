@@ -16,7 +16,7 @@
       "hax": "src/agency-theme-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "",
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   "main": "agency-theme.js",
   "module": "agency-theme.es6.js",
   "umd": "agency-theme.umd.js",
-  "amd": "agency-theme.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/agency-theme/test/",
     "start": "yarn run dev",

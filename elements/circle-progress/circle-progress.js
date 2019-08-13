@@ -82,7 +82,7 @@ class CircleProgress extends mixinBehaviors(
        */
       value: {
         name: "value",
-        type: "Number",
+        type: Number,
         value: 0
       },
 
@@ -91,7 +91,7 @@ class CircleProgress extends mixinBehaviors(
        */
       max: {
         name: "max",
-        type: "Number",
+        type: Number,
         value: 100
       },
 
@@ -100,7 +100,7 @@ class CircleProgress extends mixinBehaviors(
        */
       strokeWidth: {
         name: "strokeWidth",
-        type: "Number",
+        type: Number,
         value: 4
       },
 
@@ -109,43 +109,43 @@ class CircleProgress extends mixinBehaviors(
        */
       angle: {
         name: "angle",
-        type: "Number",
+        type: Number,
         value: -90
       },
 
       _cx: {
         name: "_cx",
-        type: "Number",
+        type: Number,
         value: null
       },
 
       _cy: {
         name: "_cy",
-        type: "Number",
+        type: Number,
         value: null
       },
 
       _radius: {
         name: "_radius",
-        type: "Number",
+        type: Number,
         computed: "_computeRadius(_cx, _cy, strokeWidth)"
       },
 
       _transform: {
         name: "_transform",
-        type: "String",
+        type: String,
         computed: "_computeTransform(angle, _cx, _cy)"
       },
 
       _dasharray: {
         name: "_dasharray",
-        type: "Number",
+        type: Number,
         computed: "_computeDashArray(_radius)"
       },
 
       _dashoffset: {
         name: "_dashoffset",
-        type: "Number",
+        type: Number,
         computed: "_computeDashOffset(value, max, _dasharray)"
       }
     };

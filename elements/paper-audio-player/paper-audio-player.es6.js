@@ -1,4 +1,17 @@
-import{html}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import{IronA11yKeysBehavior}from"./node_modules/@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js";import{mixinBehaviors}from"./node_modules/@polymer/polymer/lib/legacy/class.js";import"./node_modules/@polymer/paper-progress/paper-progress.js";import"./node_modules/@polymer/iron-icon/iron-icon.js";import"./node_modules/@polymer/paper-icon-button/paper-icon-button.js";import"./node_modules/@polymer/paper-ripple/paper-ripple.js";import{SimpleColors}from"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import{SchemaBehaviors}from"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import"./node_modules/@polymer/iron-iconset-svg/iron-iconset-svg.js";import"./lib/paper-audio-icons.js";/**
+import { html } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { IronA11yKeysBehavior } from "@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js";
+import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
+import "@polymer/paper-progress/paper-progress.js";
+import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@polymer/paper-ripple/paper-ripple.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import "@polymer/iron-iconset-svg/iron-iconset-svg.js";
+import "./lib/paper-audio-icons.js";
+/**
 A custom audio player with material paper style and clean design.
 
 Example:
@@ -31,7 +44,24 @@ Custom property                             | Description                       
 
 @element paper-audio-player
 * @demo demo/index.html
-*/class PaperAudioPlayer extends mixinBehaviors([IronA11yKeysBehavior],SchemaBehaviors(SimpleColors)){constructor(){super();afterNextRender(this,function(){this.HAXWiring=new HAXWiring;this.HAXWiring.setup(PaperAudioPlayer.haxProperties,PaperAudioPlayer.tag,this)})}static get template(){return html`
+*/
+class PaperAudioPlayer extends mixinBehaviors(
+  [IronA11yKeysBehavior],
+  SchemaBehaviors(SimpleColors)
+) {
+  constructor() {
+    super();
+    afterNextRender(this, function() {
+      this.HAXWiring = new HAXWiring();
+      this.HAXWiring.setup(
+        PaperAudioPlayer.haxProperties,
+        PaperAudioPlayer.tag,
+        this
+      );
+    });
+  }
+  static get template() {
+    return html`
       <style>
         :host {
           display: block;
@@ -280,55 +310,473 @@ Custom property                             | Description                       
           ></paper-icon-button>
         </div>
       </div>
-    `}static get tag(){return"paper-audio-player"}// Define public properties
-static get properties(){let props={src:{type:String,observer:"_srcChanged"},title:{type:String,value:"Click to play this audio file"},autoPlay:{type:Boolean,value:!1},preload:{type:String,value:"auto"},currentTime:{type:Number,value:0,notify:!0},timeLeft:{type:Number,value:0},smallSkip:{type:Number,value:15},largeSkip:{type:Number,value:60},error:{type:Boolean},timeOffset:{type:Number,value:0}};if(super.properties){props=Object.assign(props,super.properties)}return props}static get keyBindings(){return{space:"playPause",enter:"playPause",left:"_skipReverseByInterval",right:"_skipReverseByInterval",down:"_skipReverseByInterval",up:"_skipReverseByInterval"}}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Mini Audio player",description:"A very small audio player good for MP3s.",icon:"image:music-note",color:"green",groups:["Audio","Media"],handles:[{type:"audio",source:"src",title:"title",color:"color"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"src",title:"Source",description:"The URL for this audio file.",inputMethod:"textfield",icon:"link",required:!0,validationType:"url"},{property:"title",title:"Title",description:"Title of this sound track.",inputMethod:"textfield",icon:"av:video-label",required:!1,validationType:"text"},{property:"accentColor",title:"Accent color",description:"Select the accent color use",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{property:"dark",title:"Dark",description:"Use dark theme",inputMethod:"boolean",icon:"invert-colors"}],configure:[{property:"src",title:"Source",description:"The URL for this audio file.",inputMethod:"haxupload",icon:"link",required:!0,validationType:"url"},{property:"title",title:"Title",description:"Title of this sound track.",inputMethod:"textfield",icon:"av:video-label",required:!1,validationType:"text"},{property:"accentColor",title:"Accent color",description:"Select the accent color use",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{property:"dark",title:"Dark",description:"Use dark theme",inputMethod:"boolean",icon:"invert-colors"}],advanced:[]}}}/**
+    `;
+  }
+
+  static get tag() {
+    return "paper-audio-player";
+  }
+  // Define public properties
+  static get properties() {
+    let props = {
+      src: {
+        type: String,
+        observer: "_srcChanged"
+      },
+      title: {
+        type: String,
+        value: "Click to play this audio file"
+      },
+      autoPlay: {
+        type: Boolean,
+        value: false
+      },
+      preload: {
+        type: String,
+        value: "auto"
+      },
+      currentTime: {
+        type: Number,
+        value: 0,
+        notify: true
+      },
+      timeLeft: {
+        type: Number,
+        value: 0
+      },
+      smallSkip: {
+        type: Number,
+        value: 15
+      },
+      largeSkip: {
+        type: Number,
+        value: 60
+      },
+      error: {
+        type: Boolean
+      },
+      timeOffset: {
+        type: Number,
+        value: 0
+      }
+    };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
+  }
+
+  static get keyBindings() {
+    return {
+      space: "playPause",
+      enter: "playPause",
+      left: "_skipReverseByInterval",
+      right: "_skipReverseByInterval",
+      down: "_skipReverseByInterval",
+      up: "_skipReverseByInterval"
+    };
+  }
+  static get haxProperties() {
+    return {
+      canScale: true,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Mini Audio player",
+        description: "A very small audio player good for MP3s.",
+        icon: "image:music-note",
+        color: "green",
+        groups: ["Audio", "Media"],
+        handles: [
+          {
+            type: "audio",
+            source: "src",
+            title: "title",
+            color: "color"
+          }
+        ],
+        meta: {
+          author: "LRNWebComponents"
+        }
+      },
+      settings: {
+        quick: [
+          {
+            property: "src",
+            title: "Source",
+            description: "The URL for this audio file.",
+            inputMethod: "textfield",
+            icon: "link",
+            required: true,
+            validationType: "url"
+          },
+          {
+            property: "title",
+            title: "Title",
+            description: "Title of this sound track.",
+            inputMethod: "textfield",
+            icon: "av:video-label",
+            required: false,
+            validationType: "text"
+          },
+          {
+            property: "accentColor",
+            title: "Accent color",
+            description: "Select the accent color use",
+            inputMethod: "colorpicker",
+            icon: "editor:format-color-fill"
+          },
+          {
+            property: "dark",
+            title: "Dark",
+            description: "Use dark theme",
+            inputMethod: "boolean",
+            icon: "invert-colors"
+          }
+        ],
+        configure: [
+          {
+            property: "src",
+            title: "Source",
+            description: "The URL for this audio file.",
+            inputMethod: "haxupload",
+            icon: "link",
+            required: true,
+            validationType: "url"
+          },
+          {
+            property: "title",
+            title: "Title",
+            description: "Title of this sound track.",
+            inputMethod: "textfield",
+            icon: "av:video-label",
+            required: false,
+            validationType: "text"
+          },
+          {
+            property: "accentColor",
+            title: "Accent color",
+            description: "Select the accent color use",
+            inputMethod: "colorpicker",
+            icon: "editor:format-color-fill"
+          },
+          {
+            property: "dark",
+            title: "Dark",
+            description: "Use dark theme",
+            inputMethod: "boolean",
+            icon: "invert-colors"
+          }
+        ],
+        advanced: []
+      }
+    };
+  }
+  /**
    * attached life cycle
-   */connectedCallback(){super.connectedCallback();afterNextRender(this,function(){this.$.audio.addEventListener("loadedmetadata",this._onCanPlay.bind(this));this.$.audio.addEventListener("playing",this._onPlaying.bind(this));this.$.audio.addEventListener("pause",this._onPause.bind(this));this.$.audio.addEventListener("ended",this._onEnd.bind(this));this.$.audio.addEventListener("error",this._onError.bind(this))});this.setAttribute("tabindex","0");this.setAttribute("role","application");this.setAttribute("aria-label","Audio Player");this.setAttribute("aria-describedby","title")}/**
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, function() {
+      this.$.audio.addEventListener(
+        "loadedmetadata",
+        this._onCanPlay.bind(this)
+      );
+      this.$.audio.addEventListener("playing", this._onPlaying.bind(this));
+      this.$.audio.addEventListener("pause", this._onPause.bind(this));
+      this.$.audio.addEventListener("ended", this._onEnd.bind(this));
+      this.$.audio.addEventListener("error", this._onError.bind(this));
+    });
+    this.setAttribute("tabindex", "0");
+    this.setAttribute("role", "application");
+    this.setAttribute("aria-label", "Audio Player");
+    this.setAttribute("aria-describedby", "title");
+  }
+  /**
    * detached life cycle
-   */disconnectedCallback(){super.disconnectedCallback();this.$.audio.removeEventListener("loadedmetadata",this._onCanPlay.bind(this));this.$.audio.removeEventListener("playing",this._onPlaying.bind(this));this.$.audio.removeEventListener("pause",this._onPause.bind(this));this.$.audio.removeEventListener("ended",this._onEnd.bind(this));this.$.audio.removeEventListener("error",this._onError.bind(this))}/**
+   */
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.$.audio.removeEventListener(
+      "loadedmetadata",
+      this._onCanPlay.bind(this)
+    );
+    this.$.audio.removeEventListener("playing", this._onPlaying.bind(this));
+    this.$.audio.removeEventListener("pause", this._onPause.bind(this));
+    this.$.audio.removeEventListener("ended", this._onEnd.bind(this));
+    this.$.audio.removeEventListener("error", this._onError.bind(this));
+  }
+  /**
    * ready life cycle
-   */ready(){super.ready();var player=this;// create Player defaults
-player.canBePlayed=!1;player.isPlaying=!1;player.ended=!1;player.error=!1;player.$.audio.currentTime=player.timeOffset;// apply the audio start time property
-}// Play/Pause controls
-playPause(e){if(!!e)e.preventDefault();var player=this;if(player.canBePlayed){if(player.isPlaying){player._pause()}else{player._play()}}else if("none"===player.preload){// If player can't be played, because audio wasn't pre-loaded
-// due to the preload="none" property set,
-// load the audio file at this point and start playing it immediately
-player.$.audio.load();player._play()}}_play(){var player=this;player.$.audio.play()}_pause(){var player=this;player.$.audio.pause()}//
-// Restart audio
-restart(e){if(!!e)e.preventDefault();var player=this;player.$.audio.currentTime=0;if(!player.isPlaying)player._play()}// when audio file can be played in user's browser
-_onCanPlay(){var player=this;player.canBePlayed=!0;player.timeLeft=player.$.audio.duration;// If player has a Time Offset specified
-// style the progress bar and title accordingly
-if(0<player.timeOffset){var percentagePlayed=player.timeOffset/player.$.audio.duration;player._updateVisualProgress(percentagePlayed)}// If player has auto-play attribute set,
-// it ignores preload="none" property and starts playing on load.
-// This behavior corresponds to the native audio element behavior.
-if(player.autoPlay)player._play()}// when Player starts playing
-_onPlaying(){var player=this;player.ended=!1;player.isPlaying=!0;player.$.replay.style="";// remove Replay inline styling
-player._startProgressTimer()}// Skip or reverse by pre-defined intervals
-_skipReverseByInterval(e){if(!!e)e.preventDefault();var player=this,newTime=0;switch(e.detail.key){case"up":if(player.largeSkip<player.timeLeft)newTime=player.currentTime+player.largeSkip;break;case"down":if(0<player.currentTime-player.largeSkip)newTime=player.currentTime-player.largeSkip;break;case"right":if(player.smallSkip<player.timeLeft)newTime=player.currentTime+player.smallSkip;break;default:if(0<player.currentTime-player.smallSkip)newTime=player.currentTime-player.smallSkip;}player._updatePlayPosition(newTime);if(!player.isPlaying)player._play()}// starts Timer
-_startProgressTimer(){var player=this;player.timer={};if(player.timer.sliderUpdateInterval){clearInterval(player.timer.sliderUpdateInterval)}player.timer.sliderUpdateInterval=setInterval(function(){if(player.isPlaying){player.currentTime=player.$.audio.currentTime;player.timeLeft=player.$.audio.duration-player.currentTime;var percentagePlayed=player.currentTime/player.$.audio.duration;player._updateVisualProgress(percentagePlayed)}else{clearInterval(player.timer.sliderUpdateInterval)}},60)}// when Player is paused
-_onPause(){var player=this;player.isPlaying=!1}// when Player ended playing an audio file
-_onEnd(){var player=this;player.ended=!0;player.isPlaying=!1;player.$.replay.style.opacity=1;// display Replay icon
-}// on file load error
-_onError(){var player=this;player.classList.add("cantplay");player.title="Sorry, can't play track: "+player.title;player.error=!0;player.setAttribute("aria-invalid","true")}// to convert seconds to 'm:ss' format
-_convertSecToMin(seconds){if(0===seconds)return"";var minutes=Math.floor(seconds/60),secondsToCalc=Math.floor(seconds%60)+"";return minutes+":"+(2>secondsToCalc.length?"0"+secondsToCalc:secondsToCalc)}//
-// When user clicks somewhere on the progress bar
-_onDown(e){e.preventDefault();var player=this;if(player.canBePlayed){player._updateProgressBar(e);if(!player.isPlaying){player._play()}// When preload="none" is being used,
-// player should first try to load the audio,
-// and when it's successfully loaded, recalculate the progress bar
-}else if("none"===player.preload){player.$.audio.load();player.$.audio.addEventListener("loadedmetadata",function(){player._updateProgressBar(e);if(!player.isPlaying){player._play()}},!1)}}//
-// Helper function
-// that recalculates the progress bar position
-// based on the event.click position
-_updateProgressBar(e){var player=this,x=e.detail.x-player.$.center.getBoundingClientRect().left,r=x/player.$.center.getBoundingClientRect().width*player.$.audio.duration;this._updatePlayPosition(r)}//
-// Helper function
-// updates the current time based on a time variable
-_updatePlayPosition(newTime){var player=this;player.currentTime=player.$.audio.currentTime=newTime;var percentagePlayed=player.currentTime/player.$.audio.duration;player._updateVisualProgress(percentagePlayed)}//
-// Helper function
-// updates the progress bar based on a percentage played
-_updateVisualProgress(percentagePlayed){var player=this;player.$.progress.style.transform="scaleX("+percentagePlayed+")";player.$.progress2.style.width=100*percentagePlayed+"%";player.$.title2.style.width=100*(1/percentagePlayed)+"%"}//
-// If src is changed when track is playing,
-// pause the track and start playing a new src
-_srcChanged(newValue,oldValue){var player=this;if(player.isPlaying){player._pause();player._play()}}//
-// If color property is changed,
-// update all the nodes with the new accent color
-_changeColor(newValue){var player=this;player.$.left.style.backgroundColor=newValue;player.$.title.style.color=newValue;player.$.duration.style.color=newValue;player.$.progress.style.backgroundColor=newValue;player.$.replay.style.color=newValue}_hidePlayIcon(isPlaying,canBePlayed){return isPlaying?!0:!(canBePlayed||"none"===this.preload)}_setPreload(autoplay,preload){return autoplay?"auto":preload}}window.customElements.define(PaperAudioPlayer.tag,PaperAudioPlayer);export{PaperAudioPlayer};
+   */
+  ready() {
+    super.ready();
+    var player = this;
+    // create Player defaults
+    player.canBePlayed = false;
+    player.isPlaying = false;
+    player.ended = false;
+    player.error = false;
+    player.$.audio.currentTime = player.timeOffset; // apply the audio start time property
+  }
+  // Play/Pause controls
+  playPause(e) {
+    if (!!e) e.preventDefault();
+    var player = this;
+
+    if (player.canBePlayed) {
+      if (player.isPlaying) {
+        player._pause();
+      } else {
+        player._play();
+      }
+    } else if (player.preload === "none") {
+      // If player can't be played, because audio wasn't pre-loaded
+      // due to the preload="none" property set,
+      // load the audio file at this point and start playing it immediately
+      player.$.audio.load();
+      player._play();
+    }
+  }
+  _play() {
+    var player = this;
+    player.$.audio.play();
+  }
+  _pause() {
+    var player = this;
+    player.$.audio.pause();
+  }
+  //
+  // Restart audio
+  restart(e) {
+    if (!!e) e.preventDefault();
+    var player = this;
+    player.$.audio.currentTime = 0;
+    if (!player.isPlaying) player._play();
+  }
+  // when audio file can be played in user's browser
+  _onCanPlay() {
+    var player = this;
+    player.canBePlayed = true;
+    player.timeLeft = player.$.audio.duration;
+
+    // If player has a Time Offset specified
+    // style the progress bar and title accordingly
+    if (player.timeOffset > 0) {
+      var percentagePlayed = player.timeOffset / player.$.audio.duration;
+      player._updateVisualProgress(percentagePlayed);
+    }
+
+    // If player has auto-play attribute set,
+    // it ignores preload="none" property and starts playing on load.
+    // This behavior corresponds to the native audio element behavior.
+    if (player.autoPlay) player._play();
+  }
+
+  // when Player starts playing
+
+  _onPlaying() {
+    var player = this;
+    player.ended = false;
+    player.isPlaying = true;
+    player.$.replay.style = ""; // remove Replay inline styling
+    player._startProgressTimer();
+  }
+  // Skip or reverse by pre-defined intervals
+  _skipReverseByInterval(e) {
+    if (!!e) e.preventDefault();
+
+    var player = this,
+      newTime = 0;
+
+    switch (e.detail.key) {
+      case "up":
+        if (player.largeSkip < player.timeLeft)
+          newTime = player.currentTime + player.largeSkip;
+        break;
+      case "down":
+        if (player.currentTime - player.largeSkip > 0)
+          newTime = player.currentTime - player.largeSkip;
+        break;
+      case "right":
+        if (player.smallSkip < player.timeLeft)
+          newTime = player.currentTime + player.smallSkip;
+        break;
+      default:
+        if (player.currentTime - player.smallSkip > 0)
+          newTime = player.currentTime - player.smallSkip;
+    }
+
+    player._updatePlayPosition(newTime);
+    if (!player.isPlaying) player._play();
+  }
+
+  // starts Timer
+
+  _startProgressTimer() {
+    var player = this;
+    player.timer = {};
+
+    if (player.timer.sliderUpdateInterval) {
+      clearInterval(player.timer.sliderUpdateInterval);
+    }
+
+    player.timer.sliderUpdateInterval = setInterval(function() {
+      if (player.isPlaying) {
+        player.currentTime = player.$.audio.currentTime;
+        player.timeLeft = player.$.audio.duration - player.currentTime;
+
+        var percentagePlayed = player.currentTime / player.$.audio.duration;
+        player._updateVisualProgress(percentagePlayed);
+      } else {
+        clearInterval(player.timer.sliderUpdateInterval);
+      }
+    }, 60);
+  }
+
+  // when Player is paused
+
+  _onPause() {
+    var player = this;
+    player.isPlaying = false;
+  }
+
+  // when Player ended playing an audio file
+
+  _onEnd() {
+    var player = this;
+    player.ended = true;
+    player.isPlaying = false;
+    player.$.replay.style.opacity = 1; // display Replay icon
+  }
+
+  // on file load error
+
+  _onError() {
+    var player = this;
+    player.classList.add("cantplay");
+    player.title = "Sorry, can't play track: " + player.title;
+    player.error = true;
+    player.setAttribute("aria-invalid", "true");
+  }
+
+  // to convert seconds to 'm:ss' format
+
+  _convertSecToMin(seconds) {
+    if (seconds === 0) return "";
+
+    var minutes = Math.floor(seconds / 60);
+    var secondsToCalc = Math.floor(seconds % 60) + "";
+    return (
+      minutes +
+      ":" +
+      (secondsToCalc.length < 2 ? "0" + secondsToCalc : secondsToCalc)
+    );
+  }
+
+  //
+  // When user clicks somewhere on the progress bar
+
+  _onDown(e) {
+    e.preventDefault();
+    var player = this;
+
+    if (player.canBePlayed) {
+      player._updateProgressBar(e);
+      if (!player.isPlaying) {
+        player._play();
+      }
+      // When preload="none" is being used,
+      // player should first try to load the audio,
+      // and when it's successfully loaded, recalculate the progress bar
+    } else if (player.preload === "none") {
+      player.$.audio.load();
+      player.$.audio.addEventListener(
+        "loadedmetadata",
+        function() {
+          player._updateProgressBar(e);
+          if (!player.isPlaying) {
+            player._play();
+          }
+        },
+        false
+      );
+    }
+  }
+
+  //
+  // Helper function
+  // that recalculates the progress bar position
+  // based on the event.click position
+
+  _updateProgressBar(e) {
+    var player = this;
+
+    var x = e.detail.x - player.$.center.getBoundingClientRect().left;
+    var r =
+      (x / player.$.center.getBoundingClientRect().width) *
+      player.$.audio.duration;
+
+    this._updatePlayPosition(r);
+  }
+
+  //
+  // Helper function
+  // updates the current time based on a time variable
+
+  _updatePlayPosition(newTime) {
+    var player = this;
+    player.currentTime = player.$.audio.currentTime = newTime;
+
+    var percentagePlayed = player.currentTime / player.$.audio.duration;
+    player._updateVisualProgress(percentagePlayed);
+  }
+
+  //
+  // Helper function
+  // updates the progress bar based on a percentage played
+
+  _updateVisualProgress(percentagePlayed) {
+    var player = this;
+
+    player.$.progress.style.transform = "scaleX(" + percentagePlayed + ")";
+    player.$.progress2.style.width = percentagePlayed * 100 + "%";
+    player.$.title2.style.width = (1 / percentagePlayed) * 100 + "%";
+  }
+
+  //
+  // If src is changed when track is playing,
+  // pause the track and start playing a new src
+
+  _srcChanged(newValue, oldValue) {
+    var player = this;
+
+    if (player.isPlaying) {
+      player._pause();
+      player._play();
+    }
+  }
+
+  //
+  // If color property is changed,
+  // update all the nodes with the new accent color
+
+  _changeColor(newValue) {
+    var player = this;
+    player.$.left.style.backgroundColor = newValue;
+    player.$.title.style.color = newValue;
+    player.$.duration.style.color = newValue;
+    player.$.progress.style.backgroundColor = newValue;
+    player.$.replay.style.color = newValue;
+  }
+
+  _hidePlayIcon(isPlaying, canBePlayed) {
+    return isPlaying ? true : !(canBePlayed || this.preload === "none");
+  }
+
+  _setPreload(autoplay, preload) {
+    return autoplay ? "auto" : preload;
+  }
+}
+window.customElements.define(PaperAudioPlayer.tag, PaperAudioPlayer);
+export { PaperAudioPlayer };

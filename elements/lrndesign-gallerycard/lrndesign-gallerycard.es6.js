@@ -1,9 +1,22 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";/**
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+
+/**
 `lrndesign-gallerycard`
 A LRN element for presenting a gallery of items as cards
 that can pop up to display more info
 * @demo demo/index.html
-*/class LrndesignGallerycard extends PolymerElement{constructor(){super();import("./node_modules/@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js");import("./node_modules/@polymer/iron-image/iron-image.js");import("./node_modules/@polymer/paper-card/paper-card.js");import("./node_modules/@polymer/iron-icon/iron-icon.js")}static get template(){return html`
+*/
+class LrndesignGallerycard extends PolymerElement {
+  constructor() {
+    super();
+    import("@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js");
+    import("@polymer/iron-image/iron-image.js");
+    import("@polymer/paper-card/paper-card.js");
+    import("@polymer/iron-icon/iron-icon.js");
+  }
+  static get template() {
+    return html`
       <style>
         :host {
           display: inline-flex;
@@ -149,16 +162,91 @@ that can pop up to display more info
           </div>
         </div>
       </paper-card>
-    `}static get tag(){return"lrndesign-gallerycard"}connectedCallback(){super.connectedCallback();afterNextRender(this,function(){this.addEventListener("mouseenter",this._mouseEnter.bind(this));this.addEventListener("mouseleave",this._mouseLeave.bind(this))})}disconnectedCallback(){this.removeEventListener("mouseenter",this._mouseEnter.bind(this));this.removeEventListener("mouseleave",this._mouseLeave.bind(this));super.disconnectedCallback()}static get properties(){return{size:{type:String,notify:!0,reflectToAttribute:!0},/**
+    `;
+  }
+
+  static get tag() {
+    return "lrndesign-gallerycard";
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    afterNextRender(this, function() {
+      this.addEventListener("mouseenter", this._mouseEnter.bind(this));
+      this.addEventListener("mouseleave", this._mouseLeave.bind(this));
+    });
+  }
+  disconnectedCallback() {
+    this.removeEventListener("mouseenter", this._mouseEnter.bind(this));
+    this.removeEventListener("mouseleave", this._mouseLeave.bind(this));
+    super.disconnectedCallback();
+  }
+  static get properties() {
+    return {
+      size: {
+        type: String,
+        notify: true,
+        reflectToAttribute: true
+      },
+      /**
        * Cover image src.
-       */image:{type:String,notify:!0,reflectToAttribute:!0},/**
+       */
+      image: {
+        type: String,
+        notify: true,
+        reflectToAttribute: true
+      },
+      /**
        * Icon to use if image isn't there.
-       */icon:{type:String,notify:!0,reflectToAttribute:!0},/**
+       */
+      icon: {
+        type: String,
+        notify: true,
+        reflectToAttribute: true
+      },
+      /**
        * Title of the gallery item
-       */title:{type:String,value:"Project",notify:!0},/**
+       */
+      title: {
+        type: String,
+        value: "Project",
+        notify: true
+      },
+      /**
        * Gallery creator
-       */author:{type:Object,value:{name:"author",display_name:"Author"},notify:!0},/**
+       */
+      author: {
+        type: Object,
+        value: { name: "author", display_name: "Author" },
+        notify: true
+      },
+      /**
        * Visual elevation of the item off the UI via paper element height
-       */elevation:{type:Number,value:1,reflectToAttribute:!0,notify:!0},/**
+       */
+      elevation: {
+        type: Number,
+        value: 1,
+        reflectToAttribute: true,
+        notify: true
+      },
+      /**
        * Number of comments this has
-       */comments:{type:Number,value:0,reflectToAttribute:!0,notify:!0}}}_mouseEnter(e){this.elevation+=2}_mouseLeave(e){this.elevation-=2}}window.customElements.define(LrndesignGallerycard.tag,LrndesignGallerycard);export{LrndesignGallerycard};
+       */
+      comments: {
+        type: Number,
+        value: 0,
+        reflectToAttribute: true,
+        notify: true
+      }
+    };
+  }
+
+  _mouseEnter(e) {
+    this.elevation += 2;
+  }
+
+  _mouseLeave(e) {
+    this.elevation -= 2;
+  }
+}
+window.customElements.define(LrndesignGallerycard.tag, LrndesignGallerycard);
+export { LrndesignGallerycard };

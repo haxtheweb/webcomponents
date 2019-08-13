@@ -97,20 +97,14 @@ class SelfCheck extends SchemaBehaviors(A11yBehaviors(SimpleColors)) {
           width: 35px;
           height: 35px;
           padding: 5px;
-          color: var(
-            --simple-colors-default-theme-grey-1,
-            #fff
-          );
+          color: var(--simple-colors-default-theme-grey-1, #fff);
         }
 
         .heading {
           text-transform: uppercase;
           font-size: 22px;
           margin: 10px;
-          color: var(
-            --simple-colors-default-theme-grey-1,
-            #fff
-          );
+          color: var(--simple-colors-default-theme-grey-1, #fff);
         }
 
         #header_wrap {
@@ -211,8 +205,7 @@ class SelfCheck extends SchemaBehaviors(A11yBehaviors(SimpleColors)) {
                 icon="icons:check-circle"
                 on-click="openAnswer"
                 noink
-              >
-              </user-action>
+              ></paper-icon-button>
               <paper-tooltip aria-hidden="true" for="checkBtn" position="left">
                 Reveal Answer
               </paper-tooltip>
@@ -225,7 +218,11 @@ class SelfCheck extends SchemaBehaviors(A11yBehaviors(SimpleColors)) {
                 <slot></slot>
               </user-action>
               <div class="more_info" hidden$="[[!link]]">
-                <user-action track="click" every><a href$="[[link]]" target="_blank">More info...</a></user-action>
+                <user-action track="click" every
+                  ><a href$="[[link]]" target="_blank"
+                    >More info...</a
+                  ></user-action
+                >
               </div>
               <div class="close_button">
                 <paper-icon-button

@@ -1,12 +1,36 @@
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import*as async from"./node_modules/@polymer/polymer/lib/utils/async.js";import"./node_modules/@polymer/paper-input/paper-textarea.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/lib/colors.js";import"./node_modules/@lrnwebcomponents/mtz-marked-editor/mtz-marked-editor.js";import"./node_modules/@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-generic-line.js";import"./node_modules/@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-generic-wrap.js";import"./node_modules/@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-link.js";import"./node_modules/@lrnwebcomponents/word-count/word-count.js";import"./node_modules/@lrnwebcomponents/lrnsys-button/lrnsys-button.js";import"./node_modules/@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";/**
+ */
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
+import "@polymer/paper-input/paper-textarea.js";
+import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
+import "@lrnwebcomponents/mtz-marked-editor/mtz-marked-editor.js";
+import "@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-generic-line.js";
+import "@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-generic-wrap.js";
+import "@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-link.js";
+import "@lrnwebcomponents/word-count/word-count.js";
+import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
+import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
+/**
 `lrnsys-comment`
 A well styled comment for a user with markdown support.
 
 * @demo demo/index.html
-*/class LrnsysComment extends PolymerElement{constructor(){super();import("./node_modules/@polymer/iron-icons/editor-icons.js");import("./node_modules/@polymer/paper-tooltip/paper-tooltip.js");import("./node_modules/@polymer/marked-element/marked-element.js");import("./node_modules/@polymer/paper-badge/paper-badge.js");import("./node_modules/@lrnwebcomponents/moment-element/moment-element.js")}static get template(){return html`
+*/
+class LrnsysComment extends PolymerElement {
+  constructor() {
+    super();
+    import("@polymer/iron-icons/editor-icons.js");
+    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@polymer/marked-element/marked-element.js");
+    import("@polymer/paper-badge/paper-badge.js");
+    import("@lrnwebcomponents/moment-element/moment-element.js");
+  }
+  static get template() {
+    return html`
       <style include="materializecss-styles-colors">
         :host {
           display: block;
@@ -317,23 +341,197 @@ A well styled comment for a user with markdown support.
           </div>
         </div>
       </div>
-    `}static get tag(){return"lrnsys-comment"}static get properties(){return{comment:{type:Object,notify:!0,observer:"_commentLoaded"},displayName:{type:String,notify:!0,computed:"_generateName(comment.relationships.author.data.display_name, comment.relationships.author.data.visual)"},commentNew:{type:String,notify:!0,computed:"_isCommentNew(comment.relationships.author.data.visual)"},hoverClass:{type:String,reflectToAttribute:!0},editform:{type:Boolean,notify:!0,observer:"_editTrigger",reflectToAttribute:!0},disabled:{type:Boolean,notify:!0,reflectToAttribute:!0}}}/**
+    `;
+  }
+
+  static get tag() {
+    return "lrnsys-comment";
+  }
+
+  static get properties() {
+    return {
+      comment: {
+        type: Object,
+        notify: true,
+        observer: "_commentLoaded"
+      },
+      displayName: {
+        type: String,
+        notify: true,
+        computed:
+          "_generateName(comment.relationships.author.data.display_name, comment.relationships.author.data.visual)"
+      },
+      commentNew: {
+        type: String,
+        notify: true,
+        computed: "_isCommentNew(comment.relationships.author.data.visual)"
+      },
+      hoverClass: {
+        type: String,
+        reflectToAttribute: true
+      },
+      editform: {
+        type: Boolean,
+        notify: true,
+        observer: "_editTrigger",
+        reflectToAttribute: true
+      },
+      disabled: {
+        type: Boolean,
+        notify: true,
+        reflectToAttribute: true
+      }
+    };
+  }
+
+  /**
    * attached lifecycle
-   */connectedCallback(){super.connectedCallback();this.$.bodyarea.addEventListener("click",this.bodyToggle.bind(this));this.$.bodyarea.addEventListener("dblclick",this.bodyToggleOn.bind(this))}/**
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    this.$.bodyarea.addEventListener("click", this.bodyToggle.bind(this));
+    this.$.bodyarea.addEventListener("dblclick", this.bodyToggleOn.bind(this));
+  }
+  /**
    * detached lifecycle
-   */disconnectedCallback(){super.disconnectedCallback();this.$.bodyarea.removeEventListener("click",this.bodyToggle.bind(this));this.$.bodyarea.removeEventListener("dblclick",this.bodyToggleOn.bind(this))}_generateName(name,visual){if(typeof visual!==typeof void 0&&!1!==visual.label){return name+" ("+visual.label+")"}return name}_isCommentNew(visual){if(typeof visual!==typeof void 0&&!1!==visual.label){return"new-comment"}return""}_commentLoaded(e){this.editform=this.comment.metadata.editing;this.disabled=this.comment.metadata.disabled;this.blockFirstState=!0}/**
+   */
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.$.bodyarea.removeEventListener("click", this.bodyToggle.bind(this));
+    this.$.bodyarea.removeEventListener(
+      "dblclick",
+      this.bodyToggleOn.bind(this)
+    );
+  }
+
+  _generateName(name, visual) {
+    if (typeof visual !== typeof undefined && visual.label !== false) {
+      return name + " (" + visual.label + ")";
+    }
+    return name;
+  }
+
+  _isCommentNew(visual) {
+    if (typeof visual !== typeof undefined && visual.label !== false) {
+      return "new-comment";
+    }
+    return "";
+  }
+
+  _commentLoaded(e) {
+    this.editform = this.comment.metadata.editing;
+    this.disabled = this.comment.metadata.disabled;
+    this.blockFirstState = true;
+  }
+
+  /**
    * Handle all actions from the button bar.
-   */actionHandler(e){// convert click handler into local dom object
-var normalizedEvent=dom(e),target=normalizedEvent.localTarget,comment=null;// ensure we have a comment ID to operate against
-if(null!=target.dataCommentid&&!target.disabled){comment=target.dataCommentid;// handle the type of event requested
-if("reply"==target.id){this.dispatchEvent(new CustomEvent("comment-reply",{bubbles:!0,cancelable:!0,composed:!0,detail:{comment:this.comment,target:target}}))}else if("like"==target.id){this.$.like.classList.toggle("like-icon-color");this.dispatchEvent(new CustomEvent("comment-like",{bubbles:!0,cancelable:!0,composed:!0,detail:{comment:this.comment,target:target}}))}else if("edit"==target.id){// toggle edit, allow edit state handle itself via observer
-this.editform=!this.editform}else if("delete"==target.id){this.dispatchEvent(new CustomEvent("comment-delete-dialog",{bubbles:!0,cancelable:!0,composed:!0,detail:{comment:this.comment,target:target}}))}}}/**
+   */
+  actionHandler(e) {
+    // convert click handler into local dom object
+    var normalizedEvent = dom(e);
+    var target = normalizedEvent.localTarget;
+    var comment = null;
+    // ensure we have a comment ID to operate against
+    if (target.dataCommentid != null && !target.disabled) {
+      comment = target.dataCommentid;
+      // handle the type of event requested
+      if (target.id == "reply") {
+        this.dispatchEvent(
+          new CustomEvent("comment-reply", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: { comment: this.comment, target: target }
+          })
+        );
+      } else if (target.id == "like") {
+        this.$.like.classList.toggle("like-icon-color");
+        this.dispatchEvent(
+          new CustomEvent("comment-like", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: { comment: this.comment, target: target }
+          })
+        );
+      } else if (target.id == "edit") {
+        // toggle edit, allow edit state handle itself via observer
+        this.editform = !this.editform;
+      } else if (target.id == "delete") {
+        this.dispatchEvent(
+          new CustomEvent("comment-delete-dialog", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: {
+              comment: this.comment,
+              target: target
+            }
+          })
+        );
+      }
+    }
+  }
+
+  /**
    * Trigger the edit form.
-   */_editTrigger(e){// bother checking if they can edit or not first
-if(typeof this.comment!==typeof void 0&&this.comment.actions.edit){async.microTask.run(()=>{// show / hide the edit vs display area
-this.$.renderedcomment.hidden=this.editform;this.$.commenteditor.hidden=!this.editform;// simple icon toggle
-if(this.editform){this.$.edit.icon="save";this.$.edit.alt="Save";this.$.reply.disabled=!0;this.$.editcomment.focus();this.dispatchEvent(new CustomEvent("comment-editing",{bubbles:!0,cancelable:!0,composed:!0,detail:{comment:this.comment}}));this.blockFirstState=!1}else{if(!this.blockFirstState){this.dispatchEvent(new CustomEvent("comment-save",{bubbles:!0,cancelable:!0,composed:!0,detail:{comment:this.comment}}))}else{this.blockFirstState=!1}this.$.edit.icon="create";this.$.edit.alt="Edit";this.$.reply.disabled=!1}})}}/**
+   */
+  _editTrigger(e) {
+    // bother checking if they can edit or not first
+    if (typeof this.comment !== typeof undefined && this.comment.actions.edit) {
+      async.microTask.run(() => {
+        // show / hide the edit vs display area
+        this.$.renderedcomment.hidden = this.editform;
+        this.$.commenteditor.hidden = !this.editform;
+        // simple icon toggle
+        if (this.editform) {
+          this.$.edit.icon = "save";
+          this.$.edit.alt = "Save";
+          this.$.reply.disabled = true;
+          this.$.editcomment.focus();
+          this.dispatchEvent(
+            new CustomEvent("comment-editing", {
+              bubbles: true,
+              cancelable: true,
+              composed: true,
+              detail: { comment: this.comment }
+            })
+          );
+          this.blockFirstState = false;
+        } else {
+          if (!this.blockFirstState) {
+            this.dispatchEvent(
+              new CustomEvent("comment-save", {
+                bubbles: true,
+                cancelable: true,
+                composed: true,
+                detail: { comment: this.comment }
+              })
+            );
+          } else {
+            this.blockFirstState = false;
+          }
+          this.$.edit.icon = "create";
+          this.$.edit.alt = "Edit";
+          this.$.reply.disabled = false;
+        }
+      });
+    }
+  }
+  /**
    * Toggle the body field expanding to show the whole comment
-   */bodyToggle(e){this.$.bodyarea.classList.remove("nowrap-me")}/**
+   */
+  bodyToggle(e) {
+    this.$.bodyarea.classList.remove("nowrap-me");
+  }
+
+  /**
    * Toggle the body field expanding to show the whole comment
-   */bodyToggleOn(e){this.$.bodyarea.classList.toggle("nowrap-me")}}window.customElements.define(LrnsysComment.tag,LrnsysComment);export{LrnsysComment};
+   */
+  bodyToggleOn(e) {
+    this.$.bodyarea.classList.toggle("nowrap-me");
+  }
+}
+window.customElements.define(LrnsysComment.tag, LrnsysComment);
+export { LrnsysComment };

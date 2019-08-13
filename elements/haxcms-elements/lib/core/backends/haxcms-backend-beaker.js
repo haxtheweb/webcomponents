@@ -419,10 +419,13 @@ class HAXCMSBackendBeaker extends PolymerElement {
             );
             haxCmsSiteEditorElement.jwt = this.jwt;
             haxCmsSiteEditorElement.appStore = appstore;
-            store.cmsSiteEditor.instance.haxCmsSiteEditorElement = haxCmsSiteEditorElement;
-            store.cmsSiteEditor.instance.appendTarget.appendChild(
-              haxCmsSiteEditorElement
-            );
+            store.cmsSiteEditorAvailability();
+            if (!store.cmsSiteEditor.instance.haxCmsSiteEditorElement) {
+              store.cmsSiteEditor.instance.haxCmsSiteEditorElement = haxCmsSiteEditorElement;
+              store.cmsSiteEditor.instance.appendTarget.appendChild(
+                haxCmsSiteEditorElement
+              );
+            }
           },
           e => {
             //import failed

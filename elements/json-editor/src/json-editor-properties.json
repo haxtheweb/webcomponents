@@ -4,7 +4,7 @@
    */
   "label": {
     "name": "label",
-    "type": "String",
+    "type": String,
     "value": "JSON data"
   },
   /**
@@ -12,7 +12,7 @@
    */
   "error": {
     "name": "error",
-    "type": "Boolean",
+    "type": Boolean,
     "value": false,
     "reflectToAttribute": true
   },
@@ -21,7 +21,7 @@
    */
   "disabled": {
     "name": "disabled",
-    "type": "Boolean",
+    "type": Boolean,
     "value": false,
     "reflectToAttribute": true
   },
@@ -30,7 +30,7 @@
    */
   "maxRows": {
     "name": "maxRows",
-    "type": "Number",
+    "type": Number,
     "value": 0,
     "reflectToAttribute": true
   },
@@ -39,7 +39,7 @@
    */
   "value": {
     "name": "value",
-    "type": "String",
+    "type": String,
     "value": "",
     "notify": true,
     "reflectToAttribute": false,
@@ -50,7 +50,7 @@
    */
   "formatTest": {
     "name": "value",
-    "type": "String",
+    "type": String,
     "computed": "_computeFormattedValue(value)"
   },
   /**
@@ -58,7 +58,7 @@
    */
   "currentData": {
     "name": "currentData",
-    "type": "Object",
+    "type": Object,
     "notify": true,
     "computed": "_computeCurrentData(value)"
   }

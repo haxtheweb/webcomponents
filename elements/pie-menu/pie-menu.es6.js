@@ -1,4 +1,6 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";/**
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+/**
  * `pie-menu`
  * SVG Menu based on the excellent resource at : https://sarasoueidan.com/tools/circulus
  * @demo demo/index.html
@@ -6,7 +8,14 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
  * - pie - a delicious circle shaped container used to house berries or fruit filling. Best served with <ice-cream> or <boiled-apples>.
  * - pie-menu - a circular menu that has been proven to be easier to use as a navigational element than a rectangular menu.
  * - svg - an HTML tag that no one understands, not even the person who made this, yet loves and respects its differences and knows how important it is.
- */class PieMenu extends PolymerElement{constructor(){super();import("./node_modules/@polymer/iron-icons/iron-icons.js")}static get template(){return html`
+ */
+class PieMenu extends PolymerElement {
+  constructor() {
+    super();
+    import("@polymer/iron-icons/iron-icons.js");
+  }
+  static get template() {
+    return html`
       <style>
         :host,
         :host > div {
@@ -202,36 +211,157 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
           ></path>
         </svg>
       </div>
-    `}static get tag(){return"pie-menu"}static get properties(){return{/**
+    `;
+  }
+  static get tag() {
+    return "pie-menu";
+  }
+  static get properties() {
+    return {
+      /**
        * hide label text below icons
-       */hideLabelText:{type:String,value:"false"},/**
+       */
+      hideLabelText: {
+        type: String,
+        value: "false"
+      },
+      /**
        * center button label
-       */centerLabel:{type:String,value:"Home"},/**
+       */
+      centerLabel: {
+        type: String,
+        value: "Home"
+      },
+      /**
        * top button label
-       */topLabel:{type:String,value:"Option 1"},/**
+       */
+      topLabel: {
+        type: String,
+        value: "Option 1"
+      },
+      /**
        * left button label
-       */leftLabel:{type:String,value:"Option 2"},/**
+       */
+      leftLabel: {
+        type: String,
+        value: "Option 2"
+      },
+      /**
        * bottom button label
-       */bottomLabel:{type:String,value:"Option 3"},/**
+       */
+      bottomLabel: {
+        type: String,
+        value: "Option 3"
+      },
+      /**
        * right button label
-       */rightLabel:{type:String,value:"Option 4"},/**
+       */
+      rightLabel: {
+        type: String,
+        value: "Option 4"
+      },
+      /**
        * center button label
-       */centerIcon:{type:String,value:"icons:check-box-outline-blank"},/**
+       */
+      centerIcon: {
+        type: String,
+        value: "icons:check-box-outline-blank"
+      },
+      /**
        * top button label
-       */topIcon:{type:String,value:"icons:check-box-outline-blank"},/**
+       */
+      topIcon: {
+        type: String,
+        value: "icons:check-box-outline-blank"
+      },
+      /**
        * left button label
-       */leftIcon:{type:String,value:"icons:check-box-outline-blank"},/**
+       */
+      leftIcon: {
+        type: String,
+        value: "icons:check-box-outline-blank"
+      },
+      /**
        * bottom button label
-       */bottomIcon:{type:String,value:"icons:check-box-outline-blank"},/**
+       */
+      bottomIcon: {
+        type: String,
+        value: "icons:check-box-outline-blank"
+      },
+      /**
        * right button label
-       */rightIcon:{type:String,value:"icons:check-box-outline-blank"}}}/**
+       */
+      rightIcon: {
+        type: String,
+        value: "icons:check-box-outline-blank"
+      }
+    };
+  }
+  /**
    * add listeners for data-buttons
-   */ready(){super.ready();for(var buttons=this.querySelectorAll("[role=\"button\"][data-button]"),i=0;i<buttons.length;i++){this._addListenerAddState(this,buttons[i],"mouseover","hover");this._addListenerAddState(this,buttons[i],"focus","focus");this._addListenerRemoveState(this,buttons[i],"mouseout","hover");this._addListenerRemoveState(this,buttons[i],"blur","focus")}}/**
+   */
+  ready() {
+    super.ready();
+    var buttons = this.querySelectorAll('[role="button"][data-button]');
+    for (var i = 0; i < buttons.length; i++) {
+      this._addListenerAddState(this, buttons[i], "mouseover", "hover");
+      this._addListenerAddState(this, buttons[i], "focus", "focus");
+      this._addListenerRemoveState(this, buttons[i], "mouseout", "hover");
+      this._addListenerRemoveState(this, buttons[i], "blur", "focus");
+    }
+  }
+  /**
    * add focus or hover states
-   */_addListenerAddState(menu,button,action,state){button.addEventListener(action,e=>{for(var elements=menu._getButtonElements(menu,button),i=0;i<elements.length;i++){elements[i].classList.add(state)}})}/**
+   */
+  _addListenerAddState(menu, button, action, state) {
+    button.addEventListener(action, e => {
+      var elements = menu._getButtonElements(menu, button);
+      for (var i = 0; i < elements.length; i++) {
+        elements[i].classList.add(state);
+      }
+    });
+  }
+  /**
    * remove focus or hover states
-   */_addListenerRemoveState(menu,button,action,state){button.addEventListener(action,e=>{for(var elements=menu._getButtonElements(menu,button),i=0;i<elements.length;i++){elements[i].classList.remove(state)}})}_getButtonElements(menu,button){return menu.querySelectorAll("[data-button=\""+button.getAttribute("data-button")+"\"]")}/**
+   */
+  _addListenerRemoveState(menu, button, action, state) {
+    button.addEventListener(action, e => {
+      var elements = menu._getButtonElements(menu, button);
+      for (var i = 0; i < elements.length; i++) {
+        elements[i].classList.remove(state);
+      }
+    });
+  }
+  _getButtonElements(menu, button) {
+    return menu.querySelectorAll(
+      '[data-button="' + button.getAttribute("data-button") + '"]'
+    );
+  }
+  /**
    * Simple trap for bubbling up a tap / click event.
-   */_itemTapped(e){var normalizedEvent=dom(e),localLink=normalizedEvent.localTarget;// make sure we normalize tap vs click vs keyboard
-if(!(localLink.hasAttribute("role")&&"button"!==localLink.getAttribute("role"))){localLink=localLink.parentNode}// bubble up event
-this.dispatchEvent(new CustomEvent("pie-menu-selection",{bubbles:!0,cancelable:!0,composed:!0,detail:{option:localLink}}))}}window.customElements.define(PieMenu.tag,PieMenu);export{PieMenu};
+   */
+  _itemTapped(e) {
+    var normalizedEvent = dom(e);
+    var localLink = normalizedEvent.localTarget;
+    // make sure we normalize tap vs click vs keyboard
+    if (
+      !(
+        localLink.hasAttribute("role") &&
+        localLink.getAttribute("role") !== "button"
+      )
+    ) {
+      localLink = localLink.parentNode;
+    }
+    // bubble up event
+    this.dispatchEvent(
+      new CustomEvent("pie-menu-selection", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: { option: localLink }
+      })
+    );
+  }
+}
+window.customElements.define(PieMenu.tag, PieMenu);
+export { PieMenu };

@@ -94,14 +94,14 @@ class RCoder extends PolymerElement {
     return {
       endpoint: {
         name: "endpoint",
-        type: "String",
+        type: String,
         value: "/service/r-service",
         reflectToAttribute: false,
         observer: false
       },
       __connected: {
         name: "connected",
-        type: "Boolean",
+        type: Boolean,
         value: false,
         observer: false
       }

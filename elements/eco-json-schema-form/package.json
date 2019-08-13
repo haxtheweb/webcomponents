@@ -11,7 +11,7 @@
       "js": "src/eco-json-schema-form.js"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.3",
   "description": "JSON Schema form data binding magic",
   "repository": {
     "type": "git",
@@ -20,7 +20,6 @@
   "main": "eco-json-schema-form.js",
   "module": "eco-json-schema-form.es6.js",
   "umd": "eco-json-schema-form.umd.js",
-  "amd": "eco-json-schema-form.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/eco-json-schema-form/test/",
     "start": "yarn run dev",
@@ -35,7 +34,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-collapse": "^2.1.1",
+    "@lrnwebcomponents/a11y-collapse": "^2.1.2",
+    "@lrnwebcomponents/a11y-tabs": "^2.1.3",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/app-localize-behavior": "^3.0.0",
     "@polymer/iron-flex-layout": "^3.0.0",
@@ -58,7 +58,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.1.1",
+    "@lrnwebcomponents/storybook-utilities": "^2.1.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@webcomponents/webcomponentsjs": "2.2.10",

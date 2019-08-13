@@ -1,5 +1,15 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
+import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
+import "@polymer/iron-icons/iron-icons.js";
+import "@polymer/iron-icons/editor-icons.js";
+import "@polymer/iron-icons/device-icons.js";
+import "@polymer/iron-icons/hardware-icons.js";
+import "@polymer/iron-icons/social-icons.js";
+import "@polymer/iron-icons/av-icons.js";
+import "@polymer/iron-icons/image-icons.js";
+import "@polymer/iron-icons/maps-icons.js";
+import "@polymer/neon-animation/neon-animation.js";
 /**
  * `hax-context-item-textop`
  * `A single button in the hax context menus for consistency. This one uses the mousedown event becasue tap won't work in safari / firefox / IE while maintaining focus inside the contenteditable area (stupid, I know)`
@@ -10,16 +20,6 @@ import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 class HaxContextItemTextop extends PolymerElement {
   constructor() {
     super();
-    import("@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icons/editor-icons.js");
-    import("@polymer/iron-icons/device-icons.js");
-    import("@polymer/iron-icons/hardware-icons.js");
-    import("@polymer/iron-icons/social-icons.js");
-    import("@polymer/iron-icons/av-icons.js");
-    import("@polymer/iron-icons/image-icons.js");
-    import("@polymer/iron-icons/maps-icons.js");
-    import("@polymer/neon-animation/neon-animation.js");
   }
   static get template() {
     return html`

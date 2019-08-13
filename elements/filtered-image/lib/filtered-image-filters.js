@@ -106,37 +106,37 @@ class FilteredImageFilters extends PolymerElement {
     return {
       src: {
         name: "src",
-        type: "String",
+        type: String,
         value: ""
       },
       alt: {
         name: "alt",
-        type: "String",
+        type: String,
         value: ""
       },
       height: {
         name: "width",
-        type: "String",
+        type: String,
         value: ""
       },
       width: {
         name: "unset",
-        type: "String",
+        type: String,
         value: ""
       },
       filter1: {
         name: "filter1",
-        type: "String",
+        type: String,
         value: ""
       },
       filter1: {
         name: "filter2",
-        type: "String",
+        type: String,
         value: ""
       },
       filters: {
         name: "filters",
-        type: "Array",
+        type: Array,
         value: [
           {
             name: "Split Saturation",
@@ -241,7 +241,7 @@ class FilteredImageFilters extends PolymerElement {
       },
       __selectedFilters: {
         name: "__selectedFilters",
-        type: "Array",
+        type: Array,
         computed: "_getSelectedFilters(filter1,filter2)"
       }
     };

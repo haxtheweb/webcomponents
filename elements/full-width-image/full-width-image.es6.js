@@ -1,7 +1,10 @@
 /**
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";/**
+ */
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+/**
  * `full-width-image`
  * `full width image that flows beyond boundaries`
  *
@@ -11,8 +14,12 @@
  * @customElement
  * @polymer
  * @demo demo/index.html
- */class FullWidthImage extends PolymerElement{// render function
-static get template(){return html`
+ */
+class FullWidthImage extends PolymerElement {
+  
+  // render function
+  static get template() {
+    return html`
 <style>:host {
   display: block;
   background-color: #000000;
@@ -72,12 +79,112 @@ static get template(){return html`
       <slot></slot>
     </div>
   </div>
-</div>`}// haxProperty definition
-static get haxProperties(){return{canScale:!1,canPosition:!1,canEditSource:!1,gizmo:{title:"Full width-image",description:"full width image that flows beyond boundaries",icon:"image:image",color:"green",groups:["Width"],handles:[{type:"image",source:"source",caption:"caption",title:"caption"}],meta:{author:"btopro",owner:"The Pennsylvania State University"}},settings:{quick:[{property:"source",description:"",inputMethod:"textfield",required:!0,icon:"image:image",validationType:"url"}],configure:[{property:"source",description:"",inputMethod:"haxupload",required:!0,icon:"icons:link",validationType:"url"},{property:"caption",description:"",inputMethod:"textfield"}],advanced:[]}}}// properties available to the custom element for data binding
-static get properties(){let props={source:{name:"source",type:String,reflectToAttributes:!0,observer:"_sourceChanged"},caption:{name:"caption",type:String,reflectToAttributes:!0}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
+</div>`;
+  }
+
+  // haxProperty definition
+  static get haxProperties() {
+    return {
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Full width-image",
+    "description": "full width image that flows beyond boundaries",
+    "icon": "image:image",
+    "color": "green",
+    "groups": ["Width"],
+    "handles": [
+      {
+        "type": "image",
+        "source": "source",
+        "caption": "caption",
+        "title": "caption"
+      }
+    ],
+    "meta": {
+      "author": "btopro",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "quick": [
+      {
+        "property": "source",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": true,
+        "icon": "image:image",
+        "validationType": "url"
+      }
+    ],
+    "configure": [
+      {
+        "property": "source",
+        "description": "",
+        "inputMethod": "haxupload",
+        "required": true,
+        "icon": "icons:link",
+        "validationType": "url"
+      },
+      {
+        "property": "caption",
+        "description": "",
+        "inputMethod": "textfield"
+      }
+    ],
+    "advanced": []
+  }
+}
+;
+  }
+  // properties available to the custom element for data binding
+    static get properties() {
+    let props = {
+  "source": {
+    "name": "source",
+    "type": String,
+    "reflectToAttributes": true,
+    "observer": "_sourceChanged"
+  },
+  "caption": {
+    "name": "caption",
+    "type": String,
+    "reflectToAttributes": true
+  }
+}
+;
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
+  }
+
+  /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
-   */static get tag(){return"full-width-image"}/**
+   */
+  static get tag() {
+    return "full-width-image";
+  }
+  /**
    * life cycle, element is afixed to the DOM
-   */connectedCallback(){super.connectedCallback();this.HAXWiring=new HAXWiring;this.HAXWiring.setup(FullWidthImage.haxProperties,FullWidthImage.tag,this)}// Observer source for changes
-_sourceChanged(newValue,oldValue){if(typeof newValue!==typeof void 0){this.$.image.style.backgroundImage=`url("${newValue}")`}}}window.customElements.define("full-width-image",FullWidthImage);export{FullWidthImage};
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    this.HAXWiring = new HAXWiring();
+    this.HAXWiring.setup(
+      FullWidthImage.haxProperties,
+      FullWidthImage.tag,
+      this
+    );
+  }
+  // Observer source for changes
+  _sourceChanged(newValue, oldValue) {
+    if (typeof newValue !== typeof undefined) {
+      this.$.image.style.backgroundImage = `url("${newValue}")`;
+    }
+  }
+}
+window.customElements.define("full-width-image", FullWidthImage);
+export { FullWidthImage };

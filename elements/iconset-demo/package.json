@@ -16,7 +16,7 @@
       "hax": "src/iconset-demo-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "iterates through an iconset array to generate a demo of all of the icons",
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   "main": "iconset-demo.js",
   "module": "iconset-demo.es6.js",
   "umd": "iconset-demo.umd.js",
-  "amd": "iconset-demo.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/iconset-demo/test/",
     "start": "yarn run dev",

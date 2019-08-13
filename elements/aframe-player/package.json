@@ -11,7 +11,7 @@
       "js": "src/aframe-player.js"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.3",
   "description": "A-frame 3D player in the browser via data binding w/ polymer",
   "repository": {
     "type": "git",
@@ -20,7 +20,6 @@
   "main": "aframe-player.js",
   "module": "aframe-player.es6.js",
   "umd": "aframe-player.umd.js",
-  "amd": "aframe-player.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/aframe-player/test/",
     "start": "yarn run dev",
@@ -35,15 +34,16 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^2.1.1",
-    "@lrnwebcomponents/schema-behaviors": "^2.1.1",
+    "@lrnwebcomponents/es-global-bridge": "^2.1.1",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.1.2",
+    "@lrnwebcomponents/schema-behaviors": "^2.1.2",
     "@polymer/paper-spinner": "^3.0.0",
     "@polymer/paper-tooltip": "^3.0.1",
     "@polymer/polymer": "^3.2.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/storybook-utilities": "^2.1.1",
+    "@lrnwebcomponents/storybook-utilities": "^2.1.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "^3.1.0",
     "@webcomponents/webcomponentsjs": "2.2.10",

@@ -1,7 +1,25 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import{SchemaBehaviors}from"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";/**
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+/**
  * `parallax-image`
  * @demo demo/index.html
- */class ParallaxImage extends SchemaBehaviors(PolymerElement){constructor(){super();afterNextRender(this,function(){this.HAXWiring=new HAXWiring;this.HAXWiring.setup(ParallaxImage.haxProperties,ParallaxImage.tag,this)})}static get template(){return html`
+ */
+class ParallaxImage extends SchemaBehaviors(PolymerElement) {
+  constructor() {
+    super();
+    afterNextRender(this, function() {
+      this.HAXWiring = new HAXWiring();
+      this.HAXWiring.setup(
+        ParallaxImage.haxProperties,
+        ParallaxImage.tag,
+        this
+      );
+    });
+  }
+  static get template() {
+    return html`
       <style>
         :host {
           display: block;
@@ -62,10 +80,128 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
           </div>
         </div>
       </a>
-    `}static get tag(){return"parallax-image"}static get properties(){let props={/**
+    `;
+  }
+
+  static get tag() {
+    return "parallax-image";
+  }
+
+  static get properties() {
+    let props = {
+      /**
        * Image
-       */imageBg:{type:String,value:"",reflectToAttribute:!0},/**
+       */
+      imageBg: {
+        type: String,
+        value: "",
+        reflectToAttribute: true
+      },
+      /**
        * Url
-       */url:{type:String,value:"",reflectToAttribute:!0}};if(super.properties){props=Object.assign(props,super.properties)}return props}static get observers(){return["__updateStyles(imageBg)"]}_urlTarget(url){if(url){const external=this._outsideLink(url);if(external){return"_blank"}}return!1}/**
+       */
+      url: {
+        type: String,
+        value: "",
+        reflectToAttribute: true
+      }
+    };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
+  }
+
+  static get observers() {
+    return ["__updateStyles(imageBg)"];
+  }
+
+  _urlTarget(url) {
+    if (url) {
+      const external = this._outsideLink(url);
+      if (external) {
+        return "_blank";
+      }
+    }
+    return false;
+  }
+  /**
    * Internal function to check if a url is external
-   */_outsideLink(url){if(0!=url.indexOf("http"))return!1;var loc=location.href,path=location.pathname,root=loc.substring(0,loc.indexOf(path));return 0!=url.indexOf(root)}__updateStyles(imageBg){this.updateStyles({"--parallax-image-background":`url(${imageBg})`})}ready(){super.ready();const bgParallax=this.$.bgParallax,titleParallax=this.$.titleParallax;window.addEventListener("scroll",e=>{const yParallaxPosition=-.2*window.scrollY,yParallaxPositionTitle=1.4*yParallaxPosition;bgParallax.style.backgroundPosition=`center ${yParallaxPosition}px`;titleParallax.style.transform=`translate3D(0, ${yParallaxPositionTitle}px, 0)`})}disconnectedCallback(){window.removeEventListener("scroll",e=>{const yParallaxPosition=-.2*window.scrollY,yParallaxPositionTitle=1.4*yParallaxPosition;bgParallax.style.backgroundPosition=`center ${yParallaxPosition}px`;titleParallax.style.transform=`translate3D(0, ${yParallaxPositionTitle}px, 0)`});super.disconnectedCallback()}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Sample gizmo",description:"The user will be able to see this for selection in a UI.",icon:"av:play-circle-filled",color:"grey",groups:["Video","Media"],handles:[{type:"video",url:"source"}],meta:{author:"Your organization on github"}},settings:{quick:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield",icon:"editor:title"}],configure:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield",icon:"editor:title"}],advanced:[]}}}}window.customElements.define(ParallaxImage.tag,ParallaxImage);export{ParallaxImage};
+   */
+  _outsideLink(url) {
+    if (url.indexOf("http") != 0) return false;
+    var loc = location.href,
+      path = location.pathname,
+      root = loc.substring(0, loc.indexOf(path));
+    return url.indexOf(root) != 0;
+  }
+  __updateStyles(imageBg) {
+    this.updateStyles({ "--parallax-image-background": `url(${imageBg})` });
+  }
+  ready() {
+    super.ready();
+    const bgParallax = this.$.bgParallax;
+    const titleParallax = this.$.titleParallax;
+    window.addEventListener("scroll", e => {
+      const yParallaxPosition = window.scrollY * -0.2;
+      const yParallaxPositionTitle = yParallaxPosition * 1.4;
+      bgParallax.style.backgroundPosition = `center ${yParallaxPosition}px`;
+      titleParallax.style.transform = `translate3D(0, ${yParallaxPositionTitle}px, 0)`;
+    });
+  }
+  disconnectedCallback() {
+    window.removeEventListener("scroll", e => {
+      const yParallaxPosition = window.scrollY * -0.2;
+      const yParallaxPositionTitle = yParallaxPosition * 1.4;
+      bgParallax.style.backgroundPosition = `center ${yParallaxPosition}px`;
+      titleParallax.style.transform = `translate3D(0, ${yParallaxPositionTitle}px, 0)`;
+    });
+    super.disconnectedCallback();
+  }
+  static get haxProperties() {
+    return {
+      canScale: true,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Sample gizmo",
+        description: "The user will be able to see this for selection in a UI.",
+        icon: "av:play-circle-filled",
+        color: "grey",
+        groups: ["Video", "Media"],
+        handles: [
+          {
+            type: "video",
+            url: "source"
+          }
+        ],
+        meta: {
+          author: "Your organization on github"
+        }
+      },
+      settings: {
+        quick: [
+          {
+            property: "title",
+            title: "Title",
+            description: "The title of the element",
+            inputMethod: "textfield",
+            icon: "editor:title"
+          }
+        ],
+        configure: [
+          {
+            property: "title",
+            title: "Title",
+            description: "The title of the element",
+            inputMethod: "textfield",
+            icon: "editor:title"
+          }
+        ],
+        advanced: []
+      }
+    };
+  }
+}
+window.customElements.define(ParallaxImage.tag, ParallaxImage);
+export { ParallaxImage };

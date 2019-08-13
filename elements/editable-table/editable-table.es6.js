@@ -1,4 +1,14 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import"./node_modules/@polymer/paper-tooltip/paper-tooltip.js";import"./node_modules/@polymer/paper-toggle-button/paper-toggle-button.js";import{displayBehaviors,editBehaviors}from"./lib/editable-table-behaviors.js";import"./lib/editable-table-editor.js";import"./lib/editable-table-display.js";/**
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@polymer/paper-toggle-button/paper-toggle-button.js";
+import {
+  displayBehaviors,
+  editBehaviors
+} from "./lib/editable-table-behaviors.js";
+import "./lib/editable-table-editor.js";
+import "./lib/editable-table-display.js";
+/**
 `editable-table`
 
 An editor interface for tables that toggles between 
@@ -39,7 +49,10 @@ edit mode (editable-table-editor.html).
   striped                   //Does the table have alternating stipes of shading for its body rows? Default is false.
   summary="...">            //An accessible description of the table, what each row reporesents, and what each column represents.
 </editable-table>
-*/class EditableTable extends displayBehaviors(editBehaviors(PolymerElement)){static get template(){return html`
+*/
+class EditableTable extends displayBehaviors(editBehaviors(PolymerElement)) {
+  static get template() {
+    return html`
       <style>
         :host {
           display: block;
@@ -95,8 +108,47 @@ edit mode (editable-table-editor.html).
         >
         </editable-table-editor>
       </template>
-    `}static get tag(){return"editable-table"}static get properties(){return{/**
+    `;
+  }
+
+  static get tag() {
+    return "editable-table";
+  }
+  static get properties() {
+    return {
+      /**
        * Is the table in edit-mode? Default is false (display mode).
-       */editMode:{type:Boolean,value:!1}}}/**
+       */
+      editMode: {
+        type: Boolean,
+        value: false
+      }
+    };
+  }
+
+  /**
    * Toggles between edit-mode and display mode.
-   */toggleEditMode(edit){let temp;edit=edit!==void 0?edit:!this.editMode;if(edit){this.shadowRoot.querySelector("editable-table-display").toggleFilter();this.shadowRoot.querySelector("editable-table-display").sortData(!1);temp=this.shadowRoot.querySelector("editable-table-display").getData();console.log(temp)}else{temp=this.shadowRoot.querySelector("editable-table-editor").getData()}for(var prop in temp){if("data"!==prop){this[prop]=temp[prop]}else{this.set("data",temp[prop])}}this.editMode=edit}}window.customElements.define(EditableTable.tag,EditableTable);export{EditableTable};
+   */
+  toggleEditMode(edit) {
+    let temp;
+    edit = edit !== undefined ? edit : !this.editMode;
+    if (edit) {
+      this.shadowRoot.querySelector("editable-table-display").toggleFilter();
+      this.shadowRoot.querySelector("editable-table-display").sortData(false);
+      temp = this.shadowRoot.querySelector("editable-table-display").getData();
+      console.log(temp);
+    } else {
+      temp = this.shadowRoot.querySelector("editable-table-editor").getData();
+    }
+    for (var prop in temp) {
+      if (prop !== "data") {
+        this[prop] = temp[prop];
+      } else {
+        this.set("data", temp[prop]);
+      }
+    }
+    this.editMode = edit;
+  }
+}
+window.customElements.define(EditableTable.tag, EditableTable);
+export { EditableTable };

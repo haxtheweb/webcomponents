@@ -16,7 +16,7 @@
       "hax": "src/haxschema-builder-hax.json"
     }
   },
-  "version": "2.1.1",
+  "version": "2.1.3",
   "description": "dynamically build and visualize HAXschema",
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   "main": "haxschema-builder.js",
   "module": "haxschema-builder.es6.js",
   "umd": "haxschema-builder.umd.js",
-  "amd": "haxschema-builder.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/haxschema-builder/test/",
     "start": "yarn run dev",
@@ -40,11 +39,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/code-editor": "^2.1.1",
-    "@lrnwebcomponents/eco-json-schema-form": "^2.1.1",
-    "@lrnwebcomponents/hax-body": "^2.1.1",
-    "@lrnwebcomponents/hax-body-behaviors": "^2.1.1",
-    "@lrnwebcomponents/json-editor": "^2.1.1",
+    "@lrnwebcomponents/code-editor": "^2.1.2",
+    "@lrnwebcomponents/eco-json-schema-form": "^2.1.3",
+    "@lrnwebcomponents/hax-body": "^2.1.3",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.1.2",
+    "@lrnwebcomponents/json-editor": "^2.1.2",
     "@polymer/polymer": "^3.2.0"
   },
   "devDependencies": {

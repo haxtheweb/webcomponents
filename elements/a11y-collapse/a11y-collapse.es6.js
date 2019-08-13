@@ -1,4 +1,11 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import"./node_modules/@polymer/polymer/lib/elements/dom-if.js";import{afterNextRender}from"./node_modules/@polymer/polymer/lib/utils/render-status.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import{flush}from"./node_modules/@polymer/polymer/lib/utils/flush.js";import"./lib/a11y-collapse-accordion-button.js";import"./lib/a11y-collapse-icon-button.js";/**
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import "@polymer/polymer/lib/elements/dom-if.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import { flush } from "@polymer/polymer/lib/utils/flush.js";
+import "./lib/a11y-collapse-accordion-button.js";
+import "./lib/a11y-collapse-icon-button.js";
+/**
  * `a11y-collapse`
  * An accessible expand collapse.
  * 
@@ -42,7 +49,10 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
  * @customElement
  * @polymer
  * @demo demo/index.html demo
- */class A11yCollapse extends PolymerElement{static get template(){return html`
+ */
+class A11yCollapse extends PolymerElement {
+  static get template() {
+    return html`
       <style>
         :host {
           display: block;
@@ -145,47 +155,303 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
       >
         <div id="content-inner"><slot name="content"></slot><slot></slot></div>
       </div>
-    `}static get tag(){return"a11y-collapse"}static get properties(){return{/**
+    `;
+  }
+  static get tag() {
+    return "a11y-collapse";
+  }
+  static get properties() {
+    return {
+      /**
        * accordion-style: whole header acts as button? default is just icon.
-       */accordion:{name:"accordion",type:Boolean,value:!1,observer:"_flush",reflectToAttribute:!0},/**
+       */
+      accordion: {
+        name: "accordion",
+        type: Boolean,
+        value: false,
+        observer: "_flush",
+        reflectToAttribute: true
+      },
+      /**
        * is disabled?
-       */disabled:{name:"disabled",type:Boolean,value:!1,reflectToAttribute:!0},/**
+       */
+      disabled: {
+        name: "disabled",
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
        * icon when expanded
-       */expanded:{name:"expanded",type:Boolean,value:!1,reflectToAttribute:!0,observer:"_fireToggleEvents"},/**
+       */
+      expanded: {
+        name: "expanded",
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true,
+        observer: "_fireToggleEvents"
+      },
+      /**
        * icon for the button
-       */icon:{name:"icon",type:String,value:"expand-more"},/**
+       */
+      icon: {
+        name: "icon",
+        type: String,
+        value: "expand-more"
+      },
+      /**
        * icon when expanded
-       */iconExpanded:{name:"iconExpanded",type:String,value:null},/**
+       */
+      iconExpanded: {
+        name: "iconExpanded",
+        type: String,
+        value: null
+      },
+      /**
        * label for the button
-       */label:{name:"label",type:String,value:"expand/collapse"},/**
+       */
+      label: {
+        name: "label",
+        type: String,
+        value: "expand/collapse"
+      },
+      /**
        * optional label for the button when expanded
-       */labelExpanded:{name:"labelExpanded",type:String,value:null},/**
+       */
+      labelExpanded: {
+        name: "labelExpanded",
+        type: String,
+        value: null
+      },
+      /**
        * tooltip for the button
-       */tooltip:{name:"tooltip",type:String,value:"toggle expand/collapse"},/**
+       */
+      tooltip: {
+        name: "tooltip",
+        type: String,
+        value: "toggle expand/collapse"
+      },
+      /**
        * optional tooltip for the button when expanded
-       */tooltipExpanded:{name:"tooltipExpanded",type:String,value:null},/**
+       */
+      tooltipExpanded: {
+        name: "tooltipExpanded",
+        type: String,
+        value: null
+      },
+      /**
        * If no expanded icon is set, the default icon will rotate when expanded
-       */__rotateIcon:{name:"__rotateIcon",type:Boolean,computed:"_isRotated(expanded,iconExpanded)"}}}_flush(newValue){flush()}/**
+       */
+      __rotateIcon: {
+        name: "__rotateIcon",
+        type: Boolean,
+        computed: "_isRotated(expanded,iconExpanded)"
+      }
+    };
+  }
+  _flush(newValue) {
+    flush();
+  }
+  /**
    * Attached to the DOM, now fire.
-   */connectedCallback(){super.connectedCallback();this.dispatchEvent(new CustomEvent("a11y-collapse-attached",{bubbles:!0,cancelable:!0,composed:!0,detail:this}));afterNextRender(this,function(){this.addEventListener("a11y-collapse-tap",this._onTap.bind(this));this.HAXWiring=new HAXWiring;this.HAXWiring.setup(A11yCollapse.haxProperties,A11yCollapse.tag,this)})}static get haxProperties(){return{canScale:!1,canPosition:!0,canEditSource:!1,gizmo:{title:"Single Expand Collapse",description:"A single instance of an expand collapse.",icon:"view-day",color:"grey",groups:["Text"],meta:{author:"Your organization on github"}},settings:{quick:[],configure:[{property:"expanded",title:"Expanded",description:"Expand by default",inputMethod:"boolean"},{property:"label",title:"Label",description:"The label of the toggle expand/collapse button",inputMethod:"textfield",icon:"editor:title"},{property:"tooltip",title:"Tooltip",description:"The tooltip for the toggle expand/collapse button",inputMethod:"textfield",icon:"editor:title"},{property:"icon",title:"Icon",description:"The icon for the toggle expand/collapse button",inputMethod:"textfield",icon:"editor:title"},{property:"iconExpanded",title:"Expanded Icon",description:"Optional: The icon for the toggle expand/collapse button when expanded",inputMethod:"textfield",icon:"editor:title"}],advanced:[]}}}/**
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    this.dispatchEvent(
+      new CustomEvent("a11y-collapse-attached", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
+    afterNextRender(this, function() {
+      this.addEventListener("a11y-collapse-tap", this._onTap.bind(this));
+      this.HAXWiring = new HAXWiring();
+      this.HAXWiring.setup(A11yCollapse.haxProperties, A11yCollapse.tag, this);
+    });
+  }
+  static get haxProperties() {
+    return {
+      canScale: false,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Single Expand Collapse",
+        description: "A single instance of an expand collapse.",
+        icon: "view-day",
+        color: "grey",
+        groups: ["Text"],
+        meta: {
+          author: "Your organization on github"
+        }
+      },
+      settings: {
+        quick: [],
+        configure: [
+          {
+            property: "expanded",
+            title: "Expanded",
+            description: "Expand by default",
+            inputMethod: "boolean"
+          },
+          {
+            property: "label",
+            title: "Label",
+            description: "The label of the toggle expand/collapse button",
+            inputMethod: "textfield",
+            icon: "editor:title"
+          },
+          {
+            property: "tooltip",
+            title: "Tooltip",
+            description: "The tooltip for the toggle expand/collapse button",
+            inputMethod: "textfield",
+            icon: "editor:title"
+          },
+          {
+            property: "icon",
+            title: "Icon",
+            description: "The icon for the toggle expand/collapse button",
+            inputMethod: "textfield",
+            icon: "editor:title"
+          },
+          {
+            property: "iconExpanded",
+            title: "Expanded Icon",
+            description:
+              "Optional: The icon for the toggle expand/collapse button when expanded",
+            inputMethod: "textfield",
+            icon: "editor:title"
+          }
+        ],
+        advanced: []
+      }
+    };
+  }
+  /**
    * Collapses the content
-   */collapse(){this.toggle(!1)}/**
+   */
+  collapse() {
+    this.toggle(false);
+  }
+
+  /**
    * Let the group know that this is gone.
-   */disconnectedCallback(){this.dispatchEvent(new CustomEvent("a11y-collapse-detached",{bubbles:!0,cancelable:!0,composed:!0,detail:this}));this.removeEventListener("a11y-collapse-tap",this._onTap.bind(this));super.disconnectedCallback()}/**
+   */
+  disconnectedCallback() {
+    this.dispatchEvent(
+      new CustomEvent("a11y-collapse-detached", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
+    this.removeEventListener("a11y-collapse-tap", this._onTap.bind(this));
+    super.disconnectedCallback();
+  }
+
+  /**
    * Expands the content
-   */expand(){this.toggle(!0)}/**
+   */
+  expand() {
+    this.toggle(true);
+  }
+
+  /**
    * Toggles based on mode
-   */toggle(mode){this.expanded=mode!==void 0?mode:!this.expanded}/**
+   */
+  toggle(mode) {
+    this.expanded = mode !== undefined ? mode : !this.expanded;
+  }
+
+  /**
    * Fires toggling events
-   */_fireToggleEvents(){this.dispatchEvent(new CustomEvent("toggle",{bubbles:!0,cancelable:!0,composed:!0,detail:this}));//supports legacy version
-this.dispatchEvent(new CustomEvent("a11y-collapse-toggle",{bubbles:!0,cancelable:!0,composed:!0,detail:this}));if(this.expanded){this.dispatchEvent(new CustomEvent("expand",{bubbles:!0,cancelable:!0,composed:!0,detail:this}))}else{this.dispatchEvent(new CustomEvent("collapse",{bubbles:!0,cancelable:!0,composed:!0,detail:this}))}}/**
+   */
+  _fireToggleEvents() {
+    this.dispatchEvent(
+      new CustomEvent("toggle", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
+    //supports legacy version
+    this.dispatchEvent(
+      new CustomEvent("a11y-collapse-toggle", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
+    if (this.expanded) {
+      this.dispatchEvent(
+        new CustomEvent("expand", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this
+        })
+      );
+    } else {
+      this.dispatchEvent(
+        new CustomEvent("collapse", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this
+        })
+      );
+    }
+  }
+
+  /**
    * If no expanded value is set, the default will be same as collapsed
-   */_overrideProp(prop,val){this[prop]=val}/**
+   */
+  _overrideProp(prop, val) {
+    this[prop] = val;
+  }
+
+  /**
    * If no expanded value is set, the default will be same as collapsed
-   */_getExpandCollapse(expanded,ifFalse,ifTrue){return expanded&&null!==ifTrue?ifTrue:ifFalse}/**
+   */
+  _getExpandCollapse(expanded, ifFalse, ifTrue) {
+    return expanded && ifTrue !== null ? ifTrue : ifFalse;
+  }
+
+  /**
    * If no expanded icon is set, the default icon will rotate when expanded
-   */_isRotated(expanded,iconExpanded){return!expanded&&null===iconExpanded}/**
+   */
+  _isRotated(expanded, iconExpanded) {
+    return !expanded && iconExpanded === null;
+  }
+
+  /**
    * Handle tap
-   */_onTap(e){if(!this.disabled){this.toggle();this.dispatchEvent(new CustomEvent("a11y-collapse-click",{bubbles:!0,cancelable:!0,composed:!0,detail:this}))}}/**
+   */
+  _onTap(e) {
+    if (!this.disabled) {
+      this.toggle();
+      this.dispatchEvent(
+        new CustomEvent("a11y-collapse-click", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this
+        })
+      );
+    }
+  }
+
+  /**
    * Attached to the DOM, now fire.
-   */_setAriaExpanded(expanded){return""+expanded}}window.customElements.define(A11yCollapse.tag,A11yCollapse);export{A11yCollapse};
+   */
+  _setAriaExpanded(expanded) {
+    return "" + expanded;
+  }
+}
+window.customElements.define(A11yCollapse.tag, A11yCollapse);
+export { A11yCollapse };

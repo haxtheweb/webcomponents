@@ -131,7 +131,6 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
           --site-menu-active-color: #ffffff;
           --site-menu: {
             background-color: #383f45;
-            color: #ffffff;
           }
           --site-menu-container: {
             padding: 0;
@@ -218,6 +217,7 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
           top: 0;
           bottom: 0;
           left: 300px;
+          z-index: 1;
           --site-menu-button-icon: {
             width: 64px;
             height: 64px;
@@ -269,6 +269,24 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
           app-drawer-layout[narrow]
           site-menu-button[type="next"] {
           display: none;
+        }
+
+        site-menu,
+        map-menu,
+        map-menu * {
+          display: flex;
+          flex-direction: column;
+          flex: 1 1 auto;
+          --map-menu-container: {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 auto;
+          }
+          --map-menu-items-list: {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 auto;
+          }
         }
       </style>
       <app-drawer-layout>
