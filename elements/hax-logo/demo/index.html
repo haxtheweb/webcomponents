@@ -3,25 +3,26 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-    <title>H5PElement: h5p-element Demo</title>
+    <title>HaxLogo: hax-logo Demo</title>
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '../h5p-element.js';
+      import '../hax-logo.js';
     </script>
-    <style is="custom-style" include="demo-pages-shared-styles">
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic h5p-element demo</h3>
+      <h3>Basic hax-logo demo</h3>
       <demo-snippet>
         <template>
-          <h5p-element source="files/test.h5p">
-            This is h5p-element
-          </h5p-element>
+          <hax-logo size="mini"></hax-logo>
+          <hax-logo size="small"></hax-logo>
+          <hax-logo toupper></hax-logo>
+          <hax-logo size="large"></hax-logo>
         </template>
       </demo-snippet>
     </div>

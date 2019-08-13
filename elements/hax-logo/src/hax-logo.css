@@ -1,0 +1,46 @@
+
+:host {
+  display: block;
+  --hax-logo-letter-spacing: -16px;
+  --hax-logo-font-size: 64px;
+  --hax-logo-inner-font-size: 48px;
+  --hax-logo-inner-margin: 8px -4px 8px 8px;
+}
+
+:host([hidden]) {
+  display: none;
+}
+:host([toupper]) {
+  text-transform: uppercase;
+}
+
+:host([size="mini"]) {
+  --hax-logo-letter-spacing: -6px;
+  --hax-logo-font-size: 18px;
+  --hax-logo-inner-font-size: 16px;
+  --hax-logo-inner-margin: 0px 0px 2px 4px;
+}
+
+:host([size="small"]) {
+  --hax-logo-font-size: 36px;
+  --hax-logo-inner-font-size: 28px;
+  --hax-logo-inner-margin: 4px -4px 4px 8px;
+}
+
+:host([size="large"]) {
+  --hax-logo-font-size: 120px;
+  --hax-logo-inner-font-size: 100px;
+}
+
+.wrap {
+  font-family: 'Press Start 2P', cursive;
+  font-size: var(--hax-logo-font-size);
+  letter-spacing: var(--hax-logo-letter-spacing);
+}
+.inner {
+  font-size: var(--hax-logo-inner-font-size);
+  display: inline-block;
+  vertical-align: text-top;
+  margin: var(--hax-logo-inner-margin);
+  letter-spacing: -2px;
+}
