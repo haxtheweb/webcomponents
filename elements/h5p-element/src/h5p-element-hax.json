@@ -1,0 +1,44 @@
+{
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "H 5-p-element",
+    "description": "h5p wrapper for loading and presenting .h5p files",
+    "icon": "icons:android",
+    "color": "green",
+    "groups": ["5"],
+    "handles": [
+      {
+        "type": "todo:read-the-docs-for-usage"
+      }
+    ],
+    "meta": {
+      "author": "btopro",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "quick": [
+      {
+        "property": "source",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": true,
+        "icon": "icons:link",
+        "validationType": "url"
+      }
+    ],
+    "configure": [
+      {
+        "property": "source",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": true,
+        "icon": "icons:link",
+        "validationType": "url"
+      }
+    ],
+    "advanced": []
+  }
+}
