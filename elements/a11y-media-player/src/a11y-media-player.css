@@ -126,6 +126,7 @@
   margin: 0 auto;
 }
 :host #player {
+  height: 400px;
   position: relative;
 }
 :host #player > * {
