@@ -107,7 +107,7 @@ class SiteMenuButton extends PolymerElement {
       /**
        * acitvely selected item
        */
-      activeManifestIndex: {
+      activeRouterManifestIndex: {
         type: String
       },
       routerManifest: {
@@ -115,7 +115,8 @@ class SiteMenuButton extends PolymerElement {
       },
       link: {
         type: String,
-        computed: "pageLink(type, activeManifestIndex, routerManifest.items)"
+        computed:
+          "pageLink(type, activeRouterManifestIndex, routerManifest.items)"
       },
       editMode: {
         type: Boolean
@@ -124,7 +125,7 @@ class SiteMenuButton extends PolymerElement {
         type: Boolean,
         reflectToAttribute: true,
         computed:
-          "pageLinkStatus(type, activeManifestIndex, routerManifest.items, editMode)"
+          "pageLinkStatus(type, activeRouterManifestIndex, routerManifest.items, editMode)"
       },
       label: {
         type: String
@@ -169,18 +170,21 @@ class SiteMenuButton extends PolymerElement {
       this.direction = "";
     }
   }
-  pageLink(type, activeManifestIndex, items) {
+  pageLink(type, activeRouterManifestIndex, items) {
     if (type === "prev" && items) {
-      if (activeManifestIndex > 0 && items[activeManifestIndex - 1]) {
-        return items[activeManifestIndex - 1].location;
+      if (
+        activeRouterManifestIndex > 0 &&
+        items[activeRouterManifestIndex - 1]
+      ) {
+        return items[activeRouterManifestIndex - 1].location;
       }
       return null;
     } else if (type === "next" && items) {
       if (
-        activeManifestIndex < items.length - 1 &&
-        items[activeManifestIndex + 1]
+        activeRouterManifestIndex < items.length - 1 &&
+        items[activeRouterManifestIndex + 1]
       ) {
-        return items[activeManifestIndex + 1].location;
+        return items[activeRouterManifestIndex + 1].location;
       }
       return null;
     }
@@ -189,16 +193,16 @@ class SiteMenuButton extends PolymerElement {
       return null;
     }
   }
-  pageLinkStatus(type, activeManifestIndex, items, editMode) {
+  pageLinkStatus(type, activeRouterManifestIndex, items, editMode) {
     if (editMode) {
       return true;
     }
     if (type === "prev") {
-      if (activeManifestIndex === 0 || activeManifestIndex === -1) {
+      if (activeRouterManifestIndex === 0 || activeRouterManifestIndex === -1) {
         return true;
       }
     } else if (type === "next" && items) {
-      if (activeManifestIndex >= items.length - 1) {
+      if (activeRouterManifestIndex >= items.length - 1) {
         return true;
       }
     }
@@ -210,7 +214,7 @@ class SiteMenuButton extends PolymerElement {
       this.routerManifest = toJS(store.routerManifest);
     });
     this.__disposer2 = autorun(() => {
-      this.activeManifestIndex = toJS(store.activeManifestIndex);
+      this.activeRouterManifestIndex = toJS(store.activeRouterManifestIndex);
     });
     this.__disposer3 = autorun(() => {
       this.editMode = toJS(store.editMode);
