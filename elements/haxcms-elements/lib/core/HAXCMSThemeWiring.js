@@ -5,6 +5,7 @@
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
+import { varExists, varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
@@ -192,20 +193,16 @@ export const HAXCMSTheme = function(SuperClass) {
         // store disposer so we can clean up later
         autorun(reaction => {
           const __routerManifest = toJS(store.routerManifest);
-          if (
-            __routerManifest &&
-            typeof __routerManifest.title !== typeof undefined
-          ) {
+          if (__routerManifest && varExists(__routerManifest, "title")) {
             document.title = __routerManifest.title;
           }
           if (
             __routerManifest &&
-            typeof __routerManifest.metadata !== typeof undefined &&
-            typeof __routerManifest.metadata.cssVariable !== typeof undefined
+            varExists(__routerManifest, "metadata.theme.variables.cssVariable")
           ) {
             // json outline schema changed, allow other things to react
             // fake way of forcing an update of these items
-            let ary = __routerManifest.metadata.cssVariable
+            let ary = __routerManifest.metadata.theme.variables.cssVariable
               .replace("--simple-colors-default-theme-", "")
               .split("-");
             ary.pop();
@@ -214,7 +211,11 @@ export const HAXCMSTheme = function(SuperClass) {
             // set this directly instead of messing w/ accentColor
             document.body.style.setProperty(
               "--haxcms-color",
-              __routerManifest.metadata.hexCode
+              varGet(
+                __routerManifest,
+                "metadata.theme.variables.hexCode",
+                "#FFFFFF"
+              )
             );
           }
           this.__disposer.push(reaction);

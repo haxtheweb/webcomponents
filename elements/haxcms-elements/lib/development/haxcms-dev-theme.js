@@ -168,12 +168,15 @@ class HAXCMSDevTheme extends HAXCMSTheme(PolymerElement) {
         <h2>title: [[manifest.title]]</h2>
         <div>description: [[manifest.description]]</div>
         <div>
-          icon: <iron-icon icon="[[manifest.metadata.icon]]"></iron-icon>
+          icon:
+          <iron-icon
+            icon="[[manifest.metadata.theme.variables.icon]]"
+          ></iron-icon>
         </div>
         <div>
           image:
           <img
-            src$="[[manifest.metadata.image]]"
+            src$="[[manifest.metadata.theme.variables.image]]"
             height="200px"
             width="200px"
           />
@@ -192,7 +195,7 @@ class HAXCMSDevTheme extends HAXCMSTheme(PolymerElement) {
           <div style="padding:8px;">
             <paper-card
               heading="[[item.title]]"
-              image="[[item.metadata.image]]"
+              image="[[item.metadata.fields.image]]"
               elevation="1"
               animated-shadow="false"
             >

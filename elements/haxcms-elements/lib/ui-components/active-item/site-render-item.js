@@ -8,7 +8,8 @@ import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import {
   encapScript,
   findTagsInHTML,
-  wipeSlot
+  wipeSlot,
+  varExists
 } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
@@ -106,17 +107,17 @@ class SiteRenderItem extends PolymerElement {
           }, 5);
         });
         // if there are, dynamically import them
-        if (this.manifest.metadata.dynamicElementLoader) {
+        if (varExists(this.manifest, "metadata.node.dynamicElementLoader")) {
           let tagsFound = findTagsInHTML(html);
           const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
           for (var i in tagsFound) {
             const tagName = tagsFound[i];
             if (
-              this.manifest.metadata.dynamicElementLoader[tagName] &&
+              this.manifest.metadata.node.dynamicElementLoader[tagName] &&
               !window.customElements.get(tagName)
             ) {
               import(`${basePath}../../../../../${
-                this.manifest.metadata.dynamicElementLoader[tagName]
+                this.manifest.metadata.node.dynamicElementLoader[tagName]
               }`)
                 .then(response => {
                   //console.log(tagName + ' dynamic import');

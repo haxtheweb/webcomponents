@@ -11,7 +11,8 @@ import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import {
   encapScript,
   findTagsInHTML,
-  wipeSlot
+  wipeSlot,
+  varExists
 } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import "@polymer/app-layout/app-header/app-header.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
@@ -401,17 +402,17 @@ class HAXCMSLegacyPlayer extends PolymerElement {
           }, 5);
         });
         // if there are, dynamically import them
-        if (this.manifest.metadata.dynamicElementLoader) {
+        if (varExists(this.manifest, "metadata.node.dynamicElementLoader")) {
           let tagsFound = findTagsInHTML(html);
           const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
           for (var i in tagsFound) {
             const tagName = tagsFound[i];
             if (
-              this.manifest.metadata.dynamicElementLoader[tagName] &&
+              this.manifest.metadata.node.dynamicElementLoader[tagName] &&
               !window.customElements.get(tagName)
             ) {
               import(`${basePath}../../../../../${
-                this.manifest.metadata.dynamicElementLoader[tagName]
+                this.manifest.metadata.node.dynamicElementLoader[tagName]
               }`)
                 .then(response => {
                   //console.log(tagName + ' dynamic import');

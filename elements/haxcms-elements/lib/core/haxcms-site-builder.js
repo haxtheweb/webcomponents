@@ -8,7 +8,9 @@ import { JsonOutlineSchema } from "@lrnwebcomponents/json-outline-schema/json-ou
 import {
   encapScript,
   findTagsInHTML,
-  wipeSlot
+  wipeSlot,
+  varExists,
+  varGet
 } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import { store } from "./haxcms-site-store.js";
@@ -332,17 +334,17 @@ class HAXCMSSiteBuilder extends PolymerElement {
           }
         }, 5);
         // if there are, dynamically import them
-        if (this.manifest.metadata.dynamicElementLoader) {
+        if (varExists(this.manifest, "metadata.node.dynamicElementLoader")) {
           let tagsFound = findTagsInHTML(html);
           const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
           for (var i in tagsFound) {
             const tagName = tagsFound[i];
             if (
-              this.manifest.metadata.dynamicElementLoader[tagName] &&
+              this.manifest.metadata.node.dynamicElementLoader[tagName] &&
               !window.customElements.get(tagName)
             ) {
               import(`${basePath}../../../../${
-                this.manifest.metadata.dynamicElementLoader[tagName]
+                this.manifest.metadata.node.dynamicElementLoader[tagName]
               }`)
                 .then(response => {
                   // useful to debug if dynamic references are coming in
@@ -436,8 +438,8 @@ class HAXCMSSiteBuilder extends PolymerElement {
       // ensure there's a dynamicELementLoader defined
       // @todo this could also be a place to mix in criticals
       // that are system required yet we lazy load like grid-plate
-      if (!newValue.metadata.dynamicElementLoader) {
-        newValue.metadata.dynamicElementLoader = {
+      if (!varExists(newValue, "metadata.node.dynamicElementLoader")) {
+        newValue.metadata.node.dynamicElementLoader = {
           "a11y-gif-player":
             "@lrnwebcomponents/a11y-gif-player/a11y-gif-player.js",
           "citation-element":

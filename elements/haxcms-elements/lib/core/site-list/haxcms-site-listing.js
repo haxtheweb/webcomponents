@@ -510,10 +510,13 @@ class HAXCMSSiteListing extends PolymerElement {
           path="metadata.lastPublished"
         >
           <template>
-            <template is="dom-if" if="[[item.metadata.lastPublished]]">
+            <template
+              is="dom-if"
+              if="[[item.metadata.site.static.lastPublished]]"
+            >
               <simple-datetime
                 format="M jS, Y"
-                timestamp="[[item.metadata.lastPublished]]"
+                timestamp="[[item.metadata.site.static.lastPublished]]"
                 unix
               ></simple-datetime>
             </template>
@@ -525,10 +528,10 @@ class HAXCMSSiteListing extends PolymerElement {
           path="metadata.updated"
         >
           <template>
-            <template is="dom-if" if="[[item.metadata.updated]]">
+            <template is="dom-if" if="[[item.metadata.site.updated]]">
               <simple-datetime
                 format="M jS, Y"
-                timestamp="[[item.metadata.updated]]"
+                timestamp="[[item.metadata.site.updated]]"
                 unix
               ></simple-datetime>
             </template>
@@ -540,10 +543,10 @@ class HAXCMSSiteListing extends PolymerElement {
           path="metadata.created"
         >
           <template>
-            <template is="dom-if" if="[[item.metadata.created]]">
+            <template is="dom-if" if="[[item.metadata.site.created]]">
               <simple-datetime
                 format="M jS, Y"
-                timestamp="[[item.metadata.created]]"
+                timestamp="[[item.metadata.site.created]]"
                 unix
               ></simple-datetime>
             </template>
@@ -551,13 +554,15 @@ class HAXCMSSiteListing extends PolymerElement {
         </vaadin-grid-sort-column>
         <vaadin-grid-column width="1em" header="Icon">
           <template
-            ><iron-icon icon="[[item.metadata.icon]]"></iron-icon
+            ><iron-icon
+              icon="[[item.metadata.theme.variables.icon]]"
+            ></iron-icon
           ></template>
         </vaadin-grid-column>
         <vaadin-grid-column width="1em" header="Color">
           <template>
             <div
-              style$="border:1px solid black;width:48px;height:48px;background-color:[[item.metadata.hexCode]];"
+              style$="border:1px solid black;width:48px;height:48px;background-color:[[item.metadata.theme.variables.hexCode]];"
             ></div>
           </template>
         </vaadin-grid-column>
@@ -566,7 +571,7 @@ class HAXCMSSiteListing extends PolymerElement {
             ><iron-image
               sizing="contain"
               preload
-              src$="[[item.metadata.image]]"
+              src$="[[item.metadata.theme.variables.image]]"
               style="width:100px; height:48px;"
             ></iron-image
           ></template>
@@ -643,7 +648,7 @@ class HAXCMSSiteListing extends PolymerElement {
           <paper-input
             id="newsiteimage"
             label="Image"
-            value="[[activeItem.metadata.image]]"
+            value="[[activeItem.metadata.theme.variables.image]]"
           ></paper-input>
           <label for="newsitecolor">Select a color:</label>
           <simple-colors-picker id="newsitecolor"></simple-colors-picker>
@@ -652,7 +657,7 @@ class HAXCMSSiteListing extends PolymerElement {
           <simple-icon-picker
             id="newsiteicon"
             hide-option-labels
-            value="[[activeItem.metadata.icon]]"
+            value="[[activeItem.metadata.theme.variables.icon]]"
           ></simple-icon-picker>
         </div>
         <div class="buttons">
@@ -917,11 +922,17 @@ class HAXCMSSiteListing extends PolymerElement {
       title: "",
       description: "",
       metadata: {
-        siteName: "",
-        theme: "simple-blog",
-        image: "assets/banner.jpg",
-        color: "blue",
-        icon: "icons:add-circle-outline"
+        site: {
+          name: ""
+        },
+        theme: {
+          name: "simple-blog",
+          variables: {
+            image: "assets/banner.jpg",
+            color: "blue",
+            icon: "icons:add-circle-outline"
+          }
+        }
       }
     });
     this.shadowRoot.querySelector("#newdialog").opened = true;
@@ -984,28 +995,26 @@ class HAXCMSSiteListing extends PolymerElement {
    * Use events for real value in theme.
    */
   _themeChanged(e) {
-    // while not the actual spec for our theme metadata, this is the primary key
-    // so the backend can update it correctly on response
     if (e.detail.value) {
-      this.set("activeItem.metadata.theme", e.detail.value);
-      this.notifyPath("activeItem.metadata.theme");
+      this.set("activeItem.metadata.theme.name", e.detail.value);
+      this.notifyPath("activeItem.metadata.theme.name");
     }
   }
   /**
    * Use events for real value in color area.
    */
   _colorChanged(e) {
-    this.set("activeItem.metadata.cssVariable", e.detail.value);
-    this.notifyPath("activeItem.metadata.cssVariable");
+    this.set("activeItem.metadata.theme.variables.cssVariable", e.detail.value);
+    this.notifyPath("activeItem.metadata.theme.variables.cssVariable");
     this.set(
-      "activeItem.metadata.hexCode",
+      "activeItem.metadata.theme.variables.hexCode",
       this.SimpleColors.colors[
         e.detail.value
           .replace("--simple-colors-default-theme-", "")
           .replace("-7", "")
       ][6]
     );
-    this.notifyPath("activeItem.metadata.hexCode");
+    this.notifyPath("activeItem.metadata.theme.variables.hexCode");
   }
   /**
    * Toggle edit state
@@ -1237,44 +1246,23 @@ class HAXCMSSiteListing extends PolymerElement {
     if (item.location) {
       window.open(item.location);
     } else {
-      window.open(this.basePath + "_sites/" + item.metadata.siteName + "/");
+      window.open(this.basePath + "_sites/" + item.metadata.site.name + "/");
     }
   }
   /**
    * Create a new site button was clicked
    */
   _createSite(e) {
-    // ship off a new call
-    this.set(
-      "createParams.siteName",
-      this.shadowRoot.querySelector("#newsitetitle").value
-    );
-    this.notifyPath("createParams.siteName");
-    this.set(
-      "createParams.description",
-      this.shadowRoot.querySelector("#newsitedescription").value
-    );
-    this.notifyPath("createParams.description");
-    // need to pull this from the active item bc of data binding silly
-    this.set("createParams.theme", this.activeItem.metadata.theme);
-    this.notifyPath("createParams.theme");
-    this.set("createParams.hexCode", this.activeItem.metadata.hexCode);
-    this.notifyPath("createParams.hexCode");
-    this.set("createParams.cssVariable", this.activeItem.metadata.cssVariable);
-    this.notifyPath("createParams.cssVariable");
-    this.set(
-      "createParams.image",
-      this.shadowRoot.querySelector("#newsiteimage").value
-    );
-    this.notifyPath("createParams.image");
-    this.set(
-      "createParams.icon",
-      this.shadowRoot.querySelector("#newsiteicon").icon
-    );
-    this.notifyPath("createParams.icon");
-    // pass along the jwt for user "session" purposes
-    this.set("createParams.jwt", this.jwt);
-    this.notifyPath("createParams.jwt");
+    this.set("createParams", {});
+    this.set("createParams", {
+      jwt: this.jwt,
+      description: this.shadowRoot.querySelector("#newsitedescription").value,
+      site: {
+        name: this.shadowRoot.querySelector("#newsitetitle").value
+      },
+      theme: this.activeItem.metadata.theme
+    });
+    this.notifyPath("createParams.*");
     this.shadowRoot.querySelector("#newsitetitle").value = "";
     this.shadowRoot.querySelector("#newsitedescription").value = null;
     this.shadowRoot.querySelector("#createrequest").generateRequest();
@@ -1283,18 +1271,20 @@ class HAXCMSSiteListing extends PolymerElement {
    * Download site button was hit, package and send a zip
    */
   async _downloadSites(e) {
-    // ship off a new call
-    // pass along the jwt for user "session" purposes
-    this.set("downloadParams.jwt", this.jwt);
-    this.notifyPath("downloadParams.jwt");
+    this.set("downloadParams", {});
+    this.set("downloadParams", {
+      jwt: this.jwt,
+      site: {}
+    });
+    this.notifyPath("downloadParams.*");
     for (var i in this.selectedItems) {
       this.set("activeItem", {});
       this.set("activeItem", this.selectedItems[i]);
       this.set(
-        "downloadParams.siteName",
-        this.selectedItems[i].metadata.siteName
+        "downloadParams.site.name",
+        this.selectedItems[i].metadata.site.name
       );
-      this.notifyPath("downloadParams.siteName");
+      this.notifyPath("downloadParams.site.name");
       await this.shadowRoot.querySelector("#downloadrequest").generateRequest();
     }
   }
@@ -1302,18 +1292,20 @@ class HAXCMSSiteListing extends PolymerElement {
    * Archive sites
    */
   async _archiveSites(e) {
-    // ship off a new call
-    // pass along the jwt for user "session" purposes
-    this.set("archiveParams.jwt", this.jwt);
-    this.notifyPath("archiveParams.jwt");
+    this.set("archiveParams", {});
+    this.set("archiveParams", {
+      jwt: this.jwt,
+      site: {}
+    });
+    this.notifyPath("archiveParams.*");
     for (var i in this.selectedItems) {
       this.set("activeItem", {});
       this.set("activeItem", this.selectedItems[i]);
       this.set(
-        "archiveParams.siteName",
-        this.selectedItems[i].metadata.siteName
+        "archiveParams.site.name",
+        this.selectedItems[i].metadata.site.name
       );
-      this.notifyPath("archiveParams.siteName");
+      this.notifyPath("archiveParams.site.name");
       await this.shadowRoot.querySelector("#archiverequest").generateRequest();
     }
   }
@@ -1333,18 +1325,20 @@ class HAXCMSSiteListing extends PolymerElement {
    * Delete sites
    */
   async _deleteSites(e) {
-    // ship off a new call
-    // pass along the jwt for user "session" purposes
-    this.set("deleteParams.jwt", this.jwt);
-    this.notifyPath("deleteParams.jwt");
+    this.set("deleteParams", {});
+    this.set("deleteParams", {
+      jwt: this.jwt,
+      site: {}
+    });
+    this.notifyPath("deleteParams.*");
     for (var i in this.selectedItems) {
       this.set("activeItem", {});
       this.set("activeItem", this.selectedItems[i]);
       this.set(
-        "deleteParams.siteName",
-        this.selectedItems[i].metadata.siteName
+        "deleteParams.site.name",
+        this.selectedItems[i].metadata.site.name
       );
-      this.notifyPath("deleteParams.siteName");
+      this.notifyPath("deleteParams.site.name");
       await this.shadowRoot.querySelector("#deleterequest").generateRequest();
     }
   }
@@ -1352,16 +1346,20 @@ class HAXCMSSiteListing extends PolymerElement {
    * Clone sites
    */
   async _cloneSites(e) {
-    // @todo obtain confirmation first
-    // ship off a new call
-    // pass along the jwt for user "session" purposes
-    this.set("cloneParams.jwt", this.jwt);
-    this.notifyPath("cloneParams.jwt");
+    this.set("cloneParams", {});
+    this.set("cloneParams", {
+      jwt: this.jwt,
+      site: {}
+    });
+    this.notifyPath("cloneParams.*");
     for (var i in this.selectedItems) {
       this.set("activeItem", {});
       this.set("activeItem", this.selectedItems[i]);
-      this.set("cloneParams.siteName", this.selectedItems[i].metadata.siteName);
-      this.notifyPath("cloneParams.siteName");
+      this.set(
+        "cloneParams.site.name",
+        this.selectedItems[i].metadata.site.name
+      );
+      this.notifyPath("cloneParams.site.name");
       await this.shadowRoot.querySelector("#clonerequest").generateRequest();
     }
   }
@@ -1369,19 +1367,20 @@ class HAXCMSSiteListing extends PolymerElement {
    * Clone sites
    */
   async _publishSites(e) {
-    // @todo obtain confirmation first
-    // ship off a new call
-    // pass along the jwt for user "session" purposes
-    this.set("publishParams.jwt", this.jwt);
-    this.notifyPath("publishParams.jwt");
+    this.set("publishParams", {});
+    this.set("publishParams", {
+      jwt: this.jwt,
+      site: {}
+    });
+    this.notifyPath("publishParams.*");
     for (var i in this.selectedItems) {
       this.set("activeItem", {});
       this.set("activeItem", this.selectedItems[i]);
       this.set(
-        "publishParams.siteName",
-        this.selectedItems[i].metadata.siteName
+        "publishParams.site.name",
+        this.selectedItems[i].metadata.site.name
       );
-      this.notifyPath("publishParams.siteName");
+      this.notifyPath("publishParams.site.name");
       await this.shadowRoot.querySelector("#publishrequest").generateRequest();
     }
   }
@@ -1390,10 +1389,12 @@ class HAXCMSSiteListing extends PolymerElement {
    */
   _loadConfig() {
     // pass along the jwt for user "session" purposes
-    this.set("configParams.jwt", this.jwt);
-    this.notifyPath("configParams.jwt");
-    this.set("configParams.token", this.createParams.token);
-    this.notifyPath("configParams.token");
+    this.set("configParams", {});
+    this.set("configParams", {
+      jwt: this.jwt,
+      token: this.createParams.token
+    });
+    this.notifyPath("configParams.*");
     this.shadowRoot.querySelector("#getconfigrequest").generateRequest();
   }
   /**
@@ -1403,14 +1404,13 @@ class HAXCMSSiteListing extends PolymerElement {
     window.HAXCMS.config.values = this.shadowRoot.querySelector(
       "#settingsform"
     ).value;
-    // pass along the jwt for user "session" purposes
-    this.set("setConfigParams.values", {});
-    this.set("setConfigParams.values", window.HAXCMS.config.values);
-    this.notifyPath("setConfigParams.values.*");
-    this.set("setConfigParams.jwt", this.jwt);
-    this.notifyPath("setConfigParams.jwt");
-    this.set("setConfigParams.token", this.createParams.token);
-    this.notifyPath("setConfigParams.token");
+    this.set("setConfigParams", {});
+    this.set("setConfigParams", {
+      jwt: this.jwt,
+      token: this.createParams.token,
+      values: window.HAXCMS.config.values
+    });
+    this.notifyPath("setConfigParams.*");
     this.shadowRoot.querySelector("#setconfigrequest").generateRequest();
   }
   /**

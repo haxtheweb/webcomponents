@@ -6,6 +6,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
+import { varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
@@ -555,15 +556,18 @@ class HAXCMSSiteEditor extends PolymerElement {
    */
   loadNodeFields(e) {
     this.__nodeFieldsInvoked = e.detail;
-    // pass along the jwt for user "session" purposes
-    this.set("getFieldsData.jwt", this.jwt);
-    this.notifyPath("getFieldsData.jwt");
-    this.set("getFieldsData.token", this.getFieldsToken);
-    this.notifyPath("getFieldsData.token");
-    this.set("getFieldsData.siteName", this.manifest.metadata.siteName);
-    this.notifyPath("getFieldsData.siteName");
-    this.set("getFieldsData.nodeId", this.activeItem.id);
-    this.notifyPath("getFieldsData.nodeId");
+    this.set("getFieldsData", {});
+    this.set("getFieldsData", {
+      jwt: this.jwt,
+      token: this.getFieldsToken,
+      site: {
+        name: this.manifest.metadata.site.name
+      },
+      node: {
+        id: this.activeItem.id
+      }
+    });
+    this.notifyPath("getFieldsData.*");
     this.$.getfieldsajax.generateRequest();
   }
   /**
@@ -571,13 +575,15 @@ class HAXCMSSiteEditor extends PolymerElement {
    */
   loadSiteFields(e) {
     this.__siteFieldsInvoked = e.detail;
-    // pass along the jwt for user "session" purposes
-    this.set("getSiteFieldsData.jwt", this.jwt);
-    this.notifyPath("getSiteFieldsData.jwt");
-    this.set("getSiteFieldsData.token", this.getFieldsToken);
-    this.notifyPath("getSiteFieldsData.token");
-    this.set("getSiteFieldsData.siteName", this.manifest.metadata.siteName);
-    this.notifyPath("getSiteFieldsData.siteName");
+    this.set("getSiteFieldsData", {});
+    this.set("getSiteFieldsData", {
+      jwt: this.jwt,
+      token: this.getFieldsToken,
+      site: {
+        name: this.manifest.metadata.site.name
+      }
+    });
+    this.notifyPath("getSiteFieldsData.*");
     this.$.getsitefieldsajax.generateRequest();
   }
   /**
@@ -652,10 +658,15 @@ class HAXCMSSiteEditor extends PolymerElement {
     this._haxSchema.settings = e.detail.response.haxSchema;
     let values = e.detail.response.values;
     let h = "";
-    if (this.manifest.metadata.publishedLocation) {
+    if (
+      varGet(this.manifest, "metadata.site.static.publishedLocation", false)
+    ) {
       h = document.createElement("a");
       h.setAttribute("tabindex", "-1");
-      h.setAttribute("href", this.manifest.metadata.publishedLocation);
+      h.setAttribute(
+        "href",
+        this.manifest.metadata.site.static.publishedLocation
+      );
       h.setAttribute("target", "_blank");
       h.innerHTML =
         '<paper-button raised style="text-transform:none;">Access published version</paper-button>';
@@ -836,12 +847,14 @@ class HAXCMSSiteEditor extends PolymerElement {
   createNode(e) {
     if (e.detail.values) {
       this.set("createData", {});
-      this.set("createData", e.detail.values);
+      this.set("createData", {
+        jwt: this.jwt,
+        site: {
+          name: this.manifest.metadata.site.name
+        },
+        node: e.detail.values
+      });
       this.notifyPath("createData.*");
-      this.set("createData.siteName", this.manifest.metadata.siteName);
-      this.notifyPath("createData.siteName");
-      this.set("createData.jwt", this.jwt);
-      this.notifyPath("createData.jwt");
       this.$.createajax.generateRequest();
       const evt = new CustomEvent("simple-modal-hide", {
         bubbles: true,
@@ -877,12 +890,16 @@ class HAXCMSSiteEditor extends PolymerElement {
    */
   deleteNode(e) {
     this.set("deleteData", {});
-    this.set("deleteData.nodeId", e.detail.item.id);
-    this.notifyPath("deleteData.nodeId");
-    this.set("deleteData.siteName", this.manifest.metadata.siteName);
-    this.notifyPath("deleteData.siteName");
-    this.set("deleteData.jwt", this.jwt);
-    this.notifyPath("deleteData.jwt");
+    this.set("deleteData", {
+      jwt: this.jwt,
+      site: {
+        name: this.manifest.metadata.site.name
+      },
+      node: {
+        id: e.detail.item.id
+      }
+    });
+    this.notifyPath("deleteData.*");
     this.$.deleteajax.generateRequest();
     const evt = new CustomEvent("simple-modal-hide", {
       bubbles: true,
@@ -961,7 +978,7 @@ class HAXCMSSiteEditor extends PolymerElement {
       // set upload manager to point to this location in a more dynamic fashion
       window.HaxStore.instance.connectionRewrites.appendUploadEndPoint =
         "siteName=" +
-        newValue.metadata.siteName +
+        newValue.metadata.site.name +
         "&nodeId=" +
         this.activeItem.id;
     }
@@ -981,7 +998,7 @@ class HAXCMSSiteEditor extends PolymerElement {
       // set upload manager to point to this location in a more dynamic fashion
       window.HaxStore.instance.connectionRewrites.appendUploadEndPoint =
         "siteName=" +
-        this.manifest.metadata.siteName +
+        this.manifest.metadata.site.name +
         "&nodeId=" +
         newValue.id;
     }
@@ -1134,20 +1151,20 @@ class HAXCMSSiteEditor extends PolymerElement {
    * Save node event
    */
   saveNode(e) {
-    this.set("updateNodeData", {});
-    this.set("updateNodeData.siteName", this.manifest.metadata.siteName);
-    this.notifyPath("updateNodeData.siteName");
-    // get the body from what's there currently
     let body = window.HaxStore.instance.activeHaxBody.haxToContent();
-    this.set("updateNodeData.body", body);
-    this.notifyPath("updateNodeData.body");
-    // convert to schema so we can ship that too if we want to process
-    this.set("updateNodeData.schema", window.HaxStore.htmlToHaxElements(body));
-    this.notifyPath("updateNodeData.schema");
-    this.set("updateNodeData.nodeId", this.activeItem.id);
-    this.notifyPath("updateNodeData.nodeId");
-    this.set("updateNodeData.jwt", this.jwt);
-    this.notifyPath("updateNodeData.jwt");
+    this.set("updateNodeData", {});
+    this.set("updateNodeData", {
+      jwt: this.jwt,
+      site: {
+        name: this.manifest.metadata.site.name
+      },
+      node: {
+        id: this.activeItem.id,
+        body: body,
+        schema: window.HaxStore.htmlToHaxElements(body)
+      }
+    });
+    this.notifyPath("updateNodeData.*");
     // send the request
     if (this.saveNodePath) {
       this.$.nodeupdateajax.generateRequest();
@@ -1158,14 +1175,17 @@ class HAXCMSSiteEditor extends PolymerElement {
    */
   saveNodeDetails(e) {
     this.set("updateNodeData", {});
-    this.set("updateNodeData.siteName", this.manifest.metadata.siteName);
-    this.notifyPath("updateNodeData.siteName");
-    this.set("updateNodeData.nodeId", e.detail.id);
-    this.notifyPath("updateNodeData.nodeId");
-    this.set("updateNodeData.details", e.detail);
-    this.notifyPath("updateNodeData.details");
-    this.set("updateNodeData.jwt", this.jwt);
-    this.notifyPath("updateNodeData.jwt");
+    this.set("updateNodeData", {
+      jwt: this.jwt,
+      site: {
+        name: this.manifest.metadata.site.name
+      },
+      node: {
+        id: e.detail.id,
+        details: e.detail
+      }
+    });
+    this.notifyPath("updateNodeData.*");
     // send the request
     if (this.saveNodePath) {
       this.$.nodeupdateajax.generateRequest();
@@ -1175,13 +1195,15 @@ class HAXCMSSiteEditor extends PolymerElement {
    * Save the outline based on an event firing.
    */
   saveOutline(e) {
-    // now let's work on the outline
-    this.set("updateOutlineData.siteName", this.manifest.metadata.siteName);
-    this.notifyPath("updateOutlineData.siteName");
-    this.set("updateOutlineData.items", e.detail);
-    this.notifyPath("updateOutlineData.items");
-    this.set("updateOutlineData.jwt", this.jwt);
-    this.notifyPath("updateOutlineData.jwt");
+    this.set("updateOutlineData", {});
+    this.set("updateOutlineData", {
+      jwt: this.jwt,
+      site: {
+        name: this.manifest.metadata.site.name
+      },
+      items: e.detail
+    });
+    this.notifyPath("updateOutlineData.*");
     if (this.saveOutlinePath) {
       this.$.outlineupdateajax.generateRequest();
     }
@@ -1201,12 +1223,15 @@ class HAXCMSSiteEditor extends PolymerElement {
             .replace("-7", "")
         ][6];
     }
-    this.set("updateManifestData.siteName", this.manifest.metadata.siteName);
-    this.notifyPath("updateManifestData.siteName");
-    this.set("updateManifestData.manifest", values);
-    this.notifyPath("updateManifestData.manifest");
-    this.set("updateManifestData.jwt", this.jwt);
-    this.notifyPath("updateManifestData.jwt");
+    this.set("updateManifestData", {});
+    this.set("updateManifestData", {
+      jwt: this.jwt,
+      site: {
+        name: this.manifest.metadata.site.name
+      },
+      manifest: values
+    });
+    this.notifyPath("updateManifestData.*");
     if (this.saveManifestPath) {
       this.$.manifestupdateajax.generateRequest();
     }
@@ -1215,10 +1240,14 @@ class HAXCMSSiteEditor extends PolymerElement {
    * Save the outline based on an event firing.
    */
   publishSite(e) {
-    this.set("publishSiteData.siteName", this.manifest.metadata.siteName);
-    this.notifyPath("publishSiteData.siteName");
-    this.set("publishSiteData.jwt", this.jwt);
-    this.notifyPath("publishSiteData.jwt");
+    this.set("publishSiteData", {});
+    this.set("publishSiteData", {
+      jwt: this.jwt,
+      site: {
+        name: this.manifest.metadata.site.name
+      }
+    });
+    this.notifyPath("publishSiteData.*");
     if (this.publishSitePath) {
       this.$.publishajax.generateRequest();
     }
@@ -1227,10 +1256,14 @@ class HAXCMSSiteEditor extends PolymerElement {
    * Revert last commit
    */
   revertCommit(e) {
-    this.set("revertSiteData.siteName", this.manifest.metadata.siteName);
-    this.notifyPath("revertSiteData.siteName");
-    this.set("revertSiteData.jwt", this.jwt);
-    this.notifyPath("revertSiteData.jwt");
+    this.set("revertSiteData", {});
+    this.set("revertSiteData", {
+      jwt: this.jwt,
+      site: {
+        name: this.manifest.metadata.site.name
+      }
+    });
+    this.notifyPath("revertSiteData.*");
     if (this.revertSitePath) {
       this.$.revertajax.generateRequest();
     }

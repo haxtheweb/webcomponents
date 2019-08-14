@@ -6,6 +6,7 @@ import {
   action,
   toJS
 } from "mobx/lib/mobx.module.js";
+import { varExists, varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 
 class Store {
   constructor() {
@@ -177,7 +178,13 @@ class Store {
        * By default all pages will be published unless "metadata.published" is set to "true" on the
        * item.
        */
-      if (manifest.metadata.core.defaultSettings.publishPagesOn === true) {
+      if (
+        varGet(
+          manifest,
+          "metadata.core.defaultSettings.publishPagesOn",
+          false
+        ) === true
+      ) {
         const filterHiddenParentsRecursive = item => {
           // if the item is unpublished then remove it.
           if (item.metadata.published === false) {
@@ -266,7 +273,7 @@ class Store {
     if (this.manifest) {
       var themeData = {};
       // this is required so better be...
-      if (this.manifest.metadata.theme) {
+      if (varExists(this.manifest, "metadata.theme")) {
         themeData = this.manifest.metadata.theme;
       } else {
         // fallback juuuuust to be safe...
@@ -275,15 +282,19 @@ class Store {
             element: "haxcms-basic-theme",
             path:
               "@lrnwebcomponents/haxcms-elements/lib/core/themes/haxcms-basic-theme.js",
-            name: "Basic theme"
+            name: "Basic theme",
+            variables: {
+              image: "assets/banner.jpg",
+              icon: "icons:record-voice-over",
+              hexCode: "#da004e",
+              cssVariable: "pink"
+            }
           }
         };
       }
       // ooo you sneaky devil you...
-      if (this.activeItem) {
-        if (this.activeItem.metadata.theme) {
-          return this.activeItem.metadata.theme;
-        }
+      if (this.activeItem && varExists(this.activeItem, "metadata.theme")) {
+        return this.activeItem.metadata.theme;
       }
       return themeData;
     }

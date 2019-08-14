@@ -98,7 +98,11 @@ class HAXCMSEditorBuilder extends PolymerElement {
         let script = document.createElement("script");
         // IF we're in a php environment this will always be 2 levels back
         script.src = `../../haxcms-jwt.php`;
-        document.documentElement.appendChild(script);
+        fetch(script.src).then(response => {
+          if (response.status != 404) {
+            document.documentElement.appendChild(script);
+          }
+        });
       }
       // dynamic import if this isn't published tho we'll double check
       // that it's valid down in php land were it to come to that

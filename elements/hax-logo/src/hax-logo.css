@@ -30,14 +30,39 @@
 }
 
 :host([size="large"]) {
-  --hax-logo-font-size: 120px;
+  --hax-logo-font-size: 346px;
   --hax-logo-inner-font-size: 100px;
+}
+.the {
+  display: none;
+}
+.web {
+  display: none;
+}
+:host([size="large"]) .left {
+  margin-right:-72px;
+}
+:host([size="large"]) .right {
+  margin-left: -44px;
+}
+:host([size="large"]) .the {
+  letter-spacing: 20px;
+  margin-left: 20px;
+  text-transform: uppercase;
+  display: inline-block;
+}
+:host([size="large"]) .web {
+  letter-spacing: 20px;
+  margin-left: 20px;
+  text-transform: uppercase;
+  display: inline-block;
 }
 
 .wrap {
   font-family: 'Press Start 2P', cursive;
   font-size: var(--hax-logo-font-size);
   letter-spacing: var(--hax-logo-letter-spacing);
+  text-align: center;
 }
 .inner {
   font-size: var(--hax-logo-inner-font-size);
