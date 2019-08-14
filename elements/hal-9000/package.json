@@ -16,7 +16,7 @@
       "hax": "src/hal-9000-hax.json"
     }
   },
-  "version": "2.1.3",
+  "version": "2.1.4",
   "description": "Robot assistant tag, hopefully not evil",
   "repository": {
     "type": "git",

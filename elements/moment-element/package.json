@@ -16,7 +16,7 @@
       "hax": "src/moment-element-hax.json"
     }
   },
-  "version": "2.1.2",
+  "version": "2.1.4",
   "description": "Start of moment-element",
   "repository": {
     "type": "git",

@@ -27,7 +27,7 @@
       "homepage": "https://www.w3.org/community/maps4html/"
     }
   ],
-  "version": "2.1.2",
+  "version": "2.1.4",
   "description": "Start of web-map",
   "repository": {
     "type": "git",
@@ -50,7 +50,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^2.1.2",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.1.4",
     "@polymer/polymer": "^3.2.0"
   },
   "devDependencies": {

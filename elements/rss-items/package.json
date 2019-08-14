@@ -16,7 +16,7 @@
       "hax": "src/rss-items-hax.json"
     }
   },
-  "version": "2.1.2",
+  "version": "2.1.4",
   "description": "visualize RSS items",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/es-global-bridge": "^2.1.1",
-    "@lrnwebcomponents/hax-body-behaviors": "^2.1.2",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.1.4",
     "@polymer/iron-ajax": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/iron-image": "^3.0.2",

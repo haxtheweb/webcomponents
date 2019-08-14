@@ -6,7 +6,7 @@
     "elementName": "materializecss-styles",
     "generator-wcfactory-version": ""
   },
-  "version": "2.1.2",
+  "version": "2.1.4",
   "description": "Materialize CSS style class names",
   "repository": {
     "type": "git",
