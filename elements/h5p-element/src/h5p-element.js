@@ -26,18 +26,23 @@ class H5PElement extends LitElement {
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
-  tag() {
+  static get tag() {
     return "h5p-element";
   }
 
   // life cycle
   constructor() {
     super();
+    this.HAXWiring = new HAXWiring();
+    this.HAXWiring.setup(H5PElement.haxProperties, H5PElement.tag, this);
     // make a random ID for the targeting
     this.contentId = this.generateUUID();
     // should kick off all dependencies to start loading on window
     this.H5PDepsLoader();
   }
+  /**
+   * This breaks shadowRoot in LitElement
+   */
   createRenderRoot() {
     return this;
   }
@@ -71,11 +76,6 @@ class H5PElement extends LitElement {
       "es-bridge-h5p-" + this.__h5pDepsLength + "-loaded",
       this.h5pReadyCallback.bind(this)
     );
-    this.h5pCSSDeps = [
-      basePath + "styles/h5p.css",
-      basePath + "styles/h5p-confirmation-dialog.css",
-      basePath + "styles/h5p-core-button.css"
-    ];
   }
   generateUUID() {
     return "item-sss-ss-ss".replace(/s/g, this._uuidPart);
@@ -88,18 +88,11 @@ class H5PElement extends LitElement {
   /**
    * life cycle, element is afixed to the DOM
    */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(H5PElement.haxProperties, H5PElement.tag, this);
-  }
-  /**
-   * LitElement ensures this only happens once
-   */
-  firstUpdated(updatedProperties) {
-    // timing issue or if there are multiple on the page...
-    if (window.H5P.init && this.contentId) {
-      console.log("exec this way");
+  firstUpdated() {
+    if (
+      window.ESGlobalBridge.imports["h5p-" + this.__h5pDepsLength] &&
+      this.contentId
+    ) {
       this.setupH5P(this.contentId);
     }
   }
@@ -116,7 +109,7 @@ class H5PElement extends LitElement {
   /**
    * This does the heavy lifting to kick it off
    */
-  setupH5P(id = 1, displayOptions = {}) {
+  async setupH5P(id = 1, displayOptions = {}) {
     ({
       frame: displayOptions.frame = false,
       copyright: displayOptions.copyright = false,
@@ -125,6 +118,17 @@ class H5PElement extends LitElement {
       icon: displayOptions.icon = false,
       export: displayOptions.export = false
     } = displayOptions);
+    const basePath =
+      pathFromUrl(decodeURIComponent(import.meta.url)) + "lib/h5p/";
+
+    H5PIntegration.core = {
+      styles: [
+        basePath + "styles/h5p.css",
+        basePath + "styles/h5p-confirmation-dialog.css",
+        basePath + "styles/h5p-core-button.css"
+      ],
+      scripts: this.h5pJSDeps
+    };
     let frag = document.createRange().createContextualFragment(`
     <div class="h5p-iframe-wrapper" style="background-color:#DDD;">
       <iframe id="h5p-iframe-${id}" class="h5p-iframe" data-content-id="${id}" style="width: 100%; height: 100%; border: none; display: block;" src="about:blank" frameBorder="0"></iframe>
@@ -133,12 +137,16 @@ class H5PElement extends LitElement {
     this.querySelector(
       '[data-content-id="wrapper-' + this.contentId + '"'
     ).appendChild(frag);
-    H5PIntegration.core = {
-      styles: this.h5pCSSDeps,
-      scripts: this.h5pJSDeps
-    };
 
-    new H5PStandalone(id, this.source, displayOptions);
+    let stand = await new H5PStandalone(id, this.source, displayOptions);
+    await stand.init();
+    // clear previous calls to this exact thing
+    // this accounts for multiples on the DOM and the exccess
+    // file parsing required per each in order to use this thing
+    clearTimeout(window.__H5PBridgeTimeOut);
+    window.__H5PBridgeTimeOut = setTimeout(() => {
+      window.H5P.init();
+    }, 100);
   }
   /**
    * life cycle, element removed from DOM
@@ -198,11 +206,11 @@ H5PIntegration.l10n = {
 };
 
 class H5PStandalone {
-  constructor(id = 1, pathToContent = "workspace", displayOptions) {
+  constructor(id = 1, pathToContent, displayOptions) {
     this.id = id;
     this.path = pathToContent;
     this.displayOptions = displayOptions;
-    return this.init();
+    return true;
   }
   getJSONPromise(url) {
     return fetch(url).then(function(response) {
@@ -214,8 +222,8 @@ class H5PStandalone {
    */
   async init() {
     this.h5p = await this.getJSONPromise(`${this.path}/h5p.json`);
-    this.content = await this.getJSONPromise(
-      `${this.path}/content/content.json`
+    this.content = JSON.stringify(
+      await this.getJSONPromise(`${this.path}/content/content.json`)
     );
     window.H5PIntegration.pathIncludesVersion = this.pathIncludesVersion = await this.checkIfPathIncludesVersion();
 
@@ -229,22 +237,16 @@ class H5PStandalone {
     H5PIntegration.contents = H5PIntegration.contents
       ? H5PIntegration.contents
       : {};
-    H5PIntegration.contents[`cid-${this.id}`] = {
+    H5PIntegration.contents["cid-" + this.id] = {
       library: `${this.mainLibrary.machineName} ${
         this.mainLibrary.majorVersion
       }.${this.mainLibrary.minorVersion}`,
-      jsonContent: JSON.stringify(this.content),
+      jsonContent: this.content,
       styles: styles,
       scripts: scripts,
       displayOptions: this.displayOptions
     };
-    // clear previous calls to this exact thing
-    // this accounts for multiples on the DOM and the exccess
-    // file parsing required per each in order to use this thing
-    clearTimeout(window.__H5PBridgeTimeOut);
-    window.__H5PBridgeTimeOut = setTimeout(() => {
-      H5P.init();
-    }, 500);
+    return true;
   }
 
   /**

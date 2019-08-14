@@ -1453,6 +1453,7 @@
   ],
   "autoloader": {
     "lrn-aside": "@lrnwebcomponents/lrn-aside/lrn-aside.js",
+    "h5p-element": "@lrnwebcomponents/h5p-element/h5p-element.js",
     "hax-logo": "@lrnwebcomponents/hax-logo/hax-logo.js",
     "md-block": "@lrnwebcomponents/md-block/md-block.js",
     "grid-plate": "@lrnwebcomponents/grid-plate/grid-plate.js",
