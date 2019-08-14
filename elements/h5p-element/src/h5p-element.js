@@ -144,9 +144,12 @@ class H5PElement extends LitElement {
     // this accounts for multiples on the DOM and the exccess
     // file parsing required per each in order to use this thing
     clearTimeout(window.__H5PBridgeTimeOut);
-    window.__H5PBridgeTimeOut = setTimeout(() => {
+
+    window.__H5PBridgeTimeOut = setTimeout(function() {
       window.H5P.init();
     }, 100);
+
+    return true;
   }
   /**
    * life cycle, element removed from DOM
