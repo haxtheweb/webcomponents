@@ -5,6 +5,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { MutableData } from "@polymer/polymer/lib/mixins/mutable-data.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { objectValFromStringPos } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 /**
  * `site-query`
@@ -16,18 +17,7 @@ import { autorun, toJS } from "mobx/lib/mobx.module.js";
  */
 // helper to use strings for index in Objects
 Object.byString = function(o, s) {
-  s = s.replace(/\[(\w+)\]/g, ".$1"); // convert indexes to properties
-  s = s.replace(/^\./, ""); // strip a leading dot
-  var a = s.split(".");
-  for (var i = 0, n = a.length; i < n; ++i) {
-    var k = a[i];
-    if (k in o) {
-      o = o[k];
-    } else {
-      return;
-    }
-  }
-  return o;
+  return objectValFromStringPos(o, s);
 };
 
 class SiteQuery extends MutableData(PolymerElement) {
