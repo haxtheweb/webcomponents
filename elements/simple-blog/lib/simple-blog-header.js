@@ -1,6 +1,8 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
+import { varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
+
 /**
  * `simple-blog-header`
  * `A simple blog header to the front of the site`
@@ -142,8 +144,17 @@ class SimpleBlogHeader extends PolymerElement {
       let manifest = toJS(store.manifest);
       this.description = manifest.description;
       this.title = manifest.title;
-      this.image = manifest.metadata.image;
-      this.icon = manifest.metadata.icon;
+      this.image = varGet(
+        manifest,
+        "metadata.theme.variables.image",
+        "assets/banner.jpg"
+      );
+      this.icon = varGet(
+        manifest,
+        "metadata.theme.variables.icon",
+        "icons:record-voice-over"
+      );
+      this.author = varGet(manifest, "metadata.author", {});
       this.__disposer.push(reaction);
     });
   }
