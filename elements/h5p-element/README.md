@@ -1,7 +1,7 @@
 # &lt;h5p-element&gt;
 
 5
-> h5p wrapper for loading and presenting .h5p files
+> h5p wrapper for loading and presenting unpacked .h5p file directories
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
