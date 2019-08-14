@@ -49,14 +49,39 @@ class HaxLogo extends HTMLElement {
 }
 
 :host([size="large"]) {
-  --hax-logo-font-size: 120px;
+  --hax-logo-font-size: 346px;
   --hax-logo-inner-font-size: 100px;
+}
+.the {
+  display: none;
+}
+.web {
+  display: none;
+}
+:host([size="large"]) .left {
+  margin-right:-72px;
+}
+:host([size="large"]) .right {
+  margin-left: -44px;
+}
+:host([size="large"]) .the {
+  letter-spacing: 20px;
+  margin-left: 20px;
+  text-transform: uppercase;
+  display: inline-block;
+}
+:host([size="large"]) .web {
+  letter-spacing: 20px;
+  margin-left: 20px;
+  text-transform: uppercase;
+  display: inline-block;
 }
 
 .wrap {
   font-family: 'Press Start 2P', cursive;
   font-size: var(--hax-logo-font-size);
   letter-spacing: var(--hax-logo-letter-spacing);
+  text-align: center;
 }
 .inner {
   font-size: var(--hax-logo-inner-font-size);
@@ -72,7 +97,7 @@ class HaxLogo extends HTMLElement {
   margin: var(--hax-logo-innerslot-margin);
   letter-spacing: -2px;
 }</style>
-<span class="wrap">&lt;<span class="innerslot"><slot name="pre"></slot></span><span class="inner">h-a-x</span><span class="innerslot"><slot name="post"></slot></span>&gt;</span>`;
+<span class="wrap"><span class="left">&lt;</span><span class="innerslot"><slot name="pre"></slot></span><span class="inner">h-a-x<br><span class="the">the</span><br><span class="web">web</span></bt></span><span class="innerslot"><slot name="post"></slot></span><span class="right">&gt;</span></span>`;
   }
 
   // haxProperty definition
