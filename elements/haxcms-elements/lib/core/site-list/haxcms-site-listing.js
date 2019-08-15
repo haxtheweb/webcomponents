@@ -17,6 +17,7 @@ import "@vaadin/vaadin-grid/vaadin-grid-column.js";
 import "@vaadin/vaadin-grid/vaadin-grid-sort-column.js";
 import "@vaadin/vaadin-grid/vaadin-grid-filter-column.js";
 import "@vaadin/vaadin-grid/vaadin-grid-selection-column.js";
+import "@lrnwebcomponents/simple-fields/simple-fields.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `haxcms-site-listing`
@@ -132,8 +133,10 @@ class HAXCMSSiteListing extends PolymerElement {
         }
         paper-dialog {
           width: 60vw;
-          min-height: 60vh;
-          top: 15vh;
+        }
+        paper-dialog-scrollable {
+          overflow: scroll;
+          height: 40vh;
         }
         h2.dialog-header {
           background-color: var(--haxcms-site-listing-color-dark);
@@ -167,18 +170,6 @@ class HAXCMSSiteListing extends PolymerElement {
         }
         paper-input {
           --paper-input-container-focus-color: var(--haxcms-site-listing-color-hover);
-        }
-        #newsitecolor {
-          padding: 4px;
-          margin: 0;
-          display: inline-flex;
-          vertical-align: middle;
-        }
-        #newsitecolor > * {
-          display: inline-flex;
-          align-self: center;
-          margin-right: 8px;
-          --simple-colors-picker-preview-size: 20px;
         }
         .small-location {
           font-size: 11px;
@@ -290,9 +281,6 @@ class HAXCMSSiteListing extends PolymerElement {
         }
         .danger:hover {
           color: var(--haxcms-site-listing-color-light) !important;
-        }
-        #newsiteicon {
-          display: inline-flex;
         }
         eco-json-schema-object {
           --eco-json-schema-object-form: {
@@ -631,35 +619,13 @@ class HAXCMSSiteListing extends PolymerElement {
           >
         </div>
       </paper-dialog>
-      <paper-dialog id="newdialog">
+      <paper-dialog id="createsite">
         <h2 class="dialog-header">Create new site</h2>
-        <div>
-          <paper-input
-            id="newsitetitle"
-            label="Title"
-            required
-            autofocus
-            value="{{siteTitle}}"
-          ></paper-input>
-          <paper-input
-            id="newsitedescription"
-            label="Description"
-          ></paper-input>
-          <paper-input
-            id="newsiteimage"
-            label="Image"
-            value="[[activeItem.metadata.theme.variables.image]]"
-          ></paper-input>
-          <label for="newsitecolor">Select a color:</label>
-          <simple-colors-picker id="newsitecolor"></simple-colors-picker>
-          <simple-picker id="newsitetheme" label="Theme"></simple-picker>
-          <label for="newsiteicon">Select an icon:</label>
-          <simple-icon-picker
-            id="newsiteicon"
-            hide-option-labels
-            value="[[activeItem.metadata.theme.variables.icon]]"
-          ></simple-icon-picker>
-        </div>
+        <paper-dialog-scrollable>
+          <form>
+            <simple-fields id="createsitefields" autofocus></simple-fields>
+          </form>
+        </paper-dialog-scrollable>
         <div class="buttons">
           <paper-button
             on-click="_createSite"
@@ -741,12 +707,6 @@ class HAXCMSSiteListing extends PolymerElement {
       title: {
         type: String,
         value: "My sites"
-      },
-      /**
-       * Site title
-       */
-      siteTitle: {
-        type: String
       },
       sites: {
         type: Array,
@@ -915,27 +875,8 @@ class HAXCMSSiteListing extends PolymerElement {
    * Open the new dialog when tapped
    */
   _addTap() {
-    // reset activeItem
-    this.set("activeItem", {});
-    this.set("activeItem", {
-      id: false,
-      title: "",
-      description: "",
-      metadata: {
-        site: {
-          name: ""
-        },
-        theme: {
-          name: "simple-blog",
-          variables: {
-            image: "assets/banner.jpg",
-            color: "blue",
-            icon: "icons:add-circle-outline"
-          }
-        }
-      }
-    });
-    this.shadowRoot.querySelector("#newdialog").opened = true;
+    this._resetNewSiteForm();
+    this.shadowRoot.querySelector("#createsite").opened = true;
   }
   /**
    * Login state changed
@@ -990,31 +931,6 @@ class HAXCMSSiteListing extends PolymerElement {
    */
   _loginUserRoutine(e) {
     this.shadowRoot.querySelector("#jwt").toggleLogin();
-  }
-  /**
-   * Use events for real value in theme.
-   */
-  _themeChanged(e) {
-    if (e.detail.value) {
-      this.set("activeItem.metadata.theme.name", e.detail.value);
-      this.notifyPath("activeItem.metadata.theme.name");
-    }
-  }
-  /**
-   * Use events for real value in color area.
-   */
-  _colorChanged(e) {
-    this.set("activeItem.metadata.theme.variables.cssVariable", e.detail.value);
-    this.notifyPath("activeItem.metadata.theme.variables.cssVariable");
-    this.set(
-      "activeItem.metadata.theme.variables.hexCode",
-      this.SimpleColors.colors[
-        e.detail.value
-          .replace("--simple-colors-default-theme-", "")
-          .replace("-7", "")
-      ][6]
-    );
-    this.notifyPath("activeItem.metadata.theme.variables.hexCode");
   }
   /**
    * Toggle edit state
@@ -1106,24 +1022,6 @@ class HAXCMSSiteListing extends PolymerElement {
         );
       this.__loginPath = window.appSettings.login;
       this.__logoutPath = window.appSettings.logout;
-      let themeOptions = [];
-      let firstTheme = null;
-      for (var theme in window.appSettings.themes) {
-        let item = [
-          {
-            alt: window.appSettings.themes[theme].name,
-            value: theme
-          }
-        ];
-        themeOptions.push(item);
-        if (!firstTheme) {
-          firstTheme = theme;
-        }
-      }
-      this.shadowRoot.querySelector("#newsitetheme").options = themeOptions;
-      if (!this.shadowRoot.querySelector("#newsitetheme").value) {
-        this.shadowRoot.querySelector("#newsitetheme").value = firstTheme;
-      }
       this.__setConfigPath = window.appSettings.setConfigPath;
       this.__getConfigPath = window.appSettings.getConfigPath;
       this.__createNewSitePath = window.appSettings.createNewSitePath;
@@ -1142,12 +1040,6 @@ class HAXCMSSiteListing extends PolymerElement {
         "haxcms-load-site",
         this.loadActiveSite.bind(this)
       );
-      this.shadowRoot
-        .querySelector("#newsitetheme")
-        .addEventListener("change", this._themeChanged.bind(this));
-      this.shadowRoot
-        .querySelector("#newsitecolor")
-        .addEventListener("change", this._colorChanged.bind(this));
       this.shadowRoot
         .querySelector("#snap")
         .addEventListener("click", this.snapPhoto.bind(this));
@@ -1181,6 +1073,115 @@ class HAXCMSSiteListing extends PolymerElement {
     this._loginUserRoutine(e);
   }
   /**
+   * queue up the site creation form
+   */
+  _resetNewSiteForm() {
+    // establish the theme options based on globals that were set
+    let themeOptions = [];
+    let firstTheme = null;
+    for (var theme in window.appSettings.themes) {
+      themeOptions[theme] = window.appSettings.themes[theme].name;
+      if (!firstTheme) {
+        firstTheme = theme;
+      }
+    }
+    const fields = this.shadowRoot.querySelector("#createsitefields");
+    fields.fields = [
+      {
+        property: "id",
+        title: "id",
+        description: "",
+        inputMethod: "boolean",
+        hidden: true
+      },
+      {
+        property: "manifest",
+        inputMethod: "tabs",
+        properties: [
+          {
+            property: "site",
+            title: "Details",
+            properties: [
+              {
+                property: "name",
+                title: "Site name",
+                description:
+                  "This forms the folder name and metadata title for the site",
+                inputMethod: "textfield",
+                required: true
+              },
+              {
+                property: "domain",
+                title: "Domain",
+                description: "Optional domain name",
+                inputMethod: "textfield"
+              },
+              {
+                property: "description",
+                title: "Description",
+                description:
+                  "Addition detail, for personal use as well as search engine optimization",
+                inputMethod: "textfield"
+              }
+            ]
+          },
+          {
+            property: "theme",
+            title: "Theme",
+            properties: [
+              {
+                property: "name",
+                title: "Theme",
+                description: "Design for presenting your new site",
+                inputMethod: "select",
+                allowNull: false,
+                options: themeOptions
+              },
+              {
+                property: "image",
+                title: "Image",
+                description:
+                  "The image is typically used as the banner in themes",
+                inputMethod: "haxupload",
+                validationType: "url"
+              },
+              {
+                property: "icon",
+                title: "Pick an icon.",
+                description:
+                  "The icon is used in some designs areas to help you know what site your on",
+                inputMethod: "iconpicker"
+              },
+              {
+                property: "color",
+                title: "Color",
+                description:
+                  "Choose a primary color to tint the UI or be used in the theme",
+                inputMethod: "colorpicker"
+              }
+            ]
+          }
+        ]
+      }
+    ];
+    fields.value = {
+      id: false,
+      manifest: {
+        site: {
+          name: "",
+          domain: "",
+          description: ""
+        },
+        theme: {
+          name: firstTheme,
+          image: "assets/banner.jpg",
+          color: "blue",
+          icon: "icons:add-circle-outline"
+        }
+      }
+    };
+  }
+  /**
    * detached life cycle
    */
   disconnectedCallback() {
@@ -1208,12 +1209,6 @@ class HAXCMSSiteListing extends PolymerElement {
         "selected-items-changed",
         this._gridSelectedItemsChanged.bind(this)
       );
-    this.shadowRoot
-      .querySelector("#newsitetheme")
-      .removeEventListener("change", this._themeChanged.bind(this));
-    this.shadowRoot
-      .querySelector("#newsitecolor")
-      .removeEventListener("change", this._colorChanged.bind(this));
     this.shadowRoot
       .querySelector("#jwt")
       .removeEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this));
@@ -1253,18 +1248,24 @@ class HAXCMSSiteListing extends PolymerElement {
    * Create a new site button was clicked
    */
   _createSite(e) {
-    this.set("createParams", {});
-    this.set("createParams", {
-      jwt: this.jwt,
-      description: this.shadowRoot.querySelector("#newsitedescription").value,
-      site: {
-        name: this.shadowRoot.querySelector("#newsitetitle").value
+    // @todo once nikki refactors things this will require less clean up here
+    let values = Object.assign(
+      {
+        jwt: this.jwt
       },
-      theme: this.activeItem.metadata.theme
-    });
+      this.shadowRoot.querySelector("#createsitefields").value
+    );
+    values.site = values.manifest[0];
+    values.theme = {
+      name: values.manifest[1].name
+    };
+    delete values.manifest[1].name;
+    values.theme.variables = values.manifest[1];
+    delete values.manifest;
+
+    this.set("createParams", {});
+    this.set("createParams", values);
     this.notifyPath("createParams.*");
-    this.shadowRoot.querySelector("#newsitetitle").value = "";
-    this.shadowRoot.querySelector("#newsitedescription").value = null;
     this.shadowRoot.querySelector("#createrequest").generateRequest();
   }
   /**
