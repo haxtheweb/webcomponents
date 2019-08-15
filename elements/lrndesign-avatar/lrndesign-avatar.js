@@ -5,20 +5,23 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
  * `Visualize a user account eitehr with an image, a label, or as abstract art.`
  * @demo demo/index.html
  */
-class LrndesignAvatar extends PolymerElement {
+class LrndesignAvatar extends SimpleColors {
   constructor() {
     super();
     import("@lrnwebcomponents/paper-avatar/paper-avatar.js");
   }
   static get template() {
     return html`
-      <style>
+      <style include="simple-colors-shared-styles">
         :host {
           display: block;
         }
         paper-avatar {
+          color: var(--simple-colors-default-theme-grey-1);
+          background-color: var(--simple-colors-default-theme-accent-8);
           --paper-avatar-width: var(--lrndesign-avatar-width, 40px);
           --paper-avatar-height: var(--lrndesign-avatar-height, 40px);
+          --paper-avatar-text-color: var(--simple-colors-default-theme-grey-1);
         }
       </style>
       <paper-avatar
@@ -34,14 +37,17 @@ class LrndesignAvatar extends PolymerElement {
   static get tag() {
     return "lrndesign-avatar";
   }
-  _getHexColor(color) {
-    let name = color.replace("-text", "");
-    let tmp = new SimpleColors();
-    if (tmp.colors[name]) {
-      return tmp.colors[name][6];
+
+  _getAccentColor(color) {
+    color = color.replace("-text", "");
+    if (
+      (!this.accentColor || this.accentColor === "grey") &&
+      this.colors[color]
+    ) {
+      this.accentColor = color;
     }
-    return "#000000";
   }
+
   static get properties() {
     return {
       /**
@@ -65,19 +71,13 @@ class LrndesignAvatar extends PolymerElement {
         value: false
       },
       /**
-       * Class for the color
-       */
-      hexColor: {
-        type: String,
-        computed: "_getHexColor(color)"
-      },
-      /**
        * Color class work to apply
        */
       color: {
         type: String,
         value: "blue",
-        reflectToAttribute: true
+        reflectToAttribute: true,
+        observer: "_getAccentColor"
       },
       /**
        * Form abstract art from hash of label

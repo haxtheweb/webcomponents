@@ -223,13 +223,6 @@ class CsvRender extends SimpleColors {
         value: ""
       },
       /**
-       * Class for the color
-       */
-      hexColor: {
-        type: String,
-        computed: "_getHexColor(color)"
-      },
-      /**
        * Color class work to apply
        */
       color: {

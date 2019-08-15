@@ -10,7 +10,6 @@
  *
  * @customElement
  * @polymer
- * @demo demo/index.html
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "../simple-colors-shared-styles.js";

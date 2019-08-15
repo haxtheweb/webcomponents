@@ -87,7 +87,7 @@ class PaperAvatar extends PolymerElement {
           display: block;
           width: 100%;
           font-weight: 400;
-          color: rgba(255, 255, 255, 0.8);
+          color: var(--paper-avatar-text-color, rgba(255, 255, 255, 0.8));
           text-transform: capitalize;
           font-family: "Roboto", "Noto", sans-serif;
           -webkit-font-smoothing: antialiased;
@@ -97,6 +97,12 @@ class PaperAvatar extends PolymerElement {
         #jdenticon {
           width: var(--paper-avatar-width);
           height: var(--paper-avatar-width);
+        }
+        #jdenticon * {
+          fill: var(
+            --paper-avatar-text-color,
+            rgba(255, 255, 255, 0.8)
+          ) !important;
         }
       </style>
       <div id="label" title="[[label]]"><span>[[_label(label)]]</span></div>
