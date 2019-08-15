@@ -356,6 +356,7 @@ $colors:
 :host [dark] {
   @include get-colors('default',$dark: true);
 }
+
 @each $color in $colors {
   $var: color-variable($color);
   @include get-accent($color,$var);
