@@ -30,7 +30,7 @@ class HaxAppSearch extends PolymerElement {
   }
   static get template() {
     return html`
-      <style>
+      <style include="simple-colors-shared-styles">
         :host {
           display: block;
         }

@@ -49,7 +49,7 @@ class EditableTableDisplay extends displayBehaviors(
 ) {
   static get template() {
     return html`
-      <style is="custom-style" include="editable-table-styles simple-colors">
+      <style include="simple-colors-shared-styles editable-table-styles">
         :host([dark]) .caption {
           padding: 4px 4px 0;
         }

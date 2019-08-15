@@ -24,7 +24,7 @@ class SimpleColorsPicker extends SimpleColors {
   // render function
   static get template() {
     return html`
-      <style>
+      <style include="simple-colors-shared-styles">
         :host {
           display: inline-block;
           --simple-picker-selected-option-outline: 2px dashed black;

@@ -77,6 +77,7 @@ class HaxAppPickerItem extends LitElement {
   }
   render() {
     return html`
+      <style include="simple-colors-shared-styles"></style>
       <paper-button
         class="icon"
         title="${this.label}"

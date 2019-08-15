@@ -131,13 +131,12 @@ class A11yMediaControls extends A11yMediaBehaviors {
   //inherit styles from a11y-media-player
   constructor() {
     super();
-    this.inheritStyles = true;
   }
 
   //render function
   static get template() {
     return html`
-      <style is="custom-style">
+      <style is="custom-style" include="simple-colors-shared-styles">
         :host {
           display: block;
           width: 100%;

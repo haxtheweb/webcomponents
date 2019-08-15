@@ -60,13 +60,12 @@ class A11yMediaPlayButton extends A11yMediaBehaviors {
   //inherit styles from a11y-media-player or a11y-media-transcript
   constructor() {
     super();
-    this.inheritStyles = true;
   }
 
   //render function
   static get template() {
     return html`
-      <style>
+      <style include="simple-colors-shared-styles">
         :host {
           display: block;
           opacity: 1;

@@ -22,7 +22,7 @@ A button on the hax-gizmo-browser app display
 @microcopy - the mental model for this element
  - 
 */
-class HaxGizmoBrowserItem extends PolymerElement {
+class HaxGizmoBrowserItem extends SimpleColors {
   constructor() {
     super();
     afterNextRender(this, function() {
@@ -35,7 +35,7 @@ class HaxGizmoBrowserItem extends PolymerElement {
   }
   static get template() {
     return html`
-      <style include="hax-shared-styles">
+      <style include="simple-colors-shared-styles hax-shared-styles">
         :host {
           display: block;
         }
@@ -48,17 +48,26 @@ class HaxGizmoBrowserItem extends PolymerElement {
           transform: scale(1.4, 1.4);
         }
         paper-button {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
           color: var(--hax-color-text);
           text-transform: none;
-          background-color: var(--hax-color-bg-accent);
           min-width: unset;
           cursor: pointer;
-          display: flex;
-          width: 50px;
-          height: 50px;
-          padding: 5px;
+          width: 80px;
+          padding: 10px;
           margin: 10px;
-          color: #ffffff;
+          box-shadow: none;
+        }
+        paper-button .button-inner {
+          width: 30px;
+          height: 30px;
+          padding: 5px;
+          background-color: var(
+            --simple-colors-default-theme-accent-7,
+            var(--hax-color-bg-accent)
+          );
           border-radius: 50%;
           box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
             0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
@@ -68,46 +77,37 @@ class HaxGizmoBrowserItem extends PolymerElement {
           -o-transition: box-shadow 0.3s;
           transition: box-shadow 0.3s;
         }
-        paper-button:hover,
-        paper-button:focus {
+        paper-button .button-inner:hover,
+        paper-button .button-inner:focus {
           box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.14),
             0 2px 10px 0 rgba(0, 0, 0, 0.12), 0 6px 2px -4px rgba(0, 0, 0, 0.2);
         }
-        paper-button:active {
+        paper-button .button-inner:active {
           box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
             0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
         }
         paper-button iron-icon {
-          height: 32px;
-          width: 32px;
+          width: 30px;
+          height: 30px;
           color: var(--simple-colors-default-theme-grey-1);
-          display: inline-block;
         }
         .item-title {
           margin-top: 8px;
-          color: var(--hax-color-text);
-          width: 100%;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
+          color: var(
+            --simple-colors-default-theme-grey-12,
+            var(--hax-color-text)
+          );
+          width: 70px;
           font-size: 12px;
           line-height: 12px;
           height: 12px;
           text-align: center;
         }
-        .button-inner {
-          display: flex;
-        }
         .flip-icon {
           transform: rotateY(180deg);
         }
       </style>
-      <paper-button
-        on-click="_fireEvent"
-        data-voicecommand$="select [[title]]"
-        title="[[title]]"
-        style$="background-color:[[hexColor]];"
-      >
+      <paper-button on-click="_fireEvent" data-voicecommand$="select [[title]]">
         <div class="button-inner">
           <iron-icon icon="[[icon]]" hidden$="[[!icon]]"></iron-icon>
           <iron-image
@@ -117,8 +117,8 @@ class HaxGizmoBrowserItem extends PolymerElement {
             hidden$="[[!image]]"
           ></iron-image>
         </div>
+        <div class="item-title">[[title]]</div>
       </paper-button>
-      <div class="item-title" aria-hidden="true">[[title]]</div>
     `;
   }
   static get tag() {
@@ -155,14 +155,8 @@ class HaxGizmoBrowserItem extends PolymerElement {
        * color name of the item
        */
       color: {
-        type: String
-      },
-      /**
-       * Class for the color
-       */
-      hexColor: {
         type: String,
-        computed: "_getHexColor(color)"
+        observer: "_getAccentColor"
       },
       /**
        * Author related to this gizmo
@@ -204,6 +198,17 @@ class HaxGizmoBrowserItem extends PolymerElement {
       }
     };
   }
+
+  _getAccentColor(color) {
+    color = color.replace("-text", "");
+    if (
+      (!this.accentColor || this.accentColor === "grey") &&
+      this.colors[color]
+    ) {
+      this.accentColor = color;
+    }
+  }
+
   _getHexColor(color) {
     let name = color.replace("-text", "");
     let tmp = new SimpleColors();

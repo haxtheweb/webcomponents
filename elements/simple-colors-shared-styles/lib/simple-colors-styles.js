@@ -13,7 +13,7 @@
  * @demo demo/index.html
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "../simple-colors-shared styles.js";
+import "../simple-colors-shared-styles.js";
 window.SimpleColorsStyles = {};
 window.SimpleColorsStyles.instance = null;
 window.SimpleColorsStyles.colors = {
@@ -284,6 +284,70 @@ window.SimpleColorsStyles.colors = {
     "#0f1518"
   ]
 };
+window.SimpleColorsStyles.contrasts = {
+  greyColor: {
+    aaLarge: [
+      { min: 7, max: 12 },
+      { min: 7, max: 12 },
+      { min: 7, max: 12 },
+      { min: 7, max: 12 },
+      { min: 8, max: 12 },
+      { min: 10, max: 12 },
+      { min: 1, max: 3 },
+      { min: 1, max: 5 },
+      { min: 1, max: 6 },
+      { min: 1, max: 6 },
+      { min: 1, max: 6 },
+      { min: 1, max: 6 }
+    ],
+    aa: [
+      //if bold text < 14pt, or text < 18pt
+      { min: 7, max: 12 },
+      { min: 7, max: 12 },
+      { min: 7, max: 12 },
+      { min: 8, max: 12 },
+      { min: 8, max: 12 },
+      { min: 11, max: 12 },
+      { min: 1, max: 2 },
+      { min: 1, max: 7 },
+      { min: 1, max: 7 },
+      { min: 1, max: 6 },
+      { min: 1, max: 6 },
+      { min: 1, max: 6 }
+    ]
+  },
+  colorColor: {
+    //if neither the color nor its contrast are grey
+    aaLarge: [
+      { min: 7, max: 12 },
+      { min: 7, max: 12 },
+      { min: 8, max: 12 },
+      { min: 9, max: 12 },
+      { min: 10, max: 12 },
+      { min: 11, max: 12 },
+      { min: 1, max: 2 },
+      { min: 1, max: 3 },
+      { min: 1, max: 4 },
+      { min: 1, max: 5 },
+      { min: 1, max: 6 },
+      { min: 1, max: 6 }
+    ],
+    aa: [
+      { min: 8, max: 12 },
+      { min: 8, max: 12 },
+      { min: 9, max: 12 },
+      { min: 9, max: 12 },
+      { min: 11, max: 12 },
+      { min: 12, max: 12 },
+      { min: 1, max: 1 },
+      { min: 1, max: 2 },
+      { min: 1, max: 4 },
+      { min: 1, max: 4 },
+      { min: 1, max: 5 },
+      { min: 1, max: 5 }
+    ]
+  }
+};
 
 class SimpleColorsStyles extends PolymerElement {
   // properties available to the custom element for data binding
@@ -315,70 +379,7 @@ class SimpleColorsStyles extends PolymerElement {
       */
       contrasts: {
         type: Object,
-        value: {
-          greyColor: {
-            aaLarge: [
-              { min: 7, max: 12 },
-              { min: 7, max: 12 },
-              { min: 7, max: 12 },
-              { min: 7, max: 12 },
-              { min: 8, max: 12 },
-              { min: 10, max: 12 },
-              { min: 1, max: 3 },
-              { min: 1, max: 5 },
-              { min: 1, max: 6 },
-              { min: 1, max: 6 },
-              { min: 1, max: 6 },
-              { min: 1, max: 6 }
-            ],
-            aa: [
-              //if bold text < 14pt, or text < 18pt
-              { min: 7, max: 12 },
-              { min: 7, max: 12 },
-              { min: 7, max: 12 },
-              { min: 8, max: 12 },
-              { min: 8, max: 12 },
-              { min: 11, max: 12 },
-              { min: 1, max: 2 },
-              { min: 1, max: 7 },
-              { min: 1, max: 7 },
-              { min: 1, max: 6 },
-              { min: 1, max: 6 },
-              { min: 1, max: 6 }
-            ]
-          },
-          colorColor: {
-            //if neither the color nor its contrast are grey
-            aaLarge: [
-              { min: 7, max: 12 },
-              { min: 7, max: 12 },
-              { min: 8, max: 12 },
-              { min: 9, max: 12 },
-              { min: 10, max: 12 },
-              { min: 11, max: 12 },
-              { min: 1, max: 2 },
-              { min: 1, max: 3 },
-              { min: 1, max: 4 },
-              { min: 1, max: 5 },
-              { min: 1, max: 6 },
-              { min: 1, max: 6 }
-            ],
-            aa: [
-              { min: 8, max: 12 },
-              { min: 8, max: 12 },
-              { min: 9, max: 12 },
-              { min: 9, max: 12 },
-              { min: 11, max: 12 },
-              { min: 12, max: 12 },
-              { min: 1, max: 1 },
-              { min: 1, max: 2 },
-              { min: 1, max: 4 },
-              { min: 1, max: 4 },
-              { min: 1, max: 5 },
-              { min: 1, max: 5 }
-            ]
-          }
-        }
+        value: window.SimpleColorsStyles.contrasts
       }
     };
   }
@@ -389,17 +390,6 @@ class SimpleColorsStyles extends PolymerElement {
    */
   static get tag() {
     return "simple-colors-styles";
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   * /
-  connectedCallback() {
-    super.connectedCallback();
-    /**
-     * append and register the shared styles
-     * /
-    afterNextRender(this, function() {
-    });
   }
 
   /**
@@ -422,6 +412,17 @@ class SimpleColorsStyles extends PolymerElement {
       color: color,
       shade: shade
     };
+  }
+  /**
+   * returns a variable based on color name, shade, and fixed theme
+   *
+   * @param {string} the color name
+   * @param {number} the color shade
+   * @param {boolean} the color shade
+   * @returns {string} the CSS Variable
+   */
+  makeVariable(color = "grey", shade = 1, theme = "default") {
+    return ["--simple-colors", theme, "theme", color, shade].join("-");
   }
   /**
    * for large or small text given a color and its shade,
@@ -515,27 +516,24 @@ class SimpleColorsStyles extends PolymerElement {
   shadeToIndex(shade) {
     return parseInt(shade) - 1;
   }
-
-  /**
-   * gets the current shade
-   *
-   * @param {string} the shade
-   * @param {number} the inverted shade
-   */
-
-  invertShade(shade) {
-    return this.colors["grey"].length + 1 - parseInt(shade);
-  }
 }
+window.customElements.define(SimpleColorsStyles.tag, SimpleColorsStyles);
+export { SimpleColorsStyles };
+
 /**
  * Checks to see if there is an instance available, and if not appends one
  */
 window.SimpleColorsStyles.requestAvailability = () => {
   if (window.SimpleColorsStyles.instance == null) {
-    let style = document.createElement("style");
-    style.setAttribute("include", "simple-colors-shared styles");
-    document.head.appendChild(style);
-    window.SimpleColorsStyles.instance = new SimpleColorsStyles();
+    window.SimpleColorsStyles.stylesheet = document.createElement("style");
+    window.SimpleColorsStyles.stylesheet.setAttribute(
+      "include",
+      "simple-colors-shared styles"
+    );
+    document.head.appendChild(window.SimpleColorsStyles.stylesheet);
+    window.SimpleColorsStyles.instance = document.createElement(
+      "simple-colors-styles"
+    );
   }
   return window.SimpleColorsStyles.instance;
 };
