@@ -148,7 +148,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
         :host #details {
           flex-grow: 1;
           flex-shrink: 1;
-          overflow-y: scroll;
+          overflow-y: auto;
         }
         :host([responsive-size="xs"]) #details,
         :host([extra-wide]) #details {
@@ -173,7 +173,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
           align-self: flex-start;
           flex-grow: 1;
           flex-shrink: 1;
-          overflow: scroll;
+          overflow-y: auto;
         }
         :host #thumbnails {
           align-self: flex-end;
