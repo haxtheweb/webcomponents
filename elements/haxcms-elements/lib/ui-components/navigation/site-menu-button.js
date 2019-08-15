@@ -77,12 +77,18 @@ class SiteMenuButton extends PolymerElement {
           }
         }
       </style>
-      <a tabindex="-1" href$="[[link]]" disabled$="[[disabled]]">
+      <a
+        tabindex="-1"
+        href$="[[link]]"
+        disabled$="[[disabled]]"
+        title$="[[label]]"
+      >
         <paper-button
           id="menulink"
           noink
           disabled="[[disabled]]"
           raised="[[raised]]"
+          title="[[label]]"
         >
           <slot name="prefix"></slot>
           <iron-icon icon="[[icon]]"></iron-icon>
