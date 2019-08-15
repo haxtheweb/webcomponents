@@ -816,18 +816,18 @@ const css = html`
       --simple-colors-default-theme-accent-10: #222222;
       --simple-colors-default-theme-accent-11: #111111;
       --simple-colors-default-theme-accent-12: #000000;
-      --simple-colors-default-theme-fixed-1: #ffffff;
-      --simple-colors-default-theme-fixed-2: #eeeeee;
-      --simple-colors-default-theme-fixed-3: #dddddd;
-      --simple-colors-default-theme-fixed-4: #cccccc;
-      --simple-colors-default-theme-fixed-5: #bbbbbb;
-      --simple-colors-default-theme-fixed-6: #999999;
-      --simple-colors-default-theme-fixed-7: #666666;
-      --simple-colors-default-theme-fixed-8: #444444;
-      --simple-colors-default-theme-fixed-9: #333333;
-      --simple-colors-default-theme-fixed-10: #222222;
-      --simple-colors-default-theme-fixed-11: #111111;
-      --simple-colors-default-theme-fixed-12: #000000;
+      --simple-colors-fixed-theme-accent-1: #ffffff;
+      --simple-colors-fixed-theme-accent-2: #eeeeee;
+      --simple-colors-fixed-theme-accent-3: #dddddd;
+      --simple-colors-fixed-theme-accent-4: #cccccc;
+      --simple-colors-fixed-theme-accent-5: #bbbbbb;
+      --simple-colors-fixed-theme-accent-6: #999999;
+      --simple-colors-fixed-theme-accent-7: #666666;
+      --simple-colors-fixed-theme-accent-8: #444444;
+      --simple-colors-fixed-theme-accent-9: #333333;
+      --simple-colors-fixed-theme-accent-10: #222222;
+      --simple-colors-fixed-theme-accent-11: #111111;
+      --simple-colors-fixed-theme-accent-12: #000000;
     }
 
     :host([dark][accent-color="grey"]),
@@ -862,18 +862,18 @@ const css = html`
       --simple-colors-default-theme-accent-10: #670000;
       --simple-colors-default-theme-accent-11: #520000;
       --simple-colors-default-theme-accent-12: #3f0000;
-      --simple-colors-default-theme-fixed-1: #ffdddd;
-      --simple-colors-default-theme-fixed-2: #ffaeae;
-      --simple-colors-default-theme-fixed-3: #ff8f8f;
-      --simple-colors-default-theme-fixed-4: #ff7474;
-      --simple-colors-default-theme-fixed-5: #fd5151;
-      --simple-colors-default-theme-fixed-6: #ff2222;
-      --simple-colors-default-theme-fixed-7: #ee0000;
-      --simple-colors-default-theme-fixed-8: #ac0000;
-      --simple-colors-default-theme-fixed-9: #850000;
-      --simple-colors-default-theme-fixed-10: #670000;
-      --simple-colors-default-theme-fixed-11: #520000;
-      --simple-colors-default-theme-fixed-12: #3f0000;
+      --simple-colors-fixed-theme-accent-1: #ffdddd;
+      --simple-colors-fixed-theme-accent-2: #ffaeae;
+      --simple-colors-fixed-theme-accent-3: #ff8f8f;
+      --simple-colors-fixed-theme-accent-4: #ff7474;
+      --simple-colors-fixed-theme-accent-5: #fd5151;
+      --simple-colors-fixed-theme-accent-6: #ff2222;
+      --simple-colors-fixed-theme-accent-7: #ee0000;
+      --simple-colors-fixed-theme-accent-8: #ac0000;
+      --simple-colors-fixed-theme-accent-9: #850000;
+      --simple-colors-fixed-theme-accent-10: #670000;
+      --simple-colors-fixed-theme-accent-11: #520000;
+      --simple-colors-fixed-theme-accent-12: #3f0000;
     }
 
     :host([dark][accent-color="red"]),
@@ -908,18 +908,18 @@ const css = html`
       --simple-colors-default-theme-accent-10: #78002b;
       --simple-colors-default-theme-accent-11: #5a0020;
       --simple-colors-default-theme-accent-12: #440019;
-      --simple-colors-default-theme-fixed-1: #ffe6f1;
-      --simple-colors-default-theme-fixed-2: #ffa5cf;
-      --simple-colors-default-theme-fixed-3: #ff87c0;
-      --simple-colors-default-theme-fixed-4: #ff73b5;
-      --simple-colors-default-theme-fixed-5: #fd60aa;
-      --simple-colors-default-theme-fixed-6: #ff3996;
-      --simple-colors-default-theme-fixed-7: #da004e;
-      --simple-colors-default-theme-fixed-8: #b80042;
-      --simple-colors-default-theme-fixed-9: #980036;
-      --simple-colors-default-theme-fixed-10: #78002b;
-      --simple-colors-default-theme-fixed-11: #5a0020;
-      --simple-colors-default-theme-fixed-12: #440019;
+      --simple-colors-fixed-theme-accent-1: #ffe6f1;
+      --simple-colors-fixed-theme-accent-2: #ffa5cf;
+      --simple-colors-fixed-theme-accent-3: #ff87c0;
+      --simple-colors-fixed-theme-accent-4: #ff73b5;
+      --simple-colors-fixed-theme-accent-5: #fd60aa;
+      --simple-colors-fixed-theme-accent-6: #ff3996;
+      --simple-colors-fixed-theme-accent-7: #da004e;
+      --simple-colors-fixed-theme-accent-8: #b80042;
+      --simple-colors-fixed-theme-accent-9: #980036;
+      --simple-colors-fixed-theme-accent-10: #78002b;
+      --simple-colors-fixed-theme-accent-11: #5a0020;
+      --simple-colors-fixed-theme-accent-12: #440019;
     }
 
     :host([dark][accent-color="pink"]),
@@ -954,18 +954,18 @@ const css = html`
       --simple-colors-default-theme-accent-10: #490052;
       --simple-colors-default-theme-accent-11: #33003a;
       --simple-colors-default-theme-accent-12: #200025;
-      --simple-colors-default-theme-fixed-1: #fce6ff;
-      --simple-colors-default-theme-fixed-2: #f4affd;
-      --simple-colors-default-theme-fixed-3: #f394ff;
-      --simple-colors-default-theme-fixed-4: #f07cff;
-      --simple-colors-default-theme-fixed-5: #ed61ff;
-      --simple-colors-default-theme-fixed-6: #e200ff;
-      --simple-colors-default-theme-fixed-7: #a500ba;
-      --simple-colors-default-theme-fixed-8: #8a009b;
-      --simple-colors-default-theme-fixed-9: #6c0079;
-      --simple-colors-default-theme-fixed-10: #490052;
-      --simple-colors-default-theme-fixed-11: #33003a;
-      --simple-colors-default-theme-fixed-12: #200025;
+      --simple-colors-fixed-theme-accent-1: #fce6ff;
+      --simple-colors-fixed-theme-accent-2: #f4affd;
+      --simple-colors-fixed-theme-accent-3: #f394ff;
+      --simple-colors-fixed-theme-accent-4: #f07cff;
+      --simple-colors-fixed-theme-accent-5: #ed61ff;
+      --simple-colors-fixed-theme-accent-6: #e200ff;
+      --simple-colors-fixed-theme-accent-7: #a500ba;
+      --simple-colors-fixed-theme-accent-8: #8a009b;
+      --simple-colors-fixed-theme-accent-9: #6c0079;
+      --simple-colors-fixed-theme-accent-10: #490052;
+      --simple-colors-fixed-theme-accent-11: #33003a;
+      --simple-colors-fixed-theme-accent-12: #200025;
     }
 
     :host([dark][accent-color="purple"]),
@@ -1000,18 +1000,18 @@ const css = html`
       --simple-colors-default-theme-accent-10: #3a0063;
       --simple-colors-default-theme-accent-11: #2a0049;
       --simple-colors-default-theme-accent-12: #1d0033;
-      --simple-colors-default-theme-fixed-1: #f3e4ff;
-      --simple-colors-default-theme-fixed-2: #ddacff;
-      --simple-colors-default-theme-fixed-3: #c97eff;
-      --simple-colors-default-theme-fixed-4: #bb63f9;
-      --simple-colors-default-theme-fixed-5: #b44aff;
-      --simple-colors-default-theme-fixed-6: #a931ff;
-      --simple-colors-default-theme-fixed-7: #7e00d8;
-      --simple-colors-default-theme-fixed-8: #5d009f;
-      --simple-colors-default-theme-fixed-9: #4c0081;
-      --simple-colors-default-theme-fixed-10: #3a0063;
-      --simple-colors-default-theme-fixed-11: #2a0049;
-      --simple-colors-default-theme-fixed-12: #1d0033;
+      --simple-colors-fixed-theme-accent-1: #f3e4ff;
+      --simple-colors-fixed-theme-accent-2: #ddacff;
+      --simple-colors-fixed-theme-accent-3: #c97eff;
+      --simple-colors-fixed-theme-accent-4: #bb63f9;
+      --simple-colors-fixed-theme-accent-5: #b44aff;
+      --simple-colors-fixed-theme-accent-6: #a931ff;
+      --simple-colors-fixed-theme-accent-7: #7e00d8;
+      --simple-colors-fixed-theme-accent-8: #5d009f;
+      --simple-colors-fixed-theme-accent-9: #4c0081;
+      --simple-colors-fixed-theme-accent-10: #3a0063;
+      --simple-colors-fixed-theme-accent-11: #2a0049;
+      --simple-colors-fixed-theme-accent-12: #1d0033;
     }
 
     :host([dark][accent-color="deep-purple"]),
@@ -1046,18 +1046,18 @@ const css = html`
       --simple-colors-default-theme-accent-10: #160063;
       --simple-colors-default-theme-accent-11: #100049;
       --simple-colors-default-theme-accent-12: #0a0030;
-      --simple-colors-default-theme-fixed-1: #e5ddff;
-      --simple-colors-default-theme-fixed-2: #c3b2ff;
-      --simple-colors-default-theme-fixed-3: #af97ff;
-      --simple-colors-default-theme-fixed-4: #9e82ff;
-      --simple-colors-default-theme-fixed-5: #9373ff;
-      --simple-colors-default-theme-fixed-6: #835fff;
-      --simple-colors-default-theme-fixed-7: #3a00ff;
-      --simple-colors-default-theme-fixed-8: #2801b0;
-      --simple-colors-default-theme-fixed-9: #20008c;
-      --simple-colors-default-theme-fixed-10: #160063;
-      --simple-colors-default-theme-fixed-11: #100049;
-      --simple-colors-default-theme-fixed-12: #0a0030;
+      --simple-colors-fixed-theme-accent-1: #e5ddff;
+      --simple-colors-fixed-theme-accent-2: #c3b2ff;
+      --simple-colors-fixed-theme-accent-3: #af97ff;
+      --simple-colors-fixed-theme-accent-4: #9e82ff;
+      --simple-colors-fixed-theme-accent-5: #9373ff;
+      --simple-colors-fixed-theme-accent-6: #835fff;
+      --simple-colors-fixed-theme-accent-7: #3a00ff;
+      --simple-colors-fixed-theme-accent-8: #2801b0;
+      --simple-colors-fixed-theme-accent-9: #20008c;
+      --simple-colors-fixed-theme-accent-10: #160063;
+      --simple-colors-fixed-theme-accent-11: #100049;
+      --simple-colors-fixed-theme-accent-12: #0a0030;
     }
 
     :host([dark][accent-color="indigo"]),
@@ -1092,18 +1092,18 @@ const css = html`
       --simple-colors-default-theme-accent-10: #002569;
       --simple-colors-default-theme-accent-11: #001947;
       --simple-colors-default-theme-accent-12: #001333;
-      --simple-colors-default-theme-fixed-1: #e2ecff;
-      --simple-colors-default-theme-fixed-2: #acc9ff;
-      --simple-colors-default-theme-fixed-3: #95baff;
-      --simple-colors-default-theme-fixed-4: #74a5ff;
-      --simple-colors-default-theme-fixed-5: #5892fd;
-      --simple-colors-default-theme-fixed-6: #4083ff;
-      --simple-colors-default-theme-fixed-7: #0059ff;
-      --simple-colors-default-theme-fixed-8: #0041bb;
-      --simple-colors-default-theme-fixed-9: #003494;
-      --simple-colors-default-theme-fixed-10: #002569;
-      --simple-colors-default-theme-fixed-11: #001947;
-      --simple-colors-default-theme-fixed-12: #001333;
+      --simple-colors-fixed-theme-accent-1: #e2ecff;
+      --simple-colors-fixed-theme-accent-2: #acc9ff;
+      --simple-colors-fixed-theme-accent-3: #95baff;
+      --simple-colors-fixed-theme-accent-4: #74a5ff;
+      --simple-colors-fixed-theme-accent-5: #5892fd;
+      --simple-colors-fixed-theme-accent-6: #4083ff;
+      --simple-colors-fixed-theme-accent-7: #0059ff;
+      --simple-colors-fixed-theme-accent-8: #0041bb;
+      --simple-colors-fixed-theme-accent-9: #003494;
+      --simple-colors-fixed-theme-accent-10: #002569;
+      --simple-colors-fixed-theme-accent-11: #001947;
+      --simple-colors-fixed-theme-accent-12: #001333;
     }
 
     :host([dark][accent-color="blue"]),
@@ -1138,18 +1138,18 @@ const css = html`
       --simple-colors-default-theme-accent-10: #003f7d;
       --simple-colors-default-theme-accent-11: #002850;
       --simple-colors-default-theme-accent-12: #001b36;
-      --simple-colors-default-theme-fixed-1: #ddefff;
-      --simple-colors-default-theme-fixed-2: #a1d1ff;
-      --simple-colors-default-theme-fixed-3: #92c9ff;
-      --simple-colors-default-theme-fixed-4: #65b3ff;
-      --simple-colors-default-theme-fixed-5: #58adff;
-      --simple-colors-default-theme-fixed-6: #41a1ff;
-      --simple-colors-default-theme-fixed-7: #007ffc;
-      --simple-colors-default-theme-fixed-8: #0066ca;
-      --simple-colors-default-theme-fixed-9: #0055a8;
-      --simple-colors-default-theme-fixed-10: #003f7d;
-      --simple-colors-default-theme-fixed-11: #002850;
-      --simple-colors-default-theme-fixed-12: #001b36;
+      --simple-colors-fixed-theme-accent-1: #ddefff;
+      --simple-colors-fixed-theme-accent-2: #a1d1ff;
+      --simple-colors-fixed-theme-accent-3: #92c9ff;
+      --simple-colors-fixed-theme-accent-4: #65b3ff;
+      --simple-colors-fixed-theme-accent-5: #58adff;
+      --simple-colors-fixed-theme-accent-6: #41a1ff;
+      --simple-colors-fixed-theme-accent-7: #007ffc;
+      --simple-colors-fixed-theme-accent-8: #0066ca;
+      --simple-colors-fixed-theme-accent-9: #0055a8;
+      --simple-colors-fixed-theme-accent-10: #003f7d;
+      --simple-colors-fixed-theme-accent-11: #002850;
+      --simple-colors-fixed-theme-accent-12: #001b36;
     }
 
     :host([dark][accent-color="light-blue"]),
@@ -1184,18 +1184,18 @@ const css = html`
       --simple-colors-default-theme-accent-10: #003f50;
       --simple-colors-default-theme-accent-11: #002c38;
       --simple-colors-default-theme-accent-12: #001a20;
-      --simple-colors-default-theme-fixed-1: #ddf8ff;
-      --simple-colors-default-theme-fixed-2: #9beaff;
-      --simple-colors-default-theme-fixed-3: #77e2ff;
-      --simple-colors-default-theme-fixed-4: #33d4ff;
-      --simple-colors-default-theme-fixed-5: #1ccfff;
-      --simple-colors-default-theme-fixed-6: #00c9ff;
-      --simple-colors-default-theme-fixed-7: #009dc7;
-      --simple-colors-default-theme-fixed-8: #007999;
-      --simple-colors-default-theme-fixed-9: #005970;
-      --simple-colors-default-theme-fixed-10: #003f50;
-      --simple-colors-default-theme-fixed-11: #002c38;
-      --simple-colors-default-theme-fixed-12: #001a20;
+      --simple-colors-fixed-theme-accent-1: #ddf8ff;
+      --simple-colors-fixed-theme-accent-2: #9beaff;
+      --simple-colors-fixed-theme-accent-3: #77e2ff;
+      --simple-colors-fixed-theme-accent-4: #33d4ff;
+      --simple-colors-fixed-theme-accent-5: #1ccfff;
+      --simple-colors-fixed-theme-accent-6: #00c9ff;
+      --simple-colors-fixed-theme-accent-7: #009dc7;
+      --simple-colors-fixed-theme-accent-8: #007999;
+      --simple-colors-fixed-theme-accent-9: #005970;
+      --simple-colors-fixed-theme-accent-10: #003f50;
+      --simple-colors-fixed-theme-accent-11: #002c38;
+      --simple-colors-fixed-theme-accent-12: #001a20;
     }
 
     :host([dark][accent-color="cyan"]),
@@ -1230,18 +1230,18 @@ const css = html`
       --simple-colors-default-theme-accent-10: #003829;
       --simple-colors-default-theme-accent-11: #002a20;
       --simple-colors-default-theme-accent-12: #001b14;
-      --simple-colors-default-theme-fixed-1: #d9fff0;
-      --simple-colors-default-theme-fixed-2: #98ffd7;
-      --simple-colors-default-theme-fixed-3: #79ffcb;
-      --simple-colors-default-theme-fixed-4: #56ffbd;
-      --simple-colors-default-theme-fixed-5: #29ffac;
-      --simple-colors-default-theme-fixed-6: #00ff9c;
-      --simple-colors-default-theme-fixed-7: #009d75;
-      --simple-colors-default-theme-fixed-8: #007658;
-      --simple-colors-default-theme-fixed-9: #004e3a;
-      --simple-colors-default-theme-fixed-10: #003829;
-      --simple-colors-default-theme-fixed-11: #002a20;
-      --simple-colors-default-theme-fixed-12: #001b14;
+      --simple-colors-fixed-theme-accent-1: #d9fff0;
+      --simple-colors-fixed-theme-accent-2: #98ffd7;
+      --simple-colors-fixed-theme-accent-3: #79ffcb;
+      --simple-colors-fixed-theme-accent-4: #56ffbd;
+      --simple-colors-fixed-theme-accent-5: #29ffac;
+      --simple-colors-fixed-theme-accent-6: #00ff9c;
+      --simple-colors-fixed-theme-accent-7: #009d75;
+      --simple-colors-fixed-theme-accent-8: #007658;
+      --simple-colors-fixed-theme-accent-9: #004e3a;
+      --simple-colors-fixed-theme-accent-10: #003829;
+      --simple-colors-fixed-theme-accent-11: #002a20;
+      --simple-colors-fixed-theme-accent-12: #001b14;
     }
 
     :host([dark][accent-color="teal"]),
@@ -1276,18 +1276,18 @@ const css = html`
       --simple-colors-default-theme-accent-10: #003d18;
       --simple-colors-default-theme-accent-11: #002a11;
       --simple-colors-default-theme-accent-12: #001d0c;
-      --simple-colors-default-theme-fixed-1: #e1ffeb;
-      --simple-colors-default-theme-fixed-2: #acffc9;
-      --simple-colors-default-theme-fixed-3: #79ffa7;
-      --simple-colors-default-theme-fixed-4: #49ff88;
-      --simple-colors-default-theme-fixed-5: #24ff70;
-      --simple-colors-default-theme-fixed-6: #00f961;
-      --simple-colors-default-theme-fixed-7: #008c37;
-      --simple-colors-default-theme-fixed-8: #00762e;
-      --simple-colors-default-theme-fixed-9: #005a23;
-      --simple-colors-default-theme-fixed-10: #003d18;
-      --simple-colors-default-theme-fixed-11: #002a11;
-      --simple-colors-default-theme-fixed-12: #001d0c;
+      --simple-colors-fixed-theme-accent-1: #e1ffeb;
+      --simple-colors-fixed-theme-accent-2: #acffc9;
+      --simple-colors-fixed-theme-accent-3: #79ffa7;
+      --simple-colors-fixed-theme-accent-4: #49ff88;
+      --simple-colors-fixed-theme-accent-5: #24ff70;
+      --simple-colors-fixed-theme-accent-6: #00f961;
+      --simple-colors-fixed-theme-accent-7: #008c37;
+      --simple-colors-fixed-theme-accent-8: #00762e;
+      --simple-colors-fixed-theme-accent-9: #005a23;
+      --simple-colors-fixed-theme-accent-10: #003d18;
+      --simple-colors-fixed-theme-accent-11: #002a11;
+      --simple-colors-fixed-theme-accent-12: #001d0c;
     }
 
     :host([dark][accent-color="green"]),
@@ -1322,18 +1322,18 @@ const css = html`
       --simple-colors-default-theme-accent-10: #1b3f00;
       --simple-colors-default-theme-accent-11: #143000;
       --simple-colors-default-theme-accent-12: #0d2000;
-      --simple-colors-default-theme-fixed-1: #ebffdb;
-      --simple-colors-default-theme-fixed-2: #c7ff9b;
-      --simple-colors-default-theme-fixed-3: #b1ff75;
-      --simple-colors-default-theme-fixed-4: #a1fd5a;
-      --simple-colors-default-theme-fixed-5: #8efd38;
-      --simple-colors-default-theme-fixed-6: #6fff00;
-      --simple-colors-default-theme-fixed-7: #429d00;
-      --simple-colors-default-theme-fixed-8: #357f00;
-      --simple-colors-default-theme-fixed-9: #296100;
-      --simple-colors-default-theme-fixed-10: #1b3f00;
-      --simple-colors-default-theme-fixed-11: #143000;
-      --simple-colors-default-theme-fixed-12: #0d2000;
+      --simple-colors-fixed-theme-accent-1: #ebffdb;
+      --simple-colors-fixed-theme-accent-2: #c7ff9b;
+      --simple-colors-fixed-theme-accent-3: #b1ff75;
+      --simple-colors-fixed-theme-accent-4: #a1fd5a;
+      --simple-colors-fixed-theme-accent-5: #8efd38;
+      --simple-colors-fixed-theme-accent-6: #6fff00;
+      --simple-colors-fixed-theme-accent-7: #429d00;
+      --simple-colors-fixed-theme-accent-8: #357f00;
+      --simple-colors-fixed-theme-accent-9: #296100;
+      --simple-colors-fixed-theme-accent-10: #1b3f00;
+      --simple-colors-fixed-theme-accent-11: #143000;
+      --simple-colors-fixed-theme-accent-12: #0d2000;
     }
 
     :host([dark][accent-color="light-green"]),
@@ -1368,18 +1368,18 @@ const css = html`
       --simple-colors-default-theme-accent-10: #293f00;
       --simple-colors-default-theme-accent-11: #223400;
       --simple-colors-default-theme-accent-12: #182400;
-      --simple-colors-default-theme-fixed-1: #f1ffd2;
-      --simple-colors-default-theme-fixed-2: #dfff9b;
-      --simple-colors-default-theme-fixed-3: #d4ff77;
-      --simple-colors-default-theme-fixed-4: #caff58;
-      --simple-colors-default-theme-fixed-5: #bdff2d;
-      --simple-colors-default-theme-fixed-6: #aeff00;
-      --simple-colors-default-theme-fixed-7: #649900;
-      --simple-colors-default-theme-fixed-8: #4d7600;
-      --simple-colors-default-theme-fixed-9: #3b5a00;
-      --simple-colors-default-theme-fixed-10: #293f00;
-      --simple-colors-default-theme-fixed-11: #223400;
-      --simple-colors-default-theme-fixed-12: #182400;
+      --simple-colors-fixed-theme-accent-1: #f1ffd2;
+      --simple-colors-fixed-theme-accent-2: #dfff9b;
+      --simple-colors-fixed-theme-accent-3: #d4ff77;
+      --simple-colors-fixed-theme-accent-4: #caff58;
+      --simple-colors-fixed-theme-accent-5: #bdff2d;
+      --simple-colors-fixed-theme-accent-6: #aeff00;
+      --simple-colors-fixed-theme-accent-7: #649900;
+      --simple-colors-fixed-theme-accent-8: #4d7600;
+      --simple-colors-fixed-theme-accent-9: #3b5a00;
+      --simple-colors-fixed-theme-accent-10: #293f00;
+      --simple-colors-fixed-theme-accent-11: #223400;
+      --simple-colors-fixed-theme-accent-12: #182400;
     }
 
     :host([dark][accent-color="lime"]),
@@ -1414,18 +1414,18 @@ const css = html`
       --simple-colors-default-theme-accent-10: #454400;
       --simple-colors-default-theme-accent-11: #303000;
       --simple-colors-default-theme-accent-12: #242400;
-      --simple-colors-default-theme-fixed-1: #ffffd5;
-      --simple-colors-default-theme-fixed-2: #ffffac;
-      --simple-colors-default-theme-fixed-3: #ffff90;
-      --simple-colors-default-theme-fixed-4: #ffff7c;
-      --simple-colors-default-theme-fixed-5: #ffff3a;
-      --simple-colors-default-theme-fixed-6: #f6f600;
-      --simple-colors-default-theme-fixed-7: #929100;
-      --simple-colors-default-theme-fixed-8: #787700;
-      --simple-colors-default-theme-fixed-9: #585700;
-      --simple-colors-default-theme-fixed-10: #454400;
-      --simple-colors-default-theme-fixed-11: #303000;
-      --simple-colors-default-theme-fixed-12: #242400;
+      --simple-colors-fixed-theme-accent-1: #ffffd5;
+      --simple-colors-fixed-theme-accent-2: #ffffac;
+      --simple-colors-fixed-theme-accent-3: #ffff90;
+      --simple-colors-fixed-theme-accent-4: #ffff7c;
+      --simple-colors-fixed-theme-accent-5: #ffff3a;
+      --simple-colors-fixed-theme-accent-6: #f6f600;
+      --simple-colors-fixed-theme-accent-7: #929100;
+      --simple-colors-fixed-theme-accent-8: #787700;
+      --simple-colors-fixed-theme-accent-9: #585700;
+      --simple-colors-fixed-theme-accent-10: #454400;
+      --simple-colors-fixed-theme-accent-11: #303000;
+      --simple-colors-fixed-theme-accent-12: #242400;
     }
 
     :host([dark][accent-color="yellow"]),
@@ -1460,18 +1460,18 @@ const css = html`
       --simple-colors-default-theme-accent-10: #413200;
       --simple-colors-default-theme-accent-11: #302500;
       --simple-colors-default-theme-accent-12: #221a00;
-      --simple-colors-default-theme-fixed-1: #fff2d4;
-      --simple-colors-default-theme-fixed-2: #ffdf92;
-      --simple-colors-default-theme-fixed-3: #ffd677;
-      --simple-colors-default-theme-fixed-4: #ffcf5e;
-      --simple-colors-default-theme-fixed-5: #ffc235;
-      --simple-colors-default-theme-fixed-6: #ffc500;
-      --simple-colors-default-theme-fixed-7: #b28900;
-      --simple-colors-default-theme-fixed-8: #876800;
-      --simple-colors-default-theme-fixed-9: #614b00;
-      --simple-colors-default-theme-fixed-10: #413200;
-      --simple-colors-default-theme-fixed-11: #302500;
-      --simple-colors-default-theme-fixed-12: #221a00;
+      --simple-colors-fixed-theme-accent-1: #fff2d4;
+      --simple-colors-fixed-theme-accent-2: #ffdf92;
+      --simple-colors-fixed-theme-accent-3: #ffd677;
+      --simple-colors-fixed-theme-accent-4: #ffcf5e;
+      --simple-colors-fixed-theme-accent-5: #ffc235;
+      --simple-colors-fixed-theme-accent-6: #ffc500;
+      --simple-colors-fixed-theme-accent-7: #b28900;
+      --simple-colors-fixed-theme-accent-8: #876800;
+      --simple-colors-fixed-theme-accent-9: #614b00;
+      --simple-colors-fixed-theme-accent-10: #413200;
+      --simple-colors-fixed-theme-accent-11: #302500;
+      --simple-colors-fixed-theme-accent-12: #221a00;
     }
 
     :host([dark][accent-color="amber"]),
@@ -1506,18 +1506,18 @@ const css = html`
       --simple-colors-default-theme-accent-10: #612d00;
       --simple-colors-default-theme-accent-11: #3d1c00;
       --simple-colors-default-theme-accent-12: #2c1400;
-      --simple-colors-default-theme-fixed-1: #ffebd7;
-      --simple-colors-default-theme-fixed-2: #ffca92;
-      --simple-colors-default-theme-fixed-3: #ffbd75;
-      --simple-colors-default-theme-fixed-4: #ffb05c;
-      --simple-colors-default-theme-fixed-5: #ff9e36;
-      --simple-colors-default-theme-fixed-6: #ff9625;
-      --simple-colors-default-theme-fixed-7: #e56a00;
-      --simple-colors-default-theme-fixed-8: #ae5100;
-      --simple-colors-default-theme-fixed-9: #833d00;
-      --simple-colors-default-theme-fixed-10: #612d00;
-      --simple-colors-default-theme-fixed-11: #3d1c00;
-      --simple-colors-default-theme-fixed-12: #2c1400;
+      --simple-colors-fixed-theme-accent-1: #ffebd7;
+      --simple-colors-fixed-theme-accent-2: #ffca92;
+      --simple-colors-fixed-theme-accent-3: #ffbd75;
+      --simple-colors-fixed-theme-accent-4: #ffb05c;
+      --simple-colors-fixed-theme-accent-5: #ff9e36;
+      --simple-colors-fixed-theme-accent-6: #ff9625;
+      --simple-colors-fixed-theme-accent-7: #e56a00;
+      --simple-colors-fixed-theme-accent-8: #ae5100;
+      --simple-colors-fixed-theme-accent-9: #833d00;
+      --simple-colors-fixed-theme-accent-10: #612d00;
+      --simple-colors-fixed-theme-accent-11: #3d1c00;
+      --simple-colors-fixed-theme-accent-12: #2c1400;
     }
 
     :host([dark][accent-color="orange"]),
@@ -1552,18 +1552,18 @@ const css = html`
       --simple-colors-default-theme-accent-10: #561100;
       --simple-colors-default-theme-accent-11: #3a0c00;
       --simple-colors-default-theme-accent-12: #240700;
-      --simple-colors-default-theme-fixed-1: #ffe7e0;
-      --simple-colors-default-theme-fixed-2: #ffb299;
-      --simple-colors-default-theme-fixed-3: #ffa588;
-      --simple-colors-default-theme-fixed-4: #ff8a64;
-      --simple-colors-default-theme-fixed-5: #ff7649;
-      --simple-colors-default-theme-fixed-6: #ff6c3c;
-      --simple-colors-default-theme-fixed-7: #f53100;
-      --simple-colors-default-theme-fixed-8: #b92500;
-      --simple-colors-default-theme-fixed-9: #8a1c00;
-      --simple-colors-default-theme-fixed-10: #561100;
-      --simple-colors-default-theme-fixed-11: #3a0c00;
-      --simple-colors-default-theme-fixed-12: #240700;
+      --simple-colors-fixed-theme-accent-1: #ffe7e0;
+      --simple-colors-fixed-theme-accent-2: #ffb299;
+      --simple-colors-fixed-theme-accent-3: #ffa588;
+      --simple-colors-fixed-theme-accent-4: #ff8a64;
+      --simple-colors-fixed-theme-accent-5: #ff7649;
+      --simple-colors-fixed-theme-accent-6: #ff6c3c;
+      --simple-colors-fixed-theme-accent-7: #f53100;
+      --simple-colors-fixed-theme-accent-8: #b92500;
+      --simple-colors-fixed-theme-accent-9: #8a1c00;
+      --simple-colors-fixed-theme-accent-10: #561100;
+      --simple-colors-fixed-theme-accent-11: #3a0c00;
+      --simple-colors-fixed-theme-accent-12: #240700;
     }
 
     :host([dark][accent-color="deep-orange"]),
@@ -1598,18 +1598,18 @@ const css = html`
       --simple-colors-default-theme-accent-10: #3b1e15;
       --simple-colors-default-theme-accent-11: #2c140e;
       --simple-colors-default-theme-accent-12: #200e09;
-      --simple-colors-default-theme-fixed-1: #f0e2de;
-      --simple-colors-default-theme-fixed-2: #e5b8aa;
-      --simple-colors-default-theme-fixed-3: #c59485;
-      --simple-colors-default-theme-fixed-4: #b68373;
-      --simple-colors-default-theme-fixed-5: #ac7868;
-      --simple-colors-default-theme-fixed-6: #a47060;
-      --simple-colors-default-theme-fixed-7: #85574a;
-      --simple-colors-default-theme-fixed-8: #724539;
-      --simple-colors-default-theme-fixed-9: #5b3328;
-      --simple-colors-default-theme-fixed-10: #3b1e15;
-      --simple-colors-default-theme-fixed-11: #2c140e;
-      --simple-colors-default-theme-fixed-12: #200e09;
+      --simple-colors-fixed-theme-accent-1: #f0e2de;
+      --simple-colors-fixed-theme-accent-2: #e5b8aa;
+      --simple-colors-fixed-theme-accent-3: #c59485;
+      --simple-colors-fixed-theme-accent-4: #b68373;
+      --simple-colors-fixed-theme-accent-5: #ac7868;
+      --simple-colors-fixed-theme-accent-6: #a47060;
+      --simple-colors-fixed-theme-accent-7: #85574a;
+      --simple-colors-fixed-theme-accent-8: #724539;
+      --simple-colors-fixed-theme-accent-9: #5b3328;
+      --simple-colors-fixed-theme-accent-10: #3b1e15;
+      --simple-colors-fixed-theme-accent-11: #2c140e;
+      --simple-colors-fixed-theme-accent-12: #200e09;
     }
 
     :host([dark][accent-color="brown"]),
@@ -1644,18 +1644,18 @@ const css = html`
       --simple-colors-default-theme-accent-10: #1e282c;
       --simple-colors-default-theme-accent-11: #182023;
       --simple-colors-default-theme-accent-12: #0f1518;
-      --simple-colors-default-theme-fixed-1: #e7eff1;
-      --simple-colors-default-theme-fixed-2: #b1c5ce;
-      --simple-colors-default-theme-fixed-3: #9badb6;
-      --simple-colors-default-theme-fixed-4: #8d9fa7;
-      --simple-colors-default-theme-fixed-5: #7a8f98;
-      --simple-colors-default-theme-fixed-6: #718892;
-      --simple-colors-default-theme-fixed-7: #56707c;
-      --simple-colors-default-theme-fixed-8: #40535b;
-      --simple-colors-default-theme-fixed-9: #2f3e45;
-      --simple-colors-default-theme-fixed-10: #1e282c;
-      --simple-colors-default-theme-fixed-11: #182023;
-      --simple-colors-default-theme-fixed-12: #0f1518;
+      --simple-colors-fixed-theme-accent-1: #e7eff1;
+      --simple-colors-fixed-theme-accent-2: #b1c5ce;
+      --simple-colors-fixed-theme-accent-3: #9badb6;
+      --simple-colors-fixed-theme-accent-4: #8d9fa7;
+      --simple-colors-fixed-theme-accent-5: #7a8f98;
+      --simple-colors-fixed-theme-accent-6: #718892;
+      --simple-colors-fixed-theme-accent-7: #56707c;
+      --simple-colors-fixed-theme-accent-8: #40535b;
+      --simple-colors-fixed-theme-accent-9: #2f3e45;
+      --simple-colors-fixed-theme-accent-10: #1e282c;
+      --simple-colors-fixed-theme-accent-11: #182023;
+      --simple-colors-fixed-theme-accent-12: #0f1518;
     }
 
     :host([dark][accent-color="blue-grey"]),
