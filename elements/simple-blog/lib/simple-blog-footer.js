@@ -239,11 +239,6 @@ class SimpleBlogFooter extends PolymerElement {
           .split("-");
         ary.pop();
         this.accentColor = ary.join("-");
-        // set this directly instead of messing w/ accentColor
-        document.body.style.setProperty(
-          "--haxcms-color",
-          varGet(this.manifest, "metadata.theme.variables.hexCode", "#FFFFFF")
-        );
       }
       this.__disposer.push(reaction);
     });
