@@ -109,8 +109,8 @@ function stripMSWord(input) {
  * Test if a variable along a given object path exists
  */
 function varExists(obj, path) {
-  let g = objectValFromStringPos(obj, path);
-  if (g) {
+  let g = objectValFromStringPos(obj, path, "__failedToFind__");
+  if (g != "__failedToFind__") {
     return true;
   }
   return false;
@@ -119,15 +119,11 @@ function varExists(obj, path) {
  * Return an object path or fallback value if not set
  */
 function varGet(obj, path, fallback = "") {
-  let g = objectValFromStringPos(obj, path);
-  if (g) {
-    return g;
-  }
-  return fallback;
+  return objectValFromStringPos(obj, path, fallback);
 }
 
 // helper to use strings for index in Objects
-function objectValFromStringPos(o, s) {
+function objectValFromStringPos(o, s, r = null) {
   s = s.replace(/\[(\w+)\]/g, ".$1"); // convert indexes to properties
   s = s.replace(/^\./, ""); // strip a leading dot
   var a = s.split(".");
@@ -136,7 +132,7 @@ function objectValFromStringPos(o, s) {
     if (k in o) {
       o = o[k];
     } else {
-      return;
+      return r;
     }
   }
   return o;
