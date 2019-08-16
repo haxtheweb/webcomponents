@@ -85,7 +85,10 @@ class OutlineDesigner extends PolymerElement {
           display: none;
         }
         .breadcrumb-arrow {
-          color: var(--breadcrumb-color1, rgb(67, 110, 144));
+          color: var(
+            --breadcrumb-color1,
+            var(--simple-colors-default-theme-light-blue-9, rgb(67, 110, 144))
+          );
           margin: -2px 6px 0 6px;
         }
         .breadcrumb {
@@ -94,7 +97,10 @@ class OutlineDesigner extends PolymerElement {
           background-color: transparent;
           line-height: 34px;
           font-size: 18px;
-          color: var(--breadcrumb-color1, rgb(67, 110, 144));
+          color: var(
+            --breadcrumb-color1,
+            var(--simple-colors-default-theme-light-blue-9, rgb(67, 110, 144))
+          );
           opacity: 0.8;
         }
 
@@ -109,7 +115,7 @@ class OutlineDesigner extends PolymerElement {
         }
 
         #sort .card-wrapper {
-          background: #dddddd;
+          background: var(--simple-colors-default-theme-grey-3, #ddd);
           display: inline-block;
           float: left;
           margin: 16px;
@@ -126,7 +132,7 @@ class OutlineDesigner extends PolymerElement {
 
         #addbutton {
           opacity: 0.6;
-          background-color: #dddddd;
+          background-color: var(--simple-colors-default-theme-grey-3, #ddd);
         }
         .add-button {
           width: 200px;
@@ -385,8 +391,14 @@ class OutlineDesigner extends PolymerElement {
         .node-low-detail .tf-nc {
           height: 32px;
           width: 32px;
-          background-color: dodgerblue;
-          border-color: dodgerblue;
+          background-color: var(
+            --simple-colors-default-theme-light-blue-7,
+            dodgerblue
+          );
+          border-color: var(
+            --simple-colors-default-theme-light-blue-7,
+            dodgerblue
+          );
           padding: 0;
           border-radius: 50%;
           overflow: hidden;
@@ -398,14 +410,21 @@ class OutlineDesigner extends PolymerElement {
 
         .node-low-detail .tf-nc:before,
         .node-low-detail .tf-nc:after {
-          border-left-color: dodgerblue;
+          border-left-color: var(
+            --simple-colors-default-theme-light-blue-7,
+            dodgerblue
+          );
           border-left-width: 2px;
         }
         .node-low-detail li li:before {
-          border-top-color: dodgerblue;
+          border-top-color: var(
+            --simple-colors-default-theme-light-blue-7,
+            dodgerblue
+          );
           border-top-width: 2px;
         }
       </style>
+      <style include="simple-colors-shared-styles"></style>
       <iron-ajax
         auto="[[outlineSchemaUrl]]"
         url="[[outlineSchemaUrl]]"
