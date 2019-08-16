@@ -131,9 +131,10 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
    */
   _valueChanged(e) {
     let root = this,
-      val = this.__validatedSchema.map(item => {
-        return item.value;
-      });
+      val = {};
+    this.__validatedSchema.forEach(item => {
+      val[item.property] = item.value;
+    });
     this.notifyPath("value.*");
     this.set("value", val);
     this.dispatchEvent(
@@ -173,6 +174,7 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
     let schema = [];
     for (let prop in this.schema.items.properties) {
       let tab = {
+        property: prop,
         title: this.schema.items.properties[prop].title,
         icon: this.schema.items.properties[prop].icon,
         properties: this.schema.items.properties[prop].items
