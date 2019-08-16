@@ -18,7 +18,7 @@ class LrnsysDialog extends PolymerElement {
   static get template() {
     return html`
       <custom-style>
-        <style>
+        <style include="simple-colors-shared-styles">
           :host {
             display: inline-block;
             --lrnsys-dialog-color: var(--simple-colors-foreground1, #000);

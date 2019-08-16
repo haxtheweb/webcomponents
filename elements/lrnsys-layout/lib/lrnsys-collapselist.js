@@ -14,7 +14,7 @@ import "./lrnsys-collapselist-item.js";
 class LrnsysCollapselist extends PolymerElement {
   static get template() {
     return html`
-      <style>
+      <style include="simple-colors-shared-styles">
         :host {
           display: block;
           background-color: var(--simple-colors-background1);
