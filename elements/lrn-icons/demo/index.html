@@ -8,14 +8,21 @@
     <script type="module">
       import '../node_modules/@polymer/iron-demo-helpers/demo-snippet.js';
       import './lrn-icons-demo.js';
+      import '@lrnwebcomponents/iconset-demo/iconset-demo.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic lrn-icon demo</h3>
+      <h1>hax-iconset</h1>
+      <h2>hax-iconset List</h2>
+      <iconset-demo include-sets="lrn"></iconset-demo>
+      
+      <h2>hax-iconset Demo</h2>
       <demo-snippet>
-        <lrn-icons-demo></lrn-icons-demo>
+        <template>
+          <iron-icon icon="lrn:network"></iron-icon>
+        </template>
       </demo-snippet>
     </div>
   </body>
