@@ -19,7 +19,7 @@ import "@polymer/polymer/lib/elements/dom-repeat.js";
  * @polymerLegacy
  * @demo demo/index.html
  */
-class CsvRender extends PolymerElement {
+class CsvRender extends SimpleColors {
   constructor() {
     super();
     import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
@@ -36,31 +36,32 @@ class CsvRender extends PolymerElement {
   }
   static get template() {
     return html`
-      <style>
+      <style include="simple-colors-shared-styles">
         :host {
           display: block;
         }
         .table {
           width: 100%;
-          border: 1px solid rgba(0, 0, 0, 0.12);
+          border: 1px solid var(--simple-colors-default-theme-accent-6);
           border-collapse: collapse;
           white-space: nowrap;
           font-size: 16px;
-          background-color: rgb(255, 255, 255);
+          background-color: var(--simple-colors-default-theme-grey-1);
         }
         .table thead {
           padding-bottom: 0.16px;
           position: sticky;
         }
         .table caption {
-          background-color: #eee;
+          background-color: var(--simple-colors-default-theme-accent-1);
           font-weight: bold;
           padding: 8px;
-          border: 1px solid rgba(0, 0, 0, 0.12);
+          border: 1px solid var(--simple-colors-default-theme-accent-6);
           border-bottom: none;
         }
-        .table thead th {
-          text-align: center;
+        :host(:not([accent-color])) .table caption,
+        :host([accent-color="grey"]) .table caption {
+          background-color: var(--simple-colors-default-theme-accent-2);
         }
         .table tbody tr {
           position: relative;
@@ -73,24 +74,21 @@ class CsvRender extends PolymerElement {
           transition-property: background-color;
         }
         .table tbody tr:hover {
-          background-color: #eeeeee;
+          background-color: var(--simple-colors-default-theme-accent-1);
+        }
+        :host(:not([accent-color])) .table tbody tr:hover,
+        :host([accent-color="grey"]) .table tbody tr:hover {
+          background-color: var(--simple-colors-default-theme-accent-2);
         }
         .table td,
+        .table thead th,
         .table th {
           padding: 0 1.125em;
-          text-align: right;
-        }
-        .table td:first-of-type,
-        .table th:first-of-type {
-          padding-left: 24px;
-        }
-        .table td:last-of-type,
-        .table th:last-of-type {
-          padding-right: 24px;
+          text-align: left;
         }
         .table td {
-          border-top: 1px solid rgba(0, 0, 0, 0.12);
-          border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+          border-top: 1px solid var(--simple-colors-default-theme-accent-6);
+          border-bottom: 1px solid var(--simple-colors-default-theme-accent-6);
         }
         .table th {
           position: relative;
@@ -109,6 +107,7 @@ class CsvRender extends PolymerElement {
           position: absolute;
         }
         #download paper-button {
+          color: var(--simple-colors-default-theme-accent-6);
           border-radius: 36px;
           width: 36px;
           height: 36px;
@@ -125,7 +124,8 @@ class CsvRender extends PolymerElement {
         #download paper-button:hover,
         #download paper-button:focus,
         #download paper-button:active {
-          outline: 2px solid grey;
+          color: var(--simple-colors-default-theme-accent-8);
+          outline: 2px solid var(--simple-colors-default-theme-accent-6);
         }
       </style>
       <iron-ajax
@@ -138,17 +138,12 @@ class CsvRender extends PolymerElement {
       ></iron-ajax>
       <hexagon-loader
         id="loading"
+        accent-color="[[accentColor]]"
         loading
-        color="[[color]]"
         item-count="4"
         size="small"
       ></hexagon-loader>
-      <a
-        href="[[dataSource]]"
-        id="download"
-        tabindex="-1"
-        style$="color:[[hexColor]]"
-      >
+      <a href="[[dataSource]]" id="download" tabindex="-1">
         <paper-button
           ><iron-icon icon="file-download"></iron-icon
         ></paper-button>
@@ -228,19 +223,11 @@ class CsvRender extends PolymerElement {
         value: ""
       },
       /**
-       * Class for the color
-       */
-      hexColor: {
-        type: String,
-        computed: "_getHexColor(color)"
-      },
-      /**
        * Color class work to apply
        */
       color: {
         type: String,
-        value: "grey",
-        reflectToAttribute: true
+        observer: "_getAccentColor"
       }
     };
   }
@@ -278,13 +265,15 @@ class CsvRender extends PolymerElement {
     }
     return ret;
   }
-  _getHexColor(color) {
-    let name = color.replace("-text", "");
-    let tmp = new SimpleColors();
-    if (tmp.colors[name]) {
-      return tmp.colors[name][6];
+
+  _getAccentColor(color) {
+    color = color.replace("-text", "");
+    if (
+      (!this.accentColor || this.accentColor === "grey") &&
+      this.colors[color]
+    ) {
+      this.accentColor = color;
     }
-    return "#000000";
   }
 }
 window.customElements.define(CsvRender.tag, CsvRender);

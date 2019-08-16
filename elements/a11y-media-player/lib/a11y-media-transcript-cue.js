@@ -97,13 +97,12 @@ class A11yMediaTranscriptCue extends A11yMediaBehaviors {
   //inherit styles from a11y-media-player or a11y-media-transcript
   constructor() {
     super();
-    this.inheritStyles = true;
   }
 
   //render function
   static get template() {
     return html`
-      <style is="custom-style">
+      <style is="custom-style" include="simple-colors-shared-styles">
         :host {
           cursor: default;
           display: table-row;

@@ -58,7 +58,7 @@ class EditableTableEditor extends editBehaviors(
 ) {
   static get template() {
     return html`
-      <style is="custom-style" include="editable-table-styles simple-colors">
+      <style include="simple-colors-shared-styles editable-table-styles">
         :host {
           --a11y-collapse-border: 1px solid #ddd;
           --a11y-collapse-horizontal-padding: 0;

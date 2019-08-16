@@ -334,17 +334,17 @@ $colors:
     @include css-variables($theme,$color,$var,$dark);
   }
 }
-@mixin get-accent($theme,$name,$color) {
+@mixin get-accent($name,$color) {
   :host([accent-color=#{$name}]), 
   :host [accent-color=#{$name}] {
-    @include css-variables($theme,'accent',$color,$dark: false);
-    @include css-variables($theme,'fixed',$color,$dark: false);
+    @include css-variables('default','accent',$color,$dark: false);
+    @include css-variables('fixed','accent',$color,$dark: false);
   }
   :host([dark][accent-color=#{$name}]),
   :host([dark]) [accent-color=#{$name}],
   :host([accent-color=#{$name}]) [dark],
   :host [dark][accent-color=#{$name}] {
-    @include css-variables($theme,'accent',$color,$dark: true);
+    @include css-variables('default','accent',$color,$dark: true);
   }
 }
 
@@ -356,7 +356,8 @@ $colors:
 :host [dark] {
   @include get-colors('default',$dark: true);
 }
+
 @each $color in $colors {
   $var: color-variable($color);
-  @include get-accent('default',$color,$var);
+  @include get-accent($color,$var);
 }

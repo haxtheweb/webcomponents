@@ -262,7 +262,7 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
           }
         }
       </style>
-      <style>
+      <style include="simple-colors-shared-styles">
         html,
         body {
           background-color: #ffffff;

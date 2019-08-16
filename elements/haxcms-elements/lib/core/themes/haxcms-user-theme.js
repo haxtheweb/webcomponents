@@ -83,6 +83,7 @@ class HAXCMSUserTheme extends HAXCMSTheme(PolymerElement) {
   // render function
   static get template() {
     return html`
+      <style include="simple-colors-shared-styles"></style>
       <div id="contentcontainer">
         <div id="slot">
           <slot></slot>

@@ -65,6 +65,7 @@ class VideoPlayer extends MediaBehaviorsVideo(
           @apply --video-player-caption-theme;
         }
       </style>
+      <style include="simple-colors-shared-styles"></style>
       <div style$="[[playerStyle]]">
         <template is="dom-if" if="[[isA11yMedia]]" restamp>
           <a11y-media-player

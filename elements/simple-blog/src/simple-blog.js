@@ -23,14 +23,11 @@ class SimpleBlog extends HAXCMSTheme(PolymerElement) {
   // render function
   static get template() {
     return html`
-      <style>
+      <style include="simple-colors-shared-styles">
         html,
         body {
           background-color: #fafafa;
         }
-      </style>
-
-      <style>
         :host {
           display: block;
           font-family: "Roboto", "Noto", sans-serif;

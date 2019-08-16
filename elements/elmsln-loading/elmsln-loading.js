@@ -19,7 +19,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
  * @polymerLegacy
  * @demo demo/index.html
  */
-class ElmslnLoading extends PolymerElement {
+class ElmslnLoading extends SimpleColors {
   static get tag() {
     return "elmsln-loading";
   }
@@ -29,14 +29,8 @@ class ElmslnLoading extends PolymerElement {
        * materialize class names for color
        */
       color: {
-        type: String
-      },
-      /**
-       * Class for the color
-       */
-      hexColor: {
         type: String,
-        computed: "_getHexColor(color)"
+        observer: "_getAccentColor"
       },
       /**
        * tiny, small, medium, large, epic sizing.
@@ -50,7 +44,7 @@ class ElmslnLoading extends PolymerElement {
   }
   static get template() {
     return html`
-      <style>
+      <style include="simple-colors-shared-styles">
         @-moz-keyframes spin {
           100% {
             -moz-transform: rotate(60deg);
@@ -70,6 +64,7 @@ class ElmslnLoading extends PolymerElement {
           }
         }
         :host iron-icon {
+          color: var(--simple-colors-default-theme-accent-6);
           display: block;
           -webkit-animation: spin 1.25s ease-out infinite;
           -moz-animation: spin 1.25s ease-out infinite;
@@ -111,17 +106,18 @@ class ElmslnLoading extends PolymerElement {
           animation: spin 2s ease-out infinite;
         }
       </style>
-      <iron-icon icon="lrn:network" style$="color:[[hexColor]]"></iron-icon>
+      <iron-icon icon="lrn:network"></iron-icon>
     `;
   }
 
-  _getHexColor(color) {
-    let name = color.replace("-text", "");
-    let tmp = new SimpleColors();
-    if (tmp.colors[name]) {
-      return tmp.colors[name][6];
+  _getAccentColor(color) {
+    color = color.replace("-text", "");
+    if (
+      (!this.accentColor || this.accentColor === "grey") &&
+      this.colors[color]
+    ) {
+      this.accentColor = color;
     }
-    return "#000000";
   }
 }
 window.customElements.define(ElmslnLoading.tag, ElmslnLoading);

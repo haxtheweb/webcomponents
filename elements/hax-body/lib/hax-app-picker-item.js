@@ -1,7 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-button/paper-button.js";
+import "./hax-item-button-inner.js";
 /**
  `hax-app-picker-item`
  An item for displaying in a picker
@@ -17,8 +16,8 @@ class HaxAppPickerItem extends LitElement {
     return [
       css`
         :host {
-          display: inline-block;
-          color: var(--hax-color-text);
+          display: block;
+          max-width: 100px;
         }
         :host([elevation="1"]) {
           -webkit-transform: scale(1, 1);
@@ -28,63 +27,29 @@ class HaxAppPickerItem extends LitElement {
           -webkit-transform: scale(1.4, 1.4);
           transform: scale(1.4, 1.4);
         }
-        :host > div {
-          margin-top: 8px;
-          color: var(--hax-color-text);
-          width: 100%;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-        .icon {
-          cursor: pointer;
-          display: flex;
-          width: 50px;
-          height: 50px;
-          padding: 5px;
-          margin: 10px;
-          color: #ffffff;
-          border-radius: 50%;
-          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-            0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-          -webkit-transition: box-shadow 0.3s;
-          -moz-transition: box-shadow 0.3s;
-          -ms-transition: box-shadow 0.3s;
-          -o-transition: box-shadow 0.3s;
-          transition: box-shadow 0.3s;
-        }
-        .icon:hover,
-        .icon:focus {
-          box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.14),
-            0 2px 10px 0 rgba(0, 0, 0, 0.12), 0 6px 2px -4px rgba(0, 0, 0, 0.2);
-        }
-        .icon:active {
-          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-            0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-        }
         paper-button {
+          color: black;
+          text-transform: none;
           min-width: unset;
-        }
-        iron-icon {
-          display: inline-flex;
-          padding: 0;
-          margin: 0;
-          width: 36px;
-          height: 36px;
+          cursor: pointer;
+          width: 80px;
+          padding: 10px;
+          margin: 10px;
+          box-shadow: none;
         }
       `
     ];
   }
   render() {
     return html`
-      <paper-button
-        class="icon"
-        title="${this.label}"
-        style="background-color:${this.hexColor};"
-      >
-        <iron-icon icon="${this.icon}"></iron-icon>
+      <paper-button class="icon">
+        <hax-item-button-inner
+          color="${this.color}"
+          icon="${this.icon}"
+          label="${this.label}"
+        >
+        </hax-item-button-inner>
       </paper-button>
-      <div aria-hidden="true">${this.label}</div>
     `;
   }
   connectedCallback() {
@@ -105,13 +70,6 @@ class HaxAppPickerItem extends LitElement {
        */
       color: {
         type: String
-      },
-      /**
-       * Class for the color
-       */
-      hexColor: {
-        type: String,
-        attribute: "hex-color"
       },
       /**
        * Icon
@@ -138,17 +96,9 @@ class HaxAppPickerItem extends LitElement {
     changedProperties.forEach((oldValue, propName) => {
       // update hexcolor when color changes
       if (propName === "color") {
-        this.hexColor = this._getHexColor(this.color);
+        this._getAccentColor(this.color);
       }
     });
-  }
-  _getHexColor(color) {
-    let name = color.replace("-text", "");
-    let tmp = new SimpleColors();
-    if (tmp.colors[name]) {
-      return tmp.colors[name][6];
-    }
-    return "#000000";
   }
   /**
    * special handling for taps on the thing

@@ -29,7 +29,7 @@ class LrndesignPaperstack extends A11yBehaviors(SimpleColors) {
   }
   static get template() {
     return html`
-      <style>
+      <style include="simple-colors-shared-styles">
         :host {
           display: block;
           font-size: 14px;
@@ -110,9 +110,9 @@ class LrndesignPaperstack extends A11yBehaviors(SimpleColors) {
         }
 
         iron-icon {
-          width: 90%;
-          height: 90%;
-          flex: 1 1 auto;
+          width: 40px;
+          height: 40px;
+          margin: 4px;
           color: var(--lrndesign-paperstack-bg);
         }
         .heading {

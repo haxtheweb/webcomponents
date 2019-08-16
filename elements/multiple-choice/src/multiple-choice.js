@@ -23,10 +23,70 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
   }
   static get template() {
     return html`
-      <style>
+      <style include="simple-colors-shared-styles">
         :host {
           display: block;
           padding: 16px 16px 54px 16px;
+          background-color: var(--simple-colors-default-theme-grey-1);
+          color: var(--simple-colors-default-theme-grey-12);
+          --paper-checkbox-unchecked-color: var(
+            --simple-colors-default-theme-grey-12
+          );
+          --paper-checkbox-unchecked-ink-color: var(
+            --simple-colors-default-theme-grey-12
+          );
+          --paper-checkbox-checked-color: var(
+            --simple-colors-default-theme-accent-8
+          );
+          --paper-checkbox-checked-ink-color: var(
+            --simple-colors-default-theme-accent-8
+          );
+          --paper-checkbox-checkmark-color: var(
+            --simple-colors-default-theme-grey-1
+          );
+          --paper-checkbox-label-color: var(
+            --simple-colors-default-theme-grey-12
+          );
+          --paper-checkbox-error-color: var(
+            --simple-colors-default-theme-red-8
+          );
+        }
+        :host([accent-color="grey"]),
+        :host([accent-color="red"]),
+        :host([accent-color="green"]) {
+          --paper-checkbox-checked-color: var(
+            --simple-colors-default-theme-blue-8
+          );
+          --paper-checkbox-checked-ink-color: var(
+            --simple-colors-default-theme-blue-8
+          );
+        }
+        :host #check {
+          background-color: var(--simple-colors-default-theme-accent-8);
+          color: var(--simple-colors-default-theme-grey-1);
+        }
+        :host #check:hover {
+          background-color: var(--simple-colors-default-theme-accent-9);
+        }
+        :host([accent-color="red"]) #check,
+        :host([accent-color="green"]) #check {
+          background-color: var(--simple-colors-default-theme-blue-8);
+          color: var(--simple-colors-default-theme-grey-1);
+        }
+        :host([accent-color="red"]) #check:hover,
+        :host([accent-color="green"]) #check:hover {
+          background-color: var(--simple-colors-default-theme-blue-9);
+        }
+        :host([accent-color="grey"]) #check,
+        :host paper-button {
+          background-color: var(--simple-colors-default-theme-grey-1);
+          color: var(--simple-colors-default-theme-grey-12);
+        }
+        :host([accent-color="grey"]) #check:hover,
+        :host paper-button:hover {
+          cursor: pointer;
+          background-color: var(--simple-colors-default-theme-grey-2);
+          color: var(--simple-colors-default-theme-grey-12);
         }
         .red {
           background-color: var(--simple-colors-default-theme-red-8);
@@ -100,14 +160,16 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
       </template>
       <div id="buttons" hidden\$="[[hideButtons]]">
         <paper-button
+          id="check"
           disabled\$="[[disabled]]"
-          raised=""
+          raised
           on-click="_verifyAnswers"
           >[[checkLabel]]</paper-button
         >
         <paper-button
+          id="reset"
           disabled\$="[[disabled]]"
-          raised=""
+          raised
           on-click="resetAnswers"
           >[[resetLabel]]</paper-button
         >

@@ -7,7 +7,7 @@ import "@polymer/paper-tooltip/paper-tooltip.js";
 class HaxToolbarItem extends PolymerElement {
   static get template() {
     return html`
-      <style include="hax-shared-styles">
+      <style include="simple-colors-shared-styles hax-shared-styles">
         :host {
           display: flex;
           box-sizing: border-box;

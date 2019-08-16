@@ -53,6 +53,7 @@ class SimpleFields extends MutableData(PolymerElement) {
           padding: 0;
         }
       </style>
+      <style include="simple-colors-shared-styles"></style>
       <eco-json-schema-object
         id="schemaobject"
         autofocus$="[[autofocus]]"

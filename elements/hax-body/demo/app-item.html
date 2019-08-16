@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>HAX: h-a-x Demo</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '../lib/hax-app-picker-item.js';
+      import '../lib/hax-gizmo-browser-item.js';
+    </script>
+    <style>
+      html {
+        font-family: 'Noto Serif', serif;
+      }
+    </style>
+  </head>
+  <body>
+    <hax-app-picker-item color="pink" label="test" icon="hardware:toys" title="test"></hax-app-picker-item>
+    <hax-gizmo-browser-item color="pink" label="test" icon="hardware:toys" title="test"></hax-gizmo-browser-item>
+  </body>
+</html>

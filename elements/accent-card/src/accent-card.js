@@ -35,7 +35,7 @@ class AccentCard extends SimpleColors {
   // render function
   static get template() {
     return html`
-      <style>
+      <style include="simple-colors-shared-styles">
         :host {
           display: block;
           border-radius: 2px;

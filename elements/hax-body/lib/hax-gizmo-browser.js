@@ -20,7 +20,7 @@ class HaxGizmoBrowser extends PolymerElement {
   }
   static get template() {
     return html`
-      <style include="hax-shared-styles">
+      <style include="simple-colors-shared-styles hax-shared-styles">
         :host {
           display: block;
         }

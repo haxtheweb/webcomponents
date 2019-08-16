@@ -1,6 +1,11 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "../lrn-icons.js";
+/**
+ * `lrn-icons`
+ *
+ * @demo index.html
+ */
 Polymer({
   _template: html`
     <ul>

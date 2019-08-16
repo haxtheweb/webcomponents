@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { SimpleColorsStyles } from "./lib/simple-colors-styles.js";
+import "@lrnwebcomponents/simple-colors-shared-styles/lib/simple-colors-styles.js";
 /**
  * `simple-colors`
  * `a shared set of styles for @lrnwebcomponents`
@@ -23,7 +23,7 @@ class SimpleColors extends PolymerElement {
   // render function
   static get template() {
     return html`
-      <style></style>
+      <style include="simple-colors-shared-styles"></style>
       <slot></slot>
     `;
   }
@@ -60,15 +60,6 @@ class SimpleColors extends PolymerElement {
         value: window.SimpleColorsStyles.colors,
         notify: true
       },
-      /**
-       * styles inherited based on an ancestor's accent and dark attributes.
-       */
-      inheritStyles: {
-        name: "inheritStyles",
-        type: Boolean,
-        value: false,
-        reflectToAttribute: true
-      },
       __utils: {
         type: Object
       }
@@ -78,23 +69,11 @@ class SimpleColors extends PolymerElement {
   static get tag() {
     return "simple-colors";
   }
+
   constructor() {
     super();
-    this.__styles = window.SimpleColorsStyles.requestAvailability();
-    this.__utils = new SimpleColorsStyles();
-  }
-  ready() {
-    super.ready();
-    if (!this.inheritStyles) {
-      let style = document.createElement("style"),
-        ruleList = this.__styles.cssRules;
-      this.shadowRoot.appendChild(style);
-
-      for (let rule of ruleList) {
-        let text = rule.cssText;
-        style.innerText += text;
-      }
-    }
+    this.__utils = window.SimpleColorsStyles.requestAvailability();
+    this.__styles = window.SimpleColorsStyles.stylesheet;
   }
 
   /**
