@@ -18,7 +18,7 @@ class SimpleConceptNetworkNode extends PolymerElement {
   }
   static get template() {
     return html`
-      <style>
+      <style include="simple-colors-shared-styles">
         :host {
           display: inline-flex;
           --simple-concept-network-color: var(
