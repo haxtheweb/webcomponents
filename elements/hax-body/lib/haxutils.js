@@ -105,4 +105,45 @@ function stripMSWord(input) {
   return output;
 }
 
-export { encapScript, findTagsInHTML, wipeSlot, stripMSWord };
+/**
+ * Test if a variable along a given object path exists
+ */
+function varExists(obj, path) {
+  let g = objectValFromStringPos(obj, path, "__failedToFind__");
+  if (g != "__failedToFind__") {
+    return true;
+  }
+  return false;
+}
+/**
+ * Return an object path or fallback value if not set
+ */
+function varGet(obj, path, fallback = "") {
+  return objectValFromStringPos(obj, path, fallback);
+}
+
+// helper to use strings for index in Objects
+function objectValFromStringPos(o, s, r = null) {
+  s = s.replace(/\[(\w+)\]/g, ".$1"); // convert indexes to properties
+  s = s.replace(/^\./, ""); // strip a leading dot
+  var a = s.split(".");
+  for (var i = 0, n = a.length; i < n; ++i) {
+    var k = a[i];
+    if (k in o) {
+      o = o[k];
+    } else {
+      return r;
+    }
+  }
+  return o;
+}
+
+export {
+  encapScript,
+  findTagsInHTML,
+  wipeSlot,
+  stripMSWord,
+  varExists,
+  varGet,
+  objectValFromStringPos
+};

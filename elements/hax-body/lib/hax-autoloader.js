@@ -3,6 +3,7 @@ import * as async from "@polymer/polymer/lib/utils/async.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import { HAXElement } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
+import { varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 
 /**
  * `hax-autoloader`
@@ -110,11 +111,20 @@ class HaxAutoloader extends HAXElement(PolymerElement) {
             // don't assume they are all relative to lrnwebcomponents
             const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
             if (!window.customElements.get(name)) {
-              import(`${basePath}../../${name}/${name}.js`)
+              let nameLocation = varGet(
+                window.HaxStore,
+                "instance.__appStoreData.autoloader." + name,
+                `@lrnwebcomponents/${name}/${name}.js`
+              );
+              import(`${basePath}../../../${nameLocation}`)
                 .then(response => {
                   // get the custom element definition we used to add that file
                   let CEClass = window.customElements.get(name);
-                  if (typeof CEClass.getHaxProperties === "function") {
+                  if (!CEClass) {
+                    console.error(
+                      `${name} was not a valid custom element yet a load was attempted`
+                    );
+                  } else if (typeof CEClass.getHaxProperties === "function") {
                     this.setHaxProperties(CEClass.getHaxProperties(), name);
                   } else if (typeof CEClass.HAXWiring === "function") {
                     this.setHaxProperties(
@@ -124,7 +134,7 @@ class HaxAutoloader extends HAXElement(PolymerElement) {
                   } else if (CEClass.haxProperties) {
                     this.setHaxProperties(CEClass.haxProperties, name);
                   } else {
-                    console.log(`${name} didn't have hax wiring in the end`);
+                    console.warn(`${name} didn't have hax wiring in the end`);
                   }
                 })
                 .catch(error => {
@@ -134,7 +144,11 @@ class HaxAutoloader extends HAXElement(PolymerElement) {
             } else {
               // get the custom element definition we used to add that file
               let CEClass = window.customElements.get(name);
-              if (typeof CEClass.getHaxProperties === "function") {
+              if (!CEClass) {
+                console.error(
+                  `${name} was not a valid custom element yet a load was attempted`
+                );
+              } else if (typeof CEClass.getHaxProperties === "function") {
                 this.setHaxProperties(CEClass.getHaxProperties(), name);
               } else if (typeof CEClass.HAXWiring === "function") {
                 this.setHaxProperties(
@@ -144,7 +158,7 @@ class HaxAutoloader extends HAXElement(PolymerElement) {
               } else if (CEClass.haxProperties) {
                 this.setHaxProperties(CEClass.haxProperties, name);
               } else {
-                console.log(`${name} didn't have hax wiring in the end`);
+                console.warn(`${name} didn't have hax wiring in the end`);
               }
             }
           }

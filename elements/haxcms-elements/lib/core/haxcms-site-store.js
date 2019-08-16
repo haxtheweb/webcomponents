@@ -6,6 +6,7 @@ import {
   action,
   toJS
 } from "mobx/lib/mobx.module.js";
+import { varExists, varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 
 class Store {
   constructor() {
@@ -140,7 +141,7 @@ class Store {
       ) {
         accessData = userData.manifests[manifest.id].accessData;
       }
-      const manifestItems = manifest.items.map(i => {
+      let manifestItems = manifest.items.map(i => {
         let parentLocation = null;
         let parent = manifest.items.find(d => i.parent === d.id);
         if (parent) {
@@ -162,10 +163,46 @@ class Store {
           metadata: metadata
         });
       });
+
       // build the children into a hierarchy too
       manifestItems.forEach((item, i) => {
         this._setChildren(item, manifestItems);
       });
+
+      /**
+       * Publish Pages Option
+       *
+       * This option enables the notion of published and unpublished pages.
+       * To enable this option set manifest.metadata.core.defaultSettings.publishPagesOn = true
+       *
+       * By default all pages will be published unless "metadata.published" is set to "true" on the
+       * item.
+       */
+      if (
+        varGet(
+          manifest,
+          "metadata.core.defaultSettings.publishPagesOn",
+          false
+        ) === true
+      ) {
+        const filterHiddenParentsRecursive = item => {
+          // if the item is unpublished then remove it.
+          if (item.metadata.published === false) {
+            return false;
+          }
+          // if the item has parents, recursively see if any parent is not published
+          const parent = manifestItems.find(i => i.id === item.parent);
+          if (parent) {
+            return filterHiddenParentsRecursive(parent);
+          }
+          // if it got this far then it should be good.
+          return true;
+        };
+        manifestItems = manifestItems.filter(i =>
+          filterHiddenParentsRecursive(i)
+        );
+      }
+
       return Object.assign({}, manifest, {
         items: manifestItems,
         accessData: accessData
@@ -236,7 +273,7 @@ class Store {
     if (this.manifest) {
       var themeData = {};
       // this is required so better be...
-      if (this.manifest.metadata.theme) {
+      if (varExists(this.manifest, "metadata.theme")) {
         themeData = this.manifest.metadata.theme;
       } else {
         // fallback juuuuust to be safe...
@@ -245,15 +282,19 @@ class Store {
             element: "haxcms-basic-theme",
             path:
               "@lrnwebcomponents/haxcms-elements/lib/core/themes/haxcms-basic-theme.js",
-            name: "Basic theme"
+            name: "Basic theme",
+            variables: {
+              image: "assets/banner.jpg",
+              icon: "icons:record-voice-over",
+              hexCode: "#da004e",
+              cssVariable: "pink"
+            }
           }
         };
       }
       // ooo you sneaky devil you...
-      if (this.activeItem) {
-        if (this.activeItem.metadata.theme) {
-          return this.activeItem.metadata.theme;
-        }
+      if (this.activeItem && varExists(this.activeItem, "metadata.theme")) {
+        return this.activeItem.metadata.theme;
       }
       return themeData;
     }
@@ -266,6 +307,16 @@ class Store {
     if (this.manifest && this.manifest.items && this.activeId) {
       for (var index in this.manifest.items) {
         if (this.manifest.items[index].id === this.activeId) {
+          return parseInt(index);
+        }
+      }
+    }
+    return -1;
+  }
+  get activeRouterManifestIndex() {
+    if (this.routerManifest && this.routerManifest.items && this.activeId) {
+      for (var index in this.routerManifest.items) {
+        if (this.routerManifest.items[index].id === this.activeId) {
           return parseInt(index);
         }
       }

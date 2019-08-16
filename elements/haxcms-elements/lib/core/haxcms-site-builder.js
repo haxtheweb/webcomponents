@@ -8,7 +8,9 @@ import { JsonOutlineSchema } from "@lrnwebcomponents/json-outline-schema/json-ou
 import {
   encapScript,
   findTagsInHTML,
-  wipeSlot
+  wipeSlot,
+  varExists,
+  varGet
 } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import { store } from "./haxcms-site-store.js";
@@ -332,17 +334,17 @@ class HAXCMSSiteBuilder extends PolymerElement {
           }
         }, 5);
         // if there are, dynamically import them
-        if (this.manifest.metadata.dynamicElementLoader) {
+        if (varExists(this.manifest, "metadata.node.dynamicElementLoader")) {
           let tagsFound = findTagsInHTML(html);
           const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
           for (var i in tagsFound) {
             const tagName = tagsFound[i];
             if (
-              this.manifest.metadata.dynamicElementLoader[tagName] &&
+              this.manifest.metadata.node.dynamicElementLoader[tagName] &&
               !window.customElements.get(tagName)
             ) {
               import(`${basePath}../../../../${
-                this.manifest.metadata.dynamicElementLoader[tagName]
+                this.manifest.metadata.node.dynamicElementLoader[tagName]
               }`)
                 .then(response => {
                   // useful to debug if dynamic references are coming in
@@ -433,54 +435,36 @@ class HAXCMSSiteBuilder extends PolymerElement {
    */
   _manifestChanged(newValue, oldValue) {
     if (newValue && newValue.metadata && newValue.items) {
-      // ensure there's a dynamicELementLoader defined
-      // @todo this could also be a place to mix in criticals
-      // that are system required yet we lazy load like grid-plate
-      if (!newValue.metadata.dynamicElementLoader) {
-        newValue.metadata.dynamicElementLoader = {
-          "a11y-gif-player":
-            "@lrnwebcomponents/a11y-gif-player/a11y-gif-player.js",
-          "citation-element":
-            "@lrnwebcomponents/citation-element/citation-element.js",
-          "hero-banner": "@lrnwebcomponents/hero-banner/hero-banner.js",
-          "image-compare-slider":
-            "@lrnwebcomponents/image-compare-slider/image-compare-slider.js",
-          "license-element":
-            "@lrnwebcomponents/license-element/license-element.js",
-          "lrn-aside": "@lrnwebcomponents/lrn-aside/lrn-aside.js",
-          "lrn-calendar": "@lrnwebcomponents/lrn-calendar/lrn-calendar.js",
-          "lrn-math": "@lrnwebcomponents/lrn-math/lrn-math.js",
-          "lrn-table": "@lrnwebcomponents/lrn-table/lrn-table.js",
-          "lrn-vocab": "@lrnwebcomponents/lrn-vocab/lrn-vocab.js",
-          "lrndesign-blockquote":
-            "@lrnwebcomponents/lrndesign-blockquote/lrndesign-blockquote.js",
-          "magazine-cover":
-            "@lrnwebcomponents/magazine-cover/magazine-cover.js",
-          "media-behaviors":
-            "@lrnwebcomponents/media-behaviors/media-behaviors.js",
-          "media-image": "@lrnwebcomponents/media-image/media-image.js",
-          "meme-maker": "@lrnwebcomponents/meme-maker/meme-maker.js",
-          "multiple-choice":
-            "@lrnwebcomponents/multiple-choice/multiple-choice.js",
-          "paper-audio-player":
-            "@lrnwebcomponents/paper-audio-player/paper-audio-player.js",
-          "person-testimonial":
-            "@lrnwebcomponents/person-testimonial/person-testimonial.js",
-          "place-holder": "@lrnwebcomponents/place-holder/place-holder.js",
-          "q-r": "@lrnwebcomponents/q-r/q-r.js",
-          "full-width-image":
-            "@lrnwebcomponents/full-width-image/full-width-image.js",
-          "self-check": "@lrnwebcomponents/self-check/self-check.js",
-          "simple-concept-network":
-            "@lrnwebcomponents/simple-concept-network/simple-concept-network.js",
-          "stop-note": "@lrnwebcomponents/stop-note/stop-note.js",
-          "tab-list": "@lrnwebcomponents/tab-list/tab-list.js",
-          "task-list": "@lrnwebcomponents/task-list/task-list.js",
-          "video-player": "@lrnwebcomponents/video-player/video-player.js",
-          "wave-player": "@lrnwebcomponents/wave-player/wave-player.js",
-          "wikipedia-query":
-            "@lrnwebcomponents/wikipedia-query/wikipedia-query.js"
+      // @todo replace this with a schema version mapper
+      // once we have versions
+      if (varExists(newValue, "metadata.siteName")) {
+        let git = varGet(newValue, "publishing.git", {});
+        newValue.metadata.site = {
+          name: newValue.metadata.siteName,
+          git: git,
+          created: newValue.metadata.created,
+          updated: newValue.metadata.updated
         };
+        newValue.metadata.theme.variables = {
+          image: newValue.metadata.image,
+          icon: newValue.metadata.icon,
+          hexCode: newValue.metadata.hexCode,
+          cssVariable: newValue.metadata.cssVariable
+        };
+        newValue.metadata.node = {
+          dynamicElementLoader: newValue.metadata.dynamicElementLoader,
+          fields: newValue.metadata.fields
+        };
+        delete newValue.metadata.publishing;
+        delete newValue.metadata.created;
+        delete newValue.metadata.updated;
+        delete newValue.metadata.siteName;
+        delete newValue.metadata.image;
+        delete newValue.metadata.icon;
+        delete newValue.metadata.hexCode;
+        delete newValue.metadata.cssVariable;
+        delete newValue.metadata.dynamicElementLoader;
+        delete newValue.metadata.fields;
       }
       var site = new JsonOutlineSchema();
       // we already have our items, pass them in

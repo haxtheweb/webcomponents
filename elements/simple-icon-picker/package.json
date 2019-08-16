@@ -16,7 +16,7 @@
       "hax": "src/simple-icon-picker-hax.json"
     }
   },
-  "version": "2.1.2",
+  "version": "2.1.4",
   "description": "Uses simple-picker to create an icon picker",
   "repository": {
     "type": "git",
@@ -39,7 +39,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-picker": "^2.1.2",
+    "@lrnwebcomponents/simple-picker": "^2.1.4",
     "@polymer/iron-meta": "^3.0.1",
     "@polymer/polymer": "^3.2.0"
   },

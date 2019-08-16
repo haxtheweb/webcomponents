@@ -61,7 +61,7 @@ class MapMenuHeader extends PolymerElement {
           flex-direction: column;
         }
 
-        #title {
+        .title {
           font-size: var(--map-menu-font-size, 16px);
         }
 
@@ -90,9 +90,9 @@ class MapMenuHeader extends PolymerElement {
         </div>
         <div id="center">
           <a tabindex="-1" href$="[[url]]">
-            <paper-button id="title" noink="" role\$="[[__titleRole()]]">
+            <paper-button class="title" noink="" role\$="[[__titleRole()]]">
               <div id="label">[[label]]</div>
-              <div id="title">[[title]]</div>
+              <div class="title">[[title]]</div>
             </paper-button>
           </a>
         </div>

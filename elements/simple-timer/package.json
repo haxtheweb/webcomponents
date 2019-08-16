@@ -16,7 +16,7 @@
       "hax": "src/simple-timer-hax.json"
     }
   },
-  "version": "2.1.2",
+  "version": "2.1.4",
   "description": "Automated conversion of simple-timer/",
   "repository": {
     "type": "git",

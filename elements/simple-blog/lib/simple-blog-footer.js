@@ -1,5 +1,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import { varExists, varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 /**
  * `simple-blog-footer`
@@ -142,7 +143,7 @@ class SimpleBlogFooter extends PolymerElement {
       <div class="background-closer-image-wrap">
         <div
           class="background-closer-image"
-          style\$="background-image: url([[manifest.metadata.image]])"
+          style\$="background-image: url([[manifest.metadata.theme.variables.image]])"
         ></div>
       </div>
       <div class="inner">
@@ -227,25 +228,17 @@ class SimpleBlogFooter extends PolymerElement {
     this.__disposer = [];
     autorun(reaction => {
       this.manifest = toJS(store.routerManifest);
-      if (typeof this.manifest.title !== typeof undefined) {
+      if (varExists(this.manifest, "title")) {
         document.title = this.manifest.title;
       }
-      if (
-        typeof this.manifest.metadata !== typeof undefined &&
-        typeof this.manifest.metadata.cssVariable !== typeof undefined
-      ) {
+      if (varExists(this.manifest, "metadata.theme.variables.cssVariable")) {
         // json outline schema changed, allow other things to react
         // fake way of forcing an update of these items
-        let ary = this.manifest.metadata.cssVariable
+        let ary = this.manifest.metadata.theme.variables.cssVariable
           .replace("--simple-colors-default-theme-", "")
           .split("-");
         ary.pop();
         this.accentColor = ary.join("-");
-        // set this directly instead of messing w/ accentColor
-        document.body.style.setProperty(
-          "--haxcms-color",
-          this.manifest.metadata.hexCode
-        );
       }
       this.__disposer.push(reaction);
     });

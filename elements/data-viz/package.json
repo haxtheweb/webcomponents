@@ -16,7 +16,7 @@
       "hax": "src/data-viz-hax.json"
     }
   },
-  "version": "2.1.2",
+  "version": "2.1.4",
   "description": "display pouch-db data using graphs",
   "repository": {
     "type": "git",

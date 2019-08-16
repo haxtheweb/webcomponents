@@ -16,7 +16,7 @@
       "hax": "src/social-share-link-hax.json"
     }
   },
-  "version": "2.1.2",
+  "version": "2.1.4",
   "description": "a link to share content on social",
   "repository": {
     "type": "git",
@@ -39,7 +39,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/social-media-icons": "^2.1.2",
+    "@lrnwebcomponents/social-media-icons": "^2.1.4",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/polymer": "^3.2.0"
   },

@@ -6,6 +6,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
+import { varExists, varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js";
 import "@polymer/iron-pages/iron-pages.js";
@@ -60,8 +61,8 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
     return "";
   }
   _getColor(manifest) {
-    if (manifest && manifest.metadata && manifest.metadata.hexCode) {
-      return manifest.metadata.hexCode;
+    if (manifest && varExists(manifest, "metadata.theme.variables.hexCode")) {
+      return manifest.metadata.theme.variables.hexCode;
     }
   }
   constructor() {
@@ -94,9 +95,17 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
     autorun(reaction => {
       let manifest = toJS(store.manifest);
       this.title = manifest.title;
-      this.image = manifest.metadata.image;
-      this.icon = manifest.metadata.icon;
-      this.author = manifest.metadata.author;
+      this.image = varGet(
+        manifest,
+        "metadata.theme.variables.image",
+        "assets/banner.jpg"
+      );
+      this.icon = varGet(
+        manifest,
+        "metadata.theme.variables.icon",
+        "icons:record-voice-over"
+      );
+      this.author = varGet(manifest, "metadata.author", {});
       this.__disposer.push(reaction);
     });
     autorun(reaction => {

@@ -14,7 +14,7 @@
     "value": false
   },
   /**
-   * Fields to conver toJSON Schema.
+   * Fields to convert toJSON Schema.
    */
   "fields": {
     "type": Array,
@@ -31,7 +31,7 @@
     "observer": "_valueChanged"
   },
   /**
-   * Fields to conver to JSON Schema.
+   * Fields to convert to JSON Schema.
    */
   "__validatedSchema": {
     "type": Array,

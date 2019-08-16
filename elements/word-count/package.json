@@ -16,7 +16,7 @@
       "hax": "src/word-count-hax.json"
     }
   },
-  "version": "2.1.2",
+  "version": "2.1.4",
   "description": "Automated conversion of word-count/",
   "repository": {
     "type": "git",

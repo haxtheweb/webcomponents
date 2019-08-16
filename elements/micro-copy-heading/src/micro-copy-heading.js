@@ -29,7 +29,7 @@ class MicroCopyHeading extends LitElement {
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
-  tag() {
+  static get tag() {
     return "micro-copy-heading";
   }
 
@@ -64,12 +64,6 @@ class MicroCopyHeading extends LitElement {
       this
     );
   }
-  // static get observedAttributes() {
-  //   return [];
-  // }
-  // disconnectedCallback() {}
-
-  // attributeChangedCallback(attr, oldValue, newValue) {}
 }
-customElements.define("micro-copy-heading", MicroCopyHeading);
+customElements.define(MicroCopyHeading.tag, MicroCopyHeading);
 export { MicroCopyHeading };

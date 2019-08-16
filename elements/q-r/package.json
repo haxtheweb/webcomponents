@@ -16,7 +16,7 @@
       "hax": "src/q-r-hax.json"
     }
   },
-  "version": "2.1.2",
+  "version": "2.1.4",
   "description": "Automated conversion of q-r/",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/es-global-bridge": "^2.1.1",
-    "@lrnwebcomponents/hax-body-behaviors": "^2.1.2",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.1.4",
     "@polymer/polymer": "^3.2.0"
   },
   "devDependencies": {

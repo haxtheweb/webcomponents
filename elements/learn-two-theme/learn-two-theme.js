@@ -294,12 +294,14 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
           id="menubutton"
           icon="menu"
           on-click="toggleDrawer"
+          title="Toggle site menu"
         ></paper-icon-button>
         <app-drawer swipe-open slot="drawer" opened="{{opened}}">
           <paper-icon-button
             id="menubutton2"
             icon="menu"
             on-click="toggleDrawer"
+            title="Toggle site menu"
           ></paper-icon-button>
           <div class="header-wrapper">
             <div class="header">

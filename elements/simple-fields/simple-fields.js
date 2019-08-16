@@ -5,17 +5,9 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { MutableData } from "@polymer/polymer/lib/mixins/mutable-data.js";
-import "@polymer/paper-toggle-button/paper-toggle-button.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/paper-input/paper-textarea.js";
-import "@polymer/iron-icons/iron-icons.js";
+import { varExists, varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import "@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";
 import "@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js";
-import "@lrnwebcomponents/code-editor/code-editor.js";
-import "@lrnwebcomponents/simple-picker/simple-picker.js";
-import "@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js";
-import "@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js";
-import "@lrnwebcomponents/paper-input-flagged/paper-input-flagged.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `simple-fields`
@@ -94,7 +86,7 @@ class SimpleFields extends MutableData(PolymerElement) {
         value: false
       },
       /**
-       * Fields to conver toJSON Schema.
+       * Fields to convert toJSON Schema.
        */
       fields: {
         type: Array,
@@ -111,7 +103,7 @@ class SimpleFields extends MutableData(PolymerElement) {
         observer: "_valueChanged"
       },
       /**
-       * Fields to conver to JSON Schema.
+       * Fields to convert to JSON Schema.
        */
       __validatedSchema: {
         type: Array,
@@ -140,6 +132,7 @@ class SimpleFields extends MutableData(PolymerElement) {
     super.connectedCallback();
     this.HAXWiring = new HAXWiring();
     this.HAXWiring.setup(SimpleFields.haxProperties, SimpleFields.tag, this);
+    import("./lib/simple-fields-imports.js");
   }
   /**
    * when form changes, sets focus on the first field if this has auto-focus
