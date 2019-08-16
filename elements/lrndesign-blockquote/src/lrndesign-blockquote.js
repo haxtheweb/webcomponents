@@ -1,7 +1,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@polymer/paper-styles/shadow.js";
