@@ -46,7 +46,7 @@ class HAXCMSDevTheme extends HAXCMSTheme(PolymerElement) {
   // render function
   static get template() {
     return html`
-      <style include="hax-shared-styles">
+      <style include="hax-shared-styles simple-colors-shared-styles">
         :host {
           display: block;
           /* theme color which is dictated by the manifest */
