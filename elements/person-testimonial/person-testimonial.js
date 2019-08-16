@@ -25,7 +25,7 @@ class PersonTestimonial extends SimpleColors {
   }
   static get template() {
     return html`
-      <style>
+      <style include="simple-colors-shared-styles">
         :host {
           display: block;
           --person-testimonial-font-family: sans-serif;

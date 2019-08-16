@@ -31,7 +31,7 @@ class ProgressDonut extends SchemaBehaviors(PolymerElement) {
   }
   static get template() {
     return html`
-      <style>
+      <style include="simple-colors-shared-styles">
         :host {
           background-color: var(--simple-colors-background1, #ffffff);
           overflow: visible;
