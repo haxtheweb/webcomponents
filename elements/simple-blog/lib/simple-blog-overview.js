@@ -26,7 +26,7 @@ class SimpleBlogOverview extends PolymerElement {
   // render function
   static get template() {
     return html`
-      <style includes="simple-colors">
+      <style includes="simple-colors-shared-styles">
         :host {
           display: block;
           outline: none;
