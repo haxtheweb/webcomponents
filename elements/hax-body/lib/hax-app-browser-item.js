@@ -164,7 +164,6 @@ class HAXAppBrowserItem extends LitElement {
 
   render() {
     return html`
-      <style include="simple-colors-shared-styles"></style>
       <paper-button
         data-voicecommand="select ${this.title}"
         title="${this.title}"

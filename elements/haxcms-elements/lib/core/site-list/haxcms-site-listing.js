@@ -1248,21 +1248,12 @@ class HAXCMSSiteListing extends PolymerElement {
    * Create a new site button was clicked
    */
   _createSite(e) {
-    // @todo once nikki refactors things this will require less clean up here
     let values = Object.assign(
       {
         jwt: this.jwt
       },
-      this.shadowRoot.querySelector("#createsitefields").value
+      this.shadowRoot.querySelector("#createsitefields").value.manifest
     );
-    values.site = values.manifest[0];
-    values.theme = {
-      name: values.manifest[1].name
-    };
-    delete values.manifest[1].name;
-    values.theme.variables = values.manifest[1];
-    delete values.manifest;
-
     this.set("createParams", {});
     this.set("createParams", values);
     this.notifyPath("createParams.*");

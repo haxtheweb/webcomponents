@@ -1,0 +1,10 @@
+import "@polymer/iron-icons/iron-icons.js";
+import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/paper-input/paper-input.js";
+import "@polymer/paper-button/paper-button.js";
+import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@vaadin/vaadin-upload/vaadin-upload.js";
+import "@lrnwebcomponents/hax-body/lib/hax-preview.js";
+import "@lrnwebcomponents/hax-body/lib/hax-app-browser.js";
+import "@lrnwebcomponents/hax-body/lib/hax-gizmo-browser.js";
+import "@polymer/app-layout/app-drawer/app-drawer.js";

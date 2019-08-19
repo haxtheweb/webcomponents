@@ -21,7 +21,7 @@ class HaxAppSearchInputs extends PolymerElement {
   }
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles hax-shared-styles">
+      <style>
         :host {
           display: block;
         }
