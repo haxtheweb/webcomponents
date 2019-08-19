@@ -173,17 +173,14 @@ class Store {
        * Publish Pages Option
        *
        * This option enables the notion of published and unpublished pages.
-       * To enable this option set manifest.metadata.core.defaultSettings.publishPagesOn = true
+       * To enable this option set manifest.metadata.site.settings.publishPagesOn = true
        *
        * By default all pages will be published unless "metadata.published" is set to "true" on the
        * item.
        */
       if (
-        varGet(
-          manifest,
-          "metadata.core.defaultSettings.publishPagesOn",
-          false
-        ) === true
+        varGet(manifest, "metadata.site.settings.publishPagesOn", false) ===
+        true
       ) {
         const filterHiddenParentsRecursive = item => {
           // if the item is unpublished then remove it.
