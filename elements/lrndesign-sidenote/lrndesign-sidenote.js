@@ -83,7 +83,11 @@ class LrndesignSidenote extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(EbookButton.haxProperties, EbookButton.tag, this);
+    this.HAXWiring.setup(
+      LrndesignSidenote.haxProperties,
+      LrndesignSidenote.tag,
+      this
+    );
   }
 
   constructor() {
