@@ -1,4 +1,5 @@
 import { LitElement, html } from "lit-element/lit-element.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
 /**
@@ -14,6 +15,75 @@ class LrndesignSidenote extends LitElement {
       icon: { type: String },
       bgColor: { type: String }
     };
+  }
+
+  static get haxProperties() {
+    return {
+      canScale: false,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Side-Note",
+        description: "A .",
+        icon: "icons:bookmark",
+        color: "blue",
+        groups: [""],
+        handles: [
+          {
+            type: "",
+            source: "",
+            title: "",
+            description: ""
+          }
+        ],
+        meta: {
+          author: "LRNWebComponents"
+        }
+      },
+      settings: {
+        quick: [
+          {
+            property: "label",
+            title: "Label",
+            description: "The label of the sidenote.",
+            inputMethod: "textfield",
+            icon: "editor:title"
+          }
+        ],
+        configure: [
+          {
+            property: "icon",
+            title: "Icon",
+            description: "The icon of the sidenote.",
+            inputMethod: "iconpicker",
+            options: [
+              "icons:announcement",
+              "icons:book",
+              "icons:bookmark",
+              "icons:check-circle",
+              "icons:feedback",
+              "icons:thumb-down",
+              "icons:thumb-up",
+              "icons:warning"
+            ]
+          },
+          {
+            property: "bgColor",
+            title: "Color",
+            description: "The background color of the sidenote.",
+            inputMethod: "colorpicker",
+            icon: "editor:format-color-fill"
+          }
+        ],
+        advanced: []
+      }
+    };
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.HAXWiring = new HAXWiring();
+    this.HAXWiring.setup(EbookButton.haxProperties, EbookButton.tag, this);
   }
 
   constructor() {
