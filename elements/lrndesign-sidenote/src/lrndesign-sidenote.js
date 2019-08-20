@@ -1,18 +1,95 @@
-/**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { A11yBehaviors } from "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import { LitElement, html } from "lit-element/lit-element.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import "@polymer/iron-icons/iron-icons.js";
+import "@polymer/iron-icon/iron-icon.js";
 /**
 `lrndesign-sidenote`
 A basic side note
 
 * @demo demo/index.html
 */
-class LrndesignSidenote extends A11yBehaviors(PolymerElement) {
-  static get template() {
+class LrndesignSidenote extends LitElement {
+  static get properties() {
+    return {
+      label: { type: String },
+      icon: { type: String },
+      bgColor: { type: String }
+    };
+  }
+
+  static get haxProperties() {
+    return {
+      canScale: false,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Side-Note",
+        description: "A .",
+        icon: "icons:bookmark",
+        color: "blue",
+        groups: [""],
+        meta: {
+          author: "LRNWebComponents"
+        }
+      },
+      settings: {
+        quick: [
+          {
+            property: "label",
+            title: "Label",
+            description: "The label of the sidenote.",
+            inputMethod: "textfield",
+            icon: "editor:title"
+          }
+        ],
+        configure: [
+          {
+            property: "icon",
+            title: "Icon",
+            description: "The icon of the sidenote.",
+            inputMethod: "iconpicker",
+            options: [
+              "icons:announcement",
+              "icons:book",
+              "icons:bookmark",
+              "icons:check-circle",
+              "icons:feedback",
+              "icons:thumb-down",
+              "icons:thumb-up",
+              "icons:warning"
+            ]
+          },
+          {
+            property: "bgColor",
+            title: "Color",
+            description: "The background color of the sidenote.",
+            inputMethod: "colorpicker",
+            icon: "editor:format-color-fill"
+          }
+        ],
+        advanced: []
+      }
+    };
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    this.HAXWiring = new HAXWiring();
+    this.HAXWiring.setup(
+      LrndesignSidenote.haxProperties,
+      LrndesignSidenote.tag,
+      this
+    );
+  }
+
+  constructor() {
+    super();
+    this.label = "";
+    this.icon = "";
+    this.bgColor = "";
+  }
+
+  render() {
     return html`
       <style>
         :host {
@@ -53,8 +130,8 @@ class LrndesignSidenote extends A11yBehaviors(PolymerElement) {
       </style>
       <div id="container">
         <div id="header">
-          <iron-icon id="icon" icon="[[icon]]" hidden\$="[[!icon]]"></iron-icon>
-          <div id="label" hidden\$="[[!label]]">[[label]]</div>
+          <iron-icon id="icon" icon=${this.icon}></iron-icon>
+          <div id="label">${this.label}</div>
         </div>
         <slot></slot>
       </div>
@@ -63,90 +140,6 @@ class LrndesignSidenote extends A11yBehaviors(PolymerElement) {
   static get tag() {
     return "lrndesign-sidenote";
   }
-
-  static get properties() {
-    return {
-      /**
-       * The display label
-       */
-      label: {
-        type: String,
-        value: ""
-      },
-      /**
-       * The display icon for the element
-       */
-      icon: {
-        type: String,
-        value: ""
-      },
-      /**
-       * Background Color
-       */
-      bgColor: {
-        type: String,
-        value: "#f7f7f7"
-      },
-      /**
-       * Outset will move the entire element left to make it
-       * stand out from the content.
-       */
-      outset: {
-        type: Number,
-        value: 0
-      },
-      /**
-       * Define the unit of measure for the outset variable
-       * Examples: 'em', 'px', '%', 'vw'
-       */
-      outsetMeasurementType: {
-        type: String,
-        value: "em"
-      }
-    };
-  }
-
-  /**
-   * Create global overrides for each property defined in a component
-   *
-   * Example: this will override the default value for bgColor for all
-   *          lrndesign-sidenote elements on the page.
-   *
-   *  _.set(window, 'lrndesignSidenote.bgColor', 'blue');
-   */
-  constructor() {
-    super();
-    for (var prop in this.properties) {
-      let prefix = this.is;
-      // convert prefix to camel case
-      prefix = prefix
-        .replace("-", " ")
-        .replace(/(?:^\w|[A-Z]|\b\w)/g, function(letter, index) {
-          return index == 0 ? letter.toLowerCase() : letter.toUpperCase();
-        })
-        .replace(/\s+/g, "");
-
-      // find out if a property override is set on the window object
-      if (typeof window[prefix] !== "undefined") {
-        if (typeof window[prefix][prop] !== "undefined") {
-          this.properties[prop].value = window[prefix][prop];
-        }
-      }
-    }
-  }
-
-  static get observers() {
-    return ["__updateStyles(bgColor, outset, outsetMeasurementType)"];
-  }
-
-  __updateStyles(bgColor, outset, outsetMeasurementType) {
-    const bgColorHex = this._colorTransformFromClass(bgColor) || bgColor;
-    this.updateStyles({
-      "--container-text-color": this.getTextContrastColor(bgColorHex),
-      "--container-bg-color": bgColorHex,
-      "--container-outset": `${Number(outset)}${outsetMeasurementType}`
-    });
-  }
 }
-window.customElements.define(LrndesignSidenote.tag, LrndesignSidenote);
+customElements.define("lrndesign-sidenote", LrndesignSidenote);
 export { LrndesignSidenote };
