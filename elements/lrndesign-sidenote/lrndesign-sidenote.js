@@ -28,14 +28,6 @@ class LrndesignSidenote extends LitElement {
         icon: "icons:bookmark",
         color: "blue",
         groups: [""],
-        handles: [
-          {
-            type: "",
-            source: "",
-            title: "",
-            description: ""
-          }
-        ],
         meta: {
           author: "LRNWebComponents"
         }
@@ -150,3 +142,4 @@ class LrndesignSidenote extends LitElement {
   }
 }
 customElements.define("lrndesign-sidenote", LrndesignSidenote);
+export { LrndesignSidenote };
