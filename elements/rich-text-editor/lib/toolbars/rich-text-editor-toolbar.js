@@ -46,8 +46,7 @@ class RichTextEditorToolbar extends PolymerElement {
   // render function for styles
   static get styleTemplate() {
     return html`
-      <style include="rich-text-editor-styles"></style>
-      <style include="rich-text-editor-button-styles">
+      <style include="rich-text-editor-styles rich-text-editor-button-styles">
         :host([hidden]) {
           display: none;
         }
@@ -411,6 +410,7 @@ class RichTextEditorToolbar extends PolymerElement {
         type: Object,
         value: null
       },
+
       /**
        * The current text selected range, which is actually a range.
        */
@@ -437,6 +437,36 @@ class RichTextEditorToolbar extends PolymerElement {
         name: "__inlineWidgets",
         type: Array,
         value: []
+      },
+
+      /**
+       * Optional space-sperated list of keyboard shortcuts for the editor
+       * to fire this button, see iron-a11y-keys for more info.
+       * /
+      __a11yKeys: {
+        name: "__a11yKeys",
+        type: Array,
+        computed: "_getA11yKeys(__shortcutKeys,editor)"
+      },
+    
+      /**
+       * Optional space-sperated list of keyboard shortcuts for the editor
+       * to fire this button, see iron-a11y-keys for more info.
+       * /
+      __osKeys: {
+        name: "__osKeys",
+        type: Array,
+        computed: "_getOsKeys(__shortcutKeys)"
+      },
+
+      /**
+       * Optional space-sperated list of keyboard shortcuts for the editor
+       * to fire this button, see iron-a11y-keys for more info.
+       */
+      __shortcutKeys: {
+        name: "__shortcutKeys",
+        type: Array,
+        value: []
       }
     };
   }
@@ -454,6 +484,18 @@ class RichTextEditorToolbar extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     let root = this;
+    this.__clipboard = document.createElement("textarea");
+    this.__clipboard.setAttribute("aria-hidden", true);
+    this.__clipboard.style.position = "absolute";
+    this.__clipboard.style.left = "-9999px";
+    this.__clipboard.style.top = "0px";
+    this.__clipboard.style.width = "0px";
+    this.__clipboard.style.height = "0px";
+    document.body.appendChild(this.__clipboard);
+    window.addEventListener("paste", root._handlePaste.bind(root));
+    if (navigator.clipboard) {
+      this.addEventListener("paste-button", root._handlePasteButton.bind(root));
+    }
     window.RichTextEditorSelection.requestAvailability();
     window.ResponsiveUtility.requestAvailability();
     window.dispatchEvent(
@@ -496,11 +538,14 @@ class RichTextEditorToolbar extends PolymerElement {
    */
   addEditableRegion(editor) {
     let root = this;
-    editor.addEventListener("keydown", e => {
-      root.editTarget(editor);
-    });
     editor.addEventListener("mousedown", e => {
       root.editTarget(editor);
+    });
+    editor.addEventListener("focus", e => {
+      root.editTarget(editor);
+    });
+    editor.addEventListener("keydown", e => {
+      root._handleShortcutKeys(editor, e);
     });
     editor.addEventListener("blur", e => {
       if (
@@ -526,8 +571,7 @@ class RichTextEditorToolbar extends PolymerElement {
    * @returns {void}
    */
   editTarget(editor) {
-    let root = this,
-      sel = window.getSelection();
+    let root = this;
 
     if (root.editor !== editor) {
       //save changes to previous editor
@@ -564,15 +608,30 @@ class RichTextEditorToolbar extends PolymerElement {
   }
 
   /**
-   * Gets the updated selected range.
-   * @returns {void}
+   * Normalizes selected range data.
+   * @returns {object} the selected range
    */
-  _rangeChange(e) {
-    let root = this;
-    root.buttons.forEach(button => {
-      button.range = null;
-      button.range = root.range;
-    });
+  getRange() {
+    let sel = window.getSelection();
+    if (sel.getRangeAt && sel.rangeCount) {
+      return sel.getRangeAt(0);
+    } else if (sel) {
+      return sel;
+    } else false;
+  }
+
+  /**
+   * paste content into a range;
+   * override this function to make your own filters
+   *
+   * @param {string} pasteContent the html to be pasted
+   * @returns {string} the filtered html as string
+   */
+  getSanitizeClipboard(pasteContent) {
+    let regex = "<body(.*\n)*>(.*\n)*</body>";
+    if (pasteContent.match(regex) && pasteContent.match(regex).length > 0)
+      pasteContent = pasteContent.match(regex)[0].replace(/<\?body(.*\n)*\>/i);
+    return pasteContent;
   }
 
   /**
@@ -590,6 +649,34 @@ class RichTextEditorToolbar extends PolymerElement {
   }
 
   /**
+   * paste content into a range
+   *
+   * @param {object} range where content will be pasted
+   * @param {string} pasteContent the html to be pasted
+   * @returns {void}
+   */
+  pasteIntoRange(range, pasteContent) {
+    console.log("pasteIntoRange", range, pasteContent);
+    let div = document.createElement("div"),
+      sel = window.getSelection(),
+      parent = range.commonAncestorContainer.parentNode,
+      closest = parent.closest(
+        "[contenteditable=true]:not([disabled]),input:not([disabled]),textarea:not([disabled])"
+      );
+    if ((this.editor = closest)) {
+      div.innerHTML = pasteContent;
+      if (range && range.extractContents) {
+        range.extractContents();
+      }
+      range.insertNode(div);
+      while (div.firstChild) {
+        div.parentNode.insertBefore(div.firstChild, div);
+      }
+      div.parentNode.removeChild(div);
+    }
+  }
+
+  /**
    * removes an editor
    *
    * @param {object} editor an HTML object that can be edited
@@ -597,8 +684,17 @@ class RichTextEditorToolbar extends PolymerElement {
    */
   removeEditableRegion(editor) {
     let root = this;
-    editor.removeEventListener("click", e => {
+    editor.removeEventListener("mouseout", e => {
+      root.getUpdatedSelection();
+    });
+    editor.removeEventListener("focus", e => {
       root.editTarget(editor);
+    });
+    editor.removeEventListener("mousedown", e => {
+      root.editTarget(editor);
+    });
+    editor.removeEventListener("keydown", e => {
+      root._handleShortcutKeys(editor, e);
     });
     editor.removeEventListener("blur", e => {
       if (
@@ -606,9 +702,6 @@ class RichTextEditorToolbar extends PolymerElement {
         !e.relatedTarget.startsWith === "rich-text-editor"
       )
         root.editTarget(null);
-      root.getUpdatedSelection();
-    });
-    editor.removeEventListener("mouseout", e => {
       root.getUpdatedSelection();
     });
   }
@@ -622,7 +715,13 @@ class RichTextEditorToolbar extends PolymerElement {
    */
   _addButton(child, parent) {
     let root = this,
-      button = document.createElement(child.type);
+      button = document.createElement(child.type),
+      keys = button.shortcutKeys
+        ? button.shortcutKeys.replace(/ctrl\+[xcv]/g, "")
+        : "";
+    //disable clipboard keys since we're already listening for them
+
+    this.set(`__shortcutKeys.${keys}`, button);
 
     for (var key in child) {
       button[key] = child[key];
@@ -635,6 +734,10 @@ class RichTextEditorToolbar extends PolymerElement {
     if (button.inlineWidget) root.push("__inlineWidgets", button.tag);
     parent.appendChild(button);
     return button;
+  }
+
+  _handleKeyboardShortcuts(e) {
+    console.log("_handleKeyboardShortcuts", e);
   }
 
   /**
@@ -651,6 +754,7 @@ class RichTextEditorToolbar extends PolymerElement {
       sizes = ["xs", "sm", "md", "lg", "xl"],
       temp = [];
     toolbar.innerHTML = "";
+    this.set("__shortcutKeys", []);
     config.forEach(item => {
       if (item.type === "button-group") {
         let group = document.createElement("div");
@@ -660,17 +764,102 @@ class RichTextEditorToolbar extends PolymerElement {
         max = Math.max(max, sizes.indexOf(item.collapsedUntil));
         item.buttons.forEach(button => {
           max = Math.max(max, sizes.indexOf(button.collapsedUntil));
-          temp.push(root._addButton(button, group));
+          if (navigator.clipboard || button.command !== "paste")
+            temp.push(root._addButton(button, group)); //firefox doesn't allow for clipboard button
         });
         toolbar.appendChild(group);
       } else {
         max = Math.max(max, sizes.indexOf(item.collapsedUntil));
-        temp.push(root._addButton(item, toolbar));
+        if (navigator.clipboard || item.command !== "paste")
+          temp.push(root._addButton(item, toolbar)); //firefox doesn't allow for clipboard button
       }
       toolbar.appendChild(more);
       more.collapseMax = sizes[max];
     });
     return temp;
+  }
+
+  /**
+   * when a shortcut key is pressed, fire the keypressed event on the button associated with it
+   * @param {object} editor the editor that detects a shortcut key
+   * @param {event} e the key event
+   */
+
+  _handleShortcutKeys(editor, e) {
+    if (editor.contentEditable) {
+      let key = e.key;
+      if (e.shiftKey) key = "shift+" + key;
+      if (e.altKey) key = "alt+" + key;
+      if (
+        (window.navigator.platform === "MacIntel" && e.metaKey) ||
+        e.ctrlKey
+      ) {
+        key = "ctrl+" + key;
+      }
+      if (this.__shortcutKeys[key]) this.__shortcutKeys[key]._keysPressed(e);
+    }
+  }
+
+  /**
+   * Handles paste.
+   *
+   * @param {event} e the paste event
+   * @returns {void}
+   */
+  _handlePaste(e) {
+    console.log("_handlePaste", e);
+    let pasteContent = "";
+    // intercept paste event
+    if (e && (e.clipboardData || e.originalEvent.clipboardData)) {
+      pasteContent = (e.originalEvent || e).clipboardData.getData("text/html");
+    } else if (window.clipboardData) {
+      pasteContent = window.clipboardData.getData("Text");
+    }
+    console.log("clipboardData");
+    this.pasteIntoRange(
+      this.getRange(),
+      this.getSanitizeClipboard(pasteContent)
+    );
+    console.log("pasteIntoRange");
+    e.preventDefault();
+  }
+
+  /**
+   * Handles paste button.
+   *
+   * @param {event} e the paste button event
+   * @returns {void}
+   */
+  _handlePasteButton(e) {
+    console.log("_handlePasteButton", e);
+    setTimeout(async () => {
+      let range = e.detail.range,
+        sel = window.getSelection(),
+        text = await navigator.clipboard.readText();
+      this.__clipboard.value = text;
+      this.__clipboard.focus();
+      this.__clipboard.select();
+      document.execCommand("paste");
+      sel.removeAllRanges();
+      sel.addRange(range);
+      this.pasteIntoRange(
+        range,
+        this.getSanitizeClipboard(this.__clipboard.value)
+      );
+    }, 2000);
+    e.preventDefault();
+  }
+
+  /**
+   * Gets the updated selected range.
+   * @returns {void}
+   */
+  _rangeChange(e) {
+    let root = this;
+    root.buttons.forEach(button => {
+      button.range = null;
+      button.range = root.range;
+    });
   }
 
   /**

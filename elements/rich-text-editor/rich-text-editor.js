@@ -6,7 +6,6 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "./lib/rich-text-editor-styles.js";
-import "./lib/singletons/rich-text-editor-clipboard.js";
 import "./lib/toolbars/rich-text-editor-toolbar.js";
 import "./lib/toolbars/rich-text-editor-toolbar-mini.js";
 import "./lib/toolbars/rich-text-editor-toolbar-full.js";
@@ -99,14 +98,6 @@ class RichTextEditor extends PolymerElement {
   static get properties() {
     let props = {
       /**
-       * The id for the toolbar
-       */
-      toolbar: {
-        name: "toolbar",
-        type: String,
-        value: ""
-      },
-      /**
        * The editor's unique id
        */
       id: {
@@ -114,6 +105,16 @@ class RichTextEditor extends PolymerElement {
         type: String,
         value: ""
       },
+
+      /**
+       * The id for the toolbar
+       */
+      toolbar: {
+        name: "toolbar",
+        type: String,
+        value: ""
+      },
+
       /**
        * The type of editor toolbar, i.e.
        * `full` for full toolbar with breadcrumb,
@@ -161,7 +162,6 @@ class RichTextEditor extends PolymerElement {
    * @returns {void}
    */
   getEditor() {
-    window.RichTextEditorClipboard.requestAvailability();
     let root = this,
       id = this.toolbar ? "#" + this.toolbar : "",
       both = document.querySelector(this.type + id),

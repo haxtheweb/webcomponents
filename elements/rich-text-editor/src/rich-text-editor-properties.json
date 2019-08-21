@@ -1,20 +1,22 @@
 {
   /**
-   * The id for the toolbar
-   */
-  "toolbar": {
-    "name": "toolbar",
-    "type": String,
-    "value": ""
-  },
-  /**
    * The editor's unique id
    */
   "id": {
     "name": "id",
-    "type": String,
+    "type": "String",
     "value": ""
   },
+
+  /**
+   * The id for the toolbar
+   */
+  "toolbar": {
+    "name": "toolbar",
+    "type": "String",
+    "value": ""
+  },
+
   /**
    * The type of editor toolbar, i.e.
    * `full` for full toolbar with breadcrumb,
@@ -23,7 +25,7 @@
    */
   "type": {
     "name": "type",
-    "type": String,
+    "type": "String",
     "value": "rich-text-editor-toolbar"
   }
 }
