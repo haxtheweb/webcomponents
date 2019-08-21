@@ -2,125 +2,218 @@
   "data": {
     "fields": [
       {
-        "property": "fields",
-        "title": "Custom Fields",
-        "description": "Store relational data about fields",
-        "required": false,
-        "icon": "icons:group-work",
-        "inputMethod": "array",
-        "properties": [
-          {
-            "property": "formgroup",
-            "title": "Form group",
-            "description": "Which tab will users input values",
-            "inputMethod": "select",
-            "required": true,
-            "options": {
-              "configure": "Configure",
-              "advanced": "Advanced"
-            },
-            "icon": "link"
-          },
-          {
-            "property": "inputMethod",
-            "title": "Input method",
-            "description": "How users can enter data for this field",
-            "inputMethod": "select",
-            "options": {
-              "textfield": "Textfield",
-              "number": "Number",
-              "boolean": "Checkbox",
-              "haxupload": "File upload",
-              "colorpicker": "Color picker",
-              "iconpicker": "Icon picker",
-              "code-editor": "Code editor",
-              "alt": "Alt text",
-              "datepicker": "Date picker",
-              "textarea": "Text area",
-              "flipboolean": "Checkbox (inverted)",
-              "select": "Select list",
-              "array": "Array"
-            },
-            "icon": "link"
-          },
-          {
-            "property": "property",
-            "title": "Machine name",
-            "description": "Field machine name for storage",
-            "inputMethod": "textfield",
-            "required": true
-          },
-          {
-            "property": "title",
-            "title": "Name",
-            "description": "Readable name of the field",
-            "inputMethod": "textfield",
-            "required": true
-          },
-          {
-            "property": "description",
-            "title": "Description",
-            "description": "additional details about the field data",
-            "inputMethod": "textfield",
-            "required": false
-          },
-          {
-            "property": "required",
-            "title": "Required",
-            "description": "Is this field required",
-            "inputMethod": "boolean",
-            "required": false
-          },
-          {
-            "property": "icon",
-            "title": "Icon",
-            "description": "Optional icon to represent this field",
-            "inputMethod": "iconpicker",
-            "required": false
-          }
-        ]
-      },
-      {
-        "property": "settings",
+        "property": "manifest",
         "inputMethod": "tabs",
         "properties": [
           {
-            "property": "author",
-            "title": "Author / Ownership",
-            "description": "Author details",
+            "property": "metadata",
+            "title": "Site",
+            "description": "Settings directly related to the internals of the site",
             "properties": [
               {
-                "property": "license",
-                "title": "License",
-                "description": "The source url for the element this is citing.",
+                "property": "site",
+                "title": "Site",
+                "description": "Basic details of the site itself",
+                "inputMethod": "tabs",
+                "properties": [
+                  {
+                    "property": "details",
+                    "title": "Details",
+                    "description": "Settings directly related to the internals of the site",
+                    "properties": [
+                      {
+                        "property": "title",
+                        "title": "Title",
+                        "description": "Title of the site",
+                        "inputMethod": "textfield",
+                        "required": true,
+                        "icon": "editor:title"
+                      },
+                      {
+                        "property": "domain",
+                        "title": "Domain",
+                        "description": "Domain of this website",
+                        "inputMethod": "textfield",
+                        "required": false,
+                        "icon": "icons:open-in-browser"
+                      },
+                      {
+                        "property": "description",
+                        "title": "Description",
+                        "description": "Simple description of the site",
+                        "inputMethod": "textfield",
+                        "required": false,
+                        "icon": "editor:short-text"
+                      }
+                    ]
+                  },
+                  {
+                    "property": "author",
+                    "title": "Author / Ownership",
+                    "description": "Author details",
+                    "properties": [
+                      {
+                        "property": "license",
+                        "title": "License",
+                        "description": "The source url for the element this is citing.",
+                        "inputMethod": "select",
+                        "options": {
+                          "by": "Attribution",
+                          "by-nc": "Attribution non-commercial",
+                          "by-nc-nd": "Attribution Non-commercial No derivatives",
+                          "by-nc-sa": "Attribution non-commercial share a like",
+                          "by-nd": "Attribution No derivatives",
+                          "by-sa": "Attribution Share a like"
+                        },
+                        "icon": "link"
+                      },
+                      {
+                        "property": "image",
+                        "title": "Image",
+                        "description": "Photo",
+                        "inputMethod": "haxupload"
+                      },
+                      {
+                        "property": "name",
+                        "title": "Name",
+                        "description": "Name",
+                        "inputMethod": "textfield"
+                      },
+                      {
+                        "property": "socialLink",
+                        "title": "Social media link",
+                        "description": "A primary social space / point of contact",
+                        "inputMethod": "textfield"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "property": "theme",
+            "title": "Theme / Design",
+            "description": "Theme and design settings for the site",
+            "properties": [
+              {
+                "property": "name",
+                "title": "Theme",
+                "description": "Page theme",
                 "inputMethod": "select",
-                "options": {
-                  "by": "Attribution",
-                  "by-nc": "Attribution non-commercial",
-                  "by-nc-nd": "Attribution Non-commercial No derivatives",
-                  "by-nc-sa": "Attribution non-commercial share a like",
-                  "by-nd": "Attribution No derivatives",
-                  "by-sa": "Attribution Share a like"
-                },
-                "icon": "link"
+                "required": false,
+                "icon": "editor:format-paint",
+                "options": {}
               },
               {
                 "property": "image",
-                "title": "Image",
-                "description": "Photo",
-                "inputMethod": "haxupload"
+                "title": "Banner",
+                "description": "Image for the site",
+                "inputMethod": "haxupload",
+                "required": false,
+                "icon": "image:image"
               },
               {
-                "property": "name",
-                "title": "Name",
-                "description": "Name",
-                "inputMethod": "textfield"
+                "property": "cssVariable",
+                "title": "Color",
+                "description": "A base accent color for the site",
+                "inputMethod": "colorpicker",
+                "required": true,
+                "icon": "editor:format-color-fill"
               },
               {
-                "property": "socialLink",
-                "title": "Social media link",
-                "description": "A primary social space / point of contact",
-                "inputMethod": "textfield"
+                "property": "icon",
+                "title": "Icon",
+                "description": "Icon to represent the site",
+                "inputMethod": "iconpicker",
+                "required": false,
+                "icon": "icons:send"
+              }
+            ]
+          },
+          {
+            "property": "fields",
+            "title": "Fields",
+            "description": "Custom fields for nodes in the site",
+            "properties": [
+              {
+                "property": "fields",
+                "title": "Custom Fields",
+                "description": "Store relational data about nodes and other properties",
+                "required": false,
+                "icon": "icons:group-work",
+                "inputMethod": "array",
+                "properties": [
+                  {
+                    "property": "formgroup",
+                    "title": "Form group",
+                    "description": "Which tab will users input values",
+                    "inputMethod": "select",
+                    "required": true,
+                    "options": {
+                      "configure": "Configure",
+                      "advanced": "Advanced"
+                    },
+                    "icon": "link"
+                  },
+                  {
+                    "property": "inputMethod",
+                    "title": "Input method",
+                    "description": "How users can enter data for this field",
+                    "inputMethod": "select",
+                    "options": {
+                      "textfield": "Textfield",
+                      "number": "Number",
+                      "boolean": "Checkbox",
+                      "haxupload": "File upload",
+                      "colorpicker": "Color picker",
+                      "iconpicker": "Icon picker",
+                      "code-editor": "Code editor",
+                      "alt": "Alt text",
+                      "datepicker": "Date picker",
+                      "textarea": "Text area",
+                      "flipboolean": "Checkbox (inverted)",
+                      "select": "Select list",
+                      "array": "Array"
+                    },
+                    "icon": "link"
+                  },
+                  {
+                    "property": "property",
+                    "title": "Machine name",
+                    "description": "Field machine name for storage",
+                    "inputMethod": "textfield",
+                    "required": true
+                  },
+                  {
+                    "property": "title",
+                    "title": "Name",
+                    "description": "Readable name of the field",
+                    "inputMethod": "textfield",
+                    "required": true
+                  },
+                  {
+                    "property": "description",
+                    "title": "Description",
+                    "description": "additional details about the field data",
+                    "inputMethod": "textfield",
+                    "required": false
+                  },
+                  {
+                    "property": "required",
+                    "title": "Required",
+                    "description": "Is this field required",
+                    "inputMethod": "boolean",
+                    "required": false
+                  },
+                  {
+                    "property": "icon",
+                    "title": "Icon",
+                    "description": "Optional icon to represent this field",
+                    "inputMethod": "iconpicker",
+                    "required": false
+                  }
+                ]
               }
             ]
           },
@@ -215,12 +308,23 @@
     ],
     "value": {
       "fields": [],
-      "settings": {
-        "author": {
-          "license": "by-nc-sa",
+      "manifest": {
+        "metadata": {
+          "site": {
+            "author": {
+              "license": "by-nc-sa",
+              "image": "assets/banner.jpg",
+              "name": "Bryan Ollendyke",
+              "socialLink": "https://twitter.com/btopro"
+            }
+          }
+        },
+        "theme": {
+          "name": "simple-blog",
           "image": "assets/banner.jpg",
-          "name": "Bryan Ollendyke",
-          "socialLink": "https://twitter.com/btopro"
+          "hexCode": "#ffffff",
+          "cssVariable": "--simple-colors-default-theme-light-blue-7",
+          "icon": "icons:add-circle-outline"
         },
         "seo": {
           "site.settings.pathauto": true,

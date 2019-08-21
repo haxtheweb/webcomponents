@@ -56,18 +56,22 @@ class SimpleFieldsForm extends LitElement {
     this.method = "POST";
   }
   /**
-   * Submit form values
+   * Submit form values if we have an end point, otherwise return value
+   * of the fields as they currently exist.
    */
   submit() {
-    fetch(this.saveEndpoint, {
-      method: this.method,
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      //make sure to serialize your JSON body
-      body: JSON.stringify(this.shadowRoot.querySelector("#fields").value)
-    });
+    if (this.saveEndpoint) {
+      fetch(this.saveEndpoint, {
+        method: this.method,
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        //make sure to serialize your JSON body
+        body: JSON.stringify(this.shadowRoot.querySelector("#fields").value)
+      });
+    }
+    return this.shadowRoot.querySelector("#fields").value;
   }
   static get properties() {
     return {

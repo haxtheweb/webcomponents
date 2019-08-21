@@ -16,20 +16,20 @@
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
-    <simple-fields-form id="formfields" load-endpoint="data.json" save-endpoint="backend.json"></simple-fields-form>
-    <button id="savebtn">Save stuff</button>
+    <simple-fields-form load-endpoint="data.json"></simple-fields-form>
+    <button id="savebtn">Save / show values in console</button>
     <div class="vertical-section-container centered">
       <h3>Basic simple-fields demo</h3>
       <demo-snippet>
         <template>
           <form>
-            <simple-fields id="fields" autofocus> </simple-fields>
+            <simple-fields id="fields" autofocus></simple-fields>
           </form>
           <script>
             window.onload = function(){
               document.getElementById('savebtn').addEventListener('click', (e) => {
                 // submit the form values to the end point
-                document.getElementById('formfields').submit();
+                console.log(document.getElementsByTagName('simple-fields-form')[0].submit());
               });
               let fields = document.getElementById('fields');
               fields.fields = [
