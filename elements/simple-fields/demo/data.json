@@ -1,0 +1,243 @@
+{
+  "data": {
+    "fields": [
+      {
+        "property": "fields",
+        "title": "Custom Fields",
+        "description": "Store relational data about fields",
+        "required": false,
+        "icon": "icons:group-work",
+        "inputMethod": "array",
+        "properties": [
+          {
+            "property": "formgroup",
+            "title": "Form group",
+            "description": "Which tab will users input values",
+            "inputMethod": "select",
+            "required": true,
+            "options": {
+              "configure": "Configure",
+              "advanced": "Advanced"
+            },
+            "icon": "link"
+          },
+          {
+            "property": "inputMethod",
+            "title": "Input method",
+            "description": "How users can enter data for this field",
+            "inputMethod": "select",
+            "options": {
+              "textfield": "Textfield",
+              "number": "Number",
+              "boolean": "Checkbox",
+              "haxupload": "File upload",
+              "colorpicker": "Color picker",
+              "iconpicker": "Icon picker",
+              "code-editor": "Code editor",
+              "alt": "Alt text",
+              "datepicker": "Date picker",
+              "textarea": "Text area",
+              "flipboolean": "Checkbox (inverted)",
+              "select": "Select list",
+              "array": "Array"
+            },
+            "icon": "link"
+          },
+          {
+            "property": "property",
+            "title": "Machine name",
+            "description": "Field machine name for storage",
+            "inputMethod": "textfield",
+            "required": true
+          },
+          {
+            "property": "title",
+            "title": "Name",
+            "description": "Readable name of the field",
+            "inputMethod": "textfield",
+            "required": true
+          },
+          {
+            "property": "description",
+            "title": "Description",
+            "description": "additional details about the field data",
+            "inputMethod": "textfield",
+            "required": false
+          },
+          {
+            "property": "required",
+            "title": "Required",
+            "description": "Is this field required",
+            "inputMethod": "boolean",
+            "required": false
+          },
+          {
+            "property": "icon",
+            "title": "Icon",
+            "description": "Optional icon to represent this field",
+            "inputMethod": "iconpicker",
+            "required": false
+          }
+        ]
+      },
+      {
+        "property": "settings",
+        "inputMethod": "tabs",
+        "properties": [
+          {
+            "property": "author",
+            "title": "Author / Ownership",
+            "description": "Author details",
+            "properties": [
+              {
+                "property": "license",
+                "title": "License",
+                "description": "The source url for the element this is citing.",
+                "inputMethod": "select",
+                "options": {
+                  "by": "Attribution",
+                  "by-nc": "Attribution non-commercial",
+                  "by-nc-nd": "Attribution Non-commercial No derivatives",
+                  "by-nc-sa": "Attribution non-commercial share a like",
+                  "by-nd": "Attribution No derivatives",
+                  "by-sa": "Attribution Share a like"
+                },
+                "icon": "link"
+              },
+              {
+                "property": "image",
+                "title": "Image",
+                "description": "Photo",
+                "inputMethod": "haxupload"
+              },
+              {
+                "property": "name",
+                "title": "Name",
+                "description": "Name",
+                "inputMethod": "textfield"
+              },
+              {
+                "property": "socialLink",
+                "title": "Social media link",
+                "description": "A primary social space / point of contact",
+                "inputMethod": "textfield"
+              }
+            ]
+          },
+          {
+            "property": "seo",
+            "title": "SEO / Path",
+            "description": "Search engine and detailed internal path handling",
+            "properties": [
+              {
+                "property": "site.settings.pathauto",
+                "title": "Pathauto",
+                "description": "Automatically maintain and update page paths",
+                "inputMethod": "boolean",
+                "icon": "icons:link"
+              },
+              {
+                "property": "site.settings.publishPagesOn",
+                "title": "Show unpublished pages",
+                "description": "Whether to hide unpublished pages or not",
+                "inputMethod": "boolean",
+                "icon": "icons:link"
+              }
+            ]
+          },
+          {
+            "property": "static",
+            "title": "Static publishing",
+            "description": "Publishing options",
+            "properties": [
+              {
+                "property": "cdn",
+                "title": "CDN",
+                "description": "CDN to use for published assets",
+                "inputMethod": "select",
+                "required": true,
+                "options": {
+                  "https://webcomponents.psu.edu/cdn/": "Penn State CDN",
+                  "https://cdn.waxam.io/": "Waxam CDN",
+                  "build/": "Local (no CDN)"
+                },
+                "icon": "link"
+              },
+              {
+                "property": "offline",
+                "title": "Offline",
+                "description": "Published site will work when completely offline",
+                "inputMethod": "boolean",
+                "required": false
+              }
+            ]
+          },
+          {
+            "property": "git",
+            "title": "Git settings",
+            "description": "Store relational data about fields",
+            "properties": [
+              {
+                "property": "branch",
+                "title": "Default branch",
+                "description": "Branch to publish on (master is common)",
+                "inputMethod": "textfield",
+                "required": true
+              },
+              {
+                "property": "staticBranch",
+                "title": "Static branch",
+                "description": "Branch to publish on (gh-pages is common)",
+                "inputMethod": "textfield",
+                "required": true
+              },
+              {
+                "property": "url",
+                "title": "Git url",
+                "description": "location of the git repository to sync up to",
+                "inputMethod": "textfield",
+                "required": true
+              },
+              {
+                "property": "vendor",
+                "title": "Vendor",
+                "description": "Vendor used for internal publishing flexibility",
+                "inputMethod": "select",
+                "options": {
+                  "github": "Github"
+                },
+                "required": true
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "value": {
+      "fields": [],
+      "settings": {
+        "author": {
+          "license": "by-nc-sa",
+          "image": "assets/banner.jpg",
+          "name": "Bryan Ollendyke",
+          "socialLink": "https://twitter.com/btopro"
+        },
+        "seo": {
+          "site.settings.pathauto": true,
+          "site.settings.publishPagesOn": false
+        },
+        "static": {
+          "cdn": "https://cdn.waxam.io/",
+          "offline": true
+        },
+        "git": {
+          "vendor": "github",
+          "branch": "master",
+          "staticBranch": "gh-pages",
+          "url": "git@github.com:btopro/blog.git"
+        }
+      }
+    }
+  },
+  "status": 200
+}

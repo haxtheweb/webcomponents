@@ -11,10 +11,13 @@
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../simple-fields.js';
+      import '../lib/simple-fields-form.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
+    <simple-fields-form id="formfields" load-endpoint="data.json" save-endpoint="backend.json"></simple-fields-form>
+    <button id="savebtn">Save stuff</button>
     <div class="vertical-section-container centered">
       <h3>Basic simple-fields demo</h3>
       <demo-snippet>
@@ -24,6 +27,10 @@
           </form>
           <script>
             window.onload = function(){
+              document.getElementById('savebtn').addEventListener('click', (e) => {
+                // submit the form values to the end point
+                document.getElementById('formfields').submit();
+              });
               let fields = document.getElementById('fields');
               fields.fields = [
                 {
