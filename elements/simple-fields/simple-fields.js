@@ -101,7 +101,8 @@ class SimpleFields extends MutableData(PolymerElement) {
         type: Object,
         notify: true,
         value: {},
-        observer: "_valueChanged"
+        observer: "_valueChanged",
+        reflectToAttribute: true
       },
       /**
        * Fields to convert to JSON Schema.

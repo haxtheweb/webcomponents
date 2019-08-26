@@ -16,8 +16,6 @@
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
-    <simple-fields-form load-endpoint="data.json"></simple-fields-form>
-    <button id="savebtn">Save / show values in console</button>
     <div class="vertical-section-container centered">
       <h3>Basic simple-fields demo</h3>
       <demo-snippet>
@@ -27,10 +25,6 @@
           </form>
           <script>
             window.onload = function(){
-              document.getElementById('savebtn').addEventListener('click', (e) => {
-                // submit the form values to the end point
-                console.log(document.getElementsByTagName('simple-fields-form')[0].submit());
-              });
               let fields = document.getElementById('fields');
               fields.fields = [
                 {
@@ -229,6 +223,19 @@
                 "sword": "needle"
               };
             };
+          </script>
+        </template>
+      </demo-snippet>
+      <h3>Basic simple-fields-form demo</h3>
+      <demo-snippet>
+        <template>
+          <simple-fields-form load-endpoint="data.json"></simple-fields-form>
+          <button id="savebtn">Save / show values in console</button>
+          <script>
+            document.getElementById('savebtn').addEventListener('click', (e) => {
+              // submit the form values to the end point
+              console.log(document.getElementsByTagName('simple-fields-form')[0].submit());
+            });
           </script>
         </template>
       </demo-snippet>
