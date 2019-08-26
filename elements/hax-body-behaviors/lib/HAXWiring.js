@@ -673,6 +673,13 @@ export class HAXWiring {
                   }
                 };
                 break;
+              case "markup":
+                props[settings[value].property].component = {
+                  name: "marked-element",
+                  valueProperty: "markdown"
+                };
+                props[settings[value].property].slot = settings[value].value;
+                break;
               case "alt":
                 props[settings[value].property].component = {
                   name: "paper-input-flagged",
@@ -972,6 +979,7 @@ export class HAXWiring {
           case "iconpicker":
           case "datepicker":
           case "haxupload":
+          case "markup":
           case "textfield":
           case "alt":
             return "string";
@@ -997,6 +1005,7 @@ export class HAXWiring {
         "textarea",
         "datepicker",
         "haxupload",
+        "markup",
         "colorpicker",
         "iconpicker",
         "alt",
