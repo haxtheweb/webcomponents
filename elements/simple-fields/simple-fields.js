@@ -28,7 +28,7 @@ class SimpleFields extends MutableData(PolymerElement) {
         :host {
           display: block;
           background-color: #ffffff;
-          overflow: hidden;
+          overflow: visible;
         }
 
         :host([hidden]) {

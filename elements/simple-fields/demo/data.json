@@ -6,88 +6,73 @@
         "inputMethod": "tabs",
         "properties": [
           {
-            "property": "metadata",
+            "property": "site",
             "title": "Site",
             "description": "Settings directly related to the internals of the site",
             "properties": [
               {
-                "property": "site",
-                "title": "Site",
-                "description": "Basic details of the site itself",
-                "inputMethod": "tabs",
-                "properties": [
-                  {
-                    "property": "details",
-                    "title": "Details",
-                    "description": "Settings directly related to the internals of the site",
-                    "properties": [
-                      {
-                        "property": "title",
-                        "title": "Title",
-                        "description": "Title of the site",
-                        "inputMethod": "textfield",
-                        "required": true,
-                        "icon": "editor:title"
-                      },
-                      {
-                        "property": "domain",
-                        "title": "Domain",
-                        "description": "Domain of this website",
-                        "inputMethod": "textfield",
-                        "required": false,
-                        "icon": "icons:open-in-browser"
-                      },
-                      {
-                        "property": "description",
-                        "title": "Description",
-                        "description": "Simple description of the site",
-                        "inputMethod": "textfield",
-                        "required": false,
-                        "icon": "editor:short-text"
-                      }
-                    ]
-                  },
-                  {
-                    "property": "author",
-                    "title": "Author / Ownership",
-                    "description": "Author details",
-                    "properties": [
-                      {
-                        "property": "license",
-                        "title": "License",
-                        "description": "The source url for the element this is citing.",
-                        "inputMethod": "select",
-                        "options": {
-                          "by": "Attribution",
-                          "by-nc": "Attribution non-commercial",
-                          "by-nc-nd": "Attribution Non-commercial No derivatives",
-                          "by-nc-sa": "Attribution non-commercial share a like",
-                          "by-nd": "Attribution No derivatives",
-                          "by-sa": "Attribution Share a like"
-                        },
-                        "icon": "link"
-                      },
-                      {
-                        "property": "image",
-                        "title": "Image",
-                        "description": "Photo",
-                        "inputMethod": "haxupload"
-                      },
-                      {
-                        "property": "name",
-                        "title": "Name",
-                        "description": "Name",
-                        "inputMethod": "textfield"
-                      },
-                      {
-                        "property": "socialLink",
-                        "title": "Social media link",
-                        "description": "A primary social space / point of contact",
-                        "inputMethod": "textfield"
-                      }
-                    ]
-                  }
-                ]
+                "property": "manifest.title",
+                "title": "title",
+                "description": "Name of the site",
+                "inputMethod": "textfield",
+                "required": true,
+                "icon": "editor:title"
+              },
+              {
+                "property": "manifest.metadata.site.domain",
+                "title": "Domain",
+                "description": "Domain of this website",
+                "inputMethod": "textfield",
+                "required": false,
+                "icon": "icons:open-in-browser"
+              },
+              {
+                "property": "manifest.description",
+                "title": "Description",
+                "description": "Simple description of the site",
+                "inputMethod": "textfield",
+                "required": false,
+                "icon": "editor:short-text"
+              }
+            ]
+          },
+          {
+            "property": "author",
+            "title": "Author / Ownership",
+            "description": "Author details",
+            "properties": [
+              {
+                "property": "manifest.license",
+                "title": "License",
+                "description": "The source url for the element this is citing.",
+                "inputMethod": "select",
+                "options": {
+                  "by": "Attribution",
+                  "by-nc": "Attribution non-commercial",
+                  "by-nc-nd": "Attribution Non-commercial No derivatives",
+                  "by-nc-sa": "Attribution non-commercial share a like",
+                  "by-nd": "Attribution No derivatives",
+                  "by-sa": "Attribution Share a like"
+                },
+                "icon": "link"
+              },
+              {
+                "property": "manifest.metadata.author.image",
+                "title": "Image",
+                "description": "Photo",
+                "inputMethod": "haxupload"
+              },
+              {
+                "property": "manifest.metadata.author.name",
+                "title": "Name",
+                "description": "Name",
+                "inputMethod": "textfield"
+              },
+              {
+                "property": "manifest.metadata.author.socialLink",
+                "title": "Social media link",
+                "description": "A primary social space / point of contact",
+                "inputMethod": "textfield"
               }
             ]
           },
@@ -97,7 +82,7 @@
             "description": "Theme and design settings for the site",
             "properties": [
               {
-                "property": "name",
+                "property": "manifest.metadata.theme.name",
                 "title": "Theme",
                 "description": "Page theme",
                 "inputMethod": "select",
@@ -106,7 +91,7 @@
                 "options": {}
               },
               {
-                "property": "image",
+                "property": "manifest.metadata.theme.variables.image",
                 "title": "Banner",
                 "description": "Image for the site",
                 "inputMethod": "haxupload",
@@ -114,7 +99,7 @@
                 "icon": "image:image"
               },
               {
-                "property": "cssVariable",
+                "property": "manifest.metadata.theme.variables.cssVariable",
                 "title": "Color",
                 "description": "A base accent color for the site",
                 "inputMethod": "colorpicker",
@@ -122,7 +107,7 @@
                 "icon": "editor:format-color-fill"
               },
               {
-                "property": "icon",
+                "property": "manifest.metadata.theme.variables.icon",
                 "title": "Icon",
                 "description": "Icon to represent the site",
                 "inputMethod": "iconpicker",
@@ -137,7 +122,7 @@
             "description": "Custom fields for nodes in the site",
             "properties": [
               {
-                "property": "fields",
+                "property": "manifest.metadata.node.fields",
                 "title": "Custom Fields",
                 "description": "Store relational data about nodes and other properties",
                 "required": false,
@@ -223,14 +208,14 @@
             "description": "Search engine and detailed internal path handling",
             "properties": [
               {
-                "property": "site.settings.pathauto",
+                "property": "manifest.metadata.site.settings.pathauto",
                 "title": "Pathauto",
                 "description": "Automatically maintain and update page paths",
                 "inputMethod": "boolean",
                 "icon": "icons:link"
               },
               {
-                "property": "site.settings.publishPagesOn",
+                "property": "manifest.metadata.site.settings.publishPagesOn",
                 "title": "Show unpublished pages",
                 "description": "Whether to hide unpublished pages or not",
                 "inputMethod": "boolean",
@@ -244,7 +229,7 @@
             "description": "Publishing options",
             "properties": [
               {
-                "property": "cdn",
+                "property": "manifest.metadata.site.static.cdn",
                 "title": "CDN",
                 "description": "CDN to use for published assets",
                 "inputMethod": "select",
@@ -257,7 +242,7 @@
                 "icon": "link"
               },
               {
-                "property": "offline",
+                "property": "manifest.metadata.site.static.offline",
                 "title": "Offline",
                 "description": "Published site will work when completely offline",
                 "inputMethod": "boolean",
@@ -271,28 +256,28 @@
             "description": "Store relational data about fields",
             "properties": [
               {
-                "property": "branch",
+                "property": "manifest.metadata.site.git.branch",
                 "title": "Default branch",
                 "description": "Branch to publish on (master is common)",
                 "inputMethod": "textfield",
                 "required": true
               },
               {
-                "property": "staticBranch",
+                "property": "manifest.metadata.site.git.staticBranch",
                 "title": "Static branch",
                 "description": "Branch to publish on (gh-pages is common)",
                 "inputMethod": "textfield",
                 "required": true
               },
               {
-                "property": "url",
+                "property": "manifest.metadata.site.git.url",
                 "title": "Git url",
                 "description": "location of the git repository to sync up to",
                 "inputMethod": "textfield",
                 "required": true
               },
               {
-                "property": "vendor",
+                "property": "manifest.metadata.site.git.vendor",
                 "title": "Vendor",
                 "description": "Vendor used for internal publishing flexibility",
                 "inputMethod": "select",
@@ -309,36 +294,37 @@
     "value": {
       "fields": [],
       "manifest": {
-        "metadata": {
-          "site": {
-            "author": {
-              "license": "by-nc-sa",
-              "image": "assets/banner.jpg",
-              "name": "Bryan Ollendyke",
-              "socialLink": "https://twitter.com/btopro"
-            }
-          }
+        "site": {
+          "manifest.title": "btopro",
+          "manifest.description": "A cool website about stuff",
+          "manifest.metadata.site.domain": "stuff.com"
+        },
+        "author": {
+          "manifest.license": "by-nc-sa",
+          "manifest.metadata.author.image": "assets/banner.jpg",
+          "manifest.metadata.author.name": "Bryan Ollendyke",
+          "manifest.metadata.author.socialLink": "https://twitter.com/btopro"
         },
         "theme": {
-          "name": "simple-blog",
-          "image": "assets/banner.jpg",
-          "hexCode": "#ffffff",
-          "cssVariable": "--simple-colors-default-theme-light-blue-7",
-          "icon": "icons:add-circle-outline"
+          "manifest.metadata.theme.name": "simple-blog",
+          "manifest.metadata.theme.variables.image": "assets/banner.jpg",
+          "manifest.metadata.theme.variables.hexCode": "#ffffff",
+          "manifest.metadata.theme.variables.cssVariable": "--simple-colors-default-theme-light-blue-7",
+          "manifest.metadata.theme.variables.icon": "icons:add-circle-outline"
         },
         "seo": {
-          "site.settings.pathauto": true,
-          "site.settings.publishPagesOn": false
+          "manifest.metadata.site.settings.pathauto": true,
+          "manifest.metadata.site.settings.publishPagesOn": false
         },
         "static": {
-          "cdn": "https://cdn.waxam.io/",
-          "offline": true
+          "manifest.metadata.site.static.cdn": "https://cdn.waxam.io/",
+          "manifest.metadata.site.static.offline": true
         },
         "git": {
-          "vendor": "github",
-          "branch": "master",
-          "staticBranch": "gh-pages",
-          "url": "git@github.com:btopro/blog.git"
+          "manifest.metadata.site.git.vendor": "github",
+          "manifest.metadata.site.git.branch": "master",
+          "manifest.metadata.site.git.staticBranch": "gh-pages",
+          "manifest.metadata.site.git.url": "git@github.com:btopro/blog.git"
         }
       }
     }

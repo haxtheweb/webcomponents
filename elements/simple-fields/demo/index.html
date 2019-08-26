@@ -17,16 +17,21 @@
   </head>
   <body>
     <simple-fields-form load-endpoint="data.json"></simple-fields-form>
+    <button id="autoload">Load data</button>
     <button id="savebtn">Save / show values in console</button>
     <div class="vertical-section-container centered">
       <h3>Basic simple-fields demo</h3>
       <demo-snippet>
         <template>
           <form>
-            <simple-fields id="fields" autofocus></simple-fields>
+            <simple-fields id="fields"></simple-fields>
           </form>
           <script>
             window.onload = function(){
+              document.getElementById('autoload').addEventListener('click', (e) => {
+                // submit the form values to the end point
+                document.getElementsByTagName('simple-fields-form')[0].autoload = true;
+              });
               document.getElementById('savebtn').addEventListener('click', (e) => {
                 // submit the form values to the end point
                 console.log(document.getElementsByTagName('simple-fields-form')[0].submit());
