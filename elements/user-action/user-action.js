@@ -92,6 +92,11 @@ class UserAction extends HTMLElement {
         type: String,
         value: "visibility"
       },
+      eventname: {
+        name: "eventname",
+        type: String,
+        value: "user-engagement"
+      },
       every: {
         name: "every",
         type: Boolean,
@@ -121,6 +126,7 @@ class UserAction extends HTMLElement {
    */
   constructor(delayRender = false) {
     super();
+    this.UserActionBroker = new UserActionBroker();
     // set tag for later use
     this.tag = UserAction.tag;
     // map our imported properties json to real props on the element
@@ -140,7 +146,6 @@ class UserAction extends HTMLElement {
         }
       }
     }
-    this.UserActionBroker = new UserActionBroker();
   }
   /**
    * life cycle, element is afixed to the DOM
@@ -152,10 +157,14 @@ class UserAction extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["track"];
+    return ["track", "eventname"];
   }
 
   attributeChangedCallback(attr, oldValue, newValue) {
+    // allow for customized event name
+    if (attr === "eventname" && newValue) {
+      this.UserActionBroker.eventname = newValue;
+    }
     if (attr === "track" && newValue) {
       switch (newValue) {
         // visibility isn't a real event and needs a complex solution

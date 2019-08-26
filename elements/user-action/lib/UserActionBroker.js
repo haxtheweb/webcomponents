@@ -10,9 +10,14 @@ export class UserActionBroker {
     // set the built in events w/ support for others
     this.eventList = {
       click: "click",
+      mousedown: "mousedown",
+      mouseup: "mouseup",
       visibility: "visibility",
-      keypress: "keypress"
+      keypress: "keypress",
+      keydown: "keydown",
+      keyup: "keyup"
     };
+    this.eventname = "user-engagement";
   }
   /**
    * See if this is a valid event
@@ -29,7 +34,7 @@ export class UserActionBroker {
   fireAction(eventType, details, context) {
     details.eventType = eventType;
     context.dispatchEvent(
-      new CustomEvent("user-engagement", {
+      new CustomEvent(this.eventname, {
         bubbles: true,
         composed: true,
         cancelable: false,
