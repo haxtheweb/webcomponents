@@ -5,7 +5,9 @@ import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
 import "@lrnwebcomponents/json-editor/json-editor.js";
 import "@lrnwebcomponents/editable-outline/editable-outline.js";
-
+import "@polymer/paper-button/paper-button.js";
+import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/iron-icons/iron-icons.js";
 /**
  * `haxcms-outline-editor-dialog`
  * `Dialog for presenting an editable outline`
@@ -22,12 +24,6 @@ class HAXCMSOutlineEditorDialog extends PolymerElement {
   static get tag() {
     return "haxcms-outline-editor-dialog";
   }
-  constructor() {
-    super();
-    import("@polymer/paper-button/paper-button.js");
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/iron-icons/iron-icons.js");
-  }
   // render function
   static get template() {
     return html`
@@ -41,9 +37,14 @@ class HAXCMSOutlineEditorDialog extends PolymerElement {
           position: absolute;
           bottom: 0;
           z-index: 1000000;
-          background-color: var(--simple-modal-titlebar-background, #ddd);
+          background-color: var(--simple-modal-titlebar-background, #000000);
+          color: var(--simple-modal-titlebar-color, #ffffff);
           left: 0;
           right: 0;
+        }
+        .buttons paper-button {
+          color: #ffffff;
+          background-color: var(--simple-modal-button-background, #000000);
         }
         editable-outline:not(:defined),
         json-editor:not(:defined),
@@ -72,8 +73,12 @@ class HAXCMSOutlineEditorDialog extends PolymerElement {
         hidden$="[[!viewMode]]"
       ></json-editor>
       <div class="buttons">
-        <paper-button dialog-confirm on-click="_saveTap">Save</paper-button>
-        <paper-button dialog-dismiss>Cancel</paper-button>
+        <paper-button dialog-confirm on-click="_saveTap"
+          ><iron-icon icon="icons:save"></iron-icon>Save</paper-button
+        >
+        <paper-button dialog-dismiss
+          ><iron-icon icon="icons:cancel"></iron-icon>Cancel</paper-button
+        >
         <paper-button id="toggle" on-click="toggleView"
           ><iron-icon icon="[[_viewIcon]]"></iron-icon
           >[[viewLabel]]</paper-button
