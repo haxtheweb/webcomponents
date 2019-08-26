@@ -1,3 +1,14 @@
+:root {
+  --haxcms-system-bg: #37474f;
+  --paper-toast-color: #FFFFFF;
+  --paper-toast-background-color:var(--haxcms-system-bg);
+  --simple-modal-titlebar-color: #FFFFFF;
+  --simple-modal-titlebar-background: var(--haxcms-system-bg);
+  --simple-modal-header-color: #FFFFFF;
+  --simple-modal-header-background: var(--haxcms-system-bg);
+  --simple-modal-button-color: var(--haxcms-color, #FFFFFF);
+  --simple-modal-button-background: #37474f;
+}
 body, html {
   padding: 0;
   margin: 0;
