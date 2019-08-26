@@ -371,6 +371,7 @@ class HAXCMSBackendBeaker extends PolymerElement {
    */
   _jwtTokenFired(e) {
     this.jwt = e.detail;
+    store.jwt = this.jwt;
   }
   /**
    * Generate a uinque ID

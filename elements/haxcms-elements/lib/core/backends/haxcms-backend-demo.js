@@ -79,6 +79,7 @@ class HAXCMSBackendDemo extends PolymerElement {
    */
   _jwtTokenFired(e) {
     this.jwt = e.detail;
+    store.jwt = this.jwt;
   }
   /**
    * Attached life cycle
