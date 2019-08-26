@@ -23,6 +23,8 @@ class A11yTab extends PolymerElement {
       <style>
         :host {
           display: block;
+          height: var(--a11y-tabs-tab-height, --a11y-tabs-height);
+          overflow: var(--a11y-tabs-tab-overflow, --a11y-tabs-overflow);
           @apply --a11y-tab-content;
         }
         :host([flag]) {
