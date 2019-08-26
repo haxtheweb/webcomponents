@@ -1,9 +1,14 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { store } from "./haxcms-site-store.js";
+import { varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-
+import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@lrnwebcomponents/simple-modal/simple-modal.js";
+import "@polymer/iron-icons/editor-icons.js";
+import "@polymer/paper-fab/paper-fab.js";
 /**
  * `haxcms-site-editor-ui`
  * `haxcms editor element buttons that you see`
@@ -22,10 +27,6 @@ class HAXCMSSiteEditorUI extends PolymerElement {
   constructor() {
     super();
     this.__disposer = [];
-    import("@polymer/paper-icon-button/paper-icon-button.js");
-    import("@lrnwebcomponents/simple-modal/simple-modal.js");
-    import("@polymer/iron-icons/editor-icons.js");
-    import("@polymer/paper-fab/paper-fab.js");
   }
   // render function
   static get template() {
@@ -34,24 +35,33 @@ class HAXCMSSiteEditorUI extends PolymerElement {
         :host {
           display: block;
           position: fixed;
-          right: 0;
-          bottom: 0;
-          opacity: 0.9;
-          transition: 0.3s all ease-in-out;
-          background-color: var(--haxcms-color, white);
-          padding: 0px 8px;
-          border-top-left-radius: 10px;
-          border-left: 2px solid black;
-          border-top: 2px solid black;
-          min-width: 154px;
-          width: 72px;
-          line-height: 54px;
-          height: 54px;
+          left: 0;
+          top: 56px;
+          opacity: 0.8;
+          transition: 0.8s left linear, 0.3s opacity ease-in-out,
+            0.3s visibility ease-in-out;
+          background-color: #37474f;
           z-index: 10000;
+          border-right: 2px solid black;
+          border-top: 2px solid black;
+          border-bottom: 2px solid black;
           visibility: visible;
         }
         :host([edit-mode]) {
-          min-width: 154px;
+          z-index: 9999;
+        }
+        :host([dashboard-opened]) {
+          left: 50vw;
+        }
+        /**
+         * Dashboard open trumps all contextual settings
+         */
+        :host([dashboard-opened]) #editbutton,
+        :host([dashboard-opened]) #editdetails,
+        :host([dashboard-opened]) #deletebutton,
+        :host([dashboard-opened]) #addbutton,
+        :host([dashboard-opened]) #outlinebutton {
+          display: none !important;
         }
         :host *[hidden] {
           display: none;
@@ -62,15 +72,14 @@ class HAXCMSSiteEditorUI extends PolymerElement {
           display: none !important;
         }
         paper-fab {
-          display: inline-flex;
+          display: block;
           width: 48px;
           height: 48px;
-          vertical-align: middle;
-          line-height: 48px;
+          line-height: 20px;
           background-color: black;
           color: var(--haxcms-color, white);
           transition: 0.3s all ease-in-out;
-          padding: 8px;
+          padding: 12px;
           margin: 0;
           position: relative;
           @apply --shadow-elevation-8dp;
@@ -80,12 +89,13 @@ class HAXCMSSiteEditorUI extends PolymerElement {
           visibility: hidden;
         }
         paper-icon-button {
+          display: block;
           padding: 8px;
           width: 48px;
           min-width: 48px;
           height: 48px;
           border-radius: 50%;
-          margin: 3px 3px 0 3px;
+          margin: 0px;
           background-color: black;
           color: var(--haxcms-color, rgba(255, 0, 116, 1));
           transition: 0.3s all ease-in-out;
@@ -113,59 +123,22 @@ class HAXCMSSiteEditorUI extends PolymerElement {
           opacity: 1;
         }
         :host([edit-mode]) #editbutton {
-          width: 60px;
-          z-index: 1001;
           border-radius: 0;
-          margin: 0;
-          padding: 0;
           color: white;
           background-color: var(--paper-blue-500, blue) !important;
-          position: absolute;
-          height: 54px;
         }
-        .wrapper {
-          width: 0px;
-          height: 54px;
-          line-height: 54px;
-          color: black;
-          display: inline-flex;
-          transition: 0.3s all ease-in-out;
-          overflow: hidden;
-          padding: 0;
-          margin: 0;
-          vertical-align: top;
+        :host([edit-mode]) #manifestbutton,
+        :host([edit-mode]) #editdetails,
+        :host([edit-mode]) #deletebutton,
+        :host([edit-mode]) #addbutton,
+        :host([edit-mode]) #outlinebutton {
+          display: none !important;
         }
-        :host([menu-mode]) .wrapper {
-          width: 250px;
-        }
-        @media screen and (max-width: 600px) {
-          :host([menu-mode]) .wrapper {
-            width: 200px;
-          }
-          .active-title {
-            display: none;
-          }
-        }
-        :host([menu-mode]) {
-          opacity: 1;
-          width: unset;
-        }
-        :host([edit-mode][menu-mode]) #editbutton {
-          width: 100% !important;
-        }
+
         :host(:hover),
         :host(:active),
         :host(:focus) {
           opacity: 1;
-        }
-        .active-title {
-          font-size: 11px;
-          font-weight: bold;
-          width: 100px;
-          text-overflow: ellipsis;
-          overflow: hidden;
-          line-height: 54px;
-          padding: 0 8px;
         }
         paper-tooltip {
           --paper-tooltip-background: #000000;
@@ -177,11 +150,17 @@ class HAXCMSSiteEditorUI extends PolymerElement {
           }
         }
       </style>
+      <paper-icon-button
+        id="manifestbutton"
+        icon="[[icon]]"
+        on-click="_manifestButtonTap"
+        title="[[__settingsText]]"
+      ></paper-icon-button>
       <paper-fab
-        id="menubutton"
-        icon="icons:menu"
-        on-click="_menuButtonTap"
-        title="Expand menu"
+        id="editbutton"
+        icon="[[__editIcon]]"
+        on-click="_editButtonTap"
+        title$="[[__editText]]"
       ></paper-fab>
       <paper-fab
         id="cancelbutton"
@@ -191,67 +170,49 @@ class HAXCMSSiteEditorUI extends PolymerElement {
         title="Cancel editing"
       ></paper-fab>
       <paper-fab
-        id="editbutton"
-        icon="[[__editIcon]]"
-        on-click="_editButtonTap"
-        title$="[[__editText]]"
-      ></paper-fab>
-      <paper-fab
         id="editdetails"
         icon="icons:fingerprint"
         on-click="_editDetailsButtonTap"
         title="Edit page details"
       ></paper-fab>
+      <paper-icon-button
+        id="addbutton"
+        icon="icons:add"
+        on-click="_addButtonTap"
+        title="Add new page"
+      ></paper-icon-button>
       <paper-fab
         id="deletebutton"
         icon="icons:delete"
         on-click="_deleteButtonTap"
         title="Delete current page"
       ></paper-fab>
-      <div class="wrapper">
-        <div class="active-title">[[activeTitle]]</div>
-        <paper-icon-button
-          id="addbutton"
-          icon="icons:add"
-          on-click="_addButtonTap"
-          title="Add new page"
-        ></paper-icon-button>
-        <paper-icon-button
-          id="outlinebutton"
-          icon="icons:list"
-          on-click="_outlineButtonTap"
-          title="Edit site outline"
-        ></paper-icon-button>
-        <paper-icon-button
-          id="manifestbutton"
-          icon="icons:settings"
-          on-click="_manifestButtonTap"
-          title="Edit site settings"
-        ></paper-icon-button>
-      </div>
-      <paper-tooltip for="menubutton" position="top" offset="14"
-        >Menu</paper-tooltip
-      >
-      <paper-tooltip for="cancelbutton" position="top" offset="14"
+      <paper-icon-button
+        id="outlinebutton"
+        icon="icons:list"
+        on-click="_outlineButtonTap"
+        title="Edit site outline"
+      ></paper-icon-button>
+      <paper-tooltip for="cancelbutton" position="right" offset="14"
         >Cancel</paper-tooltip
       >
-      <paper-tooltip for="editbutton" position="top" offset="14"
+      <paper-tooltip for="editbutton" position="right" offset="14"
         >[[__editText]]</paper-tooltip
       >
-      <paper-tooltip for="editdetails" position="top" offset="14"
+      <paper-tooltip for="editdetails" position="right" offset="14"
         >Details</paper-tooltip
       >
-      <paper-tooltip for="deletebutton" position="top" offset="14"
+      <paper-tooltip for="deletebutton" position="right" offset="14"
         >Delete</paper-tooltip
       >
-      <paper-tooltip for="addbutton" position="top" offset="14"
+      <paper-tooltip for="addbutton" position="right" offset="14"
         >Add</paper-tooltip
       >
-      <paper-tooltip for="outlinebutton" position="top" offset="14"
+      <paper-tooltip for="outlinebutton" position="right" offset="14"
         >Outline</paper-tooltip
       >
-      <paper-tooltip for="manifestbutton" position="top" offset="14"
-        >Site details</paper-tooltip
+      <paper-tooltip for="manifestbutton" position="right" offset="14"
+        >[[__settingsText]]</paper-tooltip
       >
     `;
   }
@@ -284,14 +245,6 @@ class HAXCMSSiteEditorUI extends PolymerElement {
         notify: true
       },
       /**
-       * if the menu is open or not
-       */
-      menuMode: {
-        type: Boolean,
-        reflectToAttribute: true,
-        value: true
-      },
-      /**
        * Manifest editing state
        */
       manifestEditMode: {
@@ -303,13 +256,23 @@ class HAXCMSSiteEditorUI extends PolymerElement {
       },
       activeTitle: {
         type: String
+      },
+      manifest: {
+        type: Object
+      },
+      icon: {
+        type: String
+      },
+      dashboardOpened: {
+        type: Boolean,
+        reflectToAttribute: true,
+        observer: "_dashboardOpenedChanged"
       }
     };
   }
   connectedCallback() {
     super.connectedCallback();
     afterNextRender(this, function() {
-      import("@polymer/paper-tooltip/paper-tooltip.js");
       import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-outline-editor-dialog.js");
       // this ensures that an initial paint won't get a cached copy of the site.json file
       // this is more than possible given that it will register to most backends
@@ -324,6 +287,19 @@ class HAXCMSSiteEditorUI extends PolymerElement {
       );
       autorun(reaction => {
         this.editMode = toJS(store.editMode);
+        this.__disposer.push(reaction);
+      });
+      autorun(reaction => {
+        this.manifest = toJS(store.manifest);
+        this.icon = varGet(
+          this.manifest,
+          "manifest.metadata.theme.variables.icon",
+          "icons:settings"
+        );
+        this.__disposer.push(reaction);
+      });
+      autorun(reaction => {
+        this.dashboardOpened = toJS(store.dashboardOpened);
         this.__disposer.push(reaction);
       });
       autorun(reaction => {
@@ -343,6 +319,19 @@ class HAXCMSSiteEditorUI extends PolymerElement {
       this.__disposer[i].dispose();
     }
     super.disconnectedCallback();
+  }
+  _dashboardOpenedChanged(newValue, oldValue) {
+    if (newValue) {
+      this.__settingsText = "Close";
+      this.icon = "icons:cancel";
+    } else if (!newValue && oldValue) {
+      this.__settingsText = "Site settings";
+      this.icon = varGet(
+        this.manifest,
+        "manifest.metadata.theme.variables.icon",
+        "icons:settings"
+      );
+    }
   }
   /**
    * toggle state on button tap
@@ -370,12 +359,6 @@ class HAXCMSSiteEditorUI extends PolymerElement {
       detail: normalizedEvent.localTarget
     });
     window.dispatchEvent(evt);
-  }
-  /**
-   * toggle menu state
-   */
-  _menuButtonTap(e) {
-    this.menuMode = !this.menuMode;
   }
   _cancelButtonTap(e) {
     this.editMode = false;
