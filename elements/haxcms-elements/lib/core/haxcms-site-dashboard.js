@@ -286,6 +286,12 @@ class HAXCMSSiteDashboard extends LitElement {
       if (propName === "dashboardOpened" && this.dashboardOpened) {
         // API function so we refresh new data every time
         this.shadowRoot.querySelector("#siteform").loadData();
+        this.removeAttribute("aria-hidden");
+        this.removeAttribute("tabindex");
+      }
+      if (propName === "dashboardOpened" && !this.dashboardOpened) {
+        this.setAttribute("aria-hidden", "aria-hidden");
+        this.setAttribute("tabindex", "-1");
       }
     });
   }

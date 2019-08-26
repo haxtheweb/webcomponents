@@ -109,6 +109,7 @@ class HAXCMSSiteBuilder extends PolymerElement {
       },
       dashboardOpened: {
         type: Boolean,
+        observer: "_dashboardOpenedChanged",
         reflectToAttribute: true
       },
       /**
@@ -243,6 +244,15 @@ class HAXCMSSiteBuilder extends PolymerElement {
       this.__disposer.push(reaction);
     });
     this._timeStamp = "";
+  }
+  _dashboardOpenedChanged(newValue, oldValue) {
+    if (newValue) {
+      this.setAttribute("aria-hidden", "aria-hidden");
+      this.setAttribute("tabindex", "-1");
+    } else if (!newValue && oldValue) {
+      this.removeAttribute("aria-hidden");
+      this.removeAttribute("tabindex");
+    }
   }
   connectedCallback() {
     super.connectedCallback();
