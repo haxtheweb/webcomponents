@@ -6,7 +6,6 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
-import { varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
@@ -15,6 +14,9 @@ import "@lrnwebcomponents/jwt-login/jwt-login.js";
 import "@lrnwebcomponents/h-a-x/h-a-x.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
+import "@polymer/paper-button/paper-button.js";
+import "@lrnwebcomponents/hax-body/lib/hax-schema-form.js";
+import "./haxcms-site-dashboard.js";
 
 /**
  * `haxcms-site-editor`
@@ -111,28 +113,6 @@ class HAXCMSSiteEditor extends PolymerElement {
       ></iron-ajax>
       <iron-ajax
         headers='{"Authorization": "Bearer [[jwt]]"}'
-        id="getfieldsajax"
-        url="[[getNodeFieldsPath]]"
-        method="[[method]]"
-        body="[[getFieldsData]]"
-        content-type="application/json"
-        handle-as="json"
-        on-response="_handleGetFieldsResponse"
-        last-error="{{lastError}}"
-      ></iron-ajax>
-      <iron-ajax
-        headers='{"Authorization": "Bearer [[jwt]]"}'
-        id="getsitefieldsajax"
-        url="[[getSiteFieldsPath]]"
-        method="[[method]]"
-        body="[[getSiteFieldsData]]"
-        content-type="application/json"
-        handle-as="json"
-        on-response="_handleGetSiteFieldsResponse"
-        last-error="{{lastError}}"
-      ></iron-ajax>
-      <iron-ajax
-        headers='{"Authorization": "Bearer [[jwt]]"}'
         id="manifestupdateajax"
         url="[[saveManifestPath]]"
         method="[[method]]"
@@ -187,6 +167,17 @@ class HAXCMSSiteEditor extends PolymerElement {
         handle-as="json"
         on-response="_handleDeleteResponse"
         last-response="{{__deleteNodeResponse}}"
+        last-error="{{lastError}}"
+      ></iron-ajax>
+      <iron-ajax
+        headers='{"Authorization": "Bearer [[jwt]]"}'
+        id="getnodefieldsajax"
+        url="[[getNodeFieldsPath]]"
+        method="[[method]]"
+        body="[[getNodeFieldsData]]"
+        content-type="application/json"
+        handle-as="json"
+        on-response="_handleGetNodeFieldsResponse"
         last-error="{{lastError}}"
       ></iron-ajax>
       <h-a-x app-store$="[[appStore]]" hide-panel-ops></h-a-x>
@@ -336,14 +327,7 @@ class HAXCMSSiteEditor extends PolymerElement {
       /**
        * data as part of the POST to the for field data
        */
-      getFieldsData: {
-        type: Object,
-        value: {}
-      },
-      /**
-       * data as part of the POST to the for field data
-       */
-      getSiteFieldsData: {
+      getNodeFieldsData: {
         type: Object,
         value: {}
       },
@@ -369,7 +353,7 @@ class HAXCMSSiteEditor extends PolymerElement {
       getSiteFieldsPath: {
         type: String
       },
-      getFieldsToken: {
+      getFormToken: {
         type: String
       }
     };
@@ -400,8 +384,18 @@ class HAXCMSSiteEditor extends PolymerElement {
   ready() {
     super.ready();
     afterNextRender(this, function() {
-      import("@polymer/paper-button/paper-button.js");
-      import("@lrnwebcomponents/hax-body/lib/hax-schema-form.js");
+      // see up a tag to place RIGHT next to the site-builder itself
+      if (!this.siteDashboard) {
+        let builder = document.getElementsByTagName("haxcms-site-builder")[0];
+        this.siteDashboard = document.createElement("haxcms-site-dashboard");
+        this.siteDashboard.headers = {
+          Authorization: `Bearer ${this.jwt}`
+        };
+        this.siteDashboard.loadEndpoint = this.getSiteFieldsPath;
+        this.siteDashboard.method = this.method;
+        // insert right before the builder, you sneaky thing you
+        builder.parentNode.insertBefore(this.siteDashboard, builder);
+      }
       autorun(reaction => {
         this.editMode = toJS(store.editMode);
         this.__disposer.push(reaction);
@@ -449,8 +443,6 @@ class HAXCMSSiteEditor extends PolymerElement {
         "haxcms-load-site-fields",
         this.loadSiteFields.bind(this)
       );
-      window.addEventListener("haxcms-create-node", this.createNode.bind(this));
-      window.addEventListener("haxcms-delete-node", this.deleteNode.bind(this));
       window.addEventListener(
         "haxcms-publish-site",
         this.publishSite.bind(this)
@@ -459,6 +451,8 @@ class HAXCMSSiteEditor extends PolymerElement {
         "haxcms-git-revert-last-commit",
         this.revertCommit.bind(this)
       );
+      window.addEventListener("haxcms-create-node", this.createNode.bind(this));
+      window.addEventListener("haxcms-delete-node", this.deleteNode.bind(this));
       microTask.run(() => {
         this.updateStyles();
         if (window.HaxStore.ready) {
@@ -556,10 +550,10 @@ class HAXCMSSiteEditor extends PolymerElement {
    */
   loadNodeFields(e) {
     this.__nodeFieldsInvoked = e.detail;
-    this.set("getFieldsData", {});
-    this.set("getFieldsData", {
+    this.set("getNodeFieldsData", {});
+    this.set("getNodeFieldsData", {
       jwt: this.jwt,
-      token: this.getFieldsToken,
+      token: this.getFormToken,
       site: {
         name: this.manifest.metadata.site.name
       },
@@ -567,30 +561,30 @@ class HAXCMSSiteEditor extends PolymerElement {
         id: this.activeItem.id
       }
     });
-    this.notifyPath("getFieldsData.*");
-    this.$.getfieldsajax.generateRequest();
+    this.notifyPath("getNodeFieldsData.*");
+    this.$.getnodefieldsajax.generateRequest();
   }
   /**
    * Load site fields
    */
   loadSiteFields(e) {
     this.__siteFieldsInvoked = e.detail;
-    this.set("getSiteFieldsData", {});
-    this.set("getSiteFieldsData", {
+    this.siteDashboard.body = {
       jwt: this.jwt,
-      token: this.getFieldsToken,
+      token: this.getFormToken,
       site: {
         name: this.manifest.metadata.site.name
       }
-    });
-    this.notifyPath("getSiteFieldsData.*");
-    this.$.getsitefieldsajax.generateRequest();
+    };
+    this.siteDashboard.headers = {
+      Authorization: `Bearer ${this.jwt}`
+    };
+    store.dashboardOpened = !store.dashboardOpened;
   }
   /**
    * Handle getting fields response
    */
-  _handleGetFieldsResponse(e) {
-    // we get back HAXSchema from the server
+  _handleGetNodeFieldsResponse(e) {
     let wiring = new HAXWiring();
     this._haxSchema = wiring.prototypeHaxProperties();
     this._haxSchema.settings = e.detail.response.haxSchema;
@@ -608,6 +602,7 @@ class HAXCMSSiteEditor extends PolymerElement {
       c.set(key + "Schema", schema);
     }
     this.__fieldsForm = c;
+    // we get back HAXSchema from the server
     let b1 = document.createElement("paper-button");
     b1.raised = true;
     let icon = document.createElement("iron-icon");
@@ -615,7 +610,7 @@ class HAXCMSSiteEditor extends PolymerElement {
     b1.appendChild(icon);
     b1.appendChild(document.createTextNode("Save fields"));
     b1.setAttribute("dialog-confirm", "dialog-confirm");
-    b1.addEventListener("click", this._saveFieldsTap.bind(this));
+    b1.addEventListener("click", this._saveNodeFieldsTap.bind(this));
     let b2 = document.createElement("paper-button");
     b2.appendChild(document.createTextNode("cancel"));
     b2.setAttribute("dialog-dismiss", "dialog-dismiss");
@@ -648,106 +643,6 @@ class HAXCMSSiteEditor extends PolymerElement {
     });
     window.dispatchEvent(evt);
   }
-  /**
-   * Handle getting fields response
-   */
-  _handleGetSiteFieldsResponse(e) {
-    // we get back HAXSchema from the server
-    let wiring = new HAXWiring();
-    this._haxSchema = wiring.prototypeHaxProperties();
-    this._haxSchema.settings = e.detail.response.haxSchema;
-    let values = e.detail.response.values;
-    let h = "";
-    if (
-      varGet(this.manifest, "metadata.site.static.publishedLocation", false)
-    ) {
-      h = document.createElement("a");
-      h.setAttribute("tabindex", "-1");
-      h.setAttribute(
-        "href",
-        this.manifest.metadata.site.static.publishedLocation
-      );
-      h.setAttribute("target", "_blank");
-      h.innerHTML =
-        '<paper-button raised style="text-transform:none;">Access published version</paper-button>';
-    }
-    let c = document.createElement("hax-schema-form");
-    c.addEventListener(
-      "value-changed",
-      this._schemaFormValueChanged.bind(this)
-    );
-    // set a min width of 50 viewable
-    c.style.minWidth = "50vw";
-    for (var key in this._haxSchema.settings) {
-      let schema = wiring.getHaxJSONSchema(key, this._haxSchema);
-      for (var i in schema.properties) {
-        if (values[i]) {
-          schema.properties[i].value = values[i];
-        }
-      }
-      c.set(key + "Schema", schema);
-    }
-    this.__siteFieldsForm = c;
-    // build a save button
-    let b1 = document.createElement("paper-button");
-    b1.raised = true;
-    let icon = document.createElement("iron-icon");
-    icon.icon = "icons:save";
-    b1.appendChild(icon);
-    b1.appendChild(document.createTextNode("Save fields"));
-    b1.setAttribute("dialog-confirm", "dialog-confirm");
-    b1.addEventListener("click", this._saveSiteFieldsTap.bind(this));
-    // cancel
-    let b2 = document.createElement("paper-button");
-    b2.appendChild(document.createTextNode("cancel"));
-    b2.setAttribute("dialog-dismiss", "dialog-dismiss");
-    // publish button
-    let icon2 = document.createElement("iron-icon");
-    icon2.icon = "icons:cloud-upload";
-    let b3 = document.createElement("paper-button");
-    b3.raised = true;
-    b3.appendChild(icon2);
-    b3.appendChild(document.createTextNode("Publish"));
-    b3.setAttribute("dialog-confirm", "dialog-confirm");
-    b3.addEventListener("click", this._publishTap.bind(this));
-    b3.style.minWidth = "100px";
-    b3.style.backgroundColor = "var(--haxcms-color)";
-    let b4 = document.createElement("paper-button");
-    b4.raised = true;
-    b4.appendChild(document.createTextNode("Roll site back"));
-    b4.setAttribute("dialog-confirm", "dialog-confirm");
-    b4.addEventListener("click", this._revertCommit.bind(this));
-    b4.style.minWidth = "100px";
-    b4.style.marginLeft = "50px";
-    b4.style.backgroundColor = "var(--simple-colors-default-theme-red-8)";
-    b4.style.color = "white";
-
-    let b = document.createElement("div");
-    b.style.position = "absolute";
-    b.style.bottom = 0;
-    b.style.left = 0;
-    b.style.right = 0;
-    b.style.zIndex = 1000000;
-    b.style.backgroundColor = "#ddd";
-    b.appendChild(b1);
-    b.appendChild(b2);
-    b.appendChild(b3);
-    b.appendChild(b4);
-    window.dispatchEvent(
-      new CustomEvent("simple-modal-show", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: {
-          title: "Edit site fields",
-          elements: { header: h, content: c, buttons: b },
-          invokedBy: this.__siteFieldsInvoked,
-          clone: false,
-          modal: true
-        }
-      })
-    );
-  }
   _schemaFormValueChanged(e) {
     let customTag = {
       property: "custom-theme-tag",
@@ -767,35 +662,9 @@ class HAXCMSSiteEditor extends PolymerElement {
     }*/
   }
   /**
-   * Publish request send to backend from button
-   */
-  _publishTap(e) {
-    this.dispatchEvent(
-      new CustomEvent("haxcms-publish-site", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: true
-      })
-    );
-  }
-  /**
-   * Revert Commit pressed
-   */
-  _revertCommit(e) {
-    this.dispatchEvent(
-      new CustomEvent("haxcms-git-revert-last-commit", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: true
-      })
-    );
-  }
-  /**
    * Save the fields as we get tapped
    */
-  _saveFieldsTap(e) {
+  _saveNodeFieldsTap(e) {
     let values = this.__fieldsForm.value;
     values.id = this.activeItem.id;
     // fire event with details for saving
@@ -821,14 +690,13 @@ class HAXCMSSiteEditor extends PolymerElement {
    * Save the fields as we get tapped
    */
   _saveSiteFieldsTap(e) {
-    let values = this.__siteFieldsForm.value;
     // fire event with details for saving
     window.dispatchEvent(
       new CustomEvent("haxcms-save-site-data", {
         bubbles: true,
         composed: true,
         cancelable: true,
-        detail: values
+        detail: this.shadowRoot.querySelector("#siteform").submit()
       })
     );
     // fire event to close the modal
@@ -1090,6 +958,7 @@ class HAXCMSSiteEditor extends PolymerElement {
         duration: 3000
       }
     });
+    store.dashboardOpened = false;
     this.dispatchEvent(evt);
     this.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
@@ -1146,6 +1015,7 @@ class HAXCMSSiteEditor extends PolymerElement {
       }
     });
     window.dispatchEvent(evt);
+    store.dashboardOpened = false;
   }
   /**
    * Save node event
@@ -1223,17 +1093,28 @@ class HAXCMSSiteEditor extends PolymerElement {
             .replace("-7", "")
         ][6];
     }
-    this.set("updateManifestData", {});
-    this.set("updateManifestData", {
-      jwt: this.jwt,
-      site: {
+    // add in our standard pieces
+    values.jwt = this.jwt;
+    if (values.site) {
+      values.site.name = this.manifest.metadata.site.name;
+    } else {
+      values.site = {
         name: this.manifest.metadata.site.name
-      },
-      manifest: values
-    });
+      };
+    }
+    this.set("updateManifestData", {});
+    this.set("updateManifestData", values);
     this.notifyPath("updateManifestData.*");
     if (this.saveManifestPath) {
       this.$.manifestupdateajax.generateRequest();
+    }
+  }
+  /**
+   * Notice body of content has changed and import into HAX
+   */
+  _bodyChanged(e) {
+    if (window.HaxStore.instance.activeHaxBody) {
+      window.HaxStore.instance.activeHaxBody.importContent(e.detail);
     }
   }
   /**
@@ -1260,20 +1141,12 @@ class HAXCMSSiteEditor extends PolymerElement {
     this.set("revertSiteData", {
       jwt: this.jwt,
       site: {
-        name: this.manifest.metadata.site.name
+        name: store.manifest.metadata.site.name
       }
     });
     this.notifyPath("revertSiteData.*");
     if (this.revertSitePath) {
       this.$.revertajax.generateRequest();
-    }
-  }
-  /**
-   * Notice body of content has changed and import into HAX
-   */
-  _bodyChanged(e) {
-    if (window.HaxStore.instance.activeHaxBody) {
-      window.HaxStore.instance.activeHaxBody.importContent(e.detail);
     }
   }
 }
