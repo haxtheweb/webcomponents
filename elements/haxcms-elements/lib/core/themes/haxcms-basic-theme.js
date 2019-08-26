@@ -105,9 +105,7 @@ class HAXCMSBasicTheme extends HAXCMSTheme(BasicTemplate(PolymerElement)) {
           }
         }
         site-title {
-          left: 0;
           margin: 0 32px;
-          position: absolute;
           overflow: hidden;
           --site-title-link: {
             display: inline-block;
