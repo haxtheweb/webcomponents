@@ -6,7 +6,7 @@
 
   "allowConcurrent": {
     "name": "allowConcurrent",
-    "type": Boolean,
+    "type": "Boolean",
     "value": false
   },
   /**
@@ -14,7 +14,7 @@
    */
   "audioNoThumb": {
     "name": "audioNoThumb",
-    "type": Boolean,
+    "type": "Boolean",
     "computed": "_getAudioNoThumb(audioOnly,thumbnailSrc)"
   },
   /**
@@ -22,7 +22,7 @@
    */
   "darkTranscript": {
     "name": "darkTranscript",
-    "type": Boolean,
+    "type": "Boolean",
     "value": false
   },
   /**
@@ -30,7 +30,7 @@
    */
   "disableFullscreen": {
     "name": "disableFullscreen",
-    "type": Boolean,
+    "type": "Boolean",
     "value": false
   },
   /**
@@ -38,7 +38,7 @@
    */
   "disableInteractive": {
     "name": "disableInteractive",
-    "type": Boolean,
+    "type": "Boolean",
     "value": false
   },
   /**
@@ -46,7 +46,7 @@
    */
   "flexLayout": {
     "name": "flexLayout",
-    "type": Boolean,
+    "type": "Boolean",
     "computed": "_isFlexLayout(standAlone,hideTranscript,audioNoThumb,stackedLayout)",
     "reflectToAttribute": true
   },
@@ -55,7 +55,7 @@
    */
   "fullscreen": {
     "name": "fullscreen",
-    "type": Boolean,
+    "type": "Boolean",
     "value": false
   },
   /**
@@ -63,7 +63,7 @@
    */
   "fullscreenButton": {
     "name": "fullscreenButton",
-    "type": Boolean,
+    "type": "Boolean",
     "computed": "_getFullscreenButton(disableFullscreen,audioNoThumb,screenfullLoaded)",
     "notify": true
   },
@@ -73,7 +73,7 @@
    */
   "hasCaptions": {
     "name": "hasCaptions",
-    "type": Boolean,
+    "type": "Boolean",
     "value": false
   },
 
@@ -82,7 +82,7 @@
    */
   "hideElapsedTime": {
     "name": "hideElapsedTime",
-    "type": Boolean,
+    "type": "Boolean",
     "value": false
   },
   /**
@@ -90,7 +90,7 @@
    */
   "hideTimestamps": {
     "name": "hideTimestamps",
-    "type": Boolean,
+    "type": "Boolean",
     "value": false
   },
   /**
@@ -98,7 +98,7 @@
    */
   "hideTranscript": {
     "name": "hideTranscript",
-    "type": Boolean,
+    "type": "Boolean",
     "value": false,
     "reflectToAttribute": true
   },
@@ -107,7 +107,7 @@
    */
   "id": {
     "name": "id",
-    "type": String,
+    "type": "String",
     "value": null,
     "reflectToAttribute": true
   },
@@ -116,7 +116,7 @@
    */
   "mediaCaption": {
     "name": "mediaCaption",
-    "type": String,
+    "type": "String",
     "computed": "_getMediaCaption(audioOnly,localization,mediaTitle)"
   },
   /**
@@ -124,7 +124,7 @@
    */
   "mediaLang": {
     "name": "mediaLang",
-    "type": String,
+    "type": "String",
     "value": "en"
   },
   /**
@@ -132,7 +132,7 @@
    */
   "muteUnmute": {
     "name": "muteUnmute",
-    "type": Object,
+    "type": "Object",
     "computed": "_getMuteUnmute(muted)"
   },
   /**
@@ -140,7 +140,7 @@
    */
   "printCaption": {
     "name": "printCaption",
-    "type": String,
+    "type": "String",
     "computed": "_getPrintCaption(audioOnly,audioLabel,videoLabel,mediaTitle)"
   },
   /**
@@ -148,7 +148,7 @@
    */
   "responsiveSize": {
     "name": "responsiveSize",
-    "type": String,
+    "type": "String",
     "notify": true,
     "value": "xs",
     "reflectToAttribute": true
@@ -158,7 +158,7 @@
    */
   "screenfullLoaded": {
     "name": "screenfullLoaded",
-    "type": Boolean,
+    "type": "Boolean",
     "value": false,
     "notify": true
   },
@@ -167,7 +167,7 @@
    */
   "showCustomCaptions": {
     "name": "showCustomCaptions",
-    "type": Boolean,
+    "type": "Boolean",
     "computed": "_showCustomCaptions(isYoutube, audioOnly, hasCaptions, cc)"
   },
   /**
@@ -175,7 +175,7 @@
    */
   "sources": {
     "name": "sources",
-    "type": Array,
+    "type": "Array",
     "value": []
   },
   /**
@@ -183,7 +183,7 @@
    */
   "stackedLayout": {
     "name": "stackedLayout",
-    "type": Boolean,
+    "type": "Boolean",
     "value": false
   },
   /**
@@ -191,7 +191,7 @@
    */
   "sticky": {
     "name": "sticky",
-    "type": Boolean,
+    "type": "Boolean",
     "value": false,
     "reflectToAttribute": true
   },
@@ -202,7 +202,7 @@
    */
   "stickyCorner": {
     "name": "stickyCorner",
-    "type": String,
+    "type": "String",
     "value": "top-right",
     "reflectToAttribute": true
   },
@@ -211,7 +211,7 @@
    */
   "thumbnailSrc": {
     "name": "thumbnailSrc",
-    "type": String,
+    "type": "String",
     "value": null,
     "reflectToAttribute": true
   },
@@ -220,7 +220,7 @@
    */
   "tracks": {
     "name": "tracks",
-    "type": Array,
+    "type": "Array",
     "value": []
   },
   /**
@@ -228,7 +228,7 @@
    */
   "playPause": {
     "name": "playPause",
-    "type": Object,
+    "type": "Object",
     "computed": "_getPlayPause(__playing)"
   },
   /**
@@ -236,9 +236,18 @@
    */
   "__playing": {
     "name": "__playing",
-    "type": Boolean,
+    "type": "Boolean",
     "value": false,
     "notify": true,
     "reflectToAttribute": true
+  },
+  /**
+   * Notice if the video is playing
+   */
+  "__captionHref": {
+    "name": "__captionHref",
+    "type": "String",
+    "value": null,
+    "notify": true
   }
 }

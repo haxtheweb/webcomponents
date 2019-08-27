@@ -276,6 +276,9 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
           align-items: stretch;
           align-content: stretch;
         }
+        :host #captionlink:link {
+          text-decoration: none;
+        }
         :host #innerplayer {
           display: flex;
         }
@@ -523,7 +526,9 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
         }
       </style>
       <style include="simple-colors-shared-styles"></style>
-      <div class="sr-only">[[mediaCaption]]</div>
+      <div class="sr-only">
+        <a href$="[[__captionHref]]">[[mediaCaption]]</a>
+      </div>
       <div id="outerplayer">
         <div id="innerplayer">
           <div
@@ -615,13 +620,15 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
           volume="[[__volume]]"
         >
         </a11y-media-controls>
-        <div
-          aria-hidden="true"
-          class="screen-only media-caption"
-          hidden$="[[!_hasAttribute(mediaCaption)]]"
-        >
-          [[mediaCaption]]
-        </div>
+        <a id="captionlink" href$="[[__captionHref]]">
+          <div
+            aria-hidden="true"
+            class="screen-only media-caption"
+            hidden$="[[!_hasAttribute(mediaCaption)]]"
+          >
+            [[mediaCaption]]
+          </div>
+        </a>
         <div class="print-only media-caption">[[printCaption]]</div>
       </div>
       <img id="printthumb" aria-hidden="true" src$="[[thumbnailSrc]]" />
@@ -911,6 +918,15 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
         value: false,
         notify: true,
         reflectToAttribute: true
+      },
+      /**
+       * Notice if the video is playing
+       */
+      __captionHref: {
+        name: "__captionHref",
+        type: String,
+        value: null,
+        notify: true
       }
     };
   }
@@ -1176,6 +1192,8 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
         arr = Array.isArray(data) ? data : JSON.parse(data);
       for (let i = 0; i < arr.length; i++) {
         let el = document.createElement(type);
+        if (!this.__captionHref && type === "source")
+          this.__captionHref = arr[i].src;
         for (let key in arr[i]) {
           el.setAttribute(key, arr[i][key]);
         }
@@ -1293,6 +1311,8 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
     let root = this,
       counter = 0;
     root.querySelectorAll("source,track").forEach(node => {
+      if (!root.__captionHref && node.tagName === "SOURCE")
+        root.__captionHref = node.getAttribute("src");
       root.$.html5.media.appendChild(node);
     });
     root._appendToPlayer(root.tracks, "track");

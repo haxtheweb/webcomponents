@@ -1,7 +1,9 @@
 
   
   <style include="simple-colors-shared-styles"></style>
-  <div class="sr-only">[[mediaCaption]]</div>
+  <div class="sr-only">
+      <a href$="[[__captionHref]]">[[mediaCaption]]</a>
+  </div>
   <div id="outerplayer">
     <div id="innerplayer">
       <div id="player"
@@ -84,12 +86,14 @@
       stand-alone$="[[standAlone]]"
       volume="[[__volume]]">
     </a11y-media-controls>
-    <div
-      aria-hidden="true"
-      class="screen-only media-caption"
-      hidden$="[[!_hasAttribute(mediaCaption)]]">
-      [[mediaCaption]]
-    </div>
+    <a id="captionlink" href$="[[__captionHref]]">
+      <div
+        aria-hidden="true"
+        class="screen-only media-caption"
+        hidden$="[[!_hasAttribute(mediaCaption)]]">
+        [[mediaCaption]]
+      </div>
+    </a>
     <div class="print-only media-caption">[[printCaption]]</div>
   </div>
   <img id="printthumb" aria-hidden="true" src$="[[thumbnailSrc]]" />
