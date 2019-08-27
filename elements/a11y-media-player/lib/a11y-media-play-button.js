@@ -139,7 +139,7 @@ class A11yMediaPlayButton extends A11yMediaBehaviors {
         controls="video"
         disabled$="[[disabled]]"
         label="[[playPause.label]]"
-        on-click="_buttonTap"
+        on-click="_handleButtonClick"
         tabindex="0"
         title$="[[label]]"
       >
@@ -173,12 +173,6 @@ class A11yMediaPlayButton extends A11yMediaBehaviors {
           </g>
         </svg>
       </button>
-      <iron-a11y-keys
-        id="a11y"
-        keys="enter space"
-        target$="[[__target]]"
-        on-keys-pressed="_buttonTap"
-      ></iron-a11y-keys>
     `;
   }
 
@@ -201,9 +195,8 @@ class A11yMediaPlayButton extends A11yMediaBehaviors {
   /**
    * handle button tap
    */
-  _buttonTap() {
-    let root = this;
-    root.dispatchEvent(new CustomEvent("controls-change", { detail: this }));
+  _handleButtonClick(e) {
+    this.dispatchEvent(new CustomEvent("controls-change", { detail: this }));
   }
 }
 window.customElements.define(A11yMediaPlayButton.tag, A11yMediaPlayButton);
