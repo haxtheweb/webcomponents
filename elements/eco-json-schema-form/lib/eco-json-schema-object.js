@@ -6,6 +6,7 @@ import { AppLocalizeBehavior } from "@polymer/app-localize-behavior/app-localize
 import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
 import "./eco-json-schema-array.js";
+import "./eco-json-schema-fieldset.js";
 import "./eco-json-schema-tabs.js";
 import "./eco-json-schema-boolean.js";
 import "./eco-json-schema-enum.js";
@@ -518,6 +519,19 @@ class EcoJsonSchemaObject extends mixinBehaviors(
             schema.value = [];
           }
           property.value = schema.value;
+        } else if (ctx._isSchemaFieldset(schema.type)) {
+          property.component.name =
+            property.component.name || "eco-json-schema-fieldset";
+          if (typeof schema.value === typeof undefined) {
+            schema.value = {};
+          }
+          property.value = schema.value;
+          console.log(
+            "fieldset\nproperty.value",
+            property.value,
+            "\nschema.value",
+            schema.value
+          );
         } else if (ctx._isSchemaTabs(schema.type)) {
           property.component.name =
             property.component.name || "eco-json-schema-tabs";
@@ -525,9 +539,16 @@ class EcoJsonSchemaObject extends mixinBehaviors(
             schema.value = {};
           }
           property.value = schema.value;
+          console.log(
+            "tabs\nproperty.value",
+            property.value,
+            "\nschema.value",
+            schema.value
+          );
         } else {
           return console.error("Unknown property type %s", schema.type);
         }
+        console.log("property", property);
         return property;
       }
     );
@@ -627,6 +648,12 @@ class EcoJsonSchemaObject extends mixinBehaviors(
         language: this.language,
         resources: this.resources
       });
+      if (
+        property.schema.value !== {} &&
+        (property.component.name === "eco-json-schema-fieldset" ||
+          property.component.name === "eco-json-schema-tabs")
+      )
+        console.log("el", property.schema);
       if (property.component.name === "paper-input") {
         el.style["background-color"] = "transparent";
         el.style["width"] = "100%";
@@ -782,6 +809,9 @@ class EcoJsonSchemaObject extends mixinBehaviors(
   }
   _isSchemaArray(type) {
     return type === "array";
+  }
+  _isSchemaFieldset(type) {
+    return type === "fieldset";
   }
   _isSchemaTabs(type) {
     return type === "tabs";

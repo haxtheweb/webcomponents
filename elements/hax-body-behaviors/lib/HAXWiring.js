@@ -638,6 +638,17 @@ export class HAXWiring {
                   ),
                   label: settings[value].itemLabel
                 };
+                props[settings[value].property].type = "array";
+                break;
+              case "fieldset":
+                props[settings[value].property].items = {
+                  type: "object",
+                  properties: target._getHaxJSONSchemaProperty(
+                    settings[value].properties,
+                    target
+                  )
+                };
+                props[settings[value].property].type = "fieldset";
                 break;
               case "tabs":
                 let tabprops = {};
