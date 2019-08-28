@@ -21,7 +21,7 @@
       <demo-snippet>
         <template>
           <form>
-            <simple-fields id="fields" autofocus></simple-fields>
+            <simple-fields id="fields"></simple-fields>
           </form>
           <script>
             window.onload = function(){
@@ -237,6 +237,22 @@
       <h3>Basic simple-fields-form demo</h3>
       <!--demo-snippet>
         <template>
+          <simple-fields-form id="testform" load-endpoint="data.json" method="GET">
+          </simple-fields-form>
+          <button id="autoload">Load data</button>
+          <button id="savebtn">Save / show values in console</button>
+          <script>
+              document.getElementById('autoload').addEventListener('click', (e) => {
+                // submit the form values to the end point
+                document.getElementById('testform').autoload = true;
+              });
+              document.getElementById('savebtn').addEventListener('click', (e) => {
+                // submit the form values to the end point
+                console.log(document.getElementById('testform').submit());
+              });
+          </script>
+
+
           <simple-fields-form load-endpoint="data.json"></simple-fields-form>
           <button id="savebtn">Save / show values in console</button>
           <script>

@@ -11,6 +11,7 @@ import { varExists, varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 class Store {
   constructor() {
     this.location = null;
+    this.jwt = null;
     this.editMode = false;
     this.manifest = null;
     this.activeItemContent = "";
@@ -18,6 +19,7 @@ class Store {
     this.cmsSiteEditor = {
       instance: null
     };
+    this.dashboardOpened = false;
   }
   cmsSiteEditorAvailability(element = this, location = document.body) {
     if (!store.cmsSiteEditor.instance) {
@@ -498,6 +500,8 @@ class Store {
 decorate(Store, {
   location: observable.ref, // router location in url
   editMode: observable, // global editing state
+  jwt: observable, // json web token
+  dashboardOpened: observable, // if haxcms backend settings are open
   manifest: observable, // JOS / manifest
   activeItemContent: observable, // active site content, cleaned up
   routerManifest: computed, // router mixed in manifest w/ routes / paths

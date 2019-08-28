@@ -87,6 +87,7 @@ class HAXCMSBackendPHP extends PolymerElement {
    */
   _jwtTokenFired(e) {
     this.jwt = e.detail;
+    store.jwt = this.jwt;
   }
   /**
    * Attached life cycle
@@ -123,8 +124,8 @@ class HAXCMSBackendPHP extends PolymerElement {
                 window.appSettings.getNodeFieldsPath;
               haxCmsSiteEditorElement.getSiteFieldsPath =
                 window.appSettings.getSiteFieldsPath;
-              haxCmsSiteEditorElement.getFieldsToken =
-                window.appSettings.getFieldsToken;
+              haxCmsSiteEditorElement.getFormToken =
+                window.appSettings.getFormToken;
               haxCmsSiteEditorElement.publishSitePath =
                 window.appSettings.publishSitePath;
               haxCmsSiteEditorElement.revertSitePath =

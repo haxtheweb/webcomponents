@@ -4,6 +4,8 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/lrn-shared-styles/lrn-shared-styles.js";
+import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/iron-icons/iron-icons.js";
 /**
  * `simple-picker-option`
  * `a simple picker for options, icons, etc.`
@@ -218,11 +220,6 @@ class SimplePickerOption extends PolymerElement {
       this.$.label.innerHTML = "";
       this.$.label.appendChild(label);
     }
-  }
-  constructor() {
-    super();
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/iron-icons/iron-icons.js");
   }
 
   /**

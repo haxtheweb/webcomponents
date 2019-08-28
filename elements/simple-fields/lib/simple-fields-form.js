@@ -27,13 +27,23 @@ class SimpleFieldsForm extends LitElement {
       <simple-fields id="fields" autofocus></simple-fields>
     `;
   }
-  updated(changedProperties) {
+  /**
+   * first update hook; also implies default settings
+   */
+  firstUpdated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       // request form when it changes
-      if (propName === "loadEndpoint") {
-        this.fetchData(this.loadEndpoint).then(data => {
-          this.loadResponse = data;
-        });
+      if (propName === "loadEndpoint" && this.autoload) {
+        this.loadData();
+      }
+    });
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (this.autoload && !this.loadResponse && !this.loading) {
+        if (propName === "loadEndpoint" || propName === "autoload") {
+          this.loadData();
+        }
       }
       // we have response data from an end point this should create the form
       if (propName === "loadResponse") {
@@ -43,17 +53,62 @@ class SimpleFieldsForm extends LitElement {
         this.shadowRoot.querySelector(
           "#fields"
         ).value = this.loadResponse.data.value;
+        // fire event for things to react to about the response
+        this.dispatchEvent(
+          new CustomEvent("response", {
+            bubbles: true,
+            composed: true,
+            cancelable: false,
+            detail: this.loadResponse.data
+          })
+        );
       }
     });
   }
-  async fetchData(path) {
-    let response = await fetch(path);
+  /**
+   * load data from the end point
+   */
+  loadData() {
+    this.loading = true;
+    this.fetchData(
+      this.loadEndpoint,
+      this.method,
+      this.headers,
+      this.body
+    ).then(data => {
+      this.loading = false;
+      this.loadResponse = data;
+    });
+  }
+  async fetchData(path, method, headers, body) {
+    let response = {};
+    if (method == "GET") {
+      response = await fetch(path, {
+        method: method,
+        headers: headers
+      });
+    } else {
+      response = await fetch(path, {
+        method: method,
+        headers: headers,
+        //make sure to serialize your JSON body
+        body: JSON.stringify(body)
+      });
+    }
+
     let data = await response.json();
     return data;
   }
   constructor() {
     super();
     this.method = "POST";
+    this.loading = false;
+    this.autoload = false;
+    this.headers = {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    };
+    this.body = {};
   }
   /**
    * Submit form values if we have an end point, otherwise return value
@@ -63,18 +118,26 @@ class SimpleFieldsForm extends LitElement {
     if (this.saveEndpoint) {
       fetch(this.saveEndpoint, {
         method: this.method,
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
+        headers: this.headers,
         //make sure to serialize your JSON body
         body: JSON.stringify(this.shadowRoot.querySelector("#fields").value)
       });
     }
     return this.shadowRoot.querySelector("#fields").value;
   }
+  /**
+   * Props down
+   */
   static get properties() {
     return {
+      autoload: {
+        type: Boolean,
+        reflect: true
+      },
+      loading: {
+        type: Boolean,
+        reflect: true
+      },
       loadEndpoint: {
         type: String,
         attribute: "load-endpoint"
@@ -85,6 +148,12 @@ class SimpleFieldsForm extends LitElement {
       },
       method: {
         type: String
+      },
+      headers: {
+        type: Object
+      },
+      body: {
+        type: Object
       },
       loadResponse: {
         type: Object

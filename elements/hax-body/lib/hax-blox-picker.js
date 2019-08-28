@@ -42,7 +42,7 @@ class HaxBloxPicker extends LitElement {
         }
         #dialog {
           --app-drawer-width: 320px;
-          z-index: 1000;
+          z-index: 10000;
           margin-top: 56px;
         }
         #closedialog {

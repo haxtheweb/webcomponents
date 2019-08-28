@@ -46,6 +46,15 @@ class HAXCMSSiteBuilder extends PolymerElement {
           opacity: 0.2;
           visibility: hidden;
         }
+        :host([dashboard-opened]) {
+          display: inline-block !important;
+          margin-left: 50vw;
+          height: 100vh;
+          transition: 1s linear margin;
+          pointer-events: none;
+          opacity: 0.5;
+          width: 100vw;
+        }
         :host([theme-loaded]) #slot {
           opacity: 1;
           visibility: visible;
@@ -97,6 +106,11 @@ class HAXCMSSiteBuilder extends PolymerElement {
       },
       _timeStamp: {
         type: String
+      },
+      dashboardOpened: {
+        type: Boolean,
+        observer: "_dashboardOpenedChanged",
+        reflectToAttribute: true
       },
       /**
        * queryParams
@@ -218,6 +232,10 @@ class HAXCMSSiteBuilder extends PolymerElement {
     }
     this.__disposer = [];
     autorun(reaction => {
+      this.dashboardOpened = toJS(store.dashboardOpened);
+      this.__disposer.push(reaction);
+    });
+    autorun(reaction => {
       this.themeData = toJS(store.themeData);
       this.__disposer.push(reaction);
     });
@@ -226,6 +244,15 @@ class HAXCMSSiteBuilder extends PolymerElement {
       this.__disposer.push(reaction);
     });
     this._timeStamp = "";
+  }
+  _dashboardOpenedChanged(newValue, oldValue) {
+    if (newValue) {
+      this.setAttribute("aria-hidden", "aria-hidden");
+      this.setAttribute("tabindex", "-1");
+    } else if (!newValue && oldValue) {
+      this.removeAttribute("aria-hidden");
+      this.removeAttribute("tabindex");
+    }
   }
   connectedCallback() {
     super.connectedCallback();
@@ -567,7 +594,7 @@ window.HAXme = function(context = null) {
       getNodeFieldsPath: "dist/dev/getNodeFieldsPath.json",
       getSiteFieldsPath: "dist/dev/getSiteFieldsPath.json",
       revertSitePath: "dist/dev/saveNode.json",
-      getFieldsToken: "adskjadshjudfu823u823u8fu8fij",
+      getFormToken: "adskjadshjudfu823u823u8fu8fij",
       appStore: {
         url: "dist/dev/appstore.json"
       },

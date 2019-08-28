@@ -41,6 +41,8 @@ class A11yTabs extends PolymerElement {
           --a11y-tabs-horizontal-border-radius: unset;
           --a11y-tabs-vertical-border-radius: unset;
           --a11y-tabs-horizontal-button-padding: 2px 5px;
+          height: var(--a11y-tabs-height);
+          overflow: var(--a11y-tabs-overflow);
         }
         :host([vertical]) {
           border: 1px solid var(--a11y-tabs-border-color);
