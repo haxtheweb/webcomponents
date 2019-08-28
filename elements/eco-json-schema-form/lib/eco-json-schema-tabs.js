@@ -29,6 +29,7 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
             color: var(--eco-json-form-color);
             background-color: var(--eco-json-form-bg);
             font-family: var(--eco-json-form-font-family);
+            margin-bottom: 15px;
           }
           :host ([hidden]) {
             display: none;

@@ -4,7 +4,6 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { A11yMediaBehaviors } from "./a11y-media-behaviors.js";
-import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@lrnwebcomponents/simple-search/lib/simple-search-content.js";
 
 export { A11yMediaTranscriptCue };

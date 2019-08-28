@@ -16,9 +16,6 @@
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
-    <simple-fields-form load-endpoint="data.json" method="GET"></simple-fields-form>
-    <button id="autoload">Load data</button>
-    <button id="savebtn">Save / show values in console</button>
     <div class="vertical-section-container centered">
       <h3>Basic simple-fields demo</h3>
       <demo-snippet>
@@ -28,17 +25,9 @@
           </form>
           <script>
             window.onload = function(){
-              document.getElementById('autoload').addEventListener('click', (e) => {
-                // submit the form values to the end point
-                document.getElementsByTagName('simple-fields-form')[0].autoload = true;
-              });
-              document.getElementById('savebtn').addEventListener('click', (e) => {
-                // submit the form values to the end point
-                console.log(document.getElementsByTagName('simple-fields-form')[0].submit());
-              });
               let fields = document.getElementById('fields');
               fields.fields = [
-                {
+                /*{
                   "property": "name",
                   "title": "What is your name?",
                   "description": "Enter your real name or an alias.",
@@ -56,57 +45,52 @@
                   "description": "Maximum size 400px X 400px.",
                   "inputMethod": "haxupload",
                   "validationType": "url"
-                },
+                },*/
                 {
-                  "property": "hiddenField",
-                  "title": "Hidden",
-                  "description": "I'm a hidden field. You can't see me.",
-                  "inputMethod": "boolean",
-                  "hidden": true
-                },
-                {
-                  "property": "winter",
-                  "title": "When is winter coming?",
-                  "inputMethod": "datepicker"
-                },
-                {
-                  "property": "icon",
-                  "title": "Pick an icon.",
-                  "inputMethod": "iconpicker"
-                },
-                {
-                  "property": "color",
-                  "title": "Your  favorite  color.",
-                  "inputMethod": "colorpicker"
-                },
-                {
-                  "property": "sword",
-                  "title": "Your sword's name.",
-                  "inputMethod": "select",
-                  "allowNull": false,
-                  "options": {
-                    "none": "None",
-                    "blackfyre": "Blackfyre",
-                    "brightroar": "Brightroar",
-                    "darksister": "Dark Sister",
-                    "dawn": "Dawn",
-                    "hearteater": "Heart Eater",
-                    "heartsbane": "Heartsbane",
-                    "ice": "Ice",
-                    "ladyforlorn": "Lady Horlorn",
-                    "lightbringer": "Lightbringer",
-                    "lionstooth": "Lion's Tooth",
-                    "longclaw": "Longclaw",
-                    "needle": "Needle",
-                    "oathkeeper": "Oathkeeper",
-                    "widowswail": "Widow's Wail"
-                  }
-                },
-                {
-                  "property": "bio",
-                  "title": "Bio",
-                  "description": "Write a short bio.",
-                  "inputMethod": "textarea"
+                  "property": "biographical",
+                  "title": "Bigraphical Information",
+                  "inputMethod": "fieldset",
+                  "properties": [
+                    {
+                      "property": "icon",
+                      "title": "Pick an icon.",
+                      "inputMethod": "iconpicker"
+                    },
+                    {
+                      "property": "color",
+                      "title": "Your  favorite  color.",
+                      "inputMethod": "colorpicker"
+                    },
+                    {
+                      "property": "sword",
+                      "title": "Your sword's name.",
+                      "inputMethod": "select",
+                      "allowNull": false,
+                      "options": {
+                        "none": "None",
+                        "blackfyre": "Blackfyre",
+                        "brightroar": "Brightroar",
+                        "darksister": "Dark Sister",
+                        "dawn": "Dawn",
+                        "hearteater": "Heart Eater",
+                        "heartsbane": "Heartsbane",
+                        "ice": "Ice",
+                        "ladyforlorn": "Lady Horlorn",
+                        "lightbringer": "Lightbringer",
+                        "lionstooth": "Lion's Tooth",
+                        "longclaw": "Longclaw",
+                        "needle": "Needle",
+                        "oathkeeper": "Oathkeeper",
+                        "widowswail": "Widow's Wail"
+                      }
+                    },
+                    {
+                      "property": "bio",
+                      "title": "Bio",
+                      "description": "Write a short bio.",
+                      "inputMethod": "textarea"
+                    }
+                  ]
                 },
                 {
                   "property": "relationships",
@@ -185,22 +169,34 @@
                       ]
                     }
                   ]
+                }/*,
+                {
+                  "property": "hiddenField",
+                  "title": "Hidden",
+                  "description": "I'm a hidden field. You can't see me.",
+                  "inputMethod": "boolean",
+                  "hidden": true
                 },
-                
+                {
+                  "property": "winter",
+                  "title": "When is winter coming?",
+                  "inputMethod": "datepicker"
+                },
                 {
                   "property": "code",
                   "title": "This is your favorite code snippet.",
                   "inputMethod": "code-editor"
-                }   
+                }*/  
               ];
               fields.value = {
                 "name": "Arya Stark",
-                "winter": "12/21/2019",
                 "alias": false,
-                "bio": "Once upon a time...",
-                "code": "<p>What do we say to Death?</p>\n<p>Not today.</p>",
-                "color": "red",
-                "icon": "icons:visibility-off",
+                "biographical": {
+                  "bio": "Once upon a time...",
+                  "sword": "needle",
+                  "color": "red",
+                  "icon": "icons:visibility-off"
+                },
                 "relationships": {
                   "siblings": {
                     "siblingsList": [
@@ -231,12 +227,42 @@
                     ],
                   }
                 },
-                "sword": "needle"
+                "code": "<p>What do we say to Death?</p>\n<p>Not today.</p>",
+                "winter": "12/21/2019"
               };
             };
           </script>
         </template>
       </demo-snippet>
+      <h3>Basic simple-fields-form demo</h3>
+      <!--demo-snippet>
+        <template>
+          <simple-fields-form id="testform" load-endpoint="data.json" method="GET">
+          </simple-fields-form>
+          <button id="autoload">Load data</button>
+          <button id="savebtn">Save / show values in console</button>
+          <script>
+            document.getElementById('autoload').addEventListener('click', (e) => {
+              // submit the form values to the end point
+              document.getElementById('testform').autoload = true;
+            });
+            document.getElementById('savebtn').addEventListener('click', (e) => {
+              // submit the form values to the end point
+              console.log(document.getElementById('testform').submit());
+            });
+          </script>
+
+
+          <simple-fields-form load-endpoint="data.json"></simple-fields-form>
+          <button id="savebtn">Save / show values in console</button>
+          <script>
+            document.getElementById('savebtn').addEventListener('click', (e) => {
+              // submit the form values to the end point
+              console.log(document.getElementsByTagName('simple-fields-form')[0].submit());
+            });
+          </script>
+        </template>
+      </demo-snippet-->
     </div>
   </body>
 </html>

@@ -6,7 +6,6 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
-import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "./rich-text-editor-button-styles.js";
 import "../singletons/rich-text-editor-selection.js";
@@ -57,13 +56,6 @@ class RichTextEditorButton extends PolymerElement {
         <span id="label" class$="[[labelStyle]]">[[__label]]</span>
       </paper-button>
       <paper-tooltip id="tooltip" for="button">[[__label]]</paper-tooltip>
-      <iron-a11y-keys
-        id="keys"
-        keys$="[[__osKeys]]"
-        on-keys-pressed="_keysPressed"
-        target="[[target]]"
-      >
-      </iron-a11y-keys>
     `;
   }
 
@@ -279,16 +271,6 @@ class RichTextEditorButton extends PolymerElement {
           "useCSS"
         ],
         readOnly: true
-      },
-
-      /**
-       * Optional space-sperated list of keyboard shortcuts for the editor
-       * to fire this button, see iron-a11y-keys for more info.
-       */
-      __osKeys: {
-        name: "__osKeys",
-        type: String,
-        computed: "_getOsKeys(shortcutKeys)"
       }
     };
   }
@@ -308,7 +290,7 @@ class RichTextEditorButton extends PolymerElement {
     super.ready();
     let root = this;
     root.addEventListener("mousedown", function(e) {
-      e.preventDefault();
+      console.log("mousedown", e);
     });
     root.addEventListener("keypress", function(e) {
       e.preventDefault();
@@ -353,7 +335,6 @@ class RichTextEditorButton extends PolymerElement {
       );
       document.execCommand(root.command, false, root.commandVal || "");
       root.range = range;
-      if (root.command === "paste") root.range.collapse();
     }
   }
 
@@ -362,6 +343,7 @@ class RichTextEditorButton extends PolymerElement {
    */
   _buttonTap(e) {
     e.preventDefault();
+    console.log("_buttonTap", e);
     this.doTextOperation();
   }
 
@@ -382,19 +364,6 @@ class RichTextEditorButton extends PolymerElement {
         detail: root
       })
     );
-  }
-
-  /**
-   * replaces ctrl with command(meta) on Mac
-   * @param {string} shortcutKeys the string of shortcut keys for iron-a11y-keys
-   * @returns {string} the string of shortcut keys for iron-a11y-keys, modded for Mac if needed
-   */
-  _getOsKeys(shortcutKeys) {
-    //disable clipboard keys since we're already listening for them
-    let keys = shortcutKeys ? shortcutKeys.replace(/ctrl\+[xcv]/g, "") : "";
-    return window.navigator.platform === "MacIntel" && keys
-      ? keys.replace(/ctrl/g, "meta")
-      : keys;
   }
 
   /**
@@ -438,6 +407,8 @@ class RichTextEditorButton extends PolymerElement {
    * @param {event} e the  event
    */
   _keysPressed(e) {
+    console.log("_keysPressed", e);
+    e.preventDefault();
     this._buttonTap(e);
   }
 

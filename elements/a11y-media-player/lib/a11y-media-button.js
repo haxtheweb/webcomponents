@@ -5,7 +5,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { A11yMediaBehaviors } from "./a11y-media-behaviors.js";
 import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@polymer/iron-icons/av-icons.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 
@@ -144,12 +143,6 @@ class A11yMediaButton extends A11yMediaBehaviors {
         <iron-icon icon="[[icon]]"></iron-icon>
       </button>
       <paper-tooltip for="button">[[label]]</paper-tooltip>
-      <iron-a11y-keys
-        id="a11y"
-        keys="enter space"
-        target$="[[__target]]"
-        on-keys-pressed="_buttonTap"
-      ></iron-a11y-keys>
     `;
   }
 

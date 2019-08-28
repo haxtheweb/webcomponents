@@ -210,11 +210,15 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
   play() {
     let root = this,
       stopped = !(root.__playing === true);
-    root.__playing = true;
-    root.media.play();
-    window.dispatchEvent(
-      new CustomEvent("a11y-player-playing", { detail: root })
-    );
+    if (root.isYoutube && !root.__ytAppended) {
+      ytInit();
+    } else {
+      root.__playing = true;
+      root.media.play();
+      window.dispatchEvent(
+        new CustomEvent("a11y-player-playing", { detail: root })
+      );
+    }
   }
 
   /**
@@ -389,6 +393,8 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
         arr = Array.isArray(data) ? data : JSON.parse(data);
       for (let i = 0; i < arr.length; i++) {
         let el = document.createElement(type);
+        if (!this.__captionHref && type === "source")
+          this.__captionHref = arr[i].src;
         for (let key in arr[i]) {
           el.setAttribute(key, arr[i][key]);
         }
@@ -506,6 +512,8 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
     let root = this,
       counter = 0;
     root.querySelectorAll("source,track").forEach(node => {
+      if (!root.__captionHref && node.tagName === "SOURCE")
+        root.__captionHref = node.getAttribute("src");
       root.$.html5.media.appendChild(node);
     });
     root._appendToPlayer(root.tracks, "track");
