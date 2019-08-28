@@ -8,9 +8,8 @@ import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import {} from "@polymer/polymer/lib/elements/dom-if.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
-// This blows up for some reason
-// import './lib/media-image-caption.js'
-// import './lib/media-image-citation.js'
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import "@lrnwebcomponents/figure-label/figure-label.js";
 
 /**
  * `media-image`
@@ -100,11 +99,19 @@ class MediaImage extends SchemaBehaviors(PolymerElement) {
           margin: auto;
         }
       </style>
+
+      <dom-if if="[[_hasFigureLabel(figureLabelTitle, figureLabelDescription)]]">
+        <template>
+          <figure-label title="[[figureLabelTitle]]" description="[[figureLabelDescription]]">
+        </template>
+      </dom-if>
+
       <iron-image
         resource\$="[[schemaResourceID]]-image"
         src\$="[[source]]"
         alt\$="[[alt]]"
       ></iron-image>
+
 
       <media-image-citation>
         <slot name="citation">
@@ -112,11 +119,15 @@ class MediaImage extends SchemaBehaviors(PolymerElement) {
         </slot>
       </media-image-citation>
 
-      <media-image-caption>
-        <slot name="caption">
-          [[caption]]
-        </slot>
-      </media-image-caption>
+      <dom-if if="[[_hasCaption]]">
+        <template>
+          <media-image-caption>
+            <slot name="caption">
+              [[caption]]
+            </slot>
+          </media-image-caption>
+        </template>
+      </dom-if>
     `;
   }
   static get tag() {
@@ -143,7 +154,8 @@ class MediaImage extends SchemaBehaviors(PolymerElement) {
        */
       caption: {
         type: String,
-        value: ""
+        value: "",
+        observer: "_computeHasCaption"
       },
       /**
        * Image alt.
@@ -196,6 +208,20 @@ class MediaImage extends SchemaBehaviors(PolymerElement) {
         type: String,
         value: "none",
         reflectToAttribute: true
+      },
+      /**
+       * Added a figure label title to the top of the media-image
+       */
+      figureLabelTitle: {
+        type: String,
+        value: ""
+      },
+      /**
+       * Added a figure label description to the top of the media-image
+       */
+      figureLabelDescription: {
+        type: String,
+        value: ""
       }
     };
     if (super.properties) {
@@ -203,6 +229,32 @@ class MediaImage extends SchemaBehaviors(PolymerElement) {
     }
     return props;
   }
+
+  // Observe the name sub-property on the user object
+  // if the either of the figure label values are present then display
+  // the figure label
+  _hasFigureLabel(title, description) {
+    return title.length > 0 || description.length > 0;
+  }
+
+  ready() {
+    super.ready();
+    this._observer = new FlattenedNodesObserver(this, info => {
+      this._computeHasCaption();
+    });
+  }
+
+  _computeHasCaption() {
+    this._hasCaption =
+      this.caption.length > 0 ||
+      this.querySelector('[slot="caption"]') !== null;
+  }
+
+  disconnectedCallback() {
+    this._observer.disconnect();
+    super.disconnectedCallback();
+  }
+
   static get haxProperties() {
     return {
       canScale: true,
@@ -316,6 +368,22 @@ class MediaImage extends SchemaBehaviors(PolymerElement) {
             property: "caption",
             title: "Caption",
             description: "Caption for the image.",
+            inputMethod: "textfield",
+            icon: "text-format",
+            required: false
+          },
+          {
+            property: "figureLabelTitle",
+            title: "Figure Label Title",
+            description: "Title for the figure label.",
+            inputMethod: "textfield",
+            icon: "text-format",
+            required: false
+          },
+          {
+            property: "figureLabelDescription",
+            title: "Figure Label Description",
+            description: "Description for the figure label.",
             inputMethod: "textfield",
             icon: "text-format",
             required: false

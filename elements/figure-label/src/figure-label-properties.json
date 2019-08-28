@@ -1,0 +1,16 @@
+{
+  "title": {
+    "name": "title",
+    "type": "String",
+    "value": "",
+    "reflectToAttribute": false,
+    "observer": false
+  },
+  "description": {
+    "name": "description",
+    "type": "String",
+    "value": "",
+    "reflectToAttribute": false,
+    "observer": false
+  }
+}
