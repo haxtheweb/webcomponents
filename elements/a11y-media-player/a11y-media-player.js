@@ -126,739 +126,809 @@ import "./lib/a11y-media-youtube.js";
  *
  */
 class A11yMediaPlayer extends A11yMediaBehaviors {
-  
   // render function
   static get template() {
     return html`
-<style>
-:host {
-  display: block;
-  width: calc(100% - 2px);
-  border: 1px solid var(--simple-colors-default-theme-grey-3);
-  --a11y-media-color: var(--simple-colors-default-theme-grey-11);
-  --a11y-media-bg-color: var(--simple-colors-default-theme-grey-2);
-  --a11y-media-hover-color: var(--simple-colors-default-theme-grey-12);
-  --a11y-media-hover-bg-color: var(--simple-colors-default-theme-grey-2);
-  --a11y-media-accent-color: var(--simple-colors-default-theme-accent-9);
-  --a11y-media-faded-accent-color: var(--simple-colors-default-theme-accent-8);
+      <style>
+        :host {
+          display: block;
+          width: calc(100% - 2px);
+          border: 1px solid var(--simple-colors-default-theme-grey-3);
+          --a11y-media-color: var(--simple-colors-default-theme-grey-11);
+          --a11y-media-bg-color: var(--simple-colors-default-theme-grey-2);
+          --a11y-media-hover-color: var(--simple-colors-default-theme-grey-12);
+          --a11y-media-hover-bg-color: var(
+            --simple-colors-default-theme-grey-2
+          );
+          --a11y-media-accent-color: var(
+            --simple-colors-default-theme-accent-9
+          );
+          --a11y-media-faded-accent-color: var(
+            --simple-colors-default-theme-accent-8
+          );
 
-  
-  --a11y-media-settings-menu-color: var(--a11y-media-color);
-  --a11y-media-settings-menu-bg-color: var(--a11y-media-bg-color);
-  --a11y-media-settings-menu-hover-color: var(--a11y-media-hover-color);
-  --a11y-media-settings-menu-hover-bg-color: var(--a11y-media-hover-bg-color);
+          --a11y-media-settings-menu-color: var(--a11y-media-color);
+          --a11y-media-settings-menu-bg-color: var(--a11y-media-bg-color);
+          --a11y-media-settings-menu-hover-color: var(--a11y-media-hover-color);
+          --a11y-media-settings-menu-hover-bg-color: var(
+            --a11y-media-hover-bg-color
+          );
 
-  
-  --a11y-media-button-color: var(--a11y-media-color);
-  --a11y-media-button-bg-color: var(--a11y-media-bg-color);
-  --a11y-media-button-hover-color: var(--a11y-media-accent-color);
-  --a11y-media-button-hover-bg-color: var(--a11y-media-hover-bg-color);
-  --a11y-media-button-toggle-color: var(--a11y-media-faded-accent-color);
+          --a11y-media-button-color: var(--a11y-media-color);
+          --a11y-media-button-bg-color: var(--a11y-media-bg-color);
+          --a11y-media-button-hover-color: var(--a11y-media-accent-color);
+          --a11y-media-button-hover-bg-color: var(--a11y-media-hover-bg-color);
+          --a11y-media-button-toggle-color: var(
+            --a11y-media-faded-accent-color
+          );
 
-  
-  --paper-toggle-button-unchecked-bar-color: var(--a11y-media-color);
-  --paper-toggle-button-unchecked-button-color: var(--a11y-media-color);
-  --paper-toggle-button-checked-bar-color: var(--a11y-media-accent-color);
-  --paper-toggle-button-checked-button-color: var(--a11y-media-accent-color);
+          --paper-toggle-button-unchecked-bar-color: var(--a11y-media-color);
+          --paper-toggle-button-unchecked-button-color: var(--a11y-media-color);
+          --paper-toggle-button-checked-bar-color: var(
+            --a11y-media-accent-color
+          );
+          --paper-toggle-button-checked-button-color: var(
+            --a11y-media-accent-color
+          );
 
-  
-  --paper-slider-active-color: var(--a11y-media-accent-color);
-  --paper-slider-secondary-color: var(--a11y-media-faded-accent-color);
-  --paper-slider-pin-color: var(--a11y-media-faded-bg-color);
-  --paper-slider-pin-start-color: var(--a11y-media-faded-bg-color);
-  --paper-slider-pin-end-color: var(--a11y-media-faded-bg-color);
-  --paper-slider-knob-color: var(--a11y-media-accent-color);
-  --paper-slider-knob-start-color: var(--a11y-media-bg-color);
-  --paper-slider-knob-end-color: var(--a11y-media-bg-color);
-  --paper-slider-knob-border-color: var(--a11y-media-accent-color);
-  --paper-slider-knob-start-border-color: var(--a11y-media-bg-color);
-  --paper-slider-knob-end-border-color: var(--a11y-media-bg-color);
-  
-  
-  --a11y-media-transcript-color: var(--simple-colors-default-theme-grey-7);
-  --a11y-media-transcript-bg-color: var(--simple-colors-default-theme-grey-1);
-  --a11y-media-transcript-accent-color: var(--simple-colors-default-theme-accent-8);
-  --a11y-media-transcript-faded-accent-color: var(--simple-colors-default-theme-accent-10);
-  --a11y-media-transcript-cue-color: var(--simple-colors-fixed-theme-grey-12);
-  --a11y-media-transcript-cue-bg-color: var(--simple-colors-fixed-theme-grey-1);
-  --a11y-media-transcript-active-cue-color: var(--simple-colors-fixed-theme-grey-12);
-  --a11y-media-transcript-active-cue-bg-color: var(--simple-colors-fixed-theme-accent-1);
-  --a11y-media-transcript-focused-cue-color: var(--simple-colors-fixed-theme-grey-12);
-  --a11y-media-transcript-focused-cue-bg-color: var(--simple-colors-fixed-theme-grey-2);
-  --a11y-media-transcript-match-color: var(--simple-colors-fixed-theme-grey-1);
-  --a11y-media-transcript-match-bg-color: var(--simple-colors-fixed-theme-accent-10);
-  --a11y-media-transcript-match-border-color: var(--simple-colors-fixed-theme-accent-12);
-}
-:host([dark]) {
-  border: 1px solid var(--simple-colors-default-theme-grey-1);
-}
-:host([dark-transcript]) {
-  --a11y-media-transcript-bg-color: var(--simple-colors-dark-theme-grey-1);
-  --a11y-media-transcript-cue-color: var(--simple-colors-dark-theme-grey-12);
-  --a11y-media-transcript-cue-bg-color: var(--simple-colors-dark-theme-grey-1);
-  --a11y-media-transcript-active-cue-color: var(--simple-colors-dark-theme-accent-10);
-  --a11y-media-transcript-active-cue-bg-color: var(--simple-colors-dark-theme-grey-1);
-  --a11y-media-transcript-match-color: var(--simple-colors-dark-theme-grey-1);
-  --a11y-media-transcript-match-bg-color: var(--simple-colors-dark-theme-accent-10);
-  --a11y-media-transcript-match-border-color: var(--simple-colors-dark-theme-accent-12);
-  --a11y-media-transcript-focused-cue-color: var(--simple-colors-dark-theme-grey-12);
-  --a11y-media-transcript-focused-cue-bg-color: var(--simple-colors-dark-theme-grey-2);
-}
-:host,
-:host #outerplayer {
-  color: var(--simple-colors-default-theme-grey-12);
-  background-color: var(--simple-colors-default-theme-grey-2);
-}
-:host > * {
-  transition: all 0.5s;
-}
-:host,
-:host #outerplayer,
-:host #player,
-:host #outertranscript,
-:host #innertranscript {
-  display: flex;
-  flex-flow: column;
-  align-items: stretch;
-  align-content: stretch;
-} 
-:host #captionlink:link {
-  text-decoration: none;
-}
-:host #innerplayer {
-  display: flex;
-}
-:host([hidden]),
-:host *[hidden] {
-  display: none !important;
-}
-:host #innerplayer,
-:host #player, 
-:host #player > *,
-:host #customcc,
-:host #customcctxt,
-:host #slider,
-:host #controls,
-:host #outertranscript,
-:host #innertranscript {
-  width: 100%;
-}
-:host #innertranscript > * {
-  width: calc(100% - 1px);
-}
-:host > *,
-:host #innerplayer,
-:host #player,
-:host #player > *,
-:host #customcctxt {
-  flex: 1 1 auto;
-}
-:host #controls,
-:host #tcontrols {
-  flex: 0 0 44px;
-}
-:host #innerplayer {
-  margin: 0 auto;
-}
-:host #player {
-  height: 400px;
-  position: relative;
-}
-:host #player > * {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-}
-:host #playbutton,
-:host #slider,
-:host #controls {
-  z-index: 2;
-}
-:host([audio-only]) #playbutton {
-  opacity: 0;
-}
-:host #slider {
-  flex: 0 0 32px;
-  height: 32px;
-}
-:host([thumbnail-src]) #youtube {
-  opacity: 0;
-}
-:host #youtube[elapsed] {
-  opacity: 1;
-  transition: opacity 0.5s;
-}
-:host #customcc:not([hidden]) {
-  font-size: 20px;
-  transition: font-size 0.25s;
-  display: flex;
-}
-:host #customcctxt:not(:empty) {
-  align-self: flex-end;
-  font-family: sans-serif;
-  color: white;
-  margin: 4px 10px;
-  padding: 0.15em 4px;
-  background-color: black;
-  background-color: rgba(0, 0, 0, 0.8);
-  transition: all 0.5s;
-}
-:host([audio-only]:not([thumbnail-src])) #customcctxt {
-  align-self: center;
-  color: var(--a11y-media-color);
-  background-color: transparent;
-}
-:host #printthumb {
-  width: 100%;
-  margin: 0;
-  display: block;
-  border-top: 1px solid #aaaaaa;
-}
-:host .media-caption:not(:empty) {
-  width: calc(100% - 30px);
-  padding: 5px 15px;
-}
-:host .media-type {
-  font-style: italic;
-}
-:host #outertranscript {
-  padding: 0 1px 0 0;
-}
-:host #innertranscript {
-  flex: 1 0 194px;
-}
-:host #transcript {
-  flex: 1 0 150px;
-  overflow-y: scroll;
-}
-:host .sr-only {
-  position: absolute;
-  left: -9999px;
-  font-size: 0;
-  height: 0;
-  width: 0;
-  overflow: hidden;
-}
-@media screen {
-  :host([flex-layout]:not([responsive-size="xs"])) {
-    flex-flow: row;
-    padding: 0;
-  }
-  :host([flex-layout]:not([responsive-size="xs"])) #outerplayer {
-    flex: 1 0 auto;
-  }
-  :host #printthumb,
-  :host([height]) #outertranscript,
-  :host([stand-alone]) #outertranscript,
-  :host([hide-transcript]) #outertranscript {
-    display: none;
-  }
-  :host([sticky]:not([sticky-corner="none"])) #outerplayer {
-    position: fixed;
-    top: 5px;
-    right: 5px;
-    width: 200px;
-    max-width: 200px;
-    z-index: 999999;
-    border: 1px solid var(--a11y-media-bg-color);
-    box-shadow: 1px 1px 20px 1px rgba(125, 125, 125);
-    border-radius: 3.2px;
-  }
-  :host([dark][sticky]:not([sticky-corner="none"])) #outerplayer {
-    border: 1px solid var(--a11y-media-bg-color);
-  }
-  :host([sticky][sticky-corner="top-left"]) #outerplayer {
-    right: unset;
-    left: 5px;
-  }
-  :host([flex-layout]:not([responsive-size="xs"])) > div {
-    width: 50%;
-    flex: 1 1 auto;
-  }
-  :host #innertranscript {
-    position: relative;
-  }
-  :host([hide-transcript]) #outerplayer {
-    min-width: 50%;
-    max-width: 100%;
-  }
-  :host([hide-transcript]) #outertranscript {
-    display: none;
-  }
-  :host(:not([no-height]):not([stacked-layout]):not([responsive-size="xs"]))
-    #transcript {
-    position: absolute;
-    top: 44px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow-y: scroll;
-  }
-  :host(:not([no-height]):not([stacked-layout]):not([responsive-size="xs"]))
-    #innerplayer.totop {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200px !important;
-    z-index: 9999;
-  }
-  :host([sticky][sticky-corner="bottom-left"]) #innerplayer {
-    top: unset;
-    right: unset;
-    bottom: 5px;
-  }
-  :host([sticky][sticky-corner="bottom-right"]) #innerplayer {
-    top: unset;
-    bottom: 5px;
-  }
-  :host([sticky]:not([sticky-corner="none"]):not([no-height]):not([stacked-layout]):not([responsive-size="xs"]))
-    #controls {
-    display: none;
-  }
-  :host([responsive-size="lg"]) #customcc {
-    font-size: 16px;
-  }
-  :host([responsive-size="md"]) #customcc,
-  :host([flex-layout][responsive-size="xl"]) #customcc {
-    font-size: 14px;
-  }
-  :host([responsive-size="sm"]) #customcc,
-  :host([flex-layout][responsive-size="lg"]) #customcc {
-    font-size: 12px;
-  }
-  :host([responsive-size="xs"]) #customcc,
-  :host([flex-layout][responsive-size="md"]) #customcc,
-  :host([flex-layout][responsive-size="sm"]) #customcc {
-    font-size: 10px;
-  }
-  :host([sticky]:not([sticky-corner="none"])) #customcc {
-    display: none;
-  }
-  :host .media-caption {
-    color: var(--a11y-media-bg-color);
-    background-color: var(--a11y-media-accent-color);
-  }
-  :host #audio-only {
-    text-align: center;
-    font-style: italic;
-    width: 100%;
-    line-height: 160%;
-  }
-  :host .print-only {
-    display: none;
-  }
-}
+          --paper-slider-active-color: var(--a11y-media-accent-color);
+          --paper-slider-secondary-color: var(--a11y-media-faded-accent-color);
+          --paper-slider-pin-color: var(--a11y-media-faded-bg-color);
+          --paper-slider-pin-start-color: var(--a11y-media-faded-bg-color);
+          --paper-slider-pin-end-color: var(--a11y-media-faded-bg-color);
+          --paper-slider-knob-color: var(--a11y-media-accent-color);
+          --paper-slider-knob-start-color: var(--a11y-media-bg-color);
+          --paper-slider-knob-end-color: var(--a11y-media-bg-color);
+          --paper-slider-knob-border-color: var(--a11y-media-accent-color);
+          --paper-slider-knob-start-border-color: var(--a11y-media-bg-color);
+          --paper-slider-knob-end-border-color: var(--a11y-media-bg-color);
 
-@media print {
-  :host,
-  :host([dark]) {
-    outline: 1px solid #aaaaaa;
-    background-color: #ffffff;
-  }
-  :host .screen-only,
-  :host #printthumb:not([src]),
-  :host(:not([thumbnail-src])) #player {
-    display: none;
-  }
-  :host #searchbar {
-    display: none;
-  }
-  :host .media-caption {
-    background-color: #cccccc;
-    color: #000000;
-    font-size: 120%;
-  }
-}</style>
-<style include="simple-colors-shared-styles"></style>
-  <div class="sr-only">
-      <a href$="[[__captionHref]]">[[mediaCaption]]</a>
-  </div>
-  <div id="outerplayer">
-    <div id="innerplayer">
-      <div id="player"
-        style$="[[_getThumbnailCSS(thumbnailSrc,isYoutube,audioOnly)]]">
-        <a11y-media-play-button
-          id="playbutton"
-          action$="[[playPause.action]]"
-          audio-only$="[[audioOnly]]"
-          disabled="true"
-          elapsed$="[[_hidePlayButton(thumbnailSrc, isYoutube, __elapsed)]]"
-          hidden$="[[audioNoThumb]]"
-          disabled$="[[audioNoThumb]]"
-          on-controls-change="_onControlsChanged"
-          localization$="[[localization]]">
-        </a11y-media-play-button>
-        <a11y-media-html5
-          id="html5"
-          audio-only$="[[audioOnly]]"
-          autoplay$="[[autoplay]]"
-          cc$="[[cc]]"
-          crossorigin$="[[crossorigin]]"
-          hidden$="[[isYoutube]]"
-          media-lang$="[[mediaLang]]"
-          loop$="[[loop]]"
-          muted$="[[muted]]"
-          manifest$="[[manifest]]"
-          on-media-loaded="_handleMediaLoaded"
-          ontimeupdate="_handleTimeUpdate"
-          playing$="[[__playing]]"
-          playback-rate$="[[playbackRate]]"
-          thumbnail-src$="[[thumbnailSrc]]"
-          preload$="[[preload]]"
-          volume$="[[volume]]"
+          --a11y-media-transcript-color: var(
+            --simple-colors-default-theme-grey-7
+          );
+          --a11y-media-transcript-bg-color: var(
+            --simple-colors-default-theme-grey-1
+          );
+          --a11y-media-transcript-accent-color: var(
+            --simple-colors-default-theme-accent-8
+          );
+          --a11y-media-transcript-faded-accent-color: var(
+            --simple-colors-default-theme-accent-10
+          );
+          --a11y-media-transcript-cue-color: var(
+            --simple-colors-fixed-theme-grey-12
+          );
+          --a11y-media-transcript-cue-bg-color: var(
+            --simple-colors-fixed-theme-grey-1
+          );
+          --a11y-media-transcript-active-cue-color: var(
+            --simple-colors-fixed-theme-grey-12
+          );
+          --a11y-media-transcript-active-cue-bg-color: var(
+            --simple-colors-fixed-theme-accent-1
+          );
+          --a11y-media-transcript-focused-cue-color: var(
+            --simple-colors-fixed-theme-grey-12
+          );
+          --a11y-media-transcript-focused-cue-bg-color: var(
+            --simple-colors-fixed-theme-grey-2
+          );
+          --a11y-media-transcript-match-color: var(
+            --simple-colors-fixed-theme-grey-1
+          );
+          --a11y-media-transcript-match-bg-color: var(
+            --simple-colors-fixed-theme-accent-10
+          );
+          --a11y-media-transcript-match-border-color: var(
+            --simple-colors-fixed-theme-accent-12
+          );
+        }
+        :host([dark]) {
+          border: 1px solid var(--simple-colors-default-theme-grey-1);
+        }
+        :host([dark-transcript]) {
+          --a11y-media-transcript-bg-color: var(
+            --simple-colors-dark-theme-grey-1
+          );
+          --a11y-media-transcript-cue-color: var(
+            --simple-colors-dark-theme-grey-12
+          );
+          --a11y-media-transcript-cue-bg-color: var(
+            --simple-colors-dark-theme-grey-1
+          );
+          --a11y-media-transcript-active-cue-color: var(
+            --simple-colors-dark-theme-accent-10
+          );
+          --a11y-media-transcript-active-cue-bg-color: var(
+            --simple-colors-dark-theme-grey-1
+          );
+          --a11y-media-transcript-match-color: var(
+            --simple-colors-dark-theme-grey-1
+          );
+          --a11y-media-transcript-match-bg-color: var(
+            --simple-colors-dark-theme-accent-10
+          );
+          --a11y-media-transcript-match-border-color: var(
+            --simple-colors-dark-theme-accent-12
+          );
+          --a11y-media-transcript-focused-cue-color: var(
+            --simple-colors-dark-theme-grey-12
+          );
+          --a11y-media-transcript-focused-cue-bg-color: var(
+            --simple-colors-dark-theme-grey-2
+          );
+        }
+        :host,
+        :host #outerplayer {
+          color: var(--simple-colors-default-theme-grey-12);
+          background-color: var(--simple-colors-default-theme-grey-2);
+        }
+        :host > * {
+          transition: all 0.5s;
+        }
+        :host,
+        :host #outerplayer,
+        :host #player,
+        :host #outertranscript,
+        :host #innertranscript {
+          display: flex;
+          flex-flow: column;
+          align-items: stretch;
+          align-content: stretch;
+        }
+        :host #captionlink:link {
+          text-decoration: none;
+        }
+        :host #innerplayer {
+          display: flex;
+        }
+        :host([hidden]),
+        :host *[hidden] {
+          display: none !important;
+        }
+        :host #innerplayer,
+        :host #player,
+        :host #player > *,
+        :host #customcc,
+        :host #customcctxt,
+        :host #slider,
+        :host #controls,
+        :host #outertranscript,
+        :host #innertranscript {
+          width: 100%;
+        }
+        :host #innertranscript > * {
+          width: calc(100% - 1px);
+        }
+        :host > *,
+        :host #innerplayer,
+        :host #player,
+        :host #player > *,
+        :host #customcctxt {
+          flex: 1 1 auto;
+        }
+        :host #controls,
+        :host #tcontrols {
+          flex: 0 0 44px;
+        }
+        :host #innerplayer {
+          margin: 0 auto;
+        }
+        :host #player {
+          height: 400px;
+          position: relative;
+        }
+        :host #player > * {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+        }
+        :host #playbutton,
+        :host #slider,
+        :host #controls {
+          z-index: 2;
+        }
+        :host([audio-only]) #playbutton {
+          opacity: 0;
+        }
+        :host #slider {
+          flex: 0 0 32px;
+          height: 32px;
+        }
+        :host([thumbnail-src]) #youtube {
+          opacity: 0;
+        }
+        :host #youtube[elapsed] {
+          opacity: 1;
+          transition: opacity 0.5s;
+        }
+        :host #customcc:not([hidden]) {
+          font-size: 20px;
+          transition: font-size 0.25s;
+          display: flex;
+        }
+        :host #customcctxt:not(:empty) {
+          align-self: flex-end;
+          font-family: sans-serif;
+          color: white;
+          margin: 4px 10px;
+          padding: 0.15em 4px;
+          background-color: black;
+          background-color: rgba(0, 0, 0, 0.8);
+          transition: all 0.5s;
+        }
+        :host([audio-only]:not([thumbnail-src])) #customcctxt {
+          align-self: center;
+          color: var(--a11y-media-color);
+          background-color: transparent;
+        }
+        :host #printthumb {
+          width: 100%;
+          margin: 0;
+          display: block;
+          border-top: 1px solid #aaaaaa;
+        }
+        :host .media-caption:not(:empty) {
+          width: calc(100% - 30px);
+          padding: 5px 15px;
+        }
+        :host .media-type {
+          font-style: italic;
+        }
+        :host #outertranscript {
+          padding: 0 1px 0 0;
+        }
+        :host #innertranscript {
+          flex: 1 0 194px;
+        }
+        :host #transcript {
+          flex: 1 0 150px;
+          overflow-y: scroll;
+        }
+        :host .sr-only {
+          position: absolute;
+          left: -9999px;
+          font-size: 0;
+          height: 0;
+          width: 0;
+          overflow: hidden;
+        }
+        @media screen {
+          :host([flex-layout]:not([responsive-size="xs"])) {
+            flex-flow: row;
+            padding: 0;
+          }
+          :host([flex-layout]:not([responsive-size="xs"])) #outerplayer {
+            flex: 1 0 auto;
+          }
+          :host #printthumb,
+          :host([height]) #outertranscript,
+          :host([stand-alone]) #outertranscript,
+          :host([hide-transcript]) #outertranscript {
+            display: none;
+          }
+          :host([sticky]:not([sticky-corner="none"])) #outerplayer {
+            position: fixed;
+            top: 5px;
+            right: 5px;
+            width: 200px;
+            max-width: 200px;
+            z-index: 999999;
+            border: 1px solid var(--a11y-media-bg-color);
+            box-shadow: 1px 1px 20px 1px rgba(125, 125, 125);
+            border-radius: 3.2px;
+          }
+          :host([dark][sticky]:not([sticky-corner="none"])) #outerplayer {
+            border: 1px solid var(--a11y-media-bg-color);
+          }
+          :host([sticky][sticky-corner="top-left"]) #outerplayer {
+            right: unset;
+            left: 5px;
+          }
+          :host([flex-layout]:not([responsive-size="xs"])) > div {
+            width: 50%;
+            flex: 1 1 auto;
+          }
+          :host #innertranscript {
+            position: relative;
+          }
+          :host([hide-transcript]) #outerplayer {
+            min-width: 50%;
+            max-width: 100%;
+          }
+          :host([hide-transcript]) #outertranscript {
+            display: none;
+          }
+          :host(:not([no-height]):not([stacked-layout]):not([responsive-size="xs"]))
+            #transcript {
+            position: absolute;
+            top: 44px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow-y: scroll;
+          }
+          :host(:not([no-height]):not([stacked-layout]):not([responsive-size="xs"]))
+            #innerplayer.totop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px !important;
+            z-index: 9999;
+          }
+          :host([sticky][sticky-corner="bottom-left"]) #innerplayer {
+            top: unset;
+            right: unset;
+            bottom: 5px;
+          }
+          :host([sticky][sticky-corner="bottom-right"]) #innerplayer {
+            top: unset;
+            bottom: 5px;
+          }
+          :host([sticky]:not([sticky-corner="none"]):not([no-height]):not([stacked-layout]):not([responsive-size="xs"]))
+            #controls {
+            display: none;
+          }
+          :host([responsive-size="lg"]) #customcc {
+            font-size: 16px;
+          }
+          :host([responsive-size="md"]) #customcc,
+          :host([flex-layout][responsive-size="xl"]) #customcc {
+            font-size: 14px;
+          }
+          :host([responsive-size="sm"]) #customcc,
+          :host([flex-layout][responsive-size="lg"]) #customcc {
+            font-size: 12px;
+          }
+          :host([responsive-size="xs"]) #customcc,
+          :host([flex-layout][responsive-size="md"]) #customcc,
+          :host([flex-layout][responsive-size="sm"]) #customcc {
+            font-size: 10px;
+          }
+          :host([sticky]:not([sticky-corner="none"])) #customcc {
+            display: none;
+          }
+          :host .media-caption {
+            color: var(--a11y-media-bg-color);
+            background-color: var(--a11y-media-accent-color);
+          }
+          :host #audio-only {
+            text-align: center;
+            font-style: italic;
+            width: 100%;
+            line-height: 160%;
+          }
+          :host .print-only {
+            display: none;
+          }
+        }
+
+        @media print {
+          :host,
+          :host([dark]) {
+            outline: 1px solid #aaaaaa;
+            background-color: #ffffff;
+          }
+          :host .screen-only,
+          :host #printthumb:not([src]),
+          :host(:not([thumbnail-src])) #player {
+            display: none;
+          }
+          :host #searchbar {
+            display: none;
+          }
+          :host .media-caption {
+            background-color: #cccccc;
+            color: #000000;
+            font-size: 120%;
+          }
+        }
+      </style>
+      <style include="simple-colors-shared-styles"></style>
+      <div class="sr-only">
+        <a href$="[[__captionHref]]">[[mediaCaption]]</a>
+      </div>
+      <div id="outerplayer">
+        <div id="innerplayer">
+          <div
+            id="player"
+            style$="[[_getThumbnailCSS(thumbnailSrc,isYoutube,audioOnly)]]"
+          >
+            <a11y-media-play-button
+              id="playbutton"
+              action$="[[playPause.action]]"
+              audio-only$="[[audioOnly]]"
+              disabled="true"
+              elapsed$="[[_hidePlayButton(thumbnailSrc, isYoutube, __elapsed)]]"
+              hidden$="[[audioNoThumb]]"
+              disabled$="[[audioNoThumb]]"
+              on-controls-change="_onControlsChanged"
+              localization$="[[localization]]"
+            >
+            </a11y-media-play-button>
+            <a11y-media-html5
+              id="html5"
+              audio-only$="[[audioOnly]]"
+              autoplay$="[[autoplay]]"
+              cc$="[[cc]]"
+              crossorigin$="[[crossorigin]]"
+              hidden$="[[isYoutube]]"
+              media-lang$="[[mediaLang]]"
+              loop$="[[loop]]"
+              muted$="[[muted]]"
+              manifest$="[[manifest]]"
+              on-media-loaded="_handleMediaLoaded"
+              ontimeupdate="_handleTimeUpdate"
+              playing$="[[__playing]]"
+              playback-rate$="[[playbackRate]]"
+              thumbnail-src$="[[thumbnailSrc]]"
+              preload$="[[preload]]"
+              volume$="[[volume]]"
+            >
+              <slot></slot>
+            </a11y-media-html5>
+            <div
+              id="youtube"
+              elapsed$="[[__elapsed]]"
+              lang$="[[mediaLang]]"
+              video-id$="[[videoId]]"
+            ></div>
+            <div
+              id="customcc"
+              aria-live="polite"
+              class="screen-only"
+              hidden$="[[!showCustomCaptions]]"
+            >
+              <div id="customcctxt"></div>
+            </div>
+          </div>
+        </div>
+        <paper-slider
+          id="slider"
+          class="screen-only"
+          disabled$="[[disableSeek]]"
+          label$="[[seekSlider.label]]"
+          min="0"
+          max="[[__duration]]"
+          on-mousedown="_handleSliderStart"
+          on-mouseup="_handleSliderStop"
+          on-keyup="_handleSliderStop"
+          on-keydown="_handleSliderStart"
+          on-blur="_handleSliderStop"
+          secondary-progress="[[__buffered]]"
+          value="[[__elapsed]]"
         >
-          <slot></slot>
-        </a11y-media-html5>
-        <div id="youtube" 
-          elapsed$="[[__elapsed]]" 
-          lang$="[[mediaLang]]"
-          video-id$="[[videoId]]">
-        </div>
-        <div id="customcc" 
-          aria-live="polite"
-          class="screen-only" 
-          hidden$="[[!showCustomCaptions]]">
-          <div id="customcctxt"></div>
+        </paper-slider>
+        <a11y-media-controls
+          id="controls"
+          cc$="[[cc]]"
+          disable-seek$="[[disableSeek]]"
+          fixed-height$="[[height]]"
+          fullscreen$="[[fullscreen]]"
+          fullscreen-button$="[[fullscreenButton]]"
+          has-captions$="[[hasCaptions]]"
+          has-transcript$="[[hasTranscript]]"
+          hide-transcript$="[[hideTranscript]]"
+          mute-unmute="[[muteUnmute]]"
+          on-controls-change="_onControlsChanged"
+          on-print-transcript="_handlePrinting"
+          on-download-transcript="_handleDownload"
+          responsive-size$="[[responsiveSize]]"
+          play-pause="[[playPause]]"
+          stand-alone$="[[standAlone]]"
+          volume="[[__volume]]"
+        >
+        </a11y-media-controls>
+        <a id="captionlink" href$="[[__captionHref]]">
+          <div
+            aria-hidden="true"
+            class="screen-only media-caption"
+            hidden$="[[!_hasAttribute(mediaCaption)]]"
+          >
+            [[mediaCaption]]
+          </div>
+        </a>
+        <div class="print-only media-caption">[[printCaption]]</div>
+      </div>
+      <img id="printthumb" aria-hidden="true" src$="[[thumbnailSrc]]" />
+      <div id="outertranscript" hidden$="[[standAlone]]">
+        <div id="innertranscript" hidden$="[[hideTranscript]]">
+          <a11y-media-transcript-controls
+            id="tcontrols"
+            accent-color$="[[accentColor]]"
+            localization$="[[localization]]"
+            dark$="[[darkTranscript]]"
+            disable-print-button$="[[disablePrintButton]]"
+            disable-scroll$="[[disableScroll]]"
+            disable-search$="[[disableSearch]]"
+            has-transcript$="[[hasTranscript]]"
+            localization$="[[localization]]"
+            on-searchbar-added="_handleSearchAdded"
+            on-toggle-scroll="_handleTranscriptScrollToggle"
+            on-print-transcript="_handlePrinting"
+            on-download-transcript="_handleDownload"
+            stand-alone$="[[standAlone]]"
+          >
+          </a11y-media-transcript-controls>
+          <a11y-media-transcript
+            id="transcript"
+            accent-color$="[[accentColor]]"
+            dark$="[[darkTranscript]]"
+            disable-scroll$="[[disableScroll]]"
+            disable-search$="[[disableSearch]]"
+            disable-seek$="[[disableSeek]]"
+            disable-interactive$="[[disableInteractive]]"
+            hide-timestamps$="[[hideTimestamps]]"
+            media-id$="[[id]]"
+            on-transcript-seek="_handleTranscriptSeek"
+            localization$="[[localization]]"
+            search="[[search]]"
+            selected-transcript$="[[__selectedTrack]]"
+          >
+          </a11y-media-transcript>
         </div>
       </div>
-    </div>
-    <paper-slider id="slider"
-      class="screen-only"
-      disabled$="[[disableSeek]]"
-      label$="[[seekSlider.label]]"
-      min="0"
-      max="[[__duration]]"
-      on-mousedown="_handleSliderStart"
-      on-mouseup="_handleSliderStop"
-      on-keyup="_handleSliderStop"
-      on-keydown="_handleSliderStart"
-      on-blur="_handleSliderStop"
-      secondary-progress="[[__buffered]]"
-      value="[[__elapsed]]"
-    >
-    </paper-slider>
-    <a11y-media-controls id="controls"
-      cc$="[[cc]]"
-      disable-seek$="[[disableSeek]]"
-      fixed-height$="[[height]]"
-      fullscreen$="[[fullscreen]]"
-      fullscreen-button$="[[fullscreenButton]]"
-      has-captions$="[[hasCaptions]]"
-      has-transcript$="[[hasTranscript]]"
-      hide-transcript$="[[hideTranscript]]"
-      mute-unmute="[[muteUnmute]]"
-      on-controls-change="_onControlsChanged"
-      on-print-transcript="_handlePrinting"
-      on-download-transcript="_handleDownload"
-      responsive-size$="[[responsiveSize]]"
-      play-pause="[[playPause]]"
-      stand-alone$="[[standAlone]]"
-      volume="[[__volume]]">
-    </a11y-media-controls>
-    <a id="captionlink" href$="[[__captionHref]]">
-      <div
-        aria-hidden="true"
-        class="screen-only media-caption"
-        hidden$="[[!_hasAttribute(mediaCaption)]]">
-        [[mediaCaption]]
-      </div>
-    </a>
-    <div class="print-only media-caption">[[printCaption]]</div>
-  </div>
-  <img id="printthumb" aria-hidden="true" src$="[[thumbnailSrc]]" />
-  <div id="outertranscript" hidden$="[[standAlone]]">
-    <div id="innertranscript" hidden$="[[hideTranscript]]">
-      <a11y-media-transcript-controls id="tcontrols"
-        accent-color$="[[accentColor]]"
-        localization$="[[localization]]"
-        dark$="[[darkTranscript]]"
-        disable-print-button$="[[disablePrintButton]]"
-        disable-scroll$="[[disableScroll]]"
-        disable-search$="[[disableSearch]]"
-        has-transcript$="[[hasTranscript]]"
-        localization$="[[localization]]"
-        on-searchbar-added="_handleSearchAdded"
-        on-toggle-scroll="_handleTranscriptScrollToggle"
-        on-print-transcript="_handlePrinting"
-        on-download-transcript="_handleDownload"
-        stand-alone$="[[standAlone]]">
-      </a11y-media-transcript-controls>
-      <a11y-media-transcript id="transcript" 
-        accent-color$="[[accentColor]]"
-        dark$="[[darkTranscript]]"
-        disable-scroll$="[[disableScroll]]"
-        disable-search$="[[disableSearch]]"
-        disable-seek$="[[disableSeek]]"
-        disable-interactive$="[[disableInteractive]]"
-        hide-timestamps$="[[hideTimestamps]]"
-        media-id$="[[id]]"
-        on-transcript-seek="_handleTranscriptSeek"
-        localization$="[[localization]]"
-        search="[[search]]"
-        selected-transcript$="[[__selectedTrack]]">
-      </a11y-media-transcript>
-    </div>
-  </div>`;
+    `;
   }
 
   // properties available to the custom element for data binding
-    static get properties() {
-    
+  static get properties() {
     return {
-  /**
-   * Allow this media to play concurrently with other a11y-media-players?
-   * Default is to pause this a11y-media-player when other a11y-media-player starts playing.
-   */
+      /**
+       * Allow this media to play concurrently with other a11y-media-players?
+       * Default is to pause this a11y-media-player when other a11y-media-player starts playing.
+       */
 
-  "allowConcurrent": {
-    "name": "allowConcurrent",
-    "type": Boolean,
-    "value": false
-  },
-  /**
-   * Is it an audio player with no thumbnail?
-   */
-  "audioNoThumb": {
-    "name": "audioNoThumb",
-    "type": Boolean,
-    "computed": "_getAudioNoThumb(audioOnly,thumbnailSrc)"
-  },
-  /**
-   * Use dark theme on transcript? Default is false, even when player is dark.
-   */
-  "darkTranscript": {
-    "name": "darkTranscript",
-    "type": Boolean,
-    "value": false
-  },
-  /**
-   * disable fullscreen option
-   */
-  "disableFullscreen": {
-    "name": "disableFullscreen",
-    "type": Boolean,
-    "value": false
-  },
-  /**
-   * disable interactive mode that makes the transcript clickable
-   */
-  "disableInteractive": {
-    "name": "disableInteractive",
-    "type": Boolean,
-    "value": false
-  },
-  /**
-   * Determines if video and transcript are in a flex layout
-   */
-  "flexLayout": {
-    "name": "flexLayout",
-    "type": Boolean,
-    "computed": "_isFlexLayout(standAlone,hideTranscript,audioNoThumb,stackedLayout)",
-    "reflectToAttribute": true
-  },
-  /**
-   * Is fullscreen mode?
-   */
-  "fullscreen": {
-    "name": "fullscreen",
-    "type": Boolean,
-    "value": false
-  },
-  /**
-   * show the FullscreenButton?
-   */
-  "fullscreenButton": {
-    "name": "fullscreenButton",
-    "type": Boolean,
-    "computed": "_getFullscreenButton(disableFullscreen,audioNoThumb,screenfullLoaded)",
-    "notify": true
-  },
+      allowConcurrent: {
+        name: "allowConcurrent",
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Is it an audio player with no thumbnail?
+       */
+      audioNoThumb: {
+        name: "audioNoThumb",
+        type: Boolean,
+        computed: "_getAudioNoThumb(audioOnly,thumbnailSrc)"
+      },
+      /**
+       * Use dark theme on transcript? Default is false, even when player is dark.
+       */
+      darkTranscript: {
+        name: "darkTranscript",
+        type: Boolean,
+        value: false
+      },
+      /**
+       * disable fullscreen option
+       */
+      disableFullscreen: {
+        name: "disableFullscreen",
+        type: Boolean,
+        value: false
+      },
+      /**
+       * disable interactive mode that makes the transcript clickable
+       */
+      disableInteractive: {
+        name: "disableInteractive",
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Determines if video and transcript are in a flex layout
+       */
+      flexLayout: {
+        name: "flexLayout",
+        type: Boolean,
+        computed:
+          "_isFlexLayout(standAlone,hideTranscript,audioNoThumb,stackedLayout)",
+        reflectToAttribute: true
+      },
+      /**
+       * Is fullscreen mode?
+       */
+      fullscreen: {
+        name: "fullscreen",
+        type: Boolean,
+        value: false
+      },
+      /**
+       * show the FullscreenButton?
+       */
+      fullscreenButton: {
+        name: "fullscreenButton",
+        type: Boolean,
+        computed:
+          "_getFullscreenButton(disableFullscreen,audioNoThumb,screenfullLoaded)",
+        notify: true
+      },
 
-  /**
-   * Does the player have tracks?
-   */
-  "hasCaptions": {
-    "name": "hasCaptions",
-    "type": Boolean,
-    "value": false
-  },
+      /**
+       * Does the player have tracks?
+       */
+      hasCaptions: {
+        name: "hasCaptions",
+        type: Boolean,
+        value: false
+      },
 
-  /**
-   * Hide elapsed time?
-   */
-  "hideElapsedTime": {
-    "name": "hideElapsedTime",
-    "type": Boolean,
-    "value": false
-  },
-  /**
-   * show cue's start and end time
-   */
-  "hideTimestamps": {
-    "name": "hideTimestamps",
-    "type": Boolean,
-    "value": false
-  },
-  /**
-   * initially hide the transcript?
-   */
-  "hideTranscript": {
-    "name": "hideTranscript",
-    "type": Boolean,
-    "value": false,
-    "reflectToAttribute": true
-  },
-  /**
-   * initially hide the transcript?
-   */
-  "id": {
-    "name": "id",
-    "type": String,
-    "value": null,
-    "reflectToAttribute": true
-  },
-  /**
-   * The default media caption if none is given.
-   */
-  "mediaCaption": {
-    "name": "mediaCaption",
-    "type": String,
-    "computed": "_getMediaCaption(audioOnly,localization,mediaTitle)"
-  },
-  /**
-   * the language of the media (if different from user interface language)
-   */
-  "mediaLang": {
-    "name": "mediaLang",
-    "type": String,
-    "value": "en"
-  },
-  /**
-   * mute/unmute button
-   */
-  "muteUnmute": {
-    "name": "muteUnmute",
-    "type": Object,
-    "computed": "_getMuteUnmute(muted)"
-  },
-  /**
-   * The media caption that displays when the page is printed.
-   */
-  "printCaption": {
-    "name": "printCaption",
-    "type": String,
-    "computed": "_getPrintCaption(audioOnly,audioLabel,videoLabel,mediaTitle)"
-  },
-  /**
-   * Size of the a11y media element for responsive styling
-   */
-  "responsiveSize": {
-    "name": "responsiveSize",
-    "type": String,
-    "notify": true,
-    "value": "xs",
-    "reflectToAttribute": true
-  },
-  /**
-   * Has screenfull loaded?
-   */
-  "screenfullLoaded": {
-    "name": "screenfullLoaded",
-    "type": Boolean,
-    "value": false,
-    "notify": true
-  },
-  /**
-   * is YouTube?
-   */
-  "showCustomCaptions": {
-    "name": "showCustomCaptions",
-    "type": Boolean,
-    "computed": "_showCustomCaptions(isYoutube, audioOnly, hasCaptions, cc)"
-  },
-  /**
-   * Optional array ouf sources.
-   */
-  "sources": {
-    "name": "sources",
-    "type": Array,
-    "value": []
-  },
-  /**
-   * stacked layout instead of side-by-side?
-   */
-  "stackedLayout": {
-    "name": "stackedLayout",
-    "type": Boolean,
-    "value": false
-  },
-  /**
-   * Is the video currently sticky, i.e. it is fixed to the corner when playing but scrolled off screen?
-   */
-  "sticky": {
-    "name": "sticky",
-    "type": Boolean,
-    "value": false,
-    "reflectToAttribute": true
-  },
-  /**
-   * When playing but scrolled off screen, to which corner does it "stick":
-   * top-left, top-right, bottom-left, bottom-right, or none?
-   * Default is "top-right". "None" disables stickiness.
-   */
-  "stickyCorner": {
-    "name": "stickyCorner",
-    "type": String,
-    "value": "top-right",
-    "reflectToAttribute": true
-  },
-  /**
-   * Source of optional thumbnail image
-   */
-  "thumbnailSrc": {
-    "name": "thumbnailSrc",
-    "type": String,
-    "value": null,
-    "reflectToAttribute": true
-  },
-  /**
-   * Optional array ouf tracks.
-   */
-  "tracks": {
-    "name": "tracks",
-    "type": Array,
-    "value": []
-  },
-  /**
-   * play/pause button
-   */
-  "playPause": {
-    "name": "playPause",
-    "type": Object,
-    "computed": "_getPlayPause(__playing)"
-  },
-  /**
-   * Notice if the video is playing
-   */
-  "__playing": {
-    "name": "__playing",
-    "type": Boolean,
-    "value": false,
-    "notify": true,
-    "reflectToAttribute": true
-  },
-  /**
-   * Notice if the video is playing
-   */
-  "__captionHref": {
-    "name": "__captionHref",
-    "type": String,
-    "value": null,
-    "notify": true
-  }
-}
-;
+      /**
+       * Hide elapsed time?
+       */
+      hideElapsedTime: {
+        name: "hideElapsedTime",
+        type: Boolean,
+        value: false
+      },
+      /**
+       * show cue's start and end time
+       */
+      hideTimestamps: {
+        name: "hideTimestamps",
+        type: Boolean,
+        value: false
+      },
+      /**
+       * initially hide the transcript?
+       */
+      hideTranscript: {
+        name: "hideTranscript",
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
+       * initially hide the transcript?
+       */
+      id: {
+        name: "id",
+        type: String,
+        value: null,
+        reflectToAttribute: true
+      },
+      /**
+       * The default media caption if none is given.
+       */
+      mediaCaption: {
+        name: "mediaCaption",
+        type: String,
+        computed: "_getMediaCaption(audioOnly,localization,mediaTitle)"
+      },
+      /**
+       * the language of the media (if different from user interface language)
+       */
+      mediaLang: {
+        name: "mediaLang",
+        type: String,
+        value: "en"
+      },
+      /**
+       * mute/unmute button
+       */
+      muteUnmute: {
+        name: "muteUnmute",
+        type: Object,
+        computed: "_getMuteUnmute(muted)"
+      },
+      /**
+       * The media caption that displays when the page is printed.
+       */
+      printCaption: {
+        name: "printCaption",
+        type: String,
+        computed: "_getPrintCaption(audioOnly,audioLabel,videoLabel,mediaTitle)"
+      },
+      /**
+       * Size of the a11y media element for responsive styling
+       */
+      responsiveSize: {
+        name: "responsiveSize",
+        type: String,
+        notify: true,
+        value: "xs",
+        reflectToAttribute: true
+      },
+      /**
+       * Has screenfull loaded?
+       */
+      screenfullLoaded: {
+        name: "screenfullLoaded",
+        type: Boolean,
+        value: false,
+        notify: true
+      },
+      /**
+       * is YouTube?
+       */
+      showCustomCaptions: {
+        name: "showCustomCaptions",
+        type: Boolean,
+        computed: "_showCustomCaptions(isYoutube, audioOnly, hasCaptions, cc)"
+      },
+      /**
+       * Optional array ouf sources.
+       */
+      sources: {
+        name: "sources",
+        type: Array,
+        value: []
+      },
+      /**
+       * stacked layout instead of side-by-side?
+       */
+      stackedLayout: {
+        name: "stackedLayout",
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Is the video currently sticky, i.e. it is fixed to the corner when playing but scrolled off screen?
+       */
+      sticky: {
+        name: "sticky",
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
+       * When playing but scrolled off screen, to which corner does it "stick":
+       * top-left, top-right, bottom-left, bottom-right, or none?
+       * Default is "top-right". "None" disables stickiness.
+       */
+      stickyCorner: {
+        name: "stickyCorner",
+        type: String,
+        value: "top-right",
+        reflectToAttribute: true
+      },
+      /**
+       * Source of optional thumbnail image
+       */
+      thumbnailSrc: {
+        name: "thumbnailSrc",
+        type: String,
+        value: null,
+        reflectToAttribute: true
+      },
+      /**
+       * Optional array ouf tracks.
+       */
+      tracks: {
+        name: "tracks",
+        type: Array,
+        value: []
+      },
+      /**
+       * play/pause button
+       */
+      playPause: {
+        name: "playPause",
+        type: Object,
+        computed: "_getPlayPause(__playing)"
+      },
+      /**
+       * Notice if the video is playing
+       */
+      __playing: {
+        name: "__playing",
+        type: Boolean,
+        value: false,
+        notify: true,
+        reflectToAttribute: true
+      },
+      /**
+       * Notice if the video is playing
+       */
+      __captionHref: {
+        name: "__captionHref",
+        type: String,
+        value: null,
+        notify: true
+      }
+    };
   }
 
   constructor() {
@@ -1276,13 +1346,14 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    * @returns {boolean} Should fullscreen disabled?
    */
   _getFullscreenButton(disableFullscreen, audioNoThumb, screenfullLoaded) {
+    if (typeof screenfull === "object") root._onScreenfullLoaded.bind(root);
     if (
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
         navigator.userAgent
       ) ||
       disableFullscreen ||
       audioNoThumb ||
-      !screenfullLoaded
+      !(typeof screenfull === "object")
     ) {
       return false;
     } else {
