@@ -210,11 +210,15 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
   play() {
     let root = this,
       stopped = !(root.__playing === true);
-    root.__playing = true;
-    root.media.play();
-    window.dispatchEvent(
-      new CustomEvent("a11y-player-playing", { detail: root })
-    );
+    if (root.isYoutube && !root.__ytAppended) {
+      ytInit();
+    } else {
+      root.__playing = true;
+      root.media.play();
+      window.dispatchEvent(
+        new CustomEvent("a11y-player-playing", { detail: root })
+      );
+    }
   }
 
   /**
