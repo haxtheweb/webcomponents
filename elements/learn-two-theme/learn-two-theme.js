@@ -249,7 +249,7 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
           max-height: calc(100vh - 160px);
         }
         app-drawer-layout[narrow] site-menu-button {
-          bottom: 0;
+          bottom: 60px;
           top: unset;
           --site-menu-button-button: {
             background-color: transparent !important;
