@@ -77,7 +77,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
           height: 48px;
           line-height: 20px;
           background-color: black;
-          color: var(--haxcms-color, white);
+          color: var(--haxcms-color, rgba(255, 0, 116, 1));
           transition: 0.3s all ease-in-out;
           padding: 12px;
           margin: 0;

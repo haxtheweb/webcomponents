@@ -98,9 +98,9 @@ app-header {
   @apply --layout-fixed-top;
   color: #FFFFFF;
   box-shadow: 0 4px 12px 0 rgba(0,0,0,.15);
-  background-color: var(--haxcms-color);
+  background-color: var(--haxcms-color, rgba(255, 0, 116, 1));
   --app-header-background-rear-layer: {
-    background-color: var(--haxcms-color);
+    background-color: var(--haxcms-color, rgba(255, 0, 116, 1));
   };
 }
 paper-icon-button {
@@ -137,7 +137,7 @@ site-active-title {
 }
 
 social-share-link {
-  --social-share-button-bg: var(--haxcms-color);
+  --social-share-button-bg: var(--haxcms-color, rgba(255, 0, 116, 1));
   --social-share-button: {
     padding: 8px;
     border-radius: 50%;
@@ -207,7 +207,7 @@ site-rss-button {
   margin: 0 4px;
   padding: 0;
   --site-rss-color: #000000;
-  --site-rss-bg-color: var(--haxcms-color);
+  --site-rss-bg-color: var(--haxcms-color, rgba(255, 0, 116, 1));
   --site-rss-paper-button: {
     padding: 0 4px;
     margin: 0;

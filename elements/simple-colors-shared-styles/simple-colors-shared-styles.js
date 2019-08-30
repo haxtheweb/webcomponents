@@ -18,7 +18,9 @@ const styleElement = document.createElement("dom-module");
 // styles
 const css = html`
   <style>
-    :host {
+    :host,
+    :root,
+    html {
       --simple-colors-default-theme-accent-1: #ffffff;
       --simple-colors-default-theme-accent-2: #eeeeee;
       --simple-colors-default-theme-accent-3: #dddddd;

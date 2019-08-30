@@ -192,17 +192,17 @@ export const HAXCMSTheme = function(SuperClass) {
         });
         // store disposer so we can clean up later
         autorun(reaction => {
-          const __routerManifest = toJS(store.routerManifest);
-          if (__routerManifest && varExists(__routerManifest, "title")) {
-            document.title = __routerManifest.title;
+          const __manifest = toJS(store.manifest);
+          if (__manifest && varExists(__manifest, "title")) {
+            document.title = __manifest.title;
           }
           if (
-            __routerManifest &&
-            varExists(__routerManifest, "metadata.theme.variables.cssVariable")
+            __manifest &&
+            varExists(__manifest, "metadata.theme.variables.cssVariable")
           ) {
             // json outline schema changed, allow other things to react
             // fake way of forcing an update of these items
-            let ary = __routerManifest.metadata.theme.variables.cssVariable
+            let ary = __manifest.metadata.theme.variables.cssVariable
               .replace("--simple-colors-default-theme-", "")
               .split("-");
             ary.pop();
@@ -212,9 +212,13 @@ export const HAXCMSTheme = function(SuperClass) {
             document.body.style.setProperty(
               "--haxcms-color",
               varGet(
-                __routerManifest,
-                "metadata.theme.variables.hexCode",
-                "#FFFFFF"
+                __manifest,
+                "metadata.theme.variables.cssVariable",
+                varGet(
+                  __manifest,
+                  "metadata.theme.variables.hexCode",
+                  "#ff0074"
+                )
               )
             );
           }

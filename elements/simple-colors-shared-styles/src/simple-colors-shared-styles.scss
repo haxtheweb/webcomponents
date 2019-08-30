@@ -348,7 +348,9 @@ $colors:
   }
 }
 
-:host {
+:host,
+:root,
+html {
   @include get-colors('default',$dark: false);
   @include get-colors('fixed',$dark: false);
 }

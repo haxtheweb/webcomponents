@@ -326,6 +326,10 @@ class CodeEditor extends SchemaBehaviors(PolymerElement) {
       "monaco-element-ready",
       this.editorReady.bind(this)
     );
+    if (this._observer) {
+      this._observer.disconnect();
+      this._observer = null;
+    }
     super.disconnectedCallback();
   }
   editorReady(e) {
