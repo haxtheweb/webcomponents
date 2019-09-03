@@ -208,19 +208,23 @@ export const HAXCMSTheme = function(SuperClass) {
             ary.pop();
             // simple colors "accent color" property
             this.accentColor = ary.join("-");
-            // set this directly instead of messing w/ accentColor
-            document.body.style.setProperty(
-              "--haxcms-color",
-              varGet(
-                __manifest,
-                "metadata.theme.variables.cssVariable",
-                varGet(
-                  __manifest,
-                  "metadata.theme.variables.hexCode",
-                  "#ff0074"
-                )
-              )
+            var color = varGet(
+              __manifest,
+              "metadata.theme.variables.cssVariable",
+              null
             );
+            // fallback if color wasn't set via css var
+            if (color == null) {
+              color = varGet(
+                __manifest,
+                "metadata.theme.variables.hexCode",
+                "#ff0074"
+              );
+            } else {
+              color = `var(${color})`;
+            }
+            // set this directly instead of messing w/ accentColor
+            document.body.style.setProperty("--haxcms-color", color);
           }
           this.__disposer.push(reaction);
         });
