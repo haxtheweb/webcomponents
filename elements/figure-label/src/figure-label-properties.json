@@ -1,14 +1,14 @@
 {
   "title": {
     "name": "title",
-    "type": "String",
+    "type": String,
     "value": "",
     "reflectToAttribute": false,
     "observer": false
   },
   "description": {
     "name": "description",
-    "type": "String",
+    "type": String,
     "value": "",
     "reflectToAttribute": false,
     "observer": false

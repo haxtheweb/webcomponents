@@ -2,7 +2,7 @@
  * Copyright 2019 PSU
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html } from "@polymer/lit-element";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 /**
  * `figure-label`
