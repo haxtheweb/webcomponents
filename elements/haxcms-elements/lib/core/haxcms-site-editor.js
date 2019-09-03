@@ -147,6 +147,17 @@ class HAXCMSSiteEditor extends PolymerElement {
       ></iron-ajax>
       <iron-ajax
         headers='{"Authorization": "Bearer [[jwt]]"}'
+        id="syncajax"
+        url="[[syncSitePath]]"
+        method="[[method]]"
+        body="[[syncSiteData]]"
+        content-type="application/json"
+        handle-as="json"
+        on-response="_handleSyncResponse"
+        last-error="{{lastError}}"
+      ></iron-ajax>
+      <iron-ajax
+        headers='{"Authorization": "Bearer [[jwt]]"}'
         id="createajax"
         url="[[createNodePath]]"
         method="[[method]]"
@@ -242,6 +253,12 @@ class HAXCMSSiteEditor extends PolymerElement {
         type: String
       },
       /**
+       * end point for sync
+       */
+      syncSitePath: {
+        type: String
+      },
+      /**
        * Publishing end point, this has CDN implications so show message
        */
       publishing: {
@@ -300,6 +317,13 @@ class HAXCMSSiteEditor extends PolymerElement {
        * revert site data
        */
       revertSiteData: {
+        type: Object,
+        value: {}
+      },
+      /**
+       * sync site data
+       */
+      syncSiteData: {
         type: Object,
         value: {}
       },
@@ -447,6 +471,7 @@ class HAXCMSSiteEditor extends PolymerElement {
         "haxcms-publish-site",
         this.publishSite.bind(this)
       );
+      window.addEventListener("haxcms-sync-site", this.syncSite.bind(this));
       window.addEventListener(
         "haxcms-git-revert-last-commit",
         this.revertCommit.bind(this)
@@ -515,6 +540,7 @@ class HAXCMSSiteEditor extends PolymerElement {
       "haxcms-publish-site",
       this.publishSite.bind(this)
     );
+    window.removeEventListener("haxcms-sync-site", this.syncSite.bind(this));
     window.removeEventListener(
       "haxcms-git-revert-last-commit",
       this.revertCommit.bind(this)
@@ -994,6 +1020,34 @@ class HAXCMSSiteEditor extends PolymerElement {
       })
     );
   }
+  /**
+   * Handle sync response that site may have changed or been updated
+   */
+  _handleSyncResponse(e) {
+    // trigger a refresh of the data in node
+    const evt = new CustomEvent("simple-toast-show", {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+      detail: {
+        text: "Site synced",
+        duration: 3000
+      }
+    });
+    this.dispatchEvent(evt);
+    this.dispatchEvent(
+      new CustomEvent("haxcms-trigger-update", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: true
+      })
+    );
+    store.dashboardOpened = false;
+  }
+  /**
+   * Publish response
+   */
   _handlePublishResponse(e) {
     let data = e.detail.response;
     // show the published response
@@ -1131,6 +1185,22 @@ class HAXCMSSiteEditor extends PolymerElement {
     this.notifyPath("publishSiteData.*");
     if (this.publishSitePath) {
       this.$.publishajax.generateRequest();
+    }
+  }
+  /**
+   * Revert last commit
+   */
+  syncSite(e) {
+    this.set("syncSiteData", {});
+    this.set("syncSiteData", {
+      jwt: this.jwt,
+      site: {
+        name: store.manifest.metadata.site.name
+      }
+    });
+    this.notifyPath("syncSiteData.*");
+    if (this.syncSitePath) {
+      this.$.syncajax.generateRequest();
     }
   }
   /**

@@ -40,7 +40,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/hax-body-behaviors": "^2.1.4",
-    "lit-element": "^2.1.0"
+    "lit-element": "^2.2.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",

@@ -19,7 +19,6 @@ window.__H5PBridgeTimeOut = function() {
  *  - h5p is it's own eco system, we're just trying to wrap it a bit
  *
  * @customElement
- * @lit-html
  * @lit-element
  * @demo demo/index.html
  */

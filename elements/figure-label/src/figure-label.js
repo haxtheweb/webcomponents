@@ -12,7 +12,6 @@ import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js
  *  -
  *
  * @customElement
- * @lit-html
  * @lit-element
  * @demo demo/index.html
  */

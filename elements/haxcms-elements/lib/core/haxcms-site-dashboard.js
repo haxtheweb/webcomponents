@@ -7,6 +7,8 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
 import { varGet, varExists } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import "@polymer/paper-button/paper-button.js";
+import "@polymer/iron-icons/iron-icons.js";
+import "@polymer/iron-icons/notification-icons.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-form.js";
 
 /**
@@ -155,19 +157,6 @@ class HAXCMSSiteDashboard extends LitElement {
       </div>
     `;
   }
-  /**
-   * Close the dashboard and reset state
-   */
-  _cancel(e) {
-    window.dispatchEvent(
-      new CustomEvent("haxcms-load-site-fields", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: e.target
-      })
-    );
-  }
   static get properties() {
     return {
       dashboardOpened: {
@@ -188,73 +177,16 @@ class HAXCMSSiteDashboard extends LitElement {
         type: String
       },
       /**
-       * end point for publishing
-       */
-      publishSitePath: {
-        type: String
-      },
-      /**
-       * end point for revert
-       */
-      revertSitePath: {
-        type: String
-      },
-      /**
        * Publishing end point, this has CDN implications so show message
        */
       publishing: {
         type: Boolean
       },
       /**
-       * end point for saving outline
-       */
-      saveOutlinePath: {
-        type: String
-      },
-      /**
-       * data as part of the POST to the backend
-       */
-      updateManifestData: {
-        type: Object
-      },
-      /**
-       * data as part of the POST to the backend
-       */
-      updateOutlineData: {
-        type: Object
-      },
-      /**
-       * data as part of the POST to the backend
-       */
-      updateManifestData: {
-        type: Object
-      },
-      /**
-       * data as part of the POST to the for field data
-       */
-      getNodeFieldsData: {
-        type: Object
-      },
-      /**
-       * data as part of the POST to the for field data
-       */
-      getSiteFieldsData: {
-        type: Object
-      },
-      /**
        * Outline of items in json outline schema format
        */
       manifest: {
         type: Object
-      },
-      getNodeFieldsPath: {
-        type: String
-      },
-      getSiteFieldsPath: {
-        type: String
-      },
-      getFormToken: {
-        type: String
       }
     };
   }
@@ -296,32 +228,6 @@ class HAXCMSSiteDashboard extends LitElement {
     });
   }
   /**
-   * Publish request send to backend from button
-   */
-  _publishTap(e) {
-    this.dispatchEvent(
-      new CustomEvent("haxcms-publish-site", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: true
-      })
-    );
-  }
-  /**
-   * Revert Commit pressed
-   */
-  _revertCommit(e) {
-    this.dispatchEvent(
-      new CustomEvent("haxcms-git-revert-last-commit", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: true
-      })
-    );
-  }
-  /**
    * Save the fields as we get tapped
    */
   _saveSiteFieldsTap(e) {
@@ -332,6 +238,19 @@ class HAXCMSSiteDashboard extends LitElement {
         composed: true,
         cancelable: true,
         detail: this.shadowRoot.querySelector("#siteform").submit()
+      })
+    );
+  }
+  /**
+   * Close the dashboard and reset state
+   */
+  _cancel(e) {
+    window.dispatchEvent(
+      new CustomEvent("haxcms-load-site-fields", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: e.target
       })
     );
   }

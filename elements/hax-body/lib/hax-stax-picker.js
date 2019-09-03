@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  *  `hax-stax-picker`
  * A picker for selecting an item from a list of apps / hax stax which require

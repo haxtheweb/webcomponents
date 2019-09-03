@@ -14,7 +14,6 @@ import { CountUp } from "countup.js";
  *  -
  *
  * @customElement
- * @lit-html
  * @lit-element
  * @demo demo/index.html
  */

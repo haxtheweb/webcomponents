@@ -1,4 +1,4 @@
-import { LitElement, html, css } from "lit-element";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { MtzFileDownloadBehaviors } from "@lrnwebcomponents/dl-behavior/dl-behavior.js";
 /**
  * `hax-export-dialog`

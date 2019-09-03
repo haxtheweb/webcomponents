@@ -593,6 +593,7 @@ window.HAXme = function(context = null) {
       deleteNodePath: "dist/dev/saveNode.json",
       saveOutlinePath: "dist/dev/saveNode.json",
       publishSitePath: "dist/dev/saveNode.json",
+      syncSitePath: "dist/dev/saveNode.json",
       getNodeFieldsPath: "dist/dev/getNodeFieldsPath.json",
       getSiteFieldsPath: "dist/dev/getSiteFieldsPath.json",
       revertSitePath: "dist/dev/saveNode.json",

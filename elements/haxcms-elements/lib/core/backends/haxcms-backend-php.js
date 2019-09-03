@@ -128,6 +128,8 @@ class HAXCMSBackendPHP extends PolymerElement {
                 window.appSettings.getFormToken;
               haxCmsSiteEditorElement.publishSitePath =
                 window.appSettings.publishSitePath;
+              haxCmsSiteEditorElement.syncSitePath =
+                window.appSettings.syncSitePath;
               haxCmsSiteEditorElement.revertSitePath =
                 window.appSettings.revertSitePath;
               haxCmsSiteEditorElement.createNodePath =
