@@ -1681,5 +1681,6 @@ const css = html`
 `;
 
 styleElement.appendChild(css);
-
 styleElement.register("simple-colors-shared-styles");
+
+export { css };

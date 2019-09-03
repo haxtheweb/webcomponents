@@ -16,5 +16,6 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 const styleElement = document.createElement("dom-module");
 /* REQUIRED FOR TOOLING DO NOT TOUCH */
 styleElement.appendChild(css);
-
 styleElement.register("simple-colors-shared-styles");
+
+export { css };
