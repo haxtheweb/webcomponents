@@ -79,7 +79,11 @@ class SimpleColors extends PolymerElement {
 
   connectedCallback() {
     super.connectedCallback();
-    document.head.appendChild(SimpleColorsStyleSheet.content);
+    // ensure this only gets applied once even though shouldn't be possible
+    if (!window.SimpleColorsStylesHead) {
+      window.SimpleColorsStylesHead = true;
+      document.head.appendChild(SimpleColorsStyleSheet.content);
+    }
   }
 
   /**
