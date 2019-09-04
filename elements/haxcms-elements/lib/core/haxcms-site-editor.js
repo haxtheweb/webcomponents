@@ -81,7 +81,6 @@ class HAXCMSSiteEditor extends PolymerElement {
           background-color: var(--paper-blue-500) !important;
         }
         h-a-x {
-          padding: 80px 40px;
           margin: auto;
           display: none;
         }
