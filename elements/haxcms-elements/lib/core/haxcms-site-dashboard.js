@@ -59,7 +59,7 @@ class HAXCMSSiteDashboard extends LitElement {
           margin-left: 0;
         }
         .buttons {
-          border: 2px solid #aaaaaa;
+          border: 1px solid #aaaaaa;
           background-color: var(--simple-modal-titlebar-background, #000000);
           color: var(--simple-modal-titlebar-color, #ffffff);
           position: absolute;
@@ -69,15 +69,22 @@ class HAXCMSSiteDashboard extends LitElement {
           display: flex;
         }
         .buttons paper-button {
-          color: #ffffff;
-          background-color: var(--simple-modal-button-background, #000000);
+          color: var(--haxcms-color, #ffffff);
+          background-color: #000000;
+          font-weight: bold;
+          text-transform: none;
           border-radius: 0;
           border: none;
-          border-right: 2px solid white;
+          border-right: 1px solid white;
           margin: 0;
         }
+        .buttons paper-button:active,
+        .buttons paper-button:focus,
+        .buttons paper-button:hover {
+          color: #ffffff;
+        }
         .title {
-          color: #dddddd;
+          color: white;
           font-size: 40px;
           margin: 0;
           padding: 0;
@@ -91,7 +98,6 @@ class HAXCMSSiteDashboard extends LitElement {
           color: white;
         }
         .title-wrapper {
-          color: white;
           padding: 0 16px;
         }
         .toptext {
@@ -109,6 +115,13 @@ class HAXCMSSiteDashboard extends LitElement {
           --a11y-tabs-height: 80vh;
           --a11y-tabs-tab-height: 75vh;
           --a11y-tabs-tab-overflow: scroll;
+          --primary-color: var(--haxcms-color, #000000);
+          --paper-input-container-focus-color: var(--haxcms-color, #000000);
+          --eco-json-form-add-color: var(--haxcms-color, #000000);
+          --eco-json-form-faded-color: var(--haxcms-color, #000000);
+          --lumo-primary-text-color: var(--haxcms-color, #000000);
+          --a11y-tabs-color: var(--haxcms-color, #000000);
+          --a11y-tabs-focus-color: var(--haxcms-color, #000000);
         }
       `
     ];
@@ -149,7 +162,7 @@ class HAXCMSSiteDashboard extends LitElement {
       </div>
       <div class="buttons">
         <paper-button @click="${this._saveSiteFieldsTap}"
-          ><iron-icon icon="icons:save"></iron-icon> Save settings</paper-button
+          ><iron-icon icon="icons:save"></iron-icon> Save</paper-button
         >
         <paper-button @click="${this._cancel}"
           ><iron-icon icon="icons:cancel"></iron-icon> Cancel</paper-button
