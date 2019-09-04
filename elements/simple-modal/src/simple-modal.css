@@ -12,6 +12,7 @@ paper-dialog-scrollable:not(:defined) {
 
 :host paper-dialog ::slotted(*) {
   font-size: 14px;
+  width: 100%;
   @apply --simple-modal-content;
 }
 

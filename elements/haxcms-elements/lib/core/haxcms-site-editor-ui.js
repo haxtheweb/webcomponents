@@ -150,12 +150,6 @@ class HAXCMSSiteEditorUI extends PolymerElement {
           }
         }
       </style>
-      <paper-icon-button
-        id="manifestbutton"
-        icon="[[icon]]"
-        on-click="_manifestButtonTap"
-        title="[[__settingsText]]"
-      ></paper-icon-button>
       <paper-fab
         id="editbutton"
         icon="[[__editIcon]]"
@@ -192,6 +186,12 @@ class HAXCMSSiteEditorUI extends PolymerElement {
         icon="icons:list"
         on-click="_outlineButtonTap"
         title="Edit site outline"
+      ></paper-icon-button>
+      <paper-icon-button
+        id="manifestbutton"
+        icon="[[icon]]"
+        on-click="_manifestButtonTap"
+        title="[[__settingsText]]"
       ></paper-icon-button>
       <paper-tooltip for="cancelbutton" position="right" offset="14"
         >Cancel</paper-tooltip
@@ -389,7 +389,6 @@ class HAXCMSSiteEditorUI extends PolymerElement {
     delete this.__newForm.schema.properties.indent;
     this.__newForm.schema.properties.title.value = "";
     let b1 = document.createElement("paper-button");
-    b1.raised = true;
     let icon = document.createElement("iron-icon");
     icon.icon = "icons:add";
     b1.appendChild(icon);
@@ -474,7 +473,6 @@ class HAXCMSSiteEditorUI extends PolymerElement {
     let icon = document.createElement("iron-icon");
     icon.icon = "icons:delete";
     b1.appendChild(icon);
-    b1.raised = true;
     b1.appendChild(document.createTextNode("Confirm"));
     b1.style.color = "white";
     b1.style.backgroundColor = "#ee0000";

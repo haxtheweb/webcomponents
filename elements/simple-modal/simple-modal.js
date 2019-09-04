@@ -65,6 +65,7 @@ class SimpleModal extends PolymerElement {
 
         :host paper-dialog ::slotted(*) {
           font-size: 14px;
+          width: 100%;
           @apply --simple-modal-content;
         }
 
