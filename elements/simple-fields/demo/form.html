@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>SimpleSchemaForm: simple-fields Demo</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../simple-fields.js';
+      import '../lib/simple-fields-form.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic simple-fields-form demo</h3>
+      <demo-snippet>
+        <template>
+          <simple-fields-form id="testform" load-endpoint="data.json" method="GET">
+          </simple-fields-form>
+          <button id="autoload">Load data</button>
+          <button id="savebtn">Save / show values in console</button>
+          <script>
+            document.getElementById('autoload').addEventListener('click', (e) => {
+              // submit the form values to the end point
+              document.getElementById('testform').autoload = true;
+            });
+            document.getElementById('savebtn').addEventListener('click', (e) => {
+              // submit the form values to the end point
+              console.log('submitting',document.getElementById('testform').submit());
+            });
+          </script>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

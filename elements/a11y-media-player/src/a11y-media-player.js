@@ -543,13 +543,14 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    * @returns {boolean} Should fullscreen disabled?
    */
   _getFullscreenButton(disableFullscreen, audioNoThumb, screenfullLoaded) {
+    if (typeof screenfull === "object") root._onScreenfullLoaded.bind(root);
     if (
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
         navigator.userAgent
       ) ||
       disableFullscreen ||
       audioNoThumb ||
-      !screenfullLoaded
+      !(typeof screenfull === "object")
     ) {
       return false;
     } else {

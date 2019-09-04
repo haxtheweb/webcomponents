@@ -36,7 +36,6 @@ class EcoJsonSchemaArray extends mixinBehaviors(
           color: var(--eco-json-form-color);
           background-color: var(--eco-json-form-bg);
           font-family: var(--eco-json-form-font-family);
-          margin-bottom: 15px;
         }
         :host ([hidden]) {
           display: none;
@@ -134,13 +133,13 @@ class EcoJsonSchemaArray extends mixinBehaviors(
           align-items: flex-end;
           justify-content: space-between;
         }
-        :host eco-json-schema-object {
+        :host .item-fields {
           flex: 1 0 auto;
         }
       </style>
       <fieldset>
-        <legend id="legend" class="flex" hidden\$="[[!label]]">
-          [[label]]
+        <legend id="legend" class="flex" hidden\$="[[!schema.title]]">
+          [[schema.title]]
         </legend>
         <a11y-collapse-group
           id="form"
@@ -148,29 +147,23 @@ class EcoJsonSchemaArray extends mixinBehaviors(
           class="vertical flex layout"
           global-options="[[globalOptions]]"
         >
-          <template
-            is="dom-repeat"
-            items="[[__validatedSchema]]"
-            as="item"
-            restamp
-          >
-            <a11y-collapse accordion id$="item-[[index]]">
+          <template is="dom-repeat" items="[[schema.value]]" as="item" restamp>
+            <a11y-collapse
+              accordion
+              id$="item-[[index]]"
+              icon$="[[globalOptions.icon]]"
+              tooltip$="[[globalOptions.tooltip]]"
+            >
               <p slot="heading">
-                {{_getHeading(item.value.*,item.label,index)}}
+                {{_getHeading(__headings.*,schema.label,index)}}
               </p>
               <div slot="content">
                 <div>
-                  <eco-json-schema-object
-                    id="schemaobject"
-                    controls$="item-[[index]]"
-                    item="[[index]]"
-                    autofocus$="[[autofocus]]"
-                    on-value-changed="_valueChanged"
-                    hide-line-numbers$="[[hideLineNumbers]]"
-                    schema="[[item]]"
-                    value="{{item.value}}"
-                  >
-                  </eco-json-schema-object>
+                  <div
+                    id$="value-[[index]]"
+                    class="item-fields"
+                    data-index$="[[index]]"
+                  ></div>
                   <paper-icon-button
                     id="remove-[[index]]"
                     icon="icons:delete"
@@ -203,140 +196,144 @@ class EcoJsonSchemaArray extends mixinBehaviors(
   }
   static get properties() {
     return {
-      /**
-       * automatically set focus on the first field if that field has autofocus
-       */
-      autofocus: {
-        type: Boolean,
-        value: false
-      },
       globalOptions: {
         type: Object,
         value: {
           icon: "settings",
           tooltip: "configure item"
-        }
+        },
+        notify: true
       },
-      /**
-       * hide code-editor line numbers
-       */
-      hideLineNumbers: {
-        type: Boolean,
-        value: false
-      },
-      label: {
-        type: String
+      propertyName: {
+        type: String,
+        value: null
       },
       schema: {
         type: Object,
+        value: {},
         notify: true,
         observer: "_schemaChanged"
       },
-      value: {
-        type: Array,
-        notify: true,
-        value: []
-      },
-      /**
-       * Fields to conver to JSON Schema.
-       */
-      __validatedSchema: {
+      __headings: {
         type: Array,
         value: [],
         notify: true
       }
     };
   }
+  ready() {
+    super.ready();
+    this.__headings = [];
+    this._schemaChanged();
+
+    //update the headings if the data changes
+    this.addEventListener("form-field-changed", e => {
+      this._updateHeadings(e);
+    });
+  }
+  disconnectedCallback() {
+    this.removeEventListener("form-field-changed", e => {
+      this._updateHeadings(e);
+    });
+    super.disconnectedCallback();
+  }
+  /**
+   * updates the array fields if the schema (which includes values) changes
+   */
+  _schemaChanged() {
+    //make sure the content is there first
+    afterNextRender(this, () => {
+      let itemLabel = this.schema.items.itemLabel;
+      if (this.schema.value)
+        this.schema.value.forEach(val => {
+          this.push("__headings", val[itemLabel]);
+        });
+      this.shadowRoot.querySelectorAll(".item-fields").forEach(item => {
+        let index = item.getAttribute("data-index"),
+          propertyName = `${this.propertyPrefix}${this.propertyName}`,
+          prefix = `${propertyName}.${index}`,
+          path = `${propertyName}.properties.${index}`,
+          val = this.schema.value[index];
+
+        //for each array item, request the fields frrom eco-json-schema-object
+        this.dispatchEvent(
+          new CustomEvent("build-fieldset", {
+            bubbles: false,
+            cancelable: true,
+            composed: true,
+            detail: {
+              container: item,
+              path: path,
+              prefix: prefix,
+              properties: this.schema.properties.map(prop => {
+                let newprop = JSON.parse(JSON.stringify(prop));
+                newprop.value = val[prop.name];
+                return newprop;
+              }),
+              type: EcoJsonSchemaArray.tag
+            }
+          })
+        );
+      });
+    });
+  }
   /**
    * handles adding an array item
    * @param {event} e the add item button tap event
    */
   _onAddItem(e) {
-    let schema = JSON.parse(JSON.stringify(this.schema.items));
-    schema.value = {};
-    this.push("__validatedSchema", schema);
+    let val = {};
+    //add default values to the new item
+    this.schema.properties.forEach(prop => {
+      val[prop.name] = prop.value;
+    });
+    this.push("schema.value", val);
+    this.notifyPath("schema.value.*");
+    this._schemaChanged();
   }
   /**
    * handles removing an array item
    * @param {event} e the remove item button tap event
    */
   _onRemoveItem(e) {
-    this._valueChanged(e);
-    let id = e.target.controls.split("-");
-    this.splice("__validatedSchema", id[1], 1);
+    //remove the data for an item at a given index
+    let index = e.target.controls.replace(/item-/, "");
+    this.splice("schema.value", index, 1);
+    this.notifyPath("schema.value.*");
+    this._schemaChanged();
+  }
+  /**
+   * updates the list expandable headings for each item
+   * @param {event} e the event that triggers an update
+   */
+  _updateHeadings(e) {
+    let propname = e.detail.getAttribute("name"),
+      val = e.detail.value,
+      pathArr = propname ? propname.split(".") : [],
+      index = pathArr.length > 2 ? pathArr[pathArr.length - 2] : null,
+      update =
+        e.detail.propertyName === this.schema.items.itemLabel
+          ? val
+          : this.__headings[index];
+    if (index) this.set(`__headings.${index}`, update);
   }
   /**
    * labels the collapse heading based on a given property
-   * @param {object} item the array item
-   * @param {string} prop the property that will populate the collapse heading
-   * @param {number} index the  index of the item
+   * @param {object} headings item the array item
+   * @param {string} label prop the property that will populate the collapse heading
+   * @param {number} index the index of the item
+   * @returns {string} the expanable heading label
    */
-  _getHeading(item, prop, index) {
-    return item &&
-      item.base &&
-      prop &&
-      item.base[prop] &&
-      typeof item.base[prop] === "string" &&
-      item.base[prop].trim("") !== ""
-      ? item.base[prop].trim("")
+  _getHeading(headings, label, index) {
+    //if there is no heading, number the item instead
+    return this.__headings &&
+      this.__headings[index] &&
+      typeof this.__headings[index] === "string" &&
+      this.__headings[index].trim("") !== ""
+      ? this.__headings[index].trim("")
+      : label && typeof label === "string" && label.trim("") !== ""
+      ? `${label.trim("")} ${index + 1}`
       : `Item ${index + 1}`;
-  }
-  /**
-   * Handles data changes
-   * @param {event} e the change event
-   */
-  _valueChanged(e) {
-    let root = this,
-      val = this.__validatedSchema.map(item => {
-        return item.value;
-      });
-    this.notifyPath("value.*");
-    this.set("value", val);
-    this.dispatchEvent(
-      new CustomEvent("value-changed", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: root
-      })
-    );
-  }
-
-  /**
-   * fires when the fields array changes
-   * @param {object} oldValue the old value
-   * @param {object} newValue the new value
-   */
-  _schemaChanged(oldValue, newValue) {
-    let root = this;
-    //prevent a potential feedback loop
-    if (JSON.stringify(oldValue) !== JSON.stringify(newValue)) {
-      this._setValues();
-    }
-    this.dispatchEvent(
-      new CustomEvent("schema-changed", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: root
-      })
-    );
-  }
-  /**
-   * when either the fields or the value changes, updates the schema and form to match
-   */
-  _setValues() {
-    let schema = [];
-    for (let i = 0; i < this.schema.value.length; i++) {
-      let item = this.schema.value[i];
-      schema[i] = JSON.parse(JSON.stringify(this.schema.items));
-      for (let prop in item) {
-        if (schema[i].properties[prop])
-          schema[i].properties[prop].value = item[prop];
-      }
-    }
-    this.notifyPath("__validatedSchema.*");
-    this.__validatedSchema = schema;
   }
 }
 window.customElements.define(EcoJsonSchemaArray.tag, EcoJsonSchemaArray);

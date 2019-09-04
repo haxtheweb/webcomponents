@@ -1,8 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { AppLocalizeBehavior } from "@polymer/app-localize-behavior/app-localize-behavior.js";
 import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status";
 import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
 /**
 `eco-json-schema-fieldset` takes in a JSON schema of type fieldset and builds a form,
@@ -59,126 +58,52 @@ class EcoJsonSchemaFieldset extends mixinBehaviors(
         <legend id="legend" class="flex" hidden\$="[[!schema.title]]">
           [[schema.title]]
         </legend>
-        <eco-json-schema-object
-          id="schemaobject"
-          controls$="item-[[index]]"
-          item="[[index]]"
-          autofocus$="[[autofocus]]"
-          on-value-changed="_valueChanged"
-          hide-line-numbers$="[[hideLineNumbers]]"
-          schema="[[__validatedSchema]]"
-          value="{{value}}"
-        >
-        </eco-json-schema-object>
+        <div hidden$="[[!schema.description]]">[[item.description]]</div>
+        <div class="item-fields"></div>
       </fieldset>
     `;
   }
   static get properties() {
     return {
-      /**
-       * automatically set focus on the first field if that field has autofocus
-       */
-      autofocus: {
-        type: Boolean,
-        value: false
-      },
-      globalOptions: {
-        type: Object,
-        value: {
-          icon: "settings",
-          tooltip: "configure item"
-        }
-      },
-      /**
-       * hide code-editor line numbers
-       */
-      hideLineNumbers: {
-        type: Boolean,
-        value: false
-      },
-      title: {
-        type: String
+      propertyName: {
+        type: String,
+        value: null
       },
       schema: {
         type: Object,
-        notify: true,
-        observer: "_schemaChanged"
-      },
-      value: {
-        type: Array,
-        notify: true,
-        value: []
-      },
-      /**
-       * Fields to conver to JSON Schema.
-       */
-      __validatedSchema: {
-        type: Array,
-        value: [],
-        notify: true
+        value: {}
       }
     };
   }
-  /**
-   * Handles data changes
-   * @param {event} e the change event
-   */
-  _valueChanged(e) {
-    /*console.log('_valueChanged','\nschema:',this.schema,'\nvalue:',this.value,'\nvalidated:',this.__validatedSchema);
-    let root = this, items = this.__validatedSchema.items,
-      val = {};
-    if(items) for (let prop in items.properties) {
-      val[prop] = items.properties[prop].value;
-    }
-    this.notifyPath("value.*");
-    this.set("value", val);
-    console.log('_valueChanged 2','\nschema:',this.schema,'\nvalue:',this.value,'\nvalidated:',this.__validatedSchema);
-    this.dispatchEvent(
-      new CustomEvent("value-changed", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: root
-      })
-    );*/
-  }
-
-  /**
-   * fires when the fields array changes
-   * @param {object} oldValue the old value
-   * @param {object} newValue the new value
-   */
-  _schemaChanged(oldValue, newValue) {
-    console.log("_schemaChanged");
-    let root = this;
-    //prevent a potential feedback loop
-    if (JSON.stringify(oldValue) !== JSON.stringify(newValue)) {
-      this._setValues();
-    }
-    this.dispatchEvent(
-      new CustomEvent("schema-changed", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: root
-      })
-    );
+  ready() {
+    super.ready();
+    this._schemaChanged();
   }
   /**
-   * when either the fields or the value changes, updates the schema and form to match
+   * updates the array fields if the schema (which includes values) changes
    */
-  _setValues() {
-    /*let schema = [];
-    console.log('_setValues','\nschema:',this.schema,'\nvalue:',this.value,'\nvalidated:',this.__validatedSchema);
-    schema = JSON.parse(JSON.stringify(this.schema.items));
-    for (let prop in this.value) {
-      console.log('****** prop',prop,schema.properties[prop],this.value[prop]);
-      if (schema.properties[prop])
-        schema.properties[prop].value = this.value[prop];
-    }
-    this.notifyPath("__validatedSchema.*");
-    this.__validatedSchema = schema;
-    console.log('_setValues 2','\nschema:',this.schema,'\nvalue:',this.value,'\nvalidated:',this.__validatedSchema);*/
+  _schemaChanged() {
+    //make sure the content is there first
+    afterNextRender(this, () => {
+      this.shadowRoot.querySelectorAll(".item-fields").forEach(item => {
+        let prefix = `${this.propertyName}`,
+          path = `${prefix}.properties`;
+        this.dispatchEvent(
+          new CustomEvent("build-fieldset", {
+            bubbles: false,
+            cancelable: true,
+            composed: true,
+            detail: {
+              container: item,
+              path: path,
+              prefix: prefix,
+              properties: this.schema.properties,
+              type: EcoJsonSchemaFieldset.tag
+            }
+          })
+        );
+      });
+    });
   }
 }
 window.customElements.define(EcoJsonSchemaFieldset.tag, EcoJsonSchemaFieldset);

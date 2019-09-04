@@ -26,12 +26,13 @@
           <script>
             window.onload = function(){
               let fields = document.getElementById('fields');
-              fields.fields = [
-                /*{
+              let schema = [
+                {
                   "property": "name",
                   "title": "What is your name?",
                   "description": "Enter your real name or an alias.",
-                  "inputMethod": "textfield"
+                  "inputMethod": "textfield",
+                  "required": true
                 },
                 {
                   "property": "alias",
@@ -45,7 +46,7 @@
                   "description": "Maximum size 400px X 400px.",
                   "inputMethod": "haxupload",
                   "validationType": "url"
-                },*/
+                },
                 {
                   "property": "biographical",
                   "title": "Bigraphical Information",
@@ -169,7 +170,25 @@
                       ]
                     }
                   ]
-                }/*,
+                },
+                {
+                          "property": "testList",
+                          "title": "Enter the names of your siblings.",
+                          "inputMethod": "array",
+                          "itemLabel": "name",
+                          "properties": [
+                            {
+                              "property": "name",
+                              "title": "Sibling Name",
+                              "inputMethod": "textfield"
+                            },
+                            {
+                              "property": "dead",
+                              "title": "Is sibling dead?",
+                              "inputMethod": "boolean"
+                            }
+                          ]
+                        },
                 {
                   "property": "hiddenField",
                   "title": "Hidden",
@@ -186,9 +205,9 @@
                   "property": "code",
                   "title": "This is your favorite code snippet.",
                   "inputMethod": "code-editor"
-                }*/  
+                }
               ];
-              fields.value = {
+              let val = {
                 "name": "Arya Stark",
                 "alias": false,
                 "biographical": {
@@ -224,45 +243,20 @@
                       { "name": "Meryn Trant", "dead": true },
                       { "name": "Ilyn Payne", "dead": true },
                       { "name": "Sandor Clegane", "dead": true }
-                    ],
+                    ]
                   }
                 },
                 "code": "<p>What do we say to Death?</p>\n<p>Not today.</p>",
                 "winter": "12/21/2019"
               };
+              
+              fields.fields = schema;
+              fields.value = val;
+              
             };
           </script>
         </template>
       </demo-snippet>
-      <h3>Basic simple-fields-form demo</h3>
-      <!--demo-snippet>
-        <template>
-          <simple-fields-form id="testform" load-endpoint="data.json" method="GET">
-          </simple-fields-form>
-          <button id="autoload">Load data</button>
-          <button id="savebtn">Save / show values in console</button>
-          <script>
-            document.getElementById('autoload').addEventListener('click', (e) => {
-              // submit the form values to the end point
-              document.getElementById('testform').autoload = true;
-            });
-            document.getElementById('savebtn').addEventListener('click', (e) => {
-              // submit the form values to the end point
-              console.log(document.getElementById('testform').submit());
-            });
-          </script>
-
-
-          <simple-fields-form load-endpoint="data.json"></simple-fields-form>
-          <button id="savebtn">Save / show values in console</button>
-          <script>
-            document.getElementById('savebtn').addEventListener('click', (e) => {
-              // submit the form values to the end point
-              console.log(document.getElementsByTagName('simple-fields-form')[0].submit());
-            });
-          </script>
-        </template>
-      </demo-snippet-->
     </div>
   </body>
 </html>

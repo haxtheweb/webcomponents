@@ -6,7 +6,7 @@ import "@lrnwebcomponents/simple-fields/simple-fields.js";
  *
  * @customElement
  * @polymer
- * @demo demo/index.html
+ * @demo demo/form.html
  */
 class SimpleFieldsForm extends LitElement {
   static get styles() {
@@ -24,7 +24,7 @@ class SimpleFieldsForm extends LitElement {
   // render function
   render() {
     return html`
-      <simple-fields id="fields" autofocus></simple-fields>
+      <form><simple-fields id="fields" autofocus></simple-fields></form>
     `;
   }
   /**

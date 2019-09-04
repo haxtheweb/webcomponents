@@ -1,6 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { AppLocalizeBehavior } from "@polymer/app-localize-behavior/app-localize-behavior.js";
 import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
@@ -458,96 +459,110 @@ class EcoJsonSchemaObject extends mixinBehaviors(
     this._clearForm();
     super.disconnectedCallback();
   }
-  _buildSchemaProperties() {
+  /**
+   * returns an array of properties for a given schema object
+   * @param {object} thisSchema the source schema
+   * @returns {array} an array
+   */
+  _buildSchemaProperties(thisSchema = this.schema) {
     var ctx = this;
-    this._schemaProperties = Object.keys(this.schema.properties || []).map(
-      key => {
-        var schema = ctx.schema.properties[key];
-        var property = {
-          property: key,
-          label: schema.title || key,
-          schema: schema,
-          label: schema.title || key,
-          description: schema.description,
-          component: schema.component || {}
-        };
-
-        if (!property.component.valueProperty) {
-          property.component.valueProperty = "value";
-        }
-        if (!property.component.slot) {
-          property.component.slot = "";
-        }
-        if (ctx._isSchemaEnum(schema)) {
-          property.component.name =
-            property.component.name || "eco-json-schema-enum";
-          if (typeof schema.value === typeof undefined) {
-            schema.value = "";
-          }
-          property.value = schema.value;
-        } else if (ctx._isSchemaBoolean(schema.type)) {
-          property.component.name =
-            property.component.name || "eco-json-schema-boolean";
-          if (typeof schema.value === typeof undefined) {
-            schema.value = false;
-          }
-          property.value = schema.value;
-        } else if (ctx._isSchemaFile(schema.type)) {
-          property.component.name =
-            property.component.name || "eco-json-schema-file";
-          if (typeof schema.value === typeof undefined) {
-            schema.value = {};
-          }
-          property.value = schema.value;
-        } else if (ctx._isSchemaValue(schema.type)) {
-          property.component.name =
-            property.component.name || "eco-json-schema-input";
-          if (typeof schema.value === typeof undefined) {
-            schema.value = "";
-          }
-          property.value = schema.value;
-        } else if (ctx._isSchemaObject(schema.type)) {
-          property.component.name =
-            property.component.name || "eco-json-schema-object";
-          if (typeof schema.value === typeof undefined) {
-            schema.value = {};
-          }
-          property.value = schema.value;
-        } else if (ctx._isSchemaArray(schema.type)) {
-          property.component.name =
-            property.component.name || "eco-json-schema-array";
-          if (typeof schema.value === typeof undefined) {
-            schema.value = [];
-          }
-          property.value = schema.value;
-        } else if (ctx._isSchemaFieldset(schema.type)) {
-          property.component.name =
-            property.component.name || "eco-json-schema-fieldset";
-          if (typeof schema.value === typeof undefined) {
-            schema.value = {};
-          }
-          property.value = schema.value;
-        } else if (ctx._isSchemaTabs(schema.type)) {
-          property.component.name =
-            property.component.name || "eco-json-schema-tabs";
-          if (typeof schema.value === typeof undefined) {
-            schema.value = {};
-          }
-          property.value = schema.value;
-        } else if (ctx._isSchemaMarkup(schema.type)) {
-          property.component.name =
-            property.component.name || "eco-json-schema-markup";
-          if (typeof schema.value === typeof undefined) {
-            schema.value = "";
-          }
-          property.value = schema.value;
-        } else {
-          return console.error("Unknown property type %s", schema.type);
-        }
-        return property;
+    return Object.keys(thisSchema.properties || []).map(key => {
+      var schema = thisSchema.properties[key];
+      var property = {
+        name: key,
+        schema: schema,
+        label: schema.title || key,
+        description: schema.description,
+        component: schema.component || {}
+      };
+      if (!property.component.valueProperty) {
+        property.component.valueProperty = "value";
       }
+      if (!property.component.slot) {
+        property.component.slot = "";
+      }
+      if (ctx._isSchemaEnum(schema)) {
+        property.component.name =
+          property.component.name || "eco-json-schema-enum";
+        if (typeof schema.value === typeof undefined) {
+          schema.value = "";
+        }
+        property.value = schema.value;
+      } else if (ctx._isSchemaBoolean(schema.type)) {
+        property.component.name =
+          property.component.name || "eco-json-schema-boolean";
+        if (typeof schema.value === typeof undefined) {
+          schema.value = false;
+        }
+        property.value = schema.value;
+      } else if (ctx._isSchemaFile(schema.type)) {
+        property.component.name =
+          property.component.name || "eco-json-schema-file";
+        if (typeof schema.value === typeof undefined) {
+          schema.value = {};
+        }
+        property.value = schema.value;
+      } else if (ctx._isSchemaValue(schema.type)) {
+        property.component.name =
+          property.component.name || "eco-json-schema-input";
+        if (typeof schema.value === typeof undefined) {
+          schema.value = "";
+        }
+        property.value = schema.value;
+      } else if (ctx._isSchemaObject(schema.type)) {
+        property.component.name =
+          property.component.name || "eco-json-schema-object";
+        if (typeof schema.value === typeof undefined) {
+          schema.value = {};
+        }
+        property.value = schema.value;
+      } else if (ctx._isSchemaArray(schema.type)) {
+        property.component.name =
+          property.component.name || "eco-json-schema-array";
+        this._buildNestedSchemaProperties(property, schema);
+      } else if (ctx._isSchemaFieldset(schema.type)) {
+        property.component.name =
+          property.component.name || "eco-json-schema-fieldset";
+        this._buildNestedSchemaProperties(property, schema);
+      } else if (ctx._isSchemaTabs(schema.type)) {
+        property.component.name =
+          property.component.name || "eco-json-schema-tabs";
+        this._buildNestedSchemaProperties(property, schema);
+      } else if (ctx._isSchemaMarkup(schema.type)) {
+        property.component.name =
+          property.component.name || "eco-json-schema-markup";
+        if (typeof schema.value === typeof undefined) {
+          schema.value = "";
+        }
+        property.value = schema.value;
+      } else {
+        return console.error("Unknown property type %s", schema.type);
+      }
+      return property;
+    });
+  }
+  /**
+   * adds array of nested sub-properties to a given property based on a given schema
+   * @param {object} property the property that will have nested subproperties
+   * @param {object} schema the schema that has nested subschemas
+   */
+  _buildNestedSchemaProperties(property, schema) {
+    if (typeof schema.value === typeof undefined)
+      schema.value = schema.type !== "array" ? {} : [];
+    property.value = schema.value;
+    for (let key in schema.items.properties) {
+      schema.items.properties[key].value = schema.value[key];
+    }
+    property.schema.properties = this._buildSchemaProperties(
+      schema.items,
+      property.property + "."
     );
   }
+  /**
+   * updates the value when a schema property (or subproperty) changes
+   * @param {event} event the
+   * @param {object} detail the event details
+   */
   _schemaPropertyChanged(event, detail) {
     if (detail) {
       if (detail.path && /\.length$/.test(detail.path)) {
@@ -555,8 +570,12 @@ class EcoJsonSchemaObject extends mixinBehaviors(
       }
       var ctx = this;
       var property = event.target.schemaProperty;
-      var path = ["value", property.property];
 
+      var path = ["value"].concat(
+        `${event.target.propertyPrefix}${event.target.propertyName}`.split(".")
+      );
+      var prop = property.property || event.target.propertyName;
+      var val = detail && detail.value ? this._deepClone(detail.value) : null;
       if (detail.path && /\.splices$/.test(detail.path)) {
         var parts = detail.path.split(".").slice(1, -1);
         while (parts.length) {
@@ -610,36 +629,73 @@ class EcoJsonSchemaObject extends mixinBehaviors(
         this.set(path.join("."), this._deepClone(detail.value));
         this.notifyPath(path.join("."));
       } else {
-        property.value = detail.value;
-        this.set(path, this._deepClone(detail.value));
-        this.notifyPath(path);
+        //most of our fields will just set the value this way
+        this.set(path.join("."), this._deepClone(detail.value));
+        this.notifyPath("value");
       }
+      //fire an event to let array listeners handle changed fields
+      event.target.dispatchEvent(
+        new CustomEvent("form-field-changed", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: event.target
+        })
+      );
+      this.dispatchEvent(
+        new CustomEvent("value-changed", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this
+        })
+      );
     }
   }
-  _setValue() {
-    var value = {};
-    this._schemaProperties.forEach(property => {
-      if (typeof property.value !== typeof undefined) {
-        value[property.property] = this._deepClone(property.value);
-      }
-    });
-    this.set("value", value);
-    this.notifyPath("value.*");
+  /**
+   * sets the value based on a the schema properties (or a subproperties and a path)
+   * @param {array} props the schema properties (default) or subproperties
+   * @param {string} path the string that indicates the path for subproperties
+   */
+  _setValue(props = this._schemaProperties, path = "") {
+    let setter = path.replace(/\[(\d+)\]/g, ".$1");
+    if (setter != "") setter = `.${setter}`;
+    if (props.length > 0) {
+      props.forEach(property => {
+        if (typeof property.value !== typeof undefined) {
+          this.set(
+            `value${setter}.${property.property}`,
+            this._deepClone(property.value),
+            JSON.stringify(property.value)
+          );
+        }
+      });
+      this.notifyPath("value.*");
+    }
   }
-  _buildForm() {
+  /**
+   * builds form fields and appends them to an element
+   * @param {array} props the schema properties (default) or subproperties
+   * @param {object} container optional container element the for the form fields (for subproperties)
+   * @param {string} prefix optional field name prefix (for subproperties)
+   */
+  _buildForm(props = this._schemaProperties, container = this, prefix = "") {
     let autofocus = this.autofocus;
-    this._schemaProperties.forEach(property => {
+    props.forEach(property => {
       if (property.component.name === "code-editor") {
         // special case, can't come up with a better way to do this but monoco is very special case
         property.schema.component.properties.editorValue =
           property.schema.value;
         property.schema.component.properties.theme = this.codeTheme;
       }
-
+      let propertyPrefix = prefix !== "" ? `${prefix}.` : ``,
+        propertyName = property.property || property.name;
       var el = this.create(property.component.name, {
         label: property.label,
         schema: property.schema,
         schemaProperty: property,
+        propertyPrefix: propertyPrefix,
+        propertyName: propertyName,
         language: this.language,
         resources: this.resources
       });
@@ -647,7 +703,7 @@ class EcoJsonSchemaObject extends mixinBehaviors(
         el.style["background-color"] = "transparent";
         el.style["width"] = "100%";
       }
-      el.setAttribute("name", property.property);
+      el.setAttribute("name", `${propertyPrefix}${propertyName}`);
       if (property.schema.hidden && property.schema.hidden !== undefined) {
         el.setAttribute("hidden", property.schema.hidden);
       }
@@ -674,8 +730,10 @@ class EcoJsonSchemaObject extends mixinBehaviors(
           .toLowerCase() + "-changed",
         "_schemaPropertyChanged"
       );
+      this.listen(el, "build-fieldset", "_onBuildFieldset");
+
       if (typeof this.$ !== typeof undefined) {
-        dom(this).appendChild(el);
+        dom(container).appendChild(el);
         if (property.description) {
           var id = "tip-" + property.property,
             tip = document.createElement("div");
@@ -690,7 +748,7 @@ class EcoJsonSchemaObject extends mixinBehaviors(
             tip.setAttribute("hidden", "hidden");
           tip.setAttribute("role", "tooltip");
           tip.innerHTML = property.description;
-          dom(this).appendChild(tip);
+          dom(container).appendChild(tip);
         }
       }
       // support for slot injection too!
@@ -712,7 +770,27 @@ class EcoJsonSchemaObject extends mixinBehaviors(
       );
     });
   }
-  _removePropertyEl(el) {
+  /**
+   * handles fieldset requests from containers like fieldsets, tabs, or arrays
+   * @param {event} event the "build-fieldset" event
+   * @param {object} detail the details of the event, as in:```
+{
+  prefix: the prefix for the fields 
+  properties: []     //an array of schema properties,
+  container: <div/>  //the container element,
+}
+  ```
+   */
+  _onBuildFieldset(event, detail) {
+    this._clearForm(detail.container);
+    this._buildForm(detail.properties, detail.container, detail.prefix);
+  }
+  /**
+   * removes a field element
+   * @param {object} el the element to remove
+   * @param {*} parent the container where the field element exists
+   */
+  _removePropertyEl(el, parent = this) {
     if (typeof el.schemaProperty !== typeof undefined) {
       this.unlisten(
         el,
@@ -723,25 +801,46 @@ class EcoJsonSchemaObject extends mixinBehaviors(
       );
     }
     el.schemaProperty = null;
-    dom(this).removeChild(el);
+    dom(parent).removeChild(el);
   }
-  _clearForm() {
+  /**
+   * clears a form or a fieldset container within a form
+   * @param {object} el the element to remove
+   * @param {*} parent the container where the field element exists
+   */
+  _clearForm(container = this) {
     if (typeof this.$ !== typeof undefined) {
-      var formEl = dom(this);
+      var formEl = dom(container);
       while (formEl.firstChild) {
-        this._removePropertyEl(formEl.firstChild);
+        this._removePropertyEl(formEl.firstChild, container);
       }
     }
   }
+  /**
+   * updates the form when the schema changes
+   * @param {object} newValue the new value for the schema
+   * @param {object} oldValue the old value for the schema
+   */
   _schemaChanged(newValue, oldValue) {
-    if (newValue) {
+    if (newValue && newValue !== oldValue) {
       this._clearForm();
-      this._buildSchemaProperties();
+      this._schemaProperties = this._buildSchemaProperties();
       this._buildForm();
       this._setValue();
     }
   }
+  /**
+   * handles errors
+   * @todo how do we want to handle errors for nested fields?
+   */
   _errorChanged() {
+    /*
+    console.log(
+      "_errorChanged",
+      dom(this),
+      dom(this).querySelectorAll("[name]"),
+      this.error
+    );*/
     dom(this).childNodes.forEach(el => {
       var name = el.getAttribute("name");
       if (this.error && this.error[name]) {
@@ -751,9 +850,15 @@ class EcoJsonSchemaObject extends mixinBehaviors(
       }
     });
   }
+  /**
+   * clones an object and all its subproperties
+   * @param {object} o the object to clone
+   * @returns {object} the cloned object
+   */
   _deepClone(o) {
     return JSON.parse(JSON.stringify(o));
   }
+
   _isSchemaValue(type) {
     return (
       this._isSchemaBoolean(type) ||

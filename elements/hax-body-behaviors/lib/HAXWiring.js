@@ -549,7 +549,7 @@ export class HAXWiring {
           if (typeof settings[value].property !== typeof undefined) {
             props[settings[value].property] = {
               title: settings[value].title,
-              type: target.getHaxJSONSchemaType(settings[value].inputMethod)
+              type: this.getHaxJSONSchemaType(settings[value].inputMethod)
             };
             if (typeof target[settings[value].property] !== typeof undefined) {
               props[settings[value].property].value =
@@ -630,20 +630,23 @@ export class HAXWiring {
                 };
                 break;
               case "array":
+                props[settings[value].property].component = {
+                  valueProperty: "value"
+                };
                 props[settings[value].property].items = {
                   type: "object",
-                  properties: target._getHaxJSONSchemaProperty(
+                  properties: this._getHaxJSONSchemaProperty(
                     settings[value].properties,
                     target
                   ),
-                  label: settings[value].itemLabel
+                  itemLabel: settings[value].itemLabel
                 };
                 props[settings[value].property].type = "array";
                 break;
               case "fieldset":
                 props[settings[value].property].items = {
                   type: "object",
-                  properties: target._getHaxJSONSchemaProperty(
+                  properties: this._getHaxJSONSchemaProperty(
                     settings[value].properties,
                     target
                   )
@@ -651,25 +654,31 @@ export class HAXWiring {
                 props[settings[value].property].type = "fieldset";
                 break;
               case "tabs":
-                let tabprops = {};
-                settings[value].properties.forEach(tabprop => {
-                  tabprops[tabprop.property] = {
-                    title: tabprop.title,
-                    items: {
-                      properties: target._getHaxJSONSchemaProperty(
-                        tabprop.properties,
-                        target
-                      )
-                    }
-                  };
+                settings[value].properties.map(tab => {
+                  tab.inputMethod = "tab";
+                  return tab;
                 });
-                props[settings[value].property].property =
-                  settings[value].property;
-                props[settings[value].property].type = "tabs";
                 props[settings[value].property].items = {
                   type: "object",
-                  properties: tabprops
+                  properties: this._getHaxJSONSchemaProperty(
+                    settings[value].properties,
+                    target
+                  )
                 };
+                props[settings[value].property].type = "tabs";
+                break;
+              case "tab":
+                props[settings[value].property].property =
+                  settings[value].property;
+                props[settings[value].property].items = {
+                  type: "object",
+                  properties: this._getHaxJSONSchemaProperty(
+                    settings[value].properties,
+                    target
+                  ),
+                  label: settings[value].itemLabel
+                };
+                props[settings[value].property].type = "tabs";
                 break;
               case "textfield":
                 props[settings[value].property].component = {

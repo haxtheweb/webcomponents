@@ -125,7 +125,7 @@ class VideoPlayer extends MediaBehaviorsVideo(
   _getTrackData(track, tracks) {
     let temp =
       typeof tracks === "string" ? JSON.parse(tracks).slice() : tracks.slice();
-    if (track !== undefined && track !== null)
+    if (track !== undefined && track !== null && track !== "")
       temp.push({
         src: track,
         srclang: this.lang,
