@@ -49,7 +49,7 @@ class SimpleFields extends MutableData(PolymerElement) {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: e.detail
+        detail: e ? e.detail : this
       })
     );
   }
