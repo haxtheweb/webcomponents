@@ -9,6 +9,16 @@
   },
 
   /**
+   * Placeholder text for empty editable regions
+   */
+  "placeholder": {
+    "name": "placeholder",
+    "type": "String",
+    "reflectToAttribute": true,
+    "value": "Click to edit"
+  },
+
+  /**
    * The id for the toolbar
    */
   "toolbar": {
