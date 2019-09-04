@@ -326,6 +326,16 @@ class HAXCMSSiteListing extends PolymerElement {
           on-response="handleCreateResponse"
         ></iron-ajax>
         <iron-ajax
+          id="gitimportrequest"
+          method="[[method]]"
+          body="[[gitImportParams]]"
+          headers='{"Authorization": "Bearer [[jwt]]"}'
+          content-type="application/json"
+          url="[[__gitImportSitePath]]"
+          handle-as="json"
+          on-response="handleGitImportResponse"
+        ></iron-ajax>
+        <iron-ajax
           id="downloadrequest"
           method="[[method]]"
           body="[[downloadParams]]"
@@ -420,7 +430,15 @@ class HAXCMSSiteListing extends PolymerElement {
               raised
               hidden$="[[!loggedIn]]"
             >
-              <iron-icon icon="icons:add"></iron-icon> Create site
+              <iron-icon icon="icons:add"></iron-icon> Create
+            </paper-button>
+            <paper-button
+              on-click="_importTap"
+              id="import"
+              raised
+              hidden$="[[!loggedIn]]"
+            >
+              <iron-icon icon="icons:cloud-download"></iron-icon> Import
             </paper-button>
           </div>
           <div class="main-title">[[title]]</div>
@@ -648,6 +666,24 @@ class HAXCMSSiteListing extends PolymerElement {
             raised
             ><iron-icon icon="icons:home"></iron-icon> Create your new
             site!</paper-button
+          >
+          <paper-button class="action-button" dialog-dismiss
+            ><iron-icon icon="icons:thumb-down"></iron-icon>
+            Cancel</paper-button
+          >
+        </div>
+      </paper-dialog>
+      <paper-dialog id="importsite">
+        <h2 class="dialog-header">Import site from git repo</h2>
+        <paper-input id="importurl" label="Git url"></paper-input>
+        <div class="buttons">
+          <paper-button
+            on-click="_gitImportSite"
+            class="action-button"
+            dialog-confirm
+            id="importsite"
+            raised
+            ><iron-icon icon="icons:home"></iron-icon> Import</paper-button
           >
           <paper-button class="action-button" dialog-dismiss
             ><iron-icon icon="icons:thumb-down"></iron-icon>
@@ -896,6 +932,13 @@ class HAXCMSSiteListing extends PolymerElement {
     this.shadowRoot.querySelector("#createsite").opened = true;
   }
   /**
+   * Open the import dialog when tapped
+   */
+  _importTap() {
+    this.shadowRoot.querySelector("#importurl").value = "";
+    this.shadowRoot.querySelector("#importsite").opened = true;
+  }
+  /**
    * Login state changed
    */
   _loggedInChanged(newValue, oldValue) {
@@ -1042,6 +1085,7 @@ class HAXCMSSiteListing extends PolymerElement {
       this.__setConfigPath = window.appSettings.setConfigPath;
       this.__getConfigPath = window.appSettings.getConfigPath;
       this.__createNewSitePath = window.appSettings.createNewSitePath;
+      this.__gitImportSitePath = window.appSettings.gitImportSitePath;
       this.__downloadSitePath = window.appSettings.downloadSitePath;
       this.__archiveSitePath = window.appSettings.archiveSitePath;
       this.__cloneSitePath = window.appSettings.cloneSitePath;
@@ -1263,6 +1307,23 @@ class HAXCMSSiteListing extends PolymerElement {
     }
   }
   /**
+   * Import a site from a git repo
+   */
+  _gitImportSite(e) {
+    let values = Object.assign({
+      jwt: this.jwt,
+      site: {
+        git: {
+          url: this.shadowRoot.querySelector("#importurl").value
+        }
+      }
+    });
+    this.set("gitImportParams", {});
+    this.set("gitImportParams", values);
+    this.notifyPath("gitImportParams.*");
+    this.shadowRoot.querySelector("#gitimportrequest").generateRequest();
+  }
+  /**
    * Create a new site button was clicked
    */
   _createSite(e) {
@@ -1477,6 +1538,14 @@ class HAXCMSSiteListing extends PolymerElement {
     // update the listing data
     this._dataSource = this.dataSource + "?" + Math.floor(Date.now() / 1000);
     this.standardResponse(e.detail.response.title + " created!");
+  }
+  /**
+   * Git import site response
+   */
+  handleGitImportResponse(e) {
+    // update the listing data
+    this._dataSource = this.dataSource + "?" + Math.floor(Date.now() / 1000);
+    this.standardResponse(e.detail.response.title + " imported!");
   }
   handleConfigResponse(e) {
     window.HAXCMS.config = e.detail.response;
