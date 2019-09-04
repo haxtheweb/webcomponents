@@ -1,0 +1,24 @@
+:host {
+  display: block;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+#wrap {
+  display: flex;
+  margin-bottom: 1em;
+}
+
+#title {
+  background-color: #f2f2f2;
+  padding: 10.8px 13.5px 10.8px;
+  font-size: 13.5px;
+}
+
+#description {
+  border: solid 1px #f2f2f2;
+  padding: 10.8px 13.5px 10.8px;
+  font-size: 13.5px;
+}

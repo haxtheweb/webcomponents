@@ -527,8 +527,9 @@ window.SimpleColorsStyles.requestAvailability = () => {
     window.SimpleColorsStyles.stylesheet = document.createElement("style");
     window.SimpleColorsStyles.stylesheet.setAttribute(
       "include",
-      "simple-colors-shared styles"
+      "simple-colors-shared-styles"
     );
+    window.SimpleColorsStyles.stylesheet.setAttribute("is", "custom-style");
     document.head.appendChild(window.SimpleColorsStyles.stylesheet);
     window.SimpleColorsStyles.instance = document.createElement(
       "simple-colors-styles"

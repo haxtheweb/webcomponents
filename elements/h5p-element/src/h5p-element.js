@@ -6,7 +6,11 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-
+window.__H5PBridgeTimeOut = function() {
+  setTimeout(function() {
+    window.H5P.init();
+  }, 500);
+};
 /**
  * `h5p-element`
  * `h5p wrapper for loading and presenting .h5p files`
@@ -15,7 +19,6 @@ import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
  *  - h5p is it's own eco system, we're just trying to wrap it a bit
  *
  * @customElement
- * @lit-html
  * @lit-element
  * @demo demo/index.html
  */
@@ -143,12 +146,10 @@ class H5PElement extends LitElement {
     // clear previous calls to this exact thing
     // this accounts for multiples on the DOM and the exccess
     // file parsing required per each in order to use this thing
-    clearTimeout(window.__H5PBridgeTimeOut);
-
-    window.__H5PBridgeTimeOut = setTimeout(function() {
-      window.H5P.init();
-    }, 100);
-
+    if (window.__H5PBridgeTimeOut) {
+      clearTimeout(window.__H5PBridgeTimeOut);
+      window.__H5PBridgeTimeOut();
+    }
     return true;
   }
   /**

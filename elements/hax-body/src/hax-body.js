@@ -392,6 +392,13 @@ class HaxBody extends PolymerElement {
       this.__tabTrap = false;
     });
   }
+  disconnectedCallback() {
+    if (this._observer) {
+      this._observer.disconnect();
+      this._observer = null;
+    }
+    super.disconnectedCallback();
+  }
   /**
    * Keep the context menu visible if needed
    */

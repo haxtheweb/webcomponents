@@ -1,0 +1,36 @@
+{
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Figure label",
+    "description": "Figure label element to mark media assets within content.",
+    "icon": "icons:android",
+    "color": "green",
+    "groups": ["Label"],
+    "meta": {
+      "author": "heymp",
+      "owner": "PSU"
+    }
+  },
+  "settings": {
+    "quick": [],
+    "configure": [
+      {
+        "property": "title",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": false,
+        "icon": "icons:android"
+      },
+      {
+        "property": "description",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": false,
+        "icon": "icons:android"
+      }
+    ],
+    "advanced": []
+  }
+}

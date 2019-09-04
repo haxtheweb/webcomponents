@@ -4,6 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/simple-colors-shared-styles/lib/simple-colors-styles.js";
+import { css as SimpleColorsStyleSheet } from "@lrnwebcomponents/simple-colors-shared-styles/simple-colors-shared-styles.js";
 /**
  * `simple-colors`
  * `a shared set of styles for @lrnwebcomponents`
@@ -74,6 +75,15 @@ class SimpleColors extends PolymerElement {
     super();
     this.__utils = window.SimpleColorsStyles.requestAvailability();
     this.__styles = window.SimpleColorsStyles.stylesheet;
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    // ensure this only gets applied once even though shouldn't be possible
+    if (!window.SimpleColorsStylesHead) {
+      window.SimpleColorsStylesHead = true;
+      document.head.appendChild(SimpleColorsStyleSheet.content);
+    }
   }
 
   /**

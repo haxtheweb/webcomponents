@@ -110,6 +110,8 @@ class HAXCMSBackendDemo extends PolymerElement {
             window.appSettings.deleteNodePath;
           haxCmsSiteEditorElement.publishSitePath =
             window.appSettings.publishSitePath;
+          haxCmsSiteEditorElement.syncSitePath =
+            window.appSettings.syncSitePath;
           haxCmsSiteEditorElement.revertSitePath =
             window.appSettings.revertSitePath;
           haxCmsSiteEditorElement.appStore = window.appSettings.appStore;

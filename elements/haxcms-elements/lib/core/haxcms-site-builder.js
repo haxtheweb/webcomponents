@@ -15,6 +15,7 @@ import {
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import { store } from "./haxcms-site-store.js";
 import "@polymer/iron-ajax/iron-ajax.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./haxcms-site-router.js";
 
 /**
@@ -75,6 +76,7 @@ class HAXCMSSiteBuilder extends PolymerElement {
           --paper-progress-container-color: transparent;
         }
       </style>
+      <simple-colors></simple-colors>
       <haxcms-site-router base-uri="[[baseURI]]"></haxcms-site-router>
       <paper-progress hidden\$="[[!loading]]" indeterminate></paper-progress>
       <iron-ajax
@@ -591,6 +593,7 @@ window.HAXme = function(context = null) {
       deleteNodePath: "dist/dev/saveNode.json",
       saveOutlinePath: "dist/dev/saveNode.json",
       publishSitePath: "dist/dev/saveNode.json",
+      syncSitePath: "dist/dev/saveNode.json",
       getNodeFieldsPath: "dist/dev/getNodeFieldsPath.json",
       getSiteFieldsPath: "dist/dev/getSiteFieldsPath.json",
       revertSitePath: "dist/dev/saveNode.json",

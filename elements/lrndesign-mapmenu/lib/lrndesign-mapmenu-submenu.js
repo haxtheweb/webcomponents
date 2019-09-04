@@ -91,6 +91,10 @@ class LrndesignMapmenuSubmenu extends PolymerElement {
       }
     });
   }
+  disconnectedCallback() {
+    this._observer.disconnect();
+    super.disconnectedCallback();
+  }
 }
 window.customElements.define(
   LrndesignMapmenuSubmenu.tag,

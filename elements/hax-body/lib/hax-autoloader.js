@@ -61,6 +61,10 @@ class HaxAutoloader extends HAXElement(PolymerElement) {
       }
     });
   }
+  disconnectedCallback() {
+    this._observer.disconnect();
+    super.disconnectedCallback();
+  }
   /**
    * Process new elements
    */

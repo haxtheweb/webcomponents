@@ -376,6 +376,16 @@ class HAXCMSSiteListing extends PolymerElement {
           on-response="handlePublishResponse"
         ></iron-ajax>
         <iron-ajax
+          id="syncrequest"
+          method="[[method]]"
+          body="[[syncParams]]"
+          headers='{"Authorization": "Bearer [[jwt]]"}'
+          content-type="application/json"
+          url="[[__syncSitePath]]"
+          handle-as="json"
+          on-response="handleSyncResponse"
+        ></iron-ajax>
+        <iron-ajax
           id="getconfigrequest"
           method="[[method]]"
           body="[[configParams]]"
@@ -417,6 +427,9 @@ class HAXCMSSiteListing extends PolymerElement {
           <div class="selected-operations" data-hidden$="[[!hasSelectedItems]]">
             <paper-button on-click="_bulkSitesConfirm" id="publish" raised>
               <iron-icon icon="editor:publish"></iron-icon> Publish
+            </paper-button>
+            <paper-button on-click="_bulkSitesConfirm" id="sync" raised>
+              <iron-icon icon="notification:sync"></iron-icon> Sync
             </paper-button>
             <paper-button on-click="_bulkSitesConfirm" id="clone" raised>
               <iron-icon icon="icons:content-copy"></iron-icon> Clone
@@ -770,6 +783,10 @@ class HAXCMSSiteListing extends PolymerElement {
         type: Object,
         value: {}
       },
+      syncParams: {
+        type: Object,
+        value: {}
+      },
       archiveParams: {
         type: Object,
         value: {}
@@ -1029,6 +1046,7 @@ class HAXCMSSiteListing extends PolymerElement {
       this.__archiveSitePath = window.appSettings.archiveSitePath;
       this.__cloneSitePath = window.appSettings.cloneSitePath;
       this.__publishSitePath = window.appSettings.publishSitePath;
+      this.__syncSitePath = window.appSettings.syncSitePath;
       this.__revertSitePath = window.appSettings.revertSitePath;
       this.__deleteSitePath = window.appSettings.deleteSitePath;
       // case where backend has set the JWT ahead of time
@@ -1377,6 +1395,27 @@ class HAXCMSSiteListing extends PolymerElement {
     }
   }
   /**
+   * sync sites
+   */
+  async _syncSites(e) {
+    this.set("syncParams", {});
+    this.set("syncParams", {
+      jwt: this.jwt,
+      site: {}
+    });
+    this.notifyPath("syncParams.*");
+    for (var i in this.selectedItems) {
+      this.set("activeItem", {});
+      this.set("activeItem", this.selectedItems[i]);
+      this.set(
+        "syncParams.site.name",
+        this.selectedItems[i].metadata.site.name
+      );
+      this.notifyPath("syncParams.site.name");
+      await this.shadowRoot.querySelector("#syncrequest").generateRequest();
+    }
+  }
+  /**
    * Load configuration
    */
   _loadConfig() {
@@ -1474,6 +1513,9 @@ class HAXCMSSiteListing extends PolymerElement {
     this.standardResponse(this.activeItem.title + " cloned!");
   }
   handlePublishResponse(e) {
+    this.standardResponse(this.activeItem.title + " published!");
+  }
+  handleSyncResponse(e) {
     this.standardResponse(this.activeItem.title + " published!");
   }
 }
