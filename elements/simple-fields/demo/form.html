@@ -31,19 +31,9 @@
             });
             document.getElementById('savebtn').addEventListener('click', (e) => {
               // submit the form values to the end point
-              console.log(document.getElementById('testform').submit());
+              console.log('submitting',document.getElementById('testform').submit());
             });
           </script>
-
-
-          <!---simple-fields-form load-endpoint="data.json"></simple-fields-form>
-          <button id="savebtn">Save / show values in console</button>
-          <script>
-            document.getElementById('savebtn').addEventListener('click', (e) => {
-              // submit the form values to the end point
-              console.log(document.getElementsByTagName('simple-fields-form')[0].submit());
-            });
-          </script-->
         </template>
       </demo-snippet>
     </div>

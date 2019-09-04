@@ -564,7 +564,6 @@ class EcoJsonSchemaObject extends mixinBehaviors(
    * @param {object} detail the event details
    */
   _schemaPropertyChanged(event, detail) {
-    console.log("_schemaChanged", event, detail);
     if (detail) {
       if (detail.path && /\.length$/.test(detail.path)) {
         return;

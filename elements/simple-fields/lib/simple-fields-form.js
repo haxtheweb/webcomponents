@@ -24,7 +24,7 @@ class SimpleFieldsForm extends LitElement {
   // render function
   render() {
     return html`
-      <simple-fields id="fields" autofocus></simple-fields>
+      <form><simple-fields id="fields" autofocus></simple-fields></form>
     `;
   }
   /**
