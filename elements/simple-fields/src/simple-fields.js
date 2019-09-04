@@ -35,6 +35,7 @@ class SimpleFields extends MutableData(PolymerElement) {
    */
   connectedCallback() {
     super.connectedCallback();
+    let root = this;
     this.HAXWiring = new HAXWiring();
     this.HAXWiring.setup(SimpleFields.haxProperties, SimpleFields.tag, this);
     import("./lib/simple-fields-imports.js");
@@ -42,7 +43,7 @@ class SimpleFields extends MutableData(PolymerElement) {
   /**
    * when form changes, sets focus on the first field if this has auto-focus
    */
-  _formChanged(e) {
+  _formFieldsChanged(e) {
     this.dispatchEvent(
       new CustomEvent("fields-changed", {
         bubbles: true,
@@ -57,10 +58,17 @@ class SimpleFields extends MutableData(PolymerElement) {
    * @param {object} oldValue the old value
    * @param {object} newValue the new value
    */
-  _valueChanged(oldValue, newValue) {
-    //prevent a feddback loop when the eco-json-schema-object's values change to reflect the changes to simple-fields
+  _valueChanged(newValue, oldValue) {
     if (JSON.stringify(oldValue) !== JSON.stringify(newValue)) {
       this._setValues();
+      this.dispatchEvent(
+        new CustomEvent("value-changed", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this
+        })
+      );
     }
   }
 
@@ -69,7 +77,7 @@ class SimpleFields extends MutableData(PolymerElement) {
    * @param {object} oldValue the old value
    * @param {object} newValue the new value
    */
-  _fieldsChanged(oldValue, newValue) {
+  _fieldsChanged(newValue, oldValue) {
     //prevent a potential feedback loop
     if (JSON.stringify(oldValue) !== JSON.stringify(newValue)) {
       this._setValues();
@@ -84,14 +92,9 @@ class SimpleFields extends MutableData(PolymerElement) {
     for (let prop in this.value) {
       if (schema[prop]) schema[prop].value = this.value[prop];
     }
-    //form won't refresh unless we set it to null. notifyPath wasn't enough to refresh it
-    this.__validatedSchema = null;
-    this.__validatedSchema = { properties: schema };
+    this.set("__validatedSchema", { properties: schema });
+    this.notifyPath("__validatedSchema.properties.*");
   }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
 }
 window.customElements.define(SimpleFields.tag, SimpleFields);
 export { SimpleFields };

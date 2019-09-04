@@ -1,9 +1,8 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { AppLocalizeBehavior } from "@polymer/app-localize-behavior/app-localize-behavior.js";
 import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 import "@lrnwebcomponents/a11y-tabs/a11y-tabs.js";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status";
 /**
 `eco-json-schema-tabs` takes in a JSON schema of type array and builds a form,
 exposing a `value` property that represents an array described by the schema.
@@ -34,7 +33,7 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
           :host ([hidden]) {
             display: none;
           }
-          :host #form {
+          :host a11y-tabs {
             --a11y-tabs-color: var(--eco-json-form-faded-color);
             --a11y-tabs-focus-color: var(--eco-json-form-color);
             --a11y-tabs-border-color: var(--eco-json-form-faded-color);
@@ -50,8 +49,8 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
             --a11y-tabs-vertical-border-radius: unset;
             --a11y-tabs-horizontal-button-padding: 2px 5px;
           }
-          :host #form:focus,
-          :host #form:focus-within {
+          :host a11y-tabs:focus,
+          :host a11y-tabs:focus-within {
             --a11y-tabs-border-color: : var(--eco-json-form-focus-color);
           }
           :host .tab-title {
@@ -62,29 +61,24 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
           }
         </style>
       </custom-style>
-      <a11y-tabs id="form">
+      <a11y-tabs id$="[[schema.property]]">
         <template
           is="dom-repeat"
-          items="[[__validatedSchema]]"
+          items="[[schema.properties]]"
           as="item"
           restamp
         >
           <a11y-tab
             id$="item-[[index]]"
             icon$="[[item.icon]]"
-            label$="[[item.title]]"
+            label$="[[item.label]]"
           >
-            <eco-json-schema-object
-              id="schemaobject"
-              controls$="item-[[index]]"
-              item="[[index]]"
-              autofocus$="[[autofocus]]"
-              on-value-changed="_valueChanged"
-              hide-line-numbers$="[[hideLineNumbers]]"
-              schema="[[item]]"
-              value="{{item.value}}"
-            >
-            </eco-json-schema-object>
+            <div hidden$="[[!item.description]]">[[item.description]]</div>
+            <div
+              id$="[[item.property]]"
+              class="item-fields"
+              data-index$="[[index]]"
+            ></div>
           </a11y-tab>
         </template>
       </a11y-tabs>
@@ -92,110 +86,49 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
   }
   static get properties() {
     return {
-      /**
-       * automatically set focus on the first field if that field has autofocus
-       */
-      autofocus: {
-        type: Boolean,
-        value: false
-      },
-      /**
-       * hide code-editor line numbers
-       */
-      hideLineNumbers: {
-        type: Boolean,
-        value: false
+      propertyName: {
+        type: String,
+        value: null
       },
       schema: {
         type: Object,
-        notify: true,
-        observer: "_schemaChanged"
-      },
-      value: {
-        type: Array,
-        notify: true,
         value: {}
-      },
-      /**
-       * Fields to conver to JSON Schema.
-       */
-      __validatedSchema: {
-        type: Array,
-        value: [],
-        notify: true
       }
     };
   }
+  ready() {
+    super.ready();
+    this._schemaChanged();
+  }
   /**
-   * Handles data changes
-   * @param {event} e the change event
+   * updates the array fields if the schema (which includes values) changes
    */
-  _valueChanged(e) {
-    let root = this,
-      val = {};
-    this.__validatedSchema.forEach(item => {
-      val[item.property] = item.value;
+  _schemaChanged() {
+    //make sure the content is there first
+    afterNextRender(this, () => {
+      this.shadowRoot.querySelectorAll(".item-fields").forEach(item => {
+        let index = item.getAttribute("data-index"),
+          propertyName = this.propertyName,
+          tab = this.schema.properties[index],
+          prop = tab.name,
+          prefix = `${propertyName}.${prop}`,
+          path = `${propertyName}.properties.${index}`;
+        this.dispatchEvent(
+          new CustomEvent("build-fieldset", {
+            bubbles: false,
+            cancelable: true,
+            composed: true,
+            detail: {
+              container: item,
+              path: path,
+              prefix: prefix,
+              properties: tab.schema.properties,
+              type: EcoJsonSchemaTabs.tag
+            }
+          })
+        );
+      });
     });
-    this.notifyPath("value.*");
-    this.set("value", val);
-    this.dispatchEvent(
-      new CustomEvent("value-changed", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: root
-      })
-    );
-  }
-
-  /**
-   * fires when the fields array changes
-   * @param {object} oldValue the old value
-   * @param {object} newValue the new value
-   */
-  _schemaChanged(oldValue, newValue) {
-    let root = this;
-    //prevent a potential feedback loop
-    if (JSON.stringify(oldValue) !== JSON.stringify(newValue)) {
-      this._setValues();
-    }
-    this.dispatchEvent(
-      new CustomEvent("schema-changed", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: root
-      })
-    );
-  }
-  /**
-   * when either the fields or the value changes, updates the schema and form to match
-   */
-  _setValues() {
-    let schema = [];
-    for (let prop in this.schema.items.properties) {
-      let tab = {
-        property: prop,
-        title: this.schema.items.properties[prop].title,
-        icon: this.schema.items.properties[prop].icon,
-        properties: this.schema.items.properties[prop].items
-          ? this.schema.items.properties[prop].items.properties
-          : {},
-        value:
-          this.value && this.value[prop]
-            ? JSON.parse(JSON.stringify(this.value[prop]))
-            : {}
-      };
-      for (let subprop in tab.properties) {
-        if (tab.properties.value) delete tab.properties.value;
-        if (this.value && this.value[prop])
-          tab.properties[subprop].value = this.value[prop][subprop];
-      }
-      schema.push(tab);
-    }
-    this.notifyPath("__validatedSchema.*");
-    this.__validatedSchema = [];
-    this.__validatedSchema = schema;
   }
 }
 window.customElements.define(EcoJsonSchemaTabs.tag, EcoJsonSchemaTabs);

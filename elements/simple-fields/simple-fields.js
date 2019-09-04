@@ -21,99 +21,98 @@ import "@lrnwebcomponents/simple-colors/simple-colors.js";
  * @demo demo/index.html
  */
 class SimpleFields extends MutableData(PolymerElement) {
+  
   // render function
   static get template() {
     return html`
-      <style>
-        :host {
-          display: block;
-          background-color: #ffffff;
-          overflow: visible;
-        }
+<style>:host {
+  display: block;
+  background-color: #ffffff;
+  overflow: visible;
+}
 
-        :host([hidden]) {
-          display: none;
-        }
+:host([hidden]) {
+  display: none;
+}
 
-        eco-json-schema-object {
-          width: 50%;
-        }
-        eco-json-schema-object {
-          color: var(--hax-text-color);
-          --eco-json-form-color: var(--hax-text-color);
-          --eco-json-schema-object-form : {
-            -ms-flex: unset;
-            -webkit-flex: unset;
-            flex: unset;
-            -webkit-flex-basis: unset;
-            flex-basis: unset;
-          }
-        }
-        eco-json-schema-object .hax-code-editor {
-          padding: 0;
-        }
-      </style>
-      <style include="simple-colors-shared-styles"></style>
-      <eco-json-schema-object
-        id="schemaobject"
-        autofocus$="[[autofocus]]"
-        hide-line-numbers$="[[hideLineNumbers]]"
-        on-form-changed="_formChanged"
-        schema="[[__validatedSchema]]"
-        value="{{value}}"
-      ></eco-json-schema-object>
-    `;
+eco-json-schema-object {
+  width: 50%;
+}
+eco-json-schema-object {
+  color: var(--hax-text-color);
+  --eco-json-form-color: var(--hax-text-color);
+  --eco-json-schema-object-form : {
+    -ms-flex: unset;
+    -webkit-flex: unset;
+    flex: unset;
+    -webkit-flex-basis: unset;
+    flex-basis: unset;
+  }
+}
+eco-json-schema-object .hax-code-editor {
+  padding: 0;
+}</style>
+<style include="simple-colors-shared-styles"></style>
+<eco-json-schema-object
+  id="schemaobject"
+  autofocus$="[[autofocus]]"
+  hide-line-numbers$="[[hideLineNumbers]]"
+  on-form-changed="_formFieldsChanged"
+  schema="[[__validatedSchema]]"
+  value="{{value}}"
+></eco-json-schema-object>`;
   }
 
   // haxProperty definition
   static get haxProperties() {
-    return;
+    return ;
   }
   // properties available to the custom element for data binding
-  static get properties() {
+    static get properties() {
     let props = {
-      /**
-       * automatically set focus on the first field if that field has autofocus
-       */
-      autofocus: {
-        type: Boolean,
-        value: false
-      },
-      /**
-       * hide code-editor line numbers
-       */
-      hideLineNumbers: {
-        type: Boolean,
-        value: false
-      },
-      /**
-       * Fields to convert toJSON Schema.
-       */
-      fields: {
-        type: Array,
-        value: [],
-        observer: "_fieldsChanged"
-      },
-      /**
-       * Returned value from the form input.
-       */
-      value: {
-        type: Object,
-        notify: true,
-        value: {},
-        observer: "_valueChanged",
-        reflectToAttribute: true
-      },
-      /**
-       * Fields to convert to JSON Schema.
-       */
-      __validatedSchema: {
-        type: Array,
-        value: {
-          properties: {}
-        }
-      }
-    };
+  /**
+   * automatically set focus on the first field if that field has autofocus
+   */
+  "autofocus": {
+    "type": Boolean,
+    "value": false
+  },
+  /**
+   * hide code-editor line numbers
+   */
+  "hideLineNumbers": {
+    "type": Boolean,
+    "value": false
+  },
+  /**
+   * Fields to convert toJSON Schema.
+   */
+  "fields": {
+    "type": Array,
+    "value": [],
+    "observer": "_formFieldsChanged"
+  },
+  /**
+   * Returned value from the form input.
+   */
+  "value": {
+    "type": Object,
+    "notify": true,
+    "value": {},
+    "observer": "_valueChanged"
+  },
+  /**
+   * Fields to convert to JSON Schema.
+   */
+  "__validatedSchema": {
+    "type": Array,
+    "notify": true,
+    "value": {
+      "properties": {}
+    }
+  }
+}
+;
     if (super.properties) {
       props = Object.assign(props, super.properties);
     }
@@ -132,6 +131,7 @@ class SimpleFields extends MutableData(PolymerElement) {
    */
   connectedCallback() {
     super.connectedCallback();
+    let root = this;
     this.HAXWiring = new HAXWiring();
     this.HAXWiring.setup(SimpleFields.haxProperties, SimpleFields.tag, this);
     import("./lib/simple-fields-imports.js");
@@ -139,7 +139,7 @@ class SimpleFields extends MutableData(PolymerElement) {
   /**
    * when form changes, sets focus on the first field if this has auto-focus
    */
-  _formChanged(e) {
+  _formFieldsChanged(e) {
     this.dispatchEvent(
       new CustomEvent("fields-changed", {
         bubbles: true,
@@ -154,10 +154,17 @@ class SimpleFields extends MutableData(PolymerElement) {
    * @param {object} oldValue the old value
    * @param {object} newValue the new value
    */
-  _valueChanged(oldValue, newValue) {
-    //prevent a feddback loop when the eco-json-schema-object's values change to reflect the changes to simple-fields
+  _valueChanged(newValue, oldValue) {
     if (JSON.stringify(oldValue) !== JSON.stringify(newValue)) {
       this._setValues();
+      this.dispatchEvent(
+        new CustomEvent("value-changed", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this
+        })
+      );
     }
   }
 
@@ -166,7 +173,7 @@ class SimpleFields extends MutableData(PolymerElement) {
    * @param {object} oldValue the old value
    * @param {object} newValue the new value
    */
-  _fieldsChanged(oldValue, newValue) {
+  _fieldsChanged(newValue, oldValue) {
     //prevent a potential feedback loop
     if (JSON.stringify(oldValue) !== JSON.stringify(newValue)) {
       this._setValues();
@@ -181,14 +188,9 @@ class SimpleFields extends MutableData(PolymerElement) {
     for (let prop in this.value) {
       if (schema[prop]) schema[prop].value = this.value[prop];
     }
-    //form won't refresh unless we set it to null. notifyPath wasn't enough to refresh it
-    this.__validatedSchema = null;
-    this.__validatedSchema = { properties: schema };
+    this.set("__validatedSchema", { properties: schema });
+    this.notifyPath("__validatedSchema.properties.*");
   }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
 }
 window.customElements.define(SimpleFields.tag, SimpleFields);
 export { SimpleFields };

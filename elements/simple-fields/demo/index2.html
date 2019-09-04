@@ -26,7 +26,7 @@
           <script>
             window.onload = function(){
               let fields = document.getElementById('fields');
-              let schema = [
+              fields.fields = [
                 {
                   "property": "name",
                   "title": "What is your name?",
@@ -104,7 +104,8 @@
                           "property": "siblingsList",
                           "title": "Enter the names of your siblings.",
                           "inputMethod": "array",
-                          "itemLabel": "name",
+                          "itemLabel": "Sibling",
+                          "labelProperty": "name",
                           "properties": [
                             {
                               "property": "name",
@@ -128,7 +129,8 @@
                           "property": "alliesList",
                           "title": "List your allies.",
                           "inputMethod": "array",
-                          "itemLabel": "name",
+                          "itemLabel": "Ally",
+                          "labelProperty": "name",
                           "properties": [
                             {
                               "property": "name",
@@ -152,7 +154,8 @@
                           "property": "enemiesList",
                           "title": "List your enemies.",
                           "inputMethod": "array",
-                          "itemLabel": "name",
+                          "itemLabel": "Enemy",
+                          "labelProperty": "name",
                           "properties": [
                             {
                               "property": "name",
@@ -171,24 +174,6 @@
                   ]
                 },
                 {
-                          "property": "testList",
-                          "title": "Enter the names of your siblings.",
-                          "inputMethod": "array",
-                          "itemLabel": "name",
-                          "properties": [
-                            {
-                              "property": "name",
-                              "title": "Sibling Name",
-                              "inputMethod": "textfield"
-                            },
-                            {
-                              "property": "dead",
-                              "title": "Is sibling dead?",
-                              "inputMethod": "boolean"
-                            }
-                          ]
-                        },
-                {
                   "property": "hiddenField",
                   "title": "Hidden",
                   "description": "I'm a hidden field. You can't see me.",
@@ -206,7 +191,7 @@
                   "inputMethod": "code-editor"
                 }
               ];
-              let val = {
+              fields.value = {
                 "name": "Arya Stark",
                 "alias": false,
                 "biographical": {
@@ -242,17 +227,12 @@
                       { "name": "Meryn Trant", "dead": true },
                       { "name": "Ilyn Payne", "dead": true },
                       { "name": "Sandor Clegane", "dead": true }
-                    ]
+                    ],
                   }
                 },
-                "testList": [{ "name": "Bran  Barn Muffin Man", "dead": false }],
                 "code": "<p>What do we say to Death?</p>\n<p>Not today.</p>",
                 "winter": "12/21/2019"
               };
-              
-              fields.fields = schema;
-              fields.value = val;
-              
             };
           </script>
         </template>

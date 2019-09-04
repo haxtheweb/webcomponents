@@ -19,7 +19,7 @@
   "fields": {
     "type": "Array",
     "value": [],
-    "observer": "_fieldsChanged"
+    "observer": "_formFieldsChanged"
   },
   /**
    * Returned value from the form input.
@@ -28,14 +28,14 @@
     "type": "Object",
     "notify": true,
     "value": {},
-    "observer": "_valueChanged",
-    "reflectToAttribute": true
+    "observer": "_valueChanged"
   },
   /**
    * Fields to convert to JSON Schema.
    */
   "__validatedSchema": {
     "type": "Array",
+    "notify": true,
     "value": {
       "properties": {}
     }
