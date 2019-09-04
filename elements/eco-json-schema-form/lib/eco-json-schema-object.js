@@ -828,19 +828,20 @@ class EcoJsonSchemaObject extends mixinBehaviors(
       this._schemaProperties = this._buildSchemaProperties();
       this._buildForm();
       this._setValue();
-      this._errorChanged();
     }
   }
   /**
    * handles errors
+   * @todo how do we want to handle errors for nested fields?
    */
   _errorChanged() {
+    /*
     console.log(
       "_errorChanged",
       dom(this),
       dom(this).querySelectorAll("[name]"),
       this.error
-    );
+    );*/
     dom(this).childNodes.forEach(el => {
       var name = el.getAttribute("name");
       if (this.error && this.error[name]) {
