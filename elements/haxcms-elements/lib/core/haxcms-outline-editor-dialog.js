@@ -55,6 +55,10 @@ class HAXCMSOutlineEditorDialog extends PolymerElement {
           float: right;
           text-transform: unset;
         }
+        #savebtn {
+          color: white;
+          background-color: var(--simple-colors-default-theme-blue-7, #2196f3);
+        }
         editable-outline,
         json-editor {
           margin-bottom: 32px;
@@ -73,7 +77,7 @@ class HAXCMSOutlineEditorDialog extends PolymerElement {
         hidden$="[[!viewMode]]"
       ></json-editor>
       <div class="buttons">
-        <paper-button dialog-confirm on-click="_saveTap"
+        <paper-button id="savebtn" dialog-confirm on-click="_saveTap"
           ><iron-icon icon="icons:save"></iron-icon>Save</paper-button
         >
         <paper-button dialog-dismiss

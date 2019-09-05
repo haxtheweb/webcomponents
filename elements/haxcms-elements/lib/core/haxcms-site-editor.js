@@ -81,7 +81,6 @@ class HAXCMSSiteEditor extends PolymerElement {
           background-color: var(--paper-blue-500) !important;
         }
         h-a-x {
-          padding: 80px 40px;
           margin: auto;
           display: none;
         }
@@ -630,11 +629,12 @@ class HAXCMSSiteEditor extends PolymerElement {
     this.__fieldsForm = c;
     // we get back HAXSchema from the server
     let b1 = document.createElement("paper-button");
-    b1.raised = true;
     let icon = document.createElement("iron-icon");
     icon.icon = "icons:save";
     b1.appendChild(icon);
     b1.appendChild(document.createTextNode("Save fields"));
+    b1.style.color = "white";
+    b1.style.backgroundColor = "#2196f3";
     b1.setAttribute("dialog-confirm", "dialog-confirm");
     b1.addEventListener("click", this._saveNodeFieldsTap.bind(this));
     let b2 = document.createElement("paper-button");
@@ -646,7 +646,6 @@ class HAXCMSSiteEditor extends PolymerElement {
     b.style.left = 0;
     b.style.right = 0;
     b.style.zIndex = 1000000;
-    b.style.backgroundColor = "#ddd";
     b.appendChild(b1);
     b.appendChild(b2);
     const evt = new CustomEvent("simple-modal-show", {
