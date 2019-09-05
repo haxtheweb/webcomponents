@@ -782,6 +782,8 @@ class EcoJsonSchemaObject extends mixinBehaviors(
   ```
    */
   _onBuildFieldset(event, detail) {
+    if (typeof this.get(`value.${detail.prefix}`) === typeof undefined)
+      this.set(`value.${detail.path}`, this._deepClone(detail.value));
     this._clearForm(detail.container);
     this._buildForm(detail.properties, detail.container, detail.prefix);
   }

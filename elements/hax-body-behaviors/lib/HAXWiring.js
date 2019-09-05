@@ -644,6 +644,9 @@ export class HAXWiring {
                 props[settings[value].property].type = "array";
                 break;
               case "fieldset":
+                props[settings[value].property].component = {
+                  valueProperty: "value"
+                };
                 props[settings[value].property].items = {
                   type: "object",
                   properties: this._getHaxJSONSchemaProperty(
@@ -654,6 +657,9 @@ export class HAXWiring {
                 props[settings[value].property].type = "fieldset";
                 break;
               case "tabs":
+                props[settings[value].property].component = {
+                  valueProperty: "value"
+                };
                 settings[value].properties.map(tab => {
                   tab.inputMethod = "tab";
                   return tab;
