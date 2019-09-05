@@ -21,7 +21,7 @@ class RichTextEditorPrompt extends PolymerElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */ // render function
   static get template() {
     return html`
-      <style include="rich-text-editor-button-styles">
+      <style include="rich-text-editor-styles rich-text-editor-button-styles">
         :host {
           --paper-input-container-focus-color: var(
             --rich-text-editor-focus-color,
@@ -63,30 +63,29 @@ class RichTextEditorPrompt extends PolymerElement {
         :host #formfields {
           overflow: visible;
         }
-        :host #cancel.rtebutton:focus,
-        :host #cancel.rtebutton:hover {
-          color: var(
-            --rich-text-editor-cancel-color,
-            var(--rich-text-editor-error-color)
-          );
-          background-color: var(
-            --rich-text-editor-cancel-hover-color,
-            var(--rich-text-editor-button-hover-bg)
-          );
+        :host #cancel {
+          color: var(--rich-text-editor-button-color);
+          background-color: var(--rich-text-editor-button-bg);
+
         }
-        :host #confirm.rtebutton:focus,
-        :host #confirm.rtebutton:hover {
-          color: var(
-            --rich-text-editor-confirm-color,
-            var(--rich-text-editor-focus-color)
-          );
-          background-color: var(
-            --rich-text-editor-confirm-hover-color,
-            var(--rich-text-editor-button-hover-bg)
-          );
+        :host #cancel:focus,
+        :host #cancel:hover {
+          color: var(--rich-text-editor-button-hover-color);
+          background-color: var(--rich-text-editor-button-hover-bg);
+        }
+        :host #confirm {
+          color: var(--rich-text-editor-button-color);
+          background-color: var(--rich-text-editor-button-bg);
+
+        }
+        :host #confirm:focus,
+        :host #confirm:hover {
+          color: var(--rich-text-editor-button-hover-color);
+          background-color: var(--rich-text-editor-button-hover-bg);
         }
         :host .actions {
           width: 100%;
+          padding-bottom: 3px;
           display: flex;
           align-items: center;
           justify-content: flex-end;
@@ -136,13 +135,13 @@ class RichTextEditorPrompt extends PolymerElement {
           <iron-a11y-keys
             id="a11ycancel"
             target="[[__a11ycancel]]"
-            keys="enter"
+            keys="enter space"
             on-keys-pressed="_cancel"
           >
           <iron-a11y-keys
             id="a11yconfirm"
             target="[[__a11yconfirm]]"
-            keys="enter"
+            keys="enter space"
             on-keys-pressed="_confirm"
           >
           </iron-a11y-keys>

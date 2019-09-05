@@ -12,6 +12,7 @@ import "../buttons/rich-text-editor-more-button.js";
 import "../buttons/rich-text-editor-heading-picker.js";
 import "../buttons/rich-text-editor-symbol-picker.js";
 import "../buttons/rich-text-editor-underline.js";
+import "../buttons/rich-text-editor-image.js";
 import "../buttons/rich-text-editor-link.js";
 import "../buttons/rich-text-editor-button-styles.js";
 import "@polymer/iron-icons/iron-icons.js";

@@ -252,9 +252,8 @@ class EcoJsonSchemaArray extends mixinBehaviors(
         let index = item.getAttribute("data-index"),
           propertyName = `${this.propertyPrefix}${this.propertyName}`,
           prefix = `${propertyName}.${index}`,
-          path = `${propertyName}.properties.${index}`,
+          //path = `${propertyName}.properties.${index}`,
           val = this.schema.value[index];
-
         //for each array item, request the fields frrom eco-json-schema-object
         this.dispatchEvent(
           new CustomEvent("build-fieldset", {
@@ -263,14 +262,15 @@ class EcoJsonSchemaArray extends mixinBehaviors(
             composed: true,
             detail: {
               container: item,
-              path: path,
+              path: propertyName,
               prefix: prefix,
               properties: this.schema.properties.map(prop => {
                 let newprop = JSON.parse(JSON.stringify(prop));
                 newprop.value = val[prop.name];
                 return newprop;
               }),
-              type: EcoJsonSchemaArray.tag
+              type: EcoJsonSchemaArray.tag,
+              value: this.schema.value || []
             }
           })
         );

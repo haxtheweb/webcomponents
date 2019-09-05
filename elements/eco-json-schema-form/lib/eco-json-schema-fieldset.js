@@ -86,8 +86,7 @@ class EcoJsonSchemaFieldset extends mixinBehaviors(
     //make sure the content is there first
     afterNextRender(this, () => {
       this.shadowRoot.querySelectorAll(".item-fields").forEach(item => {
-        let prefix = `${this.propertyName}`,
-          path = `${prefix}.properties`;
+        let prefix = `${this.propertyName}`;
         this.dispatchEvent(
           new CustomEvent("build-fieldset", {
             bubbles: false,
@@ -95,10 +94,11 @@ class EcoJsonSchemaFieldset extends mixinBehaviors(
             composed: true,
             detail: {
               container: item,
-              path: path,
+              path: prefix,
               prefix: prefix,
               properties: this.schema.properties,
-              type: EcoJsonSchemaFieldset.tag
+              type: EcoJsonSchemaFieldset.tag,
+              value: this.schema.properties[index].value || {}
             }
           })
         );

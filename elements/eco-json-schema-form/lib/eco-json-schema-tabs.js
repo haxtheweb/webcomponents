@@ -111,8 +111,7 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
           propertyName = this.propertyName,
           tab = this.schema.properties[index],
           prop = tab.name,
-          prefix = `${propertyName}.${prop}`,
-          path = `${propertyName}.properties.${index}`;
+          prefix = `${propertyName}.${prop}`;
         this.dispatchEvent(
           new CustomEvent("build-fieldset", {
             bubbles: false,
@@ -120,10 +119,11 @@ class EcoJsonSchemaTabs extends mixinBehaviors(
             composed: true,
             detail: {
               container: item,
-              path: path,
+              path: prefix,
               prefix: prefix,
               properties: tab.schema.properties,
-              type: EcoJsonSchemaTabs.tag
+              type: EcoJsonSchemaTabs.tag,
+              value: tab.value || {}
             }
           })
         );

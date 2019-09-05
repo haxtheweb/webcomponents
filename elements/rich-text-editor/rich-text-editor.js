@@ -45,11 +45,21 @@ class RichTextEditor extends PolymerElement {
         :host(.heightmax[contenteditable="true"]) {
           max-height: calc(100vh - 200px);
           overflow-y: scroll;
+          @apply --rich-text-editor-heightmax;
         }
-        :host([contenteditable="true"]):empty:before {
+        :host(:empty) {
+          border: 1px dashed var(--rich-text-editor-border-color);
+          @apply --rich-text-editor-empty;
+        }
+        :host(:not([contenteditable="true"]):empty):before {
           content: attr(placeholder);
+          padding: 0 5px;
           display: block;
-          @apply --rich-text-editor-content-placeholder;
+          color: var(--rich-text-editor-button-disabled-color);
+          @apply --rich-text-editor-empty-placeholder;
+        }
+        :host([contenteditable="true"]:empty):before {
+          @apply --rich-text-editor-empty-editable;
         }
       </style>
       <style include="rich-text-editor-styles"></style>
@@ -104,6 +114,16 @@ class RichTextEditor extends PolymerElement {
         name: "id",
         type: String,
         value: ""
+      },
+
+      /**
+       * Placeholder text for empty editable regions
+       */
+      placeholder: {
+        name: "placeholder",
+        type: String,
+        reflectToAttribute: true,
+        value: "Click to edit"
       },
 
       /**
