@@ -46,6 +46,9 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
           opacity: 0.2;
           pointer-events: none;
         }
+        git-corner {
+          float: right;
+        }
         #slot {
           min-height: 50vh;
         }
@@ -371,6 +374,10 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
           </div>
           <div class="contentcontainer-wrapper">
             <div id="contentcontainer">
+              <git-corner
+                alt="See page source"
+                source="[[activeGitFileLink]]"
+              ></git-corner>
               <site-active-title></site-active-title>
               <h3 class="subtitle" hidden$="[[!subtitle]]">[[subtitle]]</h3>
               <div id="slot">
@@ -502,6 +509,9 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
         reflectToAttribute: true,
         value: 0
       },
+      activeGitFileLink: {
+        type: String
+      },
       stateClass: {
         type: String,
         computed: "_getStateClass(editMode)"
@@ -548,6 +558,13 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
     super.connectedCallback();
     autorun(reaction => {
       let manifest = toJS(store.manifest);
+      // if we have a public repo URL then display it
+      if (
+        varGet(store.manifest, "metadata.site.git.publicRepoUrl", "") != "" &&
+        !window.customElements.get("git-corner")
+      ) {
+        import("@lrnwebcomponents/git-corner/git-corner.js");
+      }
       this.title = manifest.title;
       this.image = varGet(
         manifest,
@@ -564,6 +581,11 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
     });
     autorun(reaction => {
       this._noticeLocationChange(store.location);
+      this.activeGitFileLink =
+        varGet(store.manifest, "metadata.site.git.publicRepoUrl", "") +
+        "pages" +
+        store.location.pathname +
+        "/index.html";
       this.__disposer.push(reaction);
     });
     autorun(reaction => {

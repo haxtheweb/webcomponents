@@ -18,6 +18,9 @@
   opacity: .2;
   pointer-events: none;
 }
+git-corner {
+  float:right;
+}
 #slot {
   min-height: 50vh;
 }
