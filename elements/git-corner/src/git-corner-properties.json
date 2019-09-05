@@ -1,0 +1,9 @@
+{
+  "source": {
+    "name": "source",
+    "type": "String",
+    "value": "",
+    "reflectToAttribute": false,
+    "observer": false
+  }
+}
