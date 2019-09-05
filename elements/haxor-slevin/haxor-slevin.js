@@ -42,6 +42,10 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
         :host([edit-mode]) #slot {
           display: none;
         }
+        :host([edit-mode]) .contentcontainer-wrapper simple-blog-card {
+          opacity: 0.2;
+          pointer-events: none;
+        }
         #slot {
           min-height: 50vh;
         }
@@ -127,9 +131,9 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
           @apply --layout-fixed-top;
           color: #ffffff;
           box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
-          background-color: var(--haxcms-color);
+          background-color: var(--haxcms-color, rgba(255, 0, 116, 1));
           --app-header-background-rear-layer: {
-            background-color: var(--haxcms-color);
+            background-color: var(--haxcms-color, rgba(255, 0, 116, 1));
           }
         }
         paper-icon-button {
@@ -166,7 +170,7 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
         }
 
         social-share-link {
-          --social-share-button-bg: var(--haxcms-color);
+          --social-share-button-bg: var(--haxcms-color, rgba(255, 0, 116, 1));
           --social-share-button: {
             padding: 8px;
             border-radius: 50%;
@@ -237,7 +241,7 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
           margin: 0 4px;
           padding: 0;
           --site-rss-color: #000000;
-          --site-rss-bg-color: var(--haxcms-color);
+          --site-rss-bg-color: var(--haxcms-color, rgba(255, 0, 116, 1));
           --site-rss-paper-button: {
             padding: 0 4px;
             margin: 0;
@@ -325,7 +329,7 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
                     link="[[post.location]]"
                     image="[[_showImage(post.metadata.fields.images.0.src)]]"
                     author="[[author.name]]"
-                    timestamp="[[post.created]]"
+                    timestamp="[[post.metadata.created]]"
                     readtime="[[post.metadata.readtime]]"
                     authorimage="[[author.image]]"
                     placeholder="[[image]]"
@@ -354,7 +358,7 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
                     link="[[post.location]]"
                     image="[[_showImage(post.metadata.fields.images.0.src)]]"
                     author="[[author.name]]"
-                    timestamp="[[post.created]]"
+                    timestamp="[[post.metadata.created]]"
                     readtime="[[post.metadata.readtime]]"
                     authorimage="[[author.image]]"
                     authorlink="[[author.socialLink]]"
@@ -391,7 +395,7 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
                     image="[[_showImage(post.metadata.fields.images.0.src)]]"
                     author="[[author.name]]"
                     placeholder="[[image]]"
-                    timestamp="[[post.created]]"
+                    timestamp="[[post.metadata.created]]"
                     readtime="[[post.metadata.readtime]]"
                     authorimage="[[author.image]]"
                     authorlink="[[author.socialLink]]"
@@ -405,6 +409,7 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
               <ul>
                 <li>
                   <social-share-link
+                    title="Share on twitter"
                     button-style
                     mode="icon-only"
                     message="[[shareMsg]]"
@@ -414,6 +419,7 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
                 </li>
                 <li>
                   <social-share-link
+                    title="Share on LinkedIn"
                     button-style
                     mode="icon-only"
                     message="[[shareMsg]]"
@@ -424,6 +430,7 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
                 </li>
                 <li>
                   <social-share-link
+                    title="Share on Facebook"
                     button-style
                     mode="icon-only"
                     url="[[shareUrl]]"
@@ -434,6 +441,7 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
                 </li>
                 <li>
                   <social-share-link
+                    title="Share on Pinterest"
                     button-style
                     mode="icon-only"
                     message="[[shareMsg]]"

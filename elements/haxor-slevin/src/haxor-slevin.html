@@ -38,7 +38,7 @@
               link="[[post.location]]"
               image="[[_showImage(post.metadata.fields.images.0.src)]]"
               author="[[author.name]]"
-              timestamp="[[post.created]]"
+              timestamp="[[post.metadata.created]]"
               readtime="[[post.metadata.readtime]]"
               authorimage="[[author.image]]"
               placeholder="[[image]]"
@@ -56,7 +56,7 @@
             placeholder="[[image]]"
             alt="[[post.metadata.fields.images.0.alt]]" color="[[color]]" title="[[post.title]]" size="medium"
               link="[[post.location]]" image="[[_showImage(post.metadata.fields.images.0.src)]]" author="[[author.name]]"
-              timestamp="[[post.created]]" readtime="[[post.metadata.readtime]]" authorimage="[[author.image]]" authorlink="[[author.socialLink]]">
+              timestamp="[[post.metadata.created]]" readtime="[[post.metadata.readtime]]" authorimage="[[author.image]]" authorlink="[[author.socialLink]]">
               [[post.description]]
             </simple-blog-card>
           </template>
@@ -78,7 +78,7 @@
           <template>
             <simple-blog-card alt="[[post.metadata.fields.images.0.alt]]" color="[[color]]" title="[[post.title]]" size="small"
               link="[[post.location]]" image="[[_showImage(post.metadata.fields.images.0.src)]]" author="[[author.name]]"
-              placeholder="[[image]]" timestamp="[[post.created]]" readtime="[[post.metadata.readtime]]"
+              placeholder="[[image]]" timestamp="[[post.metadata.created]]" readtime="[[post.metadata.readtime]]"
               authorimage="[[author.image]]" authorlink="[[author.socialLink]]">
               [[post.description]]
             </simple-blog-card>
@@ -88,19 +88,19 @@
       <div class$="social-float hide-small [[stateClass]]">
         <ul>
           <li>
-            <social-share-link button-style mode="icon-only" message="[[shareMsg]]" type="Twitter">
+            <social-share-link title="Share on twitter" button-style mode="icon-only" message="[[shareMsg]]" type="Twitter">
             </social-share-link>
           </li>
           <li>
-            <social-share-link button-style mode="icon-only" message="[[shareMsg]]" url="[[shareUrl]]" type="LinkedIn">
+            <social-share-link title="Share on LinkedIn" button-style mode="icon-only" message="[[shareMsg]]" url="[[shareUrl]]" type="LinkedIn">
             </social-share-link>
           </li>
           <li>
-            <social-share-link button-style mode="icon-only" url="[[shareUrl]]" message="[[shareMsg]]" type="Facebook">
+            <social-share-link title="Share on Facebook" button-style mode="icon-only" url="[[shareUrl]]" message="[[shareMsg]]" type="Facebook">
             </social-share-link>
           </li>
           <li>
-            <social-share-link button-style mode="icon-only" message="[[shareMsg]]" image="[[activeImage]]" url="[[shareUrl]]"
+            <social-share-link title="Share on Pinterest" button-style mode="icon-only" message="[[shareMsg]]" image="[[activeImage]]" url="[[shareUrl]]"
               type="Pinterest">
             </social-share-link>
           </li>
