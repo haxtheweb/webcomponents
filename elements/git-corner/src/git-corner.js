@@ -12,7 +12,6 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  *  -
  *
  * @customElement
- * @lit-html
  * @lit-element
  * @demo demo/index.html
  */
@@ -35,26 +34,67 @@ class GitCorner extends LitElement {
         :host {
           display: block;
         }
+        :host([corner]) svg {
+          z-index: var(--github-corner-z-index, 1);
+          position: absolute;
+          top: 0;
+          border: 0;
+          right: 0;
+        }
+        :host([circle]) svg {
+          border-radius: 100px;
+          transform: rotate(-45deg);
+        }
+        :host([size="micro"]) {
+          --github-corner-size: 28px;
+        }
+        :host([size="small"]) {
+          --github-corner-size: 50px;
+        }
+        :host([size="large"]) {
+          --github-corner-size: 100px;
+        }
+        svg {
+          fill: var(--github-corner-background, #24292e);
+          color: var(--github-corner-color, #ffffff);
+          width: var(--github-corner-size, 80px);
+          height: var(--github-corner-size, 80px);
+        }
+        a {
+          display: table;
+          outline-color: var(--github-corner-background, #24292e);
+          outline-width: 2px;
+        }
+
+        .github-corner:focus .octo-arm,
+        .github-corner:hover .octo-arm {
+          animation: octocat-wave 560ms ease-in-out;
+        }
+
+        @keyframes octocat-wave {
+          0%,
+          100% {
+            transform: rotate(0);
+          }
+          20%,
+          60% {
+            transform: rotate(-25deg);
+          }
+          40%,
+          80% {
+            transform: rotate(10deg);
+          }
+        }
+        @media (max-width: 500px) {
+          .github-corner:hover .octo-arm {
+            animation: none;
+          }
+          .github-corner .octo-arm {
+            animation: octocat-wave 560ms ease-in-out;
+          }
+        }
       `
     ];
-  }
-
-  // life cycle
-  constructor() {
-    super();
-    // put default values here
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-  }
-  /**
-   * life cycle, element removed from DOM
-   */
-  disconnectedCallback() {
-    super.disconnectedCallback();
   }
   /**
    * runs on first go
@@ -69,5 +109,5 @@ class GitCorner extends LitElement {
     changedProperties.forEach((oldValue, propName) => {});
   }
 }
-customElements.define("git-corner", GitCorner);
+customElements.define(GitCorner.tag, GitCorner);
 export { GitCorner };

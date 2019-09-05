@@ -12,6 +12,11 @@
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../git-corner.js';
     </script>
+    <style>
+      :root {
+        --github-corner-size: 150px;
+      }
+    </style>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
@@ -19,8 +24,12 @@
       <h3>Basic git-corner demo</h3>
       <demo-snippet>
         <template>
-          <git-corner>
-            This is git-corner
+          <git-corner size="micro" corner alt="Update this page" source="https://github.com/btopro/blog/tree/master/"></git-corner>
+          <git-corner size="micro" alt="Update this page" source="https://github.com/btopro/blog/tree/master/"></git-corner>
+          <git-corner size="small" alt="Update this page" source="https://github.com/btopro/blog/tree/master/"></git-corner>
+          <git-corner size="large" circle alt="Update this page" source="https://github.com/btopro/blog/tree/master/">
+          </git-corner>
+          <git-corner size="large" alt="Update this page" source="https://github.com/btopro/blog/tree/master/">
           </git-corner>
         </template>
       </demo-snippet>
