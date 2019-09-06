@@ -538,7 +538,11 @@ export class HAXWiring {
         window.customElements.get(haxProperties.gizmo.tag)
       ) {
         let tmp = document.createElement(haxProperties.gizmo.tag);
-        schema = tmp.postProcessgetHaxJSONSchema(schema);
+        if (typeof tmp.postProcessgetHaxJSONSchema === "function") {
+          schema = tmp.postProcessgetHaxJSONSchema(schema);
+        } else {
+          schema = target.postProcessgetHaxJSONSchema(schema);
+        }
       } else {
         schema = target.postProcessgetHaxJSONSchema(schema);
       }
