@@ -72,14 +72,10 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
     super();
     import("@polymer/paper-button/paper-button.js");
     import("@polymer/iron-image/iron-image.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");
     import("@lrnwebcomponents/simple-blog-card/simple-blog-card.js");
     import("@polymer/app-layout/app-header/app-header.js");
     import("@polymer/app-layout/app-toolbar/app-toolbar.js");
-    import("@lrnwebcomponents/social-share-link/social-share-link.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
   }
   _showImage(image) {
     if (image) {
@@ -158,6 +154,19 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
       }
       this.__disposer.push(reaction);
     });
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");
+    import("@lrnwebcomponents/social-share-link/social-share-link.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icons/editor-icons.js");
+    import("@polymer/iron-icons/device-icons.js");
+    import("@polymer/iron-icons/hardware-icons.js");
+    import("@polymer/iron-icons/communication-icons.js");
+    import("@polymer/iron-icons/social-icons.js");
+    import("@polymer/iron-icons/av-icons.js");
+    import("@polymer/iron-icons/maps-icons.js");
+    import("@polymer/iron-icons/places-icons.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js");
   }
   /**
    * Listen for router location changes and select page to match
