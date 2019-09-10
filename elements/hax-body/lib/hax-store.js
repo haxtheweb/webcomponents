@@ -2454,14 +2454,16 @@ window.HaxStore.getHAXSlot = node => {
  * Shortcut to standardize the write / read process.
  */
 window.HaxStore.write = (prop, value, obj) => {
-  obj.dispatchEvent(
-    new CustomEvent("hax-store-write", {
-      composed: true,
-      bubbles: true,
-      cancelable: false,
-      detail: { property: prop, value: value, owner: obj }
-    })
-  );
+  if (obj) {
+    obj.dispatchEvent(
+      new CustomEvent("hax-store-write", {
+        composed: true,
+        bubbles: true,
+        cancelable: false,
+        detail: { property: prop, value: value, owner: obj }
+      })
+    );
+  }
 };
 /**
  * Guess the type of Gizmo when given some information about what we have.

@@ -529,7 +529,23 @@ export class HAXWiring {
       schema.properties = target._getHaxJSONSchemaProperty(settings, target);
       // support post processing of schema in order to allow for really
       // custom implementations that are highly dynamic in nature
-      schema = target.postProcessgetHaxJSONSchema(schema);
+      // post process hook needs to see if there's a class overriding this
+      // if we have a definition for this component then we should run its postProcess
+      // just to be safe
+      if (
+        haxProperties.gizmo &&
+        haxProperties.gizmo.tag &&
+        window.customElements.get(haxProperties.gizmo.tag)
+      ) {
+        let tmp = document.createElement(haxProperties.gizmo.tag);
+        if (typeof tmp.postProcessgetHaxJSONSchema === "function") {
+          schema = tmp.postProcessgetHaxJSONSchema(schema);
+        } else {
+          schema = target.postProcessgetHaxJSONSchema(schema);
+        }
+      } else {
+        schema = target.postProcessgetHaxJSONSchema(schema);
+      }
       return schema;
     };
     /**
