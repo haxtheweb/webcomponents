@@ -1,25 +1,30 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/paper-button/paper-button.js";
+
 /**
-`editable-table-editor-insdel`
-
-A button in the editable-table-editor-rowcol menu 
-(editable-table-editor-rowcol.html) that inserts or 
-deletes a row or column .
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
-<editable-table-editor-insdel 
+ * `editable-table-editor-insdel`
+ * `A button in the editable-table-editor-rowcol menu (editable-table-editor-rowcol.html) that inserts or deletes a row or column.`
+ *
+ * @microcopy - language worth noting:
+ * ```
+ <editable-table-editor-insdel 
   action="insert"               //The action this button performs, as in "insert" or "delete"  
   before                        //If the action is insert, should row or column be inserted before the index? Default is false (after).
   index="1"                     //The index of the row or column where this button is located
   type="Row">                   //The type of menu, as in "Row" or "Column"
   Insert Row Before             //The text of the button
-</editable-table-editor-insdel>
-
-*/
+</editable-table-editor-insdel>```
+ *  
+ * @demo demo/editor.html
+ * 
+ * @polymer
+ * @customElement
+ */
 class EditableTableEditorInsdel extends PolymerElement {
   static get template() {
     return html`

@@ -1,22 +1,19 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-    <title>EditableTable: editable-table Demo</title>
+
+    <title>editable-table demo</title>
+
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
 
-    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script type="module">
-      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
-      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import "@polymer/iron-demo-helpers/demo-pages-shared-styles.js";
+      import "@polymer/iron-demo-helpers/demo-snippet.js";
       import '../editable-table.js';
-      setTimeout(() => {
-        document.getElementById('table1togglebutton').addEventListener('change', (e) => {
-          document.getElementById('table1').toggleEditMode();
-        });
-      }, 1000);
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
       .vertical-section-container {
@@ -29,12 +26,12 @@
         width: 100%;
       }
 
-      #table1toggle {
+      #food-table-toggle {
         text-align: right;
         width: 100%;
       }
 
-      #table1toggle>div {
+      #food-table-toggle>div {
         display: inline-block;
       }
     </style>
@@ -45,15 +42,41 @@
       <p>This is a component that allows you to switch between <a href="display.html">editable-table-display</a> and <a
           href="editor.html">editable-table-editor</a> modes. (See <a href="index.html">documentation</a> for more
         information.)</p>
-      <div id="table1toggle">
-        <div>
-          <paper-toggle-button id="table1togglebutton">Edit Mode</paper-toggle-button>
-        </div>
-      </div>
-      <editable-table id="table1" accent-color="indigo" bordered="" caption="Is it a sandwich? Food classification chart."
-        column-header="" filter="" row-header="" condensed="" sort="" striped="" summary="A table of foods classification by attributes. Each row represents a food with columns for enclosure, contents, and orientation."
-        data="[ [ &quot;Food&quot;, &quot;Enclosure&quot;, &quot;Contents&quot;, &quot;Orientation&quot; ], [ &quot;Hamburger&quot;, &quot;one bun, split into two&quot;, &quot;meat, vegetables, cheese, and/or condiments&quot;, &quot;horizontal&quot; ], [ &quot;Hoagie&quot;, &quot;one bun&quot;, &quot;meat, vegetables, cheese, and/or condiments&quot;, &quot;vertical&quot; ], [ &quot;Hot Dog&quot;, &quot;one bun&quot;, &quot;meat, vegetables, cheese, and/or condiments&quot;, &quot;vertical&quot; ], [ &quot;Hot Pocket&quot;, &quot;two crusts sealed together&quot;, &quot;meat, vegetables, cheese, and/or condiments&quot;, &quot;horizontal&quot; ], [ &quot;Pie&quot;, &quot;two crusts sealed together&quot;, &quot;fruit or meat, vegetables, and/or cheese&quot;, &quot;horizontal&quot; ], [ &quot;Taco&quot;, &quot;one shell&quot;, &quot;meat, vegetables, cheese, and/or condiments&quot;, &quot;vertical&quot; ] ]">
-      </editable-table>
-    </div >
+      <demo-snippet>
+        <template>
+            <div id="food-table-toggle">
+              <div>
+                <paper-toggle-button id="food-table-togglebutton">Edit Mode</paper-toggle-button>
+              </div>
+            </div>
+            <editable-table 
+              id="food-table" 
+              accent-color="indigo" 
+              bordered 
+              caption="Is it a sandwich? Food classification chart."
+              column-header 
+              filter 
+              row-header 
+              condensed 
+              sort 
+              striped>
+            </editable-table>
+          <script>
+            document.getElementById('food-table').data = [ 
+              [ "Food", "Enclosure", "Contents", "Orientation" ], 
+              [ "Hamburger", "one bun, split into two", "meat, vegetables, cheese, and/or condiments", "horizontal" ], 
+              [ "Hoagie", "one bun", "meat, vegetables, cheese, and/or condiments", "vertical" ], 
+              [ "Hot Dog", "one bun", "meat, vegetables, cheese, and/or condiments", "vertical" ], 
+              [ "Hot Pocket", "two crusts sealed together", "meat, vegetables, cheese, and/or condiments", "horizontal" ], 
+              [ "Pie", "two crusts sealed together", "fruit or meat, vegetables, and/or cheese", "horizontal" ], 
+              [ "Taco", "one shell", "meat, vegetables, cheese, and/or condiments", "vertical" ] 
+            ];
+            document.getElementById('food-table-togglebutton').addEventListener('change', (e) => {
+              document.getElementById('food-table').toggleEditMode();
+            });
+          </script>
+        </template>
+      </demo-snippet> 
+    </div>
   </body>
 </html>

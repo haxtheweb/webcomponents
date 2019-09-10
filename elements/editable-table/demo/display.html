@@ -4,68 +4,84 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>editable-table demo</title>
+    <title>editable-table-display demo</title>
 
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
 
     <script type="module">
       import "@polymer/iron-demo-helpers/demo-pages-shared-styles.js";
       import "@polymer/iron-demo-helpers/demo-snippet.js";
       import "../lib/editable-table-display.js";
     </script>
-    <!-- FIXME(polymer-modulizer):
-        These imperative modules that innerHTML your HTML are
-        a hacky way to be sure that any mixins in included style
-        modules are ready before any elements that reference them are
-        instantiated, otherwise the CSS @apply mixin polyfill won't be
-        able to expand the underlying CSS custom properties.
-        See: https://github.com/Polymer/polymer-modulizer/issues/154
-        -->
-    <script type="module">
-var $_documentContainer = document.createElement('div');
-$_documentContainer.setAttribute('style', 'display: none;');
-
-$_documentContainer.innerHTML = `<style is="custom-style" include="demo-pages-shared-styles">
+    <style is="custom-style" include="demo-pages-shared-styles">
       .vertical-section-container { width: 95%; max-width: unset; }
-      editable-table {
-        width: 100%;
-      }
-    </style>`;
-
-document.head.appendChild($_documentContainer);
-</script>
+      editable-table { width: 100%; }
+    </style>
   </head>
   <body>
-    <script type="module">
-var $_documentContainer = document.createElement('div');
-
-$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
-      <h1>editable-table-display demo</h1>
+    <div class="vertical-section-container centered"
+      ><h1>editable-table-display demo</h1>
       <p>This is a standalone component that just displays tables. (See <a href="index.html">editable-table demo</a> for more information.)</p>
       <demo-snippet>
-        <template>
-          <editable-table-display id="table3" accent-color="cyan" bordered="" caption="Is it a sandwich? Food classification chart." column-header="" filter="" row-header="" condensed="" scroll="" sort="" striped="" summary="A table of foods classification by attributes. Each row represents a food with columns for enclosure, contents, and orientation." data="[ [ &quot;Food&quot;, &quot;Enclosure&quot;, &quot;Contents&quot;, &quot;Orientation&quot; ], [ &quot;Hamburger&quot;, &quot;one bun, split into two&quot;, &quot;meat, vegetables, cheese, and/or condiments&quot;, &quot;horizontal&quot; ], [ &quot;Hoagie&quot;, &quot;one bun&quot;, &quot;meat, vegetables, cheese, and/or condiments&quot;, &quot;vertical&quot; ], [ &quot;Hot Dog&quot;, &quot;one bun&quot;, &quot;meat, vegetables, cheese, and/or condiments&quot;, &quot;vertical&quot; ], [ &quot;Hot Pocket&quot;, &quot;two crusts sealed together&quot;, &quot;meat, vegetables, cheese, and/or condiments&quot;, &quot;horizontal&quot; ], [ &quot;Pie&quot;, &quot;two crusts sealed together&quot;, &quot;fruit or meat, vegetables, and/or cheese&quot;, &quot;horizontal&quot; ], [ &quot;Taco&quot;, &quot;one shell&quot;, &quot;meat, vegetables, cheese, and/or condiments&quot;, &quot;vertical&quot; ] ]">
-          </editable-table-display>
-        </template>
-      </demo-snippet>
-      <p>The editable-table-display component also allows you to style numeric columns and negative numbers.</p>
-      <demo-snippet>
-        <template>
-          <style is="custom-style">
-            #table4 {
-              --editable-table-numeric-text-align: right;
-              --editable-table-negative-color: red;
-            }
-          </style>
-          <editable-table-display id="table4" bordered="" caption="The Money Game: Player earnings by round." column-header="" condensed="" footer="" row-header="" striped="" data="[ [&quot;Round&quot;, &quot;Player 1&quot;, &quot;Player 2&quot;], [&quot;Round 1&quot;, &quot;-100.00&quot;, &quot;10.00&quot;], [&quot;Round 2&quot;, &quot;1823.01&quot;, &quot;1211.80&quot;], [&quot;Round 3&quot;, &quot;1100.50&quot;, &quot;4873.99&quot;], [&quot;Round 4&quot;, &quot;3800.75&quot;, &quot;921.00&quot;], [&quot;Total&quot;, &quot;\$6624.26&quot;,&quot;\$7016.79&quot;] ]">
-          </editable-table-display>
-        </template>
-      </demo-snippet>
-    </div>`;
-
-document.body.appendChild($_documentContainer);
-</script>
+          <template>
+            <editable-table-display 
+              id="food-table" 
+              accent-color="cyan" 
+              bordered 
+              caption="Is it a sandwich? Food classification chart." 
+              column-header 
+              filter 
+              row-header 
+              condensed 
+              scroll 
+              sort 
+              striped>
+            </editable-table-display>
+            <script>
+              document.getElementById('food-table').data = [ 
+                [ "Food", "Enclosure", "Contents", "Orientation" ], 
+                [ "Hamburger", "one bun, split into two", "meat, vegetables, cheese, and/or condiments", "horizontal" ], 
+                [ "Hoagie", "one bun", "meat, vegetables, cheese, and/or condiments", "vertical" ], 
+                [ "Hot Dog", "one bun", "meat, vegetables, cheese, and/or condiments", "vertical" ], 
+                [ "Hot Pocket", "two crusts sealed together", "meat, vegetables, cheese, and/or condiments", "horizontal" ], 
+                [ "Pie", "two crusts sealed together", "fruit or meat, vegetables, and/or cheese", "horizontal" ], 
+                [ "Taco", "one shell", "meat, vegetables, cheese, and/or condiments", "vertical" ] 
+              ];
+            </script>
+          </template>
+        </demo-snippet>
+        <p>The editable-table-display component also allows you to style numeric columns and negative numbers.</p>
+        <demo-snippet>
+          <template>
+            <style is="custom-style">
+              #table-with-numbers {
+                --editable-table-numeric-text-align: right;
+                --editable-table-negative-color: red;
+              }
+            </style>
+            <editable-table-display 
+              id="table-with-numbers" 
+              bordered 
+              caption="The Money Game: Player earnings by round." 
+              column-header 
+              condensed footer 
+              row-header 
+              striped>
+            </editable-table-display>
+            <script>
+              document.getElementById("table-with-numbers").data = [ 
+                ["Round", "Player 1", "Player 2"], 
+                ["Round 1", "-100.00", "10.00"], 
+                ["Round 2", "1823.01", "1211.80"], 
+                ["Round 3", "1100.50", "4873.99"], 
+                ["Round 4", "3800.75", "921.00"], 
+                ["Total", "\$6624.26","\$7016.79"] 
+              ];
+            </script>
+          </template>
+        </demo-snippet>
+    </div>
   </body>
 </html>

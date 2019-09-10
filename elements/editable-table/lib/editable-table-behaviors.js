@@ -1,6 +1,13 @@
 /**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
+/**
  * `editable-table-behaviors`
  * `A set of common behaviors for editable-table web components.`
+ *
+ * @polymer
+ * @mixinFunction
  */
 export const displayBehaviors = function(SuperClass) {
   return class extends SuperClass {
@@ -90,13 +97,6 @@ export const displayBehaviors = function(SuperClass) {
           type: Boolean,
           value: false,
           reflectToAttribute: true
-        },
-        /**
-         * a table summary
-         */
-        summary: {
-          type: String,
-          value: null
         }
       };
       if (super.properties) {

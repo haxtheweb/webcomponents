@@ -1,27 +1,40 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/iron-autogrow-textarea/iron-autogrow-textarea.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import { cellBehaviors } from "./editable-table-behaviors.js";
+
 /**
-`editable-table-editor-cell`
-
-An editable cell in the editable-table-editor 
-(editable-table-editor.html) interface.
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
-
-<editable-table-editor-cell 
-  row="3"                     //The index of the cell's row
-  column="2"                  //The index of the cell's column
-  value="">                   //The editable contents of the cell
-  <iron-icon class="sortable-icon"icon="editable-table:sortable" aria-hidden="true"></iron-icon>
-  <iron-icon class="filter-icon"icon="editable-table:filter-off"></iron-icon>
-</editable-table-editor-cell>
-
-*/
+ * `editable-table-editor-cell`
+ * `An editable cell in the editable-table-editor (editable-table-editor.html) interface.`
+ *
+ * @microcopy - language worth noting:
+ * ```
+ <editable-table-editor-cell 
+  row="3"                             //The index of the cell's row
+  column="2"                         //The index of the cell's column
+  value="">                          //The editable contents of the cell
+  <iron-icon                         //If cell is sortable, the sortable icon
+    class="sortable-icon"
+    icon="editable-table:sortable" 
+    aria-hidden="true">
+  </iron-icon>
+  <iron-icon                          //If cell is sortable, the sortable icon
+    class="filter-icon"
+    icon="editable-table:filter-off">
+  </iron-icon>
+</editable-table-editor-cell>```
+ *  
+ * @demo demo/editor.html
+ * 
+ * @polymer
+ * @customElement
+ * @appliesMixin cellBehaviors
+ */
 class EditableTableEditorCell extends cellBehaviors(PolymerElement) {
   static get template() {
     return html`

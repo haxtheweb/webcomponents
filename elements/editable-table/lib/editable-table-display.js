@@ -1,3 +1,7 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@lrnwebcomponents/dropdown-select/dropdown-select.js";
@@ -11,39 +15,55 @@ import { displayBehaviors } from "./editable-table-behaviors.js";
 import "./editable-table-sort.js";
 import "./editable-table-filter.js";
 import "./editable-table-styles.js";
+
 /**
-`editable-table-display`
-
-Displays a table with theming, styling, sorting, resonsive, and 
-filtering features.  (See editable-table-behaviors.html 
-for more information.)
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
-<editable-table-display 
+ * `editable-table-display`
+ * `An editor interface for editable-table (editable-table.html). (See editable-table-behaviors.html for more information.)`
+ *
+ * @microcopy - language worth noting:
+ * ```
+ <editable-table-display 
   accent-color="indigo"     //Optional accent color for column headers and border. Default is none. (See https://lrnwebcomponents.github.io/simple-colors/components/simple-colors/)
   bordered                  //Adds borders to table. Default is no border.
   caption="..."             //The caption or title for the table.
   column-header             //Does the table use the first row as a column-header? Default is false.
   condensed                 //Condense the padding above and below the table? Default is false.
   dark                      //Optional dark theme. Default is light theme. (See https://lrnwebcomponents.github.io/simple-colors/components/simple-colors/)
-  data='[                   //Table data as an array. For example:
-    [ ["..."], ["..."] ],     //This line represents a row with two columns
-    [ ["..."], ["..."] ],     //This line represents another row with two columns
-    [ ["..."], ["..."] ]      //This line represents a third row with two columns
-  ]'
-  edit-mode                 //Is the editor in edit mode? Default is false which places the table in display mode. 
+  data=[]                      //Table data as an array. For example: 
+                            [
+                              [ ["..."], ["..."] ],     //This line represents a row with two columns
+                              [ ["..."], ["..."] ],     //This line represents another row with two columns
+                              [ ["..."], ["..."] ]      //This line represents a third row with two columns
+                            ]
   filter                    //Allow table to toggle filtering? When a cell is toggled, only rows that have the same value as that cell will be shown. Default is no filter.
+  filterColumn              //If filter is applied which column number has th filter?
+  filtered                  //Is the table data filtered?
+  filterText                //The text used as a filter.
   footer                    //Does the table use the last row as a footer? Default is false.
+  hide-accent-color         //Hide the accent color dropdown menu? Default is false which enables the menu which changes the accent-color property.
+  hide-bordered             //Hide the bordered toggle? Default is false so that a toggle button to control the bordered property.
+  hide-condensed            //Hide the condensed toggle? Default is false so that a toggle button to control the condensed property.
+  hide-dark-theme           //Hide the dark theme toggle? Default is false so that a toggle button to control the dark property.
+  hide-filter               //Hide the filter toggle? Default is false so that a toggle button to control the filter property.
+  hide-sort                 //Hide the sort toggle? Default is false so that a toggle button to control the sort property.
+  hide-scroll               //Hide the scroll toggle? Default is false so that a toggle button to control the scroll property.
+  hide-striped              //Hide the striped toggle? Default is false so that a toggle button to control the striped property.
   row-header                //Does the table use the first column as a row header? Default is false.
   scroll                    //Does the table use scrolling to fit when it is too wide?  Default is false: a responsive layout where only two columns are shown and a dropdown menu controls which column to display.
+  selected                  //In responsive mode, the selected column to display.
   sort                      //Does the table allow sorting by column where column headers become sort buttons? Default is false.
-  striped                   //Does the table have alternating stipes of shading for its body rows? Default is false.
-  summary="...">            //An accessible description of the table, what each row reporesents, and what each column represents.
-</editable-table-display>
-
-*/
+  sortColumn                //If sort mode is enabled, the number of the column where sort is applied.
+  sortMode                  //If a column has sort applied, the sort mode for the column: ascending, descending, or none
+  striped>                  //Does the table have alternating stipes of shading for its body rows? Default is false.
+</editable-table-display >```
+ *  
+ * @demo demo/editor.html
+ * 
+ * @polymer
+ * @customElement
+ * @appliesMixin displayBehaviors
+ * @appliesMixin ResponsiveUtilityBehaviors
+ */
 class EditableTableDisplay extends displayBehaviors(
   ResponsiveUtilityBehaviors(PolymerElement)
 ) {
@@ -76,7 +96,7 @@ class EditableTableDisplay extends displayBehaviors(
         <caption class="caption">
           <div>
             <div>[[caption]]</div>
-            <dropdown-select id="column" label\$="[[tables.0.label]]" value="1">
+            <dropdown-select id="column" label$="[[tables.0.label]]" value="1">
               <template
                 is="dom-repeat"
                 items="[[thead.0]]"
@@ -84,12 +104,12 @@ class EditableTableDisplay extends displayBehaviors(
                 index-as="index"
               >
                 <template is="dom-if" if="[[columnHeader]]">
-                  <paper-item id\$="[[index]]" value\$="[[index]]"
+                  <paper-item id$="[[index]]" value$="[[index]]"
                     >[[col]]</paper-item
                   >
                 </template>
                 <template is="dom-if" if="[[!columnHeader]]">
-                  <paper-item id\$="[[index]]">Column [[index]]</paper-item>
+                  <paper-item id$="[[index]]">Column [[index]]</paper-item>
                 </template>
               </template>
             </dropdown-select>
@@ -103,16 +123,12 @@ class EditableTableDisplay extends displayBehaviors(
               as="th"
               index-as="index"
             >
-              <th
-                class="th"
-                scope="col"
-                numeric\$="[[_isNumericColumn(index)]]"
-              >
+              <th class="th" scope="col" numeric$="[[_isNumericColumn(index)]]">
                 <template is="dom-if" if="[[sort]]" restamp="">
                   <editable-table-sort
-                    sort-column\$="[[sortColumn]]"
+                    sort-column$="[[sortColumn]]"
                     column-number="[[index]]"
-                    text\$="[[th]]"
+                    text$="[[th]]"
                   ></editable-table-sort>
                 </template>
                 <template is="dom-if" if="[[!sort]]" restamp=""
@@ -146,7 +162,7 @@ class EditableTableDisplay extends displayBehaviors(
                   <th
                     class="th"
                     scope="row"
-                    numeric\$="[[_isNumericColumn(index)]]"
+                    numeric$="[[_isNumericColumn(index)]]"
                   >
                     [[cell]]
                   </th>
@@ -158,14 +174,14 @@ class EditableTableDisplay extends displayBehaviors(
                 >
                   <td
                     class="td"
-                    numeric\$="[[_isNumericColumn(index)]]"
-                    negative\$="[[_isNegative(cell)]]"
+                    numeric$="[[_isNumericColumn(index)]]"
+                    negative$="[[_isNegative(cell)]]"
                   >
                     <template is="dom-if" if="[[filter]]" restamp="">
                       <editable-table-filter
                         column-number="[[index]]"
-                        text\$="[[cell]]"
-                        filtered\$="[[_isFiltered(index,filterColumn,filtered)]]"
+                        text$="[[cell]]"
+                        filtered$="[[_isFiltered(index,filterColumn,filtered)]]"
                       ></editable-table-filter>
                     </template>
                     <template is="dom-if" if="[[!filter]]" restamp=""
@@ -190,7 +206,7 @@ class EditableTableDisplay extends displayBehaviors(
                   <th
                     class="th"
                     scope="row"
-                    numeric\$="[[_isNumericColumn(index)]]"
+                    numeric$="[[_isNumericColumn(index)]]"
                   >
                     [[cell]]
                   </th>
@@ -198,8 +214,8 @@ class EditableTableDisplay extends displayBehaviors(
                 <template is="dom-if" if="[[!_isRowHeader(rowHeader,index)]]">
                   <td
                     class="td"
-                    numeric\$="[[_isNumericColumn(index)]]"
-                    negative\$="[[_isNegative(cell)]]"
+                    numeric$="[[_isNumericColumn(index)]]"
+                    negative$="[[_isNegative(cell)]]"
                   >
                     [[cell]]
                   </td>
@@ -216,13 +232,6 @@ class EditableTableDisplay extends displayBehaviors(
   }
   static get properties() {
     return {
-      /**
-       * Is the table in edit mode?
-       */
-      editMode: {
-        type: Boolean,
-        value: false
-      },
       /**
        * Column for filtering
        */
@@ -245,14 +254,7 @@ class EditableTableDisplay extends displayBehaviors(
         value: null
       },
       /**
-       * Hide edit mode?
-       */
-      hideEditMode: {
-        type: Boolean,
-        value: false
-      },
-      /**
-       * The selected table
+       * The selected column to display when in responsive mode
        */
       selected: {
         type: Number,

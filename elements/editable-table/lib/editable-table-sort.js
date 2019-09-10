@@ -1,27 +1,31 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "./editable-table-iconset.js";
+
 /**
-`editable-table-sort`
-
-A column header that functions as a three-state sort button 
-(no sort, sort ascending, sort descending) for the 
-table-editor-display mode (table-editor-display.html).
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
-
+ * `editable-table-editor-sort`
+ * `A column header that functions as a three-state sort button (no sort, sort ascending, sort descending) for the table-editor-display mode (table-editor-display.html).`
+ *
+ * @microcopy - language worth noting:
+ * ```
 <editable-table-sort 
   sort-mode="asc"               //The column's sort mode, can be "asc", "desc", or "none". Default is "none".
   sort-column="3"               //The column number of current sort column.
   column-number="2"             //The column number of this button. If this matches the sort-column number, sorting will be turned on.
   text="">                      //The text of the column header
-</editable-table-sort>
-
-*/
+</editable-table-sort>```
+ *  
+ * @demo demo/display.html
+ * 
+ * @polymer
+ * @customElement
+ */
 class EditableTableSort extends PolymerElement {
   static get template() {
     return html`

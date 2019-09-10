@@ -1,28 +1,33 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-toggle-button/paper-toggle-button.js";
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
+
 /**
-`editable-table-editor-toggle`
-
-A toggle button for an property in the editable-table 
-interface (editable-table.html).
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
-
-<editable-table-editor-toggle
-  hidden                          //Hide and disable this toggle? Default is false.
-  label="Condensed"               //The label for the toggle button
-  prop="condensed"                //The property controlled by this toggle
-  tooltip="Condense cell height." //A tooltip for this toggle.
-  value="true">                   //The value of this toggle.
-</editable-table-editor-toggle>
-
-*/
+ * `editable-table-editor-toggle`
+ * `A toggle button for an property in the editable-table interface (editable-table.html).`
+ *
+ * @microcopy - language worth noting:
+ * ```
+ <editable-table-editor-toggle
+  hidden                           //Hide and disable this toggle? Default is false.
+  label="Condensed"                //The label for the toggle button
+  prop="condensed"                 //The property controlled by this toggle
+  tooltip="Condense cell height."  //A tooltip for this toggle.
+  value="true">                    //The value of this toggle.
+</editable-table-editor-toggle>```
+ *  
+ * @demo demo/editor.html
+ * 
+ * @polymer
+ * @customElement
+ */
 class EditableTableEditorToggle extends PolymerElement {
   static get template() {
     return html`

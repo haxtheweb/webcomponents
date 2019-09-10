@@ -1,3 +1,7 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/paper-menu-button/paper-menu-button.js";
@@ -6,23 +10,25 @@ import "@polymer/paper-listbox/paper-listbox.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "./editable-table-editor-insdel.js";
 import { cellBehaviors } from "./editable-table-behaviors.js";
+
 /**
-`editable-table-editor-rowcol`
-
-A header label and menu for inserting and deleting a row or a column 
-of the editable-table interface (editable-table.html).
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
-
-<editable-table-editor-rowcol 
-  condensed                     //Decrease the padding to match the rest of the table cells when table is condensed? Default is false.         
-  index="1"                     //The index of the row or column
-  type="Column">                //The type of menu, as in "Row" or "Column"
-</editable-table-editor-rowcol>
-
-*/
+ * `editable-table-editor-rowcol`
+ * `A header label and menu for inserting and deleting a row or a column of the editable-table interface (editable-table.html).`
+ *
+ * @microcopy - language worth noting:
+ * ```
+ <editable-table-editor-rowcol 
+  condensed                       //Decrease the padding to match the rest of the table cells when table is condensed? Default is false.         
+  index="1"                       //The index of the row or column
+  type="Column">                  //The type of menu, as in "Row" or "Column"
+</editable-table-editor-rowcol>```
+ *  
+ * @demo demo/editor.html
+ * 
+ * @polymer
+ * @customElement
+ * @appliesMixin cellBehaviors
+ */
 class EditableTableEditorRowcol extends cellBehaviors(PolymerElement) {
   static get template() {
     return html`

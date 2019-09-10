@@ -1,3 +1,7 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
@@ -8,48 +12,50 @@ import {
 } from "./lib/editable-table-behaviors.js";
 import "./lib/editable-table-editor.js";
 import "./lib/editable-table-display.js";
+
 /**
-`editable-table`
-
-An editor interface for tables that toggles between 
-view mode (editable-table-display.html) and 
-edit mode (editable-table-editor.html). 
-(See editable-table-behaviors.html for more information.)
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
-
-<editable-table 
+ * `editable-table`
+ * `An editor interface for tables that toggles between view mode (editable-table-display.html) and edit mode (editable-table-editor.html). (See editable-table-behaviors.html for more information.)`
+ *
+ * @microcopy - language worth noting:
+ * ```
+ <editable-table 
   accent-color="indigo"     //Optional accent color for column headers and border. Default is none. (See https://lrnwebcomponents.github.io/simple-colors/components/simple-colors/)
   bordered                  //Adds borders to table. Default is no border.
   caption="..."             //The caption or title for the table.
   column-header             //Does the table use the first row as a column-header? Default is false.
   condensed                 //Condense the padding above and below the table? Default is false.
   dark                      //Optional dark theme. Default is light theme. (See https://lrnwebcomponents.github.io/simple-colors/components/simple-colors/)
-  data='[                   //Table data as an array. For example:
-    [ ["..."], ["..."] ],     //This line represents a row with two columns
-    [ ["..."], ["..."] ],     //This line represents another row with two columns
-    [ ["..."], ["..."] ]      //This line represents a third row with two columns
-  ]'
+  data=[]                      //Table data as an array. For example: 
+                            [
+                              [ ["..."], ["..."] ],     //This line represents a row with two columns
+                              [ ["..."], ["..."] ],     //This line represents another row with two columns
+                              [ ["..."], ["..."] ]      //This line represents a third row with two columns
+                            ]
   edit-mode                 //Is the editor in edit mode? Default is false which places the table in display mode. 
   filter                    //Allow table to toggle filtering? When a cell is toggled, only rows that have the same value as that cell will be shown. Default is no filter.
   footer                    //Does the table use the last row as a footer? Default is false.
-  hide-accent-color           //Hide the accent color dropdown menu? Default is false which enables the menu which changes the accent-color property.
-  hide-bordered              //Hide the bordered toggle? Default is false so that a toggle button to control the bordered property.
-  hide-condensed             //Hide the condensed toggle? Default is false so that a toggle button to control the condensed property.
-  hide-dark-theme             //Hide the dark theme toggle? Default is false so that a toggle button to control the dark property.
-  hide-filter                //Hide the filter toggle? Default is false so that a toggle button to control the filter property.
-  hide-sort                  //Hide the sort toggle? Default is false so that a toggle button to control the sort property.
-  hide-scroll                //Hide the scroll toggle? Default is false so that a toggle button to control the scroll property.
-  hide-striped               //Hide the striped toggle? Default is false so that a toggle button to control the striped property.
+  hide-accent-color         //Hide the accent color dropdown menu? Default is false which enables the menu which changes the accent-color property.
+  hide-bordered             //Hide the bordered toggle? Default is false so that a toggle button to control the bordered property.
+  hide-condensed            //Hide the condensed toggle? Default is false so that a toggle button to control the condensed property.
+  hide-dark-theme           //Hide the dark theme toggle? Default is false so that a toggle button to control the dark property.
+  hide-filter               //Hide the filter toggle? Default is false so that a toggle button to control the filter property.
+  hide-sort                 //Hide the sort toggle? Default is false so that a toggle button to control the sort property.
+  hide-scroll               //Hide the scroll toggle? Default is false so that a toggle button to control the scroll property.
+  hide-striped              //Hide the striped toggle? Default is false so that a toggle button to control the striped property.
   row-header                //Does the table use the first column as a row header? Default is false.
   scroll                    //Does the table use scrolling to fit when it is too wide?  Default is false: a responsive layout where only two columns are shown and a dropdown menu controls which column to display.
   sort                      //Does the table allow sorting by column where column headers become sort buttons? Default is false.
-  striped                   //Does the table have alternating stipes of shading for its body rows? Default is false.
-  summary="...">            //An accessible description of the table, what each row reporesents, and what each column represents.
-</editable-table>
-*/
+  striped>                  //Does the table have alternating stipes of shading for its body rows? Default is false.
+</editable-table>```
+ *  
+ * @demo demo/index.html
+ * @demo demo/editor.html Edit Mode
+ * @demo demo/display.html Display Mode
+ * 
+ * @customElement
+ * @polymer
+ */
 class EditableTable extends displayBehaviors(editBehaviors(PolymerElement)) {
   static get template() {
     return html`
@@ -64,47 +70,45 @@ class EditableTable extends displayBehaviors(editBehaviors(PolymerElement)) {
       >
       <template id="display" is="dom-if" if="[[!editMode]]" restamp="true">
         <editable-table-display
-          accent-color\$="[[accentColor]]"
-          bordered\$="[[bordered]]"
-          caption\$="[[caption]]"
-          column-header\$="[[columnHeader]]"
-          dark\$="[[dark]]"
-          data\$="[[data]]"
-          condensed\$="[[condensed]]"
-          filter\$="[[filter]]"
-          footer\$="[[footer]]"
-          row-header\$="[[rowHeader]]"
-          scroll\$="[[scroll]]"
-          sort\$="[[sort]]"
-          striped\$="[[striped]]"
-          summary\$="[[summary]]"
+          accent-color$="[[accentColor]]"
+          bordered$="[[bordered]]"
+          caption$="[[caption]]"
+          column-header$="[[columnHeader]]"
+          dark$="[[dark]]"
+          data="[[data]]"
+          condensed$="[[condensed]]"
+          filter$="[[filter]]"
+          footer$="[[footer]]"
+          row-header$="[[rowHeader]]"
+          scroll$="[[scroll]]"
+          sort$="[[sort]]"
+          striped$="[[striped]]"
         >
         </editable-table-display>
       </template>
       <template id="editor" is="dom-if" if="[[editMode]]" restamp="true">
         <editable-table-editor
-          accent-color\$="[[accentColor]]"
-          bordered\$="[[bordered]]"
-          caption\$="[[caption]]"
-          column-header\$="[[columnHeader]]"
-          condensed\$="[[condensed]]"
-          dark\$="[[dark]]"
-          data\$="[[data]]"
-          filter\$="[[filter]]"
-          footer\$="[[footer]]"
-          hide-accent-color\$="[[hideAccentColor]]"
-          hide-dark-theme\$="[[hideDarkTheme]]"
-          hide-bordered\$="[[hideBordered]]"
-          hide-condensed\$="[[hideCondensed]]"
-          hide-filter\$="[[hideFilter]]"
-          hide-sort\$="[[hideSort]]"
-          hide-scroll\$="[[hideScroll]]"
-          hide-striped\$="[[hideStriped]]"
-          row-header\$="[[rowHeader]]"
-          scroll\$="[[scroll]]"
-          sort\$="[[sort]]"
-          striped\$="[[striped]]"
-          summary\$="[[summary]]"
+          accent-color$="[[accentColor]]"
+          bordered$="[[bordered]]"
+          caption$="[[caption]]"
+          column-header$="[[columnHeader]]"
+          condensed$="[[condensed]]"
+          dark$="[[dark]]"
+          data="[[data]]"
+          filter$="[[filter]]"
+          footer$="[[footer]]"
+          hide-accent-color$="[[hideAccentColor]]"
+          hide-dark-theme$="[[hideDarkTheme]]"
+          hide-bordered$="[[hideBordered]]"
+          hide-condensed$="[[hideCondensed]]"
+          hide-filter$="[[hideFilter]]"
+          hide-sort$="[[hideSort]]"
+          hide-scroll$="[[hideScroll]]"
+          hide-striped$="[[hideStriped]]"
+          row-header$="[[rowHeader]]"
+          scroll$="[[scroll]]"
+          sort$="[[sort]]"
+          striped$="[[striped]]"
         >
         </editable-table-editor>
       </template>

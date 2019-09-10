@@ -1,24 +1,30 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "./editable-table-iconset.js";
+
 /**
-`editable-table-filter`
-Displays a cell in the editable-table-display mode 
-(editable-table-display.html) as a filter button.
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
-
-<editable-table-filter 
-  column-number="1"       //The index of the cell's column
-  text="">                //The text of the cell, which will become the filter value when button is toggled.
-</editable-table-filter>
-
-*/
+ * `editable-table-editor-filter`
+ * `Displays a cell in the editable-table-display mode (editable-table-display.html) as a filter button.`
+ *
+ * @microcopy - language worth noting:
+ * ```
+ <editable-table-filter 
+  column-number="1"         //The index of the cell's column
+  text="">                  //The text of the cell, which will become the filter value when button is toggled.
+</editable-table-filter>```
+ *  
+ * @demo demo/display.html
+ * 
+ * @polymer
+ * @customElement
+ */
 class EditableTableFilter extends PolymerElement {
   static get template() {
     return html`

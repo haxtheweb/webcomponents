@@ -1,3 +1,7 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/iron-autogrow-textarea/iron-autogrow-textarea.js";
@@ -14,45 +18,48 @@ import "./editable-table-editor-cell.js";
 import "./editable-table-iconset.js";
 import "./editable-table-styles.js";
 /**
-`editable-table-editor`
-
-An editor interface for editable-table (editable-table.html). 
-(See editable-table-behaviors.html for more information.)
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
-
-<editable-table-editor 
+ * `editable-table-editor`
+ * `An editor interface for editable-table (editable-table.html). (See editable-table-behaviors.html for more information.)`
+ *
+ * @microcopy - language worth noting:
+ * ```
+ <editable-table-editor 
   accent-color="indigo"     //Optional accent color for column headers and border. Default is none. (See https://lrnwebcomponents.github.io/simple-colors/components/simple-colors/)
   bordered                  //Adds borders to table. Default is no border.
   caption="..."             //The caption or title for the table.
   column-header             //Does the table use the first row as a column-header? Default is false.
   condensed                 //Condense the padding above and below the table? Default is false.
   dark                      //Optional dark theme. Default is light theme. (See https://lrnwebcomponents.github.io/simple-colors/components/simple-colors/)
-  data='[                   //Table data as an array. For example:
-    [ ["..."], ["..."] ],     //This line represents a row with two columns
-    [ ["..."], ["..."] ],     //This line represents another row with two columns
-    [ ["..."], ["..."] ]      //This line represents a third row with two columns
-  ]'
+  data=[]                      //Table data as an array. For example: 
+                            [
+                              [ ["..."], ["..."] ],     //This line represents a row with two columns
+                              [ ["..."], ["..."] ],     //This line represents another row with two columns
+                              [ ["..."], ["..."] ]      //This line represents a third row with two columns
+                            ]
   filter                    //Allow table to toggle filtering? When a cell is toggled, only rows that have the same value as that cell will be shown. Default is no filter.
   footer                    //Does the table use the last row as a footer? Default is false.
-  hide-accent-color           //Hide the accent color dropdown menu? Default is false which enables the menu which changes the accent-color property.
-  hide-bordered              //Hide the bordered toggle? Default is false so that a toggle button to control the bordered property.
-  hide-condensed             //Hide the condensed toggle? Default is false so that a toggle button to control the condensed property.
-  hide-dark-theme             //Hide the dark theme toggle? Default is false so that a toggle button to control the dark property.
-  hide-filter                //Hide the filter toggle? Default is false so that a toggle button to control the filter property.
-  hide-sort                  //Hide the sort toggle? Default is false so that a toggle button to control the sort property.
-  hide-scroll                //Hide the scroll toggle? Default is false so that a toggle button to control the scroll property.
-  hide-striped               //Hide the striped toggle? Default is false so that a toggle button to control the striped property.
+  hide-accent-color         //Hide the accent color dropdown menu? Default is false which enables the menu which changes the accent-color property.
+  hide-bordered             //Hide the bordered toggle? Default is false so that a toggle button to control the bordered property.
+  hide-condensed            //Hide the condensed toggle? Default is false so that a toggle button to control the condensed property.
+  hide-dark-theme           //Hide the dark theme toggle? Default is false so that a toggle button to control the dark property.
+  hide-filter               //Hide the filter toggle? Default is false so that a toggle button to control the filter property.
+  hide-sort                 //Hide the sort toggle? Default is false so that a toggle button to control the sort property.
+  hide-scroll               //Hide the scroll toggle? Default is false so that a toggle button to control the scroll property.
+  hide-striped              //Hide the striped toggle? Default is false so that a toggle button to control the striped property.
   row-header                //Does the table use the first column as a row header? Default is false.
   scroll                    //Does the table use scrolling to fit when it is too wide?  Default is false: a responsive layout where only two columns are shown and a dropdown menu controls which column to display.
   sort                      //Does the table allow sorting by column where column headers become sort buttons? Default is false.
-  striped                   //Does the table have alternating stipes of shading for its body rows? Default is false.
-  summary="...">            //An accessible description of the table, what each row reporesents, and what each column represents.
-</editable-table-editor>
-*/
-
+  striped>                  //Does the table have alternating stipes of shading for its body rows? Default is false.
+</editable-table-editor >```
+ *  
+ * @demo demo/editor.html
+ * 
+ * @polymer
+ * @customElement
+ * @appliesMixin editBehaviors
+ * @appliesMixin displayBehaviors
+ * @appliesMixin ResponsiveUtilityBehaviors
+ */
 class EditableTableEditor extends editBehaviors(
   displayBehaviors(ResponsiveUtilityBehaviors(PolymerElement))
 ) {
@@ -202,20 +209,7 @@ class EditableTableEditor extends editBehaviors(
           class="field-group-grow caption"
           label="Table Caption"
           placeholder="A title for the table."
-          value\$="{{caption}}"
-        >
-        </iron-autogrow-textarea>
-      </p>
-      <p class="field-group">
-        <label aria-hidden="true" class="field-group-label"
-          >Table Summary (for accessibility)
-        </label>
-        <iron-autogrow-textarea
-          id="summary"
-          class="field-group-grow"
-          label="Table Summary (for accessibility)"
-          placeholder="Describe what the table contains. What does each row represent? What does each column represent?"
-          value\$="{{summary}}"
+          value$="{{caption}}"
         >
         </iron-autogrow-textarea>
       </p>
@@ -235,35 +229,35 @@ class EditableTableEditor extends editBehaviors(
                 label="First Column"
                 prop="rowHeader"
                 tooltip="The first column is a row header."
-                value\$="{{rowHeader}}"
+                value$="{{rowHeader}}"
               >
               </editable-table-editor-toggle>
               <editable-table-editor-toggle
                 label="First Row"
                 prop="columnHeader"
                 tooltip="The first row is a column header."
-                value\$="{{columnHeader}}"
+                value$="{{columnHeader}}"
               >
               </editable-table-editor-toggle>
               <editable-table-editor-toggle
-                hidden\$="[[hideFooter]]"
+                hidden$="[[hideFooter]]"
                 label="Last Row"
                 prop="footer"
                 tooltip="The last row is a table footer."
-                value\$="{{footer}}"
+                value$="{{footer}}"
               >
               </editable-table-editor-toggle>
             </div>
             <div
               class="field-group-border field-group-grow"
-              hidden\$="[[hideTableTheme]]"
+              hidden$="[[hideTableTheme]]"
             >
               <label>Theme: </label>
               <div class="field-group-grow">
                 <dropdown-select
                   id="accent"
                   label="Accent Color"
-                  value\$="{{accentColor}}"
+                  value$="{{accentColor}}"
                 >
                   <paper-item value="none">None</paper-item>
                   <paper-item value="red">Red</paper-item>
@@ -290,72 +284,72 @@ class EditableTableEditor extends editBehaviors(
                 >Set an accent color for the table.</paper-tooltip
               >
               <editable-table-editor-toggle
-                hidden\$="[[hideDarkTheme]]"
+                hidden$="[[hideDarkTheme]]"
                 label="Dark"
                 prop="dark"
                 tooltip="Use the dark theme."
-                value\$="{{dark}}"
+                value$="{{dark}}"
               >
               </editable-table-editor-toggle>
             </div>
             <div
               class="field-group-border field-group-grow"
-              hidden\$="[[hideTableStyles]]"
+              hidden$="[[hideTableStyles]]"
             >
               <label>Styles: </label>
               <editable-table-editor-toggle
-                hidden\$="[[hideBordered]]"
+                hidden$="[[hideBordered]]"
                 label="Bordered"
                 prop="bordered"
                 tooltip="Add borders to cells."
-                value\$="{{bordered}}"
+                value$="{{bordered}}"
               >
               </editable-table-editor-toggle>
               <editable-table-editor-toggle
-                hidden\$="[[hideStriped]]"
+                hidden$="[[hideStriped]]"
                 label="Striped"
                 prop="striped"
                 tooltip="Add shading to alternating rows."
-                value\$="{{striped}}"
+                value$="{{striped}}"
               >
               </editable-table-editor-toggle>
               <editable-table-editor-toggle
-                hidden\$="[[hideCondensed]]"
+                hidden$="[[hideCondensed]]"
                 label="Condensed"
                 prop="condensed"
                 tooltip="Condense cell height."
-                value\$="{{condensed}}"
+                value$="{{condensed}}"
               >
               </editable-table-editor-toggle>
               <editable-table-editor-toggle
-                hidden\$="[[hideScroll]]"
+                hidden$="[[hideScroll]]"
                 label="Disable Responsive"
                 prop="scroll"
                 tooltip="Disables the default responsive feature."
-                value\$="{{scroll}}"
+                value$="{{scroll}}"
               >
               </editable-table-editor-toggle>
             </div>
             <div
               class="field-group-border field-group-grow"
-              hidden\$="[[hideTableSort]]"
+              hidden$="[[hideTableSort]]"
             >
               <label>Sorting and Filtering: </label>
               <editable-table-editor-toggle
-                disabled\$="[[!columnHeader]]"
-                hidden\$="[[hideSort]]"
+                disabled$="[[!columnHeader]]"
+                hidden$="[[hideSort]]"
                 label="Enable Sorting"
                 prop="sort"
                 tooltip="When first row is a column header, make the column sortable."
-                value\$="{{sort}}"
+                value$="{{sort}}"
               >
               </editable-table-editor-toggle>
               <editable-table-editor-toggle
-                hidden\$="[[hideFilter]]"
+                hidden$="[[hideFilter]]"
                 label="Enable Filters"
                 prop="filter"
                 tooltip="When a cell is clicked toggle a filter based on that cell's value."
-                value\$="{{filter}}"
+                value$="{{filter}}"
               >
               </editable-table-editor-toggle>
             </div>
@@ -364,10 +358,9 @@ class EditableTableEditor extends editBehaviors(
         <table
           id="table"
           class="table"
-          bordered\$="{{bordered}}"
-          condensed\$="{{condensed}}"
-          striped\$="{{striped}}"
-          summary="Editable table in edit mode. The table body contains fields to edit table data. Each column header contains buttons for editing the column. Each row header contains buttons for editing the row."
+          bordered$="{{bordered}}"
+          condensed$="{{condensed}}"
+          striped$="{{striped}}"
         >
           <caption class="sr-only">
             Editable Table Data
@@ -396,8 +389,8 @@ class EditableTableEditor extends editBehaviors(
                   >
                     <th class="th" scope="col">
                       <editable-table-editor-rowcol
-                        condensed\$="{{condensed}}"
-                        index\$="[[th]]"
+                        condensed$="{{condensed}}"
+                        index$="[[th]]"
                         type="Column"
                       ></editable-table-editor-rowcol>
                     </th>
@@ -418,8 +411,8 @@ class EditableTableEditor extends editBehaviors(
               <tr class="tr">
                 <th class="th" scope="row">
                   <editable-table-editor-rowcol
-                    condensed\$="{{condensed}}"
-                    index\$="[[tr]]"
+                    condensed$="{{condensed}}"
+                    index$="[[tr]]"
                     type="Row"
                   ></editable-table-editor-rowcol>
                 </th>
@@ -434,7 +427,7 @@ class EditableTableEditor extends editBehaviors(
                     <editable-table-editor-cell
                       row="[[tr]]"
                       column="[[index]]"
-                      value\$="{{cell}}"
+                      value$="{{cell}}"
                     >
                       <iron-icon
                         class="sortable-icon"
