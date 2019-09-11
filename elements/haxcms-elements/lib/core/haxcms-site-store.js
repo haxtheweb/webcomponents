@@ -19,6 +19,9 @@ class Store {
     this.cmsSiteEditor = {
       instance: null
     };
+    this.cmsSiteEditorBackend = {
+      instance: null
+    };
     this.dashboardOpened = false;
   }
   cmsSiteEditorAvailability(element = this, location = document.body) {

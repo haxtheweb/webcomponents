@@ -6,7 +6,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/jwt-login/jwt-login.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 /**
- * `haxcms-backend-php`
+ * `haxcms-backend-nodejs`
  * `a simple element to check for and fetch JWTs`
  *
  * @demo demo/index.html
@@ -14,13 +14,13 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
  * @microcopy - the mental model for this element
  * - jwt - a json web token which is an encrypted security token to talk
  */
-class HAXCMSBackendPHP extends PolymerElement {
+class HAXCMSBackendNodeJS extends PolymerElement {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
-    return "haxcms-backend-php";
+    return "haxcms-backend-nodejs";
   }
   // render function
   static get template() {
@@ -107,8 +107,6 @@ class HAXCMSBackendPHP extends PolymerElement {
             // there is no actual backend to bother confiring with
             // possibly a user navigated to a site that doesn't
             // have JWT credentials but isn't actually published
-            // we also need this here because PHP is the assumed
-            // fallback backend
             if (window.appSettings) {
               let haxCmsSiteEditorElement = document.createElement(
                 "haxcms-site-editor"
@@ -169,5 +167,5 @@ class HAXCMSBackendPHP extends PolymerElement {
     }
   }
 }
-window.customElements.define(HAXCMSBackendPHP.tag, HAXCMSBackendPHP);
-export { HAXCMSBackendPHP };
+window.customElements.define(HAXCMSBackendNodeJS.tag, HAXCMSBackendNodeJS);
+export { HAXCMSBackendNodeJS };

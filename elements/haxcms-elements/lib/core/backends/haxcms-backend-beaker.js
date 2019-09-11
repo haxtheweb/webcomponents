@@ -435,6 +435,19 @@ class HAXCMSBackendBeaker extends PolymerElement {
       } catch (err) {
         // error in the event this is a double registration
       }
+    } else {
+      // other things will have to sort out the fact that while we
+      // DO have a dynamic backend, we didn't get a hit on the JWT
+      // meaning that we are in a dynamic environment but logged out
+      // at the moment (or viewing a site we don't have authorization to)
+      window.dispatchEvent(
+        new CustomEvent("haxcms-not-logged-in", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: this
+        })
+      );
     }
   }
 }
