@@ -92,14 +92,6 @@ class HaxAppPickerItem extends LitElement {
       }
     };
   }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      // update hexcolor when color changes
-      if (propName === "color") {
-        this._getAccentColor(this.color);
-      }
-    });
-  }
   /**
    * special handling for taps on the thing
    */
