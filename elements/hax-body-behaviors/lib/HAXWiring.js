@@ -3,6 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
+
 /**
  * In order to use this, the user must supply a haxProperties object
  * which returns what settings are allowed as well as their format.
@@ -33,6 +35,7 @@ import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
  *    'title': 'CSV Table',
  *    'descrption': 'This can generate a table from a CSV file no matter where it is located.',
  *     'icon': 'editor:border-all',
+ *     'iconLib': '@lrnwebcomponents/hax-iconset/hax-iconset.js', // optional ability to import custom icon libraries
  *     'color': 'green',
  *     'groups': ['Presentation', 'Table', 'Data'],
  *     'handles': [
@@ -268,6 +271,13 @@ export class HAXWiring {
         }
         if (typeof props.gizmo === typeof undefined) {
           props.gizmo = false;
+        } else {
+          // support possible dynamic import of iconset
+          // this would be if the user defined their own icons
+          if (typeof props.gizmo.iconLib !== typeof undefined) {
+            const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+            import(`${basePath}../../../${props.gizmo.iconLib}`);
+          }
         }
         // while not required, this is where all the raw power of this
         // approach really lies since this wires properties/slots to HAX's

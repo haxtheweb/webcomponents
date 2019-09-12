@@ -577,9 +577,8 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
               } else if (CEClass.haxProperties) {
                 this.setHaxProperties(CEClass.haxProperties, i);
               } else {
-                // this is the less optimized / legacy polymer element method to inlcude
-                // this item. It's a good reason to skip on this though because you'll
-                // have a faster boot up time with newer ES6 methods then previous ones.
+                // this is the less optimized / legacy polymer element or an element
+                // that did not provide an export
                 dom(haxAutoloader).appendChild(document.createElement(i));
               }
             }

@@ -113,14 +113,14 @@ class H5PElement extends LitElement {
    * This does the heavy lifting to kick it off
    */
   async setupH5P(id = 1, displayOptions = {}) {
-    ({
-      frame: displayOptions.frame = false,
-      copyright: displayOptions.copyright = false,
-      embed: displayOptions.embed = false,
-      download: displayOptions.download = false,
-      icon: displayOptions.icon = false,
-      export: displayOptions.export = false
-    } = displayOptions);
+    displayOptions = Object.assign(displayOptions, {
+      frame: (displayOptions.frame = false),
+      copyright: (displayOptions.copyright = false),
+      embed: (displayOptions.embed = false),
+      download: (displayOptions.download = false),
+      icon: (displayOptions.icon = false),
+      export: (displayOptions.export = false)
+    });
     const basePath =
       pathFromUrl(decodeURIComponent(import.meta.url)) + "lib/h5p/";
 
@@ -141,14 +141,16 @@ class H5PElement extends LitElement {
       '[data-content-id="wrapper-' + this.contentId + '"'
     ).appendChild(frag);
 
-    let stand = await new H5PStandalone(id, this.source, displayOptions);
-    await stand.init();
-    // clear previous calls to this exact thing
-    // this accounts for multiples on the DOM and the exccess
-    // file parsing required per each in order to use this thing
-    if (window.__H5PBridgeTimeOut) {
-      clearTimeout(window.__H5PBridgeTimeOut);
-      window.__H5PBridgeTimeOut();
+    if (this.source) {
+      let stand = new H5PStandalone(id, this.source, displayOptions);
+      await stand.init();
+      // clear previous calls to this exact thing
+      // this accounts for multiples on the DOM and the exccess
+      // file parsing required per each in order to use this thing
+      if (window.__H5PBridgeTimeOut) {
+        clearTimeout(window.__H5PBridgeTimeOut);
+        window.__H5PBridgeTimeOut();
+      }
     }
     return true;
   }
