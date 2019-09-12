@@ -1,4 +1,4 @@
-import { LitElement, html } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
@@ -86,10 +86,11 @@ class LrndesignSidenote extends LitElement {
     super();
     this.label = "";
     this.icon = "";
-    this.bgColor = "";
+    this.bgColor = "lightgray";
   }
 
   render() {
+    const inlineStyle = this.bgColor ? `background-color:${this.bgColor};` : "";
     return html`
       <style>
         :host {
@@ -128,7 +129,7 @@ class LrndesignSidenote extends LitElement {
           @apply --label-styles;
         }
       </style>
-      <div id="container">
+      <div id="container" style="${inlineStyle}">
         <div id="header">
           <iron-icon id="icon" icon=${this.icon}></iron-icon>
           <div id="label">${this.label}</div>
