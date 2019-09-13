@@ -2,7 +2,6 @@
  * @license MIT, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { oneDark } from "./lib/themes/one-dark.js";
 import { hljs } from "./lib/highlightjs/highlight.js";
@@ -177,8 +176,6 @@ button {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(CodeSample.haxProperties, CodeSample.tag, this);
     setTimeout(() => {
       if (this.querySelector("template")) {
         this._observer = new FlattenedNodesObserver(this.$.content, () =>

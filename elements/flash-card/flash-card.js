@@ -4,7 +4,6 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
  * `flash-card`
@@ -92,8 +91,6 @@ class FlashCard extends SchemaBehaviors(PolymerElement) {
   connectedCallback() {
     super.connectedCallback();
     afterNextRender(this, function() {
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(FlashCard.haxProperties, FlashCard.tag, this);
       this.addEventListener("mouseenter", this._flipup.bind(this));
       this.addEventListener("mouseleave", this._flipback.bind(this));
     });

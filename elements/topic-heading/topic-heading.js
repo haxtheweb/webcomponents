@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@lrnwebcomponents/relative-heading/relative-heading.js";
@@ -127,14 +126,6 @@ class TopicHeading extends PolymerElement {
    */
   static get tag() {
     return "topic-heading";
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(TopicHeading.haxProperties, TopicHeading.tag, this);
   }
   /**
    * life cycle, element is removed from the DOM

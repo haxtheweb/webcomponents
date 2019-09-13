@@ -4,8 +4,6 @@
  */
 import { html } from "@polymer/polymer/polymer-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { A11yBehaviors } from "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
@@ -605,13 +603,6 @@ class VideoPlayer extends MediaBehaviorsVideo(
       props = Object.assign(props, super.properties);
     }
     return props;
-  }
-  constructor() {
-    super();
-    afterNextRender(this, function() {
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(VideoPlayer.haxProperties, VideoPlayer.tag, this);
-    });
   }
   /**
    * Store the tag name to make it easier to obtain directly.

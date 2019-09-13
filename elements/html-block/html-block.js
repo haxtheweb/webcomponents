@@ -2,7 +2,6 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 /**
  * `html-block`
  * `A basic HTML block that provides HAXschema wiring`
@@ -90,8 +89,6 @@ class HtmlBlock extends HTMLElement {
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(HtmlBlock.haxProperties, HtmlBlock.tag, this);
     // default we block all script unless the user says to do so
     // @todo ensure HAX actually respects this down the road, right now it sanitizes it
     this.allowscript = false;

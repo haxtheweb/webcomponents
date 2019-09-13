@@ -1,6 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 /**
  * `tab-list`
  * `A simple listing of tabed links / items`
@@ -12,10 +10,6 @@ class TabList extends PolymerElement {
     import("@polymer/paper-tabs/paper-tabs.js");
     import("@polymer/paper-tabs/paper-tab.js");
     import("@polymer/paper-button/paper-button.js");
-    afterNextRender(this, function() {
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(TabList.haxProperties, TabList.tag, this);
-    });
   }
   static get template() {
     return html`

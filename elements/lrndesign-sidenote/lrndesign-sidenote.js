@@ -1,5 +1,4 @@
 import { LitElement, html } from "lit-element/lit-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
 /**
@@ -70,16 +69,6 @@ class LrndesignSidenote extends LitElement {
         advanced: []
       }
     };
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(
-      LrndesignSidenote.haxProperties,
-      LrndesignSidenote.tag,
-      this
-    );
   }
 
   constructor() {

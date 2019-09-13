@@ -1,6 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
  * `team-member`
@@ -14,10 +12,6 @@ class TeamMember extends SchemaBehaviors(PolymerElement) {
     import("@polymer/iron-image/iron-image.js");
     import("@polymer/paper-icon-button/paper-icon-button.js");
     import("@lrnwebcomponents/mdi-iconset-svg/lib/mdi-social-iconset-svg.js");
-    afterNextRender(this, function() {
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(TeamMember.haxProperties, TeamMember.tag, this);
-    });
   }
   static get template() {
     return html`

@@ -4,7 +4,6 @@
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 window.__H5PBridgeTimeOut = function() {
   setTimeout(function() {
@@ -102,8 +101,6 @@ class H5PElement extends LitElement {
   // life cycle
   constructor() {
     super();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(H5PElement.haxProperties, H5PElement.tag, this);
     // make a random ID for the targeting
     this.contentId = this.generateUUID();
     // should kick off all dependencies to start loading on window

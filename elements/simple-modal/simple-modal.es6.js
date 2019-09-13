@@ -65,6 +65,7 @@ paper-dialog-scrollable:not(:defined) {
 
 :host paper-dialog ::slotted(*) {
   font-size: 14px;
+  width: 100%;
   @apply --simple-modal-content;
 }
 
@@ -146,7 +147,7 @@ h2 {
   padding: 0;
   margin: 0;
   color: var(--simple-modal-buttons-color, unset);
-  background-color: var(--simple-modal-buttons-background,unset);
+  background-color: var(--simple-modal-buttons-background, unset);
   @apply --simple-modal-buttons;
 }
 .buttons ::slotted(*) {

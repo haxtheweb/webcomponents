@@ -222,6 +222,9 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
   align-items: stretch;
   align-content: stretch;
 } 
+:host #captionlink:link {
+  text-decoration: none;
+}
 :host #innerplayer {
   display: flex;
 }
@@ -258,6 +261,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
   margin: 0 auto;
 }
 :host #player {
+  height: 400px;
   position: relative;
 }
 :host #player > * {
@@ -466,7 +470,10 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
     font-size: 120%;
   }
 }</style>
-<div class="sr-only">[[mediaCaption]]</div>
+<style include="simple-colors-shared-styles"></style>
+  <div class="sr-only">
+      <a href$="[[__captionHref]]">[[mediaCaption]]</a>
+  </div>
   <div id="outerplayer">
     <div id="innerplayer">
       <div id="player"
@@ -549,12 +556,14 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
       stand-alone$="[[standAlone]]"
       volume="[[__volume]]">
     </a11y-media-controls>
-    <div
-      aria-hidden="true"
-      class="screen-only media-caption"
-      hidden$="[[!_hasAttribute(mediaCaption)]]">
-      [[mediaCaption]]
-    </div>
+    <a id="captionlink" href$="[[__captionHref]]">
+      <div
+        aria-hidden="true"
+        class="screen-only media-caption"
+        hidden$="[[!_hasAttribute(mediaCaption)]]">
+        [[mediaCaption]]
+      </div>
+    </a>
     <div class="print-only media-caption">[[printCaption]]</div>
   </div>
   <img id="printthumb" aria-hidden="true" src$="[[thumbnailSrc]]" />
@@ -838,6 +847,15 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
     "value": false,
     "notify": true,
     "reflectToAttribute": true
+  },
+  /**
+   * Notice if the video is playing
+   */
+  "__captionHref": {
+    "name": "__captionHref",
+    "type": String,
+    "value": null,
+    "notify": true
   }
 }
 ;
@@ -925,11 +943,15 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
   play() {
     let root = this,
       stopped = !(root.__playing === true);
-    root.__playing = true;
-    root.media.play();
-    window.dispatchEvent(
-      new CustomEvent("a11y-player-playing", { detail: root })
-    );
+    if (root.isYoutube && !root.__ytAppended) {
+      ytInit();
+    } else {
+      root.__playing = true;
+      root.media.play();
+      window.dispatchEvent(
+        new CustomEvent("a11y-player-playing", { detail: root })
+      );
+    }
   }
 
   /**
@@ -1104,6 +1126,8 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
         arr = Array.isArray(data) ? data : JSON.parse(data);
       for (let i = 0; i < arr.length; i++) {
         let el = document.createElement(type);
+        if (!this.__captionHref && type === "source")
+          this.__captionHref = arr[i].src;
         for (let key in arr[i]) {
           el.setAttribute(key, arr[i][key]);
         }
@@ -1118,6 +1142,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    */
   _setPlayerHeight(aspect) {
     let root = this;
+    root.$.player.style.height = "unset";
     if (root.audioOnly && root.thumbnailSrc === null && root.height === null) {
       root.$.player.style.height = "60px";
     } else if (root.height === null) {
@@ -1220,6 +1245,8 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
     let root = this,
       counter = 0;
     root.querySelectorAll("source,track").forEach(node => {
+      if (!root.__captionHref && node.tagName === "SOURCE")
+        root.__captionHref = node.getAttribute("src");
       root.$.html5.media.appendChild(node);
     });
     root._appendToPlayer(root.tracks, "track");
@@ -1249,13 +1276,15 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    * @returns {boolean} Should fullscreen disabled?
    */
   _getFullscreenButton(disableFullscreen, audioNoThumb, screenfullLoaded) {
+    let root = this;
+    if (typeof screenfull === "object") root._onScreenfullLoaded.bind(root);
     if (
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
         navigator.userAgent
       ) ||
       disableFullscreen ||
       audioNoThumb ||
-      !screenfullLoaded
+      !(typeof screenfull === "object")
     ) {
       return false;
     } else {

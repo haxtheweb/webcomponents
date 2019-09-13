@@ -4,8 +4,6 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { LrndesignGalleryBehaviors } from "./lib/lrndesign-gallery-behaviors.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./lib/lrndesign-gallery-carousel.js";
 import "./lib/lrndesign-gallery-grid.js";
@@ -61,7 +59,7 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
   // render function
   static get template() {
     return html`
-      <style>
+      <style include="simple-colors-shared-styles">
         :host {
           display: block;
         }
@@ -225,7 +223,6 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
         ]
       }
     };
-    this.setHaxProperties(props);
   }
 
   // properties available to the custom element for data binding
@@ -237,14 +234,8 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
-    let root = this;
     super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(
-      LrndesignGallery.haxProperties,
-      LrndesignGallery.tag,
-      this
-    );
+    let root = this;
     root.__gallery = root.$.gallery;
     root.anchorData = root._getAnchorData();
     window.ResponsiveUtility.requestAvailability();

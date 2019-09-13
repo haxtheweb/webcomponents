@@ -1,7 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-
 /**
  * `q-r`
  * `Polymer wrapper for a qr code.`
@@ -12,10 +9,6 @@ class QR extends PolymerElement {
   constructor() {
     super();
     import("@lrnwebcomponents/q-r/lib/qr-code.js");
-    afterNextRender(this, function() {
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(QR.haxProperties, QR.tag, this);
-    });
   }
   static get template() {
     return html`

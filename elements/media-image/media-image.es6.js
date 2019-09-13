@@ -3,12 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import {} from "@polymer/polymer/lib/elements/dom-if.js";
+import "@polymer/polymer/lib/elements/dom-if.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@lrnwebcomponents/figure-label/figure-label.js";
 
 /**
@@ -21,10 +18,6 @@ class MediaImage extends SchemaBehaviors(PolymerElement) {
     super();
     import("@polymer/iron-image/iron-image.js");
     import("@polymer/iron-icons/iron-icons.js");
-    afterNextRender(this, function() {
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(MediaImage.haxProperties, MediaImage.tag, this);
-    });
   }
   static get template() {
     return html`
@@ -155,7 +148,7 @@ class MediaImage extends SchemaBehaviors(PolymerElement) {
       caption: {
         type: String,
         value: "",
-        observer: '_computeHasCaption'
+        observer: "_computeHasCaption"
       },
       /**
        * Image alt.
@@ -240,12 +233,14 @@ class MediaImage extends SchemaBehaviors(PolymerElement) {
   ready() {
     super.ready();
     this._observer = new FlattenedNodesObserver(this, info => {
-      this._computeHasCaption()
+      this._computeHasCaption();
     });
   }
 
   _computeHasCaption() {
-    this._hasCaption = ((this.caption.length > 0) || this.querySelector('[slot="caption"]') !== null);
+    this._hasCaption =
+      this.caption.length > 0 ||
+      this.querySelector('[slot="caption"]') !== null;
   }
 
   disconnectedCallback() {

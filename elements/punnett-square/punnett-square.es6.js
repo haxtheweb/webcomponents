@@ -2,7 +2,7 @@
  * Copyright 2019 PSU
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html } from "@polymer/lit-element";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/paper-input/paper-input.js";
 
 /**
@@ -13,7 +13,6 @@ import "@polymer/paper-input/paper-input.js";
  *  -
  *
  * @customElement
- * @lit-html
  * @lit-element
  * @demo demo/index.html
  */
@@ -22,7 +21,7 @@ class PunnettSquare extends LitElement {
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
-  tag() {
+  static get tag() {
     return "punnett-square";
   }
 
@@ -174,14 +173,7 @@ class PunnettSquare extends LitElement {
       </table>
     `;
   }
-
-  // static get observedAttributes() {
-  //   return [];
-  // }
-  // disconnectedCallback() {}
-
-  // attributeChangedCallback(attr, oldValue, newValue) {}
 }
-customElements.define("punnett-square", PunnettSquare);
+customElements.define(PunnettSquare.tag, PunnettSquare);
 
 export { PunnettSquare };

@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 /**
  * `full-width-image`
  * `full width image that flows beyond boundaries`
@@ -166,18 +165,6 @@ class FullWidthImage extends PolymerElement {
    */
   static get tag() {
     return "full-width-image";
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(
-      FullWidthImage.haxProperties,
-      FullWidthImage.tag,
-      this
-    );
   }
   // Observer source for changes
   _sourceChanged(newValue, oldValue) {

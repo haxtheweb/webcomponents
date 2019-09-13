@@ -1,7 +1,5 @@
 import { html } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { A11yBehaviors } from "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
 /**
@@ -425,11 +423,7 @@ class SelfCheck extends SchemaBehaviors(A11yBehaviors(SimpleColors)) {
 
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function() {
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(SelfCheck.haxProperties, SelfCheck.tag, this);
-      import("@lrnwebcomponents/user-action/user-action.js");
-    });
+    import("@lrnwebcomponents/user-action/user-action.js");
   }
 }
 window.customElements.define(SelfCheck.tag, SelfCheck);

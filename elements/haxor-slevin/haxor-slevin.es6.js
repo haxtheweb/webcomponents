@@ -6,6 +6,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
+import { varExists, varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js";
 import "@polymer/iron-pages/iron-pages.js";
@@ -41,6 +42,13 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
 
 :host([edit-mode]) #slot {
   display: none;
+}
+:host([edit-mode]) .contentcontainer-wrapper simple-blog-card {
+  opacity: .2;
+  pointer-events: none;
+}
+git-corner {
+  float:right;
 }
 #slot {
   min-height: 50vh;
@@ -126,9 +134,9 @@ app-header {
   @apply --layout-fixed-top;
   color: #FFFFFF;
   box-shadow: 0 4px 12px 0 rgba(0,0,0,.15);
-  background-color: var(--haxcms-color);
+  background-color: var(--haxcms-color, rgba(255, 0, 116, 1));
   --app-header-background-rear-layer: {
-    background-color: var(--haxcms-color);
+    background-color: var(--haxcms-color, rgba(255, 0, 116, 1));
   };
 }
 paper-icon-button {
@@ -165,7 +173,7 @@ site-active-title {
 }
 
 social-share-link {
-  --social-share-button-bg: var(--haxcms-color);
+  --social-share-button-bg: var(--haxcms-color, rgba(255, 0, 116, 1));
   --social-share-button: {
     padding: 8px;
     border-radius: 50%;
@@ -235,7 +243,7 @@ site-rss-button {
   margin: 0 4px;
   padding: 0;
   --site-rss-color: #000000;
-  --site-rss-bg-color: var(--haxcms-color);
+  --site-rss-bg-color: var(--haxcms-color, rgba(255, 0, 116, 1));
   --site-rss-paper-button: {
     padding: 0 4px;
     margin: 0;
@@ -258,14 +266,14 @@ site-rss-button {
     display: none;
   }
 }</style>
-<style>
+<style include="simple-colors-shared-styles">
   html,body {
     background-color: #FFFFFF;
   }
   :root,html,body,a {
     color: rgba(0,0,0,.84);
   }
-  </style>
+</style>
 
 <app-header reveals>
   <app-toolbar>
@@ -298,7 +306,7 @@ site-rss-button {
               link="[[post.location]]"
               image="[[_showImage(post.metadata.fields.images.0.src)]]"
               author="[[author.name]]"
-              timestamp="[[post.created]]"
+              timestamp="[[post.metadata.created]]"
               readtime="[[post.metadata.readtime]]"
               authorimage="[[author.image]]"
               placeholder="[[image]]"
@@ -316,7 +324,7 @@ site-rss-button {
             placeholder="[[image]]"
             alt="[[post.metadata.fields.images.0.alt]]" color="[[color]]" title="[[post.title]]" size="medium"
               link="[[post.location]]" image="[[_showImage(post.metadata.fields.images.0.src)]]" author="[[author.name]]"
-              timestamp="[[post.created]]" readtime="[[post.metadata.readtime]]" authorimage="[[author.image]]" authorlink="[[author.socialLink]]">
+              timestamp="[[post.metadata.created]]" readtime="[[post.metadata.readtime]]" authorimage="[[author.image]]" authorlink="[[author.socialLink]]">
               [[post.description]]
             </simple-blog-card>
           </template>
@@ -325,6 +333,7 @@ site-rss-button {
     </div>
     <div class="contentcontainer-wrapper">
       <div id="contentcontainer">
+        <git-corner alt="See page source" source="[[activeGitFileLink]]"></git-corner>
         <site-active-title></site-active-title>
         <h3 class="subtitle" hidden$="[[!subtitle]]">[[subtitle]]</h3>
         <div id="slot">
@@ -338,7 +347,7 @@ site-rss-button {
           <template>
             <simple-blog-card alt="[[post.metadata.fields.images.0.alt]]" color="[[color]]" title="[[post.title]]" size="small"
               link="[[post.location]]" image="[[_showImage(post.metadata.fields.images.0.src)]]" author="[[author.name]]"
-              placeholder="[[image]]" timestamp="[[post.created]]" readtime="[[post.metadata.readtime]]"
+              placeholder="[[image]]" timestamp="[[post.metadata.created]]" readtime="[[post.metadata.readtime]]"
               authorimage="[[author.image]]" authorlink="[[author.socialLink]]">
               [[post.description]]
             </simple-blog-card>
@@ -348,19 +357,19 @@ site-rss-button {
       <div class$="social-float hide-small [[stateClass]]">
         <ul>
           <li>
-            <social-share-link button-style mode="icon-only" message="[[shareMsg]]" type="Twitter">
+            <social-share-link title="Share on twitter" button-style mode="icon-only" message="[[shareMsg]]" type="Twitter">
             </social-share-link>
           </li>
           <li>
-            <social-share-link button-style mode="icon-only" message="[[shareMsg]]" url="[[shareUrl]]" type="LinkedIn">
+            <social-share-link title="Share on LinkedIn" button-style mode="icon-only" message="[[shareMsg]]" url="[[shareUrl]]" type="LinkedIn">
             </social-share-link>
           </li>
           <li>
-            <social-share-link button-style mode="icon-only" url="[[shareUrl]]" message="[[shareMsg]]" type="Facebook">
+            <social-share-link title="Share on Facebook" button-style mode="icon-only" url="[[shareUrl]]" message="[[shareMsg]]" type="Facebook">
             </social-share-link>
           </li>
           <li>
-            <social-share-link button-style mode="icon-only" message="[[shareMsg]]" image="[[activeImage]]" url="[[shareUrl]]"
+            <social-share-link title="Share on Pinterest" button-style mode="icon-only" message="[[shareMsg]]" image="[[activeImage]]" url="[[shareUrl]]"
               type="Pinterest">
             </social-share-link>
           </li>
@@ -414,6 +423,9 @@ site-rss-button {
         reflectToAttribute: true,
         value: 0
       },
+      activeGitFileLink: {
+        type: String
+      },
       stateClass: {
         type: String,
         computed: "_getStateClass(editMode)"
@@ -427,22 +439,18 @@ site-rss-button {
     return "";
   }
   _getColor(manifest) {
-    if (manifest && manifest.metadata && manifest.metadata.hexCode) {
-      return manifest.metadata.hexCode;
+    if (manifest && varExists(manifest, "metadata.theme.variables.hexCode")) {
+      return manifest.metadata.theme.variables.hexCode;
     }
   }
   constructor() {
     super();
     import("@polymer/paper-button/paper-button.js");
     import("@polymer/iron-image/iron-image.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");
     import("@lrnwebcomponents/simple-blog-card/simple-blog-card.js");
     import("@polymer/app-layout/app-header/app-header.js");
     import("@polymer/app-layout/app-toolbar/app-toolbar.js");
-    import("@lrnwebcomponents/social-share-link/social-share-link.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
   }
   _showImage(image) {
     if (image) {
@@ -460,14 +468,34 @@ site-rss-button {
     super.connectedCallback();
     autorun(reaction => {
       let manifest = toJS(store.manifest);
+      // if we have a public repo URL then display it
+      if (
+        varGet(store.manifest, "metadata.site.git.publicRepoUrl", "") != "" &&
+        !window.customElements.get("git-corner")
+      ) {
+        import("@lrnwebcomponents/git-corner/git-corner.js");
+      }
       this.title = manifest.title;
-      this.image = manifest.metadata.image;
-      this.icon = manifest.metadata.icon;
-      this.author = manifest.metadata.author;
+      this.image = varGet(
+        manifest,
+        "metadata.theme.variables.image",
+        "assets/banner.jpg"
+      );
+      this.icon = varGet(
+        manifest,
+        "metadata.theme.variables.icon",
+        "icons:record-voice-over"
+      );
+      this.author = varGet(manifest, "metadata.author", {});
       this.__disposer.push(reaction);
     });
     autorun(reaction => {
       this._noticeLocationChange(store.location);
+      this.activeGitFileLink =
+        varGet(store.manifest, "metadata.site.git.publicRepoUrl", "") +
+        "pages" +
+        store.location.pathname +
+        "/index.html";
       this.__disposer.push(reaction);
     });
     autorun(reaction => {
@@ -501,6 +529,19 @@ site-rss-button {
       }
       this.__disposer.push(reaction);
     });
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");
+    import("@lrnwebcomponents/social-share-link/social-share-link.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icons/editor-icons.js");
+    import("@polymer/iron-icons/device-icons.js");
+    import("@polymer/iron-icons/hardware-icons.js");
+    import("@polymer/iron-icons/communication-icons.js");
+    import("@polymer/iron-icons/social-icons.js");
+    import("@polymer/iron-icons/av-icons.js");
+    import("@polymer/iron-icons/maps-icons.js");
+    import("@polymer/iron-icons/places-icons.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js");
   }
   /**
    * Listen for router location changes and select page to match

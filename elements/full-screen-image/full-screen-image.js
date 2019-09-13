@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/iron-icons/hardware-icons.js";
 /**
@@ -218,12 +217,6 @@ class FullScreenImage extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(
-      FullScreenImage.haxProperties,
-      FullScreenImage.tag,
-      this
-    );
     this.$.down.addEventListener("click", e => {
       this.nextElementSibling.scrollIntoView({
         block: "start",

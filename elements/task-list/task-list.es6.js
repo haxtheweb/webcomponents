@@ -1,6 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 /**
@@ -12,13 +10,6 @@ import "@polymer/polymer/lib/elements/dom-repeat.js";
  * - task - a singular thing to accomplish
  */
 class TaskList extends SchemaBehaviors(PolymerElement) {
-  constructor() {
-    super();
-    afterNextRender(this, function() {
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(TaskList.haxProperties, TaskList.tag, this);
-    });
-  }
   static get template() {
     return html`
       <style>

@@ -5,7 +5,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
@@ -100,8 +99,6 @@ class LrnVocab extends SchemaBehaviors(PolymerElement) {
     super.connectedCallback();
     afterNextRender(this, function() {
       window.SimpleModal.requestAvailability();
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(LrnVocab.haxProperties, LrnVocab.tag, this);
     });
   }
   static get haxProperties() {

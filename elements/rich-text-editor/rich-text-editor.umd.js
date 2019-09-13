@@ -3,10 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "./lib/rich-text-editor-styles.js";
-import "./lib/singletons/rich-text-editor-clipboard.js";
 import "./lib/toolbars/rich-text-editor-toolbar.js";
 import "./lib/toolbars/rich-text-editor-toolbar-mini.js";
 import "./lib/toolbars/rich-text-editor-toolbar-full.js";
@@ -46,11 +44,21 @@ class RichTextEditor extends PolymerElement {
 :host(.heightmax[contenteditable="true"]) {
   max-height: calc(100vh - 200px);
   overflow-y: scroll;
+  @apply --rich-text-editor-heightmax;
 }
-:host([contenteditable="true"]):empty:before {
+:host(:empty) {
+  border: 1px dashed var(--rich-text-editor-border-color);
+  @apply --rich-text-editor-empty;
+}
+:host(:not([contenteditable="true"]):empty):before {
   content: attr(placeholder);
+  padding: 0 5px;
   display: block;
-  @apply --rich-text-editor-content-placeholder;
+  color: var(--rich-text-editor-button-disabled-color);
+  @apply --rich-text-editor-empty-placeholder;
+}
+:host([contenteditable="true"]:empty):before {
+  @apply --rich-text-editor-empty-editable;
 }</style>
 <style include="rich-text-editor-styles"></style>
 <slot></slot>`;
@@ -98,14 +106,6 @@ class RichTextEditor extends PolymerElement {
     static get properties() {
     let props = {
   /**
-   * The id for the toolbar
-   */
-  "toolbar": {
-    "name": "toolbar",
-    "type": String,
-    "value": ""
-  },
-  /**
    * The editor's unique id
    */
   "id": {
@@ -113,6 +113,26 @@ class RichTextEditor extends PolymerElement {
     "type": String,
     "value": ""
   },
+
+  /**
+   * Placeholder text for empty editable regions
+   */
+  "placeholder": {
+    "name": "placeholder",
+    "type": String,
+    "reflectToAttribute": true,
+    "value": "Click to edit"
+  },
+
+  /**
+   * The id for the toolbar
+   */
+  "toolbar": {
+    "name": "toolbar",
+    "type": String,
+    "value": ""
+  },
+
   /**
    * The type of editor toolbar, i.e.
    * `full` for full toolbar with breadcrumb,
@@ -161,7 +181,6 @@ class RichTextEditor extends PolymerElement {
    * @returns {void}
    */
   getEditor() {
-    window.RichTextEditorClipboard.requestAvailability();
     let root = this,
       id = this.toolbar ? "#" + this.toolbar : "",
       both = document.querySelector(this.type + id),
@@ -203,13 +222,7 @@ class RichTextEditor extends PolymerElement {
       .substring(1);
     return "rte-" + "ss-s-s-s-sss".replace(/s/g, hex);
   }
-
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
 }
 
-export { RichTextEditor };
-
 window.customElements.define(RichTextEditor.tag, RichTextEditor);
+export { RichTextEditor };

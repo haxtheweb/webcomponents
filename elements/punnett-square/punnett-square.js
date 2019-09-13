@@ -13,7 +13,6 @@ import "@polymer/paper-input/paper-input.js";
  *  -
  *
  * @customElement
- * @lit-html
  * @lit-element
  * @demo demo/index.html
  */

@@ -1,6 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "./lib/stop-icon.js";
 /**
@@ -242,14 +241,6 @@ class StopNote extends SchemaBehaviors(PolymerElement) {
         advanced: []
       }
     };
-  }
-  /**
-   * Attached to the DOM, now fire.
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(StopNote.haxProperties, StopNote.tag, this);
   }
 }
 window.customElements.define(StopNote.tag, StopNote);

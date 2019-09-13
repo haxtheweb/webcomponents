@@ -120,6 +120,7 @@ app-drawer {
   margin: 8px;
   @apply --simple-drawer-heading;
 }</style>
+<style include="simple-colors-shared-styles"></style>
 <app-drawer tabindex="0" id="drawer" opened="{{opened}}" align="[[align]]" role="dialog">
   <div class="wrapper">
     <div class="top">

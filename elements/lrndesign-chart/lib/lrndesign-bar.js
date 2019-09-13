@@ -4,8 +4,6 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { LrndesignChartBehaviors } from "./lrndesign-chart-behaviors.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 
 /**
  * `lrndesign-bar`
@@ -468,17 +466,6 @@ class LrndesignBar extends LrndesignChartBehaviors {
         ]
       }
     };
-  }
-
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(LrndesignBar.haxProperties, LrndesignBar.tag, this);
-    });
   }
 
   /**

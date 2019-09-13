@@ -3,9 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 /**
 `lrndesign-panelcard`
 A LRN element
@@ -16,14 +14,6 @@ class LrndesignPanelcard extends SimpleColors {
   constructor() {
     super();
     import("@polymer/paper-card/paper-card.js");
-    afterNextRender(this, function() {
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(
-        LrndesignPanelcard.haxProperties,
-        LrndesignPanelcard.tag,
-        this
-      );
-    });
   }
   static get template() {
     return html`

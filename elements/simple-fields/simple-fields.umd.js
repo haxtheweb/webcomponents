@@ -1,2 +1,192 @@
-!function(e,n){"object"==typeof exports&&"undefined"!=typeof module?n(exports,require("@polymer/polymer/polymer-element.js"),require("@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"),require("@polymer/polymer/lib/mixins/mutable-data.js"),require("@polymer/paper-toggle-button/paper-toggle-button.js"),require("@polymer/paper-button/paper-button.js"),require("@polymer/paper-input/paper-textarea.js"),require("@polymer/iron-icons/iron-icons.js"),require("@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js"),require("@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js"),require("@lrnwebcomponents/code-editor/code-editor.js"),require("@lrnwebcomponents/simple-picker/simple-picker.js"),require("@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js"),require("@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js"),require("@lrnwebcomponents/paper-input-flagged/paper-input-flagged.js"),require("@lrnwebcomponents/simple-colors/simple-colors.js")):"function"==typeof define&&define.amd?define(["exports","@polymer/polymer/polymer-element.js","@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js","@polymer/polymer/lib/mixins/mutable-data.js","@polymer/paper-toggle-button/paper-toggle-button.js","@polymer/paper-button/paper-button.js","@polymer/paper-input/paper-textarea.js","@polymer/iron-icons/iron-icons.js","@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js","@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js","@lrnwebcomponents/code-editor/code-editor.js","@lrnwebcomponents/simple-picker/simple-picker.js","@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js","@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js","@lrnwebcomponents/paper-input-flagged/paper-input-flagged.js","@lrnwebcomponents/simple-colors/simple-colors.js"],n):n((e=e||self).SimpleFields={},e.polymerElement_js,e.HAXWiring_js,e.mutableData_js)}(this,function(e,n,o,t){"use strict";function r(e,n){for(var o=0;o<n.length;o++){var t=n[o];t.enumerable=t.enumerable||!1,t.configurable=!0,"value"in t&&(t.writable=!0),Object.defineProperty(e,t.key,t)}}function i(e){return(i=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function s(e,n){return(s=Object.setPrototypeOf||function(e,n){return e.__proto__=n,e})(e,n)}function l(e,n){return!n||"object"!=typeof n&&"function"!=typeof n?function(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}(e):n}function c(e,n,o){return(c="undefined"!=typeof Reflect&&Reflect.get?Reflect.get:function(e,n,o){var t=function(e,n){for(;!Object.prototype.hasOwnProperty.call(e,n)&&null!==(e=i(e)););return e}(e,n);if(t){var r=Object.getOwnPropertyDescriptor(t,n);return r.get?r.get.call(o):r.value}})(e,n,o||e)}function a(){var e,n,o=(e=['\n<style>:host {\n  display: block;\n  background-color: #ffffff;\n  overflow: hidden;\n}\n\n:host([hidden]) {\n  display: none;\n}\n\neco-json-schema-object {\n  width: 50%;\n}\neco-json-schema-object {\n  color: var(--hax-text-color);\n  --eco-json-form-color: var(--hax-text-color);\n  --eco-json-schema-object-form : {\n    -ms-flex: unset;\n    -webkit-flex: unset;\n    flex: unset;\n    -webkit-flex-basis: unset;\n    flex-basis: unset;\n  }\n}\neco-json-schema-object .hax-code-editor {\n  padding: 0;\n}</style>\n<eco-json-schema-object\n  id="schemaobject"\n  autofocus$="[[autofocus]]"\n  hide-line-numbers$="[[hideLineNumbers]]"\n  on-form-changed="_formChanged"\n  schema="[[__validatedSchema]]"\n  value="{{value}}"\n></eco-json-schema-object>'],n||(n=e.slice(0)),Object.freeze(Object.defineProperties(e,{raw:{value:Object.freeze(n)}})));return a=function(){return o},o}var p=function(e){function p(){return function(e,n){if(!(e instanceof n))throw new TypeError("Cannot call a class as a function")}(this,p),l(this,i(p).apply(this,arguments))}var u,m,f;return function(e,n){if("function"!=typeof n&&null!==n)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(n&&n.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),n&&s(e,n)}(p,t.MutableData(n.PolymerElement)),u=p,f=[{key:"template",get:function(){return n.html(a())}},{key:"haxProperties",get:function(){}},{key:"properties",get:function(){var e={autofocus:{type:Boolean,value:!1},hideLineNumbers:{type:Boolean,value:!1},fields:{type:Array,value:[],observer:"_fieldsChanged"},value:{type:Object,notify:!0,value:{},observer:"_valueChanged"},__validatedSchema:{type:Array,value:{properties:{}}}};return c(i(p),"properties",this)&&(e=Object.assign(e,c(i(p),"properties",this))),e}},{key:"tag",get:function(){return"simple-fields"}}],(m=[{key:"connectedCallback",value:function(){c(i(p.prototype),"connectedCallback",this).call(this),this.HAXWiring=new o.HAXWiring,this.HAXWiring.setup(p.haxProperties,p.tag,this)}},{key:"_formChanged",value:function(e){this.dispatchEvent(new CustomEvent("fields-changed",{bubbles:!0,cancelable:!0,composed:!0,detail:e.detail}))}},{key:"_valueChanged",value:function(e,n){JSON.stringify(e)!==JSON.stringify(n)&&this._setValues()}},{key:"_fieldsChanged",value:function(e,n){JSON.stringify(e)!==JSON.stringify(n)&&this._setValues()}},{key:"_setValues",value:function(){var e=window.HAXWiring,n=e._getHaxJSONSchemaProperty(this.fields,e);for(var o in this.value)n[o]&&(n[o].value=this.value[o]);this.__validatedSchema=null,this.__validatedSchema={properties:n}}}])&&r(u.prototype,m),f&&r(u,f),p}();window.customElements.define(p.tag,p),e.SimpleFields=p,Object.defineProperty(e,"__esModule",{value:!0})});
-//# sourceMappingURL=simple-fields.umd.js.map
+/**
+ * Copyright 2019 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { MutableData } from "@polymer/polymer/lib/mixins/mutable-data.js";
+import { varExists, varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
+import "@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";
+import "@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
+/**
+ * `simple-fields`
+ * `Uses eco-json-form and HAX wiring to display a series of fields`
+ *
+ * @microcopy - language worth noting:
+ *  -
+ *
+ * @customElement
+ * @polymer
+ * @demo demo/index.html
+ */
+class SimpleFields extends MutableData(PolymerElement) {
+  
+  // render function
+  static get template() {
+    return html`
+<style>:host {
+  display: block;
+  background-color: #ffffff;
+  overflow: visible;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+eco-json-schema-object {
+  width: 50%;
+}
+eco-json-schema-object {
+  color: var(--hax-text-color);
+  --eco-json-form-color: var(--hax-text-color);
+  --eco-json-schema-object-form : {
+    -ms-flex: unset;
+    -webkit-flex: unset;
+    flex: unset;
+    -webkit-flex-basis: unset;
+    flex-basis: unset;
+  }
+}
+eco-json-schema-object .hax-code-editor {
+  padding: 0;
+}</style>
+<style include="simple-colors-shared-styles"></style>
+<eco-json-schema-object
+  id="schemaobject"
+  autofocus$="[[autofocus]]"
+  hide-line-numbers$="[[hideLineNumbers]]"
+  on-form-changed="_formFieldsChanged"
+  schema="[[__validatedSchema]]"
+  value="{{value}}"
+></eco-json-schema-object>`;
+  }
+
+  // haxProperty definition
+  static get haxProperties() {
+    return ;
+  }
+  // properties available to the custom element for data binding
+    static get properties() {
+    let props = {
+  /**
+   * automatically set focus on the first field if that field has autofocus
+   */
+  "autofocus": {
+    "type": Boolean,
+    "value": false
+  },
+  /**
+   * hide code-editor line numbers
+   */
+  "hideLineNumbers": {
+    "type": Boolean,
+    "value": false
+  },
+  /**
+   * Fields to convert toJSON Schema.
+   */
+  "fields": {
+    "type": Array,
+    "value": [],
+    "observer": "_formFieldsChanged"
+  },
+  /**
+   * Returned value from the form input.
+   */
+  "value": {
+    "type": Object,
+    "notify": true,
+    "value": {},
+    "observer": "_valueChanged"
+  },
+  /**
+   * Fields to convert to JSON Schema.
+   */
+  "__validatedSchema": {
+    "type": Array,
+    "notify": true,
+    "value": {
+      "properties": {}
+    }
+  }
+}
+;
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
+  }
+
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   * @notice function name must be here for tooling to operate correctly
+   */
+  static get tag() {
+    return "simple-fields";
+  }
+  /**
+   * life cycle, element is afixed to the DOM
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    import("./lib/simple-fields-imports.js");
+  }
+  /**
+   * when form changes, sets focus on the first field if this has auto-focus
+   */
+  _formFieldsChanged(e) {
+    this.dispatchEvent(
+      new CustomEvent("fields-changed", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: e ? e.detail : this
+      })
+    );
+  }
+  /**
+   * fires when either the eco-json-schema-object or the simple-fields object changes the value
+   * @param {object} oldValue the old value
+   * @param {object} newValue the new value
+   */
+  _valueChanged(newValue, oldValue) {
+    if (JSON.stringify(oldValue) !== JSON.stringify(newValue)) {
+      this._setValues();
+      this.dispatchEvent(
+        new CustomEvent("value-changed", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this
+        })
+      );
+    }
+  }
+
+  /**
+   * fires when the fields array changes
+   * @param {object} oldValue the old value
+   * @param {object} newValue the new value
+   */
+  _fieldsChanged(newValue, oldValue) {
+    //prevent a potential feedback loop
+    if (JSON.stringify(oldValue) !== JSON.stringify(newValue)) {
+      this._setValues();
+    }
+  }
+  /**
+   * when either the fields or the value changes, updates the schema and form to match
+   */
+  _setValues() {
+    let wiring = window.HAXWiring,
+      schema = wiring._getHaxJSONSchemaProperty(this.fields, wiring);
+    for (let prop in this.value) {
+      if (schema[prop]) schema[prop].value = this.value[prop];
+    }
+    this.set("__validatedSchema", { properties: schema });
+    this.notifyPath("__validatedSchema.properties.*");
+  }
+}
+window.customElements.define(SimpleFields.tag, SimpleFields);
+export { SimpleFields };
