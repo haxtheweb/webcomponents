@@ -209,19 +209,22 @@ class SelfCheck extends SchemaBehaviors(A11yBehaviors(SimpleColors)) {
               </paper-tooltip>
             </div>
           </div>
-
           <div id="answer_wrap" aria-hidden$="[[!correct]]" aria-live="polite">
             <div class="answer">
               <user-action track="visibility">
                 <slot></slot>
               </user-action>
-              <div class="more_info" hidden$="[[!link]]">
-                <user-action track="click" every
-                  ><a href$="[[link]]" target="_blank"
-                    >More info...</a
-                  ></user-action
-                >
-              </div>
+              <dom-if if="[[link]]">
+                <template>
+                  <div class="more_info" hidden$="[[!link]]">
+                    <user-action track="click" every
+                      ><a href$="[[link]]" target="_blank"
+                        >More info...</a
+                      ></user-action
+                    >
+                  </div>
+                </template>
+              </dom-if>
               <div class="close_button">
                 <paper-icon-button
                   aria-label="Close"
