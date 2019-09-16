@@ -15,6 +15,7 @@ class Store {
     this.editMode = false;
     this.manifest = null;
     this.activeItemContent = "";
+    this.themeElement = null;
     this.activeId = null;
     this.cmsSiteEditor = {
       instance: null
@@ -24,31 +25,13 @@ class Store {
     };
     this.dashboardOpened = false;
   }
-  cmsSiteEditorAvailability(element = this, location = document.body) {
-    if (!store.cmsSiteEditor.instance) {
-      store.cmsSiteEditor.instance = document.createElement(
-        store.cmsSiteEditor.tag
+  cmsSiteEditorAvailability() {
+    if (!this.cmsSiteEditor.instance) {
+      this.cmsSiteEditor.instance = document.createElement(
+        "haxcms-site-editor"
       );
-      store.cmsSiteEditor.instance.appElement = element;
-      store.cmsSiteEditor.instance.appendTarget = location;
-      // self append the reference to.. well.. us.
-      document.body.appendChild(store.cmsSiteEditor.instance);
-    } else {
-      if (element) {
-        // already exists, just alter some references
-        store.cmsSiteEditor.instance.appElement = element;
-        store.cmsSiteEditor.instance.appendTarget = location;
-        if (
-          typeof store.cmsSiteEditor.instance.haxCmsSiteEditorElement !==
-          typeof undefined
-        ) {
-          store.cmsSiteEditor.instance.appendTarget.appendChild(
-            store.cmsSiteEditor.instance.haxCmsSiteEditorElement
-          );
-        }
-      }
     }
-    return store.cmsSiteEditor.instance;
+    return this.cmsSiteEditor.instance;
   }
 
   get processedItems() {}
@@ -358,6 +341,13 @@ class Store {
     }
     return "";
   }
+  get isLoggedIn() {
+    console.log(this.jwt);
+    if (this.jwt) {
+      return true;
+    }
+    return false;
+  }
   /**
    * shortcut for active page ancestor title
    */
@@ -507,8 +497,10 @@ decorate(Store, {
   dashboardOpened: observable, // if haxcms backend settings are open
   manifest: observable, // JOS / manifest
   activeItemContent: observable, // active site content, cleaned up
+  themeElement: observable, // theme element
   routerManifest: computed, // router mixed in manifest w/ routes / paths
   siteTitle: computed,
+  isLoggedIn: computed, // simple boolean for state so we can style based on logged in
   themeData: computed, // get the active theme from manifest + activeId
   homeLink: computed,
   activeId: observable, // this affects all state changes associated to activeItem

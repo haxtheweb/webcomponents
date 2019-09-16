@@ -251,6 +251,12 @@ class HAXCMSSiteEditor extends PolymerElement {
       revertSitePath: {
         type: String
       },
+      appendTarget: {
+        type: Object
+      },
+      appElement: {
+        type: Object
+      },
       /**
        * end point for sync
        */
@@ -515,6 +521,10 @@ class HAXCMSSiteEditor extends PolymerElement {
    * Detatched life cycle
    */
   disconnectedCallback() {
+    if (this.siteDashboard) {
+      this.siteDashboard.remove();
+      delete this.siteDashboard;
+    }
     for (var i in this.__disposer) {
       this.__disposer[i].dispose();
     }

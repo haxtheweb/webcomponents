@@ -26,6 +26,7 @@ class HAXCMSBackendDemo extends PolymerElement {
   static get template() {
     return html`
       <jwt-login
+        auto
         id="jwt"
         url="[[jwtLoginLocation]]"
         url-logout="[[jwtLogoutLocation]]"
@@ -40,20 +41,29 @@ class HAXCMSBackendDemo extends PolymerElement {
        */
       jwtLoginLocation: {
         type: String,
-        value: window.appSettings.login
+        value: function() {
+          if (window.appSettings) {
+            return window.appSettings.login;
+          }
+        }
       },
       /**
        * Location of what endpoint to hit for logging out
        */
       jwtLogoutLocation: {
         type: String,
-        value: window.appSettings.logout
+        value: function() {
+          if (window.appSettings) {
+            return window.appSettings.logout;
+          }
+        }
       },
       /**
        * JSON Web token, it'll come from a global call if it's available
        */
       jwt: {
-        type: String
+        type: String,
+        observer: "_jwtChanged"
       }
     };
   }
@@ -66,6 +76,9 @@ class HAXCMSBackendDemo extends PolymerElement {
     // this makes it easier to debug things and directly modify the store for
     // development purposes
     window.HAXcmsStore = store;
+  }
+  _jwtChanged(newValue) {
+    console.log(newValue);
   }
   /**
    * detached life cycle
@@ -92,38 +105,31 @@ class HAXCMSBackendDemo extends PolymerElement {
     try {
       import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor.js").then(
         e => {
-          let haxCmsSiteEditorElement = document.createElement(
-            "haxcms-site-editor"
-          );
-          haxCmsSiteEditorElement.jwt = this.jwt;
-          haxCmsSiteEditorElement.method = "GET";
-          haxCmsSiteEditorElement.saveNodePath =
-            window.appSettings.saveNodePath;
-          haxCmsSiteEditorElement.saveManifestPath =
-            window.appSettings.saveManifestPath;
-          haxCmsSiteEditorElement.saveOutlinePath =
-            window.appSettings.saveOutlinePath;
-          haxCmsSiteEditorElement.getNodeFieldsPath =
-            window.appSettings.getNodeFieldsPath;
-          haxCmsSiteEditorElement.getSiteFieldsPath =
-            window.appSettings.getSiteFieldsPath;
-          haxCmsSiteEditorElement.createNodePath =
-            window.appSettings.createNodePath;
-          haxCmsSiteEditorElement.deleteNodePath =
-            window.appSettings.deleteNodePath;
-          haxCmsSiteEditorElement.publishSitePath =
-            window.appSettings.publishSitePath;
-          haxCmsSiteEditorElement.syncSitePath =
-            window.appSettings.syncSitePath;
-          haxCmsSiteEditorElement.revertSitePath =
-            window.appSettings.revertSitePath;
-          haxCmsSiteEditorElement.appStore = window.appSettings.appStore;
           // validate availability
           store.cmsSiteEditorAvailability();
-          if (!store.cmsSiteEditor.instance.haxCmsSiteEditorElement) {
-            store.cmsSiteEditor.instance.haxCmsSiteEditorElement = haxCmsSiteEditorElement;
-            document.body.appendChild(haxCmsSiteEditorElement);
-          }
+          store.cmsSiteEditor.instance.jwt = this.jwt;
+          store.cmsSiteEditor.instance.method = "GET";
+          store.cmsSiteEditor.instance.saveNodePath =
+            window.appSettings.saveNodePath;
+          store.cmsSiteEditor.instance.saveManifestPath =
+            window.appSettings.saveManifestPath;
+          store.cmsSiteEditor.instance.saveOutlinePath =
+            window.appSettings.saveOutlinePath;
+          store.cmsSiteEditor.instance.getNodeFieldsPath =
+            window.appSettings.getNodeFieldsPath;
+          store.cmsSiteEditor.instance.getSiteFieldsPath =
+            window.appSettings.getSiteFieldsPath;
+          store.cmsSiteEditor.instance.createNodePath =
+            window.appSettings.createNodePath;
+          store.cmsSiteEditor.instance.deleteNodePath =
+            window.appSettings.deleteNodePath;
+          store.cmsSiteEditor.instance.publishSitePath =
+            window.appSettings.publishSitePath;
+          store.cmsSiteEditor.instance.syncSitePath =
+            window.appSettings.syncSitePath;
+          store.cmsSiteEditor.instance.revertSitePath =
+            window.appSettings.revertSitePath;
+          store.cmsSiteEditor.instance.appStore = window.appSettings.appStore;
         },
         e => {
           //import failed

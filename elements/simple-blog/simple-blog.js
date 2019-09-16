@@ -150,11 +150,9 @@ class SimpleBlog extends HAXCMSTheme(PolymerElement) {
    */
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, () => {
-      this.contentContainer = this.shadowRoot.querySelector(
-        "simple-blog-post"
-      ).$.contentcontainer;
-    });
+    this.contentContainer = this.shadowRoot.querySelector(
+      "simple-blog-post"
+    ).$.contentcontainer;
   }
   /**
    * detatched life cycle

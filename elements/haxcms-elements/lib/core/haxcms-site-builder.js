@@ -150,12 +150,6 @@ class HAXCMSSiteBuilder extends PolymerElement {
         observer: "_themeChanged"
       },
       /**
-       * Theme dom element
-       */
-      themeElement: {
-        type: Object
-      },
-      /**
        * Theme name, which we then use to setup the theme
        */
       themeName: {
@@ -210,16 +204,16 @@ class HAXCMSSiteBuilder extends PolymerElement {
   }
   _themeNameChanged(newValue) {
     if (newValue) {
-      this.themeElement = document.createElement(newValue);
+      store.themeElement = document.createElement(newValue);
       wipeSlot(this, "*");
-      dom(this).appendChild(this.themeElement);
+      dom(this).appendChild(store.themeElement);
     } else if (newValue && oldValue) {
       // theme changed
-      this.themeElement.remove();
+      store.themeElement.remove();
       // wipe out what we got
       wipeSlot(this, "*");
-      this.themeElement = document.createElement(newValue);
-      dom(this).appendChild(this.themeElement);
+      store.themeElement = document.createElement(newValue);
+      dom(this).appendChild(store.themeElement);
     }
   }
   _lastErrorChanged(newValue) {
@@ -365,16 +359,16 @@ class HAXCMSSiteBuilder extends PolymerElement {
       var html = newValue;
       // only append if not empty
       if (html !== null) {
-        wipeSlot(this.themeElement, "*");
+        wipeSlot(store.themeElement, "*");
         html = encapScript(newValue);
         // set in the store
         store.activeItemContent = html;
         // insert the content as quickly as possible, then work on the dynamic imports
         // @todo this might be why we get a double render some times
         setTimeout(() => {
-          if (dom(this.themeElement).getEffectiveChildNodes().length === 0) {
+          if (dom(store.themeElement).getEffectiveChildNodes().length === 0) {
             let frag = document.createRange().createContextualFragment(html);
-            dom(this.themeElement).appendChild(frag);
+            dom(store.themeElement).appendChild(frag);
             this.dispatchEvent(
               new CustomEvent("json-outline-schema-active-body-changed", {
                 bubbles: true,
@@ -548,18 +542,6 @@ class HAXCMSSiteBuilder extends PolymerElement {
    * notice theme changes and ensure slot is rebuilt.
    */
   _themeChanged(newValue, oldValue) {
-    if (newValue && oldValue) {
-      if (
-        store.cmsSiteEditor &&
-        store.cmsSiteEditor.instance &&
-        typeof store.cmsSiteEditor.instance.haxCmsSiteEditorElement !==
-          typeof undefined
-      ) {
-        store.cmsSiteEditor.instance.appendChild(
-          store.cmsSiteEditor.instance.haxCmsSiteEditorElement
-        );
-      }
-    }
     if (newValue) {
       this.themeLoaded = false;
       let theme = newValue;

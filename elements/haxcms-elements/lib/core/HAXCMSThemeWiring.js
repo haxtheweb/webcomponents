@@ -74,6 +74,15 @@ export const HAXCMSTheme = function(SuperClass) {
           observer: "_editModeChanged"
         },
         /**
+         * editting state for the page
+         */
+        isLoggedIn: {
+          type: Boolean,
+          reflectToAttribute: true,
+          notify: true,
+          value: false
+        },
+        /**
          * DOM node that wraps the slot
          */
         contentContainer: {
@@ -186,6 +195,11 @@ export const HAXCMSTheme = function(SuperClass) {
           this.editMode = toJS(store.editMode);
           this.__disposer.push(reaction);
         });
+        // logged in so we can visualize things differently as needed
+        autorun(reaction => {
+          this.isLoggedIn = toJS(store.isLoggedIn);
+          this.__disposer.push(reaction);
+        });
         // store disposer so we can clean up later
         autorun(reaction => {
           const __manifest = toJS(store.manifest);
@@ -296,8 +310,14 @@ class HAXCMSThemeWiring {
       "haxcms-trigger-update",
       this._triggerUpdate.bind(element)
     );
-    // this implies there's the possibility of an authoring experience
-    store.cmsSiteEditorAvailability(element, injector);
+    // inject the tools to allow for an authoring experience
+    // ensuring they are loaded into the correct theme
+    store.cmsSiteEditorAvailability();
+    store.cmsSiteEditor.instance.appElement = element;
+    store.cmsSiteEditor.instance.appendTarget = injector;
+    store.cmsSiteEditor.instance.appendTarget.appendChild(
+      store.cmsSiteEditor.instance
+    );
   }
   /**
    * detatch element events from whats passed in
@@ -315,6 +335,8 @@ class HAXCMSThemeWiring {
       "haxcms-trigger-update",
       this._triggerUpdate.bind(element)
     );
+    // need to unplug this so that the new theme can pick it up.
+    document.body.appendChild(store.cmsSiteEditorAvailability());
   }
   /**
    * Global edit state changed

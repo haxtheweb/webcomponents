@@ -92,7 +92,6 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
           --site-active-title-heading: {
             font-family: var(--__learn-two-theme-default-font-family);
             font-size: 52px;
-            letter-spacing: -3px;
             line-height: 78px;
             margin-bottom: 27.2px;
             margin-top: 13.6px;
@@ -114,8 +113,6 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
             font-size: 28px;
             margin: 0;
             padding: 0;
-            letter-spacing: -3px;
-            line-height: 78px;
             text-align: center;
             text-rendering: optimizelegibility;
             font-weight: 100;
@@ -184,6 +181,11 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
         :host([edit-mode]) app-drawer {
           opacity: 0.2;
           pointer-events: none;
+        }
+
+        :host([is-logged-in]) app-drawer,
+        :host([is-logged-in]) app-drawer-layout[narrow] {
+          left: 48px;
         }
 
         app-drawer {
