@@ -63,6 +63,9 @@ class HAXCMSBackendDemo extends PolymerElement {
   constructor() {
     super();
     document.body.addEventListener("jwt-token", this._jwtTokenFired.bind(this));
+    // this makes it easier to debug things and directly modify the store for
+    // development purposes
+    window.HAXcmsStore = store;
   }
   /**
    * detached life cycle

@@ -79,7 +79,6 @@ export const HAXCMSTheme = function(SuperClass) {
         contentContainer: {
           type: Object,
           notify: true,
-          value: null,
           observer: "_contentContainerChanged"
         },
         /**
@@ -132,21 +131,19 @@ export const HAXCMSTheme = function(SuperClass) {
      */
     _contentContainerChanged(newValue, oldValue) {
       // test that this hasn't been connected previously
-      setTimeout(() => {
-        if (newValue && oldValue == null) {
-          this.HAXCMSThemeWiring.connect(this, newValue);
-        }
-        // previously connected, needs to change to new connection
-        // this is an edge case at best...
-        else if (newValue && oldValue) {
-          this.HAXCMSThemeWiring.disconnect(this);
-          this.HAXCMSThemeWiring.connect(this, newValue);
-        }
-        // no longer connected
-        else if (oldValue && newValue == null) {
-          this.HAXCMSThemeWiring.disconnect(this);
-        }
-      }, 500);
+      if (newValue && typeof oldValue === typeof undefined) {
+        this.HAXCMSThemeWiring.connect(this, newValue);
+      }
+      // previously connected, needs to change to new connection
+      // this is an edge case at best...
+      else if (newValue && oldValue) {
+        this.HAXCMSThemeWiring.disconnect(this);
+        this.HAXCMSThemeWiring.connect(this, newValue);
+      }
+      // no longer connected
+      else if (oldValue && newValue == null) {
+        this.HAXCMSThemeWiring.disconnect(this);
+      }
     }
     _locationChanged(newValue, oldValue) {
       if (!newValue || typeof newValue.route === "undefined") return;
@@ -168,12 +165,6 @@ export const HAXCMSTheme = function(SuperClass) {
      */
     connectedCallback() {
       super.connectedCallback();
-      // we don't have a content container, establish one
-      if (this.contentContainer === null) {
-        this.contentContainer = this.shadowRoot.querySelector(
-          "#contentcontainer"
-        );
-      }
       afterNextRender(this, function() {
         // edge case, we just swapped theme faster then content loaded... lol
         setTimeout(() => {
@@ -183,8 +174,13 @@ export const HAXCMSTheme = function(SuperClass) {
               .createContextualFragment(store.activeItemContent);
             dom(this).appendChild(frag);
           }
+          microTask.run(() => {
+            // trick browser into thinking we just reized
+            window.dispatchEvent(new Event("resize"));
+            // forcibly update styles via css variables
+            updateStyles();
+          });
         }, 50);
-        updateStyles();
         // keep editMode in sync globally
         autorun(reaction => {
           this.editMode = toJS(store.editMode);
@@ -232,6 +228,12 @@ export const HAXCMSTheme = function(SuperClass) {
           this._location = store.location;
           this.__disposer.push(reaction);
         });
+        // we don't have a content container, establish one
+        if (typeof this.contentContainer === typeof undefined) {
+          this.contentContainer = this.shadowRoot.querySelector(
+            "#contentcontainer"
+          );
+        }
       });
     }
     /**
@@ -272,18 +274,6 @@ export const HAXCMSTheme = function(SuperClass) {
 class HAXCMSThemeWiring {
   constructor(element, load = true) {
     if (load) {
-      window.addEventListener(
-        "haxcms-edit-mode-changed",
-        this._globalEditChanged.bind(element)
-      );
-      window.addEventListener(
-        "haxcms-active-item-changed",
-        this._activeItemUpdate.bind(element)
-      );
-      window.addEventListener(
-        "haxcms-trigger-update",
-        this._triggerUpdate.bind(element)
-      );
       // @todo may want to set this to sessionStorage instead...
       if (window.localStorage.getItem("HAXCMSSystemData") == null) {
         window.localStorage.setItem("HAXCMSSystemData", JSON.stringify({}));
@@ -294,6 +284,18 @@ class HAXCMSThemeWiring {
    * connect the theme and see if we have an authoring experience to inject correctly
    */
   connect(element, injector) {
+    window.addEventListener(
+      "haxcms-active-item-changed",
+      this._activeItemUpdate.bind(element)
+    );
+    window.addEventListener(
+      "haxcms-edit-mode-changed",
+      this._globalEditChanged.bind(element)
+    );
+    window.addEventListener(
+      "haxcms-trigger-update",
+      this._triggerUpdate.bind(element)
+    );
     // this implies there's the possibility of an authoring experience
     store.cmsSiteEditorAvailability(element, injector);
   }
