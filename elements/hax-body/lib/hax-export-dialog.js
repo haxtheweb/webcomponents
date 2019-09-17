@@ -26,11 +26,11 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(LitElement) {
           font-weight: 600;
           text-align: left;
           margin: 0;
-          background-color: var(--hax-color-menu-heading-bg);
           font-size: 18px;
           line-height: 18px;
           font-family: "Noto Serif", serif;
-          color: var(--hax-color-text);
+          background-color: var(--hax-color-menu-heading-bg, #eeeeee);
+          color: var(--hax-color-menu-heading-color, black);
         }
         .pref-container {
           text-align: left;
@@ -41,10 +41,10 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(LitElement) {
           outline: 1px solid var(--hax-color-border-outline);
         }
         .buttons paper-button {
-          color: var(--hax-color-text);
           text-transform: none;
           margin: 0;
-          background-color: var(--hax-color-bg-accent);
+          background-color: var(--hax-color-menu-heading-bg, #eeeeee);
+          color: var(--hax-color-menu-heading-color, black);
           display: inline-flex;
           border-radius: 0px;
           border-style: solid;
@@ -60,8 +60,8 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(LitElement) {
           position: absolute;
           padding: 4px;
           margin: 0;
-          color: var(--hax-color-text);
-          background-color: transparent;
+          background-color: var(--hax-color-menu-heading-bg, #eeeeee);
+          color: var(--hax-color-menu-heading-color, black);
           width: 40px;
           height: 40px;
           min-width: unset;
@@ -82,12 +82,12 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(LitElement) {
           min-width: 70vw;
           min-height: 60vh;
           background-color: #ffffff;
-          color: var(--hax-color-text);
+          color: black;
         }
         #import {
           margin-right: 50px;
-          color: var(--hax-color-accent1-text);
-          background-color: var(--hax-color-accent1);
+          background-color: var(--hax-color-menu-heading-bg, #eeeeee);
+          color: var(--hax-color-menu-heading-color, black);
         }
         #loading {
           position: absolute;

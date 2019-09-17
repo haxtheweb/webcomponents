@@ -48,7 +48,8 @@ class HaxAppPicker extends PolymerElement {
           position: absolute;
           padding: 8px;
           margin: 0;
-          color: var(--hax-color-text);
+          background-color: var(--hax-color-menu-heading-bg, #eeeeee);
+          color: var(--hax-color-menu-heading-color, black);
           background-color: transparent;
           width: 40px;
           height: 40px;
@@ -84,15 +85,15 @@ class HaxAppPicker extends PolymerElement {
         }
         #title,
         .element-button > div {
-          color: var(--hax-color-text);
+          color: var(--hax-color-menu-heading-color, black);
         }
         #title {
           padding: 16px;
           border-bottom: 2px solid var(--hax-color-border-outline);
           margin: 0;
           width: calc(100% - 32px);
-          background-color: var(--hax-color-menu-heading-bg);
-          color: var(--hax-color-text);
+          background-color: var(--hax-color-menu-heading-bg, #eeeeee);
+          color: var(--hax-color-menu-heading-color, black);
           @apply --paper-font-title;
           @apply --hax-app-picker-dialog-title;
         }

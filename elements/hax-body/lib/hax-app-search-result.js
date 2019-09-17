@@ -15,7 +15,7 @@ class HaxAppSearchResult extends LitElement {
       css`
         :host {
           display: inline-flex;
-          width: 50%;
+          width: 45%;
           background-color: var(--hax-color-bg-accent);
           color: var(--hax-color-text);
         }

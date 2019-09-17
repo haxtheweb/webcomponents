@@ -77,8 +77,8 @@ class HaxSchemaForm extends PolymerElement {
         #modetabs paper-tab paper-button {
           min-width: unset;
           width: 100%;
-          background-color: var(--hax-color-accent1);
-          color: var(--hax-color-accent1-text);
+          background-color: var(--hax-color-menu-heading-bg, #eeeeee);
+          color: var(--hax-color-menu-heading-color, black);
         }
         eco-json-schema-object {
           color: var(--hax-text-color);

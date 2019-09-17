@@ -30,7 +30,6 @@ class HaxTextContext extends PolymerElement {
         :host {
           display: block;
           pointer-events: none;
-          background-color: white;
         }
         :host [hidden] {
           display: none;

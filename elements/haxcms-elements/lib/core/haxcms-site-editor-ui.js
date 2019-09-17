@@ -39,14 +39,10 @@ class HAXCMSSiteEditorUI extends PolymerElement {
           top: 0;
           bottom: 0;
           padding-top: 56px;
-          opacity: 0.8;
-          transition: 0.8s left linear, 0.3s opacity ease-in-out,
-            0.3s visibility ease-in-out;
+          transition: 0.8s left linear;
           background-color: #37474f;
           z-index: 10000;
           border-right: 2px solid black;
-          border-top: 2px solid black;
-          border-bottom: 2px solid black;
           visibility: visible;
         }
         :host([edit-mode]) {
@@ -79,7 +75,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
           height: 48px;
           line-height: 20px;
           background-color: black;
-          color: var(--haxcms-color, rgba(255, 0, 116, 1));
+          color: #ffffff;
           transition: 0.3s all ease-in-out;
           padding: 12px;
           margin: 0;
@@ -99,7 +95,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
           border-radius: 50%;
           margin: 0px;
           background-color: black;
-          color: var(--haxcms-color, rgba(255, 0, 116, 1));
+          color: #ffffff;
           transition: 0.3s all ease-in-out;
           @apply --shadow-elevation-8dp;
         }
@@ -143,6 +139,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
           opacity: 1;
         }
         paper-tooltip {
+          width: 100px;
           --paper-tooltip-background: #000000;
           --paper-tooltip-opacity: 1;
           --paper-tooltip-text-color: #ffffff;
@@ -202,16 +199,16 @@ class HAXCMSSiteEditorUI extends PolymerElement {
         >[[__editText]]</paper-tooltip
       >
       <paper-tooltip for="editdetails" position="right" offset="14"
-        >Details</paper-tooltip
+        >Page details</paper-tooltip
       >
       <paper-tooltip for="deletebutton" position="right" offset="14"
-        >Delete</paper-tooltip
+        >Delete page</paper-tooltip
       >
       <paper-tooltip for="addbutton" position="right" offset="14"
-        >Add</paper-tooltip
+        >Add page</paper-tooltip
       >
       <paper-tooltip for="outlinebutton" position="right" offset="14"
-        >Outline</paper-tooltip
+        >Site outline</paper-tooltip
       >
       <paper-tooltip for="manifestbutton" position="right" offset="14"
         >[[__settingsText]]</paper-tooltip
@@ -276,6 +273,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
     super.connectedCallback();
     afterNextRender(this, function() {
       import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-outline-editor-dialog.js");
+      import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-dashboard.js");
       // this ensures that an initial paint won't get a cached copy of the site.json file
       // this is more than possible given that it will register to most backends
       // as a static file rather than dynamic end point as it is in this instance (sorta)
@@ -326,7 +324,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
     if (newValue) {
       this.__settingsText = "Close";
       this.icon = "icons:cancel";
-    } else if (!newValue && oldValue) {
+    } else if (!newValue) {
       this.__settingsText = "Site settings";
       this.icon = varGet(
         this.manifest,
@@ -351,6 +349,13 @@ class HAXCMSSiteEditorUI extends PolymerElement {
         })
       );
     }
+    window.dispatchEvent(
+      new CustomEvent("simple-modal-hide", {
+        bubbles: true,
+        cancelable: true,
+        detail: {}
+      })
+    );
   }
   _editDetailsButtonTap(e) {
     var normalizedEvent = dom(e);
@@ -370,6 +375,13 @@ class HAXCMSSiteEditorUI extends PolymerElement {
         composed: true,
         cancelable: false,
         detail: e.detail
+      })
+    );
+    window.dispatchEvent(
+      new CustomEvent("simple-modal-hide", {
+        bubbles: true,
+        cancelable: true,
+        detail: {}
       })
     );
   }
@@ -538,7 +550,14 @@ class HAXCMSSiteEditorUI extends PolymerElement {
    */
   _manifestButtonTap(e) {
     window.dispatchEvent(
-      new CustomEvent("haxcms-load-site-fields", {
+      new CustomEvent("simple-modal-hide", {
+        bubbles: true,
+        cancelable: true,
+        detail: {}
+      })
+    );
+    window.dispatchEvent(
+      new CustomEvent("haxcms-load-site-dashboard", {
         bubbles: true,
         composed: true,
         cancelable: false,
@@ -553,11 +572,11 @@ class HAXCMSSiteEditorUI extends PolymerElement {
     if (newValue) {
       // enable it some how
       this.__editIcon = "icons:save";
-      this.__editText = "Save";
+      this.__editText = "Save page";
     } else {
       // disable it some how
       this.__editIcon = "editor:mode-edit";
-      this.__editText = "Edit";
+      this.__editText = "Edit page";
     }
     if (typeof oldValue !== typeof undefined) {
       store.editMode = newValue;

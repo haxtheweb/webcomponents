@@ -52,7 +52,8 @@ class HaxBloxPicker extends LitElement {
           position: absolute;
           padding: 8px;
           margin: 0;
-          color: var(--hax-color-text);
+          background-color: var(--hax-color-menu-heading-bg, #eeeeee);
+          color: var(--hax-color-menu-heading-color, black);
           background-color: transparent;
           width: 40px;
           height: 40px;
@@ -65,11 +66,11 @@ class HaxBloxPicker extends LitElement {
           font-weight: 600;
           text-align: left;
           margin: 0;
-          background-color: var(--hax-color-menu-heading-bg);
+          background-color: var(--hax-color-menu-heading-bg, #eeeeee);
+          color: var(--hax-color-menu-heading-color, black);
           font-size: 18px;
           line-height: 18px;
           font-family: "Noto Serif", serif;
-          color: var(--hax-color-text);
         }
         app-drawer {
           --app-drawer-width: 320px;

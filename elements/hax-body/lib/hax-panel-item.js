@@ -100,14 +100,14 @@ class HAXPanelItem extends LitElement {
           overflow: hidden;
           margin: 0;
           text-transform: none;
-          background-color: var(--hax-color-bg-accent);
-          color: var(--hax-color-accent-text);
+          background-color: var(--hax-panel-item-bg);
+          color: var(--hax-panel-item-text);
           display: flex;
           padding: 8px;
           border-radius: 50%;
-          border: 1px solid var(--hax-color-bg-accent);
+          border: 1px solid var(--hax-panel-item-border-color);
           min-width: unset;
-          --paper-button-ink-color: var(--hax-color-accent1);
+          --paper-button-ink-color: var(--hax-panel-item-ink, black);
         }
         paper-button .button-inner {
           text-align: center;
@@ -120,8 +120,8 @@ class HAXPanelItem extends LitElement {
         }
         paper-button:hover,
         paper-button:focus {
-          color: var(--hax-color-text-active);
-          border: 1px solid var(--hax-color-accent1);
+          color: var(--hax-panel-item-active);
+          border: 1px solid var(--hax-panel-item-active-border-color);
         }
 
         paper-button[disabled] {

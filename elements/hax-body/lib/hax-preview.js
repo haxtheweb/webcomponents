@@ -78,7 +78,7 @@ class HaxPreview extends PolymerElement {
                 #preview {
                   padding: 16px;
                   color: #000000;
-                  background-color: var(--hax-color-bg-accent);
+                  background-color: white;
                   max-height: 63vh;
                   overflow: scroll;
                 }
@@ -148,8 +148,8 @@ class HaxPreview extends PolymerElement {
                 #modetabs paper-tab paper-button {
                   min-width: unset;
                   width: 100%;
-                  background-color: var(--hax-color-accent1);
-                  color: var(--hax-color-accent1-text);
+                  background-color: var(--hax-preview-button-bg, white);
+                  color: var(--hax-preview-button-color, black);
                 }
                 .preview-buttons {
                   height: 64px;
@@ -174,9 +174,9 @@ class HaxPreview extends PolymerElement {
                 .preview-buttons paper-button {
                   min-width: unset;
                   width: 40%;
-                  color: var(--hax-color-accent1-text);
+                  color: var(--hax-preview-button-color, black);
                   display: inline-block;
-                  background-color: var(--hax-color-accent1);
+                  background-color: var(--hax-preview-button-bg, white);
                 }
                 .vaadin-layout-width {
                   min-width: 30%;

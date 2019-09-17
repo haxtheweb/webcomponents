@@ -57,7 +57,7 @@ class HAXCMSOutlineEditorDialog extends PolymerElement {
         }
         #savebtn {
           color: white;
-          background-color: var(--simple-colors-default-theme-blue-7, #2196f3);
+          background-color: var(--haxcms-color, #2196f3);
         }
         editable-outline,
         json-editor {

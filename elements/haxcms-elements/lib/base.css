@@ -1,13 +1,41 @@
-:root {
+body, html, :root {
   --haxcms-system-bg: #37474f;
   --paper-toast-color: #FFFFFF;
-  --paper-toast-background-color:var(--haxcms-system-bg);
+  --paper-toast-background-color:var(--haxcms-system-bg, black);
   --simple-modal-titlebar-color: #FFFFFF;
   --simple-modal-titlebar-background: var(--haxcms-system-bg);
   --simple-modal-header-color: #FFFFFF;
   --simple-modal-header-background: var(--haxcms-system-bg);
-  --simple-modal-button-color: var(--haxcms-color, #FFFFFF);
+  --simple-modal-button-color: #FFFFFF;
   --simple-modal-button-background: #37474f;
+      /** HAX specific settings **/
+  --hax-color-bg: #37474f;
+  --hax-color-border-outline: var(--haxcms-system-bg, --simple-colors-default-theme-light-blue-7);
+  --hax-color-menu-heading-bg: var(--haxcms-system-bg, --simple-colors-default-theme-light-blue-7);
+  --hax-color-accent-text: #FFFFFF;
+  --hax-color-accent1: var(--haxcms-system-bg, --simple-colors-default-theme-light-blue-7);
+  --hax-color-accent1-text: #000000;
+  --hax-color-menu-heading-color: #FFFFFF;
+  --hax-preview-button-bg: var(--haxcms-system-bg, black);
+  --hax-preview-button-color: white;
+
+  --hax-ink-color: var(--haxcms-system-bg, black);
+  --hax-panel-item-active: #FFFFFF;
+  --hax-panel-item-active-border-color:#444444;
+  --hax-panel-item-border-color: #444444;
+  --hax-panel-item-ink: var(--haxcms-color, white);
+  --hax-panel-item-bg: #000000;
+  --hax-panel-item-text: #EEEEEE;
+  --hax-toolbar-item-color: var(--haxcms-system-bg, black);
+  /** vaadin **/
+  --lumo-primary-text-color: var(--haxcms-system-bg, black);
+  --simple-toast-z-index: 10000000;
+  --simple-toast-right: 0;
+  --simple-toast-left: 0;
+  --simple-toast-color: white;
+  --simple-toast-bg: var(--haxcms-system-bg, black);
+  --simple-toast-margin: 0 0 0 49px;
+  --simple-toast-border: 1px solid black;
 }
 
 body, html {

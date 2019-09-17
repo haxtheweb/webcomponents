@@ -45,6 +45,7 @@ class HaxGizmoBrowserItem extends PolymerElement {
           padding: 10px;
           margin: 10px;
           box-shadow: none;
+          --paper-button-ink-color: var(--hax-ink-color, black);
         }
       </style>
       <paper-button on-click="_fireEvent" data-voicecommand$="select [[title]]">

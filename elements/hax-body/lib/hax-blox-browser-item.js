@@ -37,7 +37,7 @@ class HaxBloxBrowserItem extends PolymerElement {
           width: 100%;
         }
         paper-button {
-          color: var(--hax-color-text);
+          color: black;
           background-color: #ffffff;
           border: 2px solid var(--hax-color-border-outline);
           text-transform: none;
@@ -47,6 +47,7 @@ class HaxBloxBrowserItem extends PolymerElement {
           display: flex;
           border-radius: 10px;
           min-width: unset;
+          --paper-button-ink-color: var(--hax-ink-color, black);
         }
         paper-button .item-title {
           font-size: 14px;
@@ -59,7 +60,7 @@ class HaxBloxBrowserItem extends PolymerElement {
           width: 40px;
           height: 40px;
           display: inline-block;
-          color: var(--hax-color-text);
+          color: black;
         }
         @media screen and (max-width: 550px) {
           paper-button .item-title {

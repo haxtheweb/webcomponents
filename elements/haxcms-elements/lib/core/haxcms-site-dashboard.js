@@ -259,7 +259,7 @@ class HAXCMSSiteDashboard extends LitElement {
    */
   _cancel(e) {
     window.dispatchEvent(
-      new CustomEvent("haxcms-load-site-fields", {
+      new CustomEvent("haxcms-load-site-dashboard", {
         bubbles: true,
         composed: true,
         cancelable: false,
