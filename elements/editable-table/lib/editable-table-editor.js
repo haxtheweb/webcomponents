@@ -126,7 +126,7 @@ class EditableTableEditor extends editBehaviors(
         :host([responsive]) .thead .th:nth-of-type(3),
         :host([responsive]) .td:nth-of-type(2) {
           border-right-width: calc(var(--editable-table-border-width) + 5px);
-          border-right-style: dashed;
+          border-right-style: double;
         }
         :host([bordered]) .thead .th:not(:first-child) {
           border-bottom: var(--editable-table-border);
