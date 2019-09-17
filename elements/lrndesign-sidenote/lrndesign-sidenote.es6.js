@@ -75,7 +75,7 @@ class LrndesignSidenote extends LitElement {
     super();
     this.label = "";
     this.icon = "";
-    this.bgColor = "lightgray";
+    this.bgColor = "";
   }
 
   render() {
