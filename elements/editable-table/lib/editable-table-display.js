@@ -86,6 +86,9 @@ class EditableTableDisplay extends displayBehaviors(
         :host([footer]) .table .tfoot .tr .td {
           @apply --editable-table-style-footer;
         }
+        :host paper-item.column-option:first-of-type {
+          display: none;
+        }
       </style>
       <table id="table" class="table" default-xs-display="">
         <caption class="caption">
@@ -99,12 +102,17 @@ class EditableTableDisplay extends displayBehaviors(
                 index-as="index"
               >
                 <template is="dom-if" if="[[columnHeader]]">
-                  <paper-item id$="[[index]]" value$="[[index]]"
+                  <paper-item
+                    id$="[[index]]"
+                    class="column-option"
+                    value$="[[index]]"
                     >[[col]]</paper-item
                   >
                 </template>
                 <template is="dom-if" if="[[!columnHeader]]">
-                  <paper-item id$="[[index]]">Column [[index]]</paper-item>
+                  <paper-item id$="[[index]]" class="column-option"
+                    >Column [[index]]</paper-item
+                  >
                 </template>
               </template>
             </dropdown-select>

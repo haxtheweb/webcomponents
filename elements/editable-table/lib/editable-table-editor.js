@@ -67,8 +67,7 @@ class EditableTableEditor extends editBehaviors(
           display: inline-block;
           opacity: 0.25;
         }
-        :host([filter]:not([sort])) .filter-icon,
-        :host([filter][sort]) .tbody .tr:not(:first-child) .filter-icon {
+        :host([filter]) .tbody .tr:not(:first-of-type) .filter-icon {
           display: inline-block;
           opacity: 0.25;
         }
@@ -324,7 +323,7 @@ class EditableTableEditor extends editBehaviors(
           <div class="field-group" hidden$="[[hideSortFilter]]">
             <div class="label">Sorting and Filtering</div>
             <editable-table-editor-toggle
-              id="hideSort"
+              id="sort"
               hidden$="[[hideSort]]"
               label-on="Sorting enabled."
               label-off="Sorting disabled."
@@ -334,7 +333,7 @@ class EditableTableEditor extends editBehaviors(
             >
             </editable-table-editor-toggle>
             <editable-table-editor-toggle
-              id="hideFilter"
+              id="filter"
               hidden$="[[hideFilter]]"
               label-on="Filtering enabled."
               label-off="Filtering disabled."

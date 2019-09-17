@@ -60,6 +60,12 @@ class EditableTableEditorToggle extends PolymerElement {
           color: var(--editable-table-button-hover-color);
           cursor: pointer;
         }
+        :host([toggled]:not([disabled])) paper-button:focus,
+        :host([toggled]:not([disabled])) paper-button:hover {
+          background-color: var(--editable-table-button-toggled-hover-bg-color);
+          color: var(--editable-table-button-toggled-hover-color);
+          cursor: pointer;
+        }
         :host([disabled]) paper-button {
           background-color: var(--editable-table-button-disabled-bg-color);
           color: var(--editable-table-button-disabled-color);

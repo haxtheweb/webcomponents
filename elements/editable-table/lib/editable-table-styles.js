@@ -49,8 +49,8 @@ const css = html`
       font-family: var(--editable-table-font-family);
 
       --editable-table-light-weight: 200;
-      --editable-table-medium-weight: 400;
-      --editable-table-heavy-weight: 500;
+      --editable-table-medium-weight: 300;
+      --editable-table-heavy-weight: 600;
       --editable-table-color: #222;
       --editable-table-bg-color: #fff;
       --editable-table-caption-bg-color: #fff;
@@ -79,8 +79,14 @@ const css = html`
       --editable-table-button-bg-color: var(--editable-table-bg-color);
       --editable-table-button-toggled-color: var(--editable-table-color);
       --editable-table-button-toggled-bg-color: var(--editable-table-bg-color);
-      --editable-table-button-hover-color: unset;
+      --editable-table-button-hover-color: var(--editable-table-heading-color);
+      --editable-table-button-toggled-hover-color: var(
+        --editable-table-button-color
+      );
       --editable-table-button-hover-bg-color: var(
+        --editable-table-heading-bg-color
+      );
+      --editable-table-button-toggled-hover-bg-color: var(
         --editable-table-heading-bg-color
       );
       --editable-table-button-disabled-color: var(
