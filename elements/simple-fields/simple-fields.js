@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { MutableData } from "@polymer/polymer/lib/mixins/mutable-data.js";
 import { varExists, varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import "@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";
@@ -132,9 +131,6 @@ class SimpleFields extends MutableData(PolymerElement) {
    */
   connectedCallback() {
     super.connectedCallback();
-    let root = this;
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(SimpleFields.haxProperties, SimpleFields.tag, this);
     import("./lib/simple-fields-imports.js");
   }
   /**

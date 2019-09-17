@@ -1,6 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
  * `image-compare-slider`
@@ -17,14 +15,6 @@ class ImageCompareSlider extends SchemaBehaviors(PolymerElement) {
     import("@lrnwebcomponents/user-action/user-action.js");
     import("@polymer/iron-image/iron-image.js");
     import("@polymer/paper-slider/paper-slider.js");
-    afterNextRender(this, function() {
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(
-        ImageCompareSlider.haxProperties,
-        ImageCompareSlider.tag,
-        this
-      );
-    });
   }
   static get template() {
     return html`

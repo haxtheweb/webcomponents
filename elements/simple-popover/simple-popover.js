@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { AbsolutePositionBehavior } from "@lrnwebcomponents/absolute-position-behavior/absolute-position-behavior.js";
 /**
  * `simple-popover`
@@ -178,14 +177,6 @@ class SimplePopover extends AbsolutePositionBehavior {
    */
   static get tag() {
     return "simple-popover";
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(SimplePopover.haxProperties, SimplePopover.tag, this);
   }
   /**
    * sets pointer position based on popover and target middles

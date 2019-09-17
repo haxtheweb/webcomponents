@@ -9,6 +9,7 @@
   --simple-modal-button-color: var(--haxcms-color, #FFFFFF);
   --simple-modal-button-background: #37474f;
 }
+
 body, html {
   padding: 0;
   margin: 0;
@@ -17,6 +18,7 @@ body, html {
   line-height: var(--haxcms-base-styles-body-line-height, 1.8);
   letter-spacing: var(--haxcms-base-styles-body-letter-spacing, .5px);
 }
+
 h1 {
   font-size: var(--haxcms-base-styles-h1-font-size, 2.5em);
   line-height: var(--haxcms-base-styles-h1-line-height, 2.5em);

@@ -6,7 +6,6 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { MutableData } from "@polymer/polymer/lib/mixins/mutable-data.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { wipeSlot } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
@@ -1128,8 +1127,6 @@ class GameShowQuiz extends MutableData(PolymerElement) {
           window.Drupal.settings.basePath +
           "apps/game-show-scoreboard/load-directions";
       }
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(GameShowQuiz.haxProperties, GameShowQuiz.tag, this);
       this.shadowRoot
         .querySelector("#dismiss")
         .addEventListener("click", this.resetFocus.bind(this));

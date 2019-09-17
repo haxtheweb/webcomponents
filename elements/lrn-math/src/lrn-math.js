@@ -1,5 +1,3 @@
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
 // forked from https://github.com/janmarthedal/math-tex
 const document = window.document,
   states = { start: 1, loading: 2, ready: 3, typesetting: 4, error: 5 };
@@ -181,8 +179,6 @@ class MathTex extends HTMLElement {
       update(elem);
       elem._private.observer.observe(elem, mutation_config);
     });
-    let wiring = new HAXWiring();
-    wiring.setup(MathTex.haxProperties, MathTex.tag, this);
   }
 
   static get haxProperties() {
@@ -194,6 +190,7 @@ class MathTex extends HTMLElement {
         title: "Math",
         description: "Present math in a nice looking way.",
         icon: "hax:pi",
+        iconLib: "@lrnwebcomponents/hax-iconset/hax-iconset.js",
         color: "grey",
         groups: ["Content"],
         handles: [

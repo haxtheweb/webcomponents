@@ -1,7 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { OERSchema } from "@lrnwebcomponents/oer-schema/lib/oerschema.js";
 import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
 /**
@@ -10,17 +8,6 @@ import "@lrnwebcomponents/hax-iconset/hax-iconset.js";
  * @demo demo/index.html
  */
 class OerSchemaElement extends SchemaBehaviors(PolymerElement) {
-  constructor() {
-    super();
-    afterNextRender(this, function() {
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(
-        OerSchemaElement.haxProperties,
-        OerSchemaElement.tag,
-        this
-      );
-    });
-  }
   static get template() {
     return html`
       <style>

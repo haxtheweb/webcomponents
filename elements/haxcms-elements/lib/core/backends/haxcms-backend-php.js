@@ -73,6 +73,28 @@ class HAXCMSBackendPHP extends PolymerElement {
     document.body.addEventListener("jwt-token", this._jwtTokenFired.bind(this));
   }
   /**
+   * Attached life cycle
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    if (this.jwt != null && this.jwt != "" && typeof this.jwt == "string") {
+      this.dynamicallyImportEditor();
+    } else {
+      // other things will have to sort out the fact that while we
+      // DO have a dynamic backend, we didn't get a hit on the JWT
+      // meaning that we are in a dynamic environment but logged out
+      // at the moment (or viewing a site we don't have authorization to)
+      window.dispatchEvent(
+        new CustomEvent("haxcms-not-logged-in", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: this
+        })
+      );
+    }
+  }
+  /**
    * detached life cycle
    */
   disconnectedCallback() {
@@ -88,71 +110,63 @@ class HAXCMSBackendPHP extends PolymerElement {
   _jwtTokenFired(e) {
     this.jwt = e.detail;
     store.jwt = this.jwt;
+    // support updates after the fact
+    if (this.jwt != null && this.jwt != "" && typeof this.jwt == "string") {
+      this.dynamicallyImportEditor();
+    }
   }
   /**
-   * Attached life cycle
+   * Import the editor
    */
-  connectedCallback() {
-    super.connectedCallback();
-    if (this.jwt != null && typeof this.jwt == "string") {
-      // attempt to dynamically import the hax cms site editor
-      // which will appear to be injecting into the page
-      // but because of this approach it should be non-blocking
-      try {
-        import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor.js").then(
-          e => {
-            // if we don't have appSettings by this point
-            // it means we don't actually have a backend / directions
-            // this would be a published state or a state where
-            // there is no actual backend to bother confiring with
-            // possibly a user navigated to a site that doesn't
-            // have JWT credentials but isn't actually published
-            // we also need this here because PHP is the assumed
-            // fallback backend
-            if (window.appSettings) {
-              let haxCmsSiteEditorElement = document.createElement(
-                "haxcms-site-editor"
-              );
-              haxCmsSiteEditorElement.jwt = this.jwt;
-              haxCmsSiteEditorElement.saveNodePath =
-                window.appSettings.saveNodePath;
-              haxCmsSiteEditorElement.saveManifestPath =
-                window.appSettings.saveManifestPath;
-              haxCmsSiteEditorElement.saveOutlinePath =
-                window.appSettings.saveOutlinePath;
-              haxCmsSiteEditorElement.getNodeFieldsPath =
-                window.appSettings.getNodeFieldsPath;
-              haxCmsSiteEditorElement.getSiteFieldsPath =
-                window.appSettings.getSiteFieldsPath;
-              haxCmsSiteEditorElement.getFormToken =
-                window.appSettings.getFormToken;
-              haxCmsSiteEditorElement.publishSitePath =
-                window.appSettings.publishSitePath;
-              haxCmsSiteEditorElement.syncSitePath =
-                window.appSettings.syncSitePath;
-              haxCmsSiteEditorElement.revertSitePath =
-                window.appSettings.revertSitePath;
-              haxCmsSiteEditorElement.createNodePath =
-                window.appSettings.createNodePath;
-              haxCmsSiteEditorElement.deleteNodePath =
-                window.appSettings.deleteNodePath;
-              haxCmsSiteEditorElement.appStore = window.appSettings.appStore;
-              store.cmsSiteEditorAvailability();
-              if (!store.cmsSiteEditor.instance.haxCmsSiteEditorElement) {
-                store.cmsSiteEditor.instance.haxCmsSiteEditorElement = haxCmsSiteEditorElement;
-                store.cmsSiteEditor.instance.appendTarget.appendChild(
-                  haxCmsSiteEditorElement
-                );
-              }
-            }
-          },
-          e => {
-            //import failed
+  dynamicallyImportEditor() {
+    // attempt to dynamically import the hax cms site editor
+    // which will appear to be injecting into the page
+    // but because of this approach it should be non-blocking
+    try {
+      import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor.js").then(
+        e => {
+          // if we don't have appSettings by this point
+          // it means we don't actually have a backend / directions
+          // this would be a published state or a state where
+          // there is no actual backend to bother confiring with
+          // possibly a user navigated to a site that doesn't
+          // have JWT credentials but isn't actually published
+          // we also need this here because PHP is the assumed
+          // fallback backend
+          if (window.appSettings) {
+            store.cmsSiteEditorAvailability();
+            store.cmsSiteEditor.instance.jwt = this.jwt;
+            store.cmsSiteEditor.instance.saveNodePath =
+              window.appSettings.saveNodePath;
+            store.cmsSiteEditor.instance.saveManifestPath =
+              window.appSettings.saveManifestPath;
+            store.cmsSiteEditor.instance.saveOutlinePath =
+              window.appSettings.saveOutlinePath;
+            store.cmsSiteEditor.instance.getNodeFieldsPath =
+              window.appSettings.getNodeFieldsPath;
+            store.cmsSiteEditor.instance.getSiteFieldsPath =
+              window.appSettings.getSiteFieldsPath;
+            store.cmsSiteEditor.instance.getFormToken =
+              window.appSettings.getFormToken;
+            store.cmsSiteEditor.instance.publishSitePath =
+              window.appSettings.publishSitePath;
+            store.cmsSiteEditor.instance.syncSitePath =
+              window.appSettings.syncSitePath;
+            store.cmsSiteEditor.instance.revertSitePath =
+              window.appSettings.revertSitePath;
+            store.cmsSiteEditor.instance.createNodePath =
+              window.appSettings.createNodePath;
+            store.cmsSiteEditor.instance.deleteNodePath =
+              window.appSettings.deleteNodePath;
+            store.cmsSiteEditor.instance.appStore = window.appSettings.appStore;
           }
-        );
-      } catch (err) {
-        // error in the event this is a double registration
-      }
+        },
+        e => {
+          //import failed
+        }
+      );
+    } catch (err) {
+      // error in the event this is a double registration
     }
   }
 }

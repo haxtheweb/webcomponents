@@ -4,7 +4,6 @@ import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-spinner/paper-spinner.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { wipeSlot } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 /**
 `cms-token`
@@ -290,8 +289,6 @@ class CMSToken extends PolymerElement {
         "visibilitychange",
         this._windowVisibilityChanged.bind(this)
       );
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(CMSToken.haxProperties, CMSToken.tag, this);
     });
   }
   /**

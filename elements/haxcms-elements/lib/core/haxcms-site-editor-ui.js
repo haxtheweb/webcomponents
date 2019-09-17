@@ -36,7 +36,9 @@ class HAXCMSSiteEditorUI extends PolymerElement {
           display: block;
           position: fixed;
           left: 0;
-          top: 56px;
+          top: 0;
+          bottom: 0;
+          padding-top: 56px;
           opacity: 0.8;
           transition: 0.8s left linear, 0.3s opacity ease-in-out,
             0.3s visibility ease-in-out;

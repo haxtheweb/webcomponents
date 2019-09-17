@@ -16,6 +16,7 @@ class JwtLogin extends PolymerElement {
         }
       </style>
       <iron-ajax
+        auto="[[auto]]"
         id="loginrequest"
         method="[[method]]"
         body="[[body]]"
@@ -34,6 +35,13 @@ class JwtLogin extends PolymerElement {
 
   static get properties() {
     return {
+      /**
+       * auto, useful for demos
+       */
+      auto: {
+        type: Boolean,
+        value: false
+      },
       /**
        * url
        */

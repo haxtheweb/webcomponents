@@ -3,8 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/chartist-render/chartist-render.js";
@@ -18,17 +16,6 @@ import "@lrnwebcomponents/chartist-render/chartist-render.js";
  *  -
  */
 class ProgressDonut extends SchemaBehaviors(PolymerElement) {
-  constructor() {
-    super();
-    afterNextRender(this, function() {
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(
-        ProgressDonut.haxProperties,
-        ProgressDonut.tag,
-        this
-      );
-    });
-  }
   static get template() {
     return html`
       <style include="simple-colors-shared-styles">
@@ -257,9 +244,7 @@ class ProgressDonut extends SchemaBehaviors(PolymerElement) {
   }
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function() {
-      this.addEventListener("chartist-render-draw", this._onCreated.bind(this));
-    });
+    this.addEventListener("chartist-render-draw", this._onCreated.bind(this));
   }
   disconnectedCallback() {
     this.removeEventListener(

@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "./lib/rich-text-editor-styles.js";
 import "./lib/toolbars/rich-text-editor-toolbar.js";
@@ -223,13 +222,7 @@ class RichTextEditor extends PolymerElement {
       .substring(1);
     return "rte-" + "ss-s-s-s-sss".replace(/s/g, hex);
   }
-
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
 }
 
-export { RichTextEditor };
-
 window.customElements.define(RichTextEditor.tag, RichTextEditor);
+export { RichTextEditor };

@@ -24,7 +24,6 @@ class SiteTitle extends PolymerElement {
   constructor() {
     super();
     import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/paper-tooltip/paper-tooltip.js");
   }
   // render function
   static get template() {
@@ -50,22 +49,16 @@ class SiteTitle extends PolymerElement {
         iron-icon {
           @apply --site-title-icon;
         }
-        paper-tooltip {
-          @apply --site-title-tooltip;
-        }
       </style>
       <a
         id="btn"
         href$="[[homeLink]]"
-        title$="Go to [[siteTitle]]"
+        title$="[[label]]"
         disabled$="[[disabled]]"
       >
         <iron-icon hidden$="[[!icon]]" icon="[[icon]]"></iron-icon>
         <h1 hidden$="[[notitle]]">[[siteTitle]]</h1>
       </a>
-      <paper-tooltip for="btn" position="[[position]]" offset="14">
-        [[label]]
-      </paper-tooltip>
     `;
   }
   /**
@@ -89,13 +82,12 @@ class SiteTitle extends PolymerElement {
       homeLink: {
         type: String
       },
+      /**
+       * Label
+       */
       label: {
         type: String,
         value: "Home"
-      },
-      position: {
-        type: String,
-        value: "bottom"
       },
       /**
        * optional icon

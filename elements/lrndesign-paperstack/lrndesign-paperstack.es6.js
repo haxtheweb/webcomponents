@@ -3,9 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { A11yBehaviors } from "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
 /**
  * `lrndesign-paperstack`
@@ -18,18 +16,10 @@ class LrndesignPaperstack extends A11yBehaviors(SimpleColors) {
     super();
     import("@polymer/iron-icon/iron-icon.js");
     import("@lrnwebcomponents/lrn-icons/lrn-icons.js");
-    afterNextRender(this, function() {
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(
-        LrndesignPaperstack.haxProperties,
-        LrndesignPaperstack.tag,
-        this
-      );
-    });
   }
   static get template() {
     return html`
-      <style>
+      <style include="simple-colors-shared-styles">
         :host {
           display: block;
           font-size: 14px;
@@ -110,9 +100,9 @@ class LrndesignPaperstack extends A11yBehaviors(SimpleColors) {
         }
 
         iron-icon {
-          width: 90%;
-          height: 90%;
-          flex: 1 1 auto;
+          width: 40px;
+          height: 40px;
+          margin: 4px;
           color: var(--lrndesign-paperstack-bg);
         }
         .heading {

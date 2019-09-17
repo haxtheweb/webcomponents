@@ -13,7 +13,7 @@ import * as async from "@polymer/polymer/lib/utils/async.js";
  *
  * @microcopy - the mental model for this element
  * - something called us asking to provide an authoring solution
- * - we need to decide based on environment if this supports php, beaker or none
+ * - we need to decide based on environment if this supports php, nodejs, beaker, a demo or none
  */
 class HAXCMSEditorBuilder extends PolymerElement {
   /**
@@ -92,11 +92,12 @@ class HAXCMSEditorBuilder extends PolymerElement {
       if (context == null) {
         context = this.getContext();
       }
-      if (context === "php") {
-        // append the php for global scope to show up via window
-        // this is a unique case since it's server side generated in HAXCMS/PHP
+      if (context === "php" || context === "nodejs") {
+        // append this script to global scope to show up via window
+        // this is a unique case since it's server side generated in HAXCMS
         let script = document.createElement("script");
-        // IF we're in a php environment this will always be 2 levels back
+        // IF we're in a live environment this will always be 2 levels back
+        // @todo may want to make this more flexible
         script.src = `../../haxcms-jwt`;
         fetch(script.src).then(response => {
           if (response.status != 404) {
@@ -105,18 +106,22 @@ class HAXCMSEditorBuilder extends PolymerElement {
         });
       }
       // dynamic import if this isn't published tho we'll double check
-      // that it's valid down in php land were it to come to that
+      // that it's valid later
       if (context !== "published") {
         const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
         // import and set the tag based on the context
-        store.cmsSiteEditor.tag = `haxcms-backend-${context}`;
+        store.cmsSiteEditorBackend.tag = `haxcms-backend-${context}`;
         // delay import slightly to ensure global scope is there
-        import(`${basePath}backends/${store.cmsSiteEditor.tag}.js`).then(e => {
-          let haxCmsSiteEditorElement = document.createElement(
-            store.cmsSiteEditor.tag
-          );
-          document.body.append(haxCmsSiteEditorElement);
-        });
+        import(`${basePath}backends/${store.cmsSiteEditorBackend.tag}.js`).then(
+          e => {
+            if (!store.cmsSiteEditorBackend.instance) {
+              store.cmsSiteEditorBackend.instance = document.createElement(
+                store.cmsSiteEditorBackend.tag
+              );
+              document.body.append(store.cmsSiteEditorBackend.instance);
+            }
+          }
+        );
       }
     }
   }

@@ -1,7 +1,5 @@
 import { html } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { A11yBehaviors } from "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
 /**
@@ -211,19 +209,22 @@ class SelfCheck extends SchemaBehaviors(A11yBehaviors(SimpleColors)) {
               </paper-tooltip>
             </div>
           </div>
-
           <div id="answer_wrap" aria-hidden$="[[!correct]]" aria-live="polite">
             <div class="answer">
               <user-action track="visibility">
                 <slot></slot>
               </user-action>
-              <div class="more_info" hidden$="[[!link]]">
-                <user-action track="click" every
-                  ><a href$="[[link]]" target="_blank"
-                    >More info...</a
-                  ></user-action
-                >
-              </div>
+              <dom-if if="[[link]]">
+                <template>
+                  <div class="more_info" hidden$="[[!link]]">
+                    <user-action track="click" every
+                      ><a href$="[[link]]" target="_blank"
+                        >More info...</a
+                      ></user-action
+                    >
+                  </div>
+                </template>
+              </dom-if>
               <div class="close_button">
                 <paper-icon-button
                   aria-label="Close"
@@ -425,11 +426,7 @@ class SelfCheck extends SchemaBehaviors(A11yBehaviors(SimpleColors)) {
 
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function() {
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(SelfCheck.haxProperties, SelfCheck.tag, this);
-      import("@lrnwebcomponents/user-action/user-action.js");
-    });
+    import("@lrnwebcomponents/user-action/user-action.js");
   }
 }
 window.customElements.define(SelfCheck.tag, SelfCheck);

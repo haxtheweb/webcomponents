@@ -3,10 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { A11yBehaviors } from "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 /**
  * `hero-banner`
  * `That thing no one wants to make over and over again yet always does...`
@@ -20,7 +18,7 @@ class HeroBanner extends A11yBehaviors(SimpleColors) {
   }
   static get template() {
     return html`
-      <style>
+      <style include="simple-colors-shared-styles">
         :host {
           display: block;
           width: 100%;
@@ -36,10 +34,10 @@ class HeroBanner extends A11yBehaviors(SimpleColors) {
           --hero-banner-image-bg: var(--simple-colors-default-theme-grey-3);
           --hero-banner-button-weight: bold;
           --hero-banner-button-color: var(
-            --simple-colors-default-theme-accent-6
+            --simple-colors-default-theme-accent-5
           );
           --hero-banner-button-hover-color: var(
-            --simple-colors-default-theme-accent-5
+            --simple-colors-default-theme-accent-4
           );
         }
         :host([dark]) {
@@ -92,7 +90,7 @@ class HeroBanner extends A11yBehaviors(SimpleColors) {
         }
         .linkbutton:focus paper-button,
         .linkbutton:hover paper-button {
-          background-color: var(---hero-banner-button-hover-color);
+          background-color: var(--hero-banner-button-hover-color);
         }
         @media screen and (max-width: 720px) {
           .title {
@@ -182,16 +180,6 @@ class HeroBanner extends A11yBehaviors(SimpleColors) {
     return props;
   }
 
-  /**
-   * Attached to the DOM, now fire.
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(HeroBanner.haxProperties, HeroBanner.tag, this);
-    });
-  }
   static get haxProperties() {
     return {
       canScale: false,

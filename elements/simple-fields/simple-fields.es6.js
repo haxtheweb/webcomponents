@@ -3,19 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { MutableData } from "@polymer/polymer/lib/mixins/mutable-data.js";
-import "@polymer/paper-toggle-button/paper-toggle-button.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/paper-input/paper-textarea.js";
-import "@polymer/iron-icons/iron-icons.js";
+import { varExists, varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import "@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";
 import "@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js";
-import "@lrnwebcomponents/code-editor/code-editor.js";
-import "@lrnwebcomponents/simple-picker/simple-picker.js";
-import "@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js";
-import "@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js";
-import "@lrnwebcomponents/paper-input-flagged/paper-input-flagged.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `simple-fields`
@@ -36,7 +27,7 @@ class SimpleFields extends MutableData(PolymerElement) {
 <style>:host {
   display: block;
   background-color: #ffffff;
-  overflow: hidden;
+  overflow: visible;
 }
 
 :host([hidden]) {
@@ -60,11 +51,12 @@ eco-json-schema-object {
 eco-json-schema-object .hax-code-editor {
   padding: 0;
 }</style>
+<style include="simple-colors-shared-styles"></style>
 <eco-json-schema-object
   id="schemaobject"
   autofocus$="[[autofocus]]"
   hide-line-numbers$="[[hideLineNumbers]]"
-  on-form-changed="_formChanged"
+  on-form-changed="_formFieldsChanged"
   schema="[[__validatedSchema]]"
   value="{{value}}"
 ></eco-json-schema-object>`;
@@ -92,12 +84,12 @@ eco-json-schema-object .hax-code-editor {
     "value": false
   },
   /**
-   * Fields to conver toJSON Schema.
+   * Fields to convert toJSON Schema.
    */
   "fields": {
     "type": Array,
     "value": [],
-    "observer": "_fieldsChanged"
+    "observer": "_formFieldsChanged"
   },
   /**
    * Returned value from the form input.
@@ -109,10 +101,11 @@ eco-json-schema-object .hax-code-editor {
     "observer": "_valueChanged"
   },
   /**
-   * Fields to conver to JSON Schema.
+   * Fields to convert to JSON Schema.
    */
   "__validatedSchema": {
     "type": Array,
+    "notify": true,
     "value": {
       "properties": {}
     }
@@ -137,19 +130,18 @@ eco-json-schema-object .hax-code-editor {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(SimpleFields.haxProperties, SimpleFields.tag, this);
+    import("./lib/simple-fields-imports.js");
   }
   /**
    * when form changes, sets focus on the first field if this has auto-focus
    */
-  _formChanged(e) {
+  _formFieldsChanged(e) {
     this.dispatchEvent(
       new CustomEvent("fields-changed", {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: e.detail
+        detail: e ? e.detail : this
       })
     );
   }
@@ -158,10 +150,17 @@ eco-json-schema-object .hax-code-editor {
    * @param {object} oldValue the old value
    * @param {object} newValue the new value
    */
-  _valueChanged(oldValue, newValue) {
-    //prevent a feddback loop when the eco-json-schema-object's values change to reflect the changes to simple-fields
+  _valueChanged(newValue, oldValue) {
     if (JSON.stringify(oldValue) !== JSON.stringify(newValue)) {
       this._setValues();
+      this.dispatchEvent(
+        new CustomEvent("value-changed", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: this
+        })
+      );
     }
   }
 
@@ -170,7 +169,7 @@ eco-json-schema-object .hax-code-editor {
    * @param {object} oldValue the old value
    * @param {object} newValue the new value
    */
-  _fieldsChanged(oldValue, newValue) {
+  _fieldsChanged(newValue, oldValue) {
     //prevent a potential feedback loop
     if (JSON.stringify(oldValue) !== JSON.stringify(newValue)) {
       this._setValues();
@@ -185,14 +184,9 @@ eco-json-schema-object .hax-code-editor {
     for (let prop in this.value) {
       if (schema[prop]) schema[prop].value = this.value[prop];
     }
-    //form won't refresh unless we set it to null. notifyPath wasn't enough to refresh it
-    this.__validatedSchema = null;
-    this.__validatedSchema = { properties: schema };
+    this.set("__validatedSchema", { properties: schema });
+    this.notifyPath("__validatedSchema.properties.*");
   }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
 }
 window.customElements.define(SimpleFields.tag, SimpleFields);
 export { SimpleFields };

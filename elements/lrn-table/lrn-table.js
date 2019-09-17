@@ -3,8 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 
 /**
@@ -73,15 +71,8 @@ class LrnTable extends SchemaBehaviors(PolymerElement) {
     };
   }
   /**
-   * attached.
+   * Hax properties
    */
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(LrnTable.haxProperties, LrnTable.tag, this);
-    });
-  }
   static get haxProperties() {
     return {
       canScale: true,

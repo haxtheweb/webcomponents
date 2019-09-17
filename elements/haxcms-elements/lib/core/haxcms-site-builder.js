@@ -14,10 +14,8 @@ import {
 } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import { store } from "./haxcms-site-store.js";
-import "@polymer/iron-ajax/iron-ajax.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./haxcms-site-router.js";
-
+import "@polymer/iron-ajax/iron-ajax.js";
 /**
  * `haxcms-site-builder`
  * `build the site and everything off of this`
@@ -76,7 +74,6 @@ class HAXCMSSiteBuilder extends PolymerElement {
           --paper-progress-container-color: transparent;
         }
       </style>
-      <simple-colors></simple-colors>
       <haxcms-site-router base-uri="[[baseURI]]"></haxcms-site-router>
       <paper-progress hidden\$="[[!loading]]" indeterminate></paper-progress>
       <iron-ajax
@@ -95,6 +92,7 @@ class HAXCMSSiteBuilder extends PolymerElement {
         last-error="{{lastError}}"
       ></iron-ajax>
       <div id="slot"><slot></slot></div>
+      <simple-colors></simple-colors>
     `;
   }
   static get properties() {
@@ -152,10 +150,11 @@ class HAXCMSSiteBuilder extends PolymerElement {
         observer: "_themeChanged"
       },
       /**
-       * Theme, used to boot a design element
+       * Theme name, which we then use to setup the theme
        */
-      themeElement: {
-        type: Object
+      themeName: {
+        type: String,
+        observer: "_themeNameChanged"
       },
       /**
        * Imported items so we can allow theme flipping dynamically
@@ -203,6 +202,20 @@ class HAXCMSSiteBuilder extends PolymerElement {
       }
     };
   }
+  _themeNameChanged(newValue) {
+    if (newValue) {
+      store.themeElement = document.createElement(newValue);
+      wipeSlot(this, "*");
+      dom(this).appendChild(store.themeElement);
+    } else if (newValue && oldValue) {
+      // theme changed
+      store.themeElement.remove();
+      // wipe out what we got
+      wipeSlot(this, "*");
+      store.themeElement = document.createElement(newValue);
+      dom(this).appendChild(store.themeElement);
+    }
+  }
   _lastErrorChanged(newValue) {
     if (newValue) {
       console.error(newValue);
@@ -223,8 +236,6 @@ class HAXCMSSiteBuilder extends PolymerElement {
   constructor() {
     super();
     window.addEventListener("hax-store-ready", this.storeReady.bind(this));
-    import("@polymer/paper-progress/paper-progress.js");
-    import("@lrnwebcomponents/simple-toast/simple-toast.js");
     // attempt to set polymer passive gestures globally
     // this decreases logging and improves performance on scrolling
     setPassiveTouchGestures(true);
@@ -239,6 +250,9 @@ class HAXCMSSiteBuilder extends PolymerElement {
     });
     autorun(reaction => {
       this.themeData = toJS(store.themeData);
+      if (this.themeData && this.themeData.element !== this.themeName) {
+        this.themeName = this.themeData.element;
+      }
       this.__disposer.push(reaction);
     });
     autorun(reaction => {
@@ -258,7 +272,10 @@ class HAXCMSSiteBuilder extends PolymerElement {
   }
   connectedCallback() {
     super.connectedCallback();
+    import("@polymer/paper-progress/paper-progress.js");
     afterNextRender(this, function() {
+      import("@lrnwebcomponents/simple-toast/simple-toast.js");
+      import("@lrnwebcomponents/simple-colors/simple-colors.js");
       this.dispatchEvent(
         new CustomEvent("haxcms-ready", {
           bubbles: true,
@@ -342,16 +359,16 @@ class HAXCMSSiteBuilder extends PolymerElement {
       var html = newValue;
       // only append if not empty
       if (html !== null) {
-        wipeSlot(this.themeElement, "*");
+        wipeSlot(store.themeElement, "*");
         html = encapScript(newValue);
         // set in the store
         store.activeItemContent = html;
         // insert the content as quickly as possible, then work on the dynamic imports
         // @todo this might be why we get a double render some times
         setTimeout(() => {
-          if (dom(this.themeElement).getEffectiveChildNodes().length === 0) {
+          if (dom(store.themeElement).getEffectiveChildNodes().length === 0) {
             let frag = document.createRange().createContextualFragment(html);
-            dom(this.themeElement).appendChild(frag);
+            dom(store.themeElement).appendChild(frag);
             this.dispatchEvent(
               new CustomEvent("json-outline-schema-active-body-changed", {
                 bubbles: true,
@@ -525,29 +542,13 @@ class HAXCMSSiteBuilder extends PolymerElement {
    * notice theme changes and ensure slot is rebuilt.
    */
   _themeChanged(newValue, oldValue) {
-    if (newValue && oldValue) {
-      if (
-        store.cmsSiteEditor &&
-        store.cmsSiteEditor.instance &&
-        typeof store.cmsSiteEditor.instance.haxCmsSiteEditorElement !==
-          typeof undefined
-      ) {
-        store.cmsSiteEditor.instance.appendChild(
-          store.cmsSiteEditor.instance.haxCmsSiteEditorElement
-        );
-      }
-    }
     if (newValue) {
       this.themeLoaded = false;
       let theme = newValue;
-      // wipe out what we got
-      wipeSlot(this, "*");
       // create the 'theme' as a new element
-      this.themeElement = document.createElement(theme.element);
       // weird but definition already here so we should be able
       // to just use this without an import, it's possible..
       if (typeof this.__imported[theme.element] !== typeof undefined) {
-        dom(this).appendChild(this.themeElement);
         this.themeLoaded = true;
       } else {
         // import the reference to the item dynamically, if we can
@@ -556,14 +557,12 @@ class HAXCMSSiteBuilder extends PolymerElement {
             "../../../../" +
             newValue.path).then(e => {
             // add it into ourselves so it unpacks and we kick this off!
-            dom(this).appendChild(this.themeElement);
             this.__imported[theme.element] = theme.element;
             this.themeLoaded = true;
           });
         } catch (err) {
           // error in the event this is a double registration
           // also strange to be able to reach this but technically possible
-          dom(this).appendChild(this.themeElement);
           this.themeLoaded = true;
         }
       }

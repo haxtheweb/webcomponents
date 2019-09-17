@@ -1,6 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 /**
  * `wikipedia-query`
@@ -12,14 +10,6 @@ class WikipediaQuery extends PolymerElement {
   constructor() {
     super();
     import("@lrnwebcomponents/citation-element/citation-element.js");
-    afterNextRender(this, function() {
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(
-        WikipediaQuery.haxProperties,
-        WikipediaQuery.tag,
-        this
-      );
-    });
   }
   /**
    * Store the tag name to make it easier to obtain directly.

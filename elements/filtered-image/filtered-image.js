@@ -4,7 +4,6 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 /**
  * `filtered-image`
  * `An image using an SVG filter. Can be used to make background images have more contrast with text.`
@@ -208,8 +207,6 @@ class FilteredImage extends SimpleColors {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(FilteredImage.haxProperties, FilteredImage.tag, this);
     this._srcChanged();
   }
   _heightChanged() {
@@ -302,10 +299,6 @@ class FilteredImage extends SimpleColors {
     let id = "svg" + Math.random();
     return id.replace(/0./g, "-");
   }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
 }
 window.customElements.define(FilteredImage.tag, FilteredImage);
 export { FilteredImage };

@@ -4,9 +4,8 @@ var $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
 
 $_documentContainer.innerHTML = `<iron-iconset-svg size="30" name="lrn">
-  <svg>
+  <svg viewBox="0 0 30 30" preserveAspectRatio="xMidYMid meet">
     <defs>
-
       <!-- explore -->
       <g id="compass">
         <g id="explore">

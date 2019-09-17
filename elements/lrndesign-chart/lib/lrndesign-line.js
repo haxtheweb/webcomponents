@@ -3,9 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { LrndesignChartBehaviors } from "./lrndesign-chart-behaviors.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 
 /**
  * `lrndesign-line`
@@ -467,21 +465,6 @@ class LrndesignLine extends LrndesignChartBehaviors {
         ]
       }
     };
-  }
-
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(
-        LrndesignLine.haxProperties,
-        LrndesignLine.tag,
-        this
-      );
-    });
   }
 
   /**

@@ -4,7 +4,6 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `learn-two-theme`
  * `Learn2 theme for HAXcms`
@@ -20,6 +19,7 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
   constructor() {
     super();
+    import("@lrnwebcomponents/simple-colors/simple-colors.js");
     import("@polymer/app-layout/app-drawer/app-drawer.js");
     import("@polymer/app-layout/app-drawer-layout/app-drawer-layout.js");
     import("@polymer/paper-icon-button/paper-icon-button.js");

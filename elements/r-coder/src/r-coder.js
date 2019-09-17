@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/code-editor/code-editor.js";
 
@@ -33,9 +32,6 @@ class RCoder extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(RCoder.haxProperties, RCoder.tag, this);
-
     this.ping();
     this.shadowRoot.getElementById(
       "editor"

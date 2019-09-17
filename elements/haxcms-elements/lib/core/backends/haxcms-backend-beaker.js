@@ -151,24 +151,21 @@ class HAXCMSBackendBeaker extends PolymerElement {
       this.activeItem.location,
       window.HaxStore.instance.activeHaxBody.haxToContent()
     );
-    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.$.toast.show(
-      "Page updated!"
-    );
+    store.cmsSiteEditor.instance.$.toast.show("Page updated!");
     const evt = new CustomEvent("haxcms-trigger-update-node", {
       bubbles: true,
       composed: true,
       cancelable: false,
       detail: true
     });
-    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(evt);
+    store.cmsSiteEditor.instance.dispatchEvent(evt);
   }
   /**
    * Outline save event.
    */
   async saveOutline(e) {
     // snag global to be sure we have it set first
-    this.manifest =
-      store.cmsSiteEditor.instance.haxCmsSiteEditorElement.manifest;
+    this.manifest = store.cmsSiteEditor.instance.manifest;
     // set items specifically since it's just an outline update
     this.manifest.items = e.detail;
     // loop through and match the data our backend generates
@@ -196,10 +193,8 @@ class HAXCMSBackendBeaker extends PolymerElement {
     });
     this.$.beaker.write("site.json", JSON.stringify(this.manifest, null, 2));
     // simulate save events since they wont fire
-    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.$.toast.show(
-      "Outline saved!"
-    );
-    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
+    store.cmsSiteEditor.instance.$.toast.show("Outline saved!");
+    store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
         composed: true,
@@ -207,7 +202,7 @@ class HAXCMSBackendBeaker extends PolymerElement {
         detail: true
       })
     );
-    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
+    store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("json-outline-schema-changed", {
         bubbles: true,
         composed: true,
@@ -222,8 +217,7 @@ class HAXCMSBackendBeaker extends PolymerElement {
   async deleteNode(e) {
     let page = e.detail.item;
     // snag global to be sure we have it set first
-    this.manifest =
-      store.cmsSiteEditor.instance.haxCmsSiteEditorElement.manifest;
+    this.manifest = store.cmsSiteEditor.instance.manifest;
     // set items specifically since it's just an outline update
     this.manifest.items = e.detail;
     // loop through and match the data our backend generates
@@ -234,10 +228,8 @@ class HAXCMSBackendBeaker extends PolymerElement {
     });
     this.$.beaker.write("site.json", JSON.stringify(this.manifest, null, 2));
     // simulate save events since they wont fire
-    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.$.toast.show(
-      `${page.title} deleted`
-    );
-    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
+    store.cmsSiteEditor.instance.$.toast.show(`${page.title} deleted`);
+    store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
         composed: true,
@@ -245,7 +237,7 @@ class HAXCMSBackendBeaker extends PolymerElement {
         detail: true
       })
     );
-    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
+    store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("json-outline-schema-changed", {
         bubbles: true,
         composed: true,
@@ -260,8 +252,7 @@ class HAXCMSBackendBeaker extends PolymerElement {
   async createNode(e) {
     let page = e.detail.values;
     // snag global to be sure we have it set first
-    this.manifest =
-      store.cmsSiteEditor.instance.haxCmsSiteEditorElement.manifest;
+    this.manifest = store.cmsSiteEditor.instance.manifest;
     // set items specifically since it's just an outline update
     this.manifest.items = e.detail;
     // loop through and match the data our backend generates
@@ -292,10 +283,8 @@ class HAXCMSBackendBeaker extends PolymerElement {
     });
     this.$.beaker.write("site.json", JSON.stringify(this.manifest, null, 2));
     // simulate save events since they wont fire
-    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.$.toast.show(
-      `${page.title} created!`
-    );
-    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
+    store.cmsSiteEditor.instance.$.toast.show(`${page.title} created!`);
+    store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
         composed: true,
@@ -303,7 +292,7 @@ class HAXCMSBackendBeaker extends PolymerElement {
         detail: true
       })
     );
-    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
+    store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("json-outline-schema-changed", {
         bubbles: true,
         composed: true,
@@ -346,10 +335,8 @@ class HAXCMSBackendBeaker extends PolymerElement {
       JSON.stringify(this.manifest, null, 2)
     );
     // simulate save events since they wont fire
-    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.$.toast.show(
-      "Site details saved!"
-    );
-    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
+    store.cmsSiteEditor.instance.$.toast.show("Site details saved!");
+    store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
         composed: true,
@@ -357,7 +344,7 @@ class HAXCMSBackendBeaker extends PolymerElement {
         detail: true
       })
     );
-    store.cmsSiteEditor.instance.haxCmsSiteEditorElement.dispatchEvent(
+    store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("json-outline-schema-changed", {
         bubbles: true,
         composed: true,
@@ -415,18 +402,9 @@ class HAXCMSBackendBeaker extends PolymerElement {
       try {
         import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor.js").then(
           e => {
-            let haxCmsSiteEditorElement = document.createElement(
-              "haxcms-site-editor"
-            );
-            haxCmsSiteEditorElement.jwt = this.jwt;
-            haxCmsSiteEditorElement.appStore = appstore;
             store.cmsSiteEditorAvailability();
-            if (!store.cmsSiteEditor.instance.haxCmsSiteEditorElement) {
-              store.cmsSiteEditor.instance.haxCmsSiteEditorElement = haxCmsSiteEditorElement;
-              store.cmsSiteEditor.instance.appendTarget.appendChild(
-                haxCmsSiteEditorElement
-              );
-            }
+            store.cmsSiteEditor.instance.jwt = this.jwt;
+            store.cmsSiteEditor.instance.appStore = appstore;
           },
           e => {
             //import failed
@@ -435,6 +413,19 @@ class HAXCMSBackendBeaker extends PolymerElement {
       } catch (err) {
         // error in the event this is a double registration
       }
+    } else {
+      // other things will have to sort out the fact that while we
+      // DO have a dynamic backend, we didn't get a hit on the JWT
+      // meaning that we are in a dynamic environment but logged out
+      // at the moment (or viewing a site we don't have authorization to)
+      window.dispatchEvent(
+        new CustomEvent("haxcms-not-logged-in", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: this
+        })
+      );
     }
   }
 }

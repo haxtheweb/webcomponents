@@ -6,7 +6,6 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import "@polymer/iron-ajax/iron-ajax.js";
@@ -421,8 +420,6 @@ article {
     super.connectedCallback();
     this.__ready = true;
     afterNextRender(this, function() {
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(RssItems.haxProperties, RssItems.tag, this);
       if (this._x2js) {
         if (this.auto) {
           this.shadowRoot.querySelector("#rssajax").auto = this.auto;

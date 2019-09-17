@@ -3,8 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 
 /**
@@ -35,7 +33,7 @@ class AccentCard extends SimpleColors {
   // render function
   static get template() {
     return html`
-      <style>
+      <style include="simple-colors-shared-styles">
         :host {
           display: block;
           border-radius: 2px;
@@ -467,16 +465,6 @@ class AccentCard extends SimpleColors {
       props = Object.assign(props, super.properties);
     }
     return props;
-  }
-
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    // Establish hax property binding
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(AccentCard.haxProperties, AccentCard.tag, this);
   }
 
   /**

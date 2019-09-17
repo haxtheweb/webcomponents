@@ -7,7 +7,6 @@ import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-ripple/paper-ripple.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@polymer/iron-iconset-svg/iron-iconset-svg.js";
 import "./lib/paper-audio-icons.js";
@@ -49,20 +48,9 @@ class PaperAudioPlayer extends mixinBehaviors(
   [IronA11yKeysBehavior],
   SchemaBehaviors(SimpleColors)
 ) {
-  constructor() {
-    super();
-    afterNextRender(this, function() {
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(
-        PaperAudioPlayer.haxProperties,
-        PaperAudioPlayer.tag,
-        this
-      );
-    });
-  }
   static get template() {
     return html`
-      <style>
+      <style include="simple-colors-shared-styles">
         :host {
           display: block;
           box-sizing: border-box;

@@ -1,6 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `place-holder`
@@ -12,13 +11,6 @@ import "@lrnwebcomponents/simple-colors/simple-colors.js";
  * - placeholder is a grey block on the page which can respond to drag and drop
  */
 class PlaceHolder extends PolymerElement {
-  constructor() {
-    super();
-    afterNextRender(this, function() {
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(PlaceHolder.haxProperties, PlaceHolder.tag, this);
-    });
-  }
   static get template() {
     return html`
       <style include="simple-colors-shared-styles">

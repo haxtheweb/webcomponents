@@ -1,8 +1,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 /**
@@ -181,10 +179,6 @@ class LrnCalendar extends PolymerElement {
     import("@lrnwebcomponents/lrnsys-layout/lib/lrnsys-collapselist.js");
     import("@lrnwebcomponents/lrnsys-layout/lib/lrnsys-collapselist-item.js");
     import("@lrnwebcomponents/lrn-calendar/lib/lrn-calendar-date.js");
-    afterNextRender(this, function() {
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(LrnCalendar.haxProperties, LrnCalendar.tag, this);
-    });
     const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
     const location = `${basePath}lib/ical.js/build/ical.js`;
     window.addEventListener(

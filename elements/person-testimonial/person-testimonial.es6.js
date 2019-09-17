@@ -1,6 +1,4 @@
 import { html } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `person-testimonial`
@@ -14,18 +12,10 @@ class PersonTestimonial extends SimpleColors {
     import("@polymer/iron-image/iron-image.js");
     import("@polymer/iron-icon/iron-icon.js");
     import("@lrnwebcomponents/person-testimonial/lib/person-testimonial-icon.js");
-    afterNextRender(this, function() {
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(
-        PersonTestimonial.haxProperties,
-        PersonTestimonial.tag,
-        this
-      );
-    });
   }
   static get template() {
     return html`
-      <style>
+      <style include="simple-colors-shared-styles">
         :host {
           display: block;
           --person-testimonial-font-family: sans-serif;
