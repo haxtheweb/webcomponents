@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 /**
  * `md-block`
@@ -134,19 +133,6 @@ class MdBlock extends PolymerElement {
     this.source = null;
     return false;
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(MdBlock.haxProperties, MdBlock.tag, this);
-  }
-
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
 }
 window.customElements.define(MdBlock.tag, MdBlock);
 export { MdBlock };

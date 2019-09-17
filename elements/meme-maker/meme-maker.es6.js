@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 /**
  * `meme-maker`
  * Connects lrndesign-gallery to HAX
@@ -85,8 +84,6 @@ class MemeMaker extends LitElement {
   constructor() {
     super();
     this.alt = "";
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(MemeMaker.haxProperties, MemeMaker.tag, this);
   }
   static get properties() {
     return {

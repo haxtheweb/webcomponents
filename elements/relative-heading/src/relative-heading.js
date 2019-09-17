@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 /**
  * `relative-heading`
  * `outputs the correct heading hierarchy based on parent&#39;s heading`
@@ -24,18 +23,6 @@ class RelativeHeading extends PolymerElement {
    */
   static get tag() {
     return "relative-heading";
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(
-      RelativeHeading.haxProperties,
-      RelativeHeading.tag,
-      this
-    );
   }
   /**
    * update this level when the parent id changes

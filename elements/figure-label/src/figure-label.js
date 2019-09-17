@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 /**
  * `figure-label`
  * `Figure label element to mark media assets within content.`
@@ -25,25 +24,6 @@ class FigureLabel extends LitElement {
   tag() {
     return "figure-label";
   }
-
-  // life cycle
-  constructor() {
-    super();
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(FigureLabel.haxProperties, FigureLabel.tag, this);
-  }
-  // static get observedAttributes() {
-  //   return [];
-  // }
-  // disconnectedCallback() {}
-
-  // attributeChangedCallback(attr, oldValue, newValue) {}
 }
 customElements.define("figure-label", FigureLabel);
 

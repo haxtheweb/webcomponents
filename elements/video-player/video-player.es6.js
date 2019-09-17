@@ -4,8 +4,6 @@
  */
 import { html } from "@polymer/polymer/polymer-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { A11yBehaviors } from "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
@@ -65,6 +63,7 @@ class VideoPlayer extends MediaBehaviorsVideo(
   padding: 8px;
   @apply --video-player-caption-theme;
 }</style>
+<style include="simple-colors-shared-styles"></style>
 <div style$="[[playerStyle]]">
 <template is="dom-if" if="[[isA11yMedia]]" restamp>
   <a11y-media-player
@@ -587,13 +586,6 @@ class VideoPlayer extends MediaBehaviorsVideo(
     }
     return props;
   }
-  constructor() {
-    super();
-    afterNextRender(this, function() {
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(VideoPlayer.haxProperties, VideoPlayer.tag, this);
-    });
-  }
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -661,7 +653,7 @@ class VideoPlayer extends MediaBehaviorsVideo(
   _getTrackData(track, tracks) {
     let temp =
       typeof tracks === "string" ? JSON.parse(tracks).slice() : tracks.slice();
-    if (track !== undefined && track !== null)
+    if (track !== undefined && track !== null && track !== "")
       temp.push({
         src: track,
         srclang: this.lang,

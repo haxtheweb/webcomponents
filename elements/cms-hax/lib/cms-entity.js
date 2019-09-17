@@ -1,10 +1,8 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-spinner/paper-spinner.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { wipeSlot } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 /**
  * `cms-entity`
@@ -226,10 +224,6 @@ class CMSEntity extends PolymerElement {
         }
       }
     }
-    afterNextRender(this, function() {
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(CMSEntity.haxProperties, CMSEntity.tag, this);
-    });
   }
   static get haxProperties() {
     return {

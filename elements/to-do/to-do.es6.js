@@ -1,6 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
  * `to-do`
@@ -13,10 +11,6 @@ class ToDo extends SchemaBehaviors(PolymerElement) {
     import("@polymer/paper-button/paper-button.js");
     import("@polymer/paper-card/paper-card.js");
     import("@polymer/paper-input/paper-input.js");
-    afterNextRender(this, function() {
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(ToDo.haxProperties, ToDo.tag, this);
-    });
   }
   static get template() {
     return html`

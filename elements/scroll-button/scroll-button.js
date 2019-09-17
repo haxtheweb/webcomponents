@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/iron-icons/iron-icons.js";
@@ -172,8 +171,6 @@ class ScrollButton extends PolymerElement {
         });
       }
     });
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(ScrollButton.haxProperties, ScrollButton.tag, this);
   }
   /**
    * life cycle, element is removed from the DOM

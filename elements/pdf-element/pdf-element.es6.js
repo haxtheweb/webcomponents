@@ -1,9 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/iron-input/iron-input.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "pdfjs-dist/build/pdf.js";
 import "pdfjs-dist/build/pdf.worker.js";
@@ -42,10 +40,6 @@ class PdfElement extends SchemaBehaviors(PolymerElement) {
     import("@polymer/paper-card/paper-card.js");
     import("@polymer/app-layout/app-toolbar/app-toolbar.js");
     import("@polymer/paper-spinner/paper-spinner.js");
-    afterNextRender(this, function() {
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(PdfElement.haxProperties, PdfElement.tag, this);
-    });
   }
   static get template() {
     return html`

@@ -9,7 +9,6 @@ import {
   customElement,
   property
 } from "lit-element/lit-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 /**
  * `micro-copy-heading`
  * `small call to action / attention that acts as a heading too`
@@ -18,7 +17,6 @@ import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js
  *  -
  *
  * @customElement
- * @lit-html
  * @lit-element
  * @demo demo/index.html
  */
@@ -169,18 +167,6 @@ class MicroCopyHeading extends LitElement {
         }
       }
     }
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(
-      MicroCopyHeading.haxProperties,
-      MicroCopyHeading.tag,
-      this
-    );
   }
 }
 customElements.define(MicroCopyHeading.tag, MicroCopyHeading);

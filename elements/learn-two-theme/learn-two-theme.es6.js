@@ -276,10 +276,11 @@ map-menu * {
   }
 }
 </style>
+<style include="simple-colors-shared-styles"></style>
 <app-drawer-layout>
-  <paper-icon-button id="menubutton" icon="menu" on-click="toggleDrawer"></paper-icon-button>
+  <paper-icon-button id="menubutton" icon="menu" on-click="toggleDrawer" title="Toggle site menu"></paper-icon-button>
   <app-drawer swipe-open slot="drawer" opened="{{opened}}">
-    <paper-icon-button id="menubutton2" icon="menu" on-click="toggleDrawer"></paper-icon-button>
+    <paper-icon-button id="menubutton2" icon="menu" on-click="toggleDrawer" title="Toggle site menu"></paper-icon-button>
     <div class="header-wrapper">
       <div class="header">
         <site-title disabled$="[[editMode]]"></site-title>

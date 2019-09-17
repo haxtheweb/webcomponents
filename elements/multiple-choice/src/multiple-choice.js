@@ -3,7 +3,6 @@ import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@polymer/paper-toast/paper-toast.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
@@ -574,12 +573,6 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
     this.setAttribute("typeof", "oer:Assessment");
     afterNextRender(this, function() {
       this.$.toast.fitInto = this;
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(
-        MultipleChoice.haxProperties,
-        MultipleChoice.tag,
-        this
-      );
     });
   }
 }

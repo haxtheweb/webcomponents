@@ -3,8 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 /**
 `magazine-cover`
 A Magazine cover element
@@ -25,14 +23,6 @@ class MagazineCover extends PolymerElement {
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/iron-icon/iron-icon.js");
     import("@polymer/paper-button/paper-button.js");
-    afterNextRender(this, function() {
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(
-        MagazineCover.haxProperties,
-        MagazineCover.tag,
-        this
-      );
-    });
   }
   static get template() {
     return html`

@@ -4,7 +4,6 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 /**
@@ -115,12 +114,6 @@ class A11yGifPlayer extends SchemaBehaviors(PolymerElement) {
     super.connectedCallback();
     afterNextRender(this, function() {
       this.addEventListener("click", this.toggleAnimation.bind(this));
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(
-        A11yGifPlayer.haxProperties,
-        A11yGifPlayer.tag,
-        this
-      );
     });
   }
   disconnectedCallback() {

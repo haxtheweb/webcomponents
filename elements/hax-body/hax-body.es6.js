@@ -35,7 +35,7 @@ class HaxBody extends PolymerElement {
   }
   static get template() {
     return html`
-      <style include="hax-shared-styles">
+      <style include="simple-colors-shared-styles hax-shared-styles">
         :host {
           display: block;
           min-height: 32px;
@@ -391,6 +391,13 @@ class HaxBody extends PolymerElement {
       // ensure this resets every append
       this.__tabTrap = false;
     });
+  }
+  disconnectedCallback() {
+    if (this._observer) {
+      this._observer.disconnect();
+      this._observer = null;
+    }
+    super.disconnectedCallback();
   }
   /**
    * Keep the context menu visible if needed

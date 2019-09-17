@@ -4,7 +4,6 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `learn-two-theme`
  * `Learn2 theme for HAXcms`
@@ -93,7 +92,6 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
           --site-active-title-heading: {
             font-family: var(--__learn-two-theme-default-font-family);
             font-size: 52px;
-            letter-spacing: -3px;
             line-height: 78px;
             margin-bottom: 27.2px;
             margin-top: 13.6px;
@@ -115,8 +113,6 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
             font-size: 28px;
             margin: 0;
             padding: 0;
-            letter-spacing: -3px;
-            line-height: 78px;
             text-align: center;
             text-rendering: optimizelegibility;
             font-weight: 100;
@@ -185,6 +181,11 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
         :host([edit-mode]) app-drawer {
           opacity: 0.2;
           pointer-events: none;
+        }
+
+        :host([is-logged-in]) app-drawer,
+        :host([is-logged-in]) app-drawer-layout[narrow] {
+          left: 48px;
         }
 
         app-drawer {
@@ -358,6 +359,7 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
   }
   constructor() {
     super();
+    import("@lrnwebcomponents/simple-colors/simple-colors.js");
     import("@polymer/app-layout/app-drawer/app-drawer.js");
     import("@polymer/app-layout/app-drawer-layout/app-drawer-layout.js");
     import("@polymer/paper-icon-button/paper-icon-button.js");

@@ -3,10 +3,8 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { A11yBehaviors } from "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 /**
  * `hero-banner`
  * `That thing no one wants to make over and over again yet always does...`
@@ -182,16 +180,6 @@ class HeroBanner extends A11yBehaviors(SimpleColors) {
     return props;
   }
 
-  /**
-   * Attached to the DOM, now fire.
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(HeroBanner.haxProperties, HeroBanner.tag, this);
-    });
-  }
   static get haxProperties() {
     return {
       canScale: false,

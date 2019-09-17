@@ -14,7 +14,6 @@ import "@lrnwebcomponents/simple-popover/simple-popover.js";
  *  -
  *
  * @customElement
- * @lit-html
  * @lit-element
  * @demo demo/index.html
  */
@@ -132,7 +131,7 @@ simple-popover {
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
-  tag() {
+  static get tag() {
     return "simple-blog-card";
   }
   static get styles() {
@@ -331,5 +330,5 @@ simple-popover {
     this.shadow = 0;
   }
 }
-customElements.define("simple-blog-card", SimpleBlogCard);
+customElements.define(SimpleBlogCard.tag, SimpleBlogCard);
 export { SimpleBlogCard };

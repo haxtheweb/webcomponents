@@ -255,6 +255,10 @@ class CmsHax extends PolymerElement {
    * detached life cycle
    */
   disconnectedCallback() {
+    if (this._observer) {
+      this._observer.disconnect();
+      this._observer = null;
+    }
     window.removeEventListener("hax-store-ready", this._storeReady.bind(this));
     window.removeEventListener("hax-save", this._saveFired.bind(this));
     super.disconnectedCallback();
@@ -275,22 +279,25 @@ class CmsHax extends PolymerElement {
     window.addEventListener("hax-save", this._saveFired.bind(this));
     // notice ANY change to body and bubble up, only when we are attached though
     if (this.syncBody) {
-      FlattenedNodesObserver(window.HaxStore.instance.activeHaxBody, info => {
-        if (!this.__lock) {
-          this.__lock = true;
-          this.dispatchEvent(
-            new CustomEvent("hax-body-content-changed", {
-              bubbles: true,
-              cancelable: true,
-              composed: true,
-              detail: window.HaxStore.instance.activeHaxBody.haxToContent()
-            })
-          );
-          setTimeout(() => {
-            this.__lock = false;
-          }, 100);
+      this._observer = FlattenedNodesObserver(
+        window.HaxStore.instance.activeHaxBody,
+        info => {
+          if (!this.__lock) {
+            this.__lock = true;
+            this.dispatchEvent(
+              new CustomEvent("hax-body-content-changed", {
+                bubbles: true,
+                cancelable: true,
+                composed: true,
+                detail: window.HaxStore.instance.activeHaxBody.haxToContent()
+              })
+            );
+            setTimeout(() => {
+              this.__lock = false;
+            }, 100);
+          }
         }
-      });
+      );
     }
   }
 

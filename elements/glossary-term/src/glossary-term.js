@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/lrn-vocab/lrn-vocab.js";
 
 /**
@@ -33,15 +32,6 @@ class GlossaryTerm extends PolymerElement {
       // Observer method name, followed by a list of dependencies, in parenthesis
       "__endpointMethodChanged(endpoint, serviceType)"
     ];
-  }
-
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  constructor() {
-    super();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(GlossaryTerm.haxProperties, GlossaryTerm.tag, this);
   }
 
   __endpointMethodChanged(endpoint, serviceType) {

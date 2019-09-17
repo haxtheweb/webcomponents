@@ -3,12 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@polymer/paper-material/paper-material.js";
 import "@polymer/paper-fab/paper-fab.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 /**
@@ -332,10 +330,6 @@ class WavePlayer extends SchemaBehaviors(PolymerElement) {
     super();
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/iron-icons/av-icons.js");
-    afterNextRender(this, function() {
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(WavePlayer.haxProperties, WavePlayer.tag, this);
-    });
     const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
     const location = `${basePath}lib/wavesurfer.js/dist/wavesurfer.js`;
     window.addEventListener(

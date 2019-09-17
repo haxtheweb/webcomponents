@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { CountUp } from "countup.js";
 
 /**
@@ -32,12 +31,6 @@ class CountUpElement extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(
-      CountUpElement.haxProperties,
-      CountUpElement.tag,
-      this
-    );
     // setup the intersection observer
     this.observer = new IntersectionObserver(
       this.handleIntersectionCallback.bind(this),

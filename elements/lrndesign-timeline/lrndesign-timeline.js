@@ -3,8 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 
@@ -467,14 +465,8 @@ class LrndesignTimeline extends SimpleColors {
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
-    let root = this;
     super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(
-      LrndesignTimeline.haxProperties,
-      LrndesignTimeline.tag,
-      this
-    );
+    let root = this;
 
     window.ResponsiveUtility.requestAvailability();
     window.dispatchEvent(

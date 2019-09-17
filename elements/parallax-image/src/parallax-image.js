@@ -1,23 +1,10 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
  * `parallax-image`
  * @demo demo/index.html
  */
 class ParallaxImage extends SchemaBehaviors(PolymerElement) {
-  constructor() {
-    super();
-    afterNextRender(this, function() {
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(
-        ParallaxImage.haxProperties,
-        ParallaxImage.tag,
-        this
-      );
-    });
-  }
   static get template() {
     return html`
       <style>

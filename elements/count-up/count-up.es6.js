@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { CountUp } from "countup.js";
 
 /**
@@ -14,7 +13,6 @@ import { CountUp } from "countup.js";
  *  -
  *
  * @customElement
- * @lit-html
  * @lit-element
  * @demo demo/index.html
  */
@@ -232,7 +230,7 @@ class CountUpElement extends PolymerElement {
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
-  tag() {
+  static get tag() {
     return "count-up";
   }
   /**
@@ -240,8 +238,6 @@ class CountUpElement extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setup(CountUpElement.haxProperties, "count-up", this);
     // setup the intersection observer
     this.observer = new IntersectionObserver(
       this.handleIntersectionCallback.bind(this),
@@ -273,12 +269,6 @@ class CountUpElement extends PolymerElement {
       }
     }
   }
-  // static get observedAttributes() {
-  //   return [];
-  // }
-  // disconnectedCallback() {}
-
-  // attributeChangedCallback(attr, oldValue, newValue) {}
 }
-customElements.define("count-up", CountUpElement);
+customElements.define(CountUpElement.tag, CountUpElement);
 export { CountUpElement, CountUp };

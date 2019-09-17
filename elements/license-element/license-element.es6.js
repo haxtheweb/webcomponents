@@ -49,8 +49,6 @@ export class licenseList {
 }
 
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
  * `license-element`
@@ -228,14 +226,6 @@ class LicenseElement extends SchemaBehaviors(PolymerElement) {
   constructor() {
     super();
     this.licenseList = new licenseList();
-    afterNextRender(this, function() {
-      this.HAXWiring = new HAXWiring();
-      this.HAXWiring.setup(
-        LicenseElement.haxProperties,
-        LicenseElement.tag,
-        this
-      );
-    });
   }
   static get haxProperties() {
     return {
