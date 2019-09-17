@@ -49,10 +49,13 @@ class EditableTableEditorRowcol extends cellBehaviors(PolymerElement) {
           margin: 0;
           display: block;
           background-color: transparent;
+          padding-top: var(--editable-table-row-vertical-padding);
+          padding-bottom: var(--editable-table-row-vertical-padding);
+          font-family: var(--editable-table-secondary-font-family);
         }
         :host([condensed]) paper-button {
-          padding-top: 0;
-          padding-bottom: 0;
+          padding-top: var(--editable-table-row-vertical-padding-condensed);
+          padding-bottom: var(--editable-table-row-vertical-padding-condensed);
         }
       </style>
       <paper-menu-button id="menu">

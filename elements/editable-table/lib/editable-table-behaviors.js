@@ -18,7 +18,8 @@ export const displayBehaviors = function(SuperClass) {
          */
         bordered: {
           type: Boolean,
-          value: false
+          value: false,
+          reflectToAttribute: true
         },
         /**
          * a table caption
@@ -75,17 +76,19 @@ export const displayBehaviors = function(SuperClass) {
           reflectToAttribute: true
         },
         /**
-         * Enable sorting by column header.
+         * When table is wider than screens,
+         * users will select a column to display
+         * instead of scrolling across the table.
          */
-        sort: {
+        responsive: {
           type: Boolean,
           value: false,
           reflectToAttribute: true
         },
         /**
-         * When table is wider than screens, users will scroll across the table instead of seclecting a column to display.
+         * Enable sorting by column header.
          */
-        scroll: {
+        sort: {
           type: Boolean,
           value: false,
           reflectToAttribute: true
@@ -109,17 +112,15 @@ export const displayBehaviors = function(SuperClass) {
      */
     getData() {
       let data = {
-        accentColor: this.accentColor,
         bordered: !this.hideBordered ? this.bordered : null,
         caption: this.caption,
         columnHeader: this.columnHeader,
         condensed: !this.hideCondensed ? this.condensed : null,
-        dark: !this.hideDark ? this.dark : null,
         data: this.data,
         filter: !this.hideFilter ? this.filter : null,
         footer: this.footer,
         rowHeader: this.rowHeader,
-        scroll: !this.hideScroll ? this.scroll : null,
+        responsive: !this.hideResponsive ? this.responsive : null,
         sort: !this.hideSort ? this.sort : null,
         striped: !this.hideStriped ? this.striped : null,
         summary: this.summary
@@ -186,20 +187,6 @@ export const editBehaviors = function(SuperClass) {
           value: false
         },
         /**
-         * Hide the accent color styles menu option.
-         */
-        hideAccentColor: {
-          type: Boolean,
-          value: false
-        },
-        /**
-         * Hide the dark theme styles menu option.
-         */
-        hideDarkTheme: {
-          type: Boolean,
-          value: false
-        },
-        /**
          * Hide the filtering option.
          */
         hideFilter: {
@@ -214,9 +201,9 @@ export const editBehaviors = function(SuperClass) {
           value: false
         },
         /**
-         * Hide the scroll table styles menu option
+         * Hide the responsive table styles menu option
          */
-        hideScroll: {
+        hideResponsive: {
           type: Boolean,
           value: false
         },

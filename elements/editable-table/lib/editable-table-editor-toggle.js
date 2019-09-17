@@ -5,8 +5,9 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/paper-button/paper-button.js";
-import "@polymer/paper-toggle-button/paper-toggle-button.js";
-import "@polymer/paper-item/paper-item.js";
+import "./editable-table-iconset.js";
+import "@polymer/iron-icons/image-icons.js";
+import "@polymer/iron-icons/device-icons.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 
 /**
@@ -32,30 +33,61 @@ class EditableTableEditorToggle extends PolymerElement {
   static get template() {
     return html`
       <style>
-        :host {
-          display: block;
+        :host([hidden]) {
+          display: none;
         }
-        :host .setting {
-          font-size: 95%;
-          padding: var(--editable-table-toggle-padding, 8px 0px);
-          justify-content: space-between;
+        :host paper-button {
+          padding: 2px;
+          margin: 0;
           width: 100%;
+          min-width: unset;
+          display: inline-flex;
+          justify-content: space-between;
+          align-items: center;
+          align-content: stretch;
+          text-transform: unset;
+          font-family: var(--editable-table-secondary-font-family);
+          background-color: var(--editable-table-button-bg-color);
+          color: var(--editable-table-button-color);
         }
-        :host([disabled]) .setting-text {
-          opacity: 0.5;
+        :host([toggled]) paper-button {
+          background-color: var(--editable-table-button-toggled-bg-color);
+          color: var(--editable-table-button-toggled-color);
+        }
+        :host(:not([disabled])) paper-button:focus,
+        :host(:not([disabled])) paper-button:hover {
+          background-color: var(--editable-table-button-hover-bg-color);
+          color: var(--editable-table-button-hover-color);
+          cursor: pointer;
+        }
+        :host([disabled]) paper-button {
+          background-color: var(--editable-table-button-disabled-bg-color);
+          color: var(--editable-table-button-disabled-color);
+          cursor: not-allowed;
+        }
+        :host paper-button > div {
+          flex-grow: 1;
+        }
+        :host .sr-only {
+          position: absolute;
+          left: -9999px;
+          font-size: 0;
+          height: 0;
+          width: 0;
+          overflow: hidden;
+        }
+        :host #filter-off {
+          opacity: 0.25;
         }
       </style>
-      <div class="setting">
-        <div class="setting-control">
-          <paper-toggle-button
-            id="button"
-            checked\$="[[value]]"
-            disabled\$="[[disabled]]"
-            >[[label]]</paper-toggle-button
-          >
-          <paper-tooltip id="tooltip" for="button">[[tooltip]]</paper-tooltip>
-        </div>
-      </div>
+      <span hidden$="[[!toggled]]" class="sr-only">[[labelOn]]</span>
+      <span hidden$="[[toggled]]" class="sr-only"
+        >[[_getLabel(labelOff,labelOn)]]</span
+      >
+      <paper-button id="button" disabled$="[[disabled]]">
+        <iron-icon icon$="[[icon]]"></iron-icon>
+      </paper-button>
+      <paper-tooltip for="button">[[tooltip]]</paper-tooltip>
     `;
   }
 
@@ -65,11 +97,11 @@ class EditableTableEditorToggle extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     afterNextRender(this, function() {
-      this.addEventListener("change", this._onChange.bind(this));
+      this.addEventListener("click", this._onClick.bind(this));
     });
   }
   disconnectedCallback() {
-    this.removeEventListener("change", this._onChange.bind(this));
+    this.addEventListener("click", this._onClick.bind(this));
     super.disconnectedCallback();
   }
   static get properties() {
@@ -83,16 +115,30 @@ class EditableTableEditorToggle extends PolymerElement {
         reflectToAttribute: true
       },
       /**
-       * label for menu setting
+       * button id
        */
-      label: {
+      id: {
         type: String,
         value: null
       },
       /**
-       * the property to update
+       * icon
        */
-      prop: {
+      icon: {
+        type: String,
+        value: null
+      },
+      /**
+       * label that indicates that button is toggled off
+       */
+      labelOff: {
+        type: String,
+        value: null
+      },
+      /**
+       * label that indicates that button is toggled on
+       */
+      labelOn: {
         type: String,
         value: null
       },
@@ -106,29 +152,32 @@ class EditableTableEditorToggle extends PolymerElement {
       /**
        * boolean value of menu setting
        */
-      value: {
+      toggled: {
         type: Boolean,
         value: false
       }
     };
   }
+  _getLabel(off, on) {
+    return off || on;
+  }
 
   /**
    * Set up event listener to fire when toggled
    */
-  _onChange(e) {
-    if (e.srcElement === this.$.button)
-      this.dispatchEvent(
-        new CustomEvent("editable-table-setting-changed", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: {
-            prop: this.prop,
-            value: e.srcElement.checked
-          }
-        })
-      );
+  _onClick() {
+    console.log("editable-table-setting-changed", this.id, this.toggled);
+    this.dispatchEvent(
+      new CustomEvent("editable-table-setting-changed", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: {
+          prop: this.id,
+          value: !this.toggled
+        }
+      })
+    );
   }
 }
 window.customElements.define(

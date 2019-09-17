@@ -36,6 +36,7 @@ class EditableTableEditorInsdel extends PolymerElement {
           display: block;
           text-transform: none;
           text-align: left;
+          font-family: var(--editable-table-secondary-font-family);
         }
       </style>
       <paper-button><slot></slot></paper-button>

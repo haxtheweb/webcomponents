@@ -11,14 +11,14 @@ Custom property | Description | Default
 `--editable-table-light-weight` | The lightest font weight applied to the table | 200
 `--editable-table-medium-weight` | The average font weight applied to the table | 400
 `--editable-table-heavy-weight` | The heaviest font weight applied to the table | 500
-`--editable-table-color` | The default text color | `--simple-colors-foreground3` or #222
-`--editable-table-bg-color` | The default background color | `--simple-colors-background1` or #fff
-`--editable-table-border-color` | The default border color | `--simple-colors-background5` or #999
-`--editable-table-caption-color` | The caption text color | `--simple-colors-foreground3` or #222
-`--editable-table-caption-bg-color` | The caption background color | `--simple-colors-background1` or #fff
-`--editable-table-heading-color` | The heading text color | `--simple-colors-foreground1` or #000
-`--editable-table-heading-bg-color` | The heading background color | `--simple-colors-background3` or #ddd
-`--editable-table-stripe-bg-color` | The striping background color | `--simple-colors-background2` or #eee
+`--editable-table-color` | The default text color | #222
+`--editable-table-bg-color` | The default background color | #fff
+`--editable-table-border-color` | The default border color | #999
+`--editable-table-caption-color` | The caption text color | #222
+`--editable-table-caption-bg-color` | The caption background color | #fff
+`--editable-table-heading-color` | The heading text color | #000
+`--editable-table-heading-bg-color` | The heading background color | #ddd
+`--editable-table-stripe-bg-color` | The striping background color | #eee
 `--editable-table-style-stripe` | Applies a style to the striping | `background-color: var(--editable-table-stripe-bg-color);`
 `--editable-table-style-column-header` | Applies a style to the column headers | ```font-weight: var(--editable-table-heavy-weight);
 color: var(--editable-table-heading-color);
@@ -38,24 +38,59 @@ const styleElement = document.createElement("dom-module");
 
 const css = html`
   <style is="custom-style">
-    :host,
-    :host([accent-color="none"]) {
+    :host {
       display: block;
       width: 100%;
       max-width: 100%;
       overflow-x: scroll;
       margin: 15px 0;
+      --editable-table-font-family: inherit;
+      --editable-table-secondary-font-family: "Roboto", "Noto", sans-serif;
+      font-family: var(--editable-table-font-family);
+
       --editable-table-light-weight: 200;
       --editable-table-medium-weight: 400;
       --editable-table-heavy-weight: 500;
-      --editable-table-color: var(--simple-colors-foreground3, #222);
-      --editable-table-bg-color: var(--simple-colors-background1, #fff);
-      --editable-table-border-color: var(--simple-colors-background5, #999);
-      --editable-table-caption-color: var(--simple-colors-foreground3, #222);
-      --editable-table-caption-bg-color: var(--simple-colors-background1, #fff);
-      --editable-table-heading-color: var(--simple-colors-foreground1, #000);
-      --editable-table-heading-bg-color: var(--simple-colors-background3, #ddd);
-      --editable-table-stripe-bg-color: var(--simple-colors-background2, #eee);
+      --editable-table-color: #222;
+      --editable-table-bg-color: #fff;
+      --editable-table-caption-bg-color: #fff;
+      --editable-table-heading-color: #000;
+      --editable-table-heading-bg-color: #ddd;
+      --editable-table-stripe-bg-color: #eee;
+
+      --editable-table-row-horizontal-padding: 4px;
+      --editable-table-row-vertical-padding: 5px;
+      --editable-table-row-vertical-padding-condensed: 2px;
+      --editable-table-row-padding: var(--editable-table-row-vertical-padding)
+        var(--editable-table-row-horizontal-padding);
+      --editable-table-row-padding-condensed: var(
+          --editable-table-row-vertical-padding-condensed
+        )
+        var(--editable-table-row-horizontal-padding);
+
+      --editable-table-border-width: 1px;
+      --editable-table-border-style: solid;
+      --editable-table-border-color: #999;
+      --editable-table-border: var(--editable-table-border-width)
+        var(--editable-table-border-style) var(--editable-table-border-color);
+
+      --editable-table-caption-color: var(--editable-table-color);
+      --editable-table-button-color: var(--editable-table-border-color);
+      --editable-table-button-bg-color: var(--editable-table-bg-color);
+      --editable-table-button-toggled-color: var(--editable-table-color);
+      --editable-table-button-toggled-bg-color: var(--editable-table-bg-color);
+      --editable-table-button-hover-color: unset;
+      --editable-table-button-hover-bg-color: var(
+        --editable-table-heading-bg-color
+      );
+      --editable-table-button-disabled-color: var(
+        --editable-table-border-color
+      );
+      --editable-table-button-disabled-bg-color: var(
+        --editable-table-heading-bg-color
+      );
+      --secondary-text-color: var(--editable-table-border-color);
+
       --editable-table-style-stripe: {
         background-color: var(--editable-table-stripe-bg-color);
       }
@@ -73,6 +108,9 @@ const css = html`
         color: var(--editable-table-heading-color);
         border-top: 3px solid var(--editable-table-color);
       }
+      --paper-font-caption: {
+        font-family: var(--editable-table-secondary-font-family);
+      }
     }
     :host .sr-only {
       position: absolute;
@@ -82,50 +120,11 @@ const css = html`
       width: 0;
       overflow: hidden;
     }
-    :host([accent-color]) {
-      --editable-table-caption-color: var(
-        --simple-colors-accent-foreground3,
-        #222
-      );
-      --editable-table-heading-bg-color: var(
-        --simple-colors-accent-background2,
-        #ddd
-      );
-      --editable-table-border-color: var(
-        --simple-colors-accent-foreground5,
-        #999
-      );
-    }
-    :host([dark]),
-    :host([dark][accent-color="none"]) {
-      --editable-table-light-weight: 100;
-      --editable-table-medium-weight: 300;
-      --editable-table-heavy-weight: 400;
-      --editable-table-color: var(--simple-colors-foreground1, #fff);
-      --editable-table-bg-color: var(--simple-colors-background3, #222);
-      --editable-table-border-color: var(--simple-colors-background1, #000);
-      --editable-table-caption-color: var(--simple-colors-foreground1, #fff);
-      --editable-table-caption-bg-color: var(--simple-colors-background1, #000);
-      --editable-table-heading-bg-color: var(--simple-colors-background1, #000);
-      --editable-table-heading-color: var(--simple-colors-foreground1, #fff);
-      --editable-table-stripe-bg-color: var(--simple-colors-background2, #111);
-    }
-    :host([dark][accent-color]) {
-      --editable-table-caption-bg-color: var(
-        --simple-colors-accent-background2,
-        #000
-      );
-      --editable-table-heading-bg-color: var(
-        --simple-colors-accent-background3,
-        #000
-      );
-      --editable-table-border-color: var(
-        --simple-colors-accent-foreground5,
-        #000
-      );
-    }
     :host .table {
-      width: 100%;
+      width: calc(
+        100% - var(--editable-table-border-width) -
+          var(--editable-table-border-width)
+      );
       display: table;
     }
     :host .table,
@@ -142,7 +141,6 @@ const css = html`
       font-weight: var(--editable-table-heavy-weight);
       color: var(--editable-table-caption-color);
       background-color: var(--editable-table-caption-bg-color);
-      padding: 8px 0 0;
       width: 100%;
     }
     :host .thead {
@@ -153,11 +151,6 @@ const css = html`
     }
     :host .body {
       display: table-footer-group;
-    }
-    :host([dark][bordered]) .caption {
-      /*padding: 8px 0 0 4px;*/
-      border: 1px solid var(--editable-table-border-color);
-      border-bottom: none;
     }
     :host .table .tr {
       display: table-row;
@@ -172,11 +165,13 @@ const css = html`
     :host .table .td {
       display: table-cell;
       height: 24px;
-      padding: 12px 4px;
+    }
+    :host .table .cell {
+      padding: var(--editable-table-row-padding);
     }
     :host([condensed]) .table .th,
-    :host([condensed]) .table .td {
-      padding: 0 4px;
+    :host([condensed]) .table .cell {
+      padding: var(--editable-table-row-padding-condensed);
     }
     :host .caption,
     :host .table .th,
@@ -189,16 +184,6 @@ const css = html`
     }
     :host .table .td[negative] .cell {
       color: var(--editable-table-negative-color, --editable-table-color);
-    }
-    :host .caption > div {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-    }
-    :host .caption > div > div {
-      padding-bottom: 8px;
-      flex-grow: 1;
-      width: auto;
     }
     :host editable-table-sort {
       width: 100%;

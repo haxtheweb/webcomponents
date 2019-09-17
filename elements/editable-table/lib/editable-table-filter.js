@@ -39,6 +39,7 @@ class EditableTableFilter extends PolymerElement {
           align-items: center;
           align-content: stretch;
           text-transform: unset;
+          font-family: var(--editable-table-font-family);
         }
         :host paper-button > div {
           flex-grow: 1;

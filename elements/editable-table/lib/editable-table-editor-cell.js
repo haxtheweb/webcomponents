@@ -42,7 +42,10 @@ class EditableTableEditorCell extends cellBehaviors(PolymerElement) {
         :host {
           padding: 0;
           margin: 0;
-          width: 100%;
+          width: calc(
+            100% - var(--editable-table-row-horizontal-padding) -
+              var(--editable-table-row-horizontal-padding)
+          );
           min-width: unset;
           display: inline-flex;
           justify-content: space-between;

@@ -8,8 +8,6 @@ import "@lrnwebcomponents/dropdown-select/dropdown-select.js";
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
-
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { ResponsiveUtilityBehaviors } from "@lrnwebcomponents/responsive-utility/lib/responsive-utility-behaviors.js";
 import { displayBehaviors } from "./editable-table-behaviors.js";
 import "./editable-table-sort.js";
@@ -23,12 +21,10 @@ import "./editable-table-styles.js";
  * @microcopy - language worth noting:
  * ```
  <editable-table-display 
-  accent-color="indigo"     //Optional accent color for column headers and border. Default is none. (See https://lrnwebcomponents.github.io/simple-colors/components/simple-colors/)
   bordered                  //Adds borders to table. Default is no border.
   caption="..."             //The caption or title for the table.
   column-header             //Does the table use the first row as a column-header? Default is false.
   condensed                 //Condense the padding above and below the table? Default is false.
-  dark                      //Optional dark theme. Default is light theme. (See https://lrnwebcomponents.github.io/simple-colors/components/simple-colors/)
   data=[]                      //Table data as an array. For example: 
                             [
                               [ ["..."], ["..."] ],     //This line represents a row with two columns
@@ -43,7 +39,6 @@ import "./editable-table-styles.js";
   hide-accent-color         //Hide the accent color dropdown menu? Default is false which enables the menu which changes the accent-color property.
   hide-bordered             //Hide the bordered toggle? Default is false so that a toggle button to control the bordered property.
   hide-condensed            //Hide the condensed toggle? Default is false so that a toggle button to control the condensed property.
-  hide-dark-theme           //Hide the dark theme toggle? Default is false so that a toggle button to control the dark property.
   hide-filter               //Hide the filter toggle? Default is false so that a toggle button to control the filter property.
   hide-sort                 //Hide the sort toggle? Default is false so that a toggle button to control the sort property.
   hide-scroll               //Hide the scroll toggle? Default is false so that a toggle button to control the scroll property.
@@ -69,7 +64,7 @@ class EditableTableDisplay extends displayBehaviors(
 ) {
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles editable-table-styles">
+      <style include="editable-table-styles">
         :host([dark]) .caption {
           padding: 4px 4px 0;
         }
@@ -173,7 +168,7 @@ class EditableTableDisplay extends displayBehaviors(
                   restamp=""
                 >
                   <td
-                    class="td"
+                    class="td cell"
                     numeric$="[[_isNumericColumn(index)]]"
                     negative$="[[_isNegative(cell)]]"
                   >
@@ -213,7 +208,7 @@ class EditableTableDisplay extends displayBehaviors(
                 </template>
                 <template is="dom-if" if="[[!_isRowHeader(rowHeader,index)]]">
                   <td
-                    class="td"
+                    class="td cell"
                     numeric$="[[_isNumericColumn(index)]]"
                     negative$="[[_isNegative(cell)]]"
                   >

@@ -4,12 +4,17 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import "@polymer/paper-input/paper-input.js";
+import "@polymer/iron-autogrow-textarea/iron-autogrow-textarea.js";
+import "@polymer/iron-icons/iron-icons.js";
+import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@lrnwebcomponents/dropdown-select/dropdown-select.js";
 import { ResponsiveUtilityBehaviors } from "@lrnwebcomponents/responsive-utility/lib/responsive-utility-behaviors.js";
+import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
 import { displayBehaviors, editBehaviors } from "./editable-table-behaviors.js";
 import "./editable-table-editor-rowcol.js";
 import "./editable-table-editor-toggle.js";
 import "./editable-table-editor-cell.js";
+import "./editable-table-iconset.js";
 import "./editable-table-styles.js";
 /**
  * `editable-table-editor`
@@ -34,10 +39,10 @@ import "./editable-table-styles.js";
   hide-condensed            //Hide the condensed toggle? Default is false so that a toggle button to control the condensed property.
   hide-filter               //Hide the filter toggle? Default is false so that a toggle button to control the filter property.
   hide-sort                 //Hide the sort toggle? Default is false so that a toggle button to control the sort property.
-  hide-responsive           //Hide the responsive toggle? Default is false so that a toggle button to control the responsive property.
+  hide-scroll               //Hide the scroll toggle? Default is false so that a toggle button to control the scroll property.
   hide-striped              //Hide the striped toggle? Default is false so that a toggle button to control the striped property.
   row-header                //Does the table use the first column as a row header? Default is false.
-  responsive                //Does the table use only two columns are shown and a dropdown menu controls which column to display?  Default is false: a responsive layout with scrolling to fit when it is too wide.
+  scroll                    //Does the table use scrolling to fit when it is too wide?  Default is false: a responsive layout where only two columns are shown and a dropdown menu controls which column to display.
   sort                      //Does the table allow sorting by column where column headers become sort buttons? Default is false.
   striped>                  //Does the table have alternating stipes of shading for its body rows? Default is false.
 </editable-table-editor >```
@@ -56,6 +61,31 @@ class EditableTableEditor extends editBehaviors(
   static get template() {
     return html`
       <style include="editable-table-styles">
+        :host {
+          --a11y-collapse-border: 1px solid #ddd;
+          --a11y-collapse-horizontal-padding: 0;
+          --a11y-collapse: {
+            margin: 0;
+          }
+          --a11y-collapse-heading-focus: {
+            background-color: #f0f0f0;
+          }
+        }
+        :host,
+        :host paper-item {
+          font-size: 12pt;
+        }
+        :host dropdown-select {
+          padding: 0;
+        }
+        :host #accent {
+          --paper-input-container: {
+            padding-top: 0;
+          }
+        }
+        :host([responsive-size="xs"]) editable-table-editor-settings {
+          padding: 3px 0;
+        }
         :host .filter-icon,
         :host .sortable-icon {
           display: none;
@@ -74,78 +104,246 @@ class EditableTableEditor extends editBehaviors(
         }
         :host .field-group {
           width: 100%;
+          margin: 0 0 10px;
           padding: 0;
-          margin: 0;
+        }
+        :host .field-group {
           display: flex;
           justify-content: space-between;
-          align-items: center;
+          align-items: baseline;
           transition: all 2s;
-          color: var(--editable-table-caption-color);
+          flex-wrap: wrap;
         }
-        :host .field-group > * {
-          margin: 0 2.5px;
+        :host .field-group.field-group-stretch {
+          align-items: stretch;
         }
-        :host caption .field-group {
-          align-items: flex-end;
+        :host .field-group-border {
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          padding: 15px;
+          margin: 15px;
         }
-        :host .field-group .field-group {
-          color: var(--editable-table-caption-color);
+        :host .field-group-grow {
+          flex-grow: 1;
+          transition: width 2s;
+        }
+        :host .field-group-shrink {
+          flex-shrink: 1;
+          transition: width 2s;
+        }
+        :host .field-group-label {
+          padding-right: 8px;
+          font-weight: bold;
+        }
+        :host .field-group label {
+          line-height: 30px;
+        }
+        :host #caption {
+          padding: 0;
+          display: inline-block;
           width: unset;
         }
-        :host caption paper-input {
+        :host .caption.field-group {
           margin-bottom: 0;
         }
-        :host label,
-        :host .label {
-          font-size: 12px;
-          font-family: var(--editable-table-secondary-font-family);
-        }
-        :host .table {
-          width: calc(100% - 2.3px);
-        }
-        :host caption,
-        :host .th,
-        :host .td {
+        :host .table .th,
+        :host .table .td {
           border: 1px solid #ddd;
         }
-        :host .th {
+        :host .table .th {
           padding: 0;
           vertical-align: center;
           color: black;
           background-color: #f0f0f0;
         }
-        :host .td {
+        :host .table .td {
           vertical-align: top;
+          padding: 8px 4px;
         }
-        :host .th:first-child {
+        :host .table .th:first-child {
           width: 96px;
         }
-        :host([bordered]) .td {
-          border: var(--editable-table-border);
+        :host .table[condensed] .th {
+          padding: 0;
         }
-        :host([responsive]) .thead .th:nth-of-type(3),
-        :host([responsive]) .td:nth-of-type(2) {
-          border-right-width: calc(var(--editable-table-border-width) + 5px);
-          border-right-style: dashed;
+        :host .table[condensed] .td {
+          padding: 0 4px;
         }
-        :host([bordered]) .thead .th:not(:first-child) {
-          border-bottom: var(--editable-table-border);
+        :host .table[bordered] .td {
+          border: 1px solid var(--editable-table-border-color);
         }
-        :host([striped]) .tr:nth-child(2n + 1) .td {
+        :host .table[bordered] .thead .th:not(:first-child) {
+          border-bottom: 1px solid var(--editable-table-border-color);
+        }
+        :host .table[striped] .tr:nth-child(2n + 1) .td {
           @apply --editable-table-style-stripe;
         }
-        :host([column-header]) .tbody .tr:first-child .td {
+        :host([column-header]) .table .tbody .tr:first-child .td {
           @apply --editable-table-style-column-header;
         }
-        :host([row-header]) .tbody .tr .td:first-of-type {
+        :host([row-header]) .table .tbody .tr .td:first-of-type {
           @apply --editable-table-style-row-header;
         }
-        :host([footer]) .tbody .tr:last-of-type .td {
+        :host([footer]) .table .tbody .tr:last-of-type .td {
           @apply --editable-table-style-footer;
         }
       </style>
       <p class="sr-only">Table Editor</p>
+      <p class="field-group">
+        <label aria-hidden="true" class="field-group-label"
+          >Table Caption
+        </label>
+        <iron-autogrow-textarea
+          id="caption"
+          class="field-group-grow caption"
+          label="Table Caption"
+          placeholder="A title for the table."
+          value$="{{caption}}"
+        >
+        </iron-autogrow-textarea>
+      </p>
       <div id="table-outer">
+        <a11y-collapse
+          accordion=""
+          icon="settings"
+          label="show settings"
+          label-expanded="hide settings"
+          tooltip="Show/hide table settings."
+        >
+          <div slot="heading" class="field-group-label">Table Settings</div>
+          <div class="field-group field-group-stretch">
+            <div class="field-group-border field-group-grow">
+              <label class="">Headers and Footers: </label>
+              <editable-table-editor-toggle
+                label="First Column"
+                prop="rowHeader"
+                tooltip="The first column is a row header."
+                value$="{{rowHeader}}"
+              >
+              </editable-table-editor-toggle>
+              <editable-table-editor-toggle
+                label="First Row"
+                prop="columnHeader"
+                tooltip="The first row is a column header."
+                value$="{{columnHeader}}"
+              >
+              </editable-table-editor-toggle>
+              <editable-table-editor-toggle
+                hidden$="[[hideFooter]]"
+                label="Last Row"
+                prop="footer"
+                tooltip="The last row is a table footer."
+                value$="{{footer}}"
+              >
+              </editable-table-editor-toggle>
+            </div>
+            <div
+              class="field-group-border field-group-grow"
+              hidden$="[[hideTableTheme]]"
+            >
+              <label>Theme: </label>
+              <div class="field-group-grow">
+                <dropdown-select
+                  id="accent"
+                  label="Accent Color"
+                  value$="{{accentColor}}"
+                >
+                  <paper-item value="none">None</paper-item>
+                  <paper-item value="red">Red</paper-item>
+                  <paper-item value="pink">Pink</paper-item>
+                  <paper-item value="purple">Purple</paper-item>
+                  <paper-item value="deep-purple">Deep Purple</paper-item>
+                  <paper-item value="indigo">Indigo</paper-item>
+                  <paper-item value="blue">Blue</paper-item>
+                  <paper-item value="light-blue">Light Blue</paper-item>
+                  <paper-item value="cyan">Cyan</paper-item>
+                  <paper-item value="teal">Teal</paper-item>
+                  <paper-item value="green">Green</paper-item>
+                  <paper-item value="light-green">Light Green</paper-item>
+                  <paper-item value="lime">Lime</paper-item>
+                  <paper-item value="yellow">Yellow</paper-item>
+                  <paper-item value="amber">Amber</paper-item>
+                  <paper-item value="orange">Orange</paper-item>
+                  <paper-item value="deep-orange">Deep Orange</paper-item>
+                  <paper-item value="brown">Deep Orange</paper-item>
+                  <paper-item value="blue-grey">Blue-Grey</paper-item>
+                </dropdown-select>
+              </div>
+              <paper-tooltip for="accent"
+                >Set an accent color for the table.</paper-tooltip
+              >
+              <editable-table-editor-toggle
+                hidden$="[[hideDarkTheme]]"
+                label="Dark"
+                prop="dark"
+                tooltip="Use the dark theme."
+                value$="{{dark}}"
+              >
+              </editable-table-editor-toggle>
+            </div>
+            <div
+              class="field-group-border field-group-grow"
+              hidden$="[[hideTableStyles]]"
+            >
+              <label>Styles: </label>
+              <editable-table-editor-toggle
+                hidden$="[[hideBordered]]"
+                label="Bordered"
+                prop="bordered"
+                tooltip="Add borders to cells."
+                value$="{{bordered}}"
+              >
+              </editable-table-editor-toggle>
+              <editable-table-editor-toggle
+                hidden$="[[hideStriped]]"
+                label="Striped"
+                prop="striped"
+                tooltip="Add shading to alternating rows."
+                value$="{{striped}}"
+              >
+              </editable-table-editor-toggle>
+              <editable-table-editor-toggle
+                hidden$="[[hideCondensed]]"
+                label="Condensed"
+                prop="condensed"
+                tooltip="Condense cell height."
+                value$="{{condensed}}"
+              >
+              </editable-table-editor-toggle>
+              <editable-table-editor-toggle
+                hidden$="[[hideScroll]]"
+                label="Disable Responsive"
+                prop="scroll"
+                tooltip="Disables the default responsive feature."
+                value$="{{scroll}}"
+              >
+              </editable-table-editor-toggle>
+            </div>
+            <div
+              class="field-group-border field-group-grow"
+              hidden$="[[hideTableSort]]"
+            >
+              <label>Sorting and Filtering: </label>
+              <editable-table-editor-toggle
+                disabled$="[[!columnHeader]]"
+                hidden$="[[hideSort]]"
+                label="Enable Sorting"
+                prop="sort"
+                tooltip="When first row is a column header, make the column sortable."
+                value$="{{sort}}"
+              >
+              </editable-table-editor-toggle>
+              <editable-table-editor-toggle
+                hidden$="[[hideFilter]]"
+                label="Enable Filters"
+                prop="filter"
+                tooltip="When a cell is clicked toggle a filter based on that cell's value."
+                value$="{{filter}}"
+              >
+              </editable-table-editor-toggle>
+            </div>
+          </div>
+        </a11y-collapse>
         <table
           id="table"
           class="table"
@@ -153,23 +351,13 @@ class EditableTableEditor extends editBehaviors(
           condensed$="{{condensed}}"
           striped$="{{striped}}"
         >
-          <caption>
-            <p class="sr-only">Editable Table</p>
-            <p class="field-group">
-              <paper-input
-                id="caption"
-                class="field-group-grow caption"
-                label="Caption"
-                placeholder="A title for the table."
-                value$="{{caption}}"
-              >
-              </paper-input>
-            </p>
+          <caption class="sr-only">
+            Editable Table Data
           </caption>
           <thead class="thead">
             <tr class="tr">
               <th class="th" scope="col">
-                <span class="sr-only">Row Operations</span>
+                <span class="sr-only">Row Functions</span>
               </th>
               <template
                 id="headers"
@@ -226,7 +414,6 @@ class EditableTableEditor extends editBehaviors(
                 >
                   <td class="td">
                     <editable-table-editor-cell
-                      class="cell"
                       row="[[tr]]"
                       column="[[index]]"
                       value$="{{cell}}"
@@ -247,104 +434,6 @@ class EditableTableEditor extends editBehaviors(
             </template>
           </tbody>
         </table>
-        <div class="field-group">
-          <div class="field-group">
-            <div class="label">Headers and footers</div>
-            <editable-table-editor-toggle
-              id="columnHeader"
-              label-on="First row is column headers."
-              label-off="First row is not column headers."
-              icon="editable-table:column-headers"
-              toggled$="[[columnHeader]]"
-              tooltip="Toggle column headers"
-            >
-            </editable-table-editor-toggle>
-            <editable-table-editor-toggle
-              id="rowHeader"
-              label-on="First column is row headers."
-              label-off="First column is not row headers."
-              icon="editable-table:row-headers"
-              toggled$="[[rowHeader]]"
-              tooltip="Toggle row headers"
-            >
-            </editable-table-editor-toggle>
-            <editable-table-editor-toggle
-              id="footer"
-              label-on="Last row is a footer."
-              label-off="Last row is not a footer."
-              icon="editable-table:footer"
-              toggled$="[[footer]]"
-              tooltip="Toggle footer"
-            >
-            </editable-table-editor-toggle>
-          </div>
-          <div class="field-group" hidden$="[[hideDisplay]]">
-            <div class="label">Display</div>
-            <editable-table-editor-toggle
-              id="bordered"
-              hidden$="[[hideBordered]]"
-              label-on="Borders."
-              label-off="No borders."
-              icon="image:grid-on"
-              toggled$="[[bordered]]"
-              tooltip="Toggle border"
-            >
-            </editable-table-editor-toggle>
-            <editable-table-editor-toggle
-              id="striped"
-              hidden$="[[hideStriped]]"
-              label-on="Row striping."
-              label-off="No row striping."
-              icon="editable-table:row-striped"
-              toggled$="[[striped]]"
-              tooltip="Toggle row striping"
-            >
-            </editable-table-editor-toggle>
-            <editable-table-editor-toggle
-              id="condensed"
-              hidden$="[[hideCondensed]]"
-              label-on="Condensed rows"
-              label-off="Condensed rows disabled."
-              icon="editable-table:row-condensed"
-              toggled$="[[condensed]]"
-              tooltip="Toggle condensed rows."
-            >
-            </editable-table-editor-toggle>
-            <editable-table-editor-toggle
-              id="responsive"
-              hidden$="[[hideResponsive]]"
-              label-on="Mobile-friendly mode (as needed)."
-              label-off="Mobile-friendly mode disabled."
-              icon="device:devices"
-              toggled$="[[responsive]]"
-              tooltip="Toggle mobile-friendly mode"
-            >
-            </editable-table-editor-toggle>
-          </div>
-          <div class="field-group" hidden$="[[hideSortFilter]]">
-            <div class="label">Sorting and Filtering</div>
-            <editable-table-editor-toggle
-              id="hideSort"
-              hidden$="[[hideSort]]"
-              label-on="Sorting enabled."
-              label-off="Sorting disabled."
-              icon="editable-table:sortable"
-              toggled$="[[sort]]"
-              tooltip="Toggle sort-mode"
-            >
-            </editable-table-editor-toggle>
-            <editable-table-editor-toggle
-              id="hideFilter"
-              hidden$="[[hideFilter]]"
-              label-on="Filtering enabled."
-              label-off="Filtering disabled."
-              icon="editable-table:filter"
-              toggled$="[[filter]]"
-              tooltip="Toggle filter-mode"
-            >
-            </editable-table-editor-toggle>
-          </div>
-        </div>
       </div>
     `;
   }
@@ -360,17 +449,31 @@ class EditableTableEditor extends editBehaviors(
   static get properties() {
     return {
       /**
-       * Hide the table display menu group
+       * Get accent color and change unspecified to none.
        */
-      hideDisplay: {
-        type: Boolean,
-        computed:
-          "_tableDisplayHidden(hideBordered,hideCondensed,hideStriped,hideResponsive)"
+      accentSelected: {
+        type: String,
+        computed: "_getAccentSelected(accentColor)"
       },
       /**
-       * Hide the table sorting & filtering menu group
+       * Hide the table styles menu
        */
-      hideSortFilter: {
+      hideTableStyles: {
+        type: Boolean,
+        computed:
+          "_tableStylesHidden(hideBordered,hideCondensed,hideStriped,hideScroll)"
+      },
+      /**
+       * Hide the table theme menu
+       */
+      hideTableTheme: {
+        type: Boolean,
+        computed: "_tableThemeHidden(hideAccentColor,hideDarkTheme)"
+      },
+      /**
+       * Hide the table sorting & filtering menu
+       */
+      hideTableSort: {
         type: Boolean,
         computed: "_tableSortHidden(hideSort,hideFilter)"
       }
@@ -417,6 +520,10 @@ class EditableTableEditor extends editBehaviors(
         "editable-table-setting-changed",
         this._onTableSettingChange.bind(this)
       );
+      this.addEventListener(
+        "dropdown-select-changed",
+        this._onAccentChange.bind(this)
+      );
     });
   }
   disconnectedCallback() {
@@ -439,7 +546,18 @@ class EditableTableEditor extends editBehaviors(
       "editable-table-setting-changed",
       this._onTableSettingChange.bind(this)
     );
+    this.removeEventListener(
+      "dropdown-select-changed",
+      this._onAccentChange.bind(this)
+    );
     super.disconnectedCallback();
+  }
+
+  /**
+   * Get the current accent color
+   */
+  _getAccentSelected(accentColor) {
+    return accentColor !== null ? accentColor : "none";
   }
 
   /**
@@ -491,6 +609,13 @@ class EditableTableEditor extends editBehaviors(
    */
   _isFirstRow(index) {
     return index === 0;
+  }
+
+  /**
+   * Handle accent dropdown-select change
+   */
+  _onAccentChange(e) {
+    this.accentColor = e.detail.value !== "none" ? e.detail.value : null;
   }
 
   /**
@@ -557,13 +682,8 @@ class EditableTableEditor extends editBehaviors(
   /**
    * Are all of the table style choices hidden?
    */
-  _tableDisplayHidden(
-    hideBordered,
-    hideCondensed,
-    hideStriped,
-    hideResponsive
-  ) {
-    return hideBordered && hideCondensed && hideStriped && hideResponsive;
+  _tableStylesHidden(hideBordered, hideCondensed, hideStriped, hideScroll) {
+    return hideBordered && hideCondensed && hideStriped && hideScroll;
   }
 
   /**

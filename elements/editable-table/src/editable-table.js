@@ -20,12 +20,10 @@ import "./lib/editable-table-display.js";
  * @microcopy - language worth noting:
  * ```
  <editable-table 
-  accent-color="indigo"     //Optional accent color for column headers and border. Default is none. (See https://lrnwebcomponents.github.io/simple-colors/components/simple-colors/)
   bordered                  //Adds borders to table. Default is no border.
   caption="..."             //The caption or title for the table.
   column-header             //Does the table use the first row as a column-header? Default is false.
   condensed                 //Condense the padding above and below the table? Default is false.
-  dark                      //Optional dark theme. Default is light theme. (See https://lrnwebcomponents.github.io/simple-colors/components/simple-colors/)
   data=[]                      //Table data as an array. For example: 
                             [
                               [ ["..."], ["..."] ],     //This line represents a row with two columns
@@ -38,7 +36,6 @@ import "./lib/editable-table-display.js";
   hide-accent-color         //Hide the accent color dropdown menu? Default is false which enables the menu which changes the accent-color property.
   hide-bordered             //Hide the bordered toggle? Default is false so that a toggle button to control the bordered property.
   hide-condensed            //Hide the condensed toggle? Default is false so that a toggle button to control the condensed property.
-  hide-dark-theme           //Hide the dark theme toggle? Default is false so that a toggle button to control the dark property.
   hide-filter               //Hide the filter toggle? Default is false so that a toggle button to control the filter property.
   hide-sort                 //Hide the sort toggle? Default is false so that a toggle button to control the sort property.
   hide-scroll               //Hide the scroll toggle? Default is false so that a toggle button to control the scroll property.
@@ -98,7 +95,6 @@ class EditableTable extends displayBehaviors(editBehaviors(PolymerElement)) {
           filter$="[[filter]]"
           footer$="[[footer]]"
           hide-accent-color$="[[hideAccentColor]]"
-          hide-dark-theme$="[[hideDarkTheme]]"
           hide-bordered$="[[hideBordered]]"
           hide-condensed$="[[hideCondensed]]"
           hide-filter$="[[hideFilter]]"
