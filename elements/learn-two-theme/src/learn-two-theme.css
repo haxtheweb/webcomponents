@@ -153,6 +153,10 @@ h-a-x {
   left: 48px;
 }
 
+git-corner {
+  float:right;
+}
+
 app-drawer {
   opacity: 1;
   transition: 0.2s linear all;
