@@ -7,7 +7,6 @@
 :host([hidden]) {
   display: none;
 }
-
 /**
  * Hide the slotted content during edit mode. This must be here to work.
  */
@@ -17,9 +16,6 @@
 :host([edit-mode]) .contentcontainer-wrapper simple-blog-card {
   opacity: .2;
   pointer-events: none;
-}
-git-corner {
-  float:right;
 }
 #slot {
   min-height: 50vh;

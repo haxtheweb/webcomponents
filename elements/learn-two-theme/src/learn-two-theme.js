@@ -4,9 +4,6 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { autorun, toJS } from "mobx/lib/mobx.module.js";
-import { varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 
 /**
  * `learn-two-theme`
@@ -36,6 +33,7 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js");
   }
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -43,24 +41,6 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
    */
   static get tag() {
     return "learn-two-theme";
-  }
-  connectedCallback() {
-    super.connectedCallback();
-    autorun(reaction => {
-      if (
-        varGet(store.manifest, "metadata.site.git.publicRepoUrl", "") != "" &&
-        !window.customElements.get("git-corner")
-      ) {
-        import("@lrnwebcomponents/git-corner/git-corner.js");
-      }
-      this.__disposer.push(reaction);
-    });
-    autorun(reaction => {
-      this.activeGitFileLink =
-        varGet(store.manifest, "metadata.site.git.publicRepoUrl", "") +
-        store.activeItem.location;
-      this.__disposer.push(reaction);
-    });
   }
   /**
    * Mix in an opened status
