@@ -16,7 +16,7 @@
       "hax": "src/simple-colors-shared-styles-hax.json"
     }
   },
-  "version": "2.1.5",
+  "version": "2.1.6",
   "description": "shared styles for simple-colors",
   "repository": {
     "type": "git",

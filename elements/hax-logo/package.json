@@ -16,7 +16,7 @@
       "hax": "src/hax-logo-hax.json"
     }
   },
-  "version": "2.1.5",
+  "version": "2.1.6",
   "description": "logo element for hax, obviously as a hax capable element.",
   "repository": {
     "type": "git",

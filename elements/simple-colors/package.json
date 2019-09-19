@@ -16,7 +16,7 @@
       "hax": "src/simple-colors-hax.json"
     }
   },
-  "version": "2.1.5",
+  "version": "2.1.6",
   "description": "Automated conversion of simple-colors/",
   "repository": {
     "type": "git",
@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/simple-colors-shared-styles": "^2.1.5",
+    "@lrnwebcomponents/simple-colors-shared-styles": "^2.1.6",
     "@lrnwebcomponents/simple-modal": "^2.1.5",
     "@lrnwebcomponents/storybook-utilities": "^2.1.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

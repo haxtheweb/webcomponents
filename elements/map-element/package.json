@@ -16,7 +16,7 @@
       "hax": "src/map-element-hax.json"
     }
   },
-  "version": "2.1.5",
+  "version": "2.1.6",
   "description": "Automated conversion of map-element/",
   "repository": {
     "type": "git",
