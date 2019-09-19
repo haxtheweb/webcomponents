@@ -39,7 +39,6 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^2.1.4",
     "@lrnwebcomponents/simple-colors": "^2.1.4",
     "@polymer/polymer": "^3.0.5"
   },

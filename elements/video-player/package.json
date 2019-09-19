@@ -41,7 +41,6 @@
   "dependencies": {
     "@lrnwebcomponents/a11y-behaviors": "^2.1.4",
     "@lrnwebcomponents/a11y-media-player": "^2.1.4",
-    "@lrnwebcomponents/hax-body-behaviors": "^2.1.4",
     "@lrnwebcomponents/materializecss-styles": "^2.1.4",
     "@lrnwebcomponents/media-behaviors": "^2.1.4",
     "@lrnwebcomponents/schema-behaviors": "^2.1.4",

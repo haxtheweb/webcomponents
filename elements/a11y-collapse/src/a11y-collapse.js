@@ -1,6 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { flush } from "@polymer/polymer/lib/utils/flush.js";
 import "./lib/a11y-collapse-accordion-button.js";
 import "./lib/a11y-collapse-icon-button.js";
@@ -264,9 +263,7 @@ class A11yCollapse extends PolymerElement {
         detail: this
       })
     );
-    afterNextRender(this, function() {
-      this.addEventListener("a11y-collapse-tap", this._onTap.bind(this));
-    });
+    this.addEventListener("a11y-collapse-tap", this._onTap.bind(this));
   }
   static get haxProperties() {
     return {

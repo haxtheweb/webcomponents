@@ -35,7 +35,6 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors":"latest",
     "lit-element": "^2.2.1"
   },
   "devDependencies": {

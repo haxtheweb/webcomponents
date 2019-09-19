@@ -39,7 +39,6 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^2.1.4",
     "@lrnwebcomponents/materializecss-styles": "^2.1.4",
     "@lrnwebcomponents/schema-behaviors": "^2.1.4",
     "@lrnwebcomponents/web-map": "^2.1.4",

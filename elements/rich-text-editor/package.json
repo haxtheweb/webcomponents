@@ -41,7 +41,6 @@
   "dependencies": {
     "@lrnwebcomponents/a11y-collapse": "^2.1.4",
     "@lrnwebcomponents/es-global-bridge": "^2.1.1",
-    "@lrnwebcomponents/hax-body-behaviors": "^2.1.4",
     "@lrnwebcomponents/simple-fields": "^2.1.4",
     "@lrnwebcomponents/simple-picker": "^2.1.4",
     "@lrnwebcomponents/simple-popover": "^2.1.4",

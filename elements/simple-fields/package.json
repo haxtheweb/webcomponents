@@ -41,7 +41,6 @@
   "dependencies": {
     "@lrnwebcomponents/code-editor": "^2.1.4",
     "@lrnwebcomponents/eco-json-schema-form": "^2.1.4",
-    "@lrnwebcomponents/hax-body-behaviors": "^2.1.4",
     "@lrnwebcomponents/paper-input-flagged": "^2.1.4",
     "@lrnwebcomponents/simple-colors": "^2.1.4",
     "@lrnwebcomponents/simple-icon-picker": "^2.1.4",

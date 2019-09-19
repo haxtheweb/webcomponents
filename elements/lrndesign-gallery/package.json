@@ -39,7 +39,6 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^2.1.4",
     "@lrnwebcomponents/image-inspector": "^2.1.4",
     "@lrnwebcomponents/img-pan-zoom": "^2.1.4",
     "@lrnwebcomponents/lrnsys-button": "^2.1.4",

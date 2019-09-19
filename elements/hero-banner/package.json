@@ -40,7 +40,6 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/a11y-behaviors": "^2.1.4",
-    "@lrnwebcomponents/hax-body-behaviors": "^2.1.4",
     "@lrnwebcomponents/materializecss-styles": "^2.1.4",
     "@polymer/iron-image": "^3.0.0",
     "@polymer/paper-button": "^3.0.1",
