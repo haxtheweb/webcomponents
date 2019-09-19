@@ -16,7 +16,7 @@
       "hax": "src/q-r-hax.json"
     }
   },
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "Automated conversion of q-r/",
   "repository": {
     "type": "git",

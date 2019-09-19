@@ -16,7 +16,7 @@
       "hax": "src/a11y-collapse-hax.json"
     }
   },
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "Start of a11y-collapse",
   "repository": {
     "type": "git",

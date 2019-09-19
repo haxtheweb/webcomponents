@@ -16,7 +16,7 @@
       "hax": "src/simple-popover-hax.json"
     }
   },
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "A popover alertdialog that is positioned next to a target element",
   "repository": {
     "type": "git",

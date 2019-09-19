@@ -16,7 +16,7 @@
       "hax": "src/lrn-math-hax.json"
     }
   },
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "MathJAX element with HAX capabilities baked in",
   "repository": {
     "type": "git",

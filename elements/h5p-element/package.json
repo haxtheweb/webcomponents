@@ -16,7 +16,7 @@
       "hax": "src/h5p-element-hax.json"
     }
   },
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "h5p wrapper for loading and presenting .h5p files",
   "repository": {
     "type": "git",

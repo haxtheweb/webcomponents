@@ -16,7 +16,7 @@
       "hax": "src/task-list-hax.json"
     }
   },
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "Automated conversion of task-list/",
   "repository": {
     "type": "git",

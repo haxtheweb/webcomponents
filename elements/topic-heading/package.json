@@ -16,7 +16,7 @@
       "hax": "src/topic-heading-hax.json"
     }
   },
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "Semantic and visual meaning behind a heading break",
   "repository": {
     "type": "git",
@@ -39,7 +39,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/relative-heading": "^2.1.4",
+    "@lrnwebcomponents/relative-heading": "^2.1.5",
     "@polymer/iron-icon": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/polymer": "^3.2.0"

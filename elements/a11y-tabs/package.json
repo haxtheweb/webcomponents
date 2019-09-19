@@ -16,7 +16,7 @@
       "hax": "src/a11y-tabs-hax.json"
     }
   },
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "accessible and responsive tabbed interface",
   "repository": {
     "type": "git",

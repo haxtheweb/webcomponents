@@ -16,7 +16,7 @@
       "hax": "src/to-do-hax.json"
     }
   },
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "Start of to-do",
   "repository": {
     "type": "git",

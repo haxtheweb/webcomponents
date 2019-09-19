@@ -16,7 +16,7 @@
       "hax": "src/lrnsys-chartjs-hax.json"
     }
   },
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "Automated conversion of lrnsys-chartjs/",
   "repository": {
     "type": "git",

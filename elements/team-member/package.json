@@ -16,7 +16,7 @@
       "hax": "src/team-member-hax.json"
     }
   },
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "Automated conversion of team-member/",
   "repository": {
     "type": "git",

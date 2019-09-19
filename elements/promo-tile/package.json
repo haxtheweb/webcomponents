@@ -16,7 +16,7 @@
       "hax": "src/promo-tile-hax.json"
     }
   },
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "Start of promo-tile",
   "repository": {
     "type": "git",

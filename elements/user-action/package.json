@@ -16,7 +16,7 @@
       "hax": "src/user-action-hax.json"
     }
   },
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "track user actions and allow them to talk to xAPI stores easily",
   "repository": {
     "type": "git",
@@ -38,8 +38,6 @@
     "name": "btopro"
   },
   "license": "Apache-2.0",
-  "dependencies": {
-  },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

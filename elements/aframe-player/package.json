@@ -11,7 +11,7 @@
       "js": "src/aframe-player.js"
     }
   },
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "A-frame 3D player in the browser via data binding w/ polymer",
   "repository": {
     "type": "git",

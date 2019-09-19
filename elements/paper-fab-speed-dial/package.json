@@ -16,7 +16,7 @@
       "hax": "src/paper-fab-speed-dial-hax.json"
     }
   },
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "Start of paper-fab-speed-dial fork",
   "repository": {
     "type": "git",
