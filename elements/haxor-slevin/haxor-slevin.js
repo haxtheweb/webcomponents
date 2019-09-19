@@ -7,7 +7,6 @@ import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSTh
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import { varExists, varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js";
 import "@polymer/iron-pages/iron-pages.js";
 import "@polymer/iron-icon/iron-icon.js";
@@ -544,6 +543,9 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
    */
   connectedCallback() {
     super.connectedCallback();
+    autorun(reaction => {
+      this._noticeLocationChange(store.location);
+    });
     autorun(reaction => {
       let manifest = toJS(store.manifest);
       this.title = manifest.title;
