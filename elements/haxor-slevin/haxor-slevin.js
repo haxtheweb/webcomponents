@@ -579,9 +579,7 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
       this._noticeLocationChange(store.location);
       this.activeGitFileLink =
         varGet(store.manifest, "metadata.site.git.publicRepoUrl", "") +
-        "pages" +
-        store.location.pathname +
-        "/index.html";
+        store.activeItem.location;
       this.__disposer.push(reaction);
     });
     autorun(reaction => {

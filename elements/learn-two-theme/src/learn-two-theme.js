@@ -58,9 +58,7 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
     autorun(reaction => {
       this.activeGitFileLink =
         varGet(store.manifest, "metadata.site.git.publicRepoUrl", "") +
-        "pages" +
-        store.location.pathname +
-        "/index.html";
+        store.activeItem.location;
       this.__disposer.push(reaction);
     });
   }
