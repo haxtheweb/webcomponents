@@ -248,10 +248,7 @@ class HaxManager extends PolymerElement {
               </iron-pages>
             </div>
             <div style="height:100%;">
-              <hax-preview
-                id="preview"
-                element="{{activeHaxElement}}"
-              ></hax-preview>
+              <hax-preview id="preview"></hax-preview>
             </div>
           </iron-pages>
           <paper-button
@@ -614,6 +611,12 @@ class HaxManager extends PolymerElement {
       typeof e.detail.value !== typeof undefined &&
       e.detail.property
     ) {
+      if (e.detail.property === "appList") {
+        this.set(e.detail.property, []);
+      }
+      if (e.detail.property === "activeHaxElement") {
+        this.set(e.detail.property, {});
+      }
       this.set(e.detail.property, e.detail.value);
     }
   }
@@ -624,7 +627,7 @@ class HaxManager extends PolymerElement {
   _activeHaxElementChanged(newValue, oldValue) {
     if (typeof oldValue !== typeof undefined) {
       this.shadowRoot.querySelector("#preview").advancedForm = false;
-      if (typeof newValue.tag === typeof undefined) {
+      if (newValue && typeof newValue.tag === typeof undefined) {
         this.resetManager();
       } else {
         // reset files so it doesn't bloat up

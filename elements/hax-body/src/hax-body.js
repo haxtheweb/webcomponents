@@ -351,7 +351,7 @@ class HaxBody extends PolymerElement {
         document.execCommand("enableObjectResizing", false, false);
         document.execCommand("defaultParagraphSeparator", false, "p");
       } catch (e) {
-        console.log(e);
+        console.warn(e);
       }
       window.addEventListener("keydown", this._onKeyDown.bind(this));
       window.addEventListener("keypress", this._onKeyPress.bind(this));
@@ -367,7 +367,7 @@ class HaxBody extends PolymerElement {
             window.HaxStore._tmpRange = range.cloneRange();
           }
         } catch (e) {
-          console.log(e);
+          console.warn(e);
         }
       });
       document.body.addEventListener(
@@ -886,7 +886,7 @@ class HaxBody extends PolymerElement {
     window.HaxStore.write("activeContainerNode", null, this);
     let children = dom(this.$.body).getDistributedNodes();
     if (this.globalPreferences.haxDeveloperMode) {
-      console.log(children);
+      console.warn(children);
     }
     var content = "";
     for (var i = 0, len = children.length; i < len; i++) {
@@ -967,7 +967,7 @@ class HaxBody extends PolymerElement {
     // oh one last thing. escape all script/style tags
     content = encapScript(content);
     if (this.globalPreferences.haxDeveloperMode) {
-      console.log(content);
+      console.warn(content);
     }
     return content;
   }
@@ -1115,7 +1115,7 @@ class HaxBody extends PolymerElement {
       }
       dom(parent).replaceChild(replacement, node);
     } catch (e) {
-      console.log(e);
+      console.warn(e);
     }
     return replacement;
   }
@@ -1179,9 +1179,9 @@ class HaxBody extends PolymerElement {
         }
       }, 50);
     } catch (e) {
-      console.log(e);
-      console.log(replacement);
-      console.log(node);
+      console.warn(e);
+      console.warn(replacement);
+      console.warn(node);
     }
     return replacement;
   }
@@ -1212,7 +1212,7 @@ class HaxBody extends PolymerElement {
           sel.addRange(range);
           this.activeContainerNode.focus();
         } catch (e) {
-          console.log(e);
+          console.warn(e);
         }
       }
     } else if (
@@ -1230,7 +1230,7 @@ class HaxBody extends PolymerElement {
     try {
       return dom(parent).removeChild(node);
     } catch (e) {
-      console.log(e);
+      console.warn(e);
     }
   }
   /**
@@ -1479,9 +1479,7 @@ class HaxBody extends PolymerElement {
         // reset the manager
         window.HaxStore.instance.haxManager.resetManager();
         // write activeElement updated so it'll go into the preview
-        haxElement = window.HaxStore.nodeToHaxElement(
-          window.HaxStore.instance.activeNode
-        );
+        haxElement = window.HaxStore.nodeToHaxElement(this.activeNode);
         window.HaxStore.write("activeHaxElement", haxElement, this);
         // clean up the manager before opening
         window.HaxStore.instance.haxManager.editExistingNode = true;
@@ -1929,7 +1927,7 @@ class HaxBody extends PolymerElement {
         }
       }
     } catch (e) {
-      console.log(e);
+      console.warn(e);
     }
   }
   /**
@@ -1967,7 +1965,7 @@ class HaxBody extends PolymerElement {
         }
       }
     } catch (e) {
-      console.log(e);
+      console.warn(e);
     }
   }
 }

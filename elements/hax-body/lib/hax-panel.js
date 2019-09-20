@@ -409,8 +409,8 @@ class HaxPanel extends PolymerElement {
       typeof e.detail.value !== typeof undefined &&
       e.detail.property
     ) {
-      if (typeof e.detail.value === "object") {
-        this.set(e.detail.property, null);
+      if (e.detail.property === "globalPreferences") {
+        this.set(e.detail.property, {});
       }
       this.set(e.detail.property, e.detail.value);
     }

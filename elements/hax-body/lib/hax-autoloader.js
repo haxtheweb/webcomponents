@@ -143,7 +143,7 @@ class HaxAutoloader extends HAXElement(PolymerElement) {
                 })
                 .catch(error => {
                   /* Error handling */
-                  console.log(error);
+                  console.warn(error);
                 });
             } else {
               // get the custom element definition we used to add that file

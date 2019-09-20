@@ -585,7 +585,7 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
           })
           .catch(error => {
             /* Error handling */
-            console.log(error);
+            console.warn(error);
           });
       } else {
         // get the custom element definition we used to add that file
@@ -1024,7 +1024,7 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
           }
         }
       } catch (e) {
-        console.log(e);
+        console.warn(e);
       }
     }
   }
@@ -1763,7 +1763,7 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
     if (document.head.createShadowRoot || document.head.attachShadow) {
       return true;
     } else {
-      console.log("Shadow DOM missing, certain operations hidden");
+      console.warn("Shadow DOM missing, certain operations hidden");
       return false;
     }
   }
@@ -1779,8 +1779,13 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
       e.detail.property &&
       e.detail.owner
     ) {
-      if (typeof e.detail.value === "object") {
+      if (e.detail.value == null) {
+        this.set(e.detail.property, null);
+      } else if (typeof e.detail.value === "object") {
         this.set(e.detail.property, {});
+      }
+      if (this.globalPreferences && this.globalPreferences.haxDeveloperMode) {
+        console.warn(e.detail.property);
       }
       this.set(e.detail.property, e.detail.value);
       this.dispatchEvent(
@@ -2152,7 +2157,7 @@ window.HaxStore.nodeToContent = node => {
   if (
     window.HaxStore.instance.activeHaxBody.globalPreferences.haxDeveloperMode
   ) {
-    console.log(node);
+    console.warn(node);
   }
   // ensure we have access to all the member functions of the custom element
   let prototype = Object.getPrototypeOf(node);
@@ -2388,7 +2393,7 @@ window.HaxStore.nodeToContent = node => {
   if (
     window.HaxStore.instance.activeHaxBody.globalPreferences.haxDeveloperMode
   ) {
-    console.log(content);
+    console.warn(content);
   }
   // support postProcess text rewriting for the node that's been
   // converted to a string for storage
