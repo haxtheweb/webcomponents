@@ -146,45 +146,45 @@ class EditableTableEditor extends editBehaviors(
         :host .caption.field-group {
           margin-bottom: 0;
         }
-        :host .table .th,
-        :host .table .td {
+        :host #table .th,
+        :host #table .td {
           border: 1px solid #ddd;
         }
-        :host .table .th {
+        :host #table .th {
           padding: 0;
           vertical-align: center;
           color: black;
           background-color: #f0f0f0;
         }
-        :host .table .td {
+        :host #table .td {
           vertical-align: top;
           padding: 8px 4px;
         }
-        :host .table .th:first-child {
+        :host #table .th:first-child {
           width: 96px;
         }
-        :host .table[condensed] .th {
+        :host #table[condensed] .th {
           padding: 0;
         }
-        :host .table[condensed] .td {
+        :host #table[condensed] .td {
           padding: 0 4px;
         }
-        :host .table[bordered] .td {
+        :host #table[bordered] .td {
           border: 1px solid var(--editable-table-border-color);
         }
-        :host .table[bordered] .thead .th:not(:first-child) {
+        :host #table[bordered] .thead .th:not(:first-child) {
           border-bottom: 1px solid var(--editable-table-border-color);
         }
-        :host .table[striped] .tr:nth-child(2n + 1) .td {
+        :host #table[striped] .tr:nth-child(2n + 1) .td {
           @apply --editable-table-style-stripe;
         }
-        :host([column-header]) .table .tbody .tr:first-child .td {
+        :host([column-header]) #table .tbody .tr:first-child .td {
           @apply --editable-table-style-column-header;
         }
-        :host([row-header]) .table .tbody .tr .td:first-of-type {
+        :host([row-header]) #table .tbody .tr .td:first-of-type {
           @apply --editable-table-style-row-header;
         }
-        :host([footer]) .table .tbody .tr:last-of-type .td {
+        :host([footer]) #table .tbody .tr:last-of-type .td {
           @apply --editable-table-style-footer;
         }
       </style>

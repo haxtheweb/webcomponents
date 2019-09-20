@@ -8,6 +8,7 @@ import "@polymer/paper-menu-button/paper-menu-button.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-listbox/paper-listbox.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@polymer/iron-icons/iron-icons.js";
 import "./editable-table-editor-insdel.js";
 import { cellBehaviors } from "./editable-table-behaviors.js";
 

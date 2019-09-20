@@ -19,14 +19,16 @@ export const displayBehaviors = function(SuperClass) {
         bordered: {
           type: Boolean,
           value: false,
-          reflectToAttribute: true
+          reflectToAttribute: true,
+          notify: true
         },
         /**
          * a table caption
          */
         caption: {
           type: String,
-          value: null
+          value: null,
+          notify: true
         },
         /**
          * Display the first row as a column header.
@@ -34,7 +36,8 @@ export const displayBehaviors = function(SuperClass) {
         columnHeader: {
           type: Boolean,
           value: false,
-          reflectToAttribute: true
+          reflectToAttribute: true,
+          notify: true
         },
         /**
          * Condense height of table cells.
@@ -42,14 +45,16 @@ export const displayBehaviors = function(SuperClass) {
         condensed: {
           type: Boolean,
           value: false,
-          reflectToAttribute: true
+          reflectToAttribute: true,
+          notify: true
         },
         /**
          * raw data
          */
         data: {
           type: Array,
-          value: []
+          value: [],
+          notify: true
         },
         /**
          * Enable filtering by cell value.
@@ -57,7 +62,8 @@ export const displayBehaviors = function(SuperClass) {
         filter: {
           type: Boolean,
           value: false,
-          reflectToAttribute: true
+          reflectToAttribute: true,
+          notify: true
         },
         /**
          * Display the last row as a column footer.
@@ -65,7 +71,8 @@ export const displayBehaviors = function(SuperClass) {
         footer: {
           type: Boolean,
           value: false,
-          reflectToAttribute: true
+          reflectToAttribute: true,
+          notify: true
         },
         /**
          * Display the first column as a row header.
@@ -73,7 +80,8 @@ export const displayBehaviors = function(SuperClass) {
         rowHeader: {
           type: Boolean,
           value: false,
-          reflectToAttribute: true
+          reflectToAttribute: true,
+          notify: true
         },
         /**
          * When table is wider than screens,
@@ -83,7 +91,8 @@ export const displayBehaviors = function(SuperClass) {
         responsive: {
           type: Boolean,
           value: false,
-          reflectToAttribute: true
+          reflectToAttribute: true,
+          notify: true
         },
         /**
          * Enable sorting by column header.
@@ -91,7 +100,8 @@ export const displayBehaviors = function(SuperClass) {
         sort: {
           type: Boolean,
           value: false,
-          reflectToAttribute: true
+          reflectToAttribute: true,
+          notify: true
         },
         /**
          * Add alternating row striping.
@@ -99,7 +109,8 @@ export const displayBehaviors = function(SuperClass) {
         striped: {
           type: Boolean,
           value: false,
-          reflectToAttribute: true
+          reflectToAttribute: true,
+          notify: true
         }
       };
       if (super.properties) {

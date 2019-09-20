@@ -44,6 +44,9 @@ class EditableTableFilter extends PolymerElement {
         :host paper-button > div {
           flex-grow: 1;
         }
+        :host iron-icon {
+          min-width: 24px;
+        }
         :host .sr-only {
           position: absolute;
           left: -9999px;

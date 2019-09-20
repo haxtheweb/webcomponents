@@ -42,8 +42,10 @@ const css = html`
       display: block;
       width: 100%;
       max-width: 100%;
-      overflow-x: scroll;
       margin: 15px 0;
+      --editable-table-font-size: unset;
+      --editable-table-secondary-font-size: 12px;
+      --editable-table-caption-font-size: var(--editable-table-font-size);
       --editable-table-font-family: inherit;
       --editable-table-secondary-font-family: "Roboto", "Noto", sans-serif;
       font-family: var(--editable-table-font-family);
@@ -79,9 +81,9 @@ const css = html`
       --editable-table-button-bg-color: var(--editable-table-bg-color);
       --editable-table-button-toggled-color: var(--editable-table-color);
       --editable-table-button-toggled-bg-color: var(--editable-table-bg-color);
-      --editable-table-button-hover-color: var(--editable-table-heading-color);
+      --editable-table-button-hover-color: var(--editable-table-button-color);
       --editable-table-button-toggled-hover-color: var(
-        --editable-table-button-color
+        --editable-table-heading-color
       );
       --editable-table-button-hover-bg-color: var(
         --editable-table-heading-bg-color
@@ -96,7 +98,13 @@ const css = html`
         --editable-table-heading-bg-color
       );
       --secondary-text-color: var(--editable-table-border-color);
-
+      --simple-picker-option-size: 24px;
+      --simple-picker-option: {
+        font-family: var(--editable-table-secondary-font-family);
+        color: var(--editable-table-color);
+        background-color: var(--editable-table-bg-color);
+        font-size: var(--editable-table-secondary-font-size);
+      }
       --editable-table-style-stripe: {
         background-color: var(--editable-table-stripe-bg-color);
       }
@@ -118,6 +126,9 @@ const css = html`
         font-family: var(--editable-table-secondary-font-family);
       }
     }
+    :host([hidden]) {
+      display: none;
+    }
     :host .sr-only {
       position: absolute;
       left: -9999px;
@@ -126,105 +137,59 @@ const css = html`
       width: 0;
       overflow: hidden;
     }
-    :host .table {
+    :host #table {
       width: calc(
         100% - var(--editable-table-border-width) -
           var(--editable-table-border-width)
       );
       display: table;
-    }
-    :host .table,
-    :host .caption,
-    :host .th,
-    :host .td {
-      font-weight: var(--editable-table-medium-weight);
       border-collapse: collapse;
+      border: var(--editable-table-border);
+    }
+    :host #table,
+    :host .th-or-td {
+      font-weight: var(--editable-table-light-weight);
+      color: var(--editable-table-color);
       background-color: var(--editable-table-bg-color);
     }
-    :host .caption {
-      display: table-caption;
-      font-size: 120%;
+    :host caption {
+      font-size: var(--editable-table-caption-font-size);
       font-weight: var(--editable-table-heavy-weight);
       color: var(--editable-table-caption-color);
       background-color: var(--editable-table-caption-bg-color);
       width: 100%;
     }
-    :host .thead {
-      display: table-header-group;
-    }
-    :host .body {
-      display: table-row-group;
-    }
-    :host .body {
-      display: table-footer-group;
-    }
-    :host .table .tr {
+    :host tr {
       display: table-row;
     }
-    :host .table,
-    :host .table .th,
-    :host .table .td {
-      font-weight: var(--editable-table-light-weight);
-      color: var(--editable-table-color);
-    }
-    :host .table .th,
-    :host .table .td {
+    :host .th-or-td {
       display: table-cell;
-      height: 24px;
     }
-    :host .table .cell {
+    :host .cell {
       padding: var(--editable-table-row-padding);
     }
-    :host([condensed]) .table .th,
-    :host([condensed]) .table .cell {
+    :host([condensed]) .th,
+    :host([condensed]) .cell {
       padding: var(--editable-table-row-padding-condensed);
     }
-    :host .caption,
-    :host .table .th,
-    :host .table .td {
+    :host caption,
+    :host #table .th-or-td {
       text-align: left;
     }
-    :host .table .th[numeric],
-    :host .table .td[numeric] {
+    :host #table .th-or-td[numeric] {
       text-align: var(--editable-table-numeric-text-align, unset);
     }
-    :host .table .td[negative] .cell {
+    :host #table .td[negative] .cell {
       color: var(--editable-table-negative-color, --editable-table-color);
     }
     :host editable-table-sort {
       width: 100%;
     }
     @media screen {
-      :host([responsive-size="xs"]:not([scroll])) .table[transition] {
-        opacity: 0;
-        transition: opacity 5s;
-      }
-      :host([scroll]) #column,
-      :host(:not([responsive-size="xs"])) #column,
-      :host([responsive-size="xs"]:not([scroll])) .table .th[xs-hidden],
-      :host([responsive-size="xs"]:not([scroll])) .table .td[xs-hidden],
-      :host([responsive-size="xs"]:not([scroll]))
-        .table[default-xs-display]
-        .th:nth-of-type(n + 3),
-      :host([responsive-size="xs"]:not([scroll]))
-        .table[default-xs-display][row-header]
-        .td:nth-of-type(n + 3),
-      :host([responsive-size="xs"]:not([scroll]))
-        .table[default-xs-display]:not([row-header])
-        .td:nth-of-type(n + 2) {
-        display: none;
-      }
-    }
-    @media print {
-      :host .table {
+      :host {
+        overflow-x: auto;
         width: 100%;
         max-width: 100%;
-      }
-      :host #column {
-        display: none;
-      }
-      @page {
-        size: landscape;
       }
     }
   </style>
