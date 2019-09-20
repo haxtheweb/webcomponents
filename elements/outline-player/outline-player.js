@@ -10,12 +10,12 @@ import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "@polymer/app-layout/app-drawer-layout/app-drawer-layout.js";
 import "@polymer/app-layout/app-header-layout/app-header-layout.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js";
 
 /**
  * `outline-player`
@@ -34,7 +34,7 @@ class OutlinePlayer extends HAXCMSTheme(PolymerElement) {
   // render function
   static get template() {
     return html`
-      <style include="hax-shared-styles simple-colors-shared-styles">
+      <style include="simple-colors-shared-styles">
         :host {
           display: block;
           font-family: libre baskerville;
@@ -49,6 +49,26 @@ class OutlinePlayer extends HAXCMSTheme(PolymerElement) {
 
         :host([closed]) {
           --app-drawer-width: 0px;
+        }
+
+        :host,
+        :host * ::slotted(*) {
+          line-height: 1.8;
+        }
+        :host ul,
+        :host * ::slotted(ul),
+        :host ol,
+        :host * ::slotted(ol) {
+          padding-left: 20px;
+          margin-left: 20px;
+        }
+        :host ul,
+        :host * ::slotted(ul) {
+          list-style-type: disc;
+        }
+        :host li,
+        :host * ::slotted(li) {
+          margin-bottom: 6px;
         }
 
         h1 {
@@ -193,6 +213,10 @@ class OutlinePlayer extends HAXCMSTheme(PolymerElement) {
         :host([edit-mode]) #content {
           padding: 32px 8px 8px 8px;
         }
+        :host([is-logged-in]) app-drawer,
+        :host([is-logged-in]) app-drawer-layout[narrow] {
+          left: 48px;
+        }
         #contentcontainer {
           max-width: 840px;
           margin: 0 auto;
@@ -280,6 +304,7 @@ class OutlinePlayer extends HAXCMSTheme(PolymerElement) {
             </app-toolbar>
           </app-header>
           <div id="content">
+            <site-git-corner></site-git-corner>
             <div id="contentcontainer">
               <div id="slot"><slot></slot></div>
             </div>

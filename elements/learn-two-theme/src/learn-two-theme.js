@@ -4,6 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
+
 /**
  * `learn-two-theme`
  * `Learn2 theme for HAXcms`
@@ -32,6 +33,7 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js");
   }
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -48,6 +50,9 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
     props.opened = {
       type: Boolean,
       reflectToAttribute: true
+    };
+    props.cd = {
+      type: String
     };
     return props;
   }

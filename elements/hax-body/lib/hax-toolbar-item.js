@@ -44,8 +44,8 @@ class HaxToolbarItem extends PolymerElement {
         paper-button {
           display: flex;
           align-items: center;
-          background-color: var(--hax-color-bg-accent);
-          color: var(--hax-color-text);
+          background-color: var(--hax-toolbar-item-bg, --hax-color-bg-accent);
+          color: var(--hax-toolbar-item-color, --hax-color-text);
           min-width: 0;
           margin: 0;
           text-transform: none;
@@ -57,7 +57,10 @@ class HaxToolbarItem extends PolymerElement {
           width: 36px;
           min-width: unset;
           @apply --hax-toolbar-item-container;
-          --paper-button-ink-color: var(--hax-color-accent1);
+          --paper-button-ink-color: var(
+            --hax-toolbar-item-color,
+            --hax-color-accent1
+          );
         }
         paper-button:active,
         paper-button:hover,

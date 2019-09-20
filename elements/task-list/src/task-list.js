@@ -1,6 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
+import "@polymer/polymer/lib/elements/dom-if.js";
 /**
  * `task-list`
  * Visual listing of tasks with different design components that is
@@ -15,12 +16,22 @@ class TaskList extends SchemaBehaviors(PolymerElement) {
       <style>
         :host {
           display: block;
+          border: var(--task-list-border, 1px solid #eeeeee);
+          font-size: var(--task-list-font-size, 18px);
+          padding: var(--task-list-padding, 16px);
         }
       </style>
       <h3><span property="oer:name">[[name]]</span></h3>
       <ol>
         <template is="dom-repeat" items="[[tasks]]" as="task">
-          <li><span property="oer:task">[[task.name]]</span></li>
+          <li>
+            <template is="dom-if" if="[[task.link]]">
+              <a href="[[task.link]]" property="oer:task">[[task.name]]</a>
+            </template>
+            <template is="dom-if" if="[[!task.link]]">
+              <span property="oer:task">[[task.name]]</span>
+            </template>
+          </li>
         </template>
       </ol>
     `;
@@ -164,6 +175,9 @@ class TaskList extends SchemaBehaviors(PolymerElement) {
           }
         ],
         advanced: []
+      },
+      saveOptions: {
+        unsetAttributes: ["_resource-link"]
       }
     };
   }

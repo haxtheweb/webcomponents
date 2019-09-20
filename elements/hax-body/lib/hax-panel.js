@@ -54,7 +54,7 @@ class HaxPanel extends PolymerElement {
             left: 0;
             right: 0;
             background-color: var(--hax-color-bg);
-            border: 1px solid var(--hax-color-bg-accent);
+            border-bottom: 1px solid black;
             padding: 0 16px;
             display: flex;
             touch-action: auto;
@@ -83,6 +83,7 @@ class HaxPanel extends PolymerElement {
         }
 
         #button {
+          color: white;
           position: fixed;
           top: 0;
           left: 0;
@@ -117,14 +118,16 @@ class HaxPanel extends PolymerElement {
           z-index: 1000000;
           position: fixed;
           font-size: 14px;
+          border-bottom: 1px solid black;
+          border-left: 1px solid black;
           font-weight: bold;
           padding: 16px 28px 16px 16px;
           line-height: 24px;
-          height: 24px;
+          height: 23px;
           min-width: 120px;
           justify-content: space-evenly;
-          background-color: var(--hax-color-bg-accent);
-          color: var(--hax-color-text);
+          color: var(--hax-color-menu-heading-bg, black);
+          background-color: var(--hax-color-menu-heading-color, #eeeeee);
           vertical-align: middle;
         }
         :host([edit-mode]) .editing-mode-active {
@@ -132,7 +135,8 @@ class HaxPanel extends PolymerElement {
           font-size: 18px;
           margin-left: 100px;
           font-weight: bold;
-          color: var(--hax-color-text);
+          color: var(--hax-color-menu-heading-bg, black);
+          background-color: var(--hax-color-menu-heading-color, #eeeeee);
         }
         @media screen and (max-width: 600px) {
           :host([edit-mode]) .hide-small {
@@ -405,8 +409,8 @@ class HaxPanel extends PolymerElement {
       typeof e.detail.value !== typeof undefined &&
       e.detail.property
     ) {
-      if (typeof e.detail.value === "object") {
-        this.set(e.detail.property, null);
+      if (e.detail.property === "globalPreferences") {
+        this.set(e.detail.property, {});
       }
       this.set(e.detail.property, e.detail.value);
     }
@@ -579,6 +583,13 @@ class HaxPanel extends PolymerElement {
    */
   _clickEditButton(e) {
     this.toggle();
+    window.dispatchEvent(
+      new CustomEvent("simple-modal-hide", {
+        bubbles: true,
+        cancelable: true,
+        detail: {}
+      })
+    );
   }
 
   /**
@@ -592,6 +603,13 @@ class HaxPanel extends PolymerElement {
         cancelable: true,
         composed: true,
         detail: e.detail
+      })
+    );
+    window.dispatchEvent(
+      new CustomEvent("simple-modal-hide", {
+        bubbles: true,
+        cancelable: true,
+        detail: {}
       })
     );
   }

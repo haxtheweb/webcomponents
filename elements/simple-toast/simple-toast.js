@@ -47,7 +47,19 @@ class SimpleToast extends PolymerElement {
         }
 
         paper-toast {
-          @apply --simple-toast-toast;
+          width: var(--simple-toast-width, inherit);
+          height: var(--simple-toast-height, inherit);
+          color: var(--simple-toast-color, white);
+          background-color: var(--simple-toast-bg, black);
+          top: var(--simple-toast-top, inherit);
+          margin: var(--simple-toast-margin, 16px);
+          padding: var(--simple-toast-padding, 16px);
+          left: var(--simple-toast-left, inherit);
+          bottom: var(--simple-toast-bottom, inherit);
+          right: var(--simple-toast-right, inherit);
+          border: var(--simple-toast-border, inherit);
+          z-index: var(--simple-toast-z-index, inherit);
+          font-size: var(--simple-toast-font-size, inherit);
         }
       </style>
       <paper-toast

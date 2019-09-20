@@ -16,7 +16,7 @@
       "hax": "src/simple-colors-hax.json"
     }
   },
-  "version": "2.1.4",
+  "version": "2.1.6",
   "description": "Automated conversion of simple-colors/",
   "repository": {
     "type": "git",
@@ -39,14 +39,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-picker": "^2.1.4",
+    "@lrnwebcomponents/simple-picker": "^2.1.5",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/polymer": "^3.2.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
-    "@lrnwebcomponents/simple-modal": "^2.1.2",
-    "@lrnwebcomponents/simple-colors-shared-styles": "^2.1.2",
+    "@lrnwebcomponents/simple-colors-shared-styles": "^2.1.6",
+    "@lrnwebcomponents/simple-modal": "^2.1.5",
     "@lrnwebcomponents/storybook-utilities": "^2.1.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

@@ -1,7 +1,10 @@
 /**
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{LitElement,html,css}from"./node_modules/lit-element/lit-element.js";/**
+ */
+import { LitElement, html, css } from "lit-element/lit-element.js";
+
+/**
  * `git-corner`
  * `display a quick link with styling to a repo to help with contributions`
  *
@@ -11,8 +14,12 @@
  * @customElement
  * @lit-element
  * @demo demo/index.html
- */class GitCorner extends LitElement{// render function
-render(){return html`
+ */
+class GitCorner extends LitElement {
+  
+  // render function
+  render() {
+    return html`
 <style>:host {
   display: block;
 }</style>
@@ -26,21 +33,63 @@ render(){return html`
             d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
             fill="currentColor" class="octo-body"></path>
     </svg>
-</a>`}// properties available to the custom element for data binding
-static get properties(){let props={/**
+</a>`;
+  }
+
+  // properties available to the custom element for data binding
+  static get properties() {
+    let props = {
+  /**
    * source to point to
-   */source:{name:"source",type:String},/**
+   */
+  "source": {
+    "name": "source",
+    "type": String
+  },
+  /**
    * alt text
-   */alt:{name:"alt",type:String},/**
+   */
+  "alt": {
+    "name": "alt",
+    "type": String
+  },
+  /**
    * Whether or not to be rendered in the top corner, common on tech sites
-   */corner:{name:"corner",type:Boolean,reflect:!0},/**
+   */
+  "corner": {
+    "name": "corner",
+    "type": Boolean,
+    "reflect": true
+  },
+  /**
    * basic size adjustment
-   */size:{name:"size",type:String,reflect:!0}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
+   */
+  "size": {
+    "name": "size",
+    "type": String,
+    "reflect": true
+  }
+}
+;
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
+  }
+
+  /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
-   */static get tag(){return"git-corner"}/**
+   */
+  static get tag() {
+    return "git-corner";
+  }
+  /**
    * Register CSS styles
-   */static get styles(){return[css`
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -103,8 +152,21 @@ static get properties(){let props={/**
             animation: octocat-wave 560ms ease-in-out;
           }
         }
-      `]}/**
+      `
+    ];
+  }
+  /**
    * runs on first go
-   */firstUpdated(changedProperties){changedProperties.forEach((oldValue,propName)=>{})}/**
+   */
+  firstUpdated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {});
+  }
+  /**
    * updated / notice property changes
-   */updated(changedProperties){changedProperties.forEach((oldValue,propName)=>{})}}customElements.define(GitCorner.tag,GitCorner);export{GitCorner};
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {});
+  }
+}
+customElements.define(GitCorner.tag, GitCorner);
+export { GitCorner };

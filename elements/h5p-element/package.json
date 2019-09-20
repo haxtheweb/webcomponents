@@ -16,7 +16,7 @@
       "hax": "src/h5p-element-hax.json"
     }
   },
-  "version": "2.1.4",
+  "version": "2.1.6",
   "description": "h5p wrapper for loading and presenting .h5p files",
   "repository": {
     "type": "git",
@@ -40,7 +40,6 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^2.1.4",
     "lit-element": "^2.2.1"
   },
   "devDependencies": {

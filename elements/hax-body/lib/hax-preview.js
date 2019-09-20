@@ -29,6 +29,10 @@ class HaxPreview extends PolymerElement {
     import("@lrnwebcomponents/simple-picker/simple-picker.js");
     import("@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js");
     import("@lrnwebcomponents/paper-input-flagged/paper-input-flagged.js");
+    document.body.addEventListener(
+      "hax-store-property-updated",
+      this._haxStorePropertyUpdated.bind(this)
+    );
   }
   static get template() {
     return html`
@@ -78,7 +82,7 @@ class HaxPreview extends PolymerElement {
                 #preview {
                   padding: 16px;
                   color: #000000;
-                  background-color: var(--hax-color-bg-accent);
+                  background-color: white;
                   max-height: 63vh;
                   overflow: scroll;
                 }
@@ -148,8 +152,8 @@ class HaxPreview extends PolymerElement {
                 #modetabs paper-tab paper-button {
                   min-width: unset;
                   width: 100%;
-                  background-color: var(--hax-color-accent1);
-                  color: var(--hax-color-accent1-text);
+                  background-color: var(--hax-preview-button-bg, white);
+                  color: var(--hax-preview-button-color, black);
                 }
                 .preview-buttons {
                   height: 64px;
@@ -174,9 +178,9 @@ class HaxPreview extends PolymerElement {
                 .preview-buttons paper-button {
                   min-width: unset;
                   width: 40%;
-                  color: var(--hax-color-accent1-text);
+                  color: var(--hax-preview-button-color, black);
                   display: inline-block;
-                  background-color: var(--hax-color-accent1);
+                  background-color: var(--hax-preview-button-bg, white);
                 }
                 .vaadin-layout-width {
                   min-width: 30%;
@@ -312,10 +316,10 @@ class HaxPreview extends PolymerElement {
        * The element to work against expressing the structure of the DOM element
        * to create in the preview area.
        */
-      element: {
+      activeHaxElement: {
         type: Object,
         notify: true,
-        observer: "_elementChanged"
+        observer: "_activeHaxElementChanged"
       },
       /**
        * Boolean association for a preview node existing.
@@ -448,7 +452,7 @@ class HaxPreview extends PolymerElement {
           this.previewNode.tagName.toLowerCase()
         ] !== typeof undefined
       ) {
-        let element = this.element;
+        let element = this.activeHaxElement;
         let props =
           window.HaxStore.instance.elementList[
             this.previewNode.tagName.toLowerCase()
@@ -469,7 +473,8 @@ class HaxPreview extends PolymerElement {
               // support custom element input
               if (
                 typeof schema.properties[property].component !==
-                typeof undefined
+                  typeof undefined &&
+                schema.properties[property].component.properties
               ) {
                 schema.properties[property].component.properties.value =
                   element.properties[property];
@@ -489,7 +494,7 @@ class HaxPreview extends PolymerElement {
                     );
                   } catch (e) {
                     console.warn(`${property} is busted some how`);
-                    console.log(e);
+                    console.warn(e);
                   }
                 } else {
                   // set attribute, this doesn't have the Polymer convention
@@ -558,7 +563,21 @@ class HaxPreview extends PolymerElement {
       this.set("schema", schema);
     }
   }
-
+  /**
+   * Store updated, sync.
+   */
+  _haxStorePropertyUpdated(e) {
+    if (
+      e.detail &&
+      typeof e.detail.value !== typeof undefined &&
+      e.detail.property
+    ) {
+      if (e.detail.property == "activeHaxElement") {
+        this.set(e.detail.property, {});
+        this.set(e.detail.property, e.detail.value);
+      }
+    }
+  }
   /**
    * When the preview node is updated, pull schema associated with it
    */
@@ -572,7 +591,7 @@ class HaxPreview extends PolymerElement {
           newValue.tagName.toLowerCase()
         ] !== typeof undefined
       ) {
-        const element = this.element;
+        const element = this.activeHaxElement;
         let props =
           window.HaxStore.instance.elementList[newValue.tagName.toLowerCase()];
         let schema = {};
@@ -602,7 +621,8 @@ class HaxPreview extends PolymerElement {
               // support custom element input
               if (
                 typeof schema.properties[property].component !==
-                typeof undefined
+                  typeof undefined &&
+                schema.properties[property].component.properties
               ) {
                 schema.properties[property].component.properties.value =
                   element.properties[property];
@@ -641,7 +661,7 @@ class HaxPreview extends PolymerElement {
                 try {
                   newValue.set(property, element.properties[property]);
                 } catch (e) {
-                  console.log(e);
+                  console.warn(e);
                 }
               }
               // vanilla / anything else we should just be able to set the prop
@@ -666,7 +686,9 @@ class HaxPreview extends PolymerElement {
               newValue.properties[property].value;
             // support custom element input
             if (
-              typeof schema.properties[property].component !== typeof undefined
+              typeof schema.properties[property].component !==
+                typeof undefined &&
+              schema.properties[property].component.properties
             ) {
               schema.properties[property].component.properties.value =
                 newValue.properties[property].value;
@@ -719,7 +741,7 @@ class HaxPreview extends PolymerElement {
   /**
    * Element changed, update the preview area.
    */
-  _elementChanged(newValue, oldValue) {
+  _activeHaxElementChanged(newValue, oldValue) {
     if (typeof newValue !== typeof undefined) {
       // wipe the preview area and assocaited node
       let preview = dom(this);

@@ -16,7 +16,7 @@
       "hax": "src/micro-copy-heading-hax.json"
     }
   },
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "small call to action / attention that acts as a heading too",
   "repository": {
     "type": "git",
@@ -39,7 +39,6 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^2.1.4",
     "lit-element": "^2.2.1"
   },
   "devDependencies": {

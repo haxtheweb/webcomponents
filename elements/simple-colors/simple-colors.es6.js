@@ -60,9 +60,6 @@ class SimpleColors extends PolymerElement {
         type: Object,
         value: window.SimpleColorsStyles.colors,
         notify: true
-      },
-      __utils: {
-        type: Object
       }
     };
   }

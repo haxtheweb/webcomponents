@@ -52,7 +52,8 @@ class HaxManager extends PolymerElement {
           position: absolute;
           padding: 8px;
           margin: 0;
-          color: var(--hax-color-text);
+          background-color: var(--hax-color-menu-heading-bg, #eeeeee);
+          color: var(--hax-color-menu-heading-color, black);
           background-color: transparent;
           width: 40px;
           height: 40px;
@@ -95,7 +96,7 @@ class HaxManager extends PolymerElement {
           font-size: 18px;
           line-height: 18px;
           font-family: "Noto Serif", serif;
-          color: var(--hax-color-text);
+          color: var(--hax-color-menu-heading-color);
         }
 
         #preview {
@@ -173,8 +174,8 @@ class HaxManager extends PolymerElement {
           width: 100%;
           margin: 0;
           padding: 16px;
-          background-color: var(--hax-color-accent1);
-          color: var(--hax-color-accent1-color);
+          background-color: var(--hax-color-menu-heading-bg, #eeeeee);
+          color: var(--hax-color-menu-heading-color, black);
         }
         paper-input {
           color: var(--hax-color-text);
@@ -247,10 +248,7 @@ class HaxManager extends PolymerElement {
               </iron-pages>
             </div>
             <div style="height:100%;">
-              <hax-preview
-                id="preview"
-                element="{{activeHaxElement}}"
-              ></hax-preview>
+              <hax-preview id="preview"></hax-preview>
             </div>
           </iron-pages>
           <paper-button
@@ -593,9 +591,12 @@ class HaxManager extends PolymerElement {
     if (typeof newValue !== typeof undefined) {
       this.searching = false;
       this.updateStyles();
-      if (newValue === 1) {
+      if (newValue === 1 && this.shadowRoot.querySelector("#appbrowser")) {
         this.shadowRoot.querySelector("#appbrowser").resetBrowser();
-      } else if (newValue === 2) {
+      } else if (
+        newValue === 2 &&
+        this.shadowRoot.querySelector("#gizmobrowser")
+      ) {
         this.shadowRoot.querySelector("#gizmobrowser").resetBrowser();
       }
     }
@@ -610,6 +611,12 @@ class HaxManager extends PolymerElement {
       typeof e.detail.value !== typeof undefined &&
       e.detail.property
     ) {
+      if (e.detail.property === "appList") {
+        this.set(e.detail.property, []);
+      }
+      if (e.detail.property === "activeHaxElement") {
+        this.set(e.detail.property, {});
+      }
       this.set(e.detail.property, e.detail.value);
     }
   }
@@ -620,7 +627,7 @@ class HaxManager extends PolymerElement {
   _activeHaxElementChanged(newValue, oldValue) {
     if (typeof oldValue !== typeof undefined) {
       this.shadowRoot.querySelector("#preview").advancedForm = false;
-      if (typeof newValue.tag === typeof undefined) {
+      if (newValue && typeof newValue.tag === typeof undefined) {
         this.resetManager();
       } else {
         // reset files so it doesn't bloat up

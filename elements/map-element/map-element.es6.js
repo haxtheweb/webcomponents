@@ -12,7 +12,6 @@ import "@lrnwebcomponents/web-map/web-map.js";
  * @demo demo/index.html
  */
 class MapElement extends SchemaBehaviors(PolymerElement) {
-
   static get template() {
     return html`
       <style>

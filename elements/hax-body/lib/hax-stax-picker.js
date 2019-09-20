@@ -49,8 +49,8 @@ class HaxStaxPicker extends LitElement {
           position: absolute;
           padding: 8px;
           margin: 0;
-          color: var(--hax-color-text);
-          background-color: transparent;
+          background-color: var(--hax-color-menu-heading-bg, #eeeeee);
+          color: var(--hax-color-menu-heading-color, black);
           width: 40px;
           height: 40px;
           min-width: unset;
@@ -62,11 +62,11 @@ class HaxStaxPicker extends LitElement {
           font-weight: 600;
           text-align: left;
           margin: 0;
-          background-color: var(--hax-color-menu-heading-bg);
+          background-color: var(--hax-color-menu-heading-bg, #eeeeee);
+          color: var(--hax-color-menu-heading-color, black);
           font-size: 18px;
           line-height: 18px;
           font-family: "Noto Serif", serif;
-          color: var(--hax-color-text);
         }
         app-drawer {
           --app-drawer-width: 320px;

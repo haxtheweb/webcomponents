@@ -37,7 +37,9 @@ class HaxToolbar extends PolymerElement {
         }
         .wrapper {
           display: flex;
-          border: 1px solid var(--hax-color-border-outline);
+          border: 1px solid var(--hax-color-border-outline, black);
+          color: #222222;
+          background-color: #ffffff;
           height: 35px;
           align-items: center;
           padding: 1px;
@@ -79,7 +81,7 @@ class HaxToolbar extends PolymerElement {
           font-weight: bold;
           height: 36px;
           min-width: 100px;
-          --paper-slider-font-color: var(--hax-color-accent1-text);
+          --paper-slider-font-color: white;
           --paper-slider-active-color: var(--hax-color-accent1);
           --paper-slider-knob-color: var(--hax-color-accent1);
           --paper-slider-pin-start-color: var(--hax-color-accent1);

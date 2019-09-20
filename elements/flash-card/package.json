@@ -16,7 +16,7 @@
       "hax": "src/flash-card-hax.json"
     }
   },
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "A simple flash card that you can flip",
   "repository": {
     "type": "git",
@@ -39,7 +39,6 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^2.1.4",
     "@lrnwebcomponents/materializecss-styles": "^2.1.4",
     "@lrnwebcomponents/schema-behaviors": "^2.1.4",
     "@polymer/paper-card": "^3.0.0",

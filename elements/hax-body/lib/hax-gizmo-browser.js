@@ -41,11 +41,11 @@ class HaxGizmoBrowser extends PolymerElement {
           font-weight: 600;
           text-align: left;
           margin: 0;
-          background-color: var(--hax-color-menu-heading-bg);
           font-size: 18px;
           line-height: 18px;
           font-family: "Noto Serif", serif;
-          color: var(--hax-color-text);
+          background-color: var(--hax-color-menu-heading-bg, #eeeeee);
+          color: var(--hax-color-menu-heading-color, black);
         }
         .toolbar-inner {
           display: inline-flex;

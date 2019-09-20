@@ -384,6 +384,12 @@ class HAXCMSSiteEditor extends PolymerElement {
       },
       getFormToken: {
         type: String
+      },
+      /**
+       * Site dashboard element reference
+       */
+      siteDashboard: {
+        type: Object
       }
     };
   }
@@ -413,18 +419,6 @@ class HAXCMSSiteEditor extends PolymerElement {
   ready() {
     super.ready();
     afterNextRender(this, function() {
-      // see up a tag to place RIGHT next to the site-builder itself
-      if (!this.siteDashboard) {
-        let builder = document.getElementsByTagName("haxcms-site-builder")[0];
-        this.siteDashboard = document.createElement("haxcms-site-dashboard");
-        this.siteDashboard.headers = {
-          Authorization: `Bearer ${this.jwt}`
-        };
-        this.siteDashboard.loadEndpoint = this.getSiteFieldsPath;
-        this.siteDashboard.method = this.method;
-        // insert right before the builder, you sneaky thing you
-        builder.parentNode.insertBefore(this.siteDashboard, builder);
-      }
       autorun(reaction => {
         this.editMode = toJS(store.editMode);
         this.__disposer.push(reaction);
@@ -469,8 +463,8 @@ class HAXCMSSiteEditor extends PolymerElement {
         this.loadNodeFields.bind(this)
       );
       window.addEventListener(
-        "haxcms-load-site-fields",
-        this.loadSiteFields.bind(this)
+        "haxcms-load-site-dashboard",
+        this.loadSiteDashboard.bind(this)
       );
       window.addEventListener(
         "haxcms-publish-site",
@@ -567,8 +561,8 @@ class HAXCMSSiteEditor extends PolymerElement {
       this.loadNodeFields.bind(this)
     );
     window.removeEventListener(
-      "haxcms-load-site-fields",
-      this.loadSiteFields.bind(this)
+      "haxcms-load-site-dashboard",
+      this.loadSiteDashboard.bind(this)
     );
     window.removeEventListener(
       "haxcms-create-node",
@@ -602,8 +596,20 @@ class HAXCMSSiteEditor extends PolymerElement {
   /**
    * Load site fields
    */
-  loadSiteFields(e) {
+  loadSiteDashboard(e) {
     this.__siteFieldsInvoked = e.detail;
+    // ensure it exists as we do this on the fly and clean up constantly
+    if (!this.siteDashboard) {
+      let builder = document.getElementsByTagName("haxcms-site-builder")[0];
+      this.siteDashboard = document.createElement("haxcms-site-dashboard");
+      this.siteDashboard.headers = {
+        Authorization: `Bearer ${this.jwt}`
+      };
+      this.siteDashboard.loadEndpoint = this.getSiteFieldsPath;
+      this.siteDashboard.method = this.method;
+      // insert right before the builder, you sneaky thing you
+      builder.parentNode.insertBefore(this.siteDashboard, builder);
+    }
     this.siteDashboard.body = {
       jwt: this.jwt,
       token: this.getFormToken,

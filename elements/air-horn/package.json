@@ -16,7 +16,7 @@
       "hax": "src/air-horn-hax.json"
     }
   },
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "demonstrative purposes via meme",
   "repository": {
     "type": "git",
@@ -38,9 +38,6 @@
     "name": "btopro"
   },
   "license": "Apache-2.0",
-  "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^2.1.4"
-  },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

@@ -16,7 +16,7 @@
       "hax": "src/smooth-scroll-hax.json"
     }
   },
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "Start of smooth-scroll",
   "repository": {
     "type": "git",
@@ -39,7 +39,6 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^2.1.4",
     "@polymer/polymer": "^3.2.0"
   },
   "devDependencies": {

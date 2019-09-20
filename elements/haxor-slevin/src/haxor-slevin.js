@@ -7,7 +7,6 @@ import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSTh
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import { varExists, varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js";
 import "@polymer/iron-pages/iron-pages.js";
 import "@polymer/iron-icon/iron-icon.js";
@@ -48,9 +47,6 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
         reflectToAttribute: true,
         value: 0
       },
-      activeGitFileLink: {
-        type: String
-      },
       stateClass: {
         type: String,
         computed: "_getStateClass(editMode)"
@@ -76,6 +72,7 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
     import("@polymer/app-layout/app-header/app-header.js");
     import("@polymer/app-layout/app-toolbar/app-toolbar.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js");
   }
   _showImage(image) {
     if (image) {
@@ -92,14 +89,10 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
   connectedCallback() {
     super.connectedCallback();
     autorun(reaction => {
+      this._noticeLocationChange(store.location);
+    });
+    autorun(reaction => {
       let manifest = toJS(store.manifest);
-      // if we have a public repo URL then display it
-      if (
-        varGet(store.manifest, "metadata.site.git.publicRepoUrl", "") != "" &&
-        !window.customElements.get("git-corner")
-      ) {
-        import("@lrnwebcomponents/git-corner/git-corner.js");
-      }
       this.title = manifest.title;
       this.image = varGet(
         manifest,
@@ -112,15 +105,6 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
         "icons:record-voice-over"
       );
       this.author = varGet(manifest, "metadata.author", {});
-      this.__disposer.push(reaction);
-    });
-    autorun(reaction => {
-      this._noticeLocationChange(store.location);
-      this.activeGitFileLink =
-        varGet(store.manifest, "metadata.site.git.publicRepoUrl", "") +
-        "pages" +
-        store.location.pathname +
-        "/index.html";
       this.__disposer.push(reaction);
     });
     autorun(reaction => {

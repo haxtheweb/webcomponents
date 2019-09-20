@@ -37,7 +37,7 @@ class HaxAppBrowser extends PolymerElement {
           padding: 10px;
         }
         hax-app-browser-item {
-          margin: 10px;
+          margin: 8px;
           -webkit-transition: 0.3s all linear;
           transition: 0.3s all linear;
         }
@@ -52,10 +52,10 @@ class HaxAppBrowser extends PolymerElement {
           font-size: 18px;
           line-height: 18px;
           font-family: "Noto Serif", serif;
-          color: var(--hax-color-text);
+          color: var(--hax-color-menu-heading-color);
         }
         grafitto-filter {
-          color: var(--hax-color-text);
+          color: black;
         }
         .toolbar-inner {
           display: inline-flex;

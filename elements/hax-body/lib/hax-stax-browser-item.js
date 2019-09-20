@@ -33,7 +33,7 @@ class HaxStaxBrowserItem extends PolymerElement {
           width: 100%;
         }
         paper-button {
-          color: var(--hax-color-text);
+          color: black;
           background-color: #ffffff;
           border: 2px solid var(--hax-color-border-outline);
           text-transform: none;

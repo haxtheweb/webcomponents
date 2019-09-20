@@ -341,8 +341,8 @@ class Store {
     }
     return "";
   }
+
   get isLoggedIn() {
-    console.log(this.jwt);
     if (this.jwt) {
       return true;
     }

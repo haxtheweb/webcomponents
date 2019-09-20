@@ -16,7 +16,7 @@
       "hax": "src/lrn-assignment-hax.json"
     }
   },
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "A basic OER schema semantic assignment wrapper",
   "repository": {
     "type": "git",
@@ -39,7 +39,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/lrn-icons": "^2.1.4",
+    "@lrnwebcomponents/lrn-icons": "^2.1.5",
     "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-card": "^3.0.1",
     "@polymer/polymer": "^3.2.0"

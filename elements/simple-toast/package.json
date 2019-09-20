@@ -16,7 +16,7 @@
       "hax": "src/simple-toast-hax.json"
     }
   },
-  "version": "2.1.4",
+  "version": "2.1.6",
   "description": "A singular toast / message for conistency",
   "repository": {
     "type": "git",

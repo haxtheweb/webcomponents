@@ -16,7 +16,7 @@
       "hax": "src/hero-banner-hax.json"
     }
   },
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "The evil yet always requested hero banner",
   "repository": {
     "type": "git",
@@ -39,8 +39,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-behaviors": "^2.1.4",
-    "@lrnwebcomponents/hax-body-behaviors": "^2.1.4",
+    "@lrnwebcomponents/a11y-behaviors": "^2.1.5",
     "@lrnwebcomponents/materializecss-styles": "^2.1.4",
     "@polymer/iron-image": "^3.0.0",
     "@polymer/paper-button": "^3.0.1",

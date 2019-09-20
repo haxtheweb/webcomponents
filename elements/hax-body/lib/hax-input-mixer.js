@@ -33,8 +33,8 @@ class HaxImportMixer extends PolymerElement {
           border: 1px solid var(--hax-color-border-outline);
         }
         .wrapper {
-          background-color: var(--hax-color-bg-accent);
-          color: var(--hax-color-text);
+          background-color: #ffffff;
+          color: #222222;
           display: flex;
           align-items: center;
           justify-content: space-between;

@@ -36,6 +36,7 @@ class HaxAppPickerItem extends LitElement {
           padding: 10px;
           margin: 10px;
           box-shadow: none;
+          --paper-button-ink-color: var(--hax-ink-color, black);
         }
       `
     ];
