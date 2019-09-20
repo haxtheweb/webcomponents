@@ -199,13 +199,22 @@ class SimplePicker extends PolymerElement {
     this.__activeDesc = id;
     this.dispatchEvent(new CustomEvent("option-focus", { detail: this }));
   }
+  _valueChanged(newValue, oldValue) {
+    this._setSelectedOption(newValue, oldValue);
+  }
+  _optionsChanged(newValue, oldValue) {
+    this._setSelectedOption(newValue, oldValue);
+  }
 
   /**
    * sets the selected option to a given option's id
    * @returns {void}
    */
-  _setSelectedOption() {
-    let sel = null;
+  _setSelectedOption(newVal, oldVal) {
+    let sel =
+      !this.allowNull && this.options.length > 0
+        ? this.options[0][0].value
+        : null;
     if (this.options !== undefined && this.options !== null) {
       this.set(
         "__options",
@@ -213,7 +222,6 @@ class SimplePicker extends PolymerElement {
           ? JSON.parse(this.options)
           : this.options.slice()
       );
-
       //if nulls are allowed, set the active descendant to the first not null option
       this.__activeDesc = this.allowNull ? "option-0-0" : null;
       for (var i = 0; i < this.__options.length; i++) {
@@ -221,7 +229,7 @@ class SimplePicker extends PolymerElement {
           //if unset, set the active descendant to the first not null option
           if (this.value !== null && this.__activeDesc === null)
             this.__activeDesc = "option-" + i + "-" + j;
-          if (this.__options[i][j].value === this.value) {
+          if (`${this.__options[i][j].value}` === `${this.value}`) {
             //set the active descendant to the option that matches the value
             this.__activeDesc = "option-" + i + "-" + j;
             sel = this.__options[i][j];
@@ -244,6 +252,7 @@ class SimplePicker extends PolymerElement {
    */
   _toggleListbox(expanded) {
     let active = this.shadowRoot.querySelector("#" + this.__activeDesc);
+    console.log("_toggleListbox", active);
     this.expanded = expanded;
     if (expanded) {
       if (active !== null) active.focus();

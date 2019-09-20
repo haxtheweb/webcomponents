@@ -55,7 +55,6 @@
 
 :host #listbox {
   cursor: pointer;
-  display: flex;
   position: relative;
   flex: 1 0 auto;
   max-height: calc(var(--simple-picker-option-size, 24px) + 4px);
