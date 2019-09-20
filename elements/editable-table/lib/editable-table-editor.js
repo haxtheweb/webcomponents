@@ -56,6 +56,15 @@ class EditableTableEditor extends editBehaviors(
   static get template() {
     return html`
       <style include="editable-table-styles">
+        :host caption {
+          width: 100%;
+          margin-bottom: 0;
+        }
+        :host label,
+        :host .label {
+          font-size: var(--editable-table-secondary-font-size);
+          font-family: var(--editable-table-secondary-font-family);
+        }
         :host .filter-icon,
         :host .sortable-icon {
           display: none;
@@ -63,111 +72,107 @@ class EditableTableEditor extends editBehaviors(
           width: 24px;
           height: 24px;
         }
-        :host([sort]) .tbody .tr:first-child .sortable-icon {
+        :host([sort]) tbody .tr:first-child .sortable-icon {
           display: inline-block;
           opacity: 0.25;
         }
-        :host([filter]) .tbody .tr:not(:first-of-type) .filter-icon {
+        :host([filter]) tbody .tr:not(:first-of-type) .filter-icon {
           display: inline-block;
           opacity: 0.25;
         }
+        :host #table {
+          min-width: calc(100% - 2.3px);
+          width: unset;
+        }
+        :host caption,
+        :host .th-or-td {
+          border: 1px solid #ddd;
+        }
+        :host .th,
+        :host th {
+          padding: 0;
+          vertical-align: center;
+          color: black;
+          background-color: #f0f0f0;
+          outline: var(--editable-table-border);
+        }
+        :host .th:first-child {
+          width: 96px;
+        }
+        :host .td {
+          vertical-align: top;
+        }
+        :host([bordered]) .td {
+          border: var(--editable-table-border);
+        }
+        :host([responsive]) thead .th:nth-of-type(3),
+        :host([responsive]) .td:nth-of-type(2) {
+          border-right-width: calc(var(--editable-table-border-width) + 5px);
+          border-right-style: double;
+        }
+        :host([bordered]) thead .th:not(:first-child) {
+          border-bottom: var(--editable-table-border);
+        }
+        :host([striped][column-header]) tbody .tr:nth-child(2n + 1) .td {
+          @apply --editable-table-style-stripe;
+        }
+        :host([striped]:not([column-header])) tbody .tr:nth-child(2n) .td {
+          @apply --editable-table-style-stripe;
+        }
+        :host([column-header]) tbody .tr:first-child .td {
+          @apply --editable-table-style-column-header;
+        }
+        :host([row-header]) tbody .tr .td:first-of-type {
+          @apply --editable-table-style-row-header;
+        }
+        :host([footer]) tbody .tr:last-of-type .td {
+          @apply --editable-table-style-footer;
+        }
+        :host caption,
         :host .field-group {
           width: 100%;
           padding: 0;
           margin: 0;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
           transition: all 2s;
           color: var(--editable-table-caption-color);
         }
+        :host .field-group {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        :host caption > *,
         :host .field-group > * {
           margin: 0 2.5px;
-        }
-        :host caption .field-group {
-          align-items: flex-end;
         }
         :host .field-group .field-group {
           color: var(--editable-table-caption-color);
           width: unset;
         }
-        :host caption paper-input {
-          margin-bottom: 0;
-        }
-        :host label,
-        :host .label {
-          font-size: 12px;
-          font-family: var(--editable-table-secondary-font-family);
-        }
-        :host .table {
-          width: calc(100% - 2.3px);
-        }
-        :host caption,
-        :host .th,
-        :host .td {
-          border: 1px solid #ddd;
-        }
-        :host .th {
-          padding: 0;
-          vertical-align: center;
-          color: black;
-          background-color: #f0f0f0;
-        }
-        :host .td {
-          vertical-align: top;
-        }
-        :host .th:first-child {
-          width: 96px;
-        }
-        :host([bordered]) .td {
-          border: var(--editable-table-border);
-        }
-        :host([responsive]) .thead .th:nth-of-type(3),
-        :host([responsive]) .td:nth-of-type(2) {
-          border-right-width: calc(var(--editable-table-border-width) + 5px);
-          border-right-style: double;
-        }
-        :host([bordered]) .thead .th:not(:first-child) {
-          border-bottom: var(--editable-table-border);
-        }
-        :host([striped]) .tr:nth-child(2n + 1) .td {
-          @apply --editable-table-style-stripe;
-        }
-        :host([column-header]) .tbody .tr:first-child .td {
-          @apply --editable-table-style-column-header;
-        }
-        :host([row-header]) .tbody .tr .td:first-of-type {
-          @apply --editable-table-style-row-header;
-        }
-        :host([footer]) .tbody .tr:last-of-type .td {
-          @apply --editable-table-style-footer;
+        @media screen {
         }
       </style>
       <p class="sr-only">Table Editor</p>
       <div id="table-outer">
         <table
           id="table"
-          class="table"
           bordered$="{{bordered}}"
           condensed$="{{condensed}}"
           striped$="{{striped}}"
         >
           <caption>
             <p class="sr-only">Editable Table</p>
-            <p class="field-group">
-              <paper-input
-                id="caption"
-                class="field-group-grow caption"
-                label="Caption"
-                placeholder="A title for the table."
-                value$="{{caption}}"
-              >
-              </paper-input>
-            </p>
+            <paper-input
+              id="caption"
+              label="Caption"
+              placeholder="A title for the table."
+              value$="{{caption}}"
+            >
+            </paper-input>
           </caption>
-          <thead class="thead">
+          <thead>
             <tr class="tr">
-              <th class="th" scope="col">
+              <th class="th th-or-td" scope="col">
                 <span class="sr-only">Row Operations</span>
               </th>
               <template
@@ -187,7 +192,7 @@ class EditableTableEditor extends editBehaviors(
                     index-as="th"
                     restamp="true"
                   >
-                    <th class="th" scope="col">
+                    <th class="th th-or-td col-[[th]]" scope="col">
                       <editable-table-editor-rowcol
                         condensed$="{{condensed}}"
                         index$="[[th]]"
@@ -199,7 +204,7 @@ class EditableTableEditor extends editBehaviors(
               </template>
             </tr>
           </thead>
-          <tbody id="tbody" class="tbody">
+          <tbody id="tbody">
             <template
               id="rows"
               is="dom-repeat"
@@ -208,8 +213,8 @@ class EditableTableEditor extends editBehaviors(
               index-as="tr"
               restamp="true"
             >
-              <tr class="tr">
-                <th class="th" scope="row">
+              <tr class="tr tbody-tr">
+                <th class="th th-or-td" scope="row">
                   <editable-table-editor-rowcol
                     condensed$="{{condensed}}"
                     index$="[[tr]]"
@@ -218,12 +223,13 @@ class EditableTableEditor extends editBehaviors(
                 </th>
                 <template
                   id="columns"
+                  index-as="td"
                   is="dom-repeat"
                   items="[[row]]"
                   as="cell"
                   restamp="true"
                 >
-                  <td class="td">
+                  <td class="td th-or-td">
                     <editable-table-editor-cell
                       class="cell"
                       row="[[tr]]"
