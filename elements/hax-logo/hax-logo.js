@@ -63,6 +63,10 @@ class HaxLogo extends HTMLElement {
 :host([size="large"]) .right {
   margin-left: -44px;
 }
+:host([hide-hax]) .inner,
+:host([hide-hax]) .innerslot {
+  display: none;
+}
 :host([size="large"]) .the {
   letter-spacing: 20px;
   margin-left: 20px;
@@ -96,7 +100,7 @@ class HaxLogo extends HTMLElement {
   margin: var(--hax-logo-innerslot-margin);
   letter-spacing: -2px;
 }</style>
-<span class="wrap"><span class="left">&lt;</span><span class="innerslot"><slot name="pre"></slot></span><span class="inner">h-a-x<br><span class="the">the</span><br><span class="web">web</span></bt></span><span class="innerslot"><slot name="post"></slot></span><span class="right">&gt;</span></span>`;
+<span class="wrap"><span class="left">&lt;</span><span class="innerslot"><slot name="pre"></slot></span><slot></slot><span class="inner">h-a-x<br><span class="the">the</span><br><span class="web">web</span></bt></span><span class="innerslot"><slot name="post"></slot></span><span class="right">&gt;</span></span>`;
   }
 
   // haxProperty definition

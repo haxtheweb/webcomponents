@@ -67,7 +67,6 @@ class SimpleLogin extends PolymerElement {
 
         #loginbtn,
         #buttons ::slotted(paper-button) {
-          margin-top: 24px;
           background-color: var(
             --login-btn-background-color,
             var(--login-form-color, var(--paper-indigo-500))
@@ -76,6 +75,9 @@ class SimpleLogin extends PolymerElement {
             --login-btn-text-color,
             var(--login-form-background, white)
           );
+          width: var(--login-btn-width, auto);
+          margin: var(--login-btn-margin, 24px auto 0);
+          display: var(--login-btn-display, inline-flex);
           --paper-button-raised-keyboard-focus: {
             background-color: var(
               --login-btn-raised-background-color,

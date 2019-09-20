@@ -1,5 +1,7 @@
 body, html, :root {
   --haxcms-system-bg: #37474f;
+  --haxcms-system-action-color: var(--simple-colors-default-theme-light-blue-7, #007ffc);
+  --haxcms-system-danger-color: var(--simple-colors-default-theme-red-7, #FF7777);
   --paper-toast-color: #FFFFFF;
   --paper-toast-background-color:var(--haxcms-system-bg, black);
   --simple-modal-titlebar-color: #FFFFFF;

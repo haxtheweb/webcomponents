@@ -45,6 +45,10 @@
 :host([size="large"]) .right {
   margin-left: -44px;
 }
+:host([hide-hax]) .inner,
+:host([hide-hax]) .innerslot {
+  display: none;
+}
 :host([size="large"]) .the {
   letter-spacing: 20px;
   margin-left: 20px;

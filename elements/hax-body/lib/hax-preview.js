@@ -469,7 +469,8 @@ class HaxPreview extends PolymerElement {
               // support custom element input
               if (
                 typeof schema.properties[property].component !==
-                typeof undefined
+                  typeof undefined &&
+                schema.properties[property].component.properties
               ) {
                 schema.properties[property].component.properties.value =
                   element.properties[property];
@@ -602,7 +603,8 @@ class HaxPreview extends PolymerElement {
               // support custom element input
               if (
                 typeof schema.properties[property].component !==
-                typeof undefined
+                  typeof undefined &&
+                schema.properties[property].component.properties
               ) {
                 schema.properties[property].component.properties.value =
                   element.properties[property];
@@ -666,7 +668,9 @@ class HaxPreview extends PolymerElement {
               newValue.properties[property].value;
             // support custom element input
             if (
-              typeof schema.properties[property].component !== typeof undefined
+              typeof schema.properties[property].component !==
+                typeof undefined &&
+              schema.properties[property].component.properties
             ) {
               schema.properties[property].component.properties.value =
                 newValue.properties[property].value;
