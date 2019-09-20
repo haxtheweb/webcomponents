@@ -4,10 +4,9 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import "@lrnwebcomponents/simple-picker/simple-picker.js";
-import "@polymer/paper-item/paper-item.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
+import "@lrnwebcomponents/simple-picker/simple-picker.js";
 import { ResponsiveUtilityBehaviors } from "@lrnwebcomponents/responsive-utility/lib/responsive-utility-behaviors.js";
 import { displayBehaviors } from "./editable-table-behaviors.js";
 import "./editable-table-sort.js";
@@ -16,44 +15,9 @@ import "./editable-table-styles.js";
 
 /**
  * `editable-table-display`
- * `An editor interface for editable-table (editable-table.html). (See editable-table-behaviors.html for more information.)`
- *
- * @microcopy - language worth noting:
- * ```
- <editable-table-display 
-  bordered                  //Adds borders to table. Default is no border.
-  caption="..."             //The caption or title for the table.
-  column-header             //Does the table use the first row as a column-header? Default is false.
-  condensed                 //Condense the padding above and below the table? Default is false.
-  data=[]                      //Table data as an array. For example: 
-                            [
-                              [ ["..."], ["..."] ],     //This line represents a row with two columns
-                              [ ["..."], ["..."] ],     //This line represents another row with two columns
-                              [ ["..."], ["..."] ]      //This line represents a third row with two columns
-                            ]
-  filter                    //Allow table to toggle filtering? When a cell is toggled, only rows that have the same value as that cell will be shown. Default is no filter.
-  filterColumn              //If filter is applied which column number has th filter?
-  filtered                  //Is the table data filtered?
-  filterText                //The text used as a filter.
-  footer                    //Does the table use the last row as a footer? Default is false.
-  hide-accent-color         //Hide the accent color dropdown menu? Default is false which enables the menu which changes the accent-color property.
-  hide-bordered             //Hide the bordered toggle? Default is false so that a toggle button to control the bordered property.
-  hide-condensed            //Hide the condensed toggle? Default is false so that a toggle button to control the condensed property.
-  hide-filter               //Hide the filter toggle? Default is false so that a toggle button to control the filter property.
-  hide-sort                 //Hide the sort toggle? Default is false so that a toggle button to control the sort property.
-  hide-responsive           //Hide the scroll toggle? Default is false so that a toggle button to control the scroll property.
-  hide-striped              //Hide the striped toggle? Default is false so that a toggle button to control the striped property.
-  row-header                //Does the table use the first column as a row header? Default is false.
-  responsive                //Does the table use scrolling to fit when it is too wide?  Default is false: a responsive layout where only two columns are shown and a dropdown menu controls which column to display.
-  selected                  //In responsive mode, the selected column to display.
-  sort                      //Does the table allow sorting by column where column headers become sort buttons? Default is false.
-  sortColumn                //If sort mode is enabled, the number of the column where sort is applied.
-  sortMode                  //If a column has sort applied, the sort mode for the column: ascending, descending, or none
-  striped>                  //Does the table have alternating stipes of shading for its body rows? Default is false.
-</editable-table-display >```
- *  
+ * ` An editor interface for editable-table`
  * @demo demo/editor.html
- * 
+ *
  * @polymer
  * @customElement
  * @appliesMixin displayBehaviors
@@ -86,9 +50,6 @@ class EditableTableDisplay extends displayBehaviors(
         :host([footer]) .tfoot-tr .th,
         :host([footer]) .tfoot-tr .td {
           @apply --editable-table-style-footer;
-        }
-        :host paper-item.column-option:first-of-type {
-          display: none;
         }
         :host #column {
           width: calc(var(--simple-picker-option-size) + 6px);
@@ -137,6 +98,7 @@ class EditableTableDisplay extends displayBehaviors(
         <caption>
           <div>
             [[caption]]
+            <slot></slot>
             <simple-picker
               id="column"
               aria-labelledby$="[[tables.0.label]]"
@@ -166,7 +128,7 @@ class EditableTableDisplay extends displayBehaviors(
                 <template is="dom-if" if="[[sort]]" restamp="">
                   <editable-table-sort
                     sort-column$="[[sortColumn]]"
-                    column-number="[[index]]"
+                    column-index="[[index]]"
                     text$="[[th]]"
                   ></editable-table-sort>
                 </template>
@@ -222,7 +184,7 @@ class EditableTableDisplay extends displayBehaviors(
                   >
                     <template is="dom-if" if="[[filter]]" restamp="">
                       <editable-table-filter
-                        column-number="[[index]]"
+                        column-index="[[index]]"
                         text$="[[cell]]"
                         filtered$="[[_isFiltered(index,filterColumn,filtered)]]"
                       ></editable-table-filter>
@@ -280,14 +242,14 @@ class EditableTableDisplay extends displayBehaviors(
   static get properties() {
     return {
       /**
-       * Column for filtering
+       * Index of the current filter column
        */
       filterColumn: {
         type: Number,
         value: null
       },
       /**
-       * Is the table filtered
+       * Whether table is filtered
        */
       filtered: {
         type: Boolean,
@@ -301,7 +263,7 @@ class EditableTableDisplay extends displayBehaviors(
         value: null
       },
       /**
-       * The selected column to display when in responsive mode
+       * Selected column to display when in responsive mode
        */
       selected: {
         type: Number,
@@ -315,21 +277,21 @@ class EditableTableDisplay extends displayBehaviors(
         value: "none"
       },
       /**
-       * The index of the current sort column
+       * Index of the current sort column
        */
       sortColumn: {
         type: Number,
         value: -1
       },
       /**
-       * columns in <thead>
+       * Columns in <thead>
        */
       thead: {
         type: Array,
         computed: "_getThead(data,columnHeader)"
       },
       /**
-       * rows in <tbody>
+       * Rows in <tbody>
        */
       tbody: {
         type: Array,
@@ -339,7 +301,7 @@ class EditableTableDisplay extends displayBehaviors(
   }
 
   /**
-   * Get the rows in `<tbody>`
+   * Gets the rows in `<tbody>`
    * @param {array} data the table data as an array
    * @param {boolean} columnHeader does the table have a column header
    * @param {boolean} footer does the table have a footer
@@ -362,7 +324,7 @@ class EditableTableDisplay extends displayBehaviors(
   }
 
   /**
-   * Get the columns in `<thead>`
+   * Gets the columns in `<thead>`
    * @param {array} data the table data as an array
    * @param {boolean} columnHeader does the table have a column header
    * @returns {array} the `<thead>`data
@@ -378,100 +340,99 @@ class EditableTableDisplay extends displayBehaviors(
     return [];
   }
   /**
-   * Determine whether or not a cell is hidden in responsive mode
+   * Determines whether or not a cell is hidden in responsive mode
    * @param {number} index the current column number
    * @param {number} selected the selected column number
-   * @returns {boolean} if the column is hidden (i.e. not the selected column)
+   * @returns {boolean} whether the column is hidden (i.e. not the selected column)
    */
   _isColHidden(index, selected) {
     return parseInt(index) !== 0 && parseInt(index) !== parseInt(selected);
   }
 
   /**
-   * sets a column's cells to filtered when in filtered mode so that filter can toggle
+   * Sets a column's cells to filtered when in filtered mode so that filter can toggle
    * @param {number} index the current column number
    * @param {number} selected the filtered column number
    * @param {boolean} filtered is the table in filtered mode
-   * @returns {boolean} if the column is filtered
+   * @returns {boolean} whether the column is filtered
    */
   _isFiltered(column, filterColumn, filtered) {
     return filterColumn !== null && filterColumn === column && filtered;
   }
 
   /**
-   * sets a cell's negative number style
+   * Sets a cell's negative number style
    * @param {string} cell the cell contents
-   * @returns {boolean} if cell contents are numeric and negative
+   * @returns {boolean} whether cell contents are numeric and negative
    */
   _isNegative(cell) {
     return this._isNumeric(cell) && cell.trim().indexOf("-") === 0;
   }
 
   /**
-   * sets a cell's numeric style
+   * Sets a cell's numeric style
    * @param {string} cell the cell contents
-   * @returns {boolean} if cell contents are numeric
+   * @returns {boolean} whether cell contents are numeric
    */
   _isNumeric(cell) {
     return cell !== null && !isNaN(cell.trim().replace(/\$/g, ""));
   }
 
   /**
-   * determines if an entire body column dontains numeric data
-   * @param {number} col the column number
+   * Determines if an entire body column dontains numeric data
+   * @param {number} index the column index
    * @returns {boolean} if columns contents are numeric
    */
-  _isNumericColumn(col) {
+  _isNumericColumn(index) {
     let numeric = true;
     for (let i = 0; i < this.tbody.length; i++) {
-      if (!this._isNumeric(this.tbody[i][col])) numeric = false;
+      if (!this._isNumeric(this.tbody[i][index])) numeric = false;
     }
     return numeric;
   }
 
   /**
-   * Calculate if the cell is a `<th>` or `<td>`
+   * Calculates whether the cell is a `<th>` or `<td>`
    * @param {boolean} rowHeader if the cell is a rowheader
    * @param {number} index the current column number
-   * @returns {boolean} if the cell is a `<th>` or `<td>`
+   * @returns {boolean} whether the cell is a `<th>` or `<td>`
    */
   _isRowHeader(rowHeader, index) {
     return index === 0 && rowHeader;
   }
 
   /**
-   * Handle column dropdown-select change
+   * Handles table change
    */
-  _tableChanged(newValue) {
+  _tableChanged() {
     this._updateCols();
   }
 
   /**
-   * Handle column dropdown-select change
-   * @param {event} e
+   * Handles column  selector change
    */
   _selectedChanged() {
     this._updateCols();
   }
 
   /**
-   * Handle sort button click
+   * Handles sort button click
    * @param {event} e the event
    */
   _changeSortMode(e) {
-    if (this.sortColumn === e.detail.columnNumber && this.sortMode === "asc") {
+    if (this.sortColumn === e.detail.columnIndex && this.sortMode === "asc") {
       this.sortMode = "desc";
     } else if (
-      this.sortColumn === e.detail.columnNumber &&
+      this.sortColumn === e.detail.columnIndex &&
       this.sortMode === "desc"
     ) {
       this.sortMode = "none";
     } else {
       this.sortMode = "asc";
-      this.sortColumn = e.detail.columnNumber;
+      this.sortColumn = e.detail.columnIndex;
     }
     e.detail.setSortMode(this.sortMode);
-    this.sortData(this.sortMode, e.detail.columnNumber);
+    this.sortData(this.sortMode, e.detail.columnIndex);
   }
 
   /**
@@ -544,14 +505,14 @@ class EditableTableDisplay extends displayBehaviors(
   toggleFilter(e) {
     if (
       e === undefined ||
-      (this.filterColumn == e.detail.columnNumber && this.filtered)
+      (this.filterColumn == e.detail.columnIndex && this.filtered)
     ) {
       this.filtered = false;
       this.filterText = null;
       this.filterColumn = null;
     } else {
       this.filterText = e.detail.text;
-      this.filterColumn = e.detail.columnNumber;
+      this.filterColumn = e.detail.columnIndex;
       this.filtered = true;
     }
   }

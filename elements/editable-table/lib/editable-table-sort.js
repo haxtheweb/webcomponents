@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "./editable-table-iconset.js";
@@ -12,17 +11,8 @@ import "./editable-table-iconset.js";
  * `editable-table-editor-sort`
  * `A column header that functions as a three-state sort button (no sort, sort ascending, sort descending) for the table-editor-display mode (table-editor-display.html).`
  *
- * @microcopy - language worth noting:
- * ```
-<editable-table-sort 
-  sort-mode="asc"               //The column's sort mode, can be "asc", "desc", or "none". Default is "none".
-  sort-column="3"               //The column number of current sort column.
-  column-number="2"             //The column number of this button. If this matches the sort-column number, sorting will be turned on.
-  text="">                      //The text of the column header
-</editable-table-sort>```
- *  
  * @demo demo/display.html
- * 
+ *
  * @polymer
  * @customElement
  */
@@ -66,7 +56,7 @@ class EditableTableSort extends PolymerElement {
           display: flex;
         }
       </style>
-      <paper-button id="button" class="container">
+      <paper-button id="button" class="container" on-click="_onSortClicked">
         [[text]] <span class="sr-only asc">(ascending)</span>
         <span class="sr-only desc">(descending)</span>
         <span class="sr-only"> Toggle sort mode.</span>
@@ -80,23 +70,13 @@ class EditableTableSort extends PolymerElement {
   static get tag() {
     return "editable-table-sort";
   }
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      this.addEventListener("click", this._onSortTapped.bind(this));
-    });
-  }
-  disconnectedCallback() {
-    this.removeEventListener("click", this._onSortTapped.bind(this));
-    super.disconnectedCallback();
-  }
 
   static get properties() {
     return {
       /**
-       * sort ascending, descending or none
+       * Sort ascending, descending or none
        */
-      columnNumber: {
+      columnIndex: {
         type: Number,
         value: null,
         reflectToAttribute: true
@@ -110,7 +90,7 @@ class EditableTableSort extends PolymerElement {
         reflectToAttribute: true
       },
       /**
-       * The index of the current sort column
+       * Index of the current sort column
        */
       sortColumn: {
         type: Number,
@@ -118,15 +98,15 @@ class EditableTableSort extends PolymerElement {
         reflectToAttribute: true
       },
       /**
-       * If this is the sort column, sorting is on
+       * Whether the column is being sorted
        */
       sorting: {
         type: Boolean,
-        computed: "_isSorting(columnNumber,sortColumn)",
+        computed: "_isSorting(columnIndex,sortColumn)",
         reflectToAttribute: true
       },
       /**
-       * the column header text
+       * Column header text
        */
       text: {
         type: String,
@@ -136,9 +116,10 @@ class EditableTableSort extends PolymerElement {
   }
 
   /**
-   * listen for button tap
+   * Fires when sort button is clicked
+   * @event change-sort-mode
    */
-  _onSortTapped() {
+  _onSortClicked() {
     this.dispatchEvent(
       new CustomEvent("change-sort-mode", {
         bubbles: true,
@@ -150,7 +131,8 @@ class EditableTableSort extends PolymerElement {
   }
 
   /**
-   * changes the sort mode
+   * Changes the sort mode
+   * @param {string} mode the sort mode: `asc` for ascending or `desc` for descending;
    */
   setSortMode(mode) {
     this.sortMode = mode;
@@ -158,10 +140,13 @@ class EditableTableSort extends PolymerElement {
   }
 
   /**
-   * Is the column number is the same as the current sort column?
+   * Determines if column number is the same as the current sort column
+   * @param {number} columnIndex the index of the column
+   * @param {number} sortColumn the index of the column being sorted
+   * @returns {boolean} whether this column is being sorted
    */
-  _isSorting(columnNumber, sortColumn) {
-    return columnNumber === sortColumn;
+  _isSorting(columnIndex, sortColumn) {
+    return columnIndex === sortColumn;
   }
 }
 window.customElements.define(EditableTableSort.tag, EditableTableSort);

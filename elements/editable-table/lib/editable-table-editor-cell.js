@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/iron-autogrow-textarea/iron-autogrow-textarea.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import { cellBehaviors } from "./editable-table-behaviors.js";
@@ -12,25 +11,8 @@ import { cellBehaviors } from "./editable-table-behaviors.js";
  * `editable-table-editor-cell`
  * `An editable cell in the editable-table-editor (editable-table-editor.html) interface.`
  *
- * @microcopy - language worth noting:
- * ```
- <editable-table-editor-cell 
-  row="3"                             //The index of the cell's row
-  column="2"                         //The index of the cell's column
-  value="">                          //The editable contents of the cell
-  <iron-icon                         //If cell is sortable, the sortable icon
-    class="sortable-icon"
-    icon="editable-table:sortable" 
-    aria-hidden="true">
-  </iron-icon>
-  <iron-icon                          //If cell is sortable, the sortable icon
-    class="filter-icon"
-    icon="editable-table:filter-off">
-  </iron-icon>
-</editable-table-editor-cell>```
- *  
  * @demo demo/editor.html
- * 
+ *
  * @polymer
  * @customElement
  * @appliesMixin cellBehaviors
@@ -84,38 +66,39 @@ class EditableTableEditorCell extends cellBehaviors(PolymerElement) {
         }
       </style>
       <iron-autogrow-textarea
-        autofocus=""
+        autofocus
         id="cell"
-        label\$="[[label]]"
-        value\$="{{value}}"
+        label$="[[label]]"
+        on-bind-value-changed="_onValueChanged"
+        value$="{{value}}"
       >
       </iron-autogrow-textarea>
       <div id="icons"><slot></slot></div>
       <iron-a11y-keys
         id="down"
         keys="down"
-        target\$="[[cell]]"
+        target$="[[cell]]"
         on-keys-pressed="_onCellBelow"
       >
       </iron-a11y-keys>
       <iron-a11y-keys
         id="up"
         keys="up"
-        target\$="[[cell]]"
+        target$="[[cell]]"
         on-keys-pressed="_onCellAbove"
       >
       </iron-a11y-keys>
       <iron-a11y-keys
         id="left"
         keys="left"
-        target\$="[[cell]]"
+        target$="[[cell]]"
         on-keys-pressed="_onCellLeft"
       >
       </iron-a11y-keys>
       <iron-a11y-keys
         id="right"
         keys="right"
-        target\$="[[cell]]"
+        target$="[[cell]]"
         on-keys-pressed="_onCellRight"
       >
       </iron-a11y-keys>
@@ -128,28 +111,28 @@ class EditableTableEditorCell extends cellBehaviors(PolymerElement) {
   static get properties() {
     return {
       /**
-       * cell row
+       * Cell row
        */
       row: {
         type: Number,
         value: null
       },
       /**
-       * cell column
+       * Cell column
        */
       column: {
         type: Number,
         value: null
       },
       /**
-       * cell label
+       * Cell label
        */
       label: {
         type: String,
         computed: "_getCellLabel(column,row)"
       },
       /**
-       * cell contents
+       * Cell contents
        */
       value: {
         type: String,
@@ -160,44 +143,34 @@ class EditableTableEditorCell extends cellBehaviors(PolymerElement) {
   }
 
   /**
-   * set iron-a11y-keys target to this
+   * Sets iron-a11y-keys target to this
    */
   ready() {
     super.ready();
-    afterNextRender(this, function() {
-      this.addEventListener(
-        "bind-value-changed",
-        this._onValueChanged.bind(this)
-      );
-    });
     this.cell = this.$.cell;
-  }
-  disconnectedCallback() {
-    this.removeEventListener(
-      "bind-value-changed",
-      this._onValueChanged.bind(this)
-    );
-    super.disconnectedCallback();
   }
 
   /**
-   * focus the on text area
+   * Focuses the on text area
    */
   focus() {
     this.cell.textarea.focus();
   }
 
   /**
-   * if clicking in td but outside textarea, focus the text area
+   * Gets the cell label, as in "Cell B2"
+   * @param {number} column the column index
+   * @param {number} row the row index
+   * @returns {string} a label (eg., "Cell B2")
    */
   _getCellLabel(column, row) {
-    return (
-      "Cell " + this._getLabel(column, "Column") + this._getLabel(row, "Row")
-    );
+    return "Cell " + this._getLabel(column, false) + this._getLabel(row, true);
   }
 
   /**
-   * if clicking in td but outside textarea, focus the text area
+   * Fires when cell value changes to notify table
+   * @event cell-value-changed
+   * @param {event} e the change event
    */
   _onValueChanged(e) {
     this.dispatchEvent(
@@ -215,9 +188,9 @@ class EditableTableEditorCell extends cellBehaviors(PolymerElement) {
   }
 
   /**
-   * FROM: https://stackoverflow.com/questions/2897155/get-cursor-position-in-characters-within-a-text-input-field
    * Returns the caret (cursor) position of the specified text field.
-   * Return value range is 0-oField.value.length.
+   * FROM: https://stackoverflow.com/questions/2897155/get-cursor-position-in-characters-within-a-text-input-field
+   * @returns {number} the caret position (value range is 0-oField.value.length).
    */
   getCaretPosition() {
     var caret = 0;
@@ -242,6 +215,8 @@ class EditableTableEditorCell extends cellBehaviors(PolymerElement) {
 
   /**
    * make sure caret is in the correct position
+   * @param {number} start the start position of the caret
+   * @param {number} end the start position of the caret
    */
   setCaretPosition(start, end) {
     let textarea = this.$.cell.shadowRoot.querySelector("textarea");
@@ -260,7 +235,9 @@ class EditableTableEditorCell extends cellBehaviors(PolymerElement) {
   }
 
   /**
-   * set focus to textarea
+   * set focus to textarea and selects text as needed
+   * @param {number} start the start position of the caret
+   * @param {number} end the start position of the caret
    */
   setFocus(start, end) {
     this.$.cell.shadowRoot.querySelector("textarea").focus();
@@ -274,9 +251,10 @@ class EditableTableEditorCell extends cellBehaviors(PolymerElement) {
   }
 
   /**
-   * handle left
+   * fired when using keyboard to navigate left
+   * @event cell-move
    */
-  _onCellLeft(e) {
+  _onCellLeft() {
     this.dispatchEvent(
       new CustomEvent("cell-move", {
         bubbles: true,
@@ -288,9 +266,10 @@ class EditableTableEditorCell extends cellBehaviors(PolymerElement) {
   }
 
   /**
-   * handle right
+   * fired when using keyboard to navigate right
+   * @event cell-move
    */
-  _onCellRight(e) {
+  _onCellRight() {
     this.dispatchEvent(
       new CustomEvent("cell-move", {
         bubbles: true,
@@ -302,9 +281,10 @@ class EditableTableEditorCell extends cellBehaviors(PolymerElement) {
   }
 
   /**
-   * handle up
+   * fired when using keyboard to navigate up
+   * @event cell-move
    */
-  _onCellAbove(e) {
+  _onCellAbove() {
     this.dispatchEvent(
       new CustomEvent("cell-move", {
         bubbles: true,
@@ -316,9 +296,10 @@ class EditableTableEditorCell extends cellBehaviors(PolymerElement) {
   }
 
   /**
-   * handle down
+   * fired when using keyboard to navigate down
+   * @event cell-move
    */
-  _onCellBelow(e) {
+  _onCellBelow() {
     this.dispatchEvent(
       new CustomEvent("cell-move", {
         bubbles: true,

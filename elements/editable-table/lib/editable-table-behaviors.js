@@ -9,6 +9,10 @@
  * @polymer
  * @mixinFunction
  */
+
+/**
+ * behaviors needed to display the table in either mode
+ */
 export const displayBehaviors = function(SuperClass) {
   return class extends SuperClass {
     static get properties() {
@@ -54,7 +58,8 @@ export const displayBehaviors = function(SuperClass) {
         data: {
           type: Array,
           value: [],
-          notify: true
+          notify: true,
+          observer: "_dataChanged"
         },
         /**
          * Enable filtering by cell value.
@@ -119,9 +124,25 @@ export const displayBehaviors = function(SuperClass) {
       return props;
     }
     /**
-     * Return table data
+     * Fires when data changed
+     * @event change
+     * @param {event} the event
      */
-    getData() {
+    _dataChanged(e) {
+      this.dispatchEvent(
+        new CustomEvent("change", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: e
+        })
+      );
+    }
+    /**
+     * Return table data and configuration
+     * @returns {object} an object with all the table data and configurations
+     */
+    getTableProperties() {
       let data = {
         bordered: !this.hideBordered ? this.bordered : null,
         caption: this.caption,
@@ -141,13 +162,21 @@ export const displayBehaviors = function(SuperClass) {
   };
 };
 
+/**
+ * behaviors needed for table cells, row headers, and columns
+ */
 export const cellBehaviors = function(SuperClass) {
   return class extends SuperClass {
     /**
      * Get the row or column label
+     * @param {number} index of the row or column
+     * @param  {boolean} whenther it's a row
+     * @returns {string} a row number or a column letter
      */
-    _getLabel(index, type) {
-      if (type === "Column") {
+    _getLabel(index, row) {
+      if (row) {
+        return index + 1;
+      } else {
         let numerals = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""),
           results = this._getLetter(index)
             .split("-")
@@ -157,12 +186,13 @@ export const cellBehaviors = function(SuperClass) {
           if (results[i] !== "") label += numerals[results[i]];
         }
         return label;
-      } else {
-        return index + 1;
       }
     }
+
     /**
-     * Get the row or column label
+     * Converts index to a letter.
+     * @param {number} index of the row or column
+     * @returns {string} a column letter
      */
     _getLetter(index) {
       let place = Math.floor(index / 26),
@@ -176,60 +206,6 @@ export const cellBehaviors = function(SuperClass) {
         letters += this._getLetter(place - 1);
       }
       return letters;
-    }
-  };
-};
-export const editBehaviors = function(SuperClass) {
-  return class extends SuperClass {
-    static get properties() {
-      let props = {
-        /**
-         * Hide the borders table styles menu option
-         */
-        hideBordered: {
-          type: Boolean,
-          value: false
-        },
-        /**
-         * Hide the condensed table styles menu option
-         */
-        hideCondensed: {
-          type: Boolean,
-          value: false
-        },
-        /**
-         * Hide the filtering option.
-         */
-        hideFilter: {
-          type: Boolean,
-          value: false
-        },
-        /**
-         * Hide the sorting option.
-         */
-        hideSort: {
-          type: Boolean,
-          value: false
-        },
-        /**
-         * Hide the responsive table styles menu option
-         */
-        hideResponsive: {
-          type: Boolean,
-          value: false
-        },
-        /**
-         * Hide the striped table styles menu option
-         */
-        hideStriped: {
-          type: Boolean,
-          value: false
-        }
-      };
-      if (super.properties) {
-        props = Object.assign(props, super.properties);
-      }
-      return props;
     }
   };
 };

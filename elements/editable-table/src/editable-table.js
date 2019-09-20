@@ -4,14 +4,10 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { ResponsiveUtilityBehaviors } from "@lrnwebcomponents/responsive-utility/lib/responsive-utility-behaviors.js";
-import {
-  displayBehaviors,
-  editBehaviors
-} from "./lib/editable-table-behaviors.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-toggle-button/paper-toggle-button.js";
 import "@polymer/paper-input/paper-input.js";
+import { displayBehaviors } from "./lib/editable-table-behaviors.js";
 import "./lib/editable-table-editor-rowcol.js";
 import "./lib/editable-table-editor-toggle.js";
 import "./lib/editable-table-editor-cell.js";
@@ -20,45 +16,63 @@ import "./lib/editable-table-display.js";
 
 /**
  * `editable-table`
- * `An editor interface for tables that toggles between view mode (editable-table-display.html) and edit mode (editable-table-editor.html). (See editable-table-behaviors.html for more information.)`
+ * `An editor interface for tables that toggles between view mode.`
  *
- * @microcopy - language worth noting:
- * ```
- <editable-table 
-  bordered                  //Adds borders to table. Default is no border.
-  caption="..."             //The caption or title for the table.
-  column-header             //Does the table use the first row as a column-header? Default is false.
-  condensed                 //Condense the padding above and below the table? Default is false.
-  data=[]                      //Table data as an array. For example: 
-                            [
-                              [ ["..."], ["..."] ],     //This line represents a row with two columns
-                              [ ["..."], ["..."] ],     //This line represents another row with two columns
-                              [ ["..."], ["..."] ]      //This line represents a third row with two columns
-                            ]
-  edit-mode                 //Is the editor in edit mode? Default is false which places the table in display mode. 
-  filter                    //Allow table to toggle filtering? When a cell is toggled, only rows that have the same value as that cell will be shown. Default is no filter.
-  footer                    //Does the table use the last row as a footer? Default is false.
-  hide-accent-color         //Hide the accent color dropdown menu? Default is false which enables the menu which changes the accent-color property.
-  hide-bordered             //Hide the bordered toggle? Default is false so that a toggle button to control the bordered property.
-  hide-condensed            //Hide the condensed toggle? Default is false so that a toggle button to control the condensed property.
-  hide-filter               //Hide the filter toggle? Default is false so that a toggle button to control the filter property.
-  hide-sort                 //Hide the sort toggle? Default is false so that a toggle button to control the sort property.
-  hide-scroll               //Hide the scroll toggle? Default is false so that a toggle button to control the scroll property.
-  hide-striped              //Hide the striped toggle? Default is false so that a toggle button to control the striped property.
-  row-header                //Does the table use the first column as a row header? Default is false.
-  scroll                    //Does the table use scrolling to fit when it is too wide?  Default is false: a responsive layout where only two columns are shown and a dropdown menu controls which column to display.
-  sort                      //Does the table allow sorting by column where column headers become sort buttons? Default is false.
-  striped>                  //Does the table have alternating stipes of shading for its body rows? Default is false.
-</editable-table>```
- *  
+### Styling
+
+`<editable-table>` provides the following custom properties and mixins
+for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--editable-table-font-size` | Main size for the  table. | unset;
+`--editable-table-secondary-font-size` | Smaller font size for the table for minor UI elements. | 12px;
+`--editable-table-caption-font-size` | Font size for the table caption. | var(--editable-table-font-size);
+`--editable-table-font-family` | Main font-family for the table. | inherit;
+`--editable-table-secondary-font-family` | Secondary font-familt for the table's minor UI elements | "Roboto", "Noto", sans-serif;
+`--editable-table-light-weight` | The lightest table font-weight, for minor UI elements. | 200;
+`--editable-table-medium-weight` | The default table font-weight. | 300;
+`--editable-table-heavy-weight` | The heaviest table font-weight, for emphasis and table  caption. | 600;
+`--editable-table-color` | The table text color. | #222;
+`--editable-table-bg-color` | The table background color. | #fff;
+`--editable-table-caption-color` | The caption text color. | var(--editable-table-color);
+`--editable-table-caption-bg-color` | The caption background color. | #fff;
+`--editable-table-heading-color` | The row/column heading text color. | #000;
+`--editable-table-heading-bg-color` | The row/column heading background color. | #ddd;
+`--editable-table-stripe-bg-color` | The background color for alternating row striping. | #eee;
+`--editable-table-border-width` | The border width for table. | 1px;
+`--editable-table-border-style` | The border style for table. | solid;
+`--editable-table-border-color` | The border color for table. | #999;
+`--editable-table-border` | The table border. | var(--editable-table-border-width) var(--editable-table-border-style) var(--editable-table-border-color);
+`--editable-table-button-color` | The default text color of the toggle buttons. | var(--editable-table-border-color);
+`--editable-table-button-bg-color` | The default background color of the toggle buttons. | var(--editable-table-bg-color);
+`--editable-table-button-toggled-color` | The text color of the toggle buttons when toggled. | var(--editable-table-color);
+`--editable-table-button-toggled-bg-color` | The background color of the toggle buttons when toggled. | var(--editable-table-bg-color);
+`--editable-table-button-hover-color` | The text color of the toggle buttons when hovered or focused. | var(--editable-table-button-color);
+`--editable-table-button-hover-bg-color` | The background color of the toggle buttons when hovered or focused. | var(--editable-table-heading-bg-color);
+`--editable-table-button-toggled-hover-color` | The text color of the toggle buttons when toggled and hovered/focused. | var(--editable-table-heading-color);
+`--editable-table-button-toggled-hover-bg-color` | The background color of the toggle buttons when toggled and hovered/focused. | var(--editable-table-heading-bg-color);
+`--editable-table-button-disabled-color` | The text color of the toggle buttons when disabled. | var(--editable-table-border-color);
+`--editable-table-button-disabled-bg-color` | The background color of the toggle buttons when disabled. | var(--editable-table-heading-bg-color);
+`--editable-table-row-horizontal-padding` | Horizontal appding for cells. | 4px;
+`--editable-table-row-vertical-padding` | Default vertical padding for cells (determines row hight and whitespace). | 5px;
+`--editable-table-row-vertical-padding-condensed` | Smaller vertical padding for cells (determines condensed row hight and whitespace). | 2px;
+`--editable-table-row-padding` | Overall default padding for cells. | var(--editable-table-row-vertical-padding) var(--editable-table-row-horizontal-padding);
+`--editable-table-row-padding-condensed` | Overall condensed padding for cells. | var(--editable-table-row-vertical-padding-condensed)var(--editable-table-row-horizontal-padding);
+`--editable-table-style-stripe` | Styles applied to striped rows. | { background-color: var(--editable-table-stripe-bg-color); }
+`--editable-table-style-column-header` | Styles applied to column headers. | { font-weight: var(--editable-table-heavy-weight); color: var(--editable-table-heading-color); background-color: var(--editable-table-heading-bg-color); }
+`--editable-table-style-row-header` | Styles applied to row headers. | { font-weight: var(--editable-table-heavy-weight); color: var(--editable-table-heading-color); }
+`--editable-table-style-footer` | Styles applied to table footer. | { font-weight: var(--editable-table-heavy-weight); color: var(--editable-table-heading-color); border-top: 3px solid var(--editable-table-color); }
+ *
  * @demo demo/index.html
- * @demo demo/editor.html Edit Mode
  * @demo demo/display.html Display Mode
  * 
  * @customElement
  * @polymer
+ * @appliesMixin displayBehaviors
+ * @appliesMixin EditBehaviors
  */
-class EditableTable extends displayBehaviors(editBehaviors(PolymerElement)) {
+class EditableTable extends displayBehaviors(PolymerElement) {
   static get template() {
     return html`
       <style include="editable-table-styles">
@@ -123,9 +137,10 @@ class EditableTable extends displayBehaviors(editBehaviors(PolymerElement)) {
         :host([bordered]) thead .th:not(:first-child) {
           border-bottom: var(--editable-table-border);
         }
-        :host([striped][column-header]) tbody .tr:nth-child(2n + 1) .td {
-          @apply --editable-table-style-stripe;
-        }
+        :host([striped][column-header])
+          tbody
+          .tr:nth-child(2n + 1):not(:first-of-type)
+          .td,
         :host([striped]:not([column-header])) tbody .tr:nth-child(2n) .td {
           @apply --editable-table-style-stripe;
         }
@@ -186,7 +201,7 @@ class EditableTable extends displayBehaviors(editBehaviors(PolymerElement)) {
           striped$="[[striped]]"
         >
           <caption>
-            <p class="sr-only">Editable Table</p>
+            <p class="sr-only">Edit Mode for</p>
             <paper-input
               id="caption"
               label="Caption"
@@ -222,10 +237,11 @@ class EditableTable extends displayBehaviors(editBehaviors(PolymerElement)) {
                   >
                     <th class="th th-or-td col-[[th]]" scope="col">
                       <editable-table-editor-rowcol
-                        condensed$="[[condensed]]"
                         index$="[[th]]"
-                        type="Column"
-                      ></editable-table-editor-rowcol>
+                        condensed$="[[condensed]]"
+                        on-rowcol-action="_handleRowColumnMenu"
+                      >
+                      </editable-table-editor-rowcol>
                     </th>
                   </template>
                 </template>
@@ -245,10 +261,12 @@ class EditableTable extends displayBehaviors(editBehaviors(PolymerElement)) {
               <tr class="tr tbody-tr">
                 <th class="th th-or-td" scope="row">
                   <editable-table-editor-rowcol
-                    condensed$="[[condensed]]"
                     index$="[[tr]]"
-                    type="Row"
-                  ></editable-table-editor-rowcol>
+                    condensed$="[[condensed]]"
+                    on-rowcol-action="_handleRowColumnMenu"
+                    row
+                  >
+                  </editable-table-editor-rowcol>
                 </th>
                 <template
                   id="columns"
@@ -259,11 +277,12 @@ class EditableTable extends displayBehaviors(editBehaviors(PolymerElement)) {
                   mutable-data
                   restamp
                 >
-                  <td class="td th-or-td">
+                  <td class="td th-or-td" on-click="_onCellClick">
                     <editable-table-editor-cell
                       class="cell"
-                      row="[[tr]]"
                       column="[[index]]"
+                      row="[[tr]]"
+                      on-cell-move="_onCellMove"
                       value$="[[cell]]"
                     >
                       <iron-icon
@@ -287,29 +306,26 @@ class EditableTable extends displayBehaviors(editBehaviors(PolymerElement)) {
             <div class="label">Headers and footers</div>
             <editable-table-editor-toggle
               id="columnHeader"
-              label-on="First row is column headers."
-              label-off="First row is not column headers."
               icon="editable-table:column-headers"
-              toggled$="{{columnHeader}}"
-              tooltip="Toggle column headers"
+              label="First row has column headers."
+              on-change="_onTableSettingChange"
+              toggled$="[[columnHeader]]"
             >
             </editable-table-editor-toggle>
             <editable-table-editor-toggle
               id="rowHeader"
-              label-on="First column is row headers."
-              label-off="First column is not row headers."
               icon="editable-table:row-headers"
-              toggled$="{{rowHeader}}"
-              tooltip="Toggle row headers"
+              on-change="_onTableSettingChange"
+              label="First column has row headers."
+              toggled$="[[rowHeader]]"
             >
             </editable-table-editor-toggle>
             <editable-table-editor-toggle
               id="footer"
-              label-on="Last row is a footer."
-              label-off="Last row is not a footer."
               icon="editable-table:footer"
-              toggled$="{{footer}}"
-              tooltip="Toggle footer"
+              label="Last row is a footer."
+              on-change="_onTableSettingChange"
+              toggled$="[[footer]]"
             >
             </editable-table-editor-toggle>
           </div>
@@ -318,41 +334,37 @@ class EditableTable extends displayBehaviors(editBehaviors(PolymerElement)) {
             <editable-table-editor-toggle
               id="bordered"
               hidden$="[[hideBordered]]"
-              label-on="Borders."
-              label-off="No borders."
               icon="image:grid-on"
-              toggled$="{{bordered}}"
-              tooltip="Toggle border"
+              label="Borders."
+              on-change="_onTableSettingChange"
+              toggled$="[[bordered]]"
             >
             </editable-table-editor-toggle>
             <editable-table-editor-toggle
               id="striped"
               hidden$="[[hideStriped]]"
-              label-on="Row striping."
-              label-off="No row striping."
               icon="editable-table:row-striped"
-              toggled$="{{striped}}"
-              tooltip="Toggle row striping"
+              label="Alternating rows."
+              on-change="_onTableSettingChange"
+              toggled$="[[striped]]"
             >
             </editable-table-editor-toggle>
             <editable-table-editor-toggle
               id="condensed"
               hidden$="[[hideCondensed]]"
-              label-on="Condensed rows"
-              label-off="Condensed rows disabled."
               icon="editable-table:row-condensed"
-              toggled$="{{condensed}}"
-              tooltip="Toggle condensed rows."
+              label="Condensed rows."
+              on-change="_onTableSettingChange"
+              toggled$="[[condensed]]"
             >
             </editable-table-editor-toggle>
             <editable-table-editor-toggle
               id="responsive"
               hidden$="[[hideResponsive]]"
-              label-on="Mobile-friendly mode (as needed)."
-              label-off="Mobile-friendly mode disabled."
               icon="device:devices"
-              toggled$="{{responsive}}"
-              tooltip="Toggle mobile-friendly mode"
+              label="Adjust width to screen size."
+              on-change="_onTableSettingChange"
+              toggled$="[[responsive]]"
             >
             </editable-table-editor-toggle>
           </div>
@@ -361,21 +373,19 @@ class EditableTable extends displayBehaviors(editBehaviors(PolymerElement)) {
             <editable-table-editor-toggle
               id="sort"
               hidden$="[[hideSort]]"
-              label-on="Sorting enabled."
-              label-off="Sorting disabled."
+              label="Column sorting."
               icon="editable-table:sortable"
-              toggled$="{{sort}}"
-              tooltip="Toggle sort-mode"
+              on-change="_onTableSettingChange"
+              toggled$="[[sort]]"
             >
             </editable-table-editor-toggle>
             <editable-table-editor-toggle
               id="filter"
               hidden$="[[hideFilter]]"
-              label-on="Filtering enabled."
-              label-off="Filtering disabled."
               icon="editable-table:filter"
-              toggled$="{{filter}}"
-              tooltip="Toggle filter-mode"
+              label="Column filtering."
+              on-change="_onTableSettingChange"
+              toggled$="[[filter]]"
             >
             </editable-table-editor-toggle>
           </div>
@@ -397,6 +407,20 @@ class EditableTable extends displayBehaviors(editBehaviors(PolymerElement)) {
         value: false
       },
       /**
+       * Hide the borders table styles menu option
+       */
+      hideBordered: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Hide the condensed table styles menu option
+       */
+      hideCondensed: {
+        type: Boolean,
+        value: false
+      },
+      /**
        * Hide the table display menu group
        */
       hideDisplay: {
@@ -405,77 +429,46 @@ class EditableTable extends displayBehaviors(editBehaviors(PolymerElement)) {
           "_tableDisplayHidden(hideBordered,hideCondensed,hideStriped,hideResponsive)"
       },
       /**
+       * Hide the filtering option.
+       */
+      hideFilter: {
+        type: Boolean,
+        value: false
+      },
+      /**
        * Hide the table sorting & filtering menu group
        */
       hideSortFilter: {
         type: Boolean,
         computed: "_tableSortHidden(hideSort,hideFilter)"
+      },
+      /**
+       * Hide the sorting option.
+       */
+      hideSort: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Hide the responsive table styles menu option
+       */
+      hideResponsive: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Hide the striped table styles menu option
+       */
+      hideStriped: {
+        type: Boolean,
+        value: false
       }
     };
-  }
-  ready() {
-    super.ready();
-    this.onclick = function(e) {
-      let el =
-        e.srcElement !== null &&
-        e.srcElement.tagName !== null &&
-        e.srcElement.tagName.toLowerCase() === "td"
-          ? e.srcElement
-          : false;
-      if (el && el.getElementsByTagName("editable-table-cell") !== null) {
-        el.children[0].focus();
-      }
-    };
-  }
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      this.addEventListener("cell-move", this._onCellMove.bind(this));
-      this.addEventListener(
-        "cell-value-changed",
-        this._onCellValueChange.bind(this)
-      );
-      this.addEventListener("insert-row", this._handleInsertRow.bind(this));
-      this.addEventListener(
-        "insert-column",
-        this._handleInsertColumn.bind(this)
-      );
-      this.addEventListener("delete-row", this._handleDeleteRow.bind(this));
-      this.addEventListener(
-        "delete-column",
-        this._handleDeleteColumn.bind(this)
-      );
-      this.addEventListener(
-        "editable-table-setting-changed",
-        this._onTableSettingChange.bind(this)
-      );
-    });
-  }
-  disconnectedCallback() {
-    this.removeEventListener("cell-move", this._onCellMove.bind(this));
-    this.removeEventListener(
-      "cell-value-changed",
-      this._onCellValueChange.bind(this)
-    );
-    this.removeEventListener("insert-row", this._handleInsertRow.bind(this));
-    this.removeEventListener(
-      "insert-column",
-      this._handleInsertColumn.bind(this)
-    );
-    this.removeEventListener("delete-row", this._handleDeleteRow.bind(this));
-    this.removeEventListener(
-      "delete-column",
-      this._handleDeleteColumn.bind(this)
-    );
-    this.removeEventListener(
-      "editable-table-setting-changed",
-      this._onTableSettingChange.bind(this)
-    );
-    super.disconnectedCallback();
   }
 
   /**
    * Delete a column at the given index
+   * @param {number} index the index of the column
    */
   deleteColumn(index) {
     if (confirm("Delete entire column?")) {
@@ -487,6 +480,7 @@ class EditableTable extends displayBehaviors(editBehaviors(PolymerElement)) {
 
   /**
    * Delete a row at the given index
+   * @param {number} index the index of the row
    */
   deleteRow(index) {
     if (confirm("Delete entire row?")) {
@@ -496,6 +490,7 @@ class EditableTable extends displayBehaviors(editBehaviors(PolymerElement)) {
 
   /**
    * Insert a column at the given index
+   * @param {number} index the index of the column
    */
   insertColumn(index) {
     let temp = this.data.slice();
@@ -507,6 +502,7 @@ class EditableTable extends displayBehaviors(editBehaviors(PolymerElement)) {
 
   /**
    * Insert a row at the given index
+   * @param {number} index the index of the row
    */
   insertRow(index) {
     let temp = this.data.slice(),
@@ -520,10 +516,19 @@ class EditableTable extends displayBehaviors(editBehaviors(PolymerElement)) {
 
   /**
    * Toggles between edit-mode and display mode.
+   * @event toggle-edit-mode
+   * @param {boolean} edit Toggle edit mode on? Default is toggle from current mode.
    */
   toggleEditMode(edit) {
-    //let temp;
     edit = edit !== undefined ? edit : !this.editMode;
+    this.dispatchEvent(
+      new CustomEvent("toggle-edit-mode", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
     if (edit) {
       this.shadowRoot.querySelector("editable-table-display").toggleFilter();
       this.shadowRoot.querySelector("editable-table-display").sortData(false);
@@ -531,7 +536,7 @@ class EditableTable extends displayBehaviors(editBehaviors(PolymerElement)) {
     this.editMode = edit;
   }
   /**
-   * handles when the caption paper-input changed
+   * Handles when the caption paper-input changed
    */
   _captionChanged() {
     this.caption = this.$.caption.value;
@@ -539,6 +544,9 @@ class EditableTable extends displayBehaviors(editBehaviors(PolymerElement)) {
 
   /**
    * Gets the row data for a given row index
+   * @param {number} index the index of the row
+   * @param {array} data the table data
+   * @returns {array} row data
    */
   _getCurrentRow(index, data) {
     let row = null;
@@ -554,42 +562,42 @@ class EditableTable extends displayBehaviors(editBehaviors(PolymerElement)) {
   }
 
   /**
-   * Handles delete column event
+   * Handles row/column menu actions
+   * @param {event} e the event
    */
-  _handleDeleteColumn(e) {
-    this.deleteColumn(e.detail);
-  }
-
-  /**
-   * Handles delete row event
-   */
-  _handleDeleteRow(e) {
-    this.deleteRow(e.detail);
-  }
-
-  /**
-   * Handles insert column event
-   */
-  _handleInsertColumn(e) {
-    this.insertColumn(e.detail);
-  }
-
-  /**
-   * Handles insert row event
-   */
-  _handleInsertRow(e) {
-    this.insertRow(e.detail);
+  _handleRowColumnMenu(e) {
+    if (e.detail.insert && e.detail.row) {
+      this.insertRow(e.index);
+    } else if (e.detail.insert && !e.detail.row) {
+      this.insertColumn(e.detail.index);
+    } else if (!e.detail.insert && e.detail.row) {
+      this.deleteRow(e.detail.index);
+    } else {
+      this.deleteColumn(e.detail.index);
+    }
   }
 
   /**
    * Tests for first row of data. Workaround to restamp column headers.
+   * @param {number} index the index of the row
    */
   _isFirstRow(index) {
     return index === 0;
   }
 
   /**
-   * Move the focus/cursor to the correct cell when navigation keys are pressed
+   * Sets focus on the cell's textarea if the cell is clicked
+   * @param {event} e the event
+   */
+  _onCellClick(e) {
+    if (e.model && e.model.root && e.model.root.nodeList[0]) {
+      e.model.root.nodeList[0].focus();
+    }
+  }
+
+  /**
+   * Moves the focus/cursor to the correct cell when navigation keys are pressed
+   * @param {event} e the event
    */
   _onCellMove(e) {
     let dir = e.detail.direction,
@@ -628,6 +636,7 @@ class EditableTable extends displayBehaviors(editBehaviors(PolymerElement)) {
 
   /**
    * Updates data when cell value changes
+   * @param {event} e the event
    */
   _onCellValueChange(e) {
     this.set("data." + e.detail.row + "." + e.detail.column, e.detail.value);
@@ -635,9 +644,10 @@ class EditableTable extends displayBehaviors(editBehaviors(PolymerElement)) {
 
   /**
    * Updates table properties when setting changes
+   * @param {event} e the event
    */
   _onTableSettingChange(e) {
-    this[e.detail.prop] = e.detail.value;
+    this[e.detail.id] = e.detail.toggled;
   }
 
   /**
@@ -650,7 +660,12 @@ class EditableTable extends displayBehaviors(editBehaviors(PolymerElement)) {
   }
 
   /**
-   * Are all of the table style choices hidden?
+   * Determines if all of the table style choices hidden?
+   * @param {boolean} hideBordered is the border toggle hidden
+   * @param {boolean} hideCondensed is the condensed toggle hidden
+   * @param {boolean} hideStriped is the striped toggle hidden
+   * @param {boolean} hideResponsive is the responsive toggle hidden
+   * @returns {boolean} whether all of the  display options are hidden
    */
   _tableDisplayHidden(
     hideBordered,
@@ -662,7 +677,10 @@ class EditableTable extends displayBehaviors(editBehaviors(PolymerElement)) {
   }
 
   /**
-   * Are all of the theme choices hidden?
+   * Determines if all of the sorting and filtering choices hidden?
+   * @param {boolean} hideSort is the sort toggle hidden
+   * @param {boolean} hideFilter is the filter toggle hidden
+   * @returns {boolean} whether all of the sorting & filtering options are hidden
    */
   _tableSortHidden(hideSort, hideFilter) {
     return hideSort && hideFilter;

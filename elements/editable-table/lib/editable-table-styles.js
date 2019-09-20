@@ -2,34 +2,10 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  *
- * `editanle-table-styles`
+ * `editable-table-styles`
  * `a shared set of styles for editable-table`
-### Styling
-
-Custom property | Description | Default
-----------------|-------------|----------
-`--editable-table-light-weight` | The lightest font weight applied to the table | 200
-`--editable-table-medium-weight` | The average font weight applied to the table | 400
-`--editable-table-heavy-weight` | The heaviest font weight applied to the table | 500
-`--editable-table-color` | The default text color | #222
-`--editable-table-bg-color` | The default background color | #fff
-`--editable-table-border-color` | The default border color | #999
-`--editable-table-caption-color` | The caption text color | #222
-`--editable-table-caption-bg-color` | The caption background color | #fff
-`--editable-table-heading-color` | The heading text color | #000
-`--editable-table-heading-bg-color` | The heading background color | #ddd
-`--editable-table-stripe-bg-color` | The striping background color | #eee
-`--editable-table-style-stripe` | Applies a style to the striping | `background-color: var(--editable-table-stripe-bg-color);`
-`--editable-table-style-column-header` | Applies a style to the column headers | ```font-weight: var(--editable-table-heavy-weight);
-color: var(--editable-table-heading-color);
-background-color: var(--editable-table-heading-bg-color);```
-`--editable-table-style-row-header` | Applies a style to the row headers | ```font-weight:  var(--editable-table-heavy-weight);
-        color: var(--editable-table-heading-color);```
-`--editable-table-style-footer` | Applies a style to the footer | ```font-weight: var(--editable-table-heavy-weight);
-        color: var(--editable-table-heading-color);
-        border-top: 3px solid var(--editable-table-color);```
  *
- * @pseudoElement
+ * @customElement
  * @polymer
  * @demo demo/index.html
  */

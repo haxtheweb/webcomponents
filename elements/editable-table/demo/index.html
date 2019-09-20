@@ -20,19 +20,10 @@
         width: 95%;
         max-width: unset;
       }
-
-      editable-table,
-      paper-button[raised] {
+      paper-button { 
         width: 100%;
-      }
-
-      #food-table-toggle {
-        text-align: right;
-        width: 100%;
-      }
-
-      #food-table-toggle>div {
-        display: inline-block;
+        background-color: #eee;
+        text-transform: none; 
       }
     </style>
   </head>
@@ -44,11 +35,10 @@
         information.)</p>
       <demo-snippet>
         <template>
-            <div id="food-table-toggle">
-              <div>
-                <paper-toggle-button id="food-table-togglebutton">Edit Mode</paper-toggle-button>
-              </div>
-            </div>
+            <paper-button id="editMode">
+              Toggle Edit Mode 
+              <iron-icon icon="create"></iron-icon>
+            </paper-button>
             <editable-table 
               id="food-table" 
               bordered 
@@ -61,6 +51,7 @@
               sort 
               striped>
             </editable-table>
+            <p><paper-button onclick="alert(JSON.stringify(document.getElementById('food-table').getTableProperties()))" raised="">Get Data</paper-button></p>  
           <script>
             document.getElementById('food-table').data = [ 
               [ "Food", "Enclosure", "Contents", "Orientation" ], 
@@ -71,7 +62,7 @@
               [ "Pie", "two crusts sealed together", "fruit or meat, vegetables, and/or cheese", "horizontal" ], 
               [ "Taco", "one shell", "meat, vegetables, cheese, and/or condiments", "vertical" ] 
             ];
-            document.getElementById('food-table-togglebutton').addEventListener('change', (e) => {
+            document.getElementById('editMode').addEventListener('click', (e) => {
               document.getElementById('food-table').toggleEditMode();
             });
           </script>

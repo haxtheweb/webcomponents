@@ -3,12 +3,11 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/paper-button/paper-button.js";
-import "./editable-table-iconset.js";
 import "@polymer/iron-icons/image-icons.js";
 import "@polymer/iron-icons/device-icons.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
+import "./editable-table-iconset.js";
 
 /**
  * `editable-table-editor-toggle`
@@ -86,34 +85,32 @@ class EditableTableEditorToggle extends PolymerElement {
           opacity: 0.25;
         }
       </style>
-      <span hidden$="[[!toggled]]" class="sr-only">[[labelOn]]</span>
-      <span hidden$="[[toggled]]" class="sr-only"
-        >[[_getLabel(labelOff,labelOn)]]</span
+      <label for="button" class="sr-only" aria-hidden>[[label]]</label>
+      <paper-button
+        id="button"
+        aria-checked="true"
+        aria-describedby="[[tooltip]]"
+        disabled$="[[disabled]]"
+        on-click="_onClick"
+        role="switch"
       >
-      <paper-button id="button" disabled$="[[disabled]]">
-        <iron-icon icon$="[[icon]]"></iron-icon>
+        <span hidden$="[[toggled]]" class="sr-only">on</span>
+        <span hidden$="[[!toggled]]" class="sr-only">off</span>
+        <iron-icon icon$="[[icon]]" aria-hidden="true"></iron-icon>
       </paper-button>
-      <paper-tooltip for="button">[[tooltip]]</paper-tooltip>
+      <paper-tooltip id="tooltip" for="button" aria-hidden="true"
+        >[[label]]</paper-tooltip
+      >
     `;
   }
 
   static get tag() {
     return "editable-table-editor-toggle";
   }
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      this.addEventListener("click", this._onClick.bind(this));
-    });
-  }
-  disconnectedCallback() {
-    this.addEventListener("click", this._onClick.bind(this));
-    super.disconnectedCallback();
-  }
   static get properties() {
     return {
       /**
-       * is the toggle disabled
+       * Whether toggle is disabled
        */
       disabled: {
         type: Boolean,
@@ -121,67 +118,58 @@ class EditableTableEditorToggle extends PolymerElement {
         reflectToAttribute: true
       },
       /**
-       * button id
+       * Table id for accessibility
+       */
+      controls: {
+        type: String,
+        value: "table",
+        readOnly: true,
+        reflectToAttribute: true
+      },
+      /**
+       * Button id that matches the table property to toggle
        */
       id: {
         type: String,
         value: null
       },
       /**
-       * icon
+       * Button icon
        */
       icon: {
         type: String,
         value: null
       },
       /**
-       * label that indicates that button is toggled off
+       * Button label
        */
-      labelOff: {
+      label: {
         type: String,
         value: null
       },
       /**
-       * label that indicates that button is toggled on
-       */
-      labelOn: {
-        type: String,
-        value: null
-      },
-      /**
-       * tool tip for menu setting
-       */
-      tooltip: {
-        type: String,
-        value: null
-      },
-      /**
-       * boolean value of menu setting
+       * Whether the button is toggled
        */
       toggled: {
         type: Boolean,
-        value: false
+        value: false,
+        reflectToAttribute: true
       }
     };
   }
-  _getLabel(off, on) {
-    return off || on;
-  }
 
   /**
-   * Set up event listener to fire when toggled
+   * Fires when button is clicked
+   * @event change
    */
   _onClick() {
-    console.log("editable-table-setting-changed", this.id, this.toggled);
+    this.toggled = !this.toggled;
     this.dispatchEvent(
-      new CustomEvent("editable-table-setting-changed", {
+      new CustomEvent("change", {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: {
-          prop: this.id,
-          value: !this.toggled
-        }
+        detail: this
       })
     );
   }
