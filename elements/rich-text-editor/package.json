@@ -16,7 +16,7 @@
       "hax": "src/rich-text-editor-hax.json"
     }
   },
-  "version": "2.1.6",
+  "version": "2.1.7",
   "description": "a standalone rich text editor",
   "repository": {
     "type": "git",
@@ -41,9 +41,9 @@
   "dependencies": {
     "@lrnwebcomponents/a11y-collapse": "^2.1.6",
     "@lrnwebcomponents/es-global-bridge": "^2.1.1",
-    "@lrnwebcomponents/simple-fields": "^2.1.6",
-    "@lrnwebcomponents/simple-picker": "^2.1.5",
-    "@lrnwebcomponents/simple-popover": "^2.1.5",
+    "@lrnwebcomponents/simple-fields": "^2.1.7",
+    "@lrnwebcomponents/simple-picker": "^2.1.7",
+    "@lrnwebcomponents/simple-popover": "^2.1.7",
     "@polymer/iron-a11y-keys": "^3.0.1",
     "@polymer/iron-fit-behavior": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",

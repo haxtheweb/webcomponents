@@ -16,7 +16,7 @@
       "hax": "src/outline-player-hax.json"
     }
   },
-  "version": "2.1.6",
+  "version": "2.1.7",
   "description": "Automated conversion of outline-player/",
   "repository": {
     "type": "git",
