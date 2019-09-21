@@ -1,24 +1,22 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "./editable-table-iconset.js";
+
 /**
-`editable-table-filter`
-Displays a cell in the editable-table-display mode 
-(editable-table-display.html) as a filter button.
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
-
-<editable-table-filter 
-  column-number="1"       //The index of the cell's column
-  text="">                //The text of the cell, which will become the filter value when button is toggled.
-</editable-table-filter>
-
-*/
+ * `editable-table-editor-filter`
+ * `Displays a cell in the editable-table-display mode (editable-table-display.html) as a filter button.`
+ *
+ * @demo demo/display.html
+ *
+ * @polymer
+ * @customElement
+ */
 class EditableTableFilter extends PolymerElement {
   static get template() {
     return html`
@@ -33,9 +31,13 @@ class EditableTableFilter extends PolymerElement {
           align-items: center;
           align-content: stretch;
           text-transform: unset;
+          font-family: var(--editable-table-font-family);
         }
         :host paper-button > div {
           flex-grow: 1;
+        }
+        :host iron-icon {
+          min-width: 24px;
         }
         :host .sr-only {
           position: absolute;
@@ -58,7 +60,7 @@ class EditableTableFilter extends PolymerElement {
           display: none;
         }
       </style>
-      <paper-button id="button" class="container">
+      <paper-button id="button" class="container" on-click="_onFilterClicked">
         <span>[[text]]</span>
         <span class="sr-only" hidden\$="[[!filtered]]"> (filtered)</span>
         <span class="sr-only"> Toggle filter.</span>
@@ -72,27 +74,17 @@ class EditableTableFilter extends PolymerElement {
   static get tag() {
     return "editable-table-filter";
   }
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      this.addEventListener("click", this._onFilterTapped.bind(this));
-    });
-  }
-  disconnectedCallback() {
-    this.removeEventListener("click", this._onFilterTapped.bind(this));
-    super.disconnectedCallback();
-  }
   static get properties() {
     return {
       /**
-       * the column for the filter
+       * Index of the column
        */
-      columnNumber: {
+      columnIndex: {
         type: Number,
         value: null
       },
       /**
-       * is the data filtered
+       * Whether the column is filtered
        */
       filtered: {
         type: Boolean,
@@ -100,7 +92,7 @@ class EditableTableFilter extends PolymerElement {
         reflectToAttribute: true
       },
       /**
-       * the column header text
+       * Column header text
        */
       text: {
         type: String,
@@ -110,16 +102,17 @@ class EditableTableFilter extends PolymerElement {
   }
 
   /**
-   * listen for button tap
+   * Listens for button click
    */
   _getPressed(filtered) {
     return filtered ? "true" : "false";
   }
 
   /**
-   * listen for button tap
+   * Fires when filter button is clicked
+   * @event toggle-filter
    */
-  _onFilterTapped() {
+  _onFilterClicked() {
     this.dispatchEvent(
       new CustomEvent("toggle-filter", {
         bubbles: true,

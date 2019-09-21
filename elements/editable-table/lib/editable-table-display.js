@@ -1,118 +1,135 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import "@lrnwebcomponents/dropdown-select/dropdown-select.js";
-import "@polymer/paper-item/paper-item.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
-
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-picker/simple-picker.js";
 import { ResponsiveUtilityBehaviors } from "@lrnwebcomponents/responsive-utility/lib/responsive-utility-behaviors.js";
 import { displayBehaviors } from "./editable-table-behaviors.js";
 import "./editable-table-sort.js";
 import "./editable-table-filter.js";
 import "./editable-table-styles.js";
+
 /**
-`editable-table-display`
-
-Displays a table with theming, styling, sorting, resonsive, and 
-filtering features.  (See editable-table-behaviors.html 
-for more information.)
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
-<editable-table-display 
-  accent-color="indigo"     //Optional accent color for column headers and border. Default is none. (See https://lrnwebcomponents.github.io/simple-colors/components/simple-colors/)
-  bordered                  //Adds borders to table. Default is no border.
-  caption="..."             //The caption or title for the table.
-  column-header             //Does the table use the first row as a column-header? Default is false.
-  condensed                 //Condense the padding above and below the table? Default is false.
-  dark                      //Optional dark theme. Default is light theme. (See https://lrnwebcomponents.github.io/simple-colors/components/simple-colors/)
-  data='[                   //Table data as an array. For example:
-    [ ["..."], ["..."] ],     //This line represents a row with two columns
-    [ ["..."], ["..."] ],     //This line represents another row with two columns
-    [ ["..."], ["..."] ]      //This line represents a third row with two columns
-  ]'
-  edit-mode                 //Is the editor in edit mode? Default is false which places the table in display mode. 
-  filter                    //Allow table to toggle filtering? When a cell is toggled, only rows that have the same value as that cell will be shown. Default is no filter.
-  footer                    //Does the table use the last row as a footer? Default is false.
-  row-header                //Does the table use the first column as a row header? Default is false.
-  scroll                    //Does the table use scrolling to fit when it is too wide?  Default is false: a responsive layout where only two columns are shown and a dropdown menu controls which column to display.
-  sort                      //Does the table allow sorting by column where column headers become sort buttons? Default is false.
-  striped                   //Does the table have alternating stipes of shading for its body rows? Default is false.
-  summary="...">            //An accessible description of the table, what each row reporesents, and what each column represents.
-</editable-table-display>
-
-*/
+ * `editable-table-display`
+ * ` An editor interface for editable-table`
+ * @demo demo/editor.html
+ *
+ * @polymer
+ * @customElement
+ * @appliesMixin displayBehaviors
+ * @appliesMixin ResponsiveUtilityBehaviors
+ */
 class EditableTableDisplay extends displayBehaviors(
   ResponsiveUtilityBehaviors(PolymerElement)
 ) {
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles editable-table-styles">
-        :host([dark]) .caption {
-          padding: 4px 4px 0;
+      <style include="editable-table-styles">
+        :host {
+          width: 100%;
+          max-width: 100%;
         }
-        :host([bordered]) .table .th,
-        :host([bordered]) .table .td {
+        :host([bordered]) .th,
+        :host([bordered]) .td {
           border: 1px solid var(--editable-table-border-color);
         }
-        :host([striped]) .table .tbody .tr:nth-child(2n) .th,
-        :host([striped]) .table .tbody .tr:nth-child(2n) .td {
+        :host([striped]) .tbody-tr:nth-child(2n) .th,
+        :host([striped]) .tbody-tr:nth-child(2n) .td {
           @apply --editable-table-style-stripe;
         }
-        :host([column-header]) .table .thead .tr .th {
+        :host([column-header]) .thead-tr .th {
           @apply --editable-table-style-column-header;
         }
-        :host([row-header]) .table .tbody .tr .th {
+        :host([row-header]) .tbody-tr .th {
           @apply --editable-table-style-row-header;
         }
-        :host([footer]) .table .tfoot .tr .th,
-        :host([footer]) .table .tfoot .tr .td {
+        :host([footer]) .tfoot-tr .th,
+        :host([footer]) .tfoot-tr .td {
           @apply --editable-table-style-footer;
         }
+        :host #column {
+          width: calc(var(--simple-picker-option-size) + 6px);
+          overflow: visible;
+          display: none;
+          margin: 0 0 1px 10px;
+          --simple-picker-border-color: var(--editable-table-border-color);
+          --simple-picker-sample-option: {
+            position: absolute;
+            left: -9999px;
+            overflow: hidden;
+            width: 0;
+            height: 0;
+          }
+          --simple-picker-sample: {
+            width: var(--simple-picker-option-size);
+            overflow: visible;
+            border-width: 1px;
+          }
+          --simple-picker-collapse: {
+            right: calc(100% - var(--simple-picker-option-size) - 4px);
+          }
+          --simple-picker-sample-focus: {
+            border-width: 1px;
+          }
+        }
+        @media screen {
+          :host {
+            overflow-x: scroll;
+          }
+          :host([responsive][responsive-size="xs"]) caption > div {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+          }
+          :host([responsive][responsive-size="xs"]) #column {
+            display: inline-flex;
+          }
+          :host([responsive][responsive-size="xs"]) .th[xs-hidden],
+          :host([responsive][responsive-size="xs"]) .td[xs-hidden] {
+            display: none;
+          }
+        }
       </style>
-      <table id="table" class="table" default-xs-display="">
-        <caption class="caption">
+      <table id="table" class="table">
+        <caption>
           <div>
-            <div>[[caption]]</div>
-            <dropdown-select id="column" label\$="[[tables.0.label]]" value="1">
-              <template
-                is="dom-repeat"
-                items="[[thead.0]]"
-                as="col"
-                index-as="index"
-              >
-                <template is="dom-if" if="[[columnHeader]]">
-                  <paper-item id\$="[[index]]" value\$="[[index]]"
-                    >[[col]]</paper-item
-                  >
-                </template>
-                <template is="dom-if" if="[[!columnHeader]]">
-                  <paper-item id\$="[[index]]">Column [[index]]</paper-item>
-                </template>
-              </template>
-            </dropdown-select>
+            [[caption]]
+            <slot></slot>
+            <simple-picker
+              id="column"
+              aria-labelledby$="[[tables.0.label]]"
+              value$="{{selected}}"
+              on-change="_selectedChanged"
+              options="[[__theadData]]"
+            >
+            </simple-picker>
           </div>
         </caption>
-        <thead class="thead" hidden="[[!columnHeader]]">
-          <tr class="tr">
+        <thead hidden="[[!columnHeader]]">
+          <tr class="tr thead-tr">
             <template
               is="dom-repeat"
               items="[[thead.0]]"
               as="th"
               index-as="index"
+              restamp
             >
               <th
-                class="th"
+                class="th th-or-td"
+                cell-index$="[[index]]"
+                numeric$="[[_isNumericColumn(index)]]"
                 scope="col"
-                numeric\$="[[_isNumericColumn(index)]]"
+                xs-hidden$="[[_isColHidden(index,1)]]"
               >
                 <template is="dom-if" if="[[sort]]" restamp="">
                   <editable-table-sort
-                    sort-column\$="[[sortColumn]]"
-                    column-number="[[index]]"
-                    text\$="[[th]]"
+                    sort-column$="[[sortColumn]]"
+                    column-index="[[index]]"
+                    text$="[[th]]"
                   ></editable-table-sort>
                 </template>
                 <template is="dom-if" if="[[!sort]]" restamp=""
@@ -130,7 +147,7 @@ class EditableTableDisplay extends displayBehaviors(
             filter="{{filterRows(filterColumn,filterText)}}"
             restamp=""
           >
-            <tr class="tr">
+            <tr class="tr tbody-tr">
               <template
                 is="dom-repeat"
                 items="[[tr]]"
@@ -144,9 +161,11 @@ class EditableTableDisplay extends displayBehaviors(
                   restamp=""
                 >
                   <th
-                    class="th"
+                    class="th th-or-td"
+                    cell-index$="[[index]]"
+                    numeric$="[[_isNumericColumn(index)]]"
+                    xs-hidden$="[[_isColHidden(index,1)]]"
                     scope="row"
-                    numeric\$="[[_isNumericColumn(index)]]"
                   >
                     [[cell]]
                   </th>
@@ -157,15 +176,17 @@ class EditableTableDisplay extends displayBehaviors(
                   restamp=""
                 >
                   <td
-                    class="td"
-                    numeric\$="[[_isNumericColumn(index)]]"
-                    negative\$="[[_isNegative(cell)]]"
+                    class="td cell th-or-td"
+                    cell-index$="[[index]]"
+                    numeric$="[[_isNumericColumn(index)]]"
+                    negative$="[[_isNegative(cell)]]"
+                    xs-hidden$="[[_isColHidden(index,1)]]"
                   >
                     <template is="dom-if" if="[[filter]]" restamp="">
                       <editable-table-filter
-                        column-number="[[index]]"
-                        text\$="[[cell]]"
-                        filtered\$="[[_isFiltered(index,filterColumn,filtered)]]"
+                        column-index="[[index]]"
+                        text$="[[cell]]"
+                        filtered$="[[_isFiltered(index,filterColumn,filtered)]]"
                       ></editable-table-filter>
                     </template>
                     <template is="dom-if" if="[[!filter]]" restamp=""
@@ -179,7 +200,7 @@ class EditableTableDisplay extends displayBehaviors(
         </tbody>
         <template is="dom-if" if="[[footer]]">
           <tfoot class="tfoot">
-            <tr class="tr">
+            <tr class="tr tfoot-tr">
               <template
                 is="dom-repeat"
                 items="[[__tfoot.0]]"
@@ -188,18 +209,22 @@ class EditableTableDisplay extends displayBehaviors(
               >
                 <template is="dom-if" if="[[_isRowHeader(rowHeader,index)]]">
                   <th
-                    class="th"
+                    class="th th-or-td"
+                    cell-index$="[[index]]"
+                    numeric$="[[_isNumericColumn(index)]]"
+                    xs-hidden$="[[_isColHidden(index,1)]]"
                     scope="row"
-                    numeric\$="[[_isNumericColumn(index)]]"
                   >
                     [[cell]]
                   </th>
                 </template>
                 <template is="dom-if" if="[[!_isRowHeader(rowHeader,index)]]">
                   <td
-                    class="td"
-                    numeric\$="[[_isNumericColumn(index)]]"
-                    negative\$="[[_isNegative(cell)]]"
+                    class="td cell th-or-td"
+                    cell-index$="[[index]]"
+                    numeric$="[[_isNumericColumn(index)]]"
+                    negative$="[[_isNegative(cell)]]"
+                    xs-hidden$="[[_isColHidden(index,1)]]"
                   >
                     [[cell]]
                   </td>
@@ -217,21 +242,14 @@ class EditableTableDisplay extends displayBehaviors(
   static get properties() {
     return {
       /**
-       * Is the table in edit mode?
-       */
-      editMode: {
-        type: Boolean,
-        value: false
-      },
-      /**
-       * Column for filtering
+       * Index of the current filter column
        */
       filterColumn: {
         type: Number,
         value: null
       },
       /**
-       * Is the table filtered
+       * Whether table is filtered
        */
       filtered: {
         type: Boolean,
@@ -245,14 +263,7 @@ class EditableTableDisplay extends displayBehaviors(
         value: null
       },
       /**
-       * Hide edit mode?
-       */
-      hideEditMode: {
-        type: Boolean,
-        value: false
-      },
-      /**
-       * The selected table
+       * Selected column to display when in responsive mode
        */
       selected: {
         type: Number,
@@ -266,21 +277,21 @@ class EditableTableDisplay extends displayBehaviors(
         value: "none"
       },
       /**
-       * The index of the current sort column
+       * Index of the current sort column
        */
       sortColumn: {
         type: Number,
         value: -1
       },
       /**
-       * columns in <thead>
+       * Columns in <thead>
        */
       thead: {
         type: Array,
         computed: "_getThead(data,columnHeader)"
       },
       /**
-       * rows in <tbody>
+       * Rows in <tbody>
        */
       tbody: {
         type: Array,
@@ -290,7 +301,11 @@ class EditableTableDisplay extends displayBehaviors(
   }
 
   /**
-   * Geth the rows in <tbody>
+   * Gets the rows in `<tbody>`
+   * @param {array} data the table data as an array
+   * @param {boolean} columnHeader does the table have a column header
+   * @param {boolean} footer does the table have a footer
+   * @returns {array} the `<tbody>` data
    */
   _getTbody(data, columnHeader, footer) {
     if (data !== undefined && data !== null && data.length > 0) {
@@ -309,111 +324,140 @@ class EditableTableDisplay extends displayBehaviors(
   }
 
   /**
-   * Get the columns in <thead>
+   * Gets the columns in `<thead>`
+   * @param {array} data the table data as an array
+   * @param {boolean} columnHeader does the table have a column header
+   * @returns {array} the `<thead>`data
    */
   _getThead(data, columnHeader) {
-    let root = this;
-    if (
-      data !== undefined &&
-      data !== null &&
-      data.length > 0 &&
-      columnHeader
-    ) {
-      return data.slice(0, 1);
+    this.set("__theadData", []);
+    if (data !== undefined && data !== null && data.length > 0) {
+      for (let i = 1; i < data[0].length; i++) {
+        this.push("__theadData", [{ alt: data[0][i], value: i }]);
+      }
+      if (columnHeader) return data.slice(0, 1);
     }
     return [];
   }
+  /**
+   * Determines whether or not a cell is hidden in responsive mode
+   * @param {number} index the current column number
+   * @param {number} selected the selected column number
+   * @returns {boolean} whether the column is hidden (i.e. not the selected column)
+   */
+  _isColHidden(index, selected) {
+    return parseInt(index) !== 0 && parseInt(index) !== parseInt(selected);
+  }
 
   /**
-   * sets a column's cells to filtered when in filtered mode so that filter can toggle
+   * Sets a column's cells to filtered when in filtered mode so that filter can toggle
+   * @param {number} index the current column number
+   * @param {number} selected the filtered column number
+   * @param {boolean} filtered is the table in filtered mode
+   * @returns {boolean} whether the column is filtered
    */
   _isFiltered(column, filterColumn, filtered) {
     return filterColumn !== null && filterColumn === column && filtered;
   }
 
   /**
-   * sets a cell's numeric style
+   * Sets a cell's negative number style
+   * @param {string} cell the cell contents
+   * @returns {boolean} whether cell contents are numeric and negative
    */
   _isNegative(cell) {
     return this._isNumeric(cell) && cell.trim().indexOf("-") === 0;
   }
 
   /**
-   * sets a cell's numeric style
+   * Sets a cell's numeric style
+   * @param {string} cell the cell contents
+   * @returns {boolean} whether cell contents are numeric
    */
   _isNumeric(cell) {
     return cell !== null && !isNaN(cell.trim().replace(/\$/g, ""));
   }
 
   /**
-   * sets a cell's numeric style
+   * Determines if an entire body column dontains numeric data
+   * @param {number} index the column index
+   * @returns {boolean} if columns contents are numeric
    */
-  _isNumericColumn(col) {
+  _isNumericColumn(index) {
     let numeric = true;
     for (let i = 0; i < this.tbody.length; i++) {
-      if (!this._isNumeric(this.tbody[i][col])) numeric = false;
+      if (!this._isNumeric(this.tbody[i][index])) numeric = false;
     }
     return numeric;
   }
 
   /**
-   * Calculate if the cell is a th or td
+   * Calculates whether the cell is a `<th>` or `<td>`
+   * @param {boolean} rowHeader if the cell is a rowheader
+   * @param {number} index the current column number
+   * @returns {boolean} whether the cell is a `<th>` or `<td>`
    */
   _isRowHeader(rowHeader, index) {
     return index === 0 && rowHeader;
   }
 
   /**
-   * Handle column dropdown-select change
+   * Handles table change
    */
-  _onColumnChange(e) {
-    this.selected = e.detail.value;
-    this._updateCols(parseInt(e.detail.value));
+  _tableChanged() {
+    this._updateCols();
   }
 
   /**
-   * Handle sort button click
+   * Handles column  selector change
+   */
+  _selectedChanged() {
+    this._updateCols();
+  }
+
+  /**
+   * Handles sort button click
+   * @param {event} e the event
    */
   _changeSortMode(e) {
-    if (this.sortColumn === e.detail.columnNumber && this.sortMode === "asc") {
+    if (this.sortColumn === e.detail.columnIndex && this.sortMode === "asc") {
       this.sortMode = "desc";
     } else if (
-      this.sortColumn === e.detail.columnNumber &&
+      this.sortColumn === e.detail.columnIndex &&
       this.sortMode === "desc"
     ) {
       this.sortMode = "none";
     } else {
       this.sortMode = "asc";
-      this.sortColumn = e.detail.columnNumber;
+      this.sortColumn = e.detail.columnIndex;
     }
     e.detail.setSortMode(this.sortMode);
-    this.sortData(this.sortMode, e.detail.columnNumber);
+    this.sortData(this.sortMode, e.detail.columnIndex);
   }
 
   /**
    * update the responsive columns menu
    */
-  _updateCols(selected) {
-    this.$.table.removeAttribute("default-xs-display");
-    let cols = this.$.table.querySelectorAll("th,td");
-    this.$.table.setAttribute("transition", true);
-    setTimeout(function() {
+  _updateCols() {
+    let selected = this.$.column.value,
+      cols = this.$.table.querySelectorAll("th,td");
+    if (cols.length > 0) {
       for (let i = 0; i < cols.length; i++) {
-        let col = cols[i],
-          index = col.cellIndex,
-          delay;
-        if (index === 0 || index === selected) {
-          col.removeAttribute("xs-hidden");
-        } else {
+        let col = cols[i];
+        if (this._isColHidden(col.cellIndex, selected)) {
           col.setAttribute("xs-hidden", true);
+        } else {
+          col.removeAttribute("xs-hidden");
         }
       }
-    }, 200);
-    this.$.table.removeAttribute("transition");
+    }
   }
 
   /**
    * Handle filter based on collumn and text of cell that is clicked
+   * @param {number} filterColumn the number of the column to be filtered
+   * @param {string} filterText the text that will be filtered
+   * @returns
    */
   filterRows(filterColumn, filterText) {
     if (filterText !== undefined && filterText !== null) {
@@ -461,14 +505,14 @@ class EditableTableDisplay extends displayBehaviors(
   toggleFilter(e) {
     if (
       e === undefined ||
-      (this.filterColumn == e.detail.columnNumber && this.filtered)
+      (this.filterColumn == e.detail.columnIndex && this.filtered)
     ) {
       this.filtered = false;
       this.filterText = null;
       this.filterColumn = null;
     } else {
       this.filterText = e.detail.text;
-      this.filterColumn = e.detail.columnNumber;
+      this.filterColumn = e.detail.columnIndex;
       this.filtered = true;
     }
   }
@@ -480,10 +524,6 @@ class EditableTableDisplay extends displayBehaviors(
         this._changeSortMode.bind(this)
       );
       this.addEventListener("toggle-filter", this.toggleFilter.bind(this));
-      this.addEventListener(
-        "dropdown-select-changed",
-        this._onColumnChange.bind(this)
-      );
     });
   }
   disconnectedCallback() {
@@ -492,10 +532,6 @@ class EditableTableDisplay extends displayBehaviors(
       this._changeSortMode.bind(this)
     );
     this.removeEventListener("toggle-filter", this.toggleFilter.bind(this));
-    this.removeEventListener(
-      "dropdown-select-changed",
-      this._onColumnChange.bind(this)
-    );
     super.disconnectedCallback();
   }
 }

@@ -1,6 +1,5 @@
 :host {
-  display: inline-block;
-  position: absolute;
+  display: block;
 }
 
 :host([hidden]) {

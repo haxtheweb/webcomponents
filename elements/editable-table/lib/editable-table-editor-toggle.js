@@ -1,76 +1,116 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/paper-toggle-button/paper-toggle-button.js";
-import "@polymer/paper-item/paper-item.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
 /**
-`editable-table-editor-toggle`
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import "@polymer/paper-button/paper-button.js";
+import "@polymer/iron-icons/image-icons.js";
+import "@polymer/iron-icons/device-icons.js";
+import "@polymer/paper-tooltip/paper-tooltip.js";
+import "./editable-table-iconset.js";
 
-A toggle button for an property in the editable-table 
-interface (editable-table.html).
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
-
-<editable-table-editor-toggle
-  hidden                          //Hide and disable this toggle? Default is false.
-  label="Condensed"               //The label for the toggle button
-  prop="condensed"                //The property controlled by this toggle
-  tooltip="Condense cell height." //A tooltip for this toggle.
-  value="true">                   //The value of this toggle.
-</editable-table-editor-toggle>
-
-*/
+/**
+ * `editable-table-editor-toggle`
+ * `A toggle button for an property in the editable-table interface (editable-table.html).`
+ *
+ * @microcopy - language worth noting:
+ * ```
+ <editable-table-editor-toggle
+  hidden                           //Hide and disable this toggle? Default is false.
+  label="Condensed"                //The label for the toggle button
+  prop="condensed"                 //The property controlled by this toggle
+  tooltip="Condense cell height."  //A tooltip for this toggle.
+  value="true">                    //The value of this toggle.
+</editable-table-editor-toggle>```
+ *  
+ * @demo demo/editor.html
+ * 
+ * @polymer
+ * @customElement
+ */
 class EditableTableEditorToggle extends PolymerElement {
   static get template() {
     return html`
       <style>
-        :host {
-          display: block;
+        :host([hidden]) {
+          display: none;
         }
-        :host .setting {
-          font-size: 95%;
-          padding: var(--editable-table-toggle-padding, 8px 0px);
-          justify-content: space-between;
+        :host paper-button {
+          padding: 2px;
+          margin: 0;
           width: 100%;
+          min-width: unset;
+          display: inline-flex;
+          justify-content: space-between;
+          align-items: center;
+          align-content: stretch;
+          text-transform: unset;
+          font-family: var(--editable-table-secondary-font-family);
+          background-color: var(--editable-table-button-bg-color);
+          color: var(--editable-table-button-color);
         }
-        :host([disabled]) .setting-text {
-          opacity: 0.5;
+        :host([toggled]) paper-button {
+          background-color: var(--editable-table-button-toggled-bg-color);
+          color: var(--editable-table-button-toggled-color);
+        }
+        :host(:not([disabled])) paper-button:focus,
+        :host(:not([disabled])) paper-button:hover {
+          background-color: var(--editable-table-button-hover-bg-color);
+          color: var(--editable-table-button-hover-color);
+          cursor: pointer;
+        }
+        :host([toggled]:not([disabled])) paper-button:focus,
+        :host([toggled]:not([disabled])) paper-button:hover {
+          background-color: var(--editable-table-button-toggled-hover-bg-color);
+          color: var(--editable-table-button-toggled-hover-color);
+          cursor: pointer;
+        }
+        :host([disabled]) paper-button {
+          background-color: var(--editable-table-button-disabled-bg-color);
+          color: var(--editable-table-button-disabled-color);
+          cursor: not-allowed;
+        }
+        :host paper-button > div {
+          flex-grow: 1;
+        }
+        :host .sr-only {
+          position: absolute;
+          left: -9999px;
+          font-size: 0;
+          height: 0;
+          width: 0;
+          overflow: hidden;
+        }
+        :host #filter-off {
+          opacity: 0.25;
         }
       </style>
-      <div class="setting">
-        <div class="setting-control">
-          <paper-toggle-button
-            id="button"
-            checked\$="[[value]]"
-            disabled\$="[[disabled]]"
-            >[[label]]</paper-toggle-button
-          >
-          <paper-tooltip id="tooltip" for="button">[[tooltip]]</paper-tooltip>
-        </div>
-      </div>
+      <label for="button" class="sr-only" aria-hidden>[[label]]</label>
+      <paper-button
+        id="button"
+        aria-checked="true"
+        aria-describedby="[[tooltip]]"
+        disabled$="[[disabled]]"
+        on-click="_onClick"
+        role="switch"
+      >
+        <span hidden$="[[toggled]]" class="sr-only">on</span>
+        <span hidden$="[[!toggled]]" class="sr-only">off</span>
+        <iron-icon icon$="[[icon]]" aria-hidden="true"></iron-icon>
+      </paper-button>
+      <paper-tooltip id="tooltip" for="button" aria-hidden="true"
+        >[[label]]</paper-tooltip
+      >
     `;
   }
 
   static get tag() {
     return "editable-table-editor-toggle";
   }
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      this.addEventListener("change", this._onChange.bind(this));
-    });
-  }
-  disconnectedCallback() {
-    this.removeEventListener("change", this._onChange.bind(this));
-    super.disconnectedCallback();
-  }
   static get properties() {
     return {
       /**
-       * is the toggle disabled
+       * Whether toggle is disabled
        */
       disabled: {
         type: Boolean,
@@ -78,52 +118,60 @@ class EditableTableEditorToggle extends PolymerElement {
         reflectToAttribute: true
       },
       /**
-       * label for menu setting
+       * Table id for accessibility
+       */
+      controls: {
+        type: String,
+        value: "table",
+        readOnly: true,
+        reflectToAttribute: true
+      },
+      /**
+       * Button id that matches the table property to toggle
+       */
+      id: {
+        type: String,
+        value: null
+      },
+      /**
+       * Button icon
+       */
+      icon: {
+        type: String,
+        value: null
+      },
+      /**
+       * Button label
        */
       label: {
         type: String,
         value: null
       },
       /**
-       * the property to update
+       * Whether the button is toggled
        */
-      prop: {
-        type: String,
-        value: null
-      },
-      /**
-       * tool tip for menu setting
-       */
-      tooltip: {
-        type: String,
-        value: null
-      },
-      /**
-       * boolean value of menu setting
-       */
-      value: {
+      toggled: {
         type: Boolean,
-        value: false
+        value: false,
+        reflectToAttribute: true
       }
     };
   }
 
   /**
-   * Set up event listener to fire when toggled
+   * Fires when button is clicked
+   * @event change
    */
-  _onChange(e) {
-    if (e.srcElement === this.$.button)
-      this.dispatchEvent(
-        new CustomEvent("editable-table-setting-changed", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: {
-            prop: this.prop,
-            value: e.srcElement.checked
-          }
-        })
-      );
+  _onClick() {
+    this.toggled = !this.toggled;
+    this.dispatchEvent(
+      new CustomEvent("change", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
   }
 }
 window.customElements.define(
