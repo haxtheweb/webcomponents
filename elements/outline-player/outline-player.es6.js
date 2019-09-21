@@ -15,6 +15,7 @@ import "@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-print-button.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-title.js";
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js";
 
 /**
  * `outline-player`
@@ -303,6 +304,7 @@ class OutlinePlayer extends HAXCMSTheme(PolymerElement) {
             </app-toolbar>
           </app-header>
           <div id="content">
+            <site-git-corner></site-git-corner>
             <div id="contentcontainer">
               <div id="slot"><slot></slot></div>
             </div>

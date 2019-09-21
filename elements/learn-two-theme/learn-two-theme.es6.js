@@ -4,9 +4,6 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
-import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { autorun, toJS } from "mobx/lib/mobx.module.js";
-import { varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 
 /**
  * `learn-two-theme`
@@ -308,7 +305,7 @@ map-menu * {
   <div>
     <site-menu-button type="prev"></site-menu-button>
     <div id="contentcontainer">
-      <git-corner alt="See page source" source="[[activeGitFileLink]]"></git-corner>
+      <site-git-corner></site-git-corner>
       <site-breadcrumb></site-breadcrumb>
       <site-active-title></site-active-title>
       <div id="slot">
@@ -344,6 +341,7 @@ map-menu * {
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js");
   }
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -351,24 +349,6 @@ map-menu * {
    */
   static get tag() {
     return "learn-two-theme";
-  }
-  connectedCallback() {
-    super.connectedCallback();
-    autorun(reaction => {
-      if (
-        varGet(store.manifest, "metadata.site.git.publicRepoUrl", "") != "" &&
-        !window.customElements.get("git-corner")
-      ) {
-        import("@lrnwebcomponents/git-corner/git-corner.js");
-      }
-      this.__disposer.push(reaction);
-    });
-    autorun(reaction => {
-      this.activeGitFileLink =
-        varGet(store.manifest, "metadata.site.git.publicRepoUrl", "") +
-        store.activeItem.location;
-      this.__disposer.push(reaction);
-    });
   }
   /**
    * Mix in an opened status
