@@ -134,6 +134,7 @@ class HaxPanel extends PolymerElement {
           display: flex;
           font-size: 18px;
           margin-left: 100px;
+          padding: 0 8px;
           font-weight: bold;
           color: var(--hax-color-menu-heading-bg, black);
           background-color: var(--hax-color-menu-heading-color, #eeeeee);

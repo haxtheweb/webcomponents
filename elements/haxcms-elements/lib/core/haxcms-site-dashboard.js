@@ -69,7 +69,7 @@ class HAXCMSSiteDashboard extends LitElement {
           display: flex;
         }
         .buttons paper-button {
-          color: var(--haxcms-color, #ffffff);
+          color: #ffffff;
           background-color: #000000;
           font-weight: bold;
           text-transform: none;
