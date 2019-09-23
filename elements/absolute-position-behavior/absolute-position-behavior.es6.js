@@ -23,6 +23,7 @@ class AbsolutePositionBehavior extends PolymerElement {
     return html`
 <style>:host {
   display: inline-block;
+  position: absolute;
 }
 
 :host([hidden]) {
