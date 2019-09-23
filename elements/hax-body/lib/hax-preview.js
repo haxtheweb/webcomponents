@@ -166,6 +166,7 @@ class HaxPreview extends PolymerElement {
                   box-sizing: content-box;
                 }
                 eco-json-schema-object {
+                  --eco-json-field-margin: var(--hax-field-margin, 0 0 4px);
                   color: var(--hax-text-color);
                   --eco-json-schema-object-form : {
                     -ms-flex: unset;
@@ -181,6 +182,12 @@ class HaxPreview extends PolymerElement {
                   color: var(--hax-preview-button-color, black);
                   display: inline-block;
                   background-color: var(--hax-preview-button-bg, white);
+                }
+                #insert {
+                  background-color: var(--hax-preview-insert-button-bg, --hax-preview-button-bg);
+                }
+                #cancel {
+                  background-color: var(--hax-preview-cancel-button-bg, --hax-preview-button-bg);
                 }
                 .vaadin-layout-width {
                   min-width: 30%;
@@ -206,7 +213,7 @@ class HaxPreview extends PolymerElement {
               >Cancel</paper-button
             >
           </div>
-          <div class="preview-text">
+          <div class="preview-text hide-on-mobile">
             <iron-icon icon="icons:arrow-drop-down"></iron-icon
             ><iron-icon icon="icons:arrow-drop-down"></iron-icon
             ><iron-icon icon="icons:arrow-drop-down"></iron-icon>[[humanName]]
@@ -215,7 +222,7 @@ class HaxPreview extends PolymerElement {
             ><iron-icon icon="icons:arrow-drop-down"></iron-icon>
           </div>
           <div id="preview"><slot></slot></div>
-          <div class="preview-text preview-text-bottom">
+          <div class="preview-text preview-text-bottom hide-on-mobile">
             <iron-icon icon="icons:arrow-drop-up"></iron-icon
             ><iron-icon icon="icons:arrow-drop-up"></iron-icon
             ><iron-icon icon="icons:arrow-drop-up"></iron-icon>end

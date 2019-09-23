@@ -1533,6 +1533,9 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
                 .querySelector("#activepage .iron-selected paper-input")
                 .focus();
             }
+            var evt = document.createEvent("UIEvents");
+            evt.initUIEvent("resize", true, false, window, 0);
+            window.dispatchEvent(evt);
           }, 325);
         } else {
           setTimeout(() => {
@@ -1547,6 +1550,9 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
                 )
                 .focus();
             }
+            var evt = document.createEvent("UIEvents");
+            evt.initUIEvent("resize", true, false, window, 0);
+            window.dispatchEvent(evt);
           }, 325);
         }
       } else {

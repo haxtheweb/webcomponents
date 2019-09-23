@@ -28,6 +28,9 @@ body, html, :root {
   --hax-panel-item-bg: #000000;
   --hax-panel-item-text: #EEEEEE;
   --hax-toolbar-item-color: var(--haxcms-system-bg, black);
+  --hax-preview-insert-button-bg: var(--haxcms-system-action-color);
+  --hax-preview-cancel-button-bg: var(--haxcms-system-danger-color);
+  --hax-export-dialog-import-button-bg: var(--haxcms-system-danger-color);
   /** vaadin **/
   --lumo-primary-text-color: var(--haxcms-system-bg, black);
   --simple-toast-z-index: 10000000;
