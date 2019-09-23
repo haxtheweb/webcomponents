@@ -8,16 +8,26 @@
 }
 
 .button-wrapper {
+  height: 50px;
+  line-height: 50px;
+  margin-top: 10px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
   background-color: white;
-  position: absolute;
   display: block;
   justify-content: space-evenly;
   @apply --editable-outline-button-wrapper;
 }
 @media (max-width: 1000px) {
   .button-wrapper {
-    position: relative;
     @apply --editable-outline-button-wrapper-mobile;
+  }
+  button span {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    left: -9999px;
   }
 }
 button {
@@ -27,23 +37,57 @@ button {
   padding: 0 8px;
 }
 
+button span {
+  padding-left: 4px;
+  pointer-events: none;
+}
+
 #outline {
-  padding-top: 44px;
   margin: 0;
 }
-ul, ol {
+ul {
   font-size: 16px;
   line-height: 32px;
   padding-left: 32px;
+  visibility: visible;
+  opacity: 1;
+  overflow: hidden;
+  height: auto;
+  transition: .2s ease-in-out all;
   @apply --editable-outline-button-list;
 }
 li {
   font-size: 16px;
   line-height: 32px;
   padding: 4px;
+  transition: .2s linear all;
   @apply --editable-outline-button-list-item;
 }
-
+ul:hover {
+  outline: 1px solid #EEEEEE;
+}
+li.collapsed-title {
+  background-color: #dddddd;
+}
+li.collapsed-title:after {
+  content:"    ( Double-click to expand )";
+}
+li:after {
+  transition: .4s ease-in-out all;
+  opacity: 0;
+  font-size: 11px;
+  visibility: hidden;
+}
+li.collapsed-title:hover:after {
+  font-style: italic;
+  opacity: 1;
+  visibility: visible;
+}
+ul.collapsed-content {
+  visibility: hidden;
+  opacity: 0;
+  height: 0;
+}
 li:focus,
 li:active,
 li:hover {

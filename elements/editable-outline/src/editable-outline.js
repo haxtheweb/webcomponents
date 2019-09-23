@@ -25,8 +25,8 @@ class EditableOutline extends PolymerElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
   constructor() {
     super();
-    this.polyfillSafe = this.__computePolyfillSafe();
-    window.JSONOutlineSchema.requestAvailability();
+    this.jos = window.JSONOutlineSchema.requestAvailability();
+    this.addEventListener("dblclick", this._collapseClickHandler.bind(this));
   }
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -36,11 +36,82 @@ class EditableOutline extends PolymerElement {
     return "editable-outline";
   }
   /**
+   * Collapse button callback
+   */
+  _collapse(e) {
+    let node = this.getSelectionNode();
+    if (
+      node &&
+      node.tagName === "LI" &&
+      node.nextElementSibling &&
+      node.nextElementSibling.tagName === "UL"
+    ) {
+      node.classList.toggle("collapsed-title");
+      node.nextElementSibling.classList.toggle("collapsed-content");
+    }
+  }
+  /**
+   * Expand all items
+   */
+  _expandall(e) {
+    this.shadowRoot.querySelectorAll("li").forEach(el => {
+      el.classList.remove("collapsed-title");
+    });
+    this.shadowRoot.querySelectorAll("ul").forEach(el => {
+      el.classList.remove("collapsed-content");
+    });
+  }
+  /**
+   * Collapse all items
+   */
+  _collapseall(e) {
+    this.shadowRoot.querySelectorAll("li").forEach(el => {
+      if (el.nextElementSibling && el.nextElementSibling.tagName === "UL") {
+        el.classList.add("collapsed-title");
+        el.nextElementSibling.classList.add("collapsed-content");
+      }
+    });
+  }
+  /**
+   * Click handler method needs to walk a little different then normal collapse
+   */
+  _collapseClickHandler(e) {
+    let el;
+    let i = 0;
+    let notFound = true;
+    while (notFound && e.path.length > i + 1) {
+      el = e.path[i];
+      if (
+        el.tagName === "LI" &&
+        el.nextElementSibling &&
+        el.nextElementSibling.tagName === "UL"
+      ) {
+        el.classList.toggle("collapsed-title");
+        el.nextElementSibling.classList.toggle("collapsed-content");
+        notFound = false;
+      }
+      i++;
+    }
+  }
+  /**
+   * delete active
+   */
+  _delete(e) {
+    let node = this.getSelectionNode();
+    if (node) {
+      const parent = node.parentNode;
+      node.remove();
+      if (parent.children.length === 0) {
+        parent.remove();
+      }
+    }
+  }
+  /**
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
     super.connectedCallback();
-    this.__outlineNode = this.$.outline;
+    this.__outlineNode = this.shadowRoot.querySelector("#outline");
     this._observer = new MutationObserver(this._observer.bind(this));
     this._observer.observe(this.__outlineNode, {
       childList: true,
@@ -55,77 +126,24 @@ class EditableOutline extends PolymerElement {
     let reference;
     for (var index in record) {
       let info = record[index];
-      if (info.removedNodes.length > 0 && this.__outdent) {
-        for (let i in info.removedNodes) {
-          if (
-            reference &&
-            info.removedNodes[i].tagName &&
-            info.removedNodes[i].tagName === "LI" &&
-            info.removedNodes[i].getAttribute("data-jos-id") !== null
-          ) {
-            reference.setAttribute(
-              "data-jos-id",
-              info.removedNodes[i].getAttribute("data-jos-id")
-            );
-            if (
-              info.removedNodes[i].getAttribute("data-jos-location") !== null
-            ) {
-              reference.setAttribute(
-                "data-jos-location",
-                info.removedNodes[i].getAttribute("data-jos-location")
-              );
-            }
-            reference = null;
-          } else if (
-            info.removedNodes[i].tagName === "UL" &&
-            info.removedNodes[i].firstChild &&
-            info.removedNodes[i].firstChild.tagName === "LI" &&
-            info.removedNodes[i].firstChild.getAttribute("data-jos-id") !== null
-          ) {
-            reference.setAttribute(
-              "data-jos-id",
-              info.removedNodes[i].firstChild.getAttribute("data-jos-id")
-            );
-            if (
-              info.removedNodes[i].firstChild.getAttribute(
-                "data-jos-location"
-              ) !== null
-            ) {
-              reference.setAttribute(
-                "data-jos-location",
-                info.removedNodes[i].firstChild.getAttribute(
-                  "data-jos-location"
-                )
-              );
-            }
-            reference = null;
-          }
-        }
-        // ensure there's always a first child node present
-        // this way people can't break the interact via mass deleting
-        if (!this.$.outline.firstChild) {
-          this.$.outline.appendChild(document.createElement("li"));
-        }
-      }
       // if we've got new nodes to react to that were not imported
       if (info.addedNodes.length > 0) {
         // special rules for an outdent event
-        if (this.__outdent) {
-          for (let i in info.addedNodes) {
-            if (
-              info.addedNodes[i].tagName &&
-              info.addedNodes[i].tagName === "LI"
-            ) {
-              reference = info.addedNodes[i];
+        for (let i in info.addedNodes) {
+          if (info.addedNodes[i].tagName) {
+            if (info.addedNodes[i].tagName === "LI") {
+              if (this.__blockScrub) {
+                info.addedNodes[i].setAttribute("contenteditable", "true");
+              } else {
+                this.jos.scrubElementJOSData(info.addedNodes[i]);
+                info.addedNodes[i].setAttribute("contenteditable", "true");
+              }
             }
-          }
-        } else if (!this.__blockScrub) {
-          for (let i in info.addedNodes) {
-            if (info.addedNodes[i].tagName) {
-              // @todo need to ensure that this isn't the same exact item in the same exact position
-              window.JSONOutlineSchema.requestAvailability().scrubElementJOSData(
-                info.addedNodes[i]
-              );
+            // we have an unknown hest of items, scrub em all if we are in scrub mode
+            else if (info.addedNodes[i].tagName === "UL") {
+              if (!this.__blockScrub) {
+                this.jos.scrubElementJOSData(info.addedNodes[i]);
+              }
             }
           }
         }
@@ -133,8 +151,6 @@ class EditableOutline extends PolymerElement {
     }
     setTimeout(() => {
       this.__blockScrub = false;
-      this.__outdent = false;
-      this.__indent = false;
     }, 100);
   }
   /**
@@ -157,6 +173,15 @@ class EditableOutline extends PolymerElement {
       case "add":
         this._add(e);
         break;
+      case "collapse":
+        this._collapse(e);
+        break;
+      case "collapseall":
+        this._collapseall(e);
+        break;
+      case "expandall":
+        this._expandall(e);
+        break;
       case "indent":
         this._indent();
         break;
@@ -172,6 +197,9 @@ class EditableOutline extends PolymerElement {
       case "duplicate":
         this._duplicate();
         break;
+      case "delete":
+        this._delete();
+        break;
     }
   }
   /**
@@ -180,19 +208,9 @@ class EditableOutline extends PolymerElement {
   _duplicate() {
     // get active item from where cursor is
     try {
-      let range = this.getDeepRange();
-      if (typeof range.commonAncestorContainer === typeof undefined) {
-        return;
-      }
-      let activeItem = range.commonAncestorContainer;
-      if (
-        activeItem === null ||
-        typeof activeItem === typeof undefined ||
-        typeof activeItem.tagName === typeof undefined
-      ) {
-        activeItem = activeItem.parentNode;
-      }
-      if (activeItem) {
+      this.__blockScrub = false;
+      let activeItem = this.getSelectionNode();
+      if (activeItem && activeItem.tagName === "LI") {
         // clone the item's hierarchy as well
         if (
           activeItem.nextElementSibling !== null &&
@@ -229,20 +247,12 @@ class EditableOutline extends PolymerElement {
   _move(direction) {
     // get active item from where cursor is
     try {
-      let range = this.getDeepRange();
-      if (typeof range.commonAncestorContainer === typeof undefined) {
-        return;
-      }
-      let activeItem = range.commonAncestorContainer;
-      if (
-        activeItem === null ||
-        typeof activeItem === typeof undefined ||
-        typeof activeItem.tagName === typeof undefined
-      ) {
-        activeItem = activeItem.parentNode;
-      }
+      let activeItem = this.getSelectionNode();
       let test = activeItem;
       let valid = false;
+      if (activeItem == null) {
+        return false;
+      }
       // ensure this operation is executed in scope
       while (!valid && test.parentNode) {
         if (test.id === "outline") {
@@ -251,7 +261,7 @@ class EditableOutline extends PolymerElement {
         test = test.parentNode;
       }
       // ensure from all that, we have something
-      if (valid && activeItem) {
+      if (valid && activeItem && activeItem.tagName === "LI") {
         // move the things above us, below us
         if (direction === "up") {
           // ensure there's something above us
@@ -363,31 +373,73 @@ class EditableOutline extends PolymerElement {
   importJsonOutlineSchemaItems() {
     this.__blockScrub = true;
     // wipe out the outline
-    while (this.$.outline.firstChild !== null) {
-      this.$.outline.removeChild(this.$.outline.firstChild);
+    while (this.__outlineNode.firstChild !== null) {
+      this.__outlineNode.removeChild(this.__outlineNode.firstChild);
     }
     if (this.items.length === 0) {
       // get from JOS items if we have none currently
-      this.set("items", window.JSONOutlineSchema.requestAvailability().items);
+      this.set("items", this.jos.items);
     }
-    let outline = window.JSONOutlineSchema.requestAvailability().itemsToNodes(
-      this.items
-    );
+    let outline = this.jos.itemsToNodes(this.items);
     // rebuild the outline w/ children we just found
     while (outline.firstChild !== null) {
       this.__blockScrub = true;
-      this.$.outline.appendChild(outline.firstChild);
+      this.__outlineNode.appendChild(outline.firstChild);
     }
+    this.shadowRoot.querySelectorAll("li").forEach(el => {
+      el.setAttribute("contenteditable", "true");
+    });
     return outline;
   }
   /**
    * Take what's currently in the area and get JSON Outline Schema; optionally save
    */
   exportJsonOutlineSchemaItems(save = false) {
-    return window.JSONOutlineSchema.requestAvailability().nodesToItems(
-      this.$.outline,
-      save
-    );
+    return this.jos.nodesToItems(this.__outlineNode, save);
+  }
+  _upPressed(e) {
+    let node = this.getSelectionNode();
+    if (node && node.previousSibling && node.previousSibling.tagName === "LI") {
+      node.previousSibling.focus();
+    } else if (
+      node &&
+      node.previousSibling &&
+      node.previousSibling.tagName === "UL" &&
+      node.previousSibling.firstChild &&
+      node.previousSibling.firstChild.tagName === "LI"
+    ) {
+      node.previousSibling.firstChild.focus();
+    } else if (
+      node &&
+      node.previousSibling == null &&
+      node.parentNode.tagName === "UL" &&
+      node.parentNode.previousSibling &&
+      node.parentNode.previousSibling.tagName === "LI"
+    ) {
+      node.parentNode.previousSibling.focus();
+    }
+  }
+  _downPressed(e) {
+    let node = this.getSelectionNode();
+    if (node && node.nextSibling && node.nextSibling.tagName === "LI") {
+      node.nextSibling.focus();
+    } else if (
+      node &&
+      node.nextSibling &&
+      node.nextSibling.tagName === "UL" &&
+      node.nextSibling.firstChild &&
+      node.nextSibling.firstChild.tagName === "LI"
+    ) {
+      node.nextSibling.firstChild.focus();
+    } else if (
+      node &&
+      node.nextSibling == null &&
+      node.parentNode.tagName === "UL" &&
+      node.parentNode.nextSibling &&
+      node.parentNode.nextSibling.tagName === "LI"
+    ) {
+      node.parentNode.nextSibling.focus();
+    }
   }
   /**
    * Find the next thing to tab forward to.
@@ -405,21 +457,6 @@ class EditableOutline extends PolymerElement {
       this._indent();
     } catch (e) {}
   }
-  _indent() {
-    if (this.polyfillSafe) {
-      this.__indent = true;
-      this.__blockScrub = true;
-      document.execCommand("indent");
-    }
-  }
-  _add(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    e.stopImmediatePropagation();
-    if (this.polyfillSafe) {
-      document.execCommand("insertText", false, "\n");
-    }
-  }
   /**
    * Move back through things when tab back pressed
    */
@@ -432,17 +469,128 @@ class EditableOutline extends PolymerElement {
       e.detail.keyboardEvent.stopPropagation();
       e.detail.keyboardEvent.stopImmediatePropagation();
     }
-    // try selection / tab block since range can cause issues
     try {
       this._outdent();
     } catch (e) {}
   }
-  _outdent() {
-    if (this.polyfillSafe) {
-      this.__outdent = true;
-      this.__blockScrub = true;
-      document.execCommand("outdent");
+  _enterPressed(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    // prevent the contenteditable stuff
+    if (e.detail.keyboardEvent) {
+      e.detail.keyboardEvent.preventDefault();
+      e.detail.keyboardEvent.stopPropagation();
+      e.detail.keyboardEvent.stopImmediatePropagation();
     }
+    this._add();
+  }
+  _add() {
+    let li = document.createElement("li");
+    li.setAttribute("contenteditable", "true");
+    let node = this.getSelectionNode();
+    if (
+      this.__outlineNode.querySelector("li") == null ||
+      !node ||
+      (node.tagName && (node.tagName != "UL" && node.tagName != "LI"))
+    ) {
+      this.__outlineNode.appendChild(li);
+    } else {
+      if ((node.tagName == null || node.tagName != "LI") && node.parentNode) {
+        node = node.parentNode;
+      }
+      if (node.nextSibling == null) {
+        node.parentNode.appendChild(li);
+      } else {
+        node.parentNode.insertBefore(li, node.nextSibling);
+      }
+      try {
+        li.focus();
+      } catch (e) {
+        // prevent issue on polyfill browsers potentially
+      }
+    }
+  }
+  _outdent() {
+    this.__blockScrub = true;
+    try {
+      let node = this.getSelectionNode();
+      if (node == null) {
+        return false;
+      }
+      // need to hold this in case it's empty at the end
+      const parent = node.parentNode;
+      if (
+        node.parentNode &&
+        node.parentNode != this.__outlineNode &&
+        node.parentNode.nextSibling != null
+      ) {
+        node.parentNode.parentNode.insertBefore(
+          node,
+          node.parentNode.nextSibling
+        );
+        if (parent.children.length == 0) {
+          parent.remove();
+        }
+      } else if (
+        node.parentNode &&
+        node.parentNode != this.__outlineNode &&
+        node.parentNode.nextSibling == null
+      ) {
+        node.parentNode.parentNode.appendChild(node);
+        if (parent.children.length == 0) {
+          parent.remove();
+        }
+      }
+      node.focus();
+    } catch (e) {
+      console.warn(e);
+    }
+  }
+  _indent() {
+    this.__blockScrub = true;
+    try {
+      let node = this.getSelectionNode();
+      if (node == null) {
+        return false;
+      }
+      // see if the previous tag is a LI, if so we can indent
+      if (
+        node.previousSibling != null &&
+        node.previousSibling.tagName === "LI"
+      ) {
+        let ul;
+        if (node.nextSibling && node.nextSibling.tagName === "UL") {
+          ul = node.nextSibling;
+        } else {
+          ul = document.createElement("ul");
+          node.parentNode.insertBefore(ul, node);
+        }
+        // append a new list inside the child before the active node position
+        // now append into that list the node that was active
+        ul.appendChild(node);
+        node.focus();
+      } else if (
+        node.previousSibling != null &&
+        node.previousSibling.tagName === "UL"
+      ) {
+        node.previousSibling.appendChild(node);
+        node.focus();
+      }
+    } catch (e) {
+      console.warn(e);
+    }
+  }
+  getSelectionNode() {
+    let node = this.getDeepSelection().anchorNode;
+    if (
+      node &&
+      (node.tagName == null || node.tagName != "LI") &&
+      node.parentNode
+    ) {
+      node = node.parentNode;
+    }
+    return node;
   }
   /**
    * Selection normalizer
@@ -456,8 +604,8 @@ class EditableOutline extends PolymerElement {
       return this.shadowRoot.getSelection();
     }
     // ponyfill from google
-    else if (getRange(this.$.outline.parentNode)) {
-      return getRange(this.$.outline.parentNode);
+    else if (getRange(this.__outlineNode.parentNode)) {
+      return getRange(this.__outlineNode.parentNode);
     }
     // missed on both, hope the normal one will work
     return window.getSelection();
@@ -472,21 +620,6 @@ class EditableOutline extends PolymerElement {
     } else if (sel) {
       return sel;
     } else false;
-  }
-  /**
-   * These are our bad actors in polyfill'ed browsers.
-   * This means that https://github.com/webcomponents/webcomponentsjs/commit/ce464bb533bf39b544c312906499a6044ee0d30d
-   * explains things but basically if shadow-dom is polyfilled
-   * then we can't safely execute a DOM manipulating execCommand.
-   * This
-   */
-  __computePolyfillSafe() {
-    if (document.head.createShadowRoot || document.head.attachShadow) {
-      return true;
-    } else {
-      console.log("Shadow DOM missing, certain operations hidden");
-      return false;
-    }
   }
 }
 window.customElements.define(EditableOutline.tag, EditableOutline);
