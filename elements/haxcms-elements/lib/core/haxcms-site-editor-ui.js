@@ -111,8 +111,11 @@ class HAXCMSSiteEditorUI extends PolymerElement {
         paper-icon-button:hover,
         paper-icon-button:focus,
         paper-icon-button:active {
-          background-color: black;
-          color: white;
+          background-color: var(--haxcms-color, blue);
+          color: #ffffff;
+        }
+        #cancelbutton {
+          background-color: var(--haxcms-system-danger-color);
         }
         #editbutton,
         #editdetails,
@@ -127,9 +130,8 @@ class HAXCMSSiteEditorUI extends PolymerElement {
           opacity: 1;
         }
         :host([edit-mode]) #editbutton {
-          border-radius: 0;
           color: white;
-          background-color: var(--paper-blue-500, blue) !important;
+          background-color: var(--haxcms-system-action-color, blue) !important;
         }
         :host([edit-mode]) #manifestbutton,
         :host([edit-mode]) #editdetails,
@@ -160,8 +162,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
         label="[[userName]]"
         two-chars
         src="[[userPicture]]"
-      >
-      </paper-avatar>
+      ></paper-avatar>
       <paper-fab
         id="editbutton"
         icon="[[__editIcon]]"
@@ -307,6 +308,20 @@ class HAXCMSSiteEditorUI extends PolymerElement {
           detail: true
         })
       );
+      // load user data
+      this.dispatchEvent(
+        new CustomEvent("haxcms-load-user-data", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: true
+        })
+      );
+      autorun(reaction => {
+        this.userName = toJS(store.userData.userName);
+        this.userPicture = toJS(store.userData.userPicture);
+        this.__disposer.push(reaction);
+      });
       autorun(reaction => {
         this.editMode = toJS(store.editMode);
         this.__disposer.push(reaction);

@@ -78,6 +78,20 @@ class HAXCMSSiteDashboard extends LitElement {
           border-right: 1px solid white;
           margin: 0;
         }
+        #save {
+          background-color: var(--haxcms-system-action-color);
+        }
+        #cancel {
+          background-color: var(--haxcms-system-danger-color);
+        }
+        #save:active,
+        #save:focus,
+        #save:hover,
+        #cancel:active,
+        #cancel:focus,
+        #cancel:hover {
+          background-color: var(--haxcms-color);
+        }
         .buttons paper-button:active,
         .buttons paper-button:focus,
         .buttons paper-button:hover {
@@ -161,10 +175,10 @@ class HAXCMSSiteDashboard extends LitElement {
         ></simple-fields-form>
       </div>
       <div class="buttons">
-        <paper-button @click="${this._saveSiteFieldsTap}"
+        <paper-button id="save" @click="${this._saveSiteFieldsTap}"
           ><iron-icon icon="icons:save"></iron-icon> Save</paper-button
         >
-        <paper-button @click="${this._cancel}"
+        <paper-button id="cancel" @click="${this._cancel}"
           ><iron-icon icon="icons:cancel"></iron-icon> Cancel</paper-button
         >
       </div>

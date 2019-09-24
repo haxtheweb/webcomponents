@@ -132,6 +132,8 @@ class HAXCMSBackendNodeJS extends PolymerElement {
                 window.appSettings.createNodePath;
               store.cmsSiteEditor.instance.deleteNodePath =
                 window.appSettings.deleteNodePath;
+              store.cmsSiteEditor.instance.getUserDataPath =
+                window.appSettings.getUserDataPath;
               store.cmsSiteEditor.instance.appStore =
                 window.appSettings.appStore;
             }
