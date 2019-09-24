@@ -117,6 +117,9 @@ class SimpleLoginCamera extends HTMLElement {
     img.src = URL.createObjectURL(blob);
     return img;
   }
+  imageBlob(blob) {
+    return blob;
+  }
   download(blob) {
     // uses the <a download> to download a Blob
     let a = document.createElement("a");
