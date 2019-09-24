@@ -1,7 +1,7 @@
 {
   "allowNull": {
     "name": "allowNull",
-    "type": "Boolean",
+    "type": Boolean,
     "value": false,
     "reflectToAttribute": true
   },
@@ -10,7 +10,7 @@
    */
   "ariaLabelledby": {
     "name": "ariaLabelledby",
-    "type": "String",
+    "type": String,
     "value": null
   },
 
@@ -19,7 +19,7 @@
    */
   "blockLabel": {
     "name": "blockLabel",
-    "type": "Boolean",
+    "type": Boolean,
     "value": false,
     "reflectToAttribute": true
   },
@@ -29,8 +29,9 @@
    */
   "disabled": {
     "name": "disabled",
-    "type": "Boolean",
-    "value": false
+    "type": Boolean,
+    "value": false,
+    "reflectToAttribute": true
   },
 
   /**
@@ -38,7 +39,7 @@
    */
   "expanded": {
     "name": "expanded",
-    "type": "Boolean",
+    "type": Boolean,
     "value": false,
     "reflectToAttribute": true
   },
@@ -49,7 +50,7 @@
    */
   "hideOptionLabels": {
     "name": "hideOptionLabels",
-    "type": "Boolean",
+    "type": Boolean,
     "value": false
   },
 
@@ -58,7 +59,7 @@
    */
   "label": {
     "name": "label",
-    "type": "String",
+    "type": String,
     "value": null,
     "observer": "_setLabel"
   },
@@ -78,7 +79,7 @@
    */
   "options": {
     "name": "options",
-    "type": "Array",
+    "type": Array,
     "value": [
       [
         {
@@ -111,7 +112,7 @@
    */
   "titleAsHtml": {
     "name": "titleAsHtml",
-    "type": "Boolean",
+    "type": Boolean,
     "value": false
   },
 
@@ -120,8 +121,9 @@
    */
   "value": {
     "name": "value",
-    "type": "Object",
+    "type": Object,
     "value": null,
+    "notify": true,
     "observer": "_valueChanged",
     "reflectToAttribute": true
   },
@@ -131,7 +133,7 @@
    */
   "__activeDesc": {
     "name": "__activeDesc",
-    "type": "String",
+    "type": String,
     "value": "option-0-0"
   },
 
@@ -140,7 +142,7 @@
    */
   "__hasLabel": {
     "name": "__hasLabel",
-    "type": "Boolean",
+    "type": Boolean,
     "value": true
   },
 
@@ -149,6 +151,6 @@
    */
   "__selectedOption": {
     "name": "__selectedOption",
-    "type": "Object"
+    "type": Object
   }
 }

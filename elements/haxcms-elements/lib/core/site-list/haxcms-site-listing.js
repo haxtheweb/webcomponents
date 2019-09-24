@@ -396,6 +396,26 @@ class HAXCMSSiteListing extends PolymerElement {
           handle-as="json"
           on-response="handleSetConfigResponse"
         ></iron-ajax>
+        <iron-ajax
+          id="getuserdatarequest"
+          method="[[method]]"
+          body="[[getUserDataParams]]"
+          headers='{"Authorization": "Bearer [[jwt]]"}'
+          content-type="application/json"
+          url="[[__getUserDataPath]]"
+          handle-as="json"
+          on-response="handleGetUserDataResponse"
+        ></iron-ajax>
+        <iron-ajax
+          id="setuserphotorequest"
+          method="[[method]]"
+          body="[[setUserPhotoParams]]"
+          headers='{"Authorization": "Bearer [[jwt]]"}'
+          content-type="application/json"
+          url="[[__setUserPhotoPath]]"
+          handle-as="json"
+          on-response="handleSetUserPhotoResponse"
+        ></iron-ajax>
       </div>
       <div id="loading" data-loading\$="[[!__loading]]">
         <hexagon-loader
@@ -780,6 +800,10 @@ class HAXCMSSiteListing extends PolymerElement {
         notify: true,
         observer: "_jwtChanged"
       },
+      userData: {
+        type: Object,
+        value: {}
+      },
       /**
        * Request params for creating a new site
        */
@@ -816,6 +840,14 @@ class HAXCMSSiteListing extends PolymerElement {
         value: {}
       },
       setConfigParams: {
+        type: Object,
+        value: {}
+      },
+      getUserDataParams: {
+        type: Object,
+        value: {}
+      },
+      setUserPhotoParams: {
         type: Object,
         value: {}
       },
@@ -931,31 +963,13 @@ class HAXCMSSiteListing extends PolymerElement {
         document.body.setAttribute("data-logged-in", "data-logged-in");
         this.__loginText = "Log out";
         this.__loginIcon = "icons:account-circle";
-        const evt = new CustomEvent("simple-toast-show", {
-          bubbles: true,
-          composed: true,
-          cancelable: true,
-          detail: {
-            text: "Welcome, log in successful!",
-            duration: 4000
-          }
-        });
-        this.dispatchEvent(evt);
+        this.standardResponse("Welcome, log in successful!");
         this.shadowRoot.querySelector("#add").hidden = false;
       } else {
         document.body.removeAttribute("data-logged-in");
         this.__loginText = "Log in";
         this.__loginIcon = "icons:power-settings-new";
-        const evt = new CustomEvent("simple-toast-show", {
-          bubbles: true,
-          composed: true,
-          cancelable: true,
-          detail: {
-            text: "You logged out",
-            duration: 4000
-          }
-        });
-        this.dispatchEvent(evt);
+        this.standardResponse("You logged out");
         this.shadowRoot.querySelector("#add").hidden = true;
       }
     }
@@ -967,6 +981,27 @@ class HAXCMSSiteListing extends PolymerElement {
     if (newValue) {
       this.__loginText = "Log out";
       this.__loginIcon = "icons:account-circle";
+      // see if we should update the photo from the webcam
+      if (this.__img) {
+        // refresh user data request
+        this.set("setUserPhotoParams", {});
+        this.set("setUserPhotoParams", {
+          jwt: newValue,
+          photo: this.__img.src
+        });
+        this.notifyPath("setUserPhotoParams.*");
+        this.shadowRoot.querySelector("#setuserphotorequest").generateRequest();
+      }
+      // refresh user data request, delay this in case we uploaded a photo
+      // @todo this is a lazy way of doing this
+      setTimeout(() => {
+        this.set("getUserDataParams", {});
+        this.set("getUserDataParams", {
+          jwt: newValue
+        });
+        this.notifyPath("getUserDataParams.*");
+        this.shadowRoot.querySelector("#getuserdatarequest").generateRequest();
+      }, 500);
     } else {
       this.__loginText = "Log in";
       this.__loginIcon = "icons:power-settings-new";
@@ -1066,6 +1101,8 @@ class HAXCMSSiteListing extends PolymerElement {
       this.__loginPath = window.appSettings.login;
       this.__logoutPath = window.appSettings.logout;
       this.__setConfigPath = window.appSettings.setConfigPath;
+      this.__getUserDataPath = window.appSettings.getUserDataPath;
+      this.__setUserPhotoPath = window.appSettings.setUserPhotoPath;
       this.__getConfigPath = window.appSettings.getConfigPath;
       this.__createNewSitePath = window.appSettings.createNewSitePath;
       this.__gitImportSitePath = window.appSettings.gitImportSitePath;
@@ -1095,11 +1132,11 @@ class HAXCMSSiteListing extends PolymerElement {
   }
   async snapPhoto(e) {
     const camera = this.shadowRoot.querySelector("#camera");
-    let img = await camera.takeASnap().then(camera.renderImage);
+    this.__img = await camera.takeASnap().then(camera.renderImage);
     camera.removeAttribute("autoplay");
     const selfie = this.shadowRoot.querySelector("#selfie");
     selfie.innerHTML = "";
-    selfie.appendChild(img);
+    selfie.appendChild(this.__img);
     selfie.classList.add("has-snap");
   }
   clearPhoto(e) {
@@ -1545,6 +1582,12 @@ class HAXCMSSiteListing extends PolymerElement {
   handleSetConfigResponse(e) {
     this.shadowRoot.querySelector("#settingsdialog").opened = false;
     this.standardResponse("HAXCMS configuration updated!");
+  }
+  handleGetUserDataResponse(e) {
+    this.userData = e.detail.response.data;
+  }
+  handleSetUserPhotoResponse(e) {
+    this.standardResponse("User photo saved!", false);
   }
   /**
    * Download a site
