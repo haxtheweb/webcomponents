@@ -982,12 +982,13 @@ class HAXCMSSiteListing extends PolymerElement {
       this.__loginText = "Log out";
       this.__loginIcon = "icons:account-circle";
       // see if we should update the photo from the webcam
-      if (this.__img) {
+      // this value is available if we hit camera snap earlier in the operation
+      if (this.__cameraBlob) {
         // refresh user data request
         this.set("setUserPhotoParams", {});
         this.set("setUserPhotoParams", {
           jwt: newValue,
-          photo: this.__img.src
+          photo: this.__cameraBlob
         });
         this.notifyPath("setUserPhotoParams.*");
         this.shadowRoot.querySelector("#setuserphotorequest").generateRequest();
@@ -1132,11 +1133,17 @@ class HAXCMSSiteListing extends PolymerElement {
   }
   async snapPhoto(e) {
     const camera = this.shadowRoot.querySelector("#camera");
-    this.__img = await camera.takeASnap().then(camera.renderImage);
+    // snap the photo to a blob
+    this.__cameraBlob = await camera.takeASnap().then(camera.imageBlob);
+    // make an img to show on screen
+    let img = document.createElement("img");
+    // turn blob into a url to visualize locally
+    img.src = URL.createObjectURL(this.__cameraBlob);
     camera.removeAttribute("autoplay");
     const selfie = this.shadowRoot.querySelector("#selfie");
     selfie.innerHTML = "";
-    selfie.appendChild(this.__img);
+    // append to dom so they see the photo
+    selfie.appendChild(img);
     selfie.classList.add("has-snap");
   }
   clearPhoto(e) {
@@ -1583,10 +1590,18 @@ class HAXCMSSiteListing extends PolymerElement {
     this.shadowRoot.querySelector("#settingsdialog").opened = false;
     this.standardResponse("HAXCMS configuration updated!");
   }
+  /**
+   * Load user data up from the backend
+   */
   handleGetUserDataResponse(e) {
     this.userData = e.detail.response.data;
   }
+  /**
+   * Callback after saving a photo to the backend
+   */
   handleSetUserPhotoResponse(e) {
+    // remove this once we've saved it
+    delete this.__cameraBlob;
     this.standardResponse("User photo saved!", false);
   }
   /**
