@@ -14,10 +14,12 @@ import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@lrnwebcomponents/simple-datetime/simple-datetime.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@vaadin/vaadin-upload/vaadin-upload.js";
 /**
  * `haxcms-site-listing`
  * `A listing of all sites being managed by this instance.`
  */
+
 class HAXCMSSiteListing extends PolymerElement {
   /**
    * created life cycle
@@ -27,16 +29,17 @@ class HAXCMSSiteListing extends PolymerElement {
     this.SimpleColors = new SimpleColors();
     setPassiveTouchGestures(true);
     window.HAXCMS = {};
-    import("./haxcms-site-listing-deps.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/core/site-list/haxcms-site-listing-deps.js");
   }
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
+
   static get tag() {
     return "haxcms-site-listing";
-  }
-  // render function
+  } // render function
+
   static get template() {
     return html`
       <style include="simple-colors-shared-styles">
@@ -226,7 +229,6 @@ class HAXCMSSiteListing extends PolymerElement {
           background-color: var(--haxcms-site-listing-color-light);
           color: var(--haxcms-site-listing-color-hover);
         }
-
         .selected-operations {
           margin: 0 16px;
           transition: 0.3s linear all;
@@ -405,16 +407,6 @@ class HAXCMSSiteListing extends PolymerElement {
           url="[[__getUserDataPath]]"
           handle-as="json"
           on-response="handleGetUserDataResponse"
-        ></iron-ajax>
-        <iron-ajax
-          id="setuserphotorequest"
-          method="[[method]]"
-          body="[[setUserPhotoParams]]"
-          headers='{"Authorization": "Bearer [[jwt]]"}'
-          content-type="application/json"
-          url="[[__setUserPhotoPath]]"
-          handle-as="json"
-          on-response="handleSetUserPhotoResponse"
         ></iron-ajax>
       </div>
       <div id="loading" data-loading\$="[[!__loading]]">
@@ -624,6 +616,14 @@ class HAXCMSSiteListing extends PolymerElement {
             Forget your login? Check <strong>_config/config.php</strong>
           </p>
         </simple-login>
+        <vaadin-upload
+          capture
+          headers='{"Authorization": "Bearer [[jwt]]"}'
+          method="[[method]]"
+          form-data-name="file-upload"
+          hidden
+          id="fileupload"
+        ></vaadin-upload>
       </div>
       <paper-dialog id="confirm">
         <h2 class="dialog-header">
@@ -720,6 +720,7 @@ class HAXCMSSiteListing extends PolymerElement {
   /**
    * Parse JSON Outline Schema for the items and bind that to sites
    */
+
   _sitesResponseChanged(newValue, oldValue) {
     if (newValue) {
       if (typeof newValue.items !== typeof undefined) {
@@ -730,9 +731,11 @@ class HAXCMSSiteListing extends PolymerElement {
       }
     }
   }
+
   cleanLocation(location) {
     return location.replace("/_sites/", "").replace("/", "");
   }
+
   static get properties() {
     return {
       __loading: {
@@ -742,6 +745,7 @@ class HAXCMSSiteListing extends PolymerElement {
         type: Object,
         value: {}
       },
+
       /**
        * Object, JSON Outline Schema format
        */
@@ -754,6 +758,7 @@ class HAXCMSSiteListing extends PolymerElement {
         type: String,
         value: "POST"
       },
+
       /**
        * Title
        */
@@ -765,12 +770,14 @@ class HAXCMSSiteListing extends PolymerElement {
         type: Array,
         notify: true
       },
+
       /**
        * Base path of where this is located.
        */
       basePath: {
         type: String
       },
+
       /**
        * If we should hide the login button all the time or not
        */
@@ -778,6 +785,7 @@ class HAXCMSSiteListing extends PolymerElement {
         type: Boolean,
         value: false
       },
+
       /**
        * If we should hide the login button all the time or not
        */
@@ -785,6 +793,7 @@ class HAXCMSSiteListing extends PolymerElement {
         type: Boolean,
         value: false
       },
+
       /**
        * Data Source to power the loading of sites in JSON Outline Schema format.
        */
@@ -792,6 +801,7 @@ class HAXCMSSiteListing extends PolymerElement {
         type: String,
         observer: "_dataSourceChanged"
       },
+
       /**
        * JSON Web token
        */
@@ -804,6 +814,7 @@ class HAXCMSSiteListing extends PolymerElement {
         type: Object,
         value: {}
       },
+
       /**
        * Request params for creating a new site
        */
@@ -847,10 +858,6 @@ class HAXCMSSiteListing extends PolymerElement {
         type: Object,
         value: {}
       },
-      setUserPhotoParams: {
-        type: Object,
-        value: {}
-      },
       activeOpertion: {
         type: String
       },
@@ -859,6 +866,7 @@ class HAXCMSSiteListing extends PolymerElement {
         value: [],
         observer: "_selectedItemsChanged"
       },
+
       /**
        * Active item that's being reviewed / has bubbled up.
        */
@@ -866,6 +874,7 @@ class HAXCMSSiteListing extends PolymerElement {
         type: Object,
         notify: true
       },
+
       /**
        * Logged in state
        */
@@ -876,6 +885,7 @@ class HAXCMSSiteListing extends PolymerElement {
         reflectToAttribute: true,
         observer: "_loggedInChanged"
       },
+
       /**
        * Edit mode
        */
@@ -899,15 +909,19 @@ class HAXCMSSiteListing extends PolymerElement {
   /**
    * Show the login button if we have cause
    */
+
   showSpecialButtons(hideButton, loggedIn) {
     if (hideButton) {
       return false;
     }
+
     if (!loggedIn) {
       return false;
     }
+
     return true;
   }
+
   _selectedItemsChanged(newValue) {
     if (newValue && newValue.length > 0) {
       this.hasSelectedItems = true;
@@ -915,6 +929,7 @@ class HAXCMSSiteListing extends PolymerElement {
       this.hasSelectedItems = false;
     }
   }
+
   _dataSourceChanged(newValue) {
     if (newValue) {
       this._dataSource = newValue + "?" + Math.floor(Date.now() / 1000);
@@ -923,6 +938,7 @@ class HAXCMSSiteListing extends PolymerElement {
   /**
    * Request a user login if we need one or log out
    */
+
   _jwtLoggedIn(e) {
     if (e.detail) {
       this.loggedIn = true;
@@ -933,6 +949,7 @@ class HAXCMSSiteListing extends PolymerElement {
   /**
    * Request a user login if we need one or log out
    */
+
   _editModeChanged(newValue) {
     if (newValue) {
       this.__editIcon = "icons:check";
@@ -943,13 +960,16 @@ class HAXCMSSiteListing extends PolymerElement {
   /**
    * Open the new dialog when tapped
    */
+
   _addTap() {
     this._resetNewSiteForm();
+
     this.shadowRoot.querySelector("#createsite").opened = true;
   }
   /**
    * Open the import dialog when tapped
    */
+
   _importTap() {
     this.shadowRoot.querySelector("#importurl").value = "";
     this.shadowRoot.querySelector("#importsite").opened = true;
@@ -957,6 +977,7 @@ class HAXCMSSiteListing extends PolymerElement {
   /**
    * Login state changed
    */
+
   _loggedInChanged(newValue, oldValue) {
     if (typeof oldValue !== typeof undefined) {
       if (newValue) {
@@ -977,24 +998,25 @@ class HAXCMSSiteListing extends PolymerElement {
   /**
    * Request a user login if we need one or log out
    */
+
   _jwtChanged(newValue) {
     if (newValue) {
       this.__loginText = "Log out";
-      this.__loginIcon = "icons:account-circle";
-      // see if we should update the photo from the webcam
+      this.__loginIcon = "icons:account-circle"; // see if we should update the photo from the webcam
       // this value is available if we hit camera snap earlier in the operation
+
       if (this.__cameraBlob) {
-        // refresh user data request
-        this.set("setUserPhotoParams", {});
-        this.set("setUserPhotoParams", {
-          jwt: newValue,
-          photo: this.__cameraBlob
-        });
-        this.notifyPath("setUserPhotoParams.*");
-        this.shadowRoot.querySelector("#setuserphotorequest").generateRequest();
-      }
-      // refresh user data request, delay this in case we uploaded a photo
+        let file = new File(
+          [this.__cameraBlob],
+          "userPhoto" + Date.now() + ".jpg"
+        );
+        this.shadowRoot.querySelector("#fileupload").target =
+          this.__setUserPhotoPath + "&jwt=" + newValue;
+        this.shadowRoot.querySelector("#fileupload")._addFile(file);
+        this.shadowRoot.querySelector("#fileupload").uploadFiles();
+      } // refresh user data request, delay this in case we uploaded a photo
       // @todo this is a lazy way of doing this
+
       setTimeout(() => {
         this.set("getUserDataParams", {});
         this.set("getUserDataParams", {
@@ -1011,28 +1033,34 @@ class HAXCMSSiteListing extends PolymerElement {
   /**
    * Request a user login if we need one or log out
    */
+
   _loginUserRoutine(e) {
     this.shadowRoot.querySelector("#jwt").toggleLogin();
   }
   /**
    * Toggle edit state
    */
+
   _editTap(e) {
     this.editMode = !this.editMode;
   }
   /**
    * _settingsTap
    */
+
   _settingsTap(e) {
     this._loadConfig();
+
     this.shadowRoot.querySelector("#settingsdialog").opened = true;
   }
   /**
    * force the request to regenerate
    */
+
   refreshData(e) {
     this.shadowRoot.querySelector("#loaddata").generateRequest();
   }
+
   _gridSelectedItemsChanged(e) {
     // skip splicing, just rebuild whole object
     this.set("selectedItems", []);
@@ -1041,16 +1069,26 @@ class HAXCMSSiteListing extends PolymerElement {
   /**
    * Attached life cycle
    */
+
   connectedCallback() {
-    super.connectedCallback();
-    // if we're on an insecure environment, hide the buttons for camera
+    super.connectedCallback(); // if we're on an insecure environment, hide the buttons for camera
+
     if (!navigator.mediaDevices) {
       this.shadowRoot.querySelector("#snap").style.display = "none";
       this.shadowRoot.querySelector("#newsnap").style.display = "none";
     }
+    // detect upload utilized
+    this.shadowRoot
+      .querySelector("#fileupload")
+      .addEventListener(
+        "upload-response",
+        this.handleSetUserPhotoResponse.bind(this)
+      );
+
     if (this.jwt) {
       this.loggedIn = true;
     }
+
     window.addEventListener(
       "sites-listing-refresh-data",
       this.refreshData.bind(this)
@@ -1082,6 +1120,7 @@ class HAXCMSSiteListing extends PolymerElement {
         });
         this.dispatchEvent(evt);
       }
+
       if (this.hideCamera) {
         this.shadowRoot.querySelector("#newsnap").classList.add("hide-camera");
         this.shadowRoot.querySelector("#snap").classList.add("hide-camera");
@@ -1089,6 +1128,7 @@ class HAXCMSSiteListing extends PolymerElement {
       } else {
         import("@lrnwebcomponents/simple-login/lib/simple-login-camera.js");
       }
+
       this.addEventListener(
         "simple-login-login",
         this.loginPromptEvent.bind(this)
@@ -1113,12 +1153,13 @@ class HAXCMSSiteListing extends PolymerElement {
       this.__publishSitePath = window.appSettings.publishSitePath;
       this.__syncSitePath = window.appSettings.syncSitePath;
       this.__revertSitePath = window.appSettings.revertSitePath;
-      this.__deleteSitePath = window.appSettings.deleteSitePath;
-      // case where backend has set the JWT ahead of time
+      this.__deleteSitePath = window.appSettings.deleteSitePath; // case where backend has set the JWT ahead of time
       // useful for systems that are managing login above HAXcms
+
       if (window.appSettings.jwt) {
         this.set("jwt", window.appSettings.jwt);
       }
+
       document.body.addEventListener(
         "haxcms-load-site",
         this.loadActiveSite.bind(this)
@@ -1131,21 +1172,23 @@ class HAXCMSSiteListing extends PolymerElement {
         .addEventListener("click", this.clearPhoto.bind(this));
     });
   }
+
   async snapPhoto(e) {
-    const camera = this.shadowRoot.querySelector("#camera");
-    // snap the photo to a blob
-    this.__cameraBlob = await camera.takeASnap().then(camera.imageBlob);
-    // make an img to show on screen
-    let img = document.createElement("img");
-    // turn blob into a url to visualize locally
+    const camera = this.shadowRoot.querySelector("#camera"); // snap the photo to a blob
+
+    this.__cameraBlob = await camera.takeASnap().then(camera.imageBlob); // make an img to show on screen
+
+    let img = document.createElement("img"); // turn blob into a url to visualize locally
+
     img.src = URL.createObjectURL(this.__cameraBlob);
     camera.removeAttribute("autoplay");
     const selfie = this.shadowRoot.querySelector("#selfie");
-    selfie.innerHTML = "";
-    // append to dom so they see the photo
+    selfie.innerHTML = ""; // append to dom so they see the photo
+
     selfie.appendChild(img);
     selfie.classList.add("has-snap");
   }
+
   clearPhoto(e) {
     const camera = this.shadowRoot.querySelector("#camera");
     camera.setAttribute("autoplay", "autoplay");
@@ -1153,27 +1196,33 @@ class HAXCMSSiteListing extends PolymerElement {
     selfie.innerHTML = "";
     selfie.classList.remove("has-snap");
   }
+
   loginPromptEvent(e) {
     this.set("jwtBody", {});
     this.set("jwtBody", {
       u: e.detail.u,
       p: e.detail.p
     });
+
     this._loginUserRoutine(e);
   }
   /**
    * queue up the site creation form
    */
+
   _resetNewSiteForm() {
     // establish the theme options based on globals that were set
     let themeOptions = [];
     let firstTheme = null;
+
     for (var theme in window.appSettings.themes) {
       themeOptions[theme] = window.appSettings.themes[theme].name;
+
       if (!firstTheme) {
         firstTheme = theme;
       }
     }
+
     const fields = this.shadowRoot.querySelector("#createsitefields");
     fields.fields = [
       {
@@ -1273,6 +1322,7 @@ class HAXCMSSiteListing extends PolymerElement {
   /**
    * detached life cycle
    */
+
   disconnectedCallback() {
     window.removeEventListener(
       "sites-listing-refresh-data",
@@ -1306,6 +1356,7 @@ class HAXCMSSiteListing extends PolymerElement {
   /**
    * Ready life cycle
    */
+
   ready() {
     super.ready();
     this.shadowRoot
@@ -1318,15 +1369,17 @@ class HAXCMSSiteListing extends PolymerElement {
   /**
    * Simple method of loading whatever's been dictated as active.
    */
+
   loadActiveSite(e) {
     let findSite = this.sites.filter(site => {
       if (site.id !== e.detail.id) {
         return false;
       }
+
       return true;
     });
-    let item = findSite.pop();
-    // if location isn't there, push out to it
+    let item = findSite.pop(); // if location isn't there, push out to it
+
     if (item.location) {
       window.open(item.location);
     } else {
@@ -1336,6 +1389,7 @@ class HAXCMSSiteListing extends PolymerElement {
   /**
    * Import a site from a git repo
    */
+
   _gitImportSite(e) {
     let values = Object.assign({
       jwt: this.jwt,
@@ -1353,6 +1407,7 @@ class HAXCMSSiteListing extends PolymerElement {
   /**
    * Create a new site button was clicked
    */
+
   _createSite(e) {
     let values = Object.assign(
       {
@@ -1368,6 +1423,7 @@ class HAXCMSSiteListing extends PolymerElement {
   /**
    * Download site button was hit, package and send a zip
    */
+
   async _downloadSites(e) {
     this.set("downloadParams", {});
     this.set("downloadParams", {
@@ -1375,6 +1431,7 @@ class HAXCMSSiteListing extends PolymerElement {
       site: {}
     });
     this.notifyPath("downloadParams.*");
+
     for (var i in this.selectedItems) {
       this.set("activeItem", {});
       this.set("activeItem", this.selectedItems[i]);
@@ -1389,6 +1446,7 @@ class HAXCMSSiteListing extends PolymerElement {
   /**
    * Archive sites
    */
+
   async _archiveSites(e) {
     this.set("archiveParams", {});
     this.set("archiveParams", {
@@ -1396,6 +1454,7 @@ class HAXCMSSiteListing extends PolymerElement {
       site: {}
     });
     this.notifyPath("archiveParams.*");
+
     for (var i in this.selectedItems) {
       this.set("activeItem", {});
       this.set("activeItem", this.selectedItems[i]);
@@ -1410,10 +1469,12 @@ class HAXCMSSiteListing extends PolymerElement {
   /**
    * Confirm delete
    */
+
   _bulkSitesConfirm(e) {
     this.activeOpertion = e.target.id;
     this.shadowRoot.querySelector("#confirm").opened = true;
   }
+
   async _confirmBulkOperation(e) {
     await this["_" + this.activeOpertion + "Sites"]();
     this.activeOpertion = "";
@@ -1422,6 +1483,7 @@ class HAXCMSSiteListing extends PolymerElement {
   /**
    * Delete sites
    */
+
   async _deleteSites(e) {
     this.set("deleteParams", {});
     this.set("deleteParams", {
@@ -1429,6 +1491,7 @@ class HAXCMSSiteListing extends PolymerElement {
       site: {}
     });
     this.notifyPath("deleteParams.*");
+
     for (var i in this.selectedItems) {
       this.set("activeItem", {});
       this.set("activeItem", this.selectedItems[i]);
@@ -1443,6 +1506,7 @@ class HAXCMSSiteListing extends PolymerElement {
   /**
    * Clone sites
    */
+
   async _cloneSites(e) {
     this.set("cloneParams", {});
     this.set("cloneParams", {
@@ -1450,6 +1514,7 @@ class HAXCMSSiteListing extends PolymerElement {
       site: {}
     });
     this.notifyPath("cloneParams.*");
+
     for (var i in this.selectedItems) {
       this.set("activeItem", {});
       this.set("activeItem", this.selectedItems[i]);
@@ -1464,6 +1529,7 @@ class HAXCMSSiteListing extends PolymerElement {
   /**
    * Clone sites
    */
+
   async _publishSites(e) {
     this.set("publishParams", {});
     this.set("publishParams", {
@@ -1471,6 +1537,7 @@ class HAXCMSSiteListing extends PolymerElement {
       site: {}
     });
     this.notifyPath("publishParams.*");
+
     for (var i in this.selectedItems) {
       this.set("activeItem", {});
       this.set("activeItem", this.selectedItems[i]);
@@ -1485,6 +1552,7 @@ class HAXCMSSiteListing extends PolymerElement {
   /**
    * sync sites
    */
+
   async _syncSites(e) {
     this.set("syncParams", {});
     this.set("syncParams", {
@@ -1492,6 +1560,7 @@ class HAXCMSSiteListing extends PolymerElement {
       site: {}
     });
     this.notifyPath("syncParams.*");
+
     for (var i in this.selectedItems) {
       this.set("activeItem", {});
       this.set("activeItem", this.selectedItems[i]);
@@ -1506,6 +1575,7 @@ class HAXCMSSiteListing extends PolymerElement {
   /**
    * Load configuration
    */
+
   _loadConfig() {
     // pass along the jwt for user "session" purposes
     this.set("configParams", {});
@@ -1519,6 +1589,7 @@ class HAXCMSSiteListing extends PolymerElement {
   /**
    * Save configuration
    */
+
   _saveConfig(e) {
     window.HAXCMS.config.values = this.shadowRoot.querySelector(
       "#settingsform"
@@ -1535,6 +1606,7 @@ class HAXCMSSiteListing extends PolymerElement {
   /**
    * Standard response that refreshes the listing too
    */
+
   standardResponse(toast, refresh = true) {
     if (refresh) {
       this.dispatchEvent(
@@ -1546,6 +1618,7 @@ class HAXCMSSiteListing extends PolymerElement {
         })
       );
     }
+
     this.dispatchEvent(
       new CustomEvent("simple-toast-show", {
         bubbles: true,
@@ -1561,6 +1634,7 @@ class HAXCMSSiteListing extends PolymerElement {
   /**
    * Create a new site button was clicked
    */
+
   handleCreateResponse(e) {
     // update the listing data
     this._dataSource = this.dataSource + "?" + Math.floor(Date.now() / 1000);
@@ -1569,11 +1643,13 @@ class HAXCMSSiteListing extends PolymerElement {
   /**
    * Git import site response
    */
+
   handleGitImportResponse(e) {
     // update the listing data
     this._dataSource = this.dataSource + "?" + Math.floor(Date.now() / 1000);
     this.standardResponse(e.detail.response.title + " imported!");
   }
+
   handleConfigResponse(e) {
     window.HAXCMS.config = e.detail.response;
     this.shadowRoot
@@ -1586,6 +1662,7 @@ class HAXCMSSiteListing extends PolymerElement {
     evt.initUIEvent("resize", true, false, window, 0);
     window.dispatchEvent(evt);
   }
+
   handleSetConfigResponse(e) {
     this.shadowRoot.querySelector("#settingsdialog").opened = false;
     this.standardResponse("HAXCMS configuration updated!");
@@ -1593,12 +1670,14 @@ class HAXCMSSiteListing extends PolymerElement {
   /**
    * Load user data up from the backend
    */
+
   handleGetUserDataResponse(e) {
     this.userData = e.detail.response.data;
   }
   /**
    * Callback after saving a photo to the backend
    */
+
   handleSetUserPhotoResponse(e) {
     // remove this once we've saved it
     delete this.__cameraBlob;
@@ -1607,6 +1686,7 @@ class HAXCMSSiteListing extends PolymerElement {
   /**
    * Download a site
    */
+
   handleDownloadResponse(e) {
     let element = document.createElement("a");
     element.setAttribute("href", e.detail.response.link);
@@ -1616,21 +1696,27 @@ class HAXCMSSiteListing extends PolymerElement {
     document.body.removeChild(element);
     this.standardResponse(this.activeItem.title + " downloaded!");
   }
+
   handleArchiveResponse(e) {
     this.standardResponse(this.activeItem.title + " archived!");
   }
+
   handleDeleteResponse(e) {
     this.standardResponse(this.activeItem.title + " deleted!");
   }
+
   handleCloneResponse(e) {
     this.standardResponse(this.activeItem.title + " cloned!");
   }
+
   handlePublishResponse(e) {
     this.standardResponse(this.activeItem.title + " published!");
   }
+
   handleSyncResponse(e) {
     this.standardResponse(this.activeItem.title + " published!");
   }
 }
+
 window.customElements.define(HAXCMSSiteListing.tag, HAXCMSSiteListing);
 export { HAXCMSSiteListing };
