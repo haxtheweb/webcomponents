@@ -16,7 +16,7 @@
       "hax": "src/glossary-term-hax.json"
     }
   },
-  "version": "2.1.7",
+  "version": "2.1.8",
   "description": "Glossary element that connects to the glossary service.",
   "repository": {
     "type": "git",
@@ -39,7 +39,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/lrn-vocab": "^2.1.7",
+    "@lrnwebcomponents/lrn-vocab": "^2.1.8",
     "@polymer/polymer": "^3.0.5",
     "@ui5/webcomponents": "^0.7.0"
   },

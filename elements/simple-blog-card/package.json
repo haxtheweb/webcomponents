@@ -16,7 +16,7 @@
       "hax": "src/simple-blog-card-hax.json"
     }
   },
-  "version": "2.1.7",
+  "version": "2.1.8",
   "description": "a card commonly found on a blogging website",
   "repository": {
     "type": "git",

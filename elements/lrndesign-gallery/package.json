@@ -16,7 +16,7 @@
       "hax": "src/lrndesign-gallery-hax.json"
     }
   },
-  "version": "2.1.7",
+  "version": "2.1.8",
   "description": "Start of lrndesign-gallery",
   "repository": {
     "type": "git",
@@ -42,10 +42,10 @@
     "@lrnwebcomponents/image-inspector": "^2.1.5",
     "@lrnwebcomponents/img-pan-zoom": "^2.1.4",
     "@lrnwebcomponents/lrnsys-button": "^2.1.5",
-    "@lrnwebcomponents/lrnsys-layout": "^2.1.7",
+    "@lrnwebcomponents/lrnsys-layout": "^2.1.8",
     "@lrnwebcomponents/responsive-utility": "^2.1.4",
     "@lrnwebcomponents/schema-behaviors": "^2.1.4",
-    "@lrnwebcomponents/simple-colors": "^2.1.7",
+    "@lrnwebcomponents/simple-colors": "^2.1.8",
     "@polymer/iron-a11y-keys": "^3.0.1",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-icons": "^3.0.1",

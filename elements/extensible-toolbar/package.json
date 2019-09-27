@@ -16,7 +16,7 @@
       "hax": "src/extensible-toolbar-hax.json"
     }
   },
-  "version": "2.1.7",
+  "version": "2.1.8",
   "description": "a toolbar UI that can be customized and extended",
   "repository": {
     "type": "git",

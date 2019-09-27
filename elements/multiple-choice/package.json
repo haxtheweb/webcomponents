@@ -16,7 +16,7 @@
       "hax": "src/multiple-choice-hax.json"
     }
   },
-  "version": "2.1.7",
+  "version": "2.1.8",
   "description": "Automated conversion of multiple-choice/",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/schema-behaviors": "^2.1.4",
-    "@lrnwebcomponents/simple-colors": "^2.1.7",
+    "@lrnwebcomponents/simple-colors": "^2.1.8",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-checkbox": "^3.0.0",
