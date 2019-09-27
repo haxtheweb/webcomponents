@@ -28,19 +28,18 @@ class PortalLauncher extends HTMLElement {
     super();
     // set tag for later use
     this.tag = PortalLauncher.tag;
-    if (
-      this.querySelector("a") &&
-      this.querySelector("a").getAttribute("href")
-    ) {
-      this.a = this.querySelector("a");
-      this.a.addEventListener("click", this.click.bind(this));
+    // ensure there's at least 1 link in here somewhere...
+    if (this.querySelectorAll("a")) {
+      this.querySelectorAll("a").forEach(a => {
+        a.addEventListener("click", this.click.bind(this));
+      });
     }
   }
   /**
    * Basic feature detecting event handler
    */
   click(e) {
-    if (this.a.getAttribute("href") != null) {
+    if (e.target.getAttribute("href") != null) {
       // progressive enhancement, if this class exists, can the link click
       if ("HTMLPortalElement" in window) {
         e.preventDefault();
@@ -84,14 +83,11 @@ class PortalLauncher extends HTMLElement {
         `;
         const portal = document.createElement("portal");
         // Let's navigate into the WICG Portals spec page
-        portal.src = this.a.getAttribute("href");
+        portal.src = e.target.getAttribute("href");
         // Add a class that defines the transition. Consider using
         // `prefers-reduced-motion` media query to control the animation.
         // https://developers.google.com/web/updates/2019/03/prefers-reduced-motion
         portal.classList.add("portal-transition");
-        portal.addEventListener("click", evt => {
-          // Animate the portal once user interacts
-        });
         portal.addEventListener("transitionend", evt => {
           if (evt.propertyName == "bottom") {
             // Activate the portal once the transition has completed
