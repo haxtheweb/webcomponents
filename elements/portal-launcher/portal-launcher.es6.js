@@ -14,30 +14,6 @@
  * @demo demo/index.html
  */
 class PortalLauncher extends HTMLElement {
-  
-  // render function
-  get html() {
-    return `
-<style>:host {
-  display: block;
-}
-
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`;
-  }
-
-  // properties available to the custom element for data binding
-  static get properties() {
-    let props = {};
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
-  }
-
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -50,74 +26,83 @@ class PortalLauncher extends HTMLElement {
    */
   constructor(delayRender = false) {
     super();
-    
     // set tag for later use
     this.tag = PortalLauncher.tag;
-    // map our imported properties json to real props on the element
-    // @notice static getter of properties is built via tooling
-    // to edit modify src/PortalLauncher-properties.json
-    let obj = PortalLauncher.properties;
-    for (let p in obj) {
-      if (obj.hasOwnProperty(p)) {
-        if (this.hasAttribute(p)) {
-          this[p] = this.getAttribute(p);
-        }
-        else {
-          this.setAttribute(p, obj[p].value);
-          this[p] = obj[p].value;
-        }
-      }
-    }
-    // optional queue for future use
-    this._queue = [];
-    this.template = document.createElement("template");
-
-    this.attachShadow({ mode: "open" });
-
-    if (!delayRender) {
-      this.render();
+    // ensure there's at least 1 link in here somewhere...
+    if (this.querySelectorAll("a")) {
+      this.querySelectorAll("a").forEach(a => {
+        a.addEventListener("click", this.click.bind(this));
+      });
     }
   }
   /**
-   * life cycle, element is afixed to the DOM
+   * Basic feature detecting event handler
    */
-  connectedCallback() {
-    if (window.ShadyCSS) {
-      window.ShadyCSS.styleElement(this);
+  click(e) {
+    if (e.target.getAttribute("href") != null) {
+      // progressive enhancement, if this class exists, can the link click
+      if ("HTMLPortalElement" in window) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        // Adding some styles with transitions
+        const style = document.createElement("style");
+        const initialScale = 0.2;
+        style.innerHTML = `
+          portal {
+            position:fixed;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            box-shadow: 0 0 20px 10px #999;
+            transform: scale(${initialScale});
+            bottom: calc(20px + 50% * ${initialScale} - 50%);
+            right: calc(20px + 50% * ${initialScale} - 50%);
+            z-index: 10000;
+          }
+          .portal-transition {
+            transition:
+              transform 0.4s,
+              bottom 0.7s,
+              left 0.7s,
+              opacity 1.0s;
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .portal-transition {
+              transition: all 0.001s;
+            }
+          }
+          .portal-reveal {
+            transform: scale(1.0);
+            bottom: 0px;
+            left: 0px;
+          }
+          .fade-in {
+            opacity: 1.0;
+          }
+        `;
+        const portal = document.createElement("portal");
+        // Let's navigate into the WICG Portals spec page
+        portal.src = e.target.getAttribute("href");
+        // Add a class that defines the transition. Consider using
+        // `prefers-reduced-motion` media query to control the animation.
+        // https://developers.google.com/web/updates/2019/03/prefers-reduced-motion
+        portal.classList.add("portal-transition");
+        portal.addEventListener("transitionend", evt => {
+          if (evt.propertyName == "bottom") {
+            // Activate the portal once the transition has completed
+            portal.activate();
+          }
+        });
+        document.body.append(style, portal);
+        // Waiting for the page to load.
+        // using setTimeout is a suboptimal way and it's best to fade-in
+        // when receiving a load complete message from the portal via postMessage
+        setTimeout(_ => portal.classList.add("fade-in"), 250);
+        setTimeout(_ => portal.classList.add("portal-reveal"), 500);
+      }
     }
-
-    
   }
-
-  _copyAttribute(name, to) {
-    const recipients = this.shadowRoot.querySelectorAll(to);
-    const value = this.getAttribute(name);
-    const fname = value == null ? "removeAttribute" : "setAttribute";
-    for (const node of recipients) {
-      node[fname](name, value);
-    }
-  }
-
-  _setProperty({ name, value }) {
-    this[name] = value;
-  }
-
-  render() {
-    this.shadowRoot.innerHTML = null;
-    this.template.innerHTML = this.html;
-
-    if (window.ShadyCSS) {
-      window.ShadyCSS.prepareTemplate(this.template, this.tag);
-    }
-    this.shadowRoot.appendChild(this.template.content.cloneNode(true));
-  }
-
-  //static get observedAttributes() {
-  //  return [];
-  //}
-  // disconnectedCallback() {}
-  // attributeChangedCallback(attr, oldValue, newValue) {}
-  
 }
 window.customElements.define(PortalLauncher.tag, PortalLauncher);
 export { PortalLauncher };

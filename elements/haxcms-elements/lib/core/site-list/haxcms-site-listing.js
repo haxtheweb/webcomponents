@@ -498,16 +498,16 @@ class HAXCMSSiteListing extends PolymerElement {
         ></vaadin-grid-selection-column>
         <vaadin-grid-filter-column width="6em" path="title">
           <template>
-            <a tabindex="-1" href$="[[item.location]]" target="_blank"
-              ><paper-button raised class="site-title"
-                >[[item.title]]
-                <iron-icon
-                  style="width:12px;height:12px;"
-                  icon="icons:launch"
-                ></iron-icon
-              ></paper-button>
-              <div class="small-location">[[cleanLocation(item.location)]]</div>
-            </a>
+            <portal-launcher>
+              <a tabindex="-1" href$="[[item.location]]">
+                <paper-button raised class="site-title">
+                  [[item.title]]
+                </paper-button>
+                <div class="small-location">
+                  [[cleanLocation(item.location)]]
+                </div>
+              </a>
+            </portal-launcher>
           </template>
         </vaadin-grid-filter-column>
         <vaadin-grid-filter-column

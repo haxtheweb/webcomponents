@@ -38,14 +38,14 @@ class ExtensibleToolbar extends PolymerElement {
     return {
   "hidden": {
     "name": "hidden",
-    "type": "Boolean",
+    "type": Boolean,
     "value": "false",
     "reflectToAttribute": true,
     "observer": false
   },
   "buttons": {
     "name": "buttons",
-    "type": "Array",
+    "type": Array,
     "value": "[]",
     "reflectToAttribute": false,
     "observer": "_buttonsChanged"

@@ -29,3 +29,4 @@ import "@polymer/iron-icons/device-icons.js";
 import "@polymer/iron-icons/image-icons.js";
 import "@polymer/iron-icons/social-icons.js";
 import "@lrnwebcomponents/hax-logo/hax-logo.js";
+import "@lrnwebcomponents/portal-launcher/portal-launcher.js";

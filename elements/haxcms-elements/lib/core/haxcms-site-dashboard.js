@@ -10,6 +10,7 @@ import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/notification-icons.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-form.js";
+import "@lrnwebcomponents/portal-launcher/portal-launcher.js";
 
 /**
  * `haxcms-site-dashboard`
@@ -99,7 +100,7 @@ class HAXCMSSiteDashboard extends LitElement {
         }
         .title {
           color: white;
-          font-size: 40px;
+          font-size: 32px;
           margin: 0;
           padding: 0;
           display: inline-flex;
@@ -144,6 +145,14 @@ class HAXCMSSiteDashboard extends LitElement {
   render() {
     return html`
       <div class="title-wrapper">
+        <portal-launcher>
+          <a href="../../" tabindex="-1"
+            ><paper-icon-button
+              icon="icons:home"
+              title="back to site listing"
+            ></paper-icon-button
+          ></a>
+        </portal-launcher>
         <h2 class="title">${this.manifest.title} settings</h2>
         ${varExists(this.manifest, "metadata.site.static.publishedLocation")
           ? html`
@@ -158,7 +167,7 @@ class HAXCMSSiteDashboard extends LitElement {
                   rel="noopener noreferrer"
                   target="_blank"
                 >
-                  Click here to access the published version of this site
+                  Published version
                 </a>
               </span>
             `
@@ -175,10 +184,16 @@ class HAXCMSSiteDashboard extends LitElement {
         ></simple-fields-form>
       </div>
       <div class="buttons">
-        <paper-button id="save" @click="${this._saveSiteFieldsTap}"
-          ><iron-icon icon="icons:save"></iron-icon> Save</paper-button
+        <paper-button
+          title="Save site settings"
+          id="save"
+          @click="${this._saveSiteFieldsTap}"
+          ><iron-icon icon="icons:save"></iron-icon> Save settings</paper-button
         >
-        <paper-button id="cancel" @click="${this._cancel}"
+        <paper-button
+          title="Cancel and close dashboard"
+          id="cancel"
+          @click="${this._cancel}"
           ><iron-icon icon="icons:cancel"></iron-icon> Cancel</paper-button
         >
       </div>
