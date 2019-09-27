@@ -51,6 +51,11 @@ class HAXCMSSiteEditorUI extends PolymerElement {
         :host([dashboard-opened]) {
           left: 50vw;
         }
+        @media screen and (max-width: 600px) {
+          :host([dashboard-opened]) {
+            left: 90vw;
+          }
+        }
         /**
          * Dashboard open trumps all contextual settings
          */
@@ -459,6 +464,10 @@ class HAXCMSSiteEditorUI extends PolymerElement {
       cancelable: false,
       detail: {
         title: "Add a new page",
+        styles: {
+          "--simple-modal-width": "75vw",
+          "--simple-modal-max-width": "75vw"
+        },
         elements: { content: this.__newForm, buttons: b },
         invokedBy: this.$.addbutton,
         clone: false,
@@ -540,6 +549,10 @@ class HAXCMSSiteEditorUI extends PolymerElement {
       cancelable: false,
       detail: {
         title: "Are you sure you want to delete this page?",
+        styles: {
+          "--simple-modal-width": "75vw",
+          "--simple-modal-max-width": "75vw"
+        },
         elements: { content: c, buttons: b },
         invokedBy: this.$.deletebutton,
         clone: false,
@@ -572,6 +585,12 @@ class HAXCMSSiteEditorUI extends PolymerElement {
       cancelable: false,
       detail: {
         title: "Edit site outline",
+        styles: {
+          "--simple-modal-width": "75vw",
+          "--simple-modal-height": "75vh",
+          "--simple-modal-max-width": "75vw",
+          "--simple-modal-max-height": "75vh"
+        },
         elements: {
           content: document.createElement("haxcms-outline-editor-dialog")
         },

@@ -7,6 +7,8 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
 import { varGet, varExists } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import "@polymer/paper-button/paper-button.js";
+import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/notification-icons.js";
 import "@lrnwebcomponents/simple-fields/lib/simple-fields-form.js";
@@ -59,6 +61,26 @@ class HAXCMSSiteDashboard extends LitElement {
         :host([dashboard-opened]) {
           margin-left: 0;
         }
+        #homebutton {
+          display: inline-block;
+          vertical-align: top;
+          margin-top: 4px;
+        }
+        #homebutton paper-icon-button {
+          color: #ffffff;
+          --paper-icon-button-ink-color: var(--haxcms-color, #ffffff);
+          background-color: #000000;
+          height: 48px;
+          width: 48px;
+          padding: 8px;
+          border-radius: 50%;
+          transition: 0.3s ease-in-out all;
+        }
+        #homebutton paper-icon-button:hover,
+        #homebutton paper-icon-button:active,
+        #homebutton paper-icon-button:focus {
+          background-color: var(--haxcms-color, #ffffff);
+        }
         .buttons {
           border: 1px solid #aaaaaa;
           background-color: var(--simple-modal-titlebar-background, #000000);
@@ -100,10 +122,28 @@ class HAXCMSSiteDashboard extends LitElement {
         }
         .title {
           color: white;
-          font-size: 32px;
-          margin: 0;
+          font-size: 24px;
+          margin: 0 0 0 16px;
           padding: 0;
           display: inline-flex;
+        }
+        @media screen and (max-width: 600px) {
+          :host {
+            width: 90vw;
+            margin-left: -90vw;
+          }
+          .title {
+            font-size: 14px;
+            margin: 0;
+          }
+          .toptext {
+            font-size: 11px;
+          }
+          #homebutton paper-icon-button {
+            height: 36px;
+            width: 36px;
+            padding: 4px;
+          }
         }
         paper-button {
           background-color: white;
@@ -146,13 +186,16 @@ class HAXCMSSiteDashboard extends LitElement {
     return html`
       <div class="title-wrapper">
         <portal-launcher>
-          <a href="../../" tabindex="-1"
+          <a href="../../" tabindex="-1" id="homebutton"
             ><paper-icon-button
               icon="icons:home"
-              title="back to site listing"
+              title="Back to site list"
             ></paper-icon-button
           ></a>
         </portal-launcher>
+        <paper-tooltip for="homebutton" offset="14" position="bottom">
+          Back to site list
+        </paper-tooltip>
         <h2 class="title">${this.manifest.title} settings</h2>
         ${varExists(this.manifest, "metadata.site.static.publishedLocation")
           ? html`
@@ -166,8 +209,7 @@ class HAXCMSSiteDashboard extends LitElement {
                   )}"
                   rel="noopener noreferrer"
                   target="_blank"
-                >
-                  Published version
+                  >Published version
                 </a>
               </span>
             `

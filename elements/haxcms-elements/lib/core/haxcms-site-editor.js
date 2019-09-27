@@ -708,14 +708,12 @@ class HAXCMSSiteEditor extends PolymerElement {
       bubbles: true,
       composed: true,
       cancelable: false,
-      styles: {
-        "--simple-modal-width": "70vw",
-        "--simple-modal-height": "70vh",
-        "--simple-modal-max-width": "70vw",
-        "--simple-modal-max-height": "70vh"
-      },
       detail: {
         title: "Edit " + store.activeTitle + " fields",
+        styles: {
+          "--simple-modal-width": "75vw",
+          "--simple-modal-max-width": "75vw"
+        },
         elements: { content: c, buttons: b },
         invokedBy: this.__nodeFieldsInvoked,
         clone: false,
