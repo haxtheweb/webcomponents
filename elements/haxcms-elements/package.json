@@ -68,7 +68,8 @@
     "@polymer/paper-tooltip": "^3.0.1",
     "@polymer/polymer": "^3.2.0",
     "@vaadin/router": "^1.2.0",
-    "mobx": "^5.9.0"
+    "mobx": "^5.9.0",
+    "web-social-share": "^6.2.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
