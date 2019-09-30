@@ -19,9 +19,49 @@
       <h3>Basic extensible-toolbar demo</h3>
       <demo-snippet>
         <template>
-          <extensible-toolbar>
-            This is extensible-toolbar
-          </extensible-toolbar>
+          <extensible-toolbar id="toolbar" controls="test" config=></extensible-toolbar>
+          <script>
+            document.getElementById('toolbar').config = [
+              {
+                "type": "extensible-toolbar-group",
+                "buttons": [
+                  {
+                    "icon": "save",
+                    "label": "Save",
+                    "shortcutKeys": "ctrl+s",
+                    "type": "extensible-toolbar-button"
+                  },
+                  {
+                    "icon": "cancel",
+                    "label": "Cancel",
+                    "toggles": true,
+                    "shortcutKeys": "ctrl+shift+z",
+                    "type": "extensible-toolbar-button"
+                  }
+                ]
+              },
+              {
+                "label": "History",
+                "type": "extensible-toolbar-group",
+                "collapsedUntil": "lg",
+                "buttons": [
+                  {
+                    "icon": "undo",
+                    "label": "Undo",
+                    "shortcutKeys": "ctrl+z",
+                    "type": "extensible-toolbar-button"
+                  },
+                  {
+                    "icon": "redo",
+                    "label": "Redo",
+                    "toggles": true,
+                    "shortcutKeys": "ctrl+shift+z",
+                    "type": "extensible-toolbar-button"
+                  }
+                ]
+              }
+            ];
+          </script>
         </template>
       </demo-snippet>
     </div>
