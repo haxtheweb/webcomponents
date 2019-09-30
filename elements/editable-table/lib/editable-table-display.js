@@ -104,7 +104,7 @@ class EditableTableDisplay extends displayBehaviors(
               aria-labelledby$="[[tables.0.label]]"
               value$="{{selected}}"
               on-change="_selectedChanged"
-              options="[[__theadData]]"
+              options="[[_getTheadOptions(thead)]]"
             >
             </simple-picker>
           </div>
@@ -116,6 +116,7 @@ class EditableTableDisplay extends displayBehaviors(
               items="[[thead.0]]"
               as="th"
               index-as="index"
+              mutable-data
               restamp
             >
               <th
@@ -125,16 +126,16 @@ class EditableTableDisplay extends displayBehaviors(
                 scope="col"
                 xs-hidden$="[[_isColHidden(index,1)]]"
               >
-                <template is="dom-if" if="[[sort]]" restamp="">
+                <template is="dom-if" if="[[sort]]" restamp>
                   <editable-table-sort
                     sort-column$="[[sortColumn]]"
                     column-index="[[index]]"
-                    text$="[[th]]"
+                    text$="[[_replaceBlankCell(th)]]"
                   ></editable-table-sort>
                 </template>
-                <template is="dom-if" if="[[!sort]]" restamp=""
-                  >[[th]]</template
-                >
+                <template is="dom-if" if="[[!sort]]" restamp
+                  >[[_replaceBlankCell(th)]]
+                </template>
               </th>
             </template>
           </tr>
@@ -145,7 +146,8 @@ class EditableTableDisplay extends displayBehaviors(
             items="[[tbody]]"
             as="tr"
             filter="{{filterRows(filterColumn,filterText)}}"
-            restamp=""
+            mutable-data
+            restamp
           >
             <tr class="tr tbody-tr">
               <template
@@ -153,12 +155,13 @@ class EditableTableDisplay extends displayBehaviors(
                 items="[[tr]]"
                 as="cell"
                 index-as="index"
-                restamp=""
+                mutable-data
+                restamp
               >
                 <template
                   is="dom-if"
                   if="[[_isRowHeader(rowHeader,index)]]"
-                  restamp=""
+                  restamp
                 >
                   <th
                     class="th th-or-td"
@@ -167,13 +170,13 @@ class EditableTableDisplay extends displayBehaviors(
                     xs-hidden$="[[_isColHidden(index,1)]]"
                     scope="row"
                   >
-                    [[cell]]
+                    [[_replaceBlankCell(cell)]]
                   </th>
                 </template>
                 <template
                   is="dom-if"
                   if="[[!_isRowHeader(rowHeader,index)]]"
-                  restamp=""
+                  restamp
                 >
                   <td
                     class="td cell th-or-td"
@@ -182,16 +185,16 @@ class EditableTableDisplay extends displayBehaviors(
                     negative$="[[_isNegative(cell)]]"
                     xs-hidden$="[[_isColHidden(index,1)]]"
                   >
-                    <template is="dom-if" if="[[filter]]" restamp="">
+                    <template is="dom-if" if="[[filter]]" restamp>
                       <editable-table-filter
                         column-index="[[index]]"
-                        text$="[[cell]]"
+                        text$="[[_replaceBlankCell(cell)]]"
                         filtered$="[[_isFiltered(index,filterColumn,filtered)]]"
                       ></editable-table-filter>
                     </template>
-                    <template is="dom-if" if="[[!filter]]" restamp=""
-                      ><span class="cell">[[cell]]</span></template
-                    >
+                    <template is="dom-if" if="[[!filter]]" restamp>
+                      <span class="cell">[[_replaceBlankCell(cell)]]</span>
+                    </template>
                   </td>
                 </template>
               </template>
@@ -203,9 +206,11 @@ class EditableTableDisplay extends displayBehaviors(
             <tr class="tr tfoot-tr">
               <template
                 is="dom-repeat"
-                items="[[__tfoot.0]]"
+                items="[[tfoot.0]]"
                 as="cell"
                 index-as="index"
+                mutable-data
+                restamp
               >
                 <template is="dom-if" if="[[_isRowHeader(rowHeader,index)]]">
                   <th
@@ -215,7 +220,7 @@ class EditableTableDisplay extends displayBehaviors(
                     xs-hidden$="[[_isColHidden(index,1)]]"
                     scope="row"
                   >
-                    [[cell]]
+                    [[_replaceBlankCell(cell)]]
                   </th>
                 </template>
                 <template is="dom-if" if="[[!_isRowHeader(rowHeader,index)]]">
@@ -226,7 +231,7 @@ class EditableTableDisplay extends displayBehaviors(
                     negative$="[[_isNegative(cell)]]"
                     xs-hidden$="[[_isColHidden(index,1)]]"
                   >
-                    [[cell]]
+                    [[_replaceBlankCell(cell)]]
                   </td>
                 </template>
               </template>
@@ -282,45 +287,24 @@ class EditableTableDisplay extends displayBehaviors(
       sortColumn: {
         type: Number,
         value: -1
-      },
-      /**
-       * Columns in <thead>
-       */
-      thead: {
-        type: Array,
-        computed: "_getThead(data,columnHeader)"
-      },
-      /**
-       * Rows in <tbody>
-       */
-      tbody: {
-        type: Array,
-        computed: "_getTbody(data,columnHeader,footer)"
       }
     };
   }
 
   /**
-   * Gets the rows in `<tbody>`
-   * @param {array} data the table data as an array
-   * @param {boolean} columnHeader does the table have a column header
-   * @param {boolean} footer does the table have a footer
-   * @returns {array} the `<tbody>` data
+   * Fires when data changed
+   * @event change
+   * @param {event} the event
    */
-  _getTbody(data, columnHeader, footer) {
-    if (data !== undefined && data !== null && data.length > 0) {
-      let ch = columnHeader ? 1 : 0,
-        tbody;
-      if (footer) {
-        tbody = data.slice(ch, data.length - 1);
-        this.__tfoot = data.slice(data.length - 1);
-      } else {
-        tbody = data.slice(ch, data.length);
-        this.__tfoot = [];
-      }
-      return tbody;
-    }
-    return [];
+  _dataChanged(e) {
+    this.dispatchEvent(
+      new CustomEvent("change", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: e
+      })
+    );
   }
 
   /**
@@ -329,15 +313,14 @@ class EditableTableDisplay extends displayBehaviors(
    * @param {boolean} columnHeader does the table have a column header
    * @returns {array} the `<thead>`data
    */
-  _getThead(data, columnHeader) {
-    this.set("__theadData", []);
-    if (data !== undefined && data !== null && data.length > 0) {
-      for (let i = 1; i < data[0].length; i++) {
-        this.push("__theadData", [{ alt: data[0][i], value: i }]);
+  _getTheadOptions(thead) {
+    let temp = [];
+    if (thead !== undefined && thead !== null && thead.length > 0) {
+      for (let i = 1; i < thead[0].length; i++) {
+        temp.push([{ alt: thead[i], value: i }]);
       }
-      if (columnHeader) return data.slice(0, 1);
     }
-    return [];
+    return temp;
   }
   /**
    * Determines whether or not a cell is hidden in responsive mode

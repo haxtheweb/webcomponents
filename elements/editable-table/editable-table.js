@@ -280,10 +280,11 @@ class EditableTable extends displayBehaviors(PolymerElement) {
                   <td class="td th-or-td" on-click="_onCellClick">
                     <editable-table-editor-cell
                       class="cell"
-                      column="[[index]]"
+                      column="[[td]]"
                       row="[[tr]]"
                       on-cell-move="_onCellMove"
-                      value$="[[cell]]"
+                      on-change="_onCellValueChange"
+                      value="{{cell}}"
                     >
                       <iron-icon
                         class="sortable-icon"
@@ -543,6 +544,13 @@ class EditableTable extends displayBehaviors(PolymerElement) {
   }
 
   /**
+   * Fires when data changed
+   * @event change
+   * @param {event} the event
+   */
+  _dataChanged(e) {}
+
+  /**
    * Gets the row data for a given row index
    * @param {number} index the index of the row
    * @param {array} data the table data
@@ -639,7 +647,10 @@ class EditableTable extends displayBehaviors(PolymerElement) {
    * @param {event} e the event
    */
   _onCellValueChange(e) {
-    this.set("data." + e.detail.row + "." + e.detail.column, e.detail.value);
+    let temp = this.data.slice();
+    temp[e.detail.row][e.detail.column] = e.detail.value;
+    this.set("data", []);
+    this.set("data", temp);
   }
 
   /**

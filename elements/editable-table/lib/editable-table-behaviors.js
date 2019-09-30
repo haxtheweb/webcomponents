@@ -116,6 +116,27 @@ export const displayBehaviors = function(SuperClass) {
           value: false,
           reflectToAttribute: true,
           notify: true
+        },
+        /**
+         * Columns in <thead>
+         */
+        thead: {
+          type: Array,
+          computed: "_getThead(data,columnHeader)"
+        },
+        /**
+         * Rows in <tbody>
+         */
+        tbody: {
+          type: Array,
+          computed: "_getTbody(data,columnHeader,footer)"
+        },
+        /**
+         * Rows in <tfoot>
+         */
+        tfoot: {
+          type: Array,
+          computed: "_getTfoot(data,footer)"
         }
       };
       if (super.properties) {
@@ -124,19 +145,61 @@ export const displayBehaviors = function(SuperClass) {
       return props;
     }
     /**
-     * Fires when data changed
-     * @event change
-     * @param {event} the event
+     * Return table data as plain CSV
+     * @returns {string} for the CSV
      */
-    _dataChanged(e) {
-      this.dispatchEvent(
-        new CustomEvent("change", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: e
+    getTableCSV() {
+      return this.data
+        .map(row => {
+          return row
+            .map(cell => {
+              return this._replaceBlankCell(cell).replace(/,g/, ",");
+            })
+            .join(",");
         })
-      );
+        .join("\n");
+    }
+    /**
+     * Return table as plain HTML
+     * @returns {string} the HTML for the table
+     */
+    getTableHTML() {
+      let getTR = (tr, open = "td", close = "td") => {
+          let th = this.rowHeader ? tr.slice(0, 1) : [],
+            td = this.rowHeader ? tr.slice(1) : tr;
+          return `\n\t\t<tr>${th
+            .map(cell => {
+              return `\n\t\t\t<th scope="row">${this._replaceBlankCell(
+                cell
+              )}</th>`;
+            })
+            .join("")}${td
+            .map(cell => {
+              return `\n\t\t\t<${open}>${this._replaceBlankCell(
+                cell
+              )}</${close}>`;
+            })
+            .join("")}\n\t\t</tr>`;
+        },
+        headers = this.thead.map(tr => {
+          return getTR(tr, `th scope="col"`, `th`);
+        }),
+        body = this.tbody.map(tr => {
+          return getTR(tr);
+        }),
+        footer = this.tfoot.map(tr => {
+          return getTR(tr);
+        });
+      return [
+        "<table>",
+        this.caption !== ""
+          ? `\n\t<caption>\n\t\t${this.caption}\n\t</caption>`
+          : "",
+        headers.length > 0 ? `\n\t<thead>${headers.join("")}\n\t</thead>` : "",
+        body.length > 0 ? `\n\t<tbody>${body.join("")}\n\t</tbody>` : "",
+        footer.length > 0 ? `\n\t<tfoot>${footer.join("")}\n\t</tfoot>` : "",
+        "\n</table>"
+      ].join("");
     }
     /**
      * Return table data and configuration
@@ -158,6 +221,46 @@ export const displayBehaviors = function(SuperClass) {
         summary: this.summary
       };
       return data;
+    }
+
+    /**
+     * Gets the rows in `<tbody>`
+     * @param {array} data the table data as an array
+     * @param {boolean} columnHeader does the table have a column header
+     * @param {boolean} footer does the table have a footer
+     * @returns {array} the `<tbody>` data
+     */
+    _getTfoot(data, footer) {
+      return footer ? data.slice(data.length - 1) : [];
+    }
+
+    /**
+     * Gets the rows in `<tbody>`
+     * @param {array} data the table data as an array
+     * @param {boolean} columnHeader does the table have a column header
+     * @param {boolean} footer does the table have a footer
+     * @returns {array} the `<tbody>` data
+     */
+    _getTbody(data, columnHeader, footer) {
+      if (data !== undefined && data !== null && data.length > 0) {
+        let ch = columnHeader ? 1 : 0,
+          ft = footer ? data.length : data.length - 1;
+        return data.slice(ch, ft);
+      }
+    }
+
+    /**
+     * Gets the columns in `<thead>`
+     * @param {array} data the table data as an array
+     * @param {boolean} columnHeader does the table have a column header
+     * @returns {array} the `<thead>`data
+     */
+    _getThead(data, columnHeader) {
+      return columnHeader ? data.slice(0, 1) : [];
+    }
+
+    _replaceBlankCell(cell) {
+      return String(cell).trim() === "" ? "-" : cell;
     }
   };
 };
