@@ -7,6 +7,7 @@ import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-toggle-button/paper-toggle-button.js";
 import "@polymer/paper-input/paper-input.js";
+import "@polymer/iron-ajax/iron-ajax.js";
 import { displayBehaviors } from "./lib/editable-table-behaviors.js";
 import "./lib/editable-table-editor-rowcol.js";
 import "./lib/editable-table-editor-toggle.js";
@@ -65,7 +66,8 @@ Custom property | Description | Default
 `--editable-table-style-footer` | Styles applied to table footer. | { font-weight: var(--editable-table-heavy-weight); color: var(--editable-table-heading-color); border-top: 3px solid var(--editable-table-color); }
  *
  * @demo demo/index.html
- * @demo demo/display.html Display Mode
+ * @demo demo/advanced.html Advanced Features
+ * @demo demo/display.html Display Only
  * 
  * @customElement
  * @polymer
@@ -161,7 +163,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
           transition: all 2s;
           color: var(--editable-table-caption-color);
         }
-        :host .field-group {
+        :host .field-group:not([hidden]) {
           display: flex;
           justify-content: space-between;
           align-items: center;
@@ -177,6 +179,15 @@ class EditableTable extends displayBehaviors(PolymerElement) {
         @media screen {
         }
       </style>
+      <iron-ajax
+        auto
+        hidden$="[[!dataSrc]]"
+        url="[[dataSrc]]"
+        handle-as="text"
+        debounce-duration="500"
+        last-response="{{csvData}}"
+        on-response="loadExternalData"
+      ></iron-ajax>
       <editable-table-display
         bordered$="[[bordered]]"
         caption$="[[caption]]"
@@ -334,6 +345,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
             <div class="label">Display</div>
             <editable-table-editor-toggle
               id="bordered"
+              disabled$="[[hideBordered]]"
               hidden$="[[hideBordered]]"
               icon="image:grid-on"
               label="Borders."
@@ -343,6 +355,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
             </editable-table-editor-toggle>
             <editable-table-editor-toggle
               id="striped"
+              disabled$="[[hideStriped]]"
               hidden$="[[hideStriped]]"
               icon="editable-table:row-striped"
               label="Alternating rows."
@@ -352,6 +365,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
             </editable-table-editor-toggle>
             <editable-table-editor-toggle
               id="condensed"
+              disabled$="[[hideCondensed]]"
               hidden$="[[hideCondensed]]"
               icon="editable-table:row-condensed"
               label="Condensed rows."
@@ -361,6 +375,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
             </editable-table-editor-toggle>
             <editable-table-editor-toggle
               id="responsive"
+              disabled$="[[hideResponsive]]"
               hidden$="[[hideResponsive]]"
               icon="device:devices"
               label="Adjust width to screen size."
@@ -373,6 +388,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
             <div class="label">Sorting and Filtering</div>
             <editable-table-editor-toggle
               id="sort"
+              disabled$="[[hideSort]]"
               hidden$="[[hideSort]]"
               label="Column sorting."
               icon="editable-table:sortable"
@@ -382,6 +398,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
             </editable-table-editor-toggle>
             <editable-table-editor-toggle
               id="filter"
+              disabled$="[[hideFilter]]"
               hidden$="[[hideFilter]]"
               icon="editable-table:filter"
               label="Column filtering."

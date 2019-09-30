@@ -94,6 +94,15 @@ class EditableTableDisplay extends displayBehaviors(
           }
         }
       </style>
+      <iron-ajax
+        auto
+        url="[[dataSrc]]"
+        hidden$="[[!dataSrc]]"
+        handle-as="text"
+        debounce-duration="500"
+        last-response="{{csvData}}"
+        on-response="loadExternalData"
+      ></iron-ajax>
       <table id="table" class="table">
         <caption>
           <div>
@@ -350,15 +359,6 @@ class EditableTableDisplay extends displayBehaviors(
    */
   _isNegative(cell) {
     return this._isNumeric(cell) && cell.trim().indexOf("-") === 0;
-  }
-
-  /**
-   * Sets a cell's numeric style
-   * @param {string} cell the cell contents
-   * @returns {boolean} whether cell contents are numeric
-   */
-  _isNumeric(cell) {
-    return cell !== null && !isNaN(cell.trim().replace(/\$/g, ""));
   }
 
   /**

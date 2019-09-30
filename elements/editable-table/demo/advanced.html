@@ -56,17 +56,32 @@
             </div>
             <editable-table 
               id="food-table" 
-              bordered 
               caption="Is it a sandwich? Food classification chart."
-              column-header 
-              condensed 
-              data-src="foods.csv"
-              filter 
-              row-header 
-              responsive
-              sort 
-              striped>
+              hide-bordered
+              hide-condensed
+              hide-filter
+              hide-responsive
+              hide-sort
+              hide-striped>
             </editable-table>
+            <div class="buttons">
+              <button controls="data" onclick="document.getElementById('data').innerHTML = JSON.stringify(document.getElementById('food-table').getTableProperties())">Get Table Config Object</button>
+              <button controls="data" onclick="document.getElementById('data').innerHTML = document.getElementById('food-table').getTableHTML()">Get Plain HTML Table</button>
+              <button controls="data" onclick="document.getElementById('data').innerHTML = document.getElementById('food-table').getTableCSV()">Get Table Data CSV</button>
+            </div>
+            <p><label for="data">Table Data:</label></p>
+            <textarea id="data"></textarea>
+          <script>
+            document.getElementById('food-table').data = [ 
+              [ "Food", "Enclosure", "Contents", "Orientation" ], 
+              [ "Hamburger", "one bun, split into two", "meat, vegetables, cheese, and/or condiments", "horizontal" ], 
+              [ "Hoagie", "one bun", "meat, vegetables, cheese, and/or condiments", "vertical" ], 
+              [ "Hot Dog", "one bun", "meat, vegetables, cheese, and/or condiments", "vertical" ], 
+              [ "Hot Pocket", "two crusts sealed together", "meat, vegetables, cheese, and/or condiments", "horizontal" ], 
+              [ "Pie", "two crusts sealed together", "fruit or meat, vegetables, and/or cheese", "horizontal" ], 
+              [ "Taco", "one shell", "meat, vegetables, cheese, and/or condiments", "vertical" ] 
+            ];
+          </script>
         </template>
       </demo-snippet> 
     </div>

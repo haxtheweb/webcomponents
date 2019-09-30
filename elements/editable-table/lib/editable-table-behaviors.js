@@ -44,6 +44,13 @@ export const displayBehaviors = function(SuperClass) {
           notify: true
         },
         /**
+         * Raw data pulled in from the csv file.
+         */
+        csvData: {
+          type: String,
+          value: ""
+        },
+        /**
          * Condense height of table cells.
          */
         condensed: {
@@ -60,6 +67,12 @@ export const displayBehaviors = function(SuperClass) {
           value: [],
           notify: true,
           observer: "_dataChanged"
+        },
+        /**
+         * Location of the CSV file.
+         */
+        dataSrc: {
+          type: String
         },
         /**
          * Enable filtering by cell value.
@@ -144,6 +157,41 @@ export const displayBehaviors = function(SuperClass) {
       }
       return props;
     }
+
+    constructor() {
+      super();
+      import("@polymer/iron-ajax/iron-ajax.js");
+    }
+
+    /**
+     * converts csv string to array
+     * @param {string} text the CSV string
+     * @returns {array} a multidimensional table array
+     * Mix of solutions from https://stackoverflow.com/questions/8493195/how-can-i-parse-a-csv-string-with-javascript-which-contains-comma-in-data
+     */
+    CSVtoArray(text) {
+      let p = "",
+        row = [""],
+        ret = [row],
+        i = 0,
+        r = 0,
+        s = !0,
+        l;
+      for (l in text) {
+        l = text[l];
+        if ('"' === l) {
+          if (s && l === p) row[i] += l;
+          s = !s;
+        } else if ("," === l && s) l = row[++i] = "";
+        else if ("\n" === l && s) {
+          if ("\r" === p) row[i] = row[i].slice(0, -1);
+          row = ret[++r] = [(l = "")];
+          i = 0;
+        } else row[i] += l;
+        p = l;
+      }
+      return ret;
+    }
     /**
      * Return table data as plain CSV
      * @returns {string} for the CSV
@@ -153,7 +201,10 @@ export const displayBehaviors = function(SuperClass) {
         .map(row => {
           return row
             .map(cell => {
-              return this._replaceBlankCell(cell).replace(/,g/, ",");
+              cell = this._replaceBlankCell(cell);
+              return this._isNumeric(cell)
+                ? cell.replace(/,/g, "")
+                : `\"${cell}\"`;
             })
             .join(",");
         })
@@ -222,6 +273,13 @@ export const displayBehaviors = function(SuperClass) {
       };
       return data;
     }
+    /**
+     * Convert from csv text to an array in the table function
+     */
+    loadExternalData(e) {
+      let data = this.CSVtoArray(this.csvData);
+      if (data.length > 0 && data[0].length > 0) this.set("data", data);
+    }
 
     /**
      * Gets the rows in `<tbody>`
@@ -261,6 +319,15 @@ export const displayBehaviors = function(SuperClass) {
 
     _replaceBlankCell(cell) {
       return String(cell).trim() === "" ? "-" : cell;
+    }
+
+    /**
+     * Sets a cell's numeric style
+     * @param {string} cell the cell contents
+     * @returns {boolean} whether cell contents are numeric
+     */
+    _isNumeric(cell) {
+      return cell !== null && !isNaN(cell.trim().replace(/\$/g, ""));
     }
   };
 };
