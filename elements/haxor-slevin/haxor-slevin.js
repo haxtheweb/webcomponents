@@ -37,6 +37,12 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
         :host([hidden]) {
           display: none;
         }
+        :host([is-logged-in]) {
+          margin-left: 48px;
+        }
+        :host([is-logged-in][edit-mode]) {
+          padding-left: 12px;
+        }
 
         :host([edit-mode]) #slot {
           display: none;
@@ -248,6 +254,12 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
         }
 
         @media screen and (max-width: 800px) {
+          .simple-blog-card-wrapper simple-blog-card {
+            margin: 0 10vw;
+          }
+          .simple-blog-card-wrapper {
+            text-align: center;
+          }
           #contentcontainer,
           #home {
             padding-left: 8px;

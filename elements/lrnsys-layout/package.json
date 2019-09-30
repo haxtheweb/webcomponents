@@ -16,7 +16,7 @@
       "hax": "src/lrnsys-layout-hax.json"
     }
   },
-  "version": "2.1.6",
+  "version": "2.1.8",
   "description": "Automated conversion of lrnsys-layout/",
   "repository": {
     "type": "git",
@@ -41,8 +41,8 @@
   "dependencies": {
     "@lrnwebcomponents/lrn-icons": "^2.1.5",
     "@lrnwebcomponents/paper-avatar": "^2.1.5",
-    "@lrnwebcomponents/simple-colors": "^2.1.6",
-    "@lrnwebcomponents/simple-drawer": "^2.1.6",
+    "@lrnwebcomponents/simple-colors": "^2.1.8",
+    "@lrnwebcomponents/simple-drawer": "^2.1.8",
     "@lrnwebcomponents/simple-modal": "^2.1.5",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/iron-collapse": "^3.0.0",

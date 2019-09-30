@@ -16,7 +16,7 @@
       "hax": "src/editable-outline-hax.json"
     }
   },
-  "version": "2.1.4",
+  "version": "2.1.8",
   "description": "a simple outline thats contenteditable in nature",
   "repository": {
     "type": "git",

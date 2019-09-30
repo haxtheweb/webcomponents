@@ -23,7 +23,7 @@ class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
     return html`
 <style>:host {
   --__learn-two-theme-default-font-family: var(--learn-two-theme-default-font-family,"Muli, Helvetica, Tahoma, Geneva, Arial, sans-serif");
-  --__learn-two-theme-default-background: var(--learn-two-theme-default-background, #fafafa);
+  --__learn-two-theme-default-background: var(--learn-two-theme-default-background, #ffffff);
   display: block;
   font-family: var(
     --learn-two-theme-font-family,
@@ -88,6 +88,12 @@ site-active-title {
     font-weight: 100;
   }
 }
+site-git-corner {
+  top: 0;
+  right: 0;
+  position: absolute;
+  z-index: 1000;
+}
 site-title {
   position: relative;
   overflow: hidden;
@@ -146,7 +152,6 @@ app-drawer-layout {
   min-height: fill-available;
   --app-drawer-width: 300px;
   --app-drawer-scrim-background: rgba(80, 80, 80, 0.8);
-  --app-drawer-width: 300px;
   --app-drawer-content-container: {
     overflow: hidden;
     background-color: #383f45;
@@ -171,9 +176,11 @@ h-a-x {
   pointer-events: none;
 }
 
-:host([is-logged-in]) app-drawer,
-:host([is-logged-in]) app-drawer-layout[narrow] {
+:host([is-logged-in]) app-drawer {
   left: 48px;
+}
+:host([is-logged-in]) app-drawer-layout[narrow] {
+  margin: 0 0 0 48px;
 }
 
 git-corner {
@@ -204,6 +211,9 @@ app-drawer-layout[narrow] #menubutton2 {
 }
 app-drawer-layout[narrow] .header {
   padding: 0;
+}
+:host([is-logged-in]) site-menu-button[type="prev"] {
+  left: 348px;
 }
 site-menu-button {
   position: fixed;
@@ -254,6 +264,8 @@ site-menu-button[type="next"] {
   right: 0;
   left: unset;
 }
+
+:host([is-logged-in]) app-drawer-layout[narrow] site-menu-button[type="prev"],
 app-drawer-layout[narrow] site-menu-button[type="prev"] {
   left: unset;
 }
@@ -283,7 +295,7 @@ map-menu * {
 }
 </style>
 <style include="simple-colors-shared-styles"></style>
-<app-drawer-layout>
+<app-drawer-layout responsive-width="900px">
   <paper-icon-button id="menubutton" icon="menu" on-click="toggleDrawer" title="Toggle site menu"></paper-icon-button>
   <app-drawer swipe-open slot="drawer" opened="{{opened}}">
     <paper-icon-button id="menubutton2" icon="menu" on-click="toggleDrawer" title="Toggle site menu"></paper-icon-button>

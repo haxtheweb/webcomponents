@@ -16,7 +16,7 @@
       "hax": "src/hax-text-editor-hax.json"
     }
   },
-  "version": "2.1.6",
+  "version": "2.1.8",
   "description": "rich-text-editor configured for HAX",
   "repository": {
     "type": "git",
@@ -40,9 +40,9 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/lrn-math": "^2.1.5",
-    "@lrnwebcomponents/lrn-vocab": "^2.1.6",
+    "@lrnwebcomponents/lrn-vocab": "^2.1.8",
     "@lrnwebcomponents/oer-schema": "^2.1.5",
-    "@lrnwebcomponents/rich-text-editor": "^2.1.6",
+    "@lrnwebcomponents/rich-text-editor": "^2.1.8",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {

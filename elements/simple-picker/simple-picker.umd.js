@@ -300,7 +300,8 @@ class SimplePicker extends PolymerElement {
   "disabled": {
     "name": "disabled",
     "type": Boolean,
-    "value": false
+    "value": false,
+    "reflectToAttribute": true
   },
 
   /**
@@ -392,6 +393,7 @@ class SimplePicker extends PolymerElement {
     "name": "value",
     "type": Object,
     "value": null,
+    "notify": true,
     "observer": "_valueChanged",
     "reflectToAttribute": true
   },

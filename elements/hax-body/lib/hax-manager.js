@@ -110,7 +110,7 @@ class HaxManager extends PolymerElement {
           --error-color: darkred;
           color: #ffffff;
           display: block;
-          padding: 32px !important;
+          padding: 16px !important;
           --vaadin-upload-button-add-wrapper: {
             border: 2px solid #ffffff;
             background-color: var(--hax-color-accent1);
@@ -133,13 +133,13 @@ class HaxManager extends PolymerElement {
           --vaadin-upload-drop-label: {
             color: #ffffff;
             display: block;
-            padding: 16px;
+            padding: 8px;
           }
           --vaadin-upload-drop-label-dragover: {
             color: #ffffff;
           }
           --vaadin-upload-file-list: {
-            padding: 16px;
+            padding: 8px;
             margin: 0;
             color: #ffffff;
           }
@@ -162,7 +162,7 @@ class HaxManager extends PolymerElement {
         }
         .url-description {
           font-size: 18px;
-          color: #ffffff;
+          color: #000000;
           line-height: 22px;
           font-family: sans-serif;
           letter-spacing: 1px;
@@ -221,8 +221,7 @@ class HaxManager extends PolymerElement {
                         auto-validate=""
                       ></paper-input>
                       <div class="url-description">
-                        A full URL with https:// referencing a link that already
-                        exists on the web.
+                        Add an existing resource / link
                       </div>
                     </div>
                     <div class="add-upload-area">

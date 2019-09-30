@@ -190,11 +190,29 @@ class HAXCMSSiteEditor extends PolymerElement {
         on-response="_handleGetNodeFieldsResponse"
         last-error="{{lastError}}"
       ></iron-ajax>
+      <iron-ajax
+        headers='{"Authorization": "Bearer [[jwt]]"}'
+        id="getuserdata"
+        url="[[getUserDataPath]]"
+        method="[[method]]"
+        body="[[getUserDataBody]]"
+        content-type="application/json"
+        handle-as="json"
+        on-response="_handleUserDataResponse"
+        last-error="{{lastError}}"
+      ></iron-ajax>
       <h-a-x app-store$="[[appStore]]" hide-panel-ops></h-a-x>
     `;
   }
   static get properties() {
     return {
+      getUserDataPath: {
+        type: String
+      },
+      getUserDataBody: {
+        type: Object,
+        value: {}
+      },
       /**
        * Singular error reporter / visual based on requests erroring
        */
@@ -393,6 +411,9 @@ class HAXCMSSiteEditor extends PolymerElement {
       }
     };
   }
+  _handleUserDataResponse(e) {
+    store.userData = e.detail.response.data;
+  }
   _lastErrorChanged(newValue) {
     if (newValue) {
       console.error(newValue);
@@ -465,6 +486,10 @@ class HAXCMSSiteEditor extends PolymerElement {
       window.addEventListener(
         "haxcms-load-site-dashboard",
         this.loadSiteDashboard.bind(this)
+      );
+      window.addEventListener(
+        "haxcms-load-user-data",
+        this.loadUserData.bind(this)
       );
       window.addEventListener(
         "haxcms-publish-site",
@@ -565,6 +590,10 @@ class HAXCMSSiteEditor extends PolymerElement {
       this.loadSiteDashboard.bind(this)
     );
     window.removeEventListener(
+      "haxcms-load-user-data",
+      this.loadUserData.bind(this)
+    );
+    window.removeEventListener(
       "haxcms-create-node",
       this.createNode.bind(this)
     );
@@ -573,6 +602,17 @@ class HAXCMSSiteEditor extends PolymerElement {
       this.deleteNode.bind(this)
     );
     super.disconnectedCallback();
+  }
+  /**
+   * Load user data from backend
+   */
+  loadUserData(e) {
+    this.set("getUserDataBody", {});
+    this.set("getUserDataBody", {
+      jwt: this.jwt
+    });
+    this.notifyPath("getUserDataBody.*");
+    this.$.getuserdata.generateRequest();
   }
   /**
    * Load and display node fields
@@ -668,14 +708,12 @@ class HAXCMSSiteEditor extends PolymerElement {
       bubbles: true,
       composed: true,
       cancelable: false,
-      styles: {
-        "--simple-modal-width": "70vw",
-        "--simple-modal-height": "70vh",
-        "--simple-modal-max-width": "70vw",
-        "--simple-modal-max-height": "70vh"
-      },
       detail: {
         title: "Edit " + store.activeTitle + " fields",
+        styles: {
+          "--simple-modal-width": "75vw",
+          "--simple-modal-max-width": "75vw"
+        },
         elements: { content: c, buttons: b },
         invokedBy: this.__nodeFieldsInvoked,
         clone: false,

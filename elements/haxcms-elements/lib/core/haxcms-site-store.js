@@ -17,6 +17,7 @@ class Store {
     this.activeItemContent = "";
     this.themeElement = null;
     this.activeId = null;
+    this.userData = {};
     this.cmsSiteEditor = {
       instance: null
     };
@@ -495,6 +496,7 @@ decorate(Store, {
   editMode: observable, // global editing state
   jwt: observable, // json web token
   dashboardOpened: observable, // if haxcms backend settings are open
+  userData: observable, // user data object for logged in users
   manifest: observable, // JOS / manifest
   activeItemContent: observable, // active site content, cleaned up
   themeElement: observable, // theme element

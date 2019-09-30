@@ -85,8 +85,10 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(LitElement) {
           color: black;
         }
         #import {
-          margin-right: 50px;
-          background-color: var(--hax-color-menu-heading-bg, #eeeeee);
+          background-color: var(
+            --hax-export-dialog-import-button-bg,
+            --hax-color-menu-heading-bg
+          );
           color: var(--hax-color-menu-heading-color, black);
         }
         #loading {

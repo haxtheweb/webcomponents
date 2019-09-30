@@ -9,6 +9,7 @@ import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/paper-fab/paper-fab.js";
+import "@lrnwebcomponents/paper-avatar/paper-avatar.js";
 /**
  * `haxcms-site-editor-ui`
  * `haxcms editor element buttons that you see`
@@ -38,9 +39,8 @@ class HAXCMSSiteEditorUI extends PolymerElement {
           left: 0;
           top: 0;
           bottom: 0;
-          padding-top: 56px;
           transition: 0.8s left linear;
-          background-color: #37474f;
+          background-color: var(--haxcms-system-bg, #37474f);
           z-index: 10000;
           border-right: 2px solid black;
           visibility: visible;
@@ -50,6 +50,11 @@ class HAXCMSSiteEditorUI extends PolymerElement {
         }
         :host([dashboard-opened]) {
           left: 50vw;
+        }
+        @media screen and (max-width: 600px) {
+          :host([dashboard-opened]) {
+            left: 90vw;
+          }
         }
         /**
          * Dashboard open trumps all contextual settings
@@ -68,6 +73,12 @@ class HAXCMSSiteEditorUI extends PolymerElement {
         paper-tooltip:not(:defined),
         paper-icon-button:not(:defined) {
           display: none !important;
+        }
+        paper-avatar {
+          width: 48px;
+          height: 48px;
+          line-height: 20px;
+          padding: 12px;
         }
         paper-fab {
           display: block;
@@ -105,8 +116,11 @@ class HAXCMSSiteEditorUI extends PolymerElement {
         paper-icon-button:hover,
         paper-icon-button:focus,
         paper-icon-button:active {
-          background-color: black;
-          color: white;
+          background-color: var(--haxcms-color, blue);
+          color: #ffffff;
+        }
+        #cancelbutton {
+          background-color: var(--haxcms-system-danger-color);
         }
         #editbutton,
         #editdetails,
@@ -121,9 +135,8 @@ class HAXCMSSiteEditorUI extends PolymerElement {
           opacity: 1;
         }
         :host([edit-mode]) #editbutton {
-          border-radius: 0;
           color: white;
-          background-color: var(--paper-blue-500, blue) !important;
+          background-color: var(--haxcms-system-action-color, blue) !important;
         }
         :host([edit-mode]) #manifestbutton,
         :host([edit-mode]) #editdetails,
@@ -149,6 +162,12 @@ class HAXCMSSiteEditorUI extends PolymerElement {
           }
         }
       </style>
+      <paper-avatar
+        id="username"
+        label="[[userName]]"
+        two-chars
+        src="[[userPicture]]"
+      ></paper-avatar>
       <paper-fab
         id="editbutton"
         icon="[[__editIcon]]"
@@ -192,6 +211,9 @@ class HAXCMSSiteEditorUI extends PolymerElement {
         on-click="_manifestButtonTap"
         title="[[__settingsText]]"
       ></paper-icon-button>
+      <paper-tooltip for="username" position="right" offset="14"
+        >[[userName]]</paper-tooltip
+      >
       <paper-tooltip for="cancelbutton" position="right" offset="14"
         >Cancel</paper-tooltip
       >
@@ -217,6 +239,12 @@ class HAXCMSSiteEditorUI extends PolymerElement {
   }
   static get properties() {
     return {
+      userName: {
+        type: String
+      },
+      userPicture: {
+        type: String
+      },
       /**
        * small visual lock that events break on initial paint
        */
@@ -285,6 +313,20 @@ class HAXCMSSiteEditorUI extends PolymerElement {
           detail: true
         })
       );
+      // load user data
+      this.dispatchEvent(
+        new CustomEvent("haxcms-load-user-data", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: true
+        })
+      );
+      autorun(reaction => {
+        this.userName = toJS(store.userData.userName);
+        this.userPicture = toJS(store.userData.userPicture);
+        this.__disposer.push(reaction);
+      });
       autorun(reaction => {
         this.editMode = toJS(store.editMode);
         this.__disposer.push(reaction);
@@ -422,6 +464,10 @@ class HAXCMSSiteEditorUI extends PolymerElement {
       cancelable: false,
       detail: {
         title: "Add a new page",
+        styles: {
+          "--simple-modal-width": "75vw",
+          "--simple-modal-max-width": "75vw"
+        },
         elements: { content: this.__newForm, buttons: b },
         invokedBy: this.$.addbutton,
         clone: false,
@@ -503,6 +549,10 @@ class HAXCMSSiteEditorUI extends PolymerElement {
       cancelable: false,
       detail: {
         title: "Are you sure you want to delete this page?",
+        styles: {
+          "--simple-modal-width": "75vw",
+          "--simple-modal-max-width": "75vw"
+        },
         elements: { content: c, buttons: b },
         invokedBy: this.$.deletebutton,
         clone: false,
@@ -535,6 +585,12 @@ class HAXCMSSiteEditorUI extends PolymerElement {
       cancelable: false,
       detail: {
         title: "Edit site outline",
+        styles: {
+          "--simple-modal-width": "75vw",
+          "--simple-modal-height": "75vh",
+          "--simple-modal-max-width": "75vw",
+          "--simple-modal-max-height": "75vh"
+        },
         elements: {
           content: document.createElement("haxcms-outline-editor-dialog")
         },

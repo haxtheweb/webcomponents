@@ -129,6 +129,8 @@ class HAXCMSBackendDemo extends PolymerElement {
             window.appSettings.syncSitePath;
           store.cmsSiteEditor.instance.revertSitePath =
             window.appSettings.revertSitePath;
+          store.cmsSiteEditor.instance.getUserDataPath =
+            window.appSettings.getUserDataPath;
           store.cmsSiteEditor.instance.appStore = window.appSettings.appStore;
         },
         e => {

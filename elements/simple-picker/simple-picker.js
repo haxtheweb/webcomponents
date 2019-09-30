@@ -345,7 +345,8 @@ class SimplePicker extends PolymerElement {
       disabled: {
         name: "disabled",
         type: Boolean,
-        value: false
+        value: false,
+        reflectToAttribute: true
       },
 
       /**
@@ -437,6 +438,7 @@ class SimplePicker extends PolymerElement {
         name: "value",
         type: Object,
         value: null,
+        notify: true,
         observer: "_valueChanged",
         reflectToAttribute: true
       },
@@ -708,7 +710,6 @@ class SimplePicker extends PolymerElement {
    */
   _toggleListbox(expanded) {
     let active = this.shadowRoot.querySelector("#" + this.__activeDesc);
-    console.log("_toggleListbox", active);
     this.expanded = expanded;
     if (expanded) {
       if (active !== null) active.focus();

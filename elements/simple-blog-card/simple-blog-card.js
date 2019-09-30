@@ -29,6 +29,10 @@ class SimpleBlogCard extends LitElement {
 simple-popover {
   position:absolute;
   display: flex;
+}
+
+paper-card {
+  height: auto !important;
 }</style>
 <paper-card
   .alt="${this.alt}"

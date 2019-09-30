@@ -20,7 +20,6 @@ body, html, :root {
   --hax-color-menu-heading-color: #FFFFFF;
   --hax-preview-button-bg: var(--haxcms-system-bg, black);
   --hax-preview-button-color: white;
-
   --hax-ink-color: var(--haxcms-system-bg, black);
   --hax-panel-item-active: #FFFFFF;
   --hax-panel-item-active-border-color:#444444;
@@ -29,6 +28,9 @@ body, html, :root {
   --hax-panel-item-bg: #000000;
   --hax-panel-item-text: #EEEEEE;
   --hax-toolbar-item-color: var(--haxcms-system-bg, black);
+  --hax-preview-insert-button-bg: var(--haxcms-system-action-color);
+  --hax-preview-cancel-button-bg: var(--haxcms-system-danger-color);
+  --hax-export-dialog-import-button-bg: var(--haxcms-system-danger-color);
   /** vaadin **/
   --lumo-primary-text-color: var(--haxcms-system-bg, black);
   --simple-toast-z-index: 10000000;
@@ -38,6 +40,14 @@ body, html, :root {
   --simple-toast-bg: var(--haxcms-system-bg, black);
   --simple-toast-margin: 0 0 0 49px;
   --simple-toast-border: 1px solid black;
+  /** hax forms **/
+  --primary-color: var(--haxcms-color, --haxcms-system-bg);
+  --paper-input-container-focus-color: var(--haxcms-color, --haxcms-system-bg);
+  --eco-json-form-add-color: var(--haxcms-color, --haxcms-system-bg);
+  --eco-json-form-faded-color: var(--haxcms-color, --haxcms-system-bg);
+  --lumo-primary-text-color: var(--haxcms-color, --haxcms-system-bg);
+  --a11y-tabs-color: var(--haxcms-color, --haxcms-system-bg);
+  --a11y-tabs-focus-color: var(--haxcms-color, --haxcms-system-bg);
 }
 
 body, html {
