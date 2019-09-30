@@ -23,29 +23,7 @@
   "config": {
     "name": "config",
     "type": "Object",
-    "value": [
-      {
-        "label": "History",
-        "type": "extensible-toolbar-group",
-        "buttons": [
-          {
-            "command": "undo",
-            "icon": "undo",
-            "label": "Undo",
-            "shortcutKeys": "ctrl+z",
-            "type": "extensible-toolbar-button"
-          },
-          {
-            "command": "redo",
-            "icon": "redo",
-            "label": "Redo",
-            "toggles": true,
-            "shortcutKeys": "ctrl+shift+z",
-            "type": "extensible-toolbar-button"
-          }
-        ]
-      }
-    ]
+    "value": []
   },
 
   /**

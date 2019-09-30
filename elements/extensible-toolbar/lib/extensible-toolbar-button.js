@@ -64,7 +64,8 @@ class ExtensibleToolbarButton extends PolymerElement {
       collapsedUntil: {
         name: "collapsedUntil",
         type: String,
-        value: "xs"
+        value: "xs",
+        reflectToAttribute: true
       },
       /**
        * The `id` of the element that the toolbar controls.

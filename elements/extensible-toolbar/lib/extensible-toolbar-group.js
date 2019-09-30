@@ -33,7 +33,8 @@ class ExtensibleToolbarGroup extends PolymerElement {
       collapsedUntil: {
         name: "collapsedUntil",
         type: String,
-        value: "xs"
+        value: "xs",
+        reflectToAttribute: true
       },
       /**
        * Label for the group.

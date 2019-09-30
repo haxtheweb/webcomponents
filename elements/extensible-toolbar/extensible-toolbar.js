@@ -10,10 +10,6 @@ import "./lib/extensible-toolbar-group.js";
 import "./lib/extensible-toolbar-button.js";
 import "./lib/extensible-toolbar-more-button.js";
 import "./lib/extensible-toolbar-button-styles.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icons/editor-icons.js";
-import "@polymer/iron-icons/image-icons.js";
-import "@lrnwebcomponents/md-extra-icons/md-extra-icons.js";
 
 /**
  * `extensible-toolbar`
@@ -164,29 +160,7 @@ class ExtensibleToolbar extends AbsolutePositionBehavior {
       config: {
         name: "config",
         type: "Object",
-        value: [
-          {
-            label: "History",
-            type: "extensible-toolbar-group",
-            buttons: [
-              {
-                command: "undo",
-                icon: "undo",
-                label: "Undo",
-                shortcutKeys: "ctrl+z",
-                type: "extensible-toolbar-button"
-              },
-              {
-                command: "redo",
-                icon: "redo",
-                label: "Redo",
-                toggles: true,
-                shortcutKeys: "ctrl+shift+z",
-                type: "extensible-toolbar-button"
-              }
-            ]
-          }
-        ]
+        value: []
       },
 
       /**
