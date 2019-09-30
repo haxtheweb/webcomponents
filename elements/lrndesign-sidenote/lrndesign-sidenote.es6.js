@@ -79,6 +79,7 @@ class LrndesignSidenote extends LitElement {
   }
 
   render() {
+    const inlineStyle = this.bgColor ? `background-color:${this.bgColor};` : "";
     return html`
       <style>
         :host {
@@ -117,7 +118,7 @@ class LrndesignSidenote extends LitElement {
           @apply --label-styles;
         }
       </style>
-      <div id="container">
+      <div id="container" style="${inlineStyle}">
         <div id="header">
           <iron-icon id="icon" icon=${this.icon}></iron-icon>
           <div id="label">${this.label}</div>
