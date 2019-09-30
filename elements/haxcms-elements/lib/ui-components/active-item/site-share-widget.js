@@ -5,7 +5,24 @@ import { varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import "@polymer/iron-icons/social-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@lrnwebcomponents/social-media-icons/social-media-icons.js";
-import { defineCustomElements } from "web-social-share/dist/loader/index.mjs";
+import {
+  a as patchEsm,
+  b as bootstrapLazy
+} from "web-social-share/dist/esm/chunk-92e462c5.js";
+
+const defineCustomElements = (win, options) => {
+  return patchEsm().then(() => {
+    bootstrapLazy(
+      [
+        [
+          "web-social-share",
+          [[1, "web-social-share", { show: [1028], share: [16] }]]
+        ]
+      ],
+      options
+    );
+  });
+};
 class SiteShareWidget extends LitElement {
   static get tag() {
     return "site-share-widget";
