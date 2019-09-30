@@ -286,6 +286,31 @@ export const displayBehaviors = function(SuperClass) {
       return data;
     }
     /**
+     * imports table HTML as data
+     * @param {HTMLElement} table the table element
+     */
+    importHTML(table) {
+      let data = [].slice.call(table.querySelectorAll("tr")).map(row => {
+        return [].slice.call(row.querySelectorAll("th,td")).map(cell => {
+          return typeof cell.innerHTML === "string"
+            ? cell.innerHTML.trim()
+            : cell.innerHTML;
+        });
+      });
+      if (data.length > 0 && data[0].length > 0) this.set("data", data);
+      this.columnHeader =
+        this.columnHeader || table.querySelectorAll("thead").length > 0;
+      this.rowHeader =
+        this.rowHeader || table.querySelectorAll("tbody th").length > 0;
+      this.footer = this.footer || table.querySelectorAll("tfoot").length > 0;
+      this.caption =
+        this.caption !== null
+          ? this.caption
+          : table.querySelectorAll("caption").length > 0
+          ? table.querySelector("caption").innerHTML.trim()
+          : null;
+    }
+    /**
      * Convert from csv text to an array in the table function
      */
     _loadExternalData(e) {
@@ -327,31 +352,6 @@ export const displayBehaviors = function(SuperClass) {
      */
     _getThead(data, columnHeader) {
       return columnHeader ? data.slice(0, 1) : [];
-    }
-    /**
-     * imports table HTML as data
-     * @param {HTMLElement} table the table element
-     */
-    importHTML(table) {
-      let data = [].slice.call(table.querySelectorAll("tr")).map(row => {
-        return [].slice.call(row.querySelectorAll("th,td")).map(cell => {
-          return typeof cell.innerHTML === "string"
-            ? cell.innerHTML.trim()
-            : cell.innerHTML;
-        });
-      });
-      if (data.length > 0 && data[0].length > 0) this.set("data", data);
-      this.columnHeader =
-        this.columnHeader || table.querySelectorAll("thead").length > 0;
-      this.rowHeader =
-        this.rowHeader || table.querySelectorAll("tbody th").length > 0;
-      this.footer = this.footer || table.querySelectorAll("tfoot").length > 0;
-      this.caption =
-        this.caption !== null
-          ? this.caption
-          : table.querySelectorAll("caption").innerHTML
-          ? table.querySelectorAll("caption").innerHTML
-          : null;
     }
     /**
      * replaces a blank cell with "-" for accessibility

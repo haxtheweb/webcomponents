@@ -595,7 +595,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
    */
   _handleRowColumnMenu(e) {
     if (e.detail.insert && e.detail.row) {
-      this.insertRow(e.index);
+      this.insertRow(e.detail.index);
     } else if (e.detail.insert && !e.detail.row) {
       this.insertColumn(e.detail.index);
     } else if (!e.detail.insert && e.detail.row) {
