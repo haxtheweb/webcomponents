@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>editable-table Exporting Features</title>
+
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+
+    <script type="module">
+      import "@polymer/iron-demo-helpers/demo-pages-shared-styles.js";
+      import "@polymer/iron-demo-helpers/demo-snippet.js";
+      import '../editable-table.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles">
+      .vertical-section-container {
+        width: 95%;
+        max-width: unset;
+      }
+      #buttons { 
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      button { 
+        flex: 1 1 auto;
+        margin: 5px;
+        padding: 15px;
+        border-radius: 2px;
+        background-color: #eee;
+        text-transform: none; 
+      }
+      #data {
+        width: 100%;
+        border-radius: 2px;
+        height: 150px;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h1>editable-table Exporting Features</h1>
+      <p>You can export the data from <a href="display.html">editable-table-display</a> and <a
+        href="index.html">editable-table</a> in aa number of formats:</p>
+      <demo-snippet>
+        <template>
+          <editable-table-display 
+            id="export-example" 
+            caption="Is it a sandwich? Food classification chart."
+            column-header 
+            data-csv="./foods.csv"
+            row-header>
+          </editable-table-display>
+          <div class="buttons">
+            <button controls="data" onclick="document.getElementById('data').innerHTML = JSON.stringify(document.getElementById('export-example').getTableProperties())">Table Config as JSON</button>
+            <button controls="data" onclick="document.getElementById('data').innerHTML = document.getElementById('export-example').getTableHTML()">Table as Plain HTML</button>
+            <button controls="data" onclick="document.getElementById('data').innerHTML = document.getElementById('export-example').getTableCSV()">Table Data as CSV</button>
+          </div>
+          <p><label for="data">Table Data:</label></p>
+          <textarea id="data"></textarea>
+        </template>
+      </demo-snippet> 
+    </div>
+  </body>
+</html>

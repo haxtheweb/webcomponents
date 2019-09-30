@@ -69,7 +69,7 @@ class EditableTableEditorCell extends cellBehaviors(PolymerElement) {
         autofocus
         id="cell"
         label$="[[label]]"
-        on-bind-value-changed="_onValueChanged"
+        on-value-changed="_onValueChanged"
         value$="{{value}}"
       >
       </iron-autogrow-textarea>
@@ -136,8 +136,7 @@ class EditableTableEditorCell extends cellBehaviors(PolymerElement) {
        */
       value: {
         type: String,
-        value: false,
-        reflectToAttribute: true
+        value: false
       }
     };
   }
@@ -174,7 +173,7 @@ class EditableTableEditorCell extends cellBehaviors(PolymerElement) {
    */
   _onValueChanged(e) {
     this.dispatchEvent(
-      new CustomEvent("cell-value-changed", {
+      new CustomEvent("change", {
         bubbles: true,
         cancelable: true,
         composed: true,

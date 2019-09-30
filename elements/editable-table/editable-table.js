@@ -7,6 +7,7 @@ import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-toggle-button/paper-toggle-button.js";
 import "@polymer/paper-input/paper-input.js";
+import "@polymer/iron-ajax/iron-ajax.js";
 import { displayBehaviors } from "./lib/editable-table-behaviors.js";
 import "./lib/editable-table-editor-rowcol.js";
 import "./lib/editable-table-editor-toggle.js";
@@ -65,7 +66,10 @@ Custom property | Description | Default
 `--editable-table-style-footer` | Styles applied to table footer. | { font-weight: var(--editable-table-heavy-weight); color: var(--editable-table-heading-color); border-top: 3px solid var(--editable-table-color); }
  *
  * @demo demo/index.html
- * @demo demo/display.html Display Mode
+ * @demo demo/importing.html Importing Data
+ * @demo demo/exporting.html Exporting Data
+ * @demo demo/display.html Display Only
+ * @demo demo/advanced.html Advanced Features
  * 
  * @customElement
  * @polymer
@@ -161,7 +165,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
           transition: all 2s;
           color: var(--editable-table-caption-color);
         }
-        :host .field-group {
+        :host .field-group:not([hidden]) {
           display: flex;
           justify-content: space-between;
           align-items: center;
@@ -177,6 +181,15 @@ class EditableTable extends displayBehaviors(PolymerElement) {
         @media screen {
         }
       </style>
+      <iron-ajax
+        auto
+        hidden$="[[!dataCsv]]"
+        url="[[dataCsv]]"
+        handle-as="text"
+        debounce-duration="500"
+        last-response="{{csvData}}"
+        on-response="_loadExternalData"
+      ></iron-ajax>
       <editable-table-display
         bordered$="[[bordered]]"
         caption$="[[caption]]"
@@ -280,10 +293,11 @@ class EditableTable extends displayBehaviors(PolymerElement) {
                   <td class="td th-or-td" on-click="_onCellClick">
                     <editable-table-editor-cell
                       class="cell"
-                      column="[[index]]"
+                      column="[[td]]"
                       row="[[tr]]"
                       on-cell-move="_onCellMove"
-                      value$="[[cell]]"
+                      on-change="_onCellValueChange"
+                      value="{{cell}}"
                     >
                       <iron-icon
                         class="sortable-icon"
@@ -333,6 +347,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
             <div class="label">Display</div>
             <editable-table-editor-toggle
               id="bordered"
+              disabled$="[[hideBordered]]"
               hidden$="[[hideBordered]]"
               icon="image:grid-on"
               label="Borders."
@@ -342,6 +357,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
             </editable-table-editor-toggle>
             <editable-table-editor-toggle
               id="striped"
+              disabled$="[[hideStriped]]"
               hidden$="[[hideStriped]]"
               icon="editable-table:row-striped"
               label="Alternating rows."
@@ -351,6 +367,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
             </editable-table-editor-toggle>
             <editable-table-editor-toggle
               id="condensed"
+              disabled$="[[hideCondensed]]"
               hidden$="[[hideCondensed]]"
               icon="editable-table:row-condensed"
               label="Condensed rows."
@@ -360,6 +377,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
             </editable-table-editor-toggle>
             <editable-table-editor-toggle
               id="responsive"
+              disabled$="[[hideResponsive]]"
               hidden$="[[hideResponsive]]"
               icon="device:devices"
               label="Adjust width to screen size."
@@ -372,6 +390,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
             <div class="label">Sorting and Filtering</div>
             <editable-table-editor-toggle
               id="sort"
+              disabled$="[[hideSort]]"
               hidden$="[[hideSort]]"
               label="Column sorting."
               icon="editable-table:sortable"
@@ -381,6 +400,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
             </editable-table-editor-toggle>
             <editable-table-editor-toggle
               id="filter"
+              disabled$="[[hideFilter]]"
               hidden$="[[hideFilter]]"
               icon="editable-table:filter"
               label="Column filtering."
@@ -391,6 +411,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
           </div>
         </div>
       </div>
+      <div id="htmlImport" hidden><slot></slot></div>
     `;
   }
 
@@ -543,6 +564,13 @@ class EditableTable extends displayBehaviors(PolymerElement) {
   }
 
   /**
+   * Fires when data changed
+   * @event change
+   * @param {event} the event
+   */
+  _dataChanged(e) {}
+
+  /**
    * Gets the row data for a given row index
    * @param {number} index the index of the row
    * @param {array} data the table data
@@ -567,7 +595,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
    */
   _handleRowColumnMenu(e) {
     if (e.detail.insert && e.detail.row) {
-      this.insertRow(e.index);
+      this.insertRow(e.detail.index);
     } else if (e.detail.insert && !e.detail.row) {
       this.insertColumn(e.detail.index);
     } else if (!e.detail.insert && e.detail.row) {
@@ -639,7 +667,10 @@ class EditableTable extends displayBehaviors(PolymerElement) {
    * @param {event} e the event
    */
   _onCellValueChange(e) {
-    this.set("data." + e.detail.row + "." + e.detail.column, e.detail.value);
+    let temp = this.data.slice();
+    temp[e.detail.row][e.detail.column] = e.detail.value;
+    this.set("data", []);
+    this.set("data", temp);
   }
 
   /**

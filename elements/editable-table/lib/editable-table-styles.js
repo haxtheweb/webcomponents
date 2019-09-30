@@ -161,6 +161,9 @@ const css = html`
     :host editable-table-sort {
       width: 100%;
     }
+    ::slotted(table) {
+      display: none;
+    }
     @media screen {
       :host {
         overflow-x: auto;

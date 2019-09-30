@@ -39,18 +39,50 @@
               scroll 
               sort 
               striped>
+              <table>
+                <caption>
+                  Is it a sandwich? Food classification chart.
+                </caption>
+                <tbody>
+                  <tr>
+                    <td>Food</td>
+                    <td>Enclosure</td>
+                    <td>Contents</td>
+                    <td>Orientation</td>
+                  </tr>
+                  <tr>
+                    <td>Hamburger</td>
+                    <td>one bun, split into two</td>
+                    <td>meat, vegetables, cheese, and/or condiments</td>
+                    <td>horizontal</td>
+                  </tr>
+                  <tr>
+                    <td>Hoagie</td>
+                    <td>one bun</td>
+                    <td>meat, vegetables, cheese, and/or condiments</td>
+                    <td>vertical</td>
+                  </tr>
+                  <tr>
+                    <td>Hot Dog</td>
+                    <td>one bun</td>
+                    <td>meat, vegetables, cheese, and/or condiments</td>
+                    <td>vertical</td>
+                  </tr>
+                  <tr>
+                    <td>Hot Pocket</td>
+                    <td>two crusts sealed together</td>
+                    <td>meat, vegetables, cheese, and/or condiments</td>
+                    <td>horizontal</td>
+                  </tr>
+                  <tr>
+                    <td>Pie</td>
+                    <td>two crusts sealed together</td>
+                    <td>fruit or meat, vegetables, and/or cheese</td>
+                    <td>horizontal</td>
+                  </tr>
+                </tbody>
+              </table>
             </editable-table-display>
-            <script>
-              document.getElementById('food-table').data = [ 
-                [ "Food", "Enclosure", "Contents", "Orientation" ], 
-                [ "Hamburger", "one bun, split into two", "meat, vegetables, cheese, and/or condiments", "horizontal" ], 
-                [ "Hoagie", "one bun", "meat, vegetables, cheese, and/or condiments", "vertical" ], 
-                [ "Hot Dog", "one bun", "meat, vegetables, cheese, and/or condiments", "vertical" ], 
-                [ "Hot Pocket", "two crusts sealed together", "meat, vegetables, cheese, and/or condiments", "horizontal" ], 
-                [ "Pie", "two crusts sealed together", "fruit or meat, vegetables, and/or cheese", "horizontal" ], 
-                [ "Taco", "one shell", "meat, vegetables, cheese, and/or condiments", "vertical" ] 
-              ];
-            </script>
           </template>
         </demo-snippet>
         <p>The editable-table-display component also allows you to style numeric columns and negative numbers.</p>
@@ -67,20 +99,12 @@
               bordered 
               caption="The Money Game: Player earnings by round." 
               column-header 
-              condensed footer 
+              condensed  
+              data-csv="./game.csv"
+              footer
               row-header 
               striped>
             </editable-table-display>
-            <script>
-              document.getElementById("table-with-numbers").data = [ 
-                ["Round", "Player 1", "Player 2"], 
-                ["Round 1", "-100.00", "10.00"], 
-                ["Round 2", "1823.01", "1211.80"], 
-                ["Round 3", "1100.50", "4873.99"], 
-                ["Round 4", "3800.75", "921.00"], 
-                ["Total", "\$6624.26","\$7016.79"] 
-              ];
-            </script>
           </template>
         </demo-snippet>
     </div>

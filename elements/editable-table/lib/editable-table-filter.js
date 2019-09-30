@@ -67,7 +67,9 @@ class EditableTableFilter extends PolymerElement {
         <iron-icon id="filter" icon="editable-table:filter"></iron-icon>
         <iron-icon id="filter-off" icon="editable-table:filter-off"></iron-icon>
       </paper-button>
-      <paper-tooltip for="button">Toggle filter for "[[text]]"</paper-tooltip>
+      <paper-tooltip for="button"
+        >Toggle Column [[columnIndex]] filter for "[[text]]"</paper-tooltip
+      >
     `;
   }
 
