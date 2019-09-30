@@ -1,16 +1,163 @@
 {
-  "hidden": {
-    "name": "hidden",
-    "type": Boolean,
-    "value": "false",
-    "reflectToAttribute": true,
-    "observer": false
-  },
+  /**
+   * The editor buttons, as determined by `config`.
+   */
   "buttons": {
     "name": "buttons",
-    "type": Array,
-    "value": "[]",
-    "reflectToAttribute": false,
-    "observer": "_buttonsChanged"
+    "type": "Array",
+    "computed": "_getButtons(config)"
+  },
+  /**
+   * Is the toolbar collapsed?
+   */
+  "collapsed": {
+    "name": "collapsed",
+    "type": "Boolean",
+    "value": true
+  },
+
+  /**
+   * Custom configuration of toolbar groups and buttons.
+   * (See default value for example using default configuration.)
+   */
+  "config": {
+    "name": "config",
+    "type": "Object",
+    "value": [
+      {
+        "label": "History",
+        "type": "extensible-toolbar-group",
+        "buttons": [
+          {
+            "command": "undo",
+            "icon": "undo",
+            "label": "Undo",
+            "shortcutKeys": "ctrl+z",
+            "type": "extensible-toolbar-button"
+          },
+          {
+            "command": "redo",
+            "icon": "redo",
+            "label": "Redo",
+            "toggles": true,
+            "shortcutKeys": "ctrl+shift+z",
+            "type": "extensible-toolbar-button"
+          }
+        ]
+      }
+    ]
+  },
+
+  /**
+   * The `id` of the object the extensible toolbar controls.
+   */
+  "controls": {
+    "name": "controls",
+    "type": "String",
+    "value": null
+  },
+
+  /**
+   * The `extensible-toolbar` element that uis currently in `contenteditable` mode
+   */
+  "editor": {
+    "name": "editor",
+    "type": "Object",
+    "value": null
+  },
+  /**
+   * float the toolbar above the object it controls?
+   */
+  "floating": {
+    "name": "floating",
+    "type": "Boolean",
+    "value": false,
+    "reflectToAttribute": true
+  },
+  /**
+   * whether or not the toolbar is hidden
+   */
+  "hidden": {
+    "name": "hidden",
+    "type": "Boolean",
+    "value": false,
+    "reflectToAttribute": true
+  },
+  /**
+   * The icon for the more button.
+   */
+  "moreIcon": {
+    "name": "moreIcon",
+    "type": "String",
+    "value": "more-vert"
+  },
+  /**
+   * The label for the more button.
+   */
+  "moreLabel": {
+    "name": "moreLabel",
+    "type": "String",
+    "value": "More Buttons"
+  },
+  /**
+   * The label for the more button when toggled.
+   */
+  "moreLabelToggled": {
+    "name": "moreLabelToggled",
+    "type": "String",
+    "value": "Fewer Buttons"
+  },
+  /**
+   * The show text label for more button.
+   */
+  "moreShowTextLabel": {
+    "name": "moreShowTextLabel",
+    "type": "Boolean",
+    "value": false
+  },
+  /**
+   * position the toolbar below the object it contrls
+   */
+  "positionBelow": {
+    "name": "positionBelow",
+    "type": "Boolean",
+    "value": false,
+    "reflectToAttribute": true
+  },
+  /**
+   * The the size of the toolbar.
+   */
+  "responsiveSize": {
+    "name": "responsiveSize",
+    "type": "String",
+    "value": "xs",
+    "reflectToAttribute": true
+  },
+  /**
+   * Should the toolbar stick to the top so that it is always visible?
+   */
+  "sticky": {
+    "name": "sticky",
+    "type": "Boolean",
+    "value": false,
+    "reflectToAttribute": true
+  },
+  /**
+   * The maximum size where all of the buttons display
+   */
+  "__collapseMax": {
+    "name": "__collapseMax",
+    "type": "String",
+    "value": "xs"
+  },
+
+  /**
+   * Optional space-sperated list of keyboard shortcuts for the editor
+   * to fire this button, see iron-a11y-keys for more info.
+   */
+  "__shortcutKeys": {
+    "name": "__shortcutKeys",
+    "type": "Array",
+    "value": []
   }
 }
