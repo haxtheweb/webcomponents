@@ -66,8 +66,10 @@ Custom property | Description | Default
 `--editable-table-style-footer` | Styles applied to table footer. | { font-weight: var(--editable-table-heavy-weight); color: var(--editable-table-heading-color); border-top: 3px solid var(--editable-table-color); }
  *
  * @demo demo/index.html
- * @demo demo/advanced.html Advanced Features
+ * @demo demo/importing.html Importing Data
+ * @demo demo/exporting.html Exporting Data
  * @demo demo/display.html Display Only
+ * @demo demo/advanced.html Advanced Features
  * 
  * @customElement
  * @polymer
@@ -181,12 +183,12 @@ class EditableTable extends displayBehaviors(PolymerElement) {
       </style>
       <iron-ajax
         auto
-        hidden$="[[!dataSrc]]"
-        url="[[dataSrc]]"
+        hidden$="[[!dataCsv]]"
+        url="[[dataCsv]]"
         handle-as="text"
         debounce-duration="500"
         last-response="{{csvData}}"
-        on-response="loadExternalData"
+        on-response="_loadExternalData"
       ></iron-ajax>
       <editable-table-display
         bordered$="[[bordered]]"
@@ -409,6 +411,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
           </div>
         </div>
       </div>
+      <div id="htmlImport" hidden><slot></slot></div>
     `;
   }
 

@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>editable-table Importing Data</title>
+
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+
+    <script type="module">
+      import "@polymer/iron-demo-helpers/demo-pages-shared-styles.js";
+      import "@polymer/iron-demo-helpers/demo-snippet.js";
+      import '../editable-table.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles">
+      .vertical-section-container {
+        width: 95%;
+        max-width: unset;
+      }
+      #buttons { 
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      button { 
+        flex: 1 1 auto;
+        margin: 5px;
+        padding: 15px;
+        border-radius: 2px;
+        background-color: #eee;
+        text-transform: none; 
+      }
+      #data {
+        width: 100%;
+        border-radius: 2px;
+        height: 150px;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h1>editable-table Importing Data</h1>
+      <p>The following import options work with both <a href="display.html">editable-table-display</a> and <a
+          href="index.html">editable-table</a> modes.
+      </p>
+      <demo-snippet>
+        <h2>Using a CSV</h2>
+        <template>
+          <editable-table-display 
+            caption="Is it a sandwich? Food classification chart."
+            column-header 
+            data-csv="./foods.csv"
+            row-header>
+          </editable-table-display>
+        </template>
+      </demo-snippet>
+      <demo-snippet>
+        <h2>Using an Array</h2>
+        <template>
+          <editable-table-display 
+            id="data-example" 
+            caption="Is it a sandwich? Food classification chart."
+            column-header 
+            row-header>
+          </editable-table-display>
+          <script>
+            document.getElementById('data-example').data = [ 
+              [ "Food", "Enclosure", "Contents", "Orientation" ], 
+              [ "Hamburger", "one bun, split into two", "meat, vegetables, cheese, and/or condiments", "horizontal" ], 
+              [ "Hoagie", "one bun", "meat, vegetables, cheese, and/or condiments", "vertical" ], 
+              [ "Hot Dog", "one bun", "meat, vegetables, cheese, and/or condiments", "vertical" ], 
+              [ "Hot Pocket", "two crusts sealed together", "meat, vegetables, cheese, and/or condiments", "horizontal" ], 
+              [ "Pie", "two crusts sealed together", "fruit or meat, vegetables, and/or cheese", "horizontal" ], 
+              [ "Taco", "one shell", "meat, vegetables, cheese, and/or condiments", "vertical" ] 
+            ];
+          </script>
+        </template>
+      </demo-snippet> 
+      <demo-snippet>
+        <h2>Using HTML (progressive enhancement method)</h2>
+        <template>
+          <editable-table-display>
+            <table>
+              <caption>
+                  The Money Game: Player earnings by round..
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="row">Round</th>
+                  <th scope="col"> Player 1</th>
+                  <th scope="col"> Player 2</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Round 1</th>
+                  <td> -100.00</td>
+                  <td> 10.00</td>
+                </tr>
+                <tr>
+                  <th scope="row">Round 2</th>
+                  <td> 1823.01</td>
+                  <td> 1211.80</td>
+                </tr>
+                <tr>
+                  <th scope="row">Round 3</th>
+                  <td> 1100.50</td>
+                  <td> 4873.99</td>
+                </tr>
+                <tr>
+                  <th scope="row">Round 4</th>
+                  <td> 3800.75</td>
+                  <td> 921.00</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th scope="row">Total</th>
+                  <td> $6624.26</td>
+                  <td>$7016.79</td>
+                </tr>
+              </tfoot>
+            </table>
+          </editable-table-display>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

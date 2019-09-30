@@ -96,12 +96,12 @@ class EditableTableDisplay extends displayBehaviors(
       </style>
       <iron-ajax
         auto
-        url="[[dataSrc]]"
-        hidden$="[[!dataSrc]]"
+        url="[[dataCsv]]"
+        hidden$="[[!dataCsv]]"
         handle-as="text"
         debounce-duration="500"
         last-response="{{csvData}}"
-        on-response="loadExternalData"
+        on-response="_loadExternalData"
       ></iron-ajax>
       <table id="table" class="table">
         <caption>
@@ -248,6 +248,7 @@ class EditableTableDisplay extends displayBehaviors(
           </tfoot>
         </template>
       </table>
+      <div id="htmlImport" hidden><slot></slot></div>
     `;
   }
   static get tag() {

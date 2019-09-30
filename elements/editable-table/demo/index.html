@@ -45,8 +45,8 @@
     <div class="vertical-section-container centered">
       <h1>editable-table demo</h1>
       <p>This is a component that allows you to switch between <a href="display.html">editable-table-display</a> and <a
-          href="editor.html">editable-table-editor</a> modes. (See <a href="index.html">documentation</a> for more
-        information.)</p>
+          href="index.html">editable-table</a> modes. 
+      </p>
       <demo-snippet>
         <template>
             <div claass="buttons">
@@ -57,15 +57,62 @@
             <editable-table 
               id="food-table" 
               bordered 
-              caption="Is it a sandwich? Food classification chart."
-              column-header 
               condensed 
-              data-src="foods.csv"
               filter 
-              row-header 
               responsive
               sort 
               striped>
+                <table>
+                  <caption>
+                    Is it a sandwich? Food classification chart.
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th scope="row">Food</th>
+                      <th scope="col">Enclosure</th>
+                      <th scope="col">Contents</th>
+                      <th scope="col">Orientation</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">Hamburger</th>
+                      <td>one bun, split into two</td>
+                      <td>meat, vegetables, cheese, and/or condiments</td>
+                      <td>horizontal</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Hoagie</th>
+                      <td>one bun</td>
+                      <td>meat, vegetables, cheese, and/or condiments</td>
+                      <td>vertical</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Hot Dog</th>
+                      <td>one bun</td>
+                      <td>meat, vegetables, cheese, and/or condiments</td>
+                      <td>vertical</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Hot Pocket</th>
+                      <td>two crusts sealed together</td>
+                      <td>meat, vegetables, cheese, and/or condiments</td>
+                      <td>horizontal</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Pie</th>
+                      <td>two crusts sealed together</td>
+                      <td>fruit or meat, vegetables, and/or cheese</td>
+                      <td>horizontal</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Taco</th>
+                      <td>one shell</td>
+                      <td>meat, vegetables, cheese, and/or condiments</td>
+                      <td>vertical</td>
+                    </tr>
+                  </tbody>
+                </table>
             </editable-table>
         </template>
       </demo-snippet> 

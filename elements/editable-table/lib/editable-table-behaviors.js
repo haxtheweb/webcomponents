@@ -71,7 +71,7 @@ export const displayBehaviors = function(SuperClass) {
         /**
          * Location of the CSV file.
          */
-        dataSrc: {
+        dataCsv: {
           type: String
         },
         /**
@@ -161,6 +161,18 @@ export const displayBehaviors = function(SuperClass) {
     constructor() {
       super();
       import("@polymer/iron-ajax/iron-ajax.js");
+    }
+
+    ready() {
+      super.ready();
+      /*
+        only import slotted HTML if there is no taable data
+      */
+      if (
+        (this.data.length < 1 || this.data[0].length < 1) &&
+        this.querySelector("table") !== null
+      )
+        this.importHTML(this.querySelector("table"));
     }
 
     /**
@@ -276,9 +288,24 @@ export const displayBehaviors = function(SuperClass) {
     /**
      * Convert from csv text to an array in the table function
      */
-    loadExternalData(e) {
+    _loadExternalData(e) {
       let data = this.CSVtoArray(this.csvData);
       if (data.length > 0 && data[0].length > 0) this.set("data", data);
+    }
+
+    /**
+     * Gets the rows in `<tbody>`
+     * @param {array} data the table data as an array
+     * @param {boolean} columnHeader does the table have a column header
+     * @param {boolean} footer does the table have a footer
+     * @returns {array} the `<tbody>` data
+     */
+    _getTbody(data, columnHeader, footer) {
+      if (data !== undefined && data !== null && data.length > 0) {
+        let ch = columnHeader ? 1 : 0,
+          ft = footer ? data.length - 1 : data.length;
+        return data.slice(ch, ft);
+      }
     }
 
     /**
@@ -293,21 +320,6 @@ export const displayBehaviors = function(SuperClass) {
     }
 
     /**
-     * Gets the rows in `<tbody>`
-     * @param {array} data the table data as an array
-     * @param {boolean} columnHeader does the table have a column header
-     * @param {boolean} footer does the table have a footer
-     * @returns {array} the `<tbody>` data
-     */
-    _getTbody(data, columnHeader, footer) {
-      if (data !== undefined && data !== null && data.length > 0) {
-        let ch = columnHeader ? 1 : 0,
-          ft = footer ? data.length : data.length - 1;
-        return data.slice(ch, ft);
-      }
-    }
-
-    /**
      * Gets the columns in `<thead>`
      * @param {array} data the table data as an array
      * @param {boolean} columnHeader does the table have a column header
@@ -316,7 +328,36 @@ export const displayBehaviors = function(SuperClass) {
     _getThead(data, columnHeader) {
       return columnHeader ? data.slice(0, 1) : [];
     }
-
+    /**
+     * imports table HTML as data
+     * @param {HTMLElement} table the table element
+     */
+    importHTML(table) {
+      let data = [].slice.call(table.querySelectorAll("tr")).map(row => {
+        return [].slice.call(row.querySelectorAll("th,td")).map(cell => {
+          return typeof cell.innerHTML === "string"
+            ? cell.innerHTML.trim()
+            : cell.innerHTML;
+        });
+      });
+      if (data.length > 0 && data[0].length > 0) this.set("data", data);
+      this.columnHeader =
+        this.columnHeader || table.querySelectorAll("thead").length > 0;
+      this.rowHeader =
+        this.rowHeader || table.querySelectorAll("tbody th").length > 0;
+      this.footer = this.footer || table.querySelectorAll("tfoot").length > 0;
+      this.caption =
+        this.caption !== null
+          ? this.caption
+          : table.querySelectorAll("caption").innerHTML
+          ? table.querySelectorAll("caption").innerHTML
+          : null;
+    }
+    /**
+     * replaces a blank cell with "-" for accessibility
+     * @param {string} cell the cell contents
+     * @returns {string} the cell contents or "-" if empty
+     */
     _replaceBlankCell(cell) {
       return String(cell).trim() === "" ? "-" : cell;
     }
