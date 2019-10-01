@@ -666,7 +666,6 @@ class SimplePicker extends PolymerElement {
    */
   _toggleListbox(expanded) {
     let active = this.shadowRoot.querySelector("#" + this.__activeDesc);
-    console.log("_toggleListbox", active);
     this.expanded = expanded;
     if (expanded) {
       if (active !== null) active.focus();

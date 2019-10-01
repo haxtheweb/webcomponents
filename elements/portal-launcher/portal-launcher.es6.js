@@ -39,7 +39,17 @@ class PortalLauncher extends HTMLElement {
    * Basic feature detecting event handler
    */
   click(e) {
-    if (e.target.getAttribute("href") != null) {
+    let target = e.target;
+    // support walking the path in order to find the link clicked
+    if (target.tagName !== "A") {
+      e.path.forEach(item => {
+        if (item.tagName === "A") {
+          target = item;
+        }
+      });
+    }
+
+    if (target && target.getAttribute("href") != null) {
       // progressive enhancement, if this class exists, can the link click
       if ("HTMLPortalElement" in window) {
         e.preventDefault();
@@ -83,7 +93,7 @@ class PortalLauncher extends HTMLElement {
         `;
         const portal = document.createElement("portal");
         // Let's navigate into the WICG Portals spec page
-        portal.src = e.target.getAttribute("href");
+        portal.src = target.getAttribute("href");
         // Add a class that defines the transition. Consider using
         // `prefers-reduced-motion` media query to control the animation.
         // https://developers.google.com/web/updates/2019/03/prefers-reduced-motion

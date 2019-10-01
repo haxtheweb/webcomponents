@@ -36,9 +36,7 @@ class EditableOutline extends PolymerElement {
 }
 
 .button-wrapper {
-  height: 50px;
-  line-height: 50px;
-  margin-top: 10px;
+  line-height: 36px;
   position: -webkit-sticky;
   position: sticky;
   top: 0px;
