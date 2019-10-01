@@ -165,10 +165,14 @@ const css = html`
       display: none;
     }
     @media screen {
-      :host {
+      :host,
+      :host #table-inner {
         overflow-x: auto;
         width: 100%;
         max-width: 100%;
+      }
+      :host([responsive]) {
+        overflow-x: visible;
       }
     }
   </style>

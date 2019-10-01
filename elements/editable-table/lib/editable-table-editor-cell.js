@@ -241,9 +241,11 @@ class EditableTableEditorCell extends cellBehaviors(PolymerElement) {
   setFocus(start, end) {
     this.$.cell.shadowRoot.querySelector("textarea").focus();
     if (start !== undefined && end !== undefined) {
-      this.setCaretPosition(start, end);
-    } else if (start !== undefined) {
+      this.setCaretPosition(start, this.getCaretPosition() - end);
+    } else if (start !== undefined && start > -1) {
       this.setCaretPosition(start, start);
+    } else if (start == -1 && end !== undefined) {
+      this.setCaretPosition(start, this.getCaretPosition() - end);
     } else {
       this.setCaretPosition(0, 0);
     }

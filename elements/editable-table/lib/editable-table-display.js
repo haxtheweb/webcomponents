@@ -29,10 +29,6 @@ class EditableTableDisplay extends displayBehaviors(
   static get template() {
     return html`
       <style include="editable-table-styles">
-        :host {
-          width: 100%;
-          max-width: 100%;
-        }
         :host([bordered]) .th,
         :host([bordered]) .td {
           border: 1px solid var(--editable-table-border-color);
@@ -77,9 +73,6 @@ class EditableTableDisplay extends displayBehaviors(
           }
         }
         @media screen {
-          :host {
-            overflow-x: scroll;
-          }
           :host([responsive][responsive-size="xs"]) caption > div {
             display: flex;
             align-items: flex-end;
@@ -113,7 +106,7 @@ class EditableTableDisplay extends displayBehaviors(
               aria-labelledby$="[[tables.0.label]]"
               value$="{{selected}}"
               on-change="_selectedChanged"
-              options="[[_getTheadOptions(thead)]]"
+              options="[[options]]"
             >
             </simple-picker>
           </div>
@@ -278,6 +271,13 @@ class EditableTableDisplay extends displayBehaviors(
         value: null
       },
       /**
+       * options for the column selector
+       */
+      options: {
+        type: Array,
+        computed: "_getTheadOptions(thead)"
+      },
+      /**
        * Selected column to display when in responsive mode
        */
       selected: {
@@ -327,7 +327,7 @@ class EditableTableDisplay extends displayBehaviors(
     let temp = [];
     if (thead !== undefined && thead !== null && thead.length > 0) {
       for (let i = 1; i < thead[0].length; i++) {
-        temp.push([{ alt: thead[i], value: i }]);
+        temp.push([{ alt: thead[0][i], value: i }]);
       }
     }
     return temp;
@@ -338,7 +338,8 @@ class EditableTableDisplay extends displayBehaviors(
    * @param {number} selected the selected column number
    * @returns {boolean} whether the column is hidden (i.e. not the selected column)
    */
-  _isColHidden(index, selected) {
+  _isColHidden(index, selected = 1) {
+    selected = selected || 1;
     return parseInt(index) !== 0 && parseInt(index) !== parseInt(selected);
   }
 
