@@ -10,6 +10,10 @@ import "./lib/extensible-toolbar-group.js";
 import "./lib/extensible-toolbar-button.js";
 import "./lib/extensible-toolbar-more-button.js";
 import "./lib/extensible-toolbar-button-styles.js";
+import "@polymer/iron-icons/iron-icons.js";
+import "@polymer/iron-icons/editor-icons.js";
+import "@polymer/iron-icons/image-icons.js";
+import "@lrnwebcomponents/md-extra-icons/md-extra-icons.js";
 
 /**
  * `extensible-toolbar`
