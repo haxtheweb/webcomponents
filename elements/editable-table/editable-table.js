@@ -83,6 +83,9 @@ class EditableTable extends displayBehaviors(PolymerElement) {
         :host {
           display: block;
           width: 100%;
+          --paper-listbox-background-color: var(
+            --editable-table-rowcol-bg-color
+          );
         }
         :host caption {
           width: 100%;
@@ -108,7 +111,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
           display: inline-block;
           opacity: 0.25;
         }
-        :host #table {
+        :host table {
           min-width: calc(100% - 2.3px);
           width: unset;
         }
@@ -120,9 +123,13 @@ class EditableTable extends displayBehaviors(PolymerElement) {
         :host th {
           padding: 0;
           vertical-align: center;
-          color: black;
-          background-color: #f0f0f0;
+          color: var(--editable-table-rowcol-color);
+          background-color: var(--editable-table-rowcol-bg-color);
           outline: var(--editable-table-border);
+        }
+        :host th:hover,
+        :host th:focus-within {
+          background-color: var(--editable-table-rowcol-hover-bg-color);
         }
         :host .th:first-child {
           width: 96px;
@@ -206,11 +213,11 @@ class EditableTable extends displayBehaviors(PolymerElement) {
         striped$="[[striped]]"
       >
       </editable-table-display>
-      <div id="table-outer" hidden$="[[!editMode]]">
-        <div id="table-inner">
+      <div id="outer" hidden$="[[!editMode]]">
+        <div id="inner">
           <p class="sr-only">Table Editor</p>
           <table
-            id="table"
+            id="table-editmode"
             bordered$="[[bordered]]"
             condensed$="[[condensed]]"
             striped$="[[striped]]"
@@ -297,7 +304,6 @@ class EditableTable extends displayBehaviors(PolymerElement) {
                         class="cell"
                         column="[[td]]"
                         row="[[tr]]"
-                        on-cell-move="_onCellMove"
                         on-change="_onCellValueChange"
                         value="{{cell}}"
                       >
@@ -552,6 +558,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
     if (edit) {
       this.shadowRoot.querySelector("editable-table-display").toggleFilter();
       this.shadowRoot.querySelector("editable-table-display").sortData(false);
+      this.$.inner.focus();
     }
     this.editMode = edit;
   }
@@ -619,45 +626,6 @@ class EditableTable extends displayBehaviors(PolymerElement) {
   _onCellClick(e) {
     if (e.model && e.model.root && e.model.root.nodeList[0]) {
       e.model.root.nodeList[0].focus();
-    }
-  }
-
-  /**
-   * Moves the focus/cursor to the correct cell when navigation keys are pressed
-   * @param {event} e the event
-   */
-  _onCellMove(e) {
-    let dir = e.detail.direction,
-      cell = e.detail.cell;
-    let row = cell.parentNode,
-      body = this.$.tbody;
-    let x = Array.prototype.indexOf.call(row.children, cell);
-    let y = Array.prototype.indexOf.call(body.children, row);
-
-    if (dir === "down") {
-      if (y + 1 < body.children.length - 1) {
-        body.children[y + 1].children[x].children[0].setFocus(-1, 0);
-      } else {
-        this.insertRow(y);
-      }
-    } else if (dir === "up") {
-      if (y > 0) {
-        body.children[y - 1].children[x].children[0].setFocus(0);
-      }
-    } else if (dir === "right") {
-      if (x + 1 < row.children.length - 1) {
-        row.children[x + 1].children[0].setFocus(-1, 0);
-      } else if (y + 1 < body.children.length - 1) {
-        body.children[y + 1].children[1].children[0].setFocus(-1, 0);
-      }
-    } else if (dir === "left") {
-      if (x > 1) {
-        row.children[x - 1].children[0].setFocus(0);
-      } else if (y > 0) {
-        body.children[y - 2].children[
-          body.children[y - 2].children.length - 2
-        ].children[0].setFocus(0);
-      }
     }
   }
 

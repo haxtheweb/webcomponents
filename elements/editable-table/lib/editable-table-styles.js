@@ -74,6 +74,11 @@ const css = html`
         --editable-table-heading-bg-color
       );
       --secondary-text-color: var(--editable-table-border-color);
+      --editable-table-rowcol-color: var(--editable-table-heading-color);
+      --editable-table-rowcol-bg-color: var(--editable-table-stripe-bg-color);
+      --editable-table-rowcol-hover-bg-color: var(
+        --editable-table-heading-bg-color
+      );
       --simple-picker-option-size: 24px;
       --simple-picker-option: {
         font-family: var(--editable-table-secondary-font-family);
@@ -113,7 +118,7 @@ const css = html`
       width: 0;
       overflow: hidden;
     }
-    :host #table {
+    :host table {
       width: calc(
         100% - var(--editable-table-border-width) -
           var(--editable-table-border-width)
@@ -122,7 +127,7 @@ const css = html`
       border-collapse: collapse;
       border: var(--editable-table-border);
     }
-    :host #table,
+    :host table,
     :host .th-or-td {
       font-weight: var(--editable-table-light-weight);
       color: var(--editable-table-color);
@@ -149,13 +154,13 @@ const css = html`
       padding: var(--editable-table-row-padding-condensed);
     }
     :host caption,
-    :host #table .th-or-td {
+    :host table .th-or-td {
       text-align: left;
     }
-    :host #table .th-or-td[numeric] {
+    :host table .th-or-td[numeric] {
       text-align: var(--editable-table-numeric-text-align, unset);
     }
-    :host #table .td[negative] .cell {
+    :host table .td[negative] .cell {
       color: var(--editable-table-negative-color, --editable-table-color);
     }
     :host editable-table-sort {
@@ -165,8 +170,7 @@ const css = html`
       display: none;
     }
     @media screen {
-      :host,
-      :host #table-inner {
+      :host {
         overflow-x: auto;
         width: 100%;
         max-width: 100%;
