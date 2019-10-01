@@ -393,8 +393,8 @@ class VideoPlayer extends MediaBehaviorsVideo(
        * Cross origin flag for transcripts to load
        */
       crossorigin: {
-        type: Boolean,
-        value: false,
+        type: String,
+        value: null,
         reflectToAttribute: true
       },
       /**
