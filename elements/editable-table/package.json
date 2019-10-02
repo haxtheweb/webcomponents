@@ -16,7 +16,7 @@
       "hax": "src/editable-table-hax.json"
     }
   },
-  "version": "2.1.8",
+  "version": "2.1.9",
   "description": "A table that's editable",
   "repository": {
     "type": "git",

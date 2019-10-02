@@ -315,9 +315,62 @@ class EditableTable extends displayBehaviors(PolymerElement) {
                   </template>
                 </tr>
               </template>
-            </tbody>
-          </table>
-        </div>
+            </tr>
+          </thead>
+          <tbody id="tbody">
+            <template
+              id="rows"
+              is="dom-repeat"
+              items="[[data]]"
+              as="row"
+              index-as="tr"
+              mutable-data
+              restamp
+            >
+              <tr class="tr tbody-tr">
+                <th class="th th-or-td" scope="row">
+                  <editable-table-editor-rowcol
+                    index$="[[tr]]"
+                    condensed$="[[condensed]]"
+                    on-rowcol-action="_handleRowColumnMenu"
+                    row
+                  >
+                  </editable-table-editor-rowcol>
+                </th>
+                <template
+                  id="columns"
+                  index-as="td"
+                  is="dom-repeat"
+                  items="[[row]]"
+                  as="cell"
+                  mutable-data
+                  restamp
+                >
+                  <td class="td th-or-td" on-click="_onCellClick">
+                    <editable-table-editor-cell
+                      class="cell"
+                      column="[[td]]"
+                      row="[[tr]]"
+                      on-cell-move="_onCellMove"
+                      on-change="_onCellValueChange"
+                      value="{{cell}}"
+                    >
+                      <iron-icon
+                        class="sortable-icon"
+                        icon="editable-table:sortable"
+                        aria-hidden="true"
+                      ></iron-icon>
+                      <iron-icon
+                        class="filter-icon"
+                        icon="editable-table:filter-off"
+                      ></iron-icon>
+                    </editable-table-editor-cell>
+                  </td>
+                </template>
+              </tr>
+            </template>
+          </tbody>
+        </table>
         <div class="field-group">
           <div class="field-group">
             <div class="label">Headers and footers</div>

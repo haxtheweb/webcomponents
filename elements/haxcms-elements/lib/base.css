@@ -10,6 +10,7 @@ body, html, :root {
   --simple-modal-header-background: var(--haxcms-system-bg);
   --simple-modal-button-color: #FFFFFF;
   --simple-modal-button-background: #37474f;
+  --github-corner-background: var(--haxcms-color, --haxcms-system-bg);
       /** HAX specific settings **/
   --hax-color-bg: #37474f;
   --hax-color-border-outline: var(--haxcms-system-bg, --simple-colors-default-theme-light-blue-7);

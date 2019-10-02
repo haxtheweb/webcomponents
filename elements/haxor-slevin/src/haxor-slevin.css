@@ -145,6 +145,15 @@ site-active-title {
   list-style: none;
 }
 
+site-share-widget {
+  --site-share-widget-bg: var(--haxcms-color, rgba(255, 0, 116, 1));
+}
+site-share-widget:hover,
+site-share-widget:focus,
+site-share-widget:active {
+  --site-share-widget-bg: var(--haxcms-system-action-color, blue);
+}
+
 social-share-link {
   --social-share-button-bg: var(--haxcms-color, rgba(255, 0, 116, 1));
   --social-share-button: {
@@ -159,8 +168,8 @@ social-share-link {
   position: fixed;
   bottom: 0;
   left: 0;
-  box-shadow: 0 -3px 10px 0 rgba(0,0,0,.0785);
   right: 0;
+  box-shadow: 0 -3px 10px 0 rgba(0,0,0,.0785);
   padding: 10px 0;
   height: 50px;
   z-index: 100;
@@ -242,6 +251,25 @@ site-rss-button {
     padding: 0;
   }
   .hide-small {
-    display: none;
+    display: none !important;
+  }
+  .annoy-user .rss {
+    margin-left: unset;
+  }
+  .annoy-user {
+    position: relative;
+    bottom: unset;
+    left: unset;
+    right: unset;
+    padding: 0;
+    height: unset;
+  }
+  .annoy-user span {
+    height: unset;
+    line-height: unset;
+  }
+  .annoy-inner {
+    max-width:unset;
+    margin: 0;
   }
 }

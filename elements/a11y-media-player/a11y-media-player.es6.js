@@ -633,6 +633,13 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
     "value": false
   },
   /**
+   * crossorigin attribute for <video> and <audio> tags
+   */
+  "crossorigin": {
+    "type": String,
+    "value": null
+  },
+  /**
    * disable fullscreen option
    */
   "disableFullscreen": {

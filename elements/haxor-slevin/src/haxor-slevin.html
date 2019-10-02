@@ -107,16 +107,17 @@
           </li>
         </ul>
       </div>
-      <div class$="annoy-user hide-small [[stateClass]]">
+      <div class$="annoy-user [[stateClass]]">
         <div class="annoy-inner">
-          <iron-icon icon="[[icon]]"></iron-icon>
-          <span>
+          <iron-icon icon="[[icon]]" class="hide-small"></iron-icon>
+          <span class="hide-small">
             Never miss a story from <strong>[[title]]</strong> use RSS today!
           </span>
           <span class="rss">
             <site-rss-button type="atom"></site-rss-button>
             <site-rss-button type="rss"></site-rss-button>
           </span>
+            <site-share-widget alt="Share on social media"></site-share-widget>
         </div>
       </div>
     </div>

@@ -16,7 +16,7 @@
       "hax": "src/lrndesign-sidenote-hax.json"
     }
   },
-  "version": "2.1.5",
+  "version": "2.1.9",
   "description": "Automated conversion of lrndesign-sidenote/",
   "repository": {
     "type": "git",

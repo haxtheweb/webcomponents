@@ -11,7 +11,7 @@ import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js"
 import "@polymer/iron-pages/iron-pages.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
-
+import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-share-widget.js";
 /**
  * `haxor-slevin`
  * `Tech blogger theme`
@@ -173,6 +173,15 @@ site-active-title {
   list-style: none;
 }
 
+site-share-widget {
+  --site-share-widget-bg: var(--haxcms-color, rgba(255, 0, 116, 1));
+}
+site-share-widget:hover,
+site-share-widget:focus,
+site-share-widget:active {
+  --site-share-widget-bg: var(--haxcms-system-action-color, blue);
+}
+
 social-share-link {
   --social-share-button-bg: var(--haxcms-color, rgba(255, 0, 116, 1));
   --social-share-button: {
@@ -187,8 +196,8 @@ social-share-link {
   position: fixed;
   bottom: 0;
   left: 0;
-  box-shadow: 0 -3px 10px 0 rgba(0,0,0,.0785);
   right: 0;
+  box-shadow: 0 -3px 10px 0 rgba(0,0,0,.0785);
   padding: 10px 0;
   height: 50px;
   z-index: 100;
@@ -270,7 +279,26 @@ site-rss-button {
     padding: 0;
   }
   .hide-small {
-    display: none;
+    display: none !important;
+  }
+  .annoy-user .rss {
+    margin-left: unset;
+  }
+  .annoy-user {
+    position: relative;
+    bottom: unset;
+    left: unset;
+    right: unset;
+    padding: 0;
+    height: unset;
+  }
+  .annoy-user span {
+    height: unset;
+    line-height: unset;
+  }
+  .annoy-inner {
+    max-width:unset;
+    margin: 0;
   }
 }</style>
 <style include="simple-colors-shared-styles">
@@ -382,16 +410,17 @@ site-rss-button {
           </li>
         </ul>
       </div>
-      <div class$="annoy-user hide-small [[stateClass]]">
+      <div class$="annoy-user [[stateClass]]">
         <div class="annoy-inner">
-          <iron-icon icon="[[icon]]"></iron-icon>
-          <span>
+          <iron-icon icon="[[icon]]" class="hide-small"></iron-icon>
+          <span class="hide-small">
             Never miss a story from <strong>[[title]]</strong> use RSS today!
           </span>
           <span class="rss">
             <site-rss-button type="atom"></site-rss-button>
             <site-rss-button type="rss"></site-rss-button>
           </span>
+            <site-share-widget alt="Share on social media"></site-share-widget>
         </div>
       </div>
     </div>
