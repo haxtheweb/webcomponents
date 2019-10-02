@@ -269,11 +269,13 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
             "div",
             "span",
             "table",
+            "caption",
             "sup",
             "sub",
             "u",
             "strike",
             "tr",
+            "th",
             "td",
             "ol",
             "ul",
@@ -385,10 +387,14 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
    * operations are valid.
    */
   isTextElement(node) {
-    if (
-      node != null &&
-      this.validTagList.includes(node.tagName.toLowerCase())
-    ) {
+    let tag;
+    // resolve HAXelements vs nodes
+    if (node != null && node.tagName) {
+      tag = node.tagName.toLowerCase();
+    } else if (node != null && node.tag) {
+      tag = node.tag.toLowerCase();
+    }
+    if (tag && this.validTagList.includes(tag)) {
       if (
         [
           "p",
@@ -415,7 +421,7 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
           "blockquote",
           "code",
           "figure"
-        ].includes(node.tagName.toLowerCase())
+        ].includes(tag)
       ) {
         return true;
       }
@@ -428,8 +434,14 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
    * nested lists make this really complicated
    */
   isGridPlateElement(node) {
-    let tag = node.tagName.toLowerCase();
-    if (this.validTagList.includes(tag)) {
+    let tag;
+    // resolve HAXelements vs nodes
+    if (node && node.tagName) {
+      tag = node.tagName.toLowerCase();
+    } else if (node && node.tag) {
+      tag = node.tag.toLowerCase();
+    }
+    if (tag && this.validTagList.includes(tag)) {
       if (
         [
           "p",
@@ -978,8 +990,22 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
       } else if (window.clipboardData) {
         pasteContent = window.clipboardData.getData("Text");
       }
-      pasteContent = pasteContent.replace(/<span> <\/span>/g, " ");
-      pasteContent = pasteContent.replace(/<span><\/span>/g, "");
+      // detect word garbage
+      var mswTest = pasteContent.replace(/(class=(")?Mso[a-zA-Z]+(")?)/g, "");
+      let wordPaste = false;
+      // the string to import as sanitized by hax
+      let newContent = "";
+      mswTest = mswTest.replace("mso-style-", "");
+      if (pasteContent != mswTest) {
+        wordPaste = true;
+      }
+      // clear empty span tags that can pop up
+      pasteContent = pasteContent.replace(/<span>\s*?<\/span>/g, " ");
+      // clean up div tags that can come in from contenteditable pastes
+      // p tags make more sense in the content area
+      pasteContent = pasteContent.replace(/<div/g, "<p");
+      pasteContent = pasteContent.replace(/<\/div>/g, "</p>");
+      // NOW we can safely handle paste from word cases
       pasteContent = stripMSWord(pasteContent);
       // edges that some things preserve empty white space needlessly
       let haxElements = window.HaxStore.htmlToHaxElements(pasteContent);
@@ -987,29 +1013,41 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
       // as we allow normal contenteditable to handle the paste
       // we only worry about HTML structures
       if (haxElements.length === 0) {
+        // wrap in a paragraph tag if there is any this ensures it correctly imports
+        // as it might not have evaluated above as having elements bc of the scrubber
+        if (wordPaste) {
+          newContent = pasteContent;
+        } else {
+          return false;
+        }
+      }
+      // account for incredibly basic pastes of single groups of characters
+      else if (haxElements.length === 1 && haxElements[0].tag === "p") {
         return false;
+      }
+      // account for broken pastes in resolution, just let browser handle it
+      else if (!this.isGridPlateElement(haxElements[0])) {
+        return false;
+      } else {
+        for (var i in haxElements) {
+          // special traps for word / other styles bleeding through
+          delete haxElements[i].properties.style;
+          delete haxElements[i].properties.start;
+          delete haxElements[i].properties.align;
+          // this is not the right function.
+          let node = window.HaxStore.haxElementToNode(
+            haxElements[i].tag,
+            haxElements[i].content.replace(/<span>&nbsp;<\/span>/g, " ").trim(),
+            haxElements[i].properties
+          );
+          newContent += window.HaxStore.nodeToContent(node);
+        }
       }
       // if we got here then we have HTML structures to pull together
       // this ensures that the below works out
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
-      // stupid but we need to reverse these
-      haxElements.reverse();
-      let newContent = "";
-      for (var i in haxElements) {
-        // special traps for word / other styles bleeding through
-        delete haxElements[i].properties.style;
-        delete haxElements[i].properties.start;
-        delete haxElements[i].properties.align;
-        // this is not the right function.
-        let node = window.HaxStore.haxElementToNode(
-          haxElements[i].tag,
-          haxElements[i].content.replace(/<span>&nbsp;<\/span>/g, " ").trim(),
-          haxElements[i].properties
-        );
-        newContent += window.HaxStore.nodeToContent(node);
-      }
       try {
         // get the range that's active and selection
         let range = window.HaxStore.getRange();
@@ -1019,8 +1057,8 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
         newNodes.innerHTML = newContent;
         if (range && sel && typeof range.deleteContents === "function") {
           range.deleteContents();
-          while (newNodes.firstChild) {
-            range.insertNode(newNodes.firstChild);
+          while (newNodes.lastChild) {
+            range.insertNode(newNodes.lastChild);
           }
         }
       } catch (e) {
@@ -2401,6 +2439,47 @@ window.HaxStore.nodeToContent = node => {
   ) {
     console.warn(content);
   }
+  // spacing niceness for output readability
+  content = content.replace(/&nbsp;/gm, " ");
+  // target and remove hax specific things from output if they slipped through
+  content = content.replace(/ data-editable="(\s|.)*?"/gim, "");
+  content = content.replace(/ data-hax-ray="(\s|.)*?"/gim, "");
+  content = content.replace(/ class=""/gim, "");
+  content = content.replace(/ class="hax-active"/gim, "");
+  content = content.replace(/ contenteditable="(\s|.)*?"/gim, "");
+  // wipe pure style spans which can pop up on copy paste if we didn't catch it
+  // also ensure that we then remove purely visual chars laying around
+  // this also helps clean up when we did a normal contenteditable paste
+  // as opposed to our multi-element sanitizing option that we support
+  content = content.replace(/<span style="(.*?)">/gim, "<span>");
+  content = content.replace(/<span>\s*?<\/span>/g, " ");
+  content = content.replace(/<span><br\/><\/span>/gm, "");
+  // account for things taht on normal paste would pick up too many css vars
+  content = content.replace(/<strong style="(.*?)">/gim, "<strong>");
+  content = content.replace(/<b style="(.*?)">/gim, "<b>");
+  content = content.replace(/<strike style="(.*?)">/gim, "<strike>");
+  content = content.replace(/<em style="(.*?)">/gim, "<em>");
+  content = content.replace(/<i style="(.*?)">/gim, "<i>");
+  // empty with lots of space
+  content = content.replace(/<p>(\s*)<\/p>/gm, "<p></p>");
+  // empty p / more or less empty
+  content = content.replace(/<p>&nbsp;<\/p>/gm, "<p></p>");
+  // br somehow getting through here
+  content = content.replace(/<p><br\/><\/p>/gm, "<p></p>");
+  content = content.replace(/<p><br><\/p>/gm, "<p></p>");
+  // whitespace in reverse of the top case now that we've cleaned it up
+  content = content.replace(/<\/p>(\s*)<p>/gm, "</p><p>");
+  content = content
+    .split("\n\r")
+    .join("\n")
+    .split("\r")
+    .join("\n")
+    .split("\n\n")
+    .join("\n")
+    .split("\n\n")
+    .join("\n")
+    .split("\n\n")
+    .join("\n");
   // support postProcess text rewriting for the node that's been
   // converted to a string for storage
   if (node.postProcesshaxNodeToContent === "function") {
