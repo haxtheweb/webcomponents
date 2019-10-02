@@ -163,30 +163,6 @@ export const displayBehaviors = function(SuperClass) {
       import("@polymer/iron-ajax/iron-ajax.js");
     }
 
-    ready() {
-      super.ready();
-      /*
-        only import slotted HTML if there is no taable data
-      */
-      let table = this.children.item(0);
-      console.log(
-        this,
-        this.data,
-        table,
-        this.data[0] == [["", "", ""], ["", "", ""], ["", "", ""]] &&
-          table !== null &&
-          table.tagName === "TABLE"
-      );
-      if (
-        this.data === [["", "", ""], ["", "", ""], ["", "", ""]] &&
-        table !== null &&
-        table.tagName === "TABLE"
-      ) {
-        console.log(table.innerHTML);
-        this.importHTML(table);
-      }
-    }
-
     /**
      * converts csv string to array
      * @param {string} text the CSV string

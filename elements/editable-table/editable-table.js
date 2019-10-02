@@ -193,7 +193,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
         bordered$="[[bordered]]"
         caption$="[[caption]]"
         column-header$="[[columnHeader]]"
-        data="[[data]]"
+        data="{{data}}"
         condensed$="[[condensed]]"
         filter$="[[filter]]"
         footer$="[[footer]]"
@@ -495,6 +495,8 @@ class EditableTable extends displayBehaviors(PolymerElement) {
     for (let i = 0; i < this.data.length; i++) {
       this.splice("data." + i, index, 1);
     }
+    let temp = this.data.slice();
+    this.set("data", temp);
   }
 
   /**
@@ -503,6 +505,8 @@ class EditableTable extends displayBehaviors(PolymerElement) {
    */
   deleteRow(index) {
     this.splice("data", index, 1);
+    let temp = this.data.slice();
+    this.set("data", temp);
   }
 
   /**
