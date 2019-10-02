@@ -74,34 +74,6 @@ class EditableTableEditorCell extends cellBehaviors(PolymerElement) {
       >
       </iron-autogrow-textarea>
       <div id="icons"><slot></slot></div>
-      <iron-a11y-keys
-        id="down"
-        keys="down"
-        target$="[[cell]]"
-        on-keys-pressed="_onCellBelow"
-      >
-      </iron-a11y-keys>
-      <iron-a11y-keys
-        id="up"
-        keys="up"
-        target$="[[cell]]"
-        on-keys-pressed="_onCellAbove"
-      >
-      </iron-a11y-keys>
-      <iron-a11y-keys
-        id="left"
-        keys="left"
-        target$="[[cell]]"
-        on-keys-pressed="_onCellLeft"
-      >
-      </iron-a11y-keys>
-      <iron-a11y-keys
-        id="right"
-        keys="right"
-        target$="[[cell]]"
-        on-keys-pressed="_onCellRight"
-      >
-      </iron-a11y-keys>
     `;
   }
 
@@ -241,9 +213,11 @@ class EditableTableEditorCell extends cellBehaviors(PolymerElement) {
   setFocus(start, end) {
     this.$.cell.shadowRoot.querySelector("textarea").focus();
     if (start !== undefined && end !== undefined) {
-      this.setCaretPosition(start, end);
-    } else if (start !== undefined) {
+      this.setCaretPosition(start, this.getCaretPosition() - end);
+    } else if (start !== undefined && start > -1) {
       this.setCaretPosition(start, start);
+    } else if (start == -1 && end !== undefined) {
+      this.setCaretPosition(start, this.getCaretPosition() - end);
     } else {
       this.setCaretPosition(0, 0);
     }

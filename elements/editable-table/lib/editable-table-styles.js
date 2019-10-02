@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  *
  * `editable-table-styles`
- * `a shared set of styles for editable-table`
+ * `a shared set of styles common to editable-table and editable-table-display`
  *
  * @customElement
  * @polymer
@@ -36,15 +36,17 @@ const css = html`
       --editable-table-heading-bg-color: #ddd;
       --editable-table-stripe-bg-color: #eee;
 
-      --editable-table-row-horizontal-padding: 4px;
-      --editable-table-row-vertical-padding: 5px;
+      --editable-table-row-horizontal-padding: 6px;
+      --editable-table-row-vertical-padding: 10px;
+      --editable-table-row-horizontal-padding-condensed: 4px;
       --editable-table-row-vertical-padding-condensed: 2px;
       --editable-table-row-padding: var(--editable-table-row-vertical-padding)
         var(--editable-table-row-horizontal-padding);
       --editable-table-row-padding-condensed: var(
           --editable-table-row-vertical-padding-condensed
         )
-        var(--editable-table-row-horizontal-padding);
+        var(--editable-table-row-horizontal-padding-condensed);
+      --editable-table-cell-padding: var(--editable-table-row-padding);
 
       --editable-table-border-width: 1px;
       --editable-table-border-style: solid;
@@ -74,6 +76,11 @@ const css = html`
         --editable-table-heading-bg-color
       );
       --secondary-text-color: var(--editable-table-border-color);
+      --editable-table-rowcol-color: var(--editable-table-heading-color);
+      --editable-table-rowcol-bg-color: var(--editable-table-stripe-bg-color);
+      --editable-table-rowcol-hover-bg-color: var(
+        --editable-table-heading-bg-color
+      );
       --simple-picker-option-size: 24px;
       --simple-picker-option: {
         font-family: var(--editable-table-secondary-font-family);
@@ -105,6 +112,11 @@ const css = html`
     :host([hidden]) {
       display: none;
     }
+    :host([condensed]) {
+      --editable-table-cell-padding: var(
+        --editable-table-row-padding-condensed
+      );
+    }
     :host .sr-only {
       position: absolute;
       left: -9999px;
@@ -113,7 +125,7 @@ const css = html`
       width: 0;
       overflow: hidden;
     }
-    :host #table {
+    :host table {
       width: calc(
         100% - var(--editable-table-border-width) -
           var(--editable-table-border-width)
@@ -122,13 +134,14 @@ const css = html`
       border-collapse: collapse;
       border: var(--editable-table-border);
     }
-    :host #table,
+    :host table,
     :host .th-or-td {
       font-weight: var(--editable-table-light-weight);
       color: var(--editable-table-color);
       background-color: var(--editable-table-bg-color);
     }
     :host caption {
+      padding: 0 0 5px;
       font-size: var(--editable-table-caption-font-size);
       font-weight: var(--editable-table-heavy-weight);
       color: var(--editable-table-caption-color);
@@ -141,21 +154,17 @@ const css = html`
     :host .th-or-td {
       display: table-cell;
     }
-    :host .cell {
-      padding: var(--editable-table-row-padding);
-    }
-    :host([condensed]) .th,
-    :host([condensed]) .cell {
-      padding: var(--editable-table-row-padding-condensed);
+    :host([bordered]) .td {
+      border: var(--editable-table-border);
     }
     :host caption,
-    :host #table .th-or-td {
+    :host table .th-or-td {
       text-align: left;
     }
-    :host #table .th-or-td[numeric] {
+    :host table .th-or-td[numeric] {
       text-align: var(--editable-table-numeric-text-align, unset);
     }
-    :host #table .td[negative] .cell {
+    :host table .td[negative] .cell {
       color: var(--editable-table-negative-color, --editable-table-color);
     }
     :host editable-table-sort {
@@ -169,6 +178,9 @@ const css = html`
         overflow-x: auto;
         width: 100%;
         max-width: 100%;
+      }
+      :host([responsive]) {
+        overflow-x: visible;
       }
     }
   </style>

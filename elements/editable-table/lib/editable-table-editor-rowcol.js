@@ -6,6 +6,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/paper-menu-button/paper-menu-button.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-listbox/paper-listbox.js";
+import "@polymer/paper-item/paper-item.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/iron-icons/iron-icons.js";
 import { cellBehaviors } from "./editable-table-behaviors.js";
@@ -26,6 +27,7 @@ class EditableTableEditorRowcol extends cellBehaviors(PolymerElement) {
       <style>
         :host {
           display: block;
+          --paper-item-min-height: 24px;
         }
         :host #label {
           margin: 0;
@@ -36,15 +38,21 @@ class EditableTableEditorRowcol extends cellBehaviors(PolymerElement) {
           padding: 0;
           width: 100%;
         }
-        :host paper-button {
+        :host paper-listbox {
+          padding: 0;
+        }
+        :host paper-button,
+        :host paper-item {
           margin: 0;
-          display: block;
           text-transform: none;
-          text-align: left;
           background-color: transparent;
+          text-align: left;
+          font-family: var(--editable-table-secondary-font-family);
+        }
+        :host paper-button {
+          display: block;
           padding-top: var(--editable-table-row-vertical-padding);
           padding-bottom: var(--editable-table-row-vertical-padding);
-          font-family: var(--editable-table-secondary-font-family);
         }
         :host([condensed]) paper-button {
           padding-top: var(--editable-table-row-vertical-padding-condensed);
@@ -56,18 +64,22 @@ class EditableTableEditorRowcol extends cellBehaviors(PolymerElement) {
           <span id="label">[[label]]</span>
           <iron-icon icon="arrow-drop-down"></iron-icon>
         </paper-button>
-        <paper-listbox slot="dropdown-content" label$="[[label]]">
-          <paper-button on-click="_onInsertBefore"
-            >Insert [[_getType(row)]] Before</paper-button
+        <paper-listbox
+          slot="dropdown-content"
+          label="[_getType(row)]] [[label]]"
+        >
+          <paper-item role="button" on-click="_onInsertBefore"
+            >Insert [[_getType(row)]] Before</paper-item
           >
-          <paper-button on-click="_onInsertAfter"
-            >Insert [[_getType(row)]] After</paper-button
+          <paper-item role="button" on-click="_onInsertAfter"
+            >Insert [[_getType(row)]] After</paper-item
           >
-          <paper-button on-click="_onDelete"
-            >Delete [[_getType(row)]]</paper-button
+          <paper-item role="button" on-click="_onDelete"
+            >Delete [[_getType(row)]]</paper-item
           >
         </paper-listbox>
       </paper-menu-button>
+      <paper-tooltip for="menu">[[_getType(row)]] [[label]] Menu</paper-tooltip>
     `;
   }
   static get tag() {
@@ -87,7 +99,7 @@ class EditableTableEditorRowcol extends cellBehaviors(PolymerElement) {
        */
       label: {
         type: String,
-        computed: "_getLabel(index,type)"
+        computed: "_getLabel(index,row)"
       },
       /**
        * Whether the menu button controls a row

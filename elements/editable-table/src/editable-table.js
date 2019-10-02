@@ -81,17 +81,9 @@ class EditableTable extends displayBehaviors(PolymerElement) {
     return html`
       <style include="editable-table-styles">
         :host {
-          display: block;
-          width: 100%;
-        }
-        :host caption {
-          width: 100%;
-          margin-bottom: 0;
-        }
-        :host label,
-        :host .label {
-          font-size: var(--editable-table-secondary-font-size);
-          font-family: var(--editable-table-secondary-font-family);
+          --paper-listbox-background-color: var(
+            --editable-table-rowcol-bg-color
+          );
         }
         :host .filter-icon,
         :host .sortable-icon {
@@ -100,38 +92,68 @@ class EditableTable extends displayBehaviors(PolymerElement) {
           width: 24px;
           height: 24px;
         }
-        :host([sort]) tbody .tr:first-child .sortable-icon {
-          display: inline-block;
-          opacity: 0.25;
-        }
+        :host([sort]) tbody .tr:first-child .sortable-icon,
         :host([filter]) tbody .tr:not(:first-of-type) .filter-icon {
           display: inline-block;
           opacity: 0.25;
         }
-        :host #table {
+        :host table {
           min-width: calc(100% - 2.3px);
           width: unset;
+        }
+        :host caption {
+          width: 100%;
+          padding: 0;
+          margin: 0;
+          color: var(--editable-table-caption-color);
         }
         :host caption,
         :host .th-or-td {
           border: 1px solid #ddd;
         }
+        :host label,
+        :host .label {
+          font-size: var(--editable-table-secondary-font-size);
+          font-family: var(--editable-table-secondary-font-family);
+        }
+        :host .field-group {
+          width: 100%;
+          padding: 0;
+          margin: 0;
+          transition: all 2s;
+          color: var(--editable-table-caption-color);
+        }
+        :host .field-group:not([hidden]) {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          align-items: center;
+        }
+        :host caption > *,
+        :host .field-group > * {
+          margin: 0 2.5px;
+        }
+        :host .field-group .field-group {
+          width: unset;
+        }
         :host .th,
         :host th {
           padding: 0;
           vertical-align: center;
-          color: black;
-          background-color: #f0f0f0;
+          color: var(--editable-table-rowcol-color);
+          background-color: var(--editable-table-rowcol-bg-color);
           outline: var(--editable-table-border);
+        }
+        :host td {
+          margin: 0;
+          padding: var(--editable-table-cell-padding);
+        }
+        :host th:hover,
+        :host th:focus-within {
+          background-color: var(--editable-table-rowcol-hover-bg-color);
         }
         :host .th:first-child {
           width: 96px;
-        }
-        :host .td {
-          vertical-align: top;
-        }
-        :host([bordered]) .td {
-          border: var(--editable-table-border);
         }
         :host([responsive]) thead .th:nth-of-type(3),
         :host([responsive]) .td:nth-of-type(2) {
@@ -157,29 +179,6 @@ class EditableTable extends displayBehaviors(PolymerElement) {
         :host([footer]) tbody .tr:last-of-type .td {
           @apply --editable-table-style-footer;
         }
-        :host caption,
-        :host .field-group {
-          width: 100%;
-          padding: 0;
-          margin: 0;
-          transition: all 2s;
-          color: var(--editable-table-caption-color);
-        }
-        :host .field-group:not([hidden]) {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-        :host caption > *,
-        :host .field-group > * {
-          margin: 0 2.5px;
-        }
-        :host .field-group .field-group {
-          color: var(--editable-table-caption-color);
-          width: unset;
-        }
-        @media screen {
-        }
       </style>
       <iron-ajax
         auto
@@ -194,7 +193,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
         bordered$="[[bordered]]"
         caption$="[[caption]]"
         column-header$="[[columnHeader]]"
-        data="[[data]]"
+        data="{{data}}"
         condensed$="[[condensed]]"
         filter$="[[filter]]"
         footer$="[[footer]]"
@@ -205,32 +204,66 @@ class EditableTable extends displayBehaviors(PolymerElement) {
         striped$="[[striped]]"
       >
       </editable-table-display>
-      <div id="table-outer" hidden$="[[!editMode]]">
-        <p class="sr-only">Table Editor</p>
-        <table
-          id="table"
-          bordered$="[[bordered]]"
-          condensed$="[[condensed]]"
-          striped$="[[striped]]"
-        >
-          <caption>
-            <p class="sr-only">Edit Mode for</p>
-            <paper-input
-              id="caption"
-              label="Caption"
-              placeholder="A title for the table."
-              on-change="_captionChanged"
-              value$="{{caption}}"
-            >
-            </paper-input>
-          </caption>
-          <thead>
-            <tr class="tr">
-              <th class="th th-or-td" scope="col">
-                <span class="sr-only">Row Operations</span>
-              </th>
+      <div id="outer" hidden$="[[!editMode]]">
+        <div id="inner">
+          <p class="sr-only">Table Editor</p>
+          <table
+            id="table-editmode"
+            bordered$="[[bordered]]"
+            condensed$="[[condensed]]"
+            striped$="[[striped]]"
+          >
+            <caption>
+              <p class="sr-only">Edit Mode for</p>
+              <paper-input
+                id="caption"
+                label="Caption"
+                placeholder="A title for the table."
+                on-change="_captionChanged"
+                value$="{{caption}}"
+              >
+              </paper-input>
+            </caption>
+            <thead>
+              <tr class="tr">
+                <th class="th th-or-td" scope="col">
+                  <span class="sr-only">Row Operations</span>
+                </th>
+                <template
+                  id="headers"
+                  is="dom-repeat"
+                  items="[[data]]"
+                  as="row"
+                  index-as="tr"
+                  mutable-data
+                  restamp
+                >
+                  <template is="dom-if" if="[[_isFirstRow(tr)]]" restamp>
+                    <template
+                      id="headercols"
+                      is="dom-repeat"
+                      items="[[row]]"
+                      as="cell"
+                      index-as="th"
+                      mutable-data
+                      restamp
+                    >
+                      <th class="th th-or-td col-[[th]]" scope="col">
+                        <editable-table-editor-rowcol
+                          index$="[[th]]"
+                          condensed$="[[condensed]]"
+                          on-rowcol-action="_handleRowColumnMenu"
+                        >
+                        </editable-table-editor-rowcol>
+                      </th>
+                    </template>
+                  </template>
+                </template>
+              </tr>
+            </thead>
+            <tbody id="tbody">
               <template
-                id="headers"
+                id="rows"
                 is="dom-repeat"
                 items="[[data]]"
                 as="row"
@@ -238,83 +271,50 @@ class EditableTable extends displayBehaviors(PolymerElement) {
                 mutable-data
                 restamp
               >
-                <template is="dom-if" if="[[_isFirstRow(tr)]]" restamp>
+                <tr class="tr tbody-tr">
+                  <th class="th th-or-td" scope="row">
+                    <editable-table-editor-rowcol
+                      index$="[[tr]]"
+                      condensed$="[[condensed]]"
+                      on-rowcol-action="_handleRowColumnMenu"
+                      row
+                    >
+                    </editable-table-editor-rowcol>
+                  </th>
                   <template
-                    id="headercols"
+                    id="columns"
+                    index-as="td"
                     is="dom-repeat"
                     items="[[row]]"
                     as="cell"
-                    index-as="th"
                     mutable-data
                     restamp
                   >
-                    <th class="th th-or-td col-[[th]]" scope="col">
-                      <editable-table-editor-rowcol
-                        index$="[[th]]"
-                        condensed$="[[condensed]]"
-                        on-rowcol-action="_handleRowColumnMenu"
+                    <td class="td th-or-td" on-click="_onCellClick">
+                      <editable-table-editor-cell
+                        class="cell"
+                        column="[[td]]"
+                        row="[[tr]]"
+                        on-change="_onCellValueChange"
+                        value="{{cell}}"
                       >
-                      </editable-table-editor-rowcol>
-                    </th>
+                        <iron-icon
+                          class="sortable-icon"
+                          icon="editable-table:sortable"
+                          aria-hidden="true"
+                        ></iron-icon>
+                        <iron-icon
+                          class="filter-icon"
+                          icon="editable-table:filter-off"
+                        ></iron-icon>
+                      </editable-table-editor-cell>
+                    </td>
                   </template>
-                </template>
+                </tr>
               </template>
-            </tr>
-          </thead>
-          <tbody id="tbody">
-            <template
-              id="rows"
-              is="dom-repeat"
-              items="[[data]]"
-              as="row"
-              index-as="tr"
-              mutable-data
-              restamp
-            >
-              <tr class="tr tbody-tr">
-                <th class="th th-or-td" scope="row">
-                  <editable-table-editor-rowcol
-                    index$="[[tr]]"
-                    condensed$="[[condensed]]"
-                    on-rowcol-action="_handleRowColumnMenu"
-                    row
-                  >
-                  </editable-table-editor-rowcol>
-                </th>
-                <template
-                  id="columns"
-                  index-as="td"
-                  is="dom-repeat"
-                  items="[[row]]"
-                  as="cell"
-                  mutable-data
-                  restamp
-                >
-                  <td class="td th-or-td" on-click="_onCellClick">
-                    <editable-table-editor-cell
-                      class="cell"
-                      column="[[td]]"
-                      row="[[tr]]"
-                      on-cell-move="_onCellMove"
-                      on-change="_onCellValueChange"
-                      value="{{cell}}"
-                    >
-                      <iron-icon
-                        class="sortable-icon"
-                        icon="editable-table:sortable"
-                        aria-hidden="true"
-                      ></iron-icon>
-                      <iron-icon
-                        class="filter-icon"
-                        icon="editable-table:filter-off"
-                      ></iron-icon>
-                    </editable-table-editor-cell>
-                  </td>
-                </template>
-              </tr>
-            </template>
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
         <div class="field-group">
           <div class="field-group">
             <div class="label">Headers and footers</div>
@@ -492,11 +492,11 @@ class EditableTable extends displayBehaviors(PolymerElement) {
    * @param {number} index the index of the column
    */
   deleteColumn(index) {
-    if (confirm("Delete entire column?")) {
-      for (let i = 0; i < this.data.length; i++) {
-        this.splice("data." + i, index, 1);
-      }
+    for (let i = 0; i < this.data.length; i++) {
+      this.splice("data." + i, index, 1);
     }
+    let temp = this.data.slice();
+    this.set("data", temp);
   }
 
   /**
@@ -504,9 +504,9 @@ class EditableTable extends displayBehaviors(PolymerElement) {
    * @param {number} index the index of the row
    */
   deleteRow(index) {
-    if (confirm("Delete entire row?")) {
-      this.splice("data", index, 1);
-    }
+    this.splice("data", index, 1);
+    let temp = this.data.slice();
+    this.set("data", temp);
   }
 
   /**
@@ -553,6 +553,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
     if (edit) {
       this.shadowRoot.querySelector("editable-table-display").toggleFilter();
       this.shadowRoot.querySelector("editable-table-display").sortData(false);
+      this.$.inner.focus();
     }
     this.editMode = edit;
   }
@@ -568,7 +569,16 @@ class EditableTable extends displayBehaviors(PolymerElement) {
    * @event change
    * @param {event} the event
    */
-  _dataChanged(e) {}
+  _dataChanged(newValue, oldValue) {
+    if (!newValue || newValue.length < 1 || newValue[0].length < 1) {
+      let table = this.children.item(0);
+      if (table !== null && table.tagName === "TABLE") {
+        this.importHTML(table);
+      } else {
+        this.set("data", [["", "", ""], ["", "", ""], ["", "", ""]]);
+      }
+    }
+  }
 
   /**
    * Gets the row data for a given row index
@@ -620,45 +630,6 @@ class EditableTable extends displayBehaviors(PolymerElement) {
   _onCellClick(e) {
     if (e.model && e.model.root && e.model.root.nodeList[0]) {
       e.model.root.nodeList[0].focus();
-    }
-  }
-
-  /**
-   * Moves the focus/cursor to the correct cell when navigation keys are pressed
-   * @param {event} e the event
-   */
-  _onCellMove(e) {
-    let dir = e.detail.direction,
-      cell = e.detail.cell;
-    let row = cell.parentNode,
-      body = this.$.tbody;
-    let x = Array.prototype.indexOf.call(row.children, cell);
-    let y = Array.prototype.indexOf.call(body.children, row);
-
-    if (dir === "down") {
-      if (y + 1 < body.children.length - 1) {
-        body.children[y + 1].children[x].children[0].setFocus();
-      } else {
-        this.insertRow(y);
-      }
-    } else if (dir === "up") {
-      if (y > 0) {
-        body.children[y - 1].children[x].children[0].setFocus();
-      }
-    } else if (dir === "right") {
-      if (x + 1 < row.children.length - 1) {
-        row.children[x + 1].children[0].setFocus();
-      } else if (y + 1 < body.children.length - 1) {
-        body.children[y + 1].children[1].children[0].setFocus();
-      }
-    } else if (dir === "left") {
-      if (x > 1) {
-        row.children[x - 1].children[0].setFocus();
-      } else if (y > 0) {
-        body.children[y - 2].children[
-          body.children[y - 2].children.length - 2
-        ].children[0].setFocus();
-      }
     }
   }
 

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>editable-table Advanced Features</title>
+    <title>editable-table demo</title>
 
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
@@ -43,30 +43,18 @@
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h1>editable-table Advanced Features</h1>
-      <p>You can remove the display and sort/filter features from <a
-          href="index.html">editable-table-editor</a>:
+      <h1>editable-table demo</h1>
+      <p>This is a component that allows you to switch between <a href="display.html">editable-table-display</a> and <a
+          href="index.html">editable-table</a> modes. 
       </p>
       <demo-snippet>
         <template>
             <div class="buttons">
-              <button controls="advanced-example" onclick="document.getElementById('advanced-example').toggleEditMode();">
+              <button controls="editmode" onclick="document.getElementById('editmode').toggleEditMode();">
                 Toggle Edit Mode 
               </button>
             </div>
-            <editable-table 
-              id="advanced-example" 
-              caption="Is it a sandwich? Food classification chart."
-              column-header 
-              data-csv="./foods.csv"
-              hide-bordered
-              hide-condensed
-              hide-filter
-              hide-responsive
-              hide-sort
-              hide-striped
-              row-header>
-            </editable-table>
+            <editable-table id="editmode" edit-mode></editable-table> 
         </template>
       </demo-snippet> 
     </div>
