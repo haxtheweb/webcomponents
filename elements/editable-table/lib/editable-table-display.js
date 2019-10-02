@@ -29,7 +29,7 @@ class EditableTableDisplay extends displayBehaviors(
   static get template() {
     return html`
       <style include="editable-table-styles">
-        :host th {
+        :host .th-or-td {
           padding: var(--editable-table-cell-padding);
         }
         :host([bordered]) .th {
@@ -40,7 +40,7 @@ class EditableTableDisplay extends displayBehaviors(
           @apply --editable-table-style-stripe;
         }
         :host([sort]) thead th,
-        :host([filter]) tbody .th-or-td {
+        :host([filter]) tbody td {
           padding: 0;
         }
         :host([column-header]) .thead-tr .th {

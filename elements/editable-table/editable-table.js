@@ -144,6 +144,10 @@ class EditableTable extends displayBehaviors(PolymerElement) {
           background-color: var(--editable-table-rowcol-bg-color);
           outline: var(--editable-table-border);
         }
+        :host td {
+          margin: 0;
+          padding: var(--editable-table-cell-padding);
+        }
         :host th:hover,
         :host th:focus-within {
           background-color: var(--editable-table-rowcol-hover-bg-color);

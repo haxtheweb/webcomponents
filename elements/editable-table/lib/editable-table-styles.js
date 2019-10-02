@@ -36,15 +36,16 @@ const css = html`
       --editable-table-heading-bg-color: #ddd;
       --editable-table-stripe-bg-color: #eee;
 
-      --editable-table-row-horizontal-padding: 4px;
+      --editable-table-row-horizontal-padding: 6px;
       --editable-table-row-vertical-padding: 10px;
+      --editable-table-row-horizontal-padding-condensed: 4px;
       --editable-table-row-vertical-padding-condensed: 2px;
       --editable-table-row-padding: var(--editable-table-row-vertical-padding)
         var(--editable-table-row-horizontal-padding);
       --editable-table-row-padding-condensed: var(
           --editable-table-row-vertical-padding-condensed
         )
-        var(--editable-table-row-horizontal-padding);
+        var(--editable-table-row-horizontal-padding-condensed);
       --editable-table-cell-padding: var(--editable-table-row-padding);
 
       --editable-table-border-width: 1px;
@@ -140,6 +141,7 @@ const css = html`
       background-color: var(--editable-table-bg-color);
     }
     :host caption {
+      padding: 0 0 5px;
       font-size: var(--editable-table-caption-font-size);
       font-weight: var(--editable-table-heavy-weight);
       color: var(--editable-table-caption-color);
@@ -154,10 +156,6 @@ const css = html`
     }
     :host([bordered]) .td {
       border: var(--editable-table-border);
-    }
-    :host([condensed]) .th,
-    :host .cell {
-      padding: var(--editable-table-cell-padding);
     }
     :host caption,
     :host table .th-or-td {
