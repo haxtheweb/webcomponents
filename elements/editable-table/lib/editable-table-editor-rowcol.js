@@ -64,7 +64,10 @@ class EditableTableEditorRowcol extends cellBehaviors(PolymerElement) {
           <span id="label">[[label]]</span>
           <iron-icon icon="arrow-drop-down"></iron-icon>
         </paper-button>
-        <paper-listbox slot="dropdown-content" label$="[[label]]">
+        <paper-listbox
+          slot="dropdown-content"
+          label="[_getType(row)]] [[label]]"
+        >
           <paper-item role="button" on-click="_onInsertBefore"
             >Insert [[_getType(row)]] Before</paper-item
           >
@@ -76,6 +79,7 @@ class EditableTableEditorRowcol extends cellBehaviors(PolymerElement) {
           >
         </paper-listbox>
       </paper-menu-button>
+      <paper-tooltip for="menu">[[_getType(row)]] [[label]] Menu</paper-tooltip>
     `;
   }
   static get tag() {
@@ -95,7 +99,7 @@ class EditableTableEditorRowcol extends cellBehaviors(PolymerElement) {
        */
       label: {
         type: String,
-        computed: "_getLabel(index,type)"
+        computed: "_getLabel(index,row)"
       },
       /**
        * Whether the menu button controls a row
