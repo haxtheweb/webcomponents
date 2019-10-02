@@ -168,11 +168,23 @@ export const displayBehaviors = function(SuperClass) {
       /*
         only import slotted HTML if there is no taable data
       */
+      let table = this.children.item(0);
+      console.log(
+        this,
+        this.data,
+        table,
+        this.data[0] == [["", "", ""], ["", "", ""], ["", "", ""]] &&
+          table !== null &&
+          table.tagName === "TABLE"
+      );
       if (
-        (this.data.length < 1 || this.data[0].length < 1) &&
-        this.querySelector("table") !== null
-      )
-        this.importHTML(this.querySelector("table"));
+        this.data === [["", "", ""], ["", "", ""], ["", "", ""]] &&
+        table !== null &&
+        table.tagName === "TABLE"
+      ) {
+        console.log(table.innerHTML);
+        this.importHTML(table);
+      }
     }
 
     /**
@@ -326,7 +338,12 @@ export const displayBehaviors = function(SuperClass) {
      * @returns {array} the `<tbody>` data
      */
     _getTbody(data, columnHeader, footer) {
-      if (data !== undefined && data !== null && data.length > 0) {
+      if (
+        data !== undefined &&
+        data !== null &&
+        data.length > 0 &&
+        data[0].length > 0
+      ) {
         let ch = columnHeader ? 1 : 0,
           ft = footer ? data.length - 1 : data.length;
         return data.slice(ch, ft);
@@ -341,7 +358,9 @@ export const displayBehaviors = function(SuperClass) {
      * @returns {array} the `<tbody>` data
      */
     _getTfoot(data, footer) {
-      return footer ? data.slice(data.length - 1) : [];
+      return data.length > 0 && data[0].length > 0 && footer
+        ? data.slice(data.length - 1)
+        : [];
     }
 
     /**
@@ -351,7 +370,9 @@ export const displayBehaviors = function(SuperClass) {
      * @returns {array} the `<thead>`data
      */
     _getThead(data, columnHeader) {
-      return columnHeader ? data.slice(0, 1) : [];
+      return data.length > 0 && data[0].length > 0 && columnHeader
+        ? data.slice(0, 1)
+        : [];
     }
     /**
      * replaces a blank cell with "-" for accessibility

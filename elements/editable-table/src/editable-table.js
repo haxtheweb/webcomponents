@@ -81,20 +81,9 @@ class EditableTable extends displayBehaviors(PolymerElement) {
     return html`
       <style include="editable-table-styles">
         :host {
-          display: block;
-          width: 100%;
           --paper-listbox-background-color: var(
             --editable-table-rowcol-bg-color
           );
-        }
-        :host caption {
-          width: 100%;
-          margin-bottom: 0;
-        }
-        :host label,
-        :host .label {
-          font-size: var(--editable-table-secondary-font-size);
-          font-family: var(--editable-table-secondary-font-family);
         }
         :host .filter-icon,
         :host .sortable-icon {
@@ -103,10 +92,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
           width: 24px;
           height: 24px;
         }
-        :host([sort]) tbody .tr:first-child .sortable-icon {
-          display: inline-block;
-          opacity: 0.25;
-        }
+        :host([sort]) tbody .tr:first-child .sortable-icon,
         :host([filter]) tbody .tr:not(:first-of-type) .filter-icon {
           display: inline-block;
           opacity: 0.25;
@@ -115,9 +101,40 @@ class EditableTable extends displayBehaviors(PolymerElement) {
           min-width: calc(100% - 2.3px);
           width: unset;
         }
+        :host caption {
+          width: 100%;
+          padding: 0;
+          margin: 0;
+          color: var(--editable-table-caption-color);
+        }
         :host caption,
         :host .th-or-td {
           border: 1px solid #ddd;
+        }
+        :host label,
+        :host .label {
+          font-size: var(--editable-table-secondary-font-size);
+          font-family: var(--editable-table-secondary-font-family);
+        }
+        :host .field-group {
+          width: 100%;
+          padding: 0;
+          margin: 0;
+          transition: all 2s;
+          color: var(--editable-table-caption-color);
+        }
+        :host .field-group:not([hidden]) {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          align-items: center;
+        }
+        :host caption > *,
+        :host .field-group > * {
+          margin: 0 2.5px;
+        }
+        :host .field-group .field-group {
+          width: unset;
         }
         :host .th,
         :host th {
@@ -133,12 +150,6 @@ class EditableTable extends displayBehaviors(PolymerElement) {
         }
         :host .th:first-child {
           width: 96px;
-        }
-        :host .td {
-          vertical-align: top;
-        }
-        :host([bordered]) .td {
-          border: var(--editable-table-border);
         }
         :host([responsive]) thead .th:nth-of-type(3),
         :host([responsive]) .td:nth-of-type(2) {
@@ -163,30 +174,6 @@ class EditableTable extends displayBehaviors(PolymerElement) {
         }
         :host([footer]) tbody .tr:last-of-type .td {
           @apply --editable-table-style-footer;
-        }
-        :host caption,
-        :host .field-group {
-          width: 100%;
-          padding: 0;
-          margin: 0;
-          transition: all 2s;
-          color: var(--editable-table-caption-color);
-        }
-        :host .field-group:not([hidden]) {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: space-between;
-          align-items: center;
-        }
-        :host caption > *,
-        :host .field-group > * {
-          margin: 0 2.5px;
-        }
-        :host .field-group .field-group {
-          color: var(--editable-table-caption-color);
-          width: unset;
-        }
-        @media screen {
         }
       </style>
       <iron-ajax
@@ -574,7 +561,16 @@ class EditableTable extends displayBehaviors(PolymerElement) {
    * @event change
    * @param {event} the event
    */
-  _dataChanged(e) {}
+  _dataChanged(newValue, oldValue) {
+    if (!newValue || newValue.length < 1 || newValue[0].length < 1) {
+      let table = this.children.item(0);
+      if (table !== null && table.tagName === "TABLE") {
+        this.importHTML(table);
+      } else {
+        this.set("data", [["", "", ""], ["", "", ""], ["", "", ""]]);
+      }
+    }
+  }
 
   /**
    * Gets the row data for a given row index

@@ -29,13 +29,19 @@ class EditableTableDisplay extends displayBehaviors(
   static get template() {
     return html`
       <style include="editable-table-styles">
-        :host([bordered]) .th,
-        :host([bordered]) .td {
+        :host th {
+          padding: var(--editable-table-cell-padding);
+        }
+        :host([bordered]) .th {
           border: 1px solid var(--editable-table-border-color);
         }
         :host([striped]) .tbody-tr:nth-child(2n) .th,
         :host([striped]) .tbody-tr:nth-child(2n) .td {
           @apply --editable-table-style-stripe;
+        }
+        :host([sort]) thead th,
+        :host([filter]) tbody .th-or-td {
+          padding: 0;
         }
         :host([column-header]) .thead-tr .th {
           @apply --editable-table-style-column-header;
@@ -96,11 +102,10 @@ class EditableTableDisplay extends displayBehaviors(
         last-response="{{csvData}}"
         on-response="_loadExternalData"
       ></iron-ajax>
-      <table id="table" class="table">
+      <table id="table" class="table" hidden$="[[hidden]]">
         <caption>
           <div>
             [[caption]]
-            <slot></slot>
             <simple-picker
               id="column"
               aria-labelledby$="[[tables.0.label]]"
@@ -297,6 +302,13 @@ class EditableTableDisplay extends displayBehaviors(
       sortColumn: {
         type: Number,
         value: -1
+      },
+      /**
+       * Whether the table is hidden
+       */
+      hidden: {
+        type: Boolean,
+        computed: "_hasNoData(data)"
       }
     };
   }
@@ -306,15 +318,31 @@ class EditableTableDisplay extends displayBehaviors(
    * @event change
    * @param {event} the event
    */
-  _dataChanged(e) {
+  _dataChanged(newValue, oldValue) {
+    if (!newValue || newValue.length < 1 || newValue[0].length < 1) {
+      let table = this.children.item(0);
+      if (table !== null && table.tagName === "TABLE") {
+        this.importHTML(table);
+      }
+    }
+
     this.dispatchEvent(
       new CustomEvent("change", {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: e
+        detail: newValue
       })
     );
+  }
+
+  /**
+   * Hides the table if it has no data
+   * @param {array} data the table data as an array
+   * @returns {boolean} whether the table will be hidden
+   */
+  _hasNoData(data) {
+    return !data || data.length < 1 || data[0].length < 1;
   }
 
   /**

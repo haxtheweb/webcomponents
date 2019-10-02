@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  *
  * `editable-table-styles`
- * `a shared set of styles for editable-table`
+ * `a shared set of styles common to editable-table and editable-table-display`
  *
  * @customElement
  * @polymer
@@ -37,7 +37,7 @@ const css = html`
       --editable-table-stripe-bg-color: #eee;
 
       --editable-table-row-horizontal-padding: 4px;
-      --editable-table-row-vertical-padding: 5px;
+      --editable-table-row-vertical-padding: 10px;
       --editable-table-row-vertical-padding-condensed: 2px;
       --editable-table-row-padding: var(--editable-table-row-vertical-padding)
         var(--editable-table-row-horizontal-padding);
@@ -45,6 +45,7 @@ const css = html`
           --editable-table-row-vertical-padding-condensed
         )
         var(--editable-table-row-horizontal-padding);
+      --editable-table-cell-padding: var(--editable-table-row-padding);
 
       --editable-table-border-width: 1px;
       --editable-table-border-style: solid;
@@ -110,6 +111,11 @@ const css = html`
     :host([hidden]) {
       display: none;
     }
+    :host([condensed]) {
+      --editable-table-cell-padding: var(
+        --editable-table-row-padding-condensed
+      );
+    }
     :host .sr-only {
       position: absolute;
       left: -9999px;
@@ -146,12 +152,12 @@ const css = html`
     :host .th-or-td {
       display: table-cell;
     }
-    :host .cell {
-      padding: var(--editable-table-row-padding);
+    :host([bordered]) .td {
+      border: var(--editable-table-border);
     }
     :host([condensed]) .th,
-    :host([condensed]) .cell {
-      padding: var(--editable-table-row-padding-condensed);
+    :host .cell {
+      padding: var(--editable-table-cell-padding);
     }
     :host caption,
     :host table .th-or-td {

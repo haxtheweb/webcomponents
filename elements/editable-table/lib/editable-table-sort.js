@@ -21,11 +21,11 @@ class EditableTableSort extends PolymerElement {
     return html`
       <style is="custom-style">
         :host paper-button {
-          padding: 0;
+          padding: var(--editable-table-cell-padding, 0);
           margin: 0;
-          width: 100%;
+          width: auto;
           min-width: unset;
-          display: inline-flex;
+          display: flex;
           justify-content: space-between;
           align-items: center;
           align-content: stretch;
