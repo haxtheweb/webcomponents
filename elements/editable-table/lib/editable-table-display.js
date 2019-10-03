@@ -57,7 +57,7 @@ class EditableTableDisplay extends displayBehaviors(
           width: calc(var(--simple-picker-option-size) + 6px);
           overflow: visible;
           display: none;
-          margin: 0 0 1px 10px;
+          margin: 0 0 -4px 10px;
           --simple-picker-border-color: var(--editable-table-border-color);
           --simple-picker-sample-option: {
             position: absolute;
@@ -445,6 +445,7 @@ class EditableTableDisplay extends displayBehaviors(
       this.sortColumn = e.detail.columnIndex;
     }
     e.detail.setSortMode(this.sortMode);
+    console.log("_changeSortMode", e.detail, this.sortMode);
     this.sortData(this.sortMode, e.detail.columnIndex);
   }
 
@@ -503,12 +504,9 @@ class EditableTableDisplay extends displayBehaviors(
         this.set("tbody." + i, []);
         this.set("tbody." + i, temp[i].slice(1));
       }
+      console.log("sortData", type, column, temp, this.data);
     } else {
-      let temp = this.tbody.slice();
-      for (let i = 0; i < temp.length; i++) {
-        this.set("data." + (i + 1), []);
-        this.set("data." + (i + 1), temp[i].slice());
-      }
+      console.log("sortData", type, column, this.data);
     }
   }
 

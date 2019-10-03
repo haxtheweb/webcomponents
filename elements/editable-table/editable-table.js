@@ -388,12 +388,12 @@ class EditableTable extends displayBehaviors(PolymerElement) {
             </editable-table-editor-toggle>
           </div>
           <div class="field-group" hidden$="[[hideSortFilter]]">
-            <div class="label">Sorting and Filtering</div>
+            <div class="label">Data</div>
             <editable-table-editor-toggle
               id="sort"
-              disabled$="[[hideSort]]"
-              hidden$="[[hideSort]]"
-              label="Column sorting."
+              disabled$="[[_isSortDisabled(hideSort,columnHeader)]]"
+              hidden$="[[_isSortDisabled(hideSort,columnHeader)]]"
+              label="Column sorting (for tables with column headers)."
               icon="editable-table:sortable"
               on-change="_onTableSettingChange"
               toggled$="[[sort]]"
@@ -553,7 +553,9 @@ class EditableTable extends displayBehaviors(PolymerElement) {
     );
     if (edit) {
       this.shadowRoot.querySelector("editable-table-display").toggleFilter();
-      this.shadowRoot.querySelector("editable-table-display").sortData(false);
+      this.shadowRoot
+        .querySelector("editable-table-display")
+        .sortData("none", -1);
       this.$.inner.focus();
     }
     this.editMode = edit;
@@ -622,6 +624,15 @@ class EditableTable extends displayBehaviors(PolymerElement) {
    */
   _isFirstRow(index) {
     return index === 0;
+  }
+
+  /**
+   * Tests for whether or not to disable the sort feature.
+   * @param {boolean} hideSort if sort feature be hidden
+   * @param {boolean} columnHeader if table has column headers
+   */
+  _isSortDisabled(hideSort, columnHeader) {
+    return hideSort || !columnHeader;
   }
 
   /**

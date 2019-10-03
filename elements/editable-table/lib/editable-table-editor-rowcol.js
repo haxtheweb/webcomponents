@@ -40,6 +40,7 @@ class EditableTableEditorRowcol extends cellBehaviors(PolymerElement) {
         }
         :host paper-listbox {
           padding: 0;
+          background-color: var(--editable-table-bg-color);
         }
         :host paper-button,
         :host paper-item {
@@ -48,6 +49,10 @@ class EditableTableEditorRowcol extends cellBehaviors(PolymerElement) {
           background-color: transparent;
           text-align: left;
           font-family: var(--editable-table-secondary-font-family);
+          color: var(--editable-table-color);
+        }
+        :host paper-item {
+          font-size: var(--editable-table-secondary-font-size);
         }
         :host paper-button {
           display: block;

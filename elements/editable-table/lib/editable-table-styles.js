@@ -70,11 +70,9 @@ const css = html`
         --editable-table-heading-bg-color
       );
       --editable-table-button-disabled-color: var(
-        --editable-table-border-color
-      );
-      --editable-table-button-disabled-bg-color: var(
         --editable-table-heading-bg-color
       );
+      --editable-table-button-disabled-bg-color: var(--editable-table-bg-color);
       --secondary-text-color: var(--editable-table-border-color);
       --editable-table-rowcol-color: var(--editable-table-heading-color);
       --editable-table-rowcol-bg-color: var(--editable-table-stripe-bg-color);
