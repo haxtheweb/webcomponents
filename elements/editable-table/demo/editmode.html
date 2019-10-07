@@ -50,11 +50,23 @@
       <demo-snippet>
         <template>
             <div class="buttons">
-              <button controls="editmode" onclick="document.getElementById('editmode').toggleEditMode();">
+              <button 
+                id="editmode-button"
+                aria-pressed="true"
+                controls="editmode" 
+                onclick="toggleEditMode();">
                 Toggle Edit Mode 
               </button>
             </div>
             <editable-table id="editmode" edit-mode></editable-table> 
+            <script>
+              toggleEditMode = function(){
+                let button = document.getElementById('editmode-button'),
+                  pressed = button.getAttribute('aria-pressed') === "true" ? "false" : "true";
+                button.setAttribute('aria-pressed',pressed);
+                document.getElementById('editmode').toggleEditMode();
+              }
+            </script>
         </template>
       </demo-snippet> 
     </div>

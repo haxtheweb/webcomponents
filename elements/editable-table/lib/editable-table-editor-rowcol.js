@@ -29,6 +29,14 @@ class EditableTableEditorRowcol extends cellBehaviors(PolymerElement) {
           display: block;
           --paper-item-min-height: 24px;
         }
+        :host .sr-only {
+          position: absolute;
+          left: -9999px;
+          font-size: 0;
+          height: 0;
+          width: 0;
+          overflow: hidden;
+        }
         :host #label {
           margin: 0;
           padding: 0;
@@ -66,22 +74,26 @@ class EditableTableEditorRowcol extends cellBehaviors(PolymerElement) {
       </style>
       <paper-menu-button id="menu">
         <paper-button slot="dropdown-trigger">
+          <span class="sr-only">[[_getType(row)]]</span>
           <span id="label">[[label]]</span>
           <iron-icon icon="arrow-drop-down"></iron-icon>
         </paper-button>
         <paper-listbox
           slot="dropdown-content"
-          label="[_getType(row)]] [[label]]"
+          label="[_getType(row)]] [[label]] Menu"
         >
-          <paper-item role="button" on-click="_onInsertBefore"
-            >Insert [[_getType(row)]] Before</paper-item
-          >
-          <paper-item role="button" on-click="_onInsertAfter"
-            >Insert [[_getType(row)]] After</paper-item
-          >
-          <paper-item role="button" on-click="_onDelete"
-            >Delete [[_getType(row)]]</paper-item
-          >
+          <paper-item role="button" on-click="_onInsertBefore">
+            Insert [[_getType(row)]] Before
+            <span class="sr-only">[[label]]]</span>
+          </paper-item>
+          <paper-item role="button" on-click="_onInsertAfter">
+            Insert [[_getType(row)]] After
+            <span class="sr-only">[[label]]]</span>
+          </paper-item>
+          <paper-item role="button" on-click="_onDelete">
+            Delete [[_getType(row)]]
+            <span class="sr-only">[[label]]]</span>
+          </paper-item>
         </paper-listbox>
       </paper-menu-button>
       <paper-tooltip for="menu">[[_getType(row)]] [[label]] Menu</paper-tooltip>

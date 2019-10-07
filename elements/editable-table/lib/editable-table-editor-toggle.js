@@ -85,20 +85,17 @@ class EditableTableEditorToggle extends PolymerElement {
           opacity: 0.25;
         }
       </style>
-      <label for="button" class="sr-only" aria-hidden>[[label]]</label>
       <paper-button
         id="button"
-        aria-checked$="[[toggled]]"
-        aria-describedby="[[tooltip]]"
+        active$="[[toggled]]"
         disabled$="[[disabled]]"
+        toggles
         on-click="_onClick"
-        role="switch"
       >
-        <span hidden$="[[toggled]]" class="sr-only">on</span>
-        <span hidden$="[[!toggled]]" class="sr-only">off</span>
+        <span class="sr-only">[[label]]</span>
         <iron-icon icon$="[[icon]]" aria-hidden="true"></iron-icon>
       </paper-button>
-      <paper-tooltip id="tooltip" for="button" aria-hidden="true"
+      <paper-tooltip id="tooltip" for="button" aria-hidden
         >[[label]]</paper-tooltip
       >
     `;
