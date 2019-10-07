@@ -135,7 +135,11 @@ class EditableTableEditorCell extends cellBehaviors(PolymerElement) {
    * @returns {string} a label (eg., "Cell B2")
    */
   _getCellLabel(column, row) {
-    return "Cell " + this._getLabel(column, false) + this._getLabel(row, true);
+    return (
+      this._getLabel(column, false) +
+      this._getLabel(row, true) +
+      "(editable table cell)"
+    );
   }
 
   /**

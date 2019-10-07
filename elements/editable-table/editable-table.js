@@ -191,6 +191,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
         on-response="_loadExternalData"
       ></iron-ajax>
       <editable-table-display
+        aria-hidden$="[[editMode]]"
         bordered$="[[bordered]]"
         caption$="[[caption]]"
         column-header$="[[columnHeader]]"
@@ -205,7 +206,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
         striped$="[[striped]]"
       >
       </editable-table-display>
-      <div id="outer" hidden$="[[!editMode]]">
+      <div id="outer" hidden$="[[!editMode]]" aria-hidden$="[[!editMode]]">
         <div id="inner">
           <p class="sr-only">Table Editor</p>
           <table
@@ -293,6 +294,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
                   >
                     <td class="td th-or-td" on-click="_onCellClick">
                       <editable-table-editor-cell
+                        id="cell-[[td]]-[[tr]]"
                         class="cell"
                         column="[[td]]"
                         row="[[tr]]"
@@ -575,7 +577,11 @@ class EditableTable extends displayBehaviors(PolymerElement) {
   _dataChanged(newValue, oldValue) {
     if (!newValue || newValue.length < 1 || newValue[0].length < 1) {
       let table = this.children.item(0);
-      if (table !== null && table.tagName === "TABLE") {
+      if (
+        typeof table !== typeof undefined &&
+        table !== null &&
+        table.tagName === "TABLE"
+      ) {
         this.importHTML(table);
       } else {
         this.set("data", [["", "", ""], ["", "", ""], ["", "", ""]]);

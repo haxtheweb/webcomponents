@@ -76,6 +76,7 @@ class EditableTableEditorRowcol extends cellBehaviors(PolymerElement) {
         <paper-button slot="dropdown-trigger">
           <span class="sr-only">[[_getType(row)]]</span>
           <span id="label">[[label]]</span>
+          <span class="sr-only">Menu</span>
           <iron-icon icon="arrow-drop-down"></iron-icon>
         </paper-button>
         <paper-listbox
@@ -104,6 +105,14 @@ class EditableTableEditorRowcol extends cellBehaviors(PolymerElement) {
   }
   static get properties() {
     return {
+      /**
+       * The cell that the menu controls
+       */
+      controls: {
+        type: String,
+        computed: "_getMenuControls(index,row)",
+        reflectToAttribute: true
+      },
       /**
        * Index of the row or column
        */
@@ -154,6 +163,15 @@ class EditableTableEditorRowcol extends cellBehaviors(PolymerElement) {
         }
       })
     );
+  }
+  /**
+   * Gets the first cell that the menu controls
+   * @param {number} index the index of thee row or column
+   * @param {boolean} row is this menu for a row
+   * @returns {string} the id of the first cell that the menu controls
+   */
+  _getMenuControls(index, row) {
+    return row ? `cell-0-${index}` : `cell-${index}-0`;
   }
   /**
    * Handles when Delete Row/Column is clicked

@@ -321,7 +321,11 @@ class EditableTableDisplay extends displayBehaviors(
   _dataChanged(newValue, oldValue) {
     if (!newValue || newValue.length < 1 || newValue[0].length < 1) {
       let table = this.children.item(0);
-      if (table !== null && table.tagName === "TABLE") {
+      if (
+        typeof table !== typeof undefined &&
+        table !== null &&
+        table.tagName === "TABLE"
+      ) {
         this.importHTML(table);
       }
     }

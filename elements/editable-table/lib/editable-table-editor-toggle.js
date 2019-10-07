@@ -89,6 +89,7 @@ class EditableTableEditorToggle extends PolymerElement {
         id="button"
         active$="[[toggled]]"
         disabled$="[[disabled]]"
+        label="[[label]]"
         toggles
         on-click="_onClick"
       >

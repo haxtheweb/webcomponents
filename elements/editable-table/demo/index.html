@@ -120,7 +120,7 @@
             </editable-table> 
             <script>
               toggleEditMode = function(){
-                let button = document.getElementById('food-button'),
+                var button = document.getElementById('food-button'),
                   pressed = button.getAttribute('aria-pressed') === "true" ? "false" : "true";
                 button.setAttribute('aria-pressed',pressed);
                 document.getElementById('food-table').toggleEditMode();
