@@ -32,6 +32,31 @@ body, html, :root {
   --hax-preview-insert-button-bg: var(--haxcms-system-action-color);
   --hax-preview-cancel-button-bg: var(--haxcms-system-danger-color);
   --hax-export-dialog-import-button-bg: var(--haxcms-system-danger-color);
+  /** Internals of the hax-body tag that can help with spacing normalization **/
+  --hax-base-styles-h1-font-size: 2.5em;
+  --hax-base-styles-h1-line-height: 2.5em;
+  --hax-base-styles-h2-font-size: 2em;
+  --hax-base-styles-h3-font-size: 1.75em;
+  --hax-base-styles-h4-font-size: 1.5em;
+  --hax-base-styles-h5-font-size: 1.25em;
+  --hax-base-styles-h6-font-size: 1.25em;
+  --hax-base-styles-p-line-height: 1.8;
+  --hax-base-styles-p-min-height: 43px;
+  --hax-base-styles-p-font-size: 24px;
+  --hax-base-styles-p-letter-spacing: 0.5px;
+  --hax-base-styles-a-color: #2196f3;
+  --hax-base-styles-a-font-size: 24px;
+  --hax-base-styles-a-font-weight: normal;
+  --hax-base-styles-a-color-visited: #2196f3;
+  --hax-base-styles-a-color-active: #2196f3;
+  --hax-base-styles-a-font-weight-active: normal;
+  --hax-base-styles-list-padding-bottom: 1.5em;
+  --hax-base-styles-list-line-height: 40px;
+  --hax-base-styles-list-font-size: 24px;
+  --hax-base-styles-list-max-width: 28em;
+  --hax-base-styles-list-last-child-padding-bottom: 1em;
+  --hax-base-styles-list-padding-left: 20px;
+  --hax-base-styles-list-margin-left: 20px;
   /** vaadin **/
   --lumo-primary-text-color: var(--haxcms-system-bg, black);
   --simple-toast-z-index: 10000000;
@@ -61,55 +86,60 @@ body, html {
 }
 
 h1 {
-  font-size: var(--haxcms-base-styles-h1-font-size, 2.5em);
-  line-height: var(--haxcms-base-styles-h1-line-height, 2.5em);
+  font-size: var(--hax-base-styles-h1-font-size, 2.5em);
+  line-height: var(--hax-base-styles-h1-line-height, 2.5em);
 }
 h2 {
-  font-size: var(--haxcms-base-styles-h2-font-size, 2em);
+  font-size: var(--hax-base-styles-h2-font-size, 2em);
 }
 h3 {
-  font-size: var(--haxcms-base-styles-h3-font-size, 1.75em);
+  font-size: var(--hax-base-styles-h3-font-size, 1.75em);
 }
 h4 {
-  font-size: var(--haxcms-base-styles-h4-font-size, 1.5em);
+  font-size: var(--hax-base-styles-h4-font-size, 1.5em);
 }
 h5 {
-  font-size: var(--haxcms-base-styles-h5-font-size, 1.25em);  
+  font-size: var(--hax-base-styles-h5-font-size, 1.25em);  
 }
 h6 {
-  font-size: var(--haxcms-base-styles-h6-font-size, 1.25em);
+  font-size: var(--hax-base-styles-h6-font-size, 1.25em);
 }
 p {
-  font-size: var(--haxcms-base-styles-p-line-height, 40px);
-  font-size: var(--haxcms-base-styles-p-min-height, 26px);
-  font-size: var(--haxcms-base-styles-p-font-size, 24px);
-  line-height: var(--haxcms-base-styles-p-line-height, 1.8);
-  letter-spacing: var(--haxcms-base-styles-p-letter-spacing, .5px);
+  min-height: var(--hax-base-styles-p-min-height, 43px);
+  font-size: var(--hax-base-styles-p-font-size, 24px);
+  line-height: var(--hax-base-styles-p-line-height, 1.8);
+  letter-spacing: var(--hax-base-styles-p-letter-spacing, .5px);
 }
-a {
-  color: var(--haxcms-base-styles-a-color, #000);
-  font-size: var(--haxcms-base-styles-a-font-size, 24px);
-  font-weight: var(--haxcms-base-styles-a-font-weight, normal);
+a,
+a:-webkit-any-link {
+  color: var(--hax-base-styles-a-color, #2196f3);
+  font-size: var(--hax-base-styles-a-font-size, 24px);
+  font-weight: var(--hax-base-styles-a-font-weight, normal);
 }
 a:visited {
-  color: var(--haxcms-base-styles-a-color-visited, #2196f3);
+  color: var(--hax-base-styles-a-color-visited, #2196f3);
 }
 a:active,
 a:focus,
 a:hover {
-  color: var(--haxcms-base-styles-a-color-active, #2196f3);
-  font-weight: var(--haxcms-base-styles-a-font-weight-active, normal);
+  color: var(--hax-base-styles-a-color-active, #2196f3);
+  font-weight: var(--hax-base-styles-a-font-weight-active, normal);
 }
 ol,
 ul
 ol li,
 ul li {
-  padding-bottom: var(--haxcms-base-styles-list-padding-bottom, 1.5em);
-  line-height: var(--haxcms-base-styles-list-line-height, 40px);
-  font-size: var(--haxcms-base-styles-list-font-size, 24px);
-  max-width: var(--haxcms-base-styles-list-max-width, 28em);
+  padding-bottom: var(--hax-base-styles-list-padding-bottom, 1.5em);
+  line-height: var(--hax-base-styles-list-line-height, 40px);
+  font-size: var(--hax-base-styles-list-font-size, 24px);
+  max-width: var(--hax-base-styles-list-max-width, 28em);
 }
 ol li:last-child,
 ul li:last-child {
-  padding-bottom: var(--haxcms-base-styles-list-last-child-padding-bottom, 1em);
+  padding-bottom: var(--hax-base-styles-list-last-child-padding-bottom, 1em);
+}
+ul,
+ol {
+  padding-left: var(--hax-base-styles-list-padding-left, 20px);
+  padding-left: var(--hax-base-styles-list-margin-left, 20px);
 }

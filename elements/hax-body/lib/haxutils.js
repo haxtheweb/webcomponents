@@ -68,14 +68,28 @@ function wipeSlot(element, slot = "*") {
  * Strip word BS
  */
 function stripMSWord(input) {
-  // 1. remove line breaks / Mso classes
-  var output = input.replace(/(\|\\r| class=(")?Mso[a-zA-Z]+(")?)/g, "");
+  // 1. remove line breaks / Mso classes right off the bat
+  var output = input
+    .split("\n\r")
+    .join("\n")
+    .split("\r")
+    .join("\n")
+    .split("\n\n")
+    .join("\n")
+    .split("\n\n")
+    .join("\n")
+    .split("\n\n")
+    .join("\n")
+    .split("\n")
+    .join(" ")
+    .replace(/( class=(")?Mso[a-zA-Z]+(")?)/g, "");
+
   // 2. strip Word generated HTML comments
   output = output.replace(/<\!--(\s|.)*?-->/gim, "");
   output = output.replace(/<\!(\s|.)*?>/gim, "");
   // 3. remove tags leave content if any
   output = output.replace(
-    /<(\/)*(meta|link|html|head|body|span|\\\\?xml:|xml|st1:|o:|w:|m:|v:|font)(\s|.)*?>/gim,
+    /<(\/)*(meta|link|html|head|body|span|font|br|\\\\?xml:|xml|st1:|o:|w:|m:|v:)(\s|.)*?>/gim,
     ""
   );
   // 4. Remove everything in between and including tags '<style(.)style(.)>'
@@ -87,7 +101,6 @@ function stripMSWord(input) {
     );
     output = output.replace(tagStripper, "");
   }
-
   // 5. remove attributes ' style="..."', align, start
   output = output.replace(/ style='(\s|.)*?'/gim, "");
   output = output.replace(/ align=.*? /g, "");
@@ -101,7 +114,35 @@ function stripMSWord(input) {
   output = output.replace(/ class=""/gim, "");
   output = output.replace(/ class="hax-active"/gim, "");
   output = output.replace(/ contenteditable="(\s|.)*?"/gim, "");
-
+  // 7. clean out empty paragraphs and endlines that cause weird spacing
+  output = output.replace(/&nbsp;/gm, " ");
+  // start of double, do it twice for nesting
+  output = output.replace(/<p><p>/gm, "<p>");
+  output = output.replace(/<p><p>/gm, "<p>");
+  // double, do it twice for nesting
+  output = output.replace(/<\/p><\/p>/gm, "</p>");
+  output = output.replace(/<\/p><\/p>/gm, "</p>");
+  // empty with lots of space
+  output = output.replace(/<p>(\s*)<\/p>/gm, " ");
+  // empty p / more or less empty
+  output = output.replace(/<p><\/p>/gm, "");
+  output = output.replace(/<p>&nbsp;<\/p>/gm, " ");
+  // br somehow getting through here
+  output = output.replace(/<p><br\/><\/p>/gm, "");
+  output = output.replace(/<p><br><\/p>/gm, "");
+  // whitespace in reverse of the top case now that we've cleaned it up
+  output = output.replace(/<\/p>(\s*)<p>/gm, "</p><p>");
+  // wow do I hate contenteditable and the dom....
+  // bold and italic are treated as if they are block elements in a paste scenario
+  // 8. check for empty bad tags
+  for (var i in badTags) {
+    let emptyTagRemove = new RegExp(
+      "<" + badTags[i] + "></" + badTags[i] + ">",
+      "gi"
+    );
+    output = output.replace(emptyTagRemove, "");
+  }
+  output = output.trim();
   return output;
 }
 

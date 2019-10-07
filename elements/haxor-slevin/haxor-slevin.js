@@ -32,6 +32,9 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
           display: block;
           background-color: #ffffff;
           color: rgba(0, 0, 0, 0.84);
+          --hax-base-styles-a-color: var(--haxcms-color, #2196f3);
+          --hax-base-styles-a-color-visited: var(--haxcms-color, #2196f3);
+          --hax-base-styles-a-color-active: var(--haxcms-color, #2196f3);
         }
 
         :host([hidden]) {
@@ -54,32 +57,7 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
         #slot {
           min-height: 50vh;
         }
-        #slot ::slotted(p) {
-          margin-top: 29px;
-          font-family: Georgia, Cambria, "Times New Roman", Times, serif;
-          letter-spacing: 0.01rem;
-          font-weight: 400;
-          font-style: normal;
-          font-size: 21px;
-          line-height: 1.58;
-          letter-spacing: -0.003em;
-          margin-bottom: 0;
-        }
-        #slot ::slotted(h1, h2, h3, h4, h5, h6) {
-          font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans",
-            Geneva, Arial, sans-serif;
-          letter-spacing: -0.02em;
-          font-style: normal;
-          letter-spacing: 0;
-          font-size: 34px;
-          line-height: 1.15;
-          letter-spacing: -0.015em;
-          font-weight: 600;
-          margin-top: 53px;
-        }
-        #slot ::slotted(h2, h3) {
-          font-size: 34px;
-        }
+
         .wrapper {
           padding-bottom: 80px;
         }
