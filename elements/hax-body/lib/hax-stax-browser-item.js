@@ -1,30 +1,16 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/iron-image/iron-image.js";
 import "@polymer/paper-button/paper-button.js";
-import "@polymer/paper-card/paper-card.js";
-import "./hax-shared-styles.js";
 /**
  * `hax-stax-browser-item`
  * `A button on the hax-gizmo-browser app display`
  */
-class HaxStaxBrowserItem extends PolymerElement {
-  constructor() {
-    super();
-  }
-  static get template() {
-    return html`
-      <style include="hax-shared-styles">
+class HaxStaxBrowserItem extends LitElement {
+  static get styles() {
+    return [
+      css`
         :host {
           display: flex;
-        }
-        :host([elevation="1"]) {
-          -webkit-transform: scale(1, 1);
-          transform: scale(1, 1);
-        }
-        :host([elevation="2"]) {
-          -webkit-transform: scale(1.4, 1.4);
-          transform: scale(1.4, 1.4);
         }
         paper-card {
           margin: 4px 0;
@@ -41,8 +27,24 @@ class HaxStaxBrowserItem extends PolymerElement {
           height: 80px !important;
           width: 100%;
           display: flex;
-          border-radius: 10px;
+          border-radius: 0;
           min-width: unset;
+          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+            0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+          transition: box-shadow 0.3s;
+        }
+        paper-button:hover,
+        paper-button:focus {
+          box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.14),
+            0 2px 10px 0 rgba(0, 0, 0, 0.12), 0 6px 2px -4px rgba(0, 0, 0, 0.2);
+        }
+        paper-button:active {
+          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+            0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+        }
+        paper-button .item-title {
+          font-size: 14px;
+          display: inline-flex;
         }
         paper-button .item-title {
           font-size: 14px;
@@ -59,39 +61,31 @@ class HaxStaxBrowserItem extends PolymerElement {
             font-size: 10px;
           }
         }
-      </style>
-      <paper-card id="card" elevation="[[elevation]]">
-        <paper-button
-          id="button"
-          on-click="_fireEvent"
-          data-voicecommand\$="select [[title]]"
-        >
-          <div class="button-inner">
-            <iron-image
-              src="[[image]]"
-              preload=""
-              sizing="cover"
-              hidden\$="[[!image]]"
-            ></iron-image>
-            <div class="item-title">[[title]]</div>
-          </div>
-        </paper-button>
-      </paper-card>
+      `
+    ];
+  }
+  render() {
+    return html`
+      <paper-button
+        id="button"
+        @click="${this._fireEvent}"
+        .data-voicecommand="select ${this.title}"
+      >
+        <div class="button-inner">
+          <iron-image
+            src="${this.image}"
+            preload=""
+            sizing="cover"
+            .hidden="${this.image}"
+          ></iron-image>
+          <div class="item-title">${this.title}</div>
+        </div>
+      </paper-button>
     `;
   }
 
   static get tag() {
     return "hax-stax-browser-item";
-  }
-  ready() {
-    super.ready();
-    afterNextRender(this, function() {
-      this.addEventListener("mousedown", this.tapEventOn.bind(this));
-      this.addEventListener("mouseover", this.tapEventOn.bind(this));
-      this.addEventListener("mouseout", this.tapEventOff.bind(this));
-      this.addEventListener("focusin", this.tapEventOn.bind(this));
-      this.addEventListener("focusout", this.tapEventOff.bind(this));
-    });
   }
   static get properties() {
     return {
@@ -143,30 +137,8 @@ class HaxStaxBrowserItem extends PolymerElement {
        */
       tag: {
         type: String
-      },
-      /**
-       * Elevation off the UI
-       */
-      elevation: {
-        type: Number,
-        value: 1,
-        reflectToAttribute: true
       }
     };
-  }
-
-  /**
-   * special handling for taps on the thing
-   */
-  tapEventOn(e) {
-    this.elevation = 2;
-  }
-
-  /**
-   * Hover off stop showing the deeper shadow.
-   */
-  tapEventOff(e) {
-    this.elevation = 1;
   }
 
   /**
