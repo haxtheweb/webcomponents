@@ -1,5 +1,4 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  * `hax-app-browser-item`
  * `A button on the hax-app-browser display`
@@ -34,21 +33,13 @@ class HAXAppBrowserItem extends LitElement {
        * Image for the button, optional.
        */
       image: {
-        type: String,
-        value: false
+        type: String
       },
       /**
        * MaterializeCSS color name of the item
        */
       color: {
         type: String
-      },
-      /**
-       * Class for the color
-       */
-      hexColor: {
-        type: String,
-        attribute: "hex-color"
       },
       /**
        * Author related to this app
@@ -73,36 +64,21 @@ class HAXAppBrowserItem extends LitElement {
        */
       status: {
         type: Array
-      },
-      /**
-       * Elevation off the UI
-       */
-      elevation: {
-        type: Number,
-        reflect: true
       }
     };
   }
   constructor() {
     super();
-    this.elevation = 1;
+    this.image = false;
     import("@polymer/paper-button/paper-button.js");
     import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/iron-image/iron-image.js");
   }
   static get styles() {
     return [
       css`
         :host {
           display: block;
-        }
-        :host([elevation="1"]) {
-          -webkit-transform: scale(1, 1);
-          transform: scale(1, 1);
-        }
-        :host([elevation="2"]) {
-          -webkit-transform: scale(1.4, 1.4);
-          transform: scale(1.4, 1.4);
+          max-width: 90px;
         }
         paper-button {
           color: var(--hax-color-text);
@@ -111,18 +87,11 @@ class HAXAppBrowserItem extends LitElement {
           min-width: unset;
           cursor: pointer;
           display: flex;
-          width: 50px;
-          height: 50px;
+          width: 80px;
           padding: 5px;
-          margin: 10px;
+          margin: 5px;
           color: #ffffff;
-          border-radius: 50%;
-          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-            0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-          -webkit-transition: box-shadow 0.3s;
-          -moz-transition: box-shadow 0.3s;
-          -ms-transition: box-shadow 0.3s;
-          -o-transition: box-shadow 0.3s;
+          border-radius: 0;
           transition: box-shadow 0.3s;
         }
         paper-button:hover,
@@ -165,59 +134,18 @@ class HAXAppBrowserItem extends LitElement {
   render() {
     return html`
       <paper-button
-        data-voicecommand="select ${this.title}"
+        @click="${this._fireEvent}"
+        .data-voicecommand="select ${this.title}"
         title="${this.title}"
-        style="background-color:${this.hexColor};"
       >
-        <div class="button-inner">
-          <iron-icon icon="${this.icon}" hidden="${!this.icon}"></iron-icon>
-          <iron-image
-            src="${this.image}"
-            preload=""
-            sizing="cover"
-            hidden="${!this.image}"
-          ></iron-image>
-        </div>
+        <hax-item-button-inner
+          color="${this.color}"
+          icon="${this.icon}"
+          label="${this.title}"
+        >
+        </hax-item-button-inner>
       </paper-button>
-      <div class="item-title" aria-hidden="true">${this.title}</div>
     `;
-  }
-  connectedCallback() {
-    super.connectedCallback();
-    this.addEventListener("click", this._fireEvent);
-    this.addEventListener("mousedown", this.tapEventOn);
-    this.addEventListener("mouseover", this.tapEventOn);
-    this.addEventListener("mouseout", this.tapEventOff);
-    this.addEventListener("focusin", this.tapEventOn);
-    this.addEventListener("focusout", this.tapEventOff);
-  }
-  /**
-   * special handling for taps on the thing
-   */
-  tapEventOn(e) {
-    this.elevation = 2;
-  }
-  /**
-   * Hover off stop showing the deeper shadow.
-   */
-  tapEventOff(e) {
-    this.elevation = 1;
-  }
-  _getHexColor(color) {
-    let name = color.replace("-text", "");
-    let tmp = new SimpleColors();
-    if (tmp.colors[name]) {
-      return tmp.colors[name][6];
-    }
-    return "#000000";
-  }
-  updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-      // update hexcolor when color changes
-      if (propName === "color") {
-        this.hexColor = this._getHexColor(this.color);
-      }
-    });
   }
   /**
    * Fire an event that includes the eventName of what was just pressed.
@@ -233,6 +161,5 @@ class HAXAppBrowserItem extends LitElement {
     );
   }
 }
-
 customElements.define(HAXAppBrowserItem.tag, HAXAppBrowserItem);
 export { HAXAppBrowserItem };

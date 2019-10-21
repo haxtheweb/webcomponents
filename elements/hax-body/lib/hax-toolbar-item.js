@@ -1,13 +1,12 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "./hax-shared-styles.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 
 class HaxToolbarItem extends PolymerElement {
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles hax-shared-styles">
+      <style include="simple-colors-shared-styles">
         :host {
           display: flex;
           box-sizing: border-box;

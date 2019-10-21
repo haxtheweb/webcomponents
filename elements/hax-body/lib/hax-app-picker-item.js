@@ -10,22 +10,13 @@ import "./hax-item-button-inner.js";
 class HaxAppPickerItem extends LitElement {
   constructor() {
     super();
-    this.elevation = 1;
   }
   static get styles() {
     return [
       css`
         :host {
           display: block;
-          max-width: 100px;
-        }
-        :host([elevation="1"]) {
-          -webkit-transform: scale(1, 1);
-          transform: scale(1, 1);
-        }
-        :host([elevation="2"]) {
-          -webkit-transform: scale(1.4, 1.4);
-          transform: scale(1.4, 1.4);
+          max-width: 90px;
         }
         paper-button {
           color: black;
@@ -33,10 +24,23 @@ class HaxAppPickerItem extends LitElement {
           min-width: unset;
           cursor: pointer;
           width: 80px;
-          padding: 10px;
-          margin: 10px;
-          box-shadow: none;
+          padding: 5px;
+          margin: 5px;
           --paper-button-ink-color: var(--hax-ink-color, black);
+          -webkit-transition: box-shadow 0.3s;
+          -moz-transition: box-shadow 0.3s;
+          -ms-transition: box-shadow 0.3s;
+          -o-transition: box-shadow 0.3s;
+          transition: box-shadow 0.3s;
+        }
+        paper-button:hover,
+        paper-button:focus {
+          box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.14),
+            0 2px 10px 0 rgba(0, 0, 0, 0.12), 0 6px 2px -4px rgba(0, 0, 0, 0.2);
+        }
+        paper-button:active {
+          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+            0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
         }
       `
     ];
@@ -52,14 +56,6 @@ class HaxAppPickerItem extends LitElement {
         </hax-item-button-inner>
       </paper-button>
     `;
-  }
-  connectedCallback() {
-    super.connectedCallback();
-    this.addEventListener("mousedown", this.tapEventOn.bind(this));
-    this.addEventListener("mouseover", this.tapEventOn.bind(this));
-    this.addEventListener("mouseout", this.tapEventOff.bind(this));
-    this.addEventListener("focusin", this.tapEventOn.bind(this));
-    this.addEventListener("focusout", this.tapEventOff.bind(this));
   }
   static get tag() {
     return "hax-app-picker-item";
@@ -83,27 +79,8 @@ class HaxAppPickerItem extends LitElement {
        */
       label: {
         type: String
-      },
-      /**
-       * Elevation off the UI
-       */
-      elevation: {
-        type: Number,
-        reflect: true
       }
     };
-  }
-  /**
-   * special handling for taps on the thing
-   */
-  tapEventOn(e) {
-    this.elevation = 2;
-  }
-  /**
-   * Hover off stop showing the deeper shadow.
-   */
-  tapEventOff(e) {
-    this.elevation = 1;
   }
 }
 window.customElements.define(HaxAppPickerItem.tag, HaxAppPickerItem);
