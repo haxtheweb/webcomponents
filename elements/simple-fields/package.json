@@ -16,7 +16,7 @@
       "hax": "src/simple-fields-hax.json"
     }
   },
-  "version": "2.1.8",
+  "version": "2.1.10",
   "description": "Uses eco-json-form and HAX wiring to display a series of fields",
   "repository": {
     "type": "git",
@@ -42,9 +42,9 @@
     "@lrnwebcomponents/code-editor": "^2.1.5",
     "@lrnwebcomponents/eco-json-schema-form": "^2.1.7",
     "@lrnwebcomponents/paper-input-flagged": "^2.1.5",
-    "@lrnwebcomponents/simple-colors": "^2.1.8",
-    "@lrnwebcomponents/simple-icon-picker": "^2.1.8",
-    "@lrnwebcomponents/simple-picker": "^2.1.8",
+    "@lrnwebcomponents/simple-colors": "^2.1.10",
+    "@lrnwebcomponents/simple-icon-picker": "^2.1.10",
+    "@lrnwebcomponents/simple-picker": "^2.1.10",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-input": "^3.0.2",
