@@ -110,6 +110,7 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(LitElement) {
             <hexagon-loader
               size="small"
               id="loading"
+              item-count="4"
               color="#0085ba"
               aria-roledescription="Loading"
             ></hexagon-loader>
