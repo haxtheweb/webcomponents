@@ -25,9 +25,9 @@ class HaxGizmoBrowser extends PolymerElement {
           display: block;
         }
         hax-gizmo-browser-item {
-          margin: 10px;
-          -webkit-transition: 0.3s all linear;
-          transition: 0.3s all linear;
+          margin: 5px;
+          -webkit-transition: 0.2s all linear;
+          transition: 0.2s all linear;
         }
         #ironlist {
           min-height: 50vh;
@@ -81,7 +81,6 @@ class HaxGizmoBrowser extends PolymerElement {
                   title="[[gizmo.title]]"
                   tag-to-insert="[[gizmo.tag]]"
                   icon="[[gizmo.icon]]"
-                  image="[[gizmo.image]]"
                   color="[[gizmo.color]]"
                   author="[[gizmo.author]]"
                   teaser="[[gizmo.teaser]]"

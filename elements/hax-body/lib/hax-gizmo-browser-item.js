@@ -1,59 +1,50 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "./hax-item-button-inner.js";
 /**
-`hax-gizmo-browser-item`
-A button on the hax-gizmo-browser app display
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
- - 
-*/
-class HaxGizmoBrowserItem extends PolymerElement {
-  constructor() {
-    super();
-    afterNextRender(this, function() {
-      this.addEventListener("mousedown", this.tapEventOn.bind(this));
-      this.addEventListener("mouseover", this.tapEventOn.bind(this));
-      this.addEventListener("mouseout", this.tapEventOff.bind(this));
-      this.addEventListener("focusin", this.tapEventOn.bind(this));
-      this.addEventListener("focusout", this.tapEventOff.bind(this));
-    });
-  }
-  static get template() {
-    return html`
-      <style>
+ * `hax-gizmo-browser-item`
+ * `A button on the hax-gizmo-browser app display`
+ */
+class HaxGizmoBrowserItem extends LitElement {
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
-          max-width: 100px;
-        }
-        :host([elevation="1"]) {
-          -webkit-transform: scale(1, 1);
-          transform: scale(1, 1);
-        }
-        :host([elevation="2"]) {
-          -webkit-transform: scale(1.4, 1.4);
-          transform: scale(1.4, 1.4);
+          max-width: 90px;
         }
         paper-button {
-          color: black;
           text-transform: none;
           min-width: unset;
           cursor: pointer;
           width: 80px;
-          padding: 10px;
-          margin: 10px;
+          padding: 5px;
+          margin: 5px;
           box-shadow: none;
-          --paper-button-ink-color: var(--hax-ink-color, black);
+          transition: 0.2s all linear;
+          --paper-button-ink-color: var(--hax-ink-color, #000000);
         }
-      </style>
-      <paper-button on-click="_fireEvent" data-voicecommand$="select [[title]]">
+        paper-button:hover,
+        paper-button:focus {
+          box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.14),
+            0 2px 10px 0 rgba(0, 0, 0, 0.12), 0 6px 2px -4px rgba(0, 0, 0, 0.2);
+        }
+        paper-button:active {
+          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+            0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+        }
+      `
+    ];
+  }
+  render() {
+    return html`
+      <paper-button
+        @click="${this._fireEvent}"
+        .data-voicecommand="select ${this.title}"
+      >
         <hax-item-button-inner
-          color="[[color]]"
-          icon="[[icon]]"
-          image="[[image]]"
-          label="[[title]]"
+          color="${this.color}"
+          icon="${this.icon}"
+          label="${this.title}"
         >
         </hax-item-button-inner>
       </paper-button>
@@ -81,13 +72,6 @@ class HaxGizmoBrowserItem extends PolymerElement {
        */
       icon: {
         type: String
-      },
-      /**
-       * Image for the button, optional.
-       */
-      image: {
-        type: String,
-        value: false
       },
       /**
        * color name of the item
@@ -124,29 +108,8 @@ class HaxGizmoBrowserItem extends PolymerElement {
        */
       tagToInsert: {
         type: String
-      },
-      /**
-       * Elevation off the UI
-       */
-      elevation: {
-        type: Number,
-        value: 1,
-        reflectToAttribute: true
       }
     };
-  }
-  /**
-   * special handling for taps on the thing
-   */
-  tapEventOn(e) {
-    this.elevation = 2;
-  }
-
-  /**
-   * Hover off stop showing the deeper shadow.
-   */
-  tapEventOff(e) {
-    this.elevation = 1;
   }
 
   /**
