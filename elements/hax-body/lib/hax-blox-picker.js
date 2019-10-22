@@ -11,23 +11,28 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 @microcopy - the mental model for this element
  - data - this is the app data model for an element which expresses itself to hax
 */
-class HaxBloxPicker extends LitElement {
+class HaxPicker extends LitElement {
   constructor() {
     super();
-    this.title = "Layouts";
-    import("@polymer/paper-button/paper-button.js");
-    import("@polymer/app-layout/app-drawer/app-drawer.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-blox-browser.js");
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/paper-button/paper-button.js");
+    import("@polymer/app-layout/app-drawer/app-drawer.js");
+  }
+  /**
+   * Depeendencies
+   */
+  setupPicker() {
+    // event which informs HAX accurately
     this.dispatchEvent(
-      new CustomEvent("hax-register-blox-picker", {
+      new CustomEvent(`hax-register-${this.picker}-picker`, {
         bubbles: true,
         cancelable: true,
         composed: true,
         detail: this
       })
     );
+    this.appendChild(document.createElement(`hax-${this.picker}-browser`));
   }
   static get styles() {
     return [
@@ -88,16 +93,13 @@ class HaxBloxPicker extends LitElement {
       <app-drawer id="dialog" align="left" transition-duration="300">
         <h3 class="title">${this.title}</h3>
         <div style="height: 100%; overflow: auto;" class="pref-container">
-          <hax-blox-browser id="bloxbrowser"></hax-blox-browser>
+          <slot></slot>
         </div>
         <paper-button id="closedialog" @click="${this.close}">
           <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
         </paper-button>
       </app-drawer>
     `;
-  }
-  static get tag() {
-    return "hax-blox-picker";
   }
 
   static get properties() {
@@ -133,5 +135,19 @@ class HaxBloxPicker extends LitElement {
     }
   }
 }
+
+class HaxBloxPicker extends HaxPicker {
+  constructor() {
+    super();
+    import("@lrnwebcomponents/hax-body/lib/hax-blox-browser.js");
+    this.picker = "blox";
+    this.title = "Layouts";
+    // this sets everything else in motion correctly
+    this.setupPicker();
+  }
+  static get tag() {
+    return "hax-blox-picker";
+  }
+}
 window.customElements.define(HaxBloxPicker.tag, HaxBloxPicker);
-export { HaxBloxPicker };
+export { HaxPicker, HaxBloxPicker };
