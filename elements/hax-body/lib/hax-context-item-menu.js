@@ -4,7 +4,6 @@ import "@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/neon-animation/neon-animation.js";
-import "./hax-shared-styles.js";
 /**
  * `hax-context-item-menu`
  * `An icon / button that has support for multiple options via drop down.`
@@ -18,7 +17,7 @@ class HaxContextItemMenu extends PolymerElement {
   }
   static get template() {
     return html`
-      <style include="hax-shared-styles">
+      <style>
         :host {
           display: inline-flex;
           height: 36px;

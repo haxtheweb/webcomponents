@@ -2,7 +2,6 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/hax-body/lib/hax-panel-item.js";
-import "./hax-shared-styles.js";
 /**
 `hax-panel`
 A LRN element that provides a panel / pallet of options to choose from.
@@ -22,7 +21,7 @@ class HaxPanel extends PolymerElement {
   }
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles hax-shared-styles">
+      <style include="simple-colors-shared-styles">
         :host {
           display: block;
           position: absolute;

@@ -5,7 +5,6 @@ import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/grafitto-filter/grafitto-filter.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/iron-pages/iron-pages.js";
-import "./hax-shared-styles.js";
 /**
  * `hax-app-browser`
  * `Browse a list of apps. This provides a listing of our gizmos that we've integrated with.`

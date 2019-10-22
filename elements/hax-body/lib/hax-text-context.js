@@ -1,7 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "./hax-shared-styles.js";
 /**
  * `hax-text-context`
  * `A context menu that provides common text based authoring options.`
@@ -26,7 +24,7 @@ class HaxTextContext extends PolymerElement {
   }
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles hax-shared-styles">
+      <style>
         :host {
           display: block;
           pointer-events: none;

@@ -2,7 +2,6 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
-import "./hax-shared-styles.js";
 /**
  `hax-app-picker`
  A picker for selecting an item from a list of apps / hax gizmos which require
@@ -27,7 +26,7 @@ class HaxAppPicker extends PolymerElement {
   }
   static get template() {
     return html`
-      <style include="hax-shared-styles">
+      <style>
         :host {
           display: block;
         }

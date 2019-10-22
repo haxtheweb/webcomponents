@@ -1,7 +1,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import "./hax-shared-styles.js";
 /**
  * `hax-input-mixer`
  * A context menu that provides common custom-element based authoring options. While
@@ -24,7 +23,7 @@ class HaxImportMixer extends PolymerElement {
   }
   static get template() {
     return html`
-      <style includes="hax-shared-styles">
+      <style>
         :host {
           display: block;
           margin: 0;

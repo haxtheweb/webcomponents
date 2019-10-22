@@ -1,7 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "./hax-shared-styles.js";
 /**
 `hax-export-dialog`
 Export dialog with all export options and settings provided.
@@ -28,7 +26,7 @@ class HaxPreferencesDialog extends PolymerElement {
   }
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles hax-shared-styles">
+      <style>
         :host {
           display: block;
         }
