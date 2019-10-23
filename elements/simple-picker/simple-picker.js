@@ -239,6 +239,8 @@ class SimplePicker extends PolymerElement {
             )
           );
           background-color: var(--simple-picker-options-background-color, #fff);
+          max-height: 250px;
+          overflow-y: scroll;
           @apply --simple-picker-rows;
         }
         :host([align-right]) #collapse .rows {
