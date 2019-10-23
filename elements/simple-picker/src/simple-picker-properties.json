@@ -1,7 +1,7 @@
 {
   /**
    * llow a null value?
-   * Default behavior/false will select the first option and set value accordingly.
+   * Default behavior/false will select first option and set value accordingly.
    */
   "allowNull": {
     "name": "allowNull",
@@ -11,8 +11,8 @@
   },
 
   /**
-   * Align the right edges of listbox and the button?
-   * Default behavior/false aligns to the left edges.
+   * Align right edges of listbox and button?
+   * Default behavior/false aligns to left edges.
    */
   "alignRight": {
     "name": "alignRight",
@@ -22,7 +22,7 @@
   },
 
   /**
-   * Optional. Sets the aria-labelledby attribute
+   * Optional. Sets aria-labelledby attribute
    */
   "ariaLabelledby": {
     "name": "ariaLabelledby",
@@ -41,7 +41,7 @@
   },
 
   /**
-   * Is the picker disabled?
+   * Is picker disabled?
    */
   "disabled": {
     "name": "disabled",
@@ -62,7 +62,7 @@
 
   /**
    * Hide option labels? As color-picker or icon-picker, labels may be redundant.
-   * This option would move the labels off-screen so that only screen-readers will have them.
+   * This option would move labels off-screen so that only screen-readers will have them.
    */
   "hideOptionLabels": {
     "name": "hideOptionLabels",
@@ -71,7 +71,7 @@
   },
 
   /**
-   * Hide the selected item sample?
+   * Hide selected item sample?
    * Default behavior/false shows a sample without expanding menu.
    */
   "hideSample": {
@@ -82,7 +82,7 @@
   },
 
   /**
-   * Optional. The label for the picker input
+   * Optional. Label for picker input
    */
   "label": {
     "name": "label",
@@ -92,14 +92,14 @@
   },
 
   /**
-   * An array of options for the picker, eg.: `
+   * An array of options for picker, eg.: `
 [
   [
     {
-      "icon": "editor:format-paint",      //Optional. Used if the picker is used as an icon picker.
-      "alt": "Blue",                      //Required for accessibility. Alt text description of the choice.
+      "icon": "editor:format-paint",      //Optional. Used if picker is used as an icon picker.
+      "alt": "Blue",                      //Required for accessibility. Alt text description of choice.
       "style": "background-color: blue;", //Optional. Used to set an option's style.
-      ...                                 //Optional. Any other properties that should be captured as part of the selected option's value
+      ...                                 //Optional. Any other properties that should be captured as part of selected option's value
     },...
   ]
 ]`
@@ -121,10 +121,10 @@
   },
 
   /**
-   * position the swatches relative to the picker, where:
-   * `left` aligns the swatches to the picker's left edge
-   * `right` aligns the swatches to the picker's right edge
-   * `center` aligns the swatches to the picker's center
+   * position swatches relative to picker, where:
+   * `left` aligns swatches to picker's left edge
+   * `right` aligns swatches to picker's right edge
+   * `center` aligns swatches to picker's center
   "position": {
     "name": "position",
     "type": Boolean,
@@ -144,7 +144,7 @@
   },
 
   /**
-   * An string that stores the current value for the picker
+   * An string that stores current value for picker
    */
   "value": {
     "name": "value",
@@ -156,7 +156,7 @@
   },
 
   /**
-   * The aria-activedescendant attribute (active option's ID)
+   * Aria-activedescendant attribute (active option's ID)
    */
   "__activeDesc": {
     "name": "__activeDesc",
@@ -174,7 +174,7 @@
   },
 
   /**
-   * The selected option based on the value of the picker
+   * Selected option based on value of picker
    */
   "__selectedOption": {
     "name": "__selectedOption",

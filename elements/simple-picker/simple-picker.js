@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import "@polymer/iron-list/iron-list.js";
 /**
  * `simple-picker`
  * `a simple picker for options, icons, etc.`
@@ -17,32 +18,33 @@ Custom property | Description | Default
 `--simple-picker-font-family` | Main font-family. | inherit
 `--simple-picker-font-size` | Main font-size. | inherit
 `--simple-picker-color` | Main text color. | black
-`--simple-picker-color-active` | Color of the sample text when button is focused within or hovered. | --simple-picker-color
+`--simple-picker-color-active` | Color of sample text when button is focused within or hovered. | --simple-picker-color
 `--simple-picker-color-disabled` | Disabled text color. | #888
-`--simple-picker-background-color` | Background color for the button. | #f0f0f0
-`--simple-picker-background-color-disabled` | Background color for the button when picker is disabled. | #e8e8e8
+`--simple-picker-background-color` | Background color for button. | #f0f0f0
+`--simple-picker-background-color-disabled` | Background color for button when picker is disabled. | #e8e8e8
 `--simple-picker-border-radius` | Main border-radius. | 2px
-`--simple-picker-border-width` | The default border width. | 1px
-`--simple-picker-border-style` | The default border style. | solid
-`--simple-picker-border-color` | The default border color. | --simple-picker-color-disabled
-`--simple-picker-focus-border-width` | The border width when focused within or hovered. | --simple-picker-border-width
-`--simple-picker-focus-border-style` | The border style when focused within or hovered. | --simple-picker-border-style
-`--simple-picker-focus-border-color` | The border color when focused within or hovered. | --simple-picker-border-color
+`--simple-picker-border-width` | Default border width. | 1px
+`--simple-picker-border-style` | Default border style. | solid
+`--simple-picker-border-color` | Default border color. | --simple-picker-color-disabled
+`--simple-picker-focus-border-width` | Border width when focused within or hovered. | --simple-picker-border-width
+`--simple-picker-focus-border-style` | Border style when focused within or hovered. | --simple-picker-border-style
+`--simple-picker-focus-border-color` | Border color when focused within or hovered. | --simple-picker-border-color
 `--simple-picker-label-color` | Label text color. | --simple-picker-color
 `--simple-picker-float-label-color` | Floating label text color. | --simple-picker-color-disabled
 `--simple-picker-float-label-active-color` | Floating label text color when picker is focused or hovered. | --simple-picker-color-disabled
-`--simple-picker-icon-transform` | Rotation of the arrow icon by default. | rotate(0deg)
-`--simple-picker-expanded-icon-transform` | Rotation of the arrow icon when picker is expanded. | rotate(0deg)
+`--simple-picker-icon-transform` | Rotation of arrow icon by default. | rotate(0deg)
+`--simple-picker-expanded-icon-transform` | Rotation of arrow icon when picker is expanded. | rotate(0deg)
 `--simple-picker-sample-color` | Sample option text color. | --simple-picker-color
 `--simple-picker-sample-padding` | Sample option padding. | 2px
 `--simple-picker-sample-background-color` | Sample option background-color. | transparent
-`--simple-picker-option-size` | Height of the option. | 24px
-`--simple-picker-option-selected-background-color` | Outline for the currently sselected option. | --simple-picker-options-background-color
-`--simple-picker-option-active-background-color` | Outline for the currently active option. | #aaddff
-`--simple-picker-options-border-width` | The border width of the listbox. | --simple-picker-border-width
-`--simple-picker-options-border-style` | The border style of the listbox. | --simple-picker-border-style
-`--simple-picker-options-border-color` | The border color of the listbox. | --simple-picker-border-color
-`--simple-picker-options-background-color` | Background color for the listbox. | #fff
+`--simple-picker-option-size` | Height of option. | 24px
+`--simple-picker-option-selected-background-color` | Outline for currently sselected option. | --simple-picker-options-background-color
+`--simple-picker-option-active-background-color` | Outline for currently active option. | #aaddff
+`--simple-picker-options-max-height` | Maximum amount of space listbox can use before scrolling. Use `unset` for now vertical scroll. | 250px
+`--simple-picker-options-border-width` | Border width of listbox. | --simple-picker-border-width
+`--simple-picker-options-border-style` | Border style of listbox. | --simple-picker-border-style
+`--simple-picker-options-border-color` | Border color of listbox. | --simple-picker-border-color
+`--simple-picker-options-background-color` | Background color for listbox. | #fff
 `--simple-picker-height` | Calculation based on option size, padding, and border. DO NOT EDIT. | --simple-picker-option-size - --simple-picker-sample-padding * 2 - --simple-picker-border-width * 2
 *
  * @customElement
@@ -239,8 +241,8 @@ class SimplePicker extends PolymerElement {
             )
           );
           background-color: var(--simple-picker-options-background-color, #fff);
-          max-height: 250px;
-          overflow-y: scroll;
+          max-height: var(--simple-picker-options-max-height, 250px);
+          overflow-y: auto;
           @apply --simple-picker-rows;
         }
         :host([align-right]) #collapse .rows {
@@ -434,7 +436,7 @@ class SimplePicker extends PolymerElement {
     let props = {
       /**
        * llow a null value?
-       * Default behavior/false will select the first option and set value accordingly.
+       * Default behavior/false will select first option and set value accordingly.
        */
       allowNull: {
         name: "allowNull",
@@ -444,8 +446,8 @@ class SimplePicker extends PolymerElement {
       },
 
       /**
-       * Align the right edges of listbox and the button?
-       * Default behavior/false aligns to the left edges.
+       * Align right edges of listbox and button?
+       * Default behavior/false aligns to left edges.
        */
       alignRight: {
         name: "alignRight",
@@ -455,7 +457,7 @@ class SimplePicker extends PolymerElement {
       },
 
       /**
-       * Optional. Sets the aria-labelledby attribute
+       * Optional. Sets aria-labelledby attribute
        */
       ariaLabelledby: {
         name: "ariaLabelledby",
@@ -474,7 +476,7 @@ class SimplePicker extends PolymerElement {
       },
 
       /**
-       * Is the picker disabled?
+       * Is picker disabled?
        */
       disabled: {
         name: "disabled",
@@ -495,7 +497,7 @@ class SimplePicker extends PolymerElement {
 
       /**
        * Hide option labels? As color-picker or icon-picker, labels may be redundant.
-       * This option would move the labels off-screen so that only screen-readers will have them.
+       * This option would move labels off-screen so that only screen-readers will have them.
        */
       hideOptionLabels: {
         name: "hideOptionLabels",
@@ -504,7 +506,7 @@ class SimplePicker extends PolymerElement {
       },
 
       /**
-       * Hide the selected item sample?
+       * Hide selected item sample?
        * Default behavior/false shows a sample without expanding menu.
        */
       hideSample: {
@@ -515,7 +517,7 @@ class SimplePicker extends PolymerElement {
       },
 
       /**
-       * Optional. The label for the picker input
+       * Optional. Label for picker input
        */
       label: {
         name: "label",
@@ -525,14 +527,14 @@ class SimplePicker extends PolymerElement {
       },
 
       /**
-   * An array of options for the picker, eg.: `
+   * An array of options for picker, eg.: `
 [
   [
     {
-      "icon": "editor:format-paint",      //Optional. Used if the picker is used as an icon picker.
-      "alt": "Blue",                      //Required for accessibility. Alt text description of the choice.
+      "icon": "editor:format-paint",      //Optional. Used if picker is used as an icon picker.
+      "alt": "Blue",                      //Required for accessibility. Alt text description of choice.
       "style": "background-color: blue;", //Optional. Used to set an option's style.
-      ...                                 //Optional. Any other properties that should be captured as part of the selected option's value
+      ...                                 //Optional. Any other properties that should be captured as part of selected option's value
     },...
   ]
 ]`
@@ -554,10 +556,10 @@ class SimplePicker extends PolymerElement {
       },
 
       /**
-   * position the swatches relative to the picker, where:
-   * `left` aligns the swatches to the picker's left edge
-   * `right` aligns the swatches to the picker's right edge
-   * `center` aligns the swatches to the picker's center
+   * position swatches relative to picker, where:
+   * `left` aligns swatches to picker's left edge
+   * `right` aligns swatches to picker's right edge
+   * `center` aligns swatches to picker's center
   "position": {
     "name": "position",
     "type": Boolean,
@@ -577,7 +579,7 @@ class SimplePicker extends PolymerElement {
       },
 
       /**
-       * An string that stores the current value for the picker
+       * An string that stores current value for picker
        */
       value: {
         name: "value",
@@ -589,7 +591,7 @@ class SimplePicker extends PolymerElement {
       },
 
       /**
-       * The aria-activedescendant attribute (active option's ID)
+       * Aria-activedescendant attribute (active option's ID)
        */
       __activeDesc: {
         name: "__activeDesc",
@@ -607,7 +609,7 @@ class SimplePicker extends PolymerElement {
       },
 
       /**
-       * The selected option based on the value of the picker
+       * Selected option based on value of picker
        */
       __selectedOption: {
         name: "__selectedOption",
@@ -629,11 +631,11 @@ class SimplePicker extends PolymerElement {
   }
 
   /**
-   * returns the value of the selected option.
+   * returns value of selected option.
    *
-   * @param {string} options the options
-   * @param {string} optionId the selected option's id
-   * @returns {object} the selected option
+   * @param {array} options array of options
+   * @param {string} optionId selected option's id
+   * @returns {object} selected option
    */
   _getOption(options, optionId) {
     if (options !== undefined && optionId !== undefined && optionId !== null) {
@@ -644,10 +646,10 @@ class SimplePicker extends PolymerElement {
   }
 
   /**
-   * returns a unique id for the option based on its row and column.
+   * returns a unique id for option based on its row and column.
    *
-   * @param {number} rownum the row number
-   * @param {number} colnum the column number
+   * @param {number} rownum row number
+   * @param {number} colnum column number
    * @returns {string} a unique id
    */
   _getOptionId(rownum, colnum) {
@@ -657,8 +659,8 @@ class SimplePicker extends PolymerElement {
   /**
    * sets a new active descendant and sets focus on it
    *
-   * @param {number} rownum the row number to be tested
-   * @param {number} colnum the column number to be tested
+   * @param {number} rownum row number to be tested
+   * @param {number} colnum column number to be tested
    * @returns {void}
    */
   _goToOption(rownum, colnum) {
@@ -666,7 +668,7 @@ class SimplePicker extends PolymerElement {
       target = this.shadowRoot.querySelector("#" + targetId),
       active = this.shadowRoot.querySelector("#" + this.__activeDesc);
     if (target !== null) {
-      target.tabindex = 0; //allow the item to be focusable.
+      target.tabindex = 0; //allow item to be focusable.
       target.focus();
       active.tabindex = -1; //prevent tabbing between options.
     }
@@ -675,8 +677,8 @@ class SimplePicker extends PolymerElement {
   /**
    * handles listbox click event
    *
-   * @param {event} e the event
-   * @param {string} type the type of event
+   * @param {event} e event
+   * @param {string} type type of event
    * @returns {void}
    */
   _handleListboxEvent(e, type) {
@@ -687,7 +689,7 @@ class SimplePicker extends PolymerElement {
   /**
    * handles listbox keyboard events
    *
-   * @param {event} e the event
+   * @param {event} e event
    * @returns {void}
    */
   _handleListboxKeydown(e) {
@@ -730,9 +732,9 @@ class SimplePicker extends PolymerElement {
   }
 
   /**
-   * handles option focus event and sets the active descendant
+   * handles option focus event and sets active descendant
    *
-   * @param {event} e the event
+   * @param {event} e event
    * @returns {void}
    */
   _handleOptionFocus(e) {
@@ -763,7 +765,7 @@ class SimplePicker extends PolymerElement {
    *
    * @param {string} val option value
    * @param {boolean} allowNull whether or not null option can be selected
-   * @returns {boolean} whether or not the option should be hidden
+   * @returns {boolean} whether or not option should be hidden
    */
   _hideNullOption(val, allowNull) {
     return !allowNull && (val === undefined || val === null);
@@ -773,9 +775,9 @@ class SimplePicker extends PolymerElement {
    * gets sets active option based on a row and column
    *
    * @param {string} active active option's id
-   * @param {number} rownum the row number to be tested
-   * @param {number} colnum the column number to be tested
-   * @returns {boolean} whether or not the option is at the given row and column
+   * @param {number} rownum row number to be tested
+   * @param {number} colnum column number to be tested
+   * @returns {boolean} whether or not option is at given row and column
    */
   _isActive(active, rownum, colnum) {
     return active === this._getOptionId(rownum, colnum);
@@ -786,16 +788,16 @@ class SimplePicker extends PolymerElement {
    *
    * @param {string} value1 current value
    * @param {string} value2 an option's value
-   * @returns {boolean} whether or not the option is selected
+   * @returns {boolean} whether or not option is selected
    */
   _isSelected(value1, value2) {
     return value1 === value2;
   }
 
   /**
-   * sets the  active descendant to a given option's id
+   * sets  active descendant to a given option's id
    *
-   * @param {string} id the option id
+   * @param {string} id option id
    * @returns {void}
    */
   _setActiveOption(id) {
@@ -806,8 +808,8 @@ class SimplePicker extends PolymerElement {
   /**
    * handles change in value
    *
-   * @param {object} newValue the new value for the picker
-   * @param {object} oldValue the old value for the picker
+   * @param {object} newValue new value for picker
+   * @param {object} oldValue old value for picker
    * @returns {void}
    */
   _valueChanged(newValue, oldValue) {
@@ -817,8 +819,8 @@ class SimplePicker extends PolymerElement {
   /**
    * handles change in options
    *
-   * @param {object} newValue the new options for the picker
-   * @param {object} oldValue the old options for the picker
+   * @param {object} newValue new options for picker
+   * @param {object} oldValue old options for picker
    * @returns {void}
    */
   _optionsChanged(newValue, oldValue) {
@@ -826,7 +828,7 @@ class SimplePicker extends PolymerElement {
   }
 
   /**
-   * sets the selected option to a given option's id
+   * sets selected option to a given option's id
    * @returns {void}
    */
   _setSelectedOption(newVal, oldVal) {
@@ -841,15 +843,15 @@ class SimplePicker extends PolymerElement {
           ? JSON.parse(this.options)
           : this.options.slice()
       );
-      //if nulls are allowed, set the active descendant to the first not null option
+      //if nulls are allowed, set active descendant to first not null option
       this.__activeDesc = this.allowNull ? "option-0-0" : null;
       for (var i = 0; i < this.__options.length; i++) {
         for (var j = 0; j < this.__options[i].length; j++) {
-          //if unset, set the active descendant to the first not null option
+          //if unset, set active descendant to first not null option
           if (this.value !== null && this.__activeDesc === null)
             this.__activeDesc = "option-" + i + "-" + j;
           if (`${this.__options[i][j].value}` === `${this.value}`) {
-            //set the active descendant to the option that matches the value
+            //set active descendant to option that matches value
             this.__activeDesc = "option-" + i + "-" + j;
             sel = this.__options[i][j];
           }
@@ -864,9 +866,9 @@ class SimplePicker extends PolymerElement {
   }
 
   /**
-   * toggles the listbox
+   * toggles listbox
    *
-   * @param {boolean} expanded is the listbox expanded?
+   * @param {boolean} expanded is listbox expanded?
    * @returns {void}
    */
   _toggleListbox(expanded) {
@@ -912,9 +914,9 @@ class SimplePicker extends PolymerElement {
     import("./lib/simple-picker-option.js");
   }
   /**
-   * sets the options for the picker
+   * sets options for picker
    *
-   * @param {array} options the nested array of options
+   * @param {array} options nested array of options
    * @returns {void}
    */
   setOptions(options) {
@@ -922,7 +924,7 @@ class SimplePicker extends PolymerElement {
     this.set("options", options);
   }
   /**
-   * life cycle, element is removed from the DOM
+   * life cycle, element is removed from DOM
    */
   //disconnectedCallback() {}
 }
