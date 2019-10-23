@@ -7,9 +7,44 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
  * `simple-picker`
  * `a simple picker for options, icons, etc.`
  *
- * @microcopy - language worth noting:
- *  -
- *
+### Styling
+
+`<simple-picker>` provides the following custom properties and mixins
+for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--simple-picker-font-family` | Main font-family. | inherit
+`--simple-picker-font-size` | Main font-size. | inherit
+`--simple-picker-color` | Main text color. | black
+`--simple-picker-color-active` | Color of the sample text when button is focused within or hovered. | --simple-picker-color
+`--simple-picker-color-disabled` | Disabled text color. | #888
+`--simple-picker-background-color` | Background color for the button. | #f0f0f0
+`--simple-picker-background-color-disabled` | Background color for the button when picker is disabled. | #e8e8e8
+`--simple-picker-border-radius` | Main border-radius. | 2px
+`--simple-picker-border-width` | The default border width. | 1px
+`--simple-picker-border-style` | The default border style. | solid
+`--simple-picker-border-color` | The default border color. | --simple-picker-color-disabled
+`--simple-picker-focus-border-width` | The border width when focused within or hovered. | --simple-picker-border-width
+`--simple-picker-focus-border-style` | The border style when focused within or hovered. | --simple-picker-border-style
+`--simple-picker-focus-border-color` | The border color when focused within or hovered. | --simple-picker-border-color
+`--simple-picker-label-color` | Label text color. | --simple-picker-color
+`--simple-picker-float-label-color` | Floating label text color. | --simple-picker-color-disabled
+`--simple-picker-float-label-active-color` | Floating label text color when picker is focused or hovered. | --simple-picker-color-disabled
+`--simple-picker-icon-transform` | Rotation of the arrow icon by default. | rotate(0deg)
+`--simple-picker-expanded-icon-transform` | Rotation of the arrow icon when picker is expanded. | rotate(0deg)
+`--simple-picker-sample-color` | Sample option text color. | --simple-picker-color
+`--simple-picker-sample-padding` | Sample option padding. | 2px
+`--simple-picker-sample-background-color` | Sample option background-color. | transparent
+`--simple-picker-option-size` | Height of the option. | 24px
+`--simple-picker-option-selected-background-color` | Outline for the currently sselected option. | --simple-picker-options-background-color
+`--simple-picker-option-active-background-color` | Outline for the currently active option. | #aaddff
+`--simple-picker-options-border-width` | The border width of the listbox. | --simple-picker-border-width
+`--simple-picker-options-border-style` | The border style of the listbox. | --simple-picker-border-style
+`--simple-picker-options-border-color` | The border color of the listbox. | --simple-picker-border-color
+`--simple-picker-options-background-color` | Background color for the listbox. | #fff
+`--simple-picker-height` | Calculation based on option size, padding, and border. DO NOT EDIT. | --simple-picker-option-size - --simple-picker-sample-padding * 2 - --simple-picker-border-width * 2
+*
  * @customElement
  * @polymer
  * @demo demo/index.html
@@ -199,9 +234,25 @@ class SimplePicker extends PolymerElement {
     this.__activeDesc = id;
     this.dispatchEvent(new CustomEvent("option-focus", { detail: this }));
   }
+
+  /**
+   * handles change in value
+   *
+   * @param {object} newValue the new value for the picker
+   * @param {object} oldValue the old value for the picker
+   * @returns {void}
+   */
   _valueChanged(newValue, oldValue) {
     this._setSelectedOption(newValue, oldValue);
   }
+
+  /**
+   * handles change in options
+   *
+   * @param {object} newValue the new options for the picker
+   * @param {object} oldValue the old options for the picker
+   * @returns {void}
+   */
   _optionsChanged(newValue, oldValue) {
     this._setSelectedOption(newValue, oldValue);
   }
@@ -251,7 +302,9 @@ class SimplePicker extends PolymerElement {
    * @returns {void}
    */
   _toggleListbox(expanded) {
+    if (this.disabled) return;
     let active = this.shadowRoot.querySelector("#" + this.__activeDesc);
+    console.log("_toggleListbox", expanded);
     this.expanded = expanded;
     if (expanded) {
       if (active !== null) active.focus();

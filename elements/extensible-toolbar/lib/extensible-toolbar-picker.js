@@ -27,6 +27,17 @@ class ExtensibleToolbarPicker extends ExtensibleToolbarButton {
       <style include="extensible-toolbar-button-styles">
         :host {
           margin: var(--extensible-toolbar-button-margin);
+          --simple-picker-option-size: 18px;
+          --simple-picker-font-family: var(
+            --editable-table-secondary-font-family
+          );
+          --simple-picker-font-size: var(--editable-table-secondary-font-size);
+          --simple-picker-color: var(--extensible-toolbar-button-color);
+          --simple-picker-background-color: var(--extensible-toolbar-bg);
+          --simple-picker-border-color: var(--extensible-toolbar-bg);
+          --simple-picker-options-border-color: var(
+            --extensible-toolbar-border-color
+          );
           --simple-picker-option: {
             line-height: var(--simple-picker-option-size);
             height: var(--simple-picker-option-size);

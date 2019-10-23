@@ -54,31 +54,22 @@ class EditableTableDisplay extends displayBehaviors(
           @apply --editable-table-style-footer;
         }
         :host #column {
-          width: calc(var(--simple-picker-option-size) + 6px);
-          overflow: visible;
           display: none;
-          margin: 0 0 -4px 10px;
+          margin-left: 10px;
+          --simple-picker-border-width: 1px;
+          --simple-picker-focus-border-width: 1px;
           --simple-picker-border-color: var(--editable-table-border-color);
-          --simple-picker-sample-option: {
-            position: absolute;
-            left: -9999px;
-            overflow: hidden;
-            width: 0;
-            height: 0;
-          }
-          --simple-picker-sample: {
-            width: var(--simple-picker-option-size);
-            overflow: visible;
-            border-width: 1px;
-          }
-          --simple-picker-collapse: {
-            right: calc(100% - var(--simple-picker-option-size) - 4px);
-          }
-          --simple-picker-sample-focus: {
-            border-width: 1px;
-          }
         }
         @media screen {
+          :host([responsive][responsive-size="xs"]) caption {
+            padding: 0;
+          }
+          :host([responsive][responsive-size="xs"])
+            caption
+            > div
+            > *:not(#column) {
+            padding: 0 0 5px;
+          }
           :host([responsive][responsive-size="xs"]) caption > div {
             display: flex;
             align-items: flex-end;
@@ -108,7 +99,9 @@ class EditableTableDisplay extends displayBehaviors(
             [[caption]]
             <simple-picker
               id="column"
+              align-right
               aria-labelledby$="[[tables.0.label]]"
+              hide-sample
               value$="{{selected}}"
               on-change="_selectedChanged"
               options="[[options]]"

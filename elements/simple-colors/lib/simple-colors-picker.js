@@ -27,8 +27,6 @@ class SimpleColorsPicker extends SimpleColors {
       <style include="simple-colors-shared-styles">
         :host {
           display: inline-block;
-          --simple-picker-selected-option-outline: 2px dashed black;
-          --simple-picker-active-option-outline: 2px solid black;
         }
         :host([hidden]) {
           display: none;

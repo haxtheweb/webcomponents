@@ -23,12 +23,14 @@ const css = html`
       --extensible-toolbar-button-margin: 3px;
       --extensible-toolbar-button-padding: 0;
       --simple-picker-option-size: 18px;
+      --simple-picker-font-family: var(--editable-table-secondary-font-family);
+      --simple-picker-font-size: var(--editable-table-secondary-font-size);
       --simple-picker-color: var(--extensible-toolbar-button-color);
       --simple-picker-background-color: var(--extensible-toolbar-bg);
-      --simple-picker-sample-border-color: var(--extensible-toolbar-bg);
-      --simple-picker-border-color: var(--extensible-toolbar-border-color);
-      --simple-picker-icon-transform: rotate(0deg);
-      --simple-picker-expanded-icon-transform: rotate(0deg);
+      --simple-picker-border-color: var(--extensible-toolbar-bg);
+      --simple-picker-options-border-color: var(
+        --extensible-toolbar-border-color
+      );
     }
     :host([hidden]) {
       display: none;

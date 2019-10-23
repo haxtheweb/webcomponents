@@ -1,16 +1,32 @@
 {
+  /**
+   * llow a null value?
+   * Default behavior/false will select the first option and set value accordingly.
+   */
   "allowNull": {
     "name": "allowNull",
-    "type": Boolean,
+    "type": "Boolean",
     "value": false,
     "reflectToAttribute": true
   },
+
+  /**
+   * Align the right edges of listbox and the button?
+   * Default behavior/false aligns to the left edges.
+   */
+  "alignRight": {
+    "name": "alignRight",
+    "type": "Boolean",
+    "value": false,
+    "reflectToAttribute": true
+  },
+
   /**
    * Optional. Sets the aria-labelledby attribute
    */
   "ariaLabelledby": {
     "name": "ariaLabelledby",
-    "type": String,
+    "type": "String",
     "value": null
   },
 
@@ -19,7 +35,7 @@
    */
   "blockLabel": {
     "name": "blockLabel",
-    "type": Boolean,
+    "type": "Boolean",
     "value": false,
     "reflectToAttribute": true
   },
@@ -29,7 +45,7 @@
    */
   "disabled": {
     "name": "disabled",
-    "type": Boolean,
+    "type": "Boolean",
     "value": false,
     "reflectToAttribute": true
   },
@@ -39,7 +55,7 @@
    */
   "expanded": {
     "name": "expanded",
-    "type": Boolean,
+    "type": "Boolean",
     "value": false,
     "reflectToAttribute": true
   },
@@ -50,8 +66,19 @@
    */
   "hideOptionLabels": {
     "name": "hideOptionLabels",
-    "type": Boolean,
+    "type": "Boolean",
     "value": false
+  },
+
+  /**
+   * Hide the selected item sample?
+   * Default behavior/false shows a sample without expanding menu.
+   */
+  "hideSample": {
+    "name": "hideSample",
+    "type": "Boolean",
+    "value": false,
+    "reflectToAttribute": true
   },
 
   /**
@@ -59,7 +86,7 @@
    */
   "label": {
     "name": "label",
-    "type": String,
+    "type": "String",
     "value": null,
     "observer": "_setLabel"
   },
@@ -79,7 +106,7 @@
    */
   "options": {
     "name": "options",
-    "type": Array,
+    "type": "Array",
     "value": [
       [
         {
@@ -112,7 +139,7 @@
    */
   "titleAsHtml": {
     "name": "titleAsHtml",
-    "type": Boolean,
+    "type": "Boolean",
     "value": false
   },
 
@@ -121,7 +148,7 @@
    */
   "value": {
     "name": "value",
-    "type": Object,
+    "type": "Object",
     "value": null,
     "notify": true,
     "observer": "_valueChanged",
@@ -133,7 +160,7 @@
    */
   "__activeDesc": {
     "name": "__activeDesc",
-    "type": String,
+    "type": "String",
     "value": "option-0-0"
   },
 
@@ -142,7 +169,7 @@
    */
   "__hasLabel": {
     "name": "__hasLabel",
-    "type": Boolean,
+    "type": "Boolean",
     "value": true
   },
 
@@ -151,6 +178,6 @@
    */
   "__selectedOption": {
     "name": "__selectedOption",
-    "type": Object
+    "type": "Object"
   }
 }

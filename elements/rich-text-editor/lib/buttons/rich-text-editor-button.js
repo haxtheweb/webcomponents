@@ -333,6 +333,13 @@ class RichTextEditorButton extends PolymerElement {
           detail: root
         })
       );
+      console.log(
+        "doTextOperation",
+        range,
+        root.command,
+        false,
+        root.commandVal || ""
+      );
       document.execCommand(root.command, false, root.commandVal || "");
       root.range = range;
     }

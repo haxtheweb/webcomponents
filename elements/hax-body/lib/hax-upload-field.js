@@ -65,23 +65,6 @@ class HaxUploadField extends PolymerElement {
             --eco-json-form-bg,
             var(--primary-background-color, #fff)
           );
-          --simple-picker-float-label-active-color: var(
-            --eco-json-form-active-color,
-            var(--primary-color, #000)
-          );
-          --simple-picker-float-label-faded-color: var(
-            --eco-json-form-faded-color,
-            var(--secondary-text-color, #888)
-          );
-          --simple-picker-background-color: var(
-            --eco-json-form-bg,
-            var(--primary-background-color, #fff)
-          );
-          --simple-picker-border-color: transparent;
-          --simple-picker-sample-focus: {
-            transition: all 0.5s;
-            border: none;
-          }
         }
         :host #legend {
           transition: all 0.5s;

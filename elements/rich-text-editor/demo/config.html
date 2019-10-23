@@ -21,7 +21,7 @@
       <h1>Configuring rich-text-editor toolbar</h1>
       <demo-snippet>
         <template>
-          <rich-text-editor-toolbar-full id="editor" sticky></rich-text-editor-toolbar-full>
+          <rich-text-editor-toolbar-full id="editor" sticky controls="content"></rich-text-editor-toolbar-full>
           <rich-text-editor id="content" toolbar="editor">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
@@ -106,13 +106,12 @@
                   {
                     "label": "Heading",
                     "blocks": [
-                      {"label": "Paragraph <p>", "tag": "p"},
-                      {"label": "Heading 1 <h1>", "tag": "h1"},
-                      {"label": "Heading 2 <h2>", "tag": "h2"},
-                      {"label": "Heading 3 <h3>", "tag": "h3"},
-                      {"label": "Heading 4 <h4>", "tag": "h4"},
-                      {"label": "Heading 5 <h5>", "tag": "h5"},
-                      {"label": "Heading 6 <h6>", "tag": "h6"}
+                      {"label": "Paragraph", "tag": "p"},
+                      {"label": "Page Title", "tag": "h1"},
+                      {"label": "Article Title", "tag": "h2"},
+                      {"label": "Article Heading", "tag": "h3"},
+                      {"label": "Section Heading", "tag": "h4"},
+                      {"label": "Section Subheading", "tag": "h5"}
                     ],
                     "type": "rich-text-editor-heading-picker" 
                   },

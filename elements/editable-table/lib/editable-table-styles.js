@@ -79,13 +79,12 @@ const css = html`
       --editable-table-rowcol-hover-bg-color: var(
         --editable-table-heading-bg-color
       );
-      --simple-picker-option-size: 24px;
-      --simple-picker-option: {
-        font-family: var(--editable-table-secondary-font-family);
-        color: var(--editable-table-color);
-        background-color: var(--editable-table-bg-color);
-        font-size: var(--editable-table-secondary-font-size);
-      }
+
+      --simple-picker-font-family: var(--editable-table-secondary-font-family);
+      --simple-picker-font-size: var(--editable-table-secondary-font-size);
+      --simple-picker-color: var(--editable-table-color);
+      --simple-picker-background-color: var(--editable-table-bg-color);
+
       --editable-table-style-stripe: {
         background-color: var(--editable-table-stripe-bg-color);
       }
