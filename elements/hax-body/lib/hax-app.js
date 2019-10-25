@@ -123,7 +123,6 @@
 class HAXApp extends HTMLElement {
   constructor() {
     super();
-    this.data = {};
     this.eventName = "hax-register-app";
   }
   static get tag() {

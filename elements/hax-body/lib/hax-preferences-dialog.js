@@ -188,13 +188,16 @@ class HaxPreferencesDialog extends PolymerElement {
     };
     this.set("schema", {});
     this.set("schema", schema);
-    // register this with hax as the preference pane
+    // fire an event that this is a core piece of the system
     this.dispatchEvent(
-      new CustomEvent("hax-register-preferences", {
+      new CustomEvent("hax-register-core-piece", {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: {
+          piece: "haxPreferences",
+          object: this
+        }
       })
     );
     afterNextRender(this, function() {

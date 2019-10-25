@@ -20,19 +20,22 @@ class HaxPicker extends LitElement {
     import("@polymer/app-layout/app-drawer/app-drawer.js");
   }
   /**
-   * Depeendencies
+   * Dependencies
    */
-  setupPicker() {
-    // event which informs HAX accurately
+  setupPicker(pickerProperty, pickerTag) {
+    // fire an event that this is a core piece of the system
     this.dispatchEvent(
-      new CustomEvent(`hax-register-${this.picker}-picker`, {
+      new CustomEvent("hax-register-core-piece", {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: {
+          piece: pickerProperty,
+          object: this
+        }
       })
     );
-    this.appendChild(document.createElement(`hax-${this.picker}-browser`));
+    this.appendChild(document.createElement(pickerTag));
   }
   static get styles() {
     return [
@@ -140,10 +143,9 @@ class HaxBloxPicker extends HaxPicker {
   constructor() {
     super();
     import("@lrnwebcomponents/hax-body/lib/hax-blox-browser.js");
-    this.picker = "blox";
     this.title = "Layouts";
     // this sets everything else in motion correctly
-    this.setupPicker();
+    this.setupPicker("haxBloxPicker", "hax-blox-browser");
   }
   static get tag() {
     return "hax-blox-picker";

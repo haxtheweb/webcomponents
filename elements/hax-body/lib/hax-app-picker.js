@@ -186,12 +186,16 @@ class HaxAppPicker extends PolymerElement {
    */
   ready() {
     super.ready();
+    // fire an event that this is a core piece of the system
     this.dispatchEvent(
-      new CustomEvent("hax-register-app-picker", {
+      new CustomEvent("hax-register-core-piece", {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: {
+          piece: "haxAppPicker",
+          object: this
+        }
       })
     );
     afterNextRender(this, function() {

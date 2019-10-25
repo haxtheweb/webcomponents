@@ -506,6 +506,8 @@ class HaxPreview extends PolymerElement {
                     console.warn(`${property} is busted some how`);
                     console.warn(e);
                   }
+                } else if (this.previewNode[property]) {
+                  this.previewNode[property] = element.properties[property];
                 } else {
                   // set attribute, this doesn't have the Polymer convention
                   // this is Vanilla, Lit, etc
@@ -675,9 +677,15 @@ class HaxPreview extends PolymerElement {
                 }
               }
               // vanilla / anything else we should just be able to set the prop
-              else {
+              else if (newValue[property]) {
+                newValue[property] = element.properties[property];
+              } else {
                 // @todo may need to bind differently for vanilla elements
-                newValue.setAttribute(property, element.properties[property]);
+                try {
+                  newValue.setAttribute(property, element.properties[property]);
+                } catch (e) {
+                  console.warn(e);
+                }
               }
             }
             this.set("value." + property, element.properties[property]);

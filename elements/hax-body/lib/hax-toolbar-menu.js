@@ -1,5 +1,4 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
@@ -12,14 +11,10 @@ import "@polymer/paper-item/paper-item.js";
 import "@polymer/paper-listbox/paper-listbox.js";
 import "@polymer/paper-menu-button/paper-menu-button.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js";
-class HaxToolbarMenu extends PolymerElement {
-  constructor() {
-    super();
-    this.addEventListener("click", this._menubuttonTap.bind(this));
-  }
-  static get template() {
-    return html`
-      <style>
+class HaxToolbarMenu extends LitElement {
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           box-sizing: border-box;
@@ -54,31 +49,45 @@ class HaxToolbarMenu extends PolymerElement {
         paper-listbox {
           padding: 0;
         }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
       <paper-menu-button>
         <hax-toolbar-item
           id="button"
           slot="dropdown-trigger"
-          icon="[[icon]]"
-          hidden\$="[[!icon]]"
-          class\$="[[iconClass]]"
-          tooltip="[[tooltip]]"
+          icon="${this.icon}"
+          .hidden="${!this.icon}"
+          .class="${this.iconClass}"
+          tooltip="${this.tooltip}"
         ></hax-toolbar-item>
         <paper-listbox
           id="listbox"
           slot="dropdown-content"
-          selected="{{selected}}"
+          @selected-changed="${this.selectedChanged}"
         >
           <slot></slot>
         </paper-listbox>
       </paper-menu-button>
     `;
   }
-
+  selectedChanged(e) {
+    this.selected = e.detail.value;
+  }
   static get tag() {
     return "hax-toolbar-menu";
   }
-
+  constructor() {
+    super();
+    this.addEventListener("click", this._menubuttonTap.bind(this));
+    this.corner = "";
+    this.resetOnSelect = false;
+    this.tooltip = "";
+    this.tooltipDirection = "";
+    this.selected = "";
+  }
   static get properties() {
     return {
       /**
@@ -86,40 +95,44 @@ class HaxToolbarMenu extends PolymerElement {
        */
       corner: {
         type: String,
-        reflectToAttribute: true,
-        value: ""
+        reflect: true
       },
       /**
        * Should we reset the selection after it is made
        */
       resetOnSelect: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       tooltip: {
-        type: String,
-        value: ""
+        type: String
       },
       tooltipDirection: {
-        type: String,
-        value: ""
+        type: String
       },
       selected: {
-        type: String,
-        value: "",
-        notify: true,
-        observer: "_selectChanged"
+        type: String
       }
     };
   }
-
   /**
-   * Select changed to trip button.
+   * property changed callback
    */
-  _selectChanged(e) {
-    this.shadowRoot.querySelector("#button").focus();
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "selected") {
+        this.shadowRoot.querySelector("#button").focus();
+        // fire an event that this is a core piece of the system
+        this.dispatchEvent(
+          new CustomEvent("selected-changed", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: this[propName]
+          })
+        );
+      }
+    });
   }
-
   /**
    * Ensure menu is visible / default'ed.
    */
@@ -129,7 +142,6 @@ class HaxToolbarMenu extends PolymerElement {
       this.selected = "";
     }
   }
-
   /**
    * Ensure menu is hidden.
    */

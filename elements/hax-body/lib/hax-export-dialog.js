@@ -159,13 +159,16 @@ class HaxExportDialog extends MtzFileDownloadBehaviors(LitElement) {
    * Attached to the DOM, now fire that we exist.
    */
   firstUpdated() {
-    // fire an event that this is the manager
+    // fire an event that this is a core piece of the system
     this.dispatchEvent(
-      new CustomEvent("hax-register-export", {
+      new CustomEvent("hax-register-core-piece", {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: {
+          piece: "haxExport",
+          object: this
+        }
       })
     );
     // add event listeners

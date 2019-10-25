@@ -42,13 +42,16 @@ class HaxAutoloader extends HAXElement(PolymerElement) {
    */
   ready() {
     super.ready();
-    // fire an event that this is the manager
+    // fire an event that this is a core piece of the system
     this.dispatchEvent(
-      new CustomEvent("hax-register-autoloader", {
+      new CustomEvent("hax-register-core-piece", {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: {
+          piece: "haxAutoloader",
+          object: this
+        }
       })
     );
     // notice elements when they update
