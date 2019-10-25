@@ -3,7 +3,7 @@
    * Is the media an audio file only?
    */
   "audioOnly": {
-    "type": Boolean,
+    "type": "Boolean",
     "value": false
   },
   /**
@@ -15,7 +15,7 @@
    * Default is null.
    */
   "accentColor": {
-    "type": String,
+    "type": "String",
     "value": null,
     "reflectToAttribute": true
   },
@@ -23,7 +23,7 @@
    * Cross origin flag for transcripts to load
    */
   "crossorigin": {
-    "type": String,
+    "type": "String",
     "value": null,
     "reflectToAttribute": true
   },
@@ -31,7 +31,7 @@
    * Enables darker player.
    */
   "dark": {
-    "type": Boolean,
+    "type": "Boolean",
     "value": false,
     "reflectToAttribute": true
   },
@@ -39,76 +39,76 @@
    * Use dark theme on transcript? Default is false, even when player is dark.
    */
   "darkTranscript": {
-    "type": Boolean,
+    "type": "Boolean",
     "value": false
   },
   /**
    * disable interactive mode that makes the transcript clickable
    */
   "disableInteractive": {
-    "type": Boolean,
+    "type": "Boolean",
     "value": false
   },
   /**
    * The height of the media player for non-a11y-media.
    */
   "height": {
-    "type": String,
+    "type": "String",
     "value": null
   },
   /**
    * show cue's start and end time
    */
   "hideTimestamps": {
-    "type": Boolean,
+    "type": "Boolean",
     "value": false
   },
   /**
    * hide the transcript by default
    */
   "hideTranscript": {
-    "type": Boolean,
+    "type": "Boolean",
     "value": false
   },
   /**
    * Computed if this should be in an iframe or not.
    */
   "iframed": {
-    "type": Boolean,
+    "type": "Boolean",
     "computed": "_computeIframed(sourceData, sandboxed)"
   },
   /**
    * Computed if this should be in a11y-media-player.
    */
   "isA11yMedia": {
-    "type": Boolean,
+    "type": "Boolean",
     "computed": "_computeA11yMedia(sourceType, sandboxed)"
   },
   /**
    * The type of source, i.e. "local", "vimeo", "youtube", etc.
    */
   "isYoutube": {
-    "type": Boolean,
+    "type": "Boolean",
     "computed": "_computeYoutube(sourceType)"
   },
   /**
    * The language of the media
    */
   "lang": {
-    "type": String,
+    "type": "String",
     "value": "en"
   },
   /**
    * Simple caption for the video
    */
   "mediaTitle": {
-    "type": String
+    "type": "String"
   },
   /**
    * What to preload for a11y-media-player: auto, metadata (default), or none.
    */
   "preload": {
-    "type": String,
+    "type": "String",
     "value": "metadata"
   },
   /* *
@@ -123,14 +123,14 @@
    * Compute if this is a sandboxed system or not
    */
   "sandboxed": {
-    "type": Boolean,
+    "type": "Boolean",
     "computed": "_computeSandboxed(sourceData)"
   },
   /**
    * Source of the video
    */
   "source": {
-    "type": String,
+    "type": "String",
     "value": null,
     "reflectToAttribute": true
   },
@@ -138,21 +138,21 @@
    * Source of the video
    */
   "sources": {
-    "type": Array,
+    "type": "Array",
     "value": []
   },
   /**
    * List of source objects
    */
   "sourceData": {
-    "type": Array,
+    "type": "Array",
     "computed": "_getSourceData(source,sources,trackData)"
   },
   /**
    * The type of source, i.e. "local", "vimeo", "youtube", etc.
    */
   "sourceType": {
-    "type": String,
+    "type": "String",
     "computed": "_computeSourceType(sourceData)"
   },
   /**
@@ -161,7 +161,7 @@
    * Default is "top-right". "None" disables stickiness.
    */
   "stickyCorner": {
-    "type": String,
+    "type": "String",
     "value": "top-right",
     "reflectToAttribute": true
   },
@@ -169,7 +169,7 @@
    * The url for a single subtitle track
    */
   "track": {
-    "type": String,
+    "type": "String",
     "value": null
   },
   /**
@@ -182,7 +182,7 @@
    * }]
    */
   "tracks": {
-    "type": Array,
+    "type": "Array",
     "value": []
   },
   /**
@@ -195,14 +195,14 @@
    * }]
    */
   "trackData": {
-    "type": Array,
+    "type": "Array",
     "computed": "_getTrackData(track,tracks)"
   },
   /**
    * Source of optional thumbnail image
    */
   "thumbnailSrc": {
-    "type": String,
+    "type": "String",
     "value": null,
     "reflectToAttribute": true
   },
@@ -218,14 +218,14 @@
    * The width of the media player for non-a11y-media.
    */
   "width": {
-    "type": String,
+    "type": "String",
     "value": null
   },
   /**
    * The type of source, i.e. "local", "vimeo", "youtube", etc.
    */
   "youtubeId": {
-    "type": String,
+    "type": "String",
     "computed": "_computeYoutubeId(source,sourceType)"
   }
 }
