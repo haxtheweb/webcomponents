@@ -6,11 +6,10 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
+import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/simple-picker/simple-picker.js";
 import { ResponsiveUtilityBehaviors } from "@lrnwebcomponents/responsive-utility/lib/responsive-utility-behaviors.js";
 import { displayBehaviors } from "./editable-table-behaviors.js";
-import "./editable-table-sort.js";
-import "./editable-table-filter.js";
 import "./editable-table-styles.js";
 
 /**
@@ -53,7 +52,7 @@ class EditableTableDisplay extends displayBehaviors(
         :host([footer]) .tfoot-tr .td {
           @apply --editable-table-style-footer;
         }
-        :host #column {
+        #column {
           width: calc(var(--simple-picker-option-size) + 6px);
           overflow: visible;
           display: none;
@@ -528,6 +527,11 @@ class EditableTableDisplay extends displayBehaviors(
       this.filterColumn = e.detail.columnIndex;
       this.filtered = true;
     }
+  }
+  constructor() {
+    super();
+    import("./editable-table-sort.js");
+    import("./editable-table-filter.js");
   }
   connectedCallback() {
     super.connectedCallback();

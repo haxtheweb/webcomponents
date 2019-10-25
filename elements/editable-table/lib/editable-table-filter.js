@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/iron-icons/iron-icons.js";
@@ -17,11 +17,11 @@ import "./editable-table-iconset.js";
  * @polymer
  * @customElement
  */
-class EditableTableFilter extends PolymerElement {
-  static get template() {
-    return html`
-      <style is="custom-style">
-        :host paper-button {
+class EditableTableFilter extends LitElement {
+  static get styles() {
+    return [
+      css`
+        paper-button {
           padding: var(--editable-table-cell-padding, 0);
           margin: 0;
           width: auto;
@@ -33,13 +33,13 @@ class EditableTableFilter extends PolymerElement {
           text-transform: unset;
           font-family: var(--editable-table-font-family);
         }
-        :host paper-button > div {
+        paper-button > div {
           flex-grow: 1;
         }
-        :host iron-icon {
+        iron-icon {
           min-width: 24px;
         }
-        :host .sr-only {
+        .sr-only {
           position: absolute;
           left: -9999px;
           font-size: 0;
@@ -47,7 +47,7 @@ class EditableTableFilter extends PolymerElement {
           width: 0;
           overflow: hidden;
         }
-        :host #filter-off {
+        #filter-off {
           opacity: 0.25;
         }
         :host(:not([filtered])) .filtered,
@@ -59,16 +59,25 @@ class EditableTableFilter extends PolymerElement {
         :host([filtered]:hover) #filter {
           display: none;
         }
-      </style>
-      <paper-button id="button" class="container" on-click="_onFilterClicked">
-        <span>[[text]]</span>
-        <span class="sr-only" hidden\$="[[!filtered]]"> (filtered)</span>
+      `
+    ];
+  }
+  render() {
+    return html`
+      <paper-button
+        id="button"
+        class="container"
+        @click="${this._onFilterClicked}"
+      >
+        <span>${this.text}</span>
+        <span class="sr-only" .hidden="${!this.filtered}"> (filtered)</span>
         <span class="sr-only"> Toggle filter.</span>
         <iron-icon id="filter" icon="editable-table:filter"></iron-icon>
         <iron-icon id="filter-off" icon="editable-table:filter-off"></iron-icon>
       </paper-button>
       <paper-tooltip for="button"
-        >Toggle Column [[columnIndex]] filter for "[[text]]"</paper-tooltip
+        >Toggle Column ${this.columnIndex} filter for
+        "${this.text}"</paper-tooltip
       >
     `;
   }
@@ -76,29 +85,32 @@ class EditableTableFilter extends PolymerElement {
   static get tag() {
     return "editable-table-filter";
   }
+  constructor() {
+    super();
+    this.columnIndex = null;
+    this.filtered = false;
+    this.text = "";
+  }
   static get properties() {
     return {
       /**
        * Index of the column
        */
       columnIndex: {
-        type: Number,
-        value: null
+        type: Number
       },
       /**
        * Whether the column is filtered
        */
       filtered: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Column header text
        */
       text: {
-        type: String,
-        value: ""
+        type: String
       }
     };
   }

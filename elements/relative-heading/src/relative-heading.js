@@ -5,13 +5,9 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 /**
  * `relative-heading`
- * `outputs the correct heading hierarchy based on parent&#39;s heading`
- *
- * @microcopy - language worth noting:
- *  -
+ * `outputs the correct heading hierarchy based on parent heading`
  *
  * @customElement
- * @polymer
  * @demo demo/index.html
  */
 class RelativeHeading extends PolymerElement {
@@ -55,11 +51,6 @@ class RelativeHeading extends PolymerElement {
   _isLevel(level, testLevel) {
     return level === testLevel;
   }
-  /**
-   * life cycle, element is removed from the DOM
-   * /
-  disconnectedCallback() {
-  }*/
 }
 window.customElements.define(RelativeHeading.tag, RelativeHeading);
 export { RelativeHeading };

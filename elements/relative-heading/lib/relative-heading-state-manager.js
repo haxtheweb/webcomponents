@@ -1,8 +1,7 @@
 /**
- * Copyright 2018 The Pennsylvania State University
+ * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 
 // register globally so we can make sure there is only one
 window.RelativeHeadingStateManager = window.RelativeHeadingStateManager || {};
@@ -28,9 +27,7 @@ window.RelativeHeadingStateManager.requestAvailability = () => {
  * @customElement
  * @polymer
  */
-class RelativeHeadingStateManager extends PolymerElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
-
+class RelativeHeadingStateManager extends HTMLElement {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -39,25 +36,18 @@ class RelativeHeadingStateManager extends PolymerElement {
     return "relative-heading-state-manager";
   }
 
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {};
-  }
-
   /**
    * Makes sure there is a utility ready and listening for elements.
    */
   constructor() {
     super();
-    let root = this;
-
     // sets the instance to the current instance
     if (!window.RelativeHeadingStateManager.instance) {
       window.RelativeHeadingStateManager.instance = this;
-      window.addEventListener("set-relative-heading", e => {
-        root.setRelativeHeading(e);
-      });
-      return this;
+      window.addEventListener(
+        "set-relative-heading",
+        this.setRelativeHeading.bind(this)
+      );
     }
   }
 
@@ -70,10 +60,11 @@ class RelativeHeadingStateManager extends PolymerElement {
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    let root = this;
-    window.addEventListener("set-relative-heading", e => {
-      root.setRelativeHeading(e);
-    });
+    window.removeEventListener(
+      "set-relative-heading",
+      this.setRelativeHeading.bind(this)
+    );
+    super.disconnectedCallback();
   }
 }
 window.customElements.define(
