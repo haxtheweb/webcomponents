@@ -1321,6 +1321,8 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
   _addSourcesAndTracks() {
     let root = this,
       counter = 0;
+    console.log("audio", root.querySelector("audio") !== null);
+    root.audioOnly = root.audioOnly || root.querySelector("audio") !== null;
     root.querySelectorAll("source,track").forEach(node => {
       if (!root.__captionHref && node.tagName === "SOURCE")
         root.__captionHref = node.getAttribute("src");
