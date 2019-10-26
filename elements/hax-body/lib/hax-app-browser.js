@@ -1,8 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/grafitto-filter/grafitto-filter.js";
-import "@polymer/iron-list/iron-list.js";
 
 /**
  * `hax-app-browser`
@@ -21,15 +19,11 @@ class HaxAppBrowser extends LitElement {
         :host *[hidden] {
           display: none;
         }
-        #ironlist {
-          min-height: 132px;
-          margin: 0;
-          padding: 10px;
-        }
         hax-app-browser-item {
           margin: 8px;
           -webkit-transition: 0.3s all linear;
           transition: 0.3s all linear;
+          display: inline-flex;
         }
         .title {
           position: relative;
@@ -103,30 +97,25 @@ class HaxAppBrowser extends LitElement {
         like=""
         @filtered-changed="${this.filteredChanged}"
         where="details.title"
-        as="filtered"
-      >
-        <template>
-          <iron-list id="ironlist" items="[[filtered]]" as="app" grid>
-            <template>
-              <div class="app-container">
-                <hax-app-browser-item
-                  index="[[app.index]]"
-                  title="[[app.details.title]]"
-                  icon="[[app.details.icon]]"
-                  image="[[app.details.tag]]"
-                  color="[[app.details.color]]"
-                  meta="[[app.details.meta]]"
-                  groups="[[app.details.groups]]"
-                  handles="[[app.details.handles]]"
-                  description="[[app.details.description]]"
-                  rating="[[app.details.rating]]"
-                  tags="[[app.details.tags]]"
-                ></hax-app-browser-item>
-              </div>
-            </template>
-          </iron-list>
-        </template>
-      </grafitto-filter>
+        ><template></template
+      ></grafitto-filter>
+      ${this.filtered.map(
+        app => html`
+          <hax-app-browser-item
+            .index="${app.index}"
+            .title="${app.details.title}"
+            .icon="${app.details.icon}"
+            .image="${app.details.tag}"
+            .color="${app.details.color}"
+            .meta="${app.details.meta}"
+            .groups="${app.details.groups}"
+            .handles="${app.details.handles}"
+            .description="${app.details.description}"
+            .rating="${app.details.rating}"
+            .tags="${app.details.tags}"
+          ></hax-app-browser-item>
+        `
+      )}
       <hax-app-search
         id="haxappsearch"
         .hidden="${!this.searching}"
@@ -240,28 +229,15 @@ class HaxAppBrowser extends LitElement {
    * Reset this browser.
    */
   resetBrowser() {
-    microTask.run(() => {
-      this.searching = false;
-      this.__appList = window.HaxStore.instance.appList;
-      this.shadowRoot.querySelector("#ironlist").items = this.__appList;
-      this.shadowRoot.querySelector("#inputfilter").value = "";
-      this.shadowRoot.querySelector("#filtertype").value = "details.title";
-      this.shadowRoot.querySelector("#filter").value = "";
-      this.shadowRoot.querySelector("#filter").filter();
-      this.shadowRoot.querySelector("#filter").where = "details.title";
-      this.shadowRoot.querySelector("#filter").like = "";
-      setTimeout(() => {
-        this.shadowRoot.querySelector("#ironlist").dispatchEvent(
-          new CustomEvent("iron-resize", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: true
-          })
-        );
-        window.dispatchEvent(new Event("resize"));
-      }, 50);
-    });
+    this.searching = false;
+    this.__appList = window.HaxStore.instance.appList;
+    this.filtered = this.__appList;
+    this.shadowRoot.querySelector("#inputfilter").value = "";
+    this.shadowRoot.querySelector("#filtertype").value = "details.title";
+    this.shadowRoot.querySelector("#filter").value = "";
+    this.shadowRoot.querySelector("#filter").filter();
+    this.shadowRoot.querySelector("#filter").where = "details.title";
+    this.shadowRoot.querySelector("#filter").like = "";
   }
 }
 window.customElements.define(HaxAppBrowser.tag, HaxAppBrowser);
