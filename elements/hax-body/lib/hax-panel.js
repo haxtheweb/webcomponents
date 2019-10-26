@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/hax-body/lib/hax-panel-item.js";
 /**
@@ -18,6 +17,43 @@ as the events being bubbled up include HTML nodes to inject into something
 class HaxPanel extends PolymerElement {
   constructor() {
     super();
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icons/editor-icons.js");
+    import("@polymer/iron-icons/device-icons.js");
+    import("@polymer/iron-icons/hardware-icons.js");
+    import("@polymer/iron-icons/communication-icons.js");
+    import("@polymer/iron-icons/social-icons.js");
+    import("@polymer/iron-icons/av-icons.js");
+    import("@polymer/iron-icons/maps-icons.js");
+    import("@polymer/app-layout/app-drawer/app-drawer.js");
+    this.addEventListener(
+      "hax-item-selected",
+      this._processItemEvent.bind(this)
+    );
+    // fire an event that this is a core piece of the system
+    this.dispatchEvent(
+      new CustomEvent("hax-register-core-piece", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: {
+          piece: "haxPanel",
+          object: this
+        }
+      })
+    );
+    document.body.addEventListener(
+      "hax-store-property-updated",
+      this._haxStorePropertyUpdated.bind(this)
+    );
+    document.body.addEventListener(
+      "hax-active-hover-name",
+      this._activeNameChange.bind(this)
+    );
+    document.body.addEventListener(
+      "hax-panel-operation",
+      this._processItemEvent.bind(this)
+    );
   }
   static get template() {
     return html`
@@ -344,52 +380,6 @@ class HaxPanel extends PolymerElement {
         observer: "_globalPreferencesChanged"
       }
     };
-  }
-  /**
-   * Attached to the DOM; now we can fire event to the store that
-   * we exist and are the thing being edited.
-   */
-  ready() {
-    super.ready();
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icons/editor-icons.js");
-    import("@polymer/iron-icons/device-icons.js");
-    import("@polymer/iron-icons/hardware-icons.js");
-    import("@polymer/iron-icons/communication-icons.js");
-    import("@polymer/iron-icons/social-icons.js");
-    import("@polymer/iron-icons/av-icons.js");
-    import("@polymer/iron-icons/maps-icons.js");
-    import("@polymer/app-layout/app-drawer/app-drawer.js");
-    afterNextRender(this, function() {
-      this.addEventListener(
-        "hax-item-selected",
-        this._processItemEvent.bind(this)
-      );
-      // fire an event that this is a core piece of the system
-      this.dispatchEvent(
-        new CustomEvent("hax-register-core-piece", {
-          bubbles: true,
-          cancelable: true,
-          composed: true,
-          detail: {
-            piece: "haxPanel",
-            object: this
-          }
-        })
-      );
-      document.body.addEventListener(
-        "hax-store-property-updated",
-        this._haxStorePropertyUpdated.bind(this)
-      );
-      document.body.addEventListener(
-        "hax-active-hover-name",
-        this._activeNameChange.bind(this)
-      );
-      document.body.addEventListener(
-        "hax-panel-operation",
-        this._processItemEvent.bind(this)
-      );
-    });
   }
 
   _activeNameChange(e) {
