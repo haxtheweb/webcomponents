@@ -9,7 +9,7 @@ import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
  * @microcopy - the mental model for this element
  * - context menu - this is a menu of custom-element based buttons and events for use in a larger solution.
  */
-class HaxImportMixer extends PolymerElement {
+class HaxInputMixer extends PolymerElement {
   constructor() {
     super();
     import("@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js");
@@ -378,5 +378,5 @@ class HaxImportMixer extends PolymerElement {
     }
   }
 }
-window.customElements.define(HaxImportMixer.tag, HaxImportMixer);
-export { HaxImportMixer };
+window.customElements.define(HaxInputMixer.tag, HaxInputMixer);
+export { HaxInputMixer };
