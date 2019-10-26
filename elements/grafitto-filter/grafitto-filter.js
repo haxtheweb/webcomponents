@@ -241,7 +241,8 @@ class GrafittoFilter extends mixinBehaviors(
       filtered: {
         type: Array,
         computed: "_computeFiltered(items, where, like, caseSensitive)",
-        observer: "_onFilter"
+        observer: "_onFilter",
+        notify: true
       },
       /**
        * Custom filter function, if this is provided then 'where' and 'like' are ignored
