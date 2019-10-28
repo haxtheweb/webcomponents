@@ -5,29 +5,29 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
     <script src="../node_modules/wct-browser-legacy/browser.js"></script>
-    <script type="module" src="../extensible-toolbar.js"></script>
+    <script type="module" src="../anchor-behaviors.js"></script>
   </head>
   <body>
 
-    <extensible-toolbar>
+    <anchor-behaviors>
       This is the element content.
-    </extensible-toolbar>
+    </anchor-behaviors>
 <test-fixture id="BasicTestFixture">
   <template>
-    <extensible-toolbar></extensible-toolbar>
+    <anchor-behaviors></anchor-behaviors>
   </template>
 </test-fixture>
 
 <test-fixture id="ChangedPropertyTestFixture">
   <template>
-    <extensible-toolbar></extensible-toolbar>
+    <anchor-behaviors></anchor-behaviors>
   </template>
 </test-fixture>
 
 <script type="module">
-  suite('<extensible-toolbar>', () => {
+  suite('<anchor-behaviors>', () => {
     test('it should upgrade', () => {
-      assert.instanceOf(document.querySelector('extensible-toolbar'), customElements.get("extensible-toolbar", 'extensible-toolbar should be an instance of extensibleToolbar'));
+      assert.instanceOf(document.querySelector('anchor-behaviors'), customElements.get("anchor-behaviors", 'anchor-behaviors should be an instance of anchorBehaviors'));
     });
 
     /*test('setting a property on the element works', () => {

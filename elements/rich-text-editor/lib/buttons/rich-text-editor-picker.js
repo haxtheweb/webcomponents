@@ -26,12 +26,22 @@ class RichTextEditorPicker extends RichTextEditorButton {
     return html`
       <style include="rich-text-editor-button-styles">
         :host {
-          margin: var(--rich-text-editor-button-margin);
-          --simple-picker-option: {
-            line-height: var(--simple-picker-option-size);
-            height: var(--simple-picker-option-size);
-            max-height: var(--simple-picker-option-size);
-          }
+          margin: 0 var(--rich-text-editor-button-margin);
+        }
+        :host simple-picker {
+          --simple-picker-border-radius: 0px;
+          --simple-picker-color: var(--rich-text-editor-button-color);
+          --simple-picker-color-active: var(
+            --rich-text-editor-button-hover-color
+          );
+          --simple-picker-color-disabled: var(--rich-text-editor-border-color);
+          --simple-picker-background-color: var(--rich-text-editor-bg);
+          --simple-picker-background-color-disabled: var(
+            --rich-text-editor-border-color
+          );
+          --simple-picker-border-width: 0px;
+          --simple-picker-option-size: 18px;
+          --simple-picker-options-border-width: 1px;
         }
       </style>
       <simple-picker
@@ -169,9 +179,11 @@ class RichTextEditorPicker extends RichTextEditorButton {
    */
   _pickerChange(e) {
     let val = this.$.button.value;
+    console.log("_pickerChange", this.$.button.value);
     e.preventDefault();
     if (val !== null && this.range !== undefined && this.range !== null) {
       this.commandVal = this.$.button.value;
+      console.log("commandVal", this.commandVal);
       this.doTextOperation();
       if (this.block !== true) {
         this.$.button.value = null;

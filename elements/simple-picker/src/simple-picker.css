@@ -1,10 +1,16 @@
+/**
+ * css styles:```
+ */
 :host {
+  
   display: inline-flex;
   align-items: center;
   color: var(--simple-picker-color, black);
   font-family: var(--simple-picker-font-family, inherit);
   font-size: var(--simple-picker-font-size, inherit);
-  max-height: calc(var(--simple-picker-option-size, 24px) + 18px);
+  --simple-picker-height: calc(var(--simple-picker-option-size, 24px) + var(--simple-picker-sample-padding, 2px) * 2 + var(--simple-picker-border-width, 1px) * 2);
+  min-height: var(--simple-picker-height);
+  max-height: var(--simple-picker-height);
   @apply --simple-picker;
 }
 :host div {
@@ -19,6 +25,8 @@
 }
 
 :host([disabled]) {
+  --simple-picker-color: var(--simple-picker-color-disabled, #888);
+  --simple-picker-background-color: var(--simple-picker-background-color-disabled, #e8e8e8);
   cursor: not-allowed;
 }
 
@@ -27,24 +35,26 @@
 }
 
 :host label:not([hidden]) {
+  display: flex;
+  align-items: center;
   padding-right: 5px;
   font-family: var(--simple-picker-font-family, inherit);
   color: var(--simple-picker-label-color, var(--simple-picker-color, black));
-  max-height: calc(var(--simple-picker-option-size, 24px) + 4px);
   @apply --simple-picker-label;
 }
 
 :host([block-label]) label:not([hidden]) {
   display: block;
   padding-right: 0px;
-  color: var(--simple-picker-float-label-color, #888);
+  color: var(--simple-picker-float-label-color, var(--simple-picker-color-disabled, #888));
   transition: all 0.5s;
   max-height: unset;
 }
 
-:host([block-label]:focus) label,
+:host([block-label]:focus-within) label,
 :host([block-label]:hover) label {
   color: var(--simple-picker-float-label-active-color, var(--simple-picker-color, black));
+  transition: all 0.5s;
 }
 
 :host #sample, 
@@ -57,7 +67,8 @@
   cursor: pointer;
   position: relative;
   flex: 1 0 auto;
-  max-height: calc(var(--simple-picker-option-size, 24px) + 4px);
+  min-height: var(--simple-picker-height);
+  max-height: var(--simple-picker-height);
 }
 
 :host #sample {
@@ -65,39 +76,42 @@
   flex: 1 0 auto;
   justify-content: space-between;
   align-items: center;
-  padding: 2px;
-  border-radius: 2px;
-  background-color: var(--simple-picker-background-color,#f0f0f0);
-  border: 1px solid var(--simple-picker-border-color, var(--simple-picker-color, black));
+  padding: var(--simple-picker-sample-padding, 2px);
+  border-radius: var(--simple-picker-border-radius, 2px);
+  color: var(--simple-picker-sample-color, black);
+  background-color: var(--simple-picker-background-color, #f0f0f0);
+  border-width: var(--simple-picker-border-width, 1px);
+  border-style: var(--simple-picker-border-style, solid);
+  border-color: var(--simple-picker-border-color, var(--simple-picker-color-disabled, #888));  
   @apply --simple-picker-sample;
 }
-:host(:focus) #sample,
-:host #listbox:focus #sample,
-:host #sample:focus {
-  border: 2px solid var(--simple-picker-focus-border-color, var(--simple-picker-color, black));
+:host([hide-sample]) #sample {
+  width: var(--simple-picker-option-size);
+  overflow: visible;
+}
+:host(:focus-within) #sample {
+  border-width: var(--simple-picker-focus-border-width, var(--simple-picker-border-width, 1px));
+  border-style: var(--simple-picker-focus-border-style, var(--simple-picker-border-style, solid));
+  border-color: var(--simple-picker-focus-border-color, var(--simple-picker-border-color, var(--simple-picker-color-disabled, #888)));
+  transition: all 0.5s;
   @apply --simple-picker-sample-focus;
 }
 
-:host #listbox:focus {
-  outline: none;
-}
-
 :host #icon {
-  transform: var(--simple-picker-icon-tranform, rotate(0deg));
+  transform: var(--simple-picker-icon-transform, rotate(0deg));
   transition: transform 0.25s;
 }
 
 :host([expanded]) #icon {
-  transform: var(--simple-picker-expanded-icon-tranform, rotate(0deg));
+  transform: var(--simple-picker-expanded-icon-transform, rotate(0deg));
   transition: transform 0.25s;
 }
 
 :host #collapse {
   display: none;
   width: 100%;
-  position: absolute;
-  top: calc(var(--simple-picker-option-size, 24px) + 4px);
-  padding: 0 1px;
+  position: absolute;  
+  padding: var(--simple-picker-options-border-width, var(--simple-picker-border-width, 1px));
   z-index: 2;
   @apply --simple-picker-collapse;
 }
@@ -109,11 +123,20 @@
 :host .rows {
   display: block;
   position: absolute;
-  z-index: 1000;
-  outline: 1px solid var(--simple-picker-border-color, var(--simple-picker-color, black));;
-  background-color: var(--simple-picker-background-color,#f0f0f0);
-  box-shadow: 0px 0px 1px #888;
+  z-index: 1000;  
+  left: calc(var(--simple-picker-options-border-width, var(--simple-picker-border-width, 1px)));  
+  top: calc(0px - var(--simple-picker-options-border-width, var(--simple-picker-border-width, 1px)));
+  border-width: var(--simple-picker-options-border-width, var(--simple-picker-border-width, 1px));
+  border-style: var(--simple-picker-options-border-style, var(--simple-picker-border-style, solid));
+  border-color: var(--simple-picker-options-border-color, var(--simple-picker-border-color, var(--simple-picker-color-disabled, #888)));
+  background-color: var(--simple-picker-options-background-color, #fff);
+  max-height: var(--simple-picker-options-max-height, 250px);
+  overflow-y: auto; 
   @apply --simple-picker-rows;
+}
+:host([align-right]) #collapse .rows {
+  left: unset;
+  right: calc(var(--simple-picker-options-border-width, var(--simple-picker-border-width, 1px)) *2);
 }
 
 :host .row {
@@ -131,9 +154,8 @@
   min-height: var(--simple-picker-option-size, 24px);
   min-width: var(--simple-picker-option-size, 24px);
   line-height: var(--simple-picker-option-size, 24px);
-  color: var(--simple-picker-color);
-  background-color: var(--simple-picker-option-background-color, #ffffff);
-  outline: var(--simple-picker-option-outline, none);
+  color: var(--simple-picker-color, black);
+  background-color: var(--simple-picker-options-background-color, #fff);
   transition: max-height 2s;
   @apply --simple-picker-option;
 }
@@ -148,28 +170,39 @@
 
 :host simple-picker-option[selected] {
   z-index: 50;
-  color: var(--simple-picker-color);
-  background-color: var(--simple-picker-selected-option-background-color, #e8e8e8);
-  outline: var(--simple-picker-selected-option-outline, none);
+  color: var(--simple-picker-color, black);
+  background-color: var(--simple-picker-option-selected-background-color, var(--simple-picker-options-background-color, #fff));
 }
 
 :host simple-picker-option[active] {
   z-index: 100;
   cursor: pointer;
-  color: var(--simple-picker-color);
-  background-color: var(--simple-picker-active-option-background-color, #aaddff);
-  outline: var(--simple-picker-active-option-outline, none);
+  color: var(--simple-picker-color, black);
+  background-color: var(--simple-picker-option-active-background-color, #aaddff);
 }
 
 :host #sample simple-picker-option {
-  color: var(--simple-picker-sample-color,  var(--simple-picker-color));
+  color: var(--simple-picker-color, black);
   background-color: var(--simple-picker-sample-background-color, transparent);
-  --simple-picker-option-padding: 2px 0;
+  --simple-picker-option-padding: var(--simple-picker-sample-padding, 2px) 0;
   --simple-picker-option-label: {
     @apply --simple-picker-sample-label;
   }
   @apply --simple-picker-sample-option;
   border: none;
+}
+
+:host([hide-sample]) #sample simple-picker-option {
+  position: absolute;
+  left: -9999px;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+}
+
+:host(:focus-within) #sample simple-picker-option,
+:host(:hover) #sample simple-picker-option {
+  --simple-picker-color: var(--simple-picker-color-active, var(--simple-picker-color, black));
 }
 
 :host(:not([expanded])) #collapse simple-picker-option {
@@ -192,6 +225,6 @@
     position: relative;
   } 
   :host .rows {
-    position: sticky;
+    position: absolute;
   }  
 }

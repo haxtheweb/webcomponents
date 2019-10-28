@@ -65,9 +65,10 @@ Custom property | Description | Default
 `--editable-table-style-footer` | Styles applied to table footer. | { font-weight: var(--editable-table-heavy-weight); color: var(--editable-table-heading-color); border-top: 3px solid var(--editable-table-color); }
  *
  * @demo demo/index.html
+ * @demo demo/editmode.html Edit Mode
+ * @demo demo/display.html Display Only
  * @demo demo/importing.html Importing Data
  * @demo demo/exporting.html Exporting Data
- * @demo demo/display.html Display Only
  * @demo demo/advanced.html Advanced Features
  * 
  * @customElement
@@ -189,6 +190,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
         on-response="_loadExternalData"
       ></iron-ajax>
       <editable-table-display
+        aria-hidden$="[[editMode]]"
         bordered$="[[bordered]]"
         caption$="[[caption]]"
         column-header$="[[columnHeader]]"
@@ -203,7 +205,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
         striped$="[[striped]]"
       >
       </editable-table-display>
-      <div id="outer" hidden$="[[!editMode]]">
+      <div id="outer" hidden$="[[!editMode]]" aria-hidden$="[[!editMode]]">
         <div id="inner">
           <p class="sr-only">Table Editor</p>
           <table
@@ -291,6 +293,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
                   >
                     <td class="td th-or-td" on-click="_onCellClick">
                       <editable-table-editor-cell
+                        id="cell-[[td]]-[[tr]]"
                         class="cell"
                         column="[[td]]"
                         row="[[tr]]"
@@ -386,12 +389,12 @@ class EditableTable extends displayBehaviors(PolymerElement) {
             </editable-table-editor-toggle>
           </div>
           <div class="field-group" hidden$="[[hideSortFilter]]">
-            <div class="label">Sorting and Filtering</div>
+            <div class="label">Data</div>
             <editable-table-editor-toggle
               id="sort"
-              disabled$="[[hideSort]]"
-              hidden$="[[hideSort]]"
-              label="Column sorting."
+              disabled$="[[_isSortDisabled(hideSort,columnHeader)]]"
+              hidden$="[[_isSortDisabled(hideSort,columnHeader)]]"
+              label="Column sorting (for tables with column headers)."
               icon="editable-table:sortable"
               on-change="_onTableSettingChange"
               toggled$="[[sort]]"
@@ -551,7 +554,9 @@ class EditableTable extends displayBehaviors(PolymerElement) {
     );
     if (edit) {
       this.shadowRoot.querySelector("editable-table-display").toggleFilter();
-      this.shadowRoot.querySelector("editable-table-display").sortData(false);
+      this.shadowRoot
+        .querySelector("editable-table-display")
+        .sortData("none", -1);
       this.$.inner.focus();
     }
     this.editMode = edit;
@@ -571,7 +576,11 @@ class EditableTable extends displayBehaviors(PolymerElement) {
   _dataChanged(newValue, oldValue) {
     if (!newValue || newValue.length < 1 || newValue[0].length < 1) {
       let table = this.children.item(0);
-      if (table !== null && table.tagName === "TABLE") {
+      if (
+        typeof table !== typeof undefined &&
+        table !== null &&
+        table.tagName === "TABLE"
+      ) {
         this.importHTML(table);
       } else {
         this.set("data", [["", "", ""], ["", "", ""], ["", "", ""]]);
@@ -620,6 +629,15 @@ class EditableTable extends displayBehaviors(PolymerElement) {
    */
   _isFirstRow(index) {
     return index === 0;
+  }
+
+  /**
+   * Tests for whether or not to disable the sort feature.
+   * @param {boolean} hideSort if sort feature be hidden
+   * @param {boolean} columnHeader if table has column headers
+   */
+  _isSortDisabled(hideSort, columnHeader) {
+    return hideSort || !columnHeader;
   }
 
   /**

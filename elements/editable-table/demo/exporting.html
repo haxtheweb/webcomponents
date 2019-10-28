@@ -48,13 +48,14 @@
         href="index.html">editable-table</a> in aa number of formats:</p>
       <demo-snippet>
         <template>
-          <editable-table-display 
+          <editable-table 
             id="export-example" 
             caption="Is it a sandwich? Food classification chart."
             column-header 
             data-csv="./foods.csv"
+            edit-mode
             row-header>
-          </editable-table-display>
+          </editable-table>
           <div class="buttons">
             <button controls="data" onclick="document.getElementById('data').innerHTML = JSON.stringify(document.getElementById('export-example').getTableProperties())">Table Config as JSON</button>
             <button controls="data" onclick="document.getElementById('data').innerHTML = document.getElementById('export-example').getTableHTML()">Table as Plain HTML</button>

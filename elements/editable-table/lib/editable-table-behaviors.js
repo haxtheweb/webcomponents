@@ -199,7 +199,7 @@ export const displayBehaviors = function(SuperClass) {
               cell = this._replaceBlankCell(cell);
               return this._isNumeric(cell)
                 ? cell.replace(/,/g, "")
-                : `\"${cell}\"`;
+                : `\"${cell.replace(/"/g, '""')}\"`;
             })
             .join(",");
         })

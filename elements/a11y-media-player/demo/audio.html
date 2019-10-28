@@ -46,9 +46,11 @@
       <h1>a11y-media-player Audio demo</h1>
       <demo-snippet>
         <template>
-          <a11y-media-player accent-color="indigo" audio-only="">
-            <source src="./samples/bueller.mp3" type="audio/mp3">
-            <track label="English" kind="subtitles" srclang="en" src="./samples/bueller.vtt" default>
+          <a11y-media-player accent-color="indigo">
+            <audio>
+                <source src="./samples/bueller.mp3" type="audio/mp3">
+                <track label="English" kind="subtitles" srclang="en" src="./samples/bueller.vtt" default>
+            </audio>
           </a11y-media-player>
         </template>
       </demo-snippet>      
@@ -57,9 +59,11 @@
         <h2>Audio demo, standalone with thumbnail image and width set</h2>
         <demo-snippet>
           <template>
-            <a11y-media-player accent-color="lime" audio-only dark show-custom-captions stand-alone thumbnail-src="https://media2.s-nbcnews.com/j/streams/2013/April/130417/1C6963224-ss-110805-teachers-beuller.fit-760w.jpg" width="400px">
-              <source src="./samples/bueller.mp3" type="audio/mp3">
-              <track label="English" kind="subtitles" srclang="en" src="./samples/bueller.vtt" default>
+            <a11y-media-player accent-color="lime" dark show-custom-captions stand-alone thumbnail-src="https://media2.s-nbcnews.com/j/streams/2013/April/130417/1C6963224-ss-110805-teachers-beuller.fit-760w.jpg" width="400px">
+              <audio>
+                <source src="./samples/bueller.mp3" type="audio/mp3">
+                <track label="English" kind="subtitles" srclang="en" src="./samples/bueller.vtt" default>  
+              </audio>
             </a11y-media-player>
           </template>
         </demo-snippet>  
@@ -68,9 +72,11 @@
           <h2>Audio demo with height set to 165px (use this for iframes)</h2>
           <demo-snippet>
             <template>
-              <a11y-media-player accent-color="purple" audio-only show-custom-captions height="164px">
-                <source src="./samples/bueller.mp3" type="audio/mp3">
-                <track label="English" kind="subtitles" srclang="en" src="./samples/bueller.vtt" default>
+              <a11y-media-player accent-color="purple" show-custom-captions height="164px">
+                <audio>
+                  <source src="./samples/bueller.mp3" type="audio/mp3">
+                  <track label="English" kind="subtitles" srclang="en" src="./samples/bueller.vtt" default>
+                </audio>
               </a11y-media-player>
             </template>
           </demo-snippet>

@@ -8,8 +8,11 @@ import { A11yMediaBehaviors } from "./lib/a11y-media-behaviors.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
+import "@polymer/paper-toast/paper-toast.js";
 import "./lib/a11y-media-state-manager.js";
 import "./lib/a11y-media-controls.js";
+import "./lib/a11y-media-button.js";
 import "./lib/a11y-media-html5.js";
 import "./lib/a11y-media-transcript.js";
 import "./lib/a11y-media-transcript-controls.js";
@@ -145,6 +148,10 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
           );
           --a11y-media-faded-accent-color: var(
             --simple-colors-default-theme-accent-8
+          );
+          --paper-toast-color: var(--simple-colors-default-theme-grey-11);
+          --paper-toast-background-color: var(
+            --simple-colors-default-theme-grey-2
           );
 
           --a11y-media-settings-menu-color: var(--a11y-media-color);
@@ -610,6 +617,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
           has-captions$="[[hasCaptions]]"
           has-transcript$="[[hasTranscript]]"
           hide-transcript$="[[hideTranscript]]"
+          linkable$="[[linkable]]"
           mute-unmute="[[muteUnmute]]"
           on-controls-change="_onControlsChanged"
           on-print-transcript="_handlePrinting"
@@ -669,6 +677,21 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
           </a11y-media-transcript>
         </div>
       </div>
+      <paper-toast
+        id="link"
+        disabled$="[[!linkable]]"
+        hidden$="[[!linkable]]"
+        duration="0"
+        text="[[shareLink]]"
+      >
+        <a11y-media-button
+          action="linkable"
+          icon="[[_getLocal('copyLink','icon')]]"
+          label="[[_getLocal('copyLink','label')]]"
+          on-click="_handleCopyLink"
+          tooltip-position="top"
+        ></a11y-media-button>
+      </paper-toast>
     `;
   }
 
@@ -752,7 +775,6 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
           "_getFullscreenButton(disableFullscreen,audioNoThumb,screenfullLoaded)",
         notify: true
       },
-
       /**
        * Does the player have tracks?
        */
@@ -761,7 +783,6 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
         type: Boolean,
         value: false
       },
-
       /**
        * Hide elapsed time?
        */
@@ -848,6 +869,15 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
         notify: true
       },
       /**
+       * Has screenfull loaded?
+       */
+      shareLink: {
+        name: "shareLink",
+        type: String,
+        computed: "_getShareLink(__elapsed)"
+      },
+
+      /**
        * is YouTube?
        */
       showCustomCaptions: {
@@ -917,6 +947,15 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
         computed: "_getPlayPause(__playing)"
       },
       /**
+       * Notice if the elapsed time changes
+       */
+      __elapsed: {
+        name: "__elapsed",
+        type: Number,
+        value: null,
+        notify: true
+      },
+      /**
        * Notice if the video is playing
        */
       __playing: {
@@ -969,6 +1008,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
   connectedCallback() {
     super.connectedCallback();
     this._addResponsiveUtility();
+    if (this.id === null) this.id = "a11y-media-player" + Date.now();
     window.dispatchEvent(new CustomEvent("a11y-player", { detail: this }));
     if (this.isYoutube) {
       this._youTubeRequest();
@@ -986,7 +1026,6 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
       tdata = new Array(),
       selected = 0;
     if (typeof screenfull === "object") root._onScreenfullLoaded.bind(root);
-    if (root.id === null) root.id = "a11y-media-player" + Date.now();
     root.__playerReady = true;
     root.target = root.shadowRoot.querySelector("#transcript");
     root.__status = root._getLocal("loading", "label");
@@ -1321,6 +1360,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
   _addSourcesAndTracks() {
     let root = this,
       counter = 0;
+    root.audioOnly = root.audioOnly || root.querySelector("audio") !== null;
     root.querySelectorAll("source,track").forEach(node => {
       if (!root.__captionHref && node.tagName === "SOURCE")
         root.__captionHref = node.getAttribute("src");
@@ -1392,6 +1432,19 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
           action: "play"
         };
   }
+  /**
+   * gets the link for sharing the video at a specific timecode
+   * @param {boolean} linkable is the video is linkable
+   */
+  _getShareLink(__elapsed) {
+    let url = window.location.href.split(/[#?]/)[0],
+      id = this.id ? `?id=${this.id}` : ``,
+      elapsed =
+        id !== "" && this.__elapsed && this.__elapsed !== 0
+          ? `&t=${this.__elapsed}`
+          : ``;
+    return `${url}${id}${elapsed}`;
+  }
 
   /**
    * loads a track's cue metadata
@@ -1448,6 +1501,20 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
       }
     }, 1);
   }
+  /**
+   * handles copying the share link
+   */
+  _handleCopyLink() {
+    let el = document.createElement("textarea");
+    el.value = this.shareLink;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand("copy");
+    document.body.removeChild(el);
+    this.$.link.close();
+    if (this.__resumePlaying) this.play();
+    this.__resumePlaying = false;
+  }
 
   /**
    * handles the seek function when a transcript cue is activated
@@ -1469,6 +1536,9 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    */
   _handleMediaLoaded(e) {
     let root = this,
+      anchor = window.AnchorBehaviors,
+      target = anchor.getTarget(),
+      params = anchor.params,
       aspect = root.media.aspectRatio;
     root._setPlayerHeight(aspect);
     root.$.playbutton.removeAttribute("disabled");
@@ -1476,6 +1546,9 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
     // gets and converts video duration
     root._setElapsedTime();
     root._getTrackData(root.$.html5.media);
+
+    //if this video is part of the page's query string or anchor, seek the video
+    if (target === this) this.seek(this._getSeconds(params.t));
   }
 
   /**
@@ -1587,6 +1660,19 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
   _onControlsChanged(e) {
     let root = this,
       action = e.detail.action !== undefined ? e.detail.action : e.detail.id;
+
+    //any button can close the link toast but only linkable can open it
+    if (action && this.$.link.opened) {
+      root.$.link.cancel();
+      if (root.__resumePlaying) root.play();
+      root.__resumePlaying = false;
+    } else if (action === "linkable") {
+      root.__resumePlaying = root.__playing;
+      root.pause();
+      root.$.link.open();
+    }
+
+    //handle other specific actionc
     if (action === "backward" || action === "rewind") {
       root.rewind();
     } else if (action === "captions") {

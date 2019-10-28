@@ -315,6 +315,16 @@ class EcoJsonSchemaObject extends mixinBehaviors(
             --eco-json-form-add-focus: #007700;
             --eco-json-form-remove-focus: #cc0000;
             --eco-json-form-remove-color: #dd0000;
+            --simple-picker-float-label-color: var(--eco-json-form-faded-color);
+            --simple-picker-float-label-active-color: var(
+              --eco-json-form-active-color
+            );
+            --simple-picker-background-color: var(--eco-json-form-bg);
+            --simple-picker-border-color: var(--eco-json-form-faded-color);
+            --simple-picker-focus-border-color: var(
+              --eco-json-form-active-color
+            );
+            --simple-picker-focus-border-width: 2px;
             --paper-input-container: {
               padding-top: 0;
             }
@@ -356,22 +366,6 @@ class EcoJsonSchemaObject extends mixinBehaviors(
           #form ::slotted(div.desc-for-paper-textarea) {
             margin-top: -18px;
             margin-right: 35px;
-          }
-          #form ::slotted(simple-icon-picker),
-          #form ::slotted(simple-colors-picker),
-          #form ::slotted(simple-picker) {
-            --simple-picker-float-label-active-color: var(
-              --eco-json-form-active-color
-            );
-            --simple-picker-float-label-faded-color: var(
-              --eco-json-form-faded-color
-            );
-            --simple-picker-background-color: var(--eco-json-form-bg);
-            --simple-picker-border-color: var(--eco-json-form-faded-color);
-            --simple-picker-sample-focus: {
-              transition: all 0.5s;
-              border: 2px solid var(--eco-json-form-active-color);
-            }
           }
           #form ::slotted(code-editor) {
             margin: 8px 0;

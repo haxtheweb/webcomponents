@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>editable-table demo</title>
+    <title>editable-table Edit Mode</title>
 
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
@@ -43,18 +43,30 @@
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h1>editable-table demo</h1>
+      <h1>editable-table Edit Mode</h1>
       <p>This is a component that allows you to switch between <a href="display.html">editable-table-display</a> and <a
           href="index.html">editable-table</a> modes. 
       </p>
       <demo-snippet>
         <template>
             <div class="buttons">
-              <button controls="editmode" onclick="document.getElementById('editmode').toggleEditMode();">
+              <button 
+                id="editmode-button"
+                aria-pressed="true"
+                controls="editmode" 
+                onclick="toggleEditMode();">
                 Toggle Edit Mode 
               </button>
             </div>
             <editable-table id="editmode" edit-mode></editable-table> 
+            <script>
+              toggleEditMode = function(){
+                let button = document.getElementById('editmode-button'),
+                  pressed = button.getAttribute('aria-pressed') === "true" ? "false" : "true";
+                button.setAttribute('aria-pressed',pressed);
+                document.getElementById('editmode').toggleEditMode();
+              }
+            </script>
         </template>
       </demo-snippet> 
     </div>

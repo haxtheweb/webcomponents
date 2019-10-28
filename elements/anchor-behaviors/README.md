@@ -1,26 +1,26 @@
-# &lt;extensible-toolbar&gt;
+# &lt;anchor-behaviors&gt;
 
-Toolbar
-> a toolbar UI that can be customized and extended
+Behaviors
+> handles anchors and params in the url
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing JS module / web component */
-import '@lrnwebcomponents/extensible-toolbar/extensible-toolbar.js';
+import '@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js';
 /* At top of an application with build routine */
-<script type="module" src="@lrnwebcomponents/extensible-toolbar/extensible-toolbar.js"></script>
+<script type="module" src="@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/extensible-toolbar/extensible-toolbar.js';
+  import '@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js';
   // imperative form
-  import {ExtensibleToolbar} from '@lrnwebcomponents/extensible-toolbar';
+  import {AnchorBehaviors} from '@lrnwebcomponents/anchor-behaviors';
   // if you don't have a build routine and need to reference directly
-  import './node_modules/@lrnwebcomponents/extensible-toolbar/extensible-toolbar.js';
+  import './node_modules/@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js';
 </script>
 // via unpkg CDN (good for testing)
-<script type="module" src="https://unpkg.com/@lrnwebcomponents/extensible-toolbar/extensible-toolbar.js"></script>
+<script type="module" src="https://unpkg.com/@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js"></script>
 ```
 
 ## Develop / Demo
@@ -52,7 +52,7 @@ $ yarn run build
 
 ## Code style
 
-Toolbar (and all lrnwebcomponents) use [Prettier][prettier] to auto-format JS and JSON.  The style rules get applied when you commit a change.  If you choose to, you can [integrate your editor][prettier-ed] with Prettier to have the style rules applied on every save.
+Behaviors (and all lrnwebcomponents) use [Prettier][prettier] to auto-format JS and JSON.  The style rules get applied when you commit a change.  If you choose to, you can [integrate your editor][prettier-ed] with Prettier to have the style rules applied on every save.
 
 [prettier]: https://github.com/prettier/prettier/
 [prettier-ed]: https://github.com/prettier/prettier/#editor-integration

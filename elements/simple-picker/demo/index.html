@@ -39,16 +39,6 @@
       <h3>simple-picker as a Color-Picker</h3>
       <demo-snippet>
         <template>
-          <style>
-            /* 
-             Since background color styles override styles for active and selected options, 
-             we will set border styles for default, active, and selected options.
-            */
-            #colorpicker {
-              --simple-picker-selected-option-outline: 2px dashed black;
-              --simple-picker-active-option-outline: 2px solid black;
-            }
-          </style>
           <script>
             document.getElementById('colorpicker').options=[  
               [ 

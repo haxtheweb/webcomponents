@@ -56,28 +56,21 @@ class EditableTableDisplay extends displayBehaviors(
           width: calc(var(--simple-picker-option-size) + 6px);
           overflow: visible;
           display: none;
-          margin: 0 0 1px 10px;
+          margin-left: 10px;
+          --simple-picker-border-width: 1px;
+          --simple-picker-focus-border-width: 1px;
           --simple-picker-border-color: var(--editable-table-border-color);
-          --simple-picker-sample-option: {
-            position: absolute;
-            left: -9999px;
-            overflow: hidden;
-            width: 0;
-            height: 0;
-          }
-          --simple-picker-sample: {
-            width: var(--simple-picker-option-size);
-            overflow: visible;
-            border-width: 1px;
-          }
-          --simple-picker-collapse: {
-            right: calc(100% - var(--simple-picker-option-size) - 4px);
-          }
-          --simple-picker-sample-focus: {
-            border-width: 1px;
-          }
         }
         @media screen {
+          :host([responsive][responsive-size="xs"]) caption {
+            padding: 0;
+          }
+          :host([responsive][responsive-size="xs"])
+            caption
+            > div
+            > *:not(#column) {
+            padding: 0 0 5px;
+          }
           :host([responsive][responsive-size="xs"]) caption > div {
             display: flex;
             align-items: flex-end;
@@ -107,7 +100,9 @@ class EditableTableDisplay extends displayBehaviors(
             [[caption]]
             <simple-picker
               id="column"
+              align-right
               aria-labelledby$="[[tables.0.label]]"
+              hide-sample
               value$="{{selected}}"
               on-change="_selectedChanged"
               options="[[options]]"
@@ -320,7 +315,11 @@ class EditableTableDisplay extends displayBehaviors(
   _dataChanged(newValue, oldValue) {
     if (!newValue || newValue.length < 1 || newValue[0].length < 1) {
       let table = this.children.item(0);
-      if (table !== null && table.tagName === "TABLE") {
+      if (
+        typeof table !== typeof undefined &&
+        table !== null &&
+        table.tagName === "TABLE"
+      ) {
         this.importHTML(table);
       }
     }
@@ -444,6 +443,7 @@ class EditableTableDisplay extends displayBehaviors(
       this.sortColumn = e.detail.columnIndex;
     }
     e.detail.setSortMode(this.sortMode);
+    console.log("_changeSortMode", e.detail, this.sortMode);
     this.sortData(this.sortMode, e.detail.columnIndex);
   }
 
@@ -502,12 +502,9 @@ class EditableTableDisplay extends displayBehaviors(
         this.set("tbody." + i, []);
         this.set("tbody." + i, temp[i].slice(1));
       }
+      console.log("sortData", type, column, temp, this.data);
     } else {
-      let temp = this.tbody.slice();
-      for (let i = 0; i < temp.length; i++) {
-        this.set("data." + (i + 1), []);
-        this.set("data." + (i + 1), temp[i].slice());
-      }
+      console.log("sortData", type, column, this.data);
     }
   }
 
