@@ -125,6 +125,15 @@ class VideoPlayer extends MediaBehaviorsVideo(
       });
     return temp;
   }
+  /**
+   * gets an id for a11y-media-player
+   * @param {string} playerId
+   * @param {string} schemaResourceID
+   * @returns {string} an id for the player
+   */
+  _getPlayerId(playerId, schemaResourceID) {
+    return playerId || `${schemaResourceID}-media`;
+  }
 
   /**
    * Gets source and added to sources list

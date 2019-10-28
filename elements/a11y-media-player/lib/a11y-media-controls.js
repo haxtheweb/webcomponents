@@ -376,8 +376,8 @@ class A11yMediaControls extends A11yMediaBehaviors {
           action="linkable"
           disabled$="[[!linkable]]"
           hidden$="[[!linkable]]"
-          icon="[[_getLocal('getLink','icon')]]"
-          label="[[_getLocal('getLink','label')]]"
+          icon="[[_getLocal('copyLink','icon')]]"
+          label="[[_getLocal('copyLink','label')]]"
           on-click="_onButtonTap"
         ></a11y-media-button>
         <a11y-media-button
