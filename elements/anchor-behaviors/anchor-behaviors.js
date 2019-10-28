@@ -9,7 +9,6 @@ window.AnchorBehaviors = window.AnchorBehaviors || {};
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same modal
 window.AnchorBehaviors.getTarget = (element = null) => {
-  console.log("getTarget", element);
   /** gets and sets parameters */
   let getParams = () => {
       let str =
