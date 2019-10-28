@@ -9,6 +9,8 @@
   --a11y-media-hover-bg-color: var(--simple-colors-default-theme-grey-2);
   --a11y-media-accent-color: var(--simple-colors-default-theme-accent-9);
   --a11y-media-faded-accent-color: var(--simple-colors-default-theme-accent-8);
+  --paper-toast-color: var(--simple-colors-default-theme-grey-11);
+  --paper-toast-background-color: var(--simple-colors-default-theme-grey-2);
 
   /* settings */
   --a11y-media-settings-menu-color: var(--a11y-media-color);

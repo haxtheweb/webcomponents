@@ -65,6 +65,13 @@ class A11yMediaButton extends A11yMediaBehaviors {
        */
       disabled: {
         type: Boolean,
+        value: false
+      },
+      /*
+       * Is it disabled?
+       */
+      tooltipPosition: {
+        type: String,
         value: null
       }
     };
@@ -142,7 +149,9 @@ class A11yMediaButton extends A11yMediaBehaviors {
       >
         <iron-icon icon="[[icon]]"></iron-icon>
       </button>
-      <paper-tooltip for="button">[[label]]</paper-tooltip>
+      <paper-tooltip for="button" position$="[[tooltipPosition]]"
+        >[[label]]</paper-tooltip
+      >
     `;
   }
 

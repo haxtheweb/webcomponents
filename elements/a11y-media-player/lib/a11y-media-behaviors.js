@@ -130,6 +130,15 @@ class A11yMediaBehaviors extends SimpleColors {
       },
 
       /**
+       * has link button
+       */
+      linkable: {
+        name: "linkable",
+        type: Boolean,
+        value: false
+      },
+
+      /**
        * custom localization settings
        */
       localization: {
@@ -166,6 +175,14 @@ class A11yMediaBehaviors extends SimpleColors {
           fullscreen: {
             label: "Fullscreen",
             icon: "fullscreen"
+          },
+          getLink: {
+            label: "Share Link",
+            icon: "link"
+          },
+          copyLink: {
+            label: "Copy URL",
+            icon: "content-copy"
           },
           loading: {
             label: "Loading..."
@@ -352,6 +369,7 @@ class A11yMediaBehaviors extends SimpleColors {
         type: String,
         value: "loading..."
       },
+
       /**
        * the selected track
        */

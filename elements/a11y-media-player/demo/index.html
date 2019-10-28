@@ -42,7 +42,7 @@
       <h1>a11y-media-player Demo</h1>
       <demo-snippet>
         <template>
-          <a11y-media-player id="basic-demo" accent-color="pink">
+          <a11y-media-player accent-color="pink">
             <source src="https://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
             <source src="https://iandevlin.github.io/mdn/video-player-with-captions/sintel-short.webm" type="video/webm">
             <track label="English" kind="subtitles" srclang="en" src="./samples/sintel-en.vtt" default="">
@@ -65,10 +65,10 @@
       </demo-snippet>
     
       <div class="smaller-examples">
-        <h2>Video example, standalone, with width set and a clip start/ stop set</h2>
+        <h2>Video example, standalone, with width set and a clip start/stop set and share link enabled</h2>
         <demo-snippet>
           <template>
-            <a11y-media-player accent-color="blue" stand-alone width="350px"  start-seconds="2" stop-seconds="11">
+            <a11y-media-player id="time-demo" accent-color="blue" linkable stand-alone width="350px"  start-seconds="2" stop-seconds="11">
               <video>
                 <source src="https://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
                 <source src="https://iandevlin.github.io/mdn/video-player-with-captions/sintel-short.webm" type="video/webm">
@@ -83,7 +83,7 @@
         <h2>Video example, with height (useful if iframed in) &amp; width set </h2>
         <demo-snippet>
           <template>
-            <a11y-media-player accent-color="yellow" dark width="480px" height="270px">
+            <a11y-media-player id="height-demo" accent-color="yellow" dark linkable width="480px" height="270px">
               <video>
                 <source src="https://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
                 <source src="https://iandevlin.github.io/mdn/video-player-with-captions/sintel-short.webm" type="video/webm">

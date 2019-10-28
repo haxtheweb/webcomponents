@@ -6,6 +6,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { A11yMediaBehaviors } from "./a11y-media-behaviors.js";
 import "@polymer/paper-menu-button/paper-menu-button.js";
 import "@polymer/paper-listbox/paper-listbox.js";
+import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-toggle-button/paper-toggle-button.js";
@@ -80,6 +81,7 @@ class A11yMediaControls extends A11yMediaBehaviors {
         type: Boolean,
         value: false
       },
+
       /**
        * hide the transcript toggle menu item?
        */
@@ -87,6 +89,15 @@ class A11yMediaControls extends A11yMediaBehaviors {
         type: Boolean,
         computed: "_hideTranscriptButton(noTranscriptToggle,compactControls)"
       },
+
+      /**
+       * url for deeplinking
+       */
+      linkUrl: {
+        type: String,
+        value: "test"
+      },
+
       /**
        * mute/unmute button
        */
@@ -361,6 +372,14 @@ class A11yMediaControls extends A11yMediaBehaviors {
           toggle$="[[hideTranscript]]"
         >
         </a11y-media-button>
+        <a11y-media-button
+          action="linkable"
+          disabled$="[[!linkable]]"
+          hidden$="[[!linkable]]"
+          icon="[[_getLocal('getLink','icon')]]"
+          label="[[_getLocal('getLink','label')]]"
+          on-click="_onButtonTap"
+        ></a11y-media-button>
         <a11y-media-button
           action="print"
           disabled$="[[noPrinting]]"

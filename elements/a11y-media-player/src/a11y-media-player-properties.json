@@ -74,7 +74,6 @@
     "computed": "_getFullscreenButton(disableFullscreen,audioNoThumb,screenfullLoaded)",
     "notify": true
   },
-
   /**
    * Does the player have tracks?
    */
@@ -83,7 +82,6 @@
     "type": "Boolean",
     "value": false
   },
-
   /**
    * Hide elapsed time?
    */
@@ -170,6 +168,15 @@
     "notify": true
   },
   /**
+   * Has screenfull loaded?
+   */
+  "shareLink": {
+    "name": "shareLink",
+    "type": "String",
+    "computed": "_getShareLink(__elapsed)"
+  },
+
+  /**
    * is YouTube?
    */
   "showCustomCaptions": {
@@ -237,6 +244,15 @@
     "name": "playPause",
     "type": "Object",
     "computed": "_getPlayPause(__playing)"
+  },
+  /**
+   * Notice if the elapsed time changes
+   */
+  "__elapsed": {
+    "name": "__elapsed",
+    "type": "Number",
+    "value": null,
+    "notify": true
   },
   /**
    * Notice if the video is playing

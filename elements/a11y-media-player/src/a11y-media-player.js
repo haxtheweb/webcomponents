@@ -9,8 +9,10 @@ import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
+import "@polymer/paper-toast/paper-toast.js";
 import "./lib/a11y-media-state-manager.js";
 import "./lib/a11y-media-controls.js";
+import "./lib/a11y-media-button.js";
 import "./lib/a11y-media-html5.js";
 import "./lib/a11y-media-transcript.js";
 import "./lib/a11y-media-transcript-controls.js";
@@ -584,6 +586,19 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
           action: "play"
         };
   }
+  /**
+   * gets the link for sharing the video at a specific timecode
+   * @param {boolean} linkable is the video is linkable
+   */
+  _getShareLink(__elapsed) {
+    let url = window.location.href.split(/[#?]/)[0],
+      id = this.id ? `?id=${this.id}` : ``,
+      elapsed =
+        id !== "" && this.__elapsed && this.__elapsed !== 0
+          ? `&t=${this.__elapsed}`
+          : ``;
+    return `${url}${id}${elapsed}`;
+  }
 
   /**
    * loads a track's cue metadata
@@ -639,6 +654,20 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
         };
       }
     }, 1);
+  }
+  /**
+   * handles copying the share link
+   */
+  _handleCopyLink() {
+    let el = document.createElement("textarea");
+    el.value = this.shareLink;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand("copy");
+    document.body.removeChild(el);
+    this.$.link.close();
+    if (this.__resumePlaying) this.play();
+    this.__resumePlaying = false;
   }
 
   /**
@@ -785,6 +814,19 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
   _onControlsChanged(e) {
     let root = this,
       action = e.detail.action !== undefined ? e.detail.action : e.detail.id;
+
+    //any button can close the link toast but only linkable can open it
+    if (action && this.$.link.opened) {
+      root.$.link.cancel();
+      if (root.__resumePlaying) root.play();
+      root.__resumePlaying = false;
+    } else if (action === "linkable") {
+      root.__resumePlaying = root.__playing;
+      root.pause();
+      root.$.link.open();
+    }
+
+    //handle other specific actionc
     if (action === "backward" || action === "rewind") {
       root.rewind();
     } else if (action === "captions") {
