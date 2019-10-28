@@ -8,6 +8,7 @@ import { A11yMediaBehaviors } from "./lib/a11y-media-behaviors.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
 import "./lib/a11y-media-state-manager.js";
 import "./lib/a11y-media-controls.js";
 import "./lib/a11y-media-html5.js";
@@ -159,6 +160,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
   connectedCallback() {
     super.connectedCallback();
     this._addResponsiveUtility();
+    if (this.id === null) this.id = "a11y-media-player" + Date.now();
     window.dispatchEvent(new CustomEvent("a11y-player", { detail: this }));
     if (this.isYoutube) {
       this._youTubeRequest();
@@ -176,7 +178,6 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
       tdata = new Array(),
       selected = 0;
     if (typeof screenfull === "object") root._onScreenfullLoaded.bind(root);
-    if (root.id === null) root.id = "a11y-media-player" + Date.now();
     root.__playerReady = true;
     root.target = root.shadowRoot.querySelector("#transcript");
     root.__status = root._getLocal("loading", "label");
@@ -511,7 +512,6 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
   _addSourcesAndTracks() {
     let root = this,
       counter = 0;
-    console.log("audio", root.querySelector("audio") !== null);
     root.audioOnly = root.audioOnly || root.querySelector("audio") !== null;
     root.querySelectorAll("source,track").forEach(node => {
       if (!root.__captionHref && node.tagName === "SOURCE")
@@ -661,6 +661,9 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    */
   _handleMediaLoaded(e) {
     let root = this,
+      anchor = window.AnchorBehaviors,
+      target = anchor.getTarget(),
+      params = anchor.params,
       aspect = root.media.aspectRatio;
     root._setPlayerHeight(aspect);
     root.$.playbutton.removeAttribute("disabled");
@@ -668,6 +671,9 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
     // gets and converts video duration
     root._setElapsedTime();
     root._getTrackData(root.$.html5.media);
+
+    //if this video is part of the page's query string or anchor, seek the video
+    if (target === this) this.seek(this._getSeconds(params.t));
   }
 
   /**

@@ -12,18 +12,45 @@
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../anchor-behaviors.js';
     </script>
-    <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style is="custom-style" include="demo-pages-shared-styles">
+      demo-snippet > div, demo-snippet > code {
+        border: 1px solid black;
+        padding: 15px;
+        margin: 0 0 15px;
+        display: block;
+      }
+      div {
+        font-size: 16pt;
+      }
+      demo-snippet > div:after {
+        content: 'this.id ="' attr(id)'"; this.resource = "'attr(resource)'";';
+        font-family: monospace;
+        color: #333;
+        font-size: 12pt;
+      }
+      demo-snippet > div code {
+        color: #333;
+        font-size: 12pt;
+      }
+    </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic anchor-behaviors demo</h3>
       <demo-snippet>
         <template>
+          <div id="test">This is a test of id. </div>
+          <div resource="#test2">This is a test of resource. </div>
+          <code id="detail">No anchor or query string found. </code>
           <script>
-            window.onload = window.AnchorBehavior.requestAvailability();
+            window.onload = function(){
+              let anchor = window.AnchorBehaviors,
+                detail = document.getElementById('detail');
+              window.AnchorBehaviors.getTarget();
+              detail.innerHTML = `window.AnchorBehaviors.params = ${JSON.stringify(anchor.params)};`;
+              if(anchor.target !== null) anchor.target.appendChild(detail);
+            }
           </script>
-          <div id="test">This is a test of id.</div>
-          <div resource="#test">This is a test of resource.</div>
         </template>
       </demo-snippet>
     </div>

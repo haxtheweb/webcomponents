@@ -493,6 +493,21 @@ class A11yMediaBehaviors extends SimpleColors {
       b(val, 3600, "") + b(val % 3600, 60, "00:") + a(Math.round(val % 60))
     );
   }
+  /**
+   * returns time in seconds of a string, such as 00:00:00.0, 0h0m0.0s, or 0hh0mm0.0ss
+   * @param {string} time
+   * @returns {float} seconds
+   */
+  _getSeconds(time = 0) {
+    let units = time
+        .replace(/[hm]{1,2}&?/g, ":0")
+        .replace(/[s]{1,2}$/g, "")
+        .split(/:/),
+      hh = units.length > 2 ? parseInt(units[units.length - 3]) : 0,
+      mm = units.length > 1 ? parseInt(units[units.length - 2]) : 0,
+      ss = units.length > 0 ? parseFloat(units[units.length - 1]) : 0;
+    return hh * 3600 + mm * 60 + ss;
+  }
 
   /**
    * gets the localization by compaing the localization set to the defaults

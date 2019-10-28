@@ -4,35 +4,56 @@
  */
 
 // register globally so we can make sure there is only one
-window.AnchorBehavior = window.AnchorBehavior || {};
+window.AnchorBehaviors = window.AnchorBehaviors || {};
 // request if this exists. This helps invoke the el existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same modal
-window.AnchorBehavior.requestAvailability = () => {
-  window.AnchorBehavior.instance = () => {
+window.AnchorBehaviors.getTarget = () => {
+  /** gets and sets parameters */
+  let getParams = () => {
     let str =
         window.location.hash.substring(1).replace(/^(.+)&?/, "id=$1") ||
-        window.location.search.substring(1),
-      params = JSON.parse(
-        '{"' +
-          decodeURI(str)
+        window.location.search.substring(1) ||
+        "",
+      uri = str
+        ? `{"${decodeURI(str)
             .replace(/"/g, '\\"')
             .replace(/&/g, '","')
-            .replace(/=/g, '":"') +
-          '"}'
-      ),
-      target =
-        params.id && document.getElementById(params.id)
-          ? document.getElementById(params.id)
-          : document.querySelector(`[resource="#${params.id}"]`);
-    console.log("params", params, target);
-    if (target && target.resolveAnchor) target.resolveAnchor(params);
+            .replace(/=/g, '":"')}"}`
+        : "{}",
+      isJSON = json => {
+        try {
+          JSON.parse(json);
+        } catch (e) {
+          return false;
+        }
+        return true;
+      },
+      params = uri && isJSON(uri) ? JSON.parse(uri) : {};
+    window.AnchorBehaviors.params = params;
   };
-  if (!window.AnchorBehavior.instance) {
-    if (document.readyState === "complete") {
-      window.AnchorBehavior.instance();
+
+  /** sets target element */
+  if (!window.AnchorBehaviors.target) {
+    if (!window.AnchorBehaviors.params) {
+      if (document.readyState === "complete") {
+        getParams();
+      }
+      window.onload = getParams();
     }
-    window.onload = window.AnchorBehavior.instance();
+    /** search for all combos of id and resource id */
+    window.AnchorBehaviors.target =
+      document.getElementById(window.AnchorBehaviors.params.id) ||
+      document.getElementById(`#${window.AnchorBehaviors.params.id}`) ||
+      document.querySelector(
+        `[resource="#${window.AnchorBehaviors.params.id ||
+          window.AnchorBehaviors.params.resource}"]`
+      ) ||
+      document.querySelector(
+        `[resource="${window.AnchorBehaviors.params.id ||
+          window.AnchorBehaviors.params.resource}"]`
+      ) ||
+      null;
   }
-  return window.AnchorBehavior.instance;
+  return window.AnchorBehaviors.target;
 };

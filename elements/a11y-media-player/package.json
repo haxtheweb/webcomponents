@@ -44,6 +44,7 @@
     "@lrnwebcomponents/responsive-utility": "^2.1.4",
     "@lrnwebcomponents/simple-colors": "^2.1.8",
     "@lrnwebcomponents/simple-search": "^2.1.4",
+    "@lrnwebcomponents/anchor-behaviors": "^2.1.8",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/neon-animation": "^3.0.0",
