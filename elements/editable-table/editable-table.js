@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-toggle-button/paper-toggle-button.js";
 import "@polymer/paper-input/paper-input.js";

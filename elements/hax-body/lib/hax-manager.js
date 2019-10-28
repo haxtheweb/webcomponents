@@ -3,7 +3,6 @@ import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/paper-styles/paper-styles.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";
 import "@polymer/iron-pages/iron-pages.js";
 /**
  * `hax-manager`
@@ -22,7 +21,7 @@ class HaxManager extends PolymerElement {
   }
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles hax-shared-styles">
+      <style include="simple-colors-shared-styles">
         @import url("https://fonts.googleapis.com/css?family=Noto+Serif");
         :host {
           display: block;
@@ -360,13 +359,16 @@ class HaxManager extends PolymerElement {
    */
   ready() {
     super.ready();
-    // send an event that this is the manager
+    // fire an event that this is a core piece of the system
     this.dispatchEvent(
-      new CustomEvent("hax-register-manager", {
+      new CustomEvent("hax-register-core-piece", {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: {
+          piece: "haxManager",
+          object: this
+        }
       })
     );
     afterNextRender(this, function() {

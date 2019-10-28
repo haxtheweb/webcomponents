@@ -116,6 +116,7 @@ class HaxAppSearch extends PolymerElement {
       ></hax-app-pagination>
       <hexagon-loader
         size="small"
+        item-count="4"
         loading$="[[loading]]"
         color="#0085ba"
         aria-roledescription="Loading"

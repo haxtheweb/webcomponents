@@ -158,11 +158,6 @@ export const displayBehaviors = function(SuperClass) {
       return props;
     }
 
-    constructor() {
-      super();
-      import("@polymer/iron-ajax/iron-ajax.js");
-    }
-
     /**
      * converts csv string to array
      * @param {string} text the CSV string

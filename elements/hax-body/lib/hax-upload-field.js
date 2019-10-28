@@ -1,7 +1,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/simple-picker/simple-picker.js";
-import "./hax-shared-styles.js";
 
 class HaxUploadField extends PolymerElement {
   constructor() {
@@ -12,7 +11,7 @@ class HaxUploadField extends PolymerElement {
   }
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles hax-shared-styles">
+      <style include="simple-colors-shared-styles">
         :host {
           display: block;
           visibility: visible;

@@ -1,9 +1,7 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
 // need to make this an object so that HAX can listen for it correctly
 class GridPlateLayoutOptions {
   constructor() {
@@ -147,16 +145,10 @@ class GridPlateLayoutOptions {
  * `A grid plate based on a layout that manipulates it.`
  * @demo demo/index.html
  */
-class GridPlate extends PolymerElement {
-  constructor() {
-    super();
-    window.SimpleColorsStyles.requestAvailability();
-    import("@polymer/paper-icon-button/paper-icon-button.js");
-    import("@polymer/iron-icons/iron-icons.js");
-  }
-  static get template() {
-    return html`
-      <style>
+class GridPlate extends LitElement {
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           --grid-plate-row-margin: 0px;
@@ -287,34 +279,68 @@ class GridPlate extends PolymerElement {
         .button-holding-pen {
           position: relative;
         }
-      </style>
+      `
+    ];
+  }
+  constructor() {
+    super();
+    this.droppable = false;
+    this.ignoreHax = false;
+    this.breakpointSm = 900;
+    this.breakpointMd = 1200;
+    this.breakpointLg = 1500;
+    this.breakpointXl = 1800;
+    this.columns = 6;
+    this.disableResponsive = false;
+    this.editMode = false;
+    this.layout = "1-1";
+    this.layouts = new GridPlateLayoutOptions().layouts;
+    this.responsiveSize = "xs";
+    import("@polymer/paper-icon-button/paper-icon-button.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    this.addEventListener("focusin", this._focusIn.bind(this));
+    // listen for HAX if it's around
+    window.addEventListener(
+      "hax-store-property-updated",
+      this._haxStorePropertyUpdated.bind(this)
+    );
+    // listen for HAX insert events if it exists
+    window.addEventListener(
+      "hax-insert-content",
+      this.haxInsertContent.bind(this)
+    );
+    window.addEventListener("load", this.resize.bind(this));
+    window.ResponsiveUtility.requestAvailability();
+  }
+  render() {
+    return html`
       <div class="button-holding-pen">
         <paper-icon-button
           icon="icons:arrow-upward"
           title="move item up"
           id="up"
-          on-click="moveActiveElement"
+          @click="${this.moveActiveElement}"
         >
         </paper-icon-button>
         <paper-icon-button
           icon="icons:arrow-forward"
           title="move item right"
           id="right"
-          on-click="moveActiveElement"
+          @click="${this.moveActiveElement}"
         >
         </paper-icon-button>
         <paper-icon-button
           icon="icons:arrow-downward"
           title="move item down"
           id="down"
-          on-click="moveActiveElement"
+          @click="${this.moveActiveElement}"
         >
         </paper-icon-button>
         <paper-icon-button
           icon="icons:arrow-back"
           title="move item left"
           id="left"
-          on-click="moveActiveElement"
+          @click="${this.moveActiveElement}"
         >
         </paper-icon-button>
       </div>
@@ -322,55 +348,55 @@ class GridPlate extends PolymerElement {
         <div
           class="column"
           id="col1"
-          style$="[[_getColumnWidth(0,columnWidths)]]"
+          .style="${this._getColumnWidth(0, this.columnWidths)}"
         >
           <slot name="col-1"></slot>
         </div>
         <div
           class="column"
           id="col2"
-          style$="[[_getColumnWidth(1,columnWidths)]]"
+          .style="${this._getColumnWidth(1, this.columnWidths)}"
         >
           <slot name="col-2"></slot>
         </div>
         <div
           class="column"
           id="col3"
-          style$="[[_getColumnWidth(2,columnWidths)]]"
+          .style="${this._getColumnWidth(2, this.columnWidths)}"
         >
           <slot name="col-3"></slot>
         </div>
         <div
           class="column"
           id="col4"
-          style$="[[_getColumnWidth(3,columnWidths)]]"
+          .style="${this._getColumnWidth(3, this.columnWidths)}"
         >
           <slot name="col-4"></slot>
         </div>
         <div
           class="column"
           id="col5"
-          style$="[[_getColumnWidth(4,columnWidths)]]"
+          .style="${this._getColumnWidth(4, this.columnWidths)}"
         >
           <slot name="col-5"></slot>
         </div>
         <div
           class="column"
           id="col6"
-          style$="[[_getColumnWidth(5,columnWidths)]]"
+          .style="${this._getColumnWidth(5, this.columnWidths)}"
         >
           <slot name="col-6"></slot>
         </div>
       </div>
       <iron-a11y-keys
-        target="[[activeItem]]"
+        .target="${this.activeItem}"
         keys="enter"
-        on-keys-pressed="setActiveElement"
+        @keys-pressed="${this.setActiveElement}"
       ></iron-a11y-keys>
       <iron-a11y-keys
-        target="[[activeItem]]"
+        .target="${this.activeItem}"
         keys="esc"
-        on-keys-pressed="cancelActive"
+        @keys-pressed="${this.cancelActive}"
       ></iron-a11y-keys>
     `;
   }
@@ -380,37 +406,7 @@ class GridPlate extends PolymerElement {
   /**
    * life cycle
    */
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      for (var j = 1; j <= this.columns; j++) {
-        if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
-          let col = this.shadowRoot.querySelector("#col" + j);
-          col.addEventListener("drop", this.dropEvent.bind(this));
-          col.addEventListener("dblclick", this.dblclick.bind(this));
-          col.addEventListener("dragstart", this.dragStart.bind(this));
-          col.addEventListener("dragenter", this.dragEnter.bind(this));
-          col.addEventListener("dragleave", this.dragLeave.bind(this));
-          col.addEventListener("dragend", this.dragEnd.bind(this));
-          col.addEventListener("dragover", function(e) {
-            e.preventDefault();
-          });
-          col.setAttribute("data-draggable", true);
-        }
-      }
-      this.addEventListener("focusin", this._focusIn.bind(this));
-      // listen for HAX if it's around
-      window.addEventListener(
-        "hax-store-property-updated",
-        this._haxStorePropertyUpdated.bind(this)
-      );
-      // listen for HAX insert events if it exists
-      window.addEventListener(
-        "hax-insert-content",
-        this.haxInsertContent.bind(this)
-      );
-    });
-    window.ResponsiveUtility.requestAvailability();
+  firstUpdated(changedProperties) {
     window.dispatchEvent(
       new CustomEvent("responsive-element", {
         detail: {
@@ -424,27 +420,32 @@ class GridPlate extends PolymerElement {
         }
       })
     );
+    for (var j = 1; j <= this.columns; j++) {
+      if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
+        let col = this.shadowRoot.querySelector("#col" + j);
+        col.addEventListener("drop", this.dropEvent.bind(this));
+        col.addEventListener("dblclick", this.dblclick.bind(this));
+        col.addEventListener("dragstart", this.dragStart.bind(this));
+        col.addEventListener("dragenter", this.dragEnter.bind(this));
+        col.addEventListener("dragleave", this.dragLeave.bind(this));
+        col.addEventListener("dragend", this.dragEnd.bind(this));
+        col.addEventListener("dragover", function(e) {
+          e.preventDefault();
+        });
+        col.setAttribute("data-draggable", true);
+      }
+    }
+    this.columnWidths = this._getColumnWidths(
+      this.responsiveSize,
+      this.layout,
+      this.layouts,
+      this.disableResponsive
+    );
   }
   /**
    * life cycle
    */
   disconnectedCallback() {
-    for (var j = 1; j <= this.columns; j++) {
-      if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
-        let col = this.shadowRoot.querySelector("#col" + j);
-        col.removeEventListener("drop", this.dropEvent.bind(this));
-        col.removeEventListener("dblclick", this.dblclick.bind(this));
-        col.removeEventListener("dragstart", this.dragStart.bind(this));
-        col.removeEventListener("dragenter", this.dragEnter.bind(this));
-        col.removeEventListener("dragleave", this.dragLeave.bind(this));
-        col.removeEventListener("dragend", this.dragEnd.bind(this));
-        col.removeEventListener("dragover", function(e) {
-          e.preventDefault();
-        });
-        col.removeAttribute("data-draggable");
-      }
-    }
-    this.removeEventListener("focusin", this._focusIn.bind(this));
     // listen for HAX if it's around
     window.removeEventListener(
       "hax-store-property-updated",
@@ -455,6 +456,7 @@ class GridPlate extends PolymerElement {
       "hax-insert-content",
       this.haxInsertContent.bind(this)
     );
+    window.removeEventListener("load", this.resize.bind(this));
     super.disconnectedCallback();
   }
   static get haxProperties() {
@@ -524,67 +526,56 @@ class GridPlate extends PolymerElement {
     return {
       droppable: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true,
-        observer: "_droppableChanged"
+        reflect: true
       },
       ignoreHax: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       /**
        * Custom small breakpoint for the layouts; only updated on attached
        */
       breakpointSm: {
-        type: Number,
-        value: 900
+        type: Number
       },
       /**
        * Custom medium breakpoint for the layouts; only updated on attached
        */
       breakpointMd: {
-        type: Number,
-        value: 1200
+        type: Number
       },
       /**
        * Custom large breakpoint for the layouts; only updated on attached
        */
       breakpointLg: {
-        type: Number,
-        value: 1500
+        type: Number
       },
       /**
        * Custom extra-large breakpoint for the layouts; only updated on attached
        */
       breakpointXl: {
-        type: Number,
-        value: 1800
+        type: Number
       },
       /**
        * number of columns at this layout / responsive size
        */
       columns: {
         type: Number,
-        value: 6,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * disables responsive layouts for HAX preview
        */
       disableResponsive: {
-        type: Boolean,
-        value: false,
-        notify: true
+        type: Boolean
       },
       /**
        * If the grid plate is in a state where its items
        * can be modified as far as order or column placement.
        */
       editMode: {
-        reflectToAttribute: true,
+        reflect: true,
         type: Boolean,
-        value: false,
-        observer: "_editModeChanged"
+        attribute: "edit-mode"
       },
       /**
        * an object with a layout's column sizes
@@ -592,9 +583,7 @@ class GridPlate extends PolymerElement {
        */
       layout: {
         type: String,
-        value: "1-1",
-        observer: "layoutChanged",
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Predefined layouts of column sizes and various responsive widths. 
@@ -611,34 +600,81 @@ class GridPlate extends PolymerElement {
   }```
       */
       layouts: {
-        type: Object,
-        readOnly: true,
-        value: new GridPlateLayoutOptions().layouts
+        type: Object
       },
       /**
        * Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`
        */
       responsiveSize: {
         type: String,
-        value: "xs",
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "responsive-size"
       },
       /**
        * Track active item
        */
       activeItem: {
-        type: Object,
-        observer: "_activeItemChanged"
+        type: Object
       },
       /**
        * name of selected layout
        */
       columnWidths: {
-        type: String,
-        computed:
-          "_getColumnWidths(responsiveSize,layout,layouts,disableResponsive)"
+        type: String
       }
     };
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      // if any of these changed, update col widths
+      if (
+        ["responsiveSize", "layout", "layouts", "disableResponsive"].includes(
+          propName
+        )
+      ) {
+        this.columnWidths = this._getColumnWidths(
+          this.responsiveSize,
+          this.layout,
+          this.layouts,
+          this.disableResponsive
+        );
+      }
+      switch (propName) {
+        // observer
+        case "droppable":
+          this._droppableChanged(this[propName], oldValue);
+          break;
+        // observer
+        case "editMode":
+          this._editModeChanged(this[propName], oldValue);
+          this.resize();
+          break;
+        // observer
+        case "activeItem":
+          this._activeItemChanged(this[propName], oldValue);
+          break;
+        // observer, ensure we are sized correctly after widths change
+        case "columnWidths":
+          this.resize();
+          break;
+        case "disableResponsive":
+          // fire an event that this is a core piece of the system
+          this.dispatchEvent(
+            new CustomEvent("disable-responsive-changed", {
+              bubbles: true,
+              cancelable: true,
+              composed: true,
+              detail: this[propName]
+            })
+          );
+          break;
+      }
+    });
+  }
+  resize() {
+    setTimeout(() => {
+      window.dispatchEvent(new Event("resize"));
+    }, 10);
   }
   /**
    * Implements preProcessHaxInsertContent to clean up output on save
@@ -673,17 +709,6 @@ class GridPlate extends PolymerElement {
       col = item.getAttribute("slot").split("-"),
       dest = parseInt(col[1]) + dir;
     return dest >= 1 && dest <= max;
-  }
-  layoutChanged(newValue, oldValue) {
-    if (newValue && typeof oldValue !== typeof undefined) {
-      // ensure we apply things correctly
-      if (this.editMode) {
-        this.editMode = false;
-        setTimeout(() => {
-          this.editMode = true;
-        }, 100);
-      }
-    }
   }
   /**
    * Moves an item a set number of slots.
@@ -1181,12 +1206,12 @@ class GridPlate extends PolymerElement {
       e.detail.property
     ) {
       if (typeof e.detail.value === "object") {
-        this.set(e.detail.property, null);
+        this[e.detail.property] = null;
       }
       if (e.detail.property === "editMode" && this.ignoreHax) {
         // do nothing, we were told to ignore hax
       } else {
-        this.set(e.detail.property, e.detail.value);
+        this[e.detail.property] = e.detail.value;
       }
     }
   }

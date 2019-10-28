@@ -678,52 +678,16 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
       "hax-store-write",
       this._writeHaxStore.bind(this)
     );
-    // register the manager panel / modal
-    document.body.removeEventListener(
-      "hax-register-manager",
-      this._haxStoreRegisterManager.bind(this)
-    );
     // register the autoloader area for elements
     document.body.removeEventListener(
-      "hax-register-autoloader",
-      this._haxStoreRegisterAutoloader.bind(this)
+      "hax-register-core-piece",
+      this._haxStorePieceRegistrationManager.bind(this)
     );
     // register a body, kind of a big deal
     document.body.removeEventListener(
       "hax-register-body",
       this._haxStoreRegisterBody.bind(this)
     );
-    // register the interaction panel / menu
-    document.body.removeEventListener(
-      "hax-register-panel",
-      this._haxStoreRegisterPanel.bind(this)
-    );
-    // register the app picker for contextual setting / option
-    document.body.removeEventListener(
-      "hax-register-app-picker",
-      this._haxStoreRegisterAppPicker.bind(this)
-    );
-    // stax modal
-    document.body.removeEventListener(
-      "hax-register-stax-picker",
-      this._haxStoreRegisterStaxPicker.bind(this)
-    );
-    // blox modal
-    document.body.removeEventListener(
-      "hax-register-blox-picker",
-      this._haxStoreRegisterBloxPicker.bind(this)
-    );
-    // preferences modal
-    document.body.removeEventListener(
-      "hax-register-preferences",
-      this._haxStoreRegisterPreferences.bind(this)
-    );
-    // export modal
-    document.body.removeEventListener(
-      "hax-register-export",
-      this._haxStoreRegisterExport.bind(this)
-    );
-
     // notice content insert and help it along to the body
     document.body.removeEventListener(
       "hax-insert-content",
@@ -1111,50 +1075,15 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
       "hax-store-write",
       this._writeHaxStore.bind(this)
     );
-    // register the manager panel / modal
+    // register pieces of the system
     document.body.addEventListener(
-      "hax-register-manager",
-      this._haxStoreRegisterManager.bind(this)
-    );
-    // register the autoloader area for elements
-    document.body.addEventListener(
-      "hax-register-autoloader",
-      this._haxStoreRegisterAutoloader.bind(this)
+      "hax-register-core-piece",
+      this._haxStorePieceRegistrationManager.bind(this)
     );
     // register a body, kind of a big deal
     document.body.addEventListener(
       "hax-register-body",
       this._haxStoreRegisterBody.bind(this)
-    );
-    // register the interaction panel / menu
-    document.body.addEventListener(
-      "hax-register-panel",
-      this._haxStoreRegisterPanel.bind(this)
-    );
-    // register the app picker for contextual setting / option
-    document.body.addEventListener(
-      "hax-register-app-picker",
-      this._haxStoreRegisterAppPicker.bind(this)
-    );
-    // stax modal
-    document.body.addEventListener(
-      "hax-register-stax-picker",
-      this._haxStoreRegisterStaxPicker.bind(this)
-    );
-    // blox modal
-    document.body.addEventListener(
-      "hax-register-blox-picker",
-      this._haxStoreRegisterBloxPicker.bind(this)
-    );
-    // preferences modal
-    document.body.addEventListener(
-      "hax-register-preferences",
-      this._haxStoreRegisterPreferences.bind(this)
-    );
-    // export modal
-    document.body.addEventListener(
-      "hax-register-export",
-      this._haxStoreRegisterExport.bind(this)
     );
     // grid plate add item event
     document.body.addEventListener(
@@ -1492,55 +1421,16 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
     this.setHaxProperties(hr, "hr");
     this.setHaxProperties(CodeSample.haxProperties, CodeSample.tag);
   }
-
   /**
-   * Set the haxManager node so we can interface with it.
-   * This also allows for using a different manager that supplies
-   * the same functions if that would be desired at some point.
+   * A standard event for registering the different pieces of HAX that check in
+   * at run time. This allows for additional flexibility down the road as well as
+   * registering pieces we never thought of for custom environments.
+   *
+   * @param {CustomEvent} e an event that has the piece to register and the object
    */
-  _haxStoreRegisterManager(e) {
-    if (e.detail && typeof this.haxManager === typeof undefined) {
-      this.haxManager = e.detail;
-    }
-  }
-
-  /**
-   * Register autoloader so we can ship to it from app-store spec
-   */
-  _haxStoreRegisterAutoloader(e) {
-    if (e.detail && typeof this.haxAutoloader === typeof undefined) {
-      this.haxAutoloader = e.detail;
-    }
-  }
-
-  /**
-   * Set the appPicker node so we can interface with it.
-   * This helps with picking between multiple options when we need the user
-   * to decide between a sub-set of options
-   */
-  _haxStoreRegisterAppPicker(e) {
-    if (e.detail && typeof this.haxAppPicker === typeof undefined) {
-      this.haxAppPicker = e.detail;
-    }
-  }
-
-  /**
-   * Set the stax picker so that we have an element in charge
-   * of the listing of available stax.
-   */
-  _haxStoreRegisterStaxPicker(e) {
-    if (e.detail && typeof this.haxStaxPicker === typeof undefined) {
-      this.haxStaxPicker = e.detail;
-    }
-  }
-
-  /**
-   * Set the blox picker so that we have an element in charge
-   * of the listing of available blox.
-   */
-  _haxStoreRegisterBloxPicker(e) {
-    if (e.detail && typeof this.haxBloxPicker === typeof undefined) {
-      this.haxBloxPicker = e.detail;
+  _haxStorePieceRegistrationManager(e) {
+    if (e.detail && e.detail.piece && e.detail.object) {
+      this[e.detail.piece] = e.detail.object;
     }
   }
 
@@ -1764,32 +1654,6 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
       // needed so that higher order things can respond to us having a body
       window.HaxStore.write("activeHaxBody", this.activeHaxBody, this);
       window.HaxStore.write("editMode", this.editMode, this);
-    }
-  }
-
-  /**
-   * Set the haxPanel so we know what to insert into.
-   */
-  _haxStoreRegisterPanel(e) {
-    if (e.detail && typeof this.haxPanel === typeof undefined) {
-      this.haxPanel = e.detail;
-    }
-  }
-  /**
-   * Set the haxExport so we know who to call for exporting
-   */
-  _haxStoreRegisterExport(e) {
-    if (e.detail && typeof this.haxExport === typeof undefined) {
-      this.haxExport = e.detail;
-    }
-  }
-
-  /**
-   * Set the haxPreferences so we know what has global preferences
-   */
-  _haxStoreRegisterPreferences(e) {
-    if (e.detail && typeof this.haxPreferences === typeof undefined) {
-      this.haxPreferences = e.detail;
     }
   }
 
@@ -2170,7 +2034,11 @@ window.HaxStore.haxElementToNode = (tag, content, properties) => {
           frag.properties[property].readOnly
         ) {
         } else {
-          newNode.set(attributeName, properties[property]);
+          if (newNode.set) {
+            newNode.set(attributeName, properties[property]);
+          } else {
+            newNode[attributeName] = properties[property];
+          }
         }
       } else if (
         properties[property] != null &&
@@ -2184,7 +2052,11 @@ window.HaxStore.haxElementToNode = (tag, content, properties) => {
           frag.properties[property].readOnly
         ) {
         } else {
-          newNode.set(attributeName, properties[property]);
+          if (newNode.set) {
+            newNode.set(attributeName, properties[property]);
+          } else {
+            newNode[attributeName] = properties[property];
+          }
         }
       } else {
         newNode.setAttribute(attributeName, properties[property]);

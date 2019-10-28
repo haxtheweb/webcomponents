@@ -2,8 +2,6 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { wipeSlot } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import "@polymer/iron-media-query/iron-media-query.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "./hax-shared-styles.js";
 /**
  * `hax-preview`
  * `An element that can generate a form`
@@ -36,169 +34,174 @@ class HaxPreview extends PolymerElement {
   }
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles">
-        hax-shared-styles">
-                :host {
-                  display: block;
-                  background-color: #ffffff;
-                  overflow: hidden;
-                }
-                iron-icon:not(:defined),
-                paper-button:not(:defined) {
-                  display: none;
-                }
-                paper-card.form-wrapper {
-                  margin: 0;
-                  padding: 0 16px 80px 16px;
-                  width: 100%;
-                  min-height: 160px;
-                  background-color: transparent;
-                  overflow: auto;
-                  height: 100%;
-                }
+      <style>
+        :host {
+          display: block;
+          background-color: #ffffff;
+          overflow: hidden;
+        }
+        iron-icon:not(:defined),
+        paper-button:not(:defined) {
+          display: none;
+        }
+        paper-card.form-wrapper {
+          margin: 0;
+          padding: 0 16px 80px 16px;
+          width: 100%;
+          min-height: 160px;
+          background-color: transparent;
+          overflow: auto;
+          height: 100%;
+        }
 
-                vaadin-split-layout {
-                  display: flex;
-                  justify-content: space-around;
-                  height: 100%;
-                }
-                eco-json-schema-object {
-                  width: 50%;
-                }
+        vaadin-split-layout {
+          display: flex;
+          justify-content: space-around;
+          height: 100%;
+        }
+        eco-json-schema-object {
+          width: 50%;
+        }
 
-                .vaadin-split-layout-panel {
-                  flex: 1 1 auto;
-                  width: 100%;
-                  flex-wrap: nowrap;
-                  margin: 0;
-                  height: 100%;
-                  overflow: hidden;
-                }
-                #form {
-                  --eco-json-schema-object-form: {
-                    display: block !important;
-                  }
-                }
-                #preview {
-                  padding: 16px;
-                  color: #000000;
-                  background-color: white;
-                  max-height: 63vh;
-                  overflow: scroll;
-                }
-                #preview ::slotted(*) {
-                  float: unset !important;
-                  margin: unset !important;
-                  width: unset !important;
-                  position: unset !important;
-                  top: unset !important;
-                  left: unset !important;
-                  right: unset !important;
-                  bottom: unset !important;
-                }
-                .preview-text {
-                  font-size: 14px;
-                  color: var(--hax-color-text);
-                  font-style: italic;
-                  width: 100%;
-                  height: 24px;
-                  border-bottom: 1px solid var(--hax-color-border-outline);
-                  text-align: center;
-                  padding: 8px 0;
-                  box-sizing: content-box;
-                }
-                .preview-text iron-icon {
-                  margin: 0 8px;
-                  display: inline-block;
-                }
-                .preview-text-bottom {
-                  border-bottom: unset;
-                  border-top: 1px solid var(--hax-color-border-outline);
-                }
-                @media screen and (max-width: 550px) {
-                  .hide-on-mobile {
-                    opacity: 0;
-                    visibility: hidden;
-                    position: absolute;
-                    left: -9999px;
-                  }
-                }
+        .vaadin-split-layout-panel {
+          flex: 1 1 auto;
+          width: 100%;
+          flex-wrap: nowrap;
+          margin: 0;
+          height: 100%;
+          overflow: hidden;
+        }
+        #form {
+          --eco-json-schema-object-form: {
+            display: block !important;
+          }
+        }
+        #preview {
+          padding: 16px;
+          color: #000000;
+          background-color: white;
+          max-height: 63vh;
+          overflow: scroll;
+        }
+        #preview ::slotted(*) {
+          float: unset !important;
+          margin: unset !important;
+          width: unset !important;
+          position: unset !important;
+          top: unset !important;
+          left: unset !important;
+          right: unset !important;
+          bottom: unset !important;
+        }
+        .preview-text {
+          font-size: 14px;
+          color: var(--hax-color-text);
+          font-style: italic;
+          width: 100%;
+          height: 24px;
+          border-bottom: 1px solid var(--hax-color-border-outline);
+          text-align: center;
+          padding: 8px 0;
+          box-sizing: content-box;
+        }
+        .preview-text iron-icon {
+          margin: 0 8px;
+          display: inline-block;
+        }
+        .preview-text-bottom {
+          border-bottom: unset;
+          border-top: 1px solid var(--hax-color-border-outline);
+        }
+        @media screen and (max-width: 550px) {
+          .hide-on-mobile {
+            opacity: 0;
+            visibility: hidden;
+            position: absolute;
+            left: -9999px;
+          }
+        }
 
-                #modetabs {
-                  height: 64px;
-                  padding: 0px;
-                  margin: 16px 0 0 0;
-                  box-sizing: content-box;
-                  color: var(--hax-color-text);
-                  text-align: center;
-                  background-color: transparent;
-                  border-bottom: 1px solid var(--hax-color-border-outline);
-                  display: block;
-                  justify-content: space-evenly;
-                  --paper-tabs-selection-bar-color: var(--hax-color-accent1);
-                  --paper-tabs: {
-                    background: transparent;
-                  }
-                }
+        #modetabs {
+          height: 64px;
+          padding: 0px;
+          margin: 16px 0 0 0;
+          box-sizing: content-box;
+          color: var(--hax-color-text);
+          text-align: center;
+          background-color: transparent;
+          border-bottom: 1px solid var(--hax-color-border-outline);
+          display: block;
+          justify-content: space-evenly;
+          --paper-tabs-selection-bar-color: var(--hax-color-accent1);
+          --paper-tabs: {
+            background: transparent;
+          }
+        }
 
-                #modetabs paper-tab {
-                  display: inline-flex;
-                  height: 100%;
-                  --paper-tab-ink: var(--hax-color-accent1);
-                  --paper-tab: {
-                    font-size: 16px;
-                  }
-                }
-                #modetabs paper-tab paper-button {
-                  min-width: unset;
-                  width: 100%;
-                  background-color: var(--hax-preview-button-bg, white);
-                  color: var(--hax-preview-button-color, black);
-                }
-                .preview-buttons {
-                  height: 64px;
-                  padding: 0px;
-                  color: var(--hax-color-text);
-                  border-bottom: 1px solid var(--hax-color-border-outline);
-                  background-color: transparent;
-                  margin: 16px 0 0 0;
-                  text-align: center;
-                  box-sizing: content-box;
-                }
-                eco-json-schema-object {
-                  --eco-json-field-margin: var(--hax-field-margin, 0 0 4px);
-                  color: var(--hax-text-color);
-                  --eco-json-schema-object-form : {
-                    -ms-flex: unset;
-                    -webkit-flex: unset;
-                    flex: unset;
-                    -webkit-flex-basis: unset;
-                    flex-basis: unset;
-                  }
-                }
-                .preview-buttons paper-button {
-                  min-width: unset;
-                  width: 40%;
-                  color: var(--hax-preview-button-color, black);
-                  display: inline-block;
-                  background-color: var(--hax-preview-button-bg, white);
-                }
-                #insert {
-                  background-color: var(--hax-preview-insert-button-bg, --hax-preview-button-bg);
-                }
-                #cancel {
-                  background-color: var(--hax-preview-cancel-button-bg, --hax-preview-button-bg);
-                }
-                .vaadin-layout-width {
-                  min-width: 30%;
-                  width: 50%;
-                  max-width: 70%;
-                }
-                .vaadin-layout-height {
-                  min-height: 40%;
-                  height: 50%;
-                  max-height: 60%;
-                }
+        #modetabs paper-tab {
+          display: inline-flex;
+          height: 100%;
+          --paper-tab-ink: var(--hax-color-accent1);
+          --paper-tab: {
+            font-size: 16px;
+          }
+        }
+        #modetabs paper-tab paper-button {
+          min-width: unset;
+          width: 100%;
+          background-color: var(--hax-preview-button-bg, white);
+          color: var(--hax-preview-button-color, black);
+        }
+        .preview-buttons {
+          height: 64px;
+          padding: 0px;
+          color: var(--hax-color-text);
+          border-bottom: 1px solid var(--hax-color-border-outline);
+          background-color: transparent;
+          margin: 16px 0 0 0;
+          text-align: center;
+          box-sizing: content-box;
+        }
+        eco-json-schema-object {
+          --eco-json-field-margin: var(--hax-field-margin, 0 0 4px);
+          color: var(--hax-text-color);
+          --eco-json-schema-object-form : {
+            -ms-flex: unset;
+            -webkit-flex: unset;
+            flex: unset;
+            -webkit-flex-basis: unset;
+            flex-basis: unset;
+          }
+        }
+        .preview-buttons paper-button {
+          min-width: unset;
+          width: 40%;
+          color: var(--hax-preview-button-color, black);
+          display: inline-block;
+          background-color: var(--hax-preview-button-bg, white);
+        }
+        #insert {
+          background-color: var(
+            --hax-preview-insert-button-bg,
+            --hax-preview-button-bg
+          );
+        }
+        #cancel {
+          background-color: var(
+            --hax-preview-cancel-button-bg,
+            --hax-preview-button-bg
+          );
+        }
+        .vaadin-layout-width {
+          min-width: 30%;
+          width: 50%;
+          max-width: 70%;
+        }
+        .vaadin-layout-height {
+          min-height: 40%;
+          height: 50%;
+          max-height: 60%;
+        }
       </style>
       <vaadin-split-layout class="panel-wrapper" orientation="[[orientation]]">
         <div
@@ -503,6 +506,8 @@ class HaxPreview extends PolymerElement {
                     console.warn(`${property} is busted some how`);
                     console.warn(e);
                   }
+                } else if (this.previewNode[property]) {
+                  this.previewNode[property] = element.properties[property];
                 } else {
                   // set attribute, this doesn't have the Polymer convention
                   // this is Vanilla, Lit, etc
@@ -672,9 +677,15 @@ class HaxPreview extends PolymerElement {
                 }
               }
               // vanilla / anything else we should just be able to set the prop
-              else {
+              else if (newValue[property]) {
+                newValue[property] = element.properties[property];
+              } else {
                 // @todo may need to bind differently for vanilla elements
-                newValue.setAttribute(property, element.properties[property]);
+                try {
+                  newValue.setAttribute(property, element.properties[property]);
+                } catch (e) {
+                  console.warn(e);
+                }
               }
             }
             this.set("value." + property, element.properties[property]);

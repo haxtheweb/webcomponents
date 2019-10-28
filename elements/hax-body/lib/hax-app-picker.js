@@ -1,8 +1,4 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import "@polymer/polymer/lib/elements/dom-repeat.js";
-import "./hax-shared-styles.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  `hax-app-picker`
  A picker for selecting an item from a list of apps / hax gizmos which require
@@ -15,19 +11,10 @@ import "./hax-shared-styles.js";
 @microcopy - the mental model for this element
  - data - this is the app data model for an element which expresses itself to hax
 */
-class HaxAppPicker extends PolymerElement {
-  constructor() {
-    super();
-    import("@polymer/paper-button/paper-button.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-app-picker-item.js");
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/paper-dialog/paper-dialog.js");
-    import("@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js");
-  }
-  static get template() {
-    return html`
-      <style include="hax-shared-styles">
+class HaxAppPicker extends LitElement {
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -107,29 +94,46 @@ class HaxAppPicker extends PolymerElement {
           margin: 8px 4px;
           text-align: center;
         }
-      </style>
+      `
+    ];
+  }
+  constructor() {
+    super();
+    this._elements = [];
+    this.selectionList = [];
+    this.title = "Pick an options";
+    this.pickerType = "gizmo";
+    this.opened = false;
+    import("@polymer/paper-button/paper-button.js");
+    import("@lrnwebcomponents/hax-body/lib/hax-app-picker-item.js");
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/paper-dialog/paper-dialog.js");
+    import("@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js");
+    this.addEventListener("iron-overlay-canceled", this.close.bind(this));
+    this.addEventListener("iron-overlay-closed", this.close.bind(this));
+  }
+  render() {
+    return html`
       <paper-dialog id="dialog">
-        <h3 id="title">[[title]]</h3>
+        <h3 id="title">${this.title}</h3>
         <paper-dialog-scrollable id="buttonlist">
           <div class="scroll-wrap">
-            <template
-              is="dom-repeat"
-              id="ironlist"
-              items="[[selectionList]]"
-              as="element"
-            >
-              <div class="repeat-item">
-                <hax-app-picker-item
-                  id$="picker-item-[[index]]"
-                  class="element-button"
-                  on-click="_selected"
-                  data-selected\$="[[index]]"
-                  label="[[element.title]]"
-                  icon="[[element.icon]]"
-                  color="[[element.color]]"
-                ></hax-app-picker-item>
-              </div>
-            </template>
+            ${this.selectionList.map(
+              (element, index) => html`
+                <div class="repeat-item">
+                  <hax-app-picker-item
+                    .id="picker-item-${index}"
+                    class="element-button"
+                    @click="${this._selected}"
+                    data-selected="${index}"
+                    .label="${element.title}"
+                    .icon="${element.icon}"
+                    .color="${element.color}"
+                  ></hax-app-picker-item>
+                </div>
+              `
+            )}
           </div>
         </paper-dialog-scrollable>
         <paper-button id="closedialog" on-click="close">
@@ -148,56 +152,52 @@ class HaxAppPicker extends PolymerElement {
        * raw element set
        */
       _elements: {
-        type: Array,
-        value: []
+        type: Array
       },
       /**
        * Refactored list for selection purposes
        */
       selectionList: {
-        type: Array,
-        value: []
+        type: Array
       },
       /**
        * Title for the dialog
        */
       title: {
-        type: String,
-        value: "Pick an options"
+        type: String
       },
       /**
        * Allow multiple uses
        */
       pickerType: {
-        type: String,
-        value: "gizmo"
+        type: String
       },
       /**
        * Opened status to bind to the dialog box being open
        */
       opened: {
-        type: Boolean,
-        value: false,
-        observer: "_openedChanged"
+        type: Boolean
       }
     };
   }
-  /**
-   * Attached life cycle
-   */
-  ready() {
-    super.ready();
+  firstUpdated(changedProperties) {
     this.dispatchEvent(
-      new CustomEvent("hax-register-app-picker", {
+      new CustomEvent("hax-register-core-piece", {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: this
+        detail: {
+          piece: "haxAppPicker",
+          object: this
+        }
       })
     );
-    afterNextRender(this, function() {
-      this.addEventListener("iron-overlay-canceled", this.close.bind(this));
-      this.addEventListener("iron-overlay-closed", this.close.bind(this));
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "opened") {
+        this._openedChanged(this[propName], oldValue);
+      }
     });
   }
 
@@ -268,20 +268,19 @@ class HaxAppPicker extends PolymerElement {
         break;
     }
     this._elements = elements;
-    this.set("selectionList", []);
-    this.set("selectionList", tmp);
+    this.selectionList = [];
+    this.selectionList = tmp;
     this.opened = true;
     // try to focus on option 0
     setTimeout(() => {
       this.shadowRoot.querySelector("#picker-item-0").focus();
-    }, 100);
+    }, 50);
   }
   /**
    * Handle the user selecting an app.
    */
   _selected(e) {
-    var normalizedEvent = dom(e);
-    let key = normalizedEvent.localTarget.getAttribute("data-selected");
+    let key = e.target.getAttribute("data-selected");
     e.preventDefault();
     e.stopPropagation();
     if (typeof this._elements[key] !== typeof undefined) {

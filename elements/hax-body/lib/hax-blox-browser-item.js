@@ -1,40 +1,16 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/paper-button/paper-button.js";
-import "@polymer/paper-card/paper-card.js";
 import "@polymer/iron-icon/iron-icon.js";
-import "./hax-shared-styles.js";
 /**
  * `hax-blox-browser-item`
  * `A button on the hax-gizmo-browser app display`
  */
-class HaxBloxBrowserItem extends PolymerElement {
-  constructor() {
-    super();
-    this.addEventListener("mousedown", this.tapEventOn.bind(this));
-    this.addEventListener("mouseover", this.tapEventOn.bind(this));
-    this.addEventListener("mouseout", this.tapEventOff.bind(this));
-    this.addEventListener("focusin", this.tapEventOn.bind(this));
-    this.addEventListener("focusout", this.tapEventOff.bind(this));
-  }
-  static get template() {
-    return html`
-      <style include="hax-shared-styles">
+class HaxBloxBrowserItem extends LitElement {
+  static get styles() {
+    return [
+      css`
         :host {
           display: flex;
-        }
-        :host([elevation="1"]) {
-          -webkit-transform: scale(1, 1);
-          transform: scale(1, 1);
-        }
-        :host([elevation="2"]) {
-          -webkit-transform: scale(1.4, 1.4);
-          transform: scale(1.4, 1.4);
-        }
-        paper-card {
-          margin: 4px 0;
-          border-radius: 10px;
-          display: flex;
-          width: 100%;
         }
         paper-button {
           color: black;
@@ -45,9 +21,21 @@ class HaxBloxBrowserItem extends PolymerElement {
           height: 80px !important;
           width: 100%;
           display: flex;
-          border-radius: 10px;
+          border-radius: 0;
           min-width: unset;
           --paper-button-ink-color: var(--hax-ink-color, black);
+          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+            0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+          transition: box-shadow 0.3s;
+        }
+        paper-button:hover,
+        paper-button:focus {
+          box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.14),
+            0 2px 10px 0 rgba(0, 0, 0, 0.12), 0 6px 2px -4px rgba(0, 0, 0, 0.2);
+        }
+        paper-button:active {
+          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+            0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
         }
         paper-button .item-title {
           font-size: 14px;
@@ -67,19 +55,21 @@ class HaxBloxBrowserItem extends PolymerElement {
             font-size: 12px;
           }
         }
-      </style>
-      <paper-card id="card" elevation="[[elevation]]">
-        <paper-button
-          id="button"
-          on-click="_fireEvent"
-          data-voicecommand\$="select [[title]]"
-        >
-          <div class="button-inner">
-            <iron-icon icon="[[icon]]"></iron-icon>
-            <div class="item-title">[[title]]</div>
-          </div>
-        </paper-button>
-      </paper-card>
+      `
+    ];
+  }
+  render() {
+    return html`
+      <paper-button
+        id="button"
+        @click="${this._fireEvent}"
+        .data-voicecommand="select ${this.title}"
+      >
+        <div class="button-inner">
+          <iron-icon icon="${this.icon}"></iron-icon>
+          <div class="item-title">${this.title}</div>
+        </div>
+      </paper-button>
     `;
   }
   static get tag() {
@@ -141,30 +131,8 @@ class HaxBloxBrowserItem extends PolymerElement {
        */
       tag: {
         type: String
-      },
-      /**
-       * Elevation off the UI
-       */
-      elevation: {
-        type: Number,
-        value: 1,
-        reflectToAttribute: true
       }
     };
-  }
-
-  /**
-   * special handling for taps on the thing
-   */
-  tapEventOn(e) {
-    this.elevation = 2;
-  }
-
-  /**
-   * Hover off stop showing the deeper shadow.
-   */
-  tapEventOff(e) {
-    this.elevation = 1;
   }
 
   /**

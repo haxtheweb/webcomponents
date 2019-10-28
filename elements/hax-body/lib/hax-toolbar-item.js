@@ -1,13 +1,12 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "./hax-shared-styles.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 
-class HaxToolbarItem extends PolymerElement {
-  static get template() {
-    return html`
-      <style include="simple-colors-shared-styles hax-shared-styles">
+class HaxToolbarItem extends LitElement {
+  static get styles() {
+    return [
+      css`
         :host {
           display: flex;
           box-sizing: border-box;
@@ -56,7 +55,6 @@ class HaxToolbarItem extends PolymerElement {
           height: 36px;
           width: 36px;
           min-width: unset;
-          @apply --hax-toolbar-item-container;
           --paper-button-ink-color: var(
             --hax-toolbar-item-color,
             --hax-color-accent1
@@ -127,30 +125,50 @@ class HaxToolbarItem extends PolymerElement {
             border-radius: 0;
           }
         }
-      </style>
-
+      `
+    ];
+  }
+  render() {
+    return html`
       <paper-button
-        disabled="[[disabled]]"
+        .disabled="${this.disabled}"
         id="buttoncontainer"
         tabindex="0"
-        title\$="[[tooltip]]"
+        .title="${this.tooltip}"
       >
-        <iron-icon id="button" icon="[[icon]]" hidden\$="[[!icon]]"></iron-icon>
-        <span id="label" hidden\$="[[!label]]">[[label]]</span> <slot></slot>
+        <iron-icon
+          id="button"
+          icon="${this.icon}"
+          .hidden="${!this.icon}"
+        ></iron-icon>
+        <span id="label" .hidden="${!this.label}">${this.label}</span>
+        <slot></slot>
       </paper-button>
       <paper-tooltip
         id="tooltip"
-        for\$="[[this]]"
         offset="10"
-        position="[[tooltipDirection]]"
+        position="${this.tooltipDirection}"
         animation-delay="0"
       >
-        [[tooltip]]
+        ${this.tooltip}
       </paper-tooltip>
     `;
   }
   static get tag() {
     return "hax-toolbar-item";
+  }
+  constructor() {
+    super();
+    this.corner = "";
+    this.disabled = false;
+    this.dark = false;
+    this.menu = false;
+    this.mini = false;
+    this.icon = false;
+    this.label = false;
+    this.tooltip = "";
+    this.tooltipDirection = "top";
+    this.default = false;
   }
   static get properties() {
     return {
@@ -159,90 +177,84 @@ class HaxToolbarItem extends PolymerElement {
        */
       corner: {
         type: String,
-        reflectToAttribute: true,
-        value: ""
+        reflect: true
       },
       /**
        * disabled state
        */
       disabled: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Inverted display mode
        */
       dark: {
         type: Boolean,
-        reflectToAttribute: true,
-        value: false
+        reflect: true
       },
       /**
        * Style to be presented in a menu
        */
       menu: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Present smaller the normal but consistent
        */
       mini: {
         type: Boolean,
-        reflectToAttribute: true,
-        value: false
+        reflect: true
       },
       /**
        * Icon to represent this button, required.
        */
       icon: {
-        type: String,
-        value: false
+        type: String
       },
       /**
        * Text applied to the button
        */
       label: {
-        type: String,
-        value: false
+        type: String
       },
       /**
        * Hover tip text
        */
       tooltip: {
-        type: String,
-        value: "",
-        observer: "_tooltipChanged"
+        type: String
       },
       /**
        * Direction that the tooltip should flow
        */
       tooltipDirection: {
-        type: String,
-        value: "top"
+        type: String
       },
       default: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true
       }
     };
   }
   /**
-   * Keep accessibility inline with tooltip
+   * Life cycle callback
    */
-  _tooltipChanged(newValue, oldValue) {
-    if (newValue == "" || newValue == null) {
-      this.shadowRoot
-        .querySelector("#tooltip")
-        .setAttribute("aria-hidden", "true");
-    } else {
-      this.shadowRoot
-        .querySelector("#tooltip")
-        .setAttribute("aria-hidden", "false");
-    }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (
+        propName == "tooltip" &&
+        (this[propName] == "" || this[propName] == null)
+      ) {
+        this.shadowRoot
+          .querySelector("#tooltip")
+          .setAttribute("aria-hidden", "true");
+      } else {
+        this.shadowRoot
+          .querySelector("#tooltip")
+          .setAttribute("aria-hidden", "false");
+      }
+    });
   }
 }
 window.customElements.define(HaxToolbarItem.tag, HaxToolbarItem);

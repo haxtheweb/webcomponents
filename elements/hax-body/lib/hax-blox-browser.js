@@ -1,24 +1,15 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/polymer/lib/elements/dom-repeat.js";
-
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@lrnwebcomponents/hax-body/lib/hax-blox-browser-item.js";
 /**
  * `hax-blox-browser`
  * `List of layout blox to select from`
  * @microcopy - the mental model for this element
  * - blox - silly name for the general public when talking about custom elements and what it provides in the end.
  */
-class HaxBloxBrowser extends PolymerElement {
-  constructor() {
-    super();
-    import("@lrnwebcomponents/hax-body/lib/hax-blox-browser-item.js");
-    document.body.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-  }
-  static get template() {
-    return html`
-      <style>
+class HaxBloxBrowser extends LitElement {
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -27,26 +18,39 @@ class HaxBloxBrowser extends PolymerElement {
           -webkit-transition: 0.3s all linear;
           transition: 0.3s all linear;
         }
-      </style>
-      <dom-repeat items="[[__bloxList]]" as="blox">
-        <template>
+      `
+    ];
+  }
+  constructor() {
+    super();
+    this.bloxList = [];
+    this.__bloxList = [];
+    document.body.addEventListener(
+      "hax-store-property-updated",
+      this._haxStorePropertyUpdated.bind(this)
+    );
+  }
+  render() {
+    return html`
+      ${this.__bloxList.map(
+        blox => html`
           <div class="blox-container">
             <hax-blox-browser-item
-              index="[[blox.index]]"
-              layout="[[blox.details.layout]]"
-              title="[[blox.details.title]]"
-              tag="[[blox.details.tag]]"
-              icon="[[blox.details.icon]]"
-              author="[[blox.details.author]]"
-              teaser="[[blox.details.teaser]]"
-              description="[[blox.details.description]]"
-              examples="[[blox.details.examples]]"
-              status="[[blox.details.status]]"
-              blox="[[blox.blox]]"
+              .index="${blox.index}"
+              .layout="${blox.details.layout}"
+              .title="${blox.details.title}"
+              .tag="${blox.details.tag}"
+              .icon="${blox.details.icon}"
+              .author="${blox.details.author}"
+              .teaser="${blox.details.teaser}"
+              .description="${blox.details.description}"
+              .examples="${blox.details.examples}"
+              .status="${blox.details.status}"
+              .blox="${blox.blox}"
             ></hax-blox-browser-item>
           </div>
-        </template>
-      </dom-repeat>
+        `
+      )}
     `;
   }
 
@@ -60,8 +64,7 @@ class HaxBloxBrowser extends PolymerElement {
        * The list of blox
        */
       bloxList: {
-        type: Array,
-        observer: "_bloxListChanged"
+        type: Array
       },
       __bloxList: {
         type: Array
@@ -84,19 +87,17 @@ class HaxBloxBrowser extends PolymerElement {
         this[e.detail.property] != null &&
         typeof this[e.detail.property].length !== typeof undefined
       ) {
-        this.set(e.detail.property, []);
+        this[e.detail.property] = [];
       }
-      this.set(e.detail.property, e.detail.value);
+      this[e.detail.property] = e.detail.value;
     }
   }
-
-  /**
-   * Notice bloxList changing.
-   */
-  _bloxListChanged(newValue, oldValue) {
-    if (typeof newValue !== typeof undefined) {
-      this.set("__bloxList", newValue);
-    }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "bloxList") {
+        this.__bloxList = this[propName];
+      }
+    });
   }
 }
 window.customElements.define(HaxBloxBrowser.tag, HaxBloxBrowser);

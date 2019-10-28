@@ -1,19 +1,14 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import "@polymer/paper-tabs/paper-tabs.js";
 /**
  * `tab-list`
  * `A simple listing of tabed links / items`
  * @demo demo/index.html
  */
-class TabList extends PolymerElement {
-  constructor() {
-    super();
-    import("@polymer/paper-tabs/paper-tabs.js");
-    import("@polymer/paper-tabs/paper-tab.js");
-    import("@polymer/paper-button/paper-button.js");
-  }
-  static get template() {
-    return html`
-      <style>
+class TabList extends LitElement {
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           margin: 0 auto;
@@ -47,23 +42,52 @@ class TabList extends PolymerElement {
             display: block;
           }
         }
-      </style>
+      `
+    ];
+  }
+  constructor() {
+    super();
+    this.tabs = [];
+    import("@polymer/paper-tabs/paper-tab.js");
+    import("@polymer/paper-button/paper-button.js");
+  }
+  render() {
+    return html`
       <paper-tabs>
-        <template is="dom-repeat" items="[[tabs]]" as="tab">
-          <paper-tab>
-            <a target="_blank" href="[[tab.link]]" tabindex="-1">
-              <paper-button raised>[[tab.label]]</paper-button>
-            </a>
-          </paper-tab>
-        </template>
+        ${this.tabs.map(
+          tab => html`
+            <paper-tab>
+              <a
+                target="_blank"
+                href="${tab.link}"
+                tabindex="-1"
+                rel="noopener noreferrer"
+              >
+                <paper-button raised>${tab.label}</paper-button>
+              </a>
+            </paper-tab>
+          `
+        )}
       </paper-tabs>
     `;
   }
   static get tag() {
     return "tab-list";
   }
-  static get observers() {
-    return ["_valueChanged(tabs.*)"];
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "tabs") {
+        // fire an event that this is a core piece of the system
+        this.dispatchEvent(
+          new CustomEvent("tabs-changed", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: this[propName]
+          })
+        );
+      }
+    });
   }
   static get properties() {
     return {
@@ -71,21 +95,9 @@ class TabList extends PolymerElement {
        * List of tabs
        */
       tabs: {
-        type: Array,
-        value: [],
-        notify: true
+        type: Array
       }
     };
-  }
-  /**
-   * Notice an array has changed and update the DOM.
-   */
-  _valueChanged(e) {
-    for (var i in e.base) {
-      for (var j in e.base[i]) {
-        this.notifyPath("tabs." + i + "." + j);
-      }
-    }
   }
   static get haxProperties() {
     return {

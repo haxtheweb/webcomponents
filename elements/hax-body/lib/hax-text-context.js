@@ -1,32 +1,14 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "./hax-shared-styles.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `hax-text-context`
  * `A context menu that provides common text based authoring options.`
  * @microcopy - the mental model for this element
  * - context menu - this is a menu of text based buttons and events for use in a larger solution.
  */
-class HaxTextContext extends PolymerElement {
-  constructor() {
-    super();
-    import("@polymer/paper-item/paper-item.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@lrnwebcomponents/md-extra-icons/md-extra-icons.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-context-item-textop.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-toolbar.js");
-    this.addEventListener(
-      "hax-context-item-selected",
-      this._haxContextOperation.bind(this)
-    );
-  }
-  static get template() {
-    return html`
-      <style include="simple-colors-shared-styles hax-shared-styles">
+class HaxTextContext extends LitElement {
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           pointer-events: none;
@@ -62,11 +44,43 @@ class HaxTextContext extends PolymerElement {
           bottom: 0;
           opacity: 0.95;
         }
-      </style>
-      <hax-toolbar selected="[[selection]]" hide-transform="" id="toolbar">
+      `
+    ];
+  }
+  constructor() {
+    super();
+    import("@polymer/paper-item/paper-item.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@lrnwebcomponents/md-extra-icons/md-extra-icons.js");
+    import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
+    import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
+    import("@lrnwebcomponents/hax-body/lib/hax-context-item-textop.js");
+    import("@lrnwebcomponents/hax-body/lib/hax-toolbar.js");
+    this.addEventListener(
+      "hax-context-item-selected",
+      this._haxContextOperation.bind(this)
+    );
+    this.selectedValue = "p";
+    this.selection = false;
+    this.isSafari = this._isSafari();
+    this.polyfillSafe = window.HaxStore.instance.computePolyfillSafe();
+    // fire an event that this is a core piece of the system
+    this.dispatchEvent(
+      new CustomEvent("is-safari-changed", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this.isSafari
+      })
+    );
+  }
+  render() {
+    return html`
+      <hax-toolbar .selected="${this.selection}" hide-transform id="toolbar">
         <hax-context-item-menu
           slot="primary"
-          selected-value="{{selectedValue}}"
+          @selected-value-changed="${this.selectedValueChanged}"
           id="formatsize"
           icon="text-format"
           label="Format"
@@ -134,28 +148,28 @@ class HaxTextContext extends PolymerElement {
           icon="editor:format-list-bulleted"
           event-name="text-list-bulleted"
           label="Bulleted list"
-          hidden$="[[!_showIndent]]"
+          .hidden="${!this._showIndent}"
         ></hax-context-item-textop>
         <hax-context-item-textop
           slot="primary"
           icon="editor:format-list-numbered"
           label="Numbered list"
           event-name="text-list-numbered"
-          hidden\$="[[!_showIndent]]"
+          .hidden="${!this._showIndent}"
         ></hax-context-item-textop>
         <hax-context-item-textop
           slot="primary"
           icon="editor:format-indent-decrease"
           label="Outdent"
           event-name="text-outdent"
-          hidden$="[[!_showIndent]]"
+          .hidden="${!this._showIndent}"
         ></hax-context-item-textop>
         <hax-context-item-textop
           slot="primary"
           icon="editor:format-indent-increase"
           label="Indent"
           event-name="text-indent"
-          hidden$="[[!_showIndent]]"
+          .hidden="${!this._showIndent}"
         ></hax-context-item-textop>
         <hax-context-item-textop
           slot="primary"
@@ -168,14 +182,14 @@ class HaxTextContext extends PolymerElement {
           icon="device:graphic-eq"
           label="Advanced item"
           event-name="insert-inline-gizmo"
-          hidden$="[[isSafari]]"
+          .hidden="${this.isSafari}"
         ></hax-context-item>
         <hax-context-item-textop
           slot="primary"
           icon="device:graphic-eq"
           label="Advanced item"
           event-name="insert-inline-gizmo"
-          hidden$="[[!isSafari]]"
+          .hidden="${!this.isSafari}"
         ></hax-context-item-textop>
 
         <hax-context-item-textop
@@ -222,8 +236,7 @@ class HaxTextContext extends PolymerElement {
   static get properties() {
     return {
       _showIndent: {
-        type: Boolean,
-        computed: "_computeShowIndent(selectedValue, polyfillSafe)"
+        type: Boolean
       },
       /**
        * Polyfill safe; this helps remove options from polyfilled platforms
@@ -236,26 +249,44 @@ class HaxTextContext extends PolymerElement {
        * Selected value to match format of the tag currently.
        */
       selectedValue: {
-        type: String,
-        value: "p",
-        notify: true
+        type: String
       },
       /**
        * Selection tracking
        */
       selection: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       /**
        * Is this safari
        */
       isSafari: {
-        type: Boolean,
-        notify: true,
-        computed: "_isSafari()"
+        type: Boolean
       }
     };
+  }
+
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      // computed based on these changing
+      if (propName == "selectedValue" || propName == "polyfillSafe") {
+        this._showIndent = this._computeShowIndent(
+          this.selectedValue,
+          this.polyfillSafe
+        );
+      }
+      if (propName == "selectedValue") {
+        // fire an event that this is a core piece of the system
+        this.dispatchEvent(
+          new CustomEvent("selected-value-changed", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: this[propName]
+          })
+        );
+      }
+    });
   }
 
   _computeShowIndent(selectedValue, polyfillSafe) {
@@ -264,23 +295,6 @@ class HaxTextContext extends PolymerElement {
     }
     return false;
   }
-  ready() {
-    super.ready();
-  }
-  /**
-   * life cycle, figure out polyfill
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      this.polyfillSafe = window.HaxStore.instance.computePolyfillSafe();
-    });
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-  }
-
   /**
    * Respond to simple modifications.
    */

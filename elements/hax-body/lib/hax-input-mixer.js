@@ -1,7 +1,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import "./hax-shared-styles.js";
 /**
  * `hax-input-mixer`
  * A context menu that provides common custom-element based authoring options. While
@@ -10,7 +9,7 @@ import "./hax-shared-styles.js";
  * @microcopy - the mental model for this element
  * - context menu - this is a menu of custom-element based buttons and events for use in a larger solution.
  */
-class HaxImportMixer extends PolymerElement {
+class HaxInputMixer extends PolymerElement {
   constructor() {
     super();
     import("@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js");
@@ -24,7 +23,7 @@ class HaxImportMixer extends PolymerElement {
   }
   static get template() {
     return html`
-      <style includes="hax-shared-styles">
+      <style>
         :host {
           display: block;
           margin: 0;
@@ -379,5 +378,5 @@ class HaxImportMixer extends PolymerElement {
     }
   }
 }
-window.customElements.define(HaxImportMixer.tag, HaxImportMixer);
-export { HaxImportMixer };
+window.customElements.define(HaxInputMixer.tag, HaxInputMixer);
+export { HaxInputMixer };
