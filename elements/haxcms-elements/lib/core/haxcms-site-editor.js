@@ -23,9 +23,23 @@ import "./haxcms-site-dashboard.js";
  */
 
 class HAXCMSSiteEditor extends LitElement {
-  static get styles() {
-    return [
-      css`
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   */
+  static get tag() {
+    return "haxcms-site-editor";
+  }
+
+  constructor() {
+    super();
+    this.__disposer = [];
+    this.method = "POST";
+    this.editMode = false;
+  }
+  // render function
+  render() {
+    return html`
+      <style>
         :host {
           display: block;
         }
@@ -73,26 +87,7 @@ class HAXCMSSiteEditor extends LitElement {
         :host([edit-mode]) h-a-x {
           display: block;
         }
-      `
-    ];
-  }
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   */
-
-  static get tag() {
-    return "haxcms-site-editor";
-  }
-
-  constructor() {
-    super();
-    this.__disposer = [];
-    this.method = "POST";
-    this.editMode = false;
-  }
-  // render function
-  render() {
-    return html`
+      </style>
       <iron-ajax
         .headers='{"Authorization": "Bearer ${this.jwt}"}'
         id="nodeupdateajax"
@@ -308,7 +303,8 @@ class HAXCMSSiteEditor extends LitElement {
        */
       editMode: {
         type: Boolean,
-        reflect: true
+        reflect: true,
+        attribute: "edit-mode"
       },
       /**
        * Active item of the node being worked on, JSON outline schema item format
@@ -390,17 +386,14 @@ class HAXCMSSiteEditor extends LitElement {
   firstUpdated(changedProperties) {
     autorun(reaction => {
       this.editMode = toJS(store.editMode);
-
       this.__disposer.push(reaction);
     });
     autorun(reaction => {
       this.manifest = toJS(store.manifest);
-
       this.__disposer.push(reaction);
     });
     autorun(reaction => {
       this.activeItem = toJS(store.activeItem);
-
       this.__disposer.push(reaction);
     });
     window.SimpleToast.requestAvailability();
