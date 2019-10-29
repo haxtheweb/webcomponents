@@ -2,21 +2,18 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
+import { html } from "@polymer/polymer/polymer-element.js";
+import { HAXCMSPolymerElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSPolymerElementTheme.js";
 
 /**
  * `learn-two-theme`
  * `Learn2 theme for HAXcms`
  *
- * @microcopy - language worth noting:
- *  -
- *
  * @customElement
- * @polymer
+ * @polymerElement
  * @demo demo/index.html
  */
-class LearnTwoTheme extends HAXCMSTheme(PolymerElement) {
+class LearnTwoTheme extends HAXCMSPolymerElementTheme {
   // render function
   static get template() {
     return html`

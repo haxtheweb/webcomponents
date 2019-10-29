@@ -1,7 +1,7 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { html } from "@polymer/polymer/polymer-element.js";
+import { HAXCMSPolymerElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSPolymerElementTheme.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import { updateStyles } from "@polymer/polymer/lib/mixins/element-mixin.js";
-import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import "@polymer/app-layout/app-header/app-header.js";
@@ -23,7 +23,7 @@ import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git
  *
  * @demo demo/index.html
  */
-class OutlinePlayer extends HAXCMSTheme(PolymerElement) {
+class OutlinePlayer extends HAXCMSPolymerElementTheme {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly

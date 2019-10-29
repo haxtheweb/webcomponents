@@ -2,8 +2,8 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
+import { html } from "@polymer/polymer/polymer-element.js";
+import { HAXCMSPolymerElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSPolymerElementTheme.js";
 import { MinimalistTemplate } from "@lrnwebcomponents/haxcms-elements/lib/ui-components/templates/minimalist-template.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
@@ -14,8 +14,8 @@ import "@lrnwebcomponents/simple-colors/simple-colors.js";
  * @polymer
  * @demo demo/index.html
  */
-class HAXCMSMinimalistTheme extends HAXCMSTheme(
-  MinimalistTemplate(PolymerElement)
+class HAXCMSMinimalistTheme extends MinimalistTemplate(
+  HAXCMSPolymerElementTheme
 ) {
   // render function
   static get template() {

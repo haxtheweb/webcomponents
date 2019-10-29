@@ -2,9 +2,8 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
+import { html } from "@polymer/polymer/polymer-element.js";
+import { HAXCMSPolymerElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSPolymerElementTheme.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/hardware-icons.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
@@ -40,7 +39,7 @@ A LRN element
   bar - the underlayed bar that's tracking overall progression
   author mode - authoring mode
 */
-class LrnappBook extends HAXCMSTheme(PolymerElement) {
+class LrnappBook extends HAXCMSPolymerElementTheme {
   static get template() {
     return html`
       <style include="materializecss-styles">
@@ -783,7 +782,7 @@ class LrnappBook extends HAXCMSTheme(PolymerElement) {
       })
     );
     window.SimpleToast.requestAvailability();
-    this.$.bodyloading.hidden = true;
+    this.shadowRoot.querySelector("#bodyloading").hidden = true;
     // scroll top into view
     setTimeout(() => {
       this._resetScroll();
@@ -794,29 +793,29 @@ class LrnappBook extends HAXCMSTheme(PolymerElement) {
    */
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function() {
-      this.$.progress.addEventListener(
+    this.shadowRoot
+      .querySelector("#progress")
+      .addEventListener(
         "node-percent-milestone",
         this.testMilestone.bind(this)
       );
-      this.$.mapmenu.addEventListener(
-        "link-clicked",
-        this._menuItemClicked.bind(this)
-      );
-    });
+    this.shadowRoot
+      .querySelector("#mapmenu")
+      .addEventListener("link-clicked", this._menuItemClicked.bind(this));
   }
   /**
    * detached life cycle
    */
   disconnectedCallback() {
-    this.$.progress.removeEventListener(
-      "node-percent-milestone",
-      this.testMilestone.bind(this)
-    );
-    this.$.mapmenu.removeEventListener(
-      "link-clicked",
-      this._menuItemClicked.bind(this)
-    );
+    this.shadowRoot
+      .querySelector("#progress")
+      .removeEventListener(
+        "node-percent-milestone",
+        this.testMilestone.bind(this)
+      );
+    this.shadowRoot
+      .querySelector("#mapmenu")
+      .removeEventListener("link-clicked", this._menuItemClicked.bind(this));
     super.disconnectedCallback();
   }
   _haxcmsRouterManifestSubscribeHandler(e) {
@@ -837,7 +836,7 @@ class LrnappBook extends HAXCMSTheme(PolymerElement) {
    * Handle click on dashboard to trigger loading data.
    */
   progressdashboardopen(e) {
-    this.$.progressdashboard.showProgress = true;
+    this.shadowRoot.querySelector("#progressdashboard").showProgress = true;
   }
 
   /**
@@ -853,7 +852,7 @@ class LrnappBook extends HAXCMSTheme(PolymerElement) {
   _editModeChanged(newValue, oldValue) {
     if (typeof newValue !== typeof undefined) {
       if (newValue === true) {
-        this.$.currenttitle.contentEditable = true;
+        this.shadowRoot.querySelector("#currenttitle").contentEditable = true;
         // block scroll tracking during edit mode
         this.resetScroll = true;
         // notification to user
@@ -866,14 +865,19 @@ class LrnappBook extends HAXCMSTheme(PolymerElement) {
           }
         });
       } else {
-        this.$.currenttitle.contentEditable = false;
+        this.shadowRoot.querySelector("#currenttitle").contentEditable = false;
         // allow scrolling to take place now
         this.resetScroll = false;
         // we were in edit mode, now time to save for real
         if (oldValue === true) {
           // see if title changed
-          if (this.$.currenttitle.innerHTML !== this.currentPageData.title) {
-            this.currentPageData.title = this.$.currenttitle.innerHTML;
+          if (
+            this.shadowRoot.querySelector("#currenttitle").innerHTML !==
+            this.currentPageData.title
+          ) {
+            this.currentPageData.title = this.shadowRoot.querySelector(
+              "#currenttitle"
+            ).innerHTML;
           }
           const evt = new CustomEvent("simple-toast-show", {
             bubbles: true,
@@ -909,7 +913,7 @@ class LrnappBook extends HAXCMSTheme(PolymerElement) {
   _resetScroll() {
     this.resetScroll = true;
     this.scrollPosition = 0;
-    this.$.anchor.scrollIntoView({
+    this.shadowRoot.querySelector("#anchor").scrollIntoView({
       block: "start",
       behavior: "smooth",
       inline: "nearest"
@@ -1055,8 +1059,8 @@ class LrnappBook extends HAXCMSTheme(PolymerElement) {
    */
   toggleBook(e) {
     // if we are in edit mode then we ned to close this
-    this.$.bookdrawer.toggle();
-    this.fullWidth = !this.$.bookdrawer.opened;
+    this.shadowRoot.querySelector("#bookdrawer").toggle();
+    this.fullWidth = !this.shadowRoot.querySelector("#bookdrawer").opened;
   }
 
   /**
@@ -1079,8 +1083,8 @@ class LrnappBook extends HAXCMSTheme(PolymerElement) {
       this.set("bookItems", items);
       this.notifyPath("bookItems.*");
       // set title to match new parent title
-      this.set("outlineTitle", outlineTitle);
-      this.$.outlineloading.hidden = true;
+      this.outlineTitle = outlineTitle;
+      this.shadowRoot.querySelector("#outlineloading").hidden = true;
       this.pageParams.load = true;
     }
   }
@@ -1095,11 +1099,11 @@ class LrnappBook extends HAXCMSTheme(PolymerElement) {
       typeof newValue.content !== typeof undefined
     ) {
       // set page title; easiest for sure
-      this.set("currentTitle", newValue.title);
+      this.currentTitle = newValue.title;
       // reset scroll position back to top of this content
       this._resetScroll();
       // hide the loading area
-      this.$.bodyloading.hidden = true;
+      this.shadowRoot.querySelector("#bodyloading").hidden = true;
       // manage state associated w/ edit mode if we were in edit mode previously
       if (this.editMode && !newValue.page.meta.canUpdate) {
         this.editMode = false;

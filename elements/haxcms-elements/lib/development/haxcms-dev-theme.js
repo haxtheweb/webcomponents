@@ -2,9 +2,9 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { html } from "@polymer/polymer/polymer-element.js";
+import { HAXCMSPolymerElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSPolymerElementTheme.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";
@@ -16,13 +16,11 @@ import "@polymer/iron-list/iron-list.js";
  * and then IF hax is around it'll show up :)`
  *
  * @customElement
- * @polymer
  * @demo demo/index.html
  */
-class HAXCMSDevTheme extends HAXCMSTheme(PolymerElement) {
+class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
   /**
    * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
     return "haxcms-dev-theme";

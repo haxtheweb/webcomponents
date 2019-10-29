@@ -2,7 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 /**
@@ -13,18 +13,10 @@ import { autorun, toJS } from "mobx/lib/mobx.module.js";
  * @polymer
  * @demo demo/index.html
  */
-class SiteDotIndicator extends PolymerElement {
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "site-dot-indicator";
-  }
-  // render function
-  static get template() {
-    return html`
-      <style>
+class SiteDotIndicator extends LitElement {
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           --site-dot-indicator-color: white;
@@ -74,7 +66,23 @@ class SiteDotIndicator extends PolymerElement {
           margin: 1px;
           background-color: var(--site-dot-indicator-color);
         }
-      </style>
+      `
+    ];
+  }
+  constructor() {
+    super();
+    this.__disposer = [];
+    this.scrollOnActive = false;
+  }
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   */
+  static get tag() {
+    return "site-dot-indicator";
+  }
+  // render function
+  render() {
+    return html`
       <ol id="list"></ol>
     `;
   }
@@ -83,26 +91,30 @@ class SiteDotIndicator extends PolymerElement {
    */
   static get properties() {
     return {
-      /**
-       * acitvely selected item
-       */
       activeId: {
-        type: String,
-        observer: "_activeIdChanged"
+        type: String
       },
       routerManifest: {
-        type: Object,
-        observer: "_routerManifestChanged"
+        type: Object
       },
       sticky: {
         type: String,
-        reflectToAttribute: true
+        reflect: true
       },
       scrollOnActive: {
-        type: Boolean,
-        value: false
+        type: Boolean
       }
     };
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "activeId") {
+        this._activeIdChanged(this[propName], oldValue);
+      }
+      if (propName == "routerManifest") {
+        this._routerManifestChanged(this[propName], oldValue);
+      }
+    });
   }
   _activeIdChanged(newValue, oldValue) {
     if (newValue) {
@@ -121,8 +133,10 @@ class SiteDotIndicator extends PolymerElement {
     }
   }
   _routerManifestChanged(routerManifest) {
-    while (this.$.list.firstChild !== null) {
-      this.$.list.removeChild(this.$.list.firstChild);
+    while (this.shadowRoot.querySelector("#list").firstChild !== null) {
+      this.shadowRoot
+        .querySelector("#list")
+        .removeChild(this.shadowRoot.querySelector("#list").firstChild);
     }
     for (var i in routerManifest.items) {
       let li = document.createElement("li");
@@ -134,19 +148,21 @@ class SiteDotIndicator extends PolymerElement {
       let link = document.createElement("a");
       link.href = routerManifest.items[i].location;
       li.appendChild(link);
-      this.$.list.appendChild(li);
+      this.shadowRoot.querySelector("#list").appendChild(li);
     }
   }
   connectedCallback() {
     super.connectedCallback();
-    this.__disposer = autorun(() => {
+    autorun(reaction => {
       this.routerManifest = toJS(store.routerManifest);
+      this.__disposer.push(reaction);
     });
-    this.__disposer2 = autorun(() => {
+    autorun(reaction => {
       this.activeId = toJS(store.activeId);
+      this.__disposer.push(reaction);
     });
     if (this.scrollOnActive) {
-      this.$.list.addEventListener("click", () => {
+      this.shadowRoot.querySelector("#list").addEventListener("click", () => {
         this.parentElement.querySelector("#" + this.activeId).scrollIntoView({
           behavior: "smooth",
           block: "end",
@@ -156,16 +172,19 @@ class SiteDotIndicator extends PolymerElement {
     }
   }
   disconnectedCallback() {
-    this.__disposer();
-    this.__disposer2();
+    for (var i in this.__disposer) {
+      this.__disposer[i].dispose();
+    }
     if (this.scrollOnActive) {
-      this.$.list.removeEventListener("click", () => {
-        this.parentElement.querySelector("#" + this.activeId).scrollIntoView({
-          behavior: "smooth",
-          block: "end",
-          inline: "nearest"
+      this.shadowRoot
+        .querySelector("#list")
+        .removeEventListener("click", () => {
+          this.parentElement.querySelector("#" + this.activeId).scrollIntoView({
+            behavior: "smooth",
+            block: "end",
+            inline: "nearest"
+          });
         });
-      });
     }
     super.disconnectedCallback();
   }

@@ -2,7 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 /**
@@ -13,23 +13,10 @@ import { autorun, toJS } from "mobx/lib/mobx.module.js";
  * @polymer
  * @demo demo/index.html
  */
-class SiteBreadcrumb extends PolymerElement {
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "site-breadcrumb";
-  }
-  constructor() {
-    super();
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/paper-button/paper-button.js");
-  }
-  // render function
-  static get template() {
-    return html`
-      <style>
+class SiteBreadcrumb extends LitElement {
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           font-size: 16px;
@@ -74,7 +61,37 @@ class SiteBreadcrumb extends PolymerElement {
           padding: 0 8px 0 0;
           color: var(--site-breadcrumb-color, #383f45);
         }
-      </style>
+      `
+    ];
+  }
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   */
+  static get tag() {
+    return "site-breadcrumb";
+  }
+  constructor() {
+    super();
+    this.__disposer = [];
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/paper-button/paper-button.js");
+    // keep editMode in sync globally
+    autorun(reaction => {
+      this.manifest = toJS(store.routerManifest);
+      this.__disposer.push(reaction);
+    });
+    autorun(reaction => {
+      this.editMode = toJS(store.editMode);
+      this.__disposer.push(reaction);
+    });
+    autorun(reaction => {
+      this._activeItemChanged(toJS(store.activeItem));
+      this.__disposer.push(reaction);
+    });
+  }
+  // render function
+  render() {
+    return html`
       <div
         id="space"
         itemscope
@@ -87,10 +104,12 @@ class SiteBreadcrumb extends PolymerElement {
    */
   _activeItemChanged(active) {
     const activeItem = active;
-    if (activeItem) {
+    if (activeItem && this.shadowRoot.querySelector("#space")) {
       // wipe out the slot and rebuild it
-      while (this.$.space.firstChild !== null) {
-        this.$.space.removeChild(this.$.space.firstChild);
+      while (this.shadowRoot.querySelector("#space").firstChild !== null) {
+        this.shadowRoot
+          .querySelector("#space")
+          .removeChild(this.shadowRoot.querySelector("#space").firstChild);
       }
       var items = [
         {
@@ -120,37 +139,28 @@ class SiteBreadcrumb extends PolymerElement {
           // disable buttons if we ware editing
           if (this.editMode) {
             button.setAttribute("disabled", "disabled");
-            this.$.space.appendChild(button);
+            this.shadowRoot.querySelector("#space").appendChild(button);
           } else {
             let link = document.createElement("a");
             link.setAttribute("href", items[i].location);
             link.setAttribute("tabindex", "-1");
             link.setAttribute("itemprop", "url");
             link.appendChild(button);
-            this.$.space.appendChild(link);
+            this.shadowRoot.querySelector("#space").appendChild(link);
           }
-          this.$.space.appendChild(icon);
+          this.shadowRoot.querySelector("#space").appendChild(icon);
         } else {
           let span = document.createElement("span");
           span.innerText = items[i].title;
-          this.$.space.appendChild(span);
+          this.shadowRoot.querySelector("#space").appendChild(span);
         }
       }
     }
   }
-  connectedCallback() {
-    super.connectedCallback();
-    this.__disposer = autorun(() => {
-      this.manifest = toJS(store.routerManifest);
-    });
-    this.__disposer2 = autorun(() => {
-      this.editMode = toJS(store.editMode);
-      this._activeItemChanged(toJS(store.activeItem));
-    });
-  }
   disconnectedCallback() {
-    this.__disposer();
-    this.__disposer2();
+    for (var i in this.__disposer) {
+      this.__disposer[i].dispose();
+    }
     super.disconnectedCallback();
   }
 }

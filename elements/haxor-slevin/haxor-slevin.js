@@ -2,16 +2,11 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
+import { html, css } from "lit-element/lit-element.js";
+import { HAXCMSLitElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import { varExists, varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js";
-import "@polymer/iron-pages/iron-pages.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/polymer/lib/elements/dom-repeat.js";
-import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-share-widget.js";
 /**
  * `haxor-slevin`
  * `Tech blogger theme`
@@ -23,11 +18,10 @@ import "@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-sha
  * @polymer
  * @demo demo/index.html
  */
-class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
-  // render function
-  static get template() {
-    return html`
-      <style>
+class HaxorSlevin extends HAXCMSLitElementTheme {
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           background-color: #ffffff;
@@ -46,7 +40,9 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
         :host([is-logged-in][edit-mode]) {
           padding-left: 12px;
         }
-
+        /**
+      * Hide the slotted content during edit mode. This must be here to work.
+      */
         :host([edit-mode]) #slot {
           display: none;
         }
@@ -163,10 +159,8 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
 
         social-share-link {
           --social-share-button-bg: var(--haxcms-color, rgba(255, 0, 116, 1));
-          --social-share-button: {
-            padding: 8px;
-            border-radius: 50%;
-          }
+          --social-share-button-padding: 8px;
+          --social-share-button-border-radius: 50%;
         }
 
         .annoy-user {
@@ -234,10 +228,8 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
           padding: 0;
           --site-rss-color: #000000;
           --site-rss-bg-color: var(--haxcms-color, rgba(255, 0, 116, 1));
-          --site-rss-paper-button: {
-            padding: 0 4px;
-            margin: 0;
-          }
+          --site-rss-paper-button-padding: 0 4px;
+          --site-rss-paper-button-margin: 0;
         }
 
         @media screen and (max-width: 800px) {
@@ -282,35 +274,28 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
             margin: 0;
           }
         }
-      </style>
-      <style include="simple-colors-shared-styles">
-        html,
-        body {
-          background-color: #ffffff;
-        }
-        :root,
-        html,
-        body,
-        a {
-          color: rgba(0, 0, 0, 0.84);
-        }
-      </style>
-
+      `
+    ];
+  }
+  render() {
+    return html`
       <app-header reveals>
         <app-toolbar>
           <div>
             <paper-button
               class="backbutton"
-              on-click="_goBack"
+              @click="${this._goBack}"
               title="Back to listing"
             >
-              <iron-icon icon="[[icon]]"></iron-icon>
-              <span class="hide-small">[[title]] - [[activeTitle]]</span>
+              <iron-icon icon="${this.icon}"></iron-icon>
+              <span class="hide-small"
+                >${this.title} - ${this.activeTitle}</span
+              >
             </paper-button>
           </div>
           <div main-title>
             <iron-image
-              src="[[image]]"
+              src="${this.image}"
               preload
               sizing="cover"
               style="height:46px;width:100%;margin: 4px 0 2px 0;"
@@ -328,109 +313,147 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
         </app-toolbar>
       </app-header>
       <div class="wrapper">
-        <iron-pages selected="[[selectedPage]]">
+        <iron-pages selected="${this.selectedPage}">
           <div id="home">
             <site-query
-              result="{{__mainPosts}}"
+              @result-changed="${this.__mainPostsChanged}"
               limit="2"
               sort='{"created": "ASC"}'
             ></site-query>
             <div class="simple-blog-card-wrapper evenly">
-              <dom-repeat items="[[__mainPosts]]" as="post" mutable-data>
-                <template>
+              ${this.__mainPosts.map(
+                post => html`
                   <simple-blog-card
-                    alt="[[post.metadata.fields.images.0.alt]]"
-                    color="[[color]]"
-                    title="[[post.title]]"
+                    alt="${post.metadata.fields &&
+                    post.metadata.fields.images &&
+                    post.metadata.fields.images[0] &&
+                    post.metadata.fields.images[0].alt
+                      ? post.metadata.fields.images[0].alt
+                      : ""}"
+                    color="${this.color}"
+                    .title="${post.title}"
                     size="large"
-                    link="[[post.location]]"
-                    image="[[_showImage(post.metadata.fields.images.0.src)]]"
-                    author="[[author.name]]"
-                    timestamp="[[post.metadata.created]]"
-                    readtime="[[post.metadata.readtime]]"
-                    authorimage="[[author.image]]"
-                    placeholder="[[image]]"
-                    authorlink="[[author.socialLink]]"
+                    .link="${post.location}"
+                    .image="${this._showImage(
+                      post.metadata.fields &&
+                        post.metadata.fields.images &&
+                        post.metadata.fields.images[0] &&
+                        post.metadata.fields.images[0].alt
+                        ? post.metadata.fields.images[0].alt
+                        : false
+                    )}"
+                    .author="${this.author.name}"
+                    .timestamp="${post.metadata.created}"
+                    .readtime="${post.metadata.readtime}"
+                    .authorimage="${this.author.image}"
+                    .placeholder="${this.image}"
+                    .authorlink="${this.author.socialLink}"
                   >
-                    [[post.description]]
+                    ${post.description}
                   </simple-blog-card>
-                </template>
-              </dom-repeat>
+                `
+              )}
             </div>
             <site-query
-              result="{{__posts}}"
+              @result-changed="${this.__extraPostsChanged}"
               start-index="2"
               limit="6"
               sort='{"created": "ASC"}'
             ></site-query>
             <div class="simple-blog-card-wrapper">
-              <dom-repeat items="[[__posts]]" as="post" mutable-data>
-                <template>
+              ${this.__extraPosts.map(
+                post => html`
                   <simple-blog-card
-                    placeholder="[[image]]"
-                    alt="[[post.metadata.fields.images.0.alt]]"
-                    color="[[color]]"
-                    title="[[post.title]]"
+                    alt="${post.metadata.fields &&
+                    post.metadata.fields.images &&
+                    post.metadata.fields.images[0] &&
+                    post.metadata.fields.images[0].alt
+                      ? post.metadata.fields.images[0].alt
+                      : ""}"
+                    color="${this.color}"
+                    .title="${post.title}"
                     size="medium"
-                    link="[[post.location]]"
-                    image="[[_showImage(post.metadata.fields.images.0.src)]]"
-                    author="[[author.name]]"
-                    timestamp="[[post.metadata.created]]"
-                    readtime="[[post.metadata.readtime]]"
-                    authorimage="[[author.image]]"
-                    authorlink="[[author.socialLink]]"
+                    .link="${post.location}"
+                    .image="${this._showImage(
+                      post.metadata.fields &&
+                        post.metadata.fields.images &&
+                        post.metadata.fields.images[0] &&
+                        post.metadata.fields.images[0].alt
+                        ? post.metadata.fields.images[0].alt
+                        : false
+                    )}"
+                    .author="${this.author.name}"
+                    .timestamp="${post.metadata.created}"
+                    .readtime="${post.metadata.readtime}"
+                    .authorimage="${this.author.image}"
+                    .placeholder="${this.image}"
+                    .authorlink="${this.author.socialLink}"
                   >
-                    [[post.description]]
+                    ${post.description}
                   </simple-blog-card>
-                </template>
-              </dom-repeat>
+                `
+              )}
             </div>
           </div>
           <div class="contentcontainer-wrapper">
             <div id="contentcontainer">
               <site-git-corner position="right"></site-git-corner>
               <site-active-title></site-active-title>
-              <h3 class="subtitle" hidden$="[[!subtitle]]">[[subtitle]]</h3>
+              <h3 class="subtitle" .hidden="${!this.subtitle}">
+                ${this.subtitle}
+              </h3>
               <div id="slot">
                 <slot></slot>
               </div>
             </div>
             <site-query
-              result="{{__followUpPosts}}"
+              @result-changed="${this.__followUpPostsChanged}"
               limit="3"
-              start-index="[[activeManifestIndexCounter]]"
+              start-index="${this.activeManifestIndexCounter}"
               sort='{"created": "ASC"}'
             ></site-query>
             <div class="simple-blog-card-wrapper">
-              <dom-repeat items="[[__followUpPosts]]" as="post" mutable-data>
-                <template>
+              ${this.__followUpPosts.map(
+                post => html`
                   <simple-blog-card
-                    alt="[[post.metadata.fields.images.0.alt]]"
-                    color="[[color]]"
-                    title="[[post.title]]"
+                    alt="${post.metadata.fields &&
+                    post.metadata.fields.images &&
+                    post.metadata.fields.images[0] &&
+                    post.metadata.fields.images[0].alt
+                      ? post.metadata.fields.images[0].alt
+                      : ""}"
+                    color="${this.color}"
+                    .title="${post.title}"
                     size="small"
-                    link="[[post.location]]"
-                    image="[[_showImage(post.metadata.fields.images.0.src)]]"
-                    author="[[author.name]]"
-                    placeholder="[[image]]"
-                    timestamp="[[post.metadata.created]]"
-                    readtime="[[post.metadata.readtime]]"
-                    authorimage="[[author.image]]"
-                    authorlink="[[author.socialLink]]"
+                    .link="${post.location}"
+                    .image="${this._showImage(
+                      post.metadata.fields &&
+                        post.metadata.fields.images &&
+                        post.metadata.fields.images[0] &&
+                        post.metadata.fields.images[0].alt
+                        ? post.metadata.fields.images[0].alt
+                        : false
+                    )}"
+                    .author="${this.author.name}"
+                    .timestamp="${post.metadata.created}"
+                    .readtime="${post.metadata.readtime}"
+                    .authorimage="${this.author.image}"
+                    .placeholder="${this.image}"
+                    .authorlink="${this.author.socialLink}"
                   >
-                    [[post.description]]
+                    ${post.description}
                   </simple-blog-card>
-                </template>
-              </dom-repeat>
+                `
+              )}
             </div>
-            <div class$="social-float hide-small [[stateClass]]">
+            <div class="social-float hide-small ${this.stateClass}">
               <ul>
                 <li>
                   <social-share-link
                     title="Share on twitter"
                     button-style
                     mode="icon-only"
-                    message="[[shareMsg]]"
+                    message="${this.shareMsg}"
                     type="Twitter"
                   >
                   </social-share-link>
@@ -440,8 +463,8 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
                     title="Share on LinkedIn"
                     button-style
                     mode="icon-only"
-                    message="[[shareMsg]]"
-                    url="[[shareUrl]]"
+                    message="${this.shareMsg}"
+                    url="${this.shareUrl}"
                     type="LinkedIn"
                   >
                   </social-share-link>
@@ -451,8 +474,8 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
                     title="Share on Facebook"
                     button-style
                     mode="icon-only"
-                    url="[[shareUrl]]"
-                    message="[[shareMsg]]"
+                    url="${this.shareUrl}"
+                    message="${this.shareMsg}"
                     type="Facebook"
                   >
                   </social-share-link>
@@ -462,20 +485,20 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
                     title="Share on Pinterest"
                     button-style
                     mode="icon-only"
-                    message="[[shareMsg]]"
-                    image="[[activeImage]]"
-                    url="[[shareUrl]]"
+                    message="${this.shareMsg}"
+                    image="${this.activeImage}"
+                    url="${this.shareUrl}"
                     type="Pinterest"
                   >
                   </social-share-link>
                 </li>
               </ul>
             </div>
-            <div class$="annoy-user [[stateClass]]">
+            <div class="annoy-user ${this.stateClass}">
               <div class="annoy-inner">
-                <iron-icon icon="[[icon]]" class="hide-small"></iron-icon>
+                <iron-icon icon="${this.icon}" class="hide-small"></iron-icon>
                 <span class="hide-small">
-                  Never miss a story from <strong>[[title]]</strong> use RSS
+                  Never miss a story from <strong>${this.title}</strong> use RSS
                   today!
                 </span>
                 <span class="rss">
@@ -492,16 +515,6 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
       </div>
     `;
   }
-
-  // properties available to the custom element for data binding
-  static get properties() {
-    let props = {};
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
-  }
-
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -509,25 +522,45 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
   static get tag() {
     return "haxor-slevin";
   }
+  __mainPostsChanged(e) {
+    this.__mainPosts = e.detail.value;
+  }
+  __followUpPostsChanged(e) {
+    this.__followUpPosts = e.detail.value;
+  }
   static get properties() {
-    return Object.assign(super.properties, {
+    let props = {
       manifest: {
         type: Object
       },
       color: {
-        type: String,
-        computed: "_getColor(manifest)"
+        type: String
       },
       selectedPage: {
         type: Number,
-        reflectToAttribute: true,
-        value: 0
+        reflect: true,
+        attribute: "selected-page"
       },
       stateClass: {
-        type: String,
-        computed: "_getStateClass(editMode)"
+        type: String
+      },
+      __mainPosts: {
+        type: Array
+      },
+      __extraPosts: {
+        type: Array
+      },
+      __followUpPosts: {
+        type: Array
       }
-    });
+    };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
+  }
+  __extraPostsChanged(e) {
+    this.__extraPosts = e.detail.value;
   }
   _getStateClass(editMode) {
     if (editMode) {
@@ -542,6 +575,13 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
   }
   constructor() {
     super();
+    this.__mainPosts = [];
+    this.__extraPosts = [];
+    this.__followUpPosts = [];
+    this.selectedPage = 0;
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/query/site-query.js");
+    import("@polymer/iron-pages/iron-pages.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-share-widget.js");
     import("@polymer/paper-button/paper-button.js");
     import("@polymer/iron-image/iron-image.js");
     import("@lrnwebcomponents/simple-blog-card/simple-blog-card.js");
@@ -549,27 +589,28 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
     import("@polymer/app-layout/app-toolbar/app-toolbar.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-active-title.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/active-item/site-git-corner.js");
-  }
-  _showImage(image) {
-    if (image) {
-      return image;
-    }
-    if (this.image) {
-      return this.image;
-    }
-    return false;
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");
+    import("@lrnwebcomponents/social-share-link/social-share-link.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/iron-icons/editor-icons.js");
+    import("@polymer/iron-icons/device-icons.js");
+    import("@polymer/iron-icons/hardware-icons.js");
+    import("@polymer/iron-icons/communication-icons.js");
+    import("@polymer/iron-icons/social-icons.js");
+    import("@polymer/iron-icons/av-icons.js");
+    import("@polymer/iron-icons/maps-icons.js");
+    import("@polymer/iron-icons/places-icons.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js");
     autorun(reaction => {
-      this._noticeLocationChange(store.location);
+      let location = toJS(store.location);
+      this._noticeLocationChange(location);
+      this.__disposer.push(reaction);
     });
     autorun(reaction => {
       let manifest = toJS(store.manifest);
-      this.title = manifest.title;
+      this.title = varGet(manifest, "title", "");
       this.image = varGet(
         manifest,
         "metadata.theme.variables.image",
@@ -591,42 +632,39 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
       this.activeTitle = toJS(store.activeTitle);
       this.shareUrl = document.location.href;
       this.shareMsg = this.activeTitle + " " + this.shareUrl;
-      if (
-        store.activeItem &&
-        store.activeItem.metadata &&
-        store.activeItem.metadata.fields &&
-        store.activeItem.metadata.fields.subtitle
-      ) {
+      if (varGet(store.activeItem, "metadata.fields.subtitle", false)) {
         this.subtitle = store.activeItem.metadata.fields.subtitle;
       } else {
         this.subtitle = false;
       }
       // look for image on the post and make it the pin share
-      if (
-        store.activeItem &&
-        store.activeItem.metadata &&
-        store.activeItem.metadata.fields &&
-        store.activeItem.metadata.fields.images &&
-        store.activeItem.metadata.fields.images[0] &&
-        store.activeItem.metadata.fields.images[0].src
-      ) {
+      if (varGet(store.activeItem, "metadata.fields.images.0.src", false)) {
         this.activeImage = store.activeItem.metadata.fields.images[0].src;
       }
       this.__disposer.push(reaction);
     });
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-rss-button.js");
-    import("@lrnwebcomponents/social-share-link/social-share-link.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icons/editor-icons.js");
-    import("@polymer/iron-icons/device-icons.js");
-    import("@polymer/iron-icons/hardware-icons.js");
-    import("@polymer/iron-icons/communication-icons.js");
-    import("@polymer/iron-icons/social-icons.js");
-    import("@polymer/iron-icons/av-icons.js");
-    import("@polymer/iron-icons/maps-icons.js");
-    import("@polymer/iron-icons/places-icons.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js");
-    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js");
+  }
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "manifest") {
+        this.color = this._getColor(this[propName]);
+      }
+      if (propName == "editMode") {
+        this.stateClass = this._getStateClass(this[propName]);
+      }
+    });
+  }
+  _showImage(image) {
+    if (image) {
+      return image;
+    }
+    if (this.image) {
+      return this.image;
+    }
+    return false;
   }
   /**
    * Listen for router location changes and select page to match
@@ -673,6 +711,7 @@ class HaxorSlevin extends HAXCMSTheme(PolymerElement) {
     const evt = new CustomEvent("json-outline-schema-active-item-changed", {
       bubbles: true,
       cancelable: true,
+      composed: true,
       detail: {}
     });
     this.dispatchEvent(evt);

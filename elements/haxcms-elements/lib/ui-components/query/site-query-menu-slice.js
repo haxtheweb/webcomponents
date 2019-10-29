@@ -2,7 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 
@@ -14,29 +14,41 @@ import { autorun, toJS } from "mobx/lib/mobx.module.js";
  * @polymer
  * @demo demo/index.html
  */
-class SiteQueryMenuSlice extends PolymerElement {
+class SiteQueryMenuSlice extends LitElement {
   /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
+   * Convention our team prefers
    */
   static get tag() {
     return "site-query-menu-slice";
   }
+  /**
+   * HTMLElement life cycle
+   */
+  constructor() {
+    super();
+    this.__disposer = [];
+    this.start = 1;
+    this.end = 1000;
+    this.dynamicMethodology = "active";
+    this.fixedId = false;
+    this.noDynamicLevel = false;
+  }
+  /**
+   * LitElement / popular convention
+   */
   static get properties() {
     return {
       /**
        * starting level for the menu items
        */
       start: {
-        type: Number,
-        value: 1
+        type: Number
       },
       /**
        * ending level for the menu items
        */
       end: {
-        type: Number,
-        value: 1000
+        type: Number
       },
       /**
        * parent for the menu id
@@ -50,36 +62,63 @@ class SiteQueryMenuSlice extends PolymerElement {
        */
       dynamicMethodology: {
         type: String,
-        value: "active"
+        attribute: "dynamic-methodology"
       },
       /**
        * Use this boolean to force this to fix to 1 parent
        * Otherwise it will dynamically update (default behavior)
        */
       fixedId: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       /**
        * Allow disabling the dynamic leveling
        */
       noDynamicLevel: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       /**
        * Results which can be binded to something else
        */
       result: {
-        type: Array,
-        notify: true,
-        computed:
-          "_computeItems(start, end, parent, dynamicMethodology, _routerManifest, noDynamicLevel)"
+        type: Array
       },
       _routerManifest: {
         type: Object
       }
     };
+  }
+  /**
+   * LitElement properties changed
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (
+        [
+          "start",
+          "end",
+          "parent",
+          "dynamicMethodology",
+          "_routerManifest",
+          "noDynamicLevel"
+        ].includes(propName)
+      ) {
+        this.result = this._computeItems(
+          this.start,
+          this.end,
+          this.parent,
+          this.dynamicMethodology,
+          this._routerManifest,
+          this.noDynamicLevel
+        );
+        // fire an event that this is a core piece of the system
+        this.dispatchEvent(
+          new CustomEvent("result-changed", {
+            detail: result
+          })
+        );
+      }
+    });
   }
   /**
    * Compute items leveraging the site query engine
@@ -103,21 +142,27 @@ class SiteQueryMenuSlice extends PolymerElement {
       );
     }
   }
-  connectedCallback() {
-    super.connectedCallback();
-    this.__disposer = autorun(() => {
+  /**
+   * LitElement life cycle
+   */
+  firstUpdated(changedProperties) {
+    autorun(reaction => {
       this._routerManifest = Object.assign({}, toJS(store.routerManifest));
+      this.__disposer.push(reaction);
     });
     if (!this.fixedId) {
-      this.__disposer2 = autorun(() => {
+      autorun(reaction => {
         this.parent = toJS(store.activeId);
+        this.__disposer.push(reaction);
       });
     }
   }
+  /**
+   * HTMLElement life cycle
+   */
   disconnectedCallback() {
-    this.__disposer();
-    if (!this.fixedId) {
-      this.__disposer2();
+    for (var i in this.__disposer) {
+      this.__disposer[i].dispose();
     }
     super.disconnectedCallback();
   }

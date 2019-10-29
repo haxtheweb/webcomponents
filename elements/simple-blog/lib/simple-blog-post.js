@@ -10,7 +10,6 @@ import { autorun, toJS } from "mobx/lib/mobx.module.js";
 class SimpleBlogPost extends PolymerElement {
   /**
    * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
     return "simple-blog-post";

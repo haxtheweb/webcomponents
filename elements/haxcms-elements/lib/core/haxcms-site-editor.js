@@ -2,11 +2,9 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { microTask } from "@polymer/polymer/lib/utils/async.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/iron-ajax/iron-ajax.js";
@@ -24,22 +22,10 @@ import "./haxcms-site-dashboard.js";
  *
  * @demo demo/index.html
  */
-class HAXCMSSiteEditor extends PolymerElement {
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "haxcms-site-editor";
-  }
-  constructor() {
-    super();
-    this.__disposer = [];
-  }
-  // render function
-  static get template() {
-    return html`
-      <style include="simple-colors-shared-styles">
+class HAXCMSSiteEditor extends LitElement {
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -87,121 +73,148 @@ class HAXCMSSiteEditor extends PolymerElement {
         :host([edit-mode]) h-a-x {
           display: block;
         }
-      </style>
+      `
+    ];
+  }
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   */
+  static get tag() {
+    return "haxcms-site-editor";
+  }
+  constructor() {
+    super();
+    this.__disposer = [];
+    this.getUserDataBody = {};
+    this.method = "POST";
+    this.editMode = false;
+    this.deleteData = {};
+    this.createData = {};
+    this.publishSiteData = {};
+    this.revertSiteData = {};
+    this.syncSiteData = {};
+    this.updateManifestData = {};
+    this.updateOutlineData = {};
+    this.updateManifestData = {};
+    this.getNodeFieldsData = {};
+  }
+  // render function
+  render() {
+    return html`
       <iron-ajax
-        headers='{"Authorization": "Bearer [[jwt]]"}'
+        headers='{"Authorization": "Bearer ${this.jwt}"}'
         id="nodeupdateajax"
-        url="[[saveNodePath]]"
-        method="[[method]]"
-        body="[[updateNodeData]]"
+        url="${this.saveNodePath}"
+        method="${this.method}"
         content-type="application/json"
         handle-as="json"
-        on-response="_handleNodeResponse"
-        last-error="{{lastError}}"
+        @response="${this._handleNodeResponse}"
+        @last-error-changed="${this.lastErrorChanged}"
       ></iron-ajax>
       <iron-ajax
-        headers='{"Authorization": "Bearer [[jwt]]"}'
+        headers='{"Authorization": "Bearer ${this.jwt}"}'
         id="outlineupdateajax"
-        url="[[saveOutlinePath]]"
-        method="[[method]]"
-        body="[[updateOutlineData]]"
+        url="${this.saveOutlinePath}"
+        method="${this.method}"
+        .body="${this.updateOutlineData}"
         content-type="application/json"
         handle-as="json"
-        on-response="_handleOutlineResponse"
-        last-error="{{lastError}}"
+        @response="${this._handleOutlineResponse}"
+        @last-error-changed="${this.lastErrorChanged}"
       ></iron-ajax>
       <iron-ajax
-        headers='{"Authorization": "Bearer [[jwt]]"}'
+        headers='{"Authorization": "Bearer ${this.jwt}"}'
         id="manifestupdateajax"
-        url="[[saveManifestPath]]"
-        method="[[method]]"
-        body="[[updateManifestData]]"
+        url="${this.saveManifestPath}"
+        method="${this.method}"
+        .body="${this.updateManifestData}"
         content-type="application/json"
         handle-as="json"
-        on-response="_handleManifestResponse"
-        last-error="{{lastError}}"
+        @response="${this._handleManifestResponse}"
+        @last-error-changed="${this.lastErrorChanged}"
       ></iron-ajax>
       <iron-ajax
-        headers='{"Authorization": "Bearer [[jwt]]"}'
+        headers='{"Authorization": "Bearer ${this.jwt}"}'
         id="publishajax"
-        loading="{{publishing}}"
-        url="[[publishSitePath]]"
-        method="[[method]]"
-        body="[[publishSiteData]]"
+        loading="${this.publishing}"
+        @loading-changed="${this.loadingChanged}"
+        url="${this.publishSitePath}"
+        method="${this.method}"
+        .body="${this.publishSiteData}"
         content-type="application/json"
         handle-as="json"
-        on-response="_handlePublishResponse"
-        last-error="{{lastError}}"
+        @response="${this._handlePublishResponse}"
+        @last-error-changed="${this.lastErrorChanged}"
       ></iron-ajax>
       <iron-ajax
-        headers='{"Authorization": "Bearer [[jwt]]"}'
+        headers='{"Authorization": "Bearer ${this.jwt}"}'
         id="revertajax"
-        url="[[revertSitePath]]"
-        method="[[method]]"
-        body="[[revertSiteData]]"
+        url="${this.revertSitePath}"
+        method="${this.method}"
+        .body="${this.revertSiteData}"
         content-type="application/json"
         handle-as="json"
-        on-response="_handleRevertResponse"
-        last-error="{{lastError}}"
+        @response="${this._handleRevertResponse}"
+        @last-error-changed="${this.lastErrorChanged}"
       ></iron-ajax>
       <iron-ajax
-        headers='{"Authorization": "Bearer [[jwt]]"}'
+        headers='{"Authorization": "Bearer ${this.jwt}"}'
         id="syncajax"
-        url="[[syncSitePath]]"
-        method="[[method]]"
-        body="[[syncSiteData]]"
+        url="${this.syncSitePath}"
+        method="${this.method}"
+        .body="${this.syncSiteData}"
         content-type="application/json"
         handle-as="json"
-        on-response="_handleSyncResponse"
-        last-error="{{lastError}}"
+        @response="${this._handleSyncResponse}"
+        @last-error-changed="${this.lastErrorChanged}"
       ></iron-ajax>
       <iron-ajax
-        headers='{"Authorization": "Bearer [[jwt]]"}'
+        headers='{"Authorization": "Bearer ${this.jwt}"}'
         id="createajax"
-        url="[[createNodePath]]"
-        method="[[method]]"
-        body="[[createData]]"
+        url="${this.createNodePath}"
+        method="${this.method}"
+        .body="${this.createData}"
         content-type="application/json"
         handle-as="json"
-        on-response="_handleCreateResponse"
-        last-response="{{__createNodeResponse}}"
-        last-error="{{lastError}}"
+        @response="${this._handleCreateResponse}"
+        @last-error-changed="${this.lastErrorChanged}"
+        @last-response-changed="${this.__createNodeResponseChanged}"
       ></iron-ajax>
       <iron-ajax
-        headers='{"Authorization": "Bearer [[jwt]]"}'
+        headers='{"Authorization": "Bearer ${this.jwt}"}'
         id="deleteajax"
-        url="[[deleteNodePath]]"
-        method="[[method]]"
-        body="[[deleteData]]"
+        url="${this.deleteNodePath}"
+        method="${this.method}"
+        .body="${this.deleteData}"
         content-type="application/json"
         handle-as="json"
-        on-response="_handleDeleteResponse"
-        last-response="{{__deleteNodeResponse}}"
-        last-error="{{lastError}}"
+        @response="${this._handleDeleteResponse}"
+        @last-error-changed="${this.lastErrorChanged}"
+        @last-response-changed="${this.__deleteNodeResponseChanged}"
       ></iron-ajax>
       <iron-ajax
-        headers='{"Authorization": "Bearer [[jwt]]"}'
+        headers='{"Authorization": "Bearer ${this.jwt}"}'
         id="getnodefieldsajax"
-        url="[[getNodeFieldsPath]]"
-        method="[[method]]"
-        body="[[getNodeFieldsData]]"
+        url="${this.getNodeFieldsPath}"
+        method="${this.method}"
+        .body="${this.getNodeFieldsData}"
         content-type="application/json"
         handle-as="json"
-        on-response="_handleGetNodeFieldsResponse"
-        last-error="{{lastError}}"
+        @response="${this._handleGetNodeFieldsResponse}"
+        @last-error-changed="${this.lastErrorChanged}"
       ></iron-ajax>
       <iron-ajax
-        headers='{"Authorization": "Bearer [[jwt]]"}'
+        headers='{"Authorization": "Bearer ${this.jwt}"}'
         id="getuserdata"
-        url="[[getUserDataPath]]"
-        method="[[method]]"
-        body="[[getUserDataBody]]"
+        url="${this.getUserDataPath}"
+        method="${this.method}"
+        .body="${this.getUserDataBody}"
         content-type="application/json"
         handle-as="json"
-        on-response="_handleUserDataResponse"
-        last-error="{{lastError}}"
+        @response="${this._handleUserDataResponse}"
+        @last-error-changed="${this.lastErrorChanged}"
       ></iron-ajax>
-      <h-a-x app-store$="[[appStore]]" hide-panel-ops></h-a-x>
+      <h-a-x id="hax" hide-panel-ops></h-a-x>
     `;
   }
   static get properties() {
@@ -210,22 +223,19 @@ class HAXCMSSiteEditor extends PolymerElement {
         type: String
       },
       getUserDataBody: {
-        type: Object,
-        value: {}
+        type: Object
       },
       /**
        * Singular error reporter / visual based on requests erroring
        */
       lastError: {
-        type: Object,
-        observer: "_lastErrorChanged"
+        type: Object
       },
       /**
        * Allow method to be overridden, useful in local testing
        */
       method: {
-        type: String,
-        value: "POST"
+        type: String
       },
       /**
        * JSON Web token, it'll come from a global call if it's available
@@ -285,8 +295,7 @@ class HAXCMSSiteEditor extends PolymerElement {
        * Publishing end point, this has CDN implications so show message
        */
       publishing: {
-        type: Boolean,
-        observer: "_publishingChanged"
+        type: Boolean
       },
       /**
        * end point for saving outline
@@ -305,94 +314,73 @@ class HAXCMSSiteEditor extends PolymerElement {
        */
       editMode: {
         type: Boolean,
-        reflectToAttribute: true,
-        value: false
-      },
-      /**
-       * data as part of the POST to the backend
-       */
-      updateNodeData: {
-        type: Object,
-        value: {}
+        reflect: true
       },
       /**
        * delete node data
        */
       deleteData: {
-        type: Object,
-        value: {}
+        type: Object
       },
       /**
        * create new node data
        */
       createData: {
-        type: Object,
-        value: {}
+        type: Object
       },
       /**
        * create new node data
        */
       publishSiteData: {
-        type: Object,
-        value: {}
+        type: Object
       },
       /**
        * revert site data
        */
       revertSiteData: {
-        type: Object,
-        value: {}
+        type: Object
       },
       /**
        * sync site data
        */
       syncSiteData: {
-        type: Object,
-        value: {}
+        type: Object
       },
       /**
        * data as part of the POST to the backend
        */
       updateManifestData: {
-        type: Object,
-        value: {}
+        type: Object
       },
       /**
        * data as part of the POST to the backend
        */
       updateOutlineData: {
-        type: Object,
-        value: {}
+        type: Object
       },
       /**
        * data as part of the POST to the backend
        */
       updateManifestData: {
-        type: Object,
-        value: {}
+        type: Object
       },
       /**
        * data as part of the POST to the for field data
        */
       getNodeFieldsData: {
-        type: Object,
-        value: {}
+        type: Object
       },
       /**
        * Active item of the node being worked on, JSON outline schema item format
        */
       activeItem: {
-        type: Object,
-        notify: true,
-        observer: "_activeItemChanged"
+        type: Object
       },
       /**
        * Outline of items in json outline schema format
        */
       manifest: {
-        type: Object,
-        notify: true,
-        observer: "_manifestChanged"
+        type: Object
       },
       getNodeFieldsPath: {
         type: String
@@ -411,6 +399,12 @@ class HAXCMSSiteEditor extends PolymerElement {
       }
     };
   }
+  __deleteNodeResponseChanged(e) {
+    this.__deleteNodeResponse = e.detail.value;
+  }
+  __createNodeResponseChanged(e) {
+    this.__createNodeResponse = e.detail.value;
+  }
   _handleUserDataResponse(e) {
     store.userData = e.detail.response.data;
   }
@@ -428,102 +422,90 @@ class HAXCMSSiteEditor extends PolymerElement {
       window.dispatchEvent(evt);
     }
   }
+  lastErrorChanged(e) {
+    this.lastError = e.detail.value;
+  }
+  loadingChanged(e) {
+    this.loading = e.detail.value;
+  }
   /**
    * Break the shadow root for this element (by design)
    */
-  _attachDom(dom) {
-    this.appendChild(dom);
+  createRenderRoot() {
+    return this;
   }
   /**
    * ready life cycle
    */
-  ready() {
-    super.ready();
-    afterNextRender(this, function() {
-      autorun(reaction => {
-        this.editMode = toJS(store.editMode);
-        this.__disposer.push(reaction);
-      });
-      autorun(reaction => {
-        this.manifest = toJS(store.manifest);
-        this.__disposer.push(reaction);
-      });
-      autorun(reaction => {
-        this.activeItem = toJS(store.activeItem);
-        this.__disposer.push(reaction);
-      });
-      window.SimpleToast.requestAvailability();
-      window.SimpleModal.requestAvailability();
-      window.addEventListener(
-        "hax-store-ready",
-        this._storeReadyToGo.bind(this)
-      );
-      window.addEventListener(
-        "json-outline-schema-active-item-changed",
-        this._newActiveItem.bind(this)
-      );
-      window.addEventListener(
-        "json-outline-schema-active-body-changed",
-        this._bodyChanged.bind(this)
-      );
-      window.addEventListener(
-        "haxcms-save-outline",
-        this.saveOutline.bind(this)
-      );
-      window.addEventListener("haxcms-save-node", this.saveNode.bind(this));
-      window.addEventListener(
-        "haxcms-save-node-details",
-        this.saveNodeDetails.bind(this)
-      );
-      window.addEventListener(
-        "haxcms-save-site-data",
-        this.saveManifest.bind(this)
-      );
-      window.addEventListener(
-        "haxcms-load-node-fields",
-        this.loadNodeFields.bind(this)
-      );
-      window.addEventListener(
-        "haxcms-load-site-dashboard",
-        this.loadSiteDashboard.bind(this)
-      );
-      window.addEventListener(
-        "haxcms-load-user-data",
-        this.loadUserData.bind(this)
-      );
-      window.addEventListener(
-        "haxcms-publish-site",
-        this.publishSite.bind(this)
-      );
-      window.addEventListener("haxcms-sync-site", this.syncSite.bind(this));
-      window.addEventListener(
-        "haxcms-git-revert-last-commit",
-        this.revertCommit.bind(this)
-      );
-      window.addEventListener("haxcms-create-node", this.createNode.bind(this));
-      window.addEventListener("haxcms-delete-node", this.deleteNode.bind(this));
-      microTask.run(() => {
-        this.updateStyles();
-        if (window.HaxStore.ready) {
-          let detail = {
-            detail: true
-          };
-          this._storeReadyToGo(detail);
-        }
-      });
-      const evt = new CustomEvent("simple-toast-show", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: {
-          text: "You are logged in, edit tools shown."
-        }
-      });
-      window.dispatchEvent(evt);
+  firstUpdated(changedProperties) {
+    autorun(reaction => {
+      this.editMode = toJS(store.editMode);
+      this.__disposer.push(reaction);
     });
-  }
-  connectedCallback() {
-    super.connectedCallback();
+    autorun(reaction => {
+      this.manifest = toJS(store.manifest);
+      this.__disposer.push(reaction);
+    });
+    autorun(reaction => {
+      this.activeItem = toJS(store.activeItem);
+      this.__disposer.push(reaction);
+    });
+    window.SimpleToast.requestAvailability();
+    window.SimpleModal.requestAvailability();
+    window.addEventListener("hax-store-ready", this._storeReadyToGo.bind(this));
+    window.addEventListener(
+      "json-outline-schema-active-item-changed",
+      this._newActiveItem.bind(this)
+    );
+    window.addEventListener(
+      "json-outline-schema-active-body-changed",
+      this._bodyChanged.bind(this)
+    );
+    window.addEventListener("haxcms-save-outline", this.saveOutline.bind(this));
+    window.addEventListener("haxcms-save-node", this.saveNode.bind(this));
+    window.addEventListener(
+      "haxcms-save-node-details",
+      this.saveNodeDetails.bind(this)
+    );
+    window.addEventListener(
+      "haxcms-save-site-data",
+      this.saveManifest.bind(this)
+    );
+    window.addEventListener(
+      "haxcms-load-node-fields",
+      this.loadNodeFields.bind(this)
+    );
+    window.addEventListener(
+      "haxcms-load-site-dashboard",
+      this.loadSiteDashboard.bind(this)
+    );
+    window.addEventListener(
+      "haxcms-load-user-data",
+      this.loadUserData.bind(this)
+    );
+    window.addEventListener("haxcms-publish-site", this.publishSite.bind(this));
+    window.addEventListener("haxcms-sync-site", this.syncSite.bind(this));
+    window.addEventListener(
+      "haxcms-git-revert-last-commit",
+      this.revertCommit.bind(this)
+    );
+    window.addEventListener("haxcms-create-node", this.createNode.bind(this));
+    window.addEventListener("haxcms-delete-node", this.deleteNode.bind(this));
+    if (window.HaxStore.ready) {
+      let detail = {
+        detail: true
+      };
+      this._storeReadyToGo(detail);
+    }
+    const evt = new CustomEvent("simple-toast-show", {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+      detail: {
+        text: "You are logged in, edit tools shown."
+      }
+    });
+    window.dispatchEvent(evt);
     // fire event suggesting that we were authorized to have a site editor
     // so the UI and other pieces can react to this news
     // this tag is going to be added by a backend if it has determined we have a valid one
@@ -535,6 +517,32 @@ class HAXCMSSiteEditor extends PolymerElement {
         detail: true
       })
     );
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "appStore") {
+        this.querySelector("#hax").appStore = thos[prop];
+      }
+      if (propName == "lastError") {
+        this._lastErrorChanged(this[propName], oldValue);
+      } else if (propName == "publishing") {
+        this._publishingChanged(this[propName], oldValue);
+      } else if (propName == "activeItem") {
+        this.dispatchEvent(
+          new CustomEvent("manifest-changed", {
+            detail: this[propName]
+          })
+        );
+        this._activeItemChanged(this[propName], oldValue);
+      } else if (propName == "manifest") {
+        this.dispatchEvent(
+          new CustomEvent("manifest-changed", {
+            detail: this[propName]
+          })
+        );
+        this._manifestChanged(this[propName], oldValue);
+      }
+    });
   }
   /**
    * Detatched life cycle
@@ -607,20 +615,19 @@ class HAXCMSSiteEditor extends PolymerElement {
    * Load user data from backend
    */
   loadUserData(e) {
-    this.set("getUserDataBody", {});
-    this.set("getUserDataBody", {
+    this.getUserDataBody = {};
+    this.getUserDataBody = {
       jwt: this.jwt
-    });
-    this.notifyPath("getUserDataBody.*");
-    this.$.getuserdata.generateRequest();
+    };
+    this.querySelector("#getuserdata").generateRequest();
   }
   /**
    * Load and display node fields
    */
   loadNodeFields(e) {
     this.__nodeFieldsInvoked = e.detail;
-    this.set("getNodeFieldsData", {});
-    this.set("getNodeFieldsData", {
+    this.getNodeFieldsData = {};
+    this.getNodeFieldsData = {
       jwt: this.jwt,
       token: this.getFormToken,
       site: {
@@ -629,9 +636,8 @@ class HAXCMSSiteEditor extends PolymerElement {
       node: {
         id: this.activeItem.id
       }
-    });
-    this.notifyPath("getNodeFieldsData.*");
-    this.$.getnodefieldsajax.generateRequest();
+    };
+    this.querySelector("#getnodefieldsajax").generateRequest();
   }
   /**
    * Load site fields
@@ -775,7 +781,7 @@ class HAXCMSSiteEditor extends PolymerElement {
         bubbles: true,
         composed: true,
         cancelable: true,
-        detail: this.shadowRoot.querySelector("#siteform").submit()
+        detail: this.querySelector("#siteform").submit()
       })
     );
     // fire event to close the modal
@@ -793,16 +799,15 @@ class HAXCMSSiteEditor extends PolymerElement {
    */
   createNode(e) {
     if (e.detail.values) {
-      this.set("createData", {});
-      this.set("createData", {
+      this.createData = {};
+      this.createData = {
         jwt: this.jwt,
         site: {
           name: this.manifest.metadata.site.name
         },
         node: e.detail.values
-      });
-      this.notifyPath("createData.*");
-      this.$.createajax.generateRequest();
+      };
+      this.querySelector("#createajax").generateRequest();
       const evt = new CustomEvent("simple-modal-hide", {
         bubbles: true,
         composed: true,
@@ -836,8 +841,8 @@ class HAXCMSSiteEditor extends PolymerElement {
    * delete the node we just got
    */
   deleteNode(e) {
-    this.set("deleteData", {});
-    this.set("deleteData", {
+    this.deleteData = {};
+    this.deleteData = {
       jwt: this.jwt,
       site: {
         name: this.manifest.metadata.site.name
@@ -845,9 +850,8 @@ class HAXCMSSiteEditor extends PolymerElement {
       node: {
         id: e.detail.item.id
       }
-    });
-    this.notifyPath("deleteData.*");
-    this.$.deleteajax.generateRequest();
+    };
+    this.querySelector("#deleteajax").generateRequest();
     const evt = new CustomEvent("simple-modal-hide", {
       bubbles: true,
       composed: true,
@@ -934,8 +938,7 @@ class HAXCMSSiteEditor extends PolymerElement {
    * update the internal active item
    */
   _newActiveItem(e) {
-    this.set("activeItem", e.detail);
-    this.notifyPath("activeItem.*");
+    this.activeItem = e.detail;
   }
   /**
    * active item changed
@@ -1128,61 +1131,56 @@ class HAXCMSSiteEditor extends PolymerElement {
    * Save node event
    */
   saveNode(e) {
-    let body = window.HaxStore.instance.activeHaxBody.haxToContent();
-    this.set("updateNodeData", {});
-    this.set("updateNodeData", {
-      jwt: this.jwt,
-      site: {
-        name: this.manifest.metadata.site.name
-      },
-      node: {
-        id: this.activeItem.id,
-        body: body,
-        schema: window.HaxStore.htmlToHaxElements(body)
-      }
-    });
-    this.notifyPath("updateNodeData.*");
     // send the request
     if (this.saveNodePath) {
-      this.$.nodeupdateajax.generateRequest();
+      let body = window.HaxStore.instance.activeHaxBody.haxToContent();
+      this.querySelector("#nodeupdateajax").body = {
+        jwt: this.jwt,
+        site: {
+          name: this.manifest.metadata.site.name
+        },
+        node: {
+          id: this.activeItem.id,
+          body: body,
+          schema: window.HaxStore.htmlToHaxElements(body)
+        }
+      };
+      this.querySelector("#nodeupdateajax").generateRequest();
     }
   }
   /**
    * Save node event
    */
   saveNodeDetails(e) {
-    this.set("updateNodeData", {});
-    this.set("updateNodeData", {
-      jwt: this.jwt,
-      site: {
-        name: this.manifest.metadata.site.name
-      },
-      node: {
-        id: e.detail.id,
-        details: e.detail
-      }
-    });
-    this.notifyPath("updateNodeData.*");
     // send the request
     if (this.saveNodePath) {
-      this.$.nodeupdateajax.generateRequest();
+      this.querySelector("#nodeupdateajax").body = {
+        jwt: this.jwt,
+        site: {
+          name: this.manifest.metadata.site.name
+        },
+        node: {
+          id: e.detail.id,
+          details: e.detail
+        }
+      };
+      this.querySelector("#nodeupdateajax").generateRequest();
     }
   }
   /**
    * Save the outline based on an event firing.
    */
   saveOutline(e) {
-    this.set("updateOutlineData", {});
-    this.set("updateOutlineData", {
+    this.updateOutlineData = {};
+    this.updateOutlineData = {
       jwt: this.jwt,
       site: {
         name: this.manifest.metadata.site.name
       },
       items: e.detail
-    });
-    this.notifyPath("updateOutlineData.*");
+    };
     if (this.saveOutlinePath) {
-      this.$.outlineupdateajax.generateRequest();
+      this.querySelector("#outlineupdateajax").generateRequest();
     }
   }
   /**
@@ -1209,11 +1207,10 @@ class HAXCMSSiteEditor extends PolymerElement {
         name: this.manifest.metadata.site.name
       };
     }
-    this.set("updateManifestData", {});
-    this.set("updateManifestData", values);
-    this.notifyPath("updateManifestData.*");
+    this.updateManifestData = {};
+    this.updateManifestData = values;
     if (this.saveManifestPath) {
-      this.$.manifestupdateajax.generateRequest();
+      this.querySelector("#manifestupdateajax").generateRequest();
     }
   }
   /**
@@ -1228,48 +1225,45 @@ class HAXCMSSiteEditor extends PolymerElement {
    * Save the outline based on an event firing.
    */
   publishSite(e) {
-    this.set("publishSiteData", {});
-    this.set("publishSiteData", {
+    this.publishSiteData = {};
+    this.publishSiteData = {
       jwt: this.jwt,
       site: {
         name: this.manifest.metadata.site.name
       }
-    });
-    this.notifyPath("publishSiteData.*");
+    };
     if (this.publishSitePath) {
-      this.$.publishajax.generateRequest();
+      this.querySelector("#publishajax").generateRequest();
     }
   }
   /**
    * Revert last commit
    */
   syncSite(e) {
-    this.set("syncSiteData", {});
-    this.set("syncSiteData", {
+    this.syncSiteData = {};
+    this.syncSiteData = {
       jwt: this.jwt,
       site: {
         name: store.manifest.metadata.site.name
       }
-    });
-    this.notifyPath("syncSiteData.*");
+    };
     if (this.syncSitePath) {
-      this.$.syncajax.generateRequest();
+      this.querySelector("#syncajax").generateRequest();
     }
   }
   /**
    * Revert last commit
    */
   revertCommit(e) {
-    this.set("revertSiteData", {});
-    this.set("revertSiteData", {
+    this.revertSiteData = {};
+    this.revertSiteData = {
       jwt: this.jwt,
       site: {
         name: store.manifest.metadata.site.name
       }
-    });
-    this.notifyPath("revertSiteData.*");
+    };
     if (this.revertSitePath) {
-      this.$.revertajax.generateRequest();
+      this.querySelector("#revertajax").generateRequest();
     }
   }
 }

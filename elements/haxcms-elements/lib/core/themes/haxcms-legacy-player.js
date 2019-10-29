@@ -34,7 +34,6 @@ import "@lrnwebcomponents/map-menu/map-menu.js";
 class HAXCMSLegacyPlayer extends PolymerElement {
   /**
    * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
     return "haxcms-legacy-player";

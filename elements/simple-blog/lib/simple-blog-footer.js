@@ -12,7 +12,6 @@ import { autorun, toJS } from "mobx/lib/mobx.module.js";
 class SimpleBlogFooter extends PolymerElement {
   /**
    * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
     return "simple-blog-footer";
@@ -199,19 +198,21 @@ class SimpleBlogFooter extends PolymerElement {
     };
   }
   _activeManifestIndexChanged(newValue) {
-    if (this.manifest.items[newValue - 1]) {
-      this.prevTitle = " - " + this.manifest.items[newValue - 1].title;
-      this.prevChanged = this.manifest.items[newValue - 1].metadata.created;
-    } else {
-      this.prevTitle = "";
-      this.prevChanged = "";
-    }
-    if (this.manifest.items[newValue + 1]) {
-      this.nextTitle = " - " + this.manifest.items[newValue + 1].title;
-      this.nextChanged = this.manifest.items[newValue + 1].metadata.created;
-    } else {
-      this.nextTitle = "";
-      this.nextChanged = "";
+    if (this.manifest) {
+      if (this.manifest.items[newValue - 1]) {
+        this.prevTitle = " - " + this.manifest.items[newValue - 1].title;
+        this.prevChanged = this.manifest.items[newValue - 1].metadata.created;
+      } else {
+        this.prevTitle = "";
+        this.prevChanged = "";
+      }
+      if (this.manifest.items[newValue + 1]) {
+        this.nextTitle = " - " + this.manifest.items[newValue + 1].title;
+        this.nextChanged = this.manifest.items[newValue + 1].metadata.created;
+      } else {
+        this.nextTitle = "";
+        this.nextChanged = "";
+      }
     }
   }
   constructor() {

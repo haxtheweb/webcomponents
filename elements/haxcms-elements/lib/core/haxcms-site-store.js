@@ -200,7 +200,7 @@ class Store {
    */
   get siteTitle() {
     const manifest = this.manifest;
-    if (manifest.title) {
+    if (manifest && manifest.title) {
       return manifest.title;
     }
     return "";
@@ -210,16 +210,17 @@ class Store {
    */
   get homeLink() {
     // if we are on the homepage then load the first item in the manifest and set it active
-    const firstItem = this.manifest.items.find(
-      i => typeof i.id !== "undefined"
-    );
-    if (firstItem) {
-      return firstItem.location
-        .replace("pages/", "")
-        .replace("/index.html", "");
-    } else {
-      return "/";
+    if (this.manifest) {
+      const firstItem = this.manifest.items.find(
+        i => typeof i.id !== "undefined"
+      );
+      if (firstItem) {
+        return firstItem.location
+          .replace("pages/", "")
+          .replace("/index.html", "");
+      }
     }
+    return "/";
   }
   /**
    * Get the active Item based on activeId

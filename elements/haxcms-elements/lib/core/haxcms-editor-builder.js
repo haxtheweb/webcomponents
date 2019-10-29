@@ -2,10 +2,8 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import * as async from "@polymer/polymer/lib/utils/async.js";
 
 /**
  * `haxcms-editor-builder`
@@ -15,10 +13,9 @@ import * as async from "@polymer/polymer/lib/utils/async.js";
  * - something called us asking to provide an authoring solution
  * - we need to decide based on environment if this supports php, nodejs, beaker, a demo or none
  */
-class HAXCMSEditorBuilder extends PolymerElement {
+class HAXCMSEditorBuilder extends HTMLElement {
   /**
    * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
     return "haxcms-editor-builder";
@@ -35,6 +32,9 @@ class HAXCMSEditorBuilder extends PolymerElement {
     );
   }
   connectedCallback() {
+    if (super.connectedCallback) {
+      super.connectedCallback();
+    }
     this.dispatchEvent(
       new CustomEvent("haxcms-editor-builder-ready", {
         bubbles: true,
@@ -49,7 +49,9 @@ class HAXCMSEditorBuilder extends PolymerElement {
       "haxcms-site-editor-loaded",
       this.editorLoaded.bind(this)
     );
-    super.disconnectedCallback();
+    if (super.disconnectedCallback) {
+      super.disconnectedCallback();
+    }
   }
   /**
    * Try to get context of what backend is powering this

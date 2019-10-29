@@ -57,9 +57,8 @@ gulp.task("merge", () => {
           cssResult = stripCssComments(cssResult).trim();
           return `
   // render function
-  static get template() {
+  render() {
     return html\`
-${cssResult}
 ${html}\`;
   }
 ${haxString}

@@ -77,9 +77,11 @@ class JsonOutlineSchema extends HTMLElement {
       "json-outline-schema-debug-toggle",
       this._toggleDebug.bind(this)
     );
+
     const evt = new CustomEvent("json-outline-schema-ready", {
       bubbles: true,
       cancelable: false,
+      composed: true,
       detail: true
     });
     this.dispatchEvent(evt);

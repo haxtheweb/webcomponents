@@ -2,12 +2,10 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-// while we're using PolymerElement here it's not required
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-// we use this to help speed up time to first paint but it's not required
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-// this is required for any HAXcms theme unless you directly implement what this superClass does
-import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
+// html to handle template variable binding
+import { html } from "@polymer/polymer/polymer-element.js";
+// this is the PolymerElement base theme
+import { HAXCMSPolymerElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSPolymerElementTheme.js";
 // our store implements Mobx and ensures that we maintain state across the application
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 // While not needing to directly implement mobx classes this can let you do more advanced
@@ -21,10 +19,10 @@ import { autorun, toJS } from "mobx/lib/mobx.module.js";
  *  - HAXcms - A content management system that builds state of the art one page apps via GUI
  *
  * @customElement
- * @polymer
+ * @polymerElement
  * @demo demo/index.html
  */
-class ExampleHaxcmsTheme extends HAXCMSTheme(PolymerElement) {
+class ExampleHaxcmsTheme extends HAXCMSPolymerElementTheme {
   // render function
   static get template() {
     return html`
@@ -117,22 +115,12 @@ class ExampleHaxcmsTheme extends HAXCMSTheme(PolymerElement) {
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-top-menu.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js");
     import("@lrnwebcomponents/haxcms-elements/lib/ui-components/layout/site-modal.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js");
     // create a blank array to store mobx reactions
     // this allows us to nicely clean up state after the theme
     // has been disconnected from the DOM
     this.__disposer = [];
-    // afterNextRender is a life cycle event specific to Polymer but ensures that
-    // these items don't fire until after the element has been rendered to the screen
-    // This happens AFTER DOM connection and visibility of the element meaning it's
-    // very late in the life cycle. This is useful for things that are not critical to the
-    // initial UI / UX of the site. In this example, the menu buttons to navigate back and forth
-    // as well as the search engine. These WILL load but might not be available until a few seconds
-    // after the page loads (the first time). Again, this helps unblock the render tree
-    // to deliver the page to users faster
-    afterNextRender(this, function() {
-      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/navigation/site-menu-button.js");
-      import("@lrnwebcomponents/haxcms-elements/lib/ui-components/site/site-search.js");
-    });
   }
   /**
    * life cycle, element is afixed to the DOM

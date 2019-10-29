@@ -2,9 +2,8 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 /**
  * `active-when-visible`
  * `Title of the site`
@@ -13,18 +12,10 @@ import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
  * @polymer
  * @demo demo/index.html
  */
-class ActiveWhenVisible extends PolymerElement {
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "active-when-visible";
-  }
-  // render function
-  static get template() {
-    return html`
-      <style>
+class ActiveWhenVisible extends LitElement {
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -35,15 +26,50 @@ class ActiveWhenVisible extends PolymerElement {
           pointer-events: none;
           background-color: transparent;
         }
-      </style>
+      `
+    ];
+  }
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   */
+  static get tag() {
+    return "active-when-visible";
+  }
+  // render function
+  render() {
+    return html`
       <div>
-        <a id="a" href$="[[_a]]" name$="#[[itemId]]" aria-hidden></a>
+        <a
+          id="a"
+          .href="${this._a}"
+          .name="#${this.itemId}"
+          aria-hidden="true"
+        ></a>
         <slot></slot>
       </div>
     `;
   }
+  constructor() {
+    super();
+    this.thresholds = [0.0, 0.25, 0.5, 0.75, 1.0];
+    this.rootMargin = "0px";
+    this.visibleLimit = 0.5;
+    this.isVisible = false;
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "isVisible") {
+        // fire an event that this is a core piece of the system
+        this.dispatchEvent(
+          new CustomEvent("is-visible-changed", {
+            detail: this[propName]
+          })
+        );
+      }
+    });
+  }
   /**
-   * Props
+   * LitElement / popular convention
    */
   static get properties() {
     return {
@@ -54,42 +80,32 @@ class ActiveWhenVisible extends PolymerElement {
         type: String
       },
       thresholds: {
-        type: Array,
-        value: [0.0, 0.25, 0.5, 0.75, 1.0]
+        type: Array
       },
       rootMargin: {
-        type: String,
-        value: "0px"
+        type: String
       },
       visibleLimit: {
         type: Number,
-        value: 0.5,
-        reflectToAttribute: true
+        reflect: true
       },
       isVisible: {
-        type: Boolean,
-        value: false,
-        notify: true
+        type: Boolean
       }
     };
   }
   connectedCallback() {
     super.connectedCallback();
     // setup the intersection observer
-    afterNextRender(this, function() {
-      this.observer = new IntersectionObserver(
-        this.handleIntersectionCallback.bind(this),
-        {
-          root: document.rootElement,
-          rootMargin: this.rootMargin,
-          threshold: this.thresholds
-        }
-      );
-      this.observer.observe(this);
-    });
-  }
-  disconnectedCallback() {
-    super.disconnectedCallback();
+    this.observer = new IntersectionObserver(
+      this.handleIntersectionCallback.bind(this),
+      {
+        root: document.rootElement,
+        rootMargin: this.rootMargin,
+        threshold: this.thresholds
+      }
+    );
+    this.observer.observe(this);
   }
   /**
    * Handle this being visible

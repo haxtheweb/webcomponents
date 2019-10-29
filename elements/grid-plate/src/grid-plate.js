@@ -661,9 +661,6 @@ class GridPlate extends LitElement {
           // fire an event that this is a core piece of the system
           this.dispatchEvent(
             new CustomEvent("disable-responsive-changed", {
-              bubbles: true,
-              cancelable: true,
-              composed: true,
               detail: this[propName]
             })
           );
