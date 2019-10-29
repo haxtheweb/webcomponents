@@ -131,12 +131,16 @@
       </a11y-media-transcript>
     </div>
   </div>
-  <paper-toast id="link" disabled$="[[!linkable]]" hidden$="[[!linkable]]" duration="0" text="[[shareLink]]">
+  <paper-toast id="link" 
+    disabled$="[[!linkable]]" 
+    hidden$="[[!linkable]]" 
+    duration="5000" 
+    text="Copied to clipboard: [[shareLink]]">
     <a11y-media-button
       action="linkable"
-      icon="[[_getLocal('copyLink','icon')]]"
-      label="[[_getLocal('copyLink','label')]]"
-      on-click="_handleCopyLink"
+      icon="[[_getLocal('closeLink','icon')]]"
+      label="[[_getLocal('closeLink','label')]]"
+      on-click="_handleCloseLink"
       tooltip-position="top"
     ></a11y-media-button>
   </paper-toast>

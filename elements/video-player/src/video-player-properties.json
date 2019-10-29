@@ -99,10 +99,25 @@
     "value": "en"
   },
   /**
+   * Include a share link?
+   */
+  "linkable": {
+    "type": "Boolean",
+    "value": false
+  },
+  /**
    * Simple caption for the video
    */
   "mediaTitle": {
     "type": "String"
+  },
+  /**
+   * ID for a11y-media-player. 
+   If none specified it will be modified from schema-resource-id.
+   */
+  "playerId": {
+    "type": "String",
+    "value": null
   },
   /**
    * What to preload for a11y-media-player: auto, metadata (default), or none.

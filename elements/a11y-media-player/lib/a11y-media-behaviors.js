@@ -176,13 +176,13 @@ class A11yMediaBehaviors extends SimpleColors {
             label: "Fullscreen",
             icon: "fullscreen"
           },
-          getLink: {
-            label: "Share Link",
+          copyLink: {
+            label: "Copy Media Link",
             icon: "link"
           },
-          copyLink: {
-            label: "Copy URL",
-            icon: "content-copy"
+          closeLink: {
+            label: "Close",
+            icon: "close"
           },
           loading: {
             label: "Loading..."
@@ -352,6 +352,24 @@ class A11yMediaBehaviors extends SimpleColors {
       },
 
       /**
+       * the selected track
+       */
+      selectedTrack: {
+        name: "selectedTrack",
+        type: Object,
+        value: null
+      },
+
+      /**
+       * id of the selected track
+       */
+      selectedTrackID: {
+        name: "selectedTrackID",
+        type: Number,
+        value: null
+      },
+
+      /**
        * Is stand-alone player (without transcript)?
        */
       standAlone: {
@@ -370,22 +388,6 @@ class A11yMediaBehaviors extends SimpleColors {
         value: "loading..."
       },
 
-      /**
-       * the selected track
-       */
-      selectedTrack: {
-        name: "selectedTrack",
-        type: Object,
-        value: null
-      },
-      /**
-       * id of the selected track
-       */
-      selectedTrackID: {
-        name: "selectedTrackID",
-        type: Number,
-        value: null
-      },
       /**
        * target of the controls
        */
@@ -442,6 +444,20 @@ class A11yMediaBehaviors extends SimpleColors {
    */
   static get behaviors() {
     return [ResponsiveUtility];
+  }
+
+  /**
+   * gets the link for sharing the video at a specific timecode
+   * @param {boolean} linkable is the video is linkable
+   */
+  _getShareLink(__elapsed) {
+    let url = window.location.href.split(/[#?]/)[0],
+      id = this.id ? `?id=${this.id}` : ``,
+      elapsed =
+        id !== "" && this.__elapsed && this.__elapsed !== 0
+          ? `&t=${this.__elapsed}`
+          : ``;
+    return `${url}${id}${elapsed}`;
   }
 
   /**

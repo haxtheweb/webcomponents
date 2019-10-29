@@ -681,14 +681,14 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
         id="link"
         disabled$="[[!linkable]]"
         hidden$="[[!linkable]]"
-        duration="0"
-        text="[[shareLink]]"
+        duration="5000"
+        text="Copied to clipboard: [[shareLink]]"
       >
         <a11y-media-button
           action="linkable"
-          icon="[[_getLocal('copyLink','icon')]]"
-          label="[[_getLocal('copyLink','label')]]"
-          on-click="_handleCopyLink"
+          icon="[[_getLocal('closeLink','icon')]]"
+          label="[[_getLocal('closeLink','label')]]"
+          on-click="_handleCloseLink"
           tooltip-position="top"
         ></a11y-media-button>
       </paper-toast>
@@ -1502,18 +1502,27 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
     }, 1);
   }
   /**
+   * handles closing the share link toast
+   */
+  _handleCloseLink() {
+    this.$.link.close();
+    if (this.__resumePlaying) this.play();
+    this.__resumePlaying = false;
+  }
+
+  /**
    * handles copying the share link
    */
   _handleCopyLink() {
     let el = document.createElement("textarea");
+    this.__resumePlaying = this.__playing;
+    this.pause;
     el.value = this.shareLink;
     document.body.appendChild(el);
     el.select();
     document.execCommand("copy");
     document.body.removeChild(el);
-    this.$.link.close();
-    if (this.__resumePlaying) this.play();
-    this.__resumePlaying = false;
+    this.$.link.open();
   }
 
   /**
@@ -1537,7 +1546,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
   _handleMediaLoaded(e) {
     let root = this,
       anchor = window.AnchorBehaviors,
-      target = anchor.getTarget(),
+      target = anchor.getTarget(this),
       params = anchor.params,
       aspect = root.media.aspectRatio;
     root._setPlayerHeight(aspect);
@@ -1661,18 +1670,6 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
     let root = this,
       action = e.detail.action !== undefined ? e.detail.action : e.detail.id;
 
-    //any button can close the link toast but only linkable can open it
-    if (action && this.$.link.opened) {
-      root.$.link.cancel();
-      if (root.__resumePlaying) root.play();
-      root.__resumePlaying = false;
-    } else if (action === "linkable") {
-      root.__resumePlaying = root.__playing;
-      root.pause();
-      root.$.link.open();
-    }
-
-    //handle other specific actionc
     if (action === "backward" || action === "rewind") {
       root.rewind();
     } else if (action === "captions") {
@@ -1706,6 +1703,8 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
       root.setPlaybackRate(e.detail.value);
     } else if (action === "volume") {
       root.setVolume(e.detail.value);
+    } else if (action === "linkable") {
+      root._handleCopyLink();
     }
   }
 
