@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { LitElement, html } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
@@ -375,14 +375,12 @@ class HAXCMSSiteEditor extends LitElement {
   /**
    * Break the shadow root for this element (by design)
    */
-
   createRenderRoot() {
     return this;
   }
   /**
    * ready life cycle
    */
-
   firstUpdated(changedProperties) {
     autorun(reaction => {
       this.editMode = toJS(store.editMode);
