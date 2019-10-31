@@ -75,7 +75,7 @@ class LrnappBlockNeedFeedback extends PolymerElement {
       this.basePath + "lrnapp-studio-submission/submissions/" + active;
   }
   handleResponse(e) {
-    this.$.loading.hidden = true;
+    this.shadowRoot.querySelector("#loading").hidden = true;
   }
   _toArray(obj) {
     if (obj == null) {

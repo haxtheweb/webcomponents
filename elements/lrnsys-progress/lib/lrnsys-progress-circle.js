@@ -549,15 +549,15 @@ class LrnsysProgressCircle extends PolymerElement {
       // focus shows focus
       if (this.focusState) {
         // force icon to be set to real one and class added
-        this.$.icon.icon = this.icon;
-        this.$.icon.classList.add("activeIcon");
+        this.shadowRoot.querySelector("#icon").icon = this.icon;
+        this.shadowRoot.querySelector("#icon").classList.add("activeIcon");
       } else {
         // if complete set it back to what it was
         if (this.status == "complete" || this.status == "finished") {
-          this.$.icon.icon = this.activeIcon;
+          this.shadowRoot.querySelector("#icon").icon = this.activeIcon;
         }
         // drop the class for active step
-        this.$.icon.classList.remove("activeIcon");
+        this.shadowRoot.querySelector("#icon").classList.remove("activeIcon");
       }
       this.focusState = !this.focusState;
     }
@@ -569,8 +569,8 @@ class LrnsysProgressCircle extends PolymerElement {
     // see if it has hover classes
     if (!this.disabled && this.status != "loading") {
       // force icon to be set to real one and class added
-      this.$.icon.icon = this.icon;
-      this.$.icon.classList.add("activeIcon");
+      this.shadowRoot.querySelector("#icon").icon = this.icon;
+      this.shadowRoot.querySelector("#icon").classList.add("activeIcon");
     }
   }
   /**
@@ -581,10 +581,10 @@ class LrnsysProgressCircle extends PolymerElement {
     if (!this.disabled && this.status != "loading") {
       // if complete set it back to what it was
       if (this.status == "complete" || this.status == "finished") {
-        this.$.icon.icon = this.activeIcon;
+        this.shadowRoot.querySelector("#icon").icon = this.activeIcon;
       }
       // drop the class for active step
-      this.$.icon.classList.remove("activeIcon");
+      this.shadowRoot.querySelector("#icon").classList.remove("activeIcon");
     }
   }
   /**
@@ -610,7 +610,7 @@ class LrnsysProgressCircle extends PolymerElement {
       // support for a loading icon while loading
       if (status == "loading") {
         tmp = this.loadingIcon;
-        this.$.icon.classList.add("transition");
+        this.shadowRoot.querySelector("#icon").classList.add("transition");
       } else if (status == "finished") {
         tmp = this.finishedIcon;
       } else if (
@@ -622,7 +622,7 @@ class LrnsysProgressCircle extends PolymerElement {
         }
         tmp = iconComplete;
       } else {
-        this.$.icon.classList.remove("transition");
+        this.shadowRoot.querySelector("#icon").classList.remove("transition");
       }
       return tmp;
     }

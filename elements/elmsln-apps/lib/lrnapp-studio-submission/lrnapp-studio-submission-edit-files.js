@@ -108,7 +108,7 @@ class LrnappStudioSubmissionEditFiles extends SecureRequestXhr(PolymerElement) {
 
   _addFile(e) {
     // @todo switch to singleton
-    this.$.dialog.open();
+    this.shadowRoot.querySelector("#dialog").open();
   }
 
   _selectPage(e) {
@@ -130,7 +130,7 @@ class LrnappStudioSubmissionEditFiles extends SecureRequestXhr(PolymerElement) {
         this.set("files", []);
       }
       this.push("files", file);
-      this.$.dialog.close();
+      this.shadowRoot.querySelector("#dialog").close();
     }
   }
 

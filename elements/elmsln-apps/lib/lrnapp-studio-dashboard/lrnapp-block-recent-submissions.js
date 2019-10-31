@@ -88,7 +88,7 @@ class LrnappBlockRecentSubmissions extends PolymerElement {
       this.basePath + "lrnapp-studio-submission/submissions/" + active;
   }
   handleResponse(e) {
-    this.$.loading.hidden = true;
+    this.shadowRoot.querySelector("#loading").hidden = true;
   }
   _getViewLink(nid) {
     return this.basePath + "lrnapp-studio-submission/submissions/" + nid;

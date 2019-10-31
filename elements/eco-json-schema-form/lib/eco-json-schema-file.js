@@ -368,7 +368,7 @@ class EcoJsonSchemaFile extends mixinBehaviors(
    */
   clear() {
     this.set("files", []);
-    this.$.fileInput.value = "";
+    this.shadowRoot.querySelector("#fileInput").value = "";
     this._showDropText();
   }
 
@@ -610,11 +610,11 @@ class EcoJsonSchemaFile extends mixinBehaviors(
   /*
   _errorChanged() {
     if (this.error) {
-      this.$.fileInput.errorMessage = this.error;
-      this.$.fileInput.invalid = true;
+      this.shadowRoot.querySelector('#fileInput').errorMessage = this.error;
+      this.shadowRoot.querySelector('#fileInput').invalid = true;
     } else {
-      this.$.fileInput.invalid = false;
-      this.$.fileInput.errorMessage = null;
+      this.shadowRoot.querySelector('#fileInput').invalid = false;
+      this.shadowRoot.querySelector('#fileInput').errorMessage = null;
     }
   },
   */

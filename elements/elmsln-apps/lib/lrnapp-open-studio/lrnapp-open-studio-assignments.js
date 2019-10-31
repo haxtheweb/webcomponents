@@ -215,7 +215,7 @@ class LrnappOpenStudioAssignments extends PolymerElement {
    * Handle response for the whole assignments object.
    */
   _handleResponse(event) {
-    this.$.loading.hidden = true;
+    this.shadowRoot.querySelector("#loading").hidden = true;
   }
   /**
    * Simple way to convert from object to array.

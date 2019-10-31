@@ -104,7 +104,7 @@ class LrnappStudioSubmissionEditImages extends SecureRequestXhr(
 
   _addImage(e) {
     // @todo switch to singleton
-    this.$.dialog.open();
+    this.shadowRoot.querySelector("#dialog").open();
   }
 
   _selectPage(e) {
@@ -142,7 +142,7 @@ class LrnappStudioSubmissionEditImages extends SecureRequestXhr(
       }
       this.set("images", []);
       this.set("images", images);
-      this.$.dialog.close();
+      this.shadowRoot.querySelector("#dialog").close();
     }
   }
 

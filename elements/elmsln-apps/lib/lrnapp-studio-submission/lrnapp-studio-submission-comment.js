@@ -123,8 +123,8 @@ class LrnappStudioSubmissionComment extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     afterNextRender(this, function() {
-      this.$.body.addEventListener("click", e => {
-        this.$.body.classList.toggle("nowrap");
+      this.shadowRoot.querySelector("#body").addEventListener("click", e => {
+        this.shadowRoot.querySelector("#body").classList.toggle("nowrap");
       });
     });
   }
@@ -132,8 +132,8 @@ class LrnappStudioSubmissionComment extends PolymerElement {
    * detached life cycle
    */
   disconnectedCallback() {
-    this.$.body.removeEventListener("click", e => {
-      this.$.body.classList.toggle("nowrap");
+    this.shadowRoot.querySelector("#body").removeEventListener("click", e => {
+      this.shadowRoot.querySelector("#body").classList.toggle("nowrap");
     });
     super.disconnectedCallback();
   }

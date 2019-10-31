@@ -84,7 +84,7 @@ class LrnMarkdownEditorEditor extends PolymerElement {
   }
 
   _changed(e) {
-    var content = this.$.markededitor.getContent();
+    var content = this.shadowRoot.querySelector("#markededitor").getContent();
     this.set("content", content);
     this.dispatchEvent(
       new CustomEvent("content-updated", {

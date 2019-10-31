@@ -178,7 +178,7 @@ class simpleColorsSwatches extends SimpleColors {
   _handleTap(e) {
     this.swatchId = e.path[0].getAttribute("id");
     this.swatchName = e.path[0].getAttribute("title");
-    this.$.modal.openModal(e.path[0]);
+    this.shadowRoot.querySelector("#modal").openModal(e.path[0]);
   }
 
   /**

@@ -381,7 +381,7 @@ class A11yMediaTranscript extends A11yMediaBehaviors {
     this.set("tracks", tracks.slice(0));
     this.notifyPath("tracks");
     if (this.tracks !== undefined && this.tracks.length > 0)
-      this.$.tracks.render();
+      this.shadowRoot.querySelector("#tracks").render();
   }
 
   /**
@@ -464,11 +464,11 @@ class A11yMediaTranscript extends A11yMediaBehaviors {
   }
 
   _stampLoadingStatus(disableSeek) {
-    this.$.loading.innerHTML =
+    this.shadowRoot.querySelector("#loading").innerHTML =
       disableSeek === false
         ? this._getLocal("transcript", "label")
         : this._getLocal("youTubeTranscript", "label");
-    return this.$.loading.innerHTML;
+    return this.shadowRoot.querySelector("#loading").innerHTML;
   }
 }
 window.customElements.define(A11yMediaTranscript.tag, A11yMediaTranscript);

@@ -105,9 +105,11 @@ class LrnsysDialogToolbar extends PolymerElement {
     super.ready();
     afterNextRender(this, function() {
       // listen to see if buttons have been initialized in the secondary toolbar
-      this.$.secondary.addEventListener("button-initialized", e => {
-        this._secondaryHasChildren = true;
-      });
+      this.shadowRoot
+        .querySelector("#secondary")
+        .addEventListener("button-initialized", e => {
+          this._secondaryHasChildren = true;
+        });
       this.addEventListener(
         "dialog-toolbar-button-tapped",
         this._tapHandler.bind(this)
@@ -115,9 +117,11 @@ class LrnsysDialogToolbar extends PolymerElement {
     });
   }
   disconnectedCallback() {
-    this.$.secondary.removeEventListener("button-initialized", e => {
-      this._secondaryHasChildren = true;
-    });
+    this.shadowRoot
+      .querySelector("#secondary")
+      .removeEventListener("button-initialized", e => {
+        this._secondaryHasChildren = true;
+      });
     this.removeEventListener(
       "dialog-toolbar-button-tapped",
       this._tapHandler.bind(this)

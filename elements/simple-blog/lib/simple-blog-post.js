@@ -225,10 +225,13 @@ class SimpleBlogPost extends PolymerElement {
         let rect = this.shadowRoot
           .querySelector("#image")
           .getBoundingClientRect();
-        this.$.contentcontainer.style.paddingTop = rect.height + "px";
+        this.shadowRoot.querySelector("#contentcontainer").style.paddingTop =
+          rect.height + "px";
       });
     } else {
-      this.$.contentcontainer.style.paddingTop = null;
+      this.shadowRoot.querySelector(
+        "#contentcontainer"
+      ).style.paddingTop = null;
     }
   }
 

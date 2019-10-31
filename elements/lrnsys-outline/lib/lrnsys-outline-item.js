@@ -318,10 +318,9 @@ class LrnsysOutlineItem extends PolymerElement {
           })
         );
       });
-      this.$.input.addEventListener(
-        "focused-changed",
-        this._focusin.bind(this)
-      );
+      this.shadowRoot
+        .querySelector("#input")
+        .addEventListener("focused-changed", this._focusin.bind(this));
       this.addEventListener("focusin", this._focusin.bind(this));
       this.addEventListener("focusout", this._focusout.bind(this));
     });
@@ -371,22 +370,21 @@ class LrnsysOutlineItem extends PolymerElement {
         })
       );
     });
-    this.$.input.removeEventListener(
-      "focused-changed",
-      this._focusin.bind(this)
-    );
+    this.shadowRoot
+      .querySelector("#input")
+      .removeEventListener("focused-changed", this._focusin.bind(this));
     this.removeEventListener("focusin", this._focusin.bind(this));
     this.removeEventListener("focusout", this._focusout.bind(this));
     super.disconnectedCallback();
   }
 
   focus() {
-    this.$.input.focus();
+    this.shadowRoot.querySelector("#input").focus();
     return this;
   }
 
   value() {
-    this.title = this.$.input.value;
+    this.title = this.shadowRoot.querySelector("#input").value;
     return this.title;
   }
 
@@ -413,8 +411,11 @@ class LrnsysOutlineItem extends PolymerElement {
   }
 
   add() {
-    let i = this.$.input.shadowRoot.querySelector("#" + this.$.input._inputId)
-        .inputElement.selectionStart,
+    let i = this.shadowRoot
+        .querySelector("#input")
+        .shadowRoot.querySelector(
+          "#" + this.shadowRoot.querySelector("#input")._inputId
+        ).inputElement.selectionStart,
       j = this.title;
     this.dispatchEvent(
       new CustomEvent("add-item", {
@@ -457,7 +458,10 @@ class LrnsysOutlineItem extends PolymerElement {
     let s = start !== undefined ? start : 0,
       n = end !== undefined ? end : s;
     try {
-      this.$.input.querySelector("input").setSelectionRange(s, n);
+      this.shadowRoot
+        .querySelector("#input")
+        .querySelector("input")
+        .setSelectionRange(s, n);
     } catch (e) {
       console.log(e);
     }
@@ -479,8 +483,11 @@ class LrnsysOutlineItem extends PolymerElement {
     this._focusout();
   }
   _onEnter() {
-    let i = this.$.input.shadowRoot.querySelector("#" + this.$.input._inputId)
-        .inputElement.selectionStart,
+    let i = this.shadowRoot
+        .querySelector("#input")
+        .shadowRoot.querySelector(
+          "#" + this.shadowRoot.querySelector("#input")._inputId
+        ).inputElement.selectionStart,
       j = this.title;
     this.dispatchEvent(
       new CustomEvent("add-item", {
@@ -510,8 +517,11 @@ class LrnsysOutlineItem extends PolymerElement {
         })
       );
     } else if (
-      this.$.input.shadowRoot.querySelector("#" + this.$.input._inputId)
-        .inputElement.selectionStart == 0
+      this.shadowRoot
+        .querySelector("#input")
+        .shadowRoot.querySelector(
+          "#" + this.shadowRoot.querySelector("#input")._inputId
+        ).inputElement.selectionStart == 0
     ) {
       this.dispatchEvent(
         new CustomEvent("indent-item", {
@@ -543,8 +553,11 @@ class LrnsysOutlineItem extends PolymerElement {
 
   _onArrowUp() {
     if (
-      this.$.input.shadowRoot.querySelector("#" + this.$.input._inputId)
-        .inputElement.selectionStart == 0
+      this.shadowRoot
+        .querySelector("#input")
+        .shadowRoot.querySelector(
+          "#" + this.shadowRoot.querySelector("#input")._inputId
+        ).inputElement.selectionStart == 0
     ) {
       this.dispatchEvent(
         new CustomEvent("focus-item", {
@@ -559,8 +572,11 @@ class LrnsysOutlineItem extends PolymerElement {
 
   _onArrowDown() {
     if (
-      this.$.input.shadowRoot.querySelector("#" + this.$.input._inputId)
-        .inputElement.selectionStart == this.title.length
+      this.shadowRoot
+        .querySelector("#input")
+        .shadowRoot.querySelector(
+          "#" + this.shadowRoot.querySelector("#input")._inputId
+        ).inputElement.selectionStart == this.title.length
     ) {
       this.dispatchEvent(
         new CustomEvent("focus-item", {
@@ -579,8 +595,11 @@ class LrnsysOutlineItem extends PolymerElement {
 
   _onTab(e) {
     if (
-      this.$.input.shadowRoot.querySelector("#" + this.$.input._inputId)
-        .inputElement.selectionStart == 0
+      this.shadowRoot
+        .querySelector("#input")
+        .shadowRoot.querySelector(
+          "#" + this.shadowRoot.querySelector("#input")._inputId
+        ).inputElement.selectionStart == 0
     ) {
       e.preventDefault();
       this.setIndent(1);

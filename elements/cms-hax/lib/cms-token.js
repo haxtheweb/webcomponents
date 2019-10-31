@@ -229,7 +229,7 @@ class CMSToken extends PolymerElement {
       if (this.tokenEndPoint) {
         this.loading = true;
         microTask.run(() => {
-          this.$.tokenrequest.generateRequest();
+          this.shadowRoot.querySelector("#tokenrequest").generateRequest();
         });
       }
     }
@@ -241,7 +241,7 @@ class CMSToken extends PolymerElement {
     // ensure we aren't already loading
     if (!this.loading && this._clickInvoked) {
       // generate request which will kick off "loading" state
-      this.$.tokenrequest.generateRequest();
+      this.shadowRoot.querySelector("#tokenrequest").generateRequest();
       // kill our clickInvoked handler so we aren't generating requests until the
       // user clicks to edit the thing again
       this._clickInvoked = false;
@@ -279,7 +279,7 @@ class CMSToken extends PolymerElement {
         if (this.tokenEndPoint) {
           this.loading = true;
           microTask.run(() => {
-            this.$.tokenrequest.generateRequest();
+            this.shadowRoot.querySelector("#tokenrequest").generateRequest();
           });
         }
       }

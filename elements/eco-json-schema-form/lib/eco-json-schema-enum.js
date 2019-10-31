@@ -101,9 +101,9 @@ class EcoJsonSchemaEnum extends mixinBehaviors(
   }
   _errorChanged() {
     if (this.error) {
-      this.$.dropdown.invalid = true;
+      this.shadowRoot.querySelector("#dropdown").invalid = true;
     } else {
-      this.$.dropdown.invalid = false;
+      this.shadowRoot.querySelector("#dropdown").invalid = false;
     }
   }
   _isSchemaValue(type) {

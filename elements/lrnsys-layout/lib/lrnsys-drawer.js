@@ -154,44 +154,36 @@ class LrnsysDrawer extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     afterNextRender(this, function() {
-      this.$.flyouttrigger.addEventListener(
-        "mousedown",
-        this.tapEventOn.bind(this)
-      );
-      this.$.flyouttrigger.addEventListener(
-        "mouseover",
-        this.tapEventOn.bind(this)
-      );
-      this.$.flyouttrigger.addEventListener(
-        "mouseout",
-        this.tapEventOff.bind(this)
-      );
-      this.$.flyouttrigger.addEventListener(
-        "focused-changed",
-        this.focusToggle.bind(this)
-      );
+      this.shadowRoot
+        .querySelector("#flyouttrigger")
+        .addEventListener("mousedown", this.tapEventOn.bind(this));
+      this.shadowRoot
+        .querySelector("#flyouttrigger")
+        .addEventListener("mouseover", this.tapEventOn.bind(this));
+      this.shadowRoot
+        .querySelector("#flyouttrigger")
+        .addEventListener("mouseout", this.tapEventOff.bind(this));
+      this.shadowRoot
+        .querySelector("#flyouttrigger")
+        .addEventListener("focused-changed", this.focusToggle.bind(this));
     });
   }
   /**
    * detached lifecycle
    */
   disconnectedCallback() {
-    this.$.flyouttrigger.removeEventListener(
-      "mousedown",
-      this.tapEventOn.bind(this)
-    );
-    this.$.flyouttrigger.removeEventListener(
-      "mouseover",
-      this.tapEventOn.bind(this)
-    );
-    this.$.flyouttrigger.removeEventListener(
-      "mouseout",
-      this.tapEventOff.bind(this)
-    );
-    this.$.flyouttrigger.removeEventListener(
-      "focused-changed",
-      this.focusToggle.bind(this)
-    );
+    this.shadowRoot
+      .querySelector("#flyouttrigger")
+      .removeEventListener("mousedown", this.tapEventOn.bind(this));
+    this.shadowRoot
+      .querySelector("#flyouttrigger")
+      .removeEventListener("mouseover", this.tapEventOn.bind(this));
+    this.shadowRoot
+      .querySelector("#flyouttrigger")
+      .removeEventListener("mouseout", this.tapEventOff.bind(this));
+    this.shadowRoot
+      .querySelector("#flyouttrigger")
+      .removeEventListener("focused-changed", this.focusToggle.bind(this));
     super.disconnectedCallback();
   }
 
@@ -204,7 +196,7 @@ class LrnsysDrawer extends PolymerElement {
       var classes = this.hoverClass.split(" ");
       classes.forEach((item, index) => {
         if (item != "") {
-          this.$.flyouttrigger.classList.add(item);
+          this.shadowRoot.querySelector("#flyouttrigger").classList.add(item);
         }
       });
     }
@@ -219,7 +211,9 @@ class LrnsysDrawer extends PolymerElement {
       var classes = this.hoverClass.split(" ");
       classes.forEach((item, index) => {
         if (item != "") {
-          this.$.flyouttrigger.classList.remove(item);
+          this.shadowRoot
+            .querySelector("#flyouttrigger")
+            .classList.remove(item);
         }
       });
     }
@@ -287,9 +281,11 @@ class LrnsysDrawer extends PolymerElement {
       classes.forEach((item, index) => {
         if (item != "") {
           if (this.focusState) {
-            this.$.flyouttrigger.classList.add(item);
+            this.shadowRoot.querySelector("#flyouttrigger").classList.add(item);
           } else {
-            this.$.flyouttrigger.classList.remove(item);
+            this.shadowRoot
+              .querySelector("#flyouttrigger")
+              .classList.remove(item);
           }
         }
       });

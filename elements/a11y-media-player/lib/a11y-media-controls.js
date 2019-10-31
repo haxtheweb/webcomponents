@@ -554,7 +554,7 @@ class A11yMediaControls extends A11yMediaBehaviors {
    * @param {string} the status, eg., `Loading...` or `00:02:01/00:11:43`
    */
   setStatus(status) {
-    this.$.statbar.innerText = status;
+    this.shadowRoot.querySelector("#statbar").innerText = status;
   }
 
   /**
@@ -629,7 +629,7 @@ class A11yMediaControls extends A11yMediaBehaviors {
     this.dispatchEvent(
       new CustomEvent("controls-change", { detail: e.detail })
     );
-    this.$.settings.close();
+    this.shadowRoot.querySelector("#settings").close();
   }
 
   /**
@@ -639,7 +639,7 @@ class A11yMediaControls extends A11yMediaBehaviors {
     this.dispatchEvent(
       new CustomEvent("controls-change", { detail: e.target })
     );
-    this.$.settings.close();
+    this.shadowRoot.querySelector("#settings").close();
   }
 
   /**

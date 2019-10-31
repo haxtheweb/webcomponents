@@ -165,7 +165,7 @@ class PaperSearchPanel extends PolymerElement {
     );
   }
   _onFilter() {
-    this.$.filterDialog.open();
+    this.shadowRoot.querySelector("#filterDialog").open();
   }
   _onSearch() {
     this.dispatchEvent(

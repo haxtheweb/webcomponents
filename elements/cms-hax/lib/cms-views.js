@@ -176,7 +176,7 @@ class CMSViews extends PolymerElement {
       if (this.viewsEndPoint) {
         this.loading = true;
         microTask.run(() => {
-          this.$.viewsrequest.generateRequest();
+          this.shadowRoot.querySelector("#viewsrequest").generateRequest();
         });
       }
     }
@@ -206,7 +206,7 @@ class CMSViews extends PolymerElement {
         if (this.viewsEndPoint) {
           this.loading = true;
           microTask.run(() => {
-            this.$.viewsrequest.generateRequest();
+            this.shadowRoot.querySelector("#viewsrequest").generateRequest();
           });
         }
       }

@@ -85,7 +85,7 @@ class SiteRenderItem extends PolymerElement {
   }
   locationChanged(newValue) {
     if (newValue) {
-      this.$.content.generateRequest();
+      this.shadowRoot.querySelector("#content").generateRequest();
     }
   }
   /**

@@ -182,7 +182,7 @@ class CMSBlock extends PolymerElement {
       if (this.blockEndPoint) {
         this.loading = true;
         microTask.run(() => {
-          this.$.blockrequest.generateRequest();
+          this.shadowRoot.querySelector("#blockrequest").generateRequest();
         });
       }
     }
@@ -212,7 +212,7 @@ class CMSBlock extends PolymerElement {
         if (this.blockEndPoint) {
           this.loading = true;
           microTask.run(() => {
-            this.$.blockrequest.generateRequest();
+            this.shadowRoot.querySelector("#blockrequest").generateRequest();
           });
         }
       }

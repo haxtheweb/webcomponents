@@ -121,7 +121,7 @@ class ActiveWhenVisible extends LitElement {
             .replace("/index.html", "");
           this.isVisible = true;
           setTimeout(() => {
-            this.$.a.click();
+            this.shadowRoot.querySelector("#a").click();
           }, 25);
         }
       }

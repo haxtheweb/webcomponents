@@ -269,7 +269,7 @@ class MoocContent extends PolymerElement {
       }
       this.activeNodeItem = local;
       this.activeNodeItem.classList.add("book-menu-item-active");
-      this.$.outlinepopover.toggleDialog();
+      this.shadowRoot.querySelector("#outlinepopover").toggleDialog();
     }
   }
   /**
@@ -310,10 +310,12 @@ class MoocContent extends PolymerElement {
         this._routeChanged(this.data, this.route, this.endPoint);
       } else {
         this.outlineTitle = data.bookOutline.subject;
-        this.$.content.innerHTML = data.content;
-        this.$.navigation.innerHTML = data.topNavigation;
-        this.$.outline.innerHTML = data.bookOutline.content;
-        this.$.options.innerHTML = data.options;
+        this.shadowRoot.querySelector("#content").innerHTML = data.content;
+        this.shadowRoot.querySelector("#navigation").innerHTML =
+          data.topNavigation;
+        this.shadowRoot.querySelector("#outline").innerHTML =
+          data.bookOutline.content;
+        this.shadowRoot.querySelector("#options").innerHTML = data.options;
         // inject styles, destroying previous ones
         this.__injectStyle(data.styles);
         // fire drupal behaviors.. this is evil. Polymer is invoking Drupal behaviors..
@@ -325,7 +327,7 @@ class MoocContent extends PolymerElement {
           typeof this.outlineData.data ===
           (typeof undefined === "undefined" ? "undefined" : typeof undefined)
         ) {
-          this.$.fulloutlinepath.generateRequest();
+          this.shadowRoot.querySelector("#fulloutlinepath").generateRequest();
         }
         microTask.run(() => {
           window.dispatchEvent(new Event("resize"));
@@ -343,7 +345,7 @@ class MoocContent extends PolymerElement {
       (typeof data === "undefined" ? "undefined" : typeof data) !==
       (typeof undefined === "undefined" ? "undefined" : typeof undefined)
     ) {
-      this.$.outlinemodal.innerHTML = data.outline;
+      this.shadowRoot.querySelector("#outlinemodal").innerHTML = data.outline;
       this.aliases = data.aliases;
     }
   }
@@ -381,7 +383,7 @@ class MoocContent extends PolymerElement {
           // trigger change if data location changed
           this.requestParams.node = this.nid;
           // send request out the door to the actual end point
-          this.$.pageajax.generateRequest();
+          this.shadowRoot.querySelector("#pageajax").generateRequest();
           // if open, close this
           if (this.__modal && this.__modal.opened) {
             window.dispatchEvent(
@@ -405,7 +407,7 @@ class MoocContent extends PolymerElement {
         this.nid = this.aliases[urlAlias].replace("node/", "");
         // trigger change if data location changed
         this.requestParams.node = this.nid;
-        this.$.pageajax.generateRequest();
+        this.shadowRoot.querySelector("#pageajax").generateRequest();
         // if this is open, close it
         if (this.__modal && this.__modal.opened) {
           window.dispatchEvent(
@@ -423,7 +425,7 @@ class MoocContent extends PolymerElement {
         this.requestParams.node = this.nid;
         // ensure that we don't see this again
         this.set("route.path", "/" + this.elmslnCourse + "/node/" + this.nid);
-        this.$.pageajax.generateRequest();
+        this.shadowRoot.querySelector("#pageajax").generateRequest();
         return;
       }
     }

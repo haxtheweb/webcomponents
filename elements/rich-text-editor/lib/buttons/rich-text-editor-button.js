@@ -403,8 +403,8 @@ class RichTextEditorButton extends PolymerElement {
         ? document.queryCommandState(this.command)
         : false; /*,
       label = this._regOrToggled(this.label, this.toggledLabel, toggled);
-    if (this.$.label !== undefined) this.$.label.innerHTML = label;
-    if (this.$.tooltip !== undefined) this.$.tooltip.innerHTML = label*/
+    if (this.$.label !== undefined) this.shadowRoot.querySelector('#label').innerHTML = label;
+    if (this.$.tooltip !== undefined) this.shadowRoot.querySelector('#tooltip').innerHTML = label*/
     return toggled;
   }
 

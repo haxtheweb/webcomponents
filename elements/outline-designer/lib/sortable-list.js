@@ -256,14 +256,17 @@ class SortableList extends GestureEventListeners(PolymerElement) {
     if (this.dragging) {
       return;
     }
-    const items = this.$.slot.assignedNodes().filter(node => {
-      if (
-        node.nodeType === Node.ELEMENT_NODE &&
-        (!this.sortable || node.matches(this.sortable))
-      ) {
-        return true;
-      }
-    });
+    const items = this.shadowRoot
+      .querySelector("#slot")
+      .assignedNodes()
+      .filter(node => {
+        if (
+          node.nodeType === Node.ELEMENT_NODE &&
+          (!this.sortable || node.matches(this.sortable))
+        ) {
+          return true;
+        }
+      });
     this._setItems(items);
   }
   _itemFromCoords({ x, y }) {

@@ -55,7 +55,7 @@ class LrndesignImagemapHotspot extends PolymerElement {
   }
 
   setParentHeading(parent) {
-    this.$.heading._setParent(parent);
+    this.shadowRoot.querySelector("#heading")._setParent(parent);
   }
 }
 window.customElements.define(

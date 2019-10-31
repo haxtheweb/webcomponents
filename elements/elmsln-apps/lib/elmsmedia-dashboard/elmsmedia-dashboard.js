@@ -131,12 +131,12 @@ class ElmsmediaDashboard extends PolymerElement {
   }
 
   toggleSearch(e) {
-    const searchEnabled = this.$.haxSource.search;
-    this.$.haxSource.search = !searchEnabled;
+    const searchEnabled = this.shadowRoot.querySelector("#haxSource").search;
+    this.shadowRoot.querySelector("#haxSource").search = !searchEnabled;
   }
 
   toggleFilters(e) {
-    this.$.filterDialog.toggle();
+    this.shadowRoot.querySelector("#filterDialog").toggle();
   }
 
   removeFilter(path, propValue) {

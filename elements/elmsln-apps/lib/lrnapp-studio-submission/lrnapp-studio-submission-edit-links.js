@@ -101,7 +101,7 @@ class LrnappStudioSubmissionEditLinks extends PolymerElement {
 
   _openDialog() {
     // @todo switch to singleton
-    this.$.dialog.open();
+    this.shadowRoot.querySelector("#dialog").open();
   }
 
   _createLink(e) {

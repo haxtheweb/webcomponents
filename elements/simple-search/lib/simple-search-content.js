@@ -126,9 +126,9 @@ class SimpleSearchContent extends PolymerElement {
    * @param {number} the number of a search result
    */
   focus(matchNumber) {
-    let result = this.$.content.querySelector(
-      '[match-number="' + matchNumber + '"]'
-    );
+    let result = this.shadowRoot
+      .querySelector("#content")
+      .querySelector('[match-number="' + matchNumber + '"]');
     if (result !== undefined && result !== null) result.focus();
   }
   /**

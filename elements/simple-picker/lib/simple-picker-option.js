@@ -217,8 +217,8 @@ class SimplePickerOption extends PolymerElement {
     let label = document.createElement("span");
     if (this.titleAsHtml !== false) {
       label.innerHTML = this.label;
-      this.$.label.innerHTML = "";
-      this.$.label.appendChild(label);
+      this.shadowRoot.querySelector("#label").innerHTML = "";
+      this.shadowRoot.querySelector("#label").appendChild(label);
     }
   }
 

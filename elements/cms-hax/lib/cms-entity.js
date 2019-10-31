@@ -189,7 +189,7 @@ class CMSEntity extends PolymerElement {
       if (this.entityEndPoint) {
         this.loading = true;
         microTask.run(() => {
-          this.$.entityrequest.generateRequest();
+          this.shadowRoot.querySelector("#entityrequest").generateRequest();
         });
       }
     }
@@ -219,7 +219,7 @@ class CMSEntity extends PolymerElement {
         if (this.entityEndPoint) {
           this.loading = true;
           microTask.run(() => {
-            this.$.entityrequest.generateRequest();
+            this.shadowRoot.querySelector("#entityrequest").generateRequest();
           });
         }
       }

@@ -117,7 +117,7 @@ class LrnappStudioSubmissionEditVideo extends SecureRequestXhr(PolymerElement) {
     };
   }
   _openDialog(e) {
-    this.$.dialog.open();
+    this.shadowRoot.querySelector("#dialog").open();
   }
 
   _addImage(e) {

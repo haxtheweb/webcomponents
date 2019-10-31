@@ -79,7 +79,7 @@ class HAXCMSLegacyPlayer extends PolymerElement {
   }
   _activeItemLocationChanged(newValue) {
     if (newValue) {
-      this.$.activecontent.generateRequest();
+      this.shadowRoot.querySelector("#activecontent").generateRequest();
     }
   }
   /**
@@ -87,7 +87,7 @@ class HAXCMSLegacyPlayer extends PolymerElement {
    */
   _fileChanged(newValue, oldValue) {
     if (typeof newValue !== typeof undefined) {
-      this.$.manifest.generateRequest();
+      this.shadowRoot.querySelector("#manifest").generateRequest();
     }
   }
   // render function

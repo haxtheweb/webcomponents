@@ -540,9 +540,13 @@ class LrnappStudioKanban extends PolymerElement {
   _deleteToast(deletetoast, old) {
     if (typeof deletetoast !== typeof undefined) {
       if (deletetoast == "error") {
-        this.$.toast.show("That submission on longer exists!");
+        this.shadowRoot
+          .querySelector("#toast")
+          .show("That submission on longer exists!");
       } else {
-        this.$.toast.show("Submission deleted successfully!");
+        this.shadowRoot
+          .querySelector("#toast")
+          .show("Submission deleted successfully!");
       }
       this.set("queryParams.deletetoast", undefined);
       this.notifyPath("queryParams.deletetoast");
@@ -590,7 +594,7 @@ class LrnappStudioKanban extends PolymerElement {
     this._deleteText =
       "Are you sure you want to delete this project and all related assignments!?";
     this._deleteType = "project";
-    this.$.delete.open();
+    this.shadowRoot.querySelector("#delete").open();
   }
 
   /**
@@ -598,25 +602,25 @@ class LrnappStudioKanban extends PolymerElement {
    */
   _handleDelete() {
     if (this._deleteType == "project") {
-      this.$.backend.method = "DELETE";
-      this.$.backend.body = this.projectToDelete;
-      this.$.backend.url =
+      this.shadowRoot.querySelector("#backend").method = "DELETE";
+      this.shadowRoot.querySelector("#backend").body = this.projectToDelete;
+      this.shadowRoot.querySelector("#backend").url =
         this.endPoint +
         "/api/projects/" +
         this.projectToDelete +
         "?token=" +
         this.csrfToken;
-      this.$.backend.generateRequest();
+      this.shadowRoot.querySelector("#backend").generateRequest();
     } else if (this._deleteType == "assignment") {
-      this.$.backend.method = "DELETE";
-      this.$.backend.body = this.assignmentToDelete;
-      this.$.backend.url =
+      this.shadowRoot.querySelector("#backend").method = "DELETE";
+      this.shadowRoot.querySelector("#backend").body = this.assignmentToDelete;
+      this.shadowRoot.querySelector("#backend").url =
         this.endPoint +
         "/api/assignments/" +
         this.assignmentToDelete +
         "?token=" +
         this.csrfToken;
-      this.$.backend.generateRequest();
+      this.shadowRoot.querySelector("#backend").generateRequest();
     }
   }
   /**
@@ -631,7 +635,7 @@ class LrnappStudioKanban extends PolymerElement {
     this._deleteTitle = "Delete assignment";
     this._deleteText = "Are you sure you want to delete this assignment?";
     this._deleteType = "assignment";
-    this.$.delete.open();
+    this.shadowRoot.querySelector("#delete").open();
   }
 
   /**
@@ -659,7 +663,7 @@ class LrnappStudioKanban extends PolymerElement {
     // ensure this isn't disabled though it shouldn't be possible
     if (!this.shadowRoot.querySelector("#activetoggle").disabled) {
       // hide the loading screen
-      this.$.loading.hidden = false;
+      this.shadowRoot.querySelector("#loading").hidden = false;
       // queue of the request parameters
       xhr.params = {
         submissionid: submission.submission.id,
@@ -692,14 +696,14 @@ class LrnappStudioKanban extends PolymerElement {
     this._setToggle(false);
     local.nextElementSibling.classList.add("show");
     local.classList.add("active");
-    this.$.activeitemcontainer.toggle();
+    this.shadowRoot.querySelector("#activeitemcontainer").toggle();
   }
 
   /**
    * Handle response for the whole projects object.
    */
   _handleProjectResponse(event) {
-    this.$.loading.hidden = true;
+    this.shadowRoot.querySelector("#loading").hidden = true;
     this._setToggle(true);
     if (this.activeAssignment) {
       setTimeout(() => {
@@ -724,11 +728,11 @@ class LrnappStudioKanban extends PolymerElement {
    */
   _handleUpdateResponse(event) {
     if (this.backendResponse.status == 200) {
-      this.$.toast.text = "Updated successfully";
-      this.$.toast.toggle();
+      this.shadowRoot.querySelector("#toast").text = "Updated successfully";
+      this.shadowRoot.querySelector("#toast").toggle();
       // this will force a repaint of the UI pieces on reload
       this.set("projectResponse", {});
-      this.$.projectbackend.generateRequest();
+      this.shadowRoot.querySelector("#projectbackend").generateRequest();
       setTimeout(() => {
         var parts = this.activeAssignment.split("-");
         this.set("activeAssignmentNode", {});
@@ -738,7 +742,7 @@ class LrnappStudioKanban extends PolymerElement {
       }, 500);
     } else {
       // this would imply an error
-      this.$.loading.hidden = true;
+      this.shadowRoot.querySelector("#loading").hidden = true;
     }
   }
 
@@ -788,18 +792,18 @@ class LrnappStudioKanban extends PolymerElement {
    * Event came from the project button to indicate it was successful.
    */
   _handleProjectCreated(e) {
-    this.$.toast.text = "Project added";
-    this.$.toast.toggle();
-    this.$.projectbackend.generateRequest();
+    this.shadowRoot.querySelector("#toast").text = "Project added";
+    this.shadowRoot.querySelector("#toast").toggle();
+    this.shadowRoot.querySelector("#projectbackend").generateRequest();
   }
 
   /**
    * Event came from the assignment button to indicate it was successful.
    */
   _handleAssignmentCreated(e) {
-    this.$.toast.text = "Assignment added";
-    this.$.toast.toggle();
-    this.$.projectbackend.generateRequest();
+    this.shadowRoot.querySelector("#toast").text = "Assignment added";
+    this.shadowRoot.querySelector("#toast").toggle();
+    this.shadowRoot.querySelector("#projectbackend").generateRequest();
   }
 
   /*

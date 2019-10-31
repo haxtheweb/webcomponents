@@ -207,7 +207,7 @@ class SimpleColorsPicker extends SimpleColors {
         options.push(shade);
       }
     }
-    this.$.picker.options = options;
+    this.shadowRoot.querySelector("#picker").options = options;
   }
 
   /**

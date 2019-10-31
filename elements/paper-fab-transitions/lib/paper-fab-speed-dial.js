@@ -145,7 +145,7 @@ class PaperFabSpeedDial extends PolymerElement {
     fab.addEventListener(
       "click",
       function() {
-        this.$.dropdown.open();
+        this.shadowRoot.querySelector("#dropdown").open();
       }.bind(this)
     );
 
@@ -153,7 +153,7 @@ class PaperFabSpeedDial extends PolymerElement {
     content.addEventListener(
       "click",
       function() {
-        this.$.dropdown.close();
+        this.shadowRoot.querySelector("#dropdown").close();
       }.bind(this)
     );
   }
@@ -162,14 +162,14 @@ class PaperFabSpeedDial extends PolymerElement {
    * Show the speed dial options.
    */
   open() {
-    this.$.dropdown.open();
+    this.shadowRoot.querySelector("#dropdown").open();
   }
 
   /**
    * Hide the speed dial options.
    */
   close() {
-    this.$.dropdown.close();
+    this.shadowRoot.querySelector("#dropdown").close();
   }
 
   _updateDropdown(direction, offset) {

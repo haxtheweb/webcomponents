@@ -282,13 +282,15 @@ class A11yMediaHtml5 extends A11yMediaBehaviors {
     this.media.cc = mode === true;
     if (this.selectedTrack !== undefined && mode == true) {
       this.selectedTrack.mode = "showing";
-      this.$.video.textTracks.value = this.selectedTrackId;
+      this.shadowRoot.querySelector(
+        "#video"
+      ).textTracks.value = this.selectedTrackId;
     } else if (
       this.selectedTrack !== undefined &&
       this.selectedTrack !== null
     ) {
       this.selectedTrack.mode = "hidden";
-      this.$.video.textTracks.value = "";
+      this.shadowRoot.querySelector("#video").textTracks.value = "";
     }
   }
 

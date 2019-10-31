@@ -138,12 +138,16 @@ class HAXCMSOutlineEditorDialog extends PolymerElement {
   ready() {
     super.ready();
     afterNextRender(this, function() {
-      this.$.editor.addEventListener("current-data-changed", e => {
-        if (e.detail.value) {
-          this.set("manifestItems", e.detail.value);
-          this.$.outline.importJsonOutlineSchemaItems();
-        }
-      });
+      this.shadowRoot
+        .querySelector("#editor")
+        .addEventListener("current-data-changed", e => {
+          if (e.detail.value) {
+            this.set("manifestItems", e.detail.value);
+            this.shadowRoot
+              .querySelector("#outline")
+              .importJsonOutlineSchemaItems();
+          }
+        });
     });
   }
   /**
@@ -166,12 +170,16 @@ class HAXCMSOutlineEditorDialog extends PolymerElement {
     for (var i in this.__disposer) {
       this.__disposer[i].dispose();
     }
-    this.$.editor.removeEventListener("current-data-changed", e => {
-      if (e.detail.value) {
-        this.set("manifestItems", e.detail.value);
-        this.$.outline.importJsonOutlineSchemaItems();
-      }
-    });
+    this.shadowRoot
+      .querySelector("#editor")
+      .removeEventListener("current-data-changed", e => {
+        if (e.detail.value) {
+          this.set("manifestItems", e.detail.value);
+          this.shadowRoot
+            .querySelector("#outline")
+            .importJsonOutlineSchemaItems();
+        }
+      });
     super.disconnectedCallback();
   }
   /**
@@ -198,9 +206,11 @@ class HAXCMSOutlineEditorDialog extends PolymerElement {
   _viewModeChanged(newValue, oldValue) {
     // odd I know, but this is the default outline view
     if (!newValue) {
-      this.$.outline.importJsonOutlineSchemaItems();
+      this.shadowRoot.querySelector("#outline").importJsonOutlineSchemaItems();
     } else {
-      const items = this.$.outline.exportJsonOutlineSchemaItems(true);
+      const items = this.shadowRoot
+        .querySelector("#outline")
+        .exportJsonOutlineSchemaItems(true);
       this.set("manifestItems", items);
     }
   }
@@ -213,7 +223,9 @@ class HAXCMSOutlineEditorDialog extends PolymerElement {
       new CustomEvent("haxcms-save-outline", {
         bubbles: true,
         composed: true,
-        detail: this.$.outline.exportJsonOutlineSchemaItems(true)
+        detail: this.shadowRoot
+          .querySelector("#outline")
+          .exportJsonOutlineSchemaItems(true)
       })
     );
   }

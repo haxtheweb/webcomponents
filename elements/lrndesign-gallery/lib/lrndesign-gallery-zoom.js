@@ -205,10 +205,10 @@ class LrndesignGalleryZoom extends PolymerElement {
   ready() {
     super.ready();
     this._detailsChanged();
-    this.$.zoomtpl.associateEvents(this.$.zoombtn);
+    this.shadowRoot.querySelector("#zoomtpl").associateEvents(this.$.zoombtn);
     if (this.scrolled) {
       this.dispatchEvent(new CustomEvent("gallery-scroll"));
-      if (!this.zoomed) this.$.zoombtn.focus();
+      if (!this.zoomed) this.shadowRoot.querySelector("#zoombtn").focus();
     }
     if (this.zoomed) {
       this.zoom();
@@ -229,7 +229,7 @@ class LrndesignGalleryZoom extends PolymerElement {
    * updates the details.
    */
   _detailsChanged(e) {
-    this.$.details.innerHTML = this.details;
+    this.shadowRoot.querySelector("#details").innerHTML = this.details;
   }
 
   /**

@@ -427,7 +427,7 @@ class LrnappOpenStudioTable extends PolymerElement {
    * Handle response for the whole projects object.
    */
   _handleResponse(event) {
-    this.$.loading.hidden = true;
+    this.shadowRoot.querySelector("#loading").hidden = true;
   }
 
   /**
