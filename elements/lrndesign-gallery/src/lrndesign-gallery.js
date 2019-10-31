@@ -236,7 +236,7 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
   connectedCallback() {
     super.connectedCallback();
     let root = this;
-    root.__gallery = root.$.gallery;
+    root.__gallery = root.shadowRoot.querySelector("#gallery");
     root.anchorData = root._getAnchorData();
     window.ResponsiveUtility.requestAvailability();
     window.dispatchEvent(

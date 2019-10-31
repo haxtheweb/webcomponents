@@ -538,13 +538,17 @@ class A11yMediaControls extends A11yMediaBehaviors {
     let root = this;
     // when the mute button is in focus,
     // add focus class to make the volume slider appear
-    root.$.mute.$.button.onfocus = function() {
-      root.$.volume.classList.add("focus");
+    root.shadowRoot
+      .querySelector("#mute")
+      .shadowRoot.querySelector("#button").onfocus = function() {
+      root.shadowRoot.querySelector("#volume").classList.add("focus");
     };
     // when the mute button is blurred,
     // remove focus class to make the volume slider disappear
-    root.$.mute.$.button.onblur = function() {
-      root.$.volume.classList.remove("focus");
+    root.shadowRoot
+      .querySelector("#mute")
+      .shadowRoot.querySelector("#button").onblur = function() {
+      root.shadowRoot.querySelector("#volume").classList.remove("focus");
     };
   }
 

@@ -78,7 +78,7 @@ class EditableList extends PolymerElement {
           content: c,
           buttons: b
         },
-        invokedBy: e.detail.element.$.delete,
+        invokedBy: e.detail.element.shadowRoot.querySelector("#delete"),
         clone: false
       }
     });

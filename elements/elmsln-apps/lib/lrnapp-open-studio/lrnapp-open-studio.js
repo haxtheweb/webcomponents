@@ -553,7 +553,7 @@ class LrnappOpenStudio extends PolymerElement {
     tmp.assignments.forEach(function(element) {
       assignments.push(element);
     });
-    root.$.loading.hidden = true;
+    root.shadowRoot.querySelector("#loading").hidden = true;
     this.set("assignments", assignments);
     this.set("authors", authors);
   }

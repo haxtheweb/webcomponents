@@ -1578,7 +1578,9 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
             node.setAttribute("slot", this.activeNode.getAttribute("slot"));
           }
           dom(this.activeContainerNode).appendChild(node);
-          this.activeHaxBody.$.textcontextmenu.highlightOps = false;
+          this.activeHaxBody.shadowRoot.querySelector(
+            "#textcontextmenu"
+          ).highlightOps = false;
           this.activeHaxBody.__updateLockFocus = node;
           // wait so that the DOM can have the node to then attach to
           setTimeout(() => {

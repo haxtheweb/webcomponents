@@ -1542,7 +1542,8 @@ class HaxBody extends PolymerElement {
         setTimeout(() => {
           window.HaxStore.instance.haxManager.shadowRoot
             .querySelector("#preview")
-            .$.configurebutton.focus();
+            .shadowRoot.querySelector("#configurebutton")
+            .focus();
         }, 100);
         break;
       // container / layout settings button has been activated
@@ -1569,7 +1570,8 @@ class HaxBody extends PolymerElement {
         setTimeout(() => {
           window.HaxStore.instance.haxManager.shadowRoot
             .querySelector("#preview")
-            .$.configurebutton.focus();
+            .shadowRoot.querySelector("#configurebutton")
+            .focus();
         }, 100);
         break;
     }

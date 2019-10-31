@@ -341,7 +341,7 @@ class SimpleSearch extends PolymerElement {
   ready() {
     super.ready();
     let root = this,
-      search = root.$.input;
+      search = root.shadowRoot.querySelector("#input");
     root._getSearchText(search.value);
   }
 
@@ -350,7 +350,7 @@ class SimpleSearch extends PolymerElement {
    */
   _handleChange(e) {
     let root = this;
-    root._getSearchText(root.$.input.value);
+    root._getSearchText(root.shadowRoot.querySelector("#input").value);
     root.resultCount = 0;
     root.resultPointer = 0;
     root.dispatchEvent(

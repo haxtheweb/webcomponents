@@ -174,9 +174,9 @@ class A11yMediaHtml5 extends A11yMediaBehaviors {
     super.ready();
     let root = this;
     root.media =
-      root.$.video !== undefined && !root.audioOnly
-        ? root.$.video
-        : root.$.audio;
+      root.shadowRoot.querySelector("#video") !== undefined && !root.audioOnly
+        ? root.shadowRoot.querySelector("#video")
+        : root.shadowRoot.querySelector("#audio");
   }
 
   /**

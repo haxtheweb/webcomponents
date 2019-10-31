@@ -181,7 +181,7 @@ class A11yMediaTranscriptControls extends A11yMediaBehaviors {
   connectedCallback() {
     super.connectedCallback();
     let root = this;
-    root.search = root.$.simplesearch;
+    root.search = root.shadowRoot.querySelector("#simplesearch");
     root.dispatchEvent(
       new CustomEvent("searchbar-added", { detail: root.search })
     );

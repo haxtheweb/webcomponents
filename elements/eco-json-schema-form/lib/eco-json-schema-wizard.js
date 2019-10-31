@@ -624,7 +624,7 @@ class EcoJsonSchemaWizard extends mixinBehaviors(
           .toLowerCase() + "-changed",
         "_schemaPropertyChanged"
       );
-      dom(ctx.$.form).appendChild(el);
+      dom(ctx.shadowRoot.querySelector("#form")).appendChild(el);
     });
   }
   _removePropertyEl(el) {

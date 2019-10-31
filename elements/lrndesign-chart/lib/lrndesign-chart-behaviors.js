@@ -712,7 +712,7 @@ Container class	Ratio
     let root = this;
     let checkReady = setInterval(() => {
       if (root.__dataReady) {
-        root.$.chartist.makeChart();
+        root.shadowRoot.querySelector("#chartist").makeChart();
         clearInterval(checkReady);
       }
     }, 1);

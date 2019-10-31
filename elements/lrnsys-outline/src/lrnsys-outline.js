@@ -199,7 +199,7 @@ class LrnsysOutline extends PolymerElement {
         elements: {
           buttons: b
         },
-        invokedBy: item.$.delete,
+        invokedBy: item.shadowRoot.querySelector("#delete"),
         clone: false
       }
     });
