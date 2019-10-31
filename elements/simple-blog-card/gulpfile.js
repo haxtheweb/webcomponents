@@ -39,7 +39,7 @@ gulp.task("merge", () => {
           );
           let props = `${rawprops}`;
           props = props.replace(/\"type\": \"(\w+)\"/g, '"type": $1');
-          let cssResult = "<style>";
+          let cssResult = "";
           if (
             packageJson.wcfactory.useSass &&
             packageJson.wcfactory.files.scss
@@ -53,13 +53,28 @@ gulp.task("merge", () => {
               path.join("./", packageJson.wcfactory.files.css)
             );
           }
-          cssResult += "</style>";
           cssResult = stripCssComments(cssResult).trim();
-          return `
+          let litResult =
+              packageJson.wcfactory.customElementClass !== "LitElement"
+                ? ``
+                : `
+  //styles function
+  static get styles() {
+    return css\`
+  ${cssResult}\`;
+  }`,
+            styleResult =
+              packageJson.wcfactory.customElementClass !== "LitElement"
+                ? `<style>
+${cssResult}
+        </style>`
+                : ``;
+
+          return `${litResult}
   // render function
   render() {
     return html\`
-${cssResult}
+${styleResult}
 ${html}\`;
   }
 ${haxString}

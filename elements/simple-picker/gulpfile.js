@@ -54,22 +54,54 @@ gulp.task("merge", () => {
             );
           }
           cssResult = stripCssComments(cssResult).trim();
-          return `
+          let litResult =
+              packageJson.wcfactory.customElementClass !== "LitElement"
+                ? ``
+                : `
   //styles function
   static get styles() {
     return css\`
   ${cssResult}\`;
-  }
+  }`,
+            styleResult =
+              packageJson.wcfactory.customElementClass !== "LitElement"
+                ? `<style>
+${cssResult}
+        </style>`
+                : ``;
 
-  // render function
+          let litResult =
+              packageJson.wcfactory.customElementClass !== "LitElement"
+                ? ``
+                : `
+  //styles function
+  static get styles() {
+    return css\`
+  ${cssResult}\`;
+  }`,
+            styleResult =
+              packageJson.wcfactory.customElementClass !== "LitElement"
+                ? `<style>
+${cssResult}
+        </style>`
+                : ``;
+
+          return `${litResult}
+
+// render function
   render() {
     return html\`
+${styleResult}
 ${html}\`;
   }
 ${haxString}
   // properties available to the custom element for data binding
   static get properties() {
-    return ${props};
+    let props = ${props};
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
   }`;
         }
       )
