@@ -324,7 +324,7 @@ class SimplePicker extends PolymerElement {
   ready() {
     super.ready();
     let root = this;
-    if (this.$.listbox !== undefined) {
+    if (this.shadowRoot.querySelector("#listbox") !== undefined) {
       this.shadowRoot
         .querySelector("#listbox")
         .addEventListener("click", function(e) {

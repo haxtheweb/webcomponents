@@ -160,8 +160,8 @@ class PaperFabMorph extends PolymerElement {
 
   ready() {
     super.ready();
-    this._fab = this.$.fabContainer;
-    this._content = this.$.contentContainer;
+    this._fab = this.shadowRoot.querySelector("#fabContainer");
+    this._content = this.shadowRoot.querySelector("#contentContainer");
 
     if (this.isOverlayContent) {
       this._fab.addEventListener(
@@ -245,7 +245,7 @@ class PaperFabMorph extends PolymerElement {
     var content = this._content;
 
     var fabRect = fab.getBoundingClientRect();
-    var morpher = this.$.morpher;
+    var morpher = this.shadowRoot.querySelector("#morpher");
     var ms = morpher.style;
 
     ms.display = "block";
@@ -278,7 +278,7 @@ class PaperFabMorph extends PolymerElement {
     var content = this._content;
 
     var contentRect = fab.getBoundingClientRect();
-    var morpher = this.$.morpher;
+    var morpher = this.shadowRoot.querySelector("#morpher");
     var ms = morpher.style;
 
     morpher.style.display = "block";

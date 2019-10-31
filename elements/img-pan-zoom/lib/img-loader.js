@@ -55,7 +55,7 @@ class ImgLoader extends PolymerElement {
   ready() {
     super.ready();
 
-    var img = this.$.img;
+    var img = this.shadowRoot.querySelector("#img");
 
     img.onload = function() {
       if (

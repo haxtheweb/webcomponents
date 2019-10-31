@@ -167,7 +167,7 @@ class A11yMediaButton extends A11yMediaBehaviors {
    */
   ready() {
     super.ready();
-    this.__target = this.$.button;
+    this.__target = this.shadowRoot.querySelector("#button");
   }
 
   /**

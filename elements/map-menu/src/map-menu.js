@@ -331,7 +331,7 @@ class MapMenu extends PolymerElement {
   __updateActiveIndicator(element, timeoutTime = 200, hidden = false) {
     // run it through to set time just to let stuff set up
     setTimeout(() => {
-      const activeIndicator = this.$.activeIndicator;
+      const activeIndicator = this.shadowRoot.querySelector("#activeIndicator");
       const left = element.offsetLeft;
       const bottom = element.offsetBottom;
       const top = element.offsetTop;

@@ -619,7 +619,7 @@ class A11yMediaControls extends A11yMediaBehaviors {
    * prevent settings menu from being closed before action is taken
    */
   _handleSettingsActivate(e) {
-    //if (e.target == this.$.settingslist) e.preventDefault();
+    //if (e.target == this.shadowRoot.querySelector('#settingslist')) e.preventDefault();
   }
 
   /**

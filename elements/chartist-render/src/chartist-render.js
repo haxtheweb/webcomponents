@@ -216,21 +216,21 @@ Container class	Ratio
           });
         }
         chart = Chartist.Bar(
-          this.$.chart,
+          this.shadowRoot.querySelector("#chart"),
           root.data,
           root.options,
           root.responsiveOptions
         );
       } else if (root.type == "line") {
         chart = Chartist.Line(
-          this.$.chart,
+          this.shadowRoot.querySelector("#chart"),
           root.data,
           root.options,
           root.responsiveOptions
         );
       } else if (root.type == "pie") {
         chart = Chartist.Pie(
-          this.$.chart,
+          this.shadowRoot.querySelector("#chart"),
           root.data,
           root.options,
           root.responsiveOptions

@@ -83,7 +83,7 @@ class EcoJsonSchemaBoolean extends PolymerElement {
   }
   _schemaChanged() {
     var schema = this.schema;
-    var inputEl = this.$.checkbox;
+    var inputEl = this.shadowRoot.querySelector("#checkbox");
 
     if (schema.component && schema.component.properties) {
       Object.keys(schema.component.properties).forEach(function(prop) {

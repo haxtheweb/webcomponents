@@ -82,7 +82,9 @@ class SiteModal extends PolymerElement {
   }
   connectedCallback() {
     super.connectedCallback();
-    this.shadowRoot.querySelector("#smt").associateEvents(this.$.btn);
+    this.shadowRoot
+      .querySelector("#smt")
+      .associateEvents(this.shadowRoot.querySelector("#btn"));
     const nodes = dom(this).getEffectiveChildNodes();
     for (var i in nodes) {
       this.shadowRoot.querySelector("#content").appendChild(nodes[i]);

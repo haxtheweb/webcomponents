@@ -208,7 +208,7 @@ class WebMap extends PolymerElement {
           if (L.Browser.gecko) {
             this.poster.removeAttribute("usemap");
           }
-          dom(this.$.map).appendChild(this.poster);
+          dom(this.shadowRoot.querySelector("#map")).appendChild(this.poster);
         }
       }
     }
@@ -249,7 +249,7 @@ class WebMap extends PolymerElement {
 
       // create the Leaflet map if this is the first time attached is called
       if (!this._map) {
-        this._map = L.map(this.$.map, {
+        this._map = L.map(this.shadowRoot.querySelector("#map"), {
           center: new L.LatLng(this.lat, this.lon),
           projection: this.projection,
           crs: M[this.projection],

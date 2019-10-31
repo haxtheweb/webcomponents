@@ -174,7 +174,7 @@ Polymer({
   },
 
   _renderSVG: function() {
-    var svg = dom(this.$.svg);
+    var svg = dom(this.shadowRoot.querySelector('#svg'));
     var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
 
     dom(path).setAttribute("fill", this.color);

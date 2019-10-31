@@ -73,7 +73,7 @@ class EcoJsonSchemaInput extends mixinBehaviors(
   }
   _schemaChanged() {
     var schema = this.schema;
-    var inputEl = this.$.input;
+    var inputEl = this.shadowRoot.querySelector("#input");
     if (schema.required) {
       inputEl.required = true;
     }

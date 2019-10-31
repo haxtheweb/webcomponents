@@ -205,7 +205,9 @@ class LrndesignGalleryZoom extends PolymerElement {
   ready() {
     super.ready();
     this._detailsChanged();
-    this.shadowRoot.querySelector("#zoomtpl").associateEvents(this.$.zoombtn);
+    this.shadowRoot
+      .querySelector("#zoomtpl")
+      .associateEvents(this.shadowRoot.querySelector("#zoombtn"));
     if (this.scrolled) {
       this.dispatchEvent(new CustomEvent("gallery-scroll"));
       if (!this.zoomed) this.shadowRoot.querySelector("#zoombtn").focus();

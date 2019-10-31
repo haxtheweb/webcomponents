@@ -118,7 +118,7 @@ class EditableTableEditorCell extends cellBehaviors(PolymerElement) {
    */
   ready() {
     super.ready();
-    this.cell = this.$.cell;
+    this.cell = this.shadowRoot.querySelector("#cell");
   }
 
   /**

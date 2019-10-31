@@ -267,7 +267,7 @@ class LrnsysOutlineItem extends PolymerElement {
    */
   ready() {
     super.ready();
-    this.__inputTarget = this.$.input;
+    this.__inputTarget = this.shadowRoot.querySelector("#input");
     this.dispatchEvent(
       new CustomEvent("focus-item", {
         bubbles: true,

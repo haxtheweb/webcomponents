@@ -468,7 +468,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
           "--simple-modal-max-width": "75vw"
         },
         elements: { content: this.__newForm, buttons: b },
-        invokedBy: this.$.addbutton,
+        invokedBy: this.shadowRoot.querySelector("#addbutton"),
         clone: false,
         modal: true
       }
@@ -553,7 +553,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
           "--simple-modal-max-width": "75vw"
         },
         elements: { content: c, buttons: b },
-        invokedBy: this.$.deletebutton,
+        invokedBy: this.shadowRoot.querySelector("#deletebutton"),
         clone: false,
         modal: true
       }
@@ -593,7 +593,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
         elements: {
           content: document.createElement("haxcms-outline-editor-dialog")
         },
-        invokedBy: this.$.outlinebutton,
+        invokedBy: this.shadowRoot.querySelector("#outlinebutton"),
         clone: false,
         modal: true
       }

@@ -35,8 +35,9 @@ class CodeSample extends PolymerElement {
     super.connectedCallback();
     setTimeout(() => {
       if (this.querySelector("template")) {
-        this._observer = new FlattenedNodesObserver(this.$.content, () =>
-          this._updateContent()
+        this._observer = new FlattenedNodesObserver(
+          this.shadowRoot.querySelector("#content"),
+          () => this._updateContent()
         );
       } else if (this.childNodes.length) {
         console.error(
@@ -97,7 +98,9 @@ class CodeSample extends PolymerElement {
     this._highlight(template.innerHTML);
   }
   _getCodeTemplate() {
-    const nodes = FlattenedNodesObserver.getFlattenedNodes(this.$.content);
+    const nodes = FlattenedNodesObserver.getFlattenedNodes(
+      this.shadowRoot.querySelector("#content")
+    );
     return [].filter.call(
       nodes,
       node => node.nodeType === Node.ELEMENT_NODE

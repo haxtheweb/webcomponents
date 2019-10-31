@@ -69,7 +69,7 @@ class OutlineDesigner extends PolymerElement {
         "item-overlay-option-selected",
         this._overlayOpSelected.bind(this)
       );
-    pagemap(this.$.minimaparea, {
+    pagemap(this.shadowRoot.querySelector("#minimaparea"), {
       viewport: null,
       styles: {
         "ul,ol,li": "rgba(0, 0, 0, 0.08)",

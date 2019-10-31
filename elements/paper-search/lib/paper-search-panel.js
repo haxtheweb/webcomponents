@@ -132,7 +132,7 @@ class PaperSearchPanel extends PolymerElement {
   }
 
   getPaperSearchBarInstance() {
-    return this.$.paperSearchBar;
+    return this.shadowRoot.querySelector("#paperSearchBar");
   }
 
   // Private methods

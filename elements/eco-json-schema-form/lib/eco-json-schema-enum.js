@@ -83,7 +83,7 @@ class EcoJsonSchemaEnum extends mixinBehaviors(
   }
   _schemaChanged() {
     var schema = this.schema;
-    var inputEl = this.$.dropdown;
+    var inputEl = this.shadowRoot.querySelector("#dropdown");
 
     if (schema.component && schema.component.properties) {
       Object.keys(schema.component.properties).forEach(function(prop) {

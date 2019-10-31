@@ -301,7 +301,7 @@ class RichTextEditorButton extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.__a11y = this.$.button;
+    this.__a11y = this.shadowRoot.querySelector("#button");
   }
 
   /**
@@ -403,8 +403,8 @@ class RichTextEditorButton extends PolymerElement {
         ? document.queryCommandState(this.command)
         : false; /*,
       label = this._regOrToggled(this.label, this.toggledLabel, toggled);
-    if (this.$.label !== undefined) this.shadowRoot.querySelector('#label').innerHTML = label;
-    if (this.$.tooltip !== undefined) this.shadowRoot.querySelector('#tooltip').innerHTML = label*/
+    if (this.shadowRoot.querySelector('#label') !== undefined) this.shadowRoot.querySelector('#label').innerHTML = label;
+    if (this.shadowRoot.querySelector('#tooltip') !== undefined) this.shadowRoot.querySelector('#tooltip').innerHTML = label*/
     return toggled;
   }
 

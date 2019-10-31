@@ -252,7 +252,7 @@ class LrnsysDrawer extends PolymerElement {
       detail: {
         title: this.header,
         elements: { content: c, header: h },
-        invokedBy: this.$.flyouttrigger,
+        invokedBy: this.shadowRoot.querySelector("#flyouttrigger"),
         align: this.align,
         size: "30%",
         clone: true

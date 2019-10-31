@@ -378,7 +378,10 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
   toggleTranscript(mode) {
     mode = mode === undefined ? this.hideTranscript : mode;
     this.hideTranscript = !mode;
-    if (this.$.transcript !== undefined && this.$.transcript !== null) {
+    if (
+      this.shadowRoot.querySelector("#transcript") !== undefined &&
+      this.shadowRoot.querySelector("#transcript") !== null
+    ) {
       this.dispatchEvent(
         new CustomEvent("transcript-toggle", { detail: this })
       );

@@ -638,10 +638,10 @@ class EcoJsonSchemaWizard extends mixinBehaviors(
       );
     }
     el.schemaProperty = null;
-    dom(this.$.form).removeChild(el);
+    dom(this.shadowRoot.querySelector("#form")).removeChild(el);
   }
   _clearForm() {
-    var formEl = dom(this.$.form);
+    var formEl = dom(this.shadowRoot.querySelector("#form"));
     while (formEl.firstChild) {
       this._removePropertyEl(formEl.firstChild);
     }
@@ -707,7 +707,9 @@ class EcoJsonSchemaWizard extends mixinBehaviors(
   }
   _errorChanged() {
     var ctx = this;
-    dom(this.$.form).childNodes.forEach(function(el) {
+    dom(this.shadowRoot.querySelector("#form")).childNodes.forEach(function(
+      el
+    ) {
       var name = el.getAttribute("name");
       if (ctx.error && ctx.error[name]) {
         el.error = ctx.error[name];

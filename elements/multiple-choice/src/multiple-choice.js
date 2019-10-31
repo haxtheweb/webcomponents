@@ -560,8 +560,8 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
    */
   connectedCallback() {
     super.connectedCallback();
-    if (this.$.positionTarget) {
-      this.positionTarget = this.$.positionTarget;
+    if (this.shadowRoot.querySelector("#positionTarget")) {
+      this.positionTarget = this.shadowRoot.querySelector("#positionTarget");
     }
     // single option implies it's a radio group or if multiple, do check boxes
     if (this.singleOption) {

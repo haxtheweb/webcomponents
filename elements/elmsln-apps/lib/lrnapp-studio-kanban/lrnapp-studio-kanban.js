@@ -653,7 +653,7 @@ class LrnappStudioKanban extends PolymerElement {
    */
   statusToggle(e) {
     // find our xhr for callbacks
-    var xhr = this.$.backend;
+    var xhr = this.shadowRoot.querySelector("#backend");
     // break the id out into project and assignment
     var parts = this.activeAssignment.split("-");
     // focus in on the submissions / assignment meta

@@ -379,12 +379,12 @@ class WavePlayer extends SchemaBehaviors(PolymerElement) {
    */
   activateAnimation() {
     var self = this;
-    var waveStyle = this.$.container;
-    var buttonStyle = this.$.playbutton;
-    var controlsStyle = this.$.controls;
-    var muteStyle = this.$.mute;
-    var replayStyle = this.$.replay;
-    var albumStyle = this.$.albuminfo;
+    var waveStyle = this.shadowRoot.querySelector("#container");
+    var buttonStyle = this.shadowRoot.querySelector("#playbutton");
+    var controlsStyle = this.shadowRoot.querySelector("#controls");
+    var muteStyle = this.shadowRoot.querySelector("#mute");
+    var replayStyle = this.shadowRoot.querySelector("#replay");
+    var albumStyle = this.shadowRoot.querySelector("#albuminfo");
     var coverartStyle = albumStyle.querySelector(".coverart");
     var nameStyle = albumStyle.querySelector(".title");
     var titleStyle = albumStyle.querySelector(".subtitle");
@@ -415,12 +415,12 @@ class WavePlayer extends SchemaBehaviors(PolymerElement) {
    */
   deactivateAnimation() {
     var self = this;
-    var waveStyle = this.$.container;
-    var buttonStyle = this.$.playbutton;
-    var controlsStyle = this.$.controls;
-    var muteStyle = this.$.mute;
-    var replayStyle = this.$.replay;
-    var albumStyle = this.$.albuminfo;
+    var waveStyle = this.shadowRoot.querySelector("#container");
+    var buttonStyle = this.shadowRoot.querySelector("#playbutton");
+    var controlsStyle = this.shadowRoot.querySelector("#controls");
+    var muteStyle = this.shadowRoot.querySelector("#mute");
+    var replayStyle = this.shadowRoot.querySelector("#replay");
+    var albumStyle = this.shadowRoot.querySelector("#albuminfo");
     var coverartStyle = albumStyle.querySelector(".coverart");
     var nameStyle = albumStyle.querySelector(".title");
     var titleStyle = albumStyle.querySelector(".subtitle");
@@ -451,7 +451,7 @@ class WavePlayer extends SchemaBehaviors(PolymerElement) {
    */
   initWaveSurfer() {
     window.wavesurferobject = new WaveSurfer({
-      container: this.$.container,
+      container: this.shadowRoot.querySelector("#container"),
       waveColor: this.wavecolor,
       progressColor: this.progresscolor, // --primary-background-color
       fillParent: true,
@@ -487,7 +487,7 @@ class WavePlayer extends SchemaBehaviors(PolymerElement) {
    * Toggle mute on and off
    */
   toggleMute(e) {
-    var muteStyle = this.$.mute;
+    var muteStyle = this.shadowRoot.querySelector("#mute");
     var iconType = muteStyle.getAttribute("icon");
     window.wavesurferobject.toggleMute();
     if (iconType === "av:volume-up") {

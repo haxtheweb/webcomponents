@@ -120,10 +120,14 @@ class SortableList extends GestureEventListeners(PolymerElement) {
   }
   _toggleListeners({ enable }) {
     const m = enable ? "addEventListener" : "removeEventListener";
-    this.$.items[m]("dragstart", this._onDragStart);
-    this.$.items[m]("transitionend", this._onTransitionEnd);
-    this.$.items[m]("contextmenu", this._onContextMenu);
-    this.$.items[m]("touchmove", this._onTouchMove);
+    this.shadowRoot.querySelector("#items")[m]("dragstart", this._onDragStart);
+    this.shadowRoot
+      .querySelector("#items")
+      [m]("transitionend", this._onTransitionEnd);
+    this.shadowRoot
+      .querySelector("#items")
+      [m]("contextmenu", this._onContextMenu);
+    this.shadowRoot.querySelector("#items")[m]("touchmove", this._onTouchMove);
     if (enable) {
       Gestures.addListener(this, "track", this._onTrack);
     } else {

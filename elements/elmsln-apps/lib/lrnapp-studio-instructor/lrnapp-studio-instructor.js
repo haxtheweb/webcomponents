@@ -652,7 +652,7 @@ class LrnappStudioInstructor extends PolymerElement {
   _projectChanged(e) {
     this.shadowRoot.querySelector("#loading").hidden = false;
     // default a11y positioning back to the stats dialog
-    this.__rememberClick = this.$.statsdialogbutton;
+    this.__rememberClick = this.shadowRoot.querySelector("#statsdialogbutton");
     this.shadowRoot.querySelector("#statsdialogbutton").disabled = false;
     this.shadowRoot.querySelector("#datatype").disabled = false;
     this.activeProject = e.detail.value;

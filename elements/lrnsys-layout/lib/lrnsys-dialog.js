@@ -231,7 +231,7 @@ class LrnsysDialog extends PolymerElement {
           header: h,
           content: c
         },
-        invokedBy: this.$.dialogtrigger,
+        invokedBy: this.shadowRoot.querySelector("#dialogtrigger"),
         clone: true
       }
     });

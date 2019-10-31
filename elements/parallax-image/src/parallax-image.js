@@ -127,8 +127,8 @@ class ParallaxImage extends SchemaBehaviors(PolymerElement) {
   }
   ready() {
     super.ready();
-    const bgParallax = this.$.bgParallax;
-    const titleParallax = this.$.titleParallax;
+    const bgParallax = this.shadowRoot.querySelector("#bgParallax");
+    const titleParallax = this.shadowRoot.querySelector("#titleParallax");
     window.addEventListener("scroll", e => {
       const yParallaxPosition = window.scrollY * -0.2;
       const yParallaxPositionTitle = yParallaxPosition * 1.4;

@@ -141,7 +141,9 @@ class PaperFabSpeedDial extends PolymerElement {
   ready() {
     super.ready();
 
-    var fab = dom(this.$.fabContainer).getDistributedNodes()[0];
+    var fab = dom(
+      this.shadowRoot.querySelector("#fabContainer")
+    ).getDistributedNodes()[0];
     fab.addEventListener(
       "click",
       function() {
@@ -149,7 +151,9 @@ class PaperFabSpeedDial extends PolymerElement {
       }.bind(this)
     );
 
-    var content = dom(this.$.contentContainer).getDistributedNodes()[0];
+    var content = dom(
+      this.shadowRoot.querySelector("#contentContainer")
+    ).getDistributedNodes()[0];
     content.addEventListener(
       "click",
       function() {
@@ -173,7 +177,7 @@ class PaperFabSpeedDial extends PolymerElement {
   }
 
   _updateDropdown(direction, offset) {
-    var d = this.$.dropdown;
+    var d = this.shadowRoot.querySelector("#dropdown");
     switch (direction) {
       case "bottom":
         d.verticalAlign = "top";

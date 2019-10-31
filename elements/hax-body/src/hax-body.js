@@ -418,13 +418,13 @@ class HaxBody extends PolymerElement {
         .querySelector("#textcontextmenu")
         .classList.contains("hax-context-visible")
     ) {
-      el = this.$.textcontextmenu;
+      el = this.shadowRoot.querySelector("#textcontextmenu");
     } else if (
       this.shadowRoot
         .querySelector("#cecontextmenu")
         .classList.contains("hax-context-visible")
     ) {
-      el = this.$.cecontextmenu;
+      el = this.shadowRoot.querySelector("#cecontextmenu");
     }
     // if we see it, ensure we don't have the pin
     if (el) {
@@ -586,9 +586,9 @@ class HaxBody extends PolymerElement {
         let local = normalizedEvent.localTarget;
         // see if the target is relevent when showing the edit menu operations
         if (
-          e.target === this.$.cecontextmenu ||
-          e.target === this.$.textcontextmenu ||
-          e.target === this.$.platecontextmenu ||
+          e.target === this.shadowRoot.querySelector("#cecontextmenu") ||
+          e.target === this.shadowRoot.querySelector("#textcontextmenu") ||
+          e.target === this.shadowRoot.querySelector("#platecontextmenu") ||
           local === this.activeNode ||
           local === this.activeContainerNode ||
           e.target === this.activeNode ||
@@ -922,7 +922,9 @@ class HaxBody extends PolymerElement {
     this.set("activeContainerNode", null);
     window.HaxStore.write("activeNode", null, this);
     window.HaxStore.write("activeContainerNode", null, this);
-    let children = dom(this.$.body).getDistributedNodes();
+    let children = dom(
+      this.shadowRoot.querySelector("#body")
+    ).getDistributedNodes();
     if (this.globalPreferences.haxDeveloperMode) {
       console.warn(children);
     }
@@ -1055,11 +1057,11 @@ class HaxBody extends PolymerElement {
    */
   hideContextMenus() {
     // primary context menus
-    this._hideContextMenu(this.$.textcontextmenu);
-    this._hideContextMenu(this.$.cecontextmenu);
+    this._hideContextMenu(this.shadowRoot.querySelector("#textcontextmenu"));
+    this._hideContextMenu(this.shadowRoot.querySelector("#cecontextmenu"));
     // secondary menus and clean up areas
-    this._hideContextMenu(this.$.platecontextmenu);
-    this._hideContextMenu(this.$.haxinputmixer);
+    this._hideContextMenu(this.shadowRoot.querySelector("#platecontextmenu"));
+    this._hideContextMenu(this.shadowRoot.querySelector("#haxinputmixer"));
     // force context menu state to closed
     this.shadowRoot.querySelector("#textcontextmenu").highlightOps = false;
   }
@@ -1078,14 +1080,23 @@ class HaxBody extends PolymerElement {
         typeof props !== typeof undefined &&
         !window.HaxStore.instance.isTextElement(node)
       ) {
-        this.__activeContextType = this.$.cecontextmenu;
+        this.__activeContextType = this.shadowRoot.querySelector(
+          "#cecontextmenu"
+        );
         props.element = node;
         this.__activeContextType.setHaxProperties(props);
       } else {
-        this.__activeContextType = this.$.textcontextmenu;
+        this.__activeContextType = this.shadowRoot.querySelector(
+          "#textcontextmenu"
+        );
       }
       this._positionContextMenu(this.__activeContextType, container, -39, -39);
-      this._positionContextMenu(this.$.platecontextmenu, container, -31, 0);
+      this._positionContextMenu(
+        this.shadowRoot.querySelector("#platecontextmenu"),
+        container,
+        -31,
+        0
+      );
       // special case for node not matching container
       if (container && !this._HTMLPrimativeTest(node) && node !== container) {
         container.contentEditable = false;
@@ -1436,7 +1447,7 @@ class HaxBody extends PolymerElement {
         window.HaxStore.write("activeContainerNode", null, this);
         break;
       case "hax-edit-property":
-        let haxInputMixer = this.$.haxinputmixer;
+        let haxInputMixer = this.shadowRoot.querySelector("#haxinputmixer");
         haxInputMixer.label = detail.target.label;
         haxInputMixer.options = detail.target.options;
         haxInputMixer.icon = detail.target.icon;
@@ -1476,7 +1487,9 @@ class HaxBody extends PolymerElement {
         );
         let style =
           this.shadowRoot.querySelector("#cecontextmenu").currentStyle ||
-          window.getComputedStyle(this.$.cecontextmenu);
+          window.getComputedStyle(
+            this.shadowRoot.querySelector("#cecontextmenu")
+          );
         // force input mixes to match width of the ce context menu currently
         haxInputMixer.style.width = style.width.replace("px", "") - 40 + "px";
         break;
@@ -1514,7 +1527,7 @@ class HaxBody extends PolymerElement {
       // on in the manager
       case "hax-manager-configure":
         // make sure input mixer is closed
-        this._hideContextMenu(this.$.haxinputmixer);
+        this._hideContextMenu(this.shadowRoot.querySelector("#haxinputmixer"));
         // reset the manager
         window.HaxStore.instance.haxManager.resetManager();
         // write activeElement updated so it'll go into the preview
@@ -1537,7 +1550,7 @@ class HaxBody extends PolymerElement {
           this
         );
         // make sure input mixer is closed
-        this._hideContextMenu(this.$.haxinputmixer);
+        this._hideContextMenu(this.shadowRoot.querySelector("#haxinputmixer"));
         // reset the manager
         window.HaxStore.instance.haxManager.resetManager();
         // write activeElement updated so it'll go into the preview
@@ -1578,7 +1591,7 @@ class HaxBody extends PolymerElement {
       this.activeNode.appendChild(item);
     }
     // hide mixer
-    this._hideContextMenu(this.$.haxinputmixer);
+    this._hideContextMenu(this.shadowRoot.querySelector("#haxinputmixer"));
   }
   /**
    * Item has gained focus, change active element to match
@@ -1734,7 +1747,10 @@ class HaxBody extends PolymerElement {
   /**
    * Walk everything we find and either enable or disable editable state.
    */
-  _applyContentEditable(status, target = this.$.body) {
+  _applyContentEditable(
+    status,
+    target = this.shadowRoot.querySelector("#body")
+  ) {
     let children = dom(target).getDistributedNodes();
     // fallback for content nodes if not polymer managed nodes above
     if (children.length === 0) {

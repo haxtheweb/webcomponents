@@ -173,8 +173,14 @@ window.MaterialProgressBehaviorImpl = {
       // We only want to listen to mutations (addition, removal, attribute change)
       // of the direct children of the bar's container
       return (
-        this._mutationIsChildList(mutation, this.$.barsContainer) ||
-        this._mutationIsChildAttributes(mutation, this.$.barsContainer)
+        this._mutationIsChildList(
+          mutation,
+          this.shadowRoot.querySelector("#barsContainer")
+        ) ||
+        this._mutationIsChildAttributes(
+          mutation,
+          this.shadowRoot.querySelector("#barsContainer")
+        )
       );
     };
   },
@@ -192,7 +198,9 @@ window.MaterialProgressBehaviorImpl = {
       withValueCount = 0,
       max = 0,
       validBars = [],
-      allChildren = dom(this.$.content).getDistributedNodes();
+      allChildren = dom(
+        this.shadowRoot.querySelector("#content")
+      ).getDistributedNodes();
     if (allChildren) {
       allChildren.forEach(function(child) {
         if (

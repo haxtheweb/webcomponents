@@ -189,7 +189,7 @@ class A11yMediaPlayButton extends A11yMediaBehaviors {
    */
   ready() {
     super.ready();
-    this.target = this.$.button;
+    this.target = this.shadowRoot.querySelector("#button");
   }
 
   /**

@@ -391,7 +391,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
   ready() {
     super.ready();
     if (this.selected.scroll) {
-      let target = this.$.carouselitem;
+      let target = this.shadowRoot.querySelector("#carouselitem");
       this._scrollIntoView([this._getParentOffset(target)]);
       if (!this.selected.zoomed) target.focus();
     }

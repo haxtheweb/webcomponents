@@ -473,8 +473,8 @@ class MoocContent extends PolymerElement {
    */
   __injectStyle(style) {
     // target and wipe our id area by force
-    if (this.$.hackycsspotterhates != null) {
-      dom(this.$.hackycontainer).innerHTML = "";
+    if (this.shadowRoot.querySelector("#hackycsspotterhates") != null) {
+      dom(this.shadowRoot.querySelector("#hackycontainer")).innerHTML = "";
     }
     // construct a new style tag and inject it overtop of what was there previously
     var customStyle = document.createElement("style", "custom-style");
@@ -482,7 +482,9 @@ class MoocContent extends PolymerElement {
     // inject our styles
     customStyle.textContent = style;
     // we have now successfully ruined something encapsulated and once beautiful
-    dom(this.$.hackycontainer).appendChild(customStyle);
+    dom(this.shadowRoot.querySelector("#hackycontainer")).appendChild(
+      customStyle
+    );
   }
   /**
    * highjack shadowDom
