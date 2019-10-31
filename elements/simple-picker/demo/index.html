@@ -24,7 +24,7 @@
       <h3>Basic simple-picker demo</h3>
       <demo-snippet>
         <template>
-          <simple-picker allow-null id="picker" label="Pick a Font-Family" position="right"></simple-picker>
+          <simple-picker allow-null id="picker" label="Pick a Font-Family"></simple-picker>
           <script>
             document.getElementById('picker').options = [ 
               [ {alt:"-- none --",value:null} ], 
@@ -39,7 +39,7 @@
       <h3>simple-picker as a Color-Picker</h3>
       <demo-snippet>
         <template>
-          <simple-picker id="colorpicker" hide-option-labels label="Pick a Color" position="center"></simple-picker>
+          <simple-picker id="colorpicker" hide-option-labels label="Pick a Color"></simple-picker>
           <script>
             document.getElementById('colorpicker').options=[  
               [ 
@@ -59,7 +59,7 @@
         <template>
           <div id="icondemo">
             <label id="iconpicker-label">Pick an Icon: </label> 
-            <simple-picker id="iconpicker" aria-labelledby="iconpicker-label" hide-option-labels value="search"></simple-picker>
+            <simple-picker id="iconpicker" align-right aria-labelledby="iconpicker-label" hide-option-labels value="search"></simple-picker>
             <script>
               document.getElementById('iconpicker').options=[ 
                 [ 
