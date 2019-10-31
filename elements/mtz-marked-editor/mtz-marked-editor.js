@@ -1,6 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { IronFormElementBehavior } from "@polymer/iron-form-element-behavior/iron-form-element-behavior.js";
 import { IronValidatableBehavior } from "@polymer/iron-validatable-behavior/iron-validatable-behavior.js";
 import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
@@ -51,9 +50,25 @@ class MtzMarkedEditor extends mixinBehaviors(
   }
   connectedCallback() {
     super.connectedCallback();
-    this.__textarea = dom(this).queryDistributedElements(
-      '[slot="textarea"]'
-    )[0];
+    this.__textarea = this.queryDistributedElements('[slot="textarea"]')[0];
+  }
+  /**
+   * Returns a filtered list of flattened child elements for this element based
+   * on the given selector.
+   *
+   * @param {string} selector Selector to filter nodes against
+   * @return {!Array<!HTMLElement>} List of flattened child elements
+   * @override
+   */
+  queryDistributedElements(selector) {
+    let c$ = FlattenedNodesObserver.getFlattenedNodes(this);
+    let list = [];
+    for (let i = 0, l = c$.length, c; i < l && (c = c$[i]); i++) {
+      if (c.nodeType === Node.ELEMENT_NODE && matchesSelector(c, selector)) {
+        list.push(c);
+      }
+    }
+    return list;
   }
 
   disconnectedCallback() {
@@ -146,3 +161,27 @@ class MtzMarkedEditor extends mixinBehaviors(
 }
 window.customElements.define(MtzMarkedEditor.tag, MtzMarkedEditor);
 export { MtzMarkedEditor };
+
+const p = Element.prototype;
+/**
+ * @const {function(this:Node, string): boolean}
+ */
+const normalizedMatchesSelector =
+  p.matches ||
+  p.matchesSelector ||
+  p.mozMatchesSelector ||
+  p.msMatchesSelector ||
+  p.oMatchesSelector ||
+  p.webkitMatchesSelector;
+
+/**
+ * Cross-platform `element.matches` shim.
+ *
+ * @function matchesSelector
+ * @param {!Node} node Node to check selector against
+ * @param {string} selector Selector to match
+ * @return {boolean} True if node matched selector
+ */
+export const matchesSelector = function(node, selector) {
+  return normalizedMatchesSelector.call(node, selector);
+};
