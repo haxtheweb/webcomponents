@@ -27,11 +27,11 @@
           <simple-picker allow-null id="picker" label="Pick a Font-Family" position="right"></simple-picker>
           <script>
             document.getElementById('picker').options = [ 
-              [ {"alt":"-- none --","value":null} ], 
-              [ {"alt":"sans-serif","style":"font-family: sans-serif","value":"sans-serif" } ],
-              [ {"alt":"serif","style":"font-family: serif","value":"serif" } ],
-              [ {"alt":"monospace","selected": true,"style":"font-family: monospace","value":"monospace" } ],
-              [ {"alt":"cursive","style":"font-family: cursive","value":"cursive" } ] 
+              [ {alt:"-- none --",value:null} ], 
+              [ {alt:"sans-serif",style:"font-family: sans-serif",value:"sans-serif" } ],
+              [ {alt:"serif",style:"font-family: serif",value:"serif" } ],
+              [ {alt:"monospace","selected": true,style:"font-family: monospace",value:"monospace" } ],
+              [ {alt:"cursive",style:"font-family: cursive",value:"cursive" } ] 
             ];
           </script>
         </template>
@@ -43,12 +43,12 @@
           <script>
             document.getElementById('colorpicker').options=[  
               [ 
-                { "style": "background-color: #FF00FF", "alt": "Purple", "value": "Purple (#FF00FF)" },
-                { "style": "background-color: #2222FF", "alt": "Blue", "value": "Blue (#2222FF)" },
-                { "style": "background-color: #00FF00", "alt": "Green", "value": "Green (#00FF00)" },
-                { "style": "background-color: #FFFF00", "alt": "Yellow", "value": "Yellow (#FFFF00)" },
-                { "style": "background-color: #FF8800", "alt": "Orange", "value": "Orange (#FF8800)" },
-                { "style": "background-color: #FF0000", "alt": "Red", "value": "Red (#FF0000)" } 
+                { style: "background-color: #FF00FF", alt: "Purple", value: "Purple (#FF00FF)" },
+                { style: "background-color: #2222FF", alt: "Blue", value: "Blue (#2222FF)" },
+                { style: "background-color: #00FF00", alt: "Green", value: "Green (#00FF00)" },
+                { style: "background-color: #FFFF00", alt: "Yellow", value: "Yellow (#FFFF00)" },
+                { style: "background-color: #FF8800", alt: "Orange", value: "Orange (#FF8800)" },
+                { style: "background-color: #FF0000", alt: "Red", value: "Red (#FF0000)" } 
               ] 
             ];
           </script>
@@ -63,16 +63,16 @@
             <script>
               document.getElementById('iconpicker').options=[ 
                 [ 
-                  { "alt": "none", "icon": "clear", "value": "clear" },
-                  { "icon": "check", "alt": "OK", "value": "check" },
-                  { "icon": "clear", "alt": "Cancel", "value": "clear" },
-                  { "icon": "search", "alt": "Find", "value": "search" } 
+                  { alt: "none", icon: "clear", value: "clear" },
+                  { icon: "check", alt: "OK", value: "check" },
+                  { icon: "clear", alt: "Cancel", value: "clear" },
+                  { icon: "search", alt: "Find", value: "search" } 
                 ],
                 [ 
-                  { "icon": "arrow-back", "alt": "Left", "value": "arrow-back" },
-                  { "icon": "arrow-downward", "alt": "Down", "value": "arrow-downward" },
-                  { "icon": "arrow-forward", "alt": "Right", "value": "arrow-forward" },
-                  { "icon": "arrow-upward", "alt": "Up", "value": "arrow-upward" } 
+                  { icon: "arrow-back", alt: "Left", value: "arrow-back" },
+                  { icon: "arrow-downward", alt: "Down", value: "arrow-downward" },
+                  { icon: "arrow-forward", alt: "Right", value: "arrow-forward" },
+                  { icon: "arrow-upward", alt: "Up", value: "arrow-upward" } 
                 ] 
               ];
             </script>

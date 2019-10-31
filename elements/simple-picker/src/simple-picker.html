@@ -31,7 +31,6 @@
                 @option-focus="${this._handleOptionFocus}"
                 @set-selected-option="${this._handleSetSelectedOption}"
                 ?active="${`${this.__activeDesc}` === `option-${rownum}-${colnum}`}"
-                ?aria-selected="${this.value === option.value}"
                 ?hide-option-labels="${this.hideOptionLabels}"
                 ?hidden="${!this.allowNull && !option.value}"
                 ?selected="${this.value === option.value}"
@@ -41,6 +40,7 @@
                 .id="option-${rownum}-${colnum}"
                 .label="${option.alt}"
                 .style=${option.style}
+                aria-selected="${this.value === option.value ? 'true' : 'false'}"
                 role="option"
                 tabindex="-1"
                 value="${option.value}">
