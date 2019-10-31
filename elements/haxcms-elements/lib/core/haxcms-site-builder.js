@@ -1,8 +1,6 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { setPassiveTouchGestures } from "@polymer/polymer/lib/utils/settings.js";
 import { updateStyles } from "@polymer/polymer/lib/mixins/element-mixin.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import { JsonOutlineSchema } from "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
 import {
@@ -24,18 +22,10 @@ import "@polymer/iron-ajax/iron-ajax.js";
  * - it loads a site.json file and then utilizes this data in order to construct
  *   what theme it should load (element) in order to get everything off and running
  */
-class HAXCMSSiteBuilder extends PolymerElement {
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "haxcms-site-builder";
-  }
-  // render function
-  static get template() {
-    return html`
-      <style>
+class HAXCMSSiteBuilder extends LitElement {
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -73,44 +63,134 @@ class HAXCMSSiteBuilder extends PolymerElement {
           );
           --paper-progress-container-color: transparent;
         }
-      </style>
-      <haxcms-site-router base-uri="[[baseURI]]"></haxcms-site-router>
-      <paper-progress hidden\$="[[!loading]]" indeterminate></paper-progress>
+      `
+    ];
+  }
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   */
+  static get tag() {
+    return "haxcms-site-builder";
+  }
+  // render function
+  render() {
+    return html`
+      <haxcms-site-router base-uri="${this.baseURI}"></haxcms-site-router>
+      <paper-progress .hidden="${!this.loading}" indeterminate></paper-progress>
       <iron-ajax
         id="manifest"
-        url="[[outlineLocation]][[file]][[_timeStamp]]"
+        .url="${this.outlineLocation}${this.file}${this._timeStamp}"
         handle-as="json"
-        last-response="{{manifest}}"
-        last-error="{{lastError}}"
+        @last-response-changed="${this._updateManifest}"
+        @last-error-changed="${this._updateLastError}"
       ></iron-ajax>
       <iron-ajax
         id="activecontent"
-        url="[[outlineLocation]][[activeItem.location]][[_timeStamp]]"
+        .url="${this.outlineLocation}${this.activeItemLocation}${this
+          ._timeStamp}"
         handle-as="text"
-        loading="{{loading}}"
-        last-response="{{activeItemContent}}"
-        last-error="{{lastError}}"
+        @loading-changed="${this._updateLoading}"
+        @last-response-changed="${this._updateActiveItemContent}"
+        @last-error-changed="${this._updateLastError}"
       ></iron-ajax>
       <div id="slot"><slot></slot></div>
       <simple-colors></simple-colors>
     `;
   }
+  /**
+   * Simple "two way" data binding from the element below via events
+   */
+  _updateManifest(e) {
+    this.manifest = e.detail.value;
+  }
+  _updateLoading(e) {
+    this.loading = e.detail.value;
+  }
+  _updateActiveItemContent(e) {
+    this.activeItemContent = e.detail.value;
+  }
+  _updateLastError(e) {
+    this.lastError = e.detail.value;
+  }
+  /**
+   * life cycle updated
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "lastError") {
+        this._lastErrorChanged(this[propName], oldValue);
+      } else if (propName == "dashboardOpened") {
+        this._dashboardOpenedChanged(this[propName], oldValue);
+      } else if (propName == "themeData") {
+        this._themeChanged(this[propName], oldValue);
+      } else if (propName == "themeName") {
+        this._themeNameChanged(this[propName], oldValue);
+      } else if (propName == "file") {
+        this._fileChanged(this[propName], oldValue);
+      } else if (propName == "outlineLocation") {
+        // fire an to match notify
+        this.dispatchEvent(
+          new CustomEvent("outline-location-changed", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: this[propName]
+          })
+        );
+      } else if (propName == "manifest") {
+        // fire an to match notify
+        this.dispatchEvent(
+          new CustomEvent("manifest-changed", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: this[propName]
+          })
+        );
+        this._manifestChanged(this[propName], oldValue);
+      } else if (propName == "activeItem") {
+        // fire an to match notify
+        this.dispatchEvent(
+          new CustomEvent("active-item-changed", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: this[propName]
+          })
+        );
+        this._activeItemChanged(this[propName], oldValue);
+      } else if (propName == "activeItemContent") {
+        // fire an to match notify
+        this.dispatchEvent(
+          new CustomEvent("active-item-content-changed", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: this[propName]
+          })
+        );
+        this._activeItemContentChanged(this[propName], oldValue);
+      }
+    });
+  }
   static get properties() {
     return {
+      activeItemLocation: {
+        type: String
+      },
       /**
        * Singular error reporter / visual based on requests erroring
        */
       lastError: {
-        type: Object,
-        observer: "_lastErrorChanged"
+        type: Object
       },
       _timeStamp: {
         type: String
       },
       dashboardOpened: {
         type: Boolean,
-        observer: "_dashboardOpenedChanged",
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "dashboard-opened"
       },
       /**
        * queryParams
@@ -123,76 +203,65 @@ class HAXCMSSiteBuilder extends PolymerElement {
        */
       loading: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * support for alternate locations.
        */
       outlineLocation: {
         type: String,
-        notify: true,
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "outline-location"
       },
       /**
        * Manifest from file
        */
       manifest: {
-        type: Object,
-        notify: true,
-        observer: "_manifestChanged"
+        type: Object
       },
       /**
        * Theme, used to boot a design element
        */
       themeData: {
-        type: Object,
-        observer: "_themeChanged"
+        type: Object
       },
       /**
        * Theme name, which we then use to setup the theme
        */
       themeName: {
-        type: String,
-        observer: "_themeNameChanged"
+        type: String
       },
       /**
        * Imported items so we can allow theme flipping dynamically
        */
       __imported: {
-        type: Object,
-        value: {}
+        type: Object
       },
       /**
        * theme loaded to indicate to the theme we have a theme ready to go
        */
       themeLoaded: {
         type: Boolean,
-        reflectToAttribute: true,
-        value: false
+        reflect: true,
+        attribute: "theme-loaded"
       },
       /**
        * Active item which is in JSON Outline Schema
        */
       activeItem: {
-        type: Object,
-        notify: true,
-        observer: "_activeItemChanged"
+        type: Object
       },
       /**
        * Active item content
        */
       activeItemContent: {
-        type: String,
-        notify: true,
-        observer: "_activeItemContentChanged"
+        type: String
       },
       /**
        * Location of the site.json file
        */
       file: {
-        type: String,
-        observer: "_fileChanged"
+        type: String
       },
       /**
        * Injected by HAXcms
@@ -206,14 +275,14 @@ class HAXCMSSiteBuilder extends PolymerElement {
     if (newValue) {
       store.themeElement = document.createElement(newValue);
       wipeSlot(this, "*");
-      dom(this).appendChild(store.themeElement);
+      this.appendChild(store.themeElement);
     } else if (newValue && oldValue) {
       // theme changed
       store.themeElement.remove();
       // wipe out what we got
       wipeSlot(this, "*");
       store.themeElement = document.createElement(newValue);
-      dom(this).appendChild(store.themeElement);
+      this.appendChild(store.themeElement);
     }
   }
   _lastErrorChanged(newValue) {
@@ -235,15 +304,18 @@ class HAXCMSSiteBuilder extends PolymerElement {
    */
   constructor() {
     super();
+    this.__disposer = [];
+    this.queryParams = {};
+    this.loading = false;
+    this.__imported = {};
+    this.themeLoaded = false;
+    this._timeStamp = "";
+    this.outlineLocation = "";
+    this.activeItemLocation = "";
     window.addEventListener("hax-store-ready", this.storeReady.bind(this));
     // attempt to set polymer passive gestures globally
     // this decreases logging and improves performance on scrolling
     setPassiveTouchGestures(true);
-    // hide the outdated fallback
-    if (document.getElementById("haxcmsoutdatedfallback")) {
-      document.getElementById("haxcmsoutdatedfallback").style.display = "none";
-    }
-    this.__disposer = [];
     autorun(reaction => {
       this.dashboardOpened = toJS(store.dashboardOpened);
       this.__disposer.push(reaction);
@@ -257,9 +329,11 @@ class HAXCMSSiteBuilder extends PolymerElement {
     });
     autorun(reaction => {
       this.activeItem = toJS(store.activeItem);
+      if (this.activeItem && this.activeItem.location) {
+        this.activeItemLocation = this.activeItem.location;
+      }
       this.__disposer.push(reaction);
     });
-    this._timeStamp = "";
   }
   _dashboardOpenedChanged(newValue, oldValue) {
     if (newValue) {
@@ -273,52 +347,45 @@ class HAXCMSSiteBuilder extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     import("@polymer/paper-progress/paper-progress.js");
-    afterNextRender(this, function() {
-      import("@lrnwebcomponents/simple-toast/simple-toast.js");
-      import("@lrnwebcomponents/simple-colors/simple-colors.js");
-      this.dispatchEvent(
-        new CustomEvent("haxcms-ready", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: this
-        })
-      );
-      if (document.getElementById("haxcmsoutdatedfallback")) {
-        document.body.removeChild(
-          document.getElementById("haxcmsoutdatedfallback")
-        );
-      }
-      window.addEventListener(
-        "haxcms-trigger-update",
-        this._triggerUpdatedData.bind(this)
-      );
-      window.addEventListener(
-        "haxcms-trigger-update-node",
-        this._triggerUpdatedNode.bind(this)
-      );
-      // dyanmcially import the editor builder which figures out if we should have one
-      import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-editor-builder.js")
-        .then(response => {
-          this.editorBuilder = document.createElement("haxcms-editor-builder");
-          // attach editor builder after we've appended to the screen
-          document.body.appendChild(this.editorBuilder);
-          // get fresh data if not published / demo which is a form of published
-          if (
-            this.editorBuilder.getContext() !== "published" &&
-            this.editorBuilder.getContext() !== "demo"
-          ) {
-            this._timeStamp = "?" + Math.floor(Date.now() / 1000);
-          }
-        })
-        .catch(error => {
-          /* Error handling */
-          console.log(error);
-        });
-      var evt = document.createEvent("UIEvents");
-      evt.initUIEvent("resize", true, false, window, 0);
-      window.dispatchEvent(evt);
-    });
+    import("@lrnwebcomponents/simple-toast/simple-toast.js");
+    import("@lrnwebcomponents/simple-colors/simple-colors.js");
+    this.dispatchEvent(
+      new CustomEvent("haxcms-ready", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this
+      })
+    );
+    window.addEventListener(
+      "haxcms-trigger-update",
+      this._triggerUpdatedData.bind(this)
+    );
+    window.addEventListener(
+      "haxcms-trigger-update-node",
+      this._triggerUpdatedNode.bind(this)
+    );
+    // dyanmcially import the editor builder which figures out if we should have one
+    import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-editor-builder.js")
+      .then(response => {
+        this.editorBuilder = document.createElement("haxcms-editor-builder");
+        // attach editor builder after we've appended to the screen
+        document.body.appendChild(this.editorBuilder);
+        // get fresh data if not published / demo which is a form of published
+        if (
+          this.editorBuilder.getContext() !== "published" &&
+          this.editorBuilder.getContext() !== "demo"
+        ) {
+          this._timeStamp = "?" + Math.floor(Date.now() / 1000);
+        }
+      })
+      .catch(error => {
+        /* Error handling */
+        console.log(error);
+      });
+    var evt = document.createEvent("UIEvents");
+    evt.initUIEvent("resize", true, false, window, 0);
+    window.dispatchEvent(evt);
   }
   /**
    * Detached life cycle
@@ -364,11 +431,10 @@ class HAXCMSSiteBuilder extends PolymerElement {
         // set in the store
         store.activeItemContent = html;
         // insert the content as quickly as possible, then work on the dynamic imports
-        // @todo this might be why we get a double render some times
         setTimeout(() => {
-          if (dom(store.themeElement).getEffectiveChildNodes().length === 0) {
+          if (store.themeElement.childNodes.length === 0) {
             let frag = document.createRange().createContextualFragment(html);
-            dom(store.themeElement).appendChild(frag);
+            store.themeElement.appendChild(frag);
             this.dispatchEvent(
               new CustomEvent("json-outline-schema-active-body-changed", {
                 bubbles: true,
@@ -412,8 +478,7 @@ class HAXCMSSiteBuilder extends PolymerElement {
    */
   _activeItemChanged(newValue, oldValue) {
     if (newValue && typeof newValue.id !== typeof undefined) {
-      this.set("queryParams.nodeId", newValue.id);
-      this.notifyPath("queryParams.nodeId");
+      this.queryParams.nodeId = newValue.id;
       // if published, keep it static on request
       // @todo might revisit this in the future
       if (
@@ -424,7 +489,7 @@ class HAXCMSSiteBuilder extends PolymerElement {
       } else {
         this._timeStamp = "?" + Math.floor(Date.now() / 1000);
       }
-      this.$.activecontent.generateRequest();
+      this.shadowRoot.querySelector("#activecontent").generateRequest();
     }
     // we had something, now we don't. wipe out the content area of the theme
     else if (oldValue && !newValue) {
@@ -448,7 +513,7 @@ class HAXCMSSiteBuilder extends PolymerElement {
     if (this.editorBuilder && this.editorBuilder.getContext() !== "published") {
       this._timeStamp = "?" + Math.floor(Date.now() / 1000);
     }
-    this.$.manifest.generateRequest();
+    this.shadowRoot.querySelector("#manifest").generateRequest();
   }
 
   /**
@@ -465,7 +530,7 @@ class HAXCMSSiteBuilder extends PolymerElement {
     }
     // ensure we don't get a miss on initial load
     if (this.activeItem.location) {
-      this.$.activecontent.generateRequest();
+      this.shadowRoot.querySelector("#activecontent").generateRequest();
     }
   }
   /**
@@ -473,7 +538,7 @@ class HAXCMSSiteBuilder extends PolymerElement {
    */
   _fileChanged(newValue, oldValue) {
     if (typeof newValue !== typeof undefined) {
-      this.$.manifest.generateRequest();
+      this.shadowRoot.querySelector("#manifest").generateRequest();
     }
   }
   /**

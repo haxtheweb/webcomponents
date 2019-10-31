@@ -10,6 +10,8 @@
   color: var(--social-share-link-color, inherit);
   transition: all 0.5s;
   margin: 5px;
+  padding: var(--social-share-button-padding, 0px);
+  border-radius: var(--social-share-button-border-radius, 0px);
   @apply --social-share-link;
 }
 :host a:visited {
@@ -29,8 +31,8 @@
   @apply --social-share-disabled-link;
 }
 :host([button-style]) a {
-  padding: 5px 10px;
-  border-radius: 3px;
+  padding: var(--social-share-button-padding, 5px 10px);
+  border-radius: var(--social-share-button-border-radius, 3px);
   color: var(--social-share-button-color, white);
   background-color: var(--social-share-button-bg, #0066ff);
   text-decoration: none;

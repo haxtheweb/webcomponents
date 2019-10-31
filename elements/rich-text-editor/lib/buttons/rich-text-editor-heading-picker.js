@@ -69,7 +69,6 @@ class RichTextEditorHeadingPicker extends RichTextEditorPicker {
 
   /**
    * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
     return "rich-text-editor-heading-picker";

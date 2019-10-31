@@ -2,21 +2,20 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import { varExists, varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
-import { microTask } from "@polymer/polymer/lib/utils/async.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { updateStyles } from "@polymer/polymer/lib/mixins/element-mixin.js";
+import "@lrnwebcomponents/simple-colors-shared-styles/lib/simple-colors-styles.js";
 /**
  * `HAXCMSTheme` mixin class to automatically apply HAXcms theme state
  * Typically an element will be extended from this and while not all,
  * many will want to customize the `contentContainer` property in order
  * to ensure the editable layer is correctly applied visually.
+ *
+ * This will then need a rendering helper library to make work
  */
-export const HAXCMSTheme = function(SuperClass) {
+const HAXCMSTheme = function(SuperClass) {
   return class extends SuperClass {
     // leverage the wiring class element; this helps us clean things up smoothly later
     // while still keeping it abstract enough for direct usage in PolymerLegacy elements
@@ -47,62 +46,6 @@ export const HAXCMSTheme = function(SuperClass) {
      *  </div>`;
      *  }
      */
-    static get properties() {
-      let props = {
-        /**
-         * Class for the color
-         */
-        hexColor: {
-          type: String
-        },
-        /**
-         * Color class work to apply
-         */
-        color: {
-          type: String,
-          reflectToAttribute: true,
-          observer: "_colorChanged"
-        },
-        /**
-         * editting state for the page
-         */
-        editMode: {
-          type: Boolean,
-          reflectToAttribute: true,
-          notify: true,
-          value: false,
-          observer: "_editModeChanged"
-        },
-        /**
-         * editting state for the page
-         */
-        isLoggedIn: {
-          type: Boolean,
-          reflectToAttribute: true,
-          notify: true,
-          value: false
-        },
-        /**
-         * DOM node that wraps the slot
-         */
-        contentContainer: {
-          type: Object,
-          notify: true,
-          observer: "_contentContainerChanged"
-        },
-        /**
-         * location as object
-         */
-        _location: {
-          type: Object,
-          observer: "_locationChanged"
-        }
-      };
-      if (super.properties) {
-        props = Object.assign(props, super.properties);
-      }
-      return props;
-    }
     _colorChanged(newValue) {
       if (newValue) {
         this.hexColor = this._getHexColor(newValue);
@@ -114,9 +57,9 @@ export const HAXCMSTheme = function(SuperClass) {
     _getHexColor(color) {
       // legacy support for materializeCSS names
       let name = color.replace("-text", "");
-      let tmp = new SimpleColors();
-      if (tmp.colors[name]) {
-        return tmp.colors[name][6];
+      let colors = window.SimpleColorsStyles.colors;
+      if (colors[name]) {
+        return colors[name][6];
       }
       return "#000000";
     }
@@ -127,12 +70,7 @@ export const HAXCMSTheme = function(SuperClass) {
       if (typeof oldValue !== typeof undefined) {
         // ensure global is kept in sync
         store.editMode = newValue;
-        microTask.run(() => {
-          // trick browser into thinking we just reized
-          window.dispatchEvent(new Event("resize"));
-          // forcibly update styles via css variables
-          updateStyles();
-        });
+        this.__styleReapply();
       }
     }
     /**
@@ -174,93 +112,86 @@ export const HAXCMSTheme = function(SuperClass) {
      */
     connectedCallback() {
       super.connectedCallback();
-      afterNextRender(this, function() {
-        // edge case, we just swapped theme faster then content loaded... lol
-        setTimeout(() => {
-          if (dom(this).getEffectiveChildNodes().length === 0) {
-            let frag = document
-              .createRange()
-              .createContextualFragment(store.activeItemContent);
-            dom(this).appendChild(frag);
-          }
-          microTask.run(() => {
-            // trick browser into thinking we just reized
-            window.dispatchEvent(new Event("resize"));
-            // forcibly update styles via css variables
-            updateStyles();
-          });
-        }, 50);
-        // keep editMode in sync globally
-        autorun(reaction => {
-          this.editMode = toJS(store.editMode);
-          this.__disposer.push(reaction);
-        });
-        // logged in so we can visualize things differently as needed
-        autorun(reaction => {
-          this.isLoggedIn = toJS(store.isLoggedIn);
-          this.__disposer.push(reaction);
-        });
-        // store disposer so we can clean up later
-        autorun(reaction => {
-          const __manifest = toJS(store.manifest);
-          if (__manifest && varExists(__manifest, "title")) {
-            document.title = __manifest.title;
-          }
-          if (
-            __manifest &&
-            varExists(__manifest, "metadata.theme.variables.cssVariable")
-          ) {
-            // json outline schema changed, allow other things to react
-            // fake way of forcing an update of these items
-            let ary = __manifest.metadata.theme.variables.cssVariable
-              .replace("--simple-colors-default-theme-", "")
-              .split("-");
-            ary.pop();
-            // simple colors "accent color" property
-            this.accentColor = ary.join("-");
-            var color = varGet(
-              __manifest,
-              "metadata.theme.variables.cssVariable",
-              null
-            );
-            // fallback if color wasn't set via css var
-            if (color == null) {
-              color = varGet(
-                __manifest,
-                "metadata.theme.variables.hexCode",
-                "#ff0074"
-              );
-            } else {
-              color = `var(${color})`;
-            }
-            // set this directly instead of messing w/ accentColor
-            document.body.style.setProperty("--haxcms-color", color);
-          }
-          this.__disposer.push(reaction);
-        });
-        autorun(reaction => {
-          this._location = store.location;
-          this.__disposer.push(reaction);
-        });
-        // we don't have a content container, establish one
-        if (typeof this.contentContainer === typeof undefined) {
-          this.contentContainer = this.shadowRoot.querySelector(
-            "#contentcontainer"
-          );
+      // edge case, we just swapped theme faster then content loaded... lol
+      setTimeout(() => {
+        if (this.childNodes.length === 0) {
+          let frag = document
+            .createRange()
+            .createContextualFragment(store.activeItemContent);
+          this.appendChild(frag);
         }
+        this.__styleReapply();
+      }, 50);
+      // keep editMode in sync globally
+      autorun(reaction => {
+        this.editMode = toJS(store.editMode);
+        this.__disposer.push(reaction);
       });
+      // logged in so we can visualize things differently as needed
+      autorun(reaction => {
+        this.isLoggedIn = toJS(store.isLoggedIn);
+        this.__disposer.push(reaction);
+      });
+      // store disposer so we can clean up later
+      autorun(reaction => {
+        const __manifest = toJS(store.manifest);
+        if (__manifest && varExists(__manifest, "title")) {
+          document.title = __manifest.title;
+        }
+        if (
+          __manifest &&
+          varExists(__manifest, "metadata.theme.variables.cssVariable")
+        ) {
+          // json outline schema changed, allow other things to react
+          // fake way of forcing an update of these items
+          let ary = __manifest.metadata.theme.variables.cssVariable
+            .replace("--simple-colors-default-theme-", "")
+            .split("-");
+          ary.pop();
+          // simple colors "accent color" property
+          this.accentColor = ary.join("-");
+          var color = varGet(
+            __manifest,
+            "metadata.theme.variables.cssVariable",
+            null
+          );
+          // fallback if color wasn't set via css var
+          if (color == null) {
+            color = varGet(
+              __manifest,
+              "metadata.theme.variables.hexCode",
+              "#ff0074"
+            );
+          } else {
+            color = `var(${color})`;
+          }
+          // set this directly instead of messing w/ accentColor
+          document.body.style.setProperty("--haxcms-color", color);
+        }
+        this.__disposer.push(reaction);
+      });
+      autorun(reaction => {
+        this._location = store.location;
+        this.__disposer.push(reaction);
+      });
+    }
+    __styleReapply() {
+      // trick browser into thinking we just reized
+      window.dispatchEvent(new Event("resize"));
+      // forcibly update styles via css variables
+      updateStyles();
     }
     /**
      * Disconnect the wiring for the theme and clean up state
      */
     disconnectedCallback() {
-      super.disconnectedCallback();
       // remove our content container var which will disconnect the wiring
       delete this.contentContainer;
       // clean up state
       for (var i in this.__disposer) {
         this.__disposer[i].dispose();
       }
+      super.disconnectedCallback();
     }
     /**
      * Correctly reset state and dispatch event to notify of active item change
@@ -279,7 +210,6 @@ export const HAXCMSTheme = function(SuperClass) {
     }
   };
 };
-
 /**
  * `HAXCMSThemeWiring` streamline hooking themes up to HAXCMS
  * Directly invoking this class is not advised unless
@@ -287,6 +217,7 @@ export const HAXCMSTheme = function(SuperClass) {
  */
 class HAXCMSThemeWiring {
   constructor(element, load = true) {
+    window.SimpleColorsStyles.requestAvailability();
     if (load) {
       // @todo may want to set this to sessionStorage instead...
       if (window.localStorage.getItem("HAXCMSSystemData") == null) {
@@ -384,5 +315,4 @@ class HAXCMSThemeWiring {
     );
   }
 }
-
-export { HAXCMSThemeWiring };
+export { HAXCMSTheme, HAXCMSThemeWiring };

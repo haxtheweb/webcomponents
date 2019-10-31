@@ -11,7 +11,6 @@ import { varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 class SimpleBlogHeader extends PolymerElement {
   /**
    * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
     return "simple-blog-header";
@@ -142,8 +141,12 @@ class SimpleBlogHeader extends PolymerElement {
     this.__disposer = [];
     autorun(reaction => {
       let manifest = toJS(store.manifest);
-      this.description = manifest.description;
-      this.title = manifest.title;
+      if (manifest && manifest.description) {
+        this.description = manifest.description;
+      }
+      if (manifest && manifest.title) {
+        this.title = manifest.title;
+      }
       this.image = varGet(
         manifest,
         "metadata.theme.variables.image",

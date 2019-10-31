@@ -18,7 +18,6 @@ import "@polymer/polymer/lib/elements/dom-repeat.js";
 class SiteTopMenu extends PolymerElement {
   /**
    * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
     return "site-top-menu";

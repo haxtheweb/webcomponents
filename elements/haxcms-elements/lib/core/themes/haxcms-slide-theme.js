@@ -2,9 +2,8 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { html } from "@polymer/polymer/polymer-element.js";
+import { HAXCMSPolymerElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSPolymerElementTheme.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
@@ -17,7 +16,7 @@ import "@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";
  * @polymer
  * @demo demo/index.html
  */
-class HAXCMSSlideTheme extends HAXCMSTheme(PolymerElement) {
+class HAXCMSSlideTheme extends HAXCMSPolymerElementTheme {
   constructor() {
     super();
     this.__disposer = [];
@@ -32,7 +31,6 @@ class HAXCMSSlideTheme extends HAXCMSTheme(PolymerElement) {
   }
   /**
    * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
     return "haxcms-slide-theme";
@@ -225,18 +223,14 @@ class HAXCMSSlideTheme extends HAXCMSTheme(PolymerElement) {
    */
   connectedCallback() {
     super.connectedCallback();
-    afterNextRender(this, function() {
-      // store disposer so we can clean up later
-      autorun(reaction => {
-        this.manifestLength = toJS(store.routerManifest.items.length);
-        this.__disposer.push(reaction);
-      });
-      autorun(reaction => {
-        this.activeManifestIndexCounter = toJS(
-          store.activeManifestIndexCounter
-        );
-        this.__disposer.push(reaction);
-      });
+    // store disposer so we can clean up later
+    autorun(reaction => {
+      this.manifestLength = toJS(store.routerManifest.items.length);
+      this.__disposer.push(reaction);
+    });
+    autorun(reaction => {
+      this.activeManifestIndexCounter = toJS(store.activeManifestIndexCounter);
+      this.__disposer.push(reaction);
     });
   }
   /**

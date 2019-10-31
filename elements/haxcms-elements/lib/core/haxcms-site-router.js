@@ -1,4 +1,3 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { Router } from "@vaadin/router";
 import { autorun } from "mobx/lib/mobx.module.js";
 import { store } from "./haxcms-site-store.js";
@@ -6,26 +5,12 @@ import { store } from "./haxcms-site-store.js";
  * `haxcms-site-router`
  * `front-end router for haxcms`
  */
-class HAXCMSSiteRouter extends PolymerElement {
+class HAXCMSSiteRouter extends HTMLElement {
   /**
    * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
     return "haxcms-site-router";
-  }
-  // render function
-  static get template() {
-    return html`
-      <slot></slot>
-    `;
-  }
-  static get properties() {
-    return {
-      baseURI: {
-        type: String
-      }
-    };
   }
   /**
    * ready life cycle

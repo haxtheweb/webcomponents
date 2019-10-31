@@ -16,7 +16,6 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
 class HAXCMSBackendBeaker extends PolymerElement {
   /**
    * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
     return "haxcms-backend-beaker";
@@ -132,7 +131,9 @@ class HAXCMSBackendBeaker extends PolymerElement {
         let fileLocation =
           "files/" +
           window.HaxStore.instance.haxManager.$.fileupload.files[0].name;
-        this.$.beaker.write(fileLocation, event.target.result);
+        this.shadowRoot
+          .querySelector("#beaker")
+          .write(fileLocation, event.target.result);
         window.HaxStore.instance.haxManager.$.url.value = fileLocation;
         window.HaxStore.instance.haxManager.newAssetConfigure();
       };
@@ -147,10 +148,12 @@ class HAXCMSBackendBeaker extends PolymerElement {
   async saveNode(e) {
     this.activeItem = e.detail;
     // make sure this location exists
-    await this.$.beaker.write(
-      this.activeItem.location,
-      window.HaxStore.instance.activeHaxBody.haxToContent()
-    );
+    await this.shadowRoot
+      .querySelector("#beaker")
+      .write(
+        this.activeItem.location,
+        window.HaxStore.instance.activeHaxBody.haxToContent()
+      );
     store.cmsSiteEditor.instance.$.toast.show("Page updated!");
     const evt = new CustomEvent("haxcms-trigger-update-node", {
       bubbles: true,
@@ -182,16 +185,17 @@ class HAXCMSBackendBeaker extends PolymerElement {
           updated: Math.floor(Date.now() / 1000)
         };
         // make a directory
-        this.$.beaker.archive.mkdir("pages/" + id);
+        this.shadowRoot.querySelector("#beaker").archive.mkdir("pages/" + id);
         // make the page
-        this.$.beaker.write(
-          "pages/" + id + "/index.html",
-          "<p>Ex uno Plures</p>"
-        );
+        this.shadowRoot
+          .querySelector("#beaker")
+          .write("pages/" + id + "/index.html", "<p>Ex uno Plures</p>");
         this.manifest.items[index] = element;
       }
     });
-    this.$.beaker.write("site.json", JSON.stringify(this.manifest, null, 2));
+    this.shadowRoot
+      .querySelector("#beaker")
+      .write("site.json", JSON.stringify(this.manifest, null, 2));
     // simulate save events since they wont fire
     store.cmsSiteEditor.instance.$.toast.show("Outline saved!");
     store.cmsSiteEditor.instance.dispatchEvent(
@@ -226,7 +230,9 @@ class HAXCMSBackendBeaker extends PolymerElement {
         this.splice("manifest.items", index, 1);
       }
     });
-    this.$.beaker.write("site.json", JSON.stringify(this.manifest, null, 2));
+    this.shadowRoot
+      .querySelector("#beaker")
+      .write("site.json", JSON.stringify(this.manifest, null, 2));
     // simulate save events since they wont fire
     store.cmsSiteEditor.instance.$.toast.show(`${page.title} deleted`);
     store.cmsSiteEditor.instance.dispatchEvent(
@@ -275,13 +281,17 @@ class HAXCMSBackendBeaker extends PolymerElement {
         element.metadata.created = Math.floor(Date.now() / 1000);
         element.metadata.updated = Math.floor(Date.now() / 1000);
         // make a directory
-        this.$.beaker.archive.mkdir(directory);
+        this.shadowRoot.querySelector("#beaker").archive.mkdir(directory);
         // make the page
-        this.$.beaker.write(page.location, "<p>My great new content!</p>");
+        this.shadowRoot
+          .querySelector("#beaker")
+          .write(page.location, "<p>My great new content!</p>");
         this.set(`manifest.items.${index}`, element);
       }
     });
-    this.$.beaker.write("site.json", JSON.stringify(this.manifest, null, 2));
+    this.shadowRoot
+      .querySelector("#beaker")
+      .write("site.json", JSON.stringify(this.manifest, null, 2));
     // simulate save events since they wont fire
     store.cmsSiteEditor.instance.$.toast.show(`${page.title} created!`);
     store.cmsSiteEditor.instance.dispatchEvent(
@@ -330,10 +340,9 @@ class HAXCMSBackendBeaker extends PolymerElement {
         this.manifest.metadata.theme = themeData[this.manifest.metadata.theme];
       }
     }
-    await this.$.beaker.write(
-      "site.json",
-      JSON.stringify(this.manifest, null, 2)
-    );
+    await this.shadowRoot
+      .querySelector("#beaker")
+      .write("site.json", JSON.stringify(this.manifest, null, 2));
     // simulate save events since they wont fire
     store.cmsSiteEditor.instance.$.toast.show("Site details saved!");
     store.cmsSiteEditor.instance.dispatchEvent(
@@ -390,7 +399,7 @@ class HAXCMSBackendBeaker extends PolymerElement {
    */
   async connectedCallback() {
     super.connectedCallback();
-    let beaker = this.$.beaker;
+    let beaker = this.shadowRoot.querySelector("#beaker");
     this.jwt = beaker.archive.url;
     var info = await beaker.archive.getInfo();
     // test that we have a url (we'll call it jwt for now) and that we own the site

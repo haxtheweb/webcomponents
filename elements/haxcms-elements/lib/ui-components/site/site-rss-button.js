@@ -14,7 +14,6 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 class SiteRSSButton extends PolymerElement {
   /**
    * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
     return "site-rss-button";
@@ -42,8 +41,9 @@ class SiteRSSButton extends PolymerElement {
           color: white;
           background-color: var(--site-rss-bg-color, #383f45);
           font-size: var(--site-rss-font-size, 13px);
-          margin: 0;
+          margin: var(--site-rss-paper-button-margin, 0);
           border-radius: var(--site-rss-border-radius, 3px);
+          padding: var(--site-rss-paper-button-padding, 0);
           @apply --site-rss-paper-button;
         }
         paper-button:hover,
@@ -64,6 +64,13 @@ class SiteRSSButton extends PolymerElement {
         </paper-button>
       </a>
     `;
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    if (window.ShadyCSS) {
+      window.ShadyCSS.styleElement(this);
+      window.ShadyCSS.styleDocument();
+    }
   }
   /**
    * Mix in an opened status
