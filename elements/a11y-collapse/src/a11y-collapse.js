@@ -3,7 +3,27 @@ import "./lib/a11y-collapse-accordion-button.js";
 import "./lib/a11y-collapse-icon-button.js";
 /**
  * `a11y-collapse`
- * An accessible expand collapse.
+ * an accessible expand collapse
+ * 
+### Styling
+
+`<a11y-collapse>` provides the following custom properties
+for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--a11y-collapse-margin` | margin around a11y-collapse | 15px 0
+`--a11y-collapse-border` | border around a11y-collapse | 1px solid
+`--a11y-collapse-horizontal-padding` | horizontal padding inside a11y-collapse | 16px
+`--a11y-collapse-horizontal-padding-left` | left padding inside a11y-collapse | `--a11y-collapse-horizontal-padding`
+`--a11y-collapse-horizontal-padding-right` | right padding inside a11y-collapse | `--a11y-collapse-horizontal-padding`
+`--a11y-collapse-vertical-padding` | vertical padding inside a11y-collapse | 16px
+`--a11y-collapse-horizontal-padding-top` | top padding inside a11y-collapse | `--a11y-collapse-vertical-padding`
+`--a11y-collapse-horizontal-padding-bottom` | bottom padding inside a11y-collapse | --a11y-collapse-vertical-padding
+`--a11y-collapse-border-between` | border between a11y-collapse heading and content | --a11y-collapse-border
+`--a11y-collapse-heading-font-weight` | font-weight for a11y-collapse heading | bold
+`--a11y-collapse-heading-color` | text color for a11y-collapse heading | unset
+`--a11y-collapse-heading-background-color` | background-color for a11y-collapse heading | unset
  *
  * @customElement
  * @demo demo/index.html demo
@@ -164,7 +184,8 @@ class A11yCollapse extends LitElement {
        * icon when expanded
        */
       iconExpanded: {
-        type: String
+        type: String,
+        attribute: "icon-expanded"
       },
       /**
        * label for the button
@@ -176,7 +197,8 @@ class A11yCollapse extends LitElement {
        * optional label for the button when expanded
        */
       labelExpanded: {
-        type: String
+        type: String,
+        attribute: "label-expanded"
       },
       /**
        * tooltip for the button
@@ -188,7 +210,8 @@ class A11yCollapse extends LitElement {
        * optional tooltip for the button when expanded
        */
       tooltipExpanded: {
-        type: String
+        type: String,
+        attribute: "tooltip-expanded"
       }
     };
   }

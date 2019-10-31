@@ -8,10 +8,19 @@ import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-icons/iron-icons.js";
 /**
  * `simple-picker-option`
- * `a simple picker for options, icons, etc.`
- *
- * @microcopy - language worth noting:
- *  -
+ * a simple picker for options, icons, etc.
+ * 
+### Styling
+
+`<a11y-gif-player>` provides the following custom properties
+for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--simple-picker-color` | color of simple picker text | unset
+`--simple-picker-option-padding` | padding within each simple picker option | 2px 10px
+`--simple-picker-option-label-padding` | adding within each simple picker option's label | --simple-picker-option-padding
+`--simple-picker-option-size` | size of each simple picker option | 24px
  *
  * @customElement
  * @polymer
@@ -224,6 +233,7 @@ class SimplePickerOption extends LitElement {
     this.removeEventListener("mouseover", e => {
       this._handleHover();
     });
+    super.disconnectedCallback();
   }
 
   _getColor() {

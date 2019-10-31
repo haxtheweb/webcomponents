@@ -100,7 +100,8 @@
    * Renders html as title. (Good for titles with HTML in them.)
    */
   "titleAsHtml": {
-    "type": "Boolean"
+    "type": "Boolean",
+    "attribute": "title-as-html"
   },
 
   /**

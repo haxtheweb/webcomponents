@@ -5,7 +5,7 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `simple-picker`
- * `a simple picker for options, icons, etc.`
+ * a simple picker for options, icons, etc.`
  *
 ### Styling
 
@@ -39,6 +39,8 @@ Custom property | Description | Default
 `--simple-picker-option-size` | Height of option. | 24px
 `--simple-picker-option-selected-background-color` | Outline for currently sselected option. | --simple-picker-options-background-color
 `--simple-picker-option-active-background-color` | Outline for currently active option. | #aaddff
+`--simple-picker-option-padding` | padding within each simple picker option | 2px 10px
+`--simple-picker-option-label-padding` | adding within each simple picker option's label | --simple-picker-option-padding
 `--simple-picker-options-max-height` | Maximum amount of space listbox can use before scrolling. Use `unset` for now vertical scroll. | 250px
 `--simple-picker-options-border-width` | Border width of listbox. | --simple-picker-border-width
 `--simple-picker-options-border-style` | Border style of listbox. | --simple-picker-border-style
@@ -350,6 +352,7 @@ class SimplePicker extends LitElement {
     this.removeEventListener("blur", function(e) {
       this.expanded = false;
     });
+    super.disconnectedCallback();
   }
 }
 window.customElements.define(SimplePicker.tag, SimplePicker);

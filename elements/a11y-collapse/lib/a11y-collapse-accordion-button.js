@@ -3,11 +3,12 @@ import { A11yCollapseIconButton } from "./a11y-collapse-icon-button.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 /**
-`a11y-collapse-accordion-button`
-An accessible expand collapse.
- * 
+ * `a11y-collapse-accordion-button`
+ * an heading button to toggle `a11y-collapse`
+ *
  * @customElement
  * @see ../a11y-collapse.js
+ * @see ../a11y-collapse-icon-button.js
  * @see ./a11y-collapse-button-styles.js
  */
 class A11yCollapseAccordionButton extends A11yCollapseIconButton {
@@ -42,8 +43,8 @@ class A11yCollapseAccordionButton extends A11yCollapseIconButton {
   }
 
   disconnectedCallback() {
-    super.disconnectedCallback();
     this.removeEventListener("click", this._onTap.bind(this));
+    super.disconnectedCallback();
   }
 }
 window.customElements.define(

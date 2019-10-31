@@ -2,7 +2,16 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import "../a11y-collapse.js";
 /**
  * `a11y-collapse-group`
- * `A group of a11y-collapse elements`
+ * a group of `a11y-collapse` elements
+ * 
+### Styling
+
+`<a11y-collapse-group>` provides the following custom properties
+for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--a11y-collapse-group-margin` | margin around the a11y-collapse-group | 15px 0
  *
  * @customElement
  * @demo demo/accordion.html collapse groups
@@ -58,7 +67,8 @@ class A11yCollapseGroup extends LitElement {
        * For example, {"icon": "arrow-drop-down"} would set every item's icon to "arrow-drop-down"
        */
       globalOptions: {
-        type: Object
+        type: Object,
+        attribute: "global-options"
       },
       /**
        * is every a11y-collapse item radio button?
@@ -77,6 +87,7 @@ class A11yCollapseGroup extends LitElement {
 
   /**
    * Removes a detached item from the _items array.
+   * @param {object} item an a11y-collapse item
    */
   _attachItem(item) {
     for (let key in this.globalOptions) {
@@ -89,6 +100,7 @@ class A11yCollapseGroup extends LitElement {
 
   /**
    * Removes a detached item from the _items array.
+   * @param {object} item an a11y-collapse item
    */
   _detachItem(item) {
     if (this.__items && item) {
@@ -100,6 +112,7 @@ class A11yCollapseGroup extends LitElement {
 
   /**
    * Toggles off all previous choices.
+   * @param {object} item an a11y-collapse item
    */
   radioToggle(item) {
     if (this.radio && item.expanded) {

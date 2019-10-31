@@ -5,7 +5,16 @@ import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 /**
  * `a11y-collapse-icon-button`
- * An accessible expand collapse.
+ * aan icon button to toggle `a11y-collapse`
+ * 
+### Styling
+
+`<a11y-collapse-icon-button>` provides the following custom properties
+for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--a11y-collapse-group-margin` | margin around the a11y-collapse-group | 15px 0
  *
  * @customElement
  * @see ../a11y-collapse.js

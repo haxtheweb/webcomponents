@@ -2,80 +2,156 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
+import "@polymer/paper-tooltip/paper-tooltip.js";
 /**
  * `a11y-gif-player`
- * `Play gifs in an accessible way by having the user click to play their animation`
+ * plays gifs in an accessible way by having the user click to play their animation
+### Styling
+
+`<a11y-gif-player>` provides the following custom properties
+for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--a11y-gif-player-border` | border around player/button | none
+`--a11y-gif-player-border-radius` | border-radius for player/button | 0
+`--a11y-gif-player-focus-border` | border-radius for player/button when hovered or focused | none
+`--a11y-gif-player-cursor` | cursor for player/button when hovered or focused | pointer
+`--a11y-gif-player-outline` | outline for player/button when hovered or focused | 
+`--a11y-gif-player-disabled-cursor` | cursor for player/button when disabled | not-allowed
+`--a11y-gif-player-arrow-size` | arrow icon size | 30%
+`--a11y-gif-player-arrow-opacity` | default arrow icon opacity | 0.5
+`--a11y-gif-player-button-focus-opacity` | arrow icon opacity when hovered or focused | 0.7
+`--a11y-gif-player-button-color` | arrow icon color | #000000
+`--a11y-gif-player-arrow-border-color` | arrow icon border color | #ffffff
+`--a11y-gif-player-arrow-border-width` | arrow icon border width | 15px
+`--a11y-gif-player-button-text-color` | arrow icon text color | #ffffff
  *
  * @customElement
  * @polymer
  * @demo demo/index.html
  */
-class A11yGifPlayer extends SchemaBehaviors(PolymerElement) {
+class A11yGifPlayer extends SchemaBehaviors(LitElement) {
   constructor() {
     super();
+    this.alt = null;
+    this.disabled = false;
+    this.src = null;
+    this.tooltip = "Toggle Animation";
+    this.tooltipPlaying = null;
+    this.srcWithoutAnimation = null;
+    this.__playing = false;
     import("@polymer/iron-image/iron-image.js");
   }
-  static get template() {
-    return html`
-      <style>
+  static get styles() {
+    return [
+      css`
         :host {
-          display: block;
+          display: inline-flex;
         }
-        :host #gifbutton > * {
-          position: relative;
-        }
-        :host #svg {
-          position: absolute;
-          top: 35%;
-          left: 35%;
-        }
-        :host #gifbutton:active,
-        :host #gifbutton:focus,
-        :host #gifbutton:hover {
-          cursor: pointer;
-          outline: 1px solid blue;
-        }
-        :host #preload {
+        :host([hidden]) {
           display: none;
         }
-      </style>
-      <div id="gifbutton" aria-role="button" aria-controls="gif" tabindex="0">
-        <div>
-          <img
-            id="gif"
-            alt\$="[[alt]]"
-            src\$="[[srcWithoutAnimation]]"
-            style="width:100%;height:100%;"
-          />
+        button {
+          padding: 0;
+          display: flex;
+          align-items: stretch;
+          position: relative;
+          width: auto;
+          border: var(--a11y-gif-player-border, none);
+          border-radius: var(--a11y-gif-player-border-radius, 0);
+        }
+        button:active,
+        button:focus,
+        button:hover {
+          border: var(--a11y-gif-player-focus-border, none);
+          cursor: var(--a11y-gif-player-cursor, pointer);
+          outline: var(--a11y-gif-player-outline);
+        }
+        button[disabled] {
+          cursor: var(--a11y-gif-player-disabled-cursor, not-allowed);
+        }
+        button > * {
+          width: 100%;
+          min-width: 100%;
+          min-height: 100%;
+          flex: 1 1 100%;
+        }
+        div {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          position: absolute;
+        }
+        svg {
+          flex: 1 1 100%;
+          width: var(--a11y-gif-player-arrow-size, 30%);
+          height: var(--a11y-gif-player-arrow-size, 30%);
+        }
+        g {
+          opacity: var(--a11y-gif-player-arrow-opacity, 0.5);
+        }
+        button:not([disabled]):active g,
+        button:not([disabled]):hover g,
+        button:not([disabled]):focus g {
+          opacity: var(--a11y-gif-player-button-focus-opacity, 0.7);
+        }
+        polygon {
+          fill: var(--a11y-gif-player-button-color, #000000);
+          stroke: var(--a11y-gif-player-arrow-border-color, #ffffff);
+          stroke-width: var(--a11y-gif-player-arrow-border-width, 15px);
+        }
+        text {
+          fill: var(--a11y-gif-player-button-text-color, #ffffff);
+        }
+        img {
+          position: absolute;
+        }
+        button[aria-pressed="true"] svg,
+        button[aria-pressed="true"] img {
+          opacity: 0;
+        }
+      `
+    ];
+  }
+  render() {
+    return html`
+      <button
+        id="button"
+        aria-controls="gif"
+        aria-pressed="${this.__playing ? "true" : "false"}"
+        @click="${this.toggle}"
+        ?disabled="${this.disabled || !this.src || !this.srcWithoutAnimation}"
+      >
+        <iron-image id="gif" src="${this.src}" ?hidden="${!this.src}">
+        </iron-image>
+        <img
+          id="static"
+          alt="${this.alt}"
+          src="${this.srcWithoutAnimation}"
+          ?hidden="${!this.srcWithoutAnimation}"
+        />
+        <div ?hidden="${!this.src || !this.srcWithoutAnimation}">
           <svg
             id="svg"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 200 200"
-            width="30%"
-            height="30%"
           >
-            <g opacity=".5">
-              <polygon
-                points="30,20 30,180 170,100"
-                fill="#000000"
-                stroke="#ffffff"
-                stroke-width="15px"
-              ></polygon>
-              <text x="50" y="115" fill="#ffffff" font-size="40px">GIF</text>
+            <g>
+              <polygon points="30,20 30,180 170,100"></polygon>
+              <text x="50" y="115" font-size="40px">GIF</text>
             </g>
           </svg>
         </div>
-      </div>
-      <iron-image id="preload" src\$="[[src]]" hidden=""></iron-image>
-      <iron-a11y-keys
-        id="a11y"
-        keys="enter space"
-        on-keys-pressed="toggleAnimation"
-      ></iron-a11y-keys>
+      </button>
+
+      <paper-tooltip for="button">
+        ${this.__playing && this.tooltipPlaying
+          ? this.tooltipPlaying
+          : this.tooltip}
+      </paper-tooltip>
     `;
   }
   static get tag() {
@@ -84,25 +160,48 @@ class A11yGifPlayer extends SchemaBehaviors(PolymerElement) {
   static get properties() {
     let props = {
       /**
-       * Source of the animated gif
+       * Alt text of gif
        */
-      src: {
-        type: String,
-        value: null
+      alt: {
+        type: String
       },
       /**
-       * Source of a version that is not animated
+       * Whether button is disabled
+       */
+      disabled: {
+        type: Boolean
+      },
+      /**
+       * Source of animated gif
+       */
+      src: {
+        type: String
+      },
+      /**
+       * Source of static version of image
        */
       srcWithoutAnimation: {
         type: String,
-        value: null
+        attribute: "src-without-animation"
       },
       /**
-       * Alt text of the gif
+       * default tooltip
        */
-      alt: {
+      tooltip: {
+        type: String
+      },
+      /**
+       * tooltip when playing
+       */
+      tooltipPlaying: {
         type: String,
-        value: null
+        attribute: "tooltip-playing"
+      },
+      /**
+       * whether GIF is playing
+       */
+      __playing: {
+        type: Boolean
       }
     };
     if (super.properties) {
@@ -110,60 +209,37 @@ class A11yGifPlayer extends SchemaBehaviors(PolymerElement) {
     }
     return props;
   }
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      this.addEventListener("click", this.toggleAnimation.bind(this));
-    });
-  }
-  disconnectedCallback() {
-    this.removeEventListener("click", this.toggleAnimation.bind(this));
-    super.disconnectedCallback();
-  }
-  /**
-   * Ready life cycle
-   */
-  ready() {
-    super.ready();
-    this.stop();
-    this.shadowRoot.querySelector(
-      "#a11y"
-    ).target = this.shadowRoot.querySelector("#gifbutton");
-  }
   /**
    * plays the animation regarless of previous state
    */
   play() {
-    this.__stopped = true;
-    this.toggleAnimation();
+    this.__playing = true;
   }
   /**
    * stops the animation regarless of previous state
    */
   stop() {
-    this.__stopped = false;
-    this.toggleAnimation();
+    this.__playing = false;
   }
   /**
    * toggles the animation based on current state
    */
-  toggleAnimation() {
-    if (this.__stopped) {
-      this.__stopped = false;
-      this.shadowRoot.querySelector("#svg").style.visibility = "hidden";
-      if (this.src != null) {
-        this.shadowRoot.querySelector("#gif").src = this.src;
-      }
-      this.shadowRoot.querySelector("#gif").alt =
-        this.alt + " (Stop animation.)";
+  toggle() {
+    if (this.__playing) {
+      this.stop();
     } else {
-      this.__stopped = true;
-      this.shadowRoot.querySelector("#svg").style.visibility = "visible";
-      if (this.srcWithoutAnimation != null) {
-        this.shadowRoot.querySelector("#gif").src = this.srcWithoutAnimation;
-      }
-      this.shadowRoot.querySelector("#gif").alt =
-        this.alt + " (Play animation.)";
+      this.play();
+    }
+  }
+  /**
+   * deprecated. toggles the animation based on current state
+   */
+  toggleAnimation() {
+    console.log("toggleAnimation", this.__playing);
+    if (this.__playing) {
+      this.stop();
+    } else {
+      this.play();
     }
   }
 

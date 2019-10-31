@@ -70,22 +70,6 @@ ${cssResult}
         </style>`
                 : ``;
 
-          let litResult =
-              packageJson.wcfactory.customElementClass !== "LitElement"
-                ? ``
-                : `
-  //styles function
-  static get styles() {
-    return css\`
-  ${cssResult}\`;
-  }`,
-            styleResult =
-              packageJson.wcfactory.customElementClass !== "LitElement"
-                ? `<style>
-${cssResult}
-        </style>`
-                : ``;
-
           return `${litResult}
 
 // render function

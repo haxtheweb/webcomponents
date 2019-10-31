@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  *
  * `A11yCollapseButtonStyles`
- * `a shared set of styles for a11y-collapse-button`
+ * a shared set of styles for `a11y-collapse-button`
  *
  * @customElement
  * @see ./a11y-collapse-icon-button.js
@@ -26,7 +26,7 @@ export const A11yCollapseButtonStyles = css`
         --a11y-collapse-padding-left,
         var(--a11y-collapse-horizontal-padding, 16px)
       );
-    font-weight: var(--a11y-collapse-font-weight, bold);
+    font-weight: var(--a11y-collapse-heading-font-weight, bold);
     margin: var(--a11y-collapse-margin, unset);
     color: var(--a11y-collapse-heading-color, unset);
     background-color: var(--a11y-collapse-heading-background-color, unset);
