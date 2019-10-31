@@ -595,8 +595,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
     // logically
     if (
       typeof this.__activeTap !== typeof undefined &&
-      this.__activeTap.parentNode.nextElementSibling.firstElementChild !=
-        null
+      this.__activeTap.parentNode.nextElementSibling.firstElementChild != null
     ) {
       this.__activeTap.parentNode.nextElementSibling.firstElementChild.focus();
       delete this.__activeTap;

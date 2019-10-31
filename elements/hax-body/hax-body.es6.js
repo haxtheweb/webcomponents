@@ -1,5 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { wrap } from "@polymer/polymer/lib/utils/wrap.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { flush } from "@polymer/polymer/lib/utils/flush.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
@@ -919,9 +919,12 @@ class HaxBody extends PolymerElement {
     this.set("activeContainerNode", null);
     window.HaxStore.write("activeNode", null, this);
     window.HaxStore.write("activeContainerNode", null, this);
-    let children = dom(
-      this.shadowRoot.querySelector("#body")
-    ).getDistributedNodes();
+    let children =
+      this.shadowRoot.querySelector("#body").localName === "slot"
+        ? wrap(this.shadowRoot.querySelector("#body")).assignedNodes({
+            flatten: true
+          })
+        : [];
     if (this.globalPreferences.haxDeveloperMode) {
       console.warn(children);
     }
@@ -1216,7 +1219,7 @@ class HaxBody extends PolymerElement {
       this.replaceChild(replacement, node);
       // focus on the thing switched to
       setTimeout(() => {
-        let children = dom(replacement).getEffectiveChildNodes();
+        let children = FlattenedNodesObserver.getFlattenedNodes(replacement);
         // see if there's a child element and focus that instead if there is
         if (children[0] && children.tagName) {
           children[0].focus();
@@ -1753,10 +1756,13 @@ class HaxBody extends PolymerElement {
     status,
     target = this.shadowRoot.querySelector("#body")
   ) {
-    let children = dom(target).getDistributedNodes();
+    let children =
+      target.localName === "slot"
+        ? wrap(target).assignedNodes({ flatten: true })
+        : [];
     // fallback for content nodes if not polymer managed nodes above
     if (children.length === 0) {
-      children = dom(target).getEffectiveChildNodes();
+      children = FlattenedNodesObserver.getFlattenedNodes(target);
     }
     for (var i = 0, len = children.length; i < len; i++) {
       // we have to tell the browser that primatives are editable
