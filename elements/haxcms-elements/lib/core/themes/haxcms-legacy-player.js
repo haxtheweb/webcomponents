@@ -4,7 +4,6 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { Router } from "@vaadin/router";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";

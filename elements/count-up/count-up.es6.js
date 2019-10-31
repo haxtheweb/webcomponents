@@ -258,7 +258,11 @@ class CountUpElement extends PolymerElement {
       prefix: this.prefixtext,
       suffix: this.suffixtext
     };
-    this._countUp = new CountUp(this.$.counter, this.end, options);
+    this._countUp = new CountUp(
+      this.shadowRoot.querySelector("#counter"),
+      this.end,
+      options
+    );
   }
   handleIntersectionCallback(entries) {
     for (let entry of entries) {

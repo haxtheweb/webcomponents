@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { licenseList } from "@lrnwebcomponents/license-element/license-element.js";
 /**
@@ -193,35 +192,35 @@ class CitationElement extends SchemaBehaviors(PolymerElement) {
    */
   _scopeChanged(newValue, oldValue) {
     // make sure we actually have a sibling first
-    if (newValue === "sibling" && dom(this).previousElementSibling !== null) {
+    if (newValue === "sibling" && this.previousElementSibling !== null) {
       // find the sibling element in the DOM and associate to it's resource ID
       // also generate a resource ID if it doesn't have one
-      if (dom(this).previousElementSibling.getAttribute("resource")) {
-        this.relatedResource = dom(this).previousElementSibling.getAttribute(
+      if (this.previousElementSibling.getAttribute("resource")) {
+        this.relatedResource = this.previousElementSibling.getAttribute(
           "resource"
         );
       } else {
         let uuid = this.generateResourceID();
         this.relatedResource = uuid;
-        dom(this).previousElementSibling.setAttribute("resource", uuid);
+        this.previousElementSibling.setAttribute("resource", uuid);
       }
       // set prefix on the main element itself
-      dom(this).previousElementSibling.setAttribute(
+      this.previousElementSibling.setAttribute(
         "prefix",
         this.getAttribute("prefix")
       );
     } else if (newValue === "parent") {
       // find the parent and associate to it's resource ID, if it doesn't have one
       // then let's make one dynamically
-      if (dom(this).parentNode.getAttribute("resource")) {
-        this.relatedResource = dom(this).parentNode.getAttribute("resource");
+      if (this.parentNode.getAttribute("resource")) {
+        this.relatedResource = this.parentNode.getAttribute("resource");
       } else {
         let uuid = this.generateResourceID();
         this.relatedResource = uuid;
-        dom(this).parentNode.setAttribute("resource", uuid);
+        this.parentNode.setAttribute("resource", uuid);
       }
       // set prefix on the main element itself
-      dom(this).parentNode.setAttribute("prefix", this.getAttribute("prefix"));
+      this.parentNode.setAttribute("prefix", this.getAttribute("prefix"));
     }
   }
 

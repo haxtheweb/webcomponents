@@ -1,5 +1,3 @@
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-
 export const MtzFileDownloadBehaviors = function(SuperClass) {
   return class extends SuperClass {
     static get properties() {

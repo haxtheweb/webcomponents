@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 // need to make this an object so that HAX can listen for it correctly
@@ -775,8 +775,7 @@ class GridPlate extends LitElement {
    * Move the active element based on which button got pressed.
    */
   moveActiveElement(e) {
-    var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget;
+    var local = e.target;
     // see if this was an up down left or right movement
     switch (local.id) {
       case "up":
@@ -903,10 +902,9 @@ class GridPlate extends LitElement {
    */
   _focusIn(e) {
     if (this.editMode) {
-      var normalizedEvent = dom(e);
-      var local = normalizedEvent.localTarget;
+      var local = e.target;
       // only activate if we touch something that's in the slot of the grid plate
-      if (dom(local).parentNode === this) {
+      if (local.parentNode === this) {
         this.activeItem = local;
       }
     }
@@ -978,7 +976,7 @@ class GridPlate extends LitElement {
    */
   _editModeChanged(newValue, oldValue) {
     // flipping from false to true
-    let children = dom(this).getEffectiveChildNodes();
+    let children = FlattenedNodesObserver.getFlattenedNodes(this);
     if (typeof children === "object") {
       if (newValue && !oldValue) {
         // walk the children and apply the draggable state needed
@@ -1082,8 +1080,7 @@ class GridPlate extends LitElement {
    */
   dropEvent(e) {
     if (this.editMode) {
-      var normalizedEvent = dom(e);
-      var local = normalizedEvent.localTarget;
+      var local = e.target;
       // if we have a slot on what we dropped into then we need to mirror that item
       // and place ourselves below it in the DOM
       if (

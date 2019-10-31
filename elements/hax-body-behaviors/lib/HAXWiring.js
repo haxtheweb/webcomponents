@@ -2,7 +2,6 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 
 /**
@@ -980,21 +979,21 @@ export class HAXWiring {
             };
             var slot = "";
             // test for slotted content values names is tricky
-            for (var i in dom(target).childNodes) {
+            for (var i in target.childNodes) {
               // this is crazy... you know that right
-              if (typeof dom(target).childNodes[i] !== typeof undefined) {
-                if (dom(target).childNodes[i].nodeType === 1) {
+              if (typeof target.childNodes[i] !== typeof undefined) {
+                if (target.childNodes[i].nodeType === 1) {
                   // make sure slots that are named line up
-                  if (settings[value].slot === dom(target).childNodes[i].slot) {
-                    slot += dom(target).childNodes[i].innerHTML;
+                  if (settings[value].slot === target.childNodes[i].slot) {
+                    slot += target.childNodes[i].innerHTML;
                   }
                 } else if (
-                  dom(target).childNodes[i].nodeType !== 1 &&
-                  typeof dom(target).childNodes[i].textContent !==
+                  target.childNodes[i].nodeType !== 1 &&
+                  typeof target.childNodes[i].textContent !==
                     typeof undefined &&
-                  dom(target).childNodes[i].textContent !== ""
+                  target.childNodes[i].textContent !== ""
                 ) {
-                  slot += dom(target).childNodes[i].textContent;
+                  slot += target.childNodes[i].textContent;
                 }
               }
             }

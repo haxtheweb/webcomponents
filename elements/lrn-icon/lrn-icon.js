@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-meta/iron-meta.js";
 import "@polymer/iron-flex-layout/iron-flex-layout.js";
 import "@lrnwebcomponents/lrn-shared-styles/lrn-shared-styles.js";
@@ -169,7 +168,7 @@ class LrnIcon extends PolymerElement {
   _updateIcon() {
     if (this._usesIconset()) {
       if (this._img && this._img.parentNode) {
-        dom(this.root).removeChild(this._img);
+        this.root.removeChild(this._img);
       }
       if (this._iconName === "") {
         if (this._iconset) {
@@ -201,7 +200,7 @@ class LrnIcon extends PolymerElement {
         this._img.draggable = false;
       }
       this._img.src = this.src;
-      dom(this.root).appendChild(this._img);
+      this.root.appendChild(this._img);
     }
   }
 }

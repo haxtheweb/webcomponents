@@ -1,5 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { wrap } from "@polymer/polymer/lib/utils/wrap.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { flush } from "@polymer/polymer/lib/utils/flush.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
@@ -582,8 +582,7 @@ class HaxBody extends PolymerElement {
           .querySelector("#platecontextmenu")
           .classList.contains("hax-active-hover")
       ) {
-        let normalizedEvent = dom(e);
-        let local = normalizedEvent.localTarget;
+        let local = e.target;
         // see if the target is relevent when showing the edit menu operations
         if (
           e.target === this.shadowRoot.querySelector("#cecontextmenu") ||
@@ -661,7 +660,7 @@ class HaxBody extends PolymerElement {
       // make sure text just escalates to a paragraph tag
       let p = document.createElement("p");
       p.innerHTML = "<br/>";
-      this.haxReplaceNode(this.activeNode, p, dom(this.activeNode).parentNode);
+      this.haxReplaceNode(this.activeNode, p, this.activeNode.parentNode);
       // allow swap out to happen
       setTimeout(() => {
         // set active to this p tag
@@ -859,7 +858,7 @@ class HaxBody extends PolymerElement {
       this.haxReplaceNode(
         window.HaxStore.instance.activePlaceHolder,
         newNode,
-        dom(window.HaxStore.instance.activePlaceHolder).parentNode
+        window.HaxStore.instance.activePlaceHolder.parentNode
       );
       window.HaxStore.instance.activePlaceHolder = null;
     }
@@ -874,7 +873,7 @@ class HaxBody extends PolymerElement {
         if (this.activeNode.getAttribute("slot") != null) {
           newNode.setAttribute("slot", this.activeNode.getAttribute("slot"));
         }
-        dom(this.activeContainerNode).insertBefore(newNode, this.activeNode);
+        this.activeContainerNode.insertBefore(newNode, this.activeNode);
       } else {
         this.insertBefore(newNode, this.activeContainerNode.nextElementSibling);
       }
@@ -920,9 +919,12 @@ class HaxBody extends PolymerElement {
     this.set("activeContainerNode", null);
     window.HaxStore.write("activeNode", null, this);
     window.HaxStore.write("activeContainerNode", null, this);
-    let children = dom(
-      this.shadowRoot.querySelector("#body")
-    ).getDistributedNodes();
+    let children =
+      this.shadowRoot.querySelector("#body").localName === "slot"
+        ? wrap(this.shadowRoot.querySelector("#body")).assignedNodes({
+            flatten: true
+          })
+        : [];
     if (this.globalPreferences.haxDeveloperMode) {
       console.warn(children);
     }
@@ -1037,9 +1039,9 @@ class HaxBody extends PolymerElement {
     }
     // shouldn't be possible but might as well check
     if (node !== null) {
-      dom(parent).insertBefore(nodeClone, dom(node).nextSibling);
+      parent.insertBefore(nodeClone, node.nextSibling);
     } else {
-      dom(parent).appendChild(nodeClone);
+      parent.appendChild(nodeClone);
     }
     setTimeout(() => {
       // test for a grid plate clone
@@ -1160,7 +1162,7 @@ class HaxBody extends PolymerElement {
         node = this.__oldActiveNode;
         parent = this.__oldActiveNode.parentNode;
       }
-      dom(parent).replaceChild(replacement, node);
+      parent.replaceChild(replacement, node);
     } catch (e) {
       console.warn(e);
     }
@@ -1217,7 +1219,7 @@ class HaxBody extends PolymerElement {
       this.replaceChild(replacement, node);
       // focus on the thing switched to
       setTimeout(() => {
-        let children = dom(replacement).getEffectiveChildNodes();
+        let children = FlattenedNodesObserver.getFlattenedNodes(replacement);
         // see if there's a child element and focus that instead if there is
         if (children[0] && children.tagName) {
           children[0].focus();
@@ -1248,7 +1250,7 @@ class HaxBody extends PolymerElement {
       if (
         this.activeContainerNode != null &&
         window.HaxStore.instance.isTextElement(this.activeContainerNode) &&
-        dom(this.activeContainerNode).textContent !== ""
+        this.activeContainerNode.textContent !== ""
       ) {
         try {
           var range = document.createRange();
@@ -1275,7 +1277,7 @@ class HaxBody extends PolymerElement {
     }
     // @todo figure out why this is complaining
     try {
-      return dom(parent).removeChild(node);
+      return parent.removeChild(node);
     } catch (e) {
       console.warn(e);
     }
@@ -1601,8 +1603,7 @@ class HaxBody extends PolymerElement {
    * Item has gained focus, change active element to match
    */
   _focusIn(e) {
-    var normalizedEvent = dom(e);
-    if (this.__focusLogic(normalizedEvent.localTarget)) {
+    if (this.__focusLogic(e.target)) {
       e.stopPropagation();
     }
   }
@@ -1713,13 +1714,13 @@ class HaxBody extends PolymerElement {
    * Test if this is a HAX element or not
    */
   _haxResolvePreviousElement(node) {
-    node = dom(node).previousElementSibling;
+    node = node.previousElementSibling;
     while (
       node != null &&
       typeof node.tagName !== typeof undefined &&
       node.tagName.substring(0, 4) === "HAX-"
     ) {
-      node = dom(node).previousElementSibling;
+      node = node.previousElementSibling;
     }
     return node;
   }
@@ -1755,10 +1756,13 @@ class HaxBody extends PolymerElement {
     status,
     target = this.shadowRoot.querySelector("#body")
   ) {
-    let children = dom(target).getDistributedNodes();
+    let children =
+      target.localName === "slot"
+        ? wrap(target).assignedNodes({ flatten: true })
+        : [];
     // fallback for content nodes if not polymer managed nodes above
     if (children.length === 0) {
-      children = dom(target).getEffectiveChildNodes();
+      children = FlattenedNodesObserver.getFlattenedNodes(target);
     }
     for (var i = 0, len = children.length; i < len; i++) {
       // we have to tell the browser that primatives are editable
@@ -1835,7 +1839,7 @@ class HaxBody extends PolymerElement {
         this.removeAttribute("contenteditable");
       }
       let tag = newValue.tagName.toLowerCase();
-      // special case for the grid plate since it brings in dom nodes
+      // special case for the grid plate since it brings in nodes
       // nested in it and needs to be put into an editMode
       if (tag === "grid-plate") {
         newValue.editMode = this.editMode;
@@ -1983,13 +1987,13 @@ class HaxBody extends PolymerElement {
       } else {
         while (!focus) {
           // do nothing
-          if (dom(node).nextSibling == null) {
+          if (node.nextSibling == null) {
             focus = true;
-          } else if (dom(node).nextSibling.focus === "function") {
-            dom(node).nextSibling.focus();
+          } else if (node.nextSibling.focus === "function") {
+            node.nextSibling.focus();
             focus = true;
           } else {
-            node = dom(node).nextSibling;
+            node = node.nextSibling;
           }
         }
       }
@@ -2022,7 +2026,7 @@ class HaxBody extends PolymerElement {
         if (node != null) {
           // step back ignoring hax- prefixed elements
           while (node != null && !this._haxElementTest(node)) {
-            node = dom(node).previousSibling;
+            node = node.previousSibling;
           }
         }
         if (node != null) {

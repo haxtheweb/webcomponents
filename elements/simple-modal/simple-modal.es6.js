@@ -296,8 +296,8 @@ h2 {
     // swap out the contents
     if (this.opened) {
       // wipe the slot of our modal
-      while (dom(this).firstChild !== null) {
-        dom(this).removeChild(dom(this).firstChild);
+      while (this.firstChild !== null) {
+        this.removeChild(this.firstChild);
       }
       setTimeout(() => {
         this.show(
@@ -385,7 +385,7 @@ h2 {
           element = elements[slots[i]];
         }
         element.setAttribute("slot", slots[i]);
-        dom(this).appendChild(element);
+        this.appendChild(element);
       }
     }
     // minor delay to help the above happen prior to opening
@@ -401,8 +401,8 @@ h2 {
   animationEnded(e) {
     // wipe the slot of our modal
     this.title = "";
-    while (dom(this).firstChild !== null) {
-      dom(this).removeChild(dom(this).firstChild);
+    while (this.firstChild !== null) {
+      this.removeChild(this.firstChild);
     }
     if (this.invokedBy) {
       microTask.run(() => {

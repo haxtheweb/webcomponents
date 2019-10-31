@@ -295,7 +295,7 @@ class DropdownSelect extends PolymerElement {
    * Notice value has changed and ensure data model is accurate
    */
   _valueChanged(newValue, oldValue) {
-    let children = dom(this).querySelectorAll("paper-item");
+    let children = this.querySelectorAll("paper-item");
     if (children !== undefined && children !== null) {
       for (let i = 0; i < children.length; i++) {
         if (this.value === children[i].getAttribute("value")) {

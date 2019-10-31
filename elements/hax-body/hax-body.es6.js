@@ -64,55 +64,63 @@ class HaxBody extends PolymerElement {
           margin-left: unset;
         }
         :host #bodycontainer ::slotted(h1) {
-          font-size: var(--haxcms-base-styles-h1-font-size, 2.5em);
-          line-height: var(--haxcms-base-styles-h1-line-height, 2.5em);
+          font-size: var(--hax-base-styles-h1-font-size, 2.5em);
+          line-height: var(--hax-base-styles-h1-line-height, 2.5em);
         }
         :host #bodycontainer ::slotted(h2) {
-          font-size: var(--haxcms-base-styles-h2-font-size, 2em);
+          font-size: var(--hax-base-styles-h2-font-size, 2em);
         }
         :host #bodycontainer ::slotted(h3) {
-          font-size: var(--haxcms-base-styles-h3-font-size, 1.75em);
+          font-size: var(--hax-base-styles-h3-font-size, 1.75em);
         }
         :host #bodycontainer ::slotted(h4) {
-          font-size: var(--haxcms-base-styles-h4-font-size, 1.5em);
+          font-size: var(--hax-base-styles-h4-font-size, 1.5em);
         }
         :host #bodycontainer ::slotted(h5) {
-          font-size: var(--haxcms-base-styles-h5-font-size, 1.25em);
+          font-size: var(--hax-base-styles-h5-font-size, 1.25em);
         }
         :host #bodycontainer ::slotted(h6) {
-          font-size: var(--haxcms-base-styles-h6-font-size, 1.25em);
+          font-size: var(--hax-base-styles-h6-font-size, 1.25em);
         }
         :host #bodycontainer ::slotted(p) {
-          min-height: 26px;
-          font-size: var(--haxcms-base-styles-p-font-size, 24px);
-          line-height: var(--haxcms-base-styles-p-line-height, 1.8);
-          letter-spacing: var(--haxcms-base-styles-p-letter-spacing, 0.5px);
+          min-height: var(--hax-base-styles-p-min-height, 43px);
+          font-size: var(--hax-base-styles-p-font-size, 24px);
+          line-height: var(--hax-base-styles-p-line-height, 1.8);
+          letter-spacing: var(--hax-base-styles-p-letter-spacing, 0.5px);
         }
-
-        :host #bodycontainer ::slotted(a),
-        :host #bodycontainer ::slotted(a:visited),
-        :host #bodycontainer ::slotted(a:active) {
-          color: #000;
+        :host #bodycontainer ::slotted(a) {
+          color: var(--hax-base-styles-a-color, #000);
+          font-size: var(--hax-base-styles-a-font-size, 24px);
+          font-weight: var(--hax-base-styles-a-font-weight, normal);
         }
+        :host #bodycontainer ::slotted(a:visited) {
+          color: var(--hax-base-styles-a-color-visited, #2196f3);
+        }
+        :host #bodycontainer ::slotted(a:active),
+        :host #bodycontainer ::slotted(a:focus),
         :host #bodycontainer ::slotted(a:hover) {
-          color: #2196f3;
+          color: var(--hax-base-styles-a-color-active, #2196f3);
+          font-weight: var(--hax-base-styles-a-font-weight-active, normal);
         }
         :host #bodycontainer ::slotted(ol),
         :host #bodycontainer ::slotted(ul),
         :host #bodycontainer ::slotted(li) {
-          padding-bottom: 1.5em;
-          line-height: 40px;
-          font-size: 24px;
-          max-width: 28em;
+          padding-bottom: var(--hax-base-styles-list-padding-bottom, 1.5em);
+          line-height: var(--hax-base-styles-list-line-height, 40px);
+          font-size: var(--hax-base-styles-list-font-size, 24px);
+          max-width: var(--hax-base-styles-list-max-width, 28em);
         }
         :host #bodycontainer ::slotted(ol > li:last-child),
         :host #bodycontainer ::slotted(ul > li:last-child) {
-          padding-bottom: 1em;
+          padding-bottom: var(
+            --hax-base-styles-list-last-child-padding-bottom,
+            1em
+          );
         }
         :host #bodycontainer ::slotted(ul),
         :host #bodycontainer ::slotted(ol) {
-          padding-left: 20px;
-          margin-left: 20px;
+          padding-left: var(--hax-base-styles-list-padding-left, 20px);
+          padding-left: var(--hax-base-styles-list-margin-left, 20px);
         }
 
         :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]) {
@@ -405,10 +413,18 @@ class HaxBody extends PolymerElement {
   _keepContextVisible(e) {
     // see if the text context menu is visible
     let el = false;
-    if (this.$.textcontextmenu.classList.contains("hax-context-visible")) {
-      el = this.$.textcontextmenu;
-    } else if (this.$.cecontextmenu.classList.contains("hax-context-visible")) {
-      el = this.$.cecontextmenu;
+    if (
+      this.shadowRoot
+        .querySelector("#textcontextmenu")
+        .classList.contains("hax-context-visible")
+    ) {
+      el = this.shadowRoot.querySelector("#textcontextmenu");
+    } else if (
+      this.shadowRoot
+        .querySelector("#cecontextmenu")
+        .classList.contains("hax-context-visible")
+    ) {
+      el = this.shadowRoot.querySelector("#cecontextmenu");
     }
     // if we see it, ensure we don't have the pin
     if (el) {
@@ -512,7 +528,11 @@ class HaxBody extends PolymerElement {
             break;
         }
       }, 100);
-      if (this.$.platecontextmenu.classList.contains("hax-active-hover")) {
+      if (
+        this.shadowRoot
+          .querySelector("#platecontextmenu")
+          .classList.contains("hax-active-hover")
+      ) {
         this.__dropActiveHover();
       }
     }
@@ -520,7 +540,9 @@ class HaxBody extends PolymerElement {
   _onKeyPress(e) {
     if (
       this.editMode &&
-      this.$.platecontextmenu.classList.contains("hax-active-hover")
+      this.shadowRoot
+        .querySelector("#platecontextmenu")
+        .classList.contains("hax-active-hover")
     ) {
       this.__dropActiveHover();
     }
@@ -555,14 +577,17 @@ class HaxBody extends PolymerElement {
           })
         );
       }
-      if (!this.$.platecontextmenu.classList.contains("hax-active-hover")) {
-        let normalizedEvent = dom(e);
-        let local = normalizedEvent.localTarget;
+      if (
+        !this.shadowRoot
+          .querySelector("#platecontextmenu")
+          .classList.contains("hax-active-hover")
+      ) {
+        let local = e.target;
         // see if the target is relevent when showing the edit menu operations
         if (
-          e.target === this.$.cecontextmenu ||
-          e.target === this.$.textcontextmenu ||
-          e.target === this.$.platecontextmenu ||
+          e.target === this.shadowRoot.querySelector("#cecontextmenu") ||
+          e.target === this.shadowRoot.querySelector("#textcontextmenu") ||
+          e.target === this.shadowRoot.querySelector("#platecontextmenu") ||
           local === this.activeNode ||
           local === this.activeContainerNode ||
           e.target === this.activeNode ||
@@ -580,14 +605,26 @@ class HaxBody extends PolymerElement {
     }
   }
   __addActiveHover() {
-    this.$.cecontextmenu.classList.add("hax-active-hover");
-    this.$.textcontextmenu.classList.add("hax-active-hover");
-    this.$.platecontextmenu.classList.add("hax-active-hover");
+    this.shadowRoot
+      .querySelector("#cecontextmenu")
+      .classList.add("hax-active-hover");
+    this.shadowRoot
+      .querySelector("#textcontextmenu")
+      .classList.add("hax-active-hover");
+    this.shadowRoot
+      .querySelector("#platecontextmenu")
+      .classList.add("hax-active-hover");
   }
   __dropActiveHover() {
-    this.$.cecontextmenu.classList.remove("hax-active-hover");
-    this.$.textcontextmenu.classList.remove("hax-active-hover");
-    this.$.platecontextmenu.classList.remove("hax-active-hover");
+    this.shadowRoot
+      .querySelector("#cecontextmenu")
+      .classList.remove("hax-active-hover");
+    this.shadowRoot
+      .querySelector("#textcontextmenu")
+      .classList.remove("hax-active-hover");
+    this.shadowRoot
+      .querySelector("#platecontextmenu")
+      .classList.remove("hax-active-hover");
   }
   /**
    * Check if part of the passed element is int he viewport
@@ -596,7 +633,8 @@ class HaxBody extends PolymerElement {
     let top =
       el.offsetTop -
       32 -
-      window.HaxStore.instance.haxPanel.$.drawer.offsetHeight;
+      window.HaxStore.instance.haxPanel.shadowRoot.querySelector("#drawer")
+        .offsetHeight;
     let left = el.offsetLeft;
     let width = el.offsetWidth;
     let height = el.offsetHeight;
@@ -622,7 +660,7 @@ class HaxBody extends PolymerElement {
       // make sure text just escalates to a paragraph tag
       let p = document.createElement("p");
       p.innerHTML = "<br/>";
-      this.haxReplaceNode(this.activeNode, p, dom(this.activeNode).parentNode);
+      this.haxReplaceNode(this.activeNode, p, this.activeNode.parentNode);
       // allow swap out to happen
       setTimeout(() => {
         // set active to this p tag
@@ -820,7 +858,7 @@ class HaxBody extends PolymerElement {
       this.haxReplaceNode(
         window.HaxStore.instance.activePlaceHolder,
         newNode,
-        dom(window.HaxStore.instance.activePlaceHolder).parentNode
+        window.HaxStore.instance.activePlaceHolder.parentNode
       );
       window.HaxStore.instance.activePlaceHolder = null;
     }
@@ -835,18 +873,15 @@ class HaxBody extends PolymerElement {
         if (this.activeNode.getAttribute("slot") != null) {
           newNode.setAttribute("slot", this.activeNode.getAttribute("slot"));
         }
-        dom(this.activeContainerNode).insertBefore(newNode, this.activeNode);
+        this.activeContainerNode.insertBefore(newNode, this.activeNode);
       } else {
-        dom(this).insertBefore(
-          newNode,
-          this.activeContainerNode.nextElementSibling
-        );
+        this.insertBefore(newNode, this.activeContainerNode.nextElementSibling);
       }
     } else {
       // send this into the root, which should filter it back down into the slot
-      dom(this).appendChild(newNode);
+      this.appendChild(newNode);
     }
-    this.$.textcontextmenu.highlightOps = false;
+    this.shadowRoot.querySelector("#textcontextmenu").highlightOps = false;
     this.__updateLockFocus = newNode;
     // wait so that the DOM can have the node to then attach to
     if (waitForLock) {
@@ -884,7 +919,9 @@ class HaxBody extends PolymerElement {
     this.set("activeContainerNode", null);
     window.HaxStore.write("activeNode", null, this);
     window.HaxStore.write("activeContainerNode", null, this);
-    let children = dom(this.$.body).getDistributedNodes();
+    let children = dom(
+      this.shadowRoot.querySelector("#body")
+    ).getDistributedNodes();
     if (this.globalPreferences.haxDeveloperMode) {
       console.warn(children);
     }
@@ -999,9 +1036,9 @@ class HaxBody extends PolymerElement {
     }
     // shouldn't be possible but might as well check
     if (node !== null) {
-      dom(parent).insertBefore(nodeClone, dom(node).nextSibling);
+      parent.insertBefore(nodeClone, node.nextSibling);
     } else {
-      dom(parent).appendChild(nodeClone);
+      parent.appendChild(nodeClone);
     }
     setTimeout(() => {
       // test for a grid plate clone
@@ -1017,13 +1054,13 @@ class HaxBody extends PolymerElement {
    */
   hideContextMenus() {
     // primary context menus
-    this._hideContextMenu(this.$.textcontextmenu);
-    this._hideContextMenu(this.$.cecontextmenu);
+    this._hideContextMenu(this.shadowRoot.querySelector("#textcontextmenu"));
+    this._hideContextMenu(this.shadowRoot.querySelector("#cecontextmenu"));
     // secondary menus and clean up areas
-    this._hideContextMenu(this.$.platecontextmenu);
-    this._hideContextMenu(this.$.haxinputmixer);
+    this._hideContextMenu(this.shadowRoot.querySelector("#platecontextmenu"));
+    this._hideContextMenu(this.shadowRoot.querySelector("#haxinputmixer"));
     // force context menu state to closed
-    this.$.textcontextmenu.highlightOps = false;
+    this.shadowRoot.querySelector("#textcontextmenu").highlightOps = false;
   }
   /**
    * Reposition context menus to match an element.
@@ -1040,14 +1077,23 @@ class HaxBody extends PolymerElement {
         typeof props !== typeof undefined &&
         !window.HaxStore.instance.isTextElement(node)
       ) {
-        this.__activeContextType = this.$.cecontextmenu;
+        this.__activeContextType = this.shadowRoot.querySelector(
+          "#cecontextmenu"
+        );
         props.element = node;
         this.__activeContextType.setHaxProperties(props);
       } else {
-        this.__activeContextType = this.$.textcontextmenu;
+        this.__activeContextType = this.shadowRoot.querySelector(
+          "#textcontextmenu"
+        );
       }
       this._positionContextMenu(this.__activeContextType, container, -39, -39);
-      this._positionContextMenu(this.$.platecontextmenu, container, -31, 0);
+      this._positionContextMenu(
+        this.shadowRoot.querySelector("#platecontextmenu"),
+        container,
+        -31,
+        0
+      );
       // special case for node not matching container
       if (container && !this._HTMLPrimativeTest(node) && node !== container) {
         container.contentEditable = false;
@@ -1066,23 +1112,23 @@ class HaxBody extends PolymerElement {
       case "first":
         // ensure we can go up, first being a mode of up
         if (container.previousElementSibling !== null) {
-          dom(this).insertBefore(container, dom(this).firstChild);
+          this.insertBefore(container, this.firstChild);
         }
         break;
       case "up":
         // ensure we can go up
         if (container.previousElementSibling !== null) {
-          dom(this).insertBefore(container, container.previousElementSibling);
+          this.insertBefore(container, container.previousElementSibling);
         }
         break;
       case "down":
         if (container.nextElementSibling !== null) {
-          dom(this).insertBefore(container.nextElementSibling, container);
+          this.insertBefore(container.nextElementSibling, container);
         }
         break;
       case "last":
         if (container.nextElementSibling !== null) {
-          dom(this).appendChild(container);
+          this.appendChild(container);
         }
         break;
       // @todo support other directions for when inside of an element
@@ -1113,7 +1159,7 @@ class HaxBody extends PolymerElement {
         node = this.__oldActiveNode;
         parent = this.__oldActiveNode.parentNode;
       }
-      dom(parent).replaceChild(replacement, node);
+      parent.replaceChild(replacement, node);
     } catch (e) {
       console.warn(e);
     }
@@ -1167,7 +1213,7 @@ class HaxBody extends PolymerElement {
     }
     // Switch!
     try {
-      dom(this).replaceChild(replacement, node);
+      this.replaceChild(replacement, node);
       // focus on the thing switched to
       setTimeout(() => {
         let children = dom(replacement).getEffectiveChildNodes();
@@ -1201,7 +1247,7 @@ class HaxBody extends PolymerElement {
       if (
         this.activeContainerNode != null &&
         window.HaxStore.instance.isTextElement(this.activeContainerNode) &&
-        dom(this.activeContainerNode).textContent !== ""
+        this.activeContainerNode.textContent !== ""
       ) {
         try {
           var range = document.createRange();
@@ -1228,7 +1274,7 @@ class HaxBody extends PolymerElement {
     }
     // @todo figure out why this is complaining
     try {
-      return dom(parent).removeChild(node);
+      return parent.removeChild(node);
     } catch (e) {
       console.warn(e);
     }
@@ -1271,9 +1317,9 @@ class HaxBody extends PolymerElement {
               }
               replacement.setAttribute(nodeName, value);
             }
-            dom(this).appendChild(replacement);
+            this.appendChild(replacement);
           } else {
-            dom(this).appendChild(fragment.firstChild);
+            this.appendChild(fragment.firstChild);
           }
         } else {
           // @todo might want to support appending or keeping track of comments / non tags
@@ -1303,7 +1349,8 @@ class HaxBody extends PolymerElement {
       case "blockquote":
       case "code":
         // trigger the default selected value in context menu to match
-        this.$.textcontextmenu.selectedValue = detail.eventName;
+        this.shadowRoot.querySelector("#textcontextmenu").selectedValue =
+          detail.eventName;
         window.HaxStore.write(
           "activeContainerNode",
           this.haxChangeTagName(this.activeContainerNode, detail.eventName),
@@ -1397,7 +1444,7 @@ class HaxBody extends PolymerElement {
         window.HaxStore.write("activeContainerNode", null, this);
         break;
       case "hax-edit-property":
-        let haxInputMixer = this.$.haxinputmixer;
+        let haxInputMixer = this.shadowRoot.querySelector("#haxinputmixer");
         haxInputMixer.label = detail.target.label;
         haxInputMixer.options = detail.target.options;
         haxInputMixer.icon = detail.target.icon;
@@ -1436,8 +1483,10 @@ class HaxBody extends PolymerElement {
           -38
         );
         let style =
-          this.$.cecontextmenu.currentStyle ||
-          window.getComputedStyle(this.$.cecontextmenu);
+          this.shadowRoot.querySelector("#cecontextmenu").currentStyle ||
+          window.getComputedStyle(
+            this.shadowRoot.querySelector("#cecontextmenu")
+          );
         // force input mixes to match width of the ce context menu currently
         haxInputMixer.style.width = style.width.replace("px", "") - 40 + "px";
         break;
@@ -1475,7 +1524,7 @@ class HaxBody extends PolymerElement {
       // on in the manager
       case "hax-manager-configure":
         // make sure input mixer is closed
-        this._hideContextMenu(this.$.haxinputmixer);
+        this._hideContextMenu(this.shadowRoot.querySelector("#haxinputmixer"));
         // reset the manager
         window.HaxStore.instance.haxManager.resetManager();
         // write activeElement updated so it'll go into the preview
@@ -1487,7 +1536,10 @@ class HaxBody extends PolymerElement {
         window.HaxStore.instance.haxManager.toggleDialog();
         // accessibility enhancement to keyboard focus configure button
         setTimeout(() => {
-          window.HaxStore.instance.haxManager.$.preview.$.configurebutton.focus();
+          window.HaxStore.instance.haxManager.shadowRoot
+            .querySelector("#preview")
+            .shadowRoot.querySelector("#configurebutton")
+            .focus();
         }, 100);
         break;
       // container / layout settings button has been activated
@@ -1498,7 +1550,7 @@ class HaxBody extends PolymerElement {
           this
         );
         // make sure input mixer is closed
-        this._hideContextMenu(this.$.haxinputmixer);
+        this._hideContextMenu(this.shadowRoot.querySelector("#haxinputmixer"));
         // reset the manager
         window.HaxStore.instance.haxManager.resetManager();
         // write activeElement updated so it'll go into the preview
@@ -1512,7 +1564,10 @@ class HaxBody extends PolymerElement {
         window.HaxStore.instance.haxManager.toggleDialog();
         // accessibility enhancement to keyboard focus configure button
         setTimeout(() => {
-          window.HaxStore.instance.haxManager.$.preview.$.configurebutton.focus();
+          window.HaxStore.instance.haxManager.shadowRoot
+            .querySelector("#preview")
+            .shadowRoot.querySelector("#configurebutton")
+            .focus();
         }, 100);
         break;
     }
@@ -1539,14 +1594,13 @@ class HaxBody extends PolymerElement {
       this.activeNode.appendChild(item);
     }
     // hide mixer
-    this._hideContextMenu(this.$.haxinputmixer);
+    this._hideContextMenu(this.shadowRoot.querySelector("#haxinputmixer"));
   }
   /**
    * Item has gained focus, change active element to match
    */
   _focusIn(e) {
-    var normalizedEvent = dom(e);
-    if (this.__focusLogic(normalizedEvent.localTarget)) {
+    if (this.__focusLogic(e.target)) {
       e.stopPropagation();
     }
   }
@@ -1657,13 +1711,13 @@ class HaxBody extends PolymerElement {
    * Test if this is a HAX element or not
    */
   _haxResolvePreviousElement(node) {
-    node = dom(node).previousElementSibling;
+    node = node.previousElementSibling;
     while (
       node != null &&
       typeof node.tagName !== typeof undefined &&
       node.tagName.substring(0, 4) === "HAX-"
     ) {
-      node = dom(node).previousElementSibling;
+      node = node.previousElementSibling;
     }
     return node;
   }
@@ -1695,7 +1749,10 @@ class HaxBody extends PolymerElement {
   /**
    * Walk everything we find and either enable or disable editable state.
    */
-  _applyContentEditable(status, target = this.$.body) {
+  _applyContentEditable(
+    status,
+    target = this.shadowRoot.querySelector("#body")
+  ) {
     let children = dom(target).getDistributedNodes();
     // fallback for content nodes if not polymer managed nodes above
     if (children.length === 0) {
@@ -1776,7 +1833,7 @@ class HaxBody extends PolymerElement {
         this.removeAttribute("contenteditable");
       }
       let tag = newValue.tagName.toLowerCase();
-      // special case for the grid plate since it brings in dom nodes
+      // special case for the grid plate since it brings in nodes
       // nested in it and needs to be put into an editMode
       if (tag === "grid-plate") {
         newValue.editMode = this.editMode;
@@ -1813,7 +1870,7 @@ class HaxBody extends PolymerElement {
         newValue.removeAttribute("contenteditable");
         this.removeAttribute("contenteditable");
       }
-      this.$.textcontextmenu.selectedValue = tag;
+      this.shadowRoot.querySelector("#textcontextmenu").selectedValue = tag;
       // position the operations / in context element
       setTimeout(() => {
         this.positionContextMenus(
@@ -1822,22 +1879,30 @@ class HaxBody extends PolymerElement {
         );
       }, 100);
       if (newValue.style.textAlign == "left") {
-        this.$.textcontextmenu.justifyIcon = "editor:format-align-left";
-        this.$.textcontextmenu.justifyValue = "text-align-left";
+        this.shadowRoot.querySelector("#textcontextmenu").justifyIcon =
+          "editor:format-align-left";
+        this.shadowRoot.querySelector("#textcontextmenu").justifyValue =
+          "text-align-left";
       } else if (newValue.style.float == "left") {
-        this.$.cecontextmenu.justifyIcon = "editor:format-align-left";
-        this.$.cecontextmenu.justifyValue = "hax-align-left";
+        this.shadowRoot.querySelector("#cecontextmenu").justifyIcon =
+          "editor:format-align-left";
+        this.shadowRoot.querySelector("#cecontextmenu").justifyValue =
+          "hax-align-left";
       } else if (newValue.style.margin == "0 auto") {
-        this.$.cecontextmenu.justifyIcon = "editor:format-align-center";
-        this.$.cecontextmenu.justifyValue = "hax-align-center";
+        this.shadowRoot.querySelector("#cecontextmenu").justifyIcon =
+          "editor:format-align-center";
+        this.shadowRoot.querySelector("#cecontextmenu").justifyValue =
+          "hax-align-center";
       }
     }
     // just hide menus if we don't have an active item
     else if (newValue === null) {
       this.hideContextMenus();
       this.__oldActiveNode = oldValue;
-      this.$.textcontextmenu.justifyIcon = "editor:format-align-left";
-      this.$.textcontextmenu.justifyValue = "text-align-left";
+      this.shadowRoot.querySelector("#textcontextmenu").justifyIcon =
+        "editor:format-align-left";
+      this.shadowRoot.querySelector("#textcontextmenu").justifyValue =
+        "text-align-left";
     }
   }
   /**
@@ -1916,13 +1981,13 @@ class HaxBody extends PolymerElement {
       } else {
         while (!focus) {
           // do nothing
-          if (dom(node).nextSibling == null) {
+          if (node.nextSibling == null) {
             focus = true;
-          } else if (dom(node).nextSibling.focus === "function") {
-            dom(node).nextSibling.focus();
+          } else if (node.nextSibling.focus === "function") {
+            node.nextSibling.focus();
             focus = true;
           } else {
-            node = dom(node).nextSibling;
+            node = node.nextSibling;
           }
         }
       }
@@ -1955,7 +2020,7 @@ class HaxBody extends PolymerElement {
         if (node != null) {
           // step back ignoring hax- prefixed elements
           while (node != null && !this._haxElementTest(node)) {
-            node = dom(node).previousSibling;
+            node = node.previousSibling;
           }
         }
         if (node != null) {

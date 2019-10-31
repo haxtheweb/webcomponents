@@ -1,4 +1,3 @@
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 /**
  * A collection of utility functions exported for convenience
  */
@@ -48,17 +47,17 @@ function findTagsInHTML(html) {
 function wipeSlot(element, slot = "*") {
   // 100% clean slate
   if (slot === "*") {
-    while (dom(element).firstChild !== null) {
-      dom(element).removeChild(dom(element).firstChild);
+    while (element.firstChild !== null) {
+      element.removeChild(element.firstChild);
     }
   } else {
-    for (var i in dom(element).childNodes) {
+    for (var i in element.childNodes) {
       // test for element nodes to be safe
       if (
-        typeof dom(element).childNodes[i] !== typeof undefined &&
-        dom(element).childNodes[i].slot === slot
+        typeof element.childNodes[i] !== typeof undefined &&
+        element.childNodes[i].slot === slot
       ) {
-        dom(element).removeChild(dom(element).childNodes[i]);
+        element.removeChild(element.childNodes[i]);
       }
     }
   }

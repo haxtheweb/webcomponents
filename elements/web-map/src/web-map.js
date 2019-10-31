@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import "./lib/map-layer.js";
 import "./lib/map-area.js";
@@ -208,7 +207,7 @@ class WebMap extends PolymerElement {
           if (L.Browser.gecko) {
             this.poster.removeAttribute("usemap");
           }
-          dom(this.shadowRoot.querySelector("#map")).appendChild(this.poster);
+          this.shadowRoot.querySelector("#map").appendChild(this.poster);
         }
       }
     }

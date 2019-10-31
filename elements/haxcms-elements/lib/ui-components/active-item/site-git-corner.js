@@ -63,7 +63,7 @@ class SiteGitCorner extends LitElement {
   }
   static get properties() {
     return {
-      activeGitFileLink: { type: String },
+      activeGitFileLink: { type: String, attribute: "active-git-file-link" },
       direction: { type: String, reflect: true },
       alt: { type: String }
     };

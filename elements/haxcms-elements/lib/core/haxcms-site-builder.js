@@ -176,7 +176,8 @@ class HAXCMSSiteBuilder extends LitElement {
   static get properties() {
     return {
       activeItemLocation: {
-        type: String
+        type: String,
+        attribute: "active-item-location"
       },
       /**
        * Singular error reporter / visual based on requests erroring

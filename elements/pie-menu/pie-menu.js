@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 /**
  * `pie-menu`
  * SVG Menu based on the excellent resource at : https://sarasoueidan.com/tools/circulus
@@ -341,8 +340,7 @@ class PieMenu extends PolymerElement {
    * Simple trap for bubbling up a tap / click event.
    */
   _itemTapped(e) {
-    var normalizedEvent = dom(e);
-    var localLink = normalizedEvent.localTarget;
+    var localLink = e.target;
     // make sure we normalize tap vs click vs keyboard
     if (
       !(

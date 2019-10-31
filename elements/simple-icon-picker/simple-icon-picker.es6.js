@@ -25,9 +25,6 @@ class SimpleIconPicker extends SimplePicker {
     return html`
 <style>:host(simple-icon-picker) #collapse {
   width: 300px;
-  height: 300px;
-  max-height: 300px;
-  overflow: auto;
 }
 :host(simple-icon-picker) .row {
   justify-content: flex-start;

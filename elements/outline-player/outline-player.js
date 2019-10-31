@@ -339,9 +339,9 @@ class OutlinePlayer extends HAXCMSPolymerElementTheme {
    * Link menu button to open and closing the side panel.
    */
   _toggleMenu(e) {
-    this.$.drawer.toggle();
+    this.shadowRoot.querySelector("#drawer").toggle();
     // allow styling to trigger based on open status
-    this.closed = !this.$.drawer.opened;
+    this.closed = !this.shadowRoot.querySelector("#drawer").opened;
     // kind of silly it doesn't just work this way but
     // app-panel doesn't make any assumptions about how
     // to handle the layout when it closes
@@ -358,7 +358,7 @@ class OutlinePlayer extends HAXCMSPolymerElementTheme {
   _activeIdChanged(newValue) {
     // close menu if it's narrow and something new is picked
     if (this.opened && this.narrow) {
-      this.$.drawer.toggle();
+      this.shadowRoot.querySelector("#drawer").toggle();
     }
     window.scrollTo({
       top: 0,

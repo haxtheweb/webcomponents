@@ -2,7 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from 'lit-element/lit-element.js';
+import { LitElement, html, css } from "lit-element/lit-element.js";
 
 /**
  * `they-live`
@@ -29,12 +29,20 @@ class TheyLive extends LitElement {
   display: none;
 }
 </style>
-<slot></slot>`;
+<div class="content">
+  <div class="truth">${this.truth}</div>
+  <slot></slot>
+</div>`;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
-    let props = {};
+    let props = {
+  "truth": {
+    "type": String
+  }
+}
+;
     if (super.properties) {
       props = Object.assign(props, super.properties);
     }
@@ -52,25 +60,52 @@ class TheyLive extends LitElement {
    * Register CSS styles
    */
   static get styles() {
-    return [css`
-    :host {
-      display: block;
-    }
-  `];
+    return [
+      css`
+        :host {
+          display: inline-block;
+        }
+        .truth {
+          font-size: 5.5vw;
+          word-break: break-all;
+          line-height: 5.5vw;
+          position: absolute;
+          margin: 0 auto;
+          text-align: center;
+          display: flex;
+          visibility: hidden;
+          opacity: 0;
+          transition: 0.3s all linear;
+          z-index: 2;
+          text-align: center;
+        }
+        :host(:focus),
+        :host(:hover) {
+          background-color: grey;
+        }
+        :host(:focus) .content ::slotted(*),
+        :host(:hover) .content ::slotted(*) {
+          visibility: hidden;
+        }
+        :host(:focus) .truth,
+        :host(:hover) .truth {
+          visibility: visible;
+          opacity: 1;
+        }
+      `
+    ];
   }
 
   // life cycle
   constructor() {
     super();
     // put default values here
-    
   }
   /**
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
     super.connectedCallback();
-    
   }
   /**
    * life cycle, element removed from DOM
@@ -82,19 +117,15 @@ class TheyLive extends LitElement {
    * runs on first go
    */
   firstUpdated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-
-    });
+    this.setAttribute("tabindex", "0");
+    changedProperties.forEach((oldValue, propName) => {});
   }
   /**
    * updated / notice property changes
    */
   updated(changedProperties) {
-    changedProperties.forEach((oldValue, propName) => {
-
-    });
+    changedProperties.forEach((oldValue, propName) => {});
   }
-  
 }
 customElements.define("they-live", TheyLive);
 export { TheyLive };

@@ -2,9 +2,9 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@lrnwebcomponents/beaker-broker/beaker-broker.js";
+import { LitElement, html } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import "@lrnwebcomponents/beaker-broker/beaker-broker.js";
 
 /**
  * `haxcms-backend-beaker`
@@ -13,7 +13,7 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
  * @microcopy - the mental model for this element
  * - jwt - a json web token which is an encrypted security token to talk
  */
-class HAXCMSBackendBeaker extends PolymerElement {
+class HAXCMSBackendBeaker extends LitElement {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -21,7 +21,7 @@ class HAXCMSBackendBeaker extends PolymerElement {
     return "haxcms-backend-beaker";
   }
   // render function
-  static get template() {
+  render() {
     return html`
       <beaker-broker id="beaker"></beaker-broker>
     `;
@@ -53,38 +53,33 @@ class HAXCMSBackendBeaker extends PolymerElement {
    */
   constructor() {
     super();
-    afterNextRender(this, function() {
-      document.body.addEventListener(
-        "jwt-token",
-        this._jwtTokenFired.bind(this)
-      );
-      // HAX CMS events to intercept
-      document.body.addEventListener(
-        "haxcms-save-site-data",
-        this.saveManifest.bind(this)
-      );
-      document.body.addEventListener(
-        "haxcms-save-outline",
-        this.saveOutline.bind(this)
-      );
-      document.body.addEventListener(
-        "haxcms-save-node",
-        this.saveNode.bind(this)
-      );
-      document.body.addEventListener(
-        "haxcms-delete-node",
-        this.deleteNode.bind(this)
-      );
-      document.body.addEventListener(
-        "haxcms-create-node",
-        this.createNode.bind(this)
-      );
-      // listen for app being selected
-      document.body.addEventListener(
-        "hax-app-picker-selection",
-        this._appPicked.bind(this)
-      );
-    });
+    document.body.addEventListener("jwt-token", this._jwtTokenFired.bind(this));
+    // HAX CMS events to intercept
+    document.body.addEventListener(
+      "haxcms-save-site-data",
+      this.saveManifest.bind(this)
+    );
+    document.body.addEventListener(
+      "haxcms-save-outline",
+      this.saveOutline.bind(this)
+    );
+    document.body.addEventListener(
+      "haxcms-save-node",
+      this.saveNode.bind(this)
+    );
+    document.body.addEventListener(
+      "haxcms-delete-node",
+      this.deleteNode.bind(this)
+    );
+    document.body.addEventListener(
+      "haxcms-create-node",
+      this.createNode.bind(this)
+    );
+    // listen for app being selected
+    document.body.addEventListener(
+      "hax-app-picker-selection",
+      this._appPicked.bind(this)
+    );
   }
   /**
    * detached life cycle
@@ -298,7 +293,7 @@ class HAXCMSBackendBeaker extends PolymerElement {
         this.shadowRoot
           .querySelector("#beaker")
           .write(page.location, "<p>My great new content!</p>");
-        this.set(`manifest.items.${index}`, element);
+        this.manifest.items[index] = element;
       }
     });
     this.shadowRoot

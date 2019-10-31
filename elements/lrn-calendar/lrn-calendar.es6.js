@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import "@polymer/iron-ajax/iron-ajax.js";
@@ -437,7 +436,7 @@ class LrnCalendar extends PolymerElement {
     var pastDate = 0;
 
     //Remove past calendar blocks ************************************
-    var elem = dom(this.shadowRoot.querySelector("#calView")).node;
+    var elem = this.shadowRoot.querySelector("#calView").node;
     var elemChildren = elem.childNodes;
 
     while (elemChildren[1]) {
@@ -644,7 +643,7 @@ class LrnCalendar extends PolymerElement {
     dynamicEl.events = sendEvent;
 
     dynamicEl.valid = true;
-    dom(this.calendarView).appendChild(dynamicEl);
+    this.calendarView.appendChild(dynamicEl);
 
     var firstWeekCount = 1;
     while (days < this.totalDays) {
@@ -705,7 +704,7 @@ class LrnCalendar extends PolymerElement {
       firstWeekCount = firstWeekCount + 1;
       dynamicEl.valid = true;
 
-      dom(this.calendarView).appendChild(dynamicEl);
+      this.calendarView.appendChild(dynamicEl);
 
       days = days + 1;
       if (days == this.totalDays && this.newDay.getDay() != 6) {

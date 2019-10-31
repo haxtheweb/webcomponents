@@ -185,7 +185,7 @@ class CircleProgress extends mixinBehaviors(
     if (this.offsetWidth && this.offsetHeight) {
       this._cx = this.offsetWidth / 2;
       this._cy = this.offsetHeight / 2;
-      this.$.circle.style.display = "block";
+      this.shadowRoot.querySelector("#circle").style.display = "block";
     }
   }
 }

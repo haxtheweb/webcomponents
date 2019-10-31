@@ -152,9 +152,9 @@ code-editor {
       );
     }
     // HACK to get initial paint to have the correct form
-    this.$.form.modeTab = "advanced";
+    this.shadowRoot.querySelector("#form").modeTab = "advanced";
     setTimeout(() => {
-      this.$.form.modeTab = "configure";
+      this.shadowRoot.querySelector("#form").modeTab = "configure";
     }, 2000);
   }
   /**
@@ -162,7 +162,7 @@ code-editor {
    */
   _haxSchemaChanged(newValue) {
     if (newValue) {
-      this.$.code.editorValue = newValue;
+      this.shadowRoot.querySelector("#code").editorValue = newValue;
     }
   }
   /**

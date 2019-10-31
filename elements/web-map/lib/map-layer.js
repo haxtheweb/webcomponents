@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "./map-styles.js";
 /* styles scoped to inside a custom element must be in a style module */
 class MapLayer extends PolymerElement {

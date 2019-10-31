@@ -4,7 +4,6 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import {
   encapScript,
   findTagsInHTML,

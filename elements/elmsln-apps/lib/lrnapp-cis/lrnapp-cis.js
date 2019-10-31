@@ -1,6 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
@@ -798,8 +797,7 @@ class LrnappCis extends PolymerElement {
    */
 
   _makeService(e) {
-    var normalizedEvent = dom(e);
-    let active = normalizedEvent.localTarget.getAttribute("data-machine-name");
+    let active = e.target.getAttribute("data-machine-name");
     const network = this.activeCourse.topology.Network;
     let service = network.filter(service => {
       if (service.machine_name !== active) {
@@ -855,8 +853,7 @@ class LrnappCis extends PolymerElement {
   _loadCourseUrl(e) {
     // reset dialog to appear to be loading
     this.shadowRoot.querySelector("#loadingCourse").hidden = false;
-    var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget; // this will have the id of the current course
+    var local = e.target; // this will have the id of the current course
 
     var active = local.getAttribute("data-course-id"); // find the course by it's unique id and filter just to it
 

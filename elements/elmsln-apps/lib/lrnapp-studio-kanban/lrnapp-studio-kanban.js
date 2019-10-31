@@ -1,6 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/app-route/app-location.js";
 import "@polymer/app-route/app-route.js";
@@ -557,8 +556,7 @@ class LrnappStudioKanban extends PolymerElement {
    * @todo  remove this once we have a modal for it
    */
   _makeProjectEditLink(e) {
-    var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget;
+    var local = e.target;
     var parts = local.id.split("-");
     window.location.href =
       this.basePath +
@@ -571,8 +569,7 @@ class LrnappStudioKanban extends PolymerElement {
    * @todo  remove this once we have a modal for it
    */
   _makeAssignmentEditLink(e) {
-    var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget;
+    var local = e.target;
     var parts = local.id.split("-");
     window.location.href =
       this.basePath +
@@ -585,8 +582,7 @@ class LrnappStudioKanban extends PolymerElement {
    * Handle the push to delete a project, pop up the modal.
    */
   _deleteProjectDialog(e) {
-    var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget;
+    var local = e.target;
     var parts = local.id.split("-");
     // set values so we know what to drop
     this.projectToDelete = parts[1];
@@ -627,8 +623,7 @@ class LrnappStudioKanban extends PolymerElement {
    * Handle the push to delete an assignment, pop up the modal.
    */
   _deleteAssignmentDialog(e) {
-    var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget;
+    var local = e.target;
     var parts = local.id.split("-");
     this.assignmentToDelete = parts[2];
     // set values so we know what to drop
@@ -678,8 +673,7 @@ class LrnappStudioKanban extends PolymerElement {
    * Handle toggle for mouse class and manage classList array for paper-button.
    */
   assignmentClick(e) {
-    var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget;
+    var local = e.target;
     if (this.activeAssignment != null && this.activeAssignment != local.id) {
       this.shadowRoot
         .querySelector("#" + this.activeAssignment)

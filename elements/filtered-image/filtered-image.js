@@ -210,7 +210,7 @@ class FilteredImage extends SimpleColors {
     this._srcChanged();
   }
   _heightChanged() {
-    let svg = this.$.svg,
+    let svg = this.shadowRoot.querySelector("#svg"),
       image = svg.querySelector("#image"),
       rect = svg.querySelector("#rect");
     svg.setAttribute("height", this.height);
@@ -218,7 +218,7 @@ class FilteredImage extends SimpleColors {
     rect.setAttribute("height", this.height);
   }
   _widthChanged() {
-    let svg = this.$.svg,
+    let svg = this.shadowRoot.querySelector("#svg"),
       image = svg.querySelector("#image"),
       rect = svg.querySelector("#rect");
     svg.setAttribute("width", this.width);
@@ -229,7 +229,7 @@ class FilteredImage extends SimpleColors {
     return `0 0 ${width} ${height}`;
   }
   _srcChanged() {
-    let svg = this.$.svg,
+    let svg = this.shadowRoot.querySelector("#svg"),
       image = svg.querySelector("#image");
     image.setAttribute("href", this.src);
     image.setAttribute("xlink:href", this.src);
@@ -241,7 +241,7 @@ class FilteredImage extends SimpleColors {
         [0, 0, 1, 0, 0],
         [0, 0, 0, 1, 0]
       ],
-      svg = this.$.svg,
+      svg = this.shadowRoot.querySelector("#svg"),
       matrix = svg.querySelector("#matrix"),
       rgba = null;
     if (color.startsWith("#") && color.length > 6) {

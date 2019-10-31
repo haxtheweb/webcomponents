@@ -107,7 +107,8 @@ class HaxGizmoBrowserItem extends LitElement {
        * Tag
        */
       tagToInsert: {
-        type: String
+        type: String,
+        attribute: "tag-to-insert"
       }
     };
   }

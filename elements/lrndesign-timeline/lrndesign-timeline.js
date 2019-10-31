@@ -491,7 +491,7 @@ class LrndesignTimeline extends SimpleColors {
   _checkScroll() {
     let root = this,
       events = root.shadowRoot.querySelectorAll(".event");
-    if (events.length < 1) root.$.repeat.render();
+    if (events.length < 1) root.shadowRoot.querySelector("#repeat").render();
     events = root.shadowRoot.querySelectorAll(".event");
     events.forEach(event => {
       let top = event.offsetTop,

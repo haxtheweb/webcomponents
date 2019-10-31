@@ -69,13 +69,15 @@ class SiteQueryMenuSlice extends LitElement {
        * Otherwise it will dynamically update (default behavior)
        */
       fixedId: {
-        type: Boolean
+        type: Boolean,
+        attribute: "fixed-id"
       },
       /**
        * Allow disabling the dynamic leveling
        */
       noDynamicLevel: {
-        type: Boolean
+        type: Boolean,
+        attribute: "no-dynamic-level"
       },
       /**
        * Results which can be binded to something else

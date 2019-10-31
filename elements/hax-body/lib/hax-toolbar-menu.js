@@ -101,13 +101,15 @@ class HaxToolbarMenu extends LitElement {
        * Should we reset the selection after it is made
        */
       resetOnSelect: {
-        type: Boolean
+        type: Boolean,
+        attribute: "reset-on-select"
       },
       tooltip: {
         type: String
       },
       tooltipDirection: {
-        type: String
+        type: String,
+        attribute: "tooltip-direction"
       },
       selected: {
         type: String

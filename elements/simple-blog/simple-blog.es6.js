@@ -1,8 +1,7 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXCMSTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSThemeWiring.js";
+import { html } from "@polymer/polymer/polymer-element.js";
+import { HAXCMSPolymerElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSPolymerElementTheme.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/simple-blog/lib/simple-blog-listing.js";
 import "@lrnwebcomponents/simple-blog/lib/simple-blog-post.js";
@@ -12,7 +11,7 @@ import "@polymer/iron-pages/iron-pages.js";
  * `A simple blog and associated elements`
  * @demo demo/index.html
  */
-class SimpleBlog extends HAXCMSTheme(PolymerElement) {
+class SimpleBlog extends HAXCMSPolymerElementTheme {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -150,9 +149,9 @@ class SimpleBlog extends HAXCMSTheme(PolymerElement) {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.contentContainer = this.shadowRoot.querySelector(
-      "simple-blog-post"
-    ).$.contentcontainer;
+    this.contentContainer = this.shadowRoot
+      .querySelector("simple-blog-post")
+      .shadowRoot.querySelector("#contentcontainer");
   }
   /**
    * detatched life cycle

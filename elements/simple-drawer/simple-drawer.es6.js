@@ -229,8 +229,8 @@ app-drawer {
     // swap out the contents
     if (this.opened) {
       // wipe the slot of our drawer
-      while (dom(this).firstChild !== null) {
-        dom(this).removeChild(dom(this).firstChild);
+      while (this.firstChild !== null) {
+        this.removeChild(this.firstChild);
       }
       setTimeout(() => {
         this.show(
@@ -279,7 +279,7 @@ app-drawer {
           element = elements[slots[i]];
         }
         element.setAttribute("slot", slots[i]);
-        dom(this).appendChild(element);
+        this.appendChild(element);
       }
     }
     // minor delay to help the above happen prior to opening
@@ -295,8 +295,8 @@ app-drawer {
   animationEnded(e) {
     // wipe the slot of our drawer
     this.title = "";
-    while (dom(this).firstChild !== null) {
-      dom(this).removeChild(dom(this).firstChild);
+    while (this.firstChild !== null) {
+      this.removeChild(this.firstChild);
     }
     if (this.invokedBy) {
       async.microTask.run(() => {
@@ -310,7 +310,7 @@ app-drawer {
    * Close the drawer and do some clean up
    */
   close() {
-    this.$.drawer.close();
+    this.shadowRoot.querySelector("#drawer").close();
   }
   // Observer opened for changes
   _openedChanged(newValue, oldValue) {

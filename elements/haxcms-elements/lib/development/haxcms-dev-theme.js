@@ -4,7 +4,6 @@
  */
 import { html } from "@polymer/polymer/polymer-element.js";
 import { HAXCMSPolymerElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSPolymerElementTheme.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";
@@ -222,8 +221,7 @@ class HAXCMSDevTheme extends HAXCMSPolymerElementTheme {
    * that it ensures that happens
    */
   _itemTapped(e) {
-    var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget;
+    var local = e.target;
     var activeId = local.getAttribute("data-id");
     if (
       local.tagName === "PAPER-BUTTON" &&

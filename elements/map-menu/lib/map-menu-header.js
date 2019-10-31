@@ -1,6 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 import "@polymer/iron-collapse/iron-collapse.js";
 import "@polymer/iron-icon/iron-icon.js";
@@ -210,9 +209,8 @@ class MapMenuHeader extends PolymerElement {
   }
 
   __toggleEventHandler(e) {
-    let rootTarget = dom(e).rootTarget;
-    if (typeof rootTarget !== "undefined") {
-      if (typeof rootTarget.id !== "undefined" && rootTarget.id === "toggle") {
+    if (e.path && typeof e.path[0] !== "undefined") {
+      if (typeof e.path[0].id !== "undefined" && e.path[0].id === "toggle") {
         this.dispatchEvent(
           new CustomEvent("toggle-header", {
             bubbles: true,

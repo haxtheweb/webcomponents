@@ -5,7 +5,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { MutableData } from "@polymer/polymer/lib/mixins/mutable-data.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { wipeSlot } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
@@ -596,12 +595,10 @@ class GameShowQuiz extends MutableData(PolymerElement) {
     // logically
     if (
       typeof this.__activeTap !== typeof undefined &&
-      dom(this.__activeTap).parentNode.nextElementSibling.firstElementChild !=
+      this.__activeTap.parentNode.nextElementSibling.firstElementChild !=
         null
     ) {
-      dom(
-        this.__activeTap
-      ).parentNode.nextElementSibling.firstElementChild.focus();
+      this.__activeTap.parentNode.nextElementSibling.firstElementChild.focus();
       delete this.__activeTap;
     }
   }
@@ -816,7 +813,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
     this.set("attemptsData", {});
     this.set("attemptsData", attemptsData);
     // append child via polymer so we can style it correctly in shadow dom
-    dom(this.__activeTap).appendChild(icon);
+    this.__activeTap.appendChild(icon);
     // check for 2 points remaining
     if (this.remainingAttempts === 2) {
       this.shadowRoot
@@ -886,10 +883,10 @@ class GameShowQuiz extends MutableData(PolymerElement) {
         );
         // ship to backend if we have one
         if (this.gameScoreBoardBackend) {
-          this.$.gamebackend.url = `${this.gameScoreBoardBackend}/${
-            this.title
-          }/${this.points.total.earned}?token=${this.token}`;
-          this.$.gamebackend.generateRequest();
+          this.shadowRoot.querySelector("#gamebackend").url = `${
+            this.gameScoreBoardBackend
+          }/${this.title}/${this.points.total.earned}?token=${this.token}`;
+          this.shadowRoot.querySelector("#gamebackend").generateRequest();
         }
       }
     }
@@ -898,8 +895,7 @@ class GameShowQuiz extends MutableData(PolymerElement) {
    * Notice that something was tapped, resolve what it was.
    */
   _gameBoardTap(e) {
-    var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget;
+    var local = e.target;
     if (local.getAttribute("data-question-uuid") != null) {
       this.__submitDisabled = true;
       this.__activeTap = local;

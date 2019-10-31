@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-dropdown/iron-dropdown.js";
 /**
@@ -175,8 +174,8 @@ class PaperFabMorph extends PolymerElement {
     } else {
       var dropdown = document.createElement("iron-dropdown");
 
-      dom(dropdown).appendChild(this._content);
-      dom(this.root).appendChild(dropdown);
+      dropdown.appendChild(this._content);
+      this.root.appendChild(dropdown);
 
       this._overlay = dropdown;
       this._dropdown = dropdown;

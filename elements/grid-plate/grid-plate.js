@@ -661,9 +661,6 @@ class GridPlate extends LitElement {
           // fire an event that this is a core piece of the system
           this.dispatchEvent(
             new CustomEvent("disable-responsive-changed", {
-              bubbles: true,
-              cancelable: true,
-              composed: true,
               detail: this[propName]
             })
           );
@@ -767,10 +764,10 @@ class GridPlate extends LitElement {
     }
     if (before) {
       target = nodes[parseInt(position) - 1];
-      dom(this).insertBefore(this.activeItem, target);
+      this.insertBefore(this.activeItem, target);
     } else {
       target = nodes[parseInt(position) + 1];
-      dom(this).insertBefore(target, this.activeItem);
+      this.insertBefore(target, this.activeItem);
     }
   }
 
@@ -778,8 +775,7 @@ class GridPlate extends LitElement {
    * Move the active element based on which button got pressed.
    */
   moveActiveElement(e) {
-    var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget;
+    var local = e.target;
     // see if this was an up down left or right movement
     switch (local.id) {
       case "up":
@@ -906,10 +902,9 @@ class GridPlate extends LitElement {
    */
   _focusIn(e) {
     if (this.editMode) {
-      var normalizedEvent = dom(e);
-      var local = normalizedEvent.localTarget;
+      var local = e.target;
       // only activate if we touch something that's in the slot of the grid plate
-      if (dom(local).parentNode === this) {
+      if (local.parentNode === this) {
         this.activeItem = local;
       }
     }
@@ -1085,8 +1080,7 @@ class GridPlate extends LitElement {
    */
   dropEvent(e) {
     if (this.editMode) {
-      var normalizedEvent = dom(e);
-      var local = normalizedEvent.localTarget;
+      var local = e.target;
       // if we have a slot on what we dropped into then we need to mirror that item
       // and place ourselves below it in the DOM
       if (
@@ -1097,7 +1091,7 @@ class GridPlate extends LitElement {
         this.activeItem !== local
       ) {
         this.activeItem.setAttribute("slot", local.getAttribute("slot"));
-        dom(this).insertBefore(this.activeItem, local);
+        this.insertBefore(this.activeItem, local);
         // ensure that if we caught this event we process it
         e.preventDefault();
         e.stopPropagation();
@@ -1107,12 +1101,12 @@ class GridPlate extends LitElement {
       else if (local.tagName === "DIV" && local.classList.contains("column")) {
         var col = local.id.replace("col", "");
         this.activeItem.setAttribute("slot", "col-" + col);
-        dom(this).appendChild(this.activeItem);
+        this.appendChild(this.activeItem);
         // ensure that if we caught this event we process it
         e.preventDefault();
         e.stopPropagation();
       }
-      let children = dom(this).children;
+      let children = this.children;
       // walk the children and apply the draggable state needed
       for (var i in children) {
         if (typeof children[i].classList !== typeof undefined) {
@@ -1139,7 +1133,7 @@ class GridPlate extends LitElement {
    */
   dragStart(e) {
     if (this.editMode) {
-      let children = dom(this).children;
+      let children = this.children;
       // walk the children and apply the draggable state needed
       for (var i in children) {
         if (typeof children[i].classList !== typeof undefined) {
@@ -1159,7 +1153,7 @@ class GridPlate extends LitElement {
    */
   dragEnd(e) {
     if (this.editMode) {
-      let children = dom(this).children;
+      let children = this.children;
       // walk the children and apply the draggable state needed
       for (var i in children) {
         if (typeof children[i].classList !== typeof undefined) {

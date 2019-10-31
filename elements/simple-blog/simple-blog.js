@@ -149,9 +149,9 @@ class SimpleBlog extends HAXCMSPolymerElementTheme {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.contentContainer = this.shadowRoot.querySelector(
-      "simple-blog-post"
-    ).$.contentcontainer;
+    this.contentContainer = this.shadowRoot
+      .querySelector("simple-blog-post")
+      .shadowRoot.querySelector("#contentcontainer");
   }
   /**
    * detatched life cycle

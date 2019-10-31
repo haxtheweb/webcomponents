@@ -1,8 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { AppLocalizeBehavior } from "@polymer/app-localize-behavior/app-localize-behavior.js";
 import { mixinBehaviors } from "@polymer/polymer/lib/legacy/class.js";
 import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
@@ -727,7 +724,7 @@ class EcoJsonSchemaObject extends mixinBehaviors(
       this.listen(el, "build-fieldset", "_onBuildFieldset");
 
       if (typeof this.$ !== typeof undefined) {
-        dom(container).appendChild(el);
+        container.appendChild(el);
         if (property.description) {
           var id = "tip-" + property.property,
             tip = document.createElement("div");
@@ -742,7 +739,7 @@ class EcoJsonSchemaObject extends mixinBehaviors(
             tip.setAttribute("hidden", "hidden");
           tip.setAttribute("role", "tooltip");
           tip.innerHTML = property.description;
-          dom(container).appendChild(tip);
+          container.appendChild(tip);
         }
       }
       // support for slot injection too!
@@ -750,8 +747,8 @@ class EcoJsonSchemaObject extends mixinBehaviors(
         let temp = document.createElement("div");
         temp.innerHTML = property.component.slot;
         let cloneDiv = temp.cloneNode(true);
-        while (dom(cloneDiv).firstChild !== null) {
-          dom(el).appendChild(dom(cloneDiv).firstChild);
+        while (cloneDiv.firstChild !== null) {
+          el.appendChild(cloneDiv.firstChild);
         }
       }
       this.dispatchEvent(
@@ -797,7 +794,7 @@ class EcoJsonSchemaObject extends mixinBehaviors(
       );
     }
     el.schemaProperty = null;
-    dom(parent).removeChild(el);
+    parent.removeChild(el);
   }
   /**
    * clears a form or a fieldset container within a form
@@ -806,7 +803,7 @@ class EcoJsonSchemaObject extends mixinBehaviors(
    */
   _clearForm(container = this) {
     if (typeof this.$ !== typeof undefined) {
-      var formEl = dom(container);
+      var formEl = container;
       while (formEl.firstChild) {
         this._removePropertyEl(formEl.firstChild, container);
       }

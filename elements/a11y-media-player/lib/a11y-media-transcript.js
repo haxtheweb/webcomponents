@@ -102,7 +102,11 @@ class A11yMediaTranscript extends A11yMediaBehaviors {
        */
       status: {
         type: String,
-        computed: "_stampLoadingStatus(disableSeek)"
+        computed: "_stampLoadingStatus(disableSeek, __ready)"
+      },
+      __ready: {
+        type: Boolean,
+        value: false
       },
       /**
        * array of cues
@@ -231,6 +235,7 @@ class A11yMediaTranscript extends A11yMediaBehaviors {
    */
   ready() {
     super.ready();
+    this.__ready = true;
   }
 
   /**
@@ -463,12 +468,14 @@ class A11yMediaTranscript extends A11yMediaBehaviors {
     );
   }
 
-  _stampLoadingStatus(disableSeek) {
-    this.shadowRoot.querySelector("#loading").innerHTML =
-      disableSeek === false
-        ? this._getLocal("transcript", "label")
-        : this._getLocal("youTubeTranscript", "label");
-    return this.shadowRoot.querySelector("#loading").innerHTML;
+  _stampLoadingStatus(disableSeek, __ready) {
+    if (__ready) {
+      this.shadowRoot.querySelector("#loading").innerHTML =
+        disableSeek === false
+          ? this._getLocal("transcript", "label")
+          : this._getLocal("youTubeTranscript", "label");
+      return this.shadowRoot.querySelector("#loading").innerHTML;
+    }
   }
 }
 window.customElements.define(A11yMediaTranscript.tag, A11yMediaTranscript);

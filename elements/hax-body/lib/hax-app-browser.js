@@ -158,7 +158,8 @@ class HaxAppBrowser extends LitElement {
        */
       hasActive: {
         reflect: true,
-        type: Boolean
+        type: Boolean,
+        attribute: "has-active"
       },
       filtered: {
         type: Array

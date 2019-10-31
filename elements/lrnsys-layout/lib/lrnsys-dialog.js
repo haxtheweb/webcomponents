@@ -1,6 +1,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
@@ -191,7 +191,7 @@ class LrnsysDialog extends PolymerElement {
    */
   openDialog() {
     // assemble everything in the slot
-    let nodes = dom(this).getEffectiveChildNodes();
+    let nodes = FlattenedNodesObserver.getFlattenedNodes(this);
     let h = document.createElement("span");
     let c = document.createElement("span");
     let node = {};

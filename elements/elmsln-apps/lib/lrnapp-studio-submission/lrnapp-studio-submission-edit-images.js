@@ -1,6 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { SecureRequestXhr } from "@lrnwebcomponents/secure-request/secure-request.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "@polymer/iron-icon/iron-icon.js";
@@ -108,8 +107,7 @@ class LrnappStudioSubmissionEditImages extends SecureRequestXhr(
   }
 
   _selectPage(e) {
-    var normalizedEvent = dom(e);
-    var page = normalizedEvent.localTarget.getAttribute("data-page");
+    var page = e.target.getAttribute("data-page");
     this.set("selectedPage", page);
   }
 
@@ -147,9 +145,7 @@ class LrnappStudioSubmissionEditImages extends SecureRequestXhr(
   }
 
   _deleteImage(e) {
-    var normalizedEvent = dom(e);
-    // console.log(normalizedEvent.localTarget);
-    var deleteIndex = normalizedEvent.localTarget.getAttribute("data-index");
+    var deleteIndex = e.target.getAttribute("data-index");
     this.splice("images", deleteIndex, 1);
   }
   /**

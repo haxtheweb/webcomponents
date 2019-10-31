@@ -409,8 +409,9 @@ class LrnsysProgress extends PolymerElement {
         typeof newValue[this.active].dataUrl !== typeof undefined &&
         !this.disableAjaxCalls
       ) {
-        this.$.ajax.url = newValue[this.active].dataUrl;
-        this.$.ajax.generateRequest();
+        this.shadowRoot.querySelector("#ajax").url =
+          newValue[this.active].dataUrl;
+        this.shadowRoot.querySelector("#ajax").generateRequest();
       } else {
         setTimeout(() => {
           newValue[this.active].metadata.status = "available";
@@ -542,8 +543,10 @@ class LrnsysProgress extends PolymerElement {
         typeof this.items[this.active].metadata.dataUrl !== typeof undefined &&
         !this.disableAjaxCalls
       ) {
-        this.$.ajax.url = this.items[this.active].metadata.dataUrl;
-        this.$.ajax.generateRequest();
+        this.shadowRoot.querySelector("#ajax").url = this.items[
+          this.active
+        ].metadata.dataUrl;
+        this.shadowRoot.querySelector("#ajax").generateRequest();
       } else {
         setTimeout(() => {
           this.items[this.active].metadata.status = "available";
@@ -625,7 +628,7 @@ class LrnsysProgress extends PolymerElement {
    */
   _overallPercentageCompute(items, active) {
     if (typeof items !== typeof undefined) {
-      this.$.progress.classList.add("transiting");
+      this.shadowRoot.querySelector("#progress").classList.add("transiting");
       return (active / (items.length - 1)) * 100;
     }
     return 0;

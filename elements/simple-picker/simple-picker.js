@@ -892,16 +892,22 @@ class SimplePicker extends PolymerElement {
   ready() {
     super.ready();
     let root = this;
-    if (this.$.listbox !== undefined) {
-      this.$.listbox.addEventListener("click", function(e) {
-        root._handleListboxEvent(e, "click");
-      });
-      this.$.listbox.addEventListener("mousedown", function(e) {
-        root._handleListboxEvent(e, "mousedown");
-      });
-      this.$.listbox.addEventListener("keydown", function(e) {
-        root._handleListboxKeydown(e);
-      });
+    if (this.shadowRoot.querySelector("#listbox") !== undefined) {
+      this.shadowRoot
+        .querySelector("#listbox")
+        .addEventListener("click", function(e) {
+          root._handleListboxEvent(e, "click");
+        });
+      this.shadowRoot
+        .querySelector("#listbox")
+        .addEventListener("mousedown", function(e) {
+          root._handleListboxEvent(e, "mousedown");
+        });
+      this.shadowRoot
+        .querySelector("#listbox")
+        .addEventListener("keydown", function(e) {
+          root._handleListboxKeydown(e);
+        });
       this.addEventListener("blur", function(e) {
         this.expanded = false;
       });

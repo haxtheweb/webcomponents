@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/hardware-icons.js";
@@ -260,8 +259,7 @@ class MoocContent extends PolymerElement {
    * Ensure modal is closed on tap of an item.
    */
   _modalTap(e) {
-    var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget;
+    var local = e.target;
     // verify that it is a buttonß
     if (local.tagName === "LRNSYS-BUTTON") {
       if (this.activeNodeItem != null) {
@@ -474,7 +472,7 @@ class MoocContent extends PolymerElement {
   __injectStyle(style) {
     // target and wipe our id area by force
     if (this.shadowRoot.querySelector("#hackycsspotterhates") != null) {
-      dom(this.shadowRoot.querySelector("#hackycontainer")).innerHTML = "";
+      this.shadowRoot.querySelector("#hackycontainer").innerHTML = "";
     }
     // construct a new style tag and inject it overtop of what was there previously
     var customStyle = document.createElement("style", "custom-style");
@@ -482,9 +480,7 @@ class MoocContent extends PolymerElement {
     // inject our styles
     customStyle.textContent = style;
     // we have now successfully ruined something encapsulated and once beautiful
-    dom(this.shadowRoot.querySelector("#hackycontainer")).appendChild(
-      customStyle
-    );
+    this.shadowRoot.querySelector("#hackycontainer").appendChild(customStyle);
   }
   /**
    * highjack shadowDom

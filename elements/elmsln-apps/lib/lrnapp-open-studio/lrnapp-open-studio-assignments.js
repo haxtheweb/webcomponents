@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
@@ -178,9 +177,7 @@ class LrnappOpenStudioAssignments extends PolymerElement {
    * Handle tap on paper-button above to redirect to the correct submission url.
    */
   _loadSubmissionUrl(e) {
-    let root = this;
-    var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget;
+    var local = e.target;
     // this will have the id of the current submission
     var active = local.getAttribute("data-submission-id");
     // @todo need a cleaner integration but this at least goes the right place for now
@@ -203,8 +200,7 @@ class LrnappOpenStudioAssignments extends PolymerElement {
     return false;
   }
   _scrollToTarget(e) {
-    var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget;
+    var local = e.target;
     // this will have the id of the current submission
     var active = local.getAttribute("data-submission-id");
     this.shadowRoot

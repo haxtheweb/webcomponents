@@ -156,7 +156,7 @@ paper-tooltip {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.$.btn.addEventListener("click", e => {
+    this.shadowRoot.querySelector("#btn").addEventListener("click", e => {
       if (this.target) {
         this.target.scrollIntoView({
           behavior: "smooth",
@@ -176,7 +176,7 @@ paper-tooltip {
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    this.$.btn.removeEventListener("click", e => {
+    this.shadowRoot.querySelector("#btn").removeEventListener("click", e => {
       if (this.target) {
         this.target.scrollIntoView({
           behavior: "smooth",

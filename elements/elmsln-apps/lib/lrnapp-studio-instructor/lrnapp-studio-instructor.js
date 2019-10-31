@@ -1,6 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/app-route/app-location.js";
@@ -751,8 +750,7 @@ class LrnappStudioInstructor extends PolymerElement {
    */
   _changeActiveItem(e) {
     document.body.classList.add("scroll-disabled");
-    var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget;
+    var local = e.target;
     var newstudent;
     var newassignment;
     // use button id in order to move around in the grid as far as active
@@ -980,8 +978,7 @@ class LrnappStudioInstructor extends PolymerElement {
    * Set route for active submission to load
    */
   _setActiveSubmission(e) {
-    var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget;
+    var local = e.target;
     this.__rememberClick = local;
     var item = local.id.split("-");
     // find the active elements
@@ -1007,8 +1004,7 @@ class LrnappStudioInstructor extends PolymerElement {
     this.shadowRoot.querySelector("#prevassignment").disabled = true;
     this.shadowRoot.querySelector("#nextstudent").disabled = true;
     this.shadowRoot.querySelector("#prevstudent").disabled = true;
-    var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget;
+    var local = e.target;
     this.__rememberClick = local;
     var item = local.id.split("-");
     // find the active elements

@@ -1,14 +1,12 @@
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-
 var _Mathround = Math.round,
   Reader = function(el) {
     this.element = el;
-    this.reader = dom(el.root).querySelector(".pdf-viewer");
+    this.reader = el.root.querySelector(".pdf-viewer");
     this.viewportOut = this.reader.querySelector(".pdf-viewport-out");
     this.element = this.reader.querySelector(".pdf-element");
     this.container = this.reader.querySelector(".sidebar");
     this.toolbar = this.reader.querySelector(".pdf-toolbar");
-    this.card = dom(el.root).querySelector(".style-scope");
+    this.card = el.root.querySelector(".style-scope");
     this.toolbarHeight = 0;
     this.title = this.toolbar.querySelector(".title");
     this.enableTextSelection = el.enableTextSelection;
@@ -142,7 +140,7 @@ Reader.prototype.sidebarSetup = function(currentThis) {
       canvas = document.createElement("canvas");
     div.appendChild(canvas);
     container.appendChild(div);
-    var addPage = dom(self.container).childNodes[page.pageIndex];
+    var addPage = self.container.childNodes[page.pageIndex];
     addPage.addEventListener("click", function() {
       var nextPage = page.pageIndex + 1;
       click.sideBarClick(nextPage, currentThis.instance, currentThis);

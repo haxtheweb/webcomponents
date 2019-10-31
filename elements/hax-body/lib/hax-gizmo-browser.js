@@ -93,9 +93,9 @@ class HaxGizmoBrowser extends LitElement {
           <hax-gizmo-browser-item
             .index="${gizmo.index}"
             .title="${gizmo.title}"
-            .tag-to-insert="${gizmo.tag}"
+            tag-to-insert="${gizmo.tag}"
             .icon="${gizmo.icon}"
-            .color="${gizmo.color}"
+            color="${gizmo.color}"
             .author="${gizmo.author}"
             .teaser="${gizmo.teaser}"
             .description="${gizmo.description}"

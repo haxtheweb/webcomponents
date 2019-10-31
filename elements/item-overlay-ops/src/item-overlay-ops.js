@@ -4,7 +4,6 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icons/iron-icons.js";
@@ -358,8 +357,7 @@ class ItemOverlayOps extends PolymerElement {
    * Support tapping the buttons in the top
    */
   _opTap(e) {
-    let normalizedEvent = dom(e);
-    let local = normalizedEvent.localTarget;
+    let local = e.target;
     this.activeTitle = local.getAttribute("id");
     this.activeOp = local.getAttribute("id");
     this._resetActive();
@@ -429,8 +427,7 @@ class ItemOverlayOps extends PolymerElement {
    * fire event because an option was selected.
    */
   _optionSelected(e) {
-    let normalizedEvent = dom(e);
-    let local = normalizedEvent.localTarget;
+    let local = e.target;
     // fire that an option was selected and about what operation
     let ops = {
       element: this,

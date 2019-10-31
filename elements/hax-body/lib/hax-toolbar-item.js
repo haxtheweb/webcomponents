@@ -229,7 +229,8 @@ class HaxToolbarItem extends LitElement {
        * Direction that the tooltip should flow
        */
       tooltipDirection: {
-        type: String
+        type: String,
+        attribute: "tooltip-direction"
       },
       default: {
         type: Boolean,

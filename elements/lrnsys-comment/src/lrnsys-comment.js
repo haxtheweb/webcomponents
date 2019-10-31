@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/paper-input/paper-textarea.js";
 import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
@@ -434,8 +433,7 @@ class LrnsysComment extends PolymerElement {
    */
   actionHandler(e) {
     // convert click handler into local dom object
-    var normalizedEvent = dom(e);
-    var target = normalizedEvent.localTarget;
+    var target = e.target;
     var comment = null;
     // ensure we have a comment ID to operate against
     if (target.dataCommentid != null && !target.disabled) {

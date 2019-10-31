@@ -1,5 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { wrap } from "@polymer/polymer/lib/utils/wrap.js";
 import "@polymer/iron-flex-layout/iron-flex-layout.js";
 import "@polymer/iron-dropdown/iron-dropdown.js";
 import "@polymer/neon-animation/neon-animations.js";
@@ -137,23 +137,25 @@ class PaperFabSpeedDial extends PolymerElement {
   static get observers() {
     return ["_updateDropdown(direction, offset)"];
   }
-
+  getDistributedNodes(node) {
+    return node.localName === "slot"
+      ? wrap(node).assignedNodes({ flatten: true })
+      : [];
+  }
   ready() {
     super.ready();
-
-    var fab = dom(
+    var fab = this.getDistributedNodes(
       this.shadowRoot.querySelector("#fabContainer")
-    ).getDistributedNodes()[0];
+    )[0];
     fab.addEventListener(
       "click",
       function() {
         this.shadowRoot.querySelector("#dropdown").open();
       }.bind(this)
     );
-
-    var content = dom(
+    var content = this.getDistributedNodes(
       this.shadowRoot.querySelector("#contentContainer")
-    ).getDistributedNodes()[0];
+    )[0];
     content.addEventListener(
       "click",
       function() {

@@ -103,7 +103,7 @@ class DataViz extends PolymerElement {
       series: queryData.series
     };
 
-    this.$.barChart.data = bardata;
+    this.shadowRoot.querySelector("#barChart").data = bardata;
   }
 
   /**

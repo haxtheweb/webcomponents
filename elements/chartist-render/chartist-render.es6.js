@@ -192,7 +192,7 @@ Container class	Ratio
     if (
       root !== undefined &&
       typeof Chartist === "object" &&
-      root.$.chart !== null &&
+      root.shadowRoot.querySelector("#chart") !== null &&
       root.data !== null
     ) {
       if (root.type == "bar") {
@@ -216,21 +216,21 @@ Container class	Ratio
           });
         }
         chart = Chartist.Bar(
-          this.$.chart,
+          this.shadowRoot.querySelector("#chart"),
           root.data,
           root.options,
           root.responsiveOptions
         );
       } else if (root.type == "line") {
         chart = Chartist.Line(
-          this.$.chart,
+          this.shadowRoot.querySelector("#chart"),
           root.data,
           root.options,
           root.responsiveOptions
         );
       } else if (root.type == "pie") {
         chart = Chartist.Pie(
-          this.$.chart,
+          this.shadowRoot.querySelector("#chart"),
           root.data,
           root.options,
           root.responsiveOptions

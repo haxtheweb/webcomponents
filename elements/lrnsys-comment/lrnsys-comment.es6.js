@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/paper-input/paper-textarea.js";
 import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
@@ -389,19 +388,24 @@ class LrnsysComment extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.$.bodyarea.addEventListener("click", this.bodyToggle.bind(this));
-    this.$.bodyarea.addEventListener("dblclick", this.bodyToggleOn.bind(this));
+    this.shadowRoot
+      .querySelector("#bodyarea")
+      .addEventListener("click", this.bodyToggle.bind(this));
+    this.shadowRoot
+      .querySelector("#bodyarea")
+      .addEventListener("dblclick", this.bodyToggleOn.bind(this));
   }
   /**
    * detached lifecycle
    */
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.$.bodyarea.removeEventListener("click", this.bodyToggle.bind(this));
-    this.$.bodyarea.removeEventListener(
-      "dblclick",
-      this.bodyToggleOn.bind(this)
-    );
+    this.shadowRoot
+      .querySelector("#bodyarea")
+      .removeEventListener("click", this.bodyToggle.bind(this));
+    this.shadowRoot
+      .querySelector("#bodyarea")
+      .removeEventListener("dblclick", this.bodyToggleOn.bind(this));
   }
 
   _generateName(name, visual) {
@@ -429,8 +433,7 @@ class LrnsysComment extends PolymerElement {
    */
   actionHandler(e) {
     // convert click handler into local dom object
-    var normalizedEvent = dom(e);
-    var target = normalizedEvent.localTarget;
+    var target = e.target;
     var comment = null;
     // ensure we have a comment ID to operate against
     if (target.dataCommentid != null && !target.disabled) {
@@ -446,7 +449,9 @@ class LrnsysComment extends PolymerElement {
           })
         );
       } else if (target.id == "like") {
-        this.$.like.classList.toggle("like-icon-color");
+        this.shadowRoot
+          .querySelector("#like")
+          .classList.toggle("like-icon-color");
         this.dispatchEvent(
           new CustomEvent("comment-like", {
             bubbles: true,
@@ -482,14 +487,16 @@ class LrnsysComment extends PolymerElement {
     if (typeof this.comment !== typeof undefined && this.comment.actions.edit) {
       async.microTask.run(() => {
         // show / hide the edit vs display area
-        this.$.renderedcomment.hidden = this.editform;
-        this.$.commenteditor.hidden = !this.editform;
+        this.shadowRoot.querySelector(
+          "#renderedcomment"
+        ).hidden = this.editform;
+        this.shadowRoot.querySelector("#commenteditor").hidden = !this.editform;
         // simple icon toggle
         if (this.editform) {
-          this.$.edit.icon = "save";
-          this.$.edit.alt = "Save";
-          this.$.reply.disabled = true;
-          this.$.editcomment.focus();
+          this.shadowRoot.querySelector("#edit").icon = "save";
+          this.shadowRoot.querySelector("#edit").alt = "Save";
+          this.shadowRoot.querySelector("#reply").disabled = true;
+          this.shadowRoot.querySelector("#editcomment").focus();
           this.dispatchEvent(
             new CustomEvent("comment-editing", {
               bubbles: true,
@@ -512,9 +519,9 @@ class LrnsysComment extends PolymerElement {
           } else {
             this.blockFirstState = false;
           }
-          this.$.edit.icon = "create";
-          this.$.edit.alt = "Edit";
-          this.$.reply.disabled = false;
+          this.shadowRoot.querySelector("#edit").icon = "create";
+          this.shadowRoot.querySelector("#edit").alt = "Edit";
+          this.shadowRoot.querySelector("#reply").disabled = false;
         }
       });
     }
@@ -523,14 +530,14 @@ class LrnsysComment extends PolymerElement {
    * Toggle the body field expanding to show the whole comment
    */
   bodyToggle(e) {
-    this.$.bodyarea.classList.remove("nowrap-me");
+    this.shadowRoot.querySelector("#bodyarea").classList.remove("nowrap-me");
   }
 
   /**
    * Toggle the body field expanding to show the whole comment
    */
   bodyToggleOn(e) {
-    this.$.bodyarea.classList.toggle("nowrap-me");
+    this.shadowRoot.querySelector("#bodyarea").classList.toggle("nowrap-me");
   }
 }
 window.customElements.define(LrnsysComment.tag, LrnsysComment);

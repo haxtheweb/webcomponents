@@ -249,7 +249,8 @@ class HaxTextContext extends LitElement {
        * Selected value to match format of the tag currently.
        */
       selectedValue: {
-        type: String
+        type: String,
+        attribute: "selected-value"
       },
       /**
        * Selection tracking
@@ -261,7 +262,8 @@ class HaxTextContext extends LitElement {
        * Is this safari
        */
       isSafari: {
-        type: Boolean
+        type: Boolean,
+        attribute: "is-safari"
       }
     };
   }

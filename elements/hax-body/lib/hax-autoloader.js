@@ -1,5 +1,4 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import * as async from "@polymer/polymer/lib/utils/async.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import { HAXElement } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
@@ -11,14 +10,21 @@ import { varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
  * @microcopy - the mental model for this element
  * - hax-autoloader - autoloading of custom element imports which can then emmit events as needed
  */
-class HaxAutoloader extends HAXElement(PolymerElement) {
-  static get template() {
-    return html`
-      <style>
+class HaxAutoloader extends HAXElement(LitElement) {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: none;
         }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
       <slot></slot>
     `;
   }
@@ -31,17 +37,18 @@ class HaxAutoloader extends HAXElement(PolymerElement) {
        * List of elements processed so we don't double process
        */
       processedList: {
-        type: Object,
-        value: {}
+        type: Object
       }
     };
   }
-
+  constructor() {
+    super();
+    this.processedList = {};
+  }
   /**
-   * Attached to the DOM, now fire that we exist.
+   * LitElement ready life cycle
    */
-  ready() {
-    super.ready();
+  firstUpdated(changedProperties) {
     // fire an event that this is a core piece of the system
     this.dispatchEvent(
       new CustomEvent("hax-register-core-piece", {
@@ -58,9 +65,9 @@ class HaxAutoloader extends HAXElement(PolymerElement) {
     this._observer = new FlattenedNodesObserver(this, info => {
       // if we've got new nodes, we have to react to that
       if (info.addedNodes.length > 0) {
-        async.microTask.run(() => {
+        setTimeout(() => {
           this.processNewElements(info.addedNodes);
-        });
+        }, 5);
       }
     });
   }

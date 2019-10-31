@@ -169,9 +169,9 @@ class HaxschemaBuilder extends PolymerElement {
       );
     }
     // HACK to get initial paint to have the correct form
-    this.$.form.modeTab = "advanced";
+    this.shadowRoot.querySelector("#form").modeTab = "advanced";
     setTimeout(() => {
-      this.$.form.modeTab = "configure";
+      this.shadowRoot.querySelector("#form").modeTab = "configure";
     }, 2000);
   }
   /**
@@ -179,7 +179,7 @@ class HaxschemaBuilder extends PolymerElement {
    */
   _haxSchemaChanged(newValue) {
     if (newValue) {
-      this.$.code.editorValue = newValue;
+      this.shadowRoot.querySelector("#code").editorValue = newValue;
     }
   }
   /**

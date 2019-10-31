@@ -731,15 +731,19 @@ class OutlineDesigner extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.$.ironlist.addEventListener(
-      "item-overlay-op-changed",
-      this._overlayOpChanged.bind(this)
-    );
-    this.$.ironlist.addEventListener(
-      "item-overlay-option-selected",
-      this._overlayOpSelected.bind(this)
-    );
-    pagemap(this.$.minimaparea, {
+    this.shadowRoot
+      .querySelector("#ironlist")
+      .addEventListener(
+        "item-overlay-op-changed",
+        this._overlayOpChanged.bind(this)
+      );
+    this.shadowRoot
+      .querySelector("#ironlist")
+      .addEventListener(
+        "item-overlay-option-selected",
+        this._overlayOpSelected.bind(this)
+      );
+    pagemap(this.shadowRoot.querySelector("#minimaparea"), {
       viewport: null,
       styles: {
         "ul,ol,li": "rgba(0, 0, 0, 0.08)",
@@ -758,14 +762,18 @@ class OutlineDesigner extends PolymerElement {
    */
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.$.ironlist.removeEventListener(
-      "item-overlay-op-changed",
-      this._overlayOpChanged.bind(this)
-    );
-    this.$.ironlist.removeEventListener(
-      "item-overlay-option-selected",
-      this._overlayOpSelected.bind(this)
-    );
+    this.shadowRoot
+      .querySelector("#ironlist")
+      .removeEventListener(
+        "item-overlay-op-changed",
+        this._overlayOpChanged.bind(this)
+      );
+    this.shadowRoot
+      .querySelector("#ironlist")
+      .removeEventListener(
+        "item-overlay-option-selected",
+        this._overlayOpSelected.bind(this)
+      );
   }
   _toggleMiniMap(e) {
     this.miniMap = !this.miniMap;
@@ -774,11 +782,15 @@ class OutlineDesigner extends PolymerElement {
   _miniMapChanged(newValue, oldValue) {
     if (typeof newValue !== typeof undefined) {
       if (newValue) {
-        this.$.minimap.icon = "device:gps-fixed";
-        this.$.minimaparea.classList.add("show-minimap");
+        this.shadowRoot.querySelector("#minimap").icon = "device:gps-fixed";
+        this.shadowRoot
+          .querySelector("#minimaparea")
+          .classList.add("show-minimap");
       } else {
-        this.$.minimap.icon = "device:gps-off";
-        this.$.minimaparea.classList.remove("show-minimap");
+        this.shadowRoot.querySelector("#minimap").icon = "device:gps-off";
+        this.shadowRoot
+          .querySelector("#minimaparea")
+          .classList.remove("show-minimap");
       }
     }
   }
@@ -791,7 +803,7 @@ class OutlineDesigner extends PolymerElement {
         this.viewMode = "outline";
         break;
       case "outline":
-        this.outlineData = this.$.outline.getData();
+        this.outlineData = this.shadowRoot.querySelector("#outline").getData();
         this.viewMode = "tree";
         break;
       case "tree":
@@ -839,7 +851,7 @@ class OutlineDesigner extends PolymerElement {
       if (this.selectedView === 0) {
         async.microTask.run(() => {
           setTimeout(() => {
-            this.$.ironlist.dispatchEvent(
+            this.shadowRoot.querySelector("#ironlist").dispatchEvent(
               new CustomEvent("iron-resize", {
                 bubbles: true,
                 cancelable: true,
@@ -915,13 +927,13 @@ class OutlineDesigner extends PolymerElement {
     if (typeof newValue !== typeof undefined) {
       switch (newValue) {
         case "cards":
-          this.$.viewmode.classList.add("rotate-90");
+          this.shadowRoot.querySelector("#viewmode").classList.add("rotate-90");
           this.selectedView = 0;
           this.viewModeIcon = "icons:view-module";
           this.viewModeLabel = "Card view";
           async.microTask.run(() => {
             setTimeout(() => {
-              this.$.ironlist.dispatchEvent(
+              this.shadowRoot.querySelector("#ironlist").dispatchEvent(
                 new CustomEvent("iron-resize", {
                   bubbles: true,
                   cancelable: true,
@@ -934,19 +946,23 @@ class OutlineDesigner extends PolymerElement {
           });
           break;
         case "outline":
-          this.$.viewmode.classList.remove("rotate-90");
+          this.shadowRoot
+            .querySelector("#viewmode")
+            .classList.remove("rotate-90");
           this.selectedView = 1;
           this.viewModeIcon = "icons:view-list";
           this.viewModeLabel = "Outline view";
           break;
         case "tree":
-          this.$.viewmode.classList.add("rotate-90");
+          this.shadowRoot.querySelector("#viewmode").classList.add("rotate-90");
           this.selectedView = 2;
           this.viewModeIcon = "social:share";
           this.viewModeLabel = "Tree view";
           break;
         case "drag":
-          this.$.viewmode.classList.remove("rotate-90");
+          this.shadowRoot
+            .querySelector("#viewmode")
+            .classList.remove("rotate-90");
           this.selectedView = 3;
           this.viewModeIcon = "icons:touch-app";
           this.viewModeLabel = "Draggable cards";
