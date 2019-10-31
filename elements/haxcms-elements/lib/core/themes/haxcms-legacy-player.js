@@ -388,7 +388,7 @@ class HAXCMSLegacyPlayer extends PolymerElement {
         microTask.run(() => {
           setTimeout(() => {
             let frag = document.createRange().createContextualFragment(html);
-            dom(this).appendChild(frag);
+            this.appendChild(frag);
             const evt = new CustomEvent(
               "json-outline-schema-active-body-changed",
               {

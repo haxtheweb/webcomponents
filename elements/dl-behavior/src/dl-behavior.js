@@ -63,9 +63,9 @@ export const MtzFileDownloadBehaviors = function(SuperClass) {
         link.href = (window.URL || window.webkitURL).createObjectURL(blob);
         link.download = filename;
         link.target = newTab ? "_blank" : "_self";
-        dom(this).appendChild(link);
+        this.appendChild(link);
         link.click();
-        dom(this).removeChild(link);
+        this.removeChild(link);
       }
     }
 

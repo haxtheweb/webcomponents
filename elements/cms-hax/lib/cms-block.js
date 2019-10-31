@@ -149,13 +149,13 @@ class CMSBlock extends PolymerElement {
           newValue.editText;
       }
       // wipe our own slot here
-      wipeSlot(dom(this));
+      wipeSlot(this);
       // now inject the content we got
       microTask.run(() => {
         let frag = document.createElement("span");
         frag.innerHTML = newValue.content;
         let newNode = frag.cloneNode(true);
-        dom(this).appendChild(newNode);
+        this.appendChild(newNode);
         setTimeout(() => {
           this.loading = false;
         }, 600);

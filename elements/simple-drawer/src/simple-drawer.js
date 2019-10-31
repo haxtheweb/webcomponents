@@ -69,8 +69,8 @@ class SimpleDrawer extends PolymerElement {
     // swap out the contents
     if (this.opened) {
       // wipe the slot of our drawer
-      while (dom(this).firstChild !== null) {
-        dom(this).removeChild(dom(this).firstChild);
+      while (this.firstChild !== null) {
+        this.removeChild(this.firstChild);
       }
       setTimeout(() => {
         this.show(
@@ -119,7 +119,7 @@ class SimpleDrawer extends PolymerElement {
           element = elements[slots[i]];
         }
         element.setAttribute("slot", slots[i]);
-        dom(this).appendChild(element);
+        this.appendChild(element);
       }
     }
     // minor delay to help the above happen prior to opening
@@ -135,8 +135,8 @@ class SimpleDrawer extends PolymerElement {
   animationEnded(e) {
     // wipe the slot of our drawer
     this.title = "";
-    while (dom(this).firstChild !== null) {
-      dom(this).removeChild(dom(this).firstChild);
+    while (this.firstChild !== null) {
+      this.removeChild(this.firstChild);
     }
     if (this.invokedBy) {
       async.microTask.run(() => {

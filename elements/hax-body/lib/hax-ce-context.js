@@ -127,9 +127,8 @@ class HaxCeContext extends PolymerElement {
       typeof newValue.settings !== typeof undefined
     ) {
       // clear current slot for the tag
-      let slot = dom(this);
-      while (slot.firstChild !== null) {
-        slot.removeChild(slot.firstChild);
+      while (this.firstChild !== null) {
+        this.removeChild(this.firstChild);
       }
       let settings = newValue.settings.quick;
       let configure = newValue.settings.configure;
@@ -195,7 +194,7 @@ class HaxCeContext extends PolymerElement {
         } else {
           item.slotToBind = setting.slot;
         }
-        slot.appendChild(item);
+        this.appendChild(item);
       }
     }
   }

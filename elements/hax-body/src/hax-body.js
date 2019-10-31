@@ -876,14 +876,11 @@ class HaxBody extends PolymerElement {
         }
         dom(this.activeContainerNode).insertBefore(newNode, this.activeNode);
       } else {
-        dom(this).insertBefore(
-          newNode,
-          this.activeContainerNode.nextElementSibling
-        );
+        this.insertBefore(newNode, this.activeContainerNode.nextElementSibling);
       }
     } else {
       // send this into the root, which should filter it back down into the slot
-      dom(this).appendChild(newNode);
+      this.appendChild(newNode);
     }
     this.shadowRoot.querySelector("#textcontextmenu").highlightOps = false;
     this.__updateLockFocus = newNode;
@@ -1116,23 +1113,23 @@ class HaxBody extends PolymerElement {
       case "first":
         // ensure we can go up, first being a mode of up
         if (container.previousElementSibling !== null) {
-          dom(this).insertBefore(container, dom(this).firstChild);
+          this.insertBefore(container, this.firstChild);
         }
         break;
       case "up":
         // ensure we can go up
         if (container.previousElementSibling !== null) {
-          dom(this).insertBefore(container, container.previousElementSibling);
+          this.insertBefore(container, container.previousElementSibling);
         }
         break;
       case "down":
         if (container.nextElementSibling !== null) {
-          dom(this).insertBefore(container.nextElementSibling, container);
+          this.insertBefore(container.nextElementSibling, container);
         }
         break;
       case "last":
         if (container.nextElementSibling !== null) {
-          dom(this).appendChild(container);
+          this.appendChild(container);
         }
         break;
       // @todo support other directions for when inside of an element
@@ -1217,7 +1214,7 @@ class HaxBody extends PolymerElement {
     }
     // Switch!
     try {
-      dom(this).replaceChild(replacement, node);
+      this.replaceChild(replacement, node);
       // focus on the thing switched to
       setTimeout(() => {
         let children = dom(replacement).getEffectiveChildNodes();
@@ -1321,9 +1318,9 @@ class HaxBody extends PolymerElement {
               }
               replacement.setAttribute(nodeName, value);
             }
-            dom(this).appendChild(replacement);
+            this.appendChild(replacement);
           } else {
-            dom(this).appendChild(fragment.firstChild);
+            this.appendChild(fragment.firstChild);
           }
         } else {
           // @todo might want to support appending or keeping track of comments / non tags

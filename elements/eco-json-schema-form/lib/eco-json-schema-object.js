@@ -833,11 +833,11 @@ class EcoJsonSchemaObject extends mixinBehaviors(
     /*
     console.log(
       "_errorChanged",
-      dom(this),
-      dom(this).querySelectorAll("[name]"),
+      this,
+      this.querySelectorAll("[name]"),
       this.error
     );*/
-    dom(this).childNodes.forEach(el => {
+    this.childNodes.forEach(el => {
       var name = el.getAttribute("name");
       if (this.error && this.error[name]) {
         el.error = this.error[name];

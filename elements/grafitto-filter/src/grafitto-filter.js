@@ -350,7 +350,7 @@ class GrafittoFilter extends mixinBehaviors(
     // set filtered to whatever it is to start
     this.__clone[this.as] = filtered;
     // stamp this into itself...weird I know
-    dom(this).appendChild(this.__clone.root);
+    this.appendChild(this.__clone.root);
   }
 
   /**

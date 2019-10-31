@@ -199,12 +199,12 @@ class CMSToken extends PolymerElement {
           .addEventListener("click", this.__tokenClicked.bind(this));
       }
       // wipe our own slot here
-      wipeSlot(dom(this));
+      wipeSlot(this);
       // now inject the content we got
       microTask.run(() => {
         let template = document.createElement("template");
         template.innerHTML = newValue.content;
-        dom(this).appendChild(document.importNode(template.content, true));
+        this.appendChild(document.importNode(template.content, true));
         this.loading = false;
       });
     }

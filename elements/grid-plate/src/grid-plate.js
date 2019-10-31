@@ -764,10 +764,10 @@ class GridPlate extends LitElement {
     }
     if (before) {
       target = nodes[parseInt(position) - 1];
-      dom(this).insertBefore(this.activeItem, target);
+      this.insertBefore(this.activeItem, target);
     } else {
       target = nodes[parseInt(position) + 1];
-      dom(this).insertBefore(target, this.activeItem);
+      this.insertBefore(target, this.activeItem);
     }
   }
 
@@ -1094,7 +1094,7 @@ class GridPlate extends LitElement {
         this.activeItem !== local
       ) {
         this.activeItem.setAttribute("slot", local.getAttribute("slot"));
-        dom(this).insertBefore(this.activeItem, local);
+        this.insertBefore(this.activeItem, local);
         // ensure that if we caught this event we process it
         e.preventDefault();
         e.stopPropagation();
@@ -1104,12 +1104,12 @@ class GridPlate extends LitElement {
       else if (local.tagName === "DIV" && local.classList.contains("column")) {
         var col = local.id.replace("col", "");
         this.activeItem.setAttribute("slot", "col-" + col);
-        dom(this).appendChild(this.activeItem);
+        this.appendChild(this.activeItem);
         // ensure that if we caught this event we process it
         e.preventDefault();
         e.stopPropagation();
       }
-      let children = dom(this).children;
+      let children = this.children;
       // walk the children and apply the draggable state needed
       for (var i in children) {
         if (typeof children[i].classList !== typeof undefined) {
@@ -1136,7 +1136,7 @@ class GridPlate extends LitElement {
    */
   dragStart(e) {
     if (this.editMode) {
-      let children = dom(this).children;
+      let children = this.children;
       // walk the children and apply the draggable state needed
       for (var i in children) {
         if (typeof children[i].classList !== typeof undefined) {
@@ -1156,7 +1156,7 @@ class GridPlate extends LitElement {
    */
   dragEnd(e) {
     if (this.editMode) {
-      let children = dom(this).children;
+      let children = this.children;
       // walk the children and apply the draggable state needed
       for (var i in children) {
         if (typeof children[i].classList !== typeof undefined) {

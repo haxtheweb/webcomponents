@@ -762,8 +762,7 @@ class HaxPreview extends PolymerElement {
   _activeHaxElementChanged(newValue, oldValue) {
     if (typeof newValue !== typeof undefined) {
       // wipe the preview area and assocaited node
-      let preview = dom(this);
-      wipeSlot(preview, "*");
+      wipeSlot(this, "*");
       this.set("previewNode", {});
       this.modeTab = "configure";
       // if we have something, generate the new element inside it
@@ -784,7 +783,7 @@ class HaxPreview extends PolymerElement {
           newNode.removeAttribute("slot");
         }
         // send this into the root, which should filter it back down into the slot
-        preview.appendChild(newNode);
+        this.appendChild(newNode);
         // need to let append propagate, it probably takes like no time
         this.set("previewNode", newNode);
       }
@@ -794,7 +793,7 @@ class HaxPreview extends PolymerElement {
     }
   }
   /**
-   * Value in the form has changed, reflect to the preview.
+   * Value in the form has changed, reflect to the preview
    */
   _valueChanged(valueChange) {
     var node = this.previewNode;

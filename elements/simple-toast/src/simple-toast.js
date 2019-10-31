@@ -101,11 +101,11 @@ class SimpleToast extends PolymerElement {
     if (e.detail.eventCallback) {
       this.eventCallback = e.detail.eventCallback;
     }
-    while (dom(this).firstChild !== null) {
-      dom(this).removeChild(dom(this).firstChild);
+    while (this.firstChild !== null) {
+      this.removeChild(this.firstChild);
     }
     if (e.detail.slot) {
-      dom(this).appendChild(e.detail.slot);
+      this.appendChild(e.detail.slot);
     }
     async.microTask.run(() => {
       setTimeout(() => {

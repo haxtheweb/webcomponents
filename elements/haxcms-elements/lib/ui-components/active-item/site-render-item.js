@@ -102,7 +102,7 @@ class SiteRenderItem extends PolymerElement {
         microTask.run(() => {
           setTimeout(() => {
             let frag = document.createRange().createContextualFragment(html);
-            dom(this).appendChild(frag);
+            this.appendChild(frag);
           }, 5);
         });
         // if there are, dynamically import them
