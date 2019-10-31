@@ -4,10 +4,9 @@
    * Default behavior/false will select first option and set value accordingly.
    */
   "allowNull": {
-    "name": "allowNull",
     "type": "Boolean",
-    "value": false,
-    "reflectToAttribute": true
+    "reflect": true,
+    "attribute": "allow-null"
   },
 
   /**
@@ -15,49 +14,42 @@
    * Default behavior/false aligns to left edges.
    */
   "alignRight": {
-    "name": "alignRight",
     "type": "Boolean",
-    "value": false,
-    "reflectToAttribute": true
+    "reflect": true,
+    "attribute": "align-right"
   },
 
   /**
    * Optional. Sets aria-labelledby attribute
    */
   "ariaLabelledby": {
-    "name": "ariaLabelledby",
-    "type": "String",
-    "value": null
+    "type": "String"
   },
 
   /**
    * Position label above select dropdown?
    */
   "blockLabel": {
-    "name": "blockLabel",
     "type": "Boolean",
-    "value": false,
-    "reflectToAttribute": true
+    "reflect": true,
+    "attribute": "block-label"
   },
 
   /**
    * Is picker disabled?
    */
   "disabled": {
-    "name": "disabled",
     "type": "Boolean",
-    "value": false,
-    "reflectToAttribute": true
+    "reflect": true
   },
 
   /**
    * Is it expanded?
    */
   "expanded": {
-    "name": "expanded",
     "type": "Boolean",
-    "value": false,
-    "reflectToAttribute": true
+    "reflect": true,
+    "attribute": "expanded"
   },
 
   /**
@@ -65,9 +57,9 @@
    * This option would move labels off-screen so that only screen-readers will have them.
    */
   "hideOptionLabels": {
-    "name": "hideOptionLabels",
     "type": "Boolean",
-    "value": false
+    "reflect": true,
+    "attribute": "hide-option-labels"
   },
 
   /**
@@ -75,20 +67,16 @@
    * Default behavior/false shows a sample without expanding menu.
    */
   "hideSample": {
-    "name": "hideSample",
     "type": "Boolean",
-    "value": false,
-    "reflectToAttribute": true
+    "reflect": true,
+    "attribute": "hide-sample"
   },
 
   /**
    * Optional. Label for picker input
    */
   "label": {
-    "name": "label",
-    "type": "String",
-    "value": null,
-    "observer": "_setLabel"
+    "type": "String"
   },
 
   /**
@@ -105,79 +93,52 @@
 ]`
    */
   "options": {
-    "name": "options",
-    "type": "Array",
-    "value": [
-      [
-        {
-          "icon": null,
-          "style": null,
-          "alt": null,
-          "value": null
-        }
-      ]
-    ],
-    "observer": "_optionsChanged"
+    "type": "Array"
   },
-
-  /**
-   * position swatches relative to picker, where:
-   * `left` aligns swatches to picker's left edge
-   * `right` aligns swatches to picker's right edge
-   * `center` aligns swatches to picker's center
-  "position": {
-    "name": "position",
-    "type": Boolean,
-    "value": "left",
-    "reflectToAttribute": false,
-    "observer": false
-  },
-   */
 
   /**
    * Renders html as title. (Good for titles with HTML in them.)
    */
   "titleAsHtml": {
-    "name": "titleAsHtml",
-    "type": "Boolean",
-    "value": false
+    "type": "Boolean"
   },
 
   /**
    * An string that stores current value for picker
    */
   "value": {
-    "name": "value",
-    "type": "Object",
-    "value": null,
-    "notify": true,
-    "observer": "_valueChanged",
-    "reflectToAttribute": true
+    "type": "String",
+    "reflect": true
   },
 
   /**
    * Aria-activedescendant attribute (active option's ID)
    */
   "__activeDesc": {
-    "name": "__activeDesc",
-    "type": "String",
-    "value": "option-0-0"
+    "type": "String"
   },
 
   /**
-   * Whether or not a label should be added
+   * An array of options for picker, eg.: `
+[
+  [
+    {
+      "icon": "editor:format-paint",      //Optional. Used if picker is used as an icon picker.
+      "alt": "Blue",                      //Required for accessibility. Alt text description of choice.
+      "style": "background-color: blue;", //Optional. Used to set an option's style.
+      ...                                 //Optional. Any other properties that should be captured as part of selected option's value
+    },...
+  ]
+]`
    */
-  "__hasLabel": {
-    "name": "__hasLabel",
-    "type": "Boolean",
-    "value": true
+  "__options": {
+    "type": "Array"
   },
 
   /**
    * Selected option based on value of picker
    */
   "__selectedOption": {
-    "name": "__selectedOption",
     "type": "Object"
   }
 }
