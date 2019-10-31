@@ -37,7 +37,8 @@ class EcoJsonSchemaArray extends mixinBehaviors(
           background-color: var(--eco-json-form-bg);
           font-family: var(--eco-json-form-font-family);
         }
-        :host ([hidden]) {
+        :host([hidden]),
+        [hidden] {
           display: none;
         }
         :host fieldset {
@@ -101,28 +102,24 @@ class EcoJsonSchemaArray extends mixinBehaviors(
           --a11y-collapse-border: 1px solid var(--eco-json-form-faded-color);
         }
         :host a11y-collapse {
-          --a11y-collapse-padding-right: 8px;
           border: 1px solid var(--eco-json-form-bg);
-          --a11y-collapse-heading: {
-            color: var(--eco-json-form-faded-color);
-            background-color: var(--eco-json-form-bg);
-            font-weight: normal;
-            margin: 0;
-          }
-          --a11y-collapse-icon: {
-            padding: 8px;
-          }
+          --a11y-collapse-padding-right: 8px;
+          --a11y-collapse-heading-color: var(--eco-json-form-faded-color);
+          --a11y-collapse-heading-background-color: var(--eco-json-form-bg);
+          --a11y-collapse-heading-font-weight: normal;
+          --a11y-collapse-heading-margin: 0;
+          --a11y-collapse-icon-padding: 8px;
         }
         :host a11y-collapse:focus,
         :host a11y-collapse:hover,
         :host a11y-collapse[expanded] {
           border: 1px solid var(--eco-json-form-faded-color);
-          --a11y-collapse-heading: {
-            color: var(--eco-json-form-color);
-            background-color: var(--eco-json-form-faded-bg);
-            font-weight: normal;
-            margin: 0;
-          }
+          --a11y-collapse-heading-color: var(--eco-json-form-color);
+          --a11y-collapse-heading-background-color: var(
+            --eco-json-form-faded-bg
+          );
+          --a11y-collapse-heading-font-weight: normal;
+          --a11y-collapse-heading-margin: 0;
         }
         :host p[slot="heading"] {
           margin: 0;
