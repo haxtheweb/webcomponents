@@ -5,7 +5,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "@polymer/paper-button/paper-button.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 
 // register globally so we can make sure there is only one

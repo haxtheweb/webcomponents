@@ -4,7 +4,6 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 // register globally so we can make sure there is only one
