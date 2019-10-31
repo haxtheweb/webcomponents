@@ -222,9 +222,9 @@ class LrndesignGalleryZoom extends PolymerElement {
    */
   zoom() {
     let root = this;
-    root.$.zoombtn.dispatchEvent(
-      new CustomEvent("gallery-zoom", { detail: { root } })
-    );
+    root.shadowRoot
+      .querySelector("#zoombtn")
+      .dispatchEvent(new CustomEvent("gallery-zoom", { detail: { root } }));
   }
 
   /**

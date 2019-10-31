@@ -198,13 +198,15 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
         if (e.detail === root.media) root._handleTimeUpdate(e);
       });
     } else {
-      root.media = root.$.html5;
+      root.media = root.shadowRoot.querySelector("#html5");
       root.media.media.addEventListener("timeupdate", e => {
         root._handleTimeUpdate(e);
       });
       root._addSourcesAndTracks();
     }
-    root.$.transcript.setMedia(root.$.innerplayer);
+    root.shadowRoot
+      .querySelector("#transcript")
+      .setMedia(root.shadowRoot.querySelector("#innerplayer"));
   }
 
   /**
@@ -404,7 +406,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
         for (let key in arr[i]) {
           el.setAttribute(key, arr[i][key]);
         }
-        root.$.html5.media.appendChild(el);
+        root.shadowRoot.querySelector("#html5").media.appendChild(el);
       }
     }
   }
@@ -415,15 +417,16 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    */
   _setPlayerHeight(aspect) {
     let root = this;
-    root.$.player.style.height = "unset";
+    root.shadowRoot.querySelector("#player").style.height = "unset";
     if (root.audioOnly && root.thumbnailSrc === null && root.height === null) {
-      root.$.player.style.height = "60px";
+      root.shadowRoot.querySelector("#player").style.height = "60px";
     } else if (root.height === null) {
-      root.$.player.style.paddingTop = 100 / aspect + "%";
-      root.$.innerplayer.style.maxWidth =
+      root.shadowRoot.querySelector("#player").style.paddingTop =
+        100 / aspect + "%";
+      root.shadowRoot.querySelector("#innerplayer").style.maxWidth =
         "calc(" + aspect * 100 + "vh - " + aspect * 80 + "px)";
     } else {
-      root.$.outerplayer.style.height = root.height;
+      root.shadowRoot.querySelector("#outerplayer").style.height = root.height;
     }
   }
 
@@ -521,11 +524,11 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
     root.querySelectorAll("source,track").forEach(node => {
       if (!root.__captionHref && node.tagName === "SOURCE")
         root.__captionHref = node.getAttribute("src");
-      root.$.html5.media.appendChild(node);
+      root.shadowRoot.querySelector("#html5").media.appendChild(node);
     });
     root._appendToPlayer(root.tracks, "track");
     root._appendToPlayer(root.sources, "source");
-    root.$.html5.media.textTracks.onaddtrack = e => {
+    root.shadowRoot.querySelector("#html5").media.textTracks.onaddtrack = e => {
       root.hasCaptions = true;
       root.hasTranscript = !root.standAlone;
       root._getTrackData(e.track, counter++);
@@ -646,10 +649,10 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
           cues: cues
         });
         root.shadowRoot.querySelector("#controls").setTracks(root.__tracks);
-        root.$.transcript.setTracks(root.__tracks);
+        root.shadowRoot.querySelector("#transcript").setTracks(root.__tracks);
         root.push("__tracks");
         track.oncuechange = e => {
-          root.$.transcript.setActiveCues(
+          root.shadowRoot.querySelector("#transcript").setActiveCues(
             Object.keys(e.currentTarget.activeCues).map(key => {
               return e.currentTarget.activeCues[key].id;
             })
@@ -689,8 +692,8 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
     let root = this;
     if (
       !root.standAlone &&
-      root.$.transcript !== undefined &&
-      root.$.transcript !== null
+      root.shadowRoot.querySelector("#transcript") !== undefined &&
+      root.shadowRoot.querySelector("#transcript") !== null
     ) {
       root.__resumePlaying = root.__playing;
       root.seek(e.detail);
@@ -707,11 +710,11 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
       params = anchor.params,
       aspect = root.media.aspectRatio;
     root._setPlayerHeight(aspect);
-    root.$.playbutton.removeAttribute("disabled");
+    root.shadowRoot.querySelector("#playbutton").removeAttribute("disabled");
 
     // gets and converts video duration
     root._setElapsedTime();
-    root._getTrackData(root.$.html5.media);
+    root._getTrackData(root.shadowRoot.querySelector("#html5").media);
 
     //if this video is part of the page's query string or anchor, seek the video
     if (target === this) this.seek(this._getSeconds(params.t));
@@ -738,7 +741,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
     root.dispatchEvent(
       new CustomEvent("printing-transcript", { detail: root })
     );
-    root.$.transcript.print(root.mediaTitle);
+    root.shadowRoot.querySelector("#transcript").print(root.mediaTitle);
   }
 
   /**
@@ -846,7 +849,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
       root.forward();
     } else if (action === "fullscreen" && root.fullscreenButton) {
       root.toggleTranscript(root.fullscreen);
-      screenfull.toggle(root.$.outerplayer);
+      screenfull.toggle(root.shadowRoot.querySelector("#outerplayer"));
     } else if (action === "loop") {
       root.toggleLoop();
     } else if (action === "mute" || action === "unmute") {
@@ -960,7 +963,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
           root.__status = root._getLocal("youTubeLoading", "label");
           root.shadowRoot.querySelector("#controls").setStatus(root.__status);
           // move the YouTube iframe to the media player's YouTube container
-          root.$.youtube.appendChild(root.media.a);
+          root.shadowRoot.querySelector("#youtube").appendChild(root.media.a);
           root.__ytAppended = true;
           root._updateCustomTracks();
         },
@@ -1009,8 +1012,8 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
             caption = caption === "" ? track.cues[i].text : caption;
           }
         }
-        root.$.customcctxt.innerText = caption;
-        root.$.transcript.setActiveCues(active);
+        root.shadowRoot.querySelector("#customcctxt").innerText = caption;
+        root.shadowRoot.querySelector("#transcript").setActiveCues(active);
       }
     }
   }
