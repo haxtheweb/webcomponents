@@ -42,7 +42,9 @@ class LrnButton extends PolymerElement {
       this.addEventListener("mousedown", this.tapEventOn);
       this.addEventListener("mouseover", this.tapEventOn);
       this.addEventListener("mouseout", this.tapEventOff);
-      this.$.button.addEventListener("focused-changed", this.focusToggle);
+      this.shadowRoot
+        .querySelector("#button")
+        .addEventListener("focused-changed", this.focusToggle);
     });
   }
   /**
@@ -52,7 +54,9 @@ class LrnButton extends PolymerElement {
     this.removeEventListener("mousedown", this.tapEventOn);
     this.removeEventListener("mouseover", this.tapEventOn);
     this.removeEventListener("mouseout", this.tapEventOff);
-    this.$.button.removeEventListener("focused-changed", this.focusToggle);
+    this.shadowRoot
+      .querySelector("#button")
+      .removeEventListener("focused-changed", this.focusToggle);
     super.disconnectedCallback();
   }
   /**

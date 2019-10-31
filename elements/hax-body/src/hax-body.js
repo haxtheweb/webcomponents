@@ -413,9 +413,17 @@ class HaxBody extends PolymerElement {
   _keepContextVisible(e) {
     // see if the text context menu is visible
     let el = false;
-    if (this.$.textcontextmenu.classList.contains("hax-context-visible")) {
+    if (
+      this.shadowRoot
+        .querySelector("#textcontextmenu")
+        .classList.contains("hax-context-visible")
+    ) {
       el = this.$.textcontextmenu;
-    } else if (this.$.cecontextmenu.classList.contains("hax-context-visible")) {
+    } else if (
+      this.shadowRoot
+        .querySelector("#cecontextmenu")
+        .classList.contains("hax-context-visible")
+    ) {
       el = this.$.cecontextmenu;
     }
     // if we see it, ensure we don't have the pin
@@ -520,7 +528,11 @@ class HaxBody extends PolymerElement {
             break;
         }
       }, 100);
-      if (this.$.platecontextmenu.classList.contains("hax-active-hover")) {
+      if (
+        this.shadowRoot
+          .querySelector("#platecontextmenu")
+          .classList.contains("hax-active-hover")
+      ) {
         this.__dropActiveHover();
       }
     }
@@ -528,7 +540,9 @@ class HaxBody extends PolymerElement {
   _onKeyPress(e) {
     if (
       this.editMode &&
-      this.$.platecontextmenu.classList.contains("hax-active-hover")
+      this.shadowRoot
+        .querySelector("#platecontextmenu")
+        .classList.contains("hax-active-hover")
     ) {
       this.__dropActiveHover();
     }
@@ -563,7 +577,11 @@ class HaxBody extends PolymerElement {
           })
         );
       }
-      if (!this.$.platecontextmenu.classList.contains("hax-active-hover")) {
+      if (
+        !this.shadowRoot
+          .querySelector("#platecontextmenu")
+          .classList.contains("hax-active-hover")
+      ) {
         let normalizedEvent = dom(e);
         let local = normalizedEvent.localTarget;
         // see if the target is relevent when showing the edit menu operations
@@ -588,14 +606,26 @@ class HaxBody extends PolymerElement {
     }
   }
   __addActiveHover() {
-    this.$.cecontextmenu.classList.add("hax-active-hover");
-    this.$.textcontextmenu.classList.add("hax-active-hover");
-    this.$.platecontextmenu.classList.add("hax-active-hover");
+    this.shadowRoot
+      .querySelector("#cecontextmenu")
+      .classList.add("hax-active-hover");
+    this.shadowRoot
+      .querySelector("#textcontextmenu")
+      .classList.add("hax-active-hover");
+    this.shadowRoot
+      .querySelector("#platecontextmenu")
+      .classList.add("hax-active-hover");
   }
   __dropActiveHover() {
-    this.$.cecontextmenu.classList.remove("hax-active-hover");
-    this.$.textcontextmenu.classList.remove("hax-active-hover");
-    this.$.platecontextmenu.classList.remove("hax-active-hover");
+    this.shadowRoot
+      .querySelector("#cecontextmenu")
+      .classList.remove("hax-active-hover");
+    this.shadowRoot
+      .querySelector("#textcontextmenu")
+      .classList.remove("hax-active-hover");
+    this.shadowRoot
+      .querySelector("#platecontextmenu")
+      .classList.remove("hax-active-hover");
   }
   /**
    * Check if part of the passed element is int he viewport
@@ -854,7 +884,7 @@ class HaxBody extends PolymerElement {
       // send this into the root, which should filter it back down into the slot
       dom(this).appendChild(newNode);
     }
-    this.$.textcontextmenu.highlightOps = false;
+    this.shadowRoot.querySelector("#textcontextmenu").highlightOps = false;
     this.__updateLockFocus = newNode;
     // wait so that the DOM can have the node to then attach to
     if (waitForLock) {
@@ -1031,7 +1061,7 @@ class HaxBody extends PolymerElement {
     this._hideContextMenu(this.$.platecontextmenu);
     this._hideContextMenu(this.$.haxinputmixer);
     // force context menu state to closed
-    this.$.textcontextmenu.highlightOps = false;
+    this.shadowRoot.querySelector("#textcontextmenu").highlightOps = false;
   }
   /**
    * Reposition context menus to match an element.
@@ -1311,7 +1341,8 @@ class HaxBody extends PolymerElement {
       case "blockquote":
       case "code":
         // trigger the default selected value in context menu to match
-        this.$.textcontextmenu.selectedValue = detail.eventName;
+        this.shadowRoot.querySelector("#textcontextmenu").selectedValue =
+          detail.eventName;
         window.HaxStore.write(
           "activeContainerNode",
           this.haxChangeTagName(this.activeContainerNode, detail.eventName),
@@ -1444,7 +1475,7 @@ class HaxBody extends PolymerElement {
           -38
         );
         let style =
-          this.$.cecontextmenu.currentStyle ||
+          this.shadowRoot.querySelector("#cecontextmenu").currentStyle ||
           window.getComputedStyle(this.$.cecontextmenu);
         // force input mixes to match width of the ce context menu currently
         haxInputMixer.style.width = style.width.replace("px", "") - 40 + "px";
@@ -1821,7 +1852,7 @@ class HaxBody extends PolymerElement {
         newValue.removeAttribute("contenteditable");
         this.removeAttribute("contenteditable");
       }
-      this.$.textcontextmenu.selectedValue = tag;
+      this.shadowRoot.querySelector("#textcontextmenu").selectedValue = tag;
       // position the operations / in context element
       setTimeout(() => {
         this.positionContextMenus(
@@ -1830,22 +1861,30 @@ class HaxBody extends PolymerElement {
         );
       }, 100);
       if (newValue.style.textAlign == "left") {
-        this.$.textcontextmenu.justifyIcon = "editor:format-align-left";
-        this.$.textcontextmenu.justifyValue = "text-align-left";
+        this.shadowRoot.querySelector("#textcontextmenu").justifyIcon =
+          "editor:format-align-left";
+        this.shadowRoot.querySelector("#textcontextmenu").justifyValue =
+          "text-align-left";
       } else if (newValue.style.float == "left") {
-        this.$.cecontextmenu.justifyIcon = "editor:format-align-left";
-        this.$.cecontextmenu.justifyValue = "hax-align-left";
+        this.shadowRoot.querySelector("#cecontextmenu").justifyIcon =
+          "editor:format-align-left";
+        this.shadowRoot.querySelector("#cecontextmenu").justifyValue =
+          "hax-align-left";
       } else if (newValue.style.margin == "0 auto") {
-        this.$.cecontextmenu.justifyIcon = "editor:format-align-center";
-        this.$.cecontextmenu.justifyValue = "hax-align-center";
+        this.shadowRoot.querySelector("#cecontextmenu").justifyIcon =
+          "editor:format-align-center";
+        this.shadowRoot.querySelector("#cecontextmenu").justifyValue =
+          "hax-align-center";
       }
     }
     // just hide menus if we don't have an active item
     else if (newValue === null) {
       this.hideContextMenus();
       this.__oldActiveNode = oldValue;
-      this.$.textcontextmenu.justifyIcon = "editor:format-align-left";
-      this.$.textcontextmenu.justifyValue = "text-align-left";
+      this.shadowRoot.querySelector("#textcontextmenu").justifyIcon =
+        "editor:format-align-left";
+      this.shadowRoot.querySelector("#textcontextmenu").justifyValue =
+        "text-align-left";
     }
   }
   /**

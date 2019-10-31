@@ -166,7 +166,7 @@ The function receives a single `item` of the items provided and should return a 
         },
         ready() {
     super.ready();
-          this.$.filter.f = function(item){
+          this.shadowRoot.querySelector('#filter').f = function(item){
             return item.name == "Doe";
           };
         }

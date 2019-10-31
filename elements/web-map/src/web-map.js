@@ -141,7 +141,7 @@ class WebMap extends PolymerElement {
 
   _widthChanged(width) {
     this.style.width = width + "px";
-    this.$.map.style.width = width + "px";
+    this.shadowRoot.querySelector("#map").style.width = width + "px";
     if (this._map) {
       this._map.invalidateSize(false);
     }
@@ -149,7 +149,7 @@ class WebMap extends PolymerElement {
 
   _heightChanged(height) {
     this.style.height = height + "px";
-    this.$.map.style.height = height + "px";
+    this.shadowRoot.querySelector("#map").style.height = height + "px";
     if (this._map) {
       this._map.invalidateSize(false);
     }
@@ -234,17 +234,17 @@ class WebMap extends PolymerElement {
       }
 
       if (!this.width || this.width !== w) {
-        this.$.map.style.width = wpx;
+        this.shadowRoot.querySelector("#map").style.width = wpx;
         this.width = w;
       } else {
-        this.$.map.style.width = this.width + "px";
+        this.shadowRoot.querySelector("#map").style.width = this.width + "px";
       }
 
       if (!this.height || this.height !== h) {
-        this.$.map.style.height = h;
+        this.shadowRoot.querySelector("#map").style.height = h;
         this.height = h;
       } else {
-        this.$.map.style.height = this.height + "px";
+        this.shadowRoot.querySelector("#map").style.height = this.height + "px";
       }
 
       // create the Leaflet map if this is the first time attached is called

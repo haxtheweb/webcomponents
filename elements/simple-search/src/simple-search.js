@@ -393,8 +393,8 @@ class SimpleSearch extends PolymerElement {
     } else {
       html = " " + resultCount;
     }
-    this.$.xofy.innerHTML = html;
-    return this.$.xofy.innerHTML;
+    this.shadowRoot.querySelector("#xofy").innerHTML = html;
+    return this.shadowRoot.querySelector("#xofy").innerHTML;
   }
 
   /**

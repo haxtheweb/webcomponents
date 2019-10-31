@@ -33,19 +33,23 @@ class EditableList extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     const modal = window.SimpleModal.requestAvailability();
-    this.$.list.addEventListener(
-      "editable-list-item-delete",
-      this.triggerDeleteModal.bind(this)
-    );
+    this.shadowRoot
+      .querySelector("#list")
+      .addEventListener(
+        "editable-list-item-delete",
+        this.triggerDeleteModal.bind(this)
+      );
   }
   /**
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    this.$.list.removeEventListener(
-      "editable-list-item-delete",
-      this.triggerDeleteModal.bind(this)
-    );
+    this.shadowRoot
+      .querySelector("#list")
+      .removeEventListener(
+        "editable-list-item-delete",
+        this.triggerDeleteModal.bind(this)
+      );
   }
 
   triggerDeleteModal(e) {

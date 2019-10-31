@@ -150,7 +150,7 @@ class SimpleDrawer extends PolymerElement {
    * Close the drawer and do some clean up
    */
   close() {
-    this.$.drawer.close();
+    this.shadowRoot.querySelector("#drawer").close();
   }
   // Observer opened for changes
   _openedChanged(newValue, oldValue) {

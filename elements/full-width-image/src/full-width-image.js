@@ -27,7 +27,9 @@ class FullWidthImage extends PolymerElement {
   // Observer source for changes
   _sourceChanged(newValue, oldValue) {
     if (typeof newValue !== typeof undefined) {
-      this.$.image.style.backgroundImage = `url("${newValue}")`;
+      this.shadowRoot.querySelector(
+        "#image"
+      ).style.backgroundImage = `url("${newValue}")`;
     }
   }
 }

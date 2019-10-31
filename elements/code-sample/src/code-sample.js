@@ -58,11 +58,12 @@ class CodeSample extends PolymerElement {
   }
   _themeChanged(theme) {
     if (theme && this._themeCanBeChanged()) {
-      const previousTheme = this.$.theme.querySelector("style");
-      this.$.theme.replaceChild(
-        document.importNode(theme.content, true),
-        previousTheme
-      );
+      const previousTheme = this.shadowRoot
+        .querySelector("#theme")
+        .querySelector("style");
+      this.shadowRoot
+        .querySelector("#theme")
+        .replaceChild(document.importNode(theme.content, true), previousTheme);
     }
   }
   _themeCanBeChanged() {
@@ -83,14 +84,14 @@ class CodeSample extends PolymerElement {
   }
   _updateContent() {
     if (this._code) this._code.parentNode.removeChild(this._code);
-    if (this._demo) this.$.demo.innerHTML = "";
+    if (this._demo) this.shadowRoot.querySelector("#demo").innerHTML = "";
 
     const template = this._getCodeTemplate();
 
     if (this.render) {
-      this._demo = this.$.demo.appendChild(
-        document.importNode(template.content, true)
-      );
+      this._demo = this.shadowRoot
+        .querySelector("#demo")
+        .appendChild(document.importNode(template.content, true));
     }
 
     this._highlight(template.innerHTML);
@@ -106,7 +107,7 @@ class CodeSample extends PolymerElement {
     this._code = document.createElement("code");
     if (this.type) this._code.classList.add(this.type);
     this._code.innerHTML = this._entitize(this._cleanIndentation(str));
-    this.$.code.appendChild(this._code);
+    this.shadowRoot.querySelector("#code").appendChild(this._code);
     hljs.highlightBlock(this._code);
   }
   _cleanIndentation(str) {

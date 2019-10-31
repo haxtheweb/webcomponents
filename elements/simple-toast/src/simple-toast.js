@@ -115,7 +115,7 @@ class SimpleToast extends PolymerElement {
   }
 
   show() {
-    this.$.toast.show();
+    this.shadowRoot.querySelector("#toast").show();
   }
   hide() {
     if (this.eventCallback) {
@@ -126,7 +126,7 @@ class SimpleToast extends PolymerElement {
       });
       this.dispatchEvent(evt);
     }
-    this.$.toast.hide();
+    this.shadowRoot.querySelector("#toast").hide();
   }
 }
 window.customElements.define(SimpleToast.tag, SimpleToast);

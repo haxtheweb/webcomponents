@@ -557,7 +557,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
       this.shadowRoot
         .querySelector("editable-table-display")
         .sortData("none", -1);
-      this.$.inner.focus();
+      this.shadowRoot.querySelector("#inner").focus();
     }
     this.editMode = edit;
   }
@@ -565,7 +565,7 @@ class EditableTable extends displayBehaviors(PolymerElement) {
    * Handles when the caption paper-input changed
    */
   _captionChanged() {
-    this.caption = this.$.caption.value;
+    this.caption = this.shadowRoot.querySelector("#caption").value;
   }
 
   /**

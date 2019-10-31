@@ -301,7 +301,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    */
   selectTrack(index) {
     this.__selectedTrack = index;
-    this.$.html5.selectTrack(index);
+    this.shadowRoot.querySelector("#html5").selectTrack(index);
   }
 
   /**
@@ -332,7 +332,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    */
   toggleCC(mode) {
     this.cc = mode === undefined ? !this.cc : mode;
-    this.$.html5.setCC(this.cc);
+    this.shadowRoot.querySelector("#html5").setCC(this.cc);
   }
 
   /**
@@ -659,7 +659,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    * handles closing the share link toast
    */
   _handleCloseLink() {
-    this.$.link.close();
+    this.shadowRoot.querySelector("#link").close();
     if (this.__resumePlaying) this.play();
     this.__resumePlaying = false;
   }
@@ -676,7 +676,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
     el.select();
     document.execCommand("copy");
     document.body.removeChild(el);
-    this.$.link.open();
+    this.shadowRoot.querySelector("#link").open();
   }
 
   /**
@@ -758,7 +758,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    * handles duration slider dragging with a mouse
    */
   _handleSliderStop(e) {
-    this.seek(this.$.slider.immediateValue);
+    this.seek(this.shadowRoot.querySelector("#slider").immediateValue);
     this.__seeking = false;
     if (this.__resumePlaying) {
       this.play();
@@ -887,7 +887,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
   _setElapsedTime() {
     let elapsed =
         this.__seeking === true
-          ? this.$.slider.immediateValue
+          ? this.shadowRoot.querySelector("#slider").immediateValue
           : this.media.getCurrentTime() > 0
           ? this.media.getCurrentTime()
           : 0,
@@ -906,7 +906,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
     }
     this.__status =
       this._getHHMMSS(elapsed, duration) + "/" + this._getHHMMSS(duration);
-    this.$.controls.setStatus(this.__status);
+    this.shadowRoot.querySelector("#controls").setStatus(this.__status);
   }
 
   /**
@@ -983,7 +983,10 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
   _updateCustomTracks() {
     if ((this.isYoutube || this.audioOnly) && this.__tracks) {
       let root = this,
-        track = root.__tracks[this.$.transcript.selectedTranscript],
+        track =
+          root.__tracks[
+            this.shadowRoot.querySelector("#transcript").selectedTranscript
+          ],
         active = [],
         caption = "";
       if (

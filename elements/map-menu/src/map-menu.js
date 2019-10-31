@@ -177,7 +177,7 @@ class MapMenu extends PolymerElement {
       // if auto scroll enabled then scroll element into view
       if (this.autoScroll) {
         // kick off smooth scroll
-        this.$.smoothScroll.scroll(newActiveItem, {
+        this.shadowRoot.querySelector("#smoothScroll").scroll(newActiveItem, {
           duration: 300,
           scrollElement: this
         });

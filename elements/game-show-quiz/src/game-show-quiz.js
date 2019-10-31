@@ -886,10 +886,10 @@ class GameShowQuiz extends MutableData(PolymerElement) {
         );
         // ship to backend if we have one
         if (this.gameScoreBoardBackend) {
-          this.$.gamebackend.url = `${this.gameScoreBoardBackend}/${
-            this.title
-          }/${this.points.total.earned}?token=${this.token}`;
-          this.$.gamebackend.generateRequest();
+          this.shadowRoot.querySelector("#gamebackend").url = `${
+            this.gameScoreBoardBackend
+          }/${this.title}/${this.points.total.earned}?token=${this.token}`;
+          this.shadowRoot.querySelector("#gamebackend").generateRequest();
         }
       }
     }

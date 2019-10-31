@@ -352,14 +352,14 @@ class WavePlayer extends SchemaBehaviors(PolymerElement) {
   ready() {
     super.ready();
     if (this.lean === "right") {
-      this.$.playbutton.style.right = "25";
-      this.$.controls.style.right = "0";
+      this.shadowRoot.querySelector("#playbutton").style.right = "25";
+      this.shadowRoot.querySelector("#controls").style.right = "0";
     } else {
-      this.$.playbutton.style.left = "25";
-      this.$.controls.style.left = "0";
+      this.shadowRoot.querySelector("#playbutton").style.left = "25";
+      this.shadowRoot.querySelector("#controls").style.left = "0";
     }
     if (this.name === "") {
-      this.$.albuminfo.classList.add("hidden");
+      this.shadowRoot.querySelector("#albuminfo").classList.add("hidden");
     }
     // basic default for coverart if none
     if (this.coverart === "") {
@@ -396,9 +396,9 @@ class WavePlayer extends SchemaBehaviors(PolymerElement) {
     nameStyle.classList.add("nameActive");
     titleStyle.classList.add("titleActive");
     if (self.lean === "right") {
-      this.$.playbutton.style.right = "0";
+      this.shadowRoot.querySelector("#playbutton").style.right = "0";
     } else {
-      this.$.playbutton.style.left = "0";
+      this.shadowRoot.querySelector("#playbutton").style.left = "0";
     }
     waveStyle.classList.add("waveActive");
     setTimeout(function() {
@@ -462,7 +462,7 @@ class WavePlayer extends SchemaBehaviors(PolymerElement) {
       window.wavesurferobject.load(this.src);
     }
     window.wavesurferobject.on("ready", () => {
-      this.$.playbutton.removeAttribute("disabled");
+      this.shadowRoot.querySelector("#playbutton").removeAttribute("disabled");
     });
     window.wavesurferobject.on("finish", () => {
       this.deactivateAnimation();
@@ -474,7 +474,9 @@ class WavePlayer extends SchemaBehaviors(PolymerElement) {
   togglePlay(e) {
     // make sure we have the correct instance loaded before we play
     window.wavesurferobject.playPause();
-    var iconType = this.$.playbutton.getAttribute("icon");
+    var iconType = this.shadowRoot
+      .querySelector("#playbutton")
+      .getAttribute("icon");
     if (iconType === "av:play-arrow") {
       this.activateAnimation();
     } else {

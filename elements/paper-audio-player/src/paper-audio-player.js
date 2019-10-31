@@ -466,14 +466,21 @@ class PaperAudioPlayer extends mixinBehaviors(
   connectedCallback() {
     super.connectedCallback();
     afterNextRender(this, function() {
-      this.$.audio.addEventListener(
-        "loadedmetadata",
-        this._onCanPlay.bind(this)
-      );
-      this.$.audio.addEventListener("playing", this._onPlaying.bind(this));
-      this.$.audio.addEventListener("pause", this._onPause.bind(this));
-      this.$.audio.addEventListener("ended", this._onEnd.bind(this));
-      this.$.audio.addEventListener("error", this._onError.bind(this));
+      this.shadowRoot
+        .querySelector("#audio")
+        .addEventListener("loadedmetadata", this._onCanPlay.bind(this));
+      this.shadowRoot
+        .querySelector("#audio")
+        .addEventListener("playing", this._onPlaying.bind(this));
+      this.shadowRoot
+        .querySelector("#audio")
+        .addEventListener("pause", this._onPause.bind(this));
+      this.shadowRoot
+        .querySelector("#audio")
+        .addEventListener("ended", this._onEnd.bind(this));
+      this.shadowRoot
+        .querySelector("#audio")
+        .addEventListener("error", this._onError.bind(this));
     });
     this.setAttribute("tabindex", "0");
     this.setAttribute("role", "application");
@@ -485,14 +492,21 @@ class PaperAudioPlayer extends mixinBehaviors(
    */
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.$.audio.removeEventListener(
-      "loadedmetadata",
-      this._onCanPlay.bind(this)
-    );
-    this.$.audio.removeEventListener("playing", this._onPlaying.bind(this));
-    this.$.audio.removeEventListener("pause", this._onPause.bind(this));
-    this.$.audio.removeEventListener("ended", this._onEnd.bind(this));
-    this.$.audio.removeEventListener("error", this._onError.bind(this));
+    this.shadowRoot
+      .querySelector("#audio")
+      .removeEventListener("loadedmetadata", this._onCanPlay.bind(this));
+    this.shadowRoot
+      .querySelector("#audio")
+      .removeEventListener("playing", this._onPlaying.bind(this));
+    this.shadowRoot
+      .querySelector("#audio")
+      .removeEventListener("pause", this._onPause.bind(this));
+    this.shadowRoot
+      .querySelector("#audio")
+      .removeEventListener("ended", this._onEnd.bind(this));
+    this.shadowRoot
+      .querySelector("#audio")
+      .removeEventListener("error", this._onError.bind(this));
   }
   /**
    * ready life cycle
