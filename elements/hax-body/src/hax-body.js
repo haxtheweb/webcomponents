@@ -634,7 +634,8 @@ class HaxBody extends PolymerElement {
     let top =
       el.offsetTop -
       32 -
-      window.HaxStore.instance.haxPanel.$.drawer.offsetHeight;
+      window.HaxStore.instance.haxPanel.shadowRoot.querySelector("#drawer")
+        .offsetHeight;
     let left = el.offsetLeft;
     let width = el.offsetWidth;
     let height = el.offsetHeight;
@@ -1539,7 +1540,9 @@ class HaxBody extends PolymerElement {
         window.HaxStore.instance.haxManager.toggleDialog();
         // accessibility enhancement to keyboard focus configure button
         setTimeout(() => {
-          window.HaxStore.instance.haxManager.$.preview.$.configurebutton.focus();
+          window.HaxStore.instance.haxManager.shadowRoot
+            .querySelector("#preview")
+            .$.configurebutton.focus();
         }, 100);
         break;
       // container / layout settings button has been activated
@@ -1564,7 +1567,9 @@ class HaxBody extends PolymerElement {
         window.HaxStore.instance.haxManager.toggleDialog();
         // accessibility enhancement to keyboard focus configure button
         setTimeout(() => {
-          window.HaxStore.instance.haxManager.$.preview.$.configurebutton.focus();
+          window.HaxStore.instance.haxManager.shadowRoot
+            .querySelector("#preview")
+            .$.configurebutton.focus();
         }, 100);
         break;
     }

@@ -183,12 +183,12 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
     root.__playerReady = true;
     root.target = root.shadowRoot.querySelector("#transcript");
     root.__status = root._getLocal("loading", "label");
-    root.__slider = root.$.slider;
+    root.__slider = root.shadowRoot.querySelector("#slider");
     root.__slider.min = 0;
     root.__volume = root.muted ? 0 : Math.max(this.volume, 10);
     root.__resumePlaying = false;
     root.__duration = 0;
-    root.$.controls.setStatus(root.__status);
+    root.shadowRoot.querySelector("#controls").setStatus(root.__status);
     root.width = root.width !== null ? root.width : "100%";
     root.style.maxWidth = root.width !== null ? root.width : "100%";
     root._setPlayerHeight(aspect);
@@ -645,7 +645,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
               : "Track " + id,
           cues: cues
         });
-        root.$.controls.setTracks(root.__tracks);
+        root.shadowRoot.querySelector("#controls").setTracks(root.__tracks);
         root.$.transcript.setTracks(root.__tracks);
         root.push("__tracks");
         track.oncuechange = e => {
@@ -784,7 +784,9 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
         root.media.seekable.length > 0 &&
         root.media.seekable.start(0) !== 0
       ) {
-        root.$.slider.min = root.media.seekable.start(0);
+        root.shadowRoot.querySelector(
+          "#slider"
+        ).min = root.media.seekable.start(0);
       }
     }
     if (
@@ -956,7 +958,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
             videoId: root.youtubeId
           });
           root.__status = root._getLocal("youTubeLoading", "label");
-          root.$.controls.setStatus(root.__status);
+          root.shadowRoot.querySelector("#controls").setStatus(root.__status);
           // move the YouTube iframe to the media player's YouTube container
           root.$.youtube.appendChild(root.media.a);
           root.__ytAppended = true;

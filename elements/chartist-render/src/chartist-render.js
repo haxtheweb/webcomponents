@@ -192,7 +192,7 @@ Container class	Ratio
     if (
       root !== undefined &&
       typeof Chartist === "object" &&
-      root.$.chart !== null &&
+      root.shadowRoot.querySelector("#chart") !== null &&
       root.data !== null
     ) {
       if (root.type == "bar") {
