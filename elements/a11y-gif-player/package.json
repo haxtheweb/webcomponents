@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/a11y-gif-player",
   "wcfactory": {
     "className": "A11YGifPlayer",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "a11y-gif-player",
     "generator-wcfactory-version": "0.3.1",
     "useHAX": true,
@@ -35,11 +35,12 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/schema-behaviors": "^2.1.4",
-    "@polymer/iron-a11y-keys": "^3.0.1",
     "@polymer/iron-image": "^3.0.0",
-    "@polymer/polymer": "^3.2.0"
+    "@polymer/paper-tooltip": "^3.0.1",
+    "lit-element":"2.0.1"
   },
   "devDependencies": {
+    "web-animations-js":"2.3.1",
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
     "@lrnwebcomponents/storybook-utilities": "^2.1.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

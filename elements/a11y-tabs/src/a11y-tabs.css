@@ -23,10 +23,6 @@
   display: flex;
   justify-content: space-between;
   align-items: stretch;
-  @apply --a11y-tabs-vertical;
-}
-:host(:not([vertical])) {
-  @apply --a11y-tabs-horizontal;
 }
 :host([hidden]) {
   display: none;
@@ -38,7 +34,6 @@
   display: flex;
   list-style: none;
   padding: 0;
-  @apply --a11y-tabs-tabs;
 }
 :host([vertical]) #tabs {
   background-color: var(--a11y-tabs-border-color);
@@ -47,11 +42,9 @@
   border-left: none;
   flex: 0 1 auto;
   flex-direction: column;
-  @apply --a11y-tabs-vertical-tabs;
 }
 :host(:not([vertical])) #tabs {
   justify-content: var(--a11y-tabs-horizontal-justify-tabs, var(--a11y-tabs-justify-tabs, flex-start));
-  @apply --a11y-tabs-horizontal-tabs;
 }
 :host #tabs .flag-type {
   position: absolute;
@@ -63,17 +56,14 @@
   padding: var(--a11y-tabs-content-padding);
   background-color: var(--a11y-tabs-background);
   border: 1px solid var(--a11y-tabs-border-color);
-  @apply --a11y-tabs-content;
 }
 :host([vertical]) #content {
   flex: 1 0 auto;
   border: none;
-  @apply --a11y-tabs-vertical-content;
 }
 :host(:not([vertical])) #content {
   border-radius: var(--a11y-tabs-horizontal-border-radius, var(--a11y-tabs-border-radius));
   margin-top: -1px;
-  @apply --a11y-tabs-horizontal-content;
 }
 :host #tabs paper-button {
   margin: 0;
@@ -82,7 +72,6 @@
   background-color: var(--a11y-tabs-faded-background);
   border: 1px solid var(--a11y-tabs-border-color);
   padding: var(--a11y-tabs-button-padding, 0.7em 0.57em);
-  @apply --a11y-tabs-button;
 }
 :host([vertical]) #tabs paper-button {
   border-top: none;
@@ -92,7 +81,6 @@
   justify-content: space-between;
   align-items: center;
   padding: var(--a11y-tabs-vertical-button-padding, var(--a11y-tabs-button-padding));
-  @apply --a11y-tabs-vertical-button;
 }
 :host(:not([vertical])) #tabs paper-button {
   width: 100%;
@@ -103,55 +91,36 @@
     0 
     0; 
   padding: var(--a11y-tabs-horizontal-button-padding, var(--a11y-tabs-button-padding));
-  @apply --a11y-tabs-horizontal-button;
 }
 :host(:not([vertical])) #tabs li:not(:first-of-type) paper-button {
   border-left: none;
 }
-:host  #tabspaper-button:active,
+:host  #tabs paper-button:active,
 :host #tabs paper-button:focus,
 :host #tabs paper-button:hover {
   color: var(--a11y-tabs-focus-color);
   background-color: var(--a11y-tabs-faded-background);
 }
-:host #tabs paper-button:focus {
-  @apply --a11y-tabs-button-focus;
-}
-:host #tabs paper-button:active {
-  @apply --a11y-tabs-button-active;
-}
-:host #tabs paper-button:hover {
-  @apply --a11y-tabs-button-hover;
-}
 :host #tabs paper-button[disabled] {
   color: var(--a11y-tabs-focus-color);
   background-color: var(--a11y-tabs-background);
-  @apply --a11y-tabs-active-button;
 }
 :host([vertical]) #tabs paper-button[disabled] {
-  border-right-color: var(--a11y-tabs-background);;
-  @apply --a11y-tabs-vertical-active-button;
+  border-right-color: var(--a11y-tabs-background);
 }
 :host(:not([vertical])) #tabs paper-button[disabled] {
   border-bottom: 1px solid var(--a11y-tabs-background);
-  @apply --a11y-tabs-horizontal-active-button;
 }
 :host #tabs span.label,
 :host #tabs .flag-icon {
   margin-right: 8px;
 }
-:host([icons-only]) #tabs paper-button {
+:host #tabs.icons-only paper-button {
   justify-content: center;
 }
-:host([icons-only]) #tabs span.label {
+:host #tabs.icons-only span.label {
   display:none;
 }
-:host(:not([icons-only])) #tabs paper-tooltip {
+:host #tabs:not(.icons-only) paper-tooltip {
   display:none;
-}
-:host #tabs paper-button[flag] {
-  @apply --a11y-tab-flagged-tab;
-}
-:host #tabs .flag-icon {
-  @apply --a11y-tab-flag-icon;
 }

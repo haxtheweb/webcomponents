@@ -2,48 +2,54 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 /**
  * `a11y-tab`
- * `accessible and responsive tabbed interface`
- *
- * @microcopy - language worth noting:
- *  -
+ * a single tab within `a11y-tabs`
+ * 
+### Styling
+
+`<a11y-tab>` provides the following custom properties
+for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--a11y-tabs-tab-height` | tab height | `--a11y-tabs-height`
+`--a11y-tabs-tab-overflow` | tab overflow | `--a11y-tabs-overflow`
  *
  * @customElement
- * @polymer
  * @demo demo/index.html
+ * @see ../a11y-tabs.js
  */
-class A11yTab extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-      <style>
+class A11yTab extends LitElement {
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           height: var(--a11y-tabs-tab-height, --a11y-tabs-height);
           overflow: var(--a11y-tabs-tab-overflow, --a11y-tabs-overflow);
-          @apply --a11y-tab-content;
-        }
-        :host([flag]) {
-          @apply --a11y-tab-flagged-content;
         }
         :host([hidden]) {
           display: none;
         }
-        :host .sr-only {
+        .sr-only {
           position: absolute;
           left: -99999px;
           height: 0;
           overflow: hidden;
         }
-      </style>
-      <span class="sr-only">Tab [[__xOfY]]</span>
+      `
+    ];
+  }
+  render() {
+    return html`
+      <span class="sr-only">Tab ${this.__xOfY}</span>
       <slot></slot>
       <span class="sr-only"
-        >End of tab [[__xOfY]]. Back to <a href$="[[__toTop]]">tabs</a>.</span
+        >End of tab ${this.__xOfY}. Back to
+        <a href="${this.__toTop}">tabs</a>.</span
       >
     `;
   }
@@ -51,77 +57,82 @@ class A11yTab extends PolymerElement {
   static get properties() {
     return {
       /**
-       * the unique identifier and anchor for the tab
-       */
-      id: {
-        name: "id",
-        type: String,
-        value: null,
-        observer: "_tabChanged"
-      },
-      /**
        * optional flag the tab, eg. `new`, `alert`, or `error`
        */
       flag: {
-        name: "flag",
         type: String,
-        value: null,
-        observer: "_tabChanged",
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * optional flag icon the tab, eg. `av:fiber-new`, `icons:warning`, or `icons:error`
        */
       flagIcon: {
-        name: "flagIcon",
-        type: String,
-        value: null,
-        observer: "_tabChanged"
-      },
-      /**
-       * icon for this tab, eg. `maps:local-airport`, `maps:local-bar`, or `notification:wifi`
-       */
-      icon: {
-        name: "id",
-        type: String,
-        value: null,
-        observer: "_tabChanged"
-      },
-      /**
-       * label for the tab
-       */
-      label: {
-        name: "label",
-        type: String,
-        value: null,
-        observer: "_tabChanged"
+        type: String
       },
       /**
        * whether the tab is hidden
        */
       hidden: {
-        name: "hidden",
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true
+      },
+      /**
+       * icon for this tab, eg. `maps:local-airport`, `maps:local-bar`, or `notification:wifi`
+       */
+      icon: {
+        type: String
+      },
+      /**
+       * the unique identifier and anchor for the tab
+       */
+      id: {
+        type: String
+      },
+      /**
+       * label for the tab
+       */
+      label: {
+        type: String
       },
       /**
        * the anchor back to the top of the tab list (`a11y-tabs` id)
        */
       __toTop: {
-        name: "__toTop",
-        type: String,
-        value: null
+        type: String
       },
       /**
        * tab x of y text, eg. `2 of 3`
        */
       __xOfY: {
-        name: "__xOfY",
-        type: String,
-        value: null
+        type: String
       }
     };
+  }
+  constructor() {
+    super();
+    this.flag = null;
+    this.flagIcon = null;
+    this.hidden = false;
+    this.icon = null;
+    this.id = null;
+    this.label = null;
+    this.__xOfY = null;
+    this.__toTop = null;
+    this.addEventListener("a11y-tab-flag", e => this.handleFlag(e));
+  }
+  disconnectedCallback() {
+    this.removeEventListener("a11y-tab-flag", e => this.handleFlag(e));
+    super.disconnectedCallback();
+  }
+
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "flag") this._tabChanged();
+      if (propName === "flagIcon") this._tabChanged();
+      if (propName === "icon") this._tabChanged();
+      if (propName === "id") this._tabChanged();
+      if (propName === "label") this._tabChanged();
+    });
   }
 
   /**
@@ -131,22 +142,18 @@ class A11yTab extends PolymerElement {
     return "a11y-tab";
   }
   /**
-   * life cycle, element is afixed to the DOM
+   * handles any change in flag
+   * @param {event} e the tab change event
    */
-  connectedCallback() {
-    super.connectedCallback();
-    this.__target = this;
-    this.addEventListener("a11y-tab-flag", e => {
-      this.flag = e.detail.flag;
-      this.flagIcon = e.detail.flagIcon;
-    });
+  _handleFlag(e) {
+    this.flag = e.detail.flag;
+    this.flagIcon = e.detail.flagIcon;
   }
   /**
    * handles any change in the tab attributes
    * @param {event} e the tab change event
    */
   _tabChanged(e) {
-    let root = this;
     this.dispatchEvent(
       new CustomEvent("a11y-tab-changed", {
         bubbles: true,

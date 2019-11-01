@@ -68,7 +68,7 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
         button:hover {
           border: var(--a11y-gif-player-focus-border, none);
           cursor: var(--a11y-gif-player-cursor, pointer);
-          outline: var(--a11y-gif-player-outline);
+          outline: var(--a11y-gif-player-outline, 3px solid);
         }
         button[disabled] {
           cursor: var(--a11y-gif-player-disabled-cursor, not-allowed);
@@ -235,7 +235,6 @@ class A11yGifPlayer extends SchemaBehaviors(LitElement) {
    * deprecated. toggles the animation based on current state
    */
   toggleAnimation() {
-    console.log("toggleAnimation", this.__playing);
     if (this.__playing) {
       this.stop();
     } else {
