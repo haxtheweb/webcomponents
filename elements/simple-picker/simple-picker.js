@@ -55,287 +55,292 @@ Custom property | Description | Default
 class SimplePicker extends LitElement {
   //styles function
   static get styles() {
-    return css`
-      :host {
-        display: inline-flex;
-        align-items: center;
-        color: var(--simple-picker-color, black);
-        font-family: var(--simple-picker-font-family, inherit);
-        font-size: var(--simple-picker-font-size, inherit);
-        --simple-picker-height: calc(
-          var(--simple-picker-option-size, 24px) +
-            var(--simple-picker-sample-padding, 2px) * 2 +
-            var(--simple-picker-border-width, 1px) * 2
-        );
-        min-height: var(--simple-picker-height);
-        max-height: var(--simple-picker-height);
-      }
+    return [
+      css`
+        :host {
+          display: inline-flex;
+          align-items: center;
+          color: var(--simple-picker-color, black);
+          font-family: var(--simple-picker-font-family, inherit);
+          font-size: var(--simple-picker-font-size, inherit);
+          --simple-picker-height: calc(
+            var(--simple-picker-option-size, 24px) +
+              var(--simple-picker-sample-padding, 2px) * 2 +
+              var(--simple-picker-border-width, 1px) * 2
+          );
+          min-height: var(--simple-picker-height);
+          max-height: var(--simple-picker-height);
+        }
 
-      :host([block-label]) {
-        display: block;
-        margin: 0 0 15px;
-        max-height: unset;
-      }
+        :host([block-label]) {
+          display: block;
+          margin: 0 0 15px;
+          max-height: unset;
+        }
 
-      :host([disabled]) {
-        --simple-picker-color: var(--simple-picker-color-disabled, #888);
-        --simple-picker-background-color: var(
-          --simple-picker-background-color-disabled,
-          #e8e8e8
-        );
-        cursor: not-allowed;
-      }
+        :host([disabled]) {
+          --simple-picker-color: var(--simple-picker-color-disabled, #888);
+          --simple-picker-background-color: var(
+            --simple-picker-background-color-disabled,
+            #e8e8e8
+          );
+          cursor: not-allowed;
+        }
 
-      :host([hidden]) {
-        display: none;
-      }
+        :host([hidden]) {
+          display: none;
+        }
 
-      div {
-        margin: unset;
-        padding: unset;
-      }
+        div {
+          margin: unset;
+          padding: unset;
+        }
 
-      label:not([hidden]) {
-        display: flex;
-        align-items: center;
-        padding-right: 5px;
-        font-family: var(--simple-picker-font-family, inherit);
-        color: var(
-          --simple-picker-label-color,
-          var(--simple-picker-color, black)
-        );
-      }
+        label:not([hidden]) {
+          display: flex;
+          align-items: center;
+          padding-right: 5px;
+          font-family: var(--simple-picker-font-family, inherit);
+          color: var(
+            --simple-picker-label-color,
+            var(--simple-picker-color, black)
+          );
+        }
 
-      :host([block-label]) label:not([hidden]) {
-        display: block;
-        padding-right: 0px;
-        color: var(
-          --simple-picker-float-label-color,
-          var(--simple-picker-color-disabled, #888)
-        );
-        transition: all 0.5s;
-        max-height: unset;
-      }
+        :host([block-label]) label:not([hidden]) {
+          display: block;
+          padding-right: 0px;
+          color: var(
+            --simple-picker-float-label-color,
+            var(--simple-picker-color-disabled, #888)
+          );
+          transition: all 0.5s;
+          max-height: unset;
+        }
 
-      :host([block-label]:focus-within) label,
-      :host([block-label]:hover) label {
-        color: var(
-          --simple-picker-float-label-active-color,
-          var(--simple-picker-color, black)
-        );
-        transition: all 0.5s;
-      }
+        :host([block-label]:focus-within) label,
+        :host([block-label]:hover) label {
+          color: var(
+            --simple-picker-float-label-active-color,
+            var(--simple-picker-color, black)
+          );
+          transition: all 0.5s;
+        }
 
-      #sample,
-      .rows {
-        margin: 0;
-        padding: 0;
-      }
+        #sample,
+        .rows {
+          margin: 0;
+          padding: 0;
+        }
 
-      #listbox {
-        cursor: pointer;
-        position: relative;
-        flex: 1 0 auto;
-        min-height: var(--simple-picker-height);
-        max-height: var(--simple-picker-height);
-      }
+        #listbox {
+          cursor: pointer;
+          position: relative;
+          flex: 1 0 auto;
+          min-height: var(--simple-picker-height);
+          max-height: var(--simple-picker-height);
+        }
 
-      #sample {
-        display: flex;
-        flex: 1 0 auto;
-        justify-content: space-between;
-        align-items: center;
-        padding: var(--simple-picker-sample-padding, 2px);
-        border-radius: var(--simple-picker-border-radius, 2px);
-        color: var(--simple-picker-sample-color, black);
-        background-color: var(--simple-picker-background-color, #f0f0f0);
-        border-width: var(--simple-picker-border-width, 1px);
-        border-style: var(--simple-picker-border-style, solid);
-        border-color: var(
-          --simple-picker-border-color,
-          var(--simple-picker-color-disabled, #888)
-        );
-      }
-
-      :host([hide-sample]) #sample {
-        width: var(--simple-picker-option-size);
-        overflow: visible;
-      }
-
-      :host(:focus-within) #sample {
-        border-width: var(
-          --simple-picker-focus-border-width,
-          var(--simple-picker-border-width, 1px)
-        );
-        border-style: var(
-          --simple-picker-focus-border-style,
-          var(--simple-picker-border-style, solid)
-        );
-        border-color: var(
-          --simple-picker-focus-border-color,
-          var(
+        #sample {
+          display: flex;
+          flex: 1 0 auto;
+          justify-content: space-between;
+          align-items: center;
+          padding: var(--simple-picker-sample-padding, 2px);
+          border-radius: var(--simple-picker-border-radius, 2px);
+          color: var(--simple-picker-sample-color, black);
+          background-color: var(--simple-picker-background-color, #f0f0f0);
+          border-width: var(--simple-picker-border-width, 1px);
+          border-style: var(--simple-picker-border-style, solid);
+          border-color: var(
             --simple-picker-border-color,
             var(--simple-picker-color-disabled, #888)
-          )
-        );
-        transition: all 0.5s;
-      }
+          );
+        }
 
-      #icon {
-        transform: var(--simple-picker-icon-transform, rotate(0deg));
-        transition: transform 0.25s;
-      }
+        :host([hide-sample]) #sample {
+          width: var(--simple-picker-option-size);
+          overflow: visible;
+        }
 
-      :host([expanded]) #icon {
-        transform: var(--simple-picker-expanded-icon-transform, rotate(0deg));
-        transition: transform 0.25s;
-      }
+        :host(:focus-within) #sample {
+          border-width: var(
+            --simple-picker-focus-border-width,
+            var(--simple-picker-border-width, 1px)
+          );
+          border-style: var(
+            --simple-picker-focus-border-style,
+            var(--simple-picker-border-style, solid)
+          );
+          border-color: var(
+            --simple-picker-focus-border-color,
+            var(
+              --simple-picker-border-color,
+              var(--simple-picker-color-disabled, #888)
+            )
+          );
+          transition: all 0.5s;
+        }
 
-      #collapse {
-        display: none;
-        width: 100%;
-        position: absolute;
-        padding: var(
-          --simple-picker-options-border-width,
-          var(--simple-picker-border-width, 1px)
-        );
-        z-index: 2;
-      }
+        #icon {
+          transform: var(--simple-picker-icon-transform, rotate(0deg));
+          transition: transform 0.25s;
+        }
 
-      :host([expanded]:not([disabled])) #collapse {
-        display: block;
-      }
+        :host([expanded]) #icon {
+          transform: var(--simple-picker-expanded-icon-transform, rotate(0deg));
+          transition: transform 0.25s;
+        }
 
-      .rows {
-        display: block;
-        position: absolute;
-        z-index: 1000;
-        left: calc(
-          var(
+        #collapse {
+          display: none;
+          width: 100%;
+          position: absolute;
+          padding: var(
             --simple-picker-options-border-width,
             var(--simple-picker-border-width, 1px)
-          )
-        );
-        top: calc(
-          0px -
+          );
+          z-index: 2;
+        }
+
+        :host([expanded]:not([disabled])) #collapse {
+          display: block;
+        }
+
+        .rows {
+          display: block;
+          position: absolute;
+          z-index: 1000;
+          left: calc(
             var(
               --simple-picker-options-border-width,
               var(--simple-picker-border-width, 1px)
             )
-        );
-        border-width: var(
-          --simple-picker-options-border-width,
-          var(--simple-picker-border-width, 1px)
-        );
-        border-style: var(
-          --simple-picker-options-border-style,
-          var(--simple-picker-border-style, solid)
-        );
-        border-color: var(
-          --simple-picker-options-border-color,
-          var(
-            --simple-picker-border-color,
-            var(--simple-picker-color-disabled, #888)
-          )
-        );
-        background-color: var(--simple-picker-options-background-color, #fff);
-        max-height: var(--simple-picker-options-max-height, 250px);
-        overflow-y: auto;
-      }
-      :host([align-right]) #collapse .rows {
-        left: unset;
-        right: calc(
-          var(
-              --simple-picker-options-border-width,
-              var(--simple-picker-border-width, 1px)
-            ) * 2
-        );
-      }
-
-      .row {
-        display: flex;
-        align-items: stretch;
-        justify-content: space-between;
-      }
-
-      simple-picker-option {
-        z-index: 1;
-        flex: 1 1 auto;
-        justify-content: flex-start;
-        max-height: unset;
-        min-height: var(--simple-picker-option-size, 24px);
-        min-width: var(--simple-picker-option-size, 24px);
-        line-height: var(--simple-picker-option-size, 24px);
-        color: var(--simple-picker-color, black);
-        background-color: var(--simple-picker-options-background-color, #fff);
-        transition: max-height 2s;
-      }
-
-      simple-picker-option[selected] {
-        z-index: 50;
-        color: var(--simple-picker-color, black);
-        background-color: var(
-          --simple-picker-option-selected-background-color,
-          var(--simple-picker-options-background-color, #fff)
-        );
-      }
-
-      simple-picker-option[active] {
-        z-index: 100;
-        cursor: pointer;
-        color: var(--simple-picker-color, black);
-        background-color: var(
-          --simple-picker-option-active-background-color,
-          #aaddff
-        );
-      }
-
-      #sample simple-picker-option {
-        color: var(--simple-picker-color, black);
-        background-color: var(
-          --simple-picker-sample-background-color,
-          transparent
-        );
-        --simple-picker-option-padding: var(--simple-picker-sample-padding, 2px)
-          0;
-        border: none;
-      }
-
-      :host([hide-sample]) #sample simple-picker-option {
-        position: absolute;
-        left: -9999px;
-        overflow: hidden;
-        width: 0;
-        height: 0;
-      }
-
-      :host(:focus-within) #sample simple-picker-option,
-      :host(:hover) #sample simple-picker-option {
-        --simple-picker-color: var(
-          --simple-picker-color-active,
-          var(--simple-picker-color, black)
-        );
-      }
-
-      :host(:not([expanded])) #collapse simple-picker-option {
-        max-height: 0;
-        transition: max-height 1.5s;
-      }
-
-      @media screen and (max-width: 600px) {
-        :host {
-          position: static;
+          );
+          top: calc(
+            0px -
+              var(
+                --simple-picker-options-border-width,
+                var(--simple-picker-border-width, 1px)
+              )
+          );
+          border-width: var(
+            --simple-picker-options-border-width,
+            var(--simple-picker-border-width, 1px)
+          );
+          border-style: var(
+            --simple-picker-options-border-style,
+            var(--simple-picker-border-style, solid)
+          );
+          border-color: var(
+            --simple-picker-options-border-color,
+            var(
+              --simple-picker-border-color,
+              var(--simple-picker-color-disabled, #888)
+            )
+          );
+          background-color: var(--simple-picker-options-background-color, #fff);
+          max-height: var(--simple-picker-options-max-height, 250px);
+          overflow-y: auto;
         }
-        #collapse {
-          top: 0;
-          margin-top: 0;
-          position: relative;
+        :host([align-right]) #collapse .rows {
+          left: unset;
+          right: calc(
+            var(
+                --simple-picker-options-border-width,
+                var(--simple-picker-border-width, 1px)
+              ) * 2
+          );
         }
-        .rows {
+
+        .row {
+          display: flex;
+          align-items: stretch;
+          justify-content: space-between;
+        }
+
+        simple-picker-option {
+          z-index: 1;
+          flex: 1 1 auto;
+          justify-content: flex-start;
+          max-height: unset;
+          min-height: var(--simple-picker-option-size, 24px);
+          min-width: var(--simple-picker-option-size, 24px);
+          line-height: var(--simple-picker-option-size, 24px);
+          color: var(--simple-picker-color, black);
+          background-color: var(--simple-picker-options-background-color, #fff);
+          transition: max-height 2s;
+        }
+
+        simple-picker-option[selected] {
+          z-index: 50;
+          color: var(--simple-picker-color, black);
+          background-color: var(
+            --simple-picker-option-selected-background-color,
+            var(--simple-picker-options-background-color, #fff)
+          );
+        }
+
+        simple-picker-option[active] {
+          z-index: 100;
+          cursor: pointer;
+          color: var(--simple-picker-color, black);
+          background-color: var(
+            --simple-picker-option-active-background-color,
+            #aaddff
+          );
+        }
+
+        #sample simple-picker-option {
+          color: var(--simple-picker-color, black);
+          background-color: var(
+            --simple-picker-sample-background-color,
+            transparent
+          );
+          --simple-picker-option-padding: var(
+              --simple-picker-sample-padding,
+              2px
+            )
+            0;
+          border: none;
+        }
+
+        :host([hide-sample]) #sample simple-picker-option {
           position: absolute;
+          left: -9999px;
+          overflow: hidden;
+          width: 0;
+          height: 0;
         }
-      }
-    `;
+
+        :host(:focus-within) #sample simple-picker-option,
+        :host(:hover) #sample simple-picker-option {
+          --simple-picker-color: var(
+            --simple-picker-color-active,
+            var(--simple-picker-color, black)
+          );
+        }
+
+        :host(:not([expanded])) #collapse simple-picker-option {
+          max-height: 0;
+          transition: max-height 1.5s;
+        }
+
+        @media screen and (max-width: 600px) {
+          :host {
+            position: static;
+          }
+          #collapse {
+            top: 0;
+            margin-top: 0;
+            position: relative;
+          }
+          .rows {
+            position: absolute;
+          }
+        }
+      `
+    ];
   }
 
   // render function
