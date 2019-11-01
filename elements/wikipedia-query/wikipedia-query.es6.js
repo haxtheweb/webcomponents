@@ -1,4 +1,4 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 /**
  * `wikipedia-query`
@@ -6,10 +6,43 @@ import "@polymer/iron-ajax/iron-ajax.js";
  *
  * @demo demo/index.html
  */
-class WikipediaQuery extends PolymerElement {
+class WikipediaQuery extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+      :host {
+        display: block;
+        --wikipedia-query-body-height: 160px;
+      }
+      :host [hidden] {
+        display: none;
+      }
+      #result {
+        height: var(--wikipedia-query-body-height);
+        overflow: scroll;
+        border: 1px grey solid;
+        padding: 8px 16px;
+      }
+      citation-element {
+        background-color: #f8f8f8;
+        padding: 16px 8px;
+        font-size: 12px;
+      }
+      `
+    ];
+  }
   constructor() {
     super();
     import("@lrnwebcomponents/citation-element/citation-element.js");
+    this.hideTitle = false;
+    this.search = "Web_Components";
+    this.renderAs = "content";
+    let date = new Date(Date.now());
+    this.__now =
+      date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
   }
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -18,73 +51,90 @@ class WikipediaQuery extends PolymerElement {
   static get tag() {
     return "wikipedia-query";
   }
-  // render function
-  static get template() {
+  // LitElement render function
+  render() {
     return html`
-      <style>
-        :host {
-          display: block;
-          --wikipedia-query-body-height: 160px;
-        }
-        :host [hidden] {
-          display: none;
-        }
-        #result {
-          height: var(--wikipedia-query-body-height);
-          overflow: scroll;
-          border: 1px grey solid;
-          padding: 8px 16px;
-        }
-        citation-element {
-          background-color: #f8f8f8;
-          padding: 16px 8px;
-          font-size: 12px;
-        }
-      </style>
       <iron-ajax
         auto
-        url$="https://en.wikipedia.org/w/api.php?origin=*&amp;action=query&amp;titles=[[search]]&amp;prop=extracts&amp;format=json"
+        url="https://en.wikipedia.org/w/api.php?origin=*&amp;action=query&amp;titles=${this.search}&amp;prop=extracts&amp;format=json"
         handle-as="json"
-        on-response="handleResponse"
-        debounce-duration="250"
-        last-response="{{searchResponse}}"
+        @response="${this.handleResponse}"
+        debounce-duration="25"
+        @last-response-changed="${this.searchResponseChanged}"
       ></iron-ajax>
-      <h3 hidden$="[[!showTitle]]">[[search]] Wikipedia article</h3>
-      <div id="result" hidden$="[[!__rendercontent]]"></div>
+      <h3 .hidden="${this.hideTitle}">${this._title}</h3>
+      <div id="result" .hidden="${!this.__rendercontent}"></div>
       <citation-element
-        hidden$="[[!__rendercontent]]"
+        .hidden="${!this.__rendercontent}"
         creator="{Wikipedia contributors}"
         scope="sibling"
         license="by-sa"
-        title="[[search]] --- {Wikipedia}{,} The Free Encyclopedia"
-        source="https://en.wikipedia.org/w/index.php?title=[[search]]"
-        date="[[__now]]"
+        title="${this.search} --- {Wikipedia}{,} The Free Encyclopedia"
+        source="https://en.wikipedia.org/w/index.php?title=${this.search}"
+        date="${this.__now}"
       ></citation-element>
     `;
   }
+  searchResponseChanged(e) {
+    this.searchResponse = e.detail.value;
+  }
+  /**
+   * LitElement properties updated
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == 'search') {
+        if (this.title) {
+          this._title = this.title;
+        }
+        else {
+          this._title = this[propName].replace('_', ' ') + ' Wikipedia article';
+        }
+      }
+      if (propName == 'title') {
+        if (this.title) {
+          this._title = this.title;
+        }
+      }
+      if (propName == 'renderAs') {
+        // observer
+        this._renderAsUpdated(this[propName], oldValue);
+      }
+    });
+  }
   static get properties() {
     return {
+      title: {
+        type: String,
+      },
+      __now: {
+        type: String,
+      },
+      _title: {
+        type: String,
+      },
+      __rendercontent: {
+        type: String,
+      },
       /**
-       * ShowTitle
+       * hideTitle
        */
-      showTitle: {
+      hideTitle: {
         type: Boolean,
-        value: true
+        attribute: 'hide-title',
       },
       /**
        * Search string.
        */
       search: {
         type: String,
-        value: "Polymer (library)"
       },
       /**
        * Render the response as..
        */
       renderAs: {
         type: String,
-        value: "content",
-        observer: "_renderAsUpdated"
+        attribute: 'render-as',
       },
       /**
        * Response to parse.
@@ -127,8 +177,8 @@ class WikipediaQuery extends PolymerElement {
             required: true
           },
           {
-            property: "showTitle",
-            title: "Show title",
+            property: "hideTitle",
+            title: "Hide title",
             description: "Whether or not to render the title of the article.",
             inputMethod: "boolean",
             icon: "editor:title"
@@ -149,12 +199,6 @@ class WikipediaQuery extends PolymerElement {
         wipeSlot: true
       }
     };
-  }
-  connectedCallback() {
-    super.connectedCallback();
-    let date = new Date(Date.now());
-    this.__now =
-      date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
   }
   /**
    * Convert renderas into a variable.

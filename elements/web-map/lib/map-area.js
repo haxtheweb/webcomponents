@@ -1,6 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "./map-styles.js";
 /* styles scoped to inside a custom element must be in a style module */
 class MapArea extends PolymerElement {
@@ -121,8 +119,8 @@ class MapArea extends PolymerElement {
         // based on the <svg:title> graphics child element.
         var title = L.SVG.create("title"),
           titleText = document.createTextNode(this.alt);
-        dom(title).appendChild(titleText);
-        dom(this._feature._path).appendChild(title);
+        title.appendChild(titleText);
+        this._feature._path.appendChild(title);
       }
       if (this.href) {
         // conditionally act on click on an area link.  If no link it should be an

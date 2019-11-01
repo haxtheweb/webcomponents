@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-icons/iron-icons.js";
@@ -76,9 +75,7 @@ class LrnsysDialogToolbarButton extends PolymerElement {
    * Button has been tapped.
    */
   _onTap(e) {
-    var normalizedEvent = dom(e);
-    var localTarget = normalizedEvent.localTarget;
-    var id = localTarget.getAttribute("id");
+    var id = e.target.getAttribute("id");
     this.dispatchEvent(
       new CustomEvent("dialog-toolbar-button-tapped", {
         bubbles: true,

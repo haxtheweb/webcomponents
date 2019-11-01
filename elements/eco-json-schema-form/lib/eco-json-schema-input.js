@@ -73,7 +73,7 @@ class EcoJsonSchemaInput extends mixinBehaviors(
   }
   _schemaChanged() {
     var schema = this.schema;
-    var inputEl = this.$.input;
+    var inputEl = this.shadowRoot.querySelector("#input");
     if (schema.required) {
       inputEl.required = true;
     }
@@ -154,11 +154,11 @@ class EcoJsonSchemaInput extends mixinBehaviors(
   }
   _errorChanged() {
     if (this.error) {
-      this.$.input.errorMessage = this.error;
-      this.$.input.invalid = true;
+      this.shadowRoot.querySelector("#input").errorMessage = this.error;
+      this.shadowRoot.querySelector("#input").invalid = true;
     } else {
-      this.$.input.invalid = false;
-      this.$.input.errorMessage = null;
+      this.shadowRoot.querySelector("#input").invalid = false;
+      this.shadowRoot.querySelector("#input").errorMessage = null;
     }
   }
   _isSchemaValue(type) {

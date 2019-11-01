@@ -234,11 +234,11 @@ class AframePlayer extends SchemaBehaviors(PolymerElement) {
 
   _aframeLoaded(el) {
     // ensure that this doesn't put full screen styles on the page!
-    this.$.scene.removeFullScreenStyles();
+    this.shadowRoot.querySelector("#scene").removeFullScreenStyles();
     this.__entity = document.createElement("a-entity");
     this.__entity.setAttribute("gltf-model", "url(" + this.source + ")");
     this._positionChanged();
-    this.$.scene.appendChild(this.__entity);
+    this.shadowRoot.querySelector("#scene").appendChild(this.__entity);
   }
 
   /**

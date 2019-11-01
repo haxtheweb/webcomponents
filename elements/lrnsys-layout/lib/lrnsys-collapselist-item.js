@@ -83,7 +83,7 @@ class LrnsysCollapselistItem extends PolymerElement {
    * Toggling collapse on an iron element.
    */
   collapseToggle(e) {
-    this.$.collapse.toggle();
+    this.shadowRoot.querySelector("#collapse").toggle();
   }
 }
 window.customElements.define(

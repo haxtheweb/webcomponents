@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/paper-button/paper-button.js";
@@ -79,8 +78,7 @@ class LrnappBlockRecentSubmissions extends PolymerElement {
    * Handle tap on paper-button above to redirect to the correct submission url.
    */
   _loadSubmissionUrl(e) {
-    var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget;
+    var local = e.target;
     // this will have the id of the current submission
     var active = local.getAttribute("data-submission-id");
     // @todo need a cleaner integration but this at least goes the right place for now
@@ -88,7 +86,7 @@ class LrnappBlockRecentSubmissions extends PolymerElement {
       this.basePath + "lrnapp-studio-submission/submissions/" + active;
   }
   handleResponse(e) {
-    this.$.loading.hidden = true;
+    this.shadowRoot.querySelector("#loading").hidden = true;
   }
   _getViewLink(nid) {
     return this.basePath + "lrnapp-studio-submission/submissions/" + nid;

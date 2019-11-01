@@ -74,7 +74,8 @@ class ActiveWhenVisible extends LitElement {
   static get properties() {
     return {
       itemId: {
-        type: String
+        type: String,
+        attribute: "item-id"
       },
       _a: {
         type: String
@@ -83,14 +84,17 @@ class ActiveWhenVisible extends LitElement {
         type: Array
       },
       rootMargin: {
-        type: String
+        type: String,
+        attribute: "root-margin"
       },
       visibleLimit: {
         type: Number,
-        reflect: true
+        reflect: true,
+        attribute: "visible-limit"
       },
       isVisible: {
-        type: Boolean
+        type: Boolean,
+        attribute: "is-visible"
       }
     };
   }
@@ -121,7 +125,7 @@ class ActiveWhenVisible extends LitElement {
             .replace("/index.html", "");
           this.isVisible = true;
           setTimeout(() => {
-            this.$.a.click();
+            this.shadowRoot.querySelector("#a").click();
           }, 25);
         }
       }

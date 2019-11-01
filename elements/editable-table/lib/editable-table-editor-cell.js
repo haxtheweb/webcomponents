@@ -118,7 +118,7 @@ class EditableTableEditorCell extends cellBehaviors(PolymerElement) {
    */
   ready() {
     super.ready();
-    this.cell = this.$.cell;
+    this.cell = this.shadowRoot.querySelector("#cell");
   }
 
   /**
@@ -172,18 +172,27 @@ class EditableTableEditorCell extends cellBehaviors(PolymerElement) {
     // IE Support
     if (document.selection) {
       // Set focus on the element
-      this.$.cell.focus();
+      this.shadowRoot.querySelector("#cell").focus();
       // To get cursor position, get empty selection range
       var sel = document.selection.createRange();
       // Move selection start to 0 position
-      sel.moveStart("character", -this.$.cell.value.length);
+      sel.moveStart(
+        "character",
+        -this.shadowRoot.querySelector("#cell").value.length
+      );
       // The caret position is selection length
       caret = sel.text.length;
     } else if (
-      this.$.cell.shadowRoot.querySelector("textarea").selectionStart ||
-      this.$.cell.shadowRoot.querySelector("textarea").selectionStart == "0"
+      this.shadowRoot
+        .querySelector("#cell")
+        .shadowRoot.querySelector("textarea").selectionStart ||
+      this.shadowRoot
+        .querySelector("#cell")
+        .shadowRoot.querySelector("textarea").selectionStart == "0"
     ) {
-      caret = this.$.cell.shadowRoot.querySelector("textarea").selectionStart;
+      caret = this.shadowRoot
+        .querySelector("#cell")
+        .shadowRoot.querySelector("textarea").selectionStart;
     }
     return caret;
   }
@@ -194,7 +203,9 @@ class EditableTableEditorCell extends cellBehaviors(PolymerElement) {
    * @param {number} end the start position of the caret
    */
   setCaretPosition(start, end) {
-    let textarea = this.$.cell.shadowRoot.querySelector("textarea");
+    let textarea = this.shadowRoot
+      .querySelector("#cell")
+      .shadowRoot.querySelector("textarea");
     textarea.focus();
     if (textarea.createTextRange) {
       let range = textarea.createTextRange();
@@ -215,7 +226,10 @@ class EditableTableEditorCell extends cellBehaviors(PolymerElement) {
    * @param {number} end the start position of the caret
    */
   setFocus(start, end) {
-    this.$.cell.shadowRoot.querySelector("textarea").focus();
+    this.shadowRoot
+      .querySelector("#cell")
+      .shadowRoot.querySelector("textarea")
+      .focus();
     if (start !== undefined && end !== undefined) {
       this.setCaretPosition(start, this.getCaretPosition() - end);
     } else if (start !== undefined && start > -1) {

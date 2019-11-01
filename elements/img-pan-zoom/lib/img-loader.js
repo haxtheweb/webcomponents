@@ -55,17 +55,23 @@ class ImgLoader extends PolymerElement {
   ready() {
     super.ready();
 
-    var img = this.$.img;
+    var img = this.shadowRoot.querySelector("#img");
 
     img.onload = function() {
-      if (this.$.img.src !== this._resolveSrc(this.src)) return;
+      if (
+        this.shadowRoot.querySelector("#img").src !== this._resolveSrc(this.src)
+      )
+        return;
       this._setLoading(false);
       this._setLoaded(true);
       this._setError(false);
     }.bind(this);
 
     img.onerror = function() {
-      if (this.$.img.src !== this._resolveSrc(this.src)) return;
+      if (
+        this.shadowRoot.querySelector("#img").src !== this._resolveSrc(this.src)
+      )
+        return;
       this._reset();
       this._setLoading(false);
       this._setLoaded(false);
@@ -85,9 +91,9 @@ class ImgLoader extends PolymerElement {
 
   _load(src) {
     if (src) {
-      this.$.img.src = src;
+      this.shadowRoot.querySelector("#img").src = src;
     } else {
-      this.$.img.removeAttribute("src");
+      this.shadowRoot.querySelector("#img").removeAttribute("src");
     }
     this._setLoading(!!src);
     this._setLoaded(false);
@@ -95,7 +101,7 @@ class ImgLoader extends PolymerElement {
   }
 
   _reset() {
-    this.$.img.removeAttribute("src");
+    this.shadowRoot.querySelector("#img").removeAttribute("src");
     this._setLoading(false);
     this._setLoaded(false);
     this._setError(false);

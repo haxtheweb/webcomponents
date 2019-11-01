@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/paper-input/paper-input.js";
 import "@vaadin/vaadin-grid/vaadin-grid.js";
 import "@vaadin/vaadin-grid/vaadin-grid-column.js";
@@ -391,8 +390,7 @@ class LrnappOpenStudioTable extends PolymerElement {
     };
   }
   _loadProjectRoute(e) {
-    var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget;
+    var local = e.target;
     // this will have the id of the current submission
     var project = local.getAttribute("data-project-id");
     var author = local.getAttribute("data-author-id");
@@ -414,8 +412,7 @@ class LrnappOpenStudioTable extends PolymerElement {
    */
   _loadSubmissionUrl(e) {
     let root = this;
-    var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget;
+    var local = e.target;
     // this will have the id of the current submission
     var active = local.getAttribute("data-submission-id");
     // @todo need a cleaner integration but this at least goes the right place for now
@@ -427,7 +424,7 @@ class LrnappOpenStudioTable extends PolymerElement {
    * Handle response for the whole projects object.
    */
   _handleResponse(event) {
-    this.$.loading.hidden = true;
+    this.shadowRoot.querySelector("#loading").hidden = true;
   }
 
   /**

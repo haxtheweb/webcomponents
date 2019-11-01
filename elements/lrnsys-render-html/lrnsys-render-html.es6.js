@@ -54,7 +54,7 @@ class LrnsysRenderHtml extends PolymerElement {
    * Render the HTML by just injecting it directly.
    */
   _render(html) {
-    this.$.container.innerHTML = html;
+    this.shadowRoot.querySelector("#container").innerHTML = html;
   }
 }
 window.customElements.define(LrnsysRenderHtml.tag, LrnsysRenderHtml);

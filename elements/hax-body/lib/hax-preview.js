@@ -1,5 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { wipeSlot } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import "@polymer/iron-media-query/iron-media-query.js";
 /**
@@ -539,28 +539,28 @@ class HaxPreview extends PolymerElement {
             !slotsApplied
           ) {
             slotsApplied = true;
+
             // walk through the slots looking for the value of it
-            for (var i in dom(previewNode).getEffectiveChildNodes()) {
+            const previewNodeChildren = FlattenedNodesObserver.getFlattenedNodes(
+              previewNode
+            );
+            for (var i in previewNodeChildren) {
               // test for element nodes to be safe
               if (
-                typeof dom(previewNode).getEffectiveChildNodes()[i] !==
-                  typeof undefined &&
-                dom(previewNode).getEffectiveChildNodes()[i].nodeType === 1 &&
-                dom(previewNode).getEffectiveChildNodes()[i].slot ===
+                typeof previewNodeChildren[i] !== typeof undefined &&
+                previewNodeChildren[i].nodeType === 1 &&
+                previewNodeChildren[i].slot ===
                   props.settings[this.formKey][prop].slot
               ) {
                 if (
-                  typeof dom(previewNode).getEffectiveChildNodes()[i]
-                    .innerHTML !== typeof undefined
+                  typeof previewNodeChildren[i].innerHTML !== typeof undefined
                 ) {
                   schema.properties[
                     props.settings[this.formKey][prop].slot
-                  ].value = dom(previewNode).getEffectiveChildNodes()[
-                    i
-                  ].innerHTML;
+                  ].value = previewNodeChildren[i].innerHTML;
                   this.set(
                     "value." + props.settings[this.formKey][prop].slot,
-                    dom(previewNode).getEffectiveChildNodes()[i].innerHTML
+                    previewNodeChildren[i].innerHTML
                   );
                   this.notifyPath(
                     "value." + props.settings[this.formKey][prop].slot
@@ -721,26 +721,25 @@ class HaxPreview extends PolymerElement {
           if (
             typeof props.settings[this.formKey][prop].slot !== typeof undefined
           ) {
+            const newValueChildren = FlattenedNodesObserver.getFlattenedNodes(
+              newValue
+            );
             // walk through the slots looking for the value of it
-            for (var i in dom(newValue).getEffectiveChildNodes()) {
+            for (var i in newValueChildren) {
               // test for element nodes to be safe
               if (
-                typeof dom(newValue).getEffectiveChildNodes()[i] !==
-                  typeof undefined &&
-                dom(newValue).getEffectiveChildNodes()[i].nodeType === 1 &&
-                dom(newValue).getEffectiveChildNodes()[i].slot ===
+                typeof newValueChildren[i] !== typeof undefined &&
+                newValueChildren[i].nodeType === 1 &&
+                newValueChildren[i].slot ===
                   props.settings[this.formKey][prop].slot
               ) {
-                if (
-                  typeof dom(newValue).getEffectiveChildNodes()[i].innerHTML !==
-                  typeof undefined
-                ) {
+                if (typeof newValueChildren[i].innerHTML !== typeof undefined) {
                   schema.properties[
                     props.settings[this.formKey][prop].slot
-                  ].value = dom(newValue).getEffectiveChildNodes()[i].innerHTML;
+                  ].value = newValueChildren[i].innerHTML;
                   this.set(
                     "value." + props.settings[this.formKey][prop].slot,
-                    dom(newValue).getEffectiveChildNodes()[i].innerHTML
+                    newValueChildren[i].innerHTML
                   );
                   this.notifyPath(
                     "value." + props.settings[this.formKey][prop].slot
@@ -762,8 +761,7 @@ class HaxPreview extends PolymerElement {
   _activeHaxElementChanged(newValue, oldValue) {
     if (typeof newValue !== typeof undefined) {
       // wipe the preview area and assocaited node
-      let preview = dom(this);
-      wipeSlot(preview, "*");
+      wipeSlot(this, "*");
       this.set("previewNode", {});
       this.modeTab = "configure";
       // if we have something, generate the new element inside it
@@ -784,7 +782,7 @@ class HaxPreview extends PolymerElement {
           newNode.removeAttribute("slot");
         }
         // send this into the root, which should filter it back down into the slot
-        preview.appendChild(newNode);
+        this.appendChild(newNode);
         // need to let append propagate, it probably takes like no time
         this.set("previewNode", newNode);
       }
@@ -794,7 +792,7 @@ class HaxPreview extends PolymerElement {
     }
   }
   /**
-   * Value in the form has changed, reflect to the preview.
+   * Value in the form has changed, reflect to the preview
    */
   _valueChanged(valueChange) {
     var node = this.previewNode;
@@ -926,7 +924,7 @@ class HaxPreview extends PolymerElement {
             } else {
               // wipe just the slot in question
               wipeSlot(node, propData.slot);
-              dom(node).appendChild(cloneIt);
+              node.appendChild(cloneIt);
             }
             this.set(
               "element.content",

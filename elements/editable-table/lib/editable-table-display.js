@@ -451,8 +451,8 @@ class EditableTableDisplay extends displayBehaviors(
    * update the responsive columns menu
    */
   _updateCols() {
-    let selected = this.$.column.value,
-      cols = this.$.table.querySelectorAll("th,td");
+    let selected = this.shadowRoot.querySelector("#column").value,
+      cols = this.shadowRoot.querySelector("#table").querySelectorAll("th,td");
     if (cols.length > 0) {
       for (let i = 0; i < cols.length; i++) {
         let col = cols[i];

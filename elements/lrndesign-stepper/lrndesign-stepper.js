@@ -21,7 +21,7 @@ class LrndesignStepper extends PolymerElement {
           display: block;
         }
       </style>
-      <div class="buttons"><slot id="stepper-children"> </slot></div>
+      <div class="buttons"><slot></slot></div>
     `;
   }
   static get tag() {
@@ -29,8 +29,10 @@ class LrndesignStepper extends PolymerElement {
   }
   ready() {
     super.ready();
-    var root = this;
-    var children = root.getContentChildren("#stepper-children");
+    var children = this.shadowRoot
+      .querySelector("slot")
+      .assignedNodes({ flatten: true })
+      .filter(n => n.nodeType === Node.ELEMENT_NODE);
     if (children.length > 1) {
       children.forEach(function(child, index) {
         if (index === 0) {

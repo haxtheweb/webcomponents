@@ -5,7 +5,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "@polymer/paper-button/paper-button.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 
 // register globally so we can make sure there is only one
@@ -200,11 +199,11 @@ paper-toast {
     if (e.detail.eventCallback) {
       this.eventCallback = e.detail.eventCallback;
     }
-    while (dom(this).firstChild !== null) {
-      dom(this).removeChild(dom(this).firstChild);
+    while (this.firstChild !== null) {
+      this.removeChild(this.firstChild);
     }
     if (e.detail.slot) {
-      dom(this).appendChild(e.detail.slot);
+      this.appendChild(e.detail.slot);
     }
     async.microTask.run(() => {
       setTimeout(() => {
@@ -214,7 +213,7 @@ paper-toast {
   }
 
   show() {
-    this.$.toast.show();
+    this.shadowRoot.querySelector("#toast").show();
   }
   hide() {
     if (this.eventCallback) {
@@ -225,7 +224,7 @@ paper-toast {
       });
       this.dispatchEvent(evt);
     }
-    this.$.toast.hide();
+    this.shadowRoot.querySelector("#toast").hide();
   }
 }
 window.customElements.define(SimpleToast.tag, SimpleToast);

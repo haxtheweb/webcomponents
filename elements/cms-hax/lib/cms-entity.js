@@ -1,5 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-spinner/paper-spinner.js";
@@ -156,13 +156,13 @@ class CMSEntity extends PolymerElement {
           newValue.editText;
       }
       // wipe our own slot here
-      wipeSlot(dom(this));
+      wipeSlot(this);
       // now inject the content we got
       microTask.run(() => {
         let frag = document.createElement("span");
         frag.innerHTML = newValue.content;
         let newNode = frag.cloneNode(true);
-        dom(this).appendChild(newNode);
+        this.appendChild(newNode);
         setTimeout(() => {
           this.loading = false;
         }, 600);
@@ -189,7 +189,7 @@ class CMSEntity extends PolymerElement {
       if (this.entityEndPoint) {
         this.loading = true;
         microTask.run(() => {
-          this.$.entityrequest.generateRequest();
+          this.shadowRoot.querySelector("#entityrequest").generateRequest();
         });
       }
     }
@@ -204,7 +204,7 @@ class CMSEntity extends PolymerElement {
       this.entity !== null &&
       this.entity !== ""
     ) {
-      let slot = dom(this).getEffectiveChildNodes();
+      let slot = FlattenedNodesObserver.getFlattenedNodes(this);
       // only kick off request if there's nothing in it
       // if it has something in it that means we did some
       // remote rendering ahead of time
@@ -219,7 +219,7 @@ class CMSEntity extends PolymerElement {
         if (this.entityEndPoint) {
           this.loading = true;
           microTask.run(() => {
-            this.$.entityrequest.generateRequest();
+            this.shadowRoot.querySelector("#entityrequest").generateRequest();
           });
         }
       }

@@ -1,6 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/app-route/app-location.js";
@@ -623,26 +622,26 @@ class LrnappStudioInstructor extends PolymerElement {
   _activeDataChanged(student, assignment) {
     if (typeof student.id !== typeof undefined) {
       if (this._getObjectByPosition(this.students, student.id, -1) == -1) {
-        this.$.prevstudent.disabled = true;
+        this.shadowRoot.querySelector("#prevstudent").disabled = true;
       } else {
-        this.$.prevstudent.disabled = false;
+        this.shadowRoot.querySelector("#prevstudent").disabled = false;
       }
       if (this._getObjectByPosition(this.students, student.id, 1) == -1) {
-        this.$.nextstudent.disabled = true;
+        this.shadowRoot.querySelector("#nextstudent").disabled = true;
       } else {
-        this.$.nextstudent.disabled = false;
+        this.shadowRoot.querySelector("#nextstudent").disabled = false;
       }
       if (
         this._getObjectByPosition(this.assignments, assignment.id, -1) == -1
       ) {
-        this.$.prevassignment.disabled = true;
+        this.shadowRoot.querySelector("#prevassignment").disabled = true;
       } else {
-        this.$.prevassignment.disabled = false;
+        this.shadowRoot.querySelector("#prevassignment").disabled = false;
       }
       if (this._getObjectByPosition(this.assignments, assignment.id, 1) == -1) {
-        this.$.nextassignment.disabled = true;
+        this.shadowRoot.querySelector("#nextassignment").disabled = true;
       } else {
-        this.$.nextassignment.disabled = false;
+        this.shadowRoot.querySelector("#nextassignment").disabled = false;
       }
     }
   }
@@ -650,18 +649,18 @@ class LrnappStudioInstructor extends PolymerElement {
    * Project updated
    */
   _projectChanged(e) {
-    this.$.loading.hidden = false;
+    this.shadowRoot.querySelector("#loading").hidden = false;
     // default a11y positioning back to the stats dialog
-    this.__rememberClick = this.$.statsdialogbutton;
-    this.$.statsdialogbutton.disabled = false;
-    this.$.datatype.disabled = false;
+    this.__rememberClick = this.shadowRoot.querySelector("#statsdialogbutton");
+    this.shadowRoot.querySelector("#statsdialogbutton").disabled = false;
+    this.shadowRoot.querySelector("#datatype").disabled = false;
     this.activeProject = e.detail.value;
     // this should fire off the new request
     this.studentParams.projectId = this.activeProject;
-    this.$.studentrequest.generateRequest();
+    this.shadowRoot.querySelector("#studentrequest").generateRequest();
   }
   _openStatsDialog(e) {
-    this.$.statsdialog.toggle();
+    this.shadowRoot.querySelector("#statsdialog").toggle();
   }
   /**
    * attached life cycle
@@ -669,54 +668,44 @@ class LrnappStudioInstructor extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     afterNextRender(this, function() {
-      this.$.statsdialogbutton.addEventListener(
-        "click",
-        this._openStatsDialog.bind(this)
-      );
+      this.shadowRoot
+        .querySelector("#statsdialogbutton")
+        .addEventListener("click", this._openStatsDialog.bind(this));
       // listen for focus event to have fired
-      this.$.statsdialog.addEventListener(
-        "opened-changed",
-        this._accessibleFocus.bind(this)
-      );
-      this.$.dialog.addEventListener(
-        "opened-changed",
-        this._accessibleFocus.bind(this)
-      );
-      this.$.selectedproject.addEventListener(
-        "change",
-        this._projectChanged.bind(this)
-      );
-      this.$.selectedchart.addEventListener(
-        "change",
-        this._chartChanged.bind(this)
-      );
+      this.shadowRoot
+        .querySelector("#statsdialog")
+        .addEventListener("opened-changed", this._accessibleFocus.bind(this));
+      this.shadowRoot
+        .querySelector("#dialog")
+        .addEventListener("opened-changed", this._accessibleFocus.bind(this));
+      this.shadowRoot
+        .querySelector("#selectedproject")
+        .addEventListener("change", this._projectChanged.bind(this));
+      this.shadowRoot
+        .querySelector("#selectedchart")
+        .addEventListener("change", this._chartChanged.bind(this));
     });
   }
   /**
    * detached life cycle
    */
   disconnectedCallback() {
-    this.$.statsdialogbutton.removeEventListener(
-      "click",
-      this._openStatsDialog.bind(this)
-    );
+    this.shadowRoot
+      .querySelector("#statsdialogbutton")
+      .removeEventListener("click", this._openStatsDialog.bind(this));
     // listen for focus event to have fired
-    this.$.statsdialog.removeEventListener(
-      "opened-changed",
-      this._accessibleFocus.bind(this)
-    );
-    this.$.dialog.removeEventListener(
-      "opened-changed",
-      this._accessibleFocus.bind(this)
-    );
-    this.$.selectedproject.removeEventListener(
-      "change",
-      this._projectChanged.bind(this)
-    );
-    this.$.selectedchart.removeEventListener(
-      "change",
-      this._chartChanged.bind(this)
-    );
+    this.shadowRoot
+      .querySelector("#statsdialog")
+      .removeEventListener("opened-changed", this._accessibleFocus.bind(this));
+    this.shadowRoot
+      .querySelector("#dialog")
+      .removeEventListener("opened-changed", this._accessibleFocus.bind(this));
+    this.shadowRoot
+      .querySelector("#selectedproject")
+      .removeEventListener("change", this._projectChanged.bind(this));
+    this.shadowRoot
+      .querySelector("#selectedchart")
+      .removeEventListener("change", this._chartChanged.bind(this));
     super.disconnectedCallback();
   }
   /**
@@ -733,14 +722,14 @@ class LrnappStudioInstructor extends PolymerElement {
    * Handle response for the whole projects object.
    */
   _handleProjectResponse(event) {
-    this.$.loading.hidden = true;
+    this.shadowRoot.querySelector("#loading").hidden = true;
     this.set("projects", this._projectData.data.projects);
   }
   /**
    * Handle response for the whole projects object.
    */
   _handleStudentResponse(event) {
-    this.$.loading.hidden = true;
+    this.shadowRoot.querySelector("#loading").hidden = true;
     this.set("students", []);
     this.set("students", this._studentData.data.students);
     this.set("assignments", []);
@@ -761,8 +750,7 @@ class LrnappStudioInstructor extends PolymerElement {
    */
   _changeActiveItem(e) {
     document.body.classList.add("scroll-disabled");
-    var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget;
+    var local = e.target;
     var newstudent;
     var newassignment;
     // use button id in order to move around in the grid as far as active
@@ -990,8 +978,7 @@ class LrnappStudioInstructor extends PolymerElement {
    * Set route for active submission to load
    */
   _setActiveSubmission(e) {
-    var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget;
+    var local = e.target;
     this.__rememberClick = local;
     var item = local.id.split("-");
     // find the active elements
@@ -1006,19 +993,18 @@ class LrnappStudioInstructor extends PolymerElement {
       this.endPoint + "/submissions/" + item[item.length - 1]
     );
     document.body.classList.add("scroll-disabled");
-    this.$.dialog.toggle();
+    this.shadowRoot.querySelector("#dialog").toggle();
   }
   /**
    * Set route for active submission via comment click
    */
   _setActiveComment(e) {
     // disable all buttons for in modal nav
-    this.$.nextassignment.disabled = true;
-    this.$.prevassignment.disabled = true;
-    this.$.nextstudent.disabled = true;
-    this.$.prevstudent.disabled = true;
-    var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget;
+    this.shadowRoot.querySelector("#nextassignment").disabled = true;
+    this.shadowRoot.querySelector("#prevassignment").disabled = true;
+    this.shadowRoot.querySelector("#nextstudent").disabled = true;
+    this.shadowRoot.querySelector("#prevstudent").disabled = true;
+    var local = e.target;
     this.__rememberClick = local;
     var item = local.id.split("-");
     // find the active elements
@@ -1033,7 +1019,7 @@ class LrnappStudioInstructor extends PolymerElement {
       this.endPoint + "/submissions/" + item[item.length - 1]
     );
     document.body.classList.add("scroll-disabled");
-    this.$.dialog.toggle();
+    this.shadowRoot.querySelector("#dialog").toggle();
   }
   /**
    * Simple way to convert from object to array.

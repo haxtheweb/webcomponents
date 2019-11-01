@@ -247,10 +247,9 @@ class LrnsysButton extends PolymerElement {
       this.addEventListener("mousedown", this.tapEventOn.bind(this));
       this.addEventListener("mouseover", this.tapEventOn.bind(this));
       this.addEventListener("mouseout", this.tapEventOff.bind(this));
-      this.$.button.addEventListener(
-        "focused-changed",
-        this.focusToggle.bind(this)
-      );
+      this.shadowRoot
+        .querySelector("#button")
+        .addEventListener("focused-changed", this.focusToggle.bind(this));
     });
   }
   connectedCallback() {
@@ -275,10 +274,9 @@ class LrnsysButton extends PolymerElement {
     this.removeEventListener("mousedown", this.tapEventOn.bind(this));
     this.removeEventListener("mouseover", this.tapEventOn.bind(this));
     this.removeEventListener("mouseout", this.tapEventOff.bind(this));
-    this.$.button.removeEventListener(
-      "focused-changed",
-      this.focusToggle.bind(this)
-    );
+    this.shadowRoot
+      .querySelector("#button")
+      .removeEventListener("focused-changed", this.focusToggle.bind(this));
     super.disconnectedCallback();
   }
 
@@ -303,9 +301,9 @@ class LrnsysButton extends PolymerElement {
       // run through each and add or remove classes
       classes.forEach((item, index) => {
         if (item != "") {
-          this.$.button.classList.add(item);
+          this.shadowRoot.querySelector("#button").classList.add(item);
           if (item.indexOf("-") != -1) {
-            this.$.icon.classList.add(item);
+            this.shadowRoot.querySelector("#icon").classList.add(item);
           }
         }
       });
@@ -322,9 +320,9 @@ class LrnsysButton extends PolymerElement {
       // run through each and add or remove classes
       classes.forEach((item, index) => {
         if (item != "") {
-          this.$.button.classList.remove(item);
+          this.shadowRoot.querySelector("#button").classList.remove(item);
           if (item.indexOf("-") != -1) {
-            this.$.icon.classList.remove(item);
+            this.shadowRoot.querySelector("#icon").classList.remove(item);
           }
         }
       });
@@ -342,14 +340,14 @@ class LrnsysButton extends PolymerElement {
       classes.forEach((item, index) => {
         if (item != "") {
           if (!this.focusState) {
-            this.$.button.classList.add(item);
+            this.shadowRoot.querySelector("#button").classList.add(item);
             if (item.indexOf("-") != -1) {
-              this.$.icon.classList.add(item);
+              this.shadowRoot.querySelector("#icon").classList.add(item);
             }
           } else {
-            this.$.button.classList.remove(item);
+            this.shadowRoot.querySelector("#button").classList.remove(item);
             if (item.indexOf("-") != -1) {
-              this.$.icon.classList.remove(item);
+              this.shadowRoot.querySelector("#icon").classList.remove(item);
             }
           }
         }

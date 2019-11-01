@@ -368,7 +368,7 @@ class EcoJsonSchemaFile extends mixinBehaviors(
    */
   clear() {
     this.set("files", []);
-    this.$.fileInput.value = "";
+    this.shadowRoot.querySelector("#fileInput").value = "";
     this._showDropText();
   }
 
@@ -376,10 +376,18 @@ class EcoJsonSchemaFile extends mixinBehaviors(
     super.ready();
 
     if (this.raised) {
-      this.toggleAttribute("raised", true, this.$.button);
+      this.toggleAttribute(
+        "raised",
+        true,
+        this.shadowRoot.querySelector("#button")
+      );
     }
     if (this.noink) {
-      this.toggleAttribute("noink", true, this.$.button);
+      this.toggleAttribute(
+        "noink",
+        true,
+        this.shadowRoot.querySelector("#button")
+      );
     }
     if (this.droppable) {
       this._showDropText();
@@ -391,7 +399,7 @@ class EcoJsonSchemaFile extends mixinBehaviors(
    * A function to set up a drop area for drag-and-drop file uploads
    */
   setupDrop() {
-    var uploadBorder = this.$.UploadBorder;
+    var uploadBorder = this.shadowRoot.querySelector("#UploadBorder");
     this.toggleClass("enabled", true, uploadBorder);
 
     this.ondragover = function(e) {
@@ -457,7 +465,7 @@ class EcoJsonSchemaFile extends mixinBehaviors(
    * Clicks the invisible file input
    */
   _fileClick() {
-    var elem = this.$.fileInput;
+    var elem = this.shadowRoot.querySelector("#fileInput");
     if (elem && document.createEvent) {
       // sanity check
       var evt = document.createEvent("MouseEvents");
@@ -586,7 +594,7 @@ class EcoJsonSchemaFile extends mixinBehaviors(
   _schemaChanged() {
     var schema = this.schema;
     /*
-    var inputEl = this.$.fileInput;
+    var inputEl = this.shadowRoot.querySelector('#fileInput');
     if (schema.required) {
       inputEl.required = true;
     }
@@ -610,11 +618,11 @@ class EcoJsonSchemaFile extends mixinBehaviors(
   /*
   _errorChanged() {
     if (this.error) {
-      this.$.fileInput.errorMessage = this.error;
-      this.$.fileInput.invalid = true;
+      this.shadowRoot.querySelector('#fileInput').errorMessage = this.error;
+      this.shadowRoot.querySelector('#fileInput').invalid = true;
     } else {
-      this.$.fileInput.invalid = false;
-      this.$.fileInput.errorMessage = null;
+      this.shadowRoot.querySelector('#fileInput').invalid = false;
+      this.shadowRoot.querySelector('#fileInput').errorMessage = null;
     }
   },
   */

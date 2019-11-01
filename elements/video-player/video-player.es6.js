@@ -74,7 +74,9 @@ class VideoPlayer extends MediaBehaviorsVideo(
     disable-interactive$="[[disableInteractive]]"
     hide-timestamps$="[[hideTimestamps]]"
     hide-transcript$="[[hideTiranscript]]"
+    id="[[_getPlayerId(playerId,schemaResourceID)]]"
     lang$="[[lang]]"
+    linkable$="[[linkable]]"
     media-type$="[[sourceType]]"
     preload$="[[preload]]"
     media-title$="[[mediaTitle]]"
@@ -450,10 +452,25 @@ class VideoPlayer extends MediaBehaviorsVideo(
     "value": "en"
   },
   /**
+   * Include a share link?
+   */
+  "linkable": {
+    "type": Boolean,
+    "value": false
+  },
+  /**
    * Simple caption for the video
    */
   "mediaTitle": {
     "type": String
+  },
+  /**
+   * ID for a11y-media-player. 
+   If none specified it will be modified from schema-resource-id.
+   */
+  "playerId": {
+    "type": String,
+    "value": null
   },
   /**
    * What to preload for a11y-media-player: auto, metadata (default), or none.
@@ -661,6 +678,15 @@ class VideoPlayer extends MediaBehaviorsVideo(
         kind: "subtitles"
       });
     return temp;
+  }
+  /**
+   * gets an id for a11y-media-player
+   * @param {string} playerId
+   * @param {string} schemaResourceID
+   * @returns {string} an id for the player
+   */
+  _getPlayerId(playerId, schemaResourceID) {
+    return playerId || `${schemaResourceID}-media`;
   }
 
   /**

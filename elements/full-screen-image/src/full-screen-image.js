@@ -31,7 +31,7 @@ class FullScreenImage extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.$.down.addEventListener("click", e => {
+    this.shadowRoot.querySelector("#down").addEventListener("click", e => {
       this.nextElementSibling.scrollIntoView({
         block: "start",
         inline: "nearest",
@@ -44,7 +44,7 @@ class FullScreenImage extends PolymerElement {
    */
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.$.down.removeEventListener("click", e => {
+    this.shadowRoot.querySelector("#down").removeEventListener("click", e => {
       this.nextElementSibling.scrollIntoView({
         block: "start",
         inline: "nearest",

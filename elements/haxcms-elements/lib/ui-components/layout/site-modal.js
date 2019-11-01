@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 /**
@@ -82,10 +82,12 @@ class SiteModal extends PolymerElement {
   }
   connectedCallback() {
     super.connectedCallback();
-    this.$.smt.associateEvents(this.$.btn);
-    const nodes = dom(this).getEffectiveChildNodes();
+    this.shadowRoot
+      .querySelector("#smt")
+      .associateEvents(this.shadowRoot.querySelector("#btn"));
+    const nodes = FlattenedNodesObserver.getFlattenedNodes(this);
     for (var i in nodes) {
-      this.$.content.appendChild(nodes[i]);
+      this.shadowRoot.querySelector("#content").appendChild(nodes[i]);
     }
   }
   disconnectedCallback() {

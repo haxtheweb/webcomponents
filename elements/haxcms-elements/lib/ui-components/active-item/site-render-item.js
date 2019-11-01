@@ -4,7 +4,6 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import {
   encapScript,
   findTagsInHTML,
@@ -85,7 +84,7 @@ class SiteRenderItem extends PolymerElement {
   }
   locationChanged(newValue) {
     if (newValue) {
-      this.$.content.generateRequest();
+      this.shadowRoot.querySelector("#content").generateRequest();
     }
   }
   /**
@@ -102,7 +101,7 @@ class SiteRenderItem extends PolymerElement {
         microTask.run(() => {
           setTimeout(() => {
             let frag = document.createRange().createContextualFragment(html);
-            dom(this).appendChild(frag);
+            this.appendChild(frag);
           }, 5);
         });
         // if there are, dynamically import them

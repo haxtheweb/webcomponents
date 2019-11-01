@@ -1,6 +1,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
@@ -161,7 +161,7 @@ class LrnsysDialog extends PolymerElement {
       var classes = this.hoverClass.split(" ");
       classes.forEach((item, index) => {
         if (item != "") {
-          this.$.dialogtrigger.classList.add(item);
+          this.shadowRoot.querySelector("#dialogtrigger").classList.add(item);
         }
       });
     }
@@ -176,7 +176,9 @@ class LrnsysDialog extends PolymerElement {
       var classes = this.hoverClass.split(" ");
       classes.forEach((item, index) => {
         if (item != "") {
-          this.$.dialogtrigger.classList.remove(item);
+          this.shadowRoot
+            .querySelector("#dialogtrigger")
+            .classList.remove(item);
         }
       });
     }
@@ -189,7 +191,7 @@ class LrnsysDialog extends PolymerElement {
    */
   openDialog() {
     // assemble everything in the slot
-    let nodes = dom(this).getEffectiveChildNodes();
+    let nodes = FlattenedNodesObserver.getFlattenedNodes(this);
     let h = document.createElement("span");
     let c = document.createElement("span");
     let node = {};
@@ -229,7 +231,7 @@ class LrnsysDialog extends PolymerElement {
           header: h,
           content: c
         },
-        invokedBy: this.$.dialogtrigger,
+        invokedBy: this.shadowRoot.querySelector("#dialogtrigger"),
         clone: true
       }
     });
@@ -256,9 +258,11 @@ class LrnsysDialog extends PolymerElement {
       classes.forEach((item, index) => {
         if (item != "") {
           if (this.focusState) {
-            this.$.dialogtrigger.classList.add(item);
+            this.shadowRoot.querySelector("#dialogtrigger").classList.add(item);
           } else {
-            this.$.dialogtrigger.classList.remove(item);
+            this.shadowRoot
+              .querySelector("#dialogtrigger")
+              .classList.remove(item);
           }
         }
       });
@@ -279,44 +283,36 @@ class LrnsysDialog extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     afterNextRender(this, function() {
-      this.$.dialogtrigger.addEventListener(
-        "focused-changed",
-        this.focusToggle.bind(this)
-      );
-      this.$.dialogtrigger.addEventListener(
-        "mousedown",
-        this.tapEventOn.bind(this)
-      );
-      this.$.dialogtrigger.addEventListener(
-        "mouseover",
-        this.tapEventOn.bind(this)
-      );
-      this.$.dialogtrigger.addEventListener(
-        "mouseout",
-        this.tapEventOff.bind(this)
-      );
+      this.shadowRoot
+        .querySelector("#dialogtrigger")
+        .addEventListener("focused-changed", this.focusToggle.bind(this));
+      this.shadowRoot
+        .querySelector("#dialogtrigger")
+        .addEventListener("mousedown", this.tapEventOn.bind(this));
+      this.shadowRoot
+        .querySelector("#dialogtrigger")
+        .addEventListener("mouseover", this.tapEventOn.bind(this));
+      this.shadowRoot
+        .querySelector("#dialogtrigger")
+        .addEventListener("mouseout", this.tapEventOff.bind(this));
     });
   }
   /**
    * detached lifecycle
    */
   disconnectedCallback() {
-    this.$.dialogtrigger.removeEventListener(
-      "focused-changed",
-      this.focusToggle.bind(this)
-    );
-    this.$.dialogtrigger.removeEventListener(
-      "mousedown",
-      this.tapEventOn.bind(this)
-    );
-    this.$.dialogtrigger.removeEventListener(
-      "mouseover",
-      this.tapEventOn.bind(this)
-    );
-    this.$.dialogtrigger.removeEventListener(
-      "mouseout",
-      this.tapEventOff.bind(this)
-    );
+    this.shadowRoot
+      .querySelector("#dialogtrigger")
+      .removeEventListener("focused-changed", this.focusToggle.bind(this));
+    this.shadowRoot
+      .querySelector("#dialogtrigger")
+      .removeEventListener("mousedown", this.tapEventOn.bind(this));
+    this.shadowRoot
+      .querySelector("#dialogtrigger")
+      .removeEventListener("mouseover", this.tapEventOn.bind(this));
+    this.shadowRoot
+      .querySelector("#dialogtrigger")
+      .removeEventListener("mouseout", this.tapEventOff.bind(this));
     super.disconnectedCallback();
   }
 }

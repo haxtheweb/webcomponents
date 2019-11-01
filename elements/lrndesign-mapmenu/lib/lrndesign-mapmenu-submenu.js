@@ -67,7 +67,7 @@ class LrndesignMapmenuSubmenu extends PolymerElement {
   }
 
   _openChanged(opened) {
-    var target = this.$.container;
+    var target = this.shadowRoot.querySelector("#container");
     if (opened) target.show();
     if (!opened) target.hide();
   }
@@ -80,16 +80,19 @@ class LrndesignMapmenuSubmenu extends PolymerElement {
 
   ready() {
     super.ready();
-    this._observer = new FlattenedNodesObserver(this.$.slot, info => {
-      var submenus = info.addedNodes.filter(
-        item => item.nodeName === "LRNDESIGN-MAPMENU-SUBMENU"
-      );
-      if (this.expandChildren) {
-        for (let menu of submenus) {
-          menu.setAttribute("opened", true);
+    this._observer = new FlattenedNodesObserver(
+      this.shadowRoot.querySelector("#slot"),
+      info => {
+        var submenus = info.addedNodes.filter(
+          item => item.nodeName === "LRNDESIGN-MAPMENU-SUBMENU"
+        );
+        if (this.expandChildren) {
+          for (let menu of submenus) {
+            menu.setAttribute("opened", true);
+          }
         }
       }
-    });
+    );
   }
   disconnectedCallback() {
     this._observer.disconnect();

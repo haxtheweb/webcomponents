@@ -66,7 +66,7 @@ class PaperIconStepper extends PolymerElement {
     this._selected = -1;
   }
   _onItemsChanged(e) {
-    this._items = this.$.selector.items;
+    this._items = this.shadowRoot.querySelector("#selector").items;
   }
 }
 window.customElements.define(PaperIconStepper.tag, PaperIconStepper);

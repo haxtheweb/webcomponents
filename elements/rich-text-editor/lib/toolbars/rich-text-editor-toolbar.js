@@ -748,8 +748,8 @@ class RichTextEditorToolbar extends PolymerElement {
    */
   _getButtons(config) {
     let root = this,
-      toolbar = root.$.toolbar,
-      more = this.$.morebutton,
+      toolbar = root.shadowRoot.querySelector("#toolbar"),
+      more = this.shadowRoot.querySelector("#morebutton"),
       max = 0,
       sizes = ["xs", "sm", "md", "lg", "xl"],
       temp = [];

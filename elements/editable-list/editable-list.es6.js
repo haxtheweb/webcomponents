@@ -92,19 +92,23 @@ iron-list {
   connectedCallback() {
     super.connectedCallback();
     const modal = window.SimpleModal.requestAvailability();
-    this.$.list.addEventListener(
-      "editable-list-item-delete",
-      this.triggerDeleteModal.bind(this)
-    );
+    this.shadowRoot
+      .querySelector("#list")
+      .addEventListener(
+        "editable-list-item-delete",
+        this.triggerDeleteModal.bind(this)
+      );
   }
   /**
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    this.$.list.removeEventListener(
-      "editable-list-item-delete",
-      this.triggerDeleteModal.bind(this)
-    );
+    this.shadowRoot
+      .querySelector("#list")
+      .removeEventListener(
+        "editable-list-item-delete",
+        this.triggerDeleteModal.bind(this)
+      );
   }
 
   triggerDeleteModal(e) {
@@ -133,7 +137,7 @@ iron-list {
           content: c,
           buttons: b
         },
-        invokedBy: e.detail.element.$.delete,
+        invokedBy: e.detail.element.shadowRoot.querySelector("#delete"),
         clone: false
       }
     });

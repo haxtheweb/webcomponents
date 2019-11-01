@@ -42,7 +42,9 @@ class LrnButton extends PolymerElement {
       this.addEventListener("mousedown", this.tapEventOn);
       this.addEventListener("mouseover", this.tapEventOn);
       this.addEventListener("mouseout", this.tapEventOff);
-      this.$.button.addEventListener("focused-changed", this.focusToggle);
+      this.shadowRoot
+        .querySelector("#button")
+        .addEventListener("focused-changed", this.focusToggle);
     });
   }
   /**
@@ -52,7 +54,9 @@ class LrnButton extends PolymerElement {
     this.removeEventListener("mousedown", this.tapEventOn);
     this.removeEventListener("mouseover", this.tapEventOn);
     this.removeEventListener("mouseout", this.tapEventOff);
-    this.$.button.removeEventListener("focused-changed", this.focusToggle);
+    this.shadowRoot
+      .querySelector("#button")
+      .removeEventListener("focused-changed", this.focusToggle);
     super.disconnectedCallback();
   }
   /**
@@ -76,9 +80,9 @@ class LrnButton extends PolymerElement {
       // run through each and add or remove classes
       classes.forEach(function(item, index) {
         if (item != "") {
-          root.$.button.classList.add(item);
+          root.shadowRoot.querySelector("#button").classList.add(item);
           if (item.indexOf("-") != -1) {
-            root.$.icon.classList.add(item);
+            root.shadowRoot.querySelector("#icon").classList.add(item);
           }
         }
       });
@@ -96,9 +100,9 @@ class LrnButton extends PolymerElement {
       // run through each and add or remove classes
       classes.forEach(function(item, index) {
         if (item != "") {
-          root.$.button.classList.remove(item);
+          root.shadowRoot.querySelector("#button").classList.remove(item);
           if (item.indexOf("-") != -1) {
-            root.$.icon.classList.remove(item);
+            root.shadowRoot.querySelector("#icon").classList.remove(item);
           }
         }
       });
@@ -125,14 +129,14 @@ class LrnButton extends PolymerElement {
       classes.forEach(function(item, index) {
         if (item != "") {
           if (root.focusState) {
-            root.$.button.classList.add(item);
+            root.shadowRoot.querySelector("#button").classList.add(item);
             if (item.indexOf("-") != -1) {
-              root.$.icon.classList.add(item);
+              root.shadowRoot.querySelector("#icon").classList.add(item);
             }
           } else {
-            root.$.button.classList.remove(item);
+            root.shadowRoot.querySelector("#button").classList.remove(item);
             if (item.indexOf("-") != -1) {
-              root.$.icon.classList.remove(item);
+              root.shadowRoot.querySelector("#icon").classList.remove(item);
             }
           }
         }

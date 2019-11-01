@@ -102,9 +102,11 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
   }
 
   onHeightChange() {
-    var height = this.$.comment.offsetHeight;
+    var height = this.shadowRoot.querySelector("#comment").offsetHeight;
     if (height > 80) {
-      this.$.btn.classList.toggle("hidden", this.hidden);
+      this.shadowRoot
+        .querySelector("#btn")
+        .classList.toggle("hidden", this.hidden);
     }
   }
   static get properties() {
@@ -154,9 +156,13 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
   connectedCallback() {
     super.connectedCallback();
     afterNextRender(this, function() {
-      this.$.wrapper.addEventListener("click", function(e) {
-        this.$.comment.classList.toggle("inactive", this.inactive);
-      });
+      this.shadowRoot
+        .querySelector("#wrapper")
+        .addEventListener("click", function(e) {
+          this.shadowRoot
+            .querySelector("#comment")
+            .classList.toggle("inactive", this.inactive);
+        });
       this.addEventListener("iron-resize", this.onHeightChange.bind(this));
     });
   }
@@ -164,9 +170,13 @@ class LrnappBlockRecentCommentsComment extends mixinBehaviors(
    * detached life cycle
    */
   disconnectedCallback() {
-    this.$.wrapper.removeEventListener("click", function(e) {
-      this.$.comment.classList.toggle("inactive", this.inactive);
-    });
+    this.shadowRoot
+      .querySelector("#wrapper")
+      .removeEventListener("click", function(e) {
+        this.shadowRoot
+          .querySelector("#comment")
+          .classList.toggle("inactive", this.inactive);
+      });
     this.removeEventListener("iron-resize", this.onHeightChange.bind(this));
     super.disconnectedCallback();
   }

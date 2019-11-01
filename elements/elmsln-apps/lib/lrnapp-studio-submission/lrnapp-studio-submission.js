@@ -141,7 +141,9 @@ class LrnappStudioSubmission extends SecureRequestXhr(PolymerElement) {
     if (submission) {
       this.set("route.path", this.endPoint);
       this.notifyPath("route.path");
-      this.$.toast.show("Submission has been deleted.");
+      this.shadowRoot
+        .querySelector("#toast")
+        .show("Submission has been deleted.");
     }
   }
 
@@ -153,7 +155,7 @@ class LrnappStudioSubmission extends SecureRequestXhr(PolymerElement) {
 
   _handleDisplayMessage(e, detail) {
     if (typeof e.detail.messsage !== "undefined") {
-      this.$.toast.show(e.detail.message);
+      this.shadowRoot.querySelector("#toast").show(e.detail.message);
     }
   }
 

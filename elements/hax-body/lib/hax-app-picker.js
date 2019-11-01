@@ -136,7 +136,7 @@ class HaxAppPicker extends LitElement {
             )}
           </div>
         </paper-dialog-scrollable>
-        <paper-button id="closedialog" on-click="close">
+        <paper-button id="closedialog" @click="${this.close}">
           <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
         </paper-button>
       </paper-dialog>
@@ -170,7 +170,8 @@ class HaxAppPicker extends LitElement {
        * Allow multiple uses
        */
       pickerType: {
-        type: String
+        type: String,
+        attribute: "picker-type"
       },
       /**
        * Opened status to bind to the dialog box being open

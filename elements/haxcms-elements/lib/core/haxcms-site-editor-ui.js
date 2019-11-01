@@ -1,9 +1,7 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "./haxcms-site-store.js";
 import { varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
@@ -17,21 +15,10 @@ import "@lrnwebcomponents/paper-avatar/paper-avatar.js";
  * @demo demo/index.html
  * @microcopy - the mental model for this element
  */
-class HAXCMSSiteEditorUI extends PolymerElement {
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   */
-  static get tag() {
-    return "haxcms-site-editor-ui";
-  }
-  constructor() {
-    super();
-    this.__disposer = [];
-  }
-  // render function
-  static get template() {
-    return html`
-      <style>
+class HAXCMSSiteEditorUI extends LitElement {
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           position: fixed;
@@ -90,7 +77,9 @@ class HAXCMSSiteEditorUI extends PolymerElement {
           padding: 12px;
           margin: 0;
           position: relative;
-          @apply --shadow-elevation-8dp;
+          box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14),
+            0 3px 14px 2px rgba(0, 0, 0, 0.12),
+            0 5px 5px -3px rgba(0, 0, 0, 0.4);
         }
         :host([painting]) {
           opacity: 0;
@@ -107,7 +96,9 @@ class HAXCMSSiteEditorUI extends PolymerElement {
           background-color: black;
           color: #ffffff;
           transition: 0.3s all ease-in-out;
-          @apply --shadow-elevation-8dp;
+          box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14),
+            0 3px 14px 2px rgba(0, 0, 0, 0.12),
+            0 5px 5px -3px rgba(0, 0, 0, 0.4);
         }
         paper-fab:hover,
         paper-fab:focus,
@@ -156,68 +147,131 @@ class HAXCMSSiteEditorUI extends PolymerElement {
           --paper-tooltip-opacity: 1;
           --paper-tooltip-text-color: #ffffff;
           --paper-tooltip-delay-in: 0;
+          --paper-tooltip-border-radius: 0;
           --paper-tooltip: {
             border-radius: 0;
           }
         }
-      </style>
+      `
+    ];
+  }
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   */
+  static get tag() {
+    return "haxcms-site-editor-ui";
+  }
+  constructor() {
+    super();
+    this.__disposer = [];
+    this.painting = true;
+    this.pageAllowed = false;
+    this.editMode = false;
+    this.manifestEditMode = false;
+    // this ensures that an initial paint won't get a cached copy of the site.json file
+    // this is more than possible given that it will register to most backends
+    // as a static file rather than dynamic end point as it is in this instance (sorta)
+    this.dispatchEvent(
+      new CustomEvent("haxcms-trigger-update", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: true
+      })
+    );
+    autorun(reaction => {
+      this.userName = toJS(store.userData.userName);
+      this.userPicture = toJS(store.userData.userPicture);
+      this.__disposer.push(reaction);
+    });
+    autorun(reaction => {
+      this.editMode = toJS(store.editMode);
+      this.__disposer.push(reaction);
+    });
+    autorun(reaction => {
+      this.manifest = toJS(store.manifest);
+      this.icon = varGet(
+        this.manifest,
+        "manifest.metadata.theme.variables.icon",
+        "icons:settings"
+      );
+      this.__disposer.push(reaction);
+    });
+    autorun(reaction => {
+      this.dashboardOpened = toJS(store.dashboardOpened);
+      this.__disposer.push(reaction);
+    });
+    autorun(reaction => {
+      const activeItem = toJS(store.activeItem);
+      if (activeItem && activeItem.id) {
+        this.activeTitle = activeItem.title;
+        this.pageAllowed = true;
+      } else {
+        this.pageAllowed = false;
+      }
+      this.__disposer.push(reaction);
+    });
+  }
+  // render function
+  render() {
+    return html`
       <paper-avatar
         id="username"
-        label="[[userName]]"
+        .label="${this.userName}"
         two-chars
-        src="[[userPicture]]"
+        .src="${this.userPicture}"
       ></paper-avatar>
       <paper-fab
         id="editbutton"
-        icon="[[__editIcon]]"
-        on-click="_editButtonTap"
-        title$="[[__editText]]"
+        icon="${this.__editIcon}"
+        @click="${this._editButtonTap}"
+        title="${this.__editText}"
       ></paper-fab>
       <paper-fab
         id="cancelbutton"
         icon="icons:cancel"
-        on-click="_cancelButtonTap"
-        hidden$="[[!editMode]]"
+        @click="${this._cancelButtonTap}"
+        .hidden="${!this.editMode}"
         title="Cancel editing"
       ></paper-fab>
       <paper-fab
         id="editdetails"
         icon="icons:fingerprint"
-        on-click="_editDetailsButtonTap"
+        @click="${this._editDetailsButtonTap}"
         title="Edit page details"
       ></paper-fab>
       <paper-icon-button
         id="addbutton"
         icon="icons:add"
-        on-click="_addButtonTap"
+        @click="${this._addButtonTap}"
         title="Add new page"
       ></paper-icon-button>
       <paper-fab
         id="deletebutton"
         icon="icons:delete"
-        on-click="_deleteButtonTap"
+        @click="${this._deleteButtonTap}"
         title="Delete current page"
       ></paper-fab>
       <paper-icon-button
         id="outlinebutton"
         icon="icons:list"
-        on-click="_outlineButtonTap"
+        @click="${this._outlineButtonTap}"
         title="Edit site outline"
       ></paper-icon-button>
       <paper-icon-button
         id="manifestbutton"
-        icon="[[icon]]"
-        on-click="_manifestButtonTap"
-        title="[[__settingsText]]"
+        icon="${this.icon}"
+        @click="${this._manifestButtonTap}"
+        title="${this.__settingsText}"
       ></paper-icon-button>
       <paper-tooltip for="username" position="right" offset="14"
-        >[[userName]]</paper-tooltip
+        >${this.userName}</paper-tooltip
       >
       <paper-tooltip for="cancelbutton" position="right" offset="14"
         >Cancel</paper-tooltip
       >
       <paper-tooltip for="editbutton" position="right" offset="14"
-        >[[__editText]]</paper-tooltip
+        >${this.__editText}</paper-tooltip
       >
       <paper-tooltip for="editdetails" position="right" offset="14"
         >Page details</paper-tooltip
@@ -232,56 +286,95 @@ class HAXCMSSiteEditorUI extends PolymerElement {
         >Site outline</paper-tooltip
       >
       <paper-tooltip for="manifestbutton" position="right" offset="14"
-        >[[__settingsText]]</paper-tooltip
+        >${this.__settingsText}</paper-tooltip
       >
     `;
+  }
+  firstUpdated(changedProperties) {
+    import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-outline-editor-dialog.js");
+    import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-dashboard.js");
+    // load user data
+    this.dispatchEvent(
+      new CustomEvent("haxcms-load-user-data", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: true
+      })
+    );
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "editMode") {
+        // observer
+        this._editModeChanged(this[propName], oldValue);
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("edit-mode-changed", {
+            detail: this[propName]
+          })
+        );
+      }
+      if (propName == "manifestEditMode") {
+        // observer
+        this._manifestEditModeChanged(this[propName], oldValue);
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("manifest-edit-mode-changed", {
+            detail: this[propName]
+          })
+        );
+      }
+      if (propName == "dashboardOpened") {
+        // observer
+        this._dashboardOpenedChanged(this[propName], oldValue);
+      }
+    });
   }
   static get properties() {
     return {
       userName: {
-        type: String
+        type: String,
+        attribute: "user-name"
       },
       userPicture: {
-        type: String
+        type: String,
+        attribute: "user-picture"
       },
       /**
        * small visual lock that events break on initial paint
        */
       painting: {
         type: Boolean,
-        value: true,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * page allowed
        */
       pageAllowed: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        attribute: "page-allowed",
+        reflect: true
       },
       /**
        * if the page is in an edit state or not
        */
       editMode: {
         type: Boolean,
-        reflectToAttribute: true,
-        observer: "_editModeChanged",
-        value: false,
-        notify: true
+        reflect: true,
+        attribute: "edit-mode"
       },
       /**
        * Manifest editing state
        */
       manifestEditMode: {
         type: Boolean,
-        reflectToAttribute: true,
-        observer: "_manifestEditModeChanged",
-        value: false,
-        notify: true
+        attribute: "manifest-edit-mode",
+        reflect: true
       },
       activeTitle: {
-        type: String
+        type: String,
+        attribute: "active-title"
       },
       manifest: {
         type: Object
@@ -291,69 +384,10 @@ class HAXCMSSiteEditorUI extends PolymerElement {
       },
       dashboardOpened: {
         type: Boolean,
-        reflectToAttribute: true,
-        observer: "_dashboardOpenedChanged"
+        reflect: true,
+        attribute: "dashboard-opened"
       }
     };
-  }
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-outline-editor-dialog.js");
-      import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-dashboard.js");
-      // this ensures that an initial paint won't get a cached copy of the site.json file
-      // this is more than possible given that it will register to most backends
-      // as a static file rather than dynamic end point as it is in this instance (sorta)
-      this.dispatchEvent(
-        new CustomEvent("haxcms-trigger-update", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: true
-        })
-      );
-      // load user data
-      this.dispatchEvent(
-        new CustomEvent("haxcms-load-user-data", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: true
-        })
-      );
-      autorun(reaction => {
-        this.userName = toJS(store.userData.userName);
-        this.userPicture = toJS(store.userData.userPicture);
-        this.__disposer.push(reaction);
-      });
-      autorun(reaction => {
-        this.editMode = toJS(store.editMode);
-        this.__disposer.push(reaction);
-      });
-      autorun(reaction => {
-        this.manifest = toJS(store.manifest);
-        this.icon = varGet(
-          this.manifest,
-          "manifest.metadata.theme.variables.icon",
-          "icons:settings"
-        );
-        this.__disposer.push(reaction);
-      });
-      autorun(reaction => {
-        this.dashboardOpened = toJS(store.dashboardOpened);
-        this.__disposer.push(reaction);
-      });
-      autorun(reaction => {
-        const activeItem = toJS(store.activeItem);
-        if (activeItem && activeItem.id) {
-          this.activeTitle = activeItem.title;
-          this.pageAllowed = true;
-        } else {
-          this.pageAllowed = false;
-        }
-        this.__disposer.push(reaction);
-      });
-    });
   }
   disconnectedCallback() {
     for (var i in this.__disposer) {
@@ -399,12 +433,11 @@ class HAXCMSSiteEditorUI extends PolymerElement {
     );
   }
   _editDetailsButtonTap(e) {
-    var normalizedEvent = dom(e);
     const evt = new CustomEvent("haxcms-load-node-fields", {
       bubbles: true,
       composed: true,
       cancelable: false,
-      detail: normalizedEvent.localTarget
+      detail: e.target
     });
     window.dispatchEvent(evt);
   }
@@ -468,7 +501,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
           "--simple-modal-max-width": "75vw"
         },
         elements: { content: this.__newForm, buttons: b },
-        invokedBy: this.$.addbutton,
+        invokedBy: this.shadowRoot.querySelector("#addbutton"),
         clone: false,
         modal: true
       }
@@ -493,8 +526,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
    * Fire item
    */
   _updateItem(e) {
-    var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget;
+    var local = e.target;
     var values;
     if (!local.__form) {
       values = local.parentNode.__form.value;
@@ -553,7 +585,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
           "--simple-modal-max-width": "75vw"
         },
         elements: { content: c, buttons: b },
-        invokedBy: this.$.deletebutton,
+        invokedBy: this.shadowRoot.querySelector("#deletebutton"),
         clone: false,
         modal: true
       }
@@ -593,7 +625,7 @@ class HAXCMSSiteEditorUI extends PolymerElement {
         elements: {
           content: document.createElement("haxcms-outline-editor-dialog")
         },
-        invokedBy: this.$.outlinebutton,
+        invokedBy: this.shadowRoot.querySelector("#outlinebutton"),
         clone: false,
         modal: true
       }

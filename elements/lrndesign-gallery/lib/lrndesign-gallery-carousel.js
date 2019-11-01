@@ -391,7 +391,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
   ready() {
     super.ready();
     if (this.selected.scroll) {
-      let target = this.$.carouselitem;
+      let target = this.shadowRoot.querySelector("#carouselitem");
       this._scrollIntoView([this._getParentOffset(target)]);
       if (!this.selected.zoomed) target.focus();
     }
@@ -452,14 +452,22 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
    * when a prev is tapped, goes to the prev item
    */
   _onPrev(e) {
-    this.goToItem(parseInt(this.$.carouselprev.getAttribute("index")));
+    this.goToItem(
+      parseInt(
+        this.shadowRoot.querySelector("#carouselprev").getAttribute("index")
+      )
+    );
   }
 
   /**
    * when a next is tapped, goes to the next item
    */
   _onNext(e) {
-    this.goToItem(parseInt(this.$.carouselnext.getAttribute("index")));
+    this.goToItem(
+      parseInt(
+        this.shadowRoot.querySelector("#carouselnext").getAttribute("index")
+      )
+    );
   }
 
   /**
@@ -473,7 +481,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
    * updates the item details
    */
   _updateDetails() {
-    this.$.itembody.innerHTML = this.item.details;
+    this.shadowRoot.querySelector("#itembody").innerHTML = this.item.details;
   }
 }
 window.customElements.define(

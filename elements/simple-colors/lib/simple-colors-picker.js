@@ -113,11 +113,14 @@ class SimpleColorsPicker extends SimpleColors {
       options: {
         name: "options",
         type: Array,
-        computed: "_getOptions(colors,shades,dark)",
+        computed: "_getOptions(colors,shades,dark, __ready)",
         reflectToAttribute: false,
         observer: false
       },
-
+      __ready: {
+        type: Boolean,
+        value: false
+      },
       /**
        * Show all shades instead of just main accent-colors
        */
@@ -174,40 +177,42 @@ class SimpleColorsPicker extends SimpleColors {
    *
    * @param {object} the options object to convert
    */
-  _getOptions(colors, shades, dark) {
-    let options = [[]],
-      theme = dark !== false ? "dark" : "default";
-    if (shades === false) {
-      options = Object.keys(this.colors).map(key => {
-        return [
-          {
-            alt: key,
-            value: key
-          }
-        ];
-      });
-      options.unshift([
-        {
-          alt: "none",
-          value: null
-        }
-      ]);
-    } else {
-      let colorNames = Object.keys(colors);
-      for (let i = 0; i < colors[colorNames[0]].length; i++) {
-        let shade = Object.keys(colors).map(key => {
-          let name = key + "-" + (i + 1),
-            cssvar = "--simple-colors-" + theme + "-theme-" + name;
-          return {
-            alt: name,
-            style: "background-color: var(" + cssvar + ")",
-            value: cssvar
-          };
+  _getOptions(colors, shades, dark, __ready) {
+    if (__ready) {
+      let options = [[]],
+        theme = dark !== false ? "dark" : "default";
+      if (shades === false) {
+        options = Object.keys(this.colors).map(key => {
+          return [
+            {
+              alt: key,
+              value: key
+            }
+          ];
         });
-        options.push(shade);
+        options.unshift([
+          {
+            alt: "none",
+            value: null
+          }
+        ]);
+      } else {
+        let colorNames = Object.keys(colors);
+        for (let i = 0; i < colors[colorNames[0]].length; i++) {
+          let shade = Object.keys(colors).map(key => {
+            let name = key + "-" + (i + 1),
+              cssvar = "--simple-colors-" + theme + "-theme-" + name;
+            return {
+              alt: name,
+              style: "background-color: var(" + cssvar + ")",
+              value: cssvar
+            };
+          });
+          options.push(shade);
+        }
       }
+      this.shadowRoot.querySelector("#picker").options = options;
     }
-    this.$.picker.options = options;
   }
 
   /**

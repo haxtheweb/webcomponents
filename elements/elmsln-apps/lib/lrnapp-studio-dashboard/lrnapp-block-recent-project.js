@@ -214,7 +214,7 @@ class LrnappBlockRecentProject extends PolymerElement {
    * Swap off the loading with project data.
    */
   handleResponse(e) {
-    this.$.loading.hidden = true;
+    this.shadowRoot.querySelector("#loading").hidden = true;
     this.project = this.response.data;
   }
 

@@ -552,7 +552,7 @@ class LrnappStudioSubmissionPage extends PolymerElement {
 
   _submissionDeleteConfirmed(e) {
     this.saving = true;
-    this.$.ajaxDeleteRequest.generateRequest();
+    this.shadowRoot.querySelector("#ajaxDeleteRequest").generateRequest();
   }
 
   _handleUpdateResponse(res) {
@@ -566,7 +566,7 @@ class LrnappStudioSubmissionPage extends PolymerElement {
       root.set("route.path", "");
       // display a submission published notification
       if (submission.attributes.state === "submission_ready") {
-        this.$.toast.show("Published!");
+        this.shadowRoot.querySelector("#toast").show("Published!");
       }
       // @todo replace this with the page just being there once we fix the lazy load dilema
       window.location.href = this.endPoint + "/submissions/" + submission.id;

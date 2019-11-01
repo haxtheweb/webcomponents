@@ -1,43 +1,8 @@
 /**
- * Copyright 2019 The Pennsylvania State University
+ * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";// register globally so we can make sure there is only one
-window.AnchorBehaviors=window.AnchorBehaviors||{};// request if this exists. This helps invoke the element existing in the dom
+ */ // register globally so we can make sure there is only one
+window.AnchorBehaviors=window.AnchorBehaviors||{};// request if this exists. This helps invoke the el existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
-// is rendered through the same anchor-behaviors element, making it a singleton.
-window.AnchorBehaviors.requestAvailability=()=>{// if there is no single instance, generate one and append it to end of the document
-if(!window.AnchorBehaviors.instance){window.AnchorBehaviors.instance=document.createElement("anchor-behaviors");document.body.appendChild(window.AnchorBehaviors.instance)}return window.AnchorBehaviors.instance};/**
- * `anchor-behaviors`
- * `handles anchors and params in the url`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */class AnchorBehaviors extends PolymerElement{// render function
-static get template(){return html`
-<style>:host {
-  display: block;
-}
-
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`}// properties available to the custom element for data binding
-static get properties(){return{}}/**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */static get tag(){return"anchor-behaviors"}/**
-   * life cycle, element is afixed to the DOM
-   */connectedCallback(){super.connectedCallback();window.addEventListener("anchor-behaviors-hide",this.hideAnchorBehaviors.bind(this));window.addEventListener("anchor-behaviors-show",this.showAnchorBehaviors.bind(this))}/**
-   * life cycle, element is removed from the DOM
-   */disconnectedCallback(){super.connectedCallback();window.removeEventListener("anchor-behaviors-hide",this.hideAnchorBehaviors.bind(this));window.removeEventListener("anchor-behaviors-show",this.showAnchorBehaviors.bind(this))}/**
-   * Hide callback
-   */hideAnchorBehaviors(e){}// add your code to run when the singleton hides
-/**
-   * Show / available callback
-   */showAnchorBehaviors(e){// add your code to run when the singleton is called for
-}}window.customElements.define(AnchorBehaviors.tag,AnchorBehaviors);export{AnchorBehaviors};
+// is rendered through the same modal
+window.AnchorBehaviors.getTarget=(element=null)=>{/** gets and sets parameters */let getParams=()=>{let str=window.location.hash.substring(1).replace(/^(.+)&?/,"id=$1")||window.location.search.substring(1)||"",uri=str?`{"${decodeURI(str).replace(/"/g,"\\\"").replace(/&/g,"\",\"").replace(/=/g,"\":\"")}"}`:"{}",isJSON=json=>{try{JSON.parse(json)}catch(e){return!1}return!0},params=uri&&isJSON(uri)?JSON.parse(uri):{};window.AnchorBehaviors.params=params},testElement=(element,params)=>{if(element&&(params.id||params.resource)){let eid=element.id?element.id.replace(/#/g,""):null,er=element.resource?element.resource.replace(/#/g,""):null,pid=params.id?params.id.replace(/#/g,""):null,pr=params.resource?params.resource.replace(/#/g,""):null;if(eid&&eid===pid||eid&&eid===pr||er&&er===pid||er&&er===pr)return element}};/** sets target element */if(!window.AnchorBehaviors.target){if(!window.AnchorBehaviors.params){if("complete"===document.readyState){getParams()}window.onload=getParams()}/** search for all combos of id and resource id */window.AnchorBehaviors.target=document.getElementById(window.AnchorBehaviors.params.id)||document.getElementById(`#${window.AnchorBehaviors.params.id}`)||document.querySelector(`[resource="#${window.AnchorBehaviors.params.id||window.AnchorBehaviors.params.resource}"]`)||document.querySelector(`[resource="${window.AnchorBehaviors.params.id||window.AnchorBehaviors.params.resource}"]`)||testElement(element,window.AnchorBehaviors.params)||null;if(window.AnchorBehaviors.target)window.AnchorBehaviors.target.scrollIntoView()}return window.AnchorBehaviors.target};

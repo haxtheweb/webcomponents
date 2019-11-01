@@ -69,7 +69,8 @@ class SiteFooter extends LitElement {
   static get properties() {
     return {
       siteTitle: {
-        type: String
+        type: String,
+        attribute: "site-title"
       },
       manifest: {
         type: Object

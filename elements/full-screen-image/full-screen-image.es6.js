@@ -214,7 +214,7 @@ paper-icon-button {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.$.down.addEventListener("click", e => {
+    this.shadowRoot.querySelector("#down").addEventListener("click", e => {
       this.nextElementSibling.scrollIntoView({
         block: "start",
         inline: "nearest",
@@ -227,7 +227,7 @@ paper-icon-button {
    */
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.$.down.removeEventListener("click", e => {
+    this.shadowRoot.querySelector("#down").removeEventListener("click", e => {
       this.nextElementSibling.scrollIntoView({
         block: "start",
         inline: "nearest",

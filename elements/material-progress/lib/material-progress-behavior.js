@@ -1,4 +1,4 @@
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { wrap } from "@polymer/polymer/lib/utils/wrap.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 
 /**
@@ -173,8 +173,14 @@ window.MaterialProgressBehaviorImpl = {
       // We only want to listen to mutations (addition, removal, attribute change)
       // of the direct children of the bar's container
       return (
-        this._mutationIsChildList(mutation, this.$.barsContainer) ||
-        this._mutationIsChildAttributes(mutation, this.$.barsContainer)
+        this._mutationIsChildList(
+          mutation,
+          this.shadowRoot.querySelector("#barsContainer")
+        ) ||
+        this._mutationIsChildAttributes(
+          mutation,
+          this.shadowRoot.querySelector("#barsContainer")
+        )
       );
     };
   },
@@ -186,13 +192,20 @@ window.MaterialProgressBehaviorImpl = {
   _refresh() {
     this.debounce("refresh", this.refresh, 10);
   },
+  getDistributedNodes(node) {
+    return node.localName === "slot"
+      ? wrap(node).assignedNodes({ flatten: true })
+      : [];
+  },
   _computeSumAndBars() {
     var sum = 0,
       value = 0,
       withValueCount = 0,
       max = 0,
       validBars = [],
-      allChildren = dom(this.$.content).getDistributedNodes();
+      allChildren = this.getDistributedNodes(
+        this.shadowRoot.querySelector("#content")
+      );
     if (allChildren) {
       allChildren.forEach(function(child) {
         if (

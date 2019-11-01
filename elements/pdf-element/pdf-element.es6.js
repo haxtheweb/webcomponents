@@ -366,7 +366,7 @@ class PdfElement extends SchemaBehaviors(PolymerElement) {
     this.totalPages = this.instance.totalPages;
     this.fileName = this.src.split("/").pop();
     this._setFitWidth();
-    this.$.zoomIcon.icon = "fullscreen";
+    this.shadowRoot.querySelector("#zoomIcon").icon = "fullscreen";
   }
 
   /*
@@ -405,7 +405,7 @@ class PdfElement extends SchemaBehaviors(PolymerElement) {
     } else if (this.instance.currentZoomVal <= 0.1) {
       this.instance.currentZoomVal = 0.1;
     } else {
-      this.$.zoomIcon.icon = "fullscreen";
+      this.shadowRoot.querySelector("#zoomIcon").icon = "fullscreen";
       this.instance.zoomInOut(step);
     }
   }
@@ -435,10 +435,10 @@ class PdfElement extends SchemaBehaviors(PolymerElement) {
     if (this.instance.pdfExists) {
       if (this.instance.currentZoomVal == this.instance.widthZoomVal) {
         this.instance.zoomPageFit();
-        this.$.zoomIcon.icon = "fullscreen";
+        this.shadowRoot.querySelector("#zoomIcon").icon = "fullscreen";
       } else {
         this.instance.zoomWidthFit();
-        this.$.zoomIcon.icon = "fullscreen-exit";
+        this.shadowRoot.querySelector("#zoomIcon").icon = "fullscreen-exit";
       }
     }
   }
@@ -450,16 +450,16 @@ class PdfElement extends SchemaBehaviors(PolymerElement) {
    * as well as update the page number
    */
   pageNumSearch() {
-    var page = parseInt(this.$.input.value);
+    var page = parseInt(this.shadowRoot.querySelector("#input").value);
 
     if (1 <= page && page <= this.instance.totalPagesNum) {
       this.instance.currentPage = page;
       this.instance.queueRenderPage(this.instance.currentPage);
       this.currentPage = page;
-      this.$.input.blur();
+      this.shadowRoot.querySelector("#input").blur();
     } else {
-      this.$.input.value = this.currentPage;
-      this.$.input.blur();
+      this.shadowRoot.querySelector("#input").value = this.currentPage;
+      this.shadowRoot.querySelector("#input").blur();
     }
   }
 
@@ -478,10 +478,10 @@ class PdfElement extends SchemaBehaviors(PolymerElement) {
       self.queueRenderPage(self.currentPage);
       currentInstance.currentPage = page;
       currentThis.currentPage = page;
-      this.$.input.blur();
+      this.shadowRoot.querySelector("#input").blur();
     } else {
-      this.$.input.value = self.currentPage;
-      this.$.input.blur();
+      this.shadowRoot.querySelector("#input").value = self.currentPage;
+      this.shadowRoot.querySelector("#input").blur();
     }
   }
 
@@ -516,19 +516,25 @@ class PdfElement extends SchemaBehaviors(PolymerElement) {
   sideBar() {
     if (this.instance.pdfExists) {
       if (!this.fromChange) {
-        this.$.container.style.height = this.$.test.style.height;
-        this.$.container.style.width = this.$.test.style.width;
-        if (this.$.main.style.marginLeft == "25%") {
+        this.shadowRoot.querySelector(
+          "#container"
+        ).style.height = this.shadowRoot.querySelector("#test").style.height;
+        this.shadowRoot.querySelector(
+          "#container"
+        ).style.width = this.shadowRoot.querySelector("#test").style.width;
+        if (this.shadowRoot.querySelector("#main").style.marginLeft == "25%") {
           this.sidebarOpen = false;
           this.instance.setViewportPos(false);
-          this.$.main.style.marginLeft = "0%";
-          this.$.container.style.marginLeft = "-25%";
-          this.$.container.style.visibility = "hidden";
+          this.shadowRoot.querySelector("#main").style.marginLeft = "0%";
+          this.shadowRoot.querySelector("#container").style.marginLeft = "-25%";
+          this.shadowRoot.querySelector("#container").style.visibility =
+            "hidden";
         } else {
           this.sidebarOpen = true;
-          this.$.main.style.marginLeft = "25%";
-          this.$.container.style.marginLeft = "0%";
-          this.$.container.style.visibility = "visible";
+          this.shadowRoot.querySelector("#main").style.marginLeft = "25%";
+          this.shadowRoot.querySelector("#container").style.marginLeft = "0%";
+          this.shadowRoot.querySelector("#container").style.visibility =
+            "visible";
           this.instance.setViewportPos(true);
         }
       }

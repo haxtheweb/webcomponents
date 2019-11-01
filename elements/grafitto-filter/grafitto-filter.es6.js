@@ -166,7 +166,7 @@ The function receives a single `item` of the items provided and should return a 
         },
         ready() {
     super.ready();
-          this.$.filter.f = function(item){
+          this.shadowRoot.querySelector('#filter').f = function(item){
             return item.name == "Doe";
           };
         }
@@ -241,7 +241,8 @@ class GrafittoFilter extends mixinBehaviors(
       filtered: {
         type: Array,
         computed: "_computeFiltered(items, where, like, caseSensitive)",
-        observer: "_onFilter"
+        observer: "_onFilter",
+        notify: true
       },
       /**
        * Custom filter function, if this is provided then 'where' and 'like' are ignored
@@ -349,7 +350,7 @@ class GrafittoFilter extends mixinBehaviors(
     // set filtered to whatever it is to start
     this.__clone[this.as] = filtered;
     // stamp this into itself...weird I know
-    dom(this).appendChild(this.__clone.root);
+    this.appendChild(this.__clone.root);
   }
 
   /**

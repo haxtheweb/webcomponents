@@ -92,7 +92,8 @@ class SiteDotIndicator extends LitElement {
   static get properties() {
     return {
       activeId: {
-        type: String
+        type: String,
+        attribute: "active-id"
       },
       routerManifest: {
         type: Object
@@ -102,7 +103,8 @@ class SiteDotIndicator extends LitElement {
         reflect: true
       },
       scrollOnActive: {
-        type: Boolean
+        type: Boolean,
+        attribute: "scroll-on-active"
       }
     };
   }

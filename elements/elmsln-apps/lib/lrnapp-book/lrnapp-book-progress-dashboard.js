@@ -242,7 +242,7 @@ class LrnappBookProgressDashboard extends PolymerElement {
       this.requestParams[newValue.type] = newValue.id;
       // if we're visible kick off the call
       if (this.progressChanged) {
-        this.$.dataajax.generateRequest();
+        this.shadowRoot.querySelector("#dataajax").generateRequest();
       }
     }
   }
@@ -253,7 +253,7 @@ class LrnappBookProgressDashboard extends PolymerElement {
   _showProgressChanged(newValue, oldValue) {
     // ensure we are visible
     if (newValue && typeof this.routeData !== typeof undefined) {
-      this.$.dataajax.generateRequest();
+      this.shadowRoot.querySelector("#dataajax").generateRequest();
     }
   }
 
@@ -263,7 +263,7 @@ class LrnappBookProgressDashboard extends PolymerElement {
   handleDataResponse(obj) {
     let response = obj.detail.response.data;
     // show the info
-    this.$.bodyloading.hidden = true;
+    this.shadowRoot.querySelector("#bodyloading").hidden = true;
     // split the data into two sets
     this.userData = response.userdata;
     this.dashboardItems = this._toArray(response.items);

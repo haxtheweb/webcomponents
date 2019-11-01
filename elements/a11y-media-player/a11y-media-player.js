@@ -1029,12 +1029,12 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
     root.__playerReady = true;
     root.target = root.shadowRoot.querySelector("#transcript");
     root.__status = root._getLocal("loading", "label");
-    root.__slider = root.$.slider;
+    root.__slider = root.shadowRoot.querySelector("#slider");
     root.__slider.min = 0;
     root.__volume = root.muted ? 0 : Math.max(this.volume, 10);
     root.__resumePlaying = false;
     root.__duration = 0;
-    root.$.controls.setStatus(root.__status);
+    root.shadowRoot.querySelector("#controls").setStatus(root.__status);
     root.width = root.width !== null ? root.width : "100%";
     root.style.maxWidth = root.width !== null ? root.width : "100%";
     root._setPlayerHeight(aspect);
@@ -1044,13 +1044,15 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
         if (e.detail === root.media) root._handleTimeUpdate(e);
       });
     } else {
-      root.media = root.$.html5;
+      root.media = root.shadowRoot.querySelector("#html5");
       root.media.media.addEventListener("timeupdate", e => {
         root._handleTimeUpdate(e);
       });
       root._addSourcesAndTracks();
     }
-    root.$.transcript.setMedia(root.$.innerplayer);
+    root.shadowRoot
+      .querySelector("#transcript")
+      .setMedia(root.shadowRoot.querySelector("#innerplayer"));
   }
 
   /**
@@ -1147,7 +1149,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    */
   selectTrack(index) {
     this.__selectedTrack = index;
-    this.$.html5.selectTrack(index);
+    this.shadowRoot.querySelector("#html5").selectTrack(index);
   }
 
   /**
@@ -1178,7 +1180,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    */
   toggleCC(mode) {
     this.cc = mode === undefined ? !this.cc : mode;
-    this.$.html5.setCC(this.cc);
+    this.shadowRoot.querySelector("#html5").setCC(this.cc);
   }
 
   /**
@@ -1224,7 +1226,10 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
   toggleTranscript(mode) {
     mode = mode === undefined ? this.hideTranscript : mode;
     this.hideTranscript = !mode;
-    if (this.$.transcript !== undefined && this.$.transcript !== null) {
+    if (
+      this.shadowRoot.querySelector("#transcript") !== undefined &&
+      this.shadowRoot.querySelector("#transcript") !== null
+    ) {
       this.dispatchEvent(
         new CustomEvent("transcript-toggle", { detail: this })
       );
@@ -1247,7 +1252,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
         for (let key in arr[i]) {
           el.setAttribute(key, arr[i][key]);
         }
-        root.$.html5.media.appendChild(el);
+        root.shadowRoot.querySelector("#html5").media.appendChild(el);
       }
     }
   }
@@ -1258,15 +1263,16 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    */
   _setPlayerHeight(aspect) {
     let root = this;
-    root.$.player.style.height = "unset";
+    root.shadowRoot.querySelector("#player").style.height = "unset";
     if (root.audioOnly && root.thumbnailSrc === null && root.height === null) {
-      root.$.player.style.height = "60px";
+      root.shadowRoot.querySelector("#player").style.height = "60px";
     } else if (root.height === null) {
-      root.$.player.style.paddingTop = 100 / aspect + "%";
-      root.$.innerplayer.style.maxWidth =
+      root.shadowRoot.querySelector("#player").style.paddingTop =
+        100 / aspect + "%";
+      root.shadowRoot.querySelector("#innerplayer").style.maxWidth =
         "calc(" + aspect * 100 + "vh - " + aspect * 80 + "px)";
     } else {
-      root.$.outerplayer.style.height = root.height;
+      root.shadowRoot.querySelector("#outerplayer").style.height = root.height;
     }
   }
 
@@ -1364,11 +1370,11 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
     root.querySelectorAll("source,track").forEach(node => {
       if (!root.__captionHref && node.tagName === "SOURCE")
         root.__captionHref = node.getAttribute("src");
-      root.$.html5.media.appendChild(node);
+      root.shadowRoot.querySelector("#html5").media.appendChild(node);
     });
     root._appendToPlayer(root.tracks, "track");
     root._appendToPlayer(root.sources, "source");
-    root.$.html5.media.textTracks.onaddtrack = e => {
+    root.shadowRoot.querySelector("#html5").media.textTracks.onaddtrack = e => {
       root.hasCaptions = true;
       root.hasTranscript = !root.standAlone;
       root._getTrackData(e.track, counter++);
@@ -1488,11 +1494,11 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
               : "Track " + id,
           cues: cues
         });
-        root.$.controls.setTracks(root.__tracks);
-        root.$.transcript.setTracks(root.__tracks);
+        root.shadowRoot.querySelector("#controls").setTracks(root.__tracks);
+        root.shadowRoot.querySelector("#transcript").setTracks(root.__tracks);
         root.push("__tracks");
         track.oncuechange = e => {
-          root.$.transcript.setActiveCues(
+          root.shadowRoot.querySelector("#transcript").setActiveCues(
             Object.keys(e.currentTarget.activeCues).map(key => {
               return e.currentTarget.activeCues[key].id;
             })
@@ -1505,7 +1511,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    * handles closing the share link toast
    */
   _handleCloseLink() {
-    this.$.link.close();
+    this.shadowRoot.querySelector("#link").close();
     if (this.__resumePlaying) this.play();
     this.__resumePlaying = false;
   }
@@ -1522,7 +1528,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
     el.select();
     document.execCommand("copy");
     document.body.removeChild(el);
-    this.$.link.open();
+    this.shadowRoot.querySelector("#link").open();
   }
 
   /**
@@ -1532,8 +1538,8 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
     let root = this;
     if (
       !root.standAlone &&
-      root.$.transcript !== undefined &&
-      root.$.transcript !== null
+      root.shadowRoot.querySelector("#transcript") !== undefined &&
+      root.shadowRoot.querySelector("#transcript") !== null
     ) {
       root.__resumePlaying = root.__playing;
       root.seek(e.detail);
@@ -1550,11 +1556,11 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
       params = anchor.params,
       aspect = root.media.aspectRatio;
     root._setPlayerHeight(aspect);
-    root.$.playbutton.removeAttribute("disabled");
+    root.shadowRoot.querySelector("#playbutton").removeAttribute("disabled");
 
     // gets and converts video duration
     root._setElapsedTime();
-    root._getTrackData(root.$.html5.media);
+    root._getTrackData(root.shadowRoot.querySelector("#html5").media);
 
     //if this video is part of the page's query string or anchor, seek the video
     if (target === this) this.seek(this._getSeconds(params.t));
@@ -1581,7 +1587,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
     root.dispatchEvent(
       new CustomEvent("printing-transcript", { detail: root })
     );
-    root.$.transcript.print(root.mediaTitle);
+    root.shadowRoot.querySelector("#transcript").print(root.mediaTitle);
   }
 
   /**
@@ -1604,7 +1610,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
    * handles duration slider dragging with a mouse
    */
   _handleSliderStop(e) {
-    this.seek(this.$.slider.immediateValue);
+    this.seek(this.shadowRoot.querySelector("#slider").immediateValue);
     this.__seeking = false;
     if (this.__resumePlaying) {
       this.play();
@@ -1627,7 +1633,9 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
         root.media.seekable.length > 0 &&
         root.media.seekable.start(0) !== 0
       ) {
-        root.$.slider.min = root.media.seekable.start(0);
+        root.shadowRoot.querySelector(
+          "#slider"
+        ).min = root.media.seekable.start(0);
       }
     }
     if (
@@ -1687,7 +1695,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
       root.forward();
     } else if (action === "fullscreen" && root.fullscreenButton) {
       root.toggleTranscript(root.fullscreen);
-      screenfull.toggle(root.$.outerplayer);
+      screenfull.toggle(root.shadowRoot.querySelector("#outerplayer"));
     } else if (action === "loop") {
       root.toggleLoop();
     } else if (action === "mute" || action === "unmute") {
@@ -1733,7 +1741,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
   _setElapsedTime() {
     let elapsed =
         this.__seeking === true
-          ? this.$.slider.immediateValue
+          ? this.shadowRoot.querySelector("#slider").immediateValue
           : this.media.getCurrentTime() > 0
           ? this.media.getCurrentTime()
           : 0,
@@ -1752,7 +1760,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
     }
     this.__status =
       this._getHHMMSS(elapsed, duration) + "/" + this._getHHMMSS(duration);
-    this.$.controls.setStatus(this.__status);
+    this.shadowRoot.querySelector("#controls").setStatus(this.__status);
   }
 
   /**
@@ -1799,9 +1807,9 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
             videoId: root.youtubeId
           });
           root.__status = root._getLocal("youTubeLoading", "label");
-          root.$.controls.setStatus(root.__status);
+          root.shadowRoot.querySelector("#controls").setStatus(root.__status);
           // move the YouTube iframe to the media player's YouTube container
-          root.$.youtube.appendChild(root.media.a);
+          root.shadowRoot.querySelector("#youtube").appendChild(root.media.a);
           root.__ytAppended = true;
           root._updateCustomTracks();
         },
@@ -1829,7 +1837,10 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
   _updateCustomTracks() {
     if ((this.isYoutube || this.audioOnly) && this.__tracks) {
       let root = this,
-        track = root.__tracks[this.$.transcript.selectedTranscript],
+        track =
+          root.__tracks[
+            this.shadowRoot.querySelector("#transcript").selectedTranscript
+          ],
         active = [],
         caption = "";
       if (
@@ -1847,8 +1858,8 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
             caption = caption === "" ? track.cues[i].text : caption;
           }
         }
-        root.$.customcctxt.innerText = caption;
-        root.$.transcript.setActiveCues(active);
+        root.shadowRoot.querySelector("#customcctxt").innerText = caption;
+        root.shadowRoot.querySelector("#transcript").setActiveCues(active);
       }
     }
   }

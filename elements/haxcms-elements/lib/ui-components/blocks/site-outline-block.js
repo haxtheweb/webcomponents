@@ -213,7 +213,7 @@ class SiteOutlineBlock extends PolymerElement {
     // as long as didn't disable the indicator, do this processing
     if (this.indicator != "none") {
       if (newValue) {
-        this.$.indicator.classList.add("activated");
+        this.shadowRoot.querySelector("#indicator").classList.add("activated");
         let el = null;
         //ensure that this level is included
         if (this.shadowRoot.querySelector('[data-id="' + newValue + '"]')) {
@@ -242,19 +242,24 @@ class SiteOutlineBlock extends PolymerElement {
           el.classList.add("active");
           this._prevEl = el;
           if (this.indicator == "arrow") {
-            this.$.indicator.style.left =
+            this.shadowRoot.querySelector("#indicator").style.left =
               el.offsetLeft + el.offsetWidth / 2 - this.arrowSize + "px";
-            this.$.indicator.style.top =
+            this.shadowRoot.querySelector("#indicator").style.top =
               el.offsetTop + el.offsetHeight - this.arrowSize + "px";
           } else {
-            this.$.indicator.style.left = el.offsetLeft + "px";
-            this.$.indicator.style.top = el.offsetTop + el.offsetHeight + "px";
-            this.$.indicator.style.width = el.offsetWidth + "px";
+            this.shadowRoot.querySelector("#indicator").style.left =
+              el.offsetLeft + "px";
+            this.shadowRoot.querySelector("#indicator").style.top =
+              el.offsetTop + el.offsetHeight + "px";
+            this.shadowRoot.querySelector("#indicator").style.width =
+              el.offsetWidth + "px";
           }
         }
       } else {
         // shouldn't be possible but might as well list
-        this.$.indicator.classList.remove("activated");
+        this.shadowRoot
+          .querySelector("#indicator")
+          .classList.remove("activated");
       }
     }
   }

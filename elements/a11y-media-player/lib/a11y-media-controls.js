@@ -538,13 +538,17 @@ class A11yMediaControls extends A11yMediaBehaviors {
     let root = this;
     // when the mute button is in focus,
     // add focus class to make the volume slider appear
-    root.$.mute.$.button.onfocus = function() {
-      root.$.volume.classList.add("focus");
+    root.shadowRoot
+      .querySelector("#mute")
+      .shadowRoot.querySelector("#button").onfocus = function() {
+      root.shadowRoot.querySelector("#volume").classList.add("focus");
     };
     // when the mute button is blurred,
     // remove focus class to make the volume slider disappear
-    root.$.mute.$.button.onblur = function() {
-      root.$.volume.classList.remove("focus");
+    root.shadowRoot
+      .querySelector("#mute")
+      .shadowRoot.querySelector("#button").onblur = function() {
+      root.shadowRoot.querySelector("#volume").classList.remove("focus");
     };
   }
 
@@ -554,7 +558,7 @@ class A11yMediaControls extends A11yMediaBehaviors {
    * @param {string} the status, eg., `Loading...` or `00:02:01/00:11:43`
    */
   setStatus(status) {
-    this.$.statbar.innerText = status;
+    this.shadowRoot.querySelector("#statbar").innerText = status;
   }
 
   /**
@@ -619,7 +623,7 @@ class A11yMediaControls extends A11yMediaBehaviors {
    * prevent settings menu from being closed before action is taken
    */
   _handleSettingsActivate(e) {
-    //if (e.target == this.$.settingslist) e.preventDefault();
+    //if (e.target == this.shadowRoot.querySelector('#settingslist')) e.preventDefault();
   }
 
   /**
@@ -629,7 +633,7 @@ class A11yMediaControls extends A11yMediaBehaviors {
     this.dispatchEvent(
       new CustomEvent("controls-change", { detail: e.detail })
     );
-    this.$.settings.close();
+    this.shadowRoot.querySelector("#settings").close();
   }
 
   /**
@@ -639,7 +643,7 @@ class A11yMediaControls extends A11yMediaBehaviors {
     this.dispatchEvent(
       new CustomEvent("controls-change", { detail: e.target })
     );
-    this.$.settings.close();
+    this.shadowRoot.querySelector("#settings").close();
   }
 
   /**

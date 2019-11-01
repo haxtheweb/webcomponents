@@ -5,6 +5,7 @@ import { varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import "@polymer/iron-icons/social-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@lrnwebcomponents/social-media-icons/social-media-icons.js";
+import "web-social-share/dist/esm/web-social-share.entry.js";
 import {
   a as patchEsm,
   b as bootstrapLazy

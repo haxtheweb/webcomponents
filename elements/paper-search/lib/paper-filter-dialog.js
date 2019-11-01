@@ -1,5 +1,4 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { PolymerElement } from "@polymer/polymer/polymer-element.js";
 class PaperFilterDialog extends PolymerElement {
   static get tag() {
     return "paper-filter-dialog";
@@ -72,12 +71,12 @@ class PaperFilterDialog extends PolymerElement {
   open() {
     // Attach dialog to the body to ensure it's on top of all existing overlays
     // XXX - Known issue: this generates addEventListener errors from a11y
-    dom(document.body).appendChild(this);
+    document.body.appendChild(this);
 
     // Wait until dialog is added to the DOM (required for Safari)
     setTimeout(
       function() {
-        this.$.dialog.open();
+        this.shadowRoot.querySelector("#dialog").open();
 
         // Clone selected filters, so it can be changed without touching the external property
         this._selectedFilters = Object.assign({}, this.selectedFilters);
@@ -87,14 +86,14 @@ class PaperFilterDialog extends PolymerElement {
   }
 
   close() {
-    this.$.dialog.close();
+    this.shadowRoot.querySelector("#dialog").close();
   }
 
   /**
    * Handles if the user taps on a filter
    */
   _tapSelectFilter(e) {
-    this.$.selector.select(e.model.filter);
+    this.shadowRoot.querySelector("#selector").select(e.model.filter);
 
     this._preselectFilterValues();
   }
@@ -146,7 +145,7 @@ class PaperFilterDialog extends PolymerElement {
       [this._selectedFilter.id]: selectedValues
     });
 
-    this.$.selector.deselect(this._selectedFilter);
+    this.shadowRoot.querySelector("#selector").deselect(this._selectedFilter);
   }
 
   /**

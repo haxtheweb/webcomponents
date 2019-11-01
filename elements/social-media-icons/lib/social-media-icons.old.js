@@ -1,5 +1,4 @@
 import { Polymer } from "@polymer/polymer/polymer-legacy.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 
 Polymer({
   is: "social-media-icons",
@@ -174,11 +173,11 @@ Polymer({
   },
 
   _renderSVG: function() {
-    var svg = dom(this.$.svg);
+    var svg = this.shadowRoot.querySelector("#svg");
     var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
 
-    dom(path).setAttribute("fill", this.color);
-    dom(path).setAttribute("d", this.path);
+    path.setAttribute("fill", this.color);
+    path.setAttribute("d", this.path);
 
     svg.appendChild(path);
   },

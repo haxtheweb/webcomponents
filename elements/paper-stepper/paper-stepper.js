@@ -74,10 +74,10 @@ class PaperStepper extends PolymerElement {
 
   // Private methods
   _tapPrevious() {
-    this.$.selector.selectPrevious();
+    this.shadowRoot.querySelector("#selector").selectPrevious();
   }
   _tapNext() {
-    this.$.selector.selectNext();
+    this.shadowRoot.querySelector("#selector").selectNext();
   }
 
   /**
@@ -109,7 +109,7 @@ class PaperStepper extends PolymerElement {
   }
 
   _onItemsChanged(e) {
-    this._items = this.$.selector.items;
+    this._items = this.shadowRoot.querySelector("#selector").items;
   }
 }
 window.customElements.define(PaperStepper.tag, PaperStepper);

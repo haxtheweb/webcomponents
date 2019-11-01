@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-list/iron-list.js";
 import "@lrnwebcomponents/sites-listing/lib/site-card.js";
@@ -181,8 +180,7 @@ class SitesListing extends PolymerElement {
    * Handle tap on paper-button above to redirect to the correct data.
    */
   _siteClicked(e) {
-    var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget;
+    var local = e.target;
     // this will have the id of the current course
     var active = local.getAttribute("data-site-id");
     // find the course by it's unique id and filter just to it
@@ -213,7 +211,7 @@ class SitesListing extends PolymerElement {
    * Increase elevation while hovering.
    */
   _mouseEnter(e) {
-    let card = dom(e.target).querySelectorAll("site-card")[0];
+    let card = e.target.querySelectorAll("site-card")[0];
     card.__oldElevation = card.elevation;
     if (card.elevation + 2 > 5) {
       card.elevation = 5;
@@ -226,7 +224,7 @@ class SitesListing extends PolymerElement {
    * Reset the elevation.
    */
   _mouseLeave(e) {
-    let card = dom(e.target).querySelectorAll("site-card")[0];
+    let card = e.target.querySelectorAll("site-card")[0];
     card.elevation = card.__oldElevation;
   }
 }

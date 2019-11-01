@@ -205,7 +205,7 @@ class A11yMediaTranscriptCue extends A11yMediaBehaviors {
       root.search !== undefined &&
       root.search !== null
     ) {
-      root.$.content.enableSearch(search);
+      root.shadowRoot.querySelector("#content").enableSearch(search);
     }
     root.addEventListener("click", root._handleTap);
   }

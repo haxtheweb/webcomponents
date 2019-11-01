@@ -83,7 +83,7 @@ class EcoJsonSchemaEnum extends mixinBehaviors(
   }
   _schemaChanged() {
     var schema = this.schema;
-    var inputEl = this.$.dropdown;
+    var inputEl = this.shadowRoot.querySelector("#dropdown");
 
     if (schema.component && schema.component.properties) {
       Object.keys(schema.component.properties).forEach(function(prop) {
@@ -101,9 +101,9 @@ class EcoJsonSchemaEnum extends mixinBehaviors(
   }
   _errorChanged() {
     if (this.error) {
-      this.$.dropdown.invalid = true;
+      this.shadowRoot.querySelector("#dropdown").invalid = true;
     } else {
-      this.$.dropdown.invalid = false;
+      this.shadowRoot.querySelector("#dropdown").invalid = false;
     }
   }
   _isSchemaValue(type) {

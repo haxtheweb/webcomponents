@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
@@ -240,8 +239,7 @@ class LrnappOpenStudioProjects extends PolymerElement {
     return "grey-text";
   }
   _scrollToTarget(e) {
-    var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget;
+    var local = e.target;
     // this will have the id of the current submission
     var active = local.getAttribute("data-assignment-id");
     if (this.shadowRoot.querySelector(".assignment-" + active)) {
@@ -255,7 +253,7 @@ class LrnappOpenStudioProjects extends PolymerElement {
    * Handle response for the whole projects object.
    */
   _handleResponse(event) {
-    this.$.loading.hidden = true;
+    this.shadowRoot.querySelector("#loading").hidden = true;
   }
   /**
    * Simple way to convert from object to array.

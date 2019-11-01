@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-item/paper-item.js";
@@ -116,7 +115,7 @@ class HaxContextItemMenu extends PolymerElement {
       typeof oldValue !== typeof undefined &&
       typeof oldValue !== typeof null
     ) {
-      let children = dom(this).children;
+      let children = this.children;
       var item = new Object();
       var j = 0;
       // check for tag match since we have to filter out text nodes

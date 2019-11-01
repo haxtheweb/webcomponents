@@ -5,13 +5,9 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 /**
  * `relative-heading`
- * `outputs the correct heading hierarchy based on parent&#39;s heading`
- *
- * @microcopy - language worth noting:
- *  -
+ * `outputs the correct heading hierarchy based on parent heading`
  *
  * @customElement
- * @polymer
  * @demo demo/index.html
  */
 class RelativeHeading extends PolymerElement {
@@ -25,31 +21,30 @@ class RelativeHeading extends PolymerElement {
 :host([hidden]) {
   display: none;
 }
-:host h1,
-:host h2,
-:host h3,
-:host h4,
-:host h5,
-:host h6 {
-  
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   @apply --relative-heading-style;
 }
-:host h1 {
+h1 {
   @apply --relative-heading-h1;
 }
-:host h2 {
+h2 {
   @apply --relative-heading-h2;
 }
-:host h3 {
+h3 {
   @apply --relative-heading-h3;
 }
-:host h4 {
+h4 {
   @apply --relative-heading-h4;
 }
-:host h5 {
+h5 {
   @apply --relative-heading-h5;
 }
-:host h6 {
+h6 {
   @apply --relative-heading-h6;
 }</style>
 <h1 aria-live="polite" hidden="[[!__isLevel1]]">[[text]]</h1>
@@ -245,11 +240,6 @@ class RelativeHeading extends PolymerElement {
   _isLevel(level, testLevel) {
     return level === testLevel;
   }
-  /**
-   * life cycle, element is removed from the DOM
-   * /
-  disconnectedCallback() {
-  }*/
 }
 window.customElements.define(RelativeHeading.tag, RelativeHeading);
 export { RelativeHeading };

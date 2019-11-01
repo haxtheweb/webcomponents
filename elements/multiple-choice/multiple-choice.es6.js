@@ -318,7 +318,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
    * Reset user answers and shuffle the board again.
    */
   resetAnswers(e) {
-    this.$.toast.hide();
+    this.shadowRoot.querySelector("#toast").hide();
     // loop and force all answers to false
     for (var i in this.displayedAnswers) {
       if (this.displayedAnswers[i].userGuess) {
@@ -364,7 +364,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
    * that they want to see how they did.
    */
   _verifyAnswers(e) {
-    this.$.toast.hide();
+    this.shadowRoot.querySelector("#toast").hide();
     let gotRight = this.checkAnswers();
     // see if they got this correct based on their answers
     if (gotRight) {
@@ -376,7 +376,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
       this.__toastIcon = "thumb-down";
       this.__toastText = this.incorrectText;
     }
-    this.$.toast.show();
+    this.shadowRoot.querySelector("#toast").show();
     // start of data passing, this is a prototype atm
     let eventData = {
       activityDisplay: "answered",
@@ -560,8 +560,8 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
    */
   connectedCallback() {
     super.connectedCallback();
-    if (this.$.positionTarget) {
-      this.positionTarget = this.$.positionTarget;
+    if (this.shadowRoot.querySelector("#positionTarget")) {
+      this.positionTarget = this.shadowRoot.querySelector("#positionTarget");
     }
     // single option implies it's a radio group or if multiple, do check boxes
     if (this.singleOption) {
@@ -572,7 +572,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
     }
     this.setAttribute("typeof", "oer:Assessment");
     afterNextRender(this, function() {
-      this.$.toast.fitInto = this;
+      this.shadowRoot.querySelector("#toast").fitInto = this;
     });
   }
 }

@@ -2,9 +2,9 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@lrnwebcomponents/beaker-broker/beaker-broker.js";
+import { LitElement, html } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+import "@lrnwebcomponents/beaker-broker/beaker-broker.js";
 
 /**
  * `haxcms-backend-beaker`
@@ -13,7 +13,7 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
  * @microcopy - the mental model for this element
  * - jwt - a json web token which is an encrypted security token to talk
  */
-class HAXCMSBackendBeaker extends PolymerElement {
+class HAXCMSBackendBeaker extends LitElement {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -21,7 +21,7 @@ class HAXCMSBackendBeaker extends PolymerElement {
     return "haxcms-backend-beaker";
   }
   // render function
-  static get template() {
+  render() {
     return html`
       <beaker-broker id="beaker"></beaker-broker>
     `;
@@ -53,38 +53,33 @@ class HAXCMSBackendBeaker extends PolymerElement {
    */
   constructor() {
     super();
-    afterNextRender(this, function() {
-      document.body.addEventListener(
-        "jwt-token",
-        this._jwtTokenFired.bind(this)
-      );
-      // HAX CMS events to intercept
-      document.body.addEventListener(
-        "haxcms-save-site-data",
-        this.saveManifest.bind(this)
-      );
-      document.body.addEventListener(
-        "haxcms-save-outline",
-        this.saveOutline.bind(this)
-      );
-      document.body.addEventListener(
-        "haxcms-save-node",
-        this.saveNode.bind(this)
-      );
-      document.body.addEventListener(
-        "haxcms-delete-node",
-        this.deleteNode.bind(this)
-      );
-      document.body.addEventListener(
-        "haxcms-create-node",
-        this.createNode.bind(this)
-      );
-      // listen for app being selected
-      document.body.addEventListener(
-        "hax-app-picker-selection",
-        this._appPicked.bind(this)
-      );
-    });
+    document.body.addEventListener("jwt-token", this._jwtTokenFired.bind(this));
+    // HAX CMS events to intercept
+    document.body.addEventListener(
+      "haxcms-save-site-data",
+      this.saveManifest.bind(this)
+    );
+    document.body.addEventListener(
+      "haxcms-save-outline",
+      this.saveOutline.bind(this)
+    );
+    document.body.addEventListener(
+      "haxcms-save-node",
+      this.saveNode.bind(this)
+    );
+    document.body.addEventListener(
+      "haxcms-delete-node",
+      this.deleteNode.bind(this)
+    );
+    document.body.addEventListener(
+      "haxcms-create-node",
+      this.createNode.bind(this)
+    );
+    // listen for app being selected
+    document.body.addEventListener(
+      "hax-app-picker-selection",
+      this._appPicked.bind(this)
+    );
   }
   /**
    * detached life cycle
@@ -130,15 +125,21 @@ class HAXCMSBackendBeaker extends PolymerElement {
       reader.onload = event => {
         let fileLocation =
           "files/" +
-          window.HaxStore.instance.haxManager.$.fileupload.files[0].name;
+          window.HaxStore.instance.haxManager.shadowRoot.querySelector(
+            "#fileupload"
+          ).files[0].name;
         this.shadowRoot
           .querySelector("#beaker")
           .write(fileLocation, event.target.result);
-        window.HaxStore.instance.haxManager.$.url.value = fileLocation;
+        window.HaxStore.instance.haxManager.shadowRoot.querySelector(
+          "#url"
+        ).value = fileLocation;
         window.HaxStore.instance.haxManager.newAssetConfigure();
       };
       reader.readAsArrayBuffer(
-        window.HaxStore.instance.haxManager.$.fileupload.files[0]
+        window.HaxStore.instance.haxManager.shadowRoot.querySelector(
+          "#fileupload"
+        ).files[0]
       );
     }
   }
@@ -154,7 +155,9 @@ class HAXCMSBackendBeaker extends PolymerElement {
         this.activeItem.location,
         window.HaxStore.instance.activeHaxBody.haxToContent()
       );
-    store.cmsSiteEditor.instance.$.toast.show("Page updated!");
+    store.cmsSiteEditor.instance.shadowRoot
+      .querySelector("#toast")
+      .show("Page updated!");
     const evt = new CustomEvent("haxcms-trigger-update-node", {
       bubbles: true,
       composed: true,
@@ -197,7 +200,9 @@ class HAXCMSBackendBeaker extends PolymerElement {
       .querySelector("#beaker")
       .write("site.json", JSON.stringify(this.manifest, null, 2));
     // simulate save events since they wont fire
-    store.cmsSiteEditor.instance.$.toast.show("Outline saved!");
+    store.cmsSiteEditor.instance.shadowRoot
+      .querySelector("#toast")
+      .show("Outline saved!");
     store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
@@ -234,7 +239,9 @@ class HAXCMSBackendBeaker extends PolymerElement {
       .querySelector("#beaker")
       .write("site.json", JSON.stringify(this.manifest, null, 2));
     // simulate save events since they wont fire
-    store.cmsSiteEditor.instance.$.toast.show(`${page.title} deleted`);
+    store.cmsSiteEditor.instance.shadowRoot
+      .querySelector("#toast")
+      .show(`${page.title} deleted`);
     store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
@@ -286,14 +293,16 @@ class HAXCMSBackendBeaker extends PolymerElement {
         this.shadowRoot
           .querySelector("#beaker")
           .write(page.location, "<p>My great new content!</p>");
-        this.set(`manifest.items.${index}`, element);
+        this.manifest.items[index] = element;
       }
     });
     this.shadowRoot
       .querySelector("#beaker")
       .write("site.json", JSON.stringify(this.manifest, null, 2));
     // simulate save events since they wont fire
-    store.cmsSiteEditor.instance.$.toast.show(`${page.title} created!`);
+    store.cmsSiteEditor.instance.shadowRoot
+      .querySelector("#toast")
+      .show(`${page.title} created!`);
     store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,
@@ -344,7 +353,9 @@ class HAXCMSBackendBeaker extends PolymerElement {
       .querySelector("#beaker")
       .write("site.json", JSON.stringify(this.manifest, null, 2));
     // simulate save events since they wont fire
-    store.cmsSiteEditor.instance.$.toast.show("Site details saved!");
+    store.cmsSiteEditor.instance.shadowRoot
+      .querySelector("#toast")
+      .show("Site details saved!");
     store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,

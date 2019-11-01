@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "./map-styles.js";
 /* styles scoped to inside a custom element must be in a style module */
 class MapLayer extends PolymerElement {
@@ -207,9 +206,9 @@ class MapLayer extends PolymerElement {
     // set i to the position of this layer element in the set of layers
     var i = 0,
       position = 1;
-    for (var nodes = dom(this).parentNode.children; i < nodes.length; i++) {
-      if (dom(this).parentNode.children[i].nodeName === "LAYER-") {
-        if (dom(this).parentNode.children[i] === this) {
+    for (var nodes = this.parentNode.children; i < nodes.length; i++) {
+      if (this.parentNode.children[i].nodeName === "LAYER-") {
+        if (this.parentNode.children[i] === this) {
           break;
         }
         position++;
@@ -220,7 +219,7 @@ class MapLayer extends PolymerElement {
       opacity: window.getComputedStyle(this).opacity
     });
     // make sure the Leaflet layer has a reference to the map
-    this._layer._map = dom(this).parentNode._map;
+    this._layer._map = this.parentNode._map;
     // notify the layer that it is attached to a map (layer._map)
     this._layer.dispatchEvent(
       new CustomEvent("attached", {
@@ -240,8 +239,8 @@ class MapLayer extends PolymerElement {
     this._layer.on("add remove", this._onLayerChange, this);
 
     // if controls option is enabled, insert the layer into the overlays array
-    if (dom(this).parentNode.controls && !this.hidden) {
-      this._layerControl = dom(this).parentNode._layerControl;
+    if (this.parentNode.controls && !this.hidden) {
+      this._layerControl = this.parentNode._layerControl;
       this._layerControl.addOrUpdateOverlay(this._layer, this.label);
     }
     // toggle the this.disabled attribute depending on whether the layer
@@ -264,7 +263,7 @@ class MapLayer extends PolymerElement {
 
   connectedCallback() {
     super.connectedCallback();
-    if (dom(this).parentNode.nodeName !== "MAP") {
+    if (this.parentNode.nodeName !== "MAP") {
       console.log(
         "ERROR: " +
           this.localName +
@@ -275,7 +274,7 @@ class MapLayer extends PolymerElement {
       return;
     }
     // if the map has been attached, set this layer up wrt Leaflet map
-    if (dom(this).parentNode._map) {
+    if (this.parentNode._map) {
       this._attachedToMap();
     }
   }

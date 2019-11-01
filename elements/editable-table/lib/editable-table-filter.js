@@ -97,7 +97,8 @@ class EditableTableFilter extends LitElement {
        * Index of the column
        */
       columnIndex: {
-        type: Number
+        type: Number,
+        attribute: "column-index"
       },
       /**
        * Whether the column is filtered

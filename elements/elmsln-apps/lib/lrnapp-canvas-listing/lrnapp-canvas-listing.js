@@ -460,7 +460,7 @@ class LrnappCanvasListing extends PolymerElement {
   handleResponse() {
     this.elmslnCourses = this.queryResponse.data.elmslnCourses;
     this.canvasCourses = this.queryResponse.data.canvasCourses;
-    this.$.loading.hidden = true;
+    this.shadowRoot.querySelector("#loading").hidden = true;
   }
   handleRosterResponse() {
     this.roster = this.queryResponse.data;

@@ -101,7 +101,7 @@ class RichTextEditorBreadcrumb extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.__a11y = this.$.button;
+    this.__a11y = this.shadowRoot.querySelector("#button");
   }
   /**
    * Handles button tap;

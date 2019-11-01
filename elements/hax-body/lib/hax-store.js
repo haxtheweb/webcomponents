@@ -1,6 +1,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import { setPassiveTouchGestures } from "@polymer/polymer/lib/utils/settings.js";
 import { getRange } from "./shadows-safari.js";
@@ -591,7 +591,7 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
               } else {
                 // this is the less optimized / legacy polymer element or an element
                 // that did not provide an export
-                dom(haxAutoloader).appendChild(document.createElement(i));
+                haxAutoloader.appendChild(document.createElement(i));
               }
             }
           })
@@ -612,7 +612,7 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
           // this is the less optimized / legacy polymer element method to inlcude
           // this item. It's a good reason to skip on this though because you'll
           // have a faster boot up time with newer ES6 methods then previous ones.
-          dom(haxAutoloader).appendChild(document.createElement(i));
+          haxAutoloader.appendChild(document.createElement(i));
         }
       }
     }
@@ -1577,8 +1577,10 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
           if (this.activeNode.getAttribute("slot") != null) {
             node.setAttribute("slot", this.activeNode.getAttribute("slot"));
           }
-          dom(this.activeContainerNode).appendChild(node);
-          this.activeHaxBody.$.textcontextmenu.highlightOps = false;
+          this.activeContainerNode.appendChild(node);
+          this.activeHaxBody.shadowRoot.querySelector(
+            "#textcontextmenu"
+          ).highlightOps = false;
           this.activeHaxBody.__updateLockFocus = node;
           // wait so that the DOM can have the node to then attach to
           setTimeout(() => {
@@ -1736,7 +1738,7 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
         typeof e.target.parentElement !== typeof undefined &&
         e.target.parentElement.tagName === "HAX-STORE"
       ) {
-        dom(e.target.parentElement).removeChild(e.target);
+        e.target.parentElement.removeChild(e.target);
       }
     }
   }
@@ -1754,7 +1756,7 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
         typeof e.target.parentElement !== typeof undefined &&
         e.target.parentElement.tagName === "HAX-STORE"
       ) {
-        dom(e.target.parentElement).removeChild(e.target);
+        e.target.parentElement.removeChild(e.target);
       }
     }
   }
@@ -1772,7 +1774,7 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
         typeof e.target.parentElement !== typeof undefined &&
         e.target.parentElement.tagName === "HAX-STORE"
       ) {
-        dom(e.target.parentElement).removeChild(e.target);
+        e.target.parentElement.removeChild(e.target);
       }
     }
   }
@@ -1807,7 +1809,7 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
         typeof e.target.parentElement !== typeof undefined &&
         e.target.parentElement.tagName === "HAX-AUTOLOADER"
       ) {
-        dom(this.haxAutoloader).removeChild(e.target);
+        this.haxAutoloader.removeChild(e.target);
       }
     }
   }
@@ -2258,7 +2260,7 @@ window.HaxStore.nodeToContent = node => {
   // try and work against anything NOT a P tag
   if (typeof props === typeof undefined || !props.saveOptions.wipeSlot) {
     // get content that is in the slots
-    let slotnodes = dom(node).getEffectiveChildNodes();
+    let slotnodes = FlattenedNodesObserver.getFlattenedNodes(node);
     // ensure there's something inside of this
     if (slotnodes.length > 0) {
       // loop through everything found in the slotted area and put it back in
@@ -2380,7 +2382,7 @@ window.HaxStore.getHAXSlot = node => {
     return node.innerHTML;
   }
   let content = "";
-  var slotnodes = dom(node).children;
+  var slotnodes = node.children;
   // ensure there's something inside of this
   if (slotnodes.length > 0) {
     // loop through everything found in the slotted area and put it back in

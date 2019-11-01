@@ -1,6 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/paper-styles/paper-styles.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/iron-pages/iron-pages.js";
@@ -725,12 +724,10 @@ class HaxManager extends PolymerElement {
    * Respond to the modal closing
    */
   close(e) {
-    var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget;
     if (
       typeof e === typeof undefined ||
-      local === this.shadowRoot.querySelector("#dialog") ||
-      local === this.shadowRoot.querySelector("#closedialog")
+      e.target === this.shadowRoot.querySelector("#dialog") ||
+      e.target === this.shadowRoot.querySelector("#closedialog")
     ) {
       // reset the active element which will force this to reset the manager
       window.HaxStore.write("activeHaxElement", {}, this);

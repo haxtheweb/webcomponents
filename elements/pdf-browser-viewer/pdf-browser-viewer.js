@@ -25,7 +25,7 @@ Data Bind with Blob example:
 
 Clear PDF container example:
 ```js
-    this.$.pdfViewer.clear();
+    this.shadowRoot.querySelector('#pdfViewer').clear();
 ```
 
 Message example:

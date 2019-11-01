@@ -202,7 +202,11 @@ class SimpleSearch extends PolymerElement {
        */
       resultsSpan: {
         type: String,
-        computed: "_getResultsSpan(noSearch,resultPointer,resultCount)"
+        computed: "_getResultsSpan(noSearch,resultPointer,resultCount,__ready)"
+      },
+      __ready: {
+        type: Boolean,
+        value: false
       },
       /**
        * label for search icon
@@ -340,21 +344,19 @@ class SimpleSearch extends PolymerElement {
 
   ready() {
     super.ready();
-    let root = this,
-      search = root.$.input;
-    root._getSearchText(search.value);
+    this.__ready = true;
+    this._getSearchText(this.shadowRoot.querySelector("#input").value);
   }
 
   /**
    * are there any results to navigate?
    */
   _handleChange(e) {
-    let root = this;
-    root._getSearchText(root.$.input.value);
-    root.resultCount = 0;
-    root.resultPointer = 0;
-    root.dispatchEvent(
-      new CustomEvent("simple-search", { detail: { search: root, content: e } })
+    this._getSearchText(this.shadowRoot.querySelector("#input").value);
+    this.resultCount = 0;
+    this.resultPointer = 0;
+    this.dispatchEvent(
+      new CustomEvent("simple-search", { detail: { search: this, content: e } })
     );
   }
 
@@ -386,15 +388,17 @@ class SimpleSearch extends PolymerElement {
    * @param {number} the total number of search results
    * @returns {string} "y results" or "x/y" text
    */
-  _getResultsSpan(noSearch, resultPointer, resultCount) {
-    let html = "";
-    if (resultCount > 0 && resultPointer > 0) {
-      html = resultPointer + "/" + resultCount;
-    } else {
-      html = " " + resultCount;
+  _getResultsSpan(noSearch, resultPointer, resultCount, __ready) {
+    if (__ready) {
+      let html = "";
+      if (resultCount > 0 && resultPointer > 0) {
+        html = resultPointer + "/" + resultCount;
+      } else {
+        html = " " + resultCount;
+      }
+      this.shadowRoot.querySelector("#xofy").innerHTML = html;
+      return this.shadowRoot.querySelector("#xofy").innerHTML;
     }
-    this.$.xofy.innerHTML = html;
-    return this.$.xofy.innerHTML;
   }
 
   /**

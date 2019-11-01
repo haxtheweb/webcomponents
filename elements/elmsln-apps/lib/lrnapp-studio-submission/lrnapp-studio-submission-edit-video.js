@@ -1,6 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { SecureRequestXhr } from "@lrnwebcomponents/secure-request/secure-request.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import "@polymer/paper-dialog/paper-dialog.js";
@@ -117,13 +116,12 @@ class LrnappStudioSubmissionEditVideo extends SecureRequestXhr(PolymerElement) {
     };
   }
   _openDialog(e) {
-    this.$.dialog.open();
+    this.shadowRoot.querySelector("#dialog").open();
   }
 
   _addImage(e) {
     var video_url = this.newvideo;
-    var normalizedEvent = dom(e);
-    var tagname = normalizedEvent.localTarget.tagName;
+    var tagname = e.target.tagName;
     // find out if the component that called this function
     // if it's the iron-ajax then that means we have what we
     // need to add this new video to the array.
@@ -146,8 +144,7 @@ class LrnappStudioSubmissionEditVideo extends SecureRequestXhr(PolymerElement) {
   }
 
   _videoDelete(e) {
-    var normalizedEvent = dom(e);
-    var deleteIndex = normalizedEvent.localTarget.getAttribute("data-index");
+    var deleteIndex = e.target.getAttribute("data-index");
     this.splice("videos", deleteIndex, 1);
   }
 

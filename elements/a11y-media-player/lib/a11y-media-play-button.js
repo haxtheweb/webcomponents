@@ -181,7 +181,7 @@ class A11yMediaPlayButton extends A11yMediaBehaviors {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.$.text.innerText = this.playLabel;
+    this.shadowRoot.querySelector("#text").innerText = this.playLabel;
   }
 
   /**
@@ -189,7 +189,7 @@ class A11yMediaPlayButton extends A11yMediaBehaviors {
    */
   ready() {
     super.ready();
-    this.target = this.$.button;
+    this.target = this.shadowRoot.querySelector("#button");
   }
 
   /**

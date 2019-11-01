@@ -1,5 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { wrap } from "@polymer/polymer/lib/utils/wrap.js";
 import "@polymer/iron-flex-layout/iron-flex-layout.js";
 import "@polymer/iron-dropdown/iron-dropdown.js";
 import "@polymer/neon-animation/neon-animations.js";
@@ -137,23 +137,29 @@ class PaperFabSpeedDial extends PolymerElement {
   static get observers() {
     return ["_updateDropdown(direction, offset)"];
   }
-
+  getDistributedNodes(node) {
+    return node.localName === "slot"
+      ? wrap(node).assignedNodes({ flatten: true })
+      : [];
+  }
   ready() {
     super.ready();
-
-    var fab = dom(this.$.fabContainer).getDistributedNodes()[0];
+    var fab = this.getDistributedNodes(
+      this.shadowRoot.querySelector("#fabContainer")
+    )[0];
     fab.addEventListener(
       "click",
       function() {
-        this.$.dropdown.open();
+        this.shadowRoot.querySelector("#dropdown").open();
       }.bind(this)
     );
-
-    var content = dom(this.$.contentContainer).getDistributedNodes()[0];
+    var content = this.getDistributedNodes(
+      this.shadowRoot.querySelector("#contentContainer")
+    )[0];
     content.addEventListener(
       "click",
       function() {
-        this.$.dropdown.close();
+        this.shadowRoot.querySelector("#dropdown").close();
       }.bind(this)
     );
   }
@@ -162,18 +168,18 @@ class PaperFabSpeedDial extends PolymerElement {
    * Show the speed dial options.
    */
   open() {
-    this.$.dropdown.open();
+    this.shadowRoot.querySelector("#dropdown").open();
   }
 
   /**
    * Hide the speed dial options.
    */
   close() {
-    this.$.dropdown.close();
+    this.shadowRoot.querySelector("#dropdown").close();
   }
 
   _updateDropdown(direction, offset) {
-    var d = this.$.dropdown;
+    var d = this.shadowRoot.querySelector("#dropdown");
     switch (direction) {
       case "bottom":
         d.verticalAlign = "top";

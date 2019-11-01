@@ -125,9 +125,9 @@ class MapMenuItem extends PolymerElement {
   }
   _trackIconChanged(newValue, oldValue) {
     if (newValue) {
-      this.$.track.classList.add("show-icon");
+      this.shadowRoot.querySelector("#track").classList.add("show-icon");
     } else {
-      this.$.track.classList.remove("show-icon");
+      this.shadowRoot.querySelector("#track").classList.remove("show-icon");
     }
   }
   __selectedChanged(selected, id) {

@@ -153,7 +153,7 @@ class RichTextEditorPicker extends RichTextEditorButton {
         range !== null && range.commonAncestorContainer
           ? range.commonAncestorContainer.parentNode
           : null;
-    this.$.button.value =
+    this.shadowRoot.querySelector("#button").value =
       this.command === "formatBlock" &&
       selectors &&
       parent &&
@@ -177,15 +177,18 @@ class RichTextEditorPicker extends RichTextEditorButton {
    * Picker change
    */
   _pickerChange(e) {
-    let val = this.$.button.value;
-    console.log("_pickerChange", this.$.button.value);
+    let val = this.shadowRoot.querySelector("#button").value;
+    console.log(
+      "_pickerChange",
+      this.shadowRoot.querySelector("#button").value
+    );
     e.preventDefault();
     if (val !== null && this.range !== undefined && this.range !== null) {
-      this.commandVal = this.$.button.value;
+      this.commandVal = this.shadowRoot.querySelector("#button").value;
       console.log("commandVal", this.commandVal);
       this.doTextOperation();
       if (this.block !== true) {
-        this.$.button.value = null;
+        this.shadowRoot.querySelector("#button").value = null;
         this.dispatchEvent(new CustomEvent("deselect", { detail: this }));
       }
     }

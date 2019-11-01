@@ -614,15 +614,15 @@ class LrndesignBlockquote extends SchemaBehaviors(PolymerElement) {
    */
   _imageChanged(newValue, oldValue) {
     if (this.displayMode == "hypercard") {
-      this.$.wrap.style.cssText = "";
-      this.$.thumb.style.cssText = "";
+      this.shadowRoot.querySelector("#wrap").style.cssText = "";
+      this.shadowRoot.querySelector("#thumb").style.cssText = "";
     } else if (this.displayMode == "poster") {
-      this.$.wrap.style.cssText =
+      this.shadowRoot.querySelector("#wrap").style.cssText =
         "background: #444 url(" + newValue + ") no-repeat 140% 25%";
-      this.$.thumb.style.cssText = "";
+      this.shadowRoot.querySelector("#thumb").style.cssText = "";
     } else {
-      this.$.wrap.style.cssText = "";
-      this.$.thumb.style.cssText =
+      this.shadowRoot.querySelector("#wrap").style.cssText = "";
+      this.shadowRoot.querySelector("#thumb").style.cssText =
         "background: url(" + newValue + ") no-repeat center center";
     }
   }
@@ -631,8 +631,8 @@ class LrndesignBlockquote extends SchemaBehaviors(PolymerElement) {
    */
   _displayModeChanged(newValue, oldValue) {
     if (newValue == "hypercard") {
-      this.$.wrap.style.cssText = "";
-      this.$.thumb.style.cssText = "";
+      this.shadowRoot.querySelector("#wrap").style.cssText = "";
+      this.shadowRoot.querySelector("#thumb").style.cssText = "";
       let style = document.createElement("style");
       let basePath = pathFromUrl(decodeURIComponent(import.meta.url));
       style.innerHTML = `@font-face {
@@ -645,12 +645,12 @@ class LrndesignBlockquote extends SchemaBehaviors(PolymerElement) {
       }`;
       document.head.appendChild(style);
     } else if (newValue == "poster") {
-      this.$.wrap.style.cssText =
+      this.shadowRoot.querySelector("#wrap").style.cssText =
         "background: #444 url(" + this.image + ") no-repeat 140% 25%";
-      this.$.thumb.style.cssText = "";
+      this.shadowRoot.querySelector("#thumb").style.cssText = "";
     } else {
-      this.$.wrap.style.cssText = "";
-      this.$.thumb.style.cssText =
+      this.shadowRoot.querySelector("#wrap").style.cssText = "";
+      this.shadowRoot.querySelector("#thumb").style.cssText =
         "background: url(" + this.image + ") no-repeat center center";
     }
   }

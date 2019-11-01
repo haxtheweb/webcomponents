@@ -594,7 +594,7 @@ class A11yMediaBehaviors extends SimpleColors {
     root.dispatchEvent(
       new CustomEvent("downloading-transcript", { detail: root })
     );
-    root.$.transcript.download(root.mediaTitle);
+    root.shadowRoot.querySelector("#transcript").download(root.mediaTitle);
   }
 
   /**
@@ -605,7 +605,7 @@ class A11yMediaBehaviors extends SimpleColors {
     root.dispatchEvent(
       new CustomEvent("printing-transcript", { detail: root })
     );
-    root.$.transcript.print(root.mediaTitle);
+    root.shadowRoot.querySelector("#transcript").print(root.mediaTitle);
   }
 }
 window.customElements.define(A11yMediaBehaviors.tag, A11yMediaBehaviors);

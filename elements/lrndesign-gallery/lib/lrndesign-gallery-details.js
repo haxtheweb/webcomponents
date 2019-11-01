@@ -68,7 +68,7 @@ class LrndesignGalleryDetails extends PolymerElement {
    * @param {details} the details to be updated
    */
   _detailsChanged() {
-    this.$.details.innerHTML = this.details;
+    this.shadowRoot.querySelector("#details").innerHTML = this.details;
   }
 }
 window.customElements.define(

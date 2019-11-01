@@ -226,14 +226,20 @@ class LrnsysCommentList extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     window.SimpleModal.requestAvailability();
-    this.$.filtercomments.addEventListener("value-changed", e => {
-      this.$.filteredcomments.like = e.target.value;
-    });
-    this.$.filtertype.addEventListener("change", e => {
-      this.$.filtercomments.value = "";
-      this.$.filteredcomments.where = e.detail.value;
-      this.$.filteredcomments.like = "";
-    });
+    this.shadowRoot
+      .querySelector("#filtercomments")
+      .addEventListener("value-changed", e => {
+        this.shadowRoot.querySelector("#filteredcomments").like =
+          e.target.value;
+      });
+    this.shadowRoot
+      .querySelector("#filtertype")
+      .addEventListener("change", e => {
+        this.shadowRoot.querySelector("#filtercomments").value = "";
+        this.shadowRoot.querySelector("#filteredcomments").where =
+          e.detail.value;
+        this.shadowRoot.querySelector("#filteredcomments").like = "";
+      });
     afterNextRender(this, function() {
       this.addEventListener("comment-save", this.handleSave.bind(this));
       this.addEventListener("comment-editing", this.handleEditing.bind(this));
@@ -257,14 +263,20 @@ class LrnsysCommentList extends PolymerElement {
       "comment-delete-dialog",
       this.handleDeleteDialog.bind(this)
     );
-    this.$.filtercomments.removeEventListener("value-changed", e => {
-      this.$.filteredcomments.like = e.target.value;
-    });
-    this.$.filtertype.removeEventListener("change", e => {
-      this.$.filtercomments.value = "";
-      this.$.filteredcomments.where = e.detail.value;
-      this.$.filteredcomments.like = "";
-    });
+    this.shadowRoot
+      .querySelector("#filtercomments")
+      .removeEventListener("value-changed", e => {
+        this.shadowRoot.querySelector("#filteredcomments").like =
+          e.target.value;
+      });
+    this.shadowRoot
+      .querySelector("#filtertype")
+      .removeEventListener("change", e => {
+        this.shadowRoot.querySelector("#filtercomments").value = "";
+        this.shadowRoot.querySelector("#filteredcomments").where =
+          e.detail.value;
+        this.shadowRoot.querySelector("#filteredcomments").like = "";
+      });
     super.disconnectedCallback();
   }
   /**
@@ -280,7 +292,7 @@ class LrnsysCommentList extends PolymerElement {
    */
   handleLike(e) {
     this.activeComment = e.detail.comment;
-    this.$.ajaxlikerequest.generateRequest();
+    this.shadowRoot.querySelector("#ajaxlikerequest").generateRequest();
   }
   /**
    * @todo not sure we need to do anything post like button
@@ -356,7 +368,7 @@ class LrnsysCommentList extends PolymerElement {
     // ensure nothing is set as active for when this goes out the door
     this.set("newComment", []);
     this.set("activeComment", []);
-    this.$.ajaxcreatestub.generateRequest();
+    this.shadowRoot.querySelector("#ajaxcreatestub").generateRequest();
   }
 
   /**
@@ -369,7 +381,7 @@ class LrnsysCommentList extends PolymerElement {
     this.set("newComment", []);
     this.activeComment = e.detail.comment;
     // shift where the response will go
-    this.$.ajaxcreatestub.generateRequest();
+    this.shadowRoot.querySelector("#ajaxcreatestub").generateRequest();
   }
 
   /**
@@ -408,7 +420,7 @@ class LrnsysCommentList extends PolymerElement {
    * Handle a delete event bubbling up from a comment we've printed.
    */
   _handleDeleteConfirm(e) {
-    this.$.ajaxdeleterequest.generateRequest();
+    this.shadowRoot.querySelector("#ajaxdeleterequest").generateRequest();
   }
 
   _handleDeleteResponse(e) {
@@ -445,7 +457,7 @@ class LrnsysCommentList extends PolymerElement {
    */
   handleSave(e) {
     this.activeComment = e.detail.comment;
-    this.$.ajaxupdaterequest.generateRequest();
+    this.shadowRoot.querySelector("#ajaxupdaterequest").generateRequest();
   }
 
   _handleUpdateResponse(e) {

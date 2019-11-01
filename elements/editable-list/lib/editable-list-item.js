@@ -196,7 +196,7 @@ class EditableListItem extends PolymerElement {
   _editToggle(e) {
     this.editing = !this.editing;
     if (this.editing) {
-      this.$.input.focus();
+      this.shadowRoot.querySelector("#input").focus();
     }
   }
   /**
@@ -216,9 +216,9 @@ class EditableListItem extends PolymerElement {
   _editModeChanged(newValue, oldValue) {
     if (typeof newValue !== typeof undefined) {
       if (newValue) {
-        this.$.edit.icon = "icons:save";
+        this.shadowRoot.querySelector("#edit").icon = "icons:save";
       } else {
-        this.$.edit.icon = "icons:create";
+        this.shadowRoot.querySelector("#edit").icon = "icons:create";
       }
     }
   }

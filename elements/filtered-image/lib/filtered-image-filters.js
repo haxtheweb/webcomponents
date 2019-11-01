@@ -260,8 +260,8 @@ class FilteredImageFilters extends PolymerElement {
     super.connectedCallback();
   }
   _setFilter(e) {
-    this.filter1 = this.$.filter1.value;
-    this.filter2 = this.$.filter2.value;
+    this.filter1 = this.shadowRoot.querySelector("#filter1").value;
+    this.filter2 = this.shadowRoot.querySelector("#filter2").value;
   }
   _getSelectedFilters(filter1, filter2) {
     let f1 = {},

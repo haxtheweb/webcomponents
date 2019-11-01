@@ -1,6 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
@@ -639,7 +638,7 @@ class LrnappCis extends PolymerElement {
         }
       }
 
-      this.$.loading.hidden = false; // reload the page which since route changed will load that page
+      this.shadowRoot.querySelector("#loading").hidden = false; // reload the page which since route changed will load that page
 
       window.location.reload();
     }
@@ -692,7 +691,7 @@ class LrnappCis extends PolymerElement {
 
     this.set("activeCourse", []);
     this.set("activeCourse", activeCourse);
-    this.$.toast.show(response.message);
+    this.shadowRoot.querySelector("#toast").show(response.message);
   }
   /**
    * Handle course response for additional details about the item
@@ -706,7 +705,7 @@ class LrnappCis extends PolymerElement {
 
     this.set("activeCourse", []);
     this.set("activeCourse", activeCourse);
-    this.$.loadingCourse.hidden = true;
+    this.shadowRoot.querySelector("#loadingCourse").hidden = true;
   }
   /**
    * Helper to mash up services that exist with those that could.
@@ -789,7 +788,7 @@ class LrnappCis extends PolymerElement {
     tmp.academics.forEach(function(element) {
       academics.push(element);
     });
-    this.$.loading.hidden = true;
+    this.shadowRoot.querySelector("#loading").hidden = true;
     this.set("academics", academics);
     this.set("programs", programs);
   }
@@ -798,8 +797,7 @@ class LrnappCis extends PolymerElement {
    */
 
   _makeService(e) {
-    var normalizedEvent = dom(e);
-    let active = normalizedEvent.localTarget.getAttribute("data-machine-name");
+    let active = e.target.getAttribute("data-machine-name");
     const network = this.activeCourse.topology.Network;
     let service = network.filter(service => {
       if (service.machine_name !== active) {
@@ -811,13 +809,13 @@ class LrnappCis extends PolymerElement {
 
     if (service.length > 0) {
       service = service.pop();
-      this.$.makeservice.params = {
+      this.shadowRoot.querySelector("#makeservice").params = {
         course: this.activeCourse.attributes.machine_name,
         service: service.machine_name
       };
       this._activeService = service; // confirm via paper prompt
 
-      this.$.confirm.toggleDialog();
+      this.shadowRoot.querySelector("#confirm").toggleDialog();
     } else {
       console.log("that was not a valid service..");
     }
@@ -827,7 +825,7 @@ class LrnappCis extends PolymerElement {
    */
 
   _confirmBuild(e) {
-    this.$.makeservice.generateRequest();
+    this.shadowRoot.querySelector("#makeservice").generateRequest();
   }
   /**
    * lifecycle
@@ -854,9 +852,8 @@ class LrnappCis extends PolymerElement {
 
   _loadCourseUrl(e) {
     // reset dialog to appear to be loading
-    this.$.loadingCourse.hidden = false;
-    var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget; // this will have the id of the current course
+    this.shadowRoot.querySelector("#loadingCourse").hidden = false;
+    var local = e.target; // this will have the id of the current course
 
     var active = local.getAttribute("data-course-id"); // find the course by it's unique id and filter just to it
 
@@ -879,8 +876,8 @@ class LrnappCis extends PolymerElement {
     }; // @todo look at query cache mechanism to skip calls
     // if they've already happened. lrnapp-book has some stuff to do this
 
-    this.$.courserequest.generateRequest();
-    this.$.dialog.toggle();
+    this.shadowRoot.querySelector("#courserequest").generateRequest();
+    this.shadowRoot.querySelector("#dialog").toggle();
   }
   /**
    * Compute the active list of courses
@@ -918,7 +915,7 @@ class LrnappCis extends PolymerElement {
     }); // delay and repaint, can help with refresh issues
 
     setTimeout(() => {
-      this.$.ironlist.fire("iron-resize");
+      this.shadowRoot.querySelector("#ironlist").fire("iron-resize");
     }, 200);
     return filteredCourses;
   }

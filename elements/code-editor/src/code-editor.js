@@ -4,7 +4,6 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
@@ -257,7 +256,7 @@ class CodeEditor extends SchemaBehaviors(PolymerElement) {
         console.warn(
           "code-editor works best with a template tag provided in light dom"
         );
-        children = dom(this).getEffectiveChildNodes();
+        children = FlattenedNodesObserver.getFlattenedNodes(this);
         if (children.length > 0) {
           // loop through everything found in the slotted area and put it back in
           for (var j = 0, len2 = children.length; j < len2; j++) {

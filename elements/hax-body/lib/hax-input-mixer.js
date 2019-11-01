@@ -1,6 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 /**
  * `hax-input-mixer`
  * A context menu that provides common custom-element based authoring options. While
@@ -273,9 +272,8 @@ class HaxInputMixer extends PolymerElement {
         this["__input" + method] = true;
         // hide the menu if it was open previously
         // need to paint into the slot so clean it out and repaint
-        let slot = dom(this);
-        while (slot.firstChild !== null) {
-          slot.removeChild(slot.firstChild);
+        while (this.firstChild !== null) {
+          this.removeChild(this.firstChild);
         }
         // select needs to inject settings into the slot
         if (method === "select" && typeof this.options !== typeof undefined) {
@@ -285,7 +283,7 @@ class HaxInputMixer extends PolymerElement {
             item = document.createElement("paper-item");
             item.attributes.value = val;
             item.innerHTML = this.options[val];
-            slot.appendChild(item.cloneNode(true));
+            this.appendChild(item.cloneNode(true));
           }
         }
         // try and force cursor to focus on this element

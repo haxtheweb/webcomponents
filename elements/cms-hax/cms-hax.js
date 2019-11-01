@@ -325,7 +325,7 @@ class CmsHax extends PolymerElement {
     // generate sanitized content
     this.updatePageData = window.HaxStore.instance.activeHaxBody.haxToContent();
     // send the request
-    this.$.pageupdateajax.generateRequest();
+    this.shadowRoot.querySelector("#pageupdateajax").generateRequest();
   }
 
   /**

@@ -198,9 +198,13 @@ class LrnappStudioRoot extends PolymerElement {
   _deleteToast(deletetoast, old) {
     if (typeof deletetoast !== typeof undefined) {
       if (deletetoast == "error") {
-        this.$.toast.show("That submission on longer exists!");
+        this.shadowRoot
+          .querySelector("#toast")
+          .show("That submission on longer exists!");
       } else {
-        this.$.toast.show("Submission deleted successfully!");
+        this.shadowRoot
+          .querySelector("#toast")
+          .show("Submission deleted successfully!");
       }
       this.set("queryParams.deletetoast", undefined);
       this.notifyPath("queryParams.deletetoast");

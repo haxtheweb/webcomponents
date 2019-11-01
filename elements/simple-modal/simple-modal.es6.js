@@ -4,7 +4,6 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 // register globally so we can make sure there is only one
@@ -296,8 +295,8 @@ h2 {
     // swap out the contents
     if (this.opened) {
       // wipe the slot of our modal
-      while (dom(this).firstChild !== null) {
-        dom(this).removeChild(dom(this).firstChild);
+      while (this.firstChild !== null) {
+        this.removeChild(this.firstChild);
       }
       setTimeout(() => {
         this.show(
@@ -385,7 +384,7 @@ h2 {
           element = elements[slots[i]];
         }
         element.setAttribute("slot", slots[i]);
-        dom(this).appendChild(element);
+        this.appendChild(element);
       }
     }
     // minor delay to help the above happen prior to opening
@@ -401,8 +400,8 @@ h2 {
   animationEnded(e) {
     // wipe the slot of our modal
     this.title = "";
-    while (dom(this).firstChild !== null) {
-      dom(this).removeChild(dom(this).firstChild);
+    while (this.firstChild !== null) {
+      this.removeChild(this.firstChild);
     }
     if (this.invokedBy) {
       microTask.run(() => {

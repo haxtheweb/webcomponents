@@ -1,6 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/iron-pages/iron-pages.js";
@@ -460,7 +459,7 @@ class LrnappOpenStudio extends PolymerElement {
     });
     // delay and repaint, can help with refresh issues
     setTimeout(() => {
-      this.$.ironlist.fire("iron-resize");
+      this.shadowRoot.querySelector("#ironlist").fire("iron-resize");
     }, 200);
     return filteredSubmissions;
   }
@@ -474,9 +473,13 @@ class LrnappOpenStudio extends PolymerElement {
   _deleteToast(deletetoast, old) {
     if (typeof deletetoast !== typeof undefined) {
       if (deletetoast == "error") {
-        this.$.toast.show("That submission on longer exists!");
+        this.shadowRoot
+          .querySelector("#toast")
+          .show("That submission on longer exists!");
       } else {
-        this.$.toast.show("Submission deleted successfully!");
+        this.shadowRoot
+          .querySelector("#toast")
+          .show("Submission deleted successfully!");
       }
       this.set("queryParams.deletetoast", undefined);
       this.notifyPath("queryParams.deletetoast");
@@ -549,7 +552,7 @@ class LrnappOpenStudio extends PolymerElement {
     tmp.assignments.forEach(function(element) {
       assignments.push(element);
     });
-    root.$.loading.hidden = true;
+    root.shadowRoot.querySelector("#loading").hidden = true;
     this.set("assignments", assignments);
     this.set("authors", authors);
   }

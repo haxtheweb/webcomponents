@@ -71,7 +71,7 @@ class LrnappBlockRecentComments extends PolymerElement {
     };
   }
   handleResponse(e) {
-    this.$.loading.hidden = true;
+    this.shadowRoot.querySelector("#loading").hidden = true;
   }
   _getViewLink(nid) {
     return this.basePath + "lrnapp-studio-submission/submissions/" + nid;

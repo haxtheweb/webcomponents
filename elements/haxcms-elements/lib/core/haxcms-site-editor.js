@@ -199,7 +199,8 @@ class HAXCMSSiteEditor extends LitElement {
   static get properties() {
     return {
       getUserDataPath: {
-        type: String
+        type: String,
+        attribute: "get-user-data-path"
       },
       /**
        * Singular error reporter / visual based on requests erroring
@@ -226,42 +227,46 @@ class HAXCMSSiteEditor extends LitElement {
        * end point for saving nodes
        */
       saveNodePath: {
-        type: String
+        type: String,
+        attribute: "save-node-path"
       },
 
       /**
        * end point for create new nodes
        */
       createNodePath: {
-        type: String
+        type: String,
+        attribute: "create-node-path"
       },
 
       /**
        * end point for delete nodes
        */
       deleteNodePath: {
-        type: String
+        type: String,
+        attribute: "delete-node-path"
       },
 
       /**
        * end point for saving manifest
        */
       saveManifestPath: {
-        type: String
+        type: String,
+        attribute: "save-manifest-path"
       },
-
       /**
        * end point for publishing
        */
       publishSitePath: {
-        type: String
+        type: String,
+        attribute: "publish-site-path"
       },
-
       /**
        * end point for revert
        */
       revertSitePath: {
-        type: String
+        type: String,
+        attribute: "revert-site-path"
       },
       appendTarget: {
         type: Object
@@ -274,7 +279,8 @@ class HAXCMSSiteEditor extends LitElement {
        * end point for sync
        */
       syncSitePath: {
-        type: String
+        type: String,
+        attribute: "sync-site-path"
       },
 
       /**
@@ -288,7 +294,8 @@ class HAXCMSSiteEditor extends LitElement {
        * end point for saving outline
        */
       saveOutlinePath: {
-        type: String
+        type: String,
+        attribute: "save-outline-path"
       },
 
       /**
@@ -320,13 +327,16 @@ class HAXCMSSiteEditor extends LitElement {
         type: Object
       },
       getNodeFieldsPath: {
-        type: String
+        type: String,
+        attribute: "get-node-fields-path"
       },
       getSiteFieldsPath: {
-        type: String
+        type: String,
+        attribute: "save-site-fields-path"
       },
       getFormToken: {
-        type: String
+        type: String,
+        attribute: "get-form-token"
       },
 
       /**

@@ -75,7 +75,7 @@ class PaperSearchBar extends mixinBehaviors(
   }
 
   focus() {
-    this.$.input.focus();
+    this.shadowRoot.querySelector("#input").focus();
   }
   connectedCallback() {
     super.connectedCallback();
@@ -101,7 +101,7 @@ class PaperSearchBar extends mixinBehaviors(
   }
   _clear() {
     this.query = "";
-    this.$.input.focus();
+    this.shadowRoot.querySelector("#input").focus();
     this.dispatchEvent(
       new CustomEvent("paper-search-clear", {
         bubbles: true,

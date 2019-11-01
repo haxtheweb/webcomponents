@@ -130,7 +130,7 @@ class JwtLogin extends PolymerElement {
   toggleLogin() {
     // null is default, if we don't have anything go get one
     if (this.jwt == null) {
-      this.$.loginrequest.generateRequest();
+      this.shadowRoot.querySelector("#loginrequest").generateRequest();
     } else {
       // we were told to logout, reset body
       this.set("body", {});
