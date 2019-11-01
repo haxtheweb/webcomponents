@@ -635,6 +635,12 @@ class SimplePicker extends LitElement {
       }
     }
   }
+  /**
+   * life cycle, element is afixed to the DOM
+   */
+  connectedCallback() {
+    super.connectedCallback();
+  }
 
   // static get observedAttributes() {
   //   return [];
