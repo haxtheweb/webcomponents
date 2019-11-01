@@ -72,7 +72,7 @@ ${cssResult}
 
           return `${litResult}
   // render function
-  static get template() {
+  render() {
     return html\`
 ${styleResult}
 ${html}\`;

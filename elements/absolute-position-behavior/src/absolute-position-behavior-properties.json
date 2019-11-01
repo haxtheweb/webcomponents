@@ -4,16 +4,14 @@
    * Otherwise setPosition and unsetPosition must be called manually.
    */
   "auto": {
-    "type": Boolean,
-    "value": false
+    "type": "Boolean"
   },
   /**
    * If true, no parts of the tooltip will ever be shown offscreen.
    */
   "fitToVisibleBounds": {
-    "type": Boolean,
-    "value": false,
-    "observer": "updatePosition"
+    "type": "Boolean",
+    "attribute": "fit-to-visible-bounds"
   },
   /**
    * The id of the element that the tooltip is anchored to. This element
@@ -21,39 +19,33 @@
    * then the tooltip will be centered to the parent node containing it.
    */
   "for": {
-    "type": String,
-    "observer": "updatePosition",
-    "reflectToAttribute": true
+    "type": "String",
+    "reflect": true
   },
   /**
    * The spacing between the top of the tooltip and the element it is
    * anchored to.
    */
   "offset": {
-    "type": Number,
-    "value": 0,
-    "observer": "updatePosition"
+    "type": "Number"
   },
   /**
    * Positions the tooltip to the top, right, bottom, left of its content.
    */
   "position": {
-    "type": String,
-    "value": "bottom",
-    "observer": "updatePosition",
-    "reflectToAttribute": true
+    "type": "String",
+    "reflect": true
   },
   /**
    * The actual target element
    */
   "target": {
-    "type": Object,
-    "observer": "updatePosition"
+    "type": "Object"
   },
   /**
    * The element's style
    */
   "__positions": {
-    "type": Object
+    "type": "Object"
   }
 }
