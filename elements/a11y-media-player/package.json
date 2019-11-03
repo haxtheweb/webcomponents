@@ -59,19 +59,19 @@
     "@polymer/paper-tooltip": "^3.0.1",
     "@polymer/polymer": "^3.2.0",
     "chartist": "^0.11.0",
-    "file-loader": "^3.0.1",
-    "screenfull": "^4.2.0"
+    "file-loader": "^4.0.0",
+    "screenfull": "^5.0.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/storybook-utilities": "^2.1.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",
-    "concurrently": "4.1.0",
+    "concurrently": "5.0.0",
     "gulp-babel": "8.0.0",
-    "gulp-sourcemaps": "2.6.4",
-    "lodash": "4.17.13",
-    "polymer-cli": "1.9.9",
+    "gulp-sourcemaps": "2.6.5",
+    "lodash": "4.17.15",
+    "polymer-cli": "1.9.11",
     "wct-browser-legacy": "1.0.2"
   },
   "private": false,
