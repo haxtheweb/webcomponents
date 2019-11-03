@@ -1,4 +1,4 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
@@ -12,15 +12,13 @@ import "@lrnwebcomponents/simple-colors/simple-colors.js";
  - hax-app-search - element controlling the experience of searching an app
  - hax-body - the text are ultimately we are trying to insert this item into
 */
-class HaxAppSearchInputs extends PolymerElement {
-  constructor() {
-    super();
-    import("@polymer/paper-input/paper-input.js");
-    import("@polymer/paper-item/paper-item.js");
-  }
-  static get template() {
-    return html`
-      <style>
+class HaxAppSearchInputs extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -34,22 +32,30 @@ class HaxAppSearchInputs extends PolymerElement {
           margin: 0;
           padding: 0;
         }
-      </style>
-      <div class="search-label">Search [[label]]</div>
+      `
+    ];
+  }
+  constructor() {
+    super();
+    this.label = "app";
+    import("@polymer/paper-input/paper-input.js");
+    import("@polymer/paper-item/paper-item.js");
+  }
+  render() {
+    return html`
+      <div class="search-label">Search ${this.label}</div>
       <eco-json-schema-object
         id="form"
-        schema="[[schema]]"
-        value="{{values}}"
+        .schema="${this.schema}"
+        @value-changed="${this.valuesChanged}"
       ></eco-json-schema-object>
     `;
   }
-
+  valuesChanged(e) {
+    this.values = e.detail.value;
+  }
   static get tag() {
     return "hax-app-search-inputs";
-  }
-
-  static get observers() {
-    return ["_valueChanged(values.*)"];
   }
 
   static get properties() {
@@ -58,8 +64,7 @@ class HaxAppSearchInputs extends PolymerElement {
        * Title.
        */
       label: {
-        type: String,
-        value: "app"
+        type: String
       },
       /**
        * Search input values mapped to schema inputs.

@@ -97,6 +97,9 @@ class HaxToolbarMenu extends LitElement {
         type: String,
         reflect: true
       },
+      icon: {
+        type: String
+      },
       /**
        * Should we reset the selection after it is made
        */
@@ -126,9 +129,6 @@ class HaxToolbarMenu extends LitElement {
         // fire an event that this is a core piece of the system
         this.dispatchEvent(
           new CustomEvent("selected-changed", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
             detail: this[propName]
           })
         );

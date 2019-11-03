@@ -1,4 +1,4 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-item/paper-item.js";
@@ -10,13 +10,13 @@ import "@polymer/neon-animation/neon-animation.js";
  * - panel - the flyout from left or right side that has elements that can be placed
  * - button - an item that expresses what interaction you will have with the content.
  */
-class HaxContextItemMenu extends PolymerElement {
-  constructor() {
-    super();
-  }
-  static get template() {
-    return html`
-      <style>
+class HaxContextItemMenu extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: inline-flex;
           height: 36px;
@@ -28,21 +28,55 @@ class HaxContextItemMenu extends PolymerElement {
         :host hax-toolbar-menu ::slotted(*) {
           height: 36px;
         }
-      </style>
+      `
+    ];
+  }
+  constructor() {
+    super();
+    this._blockEvent = false;
+    this.resetOnSelect = false;
+    this.selectedValue = 0;
+    this.direction = "top";
+    this.icon = "editor:text-fields";
+    this.label = "editor:text-fields";
+    this.eventName = "button";
+  }
+  render() {
+    return html`
       <hax-toolbar-menu
         id="menu"
-        icon="[[icon]]"
-        tooltip="[[label]]"
-        tooltip-direction="[[direction]]"
-        selected="{{selectedValue}}"
-        reset-on-select="[[resetOnSelect]]"
+        .icon="${this.icon}"
+        .tooltip="${this.label}"
+        .tooltip-direction="${this.direction}"
+        @selected-changed="${this.selectedValueChanged}"
+        .reset-on-select="${this.resetOnSelect}"
       >
         <slot></slot>
       </hax-toolbar-menu>
     `;
   }
+  selectedValueChanged(e) {
+    this.selectedValue = e.detail;
+  }
   static get tag() {
     return "hax-context-item-menu";
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "selectedValue") {
+        this.__staxList = this[propName];
+      }
+      if (propName == "selectedValue") {
+        // observer
+        this._selectedUpdated(this[propName], oldValue);
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("selected-value-changed", {
+            detail: this[propName]
+          })
+        );
+      }
+    });
   }
   static get properties() {
     return {
@@ -50,48 +84,42 @@ class HaxContextItemMenu extends PolymerElement {
        * Internal flag to allow blocking the event firing if machine selects tag.
        */
       _blockEvent: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       /**
        * Should we reset the selection after it is made
        */
       resetOnSelect: {
         type: Boolean,
-        value: false
+        attribute: "reset-on-select"
       },
       /**
        * Value.
        */
       selectedValue: {
         type: Number,
-        reflectToAttribute: true,
-        notify: true,
-        value: 0,
-        observer: "_selectedUpdated"
+        reflect: true,
+        attribute: "selected-value"
       },
       /**
        * Direction for the tooltip
        */
       direction: {
-        type: String,
-        value: "top"
+        type: String
       },
       /**
        * Icon for the button.
        */
       icon: {
         type: String,
-        value: "editor:text-fields",
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Label for the button.
        */
       label: {
         type: String,
-        value: "editor:text-fields",
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Name of the event to bubble up as being tapped.
@@ -100,8 +128,8 @@ class HaxContextItemMenu extends PolymerElement {
        */
       eventName: {
         type: String,
-        value: "button",
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "event-name"
       }
     };
   }
