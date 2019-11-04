@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { ESGlobalBridge } from "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 
 /**

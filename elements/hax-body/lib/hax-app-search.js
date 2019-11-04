@@ -23,10 +23,6 @@ class HaxAppSearch extends PolymerElement {
       "hax-store-property-updated",
       this._haxStorePropertyUpdated.bind(this)
     );
-    document.body.addEventListener(
-      "hax-app-search-values-changed",
-      this._searchValuesEvent.bind(this)
-    );
   }
   static get template() {
     return html`
@@ -106,8 +102,7 @@ class HaxAppSearch extends PolymerElement {
       <hax-app-search-inputs
         id="searchinput"
         label="[[label]]"
-        schema="{{searchSchema}}"
-        values="{{searchValues}}"
+        schema="[[searchSchema]]"
       ></hax-app-search-inputs>
       <hax-app-pagination
         id="pagerbottom"
@@ -163,14 +158,6 @@ class HaxAppSearch extends PolymerElement {
         type: Object
       },
       /**
-       * Search values for data binding between search input
-       * and actually rebuilding the search request query
-       */
-      searchValues: {
-        type: Object,
-        value: {}
-      },
-      /**
        * Custom headers for data binding from the App feed.
        */
       headers: {
@@ -213,8 +200,8 @@ class HaxAppSearch extends PolymerElement {
   /**
    * Search input was added.
    */
-  _searchValuesEvent(e) {
-    if (typeof e.detail !== typeof undefined) {
+  _searchValuesChanged(e) {
+    if (e.detail) {
       var requestParams = this.requestParams;
       for (var property in e.detail) {
         requestParams[property] = e.detail[property];
@@ -293,7 +280,15 @@ class HaxAppSearch extends PolymerElement {
       }
     }
   }
-
+  ready() {
+    super.ready();
+    this.shadowRoot
+      .querySelector("#searchinput")
+      .addEventListener(
+        "search-values-changed",
+        this._searchValuesChanged.bind(this)
+      );
+  }
   /**
    * Store updated, sync.
    */

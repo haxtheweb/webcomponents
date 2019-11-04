@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import {
   encapScript,
   findTagsInHTML,
@@ -87,6 +86,10 @@ class SiteRenderItem extends PolymerElement {
       this.shadowRoot.querySelector("#content").generateRequest();
     }
   }
+  // simple path from a url modifier
+  pathFromUrl(url) {
+    return url.substring(0, url.lastIndexOf("/") + 1);
+  }
   /**
    * React to content being loaded from a page.
    */
@@ -107,7 +110,9 @@ class SiteRenderItem extends PolymerElement {
         // if there are, dynamically import them
         if (varExists(this.manifest, "metadata.node.dynamicElementLoader")) {
           let tagsFound = findTagsInHTML(html);
-          const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+          const basePath = this.pathFromUrl(
+            decodeURIComponent(import.meta.url)
+          );
           for (var i in tagsFound) {
             const tagName = tagsFound[i];
             if (
