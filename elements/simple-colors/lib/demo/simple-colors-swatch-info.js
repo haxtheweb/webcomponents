@@ -20,6 +20,7 @@ import { SimpleColors } from "../../simple-colors.js";
 class simpleColorsSwatchInfo extends SimpleColors {
   static get styles() {
     return [
+      super.styles,
       css`
         :host {
           display: block;

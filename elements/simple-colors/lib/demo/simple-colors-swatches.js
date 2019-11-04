@@ -22,6 +22,7 @@ import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
 class simpleColorsSwatches extends SimpleColors {
   static get styles() {
     return [
+      super.styles,
       css`
         :host {
           display: block;
