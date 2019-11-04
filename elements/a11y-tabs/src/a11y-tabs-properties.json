@@ -3,7 +3,8 @@
    * the id of the active tab
    */
   "activeTab": {
-    "type": "String"
+    "type": "String",
+    "attribute": "active-tab"
   },
   /**
    * whether the tabbed interface is disabled
@@ -25,7 +26,8 @@
    * - use `-1` to always show text with icons
    */
   "iconBreakpoint": {
-    "type": "Number"
+    "type": "Number",
+    "attribute": "icon-breakpoint"
   },
   /**
    * unique identifier/anchor for the tabbed interface
@@ -40,7 +42,8 @@
    * - use `-1` for vertical-only
    */
   "layoutBreakpoint": {
-    "type": "Number"
+    "type": "Number",
+    "attribute": "layout-breakpoint"
   },
   /**
    * the size of the tabs,
