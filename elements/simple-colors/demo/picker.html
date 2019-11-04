@@ -40,7 +40,7 @@
           </div>
           <script>
             document.getElementById('accents').addEventListener('change',e => {
-              if(e.detail.value !== null) alert('accent-color="'+e.detail.value+'"');
+              if(e.detail.value !== null) console.log('accent-color="'+e.detail.value+'"');
             });
           </script>
         </template>
@@ -61,7 +61,7 @@
           </div>
           <script>
             document.getElementById('shades').addEventListener('change',e => {
-              if(e.detail.value !== null) alert('color: var(--'+e.detail.value+');');
+              if(e.detail.value !== null) console.log('color: var(--'+e.detail.value+');');
             });
           </script>
         </template>
