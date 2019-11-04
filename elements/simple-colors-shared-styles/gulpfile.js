@@ -17,6 +17,28 @@ gulp.task("merge", () => {
         /\/\* REQUIRED FOR TOOLING DO NOT TOUCH \*\//g,
         (classStatement, character, jsFile) => {
           // pull these off the package wcfactory files area
+          let html = fs
+            .readFileSync(path.join("./", packageJson.wcfactory.files.html))
+            .toString()
+            .trim();
+          html = decomment(html);
+          let haxString = "";
+          if (packageJson.wcfactory.useHAX) {
+            let HAXProps = fs.readFileSync(
+              path.join("./", packageJson.wcfactory.files.hax)
+            );
+            haxString = `
+  // haxProperty definition
+  static get haxProperties() {
+    return ${HAXProps};
+  }`;
+          }
+          let rawprops = "{}";
+          rawprops = fs.readFileSync(
+            path.join("./", packageJson.wcfactory.files.properties)
+          );
+          let props = `${rawprops}`;
+          props = props.replace(/\"type\": \"(\w+)\"/g, '"type": $1');
           let cssResult = "";
           if (
             packageJson.wcfactory.useSass &&
@@ -31,16 +53,37 @@ gulp.task("merge", () => {
               path.join("./", packageJson.wcfactory.files.css)
             );
           }
+          let styleRegex = /\/\*[\s]*LIST SHARED STYLES BELOW[\s]*((?:(?:\w+)[\s,]*)*)\*\//g,
+            styleArray =
+              cssResult.match(styleRegex) &&
+              cssResult.match(styleRegex).length > 0
+                ? cssResult
+                    .match(styleRegex)[0]
+                    .replace(styleRegex, "$1")
+                    .match(/(\w+)[\s,]*/g)
+                : [];
+          sharedStyles =
+            styleArray && styleArray.length > 0
+              ? styleArray.map(style =>
+                  style.replace(
+                    /(\w+)[\s,]*/g,
+                    `
+        $1`
+                  )
+                )
+              : ``;
           cssResult = stripCssComments(cssResult).trim();
           let litResult =
               packageJson.wcfactory.customElementClass !== "LitElement"
                 ? ``
                 : `
-  //styles function
+  //styles function 
   static get styles() {
-    return  [
-      css\`${cssResult}\`
-    ]
+    return  [${sharedStyles ? `${sharedStyles},` : ``}
+      css\`
+${cssResult}
+      \`
+    ];
   }`,
             styleResult =
               packageJson.wcfactory.customElementClass !== "LitElement"
@@ -49,16 +92,28 @@ ${cssResult}
         </style>`
                 : ``;
 
-          return `
-// styles
-const css = html\`
-[${cssResult}]\`;
-`;
+          return `${litResult}
+  // render function
+  render() {
+    return html\`
+${styleResult}
+${html}\`;
+  }
+${haxString}
+  // properties available to the custom element for data binding
+    static get properties() {
+    let props = ${props};
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
+  }`;
         }
       )
     )
     .pipe(gulp.dest("./"));
 });
+
 // run polymer analyze to generate documentation
 gulp.task("analyze", () => {
   var exec = require("child_process").exec;
@@ -73,7 +128,7 @@ gulp.task("analyze", () => {
 });
 // copy from the built locations pulling them together
 gulp.task("compile", () => {
-  // copy outputs so we have a "module" field for bundlers
+  // copy outputs
   gulp
     .src("./" + packageJson.wcfactory.elementName + ".js")
     .pipe(
@@ -82,6 +137,7 @@ gulp.task("compile", () => {
       })
     )
     .pipe(gulp.dest("./"));
+
   return gulp
     .src("./" + packageJson.wcfactory.elementName + ".js")
     .pipe(

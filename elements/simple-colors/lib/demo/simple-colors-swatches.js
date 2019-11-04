@@ -2,29 +2,34 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "../../simple-colors.js"; //import the shared styles
-import "./simple-colors-swatch-info.js";
-import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
 
 /**
  * `simple-colors-swatches`
  * `A tool to document of all the colors in simple-colors`
  *
- * @microcopy - language worth noting:
- *  -
- *
+### Styling
+
+`<simple-colors-swatches>` provides the following custom properties and mixins
+for styling. See demo of "all of the colors" (`demo/colors.html`) for color variable styling.
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--simple-colors-swatch-contrast` | Modal title bar text color. | unset
+`--simple-colors-swatch-color` | Modal title bar background color. | unset
+ * 
+ * @extends SimpleColors
  * @customElement
- * @polymer
  * @demo demo/colors.html demo
  * @see "../../simple-colors.js"
  * @see "../simple-colors-picker.js"
  */
 class simpleColorsSwatches extends SimpleColors {
-  //render function
-  static get template() {
-    return html`
-      <style include="simple-colors-shared-styles">
+  static get styles() {
+    return [
+      super.styles,
+      css`
         :host {
           display: block;
           margin: 15px 0;
@@ -65,31 +70,40 @@ class simpleColorsSwatches extends SimpleColors {
           opacity: 0.7;
           cursor: pointer;
         }
-      </style>
+      `
+    ];
+  }
+  // render function
+  render() {
+    return html`
       <div>
         <p>Click on the swatches above to learn more.</p>
         <div class="rows">
-          <template is="dom-repeat" items="[[_getOptions(colors)]]" as="color">
-            <div class="row">
-              <template is="dom-repeat" items="[[colors.grey]]">
-                <button
-                  id="[[color]]_[[index]]"
-                  controls="swatchinfo"
-                  style$="background-color: [[_getHex(color,index)]];"
-                  title$="[[color]]-[[_getShade(index)]]"
-                  on-click="_handleTap"
-                >
-                  <div>[[color]]-[[_getShade(index)]]</div>
-                </button>
-              </template>
-            </div>
-          </template>
+          ${Object.keys(this.colors).map(color => {
+            return html`
+              <div class="row">
+                ${this.colors.grey.map((shade, index) => {
+                  return html`
+                    <button
+                      id="${this._getId(color, index)}"
+                      controls="swatchinfo"
+                      style="background-color: ${this.colors[color][index]};"
+                      title="${this._getTitle(color, index)}"
+                      @click="${e => this._handleClick(color, index)}"
+                    >
+                      <div>${this._getTitle(color, index)}</div>
+                    </button>
+                  `;
+                })}
+              </div>
+            `;
+          })}
         </div>
-        <simple-modal-template id="modal" title="[[swatchName]]">
+        <simple-modal-template id="modal" title="${this.swatchName}">
           <p slot="content">
             <simple-colors-swatch-info
-              swatch-id$="[[swatchId]]"
-              swatch-name$="[[swatchName]]"
+              swatch-id="${this.swatchId}"
+              swatch-name="${this.swatchName}"
             >
             </simple-colors-swatch-info>
           </p>
@@ -108,26 +122,17 @@ class simpleColorsSwatches extends SimpleColors {
        * The id of the swatch (`color_index`)
        */
       swatchId: {
-        name: "swatchId",
-        type: "String",
-        value: null
+        attribute: "swatch-id",
+        type: String
       },
       /**
        * The swatch name (`color-shade`)
        */
       swatchName: {
-        name: "swatchName",
-        type: "String",
-        value: null
+        attribute: "swatch-name",
+        type: String
       }
     };
-  }
-
-  /**
-   * gets simple-colors behaviors
-   */
-  static get behaviors() {
-    return [SimpleColors];
   }
 
   /**
@@ -137,58 +142,63 @@ class simpleColorsSwatches extends SimpleColors {
     return "simple-colors-swatches";
   }
 
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "swatchId")
+        this.shadowRoot
+          .querySelector("#modal")
+          .openModal(this.shadowRoot.querySelector("#" + this.swatchId));
+    });
   }
 
   /**
-   * life cycle, element is readt
+   * life cycle, element is afixed to the DOM
    */
-  ready() {
-    super.ready();
+  constructor() {
+    super();
+    this.swatchId = "grey_0";
+    this.swatchName = "grey-1";
+    import("./simple-colors-swatch-info.js");
+    import("@lrnwebcomponents/simple-modal/lib/simple-modal-template.js");
+  }
+
+  /**
+   * gets color's title
+   * @param {string} color name of color
+   * @param {string} index color shade's index
+   * @return {string} color's title
+   */
+  _getTitle(color, index) {
+    return `${color}-${this._getShade(index)}`;
+  }
+
+  /**
+   * gets color's unique id
+   * @param {string} color name of color
+   * @param {string} index color shade's index
+   * @return {string} color's unique id
+   */
+  _getId(color, index) {
+    return `${color}_${index}`;
   }
 
   /**
    * gets the shade number for a hex code at a given index
-   *
-   * @param {number} index
-   * @returns {number} the shade number
+   * @param {string} index color shade's index
+   * @return {number} shade number
    */
   _getShade(index) {
     return parseInt(index) + 1;
   }
 
   /**
-   * gets the hex code for the shade at a given color and index
-   *
-   * @param {string} the color name, eg. `red`
-   * @param {number} index
-   * @returns {number} the hex code
+   * when a button is tapped, change sset swatchName and swatchId
+   * @param {string} color name of color
+   * @param {string} index color shade's index
    */
-  _getHex(color, index) {
-    return this.colors[color][index];
-  }
-
-  /**
-   * when a button is tapped, open the swatch info modal
-   */
-  _handleTap(e) {
-    this.swatchId = e.path[0].getAttribute("id");
-    this.swatchName = e.path[0].getAttribute("title");
-    this.shadowRoot.querySelector("#modal").openModal(e.path[0]);
-  }
-
-  /**
-   * gets the list of color names from the colors object
-   *
-   * @param {object} the colors object
-   * @returns {array} the array of color names
-   */
-  _getOptions(obj) {
-    return Object.keys(obj);
+  _handleClick(color, index) {
+    this.swatchId = this._getId(color, index);
+    this.swatchName = this._getTitle(color, index);
   }
   /**
    * life cycle, element is removed from the DOM

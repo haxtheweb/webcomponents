@@ -348,18 +348,7 @@ $colors:
   }
 }
 
-:host,
-:root,
 html {
   @include get-colors('default',$dark: false);
   @include get-colors('fixed',$dark: false);
-}
-:host([dark]), 
-:host [dark] {
-  @include get-colors('default',$dark: true);
-}
-
-@each $color in $colors {
-  $var: color-variable($color);
-  @include get-accent($color,$var);
 }

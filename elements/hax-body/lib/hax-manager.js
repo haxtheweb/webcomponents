@@ -1,7 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@polymer/paper-styles/paper-styles.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import "@polymer/iron-pages/iron-pages.js";
 /**
  * `hax-manager`
@@ -20,7 +20,7 @@ class HaxManager extends PolymerElement {
   }
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles">
+      <style include="simple-colors-shared-styles-polymer">
         @import url("https://fonts.googleapis.com/css?family=Noto+Serif");
         :host {
           display: block;

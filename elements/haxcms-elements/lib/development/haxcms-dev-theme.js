@@ -5,7 +5,7 @@
 import { html } from "@polymer/polymer/polymer-element.js";
 import { HAXCMSPolymerElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSPolymerElementTheme.js";
 import "@polymer/paper-button/paper-button.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import "@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";
 import "@polymer/iron-list/iron-list.js";
 /**

@@ -5,7 +5,7 @@
 import { html } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { A11yMediaBehaviors } from "./lib/a11y-media-behaviors.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
 import "@polymer/paper-toast/paper-toast.js";
@@ -119,7 +119,7 @@ import "./lib/a11y-media-youtube.js";
 --a11y-media-slider-knob-end-border-color: slider knob border color at end, default is --a11y-media-accent-color```
  *
  * @extends A11yMediaBehaviors
- * @extends SimpleColors
+ * @extends SimpleColorsPolymer
  * @polymer
  * @customElement
  * @demo demo/index.html video demo

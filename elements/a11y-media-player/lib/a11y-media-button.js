@@ -93,7 +93,7 @@ class A11yMediaButton extends A11yMediaBehaviors {
   //render function
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles">
+      <style include="simple-colors-shared-styles-polymer">
         :host {
           margin: 0;
           padding: 0;

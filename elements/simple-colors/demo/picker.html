@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>SimpleColors: simple-colors Demo</title>
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script type="module">
       import '../node_modules/@polymer/iron-demo-helpers/demo-snippet.js';
       import '../lib/simple-colors-picker.js';
     </script>
-    <style is="custom-style" include="demo-pages-shared-styles">
+    <style>
       .demo, .demo p {
         display: flex;
         justify-content: space-between;
@@ -38,7 +40,7 @@
           </div>
           <script>
             document.getElementById('accents').addEventListener('change',e => {
-              if(e.detail.value !== null) alert('accent-color="'+e.detail.value+'"');
+              if(e.detail.value !== null) console.log('accent-color="'+e.detail.value+'"');
             });
           </script>
         </template>
@@ -59,7 +61,7 @@
           </div>
           <script>
             document.getElementById('shades').addEventListener('change',e => {
-              if(e.detail.value !== null) alert('color: var(--'+e.detail.value+');');
+              if(e.detail.value !== null) console.log('color: var(--'+e.detail.value+');');
             });
           </script>
         </template>

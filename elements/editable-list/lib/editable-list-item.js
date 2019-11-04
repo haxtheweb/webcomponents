@@ -6,7 +6,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-input/paper-input.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 
 /**
  * `editable-list-item`
@@ -23,7 +23,7 @@ class EditableListItem extends PolymerElement {
   // render function
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles">
+      <style include="simple-colors-shared-styles-polymer">
         :host {
           display: block;
         }

@@ -5,27 +5,27 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>SimpleColors: simple-colors Overview</title>
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script type="module">
       import '../node_modules/@polymer/iron-demo-helpers/demo-snippet.js';
       import '../simple-colors.js';
       import '../lib/simple-colors-picker.js';
     </script>
-    <custom-style>
-      <style include="demo-pages-shared-styles simple-colors-shared-styles"></style>
-    </custom-style>
+    <style></style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h1>simple-colors</h1>
+      <p>
+        Simple-colors is a method for managing colors. It includes a 
+        custom element, and CSS variables declared in shared styles.
+      </p>
+      <p>
+        With simple colors, you can easily create a dark mode version of 
+        your interfaces, and/or swap accent colors on the fly.
+      </p>
       <demo-snippet>
-        <p>
-          Simple-colors is a method for managing colors. It includes a 
-          custom element, and CSS variables declared in shared styles.
-        </p>
-        <p>
-          With simple colors, you can easily create a dark mode version of 
-          your interfaces, and/or swap accent colors on the fly.
-        </p>
         <style>
           div {
             padding: 20px;

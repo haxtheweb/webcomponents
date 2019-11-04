@@ -4,7 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { LrndesignGalleryBehaviors } from "./lib/lrndesign-gallery-behaviors.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import "./lib/lrndesign-gallery-carousel.js";
 import "./lib/lrndesign-gallery-grid.js";
 
@@ -59,7 +59,7 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
   // render function
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles">
+      <style include="simple-colors-shared-styles-polymer">
         :host {
           display: block;
         }

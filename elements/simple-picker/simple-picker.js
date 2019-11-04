@@ -49,7 +49,6 @@ Custom property | Description | Default
 `--simple-picker-height` | Calculation based on option size, padding, and border. DO NOT EDIT. | --simple-picker-option-size - --simple-picker-sample-padding * 2 - --simple-picker-border-width * 2
 *
  * @customElement
- * @polymer
  * @demo demo/index.html
  */
 class SimplePicker extends LitElement {
@@ -456,7 +455,8 @@ class SimplePicker extends LitElement {
        * Optional. Sets aria-labelledby attribute
        */
       ariaLabelledby: {
-        type: String
+        type: String,
+        attribute: "aria-labelledby"
       },
 
       /**
@@ -660,6 +660,11 @@ class SimplePicker extends LitElement {
       if (propName === "value") this._valueChanged(this.value, oldValue);
       if (propName === "options") this._optionsChanged(this.value, oldValue);
     });
+    this.dispatchEvent(
+      new CustomEvent("changed", {
+        detail: this
+      })
+    );
   }
 
   /**
@@ -795,6 +800,11 @@ class SimplePicker extends LitElement {
    */
   _valueChanged(newValue, oldValue) {
     this._setSelectedOption(newValue, oldValue);
+    this.dispatchEvent(
+      new CustomEvent("value-changed", {
+        detail: this
+      })
+    );
   }
 
   /**
@@ -814,7 +824,7 @@ class SimplePicker extends LitElement {
    */
   _setSelectedOption(newVal, oldVal) {
     let sel =
-      !this.allowNull && this.options.length > 0
+      !this.allowNull && this.options.length > 0 && this.options[0].length > 0
         ? this.options[0][0].value
         : null;
     if (this.options) {

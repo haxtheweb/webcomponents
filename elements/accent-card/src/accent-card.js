@@ -2,19 +2,33 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 
 /**
  * `accent-card`
- * `A card with optional accent stylings.`
- *
- * @microcopy - language worth noting:
- *  -
+ * a card with optional accent stylings.
+ * 
+### Styling
+
+`<accent-card>` provides the following custom properties and mixins
+for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--accent-card-image-width` | Width of image when card is horizontal. | 30%
+`--accent-card-image-height` | Height of image when card is vertical. | 10%
+`--accent-card-padding` | Sets padding inside the accent card. | 20px
+`--accent-card-footer-border-color` | Card footer's border color.* | `--simple-colors-default-theme-grey-3`
+`--accent-card-box-shadow` | Card footer's box-shadow. | 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2)
+`--accent-card-color`	| Card's text color.* | `--simple-colors-default-theme-grey-9`
+`--accent-card-background-color` | Card's background color.* | varies based on attributes
+`--accent-card-border-color` | Card's border color.* | varies based on attributes
+`--accent-card-heading-color` | Card's heading color.* | varies based on attributes
+* Overrides colors set by accent-color and dark attributes.
  *
  * @extends SimpleColors
  * @customElement
- * @polymer
  * @demo demo/index.html demo
  * @demo demo/colors.html colors
  * @demo demo/orientation.html card orientation
@@ -31,9 +45,10 @@ class AccentCard extends SimpleColors {
     return "accent-card";
   }
   // render function
-  static get template() {
-    return html`
-      <style include="simple-colors-shared-styles">
+  static get styles() {
+    return [
+      super.styles,
+      css`
         :host {
           display: block;
           border-radius: 2px;
@@ -66,7 +81,6 @@ class AccentCard extends SimpleColors {
             --simple-colors-default-theme-grey-3,
             #ddd
           );
-          @apply --accent-card;
         }
         :host([dark]) {
           color: var(
@@ -129,7 +143,6 @@ class AccentCard extends SimpleColors {
           background-size: cover;
           background-position-x: var(--accent-card-image-x, center);
           background-position-y: var(--accent-card-image-y, center);
-          @apply --accent-card-image;
         }
         :host([image-align="left"]) .image {
           background-position-x: left;
@@ -149,18 +162,13 @@ class AccentCard extends SimpleColors {
         :host([image-valign="bottom"]) .image {
           background-position-y: bottom;
         }
-        :host([horizontal]) .image {
-          @apply --accent-card-image-horizontal;
-        }
         :host(:not([horizontal])) .image {
           height: 0;
           padding-top: var(--accent-card-image-height);
-          @apply --accent-card-image-vertical;
         }
         :host .body {
           flex-grow: 1;
           overflow: visible;
-          @apply --accent-card-body;
         }
         :host #heading {
           padding-top: var(--accent-card-padding, 20px);
@@ -168,7 +176,6 @@ class AccentCard extends SimpleColors {
           padding-right: var(--accent-card-padding, 20px);
           padding-bottom: 0;
           margin: 0;
-          @apply --accent-card-heading;
         }
         :host([accent-heading][accent-color]) #heading {
           color: var(--accent-card-heading-color);
@@ -178,12 +185,10 @@ class AccentCard extends SimpleColors {
           font-style: italic;
           padding-left: var(--accent-card-padding, 20px);
           padding-right: var(--accent-card-padding, 20px);
-          @apply --accent-card-subheading;
         }
         :host #content {
           font-size: 100%;
           padding: var(--accent-card-padding, 20px);
-          @apply --accent-card-content;
         }
         :host #content:not(:last-child) {
           border-bottom: 1px solid var(--accent-card-footer-border-color);
@@ -191,12 +196,20 @@ class AccentCard extends SimpleColors {
         :host #footer {
           padding-left: var(--accent-card-padding, 20px);
           padding-right: var(--accent-card-padding, 20px);
-          @apply --accent-card-footer;
         }
-      </style>
-      <section id="card" style$="[[__customStyle]]">
-        <div class="image-outer" hidden$="[[!_hasProp(imageSrc)]]">
-          <div class="image" style$="[[__backgroundStyle]]"></div>
+      `
+    ];
+  }
+  render() {
+    return html`
+      <section id="card">
+        <div class="image-outer" ?hidden="${!this.imageSrc}">
+          <div
+            class="image"
+            .style="${this.imageSrc
+              ? `background-image: url(${this.imageSrc});`
+              : `display: none;`}"
+          ></div>
         </div>
         <div class="body">
           <h1 id="heading"><slot name="heading"></slot></h1>
@@ -361,6 +374,17 @@ class AccentCard extends SimpleColors {
       }
     };
   }
+  constructor() {
+    super();
+    this.accentBackground = false;
+    this.accentHeading = false;
+    this.flat = false;
+    this.horizontal = false;
+    this.imageAlign = null;
+    this.imageSrc = null;
+    this.imageValign = null;
+    this.noBorder = false;
+  }
 
   // properties available to the custom element for data binding
   static get properties() {
@@ -369,40 +393,34 @@ class AccentCard extends SimpleColors {
        * Apply accent color to card background
        */
       accentBackground: {
-        name: "accentBackground",
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        attribute: "accent-background",
+        reflect: true
       },
 
       /**
        * Apply accent color to heading
        */
       accentHeading: {
-        name: "accentHeading",
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        attribute: "accent-heading",
+        reflect: true
       },
 
       /**
        * Display the card as flat (no box shadow);
        */
       flat: {
-        name: "flat",
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true
       },
 
       /**
        * Display the card as a horizontal layout? Default is vertical.
        */
       horizontal: {
-        name: "horizontal",
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true
       },
 
       /**
@@ -413,19 +431,17 @@ class AccentCard extends SimpleColors {
        * - A null will allow temporary support to the deprecated CSS variables
        */
       imageAlign: {
-        name: "imageAlign",
         type: String,
-        value: null,
-        reflectToAttribute: true
+        attribute: "image-align",
+        reflect: true
       },
 
       /**
        * "Optional": The source for an image on the card
        */
       imageSrc: {
-        name: "imageSrc",
         type: String,
-        value: null
+        attribute: "image-src"
       },
 
       /**
@@ -436,66 +452,24 @@ class AccentCard extends SimpleColors {
        * - A null will allow temporary support to the deprecated CSS variables
        */
       imageValign: {
-        name: "imageValign",
         type: String,
-        value: null,
-        reflectToAttribute: true
+        attribute: "image-valign",
+        reflect: true
       },
 
       /**
        * Removes the think accent border
        */
       noBorder: {
-        name: "noBorder",
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
-      },
-
-      /**
-       * The style for the image if there is an image
-       */
-      __backgroundStyle: {
-        name: "__backgroundStyle",
-        type: String,
-        computed: "_getBackgroundStyle(imageSrc)"
+        attribute: "no-border",
+        reflect: true
       }
     };
     if (super.properties) {
       props = Object.assign(props, super.properties);
     }
     return props;
-  }
-
-  /**
-   * sets target for a11y keys
-   */
-  ready() {
-    super.ready();
-  }
-
-  /**
-   * Determine if the component has a property.
-   *
-   * @param {object} the property to test
-   * @returns {boolean} `prop !== undefined && prop !== null`
-   */
-  _hasProp(prop) {
-    return prop !== undefined && prop !== null;
-  }
-
-  /**
-   * Determine if there is an image and style accordingly.
-   *
-   * @param {string} the source url of the image
-   * @returns {string} the background style that adds the image to the card
-   */
-  _getBackgroundStyle(imageSrc) {
-    if (this._hasProp(imageSrc)) {
-      return "background-image: url(" + imageSrc + ");";
-    } else {
-      return "display: none;";
-    }
   }
 }
 window.customElements.define(AccentCard.tag, AccentCard);

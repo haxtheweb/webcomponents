@@ -8,7 +8,7 @@ import { stylesFromTemplate } from "@polymer/polymer/lib/utils/style-gather.js";
 // @todo load the elements this theme needs dynamically
 // we reference this but pull nothing in to get the dependency tree loaded in full
 import "@lrnwebcomponents/haxcms-elements/lib/ui-components/templates/basic-template.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 /**
  * `haxcms-custom-theme`
  * `This is a custom theme. Don't edit this file, edit yoursite/theme/theme.css and yoursite/theme/theme.html`
@@ -78,7 +78,7 @@ class HAXCMSUserTheme extends HAXCMSPolymerElementTheme {
   // render function
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles"></style>
+      <style include="simple-colors-shared-styles-polymer"></style>
       <div id="contentcontainer">
         <div id="slot">
           <slot></slot>

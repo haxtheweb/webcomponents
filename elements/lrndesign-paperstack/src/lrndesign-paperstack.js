@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html } from "@polymer/polymer/polymer-element.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import { A11yBehaviors } from "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
 /**
  * `lrndesign-paperstack`
@@ -11,7 +11,7 @@ import { A11yBehaviors } from "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.j
  *
  * @demo demo/index.html
  */
-class LrndesignPaperstack extends A11yBehaviors(SimpleColors) {
+class LrndesignPaperstack extends A11yBehaviors(SimpleColorsPolymer) {
   constructor() {
     super();
     import("@polymer/iron-icon/iron-icon.js");
@@ -19,7 +19,7 @@ class LrndesignPaperstack extends A11yBehaviors(SimpleColors) {
   }
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles">
+      <style include="simple-colors-shared-styles-polymer">
         :host {
           display: block;
           font-size: 14px;

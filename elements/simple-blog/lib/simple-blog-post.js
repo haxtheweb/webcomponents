@@ -17,7 +17,7 @@ class SimpleBlogPost extends PolymerElement {
   // render function
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles">
+      <style include="simple-colors-shared-styles-polymer">
         :host {
           display: block;
           min-height: 80vh;

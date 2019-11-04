@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 
 export { LrndesignTimeline };
@@ -18,7 +18,7 @@ export { LrndesignTimeline };
  * @polymer
  * @demo demo/index.html
  */
-class LrndesignTimeline extends SimpleColors {
+class LrndesignTimeline extends SimpleColorsPolymer {
   // render function
   static get template() {
     return html`
@@ -258,7 +258,7 @@ class LrndesignTimeline extends SimpleColors {
           }
         }
       </style>
-      <style include="simple-colors-shared-styles"></style>
+      <style include="simple-colors-shared-styles-polymer"></style>
       <article>
         <h1 id="title">[[title]]</h1>
         <slot></slot>

@@ -65,7 +65,7 @@ class A11yMediaPlayButton extends A11yMediaBehaviors {
   //render function
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles">
+      <style include="simple-colors-shared-styles-polymer">
         :host {
           display: block;
           opacity: 1;

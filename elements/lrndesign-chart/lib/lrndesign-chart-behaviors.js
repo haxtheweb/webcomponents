@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html } from "@polymer/polymer/polymer-element.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/chartist-render/chartist-render.js";
@@ -19,11 +19,11 @@ import "@lrnwebcomponents/chartist-render/chartist-render.js";
  * @demo demo/line.html line charts
  *
  */
-class LrndesignChartBehaviors extends SchemaBehaviors(SimpleColors) {
+class LrndesignChartBehaviors extends SchemaBehaviors(SimpleColorsPolymer) {
   // render function
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles">
+      <style include="simple-colors-shared-styles-polymer">
         :host {
           display: block;
         }

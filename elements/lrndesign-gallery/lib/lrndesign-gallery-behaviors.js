@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import { ResponsiveUtility } from "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "@polymer/iron-image/iron-image.js";
 import "@polymer/iron-icons/iron-icons.js";
@@ -19,11 +19,11 @@ export { LrndesignGalleryBehaviors };
  * @microcopy - language worth noting:
  *  -
  *
- * @extends SimpleColors
+ * @extends SimpleColorsPolymer
  * @customElement
  * @polymer
  */
-class LrndesignGalleryBehaviors extends SimpleColors {
+class LrndesignGalleryBehaviors extends SimpleColorsPolymer {
   /**
    * Store the tag name to make it easier to obtain directly.
    */

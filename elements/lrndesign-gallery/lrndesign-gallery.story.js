@@ -90,7 +90,7 @@ window.StorybookUtilities.instance.addPattern(LrndesignGalleryGridPattern);
  * add the live demo
  */
 let props = Object.assign(
-  window.StorybookUtilities.instance.getSimpleColors("light-blue"),
+  window.StorybookUtilities.instance.getSimpleColorsPolymer("light-blue"),
   LrndesignGalleryBehaviors.properties,
   LrndesignGalleryCarousel.properties,
   LrndesignGalleryGrid.properties

@@ -67,7 +67,8 @@ class A11yTab extends LitElement {
        * optional flag icon the tab, eg. `av:fiber-new`, `icons:warning`, or `icons:error`
        */
       flagIcon: {
-        type: String
+        type: String,
+        attribute: "flag-icon"
       },
       /**
        * whether the tab is hidden

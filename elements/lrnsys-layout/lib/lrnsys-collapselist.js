@@ -4,7 +4,7 @@ import "@lrnwebcomponents/paper-avatar/paper-avatar.js";
 import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/paper-button/paper-button.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-collapse/iron-collapse.js";
 import "./lrnsys-collapselist-item.js";
@@ -14,7 +14,7 @@ import "./lrnsys-collapselist-item.js";
 class LrnsysCollapselist extends PolymerElement {
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles">
+      <style include="simple-colors-shared-styles-polymer">
         :host {
           display: block;
           background-color: var(--simple-colors-background1);
