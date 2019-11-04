@@ -80,6 +80,7 @@ class HaxTextContext extends LitElement {
       <hax-toolbar .selected="${this.selection}" hide-transform id="toolbar">
         <hax-context-item-menu
           slot="primary"
+          selected-value="${this.selectedValue}"
           @selected-value-changed="${this.selectedValueChanged}"
           id="formatsize"
           icon="text-format"
@@ -230,6 +231,9 @@ class HaxTextContext extends LitElement {
       </hax-toolbar>
     `;
   }
+  selectedValueChanged(e) {
+    this.selectedValue = e.detail;
+  }
   static get tag() {
     return "hax-text-context";
   }
@@ -243,7 +247,8 @@ class HaxTextContext extends LitElement {
        * as far as text manipulation operations.
        */
       polyfillSafe: {
-        type: Boolean
+        type: Boolean,
+        attribute: "polyfill-safe"
       },
       /**
        * Selected value to match format of the tag currently.
@@ -281,9 +286,6 @@ class HaxTextContext extends LitElement {
         // fire an event that this is a core piece of the system
         this.dispatchEvent(
           new CustomEvent("selected-value-changed", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
             detail: this[propName]
           })
         );

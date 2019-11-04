@@ -1,7 +1,6 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { setPassiveTouchGestures } from "@polymer/polymer/lib/utils/settings.js";
 import { updateStyles } from "@polymer/polymer/lib/mixins/element-mixin.js";
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import { JsonOutlineSchema } from "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
 import {
   encapScript,
@@ -449,7 +448,9 @@ class HAXCMSSiteBuilder extends LitElement {
         // if there are, dynamically import them
         if (varExists(this.manifest, "metadata.node.dynamicElementLoader")) {
           let tagsFound = findTagsInHTML(html);
-          const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+          const basePath = this.pathFromUrl(
+            decodeURIComponent(import.meta.url)
+          );
           for (var i in tagsFound) {
             const tagName = tagsFound[i];
             if (
@@ -604,6 +605,10 @@ class HAXCMSSiteBuilder extends LitElement {
       );
     }
   }
+  // simple path from a url modifier
+  pathFromUrl(url) {
+    return url.substring(0, url.lastIndexOf("/") + 1);
+  }
   /**
    * notice theme changes and ensure slot is rebuilt.
    */
@@ -619,7 +624,7 @@ class HAXCMSSiteBuilder extends LitElement {
       } else {
         // import the reference to the item dynamically, if we can
         try {
-          import(pathFromUrl(decodeURIComponent(import.meta.url)) +
+          import(this.pathFromUrl(decodeURIComponent(import.meta.url)) +
             "../../../../" +
             newValue.path).then(e => {
             // add it into ourselves so it unpacks and we kick this off!

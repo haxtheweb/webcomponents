@@ -1,24 +1,11 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-class HaxToolbar extends PolymerElement {
-  constructor() {
-    super();
-    import("@polymer/paper-slider/paper-slider.js");
-    import("@polymer/paper-tooltip/paper-tooltip.js");
-    import("@polymer/paper-item/paper-item.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/iron-icons/editor-icons.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
-    this.addEventListener(
-      "hax-context-item-selected",
-      this._haxContextOperation.bind(this)
-    );
-  }
-  static get template() {
-    return html`
-      <style>
+import { LitElement, html, css } from "lit-element/lit-element.js";
+class HaxToolbar extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: flex;
           justify-content: flex-start;
@@ -86,9 +73,37 @@ class HaxToolbar extends PolymerElement {
         .convert-button {
           border-top: 1px solid var(--hax-color-bg-accent);
         }
-      </style>
+      `
+    ];
+  }
+  constructor() {
+    super();
+    this.hideTransform = false;
+    this.selected = false;
+    this.haxProperties = {};
+    this.hideMore = false;
+    this.size = 100;
+    this.justifyIcon = "editor:format-align-left";
+    this.inline = false;
+    this.justifyValue = "";
+    import("@polymer/paper-slider/paper-slider.js");
+    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@polymer/paper-item/paper-item.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/iron-icons/editor-icons.js");
+    import("@lrnwebcomponents/hax-body/lib/hax-toolbar-item.js");
+    import("@lrnwebcomponents/hax-body/lib/hax-toolbar-menu.js");
+    import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
+    import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
+    this.addEventListener(
+      "hax-context-item-selected",
+      this._haxContextOperation.bind(this)
+    );
+  }
+  render() {
+    return html`
       <hax-context-item
-        hidden$="[[inline]]"
+        .hidden="${this.inline}"
         mini
         light
         icon="close"
@@ -99,10 +114,10 @@ class HaxToolbar extends PolymerElement {
       ></hax-context-item>
       <div class="wrapper">
         <hax-context-item-menu
-          hidden$="[[!haxProperties.canPosition]]"
-          selected-value="{{justifyValue}}"
+          .hidden="${!this.haxProperties.canPosition}"
+          @selected-value-changed="${this.justifyValueChanged}"
           id="justify"
-          icon="[[justifyIcon]]"
+          icon="${this.justifyIcon}"
           label="Alignment"
         >
           <hax-context-item
@@ -119,16 +134,17 @@ class HaxToolbar extends PolymerElement {
           >
         </hax-context-item-menu>
         <paper-slider
-          hidden$="[[!haxProperties.canScale]]"
+          .hidden="${!this.haxProperties.canScale}"
           id="slider"
           pin=""
           min="25"
           step="25"
           max="100"
-          value="{{size}}"
+          value="${this.size}"
+          @value-changed="${this.sizeChanged}"
         ></paper-slider>
         <paper-tooltip
-          hidden$="[[inline]]"
+          .hidden="${this.inline}"
           for="slider"
           position="top"
           offset="10"
@@ -137,19 +153,19 @@ class HaxToolbar extends PolymerElement {
         </paper-tooltip>
         <slot name="primary"></slot>
         <hax-context-item
-          hidden$="[[inline]]"
+          .hidden="${this.inline}"
           icon="delete"
           icon-class="red-text text-darken-1"
           label="Remove"
           event-name="grid-plate-delete"
         ></hax-context-item>
         <hax-context-item-menu
-          hidden$="[[hideMore]]"
+          .hidden="${this.hideMode}"
           icon="more-vert"
           label="More"
           id="moremenu"
           event-name="grid-plate-op"
-          reset-on-select=""
+          reset-on-select
         >
           <paper-item value="" hidden></paper-item>
           <slot name="more"></slot>
@@ -161,7 +177,7 @@ class HaxToolbar extends PolymerElement {
             >Duplicate</hax-context-item
           >
           <hax-context-item
-            hidden$="[[hideTransform]]"
+            .hidden="${this.hideTransform}"
             menu
             icon="image:transform"
             class="convert-button"
@@ -173,7 +189,12 @@ class HaxToolbar extends PolymerElement {
       </div>
     `;
   }
-
+  sizeChanged(e) {
+    this.size = e.detail.value;
+  }
+  justifyValueChanged(e) {
+    this.justifyValue = e.detail;
+  }
   static get tag() {
     return "hax-toolbar";
   }
@@ -185,63 +206,80 @@ class HaxToolbar extends PolymerElement {
        */
       hideTransform: {
         type: Boolean,
-        value: false
+        attribute: "hide-transform"
       },
       /**
        * See what's selected
        */
       selected: {
         type: Boolean,
-        value: false,
-        reflectToAttritue: true
+        reflect: true
       },
       /**
        * Selected value to match ce direction currently.
        */
       haxProperties: {
         type: Object,
-        value: {},
-        observer: "_haxPropertiesChanged"
+        attribute: "hax-properties"
       },
       /**
        * Hide the more menu.
        */
       hideMore: {
         type: Boolean,
-        value: false
+        attribute: "hide-more"
       },
       /**
        * size of the slider if it exists.
        */
       size: {
-        type: Number,
-        value: 100,
-        notify: true
+        type: Number
       },
       /**
        * Justify icon to reflect state.
        */
       justifyIcon: {
         type: String,
-        value: "editor:format-align-left"
+        attribute: "justify-icon"
       },
       /**
        * This is an inline context menu
        */
       inline: {
         type: Boolean,
-        value: false,
-        reflectToAttritue: true
+        reflect: true
       },
       /**
        * Selected value to match ce direction currently.
        */
       justifyValue: {
         type: String,
-        value: "",
-        notify: true
+        attribute: "justify-value"
       }
     };
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "haxProperties") {
+        this._haxPropertiesChanged(this[propName], oldValue);
+      }
+      if (propName == "size") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("size-changed", {
+            detail: this[propName]
+          })
+        );
+      }
+      if (propName == "justifyValue") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("justify-value-changed", {
+            detail: this[propName]
+          })
+        );
+      }
+    });
   }
   /**
    * If hax properties changes, let's see what the initial state

@@ -1,4 +1,4 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js";
 /**
  * `hax-ce-context`
@@ -8,15 +8,13 @@ import "@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js";
  * @microcopy - the mental model for this element
  * - context menu - this is a menu of custom-element based buttons and events for use in a larger solution.
  */
-class HaxCeContext extends PolymerElement {
-  constructor() {
-    super();
-    import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-toolbar.js");
-  }
-  static get template() {
-    return html`
-      <style>
+class HaxCeContext extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host *[hidden] {
           display: none;
         }
@@ -42,22 +40,37 @@ class HaxCeContext extends PolymerElement {
         :host(.hax-context-pin-bottom) hax-toolbar:hover {
           opacity: 1;
         }
-      </style>
-      <hax-toolbar hax-properties="[[haxProperties]]" size="{{ceSize}}">
+      `
+    ];
+  }
+  constructor() {
+    super();
+    this.ceSize = 100;
+    this.haxProperties = {};
+    import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
+    import("@lrnwebcomponents/hax-body/lib/hax-toolbar.js");
+  }
+  render() {
+    return html`
+      <hax-toolbar
+        id="toolbar"
+        size="${this.ceSize}"
+        @size-changed="${this.ceSizeChanged}"
+      >
         <slot slot="primary"></slot>
         <hax-context-item
           slot="primary"
           icon="icons:settings"
           label="Settings"
           event-name="hax-manager-configure"
-          hidden$="[[!__hasSettingsForm]]"
+          .hidden="${!this.__hasSettingsForm}"
         ></hax-context-item>
         <hax-context-item
           slot="primary"
           icon="icons:view-quilt"
-          label="[[__parentName]]"
+          label="${this.__parentName}"
           event-name="hax-manager-configure-container"
-          hidden$="[[!__hasParentSettingsForm]]"
+          .hidden="${!this.__hasParentSettingsForm}"
         ></hax-context-item>
       </hax-toolbar>
     `;
@@ -72,27 +85,39 @@ class HaxCeContext extends PolymerElement {
        */
       ceSize: {
         type: Number,
-        value: 100,
-        observer: "_ceSizeChanged"
+        attribute: "ce-size"
       },
       /**
        * Selected value to match ce direction currently.
        */
       haxProperties: {
         type: Object,
-        value: {},
-        observer: "_haxPropertiesChanged"
+        attribute: "hax-properties"
       }
     };
   }
-
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "haxProperties") {
+        this.shadowRoot.querySelector("#toolbar").haxProperties = this[
+          propName
+        ];
+        this._haxPropertiesChanged(this[propName], oldValue);
+      }
+      if (propName == "ceSize") {
+        this._ceSizeChanged(this[propName], oldValue);
+      }
+    });
+  }
+  ceSizeChanged(e) {
+    this.ceSize = e.detail;
+  }
   /**
    * Set haxProperties.
    */
   setHaxProperties(props) {
     // be aggressive w/ reset
-    this.set("haxProperties", {});
-    this.set("haxProperties", props);
+    this.haxProperties = props;
   }
 
   /**

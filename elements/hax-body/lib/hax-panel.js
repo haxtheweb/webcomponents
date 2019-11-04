@@ -409,7 +409,6 @@ class HaxPanel extends PolymerElement {
       this.set(e.detail.property, e.detail.value);
     }
   }
-
   /**
    * Process event for simple content inserts.
    */
@@ -475,25 +474,6 @@ class HaxPanel extends PolymerElement {
         detail.content = "";
         detail.properties = {
           style: "width:50%;"
-        };
-        this.dispatchEvent(
-          new CustomEvent("hax-insert-content", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: detail
-          })
-        );
-        break;
-      case "image":
-        detail.tag = "img";
-        detail.content = "";
-        detail.properties = {
-          src:
-            pathFromUrl(decodeURIComponent(import.meta.url)) +
-            window.HaxStore.instance.defaults.image.src,
-          alt: window.HaxStore.instance.defaults.image.alt,
-          style: "width:100%;"
         };
         this.dispatchEvent(
           new CustomEvent("hax-insert-content", {

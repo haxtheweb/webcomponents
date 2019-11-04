@@ -5,7 +5,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { Router } from "@vaadin/router";
 import { microTask } from "@polymer/polymer/lib/utils/async.js";
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import {
   encapScript,
@@ -373,6 +372,10 @@ class HAXCMSLegacyPlayer extends PolymerElement {
       this._routerLocationChanged.bind(this)
     );
   }
+  // simple path from a url modifier
+  pathFromUrl(url) {
+    return url.substring(0, url.lastIndexOf("/") + 1);
+  }
   /**
    * React to content being loaded from a page.
    */
@@ -402,7 +405,9 @@ class HAXCMSLegacyPlayer extends PolymerElement {
         // if there are, dynamically import them
         if (varExists(this.manifest, "metadata.node.dynamicElementLoader")) {
           let tagsFound = findTagsInHTML(html);
-          const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+          const basePath = this.pathFromUrl(
+            decodeURIComponent(import.meta.url)
+          );
           for (var i in tagsFound) {
             const tagName = tagsFound[i];
             if (

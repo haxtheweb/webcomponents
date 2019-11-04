@@ -448,6 +448,7 @@ class HaxBody extends PolymerElement {
             if (
               window.HaxStore.instance.isTextElement(this.activeContainerNode)
             ) {
+              console.log(e);
               if (e.detail.keyboardEvent) {
                 e.detail.keyboardEvent.preventDefault();
                 e.detail.keyboardEvent.stopPropagation();

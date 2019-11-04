@@ -5,7 +5,6 @@
 import { html } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { A11yMediaBehaviors } from "./lib/a11y-media-behaviors.js";
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import "@lrnwebcomponents/anchor-behaviors/anchor-behaviors.js";
@@ -137,7 +136,7 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/iron-icons/av-icons.js");
     import("@lrnwebcomponents/a11y-media-player/lib/a11y-media-play-button.js");
-    const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+    const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
     const location = `${basePath}lib/screenfull/dist/screenfull.js`;
     window.ESGlobalBridge.requestAvailability();
     window.ESGlobalBridge.instance.load("screenfullLib", location);
@@ -147,6 +146,10 @@ class A11yMediaPlayer extends A11yMediaBehaviors {
     );
     this.__playerAttached = true;
     window.A11yMediaStateManager.requestAvailability();
+  }
+  // simple path from a url modifier
+  pathFromUrl(url) {
+    return url.substring(0, url.lastIndexOf("/") + 1);
   }
   /**
    * Store the tag name to make it easier to obtain directly.

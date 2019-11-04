@@ -2,7 +2,6 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 
 /**
@@ -87,6 +86,10 @@ class HAXCMSEditorBuilder extends HTMLElement {
       }, 5);
     }
   }
+  // simple path from a url modifier
+  pathFromUrl(url) {
+    return url.substring(0, url.lastIndexOf("/") + 1);
+  }
   applyContext(context = null) {
     if (!this.__appliedContext) {
       this.__appliedContext = true;
@@ -110,7 +113,7 @@ class HAXCMSEditorBuilder extends HTMLElement {
       // dynamic import if this isn't published tho we'll double check
       // that it's valid later
       if (context !== "published") {
-        const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+        const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
         // import and set the tag based on the context
         store.cmsSiteEditorBackend.tag = `haxcms-backend-${context}`;
         // delay import slightly to ensure global scope is there

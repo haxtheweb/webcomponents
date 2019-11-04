@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { RichTextEditorPicker } from "./rich-text-editor-picker.js";
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 /**
  * `rich-text-editor-emoji-picker`
@@ -71,12 +70,16 @@ class RichTextEditorEmojiPicker extends RichTextEditorPicker {
   static get tag() {
     return "rich-text-editor-emoji-picker";
   }
+  // simple path from a url modifier
+  pathFromUrl(url) {
+    return url.substring(0, url.lastIndexOf("/") + 1);
+  }
   /**
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
     super.connectedCallback();
-    const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+    const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
     const src = this.optionsSrc;
     const location = `${basePath}${src}`;
     window.addEventListener(
