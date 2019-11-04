@@ -2,7 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 /**
@@ -10,47 +10,54 @@ import { autorun, toJS } from "mobx/lib/mobx.module.js";
  * `Title of the active page in the site`
  *
  * @customElement
- * @polymer
  * @demo demo/index.html
  */
-class SiteActiveFields extends PolymerElement {
+class SiteActiveFields extends LitElement {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
   static get tag() {
     return "site-active-fields";
   }
-  // render function
-  static get template() {
-    return html`
-      <style>
-        :host {
-          display: block;
-        }
-      </style>
-    `;
-  }
   /**
-   * Props
+   * LitElement properties decorator
    */
   static get properties() {
     return {
       fields: {
-        type: Object,
-        notify: true
+        type: Object
       }
-      // @todo support item being passed in
     };
   }
+  /**
+   * LitElement life cycle callback
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "fields") {
+        this.dispatchEvent(
+          new CustomEvent("fields-changed", {
+            detail: this[propName]
+          })
+        );
+      }
+    });
+  }
+  /**
+   * VanillaJS life cycle callback
+   */
   connectedCallback() {
     super.connectedCallback();
     this.__disposer = autorun(() => {
       this.fields = toJS(store.activeItemFields);
     });
   }
+  /**
+   * VanillaJS life cycle callback
+   */
   disconnectedCallback() {
-    super.disconnectedCallback();
     this.__disposer();
+    super.disconnectedCallback();
   }
 }
 window.customElements.define(SiteActiveFields.tag, SiteActiveFields);

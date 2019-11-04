@@ -484,24 +484,6 @@ class HaxPanel extends PolymerElement {
           })
         );
         break;
-      case "iframe":
-        detail.tag = "iframe";
-        detail.content = "";
-        detail.properties = {
-          src: window.HaxStore.instance.defaults.iframe.src,
-          height: "400px",
-          width: "100%",
-          style: "width:100%;"
-        };
-        this.dispatchEvent(
-          new CustomEvent("hax-insert-content", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: detail
-          })
-        );
-        break;
       case "blockquote":
         detail.tag = "blockquote";
         detail.content = "";

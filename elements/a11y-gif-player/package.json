@@ -37,7 +37,7 @@
     "@lrnwebcomponents/schema-behaviors": "^2.1.4",
     "@polymer/iron-image": "^3.0.0",
     "@polymer/paper-tooltip": "^3.0.1",
-    "lit-element":"2.0.1"
+    "lit-element":"^2.2.1"
   },
   "devDependencies": {
     "web-animations-js":"2.3.1",
