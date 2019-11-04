@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import "@lrnwebcomponents/jwt-login/jwt-login.js";
 /**
@@ -14,7 +14,7 @@ import "@lrnwebcomponents/jwt-login/jwt-login.js";
  * @microcopy - the mental model for this element
  * - jwt - a json web token which is an encrypted security token to talk
  */
-class HAXCMSBackendDemo extends PolymerElement {
+class HAXCMSBackendDemo extends LitElement {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -22,16 +22,20 @@ class HAXCMSBackendDemo extends PolymerElement {
     return "haxcms-backend-demo";
   }
   // render function
-  static get template() {
+  render() {
     return html`
       <jwt-login
         auto
         id="jwt"
-        url="[[jwtLoginLocation]]"
-        url-logout="[[jwtLogoutLocation]]"
-        jwt="{{jwt}}"
+        url="${this.jwtLoginLocation}"
+        url-logout="${this.jwtLogoutLocation}"
+        jwt="${this.jwt}"
+        @jwt-changed="${this.jwtChanged}"
       ></jwt-login>
     `;
+  }
+  jwtChanged(e) {
+    this.jwt = e.detail.value;
   }
   static get properties() {
     return {
@@ -39,30 +43,19 @@ class HAXCMSBackendDemo extends PolymerElement {
        * Location of what endpoint to hit for
        */
       jwtLoginLocation: {
-        type: String,
-        value: function() {
-          if (window.appSettings) {
-            return window.appSettings.login;
-          }
-        }
+        type: String
       },
       /**
        * Location of what endpoint to hit for logging out
        */
       jwtLogoutLocation: {
-        type: String,
-        value: function() {
-          if (window.appSettings) {
-            return window.appSettings.logout;
-          }
-        }
+        type: String
       },
       /**
        * JSON Web token, it'll come from a global call if it's available
        */
       jwt: {
-        type: String,
-        observer: "_jwtChanged"
+        type: String
       }
     };
   }
@@ -97,10 +90,23 @@ class HAXCMSBackendDemo extends PolymerElement {
     store.jwt = this.jwt;
   }
   /**
-   * Attached life cycle
+   * LitElement life cycle - properties changed
    */
-  connectedCallback() {
-    super.connectedCallback();
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "jwt") {
+        this._jwtChanged(this[propName], oldValue);
+      }
+    });
+  }
+  /**
+   * LitElement life cycle - element ready
+   */
+  firstUpdated(changedProperties) {
+    if (window.appSettings) {
+      this.jwtLoginLocation = window.appSettings.login;
+      this.jwtLogoutLocation = window.appSettings.logout;
+    }
     try {
       import("@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-editor.js").then(
         e => {
