@@ -348,7 +348,7 @@ class HAXCMSSiteBuilder extends LitElement {
     super.connectedCallback();
     import("@polymer/paper-progress/paper-progress.js");
     import("@lrnwebcomponents/simple-toast/simple-toast.js");
-    import("@lrnwebcomponents/simple-colors/simple-colors.js");
+    import("@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js");
     this.dispatchEvent(
       new CustomEvent("haxcms-ready", {
         bubbles: true,

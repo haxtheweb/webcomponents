@@ -1,11 +1,11 @@
 import { html } from "@polymer/polymer/polymer-element.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 /**
  * `person-testimonial`
  * `Leaving a testimonial from a person to say your company rocks!`
  * @demo demo/index.html
  */
-class PersonTestimonial extends SimpleColors {
+class PersonTestimonial extends SimpleColorsPolymer {
   constructor() {
     super();
     import("@polymer/paper-card/paper-card.js");
@@ -15,7 +15,7 @@ class PersonTestimonial extends SimpleColors {
   }
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles">
+      <style include="simple-colors-shared-styles-polymer">
         :host {
           display: block;
           --person-testimonial-font-family: sans-serif;

@@ -1,5 +1,5 @@
 import { html } from "@polymer/polymer/polymer-element.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/iron-icons/device-icons.js";
@@ -18,10 +18,10 @@ A button on the hax-gizmo-browser app display
 @microcopy - the mental model for this element
  - 
 */
-class HaxItemButtonInner extends SimpleColors {
+class HaxItemButtonInner extends SimpleColorsPolymer {
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles">
+      <style include="simple-colors-shared-styles-polymer">
         :host {
           display: flex;
           flex-direction: column;

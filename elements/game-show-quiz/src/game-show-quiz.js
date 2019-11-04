@@ -9,7 +9,7 @@ import { wipeSlot } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import "@vaadin/vaadin-split-layout/vaadin-split-layout.js";
 import "@lrnwebcomponents/multiple-choice/multiple-choice.js";
 import "./lib/game-show-quiz-modal.js";

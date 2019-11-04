@@ -1,7 +1,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-button/paper-button.js";
@@ -18,7 +18,7 @@ class LrnsysDialog extends PolymerElement {
   static get template() {
     return html`
       <custom-style>
-        <style include="simple-colors-shared-styles">
+        <style include="simple-colors-shared-styles-polymer">
           :host {
             display: inline-block;
             --lrnsys-dialog-color: var(--simple-colors-foreground1, #000);

@@ -1,18 +1,18 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 /**
  * `lrndesign-avatar`
  * `Visualize a user account eitehr with an image, a label, or as abstract art.`
  * @demo demo/index.html
  */
-class LrndesignAvatar extends SimpleColors {
+class LrndesignAvatar extends SimpleColorsPolymer {
   constructor() {
     super();
     import("@lrnwebcomponents/paper-avatar/paper-avatar.js");
   }
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles">
+      <style include="simple-colors-shared-styles-polymer">
         :host {
           display: block;
         }

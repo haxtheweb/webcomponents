@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 
 /**
@@ -16,7 +16,7 @@ import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
  * @customElement
  * @polymer
  */
-class A11yMediaBehaviors extends SimpleColors {
+class A11yMediaBehaviors extends SimpleColorsPolymer {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -27,7 +27,7 @@ class A11yMediaBehaviors extends SimpleColors {
 
   // properties available to the custom element for data binding
   static get properties() {
-    return Object.assign(SimpleColors.properties, {
+    return Object.assign(SimpleColorsPolymer.properties, {
       /**
        * Is this an audio file?
        */

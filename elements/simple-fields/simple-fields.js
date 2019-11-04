@@ -8,7 +8,7 @@ import { varExists, varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";
 import "@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 /**
  * `simple-fields`
  * `Uses eco-json-form and HAX wiring to display a series of fields`
@@ -53,7 +53,7 @@ class SimpleFields extends MutableData(PolymerElement) {
           padding: 0;
         }
       </style>
-      <style include="simple-colors-shared-styles"></style>
+      <style include="simple-colors-shared-styles-polymer"></style>
       <eco-json-schema-object
         id="schemaobject"
         autofocus$="[[autofocus]]"

@@ -1,5 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 /**
  * `simple-concept-network-node`
  * A small but effective little data visualizer for topics surrounding
@@ -18,7 +18,7 @@ class SimpleConceptNetworkNode extends PolymerElement {
   }
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles">
+      <style include="simple-colors-shared-styles-polymer">
         :host {
           display: inline-flex;
           --simple-concept-network-color: var(

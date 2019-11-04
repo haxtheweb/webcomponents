@@ -1,5 +1,5 @@
 import { html } from "@polymer/polymer/polymer-element.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { A11yBehaviors } from "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
 /**
@@ -14,7 +14,7 @@ import { A11yBehaviors } from "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.j
  * --self-check-answer-color //overrides the answer background color
  * --self-check-answer-text //overrides the answer text color
  */
-class SelfCheck extends SchemaBehaviors(A11yBehaviors(SimpleColors)) {
+class SelfCheck extends SchemaBehaviors(A11yBehaviors(SimpleColorsPolymer)) {
   constructor() {
     super();
     import("@polymer/paper-card/paper-card.js");
@@ -25,7 +25,7 @@ class SelfCheck extends SchemaBehaviors(A11yBehaviors(SimpleColors)) {
   }
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles">
+      <style include="simple-colors-shared-styles-polymer">
         :host {
           display: block;
           margin: 15px 0;

@@ -8,7 +8,7 @@ import {
   encapScript,
   wipeSlot
 } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import "./lib/hax-text-context.js";
 import "./lib/hax-ce-context.js";
 import "./lib/hax-plate-context.js";
@@ -35,7 +35,7 @@ class HaxBody extends PolymerElement {
   }
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles hax-shared-styles">
+      <style include="simple-colors-shared-styles-polymer hax-shared-styles">
         :host {
           display: block;
           min-height: 32px;

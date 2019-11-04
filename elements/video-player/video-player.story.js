@@ -18,7 +18,7 @@ window.StorybookUtilities.requestAvailability();
 //combine all of the inherited properties into one object
 let getVideoKnobs = () => {
     let allKnobs = Object.assign(
-      window.StorybookUtilities.instance.getSimpleColors(),
+      window.StorybookUtilities.instance.getSimpleColorsPolymer(),
       A11yMediaPlayer.properties,
       A11yMediaBehaviors.properties
     );

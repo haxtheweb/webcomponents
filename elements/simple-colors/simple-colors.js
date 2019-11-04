@@ -3,10 +3,12 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { SimpleColorsSharedStyles } from "@lrnwebcomponents/simple-colors-shared-styles/simple-colors-shared-styles.js";
+import "@lrnwebcomponents/simple-colors-shared-styles/simple-colors-shared-styles.js";
 /**
  * `simple-colors`
  * a shared set of styles for `@lrnwebcomponents`
+### Styling
+See demo of "all of the colors" (`demo/colors.html`) for styling.
  *
  * @customElement
  * @demo demo/index.html demo

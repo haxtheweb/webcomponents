@@ -44,7 +44,7 @@ let events = [
     }
   ],
   props = Object.assign(
-    window.StorybookUtilities.instance.getSimpleColors("light-blue"),
+    window.StorybookUtilities.instance.getSimpleColorsPolymer("light-blue"),
     LrndesignTimeline.properties
   );
 props.title.value = `My Timeline`;

@@ -6,7 +6,7 @@ import "@polymer/paper-progress/paper-progress.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-ripple/paper-ripple.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@polymer/iron-iconset-svg/iron-iconset-svg.js";
 import "./lib/paper-audio-icons.js";
@@ -46,11 +46,11 @@ Custom property                             | Description                       
 */
 class PaperAudioPlayer extends mixinBehaviors(
   [IronA11yKeysBehavior],
-  SchemaBehaviors(SimpleColors)
+  SchemaBehaviors(SimpleColorsPolymer)
 ) {
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles">
+      <style include="simple-colors-shared-styles-polymer">
         :host {
           display: block;
           box-sizing: border-box;

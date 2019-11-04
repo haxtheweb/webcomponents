@@ -13,7 +13,7 @@ import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@lrnwebcomponents/simple-datetime/simple-datetime.js";
 import "@lrnwebcomponents/simple-fields/simple-fields.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import "@vaadin/vaadin-upload/vaadin-upload.js";
 /**
  * `haxcms-site-listing`
@@ -26,7 +26,7 @@ class HAXCMSSiteListing extends PolymerElement {
    */
   constructor() {
     super();
-    this.SimpleColors = new SimpleColors();
+    this.SimpleColors = new SimpleColorsPolymer();
     setPassiveTouchGestures(true);
     window.HAXCMS = {};
     import("@lrnwebcomponents/haxcms-elements/lib/core/site-list/haxcms-site-listing-deps.js");
@@ -41,7 +41,7 @@ class HAXCMSSiteListing extends PolymerElement {
 
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles">
+      <style include="simple-colors-shared-styles-polymer">
         paper-icon-button {
           --paper-icon-button-ink-color: var(--haxcms-system-action-color);
         }

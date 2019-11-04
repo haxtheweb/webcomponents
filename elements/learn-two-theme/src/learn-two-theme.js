@@ -17,7 +17,7 @@ class LearnTwoTheme extends HAXCMSPolymerElementTheme {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
   constructor() {
     super();
-    import("@lrnwebcomponents/simple-colors/simple-colors.js");
+    import("@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js");
     import("@polymer/app-layout/app-drawer/app-drawer.js");
     import("@polymer/app-layout/app-drawer-layout/app-drawer-layout.js");
     import("@polymer/paper-icon-button/paper-icon-button.js");

@@ -4,16 +4,22 @@
  */
 import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "../../simple-colors.js"; //import the shared styles
-import "./simple-colors-swatch-info.js";
-import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
 
 /**
  * `simple-colors-swatches`
  * `A tool to document of all the colors in simple-colors`
  *
- * @microcopy - language worth noting:
- *  -
- *
+### Styling
+
+`<simple-colors-swatches>` provides the following custom properties and mixins
+for styling. See demo of "all of the colors" (`demo/colors.html`) for color variable styling.
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--simple-colors-swatch-contrast` | Modal title bar text color. | unset
+`--simple-colors-swatch-color` | Modal title bar background color. | unset
+ * 
+ * @extends SimpleColors
  * @customElement
  * @demo demo/colors.html demo
  * @see "../../simple-colors.js"
@@ -152,6 +158,8 @@ class simpleColorsSwatches extends SimpleColors {
     super();
     this.swatchId = "grey_0";
     this.swatchName = "grey-1";
+    import("./simple-colors-swatch-info.js");
+    import("@lrnwebcomponents/simple-modal/lib/simple-modal-template.js");
   }
 
   /**

@@ -10,6 +10,10 @@ import "@lrnwebcomponents/simple-picker/simple-picker.js";
  * `simple-colors-picker`
  * a select element for changing `simple-colors` attributes in demos
  *
+### Styling
+See demo of "all of the colors" (`demo/colors.html`) for styling.
+* 
+ * @extends SimpleColors
  * @customElement
  * @demo demo/picker.html demo
  * @see "../simple-colors.js"
@@ -71,6 +75,15 @@ class SimpleColorsPicker extends SimpleColors {
         this.options = this._getOptions(this.colors, this.shades, this.dark);
       if (propName === "dark")
         this.options = this._getOptions(this.colors, this.shades, this.dark);
+      if (propName === "value")
+        this.dispatchEvent(
+          new CustomEvent("value-changed", {
+            detail: this
+          })
+        );
+      this.dispatchEvent(
+        new CustomEvent("change", { bubbles: true, detail: this })
+      );
     });
   }
 

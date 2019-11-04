@@ -7,10 +7,25 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 
 /**
  * `accent-card`
- * `A card with optional accent stylings.`
- *
- * @microcopy - language worth noting:
- *  -
+ * a card with optional accent stylings.
+ * 
+### Styling
+
+`<accent-card>` provides the following custom properties and mixins
+for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--accent-card-image-width` | Width of image when card is horizontal. | 30%
+`--accent-card-image-height` | Height of image when card is vertical. | 10%
+`--accent-card-padding` | Sets padding inside the accent card. | 20px
+`--accent-card-footer-border-color` | Card footer's border color.* | `--simple-colors-default-theme-grey-3`
+`--accent-card-box-shadow` | Card footer's box-shadow. | 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2)
+`--accent-card-color`	| Card's text color.* | `--simple-colors-default-theme-grey-9`
+`--accent-card-background-color` | Card's background color.* | varies based on attributes
+`--accent-card-border-color` | Card's border color.* | varies based on attributes
+`--accent-card-heading-color` | Card's heading color.* | varies based on attributes
+* Overrides colors set by accent-color and dark attributes.
  *
  * @extends SimpleColors
  * @customElement
@@ -21,7 +36,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
  * @demo demo/images.html image aligmnent
  * @demo demo/variables.html css variables
  */
-class AccentCard extends SimpleColors(LitElement) {
+class AccentCard extends SimpleColors {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -32,7 +47,7 @@ class AccentCard extends SimpleColors(LitElement) {
   // render function
   static get styles() {
     return [
-      SimpleColorsSharedStyles,
+      super.styles,
       css`
         :host {
           display: block;
@@ -192,7 +207,7 @@ class AccentCard extends SimpleColors(LitElement) {
           <div
             class="image"
             .style="${this.imageSrc
-              ? `background-image: url(${imageSrc});`
+              ? `background-image: url(${this.imageSrc});`
               : `display: none;`}"
           ></div>
         </div>

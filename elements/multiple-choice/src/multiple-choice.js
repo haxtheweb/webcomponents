@@ -4,13 +4,13 @@ import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@polymer/paper-toast/paper-toast.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 /**
  * `multiple-choice`
  * `Ask the user a question from a set of possible answers.`
  * @demo demo/index.html
  */
-class MultipleChoice extends SchemaBehaviors(SimpleColors) {
+class MultipleChoice extends SchemaBehaviors(SimpleColorsPolymer) {
   static get tag() {
     return "multiple-choice";
   }
@@ -22,7 +22,7 @@ class MultipleChoice extends SchemaBehaviors(SimpleColors) {
   }
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles">
+      <style include="simple-colors-shared-styles-polymer">
         :host {
           display: block;
           padding: 16px 16px 54px 16px;

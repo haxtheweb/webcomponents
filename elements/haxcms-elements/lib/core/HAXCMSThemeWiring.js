@@ -32,7 +32,7 @@ const HAXCMSTheme = function(SuperClass) {
      * edit-mode and correctly hide the editor when in normal content presentation.
      * static get template() {
      *  return html`
-     *  <style include="simple-colors-shared-styles">
+     *  <style include="simple-colors-shared-styles-polymer">
      *   :host {
      *     display: block;
      *     background-color: var(--haxcms-color, white);

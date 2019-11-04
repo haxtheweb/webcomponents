@@ -45,7 +45,7 @@ import "@lrnwebcomponents/person-testimonial/person-testimonial.js";
 import "@lrnwebcomponents/place-holder/place-holder.js";
 import "@lrnwebcomponents/q-r/q-r.js";
 import "@lrnwebcomponents/self-check/self-check.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import "@lrnwebcomponents/simple-concept-network/simple-concept-network.js";
 import "@lrnwebcomponents/stop-note/stop-note.js";
 import "@lrnwebcomponents/tab-list/tab-list.js";

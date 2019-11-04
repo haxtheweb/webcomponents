@@ -306,7 +306,7 @@ class LearnTwoTheme extends HAXCMSPolymerElementTheme {
           }
         }
       </style>
-      <style include="simple-colors-shared-styles"></style>
+      <style include="simple-colors-shared-styles-polymer"></style>
       <app-drawer-layout responsive-width="900px">
         <paper-icon-button
           id="menubutton"
@@ -376,7 +376,7 @@ class LearnTwoTheme extends HAXCMSPolymerElementTheme {
   }
   constructor() {
     super();
-    import("@lrnwebcomponents/simple-colors/simple-colors.js");
+    import("@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js");
     import("@polymer/app-layout/app-drawer/app-drawer.js");
     import("@polymer/app-layout/app-drawer-layout/app-drawer-layout.js");
     import("@polymer/paper-icon-button/paper-icon-button.js");

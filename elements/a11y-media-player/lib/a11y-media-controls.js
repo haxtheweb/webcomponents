@@ -147,7 +147,7 @@ class A11yMediaControls extends A11yMediaBehaviors {
   //render function
   static get template() {
     return html`
-      <style is="custom-style" include="simple-colors-shared-styles">
+      <style is="custom-style" include="simple-colors-shared-styles-polymer">
         :host {
           display: block;
           width: 100%;

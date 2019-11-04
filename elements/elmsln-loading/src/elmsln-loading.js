@@ -5,7 +5,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 /**
  * `elmsln-loading`
  * A spinner to tell the user that something is loading.
@@ -19,7 +19,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
  * @polymerLegacy
  * @demo demo/index.html
  */
-class ElmslnLoading extends SimpleColors {
+class ElmslnLoading extends SimpleColorsPolymer {
   static get tag() {
     return "elmsln-loading";
   }
@@ -44,7 +44,7 @@ class ElmslnLoading extends SimpleColors {
   }
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles">
+      <style include="simple-colors-shared-styles-polymer">
         @-moz-keyframes spin {
           100% {
             -moz-transform: rotate(60deg);

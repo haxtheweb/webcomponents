@@ -660,6 +660,11 @@ class SimplePicker extends LitElement {
       if (propName === "value") this._valueChanged(this.value, oldValue);
       if (propName === "options") this._optionsChanged(this.value, oldValue);
     });
+    this.dispatchEvent(
+      new CustomEvent("changed", {
+        detail: this
+      })
+    );
   }
 
   /**
@@ -795,6 +800,11 @@ class SimplePicker extends LitElement {
    */
   _valueChanged(newValue, oldValue) {
     this._setSelectedOption(newValue, oldValue);
+    this.dispatchEvent(
+      new CustomEvent("value-changed", {
+        detail: this
+      })
+    );
   }
 
   /**

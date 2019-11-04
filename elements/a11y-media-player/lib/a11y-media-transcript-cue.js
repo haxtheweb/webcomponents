@@ -101,7 +101,7 @@ class A11yMediaTranscriptCue extends A11yMediaBehaviors {
   //render function
   static get template() {
     return html`
-      <style is="custom-style" include="simple-colors-shared-styles">
+      <style is="custom-style" include="simple-colors-shared-styles-polymer">
         :host {
           cursor: default;
           display: table-row;

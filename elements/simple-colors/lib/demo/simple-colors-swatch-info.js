@@ -9,9 +9,10 @@ import { SimpleColors } from "../../simple-colors.js";
  * `simple-colors-swatch-info`
  * `A tool to document of all the colors in simple-colors`
  *
- * @microcopy - language worth noting:
- *  -
- *
+### Styling
+See demo of "all of the colors" (`demo/colors.html`) for styling.
+ * 
+ * @extends SimpleColors
  * @customElement
  * @demo demo/colors.html demo
  * @see "../../simple-colors.js"

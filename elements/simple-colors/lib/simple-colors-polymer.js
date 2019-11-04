@@ -2,34 +2,70 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/simple-colors-shared-styles/simple-colors-shared-styles.js";
+import "./simple-colors-shared-styles-polymer.js";
+
 /**
- * `simple-colors`
- * a shared set of styles for `@lrnwebcomponents`
-### Styling
-See demo of "all of the colors" (`demo/colors.html`) for styling.
+ * `simple-colors-polymer`
+ * shared set of styles for Polymer @lrnwebcomponents
  *
  * @customElement
- * @demo demo/index.html demo
- * @demo demo/how.html getting started
- * @demo demo/colors.html all of the colors
- * @demo demo/picker.html simple-colors-picker
- * @demo demo/extending.html extending simple-colors
+ * @polymer
  */
-class SimpleColors extends LitElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
-  constructor() {
-    super();
-    this.accentColor = "grey";
-    this.dark = false;
-    this.__utils = window.SimpleColorsSharedStyles.requestAvailability();
-    this.colors = window.SimpleColorsSharedStyles.colors;
+class SimpleColorsPolymer extends PolymerElement {
+  // render function
+  static get template() {
+    return html`
+      <style include="simple-colors-shared-styles-polymer"></style>
+      <slot></slot>
+    `;
+  }
+
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      /**
+       * a selected accent-color: grey, red, pink, purple, etc.
+       */
+      accentColor: {
+        name: "accentColor",
+        type: String,
+        value: "grey",
+        reflectToAttribute: true,
+        notify: true
+      },
+      /**
+       * make the default theme dark?
+       */
+      dark: {
+        name: "dark",
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true,
+        notify: true
+      },
+      /**
+       * make the default theme dark?
+       */
+      colors: {
+        name: "colors",
+        type: Object,
+        value: window.SimpleColorsSharedStyles.colors,
+        notify: true
+      }
+    };
   }
 
   static get tag() {
     return "simple-colors";
+  }
+
+  constructor() {
+    super();
+    this.__utils = window.SimpleColorsSharedStyles.requestAvailability();
+    this.colors = window.SimpleColorsSharedStyles.colors;
   }
 
   /**
@@ -128,5 +164,5 @@ class SimpleColors extends LitElement {
     );
   }
 }
-window.customElements.define(SimpleColors.tag, SimpleColors);
-export { SimpleColors };
+window.customElements.define(SimpleColorsPolymer.tag, SimpleColorsPolymer);
+export { SimpleColorsPolymer };
