@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/accent-card",
   "wcfactory": {
     "className": "AccentCard",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "accent-card",
     "generator-wcfactory-version": "0.3.2",
     "useHAX": true,
@@ -41,7 +41,7 @@
   "dependencies": {
     "@lrnwebcomponents/schema-behaviors": "^2.1.4",
     "@lrnwebcomponents/simple-colors": "^2.1.10",
-    "@polymer/polymer": "^3.2.0"
+    "lit-element":"2.0.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
