@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LitElement, html, css } from "lit-element/lit-element.js";
+import { html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "../simple-colors.js";
 import "@lrnwebcomponents/simple-picker/simple-picker.js";
 
@@ -18,6 +18,7 @@ import "@lrnwebcomponents/simple-picker/simple-picker.js";
 class SimpleColorsPicker extends SimpleColors {
   static get styles() {
     return [
+      super.styles,
       css`
         :host {
           display: inline-block;
@@ -33,8 +34,7 @@ class SimpleColorsPicker extends SimpleColors {
     return html`
       <simple-picker
         id="picker"
-        aria-labelledby="${this.ariaLabelledby}"
-        label="${this.label}"
+        ?block-label="${this.blockLabel}"
         ?disabled="${this.disabled}"
         ?expanded="${this.expanded}"
         ?hide-option-labels="${this.shades}"
@@ -42,7 +42,8 @@ class SimpleColorsPicker extends SimpleColors {
         @collapse="${this._handleCollapse}"
         @expand="${this._handleExpand}"
         @option-focus="${this._handleOptionFocus}"
-        .block-label="${this.blockLabel ? this.blockLabel : false}"
+        .aria-labelledby="${this.ariaLabelledby}"
+        .label="${this.label}"
         .options="${this.options}"
         .value="${this.value}"
       >
@@ -104,7 +105,7 @@ class SimpleColorsPicker extends SimpleColors {
        */
       expanded: {
         type: Boolean,
-        reflectToAttribute: true
+        reflect: true
       },
 
       /**
@@ -127,14 +128,14 @@ class SimpleColorsPicker extends SimpleColors {
         */
       options: {
         type: Array,
-        reflectToAttribute: false //,observer: false
+        reflect: false //,observer: false
       },
       /**
        * Show all shades instead of just main accent-colors
        */
       shades: {
         type: Boolean,
-        reflectToAttribute: true
+        reflect: true
       },
 
       /**
@@ -142,7 +143,7 @@ class SimpleColorsPicker extends SimpleColors {
        */
       value: {
         type: String,
-        reflectToAttribute: true //,notify: true
+        reflect: true //,notify: true
       },
       /**
        *
