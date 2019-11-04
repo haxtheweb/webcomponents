@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit-element/lit-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 
 /**
@@ -21,7 +21,7 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
  * @demo demo/images.html image aligmnent
  * @demo demo/variables.html css variables
  */
-class AccentCard extends SimpleColors {
+class AccentCard extends SimpleColors(LitElement) {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -32,7 +32,7 @@ class AccentCard extends SimpleColors {
   // render function
   static get styles() {
     return [
-      super.styles,
+      SimpleColorsSharedStyles,
       css`
         :host {
           display: block;
@@ -192,7 +192,7 @@ class AccentCard extends SimpleColors {
           <div
             class="image"
             .style="${this.imageSrc
-              ? `background-image: url(${this.imageSrc});`
+              ? `background-image: url(${imageSrc});`
               : `display: none;`}"
           ></div>
         </div>
