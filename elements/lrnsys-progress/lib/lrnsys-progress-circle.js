@@ -4,7 +4,6 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@lrnwebcomponents/circle-progress/circle-progress.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
@@ -435,7 +434,7 @@ class LrnsysProgressCircle extends PolymerElement {
       completeSound: {
         type: String,
         value:
-          pathFromUrl(decodeURIComponent(import.meta.url)) +
+          this.pathFromUrl(decodeURIComponent(import.meta.url)) +
           "assets/complete.mp3",
         reflectToAttribute: true
       },
@@ -445,7 +444,7 @@ class LrnsysProgressCircle extends PolymerElement {
       finishedSound: {
         type: String,
         value:
-          pathFromUrl(decodeURIComponent(import.meta.url)) +
+          this.pathFromUrl(decodeURIComponent(import.meta.url)) +
           "assets/finished.mp3",
         reflectToAttribute: true
       },
@@ -462,7 +461,10 @@ class LrnsysProgressCircle extends PolymerElement {
       }
     };
   }
-
+  // simple path from a url modifier
+  pathFromUrl(url) {
+    return url.substring(0, url.lastIndexOf("/") + 1);
+  }
   /**
    * Ready state
    */

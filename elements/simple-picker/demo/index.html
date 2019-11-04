@@ -24,14 +24,14 @@
       <h3>Basic simple-picker demo</h3>
       <demo-snippet>
         <template>
-          <simple-picker allow-null id="picker" label="Pick a Font-Family" position="right"></simple-picker>
+          <simple-picker allow-null id="picker" label="Pick a Font-Family"></simple-picker>
           <script>
             document.getElementById('picker').options = [ 
-              [ {"alt":"-- none --","value":null} ], 
-              [ {"alt":"sans-serif","style":"font-family: sans-serif","value":"sans-serif" } ],
-              [ {"alt":"serif","style":"font-family: serif","value":"serif" } ],
-              [ {"alt":"monospace","selected": true,"style":"font-family: monospace","value":"monospace" } ],
-              [ {"alt":"cursive","style":"font-family: cursive","value":"cursive" } ] 
+              [ {alt:"-- none --",value:null} ], 
+              [ {alt:"sans-serif",style:"font-family: sans-serif",value:"sans-serif" } ],
+              [ {alt:"serif",style:"font-family: serif",value:"serif" } ],
+              [ {alt:"monospace","selected": true,style:"font-family: monospace",value:"monospace" } ],
+              [ {alt:"cursive",style:"font-family: cursive",value:"cursive" } ] 
             ];
           </script>
         </template>
@@ -39,19 +39,19 @@
       <h3>simple-picker as a Color-Picker</h3>
       <demo-snippet>
         <template>
+          <simple-picker id="colorpicker" hide-option-labels label="Pick a Color"></simple-picker>
           <script>
             document.getElementById('colorpicker').options=[  
               [ 
-                { "style": "background-color: #FF00FF", "alt": "Purple", "value": "Purple (#FF00FF)" },
-                { "style": "background-color: #2222FF", "alt": "Blue", "value": "Blue (#2222FF)" },
-                { "style": "background-color: #00FF00", "alt": "Green", "value": "Green (#00FF00)" },
-                { "style": "background-color: #FFFF00", "alt": "Yellow", "value": "Yellow (#FFFF00)" },
-                { "style": "background-color: #FF8800", "alt": "Orange", "value": "Orange (#FF8800)" },
-                { "style": "background-color: #FF0000", "alt": "Red", "value": "Red (#FF0000)" } 
+                { style: "background-color: #FF00FF", alt: "Purple", value: "Purple (#FF00FF)" },
+                { style: "background-color: #2222FF", alt: "Blue", value: "Blue (#2222FF)" },
+                { style: "background-color: #00FF00", alt: "Green", value: "Green (#00FF00)" },
+                { style: "background-color: #FFFF00", alt: "Yellow", value: "Yellow (#FFFF00)" },
+                { style: "background-color: #FF8800", alt: "Orange", value: "Orange (#FF8800)" },
+                { style: "background-color: #FF0000", alt: "Red", value: "Red (#FF0000)" } 
               ] 
             ];
           </script>
-          <simple-picker id="colorpicker" hide-option-labels label="Pick a Color" position="center"></simple-picker>
         </template>
       </demo-snippet>
       <h3>simple-picker as an Icon-Picker</h3>
@@ -59,20 +59,20 @@
         <template>
           <div id="icondemo">
             <label id="iconpicker-label">Pick an Icon: </label> 
-            <simple-picker id="iconpicker" aria-labelledby="iconpicker-label" hide-option-labels value="search"></simple-picker>
+            <simple-picker id="iconpicker" align-right aria-labelledby="iconpicker-label" hide-option-labels value="search"></simple-picker>
             <script>
               document.getElementById('iconpicker').options=[ 
                 [ 
-                  { "alt": "none", "icon": "clear", "value": "clear" },
-                  { "icon": "check", "alt": "OK", "value": "check" },
-                  { "icon": "clear", "alt": "Cancel", "value": "clear" },
-                  { "icon": "search", "alt": "Find", "value": "search" } 
+                  { alt: "none", icon: "clear", value: "clear" },
+                  { icon: "check", alt: "OK", value: "check" },
+                  { icon: "clear", alt: "Cancel", value: "clear" },
+                  { icon: "search", alt: "Find", value: "search" } 
                 ],
                 [ 
-                  { "icon": "arrow-back", "alt": "Left", "value": "arrow-back" },
-                  { "icon": "arrow-downward", "alt": "Down", "value": "arrow-downward" },
-                  { "icon": "arrow-forward", "alt": "Right", "value": "arrow-forward" },
-                  { "icon": "arrow-upward", "alt": "Up", "value": "arrow-upward" } 
+                  { icon: "arrow-back", alt: "Left", value: "arrow-back" },
+                  { icon: "arrow-downward", alt: "Down", value: "arrow-downward" },
+                  { icon: "arrow-forward", alt: "Right", value: "arrow-forward" },
+                  { icon: "arrow-upward", alt: "Up", value: "arrow-upward" } 
                 ] 
               ];
             </script>

@@ -1,4 +1,3 @@
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 
 class QRCodeElement extends HTMLElement {
@@ -10,11 +9,15 @@ class QRCodeElement extends HTMLElement {
     this.attachShadow({ mode: "open" });
     // Define Properties
     Object.keys(QRCodeElement.defaultAttributes).map(this._defineProperty);
-    const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+    const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
     const location = `${basePath}/qr.js`;
     window.addEventListener(`es-bridge-qr-loaded`, this._qrLoaded.bind(this));
     window.ESGlobalBridge.requestAvailability();
     window.ESGlobalBridge.instance.load("qr", location);
+  }
+  // simple path from a url modifier
+  pathFromUrl(url) {
+    return url.substring(0, url.lastIndexOf("/") + 1);
   }
   disconnectedCallback() {
     window.removeEventListener(

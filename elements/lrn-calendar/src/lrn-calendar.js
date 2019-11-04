@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 /**
@@ -66,7 +65,10 @@ class LrnCalendar extends PolymerElement {
   static get tag() {
     return "lrn-calendar";
   }
-
+  // simple path from a url modifier
+  pathFromUrl(url) {
+    return url.substring(0, url.lastIndexOf("/") + 1);
+  }
   static get properties() {
     return {
       /**
@@ -178,7 +180,7 @@ class LrnCalendar extends PolymerElement {
     import("@lrnwebcomponents/lrnsys-layout/lib/lrnsys-collapselist.js");
     import("@lrnwebcomponents/lrnsys-layout/lib/lrnsys-collapselist-item.js");
     import("@lrnwebcomponents/lrn-calendar/lib/lrn-calendar-date.js");
-    const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+    const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
     const location = `${basePath}lib/ical.js/build/ical.js`;
     window.addEventListener(
       "es-bridge-ical-loaded",

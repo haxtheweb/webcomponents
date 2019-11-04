@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 /**
  * @license
@@ -95,9 +94,13 @@ class MomentElement extends PolymerElement {
       "_computeOutput(datetime, inputFormat, outputFormat, from, to, libraryLoaded)"
     ];
   }
+  // simple path from a url modifier
+  pathFromUrl(url) {
+    return url.substring(0, url.lastIndexOf("/") + 1);
+  }
   constructor() {
     super();
-    const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+    const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
     const location = `${basePath}lib/moment/moment.js`;
     window.addEventListener(
       "es-bridge-moment-loaded",

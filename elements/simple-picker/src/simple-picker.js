@@ -2,11 +2,10 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/iron-list/iron-list.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `simple-picker`
- * `a simple picker for options, icons, etc.`
+ * a simple picker for options, icons, etc.`
  *
 ### Styling
 
@@ -40,6 +39,8 @@ Custom property | Description | Default
 `--simple-picker-option-size` | Height of option. | 24px
 `--simple-picker-option-selected-background-color` | Outline for currently sselected option. | --simple-picker-options-background-color
 `--simple-picker-option-active-background-color` | Outline for currently active option. | #aaddff
+`--simple-picker-option-padding` | padding within each simple picker option | 2px 10px
+`--simple-picker-option-label-padding` | adding within each simple picker option's label | --simple-picker-option-padding
 `--simple-picker-options-max-height` | Maximum amount of space listbox can use before scrolling. Use `unset` for now vertical scroll. | 250px
 `--simple-picker-options-border-width` | Border width of listbox. | --simple-picker-border-width
 `--simple-picker-options-border-style` | Border style of listbox. | --simple-picker-border-style
@@ -51,7 +52,7 @@ Custom property | Description | Default
  * @polymer
  * @demo demo/index.html
  */
-class SimplePicker extends PolymerElement {
+class SimplePicker extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   /**
@@ -60,6 +61,78 @@ class SimplePicker extends PolymerElement {
    */
   static get tag() {
     return "simple-picker";
+  }
+
+  // life cycle
+  constructor() {
+    super();
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("./lib/simple-picker-option.js");
+    this.tag = SimplePicker.tag;
+    this.allowNull = false;
+    this.alignRight = false;
+    this.ariaLabelledby = null;
+    this.blockLabel = false;
+    this.disabled = false;
+    this.expanded = false;
+    this.hideOptionLabels = false;
+    this.hideSample = false;
+    this.label = null;
+    this.__options = [[]];
+    this.options = [
+      [
+        {
+          icon: null,
+          style: null,
+          alt: null,
+          value: null
+        }
+      ]
+    ];
+    this.titleAsHtml = false;
+    this.value = null;
+    this.__activeDesc = "option-0-0";
+    this.__hasLabel = true;
+    this.__selectedOption = {};
+    this.addEventListener("blur", function(e) {
+      this.expanded = false;
+    });
+    // map our imported properties json to real props on the element
+    // @notice static getter of properties is built via tooling
+    // to edit modify src/test-lit-properties.json
+    let obj = SimplePicker.properties;
+    for (let p in obj) {
+      if (obj.hasOwnProperty(p)) {
+        if (this.hasAttribute(p)) {
+          this[p] = this.getAttribute(p);
+        } else {
+          if (p.reflect) this.setAttribute(p, obj[p].value);
+          this[p] = obj[p].value;
+        }
+      }
+    }
+  }
+  /**
+   * life cycle, element is afixed to the DOM
+   */
+  connectedCallback() {
+    super.connectedCallback();
+  }
+
+  // static get observedAttributes() {
+  //   return [];
+  // }
+  // disconnectedCallback() {}
+  /*attributeChangedCallback(name, oldval, newval) {
+    super.attributeChangedCallback(name, oldval, newval);
+  }*/
+
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "value") this._valueChanged(this.value, oldValue);
+      if (propName === "options") this._optionsChanged(this.value, oldValue);
+    });
   }
 
   /**
@@ -78,17 +151,6 @@ class SimplePicker extends PolymerElement {
   }
 
   /**
-   * returns a unique id for option based on its row and column.
-   *
-   * @param {number} rownum row number
-   * @param {number} colnum column number
-   * @returns {string} a unique id
-   */
-  _getOptionId(rownum, colnum) {
-    return "option-" + rownum + "-" + colnum;
-  }
-
-  /**
    * sets a new active descendant and sets focus on it
    *
    * @param {number} rownum row number to be tested
@@ -96,7 +158,9 @@ class SimplePicker extends PolymerElement {
    * @returns {void}
    */
   _goToOption(rownum, colnum) {
-    let targetId = this._getOptionId(rownum, colnum),
+    let targetId = html`
+        option-${rownum}-${colnum}
+      `,
       target = this.shadowRoot.querySelector("#" + targetId),
       active = this.shadowRoot.querySelector("#" + this.__activeDesc);
     if (target !== null) {
@@ -113,9 +177,20 @@ class SimplePicker extends PolymerElement {
    * @param {string} type type of event
    * @returns {void}
    */
-  _handleListboxEvent(e, type) {
-    this.dispatchEvent(new CustomEvent(type, { detail: this }));
-    if (type === "click") this._toggleListbox(!this.expanded);
+  _handleListboxClick(e) {
+    this.dispatchEvent(new CustomEvent("click", { detail: this }));
+    this._toggleListbox();
+  }
+
+  /**
+   * handles listbox click event
+   *
+   * @param {event} e event
+   * @param {string} type type of event
+   * @returns {void}
+   */
+  _handleListboxMousedown(e) {
+    this.dispatchEvent(new CustomEvent("mousedown", { detail: this }));
   }
 
   /**
@@ -132,7 +207,7 @@ class SimplePicker extends PolymerElement {
     if (e.keyCode === 32) {
       //spacebar
       e.preventDefault();
-      this._toggleListbox(!this.expanded);
+      this._toggleListbox();
     } else if (this.expanded && [9, 35, 36, 38, 40].includes(e.keyCode)) {
       e.preventDefault();
       if (e.keyCode === 35) {
@@ -171,59 +246,6 @@ class SimplePicker extends PolymerElement {
    */
   _handleOptionFocus(e) {
     this._setActiveOption(e.detail.id);
-  }
-
-  /**
-   * Determines if a label should be added
-   *
-   * @param {string} label
-   * @returns {boolean} if there is a label
-   */
-  _setLabel() {
-    let label = this.shadowRoot.querySelector("#listLabel");
-    this.hasLabel =
-      this.label !== undefined &&
-      this.label !== null &&
-      this.label.trim() !== "";
-    label.innerHTML =
-      this.label !== undefined &&
-      this.label !== null &&
-      this.label.trim() !== ""
-        ? this.label.trim()
-        : "";
-  }
-  /**
-   * determines if an option is hidden a d can't be selected
-   *
-   * @param {string} val option value
-   * @param {boolean} allowNull whether or not null option can be selected
-   * @returns {boolean} whether or not option should be hidden
-   */
-  _hideNullOption(val, allowNull) {
-    return !allowNull && (val === undefined || val === null);
-  }
-
-  /**
-   * gets sets active option based on a row and column
-   *
-   * @param {string} active active option's id
-   * @param {number} rownum row number to be tested
-   * @param {number} colnum column number to be tested
-   * @returns {boolean} whether or not option is at given row and column
-   */
-  _isActive(active, rownum, colnum) {
-    return active === this._getOptionId(rownum, colnum);
-  }
-
-  /**
-   * determines if an option is at a given row and column
-   *
-   * @param {string} value1 current value
-   * @param {string} value2 an option's value
-   * @returns {boolean} whether or not option is selected
-   */
-  _isSelected(value1, value2) {
-    return value1 === value2;
   }
 
   /**
@@ -268,23 +290,21 @@ class SimplePicker extends PolymerElement {
       !this.allowNull && this.options.length > 0
         ? this.options[0][0].value
         : null;
-    if (this.options !== undefined && this.options !== null) {
-      this.set(
-        "__options",
+    if (this.options) {
+      this.__options =
         typeof this.options === "string"
           ? JSON.parse(this.options)
-          : this.options.slice()
-      );
+          : this.options.slice();
       //if nulls are allowed, set active descendant to first not null option
       this.__activeDesc = this.allowNull ? "option-0-0" : null;
       for (var i = 0; i < this.__options.length; i++) {
         for (var j = 0; j < this.__options[i].length; j++) {
           //if unset, set active descendant to first not null option
           if (this.value !== null && this.__activeDesc === null)
-            this.__activeDesc = "option-" + i + "-" + j;
+            this.__activeDesc = `option-${i}-${j}`;
           if (`${this.__options[i][j].value}` === `${this.value}`) {
             //set active descendant to option that matches value
-            this.__activeDesc = "option-" + i + "-" + j;
+            this.__activeDesc = `option-${i}-${j}`;
             sel = this.__options[i][j];
           }
         }
@@ -300,56 +320,20 @@ class SimplePicker extends PolymerElement {
   /**
    * toggles listbox
    *
-   * @param {boolean} expanded is listbox expanded?
+   * @param {boolean} open whether to open
    * @returns {void}
    */
-  _toggleListbox(expanded) {
+  _toggleListbox(open = !this.expanded) {
     if (this.disabled) return;
     let active = this.shadowRoot.querySelector("#" + this.__activeDesc);
-    console.log("_toggleListbox", expanded);
-    this.expanded = expanded;
-    if (expanded) {
+    this.expanded = open;
+    if (open) {
       if (active !== null) active.focus();
       this.dispatchEvent(new CustomEvent("expand", { detail: this }));
     } else {
       if (active !== null) this.value = active.getAttribute("value");
       this.dispatchEvent(new CustomEvent("collapse", { detail: this }));
     }
-  }
-
-  /**
-   * Set event listeners
-   * @returns {void}
-   */
-  ready() {
-    super.ready();
-    let root = this;
-    if (this.shadowRoot.querySelector("#listbox") !== undefined) {
-      this.shadowRoot
-        .querySelector("#listbox")
-        .addEventListener("click", function(e) {
-          root._handleListboxEvent(e, "click");
-        });
-      this.shadowRoot
-        .querySelector("#listbox")
-        .addEventListener("mousedown", function(e) {
-          root._handleListboxEvent(e, "mousedown");
-        });
-      this.shadowRoot
-        .querySelector("#listbox")
-        .addEventListener("keydown", function(e) {
-          root._handleListboxKeydown(e);
-        });
-      this.addEventListener("blur", function(e) {
-        this.expanded = false;
-      });
-    }
-  }
-  constructor() {
-    super();
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("./lib/simple-picker-option.js");
   }
   /**
    * sets options for picker
@@ -364,7 +348,12 @@ class SimplePicker extends PolymerElement {
   /**
    * life cycle, element is removed from DOM
    */
-  //disconnectedCallback() {}
+  disconnectedCallback() {
+    this.removeEventListener("blur", function(e) {
+      this.expanded = false;
+    });
+    super.disconnectedCallback();
+  }
 }
 window.customElements.define(SimplePicker.tag, SimplePicker);
 export { SimplePicker };

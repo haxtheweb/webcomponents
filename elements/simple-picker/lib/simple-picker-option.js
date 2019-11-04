@@ -2,62 +2,109 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@lrnwebcomponents/lrn-shared-styles/lrn-shared-styles.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-icons/iron-icons.js";
 /**
  * `simple-picker-option`
- * `a simple picker for options, icons, etc.`
- *
- * @microcopy - language worth noting:
- *  -
+ * a simple picker for options, icons, etc.
+ * 
+### Styling
+
+`<a11y-gif-player>` provides the following custom properties
+for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--simple-picker-color` | color of simple picker text | unset
+`--simple-picker-option-padding` | padding within each simple picker option | 2px 10px
+`--simple-picker-option-label-padding` | adding within each simple picker option's label | --simple-picker-option-padding
+`--simple-picker-option-size` | size of each simple picker option | 24px
  *
  * @customElement
  * @polymer
  * @see ../simple-picker.js
  * @see ../simple-color-picker-row.js
  */
-class SimplePickerOption extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-      <style include="lrn-shared-styles">
-        :host {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          color: var(--simple-picker-color);
-        }
-        :host div {
-          margin: unset;
-          padding: unset;
-        }
-        :host([hidden]) {
-          display: none;
-        }
-        :host .label {
-          padding: var(--simple-picker-option-padding, 2px 10px);
-          line-height: 100%;
-          width: max-content;
-          @apply --simple-picker-option-label;
-        }
+class SimplePickerOption extends LitElement {
+  //styles
+  static get styles() {
+    return css`
+      :host {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--simple-picker-color);
+      }
+      :host([hidden]) {
+        display: none;
+      }
+      div {
+        margin: unset;
+        padding: unset;
+      }
+      #label {
+        padding: var(
+          --simple-picker-option-label-padding,
+          var(--simple-picker-option-padding, 2px 10px)
+        );
+        line-height: 100%;
+        width: max-content;
+      }
 
-        :host iron-icon {
-          width: var(--simple-picker-option-size, 24px);
-          min-height: var(--simple-picker-option-size, 24px);
-          min-width: var(--simple-picker-option-size, 24px);
-          line-height: var(--simple-picker-option-size, 24px);
-          @apply --simple-picker-icon;
-        }
-      </style>
-      <iron-icon
-        aria-hidden="true"
-        hidden$="[[_hideIcon(icon)]]"
-        icon$="[[icon]]"
-      ></iron-icon>
-      <div id="label" class$="[[_getSrOnly(hideOptionLabels)]]">[[label]]</div>
+      :host([hide-option-labels]) #label {
+        position: absolute;
+        left: -999999px;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+      }
+
+      iron-icon {
+        width: var(--simple-picker-option-size, 24px);
+        min-height: var(--simple-picker-option-size, 24px);
+        min-width: var(--simple-picker-option-size, 24px);
+        line-height: var(--simple-picker-option-size, 24px);
+      }
     `;
+  }
+
+  // render function
+  render() {
+    return html`
+      <iron-icon
+        ?hidden="${!this.icon}"
+        .icon="${this.icon}"
+        aria-hidden="true"
+      ></iron-icon>
+      <div id="label">
+        ${this.titleAsHtml
+          ? html`
+              ${this.label}
+            `
+          : this.label}
+      </div>
+    `;
+  }
+
+  constructor() {
+    super();
+    this.active = null;
+    this.data = null;
+    this.hidden = false;
+    this.hideOptionLabels = false;
+    this.icon = null;
+    this.id = null;
+    this.label = null;
+    this.selected = false;
+    this.titleAsHtml = false;
+    this.value = null;
+    this.addEventListener("focus", e => {
+      this._handleFocus();
+    });
+    this.addEventListener("mouseover", e => {
+      this._handleHover();
+    });
   }
 
   // properties available to the custom element for data binding
@@ -67,29 +114,23 @@ class SimplePickerOption extends PolymerElement {
        * Is the option active?
        */
       active: {
-        name: "active",
         type: Boolean,
-        value: null,
-        reflectToAttribute: true
+        reflect: true
       },
 
       /**
        * The style of the option. (Required for accessibility.)
        */
       data: {
-        name: "data",
-        type: Object,
-        value: null
+        type: Object
       },
 
       /**
        * If the option is hidden
        */
       hidden: {
-        name: "hidden",
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true
       },
 
       /**
@@ -97,71 +138,63 @@ class SimplePickerOption extends PolymerElement {
        * This option would move the labels off-screen so that only screen-readers will have them.
        */
       hideOptionLabels: {
-        name: "hideOptionLabels",
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "hide-option-labels"
       },
 
       /**
        * Optional. If option is an iron icon, the iconset:name of the icon
        */
       icon: {
-        name: "icon",
-        type: String,
-        value: null,
-        reflectToAttribute: false
+        type: String
       },
 
       /**
        * The id of the option
        */
       id: {
-        name: "order",
         type: String,
-        value: null,
-        reflectToAttribute: true
+        reflect: true
       },
 
       /**
        * The text of the option. (Required for accessibility.)
        */
       label: {
-        name: "label",
         type: String,
-        value: null,
-        reflectToAttribute: true,
-        observer: "_updateLabel"
+        reflect: true
       },
 
       /**
        * Is the option selected?
        */
       selected: {
-        name: "selected",
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true
+      },
+
+      /**
+       * styles object to allow for piercing of shadow DOM
+       */
+      styles: {
+        type: Object
       },
 
       /**
        * Renders html as title. (Good for titles with HTML in them.)
        */
       titleAsHtml: {
-        name: "titleAsHtml",
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true
       },
 
       /**
        * The value of the option.
        */
       value: {
-        name: "label",
         type: String,
-        value: null,
-        reflectToAttribute: true
+        reflect: true
       }
     };
   }
@@ -171,16 +204,6 @@ class SimplePickerOption extends PolymerElement {
    */
   static get tag() {
     return "simple-picker-option";
-  }
-
-  /**
-   * If the option is not an iron-icon, hide the iron-icon.
-   *
-   * @param {string} icon the icon property
-   * @returns {boolean} whether or not the iron iron should be hidden
-   */
-  _hideIcon(icon) {
-    return this.icon === null;
   }
 
   /**
@@ -200,47 +223,21 @@ class SimplePickerOption extends PolymerElement {
   }
 
   /**
-   * determines if a label should visible on screen
-   *
-   * @param {boolean} hideOptionLabels property
-   * @returns {string} the sr-only (screenreader-only) class
-   */
-  _getSrOnly(hideOptionLabels) {
-    return hideOptionLabels === false ? "label" : "label sr-only";
-  }
-
-  /**
-   * updates the title
-   * @returns {void}
-   */
-  _updateLabel() {
-    let label = document.createElement("span");
-    if (this.titleAsHtml !== false) {
-      label.innerHTML = this.label;
-      this.shadowRoot.querySelector("#label").innerHTML = "";
-      this.shadowRoot.querySelector("#label").appendChild(label);
-    }
-  }
-
-  /**
-   * Set event listeners
-   * @returns {void}
-   */
-  ready() {
-    super.ready();
-    let root = this;
-    this._updateLabel();
-    this.addEventListener("focus", function(e) {
-      root._handleFocus();
-    });
-    this.addEventListener("mouseover", function(e) {
-      root._handleHover();
-    });
-  }
-  /**
    * life cycle, element is removed from the DOM
    */
-  //disconnectedCallback() {}
+  disconnectedCallback() {
+    this.removeEventListener("focus", e => {
+      this._handleFocus();
+    });
+    this.removeEventListener("mouseover", e => {
+      this._handleHover();
+    });
+    super.disconnectedCallback();
+  }
+
+  _getColor() {
+    return css`red`;
+  }
 }
 window.customElements.define(SimplePickerOption.tag, SimplePickerOption);
 export { SimplePickerOption };

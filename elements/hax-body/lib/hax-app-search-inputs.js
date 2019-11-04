@@ -47,12 +47,19 @@ class HaxAppSearchInputs extends LitElement {
       <eco-json-schema-object
         id="form"
         .schema="${this.schema}"
-        @value-changed="${this.valuesChanged}"
+        @value-changed="${this.searchValuesChanged}"
       ></eco-json-schema-object>
     `;
   }
-  valuesChanged(e) {
-    this.values = e.detail.value;
+  searchValuesChanged(e) {
+    if (typeof e.detail.value !== "string") {
+      // dispatch the event directly so that we can data bind to input
+      this.dispatchEvent(
+        new CustomEvent("search-values-changed", {
+          detail: e.detail.value
+        })
+      );
+    }
   }
   static get tag() {
     return "hax-app-search-inputs";
@@ -67,32 +74,12 @@ class HaxAppSearchInputs extends LitElement {
         type: String
       },
       /**
-       * Search input values mapped to schema inputs.
-       */
-      values: {
-        type: Object
-      },
-      /**
        * Schema used to generate the input types.
        */
       schema: {
         type: Object
       }
     };
-  }
-
-  /**
-   * Search input was added.
-   */
-  _valueChanged(change) {
-    this.dispatchEvent(
-      new CustomEvent("hax-app-search-values-changed", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: change.base
-      })
-    );
   }
 }
 window.customElements.define(HaxAppSearchInputs.tag, HaxAppSearchInputs);

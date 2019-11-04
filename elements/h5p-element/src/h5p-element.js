@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 window.__H5PBridgeTimeOut = function() {
   setTimeout(function() {
@@ -46,13 +45,17 @@ class H5PElement extends LitElement {
   createRenderRoot() {
     return this;
   }
+  // simple path from a url modifier
+  pathFromUrl(url) {
+    return url.substring(0, url.lastIndexOf("/") + 1);
+  }
   /**
    * load dependencies that need to be global in scope
    */
   async H5PDepsLoader() {
     window.ESGlobalBridge.requestAvailability();
     const basePath =
-      pathFromUrl(decodeURIComponent(import.meta.url)) + "lib/h5p/";
+      this.pathFromUrl(decodeURIComponent(import.meta.url)) + "lib/h5p/";
     this.h5pJSDeps = [
       basePath + "js/jquery.js",
       basePath + "js/h5p.js",
@@ -119,7 +122,7 @@ class H5PElement extends LitElement {
       export: (displayOptions.export = false)
     });
     const basePath =
-      pathFromUrl(decodeURIComponent(import.meta.url)) + "lib/h5p/";
+      this.pathFromUrl(decodeURIComponent(import.meta.url)) + "lib/h5p/";
 
     H5PIntegration.core = {
       styles: [

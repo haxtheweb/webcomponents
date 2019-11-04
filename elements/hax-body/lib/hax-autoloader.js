@@ -1,6 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import { HAXElement } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 import { varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 
@@ -30,6 +29,10 @@ class HaxAutoloader extends HAXElement(LitElement) {
   }
   static get tag() {
     return "hax-autoloader";
+  }
+  // simple path from a url modifier
+  pathFromUrl(url) {
+    return url.substring(0, url.lastIndexOf("/") + 1);
   }
   static get properties() {
     return {
@@ -123,7 +126,9 @@ class HaxAutoloader extends HAXElement(LitElement) {
             // this delivers locally or from remote
             // @todo need to support name spacing of packages so that we
             // don't assume they are all relative to lrnwebcomponents
-            const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+            const basePath = this.pathFromUrl(
+              decodeURIComponent(import.meta.url)
+            );
             if (!window.customElements.get(name)) {
               let nameLocation = varGet(
                 window.HaxStore,

@@ -2,7 +2,6 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 
 /**
  * In order to use this, the user must supply a haxProperties object
@@ -158,6 +157,9 @@ export class HAXWiring {
       },
       wipeSlot: {}
     };
+    this.pathFromUrl = url => {
+      return url.substring(0, url.lastIndexOf("/") + 1);
+    };
     /**
      * Setter to bridge private haxProperties setter.
      * This is to then be implemented by the ready state of whatever is supplying the
@@ -274,7 +276,9 @@ export class HAXWiring {
           // support possible dynamic import of iconset
           // this would be if the user defined their own icons
           if (typeof props.gizmo.iconLib !== typeof undefined) {
-            const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+            const basePath = this.pathFromUrl(
+              decodeURIComponent(import.meta.url)
+            );
             import(`${basePath}../../../${props.gizmo.iconLib}`);
           }
         }

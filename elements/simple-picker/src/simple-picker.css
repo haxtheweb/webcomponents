@@ -2,7 +2,6 @@
  * css styles:```
  */
 :host {
-  
   display: inline-flex;
   align-items: center;
   color: var(--simple-picker-color, black);
@@ -11,11 +10,6 @@
   --simple-picker-height: calc(var(--simple-picker-option-size, 24px) + var(--simple-picker-sample-padding, 2px) * 2 + var(--simple-picker-border-width, 1px) * 2);
   min-height: var(--simple-picker-height);
   max-height: var(--simple-picker-height);
-  @apply --simple-picker;
-}
-:host div {
-  margin: unset;
-  padding: unset;
 }
 
 :host([block-label]) {
@@ -34,13 +28,17 @@
   display: none;
 }
 
-:host label:not([hidden]) {
+div {
+  margin: unset;
+  padding: unset;
+}
+
+label:not([hidden]) {
   display: flex;
   align-items: center;
   padding-right: 5px;
   font-family: var(--simple-picker-font-family, inherit);
   color: var(--simple-picker-label-color, var(--simple-picker-color, black));
-  @apply --simple-picker-label;
 }
 
 :host([block-label]) label:not([hidden]) {
@@ -57,13 +55,13 @@
   transition: all 0.5s;
 }
 
-:host #sample, 
-:host .rows {
+#sample, 
+.rows {
   margin: 0;
   padding: 0;
 }
 
-:host #listbox {
+#listbox {
   cursor: pointer;
   position: relative;
   flex: 1 0 auto;
@@ -71,7 +69,7 @@
   max-height: var(--simple-picker-height);
 }
 
-:host #sample {
+#sample {
   display: flex;
   flex: 1 0 auto;
   justify-content: space-between;
@@ -83,21 +81,21 @@
   border-width: var(--simple-picker-border-width, 1px);
   border-style: var(--simple-picker-border-style, solid);
   border-color: var(--simple-picker-border-color, var(--simple-picker-color-disabled, #888));  
-  @apply --simple-picker-sample;
 }
+
 :host([hide-sample]) #sample {
   width: var(--simple-picker-option-size);
   overflow: visible;
 }
+
 :host(:focus-within) #sample {
   border-width: var(--simple-picker-focus-border-width, var(--simple-picker-border-width, 1px));
   border-style: var(--simple-picker-focus-border-style, var(--simple-picker-border-style, solid));
   border-color: var(--simple-picker-focus-border-color, var(--simple-picker-border-color, var(--simple-picker-color-disabled, #888)));
   transition: all 0.5s;
-  @apply --simple-picker-sample-focus;
 }
 
-:host #icon {
+#icon {
   transform: var(--simple-picker-icon-transform, rotate(0deg));
   transition: transform 0.25s;
 }
@@ -107,20 +105,19 @@
   transition: transform 0.25s;
 }
 
-:host #collapse {
+#collapse {
   display: none;
   width: 100%;
   position: absolute;  
   padding: var(--simple-picker-options-border-width, var(--simple-picker-border-width, 1px));
   z-index: 2;
-  @apply --simple-picker-collapse;
 }
 
 :host([expanded]:not([disabled])) #collapse {
   display: block;
 } 
 
-:host .rows {
+.rows {
   display: block;
   position: absolute;
   z-index: 1000;  
@@ -132,21 +129,19 @@
   background-color: var(--simple-picker-options-background-color, #fff);
   max-height: var(--simple-picker-options-max-height, 250px);
   overflow-y: auto; 
-  @apply --simple-picker-rows;
 }
 :host([align-right]) #collapse .rows {
   left: unset;
   right: calc(var(--simple-picker-options-border-width, var(--simple-picker-border-width, 1px)) *2);
 }
 
-:host .row {
+.row {
   display: flex; 
   align-items: stretch;
   justify-content: space-between;
-  @apply --simple-picker-row;
 }
 
-:host simple-picker-option {
+simple-picker-option {
   z-index: 1;
   flex: 1 1 auto;
   justify-content: flex-start;
@@ -157,38 +152,25 @@
   color: var(--simple-picker-color, black);
   background-color: var(--simple-picker-options-background-color, #fff);
   transition: max-height 2s;
-  @apply --simple-picker-option;
 }
 
-:host(:not([value])) #sample simple-picker-option,
-:host([value="null"]) #sample simple-picker-option {
-  @apply --simple-picker-sample-null;
-  --simple-picker-option-label: {
-    @apply --simple-picker-sample-null-label;
-  };
-}
-
-:host simple-picker-option[selected] {
+simple-picker-option[selected] {
   z-index: 50;
   color: var(--simple-picker-color, black);
   background-color: var(--simple-picker-option-selected-background-color, var(--simple-picker-options-background-color, #fff));
 }
 
-:host simple-picker-option[active] {
+simple-picker-option[active] {
   z-index: 100;
   cursor: pointer;
   color: var(--simple-picker-color, black);
   background-color: var(--simple-picker-option-active-background-color, #aaddff);
 }
 
-:host #sample simple-picker-option {
+#sample simple-picker-option {
   color: var(--simple-picker-color, black);
   background-color: var(--simple-picker-sample-background-color, transparent);
   --simple-picker-option-padding: var(--simple-picker-sample-padding, 2px) 0;
-  --simple-picker-option-label: {
-    @apply --simple-picker-sample-label;
-  }
-  @apply --simple-picker-sample-option;
   border: none;
 }
 
@@ -210,21 +192,16 @@
   transition: max-height 1.5s;
 }
 
-:host #collapse simple-picker-option:not([value]),
-:host #collapse simple-picker-option[value=null] {
-  @apply --simple-picker-option-null;
-}
-
 @media screen and (max-width: 600px) {
   :host {
     position: static;
   }
-  :host #collapse {
+  #collapse {
     top: 0;
     margin-top: 0;
     position: relative;
   } 
-  :host .rows {
+  .rows {
     position: absolute;
   }  
 }

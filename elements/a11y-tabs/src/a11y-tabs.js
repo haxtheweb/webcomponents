@@ -2,7 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icons/iron-icons.js";
@@ -10,16 +10,22 @@ import "@polymer/paper-tooltip/paper-tooltip.js";
 import "./lib/a11y-tab.js";
 /**
  * `a11y-tabs`
- * `accessible and responsive tabbed interface`
- *
- * @microcopy - language worth noting:
- *  -
+ * an accessible and responsive tabbed interface
+ * 
+### Styling
+
+`<a11y-tabs>` provides the following custom properties
+for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--a11y-tabs-tab-height` | tab height | `--a11y-tabs-height`
  *
  * @customElement
  * @polymer
  * @demo demo/index.html
  */
-class A11yTabs extends PolymerElement {
+class A11yTabs extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   /**
@@ -29,47 +35,62 @@ class A11yTabs extends PolymerElement {
   static get tag() {
     return "a11y-tabs";
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    let root = this,
-      callback = function(mutationsList, observer) {
-        root.updateItems();
-      };
+  constructor() {
+    super();
+    let callback = (mutationsList, observer) => this.updateItems();
+    this.activeTab = null;
+    this.disabled = false;
+    this.hidden = false;
+    this.iconBreakpoint = 400;
+    this.id = null;
+    this.layoutBreakpoint = 600;
+    this.responsiveSize = "xs";
+    this.vertical = false;
+    this.__hasIcons = false;
+    this.__items = [];
     this.updateItems();
     this.__observer = new MutationObserver(callback);
+    this._breakpointChanged();
+    window.ResponsiveUtility.requestAvailability();
     this.__observer.observe(this, {
       attributes: false,
       childList: true,
       subtree: false
     });
-    this.addEventListener("a11y-tab-changed", function(e) {
-      root.updateItems();
-    });
-    window.ResponsiveUtility.requestAvailability();
-    this._breakpointChanged();
+    this.addEventListener("a11y-tab-changed", e => this.updateItems());
+  }
+  /**
+   * life cycle, element is afixed to the DOM
+   */
+  connectedCallback() {
+    super.connectedCallback();
   }
   /**
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    let root = this;
     if (this.__observer && this.__observer.disconnect)
       this.__observer.disconnect();
-    this.removeEventListener("a11y-tab-changed", function(e) {
-      root.updateItems();
-    });
+    this.removeEventListener("a11y-tab-changed", e => this.updateItems());
     window.dispatchEvent(
       new CustomEvent("responsive-element-deleted", {
         bubbles: true,
         cancelable: true,
         composed: true,
-        detail: root
+        detail: this
       })
     );
     super.disconnectedCallback();
+  }
+
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "id") this._idChanged(this.id, oldValue);
+      if (propName === "activeTab") this.selectTab(this.activeTab);
+      if (propName === "iconBreakpoint") this._breakpointChanged();
+      if (propName === "layoutBreakpoint") this._breakpointChanged();
+      if (propName === "responsiveSize") this._setVertical();
+    });
   }
   /**
    * selects a tab
@@ -94,14 +115,14 @@ class A11yTabs extends PolymerElement {
    * updates the list of items based on slotted a11y-tab elements
    */
   updateItems(e) {
-    this.set("__items", []);
+    this.__items = [];
     let tabs = this.querySelectorAll("a11y-tab"),
       ctr = 1;
     this.__hasIcons = true;
     if (!this.id) this.id = this._generateUUID();
     if (tabs && tabs.length > 0)
       tabs.forEach(tab => {
-        this.push("__items", {
+        this.__items.push({
           id: tab.id || `tab-${ctr}`,
           flag: tab.flag,
           flagIcon: tab.flagIcon,
@@ -125,7 +146,7 @@ class A11yTabs extends PolymerElement {
    * handles any breakpoint changes
    * @param {event} e the tab change event
    */
-  _breakpointChanged(e) {
+  _breakpointChanged() {
     let root = this,
       v = this.layoutBreakpoint > -1 ? this.layoutBreakpoint : 0,
       i = this.iconBreakpoint > -1 ? this.iconBreakpoint : 0,
@@ -154,6 +175,7 @@ class A11yTabs extends PolymerElement {
         }
       })
     );
+    this._setVertical();
   }
   /**
    * generates a unique id
@@ -171,9 +193,8 @@ class A11yTabs extends PolymerElement {
    * handles a tab being tapped and sets the new active tab
    * @param {event} e the tab tap event
    */
-  _handleTab(e) {
-    if (e.model && e.model.__data && e.model.__data.tab)
-      this.activeTab = e.model.__data.tab.id;
+  _handleTab(id) {
+    this.activeTab = id;
   }
   /**
    * ensures that there is always an id for this tabbed interface so that we can link back to the top of it
@@ -184,25 +205,17 @@ class A11yTabs extends PolymerElement {
     if (!newValue) this.id = "a11y-tabs" + this._generateUUID();
   }
   /**
-   * determines if a given tab is active
-   * @param {string} id the tab's id
-   * @param {string} activeTab the active tab's id
-   * @returns {boolean} if a given tab is active
-   */
-  _isActiveTab(id, activeTab) {
-    return id === activeTab;
-  }
-  /**
    * determines if tabs should be in a vertical layout
    * @param {number} icon breakpoint for icon-only view
    * @param {number} layout breakpoint for vertical layout
    * @param {string} size the responsive size
-   * @returns {boolean} if tabs should be in a vertical layout
    */
-  _isVertical(icon, layout, size) {
-    return layout === -1 || icon > layout
-      ? size === "xs"
-      : size.indexOf("s") > -1;
+  _setVertical() {
+    this.vertical =
+      this.layoutBreakpoint === -1 ||
+      this.iconBreakpoint > this.layoutBreakpoint
+        ? this.responsiveSize === "xs"
+        : this.responsiveSize.indexOf("s") > -1;
   }
   /**
    * determines if tabs should show icons only
@@ -213,11 +226,11 @@ class A11yTabs extends PolymerElement {
    * @returns {boolean} if tabs should be in a vertical layout
    */
   _showIcons(hasIcons, icon, layout, size) {
-    return (
-      hasIcons &&
+    return hasIcons &&
       icon !== -1 &&
       (size === "xs" || (icon > layout && size === "sm"))
-    );
+      ? "icons-only"
+      : "";
   }
 }
 window.customElements.define(A11yTabs.tag, A11yTabs);

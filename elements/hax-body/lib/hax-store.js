@@ -1,7 +1,5 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import { setPassiveTouchGestures } from "@polymer/polymer/lib/utils/settings.js";
 import { getRange } from "./shadows-safari.js";
 import {
@@ -11,62 +9,64 @@ import {
 } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
-import { MediaBehaviorsVideo } from "@lrnwebcomponents/media-behaviors/media-behaviors.js";
+import "@lrnwebcomponents/media-behaviors/media-behaviors.js";
 import { HAXElement } from "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 import { CodeSample } from "@lrnwebcomponents/code-sample/code-sample.js";
 
-class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
-  static get template() {
-    return html`
-      <style>
+class HaxStore extends HAXElement(LitElement) {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: none;
         }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
       <slot></slot>
       <iron-ajax
         id="appstore"
-        url="[[appStore.url]]"
-        params="[[appStore.params]]"
+        url="${this.appStore.url}"
+        params="${this.appStore.params}"
         method="GET"
         content-type="application/json"
         handle-as="json"
-        last-response="{{__appStoreData}}"
+        @last-response-changed="${this.__appStoreDataChanged}"
       ></iron-ajax>
-      <hal-9000 id="hal" debug="debug" commands="[[voiceCommands]]"></hal-9000>
+      <hal-9000 id="hal" .debug="${this.voiceDebug}"></hal-9000>
     `;
+  }
+  __appStoreDataChanged(e) {
+    this.__appStoreData = e.detail.value;
   }
   static get tag() {
     return "hax-store";
-  }
-  /**
-   * Complex observer composites used for initial timing since this is a skeleton setup
-   */
-  static get observers() {
-    return [
-      "_loadAppStoreData(__ready, __appStoreData, haxAutoloader)",
-      "_storePiecesAllHere(haxAutoloader,activeHaxBody, haxPanel, haxToast, haxExport, haxPreferences, haxManager, haxStaxPicker, haxAppPicker)"
-    ];
   }
 
   static get properties() {
     return Object.assign(
       {
+        voiceDebug: {
+          type: Boolean
+        },
         /**
          * skipHAXConfirmation
          */
         skipHAXConfirmation: {
           type: Boolean,
-          value: false,
-          reflectToAttribute: true
+          reflect: true,
+          attribute: "skip-hax-confirmation"
         },
         /**
          * Local storage bridge
          */
         storageData: {
-          type: Object,
-          value: {},
-          observer: "_storageDataChanged"
+          type: Object
         },
         /**
          * Hax app picker element.
@@ -96,8 +96,7 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
          * A list of all haxBodies that exist
          */
         haxBodies: {
-          type: Array,
-          value: []
+          type: Array
         },
         /**
          * An active place holder item reference. This is used
@@ -105,8 +104,7 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
          * know what element replace in context.
          */
         activePlaceHolder: {
-          type: Object,
-          value: null
+          type: Object
         },
         /**
          * The hax-body that is currently active.
@@ -119,7 +117,7 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
          */
         appStore: {
           type: Object,
-          observer: "_appStoreChanged"
+          attribute: "app-store"
         },
         /**
          * HAX Toast message.
@@ -167,185 +165,87 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
          * Session object bridged in from a session method of some kind
          */
         sessionObject: {
-          type: Object,
-          value: {}
+          type: Object
         },
         /**
          * editMode
          */
         editMode: {
-          type: Boolean,
-          value: false,
-          observer: "_editModeChanged"
+          type: Boolean
         },
         /**
          * Boolean for if this instance has backends that support uploading
          */
         canSupportUploads: {
-          type: Boolean,
-          value: false
+          type: Boolean
         },
         /**
          * skip the exit trap to prevent losing data
          */
         skipExitTrap: {
-          type: Boolean,
-          value: false
-        },
-        /**
-         * Default settings that can be overridden as needed
-         */
-        defaults: {
-          type: Object,
-          value: {
-            image: {
-              src: "stock.jpg",
-              alt: "A beachfront deep in the heart of Alaska."
-            },
-            iframe: {
-              src: "https://www.wikipedia.org/"
-            }
-          }
+          type: Boolean
         },
         /**
          * Available gizmos.
          */
         gizmoList: {
-          type: Array,
-          value: []
+          type: Array
         },
         /**
          * Available elements keyed by tagName and with
          * their haxProperties centrally registered.
          */
         elementList: {
-          type: Object,
-          value: {}
+          type: Object
         },
         /**
          * Available apps of things supplying media / content.
          */
         appList: {
-          type: Array,
-          value: []
+          type: Array
         },
         /**
          * Available hax stax which are just re-usable templates
          */
         staxList: {
-          type: Array,
-          value: []
+          type: Array
         },
         /**
          * Available hax blox which are grid plate / layout elements
          */
         bloxList: {
-          type: Array,
-          value: []
+          type: Array
         },
         /**
          * Global preferences that HAX can write to and
          * other elements can use to go off of.
          */
         globalPreferences: {
-          type: Object,
-          value: {},
-          observer: "_globalPreferencesChanged"
+          type: Object
         },
         /**
          * Globally active app, used for brokering communications
          */
         activeApp: {
-          type: Object,
-          value: {}
+          type: Object
         },
         /**
          * Valid tag list, tag only and including primatives for a baseline.
          */
         validTagList: {
-          type: Array,
-          value: [
-            "p",
-            "div",
-            "span",
-            "table",
-            "caption",
-            "sup",
-            "sub",
-            "u",
-            "strike",
-            "tr",
-            "th",
-            "td",
-            "ol",
-            "ul",
-            "li",
-            "a",
-            "strong",
-            "kbd",
-            "em",
-            "i",
-            "b",
-            "hr",
-            "h1",
-            "h2",
-            "h3",
-            "h4",
-            "h5",
-            "h6",
-            "blockquote",
-            "code",
-            "figure",
-            "img",
-            "iframe",
-            "video",
-            "audio",
-            "section",
-            "grid-plate",
-            "template",
-            "webview"
-          ]
+          type: Array
         },
         /**
          * Gizmo types which can be used to bridge apps to gizmos.
          */
         validGizmoTypes: {
-          type: Array,
-          value: [
-            "data",
-            "video",
-            "audio",
-            "text",
-            "link",
-            "file",
-            "pdf",
-            "image",
-            "csv",
-            "doc",
-            "content",
-            "text",
-            "inline",
-            "*"
-          ]
+          type: Array
         },
         /**
          * Sandboxed environment test
          */
         _isSandboxed: {
-          type: Boolean,
-          value: function() {
-            let test = document.createElement("webview");
-            // if this function exists it means that our deploy target
-            // is in a sandboxed environment and is not able to run iframe
-            // content with any real stability. This is beyond edge case but
-            // as this is an incredibly useful tag we want to make sure it
-            // can mutate to work in chromium and android environments
-            // which support such sandboxing
-            if (typeof test.reload === "function") {
-              return true;
-            }
-            return false;
-          }
+          type: Boolean
         },
         /**
          * Internal app store data property after request
@@ -356,15 +256,11 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
         __ready: {
           type: Boolean
         },
-        voiceCommands: {
-          type: Object
-        },
         /**
          * Support for deploy specific rewriting for things like JWTs
          */
         connectionRewrites: {
-          type: Object,
-          value: {}
+          type: Object
         }
       },
       super.properties
@@ -472,17 +368,18 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
    */
   _appStoreChanged(newValue, oldValue) {
     // if we have an endpoint defined, pull it
-    if (typeof newValue !== typeof undefined && newValue != null) {
+    if (
+      typeof newValue !== typeof undefined &&
+      newValue != null &&
+      typeof oldValue !== typeof undefined
+    ) {
       // support having the request or remote loading
       // depending on the integration type
       if (typeof newValue.apps === typeof undefined) {
         this.shadowRoot.querySelector("#appstore").generateRequest();
       } else {
-        // directly injected json object into the DOM, allow some time to propagate data
-        // otherwise we might not have a haxAutoloader object ready in time for the paint
-        setTimeout(() => {
-          this.__appStoreData = newValue;
-        }, 500);
+        // directly injected json object into the DOM
+        this.__appStoreData = newValue;
       }
     }
   }
@@ -509,7 +406,7 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
         for (var i in appDataResponse.autoloader) {
           let CEname = i;
           let CEimport = appDataResponse.autoloader[i];
-          // helps support array or object based appstore
+          // helps support array or object based app store spec
           // array was originally in the standard so this lets us support both
           if (!isNaN(CEname)) {
             CEname = appDataResponse.autoloader[i];
@@ -517,7 +414,7 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
           }
           // force this into the valid tag list so early paints will
           // correctly include the tag without filtering it out incorrectly
-          this.push("validTagList", CEname);
+          this.validTagList.push(CEname);
           items[CEname] = CEimport;
         }
       }
@@ -565,6 +462,10 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
       this._handleDynamicImports(items, haxAutoloader);
     }
   }
+  // simple path from a url modifier
+  pathFromUrl(url) {
+    return url.substring(0, url.lastIndexOf("/") + 1);
+  }
   /**
    * Handle all the dynamic imports of things told to autoload
    * This ensures we get the definitions very quickly as far as
@@ -573,7 +474,7 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
    * it came from.
    */
   async _handleDynamicImports(items, haxAutoloader) {
-    const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+    const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
     for (var i in items) {
       // seems redundant but this can help polyfill'ed browsers
       if (!window.customElements.get(i)) {
@@ -619,9 +520,9 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
   }
   _editModeChanged(newValue) {
     if (newValue && this.globalPreferences.haxVoiceCommands) {
-      this.shadowRoot.querySelector("#hal").auto = true;
+      this.__hal.auto = true;
     } else {
-      this.shadowRoot.querySelector("#hal").auto = false;
+      this.__hal.auto = false;
     }
   }
   _globalPreferencesChanged(newValue, oldValue) {
@@ -634,12 +535,12 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
     ) {
       let storageData = this.storageData;
       storageData.globalPreferences = newValue;
-      this.set("storageData", {});
-      this.set("storageData", storageData);
+      this.storageData = storageData;
+      this._storageDataChanged(this.storageData);
       if (newValue.haxVoiceCommands && this.editMode) {
-        this.shadowRoot.querySelector("#hal").auto = true;
+        this.__hal.auto = true;
       } else {
-        this.shadowRoot.querySelector("#hal").auto = false;
+        this.__hal.auto = false;
       }
     }
   }
@@ -664,7 +565,6 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
       this._haxStoreRegisterStax.bind(this)
     );
     // register blox which are grid plate configurations
-    // with lots of sane visual defaults
     document.body.removeEventListener(
       "hax-register-blox",
       this._haxStoreRegisterBlox.bind(this)
@@ -740,97 +640,133 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
       JSON.stringify(this.storageData)
     );
   }
+  updated(changedProperties) {
+    let loadAppStoreData = false;
+    let storePiecesAllHere = false;
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "appStore") {
+        this._appStoreChanged(this[propName], oldValue);
+      }
+      if (propName == "globalPreferences") {
+        this._globalPreferencesChanged(this[propName], oldValue);
+      }
+      if (propName == "editMode") {
+        this._editModeChanged(this[propName], oldValue);
+      }
+      // composite obervation
+      if (["__ready", "__appStoreData", "haxAutoloader"].includes(propName)) {
+        loadAppStoreData = true;
+      }
+      if (
+        [
+          "haxAutoloader",
+          "activeHaxBody",
+          "haxPanel",
+          "haxToast",
+          "haxExport",
+          "haxPreferences",
+          "haxManager",
+          "haxStaxPicker",
+          "haxAppPicker"
+        ].includes(propName)
+      ) {
+        storePiecesAllHere = true;
+      }
+    });
+    if (loadAppStoreData) {
+      this._loadAppStoreData(
+        this.__ready,
+        this.__appStoreData,
+        this.haxAutoloader
+      );
+    }
+    if (storePiecesAllHere) {
+      this._storePiecesAllHere(
+        this.haxAutoloader,
+        this.activeHaxBody,
+        this.haxPanel,
+        this.haxToast,
+        this.haxExport,
+        this.haxPreferences,
+        this.haxManager,
+        this.haxStaxPicker,
+        this.haxAppPicker
+      );
+    }
+  }
   /**
    * ready life cycle
    */
-  ready() {
-    super.ready();
-    afterNextRender(this, function() {
-      // see if a global was used to prevent this check
-      // this is useful when in trusted environments where the statement
-      // has been consented to in the application this is utilized in
-      if (this.skipHAXConfirmation) {
-        window.sessionStorage.setItem("haxConfirm", true);
-        window.localStorage.setItem("haxConfirm", true);
-      }
-      // check for local storage object
-      // if not, then store it in sessionStorage so that all our checks
-      // and balances are the same. This could allow for storing these
-      // settings on a server in theory
-      let haxConfirm =
-        window.sessionStorage.getItem("haxConfirm") ||
-        window.localStorage.getItem("haxConfirm");
-      if (!haxConfirm) {
-        // this way it isn't shown EVERY reload, but if they didn't confirm
-        // it will show up in the future
-        window.sessionStorage.setItem("haxConfirm", true);
-        let msg = `
-      The HAX content editor keeps preferences in order to improve your experience.
-      This data is stored in your browser and is never sent anywhere.
-      Click to accept.
-      `;
-        window.HaxStore.toast(
-          msg,
-          "-1",
-          "fit-bottom",
-          "I Accept",
-          "hax-consent-tap"
+  firstUpdated(changedProperties) {
+    // import voice command stuff in the background
+    // @todo only activate if the setting to use it is in place
+    import("@lrnwebcomponents/hal-9000/hal-9000.js");
+    // set this global flag so we know it's safe to start trusting data
+    // that is written to global preferences / storage bin
+    setTimeout(() => {
+      this.__storageDataProcessed = true;
+      if (this.storageData.globalPreferences) {
+        window.HaxStore.write(
+          "globalPreferences",
+          this.storageData.globalPreferences,
+          this
         );
-      } else {
-        if (
-          window.sessionStorage.getItem("haxConfirm") &&
-          !window.localStorage.getItem("haxConfirm")
-        ) {
-          // verify there is something there
-          try {
-            let globalData = window.sessionStorage.getItem("haxUserData")
-              ? JSON.parse(window.sessionStorage.getItem("haxUserData"))
-              : {};
-            this.set("storageData", globalData);
-          } catch (e) {}
-        } else {
-          try {
-            let globalData = window.localStorage.getItem("haxUserData")
-              ? JSON.parse(window.localStorage.getItem("haxUserData"))
-              : {};
-            this.set("storageData", globalData);
-          } catch (e) {}
-        }
       }
-    });
-  }
-  /**
-   * attached.
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      // capture events and intercept them globally
-      window.addEventListener(
-        "hax-consent-tap",
-        this._haxConsentTap.bind(this)
+    }, 100);
+    this.__hal = this.shadowRoot.querySelector("#hal");
+    // see if a global was used to prevent this check
+    // this is useful when in trusted environments where the statement
+    // has been consented to in the application this is utilized in
+    if (this.skipHAXConfirmation) {
+      window.sessionStorage.setItem("haxConfirm", true);
+      window.localStorage.setItem("haxConfirm", true);
+    }
+    // check for local storage object
+    // if not, then store it in sessionStorage so that all our checks
+    // and balances are the same. This could allow for storing these
+    // settings on a server in theory
+    let haxConfirm =
+      window.sessionStorage.getItem("haxConfirm") ||
+      window.localStorage.getItem("haxConfirm");
+    if (!haxConfirm) {
+      // this way it isn't shown EVERY reload, but if they didn't confirm
+      // it will show up in the future
+      window.sessionStorage.setItem("haxConfirm", true);
+      let msg = `
+    The HAX content editor keeps preferences in order to improve your experience.
+    This data is stored in your browser and is never sent anywhere.
+    Click to accept.
+    `;
+      window.HaxStore.toast(
+        msg,
+        "-1",
+        "fit-bottom",
+        "I Accept",
+        "hax-consent-tap"
       );
-      window.addEventListener(
-        "onbeforeunload",
-        this._onBeforeUnload.bind(this)
-      );
-      window.addEventListener("paste", this._onPaste.bind(this));
-      // import voice command stuff in the background
-      // @todo only activate if the setting to use it is in place
-      import("@lrnwebcomponents/hal-9000/hal-9000.js");
-      // set this global flag so we know it's safe to start trusting data
-      // that is written to global preferences / storage bin
-      setTimeout(() => {
-        this.__storageDataProcessed = true;
-        if (this.storageData.globalPreferences) {
-          window.HaxStore.write(
-            "globalPreferences",
-            this.storageData.globalPreferences,
-            this
-          );
-        }
-      }, 325);
-    });
+    } else {
+      if (
+        window.sessionStorage.getItem("haxConfirm") &&
+        !window.localStorage.getItem("haxConfirm")
+      ) {
+        // verify there is something there
+        try {
+          let globalData = window.sessionStorage.getItem("haxUserData")
+            ? JSON.parse(window.sessionStorage.getItem("haxUserData"))
+            : {};
+          this.storageData = globalData;
+          this._storageDataChanged(this.storageData);
+        } catch (e) {}
+      } else {
+        try {
+          let globalData = window.localStorage.getItem("haxUserData")
+            ? JSON.parse(window.localStorage.getItem("haxUserData"))
+            : {};
+          this.storageData = globalData;
+          this._storageDataChanged(this.storageData);
+        } catch (e) {}
+      }
+    }
   }
   _storePiecesAllHere(
     haxAutoloader,
@@ -869,7 +805,7 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
       // register built in primitive definitions
       this._buildPrimitiveDefinitions();
       // initialize voice commands
-      this.voiceCommands = this._initVoiceCommands();
+      this.__hal.commands = this._initVoiceCommands();
     }
   }
   /**
@@ -877,32 +813,24 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
    */
   _initVoiceCommands() {
     var commands = {};
-    commands[
-      `${this.shadowRoot.querySelector("#hal").respondsTo} scroll up`
-    ] = () => {
+    commands[`${this.__hal.respondsTo} scroll up`] = () => {
       window.scrollBy({
         top: -(window.innerHeight * 0.5),
         left: 0,
         behavior: "smooth"
       });
     };
-    commands[
-      `${this.shadowRoot.querySelector("#hal").respondsTo} scroll (down)`
-    ] = () => {
+    commands[`${this.__hal.respondsTo} scroll (down)`] = () => {
       window.scrollBy({
         top: window.innerHeight * 0.5,
         left: 0,
         behavior: "smooth"
       });
     };
-    commands[
-      `hey ${this.shadowRoot.querySelector("#hal").respondsTo}`
-    ] = () => {
-      this.shadowRoot.querySelector("#hal").speak("Yeah what do you want");
+    commands[`hey ${this.__hal.respondsTo}`] = () => {
+      this.__hal.speak("Yeah what do you want");
     };
-    commands[
-      `${this.shadowRoot.querySelector("#hal").respondsTo} find media`
-    ] = () => {
+    commands[`${this.__hal.respondsTo} find media`] = () => {
       window.HaxStore.write("activeHaxElement", {}, window.HaxStore.instance);
       window.HaxStore.instance.haxManager.resetManager(1);
       window.HaxStore.instance.haxManager.toggleDialog(false);
@@ -913,8 +841,11 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
    * allow uniform method of adding voice commands
    */
   addVoiceCommand(command) {
-    this.push("voiceCommands", command);
-    this.notifyPath("voiceCommands.*");
+    if (this.__hal.push) {
+      this.__hal.push("commands", command);
+    } else {
+      this.__hal.commands.push(command);
+    }
   }
   /**
    * event driven version
@@ -1030,11 +961,95 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
       }
     }
   }
+  __validTags() {
+    return [
+      "p",
+      "div",
+      "span",
+      "table",
+      "caption",
+      "sup",
+      "sub",
+      "u",
+      "strike",
+      "tr",
+      "th",
+      "td",
+      "ol",
+      "ul",
+      "li",
+      "a",
+      "strong",
+      "kbd",
+      "em",
+      "i",
+      "b",
+      "hr",
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6",
+      "blockquote",
+      "code",
+      "figure",
+      "img",
+      "iframe",
+      "video",
+      "audio",
+      "section",
+      "grid-plate",
+      "template",
+      "webview"
+    ];
+  }
+  __validGizmoTypes() {
+    return [
+      "data",
+      "video",
+      "audio",
+      "text",
+      "link",
+      "file",
+      "pdf",
+      "image",
+      "csv",
+      "doc",
+      "content",
+      "text",
+      "inline",
+      "*"
+    ];
+  }
   /**
    * Created life-cycle to ensure a single global store.
    */
   constructor() {
     super();
+    this.skipHAXConfirmation = false;
+    this.storageData = {};
+    this.appStore = {};
+    this.haxBodies = [];
+    this.activePlaceHolder = null;
+    this.sessionObject = {};
+    this.editMode = false;
+    this.canSupportUploads = false;
+    this.skipExitTrap = false;
+    this.gizmoList = [];
+    this.elementList = {};
+    this.appList = [];
+    this.staxList = [];
+    this.bloxList = [];
+    this.globalPreferences = {};
+    this.activeApp = {};
+    this.connectionRewrites = {};
+    this.voiceDebug = true;
+    this.validTagList = this.__validTags();
+    this.validGizmoTypes = this.__validGizmoTypes();
+    // test for sandboxed env
+    let test = document.createElement("webview");
+    this._isSandboxed = typeof test.reload === "function";
     setPassiveTouchGestures(true);
     // helps promose polyfill for this to be 1 execution chain as opposed to multiple
     import("@lrnwebcomponents/hax-body/lib/hax-store-dynamic.js");
@@ -1049,6 +1064,9 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
       "hax-register-properties",
       this._haxStoreRegisterProperties.bind(this)
     );
+    window.addEventListener("hax-consent-tap", this._haxConsentTap.bind(this));
+    window.addEventListener("onbeforeunload", this._onBeforeUnload.bind(this));
+    window.addEventListener("paste", this._onPaste.bind(this));
     // app registration can come in automatically from app-stores
     // or through direct definition in the DOM
     document.body.addEventListener(
@@ -1061,7 +1079,6 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
       this._haxStoreRegisterStax.bind(this)
     );
     // register blox which are grid plate configurations
-    // with lots of sane visual defaults
     document.body.addEventListener(
       "hax-register-blox",
       this._haxStoreRegisterBlox.bind(this)
@@ -1690,14 +1707,14 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
       e.detail.owner
     ) {
       if (e.detail.value == null) {
-        this.set(e.detail.property, null);
+        this[e.detail.property] = null;
       } else if (typeof e.detail.value === "object") {
-        this.set(e.detail.property, {});
+        this[e.detail.property] = {};
       }
       if (this.globalPreferences && this.globalPreferences.haxDeveloperMode) {
         console.warn(e.detail.property);
       }
-      this.set(e.detail.property, e.detail.value);
+      this[e.detail.property] = e.detail.value;
       this.dispatchEvent(
         new CustomEvent("hax-store-property-updated", {
           bubbles: true,
@@ -1719,7 +1736,7 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
   _haxStoreRegisterApp(e) {
     if (e.detail) {
       e.detail.index = this.appList.length;
-      this.push("appList", e.detail);
+      this.appList.push(e.detail);
       window.HaxStore.write("appList", this.appList, this);
       // preconnect apps at registration time
       if (
@@ -1749,7 +1766,7 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
   _haxStoreRegisterStax(e) {
     if (e.detail) {
       e.detail.index = this.staxList.length;
-      this.push("staxList", e.detail);
+      this.staxList.push(e.detail);
       window.HaxStore.write("staxList", this.staxList, this);
       // we don't care about this after it's launched
       if (
@@ -1767,7 +1784,7 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
   _haxStoreRegisterBlox(e) {
     if (e.detail) {
       e.detail.index = this.bloxList.length;
-      this.push("bloxList", e.detail);
+      this.bloxList.push(e.detail);
       window.HaxStore.write("bloxList", this.bloxList, this);
       // we don't care about this after it's launched
       if (
@@ -1794,14 +1811,14 @@ class HaxStore extends HAXElement(MediaBehaviorsVideo(PolymerElement)) {
           gizmos.push(gizmo);
           window.HaxStore.write("gizmoList", gizmos, this);
         }
-        this.set("elementList." + e.detail.tag, e.detail.properties);
+        this.elementList[e.detail.tag] = e.detail.properties;
         // only push new values on if we got something new
         if (
           !this.validTagList.find(element => {
             return element === e.detail.tag;
           })
         ) {
-          this.push("validTagList", e.detail.tag);
+          this.validTagList.push(e.detail.tag);
         }
       }
       // delete this tag if it was in the autoloader as it has served it's purpose.
@@ -2451,7 +2468,7 @@ window.HaxStore.guessGizmoType = guess => {
     }
     // if it's external we can't assume what it actually is
     else if (
-      window.HaxStore.instance.getVideoType(guess.source) != "external"
+      window.MediaBehaviors.Video.getVideoType(guess.source) != "external"
     ) {
       return "video";
     } else {

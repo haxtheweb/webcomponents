@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/absolute-position-behavior",
   "wcfactory": {
     "className": "AbsolutePositionBehavior",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "absolute-position-behavior",
     "generator-wcfactory-version": "0.7.1",
     "useHAX": false,
@@ -39,7 +39,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@polymer/polymer": "^3.2.0"
+    "lit-element":"2.0.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",

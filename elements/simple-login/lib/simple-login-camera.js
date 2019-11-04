@@ -1,5 +1,4 @@
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 /**
  * Inspiration from https://github.com/wanoo21/MyCamera
  */
@@ -7,9 +6,13 @@ class SimpleLoginCamera extends HTMLElement {
   static get tag() {
     return "simple-login-camera";
   }
+  // simple path from a url modifier
+  pathFromUrl(url) {
+    return url.substring(0, url.lastIndexOf("/") + 1);
+  }
   constructor() {
     super();
-    const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+    const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
     const location = `${basePath}../../../msr/MediaStreamRecorder.min.js`;
     window.ESGlobalBridge.requestAvailability();
     window.ESGlobalBridge.instance.load("msr", location);

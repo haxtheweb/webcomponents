@@ -17,7 +17,7 @@ gulp.task("merge", () => {
         /\/\* REQUIRED FOR TOOLING DO NOT TOUCH \*\//g,
         (classStatement, character, jsFile) => {
           // pull these off the package wcfactory files area
-          let cssResult = "<style>";
+          let cssResult = "";
           if (
             packageJson.wcfactory.useSass &&
             packageJson.wcfactory.files.scss
@@ -31,12 +31,28 @@ gulp.task("merge", () => {
               path.join("./", packageJson.wcfactory.files.css)
             );
           }
-          cssResult += "</style>";
           cssResult = stripCssComments(cssResult).trim();
+          let litResult =
+              packageJson.wcfactory.customElementClass !== "LitElement"
+                ? ``
+                : `
+  //styles function
+  static get styles() {
+    return  [
+      css\`${cssResult}\`
+    ]
+  }`,
+            styleResult =
+              packageJson.wcfactory.customElementClass !== "LitElement"
+                ? `<style>
+${cssResult}
+        </style>`
+                : ``;
+
           return `
 // styles
 const css = html\`
-${cssResult}\`;
+[${cssResult}]\`;
 `;
         }
       )

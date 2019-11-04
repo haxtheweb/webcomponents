@@ -3,8 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { ESGlobalBridge } from "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
+import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 
 /**
  * `hal-9000`
@@ -27,12 +26,16 @@ class Hal9000 extends PolymerElement {
   static get tag() {
     return "hal-9000";
   }
+  // simple path from a url modifier
+  pathFromUrl(url) {
+    return url.substring(0, url.lastIndexOf("/") + 1);
+  }
   /**
    * Establish the element
    */
   constructor() {
     super();
-    const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+    const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
     const location = `${basePath}lib/annyang/annyang.min.js`;
     window.addEventListener(
       "es-bridge-annyang-loaded",

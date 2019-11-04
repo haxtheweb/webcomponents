@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/simple-picker",
   "wcfactory": {
     "className": "SimplePicker",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "simple-picker",
     "generator-wcfactory-version": "0.4.0",
     "useHAX": false,
@@ -38,12 +38,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/lrn-shared-styles": "^2.1.4",
     "@polymer/iron-icon": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/iron-iconset-svg": "^3.0.1",
     "@polymer/neon-animation": "^3.0.0",
-    "@polymer/polymer": "^3.2.0"
+    "lit-element":"2.0.1"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
