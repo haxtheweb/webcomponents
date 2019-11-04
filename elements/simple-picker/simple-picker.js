@@ -455,7 +455,8 @@ class SimplePicker extends LitElement {
        * Optional. Sets aria-labelledby attribute
        */
       ariaLabelledby: {
-        type: String
+        type: String,
+        attribute: "aria-labelledby"
       },
 
       /**

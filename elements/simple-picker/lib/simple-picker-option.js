@@ -186,7 +186,8 @@ class SimplePickerOption extends LitElement {
        */
       titleAsHtml: {
         type: Boolean,
-        reflect: true
+        reflect: true,
+        attribute: "title-as-html"
       },
 
       /**
