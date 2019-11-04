@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>SimpleColors: simple-colors Demo</title>
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script type="module">
       import '../node_modules/@polymer/iron-demo-helpers/demo-snippet.js';
     </script>
-    <style is="custom-style" include="demo-pages-shared-styles simple-colors-shared-styles">
+    <style>
       simple-colors-picker-demo {
         background-color: var(--simple-colors-default-theme-accent-1);
         color: var(--simple-colors-default-theme-grey-12);

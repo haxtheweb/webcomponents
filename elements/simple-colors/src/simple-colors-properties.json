@@ -1,0 +1,25 @@
+{
+  /**
+   * a selected accent-"color": grey, red, pink, purple, etc.
+   */
+  "accentColor": {
+    "attribute": "accent-color",
+    "type": "String",
+    "reflect": true //,"notify": true
+  },
+  /**
+   * make the default theme dark?
+   */
+  "dark": {
+    "name": "dark",
+    "type": "Boolean",
+    "reflect": true //,"notify": true
+  },
+  /**
+   * make the default theme dark?
+   */
+  "colors": {
+    "name": "colors",
+    "type": "Object" //,"notify": true
+  }
+}

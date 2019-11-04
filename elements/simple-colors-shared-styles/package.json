@@ -39,7 +39,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@rhelements/rh-sass": "*"
+    "@rhelements/rh-sass": "*",
+    "lit-element":"2.0.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "2.0.5",

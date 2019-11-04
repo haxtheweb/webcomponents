@@ -2,52 +2,75 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/polymer/lib/elements/dom-repeat.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { SimpleColors } from "../simple-colors.js";
 import "@lrnwebcomponents/simple-picker/simple-picker.js";
 
 /**
- * `simple-colors-inspector-select`
- * `a select element for changing simple-colors attributes in demos`
- *
- * @microcopy - language worth noting:
- *  -
+ * `simple-colors-picker`
+ * a select element for changing `simple-colors` attributes in demos
  *
  * @customElement
- * @polymer
  * @demo demo/picker.html demo
  * @see "../simple-colors.js"
  * @see "./demo/simple-colors-picker-demo.js"
  */
 class SimpleColorsPicker extends SimpleColors {
-  // render function
-  static get template() {
-    return html`
-      <style include="simple-colors-shared-styles">
+  static get styles() {
+    return [
+      css`
         :host {
           display: inline-block;
         }
         :host([hidden]) {
           display: none;
         }
-      </style>
+      `
+    ];
+  }
+  // render function
+  render() {
+    return html`
       <simple-picker
         id="picker"
-        aria-labelledby$="[[ariaLabelledby]]"
-        block-label$="[[blockLabel]]"
-        disabled$="[[disabled]]"
-        expanded$="[[expanded]]"
-        hide-option-labels$="[[shades]]"
-        label$="[[label]]"
-        on-change="_handleChange"
-        on-collapse="_handleCollapse"
-        on-expand="_handleExpand"
-        on-option-focus="_handleOptionFocus"
-        value$="{{value}}"
+        aria-labelledby="${this.ariaLabelledby}"
+        label="${this.label}"
+        ?disabled="${this.disabled}"
+        ?expanded="${this.expanded}"
+        ?hide-option-labels="${this.shades}"
+        @change="${this._handleChange}"
+        @collapse="${this._handleCollapse}"
+        @expand="${this._handleExpand}"
+        @option-focus="${this._handleOptionFocus}"
+        .block-label="${this.blockLabel ? this.blockLabel : false}"
+        .options="${this.options}"
+        .value="${this.value}"
       >
       </simple-picker>
     `;
+  }
+  constructor() {
+    super();
+    this.ariaLabelledby = null;
+    this.blockLabel = false;
+    this.disabled = false;
+    this.expanded = false;
+    this.label = null;
+    this.shades = false;
+    this.value = null;
+    this.__ready = false;
+    this.options = this._getOptions(this.colors, this.shades, this.dark);
+  }
+
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "colors")
+        this.options = this._getOptions(this.colors, this.shades, this.dark);
+      if (propName === "shades")
+        this.options = this._getOptions(this.colors, this.shades, this.dark);
+      if (propName === "dark")
+        this.options = this._getOptions(this.colors, this.shades, this.dark);
+    });
   }
 
   // properties available to the custom element for data binding
@@ -57,36 +80,30 @@ class SimpleColorsPicker extends SimpleColors {
        * Optional. Sets the aria-labelledby attribute
        */
       ariaLabelledby: {
-        name: "ariaLabelledby",
         type: String,
-        value: null
+        attribute: "aria-labelledby"
       },
 
       /**
        * Display as a block
        */
       blockLabel: {
-        name: "blockLabel",
         type: Boolean,
-        value: false
+        attribute: "block-label"
       },
 
       /**
        * Is the picker disabled?
        */
       disabled: {
-        name: "disabled",
-        type: Boolean,
-        value: false
+        type: Boolean
       },
 
       /**
        * Is it expanded?
        */
       expanded: {
-        name: "expanded",
         type: Boolean,
-        value: false,
         reflectToAttribute: true
       },
 
@@ -94,9 +111,7 @@ class SimpleColorsPicker extends SimpleColors {
        * Optional. The label for the picker input
        */
       label: {
-        name: "label",
-        type: String,
-        value: null
+        type: String
       },
 
       /**
@@ -111,23 +126,14 @@ class SimpleColorsPicker extends SimpleColors {
 ]`
         */
       options: {
-        name: "options",
         type: Array,
-        computed: "_getOptions(colors,shades,dark, __ready)",
-        reflectToAttribute: false,
-        observer: false
-      },
-      __ready: {
-        type: Boolean,
-        value: false
+        reflectToAttribute: false //,observer: false
       },
       /**
        * Show all shades instead of just main accent-colors
        */
       shades: {
-        name: "shades",
         type: Boolean,
-        value: false,
         reflectToAttribute: true
       },
 
@@ -135,11 +141,14 @@ class SimpleColorsPicker extends SimpleColors {
        * The value of the option.
        */
       value: {
-        name: "label",
         type: String,
-        value: null,
-        reflectToAttribute: true,
-        notify: true
+        reflectToAttribute: true //,notify: true
+      },
+      /**
+       *
+       */
+      __ready: {
+        type: Boolean
       }
     };
   }
@@ -152,67 +161,44 @@ class SimpleColorsPicker extends SimpleColors {
   }
 
   /**
-   * gets the simple-colors behaviors
-   */
-  static get behaviors() {
-    return [SimpleColors];
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-  }
-
-  /**
-   * ready state
-   */
-  ready() {
-    super.ready();
-    this.__ready = true;
-  }
-
-  /**
    * gets options for the selectors
    *
    * @param {object} the options object to convert
    */
-  _getOptions(colors, shades, dark, __ready) {
-    if (__ready) {
-      let options = [[]],
-        theme = dark !== false ? "dark" : "default";
-      if (shades === false) {
-        options = Object.keys(this.colors).map(key => {
-          return [
-            {
-              alt: key,
-              value: key
-            }
-          ];
-        });
-        options.unshift([
+  _getOptions(colors, shades, dark) {
+    let options = [[]],
+      theme = dark !== false ? "dark" : "default";
+    if (shades === false) {
+      options = Object.keys(this.colors).map(key => {
+        return [
           {
-            alt: "none",
-            value: null
+            alt: key,
+            value: key
           }
-        ]);
-      } else {
-        let colorNames = Object.keys(colors);
-        for (let i = 0; i < colors[colorNames[0]].length; i++) {
-          let shade = Object.keys(colors).map(key => {
-            let name = key + "-" + (i + 1),
-              cssvar = "--simple-colors-" + theme + "-theme-" + name;
-            return {
-              alt: name,
-              style: "background-color: var(" + cssvar + ")",
-              value: cssvar
-            };
-          });
-          options.push(shade);
+        ];
+      });
+      options.unshift([
+        {
+          alt: "none",
+          value: null
         }
+      ]);
+    } else {
+      let colorNames = Object.keys(colors);
+      for (let i = 0; i < colors[colorNames[0]].length; i++) {
+        let shade = Object.keys(colors).map(key => {
+          let name = key + "-" + (i + 1),
+            cssvar = "--simple-colors-" + theme + "-theme-" + name;
+          return {
+            alt: name,
+            style: "background-color: var(" + cssvar + ")",
+            value: cssvar
+          };
+        });
+        options.push(shade);
       }
-      this.shadowRoot.querySelector("#picker").options = options;
     }
+    return options;
   }
 
   /**
@@ -229,7 +215,7 @@ class SimpleColorsPicker extends SimpleColors {
   /**
    * handles when the picker collapses
    */
-  _handleCollapse(e) {
+  _handleCollapse() {
     if (this.__ready !== undefined)
       this.dispatchEvent(new CustomEvent("collapse", { detail: this }));
   }
@@ -237,7 +223,7 @@ class SimpleColorsPicker extends SimpleColors {
   /**
    * handles when the picker expands
    */
-  _handleExpand(e) {
+  _handleExpand() {
     if (this.__ready !== undefined)
       this.dispatchEvent(new CustomEvent("expand", { detail: this }));
   }
@@ -249,10 +235,6 @@ class SimpleColorsPicker extends SimpleColors {
     if (this.__ready !== undefined)
       this.dispatchEvent(new CustomEvent("option-focus", { detail: this }));
   }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
 }
 
 export { SimpleColorsPicker };

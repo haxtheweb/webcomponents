@@ -2,11 +2,11 @@
   "name": "@lrnwebcomponents/simple-colors",
   "wcfactory": {
     "className": "SimpleColors",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "simple-colors",
-    "generator-wcfactory-version": "0.3.2",
-    "useHAX": true,
-    "useSass": false,
+    "generator-wcfactory-version": "0.7.1",
+    "useHAX": false,
+    "useSass": true,
     "files": {
       "css": "src/simple-colors.css",
       "scss": "src/simple-colors.scss",
@@ -35,28 +35,31 @@
     "lighthouse": "../../node_modules/.bin/gulp lighthouse"
   },
   "author": {
-    "name": "btopro"
+    "name": "nikkimk"
   },
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/simple-picker": "^2.1.10",
     "@polymer/iron-icons": "^3.0.1",
-    "@polymer/polymer": "^3.2.0"
+    "@rhelements/rh-sass": "*",
+    "lit-element":"2.0.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
     "@lrnwebcomponents/simple-colors-shared-styles": "^2.1.6",
     "@lrnwebcomponents/simple-modal": "^2.1.5",
-    "@lrnwebcomponents/storybook-utilities": "^2.1.2",
+    "@lrnwebcomponents/storybook-utilities": "^2.1.2",    
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",
     "concurrently": "4.1.0",
     "gulp-babel": "8.0.0",
-    "gulp-sourcemaps": "2.6.4",
+    "gulp-sourcemaps": "2.6.5",
     "lodash": "4.17.13",
     "polymer-cli": "1.9.9",
-    "wct-browser-legacy": "1.0.2"
+    "polymer-build": "3.1.2",
+    "wct-browser-legacy": "1.0.2",
+    "web-animations-js": "2.3.1"
   },
   "private": false,
   "publishConfig": {

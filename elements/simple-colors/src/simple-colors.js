@@ -2,85 +2,32 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@lrnwebcomponents/simple-colors-shared-styles/lib/simple-colors-styles.js";
-import { css as SimpleColorsStyleSheet } from "@lrnwebcomponents/simple-colors-shared-styles/simple-colors-shared-styles.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { SimpleColorsSharedStyles } from "@lrnwebcomponents/simple-colors-shared-styles/simple-colors-shared-styles.js";
 /**
  * `simple-colors`
- * `a shared set of styles for @lrnwebcomponents`
- *
- * @microcopy - language worth noting:
- *  -
+ * a shared set of styles for `@lrnwebcomponents`
  *
  * @customElement
- * @polymer
  * @demo demo/index.html demo
  * @demo demo/how.html getting started
  * @demo demo/colors.html all of the colors
  * @demo demo/picker.html simple-colors-picker
  * @demo demo/extending.html extending simple-colors
  */
-class SimpleColors extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-      <style include="simple-colors-shared-styles"></style>
-      <slot></slot>
-    `;
-  }
+class SimpleColors extends LitElement {
+  /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {
-      /**
-       * a selected accent-color: grey, red, pink, purple, etc.
-       */
-      accentColor: {
-        name: "accentColor",
-        type: String,
-        value: "grey",
-        reflectToAttribute: true,
-        notify: true
-      },
-      /**
-       * make the default theme dark?
-       */
-      dark: {
-        name: "dark",
-        type: Boolean,
-        value: false,
-        reflectToAttribute: true,
-        notify: true
-      },
-      /**
-       * make the default theme dark?
-       */
-      colors: {
-        name: "colors",
-        type: Object,
-        value: window.SimpleColorsStyles.colors,
-        notify: true
-      }
-    };
+  constructor() {
+    super();
+    this.accentColor = "grey";
+    this.dark = false;
+    this.__utils = window.SimpleColorsSharedStyles.requestAvailability();
+    this.colors = window.SimpleColorsSharedStyles.colors;
   }
 
   static get tag() {
     return "simple-colors";
-  }
-
-  constructor() {
-    super();
-    this.__utils = window.SimpleColorsStyles.requestAvailability();
-    this.__styles = window.SimpleColorsStyles.stylesheet;
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
-    // ensure this only gets applied once even though shouldn't be possible
-    if (!window.SimpleColorsStylesHead) {
-      window.SimpleColorsStylesHead = true;
-      document.head.appendChild(SimpleColorsStyleSheet.content);
-    }
   }
 
   /**

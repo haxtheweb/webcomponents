@@ -2,8 +2,8 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { SimpleColors } from "../../simple-colors.js"; //import the shared styles
+import { html, css } from "lit-element/lit-element.js";
+import { SimpleColors } from "../../simple-colors.js";
 
 /**
  * `simple-colors-swatch-info`
@@ -13,16 +13,14 @@ import { SimpleColors } from "../../simple-colors.js"; //import the shared style
  *  -
  *
  * @customElement
- * @polymer
  * @demo demo/colors.html demo
  * @see "../../simple-colors.js"
  * @see "../simple-colors-picker.js"
  */
 class simpleColorsSwatchInfo extends SimpleColors {
-  //render function
-  static get template() {
-    return html`
-      <style include="simple-colors-shared-styles">
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           margin: 15px 0;
@@ -54,14 +52,21 @@ class simpleColorsSwatchInfo extends SimpleColors {
           line-height: 160%;
         }
         :host table td span {
-          padding: 5px; 
+          padding: 5px;
           white-space: nowrap;
           margin: 5px 0;
         }
-      </style>
-      <table summary="Each row represents a CSS variable or class with a description of what it does without the dark attribute and with the attribute.">
+      `
+    ];
+  }
+  // render function
+  render() {
+    return html`
+      <table
+        summary="Each row represents a CSS variable or class with a description of what it does without the dark attribute and with the attribute."
+      >
         <caption>
-          CSS Variables and Classes for [[swatchName]]
+          CSS Variables and Classes for ${this.swatchName}
         </caption>
         <thead>
           <tr>
@@ -69,27 +74,31 @@ class simpleColorsSwatchInfo extends SimpleColors {
             <th scope="col">Color</th>
             <th scope="col">With <tt>dark</tt> Attribute</th>
           </tr>
-        <thead>
+        </thead>
         <tbody>
           <tr>
             <th scope="row">
-              --simple-colors-default-theme-[[swatchName]]
+              --simple-colors-default-theme-${this.swatchName}
             </th>
-            <td style$="[[bg]]">default color</td>
-            <td style$="[[inverseBg]]">inverted color</td>
+            <td style="${this._getBg(this.swatchId)}">default color</td>
+            <td style="${this._getInverseBg(this.swatchId)}">inverted color</td>
           </tr>
           <tr>
             <th scope="row">
-              --simple-colors-fixed-theme-[[swatchName]]
+              --simple-colors-fixed-theme-${this.swatchName}
             </th>
-            <td style$="[[bg]]">default color</td>
-            <td style$="[[bg]]">fixed color</td>
+            <td style="${this._getBg(this.swatchId)}">default color</td>
+            <td style="${this._getBg(this.swatchId)}">fixed color</td>
           </tr>
         </tbody>
       </table>
-      
-      <table summary="A list of colors that meet WCAG 2.0 AA contrast requirements. Each contains all the contrasting shades for a given color, based on whether or not the text is regular or large.">
-        <caption>WCAG 2.0 AA Contrast with [[swatchName]]</caption>
+
+      <table
+        summary="A list of colors that meet WCAG 2.0 AA contrast requirements. Each contains all the contrasting shades for a given color, based on whether or not the text is regular or large."
+      >
+        <caption>
+          WCAG 2.0 AA Contrast with ${this.swatchName}
+        </caption>
         <thead>
           <tr>
             <th scope="col">Color Name</th>
@@ -98,91 +107,75 @@ class simpleColorsSwatchInfo extends SimpleColors {
           </tr>
         </thead>
         <tbody>
-          <template is="dom-repeat" items="[[_getOptions(colors)]]" as="color">
-            <tr>
-              <th scope="row">[[color]]</th>
-              <td>
-                <template is="dom-repeat" items="[[_getAa(swatchId,color)]]" as="contrast">
-                  <span class="contrast" style$="[[_getContrastBg(color,contrast)]]">[[color]]-[[contrast]]</span>
-                </template>
-              </td>
-              <td>
-                <template is="dom-repeat" items="[[_getAaLarge(swatchId,color)]]" as="contrast">
-                  <span class="contrast" style$="[[_getContrastBg(color,contrast)]]">[[color]]-[[contrast]]</span>
-                </template>
-              </td>
-            </tr>
-          </template>
+          ${this._getOptions(this.colors).map(color => {
+            return html`
+              <tr>
+                <th scope="row">${color}</th>
+                <td>
+                  ${this._getAa(this.swatchId, color).map(
+                    contrast =>
+                      html`
+                        <span
+                          class="contrast"
+                          style="${this._getContrastBg(color, contrast)}"
+                          >${color}-${contrast}</span
+                        >
+                      `
+                  )}
+                </td>
+                <td>
+                  ${this._getAaLarge(this.swatchId, color).map(
+                    contrast =>
+                      html`
+                        <span
+                          class="contrast"
+                          style="${this._getContrastBg(color, contrast)}"
+                          >${color}-${contrast}</span
+                        >
+                      `
+                  )}
+                </td>
+              </tr>
+            `;
+          })}
         </tbody>
       </table>
-      <p><small>* Large text is defined as bold text at least 14pt or normal text at least 18pt</small></p>
+      <p>
+        <small
+          >* Large text is defined as bold text at least 14pt or normal text at
+          least 18pt</small
+        >
+      </p>
     `;
+  }
+  constructor() {
+    super();
+    this.swatchId = "grey_0";
+    this.swatchName = "grey-1";
   }
 
   /**
    * properties available to the custom element for data binding
    */
-
   static get properties() {
     return {
       /**
        * The id of the swatch (`color_index`)
        */
       swatchId: {
-        name: "swatchId",
-        type: "String",
-        value: "grey_0",
-        reflectToAttribute: true
+        attribute: "swatch-id",
+        type: String,
+        reflect: true
       },
       /**
        * The swatch name (`color-shade`)
        */
       swatchName: {
-        name: "swatchName",
-        type: "String",
-        value: "grey-1",
-        reflectToAttribute: true
-      },
-      /**
-       * A style where swatch color is the background-color
-       */
-      bg: {
-        name: "bg",
-        type: "String",
-        computed: "_getBg(swatchId)"
-      },
-      /**
-       * A style where swatch color is the background-color in dark mode
-       */
-      inverseBg: {
-        name: "inverseBg",
-        type: "String",
-        computed: "_getInverseBg(swatchId)"
-      },
-      /**
-       * A style where swatch color is the text color
-       */
-      text: {
-        name: "text",
-        type: "String",
-        computed: "_getText(swatchId)"
-      },
-      /**
-       * A style where swatch color is the text color in dark mode
-       */
-      inverseText: {
-        name: "inverseText",
-        type: "String",
-        computed: "_getInverseText(swatchId)"
+        attribute: "swatch-name",
+        type: String,
+        reflect: true
       }
     };
-  }
-
-  /**
-   * gets simple-colors behaviors
-   */
-  static get behaviors() {
-    return [SimpleColors];
   }
 
   /**
@@ -190,20 +183,6 @@ class simpleColorsSwatchInfo extends SimpleColors {
    */
   static get tag() {
     return "simple-colors-swatch-info";
-  }
-
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-  }
-
-  /**
-   * life cycle, element is readt
-   */
-  ready() {
-    super.ready();
   }
 
   /**
@@ -258,17 +237,6 @@ class simpleColorsSwatchInfo extends SimpleColors {
   }
 
   /**
-   * gets a style where swatch color is the text color in dark mode,
-   * eg. `background: var(--simple-colors-default-theme-grey-12); color: var(--simple-colors-default-theme-red-2);`
-   *
-   * @param {string} a swatch id (`color_index`)
-   * @returns {string} the style
-   */
-  _getInverseText(swatchId) {
-    return this._getText(swatchId, true);
-  }
-
-  /**
    * gets the list of color names from the colors object
    *
    * @param {object} the colors object
@@ -276,18 +244,6 @@ class simpleColorsSwatchInfo extends SimpleColors {
    */
   _getOptions(obj) {
     return Object.keys(obj);
-  }
-
-  /**
-   * gets a style where swatch color is the text color,
-   * eg. `background: var(--simple-colors-default-theme-grey-1); color: var(--simple-colors-default-theme-red-11);`
-   *
-   * @param {string} a swatch id (`color_index`)
-   * @returns {string} the style
-   */
-  _getText(swatchId, inverse = false) {
-    let colors = this._getColors(swatchId, inverse);
-    return "color: " + colors[0] + "; background: " + colors[1] + ";";
   }
 
   /**

@@ -1,3 +1,6 @@
+/* 
+  LIST SHARED STYLES BELOW
+*/
 @import "../../rh-sass/rh-sass";
 $grey: (
   "color-1": #ffffff,
@@ -335,20 +338,20 @@ $colors:
   }
 }
 @mixin get-accent($name,$color) {
-  :host([accent-color=#{$name}]), 
-  :host [accent-color=#{$name}] {
+  :host([accent-color=#{$name}]) {
     @include css-variables('default','accent',$color,$dark: false);
     @include css-variables('fixed','accent',$color,$dark: false);
   }
-  :host([dark][accent-color=#{$name}]),
-  :host([dark]) [accent-color=#{$name}],
-  :host([accent-color=#{$name}]) [dark],
-  :host [dark][accent-color=#{$name}] {
+  :host([dark][accent-color=#{$name}]) {
     @include css-variables('default','accent',$color,$dark: true);
   }
 }
 
-html {
-  @include get-colors('default',$dark: false);
-  @include get-colors('fixed',$dark: false);
+:host([dark]) {
+  @include get-colors('default',$dark: true);
+}
+
+@each $color in $colors {
+  $var: color-variable($color);
+  @include get-accent($color,$var);
 }
