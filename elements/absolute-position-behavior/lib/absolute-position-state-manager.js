@@ -2,127 +2,122 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement } from "lit-element/lit-element.js";
 import "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
 
 // register globally so we can make sure there is only one
 window.AbsolutePositionStateManager = window.AbsolutePositionStateManager || {};
-// request if this exists. This helps invoke the el existing in the dom
+// request if this exists. This helps invoke element existing in dom
 // as well as that there is only one of them. That way we can ensure everything
-// is rendered through the same modal
+// is rendered through same modal
 window.AbsolutePositionStateManager.requestAvailability = () => {
   if (!window.AbsolutePositionStateManager.instance) {
     window.AbsolutePositionStateManager.instance = document.createElement(
       "absolute-position-state-manager"
     );
-    document.body.appendChild(window.AbsolutePositionStateManager.instance);
+    let instance = window.AbsolutePositionStateManager.instance;
+    document.body.appendChild(instance);
   }
   return window.AbsolutePositionStateManager.instance;
 };
 /**
  * `absolute-position-state-manager`
- * `A utility that manages the state of multiple a11y-media-players on a single page.`
- *
- * @microcopy - language worth noting:
- *  -
+ * manages state of multiple absolute-positioned elements on a page
  *
  * @customElement
  * @polymer
  */
-class AbsolutePositionStateManager extends PolymerElement {
+class AbsolutePositionStateManager extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   /**
-   * Store the tag name to make it easier to obtain directly.
+   * Store tag name to make it easier to obtain directly.
    */
   static get tag() {
     return "absolute-position-state-manager";
   }
 
-  // properties available to the custom el for data binding
+  // properties available to custom element for data binding
   static get properties() {
     return {
       /**
-       * Stores an array of all the players on the page.
+       * Stores an array of all elements using manager.
        */
-      els: {
-        type: Array,
-        value: []
+      elements: {
+        type: Array
+      },
+      /**
+       * mutation observer
+       */
+      __observer: {
+        type: Object
+      },
+      /**
+       * resize timeout
+       */
+      __timeout: {
+        type: Object
       }
     };
   }
 
   /**
-   * Makes sure there is a utility ready and listening for els.
+   * Makes sure there is a utility ready and listening for elements.
    */
   constructor() {
     super();
-    let root = this;
-
-    // sets the instance to the current instance
-    if (!window.AbsolutePositionStateManager.instance) {
-      window.AbsolutePositionStateManager.instance = this;
-      return this;
-    }
+    this.elements = [];
+    this.__timeout = false;
+    this.__observer = new MutationObserver(mutations =>
+      this.checkMutations(mutations)
+    );
   }
 
   /**
-   * life cycle, el is afixed to the DOM
-   * Makes sure there is a utility ready and listening for els.
-   */
-  connectedCallback() {
-    super.connectedCallback();
-  }
-
-  /**
-   * Loads el into array
+   * Loads element into array
+   * @param {object} element to be added
    */
   loadElement(el) {
-    let root = this;
-    root.__on = root.__on !== undefined ? root.__on : false;
-    root.els.push(el);
-    root.positionElement(el);
-    if (!root.__on) root.addEventListeners();
-    root.__on = true;
+    //only have event listeners when there are elements using manager
+    if (this.elements.length < 1) {
+      this.__observer.observe(document, {
+        attributes: true,
+        childList: true,
+        subtree: true,
+        characterData: true
+      });
+      this.updateElements();
+      document.addEventListener("load", this.updateElements);
+      window.addEventListener("resize", this._handleResize);
+    }
+    this.elements.push(el);
+    this.positionElement(el);
   }
 
   /**
-   * Unloads el from array
+   * Unloads element from array
+   * @param {object} element to be removed
    */
   unloadElement(el) {
-    let root = this;
-    root.els.filter(el => el === el);
-    root.__on = root.els > 0;
-    if (!root.__on) root.removeEventListeners();
+    this.elements.filter(element => element === el);
+    if (this.elements.length < 1) this.removeEventListeners();
   }
 
   /**
-   * Adds event listeners
+   * handles resize event
    */
-  addEventListeners() {
-    let root = this;
-    root.__timeout = false;
-    root.updateElements();
-    document.addEventListener("load", root.updateElements());
-    window.addEventListener("resize", function() {
-      clearTimeout(root.__timeout);
-      root.__timeout = setTimeout(root.updateElements(), 250);
-    });
-    root.__observer = new MutationObserver(function(mutations) {
-      root.checkMutations(mutations);
-    });
-    root.__observer.observe(document, {
-      attributes: true,
-      childList: true,
-      subtree: true,
-      characterData: true
-    });
+  _handleResize() {
+    if (this.__timeout) clearTimeout(this.__timeout);
+    this.__timeout = setTimeout(
+      window.AbsolutePositionStateManager.instance.updateElements(),
+      250
+    );
   }
 
   /**
    * Checks if there are any chances other than to
-   * the element's position and updates accordioning.
-   * This is needed so that positioning the elements
+   * element's position and updates accordioning.
+   * This is needed so that positioning elements
    * doesn't trigger an infinite loop of updates.
    *
    * @param {array} mutation records
@@ -138,16 +133,20 @@ class AbsolutePositionStateManager extends PolymerElement {
         !(
           mutation.type === "attributes" &&
           mutation.attributeName === "style" &&
-          this.els.includes(mutation.target)
+          this.elements.includes(mutation.target)
         );
     });
     if (update) this.updateElements();
   }
 
   /**
-   * Returns the target el that this el is anchored to. It is
-   * either the el given by the `for` attribute, or the immediate parent
-   * of the el.
+   * Returns target element that this element is anchored to. It is
+   * either element given by `for` attribute, or immediate parent
+   * of element.
+   *
+   * Uses `target` object if specified.
+   * If not, queries document for elements with id specified in `for` attribute.
+   * If there is more than one element that matches, gets closest matching element.
    *
    * @param {object} element using absolute-position behavior
    * @return {object} target element for positioning
@@ -161,11 +160,6 @@ class AbsolutePositionStateManager extends PolymerElement {
       target = el.target || docQuery,
       ancestor = el;
 
-    /**
-     * Use `target` object if specified.
-     * If not, query the document for elements with the id specified in the `for` attribute.
-     * If there is more than one element that matches, find the closest matching element.
-     */
     while (
       el.for !== undefined &&
       target === null &&
@@ -184,31 +178,23 @@ class AbsolutePositionStateManager extends PolymerElement {
    * @return {void}
    */
   removeEventListeners() {
-    let root = this;
-    document.removeEventListener("load", root.updateElements());
-    window.removeEventListener("resize", function() {
-      clearTimeout(root.__timeout);
-      root.__timeout = setTimeout(root.updateElements(), 250);
-    });
-    if (root.__observer) {
-      root.__observer.disconnect();
-    }
+    if (this.__observer && this.__observer.disconnect)
+      this.__observer.disconnect();
+    document.removeEventListener("load", this.updateElements);
+    window.removeEventListener("resize", this._handleResize);
   }
 
   /**
-   * Updates position for all elements on the page.
+   * Updates position for all elements on page.
    * @return {void}
    */
   updateElements() {
-    let root = this;
-    root.els.forEach(el => {
-      root.positionElement(el);
-    });
+    this.elements.forEach(element => this.positionElement(element));
   }
 
   /**
    * Gets an updated position based on target.
-   * @param {object} the element using absolute-position behavior
+   * @param {object} element using absolute-position behavior
    * @return {void}
    */
   positionElement(el) {
@@ -218,60 +204,49 @@ class AbsolutePositionStateManager extends PolymerElement {
       parentRect = el.offsetParent.getBoundingClientRect(),
       targetRect = target.getBoundingClientRect(),
       elRect = el.getBoundingClientRect(),
-      /**
-       * place the element before the vertically?
-       * @param {string} position as in "top", "left", "right", or "bottom"
-       */
       vertical = position => {
+        //place element before vertically?
         return position !== "left" && position !== "right";
       },
-      /**
-       * place the element before the target?
-       */
       before = position => {
+        //place element before target?
         return position === "left" || position === "top";
       },
       /**
-       * fits the element within the parent's boundaries;
-       * if element is larget than the parent,
-       * it will be aligned where parent begins
+       * ;
+       *
        */
       fitToBounds = () => {
+        //fits element within parent's boundaries
         let pos1 = vertical(el.position) ? "left" : "top",
           pos2 = vertical(el.position) ? "right" : "bottom",
           getRect = rect => {
             return vertical(el.position) ? rect.width : rect.height;
           },
           coord =
-            targetRect[pos1] - getRect(elRect) / 2 + getRect(targetRect) / 2, //works for left
+            targetRect[pos1] - getRect(elRect) / 2 + getRect(targetRect) / 2,
           min = parentRect[pos1],
           max = parentRect[pos2] - getRect(elRect);
         return el.fitToVisibleBounds
-          ? Math.max(min, Math.min(max, coord)) + "px" //Math.max(min, Math.min(max, coord)) + "px"
-          : coord + "px";
+          ? Math.max(min, Math.min(max, coord)) + "px"
+          : coord + "px"; //if element size > parent, align where parent begins
       },
-      /**
-       * adds or subtracts the offset from the target based on a given postion
-       */
       getCoord = () => {
+        //adds or subtracts offset from target based on position
         return el.position === "top"
           ? targetRect.top - elRect.height - offset + "px"
           : el.position === "left"
           ? targetRect.left - elRect.width - offset + "px"
           : targetRect[el.position] + offset + "px";
       },
-      /**
-       * determines if there is room for the element between
-       * the parent and target in a given position;
-       * if no room in any position it will return the original position
-       */
       isFit = position => {
+        //determines if room for element between parent and target
         let size = vertical(position)
           ? elRect.height + offset
           : elRect.width + offset;
         return before(position)
           ? targetRect[position] - parentRect[position] > size
-          : parentRect[position] - targetRect[position] > size;
+          : parentRect[position] - targetRect[position] > size; //if no room, return original position
       };
     let flip = el.fitToVisibleBounds !== false && !isFit(el.position),
       flipData = {
@@ -281,7 +256,7 @@ class AbsolutePositionStateManager extends PolymerElement {
         right: ["left", "bottom", "top"]
       };
     /*
-     * fits the element according to specified postion,
+     * fits element according to specified postion,
      * or finds an alternative position that fits
      */
     if (flip && isFit(flipData[el.position][0])) {
@@ -294,7 +269,7 @@ class AbsolutePositionStateManager extends PolymerElement {
       el.style.position = "absolute";
       el.style.top = vertical(el.position) ? getCoord() : fitToBounds();
       el.style.left = vertical(el.position) ? fitToBounds() : getCoord();
-      //provide positions for el and target (in case furthor positioning adjustments are needed)
+      //provide positions for element and target (in case furthor positioning adjustments are needed)
       el.__positions = {
         self: elRect,
         parent: parentRect,
@@ -304,7 +279,7 @@ class AbsolutePositionStateManager extends PolymerElement {
   }
 
   /**
-   * life cycle, el is removed from the DOM
+   * life cycle, element is removed from DOM
    */
   disconnectedCallback() {
     this.removeEventListeners();

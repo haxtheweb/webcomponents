@@ -1,82 +1,51 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "../a11y-collapse.js";
 /**
  * `a11y-collapse-group`
- * A group of a11y-collapse elements
- * @microcopy - the mental model for this element```
-<a11y-collapse-group 
-  global-options='{"prop": "value"}'     //Optional: An object that will automatica11y override and set properties for every a11y-collapse.
-  radio>                                 //Optional: radio. If true, only one item in the group can be expanded at a time.
-  <h2 slot="heading">Colors List</h2>    //Optional: Adds the slotted content above the group
-  <a11y-collapse>...</a11y-collapse>     //An a11y-collapse item. See documentation for the a11y-collapse
-</a11y-collapse-group>
+ * a group of `a11y-collapse` elements
+ * 
+### Styling
 
-CSS Mixins:
-  --a11y-collapse-group                    //sets CSS for the a11y-collapse-group
-  --a11y-collapse-group-heading            //sets CSS for the a11y-collapse-group heading
-```
+`<a11y-collapse-group>` provides the following custom properties
+for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--a11y-collapse-group-margin` | margin around the a11y-collapse-group | 15px 0
  *
  * @customElement
- * @polymer
  * @demo demo/accordion.html collapse groups
  */
-
-class A11yCollapseGroup extends PolymerElement {
-  static get tag() {
-    return "a11y-collapse-group";
-  }
-  static get template() {
-    return html`
-      <style>
+class A11yCollapseGroup extends LitElement {
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           margin: var(--a11y-collapse-group-margin, 15px 0);
           --a11y-collapse-margin: 15px;
-
-          @apply --a11y-collapse-group;
         }
-        :host #heading {
+        #heading {
           font-weight: bold;
-          @apply --a11y-collapse-group-heading;
         }
-        :host .wrapper {
+        .wrapper {
           border-radius: 0;
           --a11y-collapse-margin: 0;
           --a11y-collapse-border-between: none;
         }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
       <div class="wrapper"><slot></slot></div>
     `;
   }
-  static get properties() {
-    return {
-      /**
-       * an array of globalProperties to override every a11y-collapse item
-       * For example, {"icon": "arrow-drop-down"} would set every item's icon to "arrow-drop-down"
-       */
-      globalOptions: {
-        type: Object,
-        value: {}
-      },
-      /**
-       * is every a11y-collapse item radio button?
-       */
-      radio: {
-        type: Boolean,
-        value: false
-      },
-      /**
-       * is radio button
-       */
-      __items: {
-        type: Array,
-        value: []
-      }
-    };
-  }
   constructor() {
     super();
+    this.globalOptions = {};
+    this.radio = false;
+    this.__items = [];
     this.addEventListener("a11y-collapse-attached", function(e) {
       this._attachItem(e.detail);
     });
@@ -87,9 +56,38 @@ class A11yCollapseGroup extends PolymerElement {
       this.radioToggle(e.detail);
     });
   }
+  static get tag() {
+    return "a11y-collapse-group";
+  }
+
+  static get properties() {
+    return {
+      /**
+       * an array of globalProperties to override every a11y-collapse item
+       * For example, {"icon": "arrow-drop-down"} would set every item's icon to "arrow-drop-down"
+       */
+      globalOptions: {
+        type: Object,
+        attribute: "global-options"
+      },
+      /**
+       * is every a11y-collapse item radio button?
+       */
+      radio: {
+        type: Boolean
+      },
+      /**
+       * is radio button
+       */
+      __items: {
+        type: Array
+      }
+    };
+  }
 
   /**
    * Removes a detached item from the _items array.
+   * @param {object} item an a11y-collapse item
    */
   _attachItem(item) {
     for (let key in this.globalOptions) {
@@ -97,12 +95,12 @@ class A11yCollapseGroup extends PolymerElement {
         item._overrideProp(key, this.globalOptions[key]);
       }
     }
-    this.push("__items", item);
-    this.notifyPath("__items");
+    this.__items.push(item);
   }
 
   /**
    * Removes a detached item from the _items array.
+   * @param {object} item an a11y-collapse item
    */
   _detachItem(item) {
     if (this.__items && item) {
@@ -114,6 +112,7 @@ class A11yCollapseGroup extends PolymerElement {
 
   /**
    * Toggles off all previous choices.
+   * @param {object} item an a11y-collapse item
    */
   radioToggle(item) {
     if (this.radio && item.expanded) {

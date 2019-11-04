@@ -43,6 +43,23 @@ gulp.task("merge", () => {
           const styleFilePath = path.join("./src", styleUrl);
           let cssResult = fs.readFileSync(styleFilePath);
           cssResult = stripCssComments(cssResult).trim();
+          let litResult =
+              packageJson.wcfactory.customElementClass !== "LitElement"
+                ? ``
+                : `
+  //styles function
+  static get styles() {
+    return  [
+      css\`${cssResult}\`
+    ]
+  }`,
+            styleResult =
+              packageJson.wcfactory.customElementClass !== "LitElement"
+                ? `<style>
+${cssResult}
+        </style>`
+                : ``;
+
           return `${classStatement}
   static get template() {
     return html\`

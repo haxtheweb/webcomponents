@@ -36,9 +36,7 @@ const css = html`
     }
     :host(rich-text-editor-emoji-picker),
     :host(rich-text-editor-symbol-picker) {
-      --simple-picker-option-label: {
-        padding: 2px;
-      }
+      --simple-picker-option-label-padding: 2px;
     }
     :host paper-tooltip {
       z-index: 2;
