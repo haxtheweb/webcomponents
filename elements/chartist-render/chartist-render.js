@@ -1168,13 +1168,15 @@ Container class	Ratio
        * The chart title used for accessibility.
        */
       chartTitle: {
-        type: String
+        type: String,
+        attribute: "chart-title"
       },
       /**
        * The chart description used for accessibility.
        */
       chartDesc: {
-        type: String
+        type: String,
+        attribute: "chart-desc"
       },
       /**
        * The chart data.
@@ -1192,13 +1194,15 @@ Container class	Ratio
        * The responsive options. (See https://gionkunz.github.io/chartist-js/api-documentation.html.)
        */
       responsiveOptions: {
-        type: Array
+        type: Array,
+        attribute: "responsive-options"
       },
       /**
        * The show data in table form as well? Default is false.
        */
       showTable: {
-        type: Boolean
+        type: Boolean,
+        attribute: "show-table"
       }
     };
     if (super.properties) {
@@ -1239,6 +1243,10 @@ Container class	Ratio
    */
   static get tag() {
     return "chartist-render";
+  }
+
+  updated(changedProperties) {
+    this.makeChart();
   }
 
   // simple path from a url modifier

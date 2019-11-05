@@ -2,68 +2,64 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { LrndesignChartBehaviors } from "./lrndesign-chart-behaviors.js";
 /**
  * `lrndesign-pie`
- * A pie chart
+ * a pie chart
  *
- * @polymer
  * @customElement
  * @demo demo/pie.html
  *
  */
 class LrndesignPie extends LrndesignChartBehaviors {
+  constructor() {
+    super();
+    this.setProperties();
+  }
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    return Object.assign(super.properties(), {
       /**
-       * Type of chart.
+       * Padding of chart drawing area to container element and labels
        */
-      type: {
-        type: String,
-        value: "pie",
-        readOnly: true
-      },
-      /**
-       * Scale of the chart.
-       */
-      scale: {
-        type: String,
-        notify: true,
-        value: "ct-square"
-      },
-      /**
-       *  Start angle of the pie chart in degrees where 0 points north.
-       * A higher value offsets the start angle clockwise..
-       */
-      startAngle: {
-        type: Number,
-        value: 0
-      },
-      /**
-       * Optional total you can specify. By specifying a total value,
-       * the sum of the values in the series must be this total in order
-       * to draw a full pie. You can use this parameter to draw only parts
-       * of a pie or gauge charts.
-       */
-      total: {
-        type: Number,
-        value: undefined
+      chartPadding: {
+        type: Number
       },
       /**
        * Displays chart as donut instead of pie.
        */
       donut: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       /**
-       * If a label should be shown.
+       * Draw donut segments as shapes instead of strokes.
        */
-      showLabel: {
-        type: Boolean,
-        value: true
+      donutSolid: {
+        type: Boolean
+      },
+      /**
+       * Donut stroke width, currently done in javascript.
+       */
+      donutWidth: {
+        type: Number
+      },
+      /**
+       * Empty values will be ignored to avoid drawing
+       * unncessary slices and labels
+       */
+      ignoreEmptyValues: {
+        type: Boolean
+      },
+      /**
+       * Label direction can be 'neutral', 'explode' or 'implode'.
+       * The labels anchor will be positioned based on those settings
+       * as well as the fact if the labels are on the right or
+       * left side of the center of the chart.
+       * Usually explode is useful when labels are positioned
+       * far away from the center.
+       */
+      labelDirection: {
+        type: String
       },
       /**
        * Label position offset from the standard position
@@ -72,8 +68,7 @@ class LrndesignPie extends LrndesignChartBehaviors {
        * Positive values will position the label away from the center.
        */
       labelOffset: {
-        type: Number,
-        value: 0
+        type: Number
       },
       /**
        * This option can be set to 'inside', 'outside' or 'center'.
@@ -85,30 +80,31 @@ class LrndesignPie extends LrndesignChartBehaviors {
        * in conjunction with the 'labelOffset' option.
        */
       labelPosition: {
-        type: String,
-        value: "inside"
+        type: String
       },
       /**
-       * Label direction can be 'neutral', 'explode' or 'implode'.
-       * The labels anchor will be positioned based on those settings
-       * as well as the fact if the labels are on the right or
-       * left side of the center of the chart.
-       * Usually explode is useful when labels are positioned
-       * far away from the center.
+       * If a label should be shown.
        */
-      labelDirection: {
-        type: String,
-        value: "neutral"
+      showLabel: {
+        type: Boolean
       },
       /**
-       * Empty values will be ignored to avoid drawing
-       * unncessary slices and labels
+       *  Start angle of the pie chart in degrees where 0 points north.
+       * A higher value offsets the start angle clockwise..
        */
-      ignoreEmptyValues: {
-        type: Boolean,
-        value: false
+      startAngle: {
+        type: Number
+      },
+      /**
+       * Optional total you can specify. By specifying a total value,
+       * the sum of the values in the series must be this total in order
+       * to draw a full pie. You can use this parameter to draw only parts
+       * of a pie or gauge charts.
+       */
+      total: {
+        type: Number
       }
-    };
+    });
   }
 
   /**
@@ -294,6 +290,25 @@ class LrndesignPie extends LrndesignChartBehaviors {
         ]
       }
     };
+  }
+
+  /**
+   * Overrides default properties with pie-specific properties.
+   */
+  setProperties() {
+    super.setProperties();
+    this.scale = "ct-square";
+    this.startAngle = 0;
+    this.chartPadding = 5;
+    this.donut = false;
+    this.donutSolid = false;
+    this.donutWidth = 60;
+    this.showLabel = false;
+    this.labelOffset = 0;
+    this.labelPosition = "inside";
+    this.labelDirection = "neutral";
+    this.ignoreEmptyValues = false;
+    this.type = "pie";
   }
   /**
    * returns options as an array

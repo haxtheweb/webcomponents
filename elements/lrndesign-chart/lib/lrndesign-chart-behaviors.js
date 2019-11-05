@@ -2,16 +2,14 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html } from "@polymer/polymer/polymer-element.js";
-import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
-import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
+import { ChartistRender } from "@lrnwebcomponents/chartist-render/chartist-render.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@lrnwebcomponents/chartist-render/chartist-render.js";
 /**
  * `lrndesign-chart-behaviors`
- * A line chart
+ * a line chart
  *
- * @polymer
  * @customElement
  * @demo demo/index.html
  * @demo demo/pie.html pie charts
@@ -19,11 +17,11 @@ import "@lrnwebcomponents/chartist-render/chartist-render.js";
  * @demo demo/line.html line charts
  *
  */
-class LrndesignChartBehaviors extends SchemaBehaviors(SimpleColorsPolymer) {
-  // render function
-  static get template() {
-    return html`
-      <style include="simple-colors-shared-styles-polymer">
+class LrndesignChartBehaviors extends LitElement(SimpleColors) {
+  static get styles() {
+    return [
+      super.styles,
+      css`
         :host {
           display: block;
         }
@@ -370,135 +368,65 @@ class LrndesignChartBehaviors extends SchemaBehaviors(SimpleColorsPolymer) {
           --chartist-color-14: var(--simple-colors-default-theme-grey-3);
           --chartist-color-15: var(--simple-colors-default-theme-grey-2);
         }
-      </style>
+      `
+    ];
+  }
+  render() {
+    return html`
       <iron-ajax
-        auto=""
-        url="{{dataSource}}"
+        auto
         handle-as="text"
-        last-response="{{rawData}}"
-        on-response="handleResponse"
+        url="${this.dataSource}"
+        .last-response="${this.rawData}"
+        @response="${this.handleResponse}"
       ></iron-ajax>
       <chartist-render
         id="chartist"
-        type="[[type]]"
-        scale$="[[scale]]"
-        chart-title$="[[chartTitle]]"
-        chart-desc$="[[chartDesc]]"
-        data$="[[data]]"
-        on-chartist-render-ready="_ready"
-        options$="{{options}}"
-        responsive-options$="[[responsiveOptions]]"
+        type="${this.type}"
+        scale="${this.scale}"
+        chart-title="${this.chartTitle}"
+        chart-desc="${this.chartDesc}"
+        .data="${this.data}"
+        .options="${this._getOptions()}"
+        .responsive-options="${this.responsiveOptions}"
+        @chartist-render-ready="${this._ready}"
       ></chartist-render>
     `;
   }
 
+  constructor() {
+    super();
+    this.setProperties();
+    let checkReady = setInterval(() => {
+      if (this.__dataReady) {
+        this.shadowRoot.querySelector("#chartist").makeChart();
+        clearInterval(checkReady);
+      }
+    }, 1);
+  }
+
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    return Object.assign(ChartistRender.properties, {
       /**
-       * The chart title used for accessibility.
+       * Location of the CSV file.
        */
-      chartTitle: {
+      dataSource: {
         type: String,
-        value: null
-      },
-      /**
-       * The chart description used for accessibility.
-       */
-      chartDesc: {
-        type: String,
-        value: ""
-      },
-      /**
-       * The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```
-Container class	Ratio
-.ct-square          1
-.ct-minor-second	  15:16
-.ct-major-second	  8:9
-.ct-minor-third	    5:6
-.ct-major-third	    4:5
-.ct-perfect-fourth	3:4
-.ct-perfect-fifth	  2:3
-.ct-minor-sixth	    5:8
-.ct-golden-section	1:1.618
-.ct-major-sixth	    3:5
-.ct-minor-seventh	  9:16
-.ct-major-seventh	  8:15
-.ct-octave	        1:2
-.ct-major-tenth	    2:5
-.ct-major-eleventh	3:8
-.ct-major-twelfth	  1:3
-.ct-double-octave	  1:4```
-       */
-      scale: {
-        type: String,
-        notify: true,
-        value: "ct-octave"
-      },
-      /**
-       * Type of chart.
-       */
-      type: {
-        type: String,
-        value: "pie"
-      },
-      /**
-       * Data as an array.
-       */
-      data: {
-        type: Array,
-        notify: true,
-        value: []
-      },
-      /**
-       * Options as an array.
-       */
-      options: {
-        type: Object,
-        notify: true,
-        value: {}
-      },
-      /**
-       * Fixed width for the chart as a string (i.e. '100px' or '50%').
-       */
-      width: {
-        type: String,
-        value: undefined
+        attribute: "data-source"
       },
       /**
        * Fixed height for the chart as a string (i.e. '100px' or '50%').
        */
       height: {
+        type: String
+      },
+      /**
+       * Raw data pulled in from the csv file.
+       */
+      rawData: {
         type: String,
-        value: undefined
-      },
-      /**
-       *  Padding-top for chart.
-       */
-      paddingTop: {
-        type: Number,
-        value: 15
-      },
-      /**
-       *  Padding-right for chart.
-       */
-      paddingRight: {
-        type: Number,
-        value: 15
-      },
-      /**
-       *  Padding-bottom for chart.
-       */
-      paddingBottom: {
-        type: Number,
-        value: 5
-      },
-      /**
-       *  Padding-left for chart.
-       */
-      paddingLeft: {
-        type: Number,
-        value: 10
+        attribute: "raw-data"
       },
       /**
        * Reverse data including labels, the series order as well as
@@ -506,32 +434,15 @@ Container class	Ratio
        */
       reverseData: {
         type: Boolean,
-        value: false
+        attribute: "reverse-data"
       },
       /**
-       * The responsive options.
-       * (See https://gionkunz.github.io/chartist-js/api-documentation.html.)
+       * Fixed width for the chart as a string (i.e. '100px' or '50%').
        */
-      responsiveOptions: {
-        type: Array,
-        value: []
-      },
-      /**
-       * Location of the CSV file.
-       */
-      dataSource: {
-        type: String,
-        notify: true
-      },
-      /**
-       * Raw data pulled in from the csv file.
-       */
-      rawData: {
-        type: String,
-        notify: true,
-        value: ""
+      width: {
+        type: String
       }
-    };
+    });
   }
 
   /**
@@ -539,6 +450,183 @@ Container class	Ratio
    */
   static get tag() {
     return "lrndesign-chart-behaviors";
+  }
+
+  //properties common to line and bar charts
+  static get lineBarProperties() {
+    return {
+      /**
+       * Offset X of labels for X-axis
+       */
+      axisXLabelOffsetX: {
+        attribute: "axis-x-label-offset-x",
+        type: Number
+      },
+      /**
+       * Offset Y of labels for X-axis
+       */
+      axisXLabelOffsetY: {
+        attribute: "axis-x-label-offset-y",
+        type: Number
+      },
+      /**
+       * The offset of the chart drawing area to the border of the container.
+       */
+      axisXOffset: {
+        attribute: "axis-x-offset",
+        type: Number
+      },
+      /**
+       * Position where labels are placed.
+       * Can be set to `start` or `end`
+       * where `start` is equivalent to left or top on vertical axis
+       * and `end` is equivalent to right or bottom on horizontal axis.
+       */
+      axisXPosition: {
+        attribute: "axis-x-position",
+        type: String
+      },
+      /**
+       * Show axis X grid?
+       */
+      axisXShowGrid: {
+        attribute: "axis-x-show-grid",
+        type: Boolean
+      },
+      /**
+       * Show axis X labels?
+       */
+      axisXShowLabel: {
+        attribute: "axis-x-show-label",
+        type: Boolean
+      },
+      /**
+       * Position labels at top-left of axis?
+       */
+      axisXTopLeft: {
+        attribute: "axis-x-top-left",
+        type: Boolean
+      },
+      /**
+       * Offset X of labels for Y-axis
+       */
+      axisYLabelOffsetX: {
+        attribute: "axis-y-label-offset-x",
+        type: Number
+      },
+      /**
+       * Offset Y of labels for Y-axis
+       */
+      axisYLabelOffsetY: {
+        attribute: "axis-y-label-offset-y",
+        type: Number
+      },
+      /**
+       * Position where labels are placed.
+       * Can be set to `start` or `end`
+       * where `start` is equivalent to left or top on vertical axis
+       * and `end` is equivalent to right or bottom on horizontal axis.
+       */
+      axisYPosition: {
+        attribute: "axis-y-position",
+        type: String
+      },
+      /**
+       * Specifies minimum height in pixel of scale steps
+       */
+      axisYScaleMinSpace: {
+        attribute: "axis-y-scale-min-space",
+        type: Number
+      },
+      /**
+       * The offset of the chart drawing area to the border of the container.
+       */
+      axisYOffset: {
+        attribute: "axis-y-offset",
+        type: Number
+      },
+      /**
+       * Use only integer values (whole numbers) for the scale steps
+       */
+      axisYOnlyInteger: {
+        attribute: "axis-y-only-integer",
+        type: Boolean
+      },
+      /**
+       * Show axis Y grid?
+       */
+      axisYshowGrid: {
+        attribute: "axis-y-show-grid",
+        type: Boolean
+      },
+      /**
+       * Show axis Y labels?
+       */
+      axisYshowLabel: {
+        attribute: "axis-y-show-label",
+        type: Boolean
+      },
+      /**
+       * Position labels at top-left of axis?
+       */
+      axisYTopLeft: {
+        attribute: "axis-y-top-left",
+        type: Boolean
+      },
+
+      /**
+       * Padding below chart drawing area
+       */
+      chartPaddingBottom: {
+        attribute: "chart-padding-bottom",
+        type: String
+      },
+
+      /**
+       * Padding left of chart drawing area
+       */
+      chartPaddingLeft: {
+        attribute: "chart-padding-left",
+        type: String
+      },
+
+      /**
+       * Padding right of chart drawing area
+       */
+      chartPaddingRight: {
+        attribute: "chart-padding-right",
+        type: String
+      },
+
+      /**
+       * Padding above chart drawing area
+       */
+      chartPaddingTop: {
+        attribute: "chart-padding-top",
+        type: String
+      },
+      /**
+       * Overriding the natural high of the chart allows you to zoom in
+       * or limit the charts highest displayed value.
+       */
+      high: {
+        type: Number
+      },
+      /**
+       * Overriding the natural low of the chart allows you to zoom in
+       * or limit the charts lowest displayed value.
+       */
+      low: {
+        type: Number
+      },
+      /**
+       * If the bar chart should add a background fill to the .ct-grids group.
+       */
+      showGridBackground: {
+        attribute: "show-grid-background",
+        type: Boolean
+      }
+    };
   }
 
   // haxProperty definition
@@ -704,32 +792,80 @@ Container class	Ratio
     };
   }
 
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "dataSource")
+        this.dispatchEvent(
+          new CustomEvent("data-source-changed", {
+            detail: this
+          })
+        );
+      if (propName === "rawData")
+        this.dispatchEvent(
+          new CustomEvent("raw-data-changed", {
+            detail: this
+          })
+        );
+    });
+  }
   /**
-   * life cycle, element is ready
+   * Sets properties for chart.
+   * Specific chart types can extend this function
+   * with type-specific properties.
    */
-  ready() {
-    super.ready();
-    let root = this;
-    let checkReady = setInterval(() => {
-      if (root.__dataReady) {
-        root.shadowRoot.querySelector("#chartist").makeChart();
-        clearInterval(checkReady);
-      }
-    }, 1);
+  setProperties() {
+    /*
+    this.fullWidth = false;
+     */
+    this.chartTitle = null;
+    this.chartDesc = null;
+    this.scale = "ct-minor-seventh";
+    this.reverseData = false;
+    this.rawData = "";
+  }
+
+  /**
+   * Sets properties specific to bar and line charts.
+   * Bar and line charts can include this function
+   * in their extended setProperties function.
+   */
+  setBarLineProperties() {
+    this.high = undefined;
+    this.low = undefined;
+    this.axisXLabelOffsetX = 0;
+    this.axisXLabelOffsetY = 0;
+    this.axisXOffset = 30;
+    this.axisXPosition = "end";
+    this.axisXShowGrid = true;
+    this.axisXShowLabel = true;
+    this.axisXTopLeft = false;
+    this.axisYLabelOffsetX = 0;
+    this.axisYLabelOffsetY = 0;
+    this.axisYOffset = 30;
+    this.axisYOnlyInteger = false;
+    this.axisYPosition = "start";
+    this.axisYScaleMinSpace = 20;
+    this.axisYShowGrid = true;
+    this.axisYshowLabel = true;
+    this.axisYTopLeft = true;
+    this.showGridBackground = false;
+    this.chartPaddingBottom = 5;
+    this.chartPaddingLeft = 10;
+    this.chartPaddingRight = 15;
+    this.chartPaddingTop = 15;
   }
 
   /**
    * Convert from csv text to an array in the table function
    */
   handleResponse(e) {
-    let root = this,
-      raw = root.CSVtoArray(root.rawData);
-    root.data = {
+    let raw = this.CSVtoArray(this.rawData);
+    this.data = {
       labels: raw[0],
-      series: root.type !== "pie" ? raw.slice(1, raw.length) : raw[1]
+      series: this.type !== "pie" ? raw.slice(1, raw.length) : raw[1]
     };
-    root.options = root._getOptions();
-    root.__dataReady = true;
+    this.options = this._getOptions();
+    this.__dataReady = true;
   }
 
   /**

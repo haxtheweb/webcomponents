@@ -2,58 +2,43 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { LrndesignChartBehaviors } from "./lrndesign-chart-behaviors.js";
 
 /**
  * `lrndesign-line`
- * A line chart
+ * a line chart
  *
- * @polymer
  * @customElement
  * @demo demo/line.html
  *
  */
 class LrndesignLine extends LrndesignChartBehaviors {
-  // properties available to the custom element for data binding
+  constructor() {
+    super();
+    this.setProperties();
+  }
+
   static get properties() {
-    let props = {
-      /**
-       * Type of chart.
-       */
-      type: {
-        type: String,
-        value: "line",
-        readOnly: true
-      },
-      /**
-       * If the line should be drawn or not.
-       */
-      showLine: {
-        type: Boolean,
-        value: true
-      },
-      /**
-       * If the line should be drawn or not.
-       */
-      showPoint: {
-        type: Boolean,
-        value: true
-      },
-      /**
-       * If the line chart should draw an area.
-       */
-      showArea: {
-        type: Boolean,
-        value: false
-      },
+    return Object.assign(super.properties(), {
       /**
        * The base for the area chart that will be used
        * to close the area shape (is normally 0).
        */
       areaBase: {
-        type: Number,
-        value: 0
+        attribute: "area-base",
+        type: Number
+      },
+      /**
+       * When set to true, the last grid line on the x-axis
+       * is not drawn and the chart elements will expand
+       * to the full available width of the chart.
+       * For the last label to be drawn correctly
+       * you might need to add chart padding or offset the
+       * last label with a draw event handler.
+       */
+      fullWidth: {
+        attribute: "full-width",
+        type: Boolean
       },
       /**
        * Specify if the lines should be smoothed.
@@ -69,140 +54,31 @@ class LrndesignLine extends LrndesignChartBehaviors {
        * for a brief description..
        */
       lineSmooth: {
-        type: Boolean,
-        value: true
+        attribute: "line-smooth",
+        type: Boolean
       },
       /**
-       * If the bar chart should add a background fill to the .ct-grids group.
+       * If the line chart should draw an area.
        */
-      showGridBackground: {
-        type: Boolean,
-        value: false
+      showArea: {
+        attribute: "show-area",
+        type: Boolean
       },
       /**
-       * Overriding the natural high of the chart allows you to zoom in
-       * or limit the charts highest displayed value.
+       * If the line should be drawn or not.
        */
-      high: {
-        type: Number,
-        value: undefined
+      showLine: {
+        attribute: "show-line",
+        type: Boolean
       },
       /**
-       * Overriding the natural low of the chart allows you to zoom in
-       * or limit the charts lowest displayed value.
+       * If the line should be drawn or not.
        */
-      low: {
-        type: Number,
-        value: undefined
-      },
-      /**
-       * When set to true, the last grid line on the x-axis
-       * is not drawn and the chart elements will expand
-       * to the full available width of the chart.
-       * For the last label to be drawn correctly
-       * you might need to add chart padding or offset the
-       * last label with a draw event handler.
-       */
-      fullWidth: {
-        type: Boolean,
-        value: false
-      },
-      /**
-       * The offset of the chart drawing area to the border of the container.
-       */
-      axisXOffset: {
-        type: Number,
-        value: 30
-      },
-      /**
-       * The offset of the chart drawing area to the border of the container.
-       */
-      axisYOffset: {
-        type: Number,
-        value: 30
-      },
-      /**
-       * Position labels at top-left of axis?
-       */
-      axisXTopLeft: {
-        type: Boolean,
-        value: false
-      },
-      /**
-       * Position labels at top-left of axis?
-       */
-      axisYTopLeft: {
-        type: Boolean,
-        value: true
-      },
-      /**
-       * Offset X of labels for X-axis
-       */
-      axisXLabelOffsetX: {
-        type: Number,
-        value: 0
-      },
-      /**
-       * Offset Y of labels for X-axis
-       */
-      axisXLabelOffsetY: {
-        type: Number,
-        value: 0
-      },
-      /**
-       * Offset X of labels for Y-axis
-       */
-      axisYLabelOffsetX: {
-        type: Number,
-        value: 0
-      },
-      /**
-       * Offset Y of labels for Y-axis
-       */
-      axisYLabelOffsetY: {
-        type: Number,
-        value: 0
-      },
-      /**
-       * Show axis X labels?
-       */
-      axisXShowLabel: {
-        type: Boolean,
-        value: true
-      },
-      /**
-       * Show axis Y labels?
-       */
-      axisYshowLabel: {
-        type: Boolean,
-        value: true
-      },
-      /**
-       * Show axis X grid?
-       */
-      axisXShowGrid: {
-        type: Boolean,
-        value: true
-      },
-      /**
-       * Show axis Y grid?
-       */
-      axisYshowGrid: {
-        type: Boolean,
-        value: true
-      },
-      /**
-       * Use only integer values (whole numbers) for the scale steps
-       */
-      axisYOnlyInteger: {
-        type: Boolean,
-        value: false
+      showPoint: {
+        attribute: "show-point",
+        type: Boolean
       }
-    };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
+    });
   }
 
   /**
@@ -467,10 +343,27 @@ class LrndesignLine extends LrndesignChartBehaviors {
   }
 
   /**
+   * Overrides default properties with line-specific properties.
+   */
+  setProperties() {
+    super.setProperties();
+    this.setBarLineProperties();
+    this.areaBase = 0;
+    this.fullWidth = false;
+    this.lineSmooth = true;
+    this.showArea = false;
+    this.showLine = true;
+    this.showPoint = true;
+    this.type = "line";
+  }
+
+  /**
    * returns options as an array
    */
   _getOptions() {
     return {
+      high: this.high,
+      low: this.low,
       showLine: this.showLine,
       showPoint: this.showPoint,
       showArea: this.showArea,

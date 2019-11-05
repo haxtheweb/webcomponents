@@ -51,6 +51,10 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
     return "chartist-render";
   }
 
+  updated(changedProperties) {
+    this.makeChart();
+  }
+
   // simple path from a url modifier
   pathFromUrl(url) {
     return url.substring(0, url.lastIndexOf("/") + 1);

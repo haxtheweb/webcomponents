@@ -2,91 +2,38 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { LrndesignChartBehaviors } from "./lrndesign-chart-behaviors.js";
 
 /**
  * `lrndesign-bar`
- * A bar chart
+ * a bar chart
  *
- * @polymer
  * @customElement
  * @demo demo/bar.html
  *
  */
 class LrndesignBar extends LrndesignChartBehaviors {
+  constructor() {
+    super();
+    this.setProperties();
+  }
+
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    return Object.assign(super.properties(), super.lineBarProperties(), {
       /**
-       * Type of chart.
+       * Use only integer values (whole numbers) for the scale steps
        */
-      type: {
-        type: String,
-        value: "bar",
-        readOnly: true
+      axisXOnlyInteger: {
+        attribute: "axis-x-only-integer",
+        type: Boolean
       },
       /**
-       * Overriding the natural high of the chart allows you to zoom in
-       * or limit the charts highest displayed value.
+       * TODO
        */
-      high: {
-        type: Number,
-        value: undefined
-      },
-      /**
-       * Overriding the natural low of the chart allows you to zoom in
-       * or limit the charts lowest displayed value.
-       */
-      low: {
-        type: Number,
-        value: undefined
-      },
-      /**
-       * Unless low/high are explicitly set, bar chart will be
-       * centered at zero by default. Set referenceValue to null to auto scale.
-       */
-      referenceValue: {
-        type: Number,
-        value: 0
-      },
-      /**
-       * Specify the distance in pixel of bars in a group.
-       */
-      seriesBarDistance: {
-        type: Number,
-        value: 15
-      },
-      /**
-       * If set to true this property will cause the series bars
-       * to be stacked. Check the "stackMode" option
-       * for further stacking options.
-       */
-      stackBars: {
-        type: Boolean,
-        value: false
-      },
-      /**
-       * If set to "true" this property will form a total
-       * for each series point. This will also influence
-       * the y-axis and the overall bounds of the chart.
-       * If set to "false" this property will force
-       * the stacked bars to draw from the zero line.
-       * In stacked mode the "seriesBarDistance" property will have no effect.
-       */
-      stackModeAccumulate: {
-        type: Boolean,
-        value: true
-      },
-      /**
-       * Inverts the axes of the bar chart in order to draw
-       * a horizontal bar chart. Be aware that you also need
-       * to invert your axis settings as the Y Axis will now display
-       * the labels and the X Axis the values.
-       */
-      horizontalBars: {
-        type: Boolean,
-        value: false
+      axisXScaleMinSpace: {
+        attribute: "axis-x-min-space",
+        type: Number
       },
       /**
        * If set to true then each bar will represent a series and
@@ -96,115 +43,56 @@ class LrndesignBar extends LrndesignChartBehaviors {
        * a profile rather than some data over time.
        */
       distributeSeries: {
-        type: Boolean,
-        value: false
+        attribute: "distribute-series",
+        type: Boolean
       },
       /**
-       * If the bar chart should add a background fill to the .ct-grids group.
+       * Inverts the axes of the bar chart in order to draw
+       * a horizontal bar chart. Be aware that you also need
+       * to invert your axis settings as the Y Axis will now display
+       * the labels and the X Axis the values.
        */
-      showGridBackground: {
-        type: Boolean,
-        value: false
+      horizontalBars: {
+        attribute: "horizontal-bars",
+        type: Boolean
       },
       /**
-       * The offset of the chart drawing area to the border of the container.
+       * Unless low/high are explicitly set, bar chart will be
+       * centered at zero by default. Set referenceValue to null to auto scale.
        */
-      axisXOffset: {
-        type: Number,
-        value: 30
+      referenceValue: {
+        attribute: "reference-value",
+        type: Number
       },
       /**
-       * The offset of the chart drawing area to the border of the container.
+       * Specify the distance in pixel of bars in a group.
        */
-      axisYOffset: {
-        type: Number,
-        value: 30
+      seriesBarDistance: {
+        attribute: "series-bar-distance",
+        type: Number
       },
       /**
-       * Position labels at top-left of axis?
+       * If set to true this property will cause the series bars
+       * to be stacked. Check the "stackMode" option
+       * for further stacking options.
        */
-      axisXTopLeft: {
-        type: Boolean,
-        value: false
+      stackBars: {
+        attribute: "stack-bars",
+        type: Boolean
       },
       /**
-       * Position labels at top-left of axis?
+       * If set to "true" this property will form a total
+       * for each series point. This will also influence
+       * the y-axis and the overall bounds of the chart.
+       * If set to "false" this property will force
+       * the stacked bars to draw from the zero line.
+       * In stacked mode the "seriesBarDistance" property will have no effect.
        */
-      axisYTopLeft: {
-        type: Boolean,
-        value: true
-      },
-      /**
-       * Offset X of labels for X-axis
-       */
-      axisXLabelOffsetX: {
-        type: Number,
-        value: 0
-      },
-      /**
-       * Offset Y of labels for X-axis
-       */
-      axisXLabelOffsetY: {
-        type: Number,
-        value: 0
-      },
-      /**
-       * Offset X of labels for Y-axis
-       */
-      axisYLabelOffsetX: {
-        type: Number,
-        value: 0
-      },
-      /**
-       * Offset Y of labels for Y-axis
-       */
-      axisYLabelOffsetY: {
-        type: Number,
-        value: 0
-      },
-      /**
-       * Show axis X labels?
-       */
-      axisXShowLabel: {
-        type: Boolean,
-        value: true
-      },
-      /**
-       * Show axis Y labels?
-       */
-      axisYshowLabel: {
-        type: Boolean,
-        value: true
-      },
-      /**
-       * Show axis X grid?
-       */
-      axisXShowGrid: {
-        type: Boolean,
-        value: true
-      },
-      /**
-       * Show axis Y grid?
-       */
-      axisYshowGrid: {
-        type: Boolean,
-        value: true
-      },
-      /**
-       * Use only integer values (whole numbers) for the scale steps
-       */
-      axisXOnlyInteger: {
-        type: Boolean,
-        value: false
-      },
-      /**
-       * Use only integer values (whole numbers) for the scale steps
-       */
-      axisYOnlyInteger: {
-        type: Boolean,
-        value: false
+      stackMode: {
+        attribute: "stack-mode",
+        type: String
       }
-    };
+    });
   }
 
   /**
@@ -468,11 +356,61 @@ class LrndesignBar extends LrndesignChartBehaviors {
   }
 
   /**
+   * Overrides default properties with bar-specific properties.
+   */
+  setProperties() {
+    super.setProperties();
+    this.setBarLineProperties();
+    this.axisXOnlyInteger = false;
+    this.axisXScaleMinSpace = 30;
+    this.distributeSeries = false;
+    this.horizontalBars = false;
+    this.referenceValue = 0;
+    this.seriesBarDistance = 15;
+    this.stackBars = false;
+    this.stackMode = true;
+    this.type = "bar";
+  }
+
+  /**
    * returns options as an array
    */
   _getOptions() {
-    let options = {};
-    return options;
+    return {
+      width: this.width,
+      height: this.height,
+      high: this.high,
+      low: this.low,
+      referenceValue: this.referenceValue,
+      seriesBarDistance: this.seriesBarDistance,
+      stackBars: this.stackBars,
+      stackModeAccumulate: this.stackModeAccumulate,
+      horizontalBars: this.horizontalBars,
+      distributeSeries: this.distributeSeries,
+      showGridBackground: this.showGridBackground,
+      axisX: {
+        offset: this.axisXOffset,
+        position: this.axisXTopLeft == true ? "start" : "end",
+        labelOffset: {
+          x: this.axisXLabelOffsetX,
+          y: this.axisXLabelOffsetY
+        },
+        showLabel: this.axisXShowLabel,
+        showGrid: this.axisXShowGrid,
+        onlyInteger: this.axisXOnlyInteger
+      },
+      axisY: {
+        offset: this.axisYOffset,
+        position: this.axisYTopLeft == true ? "start" : "end",
+        labelOffset: {
+          x: this.axisYLabelOffsetX,
+          y: this.axisYLabelOffsetY
+        },
+        showLabel: this.axisYshowLabel,
+        showGrid: this.axisYShowGrid,
+        onlyInteger: this.axisYOnlyInteger
+      }
+    };
   }
 }
 /**
