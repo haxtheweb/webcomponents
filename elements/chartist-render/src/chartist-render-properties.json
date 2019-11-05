@@ -1,0 +1,74 @@
+{
+  /**
+   * The unique identifier of the chart.
+   */
+  "id": {
+    "type": "String"
+  },
+  /**
+   * The type of chart:bar, line, or pie
+   */
+  "type": {
+    "type": "String"
+  },
+  /**
+   * The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```
+Container class	Ratio
+.ct-square          1
+.ct-minor-second	  15:16
+.ct-major-second	  8:9
+.ct-minor-third	    5:6
+.ct-major-third	    4:5
+.ct-perfect-fourth	3:4
+.ct-perfect-fifth	  2:3
+.ct-minor-sixth	    5:8
+.ct-golden-section	1:1.618
+.ct-major-sixth	    3:5
+.ct-minor-seventh	  9:16
+.ct-major-seventh	  8:15
+.ct-octave	        1:2
+.ct-major-tenth	    2:5
+.ct-major-eleventh	3:8
+.ct-major-twelfth	  1:3
+.ct-double-octave	  1:4```
+   */
+  "scale": {
+    "type": "String"
+  },
+  /**
+   * The chart title used for accessibility.
+   */
+  "chartTitle": {
+    "type": "String"
+  },
+  /**
+   * The chart description used for accessibility.
+   */
+  "chartDesc": {
+    "type": "String"
+  },
+  /**
+   * The chart data.
+   */
+  "data": {
+    "type": "Object"
+  },
+  /**
+   * The options available at  https://gionkunz.github.io/chartist-js/api-documentation.html.
+   */
+  "options": {
+    "type": "Object"
+  },
+  /**
+   * The responsive options. (See https://gionkunz.github.io/chartist-js/api-documentation.html.)
+   */
+  "responsiveOptions": {
+    "type": "Array"
+  },
+  /**
+   * The show data in table form as well? Default is false.
+   */
+  "showTable": {
+    "type": "Boolean"
+  }
+}

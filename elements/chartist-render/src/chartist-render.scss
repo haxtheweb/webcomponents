@@ -1,0 +1,56 @@
+/* 
+  LIST SHARED STYLES BELOW
+*/
+@import "../../rh-sass/rh-sass";
+@import "../lib/chartist/dist/scss/chartist.scss";
+$series: 
+  ("a", "1", #d70206),
+  ("b", "2", #f05b4f),
+  ("c", "3", #f4c63d),
+  ("d", "4", #d17905),
+  ("e", "5", #453d3f),
+  ("f", "6", #59922b),
+  ("g", "7", #0544d3),
+  ("h", "8", #6b0392),
+  ("i", "9", #f05b4f),
+  ("j", "10", #dda458),
+  ("k", "11", #eacf7d),
+  ("l", "12", #86797d),
+  ("m", "13", #b2c326),
+  ("n", "14", #6188e2),
+  ("o", "15", #a748ca)
+;
+:host {
+  display: block;
+}
+.ct-label {
+  fill: var(--chartist-label-color, #000);
+  color: var(--chartist-label-color, #000);
+}
+
+.ct-chart-pie .ct-label {
+  fill: var(--chartist-pie-label-color, --chartist-label-color);
+  color: var(--chartist-pie-label-color, --chartist-label-color);
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+@each $selector, $var, $color in $series {
+  .ct-series-#{$selector} .ct-point,
+  .ct-series-#{$selector} .ct-line,
+  .ct-series-#{$selector} .ct-bar,
+  .ct-series-#{$selector} .ct-slice-donut {
+    stroke: var(--chartist-color-#{$var}, $color);
+  }
+  
+  .ct-series-#{$selector} .ct-slice-pie,
+  .ct-series-#{$selector} .ct-slice-donut-solid,
+  .ct-series-#{$selector} .ct-area {
+    fill: var(--chartist-color-#{$var}, $color);
+  }
+
+  .ct-series-#{$selector} .ct-label {
+    fill: var(--chartist-label-color-#{$var}, --chartist-label-color);
+    stroke: var(--chartist-label-color-#{$var}, --chartist-label-color);
+  }
+}
