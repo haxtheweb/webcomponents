@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/simple-toast",
   "wcfactory": {
     "className": "SimpleToast",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "simple-toast",
     "generator-wcfactory-version": "0.6.3",
     "useHAX": false,
@@ -41,7 +41,7 @@
   "dependencies": {
     "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-toast": "^3.0.1",
-    "@polymer/polymer": "^3.2.0"
+    "lit-element": "^2.2.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",

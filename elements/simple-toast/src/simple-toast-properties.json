@@ -5,16 +5,14 @@
   "opened": {
     "name": "opened",
     "type": Boolean,
-    "value": false,
-    "reflectToAttribute": true
+    "reflect": true
   },
   /**
    * Plain text based message to display
    */
   "text": {
     "name": "text",
-    "type": String,
-    "value": "Saved"
+    "type": String
   },
   /**
    * Class name, fit-bottom being a useful one
@@ -22,7 +20,7 @@
   "classStyle": {
     "name": "classStyle",
     "type": String,
-    "value": ""
+    "attribute": "class-style"
   },
   /**
    * Text for the close button
@@ -30,22 +28,22 @@
   "closeText": {
     "name": "closeText",
     "type": String,
-    "value": "Close"
+    "attribute": "close-text"
   },
   /**
    * How long the toast message should be displayed
    */
   "duration": {
     "name": "duration",
-    "type": Number,
-    "value": 4000
+    "type": Number
   },
   /**
    * Event callback when hide is called
    */
   "eventCallback": {
     "name": "eventCallback",
-    "type": String
+    "type": String,
+    "attribute": "event-callback"
   },
   /**
    * If there should be a close button shown
@@ -53,7 +51,7 @@
   "closeButton": {
     "name": "closeButton",
     "type": Boolean,
-    "value": true,
-    "reflectToAttribute": true
+    "reflect": true,
+    "attribute": "close-button"
   }
 }
