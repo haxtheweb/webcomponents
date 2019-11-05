@@ -35,14 +35,15 @@ class DataViz extends PolymerElement {
   // render function
   static get template() {
     return html`
-<style>:host {
+<style>
+:host {
   display: block;
 }
 
 :host([hidden]) {
   display: none;
 }
-</style>
+        </style>
 <slot></slot>
 <div>[[title]]</div>`;
   }

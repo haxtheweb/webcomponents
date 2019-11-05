@@ -22,7 +22,9 @@ class HaxTextEditor extends RichTextEditor {
   // render function
   static get template() {
     return html`
-<style></style>
+<style>
+
+        </style>
 ${super.template}`;
   }
 

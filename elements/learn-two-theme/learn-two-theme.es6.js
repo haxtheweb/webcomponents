@@ -18,7 +18,8 @@ class LearnTwoTheme extends HAXCMSPolymerElementTheme {
   // render function
   static get template() {
     return html`
-<style>:host {
+<style>
+:host {
   --__learn-two-theme-default-font-family: var(--learn-two-theme-default-font-family,"Muli, Helvetica, Tahoma, Geneva, Arial, sans-serif");
   --__learn-two-theme-default-background: var(--learn-two-theme-default-background, #ffffff);
   display: block;
@@ -290,8 +291,8 @@ map-menu * {
     flex: 1 1 auto;
   }
 }
-</style>
-<style include="simple-colors-shared-styles"></style>
+        </style>
+<style include="simple-colors-shared-styles-polymer"></style>
 <app-drawer-layout responsive-width="900px">
   <paper-icon-button id="menubutton" icon="menu" on-click="toggleDrawer" title="Toggle site menu"></paper-icon-button>
   <app-drawer swipe-open slot="drawer" opened="{{opened}}">
@@ -337,7 +338,7 @@ map-menu * {
   }
   constructor() {
     super();
-    import("@lrnwebcomponents/simple-colors/simple-colors.js");
+    import("@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js");
     import("@polymer/app-layout/app-drawer/app-drawer.js");
     import("@polymer/app-layout/app-drawer-layout/app-drawer-layout.js");
     import("@polymer/paper-icon-button/paper-icon-button.js");

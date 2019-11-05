@@ -21,7 +21,8 @@ class GlossaryTerm extends PolymerElement {
   // render function
   static get template() {
     return html`
-<style>:host {
+<style>
+:host {
   display: inline-block;
 }
 
@@ -31,7 +32,8 @@ class GlossaryTerm extends PolymerElement {
 
 lrn-vocab {
   display: inline;
-}</style>
+}
+        </style>
 <template is="dom-if" if="[[!_fallback]]">
   <lrn-vocab term="[[display]]">
     <div>[[definition]]</div>

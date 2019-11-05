@@ -17,12 +17,20 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  */
 class GitCorner extends LitElement {
   
+  //styles function
+  static get styles() {
+    return  [
+      css`
+:host {
+  display: block;
+}
+      `
+    ];
+  }
   // render function
   render() {
     return html`
-<style>:host {
-  display: block;
-}</style>
+
 <a .title="${this.alt}" .href="${this.source}" target="_blank" rel="noopener noreferrer" class="github-corner">
     <svg viewBox="0 0 250 250">
         <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>

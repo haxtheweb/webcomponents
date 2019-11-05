@@ -19,7 +19,8 @@ class FullWidthImage extends PolymerElement {
   // render function
   static get template() {
     return html`
-<style>:host {
+<style>
+:host {
   display: block;
   background-color: #000000;
   height: 300px;
@@ -70,7 +71,8 @@ class FullWidthImage extends PolymerElement {
   line-height: 40px;
   color: #fff;
   font-style: italic;
-}</style>
+}
+        </style>
 <div id="image">
   <div class="wrapper">
     <div class="caption">

@@ -20,7 +20,8 @@ class LayoutBuilder extends PolymerElement {
   // render function
   static get template() {
     return html`
-<style>:host {
+<style>
+:host {
   display: block;
 }
 
@@ -40,7 +41,7 @@ class LayoutBuilder extends PolymerElement {
 :host([hidden]) {
   display: none;
 }
-</style>
+        </style>
 <div id="content-wrapper">
   <div id="prepend-child"><paper-button on-tap="_handleAddChild">Insert into [[type]]</paper-button></div>
   <div id="content"><slot></slot></div>

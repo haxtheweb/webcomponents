@@ -4,7 +4,6 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@polymer/paper-progress/paper-progress.js";
 import "./lib/lrnsys-progress-circle.js";
 /**
@@ -168,6 +167,10 @@ class LrnsysProgress extends PolymerElement {
     );
     super.disconnectedCallback();
   }
+  // simple path from a url modifier
+  pathFromUrl(url) {
+    return url.substring(0, url.lastIndexOf("/") + 1);
+  }
   static get properties() {
     return {
       /**
@@ -212,7 +215,7 @@ class LrnsysProgress extends PolymerElement {
       completeSound: {
         type: String,
         value:
-          pathFromUrl(decodeURIComponent(import.meta.url)) +
+          this.pathFromUrl(decodeURIComponent(import.meta.url)) +
           "lib/assets/complete.mp3",
         reflectToAttribute: true
       },
@@ -222,7 +225,7 @@ class LrnsysProgress extends PolymerElement {
       finishedSound: {
         type: String,
         value:
-          pathFromUrl(decodeURIComponent(import.meta.url)) +
+          this.pathFromUrl(decodeURIComponent(import.meta.url)) +
           "lib/assets/finished.mp3",
         reflectToAttribute: true
       },

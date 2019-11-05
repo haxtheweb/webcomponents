@@ -21,7 +21,8 @@ class FullScreenImage extends PolymerElement {
   // render function
   static get template() {
     return html`
-<style>:host {
+<style>
+:host {
   display: block;
   font-variant-ligatures: common-ligatures;
 }
@@ -95,7 +96,8 @@ paper-icon-button {
   bottom: 60px;
   right: 0px;
   background-color: rgba(191, 147, 45, 0.7)
-}</style>
+}
+        </style>
 <div class="fullpage-container">
   <div class="overlay-container">
     <h2>[[title]]</h2>

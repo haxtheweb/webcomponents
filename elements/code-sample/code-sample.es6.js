@@ -23,7 +23,8 @@ class CodeSample extends PolymerElement {
   // render function
   static get template() {
     return html`
-<style>:host {
+<style>
+:host {
     display: block;
 }
 
@@ -80,7 +81,8 @@ button {
     top: 0;
     text-transform: uppercase;
     @apply --code-sample-copy-clipboard-button;
-}</style>
+}
+        </style>
 <div id="theme">${this.constructor.theme || oneDark}</div>
 <div id="demo" class="demo"></div>
 <slot id="content"></slot>

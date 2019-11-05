@@ -17,10 +17,10 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  * @demo demo/index.html
  */
 class TheyLive extends LitElement {
-  // render function
-  render() {
-    return html`
-      <style>
+  //styles function
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -28,7 +28,12 @@ class TheyLive extends LitElement {
         :host([hidden]) {
           display: none;
         }
-      </style>
+      `
+    ];
+  }
+  // render function
+  render() {
+    return html`
       <div class="content">
         <div class="truth">${this.truth}</div>
         <slot></slot>

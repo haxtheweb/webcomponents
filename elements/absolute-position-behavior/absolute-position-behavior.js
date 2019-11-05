@@ -18,15 +18,17 @@ import "./lib/absolute-position-state-manager";
 class AbsolutePositionBehavior extends LitElement {
   //styles function
   static get styles() {
-    return css`
-      :host {
-        display: inline-block;
-      }
+    return [
+      css`
+        :host {
+          display: inline-block;
+        }
 
-      :host([hidden]) {
-        display: none;
-      }
-    `;
+        :host([hidden]) {
+          display: none;
+        }
+      `
+    ];
   }
   // render function
   render() {

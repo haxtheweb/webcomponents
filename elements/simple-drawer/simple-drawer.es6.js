@@ -4,7 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "@polymer/neon-animation/neon-animation.js";
 import "@polymer/paper-button/paper-button.js";
@@ -38,7 +38,8 @@ class SimpleDrawer extends PolymerElement {
   // render function
   static get template() {
     return html`
-<style>:host {
+<style>
+:host {
   display: block;
   z-index: 1000;
 }
@@ -118,8 +119,9 @@ app-drawer {
   line-height: 32px;
   margin: 8px;
   @apply --simple-drawer-heading;
-}</style>
-<style include="simple-colors-shared-styles"></style>
+}
+        </style>
+<style include="simple-colors-shared-styles-polymer"></style>
 <app-drawer tabindex="0" id="drawer" opened="{{opened}}" align="[[align]]" role="dialog">
   <div class="wrapper">
     <div class="top">

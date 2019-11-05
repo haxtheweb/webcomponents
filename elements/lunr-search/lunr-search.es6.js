@@ -4,8 +4,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
-import { ESGlobalBridge } from "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 /**
  * `lunr-search`
@@ -23,14 +22,15 @@ class LunrSearch extends PolymerElement {
   // render function
   static get template() {
     return html`
-<style>:host {
+<style>
+:host {
   display: block;
 }
 
 :host([hidden]) {
   display: none;
 }
-</style>
+        </style>
 <iron-ajax
   auto
   url="[[dataSource]]"
@@ -106,7 +106,7 @@ class LunrSearch extends PolymerElement {
   }
   constructor() {
     super();
-    const basePath = pathFromUrl(import.meta.url);
+    const basePath = this.pathFromUrl(import.meta.url);
     const location = `${basePath}../../lunr/lunr.js`;
     window.addEventListener(
       "es-bridge-lunr-loaded",
@@ -120,6 +120,10 @@ class LunrSearch extends PolymerElement {
     ) {
       this.__lunrLoaded = true;
     }
+  }
+  // simple path from a url modifier
+  pathFromUrl(url) {
+    return url.substring(0, url.lastIndexOf("/") + 1);
   }
   disconnectedCallback() {
     window.removeEventListener(

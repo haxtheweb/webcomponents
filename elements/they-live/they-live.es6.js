@@ -18,17 +18,24 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  */
 class TheyLive extends LitElement {
   
-  // render function
-  render() {
-    return html`
-<style>:host {
+  //styles function
+  static get styles() {
+    return  [
+      css`
+:host {
   display: block;
 }
 
 :host([hidden]) {
   display: none;
 }
-</style>
+      `
+    ];
+  }
+  // render function
+  render() {
+    return html`
+
 <div class="content">
   <div class="truth">${this.truth}</div>
   <slot></slot>

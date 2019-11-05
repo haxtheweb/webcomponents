@@ -27,7 +27,8 @@ class RichTextEditor extends PolymerElement {
   // render function
   static get template() {
     return html`
-<style>:host([hidden]) {
+<style>
+:host([hidden]) {
   display: none;
 }
 :host {
@@ -59,7 +60,8 @@ class RichTextEditor extends PolymerElement {
 }
 :host([contenteditable="true"]:empty):before {
   @apply --rich-text-editor-empty-editable;
-}</style>
+}
+        </style>
 <style include="rich-text-editor-styles"></style>
 <slot></slot>`;
   }

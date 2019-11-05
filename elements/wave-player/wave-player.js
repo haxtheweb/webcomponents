@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@polymer/paper-material/paper-material.js";
 import "@polymer/paper-fab/paper-fab.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
@@ -330,7 +329,7 @@ class WavePlayer extends SchemaBehaviors(PolymerElement) {
     super();
     import("@polymer/iron-icons/iron-icons.js");
     import("@polymer/iron-icons/av-icons.js");
-    const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+    const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
     const location = `${basePath}lib/wavesurfer.js/dist/wavesurfer.js`;
     window.addEventListener(
       "es-bridge-wavesurfer-loaded",
@@ -363,9 +362,13 @@ class WavePlayer extends SchemaBehaviors(PolymerElement) {
     }
     // basic default for coverart if none
     if (this.coverart === "") {
-      const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+      const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
       this.coverart = `${basePath}lib/art.jpg`;
     }
+  }
+  // simple path from a url modifier
+  pathFromUrl(url) {
+    return url.substring(0, url.lastIndexOf("/") + 1);
   }
   /**
    * invoke wavesurfer once we know it's globally scoped

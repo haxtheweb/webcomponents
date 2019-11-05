@@ -17,7 +17,8 @@ class HaxLogo extends HTMLElement {
   // render function
   get html() {
     return `
-<style>:host {
+<style>
+:host {
   display: block;
   --hax-logo-letter-spacing: -16px;
   --hax-logo-font-size: 64px;
@@ -100,7 +101,8 @@ class HaxLogo extends HTMLElement {
   vertical-align: text-top;
   margin: var(--hax-logo-innerslot-margin);
   letter-spacing: -2px;
-}</style>
+}
+        </style>
 <span class="wrap"><span class="left">&lt;</span><span class="innerslot"><slot name="pre"></slot></span><slot></slot><span class="inner">h-a-x<br><span class="the">the</span><br><span class="web">web</span></bt></span><span class="innerslot"><slot name="post"></slot></span><span class="right">&gt;</span></span>`;
   }
 

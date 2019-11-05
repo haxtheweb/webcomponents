@@ -20,7 +20,8 @@ class DragNDrop extends HTMLElement {
   // render function
   get html() {
     return `
-<style>:host {
+<style>
+:host {
   display: block;
 }
 
@@ -42,7 +43,7 @@ class DragNDrop extends HTMLElement {
   background: #f4f4f4;
   border-style: dashed;
 }
-</style>
+        </style>
 <div class="items">
   <slot></slot>
 </div>`;

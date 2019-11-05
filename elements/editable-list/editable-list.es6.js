@@ -22,7 +22,8 @@ class EditableList extends PolymerElement {
   // render function
   static get template() {
     return html`
-<style>:host {
+<style>
+:host {
   display: block;
 }
 
@@ -32,7 +33,8 @@ class EditableList extends PolymerElement {
 
 iron-list {
   height: 100%;
-}</style>
+}
+        </style>
 <iron-list id="list" items="[[items]]" as="item" mutable-data>
   <template>
     <editable-list-item edit-mode="[[item.metadata.canEdit]]" can-edit="[[item.metadata.canEdit]]" can-delete="[[item.metadata.canDelete]]" value="[[item.title]]"></editable-list-item>

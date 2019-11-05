@@ -1,12 +1,9 @@
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/iron-list/iron-list.js";
-/**
+ */import{LitElement,html,css}from"./node_modules/lit-element/lit-element.js";/**
  * `simple-picker`
- * `a simple picker for options, icons, etc.`
+ * a simple picker for options, icons, etc.`
  *
 ### Styling
 
@@ -40,6 +37,8 @@ Custom property | Description | Default
 `--simple-picker-option-size` | Height of option. | 24px
 `--simple-picker-option-selected-background-color` | Outline for currently sselected option. | --simple-picker-options-background-color
 `--simple-picker-option-active-background-color` | Outline for currently active option. | #aaddff
+`--simple-picker-option-padding` | padding within each simple picker option | 2px 10px
+`--simple-picker-option-label-padding` | adding within each simple picker option's label | --simple-picker-option-padding
 `--simple-picker-options-max-height` | Maximum amount of space listbox can use before scrolling. Use `unset` for now vertical scroll. | 250px
 `--simple-picker-options-border-width` | Border width of listbox. | --simple-picker-border-width
 `--simple-picker-options-border-style` | Border style of listbox. | --simple-picker-border-style
@@ -48,17 +47,10 @@ Custom property | Description | Default
 `--simple-picker-height` | Calculation based on option size, padding, and border. DO NOT EDIT. | --simple-picker-option-size - --simple-picker-sample-padding * 2 - --simple-picker-border-width * 2
 *
  * @customElement
- * @polymer
  * @demo demo/index.html
- */
-class SimplePicker extends PolymerElement {
-  
-  // render function
-  static get template() {
-    return html`
-<style>
+ */class SimplePicker extends LitElement{//styles function
+static get styles(){return[css`
 :host {
-  
   display: inline-flex;
   align-items: center;
   color: var(--simple-picker-color, black);
@@ -67,11 +59,6 @@ class SimplePicker extends PolymerElement {
   --simple-picker-height: calc(var(--simple-picker-option-size, 24px) + var(--simple-picker-sample-padding, 2px) * 2 + var(--simple-picker-border-width, 1px) * 2);
   min-height: var(--simple-picker-height);
   max-height: var(--simple-picker-height);
-  @apply --simple-picker;
-}
-:host div {
-  margin: unset;
-  padding: unset;
 }
 
 :host([block-label]) {
@@ -90,13 +77,17 @@ class SimplePicker extends PolymerElement {
   display: none;
 }
 
-:host label:not([hidden]) {
+div {
+  margin: unset;
+  padding: unset;
+}
+
+label:not([hidden]) {
   display: flex;
   align-items: center;
   padding-right: 5px;
   font-family: var(--simple-picker-font-family, inherit);
   color: var(--simple-picker-label-color, var(--simple-picker-color, black));
-  @apply --simple-picker-label;
 }
 
 :host([block-label]) label:not([hidden]) {
@@ -113,13 +104,13 @@ class SimplePicker extends PolymerElement {
   transition: all 0.5s;
 }
 
-:host #sample, 
-:host .rows {
+#sample, 
+.rows {
   margin: 0;
   padding: 0;
 }
 
-:host #listbox {
+#listbox {
   cursor: pointer;
   position: relative;
   flex: 1 0 auto;
@@ -127,7 +118,7 @@ class SimplePicker extends PolymerElement {
   max-height: var(--simple-picker-height);
 }
 
-:host #sample {
+#sample {
   display: flex;
   flex: 1 0 auto;
   justify-content: space-between;
@@ -139,21 +130,21 @@ class SimplePicker extends PolymerElement {
   border-width: var(--simple-picker-border-width, 1px);
   border-style: var(--simple-picker-border-style, solid);
   border-color: var(--simple-picker-border-color, var(--simple-picker-color-disabled, #888));  
-  @apply --simple-picker-sample;
 }
+
 :host([hide-sample]) #sample {
   width: var(--simple-picker-option-size);
   overflow: visible;
 }
+
 :host(:focus-within) #sample {
   border-width: var(--simple-picker-focus-border-width, var(--simple-picker-border-width, 1px));
   border-style: var(--simple-picker-focus-border-style, var(--simple-picker-border-style, solid));
   border-color: var(--simple-picker-focus-border-color, var(--simple-picker-border-color, var(--simple-picker-color-disabled, #888)));
   transition: all 0.5s;
-  @apply --simple-picker-sample-focus;
 }
 
-:host #icon {
+#icon {
   transform: var(--simple-picker-icon-transform, rotate(0deg));
   transition: transform 0.25s;
 }
@@ -163,20 +154,19 @@ class SimplePicker extends PolymerElement {
   transition: transform 0.25s;
 }
 
-:host #collapse {
+#collapse {
   display: none;
   width: 100%;
   position: absolute;  
   padding: var(--simple-picker-options-border-width, var(--simple-picker-border-width, 1px));
   z-index: 2;
-  @apply --simple-picker-collapse;
 }
 
 :host([expanded]:not([disabled])) #collapse {
   display: block;
 } 
 
-:host .rows {
+.rows {
   display: block;
   position: absolute;
   z-index: 1000;  
@@ -188,21 +178,19 @@ class SimplePicker extends PolymerElement {
   background-color: var(--simple-picker-options-background-color, #fff);
   max-height: var(--simple-picker-options-max-height, 250px);
   overflow-y: auto; 
-  @apply --simple-picker-rows;
 }
 :host([align-right]) #collapse .rows {
   left: unset;
   right: calc(var(--simple-picker-options-border-width, var(--simple-picker-border-width, 1px)) *2);
 }
 
-:host .row {
+.row {
   display: flex; 
   align-items: stretch;
   justify-content: space-between;
-  @apply --simple-picker-row;
 }
 
-:host simple-picker-option {
+simple-picker-option {
   z-index: 1;
   flex: 1 1 auto;
   justify-content: flex-start;
@@ -213,38 +201,25 @@ class SimplePicker extends PolymerElement {
   color: var(--simple-picker-color, black);
   background-color: var(--simple-picker-options-background-color, #fff);
   transition: max-height 2s;
-  @apply --simple-picker-option;
 }
 
-:host(:not([value])) #sample simple-picker-option,
-:host([value="null"]) #sample simple-picker-option {
-  @apply --simple-picker-sample-null;
-  --simple-picker-option-label: {
-    @apply --simple-picker-sample-null-label;
-  };
-}
-
-:host simple-picker-option[selected] {
+simple-picker-option[selected] {
   z-index: 50;
   color: var(--simple-picker-color, black);
   background-color: var(--simple-picker-option-selected-background-color, var(--simple-picker-options-background-color, #fff));
 }
 
-:host simple-picker-option[active] {
+simple-picker-option[active] {
   z-index: 100;
   cursor: pointer;
   color: var(--simple-picker-color, black);
   background-color: var(--simple-picker-option-active-background-color, #aaddff);
 }
 
-:host #sample simple-picker-option {
+#sample simple-picker-option {
   color: var(--simple-picker-color, black);
   background-color: var(--simple-picker-sample-background-color, transparent);
   --simple-picker-option-padding: var(--simple-picker-sample-padding, 2px) 0;
-  --simple-picker-option-label: {
-    @apply --simple-picker-sample-label;
-  }
-  @apply --simple-picker-sample-option;
   border: none;
 }
 
@@ -266,170 +241,97 @@ class SimplePicker extends PolymerElement {
   transition: max-height 1.5s;
 }
 
-:host #collapse simple-picker-option:not([value]),
-:host #collapse simple-picker-option[value=null] {
-  @apply --simple-picker-option-null;
-}
-
 @media screen and (max-width: 600px) {
   :host {
     position: static;
   }
-  :host #collapse {
+  #collapse {
     top: 0;
     margin-top: 0;
     position: relative;
   } 
-  :host .rows {
+  .rows {
     position: absolute;
   }  
 }
-</style>
-<label id="listLabel" for="listbox" hidden$="[[!hasLabel]]">[[label]]</label>
+      `]}// render function
+render(){return html`
+
+<label id="listLabel" for="listbox" .hidden="${!this.label||""===this.label.trim()}">
+  ${this.label&&""!==this.label.trim()?this.label.trim():""}
+</label>
 <div id="listbox"
-  aria-activedescendant$="[[__activeDesc]]" 
-  aria-labelledby$="[[ariaLabelledby]]" 
-  disabled$="[[disabled]]"
+  .aria-activedescendant="${this.__activeDesc}" 
+  .aria-labelledby="${this.ariaLabelledby}" 
+  .disabled="${this.disabled}"
   role="listbox" 
-  tabindex="0">
+  tabindex="0"
+  @click="${this._handleListboxClick}"
+  @mousedown="${this._handleListboxMousedown}"
+  @keydown="${this._handleListboxKeydown}">
   <div id="sample">
     <simple-picker-option 
-      aria-hidden="true" 
-      hide-option-labels$="[[hideOptionLabels]]"
-      icon$="[[__selectedOption.icon]]"
-      label$="[[__selectedOption.alt]]"
-      style$="[[__selectedOption.style]]" 
-      title-as-html$="[[titleAsHtml]]">
+      ?hide-option-labels="${this.hideOptionLabels}"
+      ?title-as-html="${this.titleAsHtml}"
+      .icon="${this.__selectedOption?this.__selectedOption.icon:!1}"
+      .label="${this.__selectedOption?this.__selectedOption.alt:!1}"
+      .style=${this.__selectedOption?this.__selectedOption.style:!1}
+      aria-hidden="true">
     </simple-picker-option>
     <span id="icon"><iron-icon aria-hidden="true" icon="arrow-drop-down"></iron-icon></span>
   </div>
   <div id="collapse">
     <div class="rows">
-      <template is="dom-repeat" items="[[__options]]" as="row" index-as="rownum" restamp>
-        <div class="row">
-          <template is="dom-repeat" items=[[row]] as="option" index-as="colnum" restamp>
-            <simple-picker-option 
-              active$="[[_isActive(__activeDesc,rownum,colnum)]]"
-              aria-selected$="[[_isSelected(value,option.value)]]"
-              data$="[[data]]"
-              hide-option-labels$="[[hideOptionLabels]]"
-              hidden$="[[_hideNullOption(option.value,allowNull)]]"
-              icon$="[[option.icon]]"
-              id$="[[_getOptionId(rownum,colnum)]]"
-              label$="[[option.alt]]"
-              role="option"
-              selected$="[[_isSelected(value,option.value)]]"
-              on-option-focus="_handleOptionFocus"
-              on-set-selected-option="_handleSetSelectedOption"
-              style$="[[option.style]]" 
-              tabindex="-1"
-              title-as-html$="[[titleAsHtml]]"
-              value="[[option.value]]">
-            </simple-picker-option>
-          </template>
-        </div>
-      </template>
+        ${this.__options?this.__options.map((row,rownum)=>html`
+          <div class="row">
+            ${row?row.map((option,colnum)=>html`
+              <simple-picker-option
+                @option-focus="${this._handleOptionFocus}"
+                @set-selected-option="${this._handleSetSelectedOption}"
+                ?active="${`option-${rownum}-${colnum}`===`${this.__activeDesc}`}"
+                ?hide-option-labels="${this.hideOptionLabels}"
+                ?hidden="${!this.allowNull&&!option.value}"
+                ?selected="${this.value===option.value}"
+                ?title-as-html="${this.titleAsHtml}" 
+                .data="${this.data}"
+                .icon="${option.icon}"
+                .id="option-${rownum}-${colnum}"
+                .label="${option.alt}"
+                .style=${option.style}
+                aria-selected="${this.value===option.value?"true":"false"}"
+                role="option"
+                tabindex="-1"
+                value="${option.value}">
+              </simple-picker-option>
+            `):``}
+          </div>
+        `):``}
     </div>
   </div>
-</div>`;
-  }
-
-  // properties available to the custom element for data binding
-    static get properties() {
-    let props = {
-  /**
+</div>`}// properties available to the custom element for data binding
+static get properties(){let props={/**
    * llow a null value?
    * Default behavior/false will select first option and set value accordingly.
-   */
-  "allowNull": {
-    "name": "allowNull",
-    "type": Boolean,
-    "value": false,
-    "reflectToAttribute": true
-  },
-
-  /**
+   */allowNull:{type:Boolean,reflect:!0,attribute:"allow-null"},/**
    * Align right edges of listbox and button?
    * Default behavior/false aligns to left edges.
-   */
-  "alignRight": {
-    "name": "alignRight",
-    "type": Boolean,
-    "value": false,
-    "reflectToAttribute": true
-  },
-
-  /**
+   */alignRight:{type:Boolean,reflect:!0,attribute:"align-right"},/**
    * Optional. Sets aria-labelledby attribute
-   */
-  "ariaLabelledby": {
-    "name": "ariaLabelledby",
-    "type": String,
-    "value": null
-  },
-
-  /**
+   */ariaLabelledby:{type:String,attribute:"aria-labelledby"},/**
    * Position label above select dropdown?
-   */
-  "blockLabel": {
-    "name": "blockLabel",
-    "type": Boolean,
-    "value": false,
-    "reflectToAttribute": true
-  },
-
-  /**
+   */blockLabel:{type:Boolean,reflect:!0,attribute:"block-label"},/**
    * Is picker disabled?
-   */
-  "disabled": {
-    "name": "disabled",
-    "type": Boolean,
-    "value": false,
-    "reflectToAttribute": true
-  },
-
-  /**
+   */disabled:{type:Boolean,reflect:!0},/**
    * Is it expanded?
-   */
-  "expanded": {
-    "name": "expanded",
-    "type": Boolean,
-    "value": false,
-    "reflectToAttribute": true
-  },
-
-  /**
+   */expanded:{type:Boolean,reflect:!0,attribute:"expanded"},/**
    * Hide option labels? As color-picker or icon-picker, labels may be redundant.
    * This option would move labels off-screen so that only screen-readers will have them.
-   */
-  "hideOptionLabels": {
-    "name": "hideOptionLabels",
-    "type": Boolean,
-    "value": false
-  },
-
-  /**
+   */hideOptionLabels:{type:Boolean,reflect:!0,attribute:"hide-option-labels"},/**
    * Hide selected item sample?
    * Default behavior/false shows a sample without expanding menu.
-   */
-  "hideSample": {
-    "name": "hideSample",
-    "type": Boolean,
-    "value": false,
-    "reflectToAttribute": true
-  },
-
-  /**
+   */hideSample:{type:Boolean,reflect:!0,attribute:"hide-sample"},/**
    * Optional. Label for picker input
-   */
-  "label": {
-    "name": "label",
-    "type": String,
-    "value": null,
-    "observer": "_setLabel"
-  },
-
-  /**
+   */label:{type:String},/**
    * An array of options for picker, eg.: `
 [
   [
@@ -441,402 +343,123 @@ class SimplePicker extends PolymerElement {
     },...
   ]
 ]`
-   */
-  "options": {
-    "name": "options",
-    "type": Array,
-    "value": [
-      [
-        {
-          "icon": null,
-          "style": null,
-          "alt": null,
-          "value": null
-        }
-      ]
-    ],
-    "observer": "_optionsChanged"
-  },
-
-  /**
-   * position swatches relative to picker, where:
-   * `left` aligns swatches to picker's left edge
-   * `right` aligns swatches to picker's right edge
-   * `center` aligns swatches to picker's center
-  "position": {
-    "name": "position",
-    "type": Boolean,
-    "value": "left",
-    "reflectToAttribute": false,
-    "observer": false
-  },
-   */
-
-  /**
+   */options:{type:Array},/**
    * Renders html as title. (Good for titles with HTML in them.)
-   */
-  "titleAsHtml": {
-    "name": "titleAsHtml",
-    "type": Boolean,
-    "value": false
-  },
-
-  /**
+   */titleAsHtml:{type:Boolean,attribute:"title-as-html"},/**
    * An string that stores current value for picker
-   */
-  "value": {
-    "name": "value",
-    "type": Object,
-    "value": null,
-    "notify": true,
-    "observer": "_valueChanged",
-    "reflectToAttribute": true
-  },
-
-  /**
+   */value:{type:String,reflect:!0},/**
    * Aria-activedescendant attribute (active option's ID)
-   */
-  "__activeDesc": {
-    "name": "__activeDesc",
-    "type": String,
-    "value": "option-0-0"
-  },
-
-  /**
-   * Whether or not a label should be added
-   */
-  "__hasLabel": {
-    "name": "__hasLabel",
-    "type": Boolean,
-    "value": true
-  },
-
-  /**
+   */__activeDesc:{type:String},/**
+   * An array of options for picker, eg.: `
+[
+  [
+    {
+      "icon": "editor:format-paint",      //Optional. Used if picker is used as an icon picker.
+      "alt": "Blue",                      //Required for accessibility. Alt text description of choice.
+      "style": "background-color: blue;", //Optional. Used to set an option's style.
+      ...                                 //Optional. Any other properties that should be captured as part of selected option's value
+    },...
+  ]
+]`
+   */__options:{type:Array},/**
    * Selected option based on value of picker
-   */
-  "__selectedOption": {
-    "name": "__selectedOption",
-    "type": Object
-  }
-}
-;
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
-  }
-
-  /**
+   */__selectedOption:{type:Object}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "simple-picker";
-  }
-
-  /**
+   */static get tag(){return"simple-picker"}// life cycle
+constructor(){super();import("./node_modules/@polymer/iron-icon/iron-icon.js");import("./node_modules/@polymer/iron-icons/iron-icons.js");import("./lib/simple-picker-option.js");this.tag=SimplePicker.tag;this.allowNull=!1;this.alignRight=!1;this.ariaLabelledby=null;this.blockLabel=!1;this.disabled=!1;this.expanded=!1;this.hideOptionLabels=!1;this.hideSample=!1;this.label=null;this.__options=[[]];this.options=[[{icon:null,style:null,alt:null,value:null}]];this.titleAsHtml=!1;this.value=null;this.__activeDesc="option-0-0";this.__hasLabel=!0;this.__selectedOption={};this.addEventListener("blur",function(e){this.expanded=!1});// map our imported properties json to real props on the element
+// @notice static getter of properties is built via tooling
+// to edit modify src/test-lit-properties.json
+let obj=SimplePicker.properties;for(let p in obj){if(obj.hasOwnProperty(p)){if(this.hasAttribute(p)){this[p]=this.getAttribute(p)}else{if(p.reflect)this.setAttribute(p,obj[p].value);this[p]=obj[p].value}}}}/**
+   * life cycle, element is afixed to the DOM
+   */connectedCallback(){super.connectedCallback()}// static get observedAttributes() {
+//   return [];
+// }
+// disconnectedCallback() {}
+/*attributeChangedCallback(name, oldval, newval) {
+    super.attributeChangedCallback(name, oldval, newval);
+  }*/updated(changedProperties){changedProperties.forEach((oldValue,propName)=>{if("value"===propName)this._valueChanged(this.value,oldValue);if("options"===propName)this._optionsChanged(this.value,oldValue)});this.dispatchEvent(new CustomEvent("changed",{detail:this}))}/**
    * returns value of selected option.
    *
    * @param {array} options array of options
    * @param {string} optionId selected option's id
    * @returns {object} selected option
-   */
-  _getOption(options, optionId) {
-    if (options !== undefined && optionId !== undefined && optionId !== null) {
-      let coords = optionId.split("-");
-      return options[coords[1]][coords[2]];
-    }
-    return null;
-  }
-
-  /**
-   * returns a unique id for option based on its row and column.
-   *
-   * @param {number} rownum row number
-   * @param {number} colnum column number
-   * @returns {string} a unique id
-   */
-  _getOptionId(rownum, colnum) {
-    return "option-" + rownum + "-" + colnum;
-  }
-
-  /**
+   */_getOption(options,optionId){if(options!==void 0&&optionId!==void 0&&null!==optionId){let coords=optionId.split("-");return options[coords[1]][coords[2]]}return null}/**
    * sets a new active descendant and sets focus on it
    *
    * @param {number} rownum row number to be tested
    * @param {number} colnum column number to be tested
    * @returns {void}
-   */
-  _goToOption(rownum, colnum) {
-    let targetId = this._getOptionId(rownum, colnum),
-      target = this.shadowRoot.querySelector("#" + targetId),
-      active = this.shadowRoot.querySelector("#" + this.__activeDesc);
-    if (target !== null) {
-      target.tabindex = 0; //allow item to be focusable.
-      target.focus();
-      active.tabindex = -1; //prevent tabbing between options.
-    }
-  }
-
-  /**
+   */_goToOption(rownum,colnum){let targetId=html`
+        option-${rownum}-${colnum}
+      `,target=this.shadowRoot.querySelector("#"+targetId),active=this.shadowRoot.querySelector("#"+this.__activeDesc);if(null!==target){target.tabindex=0;//allow item to be focusable.
+target.focus();active.tabindex=-1;//prevent tabbing between options.
+}}/**
    * handles listbox click event
    *
    * @param {event} e event
    * @param {string} type type of event
    * @returns {void}
-   */
-  _handleListboxEvent(e, type) {
-    this.dispatchEvent(new CustomEvent(type, { detail: this }));
-    if (type === "click") this._toggleListbox(!this.expanded);
-  }
-
-  /**
+   */_handleListboxClick(e){this.dispatchEvent(new CustomEvent("click",{detail:this}));this._toggleListbox()}/**
+   * handles listbox click event
+   *
+   * @param {event} e event
+   * @param {string} type type of event
+   * @returns {void}
+   */_handleListboxMousedown(e){this.dispatchEvent(new CustomEvent("mousedown",{detail:this}))}/**
    * handles listbox keyboard events
    *
    * @param {event} e event
    * @returns {void}
-   */
-  _handleListboxKeydown(e) {
-    this.dispatchEvent(new CustomEvent("keydown", { detail: this }));
-    let coords = this.__activeDesc.split("-"),
-      rownum = parseInt(coords[1]),
-      colnum = parseInt(coords[2]);
-    if (e.keyCode === 32) {
-      //spacebar
-      e.preventDefault();
-      this._toggleListbox(!this.expanded);
-    } else if (this.expanded && [9, 35, 36, 38, 40].includes(e.keyCode)) {
-      e.preventDefault();
-      if (e.keyCode === 35) {
-        //end
-        let lastrow = this.options.length - 1,
-          lastcol = this.options[lastrow].length - 1;
-        this._goToOption(lastrow, lastcol); //move to last option
-      } else if (e.keyCode === 36) {
-        //home
-        this._goToOption(0, 0); //move to first option
-      } else if (e.keyCode === 38) {
-        //previous (up arrow)
-        if (colnum > 0) {
-          this._goToOption(rownum, colnum - 1); //move up to previous column
-        } else if (rownum > 0) {
-          this._goToOption(rownum - 1, this.options[rownum - 1].length - 1); //move up to end of previous row
-        }
-      } else if (e.keyCode === 40) {
-        //next (down arrow)
-        if (colnum < this.options[rownum].length - 1) {
-          //move down to next column
-          this._goToOption(rownum, colnum + 1);
-        } else if (rownum < this.options.length - 1) {
-          //move down to beginning of next row
-          this._goToOption(rownum + 1, [0]);
-        }
-      }
-    }
-  }
-
-  /**
+   */_handleListboxKeydown(e){this.dispatchEvent(new CustomEvent("keydown",{detail:this}));let coords=this.__activeDesc.split("-"),rownum=parseInt(coords[1]),colnum=parseInt(coords[2]);if(32===e.keyCode){//spacebar
+e.preventDefault();this._toggleListbox()}else if(this.expanded&&[9,35,36,38,40].includes(e.keyCode)){e.preventDefault();if(35===e.keyCode){//end
+let lastrow=this.options.length-1,lastcol=this.options[lastrow].length-1;this._goToOption(lastrow,lastcol);//move to last option
+}else if(36===e.keyCode){//home
+this._goToOption(0,0);//move to first option
+}else if(38===e.keyCode){//previous (up arrow)
+if(0<colnum){this._goToOption(rownum,colnum-1);//move up to previous column
+}else if(0<rownum){this._goToOption(rownum-1,this.options[rownum-1].length-1);//move up to end of previous row
+}}else if(40===e.keyCode){//next (down arrow)
+if(colnum<this.options[rownum].length-1){//move down to next column
+this._goToOption(rownum,colnum+1)}else if(rownum<this.options.length-1){//move down to beginning of next row
+this._goToOption(rownum+1,[0])}}}}/**
    * handles option focus event and sets active descendant
    *
    * @param {event} e event
    * @returns {void}
-   */
-  _handleOptionFocus(e) {
-    this._setActiveOption(e.detail.id);
-  }
-
-  /**
-   * Determines if a label should be added
-   *
-   * @param {string} label
-   * @returns {boolean} if there is a label
-   */
-  _setLabel() {
-    let label = this.shadowRoot.querySelector("#listLabel");
-    this.hasLabel =
-      this.label !== undefined &&
-      this.label !== null &&
-      this.label.trim() !== "";
-    label.innerHTML =
-      this.label !== undefined &&
-      this.label !== null &&
-      this.label.trim() !== ""
-        ? this.label.trim()
-        : "";
-  }
-  /**
-   * determines if an option is hidden a d can't be selected
-   *
-   * @param {string} val option value
-   * @param {boolean} allowNull whether or not null option can be selected
-   * @returns {boolean} whether or not option should be hidden
-   */
-  _hideNullOption(val, allowNull) {
-    return !allowNull && (val === undefined || val === null);
-  }
-
-  /**
-   * gets sets active option based on a row and column
-   *
-   * @param {string} active active option's id
-   * @param {number} rownum row number to be tested
-   * @param {number} colnum column number to be tested
-   * @returns {boolean} whether or not option is at given row and column
-   */
-  _isActive(active, rownum, colnum) {
-    return active === this._getOptionId(rownum, colnum);
-  }
-
-  /**
-   * determines if an option is at a given row and column
-   *
-   * @param {string} value1 current value
-   * @param {string} value2 an option's value
-   * @returns {boolean} whether or not option is selected
-   */
-  _isSelected(value1, value2) {
-    return value1 === value2;
-  }
-
-  /**
+   */_handleOptionFocus(e){this._setActiveOption(e.detail.id)}/**
    * sets  active descendant to a given option's id
    *
    * @param {string} id option id
    * @returns {void}
-   */
-  _setActiveOption(id) {
-    this.__activeDesc = id;
-    this.dispatchEvent(new CustomEvent("option-focus", { detail: this }));
-  }
-
-  /**
+   */_setActiveOption(id){this.__activeDesc=id;this.dispatchEvent(new CustomEvent("option-focus",{detail:this}))}/**
    * handles change in value
    *
    * @param {object} newValue new value for picker
    * @param {object} oldValue old value for picker
    * @returns {void}
-   */
-  _valueChanged(newValue, oldValue) {
-    this._setSelectedOption(newValue, oldValue);
-  }
-
-  /**
+   */_valueChanged(newValue,oldValue){this._setSelectedOption(newValue,oldValue);this.dispatchEvent(new CustomEvent("value-changed",{detail:this}))}/**
    * handles change in options
    *
    * @param {object} newValue new options for picker
    * @param {object} oldValue old options for picker
    * @returns {void}
-   */
-  _optionsChanged(newValue, oldValue) {
-    this._setSelectedOption(newValue, oldValue);
-  }
-
-  /**
+   */_optionsChanged(newValue,oldValue){this._setSelectedOption(newValue,oldValue)}/**
    * sets selected option to a given option's id
    * @returns {void}
-   */
-  _setSelectedOption(newVal, oldVal) {
-    let sel =
-      !this.allowNull && this.options.length > 0
-        ? this.options[0][0].value
-        : null;
-    if (this.options !== undefined && this.options !== null) {
-      this.set(
-        "__options",
-        typeof this.options === "string"
-          ? JSON.parse(this.options)
-          : this.options.slice()
-      );
-      //if nulls are allowed, set active descendant to first not null option
-      this.__activeDesc = this.allowNull ? "option-0-0" : null;
-      for (var i = 0; i < this.__options.length; i++) {
-        for (var j = 0; j < this.__options[i].length; j++) {
-          //if unset, set active descendant to first not null option
-          if (this.value !== null && this.__activeDesc === null)
-            this.__activeDesc = "option-" + i + "-" + j;
-          if (`${this.__options[i][j].value}` === `${this.value}`) {
-            //set active descendant to option that matches value
-            this.__activeDesc = "option-" + i + "-" + j;
-            sel = this.__options[i][j];
-          }
-        }
-      }
-    }
-    if (sel === null) this.value = null;
-    this.__selectedOption = sel;
-    this.dispatchEvent(
-      new CustomEvent("change", { bubbles: true, detail: this })
-    );
-  }
-
-  /**
+   */_setSelectedOption(newVal,oldVal){let sel=!this.allowNull&&0<this.options.length&&0<this.options[0].length?this.options[0][0].value:null;if(this.options){this.__options="string"===typeof this.options?JSON.parse(this.options):this.options.slice();//if nulls are allowed, set active descendant to first not null option
+this.__activeDesc=this.allowNull?"option-0-0":null;for(var i=0;i<this.__options.length;i++){for(var j=0;j<this.__options[i].length;j++){//if unset, set active descendant to first not null option
+if(null!==this.value&&null===this.__activeDesc)this.__activeDesc=`option-${i}-${j}`;if(`${this.value}`===`${this.__options[i][j].value}`){//set active descendant to option that matches value
+this.__activeDesc=`option-${i}-${j}`;sel=this.__options[i][j]}}}}if(null===sel)this.value=null;this.__selectedOption=sel;this.dispatchEvent(new CustomEvent("change",{bubbles:!0,detail:this}))}/**
    * toggles listbox
    *
-   * @param {boolean} expanded is listbox expanded?
+   * @param {boolean} open whether to open
    * @returns {void}
-   */
-  _toggleListbox(expanded) {
-    if (this.disabled) return;
-    let active = this.shadowRoot.querySelector("#" + this.__activeDesc);
-    console.log("_toggleListbox", expanded);
-    this.expanded = expanded;
-    if (expanded) {
-      if (active !== null) active.focus();
-      this.dispatchEvent(new CustomEvent("expand", { detail: this }));
-    } else {
-      if (active !== null) this.value = active.getAttribute("value");
-      this.dispatchEvent(new CustomEvent("collapse", { detail: this }));
-    }
-  }
-
-  /**
-   * Set event listeners
-   * @returns {void}
-   */
-  ready() {
-    super.ready();
-    let root = this;
-    if (this.shadowRoot.querySelector("#listbox") !== undefined) {
-      this.shadowRoot
-        .querySelector("#listbox")
-        .addEventListener("click", function(e) {
-          root._handleListboxEvent(e, "click");
-        });
-      this.shadowRoot
-        .querySelector("#listbox")
-        .addEventListener("mousedown", function(e) {
-          root._handleListboxEvent(e, "mousedown");
-        });
-      this.shadowRoot
-        .querySelector("#listbox")
-        .addEventListener("keydown", function(e) {
-          root._handleListboxKeydown(e);
-        });
-      this.addEventListener("blur", function(e) {
-        this.expanded = false;
-      });
-    }
-  }
-  constructor() {
-    super();
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("./lib/simple-picker-option.js");
-  }
-  /**
+   */_toggleListbox(open=!this.expanded){if(this.disabled)return;let active=this.shadowRoot.querySelector("#"+this.__activeDesc);this.expanded=open;if(open){if(null!==active)active.focus();this.dispatchEvent(new CustomEvent("expand",{detail:this}))}else{if(null!==active)this.value=active.getAttribute("value");this.dispatchEvent(new CustomEvent("collapse",{detail:this}))}}/**
    * sets options for picker
    *
    * @param {array} options nested array of options
    * @returns {void}
-   */
-  setOptions(options) {
-    this.set("options", [[]]);
-    this.set("options", options);
-  }
-  /**
+   */setOptions(options){this.set("options",[[]]);this.set("options",options)}/**
    * life cycle, element is removed from DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(SimplePicker.tag, SimplePicker);
-export { SimplePicker };
+   */disconnectedCallback(){this.removeEventListener("blur",function(e){this.expanded=!1});super.disconnectedCallback()}}window.customElements.define(SimplePicker.tag,SimplePicker);export{SimplePicker};

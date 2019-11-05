@@ -1,5 +1,5 @@
 import { html } from "@polymer/polymer/polymer-element.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import { A11yBehaviors } from "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
 /**
 `simple-concept-network`
@@ -9,14 +9,14 @@ a central concept, much like the ELMS:LN snowflake icon.
 @microcopy - the mental model for this element
  - ELMS:LN - The ELMS: Learning Network "snowflake" is a network diagram
 */
-class SimpleConceptNetwork extends A11yBehaviors(SimpleColors) {
+class SimpleConceptNetwork extends A11yBehaviors(SimpleColorsPolymer) {
   constructor() {
     super();
     import("@lrnwebcomponents/simple-concept-network/lib/simple-concept-network-node.js");
   }
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles">
+      <style include="simple-colors-shared-styles-polymer">
         :host {
           display: block;
         }

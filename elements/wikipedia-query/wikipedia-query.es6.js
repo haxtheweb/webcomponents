@@ -13,24 +13,24 @@ class WikipediaQuery extends LitElement {
   static get styles() {
     return [
       css`
-      :host {
-        display: block;
-        --wikipedia-query-body-height: 160px;
-      }
-      :host [hidden] {
-        display: none;
-      }
-      #result {
-        height: var(--wikipedia-query-body-height);
-        overflow: scroll;
-        border: 1px grey solid;
-        padding: 8px 16px;
-      }
-      citation-element {
-        background-color: #f8f8f8;
-        padding: 16px 8px;
-        font-size: 12px;
-      }
+        :host {
+          display: block;
+          --wikipedia-query-body-height: 160px;
+        }
+        :host [hidden] {
+          display: none;
+        }
+        #result {
+          height: var(--wikipedia-query-body-height);
+          overflow: scroll;
+          border: 1px grey solid;
+          padding: 8px 16px;
+        }
+        citation-element {
+          background-color: #f8f8f8;
+          padding: 16px 8px;
+          font-size: 12px;
+        }
       `
     ];
   }
@@ -56,7 +56,8 @@ class WikipediaQuery extends LitElement {
     return html`
       <iron-ajax
         auto
-        url="https://en.wikipedia.org/w/api.php?origin=*&amp;action=query&amp;titles=${this.search}&amp;prop=extracts&amp;format=json"
+        url="https://en.wikipedia.org/w/api.php?origin=*&amp;action=query&amp;titles=${this
+          .search}&amp;prop=extracts&amp;format=json"
         handle-as="json"
         @response="${this.handleResponse}"
         debounce-duration="25"
@@ -83,20 +84,19 @@ class WikipediaQuery extends LitElement {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == 'search') {
+      if (propName == "search") {
+        if (this.title) {
+          this._title = this.title;
+        } else {
+          this._title = this[propName].replace("_", " ") + " Wikipedia article";
+        }
+      }
+      if (propName == "title") {
         if (this.title) {
           this._title = this.title;
         }
-        else {
-          this._title = this[propName].replace('_', ' ') + ' Wikipedia article';
-        }
       }
-      if (propName == 'title') {
-        if (this.title) {
-          this._title = this.title;
-        }
-      }
-      if (propName == 'renderAs') {
+      if (propName == "renderAs") {
         // observer
         this._renderAsUpdated(this[propName], oldValue);
       }
@@ -105,36 +105,36 @@ class WikipediaQuery extends LitElement {
   static get properties() {
     return {
       title: {
-        type: String,
+        type: String
       },
       __now: {
-        type: String,
+        type: String
       },
       _title: {
-        type: String,
+        type: String
       },
       __rendercontent: {
-        type: String,
+        type: String
       },
       /**
        * hideTitle
        */
       hideTitle: {
         type: Boolean,
-        attribute: 'hide-title',
+        attribute: "hide-title"
       },
       /**
        * Search string.
        */
       search: {
-        type: String,
+        type: String
       },
       /**
        * Render the response as..
        */
       renderAs: {
         type: String,
-        attribute: 'render-as',
+        attribute: "render-as"
       },
       /**
        * Response to parse.

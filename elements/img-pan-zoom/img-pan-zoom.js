@@ -1,6 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 /**
@@ -172,6 +171,10 @@ class ImgPanZoom extends PolymerElement {
       }
     };
   }
+  // simple path from a url modifier
+  pathFromUrl(url) {
+    return url.substring(0, url.lastIndexOf("/") + 1);
+  }
   /**
    * life cycle
    */
@@ -179,7 +182,7 @@ class ImgPanZoom extends PolymerElement {
     super();
     import("@polymer/paper-spinner/paper-spinner.js");
     import("@lrnwebcomponents/img-pan-zoom/lib/img-loader.js");
-    const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+    const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
     let location = `${basePath}lib/openseadragon/build/openseadragon/openseadragon.min.js`;
     window.addEventListener(
       "es-bridge-openseadragon-loaded",

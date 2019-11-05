@@ -44,7 +44,8 @@ class ExampleHaxcmsTheme extends HAXCMSPolymerElementTheme {
 
 :host #slot ::slotted(*) {
   color: var(--example-haxcms-theme-color);
-}</style>
+}
+        </style>
 <site-top-menu noink indicator="arrow" arrow-size="8">
   <site-title slot="prefix" class="spacing"></site-title>
   <site-modal slot="suffix" icon="icons:search" title="Search site" button-label="Search">

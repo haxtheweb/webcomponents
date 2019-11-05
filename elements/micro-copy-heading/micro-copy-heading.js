@@ -21,10 +21,10 @@ import {
  * @demo demo/index.html
  */
 class MicroCopyHeading extends LitElement {
-  // render function
-  render() {
-    return html`
-      <style>
+  //styles function
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           margin: 16px 0;
@@ -50,7 +50,12 @@ class MicroCopyHeading extends LitElement {
           letter-spacing: 0.09em;
           padding: 6px 16px;
         }
-      </style>
+      `
+    ];
+  }
+  // render function
+  render() {
+    return html`
       <h2>${this.heading}<span aria-hidden="true">${this.endcap}</span></h2>
     `;
   }

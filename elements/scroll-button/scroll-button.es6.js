@@ -22,7 +22,8 @@ class ScrollButton extends PolymerElement {
   // render function
   static get template() {
     return html`
-<style>:host {
+<style>
+:host {
   display: block;
   --scroll-button-z-index: 99;
   z-index: var(--scroll-button-z-index);
@@ -52,7 +53,7 @@ paper-tooltip {
   }
   @apply --scroll-button-tooltip;
 }
-</style>
+        </style>
 <paper-icon-button id="btn" icon="[[icon]]" title="[[label]]"></paper-icon-button>
 <paper-tooltip
   for="btn"

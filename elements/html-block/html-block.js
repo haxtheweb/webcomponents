@@ -16,7 +16,9 @@ class HtmlBlock extends HTMLElement {
   // render function
   get html() {
     return `
-<style></style>
+<style>
+
+        </style>
 <slot></slot>`;
   }
 

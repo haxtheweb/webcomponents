@@ -22,7 +22,8 @@ class RCoder extends PolymerElement {
   // render function
   static get template() {
     return html`
-<style>:host {
+<style>
+:host {
   display: block;
 }
 
@@ -37,7 +38,8 @@ class RCoder extends PolymerElement {
 
 #button {
   margin: var(--r-code-button-margin, 10px 0);
-}</style>
+}
+        </style>
 <code-editor id="editor" language="r"></code-editor>
 <paper-button id="button" disabled="[[!__connected]]" on-click="process" raised>Process</paper-button>
 <div id="output"></div>`;

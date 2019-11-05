@@ -34,7 +34,8 @@ class JsonOutlineSchema extends HTMLElement {
   // render function
   get html() {
     return `
-<style>:host {
+<style>
+:host {
   display: block;
 }
 :host([debug]) {
@@ -45,7 +46,7 @@ class JsonOutlineSchema extends HTMLElement {
 :host([hidden]) {
   display: none;
 }
-</style>
+        </style>
 <slot></slot>`;
   }
 

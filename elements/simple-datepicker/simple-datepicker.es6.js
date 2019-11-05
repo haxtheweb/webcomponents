@@ -24,7 +24,8 @@ class SimpleDatepicker extends PolymerElement {
   // render function
   static get template() {
     return html`
-<style>:host {
+<style>
+:host {
   display: block;
 }
 :host([hidden]) {
@@ -82,7 +83,7 @@ class SimpleDatepicker extends PolymerElement {
   height: 30px;
   cursor: pointer;
 }
-</style>
+        </style>
 <paper-input 
   id="dateinput" 
   label$="[[label]]" 

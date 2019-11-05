@@ -2,10 +2,9 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "@polymer/paper-button/paper-button.js";
-import * as async from "@polymer/polymer/lib/utils/async.js";
 
 // register globally so we can make sure there is only one
 window.SimpleToast = window.SimpleToast || {};
@@ -32,12 +31,13 @@ window.SimpleToast.requestAvailability = () => {
  * @polymer
  * @demo demo/index.html
  */
-class SimpleToast extends PolymerElement {
+class SimpleToast extends LitElement {
   
-  // render function
-  static get template() {
-    return html`
-<style>:host {
+  //styles function
+  static get styles() {
+    return  [
+      css`
+:host {
   display: block;
 }
 
@@ -59,10 +59,17 @@ paper-toast {
   border: var(--simple-toast-border, inherit);
   z-index: var(--simple-toast-z-index, inherit);
   font-size: var(--simple-toast-font-size, inherit);
-}</style>
-<paper-toast id="toast" text="[[text]]" duration$="[[duration]]" opened="{{opened}}" class$="[[classStyle]]">
+}
+      `
+    ];
+  }
+  // render function
+  render() {
+    return html`
+
+<paper-toast id="toast" text="${this.text}" duration="${this.duration}" opened="${this.opened}" @opened-changed="${this.openedChanged}" .class="${this.classStyle}">
   <slot></slot>
-  <paper-button hidden$="[[!closeButton]]" on-click="hide">[[closeText]]</paper-button>
+  <paper-button .hidden="${!this.closeButton}" @click="${this.hide}">${this.closeText}</paper-button>
 </paper-toast>`;
   }
 
@@ -75,16 +82,14 @@ paper-toast {
   "opened": {
     "name": "opened",
     "type": Boolean,
-    "value": false,
-    "reflectToAttribute": true
+    "reflect": true
   },
   /**
    * Plain text based message to display
    */
   "text": {
     "name": "text",
-    "type": String,
-    "value": "Saved"
+    "type": String
   },
   /**
    * Class name, fit-bottom being a useful one
@@ -92,7 +97,7 @@ paper-toast {
   "classStyle": {
     "name": "classStyle",
     "type": String,
-    "value": ""
+    "attribute": "class-style"
   },
   /**
    * Text for the close button
@@ -100,22 +105,22 @@ paper-toast {
   "closeText": {
     "name": "closeText",
     "type": String,
-    "value": "Close"
+    "attribute": "close-text"
   },
   /**
    * How long the toast message should be displayed
    */
   "duration": {
     "name": "duration",
-    "type": Number,
-    "value": 4000
+    "type": Number
   },
   /**
    * Event callback when hide is called
    */
   "eventCallback": {
     "name": "eventCallback",
-    "type": String
+    "type": String,
+    "attribute": "event-callback"
   },
   /**
    * If there should be a close button shown
@@ -123,8 +128,8 @@ paper-toast {
   "closeButton": {
     "name": "closeButton",
     "type": Boolean,
-    "value": true,
-    "reflectToAttribute": true
+    "reflect": true,
+    "attribute": "close-button"
   }
 }
 ;
@@ -144,9 +149,14 @@ paper-toast {
   /**
    * life cycle, element is afixed to the DOM
    */
-  connectedCallback() {
-    super.connectedCallback();
-
+  constructor() {
+    super();
+    this.opened = false;
+    this.text = "Saved";
+    this.classStyle = "";
+    this.closeText = "Close";
+    this.duration = 4000;
+    this.closeButton = true;
     window.addEventListener(
       "simple-toast-hide",
       this.hideSimpleToast.bind(this)
@@ -160,7 +170,6 @@ paper-toast {
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    super.connectedCallback();
     window.removeEventListener(
       "simple-toast-hide",
       this.hideSimpleToast.bind(this)
@@ -169,12 +178,16 @@ paper-toast {
       "simple-toast-show",
       this.showSimpleToast.bind(this)
     );
+    super.connectedCallback();
   }
   /**
    * Hide callback
    */
   hideSimpleToast(e) {
     this.hide();
+  }
+  openedChanged(e) {
+    this.opened = e.detail.value;
   }
   /**
    * Show / available callback
@@ -205,11 +218,9 @@ paper-toast {
     if (e.detail.slot) {
       this.appendChild(e.detail.slot);
     }
-    async.microTask.run(() => {
-      setTimeout(() => {
-        this.show();
-      }, 50);
-    });
+    setTimeout(() => {
+      this.show();
+    }, 25);
   }
 
   show() {
