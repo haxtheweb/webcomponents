@@ -59,7 +59,7 @@ class SimpleColorsPolymer extends PolymerElement {
   }
 
   static get tag() {
-    return "simple-colors";
+    return "simple-colors-polymer";
   }
 
   constructor() {

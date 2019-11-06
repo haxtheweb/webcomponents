@@ -6,7 +6,8 @@ import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-st
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
 import { varExists, varGet } from "@lrnwebcomponents/hax-body/lib/haxutils.js";
 import { updateStyles } from "@polymer/polymer/lib/mixins/element-mixin.js";
-import "@lrnwebcomponents/simple-colors-shared-styles/lib/simple-colors-styles.js";
+import "@lrnwebcomponents/simple-colors-shared-styles/simple-colors-shared-styles.js";
+
 /**
  * `HAXCMSTheme` mixin class to automatically apply HAXcms theme state
  * Typically an element will be extended from this and while not all,
@@ -217,7 +218,7 @@ const HAXCMSTheme = function(SuperClass) {
  */
 class HAXCMSThemeWiring {
   constructor(element, load = true) {
-    window.SimpleColorsStyles.requestAvailability();
+    window.SimpleColorsSharedStyles.requestAvailability();
     if (load) {
       // @todo may want to set this to sessionStorage instead...
       if (window.localStorage.getItem("HAXCMSSystemData") == null) {
