@@ -1213,7 +1213,10 @@ class HaxStore extends HAXElement(LitElement) {
     };
     this.setHaxProperties(iframe, "iframe");
     let img = {
-      canScale: true,
+      canScale: {
+        min: 10,
+        step: 5
+      },
       canPosition: true,
       canEditSource: false,
       gizmo: {
@@ -1414,7 +1417,10 @@ class HaxStore extends HAXElement(LitElement) {
     };
     this.setHaxProperties(p, "p");
     let hr = {
-      canScale: true,
+      canScale: {
+        min: 10,
+        step: 5
+      },
       canPosition: true,
       canEditSource: false,
       settings: {
