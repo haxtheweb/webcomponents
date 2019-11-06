@@ -40,7 +40,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit-element": "^2.2.1"
+    "@lrnwebcomponents/es-global-bridge": "^2.1.4",
+    "lit-element": "^2.2.1",
+    "@polymer/polymer": "^3.2.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.0.9",

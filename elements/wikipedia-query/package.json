@@ -41,7 +41,7 @@
   "dependencies": {
     "@lrnwebcomponents/citation-element": "^2.1.5",
     "@polymer/iron-ajax": "^3.0.0",
-    "@polymer/polymer": "^3.2.0"
+    "lit-element":"2.0.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",

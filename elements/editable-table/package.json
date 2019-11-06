@@ -54,7 +54,8 @@
     "@polymer/paper-listbox": "^3.0.0",
     "@polymer/paper-menu-button": "^3.0.0",
     "@polymer/paper-tooltip": "^3.0.1",
-    "@polymer/polymer": "^3.2.0"
+    "@polymer/polymer": "^3.2.0",
+    "lit-element":"2.0.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",

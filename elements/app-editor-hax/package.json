@@ -39,7 +39,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@polymer/polymer": "^3.2.0"
+    "@polymer/polymer": "^3.2.0",
+    "@lrnwebcomponents/h-a-x": "^2.1.10"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",

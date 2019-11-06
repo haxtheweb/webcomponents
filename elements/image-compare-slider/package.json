@@ -39,7 +39,6 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/materializecss-styles": "^2.1.4",
     "@lrnwebcomponents/schema-behaviors": "^2.1.4",
     "@lrnwebcomponents/user-action": "^2.1.5",
     "@polymer/iron-image": "^3.0.0",
