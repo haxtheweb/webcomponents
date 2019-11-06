@@ -1259,16 +1259,10 @@ class HaxStore extends HAXElement(LitElement) {
           {
             attribute: "height",
             title: "Height",
-            description: "height in pixels of the item",
+            description:
+              "height in pixels of the item. Leave blank to respond to the natural resolution",
             inputMethod: "textfield",
             icon: "icons:swap-vert"
-          },
-          {
-            attribute: "width",
-            title: "Width",
-            description: "width in pixels of the item",
-            inputMethod: "textfield",
-            icon: "icons:swap-horiz"
           }
         ],
         configure: [
@@ -1291,16 +1285,10 @@ class HaxStore extends HAXElement(LitElement) {
           {
             attribute: "height",
             title: "Height",
-            description: "height in pixels of the item",
+            description:
+              "height in pixels of the item. Leave blank to respond to the natural resolution",
             inputMethod: "textfield",
             icon: "icons:swap-vert"
-          },
-          {
-            attribute: "width",
-            title: "Width",
-            description: "width in pixels of the item",
-            inputMethod: "textfield",
-            icon: "icons:swap-horiz"
           }
         ],
         advanced: []
