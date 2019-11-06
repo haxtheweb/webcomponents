@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { ChartistRender } from "@lrnwebcomponents/chartist-render/chartist-render.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 /**
@@ -17,7 +17,7 @@ import "@polymer/iron-ajax/iron-ajax.js";
  * @demo demo/line.html line charts
  *
  */
-class LrndesignChartBehaviors extends LitElement(SimpleColors) {
+class LrndesignChartBehaviors extends SimpleColors {
   static get styles() {
     return [
       super.styles,
@@ -377,17 +377,15 @@ class LrndesignChartBehaviors extends LitElement(SimpleColors) {
         auto
         handle-as="text"
         url="${this.dataSource}"
-        .last-response="${this.rawData}"
         @response="${this.handleResponse}"
       ></iron-ajax>
       <chartist-render
         id="chartist"
-        type="${this.type}"
-        scale="${this.scale}"
-        chart-title="${this.chartTitle}"
-        chart-desc="${this.chartDesc}"
+        .type="${this.type}"
+        .scale="${this.scale}"
+        .chart-title="${this.chartTitle}"
+        .chart-desc="${this.chartDesc}"
         .data="${this.data}"
-        .options="${this._getOptions()}"
         .responsive-options="${this.responsiveOptions}"
         @chartist-render-ready="${this._ready}"
       ></chartist-render>
@@ -399,7 +397,7 @@ class LrndesignChartBehaviors extends LitElement(SimpleColors) {
     this.setProperties();
     let checkReady = setInterval(() => {
       if (this.__dataReady) {
-        this.shadowRoot.querySelector("#chartist").makeChart();
+        this.makeChart();
         clearInterval(checkReady);
       }
     }, 1);
@@ -498,13 +496,6 @@ class LrndesignChartBehaviors extends LitElement(SimpleColors) {
        */
       axisXShowLabel: {
         attribute: "axis-x-show-label",
-        type: Boolean
-      },
-      /**
-       * Position labels at top-left of axis?
-       */
-      axisXTopLeft: {
-        attribute: "axis-x-top-left",
         type: Boolean
       },
       /**
@@ -636,9 +627,9 @@ class LrndesignChartBehaviors extends LitElement(SimpleColors) {
       canPosition: true,
       canEditSource: false,
       gizmo: {
-        title: "Pie Chart",
-        description: "Creates an accessible pie chart based on a CSV.",
-        icon: "editor:pie-chart",
+        title: undefined,
+        description: "Creates an accessible chart based on a CSV.",
+        icon: undefined,
         color: "green darken-4",
         groups: ["Data", "Presentation"],
         handles: [
@@ -652,7 +643,16 @@ class LrndesignChartBehaviors extends LitElement(SimpleColors) {
         }
       },
       settings: {
-        quick: [],
+        quick: [
+          {
+            property: "chartTitle",
+            title: "Chart Title",
+            description: "Accessible alt text for your chart.",
+            inputMethod: "textfield",
+            icon: "text-field",
+            required: true
+          }
+        ],
         configure: [
           {
             property: "data-source",
@@ -677,48 +677,6 @@ class LrndesignChartBehaviors extends LitElement(SimpleColors) {
             description: "Accessible description of your chart.",
             inputMethod: "textfield",
             icon: "text-field"
-          },
-          {
-            property: "width",
-            title: "Width",
-            description: "The width of the chart.",
-            inputMethod: "textfield",
-            icon: "text-field"
-          },
-          {
-            property: "height",
-            title: "Height",
-            description: "The height of the chart.",
-            inputMethod: "textfield",
-            icon: "text-field"
-          },
-          {
-            property: "paddingTop",
-            title: "Padding-Top",
-            description: "The padding at the top of the chart.",
-            inputMethod: "textfield",
-            icon: "text-field"
-          },
-          {
-            property: "paddingRight",
-            title: "Padding-Right",
-            description: "The padding at the right of the chart.",
-            inputMethod: "textfield",
-            icon: "text-field"
-          },
-          {
-            property: "paddingBottom",
-            title: "Padding-Bottom",
-            description: "The padding at the bottom of the chart.",
-            inputMethod: "textfield",
-            icon: "text-field"
-          },
-          {
-            property: "paddingLeft",
-            title: "Padding-Left",
-            description: "The padding at the left of the chart.",
-            inputMethod: "textfield",
-            icon: "text-field"
           }
         ],
         advanced: [
@@ -731,64 +689,161 @@ class LrndesignChartBehaviors extends LitElement(SimpleColors) {
             icon: "text-field"
           },
           {
-            property: "total",
-            title: "Total of All Slices",
-            description:
-              "Optional total you can specify. By specifying a total value, the sum of the values in the series must be this total in order to draw a full pie. You can use this parameter to draw only parts of a pie or gauge charts.",
-            inputMethod: "textfield",
-            icon: "text-field",
-            validationType: "number"
-          },
-          {
-            property: "showLabel",
-            title: "Show labels?",
-            description: "Should chart labels be shown?",
-            inputMethod: "boolean",
-            icon: "check-box"
-          },
-          {
-            property: "labelOffset",
-            title: "Label Offset",
-            description:
-              "Label position offset from the standard position which is half distance of the radius. This value can be either positive or negative. Positive values will position the label away from the center.",
-            inputMethod: "textfield",
-            icon: "text-field",
-            validationType: "number"
-          },
-          {
-            property: "labelPosition",
-            title: "Label Position",
-            description:
-              'This option can be set to "inside", "outside" or "center". Positioned with "inside" the labels will be placed on half the distance of the radius to the border of the Pie by respecting the "Label Offset". The "outside" option will place the labels at the border of the pie and "center" will place the labels in the absolute center point of the chart. The "center" option only makes sense in conjunction with the "Label Offset" option.',
-            inputMethod: "textfield",
-            icon: "text-field"
-          },
-          {
-            property: "labelDirection",
-            title: "Label Direction",
-            description:
-              'Label direction can be "neutral", "explode" or "implode". The label\'s anchor will be positioned based on those settings as well as the fact if the labels are on the right or left side of the center of the chart. Usually explode is useful when labels are positioned far away from the center.',
-            inputMethod: "textfield",
-            icon: "text-field"
-          },
-          {
             property: "reverseData",
             title: "Reverse Data",
             description:
               "Reverse data including labels, the series order as well as the whole series data arrays.",
             inputMethod: "boolean",
             icon: "check-box"
-          },
-          {
-            property: "ignoreEmptyValues",
-            title: "Ignore empty values?",
-            description:
-              "Empty values will be ignored to avoid drawing unncessary slices and labels.",
-            inputMethod: "boolean",
-            icon: "check-box"
           }
         ]
       }
+    };
+  }
+
+  // extends haxProperty definition to line and bar properties
+  static get lineBarHaxProperties() {
+    return {
+      gridBackground: [
+        {
+          property: "showGridBackground",
+          title: "Show Grid Background",
+          inputMethod: "boolean"
+        }
+      ],
+      padding: [
+        {
+          property: "chartPaddingTop",
+          title: "Chart Padding (top)",
+          inputMethod: "text-field"
+        },
+        {
+          property: "chartPaddingBottom",
+          title: "Chart Padding (bottom)",
+          inputMethod: "text-field"
+        },
+        {
+          property: "chartPaddingLeft",
+          title: "Chart Padding (left)",
+          inputMethod: "text-field"
+        },
+        {
+          property: "chartPaddingRight",
+          title: "Chart Padding (right)",
+          inputMethod: "text-field"
+        }
+      ],
+      minMax: [
+        {
+          property: "low",
+          title: "Chart Minimum",
+          description: `
+          Overriding the natural low of the chart allows you to zoom in 
+          or limit the chart's lowest displayed value`,
+          inputMethod: "number"
+        },
+        {
+          property: "high",
+          title: "Chart Maximum",
+          description: `
+          Overriding the natural high of the chart allows you to zoom in 
+          or limit the chart's highest displayed value`,
+          inputMethod: "number"
+        }
+      ],
+      xAxis: [
+        {
+          property: "axisXShowGrid",
+          title: "X-Axis Show Grid",
+          description: "Show the X-Axis's grid.",
+          inputMethod: "boolean"
+        },
+        {
+          property: "axisXOffset",
+          title: "X-Axis Offset",
+          inputMethod: "number"
+        },
+        {
+          property: "axisXPosition",
+          title: "X-Axis Position",
+          description: `
+            Position where labels are placed. Can be set to "start" or "end" 
+            where "start" is equivalent to left or top on vertical axis
+            and "end" is equivalent to right or bottom on horizontal axis`,
+          inputMethod: "text-field"
+        },
+        {
+          property: "axisXShowLabel",
+          title: "X-Axis Show Label",
+          description: "Show the X-Axis's label.",
+          inputMethod: "boolean"
+        },
+        {
+          property: "axisXLabelOffsetX",
+          title: "X-Axis Label (horizontal offset)",
+          description: "Horizontal position of the X-Axis's label.",
+          inputMethod: "number"
+        },
+        {
+          property: "axisXLabelOffsetY",
+          title: "X-Axis Label (vertical offset)",
+          description: "Vertical position of the X-Axis's label.",
+          inputMethod: "number"
+        }
+      ],
+      yAxis: [
+        {
+          property: "axisYShowGrid",
+          title: "Y-Axis: Show Grid",
+          description: "Show the Y-Axis's grid.",
+          inputMethod: "boolean"
+        },
+        {
+          property: "axisYOffset",
+          title: "Y-Axis Offset",
+          inputMethod: "number"
+        },
+        {
+          property: "axisYPosition",
+          title: "Y-Axis Position",
+          description: `
+            Position where labels are placed. Can be set to "start" or "end" 
+            where "start" is equivalent to left or top on vertical axis
+            and "end" is equivalent to right or bottom on horizontal axis`,
+          inputMethod: "text-field"
+        },
+        {
+          property: "axisYShowLabel",
+          title: "Y-Axis Show Label",
+          description: "Show the Y-Axis's label.",
+          inputMethod: "boolean"
+        },
+        {
+          property: "axisYLabelOffsetX",
+          title: "Y-Axis Label (horizontal offset)",
+          description: "Horizontal position of the Y-Axis's label.",
+          inputMethod: "number"
+        },
+        {
+          property: "axisYLabelOffsetY",
+          title: "Y-Axis Label (vertical offset)",
+          description: "Vertical position of the Y-Axis's label.",
+          inputMethod: "number"
+        },
+        {
+          property: "axisYScaleMinSpace",
+          title: "Y-Axis Scale Minimum Space",
+          description: "Specifies minimum height in pixel of scale steps.",
+          inputMethod: "number"
+        },
+        {
+          property: "axisYOnlyInteger",
+          title: "Y-Axis Scale (only integers)",
+          description:
+            "Use only integer values (whole numbers) for the scale steps.",
+          inputMethod: "boolean"
+        }
+      ]
     };
   }
 
@@ -806,17 +861,33 @@ class LrndesignChartBehaviors extends LitElement(SimpleColors) {
             detail: this
           })
         );
+      if (this.__dataReady) {
+        this.makeChart();
+      }
     });
   }
+
+  /**
+   *refreshes the chart
+   *
+   * @memberof LrndesignChartBehaviors
+   */
+  makeChart() {
+    let chart = this.shadowRoot.querySelector("#chartist");
+    if (chart) {
+      chart.options = this._getOptions();
+      this.dispatchEvent(new CustomEvent("options-changed", { detail: this }));
+      chart.makeChart();
+      this.dispatchEvent(new CustomEvent("chart-changed", { detail: this }));
+    }
+  }
+
   /**
    * Sets properties for chart.
    * Specific chart types can extend this function
    * with type-specific properties.
    */
   setProperties() {
-    /*
-    this.fullWidth = false;
-     */
     this.chartTitle = null;
     this.chartDesc = null;
     this.scale = "ct-minor-seventh";
@@ -857,26 +928,72 @@ class LrndesignChartBehaviors extends LitElement(SimpleColors) {
 
   /**
    * Convert from csv text to an array in the table function
+   * @param {event} e event data
    */
   handleResponse(e) {
+    this.rawData = e.detail.response;
     let raw = this.CSVtoArray(this.rawData);
     this.data = {
       labels: raw[0],
       series: this.type !== "pie" ? raw.slice(1, raw.length) : raw[1]
     };
-    this.options = this._getOptions();
     this.__dataReady = true;
   }
 
   /**
    * override this with type-specific options
+   * @returns {object} options
    */
   _getOptions() {
-    return {};
+    return {
+      reverseData: this.reverseData
+    };
+  }
+
+  /**
+   * override this with type-specific options
+   * @returns {object} options specific to both bar and line charts
+   */
+  _getLineBarOptions() {
+    return {
+      high: this.high,
+      low: this.low,
+      axisX: {
+        labelOffset: {
+          x: this.axisXLabelOffsetX,
+          y: this.axisXLabelOffsetY,
+          offset: this.axisXOffset
+        },
+        position: this.axisXPosition,
+        showGrid: this.axisXShowGrid,
+        showLabel: this.axisXShowLabel
+      },
+      axisY: {
+        labelOffset: {
+          x: this.axisYLabelOffsetX,
+          y: this.axisYLabelOffsetY,
+          offset: this.axisYOffset
+        },
+        position: this.axisYPosition,
+        showGrid: this.axisYShowGrid,
+        showLabel: this.axisYShowLabel,
+        onlyInteger: this.axisYOnlyInteger,
+        scaleMinSpace: this.axisYScaleMinSpace
+      },
+      showGridBackground: this.showGridBackground,
+      chartPadding: {
+        bottom: this.chartPaddingBottom,
+        left: this.chartPaddingLeft,
+        right: this.chartPaddingRight,
+        top: this.chartPaddingTop
+      }
+    };
   }
 
   /**
    * Mix of solutions from https://stackoverflow.com/questions/8493195/how-can-i-parse-a-csv-string-with-javascript-which-contains-comma-in-data
+   * @param {string} text csv data
+   * @returns {array} chart data
    */
   CSVtoArray(text) {
     let p = "",
