@@ -172,7 +172,7 @@ class HaxUploadField extends PolymerElement {
       e.stopPropagation();
       // look for a match as to what gizmo types it supports
       let values = {
-        source: e.detail.file.name,
+        source: e.detail.file.name.toLowerCase(),
         type: e.detail.file.type
       };
       // we have no clue what this is.. let's try and guess..
