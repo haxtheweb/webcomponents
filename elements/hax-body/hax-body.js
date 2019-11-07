@@ -815,7 +815,11 @@ class HaxBody extends PolymerElement {
         ) {
           if (newNode.properties && newNode.properties[property].readOnly) {
           } else {
-            newNode.set(attributeName, properties[property]);
+            if (newNode.set) {
+              newNode.set(attributeName, properties[property]);
+            } else {
+              newNode[attributeName] = properties[property];
+            }
           }
         } else if (
           properties[property] != null &&
@@ -823,7 +827,11 @@ class HaxBody extends PolymerElement {
         ) {
           if (newNode.properties && newNode.properties[property].readOnly) {
           } else {
-            newNode.set(attributeName, properties[property]);
+            if (newNode.set) {
+              newNode.set(attributeName, properties[property]);
+            } else {
+              newNode[attributeName] = properties[property];
+            }
           }
         } else {
           newNode.setAttribute(attributeName, properties[property]);

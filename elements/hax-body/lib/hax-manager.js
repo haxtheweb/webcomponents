@@ -1,8 +1,11 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { html, css } from "lit-element/lit-element.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/paper-styles/paper-styles.js";
-import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import "@polymer/iron-pages/iron-pages.js";
+/**
+ * @deprecatedApply - required for @apply / invoking @apply css var convention
+ */
+import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `hax-manager`
  * `A LRN element for brokering the UI for api endpoints both in querying and uploading of new media to eventually bubble up an event for hax-body to have content inserted into it. This is a wiring closet of sorts to ensure we can talk to any backend that's returning a slew of widgets / media to insert.`
@@ -13,15 +16,14 @@ import "@polymer/iron-pages/iron-pages.js";
  * - app - an API end point for querying and returning possible items for insert. For example, if a youtube is a source then it'll be expected to return data that can be mapped in such a way that it can display a grid of videos. Hitting vimeo we'd expect the same thing; enough data to be able to assemble a grid of videos to select / work with.
  * - endpoints - much of hax-manager is about routing data to and from the current application to backends. So uploads need to go some place, this is managing the UI aspect of that transaction while expecting to be fed an endpoint to handle the backend aspect.
  */
-class HaxManager extends PolymerElement {
-  constructor() {
-    super();
-    import("@lrnwebcomponents/hax-body/lib/hax-manager-deps.js");
-  }
-  static get template() {
-    return html`
-      <style include="simple-colors-shared-styles-polymer">
-        @import url("https://fonts.googleapis.com/css?family=Noto+Serif");
+class HaxManager extends SimpleColors {
+  /**
+   * LitElement life cycle - styles addition
+   */
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
         :host {
           display: block;
           color: var(--hax-color-text);
@@ -39,9 +41,6 @@ class HaxManager extends PolymerElement {
           padding: 56px 0;
           margin-top: 56px;
           --app-drawer-width: 400px;
-          --app-drawer-content-container: {
-            background-color: #ffffff;
-          }
         }
         #closedialog {
           float: right;
@@ -109,41 +108,6 @@ class HaxManager extends PolymerElement {
           color: #ffffff;
           display: block;
           padding: 16px !important;
-          --vaadin-upload-button-add-wrapper: {
-            border: 2px solid #ffffff;
-            background-color: var(--hax-color-accent1);
-            color: #ffffff;
-            display: block;
-          }
-          --vaadin-upload-buttons-primary: {
-            display: block;
-            width: 100%;
-            flex: unset;
-            -webkit-flex: unset;
-          }
-          --vaadin-upload-button-add: {
-            color: #000000;
-            display: block;
-            flex: unset;
-            -webkit-flex: unset;
-            text-align: center;
-          }
-          --vaadin-upload-drop-label: {
-            color: #ffffff;
-            display: block;
-            padding: 8px;
-          }
-          --vaadin-upload-drop-label-dragover: {
-            color: #ffffff;
-          }
-          --vaadin-upload-file-list: {
-            padding: 8px;
-            margin: 0;
-            color: #ffffff;
-          }
-          --vaadin-upload-file: {
-            color: #ffffff;
-          }
         }
         vaadin-upload[dragover] {
           border-color: #396;
@@ -189,8 +153,83 @@ class HaxManager extends PolymerElement {
             padding: 6px;
           }
         }
-      </style>
-      <app-drawer id="dialog" opened="{{opened}}" disable-swipe="">
+      `
+    ];
+  }
+  /**
+   * HTMLElement life cycle
+   */
+  constructor() {
+    super();
+    this.opened = false;
+    this.editExistingNode = false;
+    this.addTitle = "Add content";
+    this.activeStep = 0;
+    this.searching = false;
+    this.activePage = 0;
+    this.canSupportUploads = false;
+    this.appList = [];
+    this.__allowUpload = false;
+    import("@lrnwebcomponents/hax-body/lib/hax-manager-deps.js");
+  }
+  /**
+   * LitElement life cycle - styles addition
+   */
+  render() {
+    return html`
+      <custom-style>
+        <style>
+          @import url("https://fonts.googleapis.com/css?family=Noto+Serif");
+          #dialog {
+            --app-drawer-content-container: {
+              background-color: #ffffff;
+            }
+          }
+          vaadin-upload {
+            --vaadin-upload-button-add-wrapper: {
+              border: 2px solid #ffffff;
+              background-color: var(--hax-color-accent1);
+              color: #ffffff;
+              display: block;
+            }
+            --vaadin-upload-buttons-primary: {
+              display: block;
+              width: 100%;
+              flex: unset;
+              -webkit-flex: unset;
+            }
+            --vaadin-upload-button-add: {
+              color: #000000;
+              display: block;
+              flex: unset;
+              -webkit-flex: unset;
+              text-align: center;
+            }
+            --vaadin-upload-drop-label: {
+              color: #ffffff;
+              display: block;
+              padding: 8px;
+            }
+            --vaadin-upload-drop-label-dragover: {
+              color: #ffffff;
+            }
+            --vaadin-upload-file-list: {
+              padding: 8px;
+              margin: 0;
+              color: #ffffff;
+            }
+            --vaadin-upload-file: {
+              color: #ffffff;
+            }
+          }
+        </style>
+      </custom-style>
+      <app-drawer
+        id="dialog"
+        .opened="${this.opened}"
+        @opened-changed="${this.openedChanged}"
+        disable-swipe=""
+      >
         <div
           class="dialog-contents"
           id="dialogcontent"
@@ -198,18 +237,20 @@ class HaxManager extends PolymerElement {
         >
           <iron-pages
             id="steppages"
-            selected="{{activeStep}}"
+            .selected="${this.activeStep}"
+            @selected-changed="${this.activeStepChanged}"
             fallback-selection="select"
             role="main"
           >
             <div data-value="select">
               <iron-pages
                 id="activepage"
-                selected="{{activePage}}"
+                @selected-changed="${this.activePageChanged}"
+                .selected="${this.activePage}"
                 fallback-selection="link"
               >
                 <div class="page-area add-area">
-                  <h3 class="title">[[addTitle]]</h3>
+                  <h3 class="title">${this.addTitle}</h3>
                   <div class="add-area-content-wrapper">
                     <div class="add-url-area">
                       <paper-input
@@ -226,7 +267,7 @@ class HaxManager extends PolymerElement {
                       <vaadin-upload
                         form-data-name="file-upload"
                         id="fileupload"
-                        hidden$="[[!canSupportUploads]]"
+                        ?hidden="${!this.canSupportUploads}"
                       ></vaadin-upload>
                     </div>
                     <paper-button id="newassetconfigure" raised=""
@@ -250,8 +291,8 @@ class HaxManager extends PolymerElement {
           </iron-pages>
           <paper-button
             id="closedialog"
-            on-click="cancel"
-            hidden$="[[activeStep]]"
+            @click="${this.cancel}"
+            ?hidden="${this.activeStep === 0 ? false : true}"
           >
             <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
           </paper-button>
@@ -270,56 +311,51 @@ class HaxManager extends PolymerElement {
        */
       opened: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true,
-        observer: "_openedChanged"
+        reflect: true
       },
       /**
        * Title when open.
        */
       editExistingNode: {
         type: Boolean,
-        value: false
+        attribute: "edit-existing-node"
       },
       /**
        * Title when open.
        */
       editTitle: {
         type: String,
-        computed: "_computeEditTitle(editExistingNode)"
+        attribute: "edit-title"
       },
       /**
        * Active title
        */
       addTitle: {
         type: String,
-        value: "Add content"
+        attribute: "add-title"
       },
       /**
        * Active step currently selected
        */
       activeStep: {
-        type: Boolean,
-        reflectToAttribute: true,
-        value: false,
-        observer: "_activeStepChanged"
+        type: Number,
+        reflect: true,
+        attribute: "active-step"
       },
       /**
        * Searching mode
        */
       searching: {
         type: Boolean,
-        reflectToAttribute: true,
-        value: false
+        reflect: true
       },
       /**
        * Active page currently selected
        */
       activePage: {
-        type: String,
-        reflectToAttribute: true,
-        value: 0,
-        observer: "_activePageChanged"
+        type: Number,
+        reflect: true,
+        attribute: "active-page"
       },
       /**
        * If this can support uploads or not based on presense of a backend
@@ -327,38 +363,45 @@ class HaxManager extends PolymerElement {
        */
       canSupportUploads: {
         type: Boolean,
-        value: false
+        attribute: "can-support-uploads"
       },
       /**
        * Active element
        */
       activeHaxElement: {
-        type: Object,
-        observer: "_activeHaxElementChanged"
+        type: Object
       },
       /**
        * List of apps so they can be added
        */
       appList: {
-        type: Array,
-        value: []
+        type: Array
       },
       /**
        * Helper so we can upload after prompting where to go.
        */
       __allowUpload: {
-        type: Boolean,
-        value: false
+        type: Boolean
       }
     };
   }
 
+  activePageChanged(e) {
+    this.activePage = e.detail.value;
+  }
+  openedChanged(e) {
+    this.opened = e.detail.value;
+  }
+  activeStepChanged(e) {
+    this.activeStep = Number(e.detail.value);
+  }
   /**
-   * life cycle
+   * LitElement life cycle - ready state
    */
-  ready() {
-    super.ready();
-    // fire an event that this is a core piece of the system
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     this.dispatchEvent(
       new CustomEvent("hax-register-core-piece", {
         bubbles: true,
@@ -370,53 +413,59 @@ class HaxManager extends PolymerElement {
         }
       })
     );
-    afterNextRender(this, function() {
-      // add event listeners
-      document.body.addEventListener(
-        "hax-store-property-updated",
-        this._haxStorePropertyUpdated.bind(this)
-      );
-      document.body.addEventListener(
-        "hax-app-picker-selection",
-        this._haxAppPickerSelection.bind(this)
-      );
-      // specialized support for the place-holder tag
-      // and a drag and drop event
-      document.body.addEventListener(
-        "place-holder-file-drop",
-        this._placeHolderFileDrop.bind(this)
-      );
+    // add event listeners
+    document.body.addEventListener(
+      "hax-store-property-updated",
+      this._haxStorePropertyUpdated.bind(this)
+    );
+    document.body.addEventListener(
+      "hax-app-picker-selection",
+      this._haxAppPickerSelection.bind(this)
+    );
+    // specialized support for the place-holder tag
+    // and a drag and drop event
+    document.body.addEventListener(
+      "place-holder-file-drop",
+      this._placeHolderFileDrop.bind(this)
+    );
 
-      this.shadowRoot
-        .querySelector("#dialog")
-        .addEventListener("iron-overlay-canceled", this.close.bind(this));
-      this.shadowRoot
-        .querySelector("#dialog")
-        .addEventListener("iron-overlay-closed", this.close.bind(this));
-      this.shadowRoot
-        .querySelector("#closedialog")
-        .addEventListener("click", this.close.bind(this));
-      this.shadowRoot
-        .querySelector("#newassetconfigure")
-        .addEventListener("click", this.newAssetConfigure.bind(this));
-      this.shadowRoot
-        .querySelector("#fileupload")
-        .addEventListener("upload-before", this._fileAboutToUpload.bind(this));
-      this.shadowRoot
-        .querySelector("#fileupload")
-        .addEventListener(
-          "upload-response",
-          this._fileUploadResponse.bind(this)
-        );
-    });
+    this.shadowRoot
+      .querySelector("#dialog")
+      .addEventListener("iron-overlay-canceled", this.close.bind(this));
+    this.shadowRoot
+      .querySelector("#dialog")
+      .addEventListener("iron-overlay-closed", this.close.bind(this));
+    this.shadowRoot
+      .querySelector("#closedialog")
+      .addEventListener("click", this.close.bind(this));
+    this.shadowRoot
+      .querySelector("#newassetconfigure")
+      .addEventListener("click", this.newAssetConfigure.bind(this));
+    this.shadowRoot
+      .querySelector("#fileupload")
+      .addEventListener("upload-before", this._fileAboutToUpload.bind(this));
+    this.shadowRoot
+      .querySelector("#fileupload")
+      .addEventListener("upload-response", this._fileUploadResponse.bind(this));
   }
   /**
-   * Toggle panel size
+   * LitElement life cycle - properties changed
    */
-  togglePanelSize(e) {
-    this.shadowRoot.querySelector("#dialog").classList.toggle("grow");
-    this.updateStyles();
-    window.dispatchEvent(new Event("resize"));
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "editExistingNode") {
+        this.editTitle = this._computeEditTitle(this[propName]);
+      }
+      if (propName == "activeStep") {
+        this._activeStepChanged(this[propName], oldValue);
+      }
+      if (propName == "activePage") {
+        this._activePageChanged(this[propName], oldValue);
+      }
+      if (propName == "activeHaxElement" && this[propName] !== oldValue) {
+        this._activeHaxElementChanged(this[propName], oldValue);
+      }
+    });
   }
 
   /**
@@ -588,13 +637,16 @@ class HaxManager extends PolymerElement {
    * Notice page changed.
    */
   _activePageChanged(newValue, oldValue) {
+    // typecast later on to ensure we have the exact page value
     if (typeof newValue !== typeof undefined) {
       this.searching = false;
-      this.updateStyles();
-      if (newValue === 1 && this.shadowRoot.querySelector("#appbrowser")) {
+      if (
+        Number(newValue) === 1 &&
+        this.shadowRoot.querySelector("#appbrowser")
+      ) {
         this.shadowRoot.querySelector("#appbrowser").resetBrowser();
       } else if (
-        newValue === 2 &&
+        Number(newValue) === 2 &&
         this.shadowRoot.querySelector("#gizmobrowser")
       ) {
         this.shadowRoot.querySelector("#gizmobrowser").resetBrowser();
@@ -611,16 +663,9 @@ class HaxManager extends PolymerElement {
       typeof e.detail.value !== typeof undefined &&
       e.detail.property
     ) {
-      if (e.detail.property === "appList") {
-        this.set(e.detail.property, []);
-      }
-      if (e.detail.property === "activeHaxElement") {
-        this.set(e.detail.property, {});
-      }
-      this.set(e.detail.property, e.detail.value);
+      this[e.detail.property] = e.detail.value;
     }
   }
-
   /**
    * Notice active element changed.
    */
@@ -628,7 +673,7 @@ class HaxManager extends PolymerElement {
     if (typeof oldValue !== typeof undefined) {
       this.shadowRoot.querySelector("#preview").advancedForm = false;
       if (newValue && typeof newValue.tag === typeof undefined) {
-        this.resetManager();
+        this.resetManager(this.activePage);
       } else {
         // reset files so it doesn't bloat up
         this.shadowRoot.querySelector("#fileupload").set("files", []);
@@ -637,7 +682,6 @@ class HaxManager extends PolymerElement {
       }
     }
   }
-
   /**
    * Bubble up insert event.
    */
@@ -675,7 +719,6 @@ class HaxManager extends PolymerElement {
     // close window
     this.close();
   }
-
   /**
    * Reset things on the display to their defaults.
    */
@@ -686,7 +729,6 @@ class HaxManager extends PolymerElement {
     this.appList = window.HaxStore.instance.appList;
     this.searching = false;
     window.HaxStore.write("activeApp", null, this);
-    window.dispatchEvent(new Event("resize"));
     this.editExistingNode = false;
     this.shadowRoot.querySelector("#url").value = "";
     this.shadowRoot.querySelector("#fileupload").headers = "";
@@ -791,9 +833,9 @@ class HaxManager extends PolymerElement {
    */
   selectStep(step) {
     if (step == "configure") {
-      this.activeStep = true;
+      this.activeStep = 1;
     } else {
-      this.activeStep = false;
+      this.activeStep = 0;
     }
   }
 
@@ -802,7 +844,6 @@ class HaxManager extends PolymerElement {
    */
   _activeStepChanged(newValue, oldValue) {
     if (newValue || !newValue) {
-      this.updateStyles();
       window.dispatchEvent(new Event("resize"));
     }
   }

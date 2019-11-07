@@ -6,6 +6,7 @@ import "@polymer/paper-tooltip/paper-tooltip.js";
  * @deprecatedApply - required for @apply / invoking @apply css var convention
  */
 import "@polymer/polymer/lib/elements/custom-style.js";
+
 class HaxToolbarItem extends LitElement {
   static get styles() {
     return [
@@ -131,7 +132,7 @@ class HaxToolbarItem extends LitElement {
   render() {
     return html`
       <custom-style>
-        <style is="custom-style">
+        <style>
           paper-tooltip {
             --paper-tooltip: {
               border-radius: 0;

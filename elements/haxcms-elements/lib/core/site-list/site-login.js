@@ -1,9 +1,11 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/paper-styles/shadow.js";
 import "@polymer/paper-styles/typography.js";
 import "@polymer/paper-styles/color.js";
-
+/**
+ * @deprecatedApply - required for @apply / invoking @apply css var convention
+ */
+import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `site-login`
  * `Visual element to broker a user login`
@@ -12,33 +14,28 @@ import "@polymer/paper-styles/color.js";
  * @polymer
  * @demo demo/index.html
  */
-class SiteLogin extends PolymerElement {
-  constructor() {
-    super();
-    import("@polymer/paper-button/paper-button.js");
-    import("@polymer/paper-input/paper-input.js");
-    import("@polymer/paper-progress/paper-progress.js");
-  }
-  static get template() {
-    return html`
-      <style>
+class SiteLogin extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         #loginform {
           width: 450px;
           height: 450px;
           background: var(--login-form-background-color, white);
-          @apply --shadow-elevation-12dp;
-          @apply --login-form;
+          box-shadow: 0 12px 16px 1px rgba(0, 0, 0, 0.14),
+            0 4px 22px 3px rgba(0, 0, 0, 0.12),
+            0 6px 7px -4px rgba(0, 0, 0, 0.4);
         }
-
         #loginformcontent {
           padding: 48px;
         }
-
         #loginformcontent > * {
           margin-top: 8px;
           margin-bottom: 8px;
         }
-
         #loginbtn {
           margin-top: 24px;
           float: right;
@@ -47,14 +44,6 @@ class SiteLogin extends PolymerElement {
             var(--paper-indigo-500)
           );
           color: var(--login-btn-text-color, white);
-          --paper-button-raised-keyboard-focus: {
-            background-color: var(
-              --login-btn-raised-background-color,
-              var(--paper-pink-a200)
-            ) !important;
-            color: var(--login-btn-text-color, white) !important;
-          }
-          @apply --login-btn;
         }
         #loginbtn[disabled] {
           background-color: var(
@@ -62,60 +51,103 @@ class SiteLogin extends PolymerElement {
             var(--paper-indigo-100)
           );
         }
-
         h1 {
-          @apply --paper-font-display1;
           margin: 0;
-          @apply --login-title;
         }
-
         h2 {
-          @apply --paper-font-title;
           margin: 0;
-          @apply --login-subtitle;
         }
-
         paper-progress {
           width: 100%;
         }
-
         #errormsg {
           margin-top: 16px;
           color: var(--login-error-label-color, var(--error-color));
-          @apply --paper-font-menu;
         }
-      </style>
+      `
+    ];
+  }
+  /**
+   * HTMLElement life cycle
+   */
+  constructor() {
+    super();
+    this.loading = false;
+    this.userInputLabel = "Username";
+    this.userInputErrMsg = "Username required";
+    this.passwordInputLabel = "Password";
+    this.passwordInputErrMsg = "Password required";
+    this.loginBtnText = "Login";
+    import("@polymer/paper-button/paper-button.js");
+    import("@polymer/paper-input/paper-input.js");
+    import("@polymer/paper-progress/paper-progress.js");
+  }
+  render() {
+    return html`
+      <custom-style>
+        <style>
+          #loginbtn {
+            --paper-button-raised-keyboard-focus: {
+              background-color: var(
+                --login-btn-raised-background-color,
+                var(--paper-pink-a200)
+              ) !important;
+              color: var(--login-btn-text-color, white) !important;
+            }
+            @apply --login-btn;
+          }
+
+          h1 {
+            @apply --paper-font-display1;
+            @apply --login-title;
+          }
+
+          h2 {
+            @apply --paper-font-title;
+            @apply --login-subtitle;
+          }
+
+          #errormsg {
+            @apply --paper-font-menu;
+          }
+        </style>
+      </custom-style>
       <div id="loginform">
-        <paper-progress disabled="[[!loading]]" indeterminate></paper-progress>
+        <paper-progress
+          ?disabled="${!this.loading}"
+          indeterminate
+        ></paper-progress>
         <div id="loginformcontent">
-          <h1>[[title]]</h1>
-          <h2>[[subtitle]]</h2>
-          <div id="errormsg">[[errorMsg]]</div>
+          <h1>${this.title}</h1>
+          <h2>${this.subtitle}</h2>
+          <div id="errormsg">${this.errorMsg}</div>
           <paper-input
             id="userinput"
-            value="{{username}}"
-            disabled="[[loading]]"
+            .value="${this.username}"
+            @value-changed="${this.usernameChanged}"
+            ?disabled="${this.loading}"
             type="text"
-            label="[[userInputLabel]]"
+            label="${this.userInputLabel}"
             required
-            error-message="[[userInputErrMsg]]"
+            error-message="${this.userInputErrMsg}"
           ></paper-input>
           <paper-input
             id="passinput"
-            value="{{password}}"
-            disabled="[[loading]]"
+            .value="${this.password}"
+            @value-changed="${this.passwordChanged}"
+            ?disabled="${this.loading}"
             type="password"
-            label="[[passwordInputLabel]]"
+            label="${this.passwordInputLabel}"
             required
-            error-message="[[passwordInputErrMsg]]"
+            error-message="${this.passwordInputErrMsg}"
           ></paper-input>
           <paper-button
-            on-click="_login"
-            disabled="[[loading]]"
+            @click="${this._login}"
+            ?disabled="${this.loading}"
             id="loginbtn"
             raised
             class="indigo"
-            >[[loginBtnText]]</paper-button
+            >${this.loginBtnText}</paper-button
           >
           <slot name="links"></slot>
         </div>
@@ -124,6 +156,13 @@ class SiteLogin extends PolymerElement {
   }
   static get tag() {
     return "site-login";
+  }
+  usernameChanged(e) {
+    this.username = e.detail.value;
+  }
+
+  passwordChanged(e) {
+    this.password = e.detail.value;
   }
   static get properties() {
     return {
@@ -146,24 +185,21 @@ class SiteLogin extends PolymerElement {
        * Content of the username field
        */
       username: {
-        type: String,
-        notify: true
+        type: String
       },
 
       /**
        * Content of the password field
        */
       password: {
-        type: String,
-        notify: true
+        type: String
       },
 
       /**
        * When true, all fields are disabled and the progress bar is visible
        */
       loading: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
 
       /**
@@ -171,7 +207,7 @@ class SiteLogin extends PolymerElement {
        */
       userInputLabel: {
         type: String,
-        value: "Username"
+        attribute: "user-input-label"
       },
 
       /**
@@ -179,7 +215,7 @@ class SiteLogin extends PolymerElement {
        */
       userInputErrMsg: {
         type: String,
-        value: "Username required"
+        attribute: "user-input-err-msg"
       },
 
       /**
@@ -187,7 +223,7 @@ class SiteLogin extends PolymerElement {
        */
       passwordInputLabel: {
         type: String,
-        value: "Password"
+        attribute: "password-input-label"
       },
 
       /**
@@ -195,7 +231,7 @@ class SiteLogin extends PolymerElement {
        */
       passwordInputErrMsg: {
         type: String,
-        value: "Password required"
+        attribute: "password-input-err-msg"
       },
 
       /**
@@ -203,18 +239,28 @@ class SiteLogin extends PolymerElement {
        */
       loginBtnText: {
         type: String,
-        value: "Login"
+        attribute: "login-btn-text"
       }
     };
   }
-
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      this.shadowRoot
-        .querySelector("#loginform")
-        .addEventListener("keypress", this._keyPress.bind(this));
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      // notify when any of these change
+      if (["username", "password"].includes(propName)) {
+        this.dispatchEvent(
+          new CustomEvent(`${propName}-changed`, {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
     });
+  }
+  firstUpdated(changedProperties) {
+    this.shadowRoot
+      .querySelector("#loginform")
+      .addEventListener("keypress", this._keyPress.bind(this));
   }
   disconnectedCallback() {
     this.shadowRoot

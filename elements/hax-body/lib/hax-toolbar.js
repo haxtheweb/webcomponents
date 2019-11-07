@@ -134,7 +134,7 @@ class HaxToolbar extends LitElement {
           >
         </hax-context-item-menu>
         <paper-slider
-          .hidden="${!this.haxProperties.canScale}"
+          ?hidden="${!this.haxProperties.canScale}"
           id="slider"
           pin
           min="${this.haxProperties.canScale && this.haxProperties.canScale.min

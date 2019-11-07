@@ -1,7 +1,10 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { html, css } from "lit-element/lit-element.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
-import "@polymer/iron-list/iron-list.js";
+/**
+ * @deprecatedApply - required for @apply / invoking @apply css var convention
+ */
+import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `hax-app-search`
  * `An element that brokers the visual display of a listing of material from an end point. The goal is to normalize data from some location which is media centric. This expects to get at least enough data in order to form a grid of items which are selectable. It's also generically implemented so that anything can be hooked up as a potential source for input (example: youtube API or custom in-house solution). The goal is to return enough info via fired event so that hax-manager can tell hax-body that the user selected a tag, properties, slot combination so that hax-body can turn the selection into a custom element / element injected into the hax-body slot.`
@@ -10,23 +13,14 @@ import "@polymer/iron-list/iron-list.js";
  * - hax-manager - controlling the UI for selection of something
  * - hax-body - the text are ultimately we are trying to insert this item into
  */
-class HaxAppSearch extends PolymerElement {
-  constructor() {
-    super();
-    import("@polymer/paper-input/paper-input.js");
-    import("@polymer/paper-card/paper-card.js");
-    import("@polymer/paper-styles/paper-styles.js");
-    import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-app-search-inputs.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-app-search-result.js");
-    document.body.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-  }
-  static get template() {
-    return html`
-      <style include="simple-colors-shared-styles-polymer">
+class HaxAppSearch extends SimpleColors {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
         :host {
           display: block;
         }
@@ -39,9 +33,6 @@ class HaxAppSearch extends PolymerElement {
           margin: 8px;
           width: 240px;
           font-size: 12px;
-          --paper-card-header: {
-            max-height: 160px;
-          }
         }
         @media screen and (min-width: 800px) {
           paper-card {
@@ -49,18 +40,16 @@ class HaxAppSearch extends PolymerElement {
           }
         }
         hexagon-loader {
-          height: 100%;
+          display: none;
           justify-content: center;
-          margin: 0 auto -200px;
+          width: 100%;
           z-index: 1000;
-          position: relative;
-          transition: 0.3s linear opacity, 0.3s linear visibility;
-          width: calc(100% - 32px);
-          opacity: 0;
-          visibility: visible;
+          position: absolute;
+          --hexagon-color: var(--hax-color-bg-accent, #0085ba);
         }
         hexagon-loader[loading] {
-          opacity: 1;
+          display: block;
+          opacity: 0.8;
         }
         .card-content {
           padding: 16px;
@@ -84,54 +73,103 @@ class HaxAppSearch extends PolymerElement {
           justify-content: flex-end;
           justify-content: center;
         }
-      </style>
-
+      `
+    ];
+  }
+  constructor() {
+    super();
+    this.auto = false;
+    this.headers = {};
+    this.method = "GET";
+    this.loading = false;
+    this.requestData = {};
+    this.media = [];
+    this.resultMap = {};
+    import("@polymer/paper-input/paper-input.js");
+    import("@polymer/paper-card/paper-card.js");
+    import("@polymer/paper-styles/paper-styles.js");
+    import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
+    import("@lrnwebcomponents/hax-body/lib/hax-app-search-inputs.js");
+    import("@lrnwebcomponents/hax-body/lib/hax-app-search-result.js");
+    document.body.addEventListener(
+      "hax-store-property-updated",
+      this._haxStorePropertyUpdated.bind(this)
+    );
+  }
+  /**
+   * LitElement life cycle - render callback
+   */
+  render() {
+    return html`
+      <custom-style>
+        <style>
+          paper-card {
+            --paper-card-header: {
+              max-height: 160px;
+            }
+          }
+        </style>
+      </custom-style>
       <iron-ajax
-        auto="[[auto]]"
         id="request"
-        method="[[method]]"
-        url="[[requestEndPoint]]"
         handle-as="json"
-        headers="[[headers]]"
-        params="[[requestParams]]"
-        last-response="{{requestData}}"
-        hidden=""
-        loading="{{loading}}"
-        debounce-duration="300"
+        @last-response-changed="${this.requestDataChanged}"
+        @loading-changed="${this._loadingChanged}"
+        debounce-duration="200"
       ></iron-ajax>
       <hax-app-search-inputs
         id="searchinput"
-        label="[[label]]"
-        schema="[[searchSchema]]"
+        .label="${this.label}"
+        .schema="${this.searchSchema}"
       ></hax-app-search-inputs>
       <hax-app-pagination
         id="pagerbottom"
-        request-data="[[requestData]]"
-        pagination="[[pagination]]"
+        .request-data="${this.requestData}"
+        .pagination="${this.pagination}"
       ></hax-app-pagination>
       <hexagon-loader
-        size="small"
+        size="medium"
         item-count="4"
-        loading$="[[loading]]"
-        color="#0085ba"
+        ?loading="${this.loading}"
         aria-roledescription="Loading"
       ></hexagon-loader>
-      <iron-list
-        grid
-        id="itemlist"
-        items="[[media]]"
-        as="resultData"
-        hidden$="[[loading]]"
-      >
-        <template>
-          <hax-app-search-result
-            result-data="[[resultData]]"
-          ></hax-app-search-result>
-        </template>
-      </iron-list>
+      <div id="itemlist">
+        ${this.media.map(
+          resultData => html`
+            <hax-app-search-result
+              image="${resultData.image}"
+              title="${resultData.title}"
+              details="${resultData.details}"
+              .map="${resultData.map}"
+              type="${resultData.type}"
+            ></hax-app-search-result>
+          `
+        )}
+      </div>
     `;
   }
-
+  requestDataChanged(e) {
+    this.requestData = e.detail.value;
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (["auto", "method", "headers"].includes(propName)) {
+        this.shadowRoot.querySelector("#request")[propName] = this[propName];
+      }
+      if (propName == "requestEndPoint") {
+        this.shadowRoot.querySelector("#request").url = this[propName];
+      }
+      if (propName == "requestParams") {
+        this.shadowRoot.querySelector("#request").params = this[propName];
+      }
+      if (propName == "activeApp") {
+        this._resetAppSearch(this[propName], oldValue);
+      }
+      if (propName == "requestData") {
+        this._requestDataChanged(this[propName], oldValue);
+      }
+    });
+  }
   static get tag() {
     return "hax-app-search";
   }
@@ -141,15 +179,13 @@ class HaxAppSearch extends PolymerElement {
        * Active app globally bound based on previous selection.
        */
       activeApp: {
-        type: Object,
-        observer: "_resetAppSearch"
+        type: Object
       },
       /**
        * Immediatley perform a request.
        */
       auto: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       /**
        * Search schema for presenting a form of input.
@@ -161,39 +197,40 @@ class HaxAppSearch extends PolymerElement {
        * Custom headers for data binding from the App feed.
        */
       headers: {
-        type: Object,
-        value: {}
+        type: Object
       },
       /**
        * Custom method for requesting data (almost always will be GET)
        */
       method: {
-        type: String,
-        value: "GET"
+        type: String
       },
       /**
        * loading
        */
       loading: {
-        type: Boolean,
-        value: false,
-        observer: "_loadingChanged"
+        type: Boolean
       },
       /**
        * Media request data updated
        */
       requestData: {
-        type: Object,
-        value: {},
-        observer: "_requestDataChanged"
+        type: Object
       },
       /**
        * Media object, normalized.
        */
       media: {
-        type: Array,
-        value: [],
-        observer: "_mediaChanged"
+        type: Array
+      },
+      requestEndPoint: {
+        type: String
+      },
+      requestParams: {
+        type: Object
+      },
+      resultMap: {
+        type: Object
       }
     };
   }
@@ -201,14 +238,11 @@ class HaxAppSearch extends PolymerElement {
    * Search input was added.
    */
   _searchValuesChanged(e) {
-    if (e.detail) {
-      var requestParams = this.requestParams;
-      for (var property in e.detail) {
-        requestParams[property] = e.detail[property];
-      }
-      this.set("requestParams", {});
-      this.set("requestParams", requestParams);
+    let requestParams = this.requestParams;
+    for (let property in e.detail) {
+      requestParams[property] = e.detail[property];
     }
+    this.requestParams = { ...this.requestParams };
   }
 
   /**
@@ -219,9 +253,9 @@ class HaxAppSearch extends PolymerElement {
       let app = newValue;
       var requestParams = {};
       this.label = app.details.title;
-      // disasble auto for a moment while we switch inputs
+      // disable auto for a moment while we switch inputs
       this.auto = false;
-      this.set("media", []);
+      this.media = [];
       // see if we have any global settings for connections like api keys
       if (typeof app.connection.data !== typeof undefined) {
         requestParams = app.connection.data;
@@ -233,14 +267,14 @@ class HaxAppSearch extends PolymerElement {
           app.connection.operations.browse.data
         );
       }
-      this.set("method", app.connection.operations.browse.method);
-      this.set("headers", {});
+      this.method = app.connection.operations.browse.method;
+      this.headers = {};
       if (typeof app.connection.headers !== typeof undefined) {
-        this.set("headers", app.connection.headers);
+        this.headers = app.connection.headers;
       }
       // ensure we overwrite completely
-      this.set("requestParams", {});
-      this.set("requestParams", requestParams);
+      this.requestParams = {};
+      this.requestParams = requestParams;
       // build the request end point
       var requestEndPoint =
         app.connection.protocol + "://" + app.connection.url;
@@ -254,23 +288,23 @@ class HaxAppSearch extends PolymerElement {
       ) {
         requestEndPoint += app.connection.operations.browse.endPoint;
       }
-      this.set("requestEndPoint", requestEndPoint);
+      this.requestEndPoint = requestEndPoint;
       // ensure correct wipe of the search area assuming it has a search
-      this.set("searchSchema", {});
+      this.searchSchema = {};
       var searchSchema = {
         properties: {}
       };
       if (typeof app.connection.operations.browse.search !== typeof undefined) {
         searchSchema.properties = app.connection.operations.browse.search;
-        this.set("searchSchema", searchSchema);
+        this.searchSchema = searchSchema;
       }
       this.resultMap = app.connection.operations.browse.resultMap;
       // map pagination if it has it (it better..)
-      this.set("pagination", {});
+      this.pagination = {};
       if (
         typeof app.connection.operations.browse.pagination !== typeof undefined
       ) {
-        this.set("pagination", app.connection.operations.browse.pagination);
+        this.pagination = app.connection.operations.browse.pagination;
       }
       // reset the auto flag
       if (typeof app.connection.auto !== typeof undefined) {
@@ -280,8 +314,13 @@ class HaxAppSearch extends PolymerElement {
       }
     }
   }
-  ready() {
-    super.ready();
+  /**
+   * LitElement life cycle - ready callback
+   */
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
     this.shadowRoot
       .querySelector("#searchinput")
       .addEventListener(
@@ -298,7 +337,7 @@ class HaxAppSearch extends PolymerElement {
       typeof e.detail.value !== typeof undefined &&
       e.detail.property
     ) {
-      this.set(e.detail.property, e.detail.value);
+      this[e.detail.property] = e.detail.value;
     }
   }
 
@@ -306,7 +345,12 @@ class HaxAppSearch extends PolymerElement {
    * Callback for when media has been updated via the end point
    */
   _requestDataChanged(newValue, oldValue) {
-    if (typeof newValue != {} && typeof oldValue !== typeof undefined) {
+    if (
+      this.resultMap &&
+      this.resultMap.items &&
+      typeof newValue != {} &&
+      typeof oldValue !== typeof undefined
+    ) {
       let media = [];
       let map = this.resultMap;
       let data = [];
@@ -409,45 +453,14 @@ class HaxAppSearch extends PolymerElement {
             media[i].type = this._resolveObjectPath(map.gizmo.type, data[i]);
           }
         }
-        // this will trigger an aggressive repaint of the cards
-        this.set("media", []);
-        this.set("media", media);
+        // this will trigger an aggressive repaint of the items
+        this.media = [...media];
       }
     }
   }
 
-  _loadingChanged(newValue, oldValue) {
-    if (newValue) {
-      this.set("media", []);
-      this.notifyPath("media.*");
-      setTimeout(() => {
-        this.shadowRoot.querySelector("#itemlist").dispatchEvent(
-          new CustomEvent("iron-resize", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: true
-          })
-        );
-      }, 1000);
-    }
-  }
-  /**
-   * Callback for when media has been processed for display
-   */
-  _mediaChanged(newValue, oldValue) {
-    if (typeof oldValue !== typeof undefined) {
-      setTimeout(() => {
-        this.shadowRoot.querySelector("#itemlist").dispatchEvent(
-          new CustomEvent("iron-resize", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: true
-          })
-        );
-      }, 325);
-    }
+  _loadingChanged(e) {
+    this.loading = e.detail.value;
   }
 
   /**

@@ -179,7 +179,6 @@ ol {
    * which HAX will react to an load the data it finds.
    */
   storeReady(e) {
-    console.log("ready");
     if (e.detail) {
       window.HaxStore.instance.appStore = JSON.parse(
         this.getAttribute("app-store")

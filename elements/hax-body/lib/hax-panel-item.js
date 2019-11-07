@@ -3,6 +3,11 @@ import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/iron-icon/iron-icon.js";
 /**
+ * @deprecatedApply - required for @apply / invoking @apply css var convention
+ */
+import "@polymer/polymer/lib/elements/custom-style.js";
+
+/**
  * `hax-panel-item`
  * `A single button in the hax panel for consistency.`
  * @microcopy - the mental model for this element
@@ -151,9 +156,6 @@ class HAXPanelItem extends LitElement {
           --paper-tooltip-opacity: 1;
           --paper-tooltip-text-color: #ffffff;
           --paper-tooltip-delay-in: 0;
-          --paper-tooltip: {
-            border-radius: 0;
-          }
         }
       `
     ];
@@ -161,6 +163,15 @@ class HAXPanelItem extends LitElement {
 
   render() {
     return html`
+      <custom-style>
+        <style>
+          paper-tooltip {
+            --paper-tooltip: {
+              border-radius: 0;
+            }
+          }
+        </style>
+      </custom-style>
       <paper-button raised id="button" .disabled="${this.disabled}">
         <div class="button-inner">
           <iron-icon icon="${this.icon}"></iron-icon>

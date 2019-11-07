@@ -1,32 +1,21 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { html, css } from "lit-element/lit-element.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
-`hax-export-dialog`
-Export dialog with all export options and settings provided.
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
- -
-*/
-class HaxPreferencesDialog extends PolymerElement {
-  constructor() {
-    super();
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/iron-icons/iron-icons.js");
-    import("@polymer/paper-button/paper-button.js");
-    import("@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js");
-    import("@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js");
-    import("@polymer/app-layout/app-drawer/app-drawer.js");
-    // add event listener
-    document.body.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-  }
-  static get template() {
-    return html`
-      <style>
+ * @deprecatedApply - required for @apply / invoking @apply css var convention
+ */
+import "@polymer/polymer/lib/elements/custom-style.js";
+/**
+ * `hax-export-dialog`
+ * `Export dialog with all export options and settings provided.`
+ */
+class HaxPreferencesDialog extends SimpleColors {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      ...super.styles,
+      css`
         :host {
           display: block;
         }
@@ -65,42 +54,82 @@ class HaxPreferencesDialog extends PolymerElement {
           line-height: 18px;
           font-family: "Noto Serif", serif;
         }
-        app-drawer {
-          --app-drawer-content-container: {
-            background-color: #ffffff;
-          }
-          --app-drawer-width: 320px;
-        }
         eco-json-schema-object {
           color: white;
-          --eco-json-schema-object-form : {
-            -ms-flex: unset;
-            -webkit-flex: unset;
-            flex: unset;
-            -webkit-flex-basis: unset;
-            flex-basis: unset;
-          }
-          --paper-checkbox-size: 16px;
-          --paper-checkbox-checked-ink-color: --hax-color-accent1;
-          --paper-checkbox-label: {
-            font-size: 16px;
-            line-height: 16px;
-          }
         }
         .pref-container {
           text-align: left;
           padding: 16px;
         }
-      </style>
+      `
+    ];
+  }
+  constructor() {
+    super();
+    this.title = "Preferences";
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/iron-icons/iron-icons.js");
+    import("@polymer/paper-button/paper-button.js");
+    import("@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js");
+    import("@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js");
+    import("@polymer/app-layout/app-drawer/app-drawer.js");
+    // add event listener
+    document.body.addEventListener(
+      "hax-store-property-updated",
+      this._haxStorePropertyUpdated.bind(this)
+    );
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      // notify when any of these change
+      if (propName == "preferences") {
+        this._preferencesChanged(this[propName]);
+        this.dispatchEvent(
+          new CustomEvent(`${propName}-changed`, {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
+      }
+    });
+  }
+  render() {
+    return html`
+      <custom-style>
+        <style>
+          app-drawer {
+            --app-drawer-content-container: {
+              background-color: #ffffff;
+            }
+            --app-drawer-width: 320px;
+          }
+          eco-json-schema-object {
+            --eco-json-schema-object-form : {
+              -ms-flex: unset;
+              -webkit-flex: unset;
+              flex: unset;
+              -webkit-flex-basis: unset;
+              flex-basis: unset;
+            }
+            --paper-checkbox-size: 16px;
+            --paper-checkbox-checked-ink-color: var(--hax-color-accent1);
+            --paper-checkbox-label: {
+              font-size: 16px;
+              line-height: 16px;
+            }
+          }
+        </style>
+      </custom-style>
       <app-drawer id="dialog" align="right" transition-duration="300">
-        <h3 class="title">[[title]]</h3>
+        <h3 class="title">${this.title}</h3>
         <div style="height: 100%; overflow: auto;" class="pref-container">
           <eco-json-schema-object
-            schema="[[schema]]"
-            value="{{preferences}}"
+            .schema="${this.schema}"
+            @value-changed="${this.valueChanged}"
           ></eco-json-schema-object>
         </div>
-        <paper-button id="closedialog" on-click="close">
+        <paper-button id="closedialog" @click="${this.close}">
           <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
         </paper-button>
       </app-drawer>
@@ -115,8 +144,7 @@ class HaxPreferencesDialog extends PolymerElement {
        * Title when open.
        */
       title: {
-        type: String,
-        value: "Preferences"
+        type: String
       },
       /**
        * Schema that has all of inputs / manages state
@@ -128,16 +156,12 @@ class HaxPreferencesDialog extends PolymerElement {
        * Preferences managed for everything global about HAX.
        */
       preferences: {
-        type: Object,
-        notify: true
+        type: Object
       }
     };
   }
-  static get observers() {
-    return ["_preferencesChanged(preferences.*)"];
-  }
-  ready() {
-    super.ready();
+
+  firstUpdated(changedProperties) {
     // JSON schema object needs delayed to ensure page repaints the form
     var schema = {
       $schema: "http://json-schema.org/schema#",
@@ -186,8 +210,7 @@ class HaxPreferencesDialog extends PolymerElement {
         }
       }
     };
-    this.set("schema", {});
-    this.set("schema", schema);
+    this.schema = { ...schema };
     // fire an event that this is a core piece of the system
     this.dispatchEvent(
       new CustomEvent("hax-register-core-piece", {
@@ -200,10 +223,6 @@ class HaxPreferencesDialog extends PolymerElement {
         }
       })
     );
-    afterNextRender(this, function() {
-      // force color values to apply
-      this.updateStyles();
-    });
   }
   /**
    * Store updated, sync.
@@ -216,23 +235,23 @@ class HaxPreferencesDialog extends PolymerElement {
       e.detail.property === "globalPreferences" &&
       e.detail.owner !== this
     ) {
-      if (typeof e.detail.value === "object") {
-        this.set("preferences", {});
-      }
-      this.set("preferences", e.detail.value);
-      this.notifyPath("preferences.*");
+      this.preferences = { ...e.detail.value };
     }
   }
 
   /**
    * Notice preferences have changed.
    */
-  _preferencesChanged(details) {
+  _preferencesChanged(newValue) {
     if (this.schema && this.schema.properties && window.HaxStore.ready) {
-      window.HaxStore.write("globalPreferences", details.base, this);
+      window.HaxStore.write("globalPreferences", newValue, this);
     }
   }
-
+  valueChanged(e) {
+    if (e.detail.value) {
+      this.preferences = { ...e.detail.value };
+    }
+  }
   /**
    * Toggle state.
    */
@@ -247,8 +266,7 @@ class HaxPreferencesDialog extends PolymerElement {
         this.schema.properties[key].value = this.preferences[key];
       }
       // force the form to rebuild
-      this.set("schema", {});
-      this.set("schema", schema);
+      this.schema = { ...schema };
     }
   }
   /**
