@@ -2,7 +2,10 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
-
+/**
+ * @deprecatedApply - required for @apply / invoking @apply css var convention
+ */
+import "@polymer/polymer/lib/elements/custom-style.js";
 class HaxToolbarItem extends LitElement {
   static get styles() {
     return [
@@ -121,15 +124,21 @@ class HaxToolbarItem extends LitElement {
           --paper-tooltip-opacity: 1;
           --paper-tooltip-text-color: #ffffff;
           --paper-tooltip-delay-in: 0;
-          --paper-tooltip: {
-            border-radius: 0;
-          }
         }
       `
     ];
   }
   render() {
     return html`
+      <custom-style>
+        <style is="custom-style">
+          paper-tooltip {
+            --paper-tooltip: {
+              border-radius: 0;
+            }
+          }
+        </style>
+      </custom-style>
       <paper-button
         .disabled="${this.disabled}"
         id="buttoncontainer"
