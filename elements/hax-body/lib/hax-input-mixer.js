@@ -289,13 +289,14 @@ class HaxInputMixer extends PolymerElement {
         // try and force cursor to focus on this element
         setTimeout(() => {
           if (
+            this.shadowRoot.querySelector("#input") &&
             typeof this.shadowRoot.querySelector("#input").hideMenu ===
-            "function"
+              "function"
           ) {
             this.shadowRoot.querySelector("#input").hideMenu();
           }
           this.shadowRoot.querySelector("#input").focus();
-        }, 200);
+        }, 500);
       }
     }
   }
