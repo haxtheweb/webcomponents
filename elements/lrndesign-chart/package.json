@@ -2,11 +2,11 @@
   "name": "@lrnwebcomponents/lrndesign-chart",
   "wcfactory": {
     "className": "LrndesignChart",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "lrndesign-chart",
     "generator-wcfactory-version": "0.3.1",
     "useHAX": true,
-    "useSass": false,
+    "useSass": true,
     "files": {
       "css": "src/lrndesign-chart.css",
       "scss": "src/lrndesign-chart.scss",
@@ -39,10 +39,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@lrnwebcomponents/simple-colors": "^2.1.5",
     "@lrnwebcomponents/chartist-render": "^2.1.5",
     "@lrnwebcomponents/schema-behaviors": "^2.1.4",
     "@polymer/iron-ajax": "^3.0.0",
-    "@polymer/polymer": "^3.2.0"
+    "lit-element":"2.0.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",

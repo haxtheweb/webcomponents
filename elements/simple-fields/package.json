@@ -45,12 +45,15 @@
     "@lrnwebcomponents/simple-colors": "^2.1.10",
     "@lrnwebcomponents/simple-icon-picker": "^2.1.10",
     "@lrnwebcomponents/simple-picker": "^2.1.10",
+    "@lrnwebcomponents/hax-body": "^2.1.10",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.1.10",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-input": "^3.0.2",
     "@polymer/paper-toggle-button": "^3.0.1",
     "@polymer/polymer": "^3.2.0",
-    "app-datepicker": "^3.0.0"
+    "app-datepicker": "^3.0.0",
+    "lit-element":"2.0.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",

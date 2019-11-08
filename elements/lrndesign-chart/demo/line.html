@@ -8,7 +8,7 @@
     <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '../lrndesign-chart.js';
+      import '../lib/lrndesign-line.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
@@ -22,6 +22,14 @@
       </demo-snippet>
       <demo-snippet>
         <template>
+          <style>
+            lrndesign-line[dark] {
+              --chartist-text-color: var(--simple-colors-default-theme-grey-1);
+              --chartist-grid-color: var(--simple-colors-default-theme-grey-7);
+              color: var(--simple-colors-default-theme-grey-1);
+              background-color: var(--simple-colors-default-theme-grey-12);
+            }
+          </style>
           <lrndesign-line dark scale="ct-double-octave" data-source="line.csv"></lrndesign-line>
         </template>
       </demo-snippet>

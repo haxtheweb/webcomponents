@@ -1,0 +1,15 @@
+<iron-ajax
+  auto
+  handle-as="text"
+  url="${this.dataSource}"
+  @response="${this.handleResponse}"
+></iron-ajax>
+<chartist-render
+  id="chartist"
+  .type="${this.type}"
+  .scale="${this.scale}"
+  .chart-title="${this.chartTitle}"
+  .chart-desc="${this.chartDesc}"
+  .data="${this.data}"
+  .responsive-options="${this.responsiveOptions}"
+></chartist-render>

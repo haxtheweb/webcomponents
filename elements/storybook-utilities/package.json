@@ -13,7 +13,9 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@storybook/addon-knobs": "^4.1.13",
-    "@storybook/polymer": "^4.1.13"
+    "@storybook/polymer": "^4.1.13",
+    "@lrnwebcomponents/simple-colors": "^2.1.10",
+    "@lrnwebcomponents/es-global-bridge": "^2.1.10"
   },
   "private": false,
   "publishConfig": {

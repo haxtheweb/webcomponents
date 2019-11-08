@@ -40,6 +40,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/schema-behaviors": "^2.1.4",
+    "@lrnwebcomponents/hax-iconset": "^2.1.4",
     "@polymer/polymer": "^3.2.0"
   },
   "devDependencies": {

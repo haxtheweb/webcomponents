@@ -2,11 +2,11 @@
   "name": "@lrnwebcomponents/progress-donut",
   "wcfactory": {
     "className": "ProgressDonut",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "progress-donut",
     "generator-wcfactory-version": "0.3.2",
     "useHAX": true,
-    "useSass": false,
+    "useSass": true,
     "files": {
       "css": "src/progress-donut.css",
       "scss": "src/progress-donut.scss",
@@ -39,12 +39,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@lrnwebcomponents/lrndesign-chart": "^2.1.5",
     "@lrnwebcomponents/chartist-render": "^2.1.5",
-    "@lrnwebcomponents/materializecss-styles": "^2.1.4",
     "@lrnwebcomponents/schema-behaviors": "^2.1.4",
-    "@lrnwebcomponents/simple-colors": "^2.1.10",
-    "@polymer/polymer": "^3.2.0",
-    "chartist": "^0.11.0"
+    "@lrnwebcomponents/simple-colors": "^2.1.10", 
+    "lit-element":"2.0.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",

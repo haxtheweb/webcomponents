@@ -39,6 +39,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@polymer/iron-overlay-behavior": "^3.0.1",
     "@polymer/polymer": "^3.2.0"
   },
   "devDependencies": {

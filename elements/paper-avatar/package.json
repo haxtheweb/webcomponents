@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/paper-avatar",
   "wcfactory": {
     "className": "PaperAvatar",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "paper-avatar",
     "generator-wcfactory-version": "0.3.2",
     "useHAX": true,
@@ -40,7 +40,8 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/es-global-bridge": "^2.1.1",
-    "@polymer/polymer": "^3.2.0"
+    "@polymer/polymer": "^3.2.0",
+    "lit-element":"2.0.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",
