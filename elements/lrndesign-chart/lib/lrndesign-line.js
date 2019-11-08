@@ -2,17 +2,20 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LrndesignChartBehaviors } from "./lrndesign-chart-behaviors.js";
+import { LrndesignChart } from "../lrndesign-chart.js";
 
 /**
  * `lrndesign-line`
  * a line chart
  *
  * @customElement
- * @demo demo/line.html
+ * @extends LrndesignChart
+ * @see ../lrndesign-chart.js
+ *
+ * @demo ../demo/line.html
  *
  */
-class LrndesignLine extends LrndesignChartBehaviors {
+class LrndesignLine extends LrndesignChart {
   constructor() {
     super();
     this.setProperties();
@@ -166,7 +169,8 @@ class LrndesignLine extends LrndesignChartBehaviors {
   }
 
   /**
-   * returns options as an array
+   * gets options as an array
+   * @returns {array} options
    */
   _getOptions() {
     let options = super._getOptions(),

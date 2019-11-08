@@ -11,6 +11,13 @@ import "@lrnwebcomponents/chartist-render/chartist-render.js";
  * shows progress in as a rounded shape w/ hollow middle
  *
  * @customElement
+ * @extends ChartistRender
+ * @see @lrnwebcomponents/chartist-render/chartist-render.js
+ * @extends SimpleColors
+ * @see @lrnwebcomponents/simple-colors/simple-colors.js
+ * @extends SchemaBehaviors
+ * @see @lrnwebcomponents/schema-behaviors/schema-behaviors.js
+ *
  * @demo demo/index.html
  */
 class ProgressDonut extends SchemaBehaviors(SimpleColors) {
@@ -19,47 +26,6 @@ class ProgressDonut extends SchemaBehaviors(SimpleColors) {
     return [
       css`
         :host {
-          background-color: var(--simple-colors-background1, #ffffff);
-          overflow: visible;
-          display: flex;
-          margin: 15px;
-        }
-
-        :host #wrapper {
-          margin: 0 auto;
-          position: relative;
-          padding-top: 100%;
-          display: flex;
-          align-items: stretch;
-          justify-content: space-around;
-        }
-
-        :host #wrapper > * {
-          position: absolute;
-        }
-
-        :host #chart {
-          left: 0;
-          top: 0;
-          flex: 1 1 100%;
-        }
-
-        :host #wrapper,
-        :host #chart {
-          width: 100%;
-        }
-
-        :host #image {
-          left: 15%;
-          top: 15%;
-          width: 70%;
-          height: 70%;
-          -webkit-clip-path: circle(50% at 50% 50%);
-          clip-path: circle(50% at 50% 50%);
-        }
-
-        :host {
-          --chartist-pie-label-color: var(--simple-colors-default-theme-grey-1);
           --chartist-color-1: var(--simple-colors-default-theme-red-8);
           --chartist-color-2: var(--simple-colors-default-theme-blue-8);
           --chartist-color-3: var(--simple-colors-default-theme-yellow-8);
@@ -78,9 +44,6 @@ class ProgressDonut extends SchemaBehaviors(SimpleColors) {
         }
 
         :host([dark]) {
-          --chartist-pie-label-color: var(
-            --simple-colors-default-theme-grey-12
-          );
           --chartist-color-1: var(--simple-colors-default-theme-red-4);
           --chartist-color-2: var(--simple-colors-default-theme-blue-4);
           --chartist-color-3: var(--simple-colors-default-theme-yellow-4);
@@ -723,6 +686,45 @@ class ProgressDonut extends SchemaBehaviors(SimpleColors) {
           --chartist-color-14: var(--simple-colors-default-theme-red-1);
           --chartist-color-15: var(--simple-colors-default-theme-deep-orange-0);
         }
+
+        :host {
+          overflow: visible;
+          display: flex;
+          margin: 15px;
+        }
+
+        :host #wrapper {
+          margin: 0 auto;
+          position: relative;
+          padding-top: 100%;
+          display: flex;
+          align-items: stretch;
+          justify-content: space-around;
+        }
+
+        :host #wrapper > * {
+          position: absolute;
+        }
+
+        :host #chart {
+          left: 0;
+          top: 0;
+          flex: 1 1 100%;
+        }
+
+        :host #wrapper,
+        :host #chart {
+          width: 100%;
+        }
+
+        :host #image {
+          left: 15%;
+          top: 15%;
+          width: 70%;
+          height: 70%;
+          -webkit-clip-path: circle(50% at 50% 50%);
+          clip-path: circle(50% at 50% 50%);
+        }
       `
     ];
   }
@@ -943,14 +945,12 @@ class ProgressDonut extends SchemaBehaviors(SimpleColors) {
   }
 
   updated(changedProperties) {
-    //console.log('changedProperties',changedProperties,this);
-    /*changedProperties.forEach((oldValue, propName) => {
-    });*/
     this.makeChart();
   }
 
   /**
    * Handles chart creation event.
+   * @param {event} e create event
    */
   _onCreated(e) {
     if (this.animated)
@@ -981,9 +981,7 @@ class ProgressDonut extends SchemaBehaviors(SimpleColors) {
   }
 
   /**
-   *refreshes the chart
-   *
-   * @memberof LrndesignChartBehaviors
+   * refreshes the chart
    */
   makeChart() {
     let sum = 0,

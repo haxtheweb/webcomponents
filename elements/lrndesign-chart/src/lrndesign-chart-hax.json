@@ -1,0 +1,73 @@
+{
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "description": "Creates an accessible chart based on a CSV.",
+    "color": "green darken-4",
+    "groups": ["Data", "Presentation"],
+    "handles": [
+      {
+        "type": "data",
+        "url": "csvFile"
+      }
+    ],
+    "meta": {
+      "author": "LRNWebComponents"
+    }
+  },
+  "settings": {
+    "quick": [
+      {
+        "property": "chartTitle",
+        "title": "Chart Title",
+        "description": "Accessible alt text for your chart.",
+        "inputMethod": "textfield",
+        "icon": "text-field",
+        "required": true
+      }
+    ],
+    "configure": [
+      {
+        "property": "data-source",
+        "title": "CSV File",
+        "description": "The URL for your CSV file.",
+        "inputMethod": "textfield",
+        "icon": "link",
+        "validationType": "url",
+        "required": true
+      },
+      {
+        "property": "chartTitle",
+        "title": "Chart Title",
+        "description": "Accessible alt text for your chart.",
+        "inputMethod": "textfield",
+        "icon": "text-field",
+        "required": true
+      },
+      {
+        "property": "chartDesc",
+        "title": "Chart Description",
+        "description": "Accessible description of your chart.",
+        "inputMethod": "textfield",
+        "icon": "text-field"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "scale",
+        "title": "Scale Name",
+        "description": "The ratio of width:height of the chart (See https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings for $ct-scales and $ct-scales-names).",
+        "inputMethod": "textfield",
+        "icon": "text-field"
+      },
+      {
+        "property": "reverseData",
+        "title": "Reverse Data",
+        "description": "Reverse data including labels, the series order as well as the whole series data arrays.",
+        "inputMethod": "boolean",
+        "icon": "check-box"
+      }
+    ]
+  }
+}

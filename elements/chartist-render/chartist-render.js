@@ -8,9 +8,50 @@ import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 
 /**
  * `chartist-render`
- * uses the chartist library to render a chart
+ * uses chartist library to render a chart
  *
+### Styling
+
+`<chartist-render>` provides the following custom properties
+for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--chartist-label-color` | default label color for charts | #000
+`--chartist-pie-label-color` | label color for pie charts | `--chartist-label-color`
+`--chartist-color-a` | background color for 1st series |  #d70206
+`--chartist-color-label-a` | color for 1st series label |  `--chartist-label-color`
+`--chartist-color-b` | background color for 2nd series |  #f05b4f
+`--chartist-color-label-b` | color for 2nd series label |  `--chartist-label-color`
+`--chartist-color-c` | background color for 3rd series |  #f4c63d
+`--chartist-color-label-c` | color for 3rd series label |  `--chartist-label-color`
+`--chartist-color-d` | background color for 4th series |  #d17905
+`--chartist-color-label-d` | color for 4th series label |  `--chartist-label-color`
+`--chartist-color-e` | background color for 5th series |  #453d3f
+`--chartist-color-label-e` | color for 5th series label |  `--chartist-label-color`
+`--chartist-color-f` | background color for 6th series |  #59922b
+`--chartist-color-label-f` | color for 6th series label |  `--chartist-label-color`
+`--chartist-color-g` | background color for 7th series |  #0544d3
+`--chartist-color-label-g` | color for 7th series label |  `--chartist-label-color`
+`--chartist-color-h` | background color for 8th series |  #6b0392
+`--chartist-color-label-h` | color for 8th series label |  `--chartist-label-color`
+`--chartist-color-i` | background color for 9th series |  #f05b4f
+`--chartist-color-label-i` | color for 9th series label |  `--chartist-label-color`
+`--chartist-color-j` | background color for 10th series |  #dda458
+`--chartist-color-label-j` | color for 10th series label |  `--chartist-label-color`
+`--chartist-color-k` | background color for 11th series |  #eacf7d
+`--chartist-color-label-k` | color for 11th series label |  `--chartist-label-color`
+`--chartist-color-l` | background color for 12th series |  #86797d
+`--chartist-color-label-l` | color for 12th series label |  `--chartist-label-color`
+`--chartist-color-m` | background color for 13th series |  #b2c326
+`--chartist-color-label-m` | color for 13th series label |  `--chartist-label-color`
+`--chartist-color-n` | background color for 14th series |  #6188e2
+`--chartist-color-label-n` | color for 15th series label |  `--chartist-label-color`
+`--chartist-color-0` | background color for 15th series |  #a748ca
+`--chartist-color-label-o` | color for 15th series label |  `--chartist-label-color`
+
  * @customElement
+ * @extends SchemaBehaviors
  * @demo demo/index.html
  *
  */
@@ -830,16 +871,24 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
           display: block;
         }
 
-        .ct-label {
-          fill: var(--chartist-label-color, #000);
-          color: var(--chartist-label-color, #000);
+        .a11y {
+          position: absolute;
+          left: -999999px;
+          height: 0;
+          overflow: hidden;
         }
 
-        .ct-chart-pie .ct-label {
-          fill: var(--chartist-pie-label-color, --chartist-label-color);
-          color: var(--chartist-pie-label-color, --chartist-label-color);
-          font-size: 0.75rem;
-          line-height: 1;
+        .ct-label {
+          fill: var(--chartist-text-color, rgba(0, 0, 0, 0.4));
+          color: var(--chartist-text-color, rgba(0, 0, 0, 0.4));
+          font-size: var(--chartist-text-size, 0.75rem);
+          line-height: var(--chartist-line-height, 1);
+        }
+
+        .ct-grid {
+          stroke: var(--chartist-grid-color, rgba(0, 0, 0, 0.2));
+          stroke-width: 1px;
+          stroke-dasharray: 2px;
         }
 
         .ct-series-a .ct-point,
@@ -855,11 +904,6 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
           fill: var(--chartist-color-1, #d70206);
         }
 
-        .ct-series-a .ct-label {
-          fill: var(--chartist-label-color-1, --chartist-label-color);
-          stroke: var(--chartist-label-color-1, --chartist-label-color);
-        }
-
         .ct-series-b .ct-point,
         .ct-series-b .ct-line,
         .ct-series-b .ct-bar,
@@ -871,11 +915,6 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
         .ct-series-b .ct-slice-donut-solid,
         .ct-series-b .ct-area {
           fill: var(--chartist-color-2, #f05b4f);
-        }
-
-        .ct-series-b .ct-label {
-          fill: var(--chartist-label-color-2, --chartist-label-color);
-          stroke: var(--chartist-label-color-2, --chartist-label-color);
         }
 
         .ct-series-c .ct-point,
@@ -891,11 +930,6 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
           fill: var(--chartist-color-3, #f4c63d);
         }
 
-        .ct-series-c .ct-label {
-          fill: var(--chartist-label-color-3, --chartist-label-color);
-          stroke: var(--chartist-label-color-3, --chartist-label-color);
-        }
-
         .ct-series-d .ct-point,
         .ct-series-d .ct-line,
         .ct-series-d .ct-bar,
@@ -907,11 +941,6 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
         .ct-series-d .ct-slice-donut-solid,
         .ct-series-d .ct-area {
           fill: var(--chartist-color-4, #d17905);
-        }
-
-        .ct-series-d .ct-label {
-          fill: var(--chartist-label-color-4, --chartist-label-color);
-          stroke: var(--chartist-label-color-4, --chartist-label-color);
         }
 
         .ct-series-e .ct-point,
@@ -927,11 +956,6 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
           fill: var(--chartist-color-5, #453d3f);
         }
 
-        .ct-series-e .ct-label {
-          fill: var(--chartist-label-color-5, --chartist-label-color);
-          stroke: var(--chartist-label-color-5, --chartist-label-color);
-        }
-
         .ct-series-f .ct-point,
         .ct-series-f .ct-line,
         .ct-series-f .ct-bar,
@@ -943,11 +967,6 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
         .ct-series-f .ct-slice-donut-solid,
         .ct-series-f .ct-area {
           fill: var(--chartist-color-6, #59922b);
-        }
-
-        .ct-series-f .ct-label {
-          fill: var(--chartist-label-color-6, --chartist-label-color);
-          stroke: var(--chartist-label-color-6, --chartist-label-color);
         }
 
         .ct-series-g .ct-point,
@@ -963,11 +982,6 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
           fill: var(--chartist-color-7, #0544d3);
         }
 
-        .ct-series-g .ct-label {
-          fill: var(--chartist-label-color-7, --chartist-label-color);
-          stroke: var(--chartist-label-color-7, --chartist-label-color);
-        }
-
         .ct-series-h .ct-point,
         .ct-series-h .ct-line,
         .ct-series-h .ct-bar,
@@ -979,11 +993,6 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
         .ct-series-h .ct-slice-donut-solid,
         .ct-series-h .ct-area {
           fill: var(--chartist-color-8, #6b0392);
-        }
-
-        .ct-series-h .ct-label {
-          fill: var(--chartist-label-color-8, --chartist-label-color);
-          stroke: var(--chartist-label-color-8, --chartist-label-color);
         }
 
         .ct-series-i .ct-point,
@@ -999,11 +1008,6 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
           fill: var(--chartist-color-9, #f05b4f);
         }
 
-        .ct-series-i .ct-label {
-          fill: var(--chartist-label-color-9, --chartist-label-color);
-          stroke: var(--chartist-label-color-9, --chartist-label-color);
-        }
-
         .ct-series-j .ct-point,
         .ct-series-j .ct-line,
         .ct-series-j .ct-bar,
@@ -1015,11 +1019,6 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
         .ct-series-j .ct-slice-donut-solid,
         .ct-series-j .ct-area {
           fill: var(--chartist-color-10, #dda458);
-        }
-
-        .ct-series-j .ct-label {
-          fill: var(--chartist-label-color-10, --chartist-label-color);
-          stroke: var(--chartist-label-color-10, --chartist-label-color);
         }
 
         .ct-series-k .ct-point,
@@ -1035,11 +1034,6 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
           fill: var(--chartist-color-11, #eacf7d);
         }
 
-        .ct-series-k .ct-label {
-          fill: var(--chartist-label-color-11, --chartist-label-color);
-          stroke: var(--chartist-label-color-11, --chartist-label-color);
-        }
-
         .ct-series-l .ct-point,
         .ct-series-l .ct-line,
         .ct-series-l .ct-bar,
@@ -1051,11 +1045,6 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
         .ct-series-l .ct-slice-donut-solid,
         .ct-series-l .ct-area {
           fill: var(--chartist-color-12, #86797d);
-        }
-
-        .ct-series-l .ct-label {
-          fill: var(--chartist-label-color-12, --chartist-label-color);
-          stroke: var(--chartist-label-color-12, --chartist-label-color);
         }
 
         .ct-series-m .ct-point,
@@ -1071,11 +1060,6 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
           fill: var(--chartist-color-13, #b2c326);
         }
 
-        .ct-series-m .ct-label {
-          fill: var(--chartist-label-color-13, --chartist-label-color);
-          stroke: var(--chartist-label-color-13, --chartist-label-color);
-        }
-
         .ct-series-n .ct-point,
         .ct-series-n .ct-line,
         .ct-series-n .ct-bar,
@@ -1089,11 +1073,6 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
           fill: var(--chartist-color-14, #6188e2);
         }
 
-        .ct-series-n .ct-label {
-          fill: var(--chartist-label-color-14, --chartist-label-color);
-          stroke: var(--chartist-label-color-14, --chartist-label-color);
-        }
-
         .ct-series-o .ct-point,
         .ct-series-o .ct-line,
         .ct-series-o .ct-bar,
@@ -1105,18 +1084,6 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
         .ct-series-o .ct-slice-donut-solid,
         .ct-series-o .ct-area {
           fill: var(--chartist-color-15, #a748ca);
-        }
-
-        .ct-series-o .ct-label {
-          fill: var(--chartist-label-color-15, --chartist-label-color);
-          stroke: var(--chartist-label-color-15, --chartist-label-color);
-        }
-
-        .a11y {
-          position: absolute;
-          left: -999999px;
-          height: 0;
-          overflow: hidden;
         }
       `
     ];
@@ -1454,6 +1421,7 @@ Container class	Ratio
 
   /**
    * Add accessibility features.
+   * @param {object} svg chart SVG
    */
   addA11yFeatures(svg) {
     if (this.data && this.data.series) {
@@ -1465,6 +1433,8 @@ Container class	Ratio
 
   /**
    * Get unique ID from the chart
+   * @param {string} prefix for unique ID
+   * @returns {string} unique ID
    */
   _getUniqueId(prefix) {
     let id = prefix + Date.now();

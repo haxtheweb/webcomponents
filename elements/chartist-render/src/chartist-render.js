@@ -8,9 +8,50 @@ import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 
 /**
  * `chartist-render`
- * uses the chartist library to render a chart
+ * uses chartist library to render a chart
  *
+### Styling
+
+`<chartist-render>` provides the following custom properties
+for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--chartist-label-color` | default label color for charts | #000
+`--chartist-pie-label-color` | label color for pie charts | `--chartist-label-color`
+`--chartist-color-a` | background color for 1st series |  #d70206
+`--chartist-color-label-a` | color for 1st series label |  `--chartist-label-color`
+`--chartist-color-b` | background color for 2nd series |  #f05b4f
+`--chartist-color-label-b` | color for 2nd series label |  `--chartist-label-color`
+`--chartist-color-c` | background color for 3rd series |  #f4c63d
+`--chartist-color-label-c` | color for 3rd series label |  `--chartist-label-color`
+`--chartist-color-d` | background color for 4th series |  #d17905
+`--chartist-color-label-d` | color for 4th series label |  `--chartist-label-color`
+`--chartist-color-e` | background color for 5th series |  #453d3f
+`--chartist-color-label-e` | color for 5th series label |  `--chartist-label-color`
+`--chartist-color-f` | background color for 6th series |  #59922b
+`--chartist-color-label-f` | color for 6th series label |  `--chartist-label-color`
+`--chartist-color-g` | background color for 7th series |  #0544d3
+`--chartist-color-label-g` | color for 7th series label |  `--chartist-label-color`
+`--chartist-color-h` | background color for 8th series |  #6b0392
+`--chartist-color-label-h` | color for 8th series label |  `--chartist-label-color`
+`--chartist-color-i` | background color for 9th series |  #f05b4f
+`--chartist-color-label-i` | color for 9th series label |  `--chartist-label-color`
+`--chartist-color-j` | background color for 10th series |  #dda458
+`--chartist-color-label-j` | color for 10th series label |  `--chartist-label-color`
+`--chartist-color-k` | background color for 11th series |  #eacf7d
+`--chartist-color-label-k` | color for 11th series label |  `--chartist-label-color`
+`--chartist-color-l` | background color for 12th series |  #86797d
+`--chartist-color-label-l` | color for 12th series label |  `--chartist-label-color`
+`--chartist-color-m` | background color for 13th series |  #b2c326
+`--chartist-color-label-m` | color for 13th series label |  `--chartist-label-color`
+`--chartist-color-n` | background color for 14th series |  #6188e2
+`--chartist-color-label-n` | color for 15th series label |  `--chartist-label-color`
+`--chartist-color-0` | background color for 15th series |  #a748ca
+`--chartist-color-label-o` | color for 15th series label |  `--chartist-label-color`
+
  * @customElement
+ * @extends SchemaBehaviors
  * @demo demo/index.html
  *
  */
@@ -163,6 +204,7 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
 
   /**
    * Add accessibility features.
+   * @param {object} svg chart SVG
    */
   addA11yFeatures(svg) {
     if (this.data && this.data.series) {
@@ -174,6 +216,8 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
 
   /**
    * Get unique ID from the chart
+   * @param {string} prefix for unique ID
+   * @returns {string} unique ID
    */
   _getUniqueId(prefix) {
     let id = prefix + Date.now();

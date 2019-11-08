@@ -6,7 +6,7 @@
     "elementName": "lrndesign-chart",
     "generator-wcfactory-version": "0.3.1",
     "useHAX": true,
-    "useSass": false,
+    "useSass": true,
     "files": {
       "css": "src/lrndesign-chart.css",
       "scss": "src/lrndesign-chart.scss",

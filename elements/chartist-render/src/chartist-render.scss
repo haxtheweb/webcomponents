@@ -1,58 +1,9 @@
 /* 
   LIST SHARED STYLES BELOW
 */
-@import "../../rh-sass/rh-sass";
 @import "../lib/chartist/dist/scss/chartist.scss";
-$series: 
-  ("a", "1", #d70206),
-  ("b", "2", #f05b4f),
-  ("c", "3", #f4c63d),
-  ("d", "4", #d17905),
-  ("e", "5", #453d3f),
-  ("f", "6", #59922b),
-  ("g", "7", #0544d3),
-  ("h", "8", #6b0392),
-  ("i", "9", #f05b4f),
-  ("j", "10", #dda458),
-  ("k", "11", #eacf7d),
-  ("l", "12", #86797d),
-  ("m", "13", #b2c326),
-  ("n", "14", #6188e2),
-  ("o", "15", #a748ca)
-;
 :host {
   display: block;
-}
-.ct-label {
-  fill: var(--chartist-label-color, #000);
-  color: var(--chartist-label-color, #000);
-}
-
-.ct-chart-pie .ct-label {
-  fill: var(--chartist-pie-label-color, --chartist-label-color);
-  color: var(--chartist-pie-label-color, --chartist-label-color);
-  font-size: 0.75rem;
-  line-height: 1;
-}
-
-@each $selector, $var, $color in $series {
-  .ct-series-#{$selector} .ct-point,
-  .ct-series-#{$selector} .ct-line,
-  .ct-series-#{$selector} .ct-bar,
-  .ct-series-#{$selector} .ct-slice-donut {
-    stroke: var(--chartist-color-#{$var}, $color);
-  }
-  
-  .ct-series-#{$selector} .ct-slice-pie,
-  .ct-series-#{$selector} .ct-slice-donut-solid,
-  .ct-series-#{$selector} .ct-area {
-    fill: var(--chartist-color-#{$var}, $color);
-  }
-
-  .ct-series-#{$selector} .ct-label {
-    fill: var(--chartist-label-color-#{$var}, --chartist-label-color);
-    stroke: var(--chartist-label-color-#{$var}, --chartist-label-color);
-  }
 }
 
 .a11y {
@@ -61,4 +12,30 @@ $series:
   height: 0;
   overflow: hidden;
 }
+
+$ct-text-color: var(--chartist-text-color, #{$ct-text-color});
+$ct-grid-color: var(--chartist-grid-color, #{$ct-grid-color});
+$ct-text-size: var(--chartist-text-size, #{$ct-text-size});
+$ct-text-line-height: var(--chartist-line-height, #{$ct-text-line-height});
+
+@mixin ct-chart2($ct-container-ratio: $ct-container-ratio, $ct-text-color: $ct-text-color, $ct-text-size: $ct-text-size, $ct-grid-color: $ct-grid-color, $ct-grid-width: $ct-grid-width, $ct-grid-dasharray: $ct-grid-dasharray, $ct-point-size: $ct-point-size, $ct-point-shape: $ct-point-shape, $ct-line-width: $ct-line-width, $ct-bar-width: $ct-bar-width, $ct-donut-width: $ct-donut-width, $ct-series-names: $ct-series-names, $ct-series-colors: $ct-series-colors) {
+
+  .#{$ct-class-label} {
+    @include ct-chart-label($ct-text-color, $ct-text-size);
+  }
+  .#{$ct-class-grid} {
+    @include ct-chart-grid($ct-grid-color, $ct-grid-width, $ct-grid-dasharray);
+  }
+
+  @if $ct-include-colored-series {
+    @for $i from 0 to length($ct-series-names) {
+      .#{$ct-class-series}-#{nth($ct-series-names, $i + 1)} {
+        $color: var(--chartist-color-#{$i + 1}, nth($ct-series-colors, $i + 1));
+
+        @include ct-chart-series-color($color);
+      }
+    }
+  }
+}
+@include ct-chart2();
 

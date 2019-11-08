@@ -11,6 +11,13 @@ import "@lrnwebcomponents/chartist-render/chartist-render.js";
  * shows progress in as a rounded shape w/ hollow middle
  *
  * @customElement
+ * @extends ChartistRender
+ * @see @lrnwebcomponents/chartist-render/chartist-render.js
+ * @extends SimpleColors
+ * @see @lrnwebcomponents/simple-colors/simple-colors.js
+ * @extends SchemaBehaviors
+ * @see @lrnwebcomponents/schema-behaviors/schema-behaviors.js
+ *
  * @demo demo/index.html
  */
 class ProgressDonut extends SchemaBehaviors(SimpleColors) {
@@ -33,14 +40,12 @@ class ProgressDonut extends SchemaBehaviors(SimpleColors) {
   }
 
   updated(changedProperties) {
-    //console.log('changedProperties',changedProperties,this);
-    /*changedProperties.forEach((oldValue, propName) => {
-    });*/
     this.makeChart();
   }
 
   /**
    * Handles chart creation event.
+   * @param {event} e create event
    */
   _onCreated(e) {
     if (this.animated)
@@ -71,9 +76,7 @@ class ProgressDonut extends SchemaBehaviors(SimpleColors) {
   }
 
   /**
-   *refreshes the chart
-   *
-   * @memberof LrndesignChartBehaviors
+   * refreshes the chart
    */
   makeChart() {
     let sum = 0,

@@ -2,16 +2,19 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { LrndesignChartBehaviors } from "./lrndesign-chart-behaviors.js";
+import { LrndesignChart } from "../lrndesign-chart.js";
 /**
  * `lrndesign-pie`
  * a pie chart
  *
  * @customElement
- * @demo demo/pie.html
+ * @extends LrndesignChart
+ * @see ../lrndesign-chart.js
+ *
+ * @demo ../demo/pie.html
  *
  */
-class LrndesignPie extends LrndesignChartBehaviors {
+class LrndesignPie extends LrndesignChart {
   constructor() {
     super();
     this.setProperties();
@@ -235,7 +238,8 @@ class LrndesignPie extends LrndesignChartBehaviors {
   }
 
   /**
-   * returns options as an array
+   * gets options as an array
+   * @returns {array} options
    */
   _getOptions() {
     let options = super._getOptions();
