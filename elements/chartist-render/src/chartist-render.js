@@ -37,8 +37,13 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
     );
     window.ESGlobalBridge.requestAvailability();
     window.ESGlobalBridge.instance.load("chartistLib", location);
-    window.dispatchEvent(
-      new CustomEvent("chartist-render-ready", { detail: this })
+    this.dispatchEvent(
+      new CustomEvent("chartist-render-ready", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
     );
     if (typeof Chartist === "object") this._chartistLoaded.bind(this);
   }
@@ -52,7 +57,7 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
   }
 
   updated(changedProperties) {
-    this.makeChart();
+    this._renderChart();
   }
 
   // simple path from a url modifier
@@ -73,7 +78,7 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
    */
   _chartistLoaded() {
     this.__chartistLoaded = true;
-    this.makeChart();
+    this._renderChart();
   }
 
   /**
@@ -133,11 +138,24 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
           this.responsiveOptions
         );
       }
-      window.dispatchEvent(
-        new CustomEvent("chartist-render-draw", { detail: chart })
+      this.dispatchEvent(
+        new CustomEvent("chartist-render-draw", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: chart
+        })
       );
       chart.on("created", () => {
-        this.addA11yFeatures(chart.container.childNodes[0]);
+        this.addA11yFeatures(chart.container.children[0]);
+        this.dispatchEvent(
+          new CustomEvent("chartist-render-created", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: chart
+          })
+        );
       });
     }
     return chart;
@@ -147,58 +165,11 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
    * Add accessibility features.
    */
   addA11yFeatures(svg) {
-    let div = document.createElement("div"),
-      first = svg.childNodes[0];
-    div.innerHTML = `${this._makeTitle(this.title)}${this._makeDesc(
-      this.desc
-    )}`;
-    svg.insertBefore(div.childNodes[1], first);
-    svg.insertBefore(div.childNodes[0], first);
-
-    svg.setAttribute(
-      "aria-labelledby",
-      `${this.__chartId}-title "${this.__chartId}-desc`
-    );
-  }
-
-  _makeDesc(desc) {
-    return `
-    <desc id="${this.__chartId}-desc">
-      ${desc ? desc : ``}
-      ${
-        this.data.labels !== undefined && this.data.labels !== null
-          ? this._makeTable()
-          : ``
-      }
-    </desc>
-  `;
-  }
-
-  _makeTitle(title) {
-    return title ? `<title id="${this.__chartId}-title">${title}</title>` : ``;
-  }
-
-  _makeTable() {
-    return `
-      <table>
-        <caption>${
-          this.chartTitle !== null ? this.chartTitle : `A ${this.type} chart.`
-        }</caption>
-        <tbody>
-          ${this.data.labels.map((label, index) => {
-            return `
-              <tr>
-                <th scope="row">${label}</th>
-                ${
-                  this.type === "pie"
-                    ? `<td>${this.data.series[index]}</td>`
-                    : this.data.series.map(row => `<td>${row[index]}</td>`)
-                }
-              </tr>`;
-          })}
-        </tbody>
-      </table>
-    `;
+    if (this.data && this.data.series) {
+      svg.setAttribute("aria-labelledby", `${this.__chartId}-desc`);
+    } else {
+      svg.setAttribute("aria-labelledby", `${this.__chartId}-title`);
+    }
   }
 
   /**

@@ -1,0 +1,55 @@
+{
+  /**
+   * Whether progress animates on first load
+   */
+  "animated": {
+    "type": "Boolean"
+  },
+  /**
+   * An array of completed values
+   */
+  "complete": {
+    "type": "Array"
+  },
+  /**
+   * Accessible long description
+   */
+  "desc": {
+    "type": "String"
+  },
+  /**
+   * Source of image in the center of the object.
+   */
+  "imageSrc": {
+    "attribute": "image-src",
+    "type": "String",
+    "reflect": true
+  },
+  /**
+   * Alt text for image.
+   */
+  "imageAlt": {
+    "attribute": "image-alt",
+    "type": "String",
+    "reflect": true
+  },
+  /**
+   * Donut angle where progress starts
+   */
+  "startAngle": {
+    "attribute": "start-angle",
+    "type": "Number"
+  },
+  /**
+   * Title of donut
+   */
+  "title": {
+    "type": "String"
+  },
+  /**
+   * Array of incomplete values
+   */
+  "total": {
+    "type": "Number"
+  }
+}

@@ -387,7 +387,6 @@ class LrndesignChartBehaviors extends SimpleColors {
         .chart-desc="${this.chartDesc}"
         .data="${this.data}"
         .responsive-options="${this.responsiveOptions}"
-        @chartist-render-ready="${this._ready}"
       ></chartist-render>
     `;
   }

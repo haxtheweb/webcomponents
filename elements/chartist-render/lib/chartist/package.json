@@ -40,9 +40,6 @@
     }
   ],
   "dependencies": {
-    "@lrnwebcomponents/schema-behaviors": "^2.1.5",
-    "@lrnwebcomponents/es-global-bridge": "^2.1.5",
-    "lit-element":"2.0.1"
   },
   "devDependencies": {
     "assemble-dox": "0.0.2",

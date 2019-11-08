@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/lrndesign-chart",
   "wcfactory": {
     "className": "LrndesignChart",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "lrndesign-chart",
     "generator-wcfactory-version": "0.3.1",
     "useHAX": true,

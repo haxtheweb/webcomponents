@@ -54,3 +54,11 @@ $series:
     stroke: var(--chartist-label-color-#{$var}, --chartist-label-color);
   }
 }
+
+.a11y {
+  position: absolute;
+  left: -999999px;
+  height: 0;
+  overflow: hidden;
+}
+

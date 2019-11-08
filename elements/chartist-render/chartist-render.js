@@ -1111,6 +1111,13 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
           fill: var(--chartist-label-color-15, --chartist-label-color);
           stroke: var(--chartist-label-color-15, --chartist-label-color);
         }
+
+        .a11y {
+          position: absolute;
+          left: -999999px;
+          height: 0;
+          overflow: hidden;
+        }
       `
     ];
   }
@@ -1122,6 +1129,69 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
         chart="${this.__chartId}"
         class="ct-chart ${this.scale}"
       ></div>
+      ${this.data && this.data.series
+        ? html`
+            <table id="${this.__chartId}-desc" class="a11y">
+              <caption>
+                ${this.chartTitle || this.chartDesc
+                  ? html`
+                      ${this.chartTitle}${this.chartDesc}
+                    `
+                  : html`
+                      A ${this.type} chart.
+                    `}
+              </caption>
+              ${this.data.labels
+                ? html`
+                    <thead>
+                      <tr>
+                        ${this.data.labels.map(
+                          cell => html`
+                            <td>${cell || "-"}</td>
+                          `
+                        )}
+                      </tr>
+                    </thead>
+                  `
+                : html``}
+              <tbody>
+                ${this.type === "pie"
+                  ? html`
+                      <tr>
+                        ${this.data.series.map(
+                          cell => html`
+                            <td>${cell || "-"}</td>
+                          `
+                        )}
+                      </tr>
+                    `
+                  : this.data.series.map(
+                      row => html`
+                        <tr>
+                          ${row.map(
+                            cell => html`
+                              <td>${cell || "-"}</td>
+                            `
+                          )}
+                        </tr>
+                      `
+                    )}
+              </tbody>
+            </table>
+          `
+        : html`${
+            this.chartTitle || this.chartDesc
+              ? html`
+                  <div id="${this.__chartId}-title" class="a11y">
+                    <div>${this.chartTitle}</div>
+                    <div>${this.chartDesc}</div>
+                  </div>
+                `
+              : html`
+                  A ${this.type} chart.
+                `
+          }
+</div>`}
     `;
   }
 
@@ -1191,8 +1261,35 @@ Container class	Ratio
         type: Object
       },
       /**
-       * The responsive options. (See https://gionkunz.github.io/chartist-js/api-documentation.html.)
-       */
+   * The responsive options.
+
+    From https://gionkunz.github.io/chartist-js/api-documentation.html:
+
+    In addition to the regular options we specify responsive option 
+    overrides that will override the default configutation based 
+    on the matching media queries.
+
+    `var responsiveOptions = [
+      ['screen and (min-width: 641px) and (max-width: 1024px)', {
+        showPoint: false,
+        axisX: {
+          labelInterpolationFnc: function(value) {
+            // Will return Mon, Tue, Wed etc. on medium screens
+            return value.slice(0, 3);
+          }
+        }
+      }],
+      ['screen and (max-width: 640px)', {
+        showLine: false,
+        axisX: {
+          labelInterpolationFnc: function(value) {
+            // Will return M, T, W etc. on small screens
+            return value[0];
+          }
+        }
+      }]
+    ];`
+   */
       responsiveOptions: {
         type: Array,
         attribute: "responsive-options"
@@ -1231,8 +1328,13 @@ Container class	Ratio
     );
     window.ESGlobalBridge.requestAvailability();
     window.ESGlobalBridge.instance.load("chartistLib", location);
-    window.dispatchEvent(
-      new CustomEvent("chartist-render-ready", { detail: this })
+    this.dispatchEvent(
+      new CustomEvent("chartist-render-ready", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
     );
     if (typeof Chartist === "object") this._chartistLoaded.bind(this);
   }
@@ -1246,7 +1348,7 @@ Container class	Ratio
   }
 
   updated(changedProperties) {
-    this.makeChart();
+    this._renderChart();
   }
 
   // simple path from a url modifier
@@ -1267,7 +1369,7 @@ Container class	Ratio
    */
   _chartistLoaded() {
     this.__chartistLoaded = true;
-    this.makeChart();
+    this._renderChart();
   }
 
   /**
@@ -1327,11 +1429,24 @@ Container class	Ratio
           this.responsiveOptions
         );
       }
-      window.dispatchEvent(
-        new CustomEvent("chartist-render-draw", { detail: chart })
+      this.dispatchEvent(
+        new CustomEvent("chartist-render-draw", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: chart
+        })
       );
       chart.on("created", () => {
-        this.addA11yFeatures(chart.container.childNodes[0]);
+        this.addA11yFeatures(chart.container.children[0]);
+        this.dispatchEvent(
+          new CustomEvent("chartist-render-created", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: chart
+          })
+        );
       });
     }
     return chart;
@@ -1341,58 +1456,11 @@ Container class	Ratio
    * Add accessibility features.
    */
   addA11yFeatures(svg) {
-    let div = document.createElement("div"),
-      first = svg.childNodes[0];
-    div.innerHTML = `${this._makeTitle(this.title)}${this._makeDesc(
-      this.desc
-    )}`;
-    svg.insertBefore(div.childNodes[1], first);
-    svg.insertBefore(div.childNodes[0], first);
-
-    svg.setAttribute(
-      "aria-labelledby",
-      `${this.__chartId}-title "${this.__chartId}-desc`
-    );
-  }
-
-  _makeDesc(desc) {
-    return `
-    <desc id="${this.__chartId}-desc">
-      ${desc ? desc : ``}
-      ${
-        this.data.labels !== undefined && this.data.labels !== null
-          ? this._makeTable()
-          : ``
-      }
-    </desc>
-  `;
-  }
-
-  _makeTitle(title) {
-    return title ? `<title id="${this.__chartId}-title">${title}</title>` : ``;
-  }
-
-  _makeTable() {
-    return `
-      <table>
-        <caption>${
-          this.chartTitle !== null ? this.chartTitle : `A ${this.type} chart.`
-        }</caption>
-        <tbody>
-          ${this.data.labels.map((label, index) => {
-            return `
-              <tr>
-                <th scope="row">${label}</th>
-                ${
-                  this.type === "pie"
-                    ? `<td>${this.data.series[index]}</td>`
-                    : this.data.series.map(row => `<td>${row[index]}</td>`)
-                }
-              </tr>`;
-          })}
-        </tbody>
-      </table>
-    `;
+    if (this.data && this.data.series) {
+      svg.setAttribute("aria-labelledby", `${this.__chartId}-desc`);
+    } else {
+      svg.setAttribute("aria-labelledby", `${this.__chartId}-title`);
+    }
   }
 
   /**
