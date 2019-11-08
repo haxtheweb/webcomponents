@@ -4,7 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import "@lrnwebcomponents/chartist-render/chartist-render.js";
 /**
  * `progress-donut`
@@ -18,7 +18,7 @@ import "@lrnwebcomponents/chartist-render/chartist-render.js";
 class ProgressDonut extends SchemaBehaviors(PolymerElement) {
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles">
+      <style include="simple-colors-shared-styles-polymer">
         :host {
           background-color: var(--simple-colors-background1, #ffffff);
           overflow: visible;
@@ -323,7 +323,7 @@ class ProgressDonut extends SchemaBehaviors(PolymerElement) {
     if (chart !== undefined) {
       let colors = this.colors,
         strokeWidth = "10%",
-        hex = SimpleColors.colors,
+        hex = SimpleColorsPolymer.colors,
         accent =
           this.accentColor !== null
             ? this.accentColor.replace(/-([a-z])/g, function(g) {

@@ -20,7 +20,8 @@ class SimplePopover extends AbsolutePositionBehavior {
   // render function
   static get template() {
     return html`
-<style>:host {
+<style>
+:host {
   --simple-popover-border-radius: 3px;
   --simple-popover-color: #222;
   --simple-popover-padding: 10px;
@@ -98,7 +99,8 @@ class SimplePopover extends AbsolutePositionBehavior {
 :host([position="left"]) #pointer:after {
   top: 5px;
   left: -5px;
-}</style>
+}
+        </style>
 <div>
   <div id="content" role="alertdialog">
     <slot></slot>

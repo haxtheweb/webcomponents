@@ -24,7 +24,8 @@ class HaxschemaBuilder extends PolymerElement {
   // render function
   static get template() {
     return html`
-<style>:host {
+<style>
+:host {
   display: block;
 }
 
@@ -33,7 +34,8 @@ class HaxschemaBuilder extends PolymerElement {
 }
 code-editor {
   height: 500px;
-}</style>
+}
+        </style>
 <vaadin-split-layout>
   <div>
     <paper-button raised noink on-click="addConfigure">Add to configure</paper-button>

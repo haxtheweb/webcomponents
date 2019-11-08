@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html } from "@polymer/polymer/polymer-element.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import { A11yBehaviors } from "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
@@ -46,7 +46,7 @@ import "@lrnwebcomponents/a11y-media-player/a11y-media-player.js";
  * @demo demo/index.html
  */
 class VideoPlayer extends MediaBehaviorsVideo(
-  A11yBehaviors(SchemaBehaviors(SimpleColors))
+  A11yBehaviors(SchemaBehaviors(SimpleColorsPolymer))
 ) {
   
   // render function
@@ -62,8 +62,9 @@ class VideoPlayer extends MediaBehaviorsVideo(
   margin: 0;
   padding: 8px;
   @apply --video-player-caption-theme;
-}</style>
-<style include="simple-colors-shared-styles"></style>
+}
+        </style>
+<style include="simple-colors-shared-styles-polymer"></style>
 <div style$="[[playerStyle]]">
 <template is="dom-if" if="[[isA11yMedia]]" restamp>
   <a11y-media-player

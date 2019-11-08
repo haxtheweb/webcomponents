@@ -24,7 +24,8 @@ class LrnButton extends PolymerElement {
   // render function
   static get template() {
     return html`
-<style>  :host {
+<style>
+:host {
     display: block;
     @apply --paper-font-common-base;
     @apply --paper-button;
@@ -83,7 +84,8 @@ class LrnButton extends PolymerElement {
   .center {
     text-align: center;
     margin: 0 auto;
-  }</style>
+  }
+        </style>
 <style include="materializecss-styles-colors"></style>
 <a tabindex="-1" id="lrnsys-button-link" href$="[[showHref]]" data-prefetch-hover$="[[prefetch]]" target$="[[target]]">
   <paper-button id="button" raised="[[raised]]" class$="[[class]] [[color]] [[textColor]]" disabled$="[[disabled]]">

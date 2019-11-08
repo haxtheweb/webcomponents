@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/simple-icon-picker",
   "wcfactory": {
     "className": "SimpleIconPicker",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "simple-icon-picker",
     "generator-wcfactory-version": "0.6.5",
     "useHAX": false,
@@ -44,7 +44,8 @@
     "@polymer/polymer": "^3.2.0",
     "@polymer/iron-iconset-svg": "^3.0.1",
     "@polymer/iron-icon": "^3.0.1",
-    "@polymer/iron-icons": "^3.0.1"
+    "@polymer/iron-icons": "^3.0.1",
+    "lit-element": "^2.2.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",

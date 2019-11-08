@@ -158,7 +158,10 @@ class VideoPlayer extends MediaBehaviorsVideo(
   static get haxProperties() {
     return {
       canScale: true,
-      canPosition: true,
+      canPosition: {
+        min: 25,
+        step: 12.5
+      },
       canEditSource: false,
       gizmo: {
         title: "Video player",

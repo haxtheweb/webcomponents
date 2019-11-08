@@ -26,7 +26,8 @@ class EditableOutline extends PolymerElement {
   // render function
   static get template() {
     return html`
-<style>:host {
+<style>
+:host {
   display: block;
   font-family: 'Noto Serif', serif;
 }
@@ -124,7 +125,8 @@ li:hover {
 
 iron-icon {
   pointer-events: none;
-}</style>
+}
+        </style>
 <iron-a11y-keys target="[[__outlineNode]]" keys="shift+tab" on-keys-pressed="_tabBackKeyPressed"
   stop-keyboard-event-propagation></iron-a11y-keys>
 <iron-a11y-keys target="[[__outlineNode]]" keys="tab" on-keys-pressed="_tabKeyPressed"

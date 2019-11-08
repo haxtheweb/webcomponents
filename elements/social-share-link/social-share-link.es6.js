@@ -22,7 +22,8 @@ class SocialShareLink extends PolymerElement {
   // render function
   static get template() {
     return html`
-<style>:host {
+<style>
+:host {
   display: inline;
 }
 :host([hidden]) {
@@ -97,8 +98,8 @@ class SocialShareLink extends PolymerElement {
 }
 :host a.icon-only iron-icon {
   margin-right: 0;
-} 
-</style>
+}
+        </style>
 <a href$="[[__href]]" disabled$="[[!__href]]" class$="[[mode]]" rel="noopener noreferrer" target="_blank">
   <iron-icon aria-hidden="true" icon$="[[__icon]]" hidden$="[[!__showIcon]]"></iron-icon>
   <span class="linktext">[[__linkText]]</span>

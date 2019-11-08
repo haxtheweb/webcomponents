@@ -42,8 +42,6 @@ class SimpleCameraSnap extends HTMLElement {
         --simple-login-avatar-border-radius: var(--simple-camera-snap-border-radius,100%);
         --simple-login-avatar-width: var(--simple-camera-snap-width, 200px);
         --simple-login-avatar-height: var(--simple-camera-snap-height, 200px);
-
-        @apply --simple-camera-snap;
       }
       #selfie {
         position: absolute;
@@ -56,7 +54,9 @@ class SimpleCameraSnap extends HTMLElement {
       #snap {
         color: var(--simple-camera-snap-color, #36bed4);
         background-color: var(--simple-camera-snap-background, white);
-        @apply --simple-camera-snap-button;
+        border-radius: var(--simple-camera-snap-button-border-radius);
+        opacity: var(--simple-camera-snap-button-opacity);
+
       }
       .has-snap {
         z-index: 3;
@@ -71,7 +71,9 @@ class SimpleCameraSnap extends HTMLElement {
         display: flex;
         width: var(--simple-camera-snap-width, 200px);
         justify-content: space-evenly;
-        @apply --simple-camera-snap-button-container;
+        position: var(--simple-camera-snap-button-container-position);
+        bottom: var(--simple-camera-snap-button-container-bottom);
+        z-index: var(--simple-camera-snap-button-container-z-index);
       }
     </style>
     <simple-login-avatar>

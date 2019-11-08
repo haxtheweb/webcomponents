@@ -23,7 +23,8 @@ class SimpleIconPicker extends SimplePicker {
   // render function
   static get template() {
     return html`
-<style>:host(simple-icon-picker) #collapse {
+<style>
+:host(simple-icon-picker) #collapse {
   width: 300px;
 }
 :host(simple-icon-picker) .row {
@@ -32,7 +33,7 @@ class SimpleIconPicker extends SimplePicker {
 :host(simple-icon-picker) simple-picker-option {
   flex: 0 0 auto;
 }
-</style>
+        </style>
 ${super.template}`;
   }
 

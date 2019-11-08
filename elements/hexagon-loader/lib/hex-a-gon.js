@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 
-export { Hexagon };
 /**
  * `hex-a-gon`
  * `A simple CSS based hexagon`
@@ -130,3 +129,4 @@ div:after {
   }
 }
 window.customElements.define(Hexagon.tag, Hexagon);
+export { Hexagon };

@@ -92,7 +92,7 @@ class A11yCollapseGroup extends LitElement {
   _attachItem(item) {
     for (let key in this.globalOptions) {
       if (this.globalOptions.hasOwnProperty(key)) {
-        item._overrideProp(key, this.globalOptions[key]);
+        item[key] = this.globalOptions[key];
       }
     }
     this.__items.push(item);
@@ -105,7 +105,7 @@ class A11yCollapseGroup extends LitElement {
   _detachItem(item) {
     if (this.__items && item) {
       for (let i = 0; i < this.__items.length; i++) {
-        if (this.__items[i] === item) this.splice("__items", i, 1);
+        if (this.__items[i] === item) this.__items.splice(i, 1);
       }
     }
   }

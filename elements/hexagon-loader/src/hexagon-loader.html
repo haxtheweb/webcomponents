@@ -1,5 +1,3 @@
 <div>
-    <template is="dom-repeat" items="[[items]]">
-        <hex-a-gon></hex-a-gon>
-    </template>
+  ${this.items.map(item => html`<hex-a-gon></hex-a-gon>`)}
 </div>

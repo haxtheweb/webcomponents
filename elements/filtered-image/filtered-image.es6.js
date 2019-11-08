@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 /**
  * `filtered-image`
  * `An image using an SVG filter. Can be used to make background images have more contrast with text.`
@@ -16,18 +16,19 @@ import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
  * @demo demo/index.html
  * @demo demo/filters.html Filters
  */
-class FilteredImage extends SimpleColors {
+class FilteredImage extends SimpleColorsPolymer {
   
   // render function
   static get template() {
     return html`
-<style>:host {
+<style>
+:host {
   display: block;
 }
 :host([hidden]) {
   display: none;
 }
-</style>
+        </style>
 <style>
 </style>
 <svg id="svg" viewBox$="[[viewBox]]"> 

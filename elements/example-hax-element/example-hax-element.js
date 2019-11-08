@@ -16,14 +16,15 @@ class ExampleHaxElement extends HTMLElement {
   // render function
   get html() {
     return `
-<style>:host {
+<style>
+:host {
   display: block;
 }
 
 :host([hidden]) {
   display: none;
 }
-</style>
+        </style>
 <slot></slot>`;
   }
 

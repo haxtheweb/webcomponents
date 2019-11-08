@@ -1133,7 +1133,7 @@ class SimpleColors extends LitElement {
   }
 
   static get tag() {
-    return "simple-colors";
+    return "simple-colors-lit";
   }
 
   /**

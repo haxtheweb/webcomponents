@@ -21,7 +21,7 @@ import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/app-layout/app-header/app-header.js";
 import "@lrnwebcomponents/item-overlay-ops/item-overlay-ops.js";
 import "@lrnwebcomponents/lrnsys-outline/lrnsys-outline.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@lrnwebcomponents/editable-list/editable-list.js";
 import "./lib/sortable-list.js";
@@ -48,7 +48,8 @@ class OutlineDesigner extends PolymerElement {
   // render function
   static get template() {
     return html`
-<style>:host {
+<style>
+:host {
   display: block;
 }
 
@@ -245,8 +246,9 @@ paper-card.card-high-detail {
   .node-low-detail li li:before {
     border-top-color: var(--simple-colors-default-theme-light-blue-7, dodgerblue);;
     border-top-width: 2px;
-  }</style>
-<style include="simple-colors-shared-styles"></style>
+  }
+        </style>
+<style include="simple-colors-shared-styles-polymer"></style>
 <iron-ajax
   auto="[[outlineSchemaUrl]]"
   url="[[outlineSchemaUrl]]"

@@ -2,27 +2,23 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/polymer/lib/elements/dom-repeat.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "./lib/hex-a-gon.js";
-export { HexagonLoader };
 /**
  * `hexagon-loader`
  * `a simple element that is for showing something is loading`
  *
- * @microcopy - language worth noting:
- *  -
  *
  * @customElement
- * @polymer
  * @demo demo/index.html
  */
-class HexagonLoader extends PolymerElement {
+class HexagonLoader extends LitElement {
   
-  // render function
-  static get template() {
-    return html`
-<style>:host {
+  //styles function
+  static get styles() {
+    return  [
+      css`
+:host {
   display: none;
 }
 :host([hidden]) {
@@ -428,11 +424,16 @@ hex-a-gon:nth-of-type(37) {
     -webkit-transform: scale(0) translate(-50%, -50%);
             transform: scale(0) translate(-50%, -50%);
   }
-}</style>
+}
+      `
+    ];
+  }
+  // LitElement render function
+  render() {
+    return html`
+
 <div>
-    <template is="dom-repeat" items="[[items]]">
-        <hex-a-gon></hex-a-gon>
-    </template>
+  ${this.items.map(item => html`<hex-a-gon></hex-a-gon>`)}
 </div>`;
   }
 
@@ -445,8 +446,7 @@ hex-a-gon:nth-of-type(37) {
   "color": {
     "name": "color",
     "type": String,
-    "observer": "_colorChanged",
-    "reflectToAttribute": true
+    "reflect": true
   },
   /**
    * The relative size of this loader. Options small, medium, large
@@ -454,7 +454,7 @@ hex-a-gon:nth-of-type(37) {
   "size": {
     "name": "size",
     "type": String,
-    "reflectToAttribute": true
+    "reflect": true
   },
   /**
    * Loading state
@@ -462,7 +462,11 @@ hex-a-gon:nth-of-type(37) {
   "loading": {
     "name": "loading",
     "type": Boolean,
-    "reflectToAttribute": true
+    "reflect": true
+  },
+  "items": {
+    "name": "items",
+    "type": Array
   },
   /**
    * Count of the items
@@ -470,7 +474,8 @@ hex-a-gon:nth-of-type(37) {
   "itemCount": {
     "name": "itemCount",
     "type": Number,
-    "value": 37
+    "reflect": true,
+    "attribute": "item-count"
   }
 }
 ;
@@ -488,27 +493,38 @@ hex-a-gon:nth-of-type(37) {
     return "hexagon-loader";
   }
   /**
-   * life cycle, element is afixed to the DOM
+   * VanillaJS life cycle
    */
-  connectedCallback() {
-    super.connectedCallback();
-    let items = [];
-    for (var i = 0; i < this.itemCount; i++) {
-      items.push("");
-    }
-    this.set("items", items);
+  constructor() {
+    super();
+    // default for a nice arrangement of items
+    this.itemCount = 37;
+    this.items = [];
+  }
+  /**
+   * LitElement life cycle - properties changed
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "color") {
+        this._colorChanged(this[propName], oldValue);
+      }
+      if (propName == "itemCount") {
+        this.items = [];
+        for (let i = 0; i < this[propName]; i++) {
+          this.items.push("");
+        }
+      }
+    });
   }
   /**
    * Color changed
    */
   _colorChanged(newValue, oldValue) {
-    if (newValue) {
-      this.updateStyles({ "--hexagon-color": newValue });
+    if (newValue && window.ShadyCSS) {
+      window.ShadyCSS.styleSubtree(this, { "--hexagon-color": newValue });
     }
   }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
 }
 window.customElements.define(HexagonLoader.tag, HexagonLoader);
+export { HexagonLoader };

@@ -13,7 +13,7 @@ class CitationElement extends SchemaBehaviors(PolymerElement) {
       <style>
         :host {
           display: block;
-          color: var("--license-text-color");
+          color: var(--license-text-color);
         }
         :host([display-method="footnote"]) {
           visibility: hidden;

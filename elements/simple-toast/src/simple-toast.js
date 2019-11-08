@@ -2,10 +2,9 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "@polymer/paper-button/paper-button.js";
-import * as async from "@polymer/polymer/lib/utils/async.js";
 
 // register globally so we can make sure there is only one
 window.SimpleToast = window.SimpleToast || {};
@@ -32,7 +31,7 @@ window.SimpleToast.requestAvailability = () => {
  * @polymer
  * @demo demo/index.html
  */
-class SimpleToast extends PolymerElement {
+class SimpleToast extends LitElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   /**
@@ -45,9 +44,14 @@ class SimpleToast extends PolymerElement {
   /**
    * life cycle, element is afixed to the DOM
    */
-  connectedCallback() {
-    super.connectedCallback();
-
+  constructor() {
+    super();
+    this.opened = false;
+    this.text = "Saved";
+    this.classStyle = "";
+    this.closeText = "Close";
+    this.duration = 4000;
+    this.closeButton = true;
     window.addEventListener(
       "simple-toast-hide",
       this.hideSimpleToast.bind(this)
@@ -61,7 +65,6 @@ class SimpleToast extends PolymerElement {
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
-    super.connectedCallback();
     window.removeEventListener(
       "simple-toast-hide",
       this.hideSimpleToast.bind(this)
@@ -70,12 +73,16 @@ class SimpleToast extends PolymerElement {
       "simple-toast-show",
       this.showSimpleToast.bind(this)
     );
+    super.connectedCallback();
   }
   /**
    * Hide callback
    */
   hideSimpleToast(e) {
     this.hide();
+  }
+  openedChanged(e) {
+    this.opened = e.detail.value;
   }
   /**
    * Show / available callback
@@ -106,11 +113,9 @@ class SimpleToast extends PolymerElement {
     if (e.detail.slot) {
       this.appendChild(e.detail.slot);
     }
-    async.microTask.run(() => {
-      setTimeout(() => {
-        this.show();
-      }, 50);
-    });
+    setTimeout(() => {
+      this.show();
+    }, 25);
   }
 
   show() {

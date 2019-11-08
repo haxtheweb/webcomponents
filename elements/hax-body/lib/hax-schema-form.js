@@ -1,7 +1,5 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
 import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
-import "./hax-shared-styles.js";
 /**
  * `hax-schema-form`
  * `An element that can generate a form from HAXschema`
@@ -21,10 +19,16 @@ class HaxSchemaForm extends PolymerElement {
     import("@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js");
     import("@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js");
     import("@lrnwebcomponents/code-editor/code-editor.js");
+    import("@polymer/paper-input/paper-textarea.js");
+    import("app-datepicker/app-datepicker.js");
+    import("@lrnwebcomponents/simple-picker/simple-picker.js");
+    import("@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js");
+    import("@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js");
+    import("@lrnwebcomponents/paper-input-flagged/paper-input-flagged.js");
   }
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles-polymer hax-shared-styles">
+      <style include="simple-colors-shared-styles-polymer">
         :host {
           display: block;
           background-color: #ffffff;
@@ -190,17 +194,6 @@ class HaxSchemaForm extends PolymerElement {
         }
       }
     };
-  }
-  connectedCallback() {
-    super.connectedCallback();
-    afterNextRender(this, function() {
-      import("@polymer/paper-input/paper-textarea.js");
-      import("app-datepicker/app-datepicker.js");
-      import("@lrnwebcomponents/simple-picker/simple-picker.js");
-      import("@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js");
-      import("@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js");
-      import("@lrnwebcomponents/paper-input-flagged/paper-input-flagged.js");
-    });
   }
   /**
    * Compute form key to use.

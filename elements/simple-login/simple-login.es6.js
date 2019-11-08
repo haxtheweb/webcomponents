@@ -26,7 +26,8 @@ class SimpleLogin extends PolymerElement {
   // render function
   static get template() {
     return html`
-<style>:host {
+<style>
+:host {
   display: block;
 }
 
@@ -98,7 +99,8 @@ paper-progress {
     margin-top: 16px;
     color: var(--login-error-label-color, var(--error-color));
     @apply --paper-font-menu;
-}</style>
+}
+        </style>
 <div id="loginform">
   <paper-progress disabled="[[!loading]]" indeterminate></paper-progress>
   <div id="loginformcontent">

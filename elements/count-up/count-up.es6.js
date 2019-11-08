@@ -21,7 +21,8 @@ class CountUpElement extends PolymerElement {
   // render function
   static get template() {
     return html`
-<style>:host {
+<style>
+:host {
   display: inline-flex;
   --count-up-color: #000000;
 }
@@ -41,7 +42,7 @@ class CountUpElement extends PolymerElement {
   color: var(--count-up-color);
   @apply --count-up-number;
 }
-</style>
+        </style>
 <div class="wrapper">
   <slot name="prefix"></slot>
   <div id="counter"></div>

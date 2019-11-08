@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 
 export { LrndesignTimeline };
@@ -18,12 +18,13 @@ export { LrndesignTimeline };
  * @polymer
  * @demo demo/index.html
  */
-class LrndesignTimeline extends SimpleColors {
+class LrndesignTimeline extends SimpleColorsPolymer {
   
   // render function
   static get template() {
     return html`
-<style>:host {
+<style>
+:host {
   font-size: 14px;
   font-weight: 100;
   line-height: 160%;
@@ -221,8 +222,9 @@ class LrndesignTimeline extends SimpleColors {
   :host(:not([timeline-size="xs"])) .event:last-of-type[selected] .details {
     border-bottom: 1px solid var(--lrndesign-timeline-background);
   }
-}</style>
-<style include="simple-colors-shared-styles"></style>
+}
+        </style>
+<style include="simple-colors-shared-styles-polymer"></style>
 <article>
   <h1 id="title">[[title]]</h1>
   <slot></slot>

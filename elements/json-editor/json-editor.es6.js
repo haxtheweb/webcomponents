@@ -21,7 +21,8 @@ class JsonEditor extends PolymerElement {
   // render function
   static get template() {
     return html`
-<style>:host {
+<style>
+:host {
   display: block;
   
 }
@@ -55,7 +56,8 @@ paper-textarea {
     -ms-transition: 0.3s linear all;
     -o-transition: 0.3s linear all;
 };
-}</style>
+}
+        </style>
 <paper-textarea 
   label="[[label]]"
   value="{{value}}"

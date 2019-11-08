@@ -3,14 +3,14 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html } from "@polymer/polymer/polymer-element.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import { A11yBehaviors } from "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
 /**
  * `hero-banner`
  * `That thing no one wants to make over and over again yet always does...`
  * @demo demo/index.html
  */
-class HeroBanner extends A11yBehaviors(SimpleColors) {
+class HeroBanner extends A11yBehaviors(SimpleColorsPolymer) {
   constructor() {
     super();
     import("@polymer/paper-button/paper-button.js");
@@ -18,7 +18,7 @@ class HeroBanner extends A11yBehaviors(SimpleColors) {
   }
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles">
+      <style include="simple-colors-shared-styles-polymer">
         :host {
           display: block;
           width: 100%;

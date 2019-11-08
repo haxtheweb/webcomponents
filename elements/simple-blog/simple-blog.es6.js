@@ -2,7 +2,7 @@ import { html } from "@polymer/polymer/polymer-element.js";
 import { HAXCMSPolymerElementTheme } from "@lrnwebcomponents/haxcms-elements/lib/core/HAXCMSPolymerElementTheme.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx/lib/mobx.module.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import "@lrnwebcomponents/simple-blog/lib/simple-blog-listing.js";
 import "@lrnwebcomponents/simple-blog/lib/simple-blog-post.js";
 import "@polymer/iron-pages/iron-pages.js";
@@ -22,7 +22,7 @@ class SimpleBlog extends HAXCMSPolymerElementTheme {
   // render function
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles">
+      <style include="simple-colors-shared-styles-polymer">
         html,
         body {
           background-color: #fafafa;

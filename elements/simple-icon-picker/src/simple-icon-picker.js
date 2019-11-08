@@ -2,8 +2,7 @@
  * Copyright 2019 Penn State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { html, css } from "lit-element/lit-element.js";
 import { SimplePicker } from "@lrnwebcomponents/simple-picker/simple-picker.js";
 import { IronMeta } from "@polymer/iron-meta/iron-meta.js";
 
@@ -11,15 +10,92 @@ import { IronMeta } from "@polymer/iron-meta/iron-meta.js";
  * `simple-icon-picker`
  * `Uses simple-picker to create an icon picker`
  *
- * @microcopy - language worth noting:
- *  -
- *
  * @customElement
- * @polymer
  * @demo demo/index.html
  */
 class SimpleIconPicker extends SimplePicker {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+  //styles function
+  static get styles() {
+    let styles = [
+      css`
+        :host(simple-icon-picker) #collapse {
+          width: 300px;
+        }
+        :host(simple-icon-picker) .row {
+          justify-content: flex-start;
+        }
+        :host(simple-icon-picker) simple-picker-option {
+          flex: 0 0 auto;
+        }
+      `
+    ];
+    if (super.styles) {
+      styles = Object.assign(styles, super.styles);
+    }
+    return styles;
+  }
+
+  // properties available to the custom element for data binding
+  static get properties() {
+    let props = {
+      /**
+       * Allow a null option to be selected?
+       */
+      allowNull: {
+        name: "allowNull",
+        type: Boolean
+      },
+      /**
+        * An array of icons by name: ```
+    [
+      "editor:format-paint",
+      "content-copy",
+      "av:volume-off"
+      
+    ]```
+      */
+      icons: {
+        name: "icons",
+        type: Array
+      },
+
+      /**
+       * The value of the option.
+       */
+      value: {
+        name: "value",
+        type: String,
+        reflect: true
+      },
+
+      /**
+       * the maximum number of options per row
+       */
+      optionsPerRow: {
+        name: "optionsPerRow",
+        type: Number
+      },
+
+      /**
+        * An array of icons by name: ```
+    [
+      "editor:format-paint",
+      "content-copy",
+      "av:volume-off"
+      
+    ]```
+      */
+
+      __iconList: {
+        name: "__iconList",
+        type: Array
+      }
+    };
+    if (super.properties) {
+      props = Object.assign(props, super.properties);
+    }
+    return props;
+  }
 
   /**
    * Store the tag name to make it easier to obtain directly.
@@ -31,30 +107,60 @@ class SimpleIconPicker extends SimplePicker {
   constructor() {
     super();
     this.hideOptionLabels = true;
+    this.allowNull = false;
+    this.icons = [];
+    this.value = null;
+    this.options = [];
+    this.optionsPerRow = 10;
   }
   /**
-   * life cycle, element is afixed to the DOM
+   * LitElement life cycle - property changed callback
    */
-  ready() {
-    super.ready();
-    afterNextRender(this, function() {
-      const iconSets = new IronMeta({ type: "iconset" });
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    changedProperties.forEach((oldValue, propName) => {
       if (
-        this.icons.length === 0 &&
-        typeof iconSets !== typeof undefined &&
-        iconSets.list &&
-        iconSets.list.length
+        ["optionsPerRow", "icons", "allowNull", "__iconList"].includes(propName)
       ) {
-        var iconList = [];
-        iconSets.list.forEach(function(item) {
-          item.getIconNames().forEach(icon => {
-            iconList.push(icon);
-          });
-        });
-        this.__iconList = iconList;
-        this._setSelectedOption();
+        this._getOptions(this[propName], oldValue);
+      }
+      if (propName == "value") {
+        // notify
+        this.dispatchEvent(
+          new CustomEvent("value-changed", {
+            detail: {
+              value: this[propName]
+            }
+          })
+        );
       }
     });
+  }
+  /**
+   * LitElement life cycle - ready callback
+   */
+  firstUpdated(changedProperties) {
+    if (super.firstUpdated) {
+      super.firstUpdated(changedProperties);
+    }
+    const iconSets = new IronMeta({ type: "iconset" });
+    if (
+      this.icons.length === 0 &&
+      typeof iconSets !== typeof undefined &&
+      iconSets.list &&
+      iconSets.list.length
+    ) {
+      var iconList = [];
+      iconSets.list.forEach(function(item) {
+        item.getIconNames().forEach(icon => {
+          iconList.push(icon);
+        });
+      });
+      this.__iconList = iconList;
+      this._setSelectedOption();
+    }
   }
 
   /**
@@ -93,7 +199,7 @@ class SimpleIconPicker extends SimplePicker {
         value: icons[i]
       };
     }
-    this.set("options", options);
+    this.options = options;
   }
   /**
    * Don't set the selection option until there are options rendered

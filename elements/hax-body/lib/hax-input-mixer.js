@@ -1,5 +1,4 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 /**
  * `hax-input-mixer`
  * A context menu that provides common custom-element based authoring options. While
@@ -8,21 +7,13 @@ import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
  * @microcopy - the mental model for this element
  * - context menu - this is a menu of custom-element based buttons and events for use in a larger solution.
  */
-class HaxInputMixer extends PolymerElement {
-  constructor() {
-    super();
-    import("@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js");
-    import("@polymer/paper-input/paper-textarea.js");
-    import("@polymer/paper-input/paper-input.js");
-    import("@polymer/paper-checkbox/paper-checkbox.js");
-    import("@polymer/paper-slider/paper-slider.js");
-    import("@polymer/paper-tooltip/paper-tooltip.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
-    import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
-  }
-  static get template() {
-    return html`
-      <style>
+class HaxInputMixer extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           margin: 0;
@@ -54,31 +45,6 @@ class HaxInputMixer extends PolymerElement {
           height: 40px;
           font-size: 14px;
           margin-bottom: 6px;
-          --paper-input-container: {
-            padding: 0;
-            font-size: 14px;
-          }
-          --paper-input-container-label-floating: {
-            color: var(--hax-color-text);
-            font-size: 12px;
-          }
-          --paper-input-container-underline: {
-            margin: 0;
-          }
-          --paper-input-container-color: var(--hax-color-text);
-          --paper-input-container-focus-color: var(--hax-color-text);
-          --paper-input-container-invalid-color: var(--hax-color-text);
-          --paper-input-container-input-color: var(--hax-color-text);
-          --paper-input-container-shared-input-style: {
-            color: var(--hax-color-text);
-            background: transparent;
-            margin: 0;
-            padding: 0;
-            line-height: 14px;
-            font-size: 14px;
-            outline: none;
-            border: none;
-          }
         }
         .input-method {
           color: var(--hax-color-text);
@@ -91,69 +57,159 @@ class HaxInputMixer extends PolymerElement {
         #updatebutton:hover {
           border: none;
         }
-      </style>
+      `
+    ];
+  }
+  constructor() {
+    super();
+    this.value = null;
+    this.options = {};
+    this.icon = "android";
+    this.inputMethod = null;
+    this.__inputtextarea = false;
+    this.__inputtextfield = false;
+    this.__inputboolean = false;
+    this.__inputcolorpicker = false;
+    this.__inputflipboolean = false;
+    import("@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js");
+    import("@polymer/paper-input/paper-textarea.js");
+    import("@polymer/paper-input/paper-input.js");
+    import("@polymer/paper-checkbox/paper-checkbox.js");
+    import("@polymer/paper-tooltip/paper-tooltip.js");
+    import("@lrnwebcomponents/hax-body/lib/hax-context-item-menu.js");
+    import("@lrnwebcomponents/hax-body/lib/hax-context-item.js");
+  }
+  render() {
+    return html`
+      <custom-style>
+        <style>
+          paper-textarea,
+          paper-input {
+            --paper-input-container: {
+              padding: 0;
+              font-size: 14px;
+            }
+            --paper-input-container-label-floating: {
+              color: var(--hax-color-text);
+              font-size: 12px;
+            }
+            --paper-input-container-underline: {
+              margin: 0;
+            }
+            --paper-input-container-color: var(--hax-color-text);
+            --paper-input-container-focus-color: var(--hax-color-text);
+            --paper-input-container-invalid-color: var(--hax-color-text);
+            --paper-input-container-input-color: var(--hax-color-text);
+            --paper-input-container-shared-input-style: {
+              color: var(--hax-color-text);
+              background: transparent;
+              margin: 0;
+              padding: 0;
+              line-height: 14px;
+              font-size: 14px;
+              outline: none;
+              border: none;
+            }
+          }
+        </style>
+      </custom-style>
       <div class="wrapper">
-        <template is="dom-if" if="[[__inputselect]]">
-          <span class="input-mixer-label">[[label]]</span>
-          <hax-context-item-menu
-            selected-value="{{__selectedValue}}"
-            icon="[[icon]]"
-            id="input"
-          >
-            <slot></slot>
-          </hax-context-item-menu>
-        </template>
+        ${this.__inputselect
+          ? html`
+              <span class="input-mixer-label">${this.label}</span>
+              <hax-context-item-menu
+                selected-value="${this.__selectedValue}"
+                @selected-value-changed="${this.__selectedValueChanged}"
+                .icon="${this.icon}"
+                id="input"
+              >
+                <slot></slot>
+              </hax-context-item-menu>
+            `
+          : html``}
         <span class="input-method">
-          <template is="dom-if" if="[[__inputtextarea]]">
-            <paper-textarea
-              id="input"
-              label="[[label]]"
-              value="{{value}}"
-              auto-validate=""
-              pattern="[[validation]]"
-              required="[[required]]"
-            ></paper-textarea>
-          </template>
-          <template is="dom-if" if="[[__inputtextfield]]">
-            <paper-input
-              id="input"
-              type="[[validationType]]"
-              label="[[label]]"
-              value="{{value}}"
-              auto-validate=""
-              pattern="[[validation]]"
-              required="[[required]]"
-            ></paper-input>
-          </template>
-          <template is="dom-if" if="[[__inputboolean]]">
-            <paper-checkbox id="input" checked="{{value}}"
-              >[[label]]</paper-checkbox
-            >
-          </template>
-          <template is="dom-if" if="[[__inputflipboolean]]">
-            <paper-checkbox id="input" checked="{{value}}"
-              >[[label]]</paper-checkbox
-            >
-          </template>
-          <template is="dom-if" if="[[__inputcolorpicker]]">
-            <span>[[label]]</span>
-            <simple-colors-picker
-              id="input"
-              value="{{value}}"
-            ></simple-colors-picker>
-          </template>
+          ${this.__inputtextarea
+            ? html`
+                <paper-textarea
+                  id="input"
+                  label="${this.label}"
+                  .value="${this.value}"
+                  @value-changed="${this.valueChanged}"
+                  auto-validate=""
+                  pattern="${this.validation}"
+                  required="${this.required}"
+                ></paper-textarea>
+              `
+            : html``}
+          ${this.__inputtextfield
+            ? html`
+                <paper-input
+                  id="input"
+                  type="${this.validationType}"
+                  label="${this.label}"
+                  .value="${this.value}"
+                  @value-changed="${this.valueChanged}"
+                  auto-validate=""
+                  pattern="${this.validation}"
+                  required="${this.required}"
+                ></paper-input>
+              `
+            : html``}
+          ${this.__inputboolean
+            ? html`
+                <paper-checkbox
+                  id="input"
+                  .checked="${this.value}"
+                  @checked-changed="${this.valueChanged}"
+                  >${this.label}</paper-checkbox
+                >
+              `
+            : html``}
+          ${this.__inputflipboolean
+            ? html`
+                <paper-checkbox
+                  id="input"
+                  .checked="${this.value}"
+                  @checked-changed="${this.valueChanged}"
+                  >${this.label}</paper-checkbox
+                >
+              `
+            : html``}
+          ${this.__inputcolorpicker
+            ? html`
+                <span>${this.label}</span>
+                <simple-colors-picker
+                  id="input"
+                  .value="${this.value}"
+                  @value-changed="${this.valueChanged}"
+                ></simple-colors-picker>
+              `
+            : html``}
         </span>
         <paper-tooltip for="input" position="top" offset="14">
-          [[description]]
+          ${this.description}
         </paper-tooltip>
         <hax-context-item
           id="updatebutton"
           icon="subdirectory-arrow-right"
-          label\$="Update [[label]]"
+          label="Update ${this.label}"
           event-name="hax-update-tap"
         ></hax-context-item>
       </div>
     `;
+  }
+  __selectedValueChanged(e) {
+    this.__selectedValue = e.detail.value;
+  }
+  /**
+   * value changes but trap for null to ensure it's mapped to an empty string
+   */
+  valueChanged(e) {
+    if (typeof e.detail.value !== typeof undefined) {
+      this.value = e.detail.value;
+    } else {
+      this.value = e.detail;
+    }
   }
   static get tag() {
     return "hax-input-mixer";
@@ -164,104 +220,110 @@ class HaxInputMixer extends PolymerElement {
        * value, where the magic happens.
        */
       value: {
-        type: String,
-        value: null
+        type: String
       },
       /**
        * Label for the input
        */
       label: {
         type: String,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Optional regex Validation for input and textarea fields
        */
       validation: {
         type: String,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Optional input type validation; use on input field
        */
       validationType: {
         type: String,
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "validation-type"
       },
       /**
        * Required; used on input and textarea fields
        */
       required: {
         type: Boolean,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * Options for the input if it's a select of some form
        */
       options: {
-        type: Object,
-        value: {},
-        reflectToAttribute: true
+        type: Object
       },
       /**
        * Optional icon that represents the item mixing.
        */
       icon: {
         type: String,
-        value: "android",
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * longer description for the input
        */
       description: {
         type: String,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * longer description for the input
        */
       inputMethod: {
         type: String,
-        value: null,
-        reflectToAttribute: true,
-        observer: "_inputMethodChanged"
+        reflect: true
       },
       /**
        * longer description for the input
        */
       propertyToBind: {
         type: String,
-        reflectToAttribute: true
+        reflect: true,
+        attribute: "property-to-bind"
       },
       /**
        * slot to bind input back to
        */
       slotToBind: {
         type: String,
-        reflectToAttribute: true
-      }
+        reflect: true,
+        attribute: "slot-to-bind"
+      },
+      __inputflipboolean: { type: Boolean },
+      __inputcolorpicker: { type: Boolean },
+      __inputboolean: { type: Boolean },
+      __inputtextfield: { type: Boolean },
+      __inputtextarea: { type: Boolean }
     };
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "inputMethod") {
+        this._inputMethodChanged(this[propName], oldValue);
+      }
+    });
   }
   /**
    * Ensure our weird data binding for templates is set initially.
    */
-  ready() {
-    super.ready();
+  firstUpdated(changedProperties) {
     // prime methods even though invisible most likely
     this._resetInputMethods();
-    afterNextRender(this, function() {
-      this.addEventListener(
-        "hax-context-item-selected",
-        this._haxContextOperation.bind(this)
-      );
-    });
+    this.addEventListener(
+      "hax-context-item-selected",
+      this._haxContextOperation.bind(this)
+    );
   }
   /**
    * Input method changes, allow our templates to rebind correctly.
    */
   _inputMethodChanged(newValue, oldValue) {
-    if (newValue != null && typeof oldValue !== typeof undefined) {
+    if (newValue != null) {
       let method = newValue;
       let methods = this.validInputMethods();
       // ensure this is a valid method of input
@@ -289,13 +351,14 @@ class HaxInputMixer extends PolymerElement {
         // try and force cursor to focus on this element
         setTimeout(() => {
           if (
+            this.shadowRoot.querySelector("#input") &&
             typeof this.shadowRoot.querySelector("#input").hideMenu ===
-            "function"
+              "function"
           ) {
             this.shadowRoot.querySelector("#input").hideMenu();
           }
           this.shadowRoot.querySelector("#input").focus();
-        }, 200);
+        }, 500);
       }
     }
   }

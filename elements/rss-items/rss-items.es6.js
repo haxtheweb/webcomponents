@@ -6,7 +6,6 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
@@ -51,7 +50,8 @@ class RssItems extends PolymerElement {
   // render function
   static get template() {
     return html`
-<style>:host([hidden]) {
+<style>
+:host([hidden]) {
   display: none;
 }
 :host {
@@ -156,7 +156,8 @@ article {
   article:nth-of-type(3n) {
     margin-right: 0;
   }
-}</style>
+}
+        </style>
 <iron-ajax id="rssajax" url="[[url]]" handle-as="xml" last-response="{{xml}}"></iron-ajax>
 <dom-repeat items="[[items]]">
   <template>
@@ -388,13 +389,17 @@ article {
         : text;
     }
   }
+  // simple path from a url modifier
+  pathFromUrl(url) {
+    return url.substring(0, url.lastIndexOf("/") + 1);
+  }
   constructor() {
     super();
     import("@polymer/iron-image/iron-image.js");
     import("@polymer/paper-icon-button/paper-icon-button.js");
     import("@polymer/iron-icons/iron-icons.js");
     const name = "x2js";
-    const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+    const basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
     const location = `${basePath}lib/x2js.js`;
     window.ESGlobalBridge.requestAvailability();
     window.ESGlobalBridge.instance.load(name, location);

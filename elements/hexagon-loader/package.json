@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/hexagon-loader",
   "wcfactory": {
     "className": "HexagonLoader",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "hexagon-loader",
     "generator-wcfactory-version": "0.5.0",
     "useHAX": false,
@@ -39,7 +39,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@polymer/polymer": "^3.2.0"
+    "lit-element": "^2.2.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",

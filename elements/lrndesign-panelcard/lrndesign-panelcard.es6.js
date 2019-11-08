@@ -3,21 +3,21 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html } from "@polymer/polymer/polymer-element.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 /**
 `lrndesign-panelcard`
 A LRN element
 
 * @demo demo/index.html
 */
-class LrndesignPanelcard extends SimpleColors {
+class LrndesignPanelcard extends SimpleColorsPolymer {
   constructor() {
     super();
     import("@polymer/paper-card/paper-card.js");
   }
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles">
+      <style include="simple-colors-shared-styles-polymer">
         :host {
           display: inline-block;
           position: relative;

@@ -18,7 +18,8 @@ class FluidType extends HTMLElement {
   // render function
   get html() {
     return `
-<style>:host {
+<style>
+:host {
   --fluid-type-min-size: 1;
   --fluid-type-max-size: 2;
   --fluid-type-min-screen: 20;
@@ -28,7 +29,8 @@ class FluidType extends HTMLElement {
     (var(--fluid-type-min-size) * 1rem) + (var(--fluid-type-max-size) - var(--fluid-type-min-size)) * (100vw - (var(--fluid-type-min-screen) * 1rem)) /
       (var(--fluid-type-max-screen) - var(--fluid-type-min-screen))
   );
-}</style>
+}
+        </style>
 <slot></slot>`;
   }
 

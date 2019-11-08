@@ -50,7 +50,8 @@ class SimpleModal extends PolymerElement {
   // render function
   static get template() {
     return html`
-<style>:host {
+<style>
+:host {
   display: block;
 }
 
@@ -155,7 +156,8 @@ h2 {
   color: var(--simple-modal-button-color,--simple-modal-buttons-color);
   background-color: var(--simple-modal-button-background,--simple-modal-buttons-background);
   @apply --simple-modal-button;
-}</style>
+}
+        </style>
 <paper-dialog id="dialog" 
   always-on-top
   aria-describedby="simple-modal-content"

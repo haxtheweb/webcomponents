@@ -20,14 +20,15 @@ class MdBlock extends PolymerElement {
   // render function
   static get template() {
     return html`
-<style>:host {
+<style>
+:host {
   display: block;
 }
 
 :host([hidden]) {
   display: none;
 }
-</style>
+        </style>
 <div>
 <marked-element markdown="[[markdown]]">
     <div slot="markdown-html"></div>

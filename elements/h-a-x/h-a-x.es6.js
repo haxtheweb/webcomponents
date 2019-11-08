@@ -19,7 +19,8 @@ class HAX extends HTMLElement {
   // render function
   get html() {
     return `
-<style>:host {
+<style>
+:host {
   display: block;
   font-size: var(--haxcms-base-styles-body-font-size, 16px);
   font-family: var(--haxcms-base-styles-body-font-family, 'Noto Serif', serif);
@@ -95,7 +96,8 @@ ul,
 ol {
   padding-left: var(--hax-base-styles-list-padding-left, 20px);
   padding-left: var(--hax-base-styles-list-margin-left, 20px);
-}</style>
+}
+        </style>
 <hax-body>
     <slot></slot>
 </hax-body>`;
@@ -179,6 +181,7 @@ ol {
    * which HAX will react to an load the data it finds.
    */
   storeReady(e) {
+    console.log("ready");
     if (e.detail) {
       window.HaxStore.instance.appStore = JSON.parse(
         this.getAttribute("app-store")

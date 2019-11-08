@@ -19,10 +19,10 @@ import "@lrnwebcomponents/simple-popover/simple-popover.js";
  */
 class SimpleBlogCard extends LitElement {
   
-  // render function
-  render() {
-    return html`
-<style>
+  //styles function
+  static get styles() {
+    return  [
+      css`
 :host {
   display:block;
 }
@@ -34,7 +34,14 @@ simple-popover {
 
 paper-card {
   height: auto !important;
-}</style>
+}
+      `
+    ];
+  }
+  // render function
+  render() {
+    return html`
+
 <paper-card
   .alt="${this.alt}"
   image="${this.image}"

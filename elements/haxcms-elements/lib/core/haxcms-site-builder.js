@@ -93,7 +93,7 @@ class HAXCMSSiteBuilder extends LitElement {
         @last-error-changed="${this._updateLastError}"
       ></iron-ajax>
       <div id="slot"><slot></slot></div>
-      <simple-colors></simple-colors>
+      <simple-colors-polymer></simple-colors-polymer>
     `;
   }
   /**

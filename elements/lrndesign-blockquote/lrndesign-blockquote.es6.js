@@ -1,5 +1,4 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import { SchemaBehaviors } from "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@polymer/paper-styles/shadow.js";
 /**
@@ -626,6 +625,10 @@ class LrndesignBlockquote extends SchemaBehaviors(PolymerElement) {
         "background: url(" + newValue + ") no-repeat center center";
     }
   }
+  // simple path from a url modifier
+  pathFromUrl(url) {
+    return url.substring(0, url.lastIndexOf("/") + 1);
+  }
   /**
    * Notice display mode change activated so load the font
    */
@@ -634,7 +637,7 @@ class LrndesignBlockquote extends SchemaBehaviors(PolymerElement) {
       this.shadowRoot.querySelector("#wrap").style.cssText = "";
       this.shadowRoot.querySelector("#thumb").style.cssText = "";
       let style = document.createElement("style");
-      let basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+      let basePath = this.pathFromUrl(decodeURIComponent(import.meta.url));
       style.innerHTML = `@font-face {
         font-family: 'Chikarego';
         font-display: swap;

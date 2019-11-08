@@ -95,14 +95,14 @@ class HaxAppSearchResult extends LitElement {
         <iron-image
           alt=""
           class="image"
-          src="${this.resultData.image}"
+          src="${this.image}"
           preload=""
           fade=""
           sizing="cover"
         ></iron-image>
         <div class="detail-wrapper">
-          <div class="title">${this.resultData.title}</div>
-          <div class="details">${this.resultData.details}</div>
+          <div class="title">${this.title}</div>
+          <div class="details">${this.details}</div>
         </div>
       </paper-button>
     `;
@@ -112,12 +112,20 @@ class HaxAppSearchResult extends LitElement {
   }
   static get properties() {
     return {
-      /**
-       * Preview object from hax-app originally.
-       */
-      resultData: {
-        type: Object,
-        attribute: "result-data"
+      image: {
+        type: String
+      },
+      title: {
+        type: String
+      },
+      details: {
+        type: String
+      },
+      map: {
+        type: Object
+      },
+      type: {
+        type: String
       }
     };
   }
@@ -126,8 +134,8 @@ class HaxAppSearchResult extends LitElement {
    * Handle media item selected.
    */
   _itemSelected(e) {
-    var map = this.resultData.map;
-    var gizmoType = this.resultData.type;
+    var map = this.map;
+    var gizmoType = this.type;
     // sanity check as well as guessing based on type if we absolutely have to
     if (
       (gizmoType === null || gizmoType === "") &&

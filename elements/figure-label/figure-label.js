@@ -15,10 +15,10 @@ import { LitElement, html, css } from "lit-element/lit-element.js";
  * @demo demo/index.html
  */
 class FigureLabel extends LitElement {
-  // render function
-  render() {
-    return html`
-      <style>
+  //styles function
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
         }
@@ -43,7 +43,12 @@ class FigureLabel extends LitElement {
           padding: 10.8px 13.5px 10.8px;
           font-size: 13.5px;
         }
-      </style>
+      `
+    ];
+  }
+  // render function
+  render() {
+    return html`
       <div id="wrap">
         <div id="title">${this.title}</div>
         <div id="description">${this.description}</div>

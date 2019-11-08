@@ -4,7 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { afterNextRender } from "@polymer/polymer/lib/utils/render-status.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColorsPolymer } from "@lrnwebcomponents/simple-colors/lib/simple-colors-polymer.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 /**
@@ -19,7 +19,7 @@ import "@polymer/polymer/lib/elements/dom-repeat.js";
  * @polymerLegacy
  * @demo demo/index.html
  */
-class CsvRender extends SimpleColors {
+class CsvRender extends SimpleColorsPolymer {
   constructor() {
     super();
     import("@lrnwebcomponents/hexagon-loader/hexagon-loader.js");
@@ -36,7 +36,7 @@ class CsvRender extends SimpleColors {
   }
   static get template() {
     return html`
-      <style include="simple-colors-shared-styles">
+      <style include="simple-colors-shared-styles-polymer">
         :host {
           display: block;
         }

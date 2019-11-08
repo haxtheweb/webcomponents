@@ -1,9 +1,0 @@
-{
-  "tth": {
-    "name": "tth",
-    "type": "String",
-    "value": "",
-    "reflectToAttribute": false,
-    "observer": "_tthChanged"
-  }
-}

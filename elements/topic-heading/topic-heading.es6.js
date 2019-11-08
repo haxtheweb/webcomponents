@@ -22,7 +22,8 @@ class TopicHeading extends PolymerElement {
   // render function
   static get template() {
     return html`
-<style>:host {
+<style>
+:host {
   display: block;
 }
 
@@ -49,7 +50,8 @@ iron-icon {
   line-height: 16px;
   vertical-align: bottom;
   @apply --topic-heading-icon;
-}</style>
+}
+        </style>
 <iron-icon icon="[[icon]]"></iron-icon><relative-heading text="[[title]]"></relative-heading>`;
   }
 

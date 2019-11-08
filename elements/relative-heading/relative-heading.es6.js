@@ -15,7 +15,8 @@ class RelativeHeading extends PolymerElement {
   // render function
   static get template() {
     return html`
-<style>:host {
+<style>
+:host {
   display: block;
 }
 :host([hidden]) {
@@ -46,7 +47,8 @@ h5 {
 }
 h6 {
   @apply --relative-heading-h6;
-}</style>
+}
+        </style>
 <h1 aria-live="polite" hidden="[[!__isLevel1]]">[[text]]</h1>
 <h2 aria-live="polite" hidden="[[!__isLevel2]]">[[text]]</h2>
 <h3 aria-live="polite" hidden="[[!__isLevel3]]">[[text]]</h3>
