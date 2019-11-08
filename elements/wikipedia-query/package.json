@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/wikipedia-query",
   "wcfactory": {
     "className": "WikipediaQuery",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "wikipedia-query",
     "generator-wcfactory-version": "0.3.2",
     "useHAX": true,

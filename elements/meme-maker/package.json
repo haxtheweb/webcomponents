@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/meme-maker",
   "wcfactory": {
     "className": "MemeMaker",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "meme-maker",
     "generator-wcfactory-version": "0.3.2",
     "useHAX": true,

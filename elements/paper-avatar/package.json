@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/paper-avatar",
   "wcfactory": {
     "className": "PaperAvatar",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "paper-avatar",
     "generator-wcfactory-version": "0.3.2",
     "useHAX": true,

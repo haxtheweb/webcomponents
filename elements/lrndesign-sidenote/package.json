@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/lrndesign-sidenote",
   "wcfactory": {
     "className": "LrndesignSidenote",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "lrndesign-sidenote",
     "generator-wcfactory-version": "0.3.1",
     "useHAX": true,
