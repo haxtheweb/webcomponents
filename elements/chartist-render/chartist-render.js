@@ -1166,11 +1166,10 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties,
-
+      ...super.properties
       /**
        * The unique identifier of the chart.
-       */
+       */,
       id: {
         type: String
       },

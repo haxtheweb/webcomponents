@@ -40,12 +40,11 @@ class AbsolutePositionBehavior extends LitElement {
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      ...super.properties,
-
+      ...super.properties
       /**
        * Element is positioned from connected to disconnected?
        * Otherwise setPosition and unsetPosition must be called manually.
-       */
+       */,
       auto: {
         type: Boolean
       },

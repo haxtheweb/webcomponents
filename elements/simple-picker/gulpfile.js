@@ -41,8 +41,8 @@ gulp.task("merge", () => {
           props = props.replace(/\"type\": \"(\w+)\"/g, '"type": $1');
           props = props.replace(/\{([\s\n]*)/, "{$1...super.properties$1");
           props = props.replace(
-            /([\s\n]*\/\*[\s\S]*?\*\/)?([\s\n]*)*(\"?\w*\"?[\s\n]*\:[\s\n]*\{)/,
-            ",$2$1$2$3"
+            /(\/\*[\s\S]*?\*\/)|(\/\/.*)?([\s\n]*)*(\"?\w*\"?[\s\n]*\:[\s\n]*\{)/,
+            ",$3$1$2$3$4"
           );
           let cssResult = "";
           if (

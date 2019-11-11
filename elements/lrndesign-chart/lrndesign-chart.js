@@ -800,7 +800,9 @@ class LrndesignChart extends SimpleColors {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Location of the CSV file.
        */
@@ -836,10 +838,6 @@ class LrndesignChart extends SimpleColors {
         type: String
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   constructor() {
