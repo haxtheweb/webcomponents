@@ -51,8 +51,9 @@ Custom property | Description | Default
 `--chartist-color-label-o` | color for 15th series label |  `--chartist-label-color`
 
  * @customElement
+ * @polymer
  * @extends SchemaBehaviors
- * @demo demo/index.html
+ * @demo demo/index.html 
  *
  */
 class ChartistRender extends SchemaBehaviors(LitElement) {
@@ -1164,7 +1165,9 @@ class ChartistRender extends SchemaBehaviors(LitElement) {
 
   // properties available to the custom element for data binding
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * The unique identifier of the chart.
        */
@@ -1269,10 +1272,6 @@ Container class	Ratio
         attribute: "show-table"
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   constructor() {
