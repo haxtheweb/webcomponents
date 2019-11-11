@@ -16,7 +16,9 @@
 export const displayBehaviors = function(SuperClass) {
   return class extends SuperClass {
     static get properties() {
-      let props = {
+      return {
+        ...super.properties,
+
         /**
          * Add borders to table and table cells.
          */
@@ -152,10 +154,6 @@ export const displayBehaviors = function(SuperClass) {
           computed: "_getTfoot(data,footer)"
         }
       };
-      if (super.properties) {
-        props = Object.assign(props, super.properties);
-      }
-      return props;
     }
 
     /**

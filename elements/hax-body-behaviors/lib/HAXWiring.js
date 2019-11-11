@@ -1191,16 +1191,14 @@ export const HAXElement = function(SuperClass) {
       this.HAXWiring = new HAXWiring();
     }
     static get properties() {
-      let props = {
+      return {
+        ...super.properties,
+
         /**
          * haxProperties
          */
         haxProperties: window.HAXWiring.haxProperties
       };
-      if (super.properties) {
-        props = Object.assign(props, super.properties);
-      }
-      return props;
     }
     /**
      * Setter to bridge private haxProperties setter.

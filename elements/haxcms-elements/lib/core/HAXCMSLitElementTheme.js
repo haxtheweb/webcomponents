@@ -14,7 +14,9 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(LitElement) {
     this.isLoggedIn = false;
   }
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Class for the color
        */
@@ -58,10 +60,6 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(LitElement) {
         type: Object
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
   // LitElement life cycle
   firstUpdated(changedProperties) {

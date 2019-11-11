@@ -73,7 +73,9 @@ class CitationElement extends SchemaBehaviors(PolymerElement) {
   }
 
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Title of the work.
        */
@@ -148,10 +150,6 @@ class CitationElement extends SchemaBehaviors(PolymerElement) {
         computed: "_generateLicenseLink(source)"
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
   /**
    * Generate a license link whenever we have a source
