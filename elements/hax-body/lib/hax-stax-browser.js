@@ -15,7 +15,6 @@ class HaxStaxBrowser extends LitElement {
         }
         hax-stax-browser-item {
           margin: 10px;
-          -webkit-transition: 0.3s all linear;
           transition: 0.3s all linear;
         }
       `

@@ -29,7 +29,6 @@ class HAXCMSSiteBuilder extends LitElement {
           display: block;
         }
         :host #slot {
-          transition: all 0.2s ease-in-out;
           background-color: var(--haxcms-color, white);
           opacity: 0.2;
           visibility: hidden;
@@ -38,7 +37,6 @@ class HAXCMSSiteBuilder extends LitElement {
           display: inline-block !important;
           margin-left: 50vw;
           height: 100vh;
-          transition: 1s linear margin;
           pointer-events: none;
           opacity: 0.5;
           width: 100vw;

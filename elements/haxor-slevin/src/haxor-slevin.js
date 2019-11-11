@@ -176,10 +176,6 @@ class HaxorSlevin extends HAXCMSLitElementTheme {
           z-index: 100;
           opacity: 1;
           transition: 0.2s opacity linear;
-          -webkit-transition: 0.2s opacity linear;
-          -moz-transition: 0.2s opacity linear;
-          -ms-transition: 0.2s opacity linear;
-          -o-transition: 0.2s opacity linear;
         }
         .annoy-user.disable-items {
           pointer-events: none;

@@ -16,7 +16,6 @@ class HaxGizmoBrowser extends LitElement {
         }
         hax-gizmo-browser-item {
           margin: 5px;
-          -webkit-transition: 0.2s all linear;
           transition: 0.2s all linear;
           display: inline-flex;
         }

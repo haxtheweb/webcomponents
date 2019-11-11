@@ -67,7 +67,6 @@ class HAXCMSSlideTheme extends HAXCMSPolymerElementTheme {
           background-color: rgba(0, 0, 0, 1);
         }
         .controls {
-          transition: all 0.2s ease-in-out;
           background-color: rgba(0, 0, 0, 0.8);
           color: white;
           display: inline-flex;

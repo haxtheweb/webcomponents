@@ -25,7 +25,6 @@ class HAXCMSSiteEditorUI extends LitElement {
           left: 0;
           top: 0;
           bottom: 0;
-          transition: 0.8s left linear;
           background-color: var(--haxcms-system-bg, #37474f);
           z-index: 10000;
           border-right: 2px solid black;
@@ -340,6 +339,15 @@ class HAXCMSSiteEditorUI extends LitElement {
       userPicture: {
         type: String,
         attribute: "user-picture"
+      },
+      __editIcon: {
+        type: String
+      },
+      __editText: {
+        type: String
+      },
+      __settingsText: {
+        type: String
       },
       /**
        * small visual lock that events break on initial paint

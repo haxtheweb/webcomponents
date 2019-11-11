@@ -78,6 +78,13 @@ class SimpleFieldsForm extends LitElement {
     ).then(data => {
       this.loading = false;
       this.loadResponse = data;
+      this.dispatchEvent(
+        new CustomEvent("simple-fields-form-data-loaded", {
+          detail: {
+            value: data
+          }
+        })
+      );
     });
   }
   async fetchData(path, method, headers, body) {
