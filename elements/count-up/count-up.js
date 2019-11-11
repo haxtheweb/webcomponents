@@ -127,7 +127,9 @@ class CountUpElement extends PolymerElement {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Starting point for counting
        */
@@ -219,10 +221,6 @@ class CountUpElement extends PolymerElement {
         reflectToAttribute: true
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

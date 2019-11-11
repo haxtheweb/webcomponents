@@ -176,7 +176,9 @@ class FullScreenImage extends PolymerElement {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       title: {
         name: "title",
         type: String,
@@ -199,10 +201,6 @@ class FullScreenImage extends PolymerElement {
         observer: false
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

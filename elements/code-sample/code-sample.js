@@ -154,6 +154,7 @@ class CodeSample extends PolymerElement {
   static get properties() {
     return {
       ...super.properties,
+
       // Set to true to show a copy to clipboard button.
       copyClipboardButton: {
         type: Boolean,

@@ -38,7 +38,9 @@ class Hal9000 extends PolymerElement {
 
   // properties available to the custom element for data binding
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Commands to listen for and take action on
        */
@@ -112,10 +114,6 @@ class Hal9000 extends PolymerElement {
         value: "en-US"
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

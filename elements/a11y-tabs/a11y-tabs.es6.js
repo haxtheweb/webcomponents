@@ -182,7 +182,7 @@ render(){return html`
   <slot></slot>
 </div>`}// haxProperty definition
 static get haxProperties(){return}// properties available to the custom element for data binding
-static get properties(){let props={/**
+static get properties(){return{...super.properties,/**
    * the id of the active tab
    */activeTab:{type:String,attribute:"active-tab"},/**
    * whether the tabbed interface is disabled
@@ -210,7 +210,7 @@ static get properties(){let props={/**
    * an array of tab data based on slotted `a11y-tab` elements
    */__items:{type:Array},/**
    * a mutation observer to monitor slotted `a11y-tab` elements
-   */__observer:{type:Object}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
+   */__observer:{type:Object}}}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"a11y-tabs"}constructor(){super();let callback=(mutationsList,observer)=>this.updateItems();this.activeTab=null;this.disabled=!1;this.hidden=!1;this.iconBreakpoint=400;this.id=null;this.layoutBreakpoint=600;this.responsiveSize="xs";this.vertical=!1;this.__hasIcons=!1;this.__items=[];this.updateItems();this.__observer=new MutationObserver(callback);this._breakpointChanged();window.ResponsiveUtility.requestAvailability();this.__observer.observe(this,{attributes:!1,childList:!0,subtree:!1});this.addEventListener("a11y-tab-changed",e=>this.updateItems())}/**

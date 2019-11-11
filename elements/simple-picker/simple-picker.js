@@ -430,7 +430,9 @@ class SimplePicker extends LitElement {
 
   // properties available to the custom element for data binding
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * llow a null value?
        * Default behavior/false will select first option and set value accordingly.
@@ -576,10 +578,6 @@ class SimplePicker extends LitElement {
         type: Object
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

@@ -26,7 +26,10 @@ class ToElement extends HTMLElement {
 
   // properties available to the custom element for data binding
     static get properties() {
-    let props = {
+    return {
+  
+  ...super.properties,
+  
   /**
    * object in question to clone and turn into a custom element
    */
@@ -67,10 +70,6 @@ class ToElement extends HTMLElement {
   }
 }
 ;
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

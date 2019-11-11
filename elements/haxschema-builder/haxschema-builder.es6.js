@@ -86,7 +86,10 @@ code-editor {
   }
   // properties available to the custom element for data binding
     static get properties() {
-    let props = {
+    return {
+  
+  ...super.properties,
+  
   /**
    * schema to extract for whatever you wanted it for
    */
@@ -128,10 +131,6 @@ code-editor {
   }
 }
 ;
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

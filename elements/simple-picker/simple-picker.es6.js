@@ -309,7 +309,7 @@ render(){return html`
     </div>
   </div>
 </div>`}// properties available to the custom element for data binding
-static get properties(){let props={/**
+static get properties(){return{...super.properties,/**
    * llow a null value?
    * Default behavior/false will select first option and set value accordingly.
    */allowNull:{type:Boolean,reflect:!0,attribute:"allow-null"},/**
@@ -363,7 +363,7 @@ static get properties(){let props={/**
 ]`
    */__options:{type:Array},/**
    * Selected option based on value of picker
-   */__selectedOption:{type:Object}};if(super.properties){props=Object.assign(props,super.properties)}return props}/**
+   */__selectedOption:{type:Object}}}/**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */static get tag(){return"simple-picker"}// life cycle

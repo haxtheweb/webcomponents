@@ -241,7 +241,9 @@ class A11yTabs extends LitElement {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * the id of the active tab
        */
@@ -324,10 +326,6 @@ class A11yTabs extends LitElement {
         type: Object
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

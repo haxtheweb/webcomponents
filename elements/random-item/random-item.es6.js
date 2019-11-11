@@ -72,7 +72,10 @@ ${this.dataPoint}`;
   }
   // properties available to the custom element for data binding
   static get properties() {
-    let props = {
+    return {
+  
+  ...super.properties,
+  
   "source": {
     "name": "source",
     "type": String
@@ -83,10 +86,6 @@ ${this.dataPoint}`;
   }
 }
 ;
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

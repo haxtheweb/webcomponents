@@ -345,7 +345,10 @@ paper-card.card-high-detail {
 
   // properties available to the custom element for data binding
     static get properties() {
-    let props = {
+    return {
+  
+  ...super.properties,
+  
   /**
    * Which layout to the outline to display
    */
@@ -446,10 +449,6 @@ paper-card.card-high-detail {
   }
 }
 ;
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

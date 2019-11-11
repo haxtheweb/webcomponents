@@ -69,7 +69,10 @@ paper-textarea {
 
   // properties available to the custom element for data binding
     static get properties() {
-    let props = {
+    return {
+  
+  ...super.properties,
+  
   /**
    * label for the text area
    */
@@ -135,10 +138,6 @@ paper-textarea {
   }
 }
 ;
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

@@ -551,7 +551,10 @@ html {
 
   // properties available to the custom element for data binding
     static get properties() {
-    let props = {
+    return {
+  
+  ...super.properties,
+  
   /**
    * The colors object.
    * Each color contains an array of shades as hex codes from lightest to darkest.
@@ -580,10 +583,6 @@ html {
   }
 }
 ;
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   constructor() {

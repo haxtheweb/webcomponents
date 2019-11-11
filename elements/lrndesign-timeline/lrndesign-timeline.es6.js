@@ -346,7 +346,10 @@ class LrndesignTimeline extends SimpleColorsPolymer {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    let props = {
+    return {
+  
+  ...super.properties,
+  
   /**
    * the title of the timeline
    */
@@ -392,10 +395,6 @@ class LrndesignTimeline extends SimpleColorsPolymer {
   }
 }
 ;
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

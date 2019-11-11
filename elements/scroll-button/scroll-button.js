@@ -117,7 +117,9 @@ class ScrollButton extends PolymerElement {
   }
   // properties available to the custom element for data binding
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       target: {
         name: "target",
         type: Object
@@ -138,10 +140,6 @@ class ScrollButton extends PolymerElement {
         value: "top"
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

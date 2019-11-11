@@ -117,7 +117,10 @@ paper-tooltip {
   }
   // properties available to the custom element for data binding
     static get properties() {
-    let props = {
+    return {
+  
+  ...super.properties,
+  
   "target": {
     "name": "target",
     "type": Object
@@ -139,10 +142,6 @@ paper-tooltip {
   }
 }
 ;
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

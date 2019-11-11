@@ -174,7 +174,10 @@ iron-icon {
 
   // properties available to the custom element for data binding
     static get properties() {
-    let props = {
+    return {
+  
+  ...super.properties,
+  
   /**
    * A items list of JSON Outline Schema Items
    */
@@ -202,10 +205,6 @@ iron-icon {
   }
 }
 ;
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
   constructor() {
     super();

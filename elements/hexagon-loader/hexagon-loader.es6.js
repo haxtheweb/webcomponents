@@ -439,7 +439,10 @@ hex-a-gon:nth-of-type(37) {
 
   // properties available to the custom element for data binding
     static get properties() {
-    let props = {
+    return {
+  
+  ...super.properties,
+  
   /**
    * Color to make the loader
    */
@@ -479,10 +482,6 @@ hex-a-gon:nth-of-type(37) {
   }
 }
 ;
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   /**

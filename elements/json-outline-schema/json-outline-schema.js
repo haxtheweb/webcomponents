@@ -51,11 +51,7 @@ class JsonOutlineSchema extends HTMLElement {
 
   // properties available to the custom element for data binding
   static get properties() {
-    let props = {};
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
+    return { ...super.properties };
   }
 
   /**
