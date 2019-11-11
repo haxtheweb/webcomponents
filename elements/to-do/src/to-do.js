@@ -86,7 +86,9 @@ class ToDo extends SchemaBehaviors(PolymerElement) {
     return ["_valueChanged(items.*)"];
   }
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Allow for hiding the input form for new data.
        */
@@ -120,10 +122,6 @@ class ToDo extends SchemaBehaviors(PolymerElement) {
         notify: true
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
   /**
    * Ensure the values change.
