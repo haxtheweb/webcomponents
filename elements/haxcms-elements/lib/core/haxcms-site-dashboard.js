@@ -53,7 +53,6 @@ class HAXCMSSiteDashboard extends LitElement {
           height: 100vh;
           width: 50vw;
           margin-left: -50vw;
-          transition: 0.8s linear margin;
           border-right: 2px solid #17271f;
           overflow: scroll;
           background-color: var(--haxcms-dashboard-bg, #37474f);
@@ -74,7 +73,6 @@ class HAXCMSSiteDashboard extends LitElement {
           width: 48px;
           padding: 8px;
           border-radius: 50%;
-          transition: 0.3s ease-in-out all;
         }
         #homebutton paper-icon-button:hover,
         #homebutton paper-icon-button:active,
@@ -218,6 +216,7 @@ class HAXCMSSiteDashboard extends LitElement {
       <div class="fields-wrapper">
         <simple-fields-form
           id="siteform"
+          autoload
           .headers="${this.headers}"
           .body="${this.body}"
           load-endpoint="${this.loadEndpoint}"
@@ -301,7 +300,6 @@ class HAXCMSSiteDashboard extends LitElement {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "dashboardOpened" && this.dashboardOpened) {
         // API function so we refresh new data every time
-        this.shadowRoot.querySelector("#siteform").loadData();
         this.removeAttribute("aria-hidden");
         this.removeAttribute("tabindex");
       }

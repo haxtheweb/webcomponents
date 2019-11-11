@@ -2,32 +2,24 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
+/**
+ * @deprecatedApply - required for @apply / invoking @apply css var convention
+ */
+import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `site-rss-button`
  * `A button that references RSS feeds in a standards based way`
  *
  * @customElement
- * @polymer
- * @demo demo/index.html
  */
-class SiteRSSButton extends PolymerElement {
+class SiteRSSButton extends LitElement {
   /**
-   * Store the tag name to make it easier to obtain directly.
+   * LitElement constructable styles enhancement
    */
-  static get tag() {
-    return "site-rss-button";
-  }
-  constructor() {
-    super();
-    import("@polymer/paper-button/paper-button.js");
-    import("@polymer/iron-icon/iron-icon.js");
-    import("@polymer/iron-icons/communication-icons.js");
-  }
-  // render function
-  static get template() {
-    return html`
-      <style>
+  static get styles() {
+    return [
+      css`
         :host {
           display: block;
           font-size: 16px;
@@ -44,33 +36,51 @@ class SiteRSSButton extends PolymerElement {
           margin: var(--site-rss-paper-button-margin, 0);
           border-radius: var(--site-rss-border-radius, 3px);
           padding: var(--site-rss-paper-button-padding, 0);
-          @apply --site-rss-paper-button;
         }
         paper-button:hover,
         paper-button:focus,
         paper-button:active {
           background-color: var(--site-rss-bg-active, #2d3237);
         }
-      </style>
+      `
+    ];
+  }
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   */
+  static get tag() {
+    return "site-rss-button";
+  }
+  constructor() {
+    super();
+    this.type = "rss";
+    this.raised = false;
+    import("@polymer/paper-button/paper-button.js");
+    import("@polymer/iron-icon/iron-icon.js");
+    import("@polymer/iron-icons/communication-icons.js");
+  }
+  // render function
+  render() {
+    return html`
+      <custom-style>
+        <style>
+          paper-button {
+            @apply --site-rss-paper-button;
+          }
+        </style>
+      </custom-style>
       <a
-        disabled$="[[disabled]]"
+        ?disabled="${this.disabled}"
         tabindex="-1"
-        href$="[[href]]"
+        href="${this.href}"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <paper-button raised="[[raised]]">
-          <iron-icon icon="[[icon]]"></iron-icon> [[label]]
+        <paper-button ?raised="${this.raised}">
+          <iron-icon icon="${this.icon}"></iron-icon> ${this.label}
         </paper-button>
       </a>
     `;
-  }
-  connectedCallback() {
-    super.connectedCallback();
-    if (window.ShadyCSS) {
-      window.ShadyCSS.styleElement(this);
-      window.ShadyCSS.styleDocument();
-    }
   }
   /**
    * Mix in an opened status
@@ -79,19 +89,32 @@ class SiteRSSButton extends PolymerElement {
     return {
       disabled: {
         type: Boolean,
-        reflectToAttribute: true
+        reflect: true
+      },
+      label: {
+        type: String
+      },
+      href: {
+        type: String
+      },
+      icon: {
+        type: String
       },
       type: {
-        type: String,
-        value: "rss",
-        observer: "_generateLink"
+        type: String
       },
       raised: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        reflect: true
       }
     };
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "type") {
+        this._generateLink(this[propName], oldValue);
+      }
+    });
   }
   /**
    * Generate a link when we get a new type.

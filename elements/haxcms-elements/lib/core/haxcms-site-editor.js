@@ -635,7 +635,9 @@ class HAXCMSSiteEditor extends LitElement {
     this.siteDashboard.headers = {
       Authorization: `Bearer ${this.jwt}`
     };
-    store.dashboardOpened = !store.dashboardOpened;
+    setTimeout(() => {
+      store.dashboardOpened = !store.dashboardOpened;
+    }, 300);
   }
   /**
    * Handle getting fields response

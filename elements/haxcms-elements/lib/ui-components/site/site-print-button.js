@@ -2,17 +2,33 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LitElement, html, css } from "lit-element/lit-element.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/core/haxcms-site-store.js";
+/**
+ * @deprecatedApply - required for @apply / invoking @apply css var convention
+ */
+import "@polymer/polymer/lib/elements/custom-style.js";
 /**
  * `site-print-button`
  * `Dynamic print button to request and generate what to print`
  *
  * @customElement
- * @polymer
- * @demo demo/index.html
  */
-class SitePrintButton extends PolymerElement {
+class SitePrintButton extends LitElement {
+  /**
+   * LitElement constructable styles enhancement
+   */
+  static get styles() {
+    return [
+      css`
+        :host {
+          display: block;
+          text-rendering: optimizelegibility;
+          position: relative;
+        }
+      `
+    ];
+  }
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -21,41 +37,48 @@ class SitePrintButton extends PolymerElement {
   }
   constructor() {
     super();
+    this.icon = "icons:print";
+    this.position = "bottom";
+    this.type = "page";
     import("@polymer/paper-tooltip/paper-tooltip.js");
     import("@polymer/paper-icon-button/paper-icon-button.js");
   }
   // render function
-  static get template() {
+  render() {
     return html`
-      <style>
-        :host {
-          display: block;
-          text-rendering: optimizelegibility;
-          position: relative;
-        }
-        paper-icon-button {
-          @apply --site-print-button-button;
-        }
-        paper-icon-button:hover,
-        paper-icon-button:focus,
-        paper-icon-button:active {
-          @apply --site-print-button-button-hover;
-        }
-        paper-tooltip {
-          @apply --site-print-button-tooltip;
-        }
-      </style>
+      <custom-style>
+        <style>
+          paper-icon-button {
+            @apply --site-print-button-button;
+          }
+          paper-icon-button:hover,
+          paper-icon-button:focus,
+          paper-icon-button:active {
+            @apply --site-print-button-button-hover;
+          }
+          paper-tooltip {
+            @apply --site-print-button-tooltip;
+          }
+        </style>
+      </custom-style>
       <paper-icon-button
         id="btn"
-        icon="[[icon]]"
-        on-click="print"
-        title$="[[label]]"
-        disabled="[[disabled]]"
+        icon="${this.icon}"
+        @click="${this.print}"
+        .title="${this.label}"
+        ?disabled="${this.disabled}"
       ></paper-icon-button>
-      <paper-tooltip for="btn" position="[[position]]" offset="14">
-        [[label]]
+      <paper-tooltip for="btn" position="${this.position}" offset="14">
+        ${this.label}
       </paper-tooltip>
     `;
+  }
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName == "type") {
+        this._typeChanged(this[propName], oldValue);
+      }
+    });
   }
   /**
    * Props
@@ -66,12 +89,11 @@ class SitePrintButton extends PolymerElement {
        * icon
        */
       icon: {
-        type: String,
-        value: "icons:print"
+        type: String
       },
       disabled: {
         type: Boolean,
-        reflectToAttribute: true
+        reflect: true
       },
       /**
        * label for the button
@@ -83,16 +105,13 @@ class SitePrintButton extends PolymerElement {
        * label for the button
        */
       position: {
-        type: String,
-        value: "bottom"
+        type: String
       },
       /**
        * How much do you want to print right now
        */
       type: {
-        type: String,
-        value: "page",
-        observer: "_typeChanged"
+        type: String
       }
     };
   }
