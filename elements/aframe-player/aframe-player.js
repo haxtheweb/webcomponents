@@ -41,7 +41,9 @@ class AframePlayer extends SchemaBehaviors(PolymerElement) {
   }
 
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Source to reference for the 3D object
        */
@@ -107,10 +109,6 @@ class AframePlayer extends SchemaBehaviors(PolymerElement) {
         observer: "_positionChanged"
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
   /**
    * highjack shadowDom
