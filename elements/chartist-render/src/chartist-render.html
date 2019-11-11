@@ -1,0 +1,28 @@
+
+<div id="chart" 
+  chart="${this.__chartId}" 
+  class="ct-chart ${this.scale}">
+</div>${this.data && this.data.series ? html`
+<table id="${this.__chartId}-desc" class="a11y">
+  <caption>${this.chartTitle || this.chartDesc ? html`
+    ${this.chartTitle}${this.chartDesc}` : html`
+    A ${this.type} chart.`}
+  </caption>${this.data.labels ? html`
+  <thead>
+    <tr>${this.data.labels.map(cell => html`
+      <td>${cell || '-'}</td>`)}
+    </tr>
+  </thead>` : html``}
+  <tbody>${this.type === 'pie' ? html`
+    <tr>${this.data.series.map(cell => html`
+      <td>${cell || '-'}</td>`)}
+    </tr>` : this.data.series.map(row => html`
+    <tr>${row.map(cell => html`
+      <td>${cell || '-' }</td>`)}
+    </tr>`)}
+  </tbody>
+</table>` : html`${this.chartTitle || this.chartDesc ? html`
+<div id="${this.__chartId}-title" class="a11y">
+  <div>${this.chartTitle}</div><div>${this.chartDesc}</div>` : html`
+  A ${this.type} chart.`}
+</div>`}

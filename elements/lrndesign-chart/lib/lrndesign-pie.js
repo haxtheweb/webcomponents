@@ -2,68 +2,67 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { LrndesignChartBehaviors } from "./lrndesign-chart-behaviors.js";
+import { LrndesignChart } from "../lrndesign-chart.js";
 /**
  * `lrndesign-pie`
- * A pie chart
+ * a pie chart
  *
- * @polymer
  * @customElement
- * @demo demo/pie.html
+ * @extends LrndesignChart
+ * @see ../lrndesign-chart.js
+ *
+ * @demo ../demo/pie.html
  *
  */
-class LrndesignPie extends LrndesignChartBehaviors {
+class LrndesignPie extends LrndesignChart {
+  constructor() {
+    super();
+    this.setProperties();
+  }
   // properties available to the custom element for data binding
   static get properties() {
-    return {
+    return Object.assign(super.properties, {
       /**
-       * Type of chart.
+       * Padding of chart drawing area to container element and labels
        */
-      type: {
-        type: String,
-        value: "pie",
-        readOnly: true
-      },
-      /**
-       * Scale of the chart.
-       */
-      scale: {
-        type: String,
-        notify: true,
-        value: "ct-square"
-      },
-      /**
-       *  Start angle of the pie chart in degrees where 0 points north.
-       * A higher value offsets the start angle clockwise..
-       */
-      startAngle: {
-        type: Number,
-        value: 0
-      },
-      /**
-       * Optional total you can specify. By specifying a total value,
-       * the sum of the values in the series must be this total in order
-       * to draw a full pie. You can use this parameter to draw only parts
-       * of a pie or gauge charts.
-       */
-      total: {
-        type: Number,
-        value: undefined
+      chartPadding: {
+        type: Number
       },
       /**
        * Displays chart as donut instead of pie.
        */
       donut: {
-        type: Boolean,
-        value: false
+        type: Boolean
       },
       /**
-       * If a label should be shown.
+       * Draw donut segments as shapes instead of strokes.
        */
-      showLabel: {
-        type: Boolean,
-        value: true
+      donutSolid: {
+        type: Boolean
+      },
+      /**
+       * Donut stroke width, currently done in javascript.
+       */
+      donutWidth: {
+        type: Number
+      },
+      /**
+       * Empty values will be ignored to avoid drawing
+       * unncessary slices and labels
+       */
+      ignoreEmptyValues: {
+        type: Boolean
+      },
+      /**
+       * Label direction can be 'neutral', 'explode' or 'implode'.
+       * The labels anchor will be positioned based on those settings
+       * as well as the fact if the labels are on the right or
+       * left side of the center of the chart.
+       * Usually explode is useful when labels are positioned
+       * far away from the center.
+       */
+      labelDirection: {
+        type: String
       },
       /**
        * Label position offset from the standard position
@@ -72,8 +71,7 @@ class LrndesignPie extends LrndesignChartBehaviors {
        * Positive values will position the label away from the center.
        */
       labelOffset: {
-        type: Number,
-        value: 0
+        type: Number
       },
       /**
        * This option can be set to 'inside', 'outside' or 'center'.
@@ -85,30 +83,31 @@ class LrndesignPie extends LrndesignChartBehaviors {
        * in conjunction with the 'labelOffset' option.
        */
       labelPosition: {
-        type: String,
-        value: "inside"
+        type: String
       },
       /**
-       * Label direction can be 'neutral', 'explode' or 'implode'.
-       * The labels anchor will be positioned based on those settings
-       * as well as the fact if the labels are on the right or
-       * left side of the center of the chart.
-       * Usually explode is useful when labels are positioned
-       * far away from the center.
+       * If a label should be shown.
        */
-      labelDirection: {
-        type: String,
-        value: "neutral"
+      showLabel: {
+        type: Boolean
       },
       /**
-       * Empty values will be ignored to avoid drawing
-       * unncessary slices and labels
+       *  Start angle of the pie chart in degrees where 0 points north.
+       * A higher value offsets the start angle clockwise..
        */
-      ignoreEmptyValues: {
-        type: Boolean,
-        value: false
+      startAngle: {
+        type: Number
+      },
+      /**
+       * Optional total you can specify. By specifying a total value,
+       * the sum of the values in the series must be this total in order
+       * to draw a full pie. You can use this parameter to draw only parts
+       * of a pie or gauge charts.
+       */
+      total: {
+        type: Number
       }
-    };
+    });
   }
 
   /**
@@ -119,206 +118,141 @@ class LrndesignPie extends LrndesignChartBehaviors {
   }
   // haxProperty definition
   static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Pie Chart",
-        description: "Creates an accessible pie chart based on a CSV.",
-        icon: "editor:pie-chart",
-        color: "green darken-4",
-        groups: ["Data", "Presentation"],
-        handles: [
-          {
-            type: "data",
-            url: "csvFile"
-          }
-        ],
-        meta: {
-          author: "LRNWebComponents"
+    let haxProps = super.haxProperties,
+      pieQuick = [
+        {
+          property: "donut",
+          title: "Donut",
+          inputMethod: "boolean"
+        },
+        {
+          property: "showLabel",
+          title: "Show Label",
+          inputMethod: "boolean"
+        },
+        {
+          property: "startAngle",
+          title: "Start Angle",
+          inputMethod: "number"
         }
-      },
-      settings: {
-        quick: [
-          {
-            property: "data-source",
-            title: "CSV File",
-            description: "The URL for your CSV file.",
-            inputMethod: "textfield",
-            icon: "link",
-            validationType: "url",
-            required: true
-          },
-          {
-            property: "chartTitle",
-            title: "Chart Title",
-            description: "Accessible alt text for your chart.",
-            inputMethod: "textfield",
-            icon: "text-field",
-            required: true
-          },
-          {
-            property: "chartDesc",
-            title: "Chart Description",
-            description: "Accessible description of your chart.",
-            inputMethod: "textfield",
-            icon: "text-field"
-          },
-          {
-            property: "donut",
-            title: "Display as donut?",
-            description: "Display as a donut chart instead of a pie chart.",
-            inputMethod: "boolean",
-            icon: "check-box"
+      ],
+      pieConfig = [
+        {
+          property: "chartPadding",
+          title: "Padding",
+          inputMethod: "number"
+        },
+        {
+          property: "total",
+          title: "Total",
+          description: `
+            Optional total you can specify. By specifying a total value,
+            the sum of the values in the series must be this total in order
+            to draw a full pie. You can use this parameter to draw only parts
+            of a pie or gauge charts.`,
+          inputMethod: "number"
+        },
+        {
+          property: "ignoreEmptyValues",
+          title: "Ignore Empty Values",
+          description: `
+            Empty values will be ignored to avoid drawing 
+            unncessary slices and labels.`,
+          inputMethod: "boolean"
+        }
+      ],
+      pieAdvanced = [
+        {
+          property: "donutWidth",
+          title: "Donut Stroke Width",
+          inputMethod: "number"
+        },
+        {
+          property: "donutSolid",
+          title: "Donut Solid",
+          description: `Draw donut segments as shapes instead of strokes.`,
+          inputMethod: "boolean"
+        },
+        {
+          property: "labelDirection",
+          title: "Label Direction",
+          description: `Draw donut segments as shapes instead of strokes.`,
+          inputMethod: "select",
+          options: {
+            neutral: "neutral",
+            explode: "explode",
+            implode: "implode"
           }
-        ],
-        configure: [
-          {
-            property: "width",
-            title: "Width",
-            description: "The width of the chart.",
-            inputMethod: "textfield",
-            icon: "text-field"
-          },
-          {
-            property: "height",
-            title: "Height",
-            description: "The height of the chart.",
-            inputMethod: "textfield",
-            icon: "text-field"
-          },
-          {
-            property: "paddingTop",
-            title: "Padding-Top",
-            description: "The padding at the top of the chart.",
-            inputMethod: "textfield",
-            icon: "text-field"
-          },
-          {
-            property: "paddingRight",
-            title: "Padding-Right",
-            description: "The padding at the right of the chart.",
-            inputMethod: "textfield",
-            icon: "text-field"
-          },
-          {
-            property: "paddingBottom",
-            title: "Padding-Bottom",
-            description: "The padding at the bottom of the chart.",
-            inputMethod: "textfield",
-            icon: "text-field"
-          },
-          {
-            property: "paddingLeft",
-            title: "Padding-Left",
-            description: "The padding at the left of the chart.",
-            inputMethod: "textfield",
-            icon: "text-field"
+        },
+        {
+          property: "labelOffset",
+          title: "Label Offset",
+          description: `
+            Label position offset from the standard position
+            which is half distance of the radius.
+            This value can be either positive or negative.
+            Positive values will position the label away from the center.`,
+          inputMethod: "number"
+        },
+        {
+          property: "labelPosition",
+          title: "Label Position",
+          inputMethod: "select",
+          options: {
+            inside: "inside",
+            outside: "outside",
+            center: "center"
           }
-        ],
-        advanced: [
-          {
-            property: "scale",
-            title: "Scale Name",
-            description:
-              "The ratio of width:height of the chart (See https://gionkunz.github.io/chartist-js/getting-started.html#default-sass-settings for $ct-scales and $ct-scales-names).",
-            inputMethod: "textfield",
-            icon: "text-field"
-          },
-          {
-            property: "startAngle",
-            title: "Start Angle",
-            description: "The angle where pie slices will start.",
-            inputMethod: "textfield",
-            icon: "text-field",
-            validationType: "number"
-          },
-          {
-            property: "total",
-            title: "Total of All Slices",
-            description:
-              "Optional total you can specify. By specifying a total value, the sum of the values in the series must be this total in order to draw a full pie. You can use this parameter to draw only parts of a pie or gauge charts.",
-            inputMethod: "textfield",
-            icon: "text-field",
-            validationType: "number"
-          },
-          {
-            property: "showLabel",
-            title: "Show labels?",
-            description: "Should chart labels be shown?",
-            inputMethod: "boolean",
-            icon: "check-box"
-          },
-          {
-            property: "labelOffset",
-            title: "Label Offset",
-            description:
-              "Label position offset from the standard position which is half distance of the radius. This value can be either positive or negative. Positive values will position the label away from the center.",
-            inputMethod: "textfield",
-            icon: "text-field",
-            validationType: "number"
-          },
-          {
-            property: "labelPosition",
-            title: "Label Position",
-            description:
-              'This option can be set to "inside", "outside" or "center". Positioned with "inside" the labels will be placed on half the distance of the radius to the border of the Pie by respecting the "Label Offset". The "outside" option will place the labels at the border of the pie and "center" will place the labels in the absolute center point of the chart. The "center" option only makes sense in conjunction with the "Label Offset" option.',
-            inputMethod: "textfield",
-            icon: "text-field"
-          },
-          {
-            property: "labelDirection",
-            title: "Label Direction",
-            description:
-              'Label direction can be "neutral", "explode" or "implode". The label\'s anchor will be positioned based on those settings as well as the fact if the labels are on the right or left side of the center of the chart. Usually explode is useful when labels are positioned far away from the center.',
-            inputMethod: "textfield",
-            icon: "text-field"
-          },
-          {
-            property: "reverseData",
-            title: "Reverse Data",
-            description:
-              "Reverse data including labels, the series order as well as the whole series data arrays.",
-            inputMethod: "boolean",
-            icon: "check-box"
-          },
-          {
-            property: "ignoreEmptyValues",
-            title: "Ignore empty values?",
-            description:
-              "Empty values will be ignored to avoid drawing unncessary slices and labels.",
-            inputMethod: "boolean",
-            icon: "check-box"
-          }
-        ]
-      }
-    };
+        }
+      ];
+    haxProps.gizmo.title = "Pie Chart";
+    haxProps.gizmo.icon = "editor:pie-chart";
+    haxProps.settings.quick = haxProps.settings.quick.concat(pieQuick);
+    haxProps.settings.configure = haxProps.settings.configure.concat(
+      pieQuick,
+      pieConfig
+    );
+    haxProps.settings.advanced = haxProps.settings.configure.advanced(
+      pieAdvanced
+    );
+    return haxProps;
   }
+
   /**
-   * returns options as an array
+   * Overrides default properties with pie-specific properties.
+   */
+  setProperties() {
+    super.setProperties();
+    this.scale = "ct-square";
+    this.startAngle = 0;
+    this.chartPadding = 5;
+    this.donut = false;
+    this.donutSolid = false;
+    this.donutWidth = 60;
+    this.showLabel = false;
+    this.labelOffset = 0;
+    this.labelPosition = "inside";
+    this.labelDirection = "neutral";
+    this.ignoreEmptyValues = false;
+    this.type = "pie";
+  }
+
+  /**
+   * gets options as an array
+   * @returns {array} options
    */
   _getOptions() {
-    let options = {
-      width: this.width,
-      height: this.height,
-      /*'chartPadding': {
-        'top': this.paddingTop,
-        'right': this.paddingRight,
-        'bottom': this.paddingBottom,
-        'left': this.paddingLeft
-      },*/
-      startAngle: this.startAngle,
-      total: this.total,
-      donut: this.donut,
-      showLabel: this.showLabel,
-      labelOffset: this.labelOffset,
-      labelPosition: this.labelPosition,
-      labelDirection: this.labelDirection,
-      reverseData: this.reverseData,
-      ignoreEmptyValues: this.ignoreEmptyValues
-    };
-    console.log(options);
+    let options = super._getOptions();
+    options.startAngle = this.startAngle;
+    options.chartPadding = this.chartPadding;
+    options.donut = this.donut;
+    options.donutSolid = this.donutSolid;
+    options.donutWidth = this.donutWidth;
+    options.showLabel = this.showLabel;
+    options.labelOffset = this.labelOffset;
+    options.labelPosition = this.labelPosition;
+    options.labelDirection = this.labelDirection;
+    options.ignoreEmptyValues = this.ignoreEmptyValues;
     return options;
   }
 }

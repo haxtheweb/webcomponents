@@ -102,9 +102,11 @@
     "@vaadin/vaadin-upload": "^4.2.1",
     "app-datepicker": "^3.0.0",
     "paper-collapse-item": "^4.0.4",
-    "web-animations-js": "^2.3.1"
+    "web-animations-js": "^2.3.1",
+    "lit-element":"2.0.1"
   },
   "devDependencies": {
+    "@lrnwebcomponents/eco-json-schema-form": "^2.1.5",
     "@lrnwebcomponents/a11y-gif-player": "^2.1.5",
     "@lrnwebcomponents/aframe-player": "^2.1.5",
     "@lrnwebcomponents/citation-element": "^2.1.5",
@@ -139,6 +141,9 @@
     "@lrnwebcomponents/wikipedia-query": "^2.1.5",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
+    "@polymer/iron-image": "^3.0.1",
+    "@polymer/paper-button": "^3.0.1",
+    "@polymer/paper-styles": "^3.0.1",
     "@webcomponents/webcomponentsjs": "^2.2.10",
     "concurrently": "4.1.0",
     "gulp-babel": "8.0.0",
@@ -146,6 +151,7 @@
     "lodash": "4.17.13",
     "polymer-cli": "1.9.9",
     "wct-browser-legacy": "1.0.2"
+
   },
   "private": false,
   "publishConfig": {

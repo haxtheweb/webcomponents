@@ -19,7 +19,7 @@
       <h3>Basic pie chart</h3>
       <demo-snippet>
         <style>
-          chartist-render#pie-chart {
+          #pie-chart {
               width: 300px;
               height: 300px;
               display: inline-block;
@@ -35,6 +35,34 @@
             type="pie"
             scale="ct-square">
           </chartist-render>
+        </template>
+      </demo-snippet>
+      <h3>Basic donut chart</h3>
+      <demo-snippet>
+        <style>
+          #donut-chart {
+              width: 300px;
+              height: 300px;
+              display: inline-block;
+          }  
+        </style>
+        <template>
+          <chartist-render id="donut-chart" 
+            chart-title="A pie chart of favorite foods" 
+            data='{ 
+              "labels": ["Bananas", "Apples", "Grapes"], 
+              "series": [20, 15, 40]
+            }'
+            type="pie"
+            scale="ct-square">
+          </chartist-render>
+          <script>
+            document.getElementById('donut-chart').
+            options = {
+              donut: true,
+              donutSolid: true
+            };
+          </script>
         </template>
       </demo-snippet>
       <h3>Line chart with options and scale set</h3>

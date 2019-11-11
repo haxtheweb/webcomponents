@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/lrndesign-sidenote",
   "wcfactory": {
     "className": "LrndesignSidenote",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "lrndesign-sidenote",
     "generator-wcfactory-version": "0.3.1",
     "useHAX": true,
@@ -39,9 +39,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-behaviors": "^2.1.5",
-    "@lrnwebcomponents/materializecss-styles": "^2.1.4",
-    "@polymer/polymer": "^3.2.0"
+    "@polymer/iron-icon": "3.0.1",
+    "@polymer/iron-icons": "3.0.1",
+    "lit-element":"2.0.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^2.1.1",

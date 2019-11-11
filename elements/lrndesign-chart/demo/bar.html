@@ -8,7 +8,7 @@
     <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '../lrndesign-chart.js';
+      import '../lib/lrndesign-bar.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
     </style>
@@ -24,8 +24,19 @@
       </demo-snippet>
       <demo-snippet>
         <template>
-          <lrndesign-bar dark scale="ct-double-octave" chart-title="Sales by Quarter" chart-desc="A bar graph of sales by quarter. Each series is a salesperson."
-          data-source="bar.csv"></lrndesign-bar>
+          <style>
+            lrndesign-bar[dark] {
+              color: var(--simple-colors-default-theme-grey-1);
+              --chartist-text-color: var(--simple-colors-default-theme-grey-1);
+              --chartist-grid-color: var(--simple-colors-default-theme-grey-7);
+              background-color: var(--simple-colors-default-theme-grey-12);
+            }
+          </style>
+          <lrndesign-bar 
+            dark scale="ct-double-octave" 
+            chart-title="Sales by Quarter" 
+            chart-desc="A bar graph of sales by quarter. Each series is a salesperson."
+            data-source="bar.csv"></lrndesign-bar>
         </template>
       </demo-snippet>
       <demo-snippet>

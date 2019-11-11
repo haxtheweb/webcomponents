@@ -5,6 +5,7 @@
   "description": "A LRN element",
   "main": "parallax-image.html",
   "dependencies": {
+    "@lrnwebcomponents/schema-behaviors": "^2.1.5",
     "@polymer/polymer": "^3.2.0"
   },
   "devDependencies": {}

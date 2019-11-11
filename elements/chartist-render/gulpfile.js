@@ -77,7 +77,7 @@ gulp.task("merge", () => {
               packageJson.wcfactory.customElementClass !== "LitElement"
                 ? ``
                 : `
-  //styles function
+  //styles function 
   static get styles() {
     return  [${sharedStyles ? `${sharedStyles},` : ``}
       css\`
@@ -94,7 +94,7 @@ ${cssResult}
 
           return `${litResult}
   // render function
-  static get template() {
+  render() {
     return html\`
 ${styleResult}
 ${html}\`;

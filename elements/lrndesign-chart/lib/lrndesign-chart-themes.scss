@@ -1,0 +1,87 @@
+:host {
+  --chartist-color-1: var(--simple-colors-default-theme-red-8);
+  --chartist-color-2: var(--simple-colors-default-theme-blue-8);
+  --chartist-color-3: var(--simple-colors-default-theme-yellow-8);
+  --chartist-color-4: var(--simple-colors-default-theme-purple-8);
+  --chartist-color-5: var(--simple-colors-default-theme-green-8);
+  --chartist-color-6: var(--simple-colors-default-theme-orange-7);
+  --chartist-color-7: var(--simple-colors-default-theme-pink-8);
+  --chartist-color-8: var(--simple-colors-default-theme-deep-orange-8);
+  --chartist-color-9: var(--simple-colors-default-theme-red-9);
+  --chartist-color-10: var(--simple-colors-default-theme-blue-9);
+  --chartist-color-11: var(--simple-colors-default-theme-yellow-9);
+  --chartist-color-12: var(--simple-colors-default-theme-purple-9);
+  --chartist-color-13: var(--simple-colors-default-theme-green-9);
+  --chartist-color-14: var(--simple-colors-default-theme-orange-8);
+  --chartist-color-15: var(--simple-colors-default-theme-pink-9); }
+
+:host([dark]) {
+  --chartist-color-1: var(--simple-colors-default-theme-red-4);
+  --chartist-color-2: var(--simple-colors-default-theme-blue-4);
+  --chartist-color-3: var(--simple-colors-default-theme-yellow-4);
+  --chartist-color-4: var(--simple-colors-default-theme-purple-4);
+  --chartist-color-5: var(--simple-colors-default-theme-green-4);
+  --chartist-color-6: var(--simple-colors-default-theme-orange-5);
+  --chartist-color-7: var(--simple-colors-default-theme-pink-4);
+  --chartist-color-8: var(--simple-colors-default-theme-deep-orange-4);
+  --chartist-color-9: var(--simple-colors-default-theme-red-3);
+  --chartist-color-10: var(--simple-colors-default-theme-blue-3);
+  --chartist-color-11: var(--simple-colors-default-theme-yellow-3);
+  --chartist-color-12: var(--simple-colors-default-theme-purple-3);
+  --chartist-color-13: var(--simple-colors-default-theme-green-3);
+  --chartist-color-14: var(--simple-colors-default-theme-orange-4);
+  --chartist-color-15: var(--simple-colors-default-theme-pink-3);
+}
+
+
+$themes: 
+  ("red", "pink","deep-orange","purple","orange"),
+  ("pink", "purple", "red", "purple","deep-orange"),
+  ("purple", "deep-purple", "pink", "indigo", "red"),
+  ("deep-purple", "indigo", "purple", "blue", "pink"),
+  ("indigo", "blue", "deep-purple", "light-blue", "purple"),
+  ("blue", "light-blue", "indigo", "cyan", "deep-purple"),
+  ("light-blue","cyan","blue","teal","indigo"),
+  ("cyan","teal","light-blue","green","blue"),
+  ("teal","green","cyan","light-green","light-blue"),
+  ("green","light-green","teal","lime","cyan"),
+  ("light-green","lime","green","amber","teal"),
+  ("lime","yellow","light-green","orange","green"),
+  ("yellow","amber","lime","deep-orange","light-green"),
+  ("amber","orange","yellow","red","lime"),
+  ("orange","deep-orange","amber","pink","yellow"),
+  ("deep-orange","red","orange","purple","amber"),
+  ("brown","red","deep-orange"),
+  ("blue-grey","light-blue","grey");
+
+@mixin get-theme($row,$theme,$dark:false){
+  @for $i from 1 through 15 {
+    $index: $i - 1;
+    $position: $index % 5 + 1; 
+    $level: $index % 3 + 8;
+
+    @if $theme == "brown" {
+      $position: $index % 3 + 1; 
+      $level: $index % 5 + 8;
+    } 
+    @if $theme == "blue-grey" {
+      $position: $index % 3 + 1; 
+      $level: $index % 5 + 8;
+    } 
+    @if $dark {
+      $level: 12 - $level;
+    }
+    $color: nth($row, $position);
+    --chartist-color-#{$i}: var(--simple-colors-default-theme-#{$color}-#{$level});
+  }
+}
+@for $i from 1 through 17 {
+  $row: nth($themes, $i);
+  $theme: nth($row, 1);
+  :host([accent-color="#{$theme}"]) {
+    @include get-theme($row,$theme);
+  }
+  :host([dark][accent-color="#{$theme}"]) {
+    @include get-theme($row,$theme,true);
+  }
+}

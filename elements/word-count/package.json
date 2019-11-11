@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/word-count",
   "wcfactory": {
     "className": "WordCount",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "word-count",
     "generator-wcfactory-version": "0.3.2",
     "useHAX": true,

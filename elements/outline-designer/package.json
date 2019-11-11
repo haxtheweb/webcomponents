@@ -40,6 +40,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/item-overlay-ops": "^2.1.4",
+    "@lrnwebcomponents/editable-list": "^2.1.4",
     "@lrnwebcomponents/lrnsys-outline": "^2.1.5",
     "@lrnwebcomponents/simple-colors": "^2.1.10",
     "@lrnwebcomponents/simple-modal": "^2.1.5",

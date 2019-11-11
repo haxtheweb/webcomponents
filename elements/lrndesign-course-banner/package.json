@@ -40,7 +40,6 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/lrndesign-avatar": "^2.1.5",
-    "@lrnwebcomponents/materializecss-styles": "^2.1.4",
     "@polymer/iron-image": "^3.0.0",
     "@polymer/polymer": "^3.2.0"
   },
