@@ -35,7 +35,9 @@ class LrnsysPdf extends SchemaBehaviors(PolymerElement) {
     return "lrnsys-pdf";
   }
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Title prior to the PDF
        */
@@ -70,10 +72,6 @@ class LrnsysPdf extends SchemaBehaviors(PolymerElement) {
         type: String
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
   /**
    * See if we should supply a label.

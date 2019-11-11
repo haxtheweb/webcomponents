@@ -159,7 +159,9 @@ class LicenseElement extends SchemaBehaviors(PolymerElement) {
     return "license-element";
   }
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Title of the work.
        */
@@ -218,10 +220,6 @@ class LicenseElement extends SchemaBehaviors(PolymerElement) {
         computed: "_computeHasMore(moreLink)"
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
   constructor() {
     super();
