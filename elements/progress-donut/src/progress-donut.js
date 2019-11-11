@@ -94,9 +94,21 @@ class ProgressDonut extends SchemaBehaviors(SimpleColors) {
         startAngle: 0,
         total: Math.max(sum, this.total)
       };
+      /**
+       * Fired when options change.
+       *
+       * @event options-changed
+       *
+       */
       this.dispatchEvent(new CustomEvent("options-changed", { detail: this }));
       chart.makeChart();
     }
+    /**
+     * Fired when chart changes.
+     *
+     * @event chart-changed
+     *
+     */
     this.dispatchEvent(new CustomEvent("chart-changed", { detail: this }));
     return chart;
   }
