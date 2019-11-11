@@ -72,14 +72,7 @@ class A11yTabs extends LitElement {
     if (this.__observer && this.__observer.disconnect)
       this.__observer.disconnect();
     this.removeEventListener("a11y-tab-changed", e => this.updateItems());
-    window.dispatchEvent(
-      new CustomEvent("responsive-element-deleted", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: this
-      })
-    );
+    this._unsetBreakpoints();
     super.disconnectedCallback();
   }
 
@@ -147,34 +140,8 @@ class A11yTabs extends LitElement {
    * @param {event} e the tab change event
    */
   _breakpointChanged() {
-    let root = this,
-      v = this.layoutBreakpoint > -1 ? this.layoutBreakpoint : 0,
-      i = this.iconBreakpoint > -1 ? this.iconBreakpoint : 0,
-      sm = i > v ? v : i,
-      md = i > v ? i : v,
-      lg = Math.max(i, v) + 1,
-      xl = Math.max(i, v) + 2;
-    window.dispatchEvent(
-      new CustomEvent("responsive-element-deleted", {
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: root
-      })
-    );
-    window.dispatchEvent(
-      new CustomEvent("responsive-element", {
-        detail: {
-          element: root,
-          attribute: "responsive-size",
-          relativeToParent: true,
-          sm: sm,
-          md: md,
-          lg: lg,
-          xl: xl
-        }
-      })
-    );
+    this._unsetBreakpoints();
+    this._setBreakpoints();
     this._setVertical();
   }
   /**
@@ -205,6 +172,32 @@ class A11yTabs extends LitElement {
     if (!newValue) this.id = "a11y-tabs" + this._generateUUID();
   }
   /**
+   * Fires when element is ready to request  breakpoint tracking from repsonsive  utility.
+   *
+   * @event responsive-element
+   */
+  _setBreakpoints() {
+    let v = this.layoutBreakpoint > -1 ? this.layoutBreakpoint : 0,
+      i = this.iconBreakpoint > -1 ? this.iconBreakpoint : 0,
+      sm = i > v ? v : i,
+      md = i > v ? i : v,
+      lg = Math.max(i, v) + 1,
+      xl = Math.max(i, v) + 2;
+    window.dispatchEvent(
+      new CustomEvent("responsive-element", {
+        detail: {
+          element: this,
+          attribute: "responsive-size",
+          relativeToParent: true,
+          sm: sm,
+          md: md,
+          lg: lg,
+          xl: xl
+        }
+      })
+    );
+  }
+  /**
    * determines if tabs should be in a vertical layout
    * @param {number} icon breakpoint for icon-only view
    * @param {number} layout breakpoint for vertical layout
@@ -231,6 +224,21 @@ class A11yTabs extends LitElement {
       (size === "xs" || (icon > layout && size === "sm"))
       ? "icons-only"
       : "";
+  }
+  /**
+   * Fires when element is rno longer needs specific breakpoints tracked.
+   *
+   * @event responsive-element-deleted
+   */
+  _unsetBreakpoints() {
+    window.dispatchEvent(
+      new CustomEvent("responsive-element-deleted", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this
+      })
+    );
   }
 }
 window.customElements.define(A11yTabs.tag, A11yTabs);

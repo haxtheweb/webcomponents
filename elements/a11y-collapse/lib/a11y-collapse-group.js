@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit-element/lit-element.js";
-import "../a11y-collapse.js";
+import { A11yCollapse } from "../a11y-collapse.js";
 /**
  * `a11y-collapse-group`
  * a group of `a11y-collapse` elements
@@ -14,9 +14,11 @@ Custom property | Description | Default
 `--a11y-collapse-group-margin` | margin around the a11y-collapse-group | 15px 0
  *
  * @customElement
- * @demo demo/accordion.html collapse groups
+ * @extends A11yCollapse
+ * @see ../a11y-collapse.js
+ * @demo ./demo/group.html collapse groups
  */
-class A11yCollapseGroup extends LitElement {
+class A11yCollapseGroup extends A11yCollapse {
   static get styles() {
     return [
       css`
@@ -43,6 +45,15 @@ class A11yCollapseGroup extends LitElement {
   }
   constructor() {
     super();
+    this.accordion = null;
+    this.disabled = null;
+    this.expanded = null;
+    this.icon = null;
+    this.iconExpanded = null;
+    this.label = null;
+    this.labelExpanded = null;
+    this.tooltip = null;
+    this.tooltipExpanded = null;
     this.globalOptions = {};
     this.radio = false;
     this.__items = [];
@@ -62,13 +73,15 @@ class A11yCollapseGroup extends LitElement {
 
   static get properties() {
     return {
+      ...super.properties,
       /**
        * an array of globalProperties to override every a11y-collapse item
        * For example, {"icon": "arrow-drop-down"} would set every item's icon to "arrow-drop-down"
        */
       globalOptions: {
         type: Object,
-        attribute: "global-options"
+        attribute: "global-options",
+        reflect: true
       },
       /**
        * is every a11y-collapse item radio button?
@@ -84,22 +97,55 @@ class A11yCollapseGroup extends LitElement {
       }
     };
   }
-
-  /**
-   * Removes a detached item from the _items array.
-   * @param {object} item an a11y-collapse item
-   */
-  _attachItem(item) {
-    for (let key in this.globalOptions) {
-      if (this.globalOptions.hasOwnProperty(key)) {
-        item[key] = this.globalOptions[key];
-      }
-    }
-    this.__items.push(item);
+  static get haxProperties() {
+    return null;
   }
 
   /**
-   * Removes a detached item from the _items array.
+   * Adds a11y-collapse item to __items array.
+   * @param {object} item an a11y-collapse item
+   */
+  _attachItem(item) {
+    this.__items.push(item);
+  }
+  /**
+   * Updates a11y-collapse item when properties change
+   */
+  updated(changedProperties) {
+    changedProperties.forEach((oldValue, propName) => {
+      this.__items.forEach(item => {
+        if (propName === "globalOptions" || propName === "__items") {
+          if (this.globalOptions !== {})
+            for (let key in this.globalOptions) {
+              if (this.globalOptions.hasOwnProperty(key)) {
+                item[key] = this.globalOptions[key];
+              }
+            }
+        }
+        if (propName === "expanded" && this.expanded) {
+          item.expanded = true;
+        }
+        if (propName === "radio" && this.radio) {
+          item.expanded = false;
+        }
+        if (
+          propName === "accordion" ||
+          propName === "disabled" ||
+          propName === "icon" ||
+          propName === "iconExpanded" ||
+          propName === "label" ||
+          propName === "lanelExpanded" ||
+          propName === "tooltip" ||
+          propName === "tooltipExpanded"
+        ) {
+          if (this[propName] !== null) item[propName] = this[propName];
+        }
+      });
+    });
+  }
+
+  /**
+   * Removes a detached item from __items array.
    * @param {object} item an a11y-collapse item
    */
   _detachItem(item) {

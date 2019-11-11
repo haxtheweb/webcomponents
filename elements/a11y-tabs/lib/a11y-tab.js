@@ -19,7 +19,7 @@ Custom property | Description | Default
 `--a11y-tabs-tab-overflow` | tab overflow | `--a11y-tabs-overflow`
  *
  * @customElement
- * @demo demo/index.html
+ * @demo ./demo/index.html
  * @see ../a11y-tabs.js
  */
 class A11yTab extends LitElement {
@@ -121,11 +121,14 @@ class A11yTab extends LitElement {
     this.__toTop = null;
     this.addEventListener("a11y-tab-flag", e => this.handleFlag(e));
   }
+
   disconnectedCallback() {
     this.removeEventListener("a11y-tab-flag", e => this.handleFlag(e));
     super.disconnectedCallback();
   }
-
+  /**
+   * @fires a11y-tab-changed
+   */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "flag") this._tabChanged();
@@ -152,9 +155,13 @@ class A11yTab extends LitElement {
   }
   /**
    * handles any change in the tab attributes
-   * @param {event} e the tab change event
    */
-  _tabChanged(e) {
+  _tabChanged() {
+    /**
+     * handles any change in the tab attributes
+     *
+     * @event a11y-tab-changed
+     */
     this.dispatchEvent(
       new CustomEvent("a11y-tab-changed", {
         bubbles: true,
