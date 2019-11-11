@@ -209,7 +209,9 @@ class PdfElement extends SchemaBehaviors(PolymerElement) {
   }
 
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Source of a PDF file.
        */
@@ -268,10 +270,6 @@ class PdfElement extends SchemaBehaviors(PolymerElement) {
         value: 500
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 
   connectedCallback() {

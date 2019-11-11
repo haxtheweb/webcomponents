@@ -22,7 +22,9 @@ class OerSchemaElement extends SchemaBehaviors(PolymerElement) {
     return "oer-schema";
   }
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       /**
        * Text to wire into the middle of the element.
        * This is easier to manage then slotted data though
@@ -60,10 +62,6 @@ class OerSchemaElement extends SchemaBehaviors(PolymerElement) {
         computed: "_generateforComponentLink(relatedResource)"
       }
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
   static get haxProperties() {
     let oerSchema = new OERSchema();
