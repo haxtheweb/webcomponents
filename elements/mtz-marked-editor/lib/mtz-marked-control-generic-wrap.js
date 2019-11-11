@@ -34,16 +34,14 @@ class MtzMarkedControlGenericWrap extends mtzMarkedControlBehavior(
     return "mtz-marked-control-generic-wrap";
   }
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       title: String,
       icon: String,
       keys: String,
       noink: Boolean // Pass-through
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
 }
 window.customElements.define(

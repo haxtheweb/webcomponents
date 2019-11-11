@@ -30,16 +30,14 @@ class MtzMarkedControlLink extends mtzMarkedControlBehavior(PolymerElement) {
   }
 
   static get properties() {
-    let props = {
+    return {
+      ...super.properties,
+
       title: String,
       icon: String,
       keys: String,
       noink: Boolean // Pass-through
     };
-    if (super.properties) {
-      props = Object.assign(props, super.properties);
-    }
-    return props;
   }
   /**
    * Toggles a syntax prefix at the start of selected lines

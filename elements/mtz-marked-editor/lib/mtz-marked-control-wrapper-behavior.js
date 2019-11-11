@@ -1,7 +1,9 @@
 export const mtzMarkedControlWrapperBehaviorImpl = function(SuperClass) {
   return class extends SuperClass {
     static get properties() {
-      let props = {
+      return {
+        ...super.properties,
+
         syntaxPrefix: String, // Must implement
         syntaxSuffix: {
           // Optionally implement
@@ -9,10 +11,6 @@ export const mtzMarkedControlWrapperBehaviorImpl = function(SuperClass) {
           value: ""
         }
       };
-      if (super.properties) {
-        props = Object.assign(props, super.properties);
-      }
-      return props;
     }
     /**
      * Toggles a wrapping syntax around selected text
