@@ -40,7 +40,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/simple-colors": "^2.1.10",
-    "@polymer/iron-icon": "^3.0.0",
+    "@polymer/iron-icon": "^3.0.1",
     "@polymer/iron-iconset-svg": "^3.0.0",
     "@polymer/iron-image": "^3.0.1",
     "@polymer/paper-card": "^3.0.0",
